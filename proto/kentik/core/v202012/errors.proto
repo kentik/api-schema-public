@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package kentik.api.v202012;
+option go_package = "github.com/kentik/api-schema/gen/proto/kentik/api/v202012;kentik_api";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/protobuf/timestamp.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+message ErrorInfo {
+  int32 code = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    description: "Error code",
+  }];
+  string message = 2 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    description: "Error message"
+  }];
+  string correlation_id = 3 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    description: "Unique event identifier for server requests"
+  }];
+  google.protobuf.Timestamp timestamp = 4 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    description: "Date and time when this error occured"
+  }];
+  string documentation_link = 5 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    description: "Optional link to documentation regarding this error"
+  }];
+}

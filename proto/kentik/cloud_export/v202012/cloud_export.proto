@@ -1,0 +1,197 @@
+syntax = "proto3";
+
+package kentik.cloud_export.v202012;
+option go_package = "github.com/kentik/api-schema/gen/proto/kentik/cloud_export/v202012;cloud_export";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/protobuf/field_mask.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+import "kentik/core/v202012/errors.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Cloud Export Admin API";
+    version: "202012";
+    contact: {
+      name: "Kentik API Engineering";
+      url: "https://github.com/kentik/api";
+    }
+  };
+  external_docs: {
+    url: "https://docs.kentik.com/api";
+    description: "More about Kentik APIs";
+  };
+  schemes: HTTPS;
+  consumes: "application/json";
+  produces: "application/json";
+  security_definitions: {
+    security: {
+      key: "X-CH-Auth-Email";
+      value: {
+        type: TYPE_API_KEY;
+        in: IN_HEADER;
+        name: "X-CH-Auth-Email";
+      }
+    }
+    security: {
+      key: "X-CH-Auth-API-Token";
+      value: {
+        type: TYPE_API_KEY;
+        in: IN_HEADER;
+        name: "X-CH-Auth-API-Token";
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "X-CH-Auth-API-Email";
+      value: {};
+    }
+    security_requirement: {
+      key: "X-CH-Auth-API-Token";
+      value: {};
+    }
+  }
+};
+
+// =======================================================
+// models
+// =======================================================
+
+message CloudExport {
+  string id = 1;
+  uint64 company_id = 2;
+  uint64 user_id = 3;
+  string name = 4;
+  bool enabled = 5;
+
+  oneof properties {
+    AwsProperties aws = 8;
+    AzureProperties azure = 7;
+    GcpProperties gcp = 6;
+  }
+  BGPProperties bgp_properties = 9;
+}
+
+message AwsProperties {
+  string bucket = 1;
+  string iam_role_arn = 2;
+  string region = 3;
+  bool delete_after_read = 4;
+}
+
+
+message AzureProperties {
+  // TODO
+}
+
+message GcpProperties {
+  string project = 1;
+  string subscription = 2;
+}
+
+
+message BGPProperties {
+  bool apply_bgp = 1;
+  string device_bgp_type = 2;
+  bool use_bgp_device_id = 3;
+}
+
+// =======================================================
+// services
+// =======================================================
+
+
+// crud
+// -------------------------------------------------------
+
+message CreateCloudExportRequest {
+  CloudExport export = 1;
+}
+message CreateCloudExportResponse {
+  CloudExport export = 1;
+}
+
+message GetCloudExportRequest {
+  string id = 1;
+}
+
+message GetCloudExportResponse {
+  CloudExport export = 1;
+}
+
+message UpdateCloudExportRequest {
+  CloudExport export = 1;
+  google.protobuf.FieldMask update_mask = 2;
+}
+message UpdateCloudExportResponse {
+  CloudExport export = 1;
+}
+
+message DeleteCloudExportRequest {
+  string id = 1;
+}
+message DeleteCloudExportResponse {}
+
+// checks ?? wip
+// -------------------------------------------------------
+
+message AwsCloudCheckRequest {
+  // companyID is probably mandatory in azure, doesn't
+  // uint64 companyID = 1;
+  // params as in check-awsvpc.kntk.cloud/api/v1/validate
+}
+
+message AwsCloudCheckResponse {
+  string bucket = 1;
+  string region = 2;
+  string role = 3;
+}
+
+message AzureCloudCheckRequest {
+  // companyID looks mandatory
+  uint64 company_id = 1;
+  // params as in https://azure.kntk.cloud/api/azure/check
+}
+
+// services
+// -------------------------------------------------------
+
+service CloudExportAdminService {
+  option (google.api.default_host) = "cloud_export.api.kentik.com";
+  option (google.api.oauth_scopes) = "https://api.kentik.com/auth/cloud";
+
+  // crud
+  // ------------------------------------------------------
+
+  rpc CreateCloudExport(CreateCloudExportRequest) returns (CreateCloudExportResponse) {
+    option (google.api.http) = {
+      post: "/v202012/exports"
+      body: "*"
+    };
+  }
+
+  rpc GetCloudExport(GetCloudExportRequest) returns (GetCloudExportResponse) {
+    option (google.api.http) = {
+      get: "/v202012/exports/{export_id}"
+    };
+  }
+
+  rpc UpdateCloudExport(UpdateCloudExportRequest) returns (UpdateCloudExportResponse) {
+    option (google.api.http) = {
+      patch: "/v202012/exports/{export_id}"
+      body: "*"
+    };
+  }
+
+  rpc DeleteCloudExport(DeleteCloudExportRequest) returns (DeleteCloudExportResponse) {}
+
+  // checks
+  // ------------------------------------------------------
+
+  // rpc CheckAwsCloud(AwsCloudCheckRequest) returns (AwsCloudCheckResponse) {}
+  // rpc CheckAzureCloud(AzureCloudCheckRequest) returns (AzureCloudCheckResponse) {}
+}
+
