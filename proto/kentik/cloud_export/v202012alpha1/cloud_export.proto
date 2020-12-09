@@ -1,14 +1,14 @@
 syntax = "proto3";
 
-package kentik.cloud_export.v202012;
-option go_package = "github.com/kentik/api-schema/gen/go/kentik/cloud_export/v202012;cloud_export";
+package kentik.cloud_export.v202012alpha1;
+option go_package = "github.com/kentik/api-schema/gen/go/kentik/cloud_export/v202012alpha1;cloud_export";
 
 import "google/api/annotations.proto";
 import "google/api/client.proto";
 import "google/protobuf/field_mask.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
 
-import "kentik/core/v202012/errors.proto";
+import "kentik/core/v202012alpha1/errors.proto";
 
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   info: {
