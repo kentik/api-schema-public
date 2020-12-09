@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package kentik.cloud_export.v202012;
-option go_package = "github.com/kentik/api-schema/gen/proto/kentik/cloud_export/v202012;cloud_export";
+option go_package = "github.com/kentik/api-schema/gen/go/kentik/cloud_export/v202012;cloud_export";
 
 import "google/api/annotations.proto";
 import "google/api/client.proto";
@@ -194,4 +194,3 @@ service CloudExportAdminService {
   // rpc CheckAwsCloud(AwsCloudCheckRequest) returns (AwsCloudCheckResponse) {}
   // rpc CheckAzureCloud(AzureCloudCheckRequest) returns (AzureCloudCheckResponse) {}
 }
-
