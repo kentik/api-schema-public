@@ -67,12 +67,19 @@ message CloudExport {
   string name = 4;
   bool enabled = 5;
 
+  string description = 10;
+  string api_root = 11;
+
+  string task_status = 12;
+  string error_mesage = 13;
+
+
   oneof properties {
     AwsProperties aws = 8;
     AzureProperties azure = 7;
     GcpProperties gcp = 6;
   }
-  BGPProperties bgp_properties = 9;
+  BGPProperties bgp = 9;
 }
 
 message AwsProperties {
@@ -82,21 +89,62 @@ message AwsProperties {
   bool delete_after_read = 4;
 }
 
+// {
+//   "task_status": "ERROR",
+//   "error_message": "Export Process timed out",
+//   "azure_location": "australiasoutheast",
+//   "azure_access_check": {
+//       "error_msg": "Could not successfully reach all required APIs for the resource group. Verify the permissions and try again.",
+//       "api_access": false,
+//       "flow_found": false,
+//       "storage_account_access": false
+//   },
+//   "azure_resource_group": "test",
+//   "azure_storage_account": "testtest",
+//   "azure_subscription_id": "00000000-0000-0000-0000-000000000123"
+// }
 
 message AzureProperties {
-  // TODO
+  // TODO(tjonak): are those two exclusive to azure?
+
+  string location = 3;
+  AzureAccessCheck access_check = 4;
+  string resource_group = 5;
+  string storage_account = 6;
+  string subscription_id = 7;
+}
+
+message AzureAccessCheck {
+  string error_msg = 1;
+  bool flow_found = 2;
+  // Enum those, i have a feeling they are mutually exclusive
+  bool api_access = 3;
+  bool storage_account_access = 4;
 }
 
 message GcpProperties {
-  string project = 1;
-  string subscription = 2;
+  string project = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    // semantics of this field are a mystery to me, why would it be []string
+    required: ["true"]
+  }];
+  string subscription = 2 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {required: ["true"]}];
 }
 
-
 message BGPProperties {
-  bool apply_bgp = 1;
-  string device_bgp_type = 2;
-  bool use_bgp_device_id = 3;
+  bool enabled = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {default: "false"}];
+
+  string device_type = 2 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {default: ""}];
+  uint64 device_id = 3 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {default: "0"}];
+
+  bool uses_flowspec = 4 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {default: "false"}];
+
+  // There's a possibility that those are unused
+  string device_password = 5     [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {default: ""}];
+  string device_neighbor_ip = 6  [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {default: ""}];
+  string device_neighbor_asn = 7 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {default: ""}];
+  string device_neighbor_ip6 = 8 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {default: ""}];
+  string peer_ipv4 = 10         [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {default: ""}];
+  string peer_ipv6 = 11         [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {default: ""}];
 }
 
 // =======================================================

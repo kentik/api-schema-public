@@ -101,7 +101,7 @@ type UnsafeCloudExportAdminServiceServer interface {
 	mustEmbedUnimplementedCloudExportAdminServiceServer()
 }
 
-func RegisterCloudExportAdminServiceServer(s *grpc.Server, srv CloudExportAdminServiceServer) {
+func RegisterCloudExportAdminServiceServer(s grpc.ServiceRegistrar, srv CloudExportAdminServiceServer) {
 	s.RegisterService(&_CloudExportAdminService_serviceDesc, srv)
 }
 
