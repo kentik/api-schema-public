@@ -1,3 +1,5 @@
+// Error information
+
 syntax = "proto3";
 
 package kentik.core.v202012alpha1;
