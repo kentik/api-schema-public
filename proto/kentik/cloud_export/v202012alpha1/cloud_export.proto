@@ -14,46 +14,46 @@ import "kentik/core/v202012alpha1/errors.proto";
 
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   info: {
-    title: "Cloud Export Admin API";
-    version: "202012";
+    title: "Cloud Export Admin API"
+    version: "202012"
     contact: {
-      name: "Kentik API Engineering";
-      url: "https://github.com/kentik/api";
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api"
     }
   };
   external_docs: {
-    url: "https://docs.kentik.com/api";
-    description: "More about Kentik APIs";
+    url: "https://docs.kentik.com/api"
+    description: "More about Kentik APIs"
   };
-  schemes: HTTPS;
-  consumes: "application/json";
-  produces: "application/json";
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
   security_definitions: {
     security: {
-      key: "X-CH-Auth-Email";
+      key: "X-CH-Auth-Email"
       value: {
-        type: TYPE_API_KEY;
-        in: IN_HEADER;
-        name: "X-CH-Auth-Email";
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
       }
     }
     security: {
-      key: "X-CH-Auth-API-Token";
+      key: "X-CH-Auth-API-Token"
       value: {
-        type: TYPE_API_KEY;
-        in: IN_HEADER;
-        name: "X-CH-Auth-API-Token";
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
       }
     }
   }
   security: {
     security_requirement: {
-      key: "X-CH-Auth-API-Email";
-      value: {};
+      key: "X-CH-Auth-API-Email"
+      value: {}
     }
     security_requirement: {
-      key: "X-CH-Auth-API-Token";
-      value: {};
+      key: "X-CH-Auth-API-Token"
+      value: {}
     }
   }
 };
@@ -125,11 +125,10 @@ message AzureAccessCheck {
 }
 
 message GcpProperties {
-  string project = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    // semantics of this field are a mystery to me, why would it be []string
-    required: ["true"]
-  }];
-  string subscription = 2 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {required: ["true"]}];
+  // Required.
+  string project = 1;
+  // Required.
+  string subscription = 2;
 }
 
 message BGPProperties {
