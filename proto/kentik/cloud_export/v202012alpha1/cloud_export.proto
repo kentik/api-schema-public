@@ -217,20 +217,20 @@ service CloudExportAdminService {
 
   rpc CreateCloudExport(CreateCloudExportRequest) returns (CreateCloudExportResponse) {
     option (google.api.http) = {
-      post: "/v202012/exports"
+      post: "/cloud_export/v202012alpha1/exports"
       body: "*"
     };
   }
 
   rpc GetCloudExport(GetCloudExportRequest) returns (GetCloudExportResponse) {
     option (google.api.http) = {
-      get: "/v202012/exports/{export_id}"
+      get: "/cloud_export/v202012alpha1/exports/{id}"
     };
   }
 
   rpc UpdateCloudExport(UpdateCloudExportRequest) returns (UpdateCloudExportResponse) {
     option (google.api.http) = {
-      patch: "/v202012/exports/{export_id}"
+      patch: "/cloud_export/v202012alpha1/exports/{export.id}"
       body: "*"
     };
   }
