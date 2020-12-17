@@ -18,6 +18,7 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type CloudExportAdminServiceClient interface {
 	CreateCloudExport(ctx context.Context, in *CreateCloudExportRequest, opts ...grpc.CallOption) (*CreateCloudExportResponse, error)
+	ListCloudExport(ctx context.Context, in *ListCloudExportRequest, opts ...grpc.CallOption) (*ListCloudExportResponse, error)
 	GetCloudExport(ctx context.Context, in *GetCloudExportRequest, opts ...grpc.CallOption) (*GetCloudExportResponse, error)
 	UpdateCloudExport(ctx context.Context, in *UpdateCloudExportRequest, opts ...grpc.CallOption) (*UpdateCloudExportResponse, error)
 	DeleteCloudExport(ctx context.Context, in *DeleteCloudExportRequest, opts ...grpc.CallOption) (*DeleteCloudExportResponse, error)
@@ -34,6 +35,15 @@ func NewCloudExportAdminServiceClient(cc grpc.ClientConnInterface) CloudExportAd
 func (c *cloudExportAdminServiceClient) CreateCloudExport(ctx context.Context, in *CreateCloudExportRequest, opts ...grpc.CallOption) (*CreateCloudExportResponse, error) {
 	out := new(CreateCloudExportResponse)
 	err := c.cc.Invoke(ctx, "/kentik.cloud_export.v202012alpha1.CloudExportAdminService/CreateCloudExport", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *cloudExportAdminServiceClient) ListCloudExport(ctx context.Context, in *ListCloudExportRequest, opts ...grpc.CallOption) (*ListCloudExportResponse, error) {
+	out := new(ListCloudExportResponse)
+	err := c.cc.Invoke(ctx, "/kentik.cloud_export.v202012alpha1.CloudExportAdminService/ListCloudExport", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -72,6 +82,7 @@ func (c *cloudExportAdminServiceClient) DeleteCloudExport(ctx context.Context, i
 // for forward compatibility
 type CloudExportAdminServiceServer interface {
 	CreateCloudExport(context.Context, *CreateCloudExportRequest) (*CreateCloudExportResponse, error)
+	ListCloudExport(context.Context, *ListCloudExportRequest) (*ListCloudExportResponse, error)
 	GetCloudExport(context.Context, *GetCloudExportRequest) (*GetCloudExportResponse, error)
 	UpdateCloudExport(context.Context, *UpdateCloudExportRequest) (*UpdateCloudExportResponse, error)
 	DeleteCloudExport(context.Context, *DeleteCloudExportRequest) (*DeleteCloudExportResponse, error)
@@ -83,6 +94,9 @@ type UnimplementedCloudExportAdminServiceServer struct {
 
 func (UnimplementedCloudExportAdminServiceServer) CreateCloudExport(context.Context, *CreateCloudExportRequest) (*CreateCloudExportResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateCloudExport not implemented")
+}
+func (UnimplementedCloudExportAdminServiceServer) ListCloudExport(context.Context, *ListCloudExportRequest) (*ListCloudExportResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCloudExport not implemented")
 }
 func (UnimplementedCloudExportAdminServiceServer) GetCloudExport(context.Context, *GetCloudExportRequest) (*GetCloudExportResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetCloudExport not implemented")
@@ -119,6 +133,24 @@ func _CloudExportAdminService_CreateCloudExport_Handler(srv interface{}, ctx con
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(CloudExportAdminServiceServer).CreateCloudExport(ctx, req.(*CreateCloudExportRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CloudExportAdminService_ListCloudExport_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListCloudExportRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CloudExportAdminServiceServer).ListCloudExport(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kentik.cloud_export.v202012alpha1.CloudExportAdminService/ListCloudExport",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CloudExportAdminServiceServer).ListCloudExport(ctx, req.(*ListCloudExportRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -184,6 +216,10 @@ var _CloudExportAdminService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateCloudExport",
 			Handler:    _CloudExportAdminService_CreateCloudExport_Handler,
+		},
+		{
+			MethodName: "ListCloudExport",
+			Handler:    _CloudExportAdminService_ListCloudExport_Handler,
 		},
 		{
 			MethodName: "GetCloudExport",

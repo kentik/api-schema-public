@@ -163,6 +163,13 @@ message CreateCloudExportResponse {
   CloudExport export = 1;
 }
 
+message ListCloudExportRequest {
+}
+
+message ListCloudExportResponse {
+  repeated CloudExport exports = 1;
+}
+
 message GetCloudExportRequest {
   string id = 1;
 }
@@ -220,6 +227,12 @@ service CloudExportAdminService {
       post: "/cloud_export/v202012alpha1/exports"
       body: "*"
     };
+  }
+
+  rpc ListCloudExport(ListCloudExportRequest) returns (ListCloudExportResponse) {
+    option (google.api.http) = {
+      get: "/cloud_export/v202012alpha1/exports"
+  };
   }
 
   rpc GetCloudExport(GetCloudExportRequest) returns (GetCloudExportResponse) {
