@@ -234,7 +234,7 @@ service CloudExportAdminService {
   rpc ListCloudExport(ListCloudExportRequest) returns (ListCloudExportResponse) {
     option (google.api.http) = {
       get: "/cloud_export/v202012alpha1/exports"
-  };
+    };
   }
 
   rpc GetCloudExport(GetCloudExportRequest) returns (GetCloudExportResponse) {
