@@ -74,12 +74,13 @@ message CloudExport {
 
   string task_status = 12;
   string error_mesage = 13;
-
+  uint64 plan_id = 14;
 
   oneof properties {
     AwsProperties aws = 8;
     AzureProperties azure = 7;
-    GcpProperties gcp = 6;
+    GceProperties gce = 6;
+    // TODO: define IBM cloud
   }
   BGPProperties bgp = 9;
 }
@@ -89,6 +90,7 @@ message AwsProperties {
   string iam_role_arn = 2;
   string region = 3;
   bool delete_after_read = 4;
+  bool multiple_buckets = 5;
 }
 
 // {
@@ -124,7 +126,7 @@ message AzureAccessCheck {
   bool storage_account_access = 4;
 }
 
-message GcpProperties {
+message GceProperties {
   // Required.
   string project = 1;
   // Required.
