@@ -11,6 +11,7 @@ import "google/protobuf/field_mask.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
 
 import "kentik/core/v202012alpha1/errors.proto";
+import "kentik/core/v202012alpha1/annotations.proto";
 
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   info: {
@@ -219,12 +220,13 @@ message AzureCloudCheckRequest {
 
 service CloudExportAdminService {
   option (google.api.default_host) = "cloud_export.api.kentik.com";
-  option (google.api.oauth_scopes) = "https://api.kentik.com/auth/cloud";
+  option (kentik.core.v202012alpha1.service_scope) = "admin.cloud_export";
 
   // crud
   // ------------------------------------------------------
 
   rpc CreateCloudExport(CreateCloudExportRequest) returns (CreateCloudExportResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_export:write";
     option (google.api.http) = {
       post: "/cloud_export/v202012alpha1/exports"
       body: "*"
@@ -232,25 +234,30 @@ service CloudExportAdminService {
   }
 
   rpc ListCloudExport(ListCloudExportRequest) returns (ListCloudExportResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_export:read";
     option (google.api.http) = {
       get: "/cloud_export/v202012alpha1/exports"
     };
   }
 
   rpc GetCloudExport(GetCloudExportRequest) returns (GetCloudExportResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_export:read";
     option (google.api.http) = {
       get: "/cloud_export/v202012alpha1/exports/{id}"
     };
   }
 
   rpc UpdateCloudExport(UpdateCloudExportRequest) returns (UpdateCloudExportResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_export:write";
     option (google.api.http) = {
       patch: "/cloud_export/v202012alpha1/exports/{export.id}"
       body: "*"
     };
   }
 
-  rpc DeleteCloudExport(DeleteCloudExportRequest) returns (DeleteCloudExportResponse) {}
+  rpc DeleteCloudExport(DeleteCloudExportRequest) returns (DeleteCloudExportResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_export:write";
+  }
 
   // checks
   // ------------------------------------------------------

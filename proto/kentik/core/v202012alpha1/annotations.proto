@@ -1,0 +1,18 @@
+// Error information
+
+syntax = "proto3";
+
+package kentik.core.v202012alpha1;
+option go_package = "github.com/kentik/api-schema/gen/go/kentik/core/v202012alpha1;kentik_api";
+
+import "google/protobuf/descriptor.proto";
+
+extend google.protobuf.ServiceOptions {
+  // auth scope for this service
+  string service_scope = 5501;
+}
+
+extend google.protobuf.MethodOptions {
+  // auth scope for this service
+  string method_scope = 5502;
+}
