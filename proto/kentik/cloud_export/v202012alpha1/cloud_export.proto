@@ -65,8 +65,9 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
 
 message CloudExport {
   string id = 1;
-  uint64 company_id = 2;
-  uint64 user_id = 3;
+  reserved 2; // deprecated company_id
+  reserved 3; // deprecated user_id
+
   string name = 4;
   bool enabled = 5;
 
@@ -74,7 +75,7 @@ message CloudExport {
   string api_root = 11;
 
   string task_status = 12;
-  string error_mesage = 13;
+  string error_message = 13;
   uint64 plan_id = 14;
 
   oneof properties {
@@ -198,8 +199,6 @@ message DeleteCloudExportResponse {}
 // -------------------------------------------------------
 
 message AwsCloudCheckRequest {
-  // companyID is probably mandatory in azure, doesn't
-  // uint64 companyID = 1;
   // params as in check-awsvpc.kntk.cloud/api/v1/validate
 }
 
@@ -210,8 +209,6 @@ message AwsCloudCheckResponse {
 }
 
 message AzureCloudCheckRequest {
-  // companyID looks mandatory
-  uint64 company_id = 1;
   // params as in https://azure.kntk.cloud/api/azure/check
 }
 
