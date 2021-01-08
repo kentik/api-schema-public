@@ -20,6 +20,7 @@ type CloudExportAdminServiceClient interface {
 	CreateCloudExport(ctx context.Context, in *CreateCloudExportRequest, opts ...grpc.CallOption) (*CreateCloudExportResponse, error)
 	ListCloudExport(ctx context.Context, in *ListCloudExportRequest, opts ...grpc.CallOption) (*ListCloudExportResponse, error)
 	GetCloudExport(ctx context.Context, in *GetCloudExportRequest, opts ...grpc.CallOption) (*GetCloudExportResponse, error)
+	PatchCloudExport(ctx context.Context, in *PatchCloudExportRequest, opts ...grpc.CallOption) (*PatchCloudExportResponse, error)
 	UpdateCloudExport(ctx context.Context, in *UpdateCloudExportRequest, opts ...grpc.CallOption) (*UpdateCloudExportResponse, error)
 	DeleteCloudExport(ctx context.Context, in *DeleteCloudExportRequest, opts ...grpc.CallOption) (*DeleteCloudExportResponse, error)
 }
@@ -59,6 +60,15 @@ func (c *cloudExportAdminServiceClient) GetCloudExport(ctx context.Context, in *
 	return out, nil
 }
 
+func (c *cloudExportAdminServiceClient) PatchCloudExport(ctx context.Context, in *PatchCloudExportRequest, opts ...grpc.CallOption) (*PatchCloudExportResponse, error) {
+	out := new(PatchCloudExportResponse)
+	err := c.cc.Invoke(ctx, "/kentik.cloud_export.v202012alpha1.CloudExportAdminService/PatchCloudExport", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *cloudExportAdminServiceClient) UpdateCloudExport(ctx context.Context, in *UpdateCloudExportRequest, opts ...grpc.CallOption) (*UpdateCloudExportResponse, error) {
 	out := new(UpdateCloudExportResponse)
 	err := c.cc.Invoke(ctx, "/kentik.cloud_export.v202012alpha1.CloudExportAdminService/UpdateCloudExport", in, out, opts...)
@@ -84,6 +94,7 @@ type CloudExportAdminServiceServer interface {
 	CreateCloudExport(context.Context, *CreateCloudExportRequest) (*CreateCloudExportResponse, error)
 	ListCloudExport(context.Context, *ListCloudExportRequest) (*ListCloudExportResponse, error)
 	GetCloudExport(context.Context, *GetCloudExportRequest) (*GetCloudExportResponse, error)
+	PatchCloudExport(context.Context, *PatchCloudExportRequest) (*PatchCloudExportResponse, error)
 	UpdateCloudExport(context.Context, *UpdateCloudExportRequest) (*UpdateCloudExportResponse, error)
 	DeleteCloudExport(context.Context, *DeleteCloudExportRequest) (*DeleteCloudExportResponse, error)
 }
@@ -100,6 +111,9 @@ func (UnimplementedCloudExportAdminServiceServer) ListCloudExport(context.Contex
 }
 func (UnimplementedCloudExportAdminServiceServer) GetCloudExport(context.Context, *GetCloudExportRequest) (*GetCloudExportResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetCloudExport not implemented")
+}
+func (UnimplementedCloudExportAdminServiceServer) PatchCloudExport(context.Context, *PatchCloudExportRequest) (*PatchCloudExportResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PatchCloudExport not implemented")
 }
 func (UnimplementedCloudExportAdminServiceServer) UpdateCloudExport(context.Context, *UpdateCloudExportRequest) (*UpdateCloudExportResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateCloudExport not implemented")
@@ -173,6 +187,24 @@ func _CloudExportAdminService_GetCloudExport_Handler(srv interface{}, ctx contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _CloudExportAdminService_PatchCloudExport_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PatchCloudExportRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CloudExportAdminServiceServer).PatchCloudExport(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kentik.cloud_export.v202012alpha1.CloudExportAdminService/PatchCloudExport",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CloudExportAdminServiceServer).PatchCloudExport(ctx, req.(*PatchCloudExportRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _CloudExportAdminService_UpdateCloudExport_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateCloudExportRequest)
 	if err := dec(in); err != nil {
@@ -224,6 +256,10 @@ var _CloudExportAdminService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetCloudExport",
 			Handler:    _CloudExportAdminService_GetCloudExport_Handler,
+		},
+		{
+			MethodName: "PatchCloudExport",
+			Handler:    _CloudExportAdminService_PatchCloudExport_Handler,
 		},
 		{
 			MethodName: "UpdateCloudExport",

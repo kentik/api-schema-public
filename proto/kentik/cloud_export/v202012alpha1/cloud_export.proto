@@ -182,13 +182,21 @@ message GetCloudExportResponse {
   CloudExport export = 1;
 }
 
-message UpdateCloudExportRequest {
+message PatchCloudExportRequest {
   CloudExport export = 1;
   google.protobuf.FieldMask update_mask = 2;
+}
+message PatchCloudExportResponse {
+  CloudExport export = 1;
+}
+
+message UpdateCloudExportRequest {
+  CloudExport export = 1;
 }
 message UpdateCloudExportResponse {
   CloudExport export = 1;
 }
+
 
 message DeleteCloudExportRequest {
   string id = 1;
@@ -244,10 +252,18 @@ service CloudExportAdminService {
     };
   }
 
-  rpc UpdateCloudExport(UpdateCloudExportRequest) returns (UpdateCloudExportResponse) {
+  rpc PatchCloudExport(PatchCloudExportRequest) returns (PatchCloudExportResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_export:write";
     option (google.api.http) = {
       patch: "/cloud_export/v202012alpha1/exports/{export.id}"
+      body: "*"
+    };
+  }
+
+  rpc UpdateCloudExport(UpdateCloudExportRequest) returns (UpdateCloudExportResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_export:write";
+    option (google.api.http) = {
+      put: "/cloud_export/v202012alpha1/exports/{export.id}"
       body: "*"
     };
   }
