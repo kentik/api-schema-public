@@ -82,9 +82,13 @@ message CloudExport {
     AwsProperties aws = 8;
     AzureProperties azure = 7;
     GceProperties gce = 6;
-    // TODO: define IBM cloud
+    IbmProperties ibm = 15;
   }
   BGPProperties bgp = 9;
+}
+
+message IbmProperties {
+  string bucket = 1;
 }
 
 message AwsProperties {
