@@ -5,6 +5,7 @@ syntax = "proto3";
 package kentik.cloud_export.v202012alpha1;
 option go_package = "github.com/kentik/api-schema/gen/go/kentik/cloud_export/v202012alpha1;cloud_export";
 
+import "google/protobuf/empty.proto";
 import "google/api/annotations.proto";
 import "google/api/client.proto";
 import "google/protobuf/field_mask.proto";
@@ -31,7 +32,7 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   produces: "application/json"
   security_definitions: {
     security: {
-      key: "X-CH-Auth-Email"
+      key: "email"
       value: {
         type: TYPE_API_KEY
         in: IN_HEADER
@@ -39,7 +40,7 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
       }
     }
     security: {
-      key: "X-CH-Auth-API-Token"
+      key: "token"
       value: {
         type: TYPE_API_KEY
         in: IN_HEADER
@@ -49,11 +50,11 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   }
   security: {
     security_requirement: {
-      key: "X-CH-Auth-API-Email"
+      key: "email"
       value: {}
     }
     security_requirement: {
-      key: "X-CH-Auth-API-Token"
+      key: "token"
       value: {}
     }
   }
@@ -201,11 +202,12 @@ message UpdateCloudExportResponse {
   CloudExport export = 1;
 }
 
-
 message DeleteCloudExportRequest {
   string id = 1;
 }
-message DeleteCloudExportResponse {}
+
+message DeleteCloudExportResponse {
+}
 
 // checks ?? wip
 // -------------------------------------------------------
@@ -274,6 +276,9 @@ service CloudExportAdminService {
 
   rpc DeleteCloudExport(DeleteCloudExportRequest) returns (DeleteCloudExportResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_export:write";
+    option (google.api.http) = {
+      delete: "/cloud_export/v202012alpha1/exports/{id}"
+    };
   }
 
   // checks

@@ -1,0 +1,182 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "grpc/lb/v1/load_balancer.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "LoadBalancer"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {},
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "typeUrl": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v1ClientStats": {
+      "type": "object",
+      "properties": {
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp of generating the report."
+        },
+        "numCallsStarted": {
+          "type": "string",
+          "format": "int64",
+          "description": "The total number of RPCs that started."
+        },
+        "numCallsFinished": {
+          "type": "string",
+          "format": "int64",
+          "description": "The total number of RPCs that finished."
+        },
+        "numCallsFinishedWithClientFailedToSend": {
+          "type": "string",
+          "format": "int64",
+          "description": "The total number of RPCs that failed to reach a server except dropped RPCs."
+        },
+        "numCallsFinishedKnownReceived": {
+          "type": "string",
+          "format": "int64",
+          "description": "The total number of RPCs that finished and are known to have been received\nby a server."
+        },
+        "callsFinishedWithDrop": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ClientStatsPerToken"
+          },
+          "description": "The list of dropped calls."
+        }
+      },
+      "description": "Contains client level statistics that are useful to load balancing. Each\ncount except the timestamp should be reset to zero after reporting the stats."
+    },
+    "v1ClientStatsPerToken": {
+      "type": "object",
+      "properties": {
+        "loadBalanceToken": {
+          "type": "string",
+          "description": "See Server.load_balance_token."
+        },
+        "numCalls": {
+          "type": "string",
+          "format": "int64",
+          "description": "The total number of RPCs that finished associated with the token."
+        }
+      },
+      "description": "Contains the number of calls finished for a particular load balance token."
+    },
+    "v1FallbackResponse": {
+      "type": "object"
+    },
+    "v1InitialLoadBalanceRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the load balanced service (e.g., service.googleapis.com). Its\nlength should be less than 256 bytes.\nThe name might include a port number. How to handle the port number is up\nto the balancer."
+        }
+      }
+    },
+    "v1InitialLoadBalanceResponse": {
+      "type": "object",
+      "properties": {
+        "loadBalancerDelegate": {
+          "type": "string",
+          "description": "This is an application layer redirect that indicates the client should use\nthe specified server for load balancing. When this field is non-empty in\nthe response, the client should open a separate connection to the\nload_balancer_delegate and call the BalanceLoad method. Its length should\nbe less than 64 bytes."
+        },
+        "clientStatsReportInterval": {
+          "type": "string",
+          "description": "This interval defines how often the client should send the client stats\nto the load balancer. Stats should only be reported when the duration is\npositive."
+        }
+      }
+    },
+    "v1LoadBalanceResponse": {
+      "type": "object",
+      "properties": {
+        "initialResponse": {
+          "$ref": "#/definitions/v1InitialLoadBalanceResponse",
+          "description": "This message should be sent on the first response to the client."
+        },
+        "serverList": {
+          "$ref": "#/definitions/v1ServerList",
+          "description": "Contains the list of servers selected by the load balancer. The client\nshould send requests to these servers in the specified order."
+        },
+        "fallbackResponse": {
+          "$ref": "#/definitions/v1FallbackResponse",
+          "description": "If this field is set, then the client should eagerly enter fallback\nmode (even if there are existing, healthy connections to backends).\nSee go/grpclb-explicit-fallback for more details."
+        }
+      }
+    },
+    "v1Server": {
+      "type": "object",
+      "properties": {
+        "ipAddress": {
+          "type": "string",
+          "format": "byte",
+          "description": "A resolved address for the server, serialized in network-byte-order. It may\neither be an IPv4 or IPv6 address."
+        },
+        "port": {
+          "type": "integer",
+          "format": "int32",
+          "description": "A resolved port number for the server."
+        },
+        "loadBalanceToken": {
+          "type": "string",
+          "description": "An opaque but printable token for load reporting. The client must include\nthe token of the picked server into the initial metadata when it starts a\ncall to that server. The token is used by the server to verify the request\nand to allow the server to report load to the gRPC LB system. The token is\nalso used in client stats for reporting dropped calls.\n\nIts length can be variable but must be less than 50 bytes."
+        },
+        "drop": {
+          "type": "boolean",
+          "description": "Indicates whether this particular request should be dropped by the client.\nIf the request is dropped, there will be a corresponding entry in\nClientStats.calls_finished_with_drop."
+        }
+      },
+      "description": "Contains server information. When the drop field is not true, use the other\nfields."
+    },
+    "v1ServerList": {
+      "type": "object",
+      "properties": {
+        "servers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Server"
+          },
+          "description": "Contains a list of servers selected by the load balancer. The list will\nbe updated when server resolutions change or as needed to balance load\nacross more servers. The client should consume the server list in order\nunless instructed otherwise via the client_config."
+        }
+      }
+    }
+  }
+}
