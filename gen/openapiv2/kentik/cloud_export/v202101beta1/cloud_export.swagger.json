@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Cloud Export Admin API",
-    "version": "202012",
+    "version": "202101",
     "contact": {
       "name": "Kentik API Engineering",
       "url": "https://github.com/kentik/api"
@@ -317,6 +317,9 @@
         "id": {
           "type": "string"
         },
+        "type": {
+          "$ref": "#/definitions/v202101beta1CloudExportType"
+        },
         "enabled": {
           "type": "boolean"
         },
@@ -357,6 +360,16 @@
           "$ref": "#/definitions/cloud_exportv202101beta1Status"
         }
       }
+    },
+    "v202101beta1CloudExportType": {
+      "type": "string",
+      "enum": [
+        "CLOUD_EXPORT_TYPE_UNSPECIFIED",
+        "CLOUD_EXPORT_TYPE_KENTIK_MANAGED",
+        "CLOUD_EXPORT_TYPE_CUSTOMER_MANAGED"
+      ],
+      "default": "CLOUD_EXPORT_TYPE_UNSPECIFIED",
+      "title": "- CLOUD_EXPORT_TYPE_KENTIK_MANAGED: Exports that are managed by Kentik\n - CLOUD_EXPORT_TYPE_CUSTOMER_MANAGED: Exports that are managed by Kentik customers (eg. by running an export agent)"
     },
     "v202101beta1CreateCloudExportRequest": {
       "type": "object",

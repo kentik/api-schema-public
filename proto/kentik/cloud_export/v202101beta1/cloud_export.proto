@@ -18,7 +18,7 @@ import "kentik/core/v202012alpha1/annotations.proto";
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   info: {
     title: "Cloud Export Admin API"
-    version: "202012"
+    version: "202101"
     contact: {
       name: "Kentik API Engineering"
       url: "https://github.com/kentik/api"
@@ -65,8 +65,19 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
 // models
 // =======================================================
 
+enum CloudExportType {
+  CLOUD_EXPORT_TYPE_UNSPECIFIED = 0;
+
+  // Exports that are managed by Kentik
+  CLOUD_EXPORT_TYPE_KENTIK_MANAGED = 1;
+
+  // Exports that are managed by Kentik customers (eg. by running an export agent)
+  CLOUD_EXPORT_TYPE_CUSTOMER_MANAGED = 2;
+}
+
 message CloudExport {
   string id = 1;
+  CloudExportType type = 15;
   bool enabled = 2;
   string name = 3;
   string description = 4;
@@ -173,9 +184,6 @@ message DeleteCloudExportRequest {
 
 message DeleteCloudExportResponse {
 }
-
-// services
-// -------------------------------------------------------
 
 service CloudExportAdminService {
   option (google.api.default_host) = "cloud_export.api.kentik.com";
