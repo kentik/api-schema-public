@@ -1,0 +1,476 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Cloud Export Admin API",
+    "version": "202012",
+    "contact": {
+      "name": "Kentik API Engineering",
+      "url": "https://github.com/kentik/api"
+    }
+  },
+  "tags": [
+    {
+      "name": "CloudExportAdminService"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/cloud_export/v202101beta1/exports": {
+      "get": {
+        "operationId": "CloudExportAdminService_ListCloudExport",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202101beta1ListCloudExportResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "CloudExportAdminService"
+        ]
+      },
+      "post": {
+        "operationId": "CloudExportAdminService_CreateCloudExport",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202101beta1CreateCloudExportResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202101beta1CreateCloudExportRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CloudExportAdminService"
+        ]
+      }
+    },
+    "/cloud_export/v202101beta1/exports/{export.id}": {
+      "put": {
+        "operationId": "CloudExportAdminService_UpdateCloudExport",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202101beta1UpdateCloudExportResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "export.id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202101beta1UpdateCloudExportRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CloudExportAdminService"
+        ]
+      },
+      "patch": {
+        "operationId": "CloudExportAdminService_PatchCloudExport",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202101beta1PatchCloudExportResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "export.id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202101beta1PatchCloudExportRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CloudExportAdminService"
+        ]
+      },
+      "get": {
+        "operationId": "CloudExportAdminService_GetCloudExport",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202101beta1GetCloudExportResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "export.id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "CloudExportAdminService"
+        ]
+      },
+      "delete": {
+        "operationId": "CloudExportAdminService_DeleteCloudExport",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202101beta1DeleteCloudExportResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "export.id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "CloudExportAdminService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "cloud_exportv202101beta1Status": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "errorMessage": {
+          "type": "string"
+        },
+        "flowFound": {
+          "type": "boolean"
+        },
+        "apiAccess": {
+          "type": "boolean"
+        },
+        "storageAccountAccess": {
+          "type": "boolean"
+        }
+      }
+    },
+    "googlerpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "typeUrl": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "v202101beta1AwsProperties": {
+      "type": "object",
+      "properties": {
+        "bucket": {
+          "type": "string"
+        },
+        "iamRoleArn": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        },
+        "deleteAfterRead": {
+          "type": "boolean"
+        },
+        "multipleBuckets": {
+          "type": "boolean"
+        }
+      }
+    },
+    "v202101beta1AzureProperties": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "string"
+        },
+        "resourceGroup": {
+          "type": "string"
+        },
+        "storageAccount": {
+          "type": "string"
+        },
+        "subscriptionId": {
+          "type": "string"
+        },
+        "securityPrincipalEnabled": {
+          "type": "boolean"
+        }
+      }
+    },
+    "v202101beta1BgpProperties": {
+      "type": "object",
+      "properties": {
+        "applyBgp": {
+          "type": "boolean"
+        },
+        "useBgpDeviceId": {
+          "type": "string"
+        },
+        "deviceBgpType": {
+          "type": "string"
+        }
+      }
+    },
+    "v202101beta1CloudExport": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "apiRoot": {
+          "type": "string"
+        },
+        "flowDest": {
+          "type": "string"
+        },
+        "planId": {
+          "type": "string"
+        },
+        "cloudProvider": {
+          "type": "string"
+        },
+        "aws": {
+          "$ref": "#/definitions/v202101beta1AwsProperties"
+        },
+        "azure": {
+          "$ref": "#/definitions/v202101beta1AzureProperties"
+        },
+        "gce": {
+          "$ref": "#/definitions/v202101beta1GceProperties"
+        },
+        "ibm": {
+          "$ref": "#/definitions/v202101beta1IbmProperties"
+        },
+        "bgp": {
+          "$ref": "#/definitions/v202101beta1BgpProperties"
+        },
+        "currentStatus": {
+          "$ref": "#/definitions/cloud_exportv202101beta1Status"
+        }
+      }
+    },
+    "v202101beta1CreateCloudExportRequest": {
+      "type": "object",
+      "properties": {
+        "export": {
+          "$ref": "#/definitions/v202101beta1CloudExport"
+        }
+      }
+    },
+    "v202101beta1CreateCloudExportResponse": {
+      "type": "object",
+      "properties": {
+        "export": {
+          "$ref": "#/definitions/v202101beta1CloudExport"
+        }
+      }
+    },
+    "v202101beta1DeleteCloudExportResponse": {
+      "type": "object"
+    },
+    "v202101beta1GceProperties": {
+      "type": "object",
+      "properties": {
+        "project": {
+          "type": "string"
+        },
+        "subscription": {
+          "type": "string"
+        }
+      }
+    },
+    "v202101beta1GetCloudExportResponse": {
+      "type": "object",
+      "properties": {
+        "export": {
+          "$ref": "#/definitions/v202101beta1CloudExport"
+        }
+      }
+    },
+    "v202101beta1IbmProperties": {
+      "type": "object",
+      "properties": {
+        "bucket": {
+          "type": "string"
+        }
+      }
+    },
+    "v202101beta1ListCloudExportResponse": {
+      "type": "object",
+      "properties": {
+        "exports": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202101beta1CloudExport"
+          }
+        }
+      }
+    },
+    "v202101beta1PatchCloudExportRequest": {
+      "type": "object",
+      "properties": {
+        "export": {
+          "$ref": "#/definitions/v202101beta1CloudExport"
+        },
+        "updateMask": {
+          "type": "string"
+        }
+      }
+    },
+    "v202101beta1PatchCloudExportResponse": {
+      "type": "object",
+      "properties": {
+        "export": {
+          "$ref": "#/definitions/v202101beta1CloudExport"
+        }
+      }
+    },
+    "v202101beta1UpdateCloudExportRequest": {
+      "type": "object",
+      "properties": {
+        "export": {
+          "$ref": "#/definitions/v202101beta1CloudExport"
+        }
+      }
+    },
+    "v202101beta1UpdateCloudExportResponse": {
+      "type": "object",
+      "properties": {
+        "export": {
+          "$ref": "#/definitions/v202101beta1CloudExport"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "email": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-Email",
+      "in": "header"
+    },
+    "token": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-API-Token",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "email": [],
+      "token": []
+    }
+  ],
+  "externalDocs": {
+    "description": "More about Kentik APIs",
+    "url": "https://docs.kentik.com/api"
+  }
+}

@@ -1,0 +1,228 @@
+// Cloud exports management
+
+syntax = "proto3";
+
+package kentik.cloud_export.v202101beta1;
+option go_package = "github.com/kentik/api-schema/gen/go/kentik/cloud_export/v202101beta1;cloud_export";
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/protobuf/field_mask.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+import "kentik/core/v202012alpha1/errors.proto";
+import "kentik/core/v202012alpha1/annotations.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Cloud Export Admin API"
+    version: "202012"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api"
+    }
+  }
+  external_docs: {
+    url: "https://docs.kentik.com/api"
+    description: "More about Kentik APIs"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+// =======================================================
+// models
+// =======================================================
+
+message CloudExport {
+  string id = 1;
+  bool enabled = 2;
+  string name = 3;
+  string description = 4;
+  string api_root = 5;
+  string flow_dest = 6;
+  string plan_id = 7;
+
+  string cloud_provider = 8;
+  oneof properties {
+    AwsProperties aws = 9;
+    AzureProperties azure = 10;
+    GceProperties gce = 11;
+    IbmProperties ibm = 12;
+  }
+
+  BgpProperties bgp = 13;
+
+  Status current_status = 14;
+}
+
+message BgpProperties {
+  bool apply_bgp = 1;
+  string use_bgp_device_id = 2;
+  string device_bgp_type = 3;
+}
+
+message AwsProperties {
+  string bucket = 1;
+  string iam_role_arn = 2;
+  string region = 3;
+  bool delete_after_read = 4;
+  bool multiple_buckets = 5;
+}
+
+message AzureProperties {
+  string location = 1;
+  string resource_group = 2;
+  string storage_account = 3;
+  string subscription_id = 4;
+  bool security_principal_enabled = 5;
+}
+
+message GceProperties {
+  string project = 1;
+  string subscription = 2;
+}
+
+message IbmProperties {
+  string bucket = 1;
+}
+
+message Status {
+  string status = 1;
+  string error_message = 2;
+  google.protobuf.BoolValue flow_found = 3;
+  google.protobuf.BoolValue api_access = 4;
+  google.protobuf.BoolValue storage_account_access = 5;
+}
+
+// =======================================================
+// services
+// =======================================================
+
+message CreateCloudExportRequest {
+  CloudExport export = 1;
+}
+message CreateCloudExportResponse {
+  CloudExport export = 1;
+}
+
+message ListCloudExportRequest {
+}
+
+message ListCloudExportResponse {
+  repeated CloudExport exports = 1;
+}
+
+message GetCloudExportRequest {
+  string id = 1;
+}
+
+message GetCloudExportResponse {
+  CloudExport export = 1;
+}
+
+message PatchCloudExportRequest {
+  CloudExport export = 1;
+  google.protobuf.FieldMask update_mask = 2;
+}
+message PatchCloudExportResponse {
+  CloudExport export = 1;
+}
+
+message UpdateCloudExportRequest {
+  CloudExport export = 1;
+}
+message UpdateCloudExportResponse {
+  CloudExport export = 1;
+}
+
+message DeleteCloudExportRequest {
+  string id = 1;
+}
+
+message DeleteCloudExportResponse {
+}
+
+// services
+// -------------------------------------------------------
+
+service CloudExportAdminService {
+  option (google.api.default_host) = "cloud_export.api.kentik.com";
+  option (kentik.core.v202012alpha1.service_scope) = "admin.cloud_export";
+
+  rpc CreateCloudExport(CreateCloudExportRequest) returns (CreateCloudExportResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_export:write";
+    option (google.api.http) = {
+      post: "/cloud_export/v202101beta1/exports"
+      body: "*"
+    };
+  }
+
+  rpc ListCloudExport(ListCloudExportRequest) returns (ListCloudExportResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_export:read";
+    option (google.api.http) = {
+      get: "/cloud_export/v202101beta1/exports"
+    };
+  }
+
+  rpc GetCloudExport(GetCloudExportRequest) returns (GetCloudExportResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_export:read";
+    option (google.api.http) = {
+      get: "/cloud_export/v202101beta1/exports/{id}"
+    };
+  }
+
+  rpc PatchCloudExport(PatchCloudExportRequest) returns (PatchCloudExportResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_export:write";
+    option (google.api.http) = {
+      patch: "/cloud_export/v202101beta1/exports/{export.id}"
+      body: "*"
+    };
+  }
+
+  rpc UpdateCloudExport(UpdateCloudExportRequest) returns (UpdateCloudExportResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_export:write";
+    option (google.api.http) = {
+      put: "/cloud_export/v202101beta1/exports/{export.id}"
+      body: "*"
+    };
+  }
+
+  rpc DeleteCloudExport(DeleteCloudExportRequest) returns (DeleteCloudExportResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_export:write";
+    option (google.api.http) = {
+      delete: "/cloud_export/v202101beta1/exports/{id}"
+    };
+  }
+}
