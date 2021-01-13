@@ -360,8 +360,10 @@
           "type": "string"
         },
         "planId": {
-          "type": "string",
-          "format": "uint64"
+          "type": "string"
+        },
+        "cloudProvider": {
+          "type": "string"
         },
         "aws": {
           "$ref": "#/definitions/v202012alpha1AwsProperties"

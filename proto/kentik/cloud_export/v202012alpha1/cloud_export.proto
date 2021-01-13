@@ -77,8 +77,9 @@ message CloudExport {
 
   string task_status = 12;
   string error_message = 13;
-  uint64 plan_id = 14;
+  string plan_id = 14;
 
+  string cloud_provider = 16;
   oneof properties {
     AwsProperties aws = 8;
     AzureProperties azure = 7;
