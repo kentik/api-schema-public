@@ -425,6 +425,10 @@
           "items": {
             "$ref": "#/definitions/v202101beta1CloudExport"
           }
+        },
+        "invalidExportsCount": {
+          "type": "integer",
+          "format": "int64"
         }
       }
     },

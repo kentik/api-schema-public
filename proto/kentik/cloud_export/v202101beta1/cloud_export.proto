@@ -153,6 +153,7 @@ message ListCloudExportRequest {
 
 message ListCloudExportResponse {
   repeated CloudExport exports = 1;
+  uint32 invalid_exports_count = 2;
 }
 
 message GetCloudExportRequest {
