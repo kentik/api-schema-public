@@ -1,0 +1,279 @@
+// Synthetics data and admin APIs
+
+syntax = "proto3";
+
+package kentik.synthetics.v202101alpha1;
+option go_package = "github.com/kentik/api-schema/gen/go/kentik/synthetics/v202101alpha1;synthetics";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/protobuf/field_mask.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+import "kentik/core/v202012alpha1/errors.proto";
+import "kentik/core/v202012alpha1/annotations.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Synthetics Monitoring API"
+    version: "202101"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api"
+    }
+  }
+  external_docs: {
+    url: "https://docs.kentik.com/api"
+    description: "More about Kentik APIs"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "X-CH-Auth-Email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "X-CH-Auth-API-Token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "X-CH-Auth-API-Email"
+      value: {}
+    }
+    security_requirement: {
+      key: "X-CH-Auth-API-Token"
+      value: {}
+    }
+  }
+};
+
+// models
+// -------------------------------------------------------
+message GetHealthForTestsRequest {
+  repeated uint64 ids  = 1; // All we need is a list of ids of the tests to get heath for.
+  reserved 2; // Bound per company. deprecated company_id, pass from auth header
+  int64 start_time = 3;
+  int64 end_time = 4;
+  repeated uint64 agent_ids = 5; // Allow looking at only a subset of agents.
+  repeated uint64 task_ids = 6; // Allow looking at only a subset of tasks -- this lets you limit targets.
+  bool augment = 7;
+}
+
+message GetHealthForTestsResponse {
+  Status status              = 1;
+  repeated TestHealth health = 2;
+}
+
+message Status {
+  message Error {
+    uint32 status = 1;
+    string msg    = 2;
+    uint32 retry  = 3;
+  }
+
+  oneof status {
+    bool   ok  = 1;
+    Error  err = 2;
+  }
+}
+
+message Health {
+  string health = 1;
+  int64 time = 2;
+}
+message TestHealth {
+  uint64 test_id               = 1;
+  repeated TaskHealth tasks    = 2;
+  Health overall_health        = 3;
+  repeated Health health_ts    = 4;
+}
+
+message TaskHealth {
+  repeated AgentHealth agents  = 1;
+  Health overall_health        = 2;
+}
+
+message AgentHealth {
+  Agent agent                  = 1;
+  repeated HealthMoment health = 2;
+  Health overall_health        = 3;
+}
+
+message HealthMoment {
+  int64 time                          = 1;
+  string src_ip                       = 2;
+  string dst_ip                       = 3;
+  uint32 packet_loss                  = 4;
+  uint32 avg_latency                  = 5;
+  uint32 avg_weighted_latency         = 6;
+  uint32 rolling_avg_latency          = 7;
+  uint32 rolling_stddev_latency       = 8;
+  uint32 rolling_avg_weighted_latency = 9;
+  string latency_health               = 10;
+  string packet_loss_health           = 11;
+  Health overall_health               = 12;
+  // fields return from backend grpc service
+  uint32 avg_jitter                   = 13;
+  uint32 rolling_avg_jitter           = 14;
+  uint32 rolling_std_jitter           = 15;
+  string jitter_health                = 16;
+  string data                         = 17;
+  uint32 size                         = 18;
+  uint32 status                       = 19;
+  string task_type                    = 20;
+}
+
+message Agent {
+  uint64 id                = 1;
+  string agent_name        = 2;
+  string agent_status      = 3;
+  uint64 company_id        = 4;
+  string agent_alias       = 5;
+  string agent_type        = 6;
+  string os                = 7;
+  string ip                = 8;
+  double lat               = 9;
+  double long              = 10;
+  uint64 agent_last_authed = 11;
+  IPFamily family          = 12;
+  uint32 asn               = 13;
+  uint64 agent_site_id     = 14;
+  string version           = 15;
+  string challenge         = 16;
+  string city              = 17;
+  string region            = 18;
+  string country           = 19;
+}
+
+enum IPFamily {
+  IP_FAMILY_UNSPECIFIED   = 0;
+  IP_FAMILY_V4            = 1;
+  IP_FAMILY_V6            = 2;
+  IP_FAMILY_DUAL          = 3;
+};
+
+message PingTaskDefinition {
+  string target = 1;
+  uint32 period = 2;
+  uint32 expiry = 3;
+  uint32 count  = 4;
+}
+
+message TraceTaskDefinition {
+  string target = 1;
+  uint32 period = 2;
+  uint32 expiry = 3;
+  uint32 limit  = 4;
+}
+
+message HTTPTaskDefinition {
+  string target = 1;
+  uint32 period = 2;
+  uint32 expiry = 3;
+}
+
+message GetTraceForTestRequest {
+  uint64 id                   = 1; // This is for a single test
+  reserved 2; // Bound per company.
+  int64 start_time            = 3;
+  int64 end_time              = 4;
+  repeated uint64 agent_ids   = 5; // Allow looking at only a subset of agents.
+}
+
+message GetTraceForTestResponse {
+  Status status   = 1;
+  Trace trace     = 2;
+}
+
+message Trace {
+  repeated TraceHop hops   = 1;
+  repeated TraceLink links = 2;
+}
+
+message TraceHop {
+  uint32 id           = 1;  // an ID to use to ref this hop in links
+  string hop_name     = 2;  // this is either the device_name if we know it, or the IP of the hop
+  uint32 hop_depth    = 3;  // 0 for agents, 100 for last hop regardless of intermediate hops
+  uint32 asn          = 4;  // this is an augmentation: ip2asn
+  Health in_health    = 5;  // a rollup of inbound link health
+  Health out_health   = 6;  // a rollup of outbound link health
+}
+
+message TraceLink {
+  uint32 src_hop_id               = 1;  // id of the src hop
+  uint32 dst_hop_id               = 2;  // id of the dst hop
+  Health overall_health           = 3;  // rollup of health moment health
+  repeated HealthMoment health    = 4;  // src_ip is optional if we have it from topology; dst_ip is the dst_hop ip
+}
+
+
+// services
+// -------------------------------------------------------
+
+service SyntheticsDataService {
+  option (google.api.default_host) = "synthetics.api.kentik.com";
+  option (kentik.core.v202012alpha1.service_scope) = "synthetics";
+
+  // from syn-back
+  rpc GetHealthForTests (GetHealthForTestsRequest) returns (GetHealthForTestsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "synthetics:read";
+    option (google.api.http) = {
+      // TODO: this should probably be POST?
+      get: "/synthetics/v202012alpha1/tests"
+    };
+  }
+
+  rpc GetTraceForTest(GetTraceForTestRequest) returns (GetTraceForTestResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "synthetics:read";
+    option (google.api.http) = {
+      // TODO: this should probably be POST?
+      get: "/synthetics/v202012alpha1/trace"
+    };
+  }
+
+
+
+  // GetTraceForTests (bool presets)
+
+  // get tests per day
+}
+
+service SyntheticsAdminService {
+  option (google.api.default_host) = "synthetics.api.kentik.com";
+  option (kentik.core.v202012alpha1.service_scope) = "admin.synthetics";
+
+  // list agents
+  // get agent details
+  // update agent
+  // patch agent
+  // claim agent by challenge
+  // delete agent
+
+  // list tests (bool presets)
+  // create test
+  // pause test
+  // resume test
+  // update test
+  // patch test
+
+  // start monitoring - create alert policy for synth test
+}
+
+service SyntheticsInternalService {
+  option (google.api.default_host) = "synthetics.api.kentik.com";
+  option (kentik.core.v202012alpha1.service_scope) = "system.sudo";
+
+  // internal: list agent stats (+/- sync)
+}

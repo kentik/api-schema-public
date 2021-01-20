@@ -1,0 +1,555 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Synthetics Monitoring API",
+    "version": "202101",
+    "contact": {
+      "name": "Kentik API Engineering",
+      "url": "https://github.com/kentik/api"
+    }
+  },
+  "tags": [
+    {
+      "name": "SyntheticsDataService"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/synthetics/v202012alpha1/tests": {
+      "get": {
+        "summary": "from syn-back",
+        "operationId": "SyntheticsDataService_GetHealthForTests",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202101alpha1GetHealthForTestsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uint64"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "agentIds",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uint64"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "taskIds",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uint64"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "augment",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "tags": [
+          "SyntheticsDataService"
+        ]
+      }
+    },
+    "/synthetics/v202012alpha1/trace": {
+      "get": {
+        "operationId": "SyntheticsDataService_GetTraceForTest",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202101alpha1GetTraceForTestResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "agentIds",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uint64"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "tags": [
+          "SyntheticsDataService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "StatusError": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "retry": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "googlerpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "typeUrl": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "syntheticsv202101alpha1Status": {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "type": "boolean"
+        },
+        "err": {
+          "$ref": "#/definitions/StatusError"
+        }
+      }
+    },
+    "v202101alpha1Agent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "agentName": {
+          "type": "string"
+        },
+        "agentStatus": {
+          "type": "string"
+        },
+        "companyId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "agentAlias": {
+          "type": "string"
+        },
+        "agentType": {
+          "type": "string"
+        },
+        "os": {
+          "type": "string"
+        },
+        "ip": {
+          "type": "string"
+        },
+        "lat": {
+          "type": "number",
+          "format": "double"
+        },
+        "long": {
+          "type": "number",
+          "format": "double"
+        },
+        "agentLastAuthed": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "family": {
+          "$ref": "#/definitions/v202101alpha1IPFamily"
+        },
+        "asn": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "agentSiteId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "version": {
+          "type": "string"
+        },
+        "challenge": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        }
+      }
+    },
+    "v202101alpha1AgentHealth": {
+      "type": "object",
+      "properties": {
+        "agent": {
+          "$ref": "#/definitions/v202101alpha1Agent"
+        },
+        "health": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202101alpha1HealthMoment"
+          }
+        },
+        "overallHealth": {
+          "$ref": "#/definitions/v202101alpha1Health"
+        }
+      }
+    },
+    "v202101alpha1GetHealthForTestsResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/syntheticsv202101alpha1Status"
+        },
+        "health": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202101alpha1TestHealth"
+          }
+        }
+      }
+    },
+    "v202101alpha1GetTraceForTestResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/syntheticsv202101alpha1Status"
+        },
+        "trace": {
+          "$ref": "#/definitions/v202101alpha1Trace"
+        }
+      }
+    },
+    "v202101alpha1Health": {
+      "type": "object",
+      "properties": {
+        "health": {
+          "type": "string"
+        },
+        "time": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "v202101alpha1HealthMoment": {
+      "type": "object",
+      "properties": {
+        "time": {
+          "type": "string",
+          "format": "int64"
+        },
+        "srcIp": {
+          "type": "string"
+        },
+        "dstIp": {
+          "type": "string"
+        },
+        "packetLoss": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "avgLatency": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "avgWeightedLatency": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "rollingAvgLatency": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "rollingStddevLatency": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "rollingAvgWeightedLatency": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "latencyHealth": {
+          "type": "string"
+        },
+        "packetLossHealth": {
+          "type": "string"
+        },
+        "overallHealth": {
+          "$ref": "#/definitions/v202101alpha1Health"
+        },
+        "avgJitter": {
+          "type": "integer",
+          "format": "int64",
+          "title": "fields return from backend grpc service"
+        },
+        "rollingAvgJitter": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "rollingStdJitter": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "jitterHealth": {
+          "type": "string"
+        },
+        "data": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "taskType": {
+          "type": "string"
+        }
+      }
+    },
+    "v202101alpha1IPFamily": {
+      "type": "string",
+      "enum": [
+        "V4",
+        "V6",
+        "DUAL"
+      ],
+      "default": "V4"
+    },
+    "v202101alpha1TaskHealth": {
+      "type": "object",
+      "properties": {
+        "agents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202101alpha1AgentHealth"
+          }
+        },
+        "overallHealth": {
+          "$ref": "#/definitions/v202101alpha1Health"
+        }
+      }
+    },
+    "v202101alpha1TestHealth": {
+      "type": "object",
+      "properties": {
+        "testId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "tasks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202101alpha1TaskHealth"
+          }
+        },
+        "overallHealth": {
+          "$ref": "#/definitions/v202101alpha1Health"
+        },
+        "healthTs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202101alpha1Health"
+          }
+        }
+      }
+    },
+    "v202101alpha1Trace": {
+      "type": "object",
+      "properties": {
+        "hops": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202101alpha1TraceHop"
+          }
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202101alpha1TraceLink"
+          }
+        }
+      }
+    },
+    "v202101alpha1TraceHop": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "hopName": {
+          "type": "string"
+        },
+        "hopDepth": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "asn": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "inHealth": {
+          "$ref": "#/definitions/v202101alpha1Health"
+        },
+        "outHealth": {
+          "$ref": "#/definitions/v202101alpha1Health"
+        }
+      }
+    },
+    "v202101alpha1TraceLink": {
+      "type": "object",
+      "properties": {
+        "srcHopId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "dstHopId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "overallHealth": {
+          "$ref": "#/definitions/v202101alpha1Health"
+        },
+        "health": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202101alpha1HealthMoment"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "X-CH-Auth-API-Token": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-API-Token",
+      "in": "header"
+    },
+    "X-CH-Auth-Email": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-Email",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "X-CH-Auth-API-Email": [],
+      "X-CH-Auth-API-Token": []
+    }
+  ],
+  "externalDocs": {
+    "description": "More about Kentik APIs",
+    "url": "https://docs.kentik.com/api"
+  }
+}
