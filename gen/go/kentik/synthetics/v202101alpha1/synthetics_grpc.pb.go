@@ -20,6 +20,7 @@ type SyntheticsDataServiceClient interface {
 	// from syn-back
 	GetHealthForTests(ctx context.Context, in *GetHealthForTestsRequest, opts ...grpc.CallOption) (*GetHealthForTestsResponse, error)
 	GetTraceForTest(ctx context.Context, in *GetTraceForTestRequest, opts ...grpc.CallOption) (*GetTraceForTestResponse, error)
+	GetTestsPerDay(ctx context.Context, in *GetTestsPerDayRequest, opts ...grpc.CallOption) (*GetTestsPerDayResponse, error)
 }
 
 type syntheticsDataServiceClient struct {
@@ -48,6 +49,15 @@ func (c *syntheticsDataServiceClient) GetTraceForTest(ctx context.Context, in *G
 	return out, nil
 }
 
+func (c *syntheticsDataServiceClient) GetTestsPerDay(ctx context.Context, in *GetTestsPerDayRequest, opts ...grpc.CallOption) (*GetTestsPerDayResponse, error) {
+	out := new(GetTestsPerDayResponse)
+	err := c.cc.Invoke(ctx, "/kentik.synthetics.v202101alpha1.SyntheticsDataService/GetTestsPerDay", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SyntheticsDataServiceServer is the server API for SyntheticsDataService service.
 // All implementations should embed UnimplementedSyntheticsDataServiceServer
 // for forward compatibility
@@ -55,6 +65,7 @@ type SyntheticsDataServiceServer interface {
 	// from syn-back
 	GetHealthForTests(context.Context, *GetHealthForTestsRequest) (*GetHealthForTestsResponse, error)
 	GetTraceForTest(context.Context, *GetTraceForTestRequest) (*GetTraceForTestResponse, error)
+	GetTestsPerDay(context.Context, *GetTestsPerDayRequest) (*GetTestsPerDayResponse, error)
 }
 
 // UnimplementedSyntheticsDataServiceServer should be embedded to have forward compatible implementations.
@@ -66,6 +77,9 @@ func (UnimplementedSyntheticsDataServiceServer) GetHealthForTests(context.Contex
 }
 func (UnimplementedSyntheticsDataServiceServer) GetTraceForTest(context.Context, *GetTraceForTestRequest) (*GetTraceForTestResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTraceForTest not implemented")
+}
+func (UnimplementedSyntheticsDataServiceServer) GetTestsPerDay(context.Context, *GetTestsPerDayRequest) (*GetTestsPerDayResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTestsPerDay not implemented")
 }
 
 // UnsafeSyntheticsDataServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -115,6 +129,24 @@ func _SyntheticsDataService_GetTraceForTest_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SyntheticsDataService_GetTestsPerDay_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetTestsPerDayRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SyntheticsDataServiceServer).GetTestsPerDay(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kentik.synthetics.v202101alpha1.SyntheticsDataService/GetTestsPerDay",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SyntheticsDataServiceServer).GetTestsPerDay(ctx, req.(*GetTestsPerDayRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _SyntheticsDataService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "kentik.synthetics.v202101alpha1.SyntheticsDataService",
 	HandlerType: (*SyntheticsDataServiceServer)(nil),
@@ -127,6 +159,10 @@ var _SyntheticsDataService_serviceDesc = grpc.ServiceDesc{
 			MethodName: "GetTraceForTest",
 			Handler:    _SyntheticsDataService_GetTraceForTest_Handler,
 		},
+		{
+			MethodName: "GetTestsPerDay",
+			Handler:    _SyntheticsDataService_GetTestsPerDay_Handler,
+		},
 	},
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "kentik/synthetics/v202101alpha1/synthetics.proto",
@@ -136,6 +172,15 @@ var _SyntheticsDataService_serviceDesc = grpc.ServiceDesc{
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type SyntheticsAdminServiceClient interface {
+	ListAgent(ctx context.Context, in *ListAgentRequest, opts ...grpc.CallOption) (*ListAgentResponse, error)
+	GetAgent(ctx context.Context, in *GetAgentRequest, opts ...grpc.CallOption) (*GetAgentResponse, error)
+	PatchAgent(ctx context.Context, in *PatchAgentRequest, opts ...grpc.CallOption) (*PatchAgentResponse, error)
+	DeleteAgent(ctx context.Context, in *DeleteAgentRequest, opts ...grpc.CallOption) (*DeleteAgentResponse, error)
+	ListTest(ctx context.Context, in *ListTestRequest, opts ...grpc.CallOption) (*ListTestResponse, error)
+	CreateTest(ctx context.Context, in *CreateTestRequest, opts ...grpc.CallOption) (*CreateTestResponse, error)
+	PatchTest(ctx context.Context, in *PatchTestRequest, opts ...grpc.CallOption) (*PatchTestResponse, error)
+	DeleteTest(ctx context.Context, in *DeleteTestRequest, opts ...grpc.CallOption) (*DeleteTestResponse, error)
+	Monitoring(ctx context.Context, in *MonitoringRequest, opts ...grpc.CallOption) (*MonitoringResponse, error)
 }
 
 type syntheticsAdminServiceClient struct {
@@ -146,14 +191,132 @@ func NewSyntheticsAdminServiceClient(cc grpc.ClientConnInterface) SyntheticsAdmi
 	return &syntheticsAdminServiceClient{cc}
 }
 
+func (c *syntheticsAdminServiceClient) ListAgent(ctx context.Context, in *ListAgentRequest, opts ...grpc.CallOption) (*ListAgentResponse, error) {
+	out := new(ListAgentResponse)
+	err := c.cc.Invoke(ctx, "/kentik.synthetics.v202101alpha1.SyntheticsAdminService/ListAgent", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *syntheticsAdminServiceClient) GetAgent(ctx context.Context, in *GetAgentRequest, opts ...grpc.CallOption) (*GetAgentResponse, error) {
+	out := new(GetAgentResponse)
+	err := c.cc.Invoke(ctx, "/kentik.synthetics.v202101alpha1.SyntheticsAdminService/GetAgent", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *syntheticsAdminServiceClient) PatchAgent(ctx context.Context, in *PatchAgentRequest, opts ...grpc.CallOption) (*PatchAgentResponse, error) {
+	out := new(PatchAgentResponse)
+	err := c.cc.Invoke(ctx, "/kentik.synthetics.v202101alpha1.SyntheticsAdminService/PatchAgent", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *syntheticsAdminServiceClient) DeleteAgent(ctx context.Context, in *DeleteAgentRequest, opts ...grpc.CallOption) (*DeleteAgentResponse, error) {
+	out := new(DeleteAgentResponse)
+	err := c.cc.Invoke(ctx, "/kentik.synthetics.v202101alpha1.SyntheticsAdminService/DeleteAgent", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *syntheticsAdminServiceClient) ListTest(ctx context.Context, in *ListTestRequest, opts ...grpc.CallOption) (*ListTestResponse, error) {
+	out := new(ListTestResponse)
+	err := c.cc.Invoke(ctx, "/kentik.synthetics.v202101alpha1.SyntheticsAdminService/ListTest", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *syntheticsAdminServiceClient) CreateTest(ctx context.Context, in *CreateTestRequest, opts ...grpc.CallOption) (*CreateTestResponse, error) {
+	out := new(CreateTestResponse)
+	err := c.cc.Invoke(ctx, "/kentik.synthetics.v202101alpha1.SyntheticsAdminService/CreateTest", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *syntheticsAdminServiceClient) PatchTest(ctx context.Context, in *PatchTestRequest, opts ...grpc.CallOption) (*PatchTestResponse, error) {
+	out := new(PatchTestResponse)
+	err := c.cc.Invoke(ctx, "/kentik.synthetics.v202101alpha1.SyntheticsAdminService/PatchTest", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *syntheticsAdminServiceClient) DeleteTest(ctx context.Context, in *DeleteTestRequest, opts ...grpc.CallOption) (*DeleteTestResponse, error) {
+	out := new(DeleteTestResponse)
+	err := c.cc.Invoke(ctx, "/kentik.synthetics.v202101alpha1.SyntheticsAdminService/DeleteTest", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *syntheticsAdminServiceClient) Monitoring(ctx context.Context, in *MonitoringRequest, opts ...grpc.CallOption) (*MonitoringResponse, error) {
+	out := new(MonitoringResponse)
+	err := c.cc.Invoke(ctx, "/kentik.synthetics.v202101alpha1.SyntheticsAdminService/Monitoring", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SyntheticsAdminServiceServer is the server API for SyntheticsAdminService service.
 // All implementations should embed UnimplementedSyntheticsAdminServiceServer
 // for forward compatibility
 type SyntheticsAdminServiceServer interface {
+	ListAgent(context.Context, *ListAgentRequest) (*ListAgentResponse, error)
+	GetAgent(context.Context, *GetAgentRequest) (*GetAgentResponse, error)
+	PatchAgent(context.Context, *PatchAgentRequest) (*PatchAgentResponse, error)
+	DeleteAgent(context.Context, *DeleteAgentRequest) (*DeleteAgentResponse, error)
+	ListTest(context.Context, *ListTestRequest) (*ListTestResponse, error)
+	CreateTest(context.Context, *CreateTestRequest) (*CreateTestResponse, error)
+	PatchTest(context.Context, *PatchTestRequest) (*PatchTestResponse, error)
+	DeleteTest(context.Context, *DeleteTestRequest) (*DeleteTestResponse, error)
+	Monitoring(context.Context, *MonitoringRequest) (*MonitoringResponse, error)
 }
 
 // UnimplementedSyntheticsAdminServiceServer should be embedded to have forward compatible implementations.
 type UnimplementedSyntheticsAdminServiceServer struct {
+}
+
+func (UnimplementedSyntheticsAdminServiceServer) ListAgent(context.Context, *ListAgentRequest) (*ListAgentResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListAgent not implemented")
+}
+func (UnimplementedSyntheticsAdminServiceServer) GetAgent(context.Context, *GetAgentRequest) (*GetAgentResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAgent not implemented")
+}
+func (UnimplementedSyntheticsAdminServiceServer) PatchAgent(context.Context, *PatchAgentRequest) (*PatchAgentResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PatchAgent not implemented")
+}
+func (UnimplementedSyntheticsAdminServiceServer) DeleteAgent(context.Context, *DeleteAgentRequest) (*DeleteAgentResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteAgent not implemented")
+}
+func (UnimplementedSyntheticsAdminServiceServer) ListTest(context.Context, *ListTestRequest) (*ListTestResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListTest not implemented")
+}
+func (UnimplementedSyntheticsAdminServiceServer) CreateTest(context.Context, *CreateTestRequest) (*CreateTestResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateTest not implemented")
+}
+func (UnimplementedSyntheticsAdminServiceServer) PatchTest(context.Context, *PatchTestRequest) (*PatchTestResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PatchTest not implemented")
+}
+func (UnimplementedSyntheticsAdminServiceServer) DeleteTest(context.Context, *DeleteTestRequest) (*DeleteTestResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteTest not implemented")
+}
+func (UnimplementedSyntheticsAdminServiceServer) Monitoring(context.Context, *MonitoringRequest) (*MonitoringResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Monitoring not implemented")
 }
 
 // UnsafeSyntheticsAdminServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -167,12 +330,211 @@ func RegisterSyntheticsAdminServiceServer(s grpc.ServiceRegistrar, srv Synthetic
 	s.RegisterService(&_SyntheticsAdminService_serviceDesc, srv)
 }
 
+func _SyntheticsAdminService_ListAgent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListAgentRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SyntheticsAdminServiceServer).ListAgent(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kentik.synthetics.v202101alpha1.SyntheticsAdminService/ListAgent",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SyntheticsAdminServiceServer).ListAgent(ctx, req.(*ListAgentRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SyntheticsAdminService_GetAgent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAgentRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SyntheticsAdminServiceServer).GetAgent(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kentik.synthetics.v202101alpha1.SyntheticsAdminService/GetAgent",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SyntheticsAdminServiceServer).GetAgent(ctx, req.(*GetAgentRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SyntheticsAdminService_PatchAgent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PatchAgentRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SyntheticsAdminServiceServer).PatchAgent(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kentik.synthetics.v202101alpha1.SyntheticsAdminService/PatchAgent",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SyntheticsAdminServiceServer).PatchAgent(ctx, req.(*PatchAgentRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SyntheticsAdminService_DeleteAgent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteAgentRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SyntheticsAdminServiceServer).DeleteAgent(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kentik.synthetics.v202101alpha1.SyntheticsAdminService/DeleteAgent",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SyntheticsAdminServiceServer).DeleteAgent(ctx, req.(*DeleteAgentRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SyntheticsAdminService_ListTest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListTestRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SyntheticsAdminServiceServer).ListTest(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kentik.synthetics.v202101alpha1.SyntheticsAdminService/ListTest",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SyntheticsAdminServiceServer).ListTest(ctx, req.(*ListTestRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SyntheticsAdminService_CreateTest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateTestRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SyntheticsAdminServiceServer).CreateTest(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kentik.synthetics.v202101alpha1.SyntheticsAdminService/CreateTest",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SyntheticsAdminServiceServer).CreateTest(ctx, req.(*CreateTestRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SyntheticsAdminService_PatchTest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PatchTestRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SyntheticsAdminServiceServer).PatchTest(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kentik.synthetics.v202101alpha1.SyntheticsAdminService/PatchTest",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SyntheticsAdminServiceServer).PatchTest(ctx, req.(*PatchTestRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SyntheticsAdminService_DeleteTest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteTestRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SyntheticsAdminServiceServer).DeleteTest(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kentik.synthetics.v202101alpha1.SyntheticsAdminService/DeleteTest",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SyntheticsAdminServiceServer).DeleteTest(ctx, req.(*DeleteTestRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SyntheticsAdminService_Monitoring_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MonitoringRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SyntheticsAdminServiceServer).Monitoring(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kentik.synthetics.v202101alpha1.SyntheticsAdminService/Monitoring",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SyntheticsAdminServiceServer).Monitoring(ctx, req.(*MonitoringRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _SyntheticsAdminService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "kentik.synthetics.v202101alpha1.SyntheticsAdminService",
 	HandlerType: (*SyntheticsAdminServiceServer)(nil),
-	Methods:     []grpc.MethodDesc{},
-	Streams:     []grpc.StreamDesc{},
-	Metadata:    "kentik/synthetics/v202101alpha1/synthetics.proto",
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "ListAgent",
+			Handler:    _SyntheticsAdminService_ListAgent_Handler,
+		},
+		{
+			MethodName: "GetAgent",
+			Handler:    _SyntheticsAdminService_GetAgent_Handler,
+		},
+		{
+			MethodName: "PatchAgent",
+			Handler:    _SyntheticsAdminService_PatchAgent_Handler,
+		},
+		{
+			MethodName: "DeleteAgent",
+			Handler:    _SyntheticsAdminService_DeleteAgent_Handler,
+		},
+		{
+			MethodName: "ListTest",
+			Handler:    _SyntheticsAdminService_ListTest_Handler,
+		},
+		{
+			MethodName: "CreateTest",
+			Handler:    _SyntheticsAdminService_CreateTest_Handler,
+		},
+		{
+			MethodName: "PatchTest",
+			Handler:    _SyntheticsAdminService_PatchTest_Handler,
+		},
+		{
+			MethodName: "DeleteTest",
+			Handler:    _SyntheticsAdminService_DeleteTest_Handler,
+		},
+		{
+			MethodName: "Monitoring",
+			Handler:    _SyntheticsAdminService_Monitoring_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "kentik/synthetics/v202101alpha1/synthetics.proto",
 }
 
 // SyntheticsInternalServiceClient is the client API for SyntheticsInternalService service.

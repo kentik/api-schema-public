@@ -76,6 +76,42 @@ message GetHealthForTestsResponse {
   repeated TestHealth health = 2;
 }
 
+message ListAgentRequest {}
+
+message ListAgentResponse {
+  Status status   = 1;
+  repeated Agent agents = 2;
+  uint32 invalid_exports_count = 3;
+}
+
+message GetAgentRequest {
+  string id = 1;
+}
+
+message GetAgentResponse {
+  Status status = 1;
+  Agent agent   = 2;
+}
+
+message PatchAgentRequest {
+  Agent agent = 1;
+  google.protobuf.FieldMask update_mask = 2;
+}
+
+message PatchAgentResponse {
+  Status status = 1;
+  Agent agent   = 2;
+}
+
+message DeleteAgentRequest {
+  uint64 id = 1;
+}
+
+message DeleteAgentResponse {
+  Status status = 1;
+}
+
+
 message Status {
   message Error {
     uint32 status = 1;
@@ -139,17 +175,17 @@ message Agent {
   uint64 id                = 1;
   string agent_name        = 2;
   string agent_status      = 3;
-  uint64 company_id        = 4;
+  reserved 4;// uint64 company_id        = 4;
   string agent_alias       = 5;
   string agent_type        = 6;
   string os                = 7;
   string ip                = 8;
   double lat               = 9;
   double long              = 10;
-  uint64 agent_last_authed = 11;
+  string agent_last_authed = 11; // TODO: revisit request comes in as string
   IPFamily family          = 12;
   uint32 asn               = 13;
-  uint64 agent_site_id     = 14;
+  uint32 agent_site_id     = 14;
   string version           = 15;
   string challenge         = 16;
   string city              = 17;
@@ -159,8 +195,8 @@ message Agent {
 
 enum IPFamily {
   IP_FAMILY_UNSPECIFIED   = 0;
-  IP_FAMILY_V4            = 1;
-  IP_FAMILY_V6            = 2;
+  IP_FAMILY_v4            = 1; // match node backend
+  IP_FAMILY_v6            = 2; // match node backend
   IP_FAMILY_DUAL          = 3;
 };
 
@@ -197,6 +233,15 @@ message GetTraceForTestResponse {
   Trace trace     = 2;
 }
 
+message GetTestsPerDayRequest {
+  uint32 lookback_seconds = 1;
+  string hydra            = 2;
+}
+
+message GetTestsPerDayResponse {
+  Status status   = 1;
+}
+
 message Trace {
   repeated TraceHop hops   = 1;
   repeated TraceLink links = 2;
@@ -218,6 +263,180 @@ message TraceLink {
   repeated HealthMoment health    = 4;  // src_ip is optional if we have it from topology; dst_ip is the dst_hop ip
 }
 
+message ListTestRequest {
+  bool preset = 1;
+}
+
+message ListTestResponse {
+  Status status                = 1;
+  repeated Test tests          = 2;
+  uint32 invalid_tests_count   = 3;
+}
+
+message GetTestRequest {
+  string id = 1;
+}
+
+message GetTestResponse {
+  Status status = 1;
+  Test test     = 2;
+}
+
+message CreateTestRequest {
+  Status status = 1;
+  Test test     = 2;
+}
+
+message CreateTestResponse {
+  Status status = 1;
+  Test test     = 2;
+}
+
+message PatchTestRequest {
+  Test test = 1;
+  google.protobuf.FieldMask update_mask = 2;
+}
+
+message PatchTestResponse {
+  Status status = 1;
+  Test test     = 2;
+}
+
+message DeleteTestRequest {
+  uint64 id = 1;
+}
+
+message DeleteTestResponse {
+  Status status = 1;
+}
+
+message MonitoringRequest {
+  uint64 id = 1;
+  enum TestStatus {
+    UNSPECIFIED = 0;
+    A = 1;
+    P = 2;
+  }
+  TestStatus test_status = 2;
+}
+
+message MonitoringResponse {
+  Status status = 1;
+  Test test     = 2;
+}
+
+message Test {
+  uint64 id        = 1;
+  string test_type = 2;
+  oneof definition {
+    HostnameTest hostname = 3;
+    IpTest ip             = 4;
+    AgentTest agent       = 5;
+    FlowTest flow         = 6;
+    SiteTest site         = 7;
+    TagTest tag           = 8;
+    DnsTest dns          = 32;
+    UrlTest url       = 33;
+  }
+  uint64 company_id      = 9; // company_id
+  uint64 user_id         = 10;
+  uint64 device_id       = 11;
+  string test_status     = 12;
+  repeated uint32 agents = 13;
+  uint32 period          = 14;
+  uint32 count           = 15;
+  uint32 expiry          = 16;
+  uint32 limit           = 17;
+  repeated string tasks  = 18; // Task types.
+  string name            = 19;
+  // node api requires these fields
+  HealthSettings healthSettings = 20;
+  uint32 port             = 21;
+  Notification notifications   = 22;
+  Activate activate       = 23;
+  string protocol = 24;
+  IPFamily family = 25;
+  Ping ping = 26;
+  TestTrace trace = 27;
+  repeated string servers = 28;
+  string type = 29;
+  bool useLocalIp = 30;
+  bool receiprocal = 31;
+  uint32 rollup_level = 34;
+
+}
+
+message TestTrace {
+  float period  = 1;
+  float count   = 2;
+  string protocol   = 3;
+  float port   = 4;
+  float expiry  = 5;
+  float limit = 6;
+}
+
+message Ping {
+  float period  = 1;
+  float count   = 2;
+  float expiry  = 3;
+}
+
+message Notification {
+  repeated string channels = 1;
+}
+
+message Activate {
+  string gracePeriod = 1;
+  string timeUnit    = 2;
+  string timeWindow  = 3;
+  string times        = 4;
+
+}
+
+message HealthSettings {
+  float latencyCritical          = 1;
+  float latencyWarning           = 2;
+  float packetLossCritical       = 3;
+  float packetLossWarning        = 4;
+  float jitterCritical           = 5;
+  float jitterWarning            = 6;
+  float httpLatencyCritical      = 7;
+  float httpLatencyWarning       = 8;
+  repeated uint32 httpValidCodes = 9;
+  repeated uint32 dnsValidCodes = 10;
+}
+
+
+message HostnameTest {
+  string target = 1;
+}
+message IpTest {
+  string target = 1;
+}
+message AgentTest {
+  string target = 1;
+}
+message FlowTest {
+  string target                         = 1;
+  uint32 target_refresh_interval_millis = 2; // How often to generate tasks.
+  uint32 max_tasks                      = 3; // Used for top N.
+  string type                           = 4; // What type of flow to look at -- asn, cdn, country, ...
+}
+message SiteTest {
+  string target = 1;
+}
+
+message TagTest {
+  string target = 1;
+}
+
+message DnsTest {
+  string target = 1;
+}
+
+message UrlTest {
+  string target = 1;
+}
 
 // services
 // -------------------------------------------------------
@@ -230,45 +449,105 @@ service SyntheticsDataService {
   rpc GetHealthForTests (GetHealthForTestsRequest) returns (GetHealthForTestsResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "synthetics:read";
     option (google.api.http) = {
-      // TODO: this should probably be POST?
-      get: "/synthetics/v202012alpha1/tests"
+      post: "/synthetics/v202101alpha1/tests"
+      body: "*"
     };
   }
 
   rpc GetTraceForTest(GetTraceForTestRequest) returns (GetTraceForTestResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "synthetics:read";
     option (google.api.http) = {
-      // TODO: this should probably be POST?
-      get: "/synthetics/v202012alpha1/trace"
+      post: "/synthetics/v202101alpha1/trace"
+      body: "*"
     };
   }
 
 
-
   // GetTraceForTests (bool presets)
 
-  // get tests per day
+  rpc GetTestsPerDay(GetTestsPerDayRequest) returns (GetTestsPerDayResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "synthetics:read";
+    option (google.api.http) = {
+      post: "/synthetics/v202101alpha1/testsPerDay"
+      body: "*"
+    };
+  }
+
 }
 
 service SyntheticsAdminService {
   option (google.api.default_host) = "synthetics.api.kentik.com";
   option (kentik.core.v202012alpha1.service_scope) = "admin.synthetics";
 
-  // list agents
-  // get agent details
-  // update agent
-  // patch agent
+  rpc ListAgent(ListAgentRequest) returns (ListAgentResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:read";
+    option (google.api.http) = {
+      get: "/synthetics/v202101alpha1/agents"
+    };
+  }
+
+  rpc GetAgent(GetAgentRequest) returns (GetAgentResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:read";
+    option (google.api.http) = {
+      get: "/synthetics/v202101alpha1/agents/{id}"
+    };
+  }
+
+  rpc PatchAgent(PatchAgentRequest) returns (PatchAgentResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:write";
+    option (google.api.http) = {
+      patch: "/synthetics/v202101alpha1/agents/{agent.id}"
+      body: "*"
+    };
+  }
+
+  rpc DeleteAgent(DeleteAgentRequest) returns (DeleteAgentResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:write";
+    option (google.api.http) = {
+      delete: "/synthetics/v202101alpha1/agents/{id}"
+    };
+  }
+
   // claim agent by challenge
-  // delete agent
 
-  // list tests (bool presets)
-  // create test
-  // pause test
-  // resume test
-  // update test
-  // patch test
+  rpc ListTest(ListTestRequest) returns (ListTestResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:read";
+    option (google.api.http) = {
+      post: "/synthetics/v202101alpha1/tests"
+      body: "*"
+    };
+  }
 
-  // start monitoring - create alert policy for synth test
+  rpc CreateTest(CreateTestRequest) returns (CreateTestResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:write";
+    option (google.api.http) = {
+      post: "/synthetics/v202101alpha1/tests"
+      body: "*"
+    };
+  }
+
+  rpc PatchTest(PatchTestRequest) returns (PatchTestResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:write";
+    option (google.api.http) = {
+      patch: "/synthetics/v202101alpha1/tests/{test.id}"
+    };
+  }
+
+  rpc DeleteTest(DeleteTestRequest) returns (DeleteTestResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:write";
+    option (google.api.http) = {
+      delete: "/synthetics/v202101alpha1/tests/{id}"
+    };
+  }
+
+
+  rpc Monitoring(MonitoringRequest) returns (MonitoringResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:write";
+    option (google.api.http) = {
+      post: "/synthetics/v202101alpha1/monitoring"
+      body: "*"
+    };
+  }
 }
 
 service SyntheticsInternalService {
