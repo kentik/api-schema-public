@@ -11,6 +11,7 @@ import (
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
+// Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
 // MathClient is the client API for Math service.
@@ -52,7 +53,7 @@ func (c *mathClient) Div(ctx context.Context, in *DivArgs, opts ...grpc.CallOpti
 }
 
 func (c *mathClient) DivMany(ctx context.Context, opts ...grpc.CallOption) (Math_DivManyClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_Math_serviceDesc.Streams[0], "/math.Math/DivMany", opts...)
+	stream, err := c.cc.NewStream(ctx, &Math_ServiceDesc.Streams[0], "/math.Math/DivMany", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -83,7 +84,7 @@ func (x *mathDivManyClient) Recv() (*DivReply, error) {
 }
 
 func (c *mathClient) Fib(ctx context.Context, in *FibArgs, opts ...grpc.CallOption) (Math_FibClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_Math_serviceDesc.Streams[1], "/math.Math/Fib", opts...)
+	stream, err := c.cc.NewStream(ctx, &Math_ServiceDesc.Streams[1], "/math.Math/Fib", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -115,7 +116,7 @@ func (x *mathFibClient) Recv() (*Num, error) {
 }
 
 func (c *mathClient) Sum(ctx context.Context, opts ...grpc.CallOption) (Math_SumClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_Math_serviceDesc.Streams[2], "/math.Math/Sum", opts...)
+	stream, err := c.cc.NewStream(ctx, &Math_ServiceDesc.Streams[2], "/math.Math/Sum", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -194,7 +195,7 @@ type UnsafeMathServer interface {
 }
 
 func RegisterMathServer(s grpc.ServiceRegistrar, srv MathServer) {
-	s.RegisterService(&_Math_serviceDesc, srv)
+	s.RegisterService(&Math_ServiceDesc, srv)
 }
 
 func _Math_Div_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -288,7 +289,10 @@ func (x *mathSumServer) Recv() (*Num, error) {
 	return m, nil
 }
 
-var _Math_serviceDesc = grpc.ServiceDesc{
+// Math_ServiceDesc is the grpc.ServiceDesc for Math service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var Math_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "math.Math",
 	HandlerType: (*MathServer)(nil),
 	Methods: []grpc.MethodDesc{

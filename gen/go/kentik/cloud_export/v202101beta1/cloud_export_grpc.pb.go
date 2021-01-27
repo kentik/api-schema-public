@@ -11,6 +11,7 @@ import (
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
+// Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
 // CloudExportAdminServiceClient is the client API for CloudExportAdminService service.
@@ -130,7 +131,7 @@ type UnsafeCloudExportAdminServiceServer interface {
 }
 
 func RegisterCloudExportAdminServiceServer(s grpc.ServiceRegistrar, srv CloudExportAdminServiceServer) {
-	s.RegisterService(&_CloudExportAdminService_serviceDesc, srv)
+	s.RegisterService(&CloudExportAdminService_ServiceDesc, srv)
 }
 
 func _CloudExportAdminService_CreateCloudExport_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -241,7 +242,10 @@ func _CloudExportAdminService_DeleteCloudExport_Handler(srv interface{}, ctx con
 	return interceptor(ctx, in, info, handler)
 }
 
-var _CloudExportAdminService_serviceDesc = grpc.ServiceDesc{
+// CloudExportAdminService_ServiceDesc is the grpc.ServiceDesc for CloudExportAdminService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var CloudExportAdminService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "kentik.cloud_export.v202101beta1.CloudExportAdminService",
 	HandlerType: (*CloudExportAdminServiceServer)(nil),
 	Methods: []grpc.MethodDesc{

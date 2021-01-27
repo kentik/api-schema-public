@@ -11,6 +11,7 @@ import (
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
+// Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
 // SyntheticsDataServiceClient is the client API for SyntheticsDataService service.
@@ -90,7 +91,7 @@ type UnsafeSyntheticsDataServiceServer interface {
 }
 
 func RegisterSyntheticsDataServiceServer(s grpc.ServiceRegistrar, srv SyntheticsDataServiceServer) {
-	s.RegisterService(&_SyntheticsDataService_serviceDesc, srv)
+	s.RegisterService(&SyntheticsDataService_ServiceDesc, srv)
 }
 
 func _SyntheticsDataService_GetHealthForTests_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -147,7 +148,10 @@ func _SyntheticsDataService_GetTestsPerDay_Handler(srv interface{}, ctx context.
 	return interceptor(ctx, in, info, handler)
 }
 
-var _SyntheticsDataService_serviceDesc = grpc.ServiceDesc{
+// SyntheticsDataService_ServiceDesc is the grpc.ServiceDesc for SyntheticsDataService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var SyntheticsDataService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "kentik.synthetics.v202101alpha1.SyntheticsDataService",
 	HandlerType: (*SyntheticsDataServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
@@ -327,7 +331,7 @@ type UnsafeSyntheticsAdminServiceServer interface {
 }
 
 func RegisterSyntheticsAdminServiceServer(s grpc.ServiceRegistrar, srv SyntheticsAdminServiceServer) {
-	s.RegisterService(&_SyntheticsAdminService_serviceDesc, srv)
+	s.RegisterService(&SyntheticsAdminService_ServiceDesc, srv)
 }
 
 func _SyntheticsAdminService_ListAgent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -492,7 +496,10 @@ func _SyntheticsAdminService_Monitoring_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
-var _SyntheticsAdminService_serviceDesc = grpc.ServiceDesc{
+// SyntheticsAdminService_ServiceDesc is the grpc.ServiceDesc for SyntheticsAdminService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var SyntheticsAdminService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "kentik.synthetics.v202101alpha1.SyntheticsAdminService",
 	HandlerType: (*SyntheticsAdminServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
@@ -569,10 +576,13 @@ type UnsafeSyntheticsInternalServiceServer interface {
 }
 
 func RegisterSyntheticsInternalServiceServer(s grpc.ServiceRegistrar, srv SyntheticsInternalServiceServer) {
-	s.RegisterService(&_SyntheticsInternalService_serviceDesc, srv)
+	s.RegisterService(&SyntheticsInternalService_ServiceDesc, srv)
 }
 
-var _SyntheticsInternalService_serviceDesc = grpc.ServiceDesc{
+// SyntheticsInternalService_ServiceDesc is the grpc.ServiceDesc for SyntheticsInternalService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var SyntheticsInternalService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "kentik.synthetics.v202101alpha1.SyntheticsInternalService",
 	HandlerType: (*SyntheticsInternalServiceServer)(nil),
 	Methods:     []grpc.MethodDesc{},

@@ -11,6 +11,7 @@ import (
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
+// Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
 // HTTPOverGRPCClient is the client API for HTTPOverGRPC service.
@@ -62,7 +63,7 @@ type UnsafeHTTPOverGRPCServer interface {
 }
 
 func RegisterHTTPOverGRPCServer(s grpc.ServiceRegistrar, srv HTTPOverGRPCServer) {
-	s.RegisterService(&_HTTPOverGRPC_serviceDesc, srv)
+	s.RegisterService(&HTTPOverGRPC_ServiceDesc, srv)
 }
 
 func _HTTPOverGRPC_HTTPRequest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -83,7 +84,10 @@ func _HTTPOverGRPC_HTTPRequest_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
-var _HTTPOverGRPC_serviceDesc = grpc.ServiceDesc{
+// HTTPOverGRPC_ServiceDesc is the grpc.ServiceDesc for HTTPOverGRPC service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var HTTPOverGRPC_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "grpc.http_over_grpc.HTTPOverGRPC",
 	HandlerType: (*HTTPOverGRPCServer)(nil),
 	Methods: []grpc.MethodDesc{

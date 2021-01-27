@@ -11,6 +11,7 @@ import (
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
+// Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
 // LoadReporterClient is the client API for LoadReporter service.
@@ -30,7 +31,7 @@ func NewLoadReporterClient(cc grpc.ClientConnInterface) LoadReporterClient {
 }
 
 func (c *loadReporterClient) ReportLoad(ctx context.Context, opts ...grpc.CallOption) (LoadReporter_ReportLoadClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_LoadReporter_serviceDesc.Streams[0], "/grpc.lb.v1.LoadReporter/ReportLoad", opts...)
+	stream, err := c.cc.NewStream(ctx, &LoadReporter_ServiceDesc.Streams[0], "/grpc.lb.v1.LoadReporter/ReportLoad", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -84,7 +85,7 @@ type UnsafeLoadReporterServer interface {
 }
 
 func RegisterLoadReporterServer(s grpc.ServiceRegistrar, srv LoadReporterServer) {
-	s.RegisterService(&_LoadReporter_serviceDesc, srv)
+	s.RegisterService(&LoadReporter_ServiceDesc, srv)
 }
 
 func _LoadReporter_ReportLoad_Handler(srv interface{}, stream grpc.ServerStream) error {
@@ -113,7 +114,10 @@ func (x *loadReporterReportLoadServer) Recv() (*LoadReportRequest, error) {
 	return m, nil
 }
 
-var _LoadReporter_serviceDesc = grpc.ServiceDesc{
+// LoadReporter_ServiceDesc is the grpc.ServiceDesc for LoadReporter service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var LoadReporter_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "grpc.lb.v1.LoadReporter",
 	HandlerType: (*LoadReporterServer)(nil),
 	Methods:     []grpc.MethodDesc{},
