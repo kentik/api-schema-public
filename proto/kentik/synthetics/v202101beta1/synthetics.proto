@@ -1,0 +1,682 @@
+// Synthetics data and admin APIs
+
+syntax = "proto3";
+
+package kentik.synthetics.v202101beta1;
+option go_package = "github.com/kentik/api-schema/gen/go/kentik/synthetics/v202101beta1;synthetics";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+import "kentik/core/v202012alpha1/errors.proto";
+import "kentik/core/v202012alpha1/annotations.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Synthetics Monitoring API"
+    version: "202101beta1"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api"
+    }
+  }
+  external_docs: {
+    url: "https://docs.kentik.com/api"
+    description: "More about Kentik APIs"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "X-CH-Auth-Email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "X-CH-Auth-API-Token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "X-CH-Auth-API-Email"
+      value: {}
+    }
+    security_requirement: {
+      key: "X-CH-Auth-API-Token"
+      value: {}
+    }
+  }
+};
+
+// models
+// -------------------------------------------------------
+
+message Health {
+  string health = 1;
+  google.protobuf.Timestamp time = 2;
+}
+
+message TestHealth {
+  string test_id = 1;
+  repeated TaskHealth tasks = 2;
+  Health overall_health = 3;
+  repeated Health health_ts = 4;
+}
+
+message TaskHealth {
+  Task task = 1;
+  repeated AgentHealth agents = 2;
+  Health overall_health = 3;
+}
+
+message AgentHealth {
+  Agent agent = 1;
+  repeated HealthMoment health = 2;
+  Health overall_health = 3;
+}
+
+message HealthMoment {
+  google.protobuf.Timestamp time = 1;
+  string src_ip = 2;
+  string dst_ip = 3;
+  uint32 packet_loss = 4;
+  uint32 avg_latency = 5;
+  uint32 avg_weighted_latency = 6;
+  uint32 rolling_avg_latency = 7;
+  uint32 rolling_stddev_latency = 8;
+  uint32 rolling_avg_weighted_latency = 9;
+  string latency_health = 10;
+  string packet_loss_health = 11;
+  Health overall_health = 12;
+  // fields returned from backend grpc service
+  uint32 avg_jitter = 13;
+  uint32 rolling_avg_jitter = 14;
+  uint32 rolling_std_jitter = 15;
+  string jitter_health = 16;
+  string data = 17;
+  uint32 size = 18;
+  uint32 status = 19;
+  string task_type = 20;
+}
+
+message Agent {
+  string id = 1;
+  string name = 2;
+  AgentStatus status = 3;
+  string alias = 4;
+  string type = 5;
+  string os = 6;
+  string ip = 7;
+  double lat = 8;
+  double long = 9;
+  google.protobuf.Timestamp last_authed = 10;
+  IPFamily family = 11;
+  uint32 asn = 12;
+  string site_id = 13;
+  string version = 14;
+  string challenge = 15;
+  string city = 16;
+  string region = 17;
+  string country = 18;
+  repeated string test_ids = 19;
+}
+
+enum IPFamily {
+  IP_FAMILY_UNSPECIFIED = 0;
+  IP_FAMILY_V4 = 1;
+  IP_FAMILY_V6 = 2;
+  IP_FAMILY_DUAL = 3;
+};
+
+enum TestStatus {
+  TEST_STATUS_UNSPECIFIED = 0;
+  TEST_STATUS_ACTIVE = 1;
+  TEST_STATUS_PAUSED = 2;
+  TEST_STATUS_DELETED = 3;
+}
+
+enum AgentStatus {
+  AGENT_STATUS_UNSPECIFIED = 0;
+  AGENT_STATUS_OK = 1;
+  AGENT_STATUS_WAIT = 2;
+  AGENT_STATUS_DELETED = 3;
+}
+
+message PingTaskDefinition {
+  string target = 1;
+  uint32 period = 2;
+  uint32 expiry = 3;
+  uint32 count = 4;
+}
+
+message TraceTaskDefinition {
+  string target = 1;
+  uint32 period = 2;
+  uint32 expiry = 3;
+  uint32 limit = 4;
+}
+
+message HTTPTaskDefinition {
+  string target = 1;
+  uint32 period = 2;
+  uint32 expiry = 3;
+}
+
+enum TaskState {
+  TASK_STATE_UNSPECIFIED = 0;
+  TASK_STATE_CREATED = 1;
+  TASK_STATE_UPDATED = 2;
+  TASK_STATE_DELETED = 3;
+}
+
+message Task {
+  string id = 1;
+  string test_id = 2;
+  string device_id = 3;
+  TaskState state = 4;
+  string status = 5;
+  IPFamily family = 6;
+  oneof definition {
+    PingTaskDefinition ping        = 9;
+    TraceTaskDefinition traceroute = 10;
+    HTTPTaskDefinition http        = 11;
+    KnockTaskDefinition knock      = 12;
+    DNSTaskDefinition dns          = 13;
+    ShakeTaskDefinition shake      = 14;
+  }
+}
+
+message KnockTaskDefinition {
+  string target   = 1;
+  uint32 period   = 2;
+  uint32 expiry   = 3;
+  uint32 count    = 4;
+  uint32 port     = 5;
+}
+
+message DNSTaskDefinition {
+  string target            = 1;
+  uint32 period            = 2;
+  uint32 expiry            = 3;
+  uint32 count             = 4;
+  uint32 port              = 5;
+  string type              = 6;
+  string resolver          = 7;
+}
+
+message ShakeTaskDefinition {
+  string target            = 1;
+  uint32 port              = 2;
+  uint32 period            = 3;
+  uint32 expiry            = 4;
+}
+
+message UserInfo {
+  string id = 1;
+  string email = 2;
+  string full_name = 3;
+}
+
+message Test {
+  string id = 1;
+  string name = 2;
+  string type = 3;
+  string device_id = 4;
+  TestStatus status = 5;
+  TestSettings settings = 6;
+  google.protobuf.Timestamp expires_on = 7;
+  google.protobuf.Timestamp cdate = 8;
+  google.protobuf.Timestamp edate = 9;
+  UserInfo created_by = 10;
+  UserInfo last_updated_by = 11;
+}
+
+message TestSettings {
+
+  oneof definition {
+    HostnameTest hostname = 4;
+    IpTest ip = 5;
+    AgentTest agent = 6;
+    FlowTest flow = 7;
+    SiteTest site = 8;
+    TagTest tag = 9;
+    DnsTest dns = 10;
+    UrlTest url = 11;
+  }
+
+  repeated string agent_ids = 14;
+  uint32 period = 15;
+  uint32 count = 16;
+  uint32 expiry = 17;
+  uint32 limit = 18;
+  repeated string tasks = 19; // Task types.
+
+  HealthSettings health_settings = 22;
+  TestMonitoringSettings monitoring_settings = 24;
+  TestPingSettings ping = 28;
+  TestTraceSettings trace = 29;
+
+  uint32 port = 23;
+  string protocol = 26;
+  IPFamily family = 27;
+  repeated string servers = 30;
+  string target_type = 20;
+  string target_value = 21;
+
+  bool use_local_ip = 31;
+  bool reciprocal = 32;
+  uint32 rollup_level = 33;
+}
+
+message TestTraceSettings {
+  float period = 1;
+  float count = 2;
+  string protocol = 3;
+  float port = 4;
+  float expiry = 5;
+  float limit = 6;
+}
+
+message TestPingSettings {
+  float period = 1;
+  float count = 2;
+  float expiry = 3;
+}
+
+message TestMonitoringSettings {
+  string activation_grace_period = 1;
+  string activation_time_unit = 2;
+  string activation_time_window = 3;
+  string activation_times = 4;
+  repeated string notification_channels = 5;
+}
+
+message HealthSettings {
+  float latency_critical = 1;
+  float latency_warning = 2;
+  float packet_loss_critical = 3;
+  float packet_loss_warning = 4;
+  float jitter_critical = 5;
+  float jitter_warning = 6;
+  float http_latency_critical = 7;
+  float http_latency_warning = 8;
+  repeated uint32 http_valid_codes = 9;
+  repeated uint32 dns_valid_codes = 10;
+}
+
+message HostnameTest {
+  string target = 1;
+}
+message IpTest {
+  repeated string targets = 1;
+}
+message AgentTest {
+  string target = 1;
+}
+
+message FlowTest {
+  string target = 1;
+  uint32 target_refresh_interval_millis = 2; // How often to generate tasks.
+  uint32 max_tasks = 3; // Used for top N.
+  string type = 4; // What type of flow to look at -- asn, cdn, country, ...
+}
+
+message SiteTest {
+  string target = 1;
+}
+
+message TagTest {
+  string target = 1;
+}
+
+message DnsTest {
+  string target = 1;
+}
+
+message UrlTest {
+  string target = 1;
+}
+
+// TODO: Mesh support
+
+message MeshResponse {
+  string name = 1;
+  string agent_id = 2;
+  string agent_local_ip = 3;
+  string agent_ip = 4;
+  repeated MeshColumn columns = 5;
+}
+
+message MeshColumn {
+  string name = 1;
+  string agent_id = 2;
+  MeshMetrics metrics = 3;
+}
+
+message MeshMetric {
+  string name = 1;
+  string health = 2;
+  int64 value = 3;
+}
+
+message MeshMetrics {
+  google.protobuf.Timestamp time = 1;
+  MeshMetric latency = 2;
+  MeshMetric packet_loss = 3;
+  MeshMetric jitter = 4;
+}
+
+// TODO: Traces
+
+message ASN {
+  uint32 id = 1;
+  string name = 2;
+}
+
+message Country {
+  string code = 1;
+  string name = 2;
+}
+
+message Region {
+  string code = 1;
+  string name = 2;
+}
+
+message City {
+  string id = 1;
+  string name = 2;
+  double lat = 8;
+  double long = 9;
+}
+
+message Geo {
+  Country country = 1;
+  Region region = 2;
+  City city = 3;
+}
+
+message IPInfo {
+  string ip = 1;
+  ASN asn = 2;
+  Geo geo = 3;
+}
+
+message TraceHop {
+  bool agent = 1;
+  string agent_id = 2;
+
+  int32 ttl = 3;
+  string ip = 4;
+  repeated uint64 latencies = 5;
+
+  bool timeout = 6;
+}
+
+message Trace {
+  repeated TraceHop hops = 1;
+  string target = 2;
+  repeated string ips = 3;
+}
+
+message TracerouteResult {
+  google.protobuf.Timestamp time = 1;
+  repeated Trace traces = 2;
+}
+
+
+// Data Service
+// -------------------------------------------------------
+
+message GetHealthForTestsRequest {
+  // List of ids of the tests to get health for.
+  repeated string ids = 1;
+
+  // Start of the time interval for this query.
+  google.protobuf.Timestamp start_time = 2;
+
+  // End of the time interval for this query.
+  google.protobuf.Timestamp end_time = 3;
+
+  // Optionally, only look at a subset of agents
+  repeated string agent_ids = 4;
+
+  // Optionally only look at a subset of tasks -- this lets you limit targets.
+  repeated string task_ids = 5;
+}
+
+message GetHealthForTestsResponse {
+  repeated TestHealth health = 1;
+}
+
+message GetTraceForTestRequest {
+  // Test id
+  string id = 1;
+
+  // Start of the time interval for this query.
+  google.protobuf.Timestamp start_time = 2;
+
+  // End of the time interval for this query.
+  google.protobuf.Timestamp end_time = 3;
+
+  // Optionally, limit the query to these agent ids
+  repeated string agent_ids = 4;
+
+  // Optionally, limit the query to these destination IP addresses
+  repeated string target_ips = 5;
+}
+
+message GetTraceForTestResponse {
+  repeated IPInfo ip_info = 1;
+  repeated TracerouteResult results = 2;
+}
+
+service SyntheticsDataService {
+  option (google.api.default_host) = "synthetics.api.kentik.com";
+  option (kentik.core.v202012alpha1.service_scope) = "synthetics";
+
+  // Get health data for a set of tests
+  rpc GetHealthForTests (GetHealthForTestsRequest) returns (GetHealthForTestsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "synthetics:read";
+    option (google.api.http) = {
+      post: "/synthetics/v202101beta1/health/tests"
+      body: "*"
+    };
+  }
+
+  // TODO: Get traces for a single test. Not implemented.
+  rpc GetTraceForTest (GetTraceForTestRequest) returns (GetTraceForTestResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "synthetics:read";
+    option (google.api.http) = {
+      post: "/synthetics/v202101beta1/tests/{id}/results/trace"
+      body: "*"
+    };
+  }
+}
+
+// Admin Service
+// -------------------------------------------------------
+
+message ListAgentsRequest {}
+
+message ListAgentsResponse {
+  repeated Agent agents = 1;
+  uint32 invalid_agents_count = 2;
+}
+
+message CreateAgentRequest {}
+
+message CreateAgentResponse {}
+
+message GetAgentRequest {
+  string id = 1;
+}
+
+message GetAgentResponse {
+  Agent agent = 1;
+}
+
+message PatchAgentRequest {
+  Agent agent = 1;
+  google.protobuf.FieldMask update_mask = 2;
+}
+
+message PatchAgentResponse {
+  Agent agent = 1;
+}
+
+message DeleteAgentRequest {
+  string id = 1;
+}
+
+message DeleteAgentResponse {}
+
+message ListTestsRequest {
+  bool preset = 1;
+}
+
+message ListTestsResponse {
+  repeated Test tests = 1;
+  uint32 invalid_tests_count = 2;
+}
+
+message CreateTestRequest {
+  Test test = 1;
+}
+
+message CreateTestResponse {
+  Test test = 1;
+}
+
+message GetTestRequest {
+  string id = 1;
+}
+
+message GetTestResponse {
+  Test test = 1;
+}
+
+message SetTestStatusRequest {
+  string id = 1;
+  TestStatus status = 2;
+}
+
+message SetTestStatusResponse {
+}
+
+message PatchTestRequest {
+  Test test = 1;
+  google.protobuf.FieldMask update_mask = 2;
+}
+
+message PatchTestResponse {
+  Test test = 1;
+}
+
+message DeleteTestRequest {
+  string id = 1;
+}
+
+message DeleteTestResponse {}
+
+service SyntheticsAdminService {
+  option (google.api.default_host) = "synthetics.api.kentik.com";
+  option (kentik.core.v202012alpha1.service_scope) = "admin.synthetics";
+
+  // Agents
+
+  rpc ListAgents(ListAgentsRequest) returns (ListAgentsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:read";
+    option (google.api.http) = {
+      get: "/synthetics/v202101beta1/agents"
+    };
+  }
+
+  rpc CreateAgent(CreateAgentRequest) returns (CreateAgentResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:write";
+    option (google.api.http) = {
+      post: "/synthetics/v202101beta1/agents"
+      body: "*"
+    };
+  }
+
+  rpc GetAgent(GetAgentRequest) returns (GetAgentResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:read";
+    option (google.api.http) = {
+      get: "/synthetics/v202101beta1/agents/{id}"
+    };
+  }
+
+  rpc PatchAgent(PatchAgentRequest) returns (PatchAgentResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:write";
+    option (google.api.http) = {
+      patch: "/synthetics/v202101beta1/agents/{agent.id}"
+      body: "*"
+    };
+  }
+
+  rpc DeleteAgent(DeleteAgentRequest) returns (DeleteAgentResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:write";
+    option (google.api.http) = {
+      delete: "/synthetics/v202101beta1/agents/{id}"
+    };
+  }
+
+  // Tests
+
+  rpc ListTests(ListTestsRequest) returns (ListTestsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:read";
+    option (google.api.http) = {
+      get: "/synthetics/v202101beta1/tests"
+    };
+  }
+
+  rpc CreateTest(CreateTestRequest) returns (CreateTestResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:write";
+    option (google.api.http) = {
+      post: "/synthetics/v202101beta1/tests"
+      body: "*"
+    };
+  }
+
+  rpc GetTest(GetTestRequest) returns (GetTestResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:read";
+    option (google.api.http) = {
+      get: "/synthetics/v202101beta1/tests/{id}"
+    };
+  }
+
+  rpc SetTestStatus(SetTestStatusRequest) returns (SetTestStatusResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:write";
+    option (google.api.http) = {
+      put: "/synthetics/v202101beta1/tests/{id}/status"
+      body: "*"
+    };
+  }
+
+  rpc PatchTest(PatchTestRequest) returns (PatchTestResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:write";
+    option (google.api.http) = {
+      patch: "/synthetics/v202101beta1/tests/{test.id}"
+    };
+  }
+
+  rpc DeleteTest(DeleteTestRequest) returns (DeleteTestResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:write";
+    option (google.api.http) = {
+      delete: "/synthetics/v202101beta1/tests/{id}"
+    };
+  }
+}

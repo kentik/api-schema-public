@@ -1,0 +1,1623 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Synthetics Monitoring API",
+    "version": "202101beta1",
+    "contact": {
+      "name": "Kentik API Engineering",
+      "url": "https://github.com/kentik/api"
+    }
+  },
+  "tags": [
+    {
+      "name": "SyntheticsDataService"
+    },
+    {
+      "name": "SyntheticsAdminService"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/synthetics/v202101beta1/agents": {
+      "get": {
+        "operationId": "SyntheticsAdminService_ListAgents",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202101beta1ListAgentsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "SyntheticsAdminService"
+        ]
+      },
+      "post": {
+        "operationId": "SyntheticsAdminService_CreateAgent",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202101beta1CreateAgentResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202101beta1CreateAgentRequest"
+            }
+          }
+        ],
+        "tags": [
+          "SyntheticsAdminService"
+        ]
+      }
+    },
+    "/synthetics/v202101beta1/agents/{agent.id}": {
+      "patch": {
+        "operationId": "SyntheticsAdminService_PatchAgent",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202101beta1PatchAgentResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "agent.id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202101beta1PatchAgentRequest"
+            }
+          }
+        ],
+        "tags": [
+          "SyntheticsAdminService"
+        ]
+      },
+      "get": {
+        "operationId": "SyntheticsAdminService_GetAgent",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202101beta1GetAgentResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "agent.id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "SyntheticsAdminService"
+        ]
+      },
+      "delete": {
+        "operationId": "SyntheticsAdminService_DeleteAgent",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202101beta1DeleteAgentResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "agent.id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "SyntheticsAdminService"
+        ]
+      }
+    },
+    "/synthetics/v202101beta1/health/tests": {
+      "post": {
+        "summary": "Get health data for a set of tests",
+        "operationId": "SyntheticsDataService_GetHealthForTests",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202101beta1GetHealthForTestsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202101beta1GetHealthForTestsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "SyntheticsDataService"
+        ]
+      }
+    },
+    "/synthetics/v202101beta1/tests": {
+      "get": {
+        "operationId": "SyntheticsAdminService_ListTests",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202101beta1ListTestsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "preset",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "tags": [
+          "SyntheticsAdminService"
+        ]
+      },
+      "post": {
+        "operationId": "SyntheticsAdminService_CreateTest",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202101beta1CreateTestResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202101beta1CreateTestRequest"
+            }
+          }
+        ],
+        "tags": [
+          "SyntheticsAdminService"
+        ]
+      }
+    },
+    "/synthetics/v202101beta1/tests/{id}": {
+      "get": {
+        "operationId": "SyntheticsAdminService_GetTest",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202101beta1GetTestResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "SyntheticsAdminService"
+        ]
+      },
+      "delete": {
+        "operationId": "SyntheticsAdminService_DeleteTest",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202101beta1DeleteTestResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "SyntheticsAdminService"
+        ]
+      },
+      "patch": {
+        "operationId": "SyntheticsAdminService_PatchTest",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202101beta1PatchTestResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "SyntheticsAdminService"
+        ]
+      }
+    },
+    "/synthetics/v202101beta1/tests/{id}/results/trace": {
+      "post": {
+        "summary": "TODO: Get traces for a single test. Not implemented.",
+        "operationId": "SyntheticsDataService_GetTraceForTest",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202101beta1GetTraceForTestResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Test id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202101beta1GetTraceForTestRequest"
+            }
+          }
+        ],
+        "tags": [
+          "SyntheticsDataService"
+        ]
+      }
+    },
+    "/synthetics/v202101beta1/tests/{id}/status": {
+      "put": {
+        "operationId": "SyntheticsAdminService_SetTestStatus",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202101beta1SetTestStatusResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202101beta1SetTestStatusRequest"
+            }
+          }
+        ],
+        "tags": [
+          "SyntheticsAdminService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "typeUrl": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v202101beta1ASN": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "v202101beta1Agent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/v202101beta1AgentStatus"
+        },
+        "alias": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "os": {
+          "type": "string"
+        },
+        "ip": {
+          "type": "string"
+        },
+        "lat": {
+          "type": "number",
+          "format": "double"
+        },
+        "long": {
+          "type": "number",
+          "format": "double"
+        },
+        "lastAuthed": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "family": {
+          "$ref": "#/definitions/v202101beta1IPFamily"
+        },
+        "asn": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "siteId": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "challenge": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "testIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v202101beta1AgentHealth": {
+      "type": "object",
+      "properties": {
+        "agent": {
+          "$ref": "#/definitions/v202101beta1Agent"
+        },
+        "health": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202101beta1HealthMoment"
+          }
+        },
+        "overallHealth": {
+          "$ref": "#/definitions/v202101beta1Health"
+        }
+      }
+    },
+    "v202101beta1AgentStatus": {
+      "type": "string",
+      "enum": [
+        "AGENT_STATUS_UNSPECIFIED",
+        "AGENT_STATUS_OK",
+        "AGENT_STATUS_WAIT",
+        "AGENT_STATUS_DELETED"
+      ],
+      "default": "AGENT_STATUS_UNSPECIFIED"
+    },
+    "v202101beta1AgentTest": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "type": "string"
+        }
+      }
+    },
+    "v202101beta1City": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "lat": {
+          "type": "number",
+          "format": "double"
+        },
+        "long": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "v202101beta1Country": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "v202101beta1CreateAgentRequest": {
+      "type": "object"
+    },
+    "v202101beta1CreateAgentResponse": {
+      "type": "object"
+    },
+    "v202101beta1CreateTestRequest": {
+      "type": "object",
+      "properties": {
+        "test": {
+          "$ref": "#/definitions/v202101beta1Test"
+        }
+      }
+    },
+    "v202101beta1CreateTestResponse": {
+      "type": "object",
+      "properties": {
+        "test": {
+          "$ref": "#/definitions/v202101beta1Test"
+        }
+      }
+    },
+    "v202101beta1DNSTaskDefinition": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "type": "string"
+        },
+        "period": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "expiry": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "count": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "port": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "type": {
+          "type": "string"
+        },
+        "resolver": {
+          "type": "string"
+        }
+      }
+    },
+    "v202101beta1DeleteAgentResponse": {
+      "type": "object"
+    },
+    "v202101beta1DeleteTestResponse": {
+      "type": "object"
+    },
+    "v202101beta1DnsTest": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "type": "string"
+        }
+      }
+    },
+    "v202101beta1FlowTest": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "type": "string"
+        },
+        "targetRefreshIntervalMillis": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "maxTasks": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "v202101beta1Geo": {
+      "type": "object",
+      "properties": {
+        "country": {
+          "$ref": "#/definitions/v202101beta1Country"
+        },
+        "region": {
+          "$ref": "#/definitions/v202101beta1Region"
+        },
+        "city": {
+          "$ref": "#/definitions/v202101beta1City"
+        }
+      }
+    },
+    "v202101beta1GetAgentResponse": {
+      "type": "object",
+      "properties": {
+        "agent": {
+          "$ref": "#/definitions/v202101beta1Agent"
+        }
+      }
+    },
+    "v202101beta1GetHealthForTestsRequest": {
+      "type": "object",
+      "properties": {
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of ids of the tests to get health for."
+        },
+        "startTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Start of the time interval for this query."
+        },
+        "endTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "End of the time interval for this query."
+        },
+        "agentIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "Optionally, only look at a subset of agents"
+        },
+        "taskIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Optionally only look at a subset of tasks -- this lets you limit targets."
+        }
+      }
+    },
+    "v202101beta1GetHealthForTestsResponse": {
+      "type": "object",
+      "properties": {
+        "health": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202101beta1TestHealth"
+          }
+        }
+      }
+    },
+    "v202101beta1GetTestResponse": {
+      "type": "object",
+      "properties": {
+        "test": {
+          "$ref": "#/definitions/v202101beta1Test"
+        }
+      }
+    },
+    "v202101beta1GetTraceForTestRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Test id"
+        },
+        "startTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Start of the time interval for this query."
+        },
+        "endTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "End of the time interval for this query."
+        },
+        "agentIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "Optionally, limit the query to these agent ids"
+        },
+        "targetIps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "Optionally, limit the query to these destination IP addresses"
+        }
+      }
+    },
+    "v202101beta1GetTraceForTestResponse": {
+      "type": "object",
+      "properties": {
+        "ipInfo": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202101beta1IPInfo"
+          }
+        },
+        "results": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202101beta1TracerouteResult"
+          }
+        }
+      }
+    },
+    "v202101beta1HTTPTaskDefinition": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "type": "string"
+        },
+        "period": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "expiry": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "v202101beta1Health": {
+      "type": "object",
+      "properties": {
+        "health": {
+          "type": "string"
+        },
+        "time": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "v202101beta1HealthMoment": {
+      "type": "object",
+      "properties": {
+        "time": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "srcIp": {
+          "type": "string"
+        },
+        "dstIp": {
+          "type": "string"
+        },
+        "packetLoss": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "avgLatency": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "avgWeightedLatency": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "rollingAvgLatency": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "rollingStddevLatency": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "rollingAvgWeightedLatency": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "latencyHealth": {
+          "type": "string"
+        },
+        "packetLossHealth": {
+          "type": "string"
+        },
+        "overallHealth": {
+          "$ref": "#/definitions/v202101beta1Health"
+        },
+        "avgJitter": {
+          "type": "integer",
+          "format": "int64",
+          "title": "fields returned from backend grpc service"
+        },
+        "rollingAvgJitter": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "rollingStdJitter": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "jitterHealth": {
+          "type": "string"
+        },
+        "data": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "taskType": {
+          "type": "string"
+        }
+      }
+    },
+    "v202101beta1HealthSettings": {
+      "type": "object",
+      "properties": {
+        "latencyCritical": {
+          "type": "number",
+          "format": "float"
+        },
+        "latencyWarning": {
+          "type": "number",
+          "format": "float"
+        },
+        "packetLossCritical": {
+          "type": "number",
+          "format": "float"
+        },
+        "packetLossWarning": {
+          "type": "number",
+          "format": "float"
+        },
+        "jitterCritical": {
+          "type": "number",
+          "format": "float"
+        },
+        "jitterWarning": {
+          "type": "number",
+          "format": "float"
+        },
+        "httpLatencyCritical": {
+          "type": "number",
+          "format": "float"
+        },
+        "httpLatencyWarning": {
+          "type": "number",
+          "format": "float"
+        },
+        "httpValidCodes": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "dnsValidCodes": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      }
+    },
+    "v202101beta1HostnameTest": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "type": "string"
+        }
+      }
+    },
+    "v202101beta1IPFamily": {
+      "type": "string",
+      "enum": [
+        "IP_FAMILY_UNSPECIFIED",
+        "IP_FAMILY_V4",
+        "IP_FAMILY_V6",
+        "IP_FAMILY_DUAL"
+      ],
+      "default": "IP_FAMILY_UNSPECIFIED"
+    },
+    "v202101beta1IPInfo": {
+      "type": "object",
+      "properties": {
+        "ip": {
+          "type": "string"
+        },
+        "asn": {
+          "$ref": "#/definitions/v202101beta1ASN"
+        },
+        "geo": {
+          "$ref": "#/definitions/v202101beta1Geo"
+        }
+      }
+    },
+    "v202101beta1IpTest": {
+      "type": "object",
+      "properties": {
+        "targets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v202101beta1KnockTaskDefinition": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "type": "string"
+        },
+        "period": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "expiry": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "count": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "port": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "v202101beta1ListAgentsResponse": {
+      "type": "object",
+      "properties": {
+        "agents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202101beta1Agent"
+          }
+        },
+        "invalidAgentsCount": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "v202101beta1ListTestsResponse": {
+      "type": "object",
+      "properties": {
+        "tests": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202101beta1Test"
+          }
+        },
+        "invalidTestsCount": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "v202101beta1PatchAgentRequest": {
+      "type": "object",
+      "properties": {
+        "agent": {
+          "$ref": "#/definitions/v202101beta1Agent"
+        },
+        "updateMask": {
+          "type": "string"
+        }
+      }
+    },
+    "v202101beta1PatchAgentResponse": {
+      "type": "object",
+      "properties": {
+        "agent": {
+          "$ref": "#/definitions/v202101beta1Agent"
+        }
+      }
+    },
+    "v202101beta1PatchTestResponse": {
+      "type": "object",
+      "properties": {
+        "test": {
+          "$ref": "#/definitions/v202101beta1Test"
+        }
+      }
+    },
+    "v202101beta1PingTaskDefinition": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "type": "string"
+        },
+        "period": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "expiry": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "count": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "v202101beta1Region": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "v202101beta1SetTestStatusRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/v202101beta1TestStatus"
+        }
+      }
+    },
+    "v202101beta1SetTestStatusResponse": {
+      "type": "object"
+    },
+    "v202101beta1ShakeTaskDefinition": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "type": "string"
+        },
+        "port": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "period": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "expiry": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "v202101beta1SiteTest": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "type": "string"
+        }
+      }
+    },
+    "v202101beta1TagTest": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "type": "string"
+        }
+      }
+    },
+    "v202101beta1Task": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "testId": {
+          "type": "string"
+        },
+        "deviceId": {
+          "type": "string"
+        },
+        "state": {
+          "$ref": "#/definitions/v202101beta1TaskState"
+        },
+        "status": {
+          "type": "string"
+        },
+        "family": {
+          "$ref": "#/definitions/v202101beta1IPFamily"
+        },
+        "ping": {
+          "$ref": "#/definitions/v202101beta1PingTaskDefinition"
+        },
+        "traceroute": {
+          "$ref": "#/definitions/v202101beta1TraceTaskDefinition"
+        },
+        "http": {
+          "$ref": "#/definitions/v202101beta1HTTPTaskDefinition"
+        },
+        "knock": {
+          "$ref": "#/definitions/v202101beta1KnockTaskDefinition"
+        },
+        "dns": {
+          "$ref": "#/definitions/v202101beta1DNSTaskDefinition"
+        },
+        "shake": {
+          "$ref": "#/definitions/v202101beta1ShakeTaskDefinition"
+        }
+      }
+    },
+    "v202101beta1TaskHealth": {
+      "type": "object",
+      "properties": {
+        "task": {
+          "$ref": "#/definitions/v202101beta1Task"
+        },
+        "agents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202101beta1AgentHealth"
+          }
+        },
+        "overallHealth": {
+          "$ref": "#/definitions/v202101beta1Health"
+        }
+      }
+    },
+    "v202101beta1TaskState": {
+      "type": "string",
+      "enum": [
+        "TASK_STATE_UNSPECIFIED",
+        "TASK_STATE_CREATED",
+        "TASK_STATE_UPDATED",
+        "TASK_STATE_DELETED"
+      ],
+      "default": "TASK_STATE_UNSPECIFIED"
+    },
+    "v202101beta1Test": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "deviceId": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/v202101beta1TestStatus"
+        },
+        "settings": {
+          "$ref": "#/definitions/v202101beta1TestSettings"
+        },
+        "expiresOn": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "cdate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "edate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "createdBy": {
+          "$ref": "#/definitions/v202101beta1UserInfo"
+        },
+        "lastUpdatedBy": {
+          "$ref": "#/definitions/v202101beta1UserInfo"
+        }
+      }
+    },
+    "v202101beta1TestHealth": {
+      "type": "object",
+      "properties": {
+        "testId": {
+          "type": "string"
+        },
+        "tasks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202101beta1TaskHealth"
+          }
+        },
+        "overallHealth": {
+          "$ref": "#/definitions/v202101beta1Health"
+        },
+        "healthTs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202101beta1Health"
+          }
+        }
+      }
+    },
+    "v202101beta1TestMonitoringSettings": {
+      "type": "object",
+      "properties": {
+        "activationGracePeriod": {
+          "type": "string"
+        },
+        "activationTimeUnit": {
+          "type": "string"
+        },
+        "activationTimeWindow": {
+          "type": "string"
+        },
+        "activationTimes": {
+          "type": "string"
+        },
+        "notificationChannels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v202101beta1TestPingSettings": {
+      "type": "object",
+      "properties": {
+        "period": {
+          "type": "number",
+          "format": "float"
+        },
+        "count": {
+          "type": "number",
+          "format": "float"
+        },
+        "expiry": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "v202101beta1TestSettings": {
+      "type": "object",
+      "properties": {
+        "hostname": {
+          "$ref": "#/definitions/v202101beta1HostnameTest"
+        },
+        "ip": {
+          "$ref": "#/definitions/v202101beta1IpTest"
+        },
+        "agent": {
+          "$ref": "#/definitions/v202101beta1AgentTest"
+        },
+        "flow": {
+          "$ref": "#/definitions/v202101beta1FlowTest"
+        },
+        "site": {
+          "$ref": "#/definitions/v202101beta1SiteTest"
+        },
+        "tag": {
+          "$ref": "#/definitions/v202101beta1TagTest"
+        },
+        "dns": {
+          "$ref": "#/definitions/v202101beta1DnsTest"
+        },
+        "url": {
+          "$ref": "#/definitions/v202101beta1UrlTest"
+        },
+        "agentIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "period": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "count": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "expiry": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "tasks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "healthSettings": {
+          "$ref": "#/definitions/v202101beta1HealthSettings"
+        },
+        "monitoringSettings": {
+          "$ref": "#/definitions/v202101beta1TestMonitoringSettings"
+        },
+        "ping": {
+          "$ref": "#/definitions/v202101beta1TestPingSettings"
+        },
+        "trace": {
+          "$ref": "#/definitions/v202101beta1TestTraceSettings"
+        },
+        "port": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "protocol": {
+          "type": "string"
+        },
+        "family": {
+          "$ref": "#/definitions/v202101beta1IPFamily"
+        },
+        "servers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "targetType": {
+          "type": "string"
+        },
+        "targetValue": {
+          "type": "string"
+        },
+        "useLocalIp": {
+          "type": "boolean"
+        },
+        "reciprocal": {
+          "type": "boolean"
+        },
+        "rollupLevel": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "v202101beta1TestStatus": {
+      "type": "string",
+      "enum": [
+        "TEST_STATUS_UNSPECIFIED",
+        "TEST_STATUS_ACTIVE",
+        "TEST_STATUS_PAUSED",
+        "TEST_STATUS_DELETED"
+      ],
+      "default": "TEST_STATUS_UNSPECIFIED"
+    },
+    "v202101beta1TestTraceSettings": {
+      "type": "object",
+      "properties": {
+        "period": {
+          "type": "number",
+          "format": "float"
+        },
+        "count": {
+          "type": "number",
+          "format": "float"
+        },
+        "protocol": {
+          "type": "string"
+        },
+        "port": {
+          "type": "number",
+          "format": "float"
+        },
+        "expiry": {
+          "type": "number",
+          "format": "float"
+        },
+        "limit": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "v202101beta1Trace": {
+      "type": "object",
+      "properties": {
+        "hops": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202101beta1TraceHop"
+          }
+        },
+        "target": {
+          "type": "string"
+        },
+        "ips": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v202101beta1TraceHop": {
+      "type": "object",
+      "properties": {
+        "agent": {
+          "type": "boolean"
+        },
+        "agentId": {
+          "type": "string"
+        },
+        "ttl": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ip": {
+          "type": "string"
+        },
+        "latencies": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uint64"
+          }
+        },
+        "timeout": {
+          "type": "boolean"
+        }
+      }
+    },
+    "v202101beta1TraceTaskDefinition": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "type": "string"
+        },
+        "period": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "expiry": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "v202101beta1TracerouteResult": {
+      "type": "object",
+      "properties": {
+        "time": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "traces": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202101beta1Trace"
+          }
+        }
+      }
+    },
+    "v202101beta1UrlTest": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "type": "string"
+        }
+      }
+    },
+    "v202101beta1UserInfo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "fullName": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "X-CH-Auth-API-Token": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-API-Token",
+      "in": "header"
+    },
+    "X-CH-Auth-Email": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-Email",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "X-CH-Auth-API-Email": [],
+      "X-CH-Auth-API-Token": []
+    }
+  ],
+  "externalDocs": {
+    "description": "More about Kentik APIs",
+    "url": "https://docs.kentik.com/api"
+  }
+}
