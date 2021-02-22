@@ -134,21 +134,24 @@ message Agent {
 }
 
 enum IPFamily {
-  IP_FAMILY_UNSPECIFIED = 0;
+  IP_FAMILY_UNSPECIFIED = 0; // Invalid value.
+
   IP_FAMILY_V4 = 1;
   IP_FAMILY_V6 = 2;
   IP_FAMILY_DUAL = 3;
 };
 
 enum TestStatus {
-  TEST_STATUS_UNSPECIFIED = 0;
-  TEST_STATUS_ACTIVE = 1;
-  TEST_STATUS_PAUSED = 2;
-  TEST_STATUS_DELETED = 3;
+  TEST_STATUS_UNSPECIFIED = 0; // Invalid value.
+
+  TEST_STATUS_ACTIVE = 1; // Test is active.
+  TEST_STATUS_PAUSED = 2; // Test is paused.
+  TEST_STATUS_DELETED = 3; // Test is deleted. Not settable via SetTestStatus.
 }
 
 enum AgentStatus {
-  AGENT_STATUS_UNSPECIFIED = 0;
+  AGENT_STATUS_UNSPECIFIED = 0; // Invalid value.
+
   AGENT_STATUS_OK = 1;
   AGENT_STATUS_WAIT = 2;
   AGENT_STATUS_DELETED = 3;
@@ -175,7 +178,8 @@ message HTTPTaskDefinition {
 }
 
 enum TaskState {
-  TASK_STATE_UNSPECIFIED = 0;
+  TASK_STATE_UNSPECIFIED = 0; // Invalid value.
+
   TASK_STATE_CREATED = 1;
   TASK_STATE_UPDATED = 2;
   TASK_STATE_DELETED = 3;

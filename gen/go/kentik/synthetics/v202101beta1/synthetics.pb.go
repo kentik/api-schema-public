@@ -35,7 +35,7 @@ const _ = proto.ProtoPackageIsVersion4
 type IPFamily int32
 
 const (
-	IPFamily_IP_FAMILY_UNSPECIFIED IPFamily = 0
+	IPFamily_IP_FAMILY_UNSPECIFIED IPFamily = 0 // Invalid value.
 	IPFamily_IP_FAMILY_V4          IPFamily = 1
 	IPFamily_IP_FAMILY_V6          IPFamily = 2
 	IPFamily_IP_FAMILY_DUAL        IPFamily = 3
@@ -87,10 +87,10 @@ func (IPFamily) EnumDescriptor() ([]byte, []int) {
 type TestStatus int32
 
 const (
-	TestStatus_TEST_STATUS_UNSPECIFIED TestStatus = 0
-	TestStatus_TEST_STATUS_ACTIVE      TestStatus = 1
-	TestStatus_TEST_STATUS_PAUSED      TestStatus = 2
-	TestStatus_TEST_STATUS_DELETED     TestStatus = 3
+	TestStatus_TEST_STATUS_UNSPECIFIED TestStatus = 0 // Invalid value.
+	TestStatus_TEST_STATUS_ACTIVE      TestStatus = 1 // Test is active.
+	TestStatus_TEST_STATUS_PAUSED      TestStatus = 2 // Test is paused.
+	TestStatus_TEST_STATUS_DELETED     TestStatus = 3 // Test is deleted. Not settable via SetTestStatus.
 )
 
 // Enum value maps for TestStatus.
@@ -139,7 +139,7 @@ func (TestStatus) EnumDescriptor() ([]byte, []int) {
 type AgentStatus int32
 
 const (
-	AgentStatus_AGENT_STATUS_UNSPECIFIED AgentStatus = 0
+	AgentStatus_AGENT_STATUS_UNSPECIFIED AgentStatus = 0 // Invalid value.
 	AgentStatus_AGENT_STATUS_OK          AgentStatus = 1
 	AgentStatus_AGENT_STATUS_WAIT        AgentStatus = 2
 	AgentStatus_AGENT_STATUS_DELETED     AgentStatus = 3
@@ -191,7 +191,7 @@ func (AgentStatus) EnumDescriptor() ([]byte, []int) {
 type TaskState int32
 
 const (
-	TaskState_TASK_STATE_UNSPECIFIED TaskState = 0
+	TaskState_TASK_STATE_UNSPECIFIED TaskState = 0 // Invalid value.
 	TaskState_TASK_STATE_CREATED     TaskState = 1
 	TaskState_TASK_STATE_UPDATED     TaskState = 2
 	TaskState_TASK_STATE_DELETED     TaskState = 3
