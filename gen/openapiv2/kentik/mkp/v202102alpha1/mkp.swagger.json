@@ -1,0 +1,1100 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "MKP API",
+    "version": "202102",
+    "contact": {
+      "name": "Kentik API Engineering",
+      "url": "https://github.com/kentik/api"
+    }
+  },
+  "tags": [
+    {
+      "name": "PackageService"
+    },
+    {
+      "name": "TenantService"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/mkp/v202101beta1/packages": {
+      "post": {
+        "operationId": "PackageService_CreatePackage",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202102alpha1CreatePackageResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202102alpha1CreatePackageRequest"
+            }
+          }
+        ],
+        "tags": [
+          "PackageService"
+        ]
+      }
+    },
+    "/mkp/v202101beta1/packages/{id}": {
+      "get": {
+        "operationId": "PackageService_GetPackage",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202102alpha1GetPackageResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "PackageService"
+        ]
+      },
+      "delete": {
+        "operationId": "PackageService_DeletePackage",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202102alpha1DeletePackageResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "PackageService"
+        ]
+      },
+      "put": {
+        "operationId": "PackageService_UpdatePackage",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202102alpha1UpdatePackageResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202102alpha1UpdatePackageRequest"
+            }
+          }
+        ],
+        "tags": [
+          "PackageService"
+        ]
+      },
+      "patch": {
+        "operationId": "PackageService_PatchPackage",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202102alpha1PatchPackageResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202102alpha1PatchPackageRequest"
+            }
+          }
+        ],
+        "tags": [
+          "PackageService"
+        ]
+      }
+    },
+    "/mkp/v202101beta1/tenants": {
+      "post": {
+        "operationId": "TenantService_CreateTenant",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202102alpha1CreateTenantResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202102alpha1CreateTenantRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TenantService"
+        ]
+      }
+    },
+    "/mkp/v202101beta1/tenants/{id}": {
+      "get": {
+        "operationId": "TenantService_GetTenant",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202102alpha1GetTenantResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "TenantService"
+        ]
+      },
+      "delete": {
+        "operationId": "TenantService_DeleteTenant",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202102alpha1DeleteTenantResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "TenantService"
+        ]
+      },
+      "put": {
+        "operationId": "TenantService_UpdateTenant",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202102alpha1UpdateTenantResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202102alpha1UpdateTenantRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TenantService"
+        ]
+      },
+      "patch": {
+        "operationId": "TenantService_PatchTenant",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202102alpha1PatchTenantResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202102alpha1PatchTenantRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TenantService"
+        ]
+      }
+    },
+    "/mkp/v202102alpha1/packages": {
+      "get": {
+        "operationId": "PackageService_ListPackage",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202102alpha1ListPackageResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "PackageService"
+        ]
+      }
+    },
+    "/mkp/v202102alpha1/tenants": {
+      "get": {
+        "operationId": "TenantService_ListTenant",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202102alpha1ListTenantResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "TenantService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "AssetReport": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "typeUrl": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v202102alpha1Activate": {
+      "type": "object",
+      "properties": {
+        "times": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "operator": {
+          "type": "string"
+        },
+        "timeUnit": {
+          "type": "string"
+        },
+        "timeWindow": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "gracePeriod": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "v202102alpha1Alert": {
+      "type": "object",
+      "properties": {
+        "saved": {
+          "type": "boolean"
+        },
+        "policyId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "thresholds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202102alpha1Threshold"
+          }
+        },
+        "primaryMetric": {
+          "type": "string"
+        },
+        "secondaryMetrics": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "isTemplate": {
+          "type": "boolean"
+        }
+      },
+      "title": "common definitions"
+    },
+    "v202102alpha1Asset": {
+      "type": "object",
+      "properties": {
+        "reports": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AssetReport"
+          }
+        },
+        "defaultReport": {
+          "$ref": "#/definitions/AssetReport"
+        }
+      }
+    },
+    "v202102alpha1Condition": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "value": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "metric": {
+          "type": "string"
+        },
+        "operator": {
+          "type": "string"
+        },
+        "valueType": {
+          "type": "string"
+        },
+        "valueSelect": {
+          "type": "string"
+        }
+      }
+    },
+    "v202102alpha1CreatePackageRequest": {
+      "type": "object",
+      "properties": {
+        "package": {
+          "$ref": "#/definitions/v202102alpha1Package"
+        }
+      }
+    },
+    "v202102alpha1CreatePackageResponse": {
+      "type": "object",
+      "properties": {
+        "package": {
+          "$ref": "#/definitions/v202102alpha1Package"
+        }
+      }
+    },
+    "v202102alpha1CreateTenantRequest": {
+      "type": "object",
+      "properties": {
+        "tenant": {
+          "$ref": "#/definitions/v202102alpha1Tenant"
+        }
+      }
+    },
+    "v202102alpha1CreateTenantResponse": {
+      "type": "object",
+      "properties": {
+        "tenant": {
+          "$ref": "#/definitions/v202102alpha1Tenant"
+        }
+      }
+    },
+    "v202102alpha1CustomDimension": {
+      "type": "object",
+      "properties": {
+        "dimension": {
+          "type": "string"
+        },
+        "populator": {
+          "type": "string"
+        }
+      },
+      "title": "MKP Tenant definitions"
+    },
+    "v202102alpha1DeletePackageResponse": {
+      "type": "object"
+    },
+    "v202102alpha1DeleteTenantResponse": {
+      "type": "object"
+    },
+    "v202102alpha1Device": {
+      "type": "object",
+      "properties": {
+        "allDevices": {
+          "type": "boolean"
+        },
+        "deviceTypes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "deviceLabels": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "deviceSites": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "deviceName": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v202102alpha1Filter": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "named": {
+          "type": "boolean"
+        },
+        "connector": {
+          "type": "string"
+        },
+        "not": {
+          "type": "boolean"
+        },
+        "autoAdded": {
+          "type": "string"
+        },
+        "savedFilters": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "filters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202102alpha1FilterField"
+          }
+        },
+        "filterGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202102alpha1Filter"
+          }
+        },
+        "metric": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v202102alpha1FilterField": {
+      "type": "object",
+      "properties": {
+        "filterField": {
+          "type": "string"
+        },
+        "operator": {
+          "type": "string"
+        },
+        "filterValue": {
+          "type": "string"
+        }
+      }
+    },
+    "v202102alpha1GetPackageResponse": {
+      "type": "object",
+      "properties": {
+        "package": {
+          "$ref": "#/definitions/v202102alpha1Package"
+        }
+      }
+    },
+    "v202102alpha1GetTenantResponse": {
+      "type": "object",
+      "properties": {
+        "tenant": {
+          "$ref": "#/definitions/v202102alpha1Tenant"
+        }
+      }
+    },
+    "v202102alpha1ListPackageResponse": {
+      "type": "object",
+      "properties": {
+        "packages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202102alpha1Package"
+          }
+        },
+        "invalidCount": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "v202102alpha1ListTenantResponse": {
+      "type": "object",
+      "properties": {
+        "tenants": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202102alpha1Tenant"
+          }
+        },
+        "invalidCount": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "v202102alpha1Mitigation": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "status": {
+          "type": "string"
+        },
+        "companyId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "pairingId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "thresholdId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "isMethodOverridable": {
+          "type": "boolean"
+        },
+        "mitigationApplyType": {
+          "type": "string"
+        },
+        "mitigationClearType": {
+          "type": "string"
+        },
+        "mitigationApplyTimer": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "mitigationClearTimer": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "isPlatformOverridable": {
+          "type": "boolean"
+        },
+        "cdate": {
+          "type": "string"
+        },
+        "edate": {
+          "type": "string"
+        }
+      }
+    },
+    "v202102alpha1NotificationChannel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        }
+      }
+    },
+    "v202102alpha1Package": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "companyId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "color": {
+          "type": "string"
+        },
+        "alerts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202102alpha1Alert"
+          }
+        },
+        "assets": {
+          "$ref": "#/definitions/v202102alpha1Asset"
+        },
+        "isDefault": {
+          "type": "boolean"
+        },
+        "tenants": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202102alpha1TenantLink"
+          }
+        }
+      }
+    },
+    "v202102alpha1PatchPackageRequest": {
+      "type": "object",
+      "properties": {
+        "package": {
+          "$ref": "#/definitions/v202102alpha1Package"
+        },
+        "updateMask": {
+          "type": "string"
+        }
+      }
+    },
+    "v202102alpha1PatchPackageResponse": {
+      "type": "object",
+      "properties": {
+        "package": {
+          "$ref": "#/definitions/v202102alpha1Package"
+        }
+      }
+    },
+    "v202102alpha1PatchTenantRequest": {
+      "type": "object",
+      "properties": {
+        "tenant": {
+          "$ref": "#/definitions/v202102alpha1Tenant"
+        },
+        "updateMask": {
+          "type": "string"
+        }
+      }
+    },
+    "v202102alpha1PatchTenantResponse": {
+      "type": "object",
+      "properties": {
+        "tenant": {
+          "$ref": "#/definitions/v202102alpha1Tenant"
+        }
+      }
+    },
+    "v202102alpha1Tenant": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "companyId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "alerts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202102alpha1Alert"
+          },
+          "title": "config object"
+        },
+        "assets": {
+          "$ref": "#/definitions/v202102alpha1Asset"
+        },
+        "asn": {
+          "type": "string"
+        },
+        "cidr": {
+          "type": "string"
+        },
+        "customDimensions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202102alpha1CustomDimension"
+          }
+        },
+        "devices": {
+          "$ref": "#/definitions/v202102alpha1Device"
+        },
+        "filters": {
+          "$ref": "#/definitions/v202102alpha1Filter"
+        },
+        "interfaceName": {
+          "type": "string"
+        },
+        "snmpAlias": {
+          "type": "string"
+        },
+        "packages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202102alpha1Package"
+          }
+        },
+        "users": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202102alpha1User"
+          }
+        },
+        "templateId": {
+          "type": "integer",
+          "format": "int64",
+          "title": "todo: revisit porting node api adding package to tenant"
+        }
+      }
+    },
+    "v202102alpha1TenantLink": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "pivotTemplateId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "pivotUserGroupId": {
+          "type": "string",
+          "format": "uint64"
+        }
+      },
+      "title": "MKP Package definitions"
+    },
+    "v202102alpha1Threshold": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "activate": {
+          "$ref": "#/definitions/v202102alpha1Activate"
+        },
+        "severity": {
+          "type": "string"
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202102alpha1Condition"
+          }
+        },
+        "mitigations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202102alpha1Mitigation"
+          }
+        },
+        "notificationChannels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202102alpha1NotificationChannel"
+          }
+        },
+        "thresholdAckRequired": {
+          "type": "boolean"
+        },
+        "enableTenantNotifications": {
+          "type": "boolean"
+        },
+        "receiveLandlordNotifications": {
+          "type": "boolean"
+        }
+      }
+    },
+    "v202102alpha1UpdatePackageRequest": {
+      "type": "object",
+      "properties": {
+        "package": {
+          "$ref": "#/definitions/v202102alpha1Package"
+        }
+      }
+    },
+    "v202102alpha1UpdatePackageResponse": {
+      "type": "object",
+      "properties": {
+        "package": {
+          "$ref": "#/definitions/v202102alpha1Package"
+        }
+      }
+    },
+    "v202102alpha1UpdateTenantRequest": {
+      "type": "object",
+      "properties": {
+        "tenant": {
+          "$ref": "#/definitions/v202102alpha1Tenant"
+        }
+      }
+    },
+    "v202102alpha1UpdateTenantResponse": {
+      "type": "object",
+      "properties": {
+        "tenant": {
+          "$ref": "#/definitions/v202102alpha1Tenant"
+        }
+      }
+    },
+    "v202102alpha1User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "companyId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "userEmail": {
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "userFullName": {
+          "type": "string"
+        },
+        "userGroupId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "lastLogin": {
+          "type": "string"
+        },
+        "permissionOverrides": {
+          "type": "boolean",
+          "title": "fields for create tenants with users"
+        },
+        "role": {
+          "type": "string"
+        },
+        "userLevel": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "email": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-Email",
+      "in": "header"
+    },
+    "token": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-API-Token",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "email": [],
+      "token": []
+    }
+  ],
+  "externalDocs": {
+    "description": "More about Kentik APIs",
+    "url": "https://docs.kentik.com/api"
+  }
+}

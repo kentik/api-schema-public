@@ -1,0 +1,390 @@
+syntax = "proto3";
+
+package kentik.mkp.v202102alpha1;
+option go_package = "github.com/kentik/api-schema/gen/go/kentik/mkp/v202102alpha1;mkp";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/protobuf/field_mask.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "kentik/core/v202012alpha1/errors.proto";
+import "kentik/core/v202012alpha1/annotations.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "MKP API"
+    version: "202102"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api"
+    }
+  }
+  external_docs: {
+    url: "https://docs.kentik.com/api"
+    description: "More about Kentik APIs"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+// common definitions
+message Alert {
+  bool saved = 1;
+  uint64 policy_id = 2;
+  repeated Threshold thresholds = 3;
+  string primary_metric = 4;
+  repeated string secondary_metrics = 5;
+  bool is_template = 6;
+}
+
+message Asset {
+  message Report {
+    uint64 id = 1;
+    string type = 2;
+  }
+  repeated Report reports = 1;
+  Report default_report = 2;
+};
+
+message Threshold {
+  uint64 id = 1;
+  Activate activate = 2;
+  string severity = 3;
+  repeated Condition conditions = 4;
+  repeated Mitigation mitigations = 5;
+  repeated NotificationChannel notification_channels = 6;
+  bool threshold_ack_required = 7;
+  bool enable_tenant_notifications = 8;
+  bool receive_landlord_notifications = 9;
+}
+
+message Activate {
+  uint32 times = 1;
+  string operator = 2;
+  string time_unit = 3;
+  uint32 time_window = 4;
+  uint32 grace_period = 5;
+}
+
+message Condition {
+  string type = 1;
+  uint32 value = 2;
+  string metric = 3;
+  string operator = 4;
+  string value_type = 5;
+  string value_select = 6;
+}
+
+message Mitigation {
+  uint64 id = 13;
+  string status = 1;
+  uint64 company_id = 2;
+  uint64 pairing_id = 3;
+  uint64 threshold_id = 4;
+  bool is_method_overridable = 5;
+  string mitigation_apply_type = 6;
+  string mitigation_clear_type = 7;
+  uint32 mitigation_apply_timer = 8;
+  uint32 mitigation_clear_timer = 9;
+  bool is_platform_overridable = 10;
+  string cdate = 11;  // revisit for timestamp
+  string edate = 12;  // revisit for timestamp
+}
+
+message NotificationChannel {
+  uint64 id = 1;
+}
+
+message User {
+  uint64 id = 1;
+  uint64 company_id = 2;
+  string user_email = 3;
+  string user_name = 4;
+  string user_full_name = 5;
+  uint64 user_group_id = 6;
+  string last_login = 7; // revisit timestamp
+  // fields for create tenants with users
+  bool permission_overrides = 8;
+  string role = 9;
+  uint32 user_level = 10;
+}
+
+// MKP Package definitions
+message TenantLink {
+  uint64 id = 1;
+  uint64 pivot_template_id = 2;
+  uint64 pivot_user_group_id = 3;
+}
+message Package {
+  uint64 id = 1;
+  uint64 company_id = 2;
+  string name = 3;
+  string description = 4;
+  string icon = 5;
+  string color = 6;
+  repeated Alert alerts = 7;
+  Asset assets = 8;
+  bool is_default = 9;
+  repeated TenantLink tenants = 10;
+}
+
+// MKP Tenant definitions
+message CustomDimension {
+  string dimension = 1;
+  string populator = 2;
+}
+
+message Device {
+  bool all_devices = 1;
+  repeated string device_types = 2;
+  repeated uint32 device_labels = 3;
+  repeated uint32 device_sites = 4;
+  repeated string device_name = 5;
+}
+
+message FilterField {
+  string filter_field = 1;
+  string operator = 2;
+  string filter_value = 3;
+}
+
+message Filter {
+  string name = 1;
+  bool named = 2;
+  string connector = 3;
+  bool not = 4;
+  string auto_added = 5;
+  repeated string saved_filters = 6;
+  repeated FilterField filters = 7;
+  repeated Filter filter_groups = 8;
+  repeated string metric = 9;
+}
+
+
+message Tenant {
+  uint64 id = 1;
+  uint64 company_id = 2;
+  string name = 3;
+  string description = 4;
+  string type = 5;
+  bool enabled = 6;
+  // config object
+  repeated Alert alerts = 7;
+  Asset assets = 15;
+  string asn = 8;
+  string cidr = 9;
+  repeated CustomDimension custom_dimensions = 10;
+  Device devices = 11;
+  Filter filters = 12;
+  string interface_name = 13;
+  string snmp_alias = 14;
+  repeated Package packages = 16;
+  repeated User users = 17;
+  // todo: revisit porting node api adding package to tenant
+  uint32 template_id = 18;
+}
+
+
+// package request/response
+message ListPackageRequest {}
+message ListPackageResponse {
+  repeated Package packages = 1;
+  uint32 invalid_count = 2;
+}
+
+message GetPackageRequest {
+  uint64 id = 1;
+}
+message GetPackageResponse {
+  Package package = 1;
+}
+
+message CreatePackageRequest {
+  Package package = 1;
+}
+message CreatePackageResponse {
+  Package package = 1;
+}
+
+message UpdatePackageRequest {
+  Package package = 1;
+}
+message UpdatePackageResponse {
+  Package package = 1;
+}
+
+message PatchPackageRequest {
+  Package package = 1;
+  google.protobuf.FieldMask update_mask = 2;
+}
+message PatchPackageResponse {
+  Package package = 1;
+}
+
+message DeletePackageRequest {
+  uint64 id = 1;
+}
+message DeletePackageResponse {}
+
+service PackageService {
+  option (google.api.default_host) = "mkp.api.kentik.com";
+  option (kentik.core.v202012alpha1.service_scope) = "admin.mkp";
+
+  rpc ListPackage(ListPackageRequest) returns (ListPackageResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.mkp:read";
+    option (google.api.http) = {
+      get: "/mkp/v202102alpha1/packages"
+    };
+  }
+  rpc GetPackage(GetPackageRequest) returns (GetPackageResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.mkp:read";
+    option (google.api.http) = {
+      get: "/mkp/v202101beta1/packages/{id}"
+    };
+  }
+  rpc CreatePackage(CreatePackageRequest) returns (CreatePackageResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.mkp:write";
+    option (google.api.http) = {
+      post: "/mkp/v202101beta1/packages"
+      body: "*"
+    };
+  }
+  rpc UpdatePackage(UpdatePackageRequest) returns (UpdatePackageResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.mkp:write";
+    option (google.api.http) = {
+      put: "/mkp/v202101beta1/packages/{package.id}"
+      body: "*"
+    };
+  }
+  rpc PatchPackage(PatchPackageRequest) returns (PatchPackageResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.mkp:write";
+    option (google.api.http) = {
+      patch: "/mkp/v202101beta1/packages/{package.id}"
+      body: "*"
+    };
+  }
+  rpc DeletePackage(DeletePackageRequest) returns (DeletePackageResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.mkp:write";
+    option (google.api.http) = {
+      delete: "/mkp/v202101beta1/packages/{id}"
+    };
+  }
+
+}
+
+
+// tenant request/response
+message ListTenantRequest {}
+message ListTenantResponse {
+  repeated Tenant tenants = 1;
+  uint32 invalid_count = 2;
+}
+
+message GetTenantRequest {
+  uint64 id = 1;
+}
+message GetTenantResponse {
+  Tenant tenant = 1;
+}
+
+message CreateTenantRequest {
+  Tenant tenant = 1;
+}
+message CreateTenantResponse {
+  Tenant tenant = 1;
+}
+
+message UpdateTenantRequest {
+  Tenant tenant = 1;
+}
+message UpdateTenantResponse {
+  Tenant tenant = 1;
+}
+
+message PatchTenantRequest {
+  Tenant tenant = 1;
+  google.protobuf.FieldMask update_mask = 2;
+}
+message PatchTenantResponse {
+  Tenant tenant = 1;
+}
+
+message DeleteTenantRequest {
+  uint64 id = 1;
+}
+message DeleteTenantResponse {}
+
+service TenantService {
+  option (google.api.default_host) = "mkp.api.kentik.com";
+  option (kentik.core.v202012alpha1.service_scope) = "admin.mkp";
+
+  rpc ListTenant(ListTenantRequest) returns (ListTenantResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.mkp:read";
+    option (google.api.http) = {
+      get: "/mkp/v202102alpha1/tenants"
+    };
+  }
+  rpc GetTenant(GetTenantRequest) returns (GetTenantResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.mkp:read";
+    option (google.api.http) = {
+      get: "/mkp/v202101beta1/tenants/{id}"
+    };
+  }
+  rpc CreateTenant(CreateTenantRequest) returns (CreateTenantResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.mkp:write";
+    option (google.api.http) = {
+      post: "/mkp/v202101beta1/tenants"
+      body: "*"
+    };
+  }
+  rpc UpdateTenant(UpdateTenantRequest) returns (UpdateTenantResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.mkp:write";
+    option (google.api.http) = {
+      put: "/mkp/v202101beta1/tenants/{tenant.id}"
+      body: "*"
+    };
+  }
+  rpc PatchTenant(PatchTenantRequest) returns (PatchTenantResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.mkp:write";
+    option (google.api.http) = {
+      patch: "/mkp/v202101beta1/tenants/{tenant.id}"
+      body: "*"
+    };
+  }
+  rpc DeleteTenant(DeleteTenantRequest) returns (DeleteTenantResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.mkp:write";
+    option (google.api.http) = {
+      delete: "/mkp/v202101beta1/tenants/{id}"
+    };
+  }
+
+}
