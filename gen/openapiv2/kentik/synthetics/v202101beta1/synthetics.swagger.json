@@ -539,6 +539,9 @@
           "items": {
             "type": "string"
           }
+        },
+        "localIp": {
+          "type": "string"
         }
       }
     },

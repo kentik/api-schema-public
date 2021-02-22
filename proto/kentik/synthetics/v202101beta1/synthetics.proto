@@ -131,6 +131,7 @@ message Agent {
   string region = 17;
   string country = 18;
   repeated string test_ids = 19;
+  string local_ip = 20;
 }
 
 enum IPFamily {
