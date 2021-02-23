@@ -1,3 +1,5 @@
+// My Kentik Portal management
+
 syntax = "proto3";
 
 package kentik.mkp.v202102alpha1;
@@ -244,7 +246,7 @@ message UpdatePackageResponse {
 
 message PatchPackageRequest {
   Package package = 1;
-  google.protobuf.FieldMask update_mask = 2;
+  google.protobuf.FieldMask mask = 2;
 }
 message PatchPackageResponse {
   Package package = 1;
@@ -332,7 +334,7 @@ message UpdateTenantResponse {
 
 message PatchTenantRequest {
   Tenant tenant = 1;
-  google.protobuf.FieldMask update_mask = 2;
+  google.protobuf.FieldMask mask = 2;
 }
 message PatchTenantResponse {
   Tenant tenant = 1;

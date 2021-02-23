@@ -535,7 +535,7 @@ message GetAgentResponse {
 
 message PatchAgentRequest {
   Agent agent = 1;
-  google.protobuf.FieldMask update_mask = 2;
+  google.protobuf.FieldMask mask = 2;
 }
 
 message PatchAgentResponse {
@@ -583,7 +583,7 @@ message SetTestStatusResponse {
 
 message PatchTestRequest {
   Test test = 1;
-  google.protobuf.FieldMask update_mask = 2;
+  google.protobuf.FieldMask mask = 2;
 }
 
 message PatchTestResponse {

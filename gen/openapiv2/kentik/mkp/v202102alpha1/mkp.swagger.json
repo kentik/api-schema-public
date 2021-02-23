@@ -834,7 +834,7 @@
         "package": {
           "$ref": "#/definitions/v202102alpha1Package"
         },
-        "updateMask": {
+        "mask": {
           "type": "string"
         }
       }
@@ -853,7 +853,7 @@
         "tenant": {
           "$ref": "#/definitions/v202102alpha1Tenant"
         },
-        "updateMask": {
+        "mask": {
           "type": "string"
         }
       }

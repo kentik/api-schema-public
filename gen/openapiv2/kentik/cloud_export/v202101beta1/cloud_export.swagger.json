@@ -469,7 +469,7 @@
         "export": {
           "$ref": "#/definitions/v202101beta1CloudExport"
         },
-        "updateMask": {
+        "mask": {
           "type": "string"
         }
       }

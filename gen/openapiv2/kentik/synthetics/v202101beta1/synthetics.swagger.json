@@ -1082,7 +1082,7 @@
         "agent": {
           "$ref": "#/definitions/v202101beta1Agent"
         },
-        "updateMask": {
+        "mask": {
           "type": "string"
         }
       }

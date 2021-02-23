@@ -207,7 +207,7 @@ message GetCloudExportResponse {
 
 message PatchCloudExportRequest {
   CloudExport export = 1;
-  google.protobuf.FieldMask update_mask = 2;
+  google.protobuf.FieldMask mask = 2;
 }
 message PatchCloudExportResponse {
   CloudExport export = 1;
