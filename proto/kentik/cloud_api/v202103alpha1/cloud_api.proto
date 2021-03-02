@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package httpgrpc;
+
+option go_package = "github.com/kentik/transfluo/pkg/httpgrpc";
+
+import "google/protobuf/empty.proto";
+
+service HTTP {
+  // Called by clients of cloud-server (Blake).
+  rpc ProxyRequest(HTTPRequest) returns (HTTPResponse) {};
+
+  // Called by cloud-api-clients (requesters) and cloud-api-proxies
+  // (responders: transflup & orangeflow).  The returned stream is mostly not
+  // used, except once, and then for its Context(), to detect if the
+  // connection drops.
+  //
+  // Placeholder -- still need to talk to Stefan.
+  rpc Auth(AuthRequest) returns (stream google.protobuf.Empty) {};
+
+  // We (the server) send a string of requests, and they (cloud-client) return
+  // a stream of responses.  Conceivably, a single cloud-client could call
+  // this several times, so that we could run several requests at once.
+  rpc HandleRequests(stream HTTPResponse) returns (stream HTTPRequest) {};
+}
+
+message HTTPRequest {
+  int32 cid = 1;
+  string region = 2;
+
+  string method = 3;
+  string url = 4;
+  repeated Header headers = 5;
+  bytes body = 6;
+}
+
+message HTTPResponse {
+  int32 Code = 1;
+  repeated Header headers = 2;
+  bytes body = 3;
+}
+
+message Header {
+  string key = 1;
+  repeated string values = 2;
+}
+
+// Placeholder.  Still need to talk to Stefan.
+message AuthRequest {
+  string key = 1;
+  enum PeerType {
+    Invalid = 0;
+    Requester = 1;
+    Responder = 2;
+  }
+  PeerType type = 2;
+  string token = 3;
+  int32 cid = 4;
+  string region = 5;
+}
