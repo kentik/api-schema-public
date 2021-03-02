@@ -1,0 +1,257 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "CLOUD GW API",
+    "version": "202103",
+    "contact": {
+      "name": "Kentik API Engineering",
+      "url": "https://github.com/kentik/api"
+    }
+  },
+  "tags": [
+    {
+      "name": "AWSGWInternalService"
+    },
+    {
+      "name": "AWSGWExternalService"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/cloud_gw/v202103alpha1/get_aws": {
+      "get": {
+        "summary": "The client calls GetAWS to get a request from the server.  It runs the\nrequest, and returns the result via SendAWS, linking them together via\nrequest_id.",
+        "operationId": "AWSGWExternalService_GetAWS",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202103alpha1GetAWSResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "AWSGWExternalService"
+        ]
+      }
+    },
+    "/cloud_gw/v202103alpha1/proxy_aws": {
+      "post": {
+        "summary": "Called by clients of cloud-server (Blake).",
+        "operationId": "AWSGWInternalService_ProxyAWS",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202103alpha1ProxyAWSResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202103alpha1ProxyAWSRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AWSGWInternalService"
+        ]
+      }
+    },
+    "/cloud_gw/v202103alpha1/send_aws": {
+      "post": {
+        "operationId": "AWSGWExternalService_SendAWS",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202103alpha1SendAWSResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202103alpha1SendAWSRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AWSGWExternalService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "cloud_gwv202103alpha1Header": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "values": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "typeUrl": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v202103alpha1GetAWSResponse": {
+      "type": "object",
+      "properties": {
+        "requestId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "proxyAwsRequest": {
+          "$ref": "#/definitions/v202103alpha1ProxyAWSRequest"
+        }
+      }
+    },
+    "v202103alpha1ProxyAWSRequest": {
+      "type": "object",
+      "properties": {
+        "region": {
+          "type": "string"
+        },
+        "method": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "headers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/cloud_gwv202103alpha1Header"
+          }
+        },
+        "body": {
+          "type": "string",
+          "format": "byte"
+        }
+      },
+      "title": "cid from headers / context"
+    },
+    "v202103alpha1ProxyAWSResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "headers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/cloud_gwv202103alpha1Header"
+          }
+        },
+        "body": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "v202103alpha1SendAWSRequest": {
+      "type": "object",
+      "properties": {
+        "requestId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "proxyAwsRequest": {
+          "$ref": "#/definitions/v202103alpha1ProxyAWSRequest"
+        }
+      }
+    },
+    "v202103alpha1SendAWSResponse": {
+      "type": "object"
+    }
+  },
+  "securityDefinitions": {
+    "email": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-Email",
+      "in": "header"
+    },
+    "token": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-API-Token",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "email": [],
+      "token": []
+    }
+  ],
+  "externalDocs": {
+    "description": "More about Kentik APIs",
+    "url": "https://docs.kentik.com/api"
+  }
+}
