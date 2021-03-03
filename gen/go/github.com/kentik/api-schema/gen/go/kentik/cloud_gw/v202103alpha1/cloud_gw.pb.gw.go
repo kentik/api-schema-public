@@ -65,6 +65,42 @@ func local_request_AWSGWInternalService_ProxyAWS_0(ctx context.Context, marshale
 
 }
 
+var (
+	filter_AWSGWExternalService_LoginAWS_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+)
+
+func request_AWSGWExternalService_LoginAWS_0(ctx context.Context, marshaler runtime.Marshaler, client AWSGWExternalServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq LoginAWSRequest
+	var metadata runtime.ServerMetadata
+
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_AWSGWExternalService_LoginAWS_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	msg, err := client.LoginAWS(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	return msg, metadata, err
+
+}
+
+func local_request_AWSGWExternalService_LoginAWS_0(ctx context.Context, marshaler runtime.Marshaler, server AWSGWExternalServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq LoginAWSRequest
+	var metadata runtime.ServerMetadata
+
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_AWSGWExternalService_LoginAWS_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	msg, err := server.LoginAWS(ctx, &protoReq)
+	return msg, metadata, err
+
+}
+
 func request_AWSGWExternalService_GetAWS_0(ctx context.Context, marshaler runtime.Marshaler, client AWSGWExternalServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq GetAWSRequest
 	var metadata runtime.ServerMetadata
@@ -154,6 +190,29 @@ func RegisterAWSGWInternalServiceHandlerServer(ctx context.Context, mux *runtime
 // StreamingRPC :currently unsupported pending https://github.com/grpc/grpc-go/issues/906.
 // Note that using this registration option will cause many gRPC library features to stop working. Consider using RegisterAWSGWExternalServiceHandlerFromEndpoint instead.
 func RegisterAWSGWExternalServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux, server AWSGWExternalServiceServer) error {
+
+	mux.Handle("GET", pattern_AWSGWExternalService_LoginAWS_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		var stream runtime.ServerTransportStream
+		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/kentik.cloud_gw.v202103alpha1.AWSGWExternalService/LoginAWS")
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := local_request_AWSGWExternalService_LoginAWS_0(rctx, inboundMarshaler, server, req, pathParams)
+		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
+		ctx = runtime.NewServerMetadataContext(ctx, md)
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_AWSGWExternalService_LoginAWS_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
 
 	mux.Handle("GET", pattern_AWSGWExternalService_GetAWS_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
@@ -311,6 +370,26 @@ func RegisterAWSGWExternalServiceHandler(ctx context.Context, mux *runtime.Serve
 // "AWSGWExternalServiceClient" to call the correct interceptors.
 func RegisterAWSGWExternalServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux, client AWSGWExternalServiceClient) error {
 
+	mux.Handle("GET", pattern_AWSGWExternalService_LoginAWS_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/kentik.cloud_gw.v202103alpha1.AWSGWExternalService/LoginAWS")
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := request_AWSGWExternalService_LoginAWS_0(rctx, inboundMarshaler, client, req, pathParams)
+		ctx = runtime.NewServerMetadataContext(ctx, md)
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_AWSGWExternalService_LoginAWS_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
 	mux.Handle("GET", pattern_AWSGWExternalService_GetAWS_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
@@ -355,12 +434,16 @@ func RegisterAWSGWExternalServiceHandlerClient(ctx context.Context, mux *runtime
 }
 
 var (
+	pattern_AWSGWExternalService_LoginAWS_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"cloud_gw", "v202103alpha1", "login_aws"}, ""))
+
 	pattern_AWSGWExternalService_GetAWS_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"cloud_gw", "v202103alpha1", "get_aws"}, ""))
 
 	pattern_AWSGWExternalService_SendAWS_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"cloud_gw", "v202103alpha1", "send_aws"}, ""))
 )
 
 var (
+	forward_AWSGWExternalService_LoginAWS_0 = runtime.ForwardResponseMessage
+
 	forward_AWSGWExternalService_GetAWS_0 = runtime.ForwardResponseMessage
 
 	forward_AWSGWExternalService_SendAWS_0 = runtime.ForwardResponseMessage

@@ -104,6 +104,11 @@ var AWSGWInternalService_ServiceDesc = grpc.ServiceDesc{
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AWSGWExternalServiceClient interface {
+	// LoginAWS is used to tell the server that there's a listener active for a
+	// given region.  A proxy starts a LoginAWS, then services Get/SendAWS
+	// requests, and ends the LoginAWS via context cancellation when it shuts
+	// down (or disconnects).
+	LoginAWS(ctx context.Context, in *LoginAWSRequest, opts ...grpc.CallOption) (*LoginAWSResponse, error)
 	// The client calls GetAWS to get a request from the server.  It runs the
 	// request, and returns the result via SendAWS, linking them together via
 	// request_id.
@@ -117,6 +122,15 @@ type aWSGWExternalServiceClient struct {
 
 func NewAWSGWExternalServiceClient(cc grpc.ClientConnInterface) AWSGWExternalServiceClient {
 	return &aWSGWExternalServiceClient{cc}
+}
+
+func (c *aWSGWExternalServiceClient) LoginAWS(ctx context.Context, in *LoginAWSRequest, opts ...grpc.CallOption) (*LoginAWSResponse, error) {
+	out := new(LoginAWSResponse)
+	err := c.cc.Invoke(ctx, "/kentik.cloud_gw.v202103alpha1.AWSGWExternalService/LoginAWS", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *aWSGWExternalServiceClient) GetAWS(ctx context.Context, in *GetAWSRequest, opts ...grpc.CallOption) (*GetAWSResponse, error) {
@@ -141,6 +155,11 @@ func (c *aWSGWExternalServiceClient) SendAWS(ctx context.Context, in *SendAWSReq
 // All implementations should embed UnimplementedAWSGWExternalServiceServer
 // for forward compatibility
 type AWSGWExternalServiceServer interface {
+	// LoginAWS is used to tell the server that there's a listener active for a
+	// given region.  A proxy starts a LoginAWS, then services Get/SendAWS
+	// requests, and ends the LoginAWS via context cancellation when it shuts
+	// down (or disconnects).
+	LoginAWS(context.Context, *LoginAWSRequest) (*LoginAWSResponse, error)
 	// The client calls GetAWS to get a request from the server.  It runs the
 	// request, and returns the result via SendAWS, linking them together via
 	// request_id.
@@ -152,6 +171,9 @@ type AWSGWExternalServiceServer interface {
 type UnimplementedAWSGWExternalServiceServer struct {
 }
 
+func (UnimplementedAWSGWExternalServiceServer) LoginAWS(context.Context, *LoginAWSRequest) (*LoginAWSResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method LoginAWS not implemented")
+}
 func (UnimplementedAWSGWExternalServiceServer) GetAWS(context.Context, *GetAWSRequest) (*GetAWSResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAWS not implemented")
 }
@@ -168,6 +190,24 @@ type UnsafeAWSGWExternalServiceServer interface {
 
 func RegisterAWSGWExternalServiceServer(s grpc.ServiceRegistrar, srv AWSGWExternalServiceServer) {
 	s.RegisterService(&AWSGWExternalService_ServiceDesc, srv)
+}
+
+func _AWSGWExternalService_LoginAWS_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(LoginAWSRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AWSGWExternalServiceServer).LoginAWS(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kentik.cloud_gw.v202103alpha1.AWSGWExternalService/LoginAWS",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AWSGWExternalServiceServer).LoginAWS(ctx, req.(*LoginAWSRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _AWSGWExternalService_GetAWS_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -213,6 +253,10 @@ var AWSGWExternalService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "kentik.cloud_gw.v202103alpha1.AWSGWExternalService",
 	HandlerType: (*AWSGWExternalServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "LoginAWS",
+			Handler:    _AWSGWExternalService_LoginAWS_Handler,
+		},
 		{
 			MethodName: "GetAWS",
 			Handler:    _AWSGWExternalService_GetAWS_Handler,

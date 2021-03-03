@@ -8,6 +8,7 @@ import "google/protobuf/field_mask.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
 import "kentik/core/v202012alpha1/errors.proto";
 import "kentik/core/v202012alpha1/annotations.proto";
+import "grpc/http_over_grpc/http_over_grpc.proto";
 
 option go_package = "github.com/kentik/api-schema/gen/go/kentik/cloud_gw/v202103alpha1;cloudgw";
 
@@ -74,6 +75,17 @@ service AWSGWInternalService {
 
 // Also was "HTTP"
 service AWSGWExternalService {
+  // LoginAWS is used to tell the server that there's a listener active for a
+  // given region.  A proxy starts a LoginAWS, then services Get/SendAWS
+  // requests, and ends the LoginAWS via context cancellation when it shuts
+  // down (or disconnects).
+  rpc LoginAWS(LoginAWSRequest) returns (LoginAWSResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_gw:read";
+    option (google.api.http) = {
+      get: "/cloud_gw/v202103alpha1/login_aws"
+    };
+  }
+
   // The client calls GetAWS to get a request from the server.  It runs the
   // request, and returns the result via SendAWS, linking them together via
   // request_id.
@@ -93,19 +105,21 @@ service AWSGWExternalService {
   }
 }
 
+message LoginAWSRequest {
+  string region = 1;
+}
+message LoginAWSResponse {}
+
 // cid from headers / context
 message ProxyAWSRequest {
   string region = 1;
-  string method = 2;
-  string url = 3;
-  repeated Header headers = 4;
-  bytes body = 5;
+  // HTTPOverGRPCRequest http_over_grpc_request = 2;
+  grpc.http_over_grpc.HTTPOverGRPCRequest http_over_grpc_request = 2;
 }
 
 message ProxyAWSResponse {
-  int32 code = 1;
-  repeated Header headers = 2;
-  bytes body = 3;
+  // HTTPOverGRPCResponse http_over_grpc_response = 1;
+  grpc.http_over_grpc.HTTPOverGRPCReply http_over_grpc_reply = 2;
 }
 
 message GetAWSRequest {}
@@ -124,3 +138,17 @@ message Header {
   string key = 1;
   repeated string values = 2;
 }
+
+// // These would apply to any HTTP wrapper
+// message HTTPOverGRPCRequest {
+//   string method = 1;
+//   string url = 2;
+//   repeated Header headers = 3;
+//   bytes body = 4;
+// }
+//
+// message HTTPOverGRPCResponse {
+//   int32 code = 1;
+//   repeated Header headers = 2;
+//   bytes body = 3;
+// }

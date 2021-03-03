@@ -49,6 +49,37 @@
         ]
       }
     },
+    "/cloud_gw/v202103alpha1/login_aws": {
+      "get": {
+        "summary": "LoginAWS is used to tell the server that there's a listener active for a\ngiven region.  A proxy starts a LoginAWS, then services Get/SendAWS\nrequests, and ends the LoginAWS via context cancellation when it shuts\ndown (or disconnects).",
+        "operationId": "AWSGWExternalService_LoginAWS",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202103alpha1LoginAWSResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "region",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AWSGWExternalService"
+        ]
+      }
+    },
     "/cloud_gw/v202103alpha1/proxy_aws": {
       "post": {
         "summary": "Called by clients of cloud-server (Blake).",
@@ -116,7 +147,7 @@
     }
   },
   "definitions": {
-    "cloud_gwv202103alpha1Header": {
+    "grpchttp_over_grpcHeader": {
       "type": "object",
       "properties": {
         "key": {
@@ -128,7 +159,57 @@
             "type": "string"
           }
         }
-      }
+      },
+      "description": "Represents HTTP 1.1 header."
+    },
+    "http_over_grpcHTTPOverGRPCReply": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The HTTP status code (e.g. 200, 400, 404)."
+        },
+        "headers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/grpchttp_over_grpcHeader"
+          },
+          "description": "The HTTP response headers."
+        },
+        "body": {
+          "type": "string",
+          "format": "byte",
+          "description": "The HTTP response body."
+        }
+      },
+      "description": "An HTTP 1.1 reply encapsulated in an RPC."
+    },
+    "http_over_grpcHTTPOverGRPCRequest": {
+      "type": "object",
+      "properties": {
+        "method": {
+          "type": "string",
+          "description": "The HTTP request method."
+        },
+        "url": {
+          "type": "string",
+          "description": "The HTTP request URL."
+        },
+        "headers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/grpchttp_over_grpcHeader"
+          },
+          "description": "The HTTP request headers."
+        },
+        "body": {
+          "type": "string",
+          "format": "byte",
+          "description": "HTTP request body."
+        }
+      },
+      "description": "An HTTP 1.1 request encapsulated in a gRPC."
     },
     "protobufAny": {
       "type": "object",
@@ -172,27 +253,18 @@
         }
       }
     },
+    "v202103alpha1LoginAWSResponse": {
+      "type": "object"
+    },
     "v202103alpha1ProxyAWSRequest": {
       "type": "object",
       "properties": {
         "region": {
           "type": "string"
         },
-        "method": {
-          "type": "string"
-        },
-        "url": {
-          "type": "string"
-        },
-        "headers": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/cloud_gwv202103alpha1Header"
-          }
-        },
-        "body": {
-          "type": "string",
-          "format": "byte"
+        "httpOverGrpcRequest": {
+          "$ref": "#/definitions/http_over_grpcHTTPOverGRPCRequest",
+          "title": "HTTPOverGRPCRequest http_over_grpc_request = 2;"
         }
       },
       "title": "cid from headers / context"
@@ -200,19 +272,9 @@
     "v202103alpha1ProxyAWSResponse": {
       "type": "object",
       "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "headers": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/cloud_gwv202103alpha1Header"
-          }
-        },
-        "body": {
-          "type": "string",
-          "format": "byte"
+        "httpOverGrpcReply": {
+          "$ref": "#/definitions/http_over_grpcHTTPOverGRPCReply",
+          "title": "HTTPOverGRPCResponse http_over_grpc_response = 1;"
         }
       }
     },
