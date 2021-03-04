@@ -26,7 +26,27 @@
     "application/json"
   ],
   "paths": {
-    "/mkp/v202101beta1/packages": {
+    "/mkp/v202102alpha1/packages": {
+      "get": {
+        "operationId": "PackageService_ListPackage",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202102alpha1ListPackageResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "PackageService"
+        ]
+      },
       "post": {
         "operationId": "PackageService_CreatePackage",
         "responses": {
@@ -58,7 +78,7 @@
         ]
       }
     },
-    "/mkp/v202101beta1/packages/{id}": {
+    "/mkp/v202102alpha1/packages/{id}": {
       "get": {
         "operationId": "PackageService_GetPackage",
         "responses": {
@@ -192,7 +212,27 @@
         ]
       }
     },
-    "/mkp/v202101beta1/tenants": {
+    "/mkp/v202102alpha1/tenants": {
+      "get": {
+        "operationId": "TenantService_ListTenant",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202102alpha1ListTenantResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "TenantService"
+        ]
+      },
       "post": {
         "operationId": "TenantService_CreateTenant",
         "responses": {
@@ -224,7 +264,7 @@
         ]
       }
     },
-    "/mkp/v202101beta1/tenants/{id}": {
+    "/mkp/v202102alpha1/tenants/{id}": {
       "get": {
         "operationId": "TenantService_GetTenant",
         "responses": {
@@ -353,50 +393,6 @@
             }
           }
         ],
-        "tags": [
-          "TenantService"
-        ]
-      }
-    },
-    "/mkp/v202102alpha1/packages": {
-      "get": {
-        "operationId": "PackageService_ListPackage",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/v202102alpha1ListPackageResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "tags": [
-          "PackageService"
-        ]
-      }
-    },
-    "/mkp/v202102alpha1/tenants": {
-      "get": {
-        "operationId": "TenantService_ListTenant",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/v202102alpha1ListTenantResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
         "tags": [
           "TenantService"
         ]

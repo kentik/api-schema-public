@@ -1073,15 +1073,15 @@ func RegisterPackageServiceHandlerClient(ctx context.Context, mux *runtime.Serve
 var (
 	pattern_PackageService_ListPackage_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"mkp", "v202102alpha1", "packages"}, ""))
 
-	pattern_PackageService_GetPackage_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"mkp", "v202101beta1", "packages", "id"}, ""))
+	pattern_PackageService_GetPackage_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"mkp", "v202102alpha1", "packages", "id"}, ""))
 
-	pattern_PackageService_CreatePackage_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"mkp", "v202101beta1", "packages"}, ""))
+	pattern_PackageService_CreatePackage_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"mkp", "v202102alpha1", "packages"}, ""))
 
-	pattern_PackageService_UpdatePackage_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"mkp", "v202101beta1", "packages", "package.id"}, ""))
+	pattern_PackageService_UpdatePackage_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"mkp", "v202102alpha1", "packages", "package.id"}, ""))
 
-	pattern_PackageService_PatchPackage_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"mkp", "v202101beta1", "packages", "package.id"}, ""))
+	pattern_PackageService_PatchPackage_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"mkp", "v202102alpha1", "packages", "package.id"}, ""))
 
-	pattern_PackageService_DeletePackage_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"mkp", "v202101beta1", "packages", "id"}, ""))
+	pattern_PackageService_DeletePackage_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"mkp", "v202102alpha1", "packages", "id"}, ""))
 )
 
 var (
@@ -1262,15 +1262,15 @@ func RegisterTenantServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 var (
 	pattern_TenantService_ListTenant_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"mkp", "v202102alpha1", "tenants"}, ""))
 
-	pattern_TenantService_GetTenant_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"mkp", "v202101beta1", "tenants", "id"}, ""))
+	pattern_TenantService_GetTenant_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"mkp", "v202102alpha1", "tenants", "id"}, ""))
 
-	pattern_TenantService_CreateTenant_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"mkp", "v202101beta1", "tenants"}, ""))
+	pattern_TenantService_CreateTenant_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"mkp", "v202102alpha1", "tenants"}, ""))
 
-	pattern_TenantService_UpdateTenant_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"mkp", "v202101beta1", "tenants", "tenant.id"}, ""))
+	pattern_TenantService_UpdateTenant_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"mkp", "v202102alpha1", "tenants", "tenant.id"}, ""))
 
-	pattern_TenantService_PatchTenant_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"mkp", "v202101beta1", "tenants", "tenant.id"}, ""))
+	pattern_TenantService_PatchTenant_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"mkp", "v202102alpha1", "tenants", "tenant.id"}, ""))
 
-	pattern_TenantService_DeleteTenant_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"mkp", "v202101beta1", "tenants", "id"}, ""))
+	pattern_TenantService_DeleteTenant_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"mkp", "v202102alpha1", "tenants", "id"}, ""))
 )
 
 var (
