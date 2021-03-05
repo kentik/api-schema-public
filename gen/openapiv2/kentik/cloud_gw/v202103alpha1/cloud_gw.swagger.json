@@ -248,8 +248,8 @@
           "type": "string",
           "format": "int64"
         },
-        "proxyAwsRequest": {
-          "$ref": "#/definitions/v202103alpha1ProxyAWSRequest"
+        "httpRequest": {
+          "$ref": "#/definitions/http_over_grpcHTTPOverGRPCRequest"
         }
       }
     },
@@ -262,9 +262,8 @@
         "region": {
           "type": "string"
         },
-        "httpOverGrpcRequest": {
-          "$ref": "#/definitions/http_over_grpcHTTPOverGRPCRequest",
-          "title": "HTTPOverGRPCRequest http_over_grpc_request = 2;"
+        "httpRequest": {
+          "$ref": "#/definitions/http_over_grpcHTTPOverGRPCRequest"
         }
       },
       "title": "cid from headers / context"
@@ -272,7 +271,7 @@
     "v202103alpha1ProxyAWSResponse": {
       "type": "object",
       "properties": {
-        "httpOverGrpcReply": {
+        "httpResponse": {
           "$ref": "#/definitions/http_over_grpcHTTPOverGRPCReply",
           "title": "HTTPOverGRPCResponse http_over_grpc_response = 1;"
         }
@@ -285,8 +284,8 @@
           "type": "string",
           "format": "int64"
         },
-        "proxyAwsRequest": {
-          "$ref": "#/definitions/v202103alpha1ProxyAWSRequest"
+        "httpResponse": {
+          "$ref": "#/definitions/http_over_grpcHTTPOverGRPCReply"
         }
       }
     },

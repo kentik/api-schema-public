@@ -113,24 +113,23 @@ message LoginAWSResponse {}
 // cid from headers / context
 message ProxyAWSRequest {
   string region = 1;
-  // HTTPOverGRPCRequest http_over_grpc_request = 2;
-  grpc.http_over_grpc.HTTPOverGRPCRequest http_over_grpc_request = 2;
+  grpc.http_over_grpc.HTTPOverGRPCRequest http_request = 2;
 }
 
 message ProxyAWSResponse {
   // HTTPOverGRPCResponse http_over_grpc_response = 1;
-  grpc.http_over_grpc.HTTPOverGRPCReply http_over_grpc_reply = 2;
+  grpc.http_over_grpc.HTTPOverGRPCReply http_response = 2;
 }
 
 message GetAWSRequest {}
 message GetAWSResponse {
   int64 request_id = 1;
-  ProxyAWSRequest proxy_aws_request = 2;
+  grpc.http_over_grpc.HTTPOverGRPCRequest http_request = 2;
 }
 
 message SendAWSRequest {
   int64 request_id = 1;
-  ProxyAWSRequest proxy_aws_request = 2;
+  grpc.http_over_grpc.HTTPOverGRPCReply http_response = 2;
 }
 message SendAWSResponse {}
 
@@ -138,17 +137,3 @@ message Header {
   string key = 1;
   repeated string values = 2;
 }
-
-// // These would apply to any HTTP wrapper
-// message HTTPOverGRPCRequest {
-//   string method = 1;
-//   string url = 2;
-//   repeated Header headers = 3;
-//   bytes body = 4;
-// }
-//
-// message HTTPOverGRPCResponse {
-//   int32 code = 1;
-//   repeated Header headers = 2;
-//   bytes body = 3;
-// }
