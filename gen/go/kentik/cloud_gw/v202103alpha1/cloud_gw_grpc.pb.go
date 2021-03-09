@@ -14,256 +14,254 @@ import (
 // Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
-// AWSGWInternalServiceClient is the client API for AWSGWInternalService service.
+// AwsGwInternalServiceClient is the client API for AwsGwInternalService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type AWSGWInternalServiceClient interface {
-	// Called by clients of cloud-server (Blake).
-	ProxyAWS(ctx context.Context, in *ProxyAWSRequest, opts ...grpc.CallOption) (*ProxyAWSResponse, error)
+type AwsGwInternalServiceClient interface {
+	ProxyAws(ctx context.Context, in *ProxyAwsRequest, opts ...grpc.CallOption) (*ProxyAwsResponse, error)
 }
 
-type aWSGWInternalServiceClient struct {
+type awsGwInternalServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewAWSGWInternalServiceClient(cc grpc.ClientConnInterface) AWSGWInternalServiceClient {
-	return &aWSGWInternalServiceClient{cc}
+func NewAwsGwInternalServiceClient(cc grpc.ClientConnInterface) AwsGwInternalServiceClient {
+	return &awsGwInternalServiceClient{cc}
 }
 
-func (c *aWSGWInternalServiceClient) ProxyAWS(ctx context.Context, in *ProxyAWSRequest, opts ...grpc.CallOption) (*ProxyAWSResponse, error) {
-	out := new(ProxyAWSResponse)
-	err := c.cc.Invoke(ctx, "/kentik.cloud_gw.v202103alpha1.AWSGWInternalService/ProxyAWS", in, out, opts...)
+func (c *awsGwInternalServiceClient) ProxyAws(ctx context.Context, in *ProxyAwsRequest, opts ...grpc.CallOption) (*ProxyAwsResponse, error) {
+	out := new(ProxyAwsResponse)
+	err := c.cc.Invoke(ctx, "/kentik.cloud_gw.v202103alpha1.AwsGwInternalService/ProxyAws", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// AWSGWInternalServiceServer is the server API for AWSGWInternalService service.
-// All implementations should embed UnimplementedAWSGWInternalServiceServer
+// AwsGwInternalServiceServer is the server API for AwsGwInternalService service.
+// All implementations should embed UnimplementedAwsGwInternalServiceServer
 // for forward compatibility
-type AWSGWInternalServiceServer interface {
-	// Called by clients of cloud-server (Blake).
-	ProxyAWS(context.Context, *ProxyAWSRequest) (*ProxyAWSResponse, error)
+type AwsGwInternalServiceServer interface {
+	ProxyAws(context.Context, *ProxyAwsRequest) (*ProxyAwsResponse, error)
 }
 
-// UnimplementedAWSGWInternalServiceServer should be embedded to have forward compatible implementations.
-type UnimplementedAWSGWInternalServiceServer struct {
+// UnimplementedAwsGwInternalServiceServer should be embedded to have forward compatible implementations.
+type UnimplementedAwsGwInternalServiceServer struct {
 }
 
-func (UnimplementedAWSGWInternalServiceServer) ProxyAWS(context.Context, *ProxyAWSRequest) (*ProxyAWSResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ProxyAWS not implemented")
+func (UnimplementedAwsGwInternalServiceServer) ProxyAws(context.Context, *ProxyAwsRequest) (*ProxyAwsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ProxyAws not implemented")
 }
 
-// UnsafeAWSGWInternalServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to AWSGWInternalServiceServer will
+// UnsafeAwsGwInternalServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to AwsGwInternalServiceServer will
 // result in compilation errors.
-type UnsafeAWSGWInternalServiceServer interface {
-	mustEmbedUnimplementedAWSGWInternalServiceServer()
+type UnsafeAwsGwInternalServiceServer interface {
+	mustEmbedUnimplementedAwsGwInternalServiceServer()
 }
 
-func RegisterAWSGWInternalServiceServer(s grpc.ServiceRegistrar, srv AWSGWInternalServiceServer) {
-	s.RegisterService(&AWSGWInternalService_ServiceDesc, srv)
+func RegisterAwsGwInternalServiceServer(s grpc.ServiceRegistrar, srv AwsGwInternalServiceServer) {
+	s.RegisterService(&AwsGwInternalService_ServiceDesc, srv)
 }
 
-func _AWSGWInternalService_ProxyAWS_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ProxyAWSRequest)
+func _AwsGwInternalService_ProxyAws_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ProxyAwsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AWSGWInternalServiceServer).ProxyAWS(ctx, in)
+		return srv.(AwsGwInternalServiceServer).ProxyAws(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/kentik.cloud_gw.v202103alpha1.AWSGWInternalService/ProxyAWS",
+		FullMethod: "/kentik.cloud_gw.v202103alpha1.AwsGwInternalService/ProxyAws",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AWSGWInternalServiceServer).ProxyAWS(ctx, req.(*ProxyAWSRequest))
+		return srv.(AwsGwInternalServiceServer).ProxyAws(ctx, req.(*ProxyAwsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// AWSGWInternalService_ServiceDesc is the grpc.ServiceDesc for AWSGWInternalService service.
+// AwsGwInternalService_ServiceDesc is the grpc.ServiceDesc for AwsGwInternalService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var AWSGWInternalService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "kentik.cloud_gw.v202103alpha1.AWSGWInternalService",
-	HandlerType: (*AWSGWInternalServiceServer)(nil),
+var AwsGwInternalService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "kentik.cloud_gw.v202103alpha1.AwsGwInternalService",
+	HandlerType: (*AwsGwInternalServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "ProxyAWS",
-			Handler:    _AWSGWInternalService_ProxyAWS_Handler,
+			MethodName: "ProxyAws",
+			Handler:    _AwsGwInternalService_ProxyAws_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "kentik/cloud_gw/v202103alpha1/cloud_gw.proto",
 }
 
-// AWSGWExternalServiceClient is the client API for AWSGWExternalService service.
+// AwsGwExternalServiceClient is the client API for AwsGwExternalService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type AWSGWExternalServiceClient interface {
-	// LoginAWS is used to tell the server that there's a listener active for a
-	// given region.  A proxy starts a LoginAWS, then services Get/SendAWS
-	// requests, and ends the LoginAWS via context cancellation when it shuts
+type AwsGwExternalServiceClient interface {
+	// LoginAws is used to tell the server that there's a listener active for a
+	// given region.  A proxy starts a LoginAws, then services Get/SendAws
+	// requests, and ends the LoginAws via context cancellation when it shuts
 	// down (or disconnects).
-	LoginAWS(ctx context.Context, in *LoginAWSRequest, opts ...grpc.CallOption) (*LoginAWSResponse, error)
-	// The client calls GetAWS to get a request from the server.  It runs the
-	// request, and returns the result via SendAWS, linking them together via
+	LoginAws(ctx context.Context, in *LoginAwsRequest, opts ...grpc.CallOption) (*LoginAwsResponse, error)
+	// The client calls GetAws to get a request from the server.  It runs the
+	// request, and returns the result via SendAws, linking them together via
 	// request_id.
-	GetAWS(ctx context.Context, in *GetAWSRequest, opts ...grpc.CallOption) (*GetAWSResponse, error)
-	SendAWS(ctx context.Context, in *SendAWSRequest, opts ...grpc.CallOption) (*SendAWSResponse, error)
+	GetAws(ctx context.Context, in *GetAwsRequest, opts ...grpc.CallOption) (*GetAwsResponse, error)
+	SendAws(ctx context.Context, in *SendAwsRequest, opts ...grpc.CallOption) (*SendAwsResponse, error)
 }
 
-type aWSGWExternalServiceClient struct {
+type awsGwExternalServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewAWSGWExternalServiceClient(cc grpc.ClientConnInterface) AWSGWExternalServiceClient {
-	return &aWSGWExternalServiceClient{cc}
+func NewAwsGwExternalServiceClient(cc grpc.ClientConnInterface) AwsGwExternalServiceClient {
+	return &awsGwExternalServiceClient{cc}
 }
 
-func (c *aWSGWExternalServiceClient) LoginAWS(ctx context.Context, in *LoginAWSRequest, opts ...grpc.CallOption) (*LoginAWSResponse, error) {
-	out := new(LoginAWSResponse)
-	err := c.cc.Invoke(ctx, "/kentik.cloud_gw.v202103alpha1.AWSGWExternalService/LoginAWS", in, out, opts...)
+func (c *awsGwExternalServiceClient) LoginAws(ctx context.Context, in *LoginAwsRequest, opts ...grpc.CallOption) (*LoginAwsResponse, error) {
+	out := new(LoginAwsResponse)
+	err := c.cc.Invoke(ctx, "/kentik.cloud_gw.v202103alpha1.AwsGwExternalService/LoginAws", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *aWSGWExternalServiceClient) GetAWS(ctx context.Context, in *GetAWSRequest, opts ...grpc.CallOption) (*GetAWSResponse, error) {
-	out := new(GetAWSResponse)
-	err := c.cc.Invoke(ctx, "/kentik.cloud_gw.v202103alpha1.AWSGWExternalService/GetAWS", in, out, opts...)
+func (c *awsGwExternalServiceClient) GetAws(ctx context.Context, in *GetAwsRequest, opts ...grpc.CallOption) (*GetAwsResponse, error) {
+	out := new(GetAwsResponse)
+	err := c.cc.Invoke(ctx, "/kentik.cloud_gw.v202103alpha1.AwsGwExternalService/GetAws", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *aWSGWExternalServiceClient) SendAWS(ctx context.Context, in *SendAWSRequest, opts ...grpc.CallOption) (*SendAWSResponse, error) {
-	out := new(SendAWSResponse)
-	err := c.cc.Invoke(ctx, "/kentik.cloud_gw.v202103alpha1.AWSGWExternalService/SendAWS", in, out, opts...)
+func (c *awsGwExternalServiceClient) SendAws(ctx context.Context, in *SendAwsRequest, opts ...grpc.CallOption) (*SendAwsResponse, error) {
+	out := new(SendAwsResponse)
+	err := c.cc.Invoke(ctx, "/kentik.cloud_gw.v202103alpha1.AwsGwExternalService/SendAws", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// AWSGWExternalServiceServer is the server API for AWSGWExternalService service.
-// All implementations should embed UnimplementedAWSGWExternalServiceServer
+// AwsGwExternalServiceServer is the server API for AwsGwExternalService service.
+// All implementations should embed UnimplementedAwsGwExternalServiceServer
 // for forward compatibility
-type AWSGWExternalServiceServer interface {
-	// LoginAWS is used to tell the server that there's a listener active for a
-	// given region.  A proxy starts a LoginAWS, then services Get/SendAWS
-	// requests, and ends the LoginAWS via context cancellation when it shuts
+type AwsGwExternalServiceServer interface {
+	// LoginAws is used to tell the server that there's a listener active for a
+	// given region.  A proxy starts a LoginAws, then services Get/SendAws
+	// requests, and ends the LoginAws via context cancellation when it shuts
 	// down (or disconnects).
-	LoginAWS(context.Context, *LoginAWSRequest) (*LoginAWSResponse, error)
-	// The client calls GetAWS to get a request from the server.  It runs the
-	// request, and returns the result via SendAWS, linking them together via
+	LoginAws(context.Context, *LoginAwsRequest) (*LoginAwsResponse, error)
+	// The client calls GetAws to get a request from the server.  It runs the
+	// request, and returns the result via SendAws, linking them together via
 	// request_id.
-	GetAWS(context.Context, *GetAWSRequest) (*GetAWSResponse, error)
-	SendAWS(context.Context, *SendAWSRequest) (*SendAWSResponse, error)
+	GetAws(context.Context, *GetAwsRequest) (*GetAwsResponse, error)
+	SendAws(context.Context, *SendAwsRequest) (*SendAwsResponse, error)
 }
 
-// UnimplementedAWSGWExternalServiceServer should be embedded to have forward compatible implementations.
-type UnimplementedAWSGWExternalServiceServer struct {
+// UnimplementedAwsGwExternalServiceServer should be embedded to have forward compatible implementations.
+type UnimplementedAwsGwExternalServiceServer struct {
 }
 
-func (UnimplementedAWSGWExternalServiceServer) LoginAWS(context.Context, *LoginAWSRequest) (*LoginAWSResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method LoginAWS not implemented")
+func (UnimplementedAwsGwExternalServiceServer) LoginAws(context.Context, *LoginAwsRequest) (*LoginAwsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method LoginAws not implemented")
 }
-func (UnimplementedAWSGWExternalServiceServer) GetAWS(context.Context, *GetAWSRequest) (*GetAWSResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAWS not implemented")
+func (UnimplementedAwsGwExternalServiceServer) GetAws(context.Context, *GetAwsRequest) (*GetAwsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAws not implemented")
 }
-func (UnimplementedAWSGWExternalServiceServer) SendAWS(context.Context, *SendAWSRequest) (*SendAWSResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SendAWS not implemented")
+func (UnimplementedAwsGwExternalServiceServer) SendAws(context.Context, *SendAwsRequest) (*SendAwsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SendAws not implemented")
 }
 
-// UnsafeAWSGWExternalServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to AWSGWExternalServiceServer will
+// UnsafeAwsGwExternalServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to AwsGwExternalServiceServer will
 // result in compilation errors.
-type UnsafeAWSGWExternalServiceServer interface {
-	mustEmbedUnimplementedAWSGWExternalServiceServer()
+type UnsafeAwsGwExternalServiceServer interface {
+	mustEmbedUnimplementedAwsGwExternalServiceServer()
 }
 
-func RegisterAWSGWExternalServiceServer(s grpc.ServiceRegistrar, srv AWSGWExternalServiceServer) {
-	s.RegisterService(&AWSGWExternalService_ServiceDesc, srv)
+func RegisterAwsGwExternalServiceServer(s grpc.ServiceRegistrar, srv AwsGwExternalServiceServer) {
+	s.RegisterService(&AwsGwExternalService_ServiceDesc, srv)
 }
 
-func _AWSGWExternalService_LoginAWS_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(LoginAWSRequest)
+func _AwsGwExternalService_LoginAws_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(LoginAwsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AWSGWExternalServiceServer).LoginAWS(ctx, in)
+		return srv.(AwsGwExternalServiceServer).LoginAws(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/kentik.cloud_gw.v202103alpha1.AWSGWExternalService/LoginAWS",
+		FullMethod: "/kentik.cloud_gw.v202103alpha1.AwsGwExternalService/LoginAws",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AWSGWExternalServiceServer).LoginAWS(ctx, req.(*LoginAWSRequest))
+		return srv.(AwsGwExternalServiceServer).LoginAws(ctx, req.(*LoginAwsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AWSGWExternalService_GetAWS_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetAWSRequest)
+func _AwsGwExternalService_GetAws_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAwsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AWSGWExternalServiceServer).GetAWS(ctx, in)
+		return srv.(AwsGwExternalServiceServer).GetAws(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/kentik.cloud_gw.v202103alpha1.AWSGWExternalService/GetAWS",
+		FullMethod: "/kentik.cloud_gw.v202103alpha1.AwsGwExternalService/GetAws",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AWSGWExternalServiceServer).GetAWS(ctx, req.(*GetAWSRequest))
+		return srv.(AwsGwExternalServiceServer).GetAws(ctx, req.(*GetAwsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AWSGWExternalService_SendAWS_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SendAWSRequest)
+func _AwsGwExternalService_SendAws_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SendAwsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AWSGWExternalServiceServer).SendAWS(ctx, in)
+		return srv.(AwsGwExternalServiceServer).SendAws(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/kentik.cloud_gw.v202103alpha1.AWSGWExternalService/SendAWS",
+		FullMethod: "/kentik.cloud_gw.v202103alpha1.AwsGwExternalService/SendAws",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AWSGWExternalServiceServer).SendAWS(ctx, req.(*SendAWSRequest))
+		return srv.(AwsGwExternalServiceServer).SendAws(ctx, req.(*SendAwsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// AWSGWExternalService_ServiceDesc is the grpc.ServiceDesc for AWSGWExternalService service.
+// AwsGwExternalService_ServiceDesc is the grpc.ServiceDesc for AwsGwExternalService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var AWSGWExternalService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "kentik.cloud_gw.v202103alpha1.AWSGWExternalService",
-	HandlerType: (*AWSGWExternalServiceServer)(nil),
+var AwsGwExternalService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "kentik.cloud_gw.v202103alpha1.AwsGwExternalService",
+	HandlerType: (*AwsGwExternalServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "LoginAWS",
-			Handler:    _AWSGWExternalService_LoginAWS_Handler,
+			MethodName: "LoginAws",
+			Handler:    _AwsGwExternalService_LoginAws_Handler,
 		},
 		{
-			MethodName: "GetAWS",
-			Handler:    _AWSGWExternalService_GetAWS_Handler,
+			MethodName: "GetAws",
+			Handler:    _AwsGwExternalService_GetAws_Handler,
 		},
 		{
-			MethodName: "SendAWS",
-			Handler:    _AWSGWExternalService_SendAWS_Handler,
+			MethodName: "SendAws",
+			Handler:    _AwsGwExternalService_SendAws_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -10,10 +10,10 @@
   },
   "tags": [
     {
-      "name": "AWSGWInternalService"
+      "name": "AwsGwInternalService"
     },
     {
-      "name": "AWSGWExternalService"
+      "name": "AwsGwExternalService"
     }
   ],
   "schemes": [
@@ -28,13 +28,13 @@
   "paths": {
     "/cloud_gw/v202103alpha1/get_aws": {
       "get": {
-        "summary": "The client calls GetAWS to get a request from the server.  It runs the\nrequest, and returns the result via SendAWS, linking them together via\nrequest_id.",
-        "operationId": "AWSGWExternalService_GetAWS",
+        "summary": "The client calls GetAws to get a request from the server.  It runs the\nrequest, and returns the result via SendAws, linking them together via\nrequest_id.",
+        "operationId": "AwsGwExternalService_GetAws",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v202103alpha1GetAWSResponse"
+              "$ref": "#/definitions/v202103alpha1GetAwsResponse"
             }
           },
           "default": {
@@ -45,19 +45,19 @@
           }
         },
         "tags": [
-          "AWSGWExternalService"
+          "AwsGwExternalService"
         ]
       }
     },
     "/cloud_gw/v202103alpha1/login_aws": {
       "get": {
-        "summary": "LoginAWS is used to tell the server that there's a listener active for a\ngiven region.  A proxy starts a LoginAWS, then services Get/SendAWS\nrequests, and ends the LoginAWS via context cancellation when it shuts\ndown (or disconnects).",
-        "operationId": "AWSGWExternalService_LoginAWS",
+        "summary": "LoginAws is used to tell the server that there's a listener active for a\ngiven region.  A proxy starts a LoginAws, then services Get/SendAws\nrequests, and ends the LoginAws via context cancellation when it shuts\ndown (or disconnects).",
+        "operationId": "AwsGwExternalService_LoginAws",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v202103alpha1LoginAWSResponse"
+              "$ref": "#/definitions/v202103alpha1LoginAwsResponse"
             }
           },
           "default": {
@@ -73,22 +73,27 @@
             "in": "query",
             "required": false,
             "type": "string"
+          },
+          {
+            "name": "arn",
+            "in": "query",
+            "required": false,
+            "type": "string"
           }
         ],
         "tags": [
-          "AWSGWExternalService"
+          "AwsGwExternalService"
         ]
       }
     },
     "/cloud_gw/v202103alpha1/proxy_aws": {
       "post": {
-        "summary": "Called by clients of cloud-server (Blake).",
-        "operationId": "AWSGWInternalService_ProxyAWS",
+        "operationId": "AwsGwInternalService_ProxyAws",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v202103alpha1ProxyAWSResponse"
+              "$ref": "#/definitions/v202103alpha1ProxyAwsResponse"
             }
           },
           "default": {
@@ -104,23 +109,23 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202103alpha1ProxyAWSRequest"
+              "$ref": "#/definitions/v202103alpha1ProxyAwsRequest"
             }
           }
         ],
         "tags": [
-          "AWSGWInternalService"
+          "AwsGwInternalService"
         ]
       }
     },
     "/cloud_gw/v202103alpha1/send_aws": {
       "post": {
-        "operationId": "AWSGWExternalService_SendAWS",
+        "operationId": "AwsGwExternalService_SendAws",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v202103alpha1SendAWSResponse"
+              "$ref": "#/definitions/v202103alpha1SendAwsResponse"
             }
           },
           "default": {
@@ -136,12 +141,12 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202103alpha1SendAWSRequest"
+              "$ref": "#/definitions/v202103alpha1SendAwsRequest"
             }
           }
         ],
         "tags": [
-          "AWSGWExternalService"
+          "AwsGwExternalService"
         ]
       }
     }
@@ -241,7 +246,7 @@
         }
       }
     },
-    "v202103alpha1GetAWSResponse": {
+    "v202103alpha1GetAwsResponse": {
       "type": "object",
       "properties": {
         "requestId": {
@@ -253,13 +258,16 @@
         }
       }
     },
-    "v202103alpha1LoginAWSResponse": {
+    "v202103alpha1LoginAwsResponse": {
       "type": "object"
     },
-    "v202103alpha1ProxyAWSRequest": {
+    "v202103alpha1ProxyAwsRequest": {
       "type": "object",
       "properties": {
         "region": {
+          "type": "string"
+        },
+        "arn": {
           "type": "string"
         },
         "httpRequest": {
@@ -268,7 +276,7 @@
       },
       "title": "cid from headers / context"
     },
-    "v202103alpha1ProxyAWSResponse": {
+    "v202103alpha1ProxyAwsResponse": {
       "type": "object",
       "properties": {
         "httpResponse": {
@@ -277,7 +285,7 @@
         }
       }
     },
-    "v202103alpha1SendAWSRequest": {
+    "v202103alpha1SendAwsRequest": {
       "type": "object",
       "properties": {
         "requestId": {
@@ -289,7 +297,7 @@
         }
       }
     },
-    "v202103alpha1SendAWSResponse": {
+    "v202103alpha1SendAwsResponse": {
       "type": "object"
     }
   },

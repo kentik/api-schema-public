@@ -58,45 +58,51 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   }
 };
 
-// Was "HTTP"
-service AWSGWInternalService {
+// Called by clients of cloud-server (Blake).
+service AwsGwInternalService {
   option (google.api.default_host) = "cloud_gw.api.kentik.com";
   option (kentik.core.v202012alpha1.service_scope) = "admin.cloud_gw";
 
-  // Called by clients of cloud-server (Blake).
-  rpc ProxyAWS(ProxyAWSRequest) returns (ProxyAWSResponse) {
+  rpc ProxyAws(ProxyAwsRequest) returns (ProxyAwsResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_gw:read";
     option (google.api.http) = {
       post: "/cloud_gw/v202103alpha1/proxy_aws"
       body: "*"
     };
   }
+
+  // rpc ListAwsArns(ListAwsArnsRequest) returns (ListAwsArnsResponse) {
+  //   option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_gw:read";
+  //   option (google.api.http) = {
+  //     get: "/cloud_gw/v202103alpha1/list_aws_arns"
+  //   };
+  // }
 }
 
-// Also was "HTTP"
-service AWSGWExternalService {
-  // LoginAWS is used to tell the server that there's a listener active for a
-  // given region.  A proxy starts a LoginAWS, then services Get/SendAWS
-  // requests, and ends the LoginAWS via context cancellation when it shuts
+// Called by cloud-api-proxy instances in transfluo & orangeflow.
+service AwsGwExternalService {
+  // LoginAws is used to tell the server that there's a listener active for a
+  // given region.  A proxy starts a LoginAws, then services Get/SendAws
+  // requests, and ends the LoginAws via context cancellation when it shuts
   // down (or disconnects).
-  rpc LoginAWS(LoginAWSRequest) returns (LoginAWSResponse) {
+  rpc LoginAws(LoginAwsRequest) returns (LoginAwsResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_gw:read";
     option (google.api.http) = {
       get: "/cloud_gw/v202103alpha1/login_aws"
     };
   }
 
-  // The client calls GetAWS to get a request from the server.  It runs the
-  // request, and returns the result via SendAWS, linking them together via
+  // The client calls GetAws to get a request from the server.  It runs the
+  // request, and returns the result via SendAws, linking them together via
   // request_id.
-  rpc GetAWS(GetAWSRequest) returns (GetAWSResponse) {
+  rpc GetAws(GetAwsRequest) returns (GetAwsResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_gw:read";
     option (google.api.http) = {
       get: "/cloud_gw/v202103alpha1/get_aws"
     };
   }
 
-  rpc SendAWS(SendAWSRequest) returns (SendAWSResponse) {
+  rpc SendAws(SendAwsRequest) returns (SendAwsResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_gw:read";
     option (google.api.http) = {
       post: "/cloud_gw/v202103alpha1/send_aws"
@@ -105,33 +111,47 @@ service AWSGWExternalService {
   }
 }
 
-message LoginAWSRequest {
+message LoginAwsRequest {
   string region = 1;
+  string arn = 2;
 }
-message LoginAWSResponse {}
+message LoginAwsResponse {}
 
 // cid from headers / context
-message ProxyAWSRequest {
+message ProxyAwsRequest {
   string region = 1;
-  grpc.http_over_grpc.HTTPOverGRPCRequest http_request = 2;
+  string arn = 2;
+  grpc.http_over_grpc.HTTPOverGRPCRequest http_request = 3;
 }
 
-message ProxyAWSResponse {
+message ProxyAwsResponse {
   // HTTPOverGRPCResponse http_over_grpc_response = 1;
   grpc.http_over_grpc.HTTPOverGRPCReply http_response = 2;
 }
 
-message GetAWSRequest {}
-message GetAWSResponse {
+// message ListAwsArnsRequest {}
+//
+// message ListAwsArnsResponse {
+//   // key is cid
+//   map<int32, CompanyArns> company_arns = 1;
+// }
+//
+// message CompanyArns {
+//   // key is region
+//   map<string, string> region_arns = 1;
+// }
+
+message GetAwsRequest {}
+message GetAwsResponse {
   int64 request_id = 1;
   grpc.http_over_grpc.HTTPOverGRPCRequest http_request = 2;
 }
 
-message SendAWSRequest {
+message SendAwsRequest {
   int64 request_id = 1;
   grpc.http_over_grpc.HTTPOverGRPCReply http_response = 2;
 }
-message SendAWSResponse {}
+message SendAwsResponse {}
 
 message Header {
   string key = 1;
