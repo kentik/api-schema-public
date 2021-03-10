@@ -44,6 +44,21 @@
             }
           }
         },
+        "parameters": [
+          {
+            "name": "region",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "callerId",
+            "description": "caller_id in LoginAwsRequest must be the same as caller_id in all\nGetAwsRequests.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
         "tags": [
           "AwsGwExternalService"
         ]
@@ -94,6 +109,13 @@
             "name": "region",
             "in": "path",
             "required": true,
+            "type": "string"
+          },
+          {
+            "name": "callerId",
+            "description": "caller_id in LoginAwsRequest must be the same as caller_id in all\nGetAwsRequests.",
+            "in": "query",
+            "required": false,
             "type": "string"
           }
         ],
@@ -404,7 +426,7 @@
           "title": "key is cid"
         }
       },
-      "description": "Very similar to ListAwsRolesResponse.  Could later add a flag that allows a\npartial update, instead of a full list, but for now we expect a complete\nlist each time."
+      "description": "Very similar to ListAwsRolesResponse.  Could later add a flag that allows a\npartial update, instead of a full list, but for now we expect a complete\nlist per cid each time."
     },
     "v202103alpha1SendAwsRolesResponse": {
       "type": "object"

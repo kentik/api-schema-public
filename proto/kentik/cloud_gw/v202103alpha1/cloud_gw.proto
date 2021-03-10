@@ -121,6 +121,9 @@ service AwsGwExternalService {
 
 message LoginAwsRequest {
   string region = 1;
+  // caller_id in LoginAwsRequest must be the same as caller_id in all
+  // GetAwsRequests.
+  string caller_id = 2;
 }
 message LoginAwsResponse {}
 
@@ -143,7 +146,7 @@ message ListAwsRolesResponse {
 
 // Very similar to ListAwsRolesResponse.  Could later add a flag that allows a
 // partial update, instead of a full list, but for now we expect a complete
-// list each time.
+// list per cid each time.
 message SendAwsRolesRequest {
   // key is cid
   map<int32, CompanyRoles> company_roles = 1;
@@ -160,7 +163,13 @@ message RoleList {
   repeated string roles = 1;
 }
 
-message GetAwsRequest {}
+message GetAwsRequest {
+  string region = 1;
+  // caller_id in LoginAwsRequest must be the same as caller_id in all
+  // GetAwsRequests.
+  string caller_id = 2;
+}
+
 message GetAwsResponse {
   int64 request_id = 1;
   grpc.http_over_grpc.HTTPOverGRPCRequest http_request = 2;
