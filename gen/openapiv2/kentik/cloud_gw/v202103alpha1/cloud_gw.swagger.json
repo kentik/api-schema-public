@@ -28,7 +28,7 @@
   "paths": {
     "/cloud_gw/v202103alpha1/get_aws": {
       "get": {
-        "summary": "The client calls GetAws to get a request from the server.  It runs the\nrequest, and returns the result via SendAws, linking them together via\nrequest_id.",
+        "summary": "The client calls GetAws to get a request from the gateway.  It runs the\nrequest, and returns the result via SendAws, linking them together via\nrequest_id.",
         "operationId": "AwsGwExternalService_GetAws",
         "responses": {
           "200": {
@@ -49,9 +49,31 @@
         ]
       }
     },
-    "/cloud_gw/v202103alpha1/login_aws": {
+    "/cloud_gw/v202103alpha1/list_aws_roles": {
       "get": {
-        "summary": "LoginAws is used to tell the server that there's a listener active for a\ngiven region.  A proxy starts a LoginAws, then services Get/SendAws\nrequests, and ends the LoginAws via context cancellation when it shuts\ndown (or disconnects).",
+        "operationId": "AwsGwInternalService_ListAwsRoles",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202103alpha1ListAwsRolesResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "AwsGwInternalService"
+        ]
+      }
+    },
+    "/cloud_gw/v202103alpha1/login_aws/{region}": {
+      "get": {
+        "summary": "LoginAws is used to tell the gateway that there's a listener active for a\ngiven region.  A proxy starts a LoginAws, then services Get/SendAws\nrequests, and ends the LoginAws via context cancellation when it shuts\ndown (or disconnects).",
         "operationId": "AwsGwExternalService_LoginAws",
         "responses": {
           "200": {
@@ -70,14 +92,8 @@
         "parameters": [
           {
             "name": "region",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "arn",
-            "in": "query",
-            "required": false,
+            "in": "path",
+            "required": true,
             "type": "string"
           }
         ],
@@ -86,7 +102,7 @@
         ]
       }
     },
-    "/cloud_gw/v202103alpha1/proxy_aws": {
+    "/cloud_gw/v202103alpha1/proxy_aws/{region}": {
       "post": {
         "operationId": "AwsGwInternalService_ProxyAws",
         "responses": {
@@ -105,6 +121,12 @@
         },
         "parameters": [
           {
+            "name": "region",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
             "name": "body",
             "in": "body",
             "required": true,
@@ -118,7 +140,7 @@
         ]
       }
     },
-    "/cloud_gw/v202103alpha1/send_aws": {
+    "/cloud_gw/v202103alpha1/send_aws/{requestId}": {
       "post": {
         "operationId": "AwsGwExternalService_SendAws",
         "responses": {
@@ -137,11 +159,50 @@
         },
         "parameters": [
           {
+            "name": "requestId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
             "name": "body",
             "in": "body",
             "required": true,
             "schema": {
               "$ref": "#/definitions/v202103alpha1SendAwsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AwsGwExternalService"
+        ]
+      }
+    },
+    "/cloud_gw/v202103alpha1/send_aws_roles": {
+      "post": {
+        "operationId": "AwsGwExternalService_SendAwsRoles",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202103alpha1SendAwsRolesResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202103alpha1SendAwsRolesRequest"
             }
           }
         ],
@@ -246,6 +307,18 @@
         }
       }
     },
+    "v202103alpha1CompanyRoles": {
+      "type": "object",
+      "properties": {
+        "regionRoles": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/v202103alpha1RoleList"
+          },
+          "title": "key is region"
+        }
+      }
+    },
     "v202103alpha1GetAwsResponse": {
       "type": "object",
       "properties": {
@@ -258,6 +331,18 @@
         }
       }
     },
+    "v202103alpha1ListAwsRolesResponse": {
+      "type": "object",
+      "properties": {
+        "companyRoles": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/v202103alpha1CompanyRoles"
+          },
+          "title": "key is cid"
+        }
+      }
+    },
     "v202103alpha1LoginAwsResponse": {
       "type": "object"
     },
@@ -265,9 +350,6 @@
       "type": "object",
       "properties": {
         "region": {
-          "type": "string"
-        },
-        "arn": {
           "type": "string"
         },
         "httpRequest": {
@@ -285,6 +367,17 @@
         }
       }
     },
+    "v202103alpha1RoleList": {
+      "type": "object",
+      "properties": {
+        "roles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "v202103alpha1SendAwsRequest": {
       "type": "object",
       "properties": {
@@ -298,6 +391,22 @@
       }
     },
     "v202103alpha1SendAwsResponse": {
+      "type": "object"
+    },
+    "v202103alpha1SendAwsRolesRequest": {
+      "type": "object",
+      "properties": {
+        "companyRoles": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/v202103alpha1CompanyRoles"
+          },
+          "title": "key is cid"
+        }
+      },
+      "description": "Very similar to ListAwsRolesResponse.  Could later add a flag that allows a\npartial update, instead of a full list, but for now we expect a complete\nlist each time."
+    },
+    "v202103alpha1SendAwsRolesResponse": {
       "type": "object"
     }
   },

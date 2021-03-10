@@ -58,54 +58,62 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   }
 };
 
-// Called by clients of cloud-server (Blake).
+// Called by clients of cloud-gw (Blake).
 service AwsGwInternalService {
   option (google.api.default_host) = "cloud_gw.api.kentik.com";
   option (kentik.core.v202012alpha1.service_scope) = "admin.cloud_gw";
 
   rpc ProxyAws(ProxyAwsRequest) returns (ProxyAwsResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_gw:read";
+    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_gw:write";
     option (google.api.http) = {
-      post: "/cloud_gw/v202103alpha1/proxy_aws"
+      post: "/cloud_gw/v202103alpha1/proxy_aws/{region}"
       body: "*"
     };
   }
 
-  // rpc ListAwsArns(ListAwsArnsRequest) returns (ListAwsArnsResponse) {
-  //   option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_gw:read";
-  //   option (google.api.http) = {
-  //     get: "/cloud_gw/v202103alpha1/list_aws_arns"
-  //   };
-  // }
+  rpc ListAwsRoles(ListAwsRolesRequest) returns (ListAwsRolesResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_gw:read";
+    option (google.api.http) = {
+      get: "/cloud_gw/v202103alpha1/list_aws_roles"
+    };
+  }
 }
 
 // Called by cloud-api-proxy instances in transfluo & orangeflow.
 service AwsGwExternalService {
-  // LoginAws is used to tell the server that there's a listener active for a
+  // LoginAws is used to tell the gateway that there's a listener active for a
   // given region.  A proxy starts a LoginAws, then services Get/SendAws
   // requests, and ends the LoginAws via context cancellation when it shuts
   // down (or disconnects).
   rpc LoginAws(LoginAwsRequest) returns (LoginAwsResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_gw:read";
+    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_gw:write";
     option (google.api.http) = {
-      get: "/cloud_gw/v202103alpha1/login_aws"
+      get: "/cloud_gw/v202103alpha1/login_aws/{region}"
     };
   }
 
-  // The client calls GetAws to get a request from the server.  It runs the
+  // The client calls GetAws to get a request from the gateway.  It runs the
   // request, and returns the result via SendAws, linking them together via
   // request_id.
   rpc GetAws(GetAwsRequest) returns (GetAwsResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_gw:read";
+    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_gw:write";
     option (google.api.http) = {
       get: "/cloud_gw/v202103alpha1/get_aws"
     };
   }
 
   rpc SendAws(SendAwsRequest) returns (SendAwsResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_gw:read";
+    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_gw:write";
     option (google.api.http) = {
-      post: "/cloud_gw/v202103alpha1/send_aws"
+      post: "/cloud_gw/v202103alpha1/send_aws/{request_id}"
+      body: "*"
+    };
+  }
+
+  rpc SendAwsRoles(SendAwsRolesRequest) returns (SendAwsRolesResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_gw:write";
+    option (google.api.http) = {
+      post: "/cloud_gw/v202103alpha1/send_aws_roles"
       body: "*"
     };
   }
@@ -113,14 +121,12 @@ service AwsGwExternalService {
 
 message LoginAwsRequest {
   string region = 1;
-  string arn = 2;
 }
 message LoginAwsResponse {}
 
 // cid from headers / context
 message ProxyAwsRequest {
   string region = 1;
-  string arn = 2;
   grpc.http_over_grpc.HTTPOverGRPCRequest http_request = 3;
 }
 
@@ -129,17 +135,30 @@ message ProxyAwsResponse {
   grpc.http_over_grpc.HTTPOverGRPCReply http_response = 2;
 }
 
-// message ListAwsArnsRequest {}
-//
-// message ListAwsArnsResponse {
-//   // key is cid
-//   map<int32, CompanyArns> company_arns = 1;
-// }
-//
-// message CompanyArns {
-//   // key is region
-//   map<string, string> region_arns = 1;
-// }
+message ListAwsRolesRequest {}
+message ListAwsRolesResponse {
+  // key is cid
+  map<int32, CompanyRoles> company_roles = 1;
+}
+
+// Very similar to ListAwsRolesResponse.  Could later add a flag that allows a
+// partial update, instead of a full list, but for now we expect a complete
+// list each time.
+message SendAwsRolesRequest {
+  // key is cid
+  map<int32, CompanyRoles> company_roles = 1;
+}
+
+message SendAwsRolesResponse {}
+
+message CompanyRoles {
+  // key is region
+  map<string, RoleList> region_roles = 1;
+}
+
+message RoleList {
+  repeated string roles = 1;
+}
 
 message GetAwsRequest {}
 message GetAwsResponse {
