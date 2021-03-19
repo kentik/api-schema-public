@@ -18,7 +18,7 @@
 // 	protoc        v3.13.0
 // source: grpc/http_over_grpc/http_over_grpc.proto
 
-package grpc_http_over_grpc
+package http_over_grpc
 
 import (
 	proto "github.com/golang/protobuf/proto"
