@@ -25,7 +25,9 @@
   "paths": {
     "/cloud_export/v202101beta1/exports": {
       "get": {
-        "operationId": "CloudExportAdminService_ListCloudExport",
+        "summary": "List Cloud Export.",
+        "description": "Returns a list of cloud export.",
+        "operationId": "ExportList",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -45,7 +47,9 @@
         ]
       },
       "post": {
-        "operationId": "CloudExportAdminService_CreateCloudExport",
+        "summary": "Create Cloud Export.",
+        "description": "Create cloud export from request. Returns created export.",
+        "operationId": "ExportCreate",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -77,7 +81,9 @@
     },
     "/cloud_export/v202101beta1/exports/{export.id}": {
       "put": {
-        "operationId": "CloudExportAdminService_UpdateCloudExport",
+        "summary": "Update an export",
+        "description": "Replaces the entire export attributes specified with id.",
+        "operationId": "ExportUpdate",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -114,7 +120,9 @@
         ]
       },
       "patch": {
-        "operationId": "CloudExportAdminService_PatchCloudExport",
+        "summary": "Patch an export",
+        "description": "Partially Updates the attributes of export specified with id and update_mask fields.",
+        "operationId": "ExportPatch",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -151,7 +159,9 @@
         ]
       },
       "get": {
-        "operationId": "CloudExportAdminService_GetCloudExport",
+        "summary": "Get information about an export",
+        "description": "Returns information about export specified with export ID.",
+        "operationId": "ExportGet",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -179,7 +189,9 @@
         ]
       },
       "delete": {
-        "operationId": "CloudExportAdminService_DeleteCloudExport",
+        "summary": "Delete an export",
+        "description": "Deletes the export specified with id.",
+        "operationId": "ExportDelete",
         "responses": {
           "200": {
             "description": "A successful response.",

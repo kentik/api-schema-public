@@ -237,6 +237,11 @@ service CloudExportAdminService {
       post: "/cloud_export/v202101beta1/exports"
       body: "*"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ExportCreate"
+      summary: "Create Cloud Export."
+      description: "Create cloud export from request. Returns created export."
+    };
   }
 
   rpc ListCloudExport(ListCloudExportRequest) returns (ListCloudExportResponse) {
@@ -244,12 +249,22 @@ service CloudExportAdminService {
     option (google.api.http) = {
       get: "/cloud_export/v202101beta1/exports"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ExportList"
+      summary: "List Cloud Export."
+      description: "Returns a list of cloud export."
+    };
   }
 
   rpc GetCloudExport(GetCloudExportRequest) returns (GetCloudExportResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_export:read";
     option (google.api.http) = {
       get: "/cloud_export/v202101beta1/exports/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ExportGet"
+      summary: "Get information about an export"
+      description: "Returns information about export specified with export ID."
     };
   }
 
@@ -259,6 +274,11 @@ service CloudExportAdminService {
       patch: "/cloud_export/v202101beta1/exports/{export.id}"
       body: "*"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ExportPatch"
+      summary: "Patch an export"
+      description: "Partially Updates the attributes of export specified with id and update_mask fields."
+    };
   }
 
   rpc UpdateCloudExport(UpdateCloudExportRequest) returns (UpdateCloudExportResponse) {
@@ -267,12 +287,22 @@ service CloudExportAdminService {
       put: "/cloud_export/v202101beta1/exports/{export.id}"
       body: "*"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ExportUpdate"
+      summary: "Update an export"
+      description: "Replaces the entire export attributes specified with id."
+    };
   }
 
   rpc DeleteCloudExport(DeleteCloudExportRequest) returns (DeleteCloudExportResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_export:write";
     option (google.api.http) = {
       delete: "/cloud_export/v202101beta1/exports/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ExportDelete"
+      summary: "Delete an export"
+      description: "Deletes the export specified with id."
     };
   }
 }
