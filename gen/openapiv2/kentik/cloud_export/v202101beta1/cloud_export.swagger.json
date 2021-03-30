@@ -81,7 +81,7 @@
     },
     "/cloud_export/v202101beta1/exports/{export.id}": {
       "put": {
-        "summary": "Update an export",
+        "summary": "Update an export.",
         "description": "Replaces the entire export attributes specified with id.",
         "operationId": "ExportUpdate",
         "responses": {
@@ -120,7 +120,7 @@
         ]
       },
       "patch": {
-        "summary": "Patch an export",
+        "summary": "Patch an export.",
         "description": "Partially Updates the attributes of export specified with id and update_mask fields.",
         "operationId": "ExportPatch",
         "responses": {
@@ -159,7 +159,7 @@
         ]
       },
       "get": {
-        "summary": "Get information about an export",
+        "summary": "Get information about an export.",
         "description": "Returns information about export specified with export ID.",
         "operationId": "ExportGet",
         "responses": {
@@ -189,7 +189,7 @@
         ]
       },
       "delete": {
-        "summary": "Delete an export",
+        "summary": "Delete an export.",
         "description": "Deletes the export specified with id.",
         "operationId": "ExportDelete",
         "responses": {

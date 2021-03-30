@@ -68,17 +68,26 @@ message Health {
   google.protobuf.Timestamp time = 2;
 }
 
+message AgentTaskConfig {
+  uint64 id = 1;
+  repeated string targets = 2;
+}
+
 message TestHealth {
   string test_id = 1;
   repeated TaskHealth tasks = 2;
   Health overall_health = 3;
   repeated Health health_ts = 4;
+  repeated AgentTaskConfig agent_task_config = 5;
+  repeated MeshResponse mesh = 6;
+
 }
 
 message TaskHealth {
   Task task = 1;
   repeated AgentHealth agents = 2;
   Health overall_health = 3;
+  Agent target_agent = 4;
 }
 
 message AgentHealth {
@@ -355,19 +364,22 @@ message UrlTest {
 }
 
 // TODO: Mesh support
-
 message MeshResponse {
-  string name = 1;
-  string agent_id = 2;
-  string agent_local_ip = 3;
-  string agent_ip = 4;
-  repeated MeshColumn columns = 5;
+  string id = 1;
+  string name = 2;
+  string local_ip = 3;
+  string ip = 4;
+  string alias = 5;
+  repeated MeshColumn columns = 6;
 }
 
 message MeshColumn {
-  string name = 1;
-  string agent_id = 2;
-  MeshMetrics metrics = 3;
+  string id = 1;
+  string name = 2;
+  string alias = 3;
+  string target = 4;
+  MeshMetrics metrics = 5;
+  repeated MeshMetrics health = 6;
 }
 
 message MeshMetric {
@@ -396,15 +408,15 @@ message Country {
 }
 
 message Region {
-  string code = 1;
+  int64 id = 1;
   string name = 2;
 }
 
 message City {
   string id = 1;
   string name = 2;
-  double lat = 8;
-  double long = 9;
+  double latitude = 8;
+  double longitude = 9;
 }
 
 message Geo {
@@ -413,10 +425,15 @@ message Geo {
   City city = 3;
 }
 
+message DNS {
+  string name = 1;
+}
+
 message IPInfo {
   string ip = 1;
   ASN asn = 2;
   Geo geo = 3;
+  DNS dns = 4;
 }
 
 message TraceHop {
@@ -460,6 +477,8 @@ message GetHealthForTestsRequest {
 
   // Optionally only look at a subset of tasks -- this lets you limit targets.
   repeated string task_ids = 5;
+
+  bool augment = 6;
 }
 
 message GetHealthForTestsResponse {
@@ -485,7 +504,7 @@ message GetTraceForTestRequest {
 
 message GetTraceForTestResponse {
   repeated IPInfo ip_info = 1;
-  repeated TracerouteResult results = 2;
+  repeated TracerouteResult trace_routes = 2;
 }
 
 service SyntheticsDataService {
@@ -499,6 +518,11 @@ service SyntheticsDataService {
       post: "/synthetics/v202101beta1/health/tests"
       body: "*"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetHealthForTests"
+      summary: "Get health status for synthetics test."
+      description: "Get synthetics health test for login user. Also returns mesh data on request."
+    };
   }
 
   // TODO: Get traces for a single test. Not implemented.
@@ -507,6 +531,11 @@ service SyntheticsDataService {
     option (google.api.http) = {
       post: "/synthetics/v202101beta1/tests/{id}/results/trace"
       body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetTraceForTest"
+      summary: "Get trace route data."
+      description: "Get trace route data for the specific test id."
     };
   }
 }
@@ -607,6 +636,11 @@ service SyntheticsAdminService {
     option (google.api.http) = {
       get: "/synthetics/v202101beta1/agents"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "AgentsList"
+      summary: "List Agents."
+      description: "Returns a list of agents."
+    };
   }
 
   rpc CreateAgent(CreateAgentRequest) returns (CreateAgentResponse) {
@@ -615,12 +649,22 @@ service SyntheticsAdminService {
       post: "/synthetics/v202101beta1/agents"
       body: "*"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "AgentCreate"
+      summary: "Create Agent."
+      description: "Create agent from request. Returns created agent."
+    };
   }
 
   rpc GetAgent(GetAgentRequest) returns (GetAgentResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:read";
     option (google.api.http) = {
       get: "/synthetics/v202101beta1/agents/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "AgentGet"
+      summary: "Get information about an agent."
+      description: "Returns information about export specified with export ID."
     };
   }
 
@@ -630,12 +674,22 @@ service SyntheticsAdminService {
       patch: "/synthetics/v202101beta1/agents/{agent.id}"
       body: "*"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "AgentPatch"
+      summary: "Patch an agent."
+      description: "Partially Updates the attributes of agent specified with id and update_mask fields."
+    };
   }
 
   rpc DeleteAgent(DeleteAgentRequest) returns (DeleteAgentResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:write";
     option (google.api.http) = {
       delete: "/synthetics/v202101beta1/agents/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "AgentDelete"
+      summary: "Delete an agent."
+      description: "Deletes the agent specified with id."
     };
   }
 
@@ -646,6 +700,11 @@ service SyntheticsAdminService {
     option (google.api.http) = {
       get: "/synthetics/v202101beta1/tests"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "TestsList"
+      summary: "List Synthetics Tests."
+      description: "Returns a list of syntehtics tests."
+    };
   }
 
   rpc CreateTest(CreateTestRequest) returns (CreateTestResponse) {
@@ -654,12 +713,22 @@ service SyntheticsAdminService {
       post: "/synthetics/v202101beta1/tests"
       body: "*"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "TestCreate"
+      summary: "Create Synthetics Test."
+      description: "Create synthetics test from request. Returns created test."
+    };
   }
 
   rpc GetTest(GetTestRequest) returns (GetTestResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:read";
     option (google.api.http) = {
       get: "/synthetics/v202101beta1/tests/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "TestGet"
+      summary: "Get information about Synthetics Test."
+      description: "Returns information about synthetics test specified with test ID."
     };
   }
 
@@ -669,6 +738,11 @@ service SyntheticsAdminService {
       put: "/synthetics/v202101beta1/tests/{id}/status"
       body: "*"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "TestStatusUpdate"
+      summary: "Update a test status."
+      description: "Update the status of a test."
+    };
   }
 
   rpc PatchTest(PatchTestRequest) returns (PatchTestResponse) {
@@ -676,12 +750,22 @@ service SyntheticsAdminService {
     option (google.api.http) = {
       patch: "/synthetics/v202101beta1/tests/{test.id}"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ExportPatch"
+      summary: "Patch a Synthetics Test."
+      description: "Partially Updates the attributes of synthetics test specified with id and update_mask fields."
+    };
   }
 
   rpc DeleteTest(DeleteTestRequest) returns (DeleteTestResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:write";
     option (google.api.http) = {
       delete: "/synthetics/v202101beta1/tests/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "TestDelete"
+      summary: "Delete an Synthetics Test."
+      description: "Deletes the synthetics test specified with id."
     };
   }
 }

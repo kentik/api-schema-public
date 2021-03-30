@@ -263,7 +263,7 @@ service CloudExportAdminService {
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       operation_id: "ExportGet"
-      summary: "Get information about an export"
+      summary: "Get information about an export."
       description: "Returns information about export specified with export ID."
     };
   }
@@ -276,7 +276,7 @@ service CloudExportAdminService {
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       operation_id: "ExportPatch"
-      summary: "Patch an export"
+      summary: "Patch an export."
       description: "Partially Updates the attributes of export specified with id and update_mask fields."
     };
   }
@@ -289,7 +289,7 @@ service CloudExportAdminService {
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       operation_id: "ExportUpdate"
-      summary: "Update an export"
+      summary: "Update an export."
       description: "Replaces the entire export attributes specified with id."
     };
   }
@@ -301,7 +301,7 @@ service CloudExportAdminService {
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       operation_id: "ExportDelete"
-      summary: "Delete an export"
+      summary: "Delete an export."
       description: "Deletes the export specified with id."
     };
   }
