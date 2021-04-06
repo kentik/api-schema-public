@@ -1757,21 +1757,21 @@
     }
   },
   "securityDefinitions": {
-    "X-CH-Auth-API-Token": {
-      "type": "apiKey",
-      "name": "X-CH-Auth-API-Token",
-      "in": "header"
-    },
-    "X-CH-Auth-Email": {
+    "email": {
       "type": "apiKey",
       "name": "X-CH-Auth-Email",
+      "in": "header"
+    },
+    "token": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-API-Token",
       "in": "header"
     }
   },
   "security": [
     {
-      "X-CH-Auth-API-Email": [],
-      "X-CH-Auth-API-Token": []
+      "email": [],
+      "token": []
     }
   ],
   "externalDocs": {
