@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Cloud Export Admin API",
-    "version": "202101",
+    "version": "202101beta1",
     "contact": {
       "name": "Kentik API Engineering",
       "url": "https://github.com/kentik/api"

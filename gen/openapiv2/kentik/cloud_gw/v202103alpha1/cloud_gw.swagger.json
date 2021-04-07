@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "CLOUD GW API",
-    "version": "202103",
+    "version": "202103alpha1",
     "contact": {
       "name": "Kentik API Engineering",
       "url": "https://github.com/kentik/api"

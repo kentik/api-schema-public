@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "MKP API",
-    "version": "202102",
+    "version": "202102alpha1",
     "contact": {
       "name": "Kentik API Engineering",
       "url": "https://github.com/kentik/api"
