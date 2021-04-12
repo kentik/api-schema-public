@@ -148,7 +148,6 @@ type AwsGwExternalServiceClient interface {
 	// request_id.
 	GetAws(ctx context.Context, in *GetAwsRequest, opts ...grpc.CallOption) (*GetAwsResponse, error)
 	SendAws(ctx context.Context, in *SendAwsRequest, opts ...grpc.CallOption) (*SendAwsResponse, error)
-	SendAwsRoles(ctx context.Context, in *SendAwsRolesRequest, opts ...grpc.CallOption) (*SendAwsRolesResponse, error)
 }
 
 type awsGwExternalServiceClient struct {
@@ -186,15 +185,6 @@ func (c *awsGwExternalServiceClient) SendAws(ctx context.Context, in *SendAwsReq
 	return out, nil
 }
 
-func (c *awsGwExternalServiceClient) SendAwsRoles(ctx context.Context, in *SendAwsRolesRequest, opts ...grpc.CallOption) (*SendAwsRolesResponse, error) {
-	out := new(SendAwsRolesResponse)
-	err := c.cc.Invoke(ctx, "/kentik.cloud_gw.v202103alpha1.AwsGwExternalService/SendAwsRoles", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // AwsGwExternalServiceServer is the server API for AwsGwExternalService service.
 // All implementations should embed UnimplementedAwsGwExternalServiceServer
 // for forward compatibility
@@ -209,7 +199,6 @@ type AwsGwExternalServiceServer interface {
 	// request_id.
 	GetAws(context.Context, *GetAwsRequest) (*GetAwsResponse, error)
 	SendAws(context.Context, *SendAwsRequest) (*SendAwsResponse, error)
-	SendAwsRoles(context.Context, *SendAwsRolesRequest) (*SendAwsRolesResponse, error)
 }
 
 // UnimplementedAwsGwExternalServiceServer should be embedded to have forward compatible implementations.
@@ -224,9 +213,6 @@ func (UnimplementedAwsGwExternalServiceServer) GetAws(context.Context, *GetAwsRe
 }
 func (UnimplementedAwsGwExternalServiceServer) SendAws(context.Context, *SendAwsRequest) (*SendAwsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SendAws not implemented")
-}
-func (UnimplementedAwsGwExternalServiceServer) SendAwsRoles(context.Context, *SendAwsRolesRequest) (*SendAwsRolesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SendAwsRoles not implemented")
 }
 
 // UnsafeAwsGwExternalServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -294,24 +280,6 @@ func _AwsGwExternalService_SendAws_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AwsGwExternalService_SendAwsRoles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SendAwsRolesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AwsGwExternalServiceServer).SendAwsRoles(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/kentik.cloud_gw.v202103alpha1.AwsGwExternalService/SendAwsRoles",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AwsGwExternalServiceServer).SendAwsRoles(ctx, req.(*SendAwsRolesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // AwsGwExternalService_ServiceDesc is the grpc.ServiceDesc for AwsGwExternalService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -330,10 +298,6 @@ var AwsGwExternalService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SendAws",
 			Handler:    _AwsGwExternalService_SendAws_Handler,
-		},
-		{
-			MethodName: "SendAwsRoles",
-			Handler:    _AwsGwExternalService_SendAwsRoles_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

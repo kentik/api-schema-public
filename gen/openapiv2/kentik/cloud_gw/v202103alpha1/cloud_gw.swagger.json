@@ -112,6 +112,12 @@
             "type": "string"
           },
           {
+            "name": "role",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
             "name": "callerId",
             "description": "caller_id in LoginAwsRequest must be the same as caller_id in all\nGetAwsRequests.",
             "in": "query",
@@ -193,38 +199,6 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/v202103alpha1SendAwsRequest"
-            }
-          }
-        ],
-        "tags": [
-          "AwsGwExternalService"
-        ]
-      }
-    },
-    "/cloud_gw/v202103alpha1/send_aws_roles": {
-      "post": {
-        "operationId": "AwsGwExternalService_SendAwsRoles",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/v202103alpha1SendAwsRolesResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v202103alpha1SendAwsRolesRequest"
             }
           }
         ],
@@ -329,18 +303,6 @@
         }
       }
     },
-    "v202103alpha1CompanyRoles": {
-      "type": "object",
-      "properties": {
-        "regionRoles": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/v202103alpha1RoleList"
-          },
-          "title": "key is region"
-        }
-      }
-    },
     "v202103alpha1GetAwsResponse": {
       "type": "object",
       "properties": {
@@ -356,14 +318,15 @@
     "v202103alpha1ListAwsRolesResponse": {
       "type": "object",
       "properties": {
-        "companyRoles": {
+        "cidRegionToRoles": {
           "type": "object",
           "additionalProperties": {
-            "$ref": "#/definitions/v202103alpha1CompanyRoles"
+            "$ref": "#/definitions/v202103alpha1RoleList"
           },
-          "title": "key is cid"
+          "title": "key is cid~region"
         }
-      }
+      },
+      "description": "This API is certainly open to discussion.  Instead of a map with a key you\nthen have to parse, I could return a list of struct{cid, region, role} (or\nsomething else, of course), if that would work better.\n\nIn raw Go I'd do it differently, but trying to mimic that in protobuf gets\nugly, imho."
     },
     "v202103alpha1LoginAwsResponse": {
       "type": "object"
@@ -413,22 +376,6 @@
       }
     },
     "v202103alpha1SendAwsResponse": {
-      "type": "object"
-    },
-    "v202103alpha1SendAwsRolesRequest": {
-      "type": "object",
-      "properties": {
-        "companyRoles": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/v202103alpha1CompanyRoles"
-          },
-          "title": "key is cid"
-        }
-      },
-      "description": "Very similar to ListAwsRolesResponse.  Could later add a flag that allows a\npartial update, instead of a full list, but for now we expect a complete\nlist per cid each time."
-    },
-    "v202103alpha1SendAwsRolesResponse": {
       "type": "object"
     }
   },

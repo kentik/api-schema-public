@@ -109,21 +109,14 @@ service AwsGwExternalService {
       body: "*"
     };
   }
-
-  rpc SendAwsRoles(SendAwsRolesRequest) returns (SendAwsRolesResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_gw:write";
-    option (google.api.http) = {
-      post: "/cloud_gw/v202103alpha1/send_aws_roles"
-      body: "*"
-    };
-  }
 }
 
 message LoginAwsRequest {
   string region = 1;
+  string role = 2;
   // caller_id in LoginAwsRequest must be the same as caller_id in all
   // GetAwsRequests.
-  string caller_id = 2;
+  string caller_id = 3;
 }
 message LoginAwsResponse {}
 
@@ -139,24 +132,16 @@ message ProxyAwsResponse {
 }
 
 message ListAwsRolesRequest {}
+
+// This API is certainly open to discussion.  Instead of a map with a key you
+// then have to parse, I could return a list of struct{cid, region, role} (or
+// something else, of course), if that would work better.
+//
+// In raw Go I'd do it differently, but trying to mimic that in protobuf gets
+// ugly, imho.
 message ListAwsRolesResponse {
-  // key is cid
-  map<int32, CompanyRoles> company_roles = 1;
-}
-
-// Very similar to ListAwsRolesResponse.  Could later add a flag that allows a
-// partial update, instead of a full list, but for now we expect a complete
-// list per cid each time.
-message SendAwsRolesRequest {
-  // key is cid
-  map<int32, CompanyRoles> company_roles = 1;
-}
-
-message SendAwsRolesResponse {}
-
-message CompanyRoles {
-  // key is region
-  map<string, RoleList> region_roles = 1;
+  // key is cid~region
+  map<string, RoleList> cid_region_to_roles = 1;
 }
 
 message RoleList {
