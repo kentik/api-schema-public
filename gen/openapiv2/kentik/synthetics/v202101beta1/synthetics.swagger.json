@@ -48,38 +48,6 @@
         "tags": [
           "SyntheticsAdminService"
         ]
-      },
-      "post": {
-        "summary": "Create Agent.",
-        "description": "Create agent from request. Returns created agent.",
-        "operationId": "AgentCreate",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/v202101beta1CreateAgentResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v202101beta1CreateAgentRequest"
-            }
-          }
-        ],
-        "tags": [
-          "SyntheticsAdminService"
-        ]
       }
     },
     "/synthetics/v202101beta1/agents/{agent.id}": {
@@ -656,12 +624,6 @@
           "type": "string"
         }
       }
-    },
-    "v202101beta1CreateAgentRequest": {
-      "type": "object"
-    },
-    "v202101beta1CreateAgentResponse": {
-      "type": "object"
     },
     "v202101beta1CreateTestRequest": {
       "type": "object",

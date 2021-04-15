@@ -143,7 +143,6 @@ var SyntheticsDataService_ServiceDesc = grpc.ServiceDesc{
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type SyntheticsAdminServiceClient interface {
 	ListAgents(ctx context.Context, in *ListAgentsRequest, opts ...grpc.CallOption) (*ListAgentsResponse, error)
-	CreateAgent(ctx context.Context, in *CreateAgentRequest, opts ...grpc.CallOption) (*CreateAgentResponse, error)
 	GetAgent(ctx context.Context, in *GetAgentRequest, opts ...grpc.CallOption) (*GetAgentResponse, error)
 	PatchAgent(ctx context.Context, in *PatchAgentRequest, opts ...grpc.CallOption) (*PatchAgentResponse, error)
 	DeleteAgent(ctx context.Context, in *DeleteAgentRequest, opts ...grpc.CallOption) (*DeleteAgentResponse, error)
@@ -166,15 +165,6 @@ func NewSyntheticsAdminServiceClient(cc grpc.ClientConnInterface) SyntheticsAdmi
 func (c *syntheticsAdminServiceClient) ListAgents(ctx context.Context, in *ListAgentsRequest, opts ...grpc.CallOption) (*ListAgentsResponse, error) {
 	out := new(ListAgentsResponse)
 	err := c.cc.Invoke(ctx, "/kentik.synthetics.v202101beta1.SyntheticsAdminService/ListAgents", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *syntheticsAdminServiceClient) CreateAgent(ctx context.Context, in *CreateAgentRequest, opts ...grpc.CallOption) (*CreateAgentResponse, error) {
-	out := new(CreateAgentResponse)
-	err := c.cc.Invoke(ctx, "/kentik.synthetics.v202101beta1.SyntheticsAdminService/CreateAgent", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -267,7 +257,6 @@ func (c *syntheticsAdminServiceClient) DeleteTest(ctx context.Context, in *Delet
 // for forward compatibility
 type SyntheticsAdminServiceServer interface {
 	ListAgents(context.Context, *ListAgentsRequest) (*ListAgentsResponse, error)
-	CreateAgent(context.Context, *CreateAgentRequest) (*CreateAgentResponse, error)
 	GetAgent(context.Context, *GetAgentRequest) (*GetAgentResponse, error)
 	PatchAgent(context.Context, *PatchAgentRequest) (*PatchAgentResponse, error)
 	DeleteAgent(context.Context, *DeleteAgentRequest) (*DeleteAgentResponse, error)
@@ -285,9 +274,6 @@ type UnimplementedSyntheticsAdminServiceServer struct {
 
 func (UnimplementedSyntheticsAdminServiceServer) ListAgents(context.Context, *ListAgentsRequest) (*ListAgentsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListAgents not implemented")
-}
-func (UnimplementedSyntheticsAdminServiceServer) CreateAgent(context.Context, *CreateAgentRequest) (*CreateAgentResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateAgent not implemented")
 }
 func (UnimplementedSyntheticsAdminServiceServer) GetAgent(context.Context, *GetAgentRequest) (*GetAgentResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAgent not implemented")
@@ -342,24 +328,6 @@ func _SyntheticsAdminService_ListAgents_Handler(srv interface{}, ctx context.Con
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SyntheticsAdminServiceServer).ListAgents(ctx, req.(*ListAgentsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _SyntheticsAdminService_CreateAgent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateAgentRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SyntheticsAdminServiceServer).CreateAgent(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/kentik.synthetics.v202101beta1.SyntheticsAdminService/CreateAgent",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SyntheticsAdminServiceServer).CreateAgent(ctx, req.(*CreateAgentRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -536,10 +504,6 @@ var SyntheticsAdminService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListAgents",
 			Handler:    _SyntheticsAdminService_ListAgents_Handler,
-		},
-		{
-			MethodName: "CreateAgent",
-			Handler:    _SyntheticsAdminService_CreateAgent_Handler,
 		},
 		{
 			MethodName: "GetAgent",

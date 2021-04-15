@@ -550,10 +550,6 @@ message ListAgentsResponse {
   uint32 invalid_agents_count = 2;
 }
 
-message CreateAgentRequest {}
-
-message CreateAgentResponse {}
-
 message GetAgentRequest {
   string id = 1;
 }
@@ -640,19 +636,6 @@ service SyntheticsAdminService {
       operation_id: "AgentsList"
       summary: "List Agents."
       description: "Returns a list of agents."
-    };
-  }
-
-  rpc CreateAgent(CreateAgentRequest) returns (CreateAgentResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:write";
-    option (google.api.http) = {
-      post: "/synthetics/v202101beta1/agents"
-      body: "*"
-    };
-    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
-      operation_id: "AgentCreate"
-      summary: "Create Agent."
-      description: "Create agent from request. Returns created agent."
     };
   }
 
