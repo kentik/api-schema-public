@@ -749,6 +749,7 @@ service SyntheticsAdminService {
     option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:write";
     option (google.api.http) = {
       patch: "/synthetics/v202101beta1/tests/{test.id}"
+      body: "*"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       operation_id: "ExportPatch"

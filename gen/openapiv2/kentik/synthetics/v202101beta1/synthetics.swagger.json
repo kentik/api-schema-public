@@ -365,6 +365,14 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202101beta1PatchTestRequest"
+            }
           }
         ],
         "tags": [
@@ -1231,6 +1239,17 @@
       "properties": {
         "agent": {
           "$ref": "#/definitions/v202101beta1Agent"
+        }
+      }
+    },
+    "v202101beta1PatchTestRequest": {
+      "type": "object",
+      "properties": {
+        "test": {
+          "$ref": "#/definitions/v202101beta1Test"
+        },
+        "mask": {
+          "type": "string"
         }
       }
     },
