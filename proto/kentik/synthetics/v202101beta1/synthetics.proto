@@ -664,7 +664,7 @@ service SyntheticsAdminService {
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       operation_id: "AgentGet"
       summary: "Get information about an agent."
-      description: "Returns information about export specified with export ID."
+      description: "Returns information about the agent specified with id."
     };
   }
 
@@ -752,7 +752,7 @@ service SyntheticsAdminService {
       body: "*"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
-      operation_id: "ExportPatch"
+      operation_id: "TestPatch"
       summary: "Patch a Synthetics Test."
       description: "Partially Updates the attributes of synthetics test specified with id and update_mask fields."
     };
