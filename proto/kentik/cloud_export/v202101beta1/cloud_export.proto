@@ -63,12 +63,6 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
 // models
 // =======================================================
 
-enum Lol {
-  LOL_UNSPECIFIED = 0;
-  LOL_COOL = 100;
-
-}
-
 enum CloudExportType {
   // Invalid or incomplete exports.
   CLOUD_EXPORT_TYPE_UNSPECIFIED = 0;
