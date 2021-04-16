@@ -4,9 +4,7 @@ package kentik.cloud_gw.v202103alpha1;
 
 import "google/api/annotations.proto";
 import "google/api/client.proto";
-import "google/protobuf/field_mask.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
-import "kentik/core/v202012alpha1/errors.proto";
 import "kentik/core/v202012alpha1/annotations.proto";
 import "grpc/http_over_grpc/http_over_grpc.proto";
 

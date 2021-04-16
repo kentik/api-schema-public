@@ -9,7 +9,6 @@ import "google/api/annotations.proto";
 import "google/api/client.proto";
 import "google/protobuf/field_mask.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
-import "kentik/core/v202012alpha1/errors.proto";
 import "kentik/core/v202012alpha1/annotations.proto";
 
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
