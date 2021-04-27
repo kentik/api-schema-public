@@ -1182,8 +1182,7 @@
             "$ref": "#/definitions/v202101beta1MeshColumn"
           }
         }
-      },
-      "title": "TODO: Mesh support"
+      }
     },
     "v202101beta1PatchAgentRequest": {
       "type": "object",

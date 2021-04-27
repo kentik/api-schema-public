@@ -362,7 +362,6 @@ message UrlTest {
   string target = 1;
 }
 
-// TODO: Mesh support
 message MeshResponse {
   string id = 1;
   string name = 2;
@@ -393,8 +392,6 @@ message MeshMetrics {
   MeshMetric packet_loss = 3;
   MeshMetric jitter = 4;
 }
-
-// TODO: Traces
 
 message ASN {
   uint32 id = 1;
@@ -524,7 +521,6 @@ service SyntheticsDataService {
     };
   }
 
-  // TODO: Get traces for a single test. Not implemented.
   rpc GetTraceForTest (GetTraceForTestRequest) returns (GetTraceForTestResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "synthetics:read";
     option (google.api.http) = {

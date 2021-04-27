@@ -2858,7 +2858,6 @@ func (x *UrlTest) GetTarget() string {
 	return ""
 }
 
-// TODO: Mesh support
 type MeshResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

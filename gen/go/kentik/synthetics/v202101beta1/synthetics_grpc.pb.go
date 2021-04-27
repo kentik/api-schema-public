@@ -20,7 +20,6 @@ const _ = grpc.SupportPackageIsVersion7
 type SyntheticsDataServiceClient interface {
 	// Get health data for a set of tests
 	GetHealthForTests(ctx context.Context, in *GetHealthForTestsRequest, opts ...grpc.CallOption) (*GetHealthForTestsResponse, error)
-	// TODO: Get traces for a single test. Not implemented.
 	GetTraceForTest(ctx context.Context, in *GetTraceForTestRequest, opts ...grpc.CallOption) (*GetTraceForTestResponse, error)
 }
 
@@ -56,7 +55,6 @@ func (c *syntheticsDataServiceClient) GetTraceForTest(ctx context.Context, in *G
 type SyntheticsDataServiceServer interface {
 	// Get health data for a set of tests
 	GetHealthForTests(context.Context, *GetHealthForTestsRequest) (*GetHealthForTestsResponse, error)
-	// TODO: Get traces for a single test. Not implemented.
 	GetTraceForTest(context.Context, *GetTraceForTestRequest) (*GetTraceForTestResponse, error)
 }
 
