@@ -304,7 +304,7 @@ message TestSettings {
   bool reciprocal = 32;
   uint32 rollup_level = 33;
 
-  HTTPConfig http = 34; 
+  HTTPConfig http = 34;
 }
 
 message TestTraceSettings {
