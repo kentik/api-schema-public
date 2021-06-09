@@ -99,7 +99,7 @@ message HealthMoment {
   google.protobuf.Timestamp time = 1;
   string src_ip = 2;
   string dst_ip = 3;
-  uint32 packet_loss = 4;
+  double packet_loss = 4;
   uint32 avg_latency = 5;
   uint32 avg_weighted_latency = 6;
   uint32 rolling_avg_latency = 7;

@@ -929,8 +929,8 @@
           "type": "string"
         },
         "packetLoss": {
-          "type": "integer",
-          "format": "int64"
+          "type": "number",
+          "format": "double"
         },
         "avgLatency": {
           "type": "integer",
