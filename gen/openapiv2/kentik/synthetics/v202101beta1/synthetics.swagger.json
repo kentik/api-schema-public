@@ -709,6 +709,12 @@
         },
         "type": {
           "type": "string"
+        },
+        "inetDirection": {
+          "type": "string"
+        },
+        "direction": {
+          "type": "string"
         }
       }
     },
@@ -839,6 +845,45 @@
           "items": {
             "$ref": "#/definitions/v202101beta1TracerouteResult"
           }
+        }
+      }
+    },
+    "v202101beta1GridTest": {
+      "type": "object",
+      "properties": {
+        "targets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v202101beta1HTTPConfig": {
+      "type": "object",
+      "properties": {
+        "period": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "expiry": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "method": {
+          "type": "string"
+        },
+        "headers": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "body": {
+          "type": "string"
+        },
+        "ignoreTlsErrors": {
+          "type": "boolean"
         }
       }
     },
@@ -1488,6 +1533,10 @@
         "expiry": {
           "type": "number",
           "format": "float"
+        },
+        "delay": {
+          "type": "number",
+          "format": "float"
         }
       }
     },
@@ -1517,6 +1566,15 @@
         },
         "url": {
           "$ref": "#/definitions/v202101beta1UrlTest"
+        },
+        "networkGrid": {
+          "$ref": "#/definitions/v202101beta1GridTest"
+        },
+        "pageLoad": {
+          "$ref": "#/definitions/v202101beta1UrlTest"
+        },
+        "dnsGrid": {
+          "$ref": "#/definitions/v202101beta1GridTest"
         },
         "agentIds": {
           "type": "array",
@@ -1589,6 +1647,9 @@
         "rollupLevel": {
           "type": "integer",
           "format": "int64"
+        },
+        "http": {
+          "$ref": "#/definitions/v202101beta1HTTPConfig"
         }
       }
     },
@@ -1625,6 +1686,10 @@
           "format": "float"
         },
         "limit": {
+          "type": "number",
+          "format": "float"
+        },
+        "delay": {
           "type": "number",
           "format": "float"
         }

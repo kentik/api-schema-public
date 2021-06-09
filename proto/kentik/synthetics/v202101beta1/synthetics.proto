@@ -256,6 +256,15 @@ message Test {
   UserInfo last_updated_by = 11;
 }
 
+message HTTPConfig {
+  uint32 period             = 1;
+  uint32 expiry             = 2;
+  string method             = 3;
+  map<string, string> headers = 4;
+  string body               = 5;
+  bool ignore_tls_errors    = 6;
+}
+
 message TestSettings {
 
   oneof definition {
@@ -267,6 +276,9 @@ message TestSettings {
     TagTest tag = 9;
     DnsTest dns = 10;
     UrlTest url = 11;
+    GridTest network_grid = 35;
+    UrlTest page_load = 36;
+    GridTest dns_grid = 37;
   }
 
   repeated string agent_ids = 14;
@@ -291,6 +303,8 @@ message TestSettings {
   bool use_local_ip = 31;
   bool reciprocal = 32;
   uint32 rollup_level = 33;
+
+  HTTPConfig http = 34; 
 }
 
 message TestTraceSettings {
@@ -300,12 +314,14 @@ message TestTraceSettings {
   float port = 4;
   float expiry = 5;
   float limit = 6;
+  float delay = 7;
 }
 
 message TestPingSettings {
   float period = 1;
   float count = 2;
   float expiry = 3;
+  float delay = 4;
 }
 
 message TestMonitoringSettings {
@@ -344,6 +360,8 @@ message FlowTest {
   uint32 target_refresh_interval_millis = 2; // How often to generate tasks.
   uint32 max_tasks = 3; // Used for top N.
   string type = 4; // What type of flow to look at -- asn, cdn, country, ...
+  string inet_direction = 5;
+  string direction = 6;
 }
 
 message SiteTest {
@@ -361,6 +379,11 @@ message DnsTest {
 message UrlTest {
   string target = 1;
 }
+
+message GridTest {
+  repeated string targets = 1;
+}
+
 
 message MeshResponse {
   string id = 1;
