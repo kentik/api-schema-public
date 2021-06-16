@@ -28,7 +28,9 @@
   "paths": {
     "/mkp/v202102alpha1/packages": {
       "get": {
-        "operationId": "PackageService_ListPackage",
+        "summary": "List MKP packages.",
+        "description": "Returns a list of MKP packages.",
+        "operationId": "PackageList",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -48,7 +50,9 @@
         ]
       },
       "post": {
-        "operationId": "PackageService_CreatePackage",
+        "summary": "Create a package template.",
+        "description": "Create package from request. returns created package.",
+        "operationId": "PackageCreate",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -80,7 +84,9 @@
     },
     "/mkp/v202102alpha1/packages/{id}": {
       "get": {
-        "operationId": "PackageService_GetPackage",
+        "summary": "Get information aboout a package.",
+        "description": "Returns information about package specified with ID.",
+        "operationId": "PackageGet",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -109,7 +115,9 @@
         ]
       },
       "delete": {
-        "operationId": "PackageService_DeletePackage",
+        "summary": "Delete a package.",
+        "description": "Deletes the package specified with id.",
+        "operationId": "PackageDelete",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -138,7 +146,9 @@
         ]
       },
       "put": {
-        "operationId": "PackageService_UpdatePackage",
+        "summary": "Update a package.",
+        "description": "Replaces the entire package attributes specified with id.",
+        "operationId": "PackageUpdate",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -175,7 +185,9 @@
         ]
       },
       "patch": {
-        "operationId": "PackageService_PatchPackage",
+        "summary": "Patch a package.",
+        "description": "Partially Updates the attributes of package specified with id and mask fields.",
+        "operationId": "PackagePatch",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -214,7 +226,9 @@
     },
     "/mkp/v202102alpha1/tenants": {
       "get": {
-        "operationId": "TenantService_ListTenant",
+        "summary": "List MKP tenants.",
+        "description": "Returns a list of MKP tenants.",
+        "operationId": "TenantList",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -234,7 +248,9 @@
         ]
       },
       "post": {
-        "operationId": "TenantService_CreateTenant",
+        "summary": "Create a tenant.",
+        "description": "Create tenant from request. returns created tenant.",
+        "operationId": "TenantCreate",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -266,7 +282,9 @@
     },
     "/mkp/v202102alpha1/tenants/{id}": {
       "get": {
-        "operationId": "TenantService_GetTenant",
+        "summary": "Get information aboout a tenant.",
+        "description": "Returns information about package specified with ID.",
+        "operationId": "TenantGet",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -295,7 +313,9 @@
         ]
       },
       "delete": {
-        "operationId": "TenantService_DeleteTenant",
+        "summary": "Delete a tenant.",
+        "description": "Deletes the tenant specified with id.",
+        "operationId": "TenantDelete",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -324,7 +344,9 @@
         ]
       },
       "put": {
-        "operationId": "TenantService_UpdateTenant",
+        "summary": "Update a tenant.",
+        "description": "Replaces the entire tenant attributes specified with id.",
+        "operationId": "TenantUpdate",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -361,7 +383,9 @@
         ]
       },
       "patch": {
-        "operationId": "TenantService_PatchTenant",
+        "summary": "Patch a tenant.",
+        "description": "Partially Updates the attributes of tenant specified with id and mask fields.",
+        "operationId": "TenantPatch",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -494,7 +518,7 @@
           "type": "boolean"
         }
       },
-      "title": "common definitions"
+      "title": "Alert Policy"
     },
     "v202102alpha1Asset": {
       "type": "object",
@@ -575,8 +599,7 @@
         "populator": {
           "type": "string"
         }
-      },
-      "title": "MKP Tenant definitions"
+      }
     },
     "v202102alpha1DeletePackageResponse": {
       "type": "object"
@@ -703,7 +726,8 @@
         },
         "invalidCount": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "The number of invalid packages, for troubleshooting. Should be zero."
         }
       }
     },
@@ -820,9 +844,11 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/v202102alpha1TenantLink"
-          }
+          },
+          "title": "list of tenants using this Package template (for GetTenant only)"
         }
-      }
+      },
+      "title": "Package Template definition"
     },
     "v202102alpha1PatchPackageRequest": {
       "type": "object",
@@ -831,7 +857,8 @@
           "$ref": "#/definitions/v202102alpha1Package"
         },
         "mask": {
-          "type": "string"
+          "type": "string",
+          "title": "CSV values of fields follow the path of Package object dot notation (ie. \"package.name,package.assets.reports\")"
         }
       }
     },
@@ -850,7 +877,8 @@
           "$ref": "#/definitions/v202102alpha1Tenant"
         },
         "mask": {
-          "type": "string"
+          "type": "string",
+          "title": "CSV values of fields follow the path of Tenant object dot notation (ie. \"tenant.name,tenant.filters.name\")"
         }
       }
     },
@@ -923,18 +951,20 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/v202102alpha1Package"
-          }
+          },
+          "title": "Packages associated with Tenant (for GetTenant only)"
         },
         "users": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/v202102alpha1User"
-          }
+          },
+          "title": "Users associated with Tenant (for GetTenant only)"
         },
         "templateId": {
           "type": "integer",
           "format": "int64",
-          "title": "todo: revisit porting node api adding package to tenant"
+          "title": "Package ID to use with tenant"
         }
       }
     },
@@ -954,7 +984,7 @@
           "format": "uint64"
         }
       },
-      "title": "MKP Package definitions"
+      "title": "Tenants referencing this Package template"
     },
     "v202102alpha1Threshold": {
       "type": "object",
@@ -996,7 +1026,8 @@
         "receiveLandlordNotifications": {
           "type": "boolean"
         }
-      }
+      },
+      "title": "Alert Threshold"
     },
     "v202102alpha1UpdatePackageRequest": {
       "type": "object",
@@ -1059,14 +1090,16 @@
         },
         "permissionOverrides": {
           "type": "boolean",
-          "title": "fields for create tenants with users"
+          "title": "Required for the CreateTenant operation"
         },
         "role": {
-          "type": "string"
+          "type": "string",
+          "title": "Required for the CreateTenant operation"
         },
         "userLevel": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "title": "Required for the CreateTenant operation"
         }
       }
     }
