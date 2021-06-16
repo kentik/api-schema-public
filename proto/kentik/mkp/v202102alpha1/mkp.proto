@@ -57,7 +57,7 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   }
 };
 
-// common definitions
+// Alert Policy
 message Alert {
   bool saved = 1;
   uint64 policy_id = 2;
@@ -76,6 +76,7 @@ message Asset {
   Report default_report = 2;
 };
 
+// Alert Threshold
 message Threshold {
   uint64 id = 1;
   Activate activate = 2;
@@ -133,18 +134,22 @@ message User {
   string user_full_name = 5;
   uint64 user_group_id = 6;
   string last_login = 7; // revisit timestamp
-  // fields for create tenants with users
+  // Required for the CreateTenant operation
   bool permission_overrides = 8;
+  // Required for the CreateTenant operation
   string role = 9;
+  // Required for the CreateTenant operation
   uint32 user_level = 10;
 }
 
-// MKP Package definitions
+// Tenants referencing this Package template
 message TenantLink {
   uint64 id = 1;
   uint64 pivot_template_id = 2;
   uint64 pivot_user_group_id = 3;
 }
+
+// Package Template definition
 message Package {
   uint64 id = 1;
   uint64 company_id = 2;
@@ -155,10 +160,10 @@ message Package {
   repeated Alert alerts = 7;
   Asset assets = 8;
   bool is_default = 9;
+  // list of tenants using this Package template (for GetTenant only)
   repeated TenantLink tenants = 10;
 }
 
-// MKP Tenant definitions
 message CustomDimension {
   string dimension = 1;
   string populator = 2;
@@ -208,17 +213,19 @@ message Tenant {
   Filter filters = 12;
   string interface_name = 13;
   string snmp_alias = 14;
+  // Packages associated with Tenant (for GetTenant only)
   repeated Package packages = 16;
+  // Users associated with Tenant (for GetTenant only)
   repeated User users = 17;
-  // todo: revisit porting node api adding package to tenant
+  // Package ID to use with tenant
   uint32 template_id = 18;
 }
 
 
-// package request/response
 message ListPackageRequest {}
 message ListPackageResponse {
   repeated Package packages = 1;
+  // The number of invalid packages, for troubleshooting. Should be zero.
   uint32 invalid_count = 2;
 }
 
@@ -245,6 +252,7 @@ message UpdatePackageResponse {
 
 message PatchPackageRequest {
   Package package = 1;
+  // CSV values of fields follow the path of Package object dot notation (ie. "package.name,package.assets.reports")
   google.protobuf.FieldMask mask = 2;
 }
 message PatchPackageResponse {
@@ -265,11 +273,22 @@ service PackageService {
     option (google.api.http) = {
       get: "/mkp/v202102alpha1/packages"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "PackageList"
+      summary: "List MKP packages."
+      description: "Returns a list of MKP packages."
+    };
+
   }
   rpc GetPackage(GetPackageRequest) returns (GetPackageResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "admin.mkp:read";
     option (google.api.http) = {
       get: "/mkp/v202102alpha1/packages/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "PackageGet"
+      summary: "Get information aboout a package."
+      description: "Returns information about package specified with ID."
     };
   }
   rpc CreatePackage(CreatePackageRequest) returns (CreatePackageResponse) {
@@ -278,12 +297,22 @@ service PackageService {
       post: "/mkp/v202102alpha1/packages"
       body: "*"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "PackageCreate"
+      summary: "Create a package template."
+      description: "Create package from request. returns created package."
+    };
   }
   rpc UpdatePackage(UpdatePackageRequest) returns (UpdatePackageResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "admin.mkp:write";
     option (google.api.http) = {
       put: "/mkp/v202102alpha1/packages/{package.id}"
       body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "PackageUpdate"
+      summary: "Update a package."
+      description: "Replaces the entire package attributes specified with id."
     };
   }
   rpc PatchPackage(PatchPackageRequest) returns (PatchPackageResponse) {
@@ -292,18 +321,27 @@ service PackageService {
       patch: "/mkp/v202102alpha1/packages/{package.id}"
       body: "*"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "PackagePatch"
+      summary: "Patch a package."
+      description: "Partially Updates the attributes of package specified with id and mask fields."
+    };
   }
   rpc DeletePackage(DeletePackageRequest) returns (DeletePackageResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "admin.mkp:write";
     option (google.api.http) = {
       delete: "/mkp/v202102alpha1/packages/{id}"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "PackageDelete"
+      summary: "Delete a package."
+      description: "Deletes the package specified with id."
+    };
   }
 
 }
 
 
-// tenant request/response
 message ListTenantRequest {}
 message ListTenantResponse {
   repeated Tenant tenants = 1;
@@ -333,6 +371,7 @@ message UpdateTenantResponse {
 
 message PatchTenantRequest {
   Tenant tenant = 1;
+  // CSV values of fields follow the path of Tenant object dot notation (ie. "tenant.name,tenant.filters.name")
   google.protobuf.FieldMask mask = 2;
 }
 message PatchTenantResponse {
@@ -353,11 +392,21 @@ service TenantService {
     option (google.api.http) = {
       get: "/mkp/v202102alpha1/tenants"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "TenantList"
+      summary: "List MKP tenants."
+      description: "Returns a list of MKP tenants."
+    };
   }
   rpc GetTenant(GetTenantRequest) returns (GetTenantResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "admin.mkp:read";
     option (google.api.http) = {
       get: "/mkp/v202102alpha1/tenants/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "TenantGet"
+      summary: "Get information aboout a tenant."
+      description: "Returns information about package specified with ID."
     };
   }
   rpc CreateTenant(CreateTenantRequest) returns (CreateTenantResponse) {
@@ -366,12 +415,22 @@ service TenantService {
       post: "/mkp/v202102alpha1/tenants"
       body: "*"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "TenantCreate"
+      summary: "Create a tenant."
+      description: "Create tenant from request. returns created tenant."
+    };
   }
   rpc UpdateTenant(UpdateTenantRequest) returns (UpdateTenantResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "admin.mkp:write";
     option (google.api.http) = {
       put: "/mkp/v202102alpha1/tenants/{tenant.id}"
       body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "TenantUpdate"
+      summary: "Update a tenant."
+      description: "Replaces the entire tenant attributes specified with id."
     };
   }
   rpc PatchTenant(PatchTenantRequest) returns (PatchTenantResponse) {
@@ -380,11 +439,21 @@ service TenantService {
       patch: "/mkp/v202102alpha1/tenants/{tenant.id}"
       body: "*"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "TenantPatch"
+      summary: "Patch a tenant."
+      description: "Partially Updates the attributes of tenant specified with id and mask fields."
+    };
   }
   rpc DeleteTenant(DeleteTenantRequest) returns (DeleteTenantResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "admin.mkp:write";
     option (google.api.http) = {
       delete: "/mkp/v202102alpha1/tenants/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "TenantDelete"
+      summary: "Delete a tenant."
+      description: "Deletes the tenant specified with id."
     };
   }
 

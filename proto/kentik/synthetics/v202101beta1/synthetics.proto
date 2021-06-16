@@ -578,6 +578,7 @@ message GetAgentResponse {
 
 message PatchAgentRequest {
   Agent agent = 1;
+  // CSV values of fields follow the path of Agent object with dot notation (ie. "agent.alias,export.type")
   google.protobuf.FieldMask mask = 2;
 }
 
@@ -626,6 +627,7 @@ message SetTestStatusResponse {
 
 message PatchTestRequest {
   Test test = 1;
+  // CSV values of fields follow the path of Test object with dot notation (ie. "test.name,test.settings")
   google.protobuf.FieldMask mask = 2;
 }
 

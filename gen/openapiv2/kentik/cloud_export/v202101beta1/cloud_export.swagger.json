@@ -482,7 +482,8 @@
           "$ref": "#/definitions/v202101beta1CloudExport"
         },
         "mask": {
-          "type": "string"
+          "type": "string",
+          "title": "CSV values of fields follow the path of Export object with dot notation (ie. \"export.name,export.description\")"
         }
       }
     },

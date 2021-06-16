@@ -4474,8 +4474,9 @@ type PatchAgentRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Agent *Agent                 `protobuf:"bytes,1,opt,name=agent,proto3" json:"agent,omitempty"`
-	Mask  *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=mask,proto3" json:"mask,omitempty"`
+	Agent *Agent `protobuf:"bytes,1,opt,name=agent,proto3" json:"agent,omitempty"`
+	// CSV values of fields follow the path of Agent object with dot notation (ie. "agent.alias,export.type")
+	Mask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=mask,proto3" json:"mask,omitempty"`
 }
 
 func (x *PatchAgentRequest) Reset() {
@@ -5044,7 +5045,8 @@ type PatchTestRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Test *Test                  `protobuf:"bytes,1,opt,name=test,proto3" json:"test,omitempty"`
+	Test *Test `protobuf:"bytes,1,opt,name=test,proto3" json:"test,omitempty"`
+	// CSV values of fields follow the path of Test object with dot notation (ie. "test.name,test.settings")
 	Mask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=mask,proto3" json:"mask,omitempty"`
 }
 

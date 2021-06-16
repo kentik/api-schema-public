@@ -999,8 +999,9 @@ type PatchCloudExportRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Export *CloudExport           `protobuf:"bytes,1,opt,name=export,proto3" json:"export,omitempty"`
-	Mask   *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=mask,proto3" json:"mask,omitempty"`
+	Export *CloudExport `protobuf:"bytes,1,opt,name=export,proto3" json:"export,omitempty"`
+	// CSV values of fields follow the path of Export object with dot notation (ie. "export.name,export.description")
+	Mask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=mask,proto3" json:"mask,omitempty"`
 }
 
 func (x *PatchCloudExportRequest) Reset() {

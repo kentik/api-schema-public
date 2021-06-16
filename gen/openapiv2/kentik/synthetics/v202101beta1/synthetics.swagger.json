@@ -1236,7 +1236,8 @@
           "$ref": "#/definitions/v202101beta1Agent"
         },
         "mask": {
-          "type": "string"
+          "type": "string",
+          "title": "CSV values of fields follow the path of Agent object with dot notation (ie. \"agent.alias,export.type\")"
         }
       }
     },
@@ -1255,7 +1256,8 @@
           "$ref": "#/definitions/v202101beta1Test"
         },
         "mask": {
-          "type": "string"
+          "type": "string",
+          "title": "CSV values of fields follow the path of Test object with dot notation (ie. \"test.name,test.settings\")"
         }
       }
     },
