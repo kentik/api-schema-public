@@ -1,0 +1,190 @@
+syntax = "proto3";
+
+package kentik.site.v202106alpha1;
+option go_package = "github.com/kentik/api-schema/gen/go/kentik/site/v202106alpha1;site";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/type/latlng.proto";
+import "google/type/postal_address.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "kentik/core/v202012alpha1/annotations.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "site API"
+    version: "202102alpha1"
+    contact: {
+      name: "Kentik API Engineering"
+    }
+  }
+  external_docs: {
+    url: "https://docs.kentik.com/api"
+    description: "More about Kentik APIs"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+enum SiteType {
+  SITE_TYPE_UNSPECIFIED = 0;
+  SITE_TYPE_DATA_CENTER = 1;
+  SITE_TYPE_CLOUD = 2;
+  SITE_TYPE_BRANCH = 3;
+  SITE_TYPE_CONNECTIVITY = 4;
+  SITE_TYPE_CUSTOMER = 5;
+  SITE_TYPE_OTHER = 6;
+}
+
+// Site IP Classification
+message SiteIpClassification {
+  repeated string infrastructure_networks = 1;
+  repeated string user_access_networks = 2;
+  repeated string other_ips = 3;
+}
+
+message SubLayer {
+  string name = 1;
+  repeated string device_ids = 2;
+}
+
+message Layer {
+  repeated SubLayer sub_layers = 1;
+}
+
+message Site {
+  string id = 1;
+  reserved 2;
+  string title = 3;
+  google.type.LatLng coordinate = 4;
+  google.type.PostalAddress address = 5;
+  SiteType type = 6;
+  SiteIpClassification classification = 7;
+  repeated Layer architecture = 8;
+}
+
+message ListSiteRequest {}
+message ListSiteResponse {
+  repeated Site sites = 1;
+  uint32 invalid_count = 2;
+}
+
+message GetSiteRequest {
+  string id = 1;
+}
+message GetSiteResponse {
+  Site site = 1;
+}
+
+message CreateSiteRequest {
+  Site site = 1;
+}
+message CreateSiteResponse {
+  Site site = 1;
+}
+
+message UpdateSiteRequest {
+  Site site = 1;
+}
+message UpdateSiteResponse {
+  Site site = 1;
+}
+
+message DeleteSiteRequest {
+  string id = 1;
+}
+message DeleteSiteResponse {}
+
+
+service SiteService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202012alpha1.service_scope) = "admin.site";
+
+  rpc ListSite(ListSiteRequest) returns (ListSiteResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.site:read";
+    option (google.api.http) = {
+      get: "/site/v202106alpha1/sites"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "SiteList"
+      summary: "List sites."
+      description: "Returns a list of sites."
+    };
+  }
+  rpc GetSite(GetSiteRequest) returns (GetSiteResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.site:read";
+    option (google.api.http) = {
+      get: "/site/v202106alpha1/sites/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "SiteGet"
+      summary: "Get a site."
+      description: "Returns information about a site specified with ID."
+    };
+  }
+  rpc CreateSite(CreateSiteRequest) returns (CreateSiteResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.site:write";
+    option (google.api.http) = {
+      post: "/site/v202106alpha1/sites"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "SiteCreate"
+      summary: "Create a site."
+      description: "Create a site from request. returns created."
+    };
+  }
+  rpc UpdateSite(UpdateSiteRequest) returns (UpdateSiteResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.site:write";
+    option (google.api.http) = {
+      put: "/site/v202106alpha1/sites/{site.id}"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "SiteUpdate"
+      summary: "Update a site."
+      description: "Replaces the entire site attributes specified with id."
+    };
+  }
+
+  rpc DeleteSite(DeleteSiteRequest) returns (DeleteSiteResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.site:write";
+    option (google.api.http) = {
+      delete: "/site/v202106alpha1/sites/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "SiteDelete"
+      summary: "Delete a site."
+      description: "Deletes the site specified with id."
+    };
+  }
+}

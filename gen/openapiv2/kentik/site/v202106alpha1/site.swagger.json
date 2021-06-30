@@ -1,0 +1,458 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "site API",
+    "version": "202102alpha1",
+    "contact": {
+      "name": "Kentik API Engineering"
+    }
+  },
+  "tags": [
+    {
+      "name": "SiteService"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/site/v202106alpha1/sites": {
+      "get": {
+        "summary": "List sites.",
+        "description": "Returns a list of sites.",
+        "operationId": "SiteList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202106alpha1ListSiteResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "SiteService"
+        ]
+      },
+      "post": {
+        "summary": "Create a site.",
+        "description": "Create a site from request. returns created.",
+        "operationId": "SiteCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202106alpha1CreateSiteResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202106alpha1CreateSiteRequest"
+            }
+          }
+        ],
+        "tags": [
+          "SiteService"
+        ]
+      }
+    },
+    "/site/v202106alpha1/sites/{id}": {
+      "get": {
+        "summary": "Get a site.",
+        "description": "Returns information about a site specified with ID.",
+        "operationId": "SiteGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202106alpha1GetSiteResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "SiteService"
+        ]
+      },
+      "delete": {
+        "summary": "Delete a site.",
+        "description": "Deletes the site specified with id.",
+        "operationId": "SiteDelete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202106alpha1DeleteSiteResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "SiteService"
+        ]
+      },
+      "put": {
+        "summary": "Update a site.",
+        "description": "Replaces the entire site attributes specified with id.",
+        "operationId": "SiteUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202106alpha1UpdateSiteResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202106alpha1UpdateSiteRequest"
+            }
+          }
+        ],
+        "tags": [
+          "SiteService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "typeUrl": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "typeLatLng": {
+      "type": "object",
+      "properties": {
+        "latitude": {
+          "type": "number",
+          "format": "double",
+          "description": "The latitude in degrees. It must be in the range [-90.0, +90.0]."
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double",
+          "description": "The longitude in degrees. It must be in the range [-180.0, +180.0]."
+        }
+      },
+      "description": "An object that represents a latitude/longitude pair. This is expressed as a\npair of doubles to represent degrees latitude and degrees longitude. Unless\nspecified otherwise, this must conform to the\n<a href=\"http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf\">WGS84\nstandard</a>. Values must be within normalized ranges."
+    },
+    "typePostalAddress": {
+      "type": "object",
+      "properties": {
+        "revision": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The schema revision of the `PostalAddress`. This must be set to 0, which is\nthe latest revision.\n\nAll new revisions **must** be backward compatible with old revisions."
+        },
+        "regionCode": {
+          "type": "string",
+          "description": "Required. CLDR region code of the country/region of the address. This\nis never inferred and it is up to the user to ensure the value is\ncorrect. See http://cldr.unicode.org/ and\nhttp://www.unicode.org/cldr/charts/30/supplemental/territory_information.html\nfor details. Example: \"CH\" for Switzerland."
+        },
+        "languageCode": {
+          "type": "string",
+          "description": "Optional. BCP-47 language code of the contents of this address (if\nknown). This is often the UI language of the input form or is expected\nto match one of the languages used in the address' country/region, or their\ntransliterated equivalents.\nThis can affect formatting in certain countries, but is not critical\nto the correctness of the data and will never affect any validation or\nother non-formatting related operations.\n\nIf this value is not known, it should be omitted (rather than specifying a\npossibly incorrect default).\n\nExamples: \"zh-Hant\", \"ja\", \"ja-Latn\", \"en\"."
+        },
+        "postalCode": {
+          "type": "string",
+          "description": "Optional. Postal code of the address. Not all countries use or require\npostal codes to be present, but where they are used, they may trigger\nadditional validation with other parts of the address (e.g. state/zip\nvalidation in the U.S.A.)."
+        },
+        "sortingCode": {
+          "type": "string",
+          "description": "Optional. Additional, country-specific, sorting code. This is not used\nin most regions. Where it is used, the value is either a string like\n\"CEDEX\", optionally followed by a number (e.g. \"CEDEX 7\"), or just a number\nalone, representing the \"sector code\" (Jamaica), \"delivery area indicator\"\n(Malawi) or \"post office indicator\" (e.g. C\u00f4te d'Ivoire)."
+        },
+        "administrativeArea": {
+          "type": "string",
+          "description": "Optional. Highest administrative subdivision which is used for postal\naddresses of a country or region.\nFor example, this can be a state, a province, an oblast, or a prefecture.\nSpecifically, for Spain this is the province and not the autonomous\ncommunity (e.g. \"Barcelona\" and not \"Catalonia\").\nMany countries don't use an administrative area in postal addresses. E.g.\nin Switzerland this should be left unpopulated."
+        },
+        "locality": {
+          "type": "string",
+          "description": "Optional. Generally refers to the city/town portion of the address.\nExamples: US city, IT comune, UK post town.\nIn regions of the world where localities are not well defined or do not fit\ninto this structure well, leave locality empty and use address_lines."
+        },
+        "sublocality": {
+          "type": "string",
+          "description": "Optional. Sublocality of the address.\nFor example, this can be neighborhoods, boroughs, districts."
+        },
+        "addressLines": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Unstructured address lines describing the lower levels of an address.\n\nBecause values in address_lines do not have type information and may\nsometimes contain multiple values in a single field (e.g.\n\"Austin, TX\"), it is important that the line order is clear. The order of\naddress lines should be \"envelope order\" for the country/region of the\naddress. In places where this can vary (e.g. Japan), address_language is\nused to make it explicit (e.g. \"ja\" for large-to-small ordering and\n\"ja-Latn\" or \"en\" for small-to-large). This way, the most specific line of\nan address can be selected based on the language.\n\nThe minimum permitted structural representation of an address consists\nof a region_code with all remaining information placed in the\naddress_lines. It would be possible to format such an address very\napproximately without geocoding, but no semantic reasoning could be\nmade about any of the address components until it was at least\npartially resolved.\n\nCreating an address only containing a region_code and address_lines, and\nthen geocoding is the recommended way to handle completely unstructured\naddresses (as opposed to guessing which parts of the address should be\nlocalities or administrative areas)."
+        },
+        "recipients": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Optional. The recipient at the address.\nThis field may, under certain circumstances, contain multiline information.\nFor example, it might contain \"care of\" information."
+        },
+        "organization": {
+          "type": "string",
+          "description": "Optional. The name of the organization at the address."
+        }
+      },
+      "description": "Represents a postal address, e.g. for postal delivery or payments addresses.\nGiven a postal address, a postal service can deliver items to a premise, P.O.\nBox or similar.\nIt is not intended to model geographical locations (roads, towns,\nmountains).\n\nIn typical usage an address would be created via user input or from importing\nexisting data, depending on the type of process.\n\nAdvice on address input / editing:\n - Use an i18n-ready address widget such as\n   https://github.com/google/libaddressinput)\n- Users should not be presented with UI elements for input or editing of\n  fields outside countries where that field is used.\n\nFor more guidance on how to use this schema, please see:\nhttps://support.google.com/business/answer/6397478"
+    },
+    "v202106alpha1CreateSiteRequest": {
+      "type": "object",
+      "properties": {
+        "site": {
+          "$ref": "#/definitions/v202106alpha1Site"
+        }
+      }
+    },
+    "v202106alpha1CreateSiteResponse": {
+      "type": "object",
+      "properties": {
+        "site": {
+          "$ref": "#/definitions/v202106alpha1Site"
+        }
+      }
+    },
+    "v202106alpha1DeleteSiteResponse": {
+      "type": "object"
+    },
+    "v202106alpha1GetSiteResponse": {
+      "type": "object",
+      "properties": {
+        "site": {
+          "$ref": "#/definitions/v202106alpha1Site"
+        }
+      }
+    },
+    "v202106alpha1Layer": {
+      "type": "object",
+      "properties": {
+        "subLayers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202106alpha1SubLayer"
+          }
+        }
+      }
+    },
+    "v202106alpha1ListSiteResponse": {
+      "type": "object",
+      "properties": {
+        "sites": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202106alpha1Site"
+          }
+        },
+        "invalidCount": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "v202106alpha1Site": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "coordinate": {
+          "$ref": "#/definitions/typeLatLng"
+        },
+        "address": {
+          "$ref": "#/definitions/typePostalAddress"
+        },
+        "type": {
+          "$ref": "#/definitions/v202106alpha1SiteType"
+        },
+        "classification": {
+          "$ref": "#/definitions/v202106alpha1SiteIpClassification"
+        },
+        "architecture": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202106alpha1Layer"
+          }
+        }
+      }
+    },
+    "v202106alpha1SiteIpClassification": {
+      "type": "object",
+      "properties": {
+        "infrastructureNetworks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "userAccessNetworks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "otherIps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "Site IP Classification"
+    },
+    "v202106alpha1SiteType": {
+      "type": "string",
+      "enum": [
+        "SITE_TYPE_UNSPECIFIED",
+        "SITE_TYPE_DATA_CENTER",
+        "SITE_TYPE_CLOUD",
+        "SITE_TYPE_BRANCH",
+        "SITE_TYPE_CONNECTIVITY",
+        "SITE_TYPE_CUSTOMER",
+        "SITE_TYPE_OTHER"
+      ],
+      "default": "SITE_TYPE_UNSPECIFIED"
+    },
+    "v202106alpha1SubLayer": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "deviceIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v202106alpha1UpdateSiteRequest": {
+      "type": "object",
+      "properties": {
+        "site": {
+          "$ref": "#/definitions/v202106alpha1Site"
+        }
+      }
+    },
+    "v202106alpha1UpdateSiteResponse": {
+      "type": "object",
+      "properties": {
+        "site": {
+          "$ref": "#/definitions/v202106alpha1Site"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "email": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-Email",
+      "in": "header"
+    },
+    "token": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-API-Token",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "email": [],
+      "token": []
+    }
+  ],
+  "externalDocs": {
+    "description": "More about Kentik APIs",
+    "url": "https://docs.kentik.com/api"
+  }
+}
