@@ -1,0 +1,181 @@
+syntax = "proto3";
+
+package kentik.user.v202106alpha1;
+option go_package = "github.com/kentik/api-schema/gen/go/kentik/user/v202106alpha1;user";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/protobuf/timestamp.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "kentik/core/v202012alpha1/annotations.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "User management API"
+    version: "202102alpha1"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api"
+    }
+  }
+  external_docs: {
+    url: "https://docs.kentik.com/api"
+    description: "More about Kentik APIs"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+enum Landing {
+  LANDING_UNSPECIFIED = 0;
+  LANDING_OBSERVATION_DECK = 1;
+  LANDING_NETWORK_EXPLORER = 2;
+  LANDING_LIBRARY = 3;
+  LANDING_EXPLORER = 4;
+  LANDING_ALERTING = 5;
+  LANDING_SYNTHETICS = 6;
+}
+
+enum Role {
+  ROLE_UNSPECIFIED = 0;
+  ROLE_MEMBER = 1;
+  ROLE_ADMINISTRATOR = 2;
+  ROLE_SUPER_ADMINISTRATOR = 3;
+}
+
+message User {
+  string id = 1;
+  string user_email = 2;
+  string username = 3;
+  string user_full_name = 4;
+  Role role = 5;
+  google.protobuf.Timestamp last_login = 6;
+  google.protobuf.Timestamp created_date = 7;
+  google.protobuf.Timestamp updated_date = 8;
+}
+
+message ListUserRequest {}
+message ListUserResponse {
+  repeated User users = 1;
+  uint32 invalid_count = 2;
+}
+
+message GetUserRequest {
+  string id = 1;
+}
+message GetUserResponse {
+  User user = 1;
+}
+
+message CreateUserRequest {
+  User user = 1;
+}
+message CreateUserResponse {
+  User user = 1;
+}
+
+message UpdateUserRequest {
+  User user = 1;
+}
+message UpdateUserResponse {
+  User user = 1;
+}
+
+message DeleteUserRequest {
+  string id = 1;
+}
+message DeleteUserResponse {}
+
+
+service UserService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202012alpha1.service_scope) = "admin.user";
+
+  rpc ListUser(ListUserRequest) returns (ListUserResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.user:read";
+    option (google.api.http) = {
+      get: "/user/v202106alpha1/users"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "UserList"
+      summary: "List users."
+      description: "Returns a list of user accounts."
+    };
+  }
+  rpc GetUser(GetUserRequest) returns (GetUserResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.user:read";
+    option (google.api.http) = {
+      get: "/user/v202106alpha1/users/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "UserGet"
+      summary: "Get a user account."
+      description: "Returns information about user account specified with ID."
+    };
+  }
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.user:write";
+    option (google.api.http) = {
+      post: "/user/v202106alpha1/users"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "UserCreate"
+      summary: "Create a user account."
+      description: "Create a user account from request. returns created account."
+    };
+  }
+  rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.user:write";
+    option (google.api.http) = {
+      put: "/user/v202106alpha1/users/{user.id}"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "UserUpdate"
+      summary: "Update a user account."
+      description: "Replaces the entire user account attributes specified with id."
+    };
+  }
+
+  rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.user:write";
+    option (google.api.http) = {
+      delete: "/user/v202106alpha1/users/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "UserDelete"
+      summary: "Delete a user account."
+      description: "Deletes the user account specified with id."
+    };
+  }
+}
