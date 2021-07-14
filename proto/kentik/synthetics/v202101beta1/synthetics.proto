@@ -120,6 +120,7 @@ message HealthMoment {
 }
 
 message Agent {
+  // id of this agent.
   string id = 1;
   string name = 2;
   AgentStatus status = 3;
@@ -140,6 +141,7 @@ message Agent {
   string country = 18;
   repeated string test_ids = 19;
   string local_ip = 20;
+  string cloud_vpc = 21;
 }
 
 enum IPFamily {

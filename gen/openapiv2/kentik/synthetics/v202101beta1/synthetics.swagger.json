@@ -72,6 +72,7 @@
         "parameters": [
           {
             "name": "agent.id",
+            "description": "id of this agent.",
             "in": "path",
             "required": true,
             "type": "string"
@@ -477,7 +478,8 @@
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
+          "type": "string",
+          "description": "id of this agent."
         },
         "name": {
           "type": "string"
@@ -541,6 +543,9 @@
           }
         },
         "localIp": {
+          "type": "string"
+        },
+        "cloudVpc": {
           "type": "string"
         }
       }
