@@ -839,17 +839,17 @@
     "v202101beta1GetTraceForTestResponse": {
       "type": "object",
       "properties": {
-        "ipInfo": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/v202101beta1IPInfo"
-          }
+        "lookups": {
+          "$ref": "#/definitions/v202101beta1TracerouteLookup"
         },
         "traceRoutes": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/v202101beta1TracerouteResult"
           }
+        },
+        "traceRoutesInfo": {
+          "$ref": "#/definitions/v202101beta1TracerouteInfo"
         }
       }
     },
@@ -1057,6 +1057,20 @@
         }
       }
     },
+    "v202101beta1IDByIP": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "ID value of type"
+        },
+        "ip": {
+          "type": "string",
+          "title": "IP address associate with IP"
+        }
+      },
+      "title": "ID type for the specified IP address"
+    },
     "v202101beta1IPFamily": {
       "type": "string",
       "enum": [
@@ -1081,6 +1095,15 @@
         },
         "dns": {
           "$ref": "#/definitions/v202101beta1DNS"
+        },
+        "deviceId": {
+          "type": "string"
+        },
+        "siteId": {
+          "type": "string"
+        },
+        "egress": {
+          "type": "string"
         }
       }
     },
@@ -1347,6 +1370,27 @@
           "type": "string"
         }
       }
+    },
+    "v202101beta1Stats": {
+      "type": "object",
+      "properties": {
+        "average": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Average statistic"
+        },
+        "max": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Maximum statistic"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Total statistic"
+        }
+      },
+      "title": "Statistics for traceroute count"
     },
     "v202101beta1TagTest": {
       "type": "object",
@@ -1705,32 +1749,36 @@
     "v202101beta1Trace": {
       "type": "object",
       "properties": {
-        "hops": {
+        "agentId": {
+          "type": "string",
+          "title": "ID of agent for the trace"
+        },
+        "agentIp": {
+          "type": "string",
+          "title": "IP of agent for the trace"
+        },
+        "targetIp": {
+          "type": "string",
+          "title": "Remote target IP"
+        },
+        "hopCount": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Number of hops for the trace"
+        },
+        "probes": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/v202101beta1TraceHop"
-          }
-        },
-        "target": {
-          "type": "string"
-        },
-        "ips": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+            "$ref": "#/definitions/v202101beta1TraceProbe"
+          },
+          "title": "Probing info"
         }
-      }
+      },
+      "title": "Trace detail"
     },
     "v202101beta1TraceHop": {
       "type": "object",
       "properties": {
-        "agent": {
-          "type": "boolean"
-        },
-        "agentId": {
-          "type": "string"
-        },
         "ttl": {
           "type": "integer",
           "format": "int32"
@@ -1738,17 +1786,80 @@
         "ip": {
           "type": "string"
         },
-        "latencies": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "format": "uint64"
-          }
-        },
         "timeout": {
+          "type": "boolean"
+        },
+        "latency": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "minExpectedLatency": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "asn": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "site": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "region": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "target": {
+          "type": "boolean"
+        },
+        "traceEnd": {
           "type": "boolean"
         }
       }
+    },
+    "v202101beta1TraceProbe": {
+      "type": "object",
+      "properties": {
+        "asPath": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": "AS path"
+        },
+        "completed": {
+          "type": "boolean",
+          "title": "Completed probe"
+        },
+        "hopCount": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Hop count"
+        },
+        "regionPath": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "Region path trace"
+        },
+        "sitePath": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": "Site path trace"
+        },
+        "hops": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202101beta1TraceHop"
+          }
+        }
+      },
+      "title": "Probing detail"
     },
     "v202101beta1TraceTaskDefinition": {
       "type": "object",
@@ -1770,6 +1881,79 @@
         }
       }
     },
+    "v202101beta1TracerouteInfo": {
+      "type": "object",
+      "properties": {
+        "isTraceRoutesTruncated": {
+          "type": "boolean",
+          "title": "Indicate trace route is trunciated"
+        },
+        "maxAsnPathCount": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Maximum number of asn path"
+        },
+        "maxSitePathCount": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Maximum number of site path"
+        },
+        "maxRegionPathCount": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Maximum number of region path"
+        }
+      },
+      "title": "Traceroute info"
+    },
+    "v202101beta1TracerouteLookup": {
+      "type": "object",
+      "properties": {
+        "agentIdByIp": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202101beta1IDByIP"
+          },
+          "title": "Agent ID by IP"
+        },
+        "agents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202101beta1Agent"
+          },
+          "title": "Agents info"
+        },
+        "asns": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202101beta1ASN"
+          },
+          "title": "ASN"
+        },
+        "deviceIdByIp": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202101beta1IDByIP"
+          },
+          "title": "Device ID by IP"
+        },
+        "siteIdByIp": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202101beta1IDByIP"
+          },
+          "title": "Site ID by IP"
+        },
+        "ips": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202101beta1IPInfo"
+          },
+          "title": "IP Info"
+        }
+      },
+      "title": "Traceroute lookup info"
+    },
     "v202101beta1TracerouteResult": {
       "type": "object",
       "properties": {
@@ -1782,6 +1966,16 @@
           "items": {
             "$ref": "#/definitions/v202101beta1Trace"
           }
+        },
+        "hopCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "count": {
+          "$ref": "#/definitions/v202101beta1Stats"
+        },
+        "distance": {
+          "$ref": "#/definitions/v202101beta1Stats"
         }
       }
     },

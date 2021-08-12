@@ -455,28 +455,105 @@ message IPInfo {
   ASN asn = 2;
   Geo geo = 3;
   DNS dns = 4;
+  string device_id = 5;
+  string site_id = 6;
+  string egress = 7;
+}
+
+// ID type for the specified IP address
+message IDByIP {
+  // ID value of type
+  string id = 1;
+  // IP address associate with IP
+  string ip = 2;
+}
+
+// Traceroute lookup info
+message TracerouteLookup {
+  // Agent ID by IP
+  repeated IDByIP agent_id_by_ip = 1;
+  // Agents info
+  repeated Agent agents = 2;
+  // ASN
+  repeated ASN asns = 3;
+  // Device ID by IP
+  repeated IDByIP device_id_by_ip = 4;
+  // Site ID by IP
+  repeated IDByIP site_id_by_ip = 5;
+  // IP Info
+  repeated IPInfo ips = 6;
 }
 
 message TraceHop {
-  bool agent = 1;
-  string agent_id = 2;
-
-  int32 ttl = 3;
-  string ip = 4;
-  repeated uint64 latencies = 5;
-
-  bool timeout = 6;
+  int32 ttl = 1;
+  string ip = 2;
+  bool timeout = 3;
+  int32 latency = 4;
+  int32 min_expected_latency = 5;
+  int32 asn = 6;
+  int32 site = 7;
+  int32 region = 8;
+  bool target = 9;
+  bool trace_end = 10;
 }
 
+// Probing detail
+message TraceProbe {
+  // AS path
+  repeated int32 as_path = 1;
+  // Completed probe
+  bool completed = 2;
+  // Hop count
+  int32 hop_count = 3;
+  // Region path trace
+  repeated string region_path = 4;
+  // Site path trace
+  repeated int32 site_path = 5;
+  repeated TraceHop hops = 6;
+}
+
+// Trace detail
 message Trace {
-  repeated TraceHop hops = 1;
-  string target = 2;
-  repeated string ips = 3;
+  // ID of agent for the trace
+  string agent_id = 1;
+  // IP of agent for the trace
+  string agent_ip = 2;
+  // Remote target IP
+  string target_ip = 3;
+  // Number of hops for the trace
+  int32 hop_count = 4;
+  // Probing info
+  repeated TraceProbe probes = 5;
+}
+
+// Statistics for traceroute count
+message Stats {
+  // Average statistic
+  int32 average = 1;
+  // Maximum statistic
+  int32 max = 2;
+  // Total statistic
+  int32 total = 3;
 }
 
 message TracerouteResult {
   google.protobuf.Timestamp time = 1;
   repeated Trace traces = 2;
+  int32 hop_count = 3;
+  Stats count = 4;
+  Stats distance = 5;
+}
+
+// Traceroute info
+message TracerouteInfo {
+  // Indicate trace route is trunciated
+  bool is_trace_routes_truncated = 1;
+  // Maximum number of asn path
+  int32 max_asn_path_count = 2;
+  // Maximum number of site path
+  int32 max_site_path_count = 3;
+  // Maximum number of region path
+  int32 max_region_path_count = 4;
 }
 
 
@@ -524,8 +601,9 @@ message GetTraceForTestRequest {
 }
 
 message GetTraceForTestResponse {
-  repeated IPInfo ip_info = 1;
+  TracerouteLookup lookups = 1;
   repeated TracerouteResult trace_routes = 2;
+  TracerouteInfo trace_routes_info = 3;
 }
 
 service SyntheticsDataService {
