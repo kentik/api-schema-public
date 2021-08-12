@@ -12,8 +12,8 @@ import "kentik/core/v202012alpha1/annotations.proto";
 
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   info: {
-    title: "site API"
-    version: "202102alpha1"
+    title: "Site API"
+    version: "202106alpha1"
     contact: {
       name: "Kentik API Engineering"
     }
