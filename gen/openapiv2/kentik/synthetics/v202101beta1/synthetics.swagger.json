@@ -889,6 +889,12 @@
         },
         "ignoreTlsErrors": {
           "type": "boolean"
+        },
+        "cssSelectors": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
         }
       }
     },

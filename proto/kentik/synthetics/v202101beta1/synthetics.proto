@@ -265,6 +265,7 @@ message HTTPConfig {
   map<string, string> headers = 4;
   string body               = 5;
   bool ignore_tls_errors    = 6;
+  map<string, string> css_selectors = 7;
 }
 
 message TestSettings {
