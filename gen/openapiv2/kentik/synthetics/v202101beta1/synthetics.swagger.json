@@ -600,6 +600,9 @@
         }
       }
     },
+    "v202101beta1ApplicationMeshTest": {
+      "type": "object"
+    },
     "v202101beta1City": {
       "type": "object",
       "properties": {
@@ -1632,6 +1635,9 @@
         },
         "dnsGrid": {
           "$ref": "#/definitions/v202101beta1GridTest"
+        },
+        "applicationMesh": {
+          "$ref": "#/definitions/v202101beta1ApplicationMeshTest"
         },
         "agentIds": {
           "type": "array",
