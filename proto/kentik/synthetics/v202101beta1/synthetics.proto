@@ -282,6 +282,7 @@ message TestSettings {
     GridTest network_grid = 35;
     UrlTest page_load = 36;
     GridTest dns_grid = 37;
+    ApplicationMeshTest application_mesh = 38;
   }
 
   repeated string agent_ids = 14;
@@ -385,6 +386,10 @@ message UrlTest {
 
 message GridTest {
   repeated string targets = 1;
+}
+
+message ApplicationMeshTest {
+  // application mesh test expects empty object in target
 }
 
 
