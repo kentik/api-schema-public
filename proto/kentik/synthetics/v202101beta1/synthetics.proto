@@ -122,7 +122,7 @@ message HealthMoment {
 message Agent {
   // id of this agent.
   string id = 1;
-  string name = 2;
+  string site_name = 2;
   AgentStatus status = 3;
   string alias = 4;
   string type = 5;
