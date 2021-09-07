@@ -481,7 +481,7 @@
           "type": "string",
           "description": "id of this agent."
         },
-        "name": {
+        "siteName": {
           "type": "string"
         },
         "status": {
