@@ -1055,6 +1055,30 @@
             "type": "integer",
             "format": "int64"
           }
+        },
+        "latencyCriticalStddev": {
+          "type": "number",
+          "format": "float"
+        },
+        "latencyWarningStddev": {
+          "type": "number",
+          "format": "float"
+        },
+        "jitterCriticalStddev": {
+          "type": "number",
+          "format": "float"
+        },
+        "jitterWarningStddev": {
+          "type": "number",
+          "format": "float"
+        },
+        "httpLatencyCriticalStddev": {
+          "type": "number",
+          "format": "float"
+        },
+        "httpLatencyWarningStddev": {
+          "type": "number",
+          "format": "float"
         }
       }
     },
