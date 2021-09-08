@@ -347,6 +347,12 @@ message HealthSettings {
   float http_latency_warning = 8;
   repeated uint32 http_valid_codes = 9;
   repeated uint32 dns_valid_codes = 10;
+  float latency_critical_stddev = 11;
+  float latency_warning_stddev = 12;
+  float jitter_critical_stddev = 13;
+  float jitter_warning_stddev = 14;
+  float http_latency_critical_stddev = 15;
+  float http_latency_warning_stddev = 16;
 }
 
 message HostnameTest {
