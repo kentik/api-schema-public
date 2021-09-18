@@ -657,6 +657,21 @@
         }
       }
     },
+    "v202101beta1DNSRecord": {
+      "type": "string",
+      "enum": [
+        "DNS_RECORD_UNSPECIFIED",
+        "DNS_RECORD_A",
+        "DNS_RECORD_AAAA",
+        "DNS_RECORD_CNAME",
+        "DNS_RECORD_DNAME",
+        "DNS_RECORD_NS",
+        "DNS_RECORD_MX",
+        "DNS_RECORD_PTR",
+        "DNS_RECORD_SOA"
+      ],
+      "default": "DNS_RECORD_UNSPECIFIED"
+    },
     "v202101beta1DNSTaskDefinition": {
       "type": "object",
       "properties": {
@@ -693,11 +708,28 @@
     "v202101beta1DeleteTestResponse": {
       "type": "object"
     },
+    "v202101beta1DnsGridTest": {
+      "type": "object",
+      "properties": {
+        "targets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "type": {
+          "$ref": "#/definitions/v202101beta1DNSRecord"
+        }
+      }
+    },
     "v202101beta1DnsTest": {
       "type": "object",
       "properties": {
         "target": {
           "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/v202101beta1DNSRecord"
         }
       }
     },
@@ -1658,7 +1690,7 @@
           "$ref": "#/definitions/v202101beta1UrlTest"
         },
         "dnsGrid": {
-          "$ref": "#/definitions/v202101beta1GridTest"
+          "$ref": "#/definitions/v202101beta1DnsGridTest"
         },
         "applicationMesh": {
           "$ref": "#/definitions/v202101beta1ApplicationMeshTest"
@@ -1718,12 +1750,6 @@
           "items": {
             "type": "string"
           }
-        },
-        "targetType": {
-          "type": "string"
-        },
-        "targetValue": {
-          "type": "string"
         },
         "useLocalIp": {
           "type": "boolean"
