@@ -1,0 +1,221 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Network Classification API",
+    "version": "202109alpha1",
+    "contact": {
+      "name": "Kentik API Engineering"
+    }
+  },
+  "tags": [
+    {
+      "name": "NetworkClassService"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/network_class/v202109alpha1/network_class": {
+      "get": {
+        "summary": "Get a network classification.",
+        "description": "Returns information about a network classification for the company.",
+        "operationId": "NetworkClassGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202109alpha1GetNetworkClassResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "NetworkClassService"
+        ]
+      },
+      "post": {
+        "summary": "Update a network classification.",
+        "description": "Replaces the entire network classification attributes for the company.",
+        "operationId": "NetworkClassUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202109alpha1UpdateNetworkClassResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202109alpha1UpdateNetworkClassRequest"
+            }
+          }
+        ],
+        "tags": [
+          "NetworkClassService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "typeUrl": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v202109alpha1CloudSubnet": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/v202109alpha1CloudType",
+          "title": "Cloud provider"
+        },
+        "subnets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "Subnet masks"
+        }
+      }
+    },
+    "v202109alpha1CloudType": {
+      "type": "string",
+      "enum": [
+        "CLOUD_TYPE_UNSPECIFIED",
+        "CLOUD_TYPE_AWS",
+        "CLOUD_TYPE_AZURE",
+        "CLOUD_TYPE_GCE",
+        "CLOUD_TYPE_IBM"
+      ],
+      "default": "CLOUD_TYPE_UNSPECIFIED"
+    },
+    "v202109alpha1GetNetworkClassResponse": {
+      "type": "object",
+      "properties": {
+        "networkClass": {
+          "$ref": "#/definitions/v202109alpha1NetworkClass"
+        }
+      }
+    },
+    "v202109alpha1NetworkClass": {
+      "type": "object",
+      "properties": {
+        "internalAsns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "Internal ASNs"
+        },
+        "internalIps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "Internal IPs"
+        },
+        "usePrivateAsns": {
+          "type": "boolean",
+          "title": "Specify to use internal ASNs"
+        },
+        "usePrivateSubnets": {
+          "type": "boolean",
+          "title": "Specify to use internal IPs"
+        },
+        "cloudSubnets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202109alpha1CloudSubnet"
+          },
+          "description": "Cloud provider and subnet info."
+        }
+      }
+    },
+    "v202109alpha1UpdateNetworkClassRequest": {
+      "type": "object",
+      "properties": {
+        "networkClass": {
+          "$ref": "#/definitions/v202109alpha1NetworkClass"
+        }
+      }
+    },
+    "v202109alpha1UpdateNetworkClassResponse": {
+      "type": "object",
+      "properties": {
+        "networkClass": {
+          "$ref": "#/definitions/v202109alpha1NetworkClass"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "email": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-Email",
+      "in": "header"
+    },
+    "token": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-API-Token",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "email": [],
+      "token": []
+    }
+  ],
+  "externalDocs": {
+    "description": "More about Kentik APIs",
+    "url": "https://docs.kentik.com/api"
+  }
+}
