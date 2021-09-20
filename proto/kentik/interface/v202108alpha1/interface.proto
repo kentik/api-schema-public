@@ -1,0 +1,540 @@
+syntax = "proto3";
+
+package kentik.interface.v202108alpha1;
+option go_package = "github.com/kentik/api-schema/gen/go/kentik/interface/v202108alpha1;iface";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "kentik/core/v202012alpha1/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Interface API"
+    version: "202108alpha1"
+    contact: {
+      name: "Kentik API Engineering"
+    }
+  }
+  external_docs: {
+    url: "https://docs.kentik.com/api"
+    description: "More about Kentik APIs"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+enum ConnectivityType {
+  CONNECTIVITY_TYPE_UNSPECIFIED = 0;
+  CONNECTIVITY_TYPE_AGGREGATION_INTERCONNECT = 1;
+  CONNECTIVITY_TYPE_AVAILABLE = 2;
+  CONNECTIVITY_TYPE_BACKBONE = 3;
+  CONNECTIVITY_TYPE_CLOUD_INTERCONNECT = 4;
+  CONNECTIVITY_TYPE_CUSTOMER = 5;
+  CONNECTIVITY_TYPE_DATACENTER_FABRIC = 6;
+  CONNECTIVITY_TYPE_DATACENTER_INTERCONNECT = 7;
+  CONNECTIVITY_TYPE_EMBEDDED_CACHE = 8;
+  CONNECTIVITY_TYPE_FREE_PNI = 9;
+  CONNECTIVITY_TYPE_HOST = 10;
+  CONNECTIVITY_TYPE_IX = 11;
+  CONNECTIVITY_TYPE_OTHER = 12;
+  CONNECTIVITY_TYPE_PAID_PNI = 13;
+  CONNECTIVITY_TYPE_RESERVED = 14;
+  CONNECTIVITY_TYPE_TRANSIT = 15;
+  CONNECTIVITY_TYPE_VIRTUAL_CROSS_CONNECT = 16;
+}
+
+enum NetworkBoundary {
+  NETWORK_BOUNDARY_UNSPECIFIED = 0;
+  NETWORK_BOUNDARY_AUTO = 1;
+  NETWORK_BOUNDARY_INTERNAL = 2;
+  NETWORK_BOUNDARY_EXTENAL = 3;
+  NETWORK_BOUNDARY_NONE = 4;
+}
+
+
+message Interface {
+  // ID of interface.
+  string id = 1;
+  // ID of device with this interface.
+  string device_id = 2;
+  // SNMP ID.
+  string snmp_id = 3;
+  // Network speed in Mbps.
+  int32 snmp_speed = 4;
+  // Snmp Type.
+  int32 snmp_type = 5;
+  // Interface alias.
+  string snmp_alias = 6;
+  // IP of interface.
+  string interface_ip = 7;
+  // Readable string description of interface.
+  string interface_description = 8;
+  // Create timestamp.
+  google.protobuf.Timestamp cdate = 9;
+  // Update Timestamp.
+  google.protobuf.Timestamp edate = 10;
+  // Subnet mask.
+  string interface_ip_netmask = 11;
+  // Type of network connectivity type.
+  ConnectivityType connectivity_type = 12;
+  // Type of network boundary.
+  NetworkBoundary network_boundary = 13;
+  // Top asn hops.
+  repeated string top_nexthop_asns = 14;
+  // Network provider.
+  string provider = 15;
+}
+
+
+message InterfaceClassification {
+  bool classified = 1;
+  ConnectivityType connectivity_type = 2;
+  NetworkBoundary network_boundary = 3;
+}
+
+message ClassifyCounter {
+  int32 count = 1;
+  int32 external_count = 2;
+  int32 free_pni_count = 3;
+  int32 ix_count = 4;
+  int32 provider_count = 5;
+  int32 transit_count = 6;
+}
+
+message InterfaceClassifyInfo {
+  string device_id = 1;
+  string snmp_id = 2;
+  string snmp_alias = 3;
+  string interface_ip = 4;
+  string interface_ip_asn = 5;
+  bool is_internal_ip = 6;
+  bool is_internal_asn = 7;
+  repeated string top_nexthop_asns = 8;
+  string pdb_global_name = 9;
+  // current classification
+  InterfaceClassification auto_classification = 10;
+  // previous classification
+  InterfaceClassification previous_classification = 11;
+  string provider = 12;
+  int32 network_boundary_confidence = 13;
+  int32 connectivity_type_confidence = 14;
+  int32 provider_confidence = 15;
+  bool auto_classified_provider = 16;
+  string previously_classified_provider = 17;
+  bool previously_classified_external = 18;
+  bool ip_asn_matched = 19;
+  bool ix_matched = 20;
+  bool nexthop_matched = 21;
+  bool connectivity_type_matched = 22;
+  bool provider_matched = 23;
+  bool changed_classification = 24;
+}
+
+message DeviceClassifyInfo {
+  // ID of device.
+  string device_id = 1;
+  // Total number of interfaces for this device.
+  int32 total_interfaces = 2;
+  // previously_classified_ counts.
+  ClassifyCounter previously_classified_counter = 3;
+  // auto_classified_ counts.
+  ClassifyCounter auto_classified_counter = 4;
+  int32 changed_classification_count = 15;
+  int32 ip_asn_matched_count = 16;
+  int32 ix_matched_count = 17;
+  int32 nexthop_matched_count = 18;
+  int32 connectivity_type_matched_count = 19;
+  int32 provider_matched_count = 20;
+  // List of interfaces.
+  repeated InterfaceClassifyInfo interfaces = 21;
+}
+
+enum IpFilter {
+  IP_FILTER_UNSPECIFIED = 0;
+  IP_FILTER_PRIVATE = 1;
+  IP_FILTER_PUBLIC = 2;
+  IP_FILTER_UNSET = 3;
+}
+
+// Supports multiple search criteria. Fields are combined to AND statements to perform search.
+message InterfaceFilter {
+  // Search text match in interface description and alias.
+  string text = 1;
+  // Search by device ID.
+  repeated string device_ids = 2;
+  // Search by type of interface connectivity.
+  repeated ConnectivityType connectivity_types = 3;
+  // Search by type of network boundary.
+  repeated NetworkBoundary network_boundaries = 4;
+  // Search by provider
+  repeated string providers = 5;
+  // SNMP speed in Mbps
+  repeated int32 snmp_speeds = 6;
+  // Search by ip address.
+  repeated IpFilter ip_types = 7;
+}
+
+message AutoClassifyRequest {
+  // uses company_id from auth user
+}
+
+message AutoClassifyResponse {
+  // Percent of all interfaces taht are auto calssified.
+  double perc_auto_classified = 1;
+  int32 net_changed_transit = 2;
+  int32 net_changed_ix = 3;
+  int32 net_changed_provider = 4;
+  int32 total_changed_classification_count = 5;
+  int32 total_auto_classify_count = 6;
+  // total_auto_classify_ counts.
+  ClassifyCounter total_auto_classify_counter = 7;
+  // total_previous_ counts.
+  ClassifyCounter total_previous_counter = 8;
+  // Total number of interfaces.
+  int32 total_interfaces = 17;
+  // List of devices.
+  repeated DeviceClassifyInfo devices = 18;
+}
+
+// Set connection type, network boundary, and provider of interface id(s) specified.
+message ManualClassifyRequest {
+  // Interface ids to set the properties.
+  repeated string interface_ids = 1;
+  // Connection type enum.
+  ConnectivityType connectivity_type = 2;
+  // Network boundary enum.
+  NetworkBoundary network_boundary = 3;
+  // Network provider.
+  string provider = 4;
+}
+
+message ManualClassifyResponse {
+  repeated string device_ids = 1;
+}
+
+message ListInterfaceRequest {
+  InterfaceFilter filters = 1;
+}
+message ListInterfaceResponse {
+  repeated Interface interfaces = 1;
+  int32 total_count = 2;
+  int32 invalid_count = 3;
+}
+
+message GetInterfaceRequest {
+  // ID of interface.
+  string id = 1;
+}
+message GetInterfaceResponse {
+  Interface interface = 1;
+}
+
+message CreateInterfaceRequest {
+  Interface interface = 1;
+}
+message CreateInterfaceResponse {
+  Interface interface = 1;
+}
+
+message UpdateInterfaceRequest {
+  Interface interface = 1;
+}
+message UpdateInterfaceResponse {
+  Interface interface = 1;
+}
+
+message DeleteInterfaceRequest {
+  // ID of interface.
+  string id = 1;
+}
+message DeleteInterfaceResponse {}
+
+service InterfaceService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202012alpha1.service_scope) = "admin.interface";
+
+  // Comment out for now until we need auto classification.
+  // rpc AutoClassify(AutoClassifyRequest) returns (AutoClassifyResponse) {
+  //   option (kentik.core.v202012alpha1.method_scope) = "admin.interface:write";
+  //   option (google.api.http) = {
+  //     get: "/interface/v202108alpha1/auto_classify"
+  //   };
+  //   option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+  //     operation_id: "AutoClassify"
+  //     summary: "Auto Classify Interface"
+  //     description: "Classify devices and interface base on rules."
+  //   };
+  // }
+
+  rpc ManualClassify(ManualClassifyRequest) returns (ManualClassifyResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.interface:write";
+    option (google.api.http) = {
+      post: "/interface/v202108alpha1/manual_classify"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ManualClassify"
+      summary: "Manual Classify Interface"
+      description: "Manually set interface(s) classification."
+    };
+  }
+
+  rpc ListInterface(ListInterfaceRequest) returns (ListInterfaceResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.interface:read";
+    option (google.api.http) = {
+      get: "/interface/v202108alpha1/interfaces"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ListInterface"
+      summary: "Fetch Search Interfaces"
+      description: "Return list of interfaces matches search critera."
+    };
+  }
+  rpc GetInterface(GetInterfaceRequest) returns (GetInterfaceResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.interface:read";
+    option (google.api.http) = {
+      get: "/interface/v202108alpha1/interfaces/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "InterfaceGet"
+      summary: "Get a interface."
+      description: "Returns information about a interface specified with ID."
+    };
+  }
+  rpc CreateInterface(CreateInterfaceRequest) returns (CreateInterfaceResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.interface:write";
+    option (google.api.http) = {
+      post: "/interface/v202108alpha1/interfaces"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "InterfaceCreate"
+      summary: "Create a interface."
+      description: "Create a interface from request. returns created."
+    };
+  }
+  rpc UpdateInterface(UpdateInterfaceRequest) returns (UpdateInterfaceResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.interface:write";
+    option (google.api.http) = {
+      put: "/interface/v202108alpha1/interfaces/{interface.id}"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "InterfaceUpdate"
+      summary: "Update a interface."
+      description: "Replaces the entire interface attributes specified with id."
+    };
+  }
+
+  rpc DeleteInterface(DeleteInterfaceRequest) returns (DeleteInterfaceResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.interface:write";
+    option (google.api.http) = {
+      delete: "/interface/v202108alpha1/interfaces/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "InterfaceDelete"
+      summary: "Delete a interface."
+      description: "Deletes the interface specified with id."
+    };
+  }
+}
+
+
+enum MatchAttribute {
+  MATCH_ATTRIBUTE_UNSPECIFIED = 0;
+  MATCH_ATTRIBUTE_INTERFACE_DESCRIPTION = 1;
+  MATCH_ATTRIBUTE_SNMP_ALIAS = 2;
+  MATCH_ATTRIBUTE_INTERFACE_IP = 3;
+}
+
+enum Operator {
+  OPERATOR_UNSPECIFIED = 0;
+  OPERATOR_EQUALS = 1;
+  OPERATOR_CONTAINS = 2;
+  OPERATOR_REGEX = 3;
+  OPERATOR_CONTAINED_IN_SUBNET = 4;
+  OPERATOR_IS_PUBLIC_IP = 5;
+  OPERATOR_IS_PRIVATE_IP = 6;
+  OPERATOR_NO_IP = 7;
+}
+
+message Match {
+  // Attribute to match.
+  MatchAttribute match_attribute = 1;
+  // Match operation.
+  Operator match_operator = 2;
+  // Value to match by.
+  string pattern = 3;
+}
+
+// Set the values of the interface property base on match rule defintion. Requires explicit input value, empty string is allow.
+message Action {
+  // Set type of connection.
+  ConnectivityType set_connectivity_type = 1;
+  // Set network boundary.
+  NetworkBoundary set_network_boundary = 2;
+  // Set ASNs.
+  string set_connected_asns = 3;
+  // List of providers available.
+  string set_provider = 4;
+}
+
+message DeviceFilter {
+  bool all_devices = 1;
+  repeated string device_name = 2;
+  repeated string device_labels = 3;
+  repeated string device_rules = 4;
+  repeated string device_types = 5;
+}
+
+message Rule {
+  // ID of interface rule.
+  string id = 1;
+  // Is this rule enable.
+  bool enabled = 2;
+  // Rank order for apply list of rules.
+  int32 rank = 3;
+  // Rule match criteria.
+  Match match_clause = 4;
+  // Action for match rule.
+  Action action_set = 5;
+  // Create timestamp.
+  google.protobuf.Timestamp cdate = 6;
+  // Update timestamp.
+  google.protobuf.Timestamp edate = 7;
+  // Device inclusive filters.
+  DeviceFilter included_devices = 8;
+  // Device exclusive filters.
+  DeviceFilter excluded_devices = 9;
+
+}
+
+// message ListRuleRequest {}
+// message ListRuleResponse {
+//   repeated Rule rules = 1;
+//   uint32 invalid_count = 2;
+// }
+
+// message GetRuleRequest {
+//   // ID of interface rule.
+//   string id = 1;
+// }
+// message GetRuleResponse {
+//   Rule rule = 1;
+// }
+
+// message CreateRuleRequest {
+//   Rule rule = 1;
+// }
+// message CreateRuleResponse {
+//   Rule rule = 1;
+// }
+
+// message UpdateRuleRequest {
+//   Rule rule = 1;
+// }
+// message UpdateRuleResponse {
+//   Rule rule = 1;
+// }
+
+// message DeleteRuleRequest {
+//   // ID of interface rule.
+//   string id = 1;
+// }
+// message DeleteRuleResponse {}
+
+// comment out for now until we start work on rule CRUD
+// service RuleService {
+//   option (google.api.default_host) = "grpc.api.kentik.com";
+//   option (kentik.core.v202012alpha1.service_scope) = "admin.interface";
+
+//   rpc ListRule(ListRuleRequest) returns (ListRuleResponse) {
+//     option (kentik.core.v202012alpha1.method_scope) = "admin.rule:read";
+//     option (google.api.http) = {
+//       get: "/rule/v202108alpha1/rules"
+//     };
+//     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+//       operation_id: "RuleList"
+//       summary: "List rules."
+//       description: "Returns a list of rules."
+//     };
+//   }
+//   rpc GetRule(GetRuleRequest) returns (GetRuleResponse) {
+//     option (kentik.core.v202012alpha1.method_scope) = "admin.rule:read";
+//     option (google.api.http) = {
+//       get: "/rule/v202108alpha1/rules/{id}"
+//     };
+//     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+//       operation_id: "RuleGet"
+//       summary: "Get a rule."
+//       description: "Returns information about a rule specified with ID."
+//     };
+//   }
+//   rpc CreateRule(CreateRuleRequest) returns (CreateRuleResponse) {
+//     option (kentik.core.v202012alpha1.method_scope) = "admin.rule:write";
+//     option (google.api.http) = {
+//       post: "/rule/v202108alpha1/rules"
+//       body: "*"
+//     };
+//     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+//       operation_id: "RuleCreate"
+//       summary: "Create a rule."
+//       description: "Create a rule from request. returns created."
+//     };
+//   }
+//   rpc UpdateRule(UpdateRuleRequest) returns (UpdateRuleResponse) {
+//     option (kentik.core.v202012alpha1.method_scope) = "admin.rule:write";
+//     option (google.api.http) = {
+//       put: "/rule/v202108alpha1/rules/{rule.id}"
+//       body: "*"
+//     };
+//     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+//       operation_id: "RuleUpdate"
+//       summary: "Update a rule."
+//       description: "Replaces the entire rule attributes specified with id."
+//     };
+//   }
+
+//   rpc DeleteRule(DeleteRuleRequest) returns (DeleteRuleResponse) {
+//     option (kentik.core.v202012alpha1.method_scope) = "admin.rule:write";
+//     option (google.api.http) = {
+//       delete: "/rule/v202108alpha1/rules/{id}"
+//     };
+//     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+//       operation_id: "RuleDelete"
+//       summary: "Delete a rule."
+//       description: "Deletes the rule specified with id."
+//     };
+//   }
+// }
