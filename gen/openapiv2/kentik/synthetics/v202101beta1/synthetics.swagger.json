@@ -547,6 +547,9 @@
         },
         "cloudVpc": {
           "type": "string"
+        },
+        "agentImpl": {
+          "$ref": "#/definitions/v202101beta1ImplementType"
         }
       }
     },
@@ -1171,6 +1174,16 @@
           "type": "string"
         }
       }
+    },
+    "v202101beta1ImplementType": {
+      "type": "string",
+      "enum": [
+        "IMPLEMENT_TYPE_UNSPECIFIED",
+        "IMPLEMENT_TYPE_RUST",
+        "IMPLEMENT_TYPE_NODE"
+      ],
+      "default": "IMPLEMENT_TYPE_UNSPECIFIED",
+      "description": "Agent impl type determines global vs private agent to use for specific test types.\n\n - IMPLEMENT_TYPE_RUST: setup IP test against a NODE global agent will fail.\n - IMPLEMENT_TYPE_NODE: setup a page load test against a RUST global agent will fail."
     },
     "v202101beta1IpTest": {
       "type": "object",
