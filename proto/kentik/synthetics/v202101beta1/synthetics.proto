@@ -119,6 +119,15 @@ message HealthMoment {
   string task_type = 20;
 }
 
+// Agent impl type determines global vs private agent to use for specific test types.
+enum ImplementType {
+  IMPLEMENT_TYPE_UNSPECIFIED = 0;
+  // setup IP test against a NODE global agent will fail.
+  IMPLEMENT_TYPE_RUST = 1;
+  // setup a page load test against a RUST global agent will fail.
+  IMPLEMENT_TYPE_NODE = 2;
+}
+
 message Agent {
   // id of this agent.
   string id = 1;
@@ -142,6 +151,7 @@ message Agent {
   repeated string test_ids = 19;
   string local_ip = 20;
   string cloud_vpc = 21;
+  ImplementType agent_impl = 22;
 }
 
 enum IPFamily {
