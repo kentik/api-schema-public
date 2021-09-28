@@ -131,7 +131,7 @@ enum ImplementType {
 message Agent {
   // id of this agent.
   string id = 1;
-  string site_name = 2;
+  string name = 2; // revert site_name to name to prevent breaking existing users
   AgentStatus status = 3;
   string alias = 4;
   string type = 5;
