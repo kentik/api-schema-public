@@ -78,7 +78,7 @@ enum NetworkBoundary {
   NETWORK_BOUNDARY_UNSPECIFIED = 0;
   NETWORK_BOUNDARY_AUTO = 1;
   NETWORK_BOUNDARY_INTERNAL = 2;
-  NETWORK_BOUNDARY_EXTENAL = 3;
+  NETWORK_BOUNDARY_EXTERNAL = 3;
   NETWORK_BOUNDARY_NONE = 4;
 }
 
@@ -111,7 +111,7 @@ message Interface {
   // Type of network boundary.
   NetworkBoundary network_boundary = 13;
   // Top asn hops.
-  repeated string top_nexthop_asns = 14;
+  repeated int32 top_nexthop_asns = 14;
   // Network provider.
   string provider = 15;
 }
