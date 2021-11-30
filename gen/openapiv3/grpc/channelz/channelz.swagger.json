@@ -1,0 +1,633 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "grpc/channelz/channelz.proto",
+        "version": "version not set"
+    },
+    "tags": [
+        {
+            "name": "Channelz"
+        }
+    ],
+    "paths": {},
+    "components": {
+        "schemas": {
+            "AddressOtherAddress": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The human readable version of the value.  This value should be set."
+                    },
+                    "value": {
+                        "$ref": "#/components/schemas/protobufAny"
+                    }
+                },
+                "description": "An address type not included above."
+            },
+            "AddressTcpIpAddress": {
+                "type": "object",
+                "properties": {
+                    "ipAddress": {
+                        "type": "string",
+                        "format": "byte",
+                        "description": "Either the IPv4 or IPv6 address in bytes.  Will be either 4 bytes or 16\nbytes in length."
+                    },
+                    "port": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "0-64k, or -1 if not appropriate."
+                    }
+                }
+            },
+            "AddressUdsAddress": {
+                "type": "object",
+                "properties": {
+                    "filename": {
+                        "type": "string"
+                    }
+                },
+                "description": "A Unix Domain Socket address."
+            },
+            "ChannelConnectivityStateState": {
+                "type": "string",
+                "enum": [
+                    "UNKNOWN",
+                    "IDLE",
+                    "CONNECTING",
+                    "READY",
+                    "TRANSIENT_FAILURE",
+                    "SHUTDOWN"
+                ],
+                "default": "UNKNOWN"
+            },
+            "ChannelTraceEventSeverity": {
+                "type": "string",
+                "enum": [
+                    "CT_UNKNOWN",
+                    "CT_INFO",
+                    "CT_WARNING",
+                    "CT_ERROR"
+                ],
+                "default": "CT_UNKNOWN",
+                "description": "The supported severity levels of trace events."
+            },
+            "SecurityOtherSecurity": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The human readable version of the value."
+                    },
+                    "value": {
+                        "$ref": "#/components/schemas/protobufAny"
+                    }
+                }
+            },
+            "SecurityTls": {
+                "type": "object",
+                "properties": {
+                    "standardName": {
+                        "type": "string",
+                        "title": "The cipher suite name in the RFC 4346 format:\nhttps://tools.ietf.org/html/rfc4346#appendix-C"
+                    },
+                    "otherName": {
+                        "type": "string",
+                        "description": "Some other way to describe the cipher suite if\nthe RFC 4346 name is not available."
+                    },
+                    "localCertificate": {
+                        "type": "string",
+                        "format": "byte",
+                        "description": "the certificate used by this endpoint."
+                    },
+                    "remoteCertificate": {
+                        "type": "string",
+                        "format": "byte",
+                        "description": "the certificate used by the remote endpoint."
+                    }
+                }
+            },
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "typeUrl": {
+                        "type": "string",
+                        "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+                    },
+                    "value": {
+                        "type": "string",
+                        "format": "byte",
+                        "description": "Must be a valid serialized protocol buffer of the above specified type."
+                    }
+                },
+                "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(&foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := &pb.Foo{...}\n     any, err := anypb.New(foo)\n     if err != nil {\n       ...\n     }\n     ...\n     foo := &pb.Foo{}\n     if err := any.UnmarshalTo(foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": <string>,\n      \"lastName\": <string>\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "v1Address": {
+                "type": "object",
+                "properties": {
+                    "tcpipAddress": {
+                        "$ref": "#/components/schemas/AddressTcpIpAddress"
+                    },
+                    "udsAddress": {
+                        "$ref": "#/components/schemas/AddressUdsAddress"
+                    },
+                    "otherAddress": {
+                        "$ref": "#/components/schemas/AddressOtherAddress"
+                    }
+                },
+                "description": "Address represents the address used to create the socket."
+            },
+            "v1Channel": {
+                "type": "object",
+                "properties": {
+                    "ref": {
+                        "$ref": "#/components/schemas/v1ChannelRef"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/v1ChannelData"
+                    },
+                    "channelRef": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v1ChannelRef"
+                        },
+                        "description": "There are no ordering guarantees on the order of channel refs.\nThere may not be cycles in the ref graph.\nA channel ref may be present in more than one channel or subchannel."
+                    },
+                    "subchannelRef": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v1SubchannelRef"
+                        },
+                        "description": "At most one of 'channel_ref+subchannel_ref' and 'socket' is set.\nThere are no ordering guarantees on the order of subchannel refs.\nThere may not be cycles in the ref graph.\nA sub channel ref may be present in more than one channel or subchannel."
+                    },
+                    "socketRef": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v1SocketRef"
+                        },
+                        "description": "There are no ordering guarantees on the order of sockets."
+                    }
+                },
+                "description": "Channel is a logical grouping of channels, subchannels, and sockets."
+            },
+            "v1ChannelConnectivityState": {
+                "type": "object",
+                "properties": {
+                    "state": {
+                        "$ref": "#/components/schemas/ChannelConnectivityStateState"
+                    }
+                },
+                "title": "These come from the specified states in this document:\nhttps://github.com/grpc/grpc/blob/master/doc/connectivity-semantics-and-api.md"
+            },
+            "v1ChannelData": {
+                "type": "object",
+                "properties": {
+                    "state": {
+                        "$ref": "#/components/schemas/v1ChannelConnectivityState"
+                    },
+                    "target": {
+                        "type": "string",
+                        "title": "The target this channel originally tried to connect to.  May be absent"
+                    },
+                    "trace": {
+                        "$ref": "#/components/schemas/v1ChannelTrace"
+                    },
+                    "callsStarted": {
+                        "type": "string",
+                        "format": "int64",
+                        "title": "The number of calls started on the channel"
+                    },
+                    "callsSucceeded": {
+                        "type": "string",
+                        "format": "int64",
+                        "title": "The number of calls that have completed with an OK status"
+                    },
+                    "callsFailed": {
+                        "type": "string",
+                        "format": "int64",
+                        "title": "The number of calls that have completed with a non-OK status"
+                    },
+                    "lastCallStartedTimestamp": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "The last time a call was started on the channel."
+                    }
+                },
+                "description": "Channel data is data related to a specific Channel or Subchannel."
+            },
+            "v1ChannelRef": {
+                "type": "object",
+                "properties": {
+                    "channelId": {
+                        "type": "string",
+                        "format": "int64",
+                        "description": "The globally unique id for this channel.  Must be a positive number."
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "An optional name associated with the channel."
+                    }
+                },
+                "description": "ChannelRef is a reference to a Channel."
+            },
+            "v1ChannelTrace": {
+                "type": "object",
+                "properties": {
+                    "numEventsLogged": {
+                        "type": "string",
+                        "format": "int64",
+                        "description": "Number of events ever logged in this tracing object. This can differ from\nevents.size() because events can be overwritten or garbage collected by\nimplementations."
+                    },
+                    "creationTimestamp": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Time that this channel was created."
+                    },
+                    "events": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v1ChannelTraceEvent"
+                        },
+                        "description": "List of events that have occurred on this channel."
+                    }
+                },
+                "description": "ChannelTrace represents the recent events that have occurred on the channel."
+            },
+            "v1ChannelTraceEvent": {
+                "type": "object",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "High level description of the event."
+                    },
+                    "severity": {
+                        "$ref": "#/components/schemas/ChannelTraceEventSeverity"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "When this event occurred."
+                    },
+                    "channelRef": {
+                        "$ref": "#/components/schemas/v1ChannelRef"
+                    },
+                    "subchannelRef": {
+                        "$ref": "#/components/schemas/v1SubchannelRef"
+                    }
+                },
+                "description": "A trace event is an interesting thing that happened to a channel or\nsubchannel, such as creation, address resolution, subchannel creation, etc."
+            },
+            "v1GetChannelResponse": {
+                "type": "object",
+                "properties": {
+                    "channel": {
+                        "$ref": "#/components/schemas/v1Channel"
+                    }
+                }
+            },
+            "v1GetServerResponse": {
+                "type": "object",
+                "properties": {
+                    "server": {
+                        "$ref": "#/components/schemas/v1Server"
+                    }
+                }
+            },
+            "v1GetServerSocketsResponse": {
+                "type": "object",
+                "properties": {
+                    "socketRef": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v1SocketRef"
+                        },
+                        "description": "list of socket refs that the connection detail service knows about.  Sorted in\nascending socket_id order.\nMust contain at least 1 result, otherwise 'end' must be true."
+                    },
+                    "end": {
+                        "type": "boolean",
+                        "description": "If set, indicates that the list of sockets is the final list.  Requesting\nmore sockets will only return more if they are created after this RPC\ncompletes."
+                    }
+                }
+            },
+            "v1GetServersResponse": {
+                "type": "object",
+                "properties": {
+                    "server": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v1Server"
+                        },
+                        "description": "list of servers that the connection detail service knows about.  Sorted in\nascending server_id order.\nMust contain at least 1 result, otherwise 'end' must be true."
+                    },
+                    "end": {
+                        "type": "boolean",
+                        "description": "If set, indicates that the list of servers is the final list.  Requesting\nmore servers will only return more if they are created after this RPC\ncompletes."
+                    }
+                }
+            },
+            "v1GetSocketResponse": {
+                "type": "object",
+                "properties": {
+                    "socket": {
+                        "$ref": "#/components/schemas/v1Socket"
+                    }
+                }
+            },
+            "v1GetSubchannelResponse": {
+                "type": "object",
+                "properties": {
+                    "subchannel": {
+                        "$ref": "#/components/schemas/v1Subchannel"
+                    }
+                }
+            },
+            "v1GetTopChannelsResponse": {
+                "type": "object",
+                "properties": {
+                    "channel": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v1Channel"
+                        },
+                        "description": "list of channels that the connection detail service knows about.  Sorted in\nascending channel_id order.\nMust contain at least 1 result, otherwise 'end' must be true."
+                    },
+                    "end": {
+                        "type": "boolean",
+                        "description": "If set, indicates that the list of channels is the final list.  Requesting\nmore channels can only return more if they are created after this RPC\ncompletes."
+                    }
+                }
+            },
+            "v1Security": {
+                "type": "object",
+                "properties": {
+                    "tls": {
+                        "$ref": "#/components/schemas/SecurityTls"
+                    },
+                    "other": {
+                        "$ref": "#/components/schemas/SecurityOtherSecurity"
+                    }
+                },
+                "description": "Security represents details about how secure the socket is."
+            },
+            "v1Server": {
+                "type": "object",
+                "properties": {
+                    "ref": {
+                        "$ref": "#/components/schemas/v1ServerRef"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/v1ServerData"
+                    },
+                    "listenSocket": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v1SocketRef"
+                        },
+                        "description": "The sockets that the server is listening on.  There are no ordering\nguarantees.  This may be absent."
+                    }
+                },
+                "description": "Server represents a single server.  There may be multiple servers in a single\nprogram."
+            },
+            "v1ServerData": {
+                "type": "object",
+                "properties": {
+                    "trace": {
+                        "$ref": "#/components/schemas/v1ChannelTrace"
+                    },
+                    "callsStarted": {
+                        "type": "string",
+                        "format": "int64",
+                        "title": "The number of incoming calls started on the server"
+                    },
+                    "callsSucceeded": {
+                        "type": "string",
+                        "format": "int64",
+                        "title": "The number of incoming calls that have completed with an OK status"
+                    },
+                    "callsFailed": {
+                        "type": "string",
+                        "format": "int64",
+                        "title": "The number of incoming calls that have a completed with a non-OK status"
+                    },
+                    "lastCallStartedTimestamp": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "The last time a call was started on the server."
+                    }
+                },
+                "description": "ServerData is data for a specific Server."
+            },
+            "v1ServerRef": {
+                "type": "object",
+                "properties": {
+                    "serverId": {
+                        "type": "string",
+                        "format": "int64",
+                        "description": "A globally unique identifier for this server.  Must be a positive number."
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "An optional name associated with the server."
+                    }
+                },
+                "description": "ServerRef is a reference to a Server."
+            },
+            "v1Socket": {
+                "type": "object",
+                "properties": {
+                    "ref": {
+                        "$ref": "#/components/schemas/v1SocketRef"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/v1SocketData"
+                    },
+                    "local": {
+                        "$ref": "#/components/schemas/v1Address"
+                    },
+                    "remote": {
+                        "$ref": "#/components/schemas/v1Address"
+                    },
+                    "security": {
+                        "$ref": "#/components/schemas/v1Security"
+                    },
+                    "remoteName": {
+                        "type": "string",
+                        "description": "Optional, represents the name of the remote endpoint, if different than\nthe original target name."
+                    }
+                },
+                "description": "Information about an actual connection.  Pronounced \"sock-ay\"."
+            },
+            "v1SocketData": {
+                "type": "object",
+                "properties": {
+                    "streamsStarted": {
+                        "type": "string",
+                        "format": "int64",
+                        "description": "The number of streams that have been started."
+                    },
+                    "streamsSucceeded": {
+                        "type": "string",
+                        "format": "int64",
+                        "description": "The number of streams that have ended successfully:\nOn client side, received frame with eos bit set;\nOn server side, sent frame with eos bit set."
+                    },
+                    "streamsFailed": {
+                        "type": "string",
+                        "format": "int64",
+                        "description": "The number of streams that have ended unsuccessfully:\nOn client side, ended without receiving frame with eos bit set;\nOn server side, ended without sending frame with eos bit set."
+                    },
+                    "messagesSent": {
+                        "type": "string",
+                        "format": "int64",
+                        "description": "The number of grpc messages successfully sent on this socket."
+                    },
+                    "messagesReceived": {
+                        "type": "string",
+                        "format": "int64",
+                        "description": "The number of grpc messages received on this socket."
+                    },
+                    "keepAlivesSent": {
+                        "type": "string",
+                        "format": "int64",
+                        "description": "The number of keep alives sent.  This is typically implemented with HTTP/2\nping messages."
+                    },
+                    "lastLocalStreamCreatedTimestamp": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "The last time a stream was created by this endpoint.  Usually unset for\nservers."
+                    },
+                    "lastRemoteStreamCreatedTimestamp": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "The last time a stream was created by the remote endpoint.  Usually unset\nfor clients."
+                    },
+                    "lastMessageSentTimestamp": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "The last time a message was sent by this endpoint."
+                    },
+                    "lastMessageReceivedTimestamp": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "The last time a message was received by this endpoint."
+                    },
+                    "localFlowControlWindow": {
+                        "type": "string",
+                        "format": "int64",
+                        "description": "The amount of window, granted to the local endpoint by the remote endpoint.\nThis may be slightly out of date due to network latency.  This does NOT\ninclude stream level or TCP level flow control info."
+                    },
+                    "remoteFlowControlWindow": {
+                        "type": "string",
+                        "format": "int64",
+                        "description": "The amount of window, granted to the remote endpoint by the local endpoint.\nThis may be slightly out of date due to network latency.  This does NOT\ninclude stream level or TCP level flow control info."
+                    },
+                    "option": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v1SocketOption"
+                        },
+                        "description": "Socket options set on this socket.  May be absent if 'summary' is set\non GetSocketRequest."
+                    }
+                },
+                "title": "SocketData is data associated for a specific Socket.  The fields present\nare specific to the implementation, so there may be minor differences in\nthe semantics.  (e.g. flow control windows)"
+            },
+            "v1SocketOption": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The full name of the socket option.  Typically this will be the upper case\nname, such as \"SO_REUSEPORT\"."
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "The human readable value of this socket option.  At least one of value or\nadditional will be set."
+                    },
+                    "additional": {
+                        "$ref": "#/components/schemas/protobufAny"
+                    }
+                },
+                "description": "SocketOption represents socket options for a socket.  Specifically, these\nare the options returned by getsockopt()."
+            },
+            "v1SocketRef": {
+                "type": "object",
+                "properties": {
+                    "socketId": {
+                        "type": "string",
+                        "format": "int64",
+                        "description": "The globally unique id for this socket.  Must be a positive number."
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "An optional name associated with the socket."
+                    }
+                },
+                "description": "SocketRef is a reference to a Socket."
+            },
+            "v1Subchannel": {
+                "type": "object",
+                "properties": {
+                    "ref": {
+                        "$ref": "#/components/schemas/v1SubchannelRef"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/v1ChannelData"
+                    },
+                    "channelRef": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v1ChannelRef"
+                        },
+                        "description": "There are no ordering guarantees on the order of channel refs.\nThere may not be cycles in the ref graph.\nA channel ref may be present in more than one channel or subchannel."
+                    },
+                    "subchannelRef": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v1SubchannelRef"
+                        },
+                        "description": "At most one of 'channel_ref+subchannel_ref' and 'socket' is set.\nThere are no ordering guarantees on the order of subchannel refs.\nThere may not be cycles in the ref graph.\nA sub channel ref may be present in more than one channel or subchannel."
+                    },
+                    "socketRef": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v1SocketRef"
+                        },
+                        "description": "There are no ordering guarantees on the order of sockets."
+                    }
+                },
+                "title": "Subchannel is a logical grouping of channels, subchannels, and sockets.\nA subchannel is load balanced over by it's ancestor"
+            },
+            "v1SubchannelRef": {
+                "type": "object",
+                "properties": {
+                    "subchannelId": {
+                        "type": "string",
+                        "format": "int64",
+                        "description": "The globally unique id for this subchannel.  Must be a positive number."
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "An optional name associated with the subchannel."
+                    }
+                },
+                "description": "SubchannelRef is a reference to a Subchannel."
+            }
+        }
+    }
+}

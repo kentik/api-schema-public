@@ -1,0 +1,587 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Cloud Export Admin API",
+        "version": "202101beta1",
+        "contact": {
+            "name": "Kentik API Engineering",
+            "url": "https://github.com/kentik/api"
+        }
+    },
+    "tags": [
+        {
+            "name": "CloudExportAdminService"
+        }
+    ],
+    "paths": {
+        "/cloud_export/v202101beta1/exports": {
+            "get": {
+                "summary": "List Cloud Export.",
+                "description": "Returns a list of cloud export.",
+                "operationId": "ExportList",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202101beta1ListCloudExportResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/googlerpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "CloudExportAdminService"
+                ]
+            },
+            "post": {
+                "summary": "Create Cloud Export.",
+                "description": "Create cloud export from request. Returns created export.",
+                "operationId": "ExportCreate",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202101beta1CreateCloudExportResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/googlerpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202101beta1CreateCloudExportRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "CloudExportAdminService"
+                ]
+            }
+        },
+        "/cloud_export/v202101beta1/exports/{export.id}": {
+            "put": {
+                "summary": "Update an export.",
+                "description": "Replaces the entire export attributes specified with id.",
+                "operationId": "ExportUpdate",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202101beta1UpdateCloudExportResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/googlerpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "export.id",
+                        "description": "The internal cloud export identifier. This is Read-only and assigned by Kentik.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202101beta1UpdateCloudExportRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "CloudExportAdminService"
+                ]
+            },
+            "patch": {
+                "summary": "Patch an export.",
+                "description": "Partially Updates the attributes of export specified with id and update_mask fields.",
+                "operationId": "ExportPatch",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202101beta1PatchCloudExportResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/googlerpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "export.id",
+                        "description": "The internal cloud export identifier. This is Read-only and assigned by Kentik.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202101beta1PatchCloudExportRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "CloudExportAdminService"
+                ]
+            },
+            "get": {
+                "summary": "Get information about an export.",
+                "description": "Returns information about export specified with export ID.",
+                "operationId": "ExportGet",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202101beta1GetCloudExportResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/googlerpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "export.id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "CloudExportAdminService"
+                ]
+            },
+            "delete": {
+                "summary": "Delete an export.",
+                "description": "Deletes the export specified with id.",
+                "operationId": "ExportDelete",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202101beta1DeleteCloudExportResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/googlerpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "export.id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "CloudExportAdminService"
+                ]
+            }
+        }
+    },
+    "security": [
+        {
+            "email": [],
+            "token": []
+        }
+    ],
+    "externalDocs": {
+        "description": "More about Kentik APIs",
+        "url": "https://docs.kentik.com/api"
+    },
+    "components": {
+        "securitySchemes": {
+            "email": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-Email",
+                "in": "header"
+            },
+            "token": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-API-Token",
+                "in": "header"
+            }
+        },
+        "schemas": {
+            "cloud_exportv202101beta1Status": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string",
+                        "title": "FIXME"
+                    },
+                    "errorMessage": {
+                        "type": "string",
+                        "title": "If not empty, the current error"
+                    },
+                    "flowFound": {
+                        "type": "boolean",
+                        "title": "If true, we found flow logs"
+                    },
+                    "apiAccess": {
+                        "type": "boolean"
+                    },
+                    "storageAccountAccess": {
+                        "type": "boolean"
+                    }
+                },
+                "title": "Export task status"
+            },
+            "googlerpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "typeUrl": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string",
+                        "format": "byte"
+                    }
+                }
+            },
+            "v202101beta1AwsProperties": {
+                "type": "object",
+                "properties": {
+                    "bucket": {
+                        "type": "string",
+                        "title": "Source S3 bucket to fetch vpc flow logs from"
+                    },
+                    "iamRoleArn": {
+                        "type": "string",
+                        "title": "ARN for the IAM role to assume when fetching data or making AWS calls for this export"
+                    },
+                    "region": {
+                        "type": "string",
+                        "title": "AWS region where this bucket resides (FIXME is that right?)"
+                    },
+                    "deleteAfterRead": {
+                        "type": "boolean",
+                        "title": "If true, attempt to delete vpc flow log chunks from S3 after they've been read"
+                    },
+                    "multipleBuckets": {
+                        "type": "boolean",
+                        "title": "FIXME"
+                    }
+                },
+                "title": "Properties specific to Amazon Web Services \"vpc flow logs\" exports"
+            },
+            "v202101beta1AzureProperties": {
+                "type": "object",
+                "properties": {
+                    "location": {
+                        "type": "string"
+                    },
+                    "resourceGroup": {
+                        "type": "string"
+                    },
+                    "storageAccount": {
+                        "type": "string"
+                    },
+                    "subscriptionId": {
+                        "type": "string"
+                    },
+                    "securityPrincipalEnabled": {
+                        "type": "boolean"
+                    }
+                },
+                "title": "Properties specific to Azure exports"
+            },
+            "v202101beta1BgpProperties": {
+                "type": "object",
+                "properties": {
+                    "applyBgp": {
+                        "type": "boolean",
+                        "description": "If true, apply BGP data discovered via another device to the flow from this export."
+                    },
+                    "useBgpDeviceId": {
+                        "type": "string",
+                        "title": "Which other device to get BGP data from"
+                    },
+                    "deviceBgpType": {
+                        "type": "string",
+                        "title": "FIXME: unclear. \"device\", \"other_device\" or \"none\"?"
+                    }
+                },
+                "description": "Optional BGP related settings."
+            },
+            "v202101beta1CloudExport": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The internal cloud export identifier. This is Read-only and assigned by Kentik."
+                    },
+                    "type": {
+                        "$ref": "#/components/schemas/v202101beta1CloudExportType"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Whether this task is enabled and intended to run, or disabled."
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "A short name for this export."
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "An optional, longer description."
+                    },
+                    "apiRoot": {
+                        "type": "string",
+                        "title": "Hostname of the Kentik deployment where the API calls related to this export should go, eg. api.kentik.com"
+                    },
+                    "flowDest": {
+                        "type": "string",
+                        "title": "Hostname of the Kentik deployment where the data generated by this export should go, eg. flow.kentik.com"
+                    },
+                    "planId": {
+                        "type": "string",
+                        "description": "The identifier of the Kentik plan associated with this task."
+                    },
+                    "cloudProvider": {
+                        "type": "string",
+                        "title": "The cloud provider targeted by this export (eg. aws, azure, gce, ibm...)"
+                    },
+                    "aws": {
+                        "$ref": "#/components/schemas/v202101beta1AwsProperties"
+                    },
+                    "azure": {
+                        "$ref": "#/components/schemas/v202101beta1AzureProperties"
+                    },
+                    "gce": {
+                        "$ref": "#/components/schemas/v202101beta1GceProperties"
+                    },
+                    "ibm": {
+                        "$ref": "#/components/schemas/v202101beta1IbmProperties"
+                    },
+                    "bgp": {
+                        "$ref": "#/components/schemas/v202101beta1BgpProperties"
+                    },
+                    "currentStatus": {
+                        "$ref": "#/components/schemas/cloud_exportv202101beta1Status"
+                    }
+                },
+                "title": "The CloudExport message defines a cloud export task"
+            },
+            "v202101beta1CloudExportType": {
+                "type": "string",
+                "enum": [
+                    "CLOUD_EXPORT_TYPE_UNSPECIFIED",
+                    "CLOUD_EXPORT_TYPE_KENTIK_MANAGED",
+                    "CLOUD_EXPORT_TYPE_CUSTOMER_MANAGED"
+                ],
+                "default": "CLOUD_EXPORT_TYPE_UNSPECIFIED",
+                "title": "- CLOUD_EXPORT_TYPE_UNSPECIFIED: Invalid or incomplete exports.\n - CLOUD_EXPORT_TYPE_KENTIK_MANAGED: Cloud exports that are managed by Kentik.\n - CLOUD_EXPORT_TYPE_CUSTOMER_MANAGED: Exports that are managed by Kentik customers (eg. by running an agent)"
+            },
+            "v202101beta1CreateCloudExportRequest": {
+                "type": "object",
+                "properties": {
+                    "export": {
+                        "$ref": "#/components/schemas/v202101beta1CloudExport"
+                    }
+                }
+            },
+            "v202101beta1CreateCloudExportResponse": {
+                "type": "object",
+                "properties": {
+                    "export": {
+                        "$ref": "#/components/schemas/v202101beta1CloudExport"
+                    }
+                }
+            },
+            "v202101beta1DeleteCloudExportResponse": {
+                "type": "object"
+            },
+            "v202101beta1GceProperties": {
+                "type": "object",
+                "properties": {
+                    "project": {
+                        "type": "string"
+                    },
+                    "subscription": {
+                        "type": "string"
+                    }
+                },
+                "title": "Properties specific to Google Cloud export"
+            },
+            "v202101beta1GetCloudExportResponse": {
+                "type": "object",
+                "properties": {
+                    "export": {
+                        "$ref": "#/components/schemas/v202101beta1CloudExport"
+                    }
+                }
+            },
+            "v202101beta1IbmProperties": {
+                "type": "object",
+                "properties": {
+                    "bucket": {
+                        "type": "string"
+                    }
+                },
+                "title": "Properties specific to IBM Cloud exports"
+            },
+            "v202101beta1ListCloudExportResponse": {
+                "type": "object",
+                "properties": {
+                    "exports": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202101beta1CloudExport"
+                        }
+                    },
+                    "invalidExportsCount": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "v202101beta1PatchCloudExportRequest": {
+                "type": "object",
+                "properties": {
+                    "export": {
+                        "$ref": "#/components/schemas/v202101beta1CloudExport"
+                    },
+                    "mask": {
+                        "type": "string",
+                        "title": "CSV values of fields follow the path of Export object with dot notation (ie. \"export.name,export.description\")"
+                    }
+                }
+            },
+            "v202101beta1PatchCloudExportResponse": {
+                "type": "object",
+                "properties": {
+                    "export": {
+                        "$ref": "#/components/schemas/v202101beta1CloudExport"
+                    }
+                }
+            },
+            "v202101beta1UpdateCloudExportRequest": {
+                "type": "object",
+                "properties": {
+                    "export": {
+                        "$ref": "#/components/schemas/v202101beta1CloudExport"
+                    }
+                }
+            },
+            "v202101beta1UpdateCloudExportResponse": {
+                "type": "object",
+                "properties": {
+                    "export": {
+                        "$ref": "#/components/schemas/v202101beta1CloudExport"
+                    }
+                }
+            }
+        }
+    }
+}

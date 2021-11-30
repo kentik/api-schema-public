@@ -1,0 +1,708 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Interface API",
+        "version": "202108alpha1",
+        "contact": {
+            "name": "Kentik API Engineering"
+        }
+    },
+    "tags": [
+        {
+            "name": "InterfaceService"
+        }
+    ],
+    "paths": {
+        "/interface/v202108alpha1/interfaces": {
+            "get": {
+                "summary": "Fetch Search Interfaces",
+                "description": "Return list of interfaces matches search critera.",
+                "operationId": "ListInterface",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202108alpha1ListInterfaceResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "filters.text",
+                        "description": "Search text match in interface description and alias.",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "filters.deviceIds",
+                        "description": "Search by device ID.",
+                        "in": "query",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "name": "filters.connectivityTypes",
+                        "description": "Search by type of interface connectivity.",
+                        "in": "query",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "CONNECTIVITY_TYPE_UNSPECIFIED",
+                                    "CONNECTIVITY_TYPE_AGGREGATION_INTERCONNECT",
+                                    "CONNECTIVITY_TYPE_AVAILABLE",
+                                    "CONNECTIVITY_TYPE_BACKBONE",
+                                    "CONNECTIVITY_TYPE_CLOUD_INTERCONNECT",
+                                    "CONNECTIVITY_TYPE_CUSTOMER",
+                                    "CONNECTIVITY_TYPE_DATACENTER_FABRIC",
+                                    "CONNECTIVITY_TYPE_DATACENTER_INTERCONNECT",
+                                    "CONNECTIVITY_TYPE_EMBEDDED_CACHE",
+                                    "CONNECTIVITY_TYPE_FREE_PNI",
+                                    "CONNECTIVITY_TYPE_HOST",
+                                    "CONNECTIVITY_TYPE_IX",
+                                    "CONNECTIVITY_TYPE_OTHER",
+                                    "CONNECTIVITY_TYPE_PAID_PNI",
+                                    "CONNECTIVITY_TYPE_RESERVED",
+                                    "CONNECTIVITY_TYPE_TRANSIT",
+                                    "CONNECTIVITY_TYPE_VIRTUAL_CROSS_CONNECT"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "filters.networkBoundaries",
+                        "description": "Search by type of network boundary.",
+                        "in": "query",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "NETWORK_BOUNDARY_UNSPECIFIED",
+                                    "NETWORK_BOUNDARY_AUTO",
+                                    "NETWORK_BOUNDARY_INTERNAL",
+                                    "NETWORK_BOUNDARY_EXTERNAL",
+                                    "NETWORK_BOUNDARY_NONE"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "filters.providers",
+                        "description": "Search by provider.",
+                        "in": "query",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "name": "filters.snmpSpeeds",
+                        "description": "SNMP speed in Mbps.",
+                        "in": "query",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer",
+                                "format": "int32"
+                            }
+                        }
+                    },
+                    {
+                        "name": "filters.ipTypes",
+                        "description": "Search by ip address.",
+                        "in": "query",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "IP_FILTER_UNSPECIFIED",
+                                    "IP_FILTER_PRIVATE",
+                                    "IP_FILTER_PUBLIC",
+                                    "IP_FILTER_UNSET"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "tags": [
+                    "InterfaceService"
+                ]
+            },
+            "post": {
+                "summary": "Create a interface.",
+                "description": "Create a interface from request. returns created.",
+                "operationId": "InterfaceCreate",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202108alpha1CreateInterfaceResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202108alpha1CreateInterfaceRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "InterfaceService"
+                ]
+            }
+        },
+        "/interface/v202108alpha1/interfaces/{id}": {
+            "get": {
+                "summary": "Get a interface.",
+                "description": "Returns information about a interface specified with ID.",
+                "operationId": "InterfaceGet",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202108alpha1GetInterfaceResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "description": "ID of interface.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "InterfaceService"
+                ]
+            },
+            "delete": {
+                "summary": "Delete a interface.",
+                "description": "Deletes the interface specified with id.",
+                "operationId": "InterfaceDelete",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202108alpha1DeleteInterfaceResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "description": "ID of interface.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "InterfaceService"
+                ]
+            },
+            "put": {
+                "summary": "Update a interface.",
+                "description": "Replaces the entire interface attributes specified with id.",
+                "operationId": "InterfaceUpdate",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202108alpha1UpdateInterfaceResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "description": "ID of interface.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202108alpha1UpdateInterfaceRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "InterfaceService"
+                ]
+            }
+        },
+        "/interface/v202108alpha1/manual_classify": {
+            "post": {
+                "summary": "Manual Classify Interface",
+                "description": "Manually set interface(s) classification.",
+                "operationId": "ManualClassify",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202108alpha1ManualClassifyResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202108alpha1ManualClassifyRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "InterfaceService"
+                ]
+            }
+        }
+    },
+    "security": [
+        {
+            "email": [],
+            "token": []
+        }
+    ],
+    "externalDocs": {
+        "description": "More about Kentik APIs",
+        "url": "https://docs.kentik.com/api"
+    },
+    "components": {
+        "securitySchemes": {
+            "email": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-Email",
+                "in": "header"
+            },
+            "token": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-API-Token",
+                "in": "header"
+            }
+        },
+        "schemas": {
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "typeUrl": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string",
+                        "format": "byte"
+                    }
+                }
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "v202108alpha1ConnectivityType": {
+                "type": "string",
+                "enum": [
+                    "CONNECTIVITY_TYPE_UNSPECIFIED",
+                    "CONNECTIVITY_TYPE_AGGREGATION_INTERCONNECT",
+                    "CONNECTIVITY_TYPE_AVAILABLE",
+                    "CONNECTIVITY_TYPE_BACKBONE",
+                    "CONNECTIVITY_TYPE_CLOUD_INTERCONNECT",
+                    "CONNECTIVITY_TYPE_CUSTOMER",
+                    "CONNECTIVITY_TYPE_DATACENTER_FABRIC",
+                    "CONNECTIVITY_TYPE_DATACENTER_INTERCONNECT",
+                    "CONNECTIVITY_TYPE_EMBEDDED_CACHE",
+                    "CONNECTIVITY_TYPE_FREE_PNI",
+                    "CONNECTIVITY_TYPE_HOST",
+                    "CONNECTIVITY_TYPE_IX",
+                    "CONNECTIVITY_TYPE_OTHER",
+                    "CONNECTIVITY_TYPE_PAID_PNI",
+                    "CONNECTIVITY_TYPE_RESERVED",
+                    "CONNECTIVITY_TYPE_TRANSIT",
+                    "CONNECTIVITY_TYPE_VIRTUAL_CROSS_CONNECT"
+                ],
+                "default": "CONNECTIVITY_TYPE_UNSPECIFIED"
+            },
+            "v202108alpha1CreateInterfaceRequest": {
+                "type": "object",
+                "properties": {
+                    "interface": {
+                        "$ref": "#/components/schemas/v202108alpha1Interface"
+                    }
+                }
+            },
+            "v202108alpha1CreateInterfaceResponse": {
+                "type": "object",
+                "properties": {
+                    "interface": {
+                        "$ref": "#/components/schemas/v202108alpha1Interface"
+                    }
+                }
+            },
+            "v202108alpha1DeleteInterfaceResponse": {
+                "type": "object"
+            },
+            "v202108alpha1GetInterfaceResponse": {
+                "type": "object",
+                "properties": {
+                    "interface": {
+                        "$ref": "#/components/schemas/v202108alpha1Interface"
+                    }
+                }
+            },
+            "v202108alpha1Interface": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "ID of interface."
+                    },
+                    "deviceId": {
+                        "type": "string",
+                        "description": "ID of device with this interface."
+                    },
+                    "snmpId": {
+                        "type": "string",
+                        "description": "SNMP ID."
+                    },
+                    "snmpSpeed": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Network speed in Mbps."
+                    },
+                    "snmpType": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Snmp Type."
+                    },
+                    "snmpAlias": {
+                        "type": "string",
+                        "description": "Interface alias."
+                    },
+                    "interfaceIp": {
+                        "type": "string",
+                        "description": "IP of interface."
+                    },
+                    "interfaceDescription": {
+                        "type": "string",
+                        "description": "Readable string description of interface."
+                    },
+                    "cdate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Create timestamp."
+                    },
+                    "edate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Update Timestamp."
+                    },
+                    "interfaceIpNetmask": {
+                        "type": "string",
+                        "description": "Subnet mask."
+                    },
+                    "connectivityType": {
+                        "$ref": "#/components/schemas/v202108alpha1ConnectivityType"
+                    },
+                    "networkBoundary": {
+                        "$ref": "#/components/schemas/v202108alpha1NetworkBoundary"
+                    },
+                    "topNexthopAsns": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int32"
+                        },
+                        "description": "Top asn hops."
+                    },
+                    "provider": {
+                        "type": "string",
+                        "description": "Network provider."
+                    }
+                }
+            },
+            "v202108alpha1InterfaceFilter": {
+                "type": "object",
+                "properties": {
+                    "text": {
+                        "type": "string",
+                        "description": "Search text match in interface description and alias."
+                    },
+                    "deviceIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Search by device ID."
+                    },
+                    "connectivityTypes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202108alpha1ConnectivityType"
+                        },
+                        "description": "Search by type of interface connectivity."
+                    },
+                    "networkBoundaries": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202108alpha1NetworkBoundary"
+                        },
+                        "description": "Search by type of network boundary."
+                    },
+                    "providers": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Search by provider"
+                    },
+                    "snmpSpeeds": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int32"
+                        },
+                        "title": "SNMP speed in Mbps"
+                    },
+                    "ipTypes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202108alpha1IpFilter"
+                        },
+                        "description": "Search by ip address."
+                    }
+                },
+                "description": "Supports multiple search criteria. Fields are combined to AND statements to perform search."
+            },
+            "v202108alpha1IpFilter": {
+                "type": "string",
+                "enum": [
+                    "IP_FILTER_UNSPECIFIED",
+                    "IP_FILTER_PRIVATE",
+                    "IP_FILTER_PUBLIC",
+                    "IP_FILTER_UNSET"
+                ],
+                "default": "IP_FILTER_UNSPECIFIED"
+            },
+            "v202108alpha1ListInterfaceResponse": {
+                "type": "object",
+                "properties": {
+                    "interfaces": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202108alpha1Interface"
+                        }
+                    },
+                    "totalCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "invalidCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                }
+            },
+            "v202108alpha1ManualClassifyRequest": {
+                "type": "object",
+                "properties": {
+                    "interfaceIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Interface ids to set the properties."
+                    },
+                    "connectivityType": {
+                        "$ref": "#/components/schemas/v202108alpha1ConnectivityType"
+                    },
+                    "networkBoundary": {
+                        "$ref": "#/components/schemas/v202108alpha1NetworkBoundary"
+                    },
+                    "provider": {
+                        "type": "string",
+                        "description": "Network provider."
+                    }
+                },
+                "description": "Set connection type, network boundary, and provider of interface id(s) specified."
+            },
+            "v202108alpha1ManualClassifyResponse": {
+                "type": "object",
+                "properties": {
+                    "deviceIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "v202108alpha1NetworkBoundary": {
+                "type": "string",
+                "enum": [
+                    "NETWORK_BOUNDARY_UNSPECIFIED",
+                    "NETWORK_BOUNDARY_AUTO",
+                    "NETWORK_BOUNDARY_INTERNAL",
+                    "NETWORK_BOUNDARY_EXTERNAL",
+                    "NETWORK_BOUNDARY_NONE"
+                ],
+                "default": "NETWORK_BOUNDARY_UNSPECIFIED"
+            },
+            "v202108alpha1UpdateInterfaceRequest": {
+                "type": "object",
+                "properties": {
+                    "interface": {
+                        "$ref": "#/components/schemas/v202108alpha1Interface"
+                    }
+                }
+            },
+            "v202108alpha1UpdateInterfaceResponse": {
+                "type": "object",
+                "properties": {
+                    "interface": {
+                        "$ref": "#/components/schemas/v202108alpha1Interface"
+                    }
+                }
+            }
+        }
+    }
+}
