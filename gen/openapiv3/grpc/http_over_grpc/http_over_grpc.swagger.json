@@ -1,0 +1,85 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "grpc/http_over_grpc/http_over_grpc.proto",
+        "version": "version not set"
+    },
+    "tags": [
+        {
+            "name": "HTTPOverGRPC"
+        }
+    ],
+    "paths": {},
+    "components": {
+        "schemas": {
+            "http_over_grpcHTTPOverGRPCReply": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "The HTTP status code (e.g. 200, 400, 404)."
+                    },
+                    "headers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/http_over_grpcHeader"
+                        },
+                        "description": "The HTTP response headers."
+                    },
+                    "body": {
+                        "type": "string",
+                        "format": "byte",
+                        "description": "The HTTP response body."
+                    }
+                },
+                "description": "An HTTP 1.1 reply encapsulated in an RPC."
+            },
+            "http_over_grpcHeader": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "type": "string"
+                    },
+                    "values": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "description": "Represents HTTP 1.1 header."
+            },
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "typeUrl": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string",
+                        "format": "byte"
+                    }
+                }
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

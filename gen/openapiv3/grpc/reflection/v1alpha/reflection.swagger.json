@@ -1,0 +1,181 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "grpc/reflection/v1alpha/reflection.proto",
+        "version": "version not set"
+    },
+    "tags": [
+        {
+            "name": "ServerReflection"
+        }
+    ],
+    "paths": {},
+    "components": {
+        "schemas": {
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "typeUrl": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string",
+                        "format": "byte"
+                    }
+                }
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "v1alphaErrorResponse": {
+                "type": "object",
+                "properties": {
+                    "errorCode": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "This field uses the error codes defined in grpc::StatusCode."
+                    },
+                    "errorMessage": {
+                        "type": "string"
+                    }
+                },
+                "description": "The error code and error message sent by the server when an error occurs."
+            },
+            "v1alphaExtensionNumberResponse": {
+                "type": "object",
+                "properties": {
+                    "baseTypeName": {
+                        "type": "string",
+                        "title": "Full name of the base type, including the package name. The format\nis <package>.<type>"
+                    },
+                    "extensionNumber": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                },
+                "description": "A list of extension numbers sent by the server answering\nall_extension_numbers_of_type request."
+            },
+            "v1alphaExtensionRequest": {
+                "type": "object",
+                "properties": {
+                    "containingType": {
+                        "type": "string",
+                        "title": "Fully-qualified type name. The format should be <package>.<type>"
+                    },
+                    "extensionNumber": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "description": "The type name and extension number sent by the client when requesting\nfile_containing_extension."
+            },
+            "v1alphaFileDescriptorResponse": {
+                "type": "object",
+                "properties": {
+                    "fileDescriptorProto": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "format": "byte"
+                        },
+                        "description": "Serialized FileDescriptorProto messages. We avoid taking a dependency on\ndescriptor.proto, which uses proto2 only features, by making them opaque\nbytes instead."
+                    }
+                },
+                "description": "Serialized FileDescriptorProto messages sent by the server answering\na file_by_filename, file_containing_symbol, or file_containing_extension\nrequest."
+            },
+            "v1alphaListServiceResponse": {
+                "type": "object",
+                "properties": {
+                    "service": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v1alphaServiceResponse"
+                        },
+                        "description": "The information of each service may be expanded in the future, so we use\nServiceResponse message to encapsulate it."
+                    }
+                },
+                "description": "A list of ServiceResponse sent by the server answering list_services request."
+            },
+            "v1alphaServerReflectionRequest": {
+                "type": "object",
+                "properties": {
+                    "host": {
+                        "type": "string"
+                    },
+                    "fileByFilename": {
+                        "type": "string",
+                        "description": "Find a proto file by the file name."
+                    },
+                    "fileContainingSymbol": {
+                        "type": "string",
+                        "description": "Find the proto file that declares the given fully-qualified symbol name.\nThis field should be a fully-qualified symbol name\n(e.g. <package>.<service>[.<method>] or <package>.<type>)."
+                    },
+                    "fileContainingExtension": {
+                        "$ref": "#/components/schemas/v1alphaExtensionRequest"
+                    },
+                    "allExtensionNumbersOfType": {
+                        "type": "string",
+                        "title": "Finds the tag numbers used by all known extensions of the given message\ntype, and appends them to ExtensionNumberResponse in an undefined order.\nIts corresponding method is best-effort: it's not guaranteed that the\nreflection service will implement this method, and it's not guaranteed\nthat this method will provide all extensions. Returns\nStatusCode::UNIMPLEMENTED if it's not implemented.\nThis field should be a fully-qualified type name. The format is\n<package>.<type>"
+                    },
+                    "listServices": {
+                        "type": "string",
+                        "description": "List the full names of registered services. The content will not be\nchecked."
+                    }
+                },
+                "description": "The message sent by the client when calling ServerReflectionInfo method."
+            },
+            "v1alphaServerReflectionResponse": {
+                "type": "object",
+                "properties": {
+                    "validHost": {
+                        "type": "string"
+                    },
+                    "originalRequest": {
+                        "$ref": "#/components/schemas/v1alphaServerReflectionRequest"
+                    },
+                    "fileDescriptorResponse": {
+                        "$ref": "#/components/schemas/v1alphaFileDescriptorResponse"
+                    },
+                    "allExtensionNumbersResponse": {
+                        "$ref": "#/components/schemas/v1alphaExtensionNumberResponse"
+                    },
+                    "listServicesResponse": {
+                        "$ref": "#/components/schemas/v1alphaListServiceResponse"
+                    },
+                    "errorResponse": {
+                        "$ref": "#/components/schemas/v1alphaErrorResponse"
+                    }
+                },
+                "description": "The message sent by the server to answer ServerReflectionInfo method."
+            },
+            "v1alphaServiceResponse": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "title": "Full name of a registered service, including its package name. The format\nis <package>.<service>"
+                    }
+                },
+                "description": "The information of a single service used by ListServiceResponse to answer\nlist_services request."
+            }
+        }
+    }
+}
