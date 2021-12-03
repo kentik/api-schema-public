@@ -17,9 +17,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='kentik/notify/backend/v1/subscribe.proto',
   package='kentik.api.notify.v0',
   syntax='proto3',
-  serialized_options=b'Z\tv0/notify',
+  serialized_options=b'ZCgithub.com/kentik/api-schema/gen/go/kentik/notify/backend/v1;notify',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n(kentik/notify/backend/v1/subscribe.proto\x12\x14kentik.api.notify.v0\"\x1a\n\x18\x43reateUserChannelRequest\"\x1b\n\x19\x43reateUserChannelResponse\">\n\x10SubscribeRequest\x12\x13\n\x0binsightName\x18\x01 \x01(\t\x12\x15\n\rinsightFamily\x18\x02 \x01(\t\"\x13\n\x11SubscribeResponseB\x0bZ\tv0/notifyb\x06proto3'
+  serialized_pb=b'\n(kentik/notify/backend/v1/subscribe.proto\x12\x14kentik.api.notify.v0\"\x1a\n\x18\x43reateUserChannelRequest\"\x1b\n\x19\x43reateUserChannelResponse\">\n\x10SubscribeRequest\x12\x13\n\x0binsightName\x18\x01 \x01(\t\x12\x15\n\rinsightFamily\x18\x02 \x01(\t\"\x13\n\x11SubscribeResponseBEZCgithub.com/kentik/api-schema/gen/go/kentik/notify/backend/v1;notifyb\x06proto3'
 )
 
 

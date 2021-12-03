@@ -1,6 +1,6 @@
 syntax = "proto3";
 package kentik.api.notify.v0;
-option go_package = "v0/notify";
+option go_package = "github.com/kentik/api-schema/gen/go/kentik/notify/backend/v1;notify";
 
 message NotificationEvent {
   int64 companyID = 1;

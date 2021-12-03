@@ -17,9 +17,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='kentik/notify/backend/v1/models-notification-to-send.proto',
   package='kentik.api.notify.v0',
   syntax='proto3',
-  serialized_options=b'Z\tv0/notify',
+  serialized_options=b'ZCgithub.com/kentik/api-schema/gen/go/kentik/notify/backend/v1;notify',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n:kentik/notify/backend/v1/models-notification-to-send.proto\x12\x14kentik.api.notify.v0\"\x14\n\x12NotificationToSendB\x0bZ\tv0/notifyb\x06proto3'
+  serialized_pb=b'\n:kentik/notify/backend/v1/models-notification-to-send.proto\x12\x14kentik.api.notify.v0\"\x14\n\x12NotificationToSendBEZCgithub.com/kentik/api-schema/gen/go/kentik/notify/backend/v1;notifyb\x06proto3'
 )
 
 

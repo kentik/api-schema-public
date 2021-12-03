@@ -19,9 +19,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='kentik/notify/backend/v1/models-channel-send-job.proto',
   package='kentik.api.notify.v0',
   syntax='proto3',
-  serialized_options=b'Z\tv0/notify',
+  serialized_options=b'ZCgithub.com/kentik/api-schema/gen/go/kentik/notify/backend/v1;notify',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n6kentik/notify/backend/v1/models-channel-send-job.proto\x12\x14kentik.api.notify.v0\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x33kentik/notify/backend/v1/models-channel-event.proto\"\x8c\x02\n\x0e\x43hannelSendJob\x12\x11\n\tchannelID\x18\x01 \x01(\x03\x12<\n\x0e\x63hannelVersion\x18\x02 \x01(\x0e\x32$.kentik.api.notify.v0.ChannelVersion\x12\x0f\n\x07jobUUID\x18\x03 \x01(\t\x12\x16\n\x0enotificationID\x18\x08 \x01(\x03\x12\x16\n\x0etimesAttempted\x18\x05 \x01(\x03\x12\x31\n\rfirstEnqueued\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0blastFailure\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.TimestampJ\x04\x08\x04\x10\x05\x42\x0bZ\tv0/notifyb\x06proto3'
+  serialized_pb=b'\n6kentik/notify/backend/v1/models-channel-send-job.proto\x12\x14kentik.api.notify.v0\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x33kentik/notify/backend/v1/models-channel-event.proto\"\x8c\x02\n\x0e\x43hannelSendJob\x12\x11\n\tchannelID\x18\x01 \x01(\x03\x12<\n\x0e\x63hannelVersion\x18\x02 \x01(\x0e\x32$.kentik.api.notify.v0.ChannelVersion\x12\x0f\n\x07jobUUID\x18\x03 \x01(\t\x12\x16\n\x0enotificationID\x18\x08 \x01(\x03\x12\x16\n\x0etimesAttempted\x18\x05 \x01(\x03\x12\x31\n\rfirstEnqueued\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0blastFailure\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.TimestampJ\x04\x08\x04\x10\x05\x42\x45ZCgithub.com/kentik/api-schema/gen/go/kentik/notify/backend/v1;notifyb\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,kentik_dot_notify_dot_backend_dot_v1_dot_models__channel__event__pb2.DESCRIPTOR,])
 
