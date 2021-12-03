@@ -1,0 +1,29 @@
+syntax = "proto3";
+package kentik.api.notify.v0;
+option go_package = "kentik/notify/backend/v0;notify";
+
+import "google/protobuf/timestamp.proto";
+
+import "kentik/notify/backend/v0/models-channel-event.proto";
+
+message ChannelSendJob {
+  int64 channelID = 1;
+  ChannelVersion channelVersion = 2;
+
+  // randomly assigned id representing this job.
+  string jobUUID = 3;
+
+  // id of the underlying notification
+  int64 notificationID = 8;
+
+  reserved 4; // was payloadBody. Going forward look this up via notificationID.
+
+  int64 timesAttempted = 5;
+
+  // firstEnqueued is when the job was first enqueued into the send queue,
+  // not the most recent time if this is a retry. On a job that has not
+  // failed yet, it will be unset.
+  google.protobuf.Timestamp firstEnqueued = 6;
+
+  google.protobuf.Timestamp lastFailure = 7;
+}
