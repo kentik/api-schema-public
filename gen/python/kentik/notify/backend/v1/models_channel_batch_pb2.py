@@ -18,9 +18,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='kentik/notify/backend/v1/models-channel-batch.proto',
   package='kentik.api.notify.v0',
   syntax='proto3',
-  serialized_options=b'Z\tv0/notify',
+  serialized_options=b'ZCgithub.com/kentik/api-schema/gen/go/kentik/notify/backend/v1;notify',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n3kentik/notify/backend/v1/models-channel-batch.proto\x12\x14kentik.api.notify.v0\x1a\x33kentik/notify/backend/v1/models-channel-event.proto\"Y\n\x0c\x43hannelBatch\x12\x32\n\x06\x65vents\x18\x01 \x03(\x0b\x32\".kentik.api.notify.v0.ChannelEvent\x12\x15\n\rtimesEnqueued\x18\x02 \x01(\x03\x42\x0bZ\tv0/notifyb\x06proto3'
+  serialized_pb=b'\n3kentik/notify/backend/v1/models-channel-batch.proto\x12\x14kentik.api.notify.v0\x1a\x33kentik/notify/backend/v1/models-channel-event.proto\"Y\n\x0c\x43hannelBatch\x12\x32\n\x06\x65vents\x18\x01 \x03(\x0b\x32\".kentik.api.notify.v0.ChannelEvent\x12\x15\n\rtimesEnqueued\x18\x02 \x01(\x03\x42\x45ZCgithub.com/kentik/api-schema/gen/go/kentik/notify/backend/v1;notifyb\x06proto3'
   ,
   dependencies=[kentik_dot_notify_dot_backend_dot_v1_dot_models__channel__event__pb2.DESCRIPTOR,])
 

@@ -20,9 +20,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='kentik/notify/backend/v1/models-channel-event.proto',
   package='kentik.api.notify.v0',
   syntax='proto3',
-  serialized_options=b'Z\tv0/notify',
+  serialized_options=b'ZCgithub.com/kentik/api-schema/gen/go/kentik/notify/backend/v1;notify',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n3kentik/notify/backend/v1/models-channel-event.proto\x12\x14kentik.api.notify.v0\x1a\x1fgoogle/protobuf/timestamp.proto\x1a+kentik/notify/backend/v1/models-event.proto\"\xcb\x01\n\x0c\x43hannelEvent\x12\x11\n\tchannelID\x18\x01 \x01(\x03\x12<\n\x0e\x63hannelVersion\x18\x02 \x01(\x0e\x32$.kentik.api.notify.v0.ChannelVersion\x12\x32\n\x0e\x65ventTimestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x36\n\x05\x65vent\x18\x04 \x01(\x0b\x32\'.kentik.api.notify.v0.NotificationEvent*U\n\x0e\x43hannelVersion\x12\x19\n\x15\x63hannelVersionUnknown\x10\x00\x12\x13\n\x0f\x63hannelVersion1\x10\x01\x12\x13\n\x0f\x63hannelVersion2\x10\x02\x42\x0bZ\tv0/notifyb\x06proto3'
+  serialized_pb=b'\n3kentik/notify/backend/v1/models-channel-event.proto\x12\x14kentik.api.notify.v0\x1a\x1fgoogle/protobuf/timestamp.proto\x1a+kentik/notify/backend/v1/models-event.proto\"\xcb\x01\n\x0c\x43hannelEvent\x12\x11\n\tchannelID\x18\x01 \x01(\x03\x12<\n\x0e\x63hannelVersion\x18\x02 \x01(\x0e\x32$.kentik.api.notify.v0.ChannelVersion\x12\x32\n\x0e\x65ventTimestamp\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x36\n\x05\x65vent\x18\x04 \x01(\x0b\x32\'.kentik.api.notify.v0.NotificationEvent*U\n\x0e\x43hannelVersion\x12\x19\n\x15\x63hannelVersionUnknown\x10\x00\x12\x13\n\x0f\x63hannelVersion1\x10\x01\x12\x13\n\x0f\x63hannelVersion2\x10\x02\x42\x45ZCgithub.com/kentik/api-schema/gen/go/kentik/notify/backend/v1;notifyb\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,kentik_dot_notify_dot_backend_dot_v1_dot_models__event__pb2.DESCRIPTOR,])
 
