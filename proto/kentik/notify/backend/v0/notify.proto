@@ -58,6 +58,51 @@ service Notify {
     };
   }
 
+  rpc CreateNotificationChannel(NotificationChannel) returns (NotificationChannelsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:write";
+    option (google.api.http) = {
+      post: "/v0/channels"
+      body: "*"
+    };
+  }
+
+  rpc ListNotificationChannels(NotificationChannelsRequest) returns (NotificationChannelsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:read";
+    option (google.api.http) = {
+      get: "/v0/channels"
+    };
+  }
+
+  rpc SearchNotificationChannels(NotificationChannelsRequest) returns (NotificationChannelsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:read";
+    option (google.api.http) = {
+      post: "/v0/channels:search"
+      body: "*"
+    };
+  }
+
+  rpc GetNotificationChannel(NotificationChannel) returns (NotificationChannelResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:read";
+    option (google.api.http) = {
+      get: "/v0/channels/{channelID}"
+    };
+  }
+
+  rpc UpdateNotificationChannel(NotificationChannel) returns (NotificationChannelsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:write";
+    option (google.api.http) = {
+      put: "/v0/channels/{channelID}"
+      body: "*"
+    };
+  }
+
+  rpc DeleteNotificationChannel(NotificationChannel) returns (NotificationChannelsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:write";
+    option (google.api.http) = {
+      delete: "/v0/channels/{channelID}"
+    };
+  }
+
   rpc GetSupportedChannels(SupportedChannelsRequest) returns (SupportedChannelsResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "notify:read";
     option (google.api.http) = {
@@ -100,51 +145,6 @@ service Notify {
     option (kentik.core.v202012alpha1.method_scope) = "notify:write";
     option (google.api.http) = {
       delete: "/v0/channels/user"
-    };
-  }
-
-  rpc CreateNotificationChannel(NotificationChannel) returns (NotificationChannelsResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "notify:write";
-    option (google.api.http) = {
-      post: "/v0/channels"
-      body: "*"
-    };
-  }
-
-  rpc GetNotificationChannel(NotificationChannel) returns (NotificationChannelResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "notify:read";
-    option (google.api.http) = {
-      get: "/v0/channels/{channelID}"
-    };
-  }
-
-  rpc ListNotificationChannels(NotificationChannelsRequest) returns (NotificationChannelsResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "notify:read";
-    option (google.api.http) = {
-      get: "/v0/channels"
-    };
-  }
-
-  rpc SearchNotificationChannels(NotificationChannelsRequest) returns (NotificationChannelsResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "notify:read";
-    option (google.api.http) = {
-      post: "/v0/channels:search"
-      body: "*"
-    };
-  }
-
-  rpc UpdateNotificationChannel(NotificationChannel) returns (NotificationChannelsResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "notify:write";
-    option (google.api.http) = {
-      put: "/v0/channels/{channelID}"
-      body: "*"
-    };
-  }
-
-  rpc DeleteNotificationChannel(NotificationChannel) returns (NotificationChannelsResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "notify:write";
-    option (google.api.http) = {
-      delete: "/v0/channels/{channelID}"
     };
   }
 

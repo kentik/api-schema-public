@@ -41,6 +41,36 @@ class NotifyStub(object):
                 request_serializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.DeliveryResultsRequest.SerializeToString,
                 response_deserializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.DeliveryResultsResponse.FromString,
                 )
+        self.CreateNotificationChannel = channel.unary_unary(
+                '/kentik.api.notify.v0.Notify/CreateNotificationChannel',
+                request_serializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannel.SerializeToString,
+                response_deserializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsResponse.FromString,
+                )
+        self.ListNotificationChannels = channel.unary_unary(
+                '/kentik.api.notify.v0.Notify/ListNotificationChannels',
+                request_serializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsRequest.SerializeToString,
+                response_deserializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsResponse.FromString,
+                )
+        self.SearchNotificationChannels = channel.unary_unary(
+                '/kentik.api.notify.v0.Notify/SearchNotificationChannels',
+                request_serializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsRequest.SerializeToString,
+                response_deserializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsResponse.FromString,
+                )
+        self.GetNotificationChannel = channel.unary_unary(
+                '/kentik.api.notify.v0.Notify/GetNotificationChannel',
+                request_serializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannel.SerializeToString,
+                response_deserializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelResponse.FromString,
+                )
+        self.UpdateNotificationChannel = channel.unary_unary(
+                '/kentik.api.notify.v0.Notify/UpdateNotificationChannel',
+                request_serializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannel.SerializeToString,
+                response_deserializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsResponse.FromString,
+                )
+        self.DeleteNotificationChannel = channel.unary_unary(
+                '/kentik.api.notify.v0.Notify/DeleteNotificationChannel',
+                request_serializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannel.SerializeToString,
+                response_deserializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsResponse.FromString,
+                )
         self.GetSupportedChannels = channel.unary_unary(
                 '/kentik.api.notify.v0.Notify/GetSupportedChannels',
                 request_serializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.SupportedChannelsRequest.SerializeToString,
@@ -68,36 +98,6 @@ class NotifyStub(object):
                 )
         self.DeleteUserChannel = channel.unary_unary(
                 '/kentik.api.notify.v0.Notify/DeleteUserChannel',
-                request_serializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannel.SerializeToString,
-                response_deserializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsResponse.FromString,
-                )
-        self.CreateNotificationChannel = channel.unary_unary(
-                '/kentik.api.notify.v0.Notify/CreateNotificationChannel',
-                request_serializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannel.SerializeToString,
-                response_deserializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsResponse.FromString,
-                )
-        self.GetNotificationChannel = channel.unary_unary(
-                '/kentik.api.notify.v0.Notify/GetNotificationChannel',
-                request_serializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannel.SerializeToString,
-                response_deserializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelResponse.FromString,
-                )
-        self.ListNotificationChannels = channel.unary_unary(
-                '/kentik.api.notify.v0.Notify/ListNotificationChannels',
-                request_serializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsRequest.SerializeToString,
-                response_deserializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsResponse.FromString,
-                )
-        self.SearchNotificationChannels = channel.unary_unary(
-                '/kentik.api.notify.v0.Notify/SearchNotificationChannels',
-                request_serializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsRequest.SerializeToString,
-                response_deserializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsResponse.FromString,
-                )
-        self.UpdateNotificationChannel = channel.unary_unary(
-                '/kentik.api.notify.v0.Notify/UpdateNotificationChannel',
-                request_serializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannel.SerializeToString,
-                response_deserializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsResponse.FromString,
-                )
-        self.DeleteNotificationChannel = channel.unary_unary(
-                '/kentik.api.notify.v0.Notify/DeleteNotificationChannel',
                 request_serializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannel.SerializeToString,
                 response_deserializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsResponse.FromString,
                 )
@@ -178,6 +178,42 @@ class NotifyServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def CreateNotificationChannel(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def ListNotificationChannels(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def SearchNotificationChannels(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetNotificationChannel(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def UpdateNotificationChannel(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def DeleteNotificationChannel(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def GetSupportedChannels(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -209,42 +245,6 @@ class NotifyServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def DeleteUserChannel(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def CreateNotificationChannel(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def GetNotificationChannel(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def ListNotificationChannels(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def SearchNotificationChannels(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def UpdateNotificationChannel(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def DeleteNotificationChannel(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -329,6 +329,36 @@ def add_NotifyServicer_to_server(servicer, server):
                     request_deserializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.DeliveryResultsRequest.FromString,
                     response_serializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.DeliveryResultsResponse.SerializeToString,
             ),
+            'CreateNotificationChannel': grpc.unary_unary_rpc_method_handler(
+                    servicer.CreateNotificationChannel,
+                    request_deserializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannel.FromString,
+                    response_serializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsResponse.SerializeToString,
+            ),
+            'ListNotificationChannels': grpc.unary_unary_rpc_method_handler(
+                    servicer.ListNotificationChannels,
+                    request_deserializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsRequest.FromString,
+                    response_serializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsResponse.SerializeToString,
+            ),
+            'SearchNotificationChannels': grpc.unary_unary_rpc_method_handler(
+                    servicer.SearchNotificationChannels,
+                    request_deserializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsRequest.FromString,
+                    response_serializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsResponse.SerializeToString,
+            ),
+            'GetNotificationChannel': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetNotificationChannel,
+                    request_deserializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannel.FromString,
+                    response_serializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelResponse.SerializeToString,
+            ),
+            'UpdateNotificationChannel': grpc.unary_unary_rpc_method_handler(
+                    servicer.UpdateNotificationChannel,
+                    request_deserializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannel.FromString,
+                    response_serializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsResponse.SerializeToString,
+            ),
+            'DeleteNotificationChannel': grpc.unary_unary_rpc_method_handler(
+                    servicer.DeleteNotificationChannel,
+                    request_deserializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannel.FromString,
+                    response_serializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsResponse.SerializeToString,
+            ),
             'GetSupportedChannels': grpc.unary_unary_rpc_method_handler(
                     servicer.GetSupportedChannels,
                     request_deserializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.SupportedChannelsRequest.FromString,
@@ -356,36 +386,6 @@ def add_NotifyServicer_to_server(servicer, server):
             ),
             'DeleteUserChannel': grpc.unary_unary_rpc_method_handler(
                     servicer.DeleteUserChannel,
-                    request_deserializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannel.FromString,
-                    response_serializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsResponse.SerializeToString,
-            ),
-            'CreateNotificationChannel': grpc.unary_unary_rpc_method_handler(
-                    servicer.CreateNotificationChannel,
-                    request_deserializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannel.FromString,
-                    response_serializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsResponse.SerializeToString,
-            ),
-            'GetNotificationChannel': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetNotificationChannel,
-                    request_deserializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannel.FromString,
-                    response_serializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelResponse.SerializeToString,
-            ),
-            'ListNotificationChannels': grpc.unary_unary_rpc_method_handler(
-                    servicer.ListNotificationChannels,
-                    request_deserializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsRequest.FromString,
-                    response_serializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsResponse.SerializeToString,
-            ),
-            'SearchNotificationChannels': grpc.unary_unary_rpc_method_handler(
-                    servicer.SearchNotificationChannels,
-                    request_deserializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsRequest.FromString,
-                    response_serializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsResponse.SerializeToString,
-            ),
-            'UpdateNotificationChannel': grpc.unary_unary_rpc_method_handler(
-                    servicer.UpdateNotificationChannel,
-                    request_deserializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannel.FromString,
-                    response_serializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsResponse.SerializeToString,
-            ),
-            'DeleteNotificationChannel': grpc.unary_unary_rpc_method_handler(
-                    servicer.DeleteNotificationChannel,
                     request_deserializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannel.FromString,
                     response_serializer=kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsResponse.SerializeToString,
             ),
@@ -525,6 +525,108 @@ class Notify(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
+    def CreateNotificationChannel(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/kentik.api.notify.v0.Notify/CreateNotificationChannel',
+            kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannel.SerializeToString,
+            kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def ListNotificationChannels(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/kentik.api.notify.v0.Notify/ListNotificationChannels',
+            kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsRequest.SerializeToString,
+            kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def SearchNotificationChannels(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/kentik.api.notify.v0.Notify/SearchNotificationChannels',
+            kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsRequest.SerializeToString,
+            kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetNotificationChannel(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/kentik.api.notify.v0.Notify/GetNotificationChannel',
+            kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannel.SerializeToString,
+            kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def UpdateNotificationChannel(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/kentik.api.notify.v0.Notify/UpdateNotificationChannel',
+            kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannel.SerializeToString,
+            kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def DeleteNotificationChannel(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/kentik.api.notify.v0.Notify/DeleteNotificationChannel',
+            kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannel.SerializeToString,
+            kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
     def GetSupportedChannels(request,
             target,
             options=(),
@@ -621,108 +723,6 @@ class Notify(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/kentik.api.notify.v0.Notify/DeleteUserChannel',
-            kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannel.SerializeToString,
-            kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def CreateNotificationChannel(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/kentik.api.notify.v0.Notify/CreateNotificationChannel',
-            kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannel.SerializeToString,
-            kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def GetNotificationChannel(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/kentik.api.notify.v0.Notify/GetNotificationChannel',
-            kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannel.SerializeToString,
-            kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def ListNotificationChannels(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/kentik.api.notify.v0.Notify/ListNotificationChannels',
-            kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsRequest.SerializeToString,
-            kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def SearchNotificationChannels(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/kentik.api.notify.v0.Notify/SearchNotificationChannels',
-            kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsRequest.SerializeToString,
-            kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def UpdateNotificationChannel(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/kentik.api.notify.v0.Notify/UpdateNotificationChannel',
-            kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannel.SerializeToString,
-            kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def DeleteNotificationChannel(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/kentik.api.notify.v0.Notify/DeleteNotificationChannel',
             kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannel.SerializeToString,
             kentik_dot_notify_dot_backend_dot_v0_dot_notify__pb2.NotificationChannelsResponse.FromString,
             options, channel_credentials,

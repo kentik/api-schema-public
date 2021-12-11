@@ -25,18 +25,18 @@ type NotifyClient interface {
 	// Note: internally can publish notifications directly to Kafka.
 	CreateNotificationEvent(ctx context.Context, in *NotificationEvent, opts ...grpc.CallOption) (*NotificationEventResponse, error)
 	SearchDeliveryResults(ctx context.Context, in *DeliveryResultsRequest, opts ...grpc.CallOption) (*DeliveryResultsResponse, error)
+	CreateNotificationChannel(ctx context.Context, in *NotificationChannel, opts ...grpc.CallOption) (*NotificationChannelsResponse, error)
+	ListNotificationChannels(ctx context.Context, in *NotificationChannelsRequest, opts ...grpc.CallOption) (*NotificationChannelsResponse, error)
+	SearchNotificationChannels(ctx context.Context, in *NotificationChannelsRequest, opts ...grpc.CallOption) (*NotificationChannelsResponse, error)
+	GetNotificationChannel(ctx context.Context, in *NotificationChannel, opts ...grpc.CallOption) (*NotificationChannelResponse, error)
+	UpdateNotificationChannel(ctx context.Context, in *NotificationChannel, opts ...grpc.CallOption) (*NotificationChannelsResponse, error)
+	DeleteNotificationChannel(ctx context.Context, in *NotificationChannel, opts ...grpc.CallOption) (*NotificationChannelsResponse, error)
 	GetSupportedChannels(ctx context.Context, in *SupportedChannelsRequest, opts ...grpc.CallOption) (*SupportedChannelsResponse, error)
 	CreateUserChannel(ctx context.Context, in *CreateUserChannelRequest, opts ...grpc.CallOption) (*NotificationChannelResponse, error)
 	GetUserChannel(ctx context.Context, in *NotificationChannelsRequest, opts ...grpc.CallOption) (*NotificationChannelResponse, error)
 	SubscribeWithUserChannel(ctx context.Context, in *SubscribeRequest, opts ...grpc.CallOption) (*SubscribeResponse, error)
 	UnsubscribeWithUserChannel(ctx context.Context, in *SubscribeRequest, opts ...grpc.CallOption) (*SubscribeResponse, error)
 	DeleteUserChannel(ctx context.Context, in *NotificationChannel, opts ...grpc.CallOption) (*NotificationChannelsResponse, error)
-	CreateNotificationChannel(ctx context.Context, in *NotificationChannel, opts ...grpc.CallOption) (*NotificationChannelsResponse, error)
-	GetNotificationChannel(ctx context.Context, in *NotificationChannel, opts ...grpc.CallOption) (*NotificationChannelResponse, error)
-	ListNotificationChannels(ctx context.Context, in *NotificationChannelsRequest, opts ...grpc.CallOption) (*NotificationChannelsResponse, error)
-	SearchNotificationChannels(ctx context.Context, in *NotificationChannelsRequest, opts ...grpc.CallOption) (*NotificationChannelsResponse, error)
-	UpdateNotificationChannel(ctx context.Context, in *NotificationChannel, opts ...grpc.CallOption) (*NotificationChannelsResponse, error)
-	DeleteNotificationChannel(ctx context.Context, in *NotificationChannel, opts ...grpc.CallOption) (*NotificationChannelsResponse, error)
 	GetLastNotificationAndStatus(ctx context.Context, in *NotificationAndStatusRequest, opts ...grpc.CallOption) (*NotificationAndStatusResponse, error)
 	GetNotificationPayload(ctx context.Context, in *NotificationPayloadRequest, opts ...grpc.CallOption) (*NotificationPayloadResponse, error)
 	// immediately but asynchronously send notification described in the enclosed NotificationPayloadRequest.
@@ -126,6 +126,60 @@ func (c *notifyClient) SearchDeliveryResults(ctx context.Context, in *DeliveryRe
 	return out, nil
 }
 
+func (c *notifyClient) CreateNotificationChannel(ctx context.Context, in *NotificationChannel, opts ...grpc.CallOption) (*NotificationChannelsResponse, error) {
+	out := new(NotificationChannelsResponse)
+	err := c.cc.Invoke(ctx, "/kentik.api.notify.v0.Notify/CreateNotificationChannel", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *notifyClient) ListNotificationChannels(ctx context.Context, in *NotificationChannelsRequest, opts ...grpc.CallOption) (*NotificationChannelsResponse, error) {
+	out := new(NotificationChannelsResponse)
+	err := c.cc.Invoke(ctx, "/kentik.api.notify.v0.Notify/ListNotificationChannels", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *notifyClient) SearchNotificationChannels(ctx context.Context, in *NotificationChannelsRequest, opts ...grpc.CallOption) (*NotificationChannelsResponse, error) {
+	out := new(NotificationChannelsResponse)
+	err := c.cc.Invoke(ctx, "/kentik.api.notify.v0.Notify/SearchNotificationChannels", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *notifyClient) GetNotificationChannel(ctx context.Context, in *NotificationChannel, opts ...grpc.CallOption) (*NotificationChannelResponse, error) {
+	out := new(NotificationChannelResponse)
+	err := c.cc.Invoke(ctx, "/kentik.api.notify.v0.Notify/GetNotificationChannel", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *notifyClient) UpdateNotificationChannel(ctx context.Context, in *NotificationChannel, opts ...grpc.CallOption) (*NotificationChannelsResponse, error) {
+	out := new(NotificationChannelsResponse)
+	err := c.cc.Invoke(ctx, "/kentik.api.notify.v0.Notify/UpdateNotificationChannel", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *notifyClient) DeleteNotificationChannel(ctx context.Context, in *NotificationChannel, opts ...grpc.CallOption) (*NotificationChannelsResponse, error) {
+	out := new(NotificationChannelsResponse)
+	err := c.cc.Invoke(ctx, "/kentik.api.notify.v0.Notify/DeleteNotificationChannel", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *notifyClient) GetSupportedChannels(ctx context.Context, in *SupportedChannelsRequest, opts ...grpc.CallOption) (*SupportedChannelsResponse, error) {
 	out := new(SupportedChannelsResponse)
 	err := c.cc.Invoke(ctx, "/kentik.api.notify.v0.Notify/GetSupportedChannels", in, out, opts...)
@@ -174,60 +228,6 @@ func (c *notifyClient) UnsubscribeWithUserChannel(ctx context.Context, in *Subsc
 func (c *notifyClient) DeleteUserChannel(ctx context.Context, in *NotificationChannel, opts ...grpc.CallOption) (*NotificationChannelsResponse, error) {
 	out := new(NotificationChannelsResponse)
 	err := c.cc.Invoke(ctx, "/kentik.api.notify.v0.Notify/DeleteUserChannel", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *notifyClient) CreateNotificationChannel(ctx context.Context, in *NotificationChannel, opts ...grpc.CallOption) (*NotificationChannelsResponse, error) {
-	out := new(NotificationChannelsResponse)
-	err := c.cc.Invoke(ctx, "/kentik.api.notify.v0.Notify/CreateNotificationChannel", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *notifyClient) GetNotificationChannel(ctx context.Context, in *NotificationChannel, opts ...grpc.CallOption) (*NotificationChannelResponse, error) {
-	out := new(NotificationChannelResponse)
-	err := c.cc.Invoke(ctx, "/kentik.api.notify.v0.Notify/GetNotificationChannel", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *notifyClient) ListNotificationChannels(ctx context.Context, in *NotificationChannelsRequest, opts ...grpc.CallOption) (*NotificationChannelsResponse, error) {
-	out := new(NotificationChannelsResponse)
-	err := c.cc.Invoke(ctx, "/kentik.api.notify.v0.Notify/ListNotificationChannels", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *notifyClient) SearchNotificationChannels(ctx context.Context, in *NotificationChannelsRequest, opts ...grpc.CallOption) (*NotificationChannelsResponse, error) {
-	out := new(NotificationChannelsResponse)
-	err := c.cc.Invoke(ctx, "/kentik.api.notify.v0.Notify/SearchNotificationChannels", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *notifyClient) UpdateNotificationChannel(ctx context.Context, in *NotificationChannel, opts ...grpc.CallOption) (*NotificationChannelsResponse, error) {
-	out := new(NotificationChannelsResponse)
-	err := c.cc.Invoke(ctx, "/kentik.api.notify.v0.Notify/UpdateNotificationChannel", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *notifyClient) DeleteNotificationChannel(ctx context.Context, in *NotificationChannel, opts ...grpc.CallOption) (*NotificationChannelsResponse, error) {
-	out := new(NotificationChannelsResponse)
-	err := c.cc.Invoke(ctx, "/kentik.api.notify.v0.Notify/DeleteNotificationChannel", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -317,18 +317,18 @@ type NotifyServer interface {
 	// Note: internally can publish notifications directly to Kafka.
 	CreateNotificationEvent(context.Context, *NotificationEvent) (*NotificationEventResponse, error)
 	SearchDeliveryResults(context.Context, *DeliveryResultsRequest) (*DeliveryResultsResponse, error)
+	CreateNotificationChannel(context.Context, *NotificationChannel) (*NotificationChannelsResponse, error)
+	ListNotificationChannels(context.Context, *NotificationChannelsRequest) (*NotificationChannelsResponse, error)
+	SearchNotificationChannels(context.Context, *NotificationChannelsRequest) (*NotificationChannelsResponse, error)
+	GetNotificationChannel(context.Context, *NotificationChannel) (*NotificationChannelResponse, error)
+	UpdateNotificationChannel(context.Context, *NotificationChannel) (*NotificationChannelsResponse, error)
+	DeleteNotificationChannel(context.Context, *NotificationChannel) (*NotificationChannelsResponse, error)
 	GetSupportedChannels(context.Context, *SupportedChannelsRequest) (*SupportedChannelsResponse, error)
 	CreateUserChannel(context.Context, *CreateUserChannelRequest) (*NotificationChannelResponse, error)
 	GetUserChannel(context.Context, *NotificationChannelsRequest) (*NotificationChannelResponse, error)
 	SubscribeWithUserChannel(context.Context, *SubscribeRequest) (*SubscribeResponse, error)
 	UnsubscribeWithUserChannel(context.Context, *SubscribeRequest) (*SubscribeResponse, error)
 	DeleteUserChannel(context.Context, *NotificationChannel) (*NotificationChannelsResponse, error)
-	CreateNotificationChannel(context.Context, *NotificationChannel) (*NotificationChannelsResponse, error)
-	GetNotificationChannel(context.Context, *NotificationChannel) (*NotificationChannelResponse, error)
-	ListNotificationChannels(context.Context, *NotificationChannelsRequest) (*NotificationChannelsResponse, error)
-	SearchNotificationChannels(context.Context, *NotificationChannelsRequest) (*NotificationChannelsResponse, error)
-	UpdateNotificationChannel(context.Context, *NotificationChannel) (*NotificationChannelsResponse, error)
-	DeleteNotificationChannel(context.Context, *NotificationChannel) (*NotificationChannelsResponse, error)
 	GetLastNotificationAndStatus(context.Context, *NotificationAndStatusRequest) (*NotificationAndStatusResponse, error)
 	GetNotificationPayload(context.Context, *NotificationPayloadRequest) (*NotificationPayloadResponse, error)
 	// immediately but asynchronously send notification described in the enclosed NotificationPayloadRequest.
@@ -361,6 +361,24 @@ func (UnimplementedNotifyServer) CreateNotificationEvent(context.Context, *Notif
 func (UnimplementedNotifyServer) SearchDeliveryResults(context.Context, *DeliveryResultsRequest) (*DeliveryResultsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SearchDeliveryResults not implemented")
 }
+func (UnimplementedNotifyServer) CreateNotificationChannel(context.Context, *NotificationChannel) (*NotificationChannelsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateNotificationChannel not implemented")
+}
+func (UnimplementedNotifyServer) ListNotificationChannels(context.Context, *NotificationChannelsRequest) (*NotificationChannelsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListNotificationChannels not implemented")
+}
+func (UnimplementedNotifyServer) SearchNotificationChannels(context.Context, *NotificationChannelsRequest) (*NotificationChannelsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchNotificationChannels not implemented")
+}
+func (UnimplementedNotifyServer) GetNotificationChannel(context.Context, *NotificationChannel) (*NotificationChannelResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetNotificationChannel not implemented")
+}
+func (UnimplementedNotifyServer) UpdateNotificationChannel(context.Context, *NotificationChannel) (*NotificationChannelsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateNotificationChannel not implemented")
+}
+func (UnimplementedNotifyServer) DeleteNotificationChannel(context.Context, *NotificationChannel) (*NotificationChannelsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteNotificationChannel not implemented")
+}
 func (UnimplementedNotifyServer) GetSupportedChannels(context.Context, *SupportedChannelsRequest) (*SupportedChannelsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetSupportedChannels not implemented")
 }
@@ -378,24 +396,6 @@ func (UnimplementedNotifyServer) UnsubscribeWithUserChannel(context.Context, *Su
 }
 func (UnimplementedNotifyServer) DeleteUserChannel(context.Context, *NotificationChannel) (*NotificationChannelsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteUserChannel not implemented")
-}
-func (UnimplementedNotifyServer) CreateNotificationChannel(context.Context, *NotificationChannel) (*NotificationChannelsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateNotificationChannel not implemented")
-}
-func (UnimplementedNotifyServer) GetNotificationChannel(context.Context, *NotificationChannel) (*NotificationChannelResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetNotificationChannel not implemented")
-}
-func (UnimplementedNotifyServer) ListNotificationChannels(context.Context, *NotificationChannelsRequest) (*NotificationChannelsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListNotificationChannels not implemented")
-}
-func (UnimplementedNotifyServer) SearchNotificationChannels(context.Context, *NotificationChannelsRequest) (*NotificationChannelsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SearchNotificationChannels not implemented")
-}
-func (UnimplementedNotifyServer) UpdateNotificationChannel(context.Context, *NotificationChannel) (*NotificationChannelsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateNotificationChannel not implemented")
-}
-func (UnimplementedNotifyServer) DeleteNotificationChannel(context.Context, *NotificationChannel) (*NotificationChannelsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteNotificationChannel not implemented")
 }
 func (UnimplementedNotifyServer) GetLastNotificationAndStatus(context.Context, *NotificationAndStatusRequest) (*NotificationAndStatusResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetLastNotificationAndStatus not implemented")
@@ -526,6 +526,114 @@ func _Notify_SearchDeliveryResults_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Notify_CreateNotificationChannel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(NotificationChannel)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NotifyServer).CreateNotificationChannel(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kentik.api.notify.v0.Notify/CreateNotificationChannel",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NotifyServer).CreateNotificationChannel(ctx, req.(*NotificationChannel))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Notify_ListNotificationChannels_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(NotificationChannelsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NotifyServer).ListNotificationChannels(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kentik.api.notify.v0.Notify/ListNotificationChannels",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NotifyServer).ListNotificationChannels(ctx, req.(*NotificationChannelsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Notify_SearchNotificationChannels_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(NotificationChannelsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NotifyServer).SearchNotificationChannels(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kentik.api.notify.v0.Notify/SearchNotificationChannels",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NotifyServer).SearchNotificationChannels(ctx, req.(*NotificationChannelsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Notify_GetNotificationChannel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(NotificationChannel)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NotifyServer).GetNotificationChannel(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kentik.api.notify.v0.Notify/GetNotificationChannel",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NotifyServer).GetNotificationChannel(ctx, req.(*NotificationChannel))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Notify_UpdateNotificationChannel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(NotificationChannel)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NotifyServer).UpdateNotificationChannel(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kentik.api.notify.v0.Notify/UpdateNotificationChannel",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NotifyServer).UpdateNotificationChannel(ctx, req.(*NotificationChannel))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Notify_DeleteNotificationChannel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(NotificationChannel)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NotifyServer).DeleteNotificationChannel(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kentik.api.notify.v0.Notify/DeleteNotificationChannel",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NotifyServer).DeleteNotificationChannel(ctx, req.(*NotificationChannel))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Notify_GetSupportedChannels_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SupportedChannelsRequest)
 	if err := dec(in); err != nil {
@@ -630,114 +738,6 @@ func _Notify_DeleteUserChannel_Handler(srv interface{}, ctx context.Context, dec
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(NotifyServer).DeleteUserChannel(ctx, req.(*NotificationChannel))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Notify_CreateNotificationChannel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(NotificationChannel)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NotifyServer).CreateNotificationChannel(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/kentik.api.notify.v0.Notify/CreateNotificationChannel",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NotifyServer).CreateNotificationChannel(ctx, req.(*NotificationChannel))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Notify_GetNotificationChannel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(NotificationChannel)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NotifyServer).GetNotificationChannel(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/kentik.api.notify.v0.Notify/GetNotificationChannel",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NotifyServer).GetNotificationChannel(ctx, req.(*NotificationChannel))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Notify_ListNotificationChannels_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(NotificationChannelsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NotifyServer).ListNotificationChannels(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/kentik.api.notify.v0.Notify/ListNotificationChannels",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NotifyServer).ListNotificationChannels(ctx, req.(*NotificationChannelsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Notify_SearchNotificationChannels_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(NotificationChannelsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NotifyServer).SearchNotificationChannels(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/kentik.api.notify.v0.Notify/SearchNotificationChannels",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NotifyServer).SearchNotificationChannels(ctx, req.(*NotificationChannelsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Notify_UpdateNotificationChannel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(NotificationChannel)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NotifyServer).UpdateNotificationChannel(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/kentik.api.notify.v0.Notify/UpdateNotificationChannel",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NotifyServer).UpdateNotificationChannel(ctx, req.(*NotificationChannel))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Notify_DeleteNotificationChannel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(NotificationChannel)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NotifyServer).DeleteNotificationChannel(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/kentik.api.notify.v0.Notify/DeleteNotificationChannel",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NotifyServer).DeleteNotificationChannel(ctx, req.(*NotificationChannel))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -910,6 +910,30 @@ var Notify_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Notify_SearchDeliveryResults_Handler,
 		},
 		{
+			MethodName: "CreateNotificationChannel",
+			Handler:    _Notify_CreateNotificationChannel_Handler,
+		},
+		{
+			MethodName: "ListNotificationChannels",
+			Handler:    _Notify_ListNotificationChannels_Handler,
+		},
+		{
+			MethodName: "SearchNotificationChannels",
+			Handler:    _Notify_SearchNotificationChannels_Handler,
+		},
+		{
+			MethodName: "GetNotificationChannel",
+			Handler:    _Notify_GetNotificationChannel_Handler,
+		},
+		{
+			MethodName: "UpdateNotificationChannel",
+			Handler:    _Notify_UpdateNotificationChannel_Handler,
+		},
+		{
+			MethodName: "DeleteNotificationChannel",
+			Handler:    _Notify_DeleteNotificationChannel_Handler,
+		},
+		{
 			MethodName: "GetSupportedChannels",
 			Handler:    _Notify_GetSupportedChannels_Handler,
 		},
@@ -932,30 +956,6 @@ var Notify_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteUserChannel",
 			Handler:    _Notify_DeleteUserChannel_Handler,
-		},
-		{
-			MethodName: "CreateNotificationChannel",
-			Handler:    _Notify_CreateNotificationChannel_Handler,
-		},
-		{
-			MethodName: "GetNotificationChannel",
-			Handler:    _Notify_GetNotificationChannel_Handler,
-		},
-		{
-			MethodName: "ListNotificationChannels",
-			Handler:    _Notify_ListNotificationChannels_Handler,
-		},
-		{
-			MethodName: "SearchNotificationChannels",
-			Handler:    _Notify_SearchNotificationChannels_Handler,
-		},
-		{
-			MethodName: "UpdateNotificationChannel",
-			Handler:    _Notify_UpdateNotificationChannel_Handler,
-		},
-		{
-			MethodName: "DeleteNotificationChannel",
-			Handler:    _Notify_DeleteNotificationChannel_Handler,
 		},
 		{
 			MethodName: "GetLastNotificationAndStatus",
