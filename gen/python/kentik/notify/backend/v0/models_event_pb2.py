@@ -19,11 +19,49 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z\037kentik/notify/backend/v0;notify',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n+kentik/notify/backend/v0/models-event.proto\x12\x14kentik.api.notify.v0\"\xf3\x02\n\x11NotificationEvent\x12\x11\n\tcompanyID\x18\x01 \x01(\x03\x12\x36\n\nalarmEvent\x18\x02 \x01(\x0b\x32 .kentik.api.notify.v0.AlarmEventH\x00\x12@\n\x0fmitigationEvent\x18\x03 \x01(\x0b\x32%.kentik.api.notify.v0.MitigationEventH\x00\x12:\n\x0cinsightEvent\x18\x04 \x01(\x0b\x32\".kentik.api.notify.v0.InsightEventH\x00\x12P\n\x17mitigationPlatformEvent\x18\x05 \x01(\x0b\x32-.kentik.api.notify.v0.MitigationPlatformEventH\x00\x12:\n\x0cgenericEvent\x18\x06 \x01(\x0b\x32\".kentik.api.notify.v0.GenericEventH\x00\x42\x07\n\x05\x65vent\"\'\n\x19NotificationEventResponse\x12\n\n\x02ok\x18\x01 \x01(\x08\"\\\n\nAlarmEvent\x12\x0f\n\x07\x61larmID\x18\x01 \x01(\x03\x12\x16\n\x0e\x61larmHistoryID\x18\x02 \x01(\x03\x12\x10\n\x08policyID\x18\x03 \x01(\x03\x12\x13\n\x0bthresholdID\x18\x04 \x01(\x03\"\xa3\x01\n\x0fMitigationEvent\x12\x14\n\x0cmitigationID\x18\x01 \x01(\x03\x12\x19\n\x11mitigationEventID\x18\x02 \x01(\x03\x12\x10\n\x08policyID\x18\x03 \x01(\x03\x12\x13\n\x0bthresholdID\x18\x04 \x01(\x03\x12\x1c\n\x14mitigationPlatformID\x18\x05 \x01(\x03\x12\x1a\n\x12mitigationMethodID\x18\x06 \x01(\x03\"e\n\x0cInsightEvent\x12\x11\n\tinsightID\x18\x01 \x01(\t\x12\x16\n\x0e\x64\x61taSourceType\x18\x02 \x01(\t\x12\x13\n\x0binsightName\x18\x03 \x01(\t\x12\x15\n\rinsightFamily\x18\x04 \x01(\t\"B\n\x17MitigationPlatformEvent\x12\x12\n\nplatformID\x18\x01 \x01(\x03\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\"\xb9\x01\n\x0cGenericEvent\x12\r\n\x05title\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\x12\x0b\n\x03url\x18\x03 \x01(\t\x12\x38\n\x03kvs\x18\x04 \x03(\x0b\x32+.kentik.api.notify.v0.GenericEvent.KvsEntry\x12\x12\n\nchannelIDs\x18\x05 \x03(\x03\x1a*\n\x08KvsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42!Z\x1fkentik/notify/backend/v0;notifyb\x06proto3'
+  serialized_pb=b'\n+kentik/notify/backend/v0/models-event.proto\x12\x14kentik.api.notify.v0\"\xf9\x03\n\x11NotificationEvent\x12\x11\n\tcompanyID\x18\x01 \x01(\x03\x12\x36\n\nalarmEvent\x18\x02 \x01(\x0b\x32 .kentik.api.notify.v0.AlarmEventH\x00\x12@\n\x0fmitigationEvent\x18\x03 \x01(\x0b\x32%.kentik.api.notify.v0.MitigationEventH\x00\x12:\n\x0cinsightEvent\x18\x04 \x01(\x0b\x32\".kentik.api.notify.v0.InsightEventH\x00\x12P\n\x17mitigationPlatformEvent\x18\x05 \x01(\x0b\x32-.kentik.api.notify.v0.MitigationPlatformEventH\x00\x12:\n\x0cgenericEvent\x18\x06 \x01(\x0b\x32\".kentik.api.notify.v0.GenericEventH\x00\x12O\n\x0c\x65xtraDetails\x18\x07 \x03(\x0b\x32\x39.kentik.api.notify.v0.NotificationEvent.ExtraDetailsEntry\x1a\x33\n\x11\x45xtraDetailsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x0c:\x02\x38\x01\x42\x07\n\x05\x65vent\"\'\n\x19NotificationEventResponse\x12\n\n\x02ok\x18\x01 \x01(\x08\"\\\n\nAlarmEvent\x12\x0f\n\x07\x61larmID\x18\x01 \x01(\x03\x12\x16\n\x0e\x61larmHistoryID\x18\x02 \x01(\x03\x12\x10\n\x08policyID\x18\x03 \x01(\x03\x12\x13\n\x0bthresholdID\x18\x04 \x01(\x03\"\xa3\x01\n\x0fMitigationEvent\x12\x14\n\x0cmitigationID\x18\x01 \x01(\x03\x12\x19\n\x11mitigationEventID\x18\x02 \x01(\x03\x12\x10\n\x08policyID\x18\x03 \x01(\x03\x12\x13\n\x0bthresholdID\x18\x04 \x01(\x03\x12\x1c\n\x14mitigationPlatformID\x18\x05 \x01(\x03\x12\x1a\n\x12mitigationMethodID\x18\x06 \x01(\x03\"e\n\x0cInsightEvent\x12\x11\n\tinsightID\x18\x01 \x01(\t\x12\x16\n\x0e\x64\x61taSourceType\x18\x02 \x01(\t\x12\x13\n\x0binsightName\x18\x03 \x01(\t\x12\x15\n\rinsightFamily\x18\x04 \x01(\t\"B\n\x17MitigationPlatformEvent\x12\x12\n\nplatformID\x18\x01 \x01(\x03\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\"\xb9\x01\n\x0cGenericEvent\x12\r\n\x05title\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\x12\x0b\n\x03url\x18\x03 \x01(\t\x12\x38\n\x03kvs\x18\x04 \x03(\x0b\x32+.kentik.api.notify.v0.GenericEvent.KvsEntry\x12\x12\n\nchannelIDs\x18\x05 \x03(\x03\x1a*\n\x08KvsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42!Z\x1fkentik/notify/backend/v0;notifyb\x06proto3'
 )
 
 
 
+
+_NOTIFICATIONEVENT_EXTRADETAILSENTRY = _descriptor.Descriptor(
+  name='ExtraDetailsEntry',
+  full_name='kentik.api.notify.v0.NotificationEvent.ExtraDetailsEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='kentik.api.notify.v0.NotificationEvent.ExtraDetailsEntry.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='kentik.api.notify.v0.NotificationEvent.ExtraDetailsEntry.value', index=1,
+      number=2, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=b'8\001',
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=515,
+  serialized_end=566,
+)
 
 _NOTIFICATIONEVENT = _descriptor.Descriptor(
   name='NotificationEvent',
@@ -75,10 +113,17 @@ _NOTIFICATIONEVENT = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='extraDetails', full_name='kentik.api.notify.v0.NotificationEvent.extraDetails', index=6,
+      number=7, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
-  nested_types=[],
+  nested_types=[_NOTIFICATIONEVENT_EXTRADETAILSENTRY, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -93,7 +138,7 @@ _NOTIFICATIONEVENT = _descriptor.Descriptor(
     fields=[]),
   ],
   serialized_start=70,
-  serialized_end=441,
+  serialized_end=575,
 )
 
 
@@ -124,8 +169,8 @@ _NOTIFICATIONEVENTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=443,
-  serialized_end=482,
+  serialized_start=577,
+  serialized_end=616,
 )
 
 
@@ -177,8 +222,8 @@ _ALARMEVENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=484,
-  serialized_end=576,
+  serialized_start=618,
+  serialized_end=710,
 )
 
 
@@ -244,8 +289,8 @@ _MITIGATIONEVENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=579,
-  serialized_end=742,
+  serialized_start=713,
+  serialized_end=876,
 )
 
 
@@ -297,8 +342,8 @@ _INSIGHTEVENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=744,
-  serialized_end=845,
+  serialized_start=878,
+  serialized_end=979,
 )
 
 
@@ -336,8 +381,8 @@ _MITIGATIONPLATFORMEVENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=847,
-  serialized_end=913,
+  serialized_start=981,
+  serialized_end=1047,
 )
 
 
@@ -375,8 +420,8 @@ _GENERICEVENT_KVSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1059,
-  serialized_end=1101,
+  serialized_start=1193,
+  serialized_end=1235,
 )
 
 _GENERICEVENT = _descriptor.Descriptor(
@@ -434,15 +479,17 @@ _GENERICEVENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=916,
-  serialized_end=1101,
+  serialized_start=1050,
+  serialized_end=1235,
 )
 
+_NOTIFICATIONEVENT_EXTRADETAILSENTRY.containing_type = _NOTIFICATIONEVENT
 _NOTIFICATIONEVENT.fields_by_name['alarmEvent'].message_type = _ALARMEVENT
 _NOTIFICATIONEVENT.fields_by_name['mitigationEvent'].message_type = _MITIGATIONEVENT
 _NOTIFICATIONEVENT.fields_by_name['insightEvent'].message_type = _INSIGHTEVENT
 _NOTIFICATIONEVENT.fields_by_name['mitigationPlatformEvent'].message_type = _MITIGATIONPLATFORMEVENT
 _NOTIFICATIONEVENT.fields_by_name['genericEvent'].message_type = _GENERICEVENT
+_NOTIFICATIONEVENT.fields_by_name['extraDetails'].message_type = _NOTIFICATIONEVENT_EXTRADETAILSENTRY
 _NOTIFICATIONEVENT.oneofs_by_name['event'].fields.append(
   _NOTIFICATIONEVENT.fields_by_name['alarmEvent'])
 _NOTIFICATIONEVENT.fields_by_name['alarmEvent'].containing_oneof = _NOTIFICATIONEVENT.oneofs_by_name['event']
@@ -470,11 +517,19 @@ DESCRIPTOR.message_types_by_name['GenericEvent'] = _GENERICEVENT
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 NotificationEvent = _reflection.GeneratedProtocolMessageType('NotificationEvent', (_message.Message,), {
+
+  'ExtraDetailsEntry' : _reflection.GeneratedProtocolMessageType('ExtraDetailsEntry', (_message.Message,), {
+    'DESCRIPTOR' : _NOTIFICATIONEVENT_EXTRADETAILSENTRY,
+    '__module__' : 'kentik.notify.backend.v0.models_event_pb2'
+    # @@protoc_insertion_point(class_scope:kentik.api.notify.v0.NotificationEvent.ExtraDetailsEntry)
+    })
+  ,
   'DESCRIPTOR' : _NOTIFICATIONEVENT,
   '__module__' : 'kentik.notify.backend.v0.models_event_pb2'
   # @@protoc_insertion_point(class_scope:kentik.api.notify.v0.NotificationEvent)
   })
 _sym_db.RegisterMessage(NotificationEvent)
+_sym_db.RegisterMessage(NotificationEvent.ExtraDetailsEntry)
 
 NotificationEventResponse = _reflection.GeneratedProtocolMessageType('NotificationEventResponse', (_message.Message,), {
   'DESCRIPTOR' : _NOTIFICATIONEVENTRESPONSE,
@@ -528,5 +583,6 @@ _sym_db.RegisterMessage(GenericEvent.KvsEntry)
 
 
 DESCRIPTOR._options = None
+_NOTIFICATIONEVENT_EXTRADETAILSENTRY._options = None
 _GENERICEVENT_KVSENTRY._options = None
 # @@protoc_insertion_point(module_scope)

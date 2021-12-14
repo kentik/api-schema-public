@@ -12,6 +12,8 @@ message NotificationEvent {
     MitigationPlatformEvent mitigationPlatformEvent = 5;
     GenericEvent genericEvent = 6;
   }
+
+  map<string, bytes> extraDetails = 7;
 }
 
 message NotificationEventResponse {

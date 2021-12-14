@@ -3,6 +3,7 @@ package kentik.api.notify.v0;
 option go_package = "kentik/notify/backend/v0;notify";
 
 import "google/api/annotations.proto";
+import "google/api/client.proto";
 import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 
@@ -11,8 +12,14 @@ import "kentik/notify/backend/v0/models-event.proto";
 import "kentik/notify/backend/v0/models-notification.proto";
 import "kentik/notify/backend/v0/subscribe.proto";
 
+import "kentik/core/v202012alpha1/annotations.proto";
+
 service Notify {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202012alpha1.service_scope) = "notify";
+
   rpc SearchNotifications(NotificationsRequest) returns (NotificationsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:read";
     option (google.api.http) = {
       post: "/v0/notifications:search"
       body: "*"
@@ -20,6 +27,7 @@ service Notify {
   }
 
   rpc ListNotifications(NotificationsRequest) returns (NotificationsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:read";
     option (google.api.http) = {
       get: "/v0/notifications/v/{channelVersion}/{channelID}"
     };
@@ -27,6 +35,7 @@ service Notify {
 
   // deprecated
   rpc StreamNotifications(NotificationsRequest) returns (stream NotificationsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:read";
     option (google.api.http) = {
       get: "/v0/notifications/v/{channelVersion}/{channelID}/stream"
     };
@@ -34,6 +43,7 @@ service Notify {
 
   // Note: internally can publish notifications directly to Kafka.
   rpc CreateNotificationEvent(NotificationEvent) returns (NotificationEventResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:write";
     option (google.api.http) = {
       post: "/v0/notification/event"
       body: "*"
@@ -41,6 +51,7 @@ service Notify {
   }
 
   rpc SearchDeliveryResults(DeliveryResultsRequest) returns (DeliveryResultsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:read";
     option (google.api.http) = {
       post: "/v0/notifications:search"
       body: "*"
@@ -48,12 +59,14 @@ service Notify {
   }
 
   rpc GetSupportedChannels(SupportedChannelsRequest) returns (SupportedChannelsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:read";
     option (google.api.http) = {
       get: "/v0/channels/supported"
     };
   }
 
   rpc CreateUserChannel(CreateUserChannelRequest) returns (NotificationChannelResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:write";
     option (google.api.http) = {
       post: "/v0/channels/user"
       body: "*"
@@ -61,12 +74,14 @@ service Notify {
   }
 
   rpc GetUserChannel(NotificationChannelsRequest) returns (NotificationChannelResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:read";
     option (google.api.http) = {
       get: "/v0/channels/user"
     };
   }
 
   rpc SubscribeWithUserChannel(SubscribeRequest) returns (SubscribeResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:write";
     option (google.api.http) = {
       post: "/v0/channels/user/subscribe"
       body: "*"
@@ -74,6 +89,7 @@ service Notify {
   }
 
   rpc UnsubscribeWithUserChannel(SubscribeRequest) returns (SubscribeResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:write";
     option (google.api.http) = {
       post: "/v0/channels/user/unsubscribe"
       body: "*"
@@ -81,12 +97,14 @@ service Notify {
   }
 
   rpc DeleteUserChannel(NotificationChannel) returns (NotificationChannelsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:write";
     option (google.api.http) = {
       delete: "/v0/channels/user"
     };
   }
 
   rpc CreateNotificationChannel(NotificationChannel) returns (NotificationChannelsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:write";
     option (google.api.http) = {
       post: "/v0/channels"
       body: "*"
@@ -94,18 +112,21 @@ service Notify {
   }
 
   rpc GetNotificationChannel(NotificationChannel) returns (NotificationChannelResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:read";
     option (google.api.http) = {
       get: "/v0/channels/{channelID}"
     };
   }
 
   rpc ListNotificationChannels(NotificationChannelsRequest) returns (NotificationChannelsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:read";
     option (google.api.http) = {
       get: "/v0/channels"
     };
   }
 
   rpc SearchNotificationChannels(NotificationChannelsRequest) returns (NotificationChannelsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:read";
     option (google.api.http) = {
       post: "/v0/channels:search"
       body: "*"
@@ -113,6 +134,7 @@ service Notify {
   }
 
   rpc UpdateNotificationChannel(NotificationChannel) returns (NotificationChannelsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:write";
     option (google.api.http) = {
       put: "/v0/channels/{channelID}"
       body: "*"
@@ -120,18 +142,21 @@ service Notify {
   }
 
   rpc DeleteNotificationChannel(NotificationChannel) returns (NotificationChannelsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:write";
     option (google.api.http) = {
       delete: "/v0/channels/{channelID}"
     };
   }
 
   rpc GetLastNotificationAndStatus(NotificationAndStatusRequest) returns (NotificationAndStatusResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:read";
     option (google.api.http) = {
       get: "/v0/channels/{channelVersion}/{channelID}/status"
     };
   }
 
   rpc GetNotificationPayload(NotificationPayloadRequest) returns (NotificationPayloadResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:read";
     option (google.api.http) = {
       post: "/v0/channels/{channelVersion}/{channelID}/payload"
       body: "*"
@@ -140,6 +165,7 @@ service Notify {
 
   // immediately but asynchronously send notification described in the enclosed NotificationPayloadRequest.
   rpc CreateNotificationForTesting(CreateNotificationForTestingRequest) returns (CreateNotificationForTestingResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:write";
     option (google.api.http) = {
       post: "/v0/channels/{channelVersion}/{channelID}/test"
       body: "*"
@@ -147,6 +173,7 @@ service Notify {
   }
 
   rpc CreateNotificationForTestingInsight(CreateNotificationForTestingRequest) returns (CreateNotificationForTestingResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:write";
     option (google.api.http) = {
       post: "/v0/channels/{channelVersion}/{channelID}/test/insight"
       body: "*"
@@ -154,6 +181,7 @@ service Notify {
   }
 
   rpc GetNotificationPayloadInsight(NotificationPayloadRequest) returns (NotificationPayloadResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:read";
     option (google.api.http) = {
       post: "/v0/channels/{channelVersion}/{channelID}/payload/insight"
       body: "*"
@@ -163,6 +191,7 @@ service Notify {
   // ApplyAlertingMapping offers a policy+threshold centric way to manage channels.
   // It replaces selectors in the target channels by simple policy+threshold matchers.
   rpc ApplyAlertingMapping(ApplyAlertingManagedChannelsMappingRequest) returns (NotificationChannelsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:write";
       option (google.api.http) = {
       put: "/v0/channels/alerting/mapping"
       body: "*"
@@ -170,12 +199,14 @@ service Notify {
   }
 
   rpc GetAccessControlConfig(GetAccessControlConfigRequest) returns (GetAccessControlConfigResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:read";
     option (google.api.http) = {
       get: "/v0/access"
     };
   }
 
   rpc SetAccessControlConfig(SetAccessControlConfigRequest) returns (SetAccessControlConfigResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:write";
     option (google.api.http) = {
       put: "/v0/access"
       body: "*"

@@ -2095,6 +2095,13 @@
         },
         "genericEvent": {
           "$ref": "#/definitions/v0GenericEvent"
+        },
+        "extraDetails": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "format": "byte"
+          }
         }
       }
     },
