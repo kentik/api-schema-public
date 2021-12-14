@@ -23,6 +23,12 @@ service Notify {
     option (google.api.http) = {
       post: "/notify/backend/v0/notifications:search"
       body: "*"
+      additional_bindings: [
+        {
+          post: "/v0/notifications:search"
+          body: "*"
+        }
+      ]
     };
   }
 
@@ -30,6 +36,11 @@ service Notify {
     option (kentik.core.v202012alpha1.method_scope) = "notify:read";
     option (google.api.http) = {
       get: "/notify/backend/v0/notifications/v/{channelVersion}/{channelID}"
+      additional_bindings: [
+        {
+          get: "/v0/notifications/v/{channelVersion}/{channelID}"
+        }
+      ]
     };
   }
 
@@ -47,6 +58,12 @@ service Notify {
     option (google.api.http) = {
       post: "/notify/backend/v0/notification/event"
       body: "*"
+      additional_bindings: [
+        {
+          post: "/v0/notification/event"
+          body: "*"
+        }
+      ]
     };
   }
 
@@ -55,6 +72,13 @@ service Notify {
     option (google.api.http) = {
       post: "/notify/backend/v0/notifications:search"
       body: "*"
+      additional_bindings: [
+        {
+          post: "/v0/notifications:search"
+          body: "*"
+        }
+      ]
+
     };
   }
 
@@ -63,6 +87,12 @@ service Notify {
     option (google.api.http) = {
       post: "/notify/backend/v0/channels"
       body: "*"
+      additional_bindings: [
+        {
+          post: "/v0/channels"
+          body: "*"
+        }
+      ]
     };
   }
 
@@ -70,6 +100,11 @@ service Notify {
     option (kentik.core.v202012alpha1.method_scope) = "notify:read";
     option (google.api.http) = {
       get: "/notify/backend/v0/channels"
+      additional_bindings: [
+        {
+          get: "/v0/channels"
+        }
+      ]
     };
   }
 
@@ -78,6 +113,12 @@ service Notify {
     option (google.api.http) = {
       post: "/notify/backend/v0/channels:search"
       body: "*"
+      additional_bindings: [
+        {
+          post: "/v0/channels:search"
+          body: "*"
+        }
+      ]
     };
   }
 
@@ -85,6 +126,11 @@ service Notify {
     option (kentik.core.v202012alpha1.method_scope) = "notify:read";
     option (google.api.http) = {
       get: "/notify/backend/v0/channels/{channelID}"
+      additional_bindings: [
+        {
+          get: "/v0/channels/{channelID}"
+        }
+      ]
     };
   }
 
@@ -93,6 +139,12 @@ service Notify {
     option (google.api.http) = {
       put: "/notify/backend/v0/channels/{channelID}"
       body: "*"
+      additional_bindings: [
+        {
+          put: "/v0/channels/{channelID}"
+          body: "*"
+        }
+      ]
     };
   }
 
@@ -100,6 +152,11 @@ service Notify {
     option (kentik.core.v202012alpha1.method_scope) = "notify:write";
     option (google.api.http) = {
       delete: "/notify/backend/v0/channels/{channelID}"
+      additional_bindings: [
+        {
+          delete: "/v0/channels/{channelID}"
+        }
+      ]
     };
   }
 
@@ -107,6 +164,11 @@ service Notify {
     option (kentik.core.v202012alpha1.method_scope) = "notify:read";
     option (google.api.http) = {
       get: "/notify/backend/v0/channels/supported"
+      additional_bindings: [
+        {
+          get: "/v0/channels/supported"
+        }
+      ]
     };
   }
 
@@ -115,6 +177,12 @@ service Notify {
     option (google.api.http) = {
       post: "/notify/backend/v0/channels/user"
       body: "*"
+      additional_bindings: [
+        {
+          post: "/v0/channels/user"
+          body: "*"
+        }
+      ]
     };
   }
 
@@ -122,6 +190,11 @@ service Notify {
     option (kentik.core.v202012alpha1.method_scope) = "notify:read";
     option (google.api.http) = {
       get: "/notify/backend/v0/channels/user"
+      additional_bindings: [
+        {
+          get: "/v0/channels/user"
+        }
+      ]
     };
   }
 
@@ -130,6 +203,12 @@ service Notify {
     option (google.api.http) = {
       post: "/notify/backend/v0/channels/user/subscribe"
       body: "*"
+      additional_bindings: [
+        {
+          post: "/v0/channels/user/subscribe"
+          body: "*"
+        }
+      ]
     };
   }
 
@@ -138,6 +217,12 @@ service Notify {
     option (google.api.http) = {
       post: "/notify/backend/v0/channels/user/unsubscribe"
       body: "*"
+      additional_bindings: [
+        {
+          post: "/v0/channels/user/unsubscribe"
+          body: "*"
+        }
+      ]
     };
   }
 
@@ -145,6 +230,11 @@ service Notify {
     option (kentik.core.v202012alpha1.method_scope) = "notify:write";
     option (google.api.http) = {
       delete: "/notify/backend/v0/channels/user"
+      additional_bindings: [
+        {
+          delete: "/v0/channels/user"
+        }
+      ]
     };
   }
 
@@ -152,6 +242,11 @@ service Notify {
     option (kentik.core.v202012alpha1.method_scope) = "notify:read";
     option (google.api.http) = {
       get: "/notify/backend/v0/channels/{channelVersion}/{channelID}/status"
+      additional_bindings: [
+        {
+          get: "/v0/channels/{channelVersion}/{channelID}/status"
+        }
+      ]
     };
   }
 
@@ -160,6 +255,12 @@ service Notify {
     option (google.api.http) = {
       post: "/notify/backend/v0/channels/{channelVersion}/{channelID}/payload"
       body: "*"
+      additional_bindings: [
+        {
+          post: "/v0/channels/{channelVersion}/{channelID}/payload"
+          body: "*"
+        }
+      ]
     };
   }
 
@@ -169,6 +270,12 @@ service Notify {
     option (google.api.http) = {
       post: "/notify/backend/v0/channels/{channelVersion}/{channelID}/test"
       body: "*"
+      additional_bindings: [
+        {
+          post: "/v0/channels/{channelVersion}/{channelID}/test"
+          body: "*"
+        }
+      ]
     };
   }
 
@@ -177,6 +284,12 @@ service Notify {
     option (google.api.http) = {
       post: "/notify/backend/v0/channels/{channelVersion}/{channelID}/test/insight"
       body: "*"
+      additional_bindings: [
+        {
+          post: "/v0/channels/{channelVersion}/{channelID}/test/insight"
+          body: "*"
+        }
+      ]
     };
   }
 
@@ -185,6 +298,12 @@ service Notify {
     option (google.api.http) = {
       post: "/notify/backend/v0/channels/{channelVersion}/{channelID}/payload/insight"
       body: "*"
+      additional_bindings: [
+        {
+          post: "/v0/channels/{channelVersion}/{channelID}/payload/insight"
+          body: "*"
+        }
+      ]
     };
   }
 
@@ -195,6 +314,12 @@ service Notify {
       option (google.api.http) = {
       put: "/notify/backend/v0/channels/alerting/mapping"
       body: "*"
+      additional_bindings: [
+          {
+            put: "/v0/channels/alerting/mapping"
+            body: "*"
+          }
+      ]
     };
   }
 
