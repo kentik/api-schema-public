@@ -4,12 +4,11 @@ package helloworld.v1;
 option go_package = "pkg/api/hello/v0/helloworld;v1helloworld";
 
 import "google/api/annotations.proto";
+import "kentik/core/v202012alpha1/annotations.proto";
 
 service GreeterService {
     rpc SayHello(SayHelloRequest) returns (SayHelloResponse) {
-        // BEGIN INTERNAL
-        
-        // END INTERNAL
+
         option (google.api.http) = {
             get: "/v0/hello/{msg}"
             additional_bindings {
