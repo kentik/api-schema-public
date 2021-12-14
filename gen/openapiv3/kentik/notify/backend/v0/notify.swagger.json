@@ -2497,6 +2497,13 @@
                     },
                     "genericEvent": {
                         "$ref": "#/components/schemas/v0GenericEvent"
+                    },
+                    "extraDetails": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string",
+                            "format": "byte"
+                        }
                     }
                 }
             },
