@@ -8,9 +8,6 @@ import "kentik/core/v202012alpha1/annotations.proto";
 
 service GreeterService {
     rpc SayHello(SayHelloRequest) returns (SayHelloResponse) {
-        // BEGIN INTERNAL
-        option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_export:write";
-        // END INTERNAL
 
         option (google.api.http) = {
             get: "/v0/hello/{msg}"
