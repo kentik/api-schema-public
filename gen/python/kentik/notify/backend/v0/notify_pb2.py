@@ -29,7 +29,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z\037kentik/notify/backend/v0;notify',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n%kentik/notify/backend/v0/notify.proto\x12\x14kentik.api.notify.v0\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x33kentik/notify/backend/v0/models-channel-event.proto\x1a+kentik/notify/backend/v0/models-event.proto\x1a\x32kentik/notify/backend/v0/models-notification.proto\x1a(kentik/notify/backend/v0/subscribe.proto\x1a+kentik/core/v202012alpha1/annotations.proto\"\x83\x02\n*ApplyAlertingManagedChannelsMappingRequest\x12i\n\x08mappings\x18\x01 \x03(\x0b\x32W.kentik.api.notify.v0.ApplyAlertingManagedChannelsMappingRequest.PolicyThresholdMapping\x1aj\n\x16PolicyThresholdMapping\x12\x13\n\x0b\x61lertPolicy\x18\x01 \x01(\t\x12\x16\n\x0e\x61lertThreshold\x18\x02 \x01(\t\x12\x12\n\nchannelIDs\x18\x03 \x03(\x03\x12\x0f\n\x07\x63ompany\x18\x04 \x01(\t\"\x7f\n\x14NotificationsRequest\x12<\n\x0e\x63hannelVersion\x18\x01 \x01(\x0e\x32$.kentik.api.notify.v0.ChannelVersion\x12\x11\n\tchannelID\x18\x02 \x01(\x03\x12\x16\n\x0enotificationID\x18\x03 \x01(\x03\"R\n\x15NotificationsResponse\x12\x39\n\rnotifications\x18\x01 \x03(\x0b\x32\".kentik.api.notify.v0.Notification\"\x9e\x01\n\x1bNotificationChannelsRequest\x12\x16\n\x0eshowV1Channels\x18\x01 \x01(\x08\x12?\n\x07managed\x18\x02 \x01(\x0e\x32*.kentik.api.notify.v0.ChannelManagedStatusB\x02\x18\x01\x12&\n\x1euserChannelNotFoundReturnEmpty\x18\x03 \x01(\x08\"[\n\x1cNotificationChannelsResponse\x12;\n\x08\x63hannels\x18\x01 \x03(\x0b\x32).kentik.api.notify.v0.NotificationChannel\"Y\n\x1bNotificationChannelResponse\x12:\n\x07\x63hannel\x18\x01 \x01(\x0b\x32).kentik.api.notify.v0.NotificationChannel\"\xe2\x02\n\x13NotificationChannel\x12<\n\x0e\x63hannelVersion\x18\x01 \x01(\x0e\x32$.kentik.api.notify.v0.ChannelVersion\x12\x11\n\tchannelID\x18\x02 \x01(\x03\x12\x13\n\x0b\x63hannelType\x18\x03 \x01(\t\x12\x0c\n\x04name\x18\x04 \x01(\t\x12\x33\n\x06status\x18\x05 \x01(\x0e\x32#.kentik.api.notify.v0.ChannelStatus\x12\x30\n\x0c\x63reationTime\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12,\n\x08\x65\x64itTime\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x33\n\x06\x63onfig\x18\x08 \x01(\x0b\x32#.kentik.api.notify.v0.ChannelConfig\x12\r\n\x05v1Raw\x18\t \x01(\t\"\x9d\x03\n\rChannelConfig\x12<\n\x0eselectorConfig\x18\x01 \x01(\x0b\x32$.kentik.api.notify.v0.SelectorConfig\x12<\n\x0e\x62\x61tchingConfig\x18\x02 \x01(\x0b\x32$.kentik.api.notify.v0.BatchingConfig\x12>\n\x0frenderingConfig\x18\x05 \x01(\x0b\x32%.kentik.api.notify.v0.RenderingConfig\x12:\n\rsendingConfig\x18\x03 \x01(\x0b\x32#.kentik.api.notify.v0.SendingConfig\x12\x38\n\x0csyslogConfig\x18\x04 \x01(\x0b\x32\".kentik.api.notify.v0.SyslogConfig\x12\x19\n\x11userChannelUserID\x18\x06 \x01(\x03\x12?\n\x07managed\x18\x07 \x01(\x0e\x32*.kentik.api.notify.v0.ChannelManagedStatusB\x02\x18\x01\"Q\n\x0eSelectorConfig\x12?\n\x0c\x63onjunctions\x18\x01 \x03(\x0b\x32).kentik.api.notify.v0.SelectorConjunction\"H\n\x13SelectorConjunction\x12\x31\n\tselectors\x18\x01 \x03(\x0b\x32\x1e.kentik.api.notify.v0.Selector\"0\n\x08Selector\x12\x0b\n\x03lhs\x18\x01 \x01(\t\x12\n\n\x02op\x18\x02 \x01(\t\x12\x0b\n\x03rhs\x18\x03 \x01(\t\"\x8e\x01\n\x0e\x42\x61tchingConfig\x12\x14\n\x0cmaxBatchSize\x18\x01 \x01(\x03\x12\x30\n\rbatchDuration\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x34\n\x10\x64\x61ilyTimesToSend\x18\x03 \x03(\x0b\x32\x1a.google.protobuf.Timestamp\"U\n\x0fRenderingConfig\x12\x16\n\x0e\x63ustomTemplate\x18\x01 \x01(\t\x12\x12\n\nuglifyJSON\x18\x02 \x01(\x08\x12\x16\n\x0einsightsDigest\x18\x03 \x01(\x08\"\xb3\x02\n\rSendingConfig\x12\x0b\n\x03url\x18\x01 \x01(\t\x12\x10\n\x08username\x18\x02 \x01(\t\x12\x11\n\tusernames\x18\x03 \x03(\t\x12\r\n\x05token\x18\x04 \x01(\t\x12\x12\n\nidentifier\x18\x05 \x01(\t\x12M\n\rcustomHeaders\x18\x08 \x03(\x0b\x32\x36.kentik.api.notify.v0.SendingConfig.CustomHeadersEntry\x12\x13\n\x0bmaxAttempts\x18\x06 \x01(\x03\x12\x33\n\x10\x63ooldownDuration\x18\x07 \x01(\x0b\x32\x19.google.protobuf.Duration\x1a\x34\n\x12\x43ustomHeadersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"w\n\x0cSyslogConfig\x12\x0c\n\x04host\x18\x01 \x01(\t\x12\x0c\n\x04port\x18\x02 \x01(\x03\x12\x0f\n\x07network\x18\x03 \x01(\t\x12\x16\n\x0esyslogHostname\x18\x04 \x01(\t\x12\x10\n\x08severity\x18\x05 \x01(\x03\x12\x10\n\x08\x66\x61\x63ility\x18\x06 \x01(\x03\"z\n\x16\x44\x65liveryResultsRequest\x12<\n\x0e\x63hannelVersion\x18\x01 \x01(\x0e\x32$.kentik.api.notify.v0.ChannelVersion\x12\x11\n\tchannelID\x18\x02 \x01(\x03\x12\x0f\n\x07jobUUID\x18\x03 \x01(\t\"P\n\x17\x44\x65liveryResultsResponse\x12\x35\n\x07results\x18\x01 \x03(\x0b\x32$.kentik.api.notify.v0.DeliveryResult\"\xf9\x02\n\x0e\x44\x65liveryResult\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x11\n\tcompanyID\x18\x02 \x01(\x03\x12<\n\x0e\x63hannelVersion\x18\x03 \x01(\x0e\x32$.kentik.api.notify.v0.ChannelVersion\x12\x11\n\tchannelID\x18\x04 \x01(\x03\x12(\n\x04time\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x0f\n\x07jobUUID\x18\x06 \x01(\t\x12\x12\n\nstatusCode\x18\x07 \x01(\x05\x12\x13\n\x0brequestBody\x18\x08 \x01(\t\x12\x14\n\x0cresponseBody\x18\t \x01(\t\x12\x30\n\x0crequestStart\x18\n \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12.\n\nrequestEnd\x18\x0b \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\r\n\x05\x65rror\x18\x0c \x01(\t\x12\x0c\n\x04sent\x18\r \x01(\x08\"o\n\x1cNotificationAndStatusRequest\x12<\n\x0e\x63hannelVersion\x18\x01 \x01(\x0e\x32$.kentik.api.notify.v0.ChannelVersion\x12\x11\n\tchannelID\x18\x02 \x01(\x03\"\xce\x01\n\x1dNotificationAndStatusResponse\x12\x38\n\x0cnotification\x18\x01 \x01(\x0b\x32\".kentik.api.notify.v0.Notification\x12=\n\x0f\x64\x65liveryResults\x18\x02 \x03(\x0b\x32$.kentik.api.notify.v0.DeliveryResult\x12\x34\n\x06status\x18\x03 \x01(\x0e\x32$.kentik.api.notify.v0.DeliveryStatus\"\xf7\x01\n\x1aNotificationPayloadRequest\x12<\n\x0e\x63hannelVersion\x18\x01 \x01(\x0e\x32$.kentik.api.notify.v0.ChannelVersion\x12\x11\n\tchannelID\x18\x02 \x01(\x03\x12\x41\n\x07options\x18\x03 \x01(\x0b\x32\x30.kentik.api.notify.v0.NotificationPayloadOptions\x12\x45\n\x0boptionsList\x18\x04 \x03(\x0b\x32\x30.kentik.api.notify.v0.NotificationPayloadOptions\"\xd7\x01\n\x1aNotificationPayloadOptions\x12\x11\n\tmodelType\x18\x01 \x01(\t\x12\x11\n\tlastModel\x18\x02 \x01(\x08\x12\x11\n\ttestModel\x18\x03 \x01(\x08\x12\x13\n\x0btestModelID\x18\x04 \x01(\t\x12\x0f\n\x07\x61larmID\x18\x05 \x01(\x03\x12\x16\n\x0e\x61larmHistoryID\x18\x06 \x01(\x03\x12\x14\n\x0cmitigationID\x18\x07 \x01(\x03\x12\x19\n\x11mitigationEventID\x18\x08 \x01(\x03\x12\x11\n\tinsightID\x18\t \x01(\t\".\n\x1bNotificationPayloadResponse\x12\x0f\n\x07payload\x18\x01 \x01(\t\"\x87\x02\n#CreateNotificationForTestingRequest\x12<\n\x0e\x63hannelVersion\x18\x01 \x01(\x0e\x32$.kentik.api.notify.v0.ChannelVersion\x12\x11\n\tchannelID\x18\x02 \x01(\x03\x12H\n\x0epayloadOptions\x18\x03 \x01(\x0b\x32\x30.kentik.api.notify.v0.NotificationPayloadOptions\x12\x45\n\x0boptionsList\x18\x04 \x03(\x0b\x32\x30.kentik.api.notify.v0.NotificationPayloadOptions\"&\n$CreateNotificationForTestingResponse\"\x1a\n\x18SupportedChannelsRequest\"^\n\x19SupportedChannelsResponse\x12\x41\n\x11supportedChannels\x18\x01 \x03(\x0b\x32&.kentik.api.notify.v0.SupportedChannel\"\x7f\n\x10SupportedChannel\x12\x13\n\x0b\x63hannelType\x18\x01 \x01(\t\x12\x1a\n\x12\x63hannelDisplayName\x18\x03 \x01(\t\x12:\n\x0erequiredFields\x18\x02 \x03(\x0b\x32\".kentik.api.notify.v0.ChannelField\"1\n\x0c\x43hannelField\x12\x0c\n\x04path\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\"\x1f\n\x1dGetAccessControlConfigRequest\"h\n\x1eGetAccessControlConfigResponse\x12\x46\n\x13\x61\x63\x63\x65ssControlConfig\x18\x01 \x01(\x0b\x32).kentik.api.notify.v0.AccessControlConfig\"g\n\x1dSetAccessControlConfigRequest\x12\x46\n\x13\x61\x63\x63\x65ssControlConfig\x18\x01 \x01(\x0b\x32).kentik.api.notify.v0.AccessControlConfig\"h\n\x1eSetAccessControlConfigResponse\x12\x46\n\x13\x61\x63\x63\x65ssControlConfig\x18\x01 \x01(\x0b\x32).kentik.api.notify.v0.AccessControlConfig\"J\n\x13\x41\x63\x63\x65ssControlConfig\x12\x33\n\x05\x61llow\x18\x01 \x01(\x0b\x32$.kentik.api.notify.v0.SelectorConfig*A\n\rChannelStatus\x12\x15\n\x11\x63hannelStatusNone\x10\x00\x12\x0b\n\x07\x65nabled\x10\x01\x12\x0c\n\x08\x64isabled\x10\x02*;\n\x14\x43hannelManagedStatus\x12\x0e\n\nnotManaged\x10\x00\x12\x13\n\x0f\x61lertingManaged\x10\x01*[\n\x0e\x44\x65liveryStatus\x12\x13\n\x0f\x64\x65liveryUnknown\x10\x00\x12\x0e\n\ndeliveryOK\x10\x01\x12\x13\n\x0f\x64\x65liveryPending\x10\x02\x12\x0f\n\x0b\x64\x65liveryBad\x10\x03\x32\x80$\n\x06Notify\x12\xa2\x01\n\x13SearchNotifications\x12*.kentik.api.notify.v0.NotificationsRequest\x1a+.kentik.api.notify.v0.NotificationsResponse\"2\xf2\xd7\x02\x0bnotify:read\x82\xd3\xe4\x93\x02\x1d\"\x18/v0/notifications:search:\x01*\x12\xb5\x01\n\x11ListNotifications\x12*.kentik.api.notify.v0.NotificationsRequest\x1a+.kentik.api.notify.v0.NotificationsResponse\"G\xf2\xd7\x02\x0bnotify:read\x82\xd3\xe4\x93\x02\x32\x12\x30/v0/notifications/v/{channelVersion}/{channelID}\x12\xc0\x01\n\x13StreamNotifications\x12*.kentik.api.notify.v0.NotificationsRequest\x1a+.kentik.api.notify.v0.NotificationsResponse\"N\xf2\xd7\x02\x0bnotify:read\x82\xd3\xe4\x93\x02\x39\x12\x37/v0/notifications/v/{channelVersion}/{channelID}/stream0\x01\x12\xa6\x01\n\x17\x43reateNotificationEvent\x12\'.kentik.api.notify.v0.NotificationEvent\x1a/.kentik.api.notify.v0.NotificationEventResponse\"1\xf2\xd7\x02\x0cnotify:write\x82\xd3\xe4\x93\x02\x1b\"\x16/v0/notification/event:\x01*\x12\xa8\x01\n\x15SearchDeliveryResults\x12,.kentik.api.notify.v0.DeliveryResultsRequest\x1a-.kentik.api.notify.v0.DeliveryResultsResponse\"2\xf2\xd7\x02\x0bnotify:read\x82\xd3\xe4\x93\x02\x1d\"\x18/v0/notifications:search:\x01*\x12\xa3\x01\n\x19\x43reateNotificationChannel\x12).kentik.api.notify.v0.NotificationChannel\x1a\x32.kentik.api.notify.v0.NotificationChannelsResponse\"\'\xf2\xd7\x02\x0cnotify:write\x82\xd3\xe4\x93\x02\x11\"\x0c/v0/channels:\x01*\x12\xa6\x01\n\x18ListNotificationChannels\x12\x31.kentik.api.notify.v0.NotificationChannelsRequest\x1a\x32.kentik.api.notify.v0.NotificationChannelsResponse\"#\xf2\xd7\x02\x0bnotify:read\x82\xd3\xe4\x93\x02\x0e\x12\x0c/v0/channels\x12\xb2\x01\n\x1aSearchNotificationChannels\x12\x31.kentik.api.notify.v0.NotificationChannelsRequest\x1a\x32.kentik.api.notify.v0.NotificationChannelsResponse\"-\xf2\xd7\x02\x0bnotify:read\x82\xd3\xe4\x93\x02\x18\"\x13/v0/channels:search:\x01*\x12\xa7\x01\n\x16GetNotificationChannel\x12).kentik.api.notify.v0.NotificationChannel\x1a\x31.kentik.api.notify.v0.NotificationChannelResponse\"/\xf2\xd7\x02\x0bnotify:read\x82\xd3\xe4\x93\x02\x1a\x12\x18/v0/channels/{channelID}\x12\xaf\x01\n\x19UpdateNotificationChannel\x12).kentik.api.notify.v0.NotificationChannel\x1a\x32.kentik.api.notify.v0.NotificationChannelsResponse\"3\xf2\xd7\x02\x0cnotify:write\x82\xd3\xe4\x93\x02\x1d\x1a\x18/v0/channels/{channelID}:\x01*\x12\xac\x01\n\x19\x44\x65leteNotificationChannel\x12).kentik.api.notify.v0.NotificationChannel\x1a\x32.kentik.api.notify.v0.NotificationChannelsResponse\"0\xf2\xd7\x02\x0cnotify:write\x82\xd3\xe4\x93\x02\x1a*\x18/v0/channels/{channelID}\x12\xa6\x01\n\x14GetSupportedChannels\x12..kentik.api.notify.v0.SupportedChannelsRequest\x1a/.kentik.api.notify.v0.SupportedChannelsResponse\"-\xf2\xd7\x02\x0bnotify:read\x82\xd3\xe4\x93\x02\x18\x12\x16/v0/channels/supported\x12\xa4\x01\n\x11\x43reateUserChannel\x12..kentik.api.notify.v0.CreateUserChannelRequest\x1a\x31.kentik.api.notify.v0.NotificationChannelResponse\",\xf2\xd7\x02\x0cnotify:write\x82\xd3\xe4\x93\x02\x16\"\x11/v0/channels/user:\x01*\x12\xa0\x01\n\x0eGetUserChannel\x12\x31.kentik.api.notify.v0.NotificationChannelsRequest\x1a\x31.kentik.api.notify.v0.NotificationChannelResponse\"(\xf2\xd7\x02\x0bnotify:read\x82\xd3\xe4\x93\x02\x13\x12\x11/v0/channels/user\x12\xa3\x01\n\x18SubscribeWithUserChannel\x12&.kentik.api.notify.v0.SubscribeRequest\x1a\'.kentik.api.notify.v0.SubscribeResponse\"6\xf2\xd7\x02\x0cnotify:write\x82\xd3\xe4\x93\x02 \"\x1b/v0/channels/user/subscribe:\x01*\x12\xa7\x01\n\x1aUnsubscribeWithUserChannel\x12&.kentik.api.notify.v0.SubscribeRequest\x1a\'.kentik.api.notify.v0.SubscribeResponse\"8\xf2\xd7\x02\x0cnotify:write\x82\xd3\xe4\x93\x02\"\"\x1d/v0/channels/user/unsubscribe:\x01*\x12\x9d\x01\n\x11\x44\x65leteUserChannel\x12).kentik.api.notify.v0.NotificationChannel\x1a\x32.kentik.api.notify.v0.NotificationChannelsResponse\")\xf2\xd7\x02\x0cnotify:write\x82\xd3\xe4\x93\x02\x13*\x11/v0/channels/user\x12\xd0\x01\n\x1cGetLastNotificationAndStatus\x12\x32.kentik.api.notify.v0.NotificationAndStatusRequest\x1a\x33.kentik.api.notify.v0.NotificationAndStatusResponse\"G\xf2\xd7\x02\x0bnotify:read\x82\xd3\xe4\x93\x02\x32\x12\x30/v0/channels/{channelVersion}/{channelID}/status\x12\xca\x01\n\x16GetNotificationPayload\x12\x30.kentik.api.notify.v0.NotificationPayloadRequest\x1a\x31.kentik.api.notify.v0.NotificationPayloadResponse\"K\xf2\xd7\x02\x0bnotify:read\x82\xd3\xe4\x93\x02\x36\"1/v0/channels/{channelVersion}/{channelID}/payload:\x01*\x12\xe0\x01\n\x1c\x43reateNotificationForTesting\x12\x39.kentik.api.notify.v0.CreateNotificationForTestingRequest\x1a:.kentik.api.notify.v0.CreateNotificationForTestingResponse\"I\xf2\xd7\x02\x0cnotify:write\x82\xd3\xe4\x93\x02\x33\"./v0/channels/{channelVersion}/{channelID}/test:\x01*\x12\xef\x01\n#CreateNotificationForTestingInsight\x12\x39.kentik.api.notify.v0.CreateNotificationForTestingRequest\x1a:.kentik.api.notify.v0.CreateNotificationForTestingResponse\"Q\xf2\xd7\x02\x0cnotify:write\x82\xd3\xe4\x93\x02;\"6/v0/channels/{channelVersion}/{channelID}/test/insight:\x01*\x12\xd9\x01\n\x1dGetNotificationPayloadInsight\x12\x30.kentik.api.notify.v0.NotificationPayloadRequest\x1a\x31.kentik.api.notify.v0.NotificationPayloadResponse\"S\xf2\xd7\x02\x0bnotify:read\x82\xd3\xe4\x93\x02>\"9/v0/channels/{channelVersion}/{channelID}/payload/insight:\x01*\x12\xc6\x01\n\x14\x41pplyAlertingMapping\x12@.kentik.api.notify.v0.ApplyAlertingManagedChannelsMappingRequest\x1a\x32.kentik.api.notify.v0.NotificationChannelsResponse\"8\xf2\xd7\x02\x0cnotify:write\x82\xd3\xe4\x93\x02\"\x1a\x1d/v0/channels/alerting/mapping:\x01*\x12\xa6\x01\n\x16GetAccessControlConfig\x12\x33.kentik.api.notify.v0.GetAccessControlConfigRequest\x1a\x34.kentik.api.notify.v0.GetAccessControlConfigResponse\"!\xf2\xd7\x02\x0bnotify:read\x82\xd3\xe4\x93\x02\x0c\x12\n/v0/access\x12\xaa\x01\n\x16SetAccessControlConfig\x12\x33.kentik.api.notify.v0.SetAccessControlConfigRequest\x1a\x34.kentik.api.notify.v0.SetAccessControlConfigResponse\"%\xf2\xd7\x02\x0cnotify:write\x82\xd3\xe4\x93\x02\x0f\x1a\n/v0/access:\x01*\x1a \xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\x06notifyB!Z\x1fkentik/notify/backend/v0;notifyb\x06proto3'
+  serialized_pb=b'\n%kentik/notify/backend/v0/notify.proto\x12\x14kentik.api.notify.v0\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x33kentik/notify/backend/v0/models-channel-event.proto\x1a+kentik/notify/backend/v0/models-event.proto\x1a\x32kentik/notify/backend/v0/models-notification.proto\x1a(kentik/notify/backend/v0/subscribe.proto\x1a+kentik/core/v202012alpha1/annotations.proto\"\x83\x02\n*ApplyAlertingManagedChannelsMappingRequest\x12i\n\x08mappings\x18\x01 \x03(\x0b\x32W.kentik.api.notify.v0.ApplyAlertingManagedChannelsMappingRequest.PolicyThresholdMapping\x1aj\n\x16PolicyThresholdMapping\x12\x13\n\x0b\x61lertPolicy\x18\x01 \x01(\t\x12\x16\n\x0e\x61lertThreshold\x18\x02 \x01(\t\x12\x12\n\nchannelIDs\x18\x03 \x03(\x03\x12\x0f\n\x07\x63ompany\x18\x04 \x01(\t\"\x7f\n\x14NotificationsRequest\x12<\n\x0e\x63hannelVersion\x18\x01 \x01(\x0e\x32$.kentik.api.notify.v0.ChannelVersion\x12\x11\n\tchannelID\x18\x02 \x01(\x03\x12\x16\n\x0enotificationID\x18\x03 \x01(\x03\"R\n\x15NotificationsResponse\x12\x39\n\rnotifications\x18\x01 \x03(\x0b\x32\".kentik.api.notify.v0.Notification\"\x9e\x01\n\x1bNotificationChannelsRequest\x12\x16\n\x0eshowV1Channels\x18\x01 \x01(\x08\x12?\n\x07managed\x18\x02 \x01(\x0e\x32*.kentik.api.notify.v0.ChannelManagedStatusB\x02\x18\x01\x12&\n\x1euserChannelNotFoundReturnEmpty\x18\x03 \x01(\x08\"[\n\x1cNotificationChannelsResponse\x12;\n\x08\x63hannels\x18\x01 \x03(\x0b\x32).kentik.api.notify.v0.NotificationChannel\"Y\n\x1bNotificationChannelResponse\x12:\n\x07\x63hannel\x18\x01 \x01(\x0b\x32).kentik.api.notify.v0.NotificationChannel\"\xe2\x02\n\x13NotificationChannel\x12<\n\x0e\x63hannelVersion\x18\x01 \x01(\x0e\x32$.kentik.api.notify.v0.ChannelVersion\x12\x11\n\tchannelID\x18\x02 \x01(\x03\x12\x13\n\x0b\x63hannelType\x18\x03 \x01(\t\x12\x0c\n\x04name\x18\x04 \x01(\t\x12\x33\n\x06status\x18\x05 \x01(\x0e\x32#.kentik.api.notify.v0.ChannelStatus\x12\x30\n\x0c\x63reationTime\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12,\n\x08\x65\x64itTime\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x33\n\x06\x63onfig\x18\x08 \x01(\x0b\x32#.kentik.api.notify.v0.ChannelConfig\x12\r\n\x05v1Raw\x18\t \x01(\t\"\x9d\x03\n\rChannelConfig\x12<\n\x0eselectorConfig\x18\x01 \x01(\x0b\x32$.kentik.api.notify.v0.SelectorConfig\x12<\n\x0e\x62\x61tchingConfig\x18\x02 \x01(\x0b\x32$.kentik.api.notify.v0.BatchingConfig\x12>\n\x0frenderingConfig\x18\x05 \x01(\x0b\x32%.kentik.api.notify.v0.RenderingConfig\x12:\n\rsendingConfig\x18\x03 \x01(\x0b\x32#.kentik.api.notify.v0.SendingConfig\x12\x38\n\x0csyslogConfig\x18\x04 \x01(\x0b\x32\".kentik.api.notify.v0.SyslogConfig\x12\x19\n\x11userChannelUserID\x18\x06 \x01(\x03\x12?\n\x07managed\x18\x07 \x01(\x0e\x32*.kentik.api.notify.v0.ChannelManagedStatusB\x02\x18\x01\"Q\n\x0eSelectorConfig\x12?\n\x0c\x63onjunctions\x18\x01 \x03(\x0b\x32).kentik.api.notify.v0.SelectorConjunction\"H\n\x13SelectorConjunction\x12\x31\n\tselectors\x18\x01 \x03(\x0b\x32\x1e.kentik.api.notify.v0.Selector\"0\n\x08Selector\x12\x0b\n\x03lhs\x18\x01 \x01(\t\x12\n\n\x02op\x18\x02 \x01(\t\x12\x0b\n\x03rhs\x18\x03 \x01(\t\"\x8e\x01\n\x0e\x42\x61tchingConfig\x12\x14\n\x0cmaxBatchSize\x18\x01 \x01(\x03\x12\x30\n\rbatchDuration\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x34\n\x10\x64\x61ilyTimesToSend\x18\x03 \x03(\x0b\x32\x1a.google.protobuf.Timestamp\"U\n\x0fRenderingConfig\x12\x16\n\x0e\x63ustomTemplate\x18\x01 \x01(\t\x12\x12\n\nuglifyJSON\x18\x02 \x01(\x08\x12\x16\n\x0einsightsDigest\x18\x03 \x01(\x08\"\xb3\x02\n\rSendingConfig\x12\x0b\n\x03url\x18\x01 \x01(\t\x12\x10\n\x08username\x18\x02 \x01(\t\x12\x11\n\tusernames\x18\x03 \x03(\t\x12\r\n\x05token\x18\x04 \x01(\t\x12\x12\n\nidentifier\x18\x05 \x01(\t\x12M\n\rcustomHeaders\x18\x08 \x03(\x0b\x32\x36.kentik.api.notify.v0.SendingConfig.CustomHeadersEntry\x12\x13\n\x0bmaxAttempts\x18\x06 \x01(\x03\x12\x33\n\x10\x63ooldownDuration\x18\x07 \x01(\x0b\x32\x19.google.protobuf.Duration\x1a\x34\n\x12\x43ustomHeadersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"w\n\x0cSyslogConfig\x12\x0c\n\x04host\x18\x01 \x01(\t\x12\x0c\n\x04port\x18\x02 \x01(\x03\x12\x0f\n\x07network\x18\x03 \x01(\t\x12\x16\n\x0esyslogHostname\x18\x04 \x01(\t\x12\x10\n\x08severity\x18\x05 \x01(\x03\x12\x10\n\x08\x66\x61\x63ility\x18\x06 \x01(\x03\"z\n\x16\x44\x65liveryResultsRequest\x12<\n\x0e\x63hannelVersion\x18\x01 \x01(\x0e\x32$.kentik.api.notify.v0.ChannelVersion\x12\x11\n\tchannelID\x18\x02 \x01(\x03\x12\x0f\n\x07jobUUID\x18\x03 \x01(\t\"P\n\x17\x44\x65liveryResultsResponse\x12\x35\n\x07results\x18\x01 \x03(\x0b\x32$.kentik.api.notify.v0.DeliveryResult\"\xf9\x02\n\x0e\x44\x65liveryResult\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x11\n\tcompanyID\x18\x02 \x01(\x03\x12<\n\x0e\x63hannelVersion\x18\x03 \x01(\x0e\x32$.kentik.api.notify.v0.ChannelVersion\x12\x11\n\tchannelID\x18\x04 \x01(\x03\x12(\n\x04time\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x0f\n\x07jobUUID\x18\x06 \x01(\t\x12\x12\n\nstatusCode\x18\x07 \x01(\x05\x12\x13\n\x0brequestBody\x18\x08 \x01(\t\x12\x14\n\x0cresponseBody\x18\t \x01(\t\x12\x30\n\x0crequestStart\x18\n \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12.\n\nrequestEnd\x18\x0b \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\r\n\x05\x65rror\x18\x0c \x01(\t\x12\x0c\n\x04sent\x18\r \x01(\x08\"o\n\x1cNotificationAndStatusRequest\x12<\n\x0e\x63hannelVersion\x18\x01 \x01(\x0e\x32$.kentik.api.notify.v0.ChannelVersion\x12\x11\n\tchannelID\x18\x02 \x01(\x03\"\xce\x01\n\x1dNotificationAndStatusResponse\x12\x38\n\x0cnotification\x18\x01 \x01(\x0b\x32\".kentik.api.notify.v0.Notification\x12=\n\x0f\x64\x65liveryResults\x18\x02 \x03(\x0b\x32$.kentik.api.notify.v0.DeliveryResult\x12\x34\n\x06status\x18\x03 \x01(\x0e\x32$.kentik.api.notify.v0.DeliveryStatus\"\xf7\x01\n\x1aNotificationPayloadRequest\x12<\n\x0e\x63hannelVersion\x18\x01 \x01(\x0e\x32$.kentik.api.notify.v0.ChannelVersion\x12\x11\n\tchannelID\x18\x02 \x01(\x03\x12\x41\n\x07options\x18\x03 \x01(\x0b\x32\x30.kentik.api.notify.v0.NotificationPayloadOptions\x12\x45\n\x0boptionsList\x18\x04 \x03(\x0b\x32\x30.kentik.api.notify.v0.NotificationPayloadOptions\"\xd7\x01\n\x1aNotificationPayloadOptions\x12\x11\n\tmodelType\x18\x01 \x01(\t\x12\x11\n\tlastModel\x18\x02 \x01(\x08\x12\x11\n\ttestModel\x18\x03 \x01(\x08\x12\x13\n\x0btestModelID\x18\x04 \x01(\t\x12\x0f\n\x07\x61larmID\x18\x05 \x01(\x03\x12\x16\n\x0e\x61larmHistoryID\x18\x06 \x01(\x03\x12\x14\n\x0cmitigationID\x18\x07 \x01(\x03\x12\x19\n\x11mitigationEventID\x18\x08 \x01(\x03\x12\x11\n\tinsightID\x18\t \x01(\t\".\n\x1bNotificationPayloadResponse\x12\x0f\n\x07payload\x18\x01 \x01(\t\"\x87\x02\n#CreateNotificationForTestingRequest\x12<\n\x0e\x63hannelVersion\x18\x01 \x01(\x0e\x32$.kentik.api.notify.v0.ChannelVersion\x12\x11\n\tchannelID\x18\x02 \x01(\x03\x12H\n\x0epayloadOptions\x18\x03 \x01(\x0b\x32\x30.kentik.api.notify.v0.NotificationPayloadOptions\x12\x45\n\x0boptionsList\x18\x04 \x03(\x0b\x32\x30.kentik.api.notify.v0.NotificationPayloadOptions\"&\n$CreateNotificationForTestingResponse\"\x1a\n\x18SupportedChannelsRequest\"^\n\x19SupportedChannelsResponse\x12\x41\n\x11supportedChannels\x18\x01 \x03(\x0b\x32&.kentik.api.notify.v0.SupportedChannel\"\x7f\n\x10SupportedChannel\x12\x13\n\x0b\x63hannelType\x18\x01 \x01(\t\x12\x1a\n\x12\x63hannelDisplayName\x18\x03 \x01(\t\x12:\n\x0erequiredFields\x18\x02 \x03(\x0b\x32\".kentik.api.notify.v0.ChannelField\"1\n\x0c\x43hannelField\x12\x0c\n\x04path\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\"\x1f\n\x1dGetAccessControlConfigRequest\"h\n\x1eGetAccessControlConfigResponse\x12\x46\n\x13\x61\x63\x63\x65ssControlConfig\x18\x01 \x01(\x0b\x32).kentik.api.notify.v0.AccessControlConfig\"g\n\x1dSetAccessControlConfigRequest\x12\x46\n\x13\x61\x63\x63\x65ssControlConfig\x18\x01 \x01(\x0b\x32).kentik.api.notify.v0.AccessControlConfig\"h\n\x1eSetAccessControlConfigResponse\x12\x46\n\x13\x61\x63\x63\x65ssControlConfig\x18\x01 \x01(\x0b\x32).kentik.api.notify.v0.AccessControlConfig\"J\n\x13\x41\x63\x63\x65ssControlConfig\x12\x33\n\x05\x61llow\x18\x01 \x01(\x0b\x32$.kentik.api.notify.v0.SelectorConfig*A\n\rChannelStatus\x12\x15\n\x11\x63hannelStatusNone\x10\x00\x12\x0b\n\x07\x65nabled\x10\x01\x12\x0c\n\x08\x64isabled\x10\x02*;\n\x14\x43hannelManagedStatus\x12\x0e\n\nnotManaged\x10\x00\x12\x13\n\x0f\x61lertingManaged\x10\x01*[\n\x0e\x44\x65liveryStatus\x12\x13\n\x0f\x64\x65liveryUnknown\x10\x00\x12\x0e\n\ndeliveryOK\x10\x01\x12\x13\n\x0f\x64\x65liveryPending\x10\x02\x12\x0f\n\x0b\x64\x65liveryBad\x10\x03\x32\xf7&\n\x06Notify\x12\xb1\x01\n\x13SearchNotifications\x12*.kentik.api.notify.v0.NotificationsRequest\x1a+.kentik.api.notify.v0.NotificationsResponse\"A\xf2\xd7\x02\x0bnotify:read\x82\xd3\xe4\x93\x02,\"\'/notify/backend/v0/notifications:search:\x01*\x12\xc4\x01\n\x11ListNotifications\x12*.kentik.api.notify.v0.NotificationsRequest\x1a+.kentik.api.notify.v0.NotificationsResponse\"V\xf2\xd7\x02\x0bnotify:read\x82\xd3\xe4\x93\x02\x41\x12?/notify/backend/v0/notifications/v/{channelVersion}/{channelID}\x12\xcf\x01\n\x13StreamNotifications\x12*.kentik.api.notify.v0.NotificationsRequest\x1a+.kentik.api.notify.v0.NotificationsResponse\"]\xf2\xd7\x02\x0bnotify:read\x82\xd3\xe4\x93\x02H\x12\x46/notify/backend/v0/notifications/v/{channelVersion}/{channelID}/stream0\x01\x12\xb5\x01\n\x17\x43reateNotificationEvent\x12\'.kentik.api.notify.v0.NotificationEvent\x1a/.kentik.api.notify.v0.NotificationEventResponse\"@\xf2\xd7\x02\x0cnotify:write\x82\xd3\xe4\x93\x02*\"%/notify/backend/v0/notification/event:\x01*\x12\xb7\x01\n\x15SearchDeliveryResults\x12,.kentik.api.notify.v0.DeliveryResultsRequest\x1a-.kentik.api.notify.v0.DeliveryResultsResponse\"A\xf2\xd7\x02\x0bnotify:read\x82\xd3\xe4\x93\x02,\"\'/notify/backend/v0/notifications:search:\x01*\x12\xb2\x01\n\x19\x43reateNotificationChannel\x12).kentik.api.notify.v0.NotificationChannel\x1a\x32.kentik.api.notify.v0.NotificationChannelsResponse\"6\xf2\xd7\x02\x0cnotify:write\x82\xd3\xe4\x93\x02 \"\x1b/notify/backend/v0/channels:\x01*\x12\xb5\x01\n\x18ListNotificationChannels\x12\x31.kentik.api.notify.v0.NotificationChannelsRequest\x1a\x32.kentik.api.notify.v0.NotificationChannelsResponse\"2\xf2\xd7\x02\x0bnotify:read\x82\xd3\xe4\x93\x02\x1d\x12\x1b/notify/backend/v0/channels\x12\xc1\x01\n\x1aSearchNotificationChannels\x12\x31.kentik.api.notify.v0.NotificationChannelsRequest\x1a\x32.kentik.api.notify.v0.NotificationChannelsResponse\"<\xf2\xd7\x02\x0bnotify:read\x82\xd3\xe4\x93\x02\'\"\"/notify/backend/v0/channels:search:\x01*\x12\xb6\x01\n\x16GetNotificationChannel\x12).kentik.api.notify.v0.NotificationChannel\x1a\x31.kentik.api.notify.v0.NotificationChannelResponse\">\xf2\xd7\x02\x0bnotify:read\x82\xd3\xe4\x93\x02)\x12\'/notify/backend/v0/channels/{channelID}\x12\xbe\x01\n\x19UpdateNotificationChannel\x12).kentik.api.notify.v0.NotificationChannel\x1a\x32.kentik.api.notify.v0.NotificationChannelsResponse\"B\xf2\xd7\x02\x0cnotify:write\x82\xd3\xe4\x93\x02,\x1a\'/notify/backend/v0/channels/{channelID}:\x01*\x12\xbb\x01\n\x19\x44\x65leteNotificationChannel\x12).kentik.api.notify.v0.NotificationChannel\x1a\x32.kentik.api.notify.v0.NotificationChannelsResponse\"?\xf2\xd7\x02\x0cnotify:write\x82\xd3\xe4\x93\x02)*\'/notify/backend/v0/channels/{channelID}\x12\xb5\x01\n\x14GetSupportedChannels\x12..kentik.api.notify.v0.SupportedChannelsRequest\x1a/.kentik.api.notify.v0.SupportedChannelsResponse\"<\xf2\xd7\x02\x0bnotify:read\x82\xd3\xe4\x93\x02\'\x12%/notify/backend/v0/channels/supported\x12\xb3\x01\n\x11\x43reateUserChannel\x12..kentik.api.notify.v0.CreateUserChannelRequest\x1a\x31.kentik.api.notify.v0.NotificationChannelResponse\";\xf2\xd7\x02\x0cnotify:write\x82\xd3\xe4\x93\x02%\" /notify/backend/v0/channels/user:\x01*\x12\xaf\x01\n\x0eGetUserChannel\x12\x31.kentik.api.notify.v0.NotificationChannelsRequest\x1a\x31.kentik.api.notify.v0.NotificationChannelResponse\"7\xf2\xd7\x02\x0bnotify:read\x82\xd3\xe4\x93\x02\"\x12 /notify/backend/v0/channels/user\x12\xb2\x01\n\x18SubscribeWithUserChannel\x12&.kentik.api.notify.v0.SubscribeRequest\x1a\'.kentik.api.notify.v0.SubscribeResponse\"E\xf2\xd7\x02\x0cnotify:write\x82\xd3\xe4\x93\x02/\"*/notify/backend/v0/channels/user/subscribe:\x01*\x12\xb6\x01\n\x1aUnsubscribeWithUserChannel\x12&.kentik.api.notify.v0.SubscribeRequest\x1a\'.kentik.api.notify.v0.SubscribeResponse\"G\xf2\xd7\x02\x0cnotify:write\x82\xd3\xe4\x93\x02\x31\",/notify/backend/v0/channels/user/unsubscribe:\x01*\x12\xac\x01\n\x11\x44\x65leteUserChannel\x12).kentik.api.notify.v0.NotificationChannel\x1a\x32.kentik.api.notify.v0.NotificationChannelsResponse\"8\xf2\xd7\x02\x0cnotify:write\x82\xd3\xe4\x93\x02\"* /notify/backend/v0/channels/user\x12\xdf\x01\n\x1cGetLastNotificationAndStatus\x12\x32.kentik.api.notify.v0.NotificationAndStatusRequest\x1a\x33.kentik.api.notify.v0.NotificationAndStatusResponse\"V\xf2\xd7\x02\x0bnotify:read\x82\xd3\xe4\x93\x02\x41\x12?/notify/backend/v0/channels/{channelVersion}/{channelID}/status\x12\xd9\x01\n\x16GetNotificationPayload\x12\x30.kentik.api.notify.v0.NotificationPayloadRequest\x1a\x31.kentik.api.notify.v0.NotificationPayloadResponse\"Z\xf2\xd7\x02\x0bnotify:read\x82\xd3\xe4\x93\x02\x45\"@/notify/backend/v0/channels/{channelVersion}/{channelID}/payload:\x01*\x12\xef\x01\n\x1c\x43reateNotificationForTesting\x12\x39.kentik.api.notify.v0.CreateNotificationForTestingRequest\x1a:.kentik.api.notify.v0.CreateNotificationForTestingResponse\"X\xf2\xd7\x02\x0cnotify:write\x82\xd3\xe4\x93\x02\x42\"=/notify/backend/v0/channels/{channelVersion}/{channelID}/test:\x01*\x12\xfe\x01\n#CreateNotificationForTestingInsight\x12\x39.kentik.api.notify.v0.CreateNotificationForTestingRequest\x1a:.kentik.api.notify.v0.CreateNotificationForTestingResponse\"`\xf2\xd7\x02\x0cnotify:write\x82\xd3\xe4\x93\x02J\"E/notify/backend/v0/channels/{channelVersion}/{channelID}/test/insight:\x01*\x12\xe8\x01\n\x1dGetNotificationPayloadInsight\x12\x30.kentik.api.notify.v0.NotificationPayloadRequest\x1a\x31.kentik.api.notify.v0.NotificationPayloadResponse\"b\xf2\xd7\x02\x0bnotify:read\x82\xd3\xe4\x93\x02M\"H/notify/backend/v0/channels/{channelVersion}/{channelID}/payload/insight:\x01*\x12\xd5\x01\n\x14\x41pplyAlertingMapping\x12@.kentik.api.notify.v0.ApplyAlertingManagedChannelsMappingRequest\x1a\x32.kentik.api.notify.v0.NotificationChannelsResponse\"G\xf2\xd7\x02\x0cnotify:write\x82\xd3\xe4\x93\x02\x31\x1a,/notify/backend/v0/channels/alerting/mapping:\x01*\x12\xb5\x01\n\x16GetAccessControlConfig\x12\x33.kentik.api.notify.v0.GetAccessControlConfigRequest\x1a\x34.kentik.api.notify.v0.GetAccessControlConfigResponse\"0\xf2\xd7\x02\x0bnotify:read\x82\xd3\xe4\x93\x02\x1b\x12\x19/notify/backend/v0/access\x12\xb9\x01\n\x16SetAccessControlConfig\x12\x33.kentik.api.notify.v0.SetAccessControlConfigRequest\x1a\x34.kentik.api.notify.v0.SetAccessControlConfigResponse\"4\xf2\xd7\x02\x0cnotify:write\x82\xd3\xe4\x93\x02\x1e\x1a\x19/notify/backend/v0/access:\x01*\x1a \xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\x06notifyB!Z\x1fkentik/notify/backend/v0;notifyb\x06proto3'
   ,
   dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_api_dot_client__pb2.DESCRIPTOR,google_dot_protobuf_dot_duration__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,kentik_dot_notify_dot_backend_dot_v0_dot_models__channel__event__pb2.DESCRIPTOR,kentik_dot_notify_dot_backend_dot_v0_dot_models__event__pb2.DESCRIPTOR,kentik_dot_notify_dot_backend_dot_v0_dot_models__notification__pb2.DESCRIPTOR,kentik_dot_notify_dot_backend_dot_v0_dot_subscribe__pb2.DESCRIPTOR,kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2.DESCRIPTOR,])
 
@@ -2138,7 +2138,7 @@ _NOTIFY = _descriptor.ServiceDescriptor(
   serialized_options=b'\312A\023grpc.api.kentik.com\352\327\002\006notify',
   create_key=_descriptor._internal_create_key,
   serialized_start=5565,
-  serialized_end=10173,
+  serialized_end=10548,
   methods=[
   _descriptor.MethodDescriptor(
     name='SearchNotifications',
@@ -2147,7 +2147,7 @@ _NOTIFY = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_NOTIFICATIONSREQUEST,
     output_type=_NOTIFICATIONSRESPONSE,
-    serialized_options=b'\362\327\002\013notify:read\202\323\344\223\002\035\"\030/v0/notifications:search:\001*',
+    serialized_options=b'\362\327\002\013notify:read\202\323\344\223\002,\"\'/notify/backend/v0/notifications:search:\001*',
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
@@ -2157,7 +2157,7 @@ _NOTIFY = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_NOTIFICATIONSREQUEST,
     output_type=_NOTIFICATIONSRESPONSE,
-    serialized_options=b'\362\327\002\013notify:read\202\323\344\223\0022\0220/v0/notifications/v/{channelVersion}/{channelID}',
+    serialized_options=b'\362\327\002\013notify:read\202\323\344\223\002A\022?/notify/backend/v0/notifications/v/{channelVersion}/{channelID}',
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
@@ -2167,7 +2167,7 @@ _NOTIFY = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_NOTIFICATIONSREQUEST,
     output_type=_NOTIFICATIONSRESPONSE,
-    serialized_options=b'\362\327\002\013notify:read\202\323\344\223\0029\0227/v0/notifications/v/{channelVersion}/{channelID}/stream',
+    serialized_options=b'\362\327\002\013notify:read\202\323\344\223\002H\022F/notify/backend/v0/notifications/v/{channelVersion}/{channelID}/stream',
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
@@ -2177,7 +2177,7 @@ _NOTIFY = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=kentik_dot_notify_dot_backend_dot_v0_dot_models__event__pb2._NOTIFICATIONEVENT,
     output_type=kentik_dot_notify_dot_backend_dot_v0_dot_models__event__pb2._NOTIFICATIONEVENTRESPONSE,
-    serialized_options=b'\362\327\002\014notify:write\202\323\344\223\002\033\"\026/v0/notification/event:\001*',
+    serialized_options=b'\362\327\002\014notify:write\202\323\344\223\002*\"%/notify/backend/v0/notification/event:\001*',
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
@@ -2187,7 +2187,7 @@ _NOTIFY = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_DELIVERYRESULTSREQUEST,
     output_type=_DELIVERYRESULTSRESPONSE,
-    serialized_options=b'\362\327\002\013notify:read\202\323\344\223\002\035\"\030/v0/notifications:search:\001*',
+    serialized_options=b'\362\327\002\013notify:read\202\323\344\223\002,\"\'/notify/backend/v0/notifications:search:\001*',
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
@@ -2197,7 +2197,7 @@ _NOTIFY = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_NOTIFICATIONCHANNEL,
     output_type=_NOTIFICATIONCHANNELSRESPONSE,
-    serialized_options=b'\362\327\002\014notify:write\202\323\344\223\002\021\"\014/v0/channels:\001*',
+    serialized_options=b'\362\327\002\014notify:write\202\323\344\223\002 \"\033/notify/backend/v0/channels:\001*',
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
@@ -2207,7 +2207,7 @@ _NOTIFY = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_NOTIFICATIONCHANNELSREQUEST,
     output_type=_NOTIFICATIONCHANNELSRESPONSE,
-    serialized_options=b'\362\327\002\013notify:read\202\323\344\223\002\016\022\014/v0/channels',
+    serialized_options=b'\362\327\002\013notify:read\202\323\344\223\002\035\022\033/notify/backend/v0/channels',
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
@@ -2217,7 +2217,7 @@ _NOTIFY = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_NOTIFICATIONCHANNELSREQUEST,
     output_type=_NOTIFICATIONCHANNELSRESPONSE,
-    serialized_options=b'\362\327\002\013notify:read\202\323\344\223\002\030\"\023/v0/channels:search:\001*',
+    serialized_options=b'\362\327\002\013notify:read\202\323\344\223\002\'\"\"/notify/backend/v0/channels:search:\001*',
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
@@ -2227,7 +2227,7 @@ _NOTIFY = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_NOTIFICATIONCHANNEL,
     output_type=_NOTIFICATIONCHANNELRESPONSE,
-    serialized_options=b'\362\327\002\013notify:read\202\323\344\223\002\032\022\030/v0/channels/{channelID}',
+    serialized_options=b'\362\327\002\013notify:read\202\323\344\223\002)\022\'/notify/backend/v0/channels/{channelID}',
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
@@ -2237,7 +2237,7 @@ _NOTIFY = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_NOTIFICATIONCHANNEL,
     output_type=_NOTIFICATIONCHANNELSRESPONSE,
-    serialized_options=b'\362\327\002\014notify:write\202\323\344\223\002\035\032\030/v0/channels/{channelID}:\001*',
+    serialized_options=b'\362\327\002\014notify:write\202\323\344\223\002,\032\'/notify/backend/v0/channels/{channelID}:\001*',
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
@@ -2247,7 +2247,7 @@ _NOTIFY = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_NOTIFICATIONCHANNEL,
     output_type=_NOTIFICATIONCHANNELSRESPONSE,
-    serialized_options=b'\362\327\002\014notify:write\202\323\344\223\002\032*\030/v0/channels/{channelID}',
+    serialized_options=b'\362\327\002\014notify:write\202\323\344\223\002)*\'/notify/backend/v0/channels/{channelID}',
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
@@ -2257,7 +2257,7 @@ _NOTIFY = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_SUPPORTEDCHANNELSREQUEST,
     output_type=_SUPPORTEDCHANNELSRESPONSE,
-    serialized_options=b'\362\327\002\013notify:read\202\323\344\223\002\030\022\026/v0/channels/supported',
+    serialized_options=b'\362\327\002\013notify:read\202\323\344\223\002\'\022%/notify/backend/v0/channels/supported',
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
@@ -2267,7 +2267,7 @@ _NOTIFY = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=kentik_dot_notify_dot_backend_dot_v0_dot_subscribe__pb2._CREATEUSERCHANNELREQUEST,
     output_type=_NOTIFICATIONCHANNELRESPONSE,
-    serialized_options=b'\362\327\002\014notify:write\202\323\344\223\002\026\"\021/v0/channels/user:\001*',
+    serialized_options=b'\362\327\002\014notify:write\202\323\344\223\002%\" /notify/backend/v0/channels/user:\001*',
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
@@ -2277,7 +2277,7 @@ _NOTIFY = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_NOTIFICATIONCHANNELSREQUEST,
     output_type=_NOTIFICATIONCHANNELRESPONSE,
-    serialized_options=b'\362\327\002\013notify:read\202\323\344\223\002\023\022\021/v0/channels/user',
+    serialized_options=b'\362\327\002\013notify:read\202\323\344\223\002\"\022 /notify/backend/v0/channels/user',
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
@@ -2287,7 +2287,7 @@ _NOTIFY = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=kentik_dot_notify_dot_backend_dot_v0_dot_subscribe__pb2._SUBSCRIBEREQUEST,
     output_type=kentik_dot_notify_dot_backend_dot_v0_dot_subscribe__pb2._SUBSCRIBERESPONSE,
-    serialized_options=b'\362\327\002\014notify:write\202\323\344\223\002 \"\033/v0/channels/user/subscribe:\001*',
+    serialized_options=b'\362\327\002\014notify:write\202\323\344\223\002/\"*/notify/backend/v0/channels/user/subscribe:\001*',
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
@@ -2297,7 +2297,7 @@ _NOTIFY = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=kentik_dot_notify_dot_backend_dot_v0_dot_subscribe__pb2._SUBSCRIBEREQUEST,
     output_type=kentik_dot_notify_dot_backend_dot_v0_dot_subscribe__pb2._SUBSCRIBERESPONSE,
-    serialized_options=b'\362\327\002\014notify:write\202\323\344\223\002\"\"\035/v0/channels/user/unsubscribe:\001*',
+    serialized_options=b'\362\327\002\014notify:write\202\323\344\223\0021\",/notify/backend/v0/channels/user/unsubscribe:\001*',
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
@@ -2307,7 +2307,7 @@ _NOTIFY = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_NOTIFICATIONCHANNEL,
     output_type=_NOTIFICATIONCHANNELSRESPONSE,
-    serialized_options=b'\362\327\002\014notify:write\202\323\344\223\002\023*\021/v0/channels/user',
+    serialized_options=b'\362\327\002\014notify:write\202\323\344\223\002\"* /notify/backend/v0/channels/user',
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
@@ -2317,7 +2317,7 @@ _NOTIFY = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_NOTIFICATIONANDSTATUSREQUEST,
     output_type=_NOTIFICATIONANDSTATUSRESPONSE,
-    serialized_options=b'\362\327\002\013notify:read\202\323\344\223\0022\0220/v0/channels/{channelVersion}/{channelID}/status',
+    serialized_options=b'\362\327\002\013notify:read\202\323\344\223\002A\022?/notify/backend/v0/channels/{channelVersion}/{channelID}/status',
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
@@ -2327,7 +2327,7 @@ _NOTIFY = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_NOTIFICATIONPAYLOADREQUEST,
     output_type=_NOTIFICATIONPAYLOADRESPONSE,
-    serialized_options=b'\362\327\002\013notify:read\202\323\344\223\0026\"1/v0/channels/{channelVersion}/{channelID}/payload:\001*',
+    serialized_options=b'\362\327\002\013notify:read\202\323\344\223\002E\"@/notify/backend/v0/channels/{channelVersion}/{channelID}/payload:\001*',
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
@@ -2337,7 +2337,7 @@ _NOTIFY = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_CREATENOTIFICATIONFORTESTINGREQUEST,
     output_type=_CREATENOTIFICATIONFORTESTINGRESPONSE,
-    serialized_options=b'\362\327\002\014notify:write\202\323\344\223\0023\"./v0/channels/{channelVersion}/{channelID}/test:\001*',
+    serialized_options=b'\362\327\002\014notify:write\202\323\344\223\002B\"=/notify/backend/v0/channels/{channelVersion}/{channelID}/test:\001*',
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
@@ -2347,7 +2347,7 @@ _NOTIFY = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_CREATENOTIFICATIONFORTESTINGREQUEST,
     output_type=_CREATENOTIFICATIONFORTESTINGRESPONSE,
-    serialized_options=b'\362\327\002\014notify:write\202\323\344\223\002;\"6/v0/channels/{channelVersion}/{channelID}/test/insight:\001*',
+    serialized_options=b'\362\327\002\014notify:write\202\323\344\223\002J\"E/notify/backend/v0/channels/{channelVersion}/{channelID}/test/insight:\001*',
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
@@ -2357,7 +2357,7 @@ _NOTIFY = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_NOTIFICATIONPAYLOADREQUEST,
     output_type=_NOTIFICATIONPAYLOADRESPONSE,
-    serialized_options=b'\362\327\002\013notify:read\202\323\344\223\002>\"9/v0/channels/{channelVersion}/{channelID}/payload/insight:\001*',
+    serialized_options=b'\362\327\002\013notify:read\202\323\344\223\002M\"H/notify/backend/v0/channels/{channelVersion}/{channelID}/payload/insight:\001*',
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
@@ -2367,7 +2367,7 @@ _NOTIFY = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_APPLYALERTINGMANAGEDCHANNELSMAPPINGREQUEST,
     output_type=_NOTIFICATIONCHANNELSRESPONSE,
-    serialized_options=b'\362\327\002\014notify:write\202\323\344\223\002\"\032\035/v0/channels/alerting/mapping:\001*',
+    serialized_options=b'\362\327\002\014notify:write\202\323\344\223\0021\032,/notify/backend/v0/channels/alerting/mapping:\001*',
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
@@ -2377,7 +2377,7 @@ _NOTIFY = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_GETACCESSCONTROLCONFIGREQUEST,
     output_type=_GETACCESSCONTROLCONFIGRESPONSE,
-    serialized_options=b'\362\327\002\013notify:read\202\323\344\223\002\014\022\n/v0/access',
+    serialized_options=b'\362\327\002\013notify:read\202\323\344\223\002\033\022\031/notify/backend/v0/access',
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
@@ -2387,7 +2387,7 @@ _NOTIFY = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_SETACCESSCONTROLCONFIGREQUEST,
     output_type=_SETACCESSCONTROLCONFIGRESPONSE,
-    serialized_options=b'\362\327\002\014notify:write\202\323\344\223\002\017\032\n/v0/access:\001*',
+    serialized_options=b'\362\327\002\014notify:write\202\323\344\223\002\036\032\031/notify/backend/v0/access:\001*',
     create_key=_descriptor._internal_create_key,
   ),
 ])

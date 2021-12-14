@@ -10,7 +10,7 @@
         }
     ],
     "paths": {
-        "/db/{id}/settings": {
+        "/notify/backend/v0/meta/db/{id}/settings": {
             "get": {
                 "operationId": "Meta_SetDBPoolSettings",
                 "responses": {
@@ -86,7 +86,7 @@
                 ]
             }
         },
-        "/db/{id}/stats": {
+        "/notify/backend/v0/meta/db/{id}/stats": {
             "get": {
                 "operationId": "Meta_GetDBStats",
                 "responses": {
@@ -126,7 +126,7 @@
                 ]
             }
         },
-        "/env": {
+        "/notify/backend/v0/meta/env": {
             "get": {
                 "operationId": "Meta_GetEnv",
                 "responses": {
@@ -156,7 +156,7 @@
                 ]
             }
         },
-        "/log/json": {
+        "/notify/backend/v0/meta/log/json": {
             "get": {
                 "summary": "deprecated",
                 "operationId": "Meta_GetLogJSONMode",
@@ -226,7 +226,7 @@
                 ]
             }
         },
-        "/log/level": {
+        "/notify/backend/v0/meta/log/level": {
             "get": {
                 "operationId": "Meta_GetLogLevel",
                 "responses": {

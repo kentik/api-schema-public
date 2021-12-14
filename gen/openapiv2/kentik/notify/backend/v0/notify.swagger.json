@@ -16,7 +16,7 @@
     "application/json"
   ],
   "paths": {
-    "/v0/access": {
+    "/notify/backend/v0/access": {
       "get": {
         "operationId": "Notify_GetAccessControlConfig",
         "responses": {
@@ -68,7 +68,7 @@
         ]
       }
     },
-    "/v0/channels": {
+    "/notify/backend/v0/channels": {
       "get": {
         "operationId": "Notify_ListNotificationChannels",
         "responses": {
@@ -148,7 +148,7 @@
         ]
       }
     },
-    "/v0/channels/alerting/mapping": {
+    "/notify/backend/v0/channels/alerting/mapping": {
       "put": {
         "summary": "ApplyAlertingMapping offers a policy+threshold centric way to manage channels.\nIt replaces selectors in the target channels by simple policy+threshold matchers.",
         "operationId": "Notify_ApplyAlertingMapping",
@@ -181,7 +181,7 @@
         ]
       }
     },
-    "/v0/channels/supported": {
+    "/notify/backend/v0/channels/supported": {
       "get": {
         "operationId": "Notify_GetSupportedChannels",
         "responses": {
@@ -203,7 +203,7 @@
         ]
       }
     },
-    "/v0/channels/user": {
+    "/notify/backend/v0/channels/user": {
       "get": {
         "operationId": "Notify_GetUserChannel",
         "responses": {
@@ -515,7 +515,7 @@
         ]
       }
     },
-    "/v0/channels/user/subscribe": {
+    "/notify/backend/v0/channels/user/subscribe": {
       "post": {
         "operationId": "Notify_SubscribeWithUserChannel",
         "responses": {
@@ -547,7 +547,7 @@
         ]
       }
     },
-    "/v0/channels/user/unsubscribe": {
+    "/notify/backend/v0/channels/user/unsubscribe": {
       "post": {
         "operationId": "Notify_UnsubscribeWithUserChannel",
         "responses": {
@@ -579,7 +579,7 @@
         ]
       }
     },
-    "/v0/channels/{channelID}": {
+    "/notify/backend/v0/channels/{channelID}": {
       "get": {
         "operationId": "Notify_GetNotificationChannel",
         "responses": {
@@ -1082,7 +1082,7 @@
         ]
       }
     },
-    "/v0/channels/{channelVersion}/{channelID}/payload": {
+    "/notify/backend/v0/channels/{channelVersion}/{channelID}/payload": {
       "post": {
         "operationId": "Notify_GetNotificationPayload",
         "responses": {
@@ -1132,7 +1132,7 @@
         ]
       }
     },
-    "/v0/channels/{channelVersion}/{channelID}/payload/insight": {
+    "/notify/backend/v0/channels/{channelVersion}/{channelID}/payload/insight": {
       "post": {
         "operationId": "Notify_GetNotificationPayloadInsight",
         "responses": {
@@ -1182,7 +1182,7 @@
         ]
       }
     },
-    "/v0/channels/{channelVersion}/{channelID}/status": {
+    "/notify/backend/v0/channels/{channelVersion}/{channelID}/status": {
       "get": {
         "operationId": "Notify_GetLastNotificationAndStatus",
         "responses": {
@@ -1224,7 +1224,7 @@
         ]
       }
     },
-    "/v0/channels/{channelVersion}/{channelID}/test": {
+    "/notify/backend/v0/channels/{channelVersion}/{channelID}/test": {
       "post": {
         "summary": "immediately but asynchronously send notification described in the enclosed NotificationPayloadRequest.",
         "operationId": "Notify_CreateNotificationForTesting",
@@ -1275,7 +1275,7 @@
         ]
       }
     },
-    "/v0/channels/{channelVersion}/{channelID}/test/insight": {
+    "/notify/backend/v0/channels/{channelVersion}/{channelID}/test/insight": {
       "post": {
         "operationId": "Notify_CreateNotificationForTestingInsight",
         "responses": {
@@ -1325,7 +1325,7 @@
         ]
       }
     },
-    "/v0/channels:search": {
+    "/notify/backend/v0/channels:search": {
       "post": {
         "operationId": "Notify_SearchNotificationChannels",
         "responses": {
@@ -1357,7 +1357,7 @@
         ]
       }
     },
-    "/v0/notification/event": {
+    "/notify/backend/v0/notification/event": {
       "post": {
         "summary": "Note: internally can publish notifications directly to Kafka.",
         "operationId": "Notify_CreateNotificationEvent",
@@ -1390,7 +1390,7 @@
         ]
       }
     },
-    "/v0/notifications/v/{channelVersion}/{channelID}": {
+    "/notify/backend/v0/notifications/v/{channelVersion}/{channelID}": {
       "get": {
         "operationId": "Notify_ListNotifications",
         "responses": {
@@ -1439,7 +1439,7 @@
         ]
       }
     },
-    "/v0/notifications/v/{channelVersion}/{channelID}/stream": {
+    "/notify/backend/v0/notifications/v/{channelVersion}/{channelID}/stream": {
       "get": {
         "summary": "deprecated",
         "operationId": "Notify_StreamNotifications",
@@ -1498,7 +1498,7 @@
         ]
       }
     },
-    "/v0/notifications:search": {
+    "/notify/backend/v0/notifications:search": {
       "post": {
         "operationId": "Notify_SearchDeliveryResults",
         "responses": {

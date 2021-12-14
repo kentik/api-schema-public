@@ -22,7 +22,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z\037kentik/notify/backend/v0;notify',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n#kentik/notify/backend/v0/meta.proto\x12\x14kentik.api.notify.v0\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a+kentik/core/v202012alpha1/annotations.proto\"\x82\x01\n\x14\x44\x61tabasePoolSettings\x12\x14\n\x0cmaxOpenConns\x18\x01 \x01(\x05\x12\x14\n\x0cmaxIdleConns\x18\x02 \x01(\x05\x12\x1e\n\x16\x63onnMaxLifeTimeSeconds\x18\x03 \x01(\r\x12\x1e\n\x16\x63onnMaxIdleTimeSeconds\x18\x04 \x01(\r\"\xdd\x01\n\rDatabaseStats\x12\x1a\n\x12maxOpenConnections\x18\x01 \x01(\x05\x12\x17\n\x0fopenConnections\x18\x02 \x01(\r\x12\r\n\x05inUse\x18\x03 \x01(\r\x12\x0c\n\x04idle\x18\x04 \x01(\r\x12\x11\n\twaitCount\x18\x05 \x01(\x03\x12\x1a\n\x12waitDurationMillis\x18\x06 \x01(\x04\x12\x15\n\rmaxIdleClosed\x18\x07 \x01(\x03\x12\x19\n\x11maxIdleTimeClosed\x18\x08 \x01(\x03\x12\x19\n\x11maxLifetimeClosed\x18\t \x01(\x03\"&\n\x18GetDBPoolSettingsRequest\x12\n\n\x02id\x18\x01 \x01(\t\"Y\n\x19GetDBPoolSettingsResponse\x12<\n\x08settings\x18\x01 \x01(\x0b\x32*.kentik.api.notify.v0.DatabasePoolSettings\"d\n\x18SetDBPoolSettingsRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12<\n\x08settings\x18\x02 \x01(\x0b\x32*.kentik.api.notify.v0.DatabasePoolSettings\"\x1b\n\x19SetDBPoolSettingsResponse\"\x1f\n\x11GetDBStatsRequest\x12\n\n\x02id\x18\x01 \x01(\t\"H\n\x12GetDBStatsResponse\x12\x32\n\x05stats\x18\x01 \x01(\x0b\x32#.kentik.api.notify.v0.DatabaseStats\"\x8c\x01\n\x0fMetaEnvResponse\x12;\n\x03\x65nv\x18\x01 \x03(\x0b\x32..kentik.api.notify.v0.MetaEnvResponse.EnvEntry\x12\x10\n\x08redacted\x18\x02 \x03(\t\x1a*\n\x08\x45nvEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"#\n\x0fLogLevelRequest\x12\x10\n\x08logLevel\x18\x01 \x01(\t\"=\n\x10LogLevelResponse\x12\x10\n\x08logLevel\x18\x01 \x01(\t\x12\x17\n\x0finitialLogLevel\x18\x02 \x01(\t\"*\n\x12LogJSONModeRequest\x12\x14\n\x08jsonMode\x18\x01 \x01(\x08\x42\x02\x18\x01\"+\n\x13LogJSONModeResponse\x12\x14\n\x08jsonMode\x18\x01 \x01(\x08\x42\x02\x18\x01\x32\xca\x07\n\x04Meta\x12\x8f\x01\n\x11GetDBPoolSettings\x12..kentik.api.notify.v0.GetDBPoolSettingsRequest\x1a/.kentik.api.notify.v0.GetDBPoolSettingsResponse\"\x19\x82\xd3\xe4\x93\x02\x13\x12\x11/db/{id}/settings\x12\x8f\x01\n\x11SetDBPoolSettings\x12..kentik.api.notify.v0.SetDBPoolSettingsRequest\x1a/.kentik.api.notify.v0.SetDBPoolSettingsResponse\"\x19\x82\xd3\xe4\x93\x02\x13\x12\x11/db/{id}/settings\x12w\n\nGetDBStats\x12\'.kentik.api.notify.v0.GetDBStatsRequest\x1a(.kentik.api.notify.v0.GetDBStatsResponse\"\x16\x82\xd3\xe4\x93\x02\x10\x12\x0e/db/{id}/stats\x12U\n\x06GetEnv\x12\x16.google.protobuf.Empty\x1a%.kentik.api.notify.v0.MetaEnvResponse\"\x0c\x82\xd3\xe4\x93\x02\x06\x12\x04/env\x12\x61\n\x0bGetLogLevel\x12\x16.google.protobuf.Empty\x1a&.kentik.api.notify.v0.LogLevelResponse\"\x12\x82\xd3\xe4\x93\x02\x0c\x12\n/log/level\x12z\n\x0bSetLogLevel\x12%.kentik.api.notify.v0.LogLevelRequest\x1a&.kentik.api.notify.v0.LogLevelResponse\"\x1c\x82\xd3\xe4\x93\x02\x16\x1a\n/log/level:\x08logLevel\x12i\n\x0eGetLogJSONMode\x12\x16.google.protobuf.Empty\x1a).kentik.api.notify.v0.LogJSONModeResponse\"\x14\x88\x02\x01\x82\xd3\xe4\x93\x02\x0b\x12\t/log/json\x12~\n\x0eSetLogJSONMode\x12(.kentik.api.notify.v0.LogJSONModeRequest\x1a).kentik.api.notify.v0.LogJSONModeResponse\"\x17\x88\x02\x01\x82\xd3\xe4\x93\x02\x0e\x1a\t/log/json:\x01*\x1a\x04\xf8\xd7\x02\x01\x42!Z\x1fkentik/notify/backend/v0;notifyb\x06proto3'
+  serialized_pb=b'\n#kentik/notify/backend/v0/meta.proto\x12\x14kentik.api.notify.v0\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a+kentik/core/v202012alpha1/annotations.proto\"\x82\x01\n\x14\x44\x61tabasePoolSettings\x12\x14\n\x0cmaxOpenConns\x18\x01 \x01(\x05\x12\x14\n\x0cmaxIdleConns\x18\x02 \x01(\x05\x12\x1e\n\x16\x63onnMaxLifeTimeSeconds\x18\x03 \x01(\r\x12\x1e\n\x16\x63onnMaxIdleTimeSeconds\x18\x04 \x01(\r\"\xdd\x01\n\rDatabaseStats\x12\x1a\n\x12maxOpenConnections\x18\x01 \x01(\x05\x12\x17\n\x0fopenConnections\x18\x02 \x01(\r\x12\r\n\x05inUse\x18\x03 \x01(\r\x12\x0c\n\x04idle\x18\x04 \x01(\r\x12\x11\n\twaitCount\x18\x05 \x01(\x03\x12\x1a\n\x12waitDurationMillis\x18\x06 \x01(\x04\x12\x15\n\rmaxIdleClosed\x18\x07 \x01(\x03\x12\x19\n\x11maxIdleTimeClosed\x18\x08 \x01(\x03\x12\x19\n\x11maxLifetimeClosed\x18\t \x01(\x03\"&\n\x18GetDBPoolSettingsRequest\x12\n\n\x02id\x18\x01 \x01(\t\"Y\n\x19GetDBPoolSettingsResponse\x12<\n\x08settings\x18\x01 \x01(\x0b\x32*.kentik.api.notify.v0.DatabasePoolSettings\"d\n\x18SetDBPoolSettingsRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12<\n\x08settings\x18\x02 \x01(\x0b\x32*.kentik.api.notify.v0.DatabasePoolSettings\"\x1b\n\x19SetDBPoolSettingsResponse\"\x1f\n\x11GetDBStatsRequest\x12\n\n\x02id\x18\x01 \x01(\t\"H\n\x12GetDBStatsResponse\x12\x32\n\x05stats\x18\x01 \x01(\x0b\x32#.kentik.api.notify.v0.DatabaseStats\"\x8c\x01\n\x0fMetaEnvResponse\x12;\n\x03\x65nv\x18\x01 \x03(\x0b\x32..kentik.api.notify.v0.MetaEnvResponse.EnvEntry\x12\x10\n\x08redacted\x18\x02 \x03(\t\x1a*\n\x08\x45nvEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"#\n\x0fLogLevelRequest\x12\x10\n\x08logLevel\x18\x01 \x01(\t\"=\n\x10LogLevelResponse\x12\x10\n\x08logLevel\x18\x01 \x01(\t\x12\x17\n\x0finitialLogLevel\x18\x02 \x01(\t\"*\n\x12LogJSONModeRequest\x12\x14\n\x08jsonMode\x18\x01 \x01(\x08\x42\x02\x18\x01\"+\n\x13LogJSONModeResponse\x12\x14\n\x08jsonMode\x18\x01 \x01(\x08\x42\x02\x18\x01\x32\x86\t\n\x04Meta\x12\xa6\x01\n\x11GetDBPoolSettings\x12..kentik.api.notify.v0.GetDBPoolSettingsRequest\x1a/.kentik.api.notify.v0.GetDBPoolSettingsResponse\"0\x82\xd3\xe4\x93\x02*\x12(/notify/backend/v0/meta/db/{id}/settings\x12\xa6\x01\n\x11SetDBPoolSettings\x12..kentik.api.notify.v0.SetDBPoolSettingsRequest\x1a/.kentik.api.notify.v0.SetDBPoolSettingsResponse\"0\x82\xd3\xe4\x93\x02*\x12(/notify/backend/v0/meta/db/{id}/settings\x12\x8e\x01\n\nGetDBStats\x12\'.kentik.api.notify.v0.GetDBStatsRequest\x1a(.kentik.api.notify.v0.GetDBStatsResponse\"-\x82\xd3\xe4\x93\x02\'\x12%/notify/backend/v0/meta/db/{id}/stats\x12l\n\x06GetEnv\x12\x16.google.protobuf.Empty\x1a%.kentik.api.notify.v0.MetaEnvResponse\"#\x82\xd3\xe4\x93\x02\x1d\x12\x1b/notify/backend/v0/meta/env\x12x\n\x0bGetLogLevel\x12\x16.google.protobuf.Empty\x1a&.kentik.api.notify.v0.LogLevelResponse\")\x82\xd3\xe4\x93\x02#\x12!/notify/backend/v0/meta/log/level\x12\x91\x01\n\x0bSetLogLevel\x12%.kentik.api.notify.v0.LogLevelRequest\x1a&.kentik.api.notify.v0.LogLevelResponse\"3\x82\xd3\xe4\x93\x02-\x1a!/notify/backend/v0/meta/log/level:\x08logLevel\x12\x80\x01\n\x0eGetLogJSONMode\x12\x16.google.protobuf.Empty\x1a).kentik.api.notify.v0.LogJSONModeResponse\"+\x88\x02\x01\x82\xd3\xe4\x93\x02\"\x12 /notify/backend/v0/meta/log/json\x12\x95\x01\n\x0eSetLogJSONMode\x12(.kentik.api.notify.v0.LogJSONModeRequest\x1a).kentik.api.notify.v0.LogJSONModeResponse\".\x88\x02\x01\x82\xd3\xe4\x93\x02%\x1a /notify/backend/v0/meta/log/json:\x01*\x1a\x04\xf8\xd7\x02\x01\x42!Z\x1fkentik/notify/backend/v0;notifyb\x06proto3'
   ,
   dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2.DESCRIPTOR,])
 
@@ -706,7 +706,7 @@ _META = _descriptor.ServiceDescriptor(
   serialized_options=b'\370\327\002\001',
   create_key=_descriptor._internal_create_key,
   serialized_start=1224,
-  serialized_end=2194,
+  serialized_end=2382,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetDBPoolSettings',
@@ -715,7 +715,7 @@ _META = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_GETDBPOOLSETTINGSREQUEST,
     output_type=_GETDBPOOLSETTINGSRESPONSE,
-    serialized_options=b'\202\323\344\223\002\023\022\021/db/{id}/settings',
+    serialized_options=b'\202\323\344\223\002*\022(/notify/backend/v0/meta/db/{id}/settings',
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
@@ -725,7 +725,7 @@ _META = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_SETDBPOOLSETTINGSREQUEST,
     output_type=_SETDBPOOLSETTINGSRESPONSE,
-    serialized_options=b'\202\323\344\223\002\023\022\021/db/{id}/settings',
+    serialized_options=b'\202\323\344\223\002*\022(/notify/backend/v0/meta/db/{id}/settings',
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
@@ -735,7 +735,7 @@ _META = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_GETDBSTATSREQUEST,
     output_type=_GETDBSTATSRESPONSE,
-    serialized_options=b'\202\323\344\223\002\020\022\016/db/{id}/stats',
+    serialized_options=b'\202\323\344\223\002\'\022%/notify/backend/v0/meta/db/{id}/stats',
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
@@ -745,7 +745,7 @@ _META = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
     output_type=_METAENVRESPONSE,
-    serialized_options=b'\202\323\344\223\002\006\022\004/env',
+    serialized_options=b'\202\323\344\223\002\035\022\033/notify/backend/v0/meta/env',
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
@@ -755,7 +755,7 @@ _META = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
     output_type=_LOGLEVELRESPONSE,
-    serialized_options=b'\202\323\344\223\002\014\022\n/log/level',
+    serialized_options=b'\202\323\344\223\002#\022!/notify/backend/v0/meta/log/level',
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
@@ -765,7 +765,7 @@ _META = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_LOGLEVELREQUEST,
     output_type=_LOGLEVELRESPONSE,
-    serialized_options=b'\202\323\344\223\002\026\032\n/log/level:\010logLevel',
+    serialized_options=b'\202\323\344\223\002-\032!/notify/backend/v0/meta/log/level:\010logLevel',
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
@@ -775,7 +775,7 @@ _META = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
     output_type=_LOGJSONMODERESPONSE,
-    serialized_options=b'\210\002\001\202\323\344\223\002\013\022\t/log/json',
+    serialized_options=b'\210\002\001\202\323\344\223\002\"\022 /notify/backend/v0/meta/log/json',
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
@@ -785,7 +785,7 @@ _META = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_LOGJSONMODEREQUEST,
     output_type=_LOGJSONMODERESPONSE,
-    serialized_options=b'\210\002\001\202\323\344\223\002\016\032\t/log/json:\001*',
+    serialized_options=b'\210\002\001\202\323\344\223\002%\032 /notify/backend/v0/meta/log/json:\001*',
     create_key=_descriptor._internal_create_key,
   ),
 ])

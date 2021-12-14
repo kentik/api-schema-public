@@ -21,7 +21,7 @@ service Notify {
   rpc SearchNotifications(NotificationsRequest) returns (NotificationsResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "notify:read";
     option (google.api.http) = {
-      post: "/v0/notifications:search"
+      post: "/notify/backend/v0/notifications:search"
       body: "*"
     };
   }
@@ -29,7 +29,7 @@ service Notify {
   rpc ListNotifications(NotificationsRequest) returns (NotificationsResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "notify:read";
     option (google.api.http) = {
-      get: "/v0/notifications/v/{channelVersion}/{channelID}"
+      get: "/notify/backend/v0/notifications/v/{channelVersion}/{channelID}"
     };
   }
 
@@ -37,7 +37,7 @@ service Notify {
   rpc StreamNotifications(NotificationsRequest) returns (stream NotificationsResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "notify:read";
     option (google.api.http) = {
-      get: "/v0/notifications/v/{channelVersion}/{channelID}/stream"
+      get: "/notify/backend/v0/notifications/v/{channelVersion}/{channelID}/stream"
     };
   }
 
@@ -45,7 +45,7 @@ service Notify {
   rpc CreateNotificationEvent(NotificationEvent) returns (NotificationEventResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "notify:write";
     option (google.api.http) = {
-      post: "/v0/notification/event"
+      post: "/notify/backend/v0/notification/event"
       body: "*"
     };
   }
@@ -53,7 +53,7 @@ service Notify {
   rpc SearchDeliveryResults(DeliveryResultsRequest) returns (DeliveryResultsResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "notify:read";
     option (google.api.http) = {
-      post: "/v0/notifications:search"
+      post: "/notify/backend/v0/notifications:search"
       body: "*"
     };
   }
@@ -61,7 +61,7 @@ service Notify {
   rpc CreateNotificationChannel(NotificationChannel) returns (NotificationChannelsResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "notify:write";
     option (google.api.http) = {
-      post: "/v0/channels"
+      post: "/notify/backend/v0/channels"
       body: "*"
     };
   }
@@ -69,14 +69,14 @@ service Notify {
   rpc ListNotificationChannels(NotificationChannelsRequest) returns (NotificationChannelsResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "notify:read";
     option (google.api.http) = {
-      get: "/v0/channels"
+      get: "/notify/backend/v0/channels"
     };
   }
 
   rpc SearchNotificationChannels(NotificationChannelsRequest) returns (NotificationChannelsResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "notify:read";
     option (google.api.http) = {
-      post: "/v0/channels:search"
+      post: "/notify/backend/v0/channels:search"
       body: "*"
     };
   }
@@ -84,14 +84,14 @@ service Notify {
   rpc GetNotificationChannel(NotificationChannel) returns (NotificationChannelResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "notify:read";
     option (google.api.http) = {
-      get: "/v0/channels/{channelID}"
+      get: "/notify/backend/v0/channels/{channelID}"
     };
   }
 
   rpc UpdateNotificationChannel(NotificationChannel) returns (NotificationChannelsResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "notify:write";
     option (google.api.http) = {
-      put: "/v0/channels/{channelID}"
+      put: "/notify/backend/v0/channels/{channelID}"
       body: "*"
     };
   }
@@ -99,21 +99,21 @@ service Notify {
   rpc DeleteNotificationChannel(NotificationChannel) returns (NotificationChannelsResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "notify:write";
     option (google.api.http) = {
-      delete: "/v0/channels/{channelID}"
+      delete: "/notify/backend/v0/channels/{channelID}"
     };
   }
 
   rpc GetSupportedChannels(SupportedChannelsRequest) returns (SupportedChannelsResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "notify:read";
     option (google.api.http) = {
-      get: "/v0/channels/supported"
+      get: "/notify/backend/v0/channels/supported"
     };
   }
 
   rpc CreateUserChannel(CreateUserChannelRequest) returns (NotificationChannelResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "notify:write";
     option (google.api.http) = {
-      post: "/v0/channels/user"
+      post: "/notify/backend/v0/channels/user"
       body: "*"
     };
   }
@@ -121,14 +121,14 @@ service Notify {
   rpc GetUserChannel(NotificationChannelsRequest) returns (NotificationChannelResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "notify:read";
     option (google.api.http) = {
-      get: "/v0/channels/user"
+      get: "/notify/backend/v0/channels/user"
     };
   }
 
   rpc SubscribeWithUserChannel(SubscribeRequest) returns (SubscribeResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "notify:write";
     option (google.api.http) = {
-      post: "/v0/channels/user/subscribe"
+      post: "/notify/backend/v0/channels/user/subscribe"
       body: "*"
     };
   }
@@ -136,7 +136,7 @@ service Notify {
   rpc UnsubscribeWithUserChannel(SubscribeRequest) returns (SubscribeResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "notify:write";
     option (google.api.http) = {
-      post: "/v0/channels/user/unsubscribe"
+      post: "/notify/backend/v0/channels/user/unsubscribe"
       body: "*"
     };
   }
@@ -144,21 +144,21 @@ service Notify {
   rpc DeleteUserChannel(NotificationChannel) returns (NotificationChannelsResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "notify:write";
     option (google.api.http) = {
-      delete: "/v0/channels/user"
+      delete: "/notify/backend/v0/channels/user"
     };
   }
 
   rpc GetLastNotificationAndStatus(NotificationAndStatusRequest) returns (NotificationAndStatusResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "notify:read";
     option (google.api.http) = {
-      get: "/v0/channels/{channelVersion}/{channelID}/status"
+      get: "/notify/backend/v0/channels/{channelVersion}/{channelID}/status"
     };
   }
 
   rpc GetNotificationPayload(NotificationPayloadRequest) returns (NotificationPayloadResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "notify:read";
     option (google.api.http) = {
-      post: "/v0/channels/{channelVersion}/{channelID}/payload"
+      post: "/notify/backend/v0/channels/{channelVersion}/{channelID}/payload"
       body: "*"
     };
   }
@@ -167,7 +167,7 @@ service Notify {
   rpc CreateNotificationForTesting(CreateNotificationForTestingRequest) returns (CreateNotificationForTestingResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "notify:write";
     option (google.api.http) = {
-      post: "/v0/channels/{channelVersion}/{channelID}/test"
+      post: "/notify/backend/v0/channels/{channelVersion}/{channelID}/test"
       body: "*"
     };
   }
@@ -175,7 +175,7 @@ service Notify {
   rpc CreateNotificationForTestingInsight(CreateNotificationForTestingRequest) returns (CreateNotificationForTestingResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "notify:write";
     option (google.api.http) = {
-      post: "/v0/channels/{channelVersion}/{channelID}/test/insight"
+      post: "/notify/backend/v0/channels/{channelVersion}/{channelID}/test/insight"
       body: "*"
     };
   }
@@ -183,7 +183,7 @@ service Notify {
   rpc GetNotificationPayloadInsight(NotificationPayloadRequest) returns (NotificationPayloadResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "notify:read";
     option (google.api.http) = {
-      post: "/v0/channels/{channelVersion}/{channelID}/payload/insight"
+      post: "/notify/backend/v0/channels/{channelVersion}/{channelID}/payload/insight"
       body: "*"
     };
   }
@@ -193,7 +193,7 @@ service Notify {
   rpc ApplyAlertingMapping(ApplyAlertingManagedChannelsMappingRequest) returns (NotificationChannelsResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "notify:write";
       option (google.api.http) = {
-      put: "/v0/channels/alerting/mapping"
+      put: "/notify/backend/v0/channels/alerting/mapping"
       body: "*"
     };
   }
@@ -201,14 +201,14 @@ service Notify {
   rpc GetAccessControlConfig(GetAccessControlConfigRequest) returns (GetAccessControlConfigResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "notify:read";
     option (google.api.http) = {
-      get: "/v0/access"
+      get: "/notify/backend/v0/access"
     };
   }
 
   rpc SetAccessControlConfig(SetAccessControlConfigRequest) returns (SetAccessControlConfigResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "notify:write";
     option (google.api.http) = {
-      put: "/v0/access"
+      put: "/notify/backend/v0/access"
       body: "*"
     };
   }

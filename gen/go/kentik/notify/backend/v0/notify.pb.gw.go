@@ -2441,55 +2441,55 @@ func RegisterNotifyHandlerClient(ctx context.Context, mux *runtime.ServeMux, cli
 }
 
 var (
-	pattern_Notify_SearchNotifications_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v0", "notifications"}, "search"))
+	pattern_Notify_SearchNotifications_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"notify", "backend", "v0", "notifications"}, "search"))
 
-	pattern_Notify_ListNotifications_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4}, []string{"v0", "notifications", "v", "channelVersion", "channelID"}, ""))
+	pattern_Notify_ListNotifications_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"notify", "backend", "v0", "notifications", "v", "channelVersion", "channelID"}, ""))
 
-	pattern_Notify_StreamNotifications_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 1, 0, 4, 1, 5, 4, 2, 5}, []string{"v0", "notifications", "v", "channelVersion", "channelID", "stream"}, ""))
+	pattern_Notify_StreamNotifications_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6, 2, 7}, []string{"notify", "backend", "v0", "notifications", "v", "channelVersion", "channelID", "stream"}, ""))
 
-	pattern_Notify_CreateNotificationEvent_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v0", "notification", "event"}, ""))
+	pattern_Notify_CreateNotificationEvent_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"notify", "backend", "v0", "notification", "event"}, ""))
 
-	pattern_Notify_SearchDeliveryResults_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v0", "notifications"}, "search"))
+	pattern_Notify_SearchDeliveryResults_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"notify", "backend", "v0", "notifications"}, "search"))
 
-	pattern_Notify_CreateNotificationChannel_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v0", "channels"}, ""))
+	pattern_Notify_CreateNotificationChannel_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"notify", "backend", "v0", "channels"}, ""))
 
-	pattern_Notify_ListNotificationChannels_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v0", "channels"}, ""))
+	pattern_Notify_ListNotificationChannels_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"notify", "backend", "v0", "channels"}, ""))
 
-	pattern_Notify_SearchNotificationChannels_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v0", "channels"}, "search"))
+	pattern_Notify_SearchNotificationChannels_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"notify", "backend", "v0", "channels"}, "search"))
 
-	pattern_Notify_GetNotificationChannel_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v0", "channels", "channelID"}, ""))
+	pattern_Notify_GetNotificationChannel_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"notify", "backend", "v0", "channels", "channelID"}, ""))
 
-	pattern_Notify_UpdateNotificationChannel_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v0", "channels", "channelID"}, ""))
+	pattern_Notify_UpdateNotificationChannel_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"notify", "backend", "v0", "channels", "channelID"}, ""))
 
-	pattern_Notify_DeleteNotificationChannel_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v0", "channels", "channelID"}, ""))
+	pattern_Notify_DeleteNotificationChannel_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"notify", "backend", "v0", "channels", "channelID"}, ""))
 
-	pattern_Notify_GetSupportedChannels_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v0", "channels", "supported"}, ""))
+	pattern_Notify_GetSupportedChannels_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"notify", "backend", "v0", "channels", "supported"}, ""))
 
-	pattern_Notify_CreateUserChannel_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v0", "channels", "user"}, ""))
+	pattern_Notify_CreateUserChannel_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"notify", "backend", "v0", "channels", "user"}, ""))
 
-	pattern_Notify_GetUserChannel_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v0", "channels", "user"}, ""))
+	pattern_Notify_GetUserChannel_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"notify", "backend", "v0", "channels", "user"}, ""))
 
-	pattern_Notify_SubscribeWithUserChannel_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"v0", "channels", "user", "subscribe"}, ""))
+	pattern_Notify_SubscribeWithUserChannel_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"notify", "backend", "v0", "channels", "user", "subscribe"}, ""))
 
-	pattern_Notify_UnsubscribeWithUserChannel_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"v0", "channels", "user", "unsubscribe"}, ""))
+	pattern_Notify_UnsubscribeWithUserChannel_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"notify", "backend", "v0", "channels", "user", "unsubscribe"}, ""))
 
-	pattern_Notify_DeleteUserChannel_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v0", "channels", "user"}, ""))
+	pattern_Notify_DeleteUserChannel_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"notify", "backend", "v0", "channels", "user"}, ""))
 
-	pattern_Notify_GetLastNotificationAndStatus_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"v0", "channels", "channelVersion", "channelID", "status"}, ""))
+	pattern_Notify_GetLastNotificationAndStatus_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"notify", "backend", "v0", "channels", "channelVersion", "channelID", "status"}, ""))
 
-	pattern_Notify_GetNotificationPayload_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"v0", "channels", "channelVersion", "channelID", "payload"}, ""))
+	pattern_Notify_GetNotificationPayload_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"notify", "backend", "v0", "channels", "channelVersion", "channelID", "payload"}, ""))
 
-	pattern_Notify_CreateNotificationForTesting_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"v0", "channels", "channelVersion", "channelID", "test"}, ""))
+	pattern_Notify_CreateNotificationForTesting_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"notify", "backend", "v0", "channels", "channelVersion", "channelID", "test"}, ""))
 
-	pattern_Notify_CreateNotificationForTestingInsight_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 1, 0, 4, 1, 5, 3, 2, 4, 2, 5}, []string{"v0", "channels", "channelVersion", "channelID", "test", "insight"}, ""))
+	pattern_Notify_CreateNotificationForTestingInsight_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 2, 6, 2, 7}, []string{"notify", "backend", "v0", "channels", "channelVersion", "channelID", "test", "insight"}, ""))
 
-	pattern_Notify_GetNotificationPayloadInsight_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 1, 0, 4, 1, 5, 3, 2, 4, 2, 5}, []string{"v0", "channels", "channelVersion", "channelID", "payload", "insight"}, ""))
+	pattern_Notify_GetNotificationPayloadInsight_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 2, 6, 2, 7}, []string{"notify", "backend", "v0", "channels", "channelVersion", "channelID", "payload", "insight"}, ""))
 
-	pattern_Notify_ApplyAlertingMapping_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"v0", "channels", "alerting", "mapping"}, ""))
+	pattern_Notify_ApplyAlertingMapping_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"notify", "backend", "v0", "channels", "alerting", "mapping"}, ""))
 
-	pattern_Notify_GetAccessControlConfig_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v0", "access"}, ""))
+	pattern_Notify_GetAccessControlConfig_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"notify", "backend", "v0", "access"}, ""))
 
-	pattern_Notify_SetAccessControlConfig_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v0", "access"}, ""))
+	pattern_Notify_SetAccessControlConfig_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"notify", "backend", "v0", "access"}, ""))
 )
 
 var (

@@ -238,9 +238,9 @@ func RegisterMigrationsHandlerClient(ctx context.Context, mux *runtime.ServeMux,
 }
 
 var (
-	pattern_Migrations_ListMigrations_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v0", "migrations"}, ""))
+	pattern_Migrations_ListMigrations_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"notify", "v0", "migrations"}, ""))
 
-	pattern_Migrations_RunMigrations_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v0", "migrations"}, "run"))
+	pattern_Migrations_RunMigrations_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"notify", "v0", "migrations"}, "run"))
 )
 
 var (

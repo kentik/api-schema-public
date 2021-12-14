@@ -10,7 +10,7 @@
         }
     ],
     "paths": {
-        "/v0/migrations": {
+        "/notify/v0/migrations": {
             "get": {
                 "operationId": "Migrations_ListMigrations",
                 "responses": {
@@ -56,7 +56,7 @@
                 ]
             }
         },
-        "/v0/migrations:run": {
+        "/notify/v0/migrations:run": {
             "post": {
                 "operationId": "Migrations_RunMigrations",
                 "responses": {

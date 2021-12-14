@@ -11,13 +11,13 @@ service Migrations {
 
   rpc ListMigrations(MigrationsRequest) returns (MigrationsResponse) {
     option (google.api.http) = {
-      get: "/v0/migrations"
+      get: "/notify/v0/migrations"
     };
   }
 
   rpc RunMigrations(RunMigrationsRequest) returns (RunMigrationsResponse) {
     option (google.api.http) = {
-      post: "/v0/migrations:run"
+      post: "/notify/v0/migrations:run"
       body: "*"
     };
   }

@@ -23,7 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z\037kentik/notify/backend/v0;notify',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n)kentik/notify/backend/v0/migrations.proto\x12\x14kentik.api.notify.v0\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a+kentik/core/v202012alpha1/annotations.proto\"J\n\x11MigrationsRequest\x12\x35\n\x06status\x18\x01 \x01(\x0e\x32%.kentik.api.notify.v0.MigrationStatus\"I\n\x12MigrationsResponse\x12\x33\n\nmigrations\x18\x01 \x03(\x0b\x32\x1f.kentik.api.notify.v0.Migration\"\x98\x01\n\tMigration\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x35\n\x06status\x18\x03 \x01(\x0e\x32%.kentik.api.notify.v0.MigrationStatus\x12-\n\tappliedOn\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x0b\n\x03sql\x18\x05 \x01(\t\"P\n\x14RunMigrationsRequest\x12\x38\n\x0fmigrationsToRun\x18\x01 \x03(\x0b\x32\x1f.kentik.api.notify.v0.Migration\"Y\n\x15RunMigrationsResponse\x12\x0b\n\x03msg\x18\x01 \x01(\t\x12\x33\n\nmigrations\x18\x02 \x03(\x0b\x32\x1f.kentik.api.notify.v0.Migration*G\n\x0fMigrationStatus\x12\x1a\n\x16unknownMigrationStatus\x10\x00\x12\x0b\n\x07pending\x10\x01\x12\x0b\n\x07\x61pplied\x10\x02\x32\x99\x02\n\nMigrations\x12{\n\x0eListMigrations\x12\'.kentik.api.notify.v0.MigrationsRequest\x1a(.kentik.api.notify.v0.MigrationsResponse\"\x16\x82\xd3\xe4\x93\x02\x10\x12\x0e/v0/migrations\x12\x87\x01\n\rRunMigrations\x12*.kentik.api.notify.v0.RunMigrationsRequest\x1a+.kentik.api.notify.v0.RunMigrationsResponse\"\x1d\x82\xd3\xe4\x93\x02\x17\"\x12/v0/migrations:run:\x01*\x1a\x04\xf8\xd7\x02\x01\x42!Z\x1fkentik/notify/backend/v0;notifyb\x06proto3'
+  serialized_pb=b'\n)kentik/notify/backend/v0/migrations.proto\x12\x14kentik.api.notify.v0\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a+kentik/core/v202012alpha1/annotations.proto\"J\n\x11MigrationsRequest\x12\x35\n\x06status\x18\x01 \x01(\x0e\x32%.kentik.api.notify.v0.MigrationStatus\"I\n\x12MigrationsResponse\x12\x33\n\nmigrations\x18\x01 \x03(\x0b\x32\x1f.kentik.api.notify.v0.Migration\"\x98\x01\n\tMigration\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x35\n\x06status\x18\x03 \x01(\x0e\x32%.kentik.api.notify.v0.MigrationStatus\x12-\n\tappliedOn\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x0b\n\x03sql\x18\x05 \x01(\t\"P\n\x14RunMigrationsRequest\x12\x38\n\x0fmigrationsToRun\x18\x01 \x03(\x0b\x32\x1f.kentik.api.notify.v0.Migration\"Y\n\x15RunMigrationsResponse\x12\x0b\n\x03msg\x18\x01 \x01(\t\x12\x33\n\nmigrations\x18\x02 \x03(\x0b\x32\x1f.kentik.api.notify.v0.Migration*G\n\x0fMigrationStatus\x12\x1a\n\x16unknownMigrationStatus\x10\x00\x12\x0b\n\x07pending\x10\x01\x12\x0b\n\x07\x61pplied\x10\x02\x32\xa8\x02\n\nMigrations\x12\x82\x01\n\x0eListMigrations\x12\'.kentik.api.notify.v0.MigrationsRequest\x1a(.kentik.api.notify.v0.MigrationsResponse\"\x1d\x82\xd3\xe4\x93\x02\x17\x12\x15/notify/v0/migrations\x12\x8e\x01\n\rRunMigrations\x12*.kentik.api.notify.v0.RunMigrationsRequest\x1a+.kentik.api.notify.v0.RunMigrationsResponse\"$\x82\xd3\xe4\x93\x02\x1e\"\x19/notify/v0/migrations:run:\x01*\x1a\x04\xf8\xd7\x02\x01\x42!Z\x1fkentik/notify/backend/v0;notifyb\x06proto3'
   ,
   dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2.DESCRIPTOR,])
 
@@ -318,7 +318,7 @@ _MIGRATIONS = _descriptor.ServiceDescriptor(
   serialized_options=b'\370\327\002\001',
   create_key=_descriptor._internal_create_key,
   serialized_start=728,
-  serialized_end=1009,
+  serialized_end=1024,
   methods=[
   _descriptor.MethodDescriptor(
     name='ListMigrations',
@@ -327,7 +327,7 @@ _MIGRATIONS = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_MIGRATIONSREQUEST,
     output_type=_MIGRATIONSRESPONSE,
-    serialized_options=b'\202\323\344\223\002\020\022\016/v0/migrations',
+    serialized_options=b'\202\323\344\223\002\027\022\025/notify/v0/migrations',
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
@@ -337,7 +337,7 @@ _MIGRATIONS = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_RUNMIGRATIONSREQUEST,
     output_type=_RUNMIGRATIONSRESPONSE,
-    serialized_options=b'\202\323\344\223\002\027\"\022/v0/migrations:run:\001*',
+    serialized_options=b'\202\323\344\223\002\036\"\031/notify/v0/migrations:run:\001*',
     create_key=_descriptor._internal_create_key,
   ),
 ])

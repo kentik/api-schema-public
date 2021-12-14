@@ -723,21 +723,21 @@ func RegisterMetaHandlerClient(ctx context.Context, mux *runtime.ServeMux, clien
 }
 
 var (
-	pattern_Meta_GetDBPoolSettings_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"db", "id", "settings"}, ""))
+	pattern_Meta_GetDBPoolSettings_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"notify", "backend", "v0", "meta", "db", "id", "settings"}, ""))
 
-	pattern_Meta_SetDBPoolSettings_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"db", "id", "settings"}, ""))
+	pattern_Meta_SetDBPoolSettings_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"notify", "backend", "v0", "meta", "db", "id", "settings"}, ""))
 
-	pattern_Meta_GetDBStats_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2}, []string{"db", "id", "stats"}, ""))
+	pattern_Meta_GetDBStats_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"notify", "backend", "v0", "meta", "db", "id", "stats"}, ""))
 
-	pattern_Meta_GetEnv_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0}, []string{"env"}, ""))
+	pattern_Meta_GetEnv_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"notify", "backend", "v0", "meta", "env"}, ""))
 
-	pattern_Meta_GetLogLevel_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"log", "level"}, ""))
+	pattern_Meta_GetLogLevel_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"notify", "backend", "v0", "meta", "log", "level"}, ""))
 
-	pattern_Meta_SetLogLevel_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"log", "level"}, ""))
+	pattern_Meta_SetLogLevel_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"notify", "backend", "v0", "meta", "log", "level"}, ""))
 
-	pattern_Meta_GetLogJSONMode_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"log", "json"}, ""))
+	pattern_Meta_GetLogJSONMode_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"notify", "backend", "v0", "meta", "log", "json"}, ""))
 
-	pattern_Meta_SetLogJSONMode_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"log", "json"}, ""))
+	pattern_Meta_SetLogJSONMode_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"notify", "backend", "v0", "meta", "log", "json"}, ""))
 )
 
 var (
