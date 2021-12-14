@@ -7,7 +7,9 @@ import "google/api/annotations.proto";
 
 service GreeterService {
     rpc SayHello(SayHelloRequest) returns (SayHelloResponse) {
-
+        // BEGIN INTERNAL
+        
+        // END INTERNAL
         option (google.api.http) = {
             get: "/v0/hello/{msg}"
             additional_bindings {
