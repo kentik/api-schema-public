@@ -1529,6 +1529,1409 @@
           "Notify"
         ]
       }
+    },
+    "/v0/channels": {
+      "get": {
+        "operationId": "Notify_ListNotificationChannels2",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v0NotificationChannelsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "showV1Channels",
+            "description": "include v1 channels.",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "managed",
+            "description": "deprecated.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "notManaged",
+              "alertingManaged"
+            ],
+            "default": "notManaged"
+          },
+          {
+            "name": "userChannelNotFoundReturnEmpty",
+            "description": "if no user channel is found, return an empty result.",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "tags": [
+          "Notify"
+        ]
+      },
+      "post": {
+        "operationId": "Notify_CreateNotificationChannel2",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v0NotificationChannelsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v0NotificationChannel"
+            }
+          }
+        ],
+        "tags": [
+          "Notify"
+        ]
+      }
+    },
+    "/v0/channels/alerting/mapping": {
+      "put": {
+        "summary": "ApplyAlertingMapping offers a policy+threshold centric way to manage channels.\nIt replaces selectors in the target channels by simple policy+threshold matchers.",
+        "operationId": "Notify_ApplyAlertingMapping2",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v0NotificationChannelsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v0ApplyAlertingManagedChannelsMappingRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Notify"
+        ]
+      }
+    },
+    "/v0/channels/supported": {
+      "get": {
+        "operationId": "Notify_GetSupportedChannels2",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v0SupportedChannelsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "Notify"
+        ]
+      }
+    },
+    "/v0/channels/user": {
+      "get": {
+        "operationId": "Notify_GetUserChannel2",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v0NotificationChannelResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "showV1Channels",
+            "description": "include v1 channels.",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "managed",
+            "description": "deprecated.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "notManaged",
+              "alertingManaged"
+            ],
+            "default": "notManaged"
+          },
+          {
+            "name": "userChannelNotFoundReturnEmpty",
+            "description": "if no user channel is found, return an empty result.",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "tags": [
+          "Notify"
+        ]
+      },
+      "delete": {
+        "operationId": "Notify_DeleteUserChannel2",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v0NotificationChannelsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "channelVersion",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "channelVersionUnknown",
+              "channelVersion1",
+              "channelVersion2"
+            ],
+            "default": "channelVersionUnknown"
+          },
+          {
+            "name": "channelID",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "channelType",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "channelStatusNone",
+              "enabled",
+              "disabled"
+            ],
+            "default": "channelStatusNone"
+          },
+          {
+            "name": "creationTime",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "editTime",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "config.batchingConfig.maxBatchSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "config.batchingConfig.batchDuration",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.batchingConfig.dailyTimesToSend",
+            "description": "Sends a batch at a certain time each day.\nThere is no associated timezone (and so no accounting for daylight savings).\nThe date portion of the timestamp is ignored, only the time matters.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "config.renderingConfig.customTemplate",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.renderingConfig.uglifyJSON",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "config.renderingConfig.insightsDigest",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "config.sendingConfig.url",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.sendingConfig.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.sendingConfig.usernames",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "config.sendingConfig.token",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.sendingConfig.identifier",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.sendingConfig.maxAttempts",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "config.sendingConfig.cooldownDuration",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.syslogConfig.host",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.syslogConfig.port",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "config.syslogConfig.network",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.syslogConfig.syslogHostname",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.syslogConfig.severity",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "config.syslogConfig.facility",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "config.userChannelUserID",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "config.managed",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "notManaged",
+              "alertingManaged"
+            ],
+            "default": "notManaged"
+          },
+          {
+            "name": "v1Raw",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Notify"
+        ]
+      },
+      "post": {
+        "operationId": "Notify_CreateUserChannel2",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v0NotificationChannelResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v0CreateUserChannelRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Notify"
+        ]
+      }
+    },
+    "/v0/channels/user/subscribe": {
+      "post": {
+        "operationId": "Notify_SubscribeWithUserChannel2",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v0SubscribeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v0SubscribeRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Notify"
+        ]
+      }
+    },
+    "/v0/channels/user/unsubscribe": {
+      "post": {
+        "operationId": "Notify_UnsubscribeWithUserChannel2",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v0SubscribeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v0SubscribeRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Notify"
+        ]
+      }
+    },
+    "/v0/channels/{channelID}": {
+      "get": {
+        "operationId": "Notify_GetNotificationChannel2",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v0NotificationChannelResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "channelID",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "channelVersion",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "channelVersionUnknown",
+              "channelVersion1",
+              "channelVersion2"
+            ],
+            "default": "channelVersionUnknown"
+          },
+          {
+            "name": "channelType",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "channelStatusNone",
+              "enabled",
+              "disabled"
+            ],
+            "default": "channelStatusNone"
+          },
+          {
+            "name": "creationTime",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "editTime",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "config.batchingConfig.maxBatchSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "config.batchingConfig.batchDuration",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.batchingConfig.dailyTimesToSend",
+            "description": "Sends a batch at a certain time each day.\nThere is no associated timezone (and so no accounting for daylight savings).\nThe date portion of the timestamp is ignored, only the time matters.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "config.renderingConfig.customTemplate",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.renderingConfig.uglifyJSON",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "config.renderingConfig.insightsDigest",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "config.sendingConfig.url",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.sendingConfig.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.sendingConfig.usernames",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "config.sendingConfig.token",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.sendingConfig.identifier",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.sendingConfig.maxAttempts",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "config.sendingConfig.cooldownDuration",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.syslogConfig.host",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.syslogConfig.port",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "config.syslogConfig.network",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.syslogConfig.syslogHostname",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.syslogConfig.severity",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "config.syslogConfig.facility",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "config.userChannelUserID",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "config.managed",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "notManaged",
+              "alertingManaged"
+            ],
+            "default": "notManaged"
+          },
+          {
+            "name": "v1Raw",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Notify"
+        ]
+      },
+      "delete": {
+        "operationId": "Notify_DeleteNotificationChannel2",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v0NotificationChannelsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "channelID",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "channelVersion",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "channelVersionUnknown",
+              "channelVersion1",
+              "channelVersion2"
+            ],
+            "default": "channelVersionUnknown"
+          },
+          {
+            "name": "channelType",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "channelStatusNone",
+              "enabled",
+              "disabled"
+            ],
+            "default": "channelStatusNone"
+          },
+          {
+            "name": "creationTime",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "editTime",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "config.batchingConfig.maxBatchSize",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "config.batchingConfig.batchDuration",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.batchingConfig.dailyTimesToSend",
+            "description": "Sends a batch at a certain time each day.\nThere is no associated timezone (and so no accounting for daylight savings).\nThe date portion of the timestamp is ignored, only the time matters.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "config.renderingConfig.customTemplate",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.renderingConfig.uglifyJSON",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "config.renderingConfig.insightsDigest",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "config.sendingConfig.url",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.sendingConfig.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.sendingConfig.usernames",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "config.sendingConfig.token",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.sendingConfig.identifier",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.sendingConfig.maxAttempts",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "config.sendingConfig.cooldownDuration",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.syslogConfig.host",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.syslogConfig.port",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "config.syslogConfig.network",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.syslogConfig.syslogHostname",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "config.syslogConfig.severity",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "config.syslogConfig.facility",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "config.userChannelUserID",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "config.managed",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "notManaged",
+              "alertingManaged"
+            ],
+            "default": "notManaged"
+          },
+          {
+            "name": "v1Raw",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Notify"
+        ]
+      },
+      "put": {
+        "operationId": "Notify_UpdateNotificationChannel2",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v0NotificationChannelsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "channelID",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v0NotificationChannel"
+            }
+          }
+        ],
+        "tags": [
+          "Notify"
+        ]
+      }
+    },
+    "/v0/channels/{channelVersion}/{channelID}/payload": {
+      "post": {
+        "operationId": "Notify_GetNotificationPayload2",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v0NotificationPayloadResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "channelVersion",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "channelVersionUnknown",
+              "channelVersion1",
+              "channelVersion2"
+            ]
+          },
+          {
+            "name": "channelID",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v0NotificationPayloadRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Notify"
+        ]
+      }
+    },
+    "/v0/channels/{channelVersion}/{channelID}/payload/insight": {
+      "post": {
+        "operationId": "Notify_GetNotificationPayloadInsight2",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v0NotificationPayloadResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "channelVersion",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "channelVersionUnknown",
+              "channelVersion1",
+              "channelVersion2"
+            ]
+          },
+          {
+            "name": "channelID",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v0NotificationPayloadRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Notify"
+        ]
+      }
+    },
+    "/v0/channels/{channelVersion}/{channelID}/status": {
+      "get": {
+        "operationId": "Notify_GetLastNotificationAndStatus2",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v0NotificationAndStatusResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "channelVersion",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "channelVersionUnknown",
+              "channelVersion1",
+              "channelVersion2"
+            ]
+          },
+          {
+            "name": "channelID",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "Notify"
+        ]
+      }
+    },
+    "/v0/channels/{channelVersion}/{channelID}/test": {
+      "post": {
+        "summary": "immediately but asynchronously send notification described in the enclosed NotificationPayloadRequest.",
+        "operationId": "Notify_CreateNotificationForTesting2",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v0CreateNotificationForTestingResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "channelVersion",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "channelVersionUnknown",
+              "channelVersion1",
+              "channelVersion2"
+            ]
+          },
+          {
+            "name": "channelID",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v0CreateNotificationForTestingRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Notify"
+        ]
+      }
+    },
+    "/v0/channels/{channelVersion}/{channelID}/test/insight": {
+      "post": {
+        "operationId": "Notify_CreateNotificationForTestingInsight2",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v0CreateNotificationForTestingResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "channelVersion",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "channelVersionUnknown",
+              "channelVersion1",
+              "channelVersion2"
+            ]
+          },
+          {
+            "name": "channelID",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v0CreateNotificationForTestingRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Notify"
+        ]
+      }
+    },
+    "/v0/channels:search": {
+      "post": {
+        "operationId": "Notify_SearchNotificationChannels2",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v0NotificationChannelsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v0NotificationChannelsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Notify"
+        ]
+      }
+    },
+    "/v0/notification/event": {
+      "post": {
+        "summary": "Note: internally can publish notifications directly to Kafka.",
+        "operationId": "Notify_CreateNotificationEvent2",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v0NotificationEventResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v0NotificationEvent"
+            }
+          }
+        ],
+        "tags": [
+          "Notify"
+        ]
+      }
+    },
+    "/v0/notifications/v/{channelVersion}/{channelID}": {
+      "get": {
+        "operationId": "Notify_ListNotifications2",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v0NotificationsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "channelVersion",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "channelVersionUnknown",
+              "channelVersion1",
+              "channelVersion2"
+            ]
+          },
+          {
+            "name": "channelID",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "notificationID",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "Notify"
+        ]
+      }
+    },
+    "/v0/notifications:search": {
+      "post": {
+        "operationId": "Notify_SearchDeliveryResults2",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v0DeliveryResultsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v0DeliveryResultsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Notify"
+        ]
+      }
     }
   },
   "definitions": {
