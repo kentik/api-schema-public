@@ -4,8 +4,11 @@ option go_package = "kentik/notify/backend/v0;notify";
 
 import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
+import "kentik/core/v202012alpha1/annotations.proto";
 
 service Migrations {
+  option (kentik.core.v202012alpha1.private_service) = true;
+
   rpc ListMigrations(MigrationsRequest) returns (MigrationsResponse) {
     option (google.api.http) = {
       get: "/v0/migrations"
