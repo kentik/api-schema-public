@@ -154,6 +154,11 @@ class SyntheticsAdminServiceStub(object):
                 request_serializer=kentik_dot_synthetics_dot_v202202_dot_synthetics__pb2.DeleteTestRequest.SerializeToString,
                 response_deserializer=kentik_dot_synthetics_dot_v202202_dot_synthetics__pb2.DeleteTestResponse.FromString,
                 )
+        self.SetTestStatus = channel.unary_unary(
+                '/kentik.synthetics.v202202.SyntheticsAdminService/SetTestStatus',
+                request_serializer=kentik_dot_synthetics_dot_v202202_dot_synthetics__pb2.SetTestStatusRequest.SerializeToString,
+                response_deserializer=kentik_dot_synthetics_dot_v202202_dot_synthetics__pb2.SetTestStatusResponse.FromString,
+                )
 
 
 class SyntheticsAdminServiceServicer(object):
@@ -217,6 +222,12 @@ class SyntheticsAdminServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def SetTestStatus(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_SyntheticsAdminServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -264,6 +275,11 @@ def add_SyntheticsAdminServiceServicer_to_server(servicer, server):
                     servicer.DeleteTest,
                     request_deserializer=kentik_dot_synthetics_dot_v202202_dot_synthetics__pb2.DeleteTestRequest.FromString,
                     response_serializer=kentik_dot_synthetics_dot_v202202_dot_synthetics__pb2.DeleteTestResponse.SerializeToString,
+            ),
+            'SetTestStatus': grpc.unary_unary_rpc_method_handler(
+                    servicer.SetTestStatus,
+                    request_deserializer=kentik_dot_synthetics_dot_v202202_dot_synthetics__pb2.SetTestStatusRequest.FromString,
+                    response_serializer=kentik_dot_synthetics_dot_v202202_dot_synthetics__pb2.SetTestStatusResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -425,5 +441,22 @@ class SyntheticsAdminService(object):
         return grpc.experimental.unary_unary(request, target, '/kentik.synthetics.v202202.SyntheticsAdminService/DeleteTest',
             kentik_dot_synthetics_dot_v202202_dot_synthetics__pb2.DeleteTestRequest.SerializeToString,
             kentik_dot_synthetics_dot_v202202_dot_synthetics__pb2.DeleteTestResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def SetTestStatus(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/kentik.synthetics.v202202.SyntheticsAdminService/SetTestStatus',
+            kentik_dot_synthetics_dot_v202202_dot_synthetics__pb2.SetTestStatusRequest.SerializeToString,
+            kentik_dot_synthetics_dot_v202202_dot_synthetics__pb2.SetTestStatusResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

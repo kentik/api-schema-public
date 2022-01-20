@@ -428,6 +428,58 @@
                 ]
             }
         },
+        "/synthetics/v202202/tests/{id}/status": {
+            "put": {
+                "summary": "Update a test status.",
+                "description": "Update the status of a test.",
+                "operationId": "SetTestStatus",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202202SetTestStatusResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202202SetTestStatusRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "SyntheticsAdminService"
+                ]
+            }
+        },
         "/synthetics/v202202/trace": {
             "post": {
                 "summary": "Get trace route data.",
@@ -1241,6 +1293,20 @@
                         "$ref": "#/components/schemas/v202202MetricData"
                     }
                 }
+            },
+            "v202202SetTestStatusRequest": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "$ref": "#/components/schemas/v202202TestStatus"
+                    }
+                }
+            },
+            "v202202SetTestStatusResponse": {
+                "type": "object"
             },
             "v202202Stats": {
                 "type": "object",

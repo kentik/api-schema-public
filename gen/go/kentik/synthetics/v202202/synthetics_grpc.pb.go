@@ -149,6 +149,7 @@ type SyntheticsAdminServiceClient interface {
 	GetTest(ctx context.Context, in *GetTestRequest, opts ...grpc.CallOption) (*GetTestResponse, error)
 	UpdateTest(ctx context.Context, in *UpdateTestRequest, opts ...grpc.CallOption) (*UpdateTestResponse, error)
 	DeleteTest(ctx context.Context, in *DeleteTestRequest, opts ...grpc.CallOption) (*DeleteTestResponse, error)
+	SetTestStatus(ctx context.Context, in *SetTestStatusRequest, opts ...grpc.CallOption) (*SetTestStatusResponse, error)
 }
 
 type syntheticsAdminServiceClient struct {
@@ -240,6 +241,15 @@ func (c *syntheticsAdminServiceClient) DeleteTest(ctx context.Context, in *Delet
 	return out, nil
 }
 
+func (c *syntheticsAdminServiceClient) SetTestStatus(ctx context.Context, in *SetTestStatusRequest, opts ...grpc.CallOption) (*SetTestStatusResponse, error) {
+	out := new(SetTestStatusResponse)
+	err := c.cc.Invoke(ctx, "/kentik.synthetics.v202202.SyntheticsAdminService/SetTestStatus", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SyntheticsAdminServiceServer is the server API for SyntheticsAdminService service.
 // All implementations should embed UnimplementedSyntheticsAdminServiceServer
 // for forward compatibility
@@ -253,6 +263,7 @@ type SyntheticsAdminServiceServer interface {
 	GetTest(context.Context, *GetTestRequest) (*GetTestResponse, error)
 	UpdateTest(context.Context, *UpdateTestRequest) (*UpdateTestResponse, error)
 	DeleteTest(context.Context, *DeleteTestRequest) (*DeleteTestResponse, error)
+	SetTestStatus(context.Context, *SetTestStatusRequest) (*SetTestStatusResponse, error)
 }
 
 // UnimplementedSyntheticsAdminServiceServer should be embedded to have forward compatible implementations.
@@ -285,6 +296,9 @@ func (UnimplementedSyntheticsAdminServiceServer) UpdateTest(context.Context, *Up
 }
 func (UnimplementedSyntheticsAdminServiceServer) DeleteTest(context.Context, *DeleteTestRequest) (*DeleteTestResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteTest not implemented")
+}
+func (UnimplementedSyntheticsAdminServiceServer) SetTestStatus(context.Context, *SetTestStatusRequest) (*SetTestStatusResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetTestStatus not implemented")
 }
 
 // UnsafeSyntheticsAdminServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -460,6 +474,24 @@ func _SyntheticsAdminService_DeleteTest_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SyntheticsAdminService_SetTestStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetTestStatusRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SyntheticsAdminServiceServer).SetTestStatus(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kentik.synthetics.v202202.SyntheticsAdminService/SetTestStatus",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SyntheticsAdminServiceServer).SetTestStatus(ctx, req.(*SetTestStatusRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // SyntheticsAdminService_ServiceDesc is the grpc.ServiceDesc for SyntheticsAdminService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -502,6 +534,10 @@ var SyntheticsAdminService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteTest",
 			Handler:    _SyntheticsAdminService_DeleteTest_Handler,
+		},
+		{
+			MethodName: "SetTestStatus",
+			Handler:    _SyntheticsAdminService_SetTestStatus_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

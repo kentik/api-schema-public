@@ -532,6 +532,14 @@ message DeleteTestRequest {
 
 message DeleteTestResponse {}
 
+message SetTestStatusRequest {
+  string id = 1;
+  TestStatus status = 2;
+}
+
+message SetTestStatusResponse {
+}
+
 service SyntheticsAdminService {
   option (google.api.default_host) = "grpc.api.kentik.com";
   option (kentik.core.v202012alpha1.service_scope) = "admin.synthetics";
@@ -648,6 +656,19 @@ service SyntheticsAdminService {
       operation_id: "TestDelete"
       summary: "Delete an Synthetics Test."
       description: "Deletes the synthetics test specified with id."
+    };
+  }
+
+  rpc SetTestStatus(SetTestStatusRequest) returns (SetTestStatusResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:write";
+    option (google.api.http) = {
+      put: "/synthetics/v202202/tests/{id}/status"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "SetTestStatus"
+      summary: "Update a test status."
+      description: "Update the status of a test."
     };
   }
 }

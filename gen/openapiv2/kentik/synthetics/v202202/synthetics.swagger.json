@@ -341,6 +341,46 @@
         ]
       }
     },
+    "/synthetics/v202202/tests/{id}/status": {
+      "put": {
+        "summary": "Update a test status.",
+        "description": "Update the status of a test.",
+        "operationId": "SetTestStatus",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202202SetTestStatusResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202202SetTestStatusRequest"
+            }
+          }
+        ],
+        "tags": [
+          "SyntheticsAdminService"
+        ]
+      }
+    },
     "/synthetics/v202202/trace": {
       "post": {
         "summary": "Get trace route data.",
@@ -1123,6 +1163,20 @@
           "$ref": "#/definitions/v202202MetricData"
         }
       }
+    },
+    "v202202SetTestStatusRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/v202202TestStatus"
+        }
+      }
+    },
+    "v202202SetTestStatusResponse": {
+      "type": "object"
     },
     "v202202Stats": {
       "type": "object",
