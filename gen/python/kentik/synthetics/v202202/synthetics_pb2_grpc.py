@@ -19,11 +19,6 @@ class SyntheticsDataServiceStub(object):
                 request_serializer=kentik_dot_synthetics_dot_v202202_dot_synthetics__pb2.GetResultsForTestsRequest.SerializeToString,
                 response_deserializer=kentik_dot_synthetics_dot_v202202_dot_synthetics__pb2.GetResultsForTestsResponse.FromString,
                 )
-        self.GetHealthForTests = channel.unary_unary(
-                '/kentik.synthetics.v202202.SyntheticsDataService/GetHealthForTests',
-                request_serializer=kentik_dot_synthetics_dot_v202202_dot_synthetics__pb2.GetHealthForTestsRequest.SerializeToString,
-                response_deserializer=kentik_dot_synthetics_dot_v202202_dot_synthetics__pb2.GetHealthForTestsResponse.FromString,
-                )
         self.GetTraceForTest = channel.unary_unary(
                 '/kentik.synthetics.v202202.SyntheticsDataService/GetTraceForTest',
                 request_serializer=kentik_dot_synthetics_dot_v202202_dot_synthetics__pb2.GetTraceForTestRequest.SerializeToString,
@@ -36,13 +31,6 @@ class SyntheticsDataServiceServicer(object):
 
     def GetResultsForTests(self, request, context):
         """Get measurement results for a set of tests
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def GetHealthForTests(self, request, context):
-        """Get health evalutation for a set of tests
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -61,11 +49,6 @@ def add_SyntheticsDataServiceServicer_to_server(servicer, server):
                     servicer.GetResultsForTests,
                     request_deserializer=kentik_dot_synthetics_dot_v202202_dot_synthetics__pb2.GetResultsForTestsRequest.FromString,
                     response_serializer=kentik_dot_synthetics_dot_v202202_dot_synthetics__pb2.GetResultsForTestsResponse.SerializeToString,
-            ),
-            'GetHealthForTests': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetHealthForTests,
-                    request_deserializer=kentik_dot_synthetics_dot_v202202_dot_synthetics__pb2.GetHealthForTestsRequest.FromString,
-                    response_serializer=kentik_dot_synthetics_dot_v202202_dot_synthetics__pb2.GetHealthForTestsResponse.SerializeToString,
             ),
             'GetTraceForTest': grpc.unary_unary_rpc_method_handler(
                     servicer.GetTraceForTest,
@@ -96,23 +79,6 @@ class SyntheticsDataService(object):
         return grpc.experimental.unary_unary(request, target, '/kentik.synthetics.v202202.SyntheticsDataService/GetResultsForTests',
             kentik_dot_synthetics_dot_v202202_dot_synthetics__pb2.GetResultsForTestsRequest.SerializeToString,
             kentik_dot_synthetics_dot_v202202_dot_synthetics__pb2.GetResultsForTestsResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def GetHealthForTests(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/kentik.synthetics.v202202.SyntheticsDataService/GetHealthForTests',
-            kentik_dot_synthetics_dot_v202202_dot_synthetics__pb2.GetHealthForTestsRequest.SerializeToString,
-            kentik_dot_synthetics_dot_v202202_dot_synthetics__pb2.GetHealthForTestsResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

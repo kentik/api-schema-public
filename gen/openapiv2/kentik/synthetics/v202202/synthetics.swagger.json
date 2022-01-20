@@ -151,40 +151,6 @@
         ]
       }
     },
-    "/synthetics/v202202/health": {
-      "post": {
-        "summary": "Get health status for synthetics tests.",
-        "description": "Returns health evaluation results for set of tests for specified period of time, or based on the lastest available data.",
-        "operationId": "GetHealthForTests",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/v202202GetHealthForTestsResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v202202GetHealthForTestsRequest"
-            }
-          }
-        ],
-        "tags": [
-          "SyntheticsDataService"
-        ]
-      }
-    },
     "/synthetics/v202202/results": {
       "post": {
         "summary": "Get results for synthetic tests.",
@@ -542,27 +508,13 @@
         }
       }
     },
-    "v202202AgentHealth": {
-      "type": "object",
-      "properties": {
-        "agentId": {
-          "type": "string"
-        },
-        "agentTaskHealth": {
-          "type": "string"
-        },
-        "tasks": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/v202202TaskHealth"
-          }
-        }
-      }
-    },
     "v202202AgentResults": {
       "type": "object",
       "properties": {
         "agentId": {
+          "type": "string"
+        },
+        "health": {
           "type": "string"
         },
         "tasks": {
@@ -664,9 +616,6 @@
         "latency": {
           "$ref": "#/definitions/v202202MetricData"
         },
-        "jitter": {
-          "$ref": "#/definitions/v202202MetricData"
-        },
         "response": {
           "$ref": "#/definitions/v202202DNSResponseData"
         }
@@ -722,53 +671,6 @@
       "properties": {
         "agent": {
           "$ref": "#/definitions/v202202Agent"
-        }
-      }
-    },
-    "v202202GetHealthForTestsRequest": {
-      "type": "object",
-      "properties": {
-        "ids": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "List of ids of the tests to get health for."
-        },
-        "startTime": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Start of the time interval for this query."
-        },
-        "endTime": {
-          "type": "string",
-          "format": "date-time",
-          "description": "End of the time interval for this query."
-        },
-        "agentIds": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "title": "Optionally, only look at a subset of agents"
-        },
-        "targets": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "Optionally only look at a subset of targets."
-        }
-      }
-    },
-    "v202202GetHealthForTestsResponse": {
-      "type": "object",
-      "properties": {
-        "health": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/v202202TestHealth"
-          }
         }
       }
     },
@@ -930,9 +832,6 @@
           "type": "string"
         },
         "latency": {
-          "$ref": "#/definitions/v202202MetricData"
-        },
-        "jitter": {
           "$ref": "#/definitions/v202202MetricData"
         },
         "response": {
@@ -1113,6 +1012,9 @@
         "rollingStddev": {
           "type": "integer",
           "format": "int64"
+        },
+        "health": {
+          "type": "string"
         }
       }
     },
@@ -1139,6 +1041,18 @@
           "type": "string"
         },
         "siteId": {
+          "type": "string"
+        }
+      }
+    },
+    "v202202PacketLossData": {
+      "type": "object",
+      "properties": {
+        "current": {
+          "type": "number",
+          "format": "double"
+        },
+        "health": {
           "type": "string"
         }
       }
@@ -1200,8 +1114,7 @@
           "type": "string"
         },
         "packetLoss": {
-          "type": "number",
-          "format": "double"
+          "$ref": "#/definitions/v202202PacketLossData"
         },
         "latency": {
           "$ref": "#/definitions/v202202MetricData"
@@ -1228,24 +1141,6 @@
         }
       }
     },
-    "v202202TaskHealth": {
-      "type": "object",
-      "properties": {
-        "taskType": {
-          "type": "string"
-        },
-        "target": {
-          "type": "string"
-        },
-        "health": {
-          "type": "string"
-        },
-        "time": {
-          "type": "string",
-          "format": "date-time"
-        }
-      }
-    },
     "v202202TaskResults": {
       "type": "object",
       "properties": {
@@ -1258,9 +1153,8 @@
         "dns": {
           "$ref": "#/definitions/v202202DNSResults"
         },
-        "time": {
-          "type": "string",
-          "format": "date-time"
+        "health": {
+          "type": "string"
         }
       }
     },
@@ -1298,23 +1192,6 @@
         }
       }
     },
-    "v202202TestHealth": {
-      "type": "object",
-      "properties": {
-        "testId": {
-          "type": "string"
-        },
-        "overallHealth": {
-          "type": "string"
-        },
-        "agents": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/v202202AgentHealth"
-          }
-        }
-      }
-    },
     "v202202TestPingSettings": {
       "type": "object",
       "properties": {
@@ -1343,6 +1220,13 @@
       "type": "object",
       "properties": {
         "testId": {
+          "type": "string"
+        },
+        "time": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "health": {
           "type": "string"
         },
         "agents": {

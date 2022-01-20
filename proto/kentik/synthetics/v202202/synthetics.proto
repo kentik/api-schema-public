@@ -264,38 +264,23 @@ message HTTPTest {
   HTTPConfig http = 2;
 }
 
-// === TEST HEALTH  status ===
-
-message TaskHealth {
-  string task_type = 1;
-  string target = 2;
-  string health = 3;
-  google.protobuf.Timestamp time = 4;
-}
-
-message AgentHealth {
-  string agent_id = 1;
-  string agent_task_health = 2;
-  repeated TaskHealth tasks = 3;
-}
-
-message TestHealth {
-  string test_id = 1;
-  string overall_health = 2;
-  repeated AgentHealth agents = 3;
-}
-
-// === TEST RESULTS (metrics, stats and responses)
+// === TEST RESULTS (metrics, stats, responses, health)
 
 message MetricData {
   uint32 current = 1;
   uint32 rolling_avg = 2;
   uint32 rolling_stddev = 3;
+  string health = 4;
+}
+
+message PacketLossData {
+  double current = 1;
+  string health = 2;
 }
 
 message PingResults {
   string target = 1;
-  double packet_loss = 2;
+  PacketLossData packet_loss = 2;
   MetricData latency = 3;
   MetricData jitter = 4;
 }
@@ -309,7 +294,6 @@ message HTTPResponseData {
 message HTTPResults {
   string target = 1;
   MetricData latency = 2;
-  MetricData jitter = 3;
   HTTPResponseData response = 4;
 }
 
@@ -322,7 +306,6 @@ message DNSResults {
   string target = 1;
   string server = 2;
   MetricData latency = 3;
-  MetricData jitter = 4;
   DNSResponseData response = 5;
 }
 
@@ -332,17 +315,20 @@ message TaskResults {
     HTTPResults http = 2;
     DNSResults dns = 3;
   }
-  google.protobuf.Timestamp time = 4;
+  string health = 4;
 }
 
 message AgentResults {
   string agent_id = 1;
-  repeated TaskResults tasks = 2;
+  string health = 2;
+  repeated TaskResults tasks = 3;
 }
 
 message TestResults {
   string test_id = 1;
-  repeated AgentResults agents = 2;
+  google.protobuf.Timestamp time = 2;
+  string health = 3;
+  repeated AgentResults agents = 4;
 }
 
 // === TEST TRACE results ===
@@ -397,27 +383,6 @@ message Path {
 
 // Data Service
 // -------------------------------------------------------
-
-message GetHealthForTestsRequest {
-  // List of ids of the tests to get health for.
-  repeated string ids = 1;
-
-  // Start of the time interval for this query.
-  google.protobuf.Timestamp start_time = 2;
-
-  // End of the time interval for this query.
-  google.protobuf.Timestamp end_time = 3;
-
-  // Optionally, only look at a subset of agents
-  repeated string agent_ids = 4;
-
-  // Optionally only look at a subset of targets.
-  repeated string targets = 5;
-}
-
-message GetHealthForTestsResponse {
-  repeated TestHealth health = 1;
-}
 
 message GetResultsForTestsRequest {
   // List of ids of the tests to get health for.
@@ -477,19 +442,6 @@ service SyntheticsDataService {
       operation_id: "GetResultsForTests"
       summary: "Get results for synthetic tests."
       description: "Returns measurement results for a set of test for specified period of time, or the latest available data."
-    };
-  }
-  // Get health evalutation for a set of tests
-  rpc GetHealthForTests (GetHealthForTestsRequest) returns (GetHealthForTestsResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "synthetics:read";
-    option (google.api.http) = {
-      post: "/synthetics/v202202/health"
-      body: "*"
-    };
-    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
-      operation_id: "GetHealthForTests"
-      summary: "Get health status for synthetics tests."
-      description: "Returns health evaluation results for set of tests for specified period of time, or based on the lastest available data."
     };
   }
 

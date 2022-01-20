@@ -26,7 +26,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'ZHgithub.com/kentik/api-schema/gen/go/kentik/synthetics/v202202;synthetics\222A\237\002\022a\n\031Synthetics Monitoring API\"7\n\026Kentik API Engineering\022\035https://github.com/kentik/api2\013202110beta2*\001\0022\020application/json:\020application/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r5\n\026More about Kentik APIs\022\033https://docs.kentik.com/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n*kentik/synthetics/v202202/synthetics.proto\x12\x19kentik.synthetics.v202202\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a google/protobuf/field_mask.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a+kentik/core/v202012alpha1/annotations.proto\"\x82\x04\n\x05\x41gent\x12\n\n\x02id\x18\x01 \x01(\t\x12\x11\n\tsite_name\x18\x02 \x01(\t\x12\x36\n\x06status\x18\x03 \x01(\x0e\x32&.kentik.synthetics.v202202.AgentStatus\x12\r\n\x05\x61lias\x18\x04 \x01(\t\x12\x0c\n\x04type\x18\x05 \x01(\t\x12\n\n\x02os\x18\x06 \x01(\t\x12\n\n\x02ip\x18\x07 \x01(\t\x12\x0b\n\x03lat\x18\x08 \x01(\x01\x12\x0c\n\x04long\x18\t \x01(\x01\x12/\n\x0blast_authed\x18\n \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x33\n\x06\x66\x61mily\x18\x0b \x01(\x0e\x32#.kentik.synthetics.v202202.IPFamily\x12\x0b\n\x03\x61sn\x18\x0c \x01(\r\x12\x0f\n\x07site_id\x18\r \x01(\t\x12\x0f\n\x07version\x18\x0e \x01(\t\x12\x0c\n\x04\x63ity\x18\x10 \x01(\t\x12\x0e\n\x06region\x18\x11 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x12 \x01(\t\x12\x10\n\x08test_ids\x18\x13 \x03(\t\x12\x10\n\x08local_ip\x18\x14 \x01(\t\x12\x14\n\x0c\x63loud_region\x18\x16 \x01(\t\x12\x16\n\x0e\x63loud_provider\x18\x17 \x01(\t\x12<\n\nagent_impl\x18\x18 \x01(\x0e\x32(.kentik.synthetics.v202202.ImplementType\"8\n\x08UserInfo\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x11\n\tfull_name\x18\x03 \x01(\t\"\xed\x02\n\x04Test\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0c\n\x04type\x18\x03 \x01(\t\x12\x35\n\x06status\x18\x05 \x01(\x0e\x32%.kentik.synthetics.v202202.TestStatus\x12\x39\n\x08settings\x18\x06 \x01(\x0b\x32\'.kentik.synthetics.v202202.TestSettings\x12)\n\x05\x63\x64\x61te\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12)\n\x05\x65\x64\x61te\x18\x08 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x37\n\ncreated_by\x18\t \x01(\x0b\x32#.kentik.synthetics.v202202.UserInfo\x12<\n\x0flast_updated_by\x18\n \x01(\x0b\x32#.kentik.synthetics.v202202.UserInfo\"\xd0\x02\n\nHTTPConfig\x12\x0e\n\x06method\x18\x01 \x01(\t\x12\x43\n\x07headers\x18\x02 \x03(\x0b\x32\x32.kentik.synthetics.v202202.HTTPConfig.HeadersEntry\x12\x0c\n\x04\x62ody\x18\x03 \x01(\t\x12\x19\n\x11ignore_tls_errors\x18\x04 \x01(\x08\x12N\n\rcss_selectors\x18\x05 \x03(\x0b\x32\x37.kentik.synthetics.v202202.HTTPConfig.CssSelectorsEntry\x12\x0f\n\x07timeout\x18\x06 \x01(\r\x1a.\n\x0cHeadersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x33\n\x11\x43ssSelectorsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xcc\x06\n\x0cTestSettings\x12;\n\x08hostname\x18\x01 \x01(\x0b\x32\'.kentik.synthetics.v202202.HostnameTestH\x00\x12/\n\x02ip\x18\x02 \x01(\x0b\x32!.kentik.synthetics.v202202.IpTestH\x00\x12\x35\n\x05\x61gent\x18\x03 \x01(\x0b\x32$.kentik.synthetics.v202202.AgentTestH\x00\x12\x33\n\x04\x66low\x18\x04 \x01(\x0b\x32#.kentik.synthetics.v202202.FlowTestH\x00\x12\x31\n\x03\x64ns\x18\x05 \x01(\x0b\x32\".kentik.synthetics.v202202.DnsTestH\x00\x12\x32\n\x03url\x18\x06 \x01(\x0b\x32#.kentik.synthetics.v202202.HTTPTestH\x00\x12\x39\n\x0cnetwork_grid\x18\x07 \x01(\x0b\x32!.kentik.synthetics.v202202.IpTestH\x00\x12\x38\n\tpage_load\x18\x08 \x01(\x0b\x32#.kentik.synthetics.v202202.HTTPTestH\x00\x12\x36\n\x08\x64ns_grid\x18\t \x01(\x0b\x32\".kentik.synthetics.v202202.DnsTestH\x00\x12\x11\n\tagent_ids\x18\n \x03(\t\x12\r\n\x05tasks\x18\x0b \x03(\t\x12\x42\n\x0fhealth_settings\x18\x0c \x01(\x0b\x32).kentik.synthetics.v202202.HealthSettings\x12\x39\n\x04ping\x18\r \x01(\x0b\x32+.kentik.synthetics.v202202.TestPingSettings\x12;\n\x05trace\x18\x0e \x01(\x0b\x32,.kentik.synthetics.v202202.TestTraceSettings\x12\x0e\n\x06period\x18\x0f \x01(\r\x12\x33\n\x06\x66\x61mily\x18\x10 \x01(\x0e\x32#.kentik.synthetics.v202202.IPFamily\x12\x1d\n\x15notification_channels\x18\x11 \x03(\tB\x0c\n\ndefinition\"a\n\x10TestPingSettings\x12\r\n\x05\x63ount\x18\x01 \x01(\r\x12\x10\n\x08protocol\x18\x02 \x01(\t\x12\x0c\n\x04port\x18\x03 \x01(\r\x12\x0f\n\x07timeout\x18\x04 \x01(\r\x12\r\n\x05\x64\x65lay\x18\x05 \x01(\x02\"q\n\x11TestTraceSettings\x12\r\n\x05\x63ount\x18\x01 \x01(\r\x12\x10\n\x08protocol\x18\x02 \x01(\t\x12\x0c\n\x04port\x18\x03 \x01(\r\x12\x0f\n\x07timeout\x18\x04 \x01(\r\x12\r\n\x05limit\x18\x05 \x01(\r\x12\r\n\x05\x64\x65lay\x18\x06 \x01(\x02\"\x8f\x04\n\x0eHealthSettings\x12\x18\n\x10latency_critical\x18\x01 \x01(\x02\x12\x17\n\x0flatency_warning\x18\x02 \x01(\x02\x12\x1c\n\x14packet_loss_critical\x18\x03 \x01(\x02\x12\x1b\n\x13packet_loss_warning\x18\x04 \x01(\x02\x12\x17\n\x0fjitter_critical\x18\x05 \x01(\x02\x12\x16\n\x0ejitter_warning\x18\x06 \x01(\x02\x12\x1d\n\x15http_latency_critical\x18\x07 \x01(\x02\x12\x1c\n\x14http_latency_warning\x18\x08 \x01(\x02\x12\x18\n\x10http_valid_codes\x18\t \x03(\r\x12\x17\n\x0f\x64ns_valid_codes\x18\n \x03(\r\x12\x1f\n\x17latency_critical_stddev\x18\x0b \x01(\x02\x12\x1e\n\x16latency_warning_stddev\x18\x0c \x01(\x02\x12\x1e\n\x16jitter_critical_stddev\x18\r \x01(\x02\x12\x1d\n\x15jitter_warning_stddev\x18\x0e \x01(\x02\x12$\n\x1chttp_latency_critical_stddev\x18\x0f \x01(\x02\x12#\n\x1bhttp_latency_warning_stddev\x18\x10 \x01(\x02\x12#\n\x1bunhealthy_subtest_threshold\x18\x11 \x01(\r\"\x1e\n\x0cHostnameTest\x12\x0e\n\x06target\x18\x01 \x01(\t\"\x19\n\x06IpTest\x12\x0f\n\x07targets\x18\x01 \x03(\t\"\x1b\n\tAgentTest\x12\x0e\n\x06target\x18\x01 \x01(\t\"\x8e\x01\n\x08\x46lowTest\x12\x0e\n\x06target\x18\x01 \x01(\t\x12&\n\x1etarget_refresh_interval_millis\x18\x02 \x01(\r\x12\x11\n\tmax_tasks\x18\x03 \x01(\r\x12\x0c\n\x04type\x18\x04 \x01(\t\x12\x16\n\x0einet_direction\x18\x05 \x01(\t\x12\x11\n\tdirection\x18\x06 \x01(\t\"a\n\tDNSConfig\x12\x0f\n\x07timeout\x18\x01 \x01(\r\x12\x32\n\x04type\x18\x02 \x01(\x0e\x32$.kentik.synthetics.v202202.DNSRecord\x12\x0f\n\x07servers\x18\x03 \x03(\t\"M\n\x07\x44nsTest\x12\x0f\n\x07targets\x18\x01 \x03(\t\x12\x31\n\x03\x64ns\x18\x02 \x01(\x0b\x32$.kentik.synthetics.v202202.DNSConfig\"O\n\x08HTTPTest\x12\x0e\n\x06target\x18\x01 \x01(\t\x12\x33\n\x04http\x18\x02 \x01(\x0b\x32%.kentik.synthetics.v202202.HTTPConfig\"i\n\nTaskHealth\x12\x11\n\ttask_type\x18\x01 \x01(\t\x12\x0e\n\x06target\x18\x02 \x01(\t\x12\x0e\n\x06health\x18\x03 \x01(\t\x12(\n\x04time\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"p\n\x0b\x41gentHealth\x12\x10\n\x08\x61gent_id\x18\x01 \x01(\t\x12\x19\n\x11\x61gent_task_health\x18\x02 \x01(\t\x12\x34\n\x05tasks\x18\x03 \x03(\x0b\x32%.kentik.synthetics.v202202.TaskHealth\"m\n\nTestHealth\x12\x0f\n\x07test_id\x18\x01 \x01(\t\x12\x16\n\x0eoverall_health\x18\x02 \x01(\t\x12\x36\n\x06\x61gents\x18\x03 \x03(\x0b\x32&.kentik.synthetics.v202202.AgentHealth\"J\n\nMetricData\x12\x0f\n\x07\x63urrent\x18\x01 \x01(\r\x12\x13\n\x0brolling_avg\x18\x02 \x01(\r\x12\x16\n\x0erolling_stddev\x18\x03 \x01(\r\"\xa1\x01\n\x0bPingResults\x12\x0e\n\x06target\x18\x01 \x01(\t\x12\x13\n\x0bpacket_loss\x18\x02 \x01(\x01\x12\x36\n\x07latency\x18\x03 \x01(\x0b\x32%.kentik.synthetics.v202202.MetricData\x12\x35\n\x06jitter\x18\x04 \x01(\x0b\x32%.kentik.synthetics.v202202.MetricData\">\n\x10HTTPResponseData\x12\x0e\n\x06status\x18\x01 \x01(\r\x12\x0c\n\x04size\x18\x02 \x01(\r\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\t\"\xcb\x01\n\x0bHTTPResults\x12\x0e\n\x06target\x18\x01 \x01(\t\x12\x36\n\x07latency\x18\x02 \x01(\x0b\x32%.kentik.synthetics.v202202.MetricData\x12\x35\n\x06jitter\x18\x03 \x01(\x0b\x32%.kentik.synthetics.v202202.MetricData\x12=\n\x08response\x18\x04 \x01(\x0b\x32+.kentik.synthetics.v202202.HTTPResponseData\"/\n\x0f\x44NSResponseData\x12\x0e\n\x06status\x18\x01 \x01(\r\x12\x0c\n\x04\x64\x61ta\x18\x02 \x01(\t\"\xd9\x01\n\nDNSResults\x12\x0e\n\x06target\x18\x01 \x01(\t\x12\x0e\n\x06server\x18\x02 \x01(\t\x12\x36\n\x07latency\x18\x03 \x01(\x0b\x32%.kentik.synthetics.v202202.MetricData\x12\x35\n\x06jitter\x18\x04 \x01(\x0b\x32%.kentik.synthetics.v202202.MetricData\x12<\n\x08response\x18\x05 \x01(\x0b\x32*.kentik.synthetics.v202202.DNSResponseData\"\xea\x01\n\x0bTaskResults\x12\x36\n\x04ping\x18\x01 \x01(\x0b\x32&.kentik.synthetics.v202202.PingResultsH\x00\x12\x36\n\x04http\x18\x02 \x01(\x0b\x32&.kentik.synthetics.v202202.HTTPResultsH\x00\x12\x34\n\x03\x64ns\x18\x03 \x01(\x0b\x32%.kentik.synthetics.v202202.DNSResultsH\x00\x12(\n\x04time\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x0b\n\ttask_type\"W\n\x0c\x41gentResults\x12\x10\n\x08\x61gent_id\x18\x01 \x01(\t\x12\x35\n\x05tasks\x18\x02 \x03(\x0b\x32&.kentik.synthetics.v202202.TaskResults\"W\n\x0bTestResults\x12\x0f\n\x07test_id\x18\x01 \x01(\t\x12\x37\n\x06\x61gents\x18\x02 \x03(\x0b\x32\'.kentik.synthetics.v202202.AgentResults\"2\n\x05Stats\x12\x0f\n\x07\x61verage\x18\x01 \x01(\x05\x12\x0b\n\x03min\x18\x02 \x01(\x05\x12\x0b\n\x03max\x18\x03 \x01(\x05\"^\n\x08Location\x12\x10\n\x08latitude\x18\x08 \x01(\x01\x12\x11\n\tlongitude\x18\t \x01(\x01\x12\x0f\n\x07\x63ountry\x18\x01 \x01(\t\x12\x0e\n\x06region\x18\x02 \x01(\t\x12\x0c\n\x04\x63ity\x18\x03 \x01(\t\"\xa0\x01\n\x07NetNode\x12\n\n\x02ip\x18\x02 \x01(\t\x12\x0b\n\x03\x61sn\x18\x03 \x01(\r\x12\x0f\n\x07\x61s_name\x18\x04 \x01(\t\x12\x35\n\x08location\x18\x05 \x01(\x0b\x32#.kentik.synthetics.v202202.Location\x12\x10\n\x08\x64ns_name\x18\x06 \x01(\t\x12\x11\n\tdevice_id\x18\x07 \x01(\t\x12\x0f\n\x07site_id\x18\x08 \x01(\t\",\n\x08TraceHop\x12\x0f\n\x07latency\x18\x03 \x01(\x05\x12\x0f\n\x07node_id\x18\x05 \x01(\t\"d\n\tPathTrace\x12\x0f\n\x07\x61s_path\x18\x01 \x03(\x05\x12\x13\n\x0bis_complete\x18\x02 \x01(\x08\x12\x31\n\x04hops\x18\x06 \x03(\x0b\x32#.kentik.synthetics.v202202.TraceHop\"\xdc\x01\n\x04Path\x12\x10\n\x08\x61gent_id\x18\x01 \x01(\t\x12\x11\n\ttarget_ip\x18\x03 \x01(\t\x12\x33\n\thop_count\x18\x04 \x01(\x0b\x32 .kentik.synthetics.v202202.Stats\x12\x1a\n\x12max_as_path_length\x18\x07 \x01(\x05\x12\x34\n\x06traces\x18\x08 \x03(\x0b\x32$.kentik.synthetics.v202202.PathTrace\x12(\n\x04time\x18\t \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xa9\x01\n\x18GetHealthForTestsRequest\x12\x0b\n\x03ids\x18\x01 \x03(\t\x12.\n\nstart_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12,\n\x08\x65nd_time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x11\n\tagent_ids\x18\x04 \x03(\t\x12\x0f\n\x07targets\x18\x05 \x03(\t\"R\n\x19GetHealthForTestsResponse\x12\x35\n\x06health\x18\x01 \x03(\x0b\x32%.kentik.synthetics.v202202.TestHealth\"\xaa\x01\n\x19GetResultsForTestsRequest\x12\x0b\n\x03ids\x18\x01 \x03(\t\x12.\n\nstart_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12,\n\x08\x65nd_time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x11\n\tagent_ids\x18\x04 \x03(\t\x12\x0f\n\x07targets\x18\x05 \x03(\t\"U\n\x1aGetResultsForTestsResponse\x12\x37\n\x07results\x18\x01 \x03(\x0b\x32&.kentik.synthetics.v202202.TestResults\"\xa9\x01\n\x16GetTraceForTestRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12.\n\nstart_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12,\n\x08\x65nd_time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x11\n\tagent_ids\x18\x04 \x03(\t\x12\x12\n\ntarget_ips\x18\x05 \x03(\t\"\xe9\x01\n\x17GetTraceForTestResponse\x12L\n\x05nodes\x18\x01 \x03(\x0b\x32=.kentik.synthetics.v202202.GetTraceForTestResponse.NodesEntry\x12.\n\x05paths\x18\x02 \x03(\x0b\x32\x1f.kentik.synthetics.v202202.Path\x1aP\n\nNodesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x31\n\x05value\x18\x02 \x01(\x0b\x32\".kentik.synthetics.v202202.NetNode:\x02\x38\x01\"\x13\n\x11ListAgentsRequest\"]\n\x12ListAgentsResponse\x12\x30\n\x06\x61gents\x18\x01 \x03(\x0b\x32 .kentik.synthetics.v202202.Agent\x12\x15\n\rinvalid_count\x18\x02 \x01(\r\"\x1d\n\x0fGetAgentRequest\x12\n\n\x02id\x18\x01 \x01(\t\"C\n\x10GetAgentResponse\x12/\n\x05\x61gent\x18\x01 \x01(\x0b\x32 .kentik.synthetics.v202202.Agent\"E\n\x12UpdateAgentRequest\x12/\n\x05\x61gent\x18\x01 \x01(\x0b\x32 .kentik.synthetics.v202202.Agent\"F\n\x13UpdateAgentResponse\x12/\n\x05\x61gent\x18\x01 \x01(\x0b\x32 .kentik.synthetics.v202202.Agent\" \n\x12\x44\x65leteAgentRequest\x12\n\n\x02id\x18\x01 \x01(\t\"\x15\n\x13\x44\x65leteAgentResponse\"\x12\n\x10ListTestsRequest\"Z\n\x11ListTestsResponse\x12.\n\x05tests\x18\x01 \x03(\x0b\x32\x1f.kentik.synthetics.v202202.Test\x12\x15\n\rinvalid_count\x18\x02 \x01(\r\"B\n\x11\x43reateTestRequest\x12-\n\x04test\x18\x01 \x01(\x0b\x32\x1f.kentik.synthetics.v202202.Test\"C\n\x12\x43reateTestResponse\x12-\n\x04test\x18\x01 \x01(\x0b\x32\x1f.kentik.synthetics.v202202.Test\"\x1c\n\x0eGetTestRequest\x12\n\n\x02id\x18\x01 \x01(\t\"@\n\x0fGetTestResponse\x12-\n\x04test\x18\x01 \x01(\x0b\x32\x1f.kentik.synthetics.v202202.Test\"B\n\x11UpdateTestRequest\x12-\n\x04test\x18\x01 \x01(\x0b\x32\x1f.kentik.synthetics.v202202.Test\"C\n\x12UpdateTestResponse\x12-\n\x04test\x18\x01 \x01(\x0b\x32\x1f.kentik.synthetics.v202202.Test\"\x1f\n\x11\x44\x65leteTestRequest\x12\n\n\x02id\x18\x01 \x01(\t\"\x14\n\x12\x44\x65leteTestResponse*a\n\rImplementType\x12\x1e\n\x1aIMPLEMENT_TYPE_UNSPECIFIED\x10\x00\x12\x17\n\x13IMPLEMENT_TYPE_RUST\x10\x01\x12\x17\n\x13IMPLEMENT_TYPE_NODE\x10\x02*]\n\x08IPFamily\x12\x19\n\x15IP_FAMILY_UNSPECIFIED\x10\x00\x12\x10\n\x0cIP_FAMILY_V4\x10\x01\x12\x10\n\x0cIP_FAMILY_V6\x10\x02\x12\x12\n\x0eIP_FAMILY_DUAL\x10\x03*r\n\nTestStatus\x12\x1b\n\x17TEST_STATUS_UNSPECIFIED\x10\x00\x12\x16\n\x12TEST_STATUS_ACTIVE\x10\x01\x12\x16\n\x12TEST_STATUS_PAUSED\x10\x02\x12\x17\n\x13TEST_STATUS_DELETED\x10\x03*q\n\x0b\x41gentStatus\x12\x1c\n\x18\x41GENT_STATUS_UNSPECIFIED\x10\x00\x12\x13\n\x0f\x41GENT_STATUS_OK\x10\x01\x12\x15\n\x11\x41GENT_STATUS_WAIT\x10\x02\x12\x18\n\x14\x41GENT_STATUS_DELETED\x10\x03*\xc8\x01\n\tDNSRecord\x12\x1a\n\x16\x44NS_RECORD_UNSPECIFIED\x10\x00\x12\x10\n\x0c\x44NS_RECORD_A\x10\x01\x12\x13\n\x0f\x44NS_RECORD_AAAA\x10\x02\x12\x14\n\x10\x44NS_RECORD_CNAME\x10\x03\x12\x14\n\x10\x44NS_RECORD_DNAME\x10\x04\x12\x11\n\rDNS_RECORD_NS\x10\x05\x12\x11\n\rDNS_RECORD_MX\x10\x06\x12\x12\n\x0e\x44NS_RECORD_PTR\x10\x07\x12\x12\n\x0e\x44NS_RECORD_SOA\x10\x08\x32\xa8\x08\n\x15SyntheticsDataService\x12\xe2\x02\n\x12GetResultsForTests\x12\x34.kentik.synthetics.v202202.GetResultsForTestsRequest\x1a\x35.kentik.synthetics.v202202.GetResultsForTestsResponse\"\xde\x01\xf2\xd7\x02\x0fsynthetics:read\x82\xd3\xe4\x93\x02 \"\x1b/synthetics/v202202/results:\x01*\x92\x41\xa1\x01\x12 Get results for synthetic tests.\x1aiReturns measurement results for a set of test for specified period of time, or the latest available data.*\x12GetResultsForTests\x12\xf3\x02\n\x11GetHealthForTests\x12\x33.kentik.synthetics.v202202.GetHealthForTestsRequest\x1a\x34.kentik.synthetics.v202202.GetHealthForTestsResponse\"\xf2\x01\xf2\xd7\x02\x0fsynthetics:read\x82\xd3\xe4\x93\x02\x1f\"\x1a/synthetics/v202202/health:\x01*\x92\x41\xb6\x01\x12\'Get health status for synthetics tests.\x1axReturns health evaluation results for set of tests for specified period of time, or based on the lastest available data.*\x11GetHealthForTests\x12\x8d\x02\n\x0fGetTraceForTest\x12\x31.kentik.synthetics.v202202.GetTraceForTestRequest\x1a\x32.kentik.synthetics.v202202.GetTraceForTestResponse\"\x92\x01\xf2\xd7\x02\x0fsynthetics:read\x82\xd3\xe4\x93\x02\x1e\"\x19/synthetics/v202202/trace:\x01*\x92\x41X\x12\x15Get trace route data.\x1a.Get trace route data for the specific test id.*\x0fGetTraceForTest\x1a$\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\nsynthetics2\xef\x12\n\x16SyntheticsAdminService\x12\xde\x01\n\nListAgents\x12,.kentik.synthetics.v202202.ListAgentsRequest\x1a-.kentik.synthetics.v202202.ListAgentsResponse\"s\xf2\xd7\x02\x15\x61\x64min.synthetics:read\x82\xd3\xe4\x93\x02\x1c\x12\x1a/synthetics/v202202/agents\x92\x41\x35\x12\x0cList Agents.\x1a\x19Returns a list of agents.*\nAgentsList\x12\x8c\x02\n\x08GetAgent\x12*.kentik.synthetics.v202202.GetAgentRequest\x1a+.kentik.synthetics.v202202.GetAgentResponse\"\xa6\x01\xf2\xd7\x02\x15\x61\x64min.synthetics:read\x82\xd3\xe4\x93\x02!\x12\x1f/synthetics/v202202/agents/{id}\x92\x41\x63\x12\x1fGet information about an agent.\x1a\x36Returns information about the agent specified with id.*\x08\x41gentGet\x12\x88\x02\n\x0bUpdateAgent\x12-.kentik.synthetics.v202202.UpdateAgentRequest\x1a..kentik.synthetics.v202202.UpdateAgentResponse\"\x99\x01\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x82\xd3\xe4\x93\x02*\x1a%/synthetics/v202202/agents/{agent.id}:\x01*\x92\x41L\x12\x10Update an agent.\x1a+Update configuration of a synthetics agent.*\x0b\x41gentUpdate\x12\xf8\x01\n\x0b\x44\x65leteAgent\x12-.kentik.synthetics.v202202.DeleteAgentRequest\x1a..kentik.synthetics.v202202.DeleteAgentResponse\"\x89\x01\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x82\xd3\xe4\x93\x02!*\x1f/synthetics/v202202/agents/{id}\x92\x41\x45\x12\x10\x44\x65lete an agent.\x1a$Deletes the agent specified with id.*\x0b\x41gentDelete\x12\xee\x01\n\tListTests\x12+.kentik.synthetics.v202202.ListTestsRequest\x1a,.kentik.synthetics.v202202.ListTestsResponse\"\x85\x01\xf2\xd7\x02\x15\x61\x64min.synthetics:read\x82\xd3\xe4\x93\x02\x1b\x12\x19/synthetics/v202202/tests\x92\x41H\x12\x16List Synthetics Tests.\x1a#Returns a list of syntehtics tests.*\tTestsList\x12\x8e\x02\n\nCreateTest\x12,.kentik.synthetics.v202202.CreateTestRequest\x1a-.kentik.synthetics.v202202.CreateTestResponse\"\xa2\x01\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x82\xd3\xe4\x93\x02\x1e\"\x19/synthetics/v202202/tests:\x01*\x92\x41\x61\x12\x17\x43reate Synthetics Test.\x1a:Create synthetics test from request. Returns created test.*\nTestCreate\x12\x99\x02\n\x07GetTest\x12).kentik.synthetics.v202202.GetTestRequest\x1a*.kentik.synthetics.v202202.GetTestResponse\"\xb6\x01\xf2\xd7\x02\x15\x61\x64min.synthetics:read\x82\xd3\xe4\x93\x02 \x12\x1e/synthetics/v202202/tests/{id}\x92\x41t\x12&Get information about Synthetics Test.\x1a\x41Returns information about synthetics test specified with test ID.*\x07TestGet\x12\x8a\x02\n\nUpdateTest\x12,.kentik.synthetics.v202202.UpdateTestRequest\x1a-.kentik.synthetics.v202202.UpdateTestResponse\"\x9e\x01\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x82\xd3\xe4\x93\x02(\x1a#/synthetics/v202202/tests/{test.id}:\x01*\x92\x41S\x12\x19Update a Synthetics Test.\x1a*Updates configuration of a synthetic test.*\nTestUpdate\x12\x87\x02\n\nDeleteTest\x12,.kentik.synthetics.v202202.DeleteTestRequest\x1a-.kentik.synthetics.v202202.DeleteTestResponse\"\x9b\x01\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x82\xd3\xe4\x93\x02 *\x1e/synthetics/v202202/tests/{id}\x92\x41X\x12\x1a\x44\x65lete an Synthetics Test.\x1a.Deletes the synthetics test specified with id.*\nTestDelete\x1a*\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\x10\x61\x64min.syntheticsB\xed\x02ZHgithub.com/kentik/api-schema/gen/go/kentik/synthetics/v202202;synthetics\x92\x41\x9f\x02\x12\x61\n\x19Synthetics Monitoring API\"7\n\x16Kentik API Engineering\x12\x1dhttps://github.com/kentik/api2\x0b\x32\x30\x32\x31\x31\x30\x62\x65ta2*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r5\n\x16More about Kentik APIs\x12\x1bhttps://docs.kentik.com/apib\x06proto3'
+  serialized_pb=b'\n*kentik/synthetics/v202202/synthetics.proto\x12\x19kentik.synthetics.v202202\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a google/protobuf/field_mask.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a+kentik/core/v202012alpha1/annotations.proto\"\x82\x04\n\x05\x41gent\x12\n\n\x02id\x18\x01 \x01(\t\x12\x11\n\tsite_name\x18\x02 \x01(\t\x12\x36\n\x06status\x18\x03 \x01(\x0e\x32&.kentik.synthetics.v202202.AgentStatus\x12\r\n\x05\x61lias\x18\x04 \x01(\t\x12\x0c\n\x04type\x18\x05 \x01(\t\x12\n\n\x02os\x18\x06 \x01(\t\x12\n\n\x02ip\x18\x07 \x01(\t\x12\x0b\n\x03lat\x18\x08 \x01(\x01\x12\x0c\n\x04long\x18\t \x01(\x01\x12/\n\x0blast_authed\x18\n \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x33\n\x06\x66\x61mily\x18\x0b \x01(\x0e\x32#.kentik.synthetics.v202202.IPFamily\x12\x0b\n\x03\x61sn\x18\x0c \x01(\r\x12\x0f\n\x07site_id\x18\r \x01(\t\x12\x0f\n\x07version\x18\x0e \x01(\t\x12\x0c\n\x04\x63ity\x18\x10 \x01(\t\x12\x0e\n\x06region\x18\x11 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x12 \x01(\t\x12\x10\n\x08test_ids\x18\x13 \x03(\t\x12\x10\n\x08local_ip\x18\x14 \x01(\t\x12\x14\n\x0c\x63loud_region\x18\x16 \x01(\t\x12\x16\n\x0e\x63loud_provider\x18\x17 \x01(\t\x12<\n\nagent_impl\x18\x18 \x01(\x0e\x32(.kentik.synthetics.v202202.ImplementType\"8\n\x08UserInfo\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x11\n\tfull_name\x18\x03 \x01(\t\"\xed\x02\n\x04Test\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0c\n\x04type\x18\x03 \x01(\t\x12\x35\n\x06status\x18\x05 \x01(\x0e\x32%.kentik.synthetics.v202202.TestStatus\x12\x39\n\x08settings\x18\x06 \x01(\x0b\x32\'.kentik.synthetics.v202202.TestSettings\x12)\n\x05\x63\x64\x61te\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12)\n\x05\x65\x64\x61te\x18\x08 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x37\n\ncreated_by\x18\t \x01(\x0b\x32#.kentik.synthetics.v202202.UserInfo\x12<\n\x0flast_updated_by\x18\n \x01(\x0b\x32#.kentik.synthetics.v202202.UserInfo\"\xd0\x02\n\nHTTPConfig\x12\x0e\n\x06method\x18\x01 \x01(\t\x12\x43\n\x07headers\x18\x02 \x03(\x0b\x32\x32.kentik.synthetics.v202202.HTTPConfig.HeadersEntry\x12\x0c\n\x04\x62ody\x18\x03 \x01(\t\x12\x19\n\x11ignore_tls_errors\x18\x04 \x01(\x08\x12N\n\rcss_selectors\x18\x05 \x03(\x0b\x32\x37.kentik.synthetics.v202202.HTTPConfig.CssSelectorsEntry\x12\x0f\n\x07timeout\x18\x06 \x01(\r\x1a.\n\x0cHeadersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x33\n\x11\x43ssSelectorsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xcc\x06\n\x0cTestSettings\x12;\n\x08hostname\x18\x01 \x01(\x0b\x32\'.kentik.synthetics.v202202.HostnameTestH\x00\x12/\n\x02ip\x18\x02 \x01(\x0b\x32!.kentik.synthetics.v202202.IpTestH\x00\x12\x35\n\x05\x61gent\x18\x03 \x01(\x0b\x32$.kentik.synthetics.v202202.AgentTestH\x00\x12\x33\n\x04\x66low\x18\x04 \x01(\x0b\x32#.kentik.synthetics.v202202.FlowTestH\x00\x12\x31\n\x03\x64ns\x18\x05 \x01(\x0b\x32\".kentik.synthetics.v202202.DnsTestH\x00\x12\x32\n\x03url\x18\x06 \x01(\x0b\x32#.kentik.synthetics.v202202.HTTPTestH\x00\x12\x39\n\x0cnetwork_grid\x18\x07 \x01(\x0b\x32!.kentik.synthetics.v202202.IpTestH\x00\x12\x38\n\tpage_load\x18\x08 \x01(\x0b\x32#.kentik.synthetics.v202202.HTTPTestH\x00\x12\x36\n\x08\x64ns_grid\x18\t \x01(\x0b\x32\".kentik.synthetics.v202202.DnsTestH\x00\x12\x11\n\tagent_ids\x18\n \x03(\t\x12\r\n\x05tasks\x18\x0b \x03(\t\x12\x42\n\x0fhealth_settings\x18\x0c \x01(\x0b\x32).kentik.synthetics.v202202.HealthSettings\x12\x39\n\x04ping\x18\r \x01(\x0b\x32+.kentik.synthetics.v202202.TestPingSettings\x12;\n\x05trace\x18\x0e \x01(\x0b\x32,.kentik.synthetics.v202202.TestTraceSettings\x12\x0e\n\x06period\x18\x0f \x01(\r\x12\x33\n\x06\x66\x61mily\x18\x10 \x01(\x0e\x32#.kentik.synthetics.v202202.IPFamily\x12\x1d\n\x15notification_channels\x18\x11 \x03(\tB\x0c\n\ndefinition\"a\n\x10TestPingSettings\x12\r\n\x05\x63ount\x18\x01 \x01(\r\x12\x10\n\x08protocol\x18\x02 \x01(\t\x12\x0c\n\x04port\x18\x03 \x01(\r\x12\x0f\n\x07timeout\x18\x04 \x01(\r\x12\r\n\x05\x64\x65lay\x18\x05 \x01(\x02\"q\n\x11TestTraceSettings\x12\r\n\x05\x63ount\x18\x01 \x01(\r\x12\x10\n\x08protocol\x18\x02 \x01(\t\x12\x0c\n\x04port\x18\x03 \x01(\r\x12\x0f\n\x07timeout\x18\x04 \x01(\r\x12\r\n\x05limit\x18\x05 \x01(\r\x12\r\n\x05\x64\x65lay\x18\x06 \x01(\x02\"\x8f\x04\n\x0eHealthSettings\x12\x18\n\x10latency_critical\x18\x01 \x01(\x02\x12\x17\n\x0flatency_warning\x18\x02 \x01(\x02\x12\x1c\n\x14packet_loss_critical\x18\x03 \x01(\x02\x12\x1b\n\x13packet_loss_warning\x18\x04 \x01(\x02\x12\x17\n\x0fjitter_critical\x18\x05 \x01(\x02\x12\x16\n\x0ejitter_warning\x18\x06 \x01(\x02\x12\x1d\n\x15http_latency_critical\x18\x07 \x01(\x02\x12\x1c\n\x14http_latency_warning\x18\x08 \x01(\x02\x12\x18\n\x10http_valid_codes\x18\t \x03(\r\x12\x17\n\x0f\x64ns_valid_codes\x18\n \x03(\r\x12\x1f\n\x17latency_critical_stddev\x18\x0b \x01(\x02\x12\x1e\n\x16latency_warning_stddev\x18\x0c \x01(\x02\x12\x1e\n\x16jitter_critical_stddev\x18\r \x01(\x02\x12\x1d\n\x15jitter_warning_stddev\x18\x0e \x01(\x02\x12$\n\x1chttp_latency_critical_stddev\x18\x0f \x01(\x02\x12#\n\x1bhttp_latency_warning_stddev\x18\x10 \x01(\x02\x12#\n\x1bunhealthy_subtest_threshold\x18\x11 \x01(\r\"\x1e\n\x0cHostnameTest\x12\x0e\n\x06target\x18\x01 \x01(\t\"\x19\n\x06IpTest\x12\x0f\n\x07targets\x18\x01 \x03(\t\"\x1b\n\tAgentTest\x12\x0e\n\x06target\x18\x01 \x01(\t\"\x8e\x01\n\x08\x46lowTest\x12\x0e\n\x06target\x18\x01 \x01(\t\x12&\n\x1etarget_refresh_interval_millis\x18\x02 \x01(\r\x12\x11\n\tmax_tasks\x18\x03 \x01(\r\x12\x0c\n\x04type\x18\x04 \x01(\t\x12\x16\n\x0einet_direction\x18\x05 \x01(\t\x12\x11\n\tdirection\x18\x06 \x01(\t\"a\n\tDNSConfig\x12\x0f\n\x07timeout\x18\x01 \x01(\r\x12\x32\n\x04type\x18\x02 \x01(\x0e\x32$.kentik.synthetics.v202202.DNSRecord\x12\x0f\n\x07servers\x18\x03 \x03(\t\"M\n\x07\x44nsTest\x12\x0f\n\x07targets\x18\x01 \x03(\t\x12\x31\n\x03\x64ns\x18\x02 \x01(\x0b\x32$.kentik.synthetics.v202202.DNSConfig\"O\n\x08HTTPTest\x12\x0e\n\x06target\x18\x01 \x01(\t\x12\x33\n\x04http\x18\x02 \x01(\x0b\x32%.kentik.synthetics.v202202.HTTPConfig\"Z\n\nMetricData\x12\x0f\n\x07\x63urrent\x18\x01 \x01(\r\x12\x13\n\x0brolling_avg\x18\x02 \x01(\r\x12\x16\n\x0erolling_stddev\x18\x03 \x01(\r\x12\x0e\n\x06health\x18\x04 \x01(\t\"1\n\x0ePacketLossData\x12\x0f\n\x07\x63urrent\x18\x01 \x01(\x01\x12\x0e\n\x06health\x18\x02 \x01(\t\"\xcc\x01\n\x0bPingResults\x12\x0e\n\x06target\x18\x01 \x01(\t\x12>\n\x0bpacket_loss\x18\x02 \x01(\x0b\x32).kentik.synthetics.v202202.PacketLossData\x12\x36\n\x07latency\x18\x03 \x01(\x0b\x32%.kentik.synthetics.v202202.MetricData\x12\x35\n\x06jitter\x18\x04 \x01(\x0b\x32%.kentik.synthetics.v202202.MetricData\">\n\x10HTTPResponseData\x12\x0e\n\x06status\x18\x01 \x01(\r\x12\x0c\n\x04size\x18\x02 \x01(\r\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\t\"\x94\x01\n\x0bHTTPResults\x12\x0e\n\x06target\x18\x01 \x01(\t\x12\x36\n\x07latency\x18\x02 \x01(\x0b\x32%.kentik.synthetics.v202202.MetricData\x12=\n\x08response\x18\x04 \x01(\x0b\x32+.kentik.synthetics.v202202.HTTPResponseData\"/\n\x0f\x44NSResponseData\x12\x0e\n\x06status\x18\x01 \x01(\r\x12\x0c\n\x04\x64\x61ta\x18\x02 \x01(\t\"\xa2\x01\n\nDNSResults\x12\x0e\n\x06target\x18\x01 \x01(\t\x12\x0e\n\x06server\x18\x02 \x01(\t\x12\x36\n\x07latency\x18\x03 \x01(\x0b\x32%.kentik.synthetics.v202202.MetricData\x12<\n\x08response\x18\x05 \x01(\x0b\x32*.kentik.synthetics.v202202.DNSResponseData\"\xd0\x01\n\x0bTaskResults\x12\x36\n\x04ping\x18\x01 \x01(\x0b\x32&.kentik.synthetics.v202202.PingResultsH\x00\x12\x36\n\x04http\x18\x02 \x01(\x0b\x32&.kentik.synthetics.v202202.HTTPResultsH\x00\x12\x34\n\x03\x64ns\x18\x03 \x01(\x0b\x32%.kentik.synthetics.v202202.DNSResultsH\x00\x12\x0e\n\x06health\x18\x04 \x01(\tB\x0b\n\ttask_type\"g\n\x0c\x41gentResults\x12\x10\n\x08\x61gent_id\x18\x01 \x01(\t\x12\x0e\n\x06health\x18\x02 \x01(\t\x12\x35\n\x05tasks\x18\x03 \x03(\x0b\x32&.kentik.synthetics.v202202.TaskResults\"\x91\x01\n\x0bTestResults\x12\x0f\n\x07test_id\x18\x01 \x01(\t\x12(\n\x04time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x0e\n\x06health\x18\x03 \x01(\t\x12\x37\n\x06\x61gents\x18\x04 \x03(\x0b\x32\'.kentik.synthetics.v202202.AgentResults\"2\n\x05Stats\x12\x0f\n\x07\x61verage\x18\x01 \x01(\x05\x12\x0b\n\x03min\x18\x02 \x01(\x05\x12\x0b\n\x03max\x18\x03 \x01(\x05\"^\n\x08Location\x12\x10\n\x08latitude\x18\x08 \x01(\x01\x12\x11\n\tlongitude\x18\t \x01(\x01\x12\x0f\n\x07\x63ountry\x18\x01 \x01(\t\x12\x0e\n\x06region\x18\x02 \x01(\t\x12\x0c\n\x04\x63ity\x18\x03 \x01(\t\"\xa0\x01\n\x07NetNode\x12\n\n\x02ip\x18\x02 \x01(\t\x12\x0b\n\x03\x61sn\x18\x03 \x01(\r\x12\x0f\n\x07\x61s_name\x18\x04 \x01(\t\x12\x35\n\x08location\x18\x05 \x01(\x0b\x32#.kentik.synthetics.v202202.Location\x12\x10\n\x08\x64ns_name\x18\x06 \x01(\t\x12\x11\n\tdevice_id\x18\x07 \x01(\t\x12\x0f\n\x07site_id\x18\x08 \x01(\t\",\n\x08TraceHop\x12\x0f\n\x07latency\x18\x03 \x01(\x05\x12\x0f\n\x07node_id\x18\x05 \x01(\t\"d\n\tPathTrace\x12\x0f\n\x07\x61s_path\x18\x01 \x03(\x05\x12\x13\n\x0bis_complete\x18\x02 \x01(\x08\x12\x31\n\x04hops\x18\x06 \x03(\x0b\x32#.kentik.synthetics.v202202.TraceHop\"\xdc\x01\n\x04Path\x12\x10\n\x08\x61gent_id\x18\x01 \x01(\t\x12\x11\n\ttarget_ip\x18\x03 \x01(\t\x12\x33\n\thop_count\x18\x04 \x01(\x0b\x32 .kentik.synthetics.v202202.Stats\x12\x1a\n\x12max_as_path_length\x18\x07 \x01(\x05\x12\x34\n\x06traces\x18\x08 \x03(\x0b\x32$.kentik.synthetics.v202202.PathTrace\x12(\n\x04time\x18\t \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xaa\x01\n\x19GetResultsForTestsRequest\x12\x0b\n\x03ids\x18\x01 \x03(\t\x12.\n\nstart_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12,\n\x08\x65nd_time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x11\n\tagent_ids\x18\x04 \x03(\t\x12\x0f\n\x07targets\x18\x05 \x03(\t\"U\n\x1aGetResultsForTestsResponse\x12\x37\n\x07results\x18\x01 \x03(\x0b\x32&.kentik.synthetics.v202202.TestResults\"\xa9\x01\n\x16GetTraceForTestRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12.\n\nstart_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12,\n\x08\x65nd_time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x11\n\tagent_ids\x18\x04 \x03(\t\x12\x12\n\ntarget_ips\x18\x05 \x03(\t\"\xe9\x01\n\x17GetTraceForTestResponse\x12L\n\x05nodes\x18\x01 \x03(\x0b\x32=.kentik.synthetics.v202202.GetTraceForTestResponse.NodesEntry\x12.\n\x05paths\x18\x02 \x03(\x0b\x32\x1f.kentik.synthetics.v202202.Path\x1aP\n\nNodesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x31\n\x05value\x18\x02 \x01(\x0b\x32\".kentik.synthetics.v202202.NetNode:\x02\x38\x01\"\x13\n\x11ListAgentsRequest\"]\n\x12ListAgentsResponse\x12\x30\n\x06\x61gents\x18\x01 \x03(\x0b\x32 .kentik.synthetics.v202202.Agent\x12\x15\n\rinvalid_count\x18\x02 \x01(\r\"\x1d\n\x0fGetAgentRequest\x12\n\n\x02id\x18\x01 \x01(\t\"C\n\x10GetAgentResponse\x12/\n\x05\x61gent\x18\x01 \x01(\x0b\x32 .kentik.synthetics.v202202.Agent\"E\n\x12UpdateAgentRequest\x12/\n\x05\x61gent\x18\x01 \x01(\x0b\x32 .kentik.synthetics.v202202.Agent\"F\n\x13UpdateAgentResponse\x12/\n\x05\x61gent\x18\x01 \x01(\x0b\x32 .kentik.synthetics.v202202.Agent\" \n\x12\x44\x65leteAgentRequest\x12\n\n\x02id\x18\x01 \x01(\t\"\x15\n\x13\x44\x65leteAgentResponse\"\x12\n\x10ListTestsRequest\"Z\n\x11ListTestsResponse\x12.\n\x05tests\x18\x01 \x03(\x0b\x32\x1f.kentik.synthetics.v202202.Test\x12\x15\n\rinvalid_count\x18\x02 \x01(\r\"B\n\x11\x43reateTestRequest\x12-\n\x04test\x18\x01 \x01(\x0b\x32\x1f.kentik.synthetics.v202202.Test\"C\n\x12\x43reateTestResponse\x12-\n\x04test\x18\x01 \x01(\x0b\x32\x1f.kentik.synthetics.v202202.Test\"\x1c\n\x0eGetTestRequest\x12\n\n\x02id\x18\x01 \x01(\t\"@\n\x0fGetTestResponse\x12-\n\x04test\x18\x01 \x01(\x0b\x32\x1f.kentik.synthetics.v202202.Test\"B\n\x11UpdateTestRequest\x12-\n\x04test\x18\x01 \x01(\x0b\x32\x1f.kentik.synthetics.v202202.Test\"C\n\x12UpdateTestResponse\x12-\n\x04test\x18\x01 \x01(\x0b\x32\x1f.kentik.synthetics.v202202.Test\"\x1f\n\x11\x44\x65leteTestRequest\x12\n\n\x02id\x18\x01 \x01(\t\"\x14\n\x12\x44\x65leteTestResponse*a\n\rImplementType\x12\x1e\n\x1aIMPLEMENT_TYPE_UNSPECIFIED\x10\x00\x12\x17\n\x13IMPLEMENT_TYPE_RUST\x10\x01\x12\x17\n\x13IMPLEMENT_TYPE_NODE\x10\x02*]\n\x08IPFamily\x12\x19\n\x15IP_FAMILY_UNSPECIFIED\x10\x00\x12\x10\n\x0cIP_FAMILY_V4\x10\x01\x12\x10\n\x0cIP_FAMILY_V6\x10\x02\x12\x12\n\x0eIP_FAMILY_DUAL\x10\x03*r\n\nTestStatus\x12\x1b\n\x17TEST_STATUS_UNSPECIFIED\x10\x00\x12\x16\n\x12TEST_STATUS_ACTIVE\x10\x01\x12\x16\n\x12TEST_STATUS_PAUSED\x10\x02\x12\x17\n\x13TEST_STATUS_DELETED\x10\x03*q\n\x0b\x41gentStatus\x12\x1c\n\x18\x41GENT_STATUS_UNSPECIFIED\x10\x00\x12\x13\n\x0f\x41GENT_STATUS_OK\x10\x01\x12\x15\n\x11\x41GENT_STATUS_WAIT\x10\x02\x12\x18\n\x14\x41GENT_STATUS_DELETED\x10\x03*\xc8\x01\n\tDNSRecord\x12\x1a\n\x16\x44NS_RECORD_UNSPECIFIED\x10\x00\x12\x10\n\x0c\x44NS_RECORD_A\x10\x01\x12\x13\n\x0f\x44NS_RECORD_AAAA\x10\x02\x12\x14\n\x10\x44NS_RECORD_CNAME\x10\x03\x12\x14\n\x10\x44NS_RECORD_DNAME\x10\x04\x12\x11\n\rDNS_RECORD_NS\x10\x05\x12\x11\n\rDNS_RECORD_MX\x10\x06\x12\x12\n\x0e\x44NS_RECORD_PTR\x10\x07\x12\x12\n\x0e\x44NS_RECORD_SOA\x10\x08\x32\xb2\x05\n\x15SyntheticsDataService\x12\xe2\x02\n\x12GetResultsForTests\x12\x34.kentik.synthetics.v202202.GetResultsForTestsRequest\x1a\x35.kentik.synthetics.v202202.GetResultsForTestsResponse\"\xde\x01\xf2\xd7\x02\x0fsynthetics:read\x82\xd3\xe4\x93\x02 \"\x1b/synthetics/v202202/results:\x01*\x92\x41\xa1\x01\x12 Get results for synthetic tests.\x1aiReturns measurement results for a set of test for specified period of time, or the latest available data.*\x12GetResultsForTests\x12\x8d\x02\n\x0fGetTraceForTest\x12\x31.kentik.synthetics.v202202.GetTraceForTestRequest\x1a\x32.kentik.synthetics.v202202.GetTraceForTestResponse\"\x92\x01\xf2\xd7\x02\x0fsynthetics:read\x82\xd3\xe4\x93\x02\x1e\"\x19/synthetics/v202202/trace:\x01*\x92\x41X\x12\x15Get trace route data.\x1a.Get trace route data for the specific test id.*\x0fGetTraceForTest\x1a$\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\nsynthetics2\xef\x12\n\x16SyntheticsAdminService\x12\xde\x01\n\nListAgents\x12,.kentik.synthetics.v202202.ListAgentsRequest\x1a-.kentik.synthetics.v202202.ListAgentsResponse\"s\xf2\xd7\x02\x15\x61\x64min.synthetics:read\x82\xd3\xe4\x93\x02\x1c\x12\x1a/synthetics/v202202/agents\x92\x41\x35\x12\x0cList Agents.\x1a\x19Returns a list of agents.*\nAgentsList\x12\x8c\x02\n\x08GetAgent\x12*.kentik.synthetics.v202202.GetAgentRequest\x1a+.kentik.synthetics.v202202.GetAgentResponse\"\xa6\x01\xf2\xd7\x02\x15\x61\x64min.synthetics:read\x82\xd3\xe4\x93\x02!\x12\x1f/synthetics/v202202/agents/{id}\x92\x41\x63\x12\x1fGet information about an agent.\x1a\x36Returns information about the agent specified with id.*\x08\x41gentGet\x12\x88\x02\n\x0bUpdateAgent\x12-.kentik.synthetics.v202202.UpdateAgentRequest\x1a..kentik.synthetics.v202202.UpdateAgentResponse\"\x99\x01\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x82\xd3\xe4\x93\x02*\x1a%/synthetics/v202202/agents/{agent.id}:\x01*\x92\x41L\x12\x10Update an agent.\x1a+Update configuration of a synthetics agent.*\x0b\x41gentUpdate\x12\xf8\x01\n\x0b\x44\x65leteAgent\x12-.kentik.synthetics.v202202.DeleteAgentRequest\x1a..kentik.synthetics.v202202.DeleteAgentResponse\"\x89\x01\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x82\xd3\xe4\x93\x02!*\x1f/synthetics/v202202/agents/{id}\x92\x41\x45\x12\x10\x44\x65lete an agent.\x1a$Deletes the agent specified with id.*\x0b\x41gentDelete\x12\xee\x01\n\tListTests\x12+.kentik.synthetics.v202202.ListTestsRequest\x1a,.kentik.synthetics.v202202.ListTestsResponse\"\x85\x01\xf2\xd7\x02\x15\x61\x64min.synthetics:read\x82\xd3\xe4\x93\x02\x1b\x12\x19/synthetics/v202202/tests\x92\x41H\x12\x16List Synthetics Tests.\x1a#Returns a list of syntehtics tests.*\tTestsList\x12\x8e\x02\n\nCreateTest\x12,.kentik.synthetics.v202202.CreateTestRequest\x1a-.kentik.synthetics.v202202.CreateTestResponse\"\xa2\x01\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x82\xd3\xe4\x93\x02\x1e\"\x19/synthetics/v202202/tests:\x01*\x92\x41\x61\x12\x17\x43reate Synthetics Test.\x1a:Create synthetics test from request. Returns created test.*\nTestCreate\x12\x99\x02\n\x07GetTest\x12).kentik.synthetics.v202202.GetTestRequest\x1a*.kentik.synthetics.v202202.GetTestResponse\"\xb6\x01\xf2\xd7\x02\x15\x61\x64min.synthetics:read\x82\xd3\xe4\x93\x02 \x12\x1e/synthetics/v202202/tests/{id}\x92\x41t\x12&Get information about Synthetics Test.\x1a\x41Returns information about synthetics test specified with test ID.*\x07TestGet\x12\x8a\x02\n\nUpdateTest\x12,.kentik.synthetics.v202202.UpdateTestRequest\x1a-.kentik.synthetics.v202202.UpdateTestResponse\"\x9e\x01\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x82\xd3\xe4\x93\x02(\x1a#/synthetics/v202202/tests/{test.id}:\x01*\x92\x41S\x12\x19Update a Synthetics Test.\x1a*Updates configuration of a synthetic test.*\nTestUpdate\x12\x87\x02\n\nDeleteTest\x12,.kentik.synthetics.v202202.DeleteTestRequest\x1a-.kentik.synthetics.v202202.DeleteTestResponse\"\x9b\x01\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x82\xd3\xe4\x93\x02 *\x1e/synthetics/v202202/tests/{id}\x92\x41X\x12\x1a\x44\x65lete an Synthetics Test.\x1a.Deletes the synthetics test specified with id.*\nTestDelete\x1a*\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\x10\x61\x64min.syntheticsB\xed\x02ZHgithub.com/kentik/api-schema/gen/go/kentik/synthetics/v202202;synthetics\x92\x41\x9f\x02\x12\x61\n\x19Synthetics Monitoring API\"7\n\x16Kentik API Engineering\x12\x1dhttps://github.com/kentik/api2\x0b\x32\x30\x32\x31\x31\x30\x62\x65ta2*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r5\n\x16More about Kentik APIs\x12\x1bhttps://docs.kentik.com/apib\x06proto3'
   ,
   dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_api_dot_client__pb2.DESCRIPTOR,google_dot_protobuf_dot_field__mask__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,protoc__gen__openapiv2_dot_options_dot_annotations__pb2.DESCRIPTOR,kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2.DESCRIPTOR,])
 
@@ -55,8 +55,8 @@ _IMPLEMENTTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=7738,
-  serialized_end=7835,
+  serialized_start=7199,
+  serialized_end=7296,
 )
 _sym_db.RegisterEnumDescriptor(_IMPLEMENTTYPE)
 
@@ -91,8 +91,8 @@ _IPFAMILY = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=7837,
-  serialized_end=7930,
+  serialized_start=7298,
+  serialized_end=7391,
 )
 _sym_db.RegisterEnumDescriptor(_IPFAMILY)
 
@@ -127,8 +127,8 @@ _TESTSTATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=7932,
-  serialized_end=8046,
+  serialized_start=7393,
+  serialized_end=7507,
 )
 _sym_db.RegisterEnumDescriptor(_TESTSTATUS)
 
@@ -163,8 +163,8 @@ _AGENTSTATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=8048,
-  serialized_end=8161,
+  serialized_start=7509,
+  serialized_end=7622,
 )
 _sym_db.RegisterEnumDescriptor(_AGENTSTATUS)
 
@@ -224,8 +224,8 @@ _DNSRECORD = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=8164,
-  serialized_end=8364,
+  serialized_start=7625,
+  serialized_end=7825,
 )
 _sym_db.RegisterEnumDescriptor(_DNSRECORD)
 
@@ -1420,151 +1420,6 @@ _HTTPTEST = _descriptor.Descriptor(
 )
 
 
-_TASKHEALTH = _descriptor.Descriptor(
-  name='TaskHealth',
-  full_name='kentik.synthetics.v202202.TaskHealth',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='task_type', full_name='kentik.synthetics.v202202.TaskHealth.task_type', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='target', full_name='kentik.synthetics.v202202.TaskHealth.target', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='health', full_name='kentik.synthetics.v202202.TaskHealth.health', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='time', full_name='kentik.synthetics.v202202.TaskHealth.time', index=3,
-      number=4, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=3653,
-  serialized_end=3758,
-)
-
-
-_AGENTHEALTH = _descriptor.Descriptor(
-  name='AgentHealth',
-  full_name='kentik.synthetics.v202202.AgentHealth',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='agent_id', full_name='kentik.synthetics.v202202.AgentHealth.agent_id', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='agent_task_health', full_name='kentik.synthetics.v202202.AgentHealth.agent_task_health', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='tasks', full_name='kentik.synthetics.v202202.AgentHealth.tasks', index=2,
-      number=3, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=3760,
-  serialized_end=3872,
-)
-
-
-_TESTHEALTH = _descriptor.Descriptor(
-  name='TestHealth',
-  full_name='kentik.synthetics.v202202.TestHealth',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='test_id', full_name='kentik.synthetics.v202202.TestHealth.test_id', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='overall_health', full_name='kentik.synthetics.v202202.TestHealth.overall_health', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='agents', full_name='kentik.synthetics.v202202.TestHealth.agents', index=2,
-      number=3, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=3874,
-  serialized_end=3983,
-)
-
-
 _METRICDATA = _descriptor.Descriptor(
   name='MetricData',
   full_name='kentik.synthetics.v202202.MetricData',
@@ -1594,6 +1449,13 @@ _METRICDATA = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='health', full_name='kentik.synthetics.v202202.MetricData.health', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1606,8 +1468,47 @@ _METRICDATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3985,
-  serialized_end=4059,
+  serialized_start=3653,
+  serialized_end=3743,
+)
+
+
+_PACKETLOSSDATA = _descriptor.Descriptor(
+  name='PacketLossData',
+  full_name='kentik.synthetics.v202202.PacketLossData',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='current', full_name='kentik.synthetics.v202202.PacketLossData.current', index=0,
+      number=1, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='health', full_name='kentik.synthetics.v202202.PacketLossData.health', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=3745,
+  serialized_end=3794,
 )
 
 
@@ -1628,8 +1529,8 @@ _PINGRESULTS = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='packet_loss', full_name='kentik.synthetics.v202202.PingResults.packet_loss', index=1,
-      number=2, type=1, cpp_type=5, label=1,
-      has_default_value=False, default_value=float(0),
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
@@ -1659,8 +1560,8 @@ _PINGRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4062,
-  serialized_end=4223,
+  serialized_start=3797,
+  serialized_end=4001,
 )
 
 
@@ -1705,8 +1606,8 @@ _HTTPRESPONSEDATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4225,
-  serialized_end=4287,
+  serialized_start=4003,
+  serialized_end=4065,
 )
 
 
@@ -1733,14 +1634,7 @@ _HTTPRESULTS = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='jitter', full_name='kentik.synthetics.v202202.HTTPResults.jitter', index=2,
-      number=3, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='response', full_name='kentik.synthetics.v202202.HTTPResults.response', index=3,
+      name='response', full_name='kentik.synthetics.v202202.HTTPResults.response', index=2,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -1758,8 +1652,8 @@ _HTTPRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4290,
-  serialized_end=4493,
+  serialized_start=4068,
+  serialized_end=4216,
 )
 
 
@@ -1797,8 +1691,8 @@ _DNSRESPONSEDATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4495,
-  serialized_end=4542,
+  serialized_start=4218,
+  serialized_end=4265,
 )
 
 
@@ -1832,14 +1726,7 @@ _DNSRESULTS = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='jitter', full_name='kentik.synthetics.v202202.DNSResults.jitter', index=3,
-      number=4, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='response', full_name='kentik.synthetics.v202202.DNSResults.response', index=4,
+      name='response', full_name='kentik.synthetics.v202202.DNSResults.response', index=3,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -1857,8 +1744,8 @@ _DNSRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4545,
-  serialized_end=4762,
+  serialized_start=4268,
+  serialized_end=4430,
 )
 
 
@@ -1892,9 +1779,9 @@ _TASKRESULTS = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='time', full_name='kentik.synthetics.v202202.TaskResults.time', index=3,
-      number=4, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      name='health', full_name='kentik.synthetics.v202202.TaskResults.health', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
@@ -1915,8 +1802,8 @@ _TASKRESULTS = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=4765,
-  serialized_end=4999,
+  serialized_start=4433,
+  serialized_end=4641,
 )
 
 
@@ -1936,8 +1823,15 @@ _AGENTRESULTS = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='tasks', full_name='kentik.synthetics.v202202.AgentResults.tasks', index=1,
-      number=2, type=11, cpp_type=10, label=3,
+      name='health', full_name='kentik.synthetics.v202202.AgentResults.health', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='tasks', full_name='kentik.synthetics.v202202.AgentResults.tasks', index=2,
+      number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -1954,8 +1848,8 @@ _AGENTRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5001,
-  serialized_end=5088,
+  serialized_start=4643,
+  serialized_end=4746,
 )
 
 
@@ -1975,8 +1869,22 @@ _TESTRESULTS = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='agents', full_name='kentik.synthetics.v202202.TestResults.agents', index=1,
-      number=2, type=11, cpp_type=10, label=3,
+      name='time', full_name='kentik.synthetics.v202202.TestResults.time', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='health', full_name='kentik.synthetics.v202202.TestResults.health', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='agents', full_name='kentik.synthetics.v202202.TestResults.agents', index=3,
+      number=4, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -1993,8 +1901,8 @@ _TESTRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5090,
-  serialized_end=5177,
+  serialized_start=4749,
+  serialized_end=4894,
 )
 
 
@@ -2039,8 +1947,8 @@ _STATS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5179,
-  serialized_end=5229,
+  serialized_start=4896,
+  serialized_end=4946,
 )
 
 
@@ -2099,8 +2007,8 @@ _LOCATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5231,
-  serialized_end=5325,
+  serialized_start=4948,
+  serialized_end=5042,
 )
 
 
@@ -2173,8 +2081,8 @@ _NETNODE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5328,
-  serialized_end=5488,
+  serialized_start=5045,
+  serialized_end=5205,
 )
 
 
@@ -2212,8 +2120,8 @@ _TRACEHOP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5490,
-  serialized_end=5534,
+  serialized_start=5207,
+  serialized_end=5251,
 )
 
 
@@ -2258,8 +2166,8 @@ _PATHTRACE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5536,
-  serialized_end=5636,
+  serialized_start=5253,
+  serialized_end=5353,
 )
 
 
@@ -2325,100 +2233,8 @@ _PATH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5639,
-  serialized_end=5859,
-)
-
-
-_GETHEALTHFORTESTSREQUEST = _descriptor.Descriptor(
-  name='GetHealthForTestsRequest',
-  full_name='kentik.synthetics.v202202.GetHealthForTestsRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='ids', full_name='kentik.synthetics.v202202.GetHealthForTestsRequest.ids', index=0,
-      number=1, type=9, cpp_type=9, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='start_time', full_name='kentik.synthetics.v202202.GetHealthForTestsRequest.start_time', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='end_time', full_name='kentik.synthetics.v202202.GetHealthForTestsRequest.end_time', index=2,
-      number=3, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='agent_ids', full_name='kentik.synthetics.v202202.GetHealthForTestsRequest.agent_ids', index=3,
-      number=4, type=9, cpp_type=9, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='targets', full_name='kentik.synthetics.v202202.GetHealthForTestsRequest.targets', index=4,
-      number=5, type=9, cpp_type=9, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=5862,
-  serialized_end=6031,
-)
-
-
-_GETHEALTHFORTESTSRESPONSE = _descriptor.Descriptor(
-  name='GetHealthForTestsResponse',
-  full_name='kentik.synthetics.v202202.GetHealthForTestsResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='health', full_name='kentik.synthetics.v202202.GetHealthForTestsResponse.health', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=6033,
-  serialized_end=6115,
+  serialized_start=5356,
+  serialized_end=5576,
 )
 
 
@@ -2477,8 +2293,8 @@ _GETRESULTSFORTESTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6118,
-  serialized_end=6288,
+  serialized_start=5579,
+  serialized_end=5749,
 )
 
 
@@ -2509,8 +2325,8 @@ _GETRESULTSFORTESTSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6290,
-  serialized_end=6375,
+  serialized_start=5751,
+  serialized_end=5836,
 )
 
 
@@ -2569,8 +2385,8 @@ _GETTRACEFORTESTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6378,
-  serialized_end=6547,
+  serialized_start=5839,
+  serialized_end=6008,
 )
 
 
@@ -2608,8 +2424,8 @@ _GETTRACEFORTESTRESPONSE_NODESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6703,
-  serialized_end=6783,
+  serialized_start=6164,
+  serialized_end=6244,
 )
 
 _GETTRACEFORTESTRESPONSE = _descriptor.Descriptor(
@@ -2646,8 +2462,8 @@ _GETTRACEFORTESTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6550,
-  serialized_end=6783,
+  serialized_start=6011,
+  serialized_end=6244,
 )
 
 
@@ -2671,8 +2487,8 @@ _LISTAGENTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6785,
-  serialized_end=6804,
+  serialized_start=6246,
+  serialized_end=6265,
 )
 
 
@@ -2710,8 +2526,8 @@ _LISTAGENTSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6806,
-  serialized_end=6899,
+  serialized_start=6267,
+  serialized_end=6360,
 )
 
 
@@ -2742,8 +2558,8 @@ _GETAGENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6901,
-  serialized_end=6930,
+  serialized_start=6362,
+  serialized_end=6391,
 )
 
 
@@ -2774,8 +2590,8 @@ _GETAGENTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6932,
-  serialized_end=6999,
+  serialized_start=6393,
+  serialized_end=6460,
 )
 
 
@@ -2806,8 +2622,8 @@ _UPDATEAGENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7001,
-  serialized_end=7070,
+  serialized_start=6462,
+  serialized_end=6531,
 )
 
 
@@ -2838,8 +2654,8 @@ _UPDATEAGENTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7072,
-  serialized_end=7142,
+  serialized_start=6533,
+  serialized_end=6603,
 )
 
 
@@ -2870,8 +2686,8 @@ _DELETEAGENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7144,
-  serialized_end=7176,
+  serialized_start=6605,
+  serialized_end=6637,
 )
 
 
@@ -2895,8 +2711,8 @@ _DELETEAGENTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7178,
-  serialized_end=7199,
+  serialized_start=6639,
+  serialized_end=6660,
 )
 
 
@@ -2920,8 +2736,8 @@ _LISTTESTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7201,
-  serialized_end=7219,
+  serialized_start=6662,
+  serialized_end=6680,
 )
 
 
@@ -2959,8 +2775,8 @@ _LISTTESTSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7221,
-  serialized_end=7311,
+  serialized_start=6682,
+  serialized_end=6772,
 )
 
 
@@ -2991,8 +2807,8 @@ _CREATETESTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7313,
-  serialized_end=7379,
+  serialized_start=6774,
+  serialized_end=6840,
 )
 
 
@@ -3023,8 +2839,8 @@ _CREATETESTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7381,
-  serialized_end=7448,
+  serialized_start=6842,
+  serialized_end=6909,
 )
 
 
@@ -3055,8 +2871,8 @@ _GETTESTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7450,
-  serialized_end=7478,
+  serialized_start=6911,
+  serialized_end=6939,
 )
 
 
@@ -3087,8 +2903,8 @@ _GETTESTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7480,
-  serialized_end=7544,
+  serialized_start=6941,
+  serialized_end=7005,
 )
 
 
@@ -3119,8 +2935,8 @@ _UPDATETESTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7546,
-  serialized_end=7612,
+  serialized_start=7007,
+  serialized_end=7073,
 )
 
 
@@ -3151,8 +2967,8 @@ _UPDATETESTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7614,
-  serialized_end=7681,
+  serialized_start=7075,
+  serialized_end=7142,
 )
 
 
@@ -3183,8 +2999,8 @@ _DELETETESTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7683,
-  serialized_end=7714,
+  serialized_start=7144,
+  serialized_end=7175,
 )
 
 
@@ -3208,8 +3024,8 @@ _DELETETESTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7716,
-  serialized_end=7736,
+  serialized_start=7177,
+  serialized_end=7197,
 )
 
 _AGENT.fields_by_name['status'].enum_type = _AGENTSTATUS
@@ -3269,21 +3085,16 @@ _TESTSETTINGS.fields_by_name['dns_grid'].containing_oneof = _TESTSETTINGS.oneofs
 _DNSCONFIG.fields_by_name['type'].enum_type = _DNSRECORD
 _DNSTEST.fields_by_name['dns'].message_type = _DNSCONFIG
 _HTTPTEST.fields_by_name['http'].message_type = _HTTPCONFIG
-_TASKHEALTH.fields_by_name['time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-_AGENTHEALTH.fields_by_name['tasks'].message_type = _TASKHEALTH
-_TESTHEALTH.fields_by_name['agents'].message_type = _AGENTHEALTH
+_PINGRESULTS.fields_by_name['packet_loss'].message_type = _PACKETLOSSDATA
 _PINGRESULTS.fields_by_name['latency'].message_type = _METRICDATA
 _PINGRESULTS.fields_by_name['jitter'].message_type = _METRICDATA
 _HTTPRESULTS.fields_by_name['latency'].message_type = _METRICDATA
-_HTTPRESULTS.fields_by_name['jitter'].message_type = _METRICDATA
 _HTTPRESULTS.fields_by_name['response'].message_type = _HTTPRESPONSEDATA
 _DNSRESULTS.fields_by_name['latency'].message_type = _METRICDATA
-_DNSRESULTS.fields_by_name['jitter'].message_type = _METRICDATA
 _DNSRESULTS.fields_by_name['response'].message_type = _DNSRESPONSEDATA
 _TASKRESULTS.fields_by_name['ping'].message_type = _PINGRESULTS
 _TASKRESULTS.fields_by_name['http'].message_type = _HTTPRESULTS
 _TASKRESULTS.fields_by_name['dns'].message_type = _DNSRESULTS
-_TASKRESULTS.fields_by_name['time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _TASKRESULTS.oneofs_by_name['task_type'].fields.append(
   _TASKRESULTS.fields_by_name['ping'])
 _TASKRESULTS.fields_by_name['ping'].containing_oneof = _TASKRESULTS.oneofs_by_name['task_type']
@@ -3294,15 +3105,13 @@ _TASKRESULTS.oneofs_by_name['task_type'].fields.append(
   _TASKRESULTS.fields_by_name['dns'])
 _TASKRESULTS.fields_by_name['dns'].containing_oneof = _TASKRESULTS.oneofs_by_name['task_type']
 _AGENTRESULTS.fields_by_name['tasks'].message_type = _TASKRESULTS
+_TESTRESULTS.fields_by_name['time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _TESTRESULTS.fields_by_name['agents'].message_type = _AGENTRESULTS
 _NETNODE.fields_by_name['location'].message_type = _LOCATION
 _PATHTRACE.fields_by_name['hops'].message_type = _TRACEHOP
 _PATH.fields_by_name['hop_count'].message_type = _STATS
 _PATH.fields_by_name['traces'].message_type = _PATHTRACE
 _PATH.fields_by_name['time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-_GETHEALTHFORTESTSREQUEST.fields_by_name['start_time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-_GETHEALTHFORTESTSREQUEST.fields_by_name['end_time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-_GETHEALTHFORTESTSRESPONSE.fields_by_name['health'].message_type = _TESTHEALTH
 _GETRESULTSFORTESTSREQUEST.fields_by_name['start_time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _GETRESULTSFORTESTSREQUEST.fields_by_name['end_time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _GETRESULTSFORTESTSRESPONSE.fields_by_name['results'].message_type = _TESTRESULTS
@@ -3337,10 +3146,8 @@ DESCRIPTOR.message_types_by_name['FlowTest'] = _FLOWTEST
 DESCRIPTOR.message_types_by_name['DNSConfig'] = _DNSCONFIG
 DESCRIPTOR.message_types_by_name['DnsTest'] = _DNSTEST
 DESCRIPTOR.message_types_by_name['HTTPTest'] = _HTTPTEST
-DESCRIPTOR.message_types_by_name['TaskHealth'] = _TASKHEALTH
-DESCRIPTOR.message_types_by_name['AgentHealth'] = _AGENTHEALTH
-DESCRIPTOR.message_types_by_name['TestHealth'] = _TESTHEALTH
 DESCRIPTOR.message_types_by_name['MetricData'] = _METRICDATA
+DESCRIPTOR.message_types_by_name['PacketLossData'] = _PACKETLOSSDATA
 DESCRIPTOR.message_types_by_name['PingResults'] = _PINGRESULTS
 DESCRIPTOR.message_types_by_name['HTTPResponseData'] = _HTTPRESPONSEDATA
 DESCRIPTOR.message_types_by_name['HTTPResults'] = _HTTPRESULTS
@@ -3355,8 +3162,6 @@ DESCRIPTOR.message_types_by_name['NetNode'] = _NETNODE
 DESCRIPTOR.message_types_by_name['TraceHop'] = _TRACEHOP
 DESCRIPTOR.message_types_by_name['PathTrace'] = _PATHTRACE
 DESCRIPTOR.message_types_by_name['Path'] = _PATH
-DESCRIPTOR.message_types_by_name['GetHealthForTestsRequest'] = _GETHEALTHFORTESTSREQUEST
-DESCRIPTOR.message_types_by_name['GetHealthForTestsResponse'] = _GETHEALTHFORTESTSRESPONSE
 DESCRIPTOR.message_types_by_name['GetResultsForTestsRequest'] = _GETRESULTSFORTESTSREQUEST
 DESCRIPTOR.message_types_by_name['GetResultsForTestsResponse'] = _GETRESULTSFORTESTSRESPONSE
 DESCRIPTOR.message_types_by_name['GetTraceForTestRequest'] = _GETTRACEFORTESTREQUEST
@@ -3507,33 +3312,19 @@ HTTPTest = _reflection.GeneratedProtocolMessageType('HTTPTest', (_message.Messag
   })
 _sym_db.RegisterMessage(HTTPTest)
 
-TaskHealth = _reflection.GeneratedProtocolMessageType('TaskHealth', (_message.Message,), {
-  'DESCRIPTOR' : _TASKHEALTH,
-  '__module__' : 'kentik.synthetics.v202202.synthetics_pb2'
-  # @@protoc_insertion_point(class_scope:kentik.synthetics.v202202.TaskHealth)
-  })
-_sym_db.RegisterMessage(TaskHealth)
-
-AgentHealth = _reflection.GeneratedProtocolMessageType('AgentHealth', (_message.Message,), {
-  'DESCRIPTOR' : _AGENTHEALTH,
-  '__module__' : 'kentik.synthetics.v202202.synthetics_pb2'
-  # @@protoc_insertion_point(class_scope:kentik.synthetics.v202202.AgentHealth)
-  })
-_sym_db.RegisterMessage(AgentHealth)
-
-TestHealth = _reflection.GeneratedProtocolMessageType('TestHealth', (_message.Message,), {
-  'DESCRIPTOR' : _TESTHEALTH,
-  '__module__' : 'kentik.synthetics.v202202.synthetics_pb2'
-  # @@protoc_insertion_point(class_scope:kentik.synthetics.v202202.TestHealth)
-  })
-_sym_db.RegisterMessage(TestHealth)
-
 MetricData = _reflection.GeneratedProtocolMessageType('MetricData', (_message.Message,), {
   'DESCRIPTOR' : _METRICDATA,
   '__module__' : 'kentik.synthetics.v202202.synthetics_pb2'
   # @@protoc_insertion_point(class_scope:kentik.synthetics.v202202.MetricData)
   })
 _sym_db.RegisterMessage(MetricData)
+
+PacketLossData = _reflection.GeneratedProtocolMessageType('PacketLossData', (_message.Message,), {
+  'DESCRIPTOR' : _PACKETLOSSDATA,
+  '__module__' : 'kentik.synthetics.v202202.synthetics_pb2'
+  # @@protoc_insertion_point(class_scope:kentik.synthetics.v202202.PacketLossData)
+  })
+_sym_db.RegisterMessage(PacketLossData)
 
 PingResults = _reflection.GeneratedProtocolMessageType('PingResults', (_message.Message,), {
   'DESCRIPTOR' : _PINGRESULTS,
@@ -3632,20 +3423,6 @@ Path = _reflection.GeneratedProtocolMessageType('Path', (_message.Message,), {
   # @@protoc_insertion_point(class_scope:kentik.synthetics.v202202.Path)
   })
 _sym_db.RegisterMessage(Path)
-
-GetHealthForTestsRequest = _reflection.GeneratedProtocolMessageType('GetHealthForTestsRequest', (_message.Message,), {
-  'DESCRIPTOR' : _GETHEALTHFORTESTSREQUEST,
-  '__module__' : 'kentik.synthetics.v202202.synthetics_pb2'
-  # @@protoc_insertion_point(class_scope:kentik.synthetics.v202202.GetHealthForTestsRequest)
-  })
-_sym_db.RegisterMessage(GetHealthForTestsRequest)
-
-GetHealthForTestsResponse = _reflection.GeneratedProtocolMessageType('GetHealthForTestsResponse', (_message.Message,), {
-  'DESCRIPTOR' : _GETHEALTHFORTESTSRESPONSE,
-  '__module__' : 'kentik.synthetics.v202202.synthetics_pb2'
-  # @@protoc_insertion_point(class_scope:kentik.synthetics.v202202.GetHealthForTestsResponse)
-  })
-_sym_db.RegisterMessage(GetHealthForTestsResponse)
 
 GetResultsForTestsRequest = _reflection.GeneratedProtocolMessageType('GetResultsForTestsRequest', (_message.Message,), {
   'DESCRIPTOR' : _GETRESULTSFORTESTSREQUEST,
@@ -3822,8 +3599,8 @@ _SYNTHETICSDATASERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=b'\312A\023grpc.api.kentik.com\352\327\002\nsynthetics',
   create_key=_descriptor._internal_create_key,
-  serialized_start=8367,
-  serialized_end=9431,
+  serialized_start=7828,
+  serialized_end=8518,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetResultsForTests',
@@ -3836,19 +3613,9 @@ _SYNTHETICSDATASERVICE = _descriptor.ServiceDescriptor(
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
-    name='GetHealthForTests',
-    full_name='kentik.synthetics.v202202.SyntheticsDataService.GetHealthForTests',
-    index=1,
-    containing_service=None,
-    input_type=_GETHEALTHFORTESTSREQUEST,
-    output_type=_GETHEALTHFORTESTSRESPONSE,
-    serialized_options=b'\362\327\002\017synthetics:read\202\323\344\223\002\037\"\032/synthetics/v202202/health:\001*\222A\266\001\022\'Get health status for synthetics tests.\032xReturns health evaluation results for set of tests for specified period of time, or based on the lastest available data.*\021GetHealthForTests',
-    create_key=_descriptor._internal_create_key,
-  ),
-  _descriptor.MethodDescriptor(
     name='GetTraceForTest',
     full_name='kentik.synthetics.v202202.SyntheticsDataService.GetTraceForTest',
-    index=2,
+    index=1,
     containing_service=None,
     input_type=_GETTRACEFORTESTREQUEST,
     output_type=_GETTRACEFORTESTRESPONSE,
@@ -3868,8 +3635,8 @@ _SYNTHETICSADMINSERVICE = _descriptor.ServiceDescriptor(
   index=1,
   serialized_options=b'\312A\023grpc.api.kentik.com\352\327\002\020admin.synthetics',
   create_key=_descriptor._internal_create_key,
-  serialized_start=9434,
-  serialized_end=11849,
+  serialized_start=8521,
+  serialized_end=10936,
   methods=[
   _descriptor.MethodDescriptor(
     name='ListAgents',

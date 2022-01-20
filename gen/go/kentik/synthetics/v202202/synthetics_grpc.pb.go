@@ -20,8 +20,6 @@ const _ = grpc.SupportPackageIsVersion7
 type SyntheticsDataServiceClient interface {
 	// Get measurement results for a set of tests
 	GetResultsForTests(ctx context.Context, in *GetResultsForTestsRequest, opts ...grpc.CallOption) (*GetResultsForTestsResponse, error)
-	// Get health evalutation for a set of tests
-	GetHealthForTests(ctx context.Context, in *GetHealthForTestsRequest, opts ...grpc.CallOption) (*GetHealthForTestsResponse, error)
 	GetTraceForTest(ctx context.Context, in *GetTraceForTestRequest, opts ...grpc.CallOption) (*GetTraceForTestResponse, error)
 }
 
@@ -36,15 +34,6 @@ func NewSyntheticsDataServiceClient(cc grpc.ClientConnInterface) SyntheticsDataS
 func (c *syntheticsDataServiceClient) GetResultsForTests(ctx context.Context, in *GetResultsForTestsRequest, opts ...grpc.CallOption) (*GetResultsForTestsResponse, error) {
 	out := new(GetResultsForTestsResponse)
 	err := c.cc.Invoke(ctx, "/kentik.synthetics.v202202.SyntheticsDataService/GetResultsForTests", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *syntheticsDataServiceClient) GetHealthForTests(ctx context.Context, in *GetHealthForTestsRequest, opts ...grpc.CallOption) (*GetHealthForTestsResponse, error) {
-	out := new(GetHealthForTestsResponse)
-	err := c.cc.Invoke(ctx, "/kentik.synthetics.v202202.SyntheticsDataService/GetHealthForTests", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -66,8 +55,6 @@ func (c *syntheticsDataServiceClient) GetTraceForTest(ctx context.Context, in *G
 type SyntheticsDataServiceServer interface {
 	// Get measurement results for a set of tests
 	GetResultsForTests(context.Context, *GetResultsForTestsRequest) (*GetResultsForTestsResponse, error)
-	// Get health evalutation for a set of tests
-	GetHealthForTests(context.Context, *GetHealthForTestsRequest) (*GetHealthForTestsResponse, error)
 	GetTraceForTest(context.Context, *GetTraceForTestRequest) (*GetTraceForTestResponse, error)
 }
 
@@ -77,9 +64,6 @@ type UnimplementedSyntheticsDataServiceServer struct {
 
 func (UnimplementedSyntheticsDataServiceServer) GetResultsForTests(context.Context, *GetResultsForTestsRequest) (*GetResultsForTestsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetResultsForTests not implemented")
-}
-func (UnimplementedSyntheticsDataServiceServer) GetHealthForTests(context.Context, *GetHealthForTestsRequest) (*GetHealthForTestsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetHealthForTests not implemented")
 }
 func (UnimplementedSyntheticsDataServiceServer) GetTraceForTest(context.Context, *GetTraceForTestRequest) (*GetTraceForTestResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTraceForTest not implemented")
@@ -114,24 +98,6 @@ func _SyntheticsDataService_GetResultsForTests_Handler(srv interface{}, ctx cont
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SyntheticsDataService_GetHealthForTests_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetHealthForTestsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SyntheticsDataServiceServer).GetHealthForTests(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/kentik.synthetics.v202202.SyntheticsDataService/GetHealthForTests",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SyntheticsDataServiceServer).GetHealthForTests(ctx, req.(*GetHealthForTestsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _SyntheticsDataService_GetTraceForTest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetTraceForTestRequest)
 	if err := dec(in); err != nil {
@@ -160,10 +126,6 @@ var SyntheticsDataService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetResultsForTests",
 			Handler:    _SyntheticsDataService_GetResultsForTests_Handler,
-		},
-		{
-			MethodName: "GetHealthForTests",
-			Handler:    _SyntheticsDataService_GetHealthForTests_Handler,
 		},
 		{
 			MethodName: "GetTraceForTest",
