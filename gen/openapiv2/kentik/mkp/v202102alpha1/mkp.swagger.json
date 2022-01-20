@@ -516,6 +516,9 @@
         },
         "isTemplate": {
           "type": "boolean"
+        },
+        "subpolicyId": {
+          "type": "string"
         }
       },
       "title": "Alert Policy"

@@ -65,6 +65,7 @@ message Alert {
   string primary_metric = 4;
   repeated string secondary_metrics = 5;
   bool is_template = 6;
+  string subpolicy_id = 7;
 }
 
 message Asset {
