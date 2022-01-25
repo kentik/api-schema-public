@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Synthetics Monitoring API",
-    "version": "202110beta2",
+    "version": "202202",
     "contact": {
       "name": "Kentik API Engineering",
       "url": "https://github.com/kentik/api"
