@@ -23,7 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'\222A(\022&\n\035Kentik Synthetics Backend API2\0050.0.1',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n-kentik/synthetics/backend/v1/synthetics.proto\x12\tsynthetic\x1a\x1cgoogle/api/annotations.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a+kentik/core/v202012alpha1/annotations.proto\"}\n\x06Status\x12\x0c\n\x02ok\x18\x01 \x01(\x08H\x00\x12&\n\x03\x65rr\x18\x02 \x01(\x0b\x32\x17.synthetic.Status.ErrorH\x00\x1a\x33\n\x05\x45rror\x12\x0e\n\x06status\x18\x01 \x01(\r\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\r\n\x05retry\x18\x03 \x01(\rB\x08\n\x06status\"\xd7\x01\n\x0b\x41uthRequest\x12\r\n\x05\x61gent\x18\x01 \x01(\t\x12\x11\n\tsignature\x18\x02 \x01(\t\x12\x11\n\ttimestamp\x18\x03 \x01(\t\x12\x0f\n\x07version\x18\x04 \x01(\t\x12\x12\n\ncompany_id\x18\x05 \x01(\x04\x12\x0c\n\x04name\x18\x06 \x01(\t\x12\x0e\n\x06global\x18\x07 \x01(\x08\x12\n\n\x02os\x18\x08 \x01(\t\x12\x0c\n\x04\x62ind\x18\t \x01(\t\x12\x0c\n\x04site\x18\n \x01(\x04\x12(\n\nagent_impl\x18\x0b \x01(\x0e\x32\x14.synthetic.AgentImpl\"\xdf\x01\n\tAuthReply\x12\'\n\x04\x61uth\x18\x01 \x01(\x0e\x32\x19.synthetic.AuthReply.Auth\x12!\n\x06status\x18\x02 \x01(\x0b\x32\x11.synthetic.Status\x12\x0f\n\x07session\x18\x03 \x01(\t\x12#\n\x06\x66\x61mily\x18\x04 \x01(\x0e\x32\x13.synthetic.IPFamily\x12\x10\n\x08\x61gent_id\x18\x05 \x01(\x04\x12\x11\n\tchallenge\x18\x06 \x01(\t\"+\n\x04\x41uth\x12\x06\n\x02OK\x10\x00\x12\x08\n\x04WAIT\x10\x01\x12\x08\n\x04\x44\x45NY\x10\x02\x12\x07\n\x03\x45RR\x10\x03\"&\n\x06Kentik\x12\r\n\x05\x65mail\x18\x01 \x01(\t\x12\r\n\x05token\x18\x02 \x01(\t\">\n\x06\x44\x65vice\x12\n\n\x02id\x18\x01 \x01(\x04\x12(\n\x07\x63ustoms\x18\x02 \x03(\x0b\x32\x17.synthetic.CustomColumn\"\x8a\x01\n\x0c\x43ustomColumn\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\n\n\x02id\x18\x02 \x01(\x04\x12*\n\x04type\x18\x03 \x01(\x0e\x32\x1c.synthetic.CustomColumn.Type\"4\n\x04Type\x12\n\n\x06UINT32\x10\x00\x12\n\n\x06UINT64\x10\x01\x12\n\n\x06STRING\x10\x02\x12\x08\n\x04\x41\x44\x44R\x10\x03\".\n\x0cTasksRequest\x12\x0f\n\x07session\x18\x01 \x01(\t\x12\r\n\x05since\x18\x02 \x01(\x04\"d\n\nTasksReply\x12 \n\x06groups\x18\x01 \x03(\x0b\x32\x10.synthetic.Group\x12\x11\n\ttimestamp\x18\x02 \x01(\x04\x12!\n\x06status\x18\x03 \x01(\x0b\x32\x11.synthetic.Status\"\x81\x01\n\x05Group\x12\x12\n\ncompany_id\x18\x01 \x01(\x04\x12!\n\x06\x64\x65vice\x18\x02 \x01(\x0b\x32\x11.synthetic.Device\x12!\n\x06kentik\x18\x03 \x01(\x0b\x32\x11.synthetic.Kentik\x12\x1e\n\x05tasks\x18\x04 \x03(\x0b\x32\x0f.synthetic.Task\"\x81\x05\n\x04Task\x12\n\n\x02id\x18\x01 \x01(\x04\x12$\n\x05state\x18\x02 \x01(\x0e\x32\x15.synthetic.Task.State\x12\x12\n\ncompany_id\x18\x03 \x01(\x04\x12\x0f\n\x07user_id\x18\x04 \x01(\x04\x12\x11\n\tdevice_id\x18\x05 \x01(\x04\x12\x0e\n\x06status\x18\x06 \x01(\t\x12\x0f\n\x07test_id\x18\x07 \x01(\x04\x12#\n\x06\x66\x61mily\x18\x08 \x01(\x0e\x32\x13.synthetic.IPFamily\x12-\n\x04ping\x18\t \x01(\x0b\x32\x1d.synthetic.PingTaskDefinitionH\x00\x12\x34\n\ntraceroute\x18\n \x01(\x0b\x32\x1e.synthetic.TraceTaskDefinitionH\x00\x12-\n\x04http\x18\x0b \x01(\x0b\x32\x1d.synthetic.HTTPTaskDefinitionH\x00\x12/\n\x05knock\x18\x0c \x01(\x0b\x32\x1e.synthetic.KnockTaskDefinitionH\x00\x12+\n\x03\x64ns\x18\r \x01(\x0b\x32\x1c.synthetic.DNSTaskDefinitionH\x00\x12/\n\x05shake\x18\x0e \x01(\x0b\x32\x1e.synthetic.ShakeTaskDefinitionH\x00\x12\x34\n\x0bhttp_timing\x18\x0f \x01(\x0b\x32\x1d.synthetic.HTTPTaskDefinitionH\x00\x12\x32\n\tpage_load\x18\x10 \x01(\x0b\x32\x1d.synthetic.HTTPTaskDefinitionH\x00\".\n\x05State\x12\x0b\n\x07\x43REATED\x10\x00\x12\x0b\n\x07UPDATED\x10\x01\x12\x0b\n\x07\x44\x45LETED\x10\x02\x42\x0c\n\ndefinition\"b\n\x12PingTaskDefinition\x12\x0e\n\x06target\x18\x01 \x01(\t\x12\x0e\n\x06period\x18\x02 \x01(\r\x12\x0e\n\x06\x65xpiry\x18\x03 \x01(\r\x12\r\n\x05\x63ount\x18\x04 \x01(\r\x12\r\n\x05\x64\x65lay\x18\x05 \x01(\r\"\x92\x01\n\x13TraceTaskDefinition\x12\x0e\n\x06target\x18\x01 \x01(\t\x12\x0e\n\x06period\x18\x02 \x01(\r\x12\x0e\n\x06\x65xpiry\x18\x03 \x01(\r\x12\r\n\x05limit\x18\x04 \x01(\r\x12\x10\n\x08protocol\x18\x05 \x01(\t\x12\x0c\n\x04port\x18\x06 \x01(\r\x12\r\n\x05\x63ount\x18\x07 \x01(\r\x12\r\n\x05\x64\x65lay\x18\x08 \x01(\r\"\xfc\x02\n\x12HTTPTaskDefinition\x12\x0e\n\x06target\x18\x01 \x01(\t\x12\x0e\n\x06period\x18\x02 \x01(\r\x12\x0e\n\x06\x65xpiry\x18\x03 \x01(\r\x12\x0e\n\x06method\x18\x04 \x01(\t\x12\x13\n\x0breturn_code\x18\x05 \x01(\r\x12;\n\x07headers\x18\x06 \x03(\x0b\x32*.synthetic.HTTPTaskDefinition.HeadersEntry\x12\x0c\n\x04\x62ody\x18\x07 \x01(\t\x12\x19\n\x11ignore_tls_errors\x18\x08 \x01(\x08\x12\x46\n\rcss_selectors\x18\t \x03(\x0b\x32/.synthetic.HTTPTaskDefinition.CssSelectorsEntry\x1a.\n\x0cHeadersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x33\n\x11\x43ssSelectorsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"b\n\x13KnockTaskDefinition\x12\x0e\n\x06target\x18\x01 \x01(\t\x12\x0e\n\x06period\x18\x02 \x01(\r\x12\x0e\n\x06\x65xpiry\x18\x03 \x01(\r\x12\r\n\x05\x63ount\x18\x04 \x01(\r\x12\x0c\n\x04port\x18\x05 \x01(\r\"\x80\x01\n\x11\x44NSTaskDefinition\x12\x0e\n\x06target\x18\x01 \x01(\t\x12\x0e\n\x06period\x18\x02 \x01(\r\x12\x0e\n\x06\x65xpiry\x18\x03 \x01(\r\x12\r\n\x05\x63ount\x18\x04 \x01(\r\x12\x0c\n\x04port\x18\x05 \x01(\r\x12\x0c\n\x04type\x18\x06 \x01(\t\x12\x10\n\x08resolver\x18\x07 \x01(\t\"S\n\x13ShakeTaskDefinition\x12\x0e\n\x06target\x18\x01 \x01(\t\x12\x0c\n\x04port\x18\x02 \x01(\r\x12\x0e\n\x06period\x18\x03 \x01(\r\x12\x0e\n\x06\x65xpiry\x18\x04 \x01(\r\"I\n\rStatusRequest\x12\x0f\n\x07session\x18\x01 \x01(\t\x12\'\n\x06report\x18\x02 \x01(\x0b\x32\x17.synthetic.StatusReport\"4\n\x0cStatusReport\x12$\n\x05tasks\x18\x01 \x01(\x0b\x32\x15.synthetic.TaskStatus\"^\n\nTaskStatus\x12\x0f\n\x07started\x18\x01 \x01(\x04\x12\x0f\n\x07running\x18\x02 \x01(\x04\x12\x0e\n\x06\x65xited\x18\x03 \x01(\x04\x12\x0e\n\x06\x66\x61iled\x18\x04 \x01(\x04\x12\x0e\n\x06\x61\x63tive\x18\x05 \x03(\x04\"0\n\x0bStatusReply\x12!\n\x06status\x18\x01 \x01(\x0b\x32\x11.synthetic.Status\" \n\rDeauthRequest\x12\x0f\n\x07session\x18\x01 \x01(\t\"0\n\x0b\x44\x65\x61uthReply\x12!\n\x06status\x18\x01 \x01(\x0b\x32\x11.synthetic.Status\"\x99\x01\n\rSearchRequest\x12\x12\n\ncompany_id\x18\x01 \x01(\x04\x12\r\n\x05limit\x18\x02 \x01(\r\x12\x0e\n\x06offset\x18\x03 \x01(\r\x12\x0e\n\x06select\x18\x04 \x01(\t\x12\x1f\n\x05where\x18\x05 \x01(\x0b\x32\x10.synthetic.Where\x12$\n\x08order_by\x18\x06 \x01(\x0b\x32\x12.synthetic.OrderBy\"N\n\x05Where\x12\x11\n\tconnector\x18\x01 \x01(\t\x12\x32\n\x0f\x63riteria_groups\x18\x02 \x01(\x0b\x32\x19.synthetic.CriteriaGroups\",\n\x07OrderBy\x12\x0e\n\x06\x66ields\x18\x01 \x03(\t\x12\x11\n\tdirection\x18\x02 \x01(\t\"J\n\x0e\x43riteriaGroups\x12\x11\n\tconnector\x18\x01 \x01(\t\x12%\n\x08\x63riteria\x18\x02 \x03(\x0b\x32\x13.synthetic.Criteria\":\n\x08\x43riteria\x12\r\n\x05\x66ield\x18\x01 \x01(\t\x12\x10\n\x08operator\x18\x02 \x01(\t\x12\r\n\x05value\x18\x03 \x01(\t\"\x92\x01\n\x0bSearchReply\x12\x1e\n\x05tasks\x18\x01 \x03(\x0b\x32\x0f.synthetic.Task\x12 \n\x06\x61gents\x18\x02 \x03(\x0b\x32\x10.synthetic.Agent\x12\x1e\n\x05tests\x18\x03 \x03(\x0b\x32\x0f.synthetic.Test\x12!\n\x06status\x18\x04 \x01(\x0b\x32\x11.synthetic.Status\"6\n\x12UpdateAgentRequest\x12 \n\x06\x61gents\x18\x01 \x03(\x0b\x32\x10.synthetic.Agent\"B\n\x10UpdateAgentReply\x12!\n\x06status\x18\x01 \x01(\x0b\x32\x11.synthetic.Status\x12\x0b\n\x03num\x18\x02 \x01(\r\"3\n\x11UpdateTaskRequest\x12\x1e\n\x05tasks\x18\x01 \x03(\x0b\x32\x0f.synthetic.Task\"A\n\x0fUpdateTaskReply\x12!\n\x06status\x18\x01 \x01(\x0b\x32\x11.synthetic.Status\x12\x0b\n\x03num\x18\x02 \x01(\r\"\xa0\x03\n\x05\x41gent\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x12\n\nagent_name\x18\x02 \x01(\t\x12\x14\n\x0c\x61gent_status\x18\x03 \x01(\t\x12\x12\n\ncompany_id\x18\x04 \x01(\x04\x12\x13\n\x0b\x61gent_alias\x18\x05 \x01(\t\x12\x12\n\nagent_type\x18\x06 \x01(\t\x12\n\n\x02os\x18\x07 \x01(\t\x12\n\n\x02ip\x18\x08 \x01(\t\x12\x0b\n\x03lat\x18\t \x01(\x01\x12\x0c\n\x04long\x18\n \x01(\x01\x12\x19\n\x11\x61gent_last_authed\x18\x0b \x01(\x04\x12#\n\x06\x66\x61mily\x18\x0c \x01(\x0e\x32\x13.synthetic.IPFamily\x12\x0b\n\x03\x61sn\x18\r \x01(\r\x12\x15\n\ragent_site_id\x18\x0e \x01(\x04\x12\x0f\n\x07version\x18\x0f \x01(\t\x12\x11\n\tchallenge\x18\x10 \x01(\t\x12\x0c\n\x04\x63ity\x18\x11 \x01(\t\x12\x0e\n\x06region\x18\x12 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x13 \x01(\t\x12\x10\n\x08local_ip\x18\x14 \x01(\t\x12(\n\nagent_impl\x18\x15 \x01(\x0e\x32\x14.synthetic.AgentImpl\"I\n\x16\x41gentTaskAssignRequest\x12\x10\n\x08\x61gent_id\x18\x01 \x01(\x04\x12\x0e\n\x06\x61\x63tion\x18\x02 \x01(\t\x12\r\n\x05tasks\x18\x03 \x03(\x04\"9\n\x14\x41gentTaskAssignReply\x12!\n\x06status\x18\x01 \x01(\x0b\x32\x11.synthetic.Status\"3\n\x11UpdateTestRequest\x12\x1e\n\x05tests\x18\x01 \x03(\x0b\x32\x0f.synthetic.Test\"\x84\x03\n\x04Test\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x11\n\ttest_type\x18\x02 \x01(\t\x12+\n\x08hostname\x18\x03 \x01(\x0b\x32\x17.synthetic.HostnameTestH\x00\x12\x1f\n\x02ip\x18\x04 \x01(\x0b\x32\x11.synthetic.IpTestH\x00\x12%\n\x05\x61gent\x18\x05 \x01(\x0b\x32\x14.synthetic.AgentTestH\x00\x12#\n\x04\x66low\x18\x06 \x01(\x0b\x32\x13.synthetic.FlowTestH\x00\x12#\n\x04site\x18\x07 \x01(\x0b\x32\x13.synthetic.SiteTestH\x00\x12!\n\x03tag\x18\x08 \x01(\x0b\x32\x12.synthetic.TagTestH\x00\x12\x12\n\ncompany_id\x18\t \x01(\x04\x12\x0f\n\x07user_id\x18\n \x01(\x04\x12\x11\n\tdevice_id\x18\x0b \x01(\x04\x12\x0e\n\x06status\x18\x0c \x01(\t\x12%\n\x06\x63onfig\x18\r \x01(\x0b\x32\x15.synthetic.TestConfigB\x0c\n\ndefinition\"J\n\nPingConfig\x12\x0e\n\x06period\x18\x01 \x01(\r\x12\r\n\x05\x63ount\x18\x02 \x01(\r\x12\x0e\n\x06\x65xpiry\x18\x03 \x01(\r\x12\r\n\x05\x64\x65lay\x18\x04 \x01(\r\"z\n\x0bTraceConfig\x12\x0e\n\x06period\x18\x01 \x01(\r\x12\x0e\n\x06\x65xpiry\x18\x02 \x01(\r\x12\r\n\x05limit\x18\x03 \x01(\r\x12\x0c\n\x04port\x18\x04 \x01(\r\x12\x10\n\x08protocol\x18\x05 \x01(\t\x12\r\n\x05\x63ount\x18\x06 \x01(\r\x12\r\n\x05\x64\x65lay\x18\x07 \x01(\r\"\xbf\x02\n\nHTTPConfig\x12\x0e\n\x06period\x18\x01 \x01(\r\x12\x0e\n\x06\x65xpiry\x18\x02 \x01(\r\x12\x0e\n\x06method\x18\x03 \x01(\t\x12\x33\n\x07headers\x18\x04 \x03(\x0b\x32\".synthetic.HTTPConfig.HeadersEntry\x12\x0c\n\x04\x62ody\x18\x05 \x01(\t\x12\x19\n\x11ignore_tls_errors\x18\x06 \x01(\x08\x12>\n\rcss_selectors\x18\x07 \x03(\x0b\x32\'.synthetic.HTTPConfig.CssSelectorsEntry\x1a.\n\x0cHeadersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x33\n\x11\x43ssSelectorsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x9c\x04\n\nTestConfig\x12\x0e\n\x06\x61gents\x18\x01 \x03(\x04\x12\x0e\n\x06period\x18\x02 \x01(\r\x12\r\n\x05\x63ount\x18\x03 \x01(\r\x12\x0e\n\x06\x65xpiry\x18\x04 \x01(\r\x12\r\n\x05limit\x18\x05 \x01(\r\x12\r\n\x05tasks\x18\x06 \x03(\t\x12\x0c\n\x04name\x18\x07 \x01(\t\x12\x11\n\tdirection\x18\x08 \x01(\t\x12\x16\n\x0einet_direction\x18\t \x01(\t\x12\x14\n\x0cuse_local_ip\x18\n \x01(\x08\x12\x12\n\nreciprocal\x18\x0b \x01(\x08\x12\x14\n\x0crollup_level\x18\x0c \x01(\r\x12\x10\n\x08protocol\x18\r \x01(\t\x12\x0c\n\x04port\x18\x0e \x01(\r\x12\x0e\n\x06method\x18\x0f \x01(\t\x12\x13\n\x0breturn_code\x18\x10 \x01(\r\x12\x0c\n\x04type\x18\x11 \x01(\t\x12\x11\n\tresolvers\x18\x12 \x03(\t\x12#\n\x06\x66\x61mily\x18\x13 \x01(\x0e\x32\x13.synthetic.IPFamily\x12#\n\x04ping\x18\x14 \x01(\x0b\x32\x15.synthetic.PingConfig\x12%\n\x05trace\x18\x15 \x01(\x0b\x32\x16.synthetic.TraceConfig\x12\x11\n\tmax_tasks\x18\x16 \x01(\r\x12\x13\n\x0bmax_targets\x18\x17 \x01(\r\x12\x14\n\x0chigh_density\x18\x18 \x01(\x08\x12#\n\x04http\x18\x19 \x01(\x0b\x32\x15.synthetic.HTTPConfig\"\x1e\n\x0cHostnameTest\x12\x0e\n\x06target\x18\x01 \x01(\t\"\x18\n\x06IpTest\x12\x0e\n\x06target\x18\x01 \x01(\t\"\x1b\n\tAgentTest\x12\x0e\n\x06target\x18\x01 \x01(\t\"c\n\x08\x46lowTest\x12\x0e\n\x06target\x18\x01 \x01(\t\x12&\n\x1etarget_refresh_interval_millis\x18\x02 \x01(\r\x12\x11\n\tmax_tasks\x18\x03 \x01(\r\x12\x0c\n\x04type\x18\x04 \x01(\t\"\x1a\n\x08SiteTest\x12\x0e\n\x06target\x18\x01 \x01(\t\"\x19\n\x07TagTest\x12\x0e\n\x06target\x18\x01 \x01(\t\"A\n\x0fUpdateTestReply\x12!\n\x06status\x18\x01 \x01(\x0b\x32\x11.synthetic.Status\x12\x0b\n\x03num\x18\x02 \x01(\r\";\n\x18SetTasksFromTestsRequest\x12\x0b\n\x03ids\x18\x01 \x03(\x04\x12\x12\n\ncompany_id\x18\x02 \x01(\x04\"N\n\x16SetTasksFromTestsReply\x12!\n\x06status\x18\x01 \x01(\x0b\x32\x11.synthetic.Status\x12\x11\n\tnum_tasks\x18\x02 \x01(\r\"=\n\x15\x44ropAgentCacheRequest\x12\x10\n\x08\x61gent_id\x18\x01 \x01(\x04\x12\x12\n\nagent_name\x18\x02 \x01(\t\"8\n\x13\x44ropAgentCacheReply\x12!\n\x06status\x18\x01 \x01(\x0b\x32\x11.synthetic.Status\"\x86\x01\n\x18GetHealthForTestsRequest\x12\x0b\n\x03ids\x18\x01 \x03(\x04\x12\x12\n\ncompany_id\x18\x02 \x01(\x04\x12\x12\n\nstart_time\x18\x03 \x01(\x03\x12\x10\n\x08\x65nd_time\x18\x04 \x01(\x03\x12\x11\n\tagent_ids\x18\x05 \x03(\x04\x12\x10\n\x08task_ids\x18\x06 \x03(\x04\"b\n\x16GetHealthForTestsReply\x12!\n\x06status\x18\x01 \x01(\x0b\x32\x11.synthetic.Status\x12%\n\x06health\x18\x02 \x03(\x0b\x32\x15.synthetic.TestHealth\"\xc5\x01\n\nTestHealth\x12\x0f\n\x07test_id\x18\x01 \x01(\x04\x12$\n\x05tasks\x18\x02 \x03(\x0b\x32\x15.synthetic.TaskHealth\x12)\n\x0eoverall_health\x18\x03 \x01(\x0b\x32\x11.synthetic.Health\x12$\n\thealth_ts\x18\x04 \x03(\x0b\x32\x11.synthetic.Health\x12/\n\nhealth_agg\x18\x05 \x01(\x0b\x32\x1b.synthetic.AggregatedHealth\"~\n\nTaskHealth\x12\x1d\n\x04task\x18\x01 \x01(\x0b\x32\x0f.synthetic.Task\x12&\n\x06\x61gents\x18\x02 \x03(\x0b\x32\x16.synthetic.AgentHealth\x12)\n\x0eoverall_health\x18\x03 \x01(\x0b\x32\x11.synthetic.Health\"\x82\x01\n\x0b\x41gentHealth\x12\x1f\n\x05\x61gent\x18\x01 \x01(\x0b\x32\x10.synthetic.Agent\x12\'\n\x06health\x18\x02 \x03(\x0b\x32\x17.synthetic.HealthMoment\x12)\n\x0eoverall_health\x18\x03 \x01(\x0b\x32\x11.synthetic.Health\"c\n\x10\x41ggregatedHealth\x12&\n\x06\x61gents\x18\x01 \x03(\x0b\x32\x16.synthetic.AgentHealth\x12\'\n\x06health\x18\x02 \x03(\x0b\x32\x17.synthetic.HealthMoment\"\xe8\x03\n\x0cHealthMoment\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0e\n\x06src_ip\x18\x02 \x01(\t\x12\x0e\n\x06\x64st_ip\x18\x03 \x01(\t\x12\x13\n\x0bpacket_loss\x18\x04 \x01(\x01\x12\x13\n\x0b\x61vg_latency\x18\x05 \x01(\r\x12\x1c\n\x14\x61vg_weighted_latency\x18\x06 \x01(\r\x12\x1b\n\x13rolling_avg_latency\x18\x07 \x01(\r\x12\x1e\n\x16rolling_stddev_latency\x18\x08 \x01(\r\x12$\n\x1crolling_avg_weighted_latency\x18\t \x01(\r\x12\x16\n\x0elatency_health\x18\n \x01(\t\x12\x1a\n\x12packet_loss_health\x18\x0b \x01(\t\x12)\n\x0eoverall_health\x18\x0c \x01(\x0b\x32\x11.synthetic.Health\x12\x12\n\navg_jitter\x18\r \x01(\r\x12\x1a\n\x12rolling_avg_jitter\x18\x0e \x01(\r\x12\x1a\n\x12rolling_std_jitter\x18\x0f \x01(\r\x12\x15\n\rjitter_health\x18\x10 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x11 \x01(\t\x12\x0c\n\x04size\x18\x12 \x01(\r\x12\x0e\n\x06status\x18\x13 \x01(\r\x12\x11\n\ttask_type\x18\x14 \x01(\t\"&\n\x06Health\x12\x0e\n\x06health\x18\x01 \x01(\t\x12\x0c\n\x04time\x18\x02 \x01(\x03\"q\n\x16GetTraceForTestRequest\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x12\n\ncompany_id\x18\x02 \x01(\x04\x12\x12\n\nstart_time\x18\x03 \x01(\x03\x12\x10\n\x08\x65nd_time\x18\x04 \x01(\x03\x12\x11\n\tagent_ids\x18\x05 \x03(\x04\"Z\n\x14GetTraceForTestReply\x12!\n\x06status\x18\x01 \x01(\x0b\x32\x11.synthetic.Status\x12\x1f\n\x05trace\x18\x02 \x01(\x0b\x32\x10.synthetic.Trace\"O\n\x05Trace\x12!\n\x04hops\x18\x01 \x03(\x0b\x32\x13.synthetic.TraceHop\x12#\n\x05links\x18\x02 \x03(\x0b\x32\x14.synthetic.TraceLink\"\x95\x01\n\x08TraceHop\x12\n\n\x02id\x18\x01 \x01(\r\x12\x10\n\x08hop_name\x18\x02 \x01(\t\x12\x11\n\thop_depth\x18\x03 \x01(\r\x12\x0b\n\x03\x61sn\x18\x04 \x01(\r\x12$\n\tin_health\x18\x05 \x01(\x0b\x32\x11.synthetic.Health\x12%\n\nout_health\x18\x06 \x01(\x0b\x32\x11.synthetic.Health\"\x87\x01\n\tTraceLink\x12\x12\n\nsrc_hop_id\x18\x01 \x01(\r\x12\x12\n\ndst_hop_id\x18\x02 \x01(\r\x12)\n\x0eoverall_health\x18\x03 \x01(\x0b\x32\x11.synthetic.Health\x12\'\n\x06health\x18\x04 \x03(\x0b\x32\x17.synthetic.HealthMoment\"A\n\x18GetHealthOfAgentsRequest\x12\x12\n\ncompany_id\x18\x01 \x01(\x04\x12\x11\n\tagent_ids\x18\x02 \x03(\x04\"\x93\x01\n\x16GetHealthOfAgentsReply\x12!\n\x06status\x18\x01 \x01(\x0b\x32\x11.synthetic.Status\x12,\n\x06\x61gents\x18\x02 \x03(\x0b\x32\x1c.synthetic.AgentHealthStatus\x12\x0c\n\x04good\x18\x03 \x01(\r\x12\x0c\n\x04warn\x18\x04 \x01(\r\x12\x0c\n\x04\x63rit\x18\x05 \x01(\r\"\x95\x01\n\x11\x41gentHealthStatus\x12\x11\n\tlast_seen\x18\x01 \x01(\x04\x12%\n\x06status\x18\x02 \x01(\x0b\x32\x15.synthetic.TaskStatus\x12\x0e\n\x06health\x18\x03 \x01(\t\x12\x1f\n\x05\x61gent\x18\x04 \x01(\x0b\x32\x10.synthetic.Agent\x12\x15\n\rlast_seen_str\x18\x05 \x01(\t\"\x86\x01\n\x18GetErrorsForTestsRequest\x12\x0b\n\x03ids\x18\x01 \x03(\x04\x12\x12\n\ncompany_id\x18\x02 \x01(\x04\x12\x12\n\nstart_time\x18\x03 \x01(\x03\x12\x10\n\x08\x65nd_time\x18\x04 \x01(\x03\x12\x11\n\tagent_ids\x18\x05 \x03(\x04\x12\x10\n\x08task_ids\x18\x06 \x03(\x04\"a\n\x16GetErrorsForTestsReply\x12!\n\x06status\x18\x01 \x01(\x0b\x32\x11.synthetic.Status\x12$\n\x06\x65rrors\x18\x02 \x03(\x0b\x32\x14.synthetic.TestError\"B\n\tTestError\x12\x0f\n\x07test_id\x18\x01 \x01(\x04\x12$\n\x06\x65rrors\x18\x02 \x03(\x0b\x32\x14.synthetic.TaskError\"Q\n\tTaskError\x12%\n\x06\x65rrors\x18\x01 \x03(\x0b\x32\x15.synthetic.AgentError\x12\x1d\n\x04task\x18\x02 \x01(\x0b\x32\x0f.synthetic.Task\"\x85\x01\n\nAgentError\x12\x1f\n\x05\x61gent\x18\x01 \x01(\x0b\x32\x10.synthetic.Agent\x12(\n\x06\x65rrors\x18\x02 \x03(\x0b\x32\x18.synthetic.AgentErrorSet\x12,\n\x08timeouts\x18\x03 \x03(\x0b\x32\x1a.synthetic.AgentTimeoutSet\"C\n\rAgentErrorSet\x12\x11\n\tlast_time\x18\x01 \x01(\x03\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x12\n\nnum_errors\x18\x03 \x01(\x03\":\n\x0f\x41gentTimeoutSet\x12\x11\n\tlast_time\x18\x01 \x01(\x03\x12\x14\n\x0cnum_timeouts\x18\x02 \x01(\x03*\x1f\n\tAgentImpl\x12\x08\n\x04RUST\x10\x00\x12\x08\n\x04NODE\x10\x01*$\n\x08IPFamily\x12\x06\n\x02V4\x10\x00\x12\x06\n\x02V6\x10\x01\x12\x08\n\x04\x44UAL\x10\x02\x32\xdd\r\n\x0eSyntheticAgent\x12W\n\x04\x41uth\x12\x16.synthetic.AuthRequest\x1a\x14.synthetic.AuthReply\"!\x82\xd3\xe4\x93\x02\x1b\"\x16/api/agent/v1/syn/auth:\x01*\x12[\n\x05Tasks\x12\x17.synthetic.TasksRequest\x1a\x15.synthetic.TasksReply\"\"\x82\xd3\xe4\x93\x02\x1c\"\x17/api/agent/v1/syn/tasks:\x01*\x12_\n\x06Status\x12\x18.synthetic.StatusRequest\x1a\x16.synthetic.StatusReply\"#\x82\xd3\xe4\x93\x02\x1d\"\x18/api/agent/v1/syn/status:\x01*\x12_\n\x06\x44\x65\x61uth\x12\x18.synthetic.DeauthRequest\x1a\x16.synthetic.DeauthReply\"#\x82\xd3\xe4\x93\x02\x1d\"\x18/api/agent/v1/syn/deauth:\x01*\x12^\n\x06Search\x12\x18.synthetic.SearchRequest\x1a\x16.synthetic.SearchReply\"\"\x82\xd3\xe4\x93\x02\x1c\"\x17/v1/syn/internal/search:\x01*\x12m\n\x0bUpdateAgent\x12\x1d.synthetic.UpdateAgentRequest\x1a\x1b.synthetic.UpdateAgentReply\"\"\x82\xd3\xe4\x93\x02\x1c\x1a\x17/v1/syn/internal/agents:\x01*\x12i\n\nUpdateTask\x12\x1c.synthetic.UpdateTaskRequest\x1a\x1a.synthetic.UpdateTaskReply\"!\x82\xd3\xe4\x93\x02\x1b\x1a\x16/v1/syn/internal/tasks:\x01*\x12\x87\x01\n\x0f\x41gentTaskAssign\x12!.synthetic.AgentTaskAssignRequest\x1a\x1f.synthetic.AgentTaskAssignReply\"0\x82\xd3\xe4\x93\x02*\x1a%/v1/syn/internal/agentTask/{agent_id}:\x01*\x12i\n\nUpdateTest\x12\x1c.synthetic.UpdateTestRequest\x1a\x1a.synthetic.UpdateTestReply\"!\x82\xd3\xe4\x93\x02\x1b\x1a\x16/v1/syn/internal/tests:\x01*\x12\x81\x01\n\x11SetTasksFromTests\x12#.synthetic.SetTasksFromTestsRequest\x1a!.synthetic.SetTasksFromTestsReply\"$\x82\xd3\xe4\x93\x02\x1e\x1a\x19/v1/syn/internal/settasks:\x01*\x12\x85\x01\n\x11GetHealthForTests\x12#.synthetic.GetHealthForTestsRequest\x1a!.synthetic.GetHealthForTestsReply\"(\x82\xd3\xe4\x93\x02\"\"\x1d/v1/syn/internal/health/tasks:\x01*\x12\x7f\n\x0fGetTraceForTest\x12!.synthetic.GetTraceForTestRequest\x1a\x1f.synthetic.GetTraceForTestReply\"(\x82\xd3\xe4\x93\x02\"\"\x1d/v1/syn/internal/health/trace:\x01*\x12\x7f\n\x0e\x44ropAgentCache\x12 .synthetic.DropAgentCacheRequest\x1a\x1e.synthetic.DropAgentCacheReply\"+\x82\xd3\xe4\x93\x02%\" /v1/syn/internal/dropcache/agent:\x01*\x12\x86\x01\n\x11GetHealthOfAgents\x12#.synthetic.GetHealthOfAgentsRequest\x1a!.synthetic.GetHealthOfAgentsReply\")\x82\xd3\xe4\x93\x02#\"\x1e/v1/syn/internal/health/agents:\x01*\x12\x86\x01\n\x11GetErrorsForTests\x12#.synthetic.GetErrorsForTestsRequest\x1a!.synthetic.GetErrorsForTestsReply\")\x82\xd3\xe4\x93\x02#\"\x1e/v1/syn/internal/health/errors:\x01*\x1a\x04\xf8\xd7\x02\x01\x42+\x92\x41(\x12&\n\x1dKentik Synthetics Backend API2\x05\x30.0.1b\x06proto3'
+  serialized_pb=b'\n-kentik/synthetics/backend/v1/synthetics.proto\x12\tsynthetic\x1a\x1cgoogle/api/annotations.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a+kentik/core/v202012alpha1/annotations.proto\"}\n\x06Status\x12\x0c\n\x02ok\x18\x01 \x01(\x08H\x00\x12&\n\x03\x65rr\x18\x02 \x01(\x0b\x32\x17.synthetic.Status.ErrorH\x00\x1a\x33\n\x05\x45rror\x12\x0e\n\x06status\x18\x01 \x01(\r\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\r\n\x05retry\x18\x03 \x01(\rB\x08\n\x06status\"\xd7\x01\n\x0b\x41uthRequest\x12\r\n\x05\x61gent\x18\x01 \x01(\t\x12\x11\n\tsignature\x18\x02 \x01(\t\x12\x11\n\ttimestamp\x18\x03 \x01(\t\x12\x0f\n\x07version\x18\x04 \x01(\t\x12\x12\n\ncompany_id\x18\x05 \x01(\x04\x12\x0c\n\x04name\x18\x06 \x01(\t\x12\x0e\n\x06global\x18\x07 \x01(\x08\x12\n\n\x02os\x18\x08 \x01(\t\x12\x0c\n\x04\x62ind\x18\t \x01(\t\x12\x0c\n\x04site\x18\n \x01(\x04\x12(\n\nagent_impl\x18\x0b \x01(\x0e\x32\x14.synthetic.AgentImpl\"\xdf\x01\n\tAuthReply\x12\'\n\x04\x61uth\x18\x01 \x01(\x0e\x32\x19.synthetic.AuthReply.Auth\x12!\n\x06status\x18\x02 \x01(\x0b\x32\x11.synthetic.Status\x12\x0f\n\x07session\x18\x03 \x01(\t\x12#\n\x06\x66\x61mily\x18\x04 \x01(\x0e\x32\x13.synthetic.IPFamily\x12\x10\n\x08\x61gent_id\x18\x05 \x01(\x04\x12\x11\n\tchallenge\x18\x06 \x01(\t\"+\n\x04\x41uth\x12\x06\n\x02OK\x10\x00\x12\x08\n\x04WAIT\x10\x01\x12\x08\n\x04\x44\x45NY\x10\x02\x12\x07\n\x03\x45RR\x10\x03\"&\n\x06Kentik\x12\r\n\x05\x65mail\x18\x01 \x01(\t\x12\r\n\x05token\x18\x02 \x01(\t\">\n\x06\x44\x65vice\x12\n\n\x02id\x18\x01 \x01(\x04\x12(\n\x07\x63ustoms\x18\x02 \x03(\x0b\x32\x17.synthetic.CustomColumn\"\x8a\x01\n\x0c\x43ustomColumn\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\n\n\x02id\x18\x02 \x01(\x04\x12*\n\x04type\x18\x03 \x01(\x0e\x32\x1c.synthetic.CustomColumn.Type\"4\n\x04Type\x12\n\n\x06UINT32\x10\x00\x12\n\n\x06UINT64\x10\x01\x12\n\n\x06STRING\x10\x02\x12\x08\n\x04\x41\x44\x44R\x10\x03\".\n\x0cTasksRequest\x12\x0f\n\x07session\x18\x01 \x01(\t\x12\r\n\x05since\x18\x02 \x01(\x04\"d\n\nTasksReply\x12 \n\x06groups\x18\x01 \x03(\x0b\x32\x10.synthetic.Group\x12\x11\n\ttimestamp\x18\x02 \x01(\x04\x12!\n\x06status\x18\x03 \x01(\x0b\x32\x11.synthetic.Status\"\x81\x01\n\x05Group\x12\x12\n\ncompany_id\x18\x01 \x01(\x04\x12!\n\x06\x64\x65vice\x18\x02 \x01(\x0b\x32\x11.synthetic.Device\x12!\n\x06kentik\x18\x03 \x01(\x0b\x32\x11.synthetic.Kentik\x12\x1e\n\x05tasks\x18\x04 \x03(\x0b\x32\x0f.synthetic.Task\"\xb7\x05\n\x04Task\x12\n\n\x02id\x18\x01 \x01(\x04\x12$\n\x05state\x18\x02 \x01(\x0e\x32\x15.synthetic.Task.State\x12\x12\n\ncompany_id\x18\x03 \x01(\x04\x12\x0f\n\x07user_id\x18\x04 \x01(\x04\x12\x11\n\tdevice_id\x18\x05 \x01(\x04\x12\x0e\n\x06status\x18\x06 \x01(\t\x12\x0f\n\x07test_id\x18\x07 \x01(\x04\x12#\n\x06\x66\x61mily\x18\x08 \x01(\x0e\x32\x13.synthetic.IPFamily\x12-\n\x04ping\x18\t \x01(\x0b\x32\x1d.synthetic.PingTaskDefinitionH\x00\x12\x34\n\ntraceroute\x18\n \x01(\x0b\x32\x1e.synthetic.TraceTaskDefinitionH\x00\x12-\n\x04http\x18\x0b \x01(\x0b\x32\x1d.synthetic.HTTPTaskDefinitionH\x00\x12/\n\x05knock\x18\x0c \x01(\x0b\x32\x1e.synthetic.KnockTaskDefinitionH\x00\x12+\n\x03\x64ns\x18\r \x01(\x0b\x32\x1c.synthetic.DNSTaskDefinitionH\x00\x12/\n\x05shake\x18\x0e \x01(\x0b\x32\x1e.synthetic.ShakeTaskDefinitionH\x00\x12\x34\n\x0bhttp_timing\x18\x0f \x01(\x0b\x32\x1d.synthetic.HTTPTaskDefinitionH\x00\x12\x32\n\tpage_load\x18\x10 \x01(\x0b\x32\x1d.synthetic.HTTPTaskDefinitionH\x00\x12\x34\n\x0btransaction\x18\x11 \x01(\x0b\x32\x1d.synthetic.HTTPTaskDefinitionH\x00\".\n\x05State\x12\x0b\n\x07\x43REATED\x10\x00\x12\x0b\n\x07UPDATED\x10\x01\x12\x0b\n\x07\x44\x45LETED\x10\x02\x42\x0c\n\ndefinition\"b\n\x12PingTaskDefinition\x12\x0e\n\x06target\x18\x01 \x01(\t\x12\x0e\n\x06period\x18\x02 \x01(\r\x12\x0e\n\x06\x65xpiry\x18\x03 \x01(\r\x12\r\n\x05\x63ount\x18\x04 \x01(\r\x12\r\n\x05\x64\x65lay\x18\x05 \x01(\r\"\x92\x01\n\x13TraceTaskDefinition\x12\x0e\n\x06target\x18\x01 \x01(\t\x12\x0e\n\x06period\x18\x02 \x01(\r\x12\x0e\n\x06\x65xpiry\x18\x03 \x01(\r\x12\r\n\x05limit\x18\x04 \x01(\r\x12\x10\n\x08protocol\x18\x05 \x01(\t\x12\x0c\n\x04port\x18\x06 \x01(\r\x12\r\n\x05\x63ount\x18\x07 \x01(\r\x12\r\n\x05\x64\x65lay\x18\x08 \x01(\r\"\x90\x03\n\x12HTTPTaskDefinition\x12\x0e\n\x06target\x18\x01 \x01(\t\x12\x0e\n\x06period\x18\x02 \x01(\r\x12\x0e\n\x06\x65xpiry\x18\x03 \x01(\r\x12\x0e\n\x06method\x18\x04 \x01(\t\x12\x13\n\x0breturn_code\x18\x05 \x01(\r\x12;\n\x07headers\x18\x06 \x03(\x0b\x32*.synthetic.HTTPTaskDefinition.HeadersEntry\x12\x0c\n\x04\x62ody\x18\x07 \x01(\t\x12\x19\n\x11ignore_tls_errors\x18\x08 \x01(\x08\x12\x46\n\rcss_selectors\x18\t \x03(\x0b\x32/.synthetic.HTTPTaskDefinition.CssSelectorsEntry\x12\x12\n\ntrx_script\x18\n \x01(\t\x1a.\n\x0cHeadersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x33\n\x11\x43ssSelectorsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"q\n\x13KnockTaskDefinition\x12\x0e\n\x06target\x18\x01 \x01(\t\x12\x0e\n\x06period\x18\x02 \x01(\r\x12\x0e\n\x06\x65xpiry\x18\x03 \x01(\r\x12\r\n\x05\x63ount\x18\x04 \x01(\r\x12\x0c\n\x04port\x18\x05 \x01(\r\x12\r\n\x05\x64\x65lay\x18\x06 \x01(\r\"\x80\x01\n\x11\x44NSTaskDefinition\x12\x0e\n\x06target\x18\x01 \x01(\t\x12\x0e\n\x06period\x18\x02 \x01(\r\x12\x0e\n\x06\x65xpiry\x18\x03 \x01(\r\x12\r\n\x05\x63ount\x18\x04 \x01(\r\x12\x0c\n\x04port\x18\x05 \x01(\r\x12\x0c\n\x04type\x18\x06 \x01(\t\x12\x10\n\x08resolver\x18\x07 \x01(\t\"S\n\x13ShakeTaskDefinition\x12\x0e\n\x06target\x18\x01 \x01(\t\x12\x0c\n\x04port\x18\x02 \x01(\r\x12\x0e\n\x06period\x18\x03 \x01(\r\x12\x0e\n\x06\x65xpiry\x18\x04 \x01(\r\"I\n\rStatusRequest\x12\x0f\n\x07session\x18\x01 \x01(\t\x12\'\n\x06report\x18\x02 \x01(\x0b\x32\x17.synthetic.StatusReport\"4\n\x0cStatusReport\x12$\n\x05tasks\x18\x01 \x01(\x0b\x32\x15.synthetic.TaskStatus\"^\n\nTaskStatus\x12\x0f\n\x07started\x18\x01 \x01(\x04\x12\x0f\n\x07running\x18\x02 \x01(\x04\x12\x0e\n\x06\x65xited\x18\x03 \x01(\x04\x12\x0e\n\x06\x66\x61iled\x18\x04 \x01(\x04\x12\x0e\n\x06\x61\x63tive\x18\x05 \x03(\x04\"0\n\x0bStatusReply\x12!\n\x06status\x18\x01 \x01(\x0b\x32\x11.synthetic.Status\" \n\rDeauthRequest\x12\x0f\n\x07session\x18\x01 \x01(\t\"0\n\x0b\x44\x65\x61uthReply\x12!\n\x06status\x18\x01 \x01(\x0b\x32\x11.synthetic.Status\"\x99\x01\n\rSearchRequest\x12\x12\n\ncompany_id\x18\x01 \x01(\x04\x12\r\n\x05limit\x18\x02 \x01(\r\x12\x0e\n\x06offset\x18\x03 \x01(\r\x12\x0e\n\x06select\x18\x04 \x01(\t\x12\x1f\n\x05where\x18\x05 \x01(\x0b\x32\x10.synthetic.Where\x12$\n\x08order_by\x18\x06 \x01(\x0b\x32\x12.synthetic.OrderBy\"N\n\x05Where\x12\x11\n\tconnector\x18\x01 \x01(\t\x12\x32\n\x0f\x63riteria_groups\x18\x02 \x01(\x0b\x32\x19.synthetic.CriteriaGroups\",\n\x07OrderBy\x12\x0e\n\x06\x66ields\x18\x01 \x03(\t\x12\x11\n\tdirection\x18\x02 \x01(\t\"J\n\x0e\x43riteriaGroups\x12\x11\n\tconnector\x18\x01 \x01(\t\x12%\n\x08\x63riteria\x18\x02 \x03(\x0b\x32\x13.synthetic.Criteria\":\n\x08\x43riteria\x12\r\n\x05\x66ield\x18\x01 \x01(\t\x12\x10\n\x08operator\x18\x02 \x01(\t\x12\r\n\x05value\x18\x03 \x01(\t\"\x92\x01\n\x0bSearchReply\x12\x1e\n\x05tasks\x18\x01 \x03(\x0b\x32\x0f.synthetic.Task\x12 \n\x06\x61gents\x18\x02 \x03(\x0b\x32\x10.synthetic.Agent\x12\x1e\n\x05tests\x18\x03 \x03(\x0b\x32\x0f.synthetic.Test\x12!\n\x06status\x18\x04 \x01(\x0b\x32\x11.synthetic.Status\"6\n\x12UpdateAgentRequest\x12 \n\x06\x61gents\x18\x01 \x03(\x0b\x32\x10.synthetic.Agent\"B\n\x10UpdateAgentReply\x12!\n\x06status\x18\x01 \x01(\x0b\x32\x11.synthetic.Status\x12\x0b\n\x03num\x18\x02 \x01(\r\"3\n\x11UpdateTaskRequest\x12\x1e\n\x05tasks\x18\x01 \x03(\x0b\x32\x0f.synthetic.Task\"A\n\x0fUpdateTaskReply\x12!\n\x06status\x18\x01 \x01(\x0b\x32\x11.synthetic.Status\x12\x0b\n\x03num\x18\x02 \x01(\r\"\xa0\x03\n\x05\x41gent\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x12\n\nagent_name\x18\x02 \x01(\t\x12\x14\n\x0c\x61gent_status\x18\x03 \x01(\t\x12\x12\n\ncompany_id\x18\x04 \x01(\x04\x12\x13\n\x0b\x61gent_alias\x18\x05 \x01(\t\x12\x12\n\nagent_type\x18\x06 \x01(\t\x12\n\n\x02os\x18\x07 \x01(\t\x12\n\n\x02ip\x18\x08 \x01(\t\x12\x0b\n\x03lat\x18\t \x01(\x01\x12\x0c\n\x04long\x18\n \x01(\x01\x12\x19\n\x11\x61gent_last_authed\x18\x0b \x01(\x04\x12#\n\x06\x66\x61mily\x18\x0c \x01(\x0e\x32\x13.synthetic.IPFamily\x12\x0b\n\x03\x61sn\x18\r \x01(\r\x12\x15\n\ragent_site_id\x18\x0e \x01(\x04\x12\x0f\n\x07version\x18\x0f \x01(\t\x12\x11\n\tchallenge\x18\x10 \x01(\t\x12\x0c\n\x04\x63ity\x18\x11 \x01(\t\x12\x0e\n\x06region\x18\x12 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x13 \x01(\t\x12\x10\n\x08local_ip\x18\x14 \x01(\t\x12(\n\nagent_impl\x18\x15 \x01(\x0e\x32\x14.synthetic.AgentImpl\"I\n\x16\x41gentTaskAssignRequest\x12\x10\n\x08\x61gent_id\x18\x01 \x01(\x04\x12\x0e\n\x06\x61\x63tion\x18\x02 \x01(\t\x12\r\n\x05tasks\x18\x03 \x03(\x04\"9\n\x14\x41gentTaskAssignReply\x12!\n\x06status\x18\x01 \x01(\x0b\x32\x11.synthetic.Status\"3\n\x11UpdateTestRequest\x12\x1e\n\x05tests\x18\x01 \x03(\x0b\x32\x0f.synthetic.Test\"\x84\x03\n\x04Test\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x11\n\ttest_type\x18\x02 \x01(\t\x12+\n\x08hostname\x18\x03 \x01(\x0b\x32\x17.synthetic.HostnameTestH\x00\x12\x1f\n\x02ip\x18\x04 \x01(\x0b\x32\x11.synthetic.IpTestH\x00\x12%\n\x05\x61gent\x18\x05 \x01(\x0b\x32\x14.synthetic.AgentTestH\x00\x12#\n\x04\x66low\x18\x06 \x01(\x0b\x32\x13.synthetic.FlowTestH\x00\x12#\n\x04site\x18\x07 \x01(\x0b\x32\x13.synthetic.SiteTestH\x00\x12!\n\x03tag\x18\x08 \x01(\x0b\x32\x12.synthetic.TagTestH\x00\x12\x12\n\ncompany_id\x18\t \x01(\x04\x12\x0f\n\x07user_id\x18\n \x01(\x04\x12\x11\n\tdevice_id\x18\x0b \x01(\x04\x12\x0e\n\x06status\x18\x0c \x01(\t\x12%\n\x06\x63onfig\x18\r \x01(\x0b\x32\x15.synthetic.TestConfigB\x0c\n\ndefinition\"J\n\nPingConfig\x12\x0e\n\x06period\x18\x01 \x01(\r\x12\r\n\x05\x63ount\x18\x02 \x01(\r\x12\x0e\n\x06\x65xpiry\x18\x03 \x01(\r\x12\r\n\x05\x64\x65lay\x18\x04 \x01(\r\"z\n\x0bTraceConfig\x12\x0e\n\x06period\x18\x01 \x01(\r\x12\x0e\n\x06\x65xpiry\x18\x02 \x01(\r\x12\r\n\x05limit\x18\x03 \x01(\r\x12\x0c\n\x04port\x18\x04 \x01(\r\x12\x10\n\x08protocol\x18\x05 \x01(\t\x12\r\n\x05\x63ount\x18\x06 \x01(\r\x12\r\n\x05\x64\x65lay\x18\x07 \x01(\r\"\xd3\x02\n\nHTTPConfig\x12\x0e\n\x06period\x18\x01 \x01(\r\x12\x0e\n\x06\x65xpiry\x18\x02 \x01(\r\x12\x0e\n\x06method\x18\x03 \x01(\t\x12\x33\n\x07headers\x18\x04 \x03(\x0b\x32\".synthetic.HTTPConfig.HeadersEntry\x12\x0c\n\x04\x62ody\x18\x05 \x01(\t\x12\x19\n\x11ignore_tls_errors\x18\x06 \x01(\x08\x12>\n\rcss_selectors\x18\x07 \x03(\x0b\x32\'.synthetic.HTTPConfig.CssSelectorsEntry\x12\x12\n\ntrx_script\x18\x08 \x01(\t\x1a.\n\x0cHeadersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x33\n\x11\x43ssSelectorsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x9c\x04\n\nTestConfig\x12\x0e\n\x06\x61gents\x18\x01 \x03(\x04\x12\x0e\n\x06period\x18\x02 \x01(\r\x12\r\n\x05\x63ount\x18\x03 \x01(\r\x12\x0e\n\x06\x65xpiry\x18\x04 \x01(\r\x12\r\n\x05limit\x18\x05 \x01(\r\x12\r\n\x05tasks\x18\x06 \x03(\t\x12\x0c\n\x04name\x18\x07 \x01(\t\x12\x11\n\tdirection\x18\x08 \x01(\t\x12\x16\n\x0einet_direction\x18\t \x01(\t\x12\x14\n\x0cuse_local_ip\x18\n \x01(\x08\x12\x12\n\nreciprocal\x18\x0b \x01(\x08\x12\x14\n\x0crollup_level\x18\x0c \x01(\r\x12\x10\n\x08protocol\x18\r \x01(\t\x12\x0c\n\x04port\x18\x0e \x01(\r\x12\x0e\n\x06method\x18\x0f \x01(\t\x12\x13\n\x0breturn_code\x18\x10 \x01(\r\x12\x0c\n\x04type\x18\x11 \x01(\t\x12\x11\n\tresolvers\x18\x12 \x03(\t\x12#\n\x06\x66\x61mily\x18\x13 \x01(\x0e\x32\x13.synthetic.IPFamily\x12#\n\x04ping\x18\x14 \x01(\x0b\x32\x15.synthetic.PingConfig\x12%\n\x05trace\x18\x15 \x01(\x0b\x32\x16.synthetic.TraceConfig\x12\x11\n\tmax_tasks\x18\x16 \x01(\r\x12\x13\n\x0bmax_targets\x18\x17 \x01(\r\x12\x14\n\x0chigh_density\x18\x18 \x01(\x08\x12#\n\x04http\x18\x19 \x01(\x0b\x32\x15.synthetic.HTTPConfig\"\x1e\n\x0cHostnameTest\x12\x0e\n\x06target\x18\x01 \x01(\t\"\x18\n\x06IpTest\x12\x0e\n\x06target\x18\x01 \x01(\t\"\x1b\n\tAgentTest\x12\x0e\n\x06target\x18\x01 \x01(\t\"c\n\x08\x46lowTest\x12\x0e\n\x06target\x18\x01 \x01(\t\x12&\n\x1etarget_refresh_interval_millis\x18\x02 \x01(\r\x12\x11\n\tmax_tasks\x18\x03 \x01(\r\x12\x0c\n\x04type\x18\x04 \x01(\t\"\x1a\n\x08SiteTest\x12\x0e\n\x06target\x18\x01 \x01(\t\"\x19\n\x07TagTest\x12\x0e\n\x06target\x18\x01 \x01(\t\"A\n\x0fUpdateTestReply\x12!\n\x06status\x18\x01 \x01(\x0b\x32\x11.synthetic.Status\x12\x0b\n\x03num\x18\x02 \x01(\r\";\n\x18SetTasksFromTestsRequest\x12\x0b\n\x03ids\x18\x01 \x03(\x04\x12\x12\n\ncompany_id\x18\x02 \x01(\x04\"N\n\x16SetTasksFromTestsReply\x12!\n\x06status\x18\x01 \x01(\x0b\x32\x11.synthetic.Status\x12\x11\n\tnum_tasks\x18\x02 \x01(\r\"=\n\x15\x44ropAgentCacheRequest\x12\x10\n\x08\x61gent_id\x18\x01 \x01(\x04\x12\x12\n\nagent_name\x18\x02 \x01(\t\"8\n\x13\x44ropAgentCacheReply\x12!\n\x06status\x18\x01 \x01(\x0b\x32\x11.synthetic.Status\"\x86\x01\n\x18GetHealthForTestsRequest\x12\x0b\n\x03ids\x18\x01 \x03(\x04\x12\x12\n\ncompany_id\x18\x02 \x01(\x04\x12\x12\n\nstart_time\x18\x03 \x01(\x03\x12\x10\n\x08\x65nd_time\x18\x04 \x01(\x03\x12\x11\n\tagent_ids\x18\x05 \x03(\x04\x12\x10\n\x08task_ids\x18\x06 \x03(\x04\"b\n\x16GetHealthForTestsReply\x12!\n\x06status\x18\x01 \x01(\x0b\x32\x11.synthetic.Status\x12%\n\x06health\x18\x02 \x03(\x0b\x32\x15.synthetic.TestHealth\"\xc5\x01\n\nTestHealth\x12\x0f\n\x07test_id\x18\x01 \x01(\x04\x12$\n\x05tasks\x18\x02 \x03(\x0b\x32\x15.synthetic.TaskHealth\x12)\n\x0eoverall_health\x18\x03 \x01(\x0b\x32\x11.synthetic.Health\x12$\n\thealth_ts\x18\x04 \x03(\x0b\x32\x11.synthetic.Health\x12/\n\nhealth_agg\x18\x05 \x01(\x0b\x32\x1b.synthetic.AggregatedHealth\"~\n\nTaskHealth\x12\x1d\n\x04task\x18\x01 \x01(\x0b\x32\x0f.synthetic.Task\x12&\n\x06\x61gents\x18\x02 \x03(\x0b\x32\x16.synthetic.AgentHealth\x12)\n\x0eoverall_health\x18\x03 \x01(\x0b\x32\x11.synthetic.Health\"\x82\x01\n\x0b\x41gentHealth\x12\x1f\n\x05\x61gent\x18\x01 \x01(\x0b\x32\x10.synthetic.Agent\x12\'\n\x06health\x18\x02 \x03(\x0b\x32\x17.synthetic.HealthMoment\x12)\n\x0eoverall_health\x18\x03 \x01(\x0b\x32\x11.synthetic.Health\"c\n\x10\x41ggregatedHealth\x12&\n\x06\x61gents\x18\x01 \x03(\x0b\x32\x16.synthetic.AgentHealth\x12\'\n\x06health\x18\x02 \x03(\x0b\x32\x17.synthetic.HealthMoment\"\xe8\x03\n\x0cHealthMoment\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x0e\n\x06src_ip\x18\x02 \x01(\t\x12\x0e\n\x06\x64st_ip\x18\x03 \x01(\t\x12\x13\n\x0bpacket_loss\x18\x04 \x01(\x01\x12\x13\n\x0b\x61vg_latency\x18\x05 \x01(\r\x12\x1c\n\x14\x61vg_weighted_latency\x18\x06 \x01(\r\x12\x1b\n\x13rolling_avg_latency\x18\x07 \x01(\r\x12\x1e\n\x16rolling_stddev_latency\x18\x08 \x01(\r\x12$\n\x1crolling_avg_weighted_latency\x18\t \x01(\r\x12\x16\n\x0elatency_health\x18\n \x01(\t\x12\x1a\n\x12packet_loss_health\x18\x0b \x01(\t\x12)\n\x0eoverall_health\x18\x0c \x01(\x0b\x32\x11.synthetic.Health\x12\x12\n\navg_jitter\x18\r \x01(\r\x12\x1a\n\x12rolling_avg_jitter\x18\x0e \x01(\r\x12\x1a\n\x12rolling_std_jitter\x18\x0f \x01(\r\x12\x15\n\rjitter_health\x18\x10 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x11 \x01(\t\x12\x0c\n\x04size\x18\x12 \x01(\r\x12\x0e\n\x06status\x18\x13 \x01(\r\x12\x11\n\ttask_type\x18\x14 \x01(\t\"&\n\x06Health\x12\x0e\n\x06health\x18\x01 \x01(\t\x12\x0c\n\x04time\x18\x02 \x01(\x03\"q\n\x16GetTraceForTestRequest\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x12\n\ncompany_id\x18\x02 \x01(\x04\x12\x12\n\nstart_time\x18\x03 \x01(\x03\x12\x10\n\x08\x65nd_time\x18\x04 \x01(\x03\x12\x11\n\tagent_ids\x18\x05 \x03(\x04\"Z\n\x14GetTraceForTestReply\x12!\n\x06status\x18\x01 \x01(\x0b\x32\x11.synthetic.Status\x12\x1f\n\x05trace\x18\x02 \x01(\x0b\x32\x10.synthetic.Trace\"O\n\x05Trace\x12!\n\x04hops\x18\x01 \x03(\x0b\x32\x13.synthetic.TraceHop\x12#\n\x05links\x18\x02 \x03(\x0b\x32\x14.synthetic.TraceLink\"\x95\x01\n\x08TraceHop\x12\n\n\x02id\x18\x01 \x01(\r\x12\x10\n\x08hop_name\x18\x02 \x01(\t\x12\x11\n\thop_depth\x18\x03 \x01(\r\x12\x0b\n\x03\x61sn\x18\x04 \x01(\r\x12$\n\tin_health\x18\x05 \x01(\x0b\x32\x11.synthetic.Health\x12%\n\nout_health\x18\x06 \x01(\x0b\x32\x11.synthetic.Health\"\x87\x01\n\tTraceLink\x12\x12\n\nsrc_hop_id\x18\x01 \x01(\r\x12\x12\n\ndst_hop_id\x18\x02 \x01(\r\x12)\n\x0eoverall_health\x18\x03 \x01(\x0b\x32\x11.synthetic.Health\x12\'\n\x06health\x18\x04 \x03(\x0b\x32\x17.synthetic.HealthMoment\"A\n\x18GetHealthOfAgentsRequest\x12\x12\n\ncompany_id\x18\x01 \x01(\x04\x12\x11\n\tagent_ids\x18\x02 \x03(\x04\"\x93\x01\n\x16GetHealthOfAgentsReply\x12!\n\x06status\x18\x01 \x01(\x0b\x32\x11.synthetic.Status\x12,\n\x06\x61gents\x18\x02 \x03(\x0b\x32\x1c.synthetic.AgentHealthStatus\x12\x0c\n\x04good\x18\x03 \x01(\r\x12\x0c\n\x04warn\x18\x04 \x01(\r\x12\x0c\n\x04\x63rit\x18\x05 \x01(\r\"\x95\x01\n\x11\x41gentHealthStatus\x12\x11\n\tlast_seen\x18\x01 \x01(\x04\x12%\n\x06status\x18\x02 \x01(\x0b\x32\x15.synthetic.TaskStatus\x12\x0e\n\x06health\x18\x03 \x01(\t\x12\x1f\n\x05\x61gent\x18\x04 \x01(\x0b\x32\x10.synthetic.Agent\x12\x15\n\rlast_seen_str\x18\x05 \x01(\t\"\x86\x01\n\x18GetErrorsForTestsRequest\x12\x0b\n\x03ids\x18\x01 \x03(\x04\x12\x12\n\ncompany_id\x18\x02 \x01(\x04\x12\x12\n\nstart_time\x18\x03 \x01(\x03\x12\x10\n\x08\x65nd_time\x18\x04 \x01(\x03\x12\x11\n\tagent_ids\x18\x05 \x03(\x04\x12\x10\n\x08task_ids\x18\x06 \x03(\x04\"a\n\x16GetErrorsForTestsReply\x12!\n\x06status\x18\x01 \x01(\x0b\x32\x11.synthetic.Status\x12$\n\x06\x65rrors\x18\x02 \x03(\x0b\x32\x14.synthetic.TestError\"B\n\tTestError\x12\x0f\n\x07test_id\x18\x01 \x01(\x04\x12$\n\x06\x65rrors\x18\x02 \x03(\x0b\x32\x14.synthetic.TaskError\"Q\n\tTaskError\x12%\n\x06\x65rrors\x18\x01 \x03(\x0b\x32\x15.synthetic.AgentError\x12\x1d\n\x04task\x18\x02 \x01(\x0b\x32\x0f.synthetic.Task\"\x85\x01\n\nAgentError\x12\x1f\n\x05\x61gent\x18\x01 \x01(\x0b\x32\x10.synthetic.Agent\x12(\n\x06\x65rrors\x18\x02 \x03(\x0b\x32\x18.synthetic.AgentErrorSet\x12,\n\x08timeouts\x18\x03 \x03(\x0b\x32\x1a.synthetic.AgentTimeoutSet\"C\n\rAgentErrorSet\x12\x11\n\tlast_time\x18\x01 \x01(\x03\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x12\n\nnum_errors\x18\x03 \x01(\x03\":\n\x0f\x41gentTimeoutSet\x12\x11\n\tlast_time\x18\x01 \x01(\x03\x12\x14\n\x0cnum_timeouts\x18\x02 \x01(\x03*\x1f\n\tAgentImpl\x12\x08\n\x04RUST\x10\x00\x12\x08\n\x04NODE\x10\x01*$\n\x08IPFamily\x12\x06\n\x02V4\x10\x00\x12\x06\n\x02V6\x10\x01\x12\x08\n\x04\x44UAL\x10\x02\x32\xdd\r\n\x0eSyntheticAgent\x12W\n\x04\x41uth\x12\x16.synthetic.AuthRequest\x1a\x14.synthetic.AuthReply\"!\x82\xd3\xe4\x93\x02\x1b\"\x16/api/agent/v1/syn/auth:\x01*\x12[\n\x05Tasks\x12\x17.synthetic.TasksRequest\x1a\x15.synthetic.TasksReply\"\"\x82\xd3\xe4\x93\x02\x1c\"\x17/api/agent/v1/syn/tasks:\x01*\x12_\n\x06Status\x12\x18.synthetic.StatusRequest\x1a\x16.synthetic.StatusReply\"#\x82\xd3\xe4\x93\x02\x1d\"\x18/api/agent/v1/syn/status:\x01*\x12_\n\x06\x44\x65\x61uth\x12\x18.synthetic.DeauthRequest\x1a\x16.synthetic.DeauthReply\"#\x82\xd3\xe4\x93\x02\x1d\"\x18/api/agent/v1/syn/deauth:\x01*\x12^\n\x06Search\x12\x18.synthetic.SearchRequest\x1a\x16.synthetic.SearchReply\"\"\x82\xd3\xe4\x93\x02\x1c\"\x17/v1/syn/internal/search:\x01*\x12m\n\x0bUpdateAgent\x12\x1d.synthetic.UpdateAgentRequest\x1a\x1b.synthetic.UpdateAgentReply\"\"\x82\xd3\xe4\x93\x02\x1c\x1a\x17/v1/syn/internal/agents:\x01*\x12i\n\nUpdateTask\x12\x1c.synthetic.UpdateTaskRequest\x1a\x1a.synthetic.UpdateTaskReply\"!\x82\xd3\xe4\x93\x02\x1b\x1a\x16/v1/syn/internal/tasks:\x01*\x12\x87\x01\n\x0f\x41gentTaskAssign\x12!.synthetic.AgentTaskAssignRequest\x1a\x1f.synthetic.AgentTaskAssignReply\"0\x82\xd3\xe4\x93\x02*\x1a%/v1/syn/internal/agentTask/{agent_id}:\x01*\x12i\n\nUpdateTest\x12\x1c.synthetic.UpdateTestRequest\x1a\x1a.synthetic.UpdateTestReply\"!\x82\xd3\xe4\x93\x02\x1b\x1a\x16/v1/syn/internal/tests:\x01*\x12\x81\x01\n\x11SetTasksFromTests\x12#.synthetic.SetTasksFromTestsRequest\x1a!.synthetic.SetTasksFromTestsReply\"$\x82\xd3\xe4\x93\x02\x1e\x1a\x19/v1/syn/internal/settasks:\x01*\x12\x85\x01\n\x11GetHealthForTests\x12#.synthetic.GetHealthForTestsRequest\x1a!.synthetic.GetHealthForTestsReply\"(\x82\xd3\xe4\x93\x02\"\"\x1d/v1/syn/internal/health/tasks:\x01*\x12\x7f\n\x0fGetTraceForTest\x12!.synthetic.GetTraceForTestRequest\x1a\x1f.synthetic.GetTraceForTestReply\"(\x82\xd3\xe4\x93\x02\"\"\x1d/v1/syn/internal/health/trace:\x01*\x12\x7f\n\x0e\x44ropAgentCache\x12 .synthetic.DropAgentCacheRequest\x1a\x1e.synthetic.DropAgentCacheReply\"+\x82\xd3\xe4\x93\x02%\" /v1/syn/internal/dropcache/agent:\x01*\x12\x86\x01\n\x11GetHealthOfAgents\x12#.synthetic.GetHealthOfAgentsRequest\x1a!.synthetic.GetHealthOfAgentsReply\")\x82\xd3\xe4\x93\x02#\"\x1e/v1/syn/internal/health/agents:\x01*\x12\x86\x01\n\x11GetErrorsForTests\x12#.synthetic.GetErrorsForTestsRequest\x1a!.synthetic.GetErrorsForTestsReply\")\x82\xd3\xe4\x93\x02#\"\x1e/v1/syn/internal/health/errors:\x01*\x1a\x04\xf8\xd7\x02\x01\x42+\x92\x41(\x12&\n\x1dKentik Synthetics Backend API2\x05\x30.0.1b\x06proto3'
   ,
   dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,protoc__gen__openapiv2_dot_options_dot_annotations__pb2.DESCRIPTOR,kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2.DESCRIPTOR,])
 
@@ -47,8 +47,8 @@ _AGENTIMPL = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=9606,
-  serialized_end=9637,
+  serialized_start=9715,
+  serialized_end=9746,
 )
 _sym_db.RegisterEnumDescriptor(_AGENTIMPL)
 
@@ -78,8 +78,8 @@ _IPFAMILY = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=9639,
-  serialized_end=9675,
+  serialized_start=9748,
+  serialized_end=9784,
 )
 _sym_db.RegisterEnumDescriptor(_IPFAMILY)
 
@@ -186,8 +186,8 @@ _TASK_STATE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1863,
-  serialized_end=1909,
+  serialized_start=1917,
+  serialized_end=1963,
 )
 _sym_db.RegisterEnumDescriptor(_TASK_STATE)
 
@@ -834,6 +834,13 @@ _TASK = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='transaction', full_name='synthetic.Task.transaction', index=16,
+      number=17, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -853,7 +860,7 @@ _TASK = _descriptor.Descriptor(
     fields=[]),
   ],
   serialized_start=1282,
-  serialized_end=1923,
+  serialized_end=1977,
 )
 
 
@@ -912,8 +919,8 @@ _PINGTASKDEFINITION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1925,
-  serialized_end=2023,
+  serialized_start=1979,
+  serialized_end=2077,
 )
 
 
@@ -993,8 +1000,8 @@ _TRACETASKDEFINITION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2026,
-  serialized_end=2172,
+  serialized_start=2080,
+  serialized_end=2226,
 )
 
 
@@ -1032,8 +1039,8 @@ _HTTPTASKDEFINITION_HEADERSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2456,
-  serialized_end=2502,
+  serialized_start=2530,
+  serialized_end=2576,
 )
 
 _HTTPTASKDEFINITION_CSSSELECTORSENTRY = _descriptor.Descriptor(
@@ -1070,8 +1077,8 @@ _HTTPTASKDEFINITION_CSSSELECTORSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2504,
-  serialized_end=2555,
+  serialized_start=2578,
+  serialized_end=2629,
 )
 
 _HTTPTASKDEFINITION = _descriptor.Descriptor(
@@ -1145,6 +1152,13 @@ _HTTPTASKDEFINITION = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='trx_script', full_name='synthetic.HTTPTaskDefinition.trx_script', index=9,
+      number=10, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1157,8 +1171,8 @@ _HTTPTASKDEFINITION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2175,
-  serialized_end=2555,
+  serialized_start=2229,
+  serialized_end=2629,
 )
 
 
@@ -1205,6 +1219,13 @@ _KNOCKTASKDEFINITION = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='delay', full_name='synthetic.KnockTaskDefinition.delay', index=5,
+      number=6, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1217,8 +1238,8 @@ _KNOCKTASKDEFINITION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2557,
-  serialized_end=2655,
+  serialized_start=2631,
+  serialized_end=2744,
 )
 
 
@@ -1291,8 +1312,8 @@ _DNSTASKDEFINITION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2658,
-  serialized_end=2786,
+  serialized_start=2747,
+  serialized_end=2875,
 )
 
 
@@ -1344,8 +1365,8 @@ _SHAKETASKDEFINITION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2788,
-  serialized_end=2871,
+  serialized_start=2877,
+  serialized_end=2960,
 )
 
 
@@ -1383,8 +1404,8 @@ _STATUSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2873,
-  serialized_end=2946,
+  serialized_start=2962,
+  serialized_end=3035,
 )
 
 
@@ -1415,8 +1436,8 @@ _STATUSREPORT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2948,
-  serialized_end=3000,
+  serialized_start=3037,
+  serialized_end=3089,
 )
 
 
@@ -1475,8 +1496,8 @@ _TASKSTATUS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3002,
-  serialized_end=3096,
+  serialized_start=3091,
+  serialized_end=3185,
 )
 
 
@@ -1507,8 +1528,8 @@ _STATUSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3098,
-  serialized_end=3146,
+  serialized_start=3187,
+  serialized_end=3235,
 )
 
 
@@ -1539,8 +1560,8 @@ _DEAUTHREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3148,
-  serialized_end=3180,
+  serialized_start=3237,
+  serialized_end=3269,
 )
 
 
@@ -1571,8 +1592,8 @@ _DEAUTHREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3182,
-  serialized_end=3230,
+  serialized_start=3271,
+  serialized_end=3319,
 )
 
 
@@ -1638,8 +1659,8 @@ _SEARCHREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3233,
-  serialized_end=3386,
+  serialized_start=3322,
+  serialized_end=3475,
 )
 
 
@@ -1677,8 +1698,8 @@ _WHERE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3388,
-  serialized_end=3466,
+  serialized_start=3477,
+  serialized_end=3555,
 )
 
 
@@ -1716,8 +1737,8 @@ _ORDERBY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3468,
-  serialized_end=3512,
+  serialized_start=3557,
+  serialized_end=3601,
 )
 
 
@@ -1755,8 +1776,8 @@ _CRITERIAGROUPS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3514,
-  serialized_end=3588,
+  serialized_start=3603,
+  serialized_end=3677,
 )
 
 
@@ -1801,8 +1822,8 @@ _CRITERIA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3590,
-  serialized_end=3648,
+  serialized_start=3679,
+  serialized_end=3737,
 )
 
 
@@ -1854,8 +1875,8 @@ _SEARCHREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3651,
-  serialized_end=3797,
+  serialized_start=3740,
+  serialized_end=3886,
 )
 
 
@@ -1886,8 +1907,8 @@ _UPDATEAGENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3799,
-  serialized_end=3853,
+  serialized_start=3888,
+  serialized_end=3942,
 )
 
 
@@ -1925,8 +1946,8 @@ _UPDATEAGENTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3855,
-  serialized_end=3921,
+  serialized_start=3944,
+  serialized_end=4010,
 )
 
 
@@ -1957,8 +1978,8 @@ _UPDATETASKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3923,
-  serialized_end=3974,
+  serialized_start=4012,
+  serialized_end=4063,
 )
 
 
@@ -1996,8 +2017,8 @@ _UPDATETASKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3976,
-  serialized_end=4041,
+  serialized_start=4065,
+  serialized_end=4130,
 )
 
 
@@ -2168,8 +2189,8 @@ _AGENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4044,
-  serialized_end=4460,
+  serialized_start=4133,
+  serialized_end=4549,
 )
 
 
@@ -2214,8 +2235,8 @@ _AGENTTASKASSIGNREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4462,
-  serialized_end=4535,
+  serialized_start=4551,
+  serialized_end=4624,
 )
 
 
@@ -2246,8 +2267,8 @@ _AGENTTASKASSIGNREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4537,
-  serialized_end=4594,
+  serialized_start=4626,
+  serialized_end=4683,
 )
 
 
@@ -2278,8 +2299,8 @@ _UPDATETESTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4596,
-  serialized_end=4647,
+  serialized_start=4685,
+  serialized_end=4736,
 )
 
 
@@ -2399,8 +2420,8 @@ _TEST = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=4650,
-  serialized_end=5038,
+  serialized_start=4739,
+  serialized_end=5127,
 )
 
 
@@ -2452,8 +2473,8 @@ _PINGCONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5040,
-  serialized_end=5114,
+  serialized_start=5129,
+  serialized_end=5203,
 )
 
 
@@ -2526,8 +2547,8 @@ _TRACECONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5116,
-  serialized_end=5238,
+  serialized_start=5205,
+  serialized_end=5327,
 )
 
 
@@ -2565,8 +2586,8 @@ _HTTPCONFIG_HEADERSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2456,
-  serialized_end=2502,
+  serialized_start=2530,
+  serialized_end=2576,
 )
 
 _HTTPCONFIG_CSSSELECTORSENTRY = _descriptor.Descriptor(
@@ -2603,8 +2624,8 @@ _HTTPCONFIG_CSSSELECTORSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2504,
-  serialized_end=2555,
+  serialized_start=2578,
+  serialized_end=2629,
 )
 
 _HTTPCONFIG = _descriptor.Descriptor(
@@ -2664,6 +2685,13 @@ _HTTPCONFIG = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='trx_script', full_name='synthetic.HTTPConfig.trx_script', index=7,
+      number=8, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -2676,8 +2704,8 @@ _HTTPCONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5241,
-  serialized_end=5560,
+  serialized_start=5330,
+  serialized_end=5669,
 )
 
 
@@ -2876,8 +2904,8 @@ _TESTCONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5563,
-  serialized_end=6103,
+  serialized_start=5672,
+  serialized_end=6212,
 )
 
 
@@ -2908,8 +2936,8 @@ _HOSTNAMETEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6105,
-  serialized_end=6135,
+  serialized_start=6214,
+  serialized_end=6244,
 )
 
 
@@ -2940,8 +2968,8 @@ _IPTEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6137,
-  serialized_end=6161,
+  serialized_start=6246,
+  serialized_end=6270,
 )
 
 
@@ -2972,8 +3000,8 @@ _AGENTTEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6163,
-  serialized_end=6190,
+  serialized_start=6272,
+  serialized_end=6299,
 )
 
 
@@ -3025,8 +3053,8 @@ _FLOWTEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6192,
-  serialized_end=6291,
+  serialized_start=6301,
+  serialized_end=6400,
 )
 
 
@@ -3057,8 +3085,8 @@ _SITETEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6293,
-  serialized_end=6319,
+  serialized_start=6402,
+  serialized_end=6428,
 )
 
 
@@ -3089,8 +3117,8 @@ _TAGTEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6321,
-  serialized_end=6346,
+  serialized_start=6430,
+  serialized_end=6455,
 )
 
 
@@ -3128,8 +3156,8 @@ _UPDATETESTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6348,
-  serialized_end=6413,
+  serialized_start=6457,
+  serialized_end=6522,
 )
 
 
@@ -3167,8 +3195,8 @@ _SETTASKSFROMTESTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6415,
-  serialized_end=6474,
+  serialized_start=6524,
+  serialized_end=6583,
 )
 
 
@@ -3206,8 +3234,8 @@ _SETTASKSFROMTESTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6476,
-  serialized_end=6554,
+  serialized_start=6585,
+  serialized_end=6663,
 )
 
 
@@ -3245,8 +3273,8 @@ _DROPAGENTCACHEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6556,
-  serialized_end=6617,
+  serialized_start=6665,
+  serialized_end=6726,
 )
 
 
@@ -3277,8 +3305,8 @@ _DROPAGENTCACHEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6619,
-  serialized_end=6675,
+  serialized_start=6728,
+  serialized_end=6784,
 )
 
 
@@ -3344,8 +3372,8 @@ _GETHEALTHFORTESTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6678,
-  serialized_end=6812,
+  serialized_start=6787,
+  serialized_end=6921,
 )
 
 
@@ -3383,8 +3411,8 @@ _GETHEALTHFORTESTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6814,
-  serialized_end=6912,
+  serialized_start=6923,
+  serialized_end=7021,
 )
 
 
@@ -3443,8 +3471,8 @@ _TESTHEALTH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6915,
-  serialized_end=7112,
+  serialized_start=7024,
+  serialized_end=7221,
 )
 
 
@@ -3489,8 +3517,8 @@ _TASKHEALTH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7114,
-  serialized_end=7240,
+  serialized_start=7223,
+  serialized_end=7349,
 )
 
 
@@ -3535,8 +3563,8 @@ _AGENTHEALTH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7243,
-  serialized_end=7373,
+  serialized_start=7352,
+  serialized_end=7482,
 )
 
 
@@ -3574,8 +3602,8 @@ _AGGREGATEDHEALTH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7375,
-  serialized_end=7474,
+  serialized_start=7484,
+  serialized_end=7583,
 )
 
 
@@ -3739,8 +3767,8 @@ _HEALTHMOMENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7477,
-  serialized_end=7965,
+  serialized_start=7586,
+  serialized_end=8074,
 )
 
 
@@ -3778,8 +3806,8 @@ _HEALTH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7967,
-  serialized_end=8005,
+  serialized_start=8076,
+  serialized_end=8114,
 )
 
 
@@ -3838,8 +3866,8 @@ _GETTRACEFORTESTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8007,
-  serialized_end=8120,
+  serialized_start=8116,
+  serialized_end=8229,
 )
 
 
@@ -3877,8 +3905,8 @@ _GETTRACEFORTESTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8122,
-  serialized_end=8212,
+  serialized_start=8231,
+  serialized_end=8321,
 )
 
 
@@ -3916,8 +3944,8 @@ _TRACE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8214,
-  serialized_end=8293,
+  serialized_start=8323,
+  serialized_end=8402,
 )
 
 
@@ -3983,8 +4011,8 @@ _TRACEHOP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8296,
-  serialized_end=8445,
+  serialized_start=8405,
+  serialized_end=8554,
 )
 
 
@@ -4036,8 +4064,8 @@ _TRACELINK = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8448,
-  serialized_end=8583,
+  serialized_start=8557,
+  serialized_end=8692,
 )
 
 
@@ -4075,8 +4103,8 @@ _GETHEALTHOFAGENTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8585,
-  serialized_end=8650,
+  serialized_start=8694,
+  serialized_end=8759,
 )
 
 
@@ -4135,8 +4163,8 @@ _GETHEALTHOFAGENTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8653,
-  serialized_end=8800,
+  serialized_start=8762,
+  serialized_end=8909,
 )
 
 
@@ -4195,8 +4223,8 @@ _AGENTHEALTHSTATUS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8803,
-  serialized_end=8952,
+  serialized_start=8912,
+  serialized_end=9061,
 )
 
 
@@ -4262,8 +4290,8 @@ _GETERRORSFORTESTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8955,
-  serialized_end=9089,
+  serialized_start=9064,
+  serialized_end=9198,
 )
 
 
@@ -4301,8 +4329,8 @@ _GETERRORSFORTESTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9091,
-  serialized_end=9188,
+  serialized_start=9200,
+  serialized_end=9297,
 )
 
 
@@ -4340,8 +4368,8 @@ _TESTERROR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9190,
-  serialized_end=9256,
+  serialized_start=9299,
+  serialized_end=9365,
 )
 
 
@@ -4379,8 +4407,8 @@ _TASKERROR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9258,
-  serialized_end=9339,
+  serialized_start=9367,
+  serialized_end=9448,
 )
 
 
@@ -4425,8 +4453,8 @@ _AGENTERROR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9342,
-  serialized_end=9475,
+  serialized_start=9451,
+  serialized_end=9584,
 )
 
 
@@ -4471,8 +4499,8 @@ _AGENTERRORSET = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9477,
-  serialized_end=9544,
+  serialized_start=9586,
+  serialized_end=9653,
 )
 
 
@@ -4510,8 +4538,8 @@ _AGENTTIMEOUTSET = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9546,
-  serialized_end=9604,
+  serialized_start=9655,
+  serialized_end=9713,
 )
 
 _STATUS_ERROR.containing_type = _STATUS
@@ -4545,6 +4573,7 @@ _TASK.fields_by_name['dns'].message_type = _DNSTASKDEFINITION
 _TASK.fields_by_name['shake'].message_type = _SHAKETASKDEFINITION
 _TASK.fields_by_name['http_timing'].message_type = _HTTPTASKDEFINITION
 _TASK.fields_by_name['page_load'].message_type = _HTTPTASKDEFINITION
+_TASK.fields_by_name['transaction'].message_type = _HTTPTASKDEFINITION
 _TASK_STATE.containing_type = _TASK
 _TASK.oneofs_by_name['definition'].fields.append(
   _TASK.fields_by_name['ping'])
@@ -4570,6 +4599,9 @@ _TASK.fields_by_name['http_timing'].containing_oneof = _TASK.oneofs_by_name['def
 _TASK.oneofs_by_name['definition'].fields.append(
   _TASK.fields_by_name['page_load'])
 _TASK.fields_by_name['page_load'].containing_oneof = _TASK.oneofs_by_name['definition']
+_TASK.oneofs_by_name['definition'].fields.append(
+  _TASK.fields_by_name['transaction'])
+_TASK.fields_by_name['transaction'].containing_oneof = _TASK.oneofs_by_name['definition']
 _HTTPTASKDEFINITION_HEADERSENTRY.containing_type = _HTTPTASKDEFINITION
 _HTTPTASKDEFINITION_CSSSELECTORSENTRY.containing_type = _HTTPTASKDEFINITION
 _HTTPTASKDEFINITION.fields_by_name['headers'].message_type = _HTTPTASKDEFINITION_HEADERSENTRY
@@ -5323,8 +5355,8 @@ _SYNTHETICAGENT = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=b'\370\327\002\001',
   create_key=_descriptor._internal_create_key,
-  serialized_start=9678,
-  serialized_end=11435,
+  serialized_start=9787,
+  serialized_end=11544,
   methods=[
   _descriptor.MethodDescriptor(
     name='Auth',

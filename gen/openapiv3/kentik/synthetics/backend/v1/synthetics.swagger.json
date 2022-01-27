@@ -1365,6 +1365,9 @@
                         "additionalProperties": {
                             "type": "string"
                         }
+                    },
+                    "trxScript": {
+                        "type": "string"
                     }
                 }
             },
@@ -1406,6 +1409,9 @@
                         "additionalProperties": {
                             "type": "string"
                         }
+                    },
+                    "trxScript": {
+                        "type": "string"
                     }
                 }
             },
@@ -1553,6 +1559,10 @@
                         "format": "int64"
                     },
                     "port": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "delay": {
                         "type": "integer",
                         "format": "int64"
                     }
@@ -1825,6 +1835,9 @@
                         "$ref": "#/components/schemas/syntheticHTTPTaskDefinition"
                     },
                     "pageLoad": {
+                        "$ref": "#/components/schemas/syntheticHTTPTaskDefinition"
+                    },
+                    "transaction": {
                         "$ref": "#/components/schemas/syntheticHTTPTaskDefinition"
                     }
                 }
