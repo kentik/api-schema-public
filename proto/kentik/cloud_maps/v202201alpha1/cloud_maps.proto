@@ -5,6 +5,7 @@ option go_package = "github.com/kentik/api-schema/gen/go/kentik/cloud_maps/v2022
 
 import "google/api/annotations.proto";
 import "google/api/client.proto";
+import "google/api/http.proto";
 import "google/type/latlng.proto";
 import "google/type/postal_address.proto";
 
