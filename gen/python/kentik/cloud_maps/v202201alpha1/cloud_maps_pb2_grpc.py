@@ -14,17 +14,17 @@ class CloudMapsServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.ProvideAwsMetadataStorage = channel.unary_unary(
-                '/kentik.cloud_maps.v202201alpha1.CloudMapsService/ProvideAwsMetadataStorage',
-                request_serializer=kentik_dot_cloud__maps_dot_v202201alpha1_dot_cloud__maps__pb2.ProvideAwsMetadataStorageRequest.SerializeToString,
-                response_deserializer=kentik_dot_cloud__maps_dot_v202201alpha1_dot_cloud__maps__pb2.ProvideAwsMetadataStorageResponse.FromString,
+        self.ProvideAwsMetadataStorageLocation = channel.unary_unary(
+                '/kentik.cloud_maps.v202201alpha1.CloudMapsService/ProvideAwsMetadataStorageLocation',
+                request_serializer=kentik_dot_cloud__maps_dot_v202201alpha1_dot_cloud__maps__pb2.ProvideAwsMetadataStorageLocationRequest.SerializeToString,
+                response_deserializer=kentik_dot_cloud__maps_dot_v202201alpha1_dot_cloud__maps__pb2.ProvideAwsMetadataStorageLocationResponse.FromString,
                 )
 
 
 class CloudMapsServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def ProvideAwsMetadataStorage(self, request, context):
+    def ProvideAwsMetadataStorageLocation(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -33,10 +33,10 @@ class CloudMapsServiceServicer(object):
 
 def add_CloudMapsServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'ProvideAwsMetadataStorage': grpc.unary_unary_rpc_method_handler(
-                    servicer.ProvideAwsMetadataStorage,
-                    request_deserializer=kentik_dot_cloud__maps_dot_v202201alpha1_dot_cloud__maps__pb2.ProvideAwsMetadataStorageRequest.FromString,
-                    response_serializer=kentik_dot_cloud__maps_dot_v202201alpha1_dot_cloud__maps__pb2.ProvideAwsMetadataStorageResponse.SerializeToString,
+            'ProvideAwsMetadataStorageLocation': grpc.unary_unary_rpc_method_handler(
+                    servicer.ProvideAwsMetadataStorageLocation,
+                    request_deserializer=kentik_dot_cloud__maps_dot_v202201alpha1_dot_cloud__maps__pb2.ProvideAwsMetadataStorageLocationRequest.FromString,
+                    response_serializer=kentik_dot_cloud__maps_dot_v202201alpha1_dot_cloud__maps__pb2.ProvideAwsMetadataStorageLocationResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -49,7 +49,7 @@ class CloudMapsService(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def ProvideAwsMetadataStorage(request,
+    def ProvideAwsMetadataStorageLocation(request,
             target,
             options=(),
             channel_credentials=None,
@@ -59,8 +59,8 @@ class CloudMapsService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/kentik.cloud_maps.v202201alpha1.CloudMapsService/ProvideAwsMetadataStorage',
-            kentik_dot_cloud__maps_dot_v202201alpha1_dot_cloud__maps__pb2.ProvideAwsMetadataStorageRequest.SerializeToString,
-            kentik_dot_cloud__maps_dot_v202201alpha1_dot_cloud__maps__pb2.ProvideAwsMetadataStorageResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/kentik.cloud_maps.v202201alpha1.CloudMapsService/ProvideAwsMetadataStorageLocation',
+            kentik_dot_cloud__maps_dot_v202201alpha1_dot_cloud__maps__pb2.ProvideAwsMetadataStorageLocationRequest.SerializeToString,
+            kentik_dot_cloud__maps_dot_v202201alpha1_dot_cloud__maps__pb2.ProvideAwsMetadataStorageLocationResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

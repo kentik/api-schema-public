@@ -18,7 +18,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type CloudMapsServiceClient interface {
-	ProvideAwsMetadataStorage(ctx context.Context, in *ProvideAwsMetadataStorageRequest, opts ...grpc.CallOption) (*ProvideAwsMetadataStorageResponse, error)
+	ProvideAwsMetadataStorageLocation(ctx context.Context, in *ProvideAwsMetadataStorageLocationRequest, opts ...grpc.CallOption) (*ProvideAwsMetadataStorageLocationResponse, error)
 }
 
 type cloudMapsServiceClient struct {
@@ -29,9 +29,9 @@ func NewCloudMapsServiceClient(cc grpc.ClientConnInterface) CloudMapsServiceClie
 	return &cloudMapsServiceClient{cc}
 }
 
-func (c *cloudMapsServiceClient) ProvideAwsMetadataStorage(ctx context.Context, in *ProvideAwsMetadataStorageRequest, opts ...grpc.CallOption) (*ProvideAwsMetadataStorageResponse, error) {
-	out := new(ProvideAwsMetadataStorageResponse)
-	err := c.cc.Invoke(ctx, "/kentik.cloud_maps.v202201alpha1.CloudMapsService/ProvideAwsMetadataStorage", in, out, opts...)
+func (c *cloudMapsServiceClient) ProvideAwsMetadataStorageLocation(ctx context.Context, in *ProvideAwsMetadataStorageLocationRequest, opts ...grpc.CallOption) (*ProvideAwsMetadataStorageLocationResponse, error) {
+	out := new(ProvideAwsMetadataStorageLocationResponse)
+	err := c.cc.Invoke(ctx, "/kentik.cloud_maps.v202201alpha1.CloudMapsService/ProvideAwsMetadataStorageLocation", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -42,15 +42,15 @@ func (c *cloudMapsServiceClient) ProvideAwsMetadataStorage(ctx context.Context, 
 // All implementations should embed UnimplementedCloudMapsServiceServer
 // for forward compatibility
 type CloudMapsServiceServer interface {
-	ProvideAwsMetadataStorage(context.Context, *ProvideAwsMetadataStorageRequest) (*ProvideAwsMetadataStorageResponse, error)
+	ProvideAwsMetadataStorageLocation(context.Context, *ProvideAwsMetadataStorageLocationRequest) (*ProvideAwsMetadataStorageLocationResponse, error)
 }
 
 // UnimplementedCloudMapsServiceServer should be embedded to have forward compatible implementations.
 type UnimplementedCloudMapsServiceServer struct {
 }
 
-func (UnimplementedCloudMapsServiceServer) ProvideAwsMetadataStorage(context.Context, *ProvideAwsMetadataStorageRequest) (*ProvideAwsMetadataStorageResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ProvideAwsMetadataStorage not implemented")
+func (UnimplementedCloudMapsServiceServer) ProvideAwsMetadataStorageLocation(context.Context, *ProvideAwsMetadataStorageLocationRequest) (*ProvideAwsMetadataStorageLocationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ProvideAwsMetadataStorageLocation not implemented")
 }
 
 // UnsafeCloudMapsServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -64,20 +64,20 @@ func RegisterCloudMapsServiceServer(s grpc.ServiceRegistrar, srv CloudMapsServic
 	s.RegisterService(&CloudMapsService_ServiceDesc, srv)
 }
 
-func _CloudMapsService_ProvideAwsMetadataStorage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ProvideAwsMetadataStorageRequest)
+func _CloudMapsService_ProvideAwsMetadataStorageLocation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ProvideAwsMetadataStorageLocationRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CloudMapsServiceServer).ProvideAwsMetadataStorage(ctx, in)
+		return srv.(CloudMapsServiceServer).ProvideAwsMetadataStorageLocation(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/kentik.cloud_maps.v202201alpha1.CloudMapsService/ProvideAwsMetadataStorage",
+		FullMethod: "/kentik.cloud_maps.v202201alpha1.CloudMapsService/ProvideAwsMetadataStorageLocation",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CloudMapsServiceServer).ProvideAwsMetadataStorage(ctx, req.(*ProvideAwsMetadataStorageRequest))
+		return srv.(CloudMapsServiceServer).ProvideAwsMetadataStorageLocation(ctx, req.(*ProvideAwsMetadataStorageLocationRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -90,8 +90,8 @@ var CloudMapsService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*CloudMapsServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "ProvideAwsMetadataStorage",
-			Handler:    _CloudMapsService_ProvideAwsMetadataStorage_Handler,
+			MethodName: "ProvideAwsMetadataStorageLocation",
+			Handler:    _CloudMapsService_ProvideAwsMetadataStorageLocation_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

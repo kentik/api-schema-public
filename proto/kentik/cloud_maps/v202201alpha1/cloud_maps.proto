@@ -56,7 +56,7 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   }
 };
 
-message ProvideAwsMetadataStorageRequest {
+message ProvideAwsMetadataStorageLocationRequest {
   // only "aws-1.0" literal for now
   string version = 1;
   // 12-digit AWS account ID
@@ -65,7 +65,7 @@ message ProvideAwsMetadataStorageRequest {
   string source_aws_region = 3;
 }
 
-message ProvideAwsMetadataStorageResponse {
+message ProvideAwsMetadataStorageLocationResponse {
   string target_url = 1;
 }
 
@@ -73,16 +73,16 @@ service CloudMapsService {
   option (google.api.default_host) = "grpc.api.kentik.com";
   option (kentik.core.v202012alpha1.service_scope) = "admin.cloud_maps";
 
-  rpc ProvideAwsMetadataStorage(ProvideAwsMetadataStorageRequest) returns (ProvideAwsMetadataStorageResponse) {
+  rpc ProvideAwsMetadataStorageLocation(ProvideAwsMetadataStorageLocationRequest) returns (ProvideAwsMetadataStorageLocationResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_maps:write";
     option (google.api.http) = {
-      post: "/cloud_maps/v202201alpha1/ingest/aws"
+      post: "/cloud_maps/v202201alpha1/ingest/aws_storage_location"
       body: "*"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
-      operation_id: "CollectAwsMetadata"
-      summary: "Collect given AWS metadata."
-      description: "Provides location at with the API client may store AWS cloud map"
+      operation_id: "AwsMetadataStorageLocation"
+      summary: "Provide location for given AWS metadata"
+      description: "Provides location at with the API client may store AWS cloud metadata"
     };
   }
 }

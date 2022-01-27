@@ -22,16 +22,16 @@
     "application/json"
   ],
   "paths": {
-    "/cloud_maps/v202201alpha1/ingest/aws": {
+    "/cloud_maps/v202201alpha1/ingest/aws_storage_location": {
       "post": {
-        "summary": "Collect given AWS metadata.",
-        "description": "Provides location at with the API client may store AWS cloud map",
-        "operationId": "CollectAwsMetadata",
+        "summary": "Provide location for given AWS metadata",
+        "description": "Provides location at with the API client may store AWS cloud metadata",
+        "operationId": "AwsMetadataStorageLocation",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v202201alpha1ProvideAwsMetadataStorageResponse"
+              "$ref": "#/definitions/v202201alpha1ProvideAwsMetadataStorageLocationResponse"
             }
           },
           "default": {
@@ -47,7 +47,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202201alpha1ProvideAwsMetadataStorageRequest"
+              "$ref": "#/definitions/v202201alpha1ProvideAwsMetadataStorageLocationRequest"
             }
           }
         ],
@@ -88,7 +88,7 @@
         }
       }
     },
-    "v202201alpha1ProvideAwsMetadataStorageRequest": {
+    "v202201alpha1ProvideAwsMetadataStorageLocationRequest": {
       "type": "object",
       "properties": {
         "version": {
@@ -105,7 +105,7 @@
         }
       }
     },
-    "v202201alpha1ProvideAwsMetadataStorageResponse": {
+    "v202201alpha1ProvideAwsMetadataStorageLocationResponse": {
       "type": "object",
       "properties": {
         "targetUrl": {
