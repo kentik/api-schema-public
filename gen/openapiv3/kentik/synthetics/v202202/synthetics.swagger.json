@@ -710,6 +710,9 @@
                 "properties": {
                     "target": {
                         "type": "string"
+                    },
+                    "useLocalIp": {
+                        "type": "boolean"
                     }
                 }
             },
@@ -1215,6 +1218,14 @@
                     }
                 }
             },
+            "v202202NetworkMeshTest": {
+                "type": "object",
+                "properties": {
+                    "useLocalIp": {
+                        "type": "boolean"
+                    }
+                }
+            },
             "v202202PacketLossData": {
                 "type": "object",
                 "properties": {
@@ -1450,6 +1461,9 @@
                     },
                     "dnsGrid": {
                         "$ref": "#/components/schemas/v202202DnsTest"
+                    },
+                    "networkMesh": {
+                        "$ref": "#/components/schemas/v202202NetworkMeshTest"
                     },
                     "agentIds": {
                         "type": "array",

@@ -7,7 +7,6 @@ option go_package = "github.com/kentik/api-schema/gen/go/kentik/synthetics/v2022
 
 import "google/api/annotations.proto";
 import "google/api/client.proto";
-import "google/protobuf/field_mask.proto";
 import "google/protobuf/timestamp.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
 
@@ -177,6 +176,7 @@ message TestSettings {
     IpTest network_grid = 7;
     HTTPTest page_load = 8;
     DnsTest dns_grid = 9;
+    NetworkMeshTest network_mesh = 18;
   }
 
   repeated string agent_ids = 10;
@@ -237,6 +237,7 @@ message IpTest {
 }
 message AgentTest {
   string target = 1;
+  bool use_local_ip = 2;
 }
 
 message FlowTest {
@@ -262,6 +263,10 @@ message DnsTest {
 message HTTPTest {
   string target = 1;
   HTTPConfig http = 2;
+}
+
+message NetworkMeshTest {
+  bool use_local_ip = 1;
 }
 
 // === TEST RESULTS (metrics, stats, responses, health)
