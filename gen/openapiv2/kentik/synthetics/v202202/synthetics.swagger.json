@@ -602,24 +602,6 @@
         }
       }
     },
-    "v202202DNSConfig": {
-      "type": "object",
-      "properties": {
-        "timeout": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "type": {
-          "$ref": "#/definitions/v202202DNSRecord"
-        },
-        "servers": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
     "v202202DNSRecord": {
       "type": "string",
       "enum": [
@@ -673,14 +655,25 @@
     "v202202DnsTest": {
       "type": "object",
       "properties": {
-        "targets": {
+        "target": {
+          "type": "string"
+        },
+        "timeout": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "recordType": {
+          "$ref": "#/definitions/v202202DNSRecord"
+        },
+        "servers": {
           "type": "array",
           "items": {
             "type": "string"
           }
         },
-        "dns": {
-          "$ref": "#/definitions/v202202DNSConfig"
+        "port": {
+          "type": "integer",
+          "format": "int64"
         }
       }
     },
@@ -694,7 +687,11 @@
           "type": "integer",
           "format": "int64"
         },
-        "maxTasks": {
+        "maxProviders": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "maxIpTargets": {
           "type": "integer",
           "format": "int64"
         },
@@ -845,10 +842,6 @@
           "additionalProperties": {
             "type": "string"
           }
-        },
-        "timeout": {
-          "type": "integer",
-          "format": "int64"
         }
       }
     },
@@ -887,6 +880,10 @@
       "properties": {
         "target": {
           "type": "string"
+        },
+        "timeout": {
+          "type": "integer",
+          "format": "int64"
         },
         "http": {
           "$ref": "#/definitions/v202202HTTPConfig"

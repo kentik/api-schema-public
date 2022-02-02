@@ -142,13 +142,11 @@ message Test {
 }
 
 message HTTPConfig {
-  string method             = 1;
+  string method = 1;
   map<string, string> headers = 2;
-  string body               = 3;
-  bool ignore_tls_errors    = 4;
+  string body = 3;
+  bool ignore_tls_errors = 4;
   map<string, string> css_selectors = 5;
-  uint32 timeout = 6;
-
 }
 
 
@@ -243,25 +241,24 @@ message AgentTest {
 message FlowTest {
   string target = 1;
   uint32 target_refresh_interval_millis = 2; // How often to generate tasks.
-  uint32 max_tasks = 3; // Used for top N.
-  string type = 4; // What type of flow to look at -- asn, cdn, country, ...
-  string inet_direction = 5;
-  string direction = 6;
-}
-
-message DNSConfig {
-  uint32 timeout = 1;
-  DNSRecord type = 2;
-  repeated string servers = 3;
+  uint32 max_providers = 3; // see issue https://github.com/kentik/api-schema/issues/94
+  uint32 max_ip_targets = 4; // see issue https://github.com/kentik/api-schema/issues/94
+  string type = 5; // What type of flow to look at -- asn, cdn, country, ...
+  string inet_direction = 6;
+  string direction = 7;
 }
 
 message DnsTest {
-  repeated string targets = 1;
-  DNSConfig dns = 2;
+  string target = 1;
+  uint32 timeout = 2;
+  DNSRecord record_type = 3;
+  repeated string servers = 4;
+  uint32 port = 5;
 }
 
 message HTTPTest {
   string target = 1;
+  uint32 timeout = 6;
   HTTPConfig http = 2;
 }
 
