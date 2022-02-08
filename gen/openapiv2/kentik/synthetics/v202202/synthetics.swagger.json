@@ -872,6 +872,9 @@
         },
         "response": {
           "$ref": "#/definitions/v202202HTTPResponseData"
+        },
+        "dstIp": {
+          "type": "string"
         }
       }
     },
@@ -1169,6 +1172,9 @@
         },
         "jitter": {
           "$ref": "#/definitions/v202202MetricData"
+        },
+        "dstIp": {
+          "type": "string"
         }
       }
     },

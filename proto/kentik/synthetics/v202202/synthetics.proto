@@ -285,6 +285,7 @@ message PingResults {
   PacketLossData packet_loss = 2;
   MetricData latency = 3;
   MetricData jitter = 4;
+  string dst_ip = 5;
 }
 
 message HTTPResponseData {
@@ -297,6 +298,7 @@ message HTTPResults {
   string target = 1;
   MetricData latency = 2;
   HTTPResponseData response = 4;
+  string dst_ip = 5;
 }
 
 message DNSResponseData {
