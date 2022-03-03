@@ -141,15 +141,6 @@ message Test {
   UserInfo last_updated_by = 10;
 }
 
-message HTTPConfig {
-  string method = 1;
-  map<string, string> headers = 2;
-  string body = 3;
-  bool ignore_tls_errors = 4;
-  map<string, string> css_selectors = 5;
-}
-
-
 enum DNSRecord {
   DNS_RECORD_UNSPECIFIED = 0;
   DNS_RECORD_A = 1;
@@ -170,9 +161,9 @@ message TestSettings {
     AgentTest agent = 3;
     FlowTest flow = 4;
     DnsTest dns = 5;
-    HTTPTest url = 6;
+    UrlTest url = 6;
     IpTest network_grid = 7;
-    HTTPTest page_load = 8;
+    PageLoadTest page_load = 8;
     DnsTest dns_grid = 9;
     NetworkMeshTest network_mesh = 18;
   }
@@ -256,10 +247,21 @@ message DnsTest {
   uint32 port = 5;
 }
 
-message HTTPTest {
+message UrlTest {
   string target = 1;
-  uint32 timeout = 6;
-  HTTPConfig http = 2;
+  uint32 timeout = 2;
+  string method = 3;
+  map<string, string> headers = 4;
+  string body = 5;
+  bool ignore_tls_errors = 6;
+}
+
+message PageLoadTest {
+  string target = 1;
+  uint32 timeout = 2;
+  map<string, string> headers = 3;
+  bool ignore_tls_errors = 4;
+  map<string, string> css_selectors = 5;
 }
 
 message NetworkMeshTest {

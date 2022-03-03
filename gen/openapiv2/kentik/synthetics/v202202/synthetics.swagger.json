@@ -819,32 +819,6 @@
         }
       }
     },
-    "v202202HTTPConfig": {
-      "type": "object",
-      "properties": {
-        "method": {
-          "type": "string"
-        },
-        "headers": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
-        },
-        "body": {
-          "type": "string"
-        },
-        "ignoreTlsErrors": {
-          "type": "boolean"
-        },
-        "cssSelectors": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
-        }
-      }
-    },
     "v202202HTTPResponseData": {
       "type": "object",
       "properties": {
@@ -875,21 +849,6 @@
         },
         "dstIp": {
           "type": "string"
-        }
-      }
-    },
-    "v202202HTTPTest": {
-      "type": "object",
-      "properties": {
-        "target": {
-          "type": "string"
-        },
-        "timeout": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "http": {
-          "$ref": "#/definitions/v202202HTTPConfig"
         }
       }
     },
@@ -1105,6 +1064,33 @@
         },
         "health": {
           "type": "string"
+        }
+      }
+    },
+    "v202202PageLoadTest": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "type": "string"
+        },
+        "timeout": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "headers": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "ignoreTlsErrors": {
+          "type": "boolean"
+        },
+        "cssSelectors": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
         }
       }
     },
@@ -1324,13 +1310,13 @@
           "$ref": "#/definitions/v202202DnsTest"
         },
         "url": {
-          "$ref": "#/definitions/v202202HTTPTest"
+          "$ref": "#/definitions/v202202UrlTest"
         },
         "networkGrid": {
           "$ref": "#/definitions/v202202IpTest"
         },
         "pageLoad": {
-          "$ref": "#/definitions/v202202HTTPTest"
+          "$ref": "#/definitions/v202202PageLoadTest"
         },
         "dnsGrid": {
           "$ref": "#/definitions/v202202DnsTest"
@@ -1455,6 +1441,33 @@
       "properties": {
         "test": {
           "$ref": "#/definitions/v202202Test"
+        }
+      }
+    },
+    "v202202UrlTest": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "type": "string"
+        },
+        "timeout": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "method": {
+          "type": "string"
+        },
+        "headers": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "body": {
+          "type": "string"
+        },
+        "ignoreTlsErrors": {
+          "type": "boolean"
         }
       }
     },
