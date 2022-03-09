@@ -599,6 +599,23 @@
                     }
                 }
             },
+            "v202202ActivationSettings": {
+                "type": "object",
+                "properties": {
+                    "gracePeriod": {
+                        "type": "string"
+                    },
+                    "timeUnit": {
+                        "type": "string"
+                    },
+                    "timeWindow": {
+                        "type": "string"
+                    },
+                    "times": {
+                        "type": "string"
+                    }
+                }
+            },
             "v202202Agent": {
                 "type": "object",
                 "properties": {
@@ -1058,6 +1075,9 @@
                     "unhealthySubtestThreshold": {
                         "type": "integer",
                         "format": "int64"
+                    },
+                    "activation": {
+                        "$ref": "#/components/schemas/v202202ActivationSettings"
                     }
                 }
             },

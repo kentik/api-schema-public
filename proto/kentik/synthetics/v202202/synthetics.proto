@@ -198,6 +198,13 @@ message TestTraceSettings {
   float delay = 6;
 }
 
+message ActivationSettings {
+  string grace_period = 1;
+  string time_unit = 2;
+  string time_window = 3;
+  string times = 4;
+}
+
 message HealthSettings {
   float latency_critical = 1;
   float latency_warning = 2;
@@ -216,6 +223,7 @@ message HealthSettings {
   float http_latency_critical_stddev = 15;
   float http_latency_warning_stddev = 16;
   uint32 unhealthy_subtest_threshold = 17;
+  ActivationSettings activation = 18;
 }
 
 message HostnameTest {
