@@ -3,12 +3,9 @@ syntax = "proto3";
 package kentik.cloud_maps.v202201alpha1;
 option go_package = "github.com/kentik/api-schema/gen/go/kentik/cloud_maps/v202201alpha1;cloud_maps";
 
+import "google/api/http.proto";
 import "google/api/annotations.proto";
 import "google/api/client.proto";
-import "google/api/http.proto";
-import "google/type/latlng.proto";
-import "google/type/postal_address.proto";
-
 import "protoc-gen-openapiv2/options/annotations.proto";
 import "kentik/core/v202012alpha1/annotations.proto";
 
@@ -70,6 +67,19 @@ message ProvideAwsMetadataStorageLocationResponse {
   string target_url = 1;
 }
 
+message GetAwsCrawlerConfigurationRequest {
+  // only "aws-1.0" literal for now
+  string version = 1;
+  // 12-digit AWS account ID
+  string source_aws_account_id = 2;
+  // AWS region code
+  string source_aws_region = 3;
+}
+
+message GetAwsCrawlerConfigurationResponse {
+  string services = 1;
+}
+
 service CloudMapsService {
   option (google.api.default_host) = "grpc.api.kentik.com";
   option (kentik.core.v202012alpha1.service_scope) = "admin.cloud_maps";
@@ -83,7 +93,20 @@ service CloudMapsService {
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       operation_id: "AwsMetadataStorageLocation"
       summary: "Provide location for given AWS metadata"
-      description: "Provides location at with the API client may store AWS cloud metadata"
+      description: "Provides location at which the API client may store AWS cloud metadata"
+    };
+  }
+
+  rpc GetAwsCrawlerConfiguration(GetAwsCrawlerConfigurationRequest) returns (GetAwsCrawlerConfigurationResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_maps:read";
+    option (google.api.http) = {
+      post: "/cloud_maps/v202201alpha1/ingest/aws_configuration"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "AwsConfiguration"
+      summary: "Get AWS crawler configuration"
+      description: "Get AWS crawler configuration that determines what AWS cloud metadata to collect"
     };
   }
 }

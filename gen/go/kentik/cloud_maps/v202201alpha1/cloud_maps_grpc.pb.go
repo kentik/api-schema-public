@@ -19,6 +19,7 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type CloudMapsServiceClient interface {
 	ProvideAwsMetadataStorageLocation(ctx context.Context, in *ProvideAwsMetadataStorageLocationRequest, opts ...grpc.CallOption) (*ProvideAwsMetadataStorageLocationResponse, error)
+	GetAwsCrawlerConfiguration(ctx context.Context, in *GetAwsCrawlerConfigurationRequest, opts ...grpc.CallOption) (*GetAwsCrawlerConfigurationResponse, error)
 }
 
 type cloudMapsServiceClient struct {
@@ -38,11 +39,21 @@ func (c *cloudMapsServiceClient) ProvideAwsMetadataStorageLocation(ctx context.C
 	return out, nil
 }
 
+func (c *cloudMapsServiceClient) GetAwsCrawlerConfiguration(ctx context.Context, in *GetAwsCrawlerConfigurationRequest, opts ...grpc.CallOption) (*GetAwsCrawlerConfigurationResponse, error) {
+	out := new(GetAwsCrawlerConfigurationResponse)
+	err := c.cc.Invoke(ctx, "/kentik.cloud_maps.v202201alpha1.CloudMapsService/GetAwsCrawlerConfiguration", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // CloudMapsServiceServer is the server API for CloudMapsService service.
 // All implementations should embed UnimplementedCloudMapsServiceServer
 // for forward compatibility
 type CloudMapsServiceServer interface {
 	ProvideAwsMetadataStorageLocation(context.Context, *ProvideAwsMetadataStorageLocationRequest) (*ProvideAwsMetadataStorageLocationResponse, error)
+	GetAwsCrawlerConfiguration(context.Context, *GetAwsCrawlerConfigurationRequest) (*GetAwsCrawlerConfigurationResponse, error)
 }
 
 // UnimplementedCloudMapsServiceServer should be embedded to have forward compatible implementations.
@@ -51,6 +62,9 @@ type UnimplementedCloudMapsServiceServer struct {
 
 func (UnimplementedCloudMapsServiceServer) ProvideAwsMetadataStorageLocation(context.Context, *ProvideAwsMetadataStorageLocationRequest) (*ProvideAwsMetadataStorageLocationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ProvideAwsMetadataStorageLocation not implemented")
+}
+func (UnimplementedCloudMapsServiceServer) GetAwsCrawlerConfiguration(context.Context, *GetAwsCrawlerConfigurationRequest) (*GetAwsCrawlerConfigurationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAwsCrawlerConfiguration not implemented")
 }
 
 // UnsafeCloudMapsServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -82,6 +96,24 @@ func _CloudMapsService_ProvideAwsMetadataStorageLocation_Handler(srv interface{}
 	return interceptor(ctx, in, info, handler)
 }
 
+func _CloudMapsService_GetAwsCrawlerConfiguration_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAwsCrawlerConfigurationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CloudMapsServiceServer).GetAwsCrawlerConfiguration(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kentik.cloud_maps.v202201alpha1.CloudMapsService/GetAwsCrawlerConfiguration",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CloudMapsServiceServer).GetAwsCrawlerConfiguration(ctx, req.(*GetAwsCrawlerConfigurationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // CloudMapsService_ServiceDesc is the grpc.ServiceDesc for CloudMapsService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -92,6 +124,10 @@ var CloudMapsService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ProvideAwsMetadataStorageLocation",
 			Handler:    _CloudMapsService_ProvideAwsMetadataStorageLocation_Handler,
+		},
+		{
+			MethodName: "GetAwsCrawlerConfiguration",
+			Handler:    _CloudMapsService_GetAwsCrawlerConfiguration_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
