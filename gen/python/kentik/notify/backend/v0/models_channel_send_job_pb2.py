@@ -3,6 +3,7 @@
 # source: kentik/notify/backend/v0/models-channel-send-job.proto
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
+from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
@@ -15,98 +16,11 @@ from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__
 from kentik.notify.backend.v0 import models_channel_event_pb2 as kentik_dot_notify_dot_backend_dot_v0_dot_models__channel__event__pb2
 
 
-DESCRIPTOR = _descriptor.FileDescriptor(
-  name='kentik/notify/backend/v0/models-channel-send-job.proto',
-  package='kentik.api.notify.v0',
-  syntax='proto3',
-  serialized_options=b'Z\037kentik/notify/backend/v0;notify',
-  create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n6kentik/notify/backend/v0/models-channel-send-job.proto\x12\x14kentik.api.notify.v0\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x33kentik/notify/backend/v0/models-channel-event.proto\"\x8c\x02\n\x0e\x43hannelSendJob\x12\x11\n\tchannelID\x18\x01 \x01(\x03\x12<\n\x0e\x63hannelVersion\x18\x02 \x01(\x0e\x32$.kentik.api.notify.v0.ChannelVersion\x12\x0f\n\x07jobUUID\x18\x03 \x01(\t\x12\x16\n\x0enotificationID\x18\x08 \x01(\x03\x12\x16\n\x0etimesAttempted\x18\x05 \x01(\x03\x12\x31\n\rfirstEnqueued\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0blastFailure\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.TimestampJ\x04\x08\x04\x10\x05\x42!Z\x1fkentik/notify/backend/v0;notifyb\x06proto3'
-  ,
-  dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,kentik_dot_notify_dot_backend_dot_v0_dot_models__channel__event__pb2.DESCRIPTOR,])
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n6kentik/notify/backend/v0/models-channel-send-job.proto\x12\x14kentik.api.notify.v0\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x33kentik/notify/backend/v0/models-channel-event.proto\"\x8c\x02\n\x0e\x43hannelSendJob\x12\x11\n\tchannelID\x18\x01 \x01(\x03\x12<\n\x0e\x63hannelVersion\x18\x02 \x01(\x0e\x32$.kentik.api.notify.v0.ChannelVersion\x12\x0f\n\x07jobUUID\x18\x03 \x01(\t\x12\x16\n\x0enotificationID\x18\x08 \x01(\x03\x12\x16\n\x0etimesAttempted\x18\x05 \x01(\x03\x12\x31\n\rfirstEnqueued\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0blastFailure\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.TimestampJ\x04\x08\x04\x10\x05\x42!Z\x1fkentik/notify/backend/v0;notifyb\x06proto3')
 
 
 
-
-_CHANNELSENDJOB = _descriptor.Descriptor(
-  name='ChannelSendJob',
-  full_name='kentik.api.notify.v0.ChannelSendJob',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='channelID', full_name='kentik.api.notify.v0.ChannelSendJob.channelID', index=0,
-      number=1, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='channelVersion', full_name='kentik.api.notify.v0.ChannelSendJob.channelVersion', index=1,
-      number=2, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='jobUUID', full_name='kentik.api.notify.v0.ChannelSendJob.jobUUID', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='notificationID', full_name='kentik.api.notify.v0.ChannelSendJob.notificationID', index=3,
-      number=8, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='timesAttempted', full_name='kentik.api.notify.v0.ChannelSendJob.timesAttempted', index=4,
-      number=5, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='firstEnqueued', full_name='kentik.api.notify.v0.ChannelSendJob.firstEnqueued', index=5,
-      number=6, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='lastFailure', full_name='kentik.api.notify.v0.ChannelSendJob.lastFailure', index=6,
-      number=7, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=167,
-  serialized_end=435,
-)
-
-_CHANNELSENDJOB.fields_by_name['channelVersion'].enum_type = kentik_dot_notify_dot_backend_dot_v0_dot_models__channel__event__pb2._CHANNELVERSION
-_CHANNELSENDJOB.fields_by_name['firstEnqueued'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-_CHANNELSENDJOB.fields_by_name['lastFailure'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-DESCRIPTOR.message_types_by_name['ChannelSendJob'] = _CHANNELSENDJOB
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
-
+_CHANNELSENDJOB = DESCRIPTOR.message_types_by_name['ChannelSendJob']
 ChannelSendJob = _reflection.GeneratedProtocolMessageType('ChannelSendJob', (_message.Message,), {
   'DESCRIPTOR' : _CHANNELSENDJOB,
   '__module__' : 'kentik.notify.backend.v0.models_channel_send_job_pb2'
@@ -114,6 +28,10 @@ ChannelSendJob = _reflection.GeneratedProtocolMessageType('ChannelSendJob', (_me
   })
 _sym_db.RegisterMessage(ChannelSendJob)
 
+if _descriptor._USE_C_DESCRIPTORS == False:
 
-DESCRIPTOR._options = None
+  DESCRIPTOR._options = None
+  DESCRIPTOR._serialized_options = b'Z\037kentik/notify/backend/v0;notify'
+  _CHANNELSENDJOB._serialized_start=167
+  _CHANNELSENDJOB._serialized_end=435
 # @@protoc_insertion_point(module_scope)

@@ -3,6 +3,7 @@
 # source: kentik/notify/backend/v0/models-event.proto
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
+from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
@@ -13,509 +14,19 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor.FileDescriptor(
-  name='kentik/notify/backend/v0/models-event.proto',
-  package='kentik.api.notify.v0',
-  syntax='proto3',
-  serialized_options=b'Z\037kentik/notify/backend/v0;notify',
-  create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n+kentik/notify/backend/v0/models-event.proto\x12\x14kentik.api.notify.v0\"\xf9\x03\n\x11NotificationEvent\x12\x11\n\tcompanyID\x18\x01 \x01(\x03\x12\x36\n\nalarmEvent\x18\x02 \x01(\x0b\x32 .kentik.api.notify.v0.AlarmEventH\x00\x12@\n\x0fmitigationEvent\x18\x03 \x01(\x0b\x32%.kentik.api.notify.v0.MitigationEventH\x00\x12:\n\x0cinsightEvent\x18\x04 \x01(\x0b\x32\".kentik.api.notify.v0.InsightEventH\x00\x12P\n\x17mitigationPlatformEvent\x18\x05 \x01(\x0b\x32-.kentik.api.notify.v0.MitigationPlatformEventH\x00\x12:\n\x0cgenericEvent\x18\x06 \x01(\x0b\x32\".kentik.api.notify.v0.GenericEventH\x00\x12O\n\x0c\x65xtraDetails\x18\x07 \x03(\x0b\x32\x39.kentik.api.notify.v0.NotificationEvent.ExtraDetailsEntry\x1a\x33\n\x11\x45xtraDetailsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x0c:\x02\x38\x01\x42\x07\n\x05\x65vent\"\'\n\x19NotificationEventResponse\x12\n\n\x02ok\x18\x01 \x01(\x08\"\\\n\nAlarmEvent\x12\x0f\n\x07\x61larmID\x18\x01 \x01(\x03\x12\x16\n\x0e\x61larmHistoryID\x18\x02 \x01(\x03\x12\x10\n\x08policyID\x18\x03 \x01(\x03\x12\x13\n\x0bthresholdID\x18\x04 \x01(\x03\"\xa3\x01\n\x0fMitigationEvent\x12\x14\n\x0cmitigationID\x18\x01 \x01(\x03\x12\x19\n\x11mitigationEventID\x18\x02 \x01(\x03\x12\x10\n\x08policyID\x18\x03 \x01(\x03\x12\x13\n\x0bthresholdID\x18\x04 \x01(\x03\x12\x1c\n\x14mitigationPlatformID\x18\x05 \x01(\x03\x12\x1a\n\x12mitigationMethodID\x18\x06 \x01(\x03\"e\n\x0cInsightEvent\x12\x11\n\tinsightID\x18\x01 \x01(\t\x12\x16\n\x0e\x64\x61taSourceType\x18\x02 \x01(\t\x12\x13\n\x0binsightName\x18\x03 \x01(\t\x12\x15\n\rinsightFamily\x18\x04 \x01(\t\"B\n\x17MitigationPlatformEvent\x12\x12\n\nplatformID\x18\x01 \x01(\x03\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\"\xb9\x01\n\x0cGenericEvent\x12\r\n\x05title\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\x12\x0b\n\x03url\x18\x03 \x01(\t\x12\x38\n\x03kvs\x18\x04 \x03(\x0b\x32+.kentik.api.notify.v0.GenericEvent.KvsEntry\x12\x12\n\nchannelIDs\x18\x05 \x03(\x03\x1a*\n\x08KvsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42!Z\x1fkentik/notify/backend/v0;notifyb\x06proto3'
-)
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n+kentik/notify/backend/v0/models-event.proto\x12\x14kentik.api.notify.v0\"\xf9\x03\n\x11NotificationEvent\x12\x11\n\tcompanyID\x18\x01 \x01(\x03\x12\x36\n\nalarmEvent\x18\x02 \x01(\x0b\x32 .kentik.api.notify.v0.AlarmEventH\x00\x12@\n\x0fmitigationEvent\x18\x03 \x01(\x0b\x32%.kentik.api.notify.v0.MitigationEventH\x00\x12:\n\x0cinsightEvent\x18\x04 \x01(\x0b\x32\".kentik.api.notify.v0.InsightEventH\x00\x12P\n\x17mitigationPlatformEvent\x18\x05 \x01(\x0b\x32-.kentik.api.notify.v0.MitigationPlatformEventH\x00\x12:\n\x0cgenericEvent\x18\x06 \x01(\x0b\x32\".kentik.api.notify.v0.GenericEventH\x00\x12O\n\x0c\x65xtraDetails\x18\x07 \x03(\x0b\x32\x39.kentik.api.notify.v0.NotificationEvent.ExtraDetailsEntry\x1a\x33\n\x11\x45xtraDetailsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x0c:\x02\x38\x01\x42\x07\n\x05\x65vent\"\'\n\x19NotificationEventResponse\x12\n\n\x02ok\x18\x01 \x01(\x08\"\\\n\nAlarmEvent\x12\x0f\n\x07\x61larmID\x18\x01 \x01(\x03\x12\x16\n\x0e\x61larmHistoryID\x18\x02 \x01(\x03\x12\x10\n\x08policyID\x18\x03 \x01(\x03\x12\x13\n\x0bthresholdID\x18\x04 \x01(\x03\"\xa3\x01\n\x0fMitigationEvent\x12\x14\n\x0cmitigationID\x18\x01 \x01(\x03\x12\x19\n\x11mitigationEventID\x18\x02 \x01(\x03\x12\x10\n\x08policyID\x18\x03 \x01(\x03\x12\x13\n\x0bthresholdID\x18\x04 \x01(\x03\x12\x1c\n\x14mitigationPlatformID\x18\x05 \x01(\x03\x12\x1a\n\x12mitigationMethodID\x18\x06 \x01(\x03\"e\n\x0cInsightEvent\x12\x11\n\tinsightID\x18\x01 \x01(\t\x12\x16\n\x0e\x64\x61taSourceType\x18\x02 \x01(\t\x12\x13\n\x0binsightName\x18\x03 \x01(\t\x12\x15\n\rinsightFamily\x18\x04 \x01(\t\"B\n\x17MitigationPlatformEvent\x12\x12\n\nplatformID\x18\x01 \x01(\x03\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\"\xb9\x01\n\x0cGenericEvent\x12\r\n\x05title\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\x12\x0b\n\x03url\x18\x03 \x01(\t\x12\x38\n\x03kvs\x18\x04 \x03(\x0b\x32+.kentik.api.notify.v0.GenericEvent.KvsEntry\x12\x12\n\nchannelIDs\x18\x05 \x03(\x03\x1a*\n\x08KvsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42!Z\x1fkentik/notify/backend/v0;notifyb\x06proto3')
 
 
 
-
-_NOTIFICATIONEVENT_EXTRADETAILSENTRY = _descriptor.Descriptor(
-  name='ExtraDetailsEntry',
-  full_name='kentik.api.notify.v0.NotificationEvent.ExtraDetailsEntry',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='key', full_name='kentik.api.notify.v0.NotificationEvent.ExtraDetailsEntry.key', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='value', full_name='kentik.api.notify.v0.NotificationEvent.ExtraDetailsEntry.value', index=1,
-      number=2, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=b'8\001',
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=515,
-  serialized_end=566,
-)
-
-_NOTIFICATIONEVENT = _descriptor.Descriptor(
-  name='NotificationEvent',
-  full_name='kentik.api.notify.v0.NotificationEvent',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='companyID', full_name='kentik.api.notify.v0.NotificationEvent.companyID', index=0,
-      number=1, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='alarmEvent', full_name='kentik.api.notify.v0.NotificationEvent.alarmEvent', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='mitigationEvent', full_name='kentik.api.notify.v0.NotificationEvent.mitigationEvent', index=2,
-      number=3, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='insightEvent', full_name='kentik.api.notify.v0.NotificationEvent.insightEvent', index=3,
-      number=4, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='mitigationPlatformEvent', full_name='kentik.api.notify.v0.NotificationEvent.mitigationPlatformEvent', index=4,
-      number=5, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='genericEvent', full_name='kentik.api.notify.v0.NotificationEvent.genericEvent', index=5,
-      number=6, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='extraDetails', full_name='kentik.api.notify.v0.NotificationEvent.extraDetails', index=6,
-      number=7, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[_NOTIFICATIONEVENT_EXTRADETAILSENTRY, ],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-    _descriptor.OneofDescriptor(
-      name='event', full_name='kentik.api.notify.v0.NotificationEvent.event',
-      index=0, containing_type=None,
-      create_key=_descriptor._internal_create_key,
-    fields=[]),
-  ],
-  serialized_start=70,
-  serialized_end=575,
-)
-
-
-_NOTIFICATIONEVENTRESPONSE = _descriptor.Descriptor(
-  name='NotificationEventResponse',
-  full_name='kentik.api.notify.v0.NotificationEventResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='ok', full_name='kentik.api.notify.v0.NotificationEventResponse.ok', index=0,
-      number=1, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=577,
-  serialized_end=616,
-)
-
-
-_ALARMEVENT = _descriptor.Descriptor(
-  name='AlarmEvent',
-  full_name='kentik.api.notify.v0.AlarmEvent',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='alarmID', full_name='kentik.api.notify.v0.AlarmEvent.alarmID', index=0,
-      number=1, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='alarmHistoryID', full_name='kentik.api.notify.v0.AlarmEvent.alarmHistoryID', index=1,
-      number=2, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='policyID', full_name='kentik.api.notify.v0.AlarmEvent.policyID', index=2,
-      number=3, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='thresholdID', full_name='kentik.api.notify.v0.AlarmEvent.thresholdID', index=3,
-      number=4, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=618,
-  serialized_end=710,
-)
-
-
-_MITIGATIONEVENT = _descriptor.Descriptor(
-  name='MitigationEvent',
-  full_name='kentik.api.notify.v0.MitigationEvent',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='mitigationID', full_name='kentik.api.notify.v0.MitigationEvent.mitigationID', index=0,
-      number=1, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='mitigationEventID', full_name='kentik.api.notify.v0.MitigationEvent.mitigationEventID', index=1,
-      number=2, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='policyID', full_name='kentik.api.notify.v0.MitigationEvent.policyID', index=2,
-      number=3, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='thresholdID', full_name='kentik.api.notify.v0.MitigationEvent.thresholdID', index=3,
-      number=4, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='mitigationPlatformID', full_name='kentik.api.notify.v0.MitigationEvent.mitigationPlatformID', index=4,
-      number=5, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='mitigationMethodID', full_name='kentik.api.notify.v0.MitigationEvent.mitigationMethodID', index=5,
-      number=6, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=713,
-  serialized_end=876,
-)
-
-
-_INSIGHTEVENT = _descriptor.Descriptor(
-  name='InsightEvent',
-  full_name='kentik.api.notify.v0.InsightEvent',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='insightID', full_name='kentik.api.notify.v0.InsightEvent.insightID', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='dataSourceType', full_name='kentik.api.notify.v0.InsightEvent.dataSourceType', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='insightName', full_name='kentik.api.notify.v0.InsightEvent.insightName', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='insightFamily', full_name='kentik.api.notify.v0.InsightEvent.insightFamily', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=878,
-  serialized_end=979,
-)
-
-
-_MITIGATIONPLATFORMEVENT = _descriptor.Descriptor(
-  name='MitigationPlatformEvent',
-  full_name='kentik.api.notify.v0.MitigationPlatformEvent',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='platformID', full_name='kentik.api.notify.v0.MitigationPlatformEvent.platformID', index=0,
-      number=1, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='description', full_name='kentik.api.notify.v0.MitigationPlatformEvent.description', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=981,
-  serialized_end=1047,
-)
-
-
-_GENERICEVENT_KVSENTRY = _descriptor.Descriptor(
-  name='KvsEntry',
-  full_name='kentik.api.notify.v0.GenericEvent.KvsEntry',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='key', full_name='kentik.api.notify.v0.GenericEvent.KvsEntry.key', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='value', full_name='kentik.api.notify.v0.GenericEvent.KvsEntry.value', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=b'8\001',
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1193,
-  serialized_end=1235,
-)
-
-_GENERICEVENT = _descriptor.Descriptor(
-  name='GenericEvent',
-  full_name='kentik.api.notify.v0.GenericEvent',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='title', full_name='kentik.api.notify.v0.GenericEvent.title', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='description', full_name='kentik.api.notify.v0.GenericEvent.description', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='url', full_name='kentik.api.notify.v0.GenericEvent.url', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='kvs', full_name='kentik.api.notify.v0.GenericEvent.kvs', index=3,
-      number=4, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='channelIDs', full_name='kentik.api.notify.v0.GenericEvent.channelIDs', index=4,
-      number=5, type=3, cpp_type=2, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[_GENERICEVENT_KVSENTRY, ],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1050,
-  serialized_end=1235,
-)
-
-_NOTIFICATIONEVENT_EXTRADETAILSENTRY.containing_type = _NOTIFICATIONEVENT
-_NOTIFICATIONEVENT.fields_by_name['alarmEvent'].message_type = _ALARMEVENT
-_NOTIFICATIONEVENT.fields_by_name['mitigationEvent'].message_type = _MITIGATIONEVENT
-_NOTIFICATIONEVENT.fields_by_name['insightEvent'].message_type = _INSIGHTEVENT
-_NOTIFICATIONEVENT.fields_by_name['mitigationPlatformEvent'].message_type = _MITIGATIONPLATFORMEVENT
-_NOTIFICATIONEVENT.fields_by_name['genericEvent'].message_type = _GENERICEVENT
-_NOTIFICATIONEVENT.fields_by_name['extraDetails'].message_type = _NOTIFICATIONEVENT_EXTRADETAILSENTRY
-_NOTIFICATIONEVENT.oneofs_by_name['event'].fields.append(
-  _NOTIFICATIONEVENT.fields_by_name['alarmEvent'])
-_NOTIFICATIONEVENT.fields_by_name['alarmEvent'].containing_oneof = _NOTIFICATIONEVENT.oneofs_by_name['event']
-_NOTIFICATIONEVENT.oneofs_by_name['event'].fields.append(
-  _NOTIFICATIONEVENT.fields_by_name['mitigationEvent'])
-_NOTIFICATIONEVENT.fields_by_name['mitigationEvent'].containing_oneof = _NOTIFICATIONEVENT.oneofs_by_name['event']
-_NOTIFICATIONEVENT.oneofs_by_name['event'].fields.append(
-  _NOTIFICATIONEVENT.fields_by_name['insightEvent'])
-_NOTIFICATIONEVENT.fields_by_name['insightEvent'].containing_oneof = _NOTIFICATIONEVENT.oneofs_by_name['event']
-_NOTIFICATIONEVENT.oneofs_by_name['event'].fields.append(
-  _NOTIFICATIONEVENT.fields_by_name['mitigationPlatformEvent'])
-_NOTIFICATIONEVENT.fields_by_name['mitigationPlatformEvent'].containing_oneof = _NOTIFICATIONEVENT.oneofs_by_name['event']
-_NOTIFICATIONEVENT.oneofs_by_name['event'].fields.append(
-  _NOTIFICATIONEVENT.fields_by_name['genericEvent'])
-_NOTIFICATIONEVENT.fields_by_name['genericEvent'].containing_oneof = _NOTIFICATIONEVENT.oneofs_by_name['event']
-_GENERICEVENT_KVSENTRY.containing_type = _GENERICEVENT
-_GENERICEVENT.fields_by_name['kvs'].message_type = _GENERICEVENT_KVSENTRY
-DESCRIPTOR.message_types_by_name['NotificationEvent'] = _NOTIFICATIONEVENT
-DESCRIPTOR.message_types_by_name['NotificationEventResponse'] = _NOTIFICATIONEVENTRESPONSE
-DESCRIPTOR.message_types_by_name['AlarmEvent'] = _ALARMEVENT
-DESCRIPTOR.message_types_by_name['MitigationEvent'] = _MITIGATIONEVENT
-DESCRIPTOR.message_types_by_name['InsightEvent'] = _INSIGHTEVENT
-DESCRIPTOR.message_types_by_name['MitigationPlatformEvent'] = _MITIGATIONPLATFORMEVENT
-DESCRIPTOR.message_types_by_name['GenericEvent'] = _GENERICEVENT
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
-
+_NOTIFICATIONEVENT = DESCRIPTOR.message_types_by_name['NotificationEvent']
+_NOTIFICATIONEVENT_EXTRADETAILSENTRY = _NOTIFICATIONEVENT.nested_types_by_name['ExtraDetailsEntry']
+_NOTIFICATIONEVENTRESPONSE = DESCRIPTOR.message_types_by_name['NotificationEventResponse']
+_ALARMEVENT = DESCRIPTOR.message_types_by_name['AlarmEvent']
+_MITIGATIONEVENT = DESCRIPTOR.message_types_by_name['MitigationEvent']
+_INSIGHTEVENT = DESCRIPTOR.message_types_by_name['InsightEvent']
+_MITIGATIONPLATFORMEVENT = DESCRIPTOR.message_types_by_name['MitigationPlatformEvent']
+_GENERICEVENT = DESCRIPTOR.message_types_by_name['GenericEvent']
+_GENERICEVENT_KVSENTRY = _GENERICEVENT.nested_types_by_name['KvsEntry']
 NotificationEvent = _reflection.GeneratedProtocolMessageType('NotificationEvent', (_message.Message,), {
 
   'ExtraDetailsEntry' : _reflection.GeneratedProtocolMessageType('ExtraDetailsEntry', (_message.Message,), {
@@ -581,8 +92,30 @@ GenericEvent = _reflection.GeneratedProtocolMessageType('GenericEvent', (_messag
 _sym_db.RegisterMessage(GenericEvent)
 _sym_db.RegisterMessage(GenericEvent.KvsEntry)
 
+if _descriptor._USE_C_DESCRIPTORS == False:
 
-DESCRIPTOR._options = None
-_NOTIFICATIONEVENT_EXTRADETAILSENTRY._options = None
-_GENERICEVENT_KVSENTRY._options = None
+  DESCRIPTOR._options = None
+  DESCRIPTOR._serialized_options = b'Z\037kentik/notify/backend/v0;notify'
+  _NOTIFICATIONEVENT_EXTRADETAILSENTRY._options = None
+  _NOTIFICATIONEVENT_EXTRADETAILSENTRY._serialized_options = b'8\001'
+  _GENERICEVENT_KVSENTRY._options = None
+  _GENERICEVENT_KVSENTRY._serialized_options = b'8\001'
+  _NOTIFICATIONEVENT._serialized_start=70
+  _NOTIFICATIONEVENT._serialized_end=575
+  _NOTIFICATIONEVENT_EXTRADETAILSENTRY._serialized_start=515
+  _NOTIFICATIONEVENT_EXTRADETAILSENTRY._serialized_end=566
+  _NOTIFICATIONEVENTRESPONSE._serialized_start=577
+  _NOTIFICATIONEVENTRESPONSE._serialized_end=616
+  _ALARMEVENT._serialized_start=618
+  _ALARMEVENT._serialized_end=710
+  _MITIGATIONEVENT._serialized_start=713
+  _MITIGATIONEVENT._serialized_end=876
+  _INSIGHTEVENT._serialized_start=878
+  _INSIGHTEVENT._serialized_end=979
+  _MITIGATIONPLATFORMEVENT._serialized_start=981
+  _MITIGATIONPLATFORMEVENT._serialized_end=1047
+  _GENERICEVENT._serialized_start=1050
+  _GENERICEVENT._serialized_end=1235
+  _GENERICEVENT_KVSENTRY._serialized_start=1193
+  _GENERICEVENT_KVSENTRY._serialized_end=1235
 # @@protoc_insertion_point(module_scope)

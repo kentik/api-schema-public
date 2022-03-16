@@ -3,6 +3,7 @@
 # source: kentik/notify/backend/v0/models-notification-to-send.proto
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
+from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
@@ -13,45 +14,11 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor.FileDescriptor(
-  name='kentik/notify/backend/v0/models-notification-to-send.proto',
-  package='kentik.api.notify.v0',
-  syntax='proto3',
-  serialized_options=b'Z\037kentik/notify/backend/v0;notify',
-  create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n:kentik/notify/backend/v0/models-notification-to-send.proto\x12\x14kentik.api.notify.v0\"\x14\n\x12NotificationToSendB!Z\x1fkentik/notify/backend/v0;notifyb\x06proto3'
-)
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n:kentik/notify/backend/v0/models-notification-to-send.proto\x12\x14kentik.api.notify.v0\"\x14\n\x12NotificationToSendB!Z\x1fkentik/notify/backend/v0;notifyb\x06proto3')
 
 
 
-
-_NOTIFICATIONTOSEND = _descriptor.Descriptor(
-  name='NotificationToSend',
-  full_name='kentik.api.notify.v0.NotificationToSend',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=84,
-  serialized_end=104,
-)
-
-DESCRIPTOR.message_types_by_name['NotificationToSend'] = _NOTIFICATIONTOSEND
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
-
+_NOTIFICATIONTOSEND = DESCRIPTOR.message_types_by_name['NotificationToSend']
 NotificationToSend = _reflection.GeneratedProtocolMessageType('NotificationToSend', (_message.Message,), {
   'DESCRIPTOR' : _NOTIFICATIONTOSEND,
   '__module__' : 'kentik.notify.backend.v0.models_notification_to_send_pb2'
@@ -59,6 +26,10 @@ NotificationToSend = _reflection.GeneratedProtocolMessageType('NotificationToSen
   })
 _sym_db.RegisterMessage(NotificationToSend)
 
+if _descriptor._USE_C_DESCRIPTORS == False:
 
-DESCRIPTOR._options = None
+  DESCRIPTOR._options = None
+  DESCRIPTOR._serialized_options = b'Z\037kentik/notify/backend/v0;notify'
+  _NOTIFICATIONTOSEND._serialized_start=84
+  _NOTIFICATIONTOSEND._serialized_end=104
 # @@protoc_insertion_point(module_scope)

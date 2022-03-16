@@ -1759,6 +1759,12 @@
                 "properties": {
                     "tasks": {
                         "$ref": "#/components/schemas/syntheticTaskStatus"
+                    },
+                    "addrs": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 }
             },

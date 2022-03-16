@@ -3,6 +3,7 @@
 # source: kentik/notify/backend/v0/models-channel-batch.proto
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
+from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
@@ -14,61 +15,11 @@ _sym_db = _symbol_database.Default()
 from kentik.notify.backend.v0 import models_channel_event_pb2 as kentik_dot_notify_dot_backend_dot_v0_dot_models__channel__event__pb2
 
 
-DESCRIPTOR = _descriptor.FileDescriptor(
-  name='kentik/notify/backend/v0/models-channel-batch.proto',
-  package='kentik.api.notify.v0',
-  syntax='proto3',
-  serialized_options=b'Z\037kentik/notify/backend/v0;notify',
-  create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n3kentik/notify/backend/v0/models-channel-batch.proto\x12\x14kentik.api.notify.v0\x1a\x33kentik/notify/backend/v0/models-channel-event.proto\"Y\n\x0c\x43hannelBatch\x12\x32\n\x06\x65vents\x18\x01 \x03(\x0b\x32\".kentik.api.notify.v0.ChannelEvent\x12\x15\n\rtimesEnqueued\x18\x02 \x01(\x03\x42!Z\x1fkentik/notify/backend/v0;notifyb\x06proto3'
-  ,
-  dependencies=[kentik_dot_notify_dot_backend_dot_v0_dot_models__channel__event__pb2.DESCRIPTOR,])
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n3kentik/notify/backend/v0/models-channel-batch.proto\x12\x14kentik.api.notify.v0\x1a\x33kentik/notify/backend/v0/models-channel-event.proto\"Y\n\x0c\x43hannelBatch\x12\x32\n\x06\x65vents\x18\x01 \x03(\x0b\x32\".kentik.api.notify.v0.ChannelEvent\x12\x15\n\rtimesEnqueued\x18\x02 \x01(\x03\x42!Z\x1fkentik/notify/backend/v0;notifyb\x06proto3')
 
 
 
-
-_CHANNELBATCH = _descriptor.Descriptor(
-  name='ChannelBatch',
-  full_name='kentik.api.notify.v0.ChannelBatch',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='events', full_name='kentik.api.notify.v0.ChannelBatch.events', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='timesEnqueued', full_name='kentik.api.notify.v0.ChannelBatch.timesEnqueued', index=1,
-      number=2, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=130,
-  serialized_end=219,
-)
-
-_CHANNELBATCH.fields_by_name['events'].message_type = kentik_dot_notify_dot_backend_dot_v0_dot_models__channel__event__pb2._CHANNELEVENT
-DESCRIPTOR.message_types_by_name['ChannelBatch'] = _CHANNELBATCH
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
-
+_CHANNELBATCH = DESCRIPTOR.message_types_by_name['ChannelBatch']
 ChannelBatch = _reflection.GeneratedProtocolMessageType('ChannelBatch', (_message.Message,), {
   'DESCRIPTOR' : _CHANNELBATCH,
   '__module__' : 'kentik.notify.backend.v0.models_channel_batch_pb2'
@@ -76,6 +27,10 @@ ChannelBatch = _reflection.GeneratedProtocolMessageType('ChannelBatch', (_messag
   })
 _sym_db.RegisterMessage(ChannelBatch)
 
+if _descriptor._USE_C_DESCRIPTORS == False:
 
-DESCRIPTOR._options = None
+  DESCRIPTOR._options = None
+  DESCRIPTOR._serialized_options = b'Z\037kentik/notify/backend/v0;notify'
+  _CHANNELBATCH._serialized_start=130
+  _CHANNELBATCH._serialized_end=219
 # @@protoc_insertion_point(module_scope)
