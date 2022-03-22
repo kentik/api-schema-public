@@ -102,7 +102,7 @@
                 "NETWORK_BOUNDARY_UNSPECIFIED",
                 "NETWORK_BOUNDARY_AUTO",
                 "NETWORK_BOUNDARY_INTERNAL",
-                "NETWORK_BOUNDARY_EXTENAL",
+                "NETWORK_BOUNDARY_EXTERNAL",
                 "NETWORK_BOUNDARY_NONE"
               ]
             },
@@ -467,7 +467,8 @@
         "topNexthopAsns": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "integer",
+            "format": "int32"
           },
           "description": "Top asn hops."
         },
@@ -601,7 +602,7 @@
         "NETWORK_BOUNDARY_UNSPECIFIED",
         "NETWORK_BOUNDARY_AUTO",
         "NETWORK_BOUNDARY_INTERNAL",
-        "NETWORK_BOUNDARY_EXTENAL",
+        "NETWORK_BOUNDARY_EXTERNAL",
         "NETWORK_BOUNDARY_NONE"
       ],
       "default": "NETWORK_BOUNDARY_UNSPECIFIED"

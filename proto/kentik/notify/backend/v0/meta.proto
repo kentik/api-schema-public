@@ -1,0 +1,137 @@
+syntax = "proto3";
+package kentik.api.notify.v0;
+option go_package = "kentik/notify/backend/v0;notify";
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+import "kentik/core/v202012alpha1/annotations.proto";
+
+message DatabasePoolSettings {
+  int32 maxOpenConns = 1;
+  int32 maxIdleConns = 2;
+  uint32 connMaxLifeTimeSeconds = 3;
+  uint32 connMaxIdleTimeSeconds = 4;
+}
+
+// golang's sql.DBStats
+message DatabaseStats {
+  int32 maxOpenConnections = 1;// Maximum number of open connections to the database.
+
+  uint32 openConnections = 2;  // The number of established connections both in use and idle.
+  uint32 inUse = 3;// The number of connections currently in use.
+  uint32 idle = 4;// The number of idle connections.
+
+  // Counters
+  int64 waitCount = 5;          // The total number of connections waited for.
+
+  // NOTE: duration in go; just convert this to millis for simplicity
+  uint64 waitDurationMillis = 6;  // The total time blocked waiting for a new connection. (converted to millis)
+  int64 maxIdleClosed = 7;   // The total number of connections closed due to SetMaxIdleConns.
+  int64 maxIdleTimeClosed = 8; // The total number of connections closed due to SetConnMaxIdleTime.
+  int64 maxLifetimeClosed = 9;  // The total number of connections closed due to SetConnMaxLifetime.
+}
+
+message GetDBPoolSettingsRequest {
+  string id = 1; // dsn id, eg. "chwww-ro" or whatever
+}
+
+message GetDBPoolSettingsResponse {
+  DatabasePoolSettings settings = 1;
+}
+
+message SetDBPoolSettingsRequest {
+  string id = 1; // dsn id, eg. "chwww-ro" or whatever
+  DatabasePoolSettings settings = 2;
+}
+
+message SetDBPoolSettingsResponse {
+}
+
+message GetDBStatsRequest {
+  string id = 1; // dsn id, eg. "chwww-ro" or whatever
+}
+
+message GetDBStatsResponse {
+  DatabaseStats stats = 1;
+}
+
+service Meta {
+  option (kentik.core.v202012alpha1.private_service) = true;
+
+  rpc GetDBPoolSettings(GetDBPoolSettingsRequest) returns (GetDBPoolSettingsResponse) {
+    option (google.api.http) = {
+      get: "/notify/backend/v0/meta/db/{id}/settings"
+    };
+  }
+
+  rpc SetDBPoolSettings(SetDBPoolSettingsRequest) returns (SetDBPoolSettingsResponse) {
+    option (google.api.http) = {
+      get: "/notify/backend/v0/meta/db/{id}/settings"
+    };
+  }
+
+  rpc GetDBStats(GetDBStatsRequest) returns (GetDBStatsResponse) {
+    option (google.api.http) = {
+      get: "/notify/backend/v0/meta/db/{id}/stats"
+    };
+  }
+
+  rpc GetEnv(google.protobuf.Empty) returns (MetaEnvResponse) {
+    option (google.api.http) = {
+      get: "/notify/backend/v0/meta/env"
+    };
+  }
+
+  rpc GetLogLevel(google.protobuf.Empty) returns (LogLevelResponse) {
+    option (google.api.http) = {
+      get: "/notify/backend/v0/meta/log/level"
+    };
+  }
+
+  rpc SetLogLevel(LogLevelRequest) returns (LogLevelResponse) {
+    option (google.api.http) = {
+      put: "/notify/backend/v0/meta/log/level"
+      body: "logLevel"
+    };
+  }
+
+  // deprecated
+  rpc GetLogJSONMode(google.protobuf.Empty) returns (LogJSONModeResponse) {
+    option deprecated = true;
+    option (google.api.http) = {
+      get: "/notify/backend/v0/meta/log/json"
+    };
+  }
+
+  // deprecated
+  rpc SetLogJSONMode(LogJSONModeRequest) returns (LogJSONModeResponse) {
+    option deprecated = true;
+    option (google.api.http) = {
+      put: "/notify/backend/v0/meta/log/json"
+      body: "*"
+    };
+  }
+
+}
+
+message MetaEnvResponse {
+  map<string, string> env = 1;
+  repeated string redacted = 2;
+}
+
+message LogLevelRequest {
+  string logLevel = 1;
+}
+
+message LogLevelResponse {
+  string logLevel = 1;
+  string initialLogLevel = 2;
+}
+
+message LogJSONModeRequest {
+  bool jsonMode = 1 [deprecated=true];
+}
+
+message LogJSONModeResponse {
+  bool jsonMode = 1 [deprecated=true];
+}

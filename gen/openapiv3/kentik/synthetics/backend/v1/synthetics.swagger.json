@@ -1,0 +1,2343 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Kentik Synthetics Backend API",
+        "version": "0.0.1"
+    },
+    "tags": [
+        {
+            "name": "SyntheticAgent"
+        }
+    ],
+    "paths": {
+        "/api/agent/v1/syn/auth": {
+            "post": {
+                "operationId": "SyntheticAgent_Auth",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/syntheticAuthReply"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/googlerpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/syntheticAuthRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "SyntheticAgent"
+                ]
+            }
+        },
+        "/api/agent/v1/syn/deauth": {
+            "post": {
+                "operationId": "SyntheticAgent_Deauth",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/syntheticDeauthReply"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/googlerpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/syntheticDeauthRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "SyntheticAgent"
+                ]
+            }
+        },
+        "/api/agent/v1/syn/status": {
+            "post": {
+                "operationId": "SyntheticAgent_Status",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/syntheticStatusReply"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/googlerpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/syntheticStatusRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "SyntheticAgent"
+                ]
+            }
+        },
+        "/api/agent/v1/syn/tasks": {
+            "post": {
+                "operationId": "SyntheticAgent_Tasks",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/syntheticTasksReply"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/googlerpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/syntheticTasksRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "SyntheticAgent"
+                ]
+            }
+        },
+        "/v1/syn/internal/agentTask/{agentId}": {
+            "put": {
+                "operationId": "SyntheticAgent_AgentTaskAssign",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/syntheticAgentTaskAssignReply"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/googlerpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "agentId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uint64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/syntheticAgentTaskAssignRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "SyntheticAgent"
+                ]
+            }
+        },
+        "/v1/syn/internal/agents": {
+            "put": {
+                "operationId": "SyntheticAgent_UpdateAgent",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/syntheticUpdateAgentReply"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/googlerpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/syntheticUpdateAgentRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "SyntheticAgent"
+                ]
+            }
+        },
+        "/v1/syn/internal/dropcache/agent": {
+            "post": {
+                "operationId": "SyntheticAgent_DropAgentCache",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/syntheticDropAgentCacheReply"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/googlerpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/syntheticDropAgentCacheRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "SyntheticAgent"
+                ]
+            }
+        },
+        "/v1/syn/internal/health/agents": {
+            "post": {
+                "operationId": "SyntheticAgent_GetHealthOfAgents",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/syntheticGetHealthOfAgentsReply"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/googlerpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/syntheticGetHealthOfAgentsRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "SyntheticAgent"
+                ]
+            }
+        },
+        "/v1/syn/internal/health/errors": {
+            "post": {
+                "operationId": "SyntheticAgent_GetErrorsForTests",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/syntheticGetErrorsForTestsReply"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/googlerpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/syntheticGetErrorsForTestsRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "SyntheticAgent"
+                ]
+            }
+        },
+        "/v1/syn/internal/health/tasks": {
+            "post": {
+                "operationId": "SyntheticAgent_GetHealthForTests",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/syntheticGetHealthForTestsReply"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/googlerpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/syntheticGetHealthForTestsRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "SyntheticAgent"
+                ]
+            }
+        },
+        "/v1/syn/internal/health/trace": {
+            "post": {
+                "operationId": "SyntheticAgent_GetTraceForTest",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/syntheticGetTraceForTestReply"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/googlerpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/syntheticGetTraceForTestRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "SyntheticAgent"
+                ]
+            }
+        },
+        "/v1/syn/internal/search": {
+            "post": {
+                "operationId": "SyntheticAgent_Search",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/syntheticSearchReply"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/googlerpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/syntheticSearchRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "SyntheticAgent"
+                ]
+            }
+        },
+        "/v1/syn/internal/settasks": {
+            "put": {
+                "operationId": "SyntheticAgent_SetTasksFromTests",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/syntheticSetTasksFromTestsReply"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/googlerpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/syntheticSetTasksFromTestsRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "SyntheticAgent"
+                ]
+            }
+        },
+        "/v1/syn/internal/tasks": {
+            "put": {
+                "operationId": "SyntheticAgent_UpdateTask",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/syntheticUpdateTaskReply"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/googlerpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/syntheticUpdateTaskRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "SyntheticAgent"
+                ]
+            }
+        },
+        "/v1/syn/internal/tests": {
+            "put": {
+                "operationId": "SyntheticAgent_UpdateTest",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/syntheticUpdateTestReply"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/googlerpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/syntheticUpdateTestRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "SyntheticAgent"
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AuthReplyAuth": {
+                "type": "string",
+                "enum": [
+                    "OK",
+                    "WAIT",
+                    "DENY",
+                    "ERR"
+                ],
+                "default": "OK"
+            },
+            "StatusError": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "retry": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "TaskState": {
+                "type": "string",
+                "enum": [
+                    "CREATED",
+                    "UPDATED",
+                    "DELETED"
+                ],
+                "default": "CREATED"
+            },
+            "googlerpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "typeUrl": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string",
+                        "format": "byte"
+                    }
+                }
+            },
+            "syntheticAgent": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "agentName": {
+                        "type": "string"
+                    },
+                    "agentStatus": {
+                        "type": "string"
+                    },
+                    "companyId": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "agentAlias": {
+                        "type": "string"
+                    },
+                    "agentType": {
+                        "type": "string"
+                    },
+                    "os": {
+                        "type": "string"
+                    },
+                    "ip": {
+                        "type": "string"
+                    },
+                    "lat": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "long": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "agentLastAuthed": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "family": {
+                        "$ref": "#/components/schemas/syntheticIPFamily"
+                    },
+                    "asn": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "agentSiteId": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "version": {
+                        "type": "string"
+                    },
+                    "challenge": {
+                        "type": "string"
+                    },
+                    "city": {
+                        "type": "string"
+                    },
+                    "region": {
+                        "type": "string"
+                    },
+                    "country": {
+                        "type": "string"
+                    },
+                    "localIp": {
+                        "type": "string"
+                    },
+                    "agentImpl": {
+                        "$ref": "#/components/schemas/syntheticAgentImpl"
+                    }
+                }
+            },
+            "syntheticAgentError": {
+                "type": "object",
+                "properties": {
+                    "agent": {
+                        "$ref": "#/components/schemas/syntheticAgent"
+                    },
+                    "errors": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/syntheticAgentErrorSet"
+                        }
+                    },
+                    "timeouts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/syntheticAgentTimeoutSet"
+                        }
+                    }
+                }
+            },
+            "syntheticAgentErrorSet": {
+                "type": "object",
+                "properties": {
+                    "lastTime": {
+                        "type": "string",
+                        "format": "int64"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "numErrors": {
+                        "type": "string",
+                        "format": "int64"
+                    }
+                }
+            },
+            "syntheticAgentHealth": {
+                "type": "object",
+                "properties": {
+                    "agent": {
+                        "$ref": "#/components/schemas/syntheticAgent"
+                    },
+                    "health": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/syntheticHealthMoment"
+                        }
+                    },
+                    "overallHealth": {
+                        "$ref": "#/components/schemas/syntheticHealth"
+                    }
+                }
+            },
+            "syntheticAgentHealthStatus": {
+                "type": "object",
+                "properties": {
+                    "lastSeen": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "status": {
+                        "$ref": "#/components/schemas/syntheticTaskStatus"
+                    },
+                    "health": {
+                        "type": "string"
+                    },
+                    "agent": {
+                        "$ref": "#/components/schemas/syntheticAgent"
+                    },
+                    "lastSeenStr": {
+                        "type": "string"
+                    }
+                }
+            },
+            "syntheticAgentImpl": {
+                "type": "string",
+                "enum": [
+                    "RUST",
+                    "NODE"
+                ],
+                "default": "RUST"
+            },
+            "syntheticAgentTaskAssignReply": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "$ref": "#/components/schemas/syntheticStatus"
+                    }
+                }
+            },
+            "syntheticAgentTaskAssignRequest": {
+                "type": "object",
+                "properties": {
+                    "agentId": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "action": {
+                        "type": "string"
+                    },
+                    "tasks": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "format": "uint64"
+                        }
+                    }
+                }
+            },
+            "syntheticAgentTest": {
+                "type": "object",
+                "properties": {
+                    "target": {
+                        "type": "string"
+                    }
+                }
+            },
+            "syntheticAgentTimeoutSet": {
+                "type": "object",
+                "properties": {
+                    "lastTime": {
+                        "type": "string",
+                        "format": "int64"
+                    },
+                    "numTimeouts": {
+                        "type": "string",
+                        "format": "int64"
+                    }
+                }
+            },
+            "syntheticAggregatedHealth": {
+                "type": "object",
+                "properties": {
+                    "agents": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/syntheticAgentHealth"
+                        }
+                    },
+                    "health": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/syntheticHealthMoment"
+                        }
+                    }
+                }
+            },
+            "syntheticAuthReply": {
+                "type": "object",
+                "properties": {
+                    "auth": {
+                        "$ref": "#/components/schemas/AuthReplyAuth"
+                    },
+                    "status": {
+                        "$ref": "#/components/schemas/syntheticStatus"
+                    },
+                    "session": {
+                        "type": "string"
+                    },
+                    "family": {
+                        "$ref": "#/components/schemas/syntheticIPFamily"
+                    },
+                    "agentId": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "challenge": {
+                        "type": "string"
+                    }
+                }
+            },
+            "syntheticAuthRequest": {
+                "type": "object",
+                "properties": {
+                    "agent": {
+                        "type": "string"
+                    },
+                    "signature": {
+                        "type": "string"
+                    },
+                    "timestamp": {
+                        "type": "string"
+                    },
+                    "version": {
+                        "type": "string"
+                    },
+                    "companyId": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "global": {
+                        "type": "boolean"
+                    },
+                    "os": {
+                        "type": "string"
+                    },
+                    "bind": {
+                        "type": "string"
+                    },
+                    "site": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "agentImpl": {
+                        "$ref": "#/components/schemas/syntheticAgentImpl"
+                    }
+                }
+            },
+            "syntheticCriteria": {
+                "type": "object",
+                "properties": {
+                    "field": {
+                        "type": "string"
+                    },
+                    "operator": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string"
+                    }
+                }
+            },
+            "syntheticCriteriaGroups": {
+                "type": "object",
+                "properties": {
+                    "connector": {
+                        "type": "string"
+                    },
+                    "criteria": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/syntheticCriteria"
+                        }
+                    }
+                }
+            },
+            "syntheticCustomColumn": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "type": {
+                        "$ref": "#/components/schemas/syntheticCustomColumnType"
+                    }
+                }
+            },
+            "syntheticCustomColumnType": {
+                "type": "string",
+                "enum": [
+                    "UINT32",
+                    "UINT64",
+                    "STRING",
+                    "ADDR"
+                ],
+                "default": "UINT32"
+            },
+            "syntheticDNSTaskDefinition": {
+                "type": "object",
+                "properties": {
+                    "target": {
+                        "type": "string"
+                    },
+                    "period": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "expiry": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "count": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "port": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "resolver": {
+                        "type": "string"
+                    }
+                }
+            },
+            "syntheticDeauthReply": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "$ref": "#/components/schemas/syntheticStatus"
+                    }
+                }
+            },
+            "syntheticDeauthRequest": {
+                "type": "object",
+                "properties": {
+                    "session": {
+                        "type": "string"
+                    }
+                }
+            },
+            "syntheticDevice": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "customs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/syntheticCustomColumn"
+                        }
+                    }
+                }
+            },
+            "syntheticDropAgentCacheReply": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "$ref": "#/components/schemas/syntheticStatus"
+                    }
+                }
+            },
+            "syntheticDropAgentCacheRequest": {
+                "type": "object",
+                "properties": {
+                    "agentId": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "agentName": {
+                        "type": "string"
+                    }
+                }
+            },
+            "syntheticFlowTest": {
+                "type": "object",
+                "properties": {
+                    "target": {
+                        "type": "string"
+                    },
+                    "targetRefreshIntervalMillis": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "maxTasks": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "type": {
+                        "type": "string"
+                    }
+                }
+            },
+            "syntheticGetErrorsForTestsReply": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "$ref": "#/components/schemas/syntheticStatus"
+                    },
+                    "errors": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/syntheticTestError"
+                        }
+                    }
+                }
+            },
+            "syntheticGetErrorsForTestsRequest": {
+                "type": "object",
+                "properties": {
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "format": "uint64"
+                        }
+                    },
+                    "companyId": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "startTime": {
+                        "type": "string",
+                        "format": "int64"
+                    },
+                    "endTime": {
+                        "type": "string",
+                        "format": "int64"
+                    },
+                    "agentIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "format": "uint64"
+                        }
+                    },
+                    "taskIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "format": "uint64"
+                        }
+                    }
+                }
+            },
+            "syntheticGetHealthForTestsReply": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "$ref": "#/components/schemas/syntheticStatus"
+                    },
+                    "health": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/syntheticTestHealth"
+                        }
+                    }
+                }
+            },
+            "syntheticGetHealthForTestsRequest": {
+                "type": "object",
+                "properties": {
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "format": "uint64"
+                        }
+                    },
+                    "companyId": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "startTime": {
+                        "type": "string",
+                        "format": "int64"
+                    },
+                    "endTime": {
+                        "type": "string",
+                        "format": "int64"
+                    },
+                    "agentIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "format": "uint64"
+                        }
+                    },
+                    "taskIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "format": "uint64"
+                        }
+                    }
+                }
+            },
+            "syntheticGetHealthOfAgentsReply": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "$ref": "#/components/schemas/syntheticStatus"
+                    },
+                    "agents": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/syntheticAgentHealthStatus"
+                        }
+                    },
+                    "good": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "warn": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "crit": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "syntheticGetHealthOfAgentsRequest": {
+                "type": "object",
+                "properties": {
+                    "companyId": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "agentIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "format": "uint64"
+                        }
+                    }
+                }
+            },
+            "syntheticGetTraceForTestReply": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "$ref": "#/components/schemas/syntheticStatus"
+                    },
+                    "trace": {
+                        "$ref": "#/components/schemas/syntheticTrace"
+                    }
+                }
+            },
+            "syntheticGetTraceForTestRequest": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "companyId": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "startTime": {
+                        "type": "string",
+                        "format": "int64"
+                    },
+                    "endTime": {
+                        "type": "string",
+                        "format": "int64"
+                    },
+                    "agentIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "format": "uint64"
+                        }
+                    }
+                }
+            },
+            "syntheticGroup": {
+                "type": "object",
+                "properties": {
+                    "companyId": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "device": {
+                        "$ref": "#/components/schemas/syntheticDevice"
+                    },
+                    "kentik": {
+                        "$ref": "#/components/schemas/syntheticKentik"
+                    },
+                    "tasks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/syntheticTask"
+                        }
+                    }
+                }
+            },
+            "syntheticHTTPConfig": {
+                "type": "object",
+                "properties": {
+                    "period": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "expiry": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "method": {
+                        "type": "string"
+                    },
+                    "headers": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "body": {
+                        "type": "string"
+                    },
+                    "ignoreTlsErrors": {
+                        "type": "boolean"
+                    },
+                    "cssSelectors": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "trxScript": {
+                        "type": "string"
+                    }
+                }
+            },
+            "syntheticHTTPTaskDefinition": {
+                "type": "object",
+                "properties": {
+                    "target": {
+                        "type": "string"
+                    },
+                    "period": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "expiry": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "method": {
+                        "type": "string"
+                    },
+                    "returnCode": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "headers": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "body": {
+                        "type": "string"
+                    },
+                    "ignoreTlsErrors": {
+                        "type": "boolean"
+                    },
+                    "cssSelectors": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "trxScript": {
+                        "type": "string"
+                    }
+                }
+            },
+            "syntheticHealth": {
+                "type": "object",
+                "properties": {
+                    "health": {
+                        "type": "string"
+                    },
+                    "time": {
+                        "type": "string",
+                        "format": "int64"
+                    }
+                }
+            },
+            "syntheticHealthMoment": {
+                "type": "object",
+                "properties": {
+                    "time": {
+                        "type": "string",
+                        "format": "int64"
+                    },
+                    "srcIp": {
+                        "type": "string"
+                    },
+                    "dstIp": {
+                        "type": "string"
+                    },
+                    "packetLoss": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "avgLatency": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "avgWeightedLatency": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "rollingAvgLatency": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "rollingStddevLatency": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "rollingAvgWeightedLatency": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "latencyHealth": {
+                        "type": "string"
+                    },
+                    "packetLossHealth": {
+                        "type": "string"
+                    },
+                    "overallHealth": {
+                        "$ref": "#/components/schemas/syntheticHealth"
+                    },
+                    "avgJitter": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "rollingAvgJitter": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "rollingStdJitter": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "jitterHealth": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "string"
+                    },
+                    "size": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "status": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "taskType": {
+                        "type": "string"
+                    }
+                }
+            },
+            "syntheticHostnameTest": {
+                "type": "object",
+                "properties": {
+                    "target": {
+                        "type": "string"
+                    }
+                }
+            },
+            "syntheticIPFamily": {
+                "type": "string",
+                "enum": [
+                    "V4",
+                    "V6",
+                    "DUAL"
+                ],
+                "default": "V4"
+            },
+            "syntheticIpTest": {
+                "type": "object",
+                "properties": {
+                    "target": {
+                        "type": "string"
+                    }
+                }
+            },
+            "syntheticKentik": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "token": {
+                        "type": "string"
+                    }
+                }
+            },
+            "syntheticKnockTaskDefinition": {
+                "type": "object",
+                "properties": {
+                    "target": {
+                        "type": "string"
+                    },
+                    "period": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "expiry": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "count": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "port": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "delay": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "syntheticOrderBy": {
+                "type": "object",
+                "properties": {
+                    "fields": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "direction": {
+                        "type": "string"
+                    }
+                }
+            },
+            "syntheticPingConfig": {
+                "type": "object",
+                "properties": {
+                    "period": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "count": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "expiry": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "delay": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "syntheticPingTaskDefinition": {
+                "type": "object",
+                "properties": {
+                    "target": {
+                        "type": "string"
+                    },
+                    "period": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "expiry": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "count": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "delay": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "syntheticSearchReply": {
+                "type": "object",
+                "properties": {
+                    "tasks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/syntheticTask"
+                        }
+                    },
+                    "agents": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/syntheticAgent"
+                        }
+                    },
+                    "tests": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/syntheticTest"
+                        }
+                    },
+                    "status": {
+                        "$ref": "#/components/schemas/syntheticStatus"
+                    }
+                }
+            },
+            "syntheticSearchRequest": {
+                "type": "object",
+                "properties": {
+                    "companyId": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "offset": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "select": {
+                        "type": "string"
+                    },
+                    "where": {
+                        "$ref": "#/components/schemas/syntheticWhere"
+                    },
+                    "orderBy": {
+                        "$ref": "#/components/schemas/syntheticOrderBy"
+                    }
+                }
+            },
+            "syntheticSetTasksFromTestsReply": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "$ref": "#/components/schemas/syntheticStatus"
+                    },
+                    "numTasks": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "syntheticSetTasksFromTestsRequest": {
+                "type": "object",
+                "properties": {
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "format": "uint64"
+                        }
+                    },
+                    "companyId": {
+                        "type": "string",
+                        "format": "uint64"
+                    }
+                }
+            },
+            "syntheticShakeTaskDefinition": {
+                "type": "object",
+                "properties": {
+                    "target": {
+                        "type": "string"
+                    },
+                    "port": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "period": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "expiry": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "syntheticSiteTest": {
+                "type": "object",
+                "properties": {
+                    "target": {
+                        "type": "string"
+                    }
+                }
+            },
+            "syntheticStatus": {
+                "type": "object",
+                "properties": {
+                    "ok": {
+                        "type": "boolean"
+                    },
+                    "err": {
+                        "$ref": "#/components/schemas/StatusError"
+                    }
+                }
+            },
+            "syntheticStatusReply": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "$ref": "#/components/schemas/syntheticStatus"
+                    }
+                }
+            },
+            "syntheticStatusReport": {
+                "type": "object",
+                "properties": {
+                    "tasks": {
+                        "$ref": "#/components/schemas/syntheticTaskStatus"
+                    },
+                    "addrs": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "syntheticStatusRequest": {
+                "type": "object",
+                "properties": {
+                    "session": {
+                        "type": "string"
+                    },
+                    "report": {
+                        "$ref": "#/components/schemas/syntheticStatusReport"
+                    }
+                }
+            },
+            "syntheticTagTest": {
+                "type": "object",
+                "properties": {
+                    "target": {
+                        "type": "string"
+                    }
+                }
+            },
+            "syntheticTask": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "state": {
+                        "$ref": "#/components/schemas/TaskState"
+                    },
+                    "companyId": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "userId": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "deviceId": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "testId": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "family": {
+                        "$ref": "#/components/schemas/syntheticIPFamily"
+                    },
+                    "ping": {
+                        "$ref": "#/components/schemas/syntheticPingTaskDefinition"
+                    },
+                    "traceroute": {
+                        "$ref": "#/components/schemas/syntheticTraceTaskDefinition"
+                    },
+                    "http": {
+                        "$ref": "#/components/schemas/syntheticHTTPTaskDefinition"
+                    },
+                    "knock": {
+                        "$ref": "#/components/schemas/syntheticKnockTaskDefinition"
+                    },
+                    "dns": {
+                        "$ref": "#/components/schemas/syntheticDNSTaskDefinition"
+                    },
+                    "shake": {
+                        "$ref": "#/components/schemas/syntheticShakeTaskDefinition"
+                    },
+                    "httpTiming": {
+                        "$ref": "#/components/schemas/syntheticHTTPTaskDefinition"
+                    },
+                    "pageLoad": {
+                        "$ref": "#/components/schemas/syntheticHTTPTaskDefinition"
+                    },
+                    "transaction": {
+                        "$ref": "#/components/schemas/syntheticHTTPTaskDefinition"
+                    }
+                }
+            },
+            "syntheticTaskError": {
+                "type": "object",
+                "properties": {
+                    "errors": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/syntheticAgentError"
+                        }
+                    },
+                    "task": {
+                        "$ref": "#/components/schemas/syntheticTask"
+                    }
+                }
+            },
+            "syntheticTaskHealth": {
+                "type": "object",
+                "properties": {
+                    "task": {
+                        "$ref": "#/components/schemas/syntheticTask"
+                    },
+                    "agents": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/syntheticAgentHealth"
+                        }
+                    },
+                    "overallHealth": {
+                        "$ref": "#/components/schemas/syntheticHealth"
+                    }
+                }
+            },
+            "syntheticTaskStatus": {
+                "type": "object",
+                "properties": {
+                    "started": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "running": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "exited": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "failed": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "active": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "format": "uint64"
+                        }
+                    }
+                }
+            },
+            "syntheticTasksReply": {
+                "type": "object",
+                "properties": {
+                    "groups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/syntheticGroup"
+                        }
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "status": {
+                        "$ref": "#/components/schemas/syntheticStatus"
+                    }
+                }
+            },
+            "syntheticTasksRequest": {
+                "type": "object",
+                "properties": {
+                    "session": {
+                        "type": "string"
+                    },
+                    "since": {
+                        "type": "string",
+                        "format": "uint64"
+                    }
+                }
+            },
+            "syntheticTest": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "testType": {
+                        "type": "string"
+                    },
+                    "hostname": {
+                        "$ref": "#/components/schemas/syntheticHostnameTest"
+                    },
+                    "ip": {
+                        "$ref": "#/components/schemas/syntheticIpTest"
+                    },
+                    "agent": {
+                        "$ref": "#/components/schemas/syntheticAgentTest"
+                    },
+                    "flow": {
+                        "$ref": "#/components/schemas/syntheticFlowTest"
+                    },
+                    "site": {
+                        "$ref": "#/components/schemas/syntheticSiteTest"
+                    },
+                    "tag": {
+                        "$ref": "#/components/schemas/syntheticTagTest"
+                    },
+                    "companyId": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "userId": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "deviceId": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "config": {
+                        "$ref": "#/components/schemas/syntheticTestConfig"
+                    }
+                }
+            },
+            "syntheticTestConfig": {
+                "type": "object",
+                "properties": {
+                    "agents": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "format": "uint64"
+                        }
+                    },
+                    "period": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "count": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "expiry": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "tasks": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "direction": {
+                        "type": "string"
+                    },
+                    "inetDirection": {
+                        "type": "string"
+                    },
+                    "useLocalIp": {
+                        "type": "boolean"
+                    },
+                    "reciprocal": {
+                        "type": "boolean"
+                    },
+                    "rollupLevel": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "protocol": {
+                        "type": "string"
+                    },
+                    "port": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "method": {
+                        "type": "string"
+                    },
+                    "returnCode": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "resolvers": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "family": {
+                        "$ref": "#/components/schemas/syntheticIPFamily"
+                    },
+                    "ping": {
+                        "$ref": "#/components/schemas/syntheticPingConfig"
+                    },
+                    "trace": {
+                        "$ref": "#/components/schemas/syntheticTraceConfig"
+                    },
+                    "maxTasks": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "maxTargets": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "highDensity": {
+                        "type": "boolean"
+                    },
+                    "http": {
+                        "$ref": "#/components/schemas/syntheticHTTPConfig"
+                    }
+                }
+            },
+            "syntheticTestError": {
+                "type": "object",
+                "properties": {
+                    "testId": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "errors": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/syntheticTaskError"
+                        }
+                    }
+                }
+            },
+            "syntheticTestHealth": {
+                "type": "object",
+                "properties": {
+                    "testId": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "tasks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/syntheticTaskHealth"
+                        }
+                    },
+                    "overallHealth": {
+                        "$ref": "#/components/schemas/syntheticHealth"
+                    },
+                    "healthTs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/syntheticHealth"
+                        }
+                    },
+                    "healthAgg": {
+                        "$ref": "#/components/schemas/syntheticAggregatedHealth"
+                    }
+                }
+            },
+            "syntheticTrace": {
+                "type": "object",
+                "properties": {
+                    "hops": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/syntheticTraceHop"
+                        }
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/syntheticTraceLink"
+                        }
+                    }
+                }
+            },
+            "syntheticTraceConfig": {
+                "type": "object",
+                "properties": {
+                    "period": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "expiry": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "port": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "protocol": {
+                        "type": "string"
+                    },
+                    "count": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "delay": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "syntheticTraceHop": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "hopName": {
+                        "type": "string"
+                    },
+                    "hopDepth": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "asn": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "inHealth": {
+                        "$ref": "#/components/schemas/syntheticHealth"
+                    },
+                    "outHealth": {
+                        "$ref": "#/components/schemas/syntheticHealth"
+                    }
+                }
+            },
+            "syntheticTraceLink": {
+                "type": "object",
+                "properties": {
+                    "srcHopId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "dstHopId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "overallHealth": {
+                        "$ref": "#/components/schemas/syntheticHealth"
+                    },
+                    "health": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/syntheticHealthMoment"
+                        }
+                    }
+                }
+            },
+            "syntheticTraceTaskDefinition": {
+                "type": "object",
+                "properties": {
+                    "target": {
+                        "type": "string"
+                    },
+                    "period": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "expiry": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "protocol": {
+                        "type": "string"
+                    },
+                    "port": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "count": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "delay": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "syntheticUpdateAgentReply": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "$ref": "#/components/schemas/syntheticStatus"
+                    },
+                    "num": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "syntheticUpdateAgentRequest": {
+                "type": "object",
+                "properties": {
+                    "agents": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/syntheticAgent"
+                        }
+                    }
+                }
+            },
+            "syntheticUpdateTaskReply": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "$ref": "#/components/schemas/syntheticStatus"
+                    },
+                    "num": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "syntheticUpdateTaskRequest": {
+                "type": "object",
+                "properties": {
+                    "tasks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/syntheticTask"
+                        }
+                    }
+                }
+            },
+            "syntheticUpdateTestReply": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "$ref": "#/components/schemas/syntheticStatus"
+                    },
+                    "num": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "syntheticUpdateTestRequest": {
+                "type": "object",
+                "properties": {
+                    "tests": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/syntheticTest"
+                        }
+                    }
+                }
+            },
+            "syntheticWhere": {
+                "type": "object",
+                "properties": {
+                    "connector": {
+                        "type": "string"
+                    },
+                    "criteriaGroups": {
+                        "$ref": "#/components/schemas/syntheticCriteriaGroups"
+                    }
+                }
+            }
+        }
+    }
+}

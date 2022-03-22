@@ -1,0 +1,17 @@
+syntax = "proto3";
+package kentik.api.notify.v0;
+option go_package = "kentik/notify/backend/v0;notify";
+
+message CreateUserChannelRequest {
+}
+
+message CreateUserChannelResponse {
+}
+
+message SubscribeRequest {
+  string insightName = 1;
+  string insightFamily = 2;
+}
+
+message SubscribeResponse {
+}

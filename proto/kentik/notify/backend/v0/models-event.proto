@@ -1,0 +1,66 @@
+syntax = "proto3";
+package kentik.api.notify.v0;
+option go_package = "kentik/notify/backend/v0;notify";
+
+message NotificationEvent {
+  int64 companyID = 1;
+
+  oneof event {
+    AlarmEvent alarmEvent = 2;
+    MitigationEvent mitigationEvent = 3;
+    InsightEvent insightEvent = 4;
+    MitigationPlatformEvent mitigationPlatformEvent = 5;
+    GenericEvent genericEvent = 6;
+  }
+
+  map<string, bytes> extraDetails = 7;
+}
+
+message NotificationEventResponse {
+  bool ok = 1;
+}
+
+message AlarmEvent {
+  int64 alarmID = 1;
+  int64 alarmHistoryID = 2; // TODO: final name of this field corresponding to alert-api
+
+  // This data is denormalized, but we need it to do channel selection w/o lookups.
+  // Do not include data for the rendering layer, just for channel selection.
+  int64 policyID = 3;
+  int64 thresholdID = 4;
+}
+
+message MitigationEvent {
+  int64 mitigationID = 1;
+  int64 mitigationEventID = 2;
+
+  // This data is denormalized, but we need it to do channel selection w/o lookups.
+  // Do not include data for the rendering layer, just for channel selection.
+  int64 policyID = 3;
+  int64 thresholdID = 4;
+  int64 mitigationPlatformID = 5;
+  int64 mitigationMethodID = 6;
+}
+
+message InsightEvent {
+  string insightID = 1;
+
+  // This data is denormalized, but we need it to do channel selection w/o lookups.
+  // Do not include data for the rendering layer, just for channel selection.
+  string dataSourceType = 2;
+  string insightName = 3;
+  string insightFamily = 4;
+}
+
+message MitigationPlatformEvent {
+  int64 platformID = 1;
+  string description = 2;
+}
+
+message GenericEvent {
+  string title = 1;
+  string description = 2;
+  string url = 3;
+  map<string, string> kvs = 4;
+  repeated int64 channelIDs = 5; // optional
+}

@@ -3,6 +3,7 @@
 # source: grpc/http_over_grpc/http_over_grpc.proto
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
+from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
@@ -13,162 +14,13 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor.FileDescriptor(
-  name='grpc/http_over_grpc/http_over_grpc.proto',
-  package='grpc.http_over_grpc',
-  syntax='proto3',
-  serialized_options=None,
-  create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n(grpc/http_over_grpc/http_over_grpc.proto\x12\x13grpc.http_over_grpc\"%\n\x06Header\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0e\n\x06values\x18\x02 \x03(\t\"n\n\x13HTTPOverGRPCRequest\x12\x0e\n\x06method\x18\x01 \x01(\t\x12\x0b\n\x03url\x18\x02 \x01(\t\x12,\n\x07headers\x18\x03 \x03(\x0b\x32\x1b.grpc.http_over_grpc.Header\x12\x0c\n\x04\x62ody\x18\x04 \x01(\x0c\"_\n\x11HTTPOverGRPCReply\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12,\n\x07headers\x18\x02 \x03(\x0b\x32\x1b.grpc.http_over_grpc.Header\x12\x0c\n\x04\x62ody\x18\x03 \x01(\x0c\x32q\n\x0cHTTPOverGRPC\x12\x61\n\x0bHTTPRequest\x12(.grpc.http_over_grpc.HTTPOverGRPCRequest\x1a&.grpc.http_over_grpc.HTTPOverGRPCReply\"\x00\x62\x06proto3'
-)
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n(grpc/http_over_grpc/http_over_grpc.proto\x12\x13grpc.http_over_grpc\"%\n\x06Header\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0e\n\x06values\x18\x02 \x03(\t\"n\n\x13HTTPOverGRPCRequest\x12\x0e\n\x06method\x18\x01 \x01(\t\x12\x0b\n\x03url\x18\x02 \x01(\t\x12,\n\x07headers\x18\x03 \x03(\x0b\x32\x1b.grpc.http_over_grpc.Header\x12\x0c\n\x04\x62ody\x18\x04 \x01(\x0c\"_\n\x11HTTPOverGRPCReply\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12,\n\x07headers\x18\x02 \x03(\x0b\x32\x1b.grpc.http_over_grpc.Header\x12\x0c\n\x04\x62ody\x18\x03 \x01(\x0c\x32q\n\x0cHTTPOverGRPC\x12\x61\n\x0bHTTPRequest\x12(.grpc.http_over_grpc.HTTPOverGRPCRequest\x1a&.grpc.http_over_grpc.HTTPOverGRPCReply\"\x00\x62\x06proto3')
 
 
 
-
-_HEADER = _descriptor.Descriptor(
-  name='Header',
-  full_name='grpc.http_over_grpc.Header',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='key', full_name='grpc.http_over_grpc.Header.key', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='values', full_name='grpc.http_over_grpc.Header.values', index=1,
-      number=2, type=9, cpp_type=9, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=65,
-  serialized_end=102,
-)
-
-
-_HTTPOVERGRPCREQUEST = _descriptor.Descriptor(
-  name='HTTPOverGRPCRequest',
-  full_name='grpc.http_over_grpc.HTTPOverGRPCRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='method', full_name='grpc.http_over_grpc.HTTPOverGRPCRequest.method', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='url', full_name='grpc.http_over_grpc.HTTPOverGRPCRequest.url', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='headers', full_name='grpc.http_over_grpc.HTTPOverGRPCRequest.headers', index=2,
-      number=3, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='body', full_name='grpc.http_over_grpc.HTTPOverGRPCRequest.body', index=3,
-      number=4, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=104,
-  serialized_end=214,
-)
-
-
-_HTTPOVERGRPCREPLY = _descriptor.Descriptor(
-  name='HTTPOverGRPCReply',
-  full_name='grpc.http_over_grpc.HTTPOverGRPCReply',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='status', full_name='grpc.http_over_grpc.HTTPOverGRPCReply.status', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='headers', full_name='grpc.http_over_grpc.HTTPOverGRPCReply.headers', index=1,
-      number=2, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='body', full_name='grpc.http_over_grpc.HTTPOverGRPCReply.body', index=2,
-      number=3, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=216,
-  serialized_end=311,
-)
-
-_HTTPOVERGRPCREQUEST.fields_by_name['headers'].message_type = _HEADER
-_HTTPOVERGRPCREPLY.fields_by_name['headers'].message_type = _HEADER
-DESCRIPTOR.message_types_by_name['Header'] = _HEADER
-DESCRIPTOR.message_types_by_name['HTTPOverGRPCRequest'] = _HTTPOVERGRPCREQUEST
-DESCRIPTOR.message_types_by_name['HTTPOverGRPCReply'] = _HTTPOVERGRPCREPLY
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
-
+_HEADER = DESCRIPTOR.message_types_by_name['Header']
+_HTTPOVERGRPCREQUEST = DESCRIPTOR.message_types_by_name['HTTPOverGRPCRequest']
+_HTTPOVERGRPCREPLY = DESCRIPTOR.message_types_by_name['HTTPOverGRPCReply']
 Header = _reflection.GeneratedProtocolMessageType('Header', (_message.Message,), {
   'DESCRIPTOR' : _HEADER,
   '__module__' : 'grpc.http_over_grpc.http_over_grpc_pb2'
@@ -190,31 +42,16 @@ HTTPOverGRPCReply = _reflection.GeneratedProtocolMessageType('HTTPOverGRPCReply'
   })
 _sym_db.RegisterMessage(HTTPOverGRPCReply)
 
+_HTTPOVERGRPC = DESCRIPTOR.services_by_name['HTTPOverGRPC']
+if _descriptor._USE_C_DESCRIPTORS == False:
 
-
-_HTTPOVERGRPC = _descriptor.ServiceDescriptor(
-  name='HTTPOverGRPC',
-  full_name='grpc.http_over_grpc.HTTPOverGRPC',
-  file=DESCRIPTOR,
-  index=0,
-  serialized_options=None,
-  create_key=_descriptor._internal_create_key,
-  serialized_start=313,
-  serialized_end=426,
-  methods=[
-  _descriptor.MethodDescriptor(
-    name='HTTPRequest',
-    full_name='grpc.http_over_grpc.HTTPOverGRPC.HTTPRequest',
-    index=0,
-    containing_service=None,
-    input_type=_HTTPOVERGRPCREQUEST,
-    output_type=_HTTPOVERGRPCREPLY,
-    serialized_options=None,
-    create_key=_descriptor._internal_create_key,
-  ),
-])
-_sym_db.RegisterServiceDescriptor(_HTTPOVERGRPC)
-
-DESCRIPTOR.services_by_name['HTTPOverGRPC'] = _HTTPOVERGRPC
-
+  DESCRIPTOR._options = None
+  _HEADER._serialized_start=65
+  _HEADER._serialized_end=102
+  _HTTPOVERGRPCREQUEST._serialized_start=104
+  _HTTPOVERGRPCREQUEST._serialized_end=214
+  _HTTPOVERGRPCREPLY._serialized_start=216
+  _HTTPOVERGRPCREPLY._serialized_end=311
+  _HTTPOVERGRPC._serialized_start=313
+  _HTTPOVERGRPC._serialized_end=426
 # @@protoc_insertion_point(module_scope)

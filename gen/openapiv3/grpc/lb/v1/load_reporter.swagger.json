@@ -1,0 +1,236 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "grpc/lb/v1/load_reporter.proto",
+        "version": "version not set"
+    },
+    "tags": [
+        {
+            "name": "LoadReporter"
+        }
+    ],
+    "paths": {},
+    "components": {
+        "schemas": {
+            "InitialLoadReportResponseImplementationIdentifier": {
+                "type": "string",
+                "enum": [
+                    "IMPL_UNSPECIFIED",
+                    "CPP",
+                    "JAVA",
+                    "GO"
+                ],
+                "default": "IMPL_UNSPECIFIED"
+            },
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "typeUrl": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string",
+                        "format": "byte"
+                    }
+                }
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "v1CallMetricData": {
+                "type": "object",
+                "properties": {
+                    "metricName": {
+                        "type": "string",
+                        "description": "Name of the metric; may be empty."
+                    },
+                    "numCallsFinishedWithMetric": {
+                        "type": "string",
+                        "format": "int64",
+                        "description": "Number of calls that finished and included this metric."
+                    },
+                    "totalMetricValue": {
+                        "type": "number",
+                        "format": "double",
+                        "description": "Sum of metric values across all calls that finished with this metric."
+                    }
+                }
+            },
+            "v1InitialLoadReportRequest": {
+                "type": "object",
+                "properties": {
+                    "loadBalancedHostname": {
+                        "type": "string",
+                        "description": "The hostname this load reporter client is requesting load for."
+                    },
+                    "loadKey": {
+                        "type": "string",
+                        "format": "byte",
+                        "description": "Additional information to disambiguate orphaned load: load that should have\ngone to this load reporter client, but was not able to be sent since the\nload reporter client has disconnected. load_key is sent in orphaned load\nreports; see Load.load_key."
+                    },
+                    "loadReportInterval": {
+                        "type": "string",
+                        "description": "This interval defines how often the server should send load reports to\nthe load balancer."
+                    }
+                }
+            },
+            "v1InitialLoadReportResponse": {
+                "type": "object",
+                "properties": {
+                    "loadBalancerId": {
+                        "type": "string",
+                        "description": "Initial response returns the Load balancer ID. This must be plain text\n(printable ASCII)."
+                    },
+                    "implementationId": {
+                        "$ref": "#/components/schemas/InitialLoadReportResponseImplementationIdentifier"
+                    },
+                    "serverVersion": {
+                        "type": "string",
+                        "format": "int64",
+                        "description": "Optional server_version should be a value that is modified (and\nmonotonically increased) when changes are made to the server\nimplementation."
+                    }
+                }
+            },
+            "v1Load": {
+                "type": "object",
+                "properties": {
+                    "loadBalanceTag": {
+                        "type": "string",
+                        "description": "The (plain text) tag used by the calls covered by this load report. The\ntag is that part of the load balancer token after removing the load\nbalancer id. Empty is equivalent to non-existent tag."
+                    },
+                    "userId": {
+                        "type": "string",
+                        "description": "The user identity authenticated by the calls covered by this load\nreport. Empty is equivalent to no known user_id."
+                    },
+                    "clientIpAddress": {
+                        "type": "string",
+                        "format": "byte",
+                        "description": "IP address of the client that sent these requests, serialized in\nnetwork-byte-order. It may either be an IPv4 or IPv6 address."
+                    },
+                    "numCallsStarted": {
+                        "type": "string",
+                        "format": "int64",
+                        "description": "The number of calls started (since the last report) with the given tag and\nuser_id."
+                    },
+                    "numCallsInProgress": {
+                        "type": "string",
+                        "format": "int64",
+                        "description": "The number of calls in progress (instantaneously) per load balancer id."
+                    },
+                    "numCallsFinishedWithoutError": {
+                        "type": "string",
+                        "format": "int64",
+                        "description": "The following values are counts or totals of call statistics that finished\nwith the given tag and user_id."
+                    },
+                    "numCallsFinishedWithError": {
+                        "type": "string",
+                        "format": "int64"
+                    },
+                    "numCallsFinishedWithServerError": {
+                        "type": "string",
+                        "format": "int64",
+                        "description": "Calls that finished with a status that maps to HTTP 5XX (see\ngoogleapis/google/rpc/code.proto). Note that this is a subset of\nnum_calls_finished_with_error."
+                    },
+                    "totalBytesSent": {
+                        "type": "string",
+                        "format": "int64",
+                        "description": "Totals are from calls that with _and_ without error."
+                    },
+                    "totalBytesReceived": {
+                        "type": "string",
+                        "format": "int64"
+                    },
+                    "totalLatency": {
+                        "type": "string"
+                    },
+                    "metricData": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v1CallMetricData"
+                        },
+                        "description": "Optional metrics reported for the call(s). Requires that metric_name is\nunique."
+                    },
+                    "loadKey": {
+                        "type": "string",
+                        "format": "byte",
+                        "description": "Load_key is the load_key from the initial_request from the originating\nbalancer."
+                    },
+                    "loadKeyUnknown": {
+                        "type": "boolean",
+                        "description": "If true then this load report is for calls that had an invalid token; the\nuser is probably abusing the gRPC protocol.\nTODO(yankaiz): Rename load_key_unknown."
+                    },
+                    "orphanedLoadIdentifier": {
+                        "$ref": "#/components/schemas/v1OrphanedLoadIdentifier"
+                    }
+                }
+            },
+            "v1LoadBalancingFeedback": {
+                "type": "object",
+                "properties": {
+                    "serverUtilization": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Reports the current utilization of the server (typical range [0.0 - 1.0])."
+                    },
+                    "callsPerSecond": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "The total rate of calls handled by this server (including errors)."
+                    },
+                    "errorsPerSecond": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "The total rate of error responses sent by this server."
+                    }
+                }
+            },
+            "v1LoadReportResponse": {
+                "type": "object",
+                "properties": {
+                    "initialResponse": {
+                        "$ref": "#/components/schemas/v1InitialLoadReportResponse"
+                    },
+                    "loadBalancingFeedback": {
+                        "$ref": "#/components/schemas/v1LoadBalancingFeedback"
+                    },
+                    "load": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v1Load"
+                        },
+                        "description": "A load report for each <tag, user_id> tuple. This could be considered to be\na multimap indexed by <tag, user_id>. It is not strictly necessary to\naggregate all entries into one entry per <tag, user_id> tuple, although it\nis preferred to do so."
+                    }
+                }
+            },
+            "v1OrphanedLoadIdentifier": {
+                "type": "object",
+                "properties": {
+                    "loadKey": {
+                        "type": "string",
+                        "format": "byte",
+                        "description": "The load_key from the initial_request from the originating balancer."
+                    },
+                    "loadBalancerId": {
+                        "type": "string",
+                        "description": "The unique ID generated by LoadReporter to identify balancers. Here it\ndistinguishes orphaned load with a same load_key."
+                    }
+                }
+            }
+        }
+    }
+}

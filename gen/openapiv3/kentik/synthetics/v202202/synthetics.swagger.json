@@ -1,0 +1,1640 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Synthetics Monitoring API",
+        "version": "202202",
+        "contact": {
+            "name": "Kentik API Engineering",
+            "url": "https://github.com/kentik/api"
+        }
+    },
+    "tags": [
+        {
+            "name": "SyntheticsDataService"
+        },
+        {
+            "name": "SyntheticsAdminService"
+        }
+    ],
+    "paths": {
+        "/synthetics/v202202/agents": {
+            "get": {
+                "summary": "List Agents.",
+                "description": "Returns a list of agents.",
+                "operationId": "AgentsList",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202202ListAgentsResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "SyntheticsAdminService"
+                ]
+            }
+        },
+        "/synthetics/v202202/agents/{agent.id}": {
+            "put": {
+                "summary": "Update an agent.",
+                "description": "Update configuration of a synthetics agent.",
+                "operationId": "AgentUpdate",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202202UpdateAgentResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "agent.id",
+                        "description": "id of this agent.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202202UpdateAgentRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "SyntheticsAdminService"
+                ]
+            },
+            "get": {
+                "summary": "Get information about an agent.",
+                "description": "Returns information about the agent specified with id.",
+                "operationId": "AgentGet",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202202GetAgentResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "agent.id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "SyntheticsAdminService"
+                ]
+            },
+            "delete": {
+                "summary": "Delete an agent.",
+                "description": "Deletes the agent specified with id.",
+                "operationId": "AgentDelete",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202202DeleteAgentResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "agent.id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "SyntheticsAdminService"
+                ]
+            }
+        },
+        "/synthetics/v202202/results": {
+            "post": {
+                "summary": "Get results for synthetic tests.",
+                "description": "Returns measurement results for a set of test for specified period of time, or the latest available data.",
+                "operationId": "GetResultsForTests",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202202GetResultsForTestsResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202202GetResultsForTestsRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "SyntheticsDataService"
+                ]
+            }
+        },
+        "/synthetics/v202202/tests": {
+            "get": {
+                "summary": "List Synthetics Tests.",
+                "description": "Returns a list of syntehtics tests.",
+                "operationId": "TestsList",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202202ListTestsResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "SyntheticsAdminService"
+                ]
+            },
+            "post": {
+                "summary": "Create Synthetics Test.",
+                "description": "Create synthetics test from request. Returns created test.",
+                "operationId": "TestCreate",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202202CreateTestResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202202CreateTestRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "SyntheticsAdminService"
+                ]
+            }
+        },
+        "/synthetics/v202202/tests/{id}": {
+            "get": {
+                "summary": "Get information about Synthetics Test.",
+                "description": "Returns information about synthetics test specified with test ID.",
+                "operationId": "TestGet",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202202GetTestResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "SyntheticsAdminService"
+                ]
+            },
+            "delete": {
+                "summary": "Delete an Synthetics Test.",
+                "description": "Deletes the synthetics test specified with id.",
+                "operationId": "TestDelete",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202202DeleteTestResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "SyntheticsAdminService"
+                ]
+            },
+            "put": {
+                "summary": "Update a Synthetics Test.",
+                "description": "Updates configuration of a synthetic test.",
+                "operationId": "TestUpdate",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202202UpdateTestResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202202UpdateTestRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "SyntheticsAdminService"
+                ]
+            }
+        },
+        "/synthetics/v202202/tests/{id}/status": {
+            "put": {
+                "summary": "Update a test status.",
+                "description": "Update the status of a test.",
+                "operationId": "SetTestStatus",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202202SetTestStatusResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202202SetTestStatusRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "SyntheticsAdminService"
+                ]
+            }
+        },
+        "/synthetics/v202202/trace": {
+            "post": {
+                "summary": "Get trace route data.",
+                "description": "Get trace route data for the specific test id.",
+                "operationId": "GetTraceForTest",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202202GetTraceForTestResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202202GetTraceForTestRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "SyntheticsDataService"
+                ]
+            }
+        }
+    },
+    "security": [
+        {
+            "email": [],
+            "token": []
+        }
+    ],
+    "externalDocs": {
+        "description": "More about Kentik APIs",
+        "url": "https://docs.kentik.com/api"
+    },
+    "components": {
+        "securitySchemes": {
+            "email": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-Email",
+                "in": "header"
+            },
+            "token": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-API-Token",
+                "in": "header"
+            }
+        },
+        "schemas": {
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "typeUrl": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string",
+                        "format": "byte"
+                    }
+                }
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "syntheticsv202202Location": {
+                "type": "object",
+                "properties": {
+                    "latitude": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "longitude": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "country": {
+                        "type": "string"
+                    },
+                    "region": {
+                        "type": "string"
+                    },
+                    "city": {
+                        "type": "string"
+                    }
+                }
+            },
+            "v202202ActivationSettings": {
+                "type": "object",
+                "properties": {
+                    "gracePeriod": {
+                        "type": "string"
+                    },
+                    "timeUnit": {
+                        "type": "string"
+                    },
+                    "timeWindow": {
+                        "type": "string"
+                    },
+                    "times": {
+                        "type": "string"
+                    }
+                }
+            },
+            "v202202Agent": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "id of this agent."
+                    },
+                    "siteName": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "$ref": "#/components/schemas/v202202AgentStatus"
+                    },
+                    "alias": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "os": {
+                        "type": "string"
+                    },
+                    "ip": {
+                        "type": "string"
+                    },
+                    "lat": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "long": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "lastAuthed": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "family": {
+                        "$ref": "#/components/schemas/v202202IPFamily"
+                    },
+                    "asn": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "siteId": {
+                        "type": "string"
+                    },
+                    "version": {
+                        "type": "string"
+                    },
+                    "city": {
+                        "type": "string"
+                    },
+                    "region": {
+                        "type": "string"
+                    },
+                    "country": {
+                        "type": "string"
+                    },
+                    "testIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "localIp": {
+                        "type": "string"
+                    },
+                    "cloudRegion": {
+                        "type": "string"
+                    },
+                    "cloudProvider": {
+                        "type": "string"
+                    },
+                    "agentImpl": {
+                        "$ref": "#/components/schemas/v202202ImplementType"
+                    }
+                }
+            },
+            "v202202AgentResults": {
+                "type": "object",
+                "properties": {
+                    "agentId": {
+                        "type": "string"
+                    },
+                    "health": {
+                        "type": "string"
+                    },
+                    "tasks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202202TaskResults"
+                        }
+                    }
+                }
+            },
+            "v202202AgentStatus": {
+                "type": "string",
+                "enum": [
+                    "AGENT_STATUS_UNSPECIFIED",
+                    "AGENT_STATUS_OK",
+                    "AGENT_STATUS_WAIT",
+                    "AGENT_STATUS_DELETED"
+                ],
+                "default": "AGENT_STATUS_UNSPECIFIED"
+            },
+            "v202202AgentTest": {
+                "type": "object",
+                "properties": {
+                    "target": {
+                        "type": "string"
+                    },
+                    "useLocalIp": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "v202202CreateTestRequest": {
+                "type": "object",
+                "properties": {
+                    "test": {
+                        "$ref": "#/components/schemas/v202202Test"
+                    }
+                }
+            },
+            "v202202CreateTestResponse": {
+                "type": "object",
+                "properties": {
+                    "test": {
+                        "$ref": "#/components/schemas/v202202Test"
+                    }
+                }
+            },
+            "v202202DNSRecord": {
+                "type": "string",
+                "enum": [
+                    "DNS_RECORD_UNSPECIFIED",
+                    "DNS_RECORD_A",
+                    "DNS_RECORD_AAAA",
+                    "DNS_RECORD_CNAME",
+                    "DNS_RECORD_DNAME",
+                    "DNS_RECORD_NS",
+                    "DNS_RECORD_MX",
+                    "DNS_RECORD_PTR",
+                    "DNS_RECORD_SOA"
+                ],
+                "default": "DNS_RECORD_UNSPECIFIED"
+            },
+            "v202202DNSResponseData": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "data": {
+                        "type": "string"
+                    }
+                }
+            },
+            "v202202DNSResults": {
+                "type": "object",
+                "properties": {
+                    "target": {
+                        "type": "string"
+                    },
+                    "server": {
+                        "type": "string"
+                    },
+                    "latency": {
+                        "$ref": "#/components/schemas/v202202MetricData"
+                    },
+                    "response": {
+                        "$ref": "#/components/schemas/v202202DNSResponseData"
+                    }
+                }
+            },
+            "v202202DeleteAgentResponse": {
+                "type": "object"
+            },
+            "v202202DeleteTestResponse": {
+                "type": "object"
+            },
+            "v202202DnsTest": {
+                "type": "object",
+                "properties": {
+                    "target": {
+                        "type": "string"
+                    },
+                    "timeout": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "recordType": {
+                        "$ref": "#/components/schemas/v202202DNSRecord"
+                    },
+                    "servers": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "port": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "v202202FlowTest": {
+                "type": "object",
+                "properties": {
+                    "target": {
+                        "type": "string"
+                    },
+                    "targetRefreshIntervalMillis": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "maxProviders": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "maxIpTargets": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "inetDirection": {
+                        "type": "string"
+                    },
+                    "direction": {
+                        "type": "string"
+                    }
+                }
+            },
+            "v202202GetAgentResponse": {
+                "type": "object",
+                "properties": {
+                    "agent": {
+                        "$ref": "#/components/schemas/v202202Agent"
+                    }
+                }
+            },
+            "v202202GetResultsForTestsRequest": {
+                "type": "object",
+                "properties": {
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of ids of the tests to get health for."
+                    },
+                    "startTime": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Start of the time interval for this query."
+                    },
+                    "endTime": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "End of the time interval for this query."
+                    },
+                    "agentIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Optionally, only look at a subset of agents"
+                    },
+                    "targets": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Optionally only look at a subset of targets."
+                    }
+                }
+            },
+            "v202202GetResultsForTestsResponse": {
+                "type": "object",
+                "properties": {
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202202TestResults"
+                        }
+                    }
+                }
+            },
+            "v202202GetTestResponse": {
+                "type": "object",
+                "properties": {
+                    "test": {
+                        "$ref": "#/components/schemas/v202202Test"
+                    }
+                }
+            },
+            "v202202GetTraceForTestRequest": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "title": "Test id"
+                    },
+                    "startTime": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Start of the time interval for this query."
+                    },
+                    "endTime": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "End of the time interval for this query."
+                    },
+                    "agentIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Optionally, limit the query to these agent ids"
+                    },
+                    "targetIps": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Optionally, limit the query to these destination IP addresses"
+                    }
+                }
+            },
+            "v202202GetTraceForTestResponse": {
+                "type": "object",
+                "properties": {
+                    "nodes": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/v202202NetNode"
+                        }
+                    },
+                    "paths": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202202Path"
+                        }
+                    }
+                }
+            },
+            "v202202HTTPResponseData": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "size": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "data": {
+                        "type": "string"
+                    }
+                }
+            },
+            "v202202HTTPResults": {
+                "type": "object",
+                "properties": {
+                    "target": {
+                        "type": "string"
+                    },
+                    "latency": {
+                        "$ref": "#/components/schemas/v202202MetricData"
+                    },
+                    "response": {
+                        "$ref": "#/components/schemas/v202202HTTPResponseData"
+                    },
+                    "dstIp": {
+                        "type": "string"
+                    }
+                }
+            },
+            "v202202HealthSettings": {
+                "type": "object",
+                "properties": {
+                    "latencyCritical": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "latencyWarning": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "packetLossCritical": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "packetLossWarning": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "jitterCritical": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "jitterWarning": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "httpLatencyCritical": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "httpLatencyWarning": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "httpValidCodes": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    "dnsValidCodes": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    "latencyCriticalStddev": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "latencyWarningStddev": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "jitterCriticalStddev": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "jitterWarningStddev": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "httpLatencyCriticalStddev": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "httpLatencyWarningStddev": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "unhealthySubtestThreshold": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "activation": {
+                        "$ref": "#/components/schemas/v202202ActivationSettings"
+                    }
+                }
+            },
+            "v202202HostnameTest": {
+                "type": "object",
+                "properties": {
+                    "target": {
+                        "type": "string"
+                    }
+                }
+            },
+            "v202202IPFamily": {
+                "type": "string",
+                "enum": [
+                    "IP_FAMILY_UNSPECIFIED",
+                    "IP_FAMILY_V4",
+                    "IP_FAMILY_V6",
+                    "IP_FAMILY_DUAL"
+                ],
+                "default": "IP_FAMILY_UNSPECIFIED"
+            },
+            "v202202ImplementType": {
+                "type": "string",
+                "enum": [
+                    "IMPLEMENT_TYPE_UNSPECIFIED",
+                    "IMPLEMENT_TYPE_RUST",
+                    "IMPLEMENT_TYPE_NODE"
+                ],
+                "default": "IMPLEMENT_TYPE_UNSPECIFIED",
+                "description": "Agent impl type determines capabilities of agent.\n\n - IMPLEMENT_TYPE_RUST: ksynth agent (implemented in Rust) capable of running all tasks except for page-load\n - IMPLEMENT_TYPE_NODE: ksynth-agent (implemented in NodeJS) capable of running ping, traceroute and page-load tasks"
+            },
+            "v202202IpTest": {
+                "type": "object",
+                "properties": {
+                    "targets": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "v202202ListAgentsResponse": {
+                "type": "object",
+                "properties": {
+                    "agents": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202202Agent"
+                        }
+                    },
+                    "invalidCount": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "v202202ListTestsResponse": {
+                "type": "object",
+                "properties": {
+                    "tests": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202202Test"
+                        }
+                    },
+                    "invalidCount": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "v202202MetricData": {
+                "type": "object",
+                "properties": {
+                    "current": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "rollingAvg": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "rollingStddev": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "health": {
+                        "type": "string"
+                    }
+                }
+            },
+            "v202202NetNode": {
+                "type": "object",
+                "properties": {
+                    "ip": {
+                        "type": "string"
+                    },
+                    "asn": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "asName": {
+                        "type": "string"
+                    },
+                    "location": {
+                        "$ref": "#/components/schemas/syntheticsv202202Location"
+                    },
+                    "dnsName": {
+                        "type": "string"
+                    },
+                    "deviceId": {
+                        "type": "string"
+                    },
+                    "siteId": {
+                        "type": "string"
+                    }
+                }
+            },
+            "v202202NetworkMeshTest": {
+                "type": "object",
+                "properties": {
+                    "useLocalIp": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "v202202PacketLossData": {
+                "type": "object",
+                "properties": {
+                    "current": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "health": {
+                        "type": "string"
+                    }
+                }
+            },
+            "v202202PageLoadTest": {
+                "type": "object",
+                "properties": {
+                    "target": {
+                        "type": "string"
+                    },
+                    "timeout": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "headers": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "ignoreTlsErrors": {
+                        "type": "boolean"
+                    },
+                    "cssSelectors": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "v202202Path": {
+                "type": "object",
+                "properties": {
+                    "agentId": {
+                        "type": "string"
+                    },
+                    "targetIp": {
+                        "type": "string"
+                    },
+                    "hopCount": {
+                        "$ref": "#/components/schemas/v202202Stats"
+                    },
+                    "maxAsPathLength": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "traces": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202202PathTrace"
+                        }
+                    },
+                    "time": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "v202202PathTrace": {
+                "type": "object",
+                "properties": {
+                    "asPath": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    "isComplete": {
+                        "type": "boolean"
+                    },
+                    "hops": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202202TraceHop"
+                        }
+                    }
+                },
+                "title": "Probing detail"
+            },
+            "v202202PingResults": {
+                "type": "object",
+                "properties": {
+                    "target": {
+                        "type": "string"
+                    },
+                    "packetLoss": {
+                        "$ref": "#/components/schemas/v202202PacketLossData"
+                    },
+                    "latency": {
+                        "$ref": "#/components/schemas/v202202MetricData"
+                    },
+                    "jitter": {
+                        "$ref": "#/components/schemas/v202202MetricData"
+                    },
+                    "dstIp": {
+                        "type": "string"
+                    }
+                }
+            },
+            "v202202SetTestStatusRequest": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "$ref": "#/components/schemas/v202202TestStatus"
+                    }
+                }
+            },
+            "v202202SetTestStatusResponse": {
+                "type": "object"
+            },
+            "v202202Stats": {
+                "type": "object",
+                "properties": {
+                    "average": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "min": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "max": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                }
+            },
+            "v202202TaskResults": {
+                "type": "object",
+                "properties": {
+                    "ping": {
+                        "$ref": "#/components/schemas/v202202PingResults"
+                    },
+                    "http": {
+                        "$ref": "#/components/schemas/v202202HTTPResults"
+                    },
+                    "dns": {
+                        "$ref": "#/components/schemas/v202202DNSResults"
+                    },
+                    "health": {
+                        "type": "string"
+                    }
+                }
+            },
+            "v202202Test": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "$ref": "#/components/schemas/v202202TestStatus"
+                    },
+                    "settings": {
+                        "$ref": "#/components/schemas/v202202TestSettings"
+                    },
+                    "cdate": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "edate": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "createdBy": {
+                        "$ref": "#/components/schemas/v202202UserInfo"
+                    },
+                    "lastUpdatedBy": {
+                        "$ref": "#/components/schemas/v202202UserInfo"
+                    }
+                }
+            },
+            "v202202TestPingSettings": {
+                "type": "object",
+                "properties": {
+                    "count": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "protocol": {
+                        "type": "string"
+                    },
+                    "port": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "timeout": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "delay": {
+                        "type": "number",
+                        "format": "float"
+                    }
+                }
+            },
+            "v202202TestResults": {
+                "type": "object",
+                "properties": {
+                    "testId": {
+                        "type": "string"
+                    },
+                    "time": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "health": {
+                        "type": "string"
+                    },
+                    "agents": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202202AgentResults"
+                        }
+                    }
+                }
+            },
+            "v202202TestSettings": {
+                "type": "object",
+                "properties": {
+                    "hostname": {
+                        "$ref": "#/components/schemas/v202202HostnameTest"
+                    },
+                    "ip": {
+                        "$ref": "#/components/schemas/v202202IpTest"
+                    },
+                    "agent": {
+                        "$ref": "#/components/schemas/v202202AgentTest"
+                    },
+                    "flow": {
+                        "$ref": "#/components/schemas/v202202FlowTest"
+                    },
+                    "dns": {
+                        "$ref": "#/components/schemas/v202202DnsTest"
+                    },
+                    "url": {
+                        "$ref": "#/components/schemas/v202202UrlTest"
+                    },
+                    "networkGrid": {
+                        "$ref": "#/components/schemas/v202202IpTest"
+                    },
+                    "pageLoad": {
+                        "$ref": "#/components/schemas/v202202PageLoadTest"
+                    },
+                    "dnsGrid": {
+                        "$ref": "#/components/schemas/v202202DnsTest"
+                    },
+                    "networkMesh": {
+                        "$ref": "#/components/schemas/v202202NetworkMeshTest"
+                    },
+                    "agentIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "tasks": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "healthSettings": {
+                        "$ref": "#/components/schemas/v202202HealthSettings"
+                    },
+                    "ping": {
+                        "$ref": "#/components/schemas/v202202TestPingSettings"
+                    },
+                    "trace": {
+                        "$ref": "#/components/schemas/v202202TestTraceSettings"
+                    },
+                    "period": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "family": {
+                        "$ref": "#/components/schemas/v202202IPFamily"
+                    },
+                    "notificationChannels": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "v202202TestStatus": {
+                "type": "string",
+                "enum": [
+                    "TEST_STATUS_UNSPECIFIED",
+                    "TEST_STATUS_ACTIVE",
+                    "TEST_STATUS_PAUSED",
+                    "TEST_STATUS_DELETED"
+                ],
+                "default": "TEST_STATUS_UNSPECIFIED"
+            },
+            "v202202TestTraceSettings": {
+                "type": "object",
+                "properties": {
+                    "count": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "protocol": {
+                        "type": "string"
+                    },
+                    "port": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "timeout": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "delay": {
+                        "type": "number",
+                        "format": "float"
+                    }
+                }
+            },
+            "v202202TraceHop": {
+                "type": "object",
+                "properties": {
+                    "latency": {
+                        "type": "integer",
+                        "format": "int32",
+                        "title": "observed latency; 0 if node did not respond"
+                    },
+                    "nodeId": {
+                        "type": "string",
+                        "title": "node_id refers to TracerouteResult.nodes; empty if hop did not respond"
+                    }
+                }
+            },
+            "v202202UpdateAgentRequest": {
+                "type": "object",
+                "properties": {
+                    "agent": {
+                        "$ref": "#/components/schemas/v202202Agent"
+                    }
+                }
+            },
+            "v202202UpdateAgentResponse": {
+                "type": "object",
+                "properties": {
+                    "agent": {
+                        "$ref": "#/components/schemas/v202202Agent"
+                    }
+                }
+            },
+            "v202202UpdateTestRequest": {
+                "type": "object",
+                "properties": {
+                    "test": {
+                        "$ref": "#/components/schemas/v202202Test"
+                    }
+                }
+            },
+            "v202202UpdateTestResponse": {
+                "type": "object",
+                "properties": {
+                    "test": {
+                        "$ref": "#/components/schemas/v202202Test"
+                    }
+                }
+            },
+            "v202202UrlTest": {
+                "type": "object",
+                "properties": {
+                    "target": {
+                        "type": "string"
+                    },
+                    "timeout": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "method": {
+                        "type": "string"
+                    },
+                    "headers": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "body": {
+                        "type": "string"
+                    },
+                    "ignoreTlsErrors": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "v202202UserInfo": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "fullName": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

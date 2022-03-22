@@ -3,6 +3,7 @@
 # source: grpc/core/stats.proto
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
+from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
@@ -13,186 +14,14 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor.FileDescriptor(
-  name='grpc/core/stats.proto',
-  package='grpc.core',
-  syntax='proto3',
-  serialized_options=None,
-  create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x15grpc/core/stats.proto\x12\tgrpc.core\"&\n\x06\x42ucket\x12\r\n\x05start\x18\x01 \x01(\x01\x12\r\n\x05\x63ount\x18\x02 \x01(\x04\"/\n\tHistogram\x12\"\n\x07\x62uckets\x18\x01 \x03(\x0b\x32\x11.grpc.core.Bucket\"[\n\x06Metric\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x05\x63ount\x18\n \x01(\x04H\x00\x12)\n\thistogram\x18\x0b \x01(\x0b\x32\x14.grpc.core.HistogramH\x00\x42\x07\n\x05value\"+\n\x05Stats\x12\"\n\x07metrics\x18\x01 \x03(\x0b\x32\x11.grpc.core.Metricb\x06proto3'
-)
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x15grpc/core/stats.proto\x12\tgrpc.core\"&\n\x06\x42ucket\x12\r\n\x05start\x18\x01 \x01(\x01\x12\r\n\x05\x63ount\x18\x02 \x01(\x04\"/\n\tHistogram\x12\"\n\x07\x62uckets\x18\x01 \x03(\x0b\x32\x11.grpc.core.Bucket\"[\n\x06Metric\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x05\x63ount\x18\n \x01(\x04H\x00\x12)\n\thistogram\x18\x0b \x01(\x0b\x32\x14.grpc.core.HistogramH\x00\x42\x07\n\x05value\"+\n\x05Stats\x12\"\n\x07metrics\x18\x01 \x03(\x0b\x32\x11.grpc.core.Metricb\x06proto3')
 
 
 
-
-_BUCKET = _descriptor.Descriptor(
-  name='Bucket',
-  full_name='grpc.core.Bucket',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='start', full_name='grpc.core.Bucket.start', index=0,
-      number=1, type=1, cpp_type=5, label=1,
-      has_default_value=False, default_value=float(0),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='count', full_name='grpc.core.Bucket.count', index=1,
-      number=2, type=4, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=36,
-  serialized_end=74,
-)
-
-
-_HISTOGRAM = _descriptor.Descriptor(
-  name='Histogram',
-  full_name='grpc.core.Histogram',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='buckets', full_name='grpc.core.Histogram.buckets', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=76,
-  serialized_end=123,
-)
-
-
-_METRIC = _descriptor.Descriptor(
-  name='Metric',
-  full_name='grpc.core.Metric',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='name', full_name='grpc.core.Metric.name', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='count', full_name='grpc.core.Metric.count', index=1,
-      number=10, type=4, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='histogram', full_name='grpc.core.Metric.histogram', index=2,
-      number=11, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-    _descriptor.OneofDescriptor(
-      name='value', full_name='grpc.core.Metric.value',
-      index=0, containing_type=None,
-      create_key=_descriptor._internal_create_key,
-    fields=[]),
-  ],
-  serialized_start=125,
-  serialized_end=216,
-)
-
-
-_STATS = _descriptor.Descriptor(
-  name='Stats',
-  full_name='grpc.core.Stats',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='metrics', full_name='grpc.core.Stats.metrics', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=218,
-  serialized_end=261,
-)
-
-_HISTOGRAM.fields_by_name['buckets'].message_type = _BUCKET
-_METRIC.fields_by_name['histogram'].message_type = _HISTOGRAM
-_METRIC.oneofs_by_name['value'].fields.append(
-  _METRIC.fields_by_name['count'])
-_METRIC.fields_by_name['count'].containing_oneof = _METRIC.oneofs_by_name['value']
-_METRIC.oneofs_by_name['value'].fields.append(
-  _METRIC.fields_by_name['histogram'])
-_METRIC.fields_by_name['histogram'].containing_oneof = _METRIC.oneofs_by_name['value']
-_STATS.fields_by_name['metrics'].message_type = _METRIC
-DESCRIPTOR.message_types_by_name['Bucket'] = _BUCKET
-DESCRIPTOR.message_types_by_name['Histogram'] = _HISTOGRAM
-DESCRIPTOR.message_types_by_name['Metric'] = _METRIC
-DESCRIPTOR.message_types_by_name['Stats'] = _STATS
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
-
+_BUCKET = DESCRIPTOR.message_types_by_name['Bucket']
+_HISTOGRAM = DESCRIPTOR.message_types_by_name['Histogram']
+_METRIC = DESCRIPTOR.message_types_by_name['Metric']
+_STATS = DESCRIPTOR.message_types_by_name['Stats']
 Bucket = _reflection.GeneratedProtocolMessageType('Bucket', (_message.Message,), {
   'DESCRIPTOR' : _BUCKET,
   '__module__' : 'grpc.core.stats_pb2'
@@ -221,5 +50,15 @@ Stats = _reflection.GeneratedProtocolMessageType('Stats', (_message.Message,), {
   })
 _sym_db.RegisterMessage(Stats)
 
+if _descriptor._USE_C_DESCRIPTORS == False:
 
+  DESCRIPTOR._options = None
+  _BUCKET._serialized_start=36
+  _BUCKET._serialized_end=74
+  _HISTOGRAM._serialized_start=76
+  _HISTOGRAM._serialized_end=123
+  _METRIC._serialized_start=125
+  _METRIC._serialized_end=216
+  _STATS._serialized_start=218
+  _STATS._serialized_end=261
 # @@protoc_insertion_point(module_scope)

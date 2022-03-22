@@ -1,0 +1,207 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Cloud Maps API",
+        "version": "202201alpha1",
+        "contact": {
+            "name": "Kentik API Engineering"
+        }
+    },
+    "tags": [
+        {
+            "name": "CloudMapsService"
+        }
+    ],
+    "paths": {
+        "/cloud_maps/v202201alpha1/ingest/aws_configuration": {
+            "post": {
+                "summary": "Get AWS crawler configuration",
+                "description": "Get AWS crawler configuration that determines what AWS cloud metadata to collect",
+                "operationId": "AwsConfiguration",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202201alpha1GetAwsCrawlerConfigurationResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202201alpha1GetAwsCrawlerConfigurationRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "CloudMapsService"
+                ]
+            }
+        },
+        "/cloud_maps/v202201alpha1/ingest/aws_storage_location": {
+            "post": {
+                "summary": "Provide location for given AWS metadata",
+                "description": "Provides location at which the API client may store AWS cloud metadata",
+                "operationId": "AwsMetadataStorageLocation",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202201alpha1ProvideAwsMetadataStorageLocationResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202201alpha1ProvideAwsMetadataStorageLocationRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "CloudMapsService"
+                ]
+            }
+        }
+    },
+    "security": [
+        {
+            "email": [],
+            "token": []
+        }
+    ],
+    "externalDocs": {
+        "description": "More about Kentik APIs",
+        "url": "https://docs.kentik.com/api"
+    },
+    "components": {
+        "securitySchemes": {
+            "email": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-Email",
+                "in": "header"
+            },
+            "token": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-API-Token",
+                "in": "header"
+            }
+        },
+        "schemas": {
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "typeUrl": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string",
+                        "format": "byte"
+                    }
+                }
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "v202201alpha1GetAwsCrawlerConfigurationRequest": {
+                "type": "object",
+                "properties": {
+                    "version": {
+                        "type": "string",
+                        "title": "only \"aws-1.0\" literal for now"
+                    },
+                    "sourceAwsAccountId": {
+                        "type": "string",
+                        "title": "12-digit AWS account ID"
+                    },
+                    "sourceAwsRegion": {
+                        "type": "string",
+                        "title": "AWS region code"
+                    }
+                }
+            },
+            "v202201alpha1GetAwsCrawlerConfigurationResponse": {
+                "type": "object",
+                "properties": {
+                    "services": {
+                        "type": "string"
+                    }
+                }
+            },
+            "v202201alpha1ProvideAwsMetadataStorageLocationRequest": {
+                "type": "object",
+                "properties": {
+                    "version": {
+                        "type": "string",
+                        "title": "only \"aws-1.0\" literal for now"
+                    },
+                    "sourceAwsAccountId": {
+                        "type": "string",
+                        "title": "12-digit AWS account ID"
+                    },
+                    "sourceAwsRegion": {
+                        "type": "string",
+                        "title": "AWS region code"
+                    }
+                }
+            },
+            "v202201alpha1ProvideAwsMetadataStorageLocationResponse": {
+                "type": "object",
+                "properties": {
+                    "targetUrl": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

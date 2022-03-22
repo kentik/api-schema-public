@@ -79,6 +79,8 @@ service AwsGwInternalService {
 
 // Called by cloud-api-proxy instances in transfluo & orangeflow.
 service AwsGwExternalService {
+  option (kentik.core.v202012alpha1.service_scope) = "admin.cloud_gw";
+
   // LoginAws is used to tell the gateway that there's a listener active for a
   // given region.  A proxy starts a LoginAws, then services Get/SendAws
   // requests, and ends the LoginAws via context cancellation when it shuts

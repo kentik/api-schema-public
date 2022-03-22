@@ -1,0 +1,594 @@
+syntax = "proto3";
+package kentik.api.notify.v0;
+option go_package = "kentik/notify/backend/v0;notify";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+
+import "kentik/notify/backend/v0/models-channel-event.proto";
+import "kentik/notify/backend/v0/models-event.proto";
+import "kentik/notify/backend/v0/models-notification.proto";
+import "kentik/notify/backend/v0/subscribe.proto";
+
+import "kentik/core/v202012alpha1/annotations.proto";
+
+service Notify {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202012alpha1.service_scope) = "notify";
+
+  rpc SearchNotifications(NotificationsRequest) returns (NotificationsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:read";
+    option (google.api.http) = {
+      post: "/notify/backend/v0/notifications:search"
+      body: "*"
+      additional_bindings: [
+        {
+          post: "/v0/notifications:search"
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc ListNotifications(NotificationsRequest) returns (NotificationsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:read";
+    option (google.api.http) = {
+      get: "/notify/backend/v0/notifications/v/{channelVersion}/{channelID}"
+      additional_bindings: [
+        {
+          get: "/v0/notifications/v/{channelVersion}/{channelID}"
+        }
+      ]
+    };
+  }
+
+  // deprecated
+  rpc StreamNotifications(NotificationsRequest) returns (stream NotificationsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:read";
+    option (google.api.http) = {
+      get: "/notify/backend/v0/notifications/v/{channelVersion}/{channelID}/stream"
+    };
+  }
+
+  // Note: internally can publish notifications directly to Kafka.
+  rpc CreateNotificationEvent(NotificationEvent) returns (NotificationEventResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:write";
+    option (google.api.http) = {
+      post: "/notify/backend/v0/notification/event"
+      body: "*"
+      additional_bindings: [
+        {
+          post: "/v0/notification/event"
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc SearchDeliveryResults(DeliveryResultsRequest) returns (DeliveryResultsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:read";
+    option (google.api.http) = {
+      post: "/notify/backend/v0/notifications:search"
+      body: "*"
+      additional_bindings: [
+        {
+          post: "/v0/notifications:search"
+          body: "*"
+        }
+      ]
+
+    };
+  }
+
+  rpc CreateNotificationChannel(NotificationChannel) returns (NotificationChannelsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:write";
+    option (google.api.http) = {
+      post: "/notify/backend/v0/channels"
+      body: "*"
+      additional_bindings: [
+        {
+          post: "/v0/channels"
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc ListNotificationChannels(NotificationChannelsRequest) returns (NotificationChannelsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:read";
+    option (google.api.http) = {
+      get: "/notify/backend/v0/channels"
+      additional_bindings: [
+        {
+          get: "/v0/channels"
+        }
+      ]
+    };
+  }
+
+  rpc SearchNotificationChannels(NotificationChannelsRequest) returns (NotificationChannelsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:read";
+    option (google.api.http) = {
+      post: "/notify/backend/v0/channels:search"
+      body: "*"
+      additional_bindings: [
+        {
+          post: "/v0/channels:search"
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc GetNotificationChannel(NotificationChannel) returns (NotificationChannelResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:read";
+    option (google.api.http) = {
+      get: "/notify/backend/v0/channels/{channelID}"
+      additional_bindings: [
+        {
+          get: "/v0/channels/{channelID}"
+        }
+      ]
+    };
+  }
+
+  rpc UpdateNotificationChannel(NotificationChannel) returns (NotificationChannelsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:write";
+    option (google.api.http) = {
+      put: "/notify/backend/v0/channels/{channelID}"
+      body: "*"
+      additional_bindings: [
+        {
+          put: "/v0/channels/{channelID}"
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc DeleteNotificationChannel(NotificationChannel) returns (NotificationChannelsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:write";
+    option (google.api.http) = {
+      delete: "/notify/backend/v0/channels/{channelID}"
+      additional_bindings: [
+        {
+          delete: "/v0/channels/{channelID}"
+        }
+      ]
+    };
+  }
+
+  rpc GetSupportedChannels(SupportedChannelsRequest) returns (SupportedChannelsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:read";
+    option (google.api.http) = {
+      get: "/notify/backend/v0/channels/supported"
+      additional_bindings: [
+        {
+          get: "/v0/channels/supported"
+        }
+      ]
+    };
+  }
+
+  rpc CreateUserChannel(CreateUserChannelRequest) returns (NotificationChannelResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:write";
+    option (google.api.http) = {
+      post: "/notify/backend/v0/channels/user"
+      body: "*"
+      additional_bindings: [
+        {
+          post: "/v0/channels/user"
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc GetUserChannel(NotificationChannelsRequest) returns (NotificationChannelResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:read";
+    option (google.api.http) = {
+      get: "/notify/backend/v0/channels/user"
+      additional_bindings: [
+        {
+          get: "/v0/channels/user"
+        }
+      ]
+    };
+  }
+
+  rpc SubscribeWithUserChannel(SubscribeRequest) returns (SubscribeResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:write";
+    option (google.api.http) = {
+      post: "/notify/backend/v0/channels/user/subscribe"
+      body: "*"
+      additional_bindings: [
+        {
+          post: "/v0/channels/user/subscribe"
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc UnsubscribeWithUserChannel(SubscribeRequest) returns (SubscribeResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:write";
+    option (google.api.http) = {
+      post: "/notify/backend/v0/channels/user/unsubscribe"
+      body: "*"
+      additional_bindings: [
+        {
+          post: "/v0/channels/user/unsubscribe"
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc DeleteUserChannel(NotificationChannel) returns (NotificationChannelsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:write";
+    option (google.api.http) = {
+      delete: "/notify/backend/v0/channels/user"
+      additional_bindings: [
+        {
+          delete: "/v0/channels/user"
+        }
+      ]
+    };
+  }
+
+  rpc GetLastNotificationAndStatus(NotificationAndStatusRequest) returns (NotificationAndStatusResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:read";
+    option (google.api.http) = {
+      get: "/notify/backend/v0/channels/{channelVersion}/{channelID}/status"
+      additional_bindings: [
+        {
+          get: "/v0/channels/{channelVersion}/{channelID}/status"
+        }
+      ]
+    };
+  }
+
+  rpc GetNotificationPayload(NotificationPayloadRequest) returns (NotificationPayloadResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:read";
+    option (google.api.http) = {
+      post: "/notify/backend/v0/channels/{channelVersion}/{channelID}/payload"
+      body: "*"
+      additional_bindings: [
+        {
+          post: "/v0/channels/{channelVersion}/{channelID}/payload"
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  // immediately but asynchronously send notification described in the enclosed NotificationPayloadRequest.
+  rpc CreateNotificationForTesting(CreateNotificationForTestingRequest) returns (CreateNotificationForTestingResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:write";
+    option (google.api.http) = {
+      post: "/notify/backend/v0/channels/{channelVersion}/{channelID}/test"
+      body: "*"
+      additional_bindings: [
+        {
+          post: "/v0/channels/{channelVersion}/{channelID}/test"
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc CreateNotificationForTestingInsight(CreateNotificationForTestingRequest) returns (CreateNotificationForTestingResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:write";
+    option (google.api.http) = {
+      post: "/notify/backend/v0/channels/{channelVersion}/{channelID}/test/insight"
+      body: "*"
+      additional_bindings: [
+        {
+          post: "/v0/channels/{channelVersion}/{channelID}/test/insight"
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  rpc GetNotificationPayloadInsight(NotificationPayloadRequest) returns (NotificationPayloadResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:read";
+    option (google.api.http) = {
+      post: "/notify/backend/v0/channels/{channelVersion}/{channelID}/payload/insight"
+      body: "*"
+      additional_bindings: [
+        {
+          post: "/v0/channels/{channelVersion}/{channelID}/payload/insight"
+          body: "*"
+        }
+      ]
+    };
+  }
+
+  // ApplyAlertingMapping offers a policy+threshold centric way to manage channels.
+  // It replaces selectors in the target channels by simple policy+threshold matchers.
+  rpc ApplyAlertingMapping(ApplyAlertingManagedChannelsMappingRequest) returns (NotificationChannelsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:write";
+      option (google.api.http) = {
+      put: "/notify/backend/v0/channels/alerting/mapping"
+      body: "*"
+      additional_bindings: [
+          {
+            put: "/v0/channels/alerting/mapping"
+            body: "*"
+          }
+      ]
+    };
+  }
+
+  rpc GetAccessControlConfig(GetAccessControlConfigRequest) returns (GetAccessControlConfigResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:read";
+    option (google.api.http) = {
+      get: "/notify/backend/v0/access"
+    };
+  }
+
+  rpc SetAccessControlConfig(SetAccessControlConfigRequest) returns (SetAccessControlConfigResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "notify:write";
+    option (google.api.http) = {
+      put: "/notify/backend/v0/access"
+      body: "*"
+    };
+  }
+}
+
+message ApplyAlertingManagedChannelsMappingRequest {
+    message PolicyThresholdMapping {
+        string alertPolicy = 1;
+        string alertThreshold = 2;
+        repeated int64 channelIDs = 3;
+
+        string company = 4; // optional, used for cross company notifications
+    }
+    repeated PolicyThresholdMapping mappings = 1;
+}
+
+message NotificationsRequest {
+  ChannelVersion channelVersion = 1;
+  int64 channelID = 2;
+
+  int64 notificationID = 3;
+}
+
+message NotificationsResponse {
+  repeated Notification notifications = 1;
+}
+
+message NotificationChannelsRequest {
+  // include v1 channels
+  bool showV1Channels = 1;
+
+  // deprecated
+  ChannelManagedStatus managed = 2 [deprecated = true];
+
+  // if no user channel is found, return an empty result
+  bool userChannelNotFoundReturnEmpty = 3;
+}
+
+message NotificationChannelsResponse {
+  repeated NotificationChannel channels = 1;
+}
+
+message NotificationChannelResponse {
+  NotificationChannel channel = 1;
+}
+
+message NotificationChannel {
+  ChannelVersion channelVersion = 1;
+  int64 channelID = 2;
+  string channelType = 3;
+  string name = 4;
+  ChannelStatus status = 5;
+  google.protobuf.Timestamp creationTime = 6;
+  google.protobuf.Timestamp editTime = 7;
+  ChannelConfig config = 8;
+  string v1Raw = 9; // raw json dump of v1 info. don't use generally.
+}
+
+enum ChannelStatus {
+  channelStatusNone = 0;
+  enabled = 1;
+  disabled = 2;
+}
+
+// deprecated
+enum ChannelManagedStatus {
+    notManaged = 0;
+    alertingManaged = 1;
+}
+
+message ChannelConfig {
+  SelectorConfig selectorConfig = 1;
+  BatchingConfig batchingConfig = 2;
+  RenderingConfig renderingConfig = 5;
+  SendingConfig sendingConfig = 3;
+  SyslogConfig syslogConfig = 4;
+  int64 userChannelUserID = 6;
+  ChannelManagedStatus managed = 7 [deprecated = true];
+}
+
+message SelectorConfig {
+  repeated SelectorConjunction conjunctions = 1;
+}
+
+message SelectorConjunction {
+  repeated Selector selectors = 1;
+}
+
+message Selector {
+  string lhs = 1;
+  string op = 2;
+  string rhs = 3;
+}
+
+message BatchingConfig {
+  int64 maxBatchSize = 1;
+  google.protobuf.Duration batchDuration = 2;
+
+  // Sends a batch at a certain time each day.
+  // There is no associated timezone (and so no accounting for daylight savings).
+  // The date portion of the timestamp is ignored, only the time matters.
+  repeated google.protobuf.Timestamp dailyTimesToSend = 3;
+
+  // TODO: dailyTimesToSend, but with a timezone.
+}
+
+message RenderingConfig {
+  string customTemplate = 1;
+  bool uglifyJSON = 2;
+  bool insightsDigest = 3;
+}
+
+message SendingConfig {
+  string url = 1;
+  string username = 2;
+  repeated string usernames = 3;
+  string token = 4;
+  string identifier = 5;
+
+  map<string, string> customHeaders = 8;
+
+  int64 maxAttempts = 6; // default 3
+  google.protobuf.Duration cooldownDuration = 7; // time between attempts. default 30s
+}
+
+message SyslogConfig {
+  string host = 1;
+  int64 port = 2;
+  string network = 3; // "tcp" or "udp"
+  string syslogHostname = 4;
+  int64 severity = 5;
+  int64 facility = 6;
+}
+
+message DeliveryResultsRequest {
+  ChannelVersion channelVersion = 1;
+  int64 channelID = 2;
+
+  string jobUUID = 3;
+}
+
+message DeliveryResultsResponse {
+  repeated DeliveryResult results = 1;
+}
+
+message DeliveryResult {
+  int64 id = 1;
+  int64 companyID = 2;
+  ChannelVersion channelVersion = 3;
+  int64 channelID = 4;
+  google.protobuf.Timestamp time = 5;
+  string jobUUID = 6;
+  int32 statusCode = 7;
+  string requestBody = 8;
+  string responseBody = 9;
+  google.protobuf.Timestamp requestStart = 10;
+  google.protobuf.Timestamp requestEnd = 11;
+  string error = 12;
+  bool sent = 13;
+}
+
+message NotificationAndStatusRequest {
+  ChannelVersion channelVersion = 1; // default 2
+  int64 channelID = 2;
+}
+
+message NotificationAndStatusResponse {
+  Notification notification = 1;
+  repeated DeliveryResult deliveryResults = 2;
+  DeliveryStatus status = 3;
+}
+
+enum DeliveryStatus {
+  deliveryUnknown = 0;
+  deliveryOK = 1;
+  deliveryPending = 2;
+  deliveryBad = 3;
+}
+
+message NotificationPayloadRequest {
+  ChannelVersion channelVersion = 1;
+  int64 channelID = 2;
+
+  NotificationPayloadOptions options = 3;
+  repeated NotificationPayloadOptions optionsList = 4;
+}
+
+message NotificationPayloadOptions {
+  string modelType = 1; // alarmEvent, mitigationEvent, insightEvent, mitigationPlatformEvent, genericEvent, etc.
+  bool lastModel = 2; // instead of using the id below, grab the most recent model.
+  bool testModel = 3; // instead of using the id below, use a testing model.
+  string testModelID = 4;
+
+  // IDs specified according to modelType:
+  int64 alarmID = 5;
+  int64 alarmHistoryID = 6;
+
+  int64 mitigationID = 7;
+  int64 mitigationEventID = 8;
+
+  string insightID = 9;
+}
+
+message NotificationPayloadResponse {
+  string payload = 1;
+}
+
+
+message CreateNotificationForTestingRequest {
+  ChannelVersion channelVersion = 1;
+  int64 channelID = 2;
+
+  NotificationPayloadOptions payloadOptions = 3;
+  repeated NotificationPayloadOptions optionsList = 4;
+}
+
+message CreateNotificationForTestingResponse {
+}
+
+message SupportedChannelsRequest {
+}
+
+message SupportedChannelsResponse {
+  repeated SupportedChannel supportedChannels = 1;
+}
+
+message SupportedChannel {
+  string channelType = 1;
+  string channelDisplayName = 3;
+
+  repeated ChannelField requiredFields = 2;
+}
+
+message ChannelField {
+  // A path is within a NotificationChannel's ChannelConfig,
+  // for example "sendingConfig.username" or "sendingConfig.identifier".
+  string path = 1;
+  string description = 2; // for humans
+}
+
+message GetAccessControlConfigRequest {
+}
+
+message GetAccessControlConfigResponse {
+  AccessControlConfig accessControlConfig = 1;
+}
+
+message SetAccessControlConfigRequest {
+  AccessControlConfig accessControlConfig = 1;
+}
+
+message SetAccessControlConfigResponse {
+  AccessControlConfig accessControlConfig = 1;
+}
+
+message AccessControlConfig {
+  SelectorConfig allow = 1;
+}

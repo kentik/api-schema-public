@@ -1,0 +1,24 @@
+syntax = "proto3";
+package kentik.api.notify.v0;
+option go_package = "kentik/notify/backend/v0;notify";
+
+import "google/protobuf/timestamp.proto";
+
+import "kentik/notify/backend/v0/models-event.proto";
+
+message ChannelEvent {
+  int64 channelID = 1;
+  ChannelVersion channelVersion = 2;
+
+  // eventTimestamp is when the NotificationEvent was ingested by kafka.
+  // i.e. the ConsumerMessage.Timestamp when read.
+  google.protobuf.Timestamp eventTimestamp = 3;
+
+  NotificationEvent event = 4;
+}
+
+enum ChannelVersion {
+  channelVersionUnknown = 0;
+  channelVersion1 = 1; // channels defined in ch_www.mn_alert_notification_channel
+  channelVersion2 = 2; // channels defined and owned by "notify"
+}

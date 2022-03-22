@@ -1,0 +1,112 @@
+syntax = "proto3";
+
+package kentik.cloud_maps.v202201alpha1;
+option go_package = "github.com/kentik/api-schema/gen/go/kentik/cloud_maps/v202201alpha1;cloud_maps";
+
+import "google/api/http.proto";
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "kentik/core/v202012alpha1/annotations.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Cloud Maps API"
+    version: "202201alpha1"
+    contact: {
+      name: "Kentik API Engineering"
+    }
+  }
+  external_docs: {
+    url: "https://docs.kentik.com/api"
+    description: "More about Kentik APIs"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+message ProvideAwsMetadataStorageLocationRequest {
+  // only "aws-1.0" literal for now
+  string version = 1;
+  // 12-digit AWS account ID
+  string source_aws_account_id = 2;
+  // AWS region code
+  string source_aws_region = 3;
+}
+
+message ProvideAwsMetadataStorageLocationResponse {
+  string target_url = 1;
+}
+
+message GetAwsCrawlerConfigurationRequest {
+  // only "aws-1.0" literal for now
+  string version = 1;
+  // 12-digit AWS account ID
+  string source_aws_account_id = 2;
+  // AWS region code
+  string source_aws_region = 3;
+}
+
+message GetAwsCrawlerConfigurationResponse {
+  string services = 1;
+}
+
+service CloudMapsService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202012alpha1.service_scope) = "admin.cloud_maps";
+
+  rpc ProvideAwsMetadataStorageLocation(ProvideAwsMetadataStorageLocationRequest) returns (ProvideAwsMetadataStorageLocationResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_maps:write";
+    option (google.api.http) = {
+      post: "/cloud_maps/v202201alpha1/ingest/aws_storage_location"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "AwsMetadataStorageLocation"
+      summary: "Provide location for given AWS metadata"
+      description: "Provides location at which the API client may store AWS cloud metadata"
+    };
+  }
+
+  rpc GetAwsCrawlerConfiguration(GetAwsCrawlerConfigurationRequest) returns (GetAwsCrawlerConfigurationResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_maps:read";
+    option (google.api.http) = {
+      post: "/cloud_maps/v202201alpha1/ingest/aws_configuration"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "AwsConfiguration"
+      summary: "Get AWS crawler configuration"
+      description: "Get AWS crawler configuration that determines what AWS cloud metadata to collect"
+    };
+  }
+}

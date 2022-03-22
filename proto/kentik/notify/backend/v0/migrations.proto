@@ -1,0 +1,55 @@
+syntax = "proto3";
+package kentik.api.notify.v0;
+option go_package = "kentik/notify/backend/v0;notify";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "kentik/core/v202012alpha1/annotations.proto";
+
+service Migrations {
+  option (kentik.core.v202012alpha1.private_service) = true;
+
+  rpc ListMigrations(MigrationsRequest) returns (MigrationsResponse) {
+    option (google.api.http) = {
+      get: "/notify/v0/migrations"
+    };
+  }
+
+  rpc RunMigrations(RunMigrationsRequest) returns (RunMigrationsResponse) {
+    option (google.api.http) = {
+      post: "/notify/v0/migrations:run"
+      body: "*"
+    };
+  }
+}
+
+message MigrationsRequest {
+  MigrationStatus status = 1;
+}
+
+message MigrationsResponse {
+  repeated Migration migrations = 1;
+}
+
+message Migration {
+  int64 id = 1;
+  string name = 2;
+  MigrationStatus status = 3;
+  google.protobuf.Timestamp appliedOn = 4;
+  string sql = 5;
+}
+
+enum MigrationStatus {
+  unknownMigrationStatus = 0;
+  pending = 1;
+  applied = 2;
+}
+
+message RunMigrationsRequest {
+  repeated Migration migrationsToRun = 1; // only id required
+}
+
+message RunMigrationsResponse {
+  string msg = 1;
+  repeated Migration migrations = 2;
+}

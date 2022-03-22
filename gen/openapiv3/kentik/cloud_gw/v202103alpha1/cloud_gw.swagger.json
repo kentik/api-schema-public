@@ -1,0 +1,454 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "CLOUD GW API",
+        "version": "202103alpha1",
+        "contact": {
+            "name": "Kentik API Engineering",
+            "url": "https://github.com/kentik/api"
+        }
+    },
+    "tags": [
+        {
+            "name": "AwsGwInternalService"
+        },
+        {
+            "name": "AwsGwExternalService"
+        }
+    ],
+    "paths": {
+        "/cloud_gw/v202103alpha1/get_aws": {
+            "get": {
+                "summary": "The client calls GetAws to get a request from the gateway.  It runs the\nrequest, and returns the result via SendAws, linking them together via\nrequest_id.",
+                "operationId": "AwsGwExternalService_GetAws",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202103alpha1GetAwsResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "region",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "callerId",
+                        "description": "caller_id in LoginAwsRequest must be the same as caller_id in all\nGetAwsRequests.",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "AwsGwExternalService"
+                ]
+            }
+        },
+        "/cloud_gw/v202103alpha1/list_aws_roles": {
+            "get": {
+                "operationId": "AwsGwInternalService_ListAwsRoles",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202103alpha1ListAwsRolesResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "AwsGwInternalService"
+                ]
+            }
+        },
+        "/cloud_gw/v202103alpha1/login_aws/{region}": {
+            "get": {
+                "summary": "LoginAws is used to tell the gateway that there's a listener active for a\ngiven region.  A proxy starts a LoginAws, then services Get/SendAws\nrequests, and ends the LoginAws via context cancellation when it shuts\ndown (or disconnects).",
+                "operationId": "AwsGwExternalService_LoginAws",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202103alpha1LoginAwsResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "region",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "role",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "callerId",
+                        "description": "caller_id in LoginAwsRequest must be the same as caller_id in all\nGetAwsRequests.",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "AwsGwExternalService"
+                ]
+            }
+        },
+        "/cloud_gw/v202103alpha1/proxy_aws/{region}": {
+            "post": {
+                "operationId": "AwsGwInternalService_ProxyAws",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202103alpha1ProxyAwsResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "region",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202103alpha1ProxyAwsRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "AwsGwInternalService"
+                ]
+            }
+        },
+        "/cloud_gw/v202103alpha1/send_aws/{requestId}": {
+            "post": {
+                "operationId": "AwsGwExternalService_SendAws",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202103alpha1SendAwsResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "requestId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202103alpha1SendAwsRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "AwsGwExternalService"
+                ]
+            }
+        }
+    },
+    "security": [
+        {
+            "email": [],
+            "token": []
+        }
+    ],
+    "externalDocs": {
+        "description": "More about Kentik APIs",
+        "url": "https://docs.kentik.com/api"
+    },
+    "components": {
+        "securitySchemes": {
+            "email": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-Email",
+                "in": "header"
+            },
+            "token": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-API-Token",
+                "in": "header"
+            }
+        },
+        "schemas": {
+            "grpchttp_over_grpcHeader": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "type": "string"
+                    },
+                    "values": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "description": "Represents HTTP 1.1 header."
+            },
+            "http_over_grpcHTTPOverGRPCReply": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "The HTTP status code (e.g. 200, 400, 404)."
+                    },
+                    "headers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/grpchttp_over_grpcHeader"
+                        },
+                        "description": "The HTTP response headers."
+                    },
+                    "body": {
+                        "type": "string",
+                        "format": "byte",
+                        "description": "The HTTP response body."
+                    }
+                },
+                "description": "An HTTP 1.1 reply encapsulated in an RPC."
+            },
+            "http_over_grpcHTTPOverGRPCRequest": {
+                "type": "object",
+                "properties": {
+                    "method": {
+                        "type": "string",
+                        "description": "The HTTP request method."
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "The HTTP request URL."
+                    },
+                    "headers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/grpchttp_over_grpcHeader"
+                        },
+                        "description": "The HTTP request headers."
+                    },
+                    "body": {
+                        "type": "string",
+                        "format": "byte",
+                        "description": "HTTP request body."
+                    }
+                },
+                "description": "An HTTP 1.1 request encapsulated in a gRPC."
+            },
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "typeUrl": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string",
+                        "format": "byte"
+                    }
+                }
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "v202103alpha1GetAwsResponse": {
+                "type": "object",
+                "properties": {
+                    "requestId": {
+                        "type": "string",
+                        "format": "int64"
+                    },
+                    "httpRequest": {
+                        "$ref": "#/components/schemas/http_over_grpcHTTPOverGRPCRequest"
+                    }
+                }
+            },
+            "v202103alpha1ListAwsRolesResponse": {
+                "type": "object",
+                "properties": {
+                    "cidRegionToRoles": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/v202103alpha1RoleList"
+                        },
+                        "title": "key is cid~region"
+                    }
+                },
+                "description": "This API is certainly open to discussion.  Instead of a map with a key you\nthen have to parse, I could return a list of struct{cid, region, role} (or\nsomething else, of course), if that would work better.\n\nIn raw Go I'd do it differently, but trying to mimic that in protobuf gets\nugly, imho."
+            },
+            "v202103alpha1LoginAwsResponse": {
+                "type": "object"
+            },
+            "v202103alpha1ProxyAwsRequest": {
+                "type": "object",
+                "properties": {
+                    "region": {
+                        "type": "string"
+                    },
+                    "httpRequest": {
+                        "$ref": "#/components/schemas/http_over_grpcHTTPOverGRPCRequest"
+                    }
+                },
+                "title": "cid from headers / context"
+            },
+            "v202103alpha1ProxyAwsResponse": {
+                "type": "object",
+                "properties": {
+                    "httpResponse": {
+                        "$ref": "#/components/schemas/http_over_grpcHTTPOverGRPCReply"
+                    }
+                }
+            },
+            "v202103alpha1RoleList": {
+                "type": "object",
+                "properties": {
+                    "roles": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "v202103alpha1SendAwsRequest": {
+                "type": "object",
+                "properties": {
+                    "requestId": {
+                        "type": "string",
+                        "format": "int64"
+                    },
+                    "httpResponse": {
+                        "$ref": "#/components/schemas/http_over_grpcHTTPOverGRPCReply"
+                    }
+                }
+            },
+            "v202103alpha1SendAwsResponse": {
+                "type": "object"
+            }
+        }
+    }
+}

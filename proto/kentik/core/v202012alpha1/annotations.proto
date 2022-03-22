@@ -10,9 +10,13 @@ import "google/protobuf/descriptor.proto";
 extend google.protobuf.ServiceOptions {
   // auth scope for this service
   string service_scope = 5501;
+  // private_service indicates that this service is not publicly available
+  bool private_service = 5503;
 }
 
 extend google.protobuf.MethodOptions {
   // auth scope for this service
   string method_scope = 5502;
+  // private_method indicates that this method is not publicly available
+  bool private_method = 5504;
 }
