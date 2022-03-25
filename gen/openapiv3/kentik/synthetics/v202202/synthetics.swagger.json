@@ -692,6 +692,12 @@
                     },
                     "agentImpl": {
                         "$ref": "#/components/schemas/v202202ImplementType"
+                    },
+                    "labels": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 }
             },
@@ -1393,6 +1399,12 @@
                     },
                     "lastUpdatedBy": {
                         "$ref": "#/components/schemas/v202202UserInfo"
+                    },
+                    "labels": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 }
             },

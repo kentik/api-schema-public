@@ -1,0 +1,285 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Label API",
+    "version": "202203alpha1",
+    "contact": {
+      "name": "Kentik API Engineering"
+    }
+  },
+  "tags": [
+    {
+      "name": "LabelService"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/label/v202203alpha1/labels": {
+      "get": {
+        "summary": "Fetch Search Labels",
+        "description": "Return list of labels matches search critera.",
+        "operationId": "ListLabel",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202203alpha1ListLabelsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "LabelService"
+        ]
+      },
+      "post": {
+        "summary": "Create a label.",
+        "description": "Create a label from request. returns created.",
+        "operationId": "LabelCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202203alpha1CreateLabelResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202203alpha1CreateLabelRequest"
+            }
+          }
+        ],
+        "tags": [
+          "LabelService"
+        ]
+      }
+    },
+    "/label/v202203alpha1/labels/{id}": {
+      "delete": {
+        "summary": "Delete a label.",
+        "description": "Deletes the label specified with id.",
+        "operationId": "LabelDelete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202203alpha1DeleteLabelResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "ID of label.",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "LabelService"
+        ]
+      },
+      "post": {
+        "summary": "Update a label.",
+        "description": "Replaces the entire label attributes specified with id.",
+        "operationId": "LabelUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202203alpha1UpdateLabelResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202203alpha1UpdateLabelRequest"
+            }
+          }
+        ],
+        "tags": [
+          "LabelService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "labelv202203alpha1Label": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "color": {
+          "type": "string",
+          "title": "hex color code value"
+        },
+        "cdate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Create timestamp."
+        },
+        "edate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Update timestamp."
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "typeUrl": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v202203alpha1CreateLabelRequest": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "$ref": "#/definitions/labelv202203alpha1Label"
+        }
+      }
+    },
+    "v202203alpha1CreateLabelResponse": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "$ref": "#/definitions/labelv202203alpha1Label"
+        }
+      }
+    },
+    "v202203alpha1DeleteLabelResponse": {
+      "type": "object"
+    },
+    "v202203alpha1ListLabelsResponse": {
+      "type": "object",
+      "properties": {
+        "labels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/labelv202203alpha1Label"
+          }
+        },
+        "invalidCount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v202203alpha1UpdateLabelRequest": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "$ref": "#/definitions/labelv202203alpha1Label"
+        }
+      }
+    },
+    "v202203alpha1UpdateLabelResponse": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "$ref": "#/definitions/labelv202203alpha1Label"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "email": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-Email",
+      "in": "header"
+    },
+    "token": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-API-Token",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "email": [],
+      "token": []
+    }
+  ],
+  "externalDocs": {
+    "description": "More about Kentik APIs",
+    "url": "https://docs.kentik.com/api"
+  }
+}
