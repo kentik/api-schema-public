@@ -96,7 +96,7 @@ message Agent {
   string cloud_region = 22;
   string cloud_provider = 23;
   ImplementType agent_impl = 24;
-
+  repeated string labels = 25;
 }
 
 enum IPFamily {
@@ -139,6 +139,7 @@ message Test {
   google.protobuf.Timestamp edate = 8;
   UserInfo created_by = 9;
   UserInfo last_updated_by = 10;
+  repeated string labels = 11;
 }
 
 enum DNSRecord {

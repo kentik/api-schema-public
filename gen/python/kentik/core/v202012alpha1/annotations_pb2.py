@@ -3,7 +3,6 @@
 # source: kentik/core/v202012alpha1/annotations.proto
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
-from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
@@ -15,24 +14,60 @@ _sym_db = _symbol_database.Default()
 from google.protobuf import descriptor_pb2 as google_dot_protobuf_dot_descriptor__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n+kentik/core/v202012alpha1/annotations.proto\x12\x19kentik.core.v202012alpha1\x1a google/protobuf/descriptor.proto:7\n\rservice_scope\x12\x1f.google.protobuf.ServiceOptions\x18\xfd* \x01(\t:9\n\x0fprivate_service\x12\x1f.google.protobuf.ServiceOptions\x18\xff* \x01(\x08:5\n\x0cmethod_scope\x12\x1e.google.protobuf.MethodOptions\x18\xfe* \x01(\t:7\n\x0eprivate_method\x12\x1e.google.protobuf.MethodOptions\x18\x80+ \x01(\x08\x42JZHgithub.com/kentik/api-schema/gen/go/kentik/core/v202012alpha1;kentik_apib\x06proto3')
+DESCRIPTOR = _descriptor.FileDescriptor(
+  name='kentik/core/v202012alpha1/annotations.proto',
+  package='kentik.core.v202012alpha1',
+  syntax='proto3',
+  serialized_options=b'ZHgithub.com/kentik/api-schema/gen/go/kentik/core/v202012alpha1;kentik_api',
+  create_key=_descriptor._internal_create_key,
+  serialized_pb=b'\n+kentik/core/v202012alpha1/annotations.proto\x12\x19kentik.core.v202012alpha1\x1a google/protobuf/descriptor.proto:7\n\rservice_scope\x12\x1f.google.protobuf.ServiceOptions\x18\xfd* \x01(\t:9\n\x0fprivate_service\x12\x1f.google.protobuf.ServiceOptions\x18\xff* \x01(\x08:5\n\x0cmethod_scope\x12\x1e.google.protobuf.MethodOptions\x18\xfe* \x01(\t:7\n\x0eprivate_method\x12\x1e.google.protobuf.MethodOptions\x18\x80+ \x01(\x08\x42JZHgithub.com/kentik/api-schema/gen/go/kentik/core/v202012alpha1;kentik_apib\x06proto3'
+  ,
+  dependencies=[google_dot_protobuf_dot_descriptor__pb2.DESCRIPTOR,])
 
 
 SERVICE_SCOPE_FIELD_NUMBER = 5501
-service_scope = DESCRIPTOR.extensions_by_name['service_scope']
+service_scope = _descriptor.FieldDescriptor(
+  name='service_scope', full_name='kentik.core.v202012alpha1.service_scope', index=0,
+  number=5501, type=9, cpp_type=9, label=1,
+  has_default_value=False, default_value=b"".decode('utf-8'),
+  message_type=None, enum_type=None, containing_type=None,
+  is_extension=True, extension_scope=None,
+  serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key)
 PRIVATE_SERVICE_FIELD_NUMBER = 5503
-private_service = DESCRIPTOR.extensions_by_name['private_service']
+private_service = _descriptor.FieldDescriptor(
+  name='private_service', full_name='kentik.core.v202012alpha1.private_service', index=1,
+  number=5503, type=8, cpp_type=7, label=1,
+  has_default_value=False, default_value=False,
+  message_type=None, enum_type=None, containing_type=None,
+  is_extension=True, extension_scope=None,
+  serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key)
 METHOD_SCOPE_FIELD_NUMBER = 5502
-method_scope = DESCRIPTOR.extensions_by_name['method_scope']
+method_scope = _descriptor.FieldDescriptor(
+  name='method_scope', full_name='kentik.core.v202012alpha1.method_scope', index=2,
+  number=5502, type=9, cpp_type=9, label=1,
+  has_default_value=False, default_value=b"".decode('utf-8'),
+  message_type=None, enum_type=None, containing_type=None,
+  is_extension=True, extension_scope=None,
+  serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key)
 PRIVATE_METHOD_FIELD_NUMBER = 5504
-private_method = DESCRIPTOR.extensions_by_name['private_method']
+private_method = _descriptor.FieldDescriptor(
+  name='private_method', full_name='kentik.core.v202012alpha1.private_method', index=3,
+  number=5504, type=8, cpp_type=7, label=1,
+  has_default_value=False, default_value=False,
+  message_type=None, enum_type=None, containing_type=None,
+  is_extension=True, extension_scope=None,
+  serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key)
 
-if _descriptor._USE_C_DESCRIPTORS == False:
-  google_dot_protobuf_dot_descriptor__pb2.ServiceOptions.RegisterExtension(service_scope)
-  google_dot_protobuf_dot_descriptor__pb2.ServiceOptions.RegisterExtension(private_service)
-  google_dot_protobuf_dot_descriptor__pb2.MethodOptions.RegisterExtension(method_scope)
-  google_dot_protobuf_dot_descriptor__pb2.MethodOptions.RegisterExtension(private_method)
+DESCRIPTOR.extensions_by_name['service_scope'] = service_scope
+DESCRIPTOR.extensions_by_name['private_service'] = private_service
+DESCRIPTOR.extensions_by_name['method_scope'] = method_scope
+DESCRIPTOR.extensions_by_name['private_method'] = private_method
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-  DESCRIPTOR._options = None
-  DESCRIPTOR._serialized_options = b'ZHgithub.com/kentik/api-schema/gen/go/kentik/core/v202012alpha1;kentik_api'
+google_dot_protobuf_dot_descriptor__pb2.ServiceOptions.RegisterExtension(service_scope)
+google_dot_protobuf_dot_descriptor__pb2.ServiceOptions.RegisterExtension(private_service)
+google_dot_protobuf_dot_descriptor__pb2.MethodOptions.RegisterExtension(method_scope)
+google_dot_protobuf_dot_descriptor__pb2.MethodOptions.RegisterExtension(private_method)
+
+DESCRIPTOR._options = None
 # @@protoc_insertion_point(module_scope)

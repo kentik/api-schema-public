@@ -562,6 +562,12 @@
         },
         "agentImpl": {
           "$ref": "#/definitions/v202202ImplementType"
+        },
+        "labels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -1263,6 +1269,12 @@
         },
         "lastUpdatedBy": {
           "$ref": "#/definitions/v202202UserInfo"
+        },
+        "labels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },

@@ -1,0 +1,154 @@
+syntax = "proto3";
+
+package kentik.label.v202203alpha1;
+option go_package = "github.com/kentik/api-schema/gen/go/kentik/label/v202203alpha1;label";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/type/latlng.proto";
+import "google/type/postal_address.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "kentik/core/v202012alpha1/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Label API"
+    version: "202203alpha1"
+    contact: {
+      name: "Kentik API Engineering"
+    }
+  }
+  external_docs: {
+    url: "https://docs.kentik.com/api"
+    description: "More about Kentik APIs"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+message Label {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  // hex color code value
+  string color = 5;
+  // Create timestamp.
+  google.protobuf.Timestamp cdate = 6;
+  // Update timestamp.
+  google.protobuf.Timestamp edate = 7;
+}
+
+message ListLabelsRequest {
+}
+message ListLabelsResponse {
+  repeated Label labels = 1;
+  int32 invalid_count = 2;
+}
+
+message CreateLabelRequest {
+  Label label = 1;
+}
+message CreateLabelResponse {
+  Label label = 1;
+}
+
+message UpdateLabelRequest {
+  Label label = 1;
+}
+message UpdateLabelResponse {
+  Label label = 1;
+}
+
+message DeleteLabelRequest {
+  // ID of label.
+  string id = 1;
+}
+message DeleteLabelResponse {}
+
+
+service LabelService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202012alpha1.service_scope) = "admin.label";
+
+
+  rpc ListLabels(ListLabelsRequest) returns (ListLabelsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.label:read";
+    option (google.api.http) = {
+      get: "/label/v202203alpha1/labels"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ListLabel"
+      summary: "Fetch Search Labels"
+      description: "Return list of labels matches search critera."
+    };
+  }
+
+  rpc CreateLabel(CreateLabelRequest) returns (CreateLabelResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.label:write";
+    option (google.api.http) = {
+      post: "/label/v202203alpha1/labels"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "LabelCreate"
+      summary: "Create a label."
+      description: "Create a label from request. returns created."
+    };
+  }
+
+  rpc UpdateLabel(UpdateLabelRequest) returns (UpdateLabelResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.label:write";
+    option (google.api.http) = {
+      post: "/label/v202203alpha1/labels/{label.id}"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "LabelUpdate"
+      summary: "Update a label."
+      description: "Replaces the entire label attributes specified with id."
+    };
+  }
+
+  rpc DeleteLabel(DeleteLabelRequest) returns (DeleteLabelResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.label:write";
+    option (google.api.http) = {
+      delete: "/label/v202203alpha1/labels/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "LabelDelete"
+      summary: "Delete a label."
+      description: "Deletes the label specified with id."
+    };
+  }
+}
