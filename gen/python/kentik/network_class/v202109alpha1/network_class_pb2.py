@@ -21,7 +21,7 @@ from protoc_gen_openapiv2.options import annotations_pb2 as protoc__gen__openapi
 from kentik.core.v202012alpha1 import annotations_pb2 as kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n6kentik/network_class/v202109alpha1/network_class.proto\x12\"kentik.network_class.v202109alpha1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x18google/type/latlng.proto\x1a google/type/postal_address.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a+kentik/core/v202012alpha1/annotations.proto\"[\n\x0b\x43loudSubnet\x12;\n\x04type\x18\x01 \x01(\x0e\x32-.kentik.network_class.v202109alpha1.CloudType\x12\x0f\n\x07subnets\x18\x02 \x03(\t\"\xba\x01\n\x0cNetworkClass\x12\x15\n\rinternal_asns\x18\x01 \x03(\t\x12\x14\n\x0cinternal_ips\x18\x02 \x03(\t\x12\x18\n\x10use_private_asns\x18\x03 \x01(\x08\x12\x1b\n\x13use_private_subnets\x18\x04 \x01(\x08\x12\x46\n\rcloud_subnets\x18\x05 \x03(\x0b\x32/.kentik.network_class.v202109alpha1.CloudSubnet\"\x18\n\x16GetNetworkClassRequest\"b\n\x17GetNetworkClassResponse\x12G\n\rnetwork_class\x18\x01 \x01(\x0b\x32\x30.kentik.network_class.v202109alpha1.NetworkClass\"d\n\x19UpdateNetworkClassRequest\x12G\n\rnetwork_class\x18\x01 \x01(\x0b\x32\x30.kentik.network_class.v202109alpha1.NetworkClass\"e\n\x1aUpdateNetworkClassResponse\x12G\n\rnetwork_class\x18\x01 \x01(\x0b\x32\x30.kentik.network_class.v202109alpha1.NetworkClass*y\n\tCloudType\x12\x1a\n\x16\x43LOUD_TYPE_UNSPECIFIED\x10\x00\x12\x12\n\x0e\x43LOUD_TYPE_AWS\x10\x01\x12\x14\n\x10\x43LOUD_TYPE_AZURE\x10\x02\x12\x12\n\x0e\x43LOUD_TYPE_GCE\x10\x03\x12\x12\n\x0e\x43LOUD_TYPE_IBM\x10\x04\x32\x86\x06\n\x13NetworkClassService\x12\xd3\x02\n\x0fGetNetworkClass\x12:.kentik.network_class.v202109alpha1.GetNetworkClassRequest\x1a;.kentik.network_class.v202109alpha1.GetNetworkClassResponse\"\xc6\x01\xf2\xd7\x02\x18\x61\x64min.network_class:read\x82\xd3\xe4\x93\x02,\x12*/network_class/v202109alpha1/network_class\x92\x41u\x12\x1dGet a network classification.\x1a\x43Returns information about a network classification for the company.*\x0fNetworkClassGet\x12\xe9\x02\n\x12UpdateNetworkClass\x12=.kentik.network_class.v202109alpha1.UpdateNetworkClassRequest\x1a>.kentik.network_class.v202109alpha1.UpdateNetworkClassResponse\"\xd3\x01\xf2\xd7\x02\x19\x61\x64min.network_class:write\x82\xd3\xe4\x93\x02/\"*/network_class/v202109alpha1/network_class:\x01*\x92\x41~\x12 Update a network classification.\x1a\x46Replaces the entire network classification attributes for the company.*\x12NetworkClassUpdate\x1a-\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\x13\x61\x64min.network_classB\xdc\x02ZTgithub.com/kentik/api-schema/gen/go/kentik/network_class/v202109alpha1;network_class\x92\x41\x82\x02\x12\x44\n\x1aNetwork Classification API\"\x18\n\x16Kentik API Engineering2\x0c\x32\x30\x32\x31\x30\x39\x61lpha1*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r5\n\x16More about Kentik APIs\x12\x1bhttps://docs.kentik.com/apib\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n6kentik/network_class/v202109alpha1/network_class.proto\x12\"kentik.network_class.v202109alpha1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x18google/type/latlng.proto\x1a google/type/postal_address.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a+kentik/core/v202012alpha1/annotations.proto\"j\n\x0b\x43loudSubnet\x12\x41\n\x04type\x18\x01 \x01(\x0e\x32-.kentik.network_class.v202109alpha1.CloudTypeR\x04type\x12\x18\n\x07subnets\x18\x02 \x03(\tR\x07subnets\"\x86\x02\n\x0cNetworkClass\x12#\n\rinternal_asns\x18\x01 \x03(\tR\x0cinternalAsns\x12!\n\x0cinternal_ips\x18\x02 \x03(\tR\x0binternalIps\x12(\n\x10use_private_asns\x18\x03 \x01(\x08R\x0eusePrivateAsns\x12.\n\x13use_private_subnets\x18\x04 \x01(\x08R\x11usePrivateSubnets\x12T\n\rcloud_subnets\x18\x05 \x03(\x0b\x32/.kentik.network_class.v202109alpha1.CloudSubnetR\x0c\x63loudSubnets\"\x18\n\x16GetNetworkClassRequest\"p\n\x17GetNetworkClassResponse\x12U\n\rnetwork_class\x18\x01 \x01(\x0b\x32\x30.kentik.network_class.v202109alpha1.NetworkClassR\x0cnetworkClass\"r\n\x19UpdateNetworkClassRequest\x12U\n\rnetwork_class\x18\x01 \x01(\x0b\x32\x30.kentik.network_class.v202109alpha1.NetworkClassR\x0cnetworkClass\"s\n\x1aUpdateNetworkClassResponse\x12U\n\rnetwork_class\x18\x01 \x01(\x0b\x32\x30.kentik.network_class.v202109alpha1.NetworkClassR\x0cnetworkClass*y\n\tCloudType\x12\x1a\n\x16\x43LOUD_TYPE_UNSPECIFIED\x10\x00\x12\x12\n\x0e\x43LOUD_TYPE_AWS\x10\x01\x12\x14\n\x10\x43LOUD_TYPE_AZURE\x10\x02\x12\x12\n\x0e\x43LOUD_TYPE_GCE\x10\x03\x12\x12\n\x0e\x43LOUD_TYPE_IBM\x10\x04\x32\x86\x06\n\x13NetworkClassService\x12\xd3\x02\n\x0fGetNetworkClass\x12:.kentik.network_class.v202109alpha1.GetNetworkClassRequest\x1a;.kentik.network_class.v202109alpha1.GetNetworkClassResponse\"\xc6\x01\x92\x41u\x12\x1dGet a network classification.\x1a\x43Returns information about a network classification for the company.*\x0fNetworkClassGet\xf2\xd7\x02\x18\x61\x64min.network_class:read\x82\xd3\xe4\x93\x02,\x12*/network_class/v202109alpha1/network_class\x12\xe9\x02\n\x12UpdateNetworkClass\x12=.kentik.network_class.v202109alpha1.UpdateNetworkClassRequest\x1a>.kentik.network_class.v202109alpha1.UpdateNetworkClassResponse\"\xd3\x01\x92\x41~\x12 Update a network classification.\x1a\x46Replaces the entire network classification attributes for the company.*\x12NetworkClassUpdate\xf2\xd7\x02\x19\x61\x64min.network_class:write\x82\xd3\xe4\x93\x02/\"*/network_class/v202109alpha1/network_class:\x01*\x1a-\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\x13\x61\x64min.network_classB\xdc\x02ZTgithub.com/kentik/api-schema/gen/go/kentik/network_class/v202109alpha1;network_class\x92\x41\x82\x02\x12\x44\n\x1aNetwork Classification API\"\x18\n\x16Kentik API Engineering2\x0c\x32\x30\x32\x31\x30\x39\x61lpha1*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r5\n\x16More about Kentik APIs\x12\x1bhttps://docs.kentik.com/apib\x06proto3')
 
 _CLOUDTYPE = DESCRIPTOR.enum_types_by_name['CloudType']
 CloudType = enum_type_wrapper.EnumTypeWrapper(_CLOUDTYPE)
@@ -88,23 +88,23 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _NETWORKCLASSSERVICE._options = None
   _NETWORKCLASSSERVICE._serialized_options = b'\312A\023grpc.api.kentik.com\352\327\002\023admin.network_class'
   _NETWORKCLASSSERVICE.methods_by_name['GetNetworkClass']._options = None
-  _NETWORKCLASSSERVICE.methods_by_name['GetNetworkClass']._serialized_options = b'\362\327\002\030admin.network_class:read\202\323\344\223\002,\022*/network_class/v202109alpha1/network_class\222Au\022\035Get a network classification.\032CReturns information about a network classification for the company.*\017NetworkClassGet'
+  _NETWORKCLASSSERVICE.methods_by_name['GetNetworkClass']._serialized_options = b'\222Au\022\035Get a network classification.\032CReturns information about a network classification for the company.*\017NetworkClassGet\362\327\002\030admin.network_class:read\202\323\344\223\002,\022*/network_class/v202109alpha1/network_class'
   _NETWORKCLASSSERVICE.methods_by_name['UpdateNetworkClass']._options = None
-  _NETWORKCLASSSERVICE.methods_by_name['UpdateNetworkClass']._serialized_options = b'\362\327\002\031admin.network_class:write\202\323\344\223\002/\"*/network_class/v202109alpha1/network_class:\001*\222A~\022 Update a network classification.\032FReplaces the entire network classification attributes for the company.*\022NetworkClassUpdate'
-  _CLOUDTYPE._serialized_start=915
-  _CLOUDTYPE._serialized_end=1036
+  _NETWORKCLASSSERVICE.methods_by_name['UpdateNetworkClass']._serialized_options = b'\222A~\022 Update a network classification.\032FReplaces the entire network classification attributes for the company.*\022NetworkClassUpdate\362\327\002\031admin.network_class:write\202\323\344\223\002/\"*/network_class/v202109alpha1/network_class:\001*'
+  _CLOUDTYPE._serialized_start=1048
+  _CLOUDTYPE._serialized_end=1169
   _CLOUDSUBNET._serialized_start=302
-  _CLOUDSUBNET._serialized_end=393
-  _NETWORKCLASS._serialized_start=396
-  _NETWORKCLASS._serialized_end=582
-  _GETNETWORKCLASSREQUEST._serialized_start=584
-  _GETNETWORKCLASSREQUEST._serialized_end=608
-  _GETNETWORKCLASSRESPONSE._serialized_start=610
-  _GETNETWORKCLASSRESPONSE._serialized_end=708
-  _UPDATENETWORKCLASSREQUEST._serialized_start=710
-  _UPDATENETWORKCLASSREQUEST._serialized_end=810
-  _UPDATENETWORKCLASSRESPONSE._serialized_start=812
-  _UPDATENETWORKCLASSRESPONSE._serialized_end=913
-  _NETWORKCLASSSERVICE._serialized_start=1039
-  _NETWORKCLASSSERVICE._serialized_end=1813
+  _CLOUDSUBNET._serialized_end=408
+  _NETWORKCLASS._serialized_start=411
+  _NETWORKCLASS._serialized_end=673
+  _GETNETWORKCLASSREQUEST._serialized_start=675
+  _GETNETWORKCLASSREQUEST._serialized_end=699
+  _GETNETWORKCLASSRESPONSE._serialized_start=701
+  _GETNETWORKCLASSRESPONSE._serialized_end=813
+  _UPDATENETWORKCLASSREQUEST._serialized_start=815
+  _UPDATENETWORKCLASSREQUEST._serialized_end=929
+  _UPDATENETWORKCLASSRESPONSE._serialized_start=931
+  _UPDATENETWORKCLASSRESPONSE._serialized_end=1046
+  _NETWORKCLASSSERVICE._serialized_start=1172
+  _NETWORKCLASSSERVICE._serialized_end=1946
 # @@protoc_insertion_point(module_scope)

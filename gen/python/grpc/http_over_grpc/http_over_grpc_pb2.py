@@ -14,7 +14,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n(grpc/http_over_grpc/http_over_grpc.proto\x12\x13grpc.http_over_grpc\"%\n\x06Header\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0e\n\x06values\x18\x02 \x03(\t\"n\n\x13HTTPOverGRPCRequest\x12\x0e\n\x06method\x18\x01 \x01(\t\x12\x0b\n\x03url\x18\x02 \x01(\t\x12,\n\x07headers\x18\x03 \x03(\x0b\x32\x1b.grpc.http_over_grpc.Header\x12\x0c\n\x04\x62ody\x18\x04 \x01(\x0c\"_\n\x11HTTPOverGRPCReply\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12,\n\x07headers\x18\x02 \x03(\x0b\x32\x1b.grpc.http_over_grpc.Header\x12\x0c\n\x04\x62ody\x18\x03 \x01(\x0c\x32q\n\x0cHTTPOverGRPC\x12\x61\n\x0bHTTPRequest\x12(.grpc.http_over_grpc.HTTPOverGRPCRequest\x1a&.grpc.http_over_grpc.HTTPOverGRPCReply\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n(grpc/http_over_grpc/http_over_grpc.proto\x12\x13grpc.http_over_grpc\"2\n\x06Header\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x16\n\x06values\x18\x02 \x03(\tR\x06values\"\x8a\x01\n\x13HTTPOverGRPCRequest\x12\x16\n\x06method\x18\x01 \x01(\tR\x06method\x12\x10\n\x03url\x18\x02 \x01(\tR\x03url\x12\x35\n\x07headers\x18\x03 \x03(\x0b\x32\x1b.grpc.http_over_grpc.HeaderR\x07headers\x12\x12\n\x04\x62ody\x18\x04 \x01(\x0cR\x04\x62ody\"v\n\x11HTTPOverGRPCReply\x12\x16\n\x06status\x18\x01 \x01(\x05R\x06status\x12\x35\n\x07headers\x18\x02 \x03(\x0b\x32\x1b.grpc.http_over_grpc.HeaderR\x07headers\x12\x12\n\x04\x62ody\x18\x03 \x01(\x0cR\x04\x62ody2q\n\x0cHTTPOverGRPC\x12\x61\n\x0bHTTPRequest\x12(.grpc.http_over_grpc.HTTPOverGRPCRequest\x1a&.grpc.http_over_grpc.HTTPOverGRPCReply\"\x00\x62\x06proto3')
 
 
 
@@ -47,11 +47,11 @@ if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
   _HEADER._serialized_start=65
-  _HEADER._serialized_end=102
-  _HTTPOVERGRPCREQUEST._serialized_start=104
-  _HTTPOVERGRPCREQUEST._serialized_end=214
-  _HTTPOVERGRPCREPLY._serialized_start=216
-  _HTTPOVERGRPCREPLY._serialized_end=311
-  _HTTPOVERGRPC._serialized_start=313
-  _HTTPOVERGRPC._serialized_end=426
+  _HEADER._serialized_end=115
+  _HTTPOVERGRPCREQUEST._serialized_start=118
+  _HTTPOVERGRPCREQUEST._serialized_end=256
+  _HTTPOVERGRPCREPLY._serialized_start=258
+  _HTTPOVERGRPCREPLY._serialized_end=376
+  _HTTPOVERGRPC._serialized_start=378
+  _HTTPOVERGRPC._serialized_end=491
 # @@protoc_insertion_point(module_scope)

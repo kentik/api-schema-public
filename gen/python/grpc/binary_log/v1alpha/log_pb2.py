@@ -16,7 +16,7 @@ _sym_db = _symbol_database.Default()
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n!grpc/binary_log/v1alpha/log.proto\x12\x17grpc.binary_log.v1alpha\x1a\x1fgoogle/protobuf/timestamp.proto\"*\n\x0cKeyValuePair\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"\xc1\x05\n\x08Metadata\x12\x0e\n\x06rpc_id\x18\x01 \x01(\x04\x12-\n\ttimestamp\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x35\n\tdirection\x18\x03 \x01(\x0e\x32\".grpc.binary_log.v1alpha.Direction\x12\x37\n\x08metadata\x18\x04 \x03(\x0b\x32%.grpc.binary_log.v1alpha.KeyValuePair\x12Z\n\x17\x63lient_initial_metadata\x18\x05 \x01(\x0b\x32\x37.grpc.binary_log.v1alpha.Metadata.ClientInitialMetadataH\x00\x12?\n\tuser_data\x18\x06 \x01(\x0b\x32*.grpc.binary_log.v1alpha.Metadata.UserDataH\x00\x12Z\n\x17server_initial_metadata\x18\x07 \x01(\x0b\x32\x37.grpc.binary_log.v1alpha.Metadata.ServerInitialMetadataH\x00\x12G\n\rserver_status\x18\x08 \x01(\x0b\x32..grpc.binary_log.v1alpha.Metadata.ServerStatusH\x00\x1ah\n\x15\x43lientInitialMetadata\x12\x13\n\x0bmethod_name\x18\x01 \x01(\t\x12,\n\x08\x64\x65\x61\x64line\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x0c\n\x04peer\x18\x03 \x01(\t\x1a\n\n\x08UserData\x1a\x17\n\x15ServerInitialMetadata\x1a-\n\x0cServerStatus\x12\x0c\n\x04\x63ode\x18\x01 \x01(\r\x12\x0f\n\x07\x64\x65tails\x18\x02 \x01(\tB\x06\n\x04kind\"\x87\x01\n\x07Message\x12\x0e\n\x06rpc_id\x18\x01 \x01(\x04\x12\x17\n\x0fsequence_number\x18\x02 \x01(\r\x12\x35\n\tdirection\x18\x03 \x01(\x0e\x32\".grpc.binary_log.v1alpha.Direction\x12\x0e\n\x06length\x18\x04 \x01(\r\x12\x0c\n\x04\x64\x61ta\x18\x05 \x01(\x0c*O\n\tDirection\x12\x0f\n\x0bSERVER_SEND\x10\x00\x12\x0f\n\x0bSERVER_RECV\x10\x01\x12\x0f\n\x0b\x43LIENT_SEND\x10\x02\x12\x0f\n\x0b\x43LIENT_RECV\x10\x03\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n!grpc/binary_log/v1alpha/log.proto\x12\x17grpc.binary_log.v1alpha\x1a\x1fgoogle/protobuf/timestamp.proto\"6\n\x0cKeyValuePair\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n\x05value\x18\x02 \x01(\tR\x05value\"\xda\x06\n\x08Metadata\x12\x15\n\x06rpc_id\x18\x01 \x01(\x04R\x05rpcId\x12\x38\n\ttimestamp\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\ttimestamp\x12@\n\tdirection\x18\x03 \x01(\x0e\x32\".grpc.binary_log.v1alpha.DirectionR\tdirection\x12\x41\n\x08metadata\x18\x04 \x03(\x0b\x32%.grpc.binary_log.v1alpha.KeyValuePairR\x08metadata\x12q\n\x17\x63lient_initial_metadata\x18\x05 \x01(\x0b\x32\x37.grpc.binary_log.v1alpha.Metadata.ClientInitialMetadataH\x00R\x15\x63lientInitialMetadata\x12I\n\tuser_data\x18\x06 \x01(\x0b\x32*.grpc.binary_log.v1alpha.Metadata.UserDataH\x00R\x08userData\x12q\n\x17server_initial_metadata\x18\x07 \x01(\x0b\x32\x37.grpc.binary_log.v1alpha.Metadata.ServerInitialMetadataH\x00R\x15serverInitialMetadata\x12U\n\rserver_status\x18\x08 \x01(\x0b\x32..grpc.binary_log.v1alpha.Metadata.ServerStatusH\x00R\x0cserverStatus\x1a\x84\x01\n\x15\x43lientInitialMetadata\x12\x1f\n\x0bmethod_name\x18\x01 \x01(\tR\nmethodName\x12\x36\n\x08\x64\x65\x61\x64line\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x08\x64\x65\x61\x64line\x12\x12\n\x04peer\x18\x03 \x01(\tR\x04peer\x1a\n\n\x08UserData\x1a\x17\n\x15ServerInitialMetadata\x1a<\n\x0cServerStatus\x12\x12\n\x04\x63ode\x18\x01 \x01(\rR\x04\x63ode\x12\x18\n\x07\x64\x65tails\x18\x02 \x01(\tR\x07\x64\x65tailsB\x06\n\x04kind\"\xb7\x01\n\x07Message\x12\x15\n\x06rpc_id\x18\x01 \x01(\x04R\x05rpcId\x12\'\n\x0fsequence_number\x18\x02 \x01(\rR\x0esequenceNumber\x12@\n\tdirection\x18\x03 \x01(\x0e\x32\".grpc.binary_log.v1alpha.DirectionR\tdirection\x12\x16\n\x06length\x18\x04 \x01(\rR\x06length\x12\x12\n\x04\x64\x61ta\x18\x05 \x01(\x0cR\x04\x64\x61ta*O\n\tDirection\x12\x0f\n\x0bSERVER_SEND\x10\x00\x12\x0f\n\x0bSERVER_RECV\x10\x01\x12\x0f\n\x0b\x43LIENT_SEND\x10\x02\x12\x0f\n\x0b\x43LIENT_RECV\x10\x03\x62\x06proto3')
 
 _DIRECTION = DESCRIPTOR.enum_types_by_name['Direction']
 Direction = enum_type_wrapper.EnumTypeWrapper(_DIRECTION)
@@ -89,20 +89,20 @@ _sym_db.RegisterMessage(Message)
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  _DIRECTION._serialized_start=985
-  _DIRECTION._serialized_end=1064
+  _DIRECTION._serialized_start=1198
+  _DIRECTION._serialized_end=1277
   _KEYVALUEPAIR._serialized_start=95
-  _KEYVALUEPAIR._serialized_end=137
-  _METADATA._serialized_start=140
-  _METADATA._serialized_end=845
-  _METADATA_CLIENTINITIALMETADATA._serialized_start=649
-  _METADATA_CLIENTINITIALMETADATA._serialized_end=753
-  _METADATA_USERDATA._serialized_start=755
-  _METADATA_USERDATA._serialized_end=765
-  _METADATA_SERVERINITIALMETADATA._serialized_start=767
-  _METADATA_SERVERINITIALMETADATA._serialized_end=790
-  _METADATA_SERVERSTATUS._serialized_start=792
-  _METADATA_SERVERSTATUS._serialized_end=837
-  _MESSAGE._serialized_start=848
-  _MESSAGE._serialized_end=983
+  _KEYVALUEPAIR._serialized_end=149
+  _METADATA._serialized_start=152
+  _METADATA._serialized_end=1010
+  _METADATA_CLIENTINITIALMETADATA._serialized_start=771
+  _METADATA_CLIENTINITIALMETADATA._serialized_end=903
+  _METADATA_USERDATA._serialized_start=905
+  _METADATA_USERDATA._serialized_end=915
+  _METADATA_SERVERINITIALMETADATA._serialized_start=917
+  _METADATA_SERVERINITIALMETADATA._serialized_end=940
+  _METADATA_SERVERSTATUS._serialized_start=942
+  _METADATA_SERVERSTATUS._serialized_end=1002
+  _MESSAGE._serialized_start=1013
+  _MESSAGE._serialized_end=1196
 # @@protoc_insertion_point(module_scope)

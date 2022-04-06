@@ -205,7 +205,7 @@ message GetCloudExportResponse {
 
 message PatchCloudExportRequest {
   CloudExport export = 1;
-  // CSV values of fields follow the path of Export object with dot notation (ie. "export.name,export.description") 
+  // CSV values of fields follow the path of Export object with dot notation (ie. "export.name,export.description")
   google.protobuf.FieldMask mask = 2;
 }
 message PatchCloudExportResponse {

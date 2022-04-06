@@ -19,7 +19,7 @@ from kentik.core.v202012alpha1 import annotations_pb2 as kentik_dot_core_dot_v20
 from grpc.http_over_grpc import http_over_grpc_pb2 as grpc_dot_http__over__grpc_dot_http__over__grpc__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n,kentik/cloud_gw/v202103alpha1/cloud_gw.proto\x12\x1dkentik.cloud_gw.v202103alpha1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a+kentik/core/v202012alpha1/annotations.proto\x1a(grpc/http_over_grpc/http_over_grpc.proto\"B\n\x0fLoginAwsRequest\x12\x0e\n\x06region\x18\x01 \x01(\t\x12\x0c\n\x04role\x18\x02 \x01(\t\x12\x11\n\tcaller_id\x18\x03 \x01(\t\"\x12\n\x10LoginAwsResponse\"a\n\x0fProxyAwsRequest\x12\x0e\n\x06region\x18\x01 \x01(\t\x12>\n\x0chttp_request\x18\x03 \x01(\x0b\x32(.grpc.http_over_grpc.HTTPOverGRPCRequest\"Q\n\x10ProxyAwsResponse\x12=\n\rhttp_response\x18\x02 \x01(\x0b\x32&.grpc.http_over_grpc.HTTPOverGRPCReply\"\x15\n\x13ListAwsRolesRequest\"\xe0\x01\n\x14ListAwsRolesResponse\x12\x66\n\x13\x63id_region_to_roles\x18\x01 \x03(\x0b\x32I.kentik.cloud_gw.v202103alpha1.ListAwsRolesResponse.CidRegionToRolesEntry\x1a`\n\x15\x43idRegionToRolesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x36\n\x05value\x18\x02 \x01(\x0b\x32\'.kentik.cloud_gw.v202103alpha1.RoleList:\x02\x38\x01\"\x19\n\x08RoleList\x12\r\n\x05roles\x18\x01 \x03(\t\"2\n\rGetAwsRequest\x12\x0e\n\x06region\x18\x01 \x01(\t\x12\x11\n\tcaller_id\x18\x02 \x01(\t\"d\n\x0eGetAwsResponse\x12\x12\n\nrequest_id\x18\x01 \x01(\x03\x12>\n\x0chttp_request\x18\x02 \x01(\x0b\x32(.grpc.http_over_grpc.HTTPOverGRPCRequest\"c\n\x0eSendAwsRequest\x12\x12\n\nrequest_id\x18\x01 \x01(\x03\x12=\n\rhttp_response\x18\x02 \x01(\x0b\x32&.grpc.http_over_grpc.HTTPOverGRPCReply\"\x11\n\x0fSendAwsResponse\"%\n\x06Header\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0e\n\x06values\x18\x02 \x03(\t2\xc2\x03\n\x14\x41wsGwInternalService\x12\xba\x01\n\x08ProxyAws\x12..kentik.cloud_gw.v202103alpha1.ProxyAwsRequest\x1a/.kentik.cloud_gw.v202103alpha1.ProxyAwsResponse\"M\xf2\xd7\x02\x14\x61\x64min.cloud_gw:write\x82\xd3\xe4\x93\x02/\"*/cloud_gw/v202103alpha1/proxy_aws/{region}:\x01*\x12\xbe\x01\n\x0cListAwsRoles\x12\x32.kentik.cloud_gw.v202103alpha1.ListAwsRolesRequest\x1a\x33.kentik.cloud_gw.v202103alpha1.ListAwsRolesResponse\"E\xf2\xd7\x02\x13\x61\x64min.cloud_gw:read\x82\xd3\xe4\x93\x02(\x12&/cloud_gw/v202103alpha1/list_aws_roles\x1a,\xca\x41\x17\x63loud_gw.api.kentik.com\xea\xd7\x02\x0e\x61\x64min.cloud_gw2\xca\x04\n\x14\x41wsGwExternalService\x12\xb7\x01\n\x08LoginAws\x12..kentik.cloud_gw.v202103alpha1.LoginAwsRequest\x1a/.kentik.cloud_gw.v202103alpha1.LoginAwsResponse\"J\xf2\xd7\x02\x14\x61\x64min.cloud_gw:write\x82\xd3\xe4\x93\x02,\x12*/cloud_gw/v202103alpha1/login_aws/{region}\x12\xa6\x01\n\x06GetAws\x12,.kentik.cloud_gw.v202103alpha1.GetAwsRequest\x1a-.kentik.cloud_gw.v202103alpha1.GetAwsResponse\"?\xf2\xd7\x02\x14\x61\x64min.cloud_gw:write\x82\xd3\xe4\x93\x02!\x12\x1f/cloud_gw/v202103alpha1/get_aws\x12\xba\x01\n\x07SendAws\x12-.kentik.cloud_gw.v202103alpha1.SendAwsRequest\x1a..kentik.cloud_gw.v202103alpha1.SendAwsResponse\"P\xf2\xd7\x02\x14\x61\x64min.cloud_gw:write\x82\xd3\xe4\x93\x02\x32\"-/cloud_gw/v202103alpha1/send_aws/{request_id}:\x01*\x1a\x12\xea\xd7\x02\x0e\x61\x64min.cloud_gwB\xe2\x02ZIgithub.com/kentik/api-schema/gen/go/kentik/cloud_gw/v202103alpha1;cloudgw\x92\x41\x93\x02\x12U\n\x0c\x43LOUD GW API\"7\n\x16Kentik API Engineering\x12\x1dhttps://github.com/kentik/api2\x0c\x32\x30\x32\x31\x30\x33\x61lpha1*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r5\n\x16More about Kentik APIs\x12\x1bhttps://docs.kentik.com/apib\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n,kentik/cloud_gw/v202103alpha1/cloud_gw.proto\x12\x1dkentik.cloud_gw.v202103alpha1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a+kentik/core/v202012alpha1/annotations.proto\x1a(grpc/http_over_grpc/http_over_grpc.proto\"Z\n\x0fLoginAwsRequest\x12\x16\n\x06region\x18\x01 \x01(\tR\x06region\x12\x12\n\x04role\x18\x02 \x01(\tR\x04role\x12\x1b\n\tcaller_id\x18\x03 \x01(\tR\x08\x63\x61llerId\"\x12\n\x10LoginAwsResponse\"v\n\x0fProxyAwsRequest\x12\x16\n\x06region\x18\x01 \x01(\tR\x06region\x12K\n\x0chttp_request\x18\x03 \x01(\x0b\x32(.grpc.http_over_grpc.HTTPOverGRPCRequestR\x0bhttpRequest\"_\n\x10ProxyAwsResponse\x12K\n\rhttp_response\x18\x02 \x01(\x0b\x32&.grpc.http_over_grpc.HTTPOverGRPCReplyR\x0chttpResponse\"\x15\n\x13ListAwsRolesRequest\"\xfe\x01\n\x14ListAwsRolesResponse\x12x\n\x13\x63id_region_to_roles\x18\x01 \x03(\x0b\x32I.kentik.cloud_gw.v202103alpha1.ListAwsRolesResponse.CidRegionToRolesEntryR\x10\x63idRegionToRoles\x1al\n\x15\x43idRegionToRolesEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12=\n\x05value\x18\x02 \x01(\x0b\x32\'.kentik.cloud_gw.v202103alpha1.RoleListR\x05value:\x02\x38\x01\" \n\x08RoleList\x12\x14\n\x05roles\x18\x01 \x03(\tR\x05roles\"D\n\rGetAwsRequest\x12\x16\n\x06region\x18\x01 \x01(\tR\x06region\x12\x1b\n\tcaller_id\x18\x02 \x01(\tR\x08\x63\x61llerId\"|\n\x0eGetAwsResponse\x12\x1d\n\nrequest_id\x18\x01 \x01(\x03R\trequestId\x12K\n\x0chttp_request\x18\x02 \x01(\x0b\x32(.grpc.http_over_grpc.HTTPOverGRPCRequestR\x0bhttpRequest\"|\n\x0eSendAwsRequest\x12\x1d\n\nrequest_id\x18\x01 \x01(\x03R\trequestId\x12K\n\rhttp_response\x18\x02 \x01(\x0b\x32&.grpc.http_over_grpc.HTTPOverGRPCReplyR\x0chttpResponse\"\x11\n\x0fSendAwsResponse\"2\n\x06Header\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x16\n\x06values\x18\x02 \x03(\tR\x06values2\xc2\x03\n\x14\x41wsGwInternalService\x12\xba\x01\n\x08ProxyAws\x12..kentik.cloud_gw.v202103alpha1.ProxyAwsRequest\x1a/.kentik.cloud_gw.v202103alpha1.ProxyAwsResponse\"M\xf2\xd7\x02\x14\x61\x64min.cloud_gw:write\x82\xd3\xe4\x93\x02/\"*/cloud_gw/v202103alpha1/proxy_aws/{region}:\x01*\x12\xbe\x01\n\x0cListAwsRoles\x12\x32.kentik.cloud_gw.v202103alpha1.ListAwsRolesRequest\x1a\x33.kentik.cloud_gw.v202103alpha1.ListAwsRolesResponse\"E\xf2\xd7\x02\x13\x61\x64min.cloud_gw:read\x82\xd3\xe4\x93\x02(\x12&/cloud_gw/v202103alpha1/list_aws_roles\x1a,\xca\x41\x17\x63loud_gw.api.kentik.com\xea\xd7\x02\x0e\x61\x64min.cloud_gw2\xca\x04\n\x14\x41wsGwExternalService\x12\xb7\x01\n\x08LoginAws\x12..kentik.cloud_gw.v202103alpha1.LoginAwsRequest\x1a/.kentik.cloud_gw.v202103alpha1.LoginAwsResponse\"J\xf2\xd7\x02\x14\x61\x64min.cloud_gw:write\x82\xd3\xe4\x93\x02,\x12*/cloud_gw/v202103alpha1/login_aws/{region}\x12\xa6\x01\n\x06GetAws\x12,.kentik.cloud_gw.v202103alpha1.GetAwsRequest\x1a-.kentik.cloud_gw.v202103alpha1.GetAwsResponse\"?\xf2\xd7\x02\x14\x61\x64min.cloud_gw:write\x82\xd3\xe4\x93\x02!\x12\x1f/cloud_gw/v202103alpha1/get_aws\x12\xba\x01\n\x07SendAws\x12-.kentik.cloud_gw.v202103alpha1.SendAwsRequest\x1a..kentik.cloud_gw.v202103alpha1.SendAwsResponse\"P\xf2\xd7\x02\x14\x61\x64min.cloud_gw:write\x82\xd3\xe4\x93\x02\x32\"-/cloud_gw/v202103alpha1/send_aws/{request_id}:\x01*\x1a\x12\xea\xd7\x02\x0e\x61\x64min.cloud_gwB\xe2\x02ZIgithub.com/kentik/api-schema/gen/go/kentik/cloud_gw/v202103alpha1;cloudgw\x92\x41\x93\x02\x12U\n\x0c\x43LOUD GW API\"7\n\x16Kentik API Engineering\x12\x1dhttps://github.com/kentik/api2\x0c\x32\x30\x32\x31\x30\x33\x61lpha1*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r5\n\x16More about Kentik APIs\x12\x1bhttps://docs.kentik.com/apib\x06proto3')
 
 
 
@@ -151,33 +151,33 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _AWSGWEXTERNALSERVICE.methods_by_name['SendAws']._options = None
   _AWSGWEXTERNALSERVICE.methods_by_name['SendAws']._serialized_options = b'\362\327\002\024admin.cloud_gw:write\202\323\344\223\0022\"-/cloud_gw/v202103alpha1/send_aws/{request_id}:\001*'
   _LOGINAWSREQUEST._serialized_start=269
-  _LOGINAWSREQUEST._serialized_end=335
-  _LOGINAWSRESPONSE._serialized_start=337
-  _LOGINAWSRESPONSE._serialized_end=355
-  _PROXYAWSREQUEST._serialized_start=357
-  _PROXYAWSREQUEST._serialized_end=454
-  _PROXYAWSRESPONSE._serialized_start=456
-  _PROXYAWSRESPONSE._serialized_end=537
-  _LISTAWSROLESREQUEST._serialized_start=539
-  _LISTAWSROLESREQUEST._serialized_end=560
-  _LISTAWSROLESRESPONSE._serialized_start=563
-  _LISTAWSROLESRESPONSE._serialized_end=787
-  _LISTAWSROLESRESPONSE_CIDREGIONTOROLESENTRY._serialized_start=691
-  _LISTAWSROLESRESPONSE_CIDREGIONTOROLESENTRY._serialized_end=787
-  _ROLELIST._serialized_start=789
-  _ROLELIST._serialized_end=814
-  _GETAWSREQUEST._serialized_start=816
-  _GETAWSREQUEST._serialized_end=866
-  _GETAWSRESPONSE._serialized_start=868
-  _GETAWSRESPONSE._serialized_end=968
-  _SENDAWSREQUEST._serialized_start=970
-  _SENDAWSREQUEST._serialized_end=1069
-  _SENDAWSRESPONSE._serialized_start=1071
-  _SENDAWSRESPONSE._serialized_end=1088
-  _HEADER._serialized_start=1090
-  _HEADER._serialized_end=1127
-  _AWSGWINTERNALSERVICE._serialized_start=1130
-  _AWSGWINTERNALSERVICE._serialized_end=1580
-  _AWSGWEXTERNALSERVICE._serialized_start=1583
-  _AWSGWEXTERNALSERVICE._serialized_end=2169
+  _LOGINAWSREQUEST._serialized_end=359
+  _LOGINAWSRESPONSE._serialized_start=361
+  _LOGINAWSRESPONSE._serialized_end=379
+  _PROXYAWSREQUEST._serialized_start=381
+  _PROXYAWSREQUEST._serialized_end=499
+  _PROXYAWSRESPONSE._serialized_start=501
+  _PROXYAWSRESPONSE._serialized_end=596
+  _LISTAWSROLESREQUEST._serialized_start=598
+  _LISTAWSROLESREQUEST._serialized_end=619
+  _LISTAWSROLESRESPONSE._serialized_start=622
+  _LISTAWSROLESRESPONSE._serialized_end=876
+  _LISTAWSROLESRESPONSE_CIDREGIONTOROLESENTRY._serialized_start=768
+  _LISTAWSROLESRESPONSE_CIDREGIONTOROLESENTRY._serialized_end=876
+  _ROLELIST._serialized_start=878
+  _ROLELIST._serialized_end=910
+  _GETAWSREQUEST._serialized_start=912
+  _GETAWSREQUEST._serialized_end=980
+  _GETAWSRESPONSE._serialized_start=982
+  _GETAWSRESPONSE._serialized_end=1106
+  _SENDAWSREQUEST._serialized_start=1108
+  _SENDAWSREQUEST._serialized_end=1232
+  _SENDAWSRESPONSE._serialized_start=1234
+  _SENDAWSRESPONSE._serialized_end=1251
+  _HEADER._serialized_start=1253
+  _HEADER._serialized_end=1303
+  _AWSGWINTERNALSERVICE._serialized_start=1306
+  _AWSGWINTERNALSERVICE._serialized_end=1756
+  _AWSGWEXTERNALSERVICE._serialized_start=1759
+  _AWSGWEXTERNALSERVICE._serialized_end=2345
 # @@protoc_insertion_point(module_scope)

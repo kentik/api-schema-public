@@ -15,7 +15,7 @@ _sym_db = _symbol_database.Default()
 from google.protobuf import descriptor_pb2 as google_dot_protobuf_dot_descriptor__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n+kentik/core/v202012alpha1/annotations.proto\x12\x19kentik.core.v202012alpha1\x1a google/protobuf/descriptor.proto:7\n\rservice_scope\x12\x1f.google.protobuf.ServiceOptions\x18\xfd* \x01(\t:9\n\x0fprivate_service\x12\x1f.google.protobuf.ServiceOptions\x18\xff* \x01(\x08:5\n\x0cmethod_scope\x12\x1e.google.protobuf.MethodOptions\x18\xfe* \x01(\t:7\n\x0eprivate_method\x12\x1e.google.protobuf.MethodOptions\x18\x80+ \x01(\x08\x42JZHgithub.com/kentik/api-schema/gen/go/kentik/core/v202012alpha1;kentik_apib\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n+kentik/core/v202012alpha1/annotations.proto\x12\x19kentik.core.v202012alpha1\x1a google/protobuf/descriptor.proto:E\n\rservice_scope\x12\x1f.google.protobuf.ServiceOptions\x18\xfd* \x01(\tR\x0cserviceScope:I\n\x0fprivate_service\x12\x1f.google.protobuf.ServiceOptions\x18\xff* \x01(\x08R\x0eprivateService:B\n\x0cmethod_scope\x12\x1e.google.protobuf.MethodOptions\x18\xfe* \x01(\tR\x0bmethodScope:F\n\x0eprivate_method\x12\x1e.google.protobuf.MethodOptions\x18\x80+ \x01(\x08R\rprivateMethodBJZHgithub.com/kentik/api-schema/gen/go/kentik/core/v202012alpha1;kentik_apib\x06proto3')
 
 
 SERVICE_SCOPE_FIELD_NUMBER = 5501

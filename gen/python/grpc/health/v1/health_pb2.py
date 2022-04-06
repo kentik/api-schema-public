@@ -14,7 +14,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1bgrpc/health/v1/health.proto\x12\x0egrpc.health.v1\"%\n\x12HealthCheckRequest\x12\x0f\n\x07service\x18\x01 \x01(\t\"\xa9\x01\n\x13HealthCheckResponse\x12\x41\n\x06status\x18\x01 \x01(\x0e\x32\x31.grpc.health.v1.HealthCheckResponse.ServingStatus\"O\n\rServingStatus\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x0b\n\x07SERVING\x10\x01\x12\x0f\n\x0bNOT_SERVING\x10\x02\x12\x13\n\x0fSERVICE_UNKNOWN\x10\x03\x32\xae\x01\n\x06Health\x12P\n\x05\x43heck\x12\".grpc.health.v1.HealthCheckRequest\x1a#.grpc.health.v1.HealthCheckResponse\x12R\n\x05Watch\x12\".grpc.health.v1.HealthCheckRequest\x1a#.grpc.health.v1.HealthCheckResponse0\x01\x42\x61\n\x11io.grpc.health.v1B\x0bHealthProtoP\x01Z,google.golang.org/grpc/health/grpc_health_v1\xaa\x02\x0eGrpc.Health.V1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1bgrpc/health/v1/health.proto\x12\x0egrpc.health.v1\".\n\x12HealthCheckRequest\x12\x18\n\x07service\x18\x01 \x01(\tR\x07service\"\xb1\x01\n\x13HealthCheckResponse\x12I\n\x06status\x18\x01 \x01(\x0e\x32\x31.grpc.health.v1.HealthCheckResponse.ServingStatusR\x06status\"O\n\rServingStatus\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x0b\n\x07SERVING\x10\x01\x12\x0f\n\x0bNOT_SERVING\x10\x02\x12\x13\n\x0fSERVICE_UNKNOWN\x10\x03\x32\xae\x01\n\x06Health\x12P\n\x05\x43heck\x12\".grpc.health.v1.HealthCheckRequest\x1a#.grpc.health.v1.HealthCheckResponse\x12R\n\x05Watch\x12\".grpc.health.v1.HealthCheckRequest\x1a#.grpc.health.v1.HealthCheckResponse0\x01\x42\x61\n\x11io.grpc.health.v1B\x0bHealthProtoP\x01Z,google.golang.org/grpc/health/grpc_health_v1\xaa\x02\x0eGrpc.Health.V1b\x06proto3')
 
 
 
@@ -41,11 +41,11 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   DESCRIPTOR._options = None
   DESCRIPTOR._serialized_options = b'\n\021io.grpc.health.v1B\013HealthProtoP\001Z,google.golang.org/grpc/health/grpc_health_v1\252\002\016Grpc.Health.V1'
   _HEALTHCHECKREQUEST._serialized_start=47
-  _HEALTHCHECKREQUEST._serialized_end=84
-  _HEALTHCHECKRESPONSE._serialized_start=87
-  _HEALTHCHECKRESPONSE._serialized_end=256
-  _HEALTHCHECKRESPONSE_SERVINGSTATUS._serialized_start=177
-  _HEALTHCHECKRESPONSE_SERVINGSTATUS._serialized_end=256
-  _HEALTH._serialized_start=259
-  _HEALTH._serialized_end=433
+  _HEALTHCHECKREQUEST._serialized_end=93
+  _HEALTHCHECKRESPONSE._serialized_start=96
+  _HEALTHCHECKRESPONSE._serialized_end=273
+  _HEALTHCHECKRESPONSE_SERVINGSTATUS._serialized_start=194
+  _HEALTHCHECKRESPONSE_SERVINGSTATUS._serialized_end=273
+  _HEALTH._serialized_start=276
+  _HEALTH._serialized_end=450
 # @@protoc_insertion_point(module_scope)

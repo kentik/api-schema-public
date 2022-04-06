@@ -14,7 +14,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x17google/type/money.proto\x12\x0bgoogle.type\"<\n\x05Money\x12\x15\n\rcurrency_code\x18\x01 \x01(\t\x12\r\n\x05units\x18\x02 \x01(\x03\x12\r\n\x05nanos\x18\x03 \x01(\x05\x42`\n\x0f\x63om.google.typeB\nMoneyProtoP\x01Z6google.golang.org/genproto/googleapis/type/money;money\xf8\x01\x01\xa2\x02\x03GTPb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x17google/type/money.proto\x12\x0bgoogle.type\"X\n\x05Money\x12#\n\rcurrency_code\x18\x01 \x01(\tR\x0c\x63urrencyCode\x12\x14\n\x05units\x18\x02 \x01(\x03R\x05units\x12\x14\n\x05nanos\x18\x03 \x01(\x05R\x05nanosB`\n\x0f\x63om.google.typeB\nMoneyProtoP\x01Z6google.golang.org/genproto/googleapis/type/money;money\xf8\x01\x01\xa2\x02\x03GTPb\x06proto3')
 
 
 
@@ -31,5 +31,5 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   DESCRIPTOR._options = None
   DESCRIPTOR._serialized_options = b'\n\017com.google.typeB\nMoneyProtoP\001Z6google.golang.org/genproto/googleapis/type/money;money\370\001\001\242\002\003GTP'
   _MONEY._serialized_start=40
-  _MONEY._serialized_end=100
+  _MONEY._serialized_end=128
 # @@protoc_insertion_point(module_scope)

@@ -15,7 +15,7 @@ _sym_db = _symbol_database.Default()
 from google.protobuf import duration_pb2 as google_dot_protobuf_dot_duration__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1egrpc/lb/v1/load_reporter.proto\x12\ngrpc.lb.v1\x1a\x1egoogle/protobuf/duration.proto\"R\n\x11LoadReportRequest\x12=\n\x0finitial_request\x18\x01 \x01(\x0b\x32$.grpc.lb.v1.InitialLoadReportRequest\"\x85\x01\n\x18InitialLoadReportRequest\x12\x1e\n\x16load_balanced_hostname\x18\x01 \x01(\t\x12\x10\n\x08load_key\x18\x02 \x01(\x0c\x12\x37\n\x14load_report_interval\x18\x03 \x01(\x0b\x32\x19.google.protobuf.Duration\"\xb9\x01\n\x12LoadReportResponse\x12?\n\x10initial_response\x18\x01 \x01(\x0b\x32%.grpc.lb.v1.InitialLoadReportResponse\x12\x42\n\x17load_balancing_feedback\x18\x02 \x01(\x0b\x32!.grpc.lb.v1.LoadBalancingFeedback\x12\x1e\n\x04load\x18\x03 \x03(\x0b\x32\x10.grpc.lb.v1.Load\"\xf5\x01\n\x19InitialLoadReportResponse\x12\x18\n\x10load_balancer_id\x18\x01 \x01(\t\x12Y\n\x11implementation_id\x18\x02 \x01(\x0e\x32>.grpc.lb.v1.InitialLoadReportResponse.ImplementationIdentifier\x12\x16\n\x0eserver_version\x18\x03 \x01(\x03\"K\n\x18ImplementationIdentifier\x12\x14\n\x10IMPL_UNSPECIFIED\x10\x00\x12\x07\n\x03\x43PP\x10\x01\x12\x08\n\x04JAVA\x10\x02\x12\x06\n\x02GO\x10\x03\"h\n\x15LoadBalancingFeedback\x12\x1a\n\x12server_utilization\x18\x01 \x01(\x02\x12\x18\n\x10\x63\x61lls_per_second\x18\x02 \x01(\x02\x12\x19\n\x11\x65rrors_per_second\x18\x03 \x01(\x02\"\xcb\x04\n\x04Load\x12\x18\n\x10load_balance_tag\x18\x01 \x01(\t\x12\x0f\n\x07user_id\x18\x03 \x01(\t\x12\x19\n\x11\x63lient_ip_address\x18\x0f \x01(\x0c\x12\x19\n\x11num_calls_started\x18\x04 \x01(\x03\x12\x1f\n\x15num_calls_in_progress\x18\x05 \x01(\x03H\x00\x12(\n num_calls_finished_without_error\x18\x06 \x01(\x03\x12%\n\x1dnum_calls_finished_with_error\x18\x07 \x01(\x03\x12,\n$num_calls_finished_with_server_error\x18\x10 \x01(\x03\x12\x18\n\x10total_bytes_sent\x18\x08 \x01(\x03\x12\x1c\n\x14total_bytes_received\x18\t \x01(\x03\x12\x30\n\rtotal_latency\x18\n \x01(\x0b\x32\x19.google.protobuf.Duration\x12/\n\x0bmetric_data\x18\x0b \x03(\x0b\x32\x1a.grpc.lb.v1.CallMetricData\x12\x16\n\x08load_key\x18\x0c \x01(\x0c\x42\x02\x18\x01H\x01\x12\x1a\n\x10load_key_unknown\x18\r \x01(\x08H\x01\x12\x46\n\x18orphaned_load_identifier\x18\x0e \x01(\x0b\x32\".grpc.lb.v1.OrphanedLoadIdentifierH\x01\x42\x14\n\x12in_progress_reportB\x0f\n\rorphaned_loadJ\x04\x08\x02\x10\x03\"i\n\x0e\x43\x61llMetricData\x12\x13\n\x0bmetric_name\x18\x01 \x01(\t\x12&\n\x1enum_calls_finished_with_metric\x18\x02 \x01(\x03\x12\x1a\n\x12total_metric_value\x18\x03 \x01(\x01\"D\n\x16OrphanedLoadIdentifier\x12\x10\n\x08load_key\x18\x01 \x01(\x0c\x12\x18\n\x10load_balancer_id\x18\x02 \x01(\t2a\n\x0cLoadReporter\x12Q\n\nReportLoad\x12\x1d.grpc.lb.v1.LoadReportRequest\x1a\x1e.grpc.lb.v1.LoadReportResponse\"\x00(\x01\x30\x01\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1egrpc/lb/v1/load_reporter.proto\x12\ngrpc.lb.v1\x1a\x1egoogle/protobuf/duration.proto\"b\n\x11LoadReportRequest\x12M\n\x0finitial_request\x18\x01 \x01(\x0b\x32$.grpc.lb.v1.InitialLoadReportRequestR\x0einitialRequest\"\xb8\x01\n\x18InitialLoadReportRequest\x12\x34\n\x16load_balanced_hostname\x18\x01 \x01(\tR\x14loadBalancedHostname\x12\x19\n\x08load_key\x18\x02 \x01(\x0cR\x07loadKey\x12K\n\x14load_report_interval\x18\x03 \x01(\x0b\x32\x19.google.protobuf.DurationR\x12loadReportInterval\"\xe7\x01\n\x12LoadReportResponse\x12P\n\x10initial_response\x18\x01 \x01(\x0b\x32%.grpc.lb.v1.InitialLoadReportResponseR\x0finitialResponse\x12Y\n\x17load_balancing_feedback\x18\x02 \x01(\x0b\x32!.grpc.lb.v1.LoadBalancingFeedbackR\x15loadBalancingFeedback\x12$\n\x04load\x18\x03 \x03(\x0b\x32\x10.grpc.lb.v1.LoadR\x04load\"\xa6\x02\n\x19InitialLoadReportResponse\x12(\n\x10load_balancer_id\x18\x01 \x01(\tR\x0eloadBalancerId\x12k\n\x11implementation_id\x18\x02 \x01(\x0e\x32>.grpc.lb.v1.InitialLoadReportResponse.ImplementationIdentifierR\x10implementationId\x12%\n\x0eserver_version\x18\x03 \x01(\x03R\rserverVersion\"K\n\x18ImplementationIdentifier\x12\x14\n\x10IMPL_UNSPECIFIED\x10\x00\x12\x07\n\x03\x43PP\x10\x01\x12\x08\n\x04JAVA\x10\x02\x12\x06\n\x02GO\x10\x03\"\x9c\x01\n\x15LoadBalancingFeedback\x12-\n\x12server_utilization\x18\x01 \x01(\x02R\x11serverUtilization\x12(\n\x10\x63\x61lls_per_second\x18\x02 \x01(\x02R\x0e\x63\x61llsPerSecond\x12*\n\x11\x65rrors_per_second\x18\x03 \x01(\x02R\x0f\x65rrorsPerSecond\"\xe2\x06\n\x04Load\x12(\n\x10load_balance_tag\x18\x01 \x01(\tR\x0eloadBalanceTag\x12\x17\n\x07user_id\x18\x03 \x01(\tR\x06userId\x12*\n\x11\x63lient_ip_address\x18\x0f \x01(\x0cR\x0f\x63lientIpAddress\x12*\n\x11num_calls_started\x18\x04 \x01(\x03R\x0fnumCallsStarted\x12\x33\n\x15num_calls_in_progress\x18\x05 \x01(\x03H\x00R\x12numCallsInProgress\x12\x46\n num_calls_finished_without_error\x18\x06 \x01(\x03R\x1cnumCallsFinishedWithoutError\x12@\n\x1dnum_calls_finished_with_error\x18\x07 \x01(\x03R\x19numCallsFinishedWithError\x12M\n$num_calls_finished_with_server_error\x18\x10 \x01(\x03R\x1fnumCallsFinishedWithServerError\x12(\n\x10total_bytes_sent\x18\x08 \x01(\x03R\x0etotalBytesSent\x12\x30\n\x14total_bytes_received\x18\t \x01(\x03R\x12totalBytesReceived\x12>\n\rtotal_latency\x18\n \x01(\x0b\x32\x19.google.protobuf.DurationR\x0ctotalLatency\x12;\n\x0bmetric_data\x18\x0b \x03(\x0b\x32\x1a.grpc.lb.v1.CallMetricDataR\nmetricData\x12\x1f\n\x08load_key\x18\x0c \x01(\x0c\x42\x02\x18\x01H\x01R\x07loadKey\x12*\n\x10load_key_unknown\x18\r \x01(\x08H\x01R\x0eloadKeyUnknown\x12^\n\x18orphaned_load_identifier\x18\x0e \x01(\x0b\x32\".grpc.lb.v1.OrphanedLoadIdentifierH\x01R\x16orphanedLoadIdentifierB\x14\n\x12in_progress_reportB\x0f\n\rorphaned_loadJ\x04\x08\x02\x10\x03\"\xa3\x01\n\x0e\x43\x61llMetricData\x12\x1f\n\x0bmetric_name\x18\x01 \x01(\tR\nmetricName\x12\x42\n\x1enum_calls_finished_with_metric\x18\x02 \x01(\x03R\x1anumCallsFinishedWithMetric\x12,\n\x12total_metric_value\x18\x03 \x01(\x01R\x10totalMetricValue\"]\n\x16OrphanedLoadIdentifier\x12\x19\n\x08load_key\x18\x01 \x01(\x0cR\x07loadKey\x12(\n\x10load_balancer_id\x18\x02 \x01(\tR\x0eloadBalancerId2a\n\x0cLoadReporter\x12Q\n\nReportLoad\x12\x1d.grpc.lb.v1.LoadReportRequest\x1a\x1e.grpc.lb.v1.LoadReportResponse\"\x00(\x01\x30\x01\x62\x06proto3')
 
 
 
@@ -91,23 +91,23 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _LOAD.fields_by_name['load_key']._options = None
   _LOAD.fields_by_name['load_key']._serialized_options = b'\030\001'
   _LOADREPORTREQUEST._serialized_start=78
-  _LOADREPORTREQUEST._serialized_end=160
-  _INITIALLOADREPORTREQUEST._serialized_start=163
-  _INITIALLOADREPORTREQUEST._serialized_end=296
-  _LOADREPORTRESPONSE._serialized_start=299
-  _LOADREPORTRESPONSE._serialized_end=484
-  _INITIALLOADREPORTRESPONSE._serialized_start=487
-  _INITIALLOADREPORTRESPONSE._serialized_end=732
-  _INITIALLOADREPORTRESPONSE_IMPLEMENTATIONIDENTIFIER._serialized_start=657
-  _INITIALLOADREPORTRESPONSE_IMPLEMENTATIONIDENTIFIER._serialized_end=732
-  _LOADBALANCINGFEEDBACK._serialized_start=734
-  _LOADBALANCINGFEEDBACK._serialized_end=838
-  _LOAD._serialized_start=841
-  _LOAD._serialized_end=1428
-  _CALLMETRICDATA._serialized_start=1430
-  _CALLMETRICDATA._serialized_end=1535
-  _ORPHANEDLOADIDENTIFIER._serialized_start=1537
-  _ORPHANEDLOADIDENTIFIER._serialized_end=1605
-  _LOADREPORTER._serialized_start=1607
-  _LOADREPORTER._serialized_end=1704
+  _LOADREPORTREQUEST._serialized_end=176
+  _INITIALLOADREPORTREQUEST._serialized_start=179
+  _INITIALLOADREPORTREQUEST._serialized_end=363
+  _LOADREPORTRESPONSE._serialized_start=366
+  _LOADREPORTRESPONSE._serialized_end=597
+  _INITIALLOADREPORTRESPONSE._serialized_start=600
+  _INITIALLOADREPORTRESPONSE._serialized_end=894
+  _INITIALLOADREPORTRESPONSE_IMPLEMENTATIONIDENTIFIER._serialized_start=819
+  _INITIALLOADREPORTRESPONSE_IMPLEMENTATIONIDENTIFIER._serialized_end=894
+  _LOADBALANCINGFEEDBACK._serialized_start=897
+  _LOADBALANCINGFEEDBACK._serialized_end=1053
+  _LOAD._serialized_start=1056
+  _LOAD._serialized_end=1922
+  _CALLMETRICDATA._serialized_start=1925
+  _CALLMETRICDATA._serialized_end=2088
+  _ORPHANEDLOADIDENTIFIER._serialized_start=2090
+  _ORPHANEDLOADIDENTIFIER._serialized_end=2183
+  _LOADREPORTER._serialized_start=2185
+  _LOADREPORTER._serialized_end=2282
 # @@protoc_insertion_point(module_scope)
