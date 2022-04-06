@@ -20,7 +20,7 @@ from protoc_gen_openapiv2.options import annotations_pb2 as protoc__gen__openapi
 from kentik.core.v202012alpha1 import annotations_pb2 as kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n$kentik/user/v202106alpha1/user.proto\x12\x19kentik.user.v202106alpha1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a+kentik/core/v202012alpha1/annotations.proto\"\x93\x02\n\x04User\x12\n\n\x02id\x18\x01 \x01(\t\x12\x12\n\nuser_email\x18\x02 \x01(\t\x12\x10\n\x08username\x18\x03 \x01(\t\x12\x16\n\x0euser_full_name\x18\x04 \x01(\t\x12-\n\x04role\x18\x05 \x01(\x0e\x32\x1f.kentik.user.v202106alpha1.Role\x12.\n\nlast_login\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x30\n\x0c\x63reated_date\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x30\n\x0cupdated_date\x18\x08 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x11\n\x0fListUserRequest\"Y\n\x10ListUserResponse\x12.\n\x05users\x18\x01 \x03(\x0b\x32\x1f.kentik.user.v202106alpha1.User\x12\x15\n\rinvalid_count\x18\x02 \x01(\r\"\x1c\n\x0eGetUserRequest\x12\n\n\x02id\x18\x01 \x01(\t\"@\n\x0fGetUserResponse\x12-\n\x04user\x18\x01 \x01(\x0b\x32\x1f.kentik.user.v202106alpha1.User\"B\n\x11\x43reateUserRequest\x12-\n\x04user\x18\x01 \x01(\x0b\x32\x1f.kentik.user.v202106alpha1.User\"C\n\x12\x43reateUserResponse\x12-\n\x04user\x18\x01 \x01(\x0b\x32\x1f.kentik.user.v202106alpha1.User\"B\n\x11UpdateUserRequest\x12-\n\x04user\x18\x01 \x01(\x0b\x32\x1f.kentik.user.v202106alpha1.User\"C\n\x12UpdateUserResponse\x12-\n\x04user\x18\x01 \x01(\x0b\x32\x1f.kentik.user.v202106alpha1.User\"\x1f\n\x11\x44\x65leteUserRequest\x12\n\n\x02id\x18\x01 \x01(\t\"\x14\n\x12\x44\x65leteUserResponse*\xb7\x01\n\x07Landing\x12\x17\n\x13LANDING_UNSPECIFIED\x10\x00\x12\x1c\n\x18LANDING_OBSERVATION_DECK\x10\x01\x12\x1c\n\x18LANDING_NETWORK_EXPLORER\x10\x02\x12\x13\n\x0fLANDING_LIBRARY\x10\x03\x12\x14\n\x10LANDING_EXPLORER\x10\x04\x12\x14\n\x10LANDING_ALERTING\x10\x05\x12\x16\n\x12LANDING_SYNTHETICS\x10\x06*c\n\x04Role\x12\x14\n\x10ROLE_UNSPECIFIED\x10\x00\x12\x0f\n\x0bROLE_MEMBER\x10\x01\x12\x16\n\x12ROLE_ADMINISTRATOR\x10\x02\x12\x1c\n\x18ROLE_SUPER_ADMINISTRATOR\x10\x03\x32\xa7\n\n\x0bUserService\x12\xd5\x01\n\x08ListUser\x12*.kentik.user.v202106alpha1.ListUserRequest\x1a+.kentik.user.v202106alpha1.ListUserResponse\"p\xf2\xd7\x02\x0f\x61\x64min.user:read\x82\xd3\xe4\x93\x02\x1b\x12\x19/user/v202106alpha1/users\x92\x41\x39\x12\x0bList users.\x1a Returns a list of user accounts.*\x08UserList\x12\xf8\x01\n\x07GetUser\x12).kentik.user.v202106alpha1.GetUserRequest\x1a*.kentik.user.v202106alpha1.GetUserResponse\"\x95\x01\xf2\xd7\x02\x0f\x61\x64min.user:read\x82\xd3\xe4\x93\x02 \x12\x1e/user/v202106alpha1/users/{id}\x92\x41Y\x12\x13Get a user account.\x1a\x39Returns information about user account specified with ID.*\x07UserGet\x12\x89\x02\n\nCreateUser\x12,.kentik.user.v202106alpha1.CreateUserRequest\x1a-.kentik.user.v202106alpha1.CreateUserResponse\"\x9d\x01\xf2\xd7\x02\x10\x61\x64min.user:write\x82\xd3\xe4\x93\x02\x1e\"\x19/user/v202106alpha1/users:\x01*\x92\x41\x62\x12\x16\x43reate a user account.\x1a<Create a user account from request. returns created account.*\nUserCreate\x12\x95\x02\n\nUpdateUser\x12,.kentik.user.v202106alpha1.UpdateUserRequest\x1a-.kentik.user.v202106alpha1.UpdateUserResponse\"\xa9\x01\xf2\xd7\x02\x10\x61\x64min.user:write\x82\xd3\xe4\x93\x02(\x1a#/user/v202106alpha1/users/{user.id}:\x01*\x92\x41\x64\x12\x16Update a user account.\x1a>Replaces the entire user account attributes specified with id.*\nUserUpdate\x12\xfa\x01\n\nDeleteUser\x12,.kentik.user.v202106alpha1.DeleteUserRequest\x1a-.kentik.user.v202106alpha1.DeleteUserResponse\"\x8e\x01\xf2\xd7\x02\x10\x61\x64min.user:write\x82\xd3\xe4\x93\x02 *\x1e/user/v202106alpha1/users/{id}\x92\x41Q\x12\x16\x44\x65lete a user account.\x1a+Deletes the user account specified with id.*\nUserDelete\x1a$\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\nadmin.userB\xe2\x02ZBgithub.com/kentik/api-schema/gen/go/kentik/user/v202106alpha1;user\x92\x41\x9a\x02\x12\\\n\x13User management API\"7\n\x16Kentik API Engineering\x12\x1dhttps://github.com/kentik/api2\x0c\x32\x30\x32\x31\x30\x32\x61lpha1*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r5\n\x16More about Kentik APIs\x12\x1bhttps://docs.kentik.com/apib\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n$kentik/user/v202106alpha1/user.proto\x12\x19kentik.user.v202106alpha1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a+kentik/core/v202012alpha1/annotations.proto\"\xe5\x02\n\x04User\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x1d\n\nuser_email\x18\x02 \x01(\tR\tuserEmail\x12\x1a\n\x08username\x18\x03 \x01(\tR\x08username\x12$\n\x0euser_full_name\x18\x04 \x01(\tR\x0cuserFullName\x12\x33\n\x04role\x18\x05 \x01(\x0e\x32\x1f.kentik.user.v202106alpha1.RoleR\x04role\x12\x39\n\nlast_login\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\tlastLogin\x12=\n\x0c\x63reated_date\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x0b\x63reatedDate\x12=\n\x0cupdated_date\x18\x08 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x0bupdatedDate\"\x11\n\x0fListUserRequest\"n\n\x10ListUserResponse\x12\x35\n\x05users\x18\x01 \x03(\x0b\x32\x1f.kentik.user.v202106alpha1.UserR\x05users\x12#\n\rinvalid_count\x18\x02 \x01(\rR\x0cinvalidCount\" \n\x0eGetUserRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"F\n\x0fGetUserResponse\x12\x33\n\x04user\x18\x01 \x01(\x0b\x32\x1f.kentik.user.v202106alpha1.UserR\x04user\"H\n\x11\x43reateUserRequest\x12\x33\n\x04user\x18\x01 \x01(\x0b\x32\x1f.kentik.user.v202106alpha1.UserR\x04user\"I\n\x12\x43reateUserResponse\x12\x33\n\x04user\x18\x01 \x01(\x0b\x32\x1f.kentik.user.v202106alpha1.UserR\x04user\"H\n\x11UpdateUserRequest\x12\x33\n\x04user\x18\x01 \x01(\x0b\x32\x1f.kentik.user.v202106alpha1.UserR\x04user\"I\n\x12UpdateUserResponse\x12\x33\n\x04user\x18\x01 \x01(\x0b\x32\x1f.kentik.user.v202106alpha1.UserR\x04user\"#\n\x11\x44\x65leteUserRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"\x14\n\x12\x44\x65leteUserResponse*\xb7\x01\n\x07Landing\x12\x17\n\x13LANDING_UNSPECIFIED\x10\x00\x12\x1c\n\x18LANDING_OBSERVATION_DECK\x10\x01\x12\x1c\n\x18LANDING_NETWORK_EXPLORER\x10\x02\x12\x13\n\x0fLANDING_LIBRARY\x10\x03\x12\x14\n\x10LANDING_EXPLORER\x10\x04\x12\x14\n\x10LANDING_ALERTING\x10\x05\x12\x16\n\x12LANDING_SYNTHETICS\x10\x06*c\n\x04Role\x12\x14\n\x10ROLE_UNSPECIFIED\x10\x00\x12\x0f\n\x0bROLE_MEMBER\x10\x01\x12\x16\n\x12ROLE_ADMINISTRATOR\x10\x02\x12\x1c\n\x18ROLE_SUPER_ADMINISTRATOR\x10\x03\x32\xa7\n\n\x0bUserService\x12\xd5\x01\n\x08ListUser\x12*.kentik.user.v202106alpha1.ListUserRequest\x1a+.kentik.user.v202106alpha1.ListUserResponse\"p\x92\x41\x39\x12\x0bList users.\x1a Returns a list of user accounts.*\x08UserList\xf2\xd7\x02\x0f\x61\x64min.user:read\x82\xd3\xe4\x93\x02\x1b\x12\x19/user/v202106alpha1/users\x12\xf8\x01\n\x07GetUser\x12).kentik.user.v202106alpha1.GetUserRequest\x1a*.kentik.user.v202106alpha1.GetUserResponse\"\x95\x01\x92\x41Y\x12\x13Get a user account.\x1a\x39Returns information about user account specified with ID.*\x07UserGet\xf2\xd7\x02\x0f\x61\x64min.user:read\x82\xd3\xe4\x93\x02 \x12\x1e/user/v202106alpha1/users/{id}\x12\x89\x02\n\nCreateUser\x12,.kentik.user.v202106alpha1.CreateUserRequest\x1a-.kentik.user.v202106alpha1.CreateUserResponse\"\x9d\x01\x92\x41\x62\x12\x16\x43reate a user account.\x1a<Create a user account from request. returns created account.*\nUserCreate\xf2\xd7\x02\x10\x61\x64min.user:write\x82\xd3\xe4\x93\x02\x1e\"\x19/user/v202106alpha1/users:\x01*\x12\x95\x02\n\nUpdateUser\x12,.kentik.user.v202106alpha1.UpdateUserRequest\x1a-.kentik.user.v202106alpha1.UpdateUserResponse\"\xa9\x01\x92\x41\x64\x12\x16Update a user account.\x1a>Replaces the entire user account attributes specified with id.*\nUserUpdate\xf2\xd7\x02\x10\x61\x64min.user:write\x82\xd3\xe4\x93\x02(\x1a#/user/v202106alpha1/users/{user.id}:\x01*\x12\xfa\x01\n\nDeleteUser\x12,.kentik.user.v202106alpha1.DeleteUserRequest\x1a-.kentik.user.v202106alpha1.DeleteUserResponse\"\x8e\x01\x92\x41Q\x12\x16\x44\x65lete a user account.\x1a+Deletes the user account specified with id.*\nUserDelete\xf2\xd7\x02\x10\x61\x64min.user:write\x82\xd3\xe4\x93\x02 *\x1e/user/v202106alpha1/users/{id}\x1a$\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\nadmin.userB\xe2\x02ZBgithub.com/kentik/api-schema/gen/go/kentik/user/v202106alpha1;user\x92\x41\x9a\x02\x12\\\n\x13User management API\"7\n\x16Kentik API Engineering\x12\x1dhttps://github.com/kentik/api2\x0c\x32\x30\x32\x31\x30\x32\x61lpha1*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r5\n\x16More about Kentik APIs\x12\x1bhttps://docs.kentik.com/apib\x06proto3')
 
 _LANDING = DESCRIPTOR.enum_types_by_name['Landing']
 Landing = enum_type_wrapper.EnumTypeWrapper(_LANDING)
@@ -135,41 +135,41 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _USERSERVICE._options = None
   _USERSERVICE._serialized_options = b'\312A\023grpc.api.kentik.com\352\327\002\nadmin.user'
   _USERSERVICE.methods_by_name['ListUser']._options = None
-  _USERSERVICE.methods_by_name['ListUser']._serialized_options = b'\362\327\002\017admin.user:read\202\323\344\223\002\033\022\031/user/v202106alpha1/users\222A9\022\013List users.\032 Returns a list of user accounts.*\010UserList'
+  _USERSERVICE.methods_by_name['ListUser']._serialized_options = b'\222A9\022\013List users.\032 Returns a list of user accounts.*\010UserList\362\327\002\017admin.user:read\202\323\344\223\002\033\022\031/user/v202106alpha1/users'
   _USERSERVICE.methods_by_name['GetUser']._options = None
-  _USERSERVICE.methods_by_name['GetUser']._serialized_options = b'\362\327\002\017admin.user:read\202\323\344\223\002 \022\036/user/v202106alpha1/users/{id}\222AY\022\023Get a user account.\0329Returns information about user account specified with ID.*\007UserGet'
+  _USERSERVICE.methods_by_name['GetUser']._serialized_options = b'\222AY\022\023Get a user account.\0329Returns information about user account specified with ID.*\007UserGet\362\327\002\017admin.user:read\202\323\344\223\002 \022\036/user/v202106alpha1/users/{id}'
   _USERSERVICE.methods_by_name['CreateUser']._options = None
-  _USERSERVICE.methods_by_name['CreateUser']._serialized_options = b'\362\327\002\020admin.user:write\202\323\344\223\002\036\"\031/user/v202106alpha1/users:\001*\222Ab\022\026Create a user account.\032<Create a user account from request. returns created account.*\nUserCreate'
+  _USERSERVICE.methods_by_name['CreateUser']._serialized_options = b'\222Ab\022\026Create a user account.\032<Create a user account from request. returns created account.*\nUserCreate\362\327\002\020admin.user:write\202\323\344\223\002\036\"\031/user/v202106alpha1/users:\001*'
   _USERSERVICE.methods_by_name['UpdateUser']._options = None
-  _USERSERVICE.methods_by_name['UpdateUser']._serialized_options = b'\362\327\002\020admin.user:write\202\323\344\223\002(\032#/user/v202106alpha1/users/{user.id}:\001*\222Ad\022\026Update a user account.\032>Replaces the entire user account attributes specified with id.*\nUserUpdate'
+  _USERSERVICE.methods_by_name['UpdateUser']._serialized_options = b'\222Ad\022\026Update a user account.\032>Replaces the entire user account attributes specified with id.*\nUserUpdate\362\327\002\020admin.user:write\202\323\344\223\002(\032#/user/v202106alpha1/users/{user.id}:\001*'
   _USERSERVICE.methods_by_name['DeleteUser']._options = None
-  _USERSERVICE.methods_by_name['DeleteUser']._serialized_options = b'\362\327\002\020admin.user:write\202\323\344\223\002 *\036/user/v202106alpha1/users/{id}\222AQ\022\026Delete a user account.\032+Deletes the user account specified with id.*\nUserDelete'
-  _LANDING._serialized_start=1062
-  _LANDING._serialized_end=1245
-  _ROLE._serialized_start=1247
-  _ROLE._serialized_end=1346
+  _USERSERVICE.methods_by_name['DeleteUser']._serialized_options = b'\222AQ\022\026Delete a user account.\032+Deletes the user account specified with id.*\nUserDelete\362\327\002\020admin.user:write\202\323\344\223\002 *\036/user/v202106alpha1/users/{id}'
+  _LANDING._serialized_start=1203
+  _LANDING._serialized_end=1386
+  _ROLE._serialized_start=1388
+  _ROLE._serialized_end=1487
   _USER._serialized_start=249
-  _USER._serialized_end=524
-  _LISTUSERREQUEST._serialized_start=526
-  _LISTUSERREQUEST._serialized_end=543
-  _LISTUSERRESPONSE._serialized_start=545
-  _LISTUSERRESPONSE._serialized_end=634
-  _GETUSERREQUEST._serialized_start=636
-  _GETUSERREQUEST._serialized_end=664
-  _GETUSERRESPONSE._serialized_start=666
-  _GETUSERRESPONSE._serialized_end=730
-  _CREATEUSERREQUEST._serialized_start=732
-  _CREATEUSERREQUEST._serialized_end=798
-  _CREATEUSERRESPONSE._serialized_start=800
-  _CREATEUSERRESPONSE._serialized_end=867
-  _UPDATEUSERREQUEST._serialized_start=869
-  _UPDATEUSERREQUEST._serialized_end=935
-  _UPDATEUSERRESPONSE._serialized_start=937
-  _UPDATEUSERRESPONSE._serialized_end=1004
-  _DELETEUSERREQUEST._serialized_start=1006
-  _DELETEUSERREQUEST._serialized_end=1037
-  _DELETEUSERRESPONSE._serialized_start=1039
-  _DELETEUSERRESPONSE._serialized_end=1059
-  _USERSERVICE._serialized_start=1349
-  _USERSERVICE._serialized_end=2668
+  _USER._serialized_end=606
+  _LISTUSERREQUEST._serialized_start=608
+  _LISTUSERREQUEST._serialized_end=625
+  _LISTUSERRESPONSE._serialized_start=627
+  _LISTUSERRESPONSE._serialized_end=737
+  _GETUSERREQUEST._serialized_start=739
+  _GETUSERREQUEST._serialized_end=771
+  _GETUSERRESPONSE._serialized_start=773
+  _GETUSERRESPONSE._serialized_end=843
+  _CREATEUSERREQUEST._serialized_start=845
+  _CREATEUSERREQUEST._serialized_end=917
+  _CREATEUSERRESPONSE._serialized_start=919
+  _CREATEUSERRESPONSE._serialized_end=992
+  _UPDATEUSERREQUEST._serialized_start=994
+  _UPDATEUSERREQUEST._serialized_end=1066
+  _UPDATEUSERRESPONSE._serialized_start=1068
+  _UPDATEUSERRESPONSE._serialized_end=1141
+  _DELETEUSERREQUEST._serialized_start=1143
+  _DELETEUSERREQUEST._serialized_end=1178
+  _DELETEUSERRESPONSE._serialized_start=1180
+  _DELETEUSERRESPONSE._serialized_end=1200
+  _USERSERVICE._serialized_start=1490
+  _USERSERVICE._serialized_end=2809
 # @@protoc_insertion_point(module_scope)

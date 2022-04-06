@@ -16,7 +16,7 @@ from google.protobuf import duration_pb2 as google_dot_protobuf_dot_duration__pb
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1egrpc/lb/v1/load_balancer.proto\x12\ngrpc.lb.v1\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa4\x01\n\x12LoadBalanceRequest\x12@\n\x0finitial_request\x18\x01 \x01(\x0b\x32%.grpc.lb.v1.InitialLoadBalanceRequestH\x00\x12/\n\x0c\x63lient_stats\x18\x02 \x01(\x0b\x32\x17.grpc.lb.v1.ClientStatsH\x00\x42\x1b\n\x19load_balance_request_type\")\n\x19InitialLoadBalanceRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"D\n\x13\x43lientStatsPerToken\x12\x1a\n\x12load_balance_token\x18\x01 \x01(\t\x12\x11\n\tnum_calls\x18\x02 \x01(\x03\"\xa4\x02\n\x0b\x43lientStats\x12-\n\ttimestamp\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x19\n\x11num_calls_started\x18\x02 \x01(\x03\x12\x1a\n\x12num_calls_finished\x18\x03 \x01(\x03\x12\x35\n-num_calls_finished_with_client_failed_to_send\x18\x06 \x01(\x03\x12)\n!num_calls_finished_known_received\x18\x07 \x01(\x03\x12\x41\n\x18\x63\x61lls_finished_with_drop\x18\x08 \x03(\x0b\x32\x1f.grpc.lb.v1.ClientStatsPerTokenJ\x04\x08\x04\x10\x05J\x04\x08\x05\x10\x06\"\xe1\x01\n\x13LoadBalanceResponse\x12\x42\n\x10initial_response\x18\x01 \x01(\x0b\x32&.grpc.lb.v1.InitialLoadBalanceResponseH\x00\x12-\n\x0bserver_list\x18\x02 \x01(\x0b\x32\x16.grpc.lb.v1.ServerListH\x00\x12\x39\n\x11\x66\x61llback_response\x18\x03 \x01(\x0b\x32\x1c.grpc.lb.v1.FallbackResponseH\x00\x42\x1c\n\x1aload_balance_response_type\"}\n\x1aInitialLoadBalanceResponse\x12\x1e\n\x16load_balancer_delegate\x18\x01 \x01(\t\x12?\n\x1c\x63lient_stats_report_interval\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\"7\n\nServerList\x12#\n\x07servers\x18\x01 \x03(\x0b\x32\x12.grpc.lb.v1.ServerJ\x04\x08\x03\x10\x04\"Z\n\x06Server\x12\x12\n\nip_address\x18\x01 \x01(\x0c\x12\x0c\n\x04port\x18\x02 \x01(\x05\x12\x1a\n\x12load_balance_token\x18\x03 \x01(\t\x12\x0c\n\x04\x64rop\x18\x04 \x01(\x08J\x04\x08\x05\x10\x06\"\x12\n\x10\x46\x61llbackResponse2b\n\x0cLoadBalancer\x12R\n\x0b\x42\x61lanceLoad\x12\x1e.grpc.lb.v1.LoadBalanceRequest\x1a\x1f.grpc.lb.v1.LoadBalanceResponse(\x01\x30\x01\x42X\n\x0eio.grpc.grpclbB\x11LoadBalancerProtoP\x01Z1google.golang.org/grpc/balancer/grpclb/grpc_lb_v1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1egrpc/lb/v1/load_balancer.proto\x12\ngrpc.lb.v1\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc1\x01\n\x12LoadBalanceRequest\x12P\n\x0finitial_request\x18\x01 \x01(\x0b\x32%.grpc.lb.v1.InitialLoadBalanceRequestH\x00R\x0einitialRequest\x12<\n\x0c\x63lient_stats\x18\x02 \x01(\x0b\x32\x17.grpc.lb.v1.ClientStatsH\x00R\x0b\x63lientStatsB\x1b\n\x19load_balance_request_type\"/\n\x19InitialLoadBalanceRequest\x12\x12\n\x04name\x18\x01 \x01(\tR\x04name\"`\n\x13\x43lientStatsPerToken\x12,\n\x12load_balance_token\x18\x01 \x01(\tR\x10loadBalanceToken\x12\x1b\n\tnum_calls\x18\x02 \x01(\x03R\x08numCalls\"\xb0\x03\n\x0b\x43lientStats\x12\x38\n\ttimestamp\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\ttimestamp\x12*\n\x11num_calls_started\x18\x02 \x01(\x03R\x0fnumCallsStarted\x12,\n\x12num_calls_finished\x18\x03 \x01(\x03R\x10numCallsFinished\x12]\n-num_calls_finished_with_client_failed_to_send\x18\x06 \x01(\x03R&numCallsFinishedWithClientFailedToSend\x12H\n!num_calls_finished_known_received\x18\x07 \x01(\x03R\x1dnumCallsFinishedKnownReceived\x12X\n\x18\x63\x61lls_finished_with_drop\x18\x08 \x03(\x0b\x32\x1f.grpc.lb.v1.ClientStatsPerTokenR\x15\x63\x61llsFinishedWithDropJ\x04\x08\x04\x10\x05J\x04\x08\x05\x10\x06\"\x90\x02\n\x13LoadBalanceResponse\x12S\n\x10initial_response\x18\x01 \x01(\x0b\x32&.grpc.lb.v1.InitialLoadBalanceResponseH\x00R\x0finitialResponse\x12\x39\n\x0bserver_list\x18\x02 \x01(\x0b\x32\x16.grpc.lb.v1.ServerListH\x00R\nserverList\x12K\n\x11\x66\x61llback_response\x18\x03 \x01(\x0b\x32\x1c.grpc.lb.v1.FallbackResponseH\x00R\x10\x66\x61llbackResponseB\x1c\n\x1aload_balance_response_type\"\xae\x01\n\x1aInitialLoadBalanceResponse\x12\x34\n\x16load_balancer_delegate\x18\x01 \x01(\tR\x14loadBalancerDelegate\x12Z\n\x1c\x63lient_stats_report_interval\x18\x02 \x01(\x0b\x32\x19.google.protobuf.DurationR\x19\x63lientStatsReportInterval\"@\n\nServerList\x12,\n\x07servers\x18\x01 \x03(\x0b\x32\x12.grpc.lb.v1.ServerR\x07serversJ\x04\x08\x03\x10\x04\"\x83\x01\n\x06Server\x12\x1d\n\nip_address\x18\x01 \x01(\x0cR\tipAddress\x12\x12\n\x04port\x18\x02 \x01(\x05R\x04port\x12,\n\x12load_balance_token\x18\x03 \x01(\tR\x10loadBalanceToken\x12\x12\n\x04\x64rop\x18\x04 \x01(\x08R\x04\x64ropJ\x04\x08\x05\x10\x06\"\x12\n\x10\x46\x61llbackResponse2b\n\x0cLoadBalancer\x12R\n\x0b\x42\x61lanceLoad\x12\x1e.grpc.lb.v1.LoadBalanceRequest\x1a\x1f.grpc.lb.v1.LoadBalanceResponse(\x01\x30\x01\x42X\n\x0eio.grpc.grpclbB\x11LoadBalancerProtoP\x01Z1google.golang.org/grpc/balancer/grpclb/grpc_lb_v1b\x06proto3')
 
 
 
@@ -98,23 +98,23 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   DESCRIPTOR._options = None
   DESCRIPTOR._serialized_options = b'\n\016io.grpc.grpclbB\021LoadBalancerProtoP\001Z1google.golang.org/grpc/balancer/grpclb/grpc_lb_v1'
   _LOADBALANCEREQUEST._serialized_start=112
-  _LOADBALANCEREQUEST._serialized_end=276
-  _INITIALLOADBALANCEREQUEST._serialized_start=278
-  _INITIALLOADBALANCEREQUEST._serialized_end=319
-  _CLIENTSTATSPERTOKEN._serialized_start=321
-  _CLIENTSTATSPERTOKEN._serialized_end=389
-  _CLIENTSTATS._serialized_start=392
-  _CLIENTSTATS._serialized_end=684
-  _LOADBALANCERESPONSE._serialized_start=687
-  _LOADBALANCERESPONSE._serialized_end=912
-  _INITIALLOADBALANCERESPONSE._serialized_start=914
-  _INITIALLOADBALANCERESPONSE._serialized_end=1039
-  _SERVERLIST._serialized_start=1041
-  _SERVERLIST._serialized_end=1096
-  _SERVER._serialized_start=1098
-  _SERVER._serialized_end=1188
-  _FALLBACKRESPONSE._serialized_start=1190
-  _FALLBACKRESPONSE._serialized_end=1208
-  _LOADBALANCER._serialized_start=1210
-  _LOADBALANCER._serialized_end=1308
+  _LOADBALANCEREQUEST._serialized_end=305
+  _INITIALLOADBALANCEREQUEST._serialized_start=307
+  _INITIALLOADBALANCEREQUEST._serialized_end=354
+  _CLIENTSTATSPERTOKEN._serialized_start=356
+  _CLIENTSTATSPERTOKEN._serialized_end=452
+  _CLIENTSTATS._serialized_start=455
+  _CLIENTSTATS._serialized_end=887
+  _LOADBALANCERESPONSE._serialized_start=890
+  _LOADBALANCERESPONSE._serialized_end=1162
+  _INITIALLOADBALANCERESPONSE._serialized_start=1165
+  _INITIALLOADBALANCERESPONSE._serialized_end=1339
+  _SERVERLIST._serialized_start=1341
+  _SERVERLIST._serialized_end=1405
+  _SERVER._serialized_start=1408
+  _SERVER._serialized_end=1539
+  _FALLBACKRESPONSE._serialized_start=1541
+  _FALLBACKRESPONSE._serialized_end=1559
+  _LOADBALANCER._serialized_start=1561
+  _LOADBALANCER._serialized_end=1659
 # @@protoc_insertion_point(module_scope)

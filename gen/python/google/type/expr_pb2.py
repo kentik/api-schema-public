@@ -14,7 +14,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x16google/type/expr.proto\x12\x0bgoogle.type\"P\n\x04\x45xpr\x12\x12\n\nexpression\x18\x01 \x01(\t\x12\r\n\x05title\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x10\n\x08location\x18\x04 \x01(\tBZ\n\x0f\x63om.google.typeB\tExprProtoP\x01Z4google.golang.org/genproto/googleapis/type/expr;expr\xa2\x02\x03GTPb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x16google/type/expr.proto\x12\x0bgoogle.type\"z\n\x04\x45xpr\x12\x1e\n\nexpression\x18\x01 \x01(\tR\nexpression\x12\x14\n\x05title\x18\x02 \x01(\tR\x05title\x12 \n\x0b\x64\x65scription\x18\x03 \x01(\tR\x0b\x64\x65scription\x12\x1a\n\x08location\x18\x04 \x01(\tR\x08locationBZ\n\x0f\x63om.google.typeB\tExprProtoP\x01Z4google.golang.org/genproto/googleapis/type/expr;expr\xa2\x02\x03GTPb\x06proto3')
 
 
 
@@ -31,5 +31,5 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   DESCRIPTOR._options = None
   DESCRIPTOR._serialized_options = b'\n\017com.google.typeB\tExprProtoP\001Z4google.golang.org/genproto/googleapis/type/expr;expr\242\002\003GTP'
   _EXPR._serialized_start=39
-  _EXPR._serialized_end=119
+  _EXPR._serialized_end=161
 # @@protoc_insertion_point(module_scope)

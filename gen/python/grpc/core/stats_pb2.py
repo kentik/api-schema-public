@@ -14,7 +14,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x15grpc/core/stats.proto\x12\tgrpc.core\"&\n\x06\x42ucket\x12\r\n\x05start\x18\x01 \x01(\x01\x12\r\n\x05\x63ount\x18\x02 \x01(\x04\"/\n\tHistogram\x12\"\n\x07\x62uckets\x18\x01 \x03(\x0b\x32\x11.grpc.core.Bucket\"[\n\x06Metric\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x05\x63ount\x18\n \x01(\x04H\x00\x12)\n\thistogram\x18\x0b \x01(\x0b\x32\x14.grpc.core.HistogramH\x00\x42\x07\n\x05value\"+\n\x05Stats\x12\"\n\x07metrics\x18\x01 \x03(\x0b\x32\x11.grpc.core.Metricb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x15grpc/core/stats.proto\x12\tgrpc.core\"4\n\x06\x42ucket\x12\x14\n\x05start\x18\x01 \x01(\x01R\x05start\x12\x14\n\x05\x63ount\x18\x02 \x01(\x04R\x05\x63ount\"8\n\tHistogram\x12+\n\x07\x62uckets\x18\x01 \x03(\x0b\x32\x11.grpc.core.BucketR\x07\x62uckets\"s\n\x06Metric\x12\x12\n\x04name\x18\x01 \x01(\tR\x04name\x12\x16\n\x05\x63ount\x18\n \x01(\x04H\x00R\x05\x63ount\x12\x34\n\thistogram\x18\x0b \x01(\x0b\x32\x14.grpc.core.HistogramH\x00R\thistogramB\x07\n\x05value\"4\n\x05Stats\x12+\n\x07metrics\x18\x01 \x03(\x0b\x32\x11.grpc.core.MetricR\x07metricsb\x06proto3')
 
 
 
@@ -54,11 +54,11 @@ if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
   _BUCKET._serialized_start=36
-  _BUCKET._serialized_end=74
-  _HISTOGRAM._serialized_start=76
-  _HISTOGRAM._serialized_end=123
-  _METRIC._serialized_start=125
-  _METRIC._serialized_end=216
-  _STATS._serialized_start=218
-  _STATS._serialized_end=261
+  _BUCKET._serialized_end=88
+  _HISTOGRAM._serialized_start=90
+  _HISTOGRAM._serialized_end=146
+  _METRIC._serialized_start=148
+  _METRIC._serialized_end=263
+  _STATS._serialized_start=265
+  _STATS._serialized_end=317
 # @@protoc_insertion_point(module_scope)

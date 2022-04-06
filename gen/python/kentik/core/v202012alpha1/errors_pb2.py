@@ -16,7 +16,7 @@ from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__
 from protoc_gen_openapiv2.options import annotations_pb2 as protoc__gen__openapiv2_dot_options_dot_annotations__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n&kentik/core/v202012alpha1/errors.proto\x12\x19kentik.core.v202012alpha1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\"\xca\x02\n\tErrorInfo\x12\x1d\n\x04\x63ode\x18\x01 \x01(\x05\x42\x0f\x92\x41\x0c\x32\nError code\x12#\n\x07message\x18\x02 \x01(\tB\x12\x92\x41\x0f\x32\rError message\x12H\n\x0e\x63orrelation_id\x18\x03 \x01(\tB0\x92\x41-2+Unique event identifier for server requests\x12Y\n\ttimestamp\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.TimestampB*\x92\x41\'2%Date and time when this error occured\x12T\n\x12\x64ocumentation_link\x18\x05 \x01(\tB8\x92\x41\x35\x32\x33Optional link to documentation regarding this errorBJZHgithub.com/kentik/api-schema/gen/go/kentik/core/v202012alpha1;kentik_apib\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n&kentik/core/v202012alpha1/errors.proto\x12\x19kentik.core.v202012alpha1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\"\x86\x03\n\tErrorInfo\x12#\n\x04\x63ode\x18\x01 \x01(\x05\x42\x0f\x92\x41\x0c\x32\nError codeR\x04\x63ode\x12,\n\x07message\x18\x02 \x01(\tB\x12\x92\x41\x0f\x32\rError messageR\x07message\x12W\n\x0e\x63orrelation_id\x18\x03 \x01(\tB0\x92\x41-2+Unique event identifier for server requestsR\rcorrelationId\x12\x64\n\ttimestamp\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.TimestampB*\x92\x41\'2%Date and time when this error occuredR\ttimestamp\x12g\n\x12\x64ocumentation_link\x18\x05 \x01(\tB8\x92\x41\x35\x32\x33Optional link to documentation regarding this errorR\x11\x64ocumentationLinkBJZHgithub.com/kentik/api-schema/gen/go/kentik/core/v202012alpha1;kentik_apib\x06proto3')
 
 
 
@@ -43,5 +43,5 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _ERRORINFO.fields_by_name['documentation_link']._options = None
   _ERRORINFO.fields_by_name['documentation_link']._serialized_options = b'\222A523Optional link to documentation regarding this error'
   _ERRORINFO._serialized_start=151
-  _ERRORINFO._serialized_end=481
+  _ERRORINFO._serialized_end=541
 # @@protoc_insertion_point(module_scope)
