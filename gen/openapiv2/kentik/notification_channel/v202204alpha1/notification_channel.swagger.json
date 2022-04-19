@@ -1,0 +1,205 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "NotificationChannel API",
+    "version": "202204alpha1",
+    "contact": {
+      "name": "Kentik API Engineering"
+    }
+  },
+  "tags": [
+    {
+      "name": "NotificationChannelService"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/notification_channel/v202204alpha1/notification_channels": {
+      "get": {
+        "summary": "Fetch Search NotificationChannels",
+        "description": "Return list of notification_channels matches search critera.",
+        "operationId": "ListNotificationChannels",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202204alpha1ListNotificationChannelsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "NotificationChannelService"
+        ]
+      }
+    },
+    "/notification_channel/v202204alpha1/notification_channels/{id}": {
+      "get": {
+        "summary": "Get information about NotificationChannel",
+        "description": "Returns information about notification_channel specified with ID.",
+        "operationId": "GetNotificationChannel",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202204alpha1GetNotificationChannelResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "NotificationChannelService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "typeUrl": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v202204alpha1ChannelType": {
+      "type": "string",
+      "enum": [
+        "CHANNEL_TYPE_UNSPECIFIED",
+        "CHANNEL_TYPE_XMATTERS",
+        "CHANNEL_TYPE_SLACK",
+        "CHANNEL_TYPE_SERVICENOW",
+        "CHANNEL_TYPE_SYSLOG",
+        "CHANNEL_TYPE_OPSGENIE",
+        "CHANNEL_TYPE_CUSTOM_WEBHOOK",
+        "CHANNEL_TYPE_SPLUNK",
+        "CHANNEL_TYPE_MSTEAMS",
+        "CHANNEL_TYPE_JSON",
+        "CHANNEL_TYPE_EMAIL",
+        "CHANNEL_TYPE_VICTOROPS",
+        "CHANNEL_TYPE_PAGERDUTY"
+      ],
+      "default": "CHANNEL_TYPE_UNSPECIFIED"
+    },
+    "v202204alpha1GetNotificationChannelResponse": {
+      "type": "object",
+      "properties": {
+        "notificationChannel": {
+          "$ref": "#/definitions/v202204alpha1NotificationChannel"
+        }
+      }
+    },
+    "v202204alpha1ListNotificationChannelsResponse": {
+      "type": "object",
+      "properties": {
+        "notificationChannels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202204alpha1NotificationChannel"
+          }
+        },
+        "invalidCount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v202204alpha1NotificationChannel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/v202204alpha1ChannelType"
+        },
+        "status": {
+          "type": "string"
+        },
+        "cdate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Create timestamp."
+        },
+        "edate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Update timestamp."
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "email": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-Email",
+      "in": "header"
+    },
+    "token": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-API-Token",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "email": [],
+      "token": []
+    }
+  ],
+  "externalDocs": {
+    "description": "More about Kentik APIs",
+    "url": "https://docs.kentik.com/api"
+  }
+}
