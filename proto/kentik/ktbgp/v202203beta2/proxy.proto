@@ -1,0 +1,131 @@
+syntax = "proto3";
+
+package kentik.ktbgp.v202203beta2;
+option go_package = "github.com/kentik/api-schema/gen/go/kentik/ktbgp/v202203beta2;ktbgp";
+
+import "kentik/core/v202012alpha1/annotations.proto";
+
+// ProxyService is a VPN for routers without public IP address
+service ProxyService {
+        option (kentik.core.v202012alpha1.service_scope) = "ktbgp.proxy";
+
+        // Control is the control channel used to fetch parameters needed to establish the data channel.
+        // This channel is usually used when the client connection is established, or attempted (eg.
+        // TCP SYN packets with the MD5 option).
+        //
+        // One can think of this call as a channel for continuous replication of device configuration
+        // data relevant to a particular proxy agent. The server MAY push unsolicited messages.
+        //
+        // This call can be handled by different machine than the Data() call below.
+        //
+        // Client MUST set the following gRPC metadata:
+        // - x-ch-auth-email
+        // - x-ch-auth-token (API key)
+        // - sid: site id
+        // - version: ktbgp terminator version
+        // - instance: random UUID (type-4) generated at the terminator startup
+        rpc Control(stream ControlRequest) returns (stream ControlResponse) {
+                option (kentik.core.v202012alpha1.method_scope) = "ktbgp.proxy:read";
+        }
+
+        // Data is the data channel run to forward app protocol messages. Clients SHOULD call Control() first.
+        //
+        // Client MUST set the following gRPC metadata:
+        // - x-ch-auth-email
+        // - x-ch-auth-token (API key)
+        // - sid: site id
+        // - version: ktbgp terminator version
+        // - instance: random UUID (type-4) generated at the terminator startup
+        // - the 5-tuple: proto, device-ip, device-port, proxy-ip, proxy-port
+        // - all of ControlResponse.metadata
+        // - session-id: a random (version 4) UUID that uniquely identifies the established connection;
+        //               each new connection MUST have different session id, even if it has an already seen 5-tuple
+        // - counter-up: how many DataRequests were already sent to backend for that session
+        // - counter-down: how many DataResponses were already received from backend for that session
+        //
+        // Server MUST set the following gRPC metadata:
+        // - counter-up: how many DataRequests were already received from client for that session
+        // - counter-down: how many DataResponses were already sent to client for that session
+        //
+        // Just after receiving the metadata, both sides MUST verify the session-id and counter values in metadata
+        // vs. the local state. The side that detects a disagreement MUST send a KILL message.
+        //
+        // Client and server MUST respect the action field in received messages:
+        // - OK (0): carry on, forward the raw bytes
+        // - KILL (1): kill the session: abort the connection, its gRPC stream, and drop cached ControlResponses for connection
+        // - RESTART (2): execute a graceful restart
+        //
+        // The side initiating the graceful RESTART procedure MUST stop sending new messages, close the
+        // sending side of the gRPC stream, wait for a RESTART message from the other end, and after that close
+        // its gRPC stream completely. The side receiving the graceful RESTART request MUST act accordingly.
+        //
+        // The client SHOULD initiate a gRPC re-connect attempt after completing the RESTART procedure. In case of
+        // transient gRPC errors (without completing the RESTART procedure), client MAY try to reconnect.
+        rpc Data(stream DataRequest) returns (stream DataResponse) {
+                option (kentik.core.v202012alpha1.method_scope) = "ktbgp.proxy:write";
+        }
+}
+
+// ControlRequest represents a new connection from customer device (already accepted or attempted by the customer)
+message ControlRequest {
+        // the 5-tuple
+        string proto = 1;                   // app protocol (eg. "BGP")
+        string device_ip = 2;               // customer device's (internal) IP address
+        uint32 device_port = 3;             // customer device's port number
+        string proxy_ip = 4;                // proxy's (internal) IP address
+        uint32 proxy_port = 5;              // proxy's destination TCP/IP port number
+}
+
+// ControlResponse provides parameters for establishing a proxy forwarding session to a customer device
+message ControlResponse {
+        // the 5-tuple
+        string proto = 1;                   // app protocol (eg. "BGP")
+        string device_ip = 2;               // customer device's (internal) IP address
+        uint32 device_port = 3;             // customer device's port number
+        string proxy_ip = 4;                // proxy's (internal) IP address
+        uint32 proxy_port = 5;              // proxy's destination TCP/IP port number
+
+        // params for the terminator (internal use)
+        uint32 ttl_seconds = 6;             // how long to use this response (seconds); 0 means no caching
+        uint32 ttl_counter = 7;             // how many times the cache can return this response; 0 means no limit
+        ControlAction action = 8;           // should we make any action different than the default?
+        repeated KeyVal metadata = 9;       // client MUST set this gRPC metadata for Data() calls
+
+        // params for the connection
+        uint32 company_id = 10;             // company id
+        uint32 device_id = 11;              // customer device's id
+        string device_name = 12;            // customer device's name
+        bytes tcp_md5 = 13;                 // TCP-MD5 key (optional)
+}
+
+// KeyVal is a key-value(s) pair
+// gRPC key-val metadata is represented as HTTP/2 headers
+message KeyVal {
+        string key = 1;
+        repeated string val = 2;
+}
+
+// ControlAction is used to signal Control() actions, such as blocking devices
+enum ControlAction {
+        CONTROL_ACTION_UNSPECIFIED = 0;     // carry on, all good
+        CONTROL_ACTION_BLOCK_IP = 1;        // deny access, block all connections from proto + device_ip
+}
+
+// DataAction is used to signal Data() actions, such as killing the session
+enum DataAction {
+        DATA_ACTION_UNSPECIFIED = 0;        // no event, all good, carry on
+        DATA_ACTION_KILL = 1;               // kill the proxied connection
+        DATA_ACTION_RESTART = 2;            // graceful restart of the gRPC stream
+}
+
+// DataRequest holds bytes received from device that should be sent to the SaaS side
+message DataRequest {
+        DataAction action = 1;              // if not 0, signals an event
+        repeated bytes data = 2;            // raw data bytes
+}
+
+// DataResponse holds bytes received from SaaS that should be sent to the device
+message DataResponse {
+        DataAction action = 1;              // if not 0, signals an event
+        repeated bytes data = 2;            // raw data bytes
+}

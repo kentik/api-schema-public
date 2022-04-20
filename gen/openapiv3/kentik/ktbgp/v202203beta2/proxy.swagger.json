@@ -1,0 +1,155 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "kentik/ktbgp/v202203beta2/proxy.proto",
+        "version": "version not set"
+    },
+    "tags": [
+        {
+            "name": "ProxyService"
+        }
+    ],
+    "paths": {},
+    "components": {
+        "schemas": {
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "typeUrl": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string",
+                        "format": "byte"
+                    }
+                }
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "v202203beta2ControlAction": {
+                "type": "string",
+                "enum": [
+                    "CONTROL_ACTION_UNSPECIFIED",
+                    "CONTROL_ACTION_BLOCK_IP"
+                ],
+                "default": "CONTROL_ACTION_UNSPECIFIED",
+                "title": "ControlAction is used to signal Control() actions, such as blocking devices"
+            },
+            "v202203beta2ControlResponse": {
+                "type": "object",
+                "properties": {
+                    "proto": {
+                        "type": "string",
+                        "title": "the 5-tuple"
+                    },
+                    "deviceIp": {
+                        "type": "string"
+                    },
+                    "devicePort": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "proxyIp": {
+                        "type": "string"
+                    },
+                    "proxyPort": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "ttlSeconds": {
+                        "type": "integer",
+                        "format": "int64",
+                        "title": "params for the terminator (internal use)"
+                    },
+                    "ttlCounter": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "action": {
+                        "$ref": "#/components/schemas/v202203beta2ControlAction"
+                    },
+                    "metadata": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202203beta2KeyVal"
+                        }
+                    },
+                    "companyId": {
+                        "type": "integer",
+                        "format": "int64",
+                        "title": "params for the connection"
+                    },
+                    "deviceId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "deviceName": {
+                        "type": "string"
+                    },
+                    "tcpMd5": {
+                        "type": "string",
+                        "format": "byte"
+                    }
+                },
+                "title": "ControlResponse provides parameters for establishing a proxy forwarding session to a customer device"
+            },
+            "v202203beta2DataAction": {
+                "type": "string",
+                "enum": [
+                    "DATA_ACTION_UNSPECIFIED",
+                    "DATA_ACTION_KILL",
+                    "DATA_ACTION_RESTART"
+                ],
+                "default": "DATA_ACTION_UNSPECIFIED",
+                "title": "DataAction is used to signal Data() actions, such as killing the session"
+            },
+            "v202203beta2DataResponse": {
+                "type": "object",
+                "properties": {
+                    "action": {
+                        "$ref": "#/components/schemas/v202203beta2DataAction"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "format": "byte"
+                        }
+                    }
+                },
+                "title": "DataResponse holds bytes received from SaaS that should be sent to the device"
+            },
+            "v202203beta2KeyVal": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "type": "string"
+                    },
+                    "val": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "title": "KeyVal is a key-value(s) pair\ngRPC key-val metadata is represented as HTTP/2 headers"
+            }
+        }
+    }
+}
