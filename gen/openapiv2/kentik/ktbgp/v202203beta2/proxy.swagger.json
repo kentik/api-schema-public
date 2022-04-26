@@ -51,7 +51,8 @@
       "type": "string",
       "enum": [
         "CONTROL_ACTION_UNSPECIFIED",
-        "CONTROL_ACTION_BLOCK_IP"
+        "CONTROL_ACTION_BLOCK_IP",
+        "CONTROL_ACTION_KEEPALIVE"
       ],
       "default": "CONTROL_ACTION_UNSPECIFIED",
       "title": "ControlAction is used to signal Control() actions, such as blocking devices"
