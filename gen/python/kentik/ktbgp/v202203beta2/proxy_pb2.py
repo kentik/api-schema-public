@@ -16,7 +16,7 @@ _sym_db = _symbol_database.Default()
 from kentik.core.v202012alpha1 import annotations_pb2 as kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n%kentik/ktbgp/v202203beta2/proxy.proto\x12\x19kentik.ktbgp.v202203beta2\x1a+kentik/core/v202012alpha1/annotations.proto\"\x9e\x01\n\x0e\x43ontrolRequest\x12\x14\n\x05proto\x18\x01 \x01(\tR\x05proto\x12\x1b\n\tdevice_ip\x18\x02 \x01(\tR\x08\x64\x65viceIp\x12\x1f\n\x0b\x64\x65vice_port\x18\x03 \x01(\rR\ndevicePort\x12\x19\n\x08proxy_ip\x18\x04 \x01(\tR\x07proxyIp\x12\x1d\n\nproxy_port\x18\x05 \x01(\rR\tproxyPort\"\xd8\x03\n\x0f\x43ontrolResponse\x12\x14\n\x05proto\x18\x01 \x01(\tR\x05proto\x12\x1b\n\tdevice_ip\x18\x02 \x01(\tR\x08\x64\x65viceIp\x12\x1f\n\x0b\x64\x65vice_port\x18\x03 \x01(\rR\ndevicePort\x12\x19\n\x08proxy_ip\x18\x04 \x01(\tR\x07proxyIp\x12\x1d\n\nproxy_port\x18\x05 \x01(\rR\tproxyPort\x12\x1f\n\x0bttl_seconds\x18\x06 \x01(\rR\nttlSeconds\x12\x1f\n\x0bttl_counter\x18\x07 \x01(\rR\nttlCounter\x12@\n\x06\x61\x63tion\x18\x08 \x01(\x0e\x32(.kentik.ktbgp.v202203beta2.ControlActionR\x06\x61\x63tion\x12=\n\x08metadata\x18\t \x03(\x0b\x32!.kentik.ktbgp.v202203beta2.KeyValR\x08metadata\x12\x1d\n\ncompany_id\x18\n \x01(\rR\tcompanyId\x12\x1b\n\tdevice_id\x18\x0b \x01(\rR\x08\x64\x65viceId\x12\x1f\n\x0b\x64\x65vice_name\x18\x0c \x01(\tR\ndeviceName\x12\x17\n\x07tcp_md5\x18\r \x01(\x0cR\x06tcpMd5\",\n\x06KeyVal\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x10\n\x03val\x18\x02 \x03(\tR\x03val\"`\n\x0b\x44\x61taRequest\x12=\n\x06\x61\x63tion\x18\x01 \x01(\x0e\x32%.kentik.ktbgp.v202203beta2.DataActionR\x06\x61\x63tion\x12\x12\n\x04\x64\x61ta\x18\x02 \x03(\x0cR\x04\x64\x61ta\"a\n\x0c\x44\x61taResponse\x12=\n\x06\x61\x63tion\x18\x01 \x01(\x0e\x32%.kentik.ktbgp.v202203beta2.DataActionR\x06\x61\x63tion\x12\x12\n\x04\x64\x61ta\x18\x02 \x03(\x0cR\x04\x64\x61ta*L\n\rControlAction\x12\x1e\n\x1a\x43ONTROL_ACTION_UNSPECIFIED\x10\x00\x12\x1b\n\x17\x43ONTROL_ACTION_BLOCK_IP\x10\x01*X\n\nDataAction\x12\x1b\n\x17\x44\x41TA_ACTION_UNSPECIFIED\x10\x00\x12\x14\n\x10\x44\x41TA_ACTION_KILL\x10\x01\x12\x17\n\x13\x44\x41TA_ACTION_RESTART\x10\x02\x32\x8f\x02\n\x0cProxyService\x12z\n\x07\x43ontrol\x12).kentik.ktbgp.v202203beta2.ControlRequest\x1a*.kentik.ktbgp.v202203beta2.ControlResponse\"\x14\xf2\xd7\x02\x10ktbgp.proxy:read(\x01\x30\x01\x12r\n\x04\x44\x61ta\x12&.kentik.ktbgp.v202203beta2.DataRequest\x1a\'.kentik.ktbgp.v202203beta2.DataResponse\"\x15\xf2\xd7\x02\x11ktbgp.proxy:write(\x01\x30\x01\x1a\x0f\xea\xd7\x02\x0bktbgp.proxyBEZCgithub.com/kentik/api-schema/gen/go/kentik/ktbgp/v202203beta2;ktbgpb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n%kentik/ktbgp/v202203beta2/proxy.proto\x12\x19kentik.ktbgp.v202203beta2\x1a+kentik/core/v202012alpha1/annotations.proto\"\xe0\x01\n\x0e\x43ontrolRequest\x12\x14\n\x05proto\x18\x01 \x01(\tR\x05proto\x12\x1b\n\tdevice_ip\x18\x02 \x01(\tR\x08\x64\x65viceIp\x12\x1f\n\x0b\x64\x65vice_port\x18\x03 \x01(\rR\ndevicePort\x12\x19\n\x08proxy_ip\x18\x04 \x01(\tR\x07proxyIp\x12\x1d\n\nproxy_port\x18\x05 \x01(\rR\tproxyPort\x12@\n\x06\x61\x63tion\x18\x08 \x01(\x0e\x32(.kentik.ktbgp.v202203beta2.ControlActionR\x06\x61\x63tion\"\xd8\x03\n\x0f\x43ontrolResponse\x12\x14\n\x05proto\x18\x01 \x01(\tR\x05proto\x12\x1b\n\tdevice_ip\x18\x02 \x01(\tR\x08\x64\x65viceIp\x12\x1f\n\x0b\x64\x65vice_port\x18\x03 \x01(\rR\ndevicePort\x12\x19\n\x08proxy_ip\x18\x04 \x01(\tR\x07proxyIp\x12\x1d\n\nproxy_port\x18\x05 \x01(\rR\tproxyPort\x12\x1f\n\x0bttl_seconds\x18\x06 \x01(\rR\nttlSeconds\x12\x1f\n\x0bttl_counter\x18\x07 \x01(\rR\nttlCounter\x12@\n\x06\x61\x63tion\x18\x08 \x01(\x0e\x32(.kentik.ktbgp.v202203beta2.ControlActionR\x06\x61\x63tion\x12=\n\x08metadata\x18\t \x03(\x0b\x32!.kentik.ktbgp.v202203beta2.KeyValR\x08metadata\x12\x1d\n\ncompany_id\x18\n \x01(\rR\tcompanyId\x12\x1b\n\tdevice_id\x18\x0b \x01(\rR\x08\x64\x65viceId\x12\x1f\n\x0b\x64\x65vice_name\x18\x0c \x01(\tR\ndeviceName\x12\x17\n\x07tcp_md5\x18\r \x01(\x0cR\x06tcpMd5\",\n\x06KeyVal\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x10\n\x03val\x18\x02 \x03(\tR\x03val\"`\n\x0b\x44\x61taRequest\x12=\n\x06\x61\x63tion\x18\x01 \x01(\x0e\x32%.kentik.ktbgp.v202203beta2.DataActionR\x06\x61\x63tion\x12\x12\n\x04\x64\x61ta\x18\x02 \x03(\x0cR\x04\x64\x61ta\"a\n\x0c\x44\x61taResponse\x12=\n\x06\x61\x63tion\x18\x01 \x01(\x0e\x32%.kentik.ktbgp.v202203beta2.DataActionR\x06\x61\x63tion\x12\x12\n\x04\x64\x61ta\x18\x02 \x03(\x0cR\x04\x64\x61ta*j\n\rControlAction\x12\x1e\n\x1a\x43ONTROL_ACTION_UNSPECIFIED\x10\x00\x12\x1b\n\x17\x43ONTROL_ACTION_BLOCK_IP\x10\x01\x12\x1c\n\x18\x43ONTROL_ACTION_KEEPALIVE\x10\x02*X\n\nDataAction\x12\x1b\n\x17\x44\x41TA_ACTION_UNSPECIFIED\x10\x00\x12\x14\n\x10\x44\x41TA_ACTION_KILL\x10\x01\x12\x17\n\x13\x44\x41TA_ACTION_RESTART\x10\x02\x32\x8f\x02\n\x0cProxyService\x12z\n\x07\x43ontrol\x12).kentik.ktbgp.v202203beta2.ControlRequest\x1a*.kentik.ktbgp.v202203beta2.ControlResponse\"\x14\xf2\xd7\x02\x10ktbgp.proxy:read(\x01\x30\x01\x12r\n\x04\x44\x61ta\x12&.kentik.ktbgp.v202203beta2.DataRequest\x1a\'.kentik.ktbgp.v202203beta2.DataResponse\"\x15\xf2\xd7\x02\x11ktbgp.proxy:write(\x01\x30\x01\x1a\x0f\xea\xd7\x02\x0bktbgp.proxyBEZCgithub.com/kentik/api-schema/gen/go/kentik/ktbgp/v202203beta2;ktbgpb\x06proto3')
 
 _CONTROLACTION = DESCRIPTOR.enum_types_by_name['ControlAction']
 ControlAction = enum_type_wrapper.EnumTypeWrapper(_CONTROLACTION)
@@ -24,6 +24,7 @@ _DATAACTION = DESCRIPTOR.enum_types_by_name['DataAction']
 DataAction = enum_type_wrapper.EnumTypeWrapper(_DATAACTION)
 CONTROL_ACTION_UNSPECIFIED = 0
 CONTROL_ACTION_BLOCK_IP = 1
+CONTROL_ACTION_KEEPALIVE = 2
 DATA_ACTION_UNSPECIFIED = 0
 DATA_ACTION_KILL = 1
 DATA_ACTION_RESTART = 2
@@ -80,20 +81,20 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _PROXYSERVICE.methods_by_name['Control']._serialized_options = b'\362\327\002\020ktbgp.proxy:read'
   _PROXYSERVICE.methods_by_name['Data']._options = None
   _PROXYSERVICE.methods_by_name['Data']._serialized_options = b'\362\327\002\021ktbgp.proxy:write'
-  _CONTROLACTION._serialized_start=992
-  _CONTROLACTION._serialized_end=1068
-  _DATAACTION._serialized_start=1070
-  _DATAACTION._serialized_end=1158
+  _CONTROLACTION._serialized_start=1058
+  _CONTROLACTION._serialized_end=1164
+  _DATAACTION._serialized_start=1166
+  _DATAACTION._serialized_end=1254
   _CONTROLREQUEST._serialized_start=114
-  _CONTROLREQUEST._serialized_end=272
-  _CONTROLRESPONSE._serialized_start=275
-  _CONTROLRESPONSE._serialized_end=747
-  _KEYVAL._serialized_start=749
-  _KEYVAL._serialized_end=793
-  _DATAREQUEST._serialized_start=795
-  _DATAREQUEST._serialized_end=891
-  _DATARESPONSE._serialized_start=893
-  _DATARESPONSE._serialized_end=990
-  _PROXYSERVICE._serialized_start=1161
-  _PROXYSERVICE._serialized_end=1432
+  _CONTROLREQUEST._serialized_end=338
+  _CONTROLRESPONSE._serialized_start=341
+  _CONTROLRESPONSE._serialized_end=813
+  _KEYVAL._serialized_start=815
+  _KEYVAL._serialized_end=859
+  _DATAREQUEST._serialized_start=861
+  _DATAREQUEST._serialized_end=957
+  _DATARESPONSE._serialized_start=959
+  _DATARESPONSE._serialized_end=1056
+  _PROXYSERVICE._serialized_start=1257
+  _PROXYSERVICE._serialized_end=1528
 # @@protoc_insertion_point(module_scope)

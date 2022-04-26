@@ -74,6 +74,8 @@ message ControlRequest {
         uint32 device_port = 3;             // customer device's port number
         string proxy_ip = 4;                // proxy's (internal) IP address
         uint32 proxy_port = 5;              // proxy's destination TCP/IP port number
+
+        ControlAction action = 8;           // should we make any action different than the default?
 }
 
 // ControlResponse provides parameters for establishing a proxy forwarding session to a customer device
@@ -109,6 +111,7 @@ message KeyVal {
 enum ControlAction {
         CONTROL_ACTION_UNSPECIFIED = 0;     // carry on, all good
         CONTROL_ACTION_BLOCK_IP = 1;        // deny access, block all connections from proto + device_ip
+        CONTROL_ACTION_KEEPALIVE = 2;       // keep-alive message, ignore its contents
 }
 
 // DataAction is used to signal Data() actions, such as killing the session
