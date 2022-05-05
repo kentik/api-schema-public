@@ -1,0 +1,938 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "BGP Monitoring API",
+        "version": "202205",
+        "contact": {
+            "name": "Kentik API Engineering",
+            "url": "https://github.com/kentik/api"
+        }
+    },
+    "tags": [
+        {
+            "name": "BgpMonitoringAdminService"
+        },
+        {
+            "name": "BgpMonitoringDataService"
+        }
+    ],
+    "paths": {
+        "/bgp_monitoring/v202205beta1/events": {
+            "post": {
+                "summary": "Get BGP events for a monitor.",
+                "description": "Retrieve events for BGP monitor with specific ID.",
+                "operationId": "GetEventsForMonitor",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202205beta1GetEventsForMonitorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202205beta1GetEventsForMonitorRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "BgpMonitoringDataService"
+                ]
+            }
+        },
+        "/bgp_monitoring/v202205beta1/metrics": {
+            "post": {
+                "summary": "Get metrics for BGP monitor.",
+                "description": "Retrieve metric data for BGP monitor with specific ID.",
+                "operationId": "GetMetricsForMonitor",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202205beta1GetMetricsForMonitorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202205beta1GetMetricsForMonitorRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "BgpMonitoringDataService"
+                ]
+            }
+        },
+        "/bgp_monitoring/v202205beta1/monitors": {
+            "get": {
+                "summary": "List BGP Monitors.",
+                "description": "Returns a list of BGP monitors.",
+                "operationId": "MonitorsList",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202205beta1ListMonitorsResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "BgpMonitoringAdminService"
+                ]
+            },
+            "post": {
+                "summary": "Create BGP Monitor.",
+                "description": "Create BGP monitor. Returns created monitor configuration.",
+                "operationId": "MonitorCreate",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202205beta1CreateMonitorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202205beta1CreateMonitorRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "BgpMonitoringAdminService"
+                ]
+            }
+        },
+        "/bgp_monitoring/v202205beta1/monitors/{id}": {
+            "get": {
+                "summary": "Get BGP Monitor configuration.",
+                "description": "Return configuration of BGP monitor with specific ID.",
+                "operationId": "MonitorGet",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202205beta1GetMonitorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "BgpMonitoringAdminService"
+                ]
+            },
+            "delete": {
+                "summary": "Delete BGP Monitor.",
+                "description": "Delete BGP monitor with  with specific ID.",
+                "operationId": "MonitorDelete",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202205beta1DeleteMonitorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "BgpMonitoringAdminService"
+                ]
+            },
+            "put": {
+                "summary": "Update BGP Monitor configuration.",
+                "description": "Update configuration of BGP monitor with specific ID. Returns updated monitor configuration.",
+                "operationId": "MonitorUpdate",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202205beta1UpdateMonitorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202205beta1UpdateMonitorRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "BgpMonitoringAdminService"
+                ]
+            }
+        },
+        "/bgp_monitoring/v202205beta1/monitors/{id}/status": {
+            "put": {
+                "summary": "Set status of BGP monitor.",
+                "description": "Set the status of BGP monitor with specific ID.",
+                "operationId": "SetMonitorStatus",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202205beta1SetMonitorStatusResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202205beta1SetMonitorStatusRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "BgpMonitoringAdminService"
+                ]
+            }
+        },
+        "/bgp_monitoring/v202205beta1/routes": {
+            "post": {
+                "summary": "Get routes for BGP monitor.",
+                "description": "Retrieve route information for BGP monitor with specific ID.",
+                "operationId": "GetRoutesForMonitor",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202205beta1GetRoutesForMonitorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202205beta1GetRoutesForMonitorRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "BgpMonitoringDataService"
+                ]
+            }
+        }
+    },
+    "security": [
+        {
+            "email": [],
+            "token": []
+        }
+    ],
+    "externalDocs": {
+        "description": "More about Kentik APIs",
+        "url": "https://docs.kentik.com/api"
+    },
+    "components": {
+        "securitySchemes": {
+            "email": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-Email",
+                "in": "header"
+            },
+            "token": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-API-Token",
+                "in": "header"
+            }
+        },
+        "schemas": {
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "typeUrl": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string",
+                        "format": "byte"
+                    }
+                }
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "v202104Afi": {
+                "type": "string",
+                "enum": [
+                    "AFI_UNSPECIFIED",
+                    "AFI_IP4",
+                    "AFI_IP6"
+                ],
+                "default": "AFI_UNSPECIFIED",
+                "description": "XXX: These are common and perhaps belong in a bgp.proto."
+            },
+            "v202104RpkiStatus": {
+                "type": "string",
+                "enum": [
+                    "RPKI_STATUS_UNSPECIFIED",
+                    "RPKI_STATUS_NOT_FOUND",
+                    "RPKI_STATUS_EXPLICIT_INVALID",
+                    "RPKI_STATUS_INVALID_PREFIX",
+                    "RPKI_STATUS_INVALID",
+                    "RPKI_STATUS_VALID",
+                    "RPKI_STATUS_ERROR"
+                ],
+                "default": "RPKI_STATUS_UNSPECIFIED"
+            },
+            "v202104Safi": {
+                "type": "string",
+                "enum": [
+                    "SAFI_UNSPECIFIED",
+                    "SAFI_UNICAST",
+                    "SAFI_MPLS",
+                    "SAFI_L3VPN"
+                ],
+                "default": "SAFI_UNSPECIFIED"
+            },
+            "v202104VantagePoint": {
+                "type": "object",
+                "properties": {
+                    "dataset": {
+                        "type": "string"
+                    },
+                    "collector": {
+                        "type": "string"
+                    },
+                    "peerAsn": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "peerIp": {
+                        "type": "string"
+                    }
+                },
+                "description": "XXX: these belong in vp.proto, but it would mean a breaking\nchange. When we get to that point, let's rearrange these things."
+            },
+            "v202202ActivationSettings": {
+                "type": "object",
+                "properties": {
+                    "gracePeriod": {
+                        "type": "string"
+                    },
+                    "timeUnit": {
+                        "type": "string"
+                    },
+                    "timeWindow": {
+                        "type": "string"
+                    },
+                    "times": {
+                        "type": "string"
+                    }
+                }
+            },
+            "v202202UserInfo": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "fullName": {
+                        "type": "string"
+                    }
+                }
+            },
+            "v202205beta1BgpEvent": {
+                "type": "object",
+                "properties": {
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "type": {
+                        "$ref": "#/components/schemas/v202205beta1BgpEventType"
+                    },
+                    "route": {
+                        "$ref": "#/components/schemas/v202205beta1RouteInfo"
+                    },
+                    "unexpectedOrigin": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "v202205beta1BgpEventType": {
+                "type": "string",
+                "enum": [
+                    "BGP_EVENT_TYPE_UNSPECIFIED",
+                    "BGP_EVENT_TYPE_ADVERTISEMENT",
+                    "BGP_EVENT_TYPE_WITHDRAWAL"
+                ],
+                "default": "BGP_EVENT_TYPE_UNSPECIFIED",
+                "title": "=== BGP monitor results ==="
+            },
+            "v202205beta1BgpHealthSettings": {
+                "type": "object",
+                "properties": {
+                    "reachabilityWarning": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "reachabilityCritical": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "activation": {
+                        "$ref": "#/components/schemas/v202202ActivationSettings"
+                    }
+                }
+            },
+            "v202205beta1BgpMetric": {
+                "type": "object",
+                "properties": {
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "nlri": {
+                        "$ref": "#/components/schemas/v202205beta1Nlri"
+                    },
+                    "reachability": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "pathChanges": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "v202205beta1BgpMetricType": {
+                "type": "string",
+                "enum": [
+                    "BGP_METRIC_TYPE_UNSPECIFIED",
+                    "BGP_METRIC_TYPE_REACHABILITY",
+                    "BGP_METRIC_TYPE_PATH_CHANGES"
+                ],
+                "default": "BGP_METRIC_TYPE_UNSPECIFIED"
+            },
+            "v202205beta1BgpMonitor": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "$ref": "#/components/schemas/v202205beta1BgpMonitorStatus"
+                    },
+                    "settings": {
+                        "$ref": "#/components/schemas/v202205beta1BgpMonitorSettings"
+                    },
+                    "cdate": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "edate": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "createdBy": {
+                        "$ref": "#/components/schemas/v202202UserInfo"
+                    },
+                    "lastUpdatedBy": {
+                        "$ref": "#/components/schemas/v202202UserInfo"
+                    },
+                    "labels": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "v202205beta1BgpMonitorSettings": {
+                "type": "object",
+                "properties": {
+                    "allowedAsns": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    "targets": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202205beta1Nlri"
+                        }
+                    },
+                    "checkRpki": {
+                        "type": "boolean"
+                    },
+                    "includeCoveredPrefixes": {
+                        "type": "boolean"
+                    },
+                    "healthSettings": {
+                        "$ref": "#/components/schemas/v202205beta1BgpHealthSettings"
+                    },
+                    "notificationChannels": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "v202205beta1BgpMonitorStatus": {
+                "type": "string",
+                "enum": [
+                    "BGP_MONITOR_STATUS_UNSPECIFIED",
+                    "BGP_MONITOR_STATUS_ACTIVE",
+                    "BGP_MONITOR_STATUS_PAUSED",
+                    "BGP_MONITOR_STATUS_DELETED"
+                ],
+                "default": "BGP_MONITOR_STATUS_UNSPECIFIED",
+                "title": "models\n-------------------------------------------------------"
+            },
+            "v202205beta1CreateMonitorRequest": {
+                "type": "object",
+                "properties": {
+                    "monitor": {
+                        "$ref": "#/components/schemas/v202205beta1BgpMonitor"
+                    }
+                }
+            },
+            "v202205beta1CreateMonitorResponse": {
+                "type": "object",
+                "properties": {
+                    "monitor": {
+                        "$ref": "#/components/schemas/v202205beta1BgpMonitor"
+                    }
+                }
+            },
+            "v202205beta1DeleteMonitorResponse": {
+                "type": "object"
+            },
+            "v202205beta1GetEventsForMonitorRequest": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "startTime": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Start of the time interval for this query."
+                    },
+                    "endTime": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "End of the time interval for this query."
+                    },
+                    "targets": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202205beta1Nlri"
+                        },
+                        "title": "Optionally, only retrieve events for set of NLRIs (prefixes)"
+                    },
+                    "includeCoveredPrefixes": {
+                        "type": "boolean"
+                    }
+                },
+                "title": "Data service"
+            },
+            "v202205beta1GetEventsForMonitorResponse": {
+                "type": "object",
+                "properties": {
+                    "events": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202205beta1BgpEvent"
+                        }
+                    },
+                    "asNames": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "v202205beta1GetMetricsForMonitorRequest": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "startTime": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Start of the time interval for this query."
+                    },
+                    "endTime": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "End of the time interval for this query."
+                    },
+                    "targets": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202205beta1Nlri"
+                        },
+                        "title": "Optionally, only retrieve metrics for specified set of NLRIs (prefixes)"
+                    },
+                    "includeCoveredPrefixes": {
+                        "type": "boolean"
+                    },
+                    "metrics": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202205beta1BgpMetricType"
+                        }
+                    }
+                }
+            },
+            "v202205beta1GetMetricsForMonitorResponse": {
+                "type": "object",
+                "properties": {
+                    "metrics": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202205beta1BgpMetric"
+                        }
+                    }
+                }
+            },
+            "v202205beta1GetMonitorResponse": {
+                "type": "object",
+                "properties": {
+                    "monitor": {
+                        "$ref": "#/components/schemas/v202205beta1BgpMonitor"
+                    }
+                }
+            },
+            "v202205beta1GetRoutesForMonitorRequest": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "time": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "targets": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202205beta1Nlri"
+                        }
+                    },
+                    "includeCoveredPrefixes": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "v202205beta1GetRoutesForMonitorResponse": {
+                "type": "object",
+                "properties": {
+                    "routes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202205beta1RouteInfo"
+                        }
+                    },
+                    "asNames": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "v202205beta1ListMonitorsResponse": {
+                "type": "object",
+                "properties": {
+                    "monitors": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202205beta1BgpMonitor"
+                        }
+                    },
+                    "invalidCount": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "v202205beta1Nlri": {
+                "type": "object",
+                "properties": {
+                    "afi": {
+                        "$ref": "#/components/schemas/v202104Afi"
+                    },
+                    "safi": {
+                        "$ref": "#/components/schemas/v202104Safi"
+                    },
+                    "prefix": {
+                        "type": "string"
+                    }
+                },
+                "title": "=== BGP monitor config and status ==="
+            },
+            "v202205beta1RouteInfo": {
+                "type": "object",
+                "properties": {
+                    "nlri": {
+                        "$ref": "#/components/schemas/v202205beta1Nlri"
+                    },
+                    "originAsn": {
+                        "type": "string"
+                    },
+                    "asPath": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "vantagePoint": {
+                        "$ref": "#/components/schemas/v202104VantagePoint"
+                    },
+                    "rpkiStatus": {
+                        "$ref": "#/components/schemas/v202104RpkiStatus"
+                    },
+                    "nexthop": {
+                        "type": "string"
+                    }
+                }
+            },
+            "v202205beta1SetMonitorStatusRequest": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "$ref": "#/components/schemas/v202205beta1BgpMonitorStatus"
+                    }
+                }
+            },
+            "v202205beta1SetMonitorStatusResponse": {
+                "type": "object"
+            },
+            "v202205beta1UpdateMonitorRequest": {
+                "type": "object",
+                "properties": {
+                    "monitor": {
+                        "$ref": "#/components/schemas/v202205beta1BgpMonitor"
+                    }
+                }
+            },
+            "v202205beta1UpdateMonitorResponse": {
+                "type": "object",
+                "properties": {
+                    "monitor": {
+                        "$ref": "#/components/schemas/v202205beta1BgpMonitor"
+                    }
+                }
+            }
+        }
+    }
+}
