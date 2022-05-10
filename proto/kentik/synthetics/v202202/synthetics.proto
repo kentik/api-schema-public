@@ -225,6 +225,8 @@ message HealthSettings {
   float http_latency_warning_stddev = 16;
   uint32 unhealthy_subtest_threshold = 17;
   ActivationSettings activation = 18;
+  uint32 cert_expiry_warning = 19;
+  uint32 cert_expiry_critical = 20;
 }
 
 message HostnameTest {
