@@ -954,6 +954,14 @@
         },
         "activation": {
           "$ref": "#/definitions/v202202ActivationSettings"
+        },
+        "certExpiryWarning": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "certExpiryCritical": {
+          "type": "integer",
+          "format": "int64"
         }
       }
     },
