@@ -131,10 +131,6 @@ class BgpMonitoringAdminServiceStub:
 class BgpMonitoringDataServiceBase(abc.ABC):
 
     @abc.abstractmethod
-    async def GetEventsForMonitor(self, stream: 'grpclib.server.Stream[kentik.bgp_monitoring.v202205beta1.bgp_monitoring_pb2.GetEventsForMonitorRequest, kentik.bgp_monitoring.v202205beta1.bgp_monitoring_pb2.GetEventsForMonitorResponse]') -> None:
-        pass
-
-    @abc.abstractmethod
     async def GetMetricsForMonitor(self, stream: 'grpclib.server.Stream[kentik.bgp_monitoring.v202205beta1.bgp_monitoring_pb2.GetMetricsForMonitorRequest, kentik.bgp_monitoring.v202205beta1.bgp_monitoring_pb2.GetMetricsForMonitorResponse]') -> None:
         pass
 
@@ -144,12 +140,6 @@ class BgpMonitoringDataServiceBase(abc.ABC):
 
     def __mapping__(self) -> typing.Dict[str, grpclib.const.Handler]:
         return {
-            '/kentik.bgp_monitoring.v202205beta1.BgpMonitoringDataService/GetEventsForMonitor': grpclib.const.Handler(
-                self.GetEventsForMonitor,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                kentik.bgp_monitoring.v202205beta1.bgp_monitoring_pb2.GetEventsForMonitorRequest,
-                kentik.bgp_monitoring.v202205beta1.bgp_monitoring_pb2.GetEventsForMonitorResponse,
-            ),
             '/kentik.bgp_monitoring.v202205beta1.BgpMonitoringDataService/GetMetricsForMonitor': grpclib.const.Handler(
                 self.GetMetricsForMonitor,
                 grpclib.const.Cardinality.UNARY_UNARY,
@@ -168,12 +158,6 @@ class BgpMonitoringDataServiceBase(abc.ABC):
 class BgpMonitoringDataServiceStub:
 
     def __init__(self, channel: grpclib.client.Channel) -> None:
-        self.GetEventsForMonitor = grpclib.client.UnaryUnaryMethod(
-            channel,
-            '/kentik.bgp_monitoring.v202205beta1.BgpMonitoringDataService/GetEventsForMonitor',
-            kentik.bgp_monitoring.v202205beta1.bgp_monitoring_pb2.GetEventsForMonitorRequest,
-            kentik.bgp_monitoring.v202205beta1.bgp_monitoring_pb2.GetEventsForMonitorResponse,
-        )
         self.GetMetricsForMonitor = grpclib.client.UnaryUnaryMethod(
             channel,
             '/kentik.bgp_monitoring.v202205beta1.BgpMonitoringDataService/GetMetricsForMonitor',
