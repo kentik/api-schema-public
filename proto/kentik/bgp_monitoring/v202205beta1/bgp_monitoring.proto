@@ -105,12 +105,6 @@ message BgpMonitor {
 }
 
 // === BGP monitor results ===
-enum BgpEventType {
-    BGP_EVENT_TYPE_UNSPECIFIED = 0; // Invalid value.
-    BGP_EVENT_TYPE_ADVERTISEMENT = 1;
-    BGP_EVENT_TYPE_WITHDRAWAL = 2;
-}
-
 enum BgpMetricType {
   BGP_METRIC_TYPE_UNSPECIFIED = 0; // Invalid value.
   BGP_METRIC_TYPE_REACHABILITY = 1;
@@ -124,13 +118,6 @@ message RouteInfo {
   kentik.ktrac.route.v202104.VantagePoint vantage_point = 4;
   kentik.ktrac.route.v202104.RpkiStatus rpki_status = 5;
   string nexthop = 6;
-}
-
-message BgpEvent {
-    google.protobuf.Timestamp timestamp = 1;
-    BgpEventType type = 2;
-    RouteInfo route = 3;
-    bool unexpected_origin = 4;
 }
 
 message BgpMetric {
@@ -272,22 +259,6 @@ service BgpMonitoringAdminService {
   }
 
 // Data service
-message GetEventsForMonitorRequest {
-    string id = 1;
-    // Start of the time interval for this query.
-    google.protobuf.Timestamp start_time = 2;
-    // End of the time interval for this query.
-    google.protobuf.Timestamp end_time = 3;
-    // Optionally, only retrieve events for set of NLRIs (prefixes)
-    repeated Nlri targets = 4;
-    bool include_covered_prefixes = 5;
-}
-
-message GetEventsForMonitorResponse {
-    repeated BgpEvent events = 1;
-    map<uint32, string> as_names = 5;
-}
-
 message GetMetricsForMonitorRequest {
     string id = 1;
     // Start of the time interval for this query.
@@ -319,20 +290,6 @@ message GetRoutesForMonitorResponse {
 service BgpMonitoringDataService {
     option (google.api.default_host) = "grpc.api.kentik.com";
     option (kentik.core.v202012alpha1.service_scope) = "synthetics";
-
-    // Get measurement results for a set of tests
-    rpc GetEventsForMonitor (GetEventsForMonitorRequest) returns (GetEventsForMonitorResponse) {
-      option (kentik.core.v202012alpha1.method_scope) = "synthetics:read";
-      option (google.api.http) = {
-        post: "/bgp_monitoring/v202205beta1/events"
-        body: "*"
-      };
-      option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
-        operation_id: "GetEventsForMonitor"
-        summary: "Get BGP events for a monitor."
-        description: "Retrieve events for BGP monitor with specific ID."
-      };
-    }
 
     rpc GetMetricsForMonitor (GetMetricsForMonitorRequest) returns (GetMetricsForMonitorResponse) {
       option (kentik.core.v202012alpha1.method_scope) = "synthetics:read";

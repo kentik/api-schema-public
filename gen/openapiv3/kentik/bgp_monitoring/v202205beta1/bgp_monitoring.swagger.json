@@ -17,48 +17,6 @@
         }
     ],
     "paths": {
-        "/bgp_monitoring/v202205beta1/events": {
-            "post": {
-                "summary": "Get BGP events for a monitor.",
-                "description": "Retrieve events for BGP monitor with specific ID.",
-                "operationId": "GetEventsForMonitor",
-                "responses": {
-                    "200": {
-                        "description": "A successful response.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/v202205beta1GetEventsForMonitorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "default": {
-                        "description": "An unexpected error response.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/rpcStatus"
-                                }
-                            }
-                        }
-                    }
-                },
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/v202205beta1GetEventsForMonitorRequest"
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "tags": [
-                    "BgpMonitoringDataService"
-                ]
-            }
-        },
         "/bgp_monitoring/v202205beta1/metrics": {
             "post": {
                 "summary": "Get metrics for BGP monitor.",
@@ -537,34 +495,6 @@
                     }
                 }
             },
-            "v202205beta1BgpEvent": {
-                "type": "object",
-                "properties": {
-                    "timestamp": {
-                        "type": "string",
-                        "format": "date-time"
-                    },
-                    "type": {
-                        "$ref": "#/components/schemas/v202205beta1BgpEventType"
-                    },
-                    "route": {
-                        "$ref": "#/components/schemas/v202205beta1RouteInfo"
-                    },
-                    "unexpectedOrigin": {
-                        "type": "boolean"
-                    }
-                }
-            },
-            "v202205beta1BgpEventType": {
-                "type": "string",
-                "enum": [
-                    "BGP_EVENT_TYPE_UNSPECIFIED",
-                    "BGP_EVENT_TYPE_ADVERTISEMENT",
-                    "BGP_EVENT_TYPE_WITHDRAWAL"
-                ],
-                "default": "BGP_EVENT_TYPE_UNSPECIFIED",
-                "title": "=== BGP monitor results ==="
-            },
             "v202205beta1BgpHealthSettings": {
                 "type": "object",
                 "properties": {
@@ -608,7 +538,8 @@
                     "BGP_METRIC_TYPE_REACHABILITY",
                     "BGP_METRIC_TYPE_PATH_CHANGES"
                 ],
-                "default": "BGP_METRIC_TYPE_UNSPECIFIED"
+                "default": "BGP_METRIC_TYPE_UNSPECIFIED",
+                "title": "=== BGP monitor results ==="
             },
             "v202205beta1BgpMonitor": {
                 "type": "object",
@@ -710,52 +641,6 @@
             "v202205beta1DeleteMonitorResponse": {
                 "type": "object"
             },
-            "v202205beta1GetEventsForMonitorRequest": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "string"
-                    },
-                    "startTime": {
-                        "type": "string",
-                        "format": "date-time",
-                        "description": "Start of the time interval for this query."
-                    },
-                    "endTime": {
-                        "type": "string",
-                        "format": "date-time",
-                        "description": "End of the time interval for this query."
-                    },
-                    "targets": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/v202205beta1Nlri"
-                        },
-                        "title": "Optionally, only retrieve events for set of NLRIs (prefixes)"
-                    },
-                    "includeCoveredPrefixes": {
-                        "type": "boolean"
-                    }
-                },
-                "title": "Data service"
-            },
-            "v202205beta1GetEventsForMonitorResponse": {
-                "type": "object",
-                "properties": {
-                    "events": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/v202205beta1BgpEvent"
-                        }
-                    },
-                    "asNames": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "string"
-                        }
-                    }
-                }
-            },
             "v202205beta1GetMetricsForMonitorRequest": {
                 "type": "object",
                 "properties": {
@@ -788,7 +673,8 @@
                             "$ref": "#/components/schemas/v202205beta1BgpMetricType"
                         }
                     }
-                }
+                },
+                "title": "Data service"
             },
             "v202205beta1GetMetricsForMonitorResponse": {
                 "type": "object",
