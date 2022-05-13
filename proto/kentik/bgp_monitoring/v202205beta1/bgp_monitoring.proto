@@ -113,7 +113,7 @@ enum BgpMetricType {
 
 message RouteInfo {
   Nlri nlri = 1;
-  string origin_asn = 2;
+  uint32 origin_asn = 2;
   repeated string as_path = 3;
   kentik.ktrac.route.v202104.VantagePoint vantage_point = 4;
   kentik.ktrac.route.v202104.RpkiStatus rpki_status = 5;
@@ -259,30 +259,28 @@ service BgpMonitoringAdminService {
   }
 
 // Data service
-message GetMetricsForMonitorRequest {
-    string id = 1;
+message GetMetricsForTargetRequest {
     // Start of the time interval for this query.
-    google.protobuf.Timestamp start_time = 2;
+    google.protobuf.Timestamp start_time = 1;
     // End of the time interval for this query.
-    google.protobuf.Timestamp end_time = 3;
-    // Optionally, only retrieve metrics for specified set of NLRIs (prefixes)
-    repeated Nlri targets = 4;
-    bool include_covered_prefixes = 5;
-    repeated BgpMetricType metrics = 6; // list of metric types to return
+    google.protobuf.Timestamp end_time = 2;
+    Nlri target = 3;
+    bool include_covered = 4;
+    repeated BgpMetricType metrics = 5; // list of metric types to return
 }
 
-message GetMetricsForMonitorResponse {
+message GetMetricsForTargetResponse {
     repeated BgpMetric metrics = 1;
 }
 
-message GetRoutesForMonitorRequest {
-  string id = 1;
-  google.protobuf.Timestamp time = 2; // reference time for route information snapshot
-  repeated Nlri targets = 4;
-  bool include_covered_prefixes = 5;
+message GetRoutesForTargetRequest {
+  google.protobuf.Timestamp time = 1; // reference time for route information snapshot
+  Nlri target = 2;
+  bool include_covered = 4;
+  bool check_rpki = 5;
 }
 
-message GetRoutesForMonitorResponse {
+message GetRoutesForTargetResponse {
   repeated RouteInfo routes = 1;
   map<uint32, string> as_names = 5; // lookaside map of AS number -> AS name mappings
 }
@@ -291,29 +289,29 @@ service BgpMonitoringDataService {
     option (google.api.default_host) = "grpc.api.kentik.com";
     option (kentik.core.v202012alpha1.service_scope) = "synthetics";
 
-    rpc GetMetricsForMonitor (GetMetricsForMonitorRequest) returns (GetMetricsForMonitorResponse) {
+    rpc GetMetricsForTarget (GetMetricsForTargetRequest) returns (GetMetricsForTargetResponse) {
       option (kentik.core.v202012alpha1.method_scope) = "synthetics:read";
       option (google.api.http) = {
         post: "/bgp_monitoring/v202205beta1/metrics"
         body: "*"
       };
       option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
-        operation_id: "GetMetricsForMonitor"
-        summary: "Get metrics for BGP monitor."
-        description: "Retrieve metric data for BGP monitor with specific ID."
+        operation_id: "GetMetricsForTarget"
+        summary: "Get metrics for a single BGP target (prefix)."
+        description: "Retrieve metric data for single BGP target (prefix) and time interval."
       };
     }
 
-    rpc GetRoutesForMonitor (GetRoutesForMonitorRequest) returns (GetRoutesForMonitorResponse) {
+    rpc GetRoutesForTarget (GetRoutesForTargetRequest) returns (GetRoutesForTargetResponse) {
       option (kentik.core.v202012alpha1.method_scope) = "synthetics:read";
       option (google.api.http) = {
         post: "/bgp_monitoring/v202205beta1/routes"
         body: "*"
       };
       option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
-        operation_id: "GetRoutesForMonitor"
-        summary: "Get routes for BGP monitor."
-        description: "Retrieve route information for BGP monitor with specific ID."
+        operation_id: "GetRoutesForTarget"
+        summary: "Get routes for single BGP target (prefix)."
+        description: "Retrieve route information for signle BGP target (prefix) and timestamp."
       };
     }
 

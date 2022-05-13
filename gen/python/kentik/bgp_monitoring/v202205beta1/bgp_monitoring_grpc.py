@@ -131,26 +131,26 @@ class BgpMonitoringAdminServiceStub:
 class BgpMonitoringDataServiceBase(abc.ABC):
 
     @abc.abstractmethod
-    async def GetMetricsForMonitor(self, stream: 'grpclib.server.Stream[kentik.bgp_monitoring.v202205beta1.bgp_monitoring_pb2.GetMetricsForMonitorRequest, kentik.bgp_monitoring.v202205beta1.bgp_monitoring_pb2.GetMetricsForMonitorResponse]') -> None:
+    async def GetMetricsForTarget(self, stream: 'grpclib.server.Stream[kentik.bgp_monitoring.v202205beta1.bgp_monitoring_pb2.GetMetricsForTargetRequest, kentik.bgp_monitoring.v202205beta1.bgp_monitoring_pb2.GetMetricsForTargetResponse]') -> None:
         pass
 
     @abc.abstractmethod
-    async def GetRoutesForMonitor(self, stream: 'grpclib.server.Stream[kentik.bgp_monitoring.v202205beta1.bgp_monitoring_pb2.GetRoutesForMonitorRequest, kentik.bgp_monitoring.v202205beta1.bgp_monitoring_pb2.GetRoutesForMonitorResponse]') -> None:
+    async def GetRoutesForTarget(self, stream: 'grpclib.server.Stream[kentik.bgp_monitoring.v202205beta1.bgp_monitoring_pb2.GetRoutesForTargetRequest, kentik.bgp_monitoring.v202205beta1.bgp_monitoring_pb2.GetRoutesForTargetResponse]') -> None:
         pass
 
     def __mapping__(self) -> typing.Dict[str, grpclib.const.Handler]:
         return {
-            '/kentik.bgp_monitoring.v202205beta1.BgpMonitoringDataService/GetMetricsForMonitor': grpclib.const.Handler(
-                self.GetMetricsForMonitor,
+            '/kentik.bgp_monitoring.v202205beta1.BgpMonitoringDataService/GetMetricsForTarget': grpclib.const.Handler(
+                self.GetMetricsForTarget,
                 grpclib.const.Cardinality.UNARY_UNARY,
-                kentik.bgp_monitoring.v202205beta1.bgp_monitoring_pb2.GetMetricsForMonitorRequest,
-                kentik.bgp_monitoring.v202205beta1.bgp_monitoring_pb2.GetMetricsForMonitorResponse,
+                kentik.bgp_monitoring.v202205beta1.bgp_monitoring_pb2.GetMetricsForTargetRequest,
+                kentik.bgp_monitoring.v202205beta1.bgp_monitoring_pb2.GetMetricsForTargetResponse,
             ),
-            '/kentik.bgp_monitoring.v202205beta1.BgpMonitoringDataService/GetRoutesForMonitor': grpclib.const.Handler(
-                self.GetRoutesForMonitor,
+            '/kentik.bgp_monitoring.v202205beta1.BgpMonitoringDataService/GetRoutesForTarget': grpclib.const.Handler(
+                self.GetRoutesForTarget,
                 grpclib.const.Cardinality.UNARY_UNARY,
-                kentik.bgp_monitoring.v202205beta1.bgp_monitoring_pb2.GetRoutesForMonitorRequest,
-                kentik.bgp_monitoring.v202205beta1.bgp_monitoring_pb2.GetRoutesForMonitorResponse,
+                kentik.bgp_monitoring.v202205beta1.bgp_monitoring_pb2.GetRoutesForTargetRequest,
+                kentik.bgp_monitoring.v202205beta1.bgp_monitoring_pb2.GetRoutesForTargetResponse,
             ),
         }
 
@@ -158,15 +158,15 @@ class BgpMonitoringDataServiceBase(abc.ABC):
 class BgpMonitoringDataServiceStub:
 
     def __init__(self, channel: grpclib.client.Channel) -> None:
-        self.GetMetricsForMonitor = grpclib.client.UnaryUnaryMethod(
+        self.GetMetricsForTarget = grpclib.client.UnaryUnaryMethod(
             channel,
-            '/kentik.bgp_monitoring.v202205beta1.BgpMonitoringDataService/GetMetricsForMonitor',
-            kentik.bgp_monitoring.v202205beta1.bgp_monitoring_pb2.GetMetricsForMonitorRequest,
-            kentik.bgp_monitoring.v202205beta1.bgp_monitoring_pb2.GetMetricsForMonitorResponse,
+            '/kentik.bgp_monitoring.v202205beta1.BgpMonitoringDataService/GetMetricsForTarget',
+            kentik.bgp_monitoring.v202205beta1.bgp_monitoring_pb2.GetMetricsForTargetRequest,
+            kentik.bgp_monitoring.v202205beta1.bgp_monitoring_pb2.GetMetricsForTargetResponse,
         )
-        self.GetRoutesForMonitor = grpclib.client.UnaryUnaryMethod(
+        self.GetRoutesForTarget = grpclib.client.UnaryUnaryMethod(
             channel,
-            '/kentik.bgp_monitoring.v202205beta1.BgpMonitoringDataService/GetRoutesForMonitor',
-            kentik.bgp_monitoring.v202205beta1.bgp_monitoring_pb2.GetRoutesForMonitorRequest,
-            kentik.bgp_monitoring.v202205beta1.bgp_monitoring_pb2.GetRoutesForMonitorResponse,
+            '/kentik.bgp_monitoring.v202205beta1.BgpMonitoringDataService/GetRoutesForTarget',
+            kentik.bgp_monitoring.v202205beta1.bgp_monitoring_pb2.GetRoutesForTargetRequest,
+            kentik.bgp_monitoring.v202205beta1.bgp_monitoring_pb2.GetRoutesForTargetResponse,
         )
