@@ -282,8 +282,8 @@ var BgpMonitoringAdminService_ServiceDesc = grpc.ServiceDesc{
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type BgpMonitoringDataServiceClient interface {
-	GetMetricsForMonitor(ctx context.Context, in *GetMetricsForMonitorRequest, opts ...grpc.CallOption) (*GetMetricsForMonitorResponse, error)
-	GetRoutesForMonitor(ctx context.Context, in *GetRoutesForMonitorRequest, opts ...grpc.CallOption) (*GetRoutesForMonitorResponse, error)
+	GetMetricsForTarget(ctx context.Context, in *GetMetricsForTargetRequest, opts ...grpc.CallOption) (*GetMetricsForTargetResponse, error)
+	GetRoutesForTarget(ctx context.Context, in *GetRoutesForTargetRequest, opts ...grpc.CallOption) (*GetRoutesForTargetResponse, error)
 }
 
 type bgpMonitoringDataServiceClient struct {
@@ -294,18 +294,18 @@ func NewBgpMonitoringDataServiceClient(cc grpc.ClientConnInterface) BgpMonitorin
 	return &bgpMonitoringDataServiceClient{cc}
 }
 
-func (c *bgpMonitoringDataServiceClient) GetMetricsForMonitor(ctx context.Context, in *GetMetricsForMonitorRequest, opts ...grpc.CallOption) (*GetMetricsForMonitorResponse, error) {
-	out := new(GetMetricsForMonitorResponse)
-	err := c.cc.Invoke(ctx, "/kentik.bgp_monitoring.v202205beta1.BgpMonitoringDataService/GetMetricsForMonitor", in, out, opts...)
+func (c *bgpMonitoringDataServiceClient) GetMetricsForTarget(ctx context.Context, in *GetMetricsForTargetRequest, opts ...grpc.CallOption) (*GetMetricsForTargetResponse, error) {
+	out := new(GetMetricsForTargetResponse)
+	err := c.cc.Invoke(ctx, "/kentik.bgp_monitoring.v202205beta1.BgpMonitoringDataService/GetMetricsForTarget", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *bgpMonitoringDataServiceClient) GetRoutesForMonitor(ctx context.Context, in *GetRoutesForMonitorRequest, opts ...grpc.CallOption) (*GetRoutesForMonitorResponse, error) {
-	out := new(GetRoutesForMonitorResponse)
-	err := c.cc.Invoke(ctx, "/kentik.bgp_monitoring.v202205beta1.BgpMonitoringDataService/GetRoutesForMonitor", in, out, opts...)
+func (c *bgpMonitoringDataServiceClient) GetRoutesForTarget(ctx context.Context, in *GetRoutesForTargetRequest, opts ...grpc.CallOption) (*GetRoutesForTargetResponse, error) {
+	out := new(GetRoutesForTargetResponse)
+	err := c.cc.Invoke(ctx, "/kentik.bgp_monitoring.v202205beta1.BgpMonitoringDataService/GetRoutesForTarget", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -316,19 +316,19 @@ func (c *bgpMonitoringDataServiceClient) GetRoutesForMonitor(ctx context.Context
 // All implementations should embed UnimplementedBgpMonitoringDataServiceServer
 // for forward compatibility
 type BgpMonitoringDataServiceServer interface {
-	GetMetricsForMonitor(context.Context, *GetMetricsForMonitorRequest) (*GetMetricsForMonitorResponse, error)
-	GetRoutesForMonitor(context.Context, *GetRoutesForMonitorRequest) (*GetRoutesForMonitorResponse, error)
+	GetMetricsForTarget(context.Context, *GetMetricsForTargetRequest) (*GetMetricsForTargetResponse, error)
+	GetRoutesForTarget(context.Context, *GetRoutesForTargetRequest) (*GetRoutesForTargetResponse, error)
 }
 
 // UnimplementedBgpMonitoringDataServiceServer should be embedded to have forward compatible implementations.
 type UnimplementedBgpMonitoringDataServiceServer struct {
 }
 
-func (UnimplementedBgpMonitoringDataServiceServer) GetMetricsForMonitor(context.Context, *GetMetricsForMonitorRequest) (*GetMetricsForMonitorResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetMetricsForMonitor not implemented")
+func (UnimplementedBgpMonitoringDataServiceServer) GetMetricsForTarget(context.Context, *GetMetricsForTargetRequest) (*GetMetricsForTargetResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetMetricsForTarget not implemented")
 }
-func (UnimplementedBgpMonitoringDataServiceServer) GetRoutesForMonitor(context.Context, *GetRoutesForMonitorRequest) (*GetRoutesForMonitorResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetRoutesForMonitor not implemented")
+func (UnimplementedBgpMonitoringDataServiceServer) GetRoutesForTarget(context.Context, *GetRoutesForTargetRequest) (*GetRoutesForTargetResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRoutesForTarget not implemented")
 }
 
 // UnsafeBgpMonitoringDataServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -342,38 +342,38 @@ func RegisterBgpMonitoringDataServiceServer(s grpc.ServiceRegistrar, srv BgpMoni
 	s.RegisterService(&BgpMonitoringDataService_ServiceDesc, srv)
 }
 
-func _BgpMonitoringDataService_GetMetricsForMonitor_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetMetricsForMonitorRequest)
+func _BgpMonitoringDataService_GetMetricsForTarget_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetMetricsForTargetRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BgpMonitoringDataServiceServer).GetMetricsForMonitor(ctx, in)
+		return srv.(BgpMonitoringDataServiceServer).GetMetricsForTarget(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/kentik.bgp_monitoring.v202205beta1.BgpMonitoringDataService/GetMetricsForMonitor",
+		FullMethod: "/kentik.bgp_monitoring.v202205beta1.BgpMonitoringDataService/GetMetricsForTarget",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BgpMonitoringDataServiceServer).GetMetricsForMonitor(ctx, req.(*GetMetricsForMonitorRequest))
+		return srv.(BgpMonitoringDataServiceServer).GetMetricsForTarget(ctx, req.(*GetMetricsForTargetRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _BgpMonitoringDataService_GetRoutesForMonitor_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetRoutesForMonitorRequest)
+func _BgpMonitoringDataService_GetRoutesForTarget_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetRoutesForTargetRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BgpMonitoringDataServiceServer).GetRoutesForMonitor(ctx, in)
+		return srv.(BgpMonitoringDataServiceServer).GetRoutesForTarget(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/kentik.bgp_monitoring.v202205beta1.BgpMonitoringDataService/GetRoutesForMonitor",
+		FullMethod: "/kentik.bgp_monitoring.v202205beta1.BgpMonitoringDataService/GetRoutesForTarget",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BgpMonitoringDataServiceServer).GetRoutesForMonitor(ctx, req.(*GetRoutesForMonitorRequest))
+		return srv.(BgpMonitoringDataServiceServer).GetRoutesForTarget(ctx, req.(*GetRoutesForTargetRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -386,12 +386,12 @@ var BgpMonitoringDataService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*BgpMonitoringDataServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GetMetricsForMonitor",
-			Handler:    _BgpMonitoringDataService_GetMetricsForMonitor_Handler,
+			MethodName: "GetMetricsForTarget",
+			Handler:    _BgpMonitoringDataService_GetMetricsForTarget_Handler,
 		},
 		{
-			MethodName: "GetRoutesForMonitor",
-			Handler:    _BgpMonitoringDataService_GetRoutesForMonitor_Handler,
+			MethodName: "GetRoutesForTarget",
+			Handler:    _BgpMonitoringDataService_GetRoutesForTarget_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

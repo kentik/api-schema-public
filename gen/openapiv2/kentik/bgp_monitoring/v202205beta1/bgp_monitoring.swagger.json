@@ -28,14 +28,14 @@
   "paths": {
     "/bgp_monitoring/v202205beta1/metrics": {
       "post": {
-        "summary": "Get metrics for BGP monitor.",
-        "description": "Retrieve metric data for BGP monitor with specific ID.",
-        "operationId": "GetMetricsForMonitor",
+        "summary": "Get metrics for a single BGP target (prefix).",
+        "description": "Retrieve metric data for single BGP target (prefix) and time interval.",
+        "operationId": "GetMetricsForTarget",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v202205beta1GetMetricsForMonitorResponse"
+              "$ref": "#/definitions/v202205beta1GetMetricsForTargetResponse"
             }
           },
           "default": {
@@ -51,7 +51,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202205beta1GetMetricsForMonitorRequest"
+              "$ref": "#/definitions/v202205beta1GetMetricsForTargetRequest"
             }
           }
         ],
@@ -258,14 +258,14 @@
     },
     "/bgp_monitoring/v202205beta1/routes": {
       "post": {
-        "summary": "Get routes for BGP monitor.",
-        "description": "Retrieve route information for BGP monitor with specific ID.",
-        "operationId": "GetRoutesForMonitor",
+        "summary": "Get routes for single BGP target (prefix).",
+        "description": "Retrieve route information for signle BGP target (prefix) and timestamp.",
+        "operationId": "GetRoutesForTarget",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v202205beta1GetRoutesForMonitorResponse"
+              "$ref": "#/definitions/v202205beta1GetRoutesForTargetResponse"
             }
           },
           "default": {
@@ -281,7 +281,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202205beta1GetRoutesForMonitorRequest"
+              "$ref": "#/definitions/v202205beta1GetRoutesForTargetRequest"
             }
           }
         ],
@@ -551,12 +551,9 @@
     "v202205beta1DeleteMonitorResponse": {
       "type": "object"
     },
-    "v202205beta1GetMetricsForMonitorRequest": {
+    "v202205beta1GetMetricsForTargetRequest": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string"
-        },
         "startTime": {
           "type": "string",
           "format": "date-time",
@@ -567,14 +564,10 @@
           "format": "date-time",
           "description": "End of the time interval for this query."
         },
-        "targets": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/v202205beta1Nlri"
-          },
-          "title": "Optionally, only retrieve metrics for specified set of NLRIs (prefixes)"
+        "target": {
+          "$ref": "#/definitions/v202205beta1Nlri"
         },
-        "includeCoveredPrefixes": {
+        "includeCovered": {
           "type": "boolean"
         },
         "metrics": {
@@ -586,7 +579,7 @@
       },
       "title": "Data service"
     },
-    "v202205beta1GetMetricsForMonitorResponse": {
+    "v202205beta1GetMetricsForTargetResponse": {
       "type": "object",
       "properties": {
         "metrics": {
@@ -605,28 +598,25 @@
         }
       }
     },
-    "v202205beta1GetRoutesForMonitorRequest": {
+    "v202205beta1GetRoutesForTargetRequest": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string"
-        },
         "time": {
           "type": "string",
           "format": "date-time"
         },
-        "targets": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/v202205beta1Nlri"
-          }
+        "target": {
+          "$ref": "#/definitions/v202205beta1Nlri"
         },
-        "includeCoveredPrefixes": {
+        "includeCovered": {
+          "type": "boolean"
+        },
+        "checkRpki": {
           "type": "boolean"
         }
       }
     },
-    "v202205beta1GetRoutesForMonitorResponse": {
+    "v202205beta1GetRoutesForTargetResponse": {
       "type": "object",
       "properties": {
         "routes": {
@@ -680,7 +670,8 @@
           "$ref": "#/definitions/v202205beta1Nlri"
         },
         "originAsn": {
-          "type": "string"
+          "type": "integer",
+          "format": "int64"
         },
         "asPath": {
           "type": "array",
