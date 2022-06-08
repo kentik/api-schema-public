@@ -80,7 +80,6 @@ message Nlri {
 message BgpHealthSettings {
   float reachability_warning = 1;
   float reachability_critical = 2;
-  kentik.synthetics.v202202.ActivationSettings activation = 8;
 }
 
 message BgpMonitorSettings {

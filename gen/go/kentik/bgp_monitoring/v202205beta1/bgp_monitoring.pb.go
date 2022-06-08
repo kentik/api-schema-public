@@ -223,9 +223,8 @@ type BgpHealthSettings struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ReachabilityWarning  float32                     `protobuf:"fixed32,1,opt,name=reachability_warning,json=reachabilityWarning,proto3" json:"reachability_warning,omitempty"`
-	ReachabilityCritical float32                     `protobuf:"fixed32,2,opt,name=reachability_critical,json=reachabilityCritical,proto3" json:"reachability_critical,omitempty"`
-	Activation           *v202202.ActivationSettings `protobuf:"bytes,8,opt,name=activation,proto3" json:"activation,omitempty"`
+	ReachabilityWarning  float32 `protobuf:"fixed32,1,opt,name=reachability_warning,json=reachabilityWarning,proto3" json:"reachability_warning,omitempty"`
+	ReachabilityCritical float32 `protobuf:"fixed32,2,opt,name=reachability_critical,json=reachabilityCritical,proto3" json:"reachability_critical,omitempty"`
 }
 
 func (x *BgpHealthSettings) Reset() {
@@ -272,13 +271,6 @@ func (x *BgpHealthSettings) GetReachabilityCritical() float32 {
 		return x.ReachabilityCritical
 	}
 	return 0
-}
-
-func (x *BgpHealthSettings) GetActivation() *v202202.ActivationSettings {
-	if x != nil {
-		return x.Activation
-	}
-	return nil
 }
 
 type BgpMonitorSettings struct {
@@ -1508,20 +1500,15 @@ var file_kentik_bgp_monitoring_v202205beta1_bgp_monitoring_proto_rawDesc = []byt
 	0x74, 0x65, 0x2e, 0x76, 0x32, 0x30, 0x32, 0x31, 0x30, 0x34, 0x2e, 0x53, 0x61, 0x66, 0x69, 0x52,
 	0x04, 0x73, 0x61, 0x66, 0x69, 0x12, 0x18, 0x0a, 0x06, 0x70, 0x72, 0x65, 0x66, 0x69, 0x78, 0x18,
 	0x03, 0x20, 0x01, 0x28, 0x09, 0x48, 0x00, 0x52, 0x06, 0x70, 0x72, 0x65, 0x66, 0x69, 0x78, 0x42,
-	0x06, 0x0a, 0x04, 0x74, 0x79, 0x70, 0x65, 0x22, 0xca, 0x01, 0x0a, 0x11, 0x42, 0x67, 0x70, 0x48,
-	0x65, 0x61, 0x6c, 0x74, 0x68, 0x53, 0x65, 0x74, 0x74, 0x69, 0x6e, 0x67, 0x73, 0x12, 0x31, 0x0a,
-	0x14, 0x72, 0x65, 0x61, 0x63, 0x68, 0x61, 0x62, 0x69, 0x6c, 0x69, 0x74, 0x79, 0x5f, 0x77, 0x61,
-	0x72, 0x6e, 0x69, 0x6e, 0x67, 0x18, 0x01, 0x20, 0x01, 0x28, 0x02, 0x52, 0x13, 0x72, 0x65, 0x61,
-	0x63, 0x68, 0x61, 0x62, 0x69, 0x6c, 0x69, 0x74, 0x79, 0x57, 0x61, 0x72, 0x6e, 0x69, 0x6e, 0x67,
-	0x12, 0x33, 0x0a, 0x15, 0x72, 0x65, 0x61, 0x63, 0x68, 0x61, 0x62, 0x69, 0x6c, 0x69, 0x74, 0x79,
-	0x5f, 0x63, 0x72, 0x69, 0x74, 0x69, 0x63, 0x61, 0x6c, 0x18, 0x02, 0x20, 0x01, 0x28, 0x02, 0x52,
-	0x14, 0x72, 0x65, 0x61, 0x63, 0x68, 0x61, 0x62, 0x69, 0x6c, 0x69, 0x74, 0x79, 0x43, 0x72, 0x69,
-	0x74, 0x69, 0x63, 0x61, 0x6c, 0x12, 0x4d, 0x0a, 0x0a, 0x61, 0x63, 0x74, 0x69, 0x76, 0x61, 0x74,
-	0x69, 0x6f, 0x6e, 0x18, 0x08, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x2d, 0x2e, 0x6b, 0x65, 0x6e, 0x74,
-	0x69, 0x6b, 0x2e, 0x73, 0x79, 0x6e, 0x74, 0x68, 0x65, 0x74, 0x69, 0x63, 0x73, 0x2e, 0x76, 0x32,
-	0x30, 0x32, 0x32, 0x30, 0x32, 0x2e, 0x41, 0x63, 0x74, 0x69, 0x76, 0x61, 0x74, 0x69, 0x6f, 0x6e,
-	0x53, 0x65, 0x74, 0x74, 0x69, 0x6e, 0x67, 0x73, 0x52, 0x0a, 0x61, 0x63, 0x74, 0x69, 0x76, 0x61,
-	0x74, 0x69, 0x6f, 0x6e, 0x22, 0xe9, 0x02, 0x0a, 0x12, 0x42, 0x67, 0x70, 0x4d, 0x6f, 0x6e, 0x69,
+	0x06, 0x0a, 0x04, 0x74, 0x79, 0x70, 0x65, 0x22, 0x7b, 0x0a, 0x11, 0x42, 0x67, 0x70, 0x48, 0x65,
+	0x61, 0x6c, 0x74, 0x68, 0x53, 0x65, 0x74, 0x74, 0x69, 0x6e, 0x67, 0x73, 0x12, 0x31, 0x0a, 0x14,
+	0x72, 0x65, 0x61, 0x63, 0x68, 0x61, 0x62, 0x69, 0x6c, 0x69, 0x74, 0x79, 0x5f, 0x77, 0x61, 0x72,
+	0x6e, 0x69, 0x6e, 0x67, 0x18, 0x01, 0x20, 0x01, 0x28, 0x02, 0x52, 0x13, 0x72, 0x65, 0x61, 0x63,
+	0x68, 0x61, 0x62, 0x69, 0x6c, 0x69, 0x74, 0x79, 0x57, 0x61, 0x72, 0x6e, 0x69, 0x6e, 0x67, 0x12,
+	0x33, 0x0a, 0x15, 0x72, 0x65, 0x61, 0x63, 0x68, 0x61, 0x62, 0x69, 0x6c, 0x69, 0x74, 0x79, 0x5f,
+	0x63, 0x72, 0x69, 0x74, 0x69, 0x63, 0x61, 0x6c, 0x18, 0x02, 0x20, 0x01, 0x28, 0x02, 0x52, 0x14,
+	0x72, 0x65, 0x61, 0x63, 0x68, 0x61, 0x62, 0x69, 0x6c, 0x69, 0x74, 0x79, 0x43, 0x72, 0x69, 0x74,
+	0x69, 0x63, 0x61, 0x6c, 0x22, 0xe9, 0x02, 0x0a, 0x12, 0x42, 0x67, 0x70, 0x4d, 0x6f, 0x6e, 0x69,
 	0x74, 0x6f, 0x72, 0x53, 0x65, 0x74, 0x74, 0x69, 0x6e, 0x67, 0x73, 0x12, 0x21, 0x0a, 0x0c, 0x61,
 	0x6c, 0x6c, 0x6f, 0x77, 0x65, 0x64, 0x5f, 0x61, 0x73, 0x6e, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28,
 	0x0d, 0x52, 0x0b, 0x61, 0x6c, 0x6c, 0x6f, 0x77, 0x65, 0x64, 0x41, 0x73, 0x6e, 0x73, 0x12, 0x42,
@@ -1978,66 +1965,64 @@ var file_kentik_bgp_monitoring_v202205beta1_bgp_monitoring_proto_goTypes = []int
 	nil,                                 // 24: kentik.bgp_monitoring.v202205beta1.GetRoutesForTargetResponse.AsNamesEntry
 	(pb.Afi)(0),                         // 25: kentik.ktrac.route.v202104.Afi
 	(pb.Safi)(0),                        // 26: kentik.ktrac.route.v202104.Safi
-	(*v202202.ActivationSettings)(nil),  // 27: kentik.synthetics.v202202.ActivationSettings
-	(*timestamppb.Timestamp)(nil),       // 28: google.protobuf.Timestamp
-	(*v202202.UserInfo)(nil),            // 29: kentik.synthetics.v202202.UserInfo
-	(*pb.VantagePoint)(nil),             // 30: kentik.ktrac.route.v202104.VantagePoint
-	(pb.RpkiStatus)(0),                  // 31: kentik.ktrac.route.v202104.RpkiStatus
+	(*timestamppb.Timestamp)(nil),       // 27: google.protobuf.Timestamp
+	(*v202202.UserInfo)(nil),            // 28: kentik.synthetics.v202202.UserInfo
+	(*pb.VantagePoint)(nil),             // 29: kentik.ktrac.route.v202104.VantagePoint
+	(pb.RpkiStatus)(0),                  // 30: kentik.ktrac.route.v202104.RpkiStatus
 }
 var file_kentik_bgp_monitoring_v202205beta1_bgp_monitoring_proto_depIdxs = []int32{
 	25, // 0: kentik.bgp_monitoring.v202205beta1.Nlri.afi:type_name -> kentik.ktrac.route.v202104.Afi
 	26, // 1: kentik.bgp_monitoring.v202205beta1.Nlri.safi:type_name -> kentik.ktrac.route.v202104.Safi
-	27, // 2: kentik.bgp_monitoring.v202205beta1.BgpHealthSettings.activation:type_name -> kentik.synthetics.v202202.ActivationSettings
-	2,  // 3: kentik.bgp_monitoring.v202205beta1.BgpMonitorSettings.targets:type_name -> kentik.bgp_monitoring.v202205beta1.Nlri
-	3,  // 4: kentik.bgp_monitoring.v202205beta1.BgpMonitorSettings.health_settings:type_name -> kentik.bgp_monitoring.v202205beta1.BgpHealthSettings
-	0,  // 5: kentik.bgp_monitoring.v202205beta1.BgpMonitor.status:type_name -> kentik.bgp_monitoring.v202205beta1.BgpMonitorStatus
-	4,  // 6: kentik.bgp_monitoring.v202205beta1.BgpMonitor.settings:type_name -> kentik.bgp_monitoring.v202205beta1.BgpMonitorSettings
-	28, // 7: kentik.bgp_monitoring.v202205beta1.BgpMonitor.cdate:type_name -> google.protobuf.Timestamp
-	28, // 8: kentik.bgp_monitoring.v202205beta1.BgpMonitor.edate:type_name -> google.protobuf.Timestamp
-	29, // 9: kentik.bgp_monitoring.v202205beta1.BgpMonitor.created_by:type_name -> kentik.synthetics.v202202.UserInfo
-	29, // 10: kentik.bgp_monitoring.v202205beta1.BgpMonitor.last_updated_by:type_name -> kentik.synthetics.v202202.UserInfo
-	2,  // 11: kentik.bgp_monitoring.v202205beta1.RouteInfo.nlri:type_name -> kentik.bgp_monitoring.v202205beta1.Nlri
-	30, // 12: kentik.bgp_monitoring.v202205beta1.RouteInfo.vantage_point:type_name -> kentik.ktrac.route.v202104.VantagePoint
-	31, // 13: kentik.bgp_monitoring.v202205beta1.RouteInfo.rpki_status:type_name -> kentik.ktrac.route.v202104.RpkiStatus
-	28, // 14: kentik.bgp_monitoring.v202205beta1.BgpMetric.timestamp:type_name -> google.protobuf.Timestamp
-	2,  // 15: kentik.bgp_monitoring.v202205beta1.BgpMetric.nlri:type_name -> kentik.bgp_monitoring.v202205beta1.Nlri
-	5,  // 16: kentik.bgp_monitoring.v202205beta1.ListMonitorsResponse.monitors:type_name -> kentik.bgp_monitoring.v202205beta1.BgpMonitor
-	5,  // 17: kentik.bgp_monitoring.v202205beta1.CreateMonitorRequest.monitor:type_name -> kentik.bgp_monitoring.v202205beta1.BgpMonitor
-	5,  // 18: kentik.bgp_monitoring.v202205beta1.CreateMonitorResponse.monitor:type_name -> kentik.bgp_monitoring.v202205beta1.BgpMonitor
-	5,  // 19: kentik.bgp_monitoring.v202205beta1.GetMonitorResponse.monitor:type_name -> kentik.bgp_monitoring.v202205beta1.BgpMonitor
-	5,  // 20: kentik.bgp_monitoring.v202205beta1.UpdateMonitorRequest.monitor:type_name -> kentik.bgp_monitoring.v202205beta1.BgpMonitor
-	5,  // 21: kentik.bgp_monitoring.v202205beta1.UpdateMonitorResponse.monitor:type_name -> kentik.bgp_monitoring.v202205beta1.BgpMonitor
-	0,  // 22: kentik.bgp_monitoring.v202205beta1.SetMonitorStatusRequest.status:type_name -> kentik.bgp_monitoring.v202205beta1.BgpMonitorStatus
-	28, // 23: kentik.bgp_monitoring.v202205beta1.GetMetricsForTargetRequest.start_time:type_name -> google.protobuf.Timestamp
-	28, // 24: kentik.bgp_monitoring.v202205beta1.GetMetricsForTargetRequest.end_time:type_name -> google.protobuf.Timestamp
-	2,  // 25: kentik.bgp_monitoring.v202205beta1.GetMetricsForTargetRequest.target:type_name -> kentik.bgp_monitoring.v202205beta1.Nlri
-	1,  // 26: kentik.bgp_monitoring.v202205beta1.GetMetricsForTargetRequest.metrics:type_name -> kentik.bgp_monitoring.v202205beta1.BgpMetricType
-	7,  // 27: kentik.bgp_monitoring.v202205beta1.GetMetricsForTargetResponse.metrics:type_name -> kentik.bgp_monitoring.v202205beta1.BgpMetric
-	28, // 28: kentik.bgp_monitoring.v202205beta1.GetRoutesForTargetRequest.time:type_name -> google.protobuf.Timestamp
-	2,  // 29: kentik.bgp_monitoring.v202205beta1.GetRoutesForTargetRequest.target:type_name -> kentik.bgp_monitoring.v202205beta1.Nlri
-	6,  // 30: kentik.bgp_monitoring.v202205beta1.GetRoutesForTargetResponse.routes:type_name -> kentik.bgp_monitoring.v202205beta1.RouteInfo
-	24, // 31: kentik.bgp_monitoring.v202205beta1.GetRoutesForTargetResponse.as_names:type_name -> kentik.bgp_monitoring.v202205beta1.GetRoutesForTargetResponse.AsNamesEntry
-	8,  // 32: kentik.bgp_monitoring.v202205beta1.BgpMonitoringAdminService.ListMonitors:input_type -> kentik.bgp_monitoring.v202205beta1.ListMonitorsRequest
-	10, // 33: kentik.bgp_monitoring.v202205beta1.BgpMonitoringAdminService.CreateMonitor:input_type -> kentik.bgp_monitoring.v202205beta1.CreateMonitorRequest
-	12, // 34: kentik.bgp_monitoring.v202205beta1.BgpMonitoringAdminService.GetMonitor:input_type -> kentik.bgp_monitoring.v202205beta1.GetMonitorRequest
-	14, // 35: kentik.bgp_monitoring.v202205beta1.BgpMonitoringAdminService.UpdateMonitor:input_type -> kentik.bgp_monitoring.v202205beta1.UpdateMonitorRequest
-	16, // 36: kentik.bgp_monitoring.v202205beta1.BgpMonitoringAdminService.DeleteMonitor:input_type -> kentik.bgp_monitoring.v202205beta1.DeleteMonitorRequest
-	18, // 37: kentik.bgp_monitoring.v202205beta1.BgpMonitoringAdminService.SetMonitorStatus:input_type -> kentik.bgp_monitoring.v202205beta1.SetMonitorStatusRequest
-	20, // 38: kentik.bgp_monitoring.v202205beta1.BgpMonitoringDataService.GetMetricsForTarget:input_type -> kentik.bgp_monitoring.v202205beta1.GetMetricsForTargetRequest
-	22, // 39: kentik.bgp_monitoring.v202205beta1.BgpMonitoringDataService.GetRoutesForTarget:input_type -> kentik.bgp_monitoring.v202205beta1.GetRoutesForTargetRequest
-	9,  // 40: kentik.bgp_monitoring.v202205beta1.BgpMonitoringAdminService.ListMonitors:output_type -> kentik.bgp_monitoring.v202205beta1.ListMonitorsResponse
-	11, // 41: kentik.bgp_monitoring.v202205beta1.BgpMonitoringAdminService.CreateMonitor:output_type -> kentik.bgp_monitoring.v202205beta1.CreateMonitorResponse
-	13, // 42: kentik.bgp_monitoring.v202205beta1.BgpMonitoringAdminService.GetMonitor:output_type -> kentik.bgp_monitoring.v202205beta1.GetMonitorResponse
-	15, // 43: kentik.bgp_monitoring.v202205beta1.BgpMonitoringAdminService.UpdateMonitor:output_type -> kentik.bgp_monitoring.v202205beta1.UpdateMonitorResponse
-	17, // 44: kentik.bgp_monitoring.v202205beta1.BgpMonitoringAdminService.DeleteMonitor:output_type -> kentik.bgp_monitoring.v202205beta1.DeleteMonitorResponse
-	19, // 45: kentik.bgp_monitoring.v202205beta1.BgpMonitoringAdminService.SetMonitorStatus:output_type -> kentik.bgp_monitoring.v202205beta1.SetMonitorStatusResponse
-	21, // 46: kentik.bgp_monitoring.v202205beta1.BgpMonitoringDataService.GetMetricsForTarget:output_type -> kentik.bgp_monitoring.v202205beta1.GetMetricsForTargetResponse
-	23, // 47: kentik.bgp_monitoring.v202205beta1.BgpMonitoringDataService.GetRoutesForTarget:output_type -> kentik.bgp_monitoring.v202205beta1.GetRoutesForTargetResponse
-	40, // [40:48] is the sub-list for method output_type
-	32, // [32:40] is the sub-list for method input_type
-	32, // [32:32] is the sub-list for extension type_name
-	32, // [32:32] is the sub-list for extension extendee
-	0,  // [0:32] is the sub-list for field type_name
+	2,  // 2: kentik.bgp_monitoring.v202205beta1.BgpMonitorSettings.targets:type_name -> kentik.bgp_monitoring.v202205beta1.Nlri
+	3,  // 3: kentik.bgp_monitoring.v202205beta1.BgpMonitorSettings.health_settings:type_name -> kentik.bgp_monitoring.v202205beta1.BgpHealthSettings
+	0,  // 4: kentik.bgp_monitoring.v202205beta1.BgpMonitor.status:type_name -> kentik.bgp_monitoring.v202205beta1.BgpMonitorStatus
+	4,  // 5: kentik.bgp_monitoring.v202205beta1.BgpMonitor.settings:type_name -> kentik.bgp_monitoring.v202205beta1.BgpMonitorSettings
+	27, // 6: kentik.bgp_monitoring.v202205beta1.BgpMonitor.cdate:type_name -> google.protobuf.Timestamp
+	27, // 7: kentik.bgp_monitoring.v202205beta1.BgpMonitor.edate:type_name -> google.protobuf.Timestamp
+	28, // 8: kentik.bgp_monitoring.v202205beta1.BgpMonitor.created_by:type_name -> kentik.synthetics.v202202.UserInfo
+	28, // 9: kentik.bgp_monitoring.v202205beta1.BgpMonitor.last_updated_by:type_name -> kentik.synthetics.v202202.UserInfo
+	2,  // 10: kentik.bgp_monitoring.v202205beta1.RouteInfo.nlri:type_name -> kentik.bgp_monitoring.v202205beta1.Nlri
+	29, // 11: kentik.bgp_monitoring.v202205beta1.RouteInfo.vantage_point:type_name -> kentik.ktrac.route.v202104.VantagePoint
+	30, // 12: kentik.bgp_monitoring.v202205beta1.RouteInfo.rpki_status:type_name -> kentik.ktrac.route.v202104.RpkiStatus
+	27, // 13: kentik.bgp_monitoring.v202205beta1.BgpMetric.timestamp:type_name -> google.protobuf.Timestamp
+	2,  // 14: kentik.bgp_monitoring.v202205beta1.BgpMetric.nlri:type_name -> kentik.bgp_monitoring.v202205beta1.Nlri
+	5,  // 15: kentik.bgp_monitoring.v202205beta1.ListMonitorsResponse.monitors:type_name -> kentik.bgp_monitoring.v202205beta1.BgpMonitor
+	5,  // 16: kentik.bgp_monitoring.v202205beta1.CreateMonitorRequest.monitor:type_name -> kentik.bgp_monitoring.v202205beta1.BgpMonitor
+	5,  // 17: kentik.bgp_monitoring.v202205beta1.CreateMonitorResponse.monitor:type_name -> kentik.bgp_monitoring.v202205beta1.BgpMonitor
+	5,  // 18: kentik.bgp_monitoring.v202205beta1.GetMonitorResponse.monitor:type_name -> kentik.bgp_monitoring.v202205beta1.BgpMonitor
+	5,  // 19: kentik.bgp_monitoring.v202205beta1.UpdateMonitorRequest.monitor:type_name -> kentik.bgp_monitoring.v202205beta1.BgpMonitor
+	5,  // 20: kentik.bgp_monitoring.v202205beta1.UpdateMonitorResponse.monitor:type_name -> kentik.bgp_monitoring.v202205beta1.BgpMonitor
+	0,  // 21: kentik.bgp_monitoring.v202205beta1.SetMonitorStatusRequest.status:type_name -> kentik.bgp_monitoring.v202205beta1.BgpMonitorStatus
+	27, // 22: kentik.bgp_monitoring.v202205beta1.GetMetricsForTargetRequest.start_time:type_name -> google.protobuf.Timestamp
+	27, // 23: kentik.bgp_monitoring.v202205beta1.GetMetricsForTargetRequest.end_time:type_name -> google.protobuf.Timestamp
+	2,  // 24: kentik.bgp_monitoring.v202205beta1.GetMetricsForTargetRequest.target:type_name -> kentik.bgp_monitoring.v202205beta1.Nlri
+	1,  // 25: kentik.bgp_monitoring.v202205beta1.GetMetricsForTargetRequest.metrics:type_name -> kentik.bgp_monitoring.v202205beta1.BgpMetricType
+	7,  // 26: kentik.bgp_monitoring.v202205beta1.GetMetricsForTargetResponse.metrics:type_name -> kentik.bgp_monitoring.v202205beta1.BgpMetric
+	27, // 27: kentik.bgp_monitoring.v202205beta1.GetRoutesForTargetRequest.time:type_name -> google.protobuf.Timestamp
+	2,  // 28: kentik.bgp_monitoring.v202205beta1.GetRoutesForTargetRequest.target:type_name -> kentik.bgp_monitoring.v202205beta1.Nlri
+	6,  // 29: kentik.bgp_monitoring.v202205beta1.GetRoutesForTargetResponse.routes:type_name -> kentik.bgp_monitoring.v202205beta1.RouteInfo
+	24, // 30: kentik.bgp_monitoring.v202205beta1.GetRoutesForTargetResponse.as_names:type_name -> kentik.bgp_monitoring.v202205beta1.GetRoutesForTargetResponse.AsNamesEntry
+	8,  // 31: kentik.bgp_monitoring.v202205beta1.BgpMonitoringAdminService.ListMonitors:input_type -> kentik.bgp_monitoring.v202205beta1.ListMonitorsRequest
+	10, // 32: kentik.bgp_monitoring.v202205beta1.BgpMonitoringAdminService.CreateMonitor:input_type -> kentik.bgp_monitoring.v202205beta1.CreateMonitorRequest
+	12, // 33: kentik.bgp_monitoring.v202205beta1.BgpMonitoringAdminService.GetMonitor:input_type -> kentik.bgp_monitoring.v202205beta1.GetMonitorRequest
+	14, // 34: kentik.bgp_monitoring.v202205beta1.BgpMonitoringAdminService.UpdateMonitor:input_type -> kentik.bgp_monitoring.v202205beta1.UpdateMonitorRequest
+	16, // 35: kentik.bgp_monitoring.v202205beta1.BgpMonitoringAdminService.DeleteMonitor:input_type -> kentik.bgp_monitoring.v202205beta1.DeleteMonitorRequest
+	18, // 36: kentik.bgp_monitoring.v202205beta1.BgpMonitoringAdminService.SetMonitorStatus:input_type -> kentik.bgp_monitoring.v202205beta1.SetMonitorStatusRequest
+	20, // 37: kentik.bgp_monitoring.v202205beta1.BgpMonitoringDataService.GetMetricsForTarget:input_type -> kentik.bgp_monitoring.v202205beta1.GetMetricsForTargetRequest
+	22, // 38: kentik.bgp_monitoring.v202205beta1.BgpMonitoringDataService.GetRoutesForTarget:input_type -> kentik.bgp_monitoring.v202205beta1.GetRoutesForTargetRequest
+	9,  // 39: kentik.bgp_monitoring.v202205beta1.BgpMonitoringAdminService.ListMonitors:output_type -> kentik.bgp_monitoring.v202205beta1.ListMonitorsResponse
+	11, // 40: kentik.bgp_monitoring.v202205beta1.BgpMonitoringAdminService.CreateMonitor:output_type -> kentik.bgp_monitoring.v202205beta1.CreateMonitorResponse
+	13, // 41: kentik.bgp_monitoring.v202205beta1.BgpMonitoringAdminService.GetMonitor:output_type -> kentik.bgp_monitoring.v202205beta1.GetMonitorResponse
+	15, // 42: kentik.bgp_monitoring.v202205beta1.BgpMonitoringAdminService.UpdateMonitor:output_type -> kentik.bgp_monitoring.v202205beta1.UpdateMonitorResponse
+	17, // 43: kentik.bgp_monitoring.v202205beta1.BgpMonitoringAdminService.DeleteMonitor:output_type -> kentik.bgp_monitoring.v202205beta1.DeleteMonitorResponse
+	19, // 44: kentik.bgp_monitoring.v202205beta1.BgpMonitoringAdminService.SetMonitorStatus:output_type -> kentik.bgp_monitoring.v202205beta1.SetMonitorStatusResponse
+	21, // 45: kentik.bgp_monitoring.v202205beta1.BgpMonitoringDataService.GetMetricsForTarget:output_type -> kentik.bgp_monitoring.v202205beta1.GetMetricsForTargetResponse
+	23, // 46: kentik.bgp_monitoring.v202205beta1.BgpMonitoringDataService.GetRoutesForTarget:output_type -> kentik.bgp_monitoring.v202205beta1.GetRoutesForTargetResponse
+	39, // [39:47] is the sub-list for method output_type
+	31, // [31:39] is the sub-list for method input_type
+	31, // [31:31] is the sub-list for extension type_name
+	31, // [31:31] is the sub-list for extension extendee
+	0,  // [0:31] is the sub-list for field type_name
 }
 
 func init() { file_kentik_bgp_monitoring_v202205beta1_bgp_monitoring_proto_init() }
