@@ -20,7 +20,7 @@ from protoc_gen_openapiv2.options import annotations_pb2 as protoc__gen__openapi
 from kentik.core.v202012alpha1 import annotations_pb2 as kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n%kentik/audit/v202205beta1/audit.proto\x12\x19kentik.audit.v202205beta1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a+kentik/core/v202012alpha1/annotations.proto\"\xd9\x04\n\x0cRequestEvent\x12%\n\x0erequest_method\x18\x01 \x01(\tR\rrequestMethod\x12!\n\x0crequest_path\x18\x02 \x01(\tR\x0brequestPath\x12%\n\x0e\x63lient_address\x18\x03 \x01(\tR\rclientAddress\x12#\n\rresponse_code\x18\x04 \x01(\rR\x0cresponseCode\x12g\n\x10request_metadata\x18\x05 \x03(\x0b\x32<.kentik.audit.v202205beta1.RequestEvent.RequestMetadataEntryR\x0frequestMetadata\x12j\n\x11response_metadata\x18\x06 \x03(\x0b\x32=.kentik.audit.v202205beta1.RequestEvent.ResponseMetadataEntryR\x10responseMetadata\x12U\n\x10request_protocol\x18\x07 \x01(\x0e\x32*.kentik.audit.v202205beta1.RequestProtocolR\x0frequestProtocol\x1a\x42\n\x14RequestMetadataEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n\x05value\x18\x02 \x01(\tR\x05value:\x02\x38\x01\x1a\x43\n\x15ResponseMetadataEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n\x05value\x18\x02 \x01(\tR\x05value:\x02\x38\x01\"\xac\x02\n\nAuditEvent\x12\x17\n\x07user_id\x18\x01 \x01(\tR\x06userId\x12\x1d\n\ncompany_id\x18\x02 \x01(\tR\tcompanyId\x12!\n\x0cservice_name\x18\x03 \x01(\tR\x0bserviceName\x12\x19\n\x08\x65vent_id\x18\x04 \x01(\tR\x07\x65ventId\x12\x30\n\x05\x63\x64\x61te\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x05\x63\x64\x61te\x12#\n\revent_payload\x18\x06 \x01(\tR\x0c\x65ventPayload\x12\x43\n\x07request\x18\x14 \x01(\x0b\x32\'.kentik.audit.v202205beta1.RequestEventH\x00R\x07requestB\x0c\n\nevent_type*\x84\x01\n\x0fRequestProtocol\x12 \n\x1cREQUEST_PROTOCOL_UNSPECIFIED\x10\x00\x12\x19\n\x15REQUEST_PROTOCOL_REST\x10\x01\x12\x19\n\x15REQUEST_PROTOCOL_GRPC\x10\x02\x12\x19\n\x15REQUEST_PROTOCOL_HTTP\x10\x03\x42\xd3\x02ZCgithub.com/kentik/api-schema/gen/go/kentik/audit/v202205beta1;audit\x92\x41\x8a\x02\x12L\n\tAudit API\"7\n\x16Kentik API Engineering\x12\x1dhttps://github.com/kentik/api2\x06\x32\x30\x32\x32\x30\x35*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r5\n\x16More about Kentik APIs\x12\x1bhttps://docs.kentik.com/apib\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n%kentik/audit/v202205beta1/audit.proto\x12\x19kentik.audit.v202205beta1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a+kentik/core/v202012alpha1/annotations.proto\"\xd9\x04\n\x0cRequestEvent\x12%\n\x0erequest_method\x18\x01 \x01(\tR\rrequestMethod\x12!\n\x0crequest_path\x18\x02 \x01(\tR\x0brequestPath\x12%\n\x0e\x63lient_address\x18\x03 \x01(\tR\rclientAddress\x12#\n\rresponse_code\x18\x04 \x01(\rR\x0cresponseCode\x12g\n\x10request_metadata\x18\x05 \x03(\x0b\x32<.kentik.audit.v202205beta1.RequestEvent.RequestMetadataEntryR\x0frequestMetadata\x12j\n\x11response_metadata\x18\x06 \x03(\x0b\x32=.kentik.audit.v202205beta1.RequestEvent.ResponseMetadataEntryR\x10responseMetadata\x12U\n\x10request_protocol\x18\x07 \x01(\x0e\x32*.kentik.audit.v202205beta1.RequestProtocolR\x0frequestProtocol\x1a\x42\n\x14RequestMetadataEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n\x05value\x18\x02 \x01(\tR\x05value:\x02\x38\x01\x1a\x43\n\x15ResponseMetadataEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n\x05value\x18\x02 \x01(\tR\x05value:\x02\x38\x01\"\xd3\x02\n\nAuditEvent\x12\x17\n\x07user_id\x18\x01 \x01(\tR\x06userId\x12\x1d\n\ncompany_id\x18\x02 \x01(\tR\tcompanyId\x12!\n\x0cservice_name\x18\x03 \x01(\tR\x0bserviceName\x12\x19\n\x08\x65vent_id\x18\x04 \x01(\tR\x07\x65ventId\x12\x30\n\x05\x63\x64\x61te\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x05\x63\x64\x61te\x12#\n\revent_payload\x18\x06 \x01(\tR\x0c\x65ventPayload\x12%\n\x0e\x63orrelation_id\x18\x07 \x01(\tR\rcorrelationId\x12\x43\n\x07request\x18\x14 \x01(\x0b\x32\'.kentik.audit.v202205beta1.RequestEventH\x00R\x07requestB\x0c\n\nevent_type\"X\n\x17\x43reateAuditEventRequest\x12=\n\x06\x65vents\x18\x01 \x03(\x0b\x32%.kentik.audit.v202205beta1.AuditEventR\x06\x65vents\"\x1a\n\x18\x43reateAuditEventResponse*\x84\x01\n\x0fRequestProtocol\x12 \n\x1cREQUEST_PROTOCOL_UNSPECIFIED\x10\x00\x12\x19\n\x15REQUEST_PROTOCOL_REST\x10\x01\x12\x19\n\x15REQUEST_PROTOCOL_GRPC\x10\x02\x12\x19\n\x15REQUEST_PROTOCOL_HTTP\x10\x03\x32\xbe\x02\n\x0c\x41uditService\x12\x86\x02\n\x10\x43reateAuditEvent\x12\x32.kentik.audit.v202205beta1.CreateAuditEventRequest\x1a\x33.kentik.audit.v202205beta1.CreateAuditEventResponse\"\x88\x01\x92\x41X\x12!Create one ore more audit events.\x1a!Create one ore more audit events.*\x10\x43reateAuditEvent\xf2\xd7\x02\x0b\x61udit:write\x82\xd3\xe4\x93\x02\x18\"\x13/audit/v202205beta1:\x01*\x1a%\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\x0b\x61\x64min.auditB\xd3\x02ZCgithub.com/kentik/api-schema/gen/go/kentik/audit/v202205beta1;audit\x92\x41\x8a\x02\x12L\n\tAudit API\"7\n\x16Kentik API Engineering\x12\x1dhttps://github.com/kentik/api2\x06\x32\x30\x32\x32\x30\x35*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r5\n\x16More about Kentik APIs\x12\x1bhttps://docs.kentik.com/apib\x06proto3')
 
 _REQUESTPROTOCOL = DESCRIPTOR.enum_types_by_name['RequestProtocol']
 RequestProtocol = enum_type_wrapper.EnumTypeWrapper(_REQUESTPROTOCOL)
@@ -34,6 +34,8 @@ _REQUESTEVENT = DESCRIPTOR.message_types_by_name['RequestEvent']
 _REQUESTEVENT_REQUESTMETADATAENTRY = _REQUESTEVENT.nested_types_by_name['RequestMetadataEntry']
 _REQUESTEVENT_RESPONSEMETADATAENTRY = _REQUESTEVENT.nested_types_by_name['ResponseMetadataEntry']
 _AUDITEVENT = DESCRIPTOR.message_types_by_name['AuditEvent']
+_CREATEAUDITEVENTREQUEST = DESCRIPTOR.message_types_by_name['CreateAuditEventRequest']
+_CREATEAUDITEVENTRESPONSE = DESCRIPTOR.message_types_by_name['CreateAuditEventResponse']
 RequestEvent = _reflection.GeneratedProtocolMessageType('RequestEvent', (_message.Message,), {
 
   'RequestMetadataEntry' : _reflection.GeneratedProtocolMessageType('RequestMetadataEntry', (_message.Message,), {
@@ -64,6 +66,21 @@ AuditEvent = _reflection.GeneratedProtocolMessageType('AuditEvent', (_message.Me
   })
 _sym_db.RegisterMessage(AuditEvent)
 
+CreateAuditEventRequest = _reflection.GeneratedProtocolMessageType('CreateAuditEventRequest', (_message.Message,), {
+  'DESCRIPTOR' : _CREATEAUDITEVENTREQUEST,
+  '__module__' : 'kentik.audit.v202205beta1.audit_pb2'
+  # @@protoc_insertion_point(class_scope:kentik.audit.v202205beta1.CreateAuditEventRequest)
+  })
+_sym_db.RegisterMessage(CreateAuditEventRequest)
+
+CreateAuditEventResponse = _reflection.GeneratedProtocolMessageType('CreateAuditEventResponse', (_message.Message,), {
+  'DESCRIPTOR' : _CREATEAUDITEVENTRESPONSE,
+  '__module__' : 'kentik.audit.v202205beta1.audit_pb2'
+  # @@protoc_insertion_point(class_scope:kentik.audit.v202205beta1.CreateAuditEventResponse)
+  })
+_sym_db.RegisterMessage(CreateAuditEventResponse)
+
+_AUDITSERVICE = DESCRIPTOR.services_by_name['AuditService']
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
@@ -72,8 +89,12 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _REQUESTEVENT_REQUESTMETADATAENTRY._serialized_options = b'8\001'
   _REQUESTEVENT_RESPONSEMETADATAENTRY._options = None
   _REQUESTEVENT_RESPONSEMETADATAENTRY._serialized_options = b'8\001'
-  _REQUESTPROTOCOL._serialized_start=1157
-  _REQUESTPROTOCOL._serialized_end=1289
+  _AUDITSERVICE._options = None
+  _AUDITSERVICE._serialized_options = b'\312A\023grpc.api.kentik.com\352\327\002\013admin.audit'
+  _AUDITSERVICE.methods_by_name['CreateAuditEvent']._options = None
+  _AUDITSERVICE.methods_by_name['CreateAuditEvent']._serialized_options = b'\222AX\022!Create one ore more audit events.\032!Create one ore more audit events.*\020CreateAuditEvent\362\327\002\013audit:write\202\323\344\223\002\030\"\023/audit/v202205beta1:\001*'
+  _REQUESTPROTOCOL._serialized_start=1314
+  _REQUESTPROTOCOL._serialized_end=1446
   _REQUESTEVENT._serialized_start=250
   _REQUESTEVENT._serialized_end=851
   _REQUESTEVENT_REQUESTMETADATAENTRY._serialized_start=716
@@ -81,5 +102,11 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _REQUESTEVENT_RESPONSEMETADATAENTRY._serialized_start=784
   _REQUESTEVENT_RESPONSEMETADATAENTRY._serialized_end=851
   _AUDITEVENT._serialized_start=854
-  _AUDITEVENT._serialized_end=1154
+  _AUDITEVENT._serialized_end=1193
+  _CREATEAUDITEVENTREQUEST._serialized_start=1195
+  _CREATEAUDITEVENTREQUEST._serialized_end=1283
+  _CREATEAUDITEVENTRESPONSE._serialized_start=1285
+  _CREATEAUDITEVENTRESPONSE._serialized_end=1311
+  _AUDITSERVICE._serialized_start=1449
+  _AUDITSERVICE._serialized_end=1767
 # @@protoc_insertion_point(module_scope)
