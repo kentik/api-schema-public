@@ -374,23 +374,6 @@
       },
       "description": "XXX: these belong in vp.proto, but it would mean a breaking\nchange. When we get to that point, let's rearrange these things."
     },
-    "v202202ActivationSettings": {
-      "type": "object",
-      "properties": {
-        "gracePeriod": {
-          "type": "string"
-        },
-        "timeUnit": {
-          "type": "string"
-        },
-        "timeWindow": {
-          "type": "string"
-        },
-        "times": {
-          "type": "string"
-        }
-      }
-    },
     "v202202UserInfo": {
       "type": "object",
       "properties": {
@@ -415,9 +398,6 @@
         "reachabilityCritical": {
           "type": "number",
           "format": "float"
-        },
-        "activation": {
-          "$ref": "#/definitions/v202202ActivationSettings"
         }
       }
     },
