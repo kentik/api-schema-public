@@ -1,0 +1,217 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "EventViewModel API",
+        "version": "202204alpha1",
+        "contact": {
+            "name": "Kentik API Engineering"
+        }
+    },
+    "tags": [
+        {
+            "name": "EventViewModelService"
+        }
+    ],
+    "paths": {
+        "/event_view_model/v202204alpha1/event_view_model": {
+            "post": {
+                "summary": "Event view model will provide event context necessary to render notifications",
+                "description": "GetViewModel will provide event view model data structure",
+                "operationId": "GetViewModel",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202204alpha1GetViewModelResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202204alpha1GetViewModelRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "EventViewModelService"
+                ]
+            }
+        }
+    },
+    "externalDocs": {
+        "description": "More about Kentik APIs",
+        "url": "https://docs.kentik.com/api"
+    },
+    "components": {
+        "schemas": {
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "typeUrl": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string",
+                        "format": "byte"
+                    }
+                }
+            },
+            "protobufNullValue": {
+                "type": "string",
+                "enum": [
+                    "NULL_VALUE"
+                ],
+                "default": "NULL_VALUE",
+                "description": "`NullValue` is a singleton enumeration to represent the null value for the\n`Value` type union.\n\n The JSON representation for `NullValue` is JSON `null`.\n\n - NULL_VALUE: Null value."
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "v202204alpha1AlarmEvent": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "int64"
+                    }
+                }
+            },
+            "v202204alpha1EventViewDetail": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "label": {
+                        "type": "string"
+                    },
+                    "tag": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "object"
+                    }
+                }
+            },
+            "v202204alpha1EventViewImportance": {
+                "type": "string",
+                "enum": [
+                    "EVENT_VIEW_IMPORTANCE_UNSPECIFIED",
+                    "EVENT_VIEW_IMPORTANCE_HEALTHY",
+                    "EVENT_VIEW_IMPORTANCE_NOTICE",
+                    "EVENT_VIEW_IMPORTANCE_MINOR",
+                    "EVENT_VIEW_IMPORTANCE_WARNING",
+                    "EVENT_VIEW_IMPORTANCE_MAJOR",
+                    "EVENT_VIEW_IMPORTANCE_SEVERE",
+                    "EVENT_VIEW_IMPORTANCE_CRITICAL"
+                ],
+                "default": "EVENT_VIEW_IMPORTANCE_UNSPECIFIED"
+            },
+            "v202204alpha1EventViewModel": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "$ref": "#/components/schemas/v202204alpha1EventViewType"
+                    },
+                    "group": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "isActive": {
+                        "type": "boolean"
+                    },
+                    "startTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "endTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "currentState": {
+                        "type": "string"
+                    },
+                    "previousState": {
+                        "type": "string"
+                    },
+                    "importance": {
+                        "$ref": "#/components/schemas/v202204alpha1EventViewImportance"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202204alpha1EventViewDetail"
+                        }
+                    }
+                }
+            },
+            "v202204alpha1EventViewType": {
+                "type": "string",
+                "enum": [
+                    "EVENT_VIEW_TYPE_UNSPECIFIED",
+                    "EVENT_VIEW_TYPE_ALERT",
+                    "EVENT_VIEW_TYPE_MITIGATION",
+                    "EVENT_VIEW_TYPE_SYNTHETIC",
+                    "EVENT_VIEW_TYPE_INSIGHT",
+                    "EVENT_VIEW_TYPE_CUSTOM_INSIGHT"
+                ],
+                "default": "EVENT_VIEW_TYPE_UNSPECIFIED"
+            },
+            "v202204alpha1GetViewModelRequest": {
+                "type": "object",
+                "properties": {
+                    "companyId": {
+                        "type": "string",
+                        "format": "int64"
+                    },
+                    "alarm": {
+                        "$ref": "#/components/schemas/v202204alpha1AlarmEvent"
+                    }
+                }
+            },
+            "v202204alpha1GetViewModelResponse": {
+                "type": "object",
+                "properties": {
+                    "model": {
+                        "$ref": "#/components/schemas/v202204alpha1EventViewModel"
+                    }
+                }
+            }
+        }
+    }
+}
