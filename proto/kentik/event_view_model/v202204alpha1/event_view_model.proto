@@ -28,11 +28,10 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
 };
 
 message AlarmEvent {
-  int64 id = 1;
+  string id = 1;
 }
 
 message GetViewModelRequest {
-  int64 company_id = 1;
   oneof event {
     AlarmEvent alarm = 2;
   }
