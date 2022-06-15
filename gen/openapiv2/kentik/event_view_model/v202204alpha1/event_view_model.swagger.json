@@ -100,8 +100,7 @@
       "type": "object",
       "properties": {
         "id": {
-          "type": "string",
-          "format": "int64"
+          "type": "string"
         }
       }
     },
@@ -191,10 +190,6 @@
     "v202204alpha1GetViewModelRequest": {
       "type": "object",
       "properties": {
-        "companyId": {
-          "type": "string",
-          "format": "int64"
-        },
         "alarm": {
           "$ref": "#/definitions/v202204alpha1AlarmEvent"
         }
