@@ -117,6 +117,7 @@ message HealthMoment {
   uint32 size = 18;
   uint32 status = 19;
   string task_type = 20;
+  map<string, string> other_healths = 21;
 }
 
 // Agent impl type determines global vs private agent to use for specific test types.
