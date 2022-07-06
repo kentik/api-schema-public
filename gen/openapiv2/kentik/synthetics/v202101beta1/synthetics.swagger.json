@@ -1039,6 +1039,12 @@
         },
         "taskType": {
           "type": "string"
+        },
+        "otherHealths": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
         }
       }
     },
