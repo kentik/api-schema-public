@@ -227,6 +227,7 @@ message HealthSettings {
   ActivationSettings activation = 18;
   uint32 cert_expiry_warning = 19;
   uint32 cert_expiry_critical = 20;
+  string dns_valid_ips = 21;
 }
 
 message HostnameTest {
