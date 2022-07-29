@@ -962,6 +962,9 @@
         "certExpiryCritical": {
           "type": "integer",
           "format": "int64"
+        },
+        "dnsValidIps": {
+          "type": "string"
         }
       }
     },
