@@ -1564,6 +1564,7 @@ func (x *GetResultsForTestsRequest) Proto_ShallowCopy(v interface{}) {
 		x.EndTime = v.GetEndTime()
 		x.AgentIds = v.GetAgentIds()
 		x.Targets = v.GetTargets()
+		x.Aggregate = v.GetAggregate()
 	default:
 		if v, ok := v.(interface{ GetIds() []string }); ok {
 			x.Ids = v.GetIds()
@@ -1580,6 +1581,9 @@ func (x *GetResultsForTestsRequest) Proto_ShallowCopy(v interface{}) {
 		if v, ok := v.(interface{ GetTargets() []string }); ok {
 			x.Targets = v.GetTargets()
 		}
+		if v, ok := v.(interface{ GetAggregate() bool }); ok {
+			x.Aggregate = v.GetAggregate()
+		}
 	}
 }
 
@@ -1592,6 +1596,7 @@ func (x *GetResultsForTestsRequest) Proto_ShallowClone() (c *GetResultsForTestsR
 		c.EndTime = x.EndTime
 		c.AgentIds = x.AgentIds
 		c.Targets = x.Targets
+		c.Aggregate = x.Aggregate
 	}
 	return
 }

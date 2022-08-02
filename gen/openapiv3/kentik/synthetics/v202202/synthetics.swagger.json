@@ -900,6 +900,10 @@
                             "type": "string"
                         },
                         "description": "Optionally only look at a subset of targets."
+                    },
+                    "aggregate": {
+                        "type": "boolean",
+                        "title": "Optional bool to calculate aggregated test metrics"
                     }
                 }
             },

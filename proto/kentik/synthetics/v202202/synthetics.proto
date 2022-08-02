@@ -417,6 +417,9 @@ message GetResultsForTestsRequest {
 
   // Optionally only look at a subset of targets.
   repeated string targets = 5;
+
+  // Optional bool to calculate aggregated test metrics
+  bool aggregate = 6;
 }
 
 message GetResultsForTestsResponse {
