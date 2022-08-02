@@ -1,7 +1,7 @@
 syntax = "proto3";
 
-package kentik.audit.v202208beta1;
-option go_package = "github.com/kentik/api-schema/gen/go/kentik/audit/v202208beta1;audit";
+package kentik.audit.v202208beta2;
+option go_package = "github.com/kentik/api-schema/gen/go/kentik/audit/v202208beta2;audit";
 
 import "google/api/annotations.proto";
 import "google/api/client.proto";
@@ -63,7 +63,6 @@ enum RequestProtocol {
   REQUEST_PROTOCOL_UNSPECIFIED = 0;
   REQUEST_PROTOCOL_REST = 1;
   REQUEST_PROTOCOL_GRPC = 2;
-  REQUEST_PROTOCOL_HTTP = 3;
 }
 
 // Event Types
@@ -85,9 +84,9 @@ message RequestEvent {
 
 message AuditEvent {
   // ID of the user (uid) that produced the event
-  uint64 user_id = 1;
+  string user_id = 1;
   // ID of the company (cid) that produced the event
-  uint64 company_id = 2;
+  string company_id = 2;
   // Name of the service that generated the event.
   string service_name = 3;  
   // Unique identifier of the event. EventID and ServiceName are used to identify an event uniquely
@@ -144,7 +143,7 @@ service AuditService {
     rpc CreateAuditEvents (CreateAuditEventsRequest) returns (CreateAuditEventsResponse) {
       option (kentik.core.v202012alpha1.method_scope) = "audit:write";
       option (google.api.http) = {
-        post: "/audit/v202208beta1/events"
+        post: "/audit/v202208beta2/events"
         body: "*"
       };
       
@@ -159,7 +158,7 @@ service AuditService {
       option (kentik.core.v202012alpha1.method_scope) = "audit:read";
       
       option (google.api.http) = {
-        get: "/audit/v202208beta1/events"
+        get: "/audit/v202208beta2/events"
       };
 
       option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
@@ -172,7 +171,7 @@ service AuditService {
     rpc GetAuditEvent(GetAuditEventRequest) returns (GetAuditEventResponse) {
       option (kentik.core.v202012alpha1.method_scope) = "audit:read";
       option (google.api.http) = {
-        get: "/audit/v202208beta1/events/{id}/{ctime}"
+        get: "/audit/v202208beta2/events/{id}/{ctime}"
       };
       option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
         operation_id: "GetAuditEvent"

@@ -14,7 +14,7 @@
         }
     ],
     "paths": {
-        "/audit/v202208beta1/events": {
+        "/audit/v202208beta2/events": {
             "get": {
                 "summary": "List Audit Events.",
                 "description": "Returns a list of audit events.",
@@ -25,7 +25,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/v202208beta1ListAuditEventsResponse"
+                                    "$ref": "#/components/schemas/v202208beta2ListAuditEventsResponse"
                                 }
                             }
                         }
@@ -95,7 +95,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/v202208beta1CreateAuditEventsResponse"
+                                    "$ref": "#/components/schemas/v202208beta2CreateAuditEventsResponse"
                                 }
                             }
                         }
@@ -115,7 +115,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202208beta1CreateAuditEventsRequest"
+                                "$ref": "#/components/schemas/v202208beta2CreateAuditEventsRequest"
                             }
                         }
                     },
@@ -126,7 +126,7 @@
                 ]
             }
         },
-        "/audit/v202208beta1/events/{id}/{ctime}": {
+        "/audit/v202208beta2/events/{id}/{ctime}": {
             "get": {
                 "summary": "Get an Audit Event",
                 "description": "Return a specific audit event.",
@@ -137,7 +137,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/v202208beta1GetAuditEventResponse"
+                                    "$ref": "#/components/schemas/v202208beta2GetAuditEventResponse"
                                 }
                             }
                         }
@@ -233,17 +233,15 @@
                     }
                 }
             },
-            "v202208beta1AuditEvent": {
+            "v202208beta2AuditEvent": {
                 "type": "object",
                 "properties": {
                     "userId": {
                         "type": "string",
-                        "format": "uint64",
                         "title": "ID of the user (uid) that produced the event"
                     },
                     "companyId": {
                         "type": "string",
-                        "format": "uint64",
                         "title": "ID of the company (cid) that produced the event"
                     },
                     "serviceName": {
@@ -273,44 +271,44 @@
                         "title": "ID of the event in the database (read-only)"
                     },
                     "request": {
-                        "$ref": "#/components/schemas/v202208beta1RequestEvent"
+                        "$ref": "#/components/schemas/v202208beta2RequestEvent"
                     }
                 }
             },
-            "v202208beta1CreateAuditEventsRequest": {
+            "v202208beta2CreateAuditEventsRequest": {
                 "type": "object",
                 "properties": {
                     "events": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/components/schemas/v202208beta1AuditEvent"
+                            "$ref": "#/components/schemas/v202208beta2AuditEvent"
                         }
                     }
                 }
             },
-            "v202208beta1CreateAuditEventsResponse": {
+            "v202208beta2CreateAuditEventsResponse": {
                 "type": "object"
             },
-            "v202208beta1GetAuditEventResponse": {
+            "v202208beta2GetAuditEventResponse": {
                 "type": "object",
                 "properties": {
                     "event": {
-                        "$ref": "#/components/schemas/v202208beta1AuditEvent"
+                        "$ref": "#/components/schemas/v202208beta2AuditEvent"
                     }
                 }
             },
-            "v202208beta1ListAuditEventsResponse": {
+            "v202208beta2ListAuditEventsResponse": {
                 "type": "object",
                 "properties": {
                     "events": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/components/schemas/v202208beta1AuditEvent"
+                            "$ref": "#/components/schemas/v202208beta2AuditEvent"
                         }
                     }
                 }
             },
-            "v202208beta1RequestEvent": {
+            "v202208beta2RequestEvent": {
                 "type": "object",
                 "properties": {
                     "requestMethod": {
@@ -340,18 +338,17 @@
                         }
                     },
                     "requestProtocol": {
-                        "$ref": "#/components/schemas/v202208beta1RequestProtocol"
+                        "$ref": "#/components/schemas/v202208beta2RequestProtocol"
                     }
                 },
                 "title": "RequestEvent describes an event generated by an REST or a gRPC request"
             },
-            "v202208beta1RequestProtocol": {
+            "v202208beta2RequestProtocol": {
                 "type": "string",
                 "enum": [
                     "REQUEST_PROTOCOL_UNSPECIFIED",
                     "REQUEST_PROTOCOL_REST",
-                    "REQUEST_PROTOCOL_GRPC",
-                    "REQUEST_PROTOCOL_HTTP"
+                    "REQUEST_PROTOCOL_GRPC"
                 ],
                 "default": "REQUEST_PROTOCOL_UNSPECIFIED"
             }

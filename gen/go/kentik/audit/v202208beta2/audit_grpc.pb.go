@@ -33,7 +33,7 @@ func NewAuditServiceClient(cc grpc.ClientConnInterface) AuditServiceClient {
 
 func (c *auditServiceClient) CreateAuditEvents(ctx context.Context, in *CreateAuditEventsRequest, opts ...grpc.CallOption) (*CreateAuditEventsResponse, error) {
 	out := new(CreateAuditEventsResponse)
-	err := c.cc.Invoke(ctx, "/kentik.audit.v202208beta1.AuditService/CreateAuditEvents", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kentik.audit.v202208beta2.AuditService/CreateAuditEvents", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -42,7 +42,7 @@ func (c *auditServiceClient) CreateAuditEvents(ctx context.Context, in *CreateAu
 
 func (c *auditServiceClient) ListAuditEvents(ctx context.Context, in *ListAuditEventsRequest, opts ...grpc.CallOption) (*ListAuditEventsResponse, error) {
 	out := new(ListAuditEventsResponse)
-	err := c.cc.Invoke(ctx, "/kentik.audit.v202208beta1.AuditService/ListAuditEvents", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kentik.audit.v202208beta2.AuditService/ListAuditEvents", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func (c *auditServiceClient) ListAuditEvents(ctx context.Context, in *ListAuditE
 
 func (c *auditServiceClient) GetAuditEvent(ctx context.Context, in *GetAuditEventRequest, opts ...grpc.CallOption) (*GetAuditEventResponse, error) {
 	out := new(GetAuditEventResponse)
-	err := c.cc.Invoke(ctx, "/kentik.audit.v202208beta1.AuditService/GetAuditEvent", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/kentik.audit.v202208beta2.AuditService/GetAuditEvent", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -102,7 +102,7 @@ func _AuditService_CreateAuditEvents_Handler(srv interface{}, ctx context.Contex
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/kentik.audit.v202208beta1.AuditService/CreateAuditEvents",
+		FullMethod: "/kentik.audit.v202208beta2.AuditService/CreateAuditEvents",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AuditServiceServer).CreateAuditEvents(ctx, req.(*CreateAuditEventsRequest))
@@ -120,7 +120,7 @@ func _AuditService_ListAuditEvents_Handler(srv interface{}, ctx context.Context,
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/kentik.audit.v202208beta1.AuditService/ListAuditEvents",
+		FullMethod: "/kentik.audit.v202208beta2.AuditService/ListAuditEvents",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AuditServiceServer).ListAuditEvents(ctx, req.(*ListAuditEventsRequest))
@@ -138,7 +138,7 @@ func _AuditService_GetAuditEvent_Handler(srv interface{}, ctx context.Context, d
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/kentik.audit.v202208beta1.AuditService/GetAuditEvent",
+		FullMethod: "/kentik.audit.v202208beta2.AuditService/GetAuditEvent",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AuditServiceServer).GetAuditEvent(ctx, req.(*GetAuditEventRequest))
@@ -150,7 +150,7 @@ func _AuditService_GetAuditEvent_Handler(srv interface{}, ctx context.Context, d
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var AuditService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "kentik.audit.v202208beta1.AuditService",
+	ServiceName: "kentik.audit.v202208beta2.AuditService",
 	HandlerType: (*AuditServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -167,5 +167,5 @@ var AuditService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "kentik/audit/v202208beta1/audit.proto",
+	Metadata: "kentik/audit/v202208beta2/audit.proto",
 }
