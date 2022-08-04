@@ -188,6 +188,7 @@ message TestPingSettings {
   uint32 port = 3;
   uint32 timeout = 4;
   float delay = 5;
+  uint32 dscp = 6;
 }
 
 message TestTraceSettings {
@@ -197,6 +198,7 @@ message TestTraceSettings {
   uint32 timeout = 4;
   uint32 limit = 5;
   float delay = 6;
+  uint32 dscp = 7;
 }
 
 message ActivationSettings {

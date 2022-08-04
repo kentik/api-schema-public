@@ -1314,6 +1314,10 @@
         "delay": {
           "type": "number",
           "format": "float"
+        },
+        "dscp": {
+          "type": "integer",
+          "format": "int64"
         }
       }
     },
@@ -1442,6 +1446,10 @@
         "delay": {
           "type": "number",
           "format": "float"
+        },
+        "dscp": {
+          "type": "integer",
+          "format": "int64"
         }
       }
     },

@@ -393,6 +393,7 @@ func (x *TestPingSettings) Proto_ShallowCopy(v interface{}) {
 		x.Port = v.GetPort()
 		x.Timeout = v.GetTimeout()
 		x.Delay = v.GetDelay()
+		x.Dscp = v.GetDscp()
 	default:
 		if v, ok := v.(interface{ GetCount() uint32 }); ok {
 			x.Count = v.GetCount()
@@ -409,6 +410,9 @@ func (x *TestPingSettings) Proto_ShallowCopy(v interface{}) {
 		if v, ok := v.(interface{ GetDelay() float32 }); ok {
 			x.Delay = v.GetDelay()
 		}
+		if v, ok := v.(interface{ GetDscp() uint32 }); ok {
+			x.Dscp = v.GetDscp()
+		}
 	}
 }
 
@@ -421,6 +425,7 @@ func (x *TestPingSettings) Proto_ShallowClone() (c *TestPingSettings) {
 		c.Port = x.Port
 		c.Timeout = x.Timeout
 		c.Delay = x.Delay
+		c.Dscp = x.Dscp
 	}
 	return
 }
@@ -438,6 +443,7 @@ func (x *TestTraceSettings) Proto_ShallowCopy(v interface{}) {
 		x.Timeout = v.GetTimeout()
 		x.Limit = v.GetLimit()
 		x.Delay = v.GetDelay()
+		x.Dscp = v.GetDscp()
 	default:
 		if v, ok := v.(interface{ GetCount() uint32 }); ok {
 			x.Count = v.GetCount()
@@ -457,6 +463,9 @@ func (x *TestTraceSettings) Proto_ShallowCopy(v interface{}) {
 		if v, ok := v.(interface{ GetDelay() float32 }); ok {
 			x.Delay = v.GetDelay()
 		}
+		if v, ok := v.(interface{ GetDscp() uint32 }); ok {
+			x.Dscp = v.GetDscp()
+		}
 	}
 }
 
@@ -470,6 +479,7 @@ func (x *TestTraceSettings) Proto_ShallowClone() (c *TestTraceSettings) {
 		c.Timeout = x.Timeout
 		c.Limit = x.Limit
 		c.Delay = x.Delay
+		c.Dscp = x.Dscp
 	}
 	return
 }
