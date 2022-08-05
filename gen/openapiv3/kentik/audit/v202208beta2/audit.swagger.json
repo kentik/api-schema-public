@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "Audit API",
-        "version": "202205",
+        "version": "202208beta1",
         "contact": {
             "name": "Kentik API Engineering",
             "url": "https://github.com/kentik/api"
@@ -14,18 +14,88 @@
         }
     ],
     "paths": {
-        "/audit/v202205beta1": {
-            "post": {
-                "summary": "Create one ore more audit events.",
-                "description": "Create one ore more audit events.",
-                "operationId": "CreateAuditEvent",
+        "/audit/v202208beta2/events": {
+            "get": {
+                "summary": "List Audit Events.",
+                "description": "Returns a list of audit events.",
+                "operationId": "AuditEventList",
                 "responses": {
                     "200": {
                         "description": "A successful response.",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/v202205beta1CreateAuditEventResponse"
+                                    "$ref": "#/components/schemas/v202208beta2ListAuditEventsResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "startTime",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    },
+                    {
+                        "name": "endTime",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "uint64",
+                            "default": "0"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "uint64",
+                            "default": "100"
+                        }
+                    }
+                ],
+                "tags": [
+                    "AuditService"
+                ]
+            },
+            "post": {
+                "summary": "Create one ore more audit events.",
+                "description": "Create one ore more audit events.",
+                "operationId": "CreateAuditEvents",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202208beta2CreateAuditEventsResponse"
                                 }
                             }
                         }
@@ -45,12 +115,64 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202205beta1CreateAuditEventRequest"
+                                "$ref": "#/components/schemas/v202208beta2CreateAuditEventsRequest"
                             }
                         }
                     },
                     "required": true
                 },
+                "tags": [
+                    "AuditService"
+                ]
+            }
+        },
+        "/audit/v202208beta2/events/{id}/{ctime}": {
+            "get": {
+                "summary": "Get an Audit Event",
+                "description": "Return a specific audit event.",
+                "operationId": "GetAuditEvent",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202208beta2GetAuditEventResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "ctime",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    }
+                ],
                 "tags": [
                     "AuditService"
                 ]
@@ -111,7 +233,7 @@
                     }
                 }
             },
-            "v202205beta1AuditEvent": {
+            "v202208beta2AuditEvent": {
                 "type": "object",
                 "properties": {
                     "userId": {
@@ -130,10 +252,10 @@
                         "type": "string",
                         "title": "Unique identifier of the event. EventID and ServiceName are used to identify an event uniquely"
                     },
-                    "cdate": {
+                    "ctime": {
                         "type": "string",
                         "format": "date-time",
-                        "description": "When the event was produced, the current time is used if not provided."
+                        "description": "When the event was produced. Required."
                     },
                     "eventPayload": {
                         "type": "string",
@@ -143,26 +265,50 @@
                         "type": "string",
                         "title": "Idenfier for events generated by the same root transaction. For instrumented services, this is usually the trace ID"
                     },
+                    "id": {
+                        "type": "string",
+                        "format": "uint64",
+                        "title": "ID of the event in the database (read-only)"
+                    },
                     "request": {
-                        "$ref": "#/components/schemas/v202205beta1RequestEvent"
+                        "$ref": "#/components/schemas/v202208beta2RequestEvent"
                     }
                 }
             },
-            "v202205beta1CreateAuditEventRequest": {
+            "v202208beta2CreateAuditEventsRequest": {
                 "type": "object",
                 "properties": {
                     "events": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/components/schemas/v202205beta1AuditEvent"
+                            "$ref": "#/components/schemas/v202208beta2AuditEvent"
                         }
                     }
                 }
             },
-            "v202205beta1CreateAuditEventResponse": {
+            "v202208beta2CreateAuditEventsResponse": {
                 "type": "object"
             },
-            "v202205beta1RequestEvent": {
+            "v202208beta2GetAuditEventResponse": {
+                "type": "object",
+                "properties": {
+                    "event": {
+                        "$ref": "#/components/schemas/v202208beta2AuditEvent"
+                    }
+                }
+            },
+            "v202208beta2ListAuditEventsResponse": {
+                "type": "object",
+                "properties": {
+                    "events": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202208beta2AuditEvent"
+                        }
+                    }
+                }
+            },
+            "v202208beta2RequestEvent": {
                 "type": "object",
                 "properties": {
                     "requestMethod": {
@@ -192,18 +338,17 @@
                         }
                     },
                     "requestProtocol": {
-                        "$ref": "#/components/schemas/v202205beta1RequestProtocol"
+                        "$ref": "#/components/schemas/v202208beta2RequestProtocol"
                     }
                 },
                 "title": "RequestEvent describes an event generated by an REST or a gRPC request"
             },
-            "v202205beta1RequestProtocol": {
+            "v202208beta2RequestProtocol": {
                 "type": "string",
                 "enum": [
                     "REQUEST_PROTOCOL_UNSPECIFIED",
                     "REQUEST_PROTOCOL_REST",
-                    "REQUEST_PROTOCOL_GRPC",
-                    "REQUEST_PROTOCOL_HTTP"
+                    "REQUEST_PROTOCOL_GRPC"
                 ],
                 "default": "REQUEST_PROTOCOL_UNSPECIFIED"
             }

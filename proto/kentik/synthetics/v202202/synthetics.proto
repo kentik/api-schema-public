@@ -188,6 +188,7 @@ message TestPingSettings {
   uint32 port = 3;
   uint32 timeout = 4;
   float delay = 5;
+  uint32 dscp = 6;
 }
 
 message TestTraceSettings {
@@ -197,6 +198,7 @@ message TestTraceSettings {
   uint32 timeout = 4;
   uint32 limit = 5;
   float delay = 6;
+  uint32 dscp = 7;
 }
 
 message ActivationSettings {
@@ -227,6 +229,7 @@ message HealthSettings {
   ActivationSettings activation = 18;
   uint32 cert_expiry_warning = 19;
   uint32 cert_expiry_critical = 20;
+  string dns_valid_ips = 21;
 }
 
 message HostnameTest {
@@ -416,6 +419,9 @@ message GetResultsForTestsRequest {
 
   // Optionally only look at a subset of targets.
   repeated string targets = 5;
+
+  // Optional bool to calculate aggregated test metrics
+  bool aggregate = 6;
 }
 
 message GetResultsForTestsResponse {

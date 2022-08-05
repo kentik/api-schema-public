@@ -770,6 +770,10 @@
             "type": "string"
           },
           "description": "Optionally only look at a subset of targets."
+        },
+        "aggregate": {
+          "type": "boolean",
+          "title": "Optional bool to calculate aggregated test metrics"
         }
       }
     },
@@ -962,6 +966,9 @@
         "certExpiryCritical": {
           "type": "integer",
           "format": "int64"
+        },
+        "dnsValidIps": {
+          "type": "string"
         }
       }
     },
@@ -1307,6 +1314,10 @@
         "delay": {
           "type": "number",
           "format": "float"
+        },
+        "dscp": {
+          "type": "integer",
+          "format": "int64"
         }
       }
     },
@@ -1435,6 +1446,10 @@
         "delay": {
           "type": "number",
           "format": "float"
+        },
+        "dscp": {
+          "type": "integer",
+          "format": "int64"
         }
       }
     },
