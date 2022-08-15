@@ -417,6 +417,14 @@
     }
   },
   "definitions": {
+    "AgentMetadataIpValue": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        }
+      }
+    },
     "protobufAny": {
       "type": "object",
       "properties": {
@@ -567,6 +575,38 @@
           "type": "array",
           "items": {
             "type": "string"
+          }
+        },
+        "metadata": {
+          "$ref": "#/definitions/v202202AgentMetadata"
+        }
+      }
+    },
+    "v202202AgentMetadata": {
+      "type": "object",
+      "properties": {
+        "privateIpv4Addresses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentMetadataIpValue"
+          }
+        },
+        "publicIpv4Addresses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentMetadataIpValue"
+          }
+        },
+        "privateIpv6Addresses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentMetadataIpValue"
+          }
+        },
+        "publicIpv6Addresses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentMetadataIpValue"
           }
         }
       }

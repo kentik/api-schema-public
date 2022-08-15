@@ -547,6 +547,14 @@
             }
         },
         "schemas": {
+            "AgentMetadataIpValue": {
+                "type": "object",
+                "properties": {
+                    "value": {
+                        "type": "string"
+                    }
+                }
+            },
             "protobufAny": {
                 "type": "object",
                 "properties": {
@@ -697,6 +705,38 @@
                         "type": "array",
                         "items": {
                             "type": "string"
+                        }
+                    },
+                    "metadata": {
+                        "$ref": "#/components/schemas/v202202AgentMetadata"
+                    }
+                }
+            },
+            "v202202AgentMetadata": {
+                "type": "object",
+                "properties": {
+                    "privateIpv4Addresses": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/AgentMetadataIpValue"
+                        }
+                    },
+                    "publicIpv4Addresses": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/AgentMetadataIpValue"
+                        }
+                    },
+                    "privateIpv6Addresses": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/AgentMetadataIpValue"
+                        }
+                    },
+                    "publicIpv6Addresses": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/AgentMetadataIpValue"
                         }
                     }
                 }

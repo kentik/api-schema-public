@@ -92,11 +92,23 @@ message Agent {
   string region = 17;
   string country = 18;
   repeated string test_ids = 19;
-  string local_ip = 20;
+  string local_ip = 20 [deprecated=true];
   string cloud_region = 22;
   string cloud_provider = 23;
   ImplementType agent_impl = 24;
   repeated string labels = 25;
+  AgentMetadata metadata = 26;
+}
+
+message AgentMetadata {
+  repeated IpValue private_ipv4_addresses = 1;
+  repeated IpValue public_ipv4_addresses = 2;
+  repeated IpValue private_ipv6_addresses = 3;
+  repeated IpValue public_ipv6_addresses = 4;
+
+  message IpValue {
+    string value = 1;
+  }
 }
 
 enum IPFamily {
