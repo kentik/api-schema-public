@@ -17,14 +17,15 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   info: {
     title: "BGP Monitoring API"
     version: "202205"
+    description: "API for interaction with Kentik BGP Monitoring Service.\n"
     contact: {
       name: "Kentik API Engineering"
-      url: "https://github.com/kentik/api"
+      url: "https://github.com/kentik/api-schema-public"
     }
   }
   external_docs: {
-    url: "https://docs.kentik.com/api"
-    description: "More about Kentik APIs"
+    url: "https://kb.kentik.com/v4/Ma03.htm#Ma03-BGP_Monitor_Details_Page"
+    description: "More about Kentik BGP monitoring"
   }
   schemes: HTTPS
   consumes: "application/json"
@@ -60,7 +61,10 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
 };
 
 // models
+
+// === BGP monitor config and status ===
 // -------------------------------------------------------
+
 enum BgpMonitorStatus {
     BGP_MONITOR_STATUS_UNSPECIFIED = 0; // Invalid value.
     BGP_MONITOR_STATUS_ACTIVE = 1; // Monitor is active.
@@ -68,7 +72,6 @@ enum BgpMonitorStatus {
     BGP_MONITOR_STATUS_DELETED = 3; // Monitor is deleted. Not settable via SetMonitorStatus.
 }
 
-// === BGP monitor config and status ===
 message Nlri {
   kentik.ktrac.route.v202104.Afi afi = 1;
   kentik.ktrac.route.v202104.Safi safi = 2;
@@ -103,7 +106,9 @@ message BgpMonitor {
     repeated string labels = 9;
 }
 
-// === BGP monitor results ===
+// === BGP monitoring results ===
+// -------------------------------------------------------
+
 enum BgpMetricType {
   BGP_METRIC_TYPE_UNSPECIFIED = 0; // Invalid value.
   BGP_METRIC_TYPE_REACHABILITY = 1;
@@ -112,9 +117,12 @@ enum BgpMetricType {
 
 message RouteInfo {
   Nlri nlri = 1;
-  uint32 origin_asn = 2;
-  repeated string as_path = 3;
-  kentik.ktrac.route.v202104.VantagePoint vantage_point = 4;
+  uint32 origin_asn = 2 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    description: "The autonomous system number originating the NLRI"
+  }
+  ];
+  repeated string as_path = 3 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "AS path observed at the vantage point for the NLRI"}];
+  kentik.ktrac.route.v202104.VantagePoint vantage_point = 4 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Name of the vantage point providing the observation"}];
   kentik.ktrac.route.v202104.RpkiStatus rpki_status = 5;
   string nexthop = 6;
 }
@@ -123,8 +131,10 @@ message BgpMetric {
     google.protobuf.Timestamp timestamp = 1;
     Nlri nlri = 2;
     oneof type {
-      float reachability = 3; // percentage of vantage points reporting the prefix reachable
-      uint32 path_changes = 5; // number of AS path changes for the prefix across all vantage points in the querried time period
+      // percentage of vantage points reporting the prefix reachable
+      float reachability = 3;
+      // number of AS path changes for the prefix across all vantage points in the queried time period
+      uint32 path_changes = 5;
   }
 }
 
@@ -199,11 +209,6 @@ service BgpMonitoringAdminService {
         post: "/bgp_monitoring/v202205beta1/monitors"
         body: "*"
       };
-      option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
-        operation_id: "MonitorCreate"
-        summary: "Create BGP Monitor."
-        description: "Create BGP monitor. Returns created monitor configuration."
-      };
     }
 
     rpc GetMonitor(GetMonitorRequest) returns (GetMonitorResponse) {
@@ -258,6 +263,7 @@ service BgpMonitoringAdminService {
   }
 
 // Data service
+
 message GetMetricsForTargetRequest {
     // Start of the time interval for this query.
     google.protobuf.Timestamp start_time = 1;
