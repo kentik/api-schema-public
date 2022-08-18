@@ -2,10 +2,11 @@
     "openapi": "3.0.0",
     "info": {
         "title": "BGP Monitoring API",
+        "description": "API for interaction with Kentik BGP Monitoring Service.\n",
         "version": "202205",
         "contact": {
             "name": "Kentik API Engineering",
-            "url": "https://github.com/kentik/api"
+            "url": "https://github.com/kentik/api-schema-public"
         }
     },
     "tags": [
@@ -91,9 +92,7 @@
                 ]
             },
             "post": {
-                "summary": "Create BGP Monitor.",
-                "description": "Create BGP monitor. Returns created monitor configuration.",
-                "operationId": "MonitorCreate",
+                "operationId": "BgpMonitoringAdminService_CreateMonitor",
                 "responses": {
                     "200": {
                         "description": "A successful response.",
@@ -365,8 +364,8 @@
         }
     ],
     "externalDocs": {
-        "description": "More about Kentik APIs",
-        "url": "https://docs.kentik.com/api"
+        "description": "More about Kentik BGP monitoring",
+        "url": "https://kb.kentik.com/v4/Ma03.htm#Ma03-BGP_Monitor_Details_Page"
     },
     "components": {
         "securitySchemes": {
@@ -419,8 +418,7 @@
                     "AFI_IP4",
                     "AFI_IP6"
                 ],
-                "default": "AFI_UNSPECIFIED",
-                "description": "XXX: These are common and perhaps belong in a bgp.proto."
+                "default": "AFI_UNSPECIFIED"
             },
             "v202104RpkiStatus": {
                 "type": "string",
@@ -461,20 +459,25 @@
                     "peerIp": {
                         "type": "string"
                     }
-                },
-                "description": "XXX: these belong in vp.proto, but it would mean a breaking\nchange. When we get to that point, let's rearrange these things."
+                }
             },
             "v202202UserInfo": {
                 "type": "object",
                 "properties": {
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Unique ID of the user",
+                        "readOnly": true
                     },
                     "email": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "E-mail address of the user",
+                        "readOnly": true
                     },
                     "fullName": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Full name of the user",
+                        "readOnly": true
                     }
                 }
             },
@@ -503,11 +506,13 @@
                     },
                     "reachability": {
                         "type": "number",
-                        "format": "float"
+                        "format": "float",
+                        "title": "percentage of vantage points reporting the prefix reachable"
                     },
                     "pathChanges": {
                         "type": "integer",
-                        "format": "int64"
+                        "format": "int64",
+                        "title": "number of AS path changes for the prefix across all vantage points in the queried time period"
                     }
                 }
             },
@@ -518,8 +523,7 @@
                     "BGP_METRIC_TYPE_REACHABILITY",
                     "BGP_METRIC_TYPE_PATH_CHANGES"
                 ],
-                "default": "BGP_METRIC_TYPE_UNSPECIFIED",
-                "title": "=== BGP monitor results ==="
+                "default": "BGP_METRIC_TYPE_UNSPECIFIED"
             },
             "v202205beta1BgpMonitor": {
                 "type": "object",
@@ -599,8 +603,7 @@
                     "BGP_MONITOR_STATUS_PAUSED",
                     "BGP_MONITOR_STATUS_DELETED"
                 ],
-                "default": "BGP_MONITOR_STATUS_UNSPECIFIED",
-                "title": "models\n-------------------------------------------------------"
+                "default": "BGP_MONITOR_STATUS_UNSPECIFIED"
             },
             "v202205beta1CreateMonitorRequest": {
                 "type": "object",
@@ -646,8 +649,7 @@
                             "$ref": "#/components/schemas/v202205beta1BgpMetricType"
                         }
                     }
-                },
-                "title": "Data service"
+                }
             },
             "v202205beta1GetMetricsForTargetResponse": {
                 "type": "object",
@@ -730,8 +732,7 @@
                     "prefix": {
                         "type": "string"
                     }
-                },
-                "title": "=== BGP monitor config and status ==="
+                }
             },
             "v202205beta1RouteInfo": {
                 "type": "object",
@@ -741,13 +742,15 @@
                     },
                     "originAsn": {
                         "type": "integer",
-                        "format": "int64"
+                        "format": "int64",
+                        "description": "The autonomous system number originating the NLRI"
                     },
                     "asPath": {
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "AS path observed at the vantage point for the NLRI"
                     },
                     "vantagePoint": {
                         "$ref": "#/components/schemas/v202104VantagePoint"

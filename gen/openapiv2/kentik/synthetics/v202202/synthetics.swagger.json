@@ -2,10 +2,11 @@
   "swagger": "2.0",
   "info": {
     "title": "Synthetics Monitoring API",
+    "description": "# Overview\nThe Synthetics Monitoring API provides programmatic access to Kentik's [synthetic monitoring system](https://kb.kentik.com/v4/Ma00.htm).\n The API consists of two endpoints:\n| endpoint | purpose |\n|-----------|---------|\n| SyntheticsAdminService | CRUD operations for synthetic tests and agents |\n| SyntheticsDataService  | Retrieval of synthetic test results and network traces |\n\nBoth REST endpoint and gRPC RPCs are provided.\n### Known Limitations\nThe API currently does not support:\n* _BGP_ tests, which are supported in a [separate API](https://github.com/kentik/api-schema-public/blob/ccf9927fe3cd7918c86c7cdc1212936e836743f8/gen/openapiv3/kentik/bgp_monitoring/v202205beta1/bgp_monitoring.swagger.json)\n* _Transaction_ tests\n\n### Additional public resources\nKentik community [Python](https://github.com/kentik/community_sdk_python) and \n[Go](https://github.com/kentik/community_sdk_golang) SDKs provide language-specific support for using this \nand other Kentik APIs. These SDKs can be also used as example code for development. \nA [Terraform provider](https://registry.terraform.io/providers/kentik/kentik-synthetics) is available for \nconfiguring tests and agents for Kentik synthetic monitoring.\n# Anatomy of a synthetic test\nEach _Test_ consists of one or more _Tasks_. Tasks are executed by monitoring _Agents_ that send synthetic \ntraffic (probes) over the network. The API currently supports following tasks:\n| task name  | purpose |\n|------------|---------|\n| ping       | Test basic address, and optionally TCP port reachability |\n| traceroute (a.k.a. trace)| Discover unidirectional network path |\n| http | Perform a simple HTTP/HTTPS request |\n| page-load | Use headless Chromium to execute an HTTP/HTTPS request |\n| dns | Execute a DNS query|\n\nThe set of tasks executed on behalf of a test depends on the test _type_.\nFollowing test types are currently supported by the API:\n| API test type | Kentik Portal (UI) test type | tasks |\n|---------------|--------------|-------|\n| ip | IP Address | ping, traceroute |\n| hostname | Hostname | ping, traceroute |\n| network_grid | Network Grid | ping, traceroute |\n| agent | Agent-to-Agent | ping, traceroute |\n| network_mesh | Network Mesh | ping, traceroute |\n| flow | Autonomous Tests (5 variants) | ping, traceroute |\n| url | HTTP(S) or API | http, ping (optional), traceroute (optional) |\n| page_load | Page Load | page-load, ping (optional), traceroute (optional) |\n| dns | DNS Server Monitor | dns |\n| dns_grid | DNS Server Grid | dns |\n\n***Note:*** _ping_ and _traceroute_ tasks are always run together (not one without the other).\n\n## Test configuration, runtime state and metadata\nConfiguration, runtime state information, and metadata about a synthetic test are provided by the _Test_ object.\nRuntime state and metadata attributes:\n| attribute | access | purpose |\n|-----------|--------|---------|\n| id | RO | System-generated unique identifier of the test |\n| name | RW | User specified name for the test (need not be unique) |\n| type | RO (after creation) | Type of the test (set on creation; read-only thereafter) |\n| status | RW | Life-cycle status of the test |\n| cdate | RO | Creation timestamp |\n| edate | RO | Last-modification timestamp |\n| createdBy | RO | Identity of the user that created the test |\n| lastUpdatedBy | RO | Identity of the latest user to modify the test |\n| labels | RW | List of names of labels applied to the test |\n\nConfiguration of a synthetic test is carried in the _settings_ attribute of the _Test_ object.\nSettings consist of attributes common to all tests as well as attributes for tests of a specific type.\n\n### Common test settings\nThe following settings are used for tests of all types:\n| attribute | purpose | required |\n|-----------|---------|----------|\n| agentIds  | IDs of agents to execute tasks for the test | YES |\n| period | Test execution interval in seconds | NO (default 60s) |\n| family | IP address family. Used only for tests whose type is url or dns. Selects which type of DNS resource is queried for resolving hostname to target address | NO (default IP_FAMILY_DUAL) |\n| notificationChannels | List of notification channels for the test | NO (default empty list)\n| healthSettings | A HealthSettings object that configures health settings for this test, which includes metric thresholds that define health status (warning and critical) and trigger associated alarms. | YES |\n| ping | A TestPingSettings object that configures the ping task of the test | NO (default depends on test type) |\n| trace | A TestTraceSettings object that configures the trace task of the test | NO (default depends on test type) |\n| tasks | List of names of the tasks that will be executed for this test | YES |\n\n### Test-specific settings\nEach test type has its own configuration object that represents the settings for that type.\nThese test-specific objects are referenced by the attributes in _Test.settings_:\n| test type    | settings attribute name | configuration object name |\n|--------------|-------------------------|---------------------------|\n| ip           | ip                      | IpTest                    |\n| hostname     | hostname                | HostnameTest              |\n| network_grid | networkGrid             | IpTest                    |\n| agent        | agent                   | AgentTest                 |\n| network_mesh | networkMesh             | NetworkMeshTest           |\n| flow         | flow                    | FlowTest                  |\n| url          | url                     | UrlTest                   |\n| page_load    | pageLoad                | PageLoadTest              |\n| dns          | dns                     | DnsTest                   |\n| dns_grid     | dnsGrid                 | DnsTest                   |\n\n# Test results\nResults of synthetic tests are returned as a sequence of _TestResults_ objects. Each such object represents\nmeasurements and health evaluation for a single test at specific point in time.\nMeasurements and health evaluation are grouped by agent and by task.\n\nGranularity of timestamps in test results depends on the frequency (period) of the test and on the requested time \nrange. The minimum granularity is 1 minute (even when period < 1 minute). The longer the time range, the lower \nthe granularity.\n\n# Network traces\nSynthetic tests that include the _traceroute_ task collect the unidirectional network path from the agent to the \n target for each agent/target pair. The trace data are returned in the _GetTraceForTestResponse_ object. \nThe _paths_ attribute of this object contains the collected network path for each agent/target pair and \nthe round-trip time (RTT) to each hop. Hops in actual network traces are identified by a _nodeId_. \nThe mapping of _nodeIds_ to address, name, location, and other attributes of the hop is provided in a map that \nis stored in the _nodes_ attribute of the _GetTraceForTestResponse_ object.\n\n# Agents\nThe Kentik synthetic monitoring system recognizes 2 types of agents:\n* ***global*** (public): Managed by Kentik and available to every Kentik user. ***All information about global agents in this API is read-only.***\n* ***private***:  Deployed by each customer and available only to that customer. To be visible in this API, a private agent must first associate itself with a customer account by contacting the Kentik system (via private API). Once the agent is associated it can be authorized via the API by changing its _status_ to _AGENT_STATUS_OK_.\n***Note:*** For more information about private agent deployment, see [***Synthetic Agent Deployments***](https://kb.kentik.com/v4/Ma01.htm#Ma01-Synthetic_Agent_Deployments).\n",
     "version": "202202",
     "contact": {
       "name": "Kentik API Engineering",
-      "url": "https://github.com/kentik/api"
+      "url": "https://github.com/kentik/api-schema-public"
     }
   },
   "tags": [
@@ -28,9 +29,9 @@
   "paths": {
     "/synthetics/v202202/agents": {
       "get": {
-        "summary": "List Agents.",
-        "description": "Returns a list of agents.",
-        "operationId": "AgentsList",
+        "summary": "List available agents",
+        "description": "Returns list of all synthetic agents available in the account.",
+        "operationId": "ListAgents",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -52,9 +53,9 @@
     },
     "/synthetics/v202202/agents/{agent.id}": {
       "put": {
-        "summary": "Update an agent.",
-        "description": "Update configuration of a synthetics agent.",
-        "operationId": "AgentUpdate",
+        "summary": "Update configuration of an agent",
+        "description": "Update configuration of a synthetic agent.",
+        "operationId": "UpdateAgent",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -72,7 +73,7 @@
         "parameters": [
           {
             "name": "agent.id",
-            "description": "id of this agent.",
+            "description": "Unique identifier of the agent",
             "in": "path",
             "required": true,
             "type": "string"
@@ -91,9 +92,9 @@
         ]
       },
       "get": {
-        "summary": "Get information about an agent.",
-        "description": "Returns information about the agent specified with id.",
-        "operationId": "AgentGet",
+        "summary": "Get information about an agent",
+        "description": "Returns information about the requested synthetic agent.",
+        "operationId": "GetAgent",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -111,6 +112,7 @@
         "parameters": [
           {
             "name": "agent.id",
+            "description": "ID of the requested agent",
             "in": "path",
             "required": true,
             "type": "string"
@@ -121,9 +123,9 @@
         ]
       },
       "delete": {
-        "summary": "Delete an agent.",
-        "description": "Deletes the agent specified with id.",
-        "operationId": "AgentDelete",
+        "summary": "Delete an agent",
+        "description": "Deletes the requested agent. The deleted agent is removed from configuration of all tests.",
+        "operationId": "DeleteAgent",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -141,6 +143,7 @@
         "parameters": [
           {
             "name": "agent.id",
+            "description": "ID of the agent to be deleted",
             "in": "path",
             "required": true,
             "type": "string"
@@ -153,8 +156,8 @@
     },
     "/synthetics/v202202/results": {
       "post": {
-        "summary": "Get results for synthetic tests.",
-        "description": "Returns measurement results for a set of test for specified period of time, or the latest available data.",
+        "summary": "Get results for tests",
+        "description": "Returns probe results for a set of tests for specified period of time.",
         "operationId": "GetResultsForTests",
         "responses": {
           "200": {
@@ -187,9 +190,9 @@
     },
     "/synthetics/v202202/tests": {
       "get": {
-        "summary": "List Synthetics Tests.",
-        "description": "Returns a list of syntehtics tests.",
-        "operationId": "TestsList",
+        "summary": "List all tests",
+        "description": "Returns a list of all configured active and paused synthetic tests.",
+        "operationId": "ListTests",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -209,9 +212,9 @@
         ]
       },
       "post": {
-        "summary": "Create Synthetics Test.",
-        "description": "Create synthetics test from request. Returns created test.",
-        "operationId": "TestCreate",
+        "summary": "Create a test",
+        "description": "Create synthetic test based on configuration provided in the request.",
+        "operationId": "CreateTest",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -243,9 +246,9 @@
     },
     "/synthetics/v202202/tests/{id}": {
       "get": {
-        "summary": "Get information about Synthetics Test.",
-        "description": "Returns information about synthetics test specified with test ID.",
-        "operationId": "TestGet",
+        "summary": "Get information about a test",
+        "description": "Returns configuration and status for the requested synthetic test.",
+        "operationId": "GetTest",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -263,6 +266,7 @@
         "parameters": [
           {
             "name": "id",
+            "description": "ID of requested test",
             "in": "path",
             "required": true,
             "type": "string"
@@ -273,9 +277,9 @@
         ]
       },
       "delete": {
-        "summary": "Delete an Synthetics Test.",
-        "description": "Deletes the synthetics test specified with id.",
-        "operationId": "TestDelete",
+        "summary": "Delete a synthetic test.",
+        "description": "Deletes the synthetics test. All accumulated results for the test cease to be accessible.",
+        "operationId": "DeleteTest",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -293,6 +297,7 @@
         "parameters": [
           {
             "name": "id",
+            "description": "ID of the test to be deleted",
             "in": "path",
             "required": true,
             "type": "string"
@@ -303,9 +308,9 @@
         ]
       },
       "put": {
-        "summary": "Update a Synthetics Test.",
+        "summary": "Update configuration of a test",
         "description": "Updates configuration of a synthetic test.",
-        "operationId": "TestUpdate",
+        "operationId": "UpdateTest",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -323,6 +328,7 @@
         "parameters": [
           {
             "name": "id",
+            "description": "Unique ID of the test",
             "in": "path",
             "required": true,
             "type": "string"
@@ -343,8 +349,8 @@
     },
     "/synthetics/v202202/tests/{id}/status": {
       "put": {
-        "summary": "Update a test status.",
-        "description": "Update the status of a test.",
+        "summary": "Update status of a synthetic test",
+        "description": "Update status of a synthetic test",
         "operationId": "SetTestStatus",
         "responses": {
           "200": {
@@ -363,6 +369,7 @@
         "parameters": [
           {
             "name": "id",
+            "description": "ID of the test which status is to be modified",
             "in": "path",
             "required": true,
             "type": "string"
@@ -383,8 +390,8 @@
     },
     "/synthetics/v202202/trace": {
       "post": {
-        "summary": "Get trace route data.",
-        "description": "Get trace route data for the specific test id.",
+        "summary": "Get network trace data for a test",
+        "description": "Get network trace data for a specific synthetic test. The test must have traceroute task configured.",
         "operationId": "GetTraceForTest",
         "responses": {
           "200": {
@@ -417,6 +424,14 @@
     }
   },
   "definitions": {
+    "AgentMetadataIpValue": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        }
+      }
+    },
     "protobufAny": {
       "type": "object",
       "properties": {
@@ -452,20 +467,25 @@
       "properties": {
         "latitude": {
           "type": "number",
-          "format": "double"
+          "format": "double",
+          "description": "Latitude in signed decimal degrees"
         },
         "longitude": {
           "type": "number",
-          "format": "double"
+          "format": "double",
+          "description": "Longitude in signed decimal degrees"
         },
         "country": {
-          "type": "string"
+          "type": "string",
+          "description": "Country of the location"
         },
         "region": {
-          "type": "string"
+          "type": "string",
+          "description": "Geographic region within the country"
         },
         "city": {
-          "type": "string"
+          "type": "string",
+          "description": "City of the location"
         }
       }
     },
@@ -473,16 +493,20 @@
       "type": "object",
       "properties": {
         "gracePeriod": {
-          "type": "string"
+          "type": "string",
+          "description": "Period of healthy status in minutes within the time window not cancelling alarm activation"
         },
         "timeUnit": {
-          "type": "string"
+          "type": "string",
+          "description": "Time unit for specifying time window (m | h)"
         },
         "timeWindow": {
-          "type": "string"
+          "type": "string",
+          "description": "Time window for evaluating of test for alarm activation"
         },
         "times": {
-          "type": "string"
+          "type": "string",
+          "description": "Number of occurrences of unhealthy test status within the time window triggering alarm activation"
         }
       }
     },
@@ -491,83 +515,151 @@
       "properties": {
         "id": {
           "type": "string",
-          "description": "id of this agent."
+          "description": "Unique identifier of the agent",
+          "readOnly": true
         },
         "siteName": {
-          "type": "string"
+          "type": "string",
+          "description": "Name of the site where agent is located"
         },
         "status": {
-          "$ref": "#/definitions/v202202AgentStatus"
+          "$ref": "#/definitions/v202202AgentStatus",
+          "description": "Operational status"
         },
         "alias": {
-          "type": "string"
+          "type": "string",
+          "description": "User selected descriptive name of the agent"
         },
         "type": {
-          "type": "string"
+          "type": "string",
+          "description": "Type of agent (global | private)",
+          "readOnly": true
         },
         "os": {
-          "type": "string"
+          "type": "string",
+          "description": "OS version of server/VM hosting the agent",
+          "readOnly": true
         },
         "ip": {
-          "type": "string"
+          "type": "string",
+          "description": "Public IP address of the agent (auto-detected)",
+          "readOnly": true
         },
         "lat": {
           "type": "number",
-          "format": "double"
+          "format": "double",
+          "description": "Latitude of agent's location (signed decimal degrees)"
         },
         "long": {
           "type": "number",
-          "format": "double"
+          "format": "double",
+          "description": "Longitude of agent's location (signed decimal degrees)"
         },
         "lastAuthed": {
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "description": "Timestamp of the last authorization",
+          "readOnly": true
         },
         "family": {
-          "$ref": "#/definitions/v202202IPFamily"
+          "$ref": "#/definitions/v202202IPFamily",
+          "description": "IP address family supported by the agent"
         },
         "asn": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "ASN of the AS owning agent's public address"
         },
         "siteId": {
-          "type": "string"
+          "type": "string",
+          "description": "ID of the site hosting the agent (if configured in Kentik)"
         },
         "version": {
-          "type": "string"
+          "type": "string",
+          "description": "Software version of the agent",
+          "readOnly": true
         },
         "city": {
-          "type": "string"
+          "type": "string",
+          "description": "City where the agent is located"
         },
         "region": {
-          "type": "string"
+          "type": "string",
+          "description": "Geographical region of agent's location"
         },
         "country": {
-          "type": "string"
+          "type": "string",
+          "description": "Country of agent's location"
         },
         "testIds": {
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "description": "IDs of user's test running on the agent",
+          "readOnly": true
         },
         "localIp": {
-          "type": "string"
+          "type": "string",
+          "description": "Internal IP address of the agent"
         },
         "cloudRegion": {
-          "type": "string"
+          "type": "string",
+          "description": "Cloud region (if any) hosting the agent"
         },
         "cloudProvider": {
-          "type": "string"
+          "type": "string",
+          "description": "Cloud provider (if any) hosting the agent"
         },
         "agentImpl": {
-          "$ref": "#/definitions/v202202ImplementType"
+          "$ref": "#/definitions/v202202ImplementType",
+          "readOnly": true
         },
         "labels": {
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "description": "List of names of labels associated with the agent"
+        },
+        "metadata": {
+          "$ref": "#/definitions/v202202AgentMetadata",
+          "description": "Additional information about agent's configuration and run-time state"
+        }
+      }
+    },
+    "v202202AgentMetadata": {
+      "type": "object",
+      "properties": {
+        "privateIpv4Addresses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentMetadataIpValue"
+          },
+          "description": "List of private IPv4 addresses"
+        },
+        "publicIpv4Addresses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentMetadataIpValue"
+          },
+          "description": "List of public IPv4 addresses",
+          "readOnly": true
+        },
+        "privateIpv6Addresses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentMetadataIpValue"
+          },
+          "description": "List of private IPv6 addresses"
+        },
+        "publicIpv6Addresses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentMetadataIpValue"
+          },
+          "description": "List of public IPv6 addresses",
+          "readOnly": true
         }
       }
     },
@@ -575,16 +667,19 @@
       "type": "object",
       "properties": {
         "agentId": {
-          "type": "string"
+          "type": "string",
+          "description": "ID of the agent providing results"
         },
         "health": {
-          "type": "string"
+          "type": "string",
+          "description": "Overall health status of all task for the test executed by this agent"
         },
         "tasks": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/v202202TaskResults"
-          }
+          },
+          "description": "List of results for individual tasks"
         }
       }
     },
@@ -596,16 +691,20 @@
         "AGENT_STATUS_WAIT",
         "AGENT_STATUS_DELETED"
       ],
-      "default": "AGENT_STATUS_UNSPECIFIED"
+      "default": "AGENT_STATUS_UNSPECIFIED",
+      "description": "- AGENT_STATUS_UNSPECIFIED: Invalid value.\n - AGENT_STATUS_OK: Agent is ready to accept tests\n - AGENT_STATUS_WAIT: Agent is waiting for authorization\n - AGENT_STATUS_DELETED: Agent was deleted - not user settable",
+      "title": "Operational status of an agent"
     },
     "v202202AgentTest": {
       "type": "object",
       "properties": {
         "target": {
-          "type": "string"
+          "type": "string",
+          "description": "ID of the target agent"
         },
         "useLocalIp": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Boolean value indicating whether to use local (private) IP address of the target agent"
         }
       }
     },
@@ -613,15 +712,23 @@
       "type": "object",
       "properties": {
         "test": {
-          "$ref": "#/definitions/v202202Test"
+          "$ref": "#/definitions/v202202Test",
+          "description": "Test configuration data",
+          "required": [
+            "test"
+          ]
         }
-      }
+      },
+      "required": [
+        "test"
+      ]
     },
     "v202202CreateTestResponse": {
       "type": "object",
       "properties": {
         "test": {
-          "$ref": "#/definitions/v202202Test"
+          "$ref": "#/definitions/v202202Test",
+          "description": "Test configuration and status data"
         }
       }
     },
@@ -638,17 +745,21 @@
         "DNS_RECORD_PTR",
         "DNS_RECORD_SOA"
       ],
-      "default": "DNS_RECORD_UNSPECIFIED"
+      "default": "DNS_RECORD_UNSPECIFIED",
+      "description": "- DNS_RECORD_UNSPECIFIED: Invalid value\n - DNS_RECORD_A: name to IPv4 address(es) mapping\n - DNS_RECORD_AAAA: name to IPv6 address(es) mapping\n - DNS_RECORD_CNAME: alternative resource name\n - DNS_RECORD_DNAME: alternative resource set name\n - DNS_RECORD_NS: domain to name server mapping\n - DNS_RECORD_MX: SMTP mail server record\n - DNS_RECORD_PTR: IPv4/6 address to name mapping\n - DNS_RECORD_SOA: domain meta-data",
+      "title": "DNS record type"
     },
     "v202202DNSResponseData": {
       "type": "object",
       "properties": {
         "status": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "Received DNS status"
         },
         "data": {
-          "type": "string"
+          "type": "string",
+          "description": "Text rendering of received DNS resolution"
         }
       }
     },
@@ -656,16 +767,20 @@
       "type": "object",
       "properties": {
         "target": {
-          "type": "string"
+          "type": "string",
+          "description": "Queried DNS record"
         },
         "server": {
-          "type": "string"
+          "type": "string",
+          "description": "DNS server used for the query"
         },
         "latency": {
-          "$ref": "#/definitions/v202202MetricData"
+          "$ref": "#/definitions/v202202MetricData",
+          "description": "DNS response latency metric and health"
         },
         "response": {
-          "$ref": "#/definitions/v202202DNSResponseData"
+          "$ref": "#/definitions/v202202DNSResponseData",
+          "description": "Information about received DNS response"
         }
       }
     },
@@ -679,24 +794,29 @@
       "type": "object",
       "properties": {
         "target": {
-          "type": "string"
+          "type": "string",
+          "description": "Fully qualified DNS name to query"
         },
         "timeout": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "--- <deprecated> ---"
         },
         "recordType": {
-          "$ref": "#/definitions/v202202DNSRecord"
+          "$ref": "#/definitions/v202202DNSRecord",
+          "description": "Type of DNS record to query"
         },
         "servers": {
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "description": "List of IP addresses of DNS servers"
         },
         "port": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "Target DNS server port"
         }
       }
     },
@@ -704,28 +824,35 @@
       "type": "object",
       "properties": {
         "target": {
-          "type": "string"
+          "type": "string",
+          "description": "Target ASN, CDN, Country, Region of City for autonomous test (type of value depends on flow test sub-type)"
         },
         "targetRefreshIntervalMillis": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "Period (in milliseconds) for refreshing list of targets based on available flow data"
         },
         "maxProviders": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "Maximum number of IP providers to track autonomously"
         },
         "maxIpTargets": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "Maximum number of target IP addresses to select based flow data query"
         },
         "type": {
-          "type": "string"
+          "type": "string",
+          "description": "Autonomous test sub-type (asn | cdn | country | region | city)"
         },
         "inetDirection": {
-          "type": "string"
+          "type": "string",
+          "description": "Selection of address from flow data (src = source address in inbound flows | dst = destination addresses in outbound flows)"
         },
         "direction": {
-          "type": "string"
+          "type": "string",
+          "description": "Direction of flows to match target attribute for extraction of target addresses (src | dst)"
         }
       }
     },
@@ -733,7 +860,8 @@
       "type": "object",
       "properties": {
         "agent": {
-          "$ref": "#/definitions/v202202Agent"
+          "$ref": "#/definitions/v202202Agent",
+          "description": "Agent configuration and status data"
         }
       }
     },
@@ -745,37 +873,51 @@
           "items": {
             "type": "string"
           },
-          "description": "List of ids of the tests to get health for."
+          "description": "List of test IDs for which to retrieve results",
+          "required": [
+            "ids"
+          ]
         },
         "startTime": {
           "type": "string",
           "format": "date-time",
-          "description": "Start of the time interval for this query."
+          "description": "Timestamp of the oldest results to include in results",
+          "required": [
+            "start_time"
+          ]
         },
         "endTime": {
           "type": "string",
           "format": "date-time",
-          "description": "End of the time interval for this query."
+          "description": "Timestamp of the newest results to include in results",
+          "required": [
+            "end_time"
+          ]
         },
         "agentIds": {
           "type": "array",
           "items": {
             "type": "string"
           },
-          "title": "Optionally, only look at a subset of agents"
+          "description": "List of agent IDs from which to return results"
         },
         "targets": {
           "type": "array",
           "items": {
             "type": "string"
           },
-          "description": "Optionally only look at a subset of targets."
+          "description": "List of targets (test dependent) for which to retrieve results"
         },
         "aggregate": {
           "type": "boolean",
-          "title": "Optional bool to calculate aggregated test metrics"
+          "description": "If true, retrieve result aggregated across the requested time period, else return complete time series"
         }
-      }
+      },
+      "required": [
+        "ids",
+        "startTime",
+        "endTime"
+      ]
     },
     "v202202GetResultsForTestsResponse": {
       "type": "object",
@@ -792,7 +934,8 @@
       "type": "object",
       "properties": {
         "test": {
-          "$ref": "#/definitions/v202202Test"
+          "$ref": "#/definitions/v202202Test",
+          "description": "Test configuration and status data"
         }
       }
     },
@@ -801,33 +944,43 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "Test id"
+          "description": "ID of test for which to retrieve network path trace data"
         },
         "startTime": {
           "type": "string",
           "format": "date-time",
-          "description": "Start of the time interval for this query."
+          "description": "Timestamp of the oldest results to include in results",
+          "required": [
+            "start_time"
+          ]
         },
         "endTime": {
           "type": "string",
           "format": "date-time",
-          "description": "End of the time interval for this query."
+          "description": "Timestamp of the newest results to include in results",
+          "required": [
+            "end_time"
+          ]
         },
         "agentIds": {
           "type": "array",
           "items": {
             "type": "string"
           },
-          "title": "Optionally, limit the query to these agent ids"
+          "description": "List of agent IDs from which to return results"
         },
         "targetIps": {
           "type": "array",
           "items": {
             "type": "string"
           },
-          "title": "Optionally, limit the query to these destination IP addresses"
+          "description": "List of target IP addresses for which to retrieve results"
         }
-      }
+      },
+      "required": [
+        "startTime",
+        "endTime"
+      ]
     },
     "v202202GetTraceForTestResponse": {
       "type": "object",
@@ -836,13 +989,15 @@
           "type": "object",
           "additionalProperties": {
             "$ref": "#/definitions/v202202NetNode"
-          }
+          },
+          "description": "Map of network node information keyed by node IDs"
         },
         "paths": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/v202202Path"
-          }
+          },
+          "description": "List of retrieved network path data"
         }
       }
     },
@@ -851,14 +1006,17 @@
       "properties": {
         "status": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "HTTP status in response"
         },
         "size": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "Total size of  received response body"
         },
         "data": {
-          "type": "string"
+          "type": "string",
+          "description": "Detailed information about transaction timing, connection characteristics and response"
         }
       }
     },
@@ -866,16 +1024,20 @@
       "type": "object",
       "properties": {
         "target": {
-          "type": "string"
+          "type": "string",
+          "description": "Target probed URL"
         },
         "latency": {
-          "$ref": "#/definitions/v202202MetricData"
+          "$ref": "#/definitions/v202202MetricData",
+          "description": "HTTP response latency metric and health"
         },
         "response": {
-          "$ref": "#/definitions/v202202HTTPResponseData"
+          "$ref": "#/definitions/v202202HTTPResponseData",
+          "description": "Information about received HTTP response"
         },
         "dstIp": {
-          "type": "string"
+          "type": "string",
+          "description": "IP address of probed target server"
         }
       }
     },
@@ -884,91 +1046,112 @@
       "properties": {
         "latencyCritical": {
           "type": "number",
-          "format": "float"
+          "format": "float",
+          "description": "Threshold for ping or DNS response latency (in microseconds) to trigger critical alarm"
         },
         "latencyWarning": {
           "type": "number",
-          "format": "float"
+          "format": "float",
+          "description": "Threshold for ping or DNS response latency (in microseconds) to trigger warning alarm"
         },
         "packetLossCritical": {
           "type": "number",
-          "format": "float"
+          "format": "float",
+          "description": "Threshold for ping packet loss (in %) to trigger critical alarm"
         },
         "packetLossWarning": {
           "type": "number",
-          "format": "float"
+          "format": "float",
+          "description": "Threshold for ping packet loss (in %) to trigger warning alarm"
         },
         "jitterCritical": {
           "type": "number",
-          "format": "float"
+          "format": "float",
+          "description": "Threshold for ping jitter (in microseconds) to trigger critical alarm"
         },
         "jitterWarning": {
           "type": "number",
-          "format": "float"
+          "format": "float",
+          "description": "Threshold for ping jitter (in microseconds) to trigger critical alarm"
         },
         "httpLatencyCritical": {
           "type": "number",
-          "format": "float"
+          "format": "float",
+          "description": "Threshold for HTTP response latency (in microseconds) to trigger critical alarm"
         },
         "httpLatencyWarning": {
           "type": "number",
-          "format": "float"
+          "format": "float",
+          "description": "Threshold for HTTP response latency (in microseconds) to trigger warning alarm"
         },
         "httpValidCodes": {
           "type": "array",
           "items": {
             "type": "integer",
             "format": "int64"
-          }
+          },
+          "description": "List of HTTP status codes indicating healthy state"
         },
         "dnsValidCodes": {
           "type": "array",
           "items": {
             "type": "integer",
             "format": "int64"
-          }
+          },
+          "description": "List of DNS status codes indicating healthy state"
         },
         "latencyCriticalStddev": {
           "type": "number",
-          "format": "float"
+          "format": "float",
+          "description": "Threshold for standard deviation (in microseconds) of ping or DNS response latency to trigger critical alarm"
         },
         "latencyWarningStddev": {
           "type": "number",
-          "format": "float"
+          "format": "float",
+          "description": "Threshold for standard deviation (in microseconds) of ping or DNS response latency to trigger warning alarm"
         },
         "jitterCriticalStddev": {
           "type": "number",
-          "format": "float"
+          "format": "float",
+          "description": "Threshold for standard deviation of ping jitter (in microseconds) to trigger critical alarm"
         },
         "jitterWarningStddev": {
           "type": "number",
-          "format": "float"
+          "format": "float",
+          "description": "Threshold for standard deviation of ping jitter (in microseconds) to trigger warning alarm"
         },
         "httpLatencyCriticalStddev": {
           "type": "number",
-          "format": "float"
+          "format": "float",
+          "description": "Threshold for standard deviation of HTTP response latency (in microseconds) to trigger critical alarm"
         },
         "httpLatencyWarningStddev": {
           "type": "number",
-          "format": "float"
+          "format": "float",
+          "description": "Threshold for standard deviation of HTTP response latency (in microseconds) to trigger warning alarm"
         },
         "unhealthySubtestThreshold": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "Number of tasks (across all agents) that must report unhealthy status in order for alarm to be triggered"
         },
         "activation": {
-          "$ref": "#/definitions/v202202ActivationSettings"
+          "$ref": "#/definitions/v202202ActivationSettings",
+          "description": "Alarm activation settings"
         },
         "certExpiryWarning": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "Threshold for remaining validity of TLS certificate (in days) to trigger warning alarm"
         },
         "certExpiryCritical": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "Threshold for remaining validity of TLS certificate (in days) to trigger critical alarm"
         },
         "dnsValidIps": {
-          "type": "string"
+          "type": "string",
+          "description": "Comma separated list of IP addresses expected to be received in response to DNS A or AAAA query"
         }
       }
     },
@@ -976,7 +1159,8 @@
       "type": "object",
       "properties": {
         "target": {
-          "type": "string"
+          "type": "string",
+          "description": "Fully qualified DNS name of the target host"
         }
       }
     },
@@ -988,7 +1172,9 @@
         "IP_FAMILY_V6",
         "IP_FAMILY_DUAL"
       ],
-      "default": "IP_FAMILY_UNSPECIFIED"
+      "default": "IP_FAMILY_UNSPECIFIED",
+      "description": "- IP_FAMILY_UNSPECIFIED: Invalid value.\n - IP_FAMILY_V4: IPv4 only\n - IP_FAMILY_V6: IPv6 only\n - IP_FAMILY_DUAL: IPv4 and IPv6 supported",
+      "title": "Supported IP address family"
     },
     "v202202ImplementType": {
       "type": "string",
@@ -998,7 +1184,7 @@
         "IMPLEMENT_TYPE_NODE"
       ],
       "default": "IMPLEMENT_TYPE_UNSPECIFIED",
-      "description": "Agent impl type determines capabilities of agent.\n\n - IMPLEMENT_TYPE_RUST: ksynth agent (implemented in Rust) capable of running all tasks except for page-load\n - IMPLEMENT_TYPE_NODE: ksynth-agent (implemented in NodeJS) capable of running ping, traceroute and page-load tasks"
+      "description": "Agent implementation type determines capabilities of agent.\n\n - IMPLEMENT_TYPE_RUST: ksynth agent, a.k.a network agent (implemented in Rust) capable of running all tasks except for page-load\n - IMPLEMENT_TYPE_NODE: ksynth-agent, a.k.a. app agent (implemented in NodeJS) capable of running all tasks"
     },
     "v202202IpTest": {
       "type": "object",
@@ -1007,7 +1193,8 @@
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "description": "List of IP addresses of targets"
         }
       }
     },
@@ -1018,11 +1205,13 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/v202202Agent"
-          }
+          },
+          "description": "List of available agents"
         },
         "invalidCount": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "Number of invalid entries encountered while collecting data"
         }
       }
     },
@@ -1033,11 +1222,13 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/v202202Test"
-          }
+          },
+          "description": "List of configured active or paused tests"
         },
         "invalidCount": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "Number of invalid entries encountered while collecting data"
         }
       }
     },
@@ -1046,18 +1237,22 @@
       "properties": {
         "current": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "Current value of metric"
         },
         "rollingAvg": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "Rolling average of metric"
         },
         "rollingStddev": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "Rolling average of standard deviation of metric"
         },
         "health": {
-          "type": "string"
+          "type": "string",
+          "description": "Health evaluation status for the metric (healthy | warning | critical)"
         }
       }
     },
@@ -1065,26 +1260,33 @@
       "type": "object",
       "properties": {
         "ip": {
-          "type": "string"
+          "type": "string",
+          "description": "IP address of the node in standard textual notation"
         },
         "asn": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "AS number owning the address of the node"
         },
         "asName": {
-          "type": "string"
+          "type": "string",
+          "description": "Name of the AS owning the address of the node"
         },
         "location": {
-          "$ref": "#/definitions/syntheticsv202202Location"
+          "$ref": "#/definitions/syntheticsv202202Location",
+          "description": "Location of IP address of the node"
         },
         "dnsName": {
-          "type": "string"
+          "type": "string",
+          "description": "DNS name of the node (obtained by reverse DNS resolution)"
         },
         "deviceId": {
-          "type": "string"
+          "type": "string",
+          "description": "ID of the device corresponding with the node in Kentik configuration"
         },
         "siteId": {
-          "type": "string"
+          "type": "string",
+          "description": "ID of the site containing the device corresponding with the node in Kentik configuration"
         }
       }
     },
@@ -1092,7 +1294,8 @@
       "type": "object",
       "properties": {
         "useLocalIp": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Boolean value indicating whether to use local (private) IP address of the target agents"
         }
       }
     },
@@ -1101,10 +1304,12 @@
       "properties": {
         "current": {
           "type": "number",
-          "format": "double"
+          "format": "double",
+          "description": "Current packet loss value"
         },
         "health": {
-          "type": "string"
+          "type": "string",
+          "description": "Health evaluation status for the metric (healthy | warning | critical)"
         }
       }
     },
@@ -1112,26 +1317,31 @@
       "type": "object",
       "properties": {
         "target": {
-          "type": "string"
+          "type": "string",
+          "description": "HTTP or HTTPS URL to request"
         },
         "timeout": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "HTTP transaction timeout (in milliseconds)"
         },
         "headers": {
           "type": "object",
           "additionalProperties": {
             "type": "string"
-          }
+          },
+          "description": "Map of HTTP header values keyed by header names"
         },
         "ignoreTlsErrors": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Boolean indicating whether to ignore TLS certificate verification errors"
         },
         "cssSelectors": {
           "type": "object",
           "additionalProperties": {
             "type": "string"
-          }
+          },
+          "description": "Map of CSS selector values keyed by selector name"
         }
       }
     },
@@ -1139,27 +1349,33 @@
       "type": "object",
       "properties": {
         "agentId": {
-          "type": "string"
+          "type": "string",
+          "description": "ID of the agent generating the path data"
         },
         "targetIp": {
-          "type": "string"
+          "type": "string",
+          "description": "IP address of the target of the path"
         },
         "hopCount": {
-          "$ref": "#/definitions/v202202Stats"
+          "$ref": "#/definitions/v202202Stats",
+          "description": "Hop count statistics across all traces"
         },
         "maxAsPathLength": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "description": "Maximum length of AS path across all traces"
         },
         "traces": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/v202202PathTrace"
-          }
+          },
+          "description": "Data for individual traces"
         },
         "time": {
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "description": "Timestamp (UTC) of initiation of the path trace"
         }
       }
     },
@@ -1171,37 +1387,44 @@
           "items": {
             "type": "integer",
             "format": "int32"
-          }
+          },
+          "description": "AS path of the network trace"
         },
         "isComplete": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Indication whether response from target was received"
         },
         "hops": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/v202202TraceHop"
-          }
+          },
+          "description": "List of hops in the trace"
         }
-      },
-      "title": "Probing detail"
+      }
     },
     "v202202PingResults": {
       "type": "object",
       "properties": {
         "target": {
-          "type": "string"
+          "type": "string",
+          "description": "Hostname or address of the probed target"
         },
         "packetLoss": {
-          "$ref": "#/definitions/v202202PacketLossData"
+          "$ref": "#/definitions/v202202PacketLossData",
+          "description": "Packet loss metric and health"
         },
         "latency": {
-          "$ref": "#/definitions/v202202MetricData"
+          "$ref": "#/definitions/v202202MetricData",
+          "description": "Packet latency metric and health"
         },
         "jitter": {
-          "$ref": "#/definitions/v202202MetricData"
+          "$ref": "#/definitions/v202202MetricData",
+          "description": "Latency jitter (variance) metric and health"
         },
         "dstIp": {
-          "type": "string"
+          "type": "string",
+          "description": "IP address of probed target"
         }
       }
     },
@@ -1209,12 +1432,24 @@
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
+          "type": "string",
+          "description": "ID of the test which status is to be modified",
+          "required": [
+            "id"
+          ]
         },
         "status": {
-          "$ref": "#/definitions/v202202TestStatus"
+          "$ref": "#/definitions/v202202TestStatus",
+          "description": "Target test status",
+          "required": [
+            "status"
+          ]
         }
-      }
+      },
+      "required": [
+        "id",
+        "status"
+      ]
     },
     "v202202SetTestStatusResponse": {
       "type": "object"
@@ -1224,15 +1459,18 @@
       "properties": {
         "average": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "description": "Average value"
         },
         "min": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "description": "Minimum value"
         },
         "max": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "description": "Maximum value"
         }
       }
     },
@@ -1240,16 +1478,20 @@
       "type": "object",
       "properties": {
         "ping": {
-          "$ref": "#/definitions/v202202PingResults"
+          "$ref": "#/definitions/v202202PingResults",
+          "description": "Entry containing ping task results"
         },
         "http": {
-          "$ref": "#/definitions/v202202HTTPResults"
+          "$ref": "#/definitions/v202202HTTPResults",
+          "description": "Entry containing HTTP task results"
         },
         "dns": {
-          "$ref": "#/definitions/v202202DNSResults"
+          "$ref": "#/definitions/v202202DNSResults",
+          "description": "Entry containing DNS task results"
         },
         "health": {
-          "type": "string"
+          "type": "string",
+          "description": "Health status of the task"
         }
       }
     },
@@ -1257,39 +1499,54 @@
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
+          "type": "string",
+          "description": "Unique ID of the test",
+          "readOnly": true
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "description": "User selected name of the test"
         },
         "type": {
-          "type": "string"
+          "type": "string",
+          "description": "Type of the test"
         },
         "status": {
-          "$ref": "#/definitions/v202202TestStatus"
+          "$ref": "#/definitions/v202202TestStatus",
+          "description": "Operational status of the test"
         },
         "settings": {
-          "$ref": "#/definitions/v202202TestSettings"
+          "$ref": "#/definitions/v202202TestSettings",
+          "description": "Test configuration"
         },
         "cdate": {
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "description": "Creation timestamp (UTC)",
+          "readOnly": true
         },
         "edate": {
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "description": "Last modification timestamp (UTC)",
+          "readOnly": true
         },
         "createdBy": {
-          "$ref": "#/definitions/v202202UserInfo"
+          "$ref": "#/definitions/v202202UserInfo",
+          "description": "Identity of test creator",
+          "readOnly": true
         },
         "lastUpdatedBy": {
-          "$ref": "#/definitions/v202202UserInfo"
+          "$ref": "#/definitions/v202202UserInfo",
+          "description": "Identity of use that has modified the test last",
+          "readOnly": true
         },
         "labels": {
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "description": "Set of labels associated with the test"
         }
       }
     },
@@ -1298,26 +1555,32 @@
       "properties": {
         "count": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "Number of probe packets to send in one iteration"
         },
         "protocol": {
-          "type": "string"
+          "type": "string",
+          "description": "Transport protocol to use (icmp | tcp)"
         },
         "port": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "Target port for TCP probes (ignored for ICMP)"
         },
         "timeout": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "Timeout in milliseconds for execution of the task"
         },
         "delay": {
           "type": "number",
-          "format": "float"
+          "format": "float",
+          "description": "Inter-probe delay in milliseconds"
         },
         "dscp": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "--- <Not implemented yet> ---"
         }
       }
     },
@@ -1325,20 +1588,24 @@
       "type": "object",
       "properties": {
         "testId": {
-          "type": "string"
+          "type": "string",
+          "description": "ID of the test for which results are provided"
         },
         "time": {
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "description": "Results timestamp (UTC)"
         },
         "health": {
-          "type": "string"
+          "type": "string",
+          "description": "Health status of the test"
         },
         "agents": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/v202202AgentResults"
-          }
+          },
+          "description": "List of results from agents executing tasks on behalf of the test"
         }
       }
     },
@@ -1379,37 +1646,46 @@
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "description": "IDs of agents assigned to run tasks on behalf of the test"
         },
         "tasks": {
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "description": "List of task names to run for the test"
         },
         "healthSettings": {
-          "$ref": "#/definitions/v202202HealthSettings"
+          "$ref": "#/definitions/v202202HealthSettings",
+          "description": "Health evaluation thresholds, acceptable responses and alarm activation settings"
         },
         "ping": {
-          "$ref": "#/definitions/v202202TestPingSettings"
+          "$ref": "#/definitions/v202202TestPingSettings",
+          "description": "Ping tasks configuration parameters"
         },
         "trace": {
-          "$ref": "#/definitions/v202202TestTraceSettings"
+          "$ref": "#/definitions/v202202TestTraceSettings",
+          "description": "Traceroute task configuration parameters"
         },
         "period": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "Test evaluation period (in seconds)"
         },
         "family": {
-          "$ref": "#/definitions/v202202IPFamily"
+          "$ref": "#/definitions/v202202IPFamily",
+          "description": "IP address family to select from available DNS name resolutions"
         },
         "notificationChannels": {
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "description": "List of IDs of notification channels for alarms triggered by the test"
         }
-      }
+      },
+      "title": "Synthetic test configuration"
     },
     "v202202TestStatus": {
       "type": "string",
@@ -1419,37 +1695,46 @@
         "TEST_STATUS_PAUSED",
         "TEST_STATUS_DELETED"
       ],
-      "default": "TEST_STATUS_UNSPECIFIED"
+      "default": "TEST_STATUS_UNSPECIFIED",
+      "description": "- TEST_STATUS_UNSPECIFIED: Invalid value.\n - TEST_STATUS_ACTIVE: Test is active.\n - TEST_STATUS_PAUSED: Test is paused.\n - TEST_STATUS_DELETED: Test is deleted. Not user settable.",
+      "title": "Operational status of a test"
     },
     "v202202TestTraceSettings": {
       "type": "object",
       "properties": {
         "count": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "Number of probe packets to send in one iteration"
         },
         "protocol": {
-          "type": "string"
+          "type": "string",
+          "description": "Transport protocol to use (icmp | tcp | udp)"
         },
         "port": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "Target port for TCP or UDP probes (ignored for ICMP)"
         },
         "timeout": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "Timeout in milliseconds for execution of the task"
         },
         "limit": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "Maximum number of hops to probe (i.e. maximum TTL)"
         },
         "delay": {
           "type": "number",
-          "format": "float"
+          "format": "float",
+          "description": "Inter-probe delay in milliseconds"
         },
         "dscp": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "--- <Not implemented yet> ---"
         }
       }
     },
@@ -1459,11 +1744,11 @@
         "latency": {
           "type": "integer",
           "format": "int32",
-          "title": "observed latency; 0 if node did not respond"
+          "description": "Round-trip packet latency to the node (in microseconds) - 0 if no response was received"
         },
         "nodeId": {
           "type": "string",
-          "title": "node_id refers to TracerouteResult.nodes; empty if hop did not respond"
+          "description": "ID of the node for this hop in the Nodes map  - empty if no response was received"
         }
       }
     },
@@ -1471,7 +1756,8 @@
       "type": "object",
       "properties": {
         "agent": {
-          "$ref": "#/definitions/v202202Agent"
+          "$ref": "#/definitions/v202202Agent",
+          "description": "Agent configuration data"
         }
       }
     },
@@ -1479,7 +1765,8 @@
       "type": "object",
       "properties": {
         "agent": {
-          "$ref": "#/definitions/v202202Agent"
+          "$ref": "#/definitions/v202202Agent",
+          "description": "Agent configuration and status data"
         }
       }
     },
@@ -1487,7 +1774,8 @@
       "type": "object",
       "properties": {
         "test": {
-          "$ref": "#/definitions/v202202Test"
+          "$ref": "#/definitions/v202202Test",
+          "description": "Test configuration data"
         }
       }
     },
@@ -1495,7 +1783,8 @@
       "type": "object",
       "properties": {
         "test": {
-          "$ref": "#/definitions/v202202Test"
+          "$ref": "#/definitions/v202202Test",
+          "description": "Test configuration and status data"
         }
       }
     },
@@ -1503,26 +1792,32 @@
       "type": "object",
       "properties": {
         "target": {
-          "type": "string"
+          "type": "string",
+          "description": "HTTP or HTTPS URL to request"
         },
         "timeout": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "HTTP transaction timeout (in milliseconds)"
         },
         "method": {
-          "type": "string"
+          "type": "string",
+          "description": "HTTP method to use (GET | HEAD | PATCH | POST | PUT)"
         },
         "headers": {
           "type": "object",
           "additionalProperties": {
             "type": "string"
-          }
+          },
+          "description": "Map of HTTP header values keyed by header names"
         },
         "body": {
-          "type": "string"
+          "type": "string",
+          "description": "HTTP request body"
         },
         "ignoreTlsErrors": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Boolean indicating whether to ignore TLS certificate verification errors"
         }
       }
     },
@@ -1530,13 +1825,19 @@
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
+          "type": "string",
+          "description": "Unique ID of the user",
+          "readOnly": true
         },
         "email": {
-          "type": "string"
+          "type": "string",
+          "description": "E-mail address of the user",
+          "readOnly": true
         },
         "fullName": {
-          "type": "string"
+          "type": "string",
+          "description": "Full name of the user",
+          "readOnly": true
         }
       }
     }
@@ -1560,7 +1861,7 @@
     }
   ],
   "externalDocs": {
-    "description": "More about Kentik APIs",
-    "url": "https://docs.kentik.com/api"
+    "description": "Kentik synthetic monitoring system",
+    "url": "https://kb.kentik.com/v4/Ma00.htm#Ma00-Synthetics_Overview"
   }
 }

@@ -7,6 +7,7 @@ option go_package = "github.com/kentik/api-schema/gen/go/kentik/synthetics/v2022
 
 import "google/api/annotations.proto";
 import "google/api/client.proto";
+import "google/api/field_behavior.proto";
 import "google/protobuf/timestamp.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
 
@@ -18,12 +19,129 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
     version: "202202"
     contact: {
       name: "Kentik API Engineering"
-      url: "https://github.com/kentik/api"
+      url: "https://github.com/kentik/api-schema-public"
     }
+    description: "# Overview\n"
+		"The Synthetics Monitoring API provides programmatic access to Kentik's [synthetic monitoring system](https://kb.kentik.com/v4/Ma00.htm).\n"
+    " The API consists of two endpoints:\n"
+		"| endpoint | purpose |\n"
+		"|-----------|---------|\n"
+		"| SyntheticsAdminService | CRUD operations for synthetic tests and agents |\n"
+		"| SyntheticsDataService  | Retrieval of synthetic test results and network traces |\n"
+		"\n"
+		"Both REST endpoint and gRPC RPCs are provided.\n"
+		"### Known Limitations\n"
+		"The API currently does not support:\n"
+		"* _BGP_ tests, which are supported in a [separate API](https://github.com/kentik/api-schema-public/blob/ccf9927fe3cd7918c86c7cdc1212936e836743f8/gen/openapiv3/kentik/bgp_monitoring/v202205beta1/bgp_monitoring.swagger.json)\n"
+		"* _Transaction_ tests\n"
+		"\n"
+		"### Additional public resources\n"
+		"Kentik community [Python](https://github.com/kentik/community_sdk_python) and \n"
+    "[Go](https://github.com/kentik/community_sdk_golang) SDKs provide language-specific support for using this \n"
+    "and other Kentik APIs. These SDKs can be also used as example code for development. \n"
+    "A [Terraform provider](https://registry.terraform.io/providers/kentik/kentik-synthetics) is available for \n"
+    "configuring tests and agents for Kentik synthetic monitoring.\n"
+		"# Anatomy of a synthetic test\n"
+		"Each _Test_ consists of one or more _Tasks_. Tasks are executed by monitoring _Agents_ that send synthetic \n"
+    "traffic (probes) over the network. The API currently supports following tasks:\n"
+		"| task name  | purpose |\n"
+		"|------------|---------|\n"
+		"| ping       | Test basic address, and optionally TCP port reachability |\n"
+		"| traceroute (a.k.a. trace)| Discover unidirectional network path |\n"
+		"| http | Perform a simple HTTP/HTTPS request |\n"
+		"| page-load | Use headless Chromium to execute an HTTP/HTTPS request |\n"
+		"| dns | Execute a DNS query|\n"
+		"\n"
+		"The set of tasks executed on behalf of a test depends on the test _type_.\n"
+		"Following test types are currently supported by the API:\n"
+		"| API test type | Kentik Portal (UI) test type | tasks |\n"
+		"|---------------|--------------|-------|\n"
+		"| ip | IP Address | ping, traceroute |\n"
+		"| hostname | Hostname | ping, traceroute |\n"
+		"| network_grid | Network Grid | ping, traceroute |\n"
+		"| agent | Agent-to-Agent | ping, traceroute |\n"
+		"| network_mesh | Network Mesh | ping, traceroute |\n"
+		"| flow | Autonomous Tests (5 variants) | ping, traceroute |\n"
+		"| url | HTTP(S) or API | http, ping (optional), traceroute (optional) |\n"
+		"| page_load | Page Load | page-load, ping (optional), traceroute (optional) |\n"
+		"| dns | DNS Server Monitor | dns |\n"
+		"| dns_grid | DNS Server Grid | dns |\n"
+		"\n"
+		"***Note:*** _ping_ and _traceroute_ tasks are always run together (not one without the other).\n"
+		"\n"
+		"## Test configuration, runtime state and metadata\n"
+		"Configuration, runtime state information, and metadata about a synthetic test are provided by the _Test_ object.\n"
+		"Runtime state and metadata attributes:\n"
+		"| attribute | access | purpose |\n"
+		"|-----------|--------|---------|\n"
+		"| id | RO | System-generated unique identifier of the test |\n"
+		"| name | RW | User specified name for the test (need not be unique) |\n"
+		"| type | RO (after creation) | Type of the test (set on creation; read-only thereafter) |\n"
+		"| status | RW | Life-cycle status of the test |\n"
+		"| cdate | RO | Creation timestamp |\n"
+		"| edate | RO | Last-modification timestamp |\n"
+		"| createdBy | RO | Identity of the user that created the test |\n"
+		"| lastUpdatedBy | RO | Identity of the latest user to modify the test |\n"
+		"| labels | RW | List of names of labels applied to the test |\n"
+		"\n"
+		"Configuration of a synthetic test is carried in the _settings_ attribute of the _Test_ object.\n"
+    "Settings consist of attributes common to all tests as well as attributes for tests of a specific type.\n"
+		"\n"
+		"### Common test settings\n"
+		"The following settings are used for tests of all types:\n"
+		"| attribute | purpose | required |\n"
+		"|-----------|---------|----------|\n"
+		"| agentIds  | IDs of agents to execute tasks for the test | YES |\n"
+		"| period | Test execution interval in seconds | NO (default 60s) |\n"
+		"| family | IP address family. Used only for tests whose type is url or dns. Selects which type of DNS resource is queried for resolving hostname to target address | NO (default IP_FAMILY_DUAL) |\n"
+		"| notificationChannels | List of notification channels for the test | NO (default empty list)\n"
+		"| healthSettings | A HealthSettings object that configures health settings for this test, which includes metric thresholds that define health status (warning and critical) and trigger associated alarms. | YES |\n"
+		"| ping | A TestPingSettings object that configures the ping task of the test | NO (default depends on test type) |\n"
+		"| trace | A TestTraceSettings object that configures the trace task of the test | NO (default depends on test type) |\n"
+		"| tasks | List of names of the tasks that will be executed for this test | YES |\n"
+		"\n"
+		"### Test-specific settings\n"
+		"Each test type has its own configuration object that represents the settings for that type.\n"
+    "These test-specific objects are referenced by the attributes in _Test.settings_:\n"
+		"| test type    | settings attribute name | configuration object name |\n"
+		"|--------------|-------------------------|---------------------------|\n"
+		"| ip           | ip                      | IpTest                    |\n"
+		"| hostname     | hostname                | HostnameTest              |\n"
+		"| network_grid | networkGrid             | IpTest                    |\n"
+		"| agent        | agent                   | AgentTest                 |\n"
+		"| network_mesh | networkMesh             | NetworkMeshTest           |\n"
+		"| flow         | flow                    | FlowTest                  |\n"
+		"| url          | url                     | UrlTest                   |\n"
+		"| page_load    | pageLoad                | PageLoadTest              |\n"
+		"| dns          | dns                     | DnsTest                   |\n"
+		"| dns_grid     | dnsGrid                 | DnsTest                   |\n"
+		"\n"
+		"# Test results\n"
+		"Results of synthetic tests are returned as a sequence of _TestResults_ objects. Each such object represents\n"
+    "measurements and health evaluation for a single test at specific point in time.\n"
+    "Measurements and health evaluation are grouped by agent and by task.\n"
+		"\n"
+		"Granularity of timestamps in test results depends on the frequency (period) of the test and on the requested time \n"
+    "range. The minimum granularity is 1 minute (even when period < 1 minute). The longer the time range, the lower \n"
+    "the granularity.\n"
+		"\n"
+		"# Network traces\n"
+		"Synthetic tests that include the _traceroute_ task collect the unidirectional network path from the agent to the \n"
+    " target for each agent/target pair. The trace data are returned in the _GetTraceForTestResponse_ object. \n"
+    "The _paths_ attribute of this object contains the collected network path for each agent/target pair and \n"
+    "the round-trip time (RTT) to each hop. Hops in actual network traces are identified by a _nodeId_. \n"
+    "The mapping of _nodeIds_ to address, name, location, and other attributes of the hop is provided in a map that \n"
+    "is stored in the _nodes_ attribute of the _GetTraceForTestResponse_ object.\n"
+		"\n"
+		"# Agents\n"
+		"The Kentik synthetic monitoring system recognizes 2 types of agents:\n"
+		"* ***global*** (public): Managed by Kentik and available to every Kentik user. ***All information about global agents in this API is read-only.***\n"
+		"* ***private***:  Deployed by each customer and available only to that customer. To be visible in this API, a private agent must first associate itself with a customer account by contacting the Kentik system (via private API). Once the agent is associated it can be authorized via the API by changing its _status_ to _AGENT_STATUS_OK_.\n"
+		"***Note:*** For more information about private agent deployment, see [***Synthetic Agent Deployments***](https://kb.kentik.com/v4/Ma01.htm#Ma01-Synthetic_Agent_Deployments).\n"
   }
   external_docs: {
-    url: "https://docs.kentik.com/api"
-    description: "More about Kentik APIs"
+    url: "https://kb.kentik.com/v4/Ma00.htm#Ma00-Synthetics_Overview"
+    description: "Kentik synthetic monitoring system"
   }
   schemes: HTTPS
   consumes: "application/json"
@@ -63,60 +181,207 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
 
 // === AGENT config and status ===
 
-// Agent impl type determines capabilities of agent.
+// Agent implementation type determines capabilities of agent.
 enum ImplementType {
   IMPLEMENT_TYPE_UNSPECIFIED = 0;
-  // ksynth agent (implemented in Rust) capable of running all tasks except for page-load
+  // ksynth agent, a.k.a network agent (implemented in Rust) capable of running all tasks except for page-load
   IMPLEMENT_TYPE_RUST = 1;
-  // ksynth-agent (implemented in NodeJS) capable of running ping, traceroute and page-load tasks
+  // ksynth-agent, a.k.a. app agent (implemented in NodeJS) capable of running all tasks
   IMPLEMENT_TYPE_NODE = 2;
 }
 
 message Agent {
-  // id of this agent.
-  string id = 1;
-  string site_name = 2;
-  AgentStatus status = 3;
-  string alias = 4;
-  string type = 5;
-  string os = 6;
-  string ip = 7;
-  double lat = 8;
-  double long = 9;
-  google.protobuf.Timestamp last_authed = 10;
-  IPFamily family = 11;
-  uint32 asn = 12;
-  string site_id = 13;
-  string version = 14;
-  string city = 16;
-  string region = 17;
-  string country = 18;
-  repeated string test_ids = 19;
-  string local_ip = 20;
-  string cloud_region = 22;
-  string cloud_provider = 23;
-  ImplementType agent_impl = 24;
-  repeated string labels = 25;
+  string id = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Unique identifier of the agent"
+    }
+  ];
+  string site_name = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Name of the site where agent is located"
+    }
+  ];
+  AgentStatus status = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Operational status"
+    }
+  ];
+  string alias = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "User selected descriptive name of the agent"
+    }
+  ];
+  string type = 5 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Type of agent (global | private)"
+    }
+    ];
+  string os = 6 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "OS version of server/VM hosting the agent"
+    }
+    ];
+  string ip = 7 [
+    deprecated=true,
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Public IP address of the agent (auto-detected)"
+    }
+    ];
+  double lat = 8 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Latitude of agent's location (signed decimal degrees)"
+    }
+  ];
+  double long = 9 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Longitude of agent's location (signed decimal degrees)"
+    }
+  ];
+  google.protobuf.Timestamp last_authed = 10 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Timestamp of the last authorization"
+    }
+  ];
+  IPFamily family = 11 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "IP address family supported by the agent"
+    }
+  ];
+  uint32 asn = 12 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ASN of the AS owning agent's public address"
+    }
+  ];
+  string site_id = 13 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the site hosting the agent (if configured in Kentik)"
+    }
+  ];
+  string version = 14 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Software version of the agent"
+    }
+  ];
+  string city = 16 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "City where the agent is located"
+    }
+  ];
+  string region = 17 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Geographical region of agent's location"
+    }
+  ];
+  string country = 18 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Country of agent's location"
+    }
+  ];
+  repeated string test_ids = 19 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "IDs of user's test running on the agent"
+    }
+  ];
+  string local_ip = 20 [
+    deprecated=true,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Internal IP address of the agent"
+    }
+  ];
+  string cloud_region = 22 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Cloud region (if any) hosting the agent"
+    }
+  ];
+  string cloud_provider = 23 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Cloud provider (if any) hosting the agent"
+    }
+  ];
+  ImplementType agent_impl = 24 [
+    (google.api.field_behavior) = OUTPUT_ONLY
+  ];
+  repeated string labels = 25 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of names of labels associated with the agent"
+    }
+  ];
+  AgentMetadata metadata = 26 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Additional information about agent's configuration and run-time state"
+    }
+  ];
 }
 
+message AgentMetadata {
+  repeated IpValue private_ipv4_addresses = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of private IPv4 addresses"
+    }
+  ];
+  repeated IpValue public_ipv4_addresses = 2 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of public IPv4 addresses"
+    }
+  ];
+  repeated IpValue private_ipv6_addresses = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of private IPv6 addresses"
+    }
+  ];
+  repeated IpValue public_ipv6_addresses = 4 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of public IPv6 addresses"
+    }
+  ];
+
+  message IpValue {
+    string value = 1;
+  }
+}
+
+// Supported IP address family
 enum IPFamily {
-  IP_FAMILY_UNSPECIFIED = 0; // Invalid value.
+  // Invalid value.
+  IP_FAMILY_UNSPECIFIED = 0;
+  // IPv4 only
   IP_FAMILY_V4 = 1;
+  // IPv6 only
   IP_FAMILY_V6 = 2;
+  // IPv4 and IPv6 supported
   IP_FAMILY_DUAL = 3;
 };
 
+// Operational status of a test
 enum TestStatus {
-  TEST_STATUS_UNSPECIFIED = 0; // Invalid value.
-  TEST_STATUS_ACTIVE = 1; // Test is active.
-  TEST_STATUS_PAUSED = 2; // Test is paused.
-  TEST_STATUS_DELETED = 3; // Test is deleted. Not settable via SetTestStatus.
+  // Invalid value.
+  TEST_STATUS_UNSPECIFIED = 0;
+  // Test is active.
+  TEST_STATUS_ACTIVE = 1;
+  // Test is paused.
+  TEST_STATUS_PAUSED = 2;
+  // Test is deleted. Not user settable.
+   TEST_STATUS_DELETED = 3;
 }
 
+// Operational status of an agent
 enum AgentStatus {
-  AGENT_STATUS_UNSPECIFIED = 0; // Invalid value.
+  // Invalid value.
+  AGENT_STATUS_UNSPECIFIED = 0;
+  // Agent is ready to accept tests
   AGENT_STATUS_OK = 1;
+  // Agent is waiting for authorization
   AGENT_STATUS_WAIT = 2;
+  // Agent was deleted - not user settable
   AGENT_STATUS_DELETED = 3;
 }
 
@@ -124,41 +389,112 @@ enum AgentStatus {
 // === TEST config and status ===
 
 message UserInfo {
-  string id = 1;
-  string email = 2;
-  string full_name = 3;
+  string id = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Unique ID of the user"
+    }
+  ];
+  string email = 2 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "E-mail address of the user"
+    }
+  ];
+  string full_name = 3 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Full name of the user"
+    }
+  ];
 }
 
 message Test {
-  string id = 1;
-  string name = 2;
-  string type = 3;
-  TestStatus status = 5;
-  TestSettings settings = 6;
-  google.protobuf.Timestamp cdate = 7;
-  google.protobuf.Timestamp edate = 8;
-  UserInfo created_by = 9;
-  UserInfo last_updated_by = 10;
-  repeated string labels = 11;
+  string id = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Unique ID of the test"
+    }
+  ];
+  string name = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "User selected name of the test"
+    }
+  ];
+  string type = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Type of the test"
+    }
+  ];
+  TestStatus status = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Operational status of the test"
+    }
+  ];
+  TestSettings settings = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Test configuration"
+    }
+  ];
+  google.protobuf.Timestamp cdate = 7 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Creation timestamp (UTC)"
+    }
+  ];
+  google.protobuf.Timestamp edate = 8 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Last modification timestamp (UTC)"
+  }
+  ];
+  UserInfo created_by = 9 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Identity of test creator"
+  }
+  ];
+  UserInfo last_updated_by = 10 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Identity of use that has modified the test last"
+  }
+  ];
+  repeated string labels = 11 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Set of labels associated with the test"
+    }
+  ];
 }
 
+// DNS record type
 enum DNSRecord {
+  // Invalid value
   DNS_RECORD_UNSPECIFIED = 0;
+  // name to IPv4 address(es) mapping
   DNS_RECORD_A = 1;
+   // name to IPv6 address(es) mapping
   DNS_RECORD_AAAA = 2;
+  // alternative resource name
   DNS_RECORD_CNAME = 3;
+  // alternative resource set name
   DNS_RECORD_DNAME = 4;
+  // domain to name server mapping
   DNS_RECORD_NS = 5;
+  // SMTP mail server record
   DNS_RECORD_MX = 6;
+  // IPv4/6 address to name mapping
   DNS_RECORD_PTR = 7;
+  // domain meta-data
   DNS_RECORD_SOA = 8;
 }
 
+// Synthetic test configuration
 message TestSettings {
 
   oneof definition {
     HostnameTest hostname = 1;
-    IpTest ip = 2;
+    IpTest ip = 2 ;
     AgentTest agent = 3;
     FlowTest flow = 4;
     DnsTest dns = 5;
@@ -169,235 +505,773 @@ message TestSettings {
     NetworkMeshTest network_mesh = 18;
   }
 
-  repeated string agent_ids = 10;
-  repeated string tasks = 11; // Task types.
+  repeated string agent_ids = 10 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "IDs of agents assigned to run tasks on behalf of the test"
+    }
+  ];
+  repeated string tasks = 11 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of task names to run for the test"
+    }
+  ];
 
-  HealthSettings health_settings = 12;
-  TestPingSettings ping = 13;
-  TestTraceSettings trace = 14;
+  HealthSettings health_settings = 12 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Health evaluation thresholds, acceptable responses and alarm activation settings"
+    }
+  ];
+  TestPingSettings ping = 13 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Ping tasks configuration parameters"
+    }
+  ];
+  TestTraceSettings trace = 14 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Traceroute task configuration parameters"
+    }
+  ];
 
-  uint32 period = 15;
-  IPFamily family = 16;
-  repeated string notification_channels = 17;
+  uint32 period = 15 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Test evaluation period (in seconds)"
+    }
+  ];
+  IPFamily family = 16 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "IP address family to select from available DNS name resolutions"
+    }
+  ];
+  repeated string notification_channels = 17 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of IDs of notification channels for alarms triggered by the test"
+    }
+  ];
 
 }
 
 message TestPingSettings {
-  uint32 count = 1;
-  string protocol = 2;
-  uint32 port = 3;
-  uint32 timeout = 4;
-  float delay = 5;
-  uint32 dscp = 6;
+  uint32 count = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Number of probe packets to send in one iteration"
+    }
+  ];
+  string protocol = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Transport protocol to use (icmp | tcp)"
+    }
+  ];
+  uint32 port = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Target port for TCP probes (ignored for ICMP)"
+    }
+  ];
+  uint32 timeout = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Timeout in milliseconds for execution of the task"
+    }
+  ];
+  float delay = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Inter-probe delay in milliseconds"
+    }
+  ];
+  uint32 dscp = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "--- <Not implemented yet> ---"
+    }
+  ];
 }
 
 message TestTraceSettings {
-  uint32 count = 1;
-  string protocol = 2;
-  uint32 port = 3;
-  uint32 timeout = 4;
-  uint32 limit = 5;
-  float delay = 6;
-  uint32 dscp = 7;
+  uint32 count = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Number of probe packets to send in one iteration"
+    }
+  ];
+  string protocol = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Transport protocol to use (icmp | tcp | udp)"
+    }
+  ];
+  uint32 port = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Target port for TCP or UDP probes (ignored for ICMP)"
+    }
+  ];
+  uint32 timeout = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Timeout in milliseconds for execution of the task"
+    }
+  ];
+  uint32 limit = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Maximum number of hops to probe (i.e. maximum TTL)"
+    }
+  ];
+  float delay = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Inter-probe delay in milliseconds"
+    }
+  ];
+  uint32 dscp = 7 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "--- <Not implemented yet> ---"
+    }
+  ];
 }
 
 message ActivationSettings {
-  string grace_period = 1;
-  string time_unit = 2;
-  string time_window = 3;
-  string times = 4;
+  string grace_period = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Period of healthy status in minutes within the time window not cancelling alarm activation"
+    }
+  ];
+  string time_unit = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Time unit for specifying time window (m | h)"
+    }
+  ];
+  string time_window = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Time window for evaluating of test for alarm activation"
+    }
+  ];
+  string times = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Number of occurrences of unhealthy test status within the time window triggering alarm activation"
+    }
+  ];
 }
 
 message HealthSettings {
-  float latency_critical = 1;
-  float latency_warning = 2;
-  float packet_loss_critical = 3;
-  float packet_loss_warning = 4;
-  float jitter_critical = 5;
-  float jitter_warning = 6;
-  float http_latency_critical = 7;
-  float http_latency_warning = 8;
-  repeated uint32 http_valid_codes = 9;
-  repeated uint32 dns_valid_codes = 10;
-  float latency_critical_stddev = 11;
-  float latency_warning_stddev = 12;
-  float jitter_critical_stddev = 13;
-  float jitter_warning_stddev = 14;
-  float http_latency_critical_stddev = 15;
-  float http_latency_warning_stddev = 16;
-  uint32 unhealthy_subtest_threshold = 17;
-  ActivationSettings activation = 18;
-  uint32 cert_expiry_warning = 19;
-  uint32 cert_expiry_critical = 20;
-  string dns_valid_ips = 21;
+  float latency_critical = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Threshold for ping or DNS response latency (in microseconds) to trigger critical alarm"
+    }
+  ];
+  float latency_warning = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Threshold for ping or DNS response latency (in microseconds) to trigger warning alarm"
+    }
+  ];
+  float packet_loss_critical = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Threshold for ping packet loss (in %) to trigger critical alarm"
+    }
+  ];
+  float packet_loss_warning = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Threshold for ping packet loss (in %) to trigger warning alarm"
+    }
+  ];
+  float jitter_critical = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Threshold for ping jitter (in microseconds) to trigger critical alarm"
+    }
+  ];
+  float jitter_warning = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Threshold for ping jitter (in microseconds) to trigger critical alarm"
+    }
+  ];
+  float http_latency_critical = 7 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Threshold for HTTP response latency (in microseconds) to trigger critical alarm"
+    }
+  ];
+  float http_latency_warning = 8 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Threshold for HTTP response latency (in microseconds) to trigger warning alarm"
+    }
+  ];
+  repeated uint32 http_valid_codes = 9 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of HTTP status codes indicating healthy state"
+    }
+  ];
+  repeated uint32 dns_valid_codes = 10 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of DNS status codes indicating healthy state"
+    }
+  ];
+  float latency_critical_stddev = 11 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Threshold for standard deviation (in microseconds) of ping or DNS response latency to trigger critical alarm"
+    }
+  ];
+  float latency_warning_stddev = 12 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Threshold for standard deviation (in microseconds) of ping or DNS response latency to trigger warning alarm"
+    }
+  ];
+  float jitter_critical_stddev = 13 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Threshold for standard deviation of ping jitter (in microseconds) to trigger critical alarm"
+    }
+  ];
+  float jitter_warning_stddev = 14 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Threshold for standard deviation of ping jitter (in microseconds) to trigger warning alarm"
+    }
+  ];
+  float http_latency_critical_stddev = 15 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Threshold for standard deviation of HTTP response latency (in microseconds) to trigger critical alarm"
+    }
+  ];
+  float http_latency_warning_stddev = 16 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Threshold for standard deviation of HTTP response latency (in microseconds) to trigger warning alarm"
+    }
+  ];
+  uint32 unhealthy_subtest_threshold = 17 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Number of tasks (across all agents) that must report unhealthy status in order for alarm to be triggered"
+    }
+  ];
+  ActivationSettings activation = 18 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Alarm activation settings"
+    }
+  ];
+  uint32 cert_expiry_warning = 19 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Threshold for remaining validity of TLS certificate (in days) to trigger warning alarm"
+    }
+  ];
+  uint32 cert_expiry_critical = 20 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Threshold for remaining validity of TLS certificate (in days) to trigger critical alarm"
+    }
+  ];
+  string dns_valid_ips = 21 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Comma separated list of IP addresses expected to be received in response to DNS A or AAAA query"
+    }
+  ];
 }
 
 message HostnameTest {
-  string target = 1;
+  string target = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Fully qualified DNS name of the target host"
+    }
+  ];
 }
 message IpTest {
-  repeated string targets = 1;
+  repeated string targets = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of IP addresses of targets"
+    }
+  ];
 }
 message AgentTest {
-  string target = 1;
-  bool use_local_ip = 2;
+  string target = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the target agent"
+    }
+  ];
+  bool use_local_ip = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Boolean value indicating whether to use local (private) IP address of the target agent"
+    }
+  ];
 }
 
 message FlowTest {
-  string target = 1;
-  uint32 target_refresh_interval_millis = 2; // How often to generate tasks.
-  uint32 max_providers = 3; // see issue https://github.com/kentik/api-schema/issues/94
-  uint32 max_ip_targets = 4; // see issue https://github.com/kentik/api-schema/issues/94
-  string type = 5; // What type of flow to look at -- asn, cdn, country, ...
-  string inet_direction = 6;
-  string direction = 7;
+  string target = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Target ASN, CDN, Country, Region of City for autonomous test (type of value depends on flow test sub-type)"
+    }
+  ];
+  uint32 target_refresh_interval_millis = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Period (in milliseconds) for refreshing list of targets based on available flow data"
+    }
+  ];
+  uint32 max_providers = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Maximum number of IP providers to track autonomously"
+    }
+  ];
+  uint32 max_ip_targets = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Maximum number of target IP addresses to select based flow data query"
+    }
+  ];
+  string type = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Autonomous test sub-type (asn | cdn | country | region | city)"
+    }
+  ];
+  string inet_direction = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Selection of address from flow data (src = source address in inbound flows | dst = destination addresses in outbound flows)"
+    }
+  ];
+  string direction = 7 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Direction of flows to match target attribute for extraction of target addresses (src | dst)"
+    }
+  ];
 }
 
 message DnsTest {
-  string target = 1;
-  uint32 timeout = 2;
-  DNSRecord record_type = 3;
-  repeated string servers = 4;
-  uint32 port = 5;
+  string target = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Fully qualified DNS name to query"
+    }
+  ];
+  uint32 timeout = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "--- <deprecated> ---"
+    }
+  ];
+  DNSRecord record_type = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Type of DNS record to query"
+    }
+  ];
+  repeated string servers = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of IP addresses of DNS servers"
+    }
+  ];
+  uint32 port = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Target DNS server port"
+    }
+  ];
 }
 
 message UrlTest {
-  string target = 1;
-  uint32 timeout = 2;
-  string method = 3;
-  map<string, string> headers = 4;
-  string body = 5;
-  bool ignore_tls_errors = 6;
+  string target = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "HTTP or HTTPS URL to request"
+    }
+  ];
+  uint32 timeout = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "HTTP transaction timeout (in milliseconds)"
+    }
+  ];
+  string method = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "HTTP method to use (GET | HEAD | PATCH | POST | PUT)"
+    }
+  ];
+  map<string, string> headers = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Map of HTTP header values keyed by header names"
+    }
+  ];
+  string body = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "HTTP request body"
+    }
+  ];
+  bool ignore_tls_errors = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Boolean indicating whether to ignore TLS certificate verification errors"
+    }
+  ];
 }
 
 message PageLoadTest {
-  string target = 1;
-  uint32 timeout = 2;
-  map<string, string> headers = 3;
-  bool ignore_tls_errors = 4;
-  map<string, string> css_selectors = 5;
+  string target = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "HTTP or HTTPS URL to request"
+    }
+  ];
+  uint32 timeout = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "HTTP transaction timeout (in milliseconds)"
+    }
+  ];
+  map<string, string> headers = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Map of HTTP header values keyed by header names"
+    }
+  ];
+  bool ignore_tls_errors = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Boolean indicating whether to ignore TLS certificate verification errors"
+    }
+  ];
+  map<string, string> css_selectors = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Map of CSS selector values keyed by selector name"
+    }
+  ];
 }
 
 message NetworkMeshTest {
-  bool use_local_ip = 1;
+  bool use_local_ip = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Boolean value indicating whether to use local (private) IP address of the target agents"
+    }
+  ];
 }
 
-// === TEST RESULTS (metrics, stats, responses, health)
+// === TEST RESULTS
 
 message MetricData {
-  uint32 current = 1;
-  uint32 rolling_avg = 2;
-  uint32 rolling_stddev = 3;
-  string health = 4;
+  uint32 current = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Current value of metric"
+    }
+  ];
+  uint32 rolling_avg = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Rolling average of metric"
+    }
+  ];
+  uint32 rolling_stddev = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Rolling average of standard deviation of metric"
+    }
+  ];
+  string health = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Health evaluation status for the metric (healthy | warning | critical)"
+    }
+  ];
 }
 
 message PacketLossData {
-  double current = 1;
-  string health = 2;
+  double current = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Current packet loss value"
+    }
+  ];
+  string health = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Health evaluation status for the metric (healthy | warning | critical)"
+    }
+  ];
 }
 
 message PingResults {
-  string target = 1;
-  PacketLossData packet_loss = 2;
-  MetricData latency = 3;
-  MetricData jitter = 4;
-  string dst_ip = 5;
+  string target = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Hostname or address of the probed target"
+    }
+  ];
+  PacketLossData packet_loss = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Packet loss metric and health"
+    }
+  ];
+  MetricData latency = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Packet latency metric and health"
+    }
+  ];
+  MetricData jitter = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Latency jitter (variance) metric and health"
+    }
+  ];
+  string dst_ip = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "IP address of probed target"
+    }
+  ];
 }
 
 message HTTPResponseData {
-  uint32 status = 1;
-  uint32 size = 2;
-  string data = 3;
+  uint32 status = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "HTTP status in response"
+    }
+  ];
+  uint32 size = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Total size of  received response body"
+    }
+  ];
+  string data = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Detailed information about transaction timing, connection characteristics and response"
+    }
+  ];
 }
 
 message HTTPResults {
-  string target = 1;
-  MetricData latency = 2;
-  HTTPResponseData response = 4;
-  string dst_ip = 5;
+  string target = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Target probed URL"
+    }
+  ];
+  MetricData latency = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "HTTP response latency metric and health"
+    }
+  ];
+  HTTPResponseData response = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Information about received HTTP response"
+    }
+  ];
+  string dst_ip = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "IP address of probed target server"
+    }
+  ];
 }
 
 message DNSResponseData {
-  uint32 status = 1;
-  string data = 2;
+  uint32 status = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Received DNS status"
+    }
+  ];
+  string data = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Text rendering of received DNS resolution"
+    }
+  ];
 }
 
 message DNSResults {
-  string target = 1;
-  string server = 2;
-  MetricData latency = 3;
-  DNSResponseData response = 5;
+  string target = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Queried DNS record"
+    }
+  ];
+  string server = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "DNS server used for the query"
+    }
+  ];
+  MetricData latency = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "DNS response latency metric and health"
+    }
+  ];
+  DNSResponseData response = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Information about received DNS response"
+    }
+  ];
 }
 
 message TaskResults {
   oneof task_type {
-    PingResults ping = 1;
-    HTTPResults http = 2;
-    DNSResults dns = 3;
+    PingResults ping = 1 [
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Entry containing ping task results"
+      }
+    ];
+    HTTPResults http = 2 [
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Entry containing HTTP task results"
+      }
+    ];
+    DNSResults dns = 3 [
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Entry containing DNS task results"
+      }
+    ];
   }
-  string health = 4;
+  string health = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Health status of the task"
+    }
+  ];
 }
 
 message AgentResults {
-  string agent_id = 1;
-  string health = 2;
-  repeated TaskResults tasks = 3;
+  string agent_id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the agent providing results"
+    }
+  ];
+  string health = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Overall health status of all task for the test executed by this agent"
+    }
+  ];
+  repeated TaskResults tasks = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of results for individual tasks"
+    }
+  ];
 }
 
 message TestResults {
-  string test_id = 1;
-  google.protobuf.Timestamp time = 2;
-  string health = 3;
-  repeated AgentResults agents = 4;
+  string test_id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the test for which results are provided"
+    }
+  ];
+  google.protobuf.Timestamp time = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Results timestamp (UTC)"
+    }
+  ];
+  string health = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Health status of the test"
+    }
+  ];
+  repeated AgentResults agents = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of results from agents executing tasks on behalf of the test"
+    }
+  ];
 }
 
 // === TEST TRACE results ===
 
 message Stats {
-  int32 average = 1;
-  int32 min = 2;
-  int32 max = 3;
+  int32 average = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Average value"
+    }
+  ];
+  int32 min = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Minimum value"
+    }
+  ];
+  int32 max = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Maximum value"
+    }
+  ];
 }
 
 message Location {
-  double latitude = 8;
-  double longitude = 9;
-  string country = 1;
-  string region = 2;
-  string city = 3;
+  double latitude = 8 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Latitude in signed decimal degrees"
+    }
+  ];
+  double longitude = 9 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Longitude in signed decimal degrees"
+    }
+  ];
+  string country = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Country of the location"
+    }
+  ];
+  string region = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Geographic region within the country"
+    }
+  ];
+  string city = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "City of the location"
+    }
+  ];
 }
 
 message NetNode {
-  string ip = 2;
-  uint32 asn = 3;
-  string as_name = 4;
-  Location location = 5;
-  string dns_name = 6;
-  string device_id = 7;
-  string site_id = 8;
+  string ip = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "IP address of the node in standard textual notation"
+    }
+  ];
+  uint32 asn = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "AS number owning the address of the node"
+    }
+  ];
+  string as_name = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Name of the AS owning the address of the node"
+    }
+  ];
+  Location location = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Location of IP address of the node"
+    }
+  ];
+  string dns_name = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "DNS name of the node (obtained by reverse DNS resolution)"
+    }
+  ];
+  string device_id = 7 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the device corresponding with the node in Kentik configuration"
+    }
+  ];
+  string site_id = 8 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the site containing the device corresponding with the node in Kentik configuration"
+    }
+  ];
 }
 
 message TraceHop {
-  // observed latency; 0 if node did not respond
-  int32 latency = 3;
-  // node_id refers to TracerouteResult.nodes; empty if hop did not respond
-  string node_id = 5;
+  int32 latency = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Round-trip packet latency to the node (in microseconds) - 0 if no response was received"
+    }
+  ];
+
+  string node_id = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the node for this hop in the Nodes map  - empty if no response was received"
+    }
+  ];
 }
 
-// Probing detail
 message PathTrace {
-  repeated int32 as_path = 1;
-  bool is_complete = 2;
-  repeated TraceHop hops = 6;
+  repeated int32 as_path = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "AS path of the network trace"
+    }
+  ];
+  bool is_complete = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Indication whether response from target was received"
+    }
+  ];
+  repeated TraceHop hops = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of hops in the trace"
+    }
+  ];
 }
 
 message Path {
-  string agent_id = 1;
-  string target_ip = 3;
-  Stats hop_count = 4;
-  int32 max_as_path_length = 7;
-  repeated PathTrace traces = 8;
-  google.protobuf.Timestamp time = 9;
+  string agent_id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the agent generating the path data"
+    }
+  ];
+  string target_ip = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "IP address of the target of the path"
+    }
+  ];
+  Stats hop_count = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Hop count statistics across all traces"
+    }
+  ];
+  int32 max_as_path_length = 7 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Maximum length of AS path across all traces"
+    }
+  ];
+  repeated PathTrace traces = 8 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Data for individual traces"
+    }
+  ];
+  google.protobuf.Timestamp time = 9 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Timestamp (UTC) of initiation of the path trace"
+    }
+  ];
 }
 
 
@@ -405,23 +1279,44 @@ message Path {
 // -------------------------------------------------------
 
 message GetResultsForTestsRequest {
-  // List of ids of the tests to get health for.
-  repeated string ids = 1;
+  repeated string ids = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of test IDs for which to retrieve results"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
 
-  // Start of the time interval for this query.
-  google.protobuf.Timestamp start_time = 2;
+  google.protobuf.Timestamp start_time = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Timestamp of the oldest results to include in results"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
 
-  // End of the time interval for this query.
-  google.protobuf.Timestamp end_time = 3;
+  google.protobuf.Timestamp end_time = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Timestamp of the newest results to include in results"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
 
-  // Optionally, only look at a subset of agents
-  repeated string agent_ids = 4;
+  repeated string agent_ids = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of agent IDs from which to return results"
+    }
+  ];
 
-  // Optionally only look at a subset of targets.
-  repeated string targets = 5;
+  repeated string targets = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of targets (test dependent) for which to retrieve results"
+    }
+  ];
 
-  // Optional bool to calculate aggregated test metrics
-  bool aggregate = 6;
+  bool aggregate = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "If true, retrieve result aggregated across the requested time period, else return complete time series"
+    }
+  ];
 }
 
 message GetResultsForTestsResponse {
@@ -429,25 +1324,50 @@ message GetResultsForTestsResponse {
 }
 
 message GetTraceForTestRequest {
-  // Test id
-  string id = 1;
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of test for which to retrieve network path trace data"
+    }
+  ];
 
-  // Start of the time interval for this query.
-  google.protobuf.Timestamp start_time = 2;
+  google.protobuf.Timestamp start_time = 2[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Timestamp of the oldest results to include in results"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
 
-  // End of the time interval for this query.
-  google.protobuf.Timestamp end_time = 3;
+  google.protobuf.Timestamp end_time = 3[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Timestamp of the newest results to include in results"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
 
-  // Optionally, limit the query to these agent ids
-  repeated string agent_ids = 4;
+  repeated string agent_ids = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of agent IDs from which to return results"
+    }
+  ];
 
-  // Optionally, limit the query to these destination IP addresses
-  repeated string target_ips = 5;
+  repeated string target_ips = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of target IP addresses for which to retrieve results"
+    }
+  ];
 }
 
 message GetTraceForTestResponse {
-  map<string, NetNode>  nodes = 1;
-  repeated Path paths = 2;
+  map<string, NetNode>  nodes = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Map of network node information keyed by node IDs"
+    }
+  ];
+  repeated Path paths = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of retrieved network path data"
+    }
+  ];
 }
 
 service SyntheticsDataService {
@@ -463,8 +1383,8 @@ service SyntheticsDataService {
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       operation_id: "GetResultsForTests"
-      summary: "Get results for synthetic tests."
-      description: "Returns measurement results for a set of test for specified period of time, or the latest available data."
+      summary: "Get results for tests"
+      description: "Returns probe results for a set of tests for specified period of time."
     };
   }
 
@@ -476,8 +1396,8 @@ service SyntheticsDataService {
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       operation_id: "GetTraceForTest"
-      summary: "Get trace route data."
-      description: "Get trace route data for the specific test id."
+      summary: "Get network trace data for a test"
+      description: "Get network trace data for a specific synthetic test. The test must have traceroute task configured."
     };
   }
 }
@@ -488,76 +1408,152 @@ service SyntheticsDataService {
 message ListAgentsRequest {}
 
 message ListAgentsResponse {
-  repeated Agent agents = 1;
-  uint32 invalid_count = 2;
+  repeated Agent agents = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of available agents"
+    }
+  ];
+  uint32 invalid_count = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Number of invalid entries encountered while collecting data"
+    }
+  ];
 }
 
 message GetAgentRequest {
-  string id = 1;
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the requested agent"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
 }
 
 message GetAgentResponse {
-  Agent agent = 1;
+  Agent agent = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Agent configuration and status data"
+    }
+  ];
 }
 
 message UpdateAgentRequest {
-  Agent agent = 1;
+  Agent agent = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Agent configuration data"
+    }
+  ];
 }
 
 message UpdateAgentResponse {
-  Agent agent = 1;
+  Agent agent = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Agent configuration and status data"
+    }
+  ];
 }
 
 message DeleteAgentRequest {
-  string id = 1;
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the agent to be deleted"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
 }
 
 message DeleteAgentResponse {}
 
-// list the company tests config, remove preset
 message ListTestsRequest {
 }
 
-
-
 message ListTestsResponse {
-  repeated Test tests = 1;
-  uint32 invalid_count = 2;
+  repeated Test tests = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of configured active or paused tests"
+    }
+  ];
+  uint32 invalid_count = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Number of invalid entries encountered while collecting data"
+    }
+  ];
 }
 
 message CreateTestRequest {
-  Test test = 1;
+  Test test = 1[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Test configuration data"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
 }
 
 message CreateTestResponse {
-  Test test = 1;
+  Test test = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Test configuration and status data"
+    }
+  ];
 }
 
 message GetTestRequest {
-  string id = 1;
+  string id = 1[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of requested test"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
 }
 
 message GetTestResponse {
-  Test test = 1;
+  Test test = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Test configuration and status data"
+    }
+  ];
 }
 
 message UpdateTestRequest {
-  Test test = 1;
+  Test test = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Test configuration data"
+    }
+  ];
 }
 
 message UpdateTestResponse {
-  Test test = 1;
+  Test test = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Test configuration and status data"
+    }
+  ];
 }
 
 message DeleteTestRequest {
-  string id = 1;
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the test to be deleted"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
 }
 
 message DeleteTestResponse {}
 
 message SetTestStatusRequest {
-  string id = 1;
-  TestStatus status = 2;
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the test which status is to be modified"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  TestStatus status = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Target test status"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
 }
 
 message SetTestStatusResponse {
@@ -567,17 +1563,15 @@ service SyntheticsAdminService {
   option (google.api.default_host) = "grpc.api.kentik.com";
   option (kentik.core.v202012alpha1.service_scope) = "admin.synthetics";
 
-  // Agents
-
   rpc ListAgents(ListAgentsRequest) returns (ListAgentsResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:read";
     option (google.api.http) = {
       get: "/synthetics/v202202/agents"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
-      operation_id: "AgentsList"
-      summary: "List Agents."
-      description: "Returns a list of agents."
+      operation_id: "ListAgents"
+      summary: "List available agents"
+      description: "Returns list of all synthetic agents available in the account."
     };
   }
 
@@ -587,9 +1581,9 @@ service SyntheticsAdminService {
       get: "/synthetics/v202202/agents/{id}"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
-      operation_id: "AgentGet"
-      summary: "Get information about an agent."
-      description: "Returns information about the agent specified with id."
+      operation_id: "GetAgent"
+      summary: "Get information about an agent"
+      description: "Returns information about the requested synthetic agent."
     };
   }
 
@@ -600,9 +1594,9 @@ service SyntheticsAdminService {
       body: "*"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
-      operation_id: "AgentUpdate"
-      summary: "Update an agent."
-      description: "Update configuration of a synthetics agent."
+      operation_id: "UpdateAgent"
+      summary: "Update configuration of an agent"
+      description: "Update configuration of a synthetic agent."
     };
   }
 
@@ -612,13 +1606,11 @@ service SyntheticsAdminService {
       delete: "/synthetics/v202202/agents/{id}"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
-      operation_id: "AgentDelete"
-      summary: "Delete an agent."
-      description: "Deletes the agent specified with id."
+      operation_id: "DeleteAgent"
+      summary: "Delete an agent"
+      description: "Deletes the requested agent. The deleted agent is removed from configuration of all tests."
     };
   }
-
-  // Tests
 
   rpc ListTests(ListTestsRequest) returns (ListTestsResponse) {
     option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:read";
@@ -626,9 +1618,9 @@ service SyntheticsAdminService {
       get: "/synthetics/v202202/tests"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
-      operation_id: "TestsList"
-      summary: "List Synthetics Tests."
-      description: "Returns a list of syntehtics tests."
+      operation_id: "ListTests"
+      summary: "List all tests"
+      description: "Returns a list of all configured active and paused synthetic tests."
     };
   }
 
@@ -639,9 +1631,9 @@ service SyntheticsAdminService {
       body: "*"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
-      operation_id: "TestCreate"
-      summary: "Create Synthetics Test."
-      description: "Create synthetics test from request. Returns created test."
+      operation_id: "CreateTest"
+      summary: "Create a test"
+      description: "Create synthetic test based on configuration provided in the request."
     };
   }
 
@@ -651,9 +1643,9 @@ service SyntheticsAdminService {
       get: "/synthetics/v202202/tests/{id}"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
-      operation_id: "TestGet"
-      summary: "Get information about Synthetics Test."
-      description: "Returns information about synthetics test specified with test ID."
+      operation_id: "GetTest"
+      summary: "Get information about a test"
+      description: "Returns configuration and status for the requested synthetic test."
     };
   }
 
@@ -664,8 +1656,8 @@ service SyntheticsAdminService {
       body: "*"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
-      operation_id: "TestUpdate"
-      summary: "Update a Synthetics Test."
+      operation_id: "UpdateTest"
+      summary: "Update configuration of a test"
       description: "Updates configuration of a synthetic test."
     };
   }
@@ -676,9 +1668,9 @@ service SyntheticsAdminService {
       delete: "/synthetics/v202202/tests/{id}"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
-      operation_id: "TestDelete"
-      summary: "Delete an Synthetics Test."
-      description: "Deletes the synthetics test specified with id."
+      operation_id: "DeleteTest"
+      summary: "Delete a synthetic test."
+      description: "Deletes the synthetics test. All accumulated results for the test cease to be accessible."
     };
   }
 
@@ -690,8 +1682,8 @@ service SyntheticsAdminService {
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       operation_id: "SetTestStatus"
-      summary: "Update a test status."
-      description: "Update the status of a test."
+      summary: "Update status of a synthetic test"
+      description: "Update status of a synthetic test"
     };
   }
 }

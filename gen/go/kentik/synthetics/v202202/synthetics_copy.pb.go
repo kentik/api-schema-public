@@ -35,6 +35,7 @@ func (x *Agent) Proto_ShallowCopy(v interface{}) {
 		x.CloudProvider = v.GetCloudProvider()
 		x.AgentImpl = v.GetAgentImpl()
 		x.Labels = v.GetLabels()
+		x.Metadata = v.GetMetadata()
 	default:
 		if v, ok := v.(interface{ GetId() string }); ok {
 			x.Id = v.GetId()
@@ -105,6 +106,9 @@ func (x *Agent) Proto_ShallowCopy(v interface{}) {
 		if v, ok := v.(interface{ GetLabels() []string }); ok {
 			x.Labels = v.GetLabels()
 		}
+		if v, ok := v.(interface{ GetMetadata() *AgentMetadata }); ok {
+			x.Metadata = v.GetMetadata()
+		}
 	}
 }
 
@@ -135,6 +139,78 @@ func (x *Agent) Proto_ShallowClone() (c *Agent) {
 		c.CloudProvider = x.CloudProvider
 		c.AgentImpl = x.AgentImpl
 		c.Labels = x.Labels
+		c.Metadata = x.Metadata
+	}
+	return
+}
+
+// Proto_ShallowCopy copies fields, from v to the receiver, using field getters.
+// Note that v is of an arbitrary type, which may implement any number of the
+// field getters, which are defined as any methods of the same signature as those
+// generated for the receiver type, with a name starting with Get.
+func (x *AgentMetadata) Proto_ShallowCopy(v interface{}) {
+	switch v := v.(type) {
+	case *AgentMetadata:
+		x.PrivateIpv4Addresses = v.GetPrivateIpv4Addresses()
+		x.PublicIpv4Addresses = v.GetPublicIpv4Addresses()
+		x.PrivateIpv6Addresses = v.GetPrivateIpv6Addresses()
+		x.PublicIpv6Addresses = v.GetPublicIpv6Addresses()
+	default:
+		if v, ok := v.(interface {
+			GetPrivateIpv4Addresses() []*AgentMetadata_IpValue
+		}); ok {
+			x.PrivateIpv4Addresses = v.GetPrivateIpv4Addresses()
+		}
+		if v, ok := v.(interface {
+			GetPublicIpv4Addresses() []*AgentMetadata_IpValue
+		}); ok {
+			x.PublicIpv4Addresses = v.GetPublicIpv4Addresses()
+		}
+		if v, ok := v.(interface {
+			GetPrivateIpv6Addresses() []*AgentMetadata_IpValue
+		}); ok {
+			x.PrivateIpv6Addresses = v.GetPrivateIpv6Addresses()
+		}
+		if v, ok := v.(interface {
+			GetPublicIpv6Addresses() []*AgentMetadata_IpValue
+		}); ok {
+			x.PublicIpv6Addresses = v.GetPublicIpv6Addresses()
+		}
+	}
+}
+
+// Proto_ShallowClone returns a shallow copy of the receiver or nil if it's nil.
+func (x *AgentMetadata) Proto_ShallowClone() (c *AgentMetadata) {
+	if x != nil {
+		c = new(AgentMetadata)
+		c.PrivateIpv4Addresses = x.PrivateIpv4Addresses
+		c.PublicIpv4Addresses = x.PublicIpv4Addresses
+		c.PrivateIpv6Addresses = x.PrivateIpv6Addresses
+		c.PublicIpv6Addresses = x.PublicIpv6Addresses
+	}
+	return
+}
+
+// Proto_ShallowCopy copies fields, from v to the receiver, using field getters.
+// Note that v is of an arbitrary type, which may implement any number of the
+// field getters, which are defined as any methods of the same signature as those
+// generated for the receiver type, with a name starting with Get.
+func (x *AgentMetadata_IpValue) Proto_ShallowCopy(v interface{}) {
+	switch v := v.(type) {
+	case *AgentMetadata_IpValue:
+		x.Value = v.GetValue()
+	default:
+		if v, ok := v.(interface{ GetValue() string }); ok {
+			x.Value = v.GetValue()
+		}
+	}
+}
+
+// Proto_ShallowClone returns a shallow copy of the receiver or nil if it's nil.
+func (x *AgentMetadata_IpValue) Proto_ShallowClone() (c *AgentMetadata_IpValue) {
+	if x != nil {
+		c = new(AgentMetadata_IpValue)
+		c.Value = x.Value
 	}
 	return
 }
