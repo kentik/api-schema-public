@@ -94,7 +94,7 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
 		"| agentIds  | IDs of agents to execute tasks for the test | YES |\n"
 		"| period | Test execution interval in seconds | NO (default 60s) |\n"
 		"| family | IP address family. Used only for tests whose type is url or dns. Selects which type of DNS resource is queried for resolving hostname to target address | NO (default IP_FAMILY_DUAL) |\n"
-		"| notificationChannels | List of notification channels for the test | NO (default empty list)\n"
+		"| notificationChannels | List of notification channels for the test | NO (default empty list) |\n"
 		"| healthSettings | A HealthSettings object that configures health settings for this test, which includes metric thresholds that define health status (warning and critical) and trigger associated alarms. | YES |\n"
 		"| ping | A TestPingSettings object that configures the ping task of the test | NO (default depends on test type) |\n"
 		"| trace | A TestTraceSettings object that configures the trace task of the test | NO (default depends on test type) |\n"
