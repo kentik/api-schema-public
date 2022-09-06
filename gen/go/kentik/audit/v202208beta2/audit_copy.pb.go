@@ -3,6 +3,7 @@
 
 package audit
 
+import "google.golang.org/protobuf/types/known/durationpb"
 import "google.golang.org/protobuf/types/known/timestamppb"
 
 // Proto_ShallowCopy copies fields, from v to the receiver, using field getters.
@@ -19,6 +20,7 @@ func (x *RequestEvent) Proto_ShallowCopy(v interface{}) {
 		x.RequestMetadata = v.GetRequestMetadata()
 		x.ResponseMetadata = v.GetResponseMetadata()
 		x.RequestProtocol = v.GetRequestProtocol()
+		x.Duration = v.GetDuration()
 	default:
 		if v, ok := v.(interface{ GetRequestMethod() string }); ok {
 			x.RequestMethod = v.GetRequestMethod()
@@ -41,6 +43,9 @@ func (x *RequestEvent) Proto_ShallowCopy(v interface{}) {
 		if v, ok := v.(interface{ GetRequestProtocol() RequestProtocol }); ok {
 			x.RequestProtocol = v.GetRequestProtocol()
 		}
+		if v, ok := v.(interface{ GetDuration() *durationpb.Duration }); ok {
+			x.Duration = v.GetDuration()
+		}
 	}
 }
 
@@ -55,6 +60,7 @@ func (x *RequestEvent) Proto_ShallowClone() (c *RequestEvent) {
 		c.RequestMetadata = x.RequestMetadata
 		c.ResponseMetadata = x.ResponseMetadata
 		c.RequestProtocol = x.RequestProtocol
+		c.Duration = x.Duration
 	}
 	return
 }

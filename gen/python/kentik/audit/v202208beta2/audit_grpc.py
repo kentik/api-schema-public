@@ -12,6 +12,7 @@ if typing.TYPE_CHECKING:
 import google.api.annotations_pb2
 import google.api.client_pb2
 import google.protobuf.timestamp_pb2
+import google.protobuf.duration_pb2
 import protoc_gen_openapiv2.options.annotations_pb2
 import kentik.core.v202012alpha1.annotations_pb2
 import kentik.audit.v202208beta2.audit_pb2
