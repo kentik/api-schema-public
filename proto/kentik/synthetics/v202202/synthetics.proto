@@ -190,6 +190,8 @@ enum ImplementType {
   IMPLEMENT_TYPE_RUST = 1;
   // ksynth-agent, a.k.a. app agent (implemented in NodeJS) capable of running all tasks
   IMPLEMENT_TYPE_NODE = 2;
+  // ksynth-agent, a.k.a. app agent (implemented in NodeJS) that is running without chromium enabled, capable of running all tasks
+  IMPLEMENT_TYPE_NETWORK = 3;
 }
 
 message Agent {

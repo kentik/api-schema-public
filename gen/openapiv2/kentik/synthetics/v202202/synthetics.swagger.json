@@ -1181,10 +1181,11 @@
       "enum": [
         "IMPLEMENT_TYPE_UNSPECIFIED",
         "IMPLEMENT_TYPE_RUST",
-        "IMPLEMENT_TYPE_NODE"
+        "IMPLEMENT_TYPE_NODE",
+        "IMPLEMENT_TYPE_NETWORK"
       ],
       "default": "IMPLEMENT_TYPE_UNSPECIFIED",
-      "description": "Agent implementation type determines capabilities of agent.\n\n - IMPLEMENT_TYPE_RUST: ksynth agent, a.k.a network agent (implemented in Rust) capable of running all tasks except for page-load\n - IMPLEMENT_TYPE_NODE: ksynth-agent, a.k.a. app agent (implemented in NodeJS) capable of running all tasks"
+      "description": "Agent implementation type determines capabilities of agent.\n\n - IMPLEMENT_TYPE_RUST: ksynth agent, a.k.a network agent (implemented in Rust) capable of running all tasks except for page-load\n - IMPLEMENT_TYPE_NODE: ksynth-agent, a.k.a. app agent (implemented in NodeJS) capable of running all tasks\n - IMPLEMENT_TYPE_NETWORK: ksynth-agent, a.k.a. app agent (implemented in NodeJS) that is running without chromium enabled, capable of running all tasks"
     },
     "v202202IpTest": {
       "type": "object",
