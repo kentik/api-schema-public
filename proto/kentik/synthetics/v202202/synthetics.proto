@@ -552,6 +552,11 @@ message TestSettings {
     }
   ];
 
+  string notes = 19 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Add a note or comment for this test"
+    }
+  ];
 }
 
 message TestPingSettings {

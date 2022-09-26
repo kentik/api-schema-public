@@ -1684,6 +1684,10 @@
             "type": "string"
           },
           "description": "List of IDs of notification channels for alarms triggered by the test"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Add a note or comment for this test"
         }
       },
       "title": "Synthetic test configuration"

@@ -334,6 +334,7 @@ func (x *TestSettings) Proto_ShallowCopy(v interface{}) {
 		x.Period = v.GetPeriod()
 		x.Family = v.GetFamily()
 		x.NotificationChannels = v.GetNotificationChannels()
+		x.Notes = v.GetNotes()
 	default:
 		if v, ok := v.(interface {
 			GetDefinition() isTestSettings_Definition
@@ -437,6 +438,9 @@ func (x *TestSettings) Proto_ShallowCopy(v interface{}) {
 		if v, ok := v.(interface{ GetNotificationChannels() []string }); ok {
 			x.NotificationChannels = v.GetNotificationChannels()
 		}
+		if v, ok := v.(interface{ GetNotes() string }); ok {
+			x.Notes = v.GetNotes()
+		}
 	}
 }
 
@@ -453,6 +457,7 @@ func (x *TestSettings) Proto_ShallowClone() (c *TestSettings) {
 		c.Period = x.Period
 		c.Family = x.Family
 		c.NotificationChannels = x.NotificationChannels
+		c.Notes = x.Notes
 	}
 	return
 }
