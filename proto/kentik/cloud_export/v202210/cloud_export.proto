@@ -1,0 +1,499 @@
+// Cloud exports management
+
+syntax = "proto3";
+
+package kentik.cloud_export.v202210;
+option go_package = "github.com/kentik/api-schema/gen/go/kentik/cloud_export/v202210;cloud_export";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/timestamp.proto";
+
+import "kentik/core/v202012alpha1/annotations.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Cloud Export Configuration API"
+    version: "202210"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api-schema-public"
+    }
+    description: "# Overview\n"
+    "In Kentik, a \"cloud export\" is an object whose properties are the values that Kentik needs to access network "
+    "flow logs from a given set of resources in a given cloud provider (see [Cloud Exports and Devices]"
+    "(https://kb.kentik.com/v4/Na00.htm#Na00-Cloud_Exports_and_Devices)). The Cloud Export API enables "
+    "programmatic management of cloud exports, serving two primary functions:\n"
+    "* Configuration of the Kentik resources required to export network flow logs and metadata from "
+    "[public clouds](https://kb.kentik.com/v4/Na00.htm).\n"
+    "* Basic status information on active export processes.\n"
+    "\n"
+    "### Supported Cloud Providers\n"
+    "The functionality and configuration parameters supported by this API differ by cloud provider. The API currently "
+    "supports the following providers:\n"
+    "* [Amazon Web Services](https://kb.kentik.com/v0/Bd06.htm) (AWS)\n"
+    "* [Microsoft Azure](https://kb.kentik.com/v0/Bd08.htm)\n"
+    "* [Google Cloud](https://kb.kentik.com/v0/Bd07.htm) (GCP)\n"
+    "* [IBM Cloud](https://kb.kentik.com/v0/Bd09.htm)\n"
+    "\n"
+    "### Additional Public Resources\n"
+    "The following additional resources are available for working with this API:\n"
+    "* Kentik community [Python](https://github.com/kentik/community_sdk_python) and [Go]"
+    "(https://github.com/kentik/community_sdk_golang) SDKs provide language-specific support for using this and "
+    "other Kentik APIs. These SDKs can be also used as example code for development.\n"
+    "* A [Terraform provider](https://registry.terraform.io/providers/kentik/kentik-cloudexport) is available for "
+    "configuring `cloud_export` instances in Kentik. Terraform modules are available for [AWS]"
+    "(https://github.com/kentik/config-snippets-cloud/tree/master/cloud_AWS/terraform/module), [Azure](https://github.com/kentik/config-snippets-cloud/tree/master/cloud_Azure/terraform/module) \n"
+    "and [GCP](https://github.com/kentik/config-snippets-cloud/tree/master/cloud_GCP/terraform/module).\n"
+    "These modules support onboarding and ongoing management of all resources (in public clouds and in Kentik) "
+    "required to export flow logs to Kentik.\n"
+    "\n"
+    "# Anatomy of a Cloud Export\n"
+    "Configuration and status of a `cloud_export` instance is represented by the `CloudExport` object, which contains"
+    " three categories of attributes:\n"
+    "* Common Configuration Attributes\n"
+    "* Cloud Provider Configuration Attributes\n"
+    "* Metadata and Status Attributes\n"
+    "\n"
+    "### Common Configuration Attributes\n"
+    "The configuration attributes in the table below are common to `CloudExport` objects for all cloud providers.\n"
+    "| Attribute | Required | Default |\n"
+    "|-----------|----------| ------- |\n"
+    "| enabled | No | False |\n"
+    "| name | Yes |   |\n"
+    "| description | No | <empty string> |\n"
+    "| type | Yes | |\n"
+    "| cloud_provider | Yes | |\n"
+    "| plan_id | Yes | |\n"
+    "\n"
+    "### Cloud Provider Specific Attributes\n"
+    "The attributes listed in the table below are objects whose parameters are specific to each cloud provider.\n"
+    "| Cloud Provider | Attribute | Object Name |\n"
+    "|-----------|----------| ------- |\n"
+    "| AWS | aws | AwsProperties |\n"
+    "| Azure | azure | AzureProperties |\n"
+    "| Google Cloud | gce | GceProperties |\n"
+    "| IBM Cloud | ibm | IbmProperties |\n"
+    "\n"
+    "### Metadata and Status Attributes\n"
+    "The attributes in the table below provide read-only metadata and status for a `cloud_export` instance.\n"
+    "| Attribute | Purpose |\n"
+    "|-----------|---------|\n"
+    "| id | System-generated unique identifier of the instance |\n"
+    "| cdate | Creation timestamp |\n"
+    "| edate | Last-modification timestamp |\n"
+    "| current_status | Runtime status of the flow and metadata collection process |\n"
+    "\n"
+  }
+  external_docs: {
+    url: "https://kb.kentik.com/v4/Na00.htm"
+    description: "Kentik support for public clouds"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+// =======================================================
+// models
+// =======================================================
+
+// {{.Name}}
+enum CloudExportType {
+  // Invalid value.
+  CLOUD_EXPORT_TYPE_UNSPECIFIED = 0;
+  // Cloud export process is managed by Kentik
+  CLOUD_EXPORT_TYPE_KENTIK_MANAGED = 1;
+  // Cloud export process is managed by customer
+  CLOUD_EXPORT_TYPE_CUSTOMER_MANAGED = 2;
+}
+
+// {{.Name}}
+enum CloudProvider {
+  // Invalid value.
+  CLOUD_PROVIDER_UNSPECIFIED = 0;
+  // Amazon Web Services
+  CLOUD_PROVIDER_AWS = 1;
+  // Microsoft Azure
+  CLOUD_PROVIDER_AZURE = 2;
+  // Google Cloud
+  CLOUD_PROVIDER_GCE = 3;
+  // IBM Cloud
+  CLOUD_PROVIDER_IBM = 4;
+}
+
+// {{.Name}}
+message CloudExport {
+  string id = 1  [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Unique identifier of the instance"
+    }
+  ];
+  CloudExportType type = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Ownership of the cloud export process/agent"
+    }
+  ];
+  bool enabled = 3 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Attribute controlling whether the instance is active"
+    }
+  ];
+  string name = 4 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "User selected name of the instance"
+    }
+  ];
+  string description = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Description of the instance"
+    }
+  ];
+  string plan_id = 6 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Identifier of the billing plan for the instance"
+    }
+  ];
+  CloudProvider cloud_provider = 7 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Cloud provider identification"
+    }
+  ];
+  // Properties specific to the cloud provider.
+  oneof cloud_specific_properties {
+    AwsProperties aws = 8;
+    AzureProperties azure = 9;
+    GceProperties gce = 10;
+    IbmProperties ibm = 11;
+  }
+  CloudExportStatus current_status = 13 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Runtime status of the export process"
+    }
+  ];
+  google.protobuf.Timestamp cdate = 14 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Creation timestamp (UTC)"
+    }
+  ];
+  google.protobuf.Timestamp edate = 15 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Last modification timestamp (UTC)"
+    }
+  ];
+}
+
+// {{.Name}}
+message AwsProperties {
+  string bucket = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Name of S3 bucket from which flow logs are to be exported."
+    }
+  ];
+  string iam_role_arn = 2 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ARN of the IAM role granted access to the S3 bucket and describe API end-points."
+    }
+  ];
+  string region = 3 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Name of AWS region from which to export flow logs."
+    }
+  ];
+  bool delete_after_read = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Delete from logs from the S3 bucket after export (default false)."
+    }
+  ];
+  bool metadata_only = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Import only metadata without any flows (default false)."
+    }
+  ];
+}
+
+// {{.Name}}
+message AzureProperties {
+  string location = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Azure region/location from which to export flow logs."
+    }
+  ];
+  string resource_group = 2 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Resource group containing the NSG generating flow logs."
+    }
+  ];
+  string storage_account = 3 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Storage account from which flow logs are to be extracted."
+    }
+  ];
+  string subscription_id = 4 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of Azure account from which flows logs are to be exported."
+    }
+  ];
+  bool security_principal_enabled = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Indication whether security principal for the Kentik flow export application has been authorized."
+    }
+  ];
+}
+
+// {{.Name}}
+message GceProperties {
+  string project = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Name of the project from which to export flow logs."
+    }
+  ];
+  string subscription = 2 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "GCP Pub/Sub subscription providing flow logs."
+    }
+  ];
+}
+
+// {{.Name}}
+message IbmProperties {
+  string bucket = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Storage bucket from which flow logs are to be extracted."
+    }
+  ];
+}
+
+// {{.Name}}
+message CloudExportStatus {
+  string status = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Status of the export task."
+    }
+  ];
+  string error_message = 2 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Text of the last error message (empty if status is OK)."
+    }
+  ];
+  bool flow_found = 3 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Indication whether any flow data were exported."
+    }
+  ];
+  bool api_access = 4 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Indication whether the export process is able to access cloud API."
+    }
+  ];
+  bool storage_account_access = 5 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Indication whether the export process is able to access storage account containing flow logs."
+    }
+  ];
+}
+
+// =======================================================
+// services
+// =======================================================
+
+// {{.Name}}
+message CreateCloudExportRequest {
+  CloudExport export = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Cloud export configuration."
+    }
+  ];
+}
+
+// {{.Name}}
+message CreateCloudExportResponse {
+  CloudExport export = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Created cloud export object."
+    }
+  ];
+}
+
+// {{.Name}}
+message ListCloudExportsRequest {}
+
+// {{.Name}}
+message ListCloudExportsResponse {
+  repeated CloudExport exports = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of cloud export objects."
+    }
+  ];
+  uint32 invalid_exports_count = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Number of objects with invalid data (which are not returned in the response)."
+    }
+  ];
+}
+
+// {{.Name}}
+message GetCloudExportRequest {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the cloud export to be retrieved."
+    }
+  ];
+}
+
+// {{.Name}}
+message GetCloudExportResponse {
+  CloudExport export = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Cloud export object."
+    }
+  ];
+}
+
+// {{.Name}}
+message UpdateCloudExportRequest {
+  CloudExport export = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Cloud export configuration."
+    }
+  ];
+}
+
+// {{.Name}}
+message UpdateCloudExportResponse {
+  CloudExport export = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Updated cloud export object."
+    }
+  ];
+}
+
+// {{.Name}}
+message DeleteCloudExportRequest {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the cloud export to be deleted."
+    }
+  ];
+}
+
+// {{.Name}}
+message DeleteCloudExportResponse {}
+
+service CloudExportAdminService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202012alpha1.service_scope) = "admin.cloud_export";
+
+  rpc CreateCloudExport(CreateCloudExportRequest) returns (CreateCloudExportResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_export:write";
+    option (google.api.http) = {
+      post: "/cloud_export/v202210/exports"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "CreateCloudExport"
+      summary: "Create Cloud Export."
+      description: "Create new cloud export based on configuration in the request."
+    };
+  }
+
+  rpc ListCloudExports(ListCloudExportsRequest) returns (ListCloudExportsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_export:read";
+    option (google.api.http) = {
+      get: "/cloud_export/v202210/exports"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ListCloudExports"
+      summary: "List cloud exports."
+      description: "Returns a list of all cloud exports in the account."
+    };
+  }
+
+  rpc GetCloudExport(GetCloudExportRequest) returns (GetCloudExportResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_export:read";
+    option (google.api.http) = {
+      get: "/cloud_export/v202210/exports/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetCloudExport"
+      summary: "Get cloud export configuration and status."
+      description: "Returns configuration and status of cloud export with specified ID."
+    };
+  }
+
+  rpc UpdateCloudExport(UpdateCloudExportRequest) returns (UpdateCloudExportResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_export:write";
+    option (google.api.http) = {
+      put: "/cloud_export/v202210/exports/{export.id}"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "UpdateCloudExport"
+      summary: "Update configuration of cloud export."
+      description: "Replace complete configuration of a cloud export with data in the request."
+    };
+  }
+
+  rpc DeleteCloudExport(DeleteCloudExportRequest) returns (DeleteCloudExportResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_export:write";
+    option (google.api.http) = {
+      delete: "/cloud_export/v202210/exports/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "DeleteCloudExport"
+      summary: "Delete a cloud export."
+      description: "Delete cloud export with specified ID."
+    };
+  }
+}

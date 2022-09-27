@@ -81,8 +81,8 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
 		"| status | RW | Life-cycle status of the test |\n"
 		"| cdate | RO | Creation timestamp |\n"
 		"| edate | RO | Last-modification timestamp |\n"
-		"| createdBy | RO | Identity of the user that created the test |\n"
-		"| lastUpdatedBy | RO | Identity of the latest user to modify the test |\n"
+		"| created_by | RO | Identity of the user that created the test |\n"
+		"| last_updated_by | RO | Identity of the latest user to modify the test |\n"
 		"| labels | RW | List of names of labels applied to the test |\n"
 	"\n"
 	"Test configuration is performed via the test's `settings` attribute. Some settings are common to all tests while "
@@ -180,17 +180,16 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
 
 // models
 // -------------------------------------------------------
-
 // === AGENT config and status ===
 
-// Agent implementation type determines capabilities of agent.
+// Agent implementation type
 enum ImplementType {
   IMPLEMENT_TYPE_UNSPECIFIED = 0;
-  // ksynth agent, a.k.a network agent (implemented in Rust) capable of running all tasks except for page-load
+  // ksynth, a.k.a network agent (implemented in Rust) capable of running all tasks except for page-load and transaction
   IMPLEMENT_TYPE_RUST = 1;
   // ksynth-agent, a.k.a. app agent (implemented in NodeJS) capable of running all tasks
   IMPLEMENT_TYPE_NODE = 2;
-  // ksynth-agent, a.k.a. app agent (implemented in NodeJS) that is running without chromium enabled, capable of running all tasks
+  // ksynth-agent, a.k.a. app agent running without Chromium enabled, capable of running all tasks except for page-load and transaction
   IMPLEMENT_TYPE_NETWORK = 3;
 }
 
@@ -354,6 +353,7 @@ message AgentMetadata {
 }
 
 // Supported IP address family
+
 enum IPFamily {
   // Invalid value.
   IP_FAMILY_UNSPECIFIED = 0;
@@ -366,6 +366,7 @@ enum IPFamily {
 };
 
 // Operational status of a test
+
 enum TestStatus {
   // Invalid value.
   TEST_STATUS_UNSPECIFIED = 0;
@@ -378,6 +379,7 @@ enum TestStatus {
 }
 
 // Operational status of an agent
+
 enum AgentStatus {
   // Invalid value.
   AGENT_STATUS_UNSPECIFIED = 0;
@@ -493,7 +495,6 @@ enum DNSRecord {
   DNS_RECORD_SOA = 8;
 }
 
-// Synthetic test configuration
 message TestSettings {
 
   oneof definition {
