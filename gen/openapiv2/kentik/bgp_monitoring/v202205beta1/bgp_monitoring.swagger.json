@@ -389,7 +389,8 @@
           "description": "Full name of the user",
           "readOnly": true
         }
-      }
+      },
+      "title": "UserInfo"
     },
     "v202205beta1BgpHealthSettings": {
       "type": "object",

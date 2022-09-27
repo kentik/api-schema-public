@@ -31,16 +31,16 @@ const (
 // of the legacy proto package is being used.
 const _ = proto.ProtoPackageIsVersion4
 
-// Agent implementation type
+// {{.Name}}
 type ImplementType int32
 
 const (
 	ImplementType_IMPLEMENT_TYPE_UNSPECIFIED ImplementType = 0
 	// ksynth, a.k.a network agent (implemented in Rust) capable of running all tasks except for page-load and transaction
 	ImplementType_IMPLEMENT_TYPE_RUST ImplementType = 1
-	// ksynth-agent, a.k.a. app agent (implemented in NodeJS) capable of running all tasks
+	// ksynth-agent, a.k.a. app agent (implemented in NodeJS) with Chromium enabled capable of running all tasks
 	ImplementType_IMPLEMENT_TYPE_NODE ImplementType = 2
-	// ksynth-agent, a.k.a. app agent running without Chromium enabled, capable of running all tasks except for page-load and transaction
+	// ksynth-agent, a.k.a. app agent with Chromium disabled, capable of running all tasks except for page-load and transaction
 	ImplementType_IMPLEMENT_TYPE_NETWORK ImplementType = 3
 )
 
@@ -87,6 +87,7 @@ func (ImplementType) EnumDescriptor() ([]byte, []int) {
 	return file_kentik_synthetics_v202202_synthetics_proto_rawDescGZIP(), []int{0}
 }
 
+// {{.Name}}
 type IPFamily int32
 
 const (
@@ -143,6 +144,7 @@ func (IPFamily) EnumDescriptor() ([]byte, []int) {
 	return file_kentik_synthetics_v202202_synthetics_proto_rawDescGZIP(), []int{1}
 }
 
+// {{.Name}}
 type TestStatus int32
 
 const (
@@ -199,6 +201,7 @@ func (TestStatus) EnumDescriptor() ([]byte, []int) {
 	return file_kentik_synthetics_v202202_synthetics_proto_rawDescGZIP(), []int{2}
 }
 
+// {{.Name}}
 type AgentStatus int32
 
 const (
@@ -255,7 +258,7 @@ func (AgentStatus) EnumDescriptor() ([]byte, []int) {
 	return file_kentik_synthetics_v202202_synthetics_proto_rawDescGZIP(), []int{3}
 }
 
-// DNS record type
+// {{.Name}}
 type DNSRecord int32
 
 const (
@@ -332,6 +335,7 @@ func (DNSRecord) EnumDescriptor() ([]byte, []int) {
 	return file_kentik_synthetics_v202202_synthetics_proto_rawDescGZIP(), []int{4}
 }
 
+// {{.Name}}
 type Agent struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -567,6 +571,7 @@ func (x *Agent) GetMetadata() *AgentMetadata {
 	return nil
 }
 
+// {{.Name}}
 type AgentMetadata struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -638,6 +643,7 @@ func (x *AgentMetadata) GetPublicIpv6Addresses() []*AgentMetadata_IpValue {
 	return nil
 }
 
+// {{.Name}}
 type UserInfo struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -701,6 +707,7 @@ func (x *UserInfo) GetFullName() string {
 	return ""
 }
 
+// {{.Name}}
 type Test struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -820,6 +827,7 @@ func (x *Test) GetLabels() []string {
 	return nil
 }
 
+// {{.Name}}
 type TestSettings struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1084,6 +1092,7 @@ func (*TestSettings_DnsGrid) isTestSettings_Definition() {}
 
 func (*TestSettings_NetworkMesh) isTestSettings_Definition() {}
 
+// {{.Name}}
 type TestPingSettings struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1171,6 +1180,7 @@ func (x *TestPingSettings) GetDscp() uint32 {
 	return 0
 }
 
+// {{.Name}}
 type TestTraceSettings struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1266,6 +1276,7 @@ func (x *TestTraceSettings) GetDscp() uint32 {
 	return 0
 }
 
+// {{.Name}}
 type ActivationSettings struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1337,6 +1348,7 @@ func (x *ActivationSettings) GetTimes() string {
 	return ""
 }
 
+// {{.Name}}
 type HealthSettings struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1544,6 +1556,7 @@ func (x *HealthSettings) GetDnsValidIps() string {
 	return ""
 }
 
+// {{.Name}}
 type HostnameTest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1591,6 +1604,7 @@ func (x *HostnameTest) GetTarget() string {
 	return ""
 }
 
+// {{.Name}}
 type IpTest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1638,6 +1652,7 @@ func (x *IpTest) GetTargets() []string {
 	return nil
 }
 
+// {{.Name}}
 type AgentTest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1693,6 +1708,7 @@ func (x *AgentTest) GetUseLocalIp() bool {
 	return false
 }
 
+// {{.Name}}
 type FlowTest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1788,6 +1804,7 @@ func (x *FlowTest) GetDirection() string {
 	return ""
 }
 
+// {{.Name}}
 type DnsTest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1867,6 +1884,7 @@ func (x *DnsTest) GetPort() uint32 {
 	return 0
 }
 
+// {{.Name}}
 type UrlTest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1954,6 +1972,7 @@ func (x *UrlTest) GetIgnoreTlsErrors() bool {
 	return false
 }
 
+// {{.Name}}
 type PageLoadTest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2033,6 +2052,7 @@ func (x *PageLoadTest) GetCssSelectors() map[string]string {
 	return nil
 }
 
+// {{.Name}}
 type NetworkMeshTest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2080,6 +2100,7 @@ func (x *NetworkMeshTest) GetUseLocalIp() bool {
 	return false
 }
 
+// {{.Name}}
 type MetricData struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2151,6 +2172,7 @@ func (x *MetricData) GetHealth() string {
 	return ""
 }
 
+// {{.Name}}
 type PacketLossData struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2206,6 +2228,7 @@ func (x *PacketLossData) GetHealth() string {
 	return ""
 }
 
+// {{.Name}}
 type PingResults struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2285,6 +2308,7 @@ func (x *PingResults) GetDstIp() string {
 	return ""
 }
 
+// {{.Name}}
 type HTTPResponseData struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2348,6 +2372,7 @@ func (x *HTTPResponseData) GetData() string {
 	return ""
 }
 
+// {{.Name}}
 type HTTPResults struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2419,6 +2444,7 @@ func (x *HTTPResults) GetDstIp() string {
 	return ""
 }
 
+// {{.Name}}
 type DNSResponseData struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2474,6 +2500,7 @@ func (x *DNSResponseData) GetData() string {
 	return ""
 }
 
+// {{.Name}}
 type DNSResults struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2545,6 +2572,7 @@ func (x *DNSResults) GetResponse() *DNSResponseData {
 	return nil
 }
 
+// {{.Name}}
 type TaskResults struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2647,6 +2675,7 @@ func (*TaskResults_Http) isTaskResults_TaskType() {}
 
 func (*TaskResults_Dns) isTaskResults_TaskType() {}
 
+// {{.Name}}
 type AgentResults struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2710,6 +2739,7 @@ func (x *AgentResults) GetTasks() []*TaskResults {
 	return nil
 }
 
+// {{.Name}}
 type TestResults struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2781,6 +2811,7 @@ func (x *TestResults) GetAgents() []*AgentResults {
 	return nil
 }
 
+// {{.Name}}
 type Stats struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2844,6 +2875,7 @@ func (x *Stats) GetMax() int32 {
 	return 0
 }
 
+// {{.Name}}
 type Location struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2923,6 +2955,7 @@ func (x *Location) GetCity() string {
 	return ""
 }
 
+// {{.Name}}
 type NetNode struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -3018,6 +3051,7 @@ func (x *NetNode) GetSiteId() string {
 	return ""
 }
 
+// {{.Name}}
 type TraceHop struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -3073,6 +3107,7 @@ func (x *TraceHop) GetNodeId() string {
 	return ""
 }
 
+// {{.Name}}
 type PathTrace struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -3136,6 +3171,7 @@ func (x *PathTrace) GetHops() []*TraceHop {
 	return nil
 }
 
+// {{.Name}}
 type Path struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -3223,6 +3259,7 @@ func (x *Path) GetTime() *timestamppb.Timestamp {
 	return nil
 }
 
+// {{.Name}}
 type GetResultsForTestsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -3310,6 +3347,7 @@ func (x *GetResultsForTestsRequest) GetAggregate() bool {
 	return false
 }
 
+// {{.Name}}
 type GetResultsForTestsResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -3357,6 +3395,7 @@ func (x *GetResultsForTestsResponse) GetResults() []*TestResults {
 	return nil
 }
 
+// {{.Name}}
 type GetTraceForTestRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -3436,6 +3475,7 @@ func (x *GetTraceForTestRequest) GetTargetIps() []string {
 	return nil
 }
 
+// {{.Name}}
 type GetTraceForTestResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -3491,6 +3531,7 @@ func (x *GetTraceForTestResponse) GetPaths() []*Path {
 	return nil
 }
 
+// {{.Name}}
 type ListAgentsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -3529,6 +3570,7 @@ func (*ListAgentsRequest) Descriptor() ([]byte, []int) {
 	return file_kentik_synthetics_v202202_synthetics_proto_rawDescGZIP(), []int{37}
 }
 
+// {{.Name}}
 type ListAgentsResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -3584,6 +3626,7 @@ func (x *ListAgentsResponse) GetInvalidCount() uint32 {
 	return 0
 }
 
+// {{.Name}}
 type GetAgentRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -3631,6 +3674,7 @@ func (x *GetAgentRequest) GetId() string {
 	return ""
 }
 
+// {{.Name}}
 type GetAgentResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -3678,6 +3722,7 @@ func (x *GetAgentResponse) GetAgent() *Agent {
 	return nil
 }
 
+// {{.Name}}
 type UpdateAgentRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -3725,6 +3770,7 @@ func (x *UpdateAgentRequest) GetAgent() *Agent {
 	return nil
 }
 
+// {{.Name}}
 type UpdateAgentResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -3772,6 +3818,7 @@ func (x *UpdateAgentResponse) GetAgent() *Agent {
 	return nil
 }
 
+// {{.Name}}
 type DeleteAgentRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -3819,6 +3866,7 @@ func (x *DeleteAgentRequest) GetId() string {
 	return ""
 }
 
+// {{.Name}}
 type DeleteAgentResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -3857,6 +3905,7 @@ func (*DeleteAgentResponse) Descriptor() ([]byte, []int) {
 	return file_kentik_synthetics_v202202_synthetics_proto_rawDescGZIP(), []int{44}
 }
 
+// {{.Name}}
 type ListTestsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -3895,6 +3944,7 @@ func (*ListTestsRequest) Descriptor() ([]byte, []int) {
 	return file_kentik_synthetics_v202202_synthetics_proto_rawDescGZIP(), []int{45}
 }
 
+// {{.Name}}
 type ListTestsResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -3950,6 +4000,7 @@ func (x *ListTestsResponse) GetInvalidCount() uint32 {
 	return 0
 }
 
+// {{.Name}}
 type CreateTestRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -3997,6 +4048,7 @@ func (x *CreateTestRequest) GetTest() *Test {
 	return nil
 }
 
+// {{.Name}}
 type CreateTestResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -4044,6 +4096,7 @@ func (x *CreateTestResponse) GetTest() *Test {
 	return nil
 }
 
+// {{.Name}}
 type GetTestRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -4091,6 +4144,7 @@ func (x *GetTestRequest) GetId() string {
 	return ""
 }
 
+// {{.Name}}
 type GetTestResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -4138,6 +4192,7 @@ func (x *GetTestResponse) GetTest() *Test {
 	return nil
 }
 
+// {{.Name}}
 type UpdateTestRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -4185,6 +4240,7 @@ func (x *UpdateTestRequest) GetTest() *Test {
 	return nil
 }
 
+// {{.Name}}
 type UpdateTestResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -4232,6 +4288,7 @@ func (x *UpdateTestResponse) GetTest() *Test {
 	return nil
 }
 
+// {{.Name}}
 type DeleteTestRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -4279,6 +4336,7 @@ func (x *DeleteTestRequest) GetId() string {
 	return ""
 }
 
+// {{.Name}}
 type DeleteTestResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -4317,6 +4375,7 @@ func (*DeleteTestResponse) Descriptor() ([]byte, []int) {
 	return file_kentik_synthetics_v202202_synthetics_proto_rawDescGZIP(), []int{54}
 }
 
+// {{.Name}}
 type SetTestStatusRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -4372,6 +4431,7 @@ func (x *SetTestStatusRequest) GetStatus() TestStatus {
 	return TestStatus_TEST_STATUS_UNSPECIFIED
 }
 
+// {{.Name}}
 type SetTestStatusResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -6269,8 +6329,8 @@ var file_kentik_synthetics_v202202_synthetics_proto_rawDesc = []byte{
 	0x2c, 0x20, 0x61, 0x6e, 0x64, 0x20, 0x61, 0x63, 0x63, 0x65, 0x73, 0x73, 0x20, 0x74, 0x6f, 0x20,
 	0x72, 0x75, 0x6e, 0x74, 0x69, 0x6d, 0x65, 0x20, 0x73, 0x74, 0x61, 0x74, 0x65, 0x20, 0x69, 0x6e,
 	0x66, 0x6f, 0x72, 0x6d, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x0a, 0x23, 0x23, 0x23, 0x20, 0x53,
-	0x74, 0x61, 0x74, 0x65, 0x20, 0x61, 0x6e, 0x64, 0x20, 0x6d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74,
-	0x61, 0x20, 0x61, 0x74, 0x74, 0x72, 0x69, 0x62, 0x75, 0x74, 0x65, 0x73, 0x0a, 0x20, 0x54, 0x68,
+	0x74, 0x61, 0x74, 0x65, 0x20, 0x61, 0x6e, 0x64, 0x20, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74,
+	0x61, 0x20, 0x41, 0x74, 0x74, 0x72, 0x69, 0x62, 0x75, 0x74, 0x65, 0x73, 0x0a, 0x20, 0x54, 0x68,
 	0x65, 0x20, 0x66, 0x6f, 0x6c, 0x6c, 0x6f, 0x77, 0x69, 0x6e, 0x67, 0x20, 0x74, 0x61, 0x62, 0x6c,
 	0x65, 0x20, 0x6c, 0x69, 0x73, 0x74, 0x73, 0x20, 0x74, 0x68, 0x65, 0x20, 0x6d, 0x65, 0x74, 0x61,
 	0x64, 0x61, 0x74, 0x61, 0x20, 0x61, 0x6e, 0x64, 0x20, 0x73, 0x74, 0x61, 0x74, 0x65, 0x20, 0x61,
