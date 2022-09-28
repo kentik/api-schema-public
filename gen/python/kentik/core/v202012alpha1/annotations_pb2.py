@@ -15,7 +15,7 @@ _sym_db = _symbol_database.Default()
 from google.protobuf import descriptor_pb2 as google_dot_protobuf_dot_descriptor__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n+kentik/core/v202012alpha1/annotations.proto\x12\x19kentik.core.v202012alpha1\x1a google/protobuf/descriptor.proto:E\n\rservice_scope\x12\x1f.google.protobuf.ServiceOptions\x18\xfd* \x01(\tR\x0cserviceScope:I\n\x0fprivate_service\x12\x1f.google.protobuf.ServiceOptions\x18\xff* \x01(\x08R\x0eprivateService:B\n\x0cmethod_scope\x12\x1e.google.protobuf.MethodOptions\x18\xfe* \x01(\tR\x0bmethodScope:F\n\x0eprivate_method\x12\x1e.google.protobuf.MethodOptions\x18\x80+ \x01(\x08R\rprivateMethodBJZHgithub.com/kentik/api-schema/gen/go/kentik/core/v202012alpha1;kentik_apib\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n+kentik/core/v202012alpha1/annotations.proto\x12\x19kentik.core.v202012alpha1\x1a google/protobuf/descriptor.proto:E\n\rservice_scope\x12\x1f.google.protobuf.ServiceOptions\x18\xfd* \x01(\tR\x0cserviceScope:I\n\x0fprivate_service\x12\x1f.google.protobuf.ServiceOptions\x18\xff* \x01(\x08R\x0eprivateService:B\n\x0cmethod_scope\x12\x1e.google.protobuf.MethodOptions\x18\xfe* \x01(\tR\x0bmethodScope:F\n\x0eprivate_method\x12\x1e.google.protobuf.MethodOptions\x18\x80+ \x01(\x08R\rprivateMethod:H\n\x0fmethod_category\x12\x1e.google.protobuf.MethodOptions\x18\x81+ \x01(\tR\x0emethodCategoryBJZHgithub.com/kentik/api-schema/gen/go/kentik/core/v202012alpha1;kentik_apib\x06proto3')
 
 
 SERVICE_SCOPE_FIELD_NUMBER = 5501
@@ -26,12 +26,15 @@ METHOD_SCOPE_FIELD_NUMBER = 5502
 method_scope = DESCRIPTOR.extensions_by_name['method_scope']
 PRIVATE_METHOD_FIELD_NUMBER = 5504
 private_method = DESCRIPTOR.extensions_by_name['private_method']
+METHOD_CATEGORY_FIELD_NUMBER = 5505
+method_category = DESCRIPTOR.extensions_by_name['method_category']
 
 if _descriptor._USE_C_DESCRIPTORS == False:
   google_dot_protobuf_dot_descriptor__pb2.ServiceOptions.RegisterExtension(service_scope)
   google_dot_protobuf_dot_descriptor__pb2.ServiceOptions.RegisterExtension(private_service)
   google_dot_protobuf_dot_descriptor__pb2.MethodOptions.RegisterExtension(method_scope)
   google_dot_protobuf_dot_descriptor__pb2.MethodOptions.RegisterExtension(private_method)
+  google_dot_protobuf_dot_descriptor__pb2.MethodOptions.RegisterExtension(method_category)
 
   DESCRIPTOR._options = None
   DESCRIPTOR._serialized_options = b'ZHgithub.com/kentik/api-schema/gen/go/kentik/core/v202012alpha1;kentik_api'
