@@ -2,8 +2,8 @@
     "openapi": "3.0.0",
     "info": {
         "title": "BGP Monitoring API",
-        "description": "API for interaction with Kentik BGP Monitoring Service.\n",
-        "version": "v202205beta1",
+        "description": "# Overview\nThe BGP Monitoring API provides programmatic access to Kentik's BGP monitoring system. The APIs handle two distinct functions:\n* **Admin service**: manages monitoring of advertised BGP prefixes as collected from global vantage points.\n* **Data service**: handles retrieval of two classes of data for any IP prefix:\n    - metrics for reachability and path changes, which provide a time series for a specified interval;\n    - routes, which provide a snapshot of routing information for particular timestamp.\n\nThe services described above use the following endpoints:\n| Endpoint | Purpose |\n|-----------|---------|\n| BgpMonitoringAdminService | CRUD operations for BGP monitors |\n| BgpMonitoringDataService  | Retrieval of BGP monitoring data |\n\nBoth REST endpoints and gRPC RPCs are provided.\n### Known Limitations\nThe API currently does not support retrieval of BGP event history.\n# BGP Monitoring Data\n\nKentik's BGP monitoring API provides the following information about network prefixes:\n* **Reachability**: expressed as the percentage of vantage points reporting the prefix\n* **Path changes**: the number of changes in a given time range\n* **Routes**: AS Path, next hop\n### Data Retrieval Limitations\n\nThe following considerations apply to data retrieval using these APIs:\n* BGP metrics and routes can be retrieved for any prefix with prefix length greater than 14 and any time interval. Prefixes with smaller length must be split into subnets (sub-prefixes) and requested individually.\n* Requests for BGP metrics can can specify one or more metric types to be retrieved for a single prefix. Observed data are returned as a sequence of messages, one for each metric type and observation time.\n* Route requests retrieve snapshot of information for specified prefix and time. Responses contain also mapping of ASNs to AS names for convenience.\n# Working with BGP Monitoring\n\nThe topics below cover important information related to using Kentik's BGP monitoring APIs.\n### BGP Prefixes\n\nThese APIs represent BGP prefixes using NLRI (Network Layer Reachability Information) objects. While NLRI objects allow representation of any type of network address, the system currently supports only IPv4 and IPv6 unicast in standard textual representation:\n* **IPv4**: dotted-decimal notation\n* **IPv6**: [RFC 5952](https://www.rfc-editor.org/rfc/rfc5952) syntax\n### BGP Monitor Tests\n\nBGP Monitors enable the generation of alerts for group network prefixes (IPv4 or IPv6) based on the following factors:\n* Visibility/reachability of prefixes\n* Mismatch of originating ASNs with a specified list of valid originators\n* Validity of advertisements with respect to RPKI (Resource Public Key Infrastructure)\n\n### Configuration Limitations \n\nThe following considerations apply when configuring a BGP monitor test:\n* Each BGP monitor instance can monitor up to 10 prefixes.\n* The length of each monitored (IPv4 or IPv6) prefix must be greater than 14. Prefixes with smaller length must be split into subnets (sub-prefixes).",
+        "version": "v202210",
         "contact": {
             "name": "Kentik API Engineering",
             "url": "https://github.com/kentik/api-schema-public"
@@ -18,10 +18,10 @@
         }
     ],
     "paths": {
-        "/bgp_monitoring/v202205beta1/metrics": {
+        "/bgp_monitoring/v202210/metrics": {
             "post": {
-                "summary": "Get metrics for a single BGP target (prefix).",
-                "description": "Retrieve metric data for single BGP target (prefix) and time interval.",
+                "summary": "Get metrics for a BGP prefix.",
+                "description": "Retrieve metric data for single BGP prefix and time interval.",
                 "operationId": "GetMetricsForTarget",
                 "responses": {
                     "200": {
@@ -29,7 +29,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/v202205beta1GetMetricsForTargetResponse"
+                                    "$ref": "#/components/schemas/v202210GetMetricsForTargetResponse"
                                 }
                             }
                         }
@@ -49,7 +49,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202205beta1GetMetricsForTargetRequest"
+                                "$ref": "#/components/schemas/v202210GetMetricsForTargetRequest"
                             }
                         }
                     },
@@ -60,18 +60,18 @@
                 ]
             }
         },
-        "/bgp_monitoring/v202205beta1/monitors": {
+        "/bgp_monitoring/v202210/monitors": {
             "get": {
                 "summary": "List BGP Monitors.",
-                "description": "Returns a list of BGP monitors.",
-                "operationId": "MonitorsList",
+                "description": "Returns list of all BGP monitors present in the account.",
+                "operationId": "ListMonitors",
                 "responses": {
                     "200": {
                         "description": "A successful response.",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/v202205beta1ListMonitorsResponse"
+                                    "$ref": "#/components/schemas/v202210ListMonitorsResponse"
                                 }
                             }
                         }
@@ -92,14 +92,16 @@
                 ]
             },
             "post": {
-                "operationId": "BgpMonitoringAdminService_CreateMonitor",
+                "summary": "Create new BGP Monitor instance.",
+                "description": "Creates new BGP Monitor and if successful returns its configuration.",
+                "operationId": "CreateMonitor",
                 "responses": {
                     "200": {
                         "description": "A successful response.",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/v202205beta1CreateMonitorResponse"
+                                    "$ref": "#/components/schemas/v202210CreateMonitorResponse"
                                 }
                             }
                         }
@@ -119,7 +121,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202205beta1CreateMonitorRequest"
+                                "$ref": "#/components/schemas/v202210CreateMonitorRequest"
                             }
                         }
                     },
@@ -130,18 +132,18 @@
                 ]
             }
         },
-        "/bgp_monitoring/v202205beta1/monitors/{id}": {
+        "/bgp_monitoring/v202210/monitors/{id}": {
             "get": {
                 "summary": "Get BGP Monitor configuration.",
-                "description": "Return configuration of BGP monitor with specific ID.",
-                "operationId": "MonitorGet",
+                "description": "Returns configuration of existing BGP monitor with specific ID.",
+                "operationId": "GetMonitor",
                 "responses": {
                     "200": {
                         "description": "A successful response.",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/v202205beta1GetMonitorResponse"
+                                    "$ref": "#/components/schemas/v202210GetMonitorResponse"
                                 }
                             }
                         }
@@ -160,6 +162,7 @@
                 "parameters": [
                     {
                         "name": "id",
+                        "description": "ID of the BGP monitor to be retrieved",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -172,16 +175,16 @@
                 ]
             },
             "delete": {
-                "summary": "Delete BGP Monitor.",
-                "description": "Delete BGP monitor with  with specific ID.",
-                "operationId": "MonitorDelete",
+                "summary": "Delete existing BGP Monitor.",
+                "description": "Delete BGP monitor with with specific ID.",
+                "operationId": "DeleteMonitor",
                 "responses": {
                     "200": {
                         "description": "A successful response.",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/v202205beta1DeleteMonitorResponse"
+                                    "$ref": "#/components/schemas/v202210DeleteMonitorResponse"
                                 }
                             }
                         }
@@ -200,6 +203,7 @@
                 "parameters": [
                     {
                         "name": "id",
+                        "description": "ID of the BGP monitor to be deleted",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -212,16 +216,16 @@
                 ]
             },
             "put": {
-                "summary": "Update BGP Monitor configuration.",
-                "description": "Update configuration of BGP monitor with specific ID. Returns updated monitor configuration.",
-                "operationId": "MonitorUpdate",
+                "summary": "Update configuration of a BGP monitor.",
+                "description": "Updates configuration of BGP monitor with specific ID and returns updated  configuration.",
+                "operationId": "UpdateMonitor",
                 "responses": {
                     "200": {
                         "description": "A successful response.",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/v202205beta1UpdateMonitorResponse"
+                                    "$ref": "#/components/schemas/v202210UpdateMonitorResponse"
                                 }
                             }
                         }
@@ -240,6 +244,7 @@
                 "parameters": [
                     {
                         "name": "id",
+                        "description": "System generated unique identifier",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -251,7 +256,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202205beta1UpdateMonitorRequest"
+                                "$ref": "#/components/schemas/v202210UpdateMonitorRequest"
                             }
                         }
                     },
@@ -262,10 +267,10 @@
                 ]
             }
         },
-        "/bgp_monitoring/v202205beta1/monitors/{id}/status": {
+        "/bgp_monitoring/v202210/monitors/{id}/status": {
             "put": {
-                "summary": "Set status of BGP monitor.",
-                "description": "Set the status of BGP monitor with specific ID.",
+                "summary": "Sets administrative status of a BGP monitor.",
+                "description": "Sets administrative status of BGP monitor with specific ID.",
                 "operationId": "SetMonitorStatus",
                 "responses": {
                     "200": {
@@ -273,7 +278,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/v202205beta1SetMonitorStatusResponse"
+                                    "$ref": "#/components/schemas/v202210SetMonitorStatusResponse"
                                 }
                             }
                         }
@@ -292,6 +297,7 @@
                 "parameters": [
                     {
                         "name": "id",
+                        "description": "ID of the BGP monitor whose status is to be modified",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -303,7 +309,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202205beta1SetMonitorStatusRequest"
+                                "$ref": "#/components/schemas/v202210SetMonitorStatusRequest"
                             }
                         }
                     },
@@ -314,10 +320,10 @@
                 ]
             }
         },
-        "/bgp_monitoring/v202205beta1/routes": {
+        "/bgp_monitoring/v202210/routes": {
             "post": {
-                "summary": "Get routes for single BGP target (prefix).",
-                "description": "Retrieve route information for signle BGP target (prefix) and timestamp.",
+                "summary": "Get routes for a BGP prefix.",
+                "description": "Retrieve snapshot of route information for single BGP prefix at specific time.",
                 "operationId": "GetRoutesForTarget",
                 "responses": {
                     "200": {
@@ -325,7 +331,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/v202205beta1GetRoutesForTargetResponse"
+                                    "$ref": "#/components/schemas/v202210GetRoutesForTargetResponse"
                                 }
                             }
                         }
@@ -345,7 +351,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202205beta1GetRoutesForTargetRequest"
+                                "$ref": "#/components/schemas/v202210GetRoutesForTargetRequest"
                             }
                         }
                     },
@@ -495,72 +501,92 @@
                 },
                 "title": "UserInfo"
             },
-            "v202205beta1BgpHealthSettings": {
+            "v202210BgpHealthSettings": {
                 "type": "object",
                 "properties": {
                     "reachabilityWarning": {
                         "type": "number",
-                        "format": "float"
+                        "format": "float",
+                        "description": "Threshold (in percents) for triggering warning level alert"
                     },
                     "reachabilityCritical": {
                         "type": "number",
-                        "format": "float"
+                        "format": "float",
+                        "description": "Threshold (in percents) for triggering critical level alert"
                     }
-                }
+                },
+                "title": "BgpHealthSettings"
             },
-            "v202205beta1BgpMetric": {
+            "v202210BgpMetric": {
                 "type": "object",
                 "properties": {
                     "timestamp": {
                         "type": "string",
-                        "format": "date-time"
+                        "format": "date-time",
+                        "description": "UTC time of the observation",
+                        "readOnly": true
                     },
                     "nlri": {
-                        "$ref": "#/components/schemas/v202205beta1Nlri"
+                        "$ref": "#/components/schemas/v202210Nlri"
                     },
                     "reachability": {
                         "type": "number",
                         "format": "float",
-                        "title": "percentage of vantage points reporting the prefix reachable"
+                        "description": "Percentage of vantage points reporting the prefix reachable",
+                        "readOnly": true
                     },
                     "pathChanges": {
                         "type": "integer",
                         "format": "int64",
-                        "title": "number of AS path changes for the prefix across all vantage points in the queried time period"
+                        "description": "Number of AS path changes for the prefix across all vantage points in the queried time interval",
+                        "readOnly": true
                     }
-                }
+                },
+                "title": "BgpMetric"
             },
-            "v202205beta1BgpMetricType": {
+            "v202210BgpMetricType": {
                 "type": "string",
                 "enum": [
                     "BGP_METRIC_TYPE_UNSPECIFIED",
                     "BGP_METRIC_TYPE_REACHABILITY",
                     "BGP_METRIC_TYPE_PATH_CHANGES"
                 ],
-                "default": "BGP_METRIC_TYPE_UNSPECIFIED"
+                "default": "BGP_METRIC_TYPE_UNSPECIFIED",
+                "description": "- BGP_METRIC_TYPE_UNSPECIFIED: Invalid value.\n - BGP_METRIC_TYPE_REACHABILITY: Reachability metric in percents\n - BGP_METRIC_TYPE_PATH_CHANGES: Number of path changes over time interval",
+                "title": "BgpMetricType"
             },
-            "v202205beta1BgpMonitor": {
+            "v202210BgpMonitor": {
                 "type": "object",
                 "properties": {
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "System generated unique identifier",
+                        "readOnly": true
                     },
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "User selected name of the monitor",
+                        "required": [
+                            "name"
+                        ]
                     },
                     "status": {
-                        "$ref": "#/components/schemas/v202205beta1BgpMonitorStatus"
+                        "$ref": "#/components/schemas/v202210BgpMonitorStatus"
                     },
                     "settings": {
-                        "$ref": "#/components/schemas/v202205beta1BgpMonitorSettings"
+                        "$ref": "#/components/schemas/v202210BgpMonitorSettings"
                     },
                     "cdate": {
                         "type": "string",
-                        "format": "date-time"
+                        "format": "date-time",
+                        "description": "Creation timestamp (UTC)",
+                        "readOnly": true
                     },
                     "edate": {
                         "type": "string",
-                        "format": "date-time"
+                        "format": "date-time",
+                        "description": "Last modification timestamp (UTC)",
+                        "readOnly": true
                     },
                     "createdBy": {
                         "$ref": "#/components/schemas/v202202UserInfo"
@@ -574,9 +600,13 @@
                             "type": "string"
                         }
                     }
-                }
+                },
+                "title": "BgpMonitor",
+                "required": [
+                    "name"
+                ]
             },
-            "v202205beta1BgpMonitorSettings": {
+            "v202210BgpMonitorSettings": {
                 "type": "object",
                 "properties": {
                     "allowedAsns": {
@@ -584,32 +614,42 @@
                         "items": {
                             "type": "integer",
                             "format": "int64"
-                        }
+                        },
+                        "description": "List of ASNs that are valid originators of monitored prefixes"
                     },
                     "targets": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/components/schemas/v202205beta1Nlri"
-                        }
+                            "$ref": "#/components/schemas/v202210Nlri"
+                        },
+                        "description": "List of prefixes to monitor"
                     },
                     "checkRpki": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Enable verification of validity of advertisements of monitored prefixes with respect to RPKI"
                     },
                     "includeCoveredPrefixes": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Include advertised subnets (sub-prefixes) of monitored prefixes"
                     },
                     "healthSettings": {
-                        "$ref": "#/components/schemas/v202205beta1BgpHealthSettings"
+                        "$ref": "#/components/schemas/v202210BgpHealthSettings"
                     },
                     "notificationChannels": {
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "List of IDs of notification channels for delivery of alerts"
+                    },
+                    "notes": {
+                        "type": "string",
+                        "description": "Free form notes documenting the monitor"
                     }
-                }
+                },
+                "title": "BgpMonitorSettings"
             },
-            "v202205beta1BgpMonitorStatus": {
+            "v202210BgpMonitorStatus": {
                 "type": "string",
                 "enum": [
                     "BGP_MONITOR_STATUS_UNSPECIFIED",
@@ -617,124 +657,175 @@
                     "BGP_MONITOR_STATUS_PAUSED",
                     "BGP_MONITOR_STATUS_DELETED"
                 ],
-                "default": "BGP_MONITOR_STATUS_UNSPECIFIED"
+                "default": "BGP_MONITOR_STATUS_UNSPECIFIED",
+                "description": "- BGP_MONITOR_STATUS_UNSPECIFIED: Invalid value.\n - BGP_MONITOR_STATUS_ACTIVE: Monitor is active.\n - BGP_MONITOR_STATUS_PAUSED: Monitor is paused.\n - BGP_MONITOR_STATUS_DELETED: Monitor is deleted. Not user settable",
+                "title": "BgpMonitorStatus"
             },
-            "v202205beta1CreateMonitorRequest": {
+            "v202210CreateMonitorRequest": {
                 "type": "object",
                 "properties": {
                     "monitor": {
-                        "$ref": "#/components/schemas/v202205beta1BgpMonitor"
+                        "$ref": "#/components/schemas/v202210BgpMonitor"
                     }
-                }
+                },
+                "title": "CreateMonitorRequest",
+                "required": [
+                    "monitor"
+                ]
             },
-            "v202205beta1CreateMonitorResponse": {
+            "v202210CreateMonitorResponse": {
                 "type": "object",
                 "properties": {
                     "monitor": {
-                        "$ref": "#/components/schemas/v202205beta1BgpMonitor"
+                        "$ref": "#/components/schemas/v202210BgpMonitor"
                     }
-                }
+                },
+                "title": "CreateMonitorResponse"
             },
-            "v202205beta1DeleteMonitorResponse": {
-                "type": "object"
+            "v202210DeleteMonitorResponse": {
+                "type": "object",
+                "title": "DeleteMonitorResponse"
             },
-            "v202205beta1GetMetricsForTargetRequest": {
+            "v202210GetMetricsForTargetRequest": {
                 "type": "object",
                 "properties": {
                     "startTime": {
                         "type": "string",
                         "format": "date-time",
-                        "description": "Start of the time interval for this query."
+                        "description": "UTC timestamp of the beginning of queried interval",
+                        "required": [
+                            "start_time"
+                        ]
                     },
                     "endTime": {
                         "type": "string",
                         "format": "date-time",
-                        "description": "End of the time interval for this query."
+                        "description": "UTC timestamp of the end of queried interval",
+                        "required": [
+                            "end_time"
+                        ]
                     },
                     "target": {
-                        "$ref": "#/components/schemas/v202205beta1Nlri"
+                        "$ref": "#/components/schemas/v202210Nlri"
                     },
                     "includeCovered": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Return metrics for subnets (sub-prefixes) of the target prefix (default: false)"
                     },
                     "metrics": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/components/schemas/v202205beta1BgpMetricType"
-                        }
+                            "$ref": "#/components/schemas/v202210BgpMetricType"
+                        },
+                        "description": "List of one or more BGP metric types to return",
+                        "required": [
+                            "metrics"
+                        ]
                     }
-                }
+                },
+                "title": "GetMetricsForTargetRequest",
+                "required": [
+                    "startTime",
+                    "endTime",
+                    "target",
+                    "metrics"
+                ]
             },
-            "v202205beta1GetMetricsForTargetResponse": {
+            "v202210GetMetricsForTargetResponse": {
                 "type": "object",
                 "properties": {
                     "metrics": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/components/schemas/v202205beta1BgpMetric"
-                        }
+                            "$ref": "#/components/schemas/v202210BgpMetric"
+                        },
+                        "description": "List of observations (metric values)",
+                        "readOnly": true
                     }
-                }
+                },
+                "title": "GetMetricsForTargetResponse"
             },
-            "v202205beta1GetMonitorResponse": {
+            "v202210GetMonitorResponse": {
                 "type": "object",
                 "properties": {
                     "monitor": {
-                        "$ref": "#/components/schemas/v202205beta1BgpMonitor"
+                        "$ref": "#/components/schemas/v202210BgpMonitor"
                     }
-                }
+                },
+                "title": "GetMonitorResponse"
             },
-            "v202205beta1GetRoutesForTargetRequest": {
+            "v202210GetRoutesForTargetRequest": {
                 "type": "object",
                 "properties": {
                     "time": {
                         "type": "string",
-                        "format": "date-time"
+                        "format": "date-time",
+                        "description": "Reference UTC time for the route information snapshot",
+                        "required": [
+                            "time"
+                        ]
                     },
                     "target": {
-                        "$ref": "#/components/schemas/v202205beta1Nlri"
+                        "$ref": "#/components/schemas/v202210Nlri"
                     },
                     "includeCovered": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Return routes for subnets (sub-prefixes) of the target prefix (default: false)"
                     },
                     "checkRpki": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Return information about validity of prefix advertisements with respect to RPKI (default: false)"
                     }
-                }
+                },
+                "title": "GetRoutesForTargetRequest",
+                "required": [
+                    "time",
+                    "target"
+                ]
             },
-            "v202205beta1GetRoutesForTargetResponse": {
+            "v202210GetRoutesForTargetResponse": {
                 "type": "object",
                 "properties": {
                     "routes": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/components/schemas/v202205beta1RouteInfo"
-                        }
+                            "$ref": "#/components/schemas/v202210RouteInfo"
+                        },
+                        "description": "List of routes",
+                        "readOnly": true
                     },
                     "asNames": {
                         "type": "object",
                         "additionalProperties": {
                             "type": "string"
-                        }
+                        },
+                        "description": "look-aside map AS names keyed by ASNs",
+                        "readOnly": true
                     }
-                }
+                },
+                "title": "GetRoutesForTargetResponse"
             },
-            "v202205beta1ListMonitorsResponse": {
+            "v202210ListMonitorsResponse": {
                 "type": "object",
                 "properties": {
                     "monitors": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/components/schemas/v202205beta1BgpMonitor"
-                        }
+                            "$ref": "#/components/schemas/v202210BgpMonitor"
+                        },
+                        "description": "List of BGP monitors configured in the account",
+                        "readOnly": true
                     },
                     "invalidCount": {
                         "type": "integer",
-                        "format": "int64"
+                        "format": "int64",
+                        "description": "Number of invalid objects (should be always zero)",
+                        "readOnly": true
                     }
-                }
+                },
+                "title": "ListMonitorsResponse"
             },
-            "v202205beta1Nlri": {
+            "v202210Nlri": {
                 "type": "object",
                 "properties": {
                     "afi": {
@@ -744,20 +835,31 @@
                         "$ref": "#/components/schemas/v202104Safi"
                     },
                     "prefix": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Actual prefix data (format depends on AFI)",
+                        "required": [
+                            "prefix"
+                        ]
                     }
-                }
+                },
+                "title": "Nlri",
+                "required": [
+                    "afi",
+                    "safi",
+                    "prefix"
+                ]
             },
-            "v202205beta1RouteInfo": {
+            "v202210RouteInfo": {
                 "type": "object",
                 "properties": {
                     "nlri": {
-                        "$ref": "#/components/schemas/v202205beta1Nlri"
+                        "$ref": "#/components/schemas/v202210Nlri"
                     },
                     "originAsn": {
                         "type": "integer",
                         "format": "int64",
-                        "description": "The autonomous system number originating the NLRI"
+                        "description": "The autonomous system number originating the NLRI",
+                        "readOnly": true
                     },
                     "asPath": {
                         "type": "array",
@@ -773,39 +875,57 @@
                         "$ref": "#/components/schemas/v202104RpkiStatus"
                     },
                     "nexthop": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "IP address of the first route hop from the vantage point toward the target",
+                        "readOnly": true
                     }
-                }
+                },
+                "title": "RouteInfo"
             },
-            "v202205beta1SetMonitorStatusRequest": {
+            "v202210SetMonitorStatusRequest": {
                 "type": "object",
                 "properties": {
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "ID of the BGP monitor whose status is to be modified",
+                        "required": [
+                            "id"
+                        ]
                     },
                     "status": {
-                        "$ref": "#/components/schemas/v202205beta1BgpMonitorStatus"
+                        "$ref": "#/components/schemas/v202210BgpMonitorStatus"
                     }
-                }
+                },
+                "title": "SetMonitorStatusRequest",
+                "required": [
+                    "id",
+                    "status"
+                ]
             },
-            "v202205beta1SetMonitorStatusResponse": {
-                "type": "object"
+            "v202210SetMonitorStatusResponse": {
+                "type": "object",
+                "title": "SetMonitorStatusResponse"
             },
-            "v202205beta1UpdateMonitorRequest": {
+            "v202210UpdateMonitorRequest": {
                 "type": "object",
                 "properties": {
                     "monitor": {
-                        "$ref": "#/components/schemas/v202205beta1BgpMonitor"
+                        "$ref": "#/components/schemas/v202210BgpMonitor"
                     }
-                }
+                },
+                "title": "UpdateMonitorRequest",
+                "required": [
+                    "monitor"
+                ]
             },
-            "v202205beta1UpdateMonitorResponse": {
+            "v202210UpdateMonitorResponse": {
                 "type": "object",
                 "properties": {
                     "monitor": {
-                        "$ref": "#/components/schemas/v202205beta1BgpMonitor"
+                        "$ref": "#/components/schemas/v202210BgpMonitor"
                     }
-                }
+                },
+                "title": "UpdateMonitorResponse"
             }
         }
     }

@@ -1,0 +1,657 @@
+syntax = "proto3";
+
+package kentik.bgp_monitoring.v202210;
+option go_package = "github.com/kentik/api-schema/gen/go/kentik/bgp_monitoring/v202210;bgp_monitoring";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/timestamp.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+import "kentik/core/v202012alpha1/annotations.proto";
+import "kentik/ktrac/route/v202104/elem.proto";
+import "kentik/ktrac/route/v202104/annotations.proto";
+import "kentik/synthetics/v202202/synthetics.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "BGP Monitoring API"
+    version: "v202210"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api-schema-public"
+    }
+    description: "# Overview\n"
+    "The BGP Monitoring API provides programmatic access to Kentik's BGP monitoring system. The APIs handle two "
+    "distinct functions:\n"
+    "* **Admin service**: manages monitoring of advertised BGP prefixes as collected from global vantage points.\n"
+    "* **Data service**: handles retrieval of two classes of data for any IP prefix:\n"
+    "    - metrics for reachability and path changes, which provide a time series for a specified interval;\n"
+    "    - routes, which provide a snapshot of routing information for particular timestamp.\n"
+    "\n"
+    "The services described above use the following endpoints:\n"
+    "| Endpoint | Purpose |\n"
+    "|-----------|---------|\n"
+    "| BgpMonitoringAdminService | CRUD operations for BGP monitors |\n"
+    "| BgpMonitoringDataService  | Retrieval of BGP monitoring data |\n"
+    "\n"
+    "Both REST endpoints and gRPC RPCs are provided.\n"
+    "### Known Limitations\n"
+    "The API currently does not support retrieval of BGP event history.\n"
+    "# BGP Monitoring Data\n"
+    "\n"
+    "Kentik's BGP monitoring API provides the following information about network prefixes:\n"
+    "* **Reachability**: expressed as the percentage of vantage points reporting the prefix\n"
+    "* **Path changes**: the number of changes in a given time range\n"
+    "* **Routes**: AS Path, next hop\n"
+    "### Data Retrieval Limitations\n"
+    "\n"
+    "The following considerations apply to data retrieval using these APIs:\n"
+    "* BGP metrics and routes can be retrieved for any prefix with prefix length greater than 14 and any time "
+    "interval. Prefixes with smaller length must be split into subnets (sub-prefixes) and requested individually.\n"
+    "* Requests for BGP metrics can can specify one or more metric types to be retrieved for a single prefix. "
+    "Observed data are returned as a sequence of messages, one for each metric type and observation time.\n"
+    "* Route requests retrieve snapshot of information for specified prefix and time. Responses contain also mapping "
+    "of ASNs to AS names for convenience.\n"
+    "# Working with BGP Monitoring\n"
+    "\n"
+    "The topics below cover important information related to using Kentik's BGP monitoring APIs.\n"
+    "### BGP Prefixes\n"
+    "\n"
+    "These APIs represent BGP prefixes using NLRI (Network Layer Reachability Information) objects. While NLRI objects "
+    "allow representation of any type of network address, the system currently supports only IPv4 and IPv6 unicast in "
+    "standard textual representation:\n"
+    "* **IPv4**: dotted-decimal notation\n"
+    "* **IPv6**: [RFC 5952](https://www.rfc-editor.org/rfc/rfc5952) syntax\n"
+    "### BGP Monitor Tests\n"
+    "\n"
+    "BGP Monitors enable the generation of alerts for group network prefixes (IPv4 or IPv6) based on the "
+    "following factors:\n"
+    "* Visibility/reachability of prefixes\n"
+    "* Mismatch of originating ASNs with a specified list of valid originators\n"
+    "* Validity of advertisements with respect to RPKI (Resource Public Key Infrastructure)\n"
+    "\n"
+    "### Configuration Limitations \n"
+    "\n"
+    "The following considerations apply when configuring a BGP monitor test:\n"
+    "* Each BGP monitor instance can monitor up to 10 prefixes.\n"
+    "* The length of each monitored (IPv4 or IPv6) prefix must be greater than 14. Prefixes with smaller length must "
+    "be split into subnets (sub-prefixes)."
+  }
+  external_docs: {
+    url: "https://kb.kentik.com/v4/Ma03.htm#Ma03-BGP_Monitor_Details_Page"
+    description: "More about Kentik BGP monitoring"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+// models
+
+// === BGP monitor config and status ===
+// -------------------------------------------------------
+
+// {{.Name}}
+enum BgpMonitorStatus {
+  // Invalid value.
+  BGP_MONITOR_STATUS_UNSPECIFIED = 0;
+  // Monitor is active.
+  BGP_MONITOR_STATUS_ACTIVE = 1;
+  // Monitor is paused.
+  BGP_MONITOR_STATUS_PAUSED = 2;
+  // Monitor is deleted. Not user settable
+  BGP_MONITOR_STATUS_DELETED = 3;
+}
+
+// {{.Name}}
+message Nlri {
+  kentik.ktrac.route.v202104.Afi afi = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Address Family Identifier"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  kentik.ktrac.route.v202104.Safi safi = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Subsequent Address Family Identifier"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  oneof type {
+        string prefix = 3 [
+          (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            description: "Actual prefix data (format depends on AFI)"
+          },
+          (google.api.field_behavior) = REQUIRED
+        ];
+    }
+}
+
+// {{.Name}}
+message BgpHealthSettings {
+  float reachability_warning = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Threshold (in percents) for triggering warning level alert"
+    }
+  ];
+  float reachability_critical = 2[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Threshold (in percents) for triggering critical level alert"
+    }
+  ];
+}
+
+// {{.Name}}
+message BgpMonitorSettings {
+  repeated uint32 allowed_asns = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of ASNs that are valid originators of monitored prefixes"
+    }
+  ];
+  repeated Nlri targets = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of prefixes to monitor"
+    }
+  ];
+  bool check_rpki = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Enable verification of validity of advertisements of monitored prefixes with respect to RPKI"
+    }
+  ];
+  bool include_covered_prefixes = 4  [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Include advertised subnets (sub-prefixes) of monitored prefixes"
+    }
+  ];
+  BgpHealthSettings health_settings = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Parameters for triggering of alerts"
+    }
+  ];
+  repeated string notification_channels = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of IDs of notification channels for delivery of alerts"
+    }
+  ];
+  string notes = 7 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Free form notes documenting the monitor"
+    }
+  ];
+}
+
+// {{.Name}}
+message BgpMonitor {
+  string id = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "System generated unique identifier"
+    }
+  ];
+  string name = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "User selected name of the monitor"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  BgpMonitorStatus status = 3  [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Administrative status of the monitor"
+    }
+  ];
+  BgpMonitorSettings settings = 4  [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Configuration parameters"
+    }
+  ];
+  google.protobuf.Timestamp cdate = 5 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Creation timestamp (UTC)"
+    }
+  ];
+  google.protobuf.Timestamp edate = 6 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Last modification timestamp (UTC)"
+    }
+  ];
+  kentik.synthetics.v202202.UserInfo created_by = 7 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Identity of monitor creator"
+    }
+  ];
+  kentik.synthetics.v202202.UserInfo last_updated_by = 8  [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Identity of user that has modified the monitor last"
+    }
+  ];
+  repeated string labels = 9;
+}
+
+// === BGP monitoring results ===
+// -------------------------------------------------------
+
+// {{.Name}}
+enum BgpMetricType {
+  // Invalid value.
+  BGP_METRIC_TYPE_UNSPECIFIED = 0;
+  // Reachability metric in percents
+  BGP_METRIC_TYPE_REACHABILITY = 1;
+  // Number of path changes over time interval
+  BGP_METRIC_TYPE_PATH_CHANGES = 2;
+}
+
+// {{.Name}}
+message RouteInfo {
+  Nlri nlri = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Prefix (target of the route)"
+    }
+  ];
+  uint32 origin_asn = 2 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The autonomous system number originating the NLRI"
+    }
+  ];
+  repeated string as_path = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "AS path observed at the vantage point for the NLRI"}
+  ];
+  kentik.ktrac.route.v202104.VantagePoint vantage_point = 4 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Name of the vantage point providing the observation"
+    }
+  ];
+  kentik.ktrac.route.v202104.RpkiStatus rpki_status = 5  [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Validation status of prefix's advertisements"
+    }
+  ];
+  string nexthop = 6 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "IP address of the first route hop from the vantage point toward the target"
+    }
+  ];
+}
+
+// {{.Name}}
+message BgpMetric {
+    google.protobuf.Timestamp timestamp = 1 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "UTC time of the observation"
+      }
+    ];
+    Nlri nlri = 2 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Target prefix"
+      }
+    ];
+    oneof type {
+      float reachability = 3 [
+        (google.api.field_behavior) = OUTPUT_ONLY,
+        (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          description: "Percentage of vantage points reporting the prefix reachable"
+        }
+      ];
+      uint32 path_changes = 5 [
+        (google.api.field_behavior) = OUTPUT_ONLY,
+        (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          description: "Number of AS path changes for the prefix across all vantage points in the queried time interval"
+        }
+      ];
+  }
+}
+
+// === BGP monitoring services
+
+// {{.Name}}
+message ListMonitorsRequest {}
+
+// {{.Name}}
+message ListMonitorsResponse {
+    repeated BgpMonitor monitors = 1 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "List of BGP monitors configured in the account"
+      }
+    ];
+    uint32 invalid_count = 2 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Number of invalid objects (should be always zero)"
+      }
+    ];
+}
+
+// {{.Name}}
+message CreateMonitorRequest {
+    BgpMonitor monitor = 1 [
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Configuration of the BGP monitor to be created"
+      },
+      (google.api.field_behavior) = REQUIRED
+    ];
+}
+
+// {{.Name}}
+message CreateMonitorResponse {
+    BgpMonitor monitor = 1 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Configuration of the newly created BGP monitor"
+      }
+    ];
+}
+
+// {{.Name}}
+message GetMonitorRequest {
+    string id = 1 [
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "ID of the BGP monitor to be retrieved"
+      },
+      (google.api.field_behavior) = REQUIRED
+    ];
+}
+
+// {{.Name}}
+message GetMonitorResponse {
+    BgpMonitor monitor = 1 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Configuration of the requested BGP monitor"
+      }
+    ];
+}
+
+// {{.Name}}
+message UpdateMonitorRequest {
+    BgpMonitor monitor = 1 [
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "New configuration of the BGP monitor to be updated"
+      },
+      (google.api.field_behavior) = REQUIRED
+    ];
+}
+
+// {{.Name}}
+message UpdateMonitorResponse {
+    BgpMonitor monitor = 1 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Configuration of the updated BGP monitor"
+      }
+    ];
+}
+
+// {{.Name}}
+message DeleteMonitorRequest {
+    string id = 1 [
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "ID of the BGP monitor to be deleted"
+      },
+      (google.api.field_behavior) = REQUIRED
+    ];
+}
+
+// {{.Name}}
+message DeleteMonitorResponse {}
+
+// {{.Name}}
+message SetMonitorStatusRequest {
+    string id = 1 [
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "ID of the BGP monitor whose status is to be modified"
+      },
+      (google.api.field_behavior) = REQUIRED
+    ];
+    BgpMonitorStatus status = 2  [
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Desired administrative status of the monitor"
+      },
+      (google.api.field_behavior) = REQUIRED
+    ];
+}
+
+// {{.Name}}
+message SetMonitorStatusResponse {}
+
+service BgpMonitoringAdminService {
+    option (google.api.default_host) = "grpc.api.kentik.com";
+    option (kentik.core.v202012alpha1.service_scope) = "admin.synthetics";
+
+    // Monitors
+
+    rpc ListMonitors(ListMonitorsRequest) returns (ListMonitorsResponse) {
+      option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:read";
+      option (google.api.http) = {
+        get: "/bgp_monitoring/v202210/monitors"
+      };
+      option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+        operation_id: "ListMonitors"
+        summary: "List BGP Monitors."
+        description: "Returns list of all BGP monitors present in the account."
+      };
+    }
+
+    rpc CreateMonitor(CreateMonitorRequest) returns (CreateMonitorResponse) {
+      option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:write";
+      option (google.api.http) = {
+        post: "/bgp_monitoring/v202210/monitors"
+        body: "*"
+      };
+      option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+        operation_id: "CreateMonitor"
+        summary: "Create new BGP Monitor instance."
+        description: "Creates new BGP Monitor and if successful returns its configuration."
+      };
+    }
+
+    rpc GetMonitor(GetMonitorRequest) returns (GetMonitorResponse) {
+      option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:read";
+      option (google.api.http) = {
+        get: "/bgp_monitoring/v202210/monitors/{id}"
+      };
+      option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+        operation_id: "GetMonitor"
+        summary: "Get BGP Monitor configuration."
+        description: "Returns configuration of existing BGP monitor with specific ID."
+      };
+    }
+
+    rpc UpdateMonitor(UpdateMonitorRequest) returns (UpdateMonitorResponse) {
+      option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:write";
+      option (google.api.http) = {
+        put: "/bgp_monitoring/v202210/monitors/{monitor.id}"
+        body: "*"
+      };
+      option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+        operation_id: "UpdateMonitor"
+        summary: "Update configuration of a BGP monitor."
+        description: "Updates configuration of BGP monitor with specific ID and returns updated  configuration."
+      };
+    }
+
+    rpc DeleteMonitor(DeleteMonitorRequest) returns (DeleteMonitorResponse) {
+      option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:write";
+      option (google.api.http) = {
+        delete: "/bgp_monitoring/v202210/monitors/{id}"
+      };
+      option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+        operation_id: "DeleteMonitor"
+        summary: "Delete existing BGP Monitor."
+        description: "Delete BGP monitor with with specific ID."
+      };
+    }
+
+    rpc SetMonitorStatus(SetMonitorStatusRequest) returns (SetMonitorStatusResponse) {
+      option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:write";
+      option (google.api.http) = {
+        put: "/bgp_monitoring/v202210/monitors/{id}/status"
+        body: "*"
+      };
+      option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+        operation_id: "SetMonitorStatus"
+        summary: "Sets administrative status of a BGP monitor."
+        description: "Sets administrative status of BGP monitor with specific ID."
+      };
+    }
+  }
+
+// Data service
+
+// {{.Name}}
+message GetMetricsForTargetRequest {
+    google.protobuf.Timestamp start_time = 1 [
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "UTC timestamp of the beginning of queried interval"
+      },
+      (google.api.field_behavior) = REQUIRED
+    ];
+    // End of the time interval for this query.
+    google.protobuf.Timestamp end_time = 2 [
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "UTC timestamp of the end of queried interval"
+      },
+      (google.api.field_behavior) = REQUIRED
+    ];
+    Nlri target = 3 [
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Target prefix of the query"
+      },
+      (google.api.field_behavior) = REQUIRED
+    ];
+    bool include_covered = 4 [
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Return metrics for subnets (sub-prefixes) of the target prefix (default: false)"
+      }
+    ];
+    repeated BgpMetricType metrics = 5  [
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "List of one or more BGP metric types to return"
+      },
+      (google.api.field_behavior) = REQUIRED
+    ];
+}
+
+// {{.Name}}
+message GetMetricsForTargetResponse {
+    repeated BgpMetric metrics = 1 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "List of observations (metric values)"
+      }
+    ];
+}
+
+// {{.Name}}
+message GetRoutesForTargetRequest {
+  google.protobuf.Timestamp time = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Reference UTC time for the route information snapshot"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  Nlri target = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Target prefix"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  bool include_covered = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Return routes for subnets (sub-prefixes) of the target prefix (default: false)"
+    }
+  ];
+  bool check_rpki = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Return information about validity of prefix advertisements with respect to RPKI (default: false)"
+    }
+  ];
+}
+
+// {{.Name}}
+message GetRoutesForTargetResponse {
+  repeated RouteInfo routes = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of routes"
+    }
+  ];
+  map<uint32, string> as_names = 5 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "look-aside map AS names keyed by ASNs"
+    }
+  ];
+}
+
+service BgpMonitoringDataService {
+    option (google.api.default_host) = "grpc.api.kentik.com";
+    option (kentik.core.v202012alpha1.service_scope) = "synthetics";
+
+    rpc GetMetricsForTarget (GetMetricsForTargetRequest) returns (GetMetricsForTargetResponse) {
+      option (kentik.core.v202012alpha1.method_scope) = "synthetics:read";
+      option (google.api.http) = {
+        post: "/bgp_monitoring/v202210/metrics"
+        body: "*"
+      };
+      option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+        operation_id: "GetMetricsForTarget"
+        summary: "Get metrics for a BGP prefix."
+        description: "Retrieve metric data for single BGP prefix and time interval."
+      };
+    }
+
+    rpc GetRoutesForTarget (GetRoutesForTargetRequest) returns (GetRoutesForTargetResponse) {
+      option (kentik.core.v202012alpha1.method_scope) = "synthetics:read";
+      option (google.api.http) = {
+        post: "/bgp_monitoring/v202210/routes"
+        body: "*"
+      };
+      option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+        operation_id: "GetRoutesForTarget"
+        summary: "Get routes for a BGP prefix."
+        description: "Retrieve snapshot of route information for single BGP prefix at specific time."
+      };
+    }
+  }

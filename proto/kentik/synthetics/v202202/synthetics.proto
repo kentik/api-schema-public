@@ -1374,14 +1374,14 @@ message GetTraceForTestRequest {
     }
   ];
 
-  google.protobuf.Timestamp start_time = 2[
+  google.protobuf.Timestamp start_time = 2 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Timestamp of the oldest results to include in results"
     },
     (google.api.field_behavior) = REQUIRED
   ];
 
-  google.protobuf.Timestamp end_time = 3[
+  google.protobuf.Timestamp end_time = 3 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Timestamp of the newest results to include in results"
     },

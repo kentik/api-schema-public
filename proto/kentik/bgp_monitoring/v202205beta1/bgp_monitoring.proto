@@ -16,7 +16,7 @@ import "kentik/synthetics/v202202/synthetics.proto";
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   info: {
     title: "BGP Monitoring API"
-    version: "202205"
+    version: "v202205beta1"
     description: "API for interaction with Kentik BGP Monitoring Service.\n"
     contact: {
       name: "Kentik API Engineering"
