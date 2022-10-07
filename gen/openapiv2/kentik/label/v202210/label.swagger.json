@@ -1,0 +1,328 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Label Management API",
+    "description": "# Overview\nThe Label API enables programmatic creation and management of labels, which are tags that can be applied to objects such as devices, synthetic tests, and ksynth agents in order to create logical groups. While this API is used to manage labels, the application of a label to a given object is done with the API corresponding to the type of that object (see Applying Labels via API).\n\nBoth gRPC RPCs and REST endpoints are provided.\n\n# Applying Labels via API\nThe Label API does not handle the application of labels to configuration objects. Instead, a label is applied to an object using the management API for that object. The table below lists the APIs for the types of objects to which labels may be applied.\n| Object type  | API for attaching labels |\n|--------------|--------------------------------------|\n| Device | [Device Apply Labels](https://kb.kentik.com/v0/Ec05.htm#Ec05-Device_Apply_Labels) |\n| Synthetic monitoring test | [SyntheticsAdminService API](https://kb.kentik.com/v0/Oa07.htm#Oa07-SyntheticsAdminService_API) |\n| Synthetic monitoring agent | [SyntheticsAdminService API](https://kb.kentik.com/v0/Oa07.htm#Oa07-SyntheticsAdminService_API) |\n| BGP monitor | [BgpMonitoringAdminService API ](https://kb.kentik.com/v0/Oa09.htm#Oa09-BgpMonitoringAdminService_API)|\n\n***Note:*** Device labels can be also managed using the legacy [Device Label API](https://kb.kentik.com/v0/Ec05.htm#Ec05-Device_Label_API).",
+    "version": "202210",
+    "contact": {
+      "name": "Kentik API Engineering",
+      "url": "https://github.com/kentik/api-schema-public"
+    }
+  },
+  "tags": [
+    {
+      "name": "LabelService"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/label/v202210/labels": {
+      "get": {
+        "summary": "List all configured labels",
+        "description": "Returns list of all labels configured in the account.",
+        "operationId": "ListLabels",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202210ListLabelsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "LabelService"
+        ]
+      },
+      "post": {
+        "summary": "Create a new label.",
+        "description": "Creates a new label based on data in the request.",
+        "operationId": "CreateLabel",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202210CreateLabelResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202210CreateLabelRequest"
+            }
+          }
+        ],
+        "tags": [
+          "LabelService"
+        ]
+      }
+    },
+    "/label/v202210/labels/{id}": {
+      "delete": {
+        "summary": "Delete a label.",
+        "description": "Deletes label with specified with id.",
+        "operationId": "DeleteLabel",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202210DeleteLabelResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "ID of the label to be deleted",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "LabelService"
+        ]
+      },
+      "post": {
+        "summary": "Update an existing label.",
+        "description": "Updates configuration of a label.",
+        "operationId": "UpdateLabel",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202210UpdateLabelResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Unique system assigned identifier of the label",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202210UpdateLabelRequest"
+            }
+          }
+        ],
+        "tags": [
+          "LabelService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "labelv202210Label": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique system assigned identifier of the label",
+          "readOnly": true
+        },
+        "name": {
+          "type": "string",
+          "description": "Label text visible in listing of configuration of objects to which it has been applied",
+          "required": [
+            "name"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "description": "Optional description of the label, visible only in API responses"
+        },
+        "color": {
+          "type": "string",
+          "description": "[Hexadecimal code of the color](https://www.color-hex.com/) of the label text background in the portal"
+        },
+        "cdate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation timestamp (UTC)",
+          "readOnly": true
+        },
+        "edate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last modification timestamp (UTC)",
+          "readOnly": true
+        }
+      },
+      "title": "Label",
+      "required": [
+        "name"
+      ]
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "typeUrl": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v202210CreateLabelRequest": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "$ref": "#/definitions/labelv202210Label",
+          "description": "Configuration of the label to be created",
+          "required": [
+            "label"
+          ]
+        }
+      },
+      "title": "CreateLabelRequest",
+      "required": [
+        "label"
+      ]
+    },
+    "v202210CreateLabelResponse": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "$ref": "#/definitions/labelv202210Label",
+          "description": "Configuration of the just created label",
+          "readOnly": true
+        }
+      },
+      "title": "CreateLabelResponse"
+    },
+    "v202210DeleteLabelResponse": {
+      "type": "object",
+      "title": "DeleteLabelResponse"
+    },
+    "v202210ListLabelsResponse": {
+      "type": "object",
+      "properties": {
+        "labels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/labelv202210Label"
+          },
+          "description": "List of configured labels",
+          "readOnly": true
+        },
+        "invalidCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of invalid entries encountered while collecting data (should be always 0)"
+        }
+      },
+      "title": "ListLabelsResponse"
+    },
+    "v202210UpdateLabelRequest": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "$ref": "#/definitions/labelv202210Label",
+          "description": "Configuration of the label to be updated",
+          "required": [
+            "label"
+          ]
+        }
+      },
+      "title": "UpdateLabelRequest",
+      "required": [
+        "label"
+      ]
+    },
+    "v202210UpdateLabelResponse": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "$ref": "#/definitions/labelv202210Label",
+          "description": "Updated configuration of the label",
+          "readOnly": true
+        }
+      },
+      "title": "UpdateLabelResponse"
+    }
+  },
+  "securityDefinitions": {
+    "email": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-Email",
+      "in": "header"
+    },
+    "token": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-API-Token",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "email": [],
+      "token": []
+    }
+  ],
+  "externalDocs": {
+    "description": "General information about Kentik APIs",
+    "url": "https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview"
+  }
+}

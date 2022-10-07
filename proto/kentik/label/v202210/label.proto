@@ -1,0 +1,248 @@
+syntax = "proto3";
+
+package kentik.label.v202210;
+option go_package = "github.com/kentik/api-schema/gen/go/kentik/label/v202210;label";
+
+import "google/api/annotations.proto";
+import "google/api/field_behavior.proto";
+import "google/api/client.proto";
+import "google/type/latlng.proto";
+import "google/type/postal_address.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "kentik/core/v202012alpha1/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Label Management API"
+    version: "202210"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api-schema-public"
+    }
+    description: "# Overview\n"
+    "The Label API enables programmatic creation and management of labels, which are tags that can be applied to objects "
+    "such as devices, synthetic tests, and ksynth agents in order to create logical groups. While this API is used to manage "
+    "labels, the application of a label to a given object is done with the API corresponding to the type of that object (see "
+    "Applying Labels via API).\n"
+    "\n"
+    "Both gRPC RPCs and REST endpoints are provided.\n"
+    "\n"
+    "# Applying Labels via API\n"
+    "The Label API does not handle the application of labels to configuration objects. Instead, a label is applied to an object "
+    "using the management API for that object. The table below lists the APIs for the types of objects to which labels may "
+    "be applied.\n"
+    "| Object type  | API for attaching labels |\n"
+    "|--------------|--------------------------------------|\n"
+    "| Device | [Device Apply Labels](https://kb.kentik.com/v0/Ec05.htm#Ec05-Device_Apply_Labels) |\n"
+    "| Synthetic monitoring test | [SyntheticsAdminService API](https://kb.kentik.com/v0/Oa07.htm#Oa07-SyntheticsAdminService_API) |\n"
+    "| Synthetic monitoring agent | [SyntheticsAdminService API](https://kb.kentik.com/v0/Oa07.htm#Oa07-SyntheticsAdminService_API) |\n"
+    "| BGP monitor | [BgpMonitoringAdminService API ](https://kb.kentik.com/v0/Oa09.htm#Oa09-BgpMonitoringAdminService_API)|\n"
+    "\n"
+    "***Note:*** Device labels can be also managed using the legacy [Device Label API](https://kb.kentik.com/v0/Ec05.htm#Ec05-Device_Label_API)."
+  }
+  external_docs: {
+    url: "https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview"
+    description: "General information about Kentik APIs"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+// {{.Name}}
+message Label {
+  string id = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Unique system assigned identifier of the label"
+    }
+  ];
+  string name = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Label text visible in listing of configuration of objects to which it has been applied"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  string description = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Optional description of the label, visible only in API responses"
+    }
+  ];
+  string color = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "[Hexadecimal code of the color](https://www.color-hex.com/) of the label text background in the portal"
+    }
+  ];
+  google.protobuf.Timestamp cdate = 6 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Creation timestamp (UTC)"
+    }
+  ];
+  google.protobuf.Timestamp edate = 7 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Last modification timestamp (UTC)"
+    }
+  ];
+}
+
+// {{.Name}}
+message ListLabelsRequest {}
+
+// {{.Name}}
+message ListLabelsResponse {
+  repeated Label labels = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of configured labels"
+    }
+  ];
+  int32 invalid_count = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Number of invalid entries encountered while collecting data (should be always 0)"
+    }
+  ];
+}
+
+// {{.Name}}
+message CreateLabelRequest {
+  Label label = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Configuration of the label to be created"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+// {{.Name}}
+message CreateLabelResponse {
+  Label label = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Configuration of the just created label"
+    }
+  ];
+}
+
+// {{.Name}}
+message UpdateLabelRequest {
+  Label label = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Configuration of the label to be updated"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message UpdateLabelResponse {
+  Label label = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Updated configuration of the label"
+    }
+  ];
+}
+
+// {{.Name}}
+message DeleteLabelRequest {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the label to be deleted"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message DeleteLabelResponse {}
+
+
+// services and RPCs
+// -------------------------------------------------------
+
+service LabelService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202012alpha1.service_scope) = "admin.label";
+
+
+  rpc ListLabels(ListLabelsRequest) returns (ListLabelsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.label:read";
+    option (google.api.http) = {
+      get: "/label/v202210/labels"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ListLabels"
+      summary: "List all configured labels"
+      description: "Returns list of all labels configured in the account."
+    };
+  }
+
+  rpc CreateLabel(CreateLabelRequest) returns (CreateLabelResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.label:write";
+    option (google.api.http) = {
+      post: "/label/v202210/labels"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "CreateLabel"
+      summary: "Create a new label."
+      description: "Creates a new label based on data in the request."
+    };
+  }
+
+  rpc UpdateLabel(UpdateLabelRequest) returns (UpdateLabelResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.label:write";
+    option (google.api.http) = {
+      post: "/label/v202210/labels/{label.id}"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "UpdateLabel"
+      summary: "Update an existing label."
+      description: "Updates configuration of a label."
+    };
+  }
+
+  rpc DeleteLabel(DeleteLabelRequest) returns (DeleteLabelResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.label:write";
+    option (google.api.http) = {
+      delete: "/label/v202210/labels/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "DeleteLabel"
+      summary: "Delete a label."
+      description: "Deletes label with specified with id."
+    };
+  }
+}
