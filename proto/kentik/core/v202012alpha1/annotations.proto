@@ -19,4 +19,6 @@ extend google.protobuf.MethodOptions {
   string method_scope = 5502;
   // private_method indicates that this method is not publicly available
   bool private_method = 5504;
+  // method classification to identify areas of functionality (used for metrics etc.)
+  string method_category = 5505;
 }

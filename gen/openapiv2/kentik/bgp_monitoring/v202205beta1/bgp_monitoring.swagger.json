@@ -3,7 +3,7 @@
   "info": {
     "title": "BGP Monitoring API",
     "description": "API for interaction with Kentik BGP Monitoring Service.\n",
-    "version": "202205",
+    "version": "v202205beta1",
     "contact": {
       "name": "Kentik API Engineering",
       "url": "https://github.com/kentik/api-schema-public"
@@ -328,7 +328,8 @@
         "AFI_IP4",
         "AFI_IP6"
       ],
-      "default": "AFI_UNSPECIFIED"
+      "default": "AFI_UNSPECIFIED",
+      "title": "Afi"
     },
     "v202104RpkiStatus": {
       "type": "string",
@@ -341,7 +342,9 @@
         "RPKI_STATUS_VALID",
         "RPKI_STATUS_ERROR"
       ],
-      "default": "RPKI_STATUS_UNSPECIFIED"
+      "default": "RPKI_STATUS_UNSPECIFIED",
+      "description": "- RPKI_STATUS_UNSPECIFIED: Invalid value.\n - RPKI_STATUS_NOT_FOUND: No matching ROAs found for the prefix.\n - RPKI_STATUS_EXPLICIT_INVALID: Explicitly invalid prefix matching ROA\n - RPKI_STATUS_INVALID_PREFIX: Prefix format not suitable for validation\n - RPKI_STATUS_INVALID: Prefix origin does not match any matching ROA\n - RPKI_STATUS_VALID: Prefix origin matches an ROA\n - RPKI_STATUS_ERROR: Error during validation",
+      "title": "RpkiStatus"
     },
     "v202104Safi": {
       "type": "string",
@@ -351,25 +354,35 @@
         "SAFI_MPLS",
         "SAFI_L3VPN"
       ],
-      "default": "SAFI_UNSPECIFIED"
+      "default": "SAFI_UNSPECIFIED",
+      "title": "Safi"
     },
     "v202104VantagePoint": {
       "type": "object",
       "properties": {
         "dataset": {
-          "type": "string"
+          "type": "string",
+          "description": "Name of the collector data set",
+          "readOnly": true
         },
         "collector": {
-          "type": "string"
+          "type": "string",
+          "description": "Name of the collector",
+          "readOnly": true
         },
         "peerAsn": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "ASN of the peer from which the collector receives BGP data",
+          "readOnly": true
         },
         "peerIp": {
-          "type": "string"
+          "type": "string",
+          "description": "IP address of the peer from which the collector receives BGP data",
+          "readOnly": true
         }
-      }
+      },
+      "title": "VantagePoint"
     },
     "v202202UserInfo": {
       "type": "object",
@@ -389,7 +402,8 @@
           "description": "Full name of the user",
           "readOnly": true
         }
-      }
+      },
+      "title": "UserInfo"
     },
     "v202205beta1BgpHealthSettings": {
       "type": "object",

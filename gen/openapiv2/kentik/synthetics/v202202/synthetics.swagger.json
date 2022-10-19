@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Synthetics Monitoring API",
-    "description": "# Overview\nThe Synthetics Monitoring API provides programmatic access to Kentik's [synthetic monitoring system](https://kb.kentik.com/v4/Ma00.htm). The API consists of two endpoints:\n| Endpoint | Purpose |\n|-----------|---------|\n| SyntheticsAdminService | CRUD operations for synthetic tests and agents |\n| SyntheticsDataService  | Retrieval of synthetic test results and network traces |\n\nBoth REST endpoint and gRPC RPCs are provided.\n### Known Limitations\nThe API currently does not support the following [Synthetic Test Types](https://kb.kentik.com/v4/Ma00.htm#Ma00-Synthetic_Test_Types):\n* BGP Monitor tests, which are supported in a [separate API](https://github.com/kentik/api-schema-public/blob/master/proto/kentik/bgp_monitoring/v202205beta1/bgp_monitoring.proto)\n* Transaction tests.\n\n### Additional Public Resources\nKentik community [Python](https://github.com/kentik/community_sdk_python) and [Go](https://github.com/kentik/community_sdk_golang) SDKs provide language-specific support for using this and other Kentik APIs. These SDKs can be also used as example code for development. \n A [Terraform provider](https://registry.terraform.io/providers/kentik/kentik-synthetics) is available for configuring tests and agents for Kentik synthetic monitoring.\n# Anatomy of a Synthetic Test\nEach `Test` consists of one or more tasks. Tasks are executed by monitoring `Agents` that send synthetic traffic (probes) over the network. The API currently supports following tasks:\n| Task name  | Purpose |\n|------------|---------|\n| ping       | Test basic address, and optionally TCP port reachability |\n| traceroute (a.k.a. trace)| Discover unidirectional network path |\n| http | Perform a simple HTTP/HTTPS request |\n| page-load | Use headless Chromium to execute an HTTP/HTTPS request |\n| dns | Execute a DNS query|\n\nThe set of tasks executed on behalf of a given test depends on the `type` of that test. The following test types are currently supported by the API:\n| API type | Portal (UI) equivalent | Tasks |\n|---------------|--------------|-------|\n| ip | IP Address | ping, traceroute |\n| hostname | Hostname | ping, traceroute |\n| network_grid | Network Grid | ping, traceroute |\n| agent | Agent-to-Agent | ping, traceroute |\n| network_mesh | Network Mesh | ping, traceroute |\n| flow | Autonomous Tests (5 variants) | ping, traceroute |\n| url | HTTP(S) or API | http, ping (optional), traceroute (optional) |\n| page_load | Page Load | page-load, ping (optional), traceroute (optional) |\n| dns | DNS Server Monitor | dns |\n| dns_grid | DNS Server Grid | dns |\n\n***Note:*** `ping` and `traceroute` tasks are always run together (never one without the other).\n\n# Test Attributes and Settings\nThe attributes of the test object enable configuration of test settings, access to test metadata, and access to runtime state information.\n### State and metadata attributes\n The following table lists the metadata and state attributes:\n| Attribute | Access | Purpose |\n|-----------|--------|---------|\n| id | RO | System-generated unique identifier of the test |\n| name | RW | User specified name for the test (need not be unique) |\n| type | RO (after creation) | Type of the test (set on creation; read-only thereafter) |\n| status | RW | Life-cycle status of the test |\n| cdate | RO | Creation timestamp |\n| edate | RO | Last-modification timestamp |\n| createdBy | RO | Identity of the user that created the test |\n| lastUpdatedBy | RO | Identity of the latest user to modify the test |\n| labels | RW | List of names of labels applied to the test |\n\nTest configuration is performed via the test's `settings` attribute. Some settings are common to all tests while others are specific to tests of a given type.\n### Common Test Settings\nThe following settings are used for tests of all types:\n| Attribute | Purpose | Required |\n|-----------|---------|----------|\n| agentIds  | IDs of agents to execute tasks for the test | YES |\n| period | Test execution interval in seconds | NO (default 60s) |\n| family | IP address family. Used only for tests whose type is url or dns. Selects which type of DNS resource is queried for resolving hostname to target address | NO (default IP_FAMILY_DUAL) |\n| notificationChannels | List of notification channels for the test | NO (default empty list) |\n| healthSettings | A HealthSettings object that configures health settings for this test, which includes metric thresholds that define health status (warning and critical) and trigger associated alarms. | YES |\n| ping | A TestPingSettings object that configures the ping task of the test | NO (default depends on test type) |\n| trace | A TestTraceSettings object that configures the trace task of the test | NO (default depends on test type) |\n| tasks | List of names of the tasks that will be executed for this test | YES |\n\n### Type-specific Settings\nEach test type has its own configuration object that represents the settings for that type. These type-specific objects are referenced by the attributes in `Test.settings`:\n| Test type    | Settings attribute | Configuration object |\n|--------------|-------------------------|---------------------------|\n| ip           | ip                      | IpTest                    |\n| hostname     | hostname                | HostnameTest              |\n| network_grid | networkGrid             | IpTest                    |\n| agent        | agent                   | AgentTest                 |\n| network_mesh | networkMesh             | NetworkMeshTest           |\n| flow         | flow                    | FlowTest                  |\n| url          | url                     | UrlTest                   |\n| page_load    | pageLoad                | PageLoadTest              |\n| dns          | dns                     | DnsTest                   |\n| dns_grid     | dnsGrid                 | DnsTest                   |\n\n# Test Results\nResults of synthetic tests are returned as a sequence of `TestResults` objects. Each such object represents measurements and health evaluation for a single test at specific point in time. Measurements and health evaluation are grouped by agent and by task.\nGranularity of timestamps in test results depends on the frequency (period) of the test and on the requested time range. The minimum granularity is 1 minute (even when period < 1 minute). The longer the time range, the lower the granularity.\n# Network Traces\nSynthetic tests that include the `traceroute` task collect the unidirectional network path from the agent to the target for each agent/target pair. The trace data are returned in the `GetTraceForTestResponse` object. The `paths` attribute of this object contains the collected network path for each agent/target pair and the round-trip time (RTT) to each hop.\nHops in actual network traces are identified by a `nodeId`. The mapping of node IDs to address, name, location, and other attributes of the hop is provided in a map that is stored in the `nodes` attribute of the `GetTraceForTestResponse` object.\n# Agents\nThe Kentik synthetic monitoring system recognizes 2 types of agents:\n* **Global** (public): Managed by Kentik and available to every Kentik user. All information about global agents in this API is read-only.\n* **Private**: Deployed by each customer and available only to that customer.\nTo be visible in this API, a private agent must first associate itself with a customer account by contacting the Kentik system (via private API). Once the agent is associated it can be authorized via the API by changing its `status` to `AGENT_STATUS_OK`. For more information about private agent deployment, see [**Synthetic Agent Deployments**](https://kb.kentik.com/v4/Ma01.htm#Ma01-Synthetic_Agent_Deployments).\n",
+    "description": "# Overview\nThe Synthetics Monitoring API provides programmatic access to Kentik's [synthetic monitoring system](https://kb.kentik.com/v4/Ma00.htm). The API consists of two endpoints:\n| Endpoint | Purpose |\n|-----------|---------|\n| SyntheticsAdminService | CRUD operations for synthetic tests and agents |\n| SyntheticsDataService  | Retrieval of synthetic test results and network traces |\n\nBoth REST endpoint and gRPC RPCs are provided.\n### Known Limitations\nThe API currently does not support the following [Synthetic Test Types](https://kb.kentik.com/v4/Ma00.htm#Ma00-Synthetic_Test_Types):\n* BGP Monitor tests, which are supported in a [separate API](https://github.com/kentik/api-schema-public/blob/master/proto/kentik/bgp_monitoring/v202205beta1/bgp_monitoring.proto)\n* Transaction tests.\n\n### Additional Public Resources\nKentik community [Python](https://github.com/kentik/community_sdk_python) and [Go](https://github.com/kentik/community_sdk_golang) SDKs provide language-specific support for using this and other Kentik APIs. These SDKs can be also used as example code for development. \n A [Terraform provider](https://registry.terraform.io/providers/kentik/kentik-synthetics) is available for configuring tests and agents for Kentik synthetic monitoring.\n# Anatomy of a Synthetic Test\nEach `Test` consists of one or more tasks. Tasks are executed by monitoring `Agents` that send synthetic traffic (probes) over the network. The API currently supports following tasks:\n| Task name  | Purpose |\n|------------|---------|\n| ping       | Test basic address, and optionally TCP port reachability |\n| traceroute (a.k.a. trace)| Discover unidirectional network path |\n| http | Perform a simple HTTP/HTTPS request |\n| page-load | Use headless Chromium to execute an HTTP/HTTPS request |\n| dns | Execute a DNS query|\n\nThe set of tasks executed on behalf of a given test depends on the `type` of that test. The following test types are currently supported by the API:\n| API type | Portal (UI) equivalent | Tasks |\n|---------------|--------------|-------|\n| ip | IP Address | ping, traceroute |\n| hostname | Hostname | ping, traceroute |\n| network_grid | Network Grid | ping, traceroute |\n| agent | Agent-to-Agent | ping, traceroute |\n| network_mesh | Network Mesh | ping, traceroute |\n| flow | Autonomous Tests (5 variants) | ping, traceroute |\n| url | HTTP(S) or API | http, ping (optional), traceroute (optional) |\n| page_load | Page Load | page-load, ping (optional), traceroute (optional) |\n| dns | DNS Server Monitor | dns |\n| dns_grid | DNS Server Grid | dns |\n\n***Note:*** `ping` and `traceroute` tasks are always run together (never one without the other).\n\n# Test Attributes and Settings\nThe attributes of the test object enable configuration of test settings, access to test metadata, and access to runtime state information.\n### State and Metadata Attributes\n The following table lists the metadata and state attributes:\n| Attribute | Access | Purpose |\n|-----------|--------|---------|\n| id | RO | System-generated unique identifier of the test |\n| name | RW | User specified name for the test (need not be unique) |\n| type | RO (after creation) | Type of the test (set on creation; read-only thereafter) |\n| status | RW | Life-cycle status of the test |\n| cdate | RO | Creation timestamp |\n| edate | RO | Last-modification timestamp |\n| created_by | RO | Identity of the user that created the test |\n| last_updated_by | RO | Identity of the latest user to modify the test |\n| labels | RW | List of names of labels applied to the test |\n\nTest configuration is performed via the test's `settings` attribute. Some settings are common to all tests while others are specific to tests of a given type.\n### Common Test Settings\nThe following settings are used for tests of all types:\n| Attribute | Purpose | Required |\n|-----------|---------|----------|\n| agentIds  | IDs of agents to execute tasks for the test | YES |\n| period | Test execution interval in seconds | NO (default 60s) |\n| family | IP address family. Used only for tests whose type is url or dns. Selects which type of DNS resource is queried for resolving hostname to target address | NO (default IP_FAMILY_DUAL) |\n| notificationChannels | List of notification channels for the test | NO (default empty list) |\n| healthSettings | A HealthSettings object that configures health settings for this test, which includes metric thresholds that define health status (warning and critical) and trigger associated alarms. | YES |\n| ping | A TestPingSettings object that configures the ping task of the test | NO (default depends on test type) |\n| trace | A TestTraceSettings object that configures the trace task of the test | NO (default depends on test type) |\n| tasks | List of names of the tasks that will be executed for this test | YES |\n\n### Type-specific Settings\nEach test type has its own configuration object that represents the settings for that type. These type-specific objects are referenced by the attributes in `Test.settings`:\n| Test type    | Settings attribute | Configuration object |\n|--------------|-------------------------|---------------------------|\n| ip           | ip                      | IpTest                    |\n| hostname     | hostname                | HostnameTest              |\n| network_grid | networkGrid             | IpTest                    |\n| agent        | agent                   | AgentTest                 |\n| network_mesh | networkMesh             | NetworkMeshTest           |\n| flow         | flow                    | FlowTest                  |\n| url          | url                     | UrlTest                   |\n| page_load    | pageLoad                | PageLoadTest              |\n| dns          | dns                     | DnsTest                   |\n| dns_grid     | dnsGrid                 | DnsTest                   |\n\n# Test Results\nResults of synthetic tests are returned as a sequence of `TestResults` objects. Each such object represents measurements and health evaluation for a single test at specific point in time. Measurements and health evaluation are grouped by agent and by task.\nGranularity of timestamps in test results depends on the frequency (period) of the test and on the requested time range. The minimum granularity is 1 minute (even when period < 1 minute). The longer the time range, the lower the granularity.\n# Network Traces\nSynthetic tests that include the `traceroute` task collect the unidirectional network path from the agent to the target for each agent/target pair. The trace data are returned in the `GetTraceForTestResponse` object. The `paths` attribute of this object contains the collected network path for each agent/target pair and the round-trip time (RTT) to each hop.\nHops in actual network traces are identified by a `nodeId`. The mapping of node IDs to address, name, location, and other attributes of the hop is provided in a map that is stored in the `nodes` attribute of the `GetTraceForTestResponse` object.\n# Agents\nThe Kentik synthetic monitoring system recognizes 2 types of agents:\n* **Global** (public): Managed by Kentik and available to every Kentik user. All information about global agents in this API is read-only.\n* **Private**: Deployed by each customer and available only to that customer.\nTo be visible in this API, a private agent must first associate itself with a customer account by contacting the Kentik system (via private API). Once the agent is associated it can be authorized via the API by changing its `status` to `AGENT_STATUS_OK`. For more information about private agent deployment, see [**Synthetic Agent Deployments**](https://kb.kentik.com/v4/Ma01.htm#Ma01-Synthetic_Agent_Deployments).\n",
     "version": "202202",
     "contact": {
       "name": "Kentik API Engineering",
@@ -487,7 +487,8 @@
           "type": "string",
           "description": "City of the location"
         }
-      }
+      },
+      "title": "Location"
     },
     "v202202ActivationSettings": {
       "type": "object",
@@ -508,7 +509,8 @@
           "type": "string",
           "description": "Number of occurrences of unhealthy test status within the time window triggering alarm activation"
         }
-      }
+      },
+      "title": "ActivationSettings"
     },
     "v202202Agent": {
       "type": "object",
@@ -626,7 +628,8 @@
           "$ref": "#/definitions/v202202AgentMetadata",
           "description": "Additional information about agent's configuration and run-time state"
         }
-      }
+      },
+      "title": "Agent"
     },
     "v202202AgentMetadata": {
       "type": "object",
@@ -661,7 +664,8 @@
           "description": "List of public IPv6 addresses",
           "readOnly": true
         }
-      }
+      },
+      "title": "AgentMetadata"
     },
     "v202202AgentResults": {
       "type": "object",
@@ -681,7 +685,8 @@
           },
           "description": "List of results for individual tasks"
         }
-      }
+      },
+      "title": "AgentResults"
     },
     "v202202AgentStatus": {
       "type": "string",
@@ -693,7 +698,7 @@
       ],
       "default": "AGENT_STATUS_UNSPECIFIED",
       "description": "- AGENT_STATUS_UNSPECIFIED: Invalid value.\n - AGENT_STATUS_OK: Agent is ready to accept tests\n - AGENT_STATUS_WAIT: Agent is waiting for authorization\n - AGENT_STATUS_DELETED: Agent was deleted - not user settable",
-      "title": "Operational status of an agent"
+      "title": "AgentStatus"
     },
     "v202202AgentTest": {
       "type": "object",
@@ -706,7 +711,8 @@
           "type": "boolean",
           "description": "Boolean value indicating whether to use local (private) IP address of the target agent"
         }
-      }
+      },
+      "title": "AgentTest"
     },
     "v202202CreateTestRequest": {
       "type": "object",
@@ -719,6 +725,7 @@
           ]
         }
       },
+      "title": "CreateTestRequest",
       "required": [
         "test"
       ]
@@ -730,7 +737,8 @@
           "$ref": "#/definitions/v202202Test",
           "description": "Test configuration and status data"
         }
-      }
+      },
+      "title": "CreateTestResponse"
     },
     "v202202DNSRecord": {
       "type": "string",
@@ -747,7 +755,7 @@
       ],
       "default": "DNS_RECORD_UNSPECIFIED",
       "description": "- DNS_RECORD_UNSPECIFIED: Invalid value\n - DNS_RECORD_A: name to IPv4 address(es) mapping\n - DNS_RECORD_AAAA: name to IPv6 address(es) mapping\n - DNS_RECORD_CNAME: alternative resource name\n - DNS_RECORD_DNAME: alternative resource set name\n - DNS_RECORD_NS: domain to name server mapping\n - DNS_RECORD_MX: SMTP mail server record\n - DNS_RECORD_PTR: IPv4/6 address to name mapping\n - DNS_RECORD_SOA: domain meta-data",
-      "title": "DNS record type"
+      "title": "DNSRecord"
     },
     "v202202DNSResponseData": {
       "type": "object",
@@ -761,7 +769,8 @@
           "type": "string",
           "description": "Text rendering of received DNS resolution"
         }
-      }
+      },
+      "title": "DNSResponseData"
     },
     "v202202DNSResults": {
       "type": "object",
@@ -782,13 +791,16 @@
           "$ref": "#/definitions/v202202DNSResponseData",
           "description": "Information about received DNS response"
         }
-      }
+      },
+      "title": "DNSResults"
     },
     "v202202DeleteAgentResponse": {
-      "type": "object"
+      "type": "object",
+      "title": "DeleteAgentResponse"
     },
     "v202202DeleteTestResponse": {
-      "type": "object"
+      "type": "object",
+      "title": "DeleteTestResponse"
     },
     "v202202DnsTest": {
       "type": "object",
@@ -818,7 +830,8 @@
           "format": "int64",
           "description": "Target DNS server port"
         }
-      }
+      },
+      "title": "DnsTest"
     },
     "v202202FlowTest": {
       "type": "object",
@@ -854,7 +867,8 @@
           "type": "string",
           "description": "Direction of flows to match target attribute for extraction of target addresses (src | dst)"
         }
-      }
+      },
+      "title": "FlowTest"
     },
     "v202202GetAgentResponse": {
       "type": "object",
@@ -863,7 +877,8 @@
           "$ref": "#/definitions/v202202Agent",
           "description": "Agent configuration and status data"
         }
-      }
+      },
+      "title": "GetAgentResponse"
     },
     "v202202GetResultsForTestsRequest": {
       "type": "object",
@@ -913,6 +928,7 @@
           "description": "If true, retrieve result aggregated across the requested time period, else return complete time series"
         }
       },
+      "title": "GetResultsForTestsRequest",
       "required": [
         "ids",
         "startTime",
@@ -928,7 +944,8 @@
             "$ref": "#/definitions/v202202TestResults"
           }
         }
-      }
+      },
+      "title": "GetResultsForTestsResponse"
     },
     "v202202GetTestResponse": {
       "type": "object",
@@ -937,7 +954,8 @@
           "$ref": "#/definitions/v202202Test",
           "description": "Test configuration and status data"
         }
-      }
+      },
+      "title": "GetTestResponse"
     },
     "v202202GetTraceForTestRequest": {
       "type": "object",
@@ -977,6 +995,7 @@
           "description": "List of target IP addresses for which to retrieve results"
         }
       },
+      "title": "GetTraceForTestRequest",
       "required": [
         "startTime",
         "endTime"
@@ -999,7 +1018,8 @@
           },
           "description": "List of retrieved network path data"
         }
-      }
+      },
+      "title": "GetTraceForTestResponse"
     },
     "v202202HTTPResponseData": {
       "type": "object",
@@ -1018,7 +1038,8 @@
           "type": "string",
           "description": "Detailed information about transaction timing, connection characteristics and response"
         }
-      }
+      },
+      "title": "HTTPResponseData"
     },
     "v202202HTTPResults": {
       "type": "object",
@@ -1039,7 +1060,8 @@
           "type": "string",
           "description": "IP address of probed target server"
         }
-      }
+      },
+      "title": "HTTPResults"
     },
     "v202202HealthSettings": {
       "type": "object",
@@ -1153,7 +1175,8 @@
           "type": "string",
           "description": "Comma separated list of IP addresses expected to be received in response to DNS A or AAAA query"
         }
-      }
+      },
+      "title": "HealthSettings"
     },
     "v202202HostnameTest": {
       "type": "object",
@@ -1162,7 +1185,8 @@
           "type": "string",
           "description": "Fully qualified DNS name of the target host"
         }
-      }
+      },
+      "title": "HostnameTest"
     },
     "v202202IPFamily": {
       "type": "string",
@@ -1174,17 +1198,19 @@
       ],
       "default": "IP_FAMILY_UNSPECIFIED",
       "description": "- IP_FAMILY_UNSPECIFIED: Invalid value.\n - IP_FAMILY_V4: IPv4 only\n - IP_FAMILY_V6: IPv6 only\n - IP_FAMILY_DUAL: IPv4 and IPv6 supported",
-      "title": "Supported IP address family"
+      "title": "IPFamily"
     },
     "v202202ImplementType": {
       "type": "string",
       "enum": [
         "IMPLEMENT_TYPE_UNSPECIFIED",
         "IMPLEMENT_TYPE_RUST",
-        "IMPLEMENT_TYPE_NODE"
+        "IMPLEMENT_TYPE_NODE",
+        "IMPLEMENT_TYPE_NETWORK"
       ],
       "default": "IMPLEMENT_TYPE_UNSPECIFIED",
-      "description": "Agent implementation type determines capabilities of agent.\n\n - IMPLEMENT_TYPE_RUST: ksynth agent, a.k.a network agent (implemented in Rust) capable of running all tasks except for page-load\n - IMPLEMENT_TYPE_NODE: ksynth-agent, a.k.a. app agent (implemented in NodeJS) capable of running all tasks"
+      "description": "- IMPLEMENT_TYPE_RUST: ksynth, a.k.a network agent (implemented in Rust) capable of running all tasks except for page-load and transaction\n - IMPLEMENT_TYPE_NODE: ksynth-agent, a.k.a. app agent (implemented in NodeJS) with Chromium enabled capable of running all tasks\n - IMPLEMENT_TYPE_NETWORK: ksynth-agent, a.k.a. app agent with Chromium disabled, capable of running all tasks except for page-load and transaction",
+      "title": "ImplementType"
     },
     "v202202IpTest": {
       "type": "object",
@@ -1196,7 +1222,8 @@
           },
           "description": "List of IP addresses of targets"
         }
-      }
+      },
+      "title": "IpTest"
     },
     "v202202ListAgentsResponse": {
       "type": "object",
@@ -1213,7 +1240,8 @@
           "format": "int64",
           "description": "Number of invalid entries encountered while collecting data"
         }
-      }
+      },
+      "title": "ListAgentsResponse"
     },
     "v202202ListTestsResponse": {
       "type": "object",
@@ -1230,7 +1258,8 @@
           "format": "int64",
           "description": "Number of invalid entries encountered while collecting data"
         }
-      }
+      },
+      "title": "ListTestsResponse"
     },
     "v202202MetricData": {
       "type": "object",
@@ -1254,7 +1283,8 @@
           "type": "string",
           "description": "Health evaluation status for the metric (healthy | warning | critical)"
         }
-      }
+      },
+      "title": "MetricData"
     },
     "v202202NetNode": {
       "type": "object",
@@ -1288,7 +1318,8 @@
           "type": "string",
           "description": "ID of the site containing the device corresponding with the node in Kentik configuration"
         }
-      }
+      },
+      "title": "NetNode"
     },
     "v202202NetworkMeshTest": {
       "type": "object",
@@ -1297,7 +1328,8 @@
           "type": "boolean",
           "description": "Boolean value indicating whether to use local (private) IP address of the target agents"
         }
-      }
+      },
+      "title": "NetworkMeshTest"
     },
     "v202202PacketLossData": {
       "type": "object",
@@ -1311,7 +1343,8 @@
           "type": "string",
           "description": "Health evaluation status for the metric (healthy | warning | critical)"
         }
-      }
+      },
+      "title": "PacketLossData"
     },
     "v202202PageLoadTest": {
       "type": "object",
@@ -1343,7 +1376,8 @@
           },
           "description": "Map of CSS selector values keyed by selector name"
         }
-      }
+      },
+      "title": "PageLoadTest"
     },
     "v202202Path": {
       "type": "object",
@@ -1377,7 +1411,8 @@
           "format": "date-time",
           "description": "Timestamp (UTC) of initiation of the path trace"
         }
-      }
+      },
+      "title": "Path"
     },
     "v202202PathTrace": {
       "type": "object",
@@ -1401,7 +1436,8 @@
           },
           "description": "List of hops in the trace"
         }
-      }
+      },
+      "title": "PathTrace"
     },
     "v202202PingResults": {
       "type": "object",
@@ -1426,7 +1462,8 @@
           "type": "string",
           "description": "IP address of probed target"
         }
-      }
+      },
+      "title": "PingResults"
     },
     "v202202SetTestStatusRequest": {
       "type": "object",
@@ -1446,13 +1483,15 @@
           ]
         }
       },
+      "title": "SetTestStatusRequest",
       "required": [
         "id",
         "status"
       ]
     },
     "v202202SetTestStatusResponse": {
-      "type": "object"
+      "type": "object",
+      "title": "SetTestStatusResponse"
     },
     "v202202Stats": {
       "type": "object",
@@ -1472,7 +1511,8 @@
           "format": "int32",
           "description": "Maximum value"
         }
-      }
+      },
+      "title": "Stats"
     },
     "v202202TaskResults": {
       "type": "object",
@@ -1493,7 +1533,8 @@
           "type": "string",
           "description": "Health status of the task"
         }
-      }
+      },
+      "title": "TaskResults"
     },
     "v202202Test": {
       "type": "object",
@@ -1548,7 +1589,8 @@
           },
           "description": "Set of labels associated with the test"
         }
-      }
+      },
+      "title": "Test"
     },
     "v202202TestPingSettings": {
       "type": "object",
@@ -1582,7 +1624,8 @@
           "format": "int64",
           "description": "--- <Not implemented yet> ---"
         }
-      }
+      },
+      "title": "TestPingSettings"
     },
     "v202202TestResults": {
       "type": "object",
@@ -1607,7 +1650,8 @@
           },
           "description": "List of results from agents executing tasks on behalf of the test"
         }
-      }
+      },
+      "title": "TestResults"
     },
     "v202202TestSettings": {
       "type": "object",
@@ -1683,9 +1727,13 @@
             "type": "string"
           },
           "description": "List of IDs of notification channels for alarms triggered by the test"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Add a note or comment for this test"
         }
       },
-      "title": "Synthetic test configuration"
+      "title": "TestSettings"
     },
     "v202202TestStatus": {
       "type": "string",
@@ -1697,7 +1745,7 @@
       ],
       "default": "TEST_STATUS_UNSPECIFIED",
       "description": "- TEST_STATUS_UNSPECIFIED: Invalid value.\n - TEST_STATUS_ACTIVE: Test is active.\n - TEST_STATUS_PAUSED: Test is paused.\n - TEST_STATUS_DELETED: Test is deleted. Not user settable.",
-      "title": "Operational status of a test"
+      "title": "TestStatus"
     },
     "v202202TestTraceSettings": {
       "type": "object",
@@ -1736,7 +1784,8 @@
           "format": "int64",
           "description": "--- <Not implemented yet> ---"
         }
-      }
+      },
+      "title": "TestTraceSettings"
     },
     "v202202TraceHop": {
       "type": "object",
@@ -1750,7 +1799,8 @@
           "type": "string",
           "description": "ID of the node for this hop in the Nodes map  - empty if no response was received"
         }
-      }
+      },
+      "title": "TraceHop"
     },
     "v202202UpdateAgentRequest": {
       "type": "object",
@@ -1759,7 +1809,8 @@
           "$ref": "#/definitions/v202202Agent",
           "description": "Agent configuration data"
         }
-      }
+      },
+      "title": "UpdateAgentRequest"
     },
     "v202202UpdateAgentResponse": {
       "type": "object",
@@ -1768,7 +1819,8 @@
           "$ref": "#/definitions/v202202Agent",
           "description": "Agent configuration and status data"
         }
-      }
+      },
+      "title": "UpdateAgentResponse"
     },
     "v202202UpdateTestRequest": {
       "type": "object",
@@ -1777,7 +1829,8 @@
           "$ref": "#/definitions/v202202Test",
           "description": "Test configuration data"
         }
-      }
+      },
+      "title": "UpdateTestRequest"
     },
     "v202202UpdateTestResponse": {
       "type": "object",
@@ -1786,7 +1839,8 @@
           "$ref": "#/definitions/v202202Test",
           "description": "Test configuration and status data"
         }
-      }
+      },
+      "title": "UpdateTestResponse"
     },
     "v202202UrlTest": {
       "type": "object",
@@ -1819,7 +1873,8 @@
           "type": "boolean",
           "description": "Boolean indicating whether to ignore TLS certificate verification errors"
         }
-      }
+      },
+      "title": "UrlTest"
     },
     "v202202UserInfo": {
       "type": "object",
@@ -1839,7 +1894,8 @@
           "description": "Full name of the user",
           "readOnly": true
         }
-      }
+      },
+      "title": "UserInfo"
     }
   },
   "securityDefinitions": {

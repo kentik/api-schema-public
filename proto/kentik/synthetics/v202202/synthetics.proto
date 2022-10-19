@@ -71,7 +71,7 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
 	"# Test Attributes and Settings\n"
 	"The attributes of the test object enable configuration of test settings, access to test metadata, and access to "
   "runtime state information.\n"
-	"### State and metadata attributes\n"
+	"### State and Metadata Attributes\n"
   " The following table lists the metadata and state attributes:\n"
 		"| Attribute | Access | Purpose |\n"
 		"|-----------|--------|---------|\n"
@@ -81,8 +81,8 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
 		"| status | RW | Life-cycle status of the test |\n"
 		"| cdate | RO | Creation timestamp |\n"
 		"| edate | RO | Last-modification timestamp |\n"
-		"| createdBy | RO | Identity of the user that created the test |\n"
-		"| lastUpdatedBy | RO | Identity of the latest user to modify the test |\n"
+		"| created_by | RO | Identity of the user that created the test |\n"
+		"| last_updated_by | RO | Identity of the latest user to modify the test |\n"
 		"| labels | RW | List of names of labels applied to the test |\n"
 	"\n"
 	"Test configuration is performed via the test's `settings` attribute. Some settings are common to all tests while "
@@ -180,18 +180,20 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
 
 // models
 // -------------------------------------------------------
-
 // === AGENT config and status ===
 
-// Agent implementation type determines capabilities of agent.
+// {{.Name}}
 enum ImplementType {
   IMPLEMENT_TYPE_UNSPECIFIED = 0;
-  // ksynth agent, a.k.a network agent (implemented in Rust) capable of running all tasks except for page-load
+  // ksynth, a.k.a network agent (implemented in Rust) capable of running all tasks except for page-load and transaction
   IMPLEMENT_TYPE_RUST = 1;
-  // ksynth-agent, a.k.a. app agent (implemented in NodeJS) capable of running all tasks
+  // ksynth-agent, a.k.a. app agent (implemented in NodeJS) with Chromium enabled capable of running all tasks
   IMPLEMENT_TYPE_NODE = 2;
+  // ksynth-agent, a.k.a. app agent with Chromium disabled, capable of running all tasks except for page-load and transaction
+  IMPLEMENT_TYPE_NETWORK = 3;
 }
 
+// {{.Name}}
 message Agent {
   string id = 1 [
     (google.api.field_behavior) = OUTPUT_ONLY,
@@ -322,6 +324,7 @@ message Agent {
   ];
 }
 
+// {{.Name}}
 message AgentMetadata {
   repeated IpValue private_ipv4_addresses = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -351,7 +354,7 @@ message AgentMetadata {
   }
 }
 
-// Supported IP address family
+// {{.Name}}
 enum IPFamily {
   // Invalid value.
   IP_FAMILY_UNSPECIFIED = 0;
@@ -363,7 +366,7 @@ enum IPFamily {
   IP_FAMILY_DUAL = 3;
 };
 
-// Operational status of a test
+// {{.Name}}
 enum TestStatus {
   // Invalid value.
   TEST_STATUS_UNSPECIFIED = 0;
@@ -375,7 +378,7 @@ enum TestStatus {
    TEST_STATUS_DELETED = 3;
 }
 
-// Operational status of an agent
+// {{.Name}}
 enum AgentStatus {
   // Invalid value.
   AGENT_STATUS_UNSPECIFIED = 0;
@@ -390,6 +393,7 @@ enum AgentStatus {
 
 // === TEST config and status ===
 
+// {{.Name}}
 message UserInfo {
   string id = 1 [
     (google.api.field_behavior) = OUTPUT_ONLY,
@@ -411,6 +415,7 @@ message UserInfo {
   ];
 }
 
+// {{.Name}}
 message Test {
   string id = 1 [
     (google.api.field_behavior) = OUTPUT_ONLY,
@@ -469,7 +474,7 @@ message Test {
   ];
 }
 
-// DNS record type
+// {{.Name}}
 enum DNSRecord {
   // Invalid value
   DNS_RECORD_UNSPECIFIED = 0;
@@ -491,9 +496,8 @@ enum DNSRecord {
   DNS_RECORD_SOA = 8;
 }
 
-// Synthetic test configuration
+// {{.Name}}
 message TestSettings {
-
   oneof definition {
     HostnameTest hostname = 1;
     IpTest ip = 2 ;
@@ -550,8 +554,14 @@ message TestSettings {
     }
   ];
 
+  string notes = 19 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Add a note or comment for this test"
+    }
+  ];
 }
 
+// {{.Name}}
 message TestPingSettings {
   uint32 count = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -585,6 +595,7 @@ message TestPingSettings {
   ];
 }
 
+// {{.Name}}
 message TestTraceSettings {
   uint32 count = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -623,6 +634,7 @@ message TestTraceSettings {
   ];
 }
 
+// {{.Name}}
 message ActivationSettings {
   string grace_period = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -646,6 +658,7 @@ message ActivationSettings {
   ];
 }
 
+// {{.Name}}
 message HealthSettings {
   float latency_critical = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -754,6 +767,7 @@ message HealthSettings {
   ];
 }
 
+// {{.Name}}
 message HostnameTest {
   string target = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -761,6 +775,8 @@ message HostnameTest {
     }
   ];
 }
+
+// {{.Name}}
 message IpTest {
   repeated string targets = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -768,6 +784,8 @@ message IpTest {
     }
   ];
 }
+
+// {{.Name}}
 message AgentTest {
   string target = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -781,6 +799,7 @@ message AgentTest {
   ];
 }
 
+// {{.Name}}
 message FlowTest {
   string target = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -819,6 +838,7 @@ message FlowTest {
   ];
 }
 
+// {{.Name}}
 message DnsTest {
   string target = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -847,6 +867,7 @@ message DnsTest {
   ];
 }
 
+// {{.Name}}
 message UrlTest {
   string target = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -880,6 +901,7 @@ message UrlTest {
   ];
 }
 
+// {{.Name}}
 message PageLoadTest {
   string target = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -908,6 +930,7 @@ message PageLoadTest {
   ];
 }
 
+// {{.Name}}
 message NetworkMeshTest {
   bool use_local_ip = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -918,6 +941,7 @@ message NetworkMeshTest {
 
 // === TEST RESULTS
 
+// {{.Name}}
 message MetricData {
   uint32 current = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -941,6 +965,7 @@ message MetricData {
   ];
 }
 
+// {{.Name}}
 message PacketLossData {
   double current = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -954,6 +979,7 @@ message PacketLossData {
   ];
 }
 
+// {{.Name}}
 message PingResults {
   string target = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -982,6 +1008,7 @@ message PingResults {
   ];
 }
 
+// {{.Name}}
 message HTTPResponseData {
   uint32 status = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1000,6 +1027,7 @@ message HTTPResponseData {
   ];
 }
 
+// {{.Name}}
 message HTTPResults {
   string target = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1023,6 +1051,7 @@ message HTTPResults {
   ];
 }
 
+// {{.Name}}
 message DNSResponseData {
   uint32 status = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1036,6 +1065,7 @@ message DNSResponseData {
   ];
 }
 
+// {{.Name}}
 message DNSResults {
   string target = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1059,6 +1089,7 @@ message DNSResults {
   ];
 }
 
+// {{.Name}}
 message TaskResults {
   oneof task_type {
     PingResults ping = 1 [
@@ -1084,6 +1115,7 @@ message TaskResults {
   ];
 }
 
+// {{.Name}}
 message AgentResults {
   string agent_id = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1102,6 +1134,7 @@ message AgentResults {
   ];
 }
 
+// {{.Name}}
 message TestResults {
   string test_id = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1127,6 +1160,7 @@ message TestResults {
 
 // === TEST TRACE results ===
 
+// {{.Name}}
 message Stats {
   int32 average = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1145,6 +1179,7 @@ message Stats {
   ];
 }
 
+// {{.Name}}
 message Location {
   double latitude = 8 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1173,6 +1208,7 @@ message Location {
   ];
 }
 
+// {{.Name}}
 message NetNode {
   string ip = 2 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1211,6 +1247,7 @@ message NetNode {
   ];
 }
 
+// {{.Name}}
 message TraceHop {
   int32 latency = 3 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1225,6 +1262,7 @@ message TraceHop {
   ];
 }
 
+// {{.Name}}
 message PathTrace {
   repeated int32 as_path = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1243,6 +1281,7 @@ message PathTrace {
   ];
 }
 
+// {{.Name}}
 message Path {
   string agent_id = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1280,6 +1319,7 @@ message Path {
 // Data Service
 // -------------------------------------------------------
 
+// {{.Name}}
 message GetResultsForTestsRequest {
   repeated string ids = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1321,10 +1361,12 @@ message GetResultsForTestsRequest {
   ];
 }
 
+// {{.Name}}
 message GetResultsForTestsResponse {
   repeated TestResults results = 1;
 }
 
+// {{.Name}}
 message GetTraceForTestRequest {
   string id = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1332,14 +1374,14 @@ message GetTraceForTestRequest {
     }
   ];
 
-  google.protobuf.Timestamp start_time = 2[
+  google.protobuf.Timestamp start_time = 2 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Timestamp of the oldest results to include in results"
     },
     (google.api.field_behavior) = REQUIRED
   ];
 
-  google.protobuf.Timestamp end_time = 3[
+  google.protobuf.Timestamp end_time = 3 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Timestamp of the newest results to include in results"
     },
@@ -1359,6 +1401,7 @@ message GetTraceForTestRequest {
   ];
 }
 
+// {{.Name}}
 message GetTraceForTestResponse {
   map<string, NetNode>  nodes = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1407,8 +1450,10 @@ service SyntheticsDataService {
 // Admin Service
 // -------------------------------------------------------
 
+// {{.Name}}
 message ListAgentsRequest {}
 
+// {{.Name}}
 message ListAgentsResponse {
   repeated Agent agents = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1422,6 +1467,7 @@ message ListAgentsResponse {
   ];
 }
 
+// {{.Name}}
 message GetAgentRequest {
   string id = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1431,6 +1477,7 @@ message GetAgentRequest {
   ];
 }
 
+// {{.Name}}
 message GetAgentResponse {
   Agent agent = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1439,6 +1486,7 @@ message GetAgentResponse {
   ];
 }
 
+// {{.Name}}
 message UpdateAgentRequest {
   Agent agent = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1447,6 +1495,7 @@ message UpdateAgentRequest {
   ];
 }
 
+// {{.Name}}
 message UpdateAgentResponse {
   Agent agent = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1455,6 +1504,7 @@ message UpdateAgentResponse {
   ];
 }
 
+// {{.Name}}
 message DeleteAgentRequest {
   string id = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1464,11 +1514,13 @@ message DeleteAgentRequest {
   ];
 }
 
+// {{.Name}}
 message DeleteAgentResponse {}
 
-message ListTestsRequest {
-}
+// {{.Name}}
+message ListTestsRequest {}
 
+// {{.Name}}
 message ListTestsResponse {
   repeated Test tests = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1482,6 +1534,7 @@ message ListTestsResponse {
   ];
 }
 
+// {{.Name}}
 message CreateTestRequest {
   Test test = 1[
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1491,6 +1544,7 @@ message CreateTestRequest {
   ];
 }
 
+// {{.Name}}
 message CreateTestResponse {
   Test test = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1499,6 +1553,7 @@ message CreateTestResponse {
   ];
 }
 
+// {{.Name}}
 message GetTestRequest {
   string id = 1[
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1508,6 +1563,7 @@ message GetTestRequest {
   ];
 }
 
+// {{.Name}}
 message GetTestResponse {
   Test test = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1516,6 +1572,7 @@ message GetTestResponse {
   ];
 }
 
+// {{.Name}}
 message UpdateTestRequest {
   Test test = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1524,6 +1581,7 @@ message UpdateTestRequest {
   ];
 }
 
+// {{.Name}}
 message UpdateTestResponse {
   Test test = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1532,6 +1590,7 @@ message UpdateTestResponse {
   ];
 }
 
+// {{.Name}}
 message DeleteTestRequest {
   string id = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1541,8 +1600,10 @@ message DeleteTestRequest {
   ];
 }
 
+// {{.Name}}
 message DeleteTestResponse {}
 
+// {{.Name}}
 message SetTestStatusRequest {
   string id = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1558,8 +1619,8 @@ message SetTestStatusRequest {
   ];
 }
 
-message SetTestStatusResponse {
-}
+// {{.Name}}
+message SetTestStatusResponse {}
 
 service SyntheticsAdminService {
   option (google.api.default_host) = "grpc.api.kentik.com";
