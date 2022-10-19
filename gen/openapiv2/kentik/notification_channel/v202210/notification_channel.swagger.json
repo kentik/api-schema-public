@@ -51,7 +51,7 @@
     "/notification_channel/v202210/notification_channels/search": {
       "post": {
         "summary": "Retrieve notification channels matching criteria.",
-        "description": "Returns list of all notification channels matching request criteria. Following table lists available match criteria:\n| Request attribute | Type | Matched channel attribute | Note |\n|-------------------|------|---------------------------|------|\n| `name_pattern` | Regular expression | `name` | Empty string matches any name, otherwise the regular expression must consume all characters in the channel name |\n| `types` | List of ChannelType enum values | `type` | Empty list matches any channel type |\n\nMatch criteria are treated as a logical AND, i.e. all provider criteria must match in order for an entry to be included in the response.",
+        "description": "Returns list of all notification channels matching request criteria. Match criteria are treated as a logical AND, i.e. all provided criteria must match in order for an entry to be included in the response.",
         "operationId": "SearchNotificationChannels",
         "responses": {
           "200": {
@@ -242,14 +242,14 @@
       "properties": {
         "namePattern": {
           "type": "string",
-          "description": "Regular expression pattern for matching names of channels."
+          "description": "Regular expression pattern for matching the name attribute of channels. Empty string matches any name, otherwise the regular expression must consume all characters in the channel name."
         },
         "types": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/v202210ChannelType"
           },
-          "description": "List of channel types to match."
+          "description": "List of ChannelType enum values to match. Empty list matches any channel type."
         },
         "includeDisabled": {
           "type": "boolean",

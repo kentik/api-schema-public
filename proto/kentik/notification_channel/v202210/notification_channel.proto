@@ -183,12 +183,13 @@ message GetNotificationChannelResponse {
 message SearchNotificationChannelsRequest {
    string name_pattern = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "Regular expression pattern for matching names of channels."
+      description: "Regular expression pattern for matching the name attribute of channels. Empty string matches "
+      "any name, otherwise the regular expression must consume all characters in the channel name."
     }
   ];
   repeated ChannelType types = 2 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "List of channel types to match."
+      description: "List of ChannelType enum values to match. Empty list matches any channel type."
     }
   ];
   bool include_disabled = 3 [
@@ -252,15 +253,8 @@ service NotificationChannelService {
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       operation_id: "SearchNotificationChannels"
       summary: "Retrieve notification channels matching criteria."
-      description: "Returns list of all notification channels matching request criteria. "
-        "Following table lists available match criteria:\n"
-        "| Request attribute | Type | Matched channel attribute | Note |\n"
-        "|-------------------|------|---------------------------|------|\n"
-        "| `name_pattern` | Regular expression | `name` | Empty string matches any name, otherwise the regular expression must consume all characters in the channel name |\n"
-        "| `types` | List of ChannelType enum values | `type` | Empty list matches any channel type |\n"
-        "\n"
-        "Match criteria are treated as a logical AND, i.e. all provider criteria must match in order for an entry "
-        "to be included in the response."
+      description: "Returns list of all notification channels matching request criteria. Match criteria are treated "
+        "as a logical AND, i.e. all provided criteria must match in order for an entry to be included in the response."
     };
   }
 }
