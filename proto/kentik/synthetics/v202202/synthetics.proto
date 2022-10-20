@@ -16,7 +16,7 @@ import "kentik/core/v202012alpha1/annotations.proto";
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   info: {
     title: "Synthetics Monitoring API"
-    version: "202202"
+    version: "v202202"
     contact: {
       name: "Kentik API Engineering"
       url: "https://github.com/kentik/api-schema-public"

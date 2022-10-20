@@ -16,7 +16,7 @@ import "google/protobuf/timestamp.proto";
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   info: {
     title: "Label Management API"
-    version: "202210"
+    version: "v202210"
     contact: {
       name: "Kentik API Engineering"
       url: "https://github.com/kentik/api-schema-public"
