@@ -34,6 +34,54 @@ func (x *AlarmEvent) Proto_ShallowClone() (c *AlarmEvent) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+func (x *MitigationEvent) Proto_ShallowCopy(v interface{}) {
+	switch v := v.(type) {
+	case *MitigationEvent:
+		x.Id = v.GetId()
+	default:
+		if v, ok := v.(interface{ GetId() string }); ok {
+			x.Id = v.GetId()
+		}
+	}
+}
+
+// Proto_ShallowClone returns a shallow copy of the receiver or nil if it's nil.
+func (x *MitigationEvent) Proto_ShallowClone() (c *MitigationEvent) {
+	if x != nil {
+		c = new(MitigationEvent)
+		c.Id = x.Id
+	}
+	return
+}
+
+// Proto_ShallowCopy copies fields, from v to the receiver, using field getters.
+// Note that v is of an arbitrary type, which may implement any number of the
+// field getters, which are defined as any methods of the same signature as those
+// generated for the receiver type, with a name starting with Get.
+func (x *InsightEvent) Proto_ShallowCopy(v interface{}) {
+	switch v := v.(type) {
+	case *InsightEvent:
+		x.Id = v.GetId()
+	default:
+		if v, ok := v.(interface{ GetId() string }); ok {
+			x.Id = v.GetId()
+		}
+	}
+}
+
+// Proto_ShallowClone returns a shallow copy of the receiver or nil if it's nil.
+func (x *InsightEvent) Proto_ShallowClone() (c *InsightEvent) {
+	if x != nil {
+		c = new(InsightEvent)
+		c.Id = x.Id
+	}
+	return
+}
+
+// Proto_ShallowCopy copies fields, from v to the receiver, using field getters.
+// Note that v is of an arbitrary type, which may implement any number of the
+// field getters, which are defined as any methods of the same signature as those
+// generated for the receiver type, with a name starting with Get.
 func (x *GetViewModelRequest) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *GetViewModelRequest:
@@ -49,6 +97,20 @@ func (x *GetViewModelRequest) Proto_ShallowCopy(v interface{}) {
 					var defaultValue *AlarmEvent
 					if v := v.GetAlarm(); v != defaultValue {
 						x.Event = &GetViewModelRequest_Alarm{Alarm: v}
+						return
+					}
+				}
+				if v, ok := v.(interface{ GetMitigation() *MitigationEvent }); ok {
+					var defaultValue *MitigationEvent
+					if v := v.GetMitigation(); v != defaultValue {
+						x.Event = &GetViewModelRequest_Mitigation{Mitigation: v}
+						return
+					}
+				}
+				if v, ok := v.(interface{ GetInsight() *InsightEvent }); ok {
+					var defaultValue *InsightEvent
+					if v := v.GetInsight(); v != defaultValue {
+						x.Event = &GetViewModelRequest_Insight{Insight: v}
 						return
 					}
 				}

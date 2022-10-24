@@ -192,6 +192,12 @@
       "properties": {
         "alarm": {
           "$ref": "#/definitions/v202204alpha1AlarmEvent"
+        },
+        "mitigation": {
+          "$ref": "#/definitions/v202204alpha1MitigationEvent"
+        },
+        "insight": {
+          "$ref": "#/definitions/v202204alpha1InsightEvent"
         }
       }
     },
@@ -200,6 +206,22 @@
       "properties": {
         "model": {
           "$ref": "#/definitions/v202204alpha1EventViewModel"
+        }
+      }
+    },
+    "v202204alpha1InsightEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "v202204alpha1MitigationEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
         }
       }
     }
