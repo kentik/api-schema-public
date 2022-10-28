@@ -1,0 +1,573 @@
+syntax = "proto3";
+
+package kentik.site.v202211;
+option go_package = "github.com/kentik/api-schema/gen/go/kentik/site/v202211;site";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/timestamp.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "kentik/core/v202012alpha1/annotations.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Site Configuration API"
+    version: "v202211"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api-schema-public"
+    }
+    description: "# Overview\n"
+    "The Site Configuration API provides programmatic access to configuration of Sites and Site Markets:\n\n"
+    "* **Site**: A site is a specific user-defined physical location (e.g. a data center at a given address) or "
+    "logical location at which there is hosting of your devices, services, providers, or partner networks. "
+    "Information that can be associated with a site includes the classification of IP addresses and the site's "
+    "logical network topology/architecture.\n"
+    "* **Site Market**: Sites with any common characteristics of your choosing (e.g. all PoPs in a particular "
+    "region) can be logically grouped into a site market.\n\n"
+    "Both REST endpoint and gRPC RPCs are provided.\n\n"
+    "***Notes:*** \n"
+    "    - Once a site is created in Kentik, you can assign one or more devices to the site via the settings for those"
+    " devices; to do so programmatically you'd use the v5 Device API (see [Device Create]"
+    "(https://kb.kentik.com/v0/Ec05.htm#Ec05-Device_Create)).\n"
+    "    - Sites can also be managed using the legacy REST-only [Site API]"
+    "(https://kb.kentik.com/v0/Ec10.htm#Ec10-Site_API), which provides access to a subset of site configuration"
+    " attributes."
+  }
+  external_docs: {
+    url: "https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview"
+    description: "General information about Kentik APIs"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+// {{.Name}}
+enum SiteType {
+  // Invalid value.
+  SITE_TYPE_UNSPECIFIED = 0;
+  // Data center site type.
+  SITE_TYPE_DATA_CENTER = 1;
+  // Cloud site type.
+  SITE_TYPE_CLOUD = 2;
+  // Branch office site type.
+  SITE_TYPE_BRANCH = 3;
+  // Connectivity/PoP site type.
+  SITE_TYPE_CONNECTIVITY = 4;
+  // Customer/partner site type.
+  SITE_TYPE_CUSTOMER = 5;
+  // Other site type.
+  SITE_TYPE_OTHER = 6;
+}
+
+// {{.Name}}
+message SiteIpAddressClassification {
+  repeated string infrastructure_networks = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of IP address prefixes (in standard CIDR notation) used in infrastructure networks"
+    }
+  ];
+  repeated string user_access_networks = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of IP address prefixes (in standard CIDR notation) used in access networks"
+    }
+  ];
+  repeated string other_networks = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of IP address prefixes (in standard CIDR notation) used in other networks"
+    }
+  ];
+}
+
+// {{.Name}}
+message Layer {
+  string name = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Name of the network layer"
+    }
+  ];
+  repeated string device_ids = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "IDs of devices that are deemed to be part of the network layer"
+    }
+  ];
+}
+
+// {{.Name}}
+message LayerSet {
+  repeated Layer layers = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of parallel network layers"
+    }
+  ];
+}
+
+// {{.Name}}
+message PostalAddress {
+  string address  = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Street address"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  string city= 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "City (full name)"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  string region = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Geographical region"
+    }
+  ];
+  string postal_code = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Country specific postal code"
+    }
+  ];
+  string country = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Country (full name or country code)"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// Site CRUD
+// -------------------------------------------------------
+
+// {{.Name}}
+message Site {
+  string id = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "System generated unique identifier"
+    }
+  ];
+  string title = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "User selected title/name"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  double lat = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Latitude (signed decimal degrees)"
+    }
+  ];
+  double lon = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Longitude (signed decimal degrees)"
+    }
+  ];
+  PostalAddress postal_address = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Postal address"
+    }
+  ];
+  SiteType type = 7  [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Type of site"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  SiteIpAddressClassification address_classification = 8 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Classification of site's IP addresses"
+    }
+  ];
+  repeated LayerSet architecture = 9 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Logical network topology/architecture"
+    }
+  ];
+  string site_market = 10 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Name of the Site Market this sire belongs to"
+    }
+  ];
+}
+
+// {{.Name}}
+message ListSitesRequest {}
+
+// {{.Name}}
+message ListSitesResponse {
+  repeated Site sites = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of configurations of requested sites"
+    }
+  ];
+  uint32 invalid_count = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Number of invalid entries encountered while collecting data"
+    }
+  ];
+}
+
+// {{.Name}}
+message GetSiteRequest {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the requested site"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message GetSiteResponse {
+  Site site = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Configuration of the requested site"
+    }
+  ];
+}
+
+// {{.Name}}
+message CreateSiteRequest {
+  Site site = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Configuration of the new site"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message CreateSiteResponse {
+  Site site = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Configuration of the newly created site"
+    }
+  ];
+}
+
+// {{.Name}}
+message UpdateSiteRequest {
+  Site site = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "New configuration attributes for the site to be updated"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message UpdateSiteResponse {
+  Site site = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Updated configuration of the site"
+    }
+  ];
+}
+
+// {{.Name}}
+message DeleteSiteRequest {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the site to be deleted"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message DeleteSiteResponse {}
+
+
+// SiteMarket CRUD
+// -------------------------------------------------------
+
+// {{.Name}}
+message SiteMarket {
+  string id = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "System generated unique identifier"
+    }
+  ];
+  string name = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "User selected unique name"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  string description = 3  [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Free-form description"
+    }
+  ];
+  uint32 number_of_sites = 4  [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Number of sites in this market"
+    }
+  ];
+  google.protobuf.Timestamp cdate = 5 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Creation timestamp (UTC)"
+    }
+  ];
+  google.protobuf.Timestamp edate = 6 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Last modification timestamp (UTC)"
+    }
+  ];
+}
+
+// {{.Name}}
+message ListSiteMarketsRequest {}
+
+// {{.Name}}
+message ListSiteMarketsResponse {
+  repeated SiteMarket site_markets = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of configurations of requested site markets"
+    }
+  ];
+  uint32 invalid_count = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Number of invalid entries encountered while collecting data"
+    }
+  ];
+}
+
+// {{.Name}}
+message GetSiteMarketRequest {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the requested site market"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message GetSiteMarketResponse {
+  SiteMarket site_market = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Configuration of the requested site market"
+    }
+  ];
+}
+
+// {{.Name}}
+message CreateSiteMarketRequest {
+  SiteMarket site_market = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Configuration of the new site market"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message CreateSiteMarketResponse {
+  SiteMarket site_market = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Configuration of the newly created site market"
+    }
+  ];
+}
+
+// {{.Name}}
+message UpdateSiteMarketRequest {
+  SiteMarket site_market = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "New configuration attributes for the site to be updated"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message UpdateSiteMarketResponse {
+  SiteMarket site_market = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Updated configuration of the site market"
+    }
+  ];
+}
+
+// {{.Name}}
+message DeleteSiteMarketRequest {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the site market to be deleted"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message DeleteSiteMarketResponse {}
+
+// services and RPCs
+// -------------------------------------------------------
+
+service SiteService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202012alpha1.service_scope) = "admin.site";
+
+  // --- Sites ---
+
+  rpc ListSites(ListSitesRequest) returns (ListSitesResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.site:read";
+    option (google.api.http) = {
+      get: "/site/v202211/sites"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ListSites"
+      summary: "List all sites."
+      description: "Returns list of configured sites."
+    };
+  }
+
+  rpc GetSite(GetSiteRequest) returns (GetSiteResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.site:read";
+    option (google.api.http) = {
+      get: "/site/v202211/sites/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetSite"
+      summary: "Retrieve configuration of a site."
+      description: "Returns configuration of a site specified by ID."
+    };
+  }
+
+  rpc CreateSite(CreateSiteRequest) returns (CreateSiteResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.site:write";
+    option (google.api.http) = {
+      post: "/site/v202211/sites"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "CreateSite"
+      summary: "Configure a new site."
+      description: "Create configuration for a new site. Returns the newly created configuration."
+    };
+  }
+
+  rpc UpdateSite(UpdateSiteRequest) returns (UpdateSiteResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.site:write";
+    option (google.api.http) = {
+      put: "/site/v202211/sites/{site.id}"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "UpdateSite"
+      summary: "Updates configuration of a site."
+      description: "Replaces configuration of a site with attributes in the request. Returns the updated configuration."
+    };
+  }
+
+  rpc DeleteSite(DeleteSiteRequest) returns (DeleteSiteResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.site:write";
+    option (google.api.http) = {
+      delete: "/site/v202211/sites/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "DeleteSite"
+      summary: "Delete configuration of a site."
+      description: "Deletes configuration of a site with specific ID."
+    };
+  }
+
+  // --- Site Markets ---
+
+  rpc ListSiteMarkets(ListSiteMarketsRequest) returns (ListSiteMarketsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.site:read";
+    option (google.api.http) = {
+      get: "/site/v202211/site_markets"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ListSiteMarkets"
+      summary: "List all site markets."
+      description: "Returns list of configured site markets."
+    };
+  }
+
+  rpc GetSiteMarket(GetSiteMarketRequest) returns (GetSiteMarketResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.site:read";
+    option (google.api.http) = {
+      get: "/site/v202211/site_markets/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetSiteMarket"
+      summary: "Retrieve configuration of a site market."
+      description: "Returns configuration of a site market specified by ID."
+    };
+  }
+
+  rpc CreateSiteMarket(CreateSiteMarketRequest) returns (CreateSiteMarketResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.site:write";
+    option (google.api.http) = {
+      post: "/site/v202211/site_markets"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "CreateSiteMarket"
+      summary: "Configure a new site market."
+      description: "Create configuration for a new site market. Returns the newly created configuration."
+    };
+  }
+
+  rpc UpdateSiteMarket(UpdateSiteMarketRequest) returns (UpdateSiteMarketResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.site:write";
+    option (google.api.http) = {
+      put: "/site/v202211/site_markets/{site_market.id}"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "UpdateSiteMarket"
+      summary: "Updates configuration of a site market."
+      description: "Replaces configuration of a site market with attributes in the request. Returns the updated configuration."
+    };
+  }
+
+  rpc DeleteSiteMarket(DeleteSiteMarketRequest) returns (DeleteSiteMarketResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.site:write";
+    option (google.api.http) = {
+      delete: "/site/v202211/site_markets/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "DeleteSiteMarket"
+      summary: "Delete configuration of a site market."
+      description: "Deletes configuration of a site market with specific ID."
+    };
+  }
+}
