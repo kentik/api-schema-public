@@ -1,0 +1,395 @@
+syntax = "proto3";
+
+package kentik.user.v202211;
+option go_package = "github.com/kentik/api-schema/gen/go/kentik/user/v202211;user";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/timestamp.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "kentik/core/v202012alpha1/annotations.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "User Management API"
+    version: "v202211"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api-schema-public"
+    }
+    description: "# Overview\n"
+    "The User Management API enables programmatic administration of users within your organization. "
+    "The API may be used to grant permissions to users at two levels: \n"
+    "* **User role**: Permissions based on the level assigned to the Kentik user, either Member, Administrator, "
+    "or Super Administrator (see [About Users](https://kb.kentik.com/v4/Cb02.htm#Cb02-About_Users)).\n"
+    "* **User permissions**: Permissions granting access to specific capabilities of the Kentik platform (see "
+    "[User Permissions](https://kb.kentik.com/v4/Cb02.htm#Cb02-User_Permissions)).\n"
+    "\n"
+    "Both REST endpoint and gRPC RPCs are provided.\n"
+    "\n"
+    "***Note:*** The legacy REST-only [User API](https://kb.kentik.com/v0/Ec06.htm#Ec06-User_API) provides a subset "
+    "of the functionality of this API.\n"
+    "\n"
+    "# User Permission Identifiers\n"
+    "\n"
+    "Individual user permissions are represented in this API by string-based identifiers. The table below shows the "
+    "identifier used in the API for each permission that can be enabled/disabled with the checkboxes on the "
+    "Permissions tab of the Edit User dialog in the Kentik portal's Manage Users module (Settings » Manage Users).\n"
+    "| Portal setting  | API identifier |\n"
+    "|-----------------|----------------|\n"
+    "| Cancel Queries in Forensic Viewer | forensic_viewer.cancel_queries |\n"
+    "| Synthetics Permissions: Create tests | synthetics.tests.create |\n"
+    "| Synthetics Permissions: Edit tests | synthetics.tests.edit |\n"
+    "| Synthetics Permissions: Delete tests | synthetics.tests.delete |\n"
+    "| Synthetics Permissions: Create agents | synthetics.agents.create |\n"
+    "| Synthetics Permissions: Edit agents | synthetics.agents.edit |\n"
+    "| Synthetics Permissions: Delete agents | synthetics.agents.delete |\n"
+    "| Connectivity Costs Permissions: View Costs | connectivity_costs.read |\n"
+    "| Connectivity Costs Permissions: Configure Costs | connectivity_costs.edit |\n"
+    "\n"
+    "**_Note:_** The API returns an error if the same permission is both granted and denied in the same request.\n"
+    "\n"
+    "### Default Permissions\n"
+    "\n"
+    "The permissions above that are enabled/disabled by default depend on the role (level) of the user:\n"
+    "* **Member**: All permissions in the table above are denied by default.\n"
+    "* **Administrator** or **Super Administrator**: All permissions are granted. \n"
+    "\n"
+    "# User Filter Attribute\n"
+    "\n"
+    "User filters enable Administrators to apply filters that restrict the data that can be returned from queries by a "
+    "given user (see [User Filters](https://kb.kentik.com/v4/Cb02.htm#Cb02-User_Filters)). In the Kentik portal these "
+    "filters are set on the Filters tab of the Edit User dialog in the Manage Users module. In this API the filters "
+    "are set in the `user` object with the `filter` attribute, whose type is string. The value of the attribute is "
+    "given in JSON notation. The recommended way to construct the JSON string is to configure the desired filter for "
+    "one user in the Kentik portal and then copy the value of the `user.filter` attribute returned for that user by "
+    "the `GetUser` RPC."
+  }
+  external_docs: {
+    url: "https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview"
+    description: "General information about Kentik APIs"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+// {{.Name}}
+enum Role {
+  // Invalid value.
+  ROLE_UNSPECIFIED = 0;
+  // Member
+  ROLE_MEMBER = 1;
+  // Administrator
+  ROLE_ADMINISTRATOR = 2;
+  // Super-administrator
+  ROLE_SUPER_ADMINISTRATOR = 3;
+}
+
+// {{.Name}}
+message PermissionEntry {
+  string capability = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "String identifying capability that is granted of denied"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  bool allowed = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Flag indicating whether operation is allowed"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message User {
+  string id = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "System generated unique identifier"
+    }
+  ];
+  string user_email = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "User e-mail address (serves also as username)"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  string user_full_name = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Full name"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  Role role = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "User role (in Kentik application)"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  repeated PermissionEntry permissions = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Optional list of permissions granted to the user"
+    }
+  ];
+  string filter = 7 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Optional JSON string defining filter for objects visible to the user"
+    }
+  ];
+  google.protobuf.Timestamp last_login = 8 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "UTC Timestamp of user's last login session"
+    }
+  ];
+  google.protobuf.Timestamp cdate = 9 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Creation timestamp (UTC)"
+    }
+  ];
+  google.protobuf.Timestamp edate = 10 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Last modification timestamp (UTC)"
+    }
+  ];
+}
+
+// {{.Name}}
+message ListUsersRequest {}
+
+// {{.Name}}
+message ListUsersResponse {
+  repeated User users = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Last of users in the account"
+    }
+  ];
+  uint32 invalid_count = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Number of invalid entries encountered while collecting data"
+    }
+  ];
+}
+
+// {{.Name}}
+message GetUserRequest {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the requested user"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message GetUserResponse {
+  User user = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Information about the requested user"
+    }
+  ];
+}
+
+// {{.Name}}
+message CreateUserRequest {
+  User user = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Attributes for the user account to be created"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message CreateUserResponse {
+  User user = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Attributes for the newly created user account"
+    }
+  ];
+}
+
+// {{.Name}}
+message UpdateUserRequest {
+  User user = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "New attributes for the user account"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message UpdateUserResponse {
+  User user = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Updated user account attributes"
+    }
+  ];
+}
+
+// {{.Name}}
+message DeleteUserRequest {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the the user account to be deleted"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message DeleteUserResponse {}
+
+// {{.Name}}
+message ResetApiTokenRequest {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the the user whose API token should be reset"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message ResetApiTokenResponse {}
+
+// {{.Name}}
+message ResetActiveSessionsRequest {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the the user whose sessions should be reset"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message ResetActiveSessionsResponse {}
+
+service UserService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202012alpha1.service_scope) = "admin.user";
+
+  rpc ListUsers(ListUsersRequest) returns (ListUsersResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.user:read";
+    option (google.api.http) = {
+      get: "/user/v202211/users"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ListUsers"
+      summary: "List all users."
+      description: "Returns a list of all user accounts in the company."
+    };
+  }
+
+  rpc GetUser(GetUserRequest) returns (GetUserResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.user:read";
+    option (google.api.http) = {
+      get: "/user/v202211/users/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetUser"
+      summary: "Get attributes of a user account."
+      description: "Returns attributes of a user account specified by ID."
+    };
+  }
+
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.user:write";
+    option (google.api.http) = {
+      post: "/user/v202211/users"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "CreateUser"
+      summary: "Create new user account."
+      description: "Creates new user account based on attributes in the request. "
+        "Returns attributes of the newly created account."
+    };
+  }
+
+  rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.user:write";
+    option (google.api.http) = {
+      put: "/user/v202211/users/{user.id}"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "UpdateUser"
+      summary: "Update attributes of a user account."
+      description: "Replaces all attributes of a user account specified by ID with attributes in the request. "
+        "Returns updated attributes."
+    };
+  }
+
+  rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.user:write";
+    option (google.api.http) = {
+      delete: "/user/v202211/users/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "DeleteUser"
+      summary: "Delete a user account."
+      description: "Deletes user account specified by ID."
+    };
+  }
+
+  rpc ResetApiToken(ResetApiTokenRequest) returns (ResetApiTokenResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.user:write";
+    option (google.api.http) = {
+      put: "/user/v202211/users/{id}/reset_api_token"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ResetApiToken"
+      summary: "Reset API token for a user."
+      description: "Resets API token for a user specified by ID."
+    };
+  }
+
+  rpc ResetActiveSessions(ResetActiveSessionsRequest) returns (ResetActiveSessionsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.user:write";
+    option (google.api.http) = {
+      put: "/user/v202211/users/{id}/reset_active_sessions"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ResetActiveSessions"
+      summary: "Resets active sessions for a user."
+      description: "Resets active sessions for a user specified by ID."
+    };
+  }
+}

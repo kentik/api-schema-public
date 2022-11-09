@@ -1,0 +1,548 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "User Management API",
+        "description": "# Overview\nThe User Management API enables programmatic administration of users within your organization. The API may be used to grant permissions to users at two levels: \n* **User role**: Permissions based on the level assigned to the Kentik user, either Member, Administrator, or Super Administrator (see [About Users](https://kb.kentik.com/v4/Cb02.htm#Cb02-About_Users)).\n* **User permissions**: Permissions granting access to specific capabilities of the Kentik platform (see [User Permissions](https://kb.kentik.com/v4/Cb02.htm#Cb02-User_Permissions)).\n\nBoth REST endpoint and gRPC RPCs are provided.\n\n***Note:*** The legacy REST-only [User API](https://kb.kentik.com/v0/Ec06.htm#Ec06-User_API) provides a subset of the functionality of this API.\n\n# User Permission Identifiers\n\nIndividual user permissions are represented in this API by string-based identifiers. The table below shows the identifier used in the API for each permission that can be enabled/disabled with the checkboxes on the Permissions tab of the Edit User dialog in the Kentik portal's Manage Users module (Settings » Manage Users).\n| Portal setting  | API identifier |\n|-----------------|----------------|\n| Cancel Queries in Forensic Viewer | forensic_viewer.cancel_queries |\n| Synthetics Permissions: Create tests | synthetics.tests.create |\n| Synthetics Permissions: Edit tests | synthetics.tests.edit |\n| Synthetics Permissions: Delete tests | synthetics.tests.delete |\n| Synthetics Permissions: Create agents | synthetics.agents.create |\n| Synthetics Permissions: Edit agents | synthetics.agents.edit |\n| Synthetics Permissions: Delete agents | synthetics.agents.delete |\n| Connectivity Costs Permissions: View Costs | connectivity_costs.read |\n| Connectivity Costs Permissions: Configure Costs | connectivity_costs.edit |\n\n**_Note:_** The API returns an error if the same permission is both granted and denied in the same request.\n\n### Default Permissions\n\nThe permissions above that are enabled/disabled by default depend on the role (level) of the user:\n* **Member**: All permissions in the table above are denied by default.\n* **Administrator** or **Super Administrator**: All permissions are granted. \n\n# User Filter Attribute\n\nUser filters enable Administrators to apply filters that restrict the data that can be returned from queries by a given user (see [User Filters](https://kb.kentik.com/v4/Cb02.htm#Cb02-User_Filters)). In the Kentik portal these filters are set on the Filters tab of the Edit User dialog in the Manage Users module. In this API the filters are set in the `user` object with the `filter` attribute, whose type is string. The value of the attribute is given in JSON notation. The recommended way to construct the JSON string is to configure the desired filter for one user in the Kentik portal and then copy the value of the `user.filter` attribute returned for that user by the `GetUser` RPC.",
+        "version": "v202211",
+        "contact": {
+            "name": "Kentik API Engineering",
+            "url": "https://github.com/kentik/api-schema-public"
+        }
+    },
+    "tags": [
+        {
+            "name": "UserService"
+        }
+    ],
+    "paths": {
+        "/user/v202211/users": {
+            "get": {
+                "summary": "List all users.",
+                "description": "Returns a list of all user accounts in the company.",
+                "operationId": "ListUsers",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202211ListUsersResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "UserService"
+                ]
+            },
+            "post": {
+                "summary": "Create new user account.",
+                "description": "Creates new user account based on attributes in the request. Returns attributes of the newly created account.",
+                "operationId": "CreateUser",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202211CreateUserResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202211CreateUserRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "UserService"
+                ]
+            }
+        },
+        "/user/v202211/users/{id}": {
+            "get": {
+                "summary": "Get attributes of a user account.",
+                "description": "Returns attributes of a user account specified by ID.",
+                "operationId": "GetUser",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202211GetUserResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "description": "ID of the requested user",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "UserService"
+                ]
+            },
+            "delete": {
+                "summary": "Delete a user account.",
+                "description": "Deletes user account specified by ID.",
+                "operationId": "DeleteUser",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202211DeleteUserResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "description": "ID of the the user account to be deleted",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "UserService"
+                ]
+            },
+            "put": {
+                "summary": "Update attributes of a user account.",
+                "description": "Replaces all attributes of a user account specified by ID with attributes in the request. Returns updated attributes.",
+                "operationId": "UpdateUser",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202211UpdateUserResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "description": "System generated unique identifier",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202211UpdateUserRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "UserService"
+                ]
+            }
+        },
+        "/user/v202211/users/{id}/reset_active_sessions": {
+            "put": {
+                "summary": "Resets active sessions for a user.",
+                "description": "Resets active sessions for a user specified by ID.",
+                "operationId": "ResetActiveSessions",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202211ResetActiveSessionsResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "description": "ID of the the user whose sessions should be reset",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "UserService"
+                ]
+            }
+        },
+        "/user/v202211/users/{id}/reset_api_token": {
+            "put": {
+                "summary": "Reset API token for a user.",
+                "description": "Resets API token for a user specified by ID.",
+                "operationId": "ResetApiToken",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202211ResetApiTokenResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "description": "ID of the the user whose API token should be reset",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "UserService"
+                ]
+            }
+        }
+    },
+    "security": [
+        {
+            "email": [],
+            "token": []
+        }
+    ],
+    "externalDocs": {
+        "description": "General information about Kentik APIs",
+        "url": "https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview"
+    },
+    "components": {
+        "securitySchemes": {
+            "email": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-Email",
+                "in": "header"
+            },
+            "token": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-API-Token",
+                "in": "header"
+            }
+        },
+        "schemas": {
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "typeUrl": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string",
+                        "format": "byte"
+                    }
+                }
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "v202211CreateUserRequest": {
+                "type": "object",
+                "properties": {
+                    "user": {
+                        "$ref": "#/components/schemas/v202211User"
+                    }
+                },
+                "title": "CreateUserRequest",
+                "required": [
+                    "user"
+                ]
+            },
+            "v202211CreateUserResponse": {
+                "type": "object",
+                "properties": {
+                    "user": {
+                        "$ref": "#/components/schemas/v202211User"
+                    }
+                },
+                "title": "CreateUserResponse"
+            },
+            "v202211DeleteUserResponse": {
+                "type": "object",
+                "title": "DeleteUserResponse"
+            },
+            "v202211GetUserResponse": {
+                "type": "object",
+                "properties": {
+                    "user": {
+                        "$ref": "#/components/schemas/v202211User"
+                    }
+                },
+                "title": "GetUserResponse"
+            },
+            "v202211ListUsersResponse": {
+                "type": "object",
+                "properties": {
+                    "users": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202211User"
+                        },
+                        "description": "Last of users in the account",
+                        "readOnly": true
+                    },
+                    "invalidCount": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of invalid entries encountered while collecting data"
+                    }
+                },
+                "title": "ListUsersResponse"
+            },
+            "v202211PermissionEntry": {
+                "type": "object",
+                "properties": {
+                    "capability": {
+                        "type": "string",
+                        "description": "String identifying capability that is granted of denied",
+                        "required": [
+                            "capability"
+                        ]
+                    },
+                    "allowed": {
+                        "type": "boolean",
+                        "description": "Flag indicating whether operation is allowed",
+                        "required": [
+                            "allowed"
+                        ]
+                    }
+                },
+                "title": "PermissionEntry",
+                "required": [
+                    "capability",
+                    "allowed"
+                ]
+            },
+            "v202211ResetActiveSessionsResponse": {
+                "type": "object",
+                "title": "ResetActiveSessionsResponse"
+            },
+            "v202211ResetApiTokenResponse": {
+                "type": "object",
+                "title": "ResetApiTokenResponse"
+            },
+            "v202211Role": {
+                "type": "string",
+                "enum": [
+                    "ROLE_UNSPECIFIED",
+                    "ROLE_MEMBER",
+                    "ROLE_ADMINISTRATOR",
+                    "ROLE_SUPER_ADMINISTRATOR"
+                ],
+                "default": "ROLE_UNSPECIFIED",
+                "description": "- ROLE_UNSPECIFIED: Invalid value.\n - ROLE_MEMBER: Member\n - ROLE_ADMINISTRATOR: Administrator\n - ROLE_SUPER_ADMINISTRATOR: Super-administrator",
+                "title": "Role"
+            },
+            "v202211UpdateUserRequest": {
+                "type": "object",
+                "properties": {
+                    "user": {
+                        "$ref": "#/components/schemas/v202211User"
+                    }
+                },
+                "title": "UpdateUserRequest",
+                "required": [
+                    "user"
+                ]
+            },
+            "v202211UpdateUserResponse": {
+                "type": "object",
+                "properties": {
+                    "user": {
+                        "$ref": "#/components/schemas/v202211User"
+                    }
+                },
+                "title": "UpdateUserResponse"
+            },
+            "v202211User": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "System generated unique identifier",
+                        "readOnly": true
+                    },
+                    "userEmail": {
+                        "type": "string",
+                        "description": "User e-mail address (serves also as username)",
+                        "required": [
+                            "user_email"
+                        ]
+                    },
+                    "userFullName": {
+                        "type": "string",
+                        "description": "Full name",
+                        "required": [
+                            "user_full_name"
+                        ]
+                    },
+                    "role": {
+                        "$ref": "#/components/schemas/v202211Role"
+                    },
+                    "permissions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202211PermissionEntry"
+                        },
+                        "description": "Optional list of permissions granted to the user"
+                    },
+                    "filter": {
+                        "type": "string",
+                        "description": "Optional JSON string defining filter for objects visible to the user"
+                    },
+                    "lastLogin": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "UTC Timestamp of user's last login session",
+                        "readOnly": true
+                    },
+                    "cdate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Creation timestamp (UTC)",
+                        "readOnly": true
+                    },
+                    "edate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Last modification timestamp (UTC)",
+                        "readOnly": true
+                    }
+                },
+                "title": "User",
+                "required": [
+                    "userEmail",
+                    "userFullName",
+                    "role"
+                ]
+            }
+        }
+    }
+}
