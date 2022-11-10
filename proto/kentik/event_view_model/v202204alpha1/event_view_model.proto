@@ -31,9 +31,19 @@ message AlarmEvent {
   string id = 1;
 }
 
+message MitigationEvent {
+  string id = 1;
+}
+
+message InsightEvent {
+  string id = 1;
+}
+
 message GetViewModelRequest {
   oneof event {
     AlarmEvent alarm = 2;
+    MitigationEvent mitigation = 3;
+    InsightEvent insight = 4;
   }
 }
 
