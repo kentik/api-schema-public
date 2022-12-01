@@ -622,7 +622,10 @@
                         "items": {
                             "$ref": "#/components/schemas/v202210Nlri"
                         },
-                        "description": "List of prefixes to monitor"
+                        "description": "List of prefixes to monitor",
+                        "required": [
+                            "targets"
+                        ]
                     },
                     "checkRpki": {
                         "type": "boolean",
@@ -645,9 +648,20 @@
                     "notes": {
                         "type": "string",
                         "description": "Free form notes documenting the monitor"
+                    },
+                    "allowedUpstreams": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "description": "List of ASNs that are expected to propagate monitored prefixes"
                     }
                 },
-                "title": "BgpMonitorSettings"
+                "title": "BgpMonitorSettings",
+                "required": [
+                    "targets"
+                ]
             },
             "v202210BgpMonitorStatus": {
                 "type": "string",

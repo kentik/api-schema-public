@@ -94,6 +94,7 @@ func (x *BgpMonitorSettings) Proto_ShallowCopy(v interface{}) {
 		x.HealthSettings = v.GetHealthSettings()
 		x.NotificationChannels = v.GetNotificationChannels()
 		x.Notes = v.GetNotes()
+		x.AllowedUpstreams = v.GetAllowedUpstreams()
 	default:
 		if v, ok := v.(interface{ GetAllowedAsns() []uint32 }); ok {
 			x.AllowedAsns = v.GetAllowedAsns()
@@ -116,6 +117,9 @@ func (x *BgpMonitorSettings) Proto_ShallowCopy(v interface{}) {
 		if v, ok := v.(interface{ GetNotes() string }); ok {
 			x.Notes = v.GetNotes()
 		}
+		if v, ok := v.(interface{ GetAllowedUpstreams() []uint32 }); ok {
+			x.AllowedUpstreams = v.GetAllowedUpstreams()
+		}
 	}
 }
 
@@ -130,6 +134,7 @@ func (x *BgpMonitorSettings) Proto_ShallowClone() (c *BgpMonitorSettings) {
 		c.HealthSettings = x.HealthSettings
 		c.NotificationChannels = x.NotificationChannels
 		c.Notes = x.Notes
+		c.AllowedUpstreams = x.AllowedUpstreams
 	}
 	return
 }

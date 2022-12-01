@@ -181,7 +181,8 @@ message BgpMonitorSettings {
   repeated Nlri targets = 2 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "List of prefixes to monitor"
-    }
+    },
+    (google.api.field_behavior) = REQUIRED
   ];
   bool check_rpki = 3 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -206,6 +207,11 @@ message BgpMonitorSettings {
   string notes = 7 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Free form notes documenting the monitor"
+    }
+  ];
+  repeated uint32 allowed_upstreams = 8 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of ASNs that are expected to propagate monitored prefixes"
     }
   ];
 }
