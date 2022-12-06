@@ -1,0 +1,7 @@
+.pre-commit-venv
+.python-gen-venv
+.DS_Store
+.docs
+kreya
+.idea/
+gen/python/**/__pycache__
