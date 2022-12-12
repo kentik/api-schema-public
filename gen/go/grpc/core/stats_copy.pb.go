@@ -7,6 +7,7 @@ package grpc_core
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *Bucket) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *Bucket:
@@ -36,6 +37,7 @@ func (x *Bucket) Proto_ShallowClone() (c *Bucket) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *Histogram) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *Histogram:
@@ -60,6 +62,7 @@ func (x *Histogram) Proto_ShallowClone() (c *Histogram) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *Metric) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *Metric:
@@ -106,6 +109,7 @@ func (x *Metric) Proto_ShallowClone() (c *Metric) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *Stats) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *Stats:

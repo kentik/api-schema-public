@@ -7,6 +7,7 @@ package phone_number
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *PhoneNumber) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *PhoneNumber:
@@ -53,6 +54,7 @@ func (x *PhoneNumber) Proto_ShallowClone() (c *PhoneNumber) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *PhoneNumber_ShortCode) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *PhoneNumber_ShortCode:

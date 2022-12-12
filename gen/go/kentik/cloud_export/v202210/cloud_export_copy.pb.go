@@ -9,6 +9,7 @@ import "google.golang.org/protobuf/types/known/timestamppb"
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *CloudExport) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *CloudExport:
@@ -116,6 +117,7 @@ func (x *CloudExport) Proto_ShallowClone() (c *CloudExport) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *AwsProperties) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *AwsProperties:
@@ -160,6 +162,7 @@ func (x *AwsProperties) Proto_ShallowClone() (c *AwsProperties) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *AzureProperties) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *AzureProperties:
@@ -204,6 +207,7 @@ func (x *AzureProperties) Proto_ShallowClone() (c *AzureProperties) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *GceProperties) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *GceProperties:
@@ -233,6 +237,7 @@ func (x *GceProperties) Proto_ShallowClone() (c *GceProperties) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *IbmProperties) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *IbmProperties:
@@ -257,6 +262,7 @@ func (x *IbmProperties) Proto_ShallowClone() (c *IbmProperties) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *CloudExportStatus) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *CloudExportStatus:
@@ -301,6 +307,7 @@ func (x *CloudExportStatus) Proto_ShallowClone() (c *CloudExportStatus) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *CreateCloudExportRequest) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *CreateCloudExportRequest:
@@ -325,6 +332,7 @@ func (x *CreateCloudExportRequest) Proto_ShallowClone() (c *CreateCloudExportReq
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *CreateCloudExportResponse) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *CreateCloudExportResponse:
@@ -349,6 +357,7 @@ func (x *CreateCloudExportResponse) Proto_ShallowClone() (c *CreateCloudExportRe
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *ListCloudExportsRequest) Proto_ShallowCopy(v interface{}) {
 }
 
@@ -364,6 +373,7 @@ func (x *ListCloudExportsRequest) Proto_ShallowClone() (c *ListCloudExportsReque
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *ListCloudExportsResponse) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *ListCloudExportsResponse:
@@ -393,6 +403,7 @@ func (x *ListCloudExportsResponse) Proto_ShallowClone() (c *ListCloudExportsResp
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *GetCloudExportRequest) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *GetCloudExportRequest:
@@ -417,6 +428,7 @@ func (x *GetCloudExportRequest) Proto_ShallowClone() (c *GetCloudExportRequest) 
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *GetCloudExportResponse) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *GetCloudExportResponse:
@@ -441,6 +453,7 @@ func (x *GetCloudExportResponse) Proto_ShallowClone() (c *GetCloudExportResponse
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *UpdateCloudExportRequest) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *UpdateCloudExportRequest:
@@ -465,6 +478,7 @@ func (x *UpdateCloudExportRequest) Proto_ShallowClone() (c *UpdateCloudExportReq
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *UpdateCloudExportResponse) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *UpdateCloudExportResponse:
@@ -489,6 +503,7 @@ func (x *UpdateCloudExportResponse) Proto_ShallowClone() (c *UpdateCloudExportRe
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *DeleteCloudExportRequest) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *DeleteCloudExportRequest:
@@ -513,6 +528,7 @@ func (x *DeleteCloudExportRequest) Proto_ShallowClone() (c *DeleteCloudExportReq
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *DeleteCloudExportResponse) Proto_ShallowCopy(v interface{}) {
 }
 

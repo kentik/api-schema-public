@@ -9,6 +9,7 @@ import "google.golang.org/protobuf/types/known/fieldmaskpb"
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *Alert) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *Alert:
@@ -63,6 +64,7 @@ func (x *Alert) Proto_ShallowClone() (c *Alert) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *Asset) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *Asset:
@@ -92,6 +94,7 @@ func (x *Asset) Proto_ShallowClone() (c *Asset) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *Asset_Report) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *Asset_Report:
@@ -121,6 +124,7 @@ func (x *Asset_Report) Proto_ShallowClone() (c *Asset_Report) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *Threshold) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *Threshold:
@@ -185,6 +189,7 @@ func (x *Threshold) Proto_ShallowClone() (c *Threshold) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *Activate) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *Activate:
@@ -229,6 +234,7 @@ func (x *Activate) Proto_ShallowClone() (c *Activate) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *Condition) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *Condition:
@@ -278,6 +284,7 @@ func (x *Condition) Proto_ShallowClone() (c *Condition) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *Mitigation) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *Mitigation:
@@ -362,6 +369,7 @@ func (x *Mitigation) Proto_ShallowClone() (c *Mitigation) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *NotificationChannel) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *NotificationChannel:
@@ -386,6 +394,7 @@ func (x *NotificationChannel) Proto_ShallowClone() (c *NotificationChannel) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *User) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *User:
@@ -455,6 +464,7 @@ func (x *User) Proto_ShallowClone() (c *User) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *TenantLink) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *TenantLink:
@@ -489,6 +499,7 @@ func (x *TenantLink) Proto_ShallowClone() (c *TenantLink) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *Package) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *Package:
@@ -558,6 +569,7 @@ func (x *Package) Proto_ShallowClone() (c *Package) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *CustomDimension) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *CustomDimension:
@@ -587,6 +599,7 @@ func (x *CustomDimension) Proto_ShallowClone() (c *CustomDimension) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *Device) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *Device:
@@ -631,6 +644,7 @@ func (x *Device) Proto_ShallowClone() (c *Device) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *FilterField) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *FilterField:
@@ -665,6 +679,7 @@ func (x *FilterField) Proto_ShallowClone() (c *FilterField) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *Filter) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *Filter:
@@ -729,6 +744,7 @@ func (x *Filter) Proto_ShallowClone() (c *Filter) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *Tenant) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *Tenant:
@@ -838,6 +854,7 @@ func (x *Tenant) Proto_ShallowClone() (c *Tenant) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *ListPackageRequest) Proto_ShallowCopy(v interface{}) {
 }
 
@@ -853,6 +870,7 @@ func (x *ListPackageRequest) Proto_ShallowClone() (c *ListPackageRequest) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *ListPackageResponse) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *ListPackageResponse:
@@ -882,6 +900,7 @@ func (x *ListPackageResponse) Proto_ShallowClone() (c *ListPackageResponse) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *GetPackageRequest) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *GetPackageRequest:
@@ -906,6 +925,7 @@ func (x *GetPackageRequest) Proto_ShallowClone() (c *GetPackageRequest) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *GetPackageResponse) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *GetPackageResponse:
@@ -930,6 +950,7 @@ func (x *GetPackageResponse) Proto_ShallowClone() (c *GetPackageResponse) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *CreatePackageRequest) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *CreatePackageRequest:
@@ -954,6 +975,7 @@ func (x *CreatePackageRequest) Proto_ShallowClone() (c *CreatePackageRequest) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *CreatePackageResponse) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *CreatePackageResponse:
@@ -978,6 +1000,7 @@ func (x *CreatePackageResponse) Proto_ShallowClone() (c *CreatePackageResponse) 
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *UpdatePackageRequest) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *UpdatePackageRequest:
@@ -1002,6 +1025,7 @@ func (x *UpdatePackageRequest) Proto_ShallowClone() (c *UpdatePackageRequest) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *UpdatePackageResponse) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *UpdatePackageResponse:
@@ -1026,6 +1050,7 @@ func (x *UpdatePackageResponse) Proto_ShallowClone() (c *UpdatePackageResponse) 
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *PatchPackageRequest) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *PatchPackageRequest:
@@ -1055,6 +1080,7 @@ func (x *PatchPackageRequest) Proto_ShallowClone() (c *PatchPackageRequest) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *PatchPackageResponse) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *PatchPackageResponse:
@@ -1079,6 +1105,7 @@ func (x *PatchPackageResponse) Proto_ShallowClone() (c *PatchPackageResponse) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *DeletePackageRequest) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *DeletePackageRequest:
@@ -1103,6 +1130,7 @@ func (x *DeletePackageRequest) Proto_ShallowClone() (c *DeletePackageRequest) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *DeletePackageResponse) Proto_ShallowCopy(v interface{}) {
 }
 
@@ -1118,6 +1146,7 @@ func (x *DeletePackageResponse) Proto_ShallowClone() (c *DeletePackageResponse) 
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *ListTenantRequest) Proto_ShallowCopy(v interface{}) {
 }
 
@@ -1133,6 +1162,7 @@ func (x *ListTenantRequest) Proto_ShallowClone() (c *ListTenantRequest) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *ListTenantResponse) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *ListTenantResponse:
@@ -1162,6 +1192,7 @@ func (x *ListTenantResponse) Proto_ShallowClone() (c *ListTenantResponse) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *GetTenantRequest) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *GetTenantRequest:
@@ -1186,6 +1217,7 @@ func (x *GetTenantRequest) Proto_ShallowClone() (c *GetTenantRequest) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *GetTenantResponse) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *GetTenantResponse:
@@ -1210,6 +1242,7 @@ func (x *GetTenantResponse) Proto_ShallowClone() (c *GetTenantResponse) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *CreateTenantRequest) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *CreateTenantRequest:
@@ -1234,6 +1267,7 @@ func (x *CreateTenantRequest) Proto_ShallowClone() (c *CreateTenantRequest) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *CreateTenantResponse) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *CreateTenantResponse:
@@ -1258,6 +1292,7 @@ func (x *CreateTenantResponse) Proto_ShallowClone() (c *CreateTenantResponse) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *UpdateTenantRequest) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *UpdateTenantRequest:
@@ -1282,6 +1317,7 @@ func (x *UpdateTenantRequest) Proto_ShallowClone() (c *UpdateTenantRequest) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *UpdateTenantResponse) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *UpdateTenantResponse:
@@ -1306,6 +1342,7 @@ func (x *UpdateTenantResponse) Proto_ShallowClone() (c *UpdateTenantResponse) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *PatchTenantRequest) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *PatchTenantRequest:
@@ -1335,6 +1372,7 @@ func (x *PatchTenantRequest) Proto_ShallowClone() (c *PatchTenantRequest) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *PatchTenantResponse) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *PatchTenantResponse:
@@ -1359,6 +1397,7 @@ func (x *PatchTenantResponse) Proto_ShallowClone() (c *PatchTenantResponse) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *DeleteTenantRequest) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *DeleteTenantRequest:
@@ -1383,6 +1422,7 @@ func (x *DeleteTenantRequest) Proto_ShallowClone() (c *DeleteTenantRequest) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *DeleteTenantResponse) Proto_ShallowCopy(v interface{}) {
 }
 

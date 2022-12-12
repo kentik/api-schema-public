@@ -9,6 +9,7 @@ import "google.golang.org/protobuf/types/known/timestamppb"
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *Label) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *Label:
@@ -58,6 +59,7 @@ func (x *Label) Proto_ShallowClone() (c *Label) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *ListLabelsRequest) Proto_ShallowCopy(v interface{}) {
 }
 
@@ -73,6 +75,7 @@ func (x *ListLabelsRequest) Proto_ShallowClone() (c *ListLabelsRequest) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *ListLabelsResponse) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *ListLabelsResponse:
@@ -102,6 +105,7 @@ func (x *ListLabelsResponse) Proto_ShallowClone() (c *ListLabelsResponse) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *CreateLabelRequest) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *CreateLabelRequest:
@@ -126,6 +130,7 @@ func (x *CreateLabelRequest) Proto_ShallowClone() (c *CreateLabelRequest) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *CreateLabelResponse) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *CreateLabelResponse:
@@ -150,6 +155,7 @@ func (x *CreateLabelResponse) Proto_ShallowClone() (c *CreateLabelResponse) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *UpdateLabelRequest) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *UpdateLabelRequest:
@@ -174,6 +180,7 @@ func (x *UpdateLabelRequest) Proto_ShallowClone() (c *UpdateLabelRequest) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *UpdateLabelResponse) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *UpdateLabelResponse:
@@ -198,6 +205,7 @@ func (x *UpdateLabelResponse) Proto_ShallowClone() (c *UpdateLabelResponse) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *DeleteLabelRequest) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *DeleteLabelRequest:
@@ -222,6 +230,7 @@ func (x *DeleteLabelRequest) Proto_ShallowClone() (c *DeleteLabelRequest) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *DeleteLabelResponse) Proto_ShallowCopy(v interface{}) {
 }
 
