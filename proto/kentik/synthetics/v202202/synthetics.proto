@@ -590,7 +590,7 @@ message TestPingSettings {
   ];
   uint32 dscp = 6 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "--- <Not implemented yet> ---"
+      description: "DSCP code to be set in IP header of probe packets"
     }
   ];
 }
@@ -629,7 +629,7 @@ message TestTraceSettings {
   ];
   uint32 dscp = 7 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "--- <Not implemented yet> ---"
+      description: "DSCP code to be set in IP header of probe packets"
     }
   ];
 }

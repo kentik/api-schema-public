@@ -2059,7 +2059,7 @@ const char descriptor_table_protodef_kentik_2fsynthetics_2fv202202_2fsynthetics_
   " channels for alarms triggered by the te"
   "stR\024notificationChannels\022>\n\005notes\030\023 \001(\tB"
   "(\222A%2#Add a note or comment for this tes"
-  "tR\005notesB\014\n\ndefinition\"\270\003\n\020TestPingSetti"
+  "tR\005notesB\014\n\ndefinition\"\314\003\n\020TestPingSetti"
   "ngs\022K\n\005count\030\001 \001(\rB5\222A220Number of probe"
   " packets to send in one iterationR\005count"
   "\022G\n\010protocol\030\002 \001(\tB+\222A(2&Transport proto"
@@ -2069,21 +2069,22 @@ const char descriptor_table_protodef_kentik_2fsynthetics_2fv202202_2fsynthetics_
   "(\rB6\222A321Timeout in milliseconds for exe"
   "cution of the taskR\007timeout\022<\n\005delay\030\005 \001"
   "(\002B&\222A#2!Inter-probe delay in millisecon"
-  "dsR\005delay\0226\n\004dscp\030\006 \001(\rB\"\222A\0372\035--- <Not i"
-  "mplemented yet> ---R\004dscp\"\225\004\n\021TestTraceS"
-  "ettings\022K\n\005count\030\001 \001(\rB5\222A220Number of p"
-  "robe packets to send in one iterationR\005c"
-  "ount\022M\n\010protocol\030\002 \001(\tB1\222A.2,Transport p"
-  "rotocol to use (icmp | tcp | udp)R\010proto"
-  "col\022M\n\004port\030\003 \001(\rB9\222A624Target port for "
-  "TCP or UDP probes (ignored for ICMP)R\004po"
-  "rt\022P\n\007timeout\030\004 \001(\rB6\222A321Timeout in mil"
-  "liseconds for execution of the taskR\007tim"
-  "eout\022M\n\005limit\030\005 \001(\rB7\222A422Maximum number"
-  " of hops to probe (i.e. maximum TTL)R\005li"
-  "mit\022<\n\005delay\030\006 \001(\002B&\222A#2!Inter-probe del"
-  "ay in millisecondsR\005delay\0226\n\004dscp\030\007 \001(\rB"
-  "\"\222A\0372\035--- <Not implemented yet> ---R\004dsc"
+  "dsR\005delay\022J\n\004dscp\030\006 \001(\rB6\222A321DSCP code "
+  "to be set in IP header of probe packetsR"
+  "\004dscp\"\251\004\n\021TestTraceSettings\022K\n\005count\030\001 \001"
+  "(\rB5\222A220Number of probe packets to send"
+  " in one iterationR\005count\022M\n\010protocol\030\002 \001"
+  "(\tB1\222A.2,Transport protocol to use (icmp"
+  " | tcp | udp)R\010protocol\022M\n\004port\030\003 \001(\rB9\222"
+  "A624Target port for TCP or UDP probes (i"
+  "gnored for ICMP)R\004port\022P\n\007timeout\030\004 \001(\rB"
+  "6\222A321Timeout in milliseconds for execut"
+  "ion of the taskR\007timeout\022M\n\005limit\030\005 \001(\rB"
+  "7\222A422Maximum number of hops to probe (i"
+  ".e. maximum TTL)R\005limit\022<\n\005delay\030\006 \001(\002B&"
+  "\222A#2!Inter-probe delay in millisecondsR\005"
+  "delay\022J\n\004dscp\030\007 \001(\rB6\222A321DSCP code to b"
+  "e set in IP header of probe packetsR\004dsc"
   "p\"\306\003\n\022ActivationSettings\022\202\001\n\014grace_perio"
   "d\030\001 \001(\tB_\222A\\2ZPeriod of healthy status i"
   "n minutes within the time window not can"
@@ -2852,7 +2853,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_kentik_2fsynthetics_2fv202202_2fsynthetics_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_kentik_2fsynthetics_2fv202202_2fsynthetics_2eproto = {
-  false, false, descriptor_table_protodef_kentik_2fsynthetics_2fv202202_2fsynthetics_2eproto, "kentik/synthetics/v202202/synthetics.proto", 34122,
+  false, false, descriptor_table_protodef_kentik_2fsynthetics_2fv202202_2fsynthetics_2eproto, "kentik/synthetics/v202202/synthetics.proto", 34162,
   &descriptor_table_kentik_2fsynthetics_2fv202202_2fsynthetics_2eproto_once, descriptor_table_kentik_2fsynthetics_2fv202202_2fsynthetics_2eproto_sccs, descriptor_table_kentik_2fsynthetics_2fv202202_2fsynthetics_2eproto_deps, 62, 6,
   schemas, file_default_instances, TableStruct_kentik_2fsynthetics_2fv202202_2fsynthetics_2eproto::offsets,
   file_level_metadata_kentik_2fsynthetics_2fv202202_2fsynthetics_2eproto, 62, file_level_enum_descriptors_kentik_2fsynthetics_2fv202202_2fsynthetics_2eproto, file_level_service_descriptors_kentik_2fsynthetics_2fv202202_2fsynthetics_2eproto,
