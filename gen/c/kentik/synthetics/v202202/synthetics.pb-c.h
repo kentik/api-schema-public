@@ -530,7 +530,7 @@ struct  _Kentik__Synthetics__V202202__DnsTest
 {
   ProtobufCMessage base;
   char *target;
-  uint32_t timeout;
+  uint32_t timeout PROTOBUF_C__DEPRECATED;
   Kentik__Synthetics__V202202__DNSRecord record_type;
   size_t n_servers;
   char **servers;

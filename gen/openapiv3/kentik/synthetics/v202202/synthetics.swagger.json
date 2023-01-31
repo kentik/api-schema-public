@@ -931,7 +931,7 @@
                     "timeout": {
                         "type": "integer",
                         "format": "int64",
-                        "description": "--- <deprecated> ---"
+                        "description": "--- Deprecated: value is ignored. ---"
                     },
                     "recordType": {
                         "$ref": "#/components/schemas/v202202DNSRecord"

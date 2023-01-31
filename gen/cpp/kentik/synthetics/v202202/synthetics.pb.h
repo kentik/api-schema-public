@@ -4562,10 +4562,10 @@ class DnsTest PROTOBUF_FINAL :
   std::string* _internal_mutable_target();
   public:
 
-  // uint32 timeout = 2[json_name = "timeout", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  void clear_timeout();
-  ::PROTOBUF_NAMESPACE_ID::uint32 timeout() const;
-  void set_timeout(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  // uint32 timeout = 2[json_name = "timeout", deprecated = true, (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  PROTOBUF_DEPRECATED void clear_timeout();
+  PROTOBUF_DEPRECATED ::PROTOBUF_NAMESPACE_ID::uint32 timeout() const;
+  PROTOBUF_DEPRECATED void set_timeout(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
   ::PROTOBUF_NAMESPACE_ID::uint32 _internal_timeout() const;
   void _internal_set_timeout(::PROTOBUF_NAMESPACE_ID::uint32 value);
@@ -18530,7 +18530,7 @@ inline void DnsTest::unsafe_arena_set_allocated_target(
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.synthetics.v202202.DnsTest.target)
 }
 
-// uint32 timeout = 2[json_name = "timeout", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+// uint32 timeout = 2[json_name = "timeout", deprecated = true, (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
 inline void DnsTest::clear_timeout() {
   timeout_ = 0u;
 }

@@ -812,7 +812,7 @@
         "timeout": {
           "type": "integer",
           "format": "int64",
-          "description": "--- <deprecated> ---"
+          "description": "--- Deprecated: value is ignored. ---"
         },
         "recordType": {
           "$ref": "#/definitions/v202202DNSRecord",

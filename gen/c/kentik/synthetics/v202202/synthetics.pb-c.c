@@ -4408,7 +4408,7 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202202__dns_test__fie
     offsetof(Kentik__Synthetics__V202202__DnsTest, timeout),
     NULL,
     NULL,
-    0,             /* flags */
+    0 | PROTOBUF_C_FIELD_FLAG_DEPRECATED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {

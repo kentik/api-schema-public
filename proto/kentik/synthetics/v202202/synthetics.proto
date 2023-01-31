@@ -846,8 +846,9 @@ message DnsTest {
     }
   ];
   uint32 timeout = 2 [
+    deprecated = true,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "--- <deprecated> ---"
+      description: "--- Deprecated: value is ignored. ---"
     }
   ];
   DNSRecord record_type = 3 [
