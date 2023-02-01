@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "BGP Monitoring API",
-        "description": "API for interaction with Kentik BGP Monitoring Service.\n",
+        "description": "--- This API has been deprecated and will be removed in the near future ---",
         "version": "v202205beta1",
         "contact": {
             "name": "Kentik API Engineering",
@@ -364,8 +364,8 @@
         }
     ],
     "externalDocs": {
-        "description": "More about Kentik BGP monitoring",
-        "url": "https://kb.kentik.com/v4/Ma03.htm#Ma03-BGP_Monitor_Details_Page"
+        "description": "General information about Kentik APIs",
+        "url": "https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview"
     },
     "components": {
         "securitySchemes": {

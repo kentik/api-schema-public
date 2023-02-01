@@ -231,16 +231,19 @@ const char descriptor_table_protodef_kentik_2fnotification_5fchannel_2fv202204al
   "\344\223\002@\022>/notification_channel/v202204alpha"
   "1/notification_channels/{id}\0324\312A\023grpc.ap"
   "i.kentik.com\352\327\002\032admin.notification_chann"
-  "elB\347\002Zbgithub.com/kentik/api-schema/gen/"
+  "elB\335\003Zbgithub.com/kentik/api-schema/gen/"
   "go/kentik/notification_channel/v202204al"
-  "pha1;notification_channel\222A\377\001\022A\n\027Notific"
-  "ationChannel API\"\030\n\026Kentik API Engineeri"
-  "ng2\014202204alpha1*\001\0022\020application/json:\020a"
-  "pplication/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Aut"
-  "h-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-To"
-  "ken \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r5\n\026More ab"
-  "out Kentik APIs\022\033https://docs.kentik.com"
-  "/apib\006proto3"
+  "pha1;notification_channel\222A\365\002\022\216\001\n\027Notifi"
+  "cationChannel API\022K--- This API has been"
+  " deprecated and will be removed in the n"
+  "ear future ---\"\030\n\026Kentik API Engineering"
+  "2\014202204alpha1*\001\0022\020application/json:\020app"
+  "lication/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-"
+  "Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Toke"
+  "n \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]\n%General i"
+  "nformation about Kentik APIs\0224https://kb"
+  ".kentik.com/v0/Ab09.htm#Ab09-APIs_Overvi"
+  "ewb\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2fnotification_5fchannel_2fv202204alpha1_2fnotification_5fchannel_2eproto_deps[7] = {
   &::descriptor_table_google_2fapi_2fannotations_2eproto,
@@ -260,7 +263,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_kentik_2fnotification_5fchannel_2fv202204alpha1_2fnotification_5fchannel_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_kentik_2fnotification_5fchannel_2fv202204alpha1_2fnotification_5fchannel_2eproto = {
-  false, false, descriptor_table_protodef_kentik_2fnotification_5fchannel_2fv202204alpha1_2fnotification_5fchannel_2eproto, "kentik/notification_channel/v202204alpha1/notification_channel.proto", 2692,
+  false, false, descriptor_table_protodef_kentik_2fnotification_5fchannel_2fv202204alpha1_2fnotification_5fchannel_2eproto, "kentik/notification_channel/v202204alpha1/notification_channel.proto", 2810,
   &descriptor_table_kentik_2fnotification_5fchannel_2fv202204alpha1_2fnotification_5fchannel_2eproto_once, descriptor_table_kentik_2fnotification_5fchannel_2fv202204alpha1_2fnotification_5fchannel_2eproto_sccs, descriptor_table_kentik_2fnotification_5fchannel_2fv202204alpha1_2fnotification_5fchannel_2eproto_deps, 5, 7,
   schemas, file_default_instances, TableStruct_kentik_2fnotification_5fchannel_2fv202204alpha1_2fnotification_5fchannel_2eproto::offsets,
   file_level_metadata_kentik_2fnotification_5fchannel_2fv202204alpha1_2fnotification_5fchannel_2eproto, 5, file_level_enum_descriptors_kentik_2fnotification_5fchannel_2fv202204alpha1_2fnotification_5fchannel_2eproto, file_level_service_descriptors_kentik_2fnotification_5fchannel_2fv202204alpha1_2fnotification_5fchannel_2eproto,

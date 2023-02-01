@@ -496,15 +496,18 @@ const char descriptor_table_protodef_kentik_2fsite_2fv202106alpha1_2fsite_2eprot
   "ite specified with id.*\nSiteDelete\362\327\002\020ad"
   "min.site:write\202\323\344\223\002 *\036/site/v202106alpha"
   "1/sites/{id}\032$\312A\023grpc.api.kentik.com\352\327\002\n"
-  "admin.siteB\270\002ZBgithub.com/kentik/api-sch"
+  "admin.siteB\255\003ZBgithub.com/kentik/api-sch"
   "ema/gen/go/kentik/site/v202106alpha1;sit"
-  "e\222A\360\001\0222\n\010Site API\"\030\n\026Kentik API Engineer"
-  "ing2\014202106alpha1*\001\0022\020application/json:\020"
-  "application/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Au"
-  "th-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-T"
-  "oken \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r5\n\026More a"
-  "bout Kentik APIs\022\033https://docs.kentik.co"
-  "m/apib\006proto3"
+  "e\222A\345\002\022\177\n\010Site API\022K--- This API has been"
+  " deprecated and will be removed in the n"
+  "ear future ---\"\030\n\026Kentik API Engineering"
+  "2\014202106alpha1*\001\0022\020application/json:\020app"
+  "lication/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-"
+  "Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Toke"
+  "n \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]\n%General i"
+  "nformation about Kentik APIs\0224https://kb"
+  ".kentik.com/v0/Ab09.htm#Ab09-APIs_Overvi"
+  "ewb\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2fsite_2fv202106alpha1_2fsite_2eproto_deps[6] = {
   &::descriptor_table_google_2fapi_2fannotations_2eproto,
@@ -532,7 +535,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_kentik_2fsite_2fv202106alpha1_2fsite_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_kentik_2fsite_2fv202106alpha1_2fsite_2eproto = {
-  false, false, descriptor_table_protodef_kentik_2fsite_2fv202106alpha1_2fsite_2eproto, "kentik/site/v202106alpha1/site.proto", 3293,
+  false, false, descriptor_table_protodef_kentik_2fsite_2fv202106alpha1_2fsite_2eproto, "kentik/site/v202106alpha1/site.proto", 3410,
   &descriptor_table_kentik_2fsite_2fv202106alpha1_2fsite_2eproto_once, descriptor_table_kentik_2fsite_2fv202106alpha1_2fsite_2eproto_sccs, descriptor_table_kentik_2fsite_2fv202106alpha1_2fsite_2eproto_deps, 14, 6,
   schemas, file_default_instances, TableStruct_kentik_2fsite_2fv202106alpha1_2fsite_2eproto::offsets,
   file_level_metadata_kentik_2fsite_2fv202106alpha1_2fsite_2eproto, 14, file_level_enum_descriptors_kentik_2fsite_2fv202106alpha1_2fsite_2eproto, file_level_service_descriptors_kentik_2fsite_2fv202106alpha1_2fsite_2eproto,

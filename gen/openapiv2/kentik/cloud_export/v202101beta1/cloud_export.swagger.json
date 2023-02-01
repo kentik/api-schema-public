@@ -2,6 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Cloud Export Admin API",
+    "description": "--- This API has been deprecated and will be removed in the near future ---",
     "version": "202101beta1",
     "contact": {
       "name": "Kentik API Engineering",
@@ -531,7 +532,7 @@
     }
   ],
   "externalDocs": {
-    "description": "More about Kentik APIs",
-    "url": "https://docs.kentik.com/api"
+    "description": "General information about Kentik APIs",
+    "url": "https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview"
   }
 }

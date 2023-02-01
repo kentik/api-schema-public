@@ -713,17 +713,20 @@ const char descriptor_table_protodef_kentik_2fcloud_5fexport_2fv202101beta1_2fcl
   "cified with id.*\014ExportDelete\362\327\002\030admin.c"
   "loud_export:write\202\323\344\223\002)*\'/cloud_export/v"
   "202101beta1/exports/{id}\0324\312A\033cloud_expor"
-  "t.api.kentik.com\352\327\002\022admin.cloud_exportB\363"
-  "\002ZQgithub.com/kentik/api-schema/gen/go/k"
+  "t.api.kentik.com\352\327\002\022admin.cloud_exportB\351"
+  "\003ZQgithub.com/kentik/api-schema/gen/go/k"
   "entik/cloud_export/v202101beta1;cloud_ex"
-  "port\222A\234\002\022^\n\026Cloud Export Admin API\"7\n\026Ke"
-  "ntik API Engineering\022\035https://github.com"
-  "/kentik/api2\013202101beta1*\001\0022\020application"
-  "/json:\020application/jsonZD\n\036\n\005email\022\025\010\002\032\017"
-  "X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Aut"
-  "h-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r5\n"
-  "\026More about Kentik APIs\022\033https://docs.ke"
-  "ntik.com/apib\006proto3"
+  "port\222A\222\003\022\253\001\n\026Cloud Export Admin API\022K---"
+  " This API has been deprecated and will b"
+  "e removed in the near future ---\"7\n\026Kent"
+  "ik API Engineering\022\035https://github.com/k"
+  "entik/api2\013202101beta1*\001\0022\020application/j"
+  "son:\020application/jsonZD\n\036\n\005email\022\025\010\002\032\017X-"
+  "CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-"
+  "API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]\n%G"
+  "eneral information about Kentik APIs\0224ht"
+  "tps://kb.kentik.com/v0/Ab09.htm#Ab09-API"
+  "s_Overviewb\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2fcloud_5fexport_2fv202101beta1_2fcloud_5fexport_2eproto_deps[6] = {
   &::descriptor_table_google_2fapi_2fannotations_2eproto,
@@ -756,7 +759,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_kentik_2fcloud_5fexport_2fv202101beta1_2fcloud_5fexport_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_kentik_2fcloud_5fexport_2fv202101beta1_2fcloud_5fexport_2eproto = {
-  false, false, descriptor_table_protodef_kentik_2fcloud_5fexport_2fv202101beta1_2fcloud_5fexport_2eproto, "kentik/cloud_export/v202101beta1/cloud_export.proto", 5500,
+  false, false, descriptor_table_protodef_kentik_2fcloud_5fexport_2fv202101beta1_2fcloud_5fexport_2eproto, "kentik/cloud_export/v202101beta1/cloud_export.proto", 5618,
   &descriptor_table_kentik_2fcloud_5fexport_2fv202101beta1_2fcloud_5fexport_2eproto_once, descriptor_table_kentik_2fcloud_5fexport_2fv202101beta1_2fcloud_5fexport_2eproto_sccs, descriptor_table_kentik_2fcloud_5fexport_2fv202101beta1_2fcloud_5fexport_2eproto_deps, 19, 6,
   schemas, file_default_instances, TableStruct_kentik_2fcloud_5fexport_2fv202101beta1_2fcloud_5fexport_2eproto::offsets,
   file_level_metadata_kentik_2fcloud_5fexport_2fv202101beta1_2fcloud_5fexport_2eproto, 19, file_level_enum_descriptors_kentik_2fcloud_5fexport_2fv202101beta1_2fcloud_5fexport_2eproto, file_level_service_descriptors_kentik_2fcloud_5fexport_2fv202101beta1_2fcloud_5fexport_2eproto,

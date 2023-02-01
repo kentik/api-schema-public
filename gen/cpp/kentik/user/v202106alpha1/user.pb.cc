@@ -404,16 +404,19 @@ const char descriptor_table_protodef_kentik_2fuser_2fv202106alpha1_2fuser_2eprot
   "nt specified with id.*\nUserDelete\362\327\002\020adm"
   "in.user:write\202\323\344\223\002 *\036/user/v202106alpha1"
   "/users/{id}\032$\312A\023grpc.api.kentik.com\352\327\002\na"
-  "dmin.userB\342\002ZBgithub.com/kentik/api-sche"
+  "dmin.userB\330\003ZBgithub.com/kentik/api-sche"
   "ma/gen/go/kentik/user/v202106alpha1;user"
-  "\222A\232\002\022\\\n\023User management API\"7\n\026Kentik AP"
-  "I Engineering\022\035https://github.com/kentik"
-  "/api2\014202102alpha1*\001\0022\020application/json:"
-  "\020application/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-A"
-  "uth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-"
-  "Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r5\n\026More "
-  "about Kentik APIs\022\033https://docs.kentik.c"
-  "om/apib\006proto3"
+  "\222A\220\003\022\251\001\n\023User management API\022K--- This A"
+  "PI has been deprecated and will be remov"
+  "ed in the near future ---\"7\n\026Kentik API "
+  "Engineering\022\035https://github.com/kentik/a"
+  "pi2\014202102alpha1*\001\0022\020application/json:\020a"
+  "pplication/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Aut"
+  "h-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-To"
+  "ken \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]\n%General"
+  " information about Kentik APIs\0224https://"
+  "kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Over"
+  "viewb\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2fuser_2fv202106alpha1_2fuser_2eproto_deps[5] = {
   &::descriptor_table_google_2fapi_2fannotations_2eproto,
@@ -437,7 +440,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_kentik_2fuser_2fv202106alpha1_2fuser_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_kentik_2fuser_2fv202106alpha1_2fuser_2eproto = {
-  false, false, descriptor_table_protodef_kentik_2fuser_2fv202106alpha1_2fuser_2eproto, "kentik/user/v202106alpha1/user.proto", 3174,
+  false, false, descriptor_table_protodef_kentik_2fuser_2fv202106alpha1_2fuser_2eproto, "kentik/user/v202106alpha1/user.proto", 3292,
   &descriptor_table_kentik_2fuser_2fv202106alpha1_2fuser_2eproto_once, descriptor_table_kentik_2fuser_2fv202106alpha1_2fuser_2eproto_sccs, descriptor_table_kentik_2fuser_2fv202106alpha1_2fuser_2eproto_deps, 11, 5,
   schemas, file_default_instances, TableStruct_kentik_2fuser_2fv202106alpha1_2fuser_2eproto::offsets,
   file_level_metadata_kentik_2fuser_2fv202106alpha1_2fuser_2eproto, 11, file_level_enum_descriptors_kentik_2fuser_2fv202106alpha1_2fuser_2eproto, file_level_service_descriptors_kentik_2fuser_2fv202106alpha1_2fuser_2eproto,
