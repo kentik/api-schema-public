@@ -931,7 +931,7 @@
                     "timeout": {
                         "type": "integer",
                         "format": "int64",
-                        "description": "--- <deprecated> ---"
+                        "description": "--- Deprecated: value is ignored. ---"
                     },
                     "recordType": {
                         "$ref": "#/components/schemas/v202202DNSRecord"
@@ -1717,7 +1717,7 @@
                     "dscp": {
                         "type": "integer",
                         "format": "int64",
-                        "description": "--- <Not implemented yet> ---"
+                        "description": "DSCP code to be set in IP header of probe packets"
                     }
                 },
                 "title": "TestPingSettings"
@@ -1873,7 +1873,7 @@
                     "dscp": {
                         "type": "integer",
                         "format": "int64",
-                        "description": "--- <Not implemented yet> ---"
+                        "description": "DSCP code to be set in IP header of probe packets"
                     }
                 },
                 "title": "TestTraceSettings"

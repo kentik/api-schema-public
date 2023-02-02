@@ -17,10 +17,11 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
       name: "Kentik API Engineering"
       url: "https://github.com/kentik/api"
     }
+    description: "--- This API has been deprecated and will be removed in the near future ---"
   }
   external_docs: {
-    url: "https://docs.kentik.com/api"
-    description: "More about Kentik APIs"
+    url: "https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview"
+    description: "General information about Kentik APIs"
   }
   schemes: HTTPS
   consumes: "application/json"

@@ -9,6 +9,7 @@ import "google.golang.org/protobuf/types/known/timestamppb"
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *KeyValuePair) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *KeyValuePair:
@@ -38,6 +39,7 @@ func (x *KeyValuePair) Proto_ShallowClone() (c *KeyValuePair) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *Metadata) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *Metadata:
@@ -117,6 +119,7 @@ func (x *Metadata) Proto_ShallowClone() (c *Metadata) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *Metadata_ClientInitialMetadata) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *Metadata_ClientInitialMetadata:
@@ -151,6 +154,7 @@ func (x *Metadata_ClientInitialMetadata) Proto_ShallowClone() (c *Metadata_Clien
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *Metadata_UserData) Proto_ShallowCopy(v interface{}) {
 }
 
@@ -166,6 +170,7 @@ func (x *Metadata_UserData) Proto_ShallowClone() (c *Metadata_UserData) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *Metadata_ServerInitialMetadata) Proto_ShallowCopy(v interface{}) {
 }
 
@@ -181,6 +186,7 @@ func (x *Metadata_ServerInitialMetadata) Proto_ShallowClone() (c *Metadata_Serve
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *Metadata_ServerStatus) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *Metadata_ServerStatus:
@@ -210,6 +216,7 @@ func (x *Metadata_ServerStatus) Proto_ShallowClone() (c *Metadata_ServerStatus) 
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *Message) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *Message:

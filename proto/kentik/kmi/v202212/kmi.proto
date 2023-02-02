@@ -1,0 +1,424 @@
+syntax = "proto3";
+
+package kentik.kmi.v202212;
+option go_package = "github.com/kentik/api-schema/gen/go/kentik/kmi/v202212;kmi";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/timestamp.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "kentik/core/v202012alpha1/annotations.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "KMI Configuration API"
+    version: "v202212"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api-schema-public"
+    }
+    description: "# Overview\n"
+    "The KMI Configuration API provides programmatic access to KMI Rankings.\n"
+  }
+  external_docs: {
+    url: "https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview"
+    description: "General information about Kentik APIs"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+// {{.Name}}
+message Market {
+  string id = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Unique Market identifier"
+    }
+  ];
+  string name = 2 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Market Name"
+    }
+  ];
+  string geo_scope = 3 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Geo Scope (e.g. 'cc' when Unique Market identifier is 'cc$US', noting the scope for 'US' is 'cc' or country code)"
+    }
+  ];
+  string geo_name = 4 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Geo Name (e.g. 'US' when Unique Market identifier is 'cc$US, noting 'US' is the country code within the 'cc' scope)"
+    }
+  ];
+  repeated string child_list = 5 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of child markets (e.g. Unique Market identifier 'cc$US' contains child market 'us_maj_reg$USMW')"
+    }
+  ];
+  repeated string parent_list = 6 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of parent markets (e.g. Unique Market identifier 'us_maj_reg$USMW' contains parent market 'cc$US')"
+    }
+  ];
+}
+
+// {{.Name}}
+message Ranking {
+  optional uint32 asn = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Autonomous System Number"
+    }
+  ];
+  string geo_scope = 2 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Geo Scope (e.g. 'cc' when Unique Market identifier is 'cc$US', noting the scope for 'US' is 'cc' or country code)"
+    }
+  ];
+  string geo_name = 3 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Geo Name (e.g. 'US' when Unique Market identifier is 'cc$US, noting 'US' is the country code within the 'cc' scope)"
+    }
+  ];
+  string name = 4 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Name"
+    }
+  ];
+  optional uint32 rank = 5 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Rank"
+    }
+  ];
+  optional uint32 rank_change = 6 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Rank Change"
+    }
+  ];
+  optional uint32 score = 7 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Score"
+    }
+  ];
+  optional uint32 score_change = 8 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Score Change"
+    }
+  ];
+}
+
+// {{.Name}}
+message CustomerProvider {
+  optional uint32 asn = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Autonomous System Number"
+    }
+  ];
+  optional uint32 edge_type = 2 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Edge Type"
+    }
+  ];
+  string geo_name = 3 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Geo Name (e.g. 'US' when Unique Market identifier is 'cc$US, noting 'US' is the country code within the 'cc' scope)"
+    }
+  ];
+  string geo_scope = 4 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Geo Scope (e.g. 'cc' when Unique Market identifier is 'cc$US', noting the scope for 'US' is 'cc' or country code)"
+    }
+  ];
+  string name = 5 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Name"
+    }
+  ];
+  optional uint32 score = 6 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Score"
+    }
+  ];
+  optional bool singlehomed_customer = 7 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Singlehomed customer"
+    }
+  ];
+  optional bool mutual_customer = 8 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Mutual customer"
+    }
+  ];
+  optional bool mutual_provider = 9 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Mutual provider"
+    }
+  ];
+}
+
+// {{.Name}}
+message Peer {
+  optional uint32 asn = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Autonomous System Number"
+    }
+  ];
+  string name = 2 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Name"
+    }
+  ];
+  optional uint32 pfx_count = 3 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Prefix Count"
+    }
+  ];
+}
+
+// {{.Name}}
+message ASNDetails {
+  optional uint32 asn = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Autonomous System Number"
+    }
+  ];
+  string name = 2 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Name"
+    }
+  ];
+  string country_name = 3 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Country Name"
+    }
+  ];
+  repeated CustomerProvider customers = 4 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Customers"
+    }
+  ];
+  repeated CustomerProvider providers = 5 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Providers"
+    }
+  ];
+  repeated Peer peers = 6 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Peers"
+    }
+  ];
+}
+
+// KMI
+// -------------------------------------------------------
+
+// {{.Name}}
+message ListMarketsRequest {}
+
+// {{.Name}}
+message ListMarketsResponse {
+  repeated Market markets = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Markets"
+    }
+  ];
+}
+
+// {{.Name}}
+message GetRankingsRequest {
+  string market_id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Unique Market identifier (as provided by the ListMarkets RPC)"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  string rank_type = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Type of the requested ranking ('customer_base', 'customer_base_retail', 'customer_base_wholesome', 'customer_base_backbone', 'customer_growth', 'peering_base'). Defaults to 'customer_base'."
+    }
+  ];
+  string ip = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "IP Address Family ('v4' or 'v6') of requested ranking. Defaults to 'v4'."
+    }
+  ];
+  optional uint32 limit = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Maximum number of entries returned. (Default: 600)."
+    }
+  ];
+}
+
+// {{.Name}}
+message GetRankingsResponse {
+  repeated Ranking rankings = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of rankings"
+    }
+  ];
+  uint32 invalid_count = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Number of invalid entries encountered while collecting data"
+    }
+  ];
+}
+
+// {{.Name}}
+message GetASNDetailsRequest {
+  string market_id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Unique Market identifier (as provided by the ListMarkets RPC)"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  string asn = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Autonomous System Number"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  string ip = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "IP Address Family ('v4' or 'v6'). Defaults to 'v4'."
+    }
+  ];
+  string type = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Type of the requested ASN ('all', 'customer', 'provider', 'peer'). Defaults to 'all'."
+    }
+  ];
+  string mutual_provider = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Filter by mutual provider ('all', 'only', 'exclude'). Defaults to 'all'."
+    }
+  ];
+  string mutual_customer = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Filter by mutual customer ('all', 'only', 'exclude'). Defaults to 'all'."
+    }
+  ];
+  string singlehomed_customer = 7 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Filter by singlehomed customer ('all', 'only', 'exclude'). Defaults to 'all'."
+    }
+  ];
+}
+
+// {{.Name}}
+message GetASNDetailsResponse {
+  ASNDetails asn_details = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Metadata and list of customers, providers, and peers for ASN"
+    }
+  ];
+}
+
+// services and RPCs
+// -------------------------------------------------------
+
+service KmiService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202012alpha1.service_scope) = "admin.kmi";
+
+  // --- KMI ---
+
+  rpc ListMarkets(ListMarketsRequest) returns (ListMarketsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.kmi:read";
+    option (google.api.http) = {
+      get: "/kmi/v202212/markets"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ListMarkets"
+      summary: "List all markets for KMI."
+      description: "Returns list of markets for KMI."
+    };
+  }
+
+  rpc GetRankings(GetRankingsRequest) returns (GetRankingsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.kmi:read";
+    option (google.api.http) = {
+      post: "/kmi/v202212/market/{market_id}/rankings/{rank_type}"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetRankings"
+      summary: "List all KMI rankings."
+      description: "Returns list of KMI rankings."
+    };
+  }
+
+  rpc GetASNDetails(GetASNDetailsRequest) returns (GetASNDetailsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.kmi:read";
+    option (google.api.http) = {
+      post: "/kmi/v202212/market/{market_id}/network/{asn}/{type}"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetASNDetails"
+      summary: "List metadata and list of customers, providers, and peers for ASN."
+      description: "Returns metadata and list of customers, providers, and peers for ASN."
+    };
+  }
+}

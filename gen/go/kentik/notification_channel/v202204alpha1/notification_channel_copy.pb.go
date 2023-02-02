@@ -9,6 +9,7 @@ import "google.golang.org/protobuf/types/known/timestamppb"
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *NotificationChannel) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *NotificationChannel:
@@ -58,6 +59,7 @@ func (x *NotificationChannel) Proto_ShallowClone() (c *NotificationChannel) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *ListNotificationChannelsRequest) Proto_ShallowCopy(v interface{}) {
 }
 
@@ -73,6 +75,7 @@ func (x *ListNotificationChannelsRequest) Proto_ShallowClone() (c *ListNotificat
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *ListNotificationChannelsResponse) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *ListNotificationChannelsResponse:
@@ -102,6 +105,7 @@ func (x *ListNotificationChannelsResponse) Proto_ShallowClone() (c *ListNotifica
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *GetNotificationChannelRequest) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *GetNotificationChannelRequest:
@@ -126,6 +130,7 @@ func (x *GetNotificationChannelRequest) Proto_ShallowClone() (c *GetNotification
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *GetNotificationChannelResponse) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *GetNotificationChannelResponse:

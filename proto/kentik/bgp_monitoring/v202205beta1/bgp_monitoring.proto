@@ -17,15 +17,15 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   info: {
     title: "BGP Monitoring API"
     version: "v202205beta1"
-    description: "API for interaction with Kentik BGP Monitoring Service.\n"
+    description: "--- This API has been deprecated and will be removed in the near future ---"
     contact: {
       name: "Kentik API Engineering"
       url: "https://github.com/kentik/api-schema-public"
     }
   }
   external_docs: {
-    url: "https://kb.kentik.com/v4/Ma03.htm#Ma03-BGP_Monitor_Details_Page"
-    description: "More about Kentik BGP monitoring"
+    url: "https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview"
+    description: "General information about Kentik APIs"
   }
   schemes: HTTPS
   consumes: "application/json"

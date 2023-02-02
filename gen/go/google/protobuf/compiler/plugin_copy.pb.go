@@ -9,6 +9,7 @@ import "google.golang.org/protobuf/types/descriptorpb"
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *Version) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *Version:
@@ -48,6 +49,7 @@ func (x *Version) Proto_ShallowClone() (c *Version) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *CodeGeneratorRequest) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *CodeGeneratorRequest:
@@ -89,6 +91,7 @@ func (x *CodeGeneratorRequest) Proto_ShallowClone() (c *CodeGeneratorRequest) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *CodeGeneratorResponse) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *CodeGeneratorResponse:
@@ -125,6 +128,7 @@ func (x *CodeGeneratorResponse) Proto_ShallowClone() (c *CodeGeneratorResponse) 
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *CodeGeneratorResponse_File) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *CodeGeneratorResponse_File:

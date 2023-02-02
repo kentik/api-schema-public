@@ -10,6 +10,7 @@ import "google.golang.org/protobuf/types/known/typepb"
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *Api) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *Api:
@@ -66,6 +67,7 @@ func (x *Api) Proto_ShallowClone() (c *Api) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *Method) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *Method:
@@ -120,6 +122,7 @@ func (x *Method) Proto_ShallowClone() (c *Method) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *Mixin) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *Mixin:

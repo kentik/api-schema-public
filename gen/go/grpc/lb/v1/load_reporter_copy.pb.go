@@ -9,6 +9,7 @@ import "google.golang.org/protobuf/types/known/durationpb"
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *LoadReportRequest) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *LoadReportRequest:
@@ -35,6 +36,7 @@ func (x *LoadReportRequest) Proto_ShallowClone() (c *LoadReportRequest) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *InitialLoadReportRequest) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *InitialLoadReportRequest:
@@ -69,6 +71,7 @@ func (x *InitialLoadReportRequest) Proto_ShallowClone() (c *InitialLoadReportReq
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *LoadReportResponse) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *LoadReportResponse:
@@ -105,6 +108,7 @@ func (x *LoadReportResponse) Proto_ShallowClone() (c *LoadReportResponse) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *InitialLoadReportResponse) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *InitialLoadReportResponse:
@@ -141,6 +145,7 @@ func (x *InitialLoadReportResponse) Proto_ShallowClone() (c *InitialLoadReportRe
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *LoadBalancingFeedback) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *LoadBalancingFeedback:
@@ -175,6 +180,7 @@ func (x *LoadBalancingFeedback) Proto_ShallowClone() (c *LoadBalancingFeedback) 
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *Load) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *Load:
@@ -296,6 +302,7 @@ func (x *Load) Proto_ShallowClone() (c *Load) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *CallMetricData) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *CallMetricData:
@@ -330,6 +337,7 @@ func (x *CallMetricData) Proto_ShallowClone() (c *CallMetricData) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *OrphanedLoadIdentifier) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *OrphanedLoadIdentifier:

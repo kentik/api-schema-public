@@ -7,6 +7,7 @@ package grpc_reflection_v1alpha
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *ServerReflectionRequest) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *ServerReflectionRequest:
@@ -76,6 +77,7 @@ func (x *ServerReflectionRequest) Proto_ShallowClone() (c *ServerReflectionReque
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *ExtensionRequest) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *ExtensionRequest:
@@ -105,6 +107,7 @@ func (x *ExtensionRequest) Proto_ShallowClone() (c *ExtensionRequest) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *ServerReflectionResponse) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *ServerReflectionResponse:
@@ -178,6 +181,7 @@ func (x *ServerReflectionResponse) Proto_ShallowClone() (c *ServerReflectionResp
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *FileDescriptorResponse) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *FileDescriptorResponse:
@@ -202,6 +206,7 @@ func (x *FileDescriptorResponse) Proto_ShallowClone() (c *FileDescriptorResponse
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *ExtensionNumberResponse) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *ExtensionNumberResponse:
@@ -231,6 +236,7 @@ func (x *ExtensionNumberResponse) Proto_ShallowClone() (c *ExtensionNumberRespon
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *ListServiceResponse) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *ListServiceResponse:
@@ -255,6 +261,7 @@ func (x *ListServiceResponse) Proto_ShallowClone() (c *ListServiceResponse) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *ServiceResponse) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *ServiceResponse:
@@ -279,6 +286,7 @@ func (x *ServiceResponse) Proto_ShallowClone() (c *ServiceResponse) {
 // Note that v is of an arbitrary type, which may implement any number of the
 // field getters, which are defined as any methods of the same signature as those
 // generated for the receiver type, with a name starting with Get.
+// WARNING: Optional fields may be ignored, if v is not the receiver type.
 func (x *ErrorResponse) Proto_ShallowCopy(v interface{}) {
 	switch v := v.(type) {
 	case *ErrorResponse:

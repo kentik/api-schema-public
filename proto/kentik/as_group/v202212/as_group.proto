@@ -1,0 +1,294 @@
+syntax = "proto3";
+
+package kentik.as_group.v202212;
+option go_package = "github.com/kentik/api-schema/gen/go/kentik/as_group/v202212;as_group";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/timestamp.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "kentik/core/v202012alpha1/annotations.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "AS Group Configuration API"
+    version: "v202212"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api-schema-public"
+    }
+    description: "# Overview\n"
+    "The AS Group Configuration API provides programmatic access to configuration of AS Groups:\n\n"
+    "* **AS Group**: ASNs can be logically grouped into an AS group."
+  }
+  external_docs: {
+    url: "https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview"
+    description: "General information about Kentik APIs"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+// ASGroup CRUD
+// -------------------------------------------------------
+
+// {{.Name}}
+message AutonomousSystem {
+  uint32 asn = 1;
+  string name = 2;
+}
+
+// {{.Name}}
+message ASGroupConcise {
+  string id = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "System generated unique identifier"
+    }
+  ];
+  string name = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "User selected unique name"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  repeated string asn = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of ASNs"
+    }
+  ];
+  google.protobuf.Timestamp created_date = 5 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Creation timestamp (UTC)"
+    }
+  ];
+  google.protobuf.Timestamp updated_date = 6 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Last modification timestamp (UTC)"
+    }
+  ];
+}
+
+// {{.Name}}
+message ASGroupDetailed {
+  string id = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "System generated unique identifier"
+    }
+  ];
+  string name = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "User selected unique name"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  repeated AutonomousSystem asn = 3  [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of ASNs"
+    }
+  ];
+  google.protobuf.Timestamp created_date = 5 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Creation timestamp (UTC)"
+    }
+  ];
+  google.protobuf.Timestamp updated_date = 6 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Last modification timestamp (UTC)"
+    }
+  ];
+}
+
+// {{.Name}}
+message ListASGroupsRequest {}
+
+// {{.Name}}
+message ListASGroupsResponse {
+  repeated ASGroupDetailed as_groups = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of configurations of requested AS groups"
+    }
+  ];
+  uint32 invalid_count = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Number of invalid entries encountered while collecting data"
+    }
+  ];
+}
+
+// {{.Name}}
+message GetASGroupRequest {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the requested AS group"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message GetASGroupResponse {
+  ASGroupDetailed as_group = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Configuration of the requested AS group"
+    }
+  ];
+}
+
+// {{.Name}}
+message CreateASGroupRequest {
+  ASGroupConcise as_group = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Configuration of the new AS group"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message CreateASGroupResponse {
+  ASGroupDetailed as_group = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Configuration of the newly created AS group"
+    }
+  ];
+}
+
+// {{.Name}}
+message UpdateASGroupRequest {
+  ASGroupConcise as_group = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "New configuration attributes for the AS group to be updated"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message UpdateASGroupResponse {
+  ASGroupDetailed as_group = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Updated configuration of the AS group"
+    }
+  ];
+}
+
+// {{.Name}}
+message DeleteASGroupRequest {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the AS group to be deleted"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message DeleteASGroupResponse {}
+
+// services and RPCs
+// -------------------------------------------------------
+
+service ASGroupService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202012alpha1.service_scope) = "admin.as_group";
+
+  // --- AS Groups ---
+
+  rpc ListASGroups(ListASGroupsRequest) returns (ListASGroupsResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.as_group:read";
+    option (google.api.http) = {
+      get: "/as_group/v202212/as_group"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ListASGroups"
+      summary: "List all AS groups."
+      description: "Returns list of configured AS groups."
+    };
+  }
+
+  rpc GetASGroup(GetASGroupRequest) returns (GetASGroupResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.as_group:read";
+    option (google.api.http) = {
+      get: "/as_group/v202212/as_group/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetASGroup"
+      summary: "Retrieve configuration of a AS group."
+      description: "Returns configuration of a AS group specified by ID."
+    };
+  }
+
+  rpc CreateASGroup(CreateASGroupRequest) returns (CreateASGroupResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.as_group:write";
+    option (google.api.http) = {
+      post: "/as_group/v202212/as_group"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "CreateASGroup"
+      summary: "Configure a new AS group."
+      description: "Create configuration for a new AS group. Returns the newly created configuration."
+    };
+  }
+
+  rpc UpdateASGroup(UpdateASGroupRequest) returns (UpdateASGroupResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.as_group:write";
+    option (google.api.http) = {
+      put: "/as_group/v202212/as_group/{as_group.id}"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "UpdateASGroup"
+      summary: "Updates configuration of a AS group."
+      description: "Replaces configuration of a AS group with attributes in the request. Returns the updated configuration."
+    };
+  }
+
+  rpc DeleteASGroup(DeleteASGroupRequest) returns (DeleteASGroupResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.as_group:write";
+    option (google.api.http) = {
+      delete: "/as_group/v202212/as_group/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "DeleteASGroup"
+      summary: "Delete configuration of a AS group."
+      description: "Deletes configuration of a AS group with specific ID."
+    };
+  }
+}

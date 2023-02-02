@@ -1,0 +1,542 @@
+syntax = "proto3";
+
+package kentik.capacity_plan.v202212;
+option go_package = "github.com/kentik/api-schema/gen/go/kentik/capacity_plan/v202212;capacity_plan";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/timestamp.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "kentik/core/v202012alpha1/annotations.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Capacity Plan API"
+    version: "v202212"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api-schema-public"
+    }
+    description: "# Overview\n"
+    "The Capacity Plan API provides read-only access to configured capacity plans"
+  }
+  external_docs: {
+    url: "https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview"
+    description: "General information about Kentik APIs"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+// Capacity Plan
+// -------------------------------------------------------
+
+// {{.Name}}
+message Config {
+  // {{.Name}}
+  message RunoutConfig {
+    string strategy = 1 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Strategy for runout"
+      }
+    ];
+    optional uint32 warn_qty = 2 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Warning quantity for runout"
+      }
+    ];
+    optional uint32 crit_qty = 3 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Critical quantity for runout"
+      }
+    ];
+  }
+  // {{.Name}}
+  message UtilConfig {
+    string aggregate = 1 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Aggregate for utilization"
+      }
+    ];
+    optional uint32 warn_pct = 2 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Warning percentage for utilization"
+      }
+    ];
+    optional uint32 crit_pct = 3 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Critical percentage for utilization"
+      }
+    ];
+  }
+  RunoutConfig runout = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Runout configuration"
+    }
+  ];
+  UtilConfig utilization = 2 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Utilization configuration"
+    }
+  ];
+}
+// {{.Name}}
+message SummaryStatus {
+  // {{.Name}}
+  message RunoutStatus {
+    string status = 1 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Status of runout"
+      }
+    ];
+    optional uint64 earliest_date = 2 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Earliest runout date"
+      }
+    ];
+  }
+  // {{.Name}}
+  message UtilStatus {
+    string status = 1 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Status of utilization"
+      }
+    ];
+    optional uint32 highest_pct = 2 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Highest utilization percentage"
+      }
+    ];
+  }
+  RunoutStatus runout = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Runout status"
+    }
+  ];
+  UtilStatus utilization = 2 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Utilization status"
+    }
+  ];
+}
+
+// {{.Name}}
+message CapacitySummary {
+  // {{.Name}}
+  message InterfacesDetail {
+    // {{.Name}}
+    message StatusDetail {
+      optional uint64 bps = 1 [
+        (google.api.field_behavior) = OUTPUT_ONLY,
+        (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          description: "Bandwidth in bps"
+        }
+      ];
+      optional uint32 count = 2 [
+        (google.api.field_behavior) = OUTPUT_ONLY,
+        (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          description: "Number of interfaces"
+        }
+      ];
+    }
+    optional uint32 total_count = 1 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Total number of interfaces"
+      }
+    ];
+    optional uint64 total_capacity_bps = 2 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Total capacity in bps"
+      }
+    ];
+    StatusDetail healthy = 3 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Healthy interfaces"
+      }
+    ];
+    StatusDetail warning = 4 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Warning interfaces"
+      }
+    ];
+    StatusDetail critical = 5 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Critical interfaces"
+      }
+    ];
+  }
+
+  string id = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of capacity plan"
+    }
+  ];
+  string name = 2 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Name of capacity plan"
+    }
+  ];
+  string description = 3 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Description of capacity plan"
+    }
+  ];
+  string status = 4 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Status of capacity plan"
+    }
+  ];
+  InterfacesDetail interfaces = 5 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Interfaces detail"
+    }
+  ];
+  Config config = 6 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Configuration of capacity plan"
+    }
+  ];
+  SummaryStatus summary_status = 7 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Summary status of capacity plan"
+    }
+  ];
+}
+
+// {{.Name}}
+message CapacityPlan {
+  // {{.Name}}
+  message InterfaceDetail {
+    string device_name = 1 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Device name"
+      }
+    ];
+    string intf_name = 2 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Interface name"
+      }
+    ];
+    string intf_description = 3 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Interface description"
+      }
+    ];
+    string intf_capacity = 4 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Interface capacity"
+      }
+    ];
+    string network_boundary = 5 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Network boundary"
+      }
+    ];
+    string conn_type = 6 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Connectivity type"
+      }
+    ];
+    string provider = 7 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Provider"
+      }
+    ];
+    string util_status = 8 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Utilization status"
+      }
+    ];
+    string util_out_mbps = 9 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Utilization out mbps"
+      }
+    ];
+    string util_out_pct = 10 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Utilization out percentage"
+      }
+    ];
+    string util_in_mbps = 11 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Utilization in mbps"
+      }
+    ];
+    string util_in_pct = 12 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Utilization in percentage"
+      }
+    ];
+    string runout_status = 13 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Runout status"
+      }
+    ];
+    string runout_in_date = 14 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Runout in date"
+      }
+    ];
+    string runout_in_variation = 15 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Runout in variation"
+      }
+    ];
+    string runout_out_date = 16 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Runout out date"
+      }
+    ];
+    string runout_out_variation = 17 [
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "Runout out variation"
+      }
+    ];
+  }
+
+  string id = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of capacity plan"
+    }
+  ];
+  string name = 2 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Name of capacity plan"
+    }
+  ];
+  string description = 3 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Description of capacity plan"
+    }
+  ];
+  string status = 4 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Status of capacity plan"
+    }
+  ];
+  repeated InterfaceDetail interfaces = 5 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of interfaces"
+    }
+  ];
+  Config config = 6 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Configuration of capacity plan"
+    }
+  ];
+  SummaryStatus summary_status = 7 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Summary status of capacity plan"
+    }
+  ];
+}
+
+// {{.Name}}
+message ListCapacitySummariesRequest {}
+
+// {{.Name}}
+message ListCapacitySummariesResponse {
+  repeated CapacitySummary capacity = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of capacity plan summaries"
+    }
+  ];
+  uint32 invalid_count = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Number of invalid entries encountered while collecting data"
+    }
+  ];
+}
+
+// {{.Name}}
+message GetCapacitySummaryRequest {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the requested capacity plan summary"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message GetCapacitySummaryResponse {
+  CapacitySummary capacity = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Configuration of the requested capacity plan summary"
+    }
+  ];
+}
+
+// {{.Name}}
+message ListCapacityPlansRequest {}
+
+// {{.Name}}
+message ListCapacityPlansResponse {
+  repeated CapacityPlan capacity = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of capacity plans"
+    }
+  ];
+  uint32 invalid_count = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Number of invalid entries encountered while collecting data"
+    }
+  ];
+}
+
+// {{.Name}}
+message GetCapacityPlanRequest {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the requested capacity plan"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message GetCapacityPlanResponse {
+  CapacityPlan capacity = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Configuration of the requested capacity plan"
+    }
+  ];
+}
+
+// services and RPCs
+// -------------------------------------------------------
+
+service CapacityPlanService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202012alpha1.service_scope) = "admin.capacity_plan";
+
+  // --- Capacity Plan ---
+
+  rpc ListCapacitySummaries(ListCapacitySummariesRequest) returns (ListCapacitySummariesResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.capacity_plan:read";
+    option (google.api.http) = {
+      get: "/capacity_plan/v202212/capacity_plan/summary"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ListCapacitySummaries"
+      summary: "List all capacity summaries."
+      description: "Returns list of capacity summaries."
+    };
+  }
+
+  rpc GetCapacitySummary(GetCapacitySummaryRequest) returns (GetCapacitySummaryResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.capacity_plan:read";
+    option (google.api.http) = {
+      get: "/capacity_plan/v202212/capacity_plan/{id}/summary"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetCapacitySummary"
+      summary: "Retrieve capacity plan summary."
+      description: "Returns capacity plan summary specified by ID."
+    };
+  }
+
+  rpc ListCapacityPlans(ListCapacityPlansRequest) returns (ListCapacityPlansResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.capacity_plan:read";
+    option (google.api.http) = {
+      get: "/capacity_plan/v202212/capacity_plan"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ListCapacityPlans"
+      summary: "List all capacity plans."
+      description: "Returns list of capacity plans."
+    };
+  }
+
+  rpc GetCapacityPlan(GetCapacityPlanRequest) returns (GetCapacityPlanResponse) {
+    option (kentik.core.v202012alpha1.method_scope) = "admin.capacity_plan:read";
+    option (google.api.http) = {
+      get: "/capacity_plan/v202212/capacity_plan/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetCapacityPlan"
+      summary: "Retrieve capacity plan."
+      description: "Returns capacity plan specified by ID."
+    };
+  }
+}
