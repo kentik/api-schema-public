@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "KMI Configuration API",
-    "description": "# Overview\nThe KMI Configuration API provides programmatic access to KMI Rankings.\n",
+    "title": "Kentik Market Intelligence (KMI) API",
+    "description": "# Overview\nThe Kentik Market Intelligence (KMI) API provides programmatic access to KMI Rankings.\n",
     "version": "v202212",
     "contact": {
       "name": "Kentik API Engineering",

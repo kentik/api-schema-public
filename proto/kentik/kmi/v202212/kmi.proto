@@ -12,14 +12,14 @@ import "kentik/core/v202012alpha1/annotations.proto";
 
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   info: {
-    title: "KMI Configuration API"
+    title: "Kentik Market Intelligence (KMI) API"
     version: "v202212"
     contact: {
       name: "Kentik API Engineering"
       url: "https://github.com/kentik/api-schema-public"
     }
     description: "# Overview\n"
-    "The KMI Configuration API provides programmatic access to KMI Rankings.\n"
+    "The Kentik Market Intelligence (KMI) API provides programmatic access to KMI Rankings.\n"
   }
   external_docs: {
     url: "https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview"

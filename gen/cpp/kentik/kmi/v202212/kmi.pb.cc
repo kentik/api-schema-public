@@ -538,19 +538,20 @@ const char descriptor_table_protodef_kentik_2fkmi_2fv202212_2fkmi_2eproto[] PROT
   "SNDetails\362\327\002\016admin.kmi:read\202\323\344\223\0029\"4/kmi/"
   "v202212/market/{market_id}/network/{asn}"
   "/{type}:\001*\032#\312A\023grpc.api.kentik.com\352\327\002\tad"
-  "min.kmiB\343\003Z:github.com/kentik/api-schema"
-  "/gen/go/kentik/kmi/v202212;kmi\222A\243\003\022\274\001\n\025K"
-  "MI Configuration API\022S# Overview\nThe KMI"
-  " Configuration API provides programmatic"
-  " access to KMI Rankings.\n\"E\n\026Kentik API "
-  "Engineering\022+https://github.com/kentik/a"
-  "pi-schema-public2\007v202212*\001\0022\020applicatio"
-  "n/json:\020application/jsonZD\n\036\n\005email\022\025\010\002\032"
-  "\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Au"
-  "th-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]"
-  "\n%General information about Kentik APIs\022"
-  "4https://kb.kentik.com/v0/Ab09.htm#Ab09-"
-  "APIs_Overviewb\006proto3"
+  "min.kmiB\201\004Z:github.com/kentik/api-schema"
+  "/gen/go/kentik/kmi/v202212;kmi\222A\301\003\022\332\001\n$K"
+  "entik Market Intelligence (KMI) API\022b# O"
+  "verview\nThe Kentik Market Intelligence ("
+  "KMI) API provides programmatic access to"
+  " KMI Rankings.\n\"E\n\026Kentik API Engineerin"
+  "g\022+https://github.com/kentik/api-schema-"
+  "public2\007v202212*\001\0022\020application/json:\020ap"
+  "plication/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth"
+  "-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Tok"
+  "en \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]\n%General "
+  "information about Kentik APIs\0224https://k"
+  "b.kentik.com/v0/Ab09.htm#Ab09-APIs_Overv"
+  "iewb\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2fkmi_2fv202212_2fkmi_2eproto_deps[6] = {
   &::descriptor_table_google_2fapi_2fannotations_2eproto,
@@ -575,7 +576,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_kentik_2fkmi_2fv202212_2fkmi_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_kentik_2fkmi_2fv202212_2fkmi_2eproto = {
-  false, false, descriptor_table_protodef_kentik_2fkmi_2fv202212_2fkmi_2eproto, "kentik/kmi/v202212/kmi.proto", 6221,
+  false, false, descriptor_table_protodef_kentik_2fkmi_2fv202212_2fkmi_2eproto, "kentik/kmi/v202212/kmi.proto", 6251,
   &descriptor_table_kentik_2fkmi_2fv202212_2fkmi_2eproto_once, descriptor_table_kentik_2fkmi_2fv202212_2fkmi_2eproto_sccs, descriptor_table_kentik_2fkmi_2fv202212_2fkmi_2eproto_deps, 11, 6,
   schemas, file_default_instances, TableStruct_kentik_2fkmi_2fv202212_2fkmi_2eproto::offsets,
   file_level_metadata_kentik_2fkmi_2fv202212_2fkmi_2eproto, 11, file_level_enum_descriptors_kentik_2fkmi_2fv202212_2fkmi_2eproto, file_level_service_descriptors_kentik_2fkmi_2fv202212_2fkmi_2eproto,
