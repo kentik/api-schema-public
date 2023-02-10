@@ -1418,6 +1418,7 @@ message GetTraceForTestResponse {
 
 service SyntheticsDataService {
   option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202012alpha1.visibility) = SERVICE_VISIBILITY_PUBLIC;
   option (kentik.core.v202012alpha1.service_scope) = "synthetics";
 
   // Get measurement results for a set of tests
@@ -1625,6 +1626,7 @@ message SetTestStatusResponse {}
 
 service SyntheticsAdminService {
   option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202012alpha1.visibility) = SERVICE_VISIBILITY_PUBLIC;
   option (kentik.core.v202012alpha1.service_scope) = "admin.synthetics";
 
   rpc ListAgents(ListAgentsRequest) returns (ListAgentsResponse) {

@@ -303,6 +303,7 @@ message ResetActiveSessionsResponse {}
 
 service UserService {
   option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202012alpha1.visibility) = SERVICE_VISIBILITY_PUBLIC;
   option (kentik.core.v202012alpha1.service_scope) = "admin.user";
 
   rpc ListUsers(ListUsersRequest) returns (ListUsersResponse) {

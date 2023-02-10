@@ -267,6 +267,7 @@ message DeletePackageResponse {}
 
 service PackageService {
   option (google.api.default_host) = "mkp.api.kentik.com";
+  option (kentik.core.v202012alpha1.visibility) = SERVICE_VISIBILITY_PUBLIC;
   option (kentik.core.v202012alpha1.service_scope) = "admin.mkp";
 
   rpc ListPackage(ListPackageRequest) returns (ListPackageResponse) {
@@ -386,6 +387,7 @@ message DeleteTenantResponse {}
 
 service TenantService {
   option (google.api.default_host) = "mkp.api.kentik.com";
+  option (kentik.core.v202012alpha1.visibility) = SERVICE_VISIBILITY_PUBLIC;
   option (kentik.core.v202012alpha1.service_scope) = "admin.mkp";
 
   rpc ListTenant(ListTenantRequest) returns (ListTenantResponse) {
