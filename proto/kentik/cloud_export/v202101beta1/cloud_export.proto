@@ -229,6 +229,7 @@ message DeleteCloudExportResponse {
 
 service CloudExportAdminService {
   option (google.api.default_host) = "cloud_export.api.kentik.com";
+  option (kentik.core.v202012alpha1.visibility) = SERVICE_VISIBILITY_PUBLIC;
   option (kentik.core.v202012alpha1.service_scope) = "admin.cloud_export";
 
   rpc CreateCloudExport(CreateCloudExportRequest) returns (CreateCloudExportResponse) {

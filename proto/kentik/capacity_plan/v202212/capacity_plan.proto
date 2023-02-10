@@ -488,6 +488,7 @@ message GetCapacityPlanResponse {
 
 service CapacityPlanService {
   option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202012alpha1.visibility) = SERVICE_VISIBILITY_PUBLIC;
   option (kentik.core.v202012alpha1.service_scope) = "admin.capacity_plan";
 
   // --- Capacity Plan ---

@@ -463,6 +463,7 @@ message SetMonitorStatusResponse {}
 
 service BgpMonitoringAdminService {
     option (google.api.default_host) = "grpc.api.kentik.com";
+    option (kentik.core.v202012alpha1.visibility) = SERVICE_VISIBILITY_PUBLIC;
     option (kentik.core.v202012alpha1.service_scope) = "admin.synthetics";
 
     // Monitors
@@ -633,6 +634,7 @@ message GetRoutesForTargetResponse {
 
 service BgpMonitoringDataService {
     option (google.api.default_host) = "grpc.api.kentik.com";
+    option (kentik.core.v202012alpha1.visibility) = SERVICE_VISIBILITY_PUBLIC;
     option (kentik.core.v202012alpha1.service_scope) = "synthetics";
 
     rpc GetMetricsForTarget (GetMetricsForTargetRequest) returns (GetMetricsForTargetResponse) {

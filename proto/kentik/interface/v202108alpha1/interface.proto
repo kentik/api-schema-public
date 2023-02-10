@@ -282,6 +282,7 @@ message DeleteInterfaceResponse {}
 
 service InterfaceService {
   option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202012alpha1.visibility) = SERVICE_VISIBILITY_PUBLIC;
   option (kentik.core.v202012alpha1.service_scope) = "admin.interface";
 
   // Comment out for now until we need auto classification.
