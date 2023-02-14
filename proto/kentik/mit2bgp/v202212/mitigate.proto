@@ -1,24 +1,20 @@
 syntax = "proto3";
-
 package kentik.mit2bgp.v202212;
-option go_package = "github.com/kentik/api-schema/gen/go/kentik/mit2bgp/v202212;mit2bgp";
+option go_package = "github.com/kentik/api-schema/gen/go/kentik/mit2bgp/v202212;mbproto";
 
 import "kentik/mit2bgp/v202212/flowspec.proto";
 import "kentik/core/v202012alpha1/annotations.proto";
 
 // MitigateService lets to mitigate DDoS attacks that triggered alerts using advanced BGP rules
 service MitigateService {
-		option (kentik.core.v202012alpha1.service_scope) = "mit2bgp.v202212";
+	option (kentik.core.v202012alpha1.visibility) = SERVICE_VISIBILITY_PRIVATE;
+	option (kentik.core.v202012alpha1.private_service) = true;
 
-		// Start discovers and deploys Flowspec rules for mitigating DoS attack traffic
-		rpc Start(StartRequest) returns (StartResponse) {
-			option (kentik.core.v202012alpha1.method_scope) = "mit2bgp.v202212:write";
-		}
+	// Start discovers and deploys Flowspec rules for mitigating DoS attack traffic
+	rpc Start(StartRequest) returns (StartResponse) {}
 
-		// Stop drops matching BGP announcements of mit2bgp
-		rpc Stop(StopRequest) returns (StopResponse) {
-			option (kentik.core.v202012alpha1.method_scope) = "mit2bgp.v202212:write";
-		}
+	// Stop drops matching BGP announcements of mit2bgp
+	rpc Stop(StopRequest) returns (StopResponse) {}
 }
 
 message StartRequest {

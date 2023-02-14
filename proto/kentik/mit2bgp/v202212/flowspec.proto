@@ -1,7 +1,6 @@
 syntax = "proto3";
-
 package kentik.mit2bgp.v202212;
-option go_package = "github.com/kentik/api-schema/gen/go/kentik/mit2bgp/v202212;mit2bgp";
+option go_package = "github.com/kentik/api-schema/gen/go/kentik/mit2bgp/v202212;mbproto";
 
 // Flowspec represents a template when generating rules off an algorithm output
 // See RFC8955 and RFC8956.
