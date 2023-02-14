@@ -1,0 +1,198 @@
+syntax = "proto3";
+
+package kentik.mit2bgp.v202212;
+option go_package = "github.com/kentik/api-schema/gen/go/kentik/mit2bgp/v202212;mit2bgp";
+
+import "kentik/mit2bgp/v202212/flowspec.proto";
+import "kentik/core/v202012alpha1/annotations.proto";
+
+// MitigateService lets to mitigate DDoS attacks that triggered alerts using advanced BGP rules
+service MitigateService {
+		option (kentik.core.v202012alpha1.service_scope) = "mit2bgp.v202212";
+
+		// Start discovers and deploys Flowspec rules for mitigating DoS attack traffic
+		rpc Start(StartRequest) returns (StartResponse) {
+			option (kentik.core.v202012alpha1.method_scope) = "mit2bgp.v202212:write";
+		}
+
+		// Stop drops matching BGP announcements of mit2bgp
+		rpc Stop(StopRequest) returns (StopResponse) {
+			option (kentik.core.v202012alpha1.method_scope) = "mit2bgp.v202212:write";
+		}
+}
+
+message StartRequest {
+	// context id
+	// - can be derived from the target, eg. hash value
+	// - will be used for chfrib keys, keep it short
+	string id = 1;
+
+	// customer
+	uint32 company_id = 2;
+	uint32 user_id = 3;
+
+	// mitigation target
+	Target target = 4;
+
+	// global goal: we must satisfy this or be better
+	Goal goal = 5;
+
+	// algorithms to use
+	repeated Algo algo = 6; // algorithm list; the order is important
+	Select select = 7;      // if more than 1 on the list, which to choose for deploy?
+	Algo failsafe = 8;      // unconditionally deploy this if nothing else worked
+
+	// if the goal was met, where to deploy? (can be empty for debug only)
+	repeated DeployRequest routers = 9;
+
+	// Flowspec template
+	// if missing or empty, the default is to infer every possible match type from the target
+	Flowspec template = 10;
+
+	// number of rules to send back in StartResponse
+	uint32 debug = 11;
+}
+
+message StartResponse {
+	// if true, the goal was met
+	bool success = 1;
+
+	// details on what was achieved
+	Goal result = 2;
+
+	// describes the deploy effects
+	repeated DeployResponse routers = 3;
+
+	// generated rules, if StartRequest.debug was > 0
+	repeated Flowspec debug = 4;
+}
+
+message StopRequest {
+	// mit2bgp id used in StartRequest, or its prefix
+	// if empty, it will remove ALL mit2bgp mitigations from routers
+	string id = 1;
+
+	// customer
+	uint32 company_id = 2;
+	// uint32 user_id = 3;
+
+	// which devices to remove rules from?
+	repeated DeployRequest routers = 4;
+
+	// REQUIRED: must be true to actually go and flush the rules;
+	// otherwise, we only check for existence of our rules
+	bool go = 5;
+}
+
+message StopResponse {
+	// all matching mit2bgp ids remaining on routers AFTER StopRequest was executed
+	// NB: this should be empty for deletes (go=true), non-empty for checks (go=false),
+	//     or simply dump all running mitigations when requested id is nil (and go=false).
+	repeated string remaining = 1;
+
+	// describes the effects
+	repeated DeployResponse routers = 4;
+}
+
+// ---
+
+// Target represents the event that we want to mitigate
+message Target {
+	bool pps = 1;                      // mitigate pps instead of bps
+	repeated string dim_values = 2;    // alerting dimension=value strings
+	repeated string ksql_where = 3;    // ksql WHERE conditions (will be connected with AND)
+	int64 tstart = 4;                  // time window start: 0 means NOW (-5min in KSQL query)
+	int64 tend = 5;                    // time window end: 0 means NOW (+5min in KSQL query)
+}
+
+// Goal describes how good the results of algorithm must be to consider it a success
+message Goal {
+	uint32 rules = 1;                  // number of rules this may use (>0)
+	float traffic = 2;                 // percentage of the analyzed traffic this must cover (0.0-1.0)
+	float v4damage = 3;                // max. number of IPv4 addresses to block, expressed as CIDR size (/0 to /32)
+	float v6damage = 4;                // max. number of IPv6 addresses to block, expressed as CIDR size (/0 to /128)
+}
+
+// Algo selects and configures an algorithm for generating mitigation rules
+message Algo {
+	Goal goal = 1;                     // if max_rules>0, overrides the global
+	Flowspec template = 2;             // if non-empty, overrides the global template
+	repeated string exclude = 3;       // CIDRs to exclude from blocking by the algo (if supported)
+
+	oneof algo {
+		TopCidr srcip = 10;             // find top source CIDRs
+		TopCidr dstip = 11;             // find top destination CIDRs
+		Dimvals dimvals = 12;           // just rewrite dim_values; always rules=1 traffic=1 damage=1
+		// TODO: srcport/dstport
+		// TODO: patterns (ML)
+	}
+}
+
+// Select chooses algorithm selection strategy
+enum Select {
+	SELECT_UNSPECIFIED = 0;            // valid for lists of 1 algo
+	SELECT_FIRST = 1;                  // first that satisfies the goal wins
+	SELECT_DAMAGE = 2;                 // choose the minimum damage from all that satisfy rules+traffic
+	SELECT_ALL = 3;                    // deploy each that satisfy the goal
+}
+
+// DeployRequest identifies a router device for BGP propagation
+message DeployRequest {
+	// device id
+	uint32 device_id = 1;
+
+	// if true, requests to skip the IPv4 BGP session of the device
+	bool v4skip = 2;
+
+	// if true, requests to skip the IPv6 BGP session of the device
+	bool v6skip = 3;
+
+	// if non-empty, will be used as chfrib route metadata
+	string meta = 4;
+
+	// if true, withdraw routes directly in DB if the BGP session is down
+	bool withdraw_down = 5;
+}
+
+// DeployResponse describes the result of BGP propagation for a particular router
+message DeployResponse {
+	// device id
+	uint32 device_id = 1;
+
+	// generic errors, ignore IPv4/IPv6 below if err_code != 0
+	uint32 err_code = 2; // error code
+	string err_msg = 3;  // error message
+
+	// IPv4
+	bool v4alive = 10;   // does the IPv4 BGP session appears to be up? ignore below if false
+	bool v4success = 11; // requested action was fully successful; if false, you can use the below
+	bool v4rubble = 12;  // some of the routes were propagated, some not - might need a retry/cleanup
+	uint32 v4code = 13;  // error code
+	string v4error = 14; // error message
+
+	// IPv6 - see IPv4 above for descriptions
+	bool v6alive = 20;
+	bool v6success = 21;
+	bool v6rubble = 22;
+	uint32 v6code = 23;
+	string v6error = 24;
+}
+
+// ---
+
+// TopCidrs finds CIDRs that contributed the most bits or packets
+message TopCidr {
+	uint32 v4min = 1; // minimum IPv4 CIDR length, eg. /4
+	uint32 v4max = 2; // maximum IPv4 CIDR length, eg. /32
+
+	uint32 v6min = 3; // minimum IPv6 CIDR length, eg. /28
+	uint32 v6max = 4; // maximum IPv6 CIDR length, eg. /64
+}
+
+// Dimvals takes dimension values verbatim, which means blackholing
+// if the alert dimension is IP_dst. In general, the default is to try to convert
+// every supported dimension value as a Flowspec match. If more control
+// is needed, the user should provide a Flowspec template in the StartRequest
+// that enables/disables infer on per-match basis.
+message Dimvals {
+}

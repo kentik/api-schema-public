@@ -1,0 +1,81 @@
+syntax = "proto3";
+
+package kentik.mit2bgp.v202212;
+option go_package = "github.com/kentik/api-schema/gen/go/kentik/mit2bgp/v202212;mit2bgp";
+
+// Flowspec represents a template when generating rules off an algorithm output
+// See RFC8955 and RFC8956.
+message Flowspec {
+	FsInfer infer = 1;             // default infer value, can be overriden in each match type
+
+	repeated FsMatch matches = 2;  // at most 1 element for each FsMatchType
+	repeated FsAction actions = 3; // empty actions means "discard" only
+}
+
+// FsMatch represents Flowspec match
+// Usually this corresponds to exabgp lingo
+message FsMatch {
+	FsInfer infer = 1;       // should we infer op+val from the mitigation target?
+
+	FsMatchType type = 2;    // Flowspec match type (rfc8955+8956)
+	repeated bytes val = 3;  // values to match (string)
+	repeated bytes op = 4;   // [values]: optional operator (exabgp)
+	repeated bool and = 5;   // [values]: AND with previous op+val? (rfc8955/4.2.1.1)
+}
+
+// FsAction specifies what to do if we match a packet
+// Usually this corresponds to exabgp lingo
+message FsAction {
+	FsActionType type = 1;    // action type (rfc8955)
+	bytes val = 2;            // optional value (exabgp)
+}
+
+// FsInfer controls if we should try to extract Flowspec matches from the mitigation target
+enum FsInfer {
+	FS_INFER_UNSPECIFIED = 0; // INVALID
+	FS_INFER_DISABLED = 1;    // do not infer
+	FS_INFER_ENABLED = 2;     // infer and replace op+val if we succeed
+	FS_INFER_MERGE = 3;       // infer but add the result as another OR op+val (if possible)
+}
+
+// FsMatchType specifies which part of IP packets to check
+enum FsMatchType {
+	// RFC8955
+	FS_MATCH_TYPE_UNSPECIFIED = 0;
+	FS_MATCH_TYPE_DST4_PREFIX = 1; // IPv4 only
+	FS_MATCH_TYPE_SRC4_PREFIX = 2; // IPv4 only
+	FS_MATCH_TYPE_PROTO = 3;
+	FS_MATCH_TYPE_PORT = 4;
+	FS_MATCH_TYPE_DST_PORT = 5;
+	FS_MATCH_TYPE_SRC_PORT = 6;
+	FS_MATCH_TYPE_ICMP_TYPE = 7;
+	FS_MATCH_TYPE_ICMP_CODE = 8;
+	FS_MATCH_TYPE_TCP_FLAGS = 9;
+	FS_MATCH_TYPE_PKT_LEN = 10;
+	FS_MATCH_TYPE_DSCP = 11;
+	FS_MATCH_TYPE_FRAG = 12;
+
+	// RFC8956 + 100
+	FS_MATCH_TYPE_IPV6 = 100;        // virtual "helper" type for working on IPv6 types (DO NOT USE DIRECTLY)
+	FS_MATCH_TYPE_DST6_PREFIX = 101; // IPv6 only
+	FS_MATCH_TYPE_SRC6_PREFIX = 102; // IPv6 only
+	FS_MATCH_TYPE_FLOW_LABEL = 113;  // IPv6 only
+}
+
+// FsActionType specifies what to do if an IP packet matches, rfc8955 order
+enum FsActionType {
+	FS_ACTION_TYPE_UNSPECIFIED = 0;
+	FS_ACTION_TYPE_ACCEPT = 1;        // exabgp "accept"
+	FS_ACTION_TYPE_DISCARD = 2;       // exabgp "discard"
+	FS_ACTION_TYPE_RATE_BYTES = 3;    // bytes per second
+	FS_ACTION_TYPE_RATE_PACKETS = 4;  // not supported by Kentik (due to exabgp)
+	FS_ACTION_TYPE_ACTION = 5;        // sample|terminal|sample-terminal
+	FS_ACTION_TYPE_MARK = 6;          // integer value as ASCII
+	FS_ACTION_TYPE_REDIRECT = 7;      // complex exabgp syntax (see exabgp/src/exabgp/configuration/flow/then.py)
+	FS_ACTION_TYPE_REDIRECT_IPV6 = 8; // rfc8956 (IPv6 only), not supported by Kentik (due to exabgp)
+	FS_ACTION_TYPE_REDIRECT_NH = 9;   // redirect to nexthop (0x0800, draft-simpson-idr-flowspec-redirect-02)
+	FS_ACTION_TYPE_COPY_NH = 10;      // copy to nexthop (as above)
+	FS_ACTION_TYPE_COMMUNITY = 11;    // set arbitrary BGP community
+	FS_ACTION_TYPE_LARGE_COMM = 12;   // set arbitrary large BGP community
+	FS_ACTION_TYPE_EXT_COMM = 13;     // set arbitrary extended BGP community
+}
