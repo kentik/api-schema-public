@@ -105,15 +105,14 @@ message Target {
 message Goal {
 	uint32 rules = 1;                  // number of rules this may use (>0)
 	float traffic = 2;                 // percentage of the analyzed traffic this must cover (0.0-1.0)
-	float v4damage = 3;                // max. number of IPv4 addresses to block, expressed as CIDR size (/0 to /32)
-	float v6damage = 4;                // max. number of IPv6 addresses to block, expressed as CIDR size (/0 to /128)
+	float v4damage = 3;                // max. possible damage to IPv4 (0.0-1.0); 0 = no limit
+	float v6damage = 4;                // max. possible damage to IPv6 (0.0-1.0); 0 = no limit
 }
 
 // Algo selects and configures an algorithm for generating mitigation rules
 message Algo {
-	Goal goal = 1;                     // if max_rules>0, overrides the global
+	Goal goal = 1;                     // if max_rules>0, overrides the global goal
 	Flowspec template = 2;             // if non-empty, overrides the global template
-	repeated string exclude = 3;       // CIDRs to exclude from blocking by the algo (if supported)
 
 	oneof algo {
 		TopCidr srcip = 10;             // find top source CIDRs
@@ -183,6 +182,8 @@ message TopCidr {
 
 	uint32 v6min = 3; // minimum IPv6 CIDR length, eg. /28
 	uint32 v6max = 4; // maximum IPv6 CIDR length, eg. /64
+
+	repeated string exclude = 5; // CIDRs to exclude from blocking
 }
 
 // Dimvals takes dimension values verbatim, which means blackholing
