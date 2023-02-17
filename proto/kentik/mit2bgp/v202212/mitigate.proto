@@ -147,6 +147,20 @@ message DeployRequest {
 	string route_metadata = 4;
 }
 
+// DeployResult encodes how successful (or not) was the deploy request
+enum DeployResult {
+	DEPLOY_RESULT_UNSPECIFIED = 0;  // invalid result value
+
+	// we did talk to the rib, and...
+	DEPLOY_RESULT_SUCCESS = 1;      // full success: everything propagated
+	DEPLOY_RESULT_PARTIAL = 2;      // partial success, some routes propagated, might need a cleanup
+	DEPLOY_RESULT_FAILURE = 3;      // pure failure: nothing propagated, a retry might help
+
+	// we skipped the deploy, because...
+	DEPLOY_RESULT_SKIP_CONFIG = 4;  // no adequate BGP session configured
+	DEPLOY_RESULT_SKIP_DEAD = 5;    // BGP session dead
+}
+
 // DeployResponse describes the result of BGP propagation for a particular router
 message DeployResponse {
 	// device id
@@ -156,19 +170,15 @@ message DeployResponse {
 	uint32 err_code = 2; // error code
 	string err_msg = 3;  // error message
 
-	// IPv4
-	bool v4alive = 10;   // does the IPv4 BGP session appears to be up? ignore below if false
-	bool v4success = 11; // requested action was fully successful; if false, you can use the below
-	bool v4rubble = 12;  // some of the routes were propagated, some not - might need a retry/cleanup
-	uint32 v4code = 13;  // error code
-	string v4error = 14; // error message
+	// IPv4 deploy result
+	DeployResult v4result = 4;  // IPv4 deploy result code
+	uint32 v4code = 5;          // optional error code
+	string v4error = 6;         // optional error message (details)
 
-	// IPv6 - see IPv4 above for descriptions
-	bool v6alive = 20;
-	bool v6success = 21;
-	bool v6rubble = 22;
-	uint32 v6code = 23;
-	string v6error = 24;
+	// IPv6 deploy result
+	DeployResult v6result = 7;  // IPv6 deploy result code
+	uint32 v6code = 8;          // optional error code
+	string v6error = 9;         // optional error message (details)
 }
 
 // ---
