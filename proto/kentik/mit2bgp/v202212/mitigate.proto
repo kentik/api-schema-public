@@ -145,9 +145,6 @@ message DeployRequest {
 
 	// if non-empty, will be used as chfrib route metadata
 	string route_metadata = 4;
-
-	// if true, withdraw routes directly in DB if the BGP session is down
-	bool withdraw_down = 5;
 }
 
 // DeployResponse describes the result of BGP propagation for a particular router
