@@ -149,16 +149,11 @@ message DeployRequest {
 
 // DeployResult encodes how successful (or not) was the deploy request
 enum DeployResult {
-	DEPLOY_RESULT_UNSPECIFIED = 0;  // invalid result value
-
-	// we did talk to the rib, and...
-	DEPLOY_RESULT_SUCCESS = 1;      // full success: everything propagated
-	DEPLOY_RESULT_PARTIAL = 2;      // partial success, some routes propagated, might need a cleanup
-	DEPLOY_RESULT_FAILURE = 3;      // pure failure: nothing propagated, a retry might help
-
-	// we skipped the deploy, because...
-	DEPLOY_RESULT_SKIP_CONFIG = 4;  // no adequate BGP session configured
-	DEPLOY_RESULT_SKIP_DEAD = 5;    // BGP session dead
+	DEPLOY_RESULT_UNSPECIFIED = 0;  // no attempt
+	DEPLOY_RESULT_NO_SESSION = 1;   // wanted to try, but no adequate BGP session was alive
+	DEPLOY_RESULT_FAILURE = 2;      // tried but nothing propagated, a retry might help
+	DEPLOY_RESULT_PARTIAL = 3;      // not all routes propagated, might need a cleanup
+	DEPLOY_RESULT_SUCCESS = 4;      // full success, all routes propagated
 }
 
 // DeployResponse describes the result of BGP propagation for a particular router
