@@ -184,10 +184,11 @@ message TopCidr {
 	repeated string exclude = 5; // CIDRs to exclude from blocking
 }
 
-// Dimvals takes dimension values verbatim, which means blackholing
-// if the alert dimension is IP_dst. In general, the default is to try to convert
-// every supported dimension value as a Flowspec match. If more control
-// is needed, the user should provide a Flowspec template in the StartRequest
-// that enables/disables infer on per-match basis.
+// Dimvals is a pseudo-algorithm that does not query KDE, but instead relies solely
+// on the mitigation Target to generate a Flowspec rule that blocks the provided
+// dimension values. This is how the classic Flowspec mitigation platform works.
+// If additional control over the generated rule is needed, the caller should use
+// the Flowspec template in the mitigation StartRequest.
 message Dimvals {
+	// this is intentionally left blank
 }
