@@ -24,7 +24,7 @@ message StartRequest {
 	string id = 1;
 
 	// customer
-	uint32 company_id = 2;
+	string company_id = 2;
 	uint32 user_id = 3;
 
 	// mitigation target
@@ -69,8 +69,7 @@ message StopRequest {
 	string id = 1;
 
 	// customer
-	uint32 company_id = 2;
-	// uint32 user_id = 3;
+	string company_id = 2;
 
 	// which devices to remove rules from?
 	repeated DeployRequest routers = 4;
