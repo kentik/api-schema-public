@@ -144,7 +144,7 @@ message DeployRequest {
 	bool v6skip = 3;
 
 	// if non-empty, will be used as chfrib route metadata
-	string meta = 4;
+	string route_metadata = 4;
 
 	// if true, withdraw routes directly in DB if the BGP session is down
 	bool withdraw_down = 5;
