@@ -45,8 +45,10 @@ message StartRequest {
 	// if missing or empty, the default is to infer every possible match type from the target
 	Flowspec template = 10;
 
-	// number of rules to send back in StartResponse
-	uint32 debug = 11;
+	// how many rules to show in the response?
+	// normally the caller does not need to see the generated rules, but eg. in case of
+	// a need to debug this system, show_rules > 0 will send some rules back in StartResponse
+	uint32 show_rules = 11;
 }
 
 message StartResponse {
@@ -59,8 +61,8 @@ message StartResponse {
 	// describes the deploy effects
 	repeated DeployResponse routers = 3;
 
-	// generated rules, if StartRequest.debug was > 0
-	repeated Flowspec debug = 4;
+	// generated rules, if StartRequest.show_rules was > 0
+	repeated Flowspec rules = 4;
 }
 
 message StopRequest {
