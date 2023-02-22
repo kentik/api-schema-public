@@ -1,0 +1,448 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "AS Group Configuration API",
+        "description": "# Overview\nThe AS Group Configuration API provides programmatic access to configuration of AS Groups:\n\n* **AS Group**: ASNs can be logically grouped into an AS group.",
+        "version": "v202212",
+        "contact": {
+            "name": "Kentik API Engineering",
+            "url": "https://github.com/kentik/api-schema-public"
+        }
+    },
+    "tags": [
+        {
+            "name": "ASGroupService"
+        }
+    ],
+    "paths": {
+        "/as_group/v202212/as_group": {
+            "get": {
+                "summary": "List all AS groups.",
+                "description": "Returns list of configured AS groups.",
+                "operationId": "ListASGroups",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202212ListASGroupsResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "ASGroupService"
+                ]
+            },
+            "post": {
+                "summary": "Configure a new AS group.",
+                "description": "Create configuration for a new AS group. Returns the newly created configuration.",
+                "operationId": "CreateASGroup",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202212CreateASGroupResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202212CreateASGroupRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "ASGroupService"
+                ]
+            }
+        },
+        "/as_group/v202212/as_group/{asGroup.id}": {
+            "put": {
+                "summary": "Updates configuration of a AS group.",
+                "description": "Replaces configuration of a AS group with attributes in the request. Returns the updated configuration.",
+                "operationId": "UpdateASGroup",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202212UpdateASGroupResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "asGroup.id",
+                        "description": "System generated unique identifier",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202212UpdateASGroupRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "ASGroupService"
+                ]
+            },
+            "get": {
+                "summary": "Retrieve configuration of a AS group.",
+                "description": "Returns configuration of a AS group specified by ID.",
+                "operationId": "GetASGroup",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202212GetASGroupResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "asGroup.id",
+                        "description": "ID of the requested AS group",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "ASGroupService"
+                ]
+            },
+            "delete": {
+                "summary": "Delete configuration of a AS group.",
+                "description": "Deletes configuration of a AS group with specific ID.",
+                "operationId": "DeleteASGroup",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202212DeleteASGroupResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "asGroup.id",
+                        "description": "ID of the AS group to be deleted",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "ASGroupService"
+                ]
+            }
+        }
+    },
+    "security": [
+        {
+            "email": [],
+            "token": []
+        }
+    ],
+    "externalDocs": {
+        "description": "General information about Kentik APIs",
+        "url": "https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview"
+    },
+    "components": {
+        "securitySchemes": {
+            "email": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-Email",
+                "in": "header"
+            },
+            "token": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-API-Token",
+                "in": "header"
+            }
+        },
+        "schemas": {
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "typeUrl": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string",
+                        "format": "byte"
+                    }
+                }
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "v202212ASGroupConcise": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "System generated unique identifier",
+                        "readOnly": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "User selected unique name",
+                        "required": [
+                            "name"
+                        ]
+                    },
+                    "asn": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of ASNs"
+                    },
+                    "createdDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Creation timestamp (UTC)",
+                        "readOnly": true
+                    },
+                    "updatedDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Last modification timestamp (UTC)",
+                        "readOnly": true
+                    }
+                },
+                "title": "ASGroupConcise",
+                "required": [
+                    "name"
+                ]
+            },
+            "v202212ASGroupDetailed": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "System generated unique identifier",
+                        "readOnly": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "User selected unique name",
+                        "required": [
+                            "name"
+                        ]
+                    },
+                    "asn": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202212AutonomousSystem"
+                        },
+                        "description": "List of ASNs"
+                    },
+                    "createdDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Creation timestamp (UTC)",
+                        "readOnly": true
+                    },
+                    "updatedDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Last modification timestamp (UTC)",
+                        "readOnly": true
+                    }
+                },
+                "title": "ASGroupDetailed",
+                "required": [
+                    "name"
+                ]
+            },
+            "v202212AutonomousSystem": {
+                "type": "object",
+                "properties": {
+                    "asn": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "title": "AutonomousSystem"
+            },
+            "v202212CreateASGroupRequest": {
+                "type": "object",
+                "properties": {
+                    "asGroup": {
+                        "$ref": "#/components/schemas/v202212ASGroupConcise"
+                    }
+                },
+                "title": "CreateASGroupRequest",
+                "required": [
+                    "asGroup"
+                ]
+            },
+            "v202212CreateASGroupResponse": {
+                "type": "object",
+                "properties": {
+                    "asGroup": {
+                        "$ref": "#/components/schemas/v202212ASGroupDetailed"
+                    }
+                },
+                "title": "CreateASGroupResponse"
+            },
+            "v202212DeleteASGroupResponse": {
+                "type": "object",
+                "title": "DeleteASGroupResponse"
+            },
+            "v202212GetASGroupResponse": {
+                "type": "object",
+                "properties": {
+                    "asGroup": {
+                        "$ref": "#/components/schemas/v202212ASGroupDetailed"
+                    }
+                },
+                "title": "GetASGroupResponse"
+            },
+            "v202212ListASGroupsResponse": {
+                "type": "object",
+                "properties": {
+                    "asGroups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202212ASGroupDetailed"
+                        },
+                        "description": "List of configurations of requested AS groups"
+                    },
+                    "invalidCount": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of invalid entries encountered while collecting data"
+                    }
+                },
+                "title": "ListASGroupsResponse"
+            },
+            "v202212UpdateASGroupRequest": {
+                "type": "object",
+                "properties": {
+                    "asGroup": {
+                        "$ref": "#/components/schemas/v202212ASGroupConcise"
+                    }
+                },
+                "title": "UpdateASGroupRequest",
+                "required": [
+                    "asGroup"
+                ]
+            },
+            "v202212UpdateASGroupResponse": {
+                "type": "object",
+                "properties": {
+                    "asGroup": {
+                        "$ref": "#/components/schemas/v202212ASGroupDetailed"
+                    }
+                },
+                "title": "UpdateASGroupResponse"
+            }
+        }
+    }
+}

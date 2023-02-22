@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package kentik.ktrac.route.v202104;
+option go_package = "github.com/kentik/ktrac/pkg/route/pb";
+
+// {{.Name}}
+enum RpkiStatus {
+  // Invalid value.
+  RPKI_STATUS_UNSPECIFIED = 0;
+  // No matching ROAs found for the prefix.
+  RPKI_STATUS_NOT_FOUND = 1;
+  // Explicitly invalid prefix matching ROA
+  RPKI_STATUS_EXPLICIT_INVALID = 2;
+  // Prefix format not suitable for validation
+  RPKI_STATUS_INVALID_PREFIX = 3;
+  // Prefix origin does not match any matching ROA
+  RPKI_STATUS_INVALID = 4;
+  // Prefix origin matches an ROA
+  RPKI_STATUS_VALID = 5;
+  // Error during validation
+  RPKI_STATUS_ERROR = 8;
+}
+
+message Annotations {
+  RpkiStatus rpki_status = 1;
+}

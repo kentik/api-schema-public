@@ -1,0 +1,1245 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "MKP API",
+        "version": "202102alpha1",
+        "contact": {
+            "name": "Kentik API Engineering",
+            "url": "https://github.com/kentik/api"
+        }
+    },
+    "tags": [
+        {
+            "name": "PackageService"
+        },
+        {
+            "name": "TenantService"
+        }
+    ],
+    "paths": {
+        "/mkp/v202102alpha1/packages": {
+            "get": {
+                "summary": "List MKP packages.",
+                "description": "Returns a list of MKP packages.",
+                "operationId": "PackageList",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202102alpha1ListPackageResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "PackageService"
+                ]
+            },
+            "post": {
+                "summary": "Create a package template.",
+                "description": "Create package from request. returns created package.",
+                "operationId": "PackageCreate",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202102alpha1CreatePackageResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202102alpha1CreatePackageRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "PackageService"
+                ]
+            }
+        },
+        "/mkp/v202102alpha1/packages/{id}": {
+            "get": {
+                "summary": "Get information aboout a package.",
+                "description": "Returns information about package specified with ID.",
+                "operationId": "PackageGet",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202102alpha1GetPackageResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uint64"
+                        }
+                    }
+                ],
+                "tags": [
+                    "PackageService"
+                ]
+            },
+            "delete": {
+                "summary": "Delete a package.",
+                "description": "Deletes the package specified with id.",
+                "operationId": "PackageDelete",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202102alpha1DeletePackageResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uint64"
+                        }
+                    }
+                ],
+                "tags": [
+                    "PackageService"
+                ]
+            },
+            "put": {
+                "summary": "Update a package.",
+                "description": "Replaces the entire package attributes specified with id.",
+                "operationId": "PackageUpdate",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202102alpha1UpdatePackageResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uint64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202102alpha1UpdatePackageRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "PackageService"
+                ]
+            },
+            "patch": {
+                "summary": "Patch a package.",
+                "description": "Partially Updates the attributes of package specified with id and mask fields.",
+                "operationId": "PackagePatch",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202102alpha1PatchPackageResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uint64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202102alpha1PatchPackageRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "PackageService"
+                ]
+            }
+        },
+        "/mkp/v202102alpha1/tenants": {
+            "get": {
+                "summary": "List MKP tenants.",
+                "description": "Returns a list of MKP tenants.",
+                "operationId": "TenantList",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202102alpha1ListTenantResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "TenantService"
+                ]
+            },
+            "post": {
+                "summary": "Create a tenant.",
+                "description": "Create tenant from request. returns created tenant.",
+                "operationId": "TenantCreate",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202102alpha1CreateTenantResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202102alpha1CreateTenantRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "TenantService"
+                ]
+            }
+        },
+        "/mkp/v202102alpha1/tenants/{id}": {
+            "get": {
+                "summary": "Get information aboout a tenant.",
+                "description": "Returns information about package specified with ID.",
+                "operationId": "TenantGet",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202102alpha1GetTenantResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uint64"
+                        }
+                    }
+                ],
+                "tags": [
+                    "TenantService"
+                ]
+            },
+            "delete": {
+                "summary": "Delete a tenant.",
+                "description": "Deletes the tenant specified with id.",
+                "operationId": "TenantDelete",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202102alpha1DeleteTenantResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uint64"
+                        }
+                    }
+                ],
+                "tags": [
+                    "TenantService"
+                ]
+            },
+            "put": {
+                "summary": "Update a tenant.",
+                "description": "Replaces the entire tenant attributes specified with id.",
+                "operationId": "TenantUpdate",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202102alpha1UpdateTenantResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uint64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202102alpha1UpdateTenantRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "TenantService"
+                ]
+            },
+            "patch": {
+                "summary": "Patch a tenant.",
+                "description": "Partially Updates the attributes of tenant specified with id and mask fields.",
+                "operationId": "TenantPatch",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202102alpha1PatchTenantResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uint64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202102alpha1PatchTenantRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "TenantService"
+                ]
+            }
+        }
+    },
+    "security": [
+        {
+            "email": [],
+            "token": []
+        }
+    ],
+    "externalDocs": {
+        "description": "More about Kentik APIs",
+        "url": "https://docs.kentik.com/api"
+    },
+    "components": {
+        "securitySchemes": {
+            "email": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-Email",
+                "in": "header"
+            },
+            "token": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-API-Token",
+                "in": "header"
+            }
+        },
+        "schemas": {
+            "AssetReport": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "type": {
+                        "type": "string"
+                    }
+                }
+            },
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "typeUrl": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string",
+                        "format": "byte"
+                    }
+                }
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "v202102alpha1Activate": {
+                "type": "object",
+                "properties": {
+                    "times": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "operator": {
+                        "type": "string"
+                    },
+                    "timeUnit": {
+                        "type": "string"
+                    },
+                    "timeWindow": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "gracePeriod": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "v202102alpha1Alert": {
+                "type": "object",
+                "properties": {
+                    "saved": {
+                        "type": "boolean"
+                    },
+                    "policyId": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "thresholds": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202102alpha1Threshold"
+                        }
+                    },
+                    "primaryMetric": {
+                        "type": "string"
+                    },
+                    "secondaryMetrics": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "isTemplate": {
+                        "type": "boolean"
+                    },
+                    "subpolicyId": {
+                        "type": "string"
+                    }
+                },
+                "title": "Alert Policy"
+            },
+            "v202102alpha1Asset": {
+                "type": "object",
+                "properties": {
+                    "reports": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/AssetReport"
+                        }
+                    },
+                    "defaultReport": {
+                        "$ref": "#/components/schemas/AssetReport"
+                    }
+                }
+            },
+            "v202102alpha1Condition": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "metric": {
+                        "type": "string"
+                    },
+                    "operator": {
+                        "type": "string"
+                    },
+                    "valueType": {
+                        "type": "string"
+                    },
+                    "valueSelect": {
+                        "type": "string"
+                    }
+                }
+            },
+            "v202102alpha1CreatePackageRequest": {
+                "type": "object",
+                "properties": {
+                    "package": {
+                        "$ref": "#/components/schemas/v202102alpha1Package"
+                    }
+                }
+            },
+            "v202102alpha1CreatePackageResponse": {
+                "type": "object",
+                "properties": {
+                    "package": {
+                        "$ref": "#/components/schemas/v202102alpha1Package"
+                    }
+                }
+            },
+            "v202102alpha1CreateTenantRequest": {
+                "type": "object",
+                "properties": {
+                    "tenant": {
+                        "$ref": "#/components/schemas/v202102alpha1Tenant"
+                    }
+                }
+            },
+            "v202102alpha1CreateTenantResponse": {
+                "type": "object",
+                "properties": {
+                    "tenant": {
+                        "$ref": "#/components/schemas/v202102alpha1Tenant"
+                    }
+                }
+            },
+            "v202102alpha1CustomDimension": {
+                "type": "object",
+                "properties": {
+                    "dimension": {
+                        "type": "string"
+                    },
+                    "populator": {
+                        "type": "string"
+                    }
+                }
+            },
+            "v202102alpha1DeletePackageResponse": {
+                "type": "object"
+            },
+            "v202102alpha1DeleteTenantResponse": {
+                "type": "object"
+            },
+            "v202102alpha1Device": {
+                "type": "object",
+                "properties": {
+                    "allDevices": {
+                        "type": "boolean"
+                    },
+                    "deviceTypes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "deviceLabels": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    "deviceSites": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    "deviceName": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "v202102alpha1Filter": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "named": {
+                        "type": "boolean"
+                    },
+                    "connector": {
+                        "type": "string"
+                    },
+                    "not": {
+                        "type": "boolean"
+                    },
+                    "autoAdded": {
+                        "type": "string"
+                    },
+                    "savedFilters": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202102alpha1FilterField"
+                        }
+                    },
+                    "filterGroups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202102alpha1Filter"
+                        }
+                    },
+                    "metric": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "v202102alpha1FilterField": {
+                "type": "object",
+                "properties": {
+                    "filterField": {
+                        "type": "string"
+                    },
+                    "operator": {
+                        "type": "string"
+                    },
+                    "filterValue": {
+                        "type": "string"
+                    }
+                }
+            },
+            "v202102alpha1GetPackageResponse": {
+                "type": "object",
+                "properties": {
+                    "package": {
+                        "$ref": "#/components/schemas/v202102alpha1Package"
+                    }
+                }
+            },
+            "v202102alpha1GetTenantResponse": {
+                "type": "object",
+                "properties": {
+                    "tenant": {
+                        "$ref": "#/components/schemas/v202102alpha1Tenant"
+                    }
+                }
+            },
+            "v202102alpha1ListPackageResponse": {
+                "type": "object",
+                "properties": {
+                    "packages": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202102alpha1Package"
+                        }
+                    },
+                    "invalidCount": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "The number of invalid packages, for troubleshooting. Should be zero."
+                    }
+                }
+            },
+            "v202102alpha1ListTenantResponse": {
+                "type": "object",
+                "properties": {
+                    "tenants": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202102alpha1Tenant"
+                        }
+                    },
+                    "invalidCount": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "v202102alpha1Mitigation": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "companyId": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "pairingId": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "thresholdId": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "isMethodOverridable": {
+                        "type": "boolean"
+                    },
+                    "mitigationApplyType": {
+                        "type": "string"
+                    },
+                    "mitigationClearType": {
+                        "type": "string"
+                    },
+                    "mitigationApplyTimer": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "mitigationClearTimer": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "isPlatformOverridable": {
+                        "type": "boolean"
+                    },
+                    "cdate": {
+                        "type": "string"
+                    },
+                    "edate": {
+                        "type": "string"
+                    }
+                }
+            },
+            "v202102alpha1NotificationChannel": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uint64"
+                    }
+                }
+            },
+            "v202102alpha1Package": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "companyId": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "icon": {
+                        "type": "string"
+                    },
+                    "color": {
+                        "type": "string"
+                    },
+                    "alerts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202102alpha1Alert"
+                        }
+                    },
+                    "assets": {
+                        "$ref": "#/components/schemas/v202102alpha1Asset"
+                    },
+                    "isDefault": {
+                        "type": "boolean"
+                    },
+                    "tenants": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202102alpha1TenantLink"
+                        },
+                        "title": "list of tenants using this Package template (for GetTenant only)"
+                    }
+                },
+                "title": "Package Template definition"
+            },
+            "v202102alpha1PatchPackageRequest": {
+                "type": "object",
+                "properties": {
+                    "package": {
+                        "$ref": "#/components/schemas/v202102alpha1Package"
+                    },
+                    "mask": {
+                        "type": "string",
+                        "title": "CSV values of fields follow the path of Package object dot notation (ie. \"package.name,package.assets.reports\")"
+                    }
+                }
+            },
+            "v202102alpha1PatchPackageResponse": {
+                "type": "object",
+                "properties": {
+                    "package": {
+                        "$ref": "#/components/schemas/v202102alpha1Package"
+                    }
+                }
+            },
+            "v202102alpha1PatchTenantRequest": {
+                "type": "object",
+                "properties": {
+                    "tenant": {
+                        "$ref": "#/components/schemas/v202102alpha1Tenant"
+                    },
+                    "mask": {
+                        "type": "string",
+                        "title": "CSV values of fields follow the path of Tenant object dot notation (ie. \"tenant.name,tenant.filters.name\")"
+                    }
+                }
+            },
+            "v202102alpha1PatchTenantResponse": {
+                "type": "object",
+                "properties": {
+                    "tenant": {
+                        "$ref": "#/components/schemas/v202102alpha1Tenant"
+                    }
+                }
+            },
+            "v202102alpha1Tenant": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "companyId": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "enabled": {
+                        "type": "boolean"
+                    },
+                    "alerts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202102alpha1Alert"
+                        },
+                        "title": "config object"
+                    },
+                    "assets": {
+                        "$ref": "#/components/schemas/v202102alpha1Asset"
+                    },
+                    "asn": {
+                        "type": "string"
+                    },
+                    "cidr": {
+                        "type": "string"
+                    },
+                    "customDimensions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202102alpha1CustomDimension"
+                        }
+                    },
+                    "devices": {
+                        "$ref": "#/components/schemas/v202102alpha1Device"
+                    },
+                    "filters": {
+                        "$ref": "#/components/schemas/v202102alpha1Filter"
+                    },
+                    "interfaceName": {
+                        "type": "string"
+                    },
+                    "snmpAlias": {
+                        "type": "string"
+                    },
+                    "packages": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202102alpha1Package"
+                        },
+                        "title": "Packages associated with Tenant (for GetTenant only)"
+                    },
+                    "users": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202102alpha1User"
+                        },
+                        "title": "Users associated with Tenant (for GetTenant only)"
+                    },
+                    "templateId": {
+                        "type": "integer",
+                        "format": "int64",
+                        "title": "Package ID to use with tenant"
+                    }
+                }
+            },
+            "v202102alpha1TenantLink": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "pivotTemplateId": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "pivotUserGroupId": {
+                        "type": "string",
+                        "format": "uint64"
+                    }
+                },
+                "title": "Tenants referencing this Package template"
+            },
+            "v202102alpha1Threshold": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "activate": {
+                        "$ref": "#/components/schemas/v202102alpha1Activate"
+                    },
+                    "severity": {
+                        "type": "string"
+                    },
+                    "conditions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202102alpha1Condition"
+                        }
+                    },
+                    "mitigations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202102alpha1Mitigation"
+                        }
+                    },
+                    "notificationChannels": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202102alpha1NotificationChannel"
+                        }
+                    },
+                    "thresholdAckRequired": {
+                        "type": "boolean"
+                    },
+                    "enableTenantNotifications": {
+                        "type": "boolean"
+                    },
+                    "receiveLandlordNotifications": {
+                        "type": "boolean"
+                    }
+                },
+                "title": "Alert Threshold"
+            },
+            "v202102alpha1UpdatePackageRequest": {
+                "type": "object",
+                "properties": {
+                    "package": {
+                        "$ref": "#/components/schemas/v202102alpha1Package"
+                    }
+                }
+            },
+            "v202102alpha1UpdatePackageResponse": {
+                "type": "object",
+                "properties": {
+                    "package": {
+                        "$ref": "#/components/schemas/v202102alpha1Package"
+                    }
+                }
+            },
+            "v202102alpha1UpdateTenantRequest": {
+                "type": "object",
+                "properties": {
+                    "tenant": {
+                        "$ref": "#/components/schemas/v202102alpha1Tenant"
+                    }
+                }
+            },
+            "v202102alpha1UpdateTenantResponse": {
+                "type": "object",
+                "properties": {
+                    "tenant": {
+                        "$ref": "#/components/schemas/v202102alpha1Tenant"
+                    }
+                }
+            },
+            "v202102alpha1User": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "companyId": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "userEmail": {
+                        "type": "string"
+                    },
+                    "userName": {
+                        "type": "string"
+                    },
+                    "userFullName": {
+                        "type": "string"
+                    },
+                    "userGroupId": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "lastLogin": {
+                        "type": "string"
+                    },
+                    "permissionOverrides": {
+                        "type": "boolean",
+                        "title": "Required for the CreateTenant operation"
+                    },
+                    "role": {
+                        "type": "string",
+                        "title": "Required for the CreateTenant operation"
+                    },
+                    "userLevel": {
+                        "type": "integer",
+                        "format": "int64",
+                        "title": "Required for the CreateTenant operation"
+                    }
+                }
+            }
+        }
+    }
+}

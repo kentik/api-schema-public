@@ -1,0 +1,842 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Site Configuration API",
+        "description": "# Overview\nThe Site Configuration API provides programmatic access to configuration of Sites and Site Markets:\n\n* **Site**: A site is a specific user-defined physical location (e.g. a data center at a given address) or logical location at which there is hosting of your devices, services, providers, or partner networks. Information that can be associated with a site includes the classification of IP addresses and the site's logical network topology/architecture.\n* **Site Market**: Sites with any common characteristics of your choosing (e.g. all PoPs in a particular region) can be logically grouped into a site market.\n\nBoth REST endpoint and gRPC RPCs are provided.\n\n***Notes:*** \n    - Once a site is created in Kentik, you can assign one or more devices to the site via the settings for those devices; to do so programmatically you'd use the v5 Device API (see [Device Create](https://kb.kentik.com/v0/Ec05.htm#Ec05-Device_Create)).\n    - Sites can also be managed using the legacy REST-only [Site API](https://kb.kentik.com/v0/Ec10.htm#Ec10-Site_API), which provides access to a subset of site configuration attributes.",
+        "version": "v202211",
+        "contact": {
+            "name": "Kentik API Engineering",
+            "url": "https://github.com/kentik/api-schema-public"
+        }
+    },
+    "tags": [
+        {
+            "name": "SiteService"
+        }
+    ],
+    "paths": {
+        "/site/v202211/site_markets": {
+            "get": {
+                "summary": "List all site markets.",
+                "description": "Returns list of configured site markets.",
+                "operationId": "ListSiteMarkets",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202211ListSiteMarketsResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "SiteService"
+                ]
+            },
+            "post": {
+                "summary": "Configure a new site market.",
+                "description": "Create configuration for a new site market. Returns the newly created configuration.",
+                "operationId": "CreateSiteMarket",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202211CreateSiteMarketResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202211CreateSiteMarketRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "SiteService"
+                ]
+            }
+        },
+        "/site/v202211/site_markets/{id}": {
+            "get": {
+                "summary": "Retrieve configuration of a site market.",
+                "description": "Returns configuration of a site market specified by ID.",
+                "operationId": "GetSiteMarket",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202211GetSiteMarketResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "description": "ID of the requested site market",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "SiteService"
+                ]
+            },
+            "delete": {
+                "summary": "Delete configuration of a site market.",
+                "description": "Deletes configuration of a site market with specific ID.",
+                "operationId": "DeleteSiteMarket",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202211DeleteSiteMarketResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "description": "ID of the site market to be deleted",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "SiteService"
+                ]
+            },
+            "put": {
+                "summary": "Updates configuration of a site market.",
+                "description": "Replaces configuration of a site market with attributes in the request. Returns the updated configuration.",
+                "operationId": "UpdateSiteMarket",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202211UpdateSiteMarketResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "description": "System generated unique identifier",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202211UpdateSiteMarketRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "SiteService"
+                ]
+            }
+        },
+        "/site/v202211/sites": {
+            "get": {
+                "summary": "List all sites.",
+                "description": "Returns list of configured sites.",
+                "operationId": "ListSites",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202211ListSitesResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "SiteService"
+                ]
+            },
+            "post": {
+                "summary": "Configure a new site.",
+                "description": "Create configuration for a new site. Returns the newly created configuration.",
+                "operationId": "CreateSite",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202211CreateSiteResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202211CreateSiteRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "SiteService"
+                ]
+            }
+        },
+        "/site/v202211/sites/{id}": {
+            "get": {
+                "summary": "Retrieve configuration of a site.",
+                "description": "Returns configuration of a site specified by ID.",
+                "operationId": "GetSite",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202211GetSiteResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "description": "ID of the requested site",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "SiteService"
+                ]
+            },
+            "delete": {
+                "summary": "Delete configuration of a site.",
+                "description": "Deletes configuration of a site with specific ID.",
+                "operationId": "DeleteSite",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202211DeleteSiteResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "description": "ID of the site to be deleted",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "SiteService"
+                ]
+            },
+            "put": {
+                "summary": "Updates configuration of a site.",
+                "description": "Replaces configuration of a site with attributes in the request. Returns the updated configuration.",
+                "operationId": "UpdateSite",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202211UpdateSiteResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "description": "System generated unique identifier",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202211UpdateSiteRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "SiteService"
+                ]
+            }
+        }
+    },
+    "security": [
+        {
+            "email": [],
+            "token": []
+        }
+    ],
+    "externalDocs": {
+        "description": "General information about Kentik APIs",
+        "url": "https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview"
+    },
+    "components": {
+        "securitySchemes": {
+            "email": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-Email",
+                "in": "header"
+            },
+            "token": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-API-Token",
+                "in": "header"
+            }
+        },
+        "schemas": {
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "typeUrl": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string",
+                        "format": "byte"
+                    }
+                }
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "v202211CreateSiteMarketRequest": {
+                "type": "object",
+                "properties": {
+                    "siteMarket": {
+                        "$ref": "#/components/schemas/v202211SiteMarket"
+                    }
+                },
+                "title": "CreateSiteMarketRequest",
+                "required": [
+                    "siteMarket"
+                ]
+            },
+            "v202211CreateSiteMarketResponse": {
+                "type": "object",
+                "properties": {
+                    "siteMarket": {
+                        "$ref": "#/components/schemas/v202211SiteMarket"
+                    }
+                },
+                "title": "CreateSiteMarketResponse"
+            },
+            "v202211CreateSiteRequest": {
+                "type": "object",
+                "properties": {
+                    "site": {
+                        "$ref": "#/components/schemas/v202211Site"
+                    }
+                },
+                "title": "CreateSiteRequest",
+                "required": [
+                    "site"
+                ]
+            },
+            "v202211CreateSiteResponse": {
+                "type": "object",
+                "properties": {
+                    "site": {
+                        "$ref": "#/components/schemas/v202211Site"
+                    }
+                },
+                "title": "CreateSiteResponse"
+            },
+            "v202211DeleteSiteMarketResponse": {
+                "type": "object",
+                "title": "DeleteSiteMarketResponse"
+            },
+            "v202211DeleteSiteResponse": {
+                "type": "object",
+                "title": "DeleteSiteResponse"
+            },
+            "v202211GetSiteMarketResponse": {
+                "type": "object",
+                "properties": {
+                    "siteMarket": {
+                        "$ref": "#/components/schemas/v202211SiteMarket"
+                    }
+                },
+                "title": "GetSiteMarketResponse"
+            },
+            "v202211GetSiteResponse": {
+                "type": "object",
+                "properties": {
+                    "site": {
+                        "$ref": "#/components/schemas/v202211Site"
+                    }
+                },
+                "title": "GetSiteResponse"
+            },
+            "v202211Layer": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the network layer"
+                    },
+                    "deviceIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "IDs of devices that are deemed to be part of the network layer"
+                    }
+                },
+                "title": "Layer"
+            },
+            "v202211LayerSet": {
+                "type": "object",
+                "properties": {
+                    "layers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202211Layer"
+                        },
+                        "description": "List of parallel network layers"
+                    }
+                },
+                "title": "LayerSet"
+            },
+            "v202211ListSiteMarketsResponse": {
+                "type": "object",
+                "properties": {
+                    "siteMarkets": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202211SiteMarket"
+                        },
+                        "description": "List of configurations of requested site markets"
+                    },
+                    "invalidCount": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of invalid entries encountered while collecting data"
+                    }
+                },
+                "title": "ListSiteMarketsResponse"
+            },
+            "v202211ListSitesResponse": {
+                "type": "object",
+                "properties": {
+                    "sites": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202211Site"
+                        },
+                        "description": "List of configurations of requested sites"
+                    },
+                    "invalidCount": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of invalid entries encountered while collecting data"
+                    }
+                },
+                "title": "ListSitesResponse"
+            },
+            "v202211PostalAddress": {
+                "type": "object",
+                "properties": {
+                    "address": {
+                        "type": "string",
+                        "description": "Street address",
+                        "required": [
+                            "address"
+                        ]
+                    },
+                    "city": {
+                        "type": "string",
+                        "description": "City (full name)",
+                        "required": [
+                            "city"
+                        ]
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "Geographical region"
+                    },
+                    "postalCode": {
+                        "type": "string",
+                        "description": "Country specific postal code"
+                    },
+                    "country": {
+                        "type": "string",
+                        "description": "Country (full name or country code)",
+                        "required": [
+                            "country"
+                        ]
+                    }
+                },
+                "title": "PostalAddress",
+                "required": [
+                    "address",
+                    "city",
+                    "country"
+                ]
+            },
+            "v202211Site": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "System generated unique identifier",
+                        "readOnly": true
+                    },
+                    "title": {
+                        "type": "string",
+                        "description": "User selected title/name",
+                        "required": [
+                            "title"
+                        ]
+                    },
+                    "lat": {
+                        "type": "number",
+                        "format": "double",
+                        "description": "Latitude (signed decimal degrees)"
+                    },
+                    "lon": {
+                        "type": "number",
+                        "format": "double",
+                        "description": "Longitude (signed decimal degrees)"
+                    },
+                    "postalAddress": {
+                        "$ref": "#/components/schemas/v202211PostalAddress"
+                    },
+                    "type": {
+                        "$ref": "#/components/schemas/v202211SiteType"
+                    },
+                    "addressClassification": {
+                        "$ref": "#/components/schemas/v202211SiteIpAddressClassification"
+                    },
+                    "architecture": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202211LayerSet"
+                        },
+                        "description": "Logical network topology/architecture"
+                    },
+                    "siteMarket": {
+                        "type": "string",
+                        "description": "Name of the Site Market this sire belongs to"
+                    }
+                },
+                "title": "Site",
+                "required": [
+                    "title",
+                    "type"
+                ]
+            },
+            "v202211SiteIpAddressClassification": {
+                "type": "object",
+                "properties": {
+                    "infrastructureNetworks": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of IP address prefixes (in standard CIDR notation) used in infrastructure networks"
+                    },
+                    "userAccessNetworks": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of IP address prefixes (in standard CIDR notation) used in access networks"
+                    },
+                    "otherNetworks": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of IP address prefixes (in standard CIDR notation) used in other networks"
+                    }
+                },
+                "title": "SiteIpAddressClassification"
+            },
+            "v202211SiteMarket": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "System generated unique identifier",
+                        "readOnly": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "User selected unique name",
+                        "required": [
+                            "name"
+                        ]
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Free-form description"
+                    },
+                    "numberOfSites": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of sites in this market",
+                        "readOnly": true
+                    },
+                    "cdate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Creation timestamp (UTC)",
+                        "readOnly": true
+                    },
+                    "edate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Last modification timestamp (UTC)",
+                        "readOnly": true
+                    }
+                },
+                "title": "SiteMarket",
+                "required": [
+                    "name"
+                ]
+            },
+            "v202211SiteType": {
+                "type": "string",
+                "enum": [
+                    "SITE_TYPE_UNSPECIFIED",
+                    "SITE_TYPE_DATA_CENTER",
+                    "SITE_TYPE_CLOUD",
+                    "SITE_TYPE_BRANCH",
+                    "SITE_TYPE_CONNECTIVITY",
+                    "SITE_TYPE_CUSTOMER",
+                    "SITE_TYPE_OTHER"
+                ],
+                "default": "SITE_TYPE_UNSPECIFIED",
+                "description": "- SITE_TYPE_UNSPECIFIED: Invalid value.\n - SITE_TYPE_DATA_CENTER: Data center site type.\n - SITE_TYPE_CLOUD: Cloud site type.\n - SITE_TYPE_BRANCH: Branch office site type.\n - SITE_TYPE_CONNECTIVITY: Connectivity/PoP site type.\n - SITE_TYPE_CUSTOMER: Customer/partner site type.\n - SITE_TYPE_OTHER: Other site type.",
+                "title": "SiteType"
+            },
+            "v202211UpdateSiteMarketRequest": {
+                "type": "object",
+                "properties": {
+                    "siteMarket": {
+                        "$ref": "#/components/schemas/v202211SiteMarket"
+                    }
+                },
+                "title": "UpdateSiteMarketRequest",
+                "required": [
+                    "siteMarket"
+                ]
+            },
+            "v202211UpdateSiteMarketResponse": {
+                "type": "object",
+                "properties": {
+                    "siteMarket": {
+                        "$ref": "#/components/schemas/v202211SiteMarket"
+                    }
+                },
+                "title": "UpdateSiteMarketResponse"
+            },
+            "v202211UpdateSiteRequest": {
+                "type": "object",
+                "properties": {
+                    "site": {
+                        "$ref": "#/components/schemas/v202211Site"
+                    }
+                },
+                "title": "UpdateSiteRequest",
+                "required": [
+                    "site"
+                ]
+            },
+            "v202211UpdateSiteResponse": {
+                "type": "object",
+                "properties": {
+                    "site": {
+                        "$ref": "#/components/schemas/v202211Site"
+                    }
+                },
+                "title": "UpdateSiteResponse"
+            }
+        }
+    }
+}
