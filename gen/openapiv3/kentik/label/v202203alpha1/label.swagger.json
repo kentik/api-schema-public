@@ -17,7 +17,7 @@
         "/label/v202203alpha1/labels": {
             "get": {
                 "summary": "Fetch Search Labels",
-                "description": "Return list of labels matches search critera.",
+                "description": "Return list of labels matches search criteria.",
                 "operationId": "ListLabel",
                 "responses": {
                     "200": {

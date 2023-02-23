@@ -14,8 +14,6 @@ _sym_db = _symbol_database.Default()
 
 from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
 from google.api import client_pb2 as google_dot_api_dot_client__pb2
-from google.type import latlng_pb2 as google_dot_type_dot_latlng__pb2
-from google.type import postal_address_pb2 as google_dot_type_dot_postal__address__pb2
 from protoc_gen_openapiv2.options import annotations_pb2 as protoc__gen__openapiv2_dot_options_dot_annotations__pb2
 from kentik.core.v202012alpha1 import annotations_pb2 as kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
@@ -27,9 +25,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Zbgithub.com/kentik/api-schema/gen/go/kentik/notification_channel/v202204alpha1;notification_channel\222A\365\002\022\216\001\n\027NotificationChannel API\022K--- This API has been deprecated and will be removed in the near future ---\"\030\n\026Kentik API Engineering2\014202204alpha1*\001\0022\020application/json:\020application/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]\n%General information about Kentik APIs\0224https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\nDkentik/notification_channel/v202204alpha1/notification_channel.proto\x12)kentik.notification_channel.v202204alpha1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x18google/type/latlng.proto\x1a google/type/postal_address.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a+kentik/core/v202012alpha1/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x81\x02\n\x13NotificationChannel\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n\x04name\x18\x02 \x01(\tR\x04name\x12J\n\x04type\x18\x03 \x01(\x0e\x32\x36.kentik.notification_channel.v202204alpha1.ChannelTypeR\x04type\x12\x16\n\x06status\x18\x04 \x01(\tR\x06status\x12\x30\n\x05\x63\x64\x61te\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x05\x63\x64\x61te\x12\x30\n\x05\x65\x64\x61te\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x05\x65\x64\x61te\"!\n\x1fListNotificationChannelsRequest\"\xbc\x01\n ListNotificationChannelsResponse\x12s\n\x15notification_channels\x18\x01 \x03(\x0b\x32>.kentik.notification_channel.v202204alpha1.NotificationChannelR\x14notificationChannels\x12#\n\rinvalid_count\x18\x02 \x01(\x05R\x0cinvalidCount\"/\n\x1dGetNotificationChannelRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"\x93\x01\n\x1eGetNotificationChannelResponse\x12q\n\x14notification_channel\x18\x01 \x01(\x0b\x32>.kentik.notification_channel.v202204alpha1.NotificationChannelR\x13notificationChannel*\xea\x02\n\x0b\x43hannelType\x12\x1c\n\x18\x43HANNEL_TYPE_UNSPECIFIED\x10\x00\x12\x19\n\x15\x43HANNEL_TYPE_XMATTERS\x10\x01\x12\x16\n\x12\x43HANNEL_TYPE_SLACK\x10\x02\x12\x1b\n\x17\x43HANNEL_TYPE_SERVICENOW\x10\x03\x12\x17\n\x13\x43HANNEL_TYPE_SYSLOG\x10\x04\x12\x19\n\x15\x43HANNEL_TYPE_OPSGENIE\x10\x05\x12\x1f\n\x1b\x43HANNEL_TYPE_CUSTOM_WEBHOOK\x10\x06\x12\x17\n\x13\x43HANNEL_TYPE_SPLUNK\x10\x07\x12\x18\n\x14\x43HANNEL_TYPE_MSTEAMS\x10\x08\x12\x15\n\x11\x43HANNEL_TYPE_JSON\x10\t\x12\x16\n\x12\x43HANNEL_TYPE_EMAIL\x10\n\x12\x1a\n\x16\x43HANNEL_TYPE_VICTOROPS\x10\x0b\x12\x1a\n\x16\x43HANNEL_TYPE_PAGERDUTY\x10\x0c\x32\x97\x07\n\x1aNotificationChannelService\x12\x98\x03\n\x18ListNotificationChannels\x12J.kentik.notification_channel.v202204alpha1.ListNotificationChannelsRequest\x1aK.kentik.notification_channel.v202204alpha1.ListNotificationChannelsResponse\"\xe2\x01\x92\x41{\x12!Fetch Search NotificationChannels\x1a<Return list of notification_channels matches search critera.*\x18ListNotificationChannels\xf2\xd7\x02\x1f\x61\x64min.notification_channel:read\x82\xd3\xe4\x93\x02;\x12\x39/notification_channel/v202204alpha1/notification_channels\x12\xa3\x03\n\x16GetNotificationChannel\x12H.kentik.notification_channel.v202204alpha1.GetNotificationChannelRequest\x1aI.kentik.notification_channel.v202204alpha1.GetNotificationChannelResponse\"\xf3\x01\x92\x41\x86\x01\x12)Get information about NotificationChannel\x1a\x41Returns information about notification_channel specified with ID.*\x16GetNotificationChannel\xf2\xd7\x02\x1f\x61\x64min.notification_channel:read\x82\xd3\xe4\x93\x02@\x12>/notification_channel/v202204alpha1/notification_channels/{id}\x1a\x38\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\x1a\x61\x64min.notification_channel\x90\xd8\x02\x03\x42\xdd\x03Zbgithub.com/kentik/api-schema/gen/go/kentik/notification_channel/v202204alpha1;notification_channel\x92\x41\xf5\x02\x12\x8e\x01\n\x17NotificationChannel API\x12K--- This API has been deprecated and will be removed in the near future ---\"\x18\n\x16Kentik API Engineering2\x0c\x32\x30\x32\x32\x30\x34\x61lpha1*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r]\n%General information about Kentik APIs\x12\x34https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overviewb\x06proto3'
+  serialized_pb=b'\nDkentik/notification_channel/v202204alpha1/notification_channel.proto\x12)kentik.notification_channel.v202204alpha1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a+kentik/core/v202012alpha1/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x81\x02\n\x13NotificationChannel\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n\x04name\x18\x02 \x01(\tR\x04name\x12J\n\x04type\x18\x03 \x01(\x0e\x32\x36.kentik.notification_channel.v202204alpha1.ChannelTypeR\x04type\x12\x16\n\x06status\x18\x04 \x01(\tR\x06status\x12\x30\n\x05\x63\x64\x61te\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x05\x63\x64\x61te\x12\x30\n\x05\x65\x64\x61te\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x05\x65\x64\x61te\"!\n\x1fListNotificationChannelsRequest\"\xbc\x01\n ListNotificationChannelsResponse\x12s\n\x15notification_channels\x18\x01 \x03(\x0b\x32>.kentik.notification_channel.v202204alpha1.NotificationChannelR\x14notificationChannels\x12#\n\rinvalid_count\x18\x02 \x01(\x05R\x0cinvalidCount\"/\n\x1dGetNotificationChannelRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"\x93\x01\n\x1eGetNotificationChannelResponse\x12q\n\x14notification_channel\x18\x01 \x01(\x0b\x32>.kentik.notification_channel.v202204alpha1.NotificationChannelR\x13notificationChannel*\xea\x02\n\x0b\x43hannelType\x12\x1c\n\x18\x43HANNEL_TYPE_UNSPECIFIED\x10\x00\x12\x19\n\x15\x43HANNEL_TYPE_XMATTERS\x10\x01\x12\x16\n\x12\x43HANNEL_TYPE_SLACK\x10\x02\x12\x1b\n\x17\x43HANNEL_TYPE_SERVICENOW\x10\x03\x12\x17\n\x13\x43HANNEL_TYPE_SYSLOG\x10\x04\x12\x19\n\x15\x43HANNEL_TYPE_OPSGENIE\x10\x05\x12\x1f\n\x1b\x43HANNEL_TYPE_CUSTOM_WEBHOOK\x10\x06\x12\x17\n\x13\x43HANNEL_TYPE_SPLUNK\x10\x07\x12\x18\n\x14\x43HANNEL_TYPE_MSTEAMS\x10\x08\x12\x15\n\x11\x43HANNEL_TYPE_JSON\x10\t\x12\x16\n\x12\x43HANNEL_TYPE_EMAIL\x10\n\x12\x1a\n\x16\x43HANNEL_TYPE_VICTOROPS\x10\x0b\x12\x1a\n\x16\x43HANNEL_TYPE_PAGERDUTY\x10\x0c\x32\x97\x07\n\x1aNotificationChannelService\x12\x98\x03\n\x18ListNotificationChannels\x12J.kentik.notification_channel.v202204alpha1.ListNotificationChannelsRequest\x1aK.kentik.notification_channel.v202204alpha1.ListNotificationChannelsResponse\"\xe2\x01\x92\x41{\x12!Fetch Search NotificationChannels\x1a<Return list of notification_channels matches search critera.*\x18ListNotificationChannels\xf2\xd7\x02\x1f\x61\x64min.notification_channel:read\x82\xd3\xe4\x93\x02;\x12\x39/notification_channel/v202204alpha1/notification_channels\x12\xa3\x03\n\x16GetNotificationChannel\x12H.kentik.notification_channel.v202204alpha1.GetNotificationChannelRequest\x1aI.kentik.notification_channel.v202204alpha1.GetNotificationChannelResponse\"\xf3\x01\x92\x41\x86\x01\x12)Get information about NotificationChannel\x1a\x41Returns information about notification_channel specified with ID.*\x16GetNotificationChannel\xf2\xd7\x02\x1f\x61\x64min.notification_channel:read\x82\xd3\xe4\x93\x02@\x12>/notification_channel/v202204alpha1/notification_channels/{id}\x1a\x38\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\x1a\x61\x64min.notification_channel\x90\xd8\x02\x03\x42\xdd\x03Zbgithub.com/kentik/api-schema/gen/go/kentik/notification_channel/v202204alpha1;notification_channel\x92\x41\xf5\x02\x12\x8e\x01\n\x17NotificationChannel API\x12K--- This API has been deprecated and will be removed in the near future ---\"\x18\n\x16Kentik API Engineering2\x0c\x32\x30\x32\x32\x30\x34\x61lpha1*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r]\n%General information about Kentik APIs\x12\x34https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overviewb\x06proto3'
   ,
-  dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_api_dot_client__pb2.DESCRIPTOR,google_dot_type_dot_latlng__pb2.DESCRIPTOR,google_dot_type_dot_postal__address__pb2.DESCRIPTOR,protoc__gen__openapiv2_dot_options_dot_annotations__pb2.DESCRIPTOR,kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
+  dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_api_dot_client__pb2.DESCRIPTOR,protoc__gen__openapiv2_dot_options_dot_annotations__pb2.DESCRIPTOR,kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
 _CHANNELTYPE = _descriptor.EnumDescriptor(
   name='ChannelType',
@@ -106,8 +104,8 @@ _CHANNELTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1042,
-  serialized_end=1404,
+  serialized_start=982,
+  serialized_end=1344,
 )
 _sym_db.RegisterEnumDescriptor(_CHANNELTYPE)
 
@@ -190,8 +188,8 @@ _NOTIFICATIONCHANNEL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=357,
-  serialized_end=614,
+  serialized_start=297,
+  serialized_end=554,
 )
 
 
@@ -215,8 +213,8 @@ _LISTNOTIFICATIONCHANNELSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=616,
-  serialized_end=649,
+  serialized_start=556,
+  serialized_end=589,
 )
 
 
@@ -254,8 +252,8 @@ _LISTNOTIFICATIONCHANNELSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=652,
-  serialized_end=840,
+  serialized_start=592,
+  serialized_end=780,
 )
 
 
@@ -286,8 +284,8 @@ _GETNOTIFICATIONCHANNELREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=842,
-  serialized_end=889,
+  serialized_start=782,
+  serialized_end=829,
 )
 
 
@@ -318,8 +316,8 @@ _GETNOTIFICATIONCHANNELRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=892,
-  serialized_end=1039,
+  serialized_start=832,
+  serialized_end=979,
 )
 
 _NOTIFICATIONCHANNEL.fields_by_name['type'].enum_type = _CHANNELTYPE
@@ -380,8 +378,8 @@ _NOTIFICATIONCHANNELSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=b'\312A\023grpc.api.kentik.com\352\327\002\032admin.notification_channel\220\330\002\003',
   create_key=_descriptor._internal_create_key,
-  serialized_start=1407,
-  serialized_end=2326,
+  serialized_start=1347,
+  serialized_end=2266,
   methods=[
   _descriptor.MethodDescriptor(
     name='ListNotificationChannels',

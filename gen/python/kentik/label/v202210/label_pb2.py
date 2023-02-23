@@ -14,8 +14,6 @@ _sym_db = _symbol_database.Default()
 from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
 from google.api import field_behavior_pb2 as google_dot_api_dot_field__behavior__pb2
 from google.api import client_pb2 as google_dot_api_dot_client__pb2
-from google.type import latlng_pb2 as google_dot_type_dot_latlng__pb2
-from google.type import postal_address_pb2 as google_dot_type_dot_postal__address__pb2
 from protoc_gen_openapiv2.options import annotations_pb2 as protoc__gen__openapiv2_dot_options_dot_annotations__pb2
 from kentik.core.v202012alpha1 import annotations_pb2 as kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
@@ -27,9 +25,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z>github.com/kentik/api-schema/gen/go/kentik/label/v202210;label\222A\352\r\022\203\014\n\024Label Management API\022\232\013# Overview\nThe Label API enables programmatic creation and management of labels, which are tags that can be applied to objects such as devices, synthetic tests, and ksynth agents in order to create logical groups. While this API is used to manage labels, the application of a label to a given object is done with the API corresponding to the type of that object (see Applying Labels via API).\n\nBoth gRPC RPCs and REST endpoints are provided.\n\n# Applying Labels via API\nThe Label API does not handle the application of labels to configuration objects. Instead, a label is applied to an object using the management API for that object. The table below lists the APIs for the types of objects to which labels may be applied.\n| Object type  | API for attaching labels |\n|--------------|--------------------------------------|\n| Device | [Device Apply Labels](https://kb.kentik.com/v0/Ec05.htm#Ec05-Device_Apply_Labels) |\n| Synthetic monitoring test | [SyntheticsAdminService API](https://kb.kentik.com/v0/Oa07.htm#Oa07-SyntheticsAdminService_API) |\n| Synthetic monitoring agent | [SyntheticsAdminService API](https://kb.kentik.com/v0/Oa07.htm#Oa07-SyntheticsAdminService_API) |\n| BGP monitor | [BgpMonitoringAdminService API ](https://kb.kentik.com/v0/Oa09.htm#Oa09-BgpMonitoringAdminService_API)|\n\n***Note:*** Device labels can be also managed using the legacy [Device Label API](https://kb.kentik.com/v0/Ec05.htm#Ec05-Device_Label_API).\"E\n\026Kentik API Engineering\022+https://github.com/kentik/api-schema-public2\007v202210*\001\0022\020application/json:\020application/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]\n%General information about Kentik APIs\0224https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n kentik/label/v202210/label.proto\x12\x14kentik.label.v202210\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a\x17google/api/client.proto\x1a\x18google/type/latlng.proto\x1a google/type/postal_address.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a+kentik/core/v202012alpha1/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xe5\x04\n\x05Label\x12G\n\x02id\x18\x01 \x01(\tB7\x92\x41\x30\x32.Unique system assigned identifier of the label\xe2\x41\x01\x03R\x02id\x12s\n\x04name\x18\x02 \x01(\tB_\x92\x41X2VLabel text visible in listing of configuration of objects to which it has been applied\xe2\x41\x01\x02R\x04name\x12g\n\x0b\x64\x65scription\x18\x03 \x01(\tBE\x92\x41\x42\x32@Optional description of the label, visible only in API responsesR\x0b\x64\x65scription\x12\x81\x01\n\x05\x63olor\x18\x05 \x01(\tBk\x92\x41h2f[Hexadecimal code of the color](https://www.color-hex.com/) of the label text background in the portalR\x05\x63olor\x12S\n\x05\x63\x64\x61te\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.TimestampB!\x92\x41\x1a\x32\x18\x43reation timestamp (UTC)\xe2\x41\x01\x03R\x05\x63\x64\x61te\x12\\\n\x05\x65\x64\x61te\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.TimestampB*\x92\x41#2!Last modification timestamp (UTC)\xe2\x41\x01\x03R\x05\x65\x64\x61te\"\x13\n\x11ListLabelsRequest\"\xe9\x01\n\x12ListLabelsResponse\x12W\n\x06labels\x18\x01 \x03(\x0b\x32\x1b.kentik.label.v202210.LabelB\"\x92\x41\x1b\x32\x19List of configured labels\xe2\x41\x01\x03R\x06labels\x12z\n\rinvalid_count\x18\x02 \x01(\x05\x42U\x92\x41R2PNumber of invalid entries encountered while collecting data (should be always 0)R\x0cinvalidCount\"z\n\x12\x43reateLabelRequest\x12\x64\n\x05label\x18\x01 \x01(\x0b\x32\x1b.kentik.label.v202210.LabelB1\x92\x41*2(Configuration of the label to be created\xe2\x41\x01\x02R\x05label\"z\n\x13\x43reateLabelResponse\x12\x63\n\x05label\x18\x01 \x01(\x0b\x32\x1b.kentik.label.v202210.LabelB0\x92\x41)2\'Configuration of the just created label\xe2\x41\x01\x03R\x05label\"z\n\x12UpdateLabelRequest\x12\x64\n\x05label\x18\x01 \x01(\x0b\x32\x1b.kentik.label.v202210.LabelB1\x92\x41*2(Configuration of the label to be updated\xe2\x41\x01\x02R\x05label\"u\n\x13UpdateLabelResponse\x12^\n\x05label\x18\x01 \x01(\x0b\x32\x1b.kentik.label.v202210.LabelB+\x92\x41$2\"Updated configuration of the label\xe2\x41\x01\x03R\x05label\"L\n\x12\x44\x65leteLabelRequest\x12\x36\n\x02id\x18\x01 \x01(\tB&\x92\x41\x1f\x32\x1dID of the label to be deleted\xe2\x41\x01\x02R\x02id\"\x15\n\x13\x44\x65leteLabelResponse2\x82\x08\n\x0cLabelService\x12\xf5\x01\n\nListLabels\x12\'.kentik.label.v202210.ListLabelsRequest\x1a(.kentik.label.v202210.ListLabelsResponse\"\x93\x01\x92\x41_\x12\x1aList all configured labels\x1a\x35Returns list of all labels configured in the account.*\nListLabels\xf2\xd7\x02\x10\x61\x64min.label:read\x82\xd3\xe4\x93\x02\x17\x12\x15/label/v202210/labels\x12\xf2\x01\n\x0b\x43reateLabel\x12(.kentik.label.v202210.CreateLabelRequest\x1a).kentik.label.v202210.CreateLabelResponse\"\x8d\x01\x92\x41U\x12\x13\x43reate a new label.\x1a\x31\x43reates a new label based on data in the request.*\x0b\x43reateLabel\xf2\xd7\x02\x11\x61\x64min.label:write\x82\xd3\xe4\x93\x02\x1a\"\x15/label/v202210/labels:\x01*\x12\xf3\x01\n\x0bUpdateLabel\x12(.kentik.label.v202210.UpdateLabelRequest\x1a).kentik.label.v202210.UpdateLabelResponse\"\x8e\x01\x92\x41K\x12\x19Update an existing label.\x1a!Updates configuration of a label.*\x0bUpdateLabel\xf2\xd7\x02\x11\x61\x64min.label:write\x82\xd3\xe4\x93\x02%\" /label/v202210/labels/{label.id}:\x01*\x12\xe3\x01\n\x0b\x44\x65leteLabel\x12(.kentik.label.v202210.DeleteLabelRequest\x1a).kentik.label.v202210.DeleteLabelResponse\"\x7f\x92\x41\x45\x12\x0f\x44\x65lete a label.\x1a%Deletes label with specified with id.*\x0b\x44\x65leteLabel\xf2\xd7\x02\x11\x61\x64min.label:write\x82\xd3\xe4\x93\x02\x1c*\x1a/label/v202210/labels/{id}\x1a)\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\x0b\x61\x64min.label\x90\xd8\x02\x03\x42\xae\x0eZ>github.com/kentik/api-schema/gen/go/kentik/label/v202210;label\x92\x41\xea\r\x12\x83\x0c\n\x14Label Management API\x12\x9a\x0b# Overview\nThe Label API enables programmatic creation and management of labels, which are tags that can be applied to objects such as devices, synthetic tests, and ksynth agents in order to create logical groups. While this API is used to manage labels, the application of a label to a given object is done with the API corresponding to the type of that object (see Applying Labels via API).\n\nBoth gRPC RPCs and REST endpoints are provided.\n\n# Applying Labels via API\nThe Label API does not handle the application of labels to configuration objects. Instead, a label is applied to an object using the management API for that object. The table below lists the APIs for the types of objects to which labels may be applied.\n| Object type  | API for attaching labels |\n|--------------|--------------------------------------|\n| Device | [Device Apply Labels](https://kb.kentik.com/v0/Ec05.htm#Ec05-Device_Apply_Labels) |\n| Synthetic monitoring test | [SyntheticsAdminService API](https://kb.kentik.com/v0/Oa07.htm#Oa07-SyntheticsAdminService_API) |\n| Synthetic monitoring agent | [SyntheticsAdminService API](https://kb.kentik.com/v0/Oa07.htm#Oa07-SyntheticsAdminService_API) |\n| BGP monitor | [BgpMonitoringAdminService API ](https://kb.kentik.com/v0/Oa09.htm#Oa09-BgpMonitoringAdminService_API)|\n\n***Note:*** Device labels can be also managed using the legacy [Device Label API](https://kb.kentik.com/v0/Ec05.htm#Ec05-Device_Label_API).\"E\n\x16Kentik API Engineering\x12+https://github.com/kentik/api-schema-public2\x07v202210*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r]\n%General information about Kentik APIs\x12\x34https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overviewb\x06proto3'
+  serialized_pb=b'\n kentik/label/v202210/label.proto\x12\x14kentik.label.v202210\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a\x17google/api/client.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a+kentik/core/v202012alpha1/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xe5\x04\n\x05Label\x12G\n\x02id\x18\x01 \x01(\tB7\x92\x41\x30\x32.Unique system assigned identifier of the label\xe2\x41\x01\x03R\x02id\x12s\n\x04name\x18\x02 \x01(\tB_\x92\x41X2VLabel text visible in listing of configuration of objects to which it has been applied\xe2\x41\x01\x02R\x04name\x12g\n\x0b\x64\x65scription\x18\x03 \x01(\tBE\x92\x41\x42\x32@Optional description of the label, visible only in API responsesR\x0b\x64\x65scription\x12\x81\x01\n\x05\x63olor\x18\x05 \x01(\tBk\x92\x41h2f[Hexadecimal code of the color](https://www.color-hex.com/) of the label text background in the portalR\x05\x63olor\x12S\n\x05\x63\x64\x61te\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.TimestampB!\x92\x41\x1a\x32\x18\x43reation timestamp (UTC)\xe2\x41\x01\x03R\x05\x63\x64\x61te\x12\\\n\x05\x65\x64\x61te\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.TimestampB*\x92\x41#2!Last modification timestamp (UTC)\xe2\x41\x01\x03R\x05\x65\x64\x61te\"\x13\n\x11ListLabelsRequest\"\xe9\x01\n\x12ListLabelsResponse\x12W\n\x06labels\x18\x01 \x03(\x0b\x32\x1b.kentik.label.v202210.LabelB\"\x92\x41\x1b\x32\x19List of configured labels\xe2\x41\x01\x03R\x06labels\x12z\n\rinvalid_count\x18\x02 \x01(\x05\x42U\x92\x41R2PNumber of invalid entries encountered while collecting data (should be always 0)R\x0cinvalidCount\"z\n\x12\x43reateLabelRequest\x12\x64\n\x05label\x18\x01 \x01(\x0b\x32\x1b.kentik.label.v202210.LabelB1\x92\x41*2(Configuration of the label to be created\xe2\x41\x01\x02R\x05label\"z\n\x13\x43reateLabelResponse\x12\x63\n\x05label\x18\x01 \x01(\x0b\x32\x1b.kentik.label.v202210.LabelB0\x92\x41)2\'Configuration of the just created label\xe2\x41\x01\x03R\x05label\"z\n\x12UpdateLabelRequest\x12\x64\n\x05label\x18\x01 \x01(\x0b\x32\x1b.kentik.label.v202210.LabelB1\x92\x41*2(Configuration of the label to be updated\xe2\x41\x01\x02R\x05label\"u\n\x13UpdateLabelResponse\x12^\n\x05label\x18\x01 \x01(\x0b\x32\x1b.kentik.label.v202210.LabelB+\x92\x41$2\"Updated configuration of the label\xe2\x41\x01\x03R\x05label\"L\n\x12\x44\x65leteLabelRequest\x12\x36\n\x02id\x18\x01 \x01(\tB&\x92\x41\x1f\x32\x1dID of the label to be deleted\xe2\x41\x01\x02R\x02id\"\x15\n\x13\x44\x65leteLabelResponse2\x82\x08\n\x0cLabelService\x12\xf5\x01\n\nListLabels\x12\'.kentik.label.v202210.ListLabelsRequest\x1a(.kentik.label.v202210.ListLabelsResponse\"\x93\x01\x92\x41_\x12\x1aList all configured labels\x1a\x35Returns list of all labels configured in the account.*\nListLabels\xf2\xd7\x02\x10\x61\x64min.label:read\x82\xd3\xe4\x93\x02\x17\x12\x15/label/v202210/labels\x12\xf2\x01\n\x0b\x43reateLabel\x12(.kentik.label.v202210.CreateLabelRequest\x1a).kentik.label.v202210.CreateLabelResponse\"\x8d\x01\x92\x41U\x12\x13\x43reate a new label.\x1a\x31\x43reates a new label based on data in the request.*\x0b\x43reateLabel\xf2\xd7\x02\x11\x61\x64min.label:write\x82\xd3\xe4\x93\x02\x1a\"\x15/label/v202210/labels:\x01*\x12\xf3\x01\n\x0bUpdateLabel\x12(.kentik.label.v202210.UpdateLabelRequest\x1a).kentik.label.v202210.UpdateLabelResponse\"\x8e\x01\x92\x41K\x12\x19Update an existing label.\x1a!Updates configuration of a label.*\x0bUpdateLabel\xf2\xd7\x02\x11\x61\x64min.label:write\x82\xd3\xe4\x93\x02%\" /label/v202210/labels/{label.id}:\x01*\x12\xe3\x01\n\x0b\x44\x65leteLabel\x12(.kentik.label.v202210.DeleteLabelRequest\x1a).kentik.label.v202210.DeleteLabelResponse\"\x7f\x92\x41\x45\x12\x0f\x44\x65lete a label.\x1a%Deletes label with specified with id.*\x0b\x44\x65leteLabel\xf2\xd7\x02\x11\x61\x64min.label:write\x82\xd3\xe4\x93\x02\x1c*\x1a/label/v202210/labels/{id}\x1a)\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\x0b\x61\x64min.label\x90\xd8\x02\x03\x42\xae\x0eZ>github.com/kentik/api-schema/gen/go/kentik/label/v202210;label\x92\x41\xea\r\x12\x83\x0c\n\x14Label Management API\x12\x9a\x0b# Overview\nThe Label API enables programmatic creation and management of labels, which are tags that can be applied to objects such as devices, synthetic tests, and ksynth agents in order to create logical groups. While this API is used to manage labels, the application of a label to a given object is done with the API corresponding to the type of that object (see Applying Labels via API).\n\nBoth gRPC RPCs and REST endpoints are provided.\n\n# Applying Labels via API\nThe Label API does not handle the application of labels to configuration objects. Instead, a label is applied to an object using the management API for that object. The table below lists the APIs for the types of objects to which labels may be applied.\n| Object type  | API for attaching labels |\n|--------------|--------------------------------------|\n| Device | [Device Apply Labels](https://kb.kentik.com/v0/Ec05.htm#Ec05-Device_Apply_Labels) |\n| Synthetic monitoring test | [SyntheticsAdminService API](https://kb.kentik.com/v0/Oa07.htm#Oa07-SyntheticsAdminService_API) |\n| Synthetic monitoring agent | [SyntheticsAdminService API](https://kb.kentik.com/v0/Oa07.htm#Oa07-SyntheticsAdminService_API) |\n| BGP monitor | [BgpMonitoringAdminService API ](https://kb.kentik.com/v0/Oa09.htm#Oa09-BgpMonitoringAdminService_API)|\n\n***Note:*** Device labels can be also managed using the legacy [Device Label API](https://kb.kentik.com/v0/Ec05.htm#Ec05-Device_Label_API).\"E\n\x16Kentik API Engineering\x12+https://github.com/kentik/api-schema-public2\x07v202210*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r]\n%General information about Kentik APIs\x12\x34https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overviewb\x06proto3'
   ,
-  dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_api_dot_field__behavior__pb2.DESCRIPTOR,google_dot_api_dot_client__pb2.DESCRIPTOR,google_dot_type_dot_latlng__pb2.DESCRIPTOR,google_dot_type_dot_postal__address__pb2.DESCRIPTOR,protoc__gen__openapiv2_dot_options_dot_annotations__pb2.DESCRIPTOR,kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
+  dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_api_dot_field__behavior__pb2.DESCRIPTOR,google_dot_api_dot_client__pb2.DESCRIPTOR,protoc__gen__openapiv2_dot_options_dot_annotations__pb2.DESCRIPTOR,kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
 
 
@@ -96,8 +94,8 @@ _LABEL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=333,
-  serialized_end=946,
+  serialized_start=273,
+  serialized_end=886,
 )
 
 
@@ -121,8 +119,8 @@ _LISTLABELSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=948,
-  serialized_end=967,
+  serialized_start=888,
+  serialized_end=907,
 )
 
 
@@ -160,8 +158,8 @@ _LISTLABELSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=970,
-  serialized_end=1203,
+  serialized_start=910,
+  serialized_end=1143,
 )
 
 
@@ -192,8 +190,8 @@ _CREATELABELREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1205,
-  serialized_end=1327,
+  serialized_start=1145,
+  serialized_end=1267,
 )
 
 
@@ -224,8 +222,8 @@ _CREATELABELRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1329,
-  serialized_end=1451,
+  serialized_start=1269,
+  serialized_end=1391,
 )
 
 
@@ -256,8 +254,8 @@ _UPDATELABELREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1453,
-  serialized_end=1575,
+  serialized_start=1393,
+  serialized_end=1515,
 )
 
 
@@ -288,8 +286,8 @@ _UPDATELABELRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1577,
-  serialized_end=1694,
+  serialized_start=1517,
+  serialized_end=1634,
 )
 
 
@@ -320,8 +318,8 @@ _DELETELABELREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1696,
-  serialized_end=1772,
+  serialized_start=1636,
+  serialized_end=1712,
 )
 
 
@@ -345,8 +343,8 @@ _DELETELABELRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1774,
-  serialized_end=1795,
+  serialized_start=1714,
+  serialized_end=1735,
 )
 
 _LABEL.fields_by_name['cdate'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
@@ -453,8 +451,8 @@ _LABELSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=b'\312A\023grpc.api.kentik.com\352\327\002\013admin.label\220\330\002\003',
   create_key=_descriptor._internal_create_key,
-  serialized_start=1798,
-  serialized_end=2824,
+  serialized_start=1738,
+  serialized_end=2764,
   methods=[
   _descriptor.MethodDescriptor(
     name='ListLabels',

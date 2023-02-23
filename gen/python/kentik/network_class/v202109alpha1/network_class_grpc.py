@@ -11,8 +11,6 @@ if typing.TYPE_CHECKING:
 
 import google.api.annotations_pb2
 import google.api.client_pb2
-import google.type.latlng_pb2
-import google.type.postal_address_pb2
 import protoc_gen_openapiv2.options.annotations_pb2
 import kentik.core.v202012alpha1.annotations_pb2
 import kentik.network_class.v202109alpha1.network_class_pb2

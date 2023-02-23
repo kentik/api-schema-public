@@ -13,8 +13,6 @@ _sym_db = _symbol_database.Default()
 
 from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
 from google.api import client_pb2 as google_dot_api_dot_client__pb2
-from google.type import latlng_pb2 as google_dot_type_dot_latlng__pb2
-from google.type import postal_address_pb2 as google_dot_type_dot_postal__address__pb2
 from protoc_gen_openapiv2.options import annotations_pb2 as protoc__gen__openapiv2_dot_options_dot_annotations__pb2
 from kentik.core.v202012alpha1 import annotations_pb2 as kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
@@ -26,9 +24,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'ZDgithub.com/kentik/api-schema/gen/go/kentik/label/v202203alpha1;label\222A\347\002\022\200\001\n\tLabel API\022K--- This API has been deprecated and will be removed in the near future ---\"\030\n\026Kentik API Engineering2\014202203alpha1*\001\0022\020application/json:\020application/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]\n%General information about Kentik APIs\0224https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n&kentik/label/v202203alpha1/label.proto\x12\x1akentik.label.v202203alpha1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x18google/type/latlng.proto\x1a google/type/postal_address.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a+kentik/core/v202012alpha1/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc7\x01\n\x05Label\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n\x04name\x18\x02 \x01(\tR\x04name\x12 \n\x0b\x64\x65scription\x18\x03 \x01(\tR\x0b\x64\x65scription\x12\x14\n\x05\x63olor\x18\x05 \x01(\tR\x05\x63olor\x12\x30\n\x05\x63\x64\x61te\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x05\x63\x64\x61te\x12\x30\n\x05\x65\x64\x61te\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x05\x65\x64\x61te\"\x13\n\x11ListLabelsRequest\"t\n\x12ListLabelsResponse\x12\x39\n\x06labels\x18\x01 \x03(\x0b\x32!.kentik.label.v202203alpha1.LabelR\x06labels\x12#\n\rinvalid_count\x18\x02 \x01(\x05R\x0cinvalidCount\"M\n\x12\x43reateLabelRequest\x12\x37\n\x05label\x18\x01 \x01(\x0b\x32!.kentik.label.v202203alpha1.LabelR\x05label\"N\n\x13\x43reateLabelResponse\x12\x37\n\x05label\x18\x01 \x01(\x0b\x32!.kentik.label.v202203alpha1.LabelR\x05label\"M\n\x12UpdateLabelRequest\x12\x37\n\x05label\x18\x01 \x01(\x0b\x32!.kentik.label.v202203alpha1.LabelR\x05label\"N\n\x13UpdateLabelResponse\x12\x37\n\x05label\x18\x01 \x01(\x0b\x32!.kentik.label.v202203alpha1.LabelR\x05label\"$\n\x12\x44\x65leteLabelRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"\x15\n\x13\x44\x65leteLabelResponse2\xbe\x08\n\x0cLabelService\x12\xf7\x01\n\nListLabels\x12-.kentik.label.v202203alpha1.ListLabelsRequest\x1a..kentik.label.v202203alpha1.ListLabelsResponse\"\x89\x01\x92\x41O\x12\x13\x46\x65tch Search Labels\x1a-Return list of labels matches search critera.*\tListLabel\xf2\xd7\x02\x10\x61\x64min.label:read\x82\xd3\xe4\x93\x02\x1d\x12\x1b/label/v202203alpha1/labels\x12\xfc\x01\n\x0b\x43reateLabel\x12..kentik.label.v202203alpha1.CreateLabelRequest\x1a/.kentik.label.v202203alpha1.CreateLabelResponse\"\x8b\x01\x92\x41M\x12\x0f\x43reate a label.\x1a-Create a label from request. returns created.*\x0bLabelCreate\xf2\xd7\x02\x11\x61\x64min.label:write\x82\xd3\xe4\x93\x02 \"\x1b/label/v202203alpha1/labels:\x01*\x12\x91\x02\n\x0bUpdateLabel\x12..kentik.label.v202203alpha1.UpdateLabelRequest\x1a/.kentik.label.v202203alpha1.UpdateLabelResponse\"\xa0\x01\x92\x41W\x12\x0fUpdate a label.\x1a\x37Replaces the entire label attributes specified with id.*\x0bLabelUpdate\xf2\xd7\x02\x11\x61\x64min.label:write\x82\xd3\xe4\x93\x02+\"&/label/v202203alpha1/labels/{label.id}:\x01*\x12\xf5\x01\n\x0b\x44\x65leteLabel\x12..kentik.label.v202203alpha1.DeleteLabelRequest\x1a/.kentik.label.v202203alpha1.DeleteLabelResponse\"\x84\x01\x92\x41\x44\x12\x0f\x44\x65lete a label.\x1a$Deletes the label specified with id.*\x0bLabelDelete\xf2\xd7\x02\x11\x61\x64min.label:write\x82\xd3\xe4\x93\x02\"* /label/v202203alpha1/labels/{id}\x1a)\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\x0b\x61\x64min.label\x90\xd8\x02\x03\x42\xb1\x03ZDgithub.com/kentik/api-schema/gen/go/kentik/label/v202203alpha1;label\x92\x41\xe7\x02\x12\x80\x01\n\tLabel API\x12K--- This API has been deprecated and will be removed in the near future ---\"\x18\n\x16Kentik API Engineering2\x0c\x32\x30\x32\x32\x30\x33\x61lpha1*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r]\n%General information about Kentik APIs\x12\x34https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overviewb\x06proto3'
+  serialized_pb=b'\n&kentik/label/v202203alpha1/label.proto\x12\x1akentik.label.v202203alpha1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a+kentik/core/v202012alpha1/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc7\x01\n\x05Label\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n\x04name\x18\x02 \x01(\tR\x04name\x12 \n\x0b\x64\x65scription\x18\x03 \x01(\tR\x0b\x64\x65scription\x12\x14\n\x05\x63olor\x18\x05 \x01(\tR\x05\x63olor\x12\x30\n\x05\x63\x64\x61te\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x05\x63\x64\x61te\x12\x30\n\x05\x65\x64\x61te\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x05\x65\x64\x61te\"\x13\n\x11ListLabelsRequest\"t\n\x12ListLabelsResponse\x12\x39\n\x06labels\x18\x01 \x03(\x0b\x32!.kentik.label.v202203alpha1.LabelR\x06labels\x12#\n\rinvalid_count\x18\x02 \x01(\x05R\x0cinvalidCount\"M\n\x12\x43reateLabelRequest\x12\x37\n\x05label\x18\x01 \x01(\x0b\x32!.kentik.label.v202203alpha1.LabelR\x05label\"N\n\x13\x43reateLabelResponse\x12\x37\n\x05label\x18\x01 \x01(\x0b\x32!.kentik.label.v202203alpha1.LabelR\x05label\"M\n\x12UpdateLabelRequest\x12\x37\n\x05label\x18\x01 \x01(\x0b\x32!.kentik.label.v202203alpha1.LabelR\x05label\"N\n\x13UpdateLabelResponse\x12\x37\n\x05label\x18\x01 \x01(\x0b\x32!.kentik.label.v202203alpha1.LabelR\x05label\"$\n\x12\x44\x65leteLabelRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"\x15\n\x13\x44\x65leteLabelResponse2\xbf\x08\n\x0cLabelService\x12\xf8\x01\n\nListLabels\x12-.kentik.label.v202203alpha1.ListLabelsRequest\x1a..kentik.label.v202203alpha1.ListLabelsResponse\"\x8a\x01\x92\x41P\x12\x13\x46\x65tch Search Labels\x1a.Return list of labels matches search criteria.*\tListLabel\xf2\xd7\x02\x10\x61\x64min.label:read\x82\xd3\xe4\x93\x02\x1d\x12\x1b/label/v202203alpha1/labels\x12\xfc\x01\n\x0b\x43reateLabel\x12..kentik.label.v202203alpha1.CreateLabelRequest\x1a/.kentik.label.v202203alpha1.CreateLabelResponse\"\x8b\x01\x92\x41M\x12\x0f\x43reate a label.\x1a-Create a label from request. returns created.*\x0bLabelCreate\xf2\xd7\x02\x11\x61\x64min.label:write\x82\xd3\xe4\x93\x02 \"\x1b/label/v202203alpha1/labels:\x01*\x12\x91\x02\n\x0bUpdateLabel\x12..kentik.label.v202203alpha1.UpdateLabelRequest\x1a/.kentik.label.v202203alpha1.UpdateLabelResponse\"\xa0\x01\x92\x41W\x12\x0fUpdate a label.\x1a\x37Replaces the entire label attributes specified with id.*\x0bLabelUpdate\xf2\xd7\x02\x11\x61\x64min.label:write\x82\xd3\xe4\x93\x02+\"&/label/v202203alpha1/labels/{label.id}:\x01*\x12\xf5\x01\n\x0b\x44\x65leteLabel\x12..kentik.label.v202203alpha1.DeleteLabelRequest\x1a/.kentik.label.v202203alpha1.DeleteLabelResponse\"\x84\x01\x92\x41\x44\x12\x0f\x44\x65lete a label.\x1a$Deletes the label specified with id.*\x0bLabelDelete\xf2\xd7\x02\x11\x61\x64min.label:write\x82\xd3\xe4\x93\x02\"* /label/v202203alpha1/labels/{id}\x1a)\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\x0b\x61\x64min.label\x90\xd8\x02\x03\x42\xb1\x03ZDgithub.com/kentik/api-schema/gen/go/kentik/label/v202203alpha1;label\x92\x41\xe7\x02\x12\x80\x01\n\tLabel API\x12K--- This API has been deprecated and will be removed in the near future ---\"\x18\n\x16Kentik API Engineering2\x0c\x32\x30\x32\x32\x30\x33\x61lpha1*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r]\n%General information about Kentik APIs\x12\x34https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overviewb\x06proto3'
   ,
-  dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_api_dot_client__pb2.DESCRIPTOR,google_dot_type_dot_latlng__pb2.DESCRIPTOR,google_dot_type_dot_postal__address__pb2.DESCRIPTOR,protoc__gen__openapiv2_dot_options_dot_annotations__pb2.DESCRIPTOR,kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
+  dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_api_dot_client__pb2.DESCRIPTOR,protoc__gen__openapiv2_dot_options_dot_annotations__pb2.DESCRIPTOR,kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
 
 
@@ -95,8 +93,8 @@ _LABEL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=312,
-  serialized_end=511,
+  serialized_start=252,
+  serialized_end=451,
 )
 
 
@@ -120,8 +118,8 @@ _LISTLABELSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=513,
-  serialized_end=532,
+  serialized_start=453,
+  serialized_end=472,
 )
 
 
@@ -159,8 +157,8 @@ _LISTLABELSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=534,
-  serialized_end=650,
+  serialized_start=474,
+  serialized_end=590,
 )
 
 
@@ -191,8 +189,8 @@ _CREATELABELREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=652,
-  serialized_end=729,
+  serialized_start=592,
+  serialized_end=669,
 )
 
 
@@ -223,8 +221,8 @@ _CREATELABELRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=731,
-  serialized_end=809,
+  serialized_start=671,
+  serialized_end=749,
 )
 
 
@@ -255,8 +253,8 @@ _UPDATELABELREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=811,
-  serialized_end=888,
+  serialized_start=751,
+  serialized_end=828,
 )
 
 
@@ -287,8 +285,8 @@ _UPDATELABELRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=890,
-  serialized_end=968,
+  serialized_start=830,
+  serialized_end=908,
 )
 
 
@@ -319,8 +317,8 @@ _DELETELABELREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=970,
-  serialized_end=1006,
+  serialized_start=910,
+  serialized_end=946,
 )
 
 
@@ -344,8 +342,8 @@ _DELETELABELRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1008,
-  serialized_end=1029,
+  serialized_start=948,
+  serialized_end=969,
 )
 
 _LABEL.fields_by_name['cdate'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
@@ -439,8 +437,8 @@ _LABELSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=b'\312A\023grpc.api.kentik.com\352\327\002\013admin.label\220\330\002\003',
   create_key=_descriptor._internal_create_key,
-  serialized_start=1032,
-  serialized_end=2118,
+  serialized_start=972,
+  serialized_end=2059,
   methods=[
   _descriptor.MethodDescriptor(
     name='ListLabels',
@@ -449,7 +447,7 @@ _LABELSERVICE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_LISTLABELSREQUEST,
     output_type=_LISTLABELSRESPONSE,
-    serialized_options=b'\222AO\022\023Fetch Search Labels\032-Return list of labels matches search critera.*\tListLabel\362\327\002\020admin.label:read\202\323\344\223\002\035\022\033/label/v202203alpha1/labels',
+    serialized_options=b'\222AP\022\023Fetch Search Labels\032.Return list of labels matches search criteria.*\tListLabel\362\327\002\020admin.label:read\202\323\344\223\002\035\022\033/label/v202203alpha1/labels',
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(

@@ -5,8 +5,6 @@ option go_package = "github.com/kentik/api-schema/gen/go/kentik/network_class/v2
 
 import "google/api/annotations.proto";
 import "google/api/client.proto";
-import "google/type/latlng.proto";
-import "google/type/postal_address.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
 import "kentik/core/v202012alpha1/annotations.proto";
 

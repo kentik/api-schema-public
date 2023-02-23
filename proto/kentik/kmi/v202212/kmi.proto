@@ -6,7 +6,6 @@ option go_package = "github.com/kentik/api-schema/gen/go/kentik/kmi/v202212;kmi"
 import "google/api/annotations.proto";
 import "google/api/client.proto";
 import "google/api/field_behavior.proto";
-import "google/protobuf/timestamp.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
 import "kentik/core/v202012alpha1/annotations.proto";
 
