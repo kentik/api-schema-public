@@ -1,4 +1,11 @@
-.DS_Store
+# IDEs
+.idea/
+.vscode/
+
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
-.idea/
+*$py.class
+
+# macOS crap
+.DS_Store
