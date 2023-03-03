@@ -46,9 +46,9 @@ const char descriptor_table_protodef_kentik_2fcore_2fv202012alpha1_2fannotations
   "od\022\036.google.protobuf.MethodOptions\030\200+ \001("
   "\010R\rprivateMethod:H\n\017method_category\022\036.go"
   "ogle.protobuf.MethodOptions\030\201+ \001(\tR\016meth"
-  "odCategoryBJZHgithub.com/kentik/api-sche"
-  "ma/gen/go/kentik/core/v202012alpha1;kent"
-  "ik_apib\006proto3"
+  "odCategoryBMZKgithub.com/kentik/api-sche"
+  "ma-public/go/kentik/core/v202012alpha1;k"
+  "entik_apib\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2fcore_2fv202012alpha1_2fannotations_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fdescriptor_2eproto,
@@ -57,7 +57,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_kentik_2fcore_2fv202012alpha1_2fannotations_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_kentik_2fcore_2fv202012alpha1_2fannotations_2eproto = {
-  false, false, descriptor_table_protodef_kentik_2fcore_2fv202012alpha1_2fannotations_2eproto, "kentik/core/v202012alpha1/annotations.proto", 814,
+  false, false, descriptor_table_protodef_kentik_2fcore_2fv202012alpha1_2fannotations_2eproto, "kentik/core/v202012alpha1/annotations.proto", 817,
   &descriptor_table_kentik_2fcore_2fv202012alpha1_2fannotations_2eproto_once, descriptor_table_kentik_2fcore_2fv202012alpha1_2fannotations_2eproto_sccs, descriptor_table_kentik_2fcore_2fv202012alpha1_2fannotations_2eproto_deps, 0, 1,
   schemas, file_default_instances, TableStruct_kentik_2fcore_2fv202012alpha1_2fannotations_2eproto::offsets,
   file_level_metadata_kentik_2fcore_2fv202012alpha1_2fannotations_2eproto, 0, file_level_enum_descriptors_kentik_2fcore_2fv202012alpha1_2fannotations_2eproto, file_level_service_descriptors_kentik_2fcore_2fv202012alpha1_2fannotations_2eproto,

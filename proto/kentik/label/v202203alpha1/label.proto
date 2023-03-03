@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package kentik.label.v202203alpha1;
-option go_package = "github.com/kentik/api-schema/gen/go/kentik/label/v202203alpha1;label";
+option go_package = "github.com/kentik/api-schema-public/go/kentik/label/v202203alpha1;label";
 
 import "google/api/annotations.proto";
 import "google/api/client.proto";

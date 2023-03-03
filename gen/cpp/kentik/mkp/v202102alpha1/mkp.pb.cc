@@ -1450,16 +1450,16 @@ const char descriptor_table_protodef_kentik_2fmkp_2fv202102alpha1_2fmkp_2eproto[
   "the tenant specified with id.*\014TenantDel"
   "ete\362\327\002\017admin.mkp:write\202\323\344\223\002!*\037/mkp/v2021"
   "02alpha1/tenants/{id}\032&\312A\022mkp.api.kentik"
-  ".com\352\327\002\tadmin.mkp\220\330\002\003B\324\002Z@github.com/ken"
-  "tik/api-schema/gen/go/kentik/mkp/v202102"
-  "alpha1;mkp\222A\216\002\022P\n\007MKP API\"7\n\026Kentik API "
-  "Engineering\022\035https://github.com/kentik/a"
-  "pi2\014202102alpha1*\001\0022\020application/json:\020a"
-  "pplication/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Aut"
-  "h-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-To"
-  "ken \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r5\n\026More ab"
-  "out Kentik APIs\022\033https://docs.kentik.com"
-  "/apib\006proto3"
+  ".com\352\327\002\tadmin.mkp\220\330\002\003B\327\002ZCgithub.com/ken"
+  "tik/api-schema-public/go/kentik/mkp/v202"
+  "102alpha1;mkp\222A\216\002\022P\n\007MKP API\"7\n\026Kentik A"
+  "PI Engineering\022\035https://github.com/kenti"
+  "k/api2\014202102alpha1*\001\0022\020application/json"
+  ":\020application/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-"
+  "Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API"
+  "-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r5\n\026More"
+  " about Kentik APIs\022\033https://docs.kentik."
+  "com/apib\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2fmkp_2fv202102alpha1_2fmkp_2eproto_deps[5] = {
   &::descriptor_table_google_2fapi_2fannotations_2eproto,
@@ -1512,7 +1512,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_kentik_2fmkp_2fv202102alpha1_2fmkp_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_kentik_2fmkp_2fv202102alpha1_2fmkp_2eproto = {
-  false, false, descriptor_table_protodef_kentik_2fmkp_2fv202102alpha1_2fmkp_2eproto, "kentik/mkp/v202102alpha1/mkp.proto", 9812,
+  false, false, descriptor_table_protodef_kentik_2fmkp_2fv202102alpha1_2fmkp_2eproto, "kentik/mkp/v202102alpha1/mkp.proto", 9815,
   &descriptor_table_kentik_2fmkp_2fv202102alpha1_2fmkp_2eproto_once, descriptor_table_kentik_2fmkp_2fv202102alpha1_2fmkp_2eproto_sccs, descriptor_table_kentik_2fmkp_2fv202102alpha1_2fmkp_2eproto_deps, 40, 5,
   schemas, file_default_instances, TableStruct_kentik_2fmkp_2fv202102alpha1_2fmkp_2eproto::offsets,
   file_level_metadata_kentik_2fmkp_2fv202102alpha1_2fmkp_2eproto, 40, file_level_enum_descriptors_kentik_2fmkp_2fv202102alpha1_2fmkp_2eproto, file_level_service_descriptors_kentik_2fmkp_2fv202102alpha1_2fmkp_2eproto,

@@ -3,7 +3,7 @@
 
 package bgp_monitoring
 
-import "github.com/kentik/api-schema-public/gen/go/kentik/synthetics/v202202"
+import "github.com/kentik/api-schema-public/go/kentik/synthetics/v202202"
 import "github.com/kentik/ktrac/pkg/route/pb"
 import "google.golang.org/protobuf/types/known/timestamppb"
 

@@ -875,20 +875,20 @@ const char descriptor_table_protodef_kentik_2fbgp_5fmonitoring_2fv202205beta1_2f
   "mestamp.*\022GetRoutesForTarget\362\327\002\017syntheti"
   "cs:read\202\323\344\223\002(\"#/bgp_monitoring/v202205be"
   "ta1/routes:\001*\032(\312A\023grpc.api.kentik.com\352\327\002"
-  "\nsynthetics\220\330\002\003B\370\003ZUgithub.com/kentik/ap"
-  "i-schema/gen/go/kentik/bgp_monitoring/v2"
-  "02205beta1;bgp_monitoring\222A\235\003\022\266\001\n\022BGP Mo"
-  "nitoring API\022K--- This API has been depr"
-  "ecated and will be removed in the near f"
-  "uture ---\"E\n\026Kentik API Engineering\022+htt"
-  "ps://github.com/kentik/api-schema-public"
-  "2\014v202205beta1*\001\0022\020application/json:\020app"
-  "lication/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-"
-  "Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Toke"
-  "n \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]\n%General i"
-  "nformation about Kentik APIs\0224https://kb"
-  ".kentik.com/v0/Ab09.htm#Ab09-APIs_Overvi"
-  "ewb\006proto3"
+  "\nsynthetics\220\330\002\003B\373\003ZXgithub.com/kentik/ap"
+  "i-schema-public/go/kentik/bgp_monitoring"
+  "/v202205beta1;bgp_monitoring\222A\235\003\022\266\001\n\022BGP"
+  " Monitoring API\022K--- This API has been d"
+  "eprecated and will be removed in the nea"
+  "r future ---\"E\n\026Kentik API Engineering\022+"
+  "https://github.com/kentik/api-schema-pub"
+  "lic2\014v202205beta1*\001\0022\020application/json:\020"
+  "application/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Au"
+  "th-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-T"
+  "oken \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]\n%Genera"
+  "l information about Kentik APIs\0224https:/"
+  "/kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Ove"
+  "rviewb\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto_deps[8] = {
   &::descriptor_table_google_2fapi_2fannotations_2eproto,
@@ -927,7 +927,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto = {
-  false, false, descriptor_table_protodef_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto, "kentik/bgp_monitoring/v202205beta1/bgp_monitoring.proto", 7490,
+  false, false, descriptor_table_protodef_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto, "kentik/bgp_monitoring/v202205beta1/bgp_monitoring.proto", 7493,
   &descriptor_table_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto_once, descriptor_table_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto_sccs, descriptor_table_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto_deps, 23, 8,
   schemas, file_default_instances, TableStruct_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto::offsets,
   file_level_metadata_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto, 23, file_level_enum_descriptors_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto, file_level_service_descriptors_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto,

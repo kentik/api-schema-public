@@ -3,7 +3,7 @@
 syntax = "proto3";
 
 package kentik.core.v202012alpha1;
-option go_package = "github.com/kentik/api-schema/gen/go/kentik/core/v202012alpha1;kentik_api";
+option go_package = "github.com/kentik/api-schema-public/go/kentik/core/v202012alpha1;kentik_api";
 
 import "google/protobuf/descriptor.proto";
 

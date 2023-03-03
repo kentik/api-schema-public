@@ -3,7 +3,7 @@
 syntax = "proto3";
 
 package kentik.synthetics.v202202;
-option go_package = "github.com/kentik/api-schema/gen/go/kentik/synthetics/v202202;synthetics";
+option go_package = "github.com/kentik/api-schema-public/go/kentik/synthetics/v202202;synthetics";
 
 import "google/api/annotations.proto";
 import "google/api/client.proto";

@@ -786,20 +786,20 @@ const char descriptor_table_protodef_kentik_2fcapacity_5fplan_2fv202212_2fcapaci
   "Plan\362\327\002\030admin.capacity_plan:read\202\323\344\223\002+\022)"
   "/capacity_plan/v202212/capacity_plan/{id"
   "}\0321\312A\023grpc.api.kentik.com\352\327\002\023admin.capac"
-  "ity_plan\220\330\002\003B\367\003ZNgithub.com/kentik/api-s"
-  "chema/gen/go/kentik/capacity_plan/v20221"
-  "2;capacity_plan\222A\243\003\022\274\001\n\021Capacity Plan AP"
-  "I\022W# Overview\nThe Capacity Plan API prov"
-  "ides read-only access to configured capa"
-  "city plans\"E\n\026Kentik API Engineering\022+ht"
-  "tps://github.com/kentik/api-schema-publi"
-  "c2\007v202212*\001\0022\020application/json:\020applica"
-  "tion/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Emai"
-  "l \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002b"
-  "\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]\n%General infor"
-  "mation about Kentik APIs\0224https://kb.ken"
-  "tik.com/v0/Ab09.htm#Ab09-APIs_Overviewb\006"
-  "proto3"
+  "ity_plan\220\330\002\003B\372\003ZQgithub.com/kentik/api-s"
+  "chema-public/go/kentik/capacity_plan/v20"
+  "2212;capacity_plan\222A\243\003\022\274\001\n\021Capacity Plan"
+  " API\022W# Overview\nThe Capacity Plan API p"
+  "rovides read-only access to configured c"
+  "apacity plans\"E\n\026Kentik API Engineering\022"
+  "+https://github.com/kentik/api-schema-pu"
+  "blic2\007v202212*\001\0022\020application/json:\020appl"
+  "ication/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-E"
+  "mail \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Token"
+  " \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]\n%General in"
+  "formation about Kentik APIs\0224https://kb."
+  "kentik.com/v0/Ab09.htm#Ab09-APIs_Overvie"
+  "wb\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2fcapacity_5fplan_2fv202212_2fcapacity_5fplan_2eproto_deps[5] = {
   &::descriptor_table_google_2fapi_2fannotations_2eproto,
@@ -831,7 +831,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_kentik_2fcapacity_5fplan_2fv202212_2fcapacity_5fplan_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_kentik_2fcapacity_5fplan_2fv202212_2fcapacity_5fplan_2eproto = {
-  false, false, descriptor_table_protodef_kentik_2fcapacity_5fplan_2fv202212_2fcapacity_5fplan_2eproto, "kentik/capacity_plan/v202212/capacity_plan.proto", 7526,
+  false, false, descriptor_table_protodef_kentik_2fcapacity_5fplan_2fv202212_2fcapacity_5fplan_2eproto, "kentik/capacity_plan/v202212/capacity_plan.proto", 7529,
   &descriptor_table_kentik_2fcapacity_5fplan_2fv202212_2fcapacity_5fplan_2eproto_once, descriptor_table_kentik_2fcapacity_5fplan_2fv202212_2fcapacity_5fplan_2eproto_sccs, descriptor_table_kentik_2fcapacity_5fplan_2fv202212_2fcapacity_5fplan_2eproto_deps, 19, 5,
   schemas, file_default_instances, TableStruct_kentik_2fcapacity_5fplan_2fv202212_2fcapacity_5fplan_2eproto::offsets,
   file_level_metadata_kentik_2fcapacity_5fplan_2fv202212_2fcapacity_5fplan_2eproto, 19, file_level_enum_descriptors_kentik_2fcapacity_5fplan_2fv202212_2fcapacity_5fplan_2eproto, file_level_service_descriptors_kentik_2fcapacity_5fplan_2fv202212_2fcapacity_5fplan_2eproto,

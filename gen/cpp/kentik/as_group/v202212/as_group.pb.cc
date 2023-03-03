@@ -488,22 +488,22 @@ const char descriptor_table_protodef_kentik_2fas_5fgroup_2fv202212_2fas_5fgroup_
   "ecific ID.*\rDeleteASGroup\362\327\002\024admin.as_gr"
   "oup:write\202\323\344\223\002!*\037/as_group/v202212/as_gr"
   "oup/{id}\032,\312A\023grpc.api.kentik.com\352\327\002\016admi"
-  "n.as_group\220\330\002\003B\306\004ZDgithub.com/kentik/api"
-  "-schema/gen/go/kentik/as_group/v202212;a"
-  "s_group\222A\374\003\022\225\002\n\032AS Group Configuration A"
-  "PI\022\246\001# Overview\nThe AS Group Configurati"
-  "on API provides programmatic access to c"
-  "onfiguration of AS Groups:\n\n* **AS Group"
-  "**: ASNs can be logically grouped into a"
-  "n AS group.\"E\n\026Kentik API Engineering\022+h"
-  "ttps://github.com/kentik/api-schema-publ"
-  "ic2\007v202212*\001\0022\020application/json:\020applic"
-  "ation/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Ema"
-  "il \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002"
-  "b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]\n%General info"
-  "rmation about Kentik APIs\0224https://kb.ke"
-  "ntik.com/v0/Ab09.htm#Ab09-APIs_Overviewb"
-  "\006proto3"
+  "n.as_group\220\330\002\003B\311\004ZGgithub.com/kentik/api"
+  "-schema-public/go/kentik/as_group/v20221"
+  "2;as_group\222A\374\003\022\225\002\n\032AS Group Configuratio"
+  "n API\022\246\001# Overview\nThe AS Group Configur"
+  "ation API provides programmatic access t"
+  "o configuration of AS Groups:\n\n* **AS Gr"
+  "oup**: ASNs can be logically grouped int"
+  "o an AS group.\"E\n\026Kentik API Engineering"
+  "\022+https://github.com/kentik/api-schema-p"
+  "ublic2\007v202212*\001\0022\020application/json:\020app"
+  "lication/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-"
+  "Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Toke"
+  "n \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]\n%General i"
+  "nformation about Kentik APIs\0224https://kb"
+  ".kentik.com/v0/Ab09.htm#Ab09-APIs_Overvi"
+  "ewb\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2fas_5fgroup_2fv202212_2fas_5fgroup_2eproto_deps[6] = {
   &::descriptor_table_google_2fapi_2fannotations_2eproto,
@@ -530,7 +530,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_kentik_2fas_5fgroup_2fv202212_2fas_5fgroup_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_kentik_2fas_5fgroup_2fv202212_2fas_5fgroup_2eproto = {
-  false, false, descriptor_table_protodef_kentik_2fas_5fgroup_2fv202212_2fas_5fgroup_2eproto, "kentik/as_group/v202212/as_group.proto", 4447,
+  false, false, descriptor_table_protodef_kentik_2fas_5fgroup_2fv202212_2fas_5fgroup_2eproto, "kentik/as_group/v202212/as_group.proto", 4450,
   &descriptor_table_kentik_2fas_5fgroup_2fv202212_2fas_5fgroup_2eproto_once, descriptor_table_kentik_2fas_5fgroup_2fv202212_2fas_5fgroup_2eproto_sccs, descriptor_table_kentik_2fas_5fgroup_2fv202212_2fas_5fgroup_2eproto_deps, 13, 6,
   schemas, file_default_instances, TableStruct_kentik_2fas_5fgroup_2fv202212_2fas_5fgroup_2eproto::offsets,
   file_level_metadata_kentik_2fas_5fgroup_2fv202212_2fas_5fgroup_2eproto, 13, file_level_enum_descriptors_kentik_2fas_5fgroup_2fv202212_2fas_5fgroup_2eproto, file_level_service_descriptors_kentik_2fas_5fgroup_2fv202212_2fas_5fgroup_2eproto,

@@ -3,7 +3,7 @@
 syntax = "proto3";
 
 package kentik.cloud_export.v202101beta1;
-option go_package = "github.com/kentik/api-schema/gen/go/kentik/cloud_export/v202101beta1;cloud_export";
+option go_package = "github.com/kentik/api-schema-public/go/kentik/cloud_export/v202101beta1;cloud_export";
 
 import "google/protobuf/wrappers.proto";
 import "google/api/annotations.proto";

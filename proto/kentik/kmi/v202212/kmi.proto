@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package kentik.kmi.v202212;
-option go_package = "github.com/kentik/api-schema/gen/go/kentik/kmi/v202212;kmi";
+option go_package = "github.com/kentik/api-schema-public/go/kentik/kmi/v202212;kmi";
 
 import "google/api/annotations.proto";
 import "google/api/client.proto";

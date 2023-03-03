@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package kentik.network_class.v202109alpha1;
-option go_package = "github.com/kentik/api-schema/gen/go/kentik/network_class/v202109alpha1;network_class";
+option go_package = "github.com/kentik/api-schema-public/go/kentik/network_class/v202109alpha1;network_class";
 
 import "google/api/annotations.proto";
 import "google/api/client.proto";
