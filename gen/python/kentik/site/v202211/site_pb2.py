@@ -17,7 +17,7 @@ from google.api import client_pb2 as google_dot_api_dot_client__pb2
 from google.api import field_behavior_pb2 as google_dot_api_dot_field__behavior__pb2
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 from protoc_gen_openapiv2.options import annotations_pb2 as protoc__gen__openapiv2_dot_options_dot_annotations__pb2
-from kentik.core.v202012alpha1 import annotations_pb2 as kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2
+from kentik.core.v202303 import annotations_pb2 as kentik_dot_core_dot_v202303_dot_annotations__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -26,9 +26,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z?github.com/kentik/api-schema-public/go/kentik/site/v202211;site\222A\272\013\022\323\t\n\026Site Configuration API\022\350\010# Overview\nThe Site Configuration API provides programmatic access to configuration of Sites and Site Markets:\n\n* **Site**: A site is a specific user-defined physical location (e.g. a data center at a given address) or logical location at which there is hosting of your devices, services, providers, or partner networks. Information that can be associated with a site includes the classification of IP addresses and the site\'s logical network topology/architecture.\n* **Site Market**: Sites with any common characteristics of your choosing (e.g. all PoPs in a particular region) can be logically grouped into a site market.\n\nBoth REST endpoint and gRPC RPCs are provided.\n\n***Notes:*** \n    - Once a site is created in Kentik, you can assign one or more devices to the site via the settings for those devices; to do so programmatically you\'d use the v5 Device API (see [Device Create](https://kb.kentik.com/v0/Ec05.htm#Ec05-Device_Create)).\n    - Sites can also be managed using the legacy REST-only [Site API](https://kb.kentik.com/v0/Ec10.htm#Ec10-Site_API), which provides access to a subset of site configuration attributes.\"E\n\026Kentik API Engineering\022+https://github.com/kentik/api-schema-public2\007v202211*\001\0022\020application/json:\020application/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]\n%General information about Kentik APIs\0224https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x1ekentik/site/v202211/site.proto\x12\x13kentik.site.v202211\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a+kentik/core/v202012alpha1/annotations.proto\"\xba\x03\n\x1bSiteIpAddressClassification\x12\x95\x01\n\x17infrastructure_networks\x18\x01 \x03(\tB\\\x92\x41Y2WList of IP address prefixes (in standard CIDR notation) used in infrastructure networksR\x16infrastructureNetworks\x12\x86\x01\n\x14user_access_networks\x18\x02 \x03(\tBT\x92\x41Q2OList of IP address prefixes (in standard CIDR notation) used in access networksR\x12userAccessNetworks\x12z\n\x0eother_networks\x18\x03 \x03(\tBS\x92\x41P2NList of IP address prefixes (in standard CIDR notation) used in other networksR\rotherNetworks\"\x9f\x01\n\x05Layer\x12\x32\n\x04name\x18\x01 \x01(\tB\x1e\x92\x41\x1b\x32\x19Name of the network layerR\x04name\x12\x62\n\ndevice_ids\x18\x02 \x03(\tBC\x92\x41@2>IDs of devices that are deemed to be part of the network layerR\tdeviceIds\"d\n\x08LayerSet\x12X\n\x06layers\x18\x01 \x03(\x0b\x32\x1a.kentik.site.v202211.LayerB$\x92\x41!2\x1fList of parallel network layersR\x06layers\"\xaf\x02\n\rPostalAddress\x12\x31\n\x07\x61\x64\x64ress\x18\x01 \x01(\tB\x17\x92\x41\x10\x32\x0eStreet address\xe2\x41\x01\x02R\x07\x61\x64\x64ress\x12-\n\x04\x63ity\x18\x02 \x01(\tB\x19\x92\x41\x12\x32\x10\x43ity (full name)\xe2\x41\x01\x02R\x04\x63ity\x12\x30\n\x06region\x18\x03 \x01(\tB\x18\x92\x41\x15\x32\x13Geographical regionR\x06region\x12\x42\n\x0bpostal_code\x18\x04 \x01(\tB!\x92\x41\x1e\x32\x1c\x43ountry specific postal codeR\npostalCode\x12\x46\n\x07\x63ountry\x18\x05 \x01(\tB,\x92\x41%2#Country (full name or country code)\xe2\x41\x01\x02R\x07\x63ountry\"\xf4\x05\n\x04Site\x12;\n\x02id\x18\x01 \x01(\tB+\x92\x41$2\"System generated unique identifier\xe2\x41\x01\x03R\x02id\x12\x37\n\x05title\x18\x02 \x01(\tB!\x92\x41\x1a\x32\x18User selected title/name\xe2\x41\x01\x02R\x05title\x12\x38\n\x03lat\x18\x04 \x01(\x01\x42&\x92\x41#2!Latitude (signed decimal degrees)R\x03lat\x12\x39\n\x03lon\x18\x05 \x01(\x01\x42\'\x92\x41$2\"Longitude (signed decimal degrees)R\x03lon\x12^\n\x0epostal_address\x18\x06 \x01(\x0b\x32\".kentik.site.v202211.PostalAddressB\x13\x92\x41\x10\x32\x0ePostal addressR\rpostalAddress\x12H\n\x04type\x18\x07 \x01(\x0e\x32\x1d.kentik.site.v202211.SiteTypeB\x15\x92\x41\x0e\x32\x0cType of site\xe2\x41\x01\x02R\x04type\x12\x93\x01\n\x16\x61\x64\x64ress_classification\x18\x08 \x01(\x0b\x32\x30.kentik.site.v202211.SiteIpAddressClassificationB*\x92\x41\'2%Classification of site\'s IP addressesR\x15\x61\x64\x64ressClassification\x12m\n\x0c\x61rchitecture\x18\t \x03(\x0b\x32\x1d.kentik.site.v202211.LayerSetB*\x92\x41\'2%Logical network topology/architectureR\x0c\x61rchitecture\x12R\n\x0bsite_market\x18\n \x01(\tB1\x92\x41.2,Name of the Site Market this sire belongs toR\nsiteMarket\"\x12\n\x10ListSitesRequest\"\xdb\x01\n\x11ListSitesResponse\x12_\n\x05sites\x18\x01 \x03(\x0b\x32\x19.kentik.site.v202211.SiteB.\x92\x41+2)List of configurations of requested sitesR\x05sites\x12\x65\n\rinvalid_count\x18\x02 \x01(\rB@\x92\x41=2;Number of invalid entries encountered while collecting dataR\x0cinvalidCount\"C\n\x0eGetSiteRequest\x12\x31\n\x02id\x18\x01 \x01(\tB!\x92\x41\x1a\x32\x18ID of the requested site\xe2\x41\x01\x02R\x02id\"j\n\x0fGetSiteResponse\x12W\n\x04site\x18\x01 \x01(\x0b\x32\x19.kentik.site.v202211.SiteB(\x92\x41%2#Configuration of the requested siteR\x04site\"j\n\x11\x43reateSiteRequest\x12U\n\x04site\x18\x01 \x01(\x0b\x32\x19.kentik.site.v202211.SiteB&\x92\x41\x1f\x32\x1d\x43onfiguration of the new site\xe2\x41\x01\x02R\x04site\"q\n\x12\x43reateSiteResponse\x12[\n\x04site\x18\x01 \x01(\x0b\x32\x19.kentik.site.v202211.SiteB,\x92\x41)2\'Configuration of the newly created siteR\x04site\"\x84\x01\n\x11UpdateSiteRequest\x12o\n\x04site\x18\x01 \x01(\x0b\x32\x19.kentik.site.v202211.SiteB@\x92\x41\x39\x32\x37New configuration attributes for the site to be updated\xe2\x41\x01\x02R\x04site\"k\n\x12UpdateSiteResponse\x12U\n\x04site\x18\x01 \x01(\x0b\x32\x19.kentik.site.v202211.SiteB&\x92\x41#2!Updated configuration of the siteR\x04site\"J\n\x11\x44\x65leteSiteRequest\x12\x35\n\x02id\x18\x01 \x01(\tB%\x92\x41\x1e\x32\x1cID of the site to be deleted\xe2\x41\x01\x02R\x02id\"\x14\n\x12\x44\x65leteSiteResponse\"\xc3\x03\n\nSiteMarket\x12;\n\x02id\x18\x01 \x01(\tB+\x92\x41$2\"System generated unique identifier\xe2\x41\x01\x03R\x02id\x12\x36\n\x04name\x18\x02 \x01(\tB\"\x92\x41\x1b\x32\x19User selected unique name\xe2\x41\x01\x02R\x04name\x12<\n\x0b\x64\x65scription\x18\x03 \x01(\tB\x1a\x92\x41\x17\x32\x15\x46ree-form descriptionR\x0b\x64\x65scription\x12O\n\x0fnumber_of_sites\x18\x04 \x01(\rB\'\x92\x41 2\x1eNumber of sites in this market\xe2\x41\x01\x03R\rnumberOfSites\x12S\n\x05\x63\x64\x61te\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.TimestampB!\x92\x41\x1a\x32\x18\x43reation timestamp (UTC)\xe2\x41\x01\x03R\x05\x63\x64\x61te\x12\\\n\x05\x65\x64\x61te\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.TimestampB*\x92\x41#2!Last modification timestamp (UTC)\xe2\x41\x01\x03R\x05\x65\x64\x61te\"\x18\n\x16ListSiteMarketsRequest\"\xfb\x01\n\x17ListSiteMarketsResponse\x12y\n\x0csite_markets\x18\x01 \x03(\x0b\x32\x1f.kentik.site.v202211.SiteMarketB5\x92\x41\x32\x32\x30List of configurations of requested site marketsR\x0bsiteMarkets\x12\x65\n\rinvalid_count\x18\x02 \x01(\rB@\x92\x41=2;Number of invalid entries encountered while collecting dataR\x0cinvalidCount\"P\n\x14GetSiteMarketRequest\x12\x38\n\x02id\x18\x01 \x01(\tB(\x92\x41!2\x1fID of the requested site market\xe2\x41\x01\x02R\x02id\"\x8a\x01\n\x15GetSiteMarketResponse\x12q\n\x0bsite_market\x18\x01 \x01(\x0b\x32\x1f.kentik.site.v202211.SiteMarketB/\x92\x41,2*Configuration of the requested site marketR\nsiteMarket\"\x8a\x01\n\x17\x43reateSiteMarketRequest\x12o\n\x0bsite_market\x18\x01 \x01(\x0b\x32\x1f.kentik.site.v202211.SiteMarketB-\x92\x41&2$Configuration of the new site market\xe2\x41\x01\x02R\nsiteMarket\"\x91\x01\n\x18\x43reateSiteMarketResponse\x12u\n\x0bsite_market\x18\x01 \x01(\x0b\x32\x1f.kentik.site.v202211.SiteMarketB3\x92\x41\x30\x32.Configuration of the newly created site marketR\nsiteMarket\"\x9e\x01\n\x17UpdateSiteMarketRequest\x12\x82\x01\n\x0bsite_market\x18\x01 \x01(\x0b\x32\x1f.kentik.site.v202211.SiteMarketB@\x92\x41\x39\x32\x37New configuration attributes for the site to be updated\xe2\x41\x01\x02R\nsiteMarket\"\x8b\x01\n\x18UpdateSiteMarketResponse\x12o\n\x0bsite_market\x18\x01 \x01(\x0b\x32\x1f.kentik.site.v202211.SiteMarketB-\x92\x41*2(Updated configuration of the site marketR\nsiteMarket\"W\n\x17\x44\x65leteSiteMarketRequest\x12<\n\x02id\x18\x01 \x01(\tB,\x92\x41%2#ID of the site market to be deleted\xe2\x41\x01\x02R\x02id\"\x1a\n\x18\x44\x65leteSiteMarketResponse*\xb4\x01\n\x08SiteType\x12\x19\n\x15SITE_TYPE_UNSPECIFIED\x10\x00\x12\x19\n\x15SITE_TYPE_DATA_CENTER\x10\x01\x12\x13\n\x0fSITE_TYPE_CLOUD\x10\x02\x12\x14\n\x10SITE_TYPE_BRANCH\x10\x03\x12\x1a\n\x16SITE_TYPE_CONNECTIVITY\x10\x04\x12\x16\n\x12SITE_TYPE_CUSTOMER\x10\x05\x12\x13\n\x0fSITE_TYPE_OTHER\x10\x06\x32\x8f\x16\n\x0bSiteService\x12\xcc\x01\n\tListSites\x12%.kentik.site.v202211.ListSitesRequest\x1a&.kentik.site.v202211.ListSitesResponse\"p\x92\x41?\x12\x0fList all sites.\x1a!Returns list of configured sites.*\tListSites\xf2\xd7\x02\x0f\x61\x64min.site:read\x82\xd3\xe4\x93\x02\x15\x12\x13/site/v202211/sites\x12\xeb\x01\n\x07GetSite\x12#.kentik.site.v202211.GetSiteRequest\x1a$.kentik.site.v202211.GetSiteResponse\"\x94\x01\x92\x41^\x12!Retrieve configuration of a site.\x1a\x30Returns configuration of a site specified by ID.*\x07GetSite\xf2\xd7\x02\x0f\x61\x64min.site:read\x82\xd3\xe4\x93\x02\x1a\x12\x18/site/v202211/sites/{id}\x12\x87\x02\n\nCreateSite\x12&.kentik.site.v202211.CreateSiteRequest\x1a\'.kentik.site.v202211.CreateSiteResponse\"\xa7\x01\x92\x41r\x12\x15\x43onfigure a new site.\x1aMCreate configuration for a new site. Returns the newly created configuration.*\nCreateSite\xf2\xd7\x02\x10\x61\x64min.site:write\x82\xd3\xe4\x93\x02\x18\"\x13/site/v202211/sites:\x01*\x12\xb3\x02\n\nUpdateSite\x12&.kentik.site.v202211.UpdateSiteRequest\x1a\'.kentik.site.v202211.UpdateSiteResponse\"\xd3\x01\x92\x41\x93\x01\x12 Updates configuration of a site.\x1a\x63Replaces configuration of a site with attributes in the request. Returns the updated configuration.*\nUpdateSite\xf2\xd7\x02\x10\x61\x64min.site:write\x82\xd3\xe4\x93\x02\"\x1a\x1d/site/v202211/sites/{site.id}:\x01*\x12\xf7\x01\n\nDeleteSite\x12&.kentik.site.v202211.DeleteSiteRequest\x1a\'.kentik.site.v202211.DeleteSiteResponse\"\x97\x01\x92\x41`\x12\x1f\x44\x65lete configuration of a site.\x1a\x31\x44\x65letes configuration of a site with specific ID.*\nDeleteSite\xf2\xd7\x02\x10\x61\x64min.site:write\x82\xd3\xe4\x93\x02\x1a*\x18/site/v202211/sites/{id}\x12\xfa\x01\n\x0fListSiteMarkets\x12+.kentik.site.v202211.ListSiteMarketsRequest\x1a,.kentik.site.v202211.ListSiteMarketsResponse\"\x8b\x01\x92\x41S\x12\x16List all site markets.\x1a(Returns list of configured site markets.*\x0fListSiteMarkets\xf2\xd7\x02\x0f\x61\x64min.site:read\x82\xd3\xe4\x93\x02\x1c\x12\x1a/site/v202211/site_markets\x12\x98\x02\n\rGetSiteMarket\x12).kentik.site.v202211.GetSiteMarketRequest\x1a*.kentik.site.v202211.GetSiteMarketResponse\"\xaf\x01\x92\x41r\x12(Retrieve configuration of a site market.\x1a\x37Returns configuration of a site market specified by ID.*\rGetSiteMarket\xf2\xd7\x02\x0f\x61\x64min.site:read\x82\xd3\xe4\x93\x02!\x12\x1f/site/v202211/site_markets/{id}\x12\xb5\x02\n\x10\x43reateSiteMarket\x12,.kentik.site.v202211.CreateSiteMarketRequest\x1a-.kentik.site.v202211.CreateSiteMarketResponse\"\xc3\x01\x92\x41\x86\x01\x12\x1c\x43onfigure a new site market.\x1aTCreate configuration for a new site market. Returns the newly created configuration.*\x10\x43reateSiteMarket\xf2\xd7\x02\x10\x61\x64min.site:write\x82\xd3\xe4\x93\x02\x1f\"\x1a/site/v202211/site_markets:\x01*\x12\xe7\x02\n\x10UpdateSiteMarket\x12,.kentik.site.v202211.UpdateSiteMarketRequest\x1a-.kentik.site.v202211.UpdateSiteMarketResponse\"\xf5\x01\x92\x41\xa7\x01\x12\'Updates configuration of a site market.\x1ajReplaces configuration of a site market with attributes in the request. Returns the updated configuration.*\x10UpdateSiteMarket\xf2\xd7\x02\x10\x61\x64min.site:write\x82\xd3\xe4\x93\x02\x30\x1a+/site/v202211/site_markets/{site_market.id}:\x01*\x12\xa4\x02\n\x10\x44\x65leteSiteMarket\x12,.kentik.site.v202211.DeleteSiteMarketRequest\x1a-.kentik.site.v202211.DeleteSiteMarketResponse\"\xb2\x01\x92\x41t\x12&Delete configuration of a site market.\x1a\x38\x44\x65letes configuration of a site market with specific ID.*\x10\x44\x65leteSiteMarket\xf2\xd7\x02\x10\x61\x64min.site:write\x82\xd3\xe4\x93\x02!*\x1f/site/v202211/site_markets/{id}\x1a(\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\nadmin.site\x90\xd8\x02\x03\x42\xff\x0bZ?github.com/kentik/api-schema-public/go/kentik/site/v202211;site\x92\x41\xba\x0b\x12\xd3\t\n\x16Site Configuration API\x12\xe8\x08# Overview\nThe Site Configuration API provides programmatic access to configuration of Sites and Site Markets:\n\n* **Site**: A site is a specific user-defined physical location (e.g. a data center at a given address) or logical location at which there is hosting of your devices, services, providers, or partner networks. Information that can be associated with a site includes the classification of IP addresses and the site\'s logical network topology/architecture.\n* **Site Market**: Sites with any common characteristics of your choosing (e.g. all PoPs in a particular region) can be logically grouped into a site market.\n\nBoth REST endpoint and gRPC RPCs are provided.\n\n***Notes:*** \n    - Once a site is created in Kentik, you can assign one or more devices to the site via the settings for those devices; to do so programmatically you\'d use the v5 Device API (see [Device Create](https://kb.kentik.com/v0/Ec05.htm#Ec05-Device_Create)).\n    - Sites can also be managed using the legacy REST-only [Site API](https://kb.kentik.com/v0/Ec10.htm#Ec10-Site_API), which provides access to a subset of site configuration attributes.\"E\n\x16Kentik API Engineering\x12+https://github.com/kentik/api-schema-public2\x07v202211*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r]\n%General information about Kentik APIs\x12\x34https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overviewb\x06proto3'
+  serialized_pb=b'\n\x1ekentik/site/v202211/site.proto\x12\x13kentik.site.v202211\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a%kentik/core/v202303/annotations.proto\"\xba\x03\n\x1bSiteIpAddressClassification\x12\x95\x01\n\x17infrastructure_networks\x18\x01 \x03(\tB\\\x92\x41Y2WList of IP address prefixes (in standard CIDR notation) used in infrastructure networksR\x16infrastructureNetworks\x12\x86\x01\n\x14user_access_networks\x18\x02 \x03(\tBT\x92\x41Q2OList of IP address prefixes (in standard CIDR notation) used in access networksR\x12userAccessNetworks\x12z\n\x0eother_networks\x18\x03 \x03(\tBS\x92\x41P2NList of IP address prefixes (in standard CIDR notation) used in other networksR\rotherNetworks\"\x9f\x01\n\x05Layer\x12\x32\n\x04name\x18\x01 \x01(\tB\x1e\x92\x41\x1b\x32\x19Name of the network layerR\x04name\x12\x62\n\ndevice_ids\x18\x02 \x03(\tBC\x92\x41@2>IDs of devices that are deemed to be part of the network layerR\tdeviceIds\"d\n\x08LayerSet\x12X\n\x06layers\x18\x01 \x03(\x0b\x32\x1a.kentik.site.v202211.LayerB$\x92\x41!2\x1fList of parallel network layersR\x06layers\"\xaf\x02\n\rPostalAddress\x12\x31\n\x07\x61\x64\x64ress\x18\x01 \x01(\tB\x17\x92\x41\x10\x32\x0eStreet address\xe2\x41\x01\x02R\x07\x61\x64\x64ress\x12-\n\x04\x63ity\x18\x02 \x01(\tB\x19\x92\x41\x12\x32\x10\x43ity (full name)\xe2\x41\x01\x02R\x04\x63ity\x12\x30\n\x06region\x18\x03 \x01(\tB\x18\x92\x41\x15\x32\x13Geographical regionR\x06region\x12\x42\n\x0bpostal_code\x18\x04 \x01(\tB!\x92\x41\x1e\x32\x1c\x43ountry specific postal codeR\npostalCode\x12\x46\n\x07\x63ountry\x18\x05 \x01(\tB,\x92\x41%2#Country (full name or country code)\xe2\x41\x01\x02R\x07\x63ountry\"\xf4\x05\n\x04Site\x12;\n\x02id\x18\x01 \x01(\tB+\x92\x41$2\"System generated unique identifier\xe2\x41\x01\x03R\x02id\x12\x37\n\x05title\x18\x02 \x01(\tB!\x92\x41\x1a\x32\x18User selected title/name\xe2\x41\x01\x02R\x05title\x12\x38\n\x03lat\x18\x04 \x01(\x01\x42&\x92\x41#2!Latitude (signed decimal degrees)R\x03lat\x12\x39\n\x03lon\x18\x05 \x01(\x01\x42\'\x92\x41$2\"Longitude (signed decimal degrees)R\x03lon\x12^\n\x0epostal_address\x18\x06 \x01(\x0b\x32\".kentik.site.v202211.PostalAddressB\x13\x92\x41\x10\x32\x0ePostal addressR\rpostalAddress\x12H\n\x04type\x18\x07 \x01(\x0e\x32\x1d.kentik.site.v202211.SiteTypeB\x15\x92\x41\x0e\x32\x0cType of site\xe2\x41\x01\x02R\x04type\x12\x93\x01\n\x16\x61\x64\x64ress_classification\x18\x08 \x01(\x0b\x32\x30.kentik.site.v202211.SiteIpAddressClassificationB*\x92\x41\'2%Classification of site\'s IP addressesR\x15\x61\x64\x64ressClassification\x12m\n\x0c\x61rchitecture\x18\t \x03(\x0b\x32\x1d.kentik.site.v202211.LayerSetB*\x92\x41\'2%Logical network topology/architectureR\x0c\x61rchitecture\x12R\n\x0bsite_market\x18\n \x01(\tB1\x92\x41.2,Name of the Site Market this sire belongs toR\nsiteMarket\"\x12\n\x10ListSitesRequest\"\xdb\x01\n\x11ListSitesResponse\x12_\n\x05sites\x18\x01 \x03(\x0b\x32\x19.kentik.site.v202211.SiteB.\x92\x41+2)List of configurations of requested sitesR\x05sites\x12\x65\n\rinvalid_count\x18\x02 \x01(\rB@\x92\x41=2;Number of invalid entries encountered while collecting dataR\x0cinvalidCount\"C\n\x0eGetSiteRequest\x12\x31\n\x02id\x18\x01 \x01(\tB!\x92\x41\x1a\x32\x18ID of the requested site\xe2\x41\x01\x02R\x02id\"j\n\x0fGetSiteResponse\x12W\n\x04site\x18\x01 \x01(\x0b\x32\x19.kentik.site.v202211.SiteB(\x92\x41%2#Configuration of the requested siteR\x04site\"j\n\x11\x43reateSiteRequest\x12U\n\x04site\x18\x01 \x01(\x0b\x32\x19.kentik.site.v202211.SiteB&\x92\x41\x1f\x32\x1d\x43onfiguration of the new site\xe2\x41\x01\x02R\x04site\"q\n\x12\x43reateSiteResponse\x12[\n\x04site\x18\x01 \x01(\x0b\x32\x19.kentik.site.v202211.SiteB,\x92\x41)2\'Configuration of the newly created siteR\x04site\"\x84\x01\n\x11UpdateSiteRequest\x12o\n\x04site\x18\x01 \x01(\x0b\x32\x19.kentik.site.v202211.SiteB@\x92\x41\x39\x32\x37New configuration attributes for the site to be updated\xe2\x41\x01\x02R\x04site\"k\n\x12UpdateSiteResponse\x12U\n\x04site\x18\x01 \x01(\x0b\x32\x19.kentik.site.v202211.SiteB&\x92\x41#2!Updated configuration of the siteR\x04site\"J\n\x11\x44\x65leteSiteRequest\x12\x35\n\x02id\x18\x01 \x01(\tB%\x92\x41\x1e\x32\x1cID of the site to be deleted\xe2\x41\x01\x02R\x02id\"\x14\n\x12\x44\x65leteSiteResponse\"\xc3\x03\n\nSiteMarket\x12;\n\x02id\x18\x01 \x01(\tB+\x92\x41$2\"System generated unique identifier\xe2\x41\x01\x03R\x02id\x12\x36\n\x04name\x18\x02 \x01(\tB\"\x92\x41\x1b\x32\x19User selected unique name\xe2\x41\x01\x02R\x04name\x12<\n\x0b\x64\x65scription\x18\x03 \x01(\tB\x1a\x92\x41\x17\x32\x15\x46ree-form descriptionR\x0b\x64\x65scription\x12O\n\x0fnumber_of_sites\x18\x04 \x01(\rB\'\x92\x41 2\x1eNumber of sites in this market\xe2\x41\x01\x03R\rnumberOfSites\x12S\n\x05\x63\x64\x61te\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.TimestampB!\x92\x41\x1a\x32\x18\x43reation timestamp (UTC)\xe2\x41\x01\x03R\x05\x63\x64\x61te\x12\\\n\x05\x65\x64\x61te\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.TimestampB*\x92\x41#2!Last modification timestamp (UTC)\xe2\x41\x01\x03R\x05\x65\x64\x61te\"\x18\n\x16ListSiteMarketsRequest\"\xfb\x01\n\x17ListSiteMarketsResponse\x12y\n\x0csite_markets\x18\x01 \x03(\x0b\x32\x1f.kentik.site.v202211.SiteMarketB5\x92\x41\x32\x32\x30List of configurations of requested site marketsR\x0bsiteMarkets\x12\x65\n\rinvalid_count\x18\x02 \x01(\rB@\x92\x41=2;Number of invalid entries encountered while collecting dataR\x0cinvalidCount\"P\n\x14GetSiteMarketRequest\x12\x38\n\x02id\x18\x01 \x01(\tB(\x92\x41!2\x1fID of the requested site market\xe2\x41\x01\x02R\x02id\"\x8a\x01\n\x15GetSiteMarketResponse\x12q\n\x0bsite_market\x18\x01 \x01(\x0b\x32\x1f.kentik.site.v202211.SiteMarketB/\x92\x41,2*Configuration of the requested site marketR\nsiteMarket\"\x8a\x01\n\x17\x43reateSiteMarketRequest\x12o\n\x0bsite_market\x18\x01 \x01(\x0b\x32\x1f.kentik.site.v202211.SiteMarketB-\x92\x41&2$Configuration of the new site market\xe2\x41\x01\x02R\nsiteMarket\"\x91\x01\n\x18\x43reateSiteMarketResponse\x12u\n\x0bsite_market\x18\x01 \x01(\x0b\x32\x1f.kentik.site.v202211.SiteMarketB3\x92\x41\x30\x32.Configuration of the newly created site marketR\nsiteMarket\"\x9e\x01\n\x17UpdateSiteMarketRequest\x12\x82\x01\n\x0bsite_market\x18\x01 \x01(\x0b\x32\x1f.kentik.site.v202211.SiteMarketB@\x92\x41\x39\x32\x37New configuration attributes for the site to be updated\xe2\x41\x01\x02R\nsiteMarket\"\x8b\x01\n\x18UpdateSiteMarketResponse\x12o\n\x0bsite_market\x18\x01 \x01(\x0b\x32\x1f.kentik.site.v202211.SiteMarketB-\x92\x41*2(Updated configuration of the site marketR\nsiteMarket\"W\n\x17\x44\x65leteSiteMarketRequest\x12<\n\x02id\x18\x01 \x01(\tB,\x92\x41%2#ID of the site market to be deleted\xe2\x41\x01\x02R\x02id\"\x1a\n\x18\x44\x65leteSiteMarketResponse*\xb4\x01\n\x08SiteType\x12\x19\n\x15SITE_TYPE_UNSPECIFIED\x10\x00\x12\x19\n\x15SITE_TYPE_DATA_CENTER\x10\x01\x12\x13\n\x0fSITE_TYPE_CLOUD\x10\x02\x12\x14\n\x10SITE_TYPE_BRANCH\x10\x03\x12\x1a\n\x16SITE_TYPE_CONNECTIVITY\x10\x04\x12\x16\n\x12SITE_TYPE_CUSTOMER\x10\x05\x12\x13\n\x0fSITE_TYPE_OTHER\x10\x06\x32\x8f\x16\n\x0bSiteService\x12\xcc\x01\n\tListSites\x12%.kentik.site.v202211.ListSitesRequest\x1a&.kentik.site.v202211.ListSitesResponse\"p\x92\x41?\x12\x0fList all sites.\x1a!Returns list of configured sites.*\tListSites\xf2\xd7\x02\x0f\x61\x64min.site:read\x82\xd3\xe4\x93\x02\x15\x12\x13/site/v202211/sites\x12\xeb\x01\n\x07GetSite\x12#.kentik.site.v202211.GetSiteRequest\x1a$.kentik.site.v202211.GetSiteResponse\"\x94\x01\x92\x41^\x12!Retrieve configuration of a site.\x1a\x30Returns configuration of a site specified by ID.*\x07GetSite\xf2\xd7\x02\x0f\x61\x64min.site:read\x82\xd3\xe4\x93\x02\x1a\x12\x18/site/v202211/sites/{id}\x12\x87\x02\n\nCreateSite\x12&.kentik.site.v202211.CreateSiteRequest\x1a\'.kentik.site.v202211.CreateSiteResponse\"\xa7\x01\x92\x41r\x12\x15\x43onfigure a new site.\x1aMCreate configuration for a new site. Returns the newly created configuration.*\nCreateSite\xf2\xd7\x02\x10\x61\x64min.site:write\x82\xd3\xe4\x93\x02\x18\"\x13/site/v202211/sites:\x01*\x12\xb3\x02\n\nUpdateSite\x12&.kentik.site.v202211.UpdateSiteRequest\x1a\'.kentik.site.v202211.UpdateSiteResponse\"\xd3\x01\x92\x41\x93\x01\x12 Updates configuration of a site.\x1a\x63Replaces configuration of a site with attributes in the request. Returns the updated configuration.*\nUpdateSite\xf2\xd7\x02\x10\x61\x64min.site:write\x82\xd3\xe4\x93\x02\"\x1a\x1d/site/v202211/sites/{site.id}:\x01*\x12\xf7\x01\n\nDeleteSite\x12&.kentik.site.v202211.DeleteSiteRequest\x1a\'.kentik.site.v202211.DeleteSiteResponse\"\x97\x01\x92\x41`\x12\x1f\x44\x65lete configuration of a site.\x1a\x31\x44\x65letes configuration of a site with specific ID.*\nDeleteSite\xf2\xd7\x02\x10\x61\x64min.site:write\x82\xd3\xe4\x93\x02\x1a*\x18/site/v202211/sites/{id}\x12\xfa\x01\n\x0fListSiteMarkets\x12+.kentik.site.v202211.ListSiteMarketsRequest\x1a,.kentik.site.v202211.ListSiteMarketsResponse\"\x8b\x01\x92\x41S\x12\x16List all site markets.\x1a(Returns list of configured site markets.*\x0fListSiteMarkets\xf2\xd7\x02\x0f\x61\x64min.site:read\x82\xd3\xe4\x93\x02\x1c\x12\x1a/site/v202211/site_markets\x12\x98\x02\n\rGetSiteMarket\x12).kentik.site.v202211.GetSiteMarketRequest\x1a*.kentik.site.v202211.GetSiteMarketResponse\"\xaf\x01\x92\x41r\x12(Retrieve configuration of a site market.\x1a\x37Returns configuration of a site market specified by ID.*\rGetSiteMarket\xf2\xd7\x02\x0f\x61\x64min.site:read\x82\xd3\xe4\x93\x02!\x12\x1f/site/v202211/site_markets/{id}\x12\xb5\x02\n\x10\x43reateSiteMarket\x12,.kentik.site.v202211.CreateSiteMarketRequest\x1a-.kentik.site.v202211.CreateSiteMarketResponse\"\xc3\x01\x92\x41\x86\x01\x12\x1c\x43onfigure a new site market.\x1aTCreate configuration for a new site market. Returns the newly created configuration.*\x10\x43reateSiteMarket\xf2\xd7\x02\x10\x61\x64min.site:write\x82\xd3\xe4\x93\x02\x1f\"\x1a/site/v202211/site_markets:\x01*\x12\xe7\x02\n\x10UpdateSiteMarket\x12,.kentik.site.v202211.UpdateSiteMarketRequest\x1a-.kentik.site.v202211.UpdateSiteMarketResponse\"\xf5\x01\x92\x41\xa7\x01\x12\'Updates configuration of a site market.\x1ajReplaces configuration of a site market with attributes in the request. Returns the updated configuration.*\x10UpdateSiteMarket\xf2\xd7\x02\x10\x61\x64min.site:write\x82\xd3\xe4\x93\x02\x30\x1a+/site/v202211/site_markets/{site_market.id}:\x01*\x12\xa4\x02\n\x10\x44\x65leteSiteMarket\x12,.kentik.site.v202211.DeleteSiteMarketRequest\x1a-.kentik.site.v202211.DeleteSiteMarketResponse\"\xb2\x01\x92\x41t\x12&Delete configuration of a site market.\x1a\x38\x44\x65letes configuration of a site market with specific ID.*\x10\x44\x65leteSiteMarket\xf2\xd7\x02\x10\x61\x64min.site:write\x82\xd3\xe4\x93\x02!*\x1f/site/v202211/site_markets/{id}\x1a(\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\nadmin.site\x90\xd8\x02\x03\x42\xff\x0bZ?github.com/kentik/api-schema-public/go/kentik/site/v202211;site\x92\x41\xba\x0b\x12\xd3\t\n\x16Site Configuration API\x12\xe8\x08# Overview\nThe Site Configuration API provides programmatic access to configuration of Sites and Site Markets:\n\n* **Site**: A site is a specific user-defined physical location (e.g. a data center at a given address) or logical location at which there is hosting of your devices, services, providers, or partner networks. Information that can be associated with a site includes the classification of IP addresses and the site\'s logical network topology/architecture.\n* **Site Market**: Sites with any common characteristics of your choosing (e.g. all PoPs in a particular region) can be logically grouped into a site market.\n\nBoth REST endpoint and gRPC RPCs are provided.\n\n***Notes:*** \n    - Once a site is created in Kentik, you can assign one or more devices to the site via the settings for those devices; to do so programmatically you\'d use the v5 Device API (see [Device Create](https://kb.kentik.com/v0/Ec05.htm#Ec05-Device_Create)).\n    - Sites can also be managed using the legacy REST-only [Site API](https://kb.kentik.com/v0/Ec10.htm#Ec10-Site_API), which provides access to a subset of site configuration attributes.\"E\n\x16Kentik API Engineering\x12+https://github.com/kentik/api-schema-public2\x07v202211*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r]\n%General information about Kentik APIs\x12\x34https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overviewb\x06proto3'
   ,
-  dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_api_dot_client__pb2.DESCRIPTOR,google_dot_api_dot_field__behavior__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,protoc__gen__openapiv2_dot_options_dot_annotations__pb2.DESCRIPTOR,kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2.DESCRIPTOR,])
+  dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_api_dot_client__pb2.DESCRIPTOR,google_dot_api_dot_field__behavior__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,protoc__gen__openapiv2_dot_options_dot_annotations__pb2.DESCRIPTOR,kentik_dot_core_dot_v202303_dot_annotations__pb2.DESCRIPTOR,])
 
 _SITETYPE = _descriptor.EnumDescriptor(
   name='SiteType',
@@ -75,8 +75,8 @@ _SITETYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=4694,
-  serialized_end=4874,
+  serialized_start=4688,
+  serialized_end=4868,
 )
 _sym_db.RegisterEnumDescriptor(_SITETYPE)
 
@@ -132,8 +132,8 @@ _SITEIPADDRESSCLASSIFICATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=270,
-  serialized_end=712,
+  serialized_start=264,
+  serialized_end=706,
 )
 
 
@@ -171,8 +171,8 @@ _LAYER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=715,
-  serialized_end=874,
+  serialized_start=709,
+  serialized_end=868,
 )
 
 
@@ -203,8 +203,8 @@ _LAYERSET = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=876,
-  serialized_end=976,
+  serialized_start=870,
+  serialized_end=970,
 )
 
 
@@ -263,8 +263,8 @@ _POSTALADDRESS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=979,
-  serialized_end=1282,
+  serialized_start=973,
+  serialized_end=1276,
 )
 
 
@@ -351,8 +351,8 @@ _SITE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1285,
-  serialized_end=2041,
+  serialized_start=1279,
+  serialized_end=2035,
 )
 
 
@@ -376,8 +376,8 @@ _LISTSITESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2043,
-  serialized_end=2061,
+  serialized_start=2037,
+  serialized_end=2055,
 )
 
 
@@ -415,8 +415,8 @@ _LISTSITESRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2064,
-  serialized_end=2283,
+  serialized_start=2058,
+  serialized_end=2277,
 )
 
 
@@ -447,8 +447,8 @@ _GETSITEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2285,
-  serialized_end=2352,
+  serialized_start=2279,
+  serialized_end=2346,
 )
 
 
@@ -479,8 +479,8 @@ _GETSITERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2354,
-  serialized_end=2460,
+  serialized_start=2348,
+  serialized_end=2454,
 )
 
 
@@ -511,8 +511,8 @@ _CREATESITEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2462,
-  serialized_end=2568,
+  serialized_start=2456,
+  serialized_end=2562,
 )
 
 
@@ -543,8 +543,8 @@ _CREATESITERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2570,
-  serialized_end=2683,
+  serialized_start=2564,
+  serialized_end=2677,
 )
 
 
@@ -575,8 +575,8 @@ _UPDATESITEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2686,
-  serialized_end=2818,
+  serialized_start=2680,
+  serialized_end=2812,
 )
 
 
@@ -607,8 +607,8 @@ _UPDATESITERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2820,
-  serialized_end=2927,
+  serialized_start=2814,
+  serialized_end=2921,
 )
 
 
@@ -639,8 +639,8 @@ _DELETESITEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2929,
-  serialized_end=3003,
+  serialized_start=2923,
+  serialized_end=2997,
 )
 
 
@@ -664,8 +664,8 @@ _DELETESITERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3005,
-  serialized_end=3025,
+  serialized_start=2999,
+  serialized_end=3019,
 )
 
 
@@ -731,8 +731,8 @@ _SITEMARKET = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3028,
-  serialized_end=3479,
+  serialized_start=3022,
+  serialized_end=3473,
 )
 
 
@@ -756,8 +756,8 @@ _LISTSITEMARKETSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3481,
-  serialized_end=3505,
+  serialized_start=3475,
+  serialized_end=3499,
 )
 
 
@@ -795,8 +795,8 @@ _LISTSITEMARKETSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3508,
-  serialized_end=3759,
+  serialized_start=3502,
+  serialized_end=3753,
 )
 
 
@@ -827,8 +827,8 @@ _GETSITEMARKETREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3761,
-  serialized_end=3841,
+  serialized_start=3755,
+  serialized_end=3835,
 )
 
 
@@ -859,8 +859,8 @@ _GETSITEMARKETRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3844,
-  serialized_end=3982,
+  serialized_start=3838,
+  serialized_end=3976,
 )
 
 
@@ -891,8 +891,8 @@ _CREATESITEMARKETREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3985,
-  serialized_end=4123,
+  serialized_start=3979,
+  serialized_end=4117,
 )
 
 
@@ -923,8 +923,8 @@ _CREATESITEMARKETRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4126,
-  serialized_end=4271,
+  serialized_start=4120,
+  serialized_end=4265,
 )
 
 
@@ -955,8 +955,8 @@ _UPDATESITEMARKETREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4274,
-  serialized_end=4432,
+  serialized_start=4268,
+  serialized_end=4426,
 )
 
 
@@ -987,8 +987,8 @@ _UPDATESITEMARKETRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4435,
-  serialized_end=4574,
+  serialized_start=4429,
+  serialized_end=4568,
 )
 
 
@@ -1019,8 +1019,8 @@ _DELETESITEMARKETREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4576,
-  serialized_end=4663,
+  serialized_start=4570,
+  serialized_end=4657,
 )
 
 
@@ -1044,8 +1044,8 @@ _DELETESITEMARKETRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4665,
-  serialized_end=4691,
+  serialized_start=4659,
+  serialized_end=4685,
 )
 
 _LAYERSET.fields_by_name['layers'].message_type = _LAYER
@@ -1332,8 +1332,8 @@ _SITESERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=b'\312A\023grpc.api.kentik.com\352\327\002\nadmin.site\220\330\002\003',
   create_key=_descriptor._internal_create_key,
-  serialized_start=4877,
-  serialized_end=7708,
+  serialized_start=4871,
+  serialized_end=7702,
   methods=[
   _descriptor.MethodDescriptor(
     name='ListSites',

@@ -7,7 +7,7 @@ import "google/api/annotations.proto";
 import "google/api/client.proto";
 import "google/api/field_behavior.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
-import "kentik/core/v202012alpha1/annotations.proto";
+import "kentik/core/v202303/annotations.proto";
 
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   info: {
@@ -339,13 +339,13 @@ message GetASNDetailsResponse {
 
 service KmiService {
   option (google.api.default_host) = "grpc.api.kentik.com";
-  option (kentik.core.v202012alpha1.visibility) = SERVICE_VISIBILITY_PUBLIC;
-  option (kentik.core.v202012alpha1.service_scope) = "admin.kmi";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "admin.kmi";
 
   // --- KMI ---
 
   rpc ListMarkets(ListMarketsRequest) returns (ListMarketsResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.kmi:read";
+    option (kentik.core.v202303.method_scope) = "admin.kmi:read";
     option (google.api.http) = {
       get: "/kmi/v202212/markets"
     };
@@ -357,7 +357,7 @@ service KmiService {
   }
 
   rpc GetRankings(GetRankingsRequest) returns (GetRankingsResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.kmi:read";
+    option (kentik.core.v202303.method_scope) = "admin.kmi:read";
     option (google.api.http) = {
       post: "/kmi/v202212/market/{market_id}/rankings/{rank_type}"
       body: "*"
@@ -370,7 +370,7 @@ service KmiService {
   }
 
   rpc GetASNDetails(GetASNDetailsRequest) returns (GetASNDetailsResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.kmi:read";
+    option (kentik.core.v202303.method_scope) = "admin.kmi:read";
     option (google.api.http) = {
       post: "/kmi/v202212/market/{market_id}/network/{asn}/{type}"
       body: "*"

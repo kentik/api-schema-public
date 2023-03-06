@@ -3,8 +3,8 @@
 
 package bgp_monitoring
 
-import "github.com/kentik/api-schema-public/go/kentik/synthetics/v202202"
-import "github.com/kentik/ktrac/pkg/route/pb"
+import v2023031 "github.com/kentik/api-schema-public/go/kentik/core/v202303"
+import "github.com/kentik/api-schema-public/go/kentik/net/v202303"
 import "google.golang.org/protobuf/types/known/timestamppb"
 
 // Proto_ShallowCopy copies fields, from v to the receiver, using field getters.
@@ -19,10 +19,10 @@ func (x *Nlri) Proto_ShallowCopy(v interface{}) {
 		x.Safi = v.GetSafi()
 		x.Type = v.GetType()
 	default:
-		if v, ok := v.(interface{ GetAfi() pb.Afi }); ok {
+		if v, ok := v.(interface{ GetAfi() v202303.Afi }); ok {
 			x.Afi = v.GetAfi()
 		}
-		if v, ok := v.(interface{ GetSafi() pb.Safi }); ok {
+		if v, ok := v.(interface{ GetSafi() v202303.Safi }); ok {
 			x.Safi = v.GetSafi()
 		}
 		if v, ok := v.(interface{ GetType() isNlri_Type }); ok {
@@ -178,10 +178,10 @@ func (x *BgpMonitor) Proto_ShallowCopy(v interface{}) {
 		if v, ok := v.(interface{ GetEdate() *timestamppb.Timestamp }); ok {
 			x.Edate = v.GetEdate()
 		}
-		if v, ok := v.(interface{ GetCreatedBy() *v202202.UserInfo }); ok {
+		if v, ok := v.(interface{ GetCreatedBy() *v2023031.UserInfo }); ok {
 			x.CreatedBy = v.GetCreatedBy()
 		}
-		if v, ok := v.(interface{ GetLastUpdatedBy() *v202202.UserInfo }); ok {
+		if v, ok := v.(interface{ GetLastUpdatedBy() *v2023031.UserInfo }); ok {
 			x.LastUpdatedBy = v.GetLastUpdatedBy()
 		}
 		if v, ok := v.(interface{ GetLabels() []string }); ok {
@@ -231,10 +231,10 @@ func (x *RouteInfo) Proto_ShallowCopy(v interface{}) {
 		if v, ok := v.(interface{ GetAsPath() []string }); ok {
 			x.AsPath = v.GetAsPath()
 		}
-		if v, ok := v.(interface{ GetVantagePoint() *pb.VantagePoint }); ok {
+		if v, ok := v.(interface{ GetVantagePoint() *v202303.VantagePoint }); ok {
 			x.VantagePoint = v.GetVantagePoint()
 		}
-		if v, ok := v.(interface{ GetRpkiStatus() pb.RpkiStatus }); ok {
+		if v, ok := v.(interface{ GetRpkiStatus() v202303.RpkiStatus }); ok {
 			x.RpkiStatus = v.GetRpkiStatus()
 		}
 		if v, ok := v.(interface{ GetNexthop() string }); ok {

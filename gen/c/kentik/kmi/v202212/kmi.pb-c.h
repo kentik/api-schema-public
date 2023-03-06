@@ -18,7 +18,7 @@ PROTOBUF_C__BEGIN_DECLS
 #include "google/api/client.pb-c.h"
 #include "google/api/field_behavior.pb-c.h"
 #include "protoc-gen-openapiv2/options/annotations.pb-c.h"
-#include "kentik/core/v202012alpha1/annotations.pb-c.h"
+#include "kentik/core/v202303/annotations.pb-c.h"
 
 typedef struct _Kentik__Kmi__V202212__Market Kentik__Kmi__V202212__Market;
 typedef struct _Kentik__Kmi__V202212__Ranking Kentik__Kmi__V202212__Ranking;

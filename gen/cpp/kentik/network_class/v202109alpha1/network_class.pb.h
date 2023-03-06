@@ -36,7 +36,7 @@
 #include "google/api/annotations.pb.h"
 #include "google/api/client.pb.h"
 #include "protoc-gen-openapiv2/options/annotations.pb.h"
-#include "kentik/core/v202012alpha1/annotations.pb.h"
+#include "kentik/core/v202303/annotations.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_kentik_2fnetwork_5fclass_2fv202109alpha1_2fnetwork_5fclass_2eproto

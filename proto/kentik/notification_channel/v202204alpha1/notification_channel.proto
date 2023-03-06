@@ -6,7 +6,7 @@ option go_package = "github.com/kentik/api-schema-public/go/kentik/notification_
 import "google/api/annotations.proto";
 import "google/api/client.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
-import "kentik/core/v202012alpha1/annotations.proto";
+import "kentik/core/v202303/annotations.proto";
 import "google/protobuf/timestamp.proto";
 
 
@@ -99,12 +99,12 @@ message GetNotificationChannelResponse {
 
 service NotificationChannelService {
   option (google.api.default_host) = "grpc.api.kentik.com";
-  option (kentik.core.v202012alpha1.visibility) = SERVICE_VISIBILITY_PUBLIC;
-  option (kentik.core.v202012alpha1.service_scope) = "admin.notification_channel";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "admin.notification_channel";
 
 
   rpc ListNotificationChannels(ListNotificationChannelsRequest) returns (ListNotificationChannelsResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.notification_channel:read";
+    option (kentik.core.v202303.method_scope) = "admin.notification_channel:read";
     option (google.api.http) = {
       get: "/notification_channel/v202204alpha1/notification_channels"
     };
@@ -116,7 +116,7 @@ service NotificationChannelService {
   }
 
   rpc GetNotificationChannel(GetNotificationChannelRequest) returns (GetNotificationChannelResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.notification_channel:read";
+    option (kentik.core.v202303.method_scope) = "admin.notification_channel:read";
     option (google.api.http) = {
       get: "/notification_channel/v202204alpha1/notification_channels/{id}"
     };

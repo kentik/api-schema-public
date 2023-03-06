@@ -15,7 +15,7 @@ from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
 from google.api import client_pb2 as google_dot_api_dot_client__pb2
 from google.protobuf import field_mask_pb2 as google_dot_protobuf_dot_field__mask__pb2
 from protoc_gen_openapiv2.options import annotations_pb2 as protoc__gen__openapiv2_dot_options_dot_annotations__pb2
-from kentik.core.v202012alpha1 import annotations_pb2 as kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2
+from kentik.core.v202303 import annotations_pb2 as kentik_dot_core_dot_v202303_dot_annotations__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -24,9 +24,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'ZCgithub.com/kentik/api-schema-public/go/kentik/mkp/v202102alpha1;mkp\222A\216\002\022P\n\007MKP API\"7\n\026Kentik API Engineering\022\035https://github.com/kentik/api2\014202102alpha1*\001\0022\020application/json:\020application/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r5\n\026More about Kentik APIs\022\033https://docs.kentik.com/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\"kentik/mkp/v202102alpha1/mkp.proto\x12\x18kentik.mkp.v202102alpha1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a google/protobuf/field_mask.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a+kentik/core/v202012alpha1/annotations.proto\"\x97\x02\n\x05\x41lert\x12\x14\n\x05saved\x18\x01 \x01(\x08R\x05saved\x12\x1b\n\tpolicy_id\x18\x02 \x01(\x04R\x08policyId\x12\x43\n\nthresholds\x18\x03 \x03(\x0b\x32#.kentik.mkp.v202102alpha1.ThresholdR\nthresholds\x12%\n\x0eprimary_metric\x18\x04 \x01(\tR\rprimaryMetric\x12+\n\x11secondary_metrics\x18\x05 \x03(\tR\x10secondaryMetrics\x12\x1f\n\x0bis_template\x18\x06 \x01(\x08R\nisTemplate\x12!\n\x0csubpolicy_id\x18\x07 \x01(\tR\x0bsubpolicyId\"\xc6\x01\n\x05\x41sset\x12@\n\x07reports\x18\x01 \x03(\x0b\x32&.kentik.mkp.v202102alpha1.Asset.ReportR\x07reports\x12M\n\x0e\x64\x65\x66\x61ult_report\x18\x02 \x01(\x0b\x32&.kentik.mkp.v202102alpha1.Asset.ReportR\rdefaultReport\x1a,\n\x06Report\x12\x0e\n\x02id\x18\x01 \x01(\x04R\x02id\x12\x12\n\x04type\x18\x02 \x01(\tR\x04type\"\xa4\x04\n\tThreshold\x12\x0e\n\x02id\x18\x01 \x01(\x04R\x02id\x12>\n\x08\x61\x63tivate\x18\x02 \x01(\x0b\x32\".kentik.mkp.v202102alpha1.ActivateR\x08\x61\x63tivate\x12\x1a\n\x08severity\x18\x03 \x01(\tR\x08severity\x12\x43\n\nconditions\x18\x04 \x03(\x0b\x32#.kentik.mkp.v202102alpha1.ConditionR\nconditions\x12\x46\n\x0bmitigations\x18\x05 \x03(\x0b\x32$.kentik.mkp.v202102alpha1.MitigationR\x0bmitigations\x12\x62\n\x15notification_channels\x18\x06 \x03(\x0b\x32-.kentik.mkp.v202102alpha1.NotificationChannelR\x14notificationChannels\x12\x34\n\x16threshold_ack_required\x18\x07 \x01(\x08R\x14thresholdAckRequired\x12>\n\x1b\x65nable_tenant_notifications\x18\x08 \x01(\x08R\x19\x65nableTenantNotifications\x12\x44\n\x1ereceive_landlord_notifications\x18\t \x01(\x08R\x1creceiveLandlordNotifications\"\x9d\x01\n\x08\x41\x63tivate\x12\x14\n\x05times\x18\x01 \x01(\rR\x05times\x12\x1a\n\x08operator\x18\x02 \x01(\tR\x08operator\x12\x1b\n\ttime_unit\x18\x03 \x01(\tR\x08timeUnit\x12\x1f\n\x0btime_window\x18\x04 \x01(\rR\ntimeWindow\x12!\n\x0cgrace_period\x18\x05 \x01(\rR\x0bgracePeriod\"\xab\x01\n\tCondition\x12\x12\n\x04type\x18\x01 \x01(\tR\x04type\x12\x14\n\x05value\x18\x02 \x01(\rR\x05value\x12\x16\n\x06metric\x18\x03 \x01(\tR\x06metric\x12\x1a\n\x08operator\x18\x04 \x01(\tR\x08operator\x12\x1d\n\nvalue_type\x18\x05 \x01(\tR\tvalueType\x12!\n\x0cvalue_select\x18\x06 \x01(\tR\x0bvalueSelect\"\x81\x04\n\nMitigation\x12\x0e\n\x02id\x18\r \x01(\x04R\x02id\x12\x16\n\x06status\x18\x01 \x01(\tR\x06status\x12\x1d\n\ncompany_id\x18\x02 \x01(\x04R\tcompanyId\x12\x1d\n\npairing_id\x18\x03 \x01(\x04R\tpairingId\x12!\n\x0cthreshold_id\x18\x04 \x01(\x04R\x0bthresholdId\x12\x32\n\x15is_method_overridable\x18\x05 \x01(\x08R\x13isMethodOverridable\x12\x32\n\x15mitigation_apply_type\x18\x06 \x01(\tR\x13mitigationApplyType\x12\x32\n\x15mitigation_clear_type\x18\x07 \x01(\tR\x13mitigationClearType\x12\x34\n\x16mitigation_apply_timer\x18\x08 \x01(\rR\x14mitigationApplyTimer\x12\x34\n\x16mitigation_clear_timer\x18\t \x01(\rR\x14mitigationClearTimer\x12\x36\n\x17is_platform_overridable\x18\n \x01(\x08R\x15isPlatformOverridable\x12\x14\n\x05\x63\x64\x61te\x18\x0b \x01(\tR\x05\x63\x64\x61te\x12\x14\n\x05\x65\x64\x61te\x18\x0c \x01(\tR\x05\x65\x64\x61te\"%\n\x13NotificationChannel\x12\x0e\n\x02id\x18\x01 \x01(\x04R\x02id\"\xc0\x02\n\x04User\x12\x0e\n\x02id\x18\x01 \x01(\x04R\x02id\x12\x1d\n\ncompany_id\x18\x02 \x01(\x04R\tcompanyId\x12\x1d\n\nuser_email\x18\x03 \x01(\tR\tuserEmail\x12\x1b\n\tuser_name\x18\x04 \x01(\tR\x08userName\x12$\n\x0euser_full_name\x18\x05 \x01(\tR\x0cuserFullName\x12\"\n\ruser_group_id\x18\x06 \x01(\x04R\x0buserGroupId\x12\x1d\n\nlast_login\x18\x07 \x01(\tR\tlastLogin\x12\x31\n\x14permission_overrides\x18\x08 \x01(\x08R\x13permissionOverrides\x12\x12\n\x04role\x18\t \x01(\tR\x04role\x12\x1d\n\nuser_level\x18\n \x01(\rR\tuserLevel\"w\n\nTenantLink\x12\x0e\n\x02id\x18\x01 \x01(\x04R\x02id\x12*\n\x11pivot_template_id\x18\x02 \x01(\x04R\x0fpivotTemplateId\x12-\n\x13pivot_user_group_id\x18\x03 \x01(\x04R\x10pivotUserGroupId\"\xe9\x02\n\x07Package\x12\x0e\n\x02id\x18\x01 \x01(\x04R\x02id\x12\x1d\n\ncompany_id\x18\x02 \x01(\x04R\tcompanyId\x12\x12\n\x04name\x18\x03 \x01(\tR\x04name\x12 \n\x0b\x64\x65scription\x18\x04 \x01(\tR\x0b\x64\x65scription\x12\x12\n\x04icon\x18\x05 \x01(\tR\x04icon\x12\x14\n\x05\x63olor\x18\x06 \x01(\tR\x05\x63olor\x12\x37\n\x06\x61lerts\x18\x07 \x03(\x0b\x32\x1f.kentik.mkp.v202102alpha1.AlertR\x06\x61lerts\x12\x37\n\x06\x61ssets\x18\x08 \x01(\x0b\x32\x1f.kentik.mkp.v202102alpha1.AssetR\x06\x61ssets\x12\x1d\n\nis_default\x18\t \x01(\x08R\tisDefault\x12>\n\x07tenants\x18\n \x03(\x0b\x32$.kentik.mkp.v202102alpha1.TenantLinkR\x07tenants\"M\n\x0f\x43ustomDimension\x12\x1c\n\tdimension\x18\x01 \x01(\tR\tdimension\x12\x1c\n\tpopulator\x18\x02 \x01(\tR\tpopulator\"\xb5\x01\n\x06\x44\x65vice\x12\x1f\n\x0b\x61ll_devices\x18\x01 \x01(\x08R\nallDevices\x12!\n\x0c\x64\x65vice_types\x18\x02 \x03(\tR\x0b\x64\x65viceTypes\x12#\n\rdevice_labels\x18\x03 \x03(\rR\x0c\x64\x65viceLabels\x12!\n\x0c\x64\x65vice_sites\x18\x04 \x03(\rR\x0b\x64\x65viceSites\x12\x1f\n\x0b\x64\x65vice_name\x18\x05 \x03(\tR\ndeviceName\"o\n\x0b\x46ilterField\x12!\n\x0c\x66ilter_field\x18\x01 \x01(\tR\x0b\x66ilterField\x12\x1a\n\x08operator\x18\x02 \x01(\tR\x08operator\x12!\n\x0c\x66ilter_value\x18\x03 \x01(\tR\x0b\x66ilterValue\"\xc6\x02\n\x06\x46ilter\x12\x12\n\x04name\x18\x01 \x01(\tR\x04name\x12\x14\n\x05named\x18\x02 \x01(\x08R\x05named\x12\x1c\n\tconnector\x18\x03 \x01(\tR\tconnector\x12\x10\n\x03not\x18\x04 \x01(\x08R\x03not\x12\x1d\n\nauto_added\x18\x05 \x01(\tR\tautoAdded\x12#\n\rsaved_filters\x18\x06 \x03(\tR\x0csavedFilters\x12?\n\x07\x66ilters\x18\x07 \x03(\x0b\x32%.kentik.mkp.v202102alpha1.FilterFieldR\x07\x66ilters\x12\x45\n\rfilter_groups\x18\x08 \x03(\x0b\x32 .kentik.mkp.v202102alpha1.FilterR\x0c\x66ilterGroups\x12\x16\n\x06metric\x18\t \x03(\tR\x06metric\"\xdf\x05\n\x06Tenant\x12\x0e\n\x02id\x18\x01 \x01(\x04R\x02id\x12\x1d\n\ncompany_id\x18\x02 \x01(\x04R\tcompanyId\x12\x12\n\x04name\x18\x03 \x01(\tR\x04name\x12 \n\x0b\x64\x65scription\x18\x04 \x01(\tR\x0b\x64\x65scription\x12\x12\n\x04type\x18\x05 \x01(\tR\x04type\x12\x18\n\x07\x65nabled\x18\x06 \x01(\x08R\x07\x65nabled\x12\x37\n\x06\x61lerts\x18\x07 \x03(\x0b\x32\x1f.kentik.mkp.v202102alpha1.AlertR\x06\x61lerts\x12\x37\n\x06\x61ssets\x18\x0f \x01(\x0b\x32\x1f.kentik.mkp.v202102alpha1.AssetR\x06\x61ssets\x12\x10\n\x03\x61sn\x18\x08 \x01(\tR\x03\x61sn\x12\x12\n\x04\x63idr\x18\t \x01(\tR\x04\x63idr\x12V\n\x11\x63ustom_dimensions\x18\n \x03(\x0b\x32).kentik.mkp.v202102alpha1.CustomDimensionR\x10\x63ustomDimensions\x12:\n\x07\x64\x65vices\x18\x0b \x01(\x0b\x32 .kentik.mkp.v202102alpha1.DeviceR\x07\x64\x65vices\x12:\n\x07\x66ilters\x18\x0c \x01(\x0b\x32 .kentik.mkp.v202102alpha1.FilterR\x07\x66ilters\x12%\n\x0einterface_name\x18\r \x01(\tR\rinterfaceName\x12\x1d\n\nsnmp_alias\x18\x0e \x01(\tR\tsnmpAlias\x12=\n\x08packages\x18\x10 \x03(\x0b\x32!.kentik.mkp.v202102alpha1.PackageR\x08packages\x12\x34\n\x05users\x18\x11 \x03(\x0b\x32\x1e.kentik.mkp.v202102alpha1.UserR\x05users\x12\x1f\n\x0btemplate_id\x18\x12 \x01(\rR\ntemplateId\"\x14\n\x12ListPackageRequest\"y\n\x13ListPackageResponse\x12=\n\x08packages\x18\x01 \x03(\x0b\x32!.kentik.mkp.v202102alpha1.PackageR\x08packages\x12#\n\rinvalid_count\x18\x02 \x01(\rR\x0cinvalidCount\"#\n\x11GetPackageRequest\x12\x0e\n\x02id\x18\x01 \x01(\x04R\x02id\"Q\n\x12GetPackageResponse\x12;\n\x07package\x18\x01 \x01(\x0b\x32!.kentik.mkp.v202102alpha1.PackageR\x07package\"S\n\x14\x43reatePackageRequest\x12;\n\x07package\x18\x01 \x01(\x0b\x32!.kentik.mkp.v202102alpha1.PackageR\x07package\"T\n\x15\x43reatePackageResponse\x12;\n\x07package\x18\x01 \x01(\x0b\x32!.kentik.mkp.v202102alpha1.PackageR\x07package\"S\n\x14UpdatePackageRequest\x12;\n\x07package\x18\x01 \x01(\x0b\x32!.kentik.mkp.v202102alpha1.PackageR\x07package\"T\n\x15UpdatePackageResponse\x12;\n\x07package\x18\x01 \x01(\x0b\x32!.kentik.mkp.v202102alpha1.PackageR\x07package\"\x82\x01\n\x13PatchPackageRequest\x12;\n\x07package\x18\x01 \x01(\x0b\x32!.kentik.mkp.v202102alpha1.PackageR\x07package\x12.\n\x04mask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMaskR\x04mask\"S\n\x14PatchPackageResponse\x12;\n\x07package\x18\x01 \x01(\x0b\x32!.kentik.mkp.v202102alpha1.PackageR\x07package\"&\n\x14\x44\x65letePackageRequest\x12\x0e\n\x02id\x18\x01 \x01(\x04R\x02id\"\x17\n\x15\x44\x65letePackageResponse\"\x13\n\x11ListTenantRequest\"u\n\x12ListTenantResponse\x12:\n\x07tenants\x18\x01 \x03(\x0b\x32 .kentik.mkp.v202102alpha1.TenantR\x07tenants\x12#\n\rinvalid_count\x18\x02 \x01(\rR\x0cinvalidCount\"\"\n\x10GetTenantRequest\x12\x0e\n\x02id\x18\x01 \x01(\x04R\x02id\"M\n\x11GetTenantResponse\x12\x38\n\x06tenant\x18\x01 \x01(\x0b\x32 .kentik.mkp.v202102alpha1.TenantR\x06tenant\"O\n\x13\x43reateTenantRequest\x12\x38\n\x06tenant\x18\x01 \x01(\x0b\x32 .kentik.mkp.v202102alpha1.TenantR\x06tenant\"P\n\x14\x43reateTenantResponse\x12\x38\n\x06tenant\x18\x01 \x01(\x0b\x32 .kentik.mkp.v202102alpha1.TenantR\x06tenant\"O\n\x13UpdateTenantRequest\x12\x38\n\x06tenant\x18\x01 \x01(\x0b\x32 .kentik.mkp.v202102alpha1.TenantR\x06tenant\"P\n\x14UpdateTenantResponse\x12\x38\n\x06tenant\x18\x01 \x01(\x0b\x32 .kentik.mkp.v202102alpha1.TenantR\x06tenant\"~\n\x12PatchTenantRequest\x12\x38\n\x06tenant\x18\x01 \x01(\x0b\x32 .kentik.mkp.v202102alpha1.TenantR\x06tenant\x12.\n\x04mask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMaskR\x04mask\"O\n\x13PatchTenantResponse\x12\x38\n\x06tenant\x18\x01 \x01(\x0b\x32 .kentik.mkp.v202102alpha1.TenantR\x06tenant\"%\n\x13\x44\x65leteTenantRequest\x12\x0e\n\x02id\x18\x01 \x01(\x04R\x02id\"\x16\n\x14\x44\x65leteTenantResponse2\x8a\r\n\x0ePackageService\x12\xe6\x01\n\x0bListPackage\x12,.kentik.mkp.v202102alpha1.ListPackageRequest\x1a-.kentik.mkp.v202102alpha1.ListPackageResponse\"z\x92\x41\x42\x12\x12List MKP packages.\x1a\x1fReturns a list of MKP packages.*\x0bPackageList\xf2\xd7\x02\x0e\x61\x64min.mkp:read\x82\xd3\xe4\x93\x02\x1d\x12\x1b/mkp/v202102alpha1/packages\x12\x8c\x02\n\nGetPackage\x12+.kentik.mkp.v202102alpha1.GetPackageRequest\x1a,.kentik.mkp.v202102alpha1.GetPackageResponse\"\xa2\x01\x92\x41\x65\x12!Get information aboout a package.\x1a\x34Returns information about package specified with ID.*\nPackageGet\xf2\xd7\x02\x0e\x61\x64min.mkp:read\x82\xd3\xe4\x93\x02\"\x12 /mkp/v202102alpha1/packages/{id}\x12\x91\x02\n\rCreatePackage\x12..kentik.mkp.v202102alpha1.CreatePackageRequest\x1a/.kentik.mkp.v202102alpha1.CreatePackageResponse\"\x9e\x01\x92\x41\x62\x12\x1a\x43reate a package template.\x1a\x35\x43reate package from request. returns created package.*\rPackageCreate\xf2\xd7\x02\x0f\x61\x64min.mkp:write\x82\xd3\xe4\x93\x02 \"\x1b/mkp/v202102alpha1/packages:\x01*\x12\x99\x02\n\rUpdatePackage\x12..kentik.mkp.v202102alpha1.UpdatePackageRequest\x1a/.kentik.mkp.v202102alpha1.UpdatePackageResponse\"\xa6\x01\x92\x41]\x12\x11Update a package.\x1a\x39Replaces the entire package attributes specified with id.*\rPackageUpdate\xf2\xd7\x02\x0f\x61\x64min.mkp:write\x82\xd3\xe4\x93\x02-\x1a(/mkp/v202102alpha1/packages/{package.id}:\x01*\x12\xa9\x02\n\x0cPatchPackage\x12-.kentik.mkp.v202102alpha1.PatchPackageRequest\x1a..kentik.mkp.v202102alpha1.PatchPackageResponse\"\xb9\x01\x92\x41p\x12\x10Patch a package.\x1aNPartially Updates the attributes of package specified with id and mask fields.*\x0cPackagePatch\xf2\xd7\x02\x0f\x61\x64min.mkp:write\x82\xd3\xe4\x93\x02-2(/mkp/v202102alpha1/packages/{package.id}:\x01*\x12\xfb\x01\n\rDeletePackage\x12..kentik.mkp.v202102alpha1.DeletePackageRequest\x1a/.kentik.mkp.v202102alpha1.DeletePackageResponse\"\x88\x01\x92\x41J\x12\x11\x44\x65lete a package.\x1a&Deletes the package specified with id.*\rPackageDelete\xf2\xd7\x02\x0f\x61\x64min.mkp:write\x82\xd3\xe4\x93\x02\"* /mkp/v202102alpha1/packages/{id}\x1a&\xca\x41\x12mkp.api.kentik.com\xea\xd7\x02\tadmin.mkp\x90\xd8\x02\x03\x32\xd4\x0c\n\rTenantService\x12\xdf\x01\n\nListTenant\x12+.kentik.mkp.v202102alpha1.ListTenantRequest\x1a,.kentik.mkp.v202102alpha1.ListTenantResponse\"v\x92\x41?\x12\x11List MKP tenants.\x1a\x1eReturns a list of MKP tenants.*\nTenantList\xf2\xd7\x02\x0e\x61\x64min.mkp:read\x82\xd3\xe4\x93\x02\x1c\x12\x1a/mkp/v202102alpha1/tenants\x12\x86\x02\n\tGetTenant\x12*.kentik.mkp.v202102alpha1.GetTenantRequest\x1a+.kentik.mkp.v202102alpha1.GetTenantResponse\"\x9f\x01\x92\x41\x63\x12 Get information aboout a tenant.\x1a\x34Returns information about package specified with ID.*\tTenantGet\xf2\xd7\x02\x0e\x61\x64min.mkp:read\x82\xd3\xe4\x93\x02!\x12\x1f/mkp/v202102alpha1/tenants/{id}\x12\x80\x02\n\x0c\x43reateTenant\x12-.kentik.mkp.v202102alpha1.CreateTenantRequest\x1a..kentik.mkp.v202102alpha1.CreateTenantResponse\"\x90\x01\x92\x41U\x12\x10\x43reate a tenant.\x1a\x33\x43reate tenant from request. returns created tenant.*\x0cTenantCreate\xf2\xd7\x02\x0f\x61\x64min.mkp:write\x82\xd3\xe4\x93\x02\x1f\"\x1a/mkp/v202102alpha1/tenants:\x01*\x12\x91\x02\n\x0cUpdateTenant\x12-.kentik.mkp.v202102alpha1.UpdateTenantRequest\x1a..kentik.mkp.v202102alpha1.UpdateTenantResponse\"\xa1\x01\x92\x41Z\x12\x10Update a tenant.\x1a\x38Replaces the entire tenant attributes specified with id.*\x0cTenantUpdate\xf2\xd7\x02\x0f\x61\x64min.mkp:write\x82\xd3\xe4\x93\x02+\x1a&/mkp/v202102alpha1/tenants/{tenant.id}:\x01*\x12\xa1\x02\n\x0bPatchTenant\x12,.kentik.mkp.v202102alpha1.PatchTenantRequest\x1a-.kentik.mkp.v202102alpha1.PatchTenantResponse\"\xb4\x01\x92\x41m\x12\x0fPatch a tenant.\x1aMPartially Updates the attributes of tenant specified with id and mask fields.*\x0bTenantPatch\xf2\xd7\x02\x0f\x61\x64min.mkp:write\x82\xd3\xe4\x93\x02+2&/mkp/v202102alpha1/tenants/{tenant.id}:\x01*\x12\xf4\x01\n\x0c\x44\x65leteTenant\x12-.kentik.mkp.v202102alpha1.DeleteTenantRequest\x1a..kentik.mkp.v202102alpha1.DeleteTenantResponse\"\x84\x01\x92\x41G\x12\x10\x44\x65lete a tenant.\x1a%Deletes the tenant specified with id.*\x0cTenantDelete\xf2\xd7\x02\x0f\x61\x64min.mkp:write\x82\xd3\xe4\x93\x02!*\x1f/mkp/v202102alpha1/tenants/{id}\x1a&\xca\x41\x12mkp.api.kentik.com\xea\xd7\x02\tadmin.mkp\x90\xd8\x02\x03\x42\xd7\x02ZCgithub.com/kentik/api-schema-public/go/kentik/mkp/v202102alpha1;mkp\x92\x41\x8e\x02\x12P\n\x07MKP API\"7\n\x16Kentik API Engineering\x12\x1dhttps://github.com/kentik/api2\x0c\x32\x30\x32\x31\x30\x32\x61lpha1*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r5\n\x16More about Kentik APIs\x12\x1bhttps://docs.kentik.com/apib\x06proto3'
+  serialized_pb=b'\n\"kentik/mkp/v202102alpha1/mkp.proto\x12\x18kentik.mkp.v202102alpha1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a google/protobuf/field_mask.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a%kentik/core/v202303/annotations.proto\"\x97\x02\n\x05\x41lert\x12\x14\n\x05saved\x18\x01 \x01(\x08R\x05saved\x12\x1b\n\tpolicy_id\x18\x02 \x01(\x04R\x08policyId\x12\x43\n\nthresholds\x18\x03 \x03(\x0b\x32#.kentik.mkp.v202102alpha1.ThresholdR\nthresholds\x12%\n\x0eprimary_metric\x18\x04 \x01(\tR\rprimaryMetric\x12+\n\x11secondary_metrics\x18\x05 \x03(\tR\x10secondaryMetrics\x12\x1f\n\x0bis_template\x18\x06 \x01(\x08R\nisTemplate\x12!\n\x0csubpolicy_id\x18\x07 \x01(\tR\x0bsubpolicyId\"\xc6\x01\n\x05\x41sset\x12@\n\x07reports\x18\x01 \x03(\x0b\x32&.kentik.mkp.v202102alpha1.Asset.ReportR\x07reports\x12M\n\x0e\x64\x65\x66\x61ult_report\x18\x02 \x01(\x0b\x32&.kentik.mkp.v202102alpha1.Asset.ReportR\rdefaultReport\x1a,\n\x06Report\x12\x0e\n\x02id\x18\x01 \x01(\x04R\x02id\x12\x12\n\x04type\x18\x02 \x01(\tR\x04type\"\xa4\x04\n\tThreshold\x12\x0e\n\x02id\x18\x01 \x01(\x04R\x02id\x12>\n\x08\x61\x63tivate\x18\x02 \x01(\x0b\x32\".kentik.mkp.v202102alpha1.ActivateR\x08\x61\x63tivate\x12\x1a\n\x08severity\x18\x03 \x01(\tR\x08severity\x12\x43\n\nconditions\x18\x04 \x03(\x0b\x32#.kentik.mkp.v202102alpha1.ConditionR\nconditions\x12\x46\n\x0bmitigations\x18\x05 \x03(\x0b\x32$.kentik.mkp.v202102alpha1.MitigationR\x0bmitigations\x12\x62\n\x15notification_channels\x18\x06 \x03(\x0b\x32-.kentik.mkp.v202102alpha1.NotificationChannelR\x14notificationChannels\x12\x34\n\x16threshold_ack_required\x18\x07 \x01(\x08R\x14thresholdAckRequired\x12>\n\x1b\x65nable_tenant_notifications\x18\x08 \x01(\x08R\x19\x65nableTenantNotifications\x12\x44\n\x1ereceive_landlord_notifications\x18\t \x01(\x08R\x1creceiveLandlordNotifications\"\x9d\x01\n\x08\x41\x63tivate\x12\x14\n\x05times\x18\x01 \x01(\rR\x05times\x12\x1a\n\x08operator\x18\x02 \x01(\tR\x08operator\x12\x1b\n\ttime_unit\x18\x03 \x01(\tR\x08timeUnit\x12\x1f\n\x0btime_window\x18\x04 \x01(\rR\ntimeWindow\x12!\n\x0cgrace_period\x18\x05 \x01(\rR\x0bgracePeriod\"\xab\x01\n\tCondition\x12\x12\n\x04type\x18\x01 \x01(\tR\x04type\x12\x14\n\x05value\x18\x02 \x01(\rR\x05value\x12\x16\n\x06metric\x18\x03 \x01(\tR\x06metric\x12\x1a\n\x08operator\x18\x04 \x01(\tR\x08operator\x12\x1d\n\nvalue_type\x18\x05 \x01(\tR\tvalueType\x12!\n\x0cvalue_select\x18\x06 \x01(\tR\x0bvalueSelect\"\x81\x04\n\nMitigation\x12\x0e\n\x02id\x18\r \x01(\x04R\x02id\x12\x16\n\x06status\x18\x01 \x01(\tR\x06status\x12\x1d\n\ncompany_id\x18\x02 \x01(\x04R\tcompanyId\x12\x1d\n\npairing_id\x18\x03 \x01(\x04R\tpairingId\x12!\n\x0cthreshold_id\x18\x04 \x01(\x04R\x0bthresholdId\x12\x32\n\x15is_method_overridable\x18\x05 \x01(\x08R\x13isMethodOverridable\x12\x32\n\x15mitigation_apply_type\x18\x06 \x01(\tR\x13mitigationApplyType\x12\x32\n\x15mitigation_clear_type\x18\x07 \x01(\tR\x13mitigationClearType\x12\x34\n\x16mitigation_apply_timer\x18\x08 \x01(\rR\x14mitigationApplyTimer\x12\x34\n\x16mitigation_clear_timer\x18\t \x01(\rR\x14mitigationClearTimer\x12\x36\n\x17is_platform_overridable\x18\n \x01(\x08R\x15isPlatformOverridable\x12\x14\n\x05\x63\x64\x61te\x18\x0b \x01(\tR\x05\x63\x64\x61te\x12\x14\n\x05\x65\x64\x61te\x18\x0c \x01(\tR\x05\x65\x64\x61te\"%\n\x13NotificationChannel\x12\x0e\n\x02id\x18\x01 \x01(\x04R\x02id\"\xc0\x02\n\x04User\x12\x0e\n\x02id\x18\x01 \x01(\x04R\x02id\x12\x1d\n\ncompany_id\x18\x02 \x01(\x04R\tcompanyId\x12\x1d\n\nuser_email\x18\x03 \x01(\tR\tuserEmail\x12\x1b\n\tuser_name\x18\x04 \x01(\tR\x08userName\x12$\n\x0euser_full_name\x18\x05 \x01(\tR\x0cuserFullName\x12\"\n\ruser_group_id\x18\x06 \x01(\x04R\x0buserGroupId\x12\x1d\n\nlast_login\x18\x07 \x01(\tR\tlastLogin\x12\x31\n\x14permission_overrides\x18\x08 \x01(\x08R\x13permissionOverrides\x12\x12\n\x04role\x18\t \x01(\tR\x04role\x12\x1d\n\nuser_level\x18\n \x01(\rR\tuserLevel\"w\n\nTenantLink\x12\x0e\n\x02id\x18\x01 \x01(\x04R\x02id\x12*\n\x11pivot_template_id\x18\x02 \x01(\x04R\x0fpivotTemplateId\x12-\n\x13pivot_user_group_id\x18\x03 \x01(\x04R\x10pivotUserGroupId\"\xe9\x02\n\x07Package\x12\x0e\n\x02id\x18\x01 \x01(\x04R\x02id\x12\x1d\n\ncompany_id\x18\x02 \x01(\x04R\tcompanyId\x12\x12\n\x04name\x18\x03 \x01(\tR\x04name\x12 \n\x0b\x64\x65scription\x18\x04 \x01(\tR\x0b\x64\x65scription\x12\x12\n\x04icon\x18\x05 \x01(\tR\x04icon\x12\x14\n\x05\x63olor\x18\x06 \x01(\tR\x05\x63olor\x12\x37\n\x06\x61lerts\x18\x07 \x03(\x0b\x32\x1f.kentik.mkp.v202102alpha1.AlertR\x06\x61lerts\x12\x37\n\x06\x61ssets\x18\x08 \x01(\x0b\x32\x1f.kentik.mkp.v202102alpha1.AssetR\x06\x61ssets\x12\x1d\n\nis_default\x18\t \x01(\x08R\tisDefault\x12>\n\x07tenants\x18\n \x03(\x0b\x32$.kentik.mkp.v202102alpha1.TenantLinkR\x07tenants\"M\n\x0f\x43ustomDimension\x12\x1c\n\tdimension\x18\x01 \x01(\tR\tdimension\x12\x1c\n\tpopulator\x18\x02 \x01(\tR\tpopulator\"\xb5\x01\n\x06\x44\x65vice\x12\x1f\n\x0b\x61ll_devices\x18\x01 \x01(\x08R\nallDevices\x12!\n\x0c\x64\x65vice_types\x18\x02 \x03(\tR\x0b\x64\x65viceTypes\x12#\n\rdevice_labels\x18\x03 \x03(\rR\x0c\x64\x65viceLabels\x12!\n\x0c\x64\x65vice_sites\x18\x04 \x03(\rR\x0b\x64\x65viceSites\x12\x1f\n\x0b\x64\x65vice_name\x18\x05 \x03(\tR\ndeviceName\"o\n\x0b\x46ilterField\x12!\n\x0c\x66ilter_field\x18\x01 \x01(\tR\x0b\x66ilterField\x12\x1a\n\x08operator\x18\x02 \x01(\tR\x08operator\x12!\n\x0c\x66ilter_value\x18\x03 \x01(\tR\x0b\x66ilterValue\"\xc6\x02\n\x06\x46ilter\x12\x12\n\x04name\x18\x01 \x01(\tR\x04name\x12\x14\n\x05named\x18\x02 \x01(\x08R\x05named\x12\x1c\n\tconnector\x18\x03 \x01(\tR\tconnector\x12\x10\n\x03not\x18\x04 \x01(\x08R\x03not\x12\x1d\n\nauto_added\x18\x05 \x01(\tR\tautoAdded\x12#\n\rsaved_filters\x18\x06 \x03(\tR\x0csavedFilters\x12?\n\x07\x66ilters\x18\x07 \x03(\x0b\x32%.kentik.mkp.v202102alpha1.FilterFieldR\x07\x66ilters\x12\x45\n\rfilter_groups\x18\x08 \x03(\x0b\x32 .kentik.mkp.v202102alpha1.FilterR\x0c\x66ilterGroups\x12\x16\n\x06metric\x18\t \x03(\tR\x06metric\"\xdf\x05\n\x06Tenant\x12\x0e\n\x02id\x18\x01 \x01(\x04R\x02id\x12\x1d\n\ncompany_id\x18\x02 \x01(\x04R\tcompanyId\x12\x12\n\x04name\x18\x03 \x01(\tR\x04name\x12 \n\x0b\x64\x65scription\x18\x04 \x01(\tR\x0b\x64\x65scription\x12\x12\n\x04type\x18\x05 \x01(\tR\x04type\x12\x18\n\x07\x65nabled\x18\x06 \x01(\x08R\x07\x65nabled\x12\x37\n\x06\x61lerts\x18\x07 \x03(\x0b\x32\x1f.kentik.mkp.v202102alpha1.AlertR\x06\x61lerts\x12\x37\n\x06\x61ssets\x18\x0f \x01(\x0b\x32\x1f.kentik.mkp.v202102alpha1.AssetR\x06\x61ssets\x12\x10\n\x03\x61sn\x18\x08 \x01(\tR\x03\x61sn\x12\x12\n\x04\x63idr\x18\t \x01(\tR\x04\x63idr\x12V\n\x11\x63ustom_dimensions\x18\n \x03(\x0b\x32).kentik.mkp.v202102alpha1.CustomDimensionR\x10\x63ustomDimensions\x12:\n\x07\x64\x65vices\x18\x0b \x01(\x0b\x32 .kentik.mkp.v202102alpha1.DeviceR\x07\x64\x65vices\x12:\n\x07\x66ilters\x18\x0c \x01(\x0b\x32 .kentik.mkp.v202102alpha1.FilterR\x07\x66ilters\x12%\n\x0einterface_name\x18\r \x01(\tR\rinterfaceName\x12\x1d\n\nsnmp_alias\x18\x0e \x01(\tR\tsnmpAlias\x12=\n\x08packages\x18\x10 \x03(\x0b\x32!.kentik.mkp.v202102alpha1.PackageR\x08packages\x12\x34\n\x05users\x18\x11 \x03(\x0b\x32\x1e.kentik.mkp.v202102alpha1.UserR\x05users\x12\x1f\n\x0btemplate_id\x18\x12 \x01(\rR\ntemplateId\"\x14\n\x12ListPackageRequest\"y\n\x13ListPackageResponse\x12=\n\x08packages\x18\x01 \x03(\x0b\x32!.kentik.mkp.v202102alpha1.PackageR\x08packages\x12#\n\rinvalid_count\x18\x02 \x01(\rR\x0cinvalidCount\"#\n\x11GetPackageRequest\x12\x0e\n\x02id\x18\x01 \x01(\x04R\x02id\"Q\n\x12GetPackageResponse\x12;\n\x07package\x18\x01 \x01(\x0b\x32!.kentik.mkp.v202102alpha1.PackageR\x07package\"S\n\x14\x43reatePackageRequest\x12;\n\x07package\x18\x01 \x01(\x0b\x32!.kentik.mkp.v202102alpha1.PackageR\x07package\"T\n\x15\x43reatePackageResponse\x12;\n\x07package\x18\x01 \x01(\x0b\x32!.kentik.mkp.v202102alpha1.PackageR\x07package\"S\n\x14UpdatePackageRequest\x12;\n\x07package\x18\x01 \x01(\x0b\x32!.kentik.mkp.v202102alpha1.PackageR\x07package\"T\n\x15UpdatePackageResponse\x12;\n\x07package\x18\x01 \x01(\x0b\x32!.kentik.mkp.v202102alpha1.PackageR\x07package\"\x82\x01\n\x13PatchPackageRequest\x12;\n\x07package\x18\x01 \x01(\x0b\x32!.kentik.mkp.v202102alpha1.PackageR\x07package\x12.\n\x04mask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMaskR\x04mask\"S\n\x14PatchPackageResponse\x12;\n\x07package\x18\x01 \x01(\x0b\x32!.kentik.mkp.v202102alpha1.PackageR\x07package\"&\n\x14\x44\x65letePackageRequest\x12\x0e\n\x02id\x18\x01 \x01(\x04R\x02id\"\x17\n\x15\x44\x65letePackageResponse\"\x13\n\x11ListTenantRequest\"u\n\x12ListTenantResponse\x12:\n\x07tenants\x18\x01 \x03(\x0b\x32 .kentik.mkp.v202102alpha1.TenantR\x07tenants\x12#\n\rinvalid_count\x18\x02 \x01(\rR\x0cinvalidCount\"\"\n\x10GetTenantRequest\x12\x0e\n\x02id\x18\x01 \x01(\x04R\x02id\"M\n\x11GetTenantResponse\x12\x38\n\x06tenant\x18\x01 \x01(\x0b\x32 .kentik.mkp.v202102alpha1.TenantR\x06tenant\"O\n\x13\x43reateTenantRequest\x12\x38\n\x06tenant\x18\x01 \x01(\x0b\x32 .kentik.mkp.v202102alpha1.TenantR\x06tenant\"P\n\x14\x43reateTenantResponse\x12\x38\n\x06tenant\x18\x01 \x01(\x0b\x32 .kentik.mkp.v202102alpha1.TenantR\x06tenant\"O\n\x13UpdateTenantRequest\x12\x38\n\x06tenant\x18\x01 \x01(\x0b\x32 .kentik.mkp.v202102alpha1.TenantR\x06tenant\"P\n\x14UpdateTenantResponse\x12\x38\n\x06tenant\x18\x01 \x01(\x0b\x32 .kentik.mkp.v202102alpha1.TenantR\x06tenant\"~\n\x12PatchTenantRequest\x12\x38\n\x06tenant\x18\x01 \x01(\x0b\x32 .kentik.mkp.v202102alpha1.TenantR\x06tenant\x12.\n\x04mask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMaskR\x04mask\"O\n\x13PatchTenantResponse\x12\x38\n\x06tenant\x18\x01 \x01(\x0b\x32 .kentik.mkp.v202102alpha1.TenantR\x06tenant\"%\n\x13\x44\x65leteTenantRequest\x12\x0e\n\x02id\x18\x01 \x01(\x04R\x02id\"\x16\n\x14\x44\x65leteTenantResponse2\x8a\r\n\x0ePackageService\x12\xe6\x01\n\x0bListPackage\x12,.kentik.mkp.v202102alpha1.ListPackageRequest\x1a-.kentik.mkp.v202102alpha1.ListPackageResponse\"z\x92\x41\x42\x12\x12List MKP packages.\x1a\x1fReturns a list of MKP packages.*\x0bPackageList\xf2\xd7\x02\x0e\x61\x64min.mkp:read\x82\xd3\xe4\x93\x02\x1d\x12\x1b/mkp/v202102alpha1/packages\x12\x8c\x02\n\nGetPackage\x12+.kentik.mkp.v202102alpha1.GetPackageRequest\x1a,.kentik.mkp.v202102alpha1.GetPackageResponse\"\xa2\x01\x92\x41\x65\x12!Get information aboout a package.\x1a\x34Returns information about package specified with ID.*\nPackageGet\xf2\xd7\x02\x0e\x61\x64min.mkp:read\x82\xd3\xe4\x93\x02\"\x12 /mkp/v202102alpha1/packages/{id}\x12\x91\x02\n\rCreatePackage\x12..kentik.mkp.v202102alpha1.CreatePackageRequest\x1a/.kentik.mkp.v202102alpha1.CreatePackageResponse\"\x9e\x01\x92\x41\x62\x12\x1a\x43reate a package template.\x1a\x35\x43reate package from request. returns created package.*\rPackageCreate\xf2\xd7\x02\x0f\x61\x64min.mkp:write\x82\xd3\xe4\x93\x02 \"\x1b/mkp/v202102alpha1/packages:\x01*\x12\x99\x02\n\rUpdatePackage\x12..kentik.mkp.v202102alpha1.UpdatePackageRequest\x1a/.kentik.mkp.v202102alpha1.UpdatePackageResponse\"\xa6\x01\x92\x41]\x12\x11Update a package.\x1a\x39Replaces the entire package attributes specified with id.*\rPackageUpdate\xf2\xd7\x02\x0f\x61\x64min.mkp:write\x82\xd3\xe4\x93\x02-\x1a(/mkp/v202102alpha1/packages/{package.id}:\x01*\x12\xa9\x02\n\x0cPatchPackage\x12-.kentik.mkp.v202102alpha1.PatchPackageRequest\x1a..kentik.mkp.v202102alpha1.PatchPackageResponse\"\xb9\x01\x92\x41p\x12\x10Patch a package.\x1aNPartially Updates the attributes of package specified with id and mask fields.*\x0cPackagePatch\xf2\xd7\x02\x0f\x61\x64min.mkp:write\x82\xd3\xe4\x93\x02-2(/mkp/v202102alpha1/packages/{package.id}:\x01*\x12\xfb\x01\n\rDeletePackage\x12..kentik.mkp.v202102alpha1.DeletePackageRequest\x1a/.kentik.mkp.v202102alpha1.DeletePackageResponse\"\x88\x01\x92\x41J\x12\x11\x44\x65lete a package.\x1a&Deletes the package specified with id.*\rPackageDelete\xf2\xd7\x02\x0f\x61\x64min.mkp:write\x82\xd3\xe4\x93\x02\"* /mkp/v202102alpha1/packages/{id}\x1a&\xca\x41\x12mkp.api.kentik.com\xea\xd7\x02\tadmin.mkp\x90\xd8\x02\x03\x32\xd4\x0c\n\rTenantService\x12\xdf\x01\n\nListTenant\x12+.kentik.mkp.v202102alpha1.ListTenantRequest\x1a,.kentik.mkp.v202102alpha1.ListTenantResponse\"v\x92\x41?\x12\x11List MKP tenants.\x1a\x1eReturns a list of MKP tenants.*\nTenantList\xf2\xd7\x02\x0e\x61\x64min.mkp:read\x82\xd3\xe4\x93\x02\x1c\x12\x1a/mkp/v202102alpha1/tenants\x12\x86\x02\n\tGetTenant\x12*.kentik.mkp.v202102alpha1.GetTenantRequest\x1a+.kentik.mkp.v202102alpha1.GetTenantResponse\"\x9f\x01\x92\x41\x63\x12 Get information aboout a tenant.\x1a\x34Returns information about package specified with ID.*\tTenantGet\xf2\xd7\x02\x0e\x61\x64min.mkp:read\x82\xd3\xe4\x93\x02!\x12\x1f/mkp/v202102alpha1/tenants/{id}\x12\x80\x02\n\x0c\x43reateTenant\x12-.kentik.mkp.v202102alpha1.CreateTenantRequest\x1a..kentik.mkp.v202102alpha1.CreateTenantResponse\"\x90\x01\x92\x41U\x12\x10\x43reate a tenant.\x1a\x33\x43reate tenant from request. returns created tenant.*\x0cTenantCreate\xf2\xd7\x02\x0f\x61\x64min.mkp:write\x82\xd3\xe4\x93\x02\x1f\"\x1a/mkp/v202102alpha1/tenants:\x01*\x12\x91\x02\n\x0cUpdateTenant\x12-.kentik.mkp.v202102alpha1.UpdateTenantRequest\x1a..kentik.mkp.v202102alpha1.UpdateTenantResponse\"\xa1\x01\x92\x41Z\x12\x10Update a tenant.\x1a\x38Replaces the entire tenant attributes specified with id.*\x0cTenantUpdate\xf2\xd7\x02\x0f\x61\x64min.mkp:write\x82\xd3\xe4\x93\x02+\x1a&/mkp/v202102alpha1/tenants/{tenant.id}:\x01*\x12\xa1\x02\n\x0bPatchTenant\x12,.kentik.mkp.v202102alpha1.PatchTenantRequest\x1a-.kentik.mkp.v202102alpha1.PatchTenantResponse\"\xb4\x01\x92\x41m\x12\x0fPatch a tenant.\x1aMPartially Updates the attributes of tenant specified with id and mask fields.*\x0bTenantPatch\xf2\xd7\x02\x0f\x61\x64min.mkp:write\x82\xd3\xe4\x93\x02+2&/mkp/v202102alpha1/tenants/{tenant.id}:\x01*\x12\xf4\x01\n\x0c\x44\x65leteTenant\x12-.kentik.mkp.v202102alpha1.DeleteTenantRequest\x1a..kentik.mkp.v202102alpha1.DeleteTenantResponse\"\x84\x01\x92\x41G\x12\x10\x44\x65lete a tenant.\x1a%Deletes the tenant specified with id.*\x0cTenantDelete\xf2\xd7\x02\x0f\x61\x64min.mkp:write\x82\xd3\xe4\x93\x02!*\x1f/mkp/v202102alpha1/tenants/{id}\x1a&\xca\x41\x12mkp.api.kentik.com\xea\xd7\x02\tadmin.mkp\x90\xd8\x02\x03\x42\xd7\x02ZCgithub.com/kentik/api-schema-public/go/kentik/mkp/v202102alpha1;mkp\x92\x41\x8e\x02\x12P\n\x07MKP API\"7\n\x16Kentik API Engineering\x12\x1dhttps://github.com/kentik/api2\x0c\x32\x30\x32\x31\x30\x32\x61lpha1*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r5\n\x16More about Kentik APIs\x12\x1bhttps://docs.kentik.com/apib\x06proto3'
   ,
-  dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_api_dot_client__pb2.DESCRIPTOR,google_dot_protobuf_dot_field__mask__pb2.DESCRIPTOR,protoc__gen__openapiv2_dot_options_dot_annotations__pb2.DESCRIPTOR,kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2.DESCRIPTOR,])
+  dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_api_dot_client__pb2.DESCRIPTOR,google_dot_protobuf_dot_field__mask__pb2.DESCRIPTOR,protoc__gen__openapiv2_dot_options_dot_annotations__pb2.DESCRIPTOR,kentik_dot_core_dot_v202303_dot_annotations__pb2.DESCRIPTOR,])
 
 
 
@@ -100,8 +100,8 @@ _ALERT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=247,
-  serialized_end=526,
+  serialized_start=241,
+  serialized_end=520,
 )
 
 
@@ -139,8 +139,8 @@ _ASSET_REPORT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=683,
-  serialized_end=727,
+  serialized_start=677,
+  serialized_end=721,
 )
 
 _ASSET = _descriptor.Descriptor(
@@ -177,8 +177,8 @@ _ASSET = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=529,
-  serialized_end=727,
+  serialized_start=523,
+  serialized_end=721,
 )
 
 
@@ -265,8 +265,8 @@ _THRESHOLD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=730,
-  serialized_end=1278,
+  serialized_start=724,
+  serialized_end=1272,
 )
 
 
@@ -325,8 +325,8 @@ _ACTIVATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1281,
-  serialized_end=1438,
+  serialized_start=1275,
+  serialized_end=1432,
 )
 
 
@@ -392,8 +392,8 @@ _CONDITION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1441,
-  serialized_end=1612,
+  serialized_start=1435,
+  serialized_end=1606,
 )
 
 
@@ -508,8 +508,8 @@ _MITIGATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1615,
-  serialized_end=2128,
+  serialized_start=1609,
+  serialized_end=2122,
 )
 
 
@@ -540,8 +540,8 @@ _NOTIFICATIONCHANNEL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2130,
-  serialized_end=2167,
+  serialized_start=2124,
+  serialized_end=2161,
 )
 
 
@@ -635,8 +635,8 @@ _USER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2170,
-  serialized_end=2490,
+  serialized_start=2164,
+  serialized_end=2484,
 )
 
 
@@ -681,8 +681,8 @@ _TENANTLINK = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2492,
-  serialized_end=2611,
+  serialized_start=2486,
+  serialized_end=2605,
 )
 
 
@@ -776,8 +776,8 @@ _PACKAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2614,
-  serialized_end=2975,
+  serialized_start=2608,
+  serialized_end=2969,
 )
 
 
@@ -815,8 +815,8 @@ _CUSTOMDIMENSION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2977,
-  serialized_end=3054,
+  serialized_start=2971,
+  serialized_end=3048,
 )
 
 
@@ -875,8 +875,8 @@ _DEVICE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3057,
-  serialized_end=3238,
+  serialized_start=3051,
+  serialized_end=3232,
 )
 
 
@@ -921,8 +921,8 @@ _FILTERFIELD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3240,
-  serialized_end=3351,
+  serialized_start=3234,
+  serialized_end=3345,
 )
 
 
@@ -1009,8 +1009,8 @@ _FILTER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3354,
-  serialized_end=3680,
+  serialized_start=3348,
+  serialized_end=3674,
 )
 
 
@@ -1160,8 +1160,8 @@ _TENANT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3683,
-  serialized_end=4418,
+  serialized_start=3677,
+  serialized_end=4412,
 )
 
 
@@ -1185,8 +1185,8 @@ _LISTPACKAGEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4420,
-  serialized_end=4440,
+  serialized_start=4414,
+  serialized_end=4434,
 )
 
 
@@ -1224,8 +1224,8 @@ _LISTPACKAGERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4442,
-  serialized_end=4563,
+  serialized_start=4436,
+  serialized_end=4557,
 )
 
 
@@ -1256,8 +1256,8 @@ _GETPACKAGEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4565,
-  serialized_end=4600,
+  serialized_start=4559,
+  serialized_end=4594,
 )
 
 
@@ -1288,8 +1288,8 @@ _GETPACKAGERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4602,
-  serialized_end=4683,
+  serialized_start=4596,
+  serialized_end=4677,
 )
 
 
@@ -1320,8 +1320,8 @@ _CREATEPACKAGEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4685,
-  serialized_end=4768,
+  serialized_start=4679,
+  serialized_end=4762,
 )
 
 
@@ -1352,8 +1352,8 @@ _CREATEPACKAGERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4770,
-  serialized_end=4854,
+  serialized_start=4764,
+  serialized_end=4848,
 )
 
 
@@ -1384,8 +1384,8 @@ _UPDATEPACKAGEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4856,
-  serialized_end=4939,
+  serialized_start=4850,
+  serialized_end=4933,
 )
 
 
@@ -1416,8 +1416,8 @@ _UPDATEPACKAGERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4941,
-  serialized_end=5025,
+  serialized_start=4935,
+  serialized_end=5019,
 )
 
 
@@ -1455,8 +1455,8 @@ _PATCHPACKAGEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5028,
-  serialized_end=5158,
+  serialized_start=5022,
+  serialized_end=5152,
 )
 
 
@@ -1487,8 +1487,8 @@ _PATCHPACKAGERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5160,
-  serialized_end=5243,
+  serialized_start=5154,
+  serialized_end=5237,
 )
 
 
@@ -1519,8 +1519,8 @@ _DELETEPACKAGEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5245,
-  serialized_end=5283,
+  serialized_start=5239,
+  serialized_end=5277,
 )
 
 
@@ -1544,8 +1544,8 @@ _DELETEPACKAGERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5285,
-  serialized_end=5308,
+  serialized_start=5279,
+  serialized_end=5302,
 )
 
 
@@ -1569,8 +1569,8 @@ _LISTTENANTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5310,
-  serialized_end=5329,
+  serialized_start=5304,
+  serialized_end=5323,
 )
 
 
@@ -1608,8 +1608,8 @@ _LISTTENANTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5331,
-  serialized_end=5448,
+  serialized_start=5325,
+  serialized_end=5442,
 )
 
 
@@ -1640,8 +1640,8 @@ _GETTENANTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5450,
-  serialized_end=5484,
+  serialized_start=5444,
+  serialized_end=5478,
 )
 
 
@@ -1672,8 +1672,8 @@ _GETTENANTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5486,
-  serialized_end=5563,
+  serialized_start=5480,
+  serialized_end=5557,
 )
 
 
@@ -1704,8 +1704,8 @@ _CREATETENANTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5565,
-  serialized_end=5644,
+  serialized_start=5559,
+  serialized_end=5638,
 )
 
 
@@ -1736,8 +1736,8 @@ _CREATETENANTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5646,
-  serialized_end=5726,
+  serialized_start=5640,
+  serialized_end=5720,
 )
 
 
@@ -1768,8 +1768,8 @@ _UPDATETENANTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5728,
-  serialized_end=5807,
+  serialized_start=5722,
+  serialized_end=5801,
 )
 
 
@@ -1800,8 +1800,8 @@ _UPDATETENANTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5809,
-  serialized_end=5889,
+  serialized_start=5803,
+  serialized_end=5883,
 )
 
 
@@ -1839,8 +1839,8 @@ _PATCHTENANTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5891,
-  serialized_end=6017,
+  serialized_start=5885,
+  serialized_end=6011,
 )
 
 
@@ -1871,8 +1871,8 @@ _PATCHTENANTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6019,
-  serialized_end=6098,
+  serialized_start=6013,
+  serialized_end=6092,
 )
 
 
@@ -1903,8 +1903,8 @@ _DELETETENANTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6100,
-  serialized_end=6137,
+  serialized_start=6094,
+  serialized_end=6131,
 )
 
 
@@ -1928,8 +1928,8 @@ _DELETETENANTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6139,
-  serialized_end=6161,
+  serialized_start=6133,
+  serialized_end=6155,
 )
 
 _ALERT.fields_by_name['thresholds'].message_type = _THRESHOLD
@@ -2302,8 +2302,8 @@ _PACKAGESERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=b'\312A\022mkp.api.kentik.com\352\327\002\tadmin.mkp\220\330\002\003',
   create_key=_descriptor._internal_create_key,
-  serialized_start=6164,
-  serialized_end=7838,
+  serialized_start=6158,
+  serialized_end=7832,
   methods=[
   _descriptor.MethodDescriptor(
     name='ListPackage',
@@ -2378,8 +2378,8 @@ _TENANTSERVICE = _descriptor.ServiceDescriptor(
   index=1,
   serialized_options=b'\312A\022mkp.api.kentik.com\352\327\002\tadmin.mkp\220\330\002\003',
   create_key=_descriptor._internal_create_key,
-  serialized_start=7841,
-  serialized_end=9461,
+  serialized_start=7835,
+  serialized_end=9455,
   methods=[
   _descriptor.MethodDescriptor(
     name='ListTenant',

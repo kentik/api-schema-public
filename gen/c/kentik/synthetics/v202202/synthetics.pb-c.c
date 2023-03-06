@@ -103,51 +103,6 @@ void   kentik__synthetics__v202202__agent_metadata__free_unpacked
   assert(message->base.descriptor == &kentik__synthetics__v202202__agent_metadata__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-void   kentik__synthetics__v202202__user_info__init
-                     (Kentik__Synthetics__V202202__UserInfo         *message)
-{
-  static const Kentik__Synthetics__V202202__UserInfo init_value = KENTIK__SYNTHETICS__V202202__USER_INFO__INIT;
-  *message = init_value;
-}
-size_t kentik__synthetics__v202202__user_info__get_packed_size
-                     (const Kentik__Synthetics__V202202__UserInfo *message)
-{
-  assert(message->base.descriptor == &kentik__synthetics__v202202__user_info__descriptor);
-  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
-}
-size_t kentik__synthetics__v202202__user_info__pack
-                     (const Kentik__Synthetics__V202202__UserInfo *message,
-                      uint8_t       *out)
-{
-  assert(message->base.descriptor == &kentik__synthetics__v202202__user_info__descriptor);
-  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
-}
-size_t kentik__synthetics__v202202__user_info__pack_to_buffer
-                     (const Kentik__Synthetics__V202202__UserInfo *message,
-                      ProtobufCBuffer *buffer)
-{
-  assert(message->base.descriptor == &kentik__synthetics__v202202__user_info__descriptor);
-  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
-}
-Kentik__Synthetics__V202202__UserInfo *
-       kentik__synthetics__v202202__user_info__unpack
-                     (ProtobufCAllocator  *allocator,
-                      size_t               len,
-                      const uint8_t       *data)
-{
-  return (Kentik__Synthetics__V202202__UserInfo *)
-     protobuf_c_message_unpack (&kentik__synthetics__v202202__user_info__descriptor,
-                                allocator, len, data);
-}
-void   kentik__synthetics__v202202__user_info__free_unpacked
-                     (Kentik__Synthetics__V202202__UserInfo *message,
-                      ProtobufCAllocator *allocator)
-{
-  if(!message)
-    return;
-  assert(message->base.descriptor == &kentik__synthetics__v202202__user_info__descriptor);
-  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
-}
 void   kentik__synthetics__v202202__test__init
                      (Kentik__Synthetics__V202202__Test         *message)
 {
@@ -3056,70 +3011,6 @@ const ProtobufCMessageDescriptor kentik__synthetics__v202202__agent_metadata__de
   (ProtobufCMessageInit) kentik__synthetics__v202202__agent_metadata__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__synthetics__v202202__user_info__field_descriptors[3] =
-{
-  {
-    "id",
-    1,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_STRING,
-    0,   /* quantifier_offset */
-    offsetof(Kentik__Synthetics__V202202__UserInfo, id),
-    NULL,
-    &protobuf_c_empty_string,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "email",
-    2,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_STRING,
-    0,   /* quantifier_offset */
-    offsetof(Kentik__Synthetics__V202202__UserInfo, email),
-    NULL,
-    &protobuf_c_empty_string,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "full_name",
-    3,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_STRING,
-    0,   /* quantifier_offset */
-    offsetof(Kentik__Synthetics__V202202__UserInfo, full_name),
-    NULL,
-    &protobuf_c_empty_string,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-};
-static const unsigned kentik__synthetics__v202202__user_info__field_indices_by_name[] = {
-  1,   /* field[1] = email */
-  2,   /* field[2] = full_name */
-  0,   /* field[0] = id */
-};
-static const ProtobufCIntRange kentik__synthetics__v202202__user_info__number_ranges[1 + 1] =
-{
-  { 1, 0 },
-  { 0, 3 }
-};
-const ProtobufCMessageDescriptor kentik__synthetics__v202202__user_info__descriptor =
-{
-  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "kentik.synthetics.v202202.UserInfo",
-  "UserInfo",
-  "Kentik__Synthetics__V202202__UserInfo",
-  "kentik.synthetics.v202202",
-  sizeof(Kentik__Synthetics__V202202__UserInfo),
-  3,
-  kentik__synthetics__v202202__user_info__field_descriptors,
-  kentik__synthetics__v202202__user_info__field_indices_by_name,
-  1,  kentik__synthetics__v202202__user_info__number_ranges,
-  (ProtobufCMessageInit) kentik__synthetics__v202202__user_info__init,
-  NULL,NULL,NULL    /* reserved[123] */
-};
 static const ProtobufCFieldDescriptor kentik__synthetics__v202202__test__field_descriptors[10] =
 {
   {
@@ -3213,7 +3104,7 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202202__test__field_d
     PROTOBUF_C_TYPE_MESSAGE,
     0,   /* quantifier_offset */
     offsetof(Kentik__Synthetics__V202202__Test, created_by),
-    &kentik__synthetics__v202202__user_info__descriptor,
+    &kentik__core__v202303__user_info__descriptor,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
@@ -3225,7 +3116,7 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202202__test__field_d
     PROTOBUF_C_TYPE_MESSAGE,
     0,   /* quantifier_offset */
     offsetof(Kentik__Synthetics__V202202__Test, last_updated_by),
-    &kentik__synthetics__v202202__user_info__descriptor,
+    &kentik__core__v202303__user_info__descriptor,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */

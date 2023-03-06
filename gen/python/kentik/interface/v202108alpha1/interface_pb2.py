@@ -15,7 +15,7 @@ _sym_db = _symbol_database.Default()
 from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
 from google.api import client_pb2 as google_dot_api_dot_client__pb2
 from protoc_gen_openapiv2.options import annotations_pb2 as protoc__gen__openapiv2_dot_options_dot_annotations__pb2
-from kentik.core.v202012alpha1 import annotations_pb2 as kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2
+from kentik.core.v202303 import annotations_pb2 as kentik_dot_core_dot_v202303_dot_annotations__pb2
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 
 
@@ -25,9 +25,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'ZKgithub.com/kentik/api-schema-public/go/kentik/interface/v202108alpha1;iface\222A\365\001\0227\n\rInterface API\"\030\n\026Kentik API Engineering2\014202108alpha1*\001\0022\020application/json:\020application/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r5\n\026More about Kentik APIs\022\033https://docs.kentik.com/api',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n.kentik/interface/v202108alpha1/interface.proto\x12\x1ekentik.interface.v202108alpha1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a+kentik/core/v202012alpha1/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x9b\x05\n\tInterface\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n\tdevice_id\x18\x02 \x01(\tR\x08\x64\x65viceId\x12\x17\n\x07snmp_id\x18\x03 \x01(\tR\x06snmpId\x12\x1d\n\nsnmp_speed\x18\x04 \x01(\x05R\tsnmpSpeed\x12\x1b\n\tsnmp_type\x18\x05 \x01(\x05R\x08snmpType\x12\x1d\n\nsnmp_alias\x18\x06 \x01(\tR\tsnmpAlias\x12!\n\x0cinterface_ip\x18\x07 \x01(\tR\x0binterfaceIp\x12\x33\n\x15interface_description\x18\x08 \x01(\tR\x14interfaceDescription\x12\x30\n\x05\x63\x64\x61te\x18\t \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x05\x63\x64\x61te\x12\x30\n\x05\x65\x64\x61te\x18\n \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x05\x65\x64\x61te\x12\x30\n\x14interface_ip_netmask\x18\x0b \x01(\tR\x12interfaceIpNetmask\x12]\n\x11\x63onnectivity_type\x18\x0c \x01(\x0e\x32\x30.kentik.interface.v202108alpha1.ConnectivityTypeR\x10\x63onnectivityType\x12Z\n\x10network_boundary\x18\r \x01(\x0e\x32/.kentik.interface.v202108alpha1.NetworkBoundaryR\x0fnetworkBoundary\x12(\n\x10top_nexthop_asns\x18\x0e \x03(\x05R\x0etopNexthopAsns\x12\x1a\n\x08provider\x18\x0f \x01(\tR\x08provider\"\xf4\x01\n\x17InterfaceClassification\x12\x1e\n\nclassified\x18\x01 \x01(\x08R\nclassified\x12]\n\x11\x63onnectivity_type\x18\x02 \x01(\x0e\x32\x30.kentik.interface.v202108alpha1.ConnectivityTypeR\x10\x63onnectivityType\x12Z\n\x10network_boundary\x18\x03 \x01(\x0e\x32/.kentik.interface.v202108alpha1.NetworkBoundaryR\x0fnetworkBoundary\"\xdb\x01\n\x0f\x43lassifyCounter\x12\x14\n\x05\x63ount\x18\x01 \x01(\x05R\x05\x63ount\x12%\n\x0e\x65xternal_count\x18\x02 \x01(\x05R\rexternalCount\x12$\n\x0e\x66ree_pni_count\x18\x03 \x01(\x05R\x0c\x66reePniCount\x12\x19\n\x08ix_count\x18\x04 \x01(\x05R\x07ixCount\x12%\n\x0eprovider_count\x18\x05 \x01(\x05R\rproviderCount\x12#\n\rtransit_count\x18\x06 \x01(\x05R\x0ctransitCount\"\xd6\t\n\x15InterfaceClassifyInfo\x12\x1b\n\tdevice_id\x18\x01 \x01(\tR\x08\x64\x65viceId\x12\x17\n\x07snmp_id\x18\x02 \x01(\tR\x06snmpId\x12\x1d\n\nsnmp_alias\x18\x03 \x01(\tR\tsnmpAlias\x12!\n\x0cinterface_ip\x18\x04 \x01(\tR\x0binterfaceIp\x12(\n\x10interface_ip_asn\x18\x05 \x01(\tR\x0einterfaceIpAsn\x12$\n\x0eis_internal_ip\x18\x06 \x01(\x08R\x0cisInternalIp\x12&\n\x0fis_internal_asn\x18\x07 \x01(\x08R\risInternalAsn\x12(\n\x10top_nexthop_asns\x18\x08 \x03(\tR\x0etopNexthopAsns\x12&\n\x0fpdb_global_name\x18\t \x01(\tR\rpdbGlobalName\x12h\n\x13\x61uto_classification\x18\n \x01(\x0b\x32\x37.kentik.interface.v202108alpha1.InterfaceClassificationR\x12\x61utoClassification\x12p\n\x17previous_classification\x18\x0b \x01(\x0b\x32\x37.kentik.interface.v202108alpha1.InterfaceClassificationR\x16previousClassification\x12\x1a\n\x08provider\x18\x0c \x01(\tR\x08provider\x12>\n\x1bnetwork_boundary_confidence\x18\r \x01(\x05R\x19networkBoundaryConfidence\x12@\n\x1c\x63onnectivity_type_confidence\x18\x0e \x01(\x05R\x1a\x63onnectivityTypeConfidence\x12/\n\x13provider_confidence\x18\x0f \x01(\x05R\x12providerConfidence\x12\x38\n\x18\x61uto_classified_provider\x18\x10 \x01(\x08R\x16\x61utoClassifiedProvider\x12\x44\n\x1epreviously_classified_provider\x18\x11 \x01(\tR\x1cpreviouslyClassifiedProvider\x12\x44\n\x1epreviously_classified_external\x18\x12 \x01(\x08R\x1cpreviouslyClassifiedExternal\x12$\n\x0eip_asn_matched\x18\x13 \x01(\x08R\x0cipAsnMatched\x12\x1d\n\nix_matched\x18\x14 \x01(\x08R\tixMatched\x12\'\n\x0fnexthop_matched\x18\x15 \x01(\x08R\x0enexthopMatched\x12:\n\x19\x63onnectivity_type_matched\x18\x16 \x01(\x08R\x17\x63onnectivityTypeMatched\x12)\n\x10provider_matched\x18\x17 \x01(\x08R\x0fproviderMatched\x12\x35\n\x16\x63hanged_classification\x18\x18 \x01(\x08R\x15\x63hangedClassification\"\xdf\x05\n\x12\x44\x65viceClassifyInfo\x12\x1b\n\tdevice_id\x18\x01 \x01(\tR\x08\x64\x65viceId\x12)\n\x10total_interfaces\x18\x02 \x01(\x05R\x0ftotalInterfaces\x12s\n\x1dpreviously_classified_counter\x18\x03 \x01(\x0b\x32/.kentik.interface.v202108alpha1.ClassifyCounterR\x1bpreviouslyClassifiedCounter\x12g\n\x17\x61uto_classified_counter\x18\x04 \x01(\x0b\x32/.kentik.interface.v202108alpha1.ClassifyCounterR\x15\x61utoClassifiedCounter\x12@\n\x1c\x63hanged_classification_count\x18\x0f \x01(\x05R\x1a\x63hangedClassificationCount\x12/\n\x14ip_asn_matched_count\x18\x10 \x01(\x05R\x11ipAsnMatchedCount\x12(\n\x10ix_matched_count\x18\x11 \x01(\x05R\x0eixMatchedCount\x12\x32\n\x15nexthop_matched_count\x18\x12 \x01(\x05R\x13nexthopMatchedCount\x12\x45\n\x1f\x63onnectivity_type_matched_count\x18\x13 \x01(\x05R\x1c\x63onnectivityTypeMatchedCount\x12\x34\n\x16provider_matched_count\x18\x14 \x01(\x05R\x14providerMatchedCount\x12U\n\ninterfaces\x18\x15 \x03(\x0b\x32\x35.kentik.interface.v202108alpha1.InterfaceClassifyInfoR\ninterfaces\"\x89\x03\n\x0fInterfaceFilter\x12\x12\n\x04text\x18\x01 \x01(\tR\x04text\x12\x1d\n\ndevice_ids\x18\x02 \x03(\tR\tdeviceIds\x12_\n\x12\x63onnectivity_types\x18\x03 \x03(\x0e\x32\x30.kentik.interface.v202108alpha1.ConnectivityTypeR\x11\x63onnectivityTypes\x12^\n\x12network_boundaries\x18\x04 \x03(\x0e\x32/.kentik.interface.v202108alpha1.NetworkBoundaryR\x11networkBoundaries\x12\x1c\n\tproviders\x18\x05 \x03(\tR\tproviders\x12\x1f\n\x0bsnmp_speeds\x18\x06 \x03(\x05R\nsnmpSpeeds\x12\x43\n\x08ip_types\x18\x07 \x03(\x0e\x32(.kentik.interface.v202108alpha1.IpFilterR\x07ipTypes\"\x15\n\x13\x41utoClassifyRequest\"\xa8\x05\n\x14\x41utoClassifyResponse\x12\x30\n\x14perc_auto_classified\x18\x01 \x01(\x01R\x12percAutoClassified\x12.\n\x13net_changed_transit\x18\x02 \x01(\x05R\x11netChangedTransit\x12$\n\x0enet_changed_ix\x18\x03 \x01(\x05R\x0cnetChangedIx\x12\x30\n\x14net_changed_provider\x18\x04 \x01(\x05R\x12netChangedProvider\x12K\n\"total_changed_classification_count\x18\x05 \x01(\x05R\x1ftotalChangedClassificationCount\x12\x39\n\x19total_auto_classify_count\x18\x06 \x01(\x05R\x16totalAutoClassifyCount\x12n\n\x1btotal_auto_classify_counter\x18\x07 \x01(\x0b\x32/.kentik.interface.v202108alpha1.ClassifyCounterR\x18totalAutoClassifyCounter\x12\x65\n\x16total_previous_counter\x18\x08 \x01(\x0b\x32/.kentik.interface.v202108alpha1.ClassifyCounterR\x14totalPreviousCounter\x12)\n\x10total_interfaces\x18\x11 \x01(\x05R\x0ftotalInterfaces\x12L\n\x07\x64\x65vices\x18\x12 \x03(\x0b\x32\x32.kentik.interface.v202108alpha1.DeviceClassifyInfoR\x07\x64\x65vices\"\x93\x02\n\x15ManualClassifyRequest\x12#\n\rinterface_ids\x18\x01 \x03(\tR\x0cinterfaceIds\x12]\n\x11\x63onnectivity_type\x18\x02 \x01(\x0e\x32\x30.kentik.interface.v202108alpha1.ConnectivityTypeR\x10\x63onnectivityType\x12Z\n\x10network_boundary\x18\x03 \x01(\x0e\x32/.kentik.interface.v202108alpha1.NetworkBoundaryR\x0fnetworkBoundary\x12\x1a\n\x08provider\x18\x04 \x01(\tR\x08provider\"7\n\x16ManualClassifyResponse\x12\x1d\n\ndevice_ids\x18\x01 \x03(\tR\tdeviceIds\"a\n\x14ListInterfaceRequest\x12I\n\x07\x66ilters\x18\x01 \x01(\x0b\x32/.kentik.interface.v202108alpha1.InterfaceFilterR\x07\x66ilters\"\xa8\x01\n\x15ListInterfaceResponse\x12I\n\ninterfaces\x18\x01 \x03(\x0b\x32).kentik.interface.v202108alpha1.InterfaceR\ninterfaces\x12\x1f\n\x0btotal_count\x18\x02 \x01(\x05R\ntotalCount\x12#\n\rinvalid_count\x18\x03 \x01(\x05R\x0cinvalidCount\"%\n\x13GetInterfaceRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"_\n\x14GetInterfaceResponse\x12G\n\tinterface\x18\x01 \x01(\x0b\x32).kentik.interface.v202108alpha1.InterfaceR\tinterface\"a\n\x16\x43reateInterfaceRequest\x12G\n\tinterface\x18\x01 \x01(\x0b\x32).kentik.interface.v202108alpha1.InterfaceR\tinterface\"b\n\x17\x43reateInterfaceResponse\x12G\n\tinterface\x18\x01 \x01(\x0b\x32).kentik.interface.v202108alpha1.InterfaceR\tinterface\"a\n\x16UpdateInterfaceRequest\x12G\n\tinterface\x18\x01 \x01(\x0b\x32).kentik.interface.v202108alpha1.InterfaceR\tinterface\"b\n\x17UpdateInterfaceResponse\x12G\n\tinterface\x18\x01 \x01(\x0b\x32).kentik.interface.v202108alpha1.InterfaceR\tinterface\"(\n\x16\x44\x65leteInterfaceRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"\x19\n\x17\x44\x65leteInterfaceResponse\"\xcb\x01\n\x05Match\x12W\n\x0fmatch_attribute\x18\x01 \x01(\x0e\x32..kentik.interface.v202108alpha1.MatchAttributeR\x0ematchAttribute\x12O\n\x0ematch_operator\x18\x02 \x01(\x0e\x32(.kentik.interface.v202108alpha1.OperatorR\rmatchOperator\x12\x18\n\x07pattern\x18\x03 \x01(\tR\x07pattern\"\xa2\x02\n\x06\x41\x63tion\x12\x64\n\x15set_connectivity_type\x18\x01 \x01(\x0e\x32\x30.kentik.interface.v202108alpha1.ConnectivityTypeR\x13setConnectivityType\x12\x61\n\x14set_network_boundary\x18\x02 \x01(\x0e\x32/.kentik.interface.v202108alpha1.NetworkBoundaryR\x12setNetworkBoundary\x12,\n\x12set_connected_asns\x18\x03 \x01(\tR\x10setConnectedAsns\x12!\n\x0cset_provider\x18\x04 \x01(\tR\x0bsetProvider\"\xbb\x01\n\x0c\x44\x65viceFilter\x12\x1f\n\x0b\x61ll_devices\x18\x01 \x01(\x08R\nallDevices\x12\x1f\n\x0b\x64\x65vice_name\x18\x02 \x03(\tR\ndeviceName\x12#\n\rdevice_labels\x18\x03 \x03(\tR\x0c\x64\x65viceLabels\x12!\n\x0c\x64\x65vice_rules\x18\x04 \x03(\tR\x0b\x64\x65viceRules\x12!\n\x0c\x64\x65vice_types\x18\x05 \x03(\tR\x0b\x64\x65viceTypes\"\xeb\x03\n\x04Rule\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x18\n\x07\x65nabled\x18\x02 \x01(\x08R\x07\x65nabled\x12\x12\n\x04rank\x18\x03 \x01(\x05R\x04rank\x12H\n\x0cmatch_clause\x18\x04 \x01(\x0b\x32%.kentik.interface.v202108alpha1.MatchR\x0bmatchClause\x12\x45\n\naction_set\x18\x05 \x01(\x0b\x32&.kentik.interface.v202108alpha1.ActionR\tactionSet\x12\x30\n\x05\x63\x64\x61te\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x05\x63\x64\x61te\x12\x30\n\x05\x65\x64\x61te\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x05\x65\x64\x61te\x12W\n\x10included_devices\x18\x08 \x01(\x0b\x32,.kentik.interface.v202108alpha1.DeviceFilterR\x0fincludedDevices\x12W\n\x10\x65xcluded_devices\x18\t \x01(\x0b\x32,.kentik.interface.v202108alpha1.DeviceFilterR\x0f\x65xcludedDevices*\xed\x04\n\x10\x43onnectivityType\x12!\n\x1d\x43ONNECTIVITY_TYPE_UNSPECIFIED\x10\x00\x12.\n*CONNECTIVITY_TYPE_AGGREGATION_INTERCONNECT\x10\x01\x12\x1f\n\x1b\x43ONNECTIVITY_TYPE_AVAILABLE\x10\x02\x12\x1e\n\x1a\x43ONNECTIVITY_TYPE_BACKBONE\x10\x03\x12(\n$CONNECTIVITY_TYPE_CLOUD_INTERCONNECT\x10\x04\x12\x1e\n\x1a\x43ONNECTIVITY_TYPE_CUSTOMER\x10\x05\x12\'\n#CONNECTIVITY_TYPE_DATACENTER_FABRIC\x10\x06\x12-\n)CONNECTIVITY_TYPE_DATACENTER_INTERCONNECT\x10\x07\x12$\n CONNECTIVITY_TYPE_EMBEDDED_CACHE\x10\x08\x12\x1e\n\x1a\x43ONNECTIVITY_TYPE_FREE_PNI\x10\t\x12\x1a\n\x16\x43ONNECTIVITY_TYPE_HOST\x10\n\x12\x18\n\x14\x43ONNECTIVITY_TYPE_IX\x10\x0b\x12\x1b\n\x17\x43ONNECTIVITY_TYPE_OTHER\x10\x0c\x12\x1e\n\x1a\x43ONNECTIVITY_TYPE_PAID_PNI\x10\r\x12\x1e\n\x1a\x43ONNECTIVITY_TYPE_RESERVED\x10\x0e\x12\x1d\n\x19\x43ONNECTIVITY_TYPE_TRANSIT\x10\x0f\x12+\n\'CONNECTIVITY_TYPE_VIRTUAL_CROSS_CONNECT\x10\x10*\xa7\x01\n\x0fNetworkBoundary\x12 \n\x1cNETWORK_BOUNDARY_UNSPECIFIED\x10\x00\x12\x19\n\x15NETWORK_BOUNDARY_AUTO\x10\x01\x12\x1d\n\x19NETWORK_BOUNDARY_INTERNAL\x10\x02\x12\x1d\n\x19NETWORK_BOUNDARY_EXTERNAL\x10\x03\x12\x19\n\x15NETWORK_BOUNDARY_NONE\x10\x04*g\n\x08IpFilter\x12\x19\n\x15IP_FILTER_UNSPECIFIED\x10\x00\x12\x15\n\x11IP_FILTER_PRIVATE\x10\x01\x12\x14\n\x10IP_FILTER_PUBLIC\x10\x02\x12\x13\n\x0fIP_FILTER_UNSET\x10\x03*\x9e\x01\n\x0eMatchAttribute\x12\x1f\n\x1bMATCH_ATTRIBUTE_UNSPECIFIED\x10\x00\x12)\n%MATCH_ATTRIBUTE_INTERFACE_DESCRIPTION\x10\x01\x12\x1e\n\x1aMATCH_ATTRIBUTE_SNMP_ALIAS\x10\x02\x12 \n\x1cMATCH_ATTRIBUTE_INTERFACE_IP\x10\x03*\xd1\x01\n\x08Operator\x12\x18\n\x14OPERATOR_UNSPECIFIED\x10\x00\x12\x13\n\x0fOPERATOR_EQUALS\x10\x01\x12\x15\n\x11OPERATOR_CONTAINS\x10\x02\x12\x12\n\x0eOPERATOR_REGEX\x10\x03\x12 \n\x1cOPERATOR_CONTAINED_IN_SUBNET\x10\x04\x12\x19\n\x15OPERATOR_IS_PUBLIC_IP\x10\x05\x12\x1a\n\x16OPERATOR_IS_PRIVATE_IP\x10\x06\x12\x12\n\x0eOPERATOR_NO_IP\x10\x07\x32\xc5\x0e\n\x10InterfaceService\x12\xa7\x02\n\x0eManualClassify\x12\x35.kentik.interface.v202108alpha1.ManualClassifyRequest\x1a\x36.kentik.interface.v202108alpha1.ManualClassifyResponse\"\xa5\x01\x92\x41V\x12\x19Manual Classify Interface\x1a)Manually set interface(s) classification.*\x0eManualClassify\xf2\xd7\x02\x15\x61\x64min.interface:write\x82\xd3\xe4\x93\x02-\"(/interface/v202108alpha1/manual_classify:\x01*\x12\xa0\x02\n\rListInterface\x12\x34.kentik.interface.v202108alpha1.ListInterfaceRequest\x1a\x35.kentik.interface.v202108alpha1.ListInterfaceResponse\"\xa1\x01\x92\x41[\x12\x17\x46\x65tch Search Interfaces\x1a\x31Return list of interfaces matches search critera.*\rListInterface\xf2\xd7\x02\x14\x61\x64min.interface:read\x82\xd3\xe4\x93\x02%\x12#/interface/v202108alpha1/interfaces\x12\xa1\x02\n\x0cGetInterface\x12\x33.kentik.interface.v202108alpha1.GetInterfaceRequest\x1a\x34.kentik.interface.v202108alpha1.GetInterfaceResponse\"\xa5\x01\x92\x41Z\x12\x10Get a interface.\x1a\x38Returns information about a interface specified with ID.*\x0cInterfaceGet\xf2\xd7\x02\x14\x61\x64min.interface:read\x82\xd3\xe4\x93\x02*\x12(/interface/v202108alpha1/interfaces/{id}\x12\xa8\x02\n\x0f\x43reateInterface\x12\x36.kentik.interface.v202108alpha1.CreateInterfaceRequest\x1a\x37.kentik.interface.v202108alpha1.CreateInterfaceResponse\"\xa3\x01\x92\x41Y\x12\x13\x43reate a interface.\x1a\x31\x43reate a interface from request. returns created.*\x0fInterfaceCreate\xf2\xd7\x02\x15\x61\x64min.interface:write\x82\xd3\xe4\x93\x02(\"#/interface/v202108alpha1/interfaces:\x01*\x12\xc1\x02\n\x0fUpdateInterface\x12\x36.kentik.interface.v202108alpha1.UpdateInterfaceRequest\x1a\x37.kentik.interface.v202108alpha1.UpdateInterfaceResponse\"\xbc\x01\x92\x41\x63\x12\x13Update a interface.\x1a;Replaces the entire interface attributes specified with id.*\x0fInterfaceUpdate\xf2\xd7\x02\x15\x61\x64min.interface:write\x82\xd3\xe4\x93\x02\x37\x1a\x32/interface/v202108alpha1/interfaces/{interface.id}:\x01*\x12\xa1\x02\n\x0f\x44\x65leteInterface\x12\x36.kentik.interface.v202108alpha1.DeleteInterfaceRequest\x1a\x37.kentik.interface.v202108alpha1.DeleteInterfaceResponse\"\x9c\x01\x92\x41P\x12\x13\x44\x65lete a interface.\x1a(Deletes the interface specified with id.*\x0fInterfaceDelete\xf2\xd7\x02\x15\x61\x64min.interface:write\x82\xd3\xe4\x93\x02**(/interface/v202108alpha1/interfaces/{id}\x1a-\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\x0f\x61\x64min.interface\x90\xd8\x02\x03\x42\xc6\x02ZKgithub.com/kentik/api-schema-public/go/kentik/interface/v202108alpha1;iface\x92\x41\xf5\x01\x12\x37\n\rInterface API\"\x18\n\x16Kentik API Engineering2\x0c\x32\x30\x32\x31\x30\x38\x61lpha1*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r5\n\x16More about Kentik APIs\x12\x1bhttps://docs.kentik.com/apib\x06proto3'
+  serialized_pb=b'\n.kentik/interface/v202108alpha1/interface.proto\x12\x1ekentik.interface.v202108alpha1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a%kentik/core/v202303/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x9b\x05\n\tInterface\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n\tdevice_id\x18\x02 \x01(\tR\x08\x64\x65viceId\x12\x17\n\x07snmp_id\x18\x03 \x01(\tR\x06snmpId\x12\x1d\n\nsnmp_speed\x18\x04 \x01(\x05R\tsnmpSpeed\x12\x1b\n\tsnmp_type\x18\x05 \x01(\x05R\x08snmpType\x12\x1d\n\nsnmp_alias\x18\x06 \x01(\tR\tsnmpAlias\x12!\n\x0cinterface_ip\x18\x07 \x01(\tR\x0binterfaceIp\x12\x33\n\x15interface_description\x18\x08 \x01(\tR\x14interfaceDescription\x12\x30\n\x05\x63\x64\x61te\x18\t \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x05\x63\x64\x61te\x12\x30\n\x05\x65\x64\x61te\x18\n \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x05\x65\x64\x61te\x12\x30\n\x14interface_ip_netmask\x18\x0b \x01(\tR\x12interfaceIpNetmask\x12]\n\x11\x63onnectivity_type\x18\x0c \x01(\x0e\x32\x30.kentik.interface.v202108alpha1.ConnectivityTypeR\x10\x63onnectivityType\x12Z\n\x10network_boundary\x18\r \x01(\x0e\x32/.kentik.interface.v202108alpha1.NetworkBoundaryR\x0fnetworkBoundary\x12(\n\x10top_nexthop_asns\x18\x0e \x03(\x05R\x0etopNexthopAsns\x12\x1a\n\x08provider\x18\x0f \x01(\tR\x08provider\"\xf4\x01\n\x17InterfaceClassification\x12\x1e\n\nclassified\x18\x01 \x01(\x08R\nclassified\x12]\n\x11\x63onnectivity_type\x18\x02 \x01(\x0e\x32\x30.kentik.interface.v202108alpha1.ConnectivityTypeR\x10\x63onnectivityType\x12Z\n\x10network_boundary\x18\x03 \x01(\x0e\x32/.kentik.interface.v202108alpha1.NetworkBoundaryR\x0fnetworkBoundary\"\xdb\x01\n\x0f\x43lassifyCounter\x12\x14\n\x05\x63ount\x18\x01 \x01(\x05R\x05\x63ount\x12%\n\x0e\x65xternal_count\x18\x02 \x01(\x05R\rexternalCount\x12$\n\x0e\x66ree_pni_count\x18\x03 \x01(\x05R\x0c\x66reePniCount\x12\x19\n\x08ix_count\x18\x04 \x01(\x05R\x07ixCount\x12%\n\x0eprovider_count\x18\x05 \x01(\x05R\rproviderCount\x12#\n\rtransit_count\x18\x06 \x01(\x05R\x0ctransitCount\"\xd6\t\n\x15InterfaceClassifyInfo\x12\x1b\n\tdevice_id\x18\x01 \x01(\tR\x08\x64\x65viceId\x12\x17\n\x07snmp_id\x18\x02 \x01(\tR\x06snmpId\x12\x1d\n\nsnmp_alias\x18\x03 \x01(\tR\tsnmpAlias\x12!\n\x0cinterface_ip\x18\x04 \x01(\tR\x0binterfaceIp\x12(\n\x10interface_ip_asn\x18\x05 \x01(\tR\x0einterfaceIpAsn\x12$\n\x0eis_internal_ip\x18\x06 \x01(\x08R\x0cisInternalIp\x12&\n\x0fis_internal_asn\x18\x07 \x01(\x08R\risInternalAsn\x12(\n\x10top_nexthop_asns\x18\x08 \x03(\tR\x0etopNexthopAsns\x12&\n\x0fpdb_global_name\x18\t \x01(\tR\rpdbGlobalName\x12h\n\x13\x61uto_classification\x18\n \x01(\x0b\x32\x37.kentik.interface.v202108alpha1.InterfaceClassificationR\x12\x61utoClassification\x12p\n\x17previous_classification\x18\x0b \x01(\x0b\x32\x37.kentik.interface.v202108alpha1.InterfaceClassificationR\x16previousClassification\x12\x1a\n\x08provider\x18\x0c \x01(\tR\x08provider\x12>\n\x1bnetwork_boundary_confidence\x18\r \x01(\x05R\x19networkBoundaryConfidence\x12@\n\x1c\x63onnectivity_type_confidence\x18\x0e \x01(\x05R\x1a\x63onnectivityTypeConfidence\x12/\n\x13provider_confidence\x18\x0f \x01(\x05R\x12providerConfidence\x12\x38\n\x18\x61uto_classified_provider\x18\x10 \x01(\x08R\x16\x61utoClassifiedProvider\x12\x44\n\x1epreviously_classified_provider\x18\x11 \x01(\tR\x1cpreviouslyClassifiedProvider\x12\x44\n\x1epreviously_classified_external\x18\x12 \x01(\x08R\x1cpreviouslyClassifiedExternal\x12$\n\x0eip_asn_matched\x18\x13 \x01(\x08R\x0cipAsnMatched\x12\x1d\n\nix_matched\x18\x14 \x01(\x08R\tixMatched\x12\'\n\x0fnexthop_matched\x18\x15 \x01(\x08R\x0enexthopMatched\x12:\n\x19\x63onnectivity_type_matched\x18\x16 \x01(\x08R\x17\x63onnectivityTypeMatched\x12)\n\x10provider_matched\x18\x17 \x01(\x08R\x0fproviderMatched\x12\x35\n\x16\x63hanged_classification\x18\x18 \x01(\x08R\x15\x63hangedClassification\"\xdf\x05\n\x12\x44\x65viceClassifyInfo\x12\x1b\n\tdevice_id\x18\x01 \x01(\tR\x08\x64\x65viceId\x12)\n\x10total_interfaces\x18\x02 \x01(\x05R\x0ftotalInterfaces\x12s\n\x1dpreviously_classified_counter\x18\x03 \x01(\x0b\x32/.kentik.interface.v202108alpha1.ClassifyCounterR\x1bpreviouslyClassifiedCounter\x12g\n\x17\x61uto_classified_counter\x18\x04 \x01(\x0b\x32/.kentik.interface.v202108alpha1.ClassifyCounterR\x15\x61utoClassifiedCounter\x12@\n\x1c\x63hanged_classification_count\x18\x0f \x01(\x05R\x1a\x63hangedClassificationCount\x12/\n\x14ip_asn_matched_count\x18\x10 \x01(\x05R\x11ipAsnMatchedCount\x12(\n\x10ix_matched_count\x18\x11 \x01(\x05R\x0eixMatchedCount\x12\x32\n\x15nexthop_matched_count\x18\x12 \x01(\x05R\x13nexthopMatchedCount\x12\x45\n\x1f\x63onnectivity_type_matched_count\x18\x13 \x01(\x05R\x1c\x63onnectivityTypeMatchedCount\x12\x34\n\x16provider_matched_count\x18\x14 \x01(\x05R\x14providerMatchedCount\x12U\n\ninterfaces\x18\x15 \x03(\x0b\x32\x35.kentik.interface.v202108alpha1.InterfaceClassifyInfoR\ninterfaces\"\x89\x03\n\x0fInterfaceFilter\x12\x12\n\x04text\x18\x01 \x01(\tR\x04text\x12\x1d\n\ndevice_ids\x18\x02 \x03(\tR\tdeviceIds\x12_\n\x12\x63onnectivity_types\x18\x03 \x03(\x0e\x32\x30.kentik.interface.v202108alpha1.ConnectivityTypeR\x11\x63onnectivityTypes\x12^\n\x12network_boundaries\x18\x04 \x03(\x0e\x32/.kentik.interface.v202108alpha1.NetworkBoundaryR\x11networkBoundaries\x12\x1c\n\tproviders\x18\x05 \x03(\tR\tproviders\x12\x1f\n\x0bsnmp_speeds\x18\x06 \x03(\x05R\nsnmpSpeeds\x12\x43\n\x08ip_types\x18\x07 \x03(\x0e\x32(.kentik.interface.v202108alpha1.IpFilterR\x07ipTypes\"\x15\n\x13\x41utoClassifyRequest\"\xa8\x05\n\x14\x41utoClassifyResponse\x12\x30\n\x14perc_auto_classified\x18\x01 \x01(\x01R\x12percAutoClassified\x12.\n\x13net_changed_transit\x18\x02 \x01(\x05R\x11netChangedTransit\x12$\n\x0enet_changed_ix\x18\x03 \x01(\x05R\x0cnetChangedIx\x12\x30\n\x14net_changed_provider\x18\x04 \x01(\x05R\x12netChangedProvider\x12K\n\"total_changed_classification_count\x18\x05 \x01(\x05R\x1ftotalChangedClassificationCount\x12\x39\n\x19total_auto_classify_count\x18\x06 \x01(\x05R\x16totalAutoClassifyCount\x12n\n\x1btotal_auto_classify_counter\x18\x07 \x01(\x0b\x32/.kentik.interface.v202108alpha1.ClassifyCounterR\x18totalAutoClassifyCounter\x12\x65\n\x16total_previous_counter\x18\x08 \x01(\x0b\x32/.kentik.interface.v202108alpha1.ClassifyCounterR\x14totalPreviousCounter\x12)\n\x10total_interfaces\x18\x11 \x01(\x05R\x0ftotalInterfaces\x12L\n\x07\x64\x65vices\x18\x12 \x03(\x0b\x32\x32.kentik.interface.v202108alpha1.DeviceClassifyInfoR\x07\x64\x65vices\"\x93\x02\n\x15ManualClassifyRequest\x12#\n\rinterface_ids\x18\x01 \x03(\tR\x0cinterfaceIds\x12]\n\x11\x63onnectivity_type\x18\x02 \x01(\x0e\x32\x30.kentik.interface.v202108alpha1.ConnectivityTypeR\x10\x63onnectivityType\x12Z\n\x10network_boundary\x18\x03 \x01(\x0e\x32/.kentik.interface.v202108alpha1.NetworkBoundaryR\x0fnetworkBoundary\x12\x1a\n\x08provider\x18\x04 \x01(\tR\x08provider\"7\n\x16ManualClassifyResponse\x12\x1d\n\ndevice_ids\x18\x01 \x03(\tR\tdeviceIds\"a\n\x14ListInterfaceRequest\x12I\n\x07\x66ilters\x18\x01 \x01(\x0b\x32/.kentik.interface.v202108alpha1.InterfaceFilterR\x07\x66ilters\"\xa8\x01\n\x15ListInterfaceResponse\x12I\n\ninterfaces\x18\x01 \x03(\x0b\x32).kentik.interface.v202108alpha1.InterfaceR\ninterfaces\x12\x1f\n\x0btotal_count\x18\x02 \x01(\x05R\ntotalCount\x12#\n\rinvalid_count\x18\x03 \x01(\x05R\x0cinvalidCount\"%\n\x13GetInterfaceRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"_\n\x14GetInterfaceResponse\x12G\n\tinterface\x18\x01 \x01(\x0b\x32).kentik.interface.v202108alpha1.InterfaceR\tinterface\"a\n\x16\x43reateInterfaceRequest\x12G\n\tinterface\x18\x01 \x01(\x0b\x32).kentik.interface.v202108alpha1.InterfaceR\tinterface\"b\n\x17\x43reateInterfaceResponse\x12G\n\tinterface\x18\x01 \x01(\x0b\x32).kentik.interface.v202108alpha1.InterfaceR\tinterface\"a\n\x16UpdateInterfaceRequest\x12G\n\tinterface\x18\x01 \x01(\x0b\x32).kentik.interface.v202108alpha1.InterfaceR\tinterface\"b\n\x17UpdateInterfaceResponse\x12G\n\tinterface\x18\x01 \x01(\x0b\x32).kentik.interface.v202108alpha1.InterfaceR\tinterface\"(\n\x16\x44\x65leteInterfaceRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"\x19\n\x17\x44\x65leteInterfaceResponse\"\xcb\x01\n\x05Match\x12W\n\x0fmatch_attribute\x18\x01 \x01(\x0e\x32..kentik.interface.v202108alpha1.MatchAttributeR\x0ematchAttribute\x12O\n\x0ematch_operator\x18\x02 \x01(\x0e\x32(.kentik.interface.v202108alpha1.OperatorR\rmatchOperator\x12\x18\n\x07pattern\x18\x03 \x01(\tR\x07pattern\"\xa2\x02\n\x06\x41\x63tion\x12\x64\n\x15set_connectivity_type\x18\x01 \x01(\x0e\x32\x30.kentik.interface.v202108alpha1.ConnectivityTypeR\x13setConnectivityType\x12\x61\n\x14set_network_boundary\x18\x02 \x01(\x0e\x32/.kentik.interface.v202108alpha1.NetworkBoundaryR\x12setNetworkBoundary\x12,\n\x12set_connected_asns\x18\x03 \x01(\tR\x10setConnectedAsns\x12!\n\x0cset_provider\x18\x04 \x01(\tR\x0bsetProvider\"\xbb\x01\n\x0c\x44\x65viceFilter\x12\x1f\n\x0b\x61ll_devices\x18\x01 \x01(\x08R\nallDevices\x12\x1f\n\x0b\x64\x65vice_name\x18\x02 \x03(\tR\ndeviceName\x12#\n\rdevice_labels\x18\x03 \x03(\tR\x0c\x64\x65viceLabels\x12!\n\x0c\x64\x65vice_rules\x18\x04 \x03(\tR\x0b\x64\x65viceRules\x12!\n\x0c\x64\x65vice_types\x18\x05 \x03(\tR\x0b\x64\x65viceTypes\"\xeb\x03\n\x04Rule\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x18\n\x07\x65nabled\x18\x02 \x01(\x08R\x07\x65nabled\x12\x12\n\x04rank\x18\x03 \x01(\x05R\x04rank\x12H\n\x0cmatch_clause\x18\x04 \x01(\x0b\x32%.kentik.interface.v202108alpha1.MatchR\x0bmatchClause\x12\x45\n\naction_set\x18\x05 \x01(\x0b\x32&.kentik.interface.v202108alpha1.ActionR\tactionSet\x12\x30\n\x05\x63\x64\x61te\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x05\x63\x64\x61te\x12\x30\n\x05\x65\x64\x61te\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x05\x65\x64\x61te\x12W\n\x10included_devices\x18\x08 \x01(\x0b\x32,.kentik.interface.v202108alpha1.DeviceFilterR\x0fincludedDevices\x12W\n\x10\x65xcluded_devices\x18\t \x01(\x0b\x32,.kentik.interface.v202108alpha1.DeviceFilterR\x0f\x65xcludedDevices*\xed\x04\n\x10\x43onnectivityType\x12!\n\x1d\x43ONNECTIVITY_TYPE_UNSPECIFIED\x10\x00\x12.\n*CONNECTIVITY_TYPE_AGGREGATION_INTERCONNECT\x10\x01\x12\x1f\n\x1b\x43ONNECTIVITY_TYPE_AVAILABLE\x10\x02\x12\x1e\n\x1a\x43ONNECTIVITY_TYPE_BACKBONE\x10\x03\x12(\n$CONNECTIVITY_TYPE_CLOUD_INTERCONNECT\x10\x04\x12\x1e\n\x1a\x43ONNECTIVITY_TYPE_CUSTOMER\x10\x05\x12\'\n#CONNECTIVITY_TYPE_DATACENTER_FABRIC\x10\x06\x12-\n)CONNECTIVITY_TYPE_DATACENTER_INTERCONNECT\x10\x07\x12$\n CONNECTIVITY_TYPE_EMBEDDED_CACHE\x10\x08\x12\x1e\n\x1a\x43ONNECTIVITY_TYPE_FREE_PNI\x10\t\x12\x1a\n\x16\x43ONNECTIVITY_TYPE_HOST\x10\n\x12\x18\n\x14\x43ONNECTIVITY_TYPE_IX\x10\x0b\x12\x1b\n\x17\x43ONNECTIVITY_TYPE_OTHER\x10\x0c\x12\x1e\n\x1a\x43ONNECTIVITY_TYPE_PAID_PNI\x10\r\x12\x1e\n\x1a\x43ONNECTIVITY_TYPE_RESERVED\x10\x0e\x12\x1d\n\x19\x43ONNECTIVITY_TYPE_TRANSIT\x10\x0f\x12+\n\'CONNECTIVITY_TYPE_VIRTUAL_CROSS_CONNECT\x10\x10*\xa7\x01\n\x0fNetworkBoundary\x12 \n\x1cNETWORK_BOUNDARY_UNSPECIFIED\x10\x00\x12\x19\n\x15NETWORK_BOUNDARY_AUTO\x10\x01\x12\x1d\n\x19NETWORK_BOUNDARY_INTERNAL\x10\x02\x12\x1d\n\x19NETWORK_BOUNDARY_EXTERNAL\x10\x03\x12\x19\n\x15NETWORK_BOUNDARY_NONE\x10\x04*g\n\x08IpFilter\x12\x19\n\x15IP_FILTER_UNSPECIFIED\x10\x00\x12\x15\n\x11IP_FILTER_PRIVATE\x10\x01\x12\x14\n\x10IP_FILTER_PUBLIC\x10\x02\x12\x13\n\x0fIP_FILTER_UNSET\x10\x03*\x9e\x01\n\x0eMatchAttribute\x12\x1f\n\x1bMATCH_ATTRIBUTE_UNSPECIFIED\x10\x00\x12)\n%MATCH_ATTRIBUTE_INTERFACE_DESCRIPTION\x10\x01\x12\x1e\n\x1aMATCH_ATTRIBUTE_SNMP_ALIAS\x10\x02\x12 \n\x1cMATCH_ATTRIBUTE_INTERFACE_IP\x10\x03*\xd1\x01\n\x08Operator\x12\x18\n\x14OPERATOR_UNSPECIFIED\x10\x00\x12\x13\n\x0fOPERATOR_EQUALS\x10\x01\x12\x15\n\x11OPERATOR_CONTAINS\x10\x02\x12\x12\n\x0eOPERATOR_REGEX\x10\x03\x12 \n\x1cOPERATOR_CONTAINED_IN_SUBNET\x10\x04\x12\x19\n\x15OPERATOR_IS_PUBLIC_IP\x10\x05\x12\x1a\n\x16OPERATOR_IS_PRIVATE_IP\x10\x06\x12\x12\n\x0eOPERATOR_NO_IP\x10\x07\x32\xc5\x0e\n\x10InterfaceService\x12\xa7\x02\n\x0eManualClassify\x12\x35.kentik.interface.v202108alpha1.ManualClassifyRequest\x1a\x36.kentik.interface.v202108alpha1.ManualClassifyResponse\"\xa5\x01\x92\x41V\x12\x19Manual Classify Interface\x1a)Manually set interface(s) classification.*\x0eManualClassify\xf2\xd7\x02\x15\x61\x64min.interface:write\x82\xd3\xe4\x93\x02-\"(/interface/v202108alpha1/manual_classify:\x01*\x12\xa0\x02\n\rListInterface\x12\x34.kentik.interface.v202108alpha1.ListInterfaceRequest\x1a\x35.kentik.interface.v202108alpha1.ListInterfaceResponse\"\xa1\x01\x92\x41[\x12\x17\x46\x65tch Search Interfaces\x1a\x31Return list of interfaces matches search critera.*\rListInterface\xf2\xd7\x02\x14\x61\x64min.interface:read\x82\xd3\xe4\x93\x02%\x12#/interface/v202108alpha1/interfaces\x12\xa1\x02\n\x0cGetInterface\x12\x33.kentik.interface.v202108alpha1.GetInterfaceRequest\x1a\x34.kentik.interface.v202108alpha1.GetInterfaceResponse\"\xa5\x01\x92\x41Z\x12\x10Get a interface.\x1a\x38Returns information about a interface specified with ID.*\x0cInterfaceGet\xf2\xd7\x02\x14\x61\x64min.interface:read\x82\xd3\xe4\x93\x02*\x12(/interface/v202108alpha1/interfaces/{id}\x12\xa8\x02\n\x0f\x43reateInterface\x12\x36.kentik.interface.v202108alpha1.CreateInterfaceRequest\x1a\x37.kentik.interface.v202108alpha1.CreateInterfaceResponse\"\xa3\x01\x92\x41Y\x12\x13\x43reate a interface.\x1a\x31\x43reate a interface from request. returns created.*\x0fInterfaceCreate\xf2\xd7\x02\x15\x61\x64min.interface:write\x82\xd3\xe4\x93\x02(\"#/interface/v202108alpha1/interfaces:\x01*\x12\xc1\x02\n\x0fUpdateInterface\x12\x36.kentik.interface.v202108alpha1.UpdateInterfaceRequest\x1a\x37.kentik.interface.v202108alpha1.UpdateInterfaceResponse\"\xbc\x01\x92\x41\x63\x12\x13Update a interface.\x1a;Replaces the entire interface attributes specified with id.*\x0fInterfaceUpdate\xf2\xd7\x02\x15\x61\x64min.interface:write\x82\xd3\xe4\x93\x02\x37\x1a\x32/interface/v202108alpha1/interfaces/{interface.id}:\x01*\x12\xa1\x02\n\x0f\x44\x65leteInterface\x12\x36.kentik.interface.v202108alpha1.DeleteInterfaceRequest\x1a\x37.kentik.interface.v202108alpha1.DeleteInterfaceResponse\"\x9c\x01\x92\x41P\x12\x13\x44\x65lete a interface.\x1a(Deletes the interface specified with id.*\x0fInterfaceDelete\xf2\xd7\x02\x15\x61\x64min.interface:write\x82\xd3\xe4\x93\x02**(/interface/v202108alpha1/interfaces/{id}\x1a-\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\x0f\x61\x64min.interface\x90\xd8\x02\x03\x42\xc6\x02ZKgithub.com/kentik/api-schema-public/go/kentik/interface/v202108alpha1;iface\x92\x41\xf5\x01\x12\x37\n\rInterface API\"\x18\n\x16Kentik API Engineering2\x0c\x32\x30\x32\x31\x30\x38\x61lpha1*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r5\n\x16More about Kentik APIs\x12\x1bhttps://docs.kentik.com/apib\x06proto3'
   ,
-  dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_api_dot_client__pb2.DESCRIPTOR,protoc__gen__openapiv2_dot_options_dot_annotations__pb2.DESCRIPTOR,kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
+  dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_api_dot_client__pb2.DESCRIPTOR,protoc__gen__openapiv2_dot_options_dot_annotations__pb2.DESCRIPTOR,kentik_dot_core_dot_v202303_dot_annotations__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
 _CONNECTIVITYTYPE = _descriptor.EnumDescriptor(
   name='ConnectivityType',
@@ -124,8 +124,8 @@ _CONNECTIVITYTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=6875,
-  serialized_end=7496,
+  serialized_start=6869,
+  serialized_end=7490,
 )
 _sym_db.RegisterEnumDescriptor(_CONNECTIVITYTYPE)
 
@@ -165,8 +165,8 @@ _NETWORKBOUNDARY = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=7499,
-  serialized_end=7666,
+  serialized_start=7493,
+  serialized_end=7660,
 )
 _sym_db.RegisterEnumDescriptor(_NETWORKBOUNDARY)
 
@@ -201,8 +201,8 @@ _IPFILTER = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=7668,
-  serialized_end=7771,
+  serialized_start=7662,
+  serialized_end=7765,
 )
 _sym_db.RegisterEnumDescriptor(_IPFILTER)
 
@@ -237,8 +237,8 @@ _MATCHATTRIBUTE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=7774,
-  serialized_end=7932,
+  serialized_start=7768,
+  serialized_end=7926,
 )
 _sym_db.RegisterEnumDescriptor(_MATCHATTRIBUTE)
 
@@ -293,8 +293,8 @@ _OPERATOR = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=7935,
-  serialized_end=8144,
+  serialized_start=7929,
+  serialized_end=8138,
 )
 _sym_db.RegisterEnumDescriptor(_OPERATOR)
 
@@ -465,8 +465,8 @@ _INTERFACE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=264,
-  serialized_end=931,
+  serialized_start=258,
+  serialized_end=925,
 )
 
 
@@ -511,8 +511,8 @@ _INTERFACECLASSIFICATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=934,
-  serialized_end=1178,
+  serialized_start=928,
+  serialized_end=1172,
 )
 
 
@@ -578,8 +578,8 @@ _CLASSIFYCOUNTER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1181,
-  serialized_end=1400,
+  serialized_start=1175,
+  serialized_end=1394,
 )
 
 
@@ -771,8 +771,8 @@ _INTERFACECLASSIFYINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1403,
-  serialized_end=2641,
+  serialized_start=1397,
+  serialized_end=2635,
 )
 
 
@@ -873,8 +873,8 @@ _DEVICECLASSIFYINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2644,
-  serialized_end=3379,
+  serialized_start=2638,
+  serialized_end=3373,
 )
 
 
@@ -947,8 +947,8 @@ _INTERFACEFILTER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3382,
-  serialized_end=3775,
+  serialized_start=3376,
+  serialized_end=3769,
 )
 
 
@@ -972,8 +972,8 @@ _AUTOCLASSIFYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3777,
-  serialized_end=3798,
+  serialized_start=3771,
+  serialized_end=3792,
 )
 
 
@@ -1067,8 +1067,8 @@ _AUTOCLASSIFYRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3801,
-  serialized_end=4481,
+  serialized_start=3795,
+  serialized_end=4475,
 )
 
 
@@ -1120,8 +1120,8 @@ _MANUALCLASSIFYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4484,
-  serialized_end=4759,
+  serialized_start=4478,
+  serialized_end=4753,
 )
 
 
@@ -1152,8 +1152,8 @@ _MANUALCLASSIFYRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4761,
-  serialized_end=4816,
+  serialized_start=4755,
+  serialized_end=4810,
 )
 
 
@@ -1184,8 +1184,8 @@ _LISTINTERFACEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4818,
-  serialized_end=4915,
+  serialized_start=4812,
+  serialized_end=4909,
 )
 
 
@@ -1230,8 +1230,8 @@ _LISTINTERFACERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4918,
-  serialized_end=5086,
+  serialized_start=4912,
+  serialized_end=5080,
 )
 
 
@@ -1262,8 +1262,8 @@ _GETINTERFACEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5088,
-  serialized_end=5125,
+  serialized_start=5082,
+  serialized_end=5119,
 )
 
 
@@ -1294,8 +1294,8 @@ _GETINTERFACERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5127,
-  serialized_end=5222,
+  serialized_start=5121,
+  serialized_end=5216,
 )
 
 
@@ -1326,8 +1326,8 @@ _CREATEINTERFACEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5224,
-  serialized_end=5321,
+  serialized_start=5218,
+  serialized_end=5315,
 )
 
 
@@ -1358,8 +1358,8 @@ _CREATEINTERFACERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5323,
-  serialized_end=5421,
+  serialized_start=5317,
+  serialized_end=5415,
 )
 
 
@@ -1390,8 +1390,8 @@ _UPDATEINTERFACEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5423,
-  serialized_end=5520,
+  serialized_start=5417,
+  serialized_end=5514,
 )
 
 
@@ -1422,8 +1422,8 @@ _UPDATEINTERFACERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5522,
-  serialized_end=5620,
+  serialized_start=5516,
+  serialized_end=5614,
 )
 
 
@@ -1454,8 +1454,8 @@ _DELETEINTERFACEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5622,
-  serialized_end=5662,
+  serialized_start=5616,
+  serialized_end=5656,
 )
 
 
@@ -1479,8 +1479,8 @@ _DELETEINTERFACERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5664,
-  serialized_end=5689,
+  serialized_start=5658,
+  serialized_end=5683,
 )
 
 
@@ -1525,8 +1525,8 @@ _MATCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5692,
-  serialized_end=5895,
+  serialized_start=5686,
+  serialized_end=5889,
 )
 
 
@@ -1578,8 +1578,8 @@ _ACTION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5898,
-  serialized_end=6188,
+  serialized_start=5892,
+  serialized_end=6182,
 )
 
 
@@ -1638,8 +1638,8 @@ _DEVICEFILTER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6191,
-  serialized_end=6378,
+  serialized_start=6185,
+  serialized_end=6372,
 )
 
 
@@ -1726,8 +1726,8 @@ _RULE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6381,
-  serialized_end=6872,
+  serialized_start=6375,
+  serialized_end=6866,
 )
 
 _INTERFACE.fields_by_name['cdate'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
@@ -1975,8 +1975,8 @@ _INTERFACESERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=b'\312A\023grpc.api.kentik.com\352\327\002\017admin.interface\220\330\002\003',
   create_key=_descriptor._internal_create_key,
-  serialized_start=8147,
-  serialized_end=10008,
+  serialized_start=8141,
+  serialized_end=10002,
   methods=[
   _descriptor.MethodDescriptor(
     name='ManualClassify',

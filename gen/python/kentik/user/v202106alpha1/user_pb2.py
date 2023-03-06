@@ -16,7 +16,7 @@ from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
 from google.api import client_pb2 as google_dot_api_dot_client__pb2
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 from protoc_gen_openapiv2.options import annotations_pb2 as protoc__gen__openapiv2_dot_options_dot_annotations__pb2
-from kentik.core.v202012alpha1 import annotations_pb2 as kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2
+from kentik.core.v202303 import annotations_pb2 as kentik_dot_core_dot_v202303_dot_annotations__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -25,9 +25,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'ZEgithub.com/kentik/api-schema-public/go/kentik/user/v202106alpha1;user\222A\220\003\022\251\001\n\023User management API\022K--- This API has been deprecated and will be removed in the near future ---\"7\n\026Kentik API Engineering\022\035https://github.com/kentik/api2\014202102alpha1*\001\0022\020application/json:\020application/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]\n%General information about Kentik APIs\0224https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n$kentik/user/v202106alpha1/user.proto\x12\x19kentik.user.v202106alpha1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a+kentik/core/v202012alpha1/annotations.proto\"\xe5\x02\n\x04User\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x1d\n\nuser_email\x18\x02 \x01(\tR\tuserEmail\x12\x1a\n\x08username\x18\x03 \x01(\tR\x08username\x12$\n\x0euser_full_name\x18\x04 \x01(\tR\x0cuserFullName\x12\x33\n\x04role\x18\x05 \x01(\x0e\x32\x1f.kentik.user.v202106alpha1.RoleR\x04role\x12\x39\n\nlast_login\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\tlastLogin\x12=\n\x0c\x63reated_date\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x0b\x63reatedDate\x12=\n\x0cupdated_date\x18\x08 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x0bupdatedDate\"\x11\n\x0fListUserRequest\"n\n\x10ListUserResponse\x12\x35\n\x05users\x18\x01 \x03(\x0b\x32\x1f.kentik.user.v202106alpha1.UserR\x05users\x12#\n\rinvalid_count\x18\x02 \x01(\rR\x0cinvalidCount\" \n\x0eGetUserRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"F\n\x0fGetUserResponse\x12\x33\n\x04user\x18\x01 \x01(\x0b\x32\x1f.kentik.user.v202106alpha1.UserR\x04user\"H\n\x11\x43reateUserRequest\x12\x33\n\x04user\x18\x01 \x01(\x0b\x32\x1f.kentik.user.v202106alpha1.UserR\x04user\"I\n\x12\x43reateUserResponse\x12\x33\n\x04user\x18\x01 \x01(\x0b\x32\x1f.kentik.user.v202106alpha1.UserR\x04user\"H\n\x11UpdateUserRequest\x12\x33\n\x04user\x18\x01 \x01(\x0b\x32\x1f.kentik.user.v202106alpha1.UserR\x04user\"I\n\x12UpdateUserResponse\x12\x33\n\x04user\x18\x01 \x01(\x0b\x32\x1f.kentik.user.v202106alpha1.UserR\x04user\"#\n\x11\x44\x65leteUserRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"\x14\n\x12\x44\x65leteUserResponse*\xb7\x01\n\x07Landing\x12\x17\n\x13LANDING_UNSPECIFIED\x10\x00\x12\x1c\n\x18LANDING_OBSERVATION_DECK\x10\x01\x12\x1c\n\x18LANDING_NETWORK_EXPLORER\x10\x02\x12\x13\n\x0fLANDING_LIBRARY\x10\x03\x12\x14\n\x10LANDING_EXPLORER\x10\x04\x12\x14\n\x10LANDING_ALERTING\x10\x05\x12\x16\n\x12LANDING_SYNTHETICS\x10\x06*c\n\x04Role\x12\x14\n\x10ROLE_UNSPECIFIED\x10\x00\x12\x0f\n\x0bROLE_MEMBER\x10\x01\x12\x16\n\x12ROLE_ADMINISTRATOR\x10\x02\x12\x1c\n\x18ROLE_SUPER_ADMINISTRATOR\x10\x03\x32\xab\n\n\x0bUserService\x12\xd5\x01\n\x08ListUser\x12*.kentik.user.v202106alpha1.ListUserRequest\x1a+.kentik.user.v202106alpha1.ListUserResponse\"p\x92\x41\x39\x12\x0bList users.\x1a Returns a list of user accounts.*\x08UserList\xf2\xd7\x02\x0f\x61\x64min.user:read\x82\xd3\xe4\x93\x02\x1b\x12\x19/user/v202106alpha1/users\x12\xf8\x01\n\x07GetUser\x12).kentik.user.v202106alpha1.GetUserRequest\x1a*.kentik.user.v202106alpha1.GetUserResponse\"\x95\x01\x92\x41Y\x12\x13Get a user account.\x1a\x39Returns information about user account specified with ID.*\x07UserGet\xf2\xd7\x02\x0f\x61\x64min.user:read\x82\xd3\xe4\x93\x02 \x12\x1e/user/v202106alpha1/users/{id}\x12\x89\x02\n\nCreateUser\x12,.kentik.user.v202106alpha1.CreateUserRequest\x1a-.kentik.user.v202106alpha1.CreateUserResponse\"\x9d\x01\x92\x41\x62\x12\x16\x43reate a user account.\x1a<Create a user account from request. returns created account.*\nUserCreate\xf2\xd7\x02\x10\x61\x64min.user:write\x82\xd3\xe4\x93\x02\x1e\"\x19/user/v202106alpha1/users:\x01*\x12\x95\x02\n\nUpdateUser\x12,.kentik.user.v202106alpha1.UpdateUserRequest\x1a-.kentik.user.v202106alpha1.UpdateUserResponse\"\xa9\x01\x92\x41\x64\x12\x16Update a user account.\x1a>Replaces the entire user account attributes specified with id.*\nUserUpdate\xf2\xd7\x02\x10\x61\x64min.user:write\x82\xd3\xe4\x93\x02(\x1a#/user/v202106alpha1/users/{user.id}:\x01*\x12\xfa\x01\n\nDeleteUser\x12,.kentik.user.v202106alpha1.DeleteUserRequest\x1a-.kentik.user.v202106alpha1.DeleteUserResponse\"\x8e\x01\x92\x41Q\x12\x16\x44\x65lete a user account.\x1a+Deletes the user account specified with id.*\nUserDelete\xf2\xd7\x02\x10\x61\x64min.user:write\x82\xd3\xe4\x93\x02 *\x1e/user/v202106alpha1/users/{id}\x1a(\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\nadmin.user\x90\xd8\x02\x03\x42\xdb\x03ZEgithub.com/kentik/api-schema-public/go/kentik/user/v202106alpha1;user\x92\x41\x90\x03\x12\xa9\x01\n\x13User management API\x12K--- This API has been deprecated and will be removed in the near future ---\"7\n\x16Kentik API Engineering\x12\x1dhttps://github.com/kentik/api2\x0c\x32\x30\x32\x31\x30\x32\x61lpha1*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r]\n%General information about Kentik APIs\x12\x34https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overviewb\x06proto3'
+  serialized_pb=b'\n$kentik/user/v202106alpha1/user.proto\x12\x19kentik.user.v202106alpha1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a%kentik/core/v202303/annotations.proto\"\xe5\x02\n\x04User\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x1d\n\nuser_email\x18\x02 \x01(\tR\tuserEmail\x12\x1a\n\x08username\x18\x03 \x01(\tR\x08username\x12$\n\x0euser_full_name\x18\x04 \x01(\tR\x0cuserFullName\x12\x33\n\x04role\x18\x05 \x01(\x0e\x32\x1f.kentik.user.v202106alpha1.RoleR\x04role\x12\x39\n\nlast_login\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\tlastLogin\x12=\n\x0c\x63reated_date\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x0b\x63reatedDate\x12=\n\x0cupdated_date\x18\x08 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x0bupdatedDate\"\x11\n\x0fListUserRequest\"n\n\x10ListUserResponse\x12\x35\n\x05users\x18\x01 \x03(\x0b\x32\x1f.kentik.user.v202106alpha1.UserR\x05users\x12#\n\rinvalid_count\x18\x02 \x01(\rR\x0cinvalidCount\" \n\x0eGetUserRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"F\n\x0fGetUserResponse\x12\x33\n\x04user\x18\x01 \x01(\x0b\x32\x1f.kentik.user.v202106alpha1.UserR\x04user\"H\n\x11\x43reateUserRequest\x12\x33\n\x04user\x18\x01 \x01(\x0b\x32\x1f.kentik.user.v202106alpha1.UserR\x04user\"I\n\x12\x43reateUserResponse\x12\x33\n\x04user\x18\x01 \x01(\x0b\x32\x1f.kentik.user.v202106alpha1.UserR\x04user\"H\n\x11UpdateUserRequest\x12\x33\n\x04user\x18\x01 \x01(\x0b\x32\x1f.kentik.user.v202106alpha1.UserR\x04user\"I\n\x12UpdateUserResponse\x12\x33\n\x04user\x18\x01 \x01(\x0b\x32\x1f.kentik.user.v202106alpha1.UserR\x04user\"#\n\x11\x44\x65leteUserRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"\x14\n\x12\x44\x65leteUserResponse*\xb7\x01\n\x07Landing\x12\x17\n\x13LANDING_UNSPECIFIED\x10\x00\x12\x1c\n\x18LANDING_OBSERVATION_DECK\x10\x01\x12\x1c\n\x18LANDING_NETWORK_EXPLORER\x10\x02\x12\x13\n\x0fLANDING_LIBRARY\x10\x03\x12\x14\n\x10LANDING_EXPLORER\x10\x04\x12\x14\n\x10LANDING_ALERTING\x10\x05\x12\x16\n\x12LANDING_SYNTHETICS\x10\x06*c\n\x04Role\x12\x14\n\x10ROLE_UNSPECIFIED\x10\x00\x12\x0f\n\x0bROLE_MEMBER\x10\x01\x12\x16\n\x12ROLE_ADMINISTRATOR\x10\x02\x12\x1c\n\x18ROLE_SUPER_ADMINISTRATOR\x10\x03\x32\xab\n\n\x0bUserService\x12\xd5\x01\n\x08ListUser\x12*.kentik.user.v202106alpha1.ListUserRequest\x1a+.kentik.user.v202106alpha1.ListUserResponse\"p\x92\x41\x39\x12\x0bList users.\x1a Returns a list of user accounts.*\x08UserList\xf2\xd7\x02\x0f\x61\x64min.user:read\x82\xd3\xe4\x93\x02\x1b\x12\x19/user/v202106alpha1/users\x12\xf8\x01\n\x07GetUser\x12).kentik.user.v202106alpha1.GetUserRequest\x1a*.kentik.user.v202106alpha1.GetUserResponse\"\x95\x01\x92\x41Y\x12\x13Get a user account.\x1a\x39Returns information about user account specified with ID.*\x07UserGet\xf2\xd7\x02\x0f\x61\x64min.user:read\x82\xd3\xe4\x93\x02 \x12\x1e/user/v202106alpha1/users/{id}\x12\x89\x02\n\nCreateUser\x12,.kentik.user.v202106alpha1.CreateUserRequest\x1a-.kentik.user.v202106alpha1.CreateUserResponse\"\x9d\x01\x92\x41\x62\x12\x16\x43reate a user account.\x1a<Create a user account from request. returns created account.*\nUserCreate\xf2\xd7\x02\x10\x61\x64min.user:write\x82\xd3\xe4\x93\x02\x1e\"\x19/user/v202106alpha1/users:\x01*\x12\x95\x02\n\nUpdateUser\x12,.kentik.user.v202106alpha1.UpdateUserRequest\x1a-.kentik.user.v202106alpha1.UpdateUserResponse\"\xa9\x01\x92\x41\x64\x12\x16Update a user account.\x1a>Replaces the entire user account attributes specified with id.*\nUserUpdate\xf2\xd7\x02\x10\x61\x64min.user:write\x82\xd3\xe4\x93\x02(\x1a#/user/v202106alpha1/users/{user.id}:\x01*\x12\xfa\x01\n\nDeleteUser\x12,.kentik.user.v202106alpha1.DeleteUserRequest\x1a-.kentik.user.v202106alpha1.DeleteUserResponse\"\x8e\x01\x92\x41Q\x12\x16\x44\x65lete a user account.\x1a+Deletes the user account specified with id.*\nUserDelete\xf2\xd7\x02\x10\x61\x64min.user:write\x82\xd3\xe4\x93\x02 *\x1e/user/v202106alpha1/users/{id}\x1a(\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\nadmin.user\x90\xd8\x02\x03\x42\xdb\x03ZEgithub.com/kentik/api-schema-public/go/kentik/user/v202106alpha1;user\x92\x41\x90\x03\x12\xa9\x01\n\x13User management API\x12K--- This API has been deprecated and will be removed in the near future ---\"7\n\x16Kentik API Engineering\x12\x1dhttps://github.com/kentik/api2\x0c\x32\x30\x32\x31\x30\x32\x61lpha1*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r]\n%General information about Kentik APIs\x12\x34https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overviewb\x06proto3'
   ,
-  dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_api_dot_client__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,protoc__gen__openapiv2_dot_options_dot_annotations__pb2.DESCRIPTOR,kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2.DESCRIPTOR,])
+  dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_api_dot_client__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,protoc__gen__openapiv2_dot_options_dot_annotations__pb2.DESCRIPTOR,kentik_dot_core_dot_v202303_dot_annotations__pb2.DESCRIPTOR,])
 
 _LANDING = _descriptor.EnumDescriptor(
   name='Landing',
@@ -74,8 +74,8 @@ _LANDING = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1203,
-  serialized_end=1386,
+  serialized_start=1197,
+  serialized_end=1380,
 )
 _sym_db.RegisterEnumDescriptor(_LANDING)
 
@@ -110,8 +110,8 @@ _ROLE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1388,
-  serialized_end=1487,
+  serialized_start=1382,
+  serialized_end=1481,
 )
 _sym_db.RegisterEnumDescriptor(_ROLE)
 
@@ -206,8 +206,8 @@ _USER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=249,
-  serialized_end=606,
+  serialized_start=243,
+  serialized_end=600,
 )
 
 
@@ -231,8 +231,8 @@ _LISTUSERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=608,
-  serialized_end=625,
+  serialized_start=602,
+  serialized_end=619,
 )
 
 
@@ -270,8 +270,8 @@ _LISTUSERRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=627,
-  serialized_end=737,
+  serialized_start=621,
+  serialized_end=731,
 )
 
 
@@ -302,8 +302,8 @@ _GETUSERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=739,
-  serialized_end=771,
+  serialized_start=733,
+  serialized_end=765,
 )
 
 
@@ -334,8 +334,8 @@ _GETUSERRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=773,
-  serialized_end=843,
+  serialized_start=767,
+  serialized_end=837,
 )
 
 
@@ -366,8 +366,8 @@ _CREATEUSERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=845,
-  serialized_end=917,
+  serialized_start=839,
+  serialized_end=911,
 )
 
 
@@ -398,8 +398,8 @@ _CREATEUSERRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=919,
-  serialized_end=992,
+  serialized_start=913,
+  serialized_end=986,
 )
 
 
@@ -430,8 +430,8 @@ _UPDATEUSERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=994,
-  serialized_end=1066,
+  serialized_start=988,
+  serialized_end=1060,
 )
 
 
@@ -462,8 +462,8 @@ _UPDATEUSERRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1068,
-  serialized_end=1141,
+  serialized_start=1062,
+  serialized_end=1135,
 )
 
 
@@ -494,8 +494,8 @@ _DELETEUSERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1143,
-  serialized_end=1178,
+  serialized_start=1137,
+  serialized_end=1172,
 )
 
 
@@ -519,8 +519,8 @@ _DELETEUSERRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1180,
-  serialized_end=1200,
+  serialized_start=1174,
+  serialized_end=1194,
 )
 
 _USER.fields_by_name['role'].enum_type = _ROLE
@@ -635,8 +635,8 @@ _USERSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=b'\312A\023grpc.api.kentik.com\352\327\002\nadmin.user\220\330\002\003',
   create_key=_descriptor._internal_create_key,
-  serialized_start=1490,
-  serialized_end=2813,
+  serialized_start=1484,
+  serialized_end=2807,
   methods=[
   _descriptor.MethodDescriptor(
     name='ListUser',

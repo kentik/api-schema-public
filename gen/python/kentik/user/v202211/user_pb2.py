@@ -17,7 +17,7 @@ from google.api import client_pb2 as google_dot_api_dot_client__pb2
 from google.api import field_behavior_pb2 as google_dot_api_dot_field__behavior__pb2
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 from protoc_gen_openapiv2.options import annotations_pb2 as protoc__gen__openapiv2_dot_options_dot_annotations__pb2
-from kentik.core.v202012alpha1 import annotations_pb2 as kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2
+from kentik.core.v202303 import annotations_pb2 as kentik_dot_core_dot_v202303_dot_annotations__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -26,9 +26,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z?github.com/kentik/api-schema-public/go/kentik/user/v202211;user\222A\247\031\022\300\027\n\023User Management API\022\330\026# Overview\nThe User Management API enables programmatic administration of users within your organization. The API may be used to grant permissions to users at two levels: \n* **User role**: Permissions based on the level assigned to the Kentik user, either Member, Administrator, or Super Administrator (see [About Users](https://kb.kentik.com/v4/Cb02.htm#Cb02-About_Users)).\n* **User permissions**: Permissions granting access to specific capabilities of the Kentik platform (see [User Permissions](https://kb.kentik.com/v4/Cb02.htm#Cb02-User_Permissions)).\n\nBoth REST endpoint and gRPC RPCs are provided.\n\n***Note:*** The legacy REST-only [User API](https://kb.kentik.com/v0/Ec06.htm#Ec06-User_API) provides a subset of the functionality of this API.\n\n# User Permission Identifiers\n\nIndividual user permissions are represented in this API by string-based identifiers. The table below shows the identifier used in the API for each permission that can be enabled/disabled with the checkboxes on the Permissions tab of the Edit User dialog in the Kentik portal\'s Manage Users module (Settings \302\273 Manage Users).\n| Portal setting  | API identifier |\n|-----------------|----------------|\n| Cancel Queries in Forensic Viewer | forensic_viewer.cancel_queries |\n| Synthetics Permissions: Create tests | synthetics.tests.create |\n| Synthetics Permissions: Edit tests | synthetics.tests.edit |\n| Synthetics Permissions: Delete tests | synthetics.tests.delete |\n| Synthetics Permissions: Create agents | synthetics.agents.create |\n| Synthetics Permissions: Edit agents | synthetics.agents.edit |\n| Synthetics Permissions: Delete agents | synthetics.agents.delete |\n| Connectivity Costs Permissions: View Costs | connectivity_costs.read |\n| Connectivity Costs Permissions: Configure Costs | connectivity_costs.edit |\n\n**_Note:_** The API returns an error if the same permission is both granted and denied in the same request.\n\n### Default Permissions\n\nThe permissions above that are enabled/disabled by default depend on the role (level) of the user:\n* **Member**: All permissions in the table above are denied by default.\n* **Administrator** or **Super Administrator**: All permissions are granted. \n\n# User Filter Attribute\n\nUser filters enable Administrators to apply filters that restrict the data that can be returned from queries by a given user (see [User Filters](https://kb.kentik.com/v4/Cb02.htm#Cb02-User_Filters)). In the Kentik portal these filters are set on the Filters tab of the Edit User dialog in the Manage Users module. In this API the filters are set in the `user` object with the `filter` attribute, whose type is string. The value of the attribute is given in JSON notation. The recommended way to construct the JSON string is to configure the desired filter for one user in the Kentik portal and then copy the value of the `user.filter` attribute returned for that user by the `GetUser` RPC.\"E\n\026Kentik API Engineering\022+https://github.com/kentik/api-schema-public2\007v202211*\001\0022\020application/json:\020application/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]\n%General information about Kentik APIs\0224https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x1ekentik/user/v202211/user.proto\x12\x13kentik.user.v202211\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a+kentik/core/v202012alpha1/annotations.proto\"\xc4\x01\n\x0fPermissionEntry\x12`\n\ncapability\x18\x01 \x01(\tB@\x92\x41\x39\x32\x37String identifying capability that is granted of denied\xe2\x41\x01\x02R\ncapability\x12O\n\x07\x61llowed\x18\x02 \x01(\x08\x42\x35\x92\x41.2,Flag indicating whether operation is allowed\xe2\x41\x01\x02R\x07\x61llowed\"\xb4\x06\n\x04User\x12;\n\x02id\x18\x01 \x01(\tB+\x92\x41$2\"System generated unique identifier\xe2\x41\x01\x03R\x02id\x12U\n\nuser_email\x18\x02 \x01(\tB6\x92\x41/2-User e-mail address (serves also as username)\xe2\x41\x01\x02R\tuserEmail\x12\x38\n\x0euser_full_name\x18\x04 \x01(\tB\x12\x92\x41\x0b\x32\tFull name\xe2\x41\x01\x02R\x0cuserFullName\x12Y\n\x04role\x18\x05 \x01(\x0e\x32\x19.kentik.user.v202211.RoleB*\x92\x41#2!User role (in Kentik application)\xe2\x41\x01\x02R\x04role\x12}\n\x0bpermissions\x18\x06 \x03(\x0b\x32$.kentik.user.v202211.PermissionEntryB5\x92\x41\x32\x32\x30Optional list of permissions granted to the userR\x0bpermissions\x12\x61\n\x06\x66ilter\x18\x07 \x01(\tBI\x92\x41\x46\x32\x44Optional JSON string defining filter for objects visible to the userR\x06\x66ilter\x12n\n\nlast_login\x18\x08 \x01(\x0b\x32\x1a.google.protobuf.TimestampB3\x92\x41,2*UTC Timestamp of user\'s last login session\xe2\x41\x01\x03R\tlastLogin\x12S\n\x05\x63\x64\x61te\x18\t \x01(\x0b\x32\x1a.google.protobuf.TimestampB!\x92\x41\x1a\x32\x18\x43reation timestamp (UTC)\xe2\x41\x01\x03R\x05\x63\x64\x61te\x12\\\n\x05\x65\x64\x61te\x18\n \x01(\x0b\x32\x1a.google.protobuf.TimestampB*\x92\x41#2!Last modification timestamp (UTC)\xe2\x41\x01\x03R\x05\x65\x64\x61te\"\x12\n\x10ListUsersRequest\"\xd2\x01\n\x11ListUsersResponse\x12V\n\x05users\x18\x01 \x03(\x0b\x32\x19.kentik.user.v202211.UserB%\x92\x41\x1e\x32\x1cLast of users in the account\xe2\x41\x01\x03R\x05users\x12\x65\n\rinvalid_count\x18\x02 \x01(\rB@\x92\x41=2;Number of invalid entries encountered while collecting dataR\x0cinvalidCount\"C\n\x0eGetUserRequest\x12\x31\n\x02id\x18\x01 \x01(\tB!\x92\x41\x1a\x32\x18ID of the requested user\xe2\x41\x01\x02R\x02id\"k\n\x0fGetUserResponse\x12X\n\x04user\x18\x01 \x01(\x0b\x32\x19.kentik.user.v202211.UserB)\x92\x41&2$Information about the requested userR\x04user\"z\n\x11\x43reateUserRequest\x12\x65\n\x04user\x18\x01 \x01(\x0b\x32\x19.kentik.user.v202211.UserB6\x92\x41/2-Attributes for the user account to be created\xe2\x41\x01\x02R\x04user\"w\n\x12\x43reateUserResponse\x12\x61\n\x04user\x18\x01 \x01(\x0b\x32\x19.kentik.user.v202211.UserB2\x92\x41/2-Attributes for the newly created user accountR\x04user\"p\n\x11UpdateUserRequest\x12[\n\x04user\x18\x01 \x01(\x0b\x32\x19.kentik.user.v202211.UserB,\x92\x41%2#New attributes for the user account\xe2\x41\x01\x02R\x04user\"i\n\x12UpdateUserResponse\x12S\n\x04user\x18\x01 \x01(\x0b\x32\x19.kentik.user.v202211.UserB$\x92\x41!2\x1fUpdated user account attributesR\x04user\"V\n\x11\x44\x65leteUserRequest\x12\x41\n\x02id\x18\x01 \x01(\tB1\x92\x41*2(ID of the the user account to be deleted\xe2\x41\x01\x02R\x02id\"\x14\n\x12\x44\x65leteUserResponse\"c\n\x14ResetApiTokenRequest\x12K\n\x02id\x18\x01 \x01(\tB;\x92\x41\x34\x32\x32ID of the the user whose API token should be reset\xe2\x41\x01\x02R\x02id\"\x17\n\x15ResetApiTokenResponse\"h\n\x1aResetActiveSessionsRequest\x12J\n\x02id\x18\x01 \x01(\tB:\x92\x41\x33\x32\x31ID of the the user whose sessions should be reset\xe2\x41\x01\x02R\x02id\"\x1d\n\x1bResetActiveSessionsResponse*c\n\x04Role\x12\x14\n\x10ROLE_UNSPECIFIED\x10\x00\x12\x0f\n\x0bROLE_MEMBER\x10\x01\x12\x16\n\x12ROLE_ADMINISTRATOR\x10\x02\x12\x1c\n\x18ROLE_SUPER_ADMINISTRATOR\x10\x03\x32\xb0\x0f\n\x0bUserService\x12\xdf\x01\n\tListUsers\x12%.kentik.user.v202211.ListUsersRequest\x1a&.kentik.user.v202211.ListUsersResponse\"\x82\x01\x92\x41Q\x12\x0fList all users.\x1a\x33Returns a list of all user accounts in the company.*\tListUsers\xf2\xd7\x02\x0f\x61\x64min.user:read\x82\xd3\xe4\x93\x02\x15\x12\x13/user/v202211/users\x12\xf0\x01\n\x07GetUser\x12#.kentik.user.v202211.GetUserRequest\x1a$.kentik.user.v202211.GetUserResponse\"\x99\x01\x92\x41\x63\x12!Get attributes of a user account.\x1a\x35Returns attributes of a user account specified by ID.*\x07GetUser\xf2\xd7\x02\x0f\x61\x64min.user:read\x82\xd3\xe4\x93\x02\x1a\x12\x18/user/v202211/users/{id}\x12\xab\x02\n\nCreateUser\x12&.kentik.user.v202211.CreateUserRequest\x1a\'.kentik.user.v202211.CreateUserResponse\"\xcb\x01\x92\x41\x95\x01\x12\x18\x43reate new user account.\x1amCreates new user account based on attributes in the request. Returns attributes of the newly created account.*\nCreateUser\xf2\xd7\x02\x10\x61\x64min.user:write\x82\xd3\xe4\x93\x02\x18\"\x13/user/v202211/users:\x01*\x12\xc9\x02\n\nUpdateUser\x12&.kentik.user.v202211.UpdateUserRequest\x1a\'.kentik.user.v202211.UpdateUserResponse\"\xe9\x01\x92\x41\xa9\x01\x12$Update attributes of a user account.\x1auReplaces all attributes of a user account specified by ID with attributes in the request. Returns updated attributes.*\nUpdateUser\xf2\xd7\x02\x10\x61\x64min.user:write\x82\xd3\xe4\x93\x02\"\x1a\x1d/user/v202211/users/{user.id}:\x01*\x12\xe2\x01\n\nDeleteUser\x12&.kentik.user.v202211.DeleteUserRequest\x1a\'.kentik.user.v202211.DeleteUserResponse\"\x82\x01\x92\x41K\x12\x16\x44\x65lete a user account.\x1a%Deletes user account specified by ID.*\nDeleteUser\xf2\xd7\x02\x10\x61\x64min.user:write\x82\xd3\xe4\x93\x02\x1a*\x18/user/v202211/users/{id}\x12\x8a\x02\n\rResetApiToken\x12).kentik.user.v202211.ResetApiTokenRequest\x1a*.kentik.user.v202211.ResetApiTokenResponse\"\xa1\x01\x92\x41Z\x12\x1bReset API token for a user.\x1a,Resets API token for a user specified by ID.*\rResetApiToken\xf2\xd7\x02\x10\x61\x64min.user:write\x82\xd3\xe4\x93\x02*\x1a(/user/v202211/users/{id}/reset_api_token\x12\xb5\x02\n\x13ResetActiveSessions\x12/.kentik.user.v202211.ResetActiveSessionsRequest\x1a\x30.kentik.user.v202211.ResetActiveSessionsResponse\"\xba\x01\x92\x41m\x12\"Resets active sessions for a user.\x1a\x32Resets active sessions for a user specified by ID.*\x13ResetActiveSessions\xf2\xd7\x02\x10\x61\x64min.user:write\x82\xd3\xe4\x93\x02\x30\x1a./user/v202211/users/{id}/reset_active_sessions\x1a(\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\nadmin.user\x90\xd8\x02\x03\x42\xec\x19Z?github.com/kentik/api-schema-public/go/kentik/user/v202211;user\x92\x41\xa7\x19\x12\xc0\x17\n\x13User Management API\x12\xd8\x16# Overview\nThe User Management API enables programmatic administration of users within your organization. The API may be used to grant permissions to users at two levels: \n* **User role**: Permissions based on the level assigned to the Kentik user, either Member, Administrator, or Super Administrator (see [About Users](https://kb.kentik.com/v4/Cb02.htm#Cb02-About_Users)).\n* **User permissions**: Permissions granting access to specific capabilities of the Kentik platform (see [User Permissions](https://kb.kentik.com/v4/Cb02.htm#Cb02-User_Permissions)).\n\nBoth REST endpoint and gRPC RPCs are provided.\n\n***Note:*** The legacy REST-only [User API](https://kb.kentik.com/v0/Ec06.htm#Ec06-User_API) provides a subset of the functionality of this API.\n\n# User Permission Identifiers\n\nIndividual user permissions are represented in this API by string-based identifiers. The table below shows the identifier used in the API for each permission that can be enabled/disabled with the checkboxes on the Permissions tab of the Edit User dialog in the Kentik portal\'s Manage Users module (Settings \xc2\xbb Manage Users).\n| Portal setting  | API identifier |\n|-----------------|----------------|\n| Cancel Queries in Forensic Viewer | forensic_viewer.cancel_queries |\n| Synthetics Permissions: Create tests | synthetics.tests.create |\n| Synthetics Permissions: Edit tests | synthetics.tests.edit |\n| Synthetics Permissions: Delete tests | synthetics.tests.delete |\n| Synthetics Permissions: Create agents | synthetics.agents.create |\n| Synthetics Permissions: Edit agents | synthetics.agents.edit |\n| Synthetics Permissions: Delete agents | synthetics.agents.delete |\n| Connectivity Costs Permissions: View Costs | connectivity_costs.read |\n| Connectivity Costs Permissions: Configure Costs | connectivity_costs.edit |\n\n**_Note:_** The API returns an error if the same permission is both granted and denied in the same request.\n\n### Default Permissions\n\nThe permissions above that are enabled/disabled by default depend on the role (level) of the user:\n* **Member**: All permissions in the table above are denied by default.\n* **Administrator** or **Super Administrator**: All permissions are granted. \n\n# User Filter Attribute\n\nUser filters enable Administrators to apply filters that restrict the data that can be returned from queries by a given user (see [User Filters](https://kb.kentik.com/v4/Cb02.htm#Cb02-User_Filters)). In the Kentik portal these filters are set on the Filters tab of the Edit User dialog in the Manage Users module. In this API the filters are set in the `user` object with the `filter` attribute, whose type is string. The value of the attribute is given in JSON notation. The recommended way to construct the JSON string is to configure the desired filter for one user in the Kentik portal and then copy the value of the `user.filter` attribute returned for that user by the `GetUser` RPC.\"E\n\x16Kentik API Engineering\x12+https://github.com/kentik/api-schema-public2\x07v202211*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r]\n%General information about Kentik APIs\x12\x34https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overviewb\x06proto3'
+  serialized_pb=b'\n\x1ekentik/user/v202211/user.proto\x12\x13kentik.user.v202211\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a%kentik/core/v202303/annotations.proto\"\xc4\x01\n\x0fPermissionEntry\x12`\n\ncapability\x18\x01 \x01(\tB@\x92\x41\x39\x32\x37String identifying capability that is granted of denied\xe2\x41\x01\x02R\ncapability\x12O\n\x07\x61llowed\x18\x02 \x01(\x08\x42\x35\x92\x41.2,Flag indicating whether operation is allowed\xe2\x41\x01\x02R\x07\x61llowed\"\xb4\x06\n\x04User\x12;\n\x02id\x18\x01 \x01(\tB+\x92\x41$2\"System generated unique identifier\xe2\x41\x01\x03R\x02id\x12U\n\nuser_email\x18\x02 \x01(\tB6\x92\x41/2-User e-mail address (serves also as username)\xe2\x41\x01\x02R\tuserEmail\x12\x38\n\x0euser_full_name\x18\x04 \x01(\tB\x12\x92\x41\x0b\x32\tFull name\xe2\x41\x01\x02R\x0cuserFullName\x12Y\n\x04role\x18\x05 \x01(\x0e\x32\x19.kentik.user.v202211.RoleB*\x92\x41#2!User role (in Kentik application)\xe2\x41\x01\x02R\x04role\x12}\n\x0bpermissions\x18\x06 \x03(\x0b\x32$.kentik.user.v202211.PermissionEntryB5\x92\x41\x32\x32\x30Optional list of permissions granted to the userR\x0bpermissions\x12\x61\n\x06\x66ilter\x18\x07 \x01(\tBI\x92\x41\x46\x32\x44Optional JSON string defining filter for objects visible to the userR\x06\x66ilter\x12n\n\nlast_login\x18\x08 \x01(\x0b\x32\x1a.google.protobuf.TimestampB3\x92\x41,2*UTC Timestamp of user\'s last login session\xe2\x41\x01\x03R\tlastLogin\x12S\n\x05\x63\x64\x61te\x18\t \x01(\x0b\x32\x1a.google.protobuf.TimestampB!\x92\x41\x1a\x32\x18\x43reation timestamp (UTC)\xe2\x41\x01\x03R\x05\x63\x64\x61te\x12\\\n\x05\x65\x64\x61te\x18\n \x01(\x0b\x32\x1a.google.protobuf.TimestampB*\x92\x41#2!Last modification timestamp (UTC)\xe2\x41\x01\x03R\x05\x65\x64\x61te\"\x12\n\x10ListUsersRequest\"\xd2\x01\n\x11ListUsersResponse\x12V\n\x05users\x18\x01 \x03(\x0b\x32\x19.kentik.user.v202211.UserB%\x92\x41\x1e\x32\x1cLast of users in the account\xe2\x41\x01\x03R\x05users\x12\x65\n\rinvalid_count\x18\x02 \x01(\rB@\x92\x41=2;Number of invalid entries encountered while collecting dataR\x0cinvalidCount\"C\n\x0eGetUserRequest\x12\x31\n\x02id\x18\x01 \x01(\tB!\x92\x41\x1a\x32\x18ID of the requested user\xe2\x41\x01\x02R\x02id\"k\n\x0fGetUserResponse\x12X\n\x04user\x18\x01 \x01(\x0b\x32\x19.kentik.user.v202211.UserB)\x92\x41&2$Information about the requested userR\x04user\"z\n\x11\x43reateUserRequest\x12\x65\n\x04user\x18\x01 \x01(\x0b\x32\x19.kentik.user.v202211.UserB6\x92\x41/2-Attributes for the user account to be created\xe2\x41\x01\x02R\x04user\"w\n\x12\x43reateUserResponse\x12\x61\n\x04user\x18\x01 \x01(\x0b\x32\x19.kentik.user.v202211.UserB2\x92\x41/2-Attributes for the newly created user accountR\x04user\"p\n\x11UpdateUserRequest\x12[\n\x04user\x18\x01 \x01(\x0b\x32\x19.kentik.user.v202211.UserB,\x92\x41%2#New attributes for the user account\xe2\x41\x01\x02R\x04user\"i\n\x12UpdateUserResponse\x12S\n\x04user\x18\x01 \x01(\x0b\x32\x19.kentik.user.v202211.UserB$\x92\x41!2\x1fUpdated user account attributesR\x04user\"V\n\x11\x44\x65leteUserRequest\x12\x41\n\x02id\x18\x01 \x01(\tB1\x92\x41*2(ID of the the user account to be deleted\xe2\x41\x01\x02R\x02id\"\x14\n\x12\x44\x65leteUserResponse\"c\n\x14ResetApiTokenRequest\x12K\n\x02id\x18\x01 \x01(\tB;\x92\x41\x34\x32\x32ID of the the user whose API token should be reset\xe2\x41\x01\x02R\x02id\"\x17\n\x15ResetApiTokenResponse\"h\n\x1aResetActiveSessionsRequest\x12J\n\x02id\x18\x01 \x01(\tB:\x92\x41\x33\x32\x31ID of the the user whose sessions should be reset\xe2\x41\x01\x02R\x02id\"\x1d\n\x1bResetActiveSessionsResponse*c\n\x04Role\x12\x14\n\x10ROLE_UNSPECIFIED\x10\x00\x12\x0f\n\x0bROLE_MEMBER\x10\x01\x12\x16\n\x12ROLE_ADMINISTRATOR\x10\x02\x12\x1c\n\x18ROLE_SUPER_ADMINISTRATOR\x10\x03\x32\xb0\x0f\n\x0bUserService\x12\xdf\x01\n\tListUsers\x12%.kentik.user.v202211.ListUsersRequest\x1a&.kentik.user.v202211.ListUsersResponse\"\x82\x01\x92\x41Q\x12\x0fList all users.\x1a\x33Returns a list of all user accounts in the company.*\tListUsers\xf2\xd7\x02\x0f\x61\x64min.user:read\x82\xd3\xe4\x93\x02\x15\x12\x13/user/v202211/users\x12\xf0\x01\n\x07GetUser\x12#.kentik.user.v202211.GetUserRequest\x1a$.kentik.user.v202211.GetUserResponse\"\x99\x01\x92\x41\x63\x12!Get attributes of a user account.\x1a\x35Returns attributes of a user account specified by ID.*\x07GetUser\xf2\xd7\x02\x0f\x61\x64min.user:read\x82\xd3\xe4\x93\x02\x1a\x12\x18/user/v202211/users/{id}\x12\xab\x02\n\nCreateUser\x12&.kentik.user.v202211.CreateUserRequest\x1a\'.kentik.user.v202211.CreateUserResponse\"\xcb\x01\x92\x41\x95\x01\x12\x18\x43reate new user account.\x1amCreates new user account based on attributes in the request. Returns attributes of the newly created account.*\nCreateUser\xf2\xd7\x02\x10\x61\x64min.user:write\x82\xd3\xe4\x93\x02\x18\"\x13/user/v202211/users:\x01*\x12\xc9\x02\n\nUpdateUser\x12&.kentik.user.v202211.UpdateUserRequest\x1a\'.kentik.user.v202211.UpdateUserResponse\"\xe9\x01\x92\x41\xa9\x01\x12$Update attributes of a user account.\x1auReplaces all attributes of a user account specified by ID with attributes in the request. Returns updated attributes.*\nUpdateUser\xf2\xd7\x02\x10\x61\x64min.user:write\x82\xd3\xe4\x93\x02\"\x1a\x1d/user/v202211/users/{user.id}:\x01*\x12\xe2\x01\n\nDeleteUser\x12&.kentik.user.v202211.DeleteUserRequest\x1a\'.kentik.user.v202211.DeleteUserResponse\"\x82\x01\x92\x41K\x12\x16\x44\x65lete a user account.\x1a%Deletes user account specified by ID.*\nDeleteUser\xf2\xd7\x02\x10\x61\x64min.user:write\x82\xd3\xe4\x93\x02\x1a*\x18/user/v202211/users/{id}\x12\x8a\x02\n\rResetApiToken\x12).kentik.user.v202211.ResetApiTokenRequest\x1a*.kentik.user.v202211.ResetApiTokenResponse\"\xa1\x01\x92\x41Z\x12\x1bReset API token for a user.\x1a,Resets API token for a user specified by ID.*\rResetApiToken\xf2\xd7\x02\x10\x61\x64min.user:write\x82\xd3\xe4\x93\x02*\x1a(/user/v202211/users/{id}/reset_api_token\x12\xb5\x02\n\x13ResetActiveSessions\x12/.kentik.user.v202211.ResetActiveSessionsRequest\x1a\x30.kentik.user.v202211.ResetActiveSessionsResponse\"\xba\x01\x92\x41m\x12\"Resets active sessions for a user.\x1a\x32Resets active sessions for a user specified by ID.*\x13ResetActiveSessions\xf2\xd7\x02\x10\x61\x64min.user:write\x82\xd3\xe4\x93\x02\x30\x1a./user/v202211/users/{id}/reset_active_sessions\x1a(\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\nadmin.user\x90\xd8\x02\x03\x42\xec\x19Z?github.com/kentik/api-schema-public/go/kentik/user/v202211;user\x92\x41\xa7\x19\x12\xc0\x17\n\x13User Management API\x12\xd8\x16# Overview\nThe User Management API enables programmatic administration of users within your organization. The API may be used to grant permissions to users at two levels: \n* **User role**: Permissions based on the level assigned to the Kentik user, either Member, Administrator, or Super Administrator (see [About Users](https://kb.kentik.com/v4/Cb02.htm#Cb02-About_Users)).\n* **User permissions**: Permissions granting access to specific capabilities of the Kentik platform (see [User Permissions](https://kb.kentik.com/v4/Cb02.htm#Cb02-User_Permissions)).\n\nBoth REST endpoint and gRPC RPCs are provided.\n\n***Note:*** The legacy REST-only [User API](https://kb.kentik.com/v0/Ec06.htm#Ec06-User_API) provides a subset of the functionality of this API.\n\n# User Permission Identifiers\n\nIndividual user permissions are represented in this API by string-based identifiers. The table below shows the identifier used in the API for each permission that can be enabled/disabled with the checkboxes on the Permissions tab of the Edit User dialog in the Kentik portal\'s Manage Users module (Settings \xc2\xbb Manage Users).\n| Portal setting  | API identifier |\n|-----------------|----------------|\n| Cancel Queries in Forensic Viewer | forensic_viewer.cancel_queries |\n| Synthetics Permissions: Create tests | synthetics.tests.create |\n| Synthetics Permissions: Edit tests | synthetics.tests.edit |\n| Synthetics Permissions: Delete tests | synthetics.tests.delete |\n| Synthetics Permissions: Create agents | synthetics.agents.create |\n| Synthetics Permissions: Edit agents | synthetics.agents.edit |\n| Synthetics Permissions: Delete agents | synthetics.agents.delete |\n| Connectivity Costs Permissions: View Costs | connectivity_costs.read |\n| Connectivity Costs Permissions: Configure Costs | connectivity_costs.edit |\n\n**_Note:_** The API returns an error if the same permission is both granted and denied in the same request.\n\n### Default Permissions\n\nThe permissions above that are enabled/disabled by default depend on the role (level) of the user:\n* **Member**: All permissions in the table above are denied by default.\n* **Administrator** or **Super Administrator**: All permissions are granted. \n\n# User Filter Attribute\n\nUser filters enable Administrators to apply filters that restrict the data that can be returned from queries by a given user (see [User Filters](https://kb.kentik.com/v4/Cb02.htm#Cb02-User_Filters)). In the Kentik portal these filters are set on the Filters tab of the Edit User dialog in the Manage Users module. In this API the filters are set in the `user` object with the `filter` attribute, whose type is string. The value of the attribute is given in JSON notation. The recommended way to construct the JSON string is to configure the desired filter for one user in the Kentik portal and then copy the value of the `user.filter` attribute returned for that user by the `GetUser` RPC.\"E\n\x16Kentik API Engineering\x12+https://github.com/kentik/api-schema-public2\x07v202211*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r]\n%General information about Kentik APIs\x12\x34https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overviewb\x06proto3'
   ,
-  dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_api_dot_client__pb2.DESCRIPTOR,google_dot_api_dot_field__behavior__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,protoc__gen__openapiv2_dot_options_dot_annotations__pb2.DESCRIPTOR,kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2.DESCRIPTOR,])
+  dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_api_dot_client__pb2.DESCRIPTOR,google_dot_api_dot_field__behavior__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,protoc__gen__openapiv2_dot_options_dot_annotations__pb2.DESCRIPTOR,kentik_dot_core_dot_v202303_dot_annotations__pb2.DESCRIPTOR,])
 
 _ROLE = _descriptor.EnumDescriptor(
   name='Role',
@@ -60,8 +60,8 @@ _ROLE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2541,
-  serialized_end=2640,
+  serialized_start=2535,
+  serialized_end=2634,
 )
 _sym_db.RegisterEnumDescriptor(_ROLE)
 
@@ -107,8 +107,8 @@ _PERMISSIONENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=270,
-  serialized_end=466,
+  serialized_start=264,
+  serialized_end=460,
 )
 
 
@@ -195,8 +195,8 @@ _USER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=469,
-  serialized_end=1289,
+  serialized_start=463,
+  serialized_end=1283,
 )
 
 
@@ -220,8 +220,8 @@ _LISTUSERSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1291,
-  serialized_end=1309,
+  serialized_start=1285,
+  serialized_end=1303,
 )
 
 
@@ -259,8 +259,8 @@ _LISTUSERSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1312,
-  serialized_end=1522,
+  serialized_start=1306,
+  serialized_end=1516,
 )
 
 
@@ -291,8 +291,8 @@ _GETUSERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1524,
-  serialized_end=1591,
+  serialized_start=1518,
+  serialized_end=1585,
 )
 
 
@@ -323,8 +323,8 @@ _GETUSERRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1593,
-  serialized_end=1700,
+  serialized_start=1587,
+  serialized_end=1694,
 )
 
 
@@ -355,8 +355,8 @@ _CREATEUSERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1702,
-  serialized_end=1824,
+  serialized_start=1696,
+  serialized_end=1818,
 )
 
 
@@ -387,8 +387,8 @@ _CREATEUSERRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1826,
-  serialized_end=1945,
+  serialized_start=1820,
+  serialized_end=1939,
 )
 
 
@@ -419,8 +419,8 @@ _UPDATEUSERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1947,
-  serialized_end=2059,
+  serialized_start=1941,
+  serialized_end=2053,
 )
 
 
@@ -451,8 +451,8 @@ _UPDATEUSERRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2061,
-  serialized_end=2166,
+  serialized_start=2055,
+  serialized_end=2160,
 )
 
 
@@ -483,8 +483,8 @@ _DELETEUSERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2168,
-  serialized_end=2254,
+  serialized_start=2162,
+  serialized_end=2248,
 )
 
 
@@ -508,8 +508,8 @@ _DELETEUSERRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2256,
-  serialized_end=2276,
+  serialized_start=2250,
+  serialized_end=2270,
 )
 
 
@@ -540,8 +540,8 @@ _RESETAPITOKENREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2278,
-  serialized_end=2377,
+  serialized_start=2272,
+  serialized_end=2371,
 )
 
 
@@ -565,8 +565,8 @@ _RESETAPITOKENRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2379,
-  serialized_end=2402,
+  serialized_start=2373,
+  serialized_end=2396,
 )
 
 
@@ -597,8 +597,8 @@ _RESETACTIVESESSIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2404,
-  serialized_end=2508,
+  serialized_start=2398,
+  serialized_end=2502,
 )
 
 
@@ -622,8 +622,8 @@ _RESETACTIVESESSIONSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2510,
-  serialized_end=2539,
+  serialized_start=2504,
+  serialized_end=2533,
 )
 
 _USER.fields_by_name['role'].enum_type = _ROLE
@@ -800,8 +800,8 @@ _USERSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=b'\312A\023grpc.api.kentik.com\352\327\002\nadmin.user\220\330\002\003',
   create_key=_descriptor._internal_create_key,
-  serialized_start=2643,
-  serialized_end=4611,
+  serialized_start=2637,
+  serialized_end=4605,
   methods=[
   _descriptor.MethodDescriptor(
     name='ListUsers',

@@ -35,7 +35,7 @@
 #include "google/api/annotations.pb.h"
 #include "google/api/client.pb.h"
 #include "protoc-gen-openapiv2/options/annotations.pb.h"
-#include "kentik/core/v202012alpha1/annotations.pb.h"
+#include "kentik/core/v202303/annotations.pb.h"
 #include <google/protobuf/timestamp.pb.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>

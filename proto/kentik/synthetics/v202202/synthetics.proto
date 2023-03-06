@@ -11,7 +11,8 @@ import "google/api/field_behavior.proto";
 import "google/protobuf/timestamp.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
 
-import "kentik/core/v202012alpha1/annotations.proto";
+import "kentik/core/v202303/annotations.proto";
+import "kentik/core/v202303/user_info.proto";
 
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   info: {
@@ -394,28 +395,6 @@ enum AgentStatus {
 // === TEST config and status ===
 
 // {{.Name}}
-message UserInfo {
-  string id = 1 [
-    (google.api.field_behavior) = OUTPUT_ONLY,
-    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "Unique ID of the user"
-    }
-  ];
-  string email = 2 [
-    (google.api.field_behavior) = OUTPUT_ONLY,
-    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "E-mail address of the user"
-    }
-  ];
-  string full_name = 3 [
-    (google.api.field_behavior) = OUTPUT_ONLY,
-    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "Full name of the user"
-    }
-  ];
-}
-
-// {{.Name}}
 message Test {
   string id = 1 [
     (google.api.field_behavior) = OUTPUT_ONLY,
@@ -455,13 +434,13 @@ message Test {
       description: "Last modification timestamp (UTC)"
   }
   ];
-  UserInfo created_by = 9 [
+  kentik.core.v202303.UserInfo created_by = 9 [
     (google.api.field_behavior) = OUTPUT_ONLY,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Identity of test creator"
   }
   ];
-  UserInfo last_updated_by = 10 [
+  kentik.core.v202303.UserInfo last_updated_by = 10 [
     (google.api.field_behavior) = OUTPUT_ONLY,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Identity of use that has modified the test last"
@@ -1418,12 +1397,12 @@ message GetTraceForTestResponse {
 
 service SyntheticsDataService {
   option (google.api.default_host) = "grpc.api.kentik.com";
-  option (kentik.core.v202012alpha1.visibility) = SERVICE_VISIBILITY_PUBLIC;
-  option (kentik.core.v202012alpha1.service_scope) = "synthetics";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "synthetics";
 
   // Get measurement results for a set of tests
   rpc GetResultsForTests (GetResultsForTestsRequest) returns (GetResultsForTestsResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "synthetics:read";
+    option (kentik.core.v202303.method_scope) = "synthetics:read";
     option (google.api.http) = {
       post: "/synthetics/v202202/results"
       body: "*"
@@ -1436,7 +1415,7 @@ service SyntheticsDataService {
   }
 
   rpc GetTraceForTest (GetTraceForTestRequest) returns (GetTraceForTestResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "synthetics:read";
+    option (kentik.core.v202303.method_scope) = "synthetics:read";
     option (google.api.http) = {
       post: "/synthetics/v202202/trace"
       body: "*"
@@ -1626,11 +1605,11 @@ message SetTestStatusResponse {}
 
 service SyntheticsAdminService {
   option (google.api.default_host) = "grpc.api.kentik.com";
-  option (kentik.core.v202012alpha1.visibility) = SERVICE_VISIBILITY_PUBLIC;
-  option (kentik.core.v202012alpha1.service_scope) = "admin.synthetics";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "admin.synthetics";
 
   rpc ListAgents(ListAgentsRequest) returns (ListAgentsResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:read";
+    option (kentik.core.v202303.method_scope) = "admin.synthetics:read";
     option (google.api.http) = {
       get: "/synthetics/v202202/agents"
     };
@@ -1642,7 +1621,7 @@ service SyntheticsAdminService {
   }
 
   rpc GetAgent(GetAgentRequest) returns (GetAgentResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:read";
+    option (kentik.core.v202303.method_scope) = "admin.synthetics:read";
     option (google.api.http) = {
       get: "/synthetics/v202202/agents/{id}"
     };
@@ -1654,7 +1633,7 @@ service SyntheticsAdminService {
   }
 
   rpc UpdateAgent(UpdateAgentRequest) returns (UpdateAgentResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:write";
+    option (kentik.core.v202303.method_scope) = "admin.synthetics:write";
     option (google.api.http) = {
       put: "/synthetics/v202202/agents/{agent.id}"
       body: "*"
@@ -1667,7 +1646,7 @@ service SyntheticsAdminService {
   }
 
   rpc DeleteAgent(DeleteAgentRequest) returns (DeleteAgentResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:write";
+    option (kentik.core.v202303.method_scope) = "admin.synthetics:write";
     option (google.api.http) = {
       delete: "/synthetics/v202202/agents/{id}"
     };
@@ -1679,7 +1658,7 @@ service SyntheticsAdminService {
   }
 
   rpc ListTests(ListTestsRequest) returns (ListTestsResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:read";
+    option (kentik.core.v202303.method_scope) = "admin.synthetics:read";
     option (google.api.http) = {
       get: "/synthetics/v202202/tests"
     };
@@ -1691,7 +1670,7 @@ service SyntheticsAdminService {
   }
 
   rpc CreateTest(CreateTestRequest) returns (CreateTestResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:write";
+    option (kentik.core.v202303.method_scope) = "admin.synthetics:write";
     option (google.api.http) = {
       post: "/synthetics/v202202/tests"
       body: "*"
@@ -1704,7 +1683,7 @@ service SyntheticsAdminService {
   }
 
   rpc GetTest(GetTestRequest) returns (GetTestResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:read";
+    option (kentik.core.v202303.method_scope) = "admin.synthetics:read";
     option (google.api.http) = {
       get: "/synthetics/v202202/tests/{id}"
     };
@@ -1716,7 +1695,7 @@ service SyntheticsAdminService {
   }
 
   rpc UpdateTest(UpdateTestRequest) returns (UpdateTestResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:write";
+    option (kentik.core.v202303.method_scope) = "admin.synthetics:write";
     option (google.api.http) = {
       put: "/synthetics/v202202/tests/{test.id}"
       body: "*"
@@ -1729,7 +1708,7 @@ service SyntheticsAdminService {
   }
 
   rpc DeleteTest(DeleteTestRequest) returns (DeleteTestResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:write";
+    option (kentik.core.v202303.method_scope) = "admin.synthetics:write";
     option (google.api.http) = {
       delete: "/synthetics/v202202/tests/{id}"
     };
@@ -1741,7 +1720,7 @@ service SyntheticsAdminService {
   }
 
   rpc SetTestStatus(SetTestStatusRequest) returns (SetTestStatusResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:write";
+    option (kentik.core.v202303.method_scope) = "admin.synthetics:write";
     option (google.api.http) = {
       put: "/synthetics/v202202/tests/{id}/status"
       body: "*"

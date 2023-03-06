@@ -19,7 +19,7 @@ PROTOBUF_C__BEGIN_DECLS
 #include "google/protobuf/field_mask.pb-c.h"
 #include "google/protobuf/timestamp.pb-c.h"
 #include "protoc-gen-openapiv2/options/annotations.pb-c.h"
-#include "kentik/core/v202012alpha1/annotations.pb-c.h"
+#include "kentik/core/v202303/annotations.pb-c.h"
 
 typedef struct _Kentik__Synthetics__V202101beta1__Health Kentik__Synthetics__V202101beta1__Health;
 typedef struct _Kentik__Synthetics__V202101beta1__AgentTaskConfig Kentik__Synthetics__V202101beta1__AgentTaskConfig;

@@ -19,10 +19,9 @@ PROTOBUF_C__BEGIN_DECLS
 #include "google/api/field_behavior.pb-c.h"
 #include "google/protobuf/timestamp.pb-c.h"
 #include "protoc-gen-openapiv2/options/annotations.pb-c.h"
-#include "kentik/core/v202012alpha1/annotations.pb-c.h"
-#include "kentik/ktrac/route/v202104/elem.pb-c.h"
-#include "kentik/ktrac/route/v202104/annotations.pb-c.h"
-#include "kentik/synthetics/v202202/synthetics.pb-c.h"
+#include "kentik/core/v202303/annotations.pb-c.h"
+#include "kentik/core/v202303/user_info.pb-c.h"
+#include "kentik/net/v202303/bgp_types.pb-c.h"
 
 typedef struct _Kentik__BgpMonitoring__V202210__Nlri Kentik__BgpMonitoring__V202210__Nlri;
 typedef struct _Kentik__BgpMonitoring__V202210__BgpHealthSettings Kentik__BgpMonitoring__V202210__BgpHealthSettings;
@@ -106,8 +105,8 @@ typedef enum {
 struct  _Kentik__BgpMonitoring__V202210__Nlri
 {
   ProtobufCMessage base;
-  Kentik__Ktrac__Route__V202104__Afi afi;
-  Kentik__Ktrac__Route__V202104__Safi safi;
+  Kentik__Net__V202303__Afi afi;
+  Kentik__Net__V202303__Safi safi;
   Kentik__BgpMonitoring__V202210__Nlri__TypeCase type_case;
   union {
     char *prefix;
@@ -115,7 +114,7 @@ struct  _Kentik__BgpMonitoring__V202210__Nlri
 };
 #define KENTIK__BGP_MONITORING__V202210__NLRI__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__bgp_monitoring__v202210__nlri__descriptor) \
-    , KENTIK__KTRAC__ROUTE__V202104__AFI__AFI_UNSPECIFIED, KENTIK__KTRAC__ROUTE__V202104__SAFI__SAFI_UNSPECIFIED, KENTIK__BGP_MONITORING__V202210__NLRI__TYPE__NOT_SET, {0} }
+    , KENTIK__NET__V202303__AFI__AFI_UNSPECIFIED, KENTIK__NET__V202303__SAFI__SAFI_UNSPECIFIED, KENTIK__BGP_MONITORING__V202210__NLRI__TYPE__NOT_SET, {0} }
 
 
 /*
@@ -168,8 +167,8 @@ struct  _Kentik__BgpMonitoring__V202210__BgpMonitor
   Kentik__BgpMonitoring__V202210__BgpMonitorSettings *settings;
   Google__Protobuf__Timestamp *cdate;
   Google__Protobuf__Timestamp *edate;
-  Kentik__Synthetics__V202202__UserInfo *created_by;
-  Kentik__Synthetics__V202202__UserInfo *last_updated_by;
+  Kentik__Core__V202303__UserInfo *created_by;
+  Kentik__Core__V202303__UserInfo *last_updated_by;
   size_t n_labels;
   char **labels;
 };
@@ -188,13 +187,13 @@ struct  _Kentik__BgpMonitoring__V202210__RouteInfo
   uint32_t origin_asn;
   size_t n_as_path;
   char **as_path;
-  Kentik__Ktrac__Route__V202104__VantagePoint *vantage_point;
-  Kentik__Ktrac__Route__V202104__RpkiStatus rpki_status;
+  Kentik__Net__V202303__VantagePoint *vantage_point;
+  Kentik__Net__V202303__RpkiStatus rpki_status;
   char *nexthop;
 };
 #define KENTIK__BGP_MONITORING__V202210__ROUTE_INFO__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__bgp_monitoring__v202210__route_info__descriptor) \
-    , NULL, 0, 0,NULL, NULL, KENTIK__KTRAC__ROUTE__V202104__RPKI_STATUS__RPKI_STATUS_UNSPECIFIED, (char *)protobuf_c_empty_string }
+    , NULL, 0, 0,NULL, NULL, KENTIK__NET__V202303__RPKI_STATUS__RPKI_STATUS_UNSPECIFIED, (char *)protobuf_c_empty_string }
 
 
 typedef enum {

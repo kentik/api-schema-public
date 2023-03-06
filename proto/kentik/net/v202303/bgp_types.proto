@@ -1,0 +1,70 @@
+// Common BGP data types
+
+syntax = "proto3";
+
+package kentik.net.v202303;
+option go_package = "github.com/kentik/api-schema-public/go/kentik/net/v202303;kentik_api";
+
+import "google/api/field_behavior.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+// {{.Name}}
+enum Afi {
+  AFI_UNSPECIFIED = 0;
+  AFI_IP4 = 1;
+  AFI_IP6 = 2;
+}
+
+// {{.Name}}
+enum Safi {
+  SAFI_UNSPECIFIED = 0;
+  SAFI_UNICAST = 1;
+  SAFI_MPLS = 4;
+  SAFI_L3VPN = 128;
+}
+
+// {{.Name}}
+enum RpkiStatus {
+  // Invalid value.
+  RPKI_STATUS_UNSPECIFIED = 0;
+  // No matching ROAs found for the prefix.
+  RPKI_STATUS_NOT_FOUND = 1;
+  // Explicitly invalid prefix matching ROA
+  RPKI_STATUS_EXPLICIT_INVALID = 2;
+  // Prefix format not suitable for validation
+  RPKI_STATUS_INVALID_PREFIX = 3;
+  // Prefix origin does not match any matching ROA
+  RPKI_STATUS_INVALID = 4;
+  // Prefix origin matches an ROA
+  RPKI_STATUS_VALID = 5;
+  // Error during validation
+  RPKI_STATUS_ERROR = 8;
+}
+
+// {{.Name}}
+message VantagePoint {
+  string dataset = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Name of the collector data set"
+    },
+    (google.api.field_behavior) = OUTPUT_ONLY
+  ];
+  string collector = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Name of the collector"
+    },
+    (google.api.field_behavior) = OUTPUT_ONLY
+  ];
+  uint32 peer_asn = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ASN of the peer from which the collector receives BGP data"
+    },
+    (google.api.field_behavior) = OUTPUT_ONLY
+  ];
+  string peer_ip = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "IP address of the peer from which the collector receives BGP data"
+    },
+    (google.api.field_behavior) = OUTPUT_ONLY
+  ];
+}

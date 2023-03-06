@@ -17,7 +17,7 @@ from google.api import client_pb2 as google_dot_api_dot_client__pb2
 from google.type import latlng_pb2 as google_dot_type_dot_latlng__pb2
 from google.type import postal_address_pb2 as google_dot_type_dot_postal__address__pb2
 from protoc_gen_openapiv2.options import annotations_pb2 as protoc__gen__openapiv2_dot_options_dot_annotations__pb2
-from kentik.core.v202012alpha1 import annotations_pb2 as kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2
+from kentik.core.v202303 import annotations_pb2 as kentik_dot_core_dot_v202303_dot_annotations__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -26,9 +26,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'ZEgithub.com/kentik/api-schema-public/go/kentik/site/v202106alpha1;site\222A\345\002\022\177\n\010Site API\022K--- This API has been deprecated and will be removed in the near future ---\"\030\n\026Kentik API Engineering2\014202106alpha1*\001\0022\020application/json:\020application/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]\n%General information about Kentik APIs\0224https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n$kentik/site/v202106alpha1/site.proto\x12\x19kentik.site.v202106alpha1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x18google/type/latlng.proto\x1a google/type/postal_address.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a+kentik/core/v202012alpha1/annotations.proto\"\x9e\x01\n\x14SiteIpClassification\x12\x37\n\x17infrastructure_networks\x18\x01 \x03(\tR\x16infrastructureNetworks\x12\x30\n\x14user_access_networks\x18\x02 \x03(\tR\x12userAccessNetworks\x12\x1b\n\tother_ips\x18\x03 \x03(\tR\x08otherIps\"=\n\x08SubLayer\x12\x12\n\x04name\x18\x01 \x01(\tR\x04name\x12\x1d\n\ndevice_ids\x18\x02 \x03(\tR\tdeviceIds\"K\n\x05Layer\x12\x42\n\nsub_layers\x18\x01 \x03(\x0b\x32#.kentik.site.v202106alpha1.SubLayerR\tsubLayers\"\xf5\x02\n\x04Site\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n\x05title\x18\x03 \x01(\tR\x05title\x12\x33\n\ncoordinate\x18\x04 \x01(\x0b\x32\x13.google.type.LatLngR\ncoordinate\x12\x34\n\x07\x61\x64\x64ress\x18\x05 \x01(\x0b\x32\x1a.google.type.PostalAddressR\x07\x61\x64\x64ress\x12\x37\n\x04type\x18\x06 \x01(\x0e\x32#.kentik.site.v202106alpha1.SiteTypeR\x04type\x12W\n\x0e\x63lassification\x18\x07 \x01(\x0b\x32/.kentik.site.v202106alpha1.SiteIpClassificationR\x0e\x63lassification\x12\x44\n\x0c\x61rchitecture\x18\x08 \x03(\x0b\x32 .kentik.site.v202106alpha1.LayerR\x0c\x61rchitectureJ\x04\x08\x02\x10\x03\"\x11\n\x0fListSiteRequest\"n\n\x10ListSiteResponse\x12\x35\n\x05sites\x18\x01 \x03(\x0b\x32\x1f.kentik.site.v202106alpha1.SiteR\x05sites\x12#\n\rinvalid_count\x18\x02 \x01(\rR\x0cinvalidCount\" \n\x0eGetSiteRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"F\n\x0fGetSiteResponse\x12\x33\n\x04site\x18\x01 \x01(\x0b\x32\x1f.kentik.site.v202106alpha1.SiteR\x04site\"H\n\x11\x43reateSiteRequest\x12\x33\n\x04site\x18\x01 \x01(\x0b\x32\x1f.kentik.site.v202106alpha1.SiteR\x04site\"I\n\x12\x43reateSiteResponse\x12\x33\n\x04site\x18\x01 \x01(\x0b\x32\x1f.kentik.site.v202106alpha1.SiteR\x04site\"H\n\x11UpdateSiteRequest\x12\x33\n\x04site\x18\x01 \x01(\x0b\x32\x1f.kentik.site.v202106alpha1.SiteR\x04site\"I\n\x12UpdateSiteResponse\x12\x33\n\x04site\x18\x01 \x01(\x0b\x32\x1f.kentik.site.v202106alpha1.SiteR\x04site\"#\n\x11\x44\x65leteSiteRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"\x14\n\x12\x44\x65leteSiteResponse*\xb4\x01\n\x08SiteType\x12\x19\n\x15SITE_TYPE_UNSPECIFIED\x10\x00\x12\x19\n\x15SITE_TYPE_DATA_CENTER\x10\x01\x12\x13\n\x0fSITE_TYPE_CLOUD\x10\x02\x12\x14\n\x10SITE_TYPE_BRANCH\x10\x03\x12\x1a\n\x16SITE_TYPE_CONNECTIVITY\x10\x04\x12\x16\n\x12SITE_TYPE_CUSTOMER\x10\x05\x12\x13\n\x0fSITE_TYPE_OTHER\x10\x06\x32\xdc\t\n\x0bSiteService\x12\xcd\x01\n\x08ListSite\x12*.kentik.site.v202106alpha1.ListSiteRequest\x1a+.kentik.site.v202106alpha1.ListSiteResponse\"h\x92\x41\x31\x12\x0bList sites.\x1a\x18Returns a list of sites.*\x08SiteList\xf2\xd7\x02\x0f\x61\x64min.site:read\x82\xd3\xe4\x93\x02\x1b\x12\x19/site/v202106alpha1/sites\x12\xea\x01\n\x07GetSite\x12).kentik.site.v202106alpha1.GetSiteRequest\x1a*.kentik.site.v202106alpha1.GetSiteResponse\"\x87\x01\x92\x41K\x12\x0bGet a site.\x1a\x33Returns information about a site specified with ID.*\x07SiteGet\xf2\xd7\x02\x0f\x61\x64min.site:read\x82\xd3\xe4\x93\x02 \x12\x1e/site/v202106alpha1/sites/{id}\x12\xf1\x01\n\nCreateSite\x12,.kentik.site.v202106alpha1.CreateSiteRequest\x1a-.kentik.site.v202106alpha1.CreateSiteResponse\"\x85\x01\x92\x41J\x12\x0e\x43reate a site.\x1a,Create a site from request. returns created.*\nSiteCreate\xf2\xd7\x02\x10\x61\x64min.site:write\x82\xd3\xe4\x93\x02\x1e\"\x19/site/v202106alpha1/sites:\x01*\x12\x85\x02\n\nUpdateSite\x12,.kentik.site.v202106alpha1.UpdateSiteRequest\x1a-.kentik.site.v202106alpha1.UpdateSiteResponse\"\x99\x01\x92\x41T\x12\x0eUpdate a site.\x1a\x36Replaces the entire site attributes specified with id.*\nSiteUpdate\xf2\xd7\x02\x10\x61\x64min.site:write\x82\xd3\xe4\x93\x02(\x1a#/site/v202106alpha1/sites/{site.id}:\x01*\x12\xe9\x01\n\nDeleteSite\x12,.kentik.site.v202106alpha1.DeleteSiteRequest\x1a-.kentik.site.v202106alpha1.DeleteSiteResponse\"~\x92\x41\x41\x12\x0e\x44\x65lete a site.\x1a#Deletes the site specified with id.*\nSiteDelete\xf2\xd7\x02\x10\x61\x64min.site:write\x82\xd3\xe4\x93\x02 *\x1e/site/v202106alpha1/sites/{id}\x1a(\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\nadmin.site\x90\xd8\x02\x03\x42\xb0\x03ZEgithub.com/kentik/api-schema-public/go/kentik/site/v202106alpha1;site\x92\x41\xe5\x02\x12\x7f\n\x08Site API\x12K--- This API has been deprecated and will be removed in the near future ---\"\x18\n\x16Kentik API Engineering2\x0c\x32\x30\x32\x31\x30\x36\x61lpha1*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r]\n%General information about Kentik APIs\x12\x34https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overviewb\x06proto3'
+  serialized_pb=b'\n$kentik/site/v202106alpha1/site.proto\x12\x19kentik.site.v202106alpha1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x18google/type/latlng.proto\x1a google/type/postal_address.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a%kentik/core/v202303/annotations.proto\"\x9e\x01\n\x14SiteIpClassification\x12\x37\n\x17infrastructure_networks\x18\x01 \x03(\tR\x16infrastructureNetworks\x12\x30\n\x14user_access_networks\x18\x02 \x03(\tR\x12userAccessNetworks\x12\x1b\n\tother_ips\x18\x03 \x03(\tR\x08otherIps\"=\n\x08SubLayer\x12\x12\n\x04name\x18\x01 \x01(\tR\x04name\x12\x1d\n\ndevice_ids\x18\x02 \x03(\tR\tdeviceIds\"K\n\x05Layer\x12\x42\n\nsub_layers\x18\x01 \x03(\x0b\x32#.kentik.site.v202106alpha1.SubLayerR\tsubLayers\"\xf5\x02\n\x04Site\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n\x05title\x18\x03 \x01(\tR\x05title\x12\x33\n\ncoordinate\x18\x04 \x01(\x0b\x32\x13.google.type.LatLngR\ncoordinate\x12\x34\n\x07\x61\x64\x64ress\x18\x05 \x01(\x0b\x32\x1a.google.type.PostalAddressR\x07\x61\x64\x64ress\x12\x37\n\x04type\x18\x06 \x01(\x0e\x32#.kentik.site.v202106alpha1.SiteTypeR\x04type\x12W\n\x0e\x63lassification\x18\x07 \x01(\x0b\x32/.kentik.site.v202106alpha1.SiteIpClassificationR\x0e\x63lassification\x12\x44\n\x0c\x61rchitecture\x18\x08 \x03(\x0b\x32 .kentik.site.v202106alpha1.LayerR\x0c\x61rchitectureJ\x04\x08\x02\x10\x03\"\x11\n\x0fListSiteRequest\"n\n\x10ListSiteResponse\x12\x35\n\x05sites\x18\x01 \x03(\x0b\x32\x1f.kentik.site.v202106alpha1.SiteR\x05sites\x12#\n\rinvalid_count\x18\x02 \x01(\rR\x0cinvalidCount\" \n\x0eGetSiteRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"F\n\x0fGetSiteResponse\x12\x33\n\x04site\x18\x01 \x01(\x0b\x32\x1f.kentik.site.v202106alpha1.SiteR\x04site\"H\n\x11\x43reateSiteRequest\x12\x33\n\x04site\x18\x01 \x01(\x0b\x32\x1f.kentik.site.v202106alpha1.SiteR\x04site\"I\n\x12\x43reateSiteResponse\x12\x33\n\x04site\x18\x01 \x01(\x0b\x32\x1f.kentik.site.v202106alpha1.SiteR\x04site\"H\n\x11UpdateSiteRequest\x12\x33\n\x04site\x18\x01 \x01(\x0b\x32\x1f.kentik.site.v202106alpha1.SiteR\x04site\"I\n\x12UpdateSiteResponse\x12\x33\n\x04site\x18\x01 \x01(\x0b\x32\x1f.kentik.site.v202106alpha1.SiteR\x04site\"#\n\x11\x44\x65leteSiteRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"\x14\n\x12\x44\x65leteSiteResponse*\xb4\x01\n\x08SiteType\x12\x19\n\x15SITE_TYPE_UNSPECIFIED\x10\x00\x12\x19\n\x15SITE_TYPE_DATA_CENTER\x10\x01\x12\x13\n\x0fSITE_TYPE_CLOUD\x10\x02\x12\x14\n\x10SITE_TYPE_BRANCH\x10\x03\x12\x1a\n\x16SITE_TYPE_CONNECTIVITY\x10\x04\x12\x16\n\x12SITE_TYPE_CUSTOMER\x10\x05\x12\x13\n\x0fSITE_TYPE_OTHER\x10\x06\x32\xdc\t\n\x0bSiteService\x12\xcd\x01\n\x08ListSite\x12*.kentik.site.v202106alpha1.ListSiteRequest\x1a+.kentik.site.v202106alpha1.ListSiteResponse\"h\x92\x41\x31\x12\x0bList sites.\x1a\x18Returns a list of sites.*\x08SiteList\xf2\xd7\x02\x0f\x61\x64min.site:read\x82\xd3\xe4\x93\x02\x1b\x12\x19/site/v202106alpha1/sites\x12\xea\x01\n\x07GetSite\x12).kentik.site.v202106alpha1.GetSiteRequest\x1a*.kentik.site.v202106alpha1.GetSiteResponse\"\x87\x01\x92\x41K\x12\x0bGet a site.\x1a\x33Returns information about a site specified with ID.*\x07SiteGet\xf2\xd7\x02\x0f\x61\x64min.site:read\x82\xd3\xe4\x93\x02 \x12\x1e/site/v202106alpha1/sites/{id}\x12\xf1\x01\n\nCreateSite\x12,.kentik.site.v202106alpha1.CreateSiteRequest\x1a-.kentik.site.v202106alpha1.CreateSiteResponse\"\x85\x01\x92\x41J\x12\x0e\x43reate a site.\x1a,Create a site from request. returns created.*\nSiteCreate\xf2\xd7\x02\x10\x61\x64min.site:write\x82\xd3\xe4\x93\x02\x1e\"\x19/site/v202106alpha1/sites:\x01*\x12\x85\x02\n\nUpdateSite\x12,.kentik.site.v202106alpha1.UpdateSiteRequest\x1a-.kentik.site.v202106alpha1.UpdateSiteResponse\"\x99\x01\x92\x41T\x12\x0eUpdate a site.\x1a\x36Replaces the entire site attributes specified with id.*\nSiteUpdate\xf2\xd7\x02\x10\x61\x64min.site:write\x82\xd3\xe4\x93\x02(\x1a#/site/v202106alpha1/sites/{site.id}:\x01*\x12\xe9\x01\n\nDeleteSite\x12,.kentik.site.v202106alpha1.DeleteSiteRequest\x1a-.kentik.site.v202106alpha1.DeleteSiteResponse\"~\x92\x41\x41\x12\x0e\x44\x65lete a site.\x1a#Deletes the site specified with id.*\nSiteDelete\xf2\xd7\x02\x10\x61\x64min.site:write\x82\xd3\xe4\x93\x02 *\x1e/site/v202106alpha1/sites/{id}\x1a(\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\nadmin.site\x90\xd8\x02\x03\x42\xb0\x03ZEgithub.com/kentik/api-schema-public/go/kentik/site/v202106alpha1;site\x92\x41\xe5\x02\x12\x7f\n\x08Site API\x12K--- This API has been deprecated and will be removed in the near future ---\"\x18\n\x16Kentik API Engineering2\x0c\x32\x30\x32\x31\x30\x36\x61lpha1*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r]\n%General information about Kentik APIs\x12\x34https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overviewb\x06proto3'
   ,
-  dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_api_dot_client__pb2.DESCRIPTOR,google_dot_type_dot_latlng__pb2.DESCRIPTOR,google_dot_type_dot_postal__address__pb2.DESCRIPTOR,protoc__gen__openapiv2_dot_options_dot_annotations__pb2.DESCRIPTOR,kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2.DESCRIPTOR,])
+  dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_api_dot_client__pb2.DESCRIPTOR,google_dot_type_dot_latlng__pb2.DESCRIPTOR,google_dot_type_dot_postal__address__pb2.DESCRIPTOR,protoc__gen__openapiv2_dot_options_dot_annotations__pb2.DESCRIPTOR,kentik_dot_core_dot_v202303_dot_annotations__pb2.DESCRIPTOR,])
 
 _SITETYPE = _descriptor.EnumDescriptor(
   name='SiteType',
@@ -75,8 +75,8 @@ _SITETYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1547,
-  serialized_end=1727,
+  serialized_start=1541,
+  serialized_end=1721,
 )
 _sym_db.RegisterEnumDescriptor(_SITETYPE)
 
@@ -132,8 +132,8 @@ _SITEIPCLASSIFICATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=276,
-  serialized_end=434,
+  serialized_start=270,
+  serialized_end=428,
 )
 
 
@@ -171,8 +171,8 @@ _SUBLAYER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=436,
-  serialized_end=497,
+  serialized_start=430,
+  serialized_end=491,
 )
 
 
@@ -203,8 +203,8 @@ _LAYER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=499,
-  serialized_end=574,
+  serialized_start=493,
+  serialized_end=568,
 )
 
 
@@ -277,8 +277,8 @@ _SITE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=577,
-  serialized_end=950,
+  serialized_start=571,
+  serialized_end=944,
 )
 
 
@@ -302,8 +302,8 @@ _LISTSITEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=952,
-  serialized_end=969,
+  serialized_start=946,
+  serialized_end=963,
 )
 
 
@@ -341,8 +341,8 @@ _LISTSITERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=971,
-  serialized_end=1081,
+  serialized_start=965,
+  serialized_end=1075,
 )
 
 
@@ -373,8 +373,8 @@ _GETSITEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1083,
-  serialized_end=1115,
+  serialized_start=1077,
+  serialized_end=1109,
 )
 
 
@@ -405,8 +405,8 @@ _GETSITERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1117,
-  serialized_end=1187,
+  serialized_start=1111,
+  serialized_end=1181,
 )
 
 
@@ -437,8 +437,8 @@ _CREATESITEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1189,
-  serialized_end=1261,
+  serialized_start=1183,
+  serialized_end=1255,
 )
 
 
@@ -469,8 +469,8 @@ _CREATESITERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1263,
-  serialized_end=1336,
+  serialized_start=1257,
+  serialized_end=1330,
 )
 
 
@@ -501,8 +501,8 @@ _UPDATESITEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1338,
-  serialized_end=1410,
+  serialized_start=1332,
+  serialized_end=1404,
 )
 
 
@@ -533,8 +533,8 @@ _UPDATESITERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1412,
-  serialized_end=1485,
+  serialized_start=1406,
+  serialized_end=1479,
 )
 
 
@@ -565,8 +565,8 @@ _DELETESITEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1487,
-  serialized_end=1522,
+  serialized_start=1481,
+  serialized_end=1516,
 )
 
 
@@ -590,8 +590,8 @@ _DELETESITERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1524,
-  serialized_end=1544,
+  serialized_start=1518,
+  serialized_end=1538,
 )
 
 _LAYER.fields_by_name['sub_layers'].message_type = _SUBLAYER
@@ -731,8 +731,8 @@ _SITESERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=b'\312A\023grpc.api.kentik.com\352\327\002\nadmin.site\220\330\002\003',
   create_key=_descriptor._internal_create_key,
-  serialized_start=1730,
-  serialized_end=2974,
+  serialized_start=1724,
+  serialized_end=2968,
   methods=[
   _descriptor.MethodDescriptor(
     name='ListSite',

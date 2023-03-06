@@ -411,90 +411,6 @@
                     }
                 }
             },
-            "v202104Afi": {
-                "type": "string",
-                "enum": [
-                    "AFI_UNSPECIFIED",
-                    "AFI_IP4",
-                    "AFI_IP6"
-                ],
-                "default": "AFI_UNSPECIFIED",
-                "title": "Afi"
-            },
-            "v202104RpkiStatus": {
-                "type": "string",
-                "enum": [
-                    "RPKI_STATUS_UNSPECIFIED",
-                    "RPKI_STATUS_NOT_FOUND",
-                    "RPKI_STATUS_EXPLICIT_INVALID",
-                    "RPKI_STATUS_INVALID_PREFIX",
-                    "RPKI_STATUS_INVALID",
-                    "RPKI_STATUS_VALID",
-                    "RPKI_STATUS_ERROR"
-                ],
-                "default": "RPKI_STATUS_UNSPECIFIED",
-                "description": "- RPKI_STATUS_UNSPECIFIED: Invalid value.\n - RPKI_STATUS_NOT_FOUND: No matching ROAs found for the prefix.\n - RPKI_STATUS_EXPLICIT_INVALID: Explicitly invalid prefix matching ROA\n - RPKI_STATUS_INVALID_PREFIX: Prefix format not suitable for validation\n - RPKI_STATUS_INVALID: Prefix origin does not match any matching ROA\n - RPKI_STATUS_VALID: Prefix origin matches an ROA\n - RPKI_STATUS_ERROR: Error during validation",
-                "title": "RpkiStatus"
-            },
-            "v202104Safi": {
-                "type": "string",
-                "enum": [
-                    "SAFI_UNSPECIFIED",
-                    "SAFI_UNICAST",
-                    "SAFI_MPLS",
-                    "SAFI_L3VPN"
-                ],
-                "default": "SAFI_UNSPECIFIED",
-                "title": "Safi"
-            },
-            "v202104VantagePoint": {
-                "type": "object",
-                "properties": {
-                    "dataset": {
-                        "type": "string",
-                        "description": "Name of the collector data set",
-                        "readOnly": true
-                    },
-                    "collector": {
-                        "type": "string",
-                        "description": "Name of the collector",
-                        "readOnly": true
-                    },
-                    "peerAsn": {
-                        "type": "integer",
-                        "format": "int64",
-                        "description": "ASN of the peer from which the collector receives BGP data",
-                        "readOnly": true
-                    },
-                    "peerIp": {
-                        "type": "string",
-                        "description": "IP address of the peer from which the collector receives BGP data",
-                        "readOnly": true
-                    }
-                },
-                "title": "VantagePoint"
-            },
-            "v202202UserInfo": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "string",
-                        "description": "Unique ID of the user",
-                        "readOnly": true
-                    },
-                    "email": {
-                        "type": "string",
-                        "description": "E-mail address of the user",
-                        "readOnly": true
-                    },
-                    "fullName": {
-                        "type": "string",
-                        "description": "Full name of the user",
-                        "readOnly": true
-                    }
-                },
-                "title": "UserInfo"
-            },
             "v202205beta1BgpHealthSettings": {
                 "type": "object",
                 "properties": {
@@ -563,10 +479,10 @@
                         "format": "date-time"
                     },
                     "createdBy": {
-                        "$ref": "#/components/schemas/v202202UserInfo"
+                        "$ref": "#/components/schemas/v202303UserInfo"
                     },
                     "lastUpdatedBy": {
-                        "$ref": "#/components/schemas/v202202UserInfo"
+                        "$ref": "#/components/schemas/v202303UserInfo"
                     },
                     "labels": {
                         "type": "array",
@@ -738,10 +654,10 @@
                 "type": "object",
                 "properties": {
                     "afi": {
-                        "$ref": "#/components/schemas/v202104Afi"
+                        "$ref": "#/components/schemas/v202303Afi"
                     },
                     "safi": {
-                        "$ref": "#/components/schemas/v202104Safi"
+                        "$ref": "#/components/schemas/v202303Safi"
                     },
                     "prefix": {
                         "type": "string"
@@ -767,10 +683,10 @@
                         "description": "AS path observed at the vantage point for the NLRI"
                     },
                     "vantagePoint": {
-                        "$ref": "#/components/schemas/v202104VantagePoint"
+                        "$ref": "#/components/schemas/v202303VantagePoint"
                     },
                     "rpkiStatus": {
-                        "$ref": "#/components/schemas/v202104RpkiStatus"
+                        "$ref": "#/components/schemas/v202303RpkiStatus"
                     },
                     "nexthop": {
                         "type": "string"
@@ -806,6 +722,90 @@
                         "$ref": "#/components/schemas/v202205beta1BgpMonitor"
                     }
                 }
+            },
+            "v202303Afi": {
+                "type": "string",
+                "enum": [
+                    "AFI_UNSPECIFIED",
+                    "AFI_IP4",
+                    "AFI_IP6"
+                ],
+                "default": "AFI_UNSPECIFIED",
+                "title": "Afi"
+            },
+            "v202303RpkiStatus": {
+                "type": "string",
+                "enum": [
+                    "RPKI_STATUS_UNSPECIFIED",
+                    "RPKI_STATUS_NOT_FOUND",
+                    "RPKI_STATUS_EXPLICIT_INVALID",
+                    "RPKI_STATUS_INVALID_PREFIX",
+                    "RPKI_STATUS_INVALID",
+                    "RPKI_STATUS_VALID",
+                    "RPKI_STATUS_ERROR"
+                ],
+                "default": "RPKI_STATUS_UNSPECIFIED",
+                "description": "- RPKI_STATUS_UNSPECIFIED: Invalid value.\n - RPKI_STATUS_NOT_FOUND: No matching ROAs found for the prefix.\n - RPKI_STATUS_EXPLICIT_INVALID: Explicitly invalid prefix matching ROA\n - RPKI_STATUS_INVALID_PREFIX: Prefix format not suitable for validation\n - RPKI_STATUS_INVALID: Prefix origin does not match any matching ROA\n - RPKI_STATUS_VALID: Prefix origin matches an ROA\n - RPKI_STATUS_ERROR: Error during validation",
+                "title": "RpkiStatus"
+            },
+            "v202303Safi": {
+                "type": "string",
+                "enum": [
+                    "SAFI_UNSPECIFIED",
+                    "SAFI_UNICAST",
+                    "SAFI_MPLS",
+                    "SAFI_L3VPN"
+                ],
+                "default": "SAFI_UNSPECIFIED",
+                "title": "Safi"
+            },
+            "v202303UserInfo": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique system generated ID",
+                        "readOnly": true
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "E-mail address of the user",
+                        "readOnly": true
+                    },
+                    "fullName": {
+                        "type": "string",
+                        "description": "Full name of the user",
+                        "readOnly": true
+                    }
+                },
+                "title": "UserInfo"
+            },
+            "v202303VantagePoint": {
+                "type": "object",
+                "properties": {
+                    "dataset": {
+                        "type": "string",
+                        "description": "Name of the collector data set",
+                        "readOnly": true
+                    },
+                    "collector": {
+                        "type": "string",
+                        "description": "Name of the collector",
+                        "readOnly": true
+                    },
+                    "peerAsn": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "ASN of the peer from which the collector receives BGP data",
+                        "readOnly": true
+                    },
+                    "peerIp": {
+                        "type": "string",
+                        "description": "IP address of the peer from which the collector receives BGP data",
+                        "readOnly": true
+                    }
+                },
+                "title": "VantagePoint"
             }
         }
     }

@@ -7,7 +7,7 @@ import "google/api/annotations.proto";
 import "google/api/client.proto";
 import "google/api/field_behavior.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
-import "kentik/core/v202012alpha1/annotations.proto";
+import "kentik/core/v202303/annotations.proto";
 
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   info: {
@@ -487,13 +487,13 @@ message GetCapacityPlanResponse {
 
 service CapacityPlanService {
   option (google.api.default_host) = "grpc.api.kentik.com";
-  option (kentik.core.v202012alpha1.visibility) = SERVICE_VISIBILITY_PUBLIC;
-  option (kentik.core.v202012alpha1.service_scope) = "admin.capacity_plan";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "admin.capacity_plan";
 
   // --- Capacity Plan ---
 
   rpc ListCapacitySummaries(ListCapacitySummariesRequest) returns (ListCapacitySummariesResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.capacity_plan:read";
+    option (kentik.core.v202303.method_scope) = "admin.capacity_plan:read";
     option (google.api.http) = {
       get: "/capacity_plan/v202212/capacity_plan/summary"
     };
@@ -505,7 +505,7 @@ service CapacityPlanService {
   }
 
   rpc GetCapacitySummary(GetCapacitySummaryRequest) returns (GetCapacitySummaryResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.capacity_plan:read";
+    option (kentik.core.v202303.method_scope) = "admin.capacity_plan:read";
     option (google.api.http) = {
       get: "/capacity_plan/v202212/capacity_plan/{id}/summary"
     };
@@ -517,7 +517,7 @@ service CapacityPlanService {
   }
 
   rpc ListCapacityPlans(ListCapacityPlansRequest) returns (ListCapacityPlansResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.capacity_plan:read";
+    option (kentik.core.v202303.method_scope) = "admin.capacity_plan:read";
     option (google.api.http) = {
       get: "/capacity_plan/v202212/capacity_plan"
     };
@@ -529,7 +529,7 @@ service CapacityPlanService {
   }
 
   rpc GetCapacityPlan(GetCapacityPlanRequest) returns (GetCapacityPlanResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.capacity_plan:read";
+    option (kentik.core.v202303.method_scope) = "admin.capacity_plan:read";
     option (google.api.http) = {
       get: "/capacity_plan/v202212/capacity_plan/{id}"
     };

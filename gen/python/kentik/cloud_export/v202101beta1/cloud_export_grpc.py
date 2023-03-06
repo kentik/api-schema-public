@@ -14,7 +14,7 @@ import google.api.annotations_pb2
 import google.api.client_pb2
 import google.protobuf.field_mask_pb2
 import protoc_gen_openapiv2.options.annotations_pb2
-import kentik.core.v202012alpha1.annotations_pb2
+import kentik.core.v202303.annotations_pb2
 import kentik.cloud_export.v202101beta1.cloud_export_pb2
 
 

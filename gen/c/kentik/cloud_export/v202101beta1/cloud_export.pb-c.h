@@ -19,7 +19,7 @@ PROTOBUF_C__BEGIN_DECLS
 #include "google/api/client.pb-c.h"
 #include "google/protobuf/field_mask.pb-c.h"
 #include "protoc-gen-openapiv2/options/annotations.pb-c.h"
-#include "kentik/core/v202012alpha1/annotations.pb-c.h"
+#include "kentik/core/v202303/annotations.pb-c.h"
 
 typedef struct _Kentik__CloudExport__V202101beta1__CloudExport Kentik__CloudExport__V202101beta1__CloudExport;
 typedef struct _Kentik__CloudExport__V202101beta1__BgpProperties Kentik__CloudExport__V202101beta1__BgpProperties;

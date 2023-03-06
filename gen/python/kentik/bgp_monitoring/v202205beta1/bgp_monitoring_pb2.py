@@ -16,10 +16,9 @@ from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
 from google.api import client_pb2 as google_dot_api_dot_client__pb2
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 from protoc_gen_openapiv2.options import annotations_pb2 as protoc__gen__openapiv2_dot_options_dot_annotations__pb2
-from kentik.core.v202012alpha1 import annotations_pb2 as kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2
-from kentik.ktrac.route.v202104 import elem_pb2 as kentik_dot_ktrac_dot_route_dot_v202104_dot_elem__pb2
-from kentik.ktrac.route.v202104 import annotations_pb2 as kentik_dot_ktrac_dot_route_dot_v202104_dot_annotations__pb2
-from kentik.synthetics.v202202 import synthetics_pb2 as kentik_dot_synthetics_dot_v202202_dot_synthetics__pb2
+from kentik.core.v202303 import annotations_pb2 as kentik_dot_core_dot_v202303_dot_annotations__pb2
+from kentik.core.v202303 import user_info_pb2 as kentik_dot_core_dot_v202303_dot_user__info__pb2
+from kentik.net.v202303 import bgp_types_pb2 as kentik_dot_net_dot_v202303_dot_bgp__types__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -28,9 +27,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'ZXgithub.com/kentik/api-schema-public/go/kentik/bgp_monitoring/v202205beta1;bgp_monitoring\222A\235\003\022\266\001\n\022BGP Monitoring API\022K--- This API has been deprecated and will be removed in the near future ---\"E\n\026Kentik API Engineering\022+https://github.com/kentik/api-schema-public2\014v202205beta1*\001\0022\020application/json:\020application/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]\n%General information about Kentik APIs\0224https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n7kentik/bgp_monitoring/v202205beta1/bgp_monitoring.proto\x12\"kentik.bgp_monitoring.v202205beta1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a+kentik/core/v202012alpha1/annotations.proto\x1a%kentik/ktrac/route/v202104/elem.proto\x1a,kentik/ktrac/route/v202104/annotations.proto\x1a*kentik/synthetics/v202202/synthetics.proto\"\x91\x01\n\x04Nlri\x12\x31\n\x03\x61\x66i\x18\x01 \x01(\x0e\x32\x1f.kentik.ktrac.route.v202104.AfiR\x03\x61\x66i\x12\x34\n\x04safi\x18\x02 \x01(\x0e\x32 .kentik.ktrac.route.v202104.SafiR\x04safi\x12\x18\n\x06prefix\x18\x03 \x01(\tH\x00R\x06prefixB\x06\n\x04type\"{\n\x11\x42gpHealthSettings\x12\x31\n\x14reachability_warning\x18\x01 \x01(\x02R\x13reachabilityWarning\x12\x33\n\x15reachability_critical\x18\x02 \x01(\x02R\x14reachabilityCritical\"\xe9\x02\n\x12\x42gpMonitorSettings\x12!\n\x0c\x61llowed_asns\x18\x01 \x03(\rR\x0b\x61llowedAsns\x12\x42\n\x07targets\x18\x02 \x03(\x0b\x32(.kentik.bgp_monitoring.v202205beta1.NlriR\x07targets\x12\x1d\n\ncheck_rpki\x18\x03 \x01(\x08R\tcheckRpki\x12\x38\n\x18include_covered_prefixes\x18\x04 \x01(\x08R\x16includeCoveredPrefixes\x12^\n\x0fhealth_settings\x18\x05 \x01(\x0b\x32\x35.kentik.bgp_monitoring.v202205beta1.BgpHealthSettingsR\x0ehealthSettings\x12\x33\n\x15notification_channels\x18\x06 \x03(\tR\x14notificationChannels\"\xdf\x03\n\nBgpMonitor\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n\x04name\x18\x02 \x01(\tR\x04name\x12L\n\x06status\x18\x03 \x01(\x0e\x32\x34.kentik.bgp_monitoring.v202205beta1.BgpMonitorStatusR\x06status\x12R\n\x08settings\x18\x04 \x01(\x0b\x32\x36.kentik.bgp_monitoring.v202205beta1.BgpMonitorSettingsR\x08settings\x12\x30\n\x05\x63\x64\x61te\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x05\x63\x64\x61te\x12\x30\n\x05\x65\x64\x61te\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x05\x65\x64\x61te\x12\x42\n\ncreated_by\x18\x07 \x01(\x0b\x32#.kentik.synthetics.v202202.UserInfoR\tcreatedBy\x12K\n\x0flast_updated_by\x18\x08 \x01(\x0b\x32#.kentik.synthetics.v202202.UserInfoR\rlastUpdatedBy\x12\x16\n\x06labels\x18\t \x03(\tR\x06labels\"\xdf\x03\n\tRouteInfo\x12<\n\x04nlri\x18\x01 \x01(\x0b\x32(.kentik.bgp_monitoring.v202205beta1.NlriR\x04nlri\x12U\n\norigin_asn\x18\x02 \x01(\rB6\x92\x41\x33\x32\x31The autonomous system number originating the NLRIR\toriginAsn\x12P\n\x07\x61s_path\x18\x03 \x03(\tB7\x92\x41\x34\x32\x32\x41S path observed at the vantage point for the NLRIR\x06\x61sPath\x12\x87\x01\n\rvantage_point\x18\x04 \x01(\x0b\x32(.kentik.ktrac.route.v202104.VantagePointB8\x92\x41\x35\x32\x33Name of the vantage point providing the observationR\x0cvantagePoint\x12G\n\x0brpki_status\x18\x05 \x01(\x0e\x32&.kentik.ktrac.route.v202104.RpkiStatusR\nrpkiStatus\x12\x18\n\x07nexthop\x18\x06 \x01(\tR\x07nexthop\"\xd6\x01\n\tBgpMetric\x12\x38\n\ttimestamp\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\ttimestamp\x12<\n\x04nlri\x18\x02 \x01(\x0b\x32(.kentik.bgp_monitoring.v202205beta1.NlriR\x04nlri\x12$\n\x0creachability\x18\x03 \x01(\x02H\x00R\x0creachability\x12#\n\x0cpath_changes\x18\x05 \x01(\rH\x00R\x0bpathChangesB\x06\n\x04type\"\x15\n\x13ListMonitorsRequest\"\x87\x01\n\x14ListMonitorsResponse\x12J\n\x08monitors\x18\x01 \x03(\x0b\x32..kentik.bgp_monitoring.v202205beta1.BgpMonitorR\x08monitors\x12#\n\rinvalid_count\x18\x02 \x01(\rR\x0cinvalidCount\"`\n\x14\x43reateMonitorRequest\x12H\n\x07monitor\x18\x01 \x01(\x0b\x32..kentik.bgp_monitoring.v202205beta1.BgpMonitorR\x07monitor\"a\n\x15\x43reateMonitorResponse\x12H\n\x07monitor\x18\x01 \x01(\x0b\x32..kentik.bgp_monitoring.v202205beta1.BgpMonitorR\x07monitor\"#\n\x11GetMonitorRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"^\n\x12GetMonitorResponse\x12H\n\x07monitor\x18\x01 \x01(\x0b\x32..kentik.bgp_monitoring.v202205beta1.BgpMonitorR\x07monitor\"`\n\x14UpdateMonitorRequest\x12H\n\x07monitor\x18\x01 \x01(\x0b\x32..kentik.bgp_monitoring.v202205beta1.BgpMonitorR\x07monitor\"a\n\x15UpdateMonitorResponse\x12H\n\x07monitor\x18\x01 \x01(\x0b\x32..kentik.bgp_monitoring.v202205beta1.BgpMonitorR\x07monitor\"&\n\x14\x44\x65leteMonitorRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"\x17\n\x15\x44\x65leteMonitorResponse\"w\n\x17SetMonitorStatusRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12L\n\x06status\x18\x02 \x01(\x0e\x32\x34.kentik.bgp_monitoring.v202205beta1.BgpMonitorStatusR\x06status\"\x1a\n\x18SetMonitorStatusResponse\"\xc6\x02\n\x1aGetMetricsForTargetRequest\x12\x39\n\nstart_time\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\tstartTime\x12\x35\n\x08\x65nd_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x07\x65ndTime\x12@\n\x06target\x18\x03 \x01(\x0b\x32(.kentik.bgp_monitoring.v202205beta1.NlriR\x06target\x12\'\n\x0finclude_covered\x18\x04 \x01(\x08R\x0eincludeCovered\x12K\n\x07metrics\x18\x05 \x03(\x0e\x32\x31.kentik.bgp_monitoring.v202205beta1.BgpMetricTypeR\x07metrics\"f\n\x1bGetMetricsForTargetResponse\x12G\n\x07metrics\x18\x01 \x03(\x0b\x32-.kentik.bgp_monitoring.v202205beta1.BgpMetricR\x07metrics\"\xd5\x01\n\x19GetRoutesForTargetRequest\x12.\n\x04time\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x04time\x12@\n\x06target\x18\x02 \x01(\x0b\x32(.kentik.bgp_monitoring.v202205beta1.NlriR\x06target\x12\'\n\x0finclude_covered\x18\x04 \x01(\x08R\x0eincludeCovered\x12\x1d\n\ncheck_rpki\x18\x05 \x01(\x08R\tcheckRpki\"\x87\x02\n\x1aGetRoutesForTargetResponse\x12\x45\n\x06routes\x18\x01 \x03(\x0b\x32-.kentik.bgp_monitoring.v202205beta1.RouteInfoR\x06routes\x12\x66\n\x08\x61s_names\x18\x05 \x03(\x0b\x32K.kentik.bgp_monitoring.v202205beta1.GetRoutesForTargetResponse.AsNamesEntryR\x07\x61sNames\x1a:\n\x0c\x41sNamesEntry\x12\x10\n\x03key\x18\x01 \x01(\rR\x03key\x12\x14\n\x05value\x18\x02 \x01(\tR\x05value:\x02\x38\x01*\x94\x01\n\x10\x42gpMonitorStatus\x12\"\n\x1e\x42GP_MONITOR_STATUS_UNSPECIFIED\x10\x00\x12\x1d\n\x19\x42GP_MONITOR_STATUS_ACTIVE\x10\x01\x12\x1d\n\x19\x42GP_MONITOR_STATUS_PAUSED\x10\x02\x12\x1e\n\x1a\x42GP_MONITOR_STATUS_DELETED\x10\x03*t\n\rBgpMetricType\x12\x1f\n\x1b\x42GP_METRIC_TYPE_UNSPECIFIED\x10\x00\x12 \n\x1c\x42GP_METRIC_TYPE_REACHABILITY\x10\x01\x12 \n\x1c\x42GP_METRIC_TYPE_PATH_CHANGES\x10\x02\x32\xcc\x0e\n\x19\x42gpMonitoringAdminService\x12\x90\x02\n\x0cListMonitors\x12\x37.kentik.bgp_monitoring.v202205beta1.ListMonitorsRequest\x1a\x38.kentik.bgp_monitoring.v202205beta1.ListMonitorsResponse\"\x8c\x01\x92\x41\x43\x12\x12List BGP Monitors.\x1a\x1fReturns a list of BGP monitors.*\x0cMonitorsList\xf2\xd7\x02\x15\x61\x64min.synthetics:read\x82\xd3\xe4\x93\x02\'\x12%/bgp_monitoring/v202205beta1/monitors\x12\xd0\x01\n\rCreateMonitor\x12\x38.kentik.bgp_monitoring.v202205beta1.CreateMonitorRequest\x1a\x39.kentik.bgp_monitoring.v202205beta1.CreateMonitorResponse\"J\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x82\xd3\xe4\x93\x02*\"%/bgp_monitoring/v202205beta1/monitors:\x01*\x12\xaf\x02\n\nGetMonitor\x12\x35.kentik.bgp_monitoring.v202205beta1.GetMonitorRequest\x1a\x36.kentik.bgp_monitoring.v202205beta1.GetMonitorResponse\"\xb1\x01\x92\x41\x63\x12\x1eGet BGP Monitor configuration.\x1a\x35Return configuration of BGP monitor with specific ID.*\nMonitorGet\xf2\xd7\x02\x15\x61\x64min.synthetics:read\x82\xd3\xe4\x93\x02,\x12*/bgp_monitoring/v202205beta1/monitors/{id}\x12\xf2\x02\n\rUpdateMonitor\x12\x38.kentik.bgp_monitoring.v202205beta1.UpdateMonitorRequest\x1a\x39.kentik.bgp_monitoring.v202205beta1.UpdateMonitorResponse\"\xeb\x01\x92\x41\x90\x01\x12!Update BGP Monitor configuration.\x1a\\Update configuration of BGP monitor with specific ID. Returns updated monitor configuration.*\rMonitorUpdate\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x82\xd3\xe4\x93\x02\x37\x1a\x32/bgp_monitoring/v202205beta1/monitors/{monitor.id}:\x01*\x12\xa6\x02\n\rDeleteMonitor\x12\x38.kentik.bgp_monitoring.v202205beta1.DeleteMonitorRequest\x1a\x39.kentik.bgp_monitoring.v202205beta1.DeleteMonitorResponse\"\x9f\x01\x92\x41P\x12\x13\x44\x65lete BGP Monitor.\x1a*Delete BGP monitor with  with specific ID.*\rMonitorDelete\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x82\xd3\xe4\x93\x02,**/bgp_monitoring/v202205beta1/monitors/{id}\x12\xc8\x02\n\x10SetMonitorStatus\x12;.kentik.bgp_monitoring.v202205beta1.SetMonitorStatusRequest\x1a<.kentik.bgp_monitoring.v202205beta1.SetMonitorStatusResponse\"\xb8\x01\x92\x41_\x12\x1aSet status of BGP monitor.\x1a/Set the status of BGP monitor with specific ID.*\x10SetMonitorStatus\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x82\xd3\xe4\x93\x02\x36\x1a\x31/bgp_monitoring/v202205beta1/monitors/{id}/status:\x01*\x1a.\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\x10\x61\x64min.synthetics\x90\xd8\x02\x03\x32\x9a\x06\n\x18\x42gpMonitoringDataService\x12\xeb\x02\n\x13GetMetricsForTarget\x12>.kentik.bgp_monitoring.v202205beta1.GetMetricsForTargetRequest\x1a?.kentik.bgp_monitoring.v202205beta1.GetMetricsForTargetResponse\"\xd2\x01\x92\x41\x8c\x01\x12-Get metrics for a single BGP target (prefix).\x1a\x46Retrieve metric data for single BGP target (prefix) and time interval.*\x13GetMetricsForTarget\xf2\xd7\x02\x0fsynthetics:read\x82\xd3\xe4\x93\x02)\"$/bgp_monitoring/v202205beta1/metrics:\x01*\x12\xe5\x02\n\x12GetRoutesForTarget\x12=.kentik.bgp_monitoring.v202205beta1.GetRoutesForTargetRequest\x1a>.kentik.bgp_monitoring.v202205beta1.GetRoutesForTargetResponse\"\xcf\x01\x92\x41\x8a\x01\x12*Get routes for single BGP target (prefix).\x1aHRetrieve route information for signle BGP target (prefix) and timestamp.*\x12GetRoutesForTarget\xf2\xd7\x02\x0fsynthetics:read\x82\xd3\xe4\x93\x02(\"#/bgp_monitoring/v202205beta1/routes:\x01*\x1a(\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\nsynthetics\x90\xd8\x02\x03\x42\xfb\x03ZXgithub.com/kentik/api-schema-public/go/kentik/bgp_monitoring/v202205beta1;bgp_monitoring\x92\x41\x9d\x03\x12\xb6\x01\n\x12\x42GP Monitoring API\x12K--- This API has been deprecated and will be removed in the near future ---\"E\n\x16Kentik API Engineering\x12+https://github.com/kentik/api-schema-public2\x0cv202205beta1*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r]\n%General information about Kentik APIs\x12\x34https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overviewb\x06proto3'
+  serialized_pb=b'\n7kentik/bgp_monitoring/v202205beta1/bgp_monitoring.proto\x12\"kentik.bgp_monitoring.v202205beta1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a%kentik/core/v202303/annotations.proto\x1a#kentik/core/v202303/user_info.proto\x1a\"kentik/net/v202303/bgp_types.proto\"\x81\x01\n\x04Nlri\x12)\n\x03\x61\x66i\x18\x01 \x01(\x0e\x32\x17.kentik.net.v202303.AfiR\x03\x61\x66i\x12,\n\x04safi\x18\x02 \x01(\x0e\x32\x18.kentik.net.v202303.SafiR\x04safi\x12\x18\n\x06prefix\x18\x03 \x01(\tH\x00R\x06prefixB\x06\n\x04type\"{\n\x11\x42gpHealthSettings\x12\x31\n\x14reachability_warning\x18\x01 \x01(\x02R\x13reachabilityWarning\x12\x33\n\x15reachability_critical\x18\x02 \x01(\x02R\x14reachabilityCritical\"\xe9\x02\n\x12\x42gpMonitorSettings\x12!\n\x0c\x61llowed_asns\x18\x01 \x03(\rR\x0b\x61llowedAsns\x12\x42\n\x07targets\x18\x02 \x03(\x0b\x32(.kentik.bgp_monitoring.v202205beta1.NlriR\x07targets\x12\x1d\n\ncheck_rpki\x18\x03 \x01(\x08R\tcheckRpki\x12\x38\n\x18include_covered_prefixes\x18\x04 \x01(\x08R\x16includeCoveredPrefixes\x12^\n\x0fhealth_settings\x18\x05 \x01(\x0b\x32\x35.kentik.bgp_monitoring.v202205beta1.BgpHealthSettingsR\x0ehealthSettings\x12\x33\n\x15notification_channels\x18\x06 \x03(\tR\x14notificationChannels\"\xd3\x03\n\nBgpMonitor\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n\x04name\x18\x02 \x01(\tR\x04name\x12L\n\x06status\x18\x03 \x01(\x0e\x32\x34.kentik.bgp_monitoring.v202205beta1.BgpMonitorStatusR\x06status\x12R\n\x08settings\x18\x04 \x01(\x0b\x32\x36.kentik.bgp_monitoring.v202205beta1.BgpMonitorSettingsR\x08settings\x12\x30\n\x05\x63\x64\x61te\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x05\x63\x64\x61te\x12\x30\n\x05\x65\x64\x61te\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x05\x65\x64\x61te\x12<\n\ncreated_by\x18\x07 \x01(\x0b\x32\x1d.kentik.core.v202303.UserInfoR\tcreatedBy\x12\x45\n\x0flast_updated_by\x18\x08 \x01(\x0b\x32\x1d.kentik.core.v202303.UserInfoR\rlastUpdatedBy\x12\x16\n\x06labels\x18\t \x03(\tR\x06labels\"\xce\x03\n\tRouteInfo\x12<\n\x04nlri\x18\x01 \x01(\x0b\x32(.kentik.bgp_monitoring.v202205beta1.NlriR\x04nlri\x12U\n\norigin_asn\x18\x02 \x01(\rB6\x92\x41\x33\x32\x31The autonomous system number originating the NLRIR\toriginAsn\x12P\n\x07\x61s_path\x18\x03 \x03(\tB7\x92\x41\x34\x32\x32\x41S path observed at the vantage point for the NLRIR\x06\x61sPath\x12\x7f\n\rvantage_point\x18\x04 \x01(\x0b\x32 .kentik.net.v202303.VantagePointB8\x92\x41\x35\x32\x33Name of the vantage point providing the observationR\x0cvantagePoint\x12?\n\x0brpki_status\x18\x05 \x01(\x0e\x32\x1e.kentik.net.v202303.RpkiStatusR\nrpkiStatus\x12\x18\n\x07nexthop\x18\x06 \x01(\tR\x07nexthop\"\xd6\x01\n\tBgpMetric\x12\x38\n\ttimestamp\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\ttimestamp\x12<\n\x04nlri\x18\x02 \x01(\x0b\x32(.kentik.bgp_monitoring.v202205beta1.NlriR\x04nlri\x12$\n\x0creachability\x18\x03 \x01(\x02H\x00R\x0creachability\x12#\n\x0cpath_changes\x18\x05 \x01(\rH\x00R\x0bpathChangesB\x06\n\x04type\"\x15\n\x13ListMonitorsRequest\"\x87\x01\n\x14ListMonitorsResponse\x12J\n\x08monitors\x18\x01 \x03(\x0b\x32..kentik.bgp_monitoring.v202205beta1.BgpMonitorR\x08monitors\x12#\n\rinvalid_count\x18\x02 \x01(\rR\x0cinvalidCount\"`\n\x14\x43reateMonitorRequest\x12H\n\x07monitor\x18\x01 \x01(\x0b\x32..kentik.bgp_monitoring.v202205beta1.BgpMonitorR\x07monitor\"a\n\x15\x43reateMonitorResponse\x12H\n\x07monitor\x18\x01 \x01(\x0b\x32..kentik.bgp_monitoring.v202205beta1.BgpMonitorR\x07monitor\"#\n\x11GetMonitorRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"^\n\x12GetMonitorResponse\x12H\n\x07monitor\x18\x01 \x01(\x0b\x32..kentik.bgp_monitoring.v202205beta1.BgpMonitorR\x07monitor\"`\n\x14UpdateMonitorRequest\x12H\n\x07monitor\x18\x01 \x01(\x0b\x32..kentik.bgp_monitoring.v202205beta1.BgpMonitorR\x07monitor\"a\n\x15UpdateMonitorResponse\x12H\n\x07monitor\x18\x01 \x01(\x0b\x32..kentik.bgp_monitoring.v202205beta1.BgpMonitorR\x07monitor\"&\n\x14\x44\x65leteMonitorRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"\x17\n\x15\x44\x65leteMonitorResponse\"w\n\x17SetMonitorStatusRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12L\n\x06status\x18\x02 \x01(\x0e\x32\x34.kentik.bgp_monitoring.v202205beta1.BgpMonitorStatusR\x06status\"\x1a\n\x18SetMonitorStatusResponse\"\xc6\x02\n\x1aGetMetricsForTargetRequest\x12\x39\n\nstart_time\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\tstartTime\x12\x35\n\x08\x65nd_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x07\x65ndTime\x12@\n\x06target\x18\x03 \x01(\x0b\x32(.kentik.bgp_monitoring.v202205beta1.NlriR\x06target\x12\'\n\x0finclude_covered\x18\x04 \x01(\x08R\x0eincludeCovered\x12K\n\x07metrics\x18\x05 \x03(\x0e\x32\x31.kentik.bgp_monitoring.v202205beta1.BgpMetricTypeR\x07metrics\"f\n\x1bGetMetricsForTargetResponse\x12G\n\x07metrics\x18\x01 \x03(\x0b\x32-.kentik.bgp_monitoring.v202205beta1.BgpMetricR\x07metrics\"\xd5\x01\n\x19GetRoutesForTargetRequest\x12.\n\x04time\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x04time\x12@\n\x06target\x18\x02 \x01(\x0b\x32(.kentik.bgp_monitoring.v202205beta1.NlriR\x06target\x12\'\n\x0finclude_covered\x18\x04 \x01(\x08R\x0eincludeCovered\x12\x1d\n\ncheck_rpki\x18\x05 \x01(\x08R\tcheckRpki\"\x87\x02\n\x1aGetRoutesForTargetResponse\x12\x45\n\x06routes\x18\x01 \x03(\x0b\x32-.kentik.bgp_monitoring.v202205beta1.RouteInfoR\x06routes\x12\x66\n\x08\x61s_names\x18\x05 \x03(\x0b\x32K.kentik.bgp_monitoring.v202205beta1.GetRoutesForTargetResponse.AsNamesEntryR\x07\x61sNames\x1a:\n\x0c\x41sNamesEntry\x12\x10\n\x03key\x18\x01 \x01(\rR\x03key\x12\x14\n\x05value\x18\x02 \x01(\tR\x05value:\x02\x38\x01*\x94\x01\n\x10\x42gpMonitorStatus\x12\"\n\x1e\x42GP_MONITOR_STATUS_UNSPECIFIED\x10\x00\x12\x1d\n\x19\x42GP_MONITOR_STATUS_ACTIVE\x10\x01\x12\x1d\n\x19\x42GP_MONITOR_STATUS_PAUSED\x10\x02\x12\x1e\n\x1a\x42GP_MONITOR_STATUS_DELETED\x10\x03*t\n\rBgpMetricType\x12\x1f\n\x1b\x42GP_METRIC_TYPE_UNSPECIFIED\x10\x00\x12 \n\x1c\x42GP_METRIC_TYPE_REACHABILITY\x10\x01\x12 \n\x1c\x42GP_METRIC_TYPE_PATH_CHANGES\x10\x02\x32\xcc\x0e\n\x19\x42gpMonitoringAdminService\x12\x90\x02\n\x0cListMonitors\x12\x37.kentik.bgp_monitoring.v202205beta1.ListMonitorsRequest\x1a\x38.kentik.bgp_monitoring.v202205beta1.ListMonitorsResponse\"\x8c\x01\x92\x41\x43\x12\x12List BGP Monitors.\x1a\x1fReturns a list of BGP monitors.*\x0cMonitorsList\xf2\xd7\x02\x15\x61\x64min.synthetics:read\x82\xd3\xe4\x93\x02\'\x12%/bgp_monitoring/v202205beta1/monitors\x12\xd0\x01\n\rCreateMonitor\x12\x38.kentik.bgp_monitoring.v202205beta1.CreateMonitorRequest\x1a\x39.kentik.bgp_monitoring.v202205beta1.CreateMonitorResponse\"J\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x82\xd3\xe4\x93\x02*\"%/bgp_monitoring/v202205beta1/monitors:\x01*\x12\xaf\x02\n\nGetMonitor\x12\x35.kentik.bgp_monitoring.v202205beta1.GetMonitorRequest\x1a\x36.kentik.bgp_monitoring.v202205beta1.GetMonitorResponse\"\xb1\x01\x92\x41\x63\x12\x1eGet BGP Monitor configuration.\x1a\x35Return configuration of BGP monitor with specific ID.*\nMonitorGet\xf2\xd7\x02\x15\x61\x64min.synthetics:read\x82\xd3\xe4\x93\x02,\x12*/bgp_monitoring/v202205beta1/monitors/{id}\x12\xf2\x02\n\rUpdateMonitor\x12\x38.kentik.bgp_monitoring.v202205beta1.UpdateMonitorRequest\x1a\x39.kentik.bgp_monitoring.v202205beta1.UpdateMonitorResponse\"\xeb\x01\x92\x41\x90\x01\x12!Update BGP Monitor configuration.\x1a\\Update configuration of BGP monitor with specific ID. Returns updated monitor configuration.*\rMonitorUpdate\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x82\xd3\xe4\x93\x02\x37\x1a\x32/bgp_monitoring/v202205beta1/monitors/{monitor.id}:\x01*\x12\xa6\x02\n\rDeleteMonitor\x12\x38.kentik.bgp_monitoring.v202205beta1.DeleteMonitorRequest\x1a\x39.kentik.bgp_monitoring.v202205beta1.DeleteMonitorResponse\"\x9f\x01\x92\x41P\x12\x13\x44\x65lete BGP Monitor.\x1a*Delete BGP monitor with  with specific ID.*\rMonitorDelete\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x82\xd3\xe4\x93\x02,**/bgp_monitoring/v202205beta1/monitors/{id}\x12\xc8\x02\n\x10SetMonitorStatus\x12;.kentik.bgp_monitoring.v202205beta1.SetMonitorStatusRequest\x1a<.kentik.bgp_monitoring.v202205beta1.SetMonitorStatusResponse\"\xb8\x01\x92\x41_\x12\x1aSet status of BGP monitor.\x1a/Set the status of BGP monitor with specific ID.*\x10SetMonitorStatus\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x82\xd3\xe4\x93\x02\x36\x1a\x31/bgp_monitoring/v202205beta1/monitors/{id}/status:\x01*\x1a.\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\x10\x61\x64min.synthetics\x90\xd8\x02\x03\x32\x9a\x06\n\x18\x42gpMonitoringDataService\x12\xeb\x02\n\x13GetMetricsForTarget\x12>.kentik.bgp_monitoring.v202205beta1.GetMetricsForTargetRequest\x1a?.kentik.bgp_monitoring.v202205beta1.GetMetricsForTargetResponse\"\xd2\x01\x92\x41\x8c\x01\x12-Get metrics for a single BGP target (prefix).\x1a\x46Retrieve metric data for single BGP target (prefix) and time interval.*\x13GetMetricsForTarget\xf2\xd7\x02\x0fsynthetics:read\x82\xd3\xe4\x93\x02)\"$/bgp_monitoring/v202205beta1/metrics:\x01*\x12\xe5\x02\n\x12GetRoutesForTarget\x12=.kentik.bgp_monitoring.v202205beta1.GetRoutesForTargetRequest\x1a>.kentik.bgp_monitoring.v202205beta1.GetRoutesForTargetResponse\"\xcf\x01\x92\x41\x8a\x01\x12*Get routes for single BGP target (prefix).\x1aHRetrieve route information for signle BGP target (prefix) and timestamp.*\x12GetRoutesForTarget\xf2\xd7\x02\x0fsynthetics:read\x82\xd3\xe4\x93\x02(\"#/bgp_monitoring/v202205beta1/routes:\x01*\x1a(\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\nsynthetics\x90\xd8\x02\x03\x42\xfb\x03ZXgithub.com/kentik/api-schema-public/go/kentik/bgp_monitoring/v202205beta1;bgp_monitoring\x92\x41\x9d\x03\x12\xb6\x01\n\x12\x42GP Monitoring API\x12K--- This API has been deprecated and will be removed in the near future ---\"E\n\x16Kentik API Engineering\x12+https://github.com/kentik/api-schema-public2\x0cv202205beta1*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r]\n%General information about Kentik APIs\x12\x34https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overviewb\x06proto3'
   ,
-  dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_api_dot_client__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,protoc__gen__openapiv2_dot_options_dot_annotations__pb2.DESCRIPTOR,kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2.DESCRIPTOR,kentik_dot_ktrac_dot_route_dot_v202104_dot_elem__pb2.DESCRIPTOR,kentik_dot_ktrac_dot_route_dot_v202104_dot_annotations__pb2.DESCRIPTOR,kentik_dot_synthetics_dot_v202202_dot_synthetics__pb2.DESCRIPTOR,])
+  dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_api_dot_client__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,protoc__gen__openapiv2_dot_options_dot_annotations__pb2.DESCRIPTOR,kentik_dot_core_dot_v202303_dot_annotations__pb2.DESCRIPTOR,kentik_dot_core_dot_v202303_dot_user__info__pb2.DESCRIPTOR,kentik_dot_net_dot_v202303_dot_bgp__types__pb2.DESCRIPTOR,])
 
 _BGPMONITORSTATUS = _descriptor.EnumDescriptor(
   name='BgpMonitorStatus',
@@ -62,8 +61,8 @@ _BGPMONITORSTATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=4041,
-  serialized_end=4189,
+  serialized_start=3934,
+  serialized_end=4082,
 )
 _sym_db.RegisterEnumDescriptor(_BGPMONITORSTATUS)
 
@@ -93,8 +92,8 @@ _BGPMETRICTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=4191,
-  serialized_end=4307,
+  serialized_start=4084,
+  serialized_end=4200,
 )
 _sym_db.RegisterEnumDescriptor(_BGPMETRICTYPE)
 
@@ -155,8 +154,8 @@ _NLRI = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=406,
-  serialized_end=551,
+  serialized_start=344,
+  serialized_end=473,
 )
 
 
@@ -194,8 +193,8 @@ _BGPHEALTHSETTINGS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=553,
-  serialized_end=676,
+  serialized_start=475,
+  serialized_end=598,
 )
 
 
@@ -261,8 +260,8 @@ _BGPMONITORSETTINGS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=679,
-  serialized_end=1040,
+  serialized_start=601,
+  serialized_end=962,
 )
 
 
@@ -349,8 +348,8 @@ _BGPMONITOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1043,
-  serialized_end=1522,
+  serialized_start=965,
+  serialized_end=1432,
 )
 
 
@@ -416,8 +415,8 @@ _ROUTEINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1525,
-  serialized_end=2004,
+  serialized_start=1435,
+  serialized_end=1897,
 )
 
 
@@ -474,8 +473,8 @@ _BGPMETRIC = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=2007,
-  serialized_end=2221,
+  serialized_start=1900,
+  serialized_end=2114,
 )
 
 
@@ -499,8 +498,8 @@ _LISTMONITORSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2223,
-  serialized_end=2244,
+  serialized_start=2116,
+  serialized_end=2137,
 )
 
 
@@ -538,8 +537,8 @@ _LISTMONITORSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2247,
-  serialized_end=2382,
+  serialized_start=2140,
+  serialized_end=2275,
 )
 
 
@@ -570,8 +569,8 @@ _CREATEMONITORREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2384,
-  serialized_end=2480,
+  serialized_start=2277,
+  serialized_end=2373,
 )
 
 
@@ -602,8 +601,8 @@ _CREATEMONITORRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2482,
-  serialized_end=2579,
+  serialized_start=2375,
+  serialized_end=2472,
 )
 
 
@@ -634,8 +633,8 @@ _GETMONITORREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2581,
-  serialized_end=2616,
+  serialized_start=2474,
+  serialized_end=2509,
 )
 
 
@@ -666,8 +665,8 @@ _GETMONITORRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2618,
-  serialized_end=2712,
+  serialized_start=2511,
+  serialized_end=2605,
 )
 
 
@@ -698,8 +697,8 @@ _UPDATEMONITORREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2714,
-  serialized_end=2810,
+  serialized_start=2607,
+  serialized_end=2703,
 )
 
 
@@ -730,8 +729,8 @@ _UPDATEMONITORRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2812,
-  serialized_end=2909,
+  serialized_start=2705,
+  serialized_end=2802,
 )
 
 
@@ -762,8 +761,8 @@ _DELETEMONITORREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2911,
-  serialized_end=2949,
+  serialized_start=2804,
+  serialized_end=2842,
 )
 
 
@@ -787,8 +786,8 @@ _DELETEMONITORRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2951,
-  serialized_end=2974,
+  serialized_start=2844,
+  serialized_end=2867,
 )
 
 
@@ -826,8 +825,8 @@ _SETMONITORSTATUSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2976,
-  serialized_end=3095,
+  serialized_start=2869,
+  serialized_end=2988,
 )
 
 
@@ -851,8 +850,8 @@ _SETMONITORSTATUSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3097,
-  serialized_end=3123,
+  serialized_start=2990,
+  serialized_end=3016,
 )
 
 
@@ -911,8 +910,8 @@ _GETMETRICSFORTARGETREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3126,
-  serialized_end=3452,
+  serialized_start=3019,
+  serialized_end=3345,
 )
 
 
@@ -943,8 +942,8 @@ _GETMETRICSFORTARGETRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3454,
-  serialized_end=3556,
+  serialized_start=3347,
+  serialized_end=3449,
 )
 
 
@@ -996,8 +995,8 @@ _GETROUTESFORTARGETREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3559,
-  serialized_end=3772,
+  serialized_start=3452,
+  serialized_end=3665,
 )
 
 
@@ -1035,8 +1034,8 @@ _GETROUTESFORTARGETRESPONSE_ASNAMESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3980,
-  serialized_end=4038,
+  serialized_start=3873,
+  serialized_end=3931,
 )
 
 _GETROUTESFORTARGETRESPONSE = _descriptor.Descriptor(
@@ -1073,12 +1072,12 @@ _GETROUTESFORTARGETRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3775,
-  serialized_end=4038,
+  serialized_start=3668,
+  serialized_end=3931,
 )
 
-_NLRI.fields_by_name['afi'].enum_type = kentik_dot_ktrac_dot_route_dot_v202104_dot_elem__pb2._AFI
-_NLRI.fields_by_name['safi'].enum_type = kentik_dot_ktrac_dot_route_dot_v202104_dot_elem__pb2._SAFI
+_NLRI.fields_by_name['afi'].enum_type = kentik_dot_net_dot_v202303_dot_bgp__types__pb2._AFI
+_NLRI.fields_by_name['safi'].enum_type = kentik_dot_net_dot_v202303_dot_bgp__types__pb2._SAFI
 _NLRI.oneofs_by_name['type'].fields.append(
   _NLRI.fields_by_name['prefix'])
 _NLRI.fields_by_name['prefix'].containing_oneof = _NLRI.oneofs_by_name['type']
@@ -1088,11 +1087,11 @@ _BGPMONITOR.fields_by_name['status'].enum_type = _BGPMONITORSTATUS
 _BGPMONITOR.fields_by_name['settings'].message_type = _BGPMONITORSETTINGS
 _BGPMONITOR.fields_by_name['cdate'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _BGPMONITOR.fields_by_name['edate'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-_BGPMONITOR.fields_by_name['created_by'].message_type = kentik_dot_synthetics_dot_v202202_dot_synthetics__pb2._USERINFO
-_BGPMONITOR.fields_by_name['last_updated_by'].message_type = kentik_dot_synthetics_dot_v202202_dot_synthetics__pb2._USERINFO
+_BGPMONITOR.fields_by_name['created_by'].message_type = kentik_dot_core_dot_v202303_dot_user__info__pb2._USERINFO
+_BGPMONITOR.fields_by_name['last_updated_by'].message_type = kentik_dot_core_dot_v202303_dot_user__info__pb2._USERINFO
 _ROUTEINFO.fields_by_name['nlri'].message_type = _NLRI
-_ROUTEINFO.fields_by_name['vantage_point'].message_type = kentik_dot_ktrac_dot_route_dot_v202104_dot_elem__pb2._VANTAGEPOINT
-_ROUTEINFO.fields_by_name['rpki_status'].enum_type = kentik_dot_ktrac_dot_route_dot_v202104_dot_annotations__pb2._RPKISTATUS
+_ROUTEINFO.fields_by_name['vantage_point'].message_type = kentik_dot_net_dot_v202303_dot_bgp__types__pb2._VANTAGEPOINT
+_ROUTEINFO.fields_by_name['rpki_status'].enum_type = kentik_dot_net_dot_v202303_dot_bgp__types__pb2._RPKISTATUS
 _BGPMETRIC.fields_by_name['timestamp'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _BGPMETRIC.fields_by_name['nlri'].message_type = _NLRI
 _BGPMETRIC.oneofs_by_name['type'].fields.append(
@@ -1320,8 +1319,8 @@ _BGPMONITORINGADMINSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=b'\312A\023grpc.api.kentik.com\352\327\002\020admin.synthetics\220\330\002\003',
   create_key=_descriptor._internal_create_key,
-  serialized_start=4310,
-  serialized_end=6178,
+  serialized_start=4203,
+  serialized_end=6071,
   methods=[
   _descriptor.MethodDescriptor(
     name='ListMonitors',
@@ -1396,8 +1395,8 @@ _BGPMONITORINGDATASERVICE = _descriptor.ServiceDescriptor(
   index=1,
   serialized_options=b'\312A\023grpc.api.kentik.com\352\327\002\nsynthetics\220\330\002\003',
   create_key=_descriptor._internal_create_key,
-  serialized_start=6181,
-  serialized_end=6975,
+  serialized_start=6074,
+  serialized_end=6868,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetMetricsForTarget',

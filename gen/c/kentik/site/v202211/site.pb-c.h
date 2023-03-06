@@ -19,7 +19,7 @@ PROTOBUF_C__BEGIN_DECLS
 #include "google/api/field_behavior.pb-c.h"
 #include "google/protobuf/timestamp.pb-c.h"
 #include "protoc-gen-openapiv2/options/annotations.pb-c.h"
-#include "kentik/core/v202012alpha1/annotations.pb-c.h"
+#include "kentik/core/v202303/annotations.pb-c.h"
 
 typedef struct _Kentik__Site__V202211__SiteIpAddressClassification Kentik__Site__V202211__SiteIpAddressClassification;
 typedef struct _Kentik__Site__V202211__Layer Kentik__Site__V202211__Layer;

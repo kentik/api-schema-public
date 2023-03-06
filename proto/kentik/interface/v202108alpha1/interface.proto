@@ -6,7 +6,7 @@ option go_package = "github.com/kentik/api-schema-public/go/kentik/interface/v20
 import "google/api/annotations.proto";
 import "google/api/client.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
-import "kentik/core/v202012alpha1/annotations.proto";
+import "kentik/core/v202303/annotations.proto";
 import "google/protobuf/timestamp.proto";
 
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
@@ -282,12 +282,12 @@ message DeleteInterfaceResponse {}
 
 service InterfaceService {
   option (google.api.default_host) = "grpc.api.kentik.com";
-  option (kentik.core.v202012alpha1.visibility) = SERVICE_VISIBILITY_PUBLIC;
-  option (kentik.core.v202012alpha1.service_scope) = "admin.interface";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "admin.interface";
 
   // Comment out for now until we need auto classification.
   // rpc AutoClassify(AutoClassifyRequest) returns (AutoClassifyResponse) {
-  //   option (kentik.core.v202012alpha1.method_scope) = "admin.interface:write";
+  //   option (kentik.core.v202303.method_scope) = "admin.interface:write";
   //   option (google.api.http) = {
   //     get: "/interface/v202108alpha1/auto_classify"
   //   };
@@ -299,7 +299,7 @@ service InterfaceService {
   // }
 
   rpc ManualClassify(ManualClassifyRequest) returns (ManualClassifyResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.interface:write";
+    option (kentik.core.v202303.method_scope) = "admin.interface:write";
     option (google.api.http) = {
       post: "/interface/v202108alpha1/manual_classify"
       body: "*"
@@ -312,7 +312,7 @@ service InterfaceService {
   }
 
   rpc ListInterface(ListInterfaceRequest) returns (ListInterfaceResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.interface:read";
+    option (kentik.core.v202303.method_scope) = "admin.interface:read";
     option (google.api.http) = {
       get: "/interface/v202108alpha1/interfaces"
     };
@@ -323,7 +323,7 @@ service InterfaceService {
     };
   }
   rpc GetInterface(GetInterfaceRequest) returns (GetInterfaceResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.interface:read";
+    option (kentik.core.v202303.method_scope) = "admin.interface:read";
     option (google.api.http) = {
       get: "/interface/v202108alpha1/interfaces/{id}"
     };
@@ -334,7 +334,7 @@ service InterfaceService {
     };
   }
   rpc CreateInterface(CreateInterfaceRequest) returns (CreateInterfaceResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.interface:write";
+    option (kentik.core.v202303.method_scope) = "admin.interface:write";
     option (google.api.http) = {
       post: "/interface/v202108alpha1/interfaces"
       body: "*"
@@ -346,7 +346,7 @@ service InterfaceService {
     };
   }
   rpc UpdateInterface(UpdateInterfaceRequest) returns (UpdateInterfaceResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.interface:write";
+    option (kentik.core.v202303.method_scope) = "admin.interface:write";
     option (google.api.http) = {
       put: "/interface/v202108alpha1/interfaces/{interface.id}"
       body: "*"
@@ -359,7 +359,7 @@ service InterfaceService {
   }
 
   rpc DeleteInterface(DeleteInterfaceRequest) returns (DeleteInterfaceResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.interface:write";
+    option (kentik.core.v202303.method_scope) = "admin.interface:write";
     option (google.api.http) = {
       delete: "/interface/v202108alpha1/interfaces/{id}"
     };
@@ -478,10 +478,10 @@ message Rule {
 // comment out for now until we start work on rule CRUD
 // service RuleService {
 //   option (google.api.default_host) = "grpc.api.kentik.com";
-//   option (kentik.core.v202012alpha1.service_scope) = "admin.interface";
+//   option (kentik.core.v202303.service_scope) = "admin.interface";
 
 //   rpc ListRule(ListRuleRequest) returns (ListRuleResponse) {
-//     option (kentik.core.v202012alpha1.method_scope) = "admin.rule:read";
+//     option (kentik.core.v202303.method_scope) = "admin.rule:read";
 //     option (google.api.http) = {
 //       get: "/rule/v202108alpha1/rules"
 //     };
@@ -492,7 +492,7 @@ message Rule {
 //     };
 //   }
 //   rpc GetRule(GetRuleRequest) returns (GetRuleResponse) {
-//     option (kentik.core.v202012alpha1.method_scope) = "admin.rule:read";
+//     option (kentik.core.v202303.method_scope) = "admin.rule:read";
 //     option (google.api.http) = {
 //       get: "/rule/v202108alpha1/rules/{id}"
 //     };
@@ -503,7 +503,7 @@ message Rule {
 //     };
 //   }
 //   rpc CreateRule(CreateRuleRequest) returns (CreateRuleResponse) {
-//     option (kentik.core.v202012alpha1.method_scope) = "admin.rule:write";
+//     option (kentik.core.v202303.method_scope) = "admin.rule:write";
 //     option (google.api.http) = {
 //       post: "/rule/v202108alpha1/rules"
 //       body: "*"
@@ -515,7 +515,7 @@ message Rule {
 //     };
 //   }
 //   rpc UpdateRule(UpdateRuleRequest) returns (UpdateRuleResponse) {
-//     option (kentik.core.v202012alpha1.method_scope) = "admin.rule:write";
+//     option (kentik.core.v202303.method_scope) = "admin.rule:write";
 //     option (google.api.http) = {
 //       put: "/rule/v202108alpha1/rules/{rule.id}"
 //       body: "*"
@@ -528,7 +528,7 @@ message Rule {
 //   }
 
 //   rpc DeleteRule(DeleteRuleRequest) returns (DeleteRuleResponse) {
-//     option (kentik.core.v202012alpha1.method_scope) = "admin.rule:write";
+//     option (kentik.core.v202303.method_scope) = "admin.rule:write";
 //     option (google.api.http) = {
 //       delete: "/rule/v202108alpha1/rules/{id}"
 //     };

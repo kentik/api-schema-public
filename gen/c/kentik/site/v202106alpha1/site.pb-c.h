@@ -19,7 +19,7 @@ PROTOBUF_C__BEGIN_DECLS
 #include "google/type/latlng.pb-c.h"
 #include "google/type/postal_address.pb-c.h"
 #include "protoc-gen-openapiv2/options/annotations.pb-c.h"
-#include "kentik/core/v202012alpha1/annotations.pb-c.h"
+#include "kentik/core/v202303/annotations.pb-c.h"
 
 typedef struct _Kentik__Site__V202106alpha1__SiteIpClassification Kentik__Site__V202106alpha1__SiteIpClassification;
 typedef struct _Kentik__Site__V202106alpha1__SubLayer Kentik__Site__V202106alpha1__SubLayer;

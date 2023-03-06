@@ -9,7 +9,7 @@ import "google/api/annotations.proto";
 import "google/api/client.proto";
 import "google/protobuf/field_mask.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
-import "kentik/core/v202012alpha1/annotations.proto";
+import "kentik/core/v202303/annotations.proto";
 
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   info: {
@@ -267,11 +267,11 @@ message DeletePackageResponse {}
 
 service PackageService {
   option (google.api.default_host) = "mkp.api.kentik.com";
-  option (kentik.core.v202012alpha1.visibility) = SERVICE_VISIBILITY_PUBLIC;
-  option (kentik.core.v202012alpha1.service_scope) = "admin.mkp";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "admin.mkp";
 
   rpc ListPackage(ListPackageRequest) returns (ListPackageResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.mkp:read";
+    option (kentik.core.v202303.method_scope) = "admin.mkp:read";
     option (google.api.http) = {
       get: "/mkp/v202102alpha1/packages"
     };
@@ -283,7 +283,7 @@ service PackageService {
 
   }
   rpc GetPackage(GetPackageRequest) returns (GetPackageResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.mkp:read";
+    option (kentik.core.v202303.method_scope) = "admin.mkp:read";
     option (google.api.http) = {
       get: "/mkp/v202102alpha1/packages/{id}"
     };
@@ -294,7 +294,7 @@ service PackageService {
     };
   }
   rpc CreatePackage(CreatePackageRequest) returns (CreatePackageResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.mkp:write";
+    option (kentik.core.v202303.method_scope) = "admin.mkp:write";
     option (google.api.http) = {
       post: "/mkp/v202102alpha1/packages"
       body: "*"
@@ -306,7 +306,7 @@ service PackageService {
     };
   }
   rpc UpdatePackage(UpdatePackageRequest) returns (UpdatePackageResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.mkp:write";
+    option (kentik.core.v202303.method_scope) = "admin.mkp:write";
     option (google.api.http) = {
       put: "/mkp/v202102alpha1/packages/{package.id}"
       body: "*"
@@ -318,7 +318,7 @@ service PackageService {
     };
   }
   rpc PatchPackage(PatchPackageRequest) returns (PatchPackageResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.mkp:write";
+    option (kentik.core.v202303.method_scope) = "admin.mkp:write";
     option (google.api.http) = {
       patch: "/mkp/v202102alpha1/packages/{package.id}"
       body: "*"
@@ -330,7 +330,7 @@ service PackageService {
     };
   }
   rpc DeletePackage(DeletePackageRequest) returns (DeletePackageResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.mkp:write";
+    option (kentik.core.v202303.method_scope) = "admin.mkp:write";
     option (google.api.http) = {
       delete: "/mkp/v202102alpha1/packages/{id}"
     };
@@ -387,11 +387,11 @@ message DeleteTenantResponse {}
 
 service TenantService {
   option (google.api.default_host) = "mkp.api.kentik.com";
-  option (kentik.core.v202012alpha1.visibility) = SERVICE_VISIBILITY_PUBLIC;
-  option (kentik.core.v202012alpha1.service_scope) = "admin.mkp";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "admin.mkp";
 
   rpc ListTenant(ListTenantRequest) returns (ListTenantResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.mkp:read";
+    option (kentik.core.v202303.method_scope) = "admin.mkp:read";
     option (google.api.http) = {
       get: "/mkp/v202102alpha1/tenants"
     };
@@ -402,7 +402,7 @@ service TenantService {
     };
   }
   rpc GetTenant(GetTenantRequest) returns (GetTenantResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.mkp:read";
+    option (kentik.core.v202303.method_scope) = "admin.mkp:read";
     option (google.api.http) = {
       get: "/mkp/v202102alpha1/tenants/{id}"
     };
@@ -413,7 +413,7 @@ service TenantService {
     };
   }
   rpc CreateTenant(CreateTenantRequest) returns (CreateTenantResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.mkp:write";
+    option (kentik.core.v202303.method_scope) = "admin.mkp:write";
     option (google.api.http) = {
       post: "/mkp/v202102alpha1/tenants"
       body: "*"
@@ -425,7 +425,7 @@ service TenantService {
     };
   }
   rpc UpdateTenant(UpdateTenantRequest) returns (UpdateTenantResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.mkp:write";
+    option (kentik.core.v202303.method_scope) = "admin.mkp:write";
     option (google.api.http) = {
       put: "/mkp/v202102alpha1/tenants/{tenant.id}"
       body: "*"
@@ -437,7 +437,7 @@ service TenantService {
     };
   }
   rpc PatchTenant(PatchTenantRequest) returns (PatchTenantResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.mkp:write";
+    option (kentik.core.v202303.method_scope) = "admin.mkp:write";
     option (google.api.http) = {
       patch: "/mkp/v202102alpha1/tenants/{tenant.id}"
       body: "*"
@@ -449,7 +449,7 @@ service TenantService {
     };
   }
   rpc DeleteTenant(DeleteTenantRequest) returns (DeleteTenantResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.mkp:write";
+    option (kentik.core.v202303.method_scope) = "admin.mkp:write";
     option (google.api.http) = {
       delete: "/mkp/v202102alpha1/tenants/{id}"
     };

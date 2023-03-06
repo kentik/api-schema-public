@@ -7,7 +7,7 @@ import "google/api/annotations.proto";
 import "google/api/client.proto";
 import "google/protobuf/timestamp.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
-import "kentik/core/v202012alpha1/annotations.proto";
+import "kentik/core/v202303/annotations.proto";
 
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   info: {
@@ -119,11 +119,11 @@ message DeleteUserResponse {}
 
 service UserService {
   option (google.api.default_host) = "grpc.api.kentik.com";
-  option (kentik.core.v202012alpha1.visibility) = SERVICE_VISIBILITY_PUBLIC;
-  option (kentik.core.v202012alpha1.service_scope) = "admin.user";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "admin.user";
 
   rpc ListUser(ListUserRequest) returns (ListUserResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.user:read";
+    option (kentik.core.v202303.method_scope) = "admin.user:read";
     option (google.api.http) = {
       get: "/user/v202106alpha1/users"
     };
@@ -134,7 +134,7 @@ service UserService {
     };
   }
   rpc GetUser(GetUserRequest) returns (GetUserResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.user:read";
+    option (kentik.core.v202303.method_scope) = "admin.user:read";
     option (google.api.http) = {
       get: "/user/v202106alpha1/users/{id}"
     };
@@ -145,7 +145,7 @@ service UserService {
     };
   }
   rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.user:write";
+    option (kentik.core.v202303.method_scope) = "admin.user:write";
     option (google.api.http) = {
       post: "/user/v202106alpha1/users"
       body: "*"
@@ -157,7 +157,7 @@ service UserService {
     };
   }
   rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.user:write";
+    option (kentik.core.v202303.method_scope) = "admin.user:write";
     option (google.api.http) = {
       put: "/user/v202106alpha1/users/{user.id}"
       body: "*"
@@ -170,7 +170,7 @@ service UserService {
   }
 
   rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.user:write";
+    option (kentik.core.v202303.method_scope) = "admin.user:write";
     option (google.api.http) = {
       delete: "/user/v202106alpha1/users/{id}"
     };

@@ -14,7 +14,7 @@ import google.api.client_pb2
 import google.api.field_behavior_pb2
 import google.protobuf.timestamp_pb2
 import protoc_gen_openapiv2.options.annotations_pb2
-import kentik.core.v202012alpha1.annotations_pb2
+import kentik.core.v202303.annotations_pb2
 import kentik.user.v202211.user_pb2
 
 

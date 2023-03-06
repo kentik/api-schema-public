@@ -1573,12 +1573,12 @@
           "readOnly": true
         },
         "createdBy": {
-          "$ref": "#/definitions/v202202UserInfo",
+          "$ref": "#/definitions/v202303UserInfo",
           "description": "Identity of test creator",
           "readOnly": true
         },
         "lastUpdatedBy": {
-          "$ref": "#/definitions/v202202UserInfo",
+          "$ref": "#/definitions/v202303UserInfo",
           "description": "Identity of use that has modified the test last",
           "readOnly": true
         },
@@ -1876,12 +1876,12 @@
       },
       "title": "UrlTest"
     },
-    "v202202UserInfo": {
+    "v202303UserInfo": {
       "type": "object",
       "properties": {
         "id": {
           "type": "string",
-          "description": "Unique ID of the user",
+          "description": "Unique system generated ID",
           "readOnly": true
         },
         "email": {

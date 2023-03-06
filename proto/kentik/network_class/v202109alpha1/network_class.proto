@@ -6,7 +6,7 @@ option go_package = "github.com/kentik/api-schema-public/go/kentik/network_class
 import "google/api/annotations.proto";
 import "google/api/client.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
-import "kentik/core/v202012alpha1/annotations.proto";
+import "kentik/core/v202303/annotations.proto";
 
 
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
@@ -99,12 +99,12 @@ message UpdateNetworkClassResponse {
 
 service NetworkClassService {
   option (google.api.default_host) = "grpc.api.kentik.com";
-  option (kentik.core.v202012alpha1.visibility) = SERVICE_VISIBILITY_PUBLIC;
-  option (kentik.core.v202012alpha1.service_scope) = "admin.network_class";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "admin.network_class";
 
 
   rpc GetNetworkClass(GetNetworkClassRequest) returns (GetNetworkClassResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.network_class:read";
+    option (kentik.core.v202303.method_scope) = "admin.network_class:read";
     option (google.api.http) = {
       get: "/network_class/v202109alpha1/network_class"
     };
@@ -116,7 +116,7 @@ service NetworkClassService {
   }
 
   rpc UpdateNetworkClass(UpdateNetworkClassRequest) returns (UpdateNetworkClassResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.network_class:write";
+    option (kentik.core.v202303.method_scope) = "admin.network_class:write";
     option (google.api.http) = {
       post: "/network_class/v202109alpha1/network_class"
       body: "*"

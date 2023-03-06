@@ -19,12 +19,12 @@ PROTOBUF_C__BEGIN_DECLS
 #include "google/api/field_behavior.pb-c.h"
 #include "google/protobuf/timestamp.pb-c.h"
 #include "protoc-gen-openapiv2/options/annotations.pb-c.h"
-#include "kentik/core/v202012alpha1/annotations.pb-c.h"
+#include "kentik/core/v202303/annotations.pb-c.h"
+#include "kentik/core/v202303/user_info.pb-c.h"
 
 typedef struct _Kentik__Synthetics__V202202__Agent Kentik__Synthetics__V202202__Agent;
 typedef struct _Kentik__Synthetics__V202202__AgentMetadata Kentik__Synthetics__V202202__AgentMetadata;
 typedef struct _Kentik__Synthetics__V202202__AgentMetadata__IpValue Kentik__Synthetics__V202202__AgentMetadata__IpValue;
-typedef struct _Kentik__Synthetics__V202202__UserInfo Kentik__Synthetics__V202202__UserInfo;
 typedef struct _Kentik__Synthetics__V202202__Test Kentik__Synthetics__V202202__Test;
 typedef struct _Kentik__Synthetics__V202202__TestSettings Kentik__Synthetics__V202202__TestSettings;
 typedef struct _Kentik__Synthetics__V202202__TestPingSettings Kentik__Synthetics__V202202__TestPingSettings;
@@ -288,21 +288,6 @@ struct  _Kentik__Synthetics__V202202__AgentMetadata
 /*
  * {{.Name}}
  */
-struct  _Kentik__Synthetics__V202202__UserInfo
-{
-  ProtobufCMessage base;
-  char *id;
-  char *email;
-  char *full_name;
-};
-#define KENTIK__SYNTHETICS__V202202__USER_INFO__INIT \
- { PROTOBUF_C_MESSAGE_INIT (&kentik__synthetics__v202202__user_info__descriptor) \
-    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
-
-
-/*
- * {{.Name}}
- */
 struct  _Kentik__Synthetics__V202202__Test
 {
   ProtobufCMessage base;
@@ -313,8 +298,8 @@ struct  _Kentik__Synthetics__V202202__Test
   Kentik__Synthetics__V202202__TestSettings *settings;
   Google__Protobuf__Timestamp *cdate;
   Google__Protobuf__Timestamp *edate;
-  Kentik__Synthetics__V202202__UserInfo *created_by;
-  Kentik__Synthetics__V202202__UserInfo *last_updated_by;
+  Kentik__Core__V202303__UserInfo *created_by;
+  Kentik__Core__V202303__UserInfo *last_updated_by;
   size_t n_labels;
   char **labels;
 };
@@ -1275,25 +1260,6 @@ Kentik__Synthetics__V202202__AgentMetadata *
                       const uint8_t       *data);
 void   kentik__synthetics__v202202__agent_metadata__free_unpacked
                      (Kentik__Synthetics__V202202__AgentMetadata *message,
-                      ProtobufCAllocator *allocator);
-/* Kentik__Synthetics__V202202__UserInfo methods */
-void   kentik__synthetics__v202202__user_info__init
-                     (Kentik__Synthetics__V202202__UserInfo         *message);
-size_t kentik__synthetics__v202202__user_info__get_packed_size
-                     (const Kentik__Synthetics__V202202__UserInfo   *message);
-size_t kentik__synthetics__v202202__user_info__pack
-                     (const Kentik__Synthetics__V202202__UserInfo   *message,
-                      uint8_t             *out);
-size_t kentik__synthetics__v202202__user_info__pack_to_buffer
-                     (const Kentik__Synthetics__V202202__UserInfo   *message,
-                      ProtobufCBuffer     *buffer);
-Kentik__Synthetics__V202202__UserInfo *
-       kentik__synthetics__v202202__user_info__unpack
-                     (ProtobufCAllocator  *allocator,
-                      size_t               len,
-                      const uint8_t       *data);
-void   kentik__synthetics__v202202__user_info__free_unpacked
-                     (Kentik__Synthetics__V202202__UserInfo *message,
                       ProtobufCAllocator *allocator);
 /* Kentik__Synthetics__V202202__Test methods */
 void   kentik__synthetics__v202202__test__init
@@ -2344,9 +2310,6 @@ typedef void (*Kentik__Synthetics__V202202__AgentMetadata__IpValue_Closure)
 typedef void (*Kentik__Synthetics__V202202__AgentMetadata_Closure)
                  (const Kentik__Synthetics__V202202__AgentMetadata *message,
                   void *closure_data);
-typedef void (*Kentik__Synthetics__V202202__UserInfo_Closure)
-                 (const Kentik__Synthetics__V202202__UserInfo *message,
-                  void *closure_data);
 typedef void (*Kentik__Synthetics__V202202__Test_Closure)
                  (const Kentik__Synthetics__V202202__Test *message,
                   void *closure_data);
@@ -2667,7 +2630,6 @@ extern const ProtobufCEnumDescriptor    kentik__synthetics__v202202__dnsrecord__
 extern const ProtobufCMessageDescriptor kentik__synthetics__v202202__agent__descriptor;
 extern const ProtobufCMessageDescriptor kentik__synthetics__v202202__agent_metadata__descriptor;
 extern const ProtobufCMessageDescriptor kentik__synthetics__v202202__agent_metadata__ip_value__descriptor;
-extern const ProtobufCMessageDescriptor kentik__synthetics__v202202__user_info__descriptor;
 extern const ProtobufCMessageDescriptor kentik__synthetics__v202202__test__descriptor;
 extern const ProtobufCMessageDescriptor kentik__synthetics__v202202__test_settings__descriptor;
 extern const ProtobufCMessageDescriptor kentik__synthetics__v202202__test_ping_settings__descriptor;

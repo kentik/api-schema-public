@@ -13,7 +13,7 @@ import google.api.annotations_pb2
 import google.api.client_pb2
 import google.protobuf.field_mask_pb2
 import protoc_gen_openapiv2.options.annotations_pb2
-import kentik.core.v202012alpha1.annotations_pb2
+import kentik.core.v202303.annotations_pb2
 import kentik.mkp.v202102alpha1.mkp_pb2
 
 

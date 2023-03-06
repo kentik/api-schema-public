@@ -8,7 +8,7 @@ import "google/api/client.proto";
 import "google/type/latlng.proto";
 import "google/type/postal_address.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
-import "kentik/core/v202012alpha1/annotations.proto";
+import "kentik/core/v202303/annotations.proto";
 
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   info: {
@@ -128,11 +128,11 @@ message DeleteSiteResponse {}
 
 service SiteService {
   option (google.api.default_host) = "grpc.api.kentik.com";
-  option (kentik.core.v202012alpha1.visibility) = SERVICE_VISIBILITY_PUBLIC;
-  option (kentik.core.v202012alpha1.service_scope) = "admin.site";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "admin.site";
 
   rpc ListSite(ListSiteRequest) returns (ListSiteResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.site:read";
+    option (kentik.core.v202303.method_scope) = "admin.site:read";
     option (google.api.http) = {
       get: "/site/v202106alpha1/sites"
     };
@@ -143,7 +143,7 @@ service SiteService {
     };
   }
   rpc GetSite(GetSiteRequest) returns (GetSiteResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.site:read";
+    option (kentik.core.v202303.method_scope) = "admin.site:read";
     option (google.api.http) = {
       get: "/site/v202106alpha1/sites/{id}"
     };
@@ -154,7 +154,7 @@ service SiteService {
     };
   }
   rpc CreateSite(CreateSiteRequest) returns (CreateSiteResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.site:write";
+    option (kentik.core.v202303.method_scope) = "admin.site:write";
     option (google.api.http) = {
       post: "/site/v202106alpha1/sites"
       body: "*"
@@ -166,7 +166,7 @@ service SiteService {
     };
   }
   rpc UpdateSite(UpdateSiteRequest) returns (UpdateSiteResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.site:write";
+    option (kentik.core.v202303.method_scope) = "admin.site:write";
     option (google.api.http) = {
       put: "/site/v202106alpha1/sites/{site.id}"
       body: "*"
@@ -179,7 +179,7 @@ service SiteService {
   }
 
   rpc DeleteSite(DeleteSiteRequest) returns (DeleteSiteResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.site:write";
+    option (kentik.core.v202303.method_scope) = "admin.site:write";
     option (google.api.http) = {
       delete: "/site/v202106alpha1/sites/{id}"
     };

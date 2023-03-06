@@ -38,7 +38,7 @@
 #include "protoc-gen-openapiv2/options/annotations.pb.h"
 #include "google/api/field_behavior.pb.h"
 #include <google/protobuf/timestamp.pb.h>
-#include "kentik/core/v202012alpha1/annotations.pb.h"
+#include "kentik/core/v202303/annotations.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_kentik_2fcloud_5fexport_2fv202210_2fcloud_5fexport_2eproto

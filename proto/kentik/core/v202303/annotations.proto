@@ -1,0 +1,38 @@
+// Error information
+
+syntax = "proto3";
+
+package kentik.core.v202303;
+option go_package = "github.com/kentik/api-schema-public/go/kentik/core/v202303;kentik_api";
+
+import "google/protobuf/descriptor.proto";
+
+// {{.Name}}
+enum ServiceVisibility {
+  // private services not served by API gateway
+  SERVICE_VISIBILITY_PRIVATE = 0;
+  // non-public services served by API gateway
+  SERVICE_VISIBILITY_PROTECTED = 1;
+  // internal services (not accessible from the internet)
+  SERVICE_VISIBILITY_INTERNAL = 2;
+  // public customer facing services
+  SERVICE_VISIBILITY_PUBLIC = 3;
+}
+
+extend google.protobuf.ServiceOptions {
+  // auth scope for this service
+  string service_scope = 5501;
+  // private_service indicates that the service is not handled by the API gateway (deprecated)
+  bool private_service = 5503;
+  // visibility provides label allowing to guid publishing of schemas and placement of service on API gateways
+  ServiceVisibility visibility = 5506;
+}
+
+extend google.protobuf.MethodOptions {
+  // auth scope for this service
+  string method_scope = 5502;
+  // private_method indicates that this method is not publicly available
+  bool private_method = 5504;
+  // method classification to identify areas of functionality (used for metrics etc.)
+  string method_category = 5505;
+}

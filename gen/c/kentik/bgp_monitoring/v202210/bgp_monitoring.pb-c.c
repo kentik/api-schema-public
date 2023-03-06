@@ -1012,7 +1012,7 @@ static const ProtobufCFieldDescriptor kentik__bgp_monitoring__v202210__nlri__fie
     PROTOBUF_C_TYPE_ENUM,
     0,   /* quantifier_offset */
     offsetof(Kentik__BgpMonitoring__V202210__Nlri, afi),
-    &kentik__ktrac__route__v202104__afi__descriptor,
+    &kentik__net__v202303__afi__descriptor,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
@@ -1024,7 +1024,7 @@ static const ProtobufCFieldDescriptor kentik__bgp_monitoring__v202210__nlri__fie
     PROTOBUF_C_TYPE_ENUM,
     0,   /* quantifier_offset */
     offsetof(Kentik__BgpMonitoring__V202210__Nlri, safi),
-    &kentik__ktrac__route__v202104__safi__descriptor,
+    &kentik__net__v202303__safi__descriptor,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
@@ -1328,7 +1328,7 @@ static const ProtobufCFieldDescriptor kentik__bgp_monitoring__v202210__bgp_monit
     PROTOBUF_C_TYPE_MESSAGE,
     0,   /* quantifier_offset */
     offsetof(Kentik__BgpMonitoring__V202210__BgpMonitor, created_by),
-    &kentik__synthetics__v202202__user_info__descriptor,
+    &kentik__core__v202303__user_info__descriptor,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
@@ -1340,7 +1340,7 @@ static const ProtobufCFieldDescriptor kentik__bgp_monitoring__v202210__bgp_monit
     PROTOBUF_C_TYPE_MESSAGE,
     0,   /* quantifier_offset */
     offsetof(Kentik__BgpMonitoring__V202210__BgpMonitor, last_updated_by),
-    &kentik__synthetics__v202202__user_info__descriptor,
+    &kentik__core__v202303__user_info__descriptor,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
@@ -1434,7 +1434,7 @@ static const ProtobufCFieldDescriptor kentik__bgp_monitoring__v202210__route_inf
     PROTOBUF_C_TYPE_MESSAGE,
     0,   /* quantifier_offset */
     offsetof(Kentik__BgpMonitoring__V202210__RouteInfo, vantage_point),
-    &kentik__ktrac__route__v202104__vantage_point__descriptor,
+    &kentik__net__v202303__vantage_point__descriptor,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
@@ -1446,7 +1446,7 @@ static const ProtobufCFieldDescriptor kentik__bgp_monitoring__v202210__route_inf
     PROTOBUF_C_TYPE_ENUM,
     0,   /* quantifier_offset */
     offsetof(Kentik__BgpMonitoring__V202210__RouteInfo, rpki_status),
-    &kentik__ktrac__route__v202104__rpki_status__descriptor,
+    &kentik__net__v202303__rpki_status__descriptor,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */

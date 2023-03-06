@@ -22,8 +22,8 @@ extern PROTOBUF_INTERNAL_EXPORT_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5
 extern PROTOBUF_INTERNAL_EXPORT_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_GetRoutesForTargetResponse_AsNamesEntry_DoNotUse_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Nlri_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_RouteInfo_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_kentik_2fktrac_2froute_2fv202104_2felem_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_VantagePoint_kentik_2fktrac_2froute_2fv202104_2felem_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_kentik_2fsynthetics_2fv202202_2fsynthetics_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_UserInfo_kentik_2fsynthetics_2fv202202_2fsynthetics_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_kentik_2fcore_2fv202303_2fuser_5finfo_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_UserInfo_kentik_2fcore_2fv202303_2fuser_5finfo_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_kentik_2fnet_2fv202303_2fbgp_5ftypes_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_VantagePoint_kentik_2fnet_2fv202303_2fbgp_5ftypes_2eproto;
 namespace kentik {
 namespace bgp_monitoring {
 namespace v202205beta1 {
@@ -170,7 +170,7 @@ static void InitDefaultsscc_info_BgpMonitor_kentik_2fbgp_5fmonitoring_2fv202205b
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 3, 0, InitDefaultsscc_info_BgpMonitor_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto}, {
       &scc_info_BgpMonitorSettings_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto.base,
       &scc_info_Timestamp_google_2fprotobuf_2ftimestamp_2eproto.base,
-      &scc_info_UserInfo_kentik_2fsynthetics_2fv202202_2fsynthetics_2eproto.base,}};
+      &scc_info_UserInfo_kentik_2fcore_2fv202303_2fuser_5finfo_2eproto.base,}};
 
 static void InitDefaultsscc_info_BgpMonitorSettings_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -408,7 +408,7 @@ static void InitDefaultsscc_info_RouteInfo_kentik_2fbgp_5fmonitoring_2fv202205be
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_RouteInfo_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_RouteInfo_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto}, {
       &scc_info_Nlri_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto.base,
-      &scc_info_VantagePoint_kentik_2fktrac_2froute_2fv202104_2felem_2eproto.base,}};
+      &scc_info_VantagePoint_kentik_2fnet_2fv202303_2fbgp_5ftypes_2eproto.base,}};
 
 static void InitDefaultsscc_info_SetMonitorStatusRequest_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -706,198 +706,194 @@ const char descriptor_table_protodef_kentik_2fbgp_5fmonitoring_2fv202205beta1_2f
   ".v202205beta1\032\034google/api/annotations.pr"
   "oto\032\027google/api/client.proto\032\037google/pro"
   "tobuf/timestamp.proto\032.protoc-gen-openap"
-  "iv2/options/annotations.proto\032+kentik/co"
-  "re/v202012alpha1/annotations.proto\032%kent"
-  "ik/ktrac/route/v202104/elem.proto\032,kenti"
-  "k/ktrac/route/v202104/annotations.proto\032"
-  "*kentik/synthetics/v202202/synthetics.pr"
-  "oto\"\221\001\n\004Nlri\0221\n\003afi\030\001 \001(\0162\037.kentik.ktrac"
-  ".route.v202104.AfiR\003afi\0224\n\004safi\030\002 \001(\0162 ."
-  "kentik.ktrac.route.v202104.SafiR\004safi\022\030\n"
-  "\006prefix\030\003 \001(\tH\000R\006prefixB\006\n\004type\"{\n\021BgpHe"
-  "althSettings\0221\n\024reachability_warning\030\001 \001"
-  "(\002R\023reachabilityWarning\0223\n\025reachability_"
-  "critical\030\002 \001(\002R\024reachabilityCritical\"\351\002\n"
-  "\022BgpMonitorSettings\022!\n\014allowed_asns\030\001 \003("
-  "\rR\013allowedAsns\022B\n\007targets\030\002 \003(\0132(.kentik"
-  ".bgp_monitoring.v202205beta1.NlriR\007targe"
-  "ts\022\035\n\ncheck_rpki\030\003 \001(\010R\tcheckRpki\0228\n\030inc"
-  "lude_covered_prefixes\030\004 \001(\010R\026includeCove"
-  "redPrefixes\022^\n\017health_settings\030\005 \001(\01325.k"
-  "entik.bgp_monitoring.v202205beta1.BgpHea"
-  "lthSettingsR\016healthSettings\0223\n\025notificat"
-  "ion_channels\030\006 \003(\tR\024notificationChannels"
-  "\"\337\003\n\nBgpMonitor\022\016\n\002id\030\001 \001(\tR\002id\022\022\n\004name\030"
-  "\002 \001(\tR\004name\022L\n\006status\030\003 \001(\01624.kentik.bgp"
-  "_monitoring.v202205beta1.BgpMonitorStatu"
-  "sR\006status\022R\n\010settings\030\004 \001(\01326.kentik.bgp"
-  "_monitoring.v202205beta1.BgpMonitorSetti"
-  "ngsR\010settings\0220\n\005cdate\030\005 \001(\0132\032.google.pr"
-  "otobuf.TimestampR\005cdate\0220\n\005edate\030\006 \001(\0132\032"
-  ".google.protobuf.TimestampR\005edate\022B\n\ncre"
-  "ated_by\030\007 \001(\0132#.kentik.synthetics.v20220"
-  "2.UserInfoR\tcreatedBy\022K\n\017last_updated_by"
-  "\030\010 \001(\0132#.kentik.synthetics.v202202.UserI"
-  "nfoR\rlastUpdatedBy\022\026\n\006labels\030\t \003(\tR\006labe"
-  "ls\"\337\003\n\tRouteInfo\022<\n\004nlri\030\001 \001(\0132(.kentik."
-  "bgp_monitoring.v202205beta1.NlriR\004nlri\022U"
-  "\n\norigin_asn\030\002 \001(\rB6\222A321The autonomous "
-  "system number originating the NLRIR\torig"
-  "inAsn\022P\n\007as_path\030\003 \003(\tB7\222A422AS path obs"
-  "erved at the vantage point for the NLRIR"
-  "\006asPath\022\207\001\n\rvantage_point\030\004 \001(\0132(.kentik"
-  ".ktrac.route.v202104.VantagePointB8\222A523"
-  "Name of the vantage point providing the "
-  "observationR\014vantagePoint\022G\n\013rpki_status"
-  "\030\005 \001(\0162&.kentik.ktrac.route.v202104.Rpki"
-  "StatusR\nrpkiStatus\022\030\n\007nexthop\030\006 \001(\tR\007nex"
-  "thop\"\326\001\n\tBgpMetric\0228\n\ttimestamp\030\001 \001(\0132\032."
-  "google.protobuf.TimestampR\ttimestamp\022<\n\004"
-  "nlri\030\002 \001(\0132(.kentik.bgp_monitoring.v2022"
-  "05beta1.NlriR\004nlri\022$\n\014reachability\030\003 \001(\002"
-  "H\000R\014reachability\022#\n\014path_changes\030\005 \001(\rH\000"
-  "R\013pathChangesB\006\n\004type\"\025\n\023ListMonitorsReq"
-  "uest\"\207\001\n\024ListMonitorsResponse\022J\n\010monitor"
-  "s\030\001 \003(\0132..kentik.bgp_monitoring.v202205b"
-  "eta1.BgpMonitorR\010monitors\022#\n\rinvalid_cou"
-  "nt\030\002 \001(\rR\014invalidCount\"`\n\024CreateMonitorR"
-  "equest\022H\n\007monitor\030\001 \001(\0132..kentik.bgp_mon"
-  "itoring.v202205beta1.BgpMonitorR\007monitor"
-  "\"a\n\025CreateMonitorResponse\022H\n\007monitor\030\001 \001"
-  "(\0132..kentik.bgp_monitoring.v202205beta1."
-  "BgpMonitorR\007monitor\"#\n\021GetMonitorRequest"
-  "\022\016\n\002id\030\001 \001(\tR\002id\"^\n\022GetMonitorResponse\022H"
+  "iv2/options/annotations.proto\032%kentik/co"
+  "re/v202303/annotations.proto\032#kentik/cor"
+  "e/v202303/user_info.proto\032\"kentik/net/v2"
+  "02303/bgp_types.proto\"\201\001\n\004Nlri\022)\n\003afi\030\001 "
+  "\001(\0162\027.kentik.net.v202303.AfiR\003afi\022,\n\004saf"
+  "i\030\002 \001(\0162\030.kentik.net.v202303.SafiR\004safi\022"
+  "\030\n\006prefix\030\003 \001(\tH\000R\006prefixB\006\n\004type\"{\n\021Bgp"
+  "HealthSettings\0221\n\024reachability_warning\030\001"
+  " \001(\002R\023reachabilityWarning\0223\n\025reachabilit"
+  "y_critical\030\002 \001(\002R\024reachabilityCritical\"\351"
+  "\002\n\022BgpMonitorSettings\022!\n\014allowed_asns\030\001 "
+  "\003(\rR\013allowedAsns\022B\n\007targets\030\002 \003(\0132(.kent"
+  "ik.bgp_monitoring.v202205beta1.NlriR\007tar"
+  "gets\022\035\n\ncheck_rpki\030\003 \001(\010R\tcheckRpki\0228\n\030i"
+  "nclude_covered_prefixes\030\004 \001(\010R\026includeCo"
+  "veredPrefixes\022^\n\017health_settings\030\005 \001(\01325"
+  ".kentik.bgp_monitoring.v202205beta1.BgpH"
+  "ealthSettingsR\016healthSettings\0223\n\025notific"
+  "ation_channels\030\006 \003(\tR\024notificationChanne"
+  "ls\"\323\003\n\nBgpMonitor\022\016\n\002id\030\001 \001(\tR\002id\022\022\n\004nam"
+  "e\030\002 \001(\tR\004name\022L\n\006status\030\003 \001(\01624.kentik.b"
+  "gp_monitoring.v202205beta1.BgpMonitorSta"
+  "tusR\006status\022R\n\010settings\030\004 \001(\01326.kentik.b"
+  "gp_monitoring.v202205beta1.BgpMonitorSet"
+  "tingsR\010settings\0220\n\005cdate\030\005 \001(\0132\032.google."
+  "protobuf.TimestampR\005cdate\0220\n\005edate\030\006 \001(\013"
+  "2\032.google.protobuf.TimestampR\005edate\022<\n\nc"
+  "reated_by\030\007 \001(\0132\035.kentik.core.v202303.Us"
+  "erInfoR\tcreatedBy\022E\n\017last_updated_by\030\010 \001"
+  "(\0132\035.kentik.core.v202303.UserInfoR\rlastU"
+  "pdatedBy\022\026\n\006labels\030\t \003(\tR\006labels\"\316\003\n\tRou"
+  "teInfo\022<\n\004nlri\030\001 \001(\0132(.kentik.bgp_monito"
+  "ring.v202205beta1.NlriR\004nlri\022U\n\norigin_a"
+  "sn\030\002 \001(\rB6\222A321The autonomous system num"
+  "ber originating the NLRIR\toriginAsn\022P\n\007a"
+  "s_path\030\003 \003(\tB7\222A422AS path observed at t"
+  "he vantage point for the NLRIR\006asPath\022\177\n"
+  "\rvantage_point\030\004 \001(\0132 .kentik.net.v20230"
+  "3.VantagePointB8\222A523Name of the vantage"
+  " point providing the observationR\014vantag"
+  "ePoint\022\?\n\013rpki_status\030\005 \001(\0162\036.kentik.net"
+  ".v202303.RpkiStatusR\nrpkiStatus\022\030\n\007nexth"
+  "op\030\006 \001(\tR\007nexthop\"\326\001\n\tBgpMetric\0228\n\ttimes"
+  "tamp\030\001 \001(\0132\032.google.protobuf.TimestampR\t"
+  "timestamp\022<\n\004nlri\030\002 \001(\0132(.kentik.bgp_mon"
+  "itoring.v202205beta1.NlriR\004nlri\022$\n\014reach"
+  "ability\030\003 \001(\002H\000R\014reachability\022#\n\014path_ch"
+  "anges\030\005 \001(\rH\000R\013pathChangesB\006\n\004type\"\025\n\023Li"
+  "stMonitorsRequest\"\207\001\n\024ListMonitorsRespon"
+  "se\022J\n\010monitors\030\001 \003(\0132..kentik.bgp_monito"
+  "ring.v202205beta1.BgpMonitorR\010monitors\022#"
+  "\n\rinvalid_count\030\002 \001(\rR\014invalidCount\"`\n\024C"
+  "reateMonitorRequest\022H\n\007monitor\030\001 \001(\0132..k"
+  "entik.bgp_monitoring.v202205beta1.BgpMon"
+  "itorR\007monitor\"a\n\025CreateMonitorResponse\022H"
   "\n\007monitor\030\001 \001(\0132..kentik.bgp_monitoring."
-  "v202205beta1.BgpMonitorR\007monitor\"`\n\024Upda"
-  "teMonitorRequest\022H\n\007monitor\030\001 \001(\0132..kent"
-  "ik.bgp_monitoring.v202205beta1.BgpMonito"
-  "rR\007monitor\"a\n\025UpdateMonitorResponse\022H\n\007m"
-  "onitor\030\001 \001(\0132..kentik.bgp_monitoring.v20"
-  "2205beta1.BgpMonitorR\007monitor\"&\n\024DeleteM"
-  "onitorRequest\022\016\n\002id\030\001 \001(\tR\002id\"\027\n\025DeleteM"
-  "onitorResponse\"w\n\027SetMonitorStatusReques"
-  "t\022\016\n\002id\030\001 \001(\tR\002id\022L\n\006status\030\002 \001(\01624.kent"
-  "ik.bgp_monitoring.v202205beta1.BgpMonito"
-  "rStatusR\006status\"\032\n\030SetMonitorStatusRespo"
-  "nse\"\306\002\n\032GetMetricsForTargetRequest\0229\n\nst"
-  "art_time\030\001 \001(\0132\032.google.protobuf.Timesta"
-  "mpR\tstartTime\0225\n\010end_time\030\002 \001(\0132\032.google"
-  ".protobuf.TimestampR\007endTime\022@\n\006target\030\003"
-  " \001(\0132(.kentik.bgp_monitoring.v202205beta"
-  "1.NlriR\006target\022\'\n\017include_covered\030\004 \001(\010R"
-  "\016includeCovered\022K\n\007metrics\030\005 \003(\01621.kenti"
-  "k.bgp_monitoring.v202205beta1.BgpMetricT"
-  "ypeR\007metrics\"f\n\033GetMetricsForTargetRespo"
-  "nse\022G\n\007metrics\030\001 \003(\0132-.kentik.bgp_monito"
-  "ring.v202205beta1.BgpMetricR\007metrics\"\325\001\n"
-  "\031GetRoutesForTargetRequest\022.\n\004time\030\001 \001(\013"
-  "2\032.google.protobuf.TimestampR\004time\022@\n\006ta"
-  "rget\030\002 \001(\0132(.kentik.bgp_monitoring.v2022"
-  "05beta1.NlriR\006target\022\'\n\017include_covered\030"
-  "\004 \001(\010R\016includeCovered\022\035\n\ncheck_rpki\030\005 \001("
-  "\010R\tcheckRpki\"\207\002\n\032GetRoutesForTargetRespo"
-  "nse\022E\n\006routes\030\001 \003(\0132-.kentik.bgp_monitor"
-  "ing.v202205beta1.RouteInfoR\006routes\022f\n\010as"
-  "_names\030\005 \003(\0132K.kentik.bgp_monitoring.v20"
-  "2205beta1.GetRoutesForTargetResponse.AsN"
-  "amesEntryR\007asNames\032:\n\014AsNamesEntry\022\020\n\003ke"
-  "y\030\001 \001(\rR\003key\022\024\n\005value\030\002 \001(\tR\005value:\0028\001*\224"
-  "\001\n\020BgpMonitorStatus\022\"\n\036BGP_MONITOR_STATU"
-  "S_UNSPECIFIED\020\000\022\035\n\031BGP_MONITOR_STATUS_AC"
-  "TIVE\020\001\022\035\n\031BGP_MONITOR_STATUS_PAUSED\020\002\022\036\n"
-  "\032BGP_MONITOR_STATUS_DELETED\020\003*t\n\rBgpMetr"
-  "icType\022\037\n\033BGP_METRIC_TYPE_UNSPECIFIED\020\000\022"
-  " \n\034BGP_METRIC_TYPE_REACHABILITY\020\001\022 \n\034BGP"
-  "_METRIC_TYPE_PATH_CHANGES\020\0022\314\016\n\031BgpMonit"
-  "oringAdminService\022\220\002\n\014ListMonitors\0227.ken"
-  "tik.bgp_monitoring.v202205beta1.ListMoni"
-  "torsRequest\0328.kentik.bgp_monitoring.v202"
-  "205beta1.ListMonitorsResponse\"\214\001\222AC\022\022Lis"
-  "t BGP Monitors.\032\037Returns a list of BGP m"
-  "onitors.*\014MonitorsList\362\327\002\025admin.syntheti"
-  "cs:read\202\323\344\223\002\'\022%/bgp_monitoring/v202205be"
-  "ta1/monitors\022\320\001\n\rCreateMonitor\0228.kentik."
-  "bgp_monitoring.v202205beta1.CreateMonito"
-  "rRequest\0329.kentik.bgp_monitoring.v202205"
-  "beta1.CreateMonitorResponse\"J\362\327\002\026admin.s"
-  "ynthetics:write\202\323\344\223\002*\"%/bgp_monitoring/v"
-  "202205beta1/monitors:\001*\022\257\002\n\nGetMonitor\0225"
-  ".kentik.bgp_monitoring.v202205beta1.GetM"
-  "onitorRequest\0326.kentik.bgp_monitoring.v2"
-  "02205beta1.GetMonitorResponse\"\261\001\222Ac\022\036Get"
-  " BGP Monitor configuration.\0325Return conf"
-  "iguration of BGP monitor with specific I"
-  "D.*\nMonitorGet\362\327\002\025admin.synthetics:read\202"
-  "\323\344\223\002,\022*/bgp_monitoring/v202205beta1/moni"
-  "tors/{id}\022\362\002\n\rUpdateMonitor\0228.kentik.bgp"
-  "_monitoring.v202205beta1.UpdateMonitorRe"
-  "quest\0329.kentik.bgp_monitoring.v202205bet"
-  "a1.UpdateMonitorResponse\"\353\001\222A\220\001\022!Update "
-  "BGP Monitor configuration.\032\\Update confi"
-  "guration of BGP monitor with specific ID"
-  ". Returns updated monitor configuration."
-  "*\rMonitorUpdate\362\327\002\026admin.synthetics:writ"
-  "e\202\323\344\223\0027\0322/bgp_monitoring/v202205beta1/mo"
-  "nitors/{monitor.id}:\001*\022\246\002\n\rDeleteMonitor"
-  "\0228.kentik.bgp_monitoring.v202205beta1.De"
-  "leteMonitorRequest\0329.kentik.bgp_monitori"
-  "ng.v202205beta1.DeleteMonitorResponse\"\237\001"
-  "\222AP\022\023Delete BGP Monitor.\032*Delete BGP mon"
-  "itor with  with specific ID.*\rMonitorDel"
-  "ete\362\327\002\026admin.synthetics:write\202\323\344\223\002,**/bg"
-  "p_monitoring/v202205beta1/monitors/{id}\022"
-  "\310\002\n\020SetMonitorStatus\022;.kentik.bgp_monito"
-  "ring.v202205beta1.SetMonitorStatusReques"
-  "t\032<.kentik.bgp_monitoring.v202205beta1.S"
-  "etMonitorStatusResponse\"\270\001\222A_\022\032Set statu"
-  "s of BGP monitor.\032/Set the status of BGP"
-  " monitor with specific ID.*\020SetMonitorSt"
-  "atus\362\327\002\026admin.synthetics:write\202\323\344\223\0026\0321/b"
-  "gp_monitoring/v202205beta1/monitors/{id}"
-  "/status:\001*\032.\312A\023grpc.api.kentik.com\352\327\002\020ad"
-  "min.synthetics\220\330\002\0032\232\006\n\030BgpMonitoringData"
-  "Service\022\353\002\n\023GetMetricsForTarget\022>.kentik"
-  ".bgp_monitoring.v202205beta1.GetMetricsF"
-  "orTargetRequest\032\?.kentik.bgp_monitoring."
-  "v202205beta1.GetMetricsForTargetResponse"
-  "\"\322\001\222A\214\001\022-Get metrics for a single BGP ta"
-  "rget (prefix).\032FRetrieve metric data for"
-  " single BGP target (prefix) and time int"
-  "erval.*\023GetMetricsForTarget\362\327\002\017synthetic"
-  "s:read\202\323\344\223\002)\"$/bgp_monitoring/v202205bet"
-  "a1/metrics:\001*\022\345\002\n\022GetRoutesForTarget\022=.k"
-  "entik.bgp_monitoring.v202205beta1.GetRou"
-  "tesForTargetRequest\032>.kentik.bgp_monitor"
-  "ing.v202205beta1.GetRoutesForTargetRespo"
-  "nse\"\317\001\222A\212\001\022*Get routes for single BGP ta"
-  "rget (prefix).\032HRetrieve route informati"
-  "on for signle BGP target (prefix) and ti"
-  "mestamp.*\022GetRoutesForTarget\362\327\002\017syntheti"
-  "cs:read\202\323\344\223\002(\"#/bgp_monitoring/v202205be"
-  "ta1/routes:\001*\032(\312A\023grpc.api.kentik.com\352\327\002"
-  "\nsynthetics\220\330\002\003B\373\003ZXgithub.com/kentik/ap"
-  "i-schema-public/go/kentik/bgp_monitoring"
-  "/v202205beta1;bgp_monitoring\222A\235\003\022\266\001\n\022BGP"
-  " Monitoring API\022K--- This API has been d"
-  "eprecated and will be removed in the nea"
-  "r future ---\"E\n\026Kentik API Engineering\022+"
-  "https://github.com/kentik/api-schema-pub"
-  "lic2\014v202205beta1*\001\0022\020application/json:\020"
-  "application/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Au"
-  "th-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-T"
-  "oken \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]\n%Genera"
-  "l information about Kentik APIs\0224https:/"
-  "/kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Ove"
-  "rviewb\006proto3"
+  "v202205beta1.BgpMonitorR\007monitor\"#\n\021GetM"
+  "onitorRequest\022\016\n\002id\030\001 \001(\tR\002id\"^\n\022GetMoni"
+  "torResponse\022H\n\007monitor\030\001 \001(\0132..kentik.bg"
+  "p_monitoring.v202205beta1.BgpMonitorR\007mo"
+  "nitor\"`\n\024UpdateMonitorRequest\022H\n\007monitor"
+  "\030\001 \001(\0132..kentik.bgp_monitoring.v202205be"
+  "ta1.BgpMonitorR\007monitor\"a\n\025UpdateMonitor"
+  "Response\022H\n\007monitor\030\001 \001(\0132..kentik.bgp_m"
+  "onitoring.v202205beta1.BgpMonitorR\007monit"
+  "or\"&\n\024DeleteMonitorRequest\022\016\n\002id\030\001 \001(\tR\002"
+  "id\"\027\n\025DeleteMonitorResponse\"w\n\027SetMonito"
+  "rStatusRequest\022\016\n\002id\030\001 \001(\tR\002id\022L\n\006status"
+  "\030\002 \001(\01624.kentik.bgp_monitoring.v202205be"
+  "ta1.BgpMonitorStatusR\006status\"\032\n\030SetMonit"
+  "orStatusResponse\"\306\002\n\032GetMetricsForTarget"
+  "Request\0229\n\nstart_time\030\001 \001(\0132\032.google.pro"
+  "tobuf.TimestampR\tstartTime\0225\n\010end_time\030\002"
+  " \001(\0132\032.google.protobuf.TimestampR\007endTim"
+  "e\022@\n\006target\030\003 \001(\0132(.kentik.bgp_monitorin"
+  "g.v202205beta1.NlriR\006target\022\'\n\017include_c"
+  "overed\030\004 \001(\010R\016includeCovered\022K\n\007metrics\030"
+  "\005 \003(\01621.kentik.bgp_monitoring.v202205bet"
+  "a1.BgpMetricTypeR\007metrics\"f\n\033GetMetricsF"
+  "orTargetResponse\022G\n\007metrics\030\001 \003(\0132-.kent"
+  "ik.bgp_monitoring.v202205beta1.BgpMetric"
+  "R\007metrics\"\325\001\n\031GetRoutesForTargetRequest\022"
+  ".\n\004time\030\001 \001(\0132\032.google.protobuf.Timestam"
+  "pR\004time\022@\n\006target\030\002 \001(\0132(.kentik.bgp_mon"
+  "itoring.v202205beta1.NlriR\006target\022\'\n\017inc"
+  "lude_covered\030\004 \001(\010R\016includeCovered\022\035\n\nch"
+  "eck_rpki\030\005 \001(\010R\tcheckRpki\"\207\002\n\032GetRoutesF"
+  "orTargetResponse\022E\n\006routes\030\001 \003(\0132-.kenti"
+  "k.bgp_monitoring.v202205beta1.RouteInfoR"
+  "\006routes\022f\n\010as_names\030\005 \003(\0132K.kentik.bgp_m"
+  "onitoring.v202205beta1.GetRoutesForTarge"
+  "tResponse.AsNamesEntryR\007asNames\032:\n\014AsNam"
+  "esEntry\022\020\n\003key\030\001 \001(\rR\003key\022\024\n\005value\030\002 \001(\t"
+  "R\005value:\0028\001*\224\001\n\020BgpMonitorStatus\022\"\n\036BGP_"
+  "MONITOR_STATUS_UNSPECIFIED\020\000\022\035\n\031BGP_MONI"
+  "TOR_STATUS_ACTIVE\020\001\022\035\n\031BGP_MONITOR_STATU"
+  "S_PAUSED\020\002\022\036\n\032BGP_MONITOR_STATUS_DELETED"
+  "\020\003*t\n\rBgpMetricType\022\037\n\033BGP_METRIC_TYPE_U"
+  "NSPECIFIED\020\000\022 \n\034BGP_METRIC_TYPE_REACHABI"
+  "LITY\020\001\022 \n\034BGP_METRIC_TYPE_PATH_CHANGES\020\002"
+  "2\314\016\n\031BgpMonitoringAdminService\022\220\002\n\014ListM"
+  "onitors\0227.kentik.bgp_monitoring.v202205b"
+  "eta1.ListMonitorsRequest\0328.kentik.bgp_mo"
+  "nitoring.v202205beta1.ListMonitorsRespon"
+  "se\"\214\001\222AC\022\022List BGP Monitors.\032\037Returns a "
+  "list of BGP monitors.*\014MonitorsList\362\327\002\025a"
+  "dmin.synthetics:read\202\323\344\223\002\'\022%/bgp_monitor"
+  "ing/v202205beta1/monitors\022\320\001\n\rCreateMoni"
+  "tor\0228.kentik.bgp_monitoring.v202205beta1"
+  ".CreateMonitorRequest\0329.kentik.bgp_monit"
+  "oring.v202205beta1.CreateMonitorResponse"
+  "\"J\362\327\002\026admin.synthetics:write\202\323\344\223\002*\"%/bgp"
+  "_monitoring/v202205beta1/monitors:\001*\022\257\002\n"
+  "\nGetMonitor\0225.kentik.bgp_monitoring.v202"
+  "205beta1.GetMonitorRequest\0326.kentik.bgp_"
+  "monitoring.v202205beta1.GetMonitorRespon"
+  "se\"\261\001\222Ac\022\036Get BGP Monitor configuration."
+  "\0325Return configuration of BGP monitor wi"
+  "th specific ID.*\nMonitorGet\362\327\002\025admin.syn"
+  "thetics:read\202\323\344\223\002,\022*/bgp_monitoring/v202"
+  "205beta1/monitors/{id}\022\362\002\n\rUpdateMonitor"
+  "\0228.kentik.bgp_monitoring.v202205beta1.Up"
+  "dateMonitorRequest\0329.kentik.bgp_monitori"
+  "ng.v202205beta1.UpdateMonitorResponse\"\353\001"
+  "\222A\220\001\022!Update BGP Monitor configuration.\032"
+  "\\Update configuration of BGP monitor wit"
+  "h specific ID. Returns updated monitor c"
+  "onfiguration.*\rMonitorUpdate\362\327\002\026admin.sy"
+  "nthetics:write\202\323\344\223\0027\0322/bgp_monitoring/v2"
+  "02205beta1/monitors/{monitor.id}:\001*\022\246\002\n\r"
+  "DeleteMonitor\0228.kentik.bgp_monitoring.v2"
+  "02205beta1.DeleteMonitorRequest\0329.kentik"
+  ".bgp_monitoring.v202205beta1.DeleteMonit"
+  "orResponse\"\237\001\222AP\022\023Delete BGP Monitor.\032*D"
+  "elete BGP monitor with  with specific ID"
+  ".*\rMonitorDelete\362\327\002\026admin.synthetics:wri"
+  "te\202\323\344\223\002,**/bgp_monitoring/v202205beta1/m"
+  "onitors/{id}\022\310\002\n\020SetMonitorStatus\022;.kent"
+  "ik.bgp_monitoring.v202205beta1.SetMonito"
+  "rStatusRequest\032<.kentik.bgp_monitoring.v"
+  "202205beta1.SetMonitorStatusResponse\"\270\001\222"
+  "A_\022\032Set status of BGP monitor.\032/Set the "
+  "status of BGP monitor with specific ID.*"
+  "\020SetMonitorStatus\362\327\002\026admin.synthetics:wr"
+  "ite\202\323\344\223\0026\0321/bgp_monitoring/v202205beta1/"
+  "monitors/{id}/status:\001*\032.\312A\023grpc.api.ken"
+  "tik.com\352\327\002\020admin.synthetics\220\330\002\0032\232\006\n\030BgpM"
+  "onitoringDataService\022\353\002\n\023GetMetricsForTa"
+  "rget\022>.kentik.bgp_monitoring.v202205beta"
+  "1.GetMetricsForTargetRequest\032\?.kentik.bg"
+  "p_monitoring.v202205beta1.GetMetricsForT"
+  "argetResponse\"\322\001\222A\214\001\022-Get metrics for a "
+  "single BGP target (prefix).\032FRetrieve me"
+  "tric data for single BGP target (prefix)"
+  " and time interval.*\023GetMetricsForTarget"
+  "\362\327\002\017synthetics:read\202\323\344\223\002)\"$/bgp_monitori"
+  "ng/v202205beta1/metrics:\001*\022\345\002\n\022GetRoutes"
+  "ForTarget\022=.kentik.bgp_monitoring.v20220"
+  "5beta1.GetRoutesForTargetRequest\032>.kenti"
+  "k.bgp_monitoring.v202205beta1.GetRoutesF"
+  "orTargetResponse\"\317\001\222A\212\001\022*Get routes for "
+  "single BGP target (prefix).\032HRetrieve ro"
+  "ute information for signle BGP target (p"
+  "refix) and timestamp.*\022GetRoutesForTarge"
+  "t\362\327\002\017synthetics:read\202\323\344\223\002(\"#/bgp_monitor"
+  "ing/v202205beta1/routes:\001*\032(\312A\023grpc.api."
+  "kentik.com\352\327\002\nsynthetics\220\330\002\003B\373\003ZXgithub."
+  "com/kentik/api-schema-public/go/kentik/b"
+  "gp_monitoring/v202205beta1;bgp_monitorin"
+  "g\222A\235\003\022\266\001\n\022BGP Monitoring API\022K--- This A"
+  "PI has been deprecated and will be remov"
+  "ed in the near future ---\"E\n\026Kentik API "
+  "Engineering\022+https://github.com/kentik/a"
+  "pi-schema-public2\014v202205beta1*\001\0022\020appli"
+  "cation/json:\020application/jsonZD\n\036\n\005email"
+  "\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-"
+  "CH-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005toke"
+  "n\022\000r]\n%General information about Kentik "
+  "APIs\0224https://kb.kentik.com/v0/Ab09.htm#"
+  "Ab09-APIs_Overviewb\006proto3"
   ;
-static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto_deps[8] = {
+static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto_deps[7] = {
   &::descriptor_table_google_2fapi_2fannotations_2eproto,
   &::descriptor_table_google_2fapi_2fclient_2eproto,
   &::descriptor_table_google_2fprotobuf_2ftimestamp_2eproto,
-  &::descriptor_table_kentik_2fcore_2fv202012alpha1_2fannotations_2eproto,
-  &::descriptor_table_kentik_2fktrac_2froute_2fv202104_2fannotations_2eproto,
-  &::descriptor_table_kentik_2fktrac_2froute_2fv202104_2felem_2eproto,
-  &::descriptor_table_kentik_2fsynthetics_2fv202202_2fsynthetics_2eproto,
+  &::descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto,
+  &::descriptor_table_kentik_2fcore_2fv202303_2fuser_5finfo_2eproto,
+  &::descriptor_table_kentik_2fnet_2fv202303_2fbgp_5ftypes_2eproto,
   &::descriptor_table_protoc_2dgen_2dopenapiv2_2foptions_2fannotations_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto_sccs[23] = {
@@ -927,8 +923,8 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto = {
-  false, false, descriptor_table_protodef_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto, "kentik/bgp_monitoring/v202205beta1/bgp_monitoring.proto", 7493,
-  &descriptor_table_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto_once, descriptor_table_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto_sccs, descriptor_table_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto_deps, 23, 8,
+  false, false, descriptor_table_protodef_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto, "kentik/bgp_monitoring/v202205beta1/bgp_monitoring.proto", 7386,
+  &descriptor_table_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto_once, descriptor_table_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto_sccs, descriptor_table_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto_deps, 23, 7,
   schemas, file_default_instances, TableStruct_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto::offsets,
   file_level_metadata_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto, 23, file_level_enum_descriptors_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto, file_level_service_descriptors_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto,
 };
@@ -1077,20 +1073,20 @@ const char* Nlri::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inter
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // .kentik.ktrac.route.v202104.Afi afi = 1[json_name = "afi"];
+      // .kentik.net.v202303.Afi afi = 1[json_name = "afi"];
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
           ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
-          _internal_set_afi(static_cast<::kentik::ktrac::route::v202104::Afi>(val));
+          _internal_set_afi(static_cast<::kentik::net::v202303::Afi>(val));
         } else goto handle_unusual;
         continue;
-      // .kentik.ktrac.route.v202104.Safi safi = 2[json_name = "safi"];
+      // .kentik.net.v202303.Safi safi = 2[json_name = "safi"];
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
           ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
-          _internal_set_safi(static_cast<::kentik::ktrac::route::v202104::Safi>(val));
+          _internal_set_safi(static_cast<::kentik::net::v202303::Safi>(val));
         } else goto handle_unusual;
         continue;
       // string prefix = 3[json_name = "prefix"];
@@ -1130,14 +1126,14 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .kentik.ktrac.route.v202104.Afi afi = 1[json_name = "afi"];
+  // .kentik.net.v202303.Afi afi = 1[json_name = "afi"];
   if (this->afi() != 0) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
       1, this->_internal_afi(), target);
   }
 
-  // .kentik.ktrac.route.v202104.Safi safi = 2[json_name = "safi"];
+  // .kentik.net.v202303.Safi safi = 2[json_name = "safi"];
   if (this->safi() != 0) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
@@ -1170,13 +1166,13 @@ size_t Nlri::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // .kentik.ktrac.route.v202104.Afi afi = 1[json_name = "afi"];
+  // .kentik.net.v202303.Afi afi = 1[json_name = "afi"];
   if (this->afi() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_afi());
   }
 
-  // .kentik.ktrac.route.v202104.Safi safi = 2[json_name = "safi"];
+  // .kentik.net.v202303.Safi safi = 2[json_name = "safi"];
   if (this->safi() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_safi());
@@ -1892,18 +1888,18 @@ void BgpMonitor::InitAsDefaultInstance() {
       PROTOBUF_NAMESPACE_ID::Timestamp::internal_default_instance());
   ::kentik::bgp_monitoring::v202205beta1::_BgpMonitor_default_instance_._instance.get_mutable()->edate_ = const_cast< PROTOBUF_NAMESPACE_ID::Timestamp*>(
       PROTOBUF_NAMESPACE_ID::Timestamp::internal_default_instance());
-  ::kentik::bgp_monitoring::v202205beta1::_BgpMonitor_default_instance_._instance.get_mutable()->created_by_ = const_cast< ::kentik::synthetics::v202202::UserInfo*>(
-      ::kentik::synthetics::v202202::UserInfo::internal_default_instance());
-  ::kentik::bgp_monitoring::v202205beta1::_BgpMonitor_default_instance_._instance.get_mutable()->last_updated_by_ = const_cast< ::kentik::synthetics::v202202::UserInfo*>(
-      ::kentik::synthetics::v202202::UserInfo::internal_default_instance());
+  ::kentik::bgp_monitoring::v202205beta1::_BgpMonitor_default_instance_._instance.get_mutable()->created_by_ = const_cast< ::kentik::core::v202303::UserInfo*>(
+      ::kentik::core::v202303::UserInfo::internal_default_instance());
+  ::kentik::bgp_monitoring::v202205beta1::_BgpMonitor_default_instance_._instance.get_mutable()->last_updated_by_ = const_cast< ::kentik::core::v202303::UserInfo*>(
+      ::kentik::core::v202303::UserInfo::internal_default_instance());
 }
 class BgpMonitor::_Internal {
  public:
   static const ::kentik::bgp_monitoring::v202205beta1::BgpMonitorSettings& settings(const BgpMonitor* msg);
   static const PROTOBUF_NAMESPACE_ID::Timestamp& cdate(const BgpMonitor* msg);
   static const PROTOBUF_NAMESPACE_ID::Timestamp& edate(const BgpMonitor* msg);
-  static const ::kentik::synthetics::v202202::UserInfo& created_by(const BgpMonitor* msg);
-  static const ::kentik::synthetics::v202202::UserInfo& last_updated_by(const BgpMonitor* msg);
+  static const ::kentik::core::v202303::UserInfo& created_by(const BgpMonitor* msg);
+  static const ::kentik::core::v202303::UserInfo& last_updated_by(const BgpMonitor* msg);
 };
 
 const ::kentik::bgp_monitoring::v202205beta1::BgpMonitorSettings&
@@ -1918,11 +1914,11 @@ const PROTOBUF_NAMESPACE_ID::Timestamp&
 BgpMonitor::_Internal::edate(const BgpMonitor* msg) {
   return *msg->edate_;
 }
-const ::kentik::synthetics::v202202::UserInfo&
+const ::kentik::core::v202303::UserInfo&
 BgpMonitor::_Internal::created_by(const BgpMonitor* msg) {
   return *msg->created_by_;
 }
-const ::kentik::synthetics::v202202::UserInfo&
+const ::kentik::core::v202303::UserInfo&
 BgpMonitor::_Internal::last_updated_by(const BgpMonitor* msg) {
   return *msg->last_updated_by_;
 }
@@ -1987,12 +1983,12 @@ BgpMonitor::BgpMonitor(const BgpMonitor& from)
     edate_ = nullptr;
   }
   if (from._internal_has_created_by()) {
-    created_by_ = new ::kentik::synthetics::v202202::UserInfo(*from.created_by_);
+    created_by_ = new ::kentik::core::v202303::UserInfo(*from.created_by_);
   } else {
     created_by_ = nullptr;
   }
   if (from._internal_has_last_updated_by()) {
-    last_updated_by_ = new ::kentik::synthetics::v202202::UserInfo(*from.last_updated_by_);
+    last_updated_by_ = new ::kentik::core::v202303::UserInfo(*from.last_updated_by_);
   } else {
     last_updated_by_ = nullptr;
   }
@@ -2129,14 +2125,14 @@ const char* BgpMonitor::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID:
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // .kentik.synthetics.v202202.UserInfo created_by = 7[json_name = "createdBy"];
+      // .kentik.core.v202303.UserInfo created_by = 7[json_name = "createdBy"];
       case 7:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 58)) {
           ptr = ctx->ParseMessage(_internal_mutable_created_by(), ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // .kentik.synthetics.v202202.UserInfo last_updated_by = 8[json_name = "lastUpdatedBy"];
+      // .kentik.core.v202303.UserInfo last_updated_by = 8[json_name = "lastUpdatedBy"];
       case 8:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 66)) {
           ptr = ctx->ParseMessage(_internal_mutable_last_updated_by(), ptr);
@@ -2236,7 +2232,7 @@ failure:
         6, _Internal::edate(this), target, stream);
   }
 
-  // .kentik.synthetics.v202202.UserInfo created_by = 7[json_name = "createdBy"];
+  // .kentik.core.v202303.UserInfo created_by = 7[json_name = "createdBy"];
   if (this->has_created_by()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
@@ -2244,7 +2240,7 @@ failure:
         7, _Internal::created_by(this), target, stream);
   }
 
-  // .kentik.synthetics.v202202.UserInfo last_updated_by = 8[json_name = "lastUpdatedBy"];
+  // .kentik.core.v202303.UserInfo last_updated_by = 8[json_name = "lastUpdatedBy"];
   if (this->has_last_updated_by()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
@@ -2321,14 +2317,14 @@ size_t BgpMonitor::ByteSizeLong() const {
         *edate_);
   }
 
-  // .kentik.synthetics.v202202.UserInfo created_by = 7[json_name = "createdBy"];
+  // .kentik.core.v202303.UserInfo created_by = 7[json_name = "createdBy"];
   if (this->has_created_by()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *created_by_);
   }
 
-  // .kentik.synthetics.v202202.UserInfo last_updated_by = 8[json_name = "lastUpdatedBy"];
+  // .kentik.core.v202303.UserInfo last_updated_by = 8[json_name = "lastUpdatedBy"];
   if (this->has_last_updated_by()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
@@ -2389,10 +2385,10 @@ void BgpMonitor::MergeFrom(const BgpMonitor& from) {
     _internal_mutable_edate()->PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(from._internal_edate());
   }
   if (from.has_created_by()) {
-    _internal_mutable_created_by()->::kentik::synthetics::v202202::UserInfo::MergeFrom(from._internal_created_by());
+    _internal_mutable_created_by()->::kentik::core::v202303::UserInfo::MergeFrom(from._internal_created_by());
   }
   if (from.has_last_updated_by()) {
-    _internal_mutable_last_updated_by()->::kentik::synthetics::v202202::UserInfo::MergeFrom(from._internal_last_updated_by());
+    _internal_mutable_last_updated_by()->::kentik::core::v202303::UserInfo::MergeFrom(from._internal_last_updated_by());
   }
   if (from.status() != 0) {
     _internal_set_status(from._internal_status());
@@ -2441,20 +2437,20 @@ void BgpMonitor::InternalSwap(BgpMonitor* other) {
 void RouteInfo::InitAsDefaultInstance() {
   ::kentik::bgp_monitoring::v202205beta1::_RouteInfo_default_instance_._instance.get_mutable()->nlri_ = const_cast< ::kentik::bgp_monitoring::v202205beta1::Nlri*>(
       ::kentik::bgp_monitoring::v202205beta1::Nlri::internal_default_instance());
-  ::kentik::bgp_monitoring::v202205beta1::_RouteInfo_default_instance_._instance.get_mutable()->vantage_point_ = const_cast< ::kentik::ktrac::route::v202104::VantagePoint*>(
-      ::kentik::ktrac::route::v202104::VantagePoint::internal_default_instance());
+  ::kentik::bgp_monitoring::v202205beta1::_RouteInfo_default_instance_._instance.get_mutable()->vantage_point_ = const_cast< ::kentik::net::v202303::VantagePoint*>(
+      ::kentik::net::v202303::VantagePoint::internal_default_instance());
 }
 class RouteInfo::_Internal {
  public:
   static const ::kentik::bgp_monitoring::v202205beta1::Nlri& nlri(const RouteInfo* msg);
-  static const ::kentik::ktrac::route::v202104::VantagePoint& vantage_point(const RouteInfo* msg);
+  static const ::kentik::net::v202303::VantagePoint& vantage_point(const RouteInfo* msg);
 };
 
 const ::kentik::bgp_monitoring::v202205beta1::Nlri&
 RouteInfo::_Internal::nlri(const RouteInfo* msg) {
   return *msg->nlri_;
 }
-const ::kentik::ktrac::route::v202104::VantagePoint&
+const ::kentik::net::v202303::VantagePoint&
 RouteInfo::_Internal::vantage_point(const RouteInfo* msg) {
   return *msg->vantage_point_;
 }
@@ -2486,7 +2482,7 @@ RouteInfo::RouteInfo(const RouteInfo& from)
     nlri_ = nullptr;
   }
   if (from._internal_has_vantage_point()) {
-    vantage_point_ = new ::kentik::ktrac::route::v202104::VantagePoint(*from.vantage_point_);
+    vantage_point_ = new ::kentik::net::v202303::VantagePoint(*from.vantage_point_);
   } else {
     vantage_point_ = nullptr;
   }
@@ -2590,19 +2586,19 @@ const char* RouteInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
         } else goto handle_unusual;
         continue;
-      // .kentik.ktrac.route.v202104.VantagePoint vantage_point = 4[json_name = "vantagePoint", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      // .kentik.net.v202303.VantagePoint vantage_point = 4[json_name = "vantagePoint", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
           ptr = ctx->ParseMessage(_internal_mutable_vantage_point(), ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // .kentik.ktrac.route.v202104.RpkiStatus rpki_status = 5[json_name = "rpkiStatus"];
+      // .kentik.net.v202303.RpkiStatus rpki_status = 5[json_name = "rpkiStatus"];
       case 5:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 40)) {
           ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
-          _internal_set_rpki_status(static_cast<::kentik::ktrac::route::v202104::RpkiStatus>(val));
+          _internal_set_rpki_status(static_cast<::kentik::net::v202303::RpkiStatus>(val));
         } else goto handle_unusual;
         continue;
       // string nexthop = 6[json_name = "nexthop"];
@@ -2666,7 +2662,7 @@ failure:
     target = stream->WriteString(3, s, target);
   }
 
-  // .kentik.ktrac.route.v202104.VantagePoint vantage_point = 4[json_name = "vantagePoint", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  // .kentik.net.v202303.VantagePoint vantage_point = 4[json_name = "vantagePoint", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   if (this->has_vantage_point()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
@@ -2674,7 +2670,7 @@ failure:
         4, _Internal::vantage_point(this), target, stream);
   }
 
-  // .kentik.ktrac.route.v202104.RpkiStatus rpki_status = 5[json_name = "rpkiStatus"];
+  // .kentik.net.v202303.RpkiStatus rpki_status = 5[json_name = "rpkiStatus"];
   if (this->rpki_status() != 0) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
@@ -2729,7 +2725,7 @@ size_t RouteInfo::ByteSizeLong() const {
         *nlri_);
   }
 
-  // .kentik.ktrac.route.v202104.VantagePoint vantage_point = 4[json_name = "vantagePoint", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  // .kentik.net.v202303.VantagePoint vantage_point = 4[json_name = "vantagePoint", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   if (this->has_vantage_point()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
@@ -2743,7 +2739,7 @@ size_t RouteInfo::ByteSizeLong() const {
         this->_internal_origin_asn());
   }
 
-  // .kentik.ktrac.route.v202104.RpkiStatus rpki_status = 5[json_name = "rpkiStatus"];
+  // .kentik.net.v202303.RpkiStatus rpki_status = 5[json_name = "rpkiStatus"];
   if (this->rpki_status() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_rpki_status());
@@ -2788,7 +2784,7 @@ void RouteInfo::MergeFrom(const RouteInfo& from) {
     _internal_mutable_nlri()->::kentik::bgp_monitoring::v202205beta1::Nlri::MergeFrom(from._internal_nlri());
   }
   if (from.has_vantage_point()) {
-    _internal_mutable_vantage_point()->::kentik::ktrac::route::v202104::VantagePoint::MergeFrom(from._internal_vantage_point());
+    _internal_mutable_vantage_point()->::kentik::net::v202303::VantagePoint::MergeFrom(from._internal_vantage_point());
   }
   if (from.origin_asn() != 0) {
     _internal_set_origin_asn(from._internal_origin_asn());

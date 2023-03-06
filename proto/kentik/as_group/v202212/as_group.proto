@@ -8,7 +8,7 @@ import "google/api/client.proto";
 import "google/api/field_behavior.proto";
 import "google/protobuf/timestamp.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
-import "kentik/core/v202012alpha1/annotations.proto";
+import "kentik/core/v202303/annotations.proto";
 
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   info: {
@@ -226,13 +226,13 @@ message DeleteASGroupResponse {}
 
 service ASGroupService {
   option (google.api.default_host) = "grpc.api.kentik.com";
-  option (kentik.core.v202012alpha1.visibility) = SERVICE_VISIBILITY_PUBLIC;
-  option (kentik.core.v202012alpha1.service_scope) = "admin.as_group";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "admin.as_group";
 
   // --- AS Groups ---
 
   rpc ListASGroups(ListASGroupsRequest) returns (ListASGroupsResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.as_group:read";
+    option (kentik.core.v202303.method_scope) = "admin.as_group:read";
     option (google.api.http) = {
       get: "/as_group/v202212/as_group"
     };
@@ -244,7 +244,7 @@ service ASGroupService {
   }
 
   rpc GetASGroup(GetASGroupRequest) returns (GetASGroupResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.as_group:read";
+    option (kentik.core.v202303.method_scope) = "admin.as_group:read";
     option (google.api.http) = {
       get: "/as_group/v202212/as_group/{id}"
     };
@@ -256,7 +256,7 @@ service ASGroupService {
   }
 
   rpc CreateASGroup(CreateASGroupRequest) returns (CreateASGroupResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.as_group:write";
+    option (kentik.core.v202303.method_scope) = "admin.as_group:write";
     option (google.api.http) = {
       post: "/as_group/v202212/as_group"
       body: "*"
@@ -269,7 +269,7 @@ service ASGroupService {
   }
 
   rpc UpdateASGroup(UpdateASGroupRequest) returns (UpdateASGroupResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.as_group:write";
+    option (kentik.core.v202303.method_scope) = "admin.as_group:write";
     option (google.api.http) = {
       put: "/as_group/v202212/as_group/{as_group.id}"
       body: "*"
@@ -282,7 +282,7 @@ service ASGroupService {
   }
 
   rpc DeleteASGroup(DeleteASGroupRequest) returns (DeleteASGroupResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.as_group:write";
+    option (kentik.core.v202303.method_scope) = "admin.as_group:write";
     option (google.api.http) = {
       delete: "/as_group/v202212/as_group/{id}"
     };

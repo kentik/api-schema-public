@@ -14,7 +14,7 @@ import google.api.client_pb2
 import google.type.latlng_pb2
 import google.type.postal_address_pb2
 import protoc_gen_openapiv2.options.annotations_pb2
-import kentik.core.v202012alpha1.annotations_pb2
+import kentik.core.v202303.annotations_pb2
 import kentik.site.v202106alpha1.site_pb2
 
 

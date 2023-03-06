@@ -17,7 +17,7 @@ from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
 from google.api import client_pb2 as google_dot_api_dot_client__pb2
 from google.protobuf import field_mask_pb2 as google_dot_protobuf_dot_field__mask__pb2
 from protoc_gen_openapiv2.options import annotations_pb2 as protoc__gen__openapiv2_dot_options_dot_annotations__pb2
-from kentik.core.v202012alpha1 import annotations_pb2 as kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2
+from kentik.core.v202303 import annotations_pb2 as kentik_dot_core_dot_v202303_dot_annotations__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -26,9 +26,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'ZTgithub.com/kentik/api-schema-public/go/kentik/cloud_export/v202101beta1;cloud_export\222A\222\003\022\253\001\n\026Cloud Export Admin API\022K--- This API has been deprecated and will be removed in the near future ---\"7\n\026Kentik API Engineering\022\035https://github.com/kentik/api2\013202101beta1*\001\0022\020application/json:\020application/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]\n%General information about Kentik APIs\0224https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n3kentik/cloud_export/v202101beta1/cloud_export.proto\x12 kentik.cloud_export.v202101beta1\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a google/protobuf/field_mask.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a+kentik/core/v202012alpha1/annotations.proto\"\xe8\x05\n\x0b\x43loudExport\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x45\n\x04type\x18\x0f \x01(\x0e\x32\x31.kentik.cloud_export.v202101beta1.CloudExportTypeR\x04type\x12\x18\n\x07\x65nabled\x18\x02 \x01(\x08R\x07\x65nabled\x12\x12\n\x04name\x18\x03 \x01(\tR\x04name\x12 \n\x0b\x64\x65scription\x18\x04 \x01(\tR\x0b\x64\x65scription\x12\x19\n\x08\x61pi_root\x18\x05 \x01(\tR\x07\x61piRoot\x12\x1b\n\tflow_dest\x18\x06 \x01(\tR\x08\x66lowDest\x12\x17\n\x07plan_id\x18\x07 \x01(\tR\x06planId\x12%\n\x0e\x63loud_provider\x18\x08 \x01(\tR\rcloudProvider\x12\x43\n\x03\x61ws\x18\t \x01(\x0b\x32/.kentik.cloud_export.v202101beta1.AwsPropertiesH\x00R\x03\x61ws\x12I\n\x05\x61zure\x18\n \x01(\x0b\x32\x31.kentik.cloud_export.v202101beta1.AzurePropertiesH\x00R\x05\x61zure\x12\x43\n\x03gce\x18\x0b \x01(\x0b\x32/.kentik.cloud_export.v202101beta1.GcePropertiesH\x00R\x03gce\x12\x43\n\x03ibm\x18\x0c \x01(\x0b\x32/.kentik.cloud_export.v202101beta1.IbmPropertiesH\x00R\x03ibm\x12\x41\n\x03\x62gp\x18\r \x01(\x0b\x32/.kentik.cloud_export.v202101beta1.BgpPropertiesR\x03\x62gp\x12O\n\x0e\x63urrent_status\x18\x0e \x01(\x0b\x32(.kentik.cloud_export.v202101beta1.StatusR\rcurrentStatusB\x0c\n\nproperties\"\x7f\n\rBgpProperties\x12\x1b\n\tapply_bgp\x18\x01 \x01(\x08R\x08\x61pplyBgp\x12)\n\x11use_bgp_device_id\x18\x02 \x01(\tR\x0euseBgpDeviceId\x12&\n\x0f\x64\x65vice_bgp_type\x18\x03 \x01(\tR\rdeviceBgpType\"\xb8\x01\n\rAwsProperties\x12\x16\n\x06\x62ucket\x18\x01 \x01(\tR\x06\x62ucket\x12 \n\x0ciam_role_arn\x18\x02 \x01(\tR\niamRoleArn\x12\x16\n\x06region\x18\x03 \x01(\tR\x06region\x12*\n\x11\x64\x65lete_after_read\x18\x04 \x01(\x08R\x0f\x64\x65leteAfterRead\x12)\n\x10multiple_buckets\x18\x05 \x01(\x08R\x0fmultipleBuckets\"\xe4\x01\n\x0f\x41zureProperties\x12\x1a\n\x08location\x18\x01 \x01(\tR\x08location\x12%\n\x0eresource_group\x18\x02 \x01(\tR\rresourceGroup\x12\'\n\x0fstorage_account\x18\x03 \x01(\tR\x0estorageAccount\x12\'\n\x0fsubscription_id\x18\x04 \x01(\tR\x0esubscriptionId\x12<\n\x1asecurity_principal_enabled\x18\x05 \x01(\x08R\x18securityPrincipalEnabled\"M\n\rGceProperties\x12\x18\n\x07project\x18\x01 \x01(\tR\x07project\x12\"\n\x0csubscription\x18\x02 \x01(\tR\x0csubscription\"\'\n\rIbmProperties\x12\x16\n\x06\x62ucket\x18\x01 \x01(\tR\x06\x62ucket\"\x8d\x02\n\x06Status\x12\x16\n\x06status\x18\x01 \x01(\tR\x06status\x12#\n\rerror_message\x18\x02 \x01(\tR\x0c\x65rrorMessage\x12\x39\n\nflow_found\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.BoolValueR\tflowFound\x12\x39\n\napi_access\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.BoolValueR\tapiAccess\x12P\n\x16storage_account_access\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.BoolValueR\x14storageAccountAccess\"a\n\x18\x43reateCloudExportRequest\x12\x45\n\x06\x65xport\x18\x01 \x01(\x0b\x32-.kentik.cloud_export.v202101beta1.CloudExportR\x06\x65xport\"b\n\x19\x43reateCloudExportResponse\x12\x45\n\x06\x65xport\x18\x01 \x01(\x0b\x32-.kentik.cloud_export.v202101beta1.CloudExportR\x06\x65xport\"\x18\n\x16ListCloudExportRequest\"\x96\x01\n\x17ListCloudExportResponse\x12G\n\x07\x65xports\x18\x01 \x03(\x0b\x32-.kentik.cloud_export.v202101beta1.CloudExportR\x07\x65xports\x12\x32\n\x15invalid_exports_count\x18\x02 \x01(\rR\x13invalidExportsCount\"\'\n\x15GetCloudExportRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"_\n\x16GetCloudExportResponse\x12\x45\n\x06\x65xport\x18\x01 \x01(\x0b\x32-.kentik.cloud_export.v202101beta1.CloudExportR\x06\x65xport\"\x90\x01\n\x17PatchCloudExportRequest\x12\x45\n\x06\x65xport\x18\x01 \x01(\x0b\x32-.kentik.cloud_export.v202101beta1.CloudExportR\x06\x65xport\x12.\n\x04mask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMaskR\x04mask\"a\n\x18PatchCloudExportResponse\x12\x45\n\x06\x65xport\x18\x01 \x01(\x0b\x32-.kentik.cloud_export.v202101beta1.CloudExportR\x06\x65xport\"a\n\x18UpdateCloudExportRequest\x12\x45\n\x06\x65xport\x18\x01 \x01(\x0b\x32-.kentik.cloud_export.v202101beta1.CloudExportR\x06\x65xport\"b\n\x19UpdateCloudExportResponse\x12\x45\n\x06\x65xport\x18\x01 \x01(\x0b\x32-.kentik.cloud_export.v202101beta1.CloudExportR\x06\x65xport\"*\n\x18\x44\x65leteCloudExportRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"\x1b\n\x19\x44\x65leteCloudExportResponse*\x82\x01\n\x0f\x43loudExportType\x12!\n\x1d\x43LOUD_EXPORT_TYPE_UNSPECIFIED\x10\x00\x12$\n CLOUD_EXPORT_TYPE_KENTIK_MANAGED\x10\x01\x12&\n\"CLOUD_EXPORT_TYPE_CUSTOMER_MANAGED\x10\x02\x32\xad\x0f\n\x17\x43loudExportAdminService\x12\xba\x02\n\x11\x43reateCloudExport\x12:.kentik.cloud_export.v202101beta1.CreateCloudExportRequest\x1a;.kentik.cloud_export.v202101beta1.CreateCloudExportResponse\"\xab\x01\x92\x41_\x12\x14\x43reate Cloud Export.\x1a\x39\x43reate cloud export from request. Returns created export.*\x0c\x45xportCreate\xf2\xd7\x02\x18\x61\x64min.cloud_export:write\x82\xd3\xe4\x93\x02\'\"\"/cloud_export/v202101beta1/exports:\x01*\x12\x92\x02\n\x0fListCloudExport\x12\x38.kentik.cloud_export.v202101beta1.ListCloudExportRequest\x1a\x39.kentik.cloud_export.v202101beta1.ListCloudExportResponse\"\x89\x01\x92\x41\x41\x12\x12List Cloud Export.\x1a\x1fReturns a list of cloud export.*\nExportList\xf2\xd7\x02\x17\x61\x64min.cloud_export:read\x82\xd3\xe4\x93\x02$\x12\"/cloud_export/v202101beta1/exports\x12\xbc\x02\n\x0eGetCloudExport\x12\x37.kentik.cloud_export.v202101beta1.GetCloudExportRequest\x1a\x38.kentik.cloud_export.v202101beta1.GetCloudExportResponse\"\xb6\x01\x92\x41i\x12 Get information about an export.\x1a:Returns information about export specified with export ID.*\tExportGet\xf2\xd7\x02\x17\x61\x64min.cloud_export:read\x82\xd3\xe4\x93\x02)\x12\'/cloud_export/v202101beta1/exports/{id}\x12\xd9\x02\n\x10PatchCloudExport\x12\x39.kentik.cloud_export.v202101beta1.PatchCloudExportRequest\x1a:.kentik.cloud_export.v202101beta1.PatchCloudExportResponse\"\xcd\x01\x92\x41u\x12\x10Patch an export.\x1aTPartially Updates the attributes of export specified with id and update_mask fields.*\x0b\x45xportPatch\xf2\xd7\x02\x18\x61\x64min.cloud_export:write\x82\xd3\xe4\x93\x02\x33\x32./cloud_export/v202101beta1/exports/{export.id}:\x01*\x12\xc2\x02\n\x11UpdateCloudExport\x12:.kentik.cloud_export.v202101beta1.UpdateCloudExportRequest\x1a;.kentik.cloud_export.v202101beta1.UpdateCloudExportResponse\"\xb3\x01\x92\x41[\x12\x11Update an export.\x1a\x38Replaces the entire export attributes specified with id.*\x0c\x45xportUpdate\xf2\xd7\x02\x18\x61\x64min.cloud_export:write\x82\xd3\xe4\x93\x02\x33\x1a./cloud_export/v202101beta1/exports/{export.id}:\x01*\x12\xa5\x02\n\x11\x44\x65leteCloudExport\x12:.kentik.cloud_export.v202101beta1.DeleteCloudExportRequest\x1a;.kentik.cloud_export.v202101beta1.DeleteCloudExportResponse\"\x96\x01\x92\x41H\x12\x11\x44\x65lete an export.\x1a%Deletes the export specified with id.*\x0c\x45xportDelete\xf2\xd7\x02\x18\x61\x64min.cloud_export:write\x82\xd3\xe4\x93\x02)*\'/cloud_export/v202101beta1/exports/{id}\x1a\x38\xca\x41\x1b\x63loud_export.api.kentik.com\xea\xd7\x02\x12\x61\x64min.cloud_export\x90\xd8\x02\x03\x42\xec\x03ZTgithub.com/kentik/api-schema-public/go/kentik/cloud_export/v202101beta1;cloud_export\x92\x41\x92\x03\x12\xab\x01\n\x16\x43loud Export Admin API\x12K--- This API has been deprecated and will be removed in the near future ---\"7\n\x16Kentik API Engineering\x12\x1dhttps://github.com/kentik/api2\x0b\x32\x30\x32\x31\x30\x31\x62\x65ta1*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r]\n%General information about Kentik APIs\x12\x34https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overviewb\x06proto3'
+  serialized_pb=b'\n3kentik/cloud_export/v202101beta1/cloud_export.proto\x12 kentik.cloud_export.v202101beta1\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a google/protobuf/field_mask.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a%kentik/core/v202303/annotations.proto\"\xe8\x05\n\x0b\x43loudExport\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x45\n\x04type\x18\x0f \x01(\x0e\x32\x31.kentik.cloud_export.v202101beta1.CloudExportTypeR\x04type\x12\x18\n\x07\x65nabled\x18\x02 \x01(\x08R\x07\x65nabled\x12\x12\n\x04name\x18\x03 \x01(\tR\x04name\x12 \n\x0b\x64\x65scription\x18\x04 \x01(\tR\x0b\x64\x65scription\x12\x19\n\x08\x61pi_root\x18\x05 \x01(\tR\x07\x61piRoot\x12\x1b\n\tflow_dest\x18\x06 \x01(\tR\x08\x66lowDest\x12\x17\n\x07plan_id\x18\x07 \x01(\tR\x06planId\x12%\n\x0e\x63loud_provider\x18\x08 \x01(\tR\rcloudProvider\x12\x43\n\x03\x61ws\x18\t \x01(\x0b\x32/.kentik.cloud_export.v202101beta1.AwsPropertiesH\x00R\x03\x61ws\x12I\n\x05\x61zure\x18\n \x01(\x0b\x32\x31.kentik.cloud_export.v202101beta1.AzurePropertiesH\x00R\x05\x61zure\x12\x43\n\x03gce\x18\x0b \x01(\x0b\x32/.kentik.cloud_export.v202101beta1.GcePropertiesH\x00R\x03gce\x12\x43\n\x03ibm\x18\x0c \x01(\x0b\x32/.kentik.cloud_export.v202101beta1.IbmPropertiesH\x00R\x03ibm\x12\x41\n\x03\x62gp\x18\r \x01(\x0b\x32/.kentik.cloud_export.v202101beta1.BgpPropertiesR\x03\x62gp\x12O\n\x0e\x63urrent_status\x18\x0e \x01(\x0b\x32(.kentik.cloud_export.v202101beta1.StatusR\rcurrentStatusB\x0c\n\nproperties\"\x7f\n\rBgpProperties\x12\x1b\n\tapply_bgp\x18\x01 \x01(\x08R\x08\x61pplyBgp\x12)\n\x11use_bgp_device_id\x18\x02 \x01(\tR\x0euseBgpDeviceId\x12&\n\x0f\x64\x65vice_bgp_type\x18\x03 \x01(\tR\rdeviceBgpType\"\xb8\x01\n\rAwsProperties\x12\x16\n\x06\x62ucket\x18\x01 \x01(\tR\x06\x62ucket\x12 \n\x0ciam_role_arn\x18\x02 \x01(\tR\niamRoleArn\x12\x16\n\x06region\x18\x03 \x01(\tR\x06region\x12*\n\x11\x64\x65lete_after_read\x18\x04 \x01(\x08R\x0f\x64\x65leteAfterRead\x12)\n\x10multiple_buckets\x18\x05 \x01(\x08R\x0fmultipleBuckets\"\xe4\x01\n\x0f\x41zureProperties\x12\x1a\n\x08location\x18\x01 \x01(\tR\x08location\x12%\n\x0eresource_group\x18\x02 \x01(\tR\rresourceGroup\x12\'\n\x0fstorage_account\x18\x03 \x01(\tR\x0estorageAccount\x12\'\n\x0fsubscription_id\x18\x04 \x01(\tR\x0esubscriptionId\x12<\n\x1asecurity_principal_enabled\x18\x05 \x01(\x08R\x18securityPrincipalEnabled\"M\n\rGceProperties\x12\x18\n\x07project\x18\x01 \x01(\tR\x07project\x12\"\n\x0csubscription\x18\x02 \x01(\tR\x0csubscription\"\'\n\rIbmProperties\x12\x16\n\x06\x62ucket\x18\x01 \x01(\tR\x06\x62ucket\"\x8d\x02\n\x06Status\x12\x16\n\x06status\x18\x01 \x01(\tR\x06status\x12#\n\rerror_message\x18\x02 \x01(\tR\x0c\x65rrorMessage\x12\x39\n\nflow_found\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.BoolValueR\tflowFound\x12\x39\n\napi_access\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.BoolValueR\tapiAccess\x12P\n\x16storage_account_access\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.BoolValueR\x14storageAccountAccess\"a\n\x18\x43reateCloudExportRequest\x12\x45\n\x06\x65xport\x18\x01 \x01(\x0b\x32-.kentik.cloud_export.v202101beta1.CloudExportR\x06\x65xport\"b\n\x19\x43reateCloudExportResponse\x12\x45\n\x06\x65xport\x18\x01 \x01(\x0b\x32-.kentik.cloud_export.v202101beta1.CloudExportR\x06\x65xport\"\x18\n\x16ListCloudExportRequest\"\x96\x01\n\x17ListCloudExportResponse\x12G\n\x07\x65xports\x18\x01 \x03(\x0b\x32-.kentik.cloud_export.v202101beta1.CloudExportR\x07\x65xports\x12\x32\n\x15invalid_exports_count\x18\x02 \x01(\rR\x13invalidExportsCount\"\'\n\x15GetCloudExportRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"_\n\x16GetCloudExportResponse\x12\x45\n\x06\x65xport\x18\x01 \x01(\x0b\x32-.kentik.cloud_export.v202101beta1.CloudExportR\x06\x65xport\"\x90\x01\n\x17PatchCloudExportRequest\x12\x45\n\x06\x65xport\x18\x01 \x01(\x0b\x32-.kentik.cloud_export.v202101beta1.CloudExportR\x06\x65xport\x12.\n\x04mask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMaskR\x04mask\"a\n\x18PatchCloudExportResponse\x12\x45\n\x06\x65xport\x18\x01 \x01(\x0b\x32-.kentik.cloud_export.v202101beta1.CloudExportR\x06\x65xport\"a\n\x18UpdateCloudExportRequest\x12\x45\n\x06\x65xport\x18\x01 \x01(\x0b\x32-.kentik.cloud_export.v202101beta1.CloudExportR\x06\x65xport\"b\n\x19UpdateCloudExportResponse\x12\x45\n\x06\x65xport\x18\x01 \x01(\x0b\x32-.kentik.cloud_export.v202101beta1.CloudExportR\x06\x65xport\"*\n\x18\x44\x65leteCloudExportRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"\x1b\n\x19\x44\x65leteCloudExportResponse*\x82\x01\n\x0f\x43loudExportType\x12!\n\x1d\x43LOUD_EXPORT_TYPE_UNSPECIFIED\x10\x00\x12$\n CLOUD_EXPORT_TYPE_KENTIK_MANAGED\x10\x01\x12&\n\"CLOUD_EXPORT_TYPE_CUSTOMER_MANAGED\x10\x02\x32\xad\x0f\n\x17\x43loudExportAdminService\x12\xba\x02\n\x11\x43reateCloudExport\x12:.kentik.cloud_export.v202101beta1.CreateCloudExportRequest\x1a;.kentik.cloud_export.v202101beta1.CreateCloudExportResponse\"\xab\x01\x92\x41_\x12\x14\x43reate Cloud Export.\x1a\x39\x43reate cloud export from request. Returns created export.*\x0c\x45xportCreate\xf2\xd7\x02\x18\x61\x64min.cloud_export:write\x82\xd3\xe4\x93\x02\'\"\"/cloud_export/v202101beta1/exports:\x01*\x12\x92\x02\n\x0fListCloudExport\x12\x38.kentik.cloud_export.v202101beta1.ListCloudExportRequest\x1a\x39.kentik.cloud_export.v202101beta1.ListCloudExportResponse\"\x89\x01\x92\x41\x41\x12\x12List Cloud Export.\x1a\x1fReturns a list of cloud export.*\nExportList\xf2\xd7\x02\x17\x61\x64min.cloud_export:read\x82\xd3\xe4\x93\x02$\x12\"/cloud_export/v202101beta1/exports\x12\xbc\x02\n\x0eGetCloudExport\x12\x37.kentik.cloud_export.v202101beta1.GetCloudExportRequest\x1a\x38.kentik.cloud_export.v202101beta1.GetCloudExportResponse\"\xb6\x01\x92\x41i\x12 Get information about an export.\x1a:Returns information about export specified with export ID.*\tExportGet\xf2\xd7\x02\x17\x61\x64min.cloud_export:read\x82\xd3\xe4\x93\x02)\x12\'/cloud_export/v202101beta1/exports/{id}\x12\xd9\x02\n\x10PatchCloudExport\x12\x39.kentik.cloud_export.v202101beta1.PatchCloudExportRequest\x1a:.kentik.cloud_export.v202101beta1.PatchCloudExportResponse\"\xcd\x01\x92\x41u\x12\x10Patch an export.\x1aTPartially Updates the attributes of export specified with id and update_mask fields.*\x0b\x45xportPatch\xf2\xd7\x02\x18\x61\x64min.cloud_export:write\x82\xd3\xe4\x93\x02\x33\x32./cloud_export/v202101beta1/exports/{export.id}:\x01*\x12\xc2\x02\n\x11UpdateCloudExport\x12:.kentik.cloud_export.v202101beta1.UpdateCloudExportRequest\x1a;.kentik.cloud_export.v202101beta1.UpdateCloudExportResponse\"\xb3\x01\x92\x41[\x12\x11Update an export.\x1a\x38Replaces the entire export attributes specified with id.*\x0c\x45xportUpdate\xf2\xd7\x02\x18\x61\x64min.cloud_export:write\x82\xd3\xe4\x93\x02\x33\x1a./cloud_export/v202101beta1/exports/{export.id}:\x01*\x12\xa5\x02\n\x11\x44\x65leteCloudExport\x12:.kentik.cloud_export.v202101beta1.DeleteCloudExportRequest\x1a;.kentik.cloud_export.v202101beta1.DeleteCloudExportResponse\"\x96\x01\x92\x41H\x12\x11\x44\x65lete an export.\x1a%Deletes the export specified with id.*\x0c\x45xportDelete\xf2\xd7\x02\x18\x61\x64min.cloud_export:write\x82\xd3\xe4\x93\x02)*\'/cloud_export/v202101beta1/exports/{id}\x1a\x38\xca\x41\x1b\x63loud_export.api.kentik.com\xea\xd7\x02\x12\x61\x64min.cloud_export\x90\xd8\x02\x03\x42\xec\x03ZTgithub.com/kentik/api-schema-public/go/kentik/cloud_export/v202101beta1;cloud_export\x92\x41\x92\x03\x12\xab\x01\n\x16\x43loud Export Admin API\x12K--- This API has been deprecated and will be removed in the near future ---\"7\n\x16Kentik API Engineering\x12\x1dhttps://github.com/kentik/api2\x0b\x32\x30\x32\x31\x30\x31\x62\x65ta1*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r]\n%General information about Kentik APIs\x12\x34https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overviewb\x06proto3'
   ,
-  dependencies=[google_dot_protobuf_dot_wrappers__pb2.DESCRIPTOR,google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_api_dot_client__pb2.DESCRIPTOR,google_dot_protobuf_dot_field__mask__pb2.DESCRIPTOR,protoc__gen__openapiv2_dot_options_dot_annotations__pb2.DESCRIPTOR,kentik_dot_core_dot_v202012alpha1_dot_annotations__pb2.DESCRIPTOR,])
+  dependencies=[google_dot_protobuf_dot_wrappers__pb2.DESCRIPTOR,google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_api_dot_client__pb2.DESCRIPTOR,google_dot_protobuf_dot_field__mask__pb2.DESCRIPTOR,protoc__gen__openapiv2_dot_options_dot_annotations__pb2.DESCRIPTOR,kentik_dot_core_dot_v202303_dot_annotations__pb2.DESCRIPTOR,])
 
 _CLOUDEXPORTTYPE = _descriptor.EnumDescriptor(
   name='CloudExportType',
@@ -55,8 +55,8 @@ _CLOUDEXPORTTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=3024,
-  serialized_end=3154,
+  serialized_start=3018,
+  serialized_end=3148,
 )
 _sym_db.RegisterEnumDescriptor(_CLOUDEXPORTTYPE)
 
@@ -197,8 +197,8 @@ _CLOUDEXPORT = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=304,
-  serialized_end=1048,
+  serialized_start=298,
+  serialized_end=1042,
 )
 
 
@@ -243,8 +243,8 @@ _BGPPROPERTIES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1050,
-  serialized_end=1177,
+  serialized_start=1044,
+  serialized_end=1171,
 )
 
 
@@ -303,8 +303,8 @@ _AWSPROPERTIES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1180,
-  serialized_end=1364,
+  serialized_start=1174,
+  serialized_end=1358,
 )
 
 
@@ -363,8 +363,8 @@ _AZUREPROPERTIES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1367,
-  serialized_end=1595,
+  serialized_start=1361,
+  serialized_end=1589,
 )
 
 
@@ -402,8 +402,8 @@ _GCEPROPERTIES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1597,
-  serialized_end=1674,
+  serialized_start=1591,
+  serialized_end=1668,
 )
 
 
@@ -434,8 +434,8 @@ _IBMPROPERTIES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1676,
-  serialized_end=1715,
+  serialized_start=1670,
+  serialized_end=1709,
 )
 
 
@@ -494,8 +494,8 @@ _STATUS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1718,
-  serialized_end=1987,
+  serialized_start=1712,
+  serialized_end=1981,
 )
 
 
@@ -526,8 +526,8 @@ _CREATECLOUDEXPORTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1989,
-  serialized_end=2086,
+  serialized_start=1983,
+  serialized_end=2080,
 )
 
 
@@ -558,8 +558,8 @@ _CREATECLOUDEXPORTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2088,
-  serialized_end=2186,
+  serialized_start=2082,
+  serialized_end=2180,
 )
 
 
@@ -583,8 +583,8 @@ _LISTCLOUDEXPORTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2188,
-  serialized_end=2212,
+  serialized_start=2182,
+  serialized_end=2206,
 )
 
 
@@ -622,8 +622,8 @@ _LISTCLOUDEXPORTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2215,
-  serialized_end=2365,
+  serialized_start=2209,
+  serialized_end=2359,
 )
 
 
@@ -654,8 +654,8 @@ _GETCLOUDEXPORTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2367,
-  serialized_end=2406,
+  serialized_start=2361,
+  serialized_end=2400,
 )
 
 
@@ -686,8 +686,8 @@ _GETCLOUDEXPORTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2408,
-  serialized_end=2503,
+  serialized_start=2402,
+  serialized_end=2497,
 )
 
 
@@ -725,8 +725,8 @@ _PATCHCLOUDEXPORTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2506,
-  serialized_end=2650,
+  serialized_start=2500,
+  serialized_end=2644,
 )
 
 
@@ -757,8 +757,8 @@ _PATCHCLOUDEXPORTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2652,
-  serialized_end=2749,
+  serialized_start=2646,
+  serialized_end=2743,
 )
 
 
@@ -789,8 +789,8 @@ _UPDATECLOUDEXPORTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2751,
-  serialized_end=2848,
+  serialized_start=2745,
+  serialized_end=2842,
 )
 
 
@@ -821,8 +821,8 @@ _UPDATECLOUDEXPORTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2850,
-  serialized_end=2948,
+  serialized_start=2844,
+  serialized_end=2942,
 )
 
 
@@ -853,8 +853,8 @@ _DELETECLOUDEXPORTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2950,
-  serialized_end=2992,
+  serialized_start=2944,
+  serialized_end=2986,
 )
 
 
@@ -878,8 +878,8 @@ _DELETECLOUDEXPORTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2994,
-  serialized_end=3021,
+  serialized_start=2988,
+  serialized_end=3015,
 )
 
 _CLOUDEXPORT.fields_by_name['type'].enum_type = _CLOUDEXPORTTYPE
@@ -1078,8 +1078,8 @@ _CLOUDEXPORTADMINSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=b'\312A\033cloud_export.api.kentik.com\352\327\002\022admin.cloud_export\220\330\002\003',
   create_key=_descriptor._internal_create_key,
-  serialized_start=3157,
-  serialized_end=5122,
+  serialized_start=3151,
+  serialized_end=5116,
   methods=[
   _descriptor.MethodDescriptor(
     name='CreateCloudExport',

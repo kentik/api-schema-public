@@ -17,7 +17,7 @@ PROTOBUF_C__BEGIN_DECLS
 #include "google/api/annotations.pb-c.h"
 #include "google/api/client.pb-c.h"
 #include "protoc-gen-openapiv2/options/annotations.pb-c.h"
-#include "kentik/core/v202012alpha1/annotations.pb-c.h"
+#include "kentik/core/v202303/annotations.pb-c.h"
 #include "google/protobuf/timestamp.pb-c.h"
 
 typedef struct _Kentik__NotificationChannel__V202204alpha1__NotificationChannel Kentik__NotificationChannel__V202204alpha1__NotificationChannel;

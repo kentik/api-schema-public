@@ -8,10 +8,9 @@ import "google/api/client.proto";
 import "google/protobuf/timestamp.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
 
-import "kentik/core/v202012alpha1/annotations.proto";
-import "kentik/ktrac/route/v202104/elem.proto";
-import "kentik/ktrac/route/v202104/annotations.proto";
-import "kentik/synthetics/v202202/synthetics.proto";
+import "kentik/core/v202303/annotations.proto";
+import "kentik/core/v202303/user_info.proto";
+import "kentik/net/v202303/bgp_types.proto";
 
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   info: {
@@ -73,8 +72,8 @@ enum BgpMonitorStatus {
 }
 
 message Nlri {
-  kentik.ktrac.route.v202104.Afi afi = 1;
-  kentik.ktrac.route.v202104.Safi safi = 2;
+  kentik.net.v202303.Afi afi = 1;
+  kentik.net.v202303.Safi safi = 2;
   oneof type {
         string prefix = 3;
     }
@@ -101,8 +100,8 @@ message BgpMonitor {
     BgpMonitorSettings settings = 4;
     google.protobuf.Timestamp cdate = 5;
     google.protobuf.Timestamp edate = 6;
-    kentik.synthetics.v202202.UserInfo created_by = 7;
-    kentik.synthetics.v202202.UserInfo last_updated_by = 8;
+    kentik.core.v202303.UserInfo created_by = 7;
+    kentik.core.v202303.UserInfo last_updated_by = 8;
     repeated string labels = 9;
 }
 
@@ -122,8 +121,8 @@ message RouteInfo {
   }
   ];
   repeated string as_path = 3 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "AS path observed at the vantage point for the NLRI"}];
-  kentik.ktrac.route.v202104.VantagePoint vantage_point = 4 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Name of the vantage point providing the observation"}];
-  kentik.ktrac.route.v202104.RpkiStatus rpki_status = 5;
+  kentik.net.v202303.VantagePoint vantage_point = 4 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Name of the vantage point providing the observation"}];
+  kentik.net.v202303.RpkiStatus rpki_status = 5;
   string nexthop = 6;
 }
 
@@ -187,13 +186,13 @@ message SetMonitorStatusResponse {}
 
 service BgpMonitoringAdminService {
     option (google.api.default_host) = "grpc.api.kentik.com";
-    option (kentik.core.v202012alpha1.visibility) = SERVICE_VISIBILITY_PUBLIC;
-    option (kentik.core.v202012alpha1.service_scope) = "admin.synthetics";
+    option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+    option (kentik.core.v202303.service_scope) = "admin.synthetics";
 
     // Monitors
 
     rpc ListMonitors(ListMonitorsRequest) returns (ListMonitorsResponse) {
-      option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:read";
+      option (kentik.core.v202303.method_scope) = "admin.synthetics:read";
       option (google.api.http) = {
         get: "/bgp_monitoring/v202205beta1/monitors"
       };
@@ -205,7 +204,7 @@ service BgpMonitoringAdminService {
     }
 
     rpc CreateMonitor(CreateMonitorRequest) returns (CreateMonitorResponse) {
-      option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:write";
+      option (kentik.core.v202303.method_scope) = "admin.synthetics:write";
       option (google.api.http) = {
         post: "/bgp_monitoring/v202205beta1/monitors"
         body: "*"
@@ -213,7 +212,7 @@ service BgpMonitoringAdminService {
     }
 
     rpc GetMonitor(GetMonitorRequest) returns (GetMonitorResponse) {
-      option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:read";
+      option (kentik.core.v202303.method_scope) = "admin.synthetics:read";
       option (google.api.http) = {
         get: "/bgp_monitoring/v202205beta1/monitors/{id}"
       };
@@ -225,7 +224,7 @@ service BgpMonitoringAdminService {
     }
 
     rpc UpdateMonitor(UpdateMonitorRequest) returns (UpdateMonitorResponse) {
-      option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:write";
+      option (kentik.core.v202303.method_scope) = "admin.synthetics:write";
       option (google.api.http) = {
         put: "/bgp_monitoring/v202205beta1/monitors/{monitor.id}"
         body: "*"
@@ -238,7 +237,7 @@ service BgpMonitoringAdminService {
     }
 
     rpc DeleteMonitor(DeleteMonitorRequest) returns (DeleteMonitorResponse) {
-      option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:write";
+      option (kentik.core.v202303.method_scope) = "admin.synthetics:write";
       option (google.api.http) = {
         delete: "/bgp_monitoring/v202205beta1/monitors/{id}"
       };
@@ -250,7 +249,7 @@ service BgpMonitoringAdminService {
     }
 
     rpc SetMonitorStatus(SetMonitorStatusRequest) returns (SetMonitorStatusResponse) {
-      option (kentik.core.v202012alpha1.method_scope) = "admin.synthetics:write";
+      option (kentik.core.v202303.method_scope) = "admin.synthetics:write";
       option (google.api.http) = {
         put: "/bgp_monitoring/v202205beta1/monitors/{id}/status"
         body: "*"
@@ -293,11 +292,11 @@ message GetRoutesForTargetResponse {
 
 service BgpMonitoringDataService {
     option (google.api.default_host) = "grpc.api.kentik.com";
-    option (kentik.core.v202012alpha1.visibility) = SERVICE_VISIBILITY_PUBLIC;
-    option (kentik.core.v202012alpha1.service_scope) = "synthetics";
+    option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+    option (kentik.core.v202303.service_scope) = "synthetics";
 
     rpc GetMetricsForTarget (GetMetricsForTargetRequest) returns (GetMetricsForTargetResponse) {
-      option (kentik.core.v202012alpha1.method_scope) = "synthetics:read";
+      option (kentik.core.v202303.method_scope) = "synthetics:read";
       option (google.api.http) = {
         post: "/bgp_monitoring/v202205beta1/metrics"
         body: "*"
@@ -310,7 +309,7 @@ service BgpMonitoringDataService {
     }
 
     rpc GetRoutesForTarget (GetRoutesForTargetRequest) returns (GetRoutesForTargetResponse) {
-      option (kentik.core.v202012alpha1.method_scope) = "synthetics:read";
+      option (kentik.core.v202303.method_scope) = "synthetics:read";
       option (google.api.http) = {
         post: "/bgp_monitoring/v202205beta1/routes"
         body: "*"

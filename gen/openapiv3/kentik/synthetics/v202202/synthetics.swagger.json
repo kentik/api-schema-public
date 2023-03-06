@@ -1672,10 +1672,10 @@
                         "readOnly": true
                     },
                     "createdBy": {
-                        "$ref": "#/components/schemas/v202202UserInfo"
+                        "$ref": "#/components/schemas/v202303UserInfo"
                     },
                     "lastUpdatedBy": {
-                        "$ref": "#/components/schemas/v202202UserInfo"
+                        "$ref": "#/components/schemas/v202303UserInfo"
                     },
                     "labels": {
                         "type": "array",
@@ -1963,12 +1963,12 @@
                 },
                 "title": "UrlTest"
             },
-            "v202202UserInfo": {
+            "v202303UserInfo": {
                 "type": "object",
                 "properties": {
                     "id": {
                         "type": "string",
-                        "description": "Unique ID of the user",
+                        "description": "Unique system generated ID",
                         "readOnly": true
                     },
                     "email": {

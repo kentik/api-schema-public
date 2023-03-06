@@ -6,7 +6,7 @@ option go_package = "github.com/kentik/api-schema-public/go/kentik/label/v202203
 import "google/api/annotations.proto";
 import "google/api/client.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
-import "kentik/core/v202012alpha1/annotations.proto";
+import "kentik/core/v202303/annotations.proto";
 import "google/protobuf/timestamp.proto";
 
 
@@ -98,12 +98,12 @@ message DeleteLabelResponse {}
 
 service LabelService {
   option (google.api.default_host) = "grpc.api.kentik.com";
-  option (kentik.core.v202012alpha1.visibility) = SERVICE_VISIBILITY_PUBLIC;
-  option (kentik.core.v202012alpha1.service_scope) = "admin.label";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "admin.label";
 
 
   rpc ListLabels(ListLabelsRequest) returns (ListLabelsResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.label:read";
+    option (kentik.core.v202303.method_scope) = "admin.label:read";
     option (google.api.http) = {
       get: "/label/v202203alpha1/labels"
     };
@@ -115,7 +115,7 @@ service LabelService {
   }
 
   rpc CreateLabel(CreateLabelRequest) returns (CreateLabelResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.label:write";
+    option (kentik.core.v202303.method_scope) = "admin.label:write";
     option (google.api.http) = {
       post: "/label/v202203alpha1/labels"
       body: "*"
@@ -128,7 +128,7 @@ service LabelService {
   }
 
   rpc UpdateLabel(UpdateLabelRequest) returns (UpdateLabelResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.label:write";
+    option (kentik.core.v202303.method_scope) = "admin.label:write";
     option (google.api.http) = {
       post: "/label/v202203alpha1/labels/{label.id}"
       body: "*"
@@ -141,7 +141,7 @@ service LabelService {
   }
 
   rpc DeleteLabel(DeleteLabelRequest) returns (DeleteLabelResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.label:write";
+    option (kentik.core.v202303.method_scope) = "admin.label:write";
     option (google.api.http) = {
       delete: "/label/v202203alpha1/labels/{id}"
     };

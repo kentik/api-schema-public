@@ -13,10 +13,9 @@ import google.api.annotations_pb2
 import google.api.client_pb2
 import google.protobuf.timestamp_pb2
 import protoc_gen_openapiv2.options.annotations_pb2
-import kentik.core.v202012alpha1.annotations_pb2
-import kentik.ktrac.route.v202104.elem_pb2
-import kentik.ktrac.route.v202104.annotations_pb2
-import kentik.synthetics.v202202.synthetics_pb2
+import kentik.core.v202303.annotations_pb2
+import kentik.core.v202303.user_info_pb2
+import kentik.net.v202303.bgp_types_pb2
 import kentik.bgp_monitoring.v202205beta1.bgp_monitoring_pb2
 
 

@@ -38,7 +38,7 @@
 #include "google/type/latlng.pb.h"
 #include "google/type/postal_address.pb.h"
 #include "protoc-gen-openapiv2/options/annotations.pb.h"
-#include "kentik/core/v202012alpha1/annotations.pb.h"
+#include "kentik/core/v202303/annotations.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_kentik_2fsite_2fv202106alpha1_2fsite_2eproto

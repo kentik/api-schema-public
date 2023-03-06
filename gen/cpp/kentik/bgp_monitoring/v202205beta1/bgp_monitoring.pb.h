@@ -40,10 +40,9 @@
 #include "google/api/client.pb.h"
 #include <google/protobuf/timestamp.pb.h>
 #include "protoc-gen-openapiv2/options/annotations.pb.h"
-#include "kentik/core/v202012alpha1/annotations.pb.h"
-#include "kentik/ktrac/route/v202104/elem.pb.h"
-#include "kentik/ktrac/route/v202104/annotations.pb.h"
-#include "kentik/synthetics/v202202/synthetics.pb.h"
+#include "kentik/core/v202303/annotations.pb.h"
+#include "kentik/core/v202303/user_info.pb.h"
+#include "kentik/net/v202303/bgp_types.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto
@@ -347,22 +346,22 @@ class Nlri PROTOBUF_FINAL :
     kSafiFieldNumber = 2,
     kPrefixFieldNumber = 3,
   };
-  // .kentik.ktrac.route.v202104.Afi afi = 1[json_name = "afi"];
+  // .kentik.net.v202303.Afi afi = 1[json_name = "afi"];
   void clear_afi();
-  ::kentik::ktrac::route::v202104::Afi afi() const;
-  void set_afi(::kentik::ktrac::route::v202104::Afi value);
+  ::kentik::net::v202303::Afi afi() const;
+  void set_afi(::kentik::net::v202303::Afi value);
   private:
-  ::kentik::ktrac::route::v202104::Afi _internal_afi() const;
-  void _internal_set_afi(::kentik::ktrac::route::v202104::Afi value);
+  ::kentik::net::v202303::Afi _internal_afi() const;
+  void _internal_set_afi(::kentik::net::v202303::Afi value);
   public:
 
-  // .kentik.ktrac.route.v202104.Safi safi = 2[json_name = "safi"];
+  // .kentik.net.v202303.Safi safi = 2[json_name = "safi"];
   void clear_safi();
-  ::kentik::ktrac::route::v202104::Safi safi() const;
-  void set_safi(::kentik::ktrac::route::v202104::Safi value);
+  ::kentik::net::v202303::Safi safi() const;
+  void set_safi(::kentik::net::v202303::Safi value);
   private:
-  ::kentik::ktrac::route::v202104::Safi _internal_safi() const;
-  void _internal_set_safi(::kentik::ktrac::route::v202104::Safi value);
+  ::kentik::net::v202303::Safi _internal_safi() const;
+  void _internal_set_safi(::kentik::net::v202303::Safi value);
   public:
 
   // string prefix = 3[json_name = "prefix"];
@@ -1057,41 +1056,41 @@ class BgpMonitor PROTOBUF_FINAL :
       PROTOBUF_NAMESPACE_ID::Timestamp* edate);
   PROTOBUF_NAMESPACE_ID::Timestamp* unsafe_arena_release_edate();
 
-  // .kentik.synthetics.v202202.UserInfo created_by = 7[json_name = "createdBy"];
+  // .kentik.core.v202303.UserInfo created_by = 7[json_name = "createdBy"];
   bool has_created_by() const;
   private:
   bool _internal_has_created_by() const;
   public:
   void clear_created_by();
-  const ::kentik::synthetics::v202202::UserInfo& created_by() const;
-  ::kentik::synthetics::v202202::UserInfo* release_created_by();
-  ::kentik::synthetics::v202202::UserInfo* mutable_created_by();
-  void set_allocated_created_by(::kentik::synthetics::v202202::UserInfo* created_by);
+  const ::kentik::core::v202303::UserInfo& created_by() const;
+  ::kentik::core::v202303::UserInfo* release_created_by();
+  ::kentik::core::v202303::UserInfo* mutable_created_by();
+  void set_allocated_created_by(::kentik::core::v202303::UserInfo* created_by);
   private:
-  const ::kentik::synthetics::v202202::UserInfo& _internal_created_by() const;
-  ::kentik::synthetics::v202202::UserInfo* _internal_mutable_created_by();
+  const ::kentik::core::v202303::UserInfo& _internal_created_by() const;
+  ::kentik::core::v202303::UserInfo* _internal_mutable_created_by();
   public:
   void unsafe_arena_set_allocated_created_by(
-      ::kentik::synthetics::v202202::UserInfo* created_by);
-  ::kentik::synthetics::v202202::UserInfo* unsafe_arena_release_created_by();
+      ::kentik::core::v202303::UserInfo* created_by);
+  ::kentik::core::v202303::UserInfo* unsafe_arena_release_created_by();
 
-  // .kentik.synthetics.v202202.UserInfo last_updated_by = 8[json_name = "lastUpdatedBy"];
+  // .kentik.core.v202303.UserInfo last_updated_by = 8[json_name = "lastUpdatedBy"];
   bool has_last_updated_by() const;
   private:
   bool _internal_has_last_updated_by() const;
   public:
   void clear_last_updated_by();
-  const ::kentik::synthetics::v202202::UserInfo& last_updated_by() const;
-  ::kentik::synthetics::v202202::UserInfo* release_last_updated_by();
-  ::kentik::synthetics::v202202::UserInfo* mutable_last_updated_by();
-  void set_allocated_last_updated_by(::kentik::synthetics::v202202::UserInfo* last_updated_by);
+  const ::kentik::core::v202303::UserInfo& last_updated_by() const;
+  ::kentik::core::v202303::UserInfo* release_last_updated_by();
+  ::kentik::core::v202303::UserInfo* mutable_last_updated_by();
+  void set_allocated_last_updated_by(::kentik::core::v202303::UserInfo* last_updated_by);
   private:
-  const ::kentik::synthetics::v202202::UserInfo& _internal_last_updated_by() const;
-  ::kentik::synthetics::v202202::UserInfo* _internal_mutable_last_updated_by();
+  const ::kentik::core::v202303::UserInfo& _internal_last_updated_by() const;
+  ::kentik::core::v202303::UserInfo* _internal_mutable_last_updated_by();
   public:
   void unsafe_arena_set_allocated_last_updated_by(
-      ::kentik::synthetics::v202202::UserInfo* last_updated_by);
-  ::kentik::synthetics::v202202::UserInfo* unsafe_arena_release_last_updated_by();
+      ::kentik::core::v202303::UserInfo* last_updated_by);
+  ::kentik::core::v202303::UserInfo* unsafe_arena_release_last_updated_by();
 
   // .kentik.bgp_monitoring.v202205beta1.BgpMonitorStatus status = 3[json_name = "status"];
   void clear_status();
@@ -1115,8 +1114,8 @@ class BgpMonitor PROTOBUF_FINAL :
   ::kentik::bgp_monitoring::v202205beta1::BgpMonitorSettings* settings_;
   PROTOBUF_NAMESPACE_ID::Timestamp* cdate_;
   PROTOBUF_NAMESPACE_ID::Timestamp* edate_;
-  ::kentik::synthetics::v202202::UserInfo* created_by_;
-  ::kentik::synthetics::v202202::UserInfo* last_updated_by_;
+  ::kentik::core::v202303::UserInfo* created_by_;
+  ::kentik::core::v202303::UserInfo* last_updated_by_;
   int status_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_kentik_2fbgp_5fmonitoring_2fv202205beta1_2fbgp_5fmonitoring_2eproto;
@@ -1310,23 +1309,23 @@ class RouteInfo PROTOBUF_FINAL :
       ::kentik::bgp_monitoring::v202205beta1::Nlri* nlri);
   ::kentik::bgp_monitoring::v202205beta1::Nlri* unsafe_arena_release_nlri();
 
-  // .kentik.ktrac.route.v202104.VantagePoint vantage_point = 4[json_name = "vantagePoint", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  // .kentik.net.v202303.VantagePoint vantage_point = 4[json_name = "vantagePoint", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   bool has_vantage_point() const;
   private:
   bool _internal_has_vantage_point() const;
   public:
   void clear_vantage_point();
-  const ::kentik::ktrac::route::v202104::VantagePoint& vantage_point() const;
-  ::kentik::ktrac::route::v202104::VantagePoint* release_vantage_point();
-  ::kentik::ktrac::route::v202104::VantagePoint* mutable_vantage_point();
-  void set_allocated_vantage_point(::kentik::ktrac::route::v202104::VantagePoint* vantage_point);
+  const ::kentik::net::v202303::VantagePoint& vantage_point() const;
+  ::kentik::net::v202303::VantagePoint* release_vantage_point();
+  ::kentik::net::v202303::VantagePoint* mutable_vantage_point();
+  void set_allocated_vantage_point(::kentik::net::v202303::VantagePoint* vantage_point);
   private:
-  const ::kentik::ktrac::route::v202104::VantagePoint& _internal_vantage_point() const;
-  ::kentik::ktrac::route::v202104::VantagePoint* _internal_mutable_vantage_point();
+  const ::kentik::net::v202303::VantagePoint& _internal_vantage_point() const;
+  ::kentik::net::v202303::VantagePoint* _internal_mutable_vantage_point();
   public:
   void unsafe_arena_set_allocated_vantage_point(
-      ::kentik::ktrac::route::v202104::VantagePoint* vantage_point);
-  ::kentik::ktrac::route::v202104::VantagePoint* unsafe_arena_release_vantage_point();
+      ::kentik::net::v202303::VantagePoint* vantage_point);
+  ::kentik::net::v202303::VantagePoint* unsafe_arena_release_vantage_point();
 
   // uint32 origin_asn = 2[json_name = "originAsn", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   void clear_origin_asn();
@@ -1337,13 +1336,13 @@ class RouteInfo PROTOBUF_FINAL :
   void _internal_set_origin_asn(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
-  // .kentik.ktrac.route.v202104.RpkiStatus rpki_status = 5[json_name = "rpkiStatus"];
+  // .kentik.net.v202303.RpkiStatus rpki_status = 5[json_name = "rpkiStatus"];
   void clear_rpki_status();
-  ::kentik::ktrac::route::v202104::RpkiStatus rpki_status() const;
-  void set_rpki_status(::kentik::ktrac::route::v202104::RpkiStatus value);
+  ::kentik::net::v202303::RpkiStatus rpki_status() const;
+  void set_rpki_status(::kentik::net::v202303::RpkiStatus value);
   private:
-  ::kentik::ktrac::route::v202104::RpkiStatus _internal_rpki_status() const;
-  void _internal_set_rpki_status(::kentik::ktrac::route::v202104::RpkiStatus value);
+  ::kentik::net::v202303::RpkiStatus _internal_rpki_status() const;
+  void _internal_set_rpki_status(::kentik::net::v202303::RpkiStatus value);
   public:
 
   // @@protoc_insertion_point(class_scope:kentik.bgp_monitoring.v202205beta1.RouteInfo)
@@ -1356,7 +1355,7 @@ class RouteInfo PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> as_path_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr nexthop_;
   ::kentik::bgp_monitoring::v202205beta1::Nlri* nlri_;
-  ::kentik::ktrac::route::v202104::VantagePoint* vantage_point_;
+  ::kentik::net::v202303::VantagePoint* vantage_point_;
   ::PROTOBUF_NAMESPACE_ID::uint32 origin_asn_;
   int rpki_status_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
@@ -4068,42 +4067,42 @@ class GetRoutesForTargetResponse PROTOBUF_FINAL :
 #endif  // __GNUC__
 // Nlri
 
-// .kentik.ktrac.route.v202104.Afi afi = 1[json_name = "afi"];
+// .kentik.net.v202303.Afi afi = 1[json_name = "afi"];
 inline void Nlri::clear_afi() {
   afi_ = 0;
 }
-inline ::kentik::ktrac::route::v202104::Afi Nlri::_internal_afi() const {
-  return static_cast< ::kentik::ktrac::route::v202104::Afi >(afi_);
+inline ::kentik::net::v202303::Afi Nlri::_internal_afi() const {
+  return static_cast< ::kentik::net::v202303::Afi >(afi_);
 }
-inline ::kentik::ktrac::route::v202104::Afi Nlri::afi() const {
+inline ::kentik::net::v202303::Afi Nlri::afi() const {
   // @@protoc_insertion_point(field_get:kentik.bgp_monitoring.v202205beta1.Nlri.afi)
   return _internal_afi();
 }
-inline void Nlri::_internal_set_afi(::kentik::ktrac::route::v202104::Afi value) {
+inline void Nlri::_internal_set_afi(::kentik::net::v202303::Afi value) {
   
   afi_ = value;
 }
-inline void Nlri::set_afi(::kentik::ktrac::route::v202104::Afi value) {
+inline void Nlri::set_afi(::kentik::net::v202303::Afi value) {
   _internal_set_afi(value);
   // @@protoc_insertion_point(field_set:kentik.bgp_monitoring.v202205beta1.Nlri.afi)
 }
 
-// .kentik.ktrac.route.v202104.Safi safi = 2[json_name = "safi"];
+// .kentik.net.v202303.Safi safi = 2[json_name = "safi"];
 inline void Nlri::clear_safi() {
   safi_ = 0;
 }
-inline ::kentik::ktrac::route::v202104::Safi Nlri::_internal_safi() const {
-  return static_cast< ::kentik::ktrac::route::v202104::Safi >(safi_);
+inline ::kentik::net::v202303::Safi Nlri::_internal_safi() const {
+  return static_cast< ::kentik::net::v202303::Safi >(safi_);
 }
-inline ::kentik::ktrac::route::v202104::Safi Nlri::safi() const {
+inline ::kentik::net::v202303::Safi Nlri::safi() const {
   // @@protoc_insertion_point(field_get:kentik.bgp_monitoring.v202205beta1.Nlri.safi)
   return _internal_safi();
 }
-inline void Nlri::_internal_set_safi(::kentik::ktrac::route::v202104::Safi value) {
+inline void Nlri::_internal_set_safi(::kentik::net::v202303::Safi value) {
   
   safi_ = value;
 }
-inline void Nlri::set_safi(::kentik::ktrac::route::v202104::Safi value) {
+inline void Nlri::set_safi(::kentik::net::v202303::Safi value) {
   _internal_set_safi(value);
   // @@protoc_insertion_point(field_set:kentik.bgp_monitoring.v202205beta1.Nlri.safi)
 }
@@ -4988,24 +4987,24 @@ inline void BgpMonitor::set_allocated_edate(PROTOBUF_NAMESPACE_ID::Timestamp* ed
   // @@protoc_insertion_point(field_set_allocated:kentik.bgp_monitoring.v202205beta1.BgpMonitor.edate)
 }
 
-// .kentik.synthetics.v202202.UserInfo created_by = 7[json_name = "createdBy"];
+// .kentik.core.v202303.UserInfo created_by = 7[json_name = "createdBy"];
 inline bool BgpMonitor::_internal_has_created_by() const {
   return this != internal_default_instance() && created_by_ != nullptr;
 }
 inline bool BgpMonitor::has_created_by() const {
   return _internal_has_created_by();
 }
-inline const ::kentik::synthetics::v202202::UserInfo& BgpMonitor::_internal_created_by() const {
-  const ::kentik::synthetics::v202202::UserInfo* p = created_by_;
-  return p != nullptr ? *p : *reinterpret_cast<const ::kentik::synthetics::v202202::UserInfo*>(
-      &::kentik::synthetics::v202202::_UserInfo_default_instance_);
+inline const ::kentik::core::v202303::UserInfo& BgpMonitor::_internal_created_by() const {
+  const ::kentik::core::v202303::UserInfo* p = created_by_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::kentik::core::v202303::UserInfo*>(
+      &::kentik::core::v202303::_UserInfo_default_instance_);
 }
-inline const ::kentik::synthetics::v202202::UserInfo& BgpMonitor::created_by() const {
+inline const ::kentik::core::v202303::UserInfo& BgpMonitor::created_by() const {
   // @@protoc_insertion_point(field_get:kentik.bgp_monitoring.v202205beta1.BgpMonitor.created_by)
   return _internal_created_by();
 }
 inline void BgpMonitor::unsafe_arena_set_allocated_created_by(
-    ::kentik::synthetics::v202202::UserInfo* created_by) {
+    ::kentik::core::v202303::UserInfo* created_by) {
   if (GetArena() == nullptr) {
     delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(created_by_);
   }
@@ -5017,33 +5016,33 @@ inline void BgpMonitor::unsafe_arena_set_allocated_created_by(
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.bgp_monitoring.v202205beta1.BgpMonitor.created_by)
 }
-inline ::kentik::synthetics::v202202::UserInfo* BgpMonitor::release_created_by() {
+inline ::kentik::core::v202303::UserInfo* BgpMonitor::release_created_by() {
   auto temp = unsafe_arena_release_created_by();
   if (GetArena() != nullptr) {
     temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
   }
   return temp;
 }
-inline ::kentik::synthetics::v202202::UserInfo* BgpMonitor::unsafe_arena_release_created_by() {
+inline ::kentik::core::v202303::UserInfo* BgpMonitor::unsafe_arena_release_created_by() {
   // @@protoc_insertion_point(field_release:kentik.bgp_monitoring.v202205beta1.BgpMonitor.created_by)
   
-  ::kentik::synthetics::v202202::UserInfo* temp = created_by_;
+  ::kentik::core::v202303::UserInfo* temp = created_by_;
   created_by_ = nullptr;
   return temp;
 }
-inline ::kentik::synthetics::v202202::UserInfo* BgpMonitor::_internal_mutable_created_by() {
+inline ::kentik::core::v202303::UserInfo* BgpMonitor::_internal_mutable_created_by() {
   
   if (created_by_ == nullptr) {
-    auto* p = CreateMaybeMessage<::kentik::synthetics::v202202::UserInfo>(GetArena());
+    auto* p = CreateMaybeMessage<::kentik::core::v202303::UserInfo>(GetArena());
     created_by_ = p;
   }
   return created_by_;
 }
-inline ::kentik::synthetics::v202202::UserInfo* BgpMonitor::mutable_created_by() {
+inline ::kentik::core::v202303::UserInfo* BgpMonitor::mutable_created_by() {
   // @@protoc_insertion_point(field_mutable:kentik.bgp_monitoring.v202205beta1.BgpMonitor.created_by)
   return _internal_mutable_created_by();
 }
-inline void BgpMonitor::set_allocated_created_by(::kentik::synthetics::v202202::UserInfo* created_by) {
+inline void BgpMonitor::set_allocated_created_by(::kentik::core::v202303::UserInfo* created_by) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
   if (message_arena == nullptr) {
     delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(created_by_);
@@ -5063,24 +5062,24 @@ inline void BgpMonitor::set_allocated_created_by(::kentik::synthetics::v202202::
   // @@protoc_insertion_point(field_set_allocated:kentik.bgp_monitoring.v202205beta1.BgpMonitor.created_by)
 }
 
-// .kentik.synthetics.v202202.UserInfo last_updated_by = 8[json_name = "lastUpdatedBy"];
+// .kentik.core.v202303.UserInfo last_updated_by = 8[json_name = "lastUpdatedBy"];
 inline bool BgpMonitor::_internal_has_last_updated_by() const {
   return this != internal_default_instance() && last_updated_by_ != nullptr;
 }
 inline bool BgpMonitor::has_last_updated_by() const {
   return _internal_has_last_updated_by();
 }
-inline const ::kentik::synthetics::v202202::UserInfo& BgpMonitor::_internal_last_updated_by() const {
-  const ::kentik::synthetics::v202202::UserInfo* p = last_updated_by_;
-  return p != nullptr ? *p : *reinterpret_cast<const ::kentik::synthetics::v202202::UserInfo*>(
-      &::kentik::synthetics::v202202::_UserInfo_default_instance_);
+inline const ::kentik::core::v202303::UserInfo& BgpMonitor::_internal_last_updated_by() const {
+  const ::kentik::core::v202303::UserInfo* p = last_updated_by_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::kentik::core::v202303::UserInfo*>(
+      &::kentik::core::v202303::_UserInfo_default_instance_);
 }
-inline const ::kentik::synthetics::v202202::UserInfo& BgpMonitor::last_updated_by() const {
+inline const ::kentik::core::v202303::UserInfo& BgpMonitor::last_updated_by() const {
   // @@protoc_insertion_point(field_get:kentik.bgp_monitoring.v202205beta1.BgpMonitor.last_updated_by)
   return _internal_last_updated_by();
 }
 inline void BgpMonitor::unsafe_arena_set_allocated_last_updated_by(
-    ::kentik::synthetics::v202202::UserInfo* last_updated_by) {
+    ::kentik::core::v202303::UserInfo* last_updated_by) {
   if (GetArena() == nullptr) {
     delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(last_updated_by_);
   }
@@ -5092,33 +5091,33 @@ inline void BgpMonitor::unsafe_arena_set_allocated_last_updated_by(
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.bgp_monitoring.v202205beta1.BgpMonitor.last_updated_by)
 }
-inline ::kentik::synthetics::v202202::UserInfo* BgpMonitor::release_last_updated_by() {
+inline ::kentik::core::v202303::UserInfo* BgpMonitor::release_last_updated_by() {
   auto temp = unsafe_arena_release_last_updated_by();
   if (GetArena() != nullptr) {
     temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
   }
   return temp;
 }
-inline ::kentik::synthetics::v202202::UserInfo* BgpMonitor::unsafe_arena_release_last_updated_by() {
+inline ::kentik::core::v202303::UserInfo* BgpMonitor::unsafe_arena_release_last_updated_by() {
   // @@protoc_insertion_point(field_release:kentik.bgp_monitoring.v202205beta1.BgpMonitor.last_updated_by)
   
-  ::kentik::synthetics::v202202::UserInfo* temp = last_updated_by_;
+  ::kentik::core::v202303::UserInfo* temp = last_updated_by_;
   last_updated_by_ = nullptr;
   return temp;
 }
-inline ::kentik::synthetics::v202202::UserInfo* BgpMonitor::_internal_mutable_last_updated_by() {
+inline ::kentik::core::v202303::UserInfo* BgpMonitor::_internal_mutable_last_updated_by() {
   
   if (last_updated_by_ == nullptr) {
-    auto* p = CreateMaybeMessage<::kentik::synthetics::v202202::UserInfo>(GetArena());
+    auto* p = CreateMaybeMessage<::kentik::core::v202303::UserInfo>(GetArena());
     last_updated_by_ = p;
   }
   return last_updated_by_;
 }
-inline ::kentik::synthetics::v202202::UserInfo* BgpMonitor::mutable_last_updated_by() {
+inline ::kentik::core::v202303::UserInfo* BgpMonitor::mutable_last_updated_by() {
   // @@protoc_insertion_point(field_mutable:kentik.bgp_monitoring.v202205beta1.BgpMonitor.last_updated_by)
   return _internal_mutable_last_updated_by();
 }
-inline void BgpMonitor::set_allocated_last_updated_by(::kentik::synthetics::v202202::UserInfo* last_updated_by) {
+inline void BgpMonitor::set_allocated_last_updated_by(::kentik::core::v202303::UserInfo* last_updated_by) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
   if (message_arena == nullptr) {
     delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(last_updated_by_);
@@ -5391,24 +5390,24 @@ RouteInfo::mutable_as_path() {
   return &as_path_;
 }
 
-// .kentik.ktrac.route.v202104.VantagePoint vantage_point = 4[json_name = "vantagePoint", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+// .kentik.net.v202303.VantagePoint vantage_point = 4[json_name = "vantagePoint", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
 inline bool RouteInfo::_internal_has_vantage_point() const {
   return this != internal_default_instance() && vantage_point_ != nullptr;
 }
 inline bool RouteInfo::has_vantage_point() const {
   return _internal_has_vantage_point();
 }
-inline const ::kentik::ktrac::route::v202104::VantagePoint& RouteInfo::_internal_vantage_point() const {
-  const ::kentik::ktrac::route::v202104::VantagePoint* p = vantage_point_;
-  return p != nullptr ? *p : *reinterpret_cast<const ::kentik::ktrac::route::v202104::VantagePoint*>(
-      &::kentik::ktrac::route::v202104::_VantagePoint_default_instance_);
+inline const ::kentik::net::v202303::VantagePoint& RouteInfo::_internal_vantage_point() const {
+  const ::kentik::net::v202303::VantagePoint* p = vantage_point_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::kentik::net::v202303::VantagePoint*>(
+      &::kentik::net::v202303::_VantagePoint_default_instance_);
 }
-inline const ::kentik::ktrac::route::v202104::VantagePoint& RouteInfo::vantage_point() const {
+inline const ::kentik::net::v202303::VantagePoint& RouteInfo::vantage_point() const {
   // @@protoc_insertion_point(field_get:kentik.bgp_monitoring.v202205beta1.RouteInfo.vantage_point)
   return _internal_vantage_point();
 }
 inline void RouteInfo::unsafe_arena_set_allocated_vantage_point(
-    ::kentik::ktrac::route::v202104::VantagePoint* vantage_point) {
+    ::kentik::net::v202303::VantagePoint* vantage_point) {
   if (GetArena() == nullptr) {
     delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(vantage_point_);
   }
@@ -5420,33 +5419,33 @@ inline void RouteInfo::unsafe_arena_set_allocated_vantage_point(
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.bgp_monitoring.v202205beta1.RouteInfo.vantage_point)
 }
-inline ::kentik::ktrac::route::v202104::VantagePoint* RouteInfo::release_vantage_point() {
+inline ::kentik::net::v202303::VantagePoint* RouteInfo::release_vantage_point() {
   auto temp = unsafe_arena_release_vantage_point();
   if (GetArena() != nullptr) {
     temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
   }
   return temp;
 }
-inline ::kentik::ktrac::route::v202104::VantagePoint* RouteInfo::unsafe_arena_release_vantage_point() {
+inline ::kentik::net::v202303::VantagePoint* RouteInfo::unsafe_arena_release_vantage_point() {
   // @@protoc_insertion_point(field_release:kentik.bgp_monitoring.v202205beta1.RouteInfo.vantage_point)
   
-  ::kentik::ktrac::route::v202104::VantagePoint* temp = vantage_point_;
+  ::kentik::net::v202303::VantagePoint* temp = vantage_point_;
   vantage_point_ = nullptr;
   return temp;
 }
-inline ::kentik::ktrac::route::v202104::VantagePoint* RouteInfo::_internal_mutable_vantage_point() {
+inline ::kentik::net::v202303::VantagePoint* RouteInfo::_internal_mutable_vantage_point() {
   
   if (vantage_point_ == nullptr) {
-    auto* p = CreateMaybeMessage<::kentik::ktrac::route::v202104::VantagePoint>(GetArena());
+    auto* p = CreateMaybeMessage<::kentik::net::v202303::VantagePoint>(GetArena());
     vantage_point_ = p;
   }
   return vantage_point_;
 }
-inline ::kentik::ktrac::route::v202104::VantagePoint* RouteInfo::mutable_vantage_point() {
+inline ::kentik::net::v202303::VantagePoint* RouteInfo::mutable_vantage_point() {
   // @@protoc_insertion_point(field_mutable:kentik.bgp_monitoring.v202205beta1.RouteInfo.vantage_point)
   return _internal_mutable_vantage_point();
 }
-inline void RouteInfo::set_allocated_vantage_point(::kentik::ktrac::route::v202104::VantagePoint* vantage_point) {
+inline void RouteInfo::set_allocated_vantage_point(::kentik::net::v202303::VantagePoint* vantage_point) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
   if (message_arena == nullptr) {
     delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(vantage_point_);
@@ -5466,22 +5465,22 @@ inline void RouteInfo::set_allocated_vantage_point(::kentik::ktrac::route::v2021
   // @@protoc_insertion_point(field_set_allocated:kentik.bgp_monitoring.v202205beta1.RouteInfo.vantage_point)
 }
 
-// .kentik.ktrac.route.v202104.RpkiStatus rpki_status = 5[json_name = "rpkiStatus"];
+// .kentik.net.v202303.RpkiStatus rpki_status = 5[json_name = "rpkiStatus"];
 inline void RouteInfo::clear_rpki_status() {
   rpki_status_ = 0;
 }
-inline ::kentik::ktrac::route::v202104::RpkiStatus RouteInfo::_internal_rpki_status() const {
-  return static_cast< ::kentik::ktrac::route::v202104::RpkiStatus >(rpki_status_);
+inline ::kentik::net::v202303::RpkiStatus RouteInfo::_internal_rpki_status() const {
+  return static_cast< ::kentik::net::v202303::RpkiStatus >(rpki_status_);
 }
-inline ::kentik::ktrac::route::v202104::RpkiStatus RouteInfo::rpki_status() const {
+inline ::kentik::net::v202303::RpkiStatus RouteInfo::rpki_status() const {
   // @@protoc_insertion_point(field_get:kentik.bgp_monitoring.v202205beta1.RouteInfo.rpki_status)
   return _internal_rpki_status();
 }
-inline void RouteInfo::_internal_set_rpki_status(::kentik::ktrac::route::v202104::RpkiStatus value) {
+inline void RouteInfo::_internal_set_rpki_status(::kentik::net::v202303::RpkiStatus value) {
   
   rpki_status_ = value;
 }
-inline void RouteInfo::set_rpki_status(::kentik::ktrac::route::v202104::RpkiStatus value) {
+inline void RouteInfo::set_rpki_status(::kentik::net::v202303::RpkiStatus value) {
   _internal_set_rpki_status(value);
   // @@protoc_insertion_point(field_set:kentik.bgp_monitoring.v202205beta1.RouteInfo.rpki_status)
 }

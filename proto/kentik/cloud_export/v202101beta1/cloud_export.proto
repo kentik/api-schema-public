@@ -11,7 +11,7 @@ import "google/api/client.proto";
 import "google/protobuf/field_mask.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
 
-import "kentik/core/v202012alpha1/annotations.proto";
+import "kentik/core/v202303/annotations.proto";
 
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   info: {
@@ -229,11 +229,11 @@ message DeleteCloudExportResponse {
 
 service CloudExportAdminService {
   option (google.api.default_host) = "cloud_export.api.kentik.com";
-  option (kentik.core.v202012alpha1.visibility) = SERVICE_VISIBILITY_PUBLIC;
-  option (kentik.core.v202012alpha1.service_scope) = "admin.cloud_export";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "admin.cloud_export";
 
   rpc CreateCloudExport(CreateCloudExportRequest) returns (CreateCloudExportResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_export:write";
+    option (kentik.core.v202303.method_scope) = "admin.cloud_export:write";
     option (google.api.http) = {
       post: "/cloud_export/v202101beta1/exports"
       body: "*"
@@ -246,7 +246,7 @@ service CloudExportAdminService {
   }
 
   rpc ListCloudExport(ListCloudExportRequest) returns (ListCloudExportResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_export:read";
+    option (kentik.core.v202303.method_scope) = "admin.cloud_export:read";
     option (google.api.http) = {
       get: "/cloud_export/v202101beta1/exports"
     };
@@ -258,7 +258,7 @@ service CloudExportAdminService {
   }
 
   rpc GetCloudExport(GetCloudExportRequest) returns (GetCloudExportResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_export:read";
+    option (kentik.core.v202303.method_scope) = "admin.cloud_export:read";
     option (google.api.http) = {
       get: "/cloud_export/v202101beta1/exports/{id}"
     };
@@ -270,7 +270,7 @@ service CloudExportAdminService {
   }
 
   rpc PatchCloudExport(PatchCloudExportRequest) returns (PatchCloudExportResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_export:write";
+    option (kentik.core.v202303.method_scope) = "admin.cloud_export:write";
     option (google.api.http) = {
       patch: "/cloud_export/v202101beta1/exports/{export.id}"
       body: "*"
@@ -283,7 +283,7 @@ service CloudExportAdminService {
   }
 
   rpc UpdateCloudExport(UpdateCloudExportRequest) returns (UpdateCloudExportResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_export:write";
+    option (kentik.core.v202303.method_scope) = "admin.cloud_export:write";
     option (google.api.http) = {
       put: "/cloud_export/v202101beta1/exports/{export.id}"
       body: "*"
@@ -296,7 +296,7 @@ service CloudExportAdminService {
   }
 
   rpc DeleteCloudExport(DeleteCloudExportRequest) returns (DeleteCloudExportResponse) {
-    option (kentik.core.v202012alpha1.method_scope) = "admin.cloud_export:write";
+    option (kentik.core.v202303.method_scope) = "admin.cloud_export:write";
     option (google.api.http) = {
       delete: "/cloud_export/v202101beta1/exports/{id}"
     };
