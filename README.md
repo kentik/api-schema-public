@@ -52,7 +52,7 @@ Stable APIs become *deprecated* as soon as a new version is released. Deprecated
 development beyond critical bug fixes. Most importantly, they do not receive support for new features.
 
 New features, extensions of existing functionality may be introduced in stable APIs as long as added functionality is
-backwards compatible (i.e. does not allow aby changes in behavior of clients).
+backwards compatible (i.e. does not allow any changes in behavior of clients).
 
 ## Repository layout
 - [proto](./proto) - Kentik API schemas
