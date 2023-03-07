@@ -19,9 +19,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='kentik/core/v202303/user_info.proto',
   package='kentik.core.v202303',
   syntax='proto3',
-  serialized_options=b'ZEgithub.com/kentik/api-schema-public/go/kentik/core/v202303;kentik_api',
+  serialized_options=b'ZFgithub.com/kentik/api-schema-public/go/kentik/core/v202303;kentik_core',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n#kentik/core/v202303/user_info.proto\x12\x13kentik.core.v202303\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a\x1fgoogle/api/field_behavior.proto\"\xb7\x01\n\x08UserInfo\x12\x33\n\x02id\x18\x01 \x01(\tB#\x92\x41\x1c\x32\x1aUnique system generated ID\xe2\x41\x01\x03R\x02id\x12\x39\n\x05\x65mail\x18\x02 \x01(\tB#\x92\x41\x1c\x32\x1a\x45-mail address of the user\xe2\x41\x01\x03R\x05\x65mail\x12;\n\tfull_name\x18\x03 \x01(\tB\x1e\x92\x41\x17\x32\x15\x46ull name of the user\xe2\x41\x01\x03R\x08\x66ullNameBGZEgithub.com/kentik/api-schema-public/go/kentik/core/v202303;kentik_apib\x06proto3'
+  serialized_pb=b'\n#kentik/core/v202303/user_info.proto\x12\x13kentik.core.v202303\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a\x1fgoogle/api/field_behavior.proto\"\xb7\x01\n\x08UserInfo\x12\x33\n\x02id\x18\x01 \x01(\tB#\x92\x41\x1c\x32\x1aUnique system generated ID\xe2\x41\x01\x03R\x02id\x12\x39\n\x05\x65mail\x18\x02 \x01(\tB#\x92\x41\x1c\x32\x1a\x45-mail address of the user\xe2\x41\x01\x03R\x05\x65mail\x12;\n\tfull_name\x18\x03 \x01(\tB\x1e\x92\x41\x17\x32\x15\x46ull name of the user\xe2\x41\x01\x03R\x08\x66ullNameBHZFgithub.com/kentik/api-schema-public/go/kentik/core/v202303;kentik_coreb\x06proto3'
   ,
   dependencies=[protoc__gen__openapiv2_dot_options_dot_annotations__pb2.DESCRIPTOR,google_dot_api_dot_field__behavior__pb2.DESCRIPTOR,])
 

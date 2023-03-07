@@ -84,7 +84,7 @@ const char descriptor_table_protodef_kentik_2fnet_2fv202303_2fbgp_5ftypes_2eprot
   "STATUS_INVALID\020\004\022\025\n\021RPKI_STATUS_VALID\020\005\022"
   "\025\n\021RPKI_STATUS_ERROR\020\010BFZDgithub.com/ken"
   "tik/api-schema-public/go/kentik/net/v202"
-  "303;kentik_apib\006proto3"
+  "303;kentik_netb\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2fnet_2fv202303_2fbgp_5ftypes_2eproto_deps[2] = {
   &::descriptor_table_google_2fapi_2ffield_5fbehavior_2eproto,

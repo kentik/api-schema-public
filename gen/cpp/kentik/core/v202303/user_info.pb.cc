@@ -69,9 +69,9 @@ const char descriptor_table_protodef_kentik_2fcore_2fv202303_2fuser_5finfo_2epro
   "\003R\002id\0229\n\005email\030\002 \001(\tB#\222A\0342\032E-mail addres"
   "s of the user\342A\001\003R\005email\022;\n\tfull_name\030\003 "
   "\001(\tB\036\222A\0272\025Full name of the user\342A\001\003R\010ful"
-  "lNameBGZEgithub.com/kentik/api-schema-pu"
-  "blic/go/kentik/core/v202303;kentik_apib\006"
-  "proto3"
+  "lNameBHZFgithub.com/kentik/api-schema-pu"
+  "blic/go/kentik/core/v202303;kentik_coreb"
+  "\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2fcore_2fv202303_2fuser_5finfo_2eproto_deps[2] = {
   &::descriptor_table_google_2fapi_2ffield_5fbehavior_2eproto,
@@ -82,7 +82,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_kentik_2fcore_2fv202303_2fuser_5finfo_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_kentik_2fcore_2fv202303_2fuser_5finfo_2eproto = {
-  false, false, descriptor_table_protodef_kentik_2fcore_2fv202303_2fuser_5finfo_2eproto, "kentik/core/v202303/user_info.proto", 406,
+  false, false, descriptor_table_protodef_kentik_2fcore_2fv202303_2fuser_5finfo_2eproto, "kentik/core/v202303/user_info.proto", 407,
   &descriptor_table_kentik_2fcore_2fv202303_2fuser_5finfo_2eproto_once, descriptor_table_kentik_2fcore_2fv202303_2fuser_5finfo_2eproto_sccs, descriptor_table_kentik_2fcore_2fv202303_2fuser_5finfo_2eproto_deps, 1, 2,
   schemas, file_default_instances, TableStruct_kentik_2fcore_2fv202303_2fuser_5finfo_2eproto::offsets,
   file_level_metadata_kentik_2fcore_2fv202303_2fuser_5finfo_2eproto, 1, file_level_enum_descriptors_kentik_2fcore_2fv202303_2fuser_5finfo_2eproto, file_level_service_descriptors_kentik_2fcore_2fv202303_2fuser_5finfo_2eproto,

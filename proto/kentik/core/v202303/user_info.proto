@@ -3,7 +3,7 @@
 syntax = "proto3";
 
 package kentik.core.v202303;
-option go_package = "github.com/kentik/api-schema-public/go/kentik/core/v202303;kentik_api";
+option go_package = "github.com/kentik/api-schema-public/go/kentik/core/v202303;kentik_core";
 
 import "protoc-gen-openapiv2/options/annotations.proto";
 import "google/api/field_behavior.proto";
