@@ -64,6 +64,6 @@ backwards compatible (i.e. does not allow any changes in behavior of clients).
 		- [Python](./gen/go)
 		- [C](./gen/go)
 		- [C++](./gen/go)
-	- OpenAPI specs
+	- OpenAPI specs/gen
 		- [v2](./gen/openapiv2)
 		- [v3](./gen/openapiv3)
