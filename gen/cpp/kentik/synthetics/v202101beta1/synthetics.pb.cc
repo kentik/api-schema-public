@@ -2970,19 +2970,20 @@ const char descriptor_table_protodef_kentik_2fsynthetics_2fv202101beta1_2fsynthe
   "estDelete\362\327\002\026admin.synthetics:write\202\323\344\223\002"
   "%*#/synthetics/v202101beta1/tests/{id}\0324"
   "\312A\031synthetics.api.kentik.com\352\327\002\020admin.sy"
-  "nthetics\220\330\002\003B\356\003ZPgithub.com/kentik/api-s"
-  "chema-public/go/kentik/synthetics/v20210"
-  "1beta1;synthetics\222A\230\003\022\256\001\n\031Synthetics Mon"
-  "itoring API\022K--- This API has been depre"
-  "cated and will be removed in the near fu"
-  "ture ---\"7\n\026Kentik API Engineering\022\035http"
-  "s://github.com/kentik/api2\013202101beta1*\001"
-  "\0022\020application/json:\020application/jsonZD\n"
-  "\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token"
-  "\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email\022\000"
-  "\n\t\n\005token\022\000r`\n\"Kentik synthetic monitori"
-  "ng system\022:https://kb.kentik.com/v4/Ma00"
-  ".htm#Ma00-Synthetics_Overviewb\006proto3"
+  "nthetics\220\330\002\003B\362\003ZTgithub.com/kentik/api-s"
+  "chema-public/gen/go/kentik/synthetics/v2"
+  "02101beta1;synthetics\222A\230\003\022\256\001\n\031Synthetics"
+  " Monitoring API\022K--- This API has been d"
+  "eprecated and will be removed in the nea"
+  "r future ---\"7\n\026Kentik API Engineering\022\035"
+  "https://github.com/kentik/api2\013202101bet"
+  "a1*\001\0022\020application/json:\020application/jso"
+  "nZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005t"
+  "oken\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005ema"
+  "il\022\000\n\t\n\005token\022\000r`\n\"Kentik synthetic moni"
+  "toring system\022:https://kb.kentik.com/v4/"
+  "Ma00.htm#Ma00-Synthetics_Overviewb\006proto"
+  "3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2fsynthetics_2fv202101beta1_2fsynthetics_2eproto_deps[6] = {
   &::descriptor_table_google_2fapi_2fannotations_2eproto,
@@ -3075,7 +3076,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_kentik_2fsynthetics_2fv202101beta1_2fsynthetics_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_kentik_2fsynthetics_2fv202101beta1_2fsynthetics_2eproto = {
-  false, false, descriptor_table_protodef_kentik_2fsynthetics_2fv202101beta1_2fsynthetics_2eproto, "kentik/synthetics/v202101beta1/synthetics.proto", 19717,
+  false, false, descriptor_table_protodef_kentik_2fsynthetics_2fv202101beta1_2fsynthetics_2eproto, "kentik/synthetics/v202101beta1/synthetics.proto", 19721,
   &descriptor_table_kentik_2fsynthetics_2fv202101beta1_2fsynthetics_2eproto_once, descriptor_table_kentik_2fsynthetics_2fv202101beta1_2fsynthetics_2eproto_sccs, descriptor_table_kentik_2fsynthetics_2fv202101beta1_2fsynthetics_2eproto_deps, 79, 6,
   schemas, file_default_instances, TableStruct_kentik_2fsynthetics_2fv202101beta1_2fsynthetics_2eproto::offsets,
   file_level_metadata_kentik_2fsynthetics_2fv202101beta1_2fsynthetics_2eproto, 79, file_level_enum_descriptors_kentik_2fsynthetics_2fv202101beta1_2fsynthetics_2eproto, file_level_service_descriptors_kentik_2fsynthetics_2fv202101beta1_2fsynthetics_2eproto,

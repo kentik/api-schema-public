@@ -246,16 +246,16 @@ const char descriptor_table_protodef_kentik_2fnetwork_5fclass_2fv202109alpha1_2f
   ".network_class:write\202\323\344\223\002/\"*/network_cla"
   "ss/v202109alpha1/network_class:\001*\0321\312A\023gr"
   "pc.api.kentik.com\352\327\002\023admin.network_class"
-  "\220\330\002\003B\337\002ZWgithub.com/kentik/api-schema-pu"
-  "blic/go/kentik/network_class/v202109alph"
-  "a1;network_class\222A\202\002\022D\n\032Network Classifi"
-  "cation API\"\030\n\026Kentik API Engineering2\01420"
-  "2109alpha1*\001\0022\020application/json:\020applica"
-  "tion/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Emai"
-  "l \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002b"
-  "\026\n\t\n\005email\022\000\n\t\n\005token\022\000r5\n\026More about Ke"
-  "ntik APIs\022\033https://docs.kentik.com/apib\006"
-  "proto3"
+  "\220\330\002\003B\343\002Z[github.com/kentik/api-schema-pu"
+  "blic/gen/go/kentik/network_class/v202109"
+  "alpha1;network_class\222A\202\002\022D\n\032Network Clas"
+  "sification API\"\030\n\026Kentik API Engineering"
+  "2\014202109alpha1*\001\0022\020application/json:\020app"
+  "lication/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-"
+  "Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Toke"
+  "n \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r5\n\026More abou"
+  "t Kentik APIs\022\033https://docs.kentik.com/a"
+  "pib\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2fnetwork_5fclass_2fv202109alpha1_2fnetwork_5fclass_2eproto_deps[4] = {
   &::descriptor_table_google_2fapi_2fannotations_2eproto,
@@ -273,7 +273,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_kentik_2fnetwork_5fclass_2fv202109alpha1_2fnetwork_5fclass_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_kentik_2fnetwork_5fclass_2fv202109alpha1_2fnetwork_5fclass_2eproto = {
-  false, false, descriptor_table_protodef_kentik_2fnetwork_5fclass_2fv202109alpha1_2fnetwork_5fclass_2eproto, "kentik/network_class/v202109alpha1/network_class.proto", 2246,
+  false, false, descriptor_table_protodef_kentik_2fnetwork_5fclass_2fv202109alpha1_2fnetwork_5fclass_2eproto, "kentik/network_class/v202109alpha1/network_class.proto", 2250,
   &descriptor_table_kentik_2fnetwork_5fclass_2fv202109alpha1_2fnetwork_5fclass_2eproto_once, descriptor_table_kentik_2fnetwork_5fclass_2fv202109alpha1_2fnetwork_5fclass_2eproto_sccs, descriptor_table_kentik_2fnetwork_5fclass_2fv202109alpha1_2fnetwork_5fclass_2eproto_deps, 6, 4,
   schemas, file_default_instances, TableStruct_kentik_2fnetwork_5fclass_2fv202109alpha1_2fnetwork_5fclass_2eproto::offsets,
   file_level_metadata_kentik_2fnetwork_5fclass_2fv202109alpha1_2fnetwork_5fclass_2eproto, 6, file_level_enum_descriptors_kentik_2fnetwork_5fclass_2fv202109alpha1_2fnetwork_5fclass_2eproto, file_level_service_descriptors_kentik_2fnetwork_5fclass_2fv202109alpha1_2fnetwork_5fclass_2eproto,

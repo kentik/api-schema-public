@@ -82,9 +82,9 @@ const char descriptor_table_protodef_kentik_2fnet_2fv202303_2fbgp_5ftypes_2eprot
   "UND\020\001\022 \n\034RPKI_STATUS_EXPLICIT_INVALID\020\002\022"
   "\036\n\032RPKI_STATUS_INVALID_PREFIX\020\003\022\027\n\023RPKI_"
   "STATUS_INVALID\020\004\022\025\n\021RPKI_STATUS_VALID\020\005\022"
-  "\025\n\021RPKI_STATUS_ERROR\020\010BFZDgithub.com/ken"
-  "tik/api-schema-public/go/kentik/net/v202"
-  "303;kentik_netb\006proto3"
+  "\025\n\021RPKI_STATUS_ERROR\020\010BJZHgithub.com/ken"
+  "tik/api-schema-public/gen/go/kentik/net/"
+  "v202303;kentik_netb\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2fnet_2fv202303_2fbgp_5ftypes_2eproto_deps[2] = {
   &::descriptor_table_google_2fapi_2ffield_5fbehavior_2eproto,
@@ -95,7 +95,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_kentik_2fnet_2fv202303_2fbgp_5ftypes_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_kentik_2fnet_2fv202303_2fbgp_5ftypes_2eproto = {
-  false, false, descriptor_table_protodef_kentik_2fnet_2fv202303_2fbgp_5ftypes_2eproto, "kentik/net/v202303/bgp_types.proto", 902,
+  false, false, descriptor_table_protodef_kentik_2fnet_2fv202303_2fbgp_5ftypes_2eproto, "kentik/net/v202303/bgp_types.proto", 906,
   &descriptor_table_kentik_2fnet_2fv202303_2fbgp_5ftypes_2eproto_once, descriptor_table_kentik_2fnet_2fv202303_2fbgp_5ftypes_2eproto_sccs, descriptor_table_kentik_2fnet_2fv202303_2fbgp_5ftypes_2eproto_deps, 1, 2,
   schemas, file_default_instances, TableStruct_kentik_2fnet_2fv202303_2fbgp_5ftypes_2eproto::offsets,
   file_level_metadata_kentik_2fnet_2fv202303_2fbgp_5ftypes_2eproto, 1, file_level_enum_descriptors_kentik_2fnet_2fv202303_2fbgp_5ftypes_2eproto, file_level_service_descriptors_kentik_2fnet_2fv202303_2fbgp_5ftypes_2eproto,

@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package kentik.capacity_plan.v202212;
-option go_package = "github.com/kentik/api-schema-public/go/kentik/capacity_plan/v202212;capacity_plan";
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/capacity_plan/v202212;capacity_plan";
 
 import "google/api/annotations.proto";
 import "google/api/client.proto";

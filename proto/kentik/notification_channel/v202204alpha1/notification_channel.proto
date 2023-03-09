@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package kentik.notification_channel.v202204alpha1;
-option go_package = "github.com/kentik/api-schema-public/go/kentik/notification_channel/v202204alpha1;notification_channel";
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/notification_channel/v202204alpha1;notification_channel";
 
 import "google/api/annotations.proto";
 import "google/api/client.proto";

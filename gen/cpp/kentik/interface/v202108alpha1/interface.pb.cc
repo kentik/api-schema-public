@@ -1023,15 +1023,15 @@ const char descriptor_table_protodef_kentik_2finterface_2fv202108alpha1_2finterf
   "te\362\327\002\025admin.interface:write\202\323\344\223\002**(/inte"
   "rface/v202108alpha1/interfaces/{id}\032-\312A\023"
   "grpc.api.kentik.com\352\327\002\017admin.interface\220\330"
-  "\002\003B\306\002ZKgithub.com/kentik/api-schema-publ"
-  "ic/go/kentik/interface/v202108alpha1;ifa"
-  "ce\222A\365\001\0227\n\rInterface API\"\030\n\026Kentik API En"
-  "gineering2\014202108alpha1*\001\0022\020application/"
-  "json:\020application/jsonZD\n\036\n\005email\022\025\010\002\032\017X"
-  "-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth"
-  "-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r5\n\026"
-  "More about Kentik APIs\022\033https://docs.ken"
-  "tik.com/apib\006proto3"
+  "\002\003B\312\002ZOgithub.com/kentik/api-schema-publ"
+  "ic/gen/go/kentik/interface/v202108alpha1"
+  ";iface\222A\365\001\0227\n\rInterface API\"\030\n\026Kentik AP"
+  "I Engineering2\014202108alpha1*\001\0022\020applicat"
+  "ion/json:\020application/jsonZD\n\036\n\005email\022\025\010"
+  "\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-"
+  "Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000"
+  "r5\n\026More about Kentik APIs\022\033https://docs"
+  ".kentik.com/apib\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2finterface_2fv202108alpha1_2finterface_2eproto_deps[5] = {
   &::descriptor_table_google_2fapi_2fannotations_2eproto,
@@ -1068,7 +1068,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_kentik_2finterface_2fv202108alpha1_2finterface_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_kentik_2finterface_2fv202108alpha1_2finterface_2eproto = {
-  false, false, descriptor_table_protodef_kentik_2finterface_2fv202108alpha1_2finterface_2eproto, "kentik/interface/v202108alpha1/interface.proto", 10339,
+  false, false, descriptor_table_protodef_kentik_2finterface_2fv202108alpha1_2finterface_2eproto, "kentik/interface/v202108alpha1/interface.proto", 10343,
   &descriptor_table_kentik_2finterface_2fv202108alpha1_2finterface_2eproto_once, descriptor_table_kentik_2finterface_2fv202108alpha1_2finterface_2eproto_sccs, descriptor_table_kentik_2finterface_2fv202108alpha1_2finterface_2eproto_deps, 24, 5,
   schemas, file_default_instances, TableStruct_kentik_2finterface_2fv202108alpha1_2finterface_2eproto::offsets,
   file_level_metadata_kentik_2finterface_2fv202108alpha1_2finterface_2eproto, 24, file_level_enum_descriptors_kentik_2finterface_2fv202108alpha1_2finterface_2eproto, file_level_service_descriptors_kentik_2finterface_2fv202108alpha1_2finterface_2eproto,

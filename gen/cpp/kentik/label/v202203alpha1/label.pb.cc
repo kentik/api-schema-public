@@ -330,18 +330,18 @@ const char descriptor_table_protodef_kentik_2flabel_2fv202203alpha1_2flabel_2epr
   "ecified with id.*\013LabelDelete\362\327\002\021admin.l"
   "abel:write\202\323\344\223\002\"* /label/v202203alpha1/l"
   "abels/{id}\032)\312A\023grpc.api.kentik.com\352\327\002\013ad"
-  "min.label\220\330\002\003B\264\003ZGgithub.com/kentik/api-"
-  "schema-public/go/kentik/label/v202203alp"
-  "ha1;label\222A\347\002\022\200\001\n\tLabel API\022K--- This AP"
-  "I has been deprecated and will be remove"
-  "d in the near future ---\"\030\n\026Kentik API E"
-  "ngineering2\014202203alpha1*\001\0022\020application"
-  "/json:\020application/jsonZD\n\036\n\005email\022\025\010\002\032\017"
-  "X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Aut"
-  "h-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]\n"
-  "%General information about Kentik APIs\0224"
-  "https://kb.kentik.com/v0/Ab09.htm#Ab09-A"
-  "PIs_Overviewb\006proto3"
+  "min.label\220\330\002\003B\270\003ZKgithub.com/kentik/api-"
+  "schema-public/gen/go/kentik/label/v20220"
+  "3alpha1;label\222A\347\002\022\200\001\n\tLabel API\022K--- Thi"
+  "s API has been deprecated and will be re"
+  "moved in the near future ---\"\030\n\026Kentik A"
+  "PI Engineering2\014202203alpha1*\001\0022\020applica"
+  "tion/json:\020application/jsonZD\n\036\n\005email\022\025"
+  "\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH"
+  "-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022"
+  "\000r]\n%General information about Kentik AP"
+  "Is\0224https://kb.kentik.com/v0/Ab09.htm#Ab"
+  "09-APIs_Overviewb\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2flabel_2fv202203alpha1_2flabel_2eproto_deps[5] = {
   &::descriptor_table_google_2fapi_2fannotations_2eproto,
@@ -363,7 +363,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_kentik_2flabel_2fv202203alpha1_2flabel_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_kentik_2flabel_2fv202203alpha1_2flabel_2eproto = {
-  false, false, descriptor_table_protodef_kentik_2flabel_2fv202203alpha1_2flabel_2eproto, "kentik/label/v202203alpha1/label.proto", 2500,
+  false, false, descriptor_table_protodef_kentik_2flabel_2fv202203alpha1_2flabel_2eproto, "kentik/label/v202203alpha1/label.proto", 2504,
   &descriptor_table_kentik_2flabel_2fv202203alpha1_2flabel_2eproto_once, descriptor_table_kentik_2flabel_2fv202203alpha1_2flabel_2eproto_sccs, descriptor_table_kentik_2flabel_2fv202203alpha1_2flabel_2eproto_deps, 9, 5,
   schemas, file_default_instances, TableStruct_kentik_2flabel_2fv202203alpha1_2flabel_2eproto::offsets,
   file_level_metadata_kentik_2flabel_2fv202203alpha1_2flabel_2eproto, 9, file_level_enum_descriptors_kentik_2flabel_2fv202203alpha1_2flabel_2eproto, file_level_service_descriptors_kentik_2flabel_2fv202203alpha1_2flabel_2eproto,
