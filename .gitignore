@@ -7,5 +7,5 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# macOS crap
+# macOS annoyance
 .DS_Store
