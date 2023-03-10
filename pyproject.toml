@@ -1,6 +1,9 @@
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools>=42", "wheel", "setuptools-git-versioning"]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools-git-versioning]
+enabled = true
 
 [project]
 name = "kentik-api-proto"
@@ -15,7 +18,7 @@ classifiers = [
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
 ]
-version = "0.0.1"
+dynamic = ["version"]
 dependencies = [
     "protobuf>=3.20.3",
     "grpcio==1.47.0",
