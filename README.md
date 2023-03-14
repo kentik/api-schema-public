@@ -113,5 +113,5 @@ from kentik.synthetics.v202202.synthetics_grpc import SyntheticsAdminServiceStub
 The Python code requires the [grpclib](https://pypi.org/project/grpclib/) package which is installed as dependency.
 
 **Caveats**:
-1) As of now, the Python code requires to set `PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python` in the environment. __This will be fixed in the near future.__
+1) As of now, the Python code requires `PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python` to be set in the environment. __This will be fixed in the near future.__
 2) Using any `gRPC` services requires [asyncio](https://docs.python.org/3/library/asyncio.html) style programming. Aall methods of `<service>Stub` classes return [asyncio futures](https://docs.python.org/3/library/asyncio-future.html). 
