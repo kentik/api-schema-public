@@ -71,7 +71,7 @@ backwards compatible (i.e. does not allow any changes in behavior of clients).
 ## Using the generated code
 
 ### Go
-The repository is configured  to provide installable Go package named `github.com/kentik/api-schema-public`.
+The repository is configured to provide installable Go package named `github.com/kentik/api-schema-public`.
 Individual APIs
 ```go
 import <alias> "github.com/kentik/api-schema-public/gen/go/kentik/<api_name>/<api_version>"
