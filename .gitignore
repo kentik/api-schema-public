@@ -9,3 +9,7 @@ __pycache__/
 
 # macOS annoyance
 .DS_Store
+
+# Python packaging
+dist/
+*.egg-info

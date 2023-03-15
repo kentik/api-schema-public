@@ -67,3 +67,51 @@ backwards compatible (i.e. does not allow any changes in behavior of clients).
 	- OpenAPI specs/gen
 		- [v2](./gen/openapiv2)
 		- [v3](./gen/openapiv3)
+
+## Using the generated code
+
+### Go
+The repository is configured to provide installable Go package named `github.com/kentik/api-schema-public`.
+Individual APIs
+```go
+import <alias> "github.com/kentik/api-schema-public/gen/go/kentik/<api_name>/<api_version>"
+```
+It is recommended to always explicitly specify the import alias. If no alias is specified, API objects are imported
+with name specified in the last component of the `go_package` option value (after `;`) in the corresponding proto file.
+For example the `go-package` option of the Synthetics API is
+`github.com/kentik/api-schema-public/gen/go/kentik/synthetics/v202202;synthetics`, so the following code is valid:
+```go
+import (
+	"fmt"
+	"github.com/kentik/api-schema-public/gen/go/kentik/synthetics/v202202"
+)
+
+func main() {
+	fmt.Println(synthetics.TestStatus_TEST_STATUS_ACTIVE)
+}
+```
+
+## Python
+The repository is configured to allow installation of package named `kentik-api-proto` containing code for all Kentik APIs
+directly from GitHub using pip:
+```
+pip install git+https://github.com/kentik/api-schema-public.git
+```
+The repo-spec string can also be used in `requirements.txt`.
+Locally the package can be built in the checked out repo with:
+```
+python -m build
+```
+which creates Python "wheel" package in the `dist/` directory.
+
+With the `kentik-api-proto` package installed, protobuf messages and gRPC client stubs can be imported from
+the `kentik` namespace. Examples:
+```python
+from kentik.synthetics.v202202.synthetics_pb2 import ListTestsRequest
+from kentik.synthetics.v202202.synthetics_grpc import SyntheticsAdminServiceStub
+```
+The Python code requires the [grpclib](https://pypi.org/project/grpclib/) package which is installed as dependency.
+
+**Caveats**:
+1) As of now, the Python code requires `PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python` to be set in the environment. __This will be fixed in the near future.__
+2) Using any `gRPC` services requires [asyncio](https://docs.python.org/3/library/asyncio.html) style programming. Aall methods of `<service>Stub` classes return [asyncio futures](https://docs.python.org/3/library/asyncio-future.html). 
