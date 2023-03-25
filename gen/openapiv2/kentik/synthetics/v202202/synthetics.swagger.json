@@ -1741,10 +1741,11 @@
         "TEST_STATUS_UNSPECIFIED",
         "TEST_STATUS_ACTIVE",
         "TEST_STATUS_PAUSED",
-        "TEST_STATUS_DELETED"
+        "TEST_STATUS_DELETED",
+        "TEST_STATUS_PREVIEW"
       ],
       "default": "TEST_STATUS_UNSPECIFIED",
-      "description": "- TEST_STATUS_UNSPECIFIED: Invalid value.\n - TEST_STATUS_ACTIVE: Test is active.\n - TEST_STATUS_PAUSED: Test is paused.\n - TEST_STATUS_DELETED: Test is deleted. Not user settable.",
+      "description": "- TEST_STATUS_UNSPECIFIED: Invalid value.\n - TEST_STATUS_ACTIVE: Test is active.\n - TEST_STATUS_PAUSED: Test is paused.\n - TEST_STATUS_DELETED: Test is deleted. Not user settable.\n - TEST_STATUS_PREVIEW: Test is preview",
       "title": "TestStatus"
     },
     "v202202TestTraceSettings": {

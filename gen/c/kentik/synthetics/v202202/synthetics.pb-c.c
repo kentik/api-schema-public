@@ -7046,21 +7046,23 @@ const ProtobufCEnumDescriptor kentik__synthetics__v202202__ipfamily__descriptor 
   kentik__synthetics__v202202__ipfamily__value_ranges,
   NULL,NULL,NULL,NULL   /* reserved[1234] */
 };
-static const ProtobufCEnumValue kentik__synthetics__v202202__test_status__enum_values_by_number[4] =
+static const ProtobufCEnumValue kentik__synthetics__v202202__test_status__enum_values_by_number[5] =
 {
   { "TEST_STATUS_UNSPECIFIED", "KENTIK__SYNTHETICS__V202202__TEST_STATUS__TEST_STATUS_UNSPECIFIED", 0 },
   { "TEST_STATUS_ACTIVE", "KENTIK__SYNTHETICS__V202202__TEST_STATUS__TEST_STATUS_ACTIVE", 1 },
   { "TEST_STATUS_PAUSED", "KENTIK__SYNTHETICS__V202202__TEST_STATUS__TEST_STATUS_PAUSED", 2 },
   { "TEST_STATUS_DELETED", "KENTIK__SYNTHETICS__V202202__TEST_STATUS__TEST_STATUS_DELETED", 3 },
+  { "TEST_STATUS_PREVIEW", "KENTIK__SYNTHETICS__V202202__TEST_STATUS__TEST_STATUS_PREVIEW", 4 },
 };
 static const ProtobufCIntRange kentik__synthetics__v202202__test_status__value_ranges[] = {
-{0, 0},{0, 4}
+{0, 0},{0, 5}
 };
-static const ProtobufCEnumValueIndex kentik__synthetics__v202202__test_status__enum_values_by_name[4] =
+static const ProtobufCEnumValueIndex kentik__synthetics__v202202__test_status__enum_values_by_name[5] =
 {
   { "TEST_STATUS_ACTIVE", 1 },
   { "TEST_STATUS_DELETED", 3 },
   { "TEST_STATUS_PAUSED", 2 },
+  { "TEST_STATUS_PREVIEW", 4 },
   { "TEST_STATUS_UNSPECIFIED", 0 },
 };
 const ProtobufCEnumDescriptor kentik__synthetics__v202202__test_status__descriptor =
@@ -7070,9 +7072,9 @@ const ProtobufCEnumDescriptor kentik__synthetics__v202202__test_status__descript
   "TestStatus",
   "Kentik__Synthetics__V202202__TestStatus",
   "kentik.synthetics.v202202",
-  4,
+  5,
   kentik__synthetics__v202202__test_status__enum_values_by_number,
-  4,
+  5,
   kentik__synthetics__v202202__test_status__enum_values_by_name,
   1,
   kentik__synthetics__v202202__test_status__value_ranges,

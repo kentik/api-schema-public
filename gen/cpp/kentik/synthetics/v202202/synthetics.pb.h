@@ -380,12 +380,13 @@ enum TestStatus : int {
   TEST_STATUS_ACTIVE = 1,
   TEST_STATUS_PAUSED = 2,
   TEST_STATUS_DELETED = 3,
+  TEST_STATUS_PREVIEW = 4,
   TestStatus_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
   TestStatus_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
 };
 bool TestStatus_IsValid(int value);
 constexpr TestStatus TestStatus_MIN = TEST_STATUS_UNSPECIFIED;
-constexpr TestStatus TestStatus_MAX = TEST_STATUS_DELETED;
+constexpr TestStatus TestStatus_MAX = TEST_STATUS_PREVIEW;
 constexpr int TestStatus_ARRAYSIZE = TestStatus_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* TestStatus_descriptor();

@@ -147,7 +147,11 @@ typedef enum _Kentik__Synthetics__V202202__TestStatus {
   /*
    * Test is deleted. Not user settable.
    */
-  KENTIK__SYNTHETICS__V202202__TEST_STATUS__TEST_STATUS_DELETED = 3
+  KENTIK__SYNTHETICS__V202202__TEST_STATUS__TEST_STATUS_DELETED = 3,
+  /*
+   * Test is preview
+   */
+  KENTIK__SYNTHETICS__V202202__TEST_STATUS__TEST_STATUS_PREVIEW = 4
     PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__SYNTHETICS__V202202__TEST_STATUS)
 } Kentik__Synthetics__V202202__TestStatus;
 /*
