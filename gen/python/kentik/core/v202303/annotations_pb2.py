@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'ZJgithub.com/kentik/api-schema-public/gen/go/kentik/core/v202303;kentik_core',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n%kentik/core/v202303/annotations.proto\x12\x13kentik.core.v202303\x1a google/protobuf/descriptor.proto*\x95\x01\n\x11ServiceVisibility\x12\x1e\n\x1aSERVICE_VISIBILITY_PRIVATE\x10\x00\x12 \n\x1cSERVICE_VISIBILITY_PROTECTED\x10\x01\x12\x1f\n\x1bSERVICE_VISIBILITY_INTERNAL\x10\x02\x12\x1d\n\x19SERVICE_VISIBILITY_PUBLIC\x10\x03:E\n\rservice_scope\x12\x1f.google.protobuf.ServiceOptions\x18\xfd* \x01(\tR\x0cserviceScope:I\n\x0fprivate_service\x12\x1f.google.protobuf.ServiceOptions\x18\xff* \x01(\x08R\x0eprivateService:h\n\nvisibility\x12\x1f.google.protobuf.ServiceOptions\x18\x82+ \x01(\x0e\x32&.kentik.core.v202303.ServiceVisibilityR\nvisibility:B\n\x0cmethod_scope\x12\x1e.google.protobuf.MethodOptions\x18\xfe* \x01(\tR\x0bmethodScope:F\n\x0eprivate_method\x12\x1e.google.protobuf.MethodOptions\x18\x80+ \x01(\x08R\rprivateMethod:H\n\x0fmethod_category\x12\x1e.google.protobuf.MethodOptions\x18\x81+ \x01(\tR\x0emethodCategoryBLZJgithub.com/kentik/api-schema-public/gen/go/kentik/core/v202303;kentik_coreb\x06proto3'
+  serialized_pb=b'\n%kentik/core/v202303/annotations.proto\x12\x13kentik.core.v202303\x1a google/protobuf/descriptor.proto*\x95\x01\n\x11ServiceVisibility\x12\x1e\n\x1aSERVICE_VISIBILITY_PRIVATE\x10\x00\x12 \n\x1cSERVICE_VISIBILITY_PROTECTED\x10\x01\x12\x1f\n\x1bSERVICE_VISIBILITY_INTERNAL\x10\x02\x12\x1d\n\x19SERVICE_VISIBILITY_PUBLIC\x10\x03:E\n\rservice_scope\x12\x1f.google.protobuf.ServiceOptions\x18\xfd* \x01(\tR\x0cserviceScope:I\n\x0fprivate_service\x12\x1f.google.protobuf.ServiceOptions\x18\xff* \x01(\x08R\x0eprivateService:h\n\nvisibility\x12\x1f.google.protobuf.ServiceOptions\x18\x82+ \x01(\x0e\x32&.kentik.core.v202303.ServiceVisibilityR\nvisibility:B\n\x0cmethod_scope\x12\x1e.google.protobuf.MethodOptions\x18\xfe* \x01(\tR\x0bmethodScope:F\n\x0eprivate_method\x12\x1e.google.protobuf.MethodOptions\x18\x80+ \x01(\x08R\rprivateMethod:H\n\x0fmethod_category\x12\x1e.google.protobuf.MethodOptions\x18\x81+ \x01(\tR\x0emethodCategory:L\n\x11method_permission\x12\x1e.google.protobuf.MethodOptions\x18\x82+ \x01(\tR\x10methodPermissionBLZJgithub.com/kentik/api-schema-public/gen/go/kentik/core/v202303;kentik_coreb\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_descriptor__pb2.DESCRIPTOR,])
 
@@ -114,6 +114,14 @@ method_category = _descriptor.FieldDescriptor(
   message_type=None, enum_type=None, containing_type=None,
   is_extension=True, extension_scope=None,
   serialized_options=None, json_name='methodCategory', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key)
+METHOD_PERMISSION_FIELD_NUMBER = 5506
+method_permission = _descriptor.FieldDescriptor(
+  name='method_permission', full_name='kentik.core.v202303.method_permission', index=6,
+  number=5506, type=9, cpp_type=9, label=1,
+  has_default_value=False, default_value=b"".decode('utf-8'),
+  message_type=None, enum_type=None, containing_type=None,
+  is_extension=True, extension_scope=None,
+  serialized_options=None, json_name='methodPermission', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key)
 
 DESCRIPTOR.enum_types_by_name['ServiceVisibility'] = _SERVICEVISIBILITY
 DESCRIPTOR.extensions_by_name['service_scope'] = service_scope
@@ -122,6 +130,7 @@ DESCRIPTOR.extensions_by_name['visibility'] = visibility
 DESCRIPTOR.extensions_by_name['method_scope'] = method_scope
 DESCRIPTOR.extensions_by_name['private_method'] = private_method
 DESCRIPTOR.extensions_by_name['method_category'] = method_category
+DESCRIPTOR.extensions_by_name['method_permission'] = method_permission
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 google_dot_protobuf_dot_descriptor__pb2.ServiceOptions.RegisterExtension(service_scope)
@@ -131,6 +140,7 @@ google_dot_protobuf_dot_descriptor__pb2.ServiceOptions.RegisterExtension(visibil
 google_dot_protobuf_dot_descriptor__pb2.MethodOptions.RegisterExtension(method_scope)
 google_dot_protobuf_dot_descriptor__pb2.MethodOptions.RegisterExtension(private_method)
 google_dot_protobuf_dot_descriptor__pb2.MethodOptions.RegisterExtension(method_category)
+google_dot_protobuf_dot_descriptor__pb2.MethodOptions.RegisterExtension(method_permission)
 
 DESCRIPTOR._options = None
 # @@protoc_insertion_point(module_scope)

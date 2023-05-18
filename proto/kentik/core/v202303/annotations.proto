@@ -35,4 +35,7 @@ extend google.protobuf.MethodOptions {
   bool private_method = 5504;
   // method classification to identify areas of functionality (used for metrics etc.)
   string method_category = 5505;
+  // method permission string used by the RBAC system
+  // API user must posses permission covering the method permission in order to be authorized to invoke the method
+  string method_permission = 5506;
 }

@@ -1612,6 +1612,8 @@ service SyntheticsAdminService {
 
   rpc ListAgents(ListAgentsRequest) returns (ListAgentsResponse) {
     option (kentik.core.v202303.method_scope) = "admin.synthetics:read";
+    option (kentik.core.v202303.method_permission) = "synthetics.agent::read";
+
     option (google.api.http) = {
       get: "/synthetics/v202202/agents"
     };
@@ -1624,6 +1626,7 @@ service SyntheticsAdminService {
 
   rpc GetAgent(GetAgentRequest) returns (GetAgentResponse) {
     option (kentik.core.v202303.method_scope) = "admin.synthetics:read";
+    option (kentik.core.v202303.method_permission) = "synthetics.agent::read";
     option (google.api.http) = {
       get: "/synthetics/v202202/agents/{id}"
     };
@@ -1636,6 +1639,7 @@ service SyntheticsAdminService {
 
   rpc UpdateAgent(UpdateAgentRequest) returns (UpdateAgentResponse) {
     option (kentik.core.v202303.method_scope) = "admin.synthetics:write";
+    option (kentik.core.v202303.method_permission) = "synthetics.agent::update";
     option (google.api.http) = {
       put: "/synthetics/v202202/agents/{agent.id}"
       body: "*"
@@ -1649,6 +1653,7 @@ service SyntheticsAdminService {
 
   rpc DeleteAgent(DeleteAgentRequest) returns (DeleteAgentResponse) {
     option (kentik.core.v202303.method_scope) = "admin.synthetics:write";
+    option (kentik.core.v202303.method_permission) = "synthetics.agent::delete";
     option (google.api.http) = {
       delete: "/synthetics/v202202/agents/{id}"
     };
@@ -1661,6 +1666,7 @@ service SyntheticsAdminService {
 
   rpc ListTests(ListTestsRequest) returns (ListTestsResponse) {
     option (kentik.core.v202303.method_scope) = "admin.synthetics:read";
+    option (kentik.core.v202303.method_permission) = "synthetics.test::read";
     option (google.api.http) = {
       get: "/synthetics/v202202/tests"
     };
@@ -1673,6 +1679,7 @@ service SyntheticsAdminService {
 
   rpc CreateTest(CreateTestRequest) returns (CreateTestResponse) {
     option (kentik.core.v202303.method_scope) = "admin.synthetics:write";
+    option (kentik.core.v202303.method_permission) = "synthetics.test::create";
     option (google.api.http) = {
       post: "/synthetics/v202202/tests"
       body: "*"
@@ -1686,6 +1693,7 @@ service SyntheticsAdminService {
 
   rpc GetTest(GetTestRequest) returns (GetTestResponse) {
     option (kentik.core.v202303.method_scope) = "admin.synthetics:read";
+    option (kentik.core.v202303.method_permission) = "synthetics.test::read";
     option (google.api.http) = {
       get: "/synthetics/v202202/tests/{id}"
     };
@@ -1698,6 +1706,7 @@ service SyntheticsAdminService {
 
   rpc UpdateTest(UpdateTestRequest) returns (UpdateTestResponse) {
     option (kentik.core.v202303.method_scope) = "admin.synthetics:write";
+    option (kentik.core.v202303.method_permission) = "synthetics.test::update";
     option (google.api.http) = {
       put: "/synthetics/v202202/tests/{test.id}"
       body: "*"
@@ -1711,6 +1720,7 @@ service SyntheticsAdminService {
 
   rpc DeleteTest(DeleteTestRequest) returns (DeleteTestResponse) {
     option (kentik.core.v202303.method_scope) = "admin.synthetics:write";
+    option (kentik.core.v202303.method_permission) = "synthetics.test::delete";
     option (google.api.http) = {
       delete: "/synthetics/v202202/tests/{id}"
     };
@@ -1723,6 +1733,7 @@ service SyntheticsAdminService {
 
   rpc SetTestStatus(SetTestStatusRequest) returns (SetTestStatusResponse) {
     option (kentik.core.v202303.method_scope) = "admin.synthetics:write";
+    option (kentik.core.v202303.method_permission) = "synthetics.test::update";
     option (google.api.http) = {
       put: "/synthetics/v202202/tests/{id}/status"
       body: "*"

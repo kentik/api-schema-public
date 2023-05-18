@@ -45,9 +45,11 @@ const char descriptor_table_protodef_kentik_2fcore_2fv202303_2fannotations_2epro
   "dScope:F\n\016private_method\022\036.google.protob"
   "uf.MethodOptions\030\200+ \001(\010R\rprivateMethod:H"
   "\n\017method_category\022\036.google.protobuf.Meth"
-  "odOptions\030\201+ \001(\tR\016methodCategoryBLZJgith"
-  "ub.com/kentik/api-schema-public/gen/go/k"
-  "entik/core/v202303;kentik_coreb\006proto3"
+  "odOptions\030\201+ \001(\tR\016methodCategory:L\n\021meth"
+  "od_permission\022\036.google.protobuf.MethodOp"
+  "tions\030\202+ \001(\tR\020methodPermissionBLZJgithub"
+  ".com/kentik/api-schema-public/gen/go/ken"
+  "tik/core/v202303;kentik_coreb\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fdescriptor_2eproto,
@@ -56,7 +58,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto = {
-  false, false, descriptor_table_protodef_kentik_2fcore_2fv202303_2fannotations_2eproto, "kentik/core/v202303/annotations.proto", 798,
+  false, false, descriptor_table_protodef_kentik_2fcore_2fv202303_2fannotations_2eproto, "kentik/core/v202303/annotations.proto", 876,
   &descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto_once, descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto_sccs, descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto_deps, 0, 1,
   schemas, file_default_instances, TableStruct_kentik_2fcore_2fv202303_2fannotations_2eproto::offsets,
   file_level_metadata_kentik_2fcore_2fv202303_2fannotations_2eproto, 0, file_level_enum_descriptors_kentik_2fcore_2fv202303_2fannotations_2eproto, file_level_service_descriptors_kentik_2fcore_2fv202303_2fannotations_2eproto,
@@ -104,6 +106,10 @@ const std::string method_category_default("");
 ::PROTOBUF_NAMESPACE_ID::internal::ExtensionIdentifier< ::google::protobuf::MethodOptions,
     ::PROTOBUF_NAMESPACE_ID::internal::StringTypeTraits, 9, false >
   method_category(kMethodCategoryFieldNumber, method_category_default);
+const std::string method_permission_default("");
+::PROTOBUF_NAMESPACE_ID::internal::ExtensionIdentifier< ::google::protobuf::MethodOptions,
+    ::PROTOBUF_NAMESPACE_ID::internal::StringTypeTraits, 9, false >
+  method_permission(kMethodPermissionFieldNumber, method_permission_default);
 
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v202303
