@@ -164,6 +164,45 @@ message PostalAddress {
   ];
 }
 
+message PeeringDBSiteMapping {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Peering DB id"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  string site_id = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Peering DB site id"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  string peeringdb_fac_id = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Peering DB facility id"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  google.protobuf.Timestamp edate = 4 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Last modification timestamp (UTC)"
+    }
+  ];
+  google.protobuf.Timestamp cdate = 5 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Creation timestamp (UTC)"
+    }
+  ];
+  string company_id = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Company ID"
+    }
+  ];
+
+}
+
 // Site CRUD
 // -------------------------------------------------------
 
@@ -214,7 +253,12 @@ message Site {
   ];
   string site_market = 10 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "Name of the Site Market this sire belongs to"
+      description: "Name of the Site Market this site belongs to"
+    }
+  ];
+  string peeringdb_site_mapping = 11 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "PeeringDB Mapping of the given site"
     }
   ];
 }

@@ -40,6 +40,10 @@ class PostalAddressDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<PostalAddress> _instance;
 } _PostalAddress_default_instance_;
+class PeeringDBSiteMappingDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<PeeringDBSiteMapping> _instance;
+} _PeeringDBSiteMapping_default_instance_;
 class SiteDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<Site> _instance;
@@ -392,6 +396,21 @@ static void InitDefaultsscc_info_ListSitesResponse_kentik_2fsite_2fv202211_2fsit
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ListSitesResponse_kentik_2fsite_2fv202211_2fsite_2eproto}, {
       &scc_info_Site_kentik_2fsite_2fv202211_2fsite_2eproto.base,}};
 
+static void InitDefaultsscc_info_PeeringDBSiteMapping_kentik_2fsite_2fv202211_2fsite_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::kentik::site::v202211::_PeeringDBSiteMapping_default_instance_;
+    new (ptr) ::kentik::site::v202211::PeeringDBSiteMapping();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::kentik::site::v202211::PeeringDBSiteMapping::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_PeeringDBSiteMapping_kentik_2fsite_2fv202211_2fsite_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_PeeringDBSiteMapping_kentik_2fsite_2fv202211_2fsite_2eproto}, {
+      &scc_info_Timestamp_google_2fprotobuf_2ftimestamp_2eproto.base,}};
+
 static void InitDefaultsscc_info_PostalAddress_kentik_2fsite_2fv202211_2fsite_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -512,7 +531,7 @@ static void InitDefaultsscc_info_UpdateSiteResponse_kentik_2fsite_2fv202211_2fsi
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_UpdateSiteResponse_kentik_2fsite_2fv202211_2fsite_2eproto}, {
       &scc_info_Site_kentik_2fsite_2fv202211_2fsite_2eproto.base,}};
 
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_kentik_2fsite_2fv202211_2fsite_2eproto[26];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_kentik_2fsite_2fv202211_2fsite_2eproto[27];
 static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_kentik_2fsite_2fv202211_2fsite_2eproto[1];
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_kentik_2fsite_2fv202211_2fsite_2eproto = nullptr;
 
@@ -549,6 +568,17 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_kentik_2fsite_2fv202211_2fsite
   PROTOBUF_FIELD_OFFSET(::kentik::site::v202211::PostalAddress, postal_code_),
   PROTOBUF_FIELD_OFFSET(::kentik::site::v202211::PostalAddress, country_),
   ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::kentik::site::v202211::PeeringDBSiteMapping, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::kentik::site::v202211::PeeringDBSiteMapping, id_),
+  PROTOBUF_FIELD_OFFSET(::kentik::site::v202211::PeeringDBSiteMapping, site_id_),
+  PROTOBUF_FIELD_OFFSET(::kentik::site::v202211::PeeringDBSiteMapping, peeringdb_fac_id_),
+  PROTOBUF_FIELD_OFFSET(::kentik::site::v202211::PeeringDBSiteMapping, edate_),
+  PROTOBUF_FIELD_OFFSET(::kentik::site::v202211::PeeringDBSiteMapping, cdate_),
+  PROTOBUF_FIELD_OFFSET(::kentik::site::v202211::PeeringDBSiteMapping, company_id_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::kentik::site::v202211::Site, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -562,6 +592,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_kentik_2fsite_2fv202211_2fsite
   PROTOBUF_FIELD_OFFSET(::kentik::site::v202211::Site, address_classification_),
   PROTOBUF_FIELD_OFFSET(::kentik::site::v202211::Site, architecture_),
   PROTOBUF_FIELD_OFFSET(::kentik::site::v202211::Site, site_market_),
+  PROTOBUF_FIELD_OFFSET(::kentik::site::v202211::Site, peeringdb_site_mapping_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::kentik::site::v202211::ListSitesRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -697,28 +728,29 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 8, -1, sizeof(::kentik::site::v202211::Layer)},
   { 15, -1, sizeof(::kentik::site::v202211::LayerSet)},
   { 21, -1, sizeof(::kentik::site::v202211::PostalAddress)},
-  { 31, -1, sizeof(::kentik::site::v202211::Site)},
-  { 45, -1, sizeof(::kentik::site::v202211::ListSitesRequest)},
-  { 50, -1, sizeof(::kentik::site::v202211::ListSitesResponse)},
-  { 57, -1, sizeof(::kentik::site::v202211::GetSiteRequest)},
-  { 63, -1, sizeof(::kentik::site::v202211::GetSiteResponse)},
-  { 69, -1, sizeof(::kentik::site::v202211::CreateSiteRequest)},
-  { 75, -1, sizeof(::kentik::site::v202211::CreateSiteResponse)},
-  { 81, -1, sizeof(::kentik::site::v202211::UpdateSiteRequest)},
-  { 87, -1, sizeof(::kentik::site::v202211::UpdateSiteResponse)},
-  { 93, -1, sizeof(::kentik::site::v202211::DeleteSiteRequest)},
-  { 99, -1, sizeof(::kentik::site::v202211::DeleteSiteResponse)},
-  { 104, -1, sizeof(::kentik::site::v202211::SiteMarket)},
-  { 115, -1, sizeof(::kentik::site::v202211::ListSiteMarketsRequest)},
-  { 120, -1, sizeof(::kentik::site::v202211::ListSiteMarketsResponse)},
-  { 127, -1, sizeof(::kentik::site::v202211::GetSiteMarketRequest)},
-  { 133, -1, sizeof(::kentik::site::v202211::GetSiteMarketResponse)},
-  { 139, -1, sizeof(::kentik::site::v202211::CreateSiteMarketRequest)},
-  { 145, -1, sizeof(::kentik::site::v202211::CreateSiteMarketResponse)},
-  { 151, -1, sizeof(::kentik::site::v202211::UpdateSiteMarketRequest)},
-  { 157, -1, sizeof(::kentik::site::v202211::UpdateSiteMarketResponse)},
-  { 163, -1, sizeof(::kentik::site::v202211::DeleteSiteMarketRequest)},
-  { 169, -1, sizeof(::kentik::site::v202211::DeleteSiteMarketResponse)},
+  { 31, -1, sizeof(::kentik::site::v202211::PeeringDBSiteMapping)},
+  { 42, -1, sizeof(::kentik::site::v202211::Site)},
+  { 57, -1, sizeof(::kentik::site::v202211::ListSitesRequest)},
+  { 62, -1, sizeof(::kentik::site::v202211::ListSitesResponse)},
+  { 69, -1, sizeof(::kentik::site::v202211::GetSiteRequest)},
+  { 75, -1, sizeof(::kentik::site::v202211::GetSiteResponse)},
+  { 81, -1, sizeof(::kentik::site::v202211::CreateSiteRequest)},
+  { 87, -1, sizeof(::kentik::site::v202211::CreateSiteResponse)},
+  { 93, -1, sizeof(::kentik::site::v202211::UpdateSiteRequest)},
+  { 99, -1, sizeof(::kentik::site::v202211::UpdateSiteResponse)},
+  { 105, -1, sizeof(::kentik::site::v202211::DeleteSiteRequest)},
+  { 111, -1, sizeof(::kentik::site::v202211::DeleteSiteResponse)},
+  { 116, -1, sizeof(::kentik::site::v202211::SiteMarket)},
+  { 127, -1, sizeof(::kentik::site::v202211::ListSiteMarketsRequest)},
+  { 132, -1, sizeof(::kentik::site::v202211::ListSiteMarketsResponse)},
+  { 139, -1, sizeof(::kentik::site::v202211::GetSiteMarketRequest)},
+  { 145, -1, sizeof(::kentik::site::v202211::GetSiteMarketResponse)},
+  { 151, -1, sizeof(::kentik::site::v202211::CreateSiteMarketRequest)},
+  { 157, -1, sizeof(::kentik::site::v202211::CreateSiteMarketResponse)},
+  { 163, -1, sizeof(::kentik::site::v202211::UpdateSiteMarketRequest)},
+  { 169, -1, sizeof(::kentik::site::v202211::UpdateSiteMarketResponse)},
+  { 175, -1, sizeof(::kentik::site::v202211::DeleteSiteMarketRequest)},
+  { 181, -1, sizeof(::kentik::site::v202211::DeleteSiteMarketResponse)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -726,6 +758,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::site::v202211::_Layer_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::site::v202211::_LayerSet_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::site::v202211::_PostalAddress_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::site::v202211::_PeeringDBSiteMapping_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::site::v202211::_Site_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::site::v202211::_ListSitesRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::site::v202211::_ListSitesResponse_default_instance_),
@@ -782,207 +815,220 @@ const char descriptor_table_protodef_kentik_2fsite_2fv202211_2fsite_2eproto[] PR
   "l regionR\006region\022B\n\013postal_code\030\004 \001(\tB!\222"
   "A\0362\034Country specific postal codeR\npostal"
   "Code\022F\n\007country\030\005 \001(\tB,\222A%2#Country (ful"
-  "l name or country code)\342A\001\002R\007country\"\364\005\n"
-  "\004Site\022;\n\002id\030\001 \001(\tB+\222A$2\"System generated"
-  " unique identifier\342A\001\003R\002id\0227\n\005title\030\002 \001("
-  "\tB!\222A\0322\030User selected title/name\342A\001\002R\005ti"
-  "tle\0228\n\003lat\030\004 \001(\001B&\222A#2!Latitude (signed "
-  "decimal degrees)R\003lat\0229\n\003lon\030\005 \001(\001B\'\222A$2"
-  "\"Longitude (signed decimal degrees)R\003lon"
-  "\022^\n\016postal_address\030\006 \001(\0132\".kentik.site.v"
-  "202211.PostalAddressB\023\222A\0202\016Postal addres"
-  "sR\rpostalAddress\022H\n\004type\030\007 \001(\0162\035.kentik."
-  "site.v202211.SiteTypeB\025\222A\0162\014Type of site"
-  "\342A\001\002R\004type\022\223\001\n\026address_classification\030\010 "
-  "\001(\01320.kentik.site.v202211.SiteIpAddressC"
-  "lassificationB*\222A\'2%Classification of si"
-  "te\'s IP addressesR\025addressClassification"
-  "\022m\n\014architecture\030\t \003(\0132\035.kentik.site.v20"
-  "2211.LayerSetB*\222A\'2%Logical network topo"
-  "logy/architectureR\014architecture\022R\n\013site_"
-  "market\030\n \001(\tB1\222A.2,Name of the Site Mark"
-  "et this sire belongs toR\nsiteMarket\"\022\n\020L"
-  "istSitesRequest\"\333\001\n\021ListSitesResponse\022_\n"
-  "\005sites\030\001 \003(\0132\031.kentik.site.v202211.SiteB"
-  ".\222A+2)List of configurations of requeste"
-  "d sitesR\005sites\022e\n\rinvalid_count\030\002 \001(\rB@\222"
-  "A=2;Number of invalid entries encountere"
-  "d while collecting dataR\014invalidCount\"C\n"
-  "\016GetSiteRequest\0221\n\002id\030\001 \001(\tB!\222A\0322\030ID of "
-  "the requested site\342A\001\002R\002id\"j\n\017GetSiteRes"
-  "ponse\022W\n\004site\030\001 \001(\0132\031.kentik.site.v20221"
-  "1.SiteB(\222A%2#Configuration of the reques"
-  "ted siteR\004site\"j\n\021CreateSiteRequest\022U\n\004s"
-  "ite\030\001 \001(\0132\031.kentik.site.v202211.SiteB&\222A"
-  "\0372\035Configuration of the new site\342A\001\002R\004si"
-  "te\"q\n\022CreateSiteResponse\022[\n\004site\030\001 \001(\0132\031"
-  ".kentik.site.v202211.SiteB,\222A)2\'Configur"
-  "ation of the newly created siteR\004site\"\204\001"
-  "\n\021UpdateSiteRequest\022o\n\004site\030\001 \001(\0132\031.kent"
-  "ik.site.v202211.SiteB@\222A927New configura"
-  "tion attributes for the site to be updat"
-  "ed\342A\001\002R\004site\"k\n\022UpdateSiteResponse\022U\n\004si"
-  "te\030\001 \001(\0132\031.kentik.site.v202211.SiteB&\222A#"
-  "2!Updated configuration of the siteR\004sit"
-  "e\"J\n\021DeleteSiteRequest\0225\n\002id\030\001 \001(\tB%\222A\0362"
-  "\034ID of the site to be deleted\342A\001\002R\002id\"\024\n"
-  "\022DeleteSiteResponse\"\303\003\n\nSiteMarket\022;\n\002id"
-  "\030\001 \001(\tB+\222A$2\"System generated unique ide"
-  "ntifier\342A\001\003R\002id\0226\n\004name\030\002 \001(\tB\"\222A\0332\031User"
-  " selected unique name\342A\001\002R\004name\022<\n\013descr"
-  "iption\030\003 \001(\tB\032\222A\0272\025Free-form description"
-  "R\013description\022O\n\017number_of_sites\030\004 \001(\rB\'"
-  "\222A 2\036Number of sites in this market\342A\001\003R"
-  "\rnumberOfSites\022S\n\005cdate\030\005 \001(\0132\032.google.p"
-  "rotobuf.TimestampB!\222A\0322\030Creation timesta"
-  "mp (UTC)\342A\001\003R\005cdate\022\\\n\005edate\030\006 \001(\0132\032.goo"
-  "gle.protobuf.TimestampB*\222A#2!Last modifi"
-  "cation timestamp (UTC)\342A\001\003R\005edate\"\030\n\026Lis"
-  "tSiteMarketsRequest\"\373\001\n\027ListSiteMarketsR"
-  "esponse\022y\n\014site_markets\030\001 \003(\0132\037.kentik.s"
-  "ite.v202211.SiteMarketB5\222A220List of con"
-  "figurations of requested site marketsR\013s"
-  "iteMarkets\022e\n\rinvalid_count\030\002 \001(\rB@\222A=2;"
-  "Number of invalid entries encountered wh"
-  "ile collecting dataR\014invalidCount\"P\n\024Get"
-  "SiteMarketRequest\0228\n\002id\030\001 \001(\tB(\222A!2\037ID o"
-  "f the requested site market\342A\001\002R\002id\"\212\001\n\025"
-  "GetSiteMarketResponse\022q\n\013site_market\030\001 \001"
-  "(\0132\037.kentik.site.v202211.SiteMarketB/\222A,"
-  "2*Configuration of the requested site ma"
-  "rketR\nsiteMarket\"\212\001\n\027CreateSiteMarketReq"
-  "uest\022o\n\013site_market\030\001 \001(\0132\037.kentik.site."
-  "v202211.SiteMarketB-\222A&2$Configuration o"
-  "f the new site market\342A\001\002R\nsiteMarket\"\221\001"
-  "\n\030CreateSiteMarketResponse\022u\n\013site_marke"
-  "t\030\001 \001(\0132\037.kentik.site.v202211.SiteMarket"
-  "B3\222A02.Configuration of the newly create"
-  "d site marketR\nsiteMarket\"\236\001\n\027UpdateSite"
-  "MarketRequest\022\202\001\n\013site_market\030\001 \001(\0132\037.ke"
-  "ntik.site.v202211.SiteMarketB@\222A927New c"
-  "onfiguration attributes for the site to "
-  "be updated\342A\001\002R\nsiteMarket\"\213\001\n\030UpdateSit"
-  "eMarketResponse\022o\n\013site_market\030\001 \001(\0132\037.k"
-  "entik.site.v202211.SiteMarketB-\222A*2(Upda"
-  "ted configuration of the site marketR\nsi"
-  "teMarket\"W\n\027DeleteSiteMarketRequest\022<\n\002i"
-  "d\030\001 \001(\tB,\222A%2#ID of the site market to b"
-  "e deleted\342A\001\002R\002id\"\032\n\030DeleteSiteMarketRes"
-  "ponse*\264\001\n\010SiteType\022\031\n\025SITE_TYPE_UNSPECIF"
-  "IED\020\000\022\031\n\025SITE_TYPE_DATA_CENTER\020\001\022\023\n\017SITE"
-  "_TYPE_CLOUD\020\002\022\024\n\020SITE_TYPE_BRANCH\020\003\022\032\n\026S"
-  "ITE_TYPE_CONNECTIVITY\020\004\022\026\n\022SITE_TYPE_CUS"
-  "TOMER\020\005\022\023\n\017SITE_TYPE_OTHER\020\0062\217\026\n\013SiteSer"
-  "vice\022\314\001\n\tListSites\022%.kentik.site.v202211"
-  ".ListSitesRequest\032&.kentik.site.v202211."
-  "ListSitesResponse\"p\222A\?\022\017List all sites.\032"
-  "!Returns list of configured sites.*\tList"
-  "Sites\362\327\002\017admin.site:read\202\323\344\223\002\025\022\023/site/v2"
-  "02211/sites\022\353\001\n\007GetSite\022#.kentik.site.v2"
-  "02211.GetSiteRequest\032$.kentik.site.v2022"
-  "11.GetSiteResponse\"\224\001\222A^\022!Retrieve confi"
-  "guration of a site.\0320Returns configurati"
-  "on of a site specified by ID.*\007GetSite\362\327"
-  "\002\017admin.site:read\202\323\344\223\002\032\022\030/site/v202211/s"
-  "ites/{id}\022\207\002\n\nCreateSite\022&.kentik.site.v"
-  "202211.CreateSiteRequest\032\'.kentik.site.v"
-  "202211.CreateSiteResponse\"\247\001\222Ar\022\025Configu"
-  "re a new site.\032MCreate configuration for"
-  " a new site. Returns the newly created c"
-  "onfiguration.*\nCreateSite\362\327\002\020admin.site:"
-  "write\202\323\344\223\002\030\"\023/site/v202211/sites:\001*\022\263\002\n\n"
-  "UpdateSite\022&.kentik.site.v202211.UpdateS"
-  "iteRequest\032\'.kentik.site.v202211.UpdateS"
-  "iteResponse\"\323\001\222A\223\001\022 Updates configuratio"
-  "n of a site.\032cReplaces configuration of "
-  "a site with attributes in the request. R"
-  "eturns the updated configuration.*\nUpdat"
-  "eSite\362\327\002\020admin.site:write\202\323\344\223\002\"\032\035/site/v"
-  "202211/sites/{site.id}:\001*\022\367\001\n\nDeleteSite"
-  "\022&.kentik.site.v202211.DeleteSiteRequest"
-  "\032\'.kentik.site.v202211.DeleteSiteRespons"
-  "e\"\227\001\222A`\022\037Delete configuration of a site."
-  "\0321Deletes configuration of a site with s"
-  "pecific ID.*\nDeleteSite\362\327\002\020admin.site:wr"
-  "ite\202\323\344\223\002\032*\030/site/v202211/sites/{id}\022\372\001\n\017"
-  "ListSiteMarkets\022+.kentik.site.v202211.Li"
-  "stSiteMarketsRequest\032,.kentik.site.v2022"
-  "11.ListSiteMarketsResponse\"\213\001\222AS\022\026List a"
-  "ll site markets.\032(Returns list of config"
-  "ured site markets.*\017ListSiteMarkets\362\327\002\017a"
-  "dmin.site:read\202\323\344\223\002\034\022\032/site/v202211/site"
-  "_markets\022\230\002\n\rGetSiteMarket\022).kentik.site"
-  ".v202211.GetSiteMarketRequest\032*.kentik.s"
-  "ite.v202211.GetSiteMarketResponse\"\257\001\222Ar\022"
-  "(Retrieve configuration of a site market"
-  ".\0327Returns configuration of a site marke"
-  "t specified by ID.*\rGetSiteMarket\362\327\002\017adm"
-  "in.site:read\202\323\344\223\002!\022\037/site/v202211/site_m"
-  "arkets/{id}\022\265\002\n\020CreateSiteMarket\022,.kenti"
-  "k.site.v202211.CreateSiteMarketRequest\032-"
-  ".kentik.site.v202211.CreateSiteMarketRes"
-  "ponse\"\303\001\222A\206\001\022\034Configure a new site marke"
-  "t.\032TCreate configuration for a new site "
-  "market. Returns the newly created config"
-  "uration.*\020CreateSiteMarket\362\327\002\020admin.site"
-  ":write\202\323\344\223\002\037\"\032/site/v202211/site_markets"
-  ":\001*\022\347\002\n\020UpdateSiteMarket\022,.kentik.site.v"
-  "202211.UpdateSiteMarketRequest\032-.kentik."
-  "site.v202211.UpdateSiteMarketResponse\"\365\001"
-  "\222A\247\001\022\'Updates configuration of a site ma"
-  "rket.\032jReplaces configuration of a site "
-  "market with attributes in the request. R"
-  "eturns the updated configuration.*\020Updat"
-  "eSiteMarket\362\327\002\020admin.site:write\202\323\344\223\0020\032+/"
-  "site/v202211/site_markets/{site_market.i"
-  "d}:\001*\022\244\002\n\020DeleteSiteMarket\022,.kentik.site"
-  ".v202211.DeleteSiteMarketRequest\032-.kenti"
-  "k.site.v202211.DeleteSiteMarketResponse\""
-  "\262\001\222At\022&Delete configuration of a site ma"
-  "rket.\0328Deletes configuration of a site m"
-  "arket with specific ID.*\020DeleteSiteMarke"
-  "t\362\327\002\020admin.site:write\202\323\344\223\002!*\037/site/v2022"
-  "11/site_markets/{id}\032(\312A\023grpc.api.kentik"
-  ".com\352\327\002\nadmin.site\220\330\002\003B\203\014ZCgithub.com/ke"
-  "ntik/api-schema-public/gen/go/kentik/sit"
-  "e/v202211;site\222A\272\013\022\323\t\n\026Site Configuratio"
-  "n API\022\350\010# Overview\nThe Site Configuratio"
-  "n API provides programmatic access to co"
-  "nfiguration of Sites and Site Markets:\n\n"
-  "* **Site**: A site is a specific user-de"
-  "fined physical location (e.g. a data cen"
-  "ter at a given address) or logical locat"
-  "ion at which there is hosting of your de"
-  "vices, services, providers, or partner n"
-  "etworks. Information that can be associa"
-  "ted with a site includes the classificat"
-  "ion of IP addresses and the site\'s logic"
-  "al network topology/architecture.\n* **Si"
-  "te Market**: Sites with any common chara"
-  "cteristics of your choosing (e.g. all Po"
-  "Ps in a particular region) can be logica"
-  "lly grouped into a site market.\n\nBoth RE"
-  "ST endpoint and gRPC RPCs are provided.\n"
-  "\n***Notes:*** \n    - Once a site is crea"
-  "ted in Kentik, you can assign one or mor"
-  "e devices to the site via the settings f"
-  "or those devices; to do so programmatica"
-  "lly you\'d use the v5 Device API (see [De"
-  "vice Create](https://kb.kentik.com/v0/Ec"
-  "05.htm#Ec05-Device_Create)).\n    - Sites"
-  " can also be managed using the legacy RE"
-  "ST-only [Site API](https://kb.kentik.com"
-  "/v0/Ec10.htm#Ec10-Site_API), which provi"
-  "des access to a subset of site configura"
-  "tion attributes.\"E\n\026Kentik API Engineeri"
-  "ng\022+https://github.com/kentik/api-schema"
-  "-public2\007v202211*\001\0022\020application/json:\020a"
-  "pplication/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Aut"
-  "h-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-To"
-  "ken \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]\n%General"
-  " information about Kentik APIs\0224https://"
-  "kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Over"
-  "viewb\006proto3"
+  "l name or country code)\342A\001\002R\007country\"\242\003\n"
+  "\024PeeringDBSiteMapping\022&\n\002id\030\001 \001(\tB\026\222A\0172\r"
+  "Peering DB id\342A\001\002R\002id\0224\n\007site_id\030\002 \001(\tB\033"
+  "\222A\0242\022Peering DB site id\342A\001\002R\006siteId\022I\n\020p"
+  "eeringdb_fac_id\030\003 \001(\tB\037\222A\0302\026Peering DB f"
+  "acility id\342A\001\002R\016peeringdbFacId\022\\\n\005edate\030"
+  "\004 \001(\0132\032.google.protobuf.TimestampB*\222A#2!"
+  "Last modification timestamp (UTC)\342A\001\003R\005e"
+  "date\022S\n\005cdate\030\005 \001(\0132\032.google.protobuf.Ti"
+  "mestampB!\222A\0322\030Creation timestamp (UTC)\342A"
+  "\001\003R\005cdate\022.\n\ncompany_id\030\006 \001(\tB\017\222A\0142\nComp"
+  "any IDR\tcompanyId\"\324\006\n\004Site\022;\n\002id\030\001 \001(\tB+"
+  "\222A$2\"System generated unique identifier\342"
+  "A\001\003R\002id\0227\n\005title\030\002 \001(\tB!\222A\0322\030User select"
+  "ed title/name\342A\001\002R\005title\0228\n\003lat\030\004 \001(\001B&\222"
+  "A#2!Latitude (signed decimal degrees)R\003l"
+  "at\0229\n\003lon\030\005 \001(\001B\'\222A$2\"Longitude (signed "
+  "decimal degrees)R\003lon\022^\n\016postal_address\030"
+  "\006 \001(\0132\".kentik.site.v202211.PostalAddres"
+  "sB\023\222A\0202\016Postal addressR\rpostalAddress\022H\n"
+  "\004type\030\007 \001(\0162\035.kentik.site.v202211.SiteTy"
+  "peB\025\222A\0162\014Type of site\342A\001\002R\004type\022\223\001\n\026addr"
+  "ess_classification\030\010 \001(\01320.kentik.site.v"
+  "202211.SiteIpAddressClassificationB*\222A\'2"
+  "%Classification of site\'s IP addressesR\025"
+  "addressClassification\022m\n\014architecture\030\t "
+  "\003(\0132\035.kentik.site.v202211.LayerSetB*\222A\'2"
+  "%Logical network topology/architectureR\014"
+  "architecture\022R\n\013site_market\030\n \001(\tB1\222A.2,"
+  "Name of the Site Market this site belong"
+  "s toR\nsiteMarket\022^\n\026peeringdb_site_mappi"
+  "ng\030\013 \001(\tB(\222A%2#PeeringDB Mapping of the "
+  "given siteR\024peeringdbSiteMapping\"\022\n\020List"
+  "SitesRequest\"\333\001\n\021ListSitesResponse\022_\n\005si"
+  "tes\030\001 \003(\0132\031.kentik.site.v202211.SiteB.\222A"
+  "+2)List of configurations of requested s"
+  "itesR\005sites\022e\n\rinvalid_count\030\002 \001(\rB@\222A=2"
+  ";Number of invalid entries encountered w"
+  "hile collecting dataR\014invalidCount\"C\n\016Ge"
+  "tSiteRequest\0221\n\002id\030\001 \001(\tB!\222A\0322\030ID of the"
+  " requested site\342A\001\002R\002id\"j\n\017GetSiteRespon"
+  "se\022W\n\004site\030\001 \001(\0132\031.kentik.site.v202211.S"
+  "iteB(\222A%2#Configuration of the requested"
+  " siteR\004site\"j\n\021CreateSiteRequest\022U\n\004site"
+  "\030\001 \001(\0132\031.kentik.site.v202211.SiteB&\222A\0372\035"
+  "Configuration of the new site\342A\001\002R\004site\""
+  "q\n\022CreateSiteResponse\022[\n\004site\030\001 \001(\0132\031.ke"
+  "ntik.site.v202211.SiteB,\222A)2\'Configurati"
+  "on of the newly created siteR\004site\"\204\001\n\021U"
+  "pdateSiteRequest\022o\n\004site\030\001 \001(\0132\031.kentik."
+  "site.v202211.SiteB@\222A927New configuratio"
+  "n attributes for the site to be updated\342"
+  "A\001\002R\004site\"k\n\022UpdateSiteResponse\022U\n\004site\030"
+  "\001 \001(\0132\031.kentik.site.v202211.SiteB&\222A#2!U"
+  "pdated configuration of the siteR\004site\"J"
+  "\n\021DeleteSiteRequest\0225\n\002id\030\001 \001(\tB%\222A\0362\034ID"
+  " of the site to be deleted\342A\001\002R\002id\"\024\n\022De"
+  "leteSiteResponse\"\303\003\n\nSiteMarket\022;\n\002id\030\001 "
+  "\001(\tB+\222A$2\"System generated unique identi"
+  "fier\342A\001\003R\002id\0226\n\004name\030\002 \001(\tB\"\222A\0332\031User se"
+  "lected unique name\342A\001\002R\004name\022<\n\013descript"
+  "ion\030\003 \001(\tB\032\222A\0272\025Free-form descriptionR\013d"
+  "escription\022O\n\017number_of_sites\030\004 \001(\rB\'\222A "
+  "2\036Number of sites in this market\342A\001\003R\rnu"
+  "mberOfSites\022S\n\005cdate\030\005 \001(\0132\032.google.prot"
+  "obuf.TimestampB!\222A\0322\030Creation timestamp "
+  "(UTC)\342A\001\003R\005cdate\022\\\n\005edate\030\006 \001(\0132\032.google"
+  ".protobuf.TimestampB*\222A#2!Last modificat"
+  "ion timestamp (UTC)\342A\001\003R\005edate\"\030\n\026ListSi"
+  "teMarketsRequest\"\373\001\n\027ListSiteMarketsResp"
+  "onse\022y\n\014site_markets\030\001 \003(\0132\037.kentik.site"
+  ".v202211.SiteMarketB5\222A220List of config"
+  "urations of requested site marketsR\013site"
+  "Markets\022e\n\rinvalid_count\030\002 \001(\rB@\222A=2;Num"
+  "ber of invalid entries encountered while"
+  " collecting dataR\014invalidCount\"P\n\024GetSit"
+  "eMarketRequest\0228\n\002id\030\001 \001(\tB(\222A!2\037ID of t"
+  "he requested site market\342A\001\002R\002id\"\212\001\n\025Get"
+  "SiteMarketResponse\022q\n\013site_market\030\001 \001(\0132"
+  "\037.kentik.site.v202211.SiteMarketB/\222A,2*C"
+  "onfiguration of the requested site marke"
+  "tR\nsiteMarket\"\212\001\n\027CreateSiteMarketReques"
+  "t\022o\n\013site_market\030\001 \001(\0132\037.kentik.site.v20"
+  "2211.SiteMarketB-\222A&2$Configuration of t"
+  "he new site market\342A\001\002R\nsiteMarket\"\221\001\n\030C"
+  "reateSiteMarketResponse\022u\n\013site_market\030\001"
+  " \001(\0132\037.kentik.site.v202211.SiteMarketB3\222"
+  "A02.Configuration of the newly created s"
+  "ite marketR\nsiteMarket\"\236\001\n\027UpdateSiteMar"
+  "ketRequest\022\202\001\n\013site_market\030\001 \001(\0132\037.kenti"
+  "k.site.v202211.SiteMarketB@\222A927New conf"
+  "iguration attributes for the site to be "
+  "updated\342A\001\002R\nsiteMarket\"\213\001\n\030UpdateSiteMa"
+  "rketResponse\022o\n\013site_market\030\001 \001(\0132\037.kent"
+  "ik.site.v202211.SiteMarketB-\222A*2(Updated"
+  " configuration of the site marketR\nsiteM"
+  "arket\"W\n\027DeleteSiteMarketRequest\022<\n\002id\030\001"
+  " \001(\tB,\222A%2#ID of the site market to be d"
+  "eleted\342A\001\002R\002id\"\032\n\030DeleteSiteMarketRespon"
+  "se*\264\001\n\010SiteType\022\031\n\025SITE_TYPE_UNSPECIFIED"
+  "\020\000\022\031\n\025SITE_TYPE_DATA_CENTER\020\001\022\023\n\017SITE_TY"
+  "PE_CLOUD\020\002\022\024\n\020SITE_TYPE_BRANCH\020\003\022\032\n\026SITE"
+  "_TYPE_CONNECTIVITY\020\004\022\026\n\022SITE_TYPE_CUSTOM"
+  "ER\020\005\022\023\n\017SITE_TYPE_OTHER\020\0062\217\026\n\013SiteServic"
+  "e\022\314\001\n\tListSites\022%.kentik.site.v202211.Li"
+  "stSitesRequest\032&.kentik.site.v202211.Lis"
+  "tSitesResponse\"p\222A\?\022\017List all sites.\032!Re"
+  "turns list of configured sites.*\tListSit"
+  "es\362\327\002\017admin.site:read\202\323\344\223\002\025\022\023/site/v2022"
+  "11/sites\022\353\001\n\007GetSite\022#.kentik.site.v2022"
+  "11.GetSiteRequest\032$.kentik.site.v202211."
+  "GetSiteResponse\"\224\001\222A^\022!Retrieve configur"
+  "ation of a site.\0320Returns configuration "
+  "of a site specified by ID.*\007GetSite\362\327\002\017a"
+  "dmin.site:read\202\323\344\223\002\032\022\030/site/v202211/site"
+  "s/{id}\022\207\002\n\nCreateSite\022&.kentik.site.v202"
+  "211.CreateSiteRequest\032\'.kentik.site.v202"
+  "211.CreateSiteResponse\"\247\001\222Ar\022\025Configure "
+  "a new site.\032MCreate configuration for a "
+  "new site. Returns the newly created conf"
+  "iguration.*\nCreateSite\362\327\002\020admin.site:wri"
+  "te\202\323\344\223\002\030\"\023/site/v202211/sites:\001*\022\263\002\n\nUpd"
+  "ateSite\022&.kentik.site.v202211.UpdateSite"
+  "Request\032\'.kentik.site.v202211.UpdateSite"
+  "Response\"\323\001\222A\223\001\022 Updates configuration o"
+  "f a site.\032cReplaces configuration of a s"
+  "ite with attributes in the request. Retu"
+  "rns the updated configuration.*\nUpdateSi"
+  "te\362\327\002\020admin.site:write\202\323\344\223\002\"\032\035/site/v202"
+  "211/sites/{site.id}:\001*\022\367\001\n\nDeleteSite\022&."
+  "kentik.site.v202211.DeleteSiteRequest\032\'."
+  "kentik.site.v202211.DeleteSiteResponse\"\227"
+  "\001\222A`\022\037Delete configuration of a site.\0321D"
+  "eletes configuration of a site with spec"
+  "ific ID.*\nDeleteSite\362\327\002\020admin.site:write"
+  "\202\323\344\223\002\032*\030/site/v202211/sites/{id}\022\372\001\n\017Lis"
+  "tSiteMarkets\022+.kentik.site.v202211.ListS"
+  "iteMarketsRequest\032,.kentik.site.v202211."
+  "ListSiteMarketsResponse\"\213\001\222AS\022\026List all "
+  "site markets.\032(Returns list of configure"
+  "d site markets.*\017ListSiteMarkets\362\327\002\017admi"
+  "n.site:read\202\323\344\223\002\034\022\032/site/v202211/site_ma"
+  "rkets\022\230\002\n\rGetSiteMarket\022).kentik.site.v2"
+  "02211.GetSiteMarketRequest\032*.kentik.site"
+  ".v202211.GetSiteMarketResponse\"\257\001\222Ar\022(Re"
+  "trieve configuration of a site market.\0327"
+  "Returns configuration of a site market s"
+  "pecified by ID.*\rGetSiteMarket\362\327\002\017admin."
+  "site:read\202\323\344\223\002!\022\037/site/v202211/site_mark"
+  "ets/{id}\022\265\002\n\020CreateSiteMarket\022,.kentik.s"
+  "ite.v202211.CreateSiteMarketRequest\032-.ke"
+  "ntik.site.v202211.CreateSiteMarketRespon"
+  "se\"\303\001\222A\206\001\022\034Configure a new site market.\032"
+  "TCreate configuration for a new site mar"
+  "ket. Returns the newly created configura"
+  "tion.*\020CreateSiteMarket\362\327\002\020admin.site:wr"
+  "ite\202\323\344\223\002\037\"\032/site/v202211/site_markets:\001*"
+  "\022\347\002\n\020UpdateSiteMarket\022,.kentik.site.v202"
+  "211.UpdateSiteMarketRequest\032-.kentik.sit"
+  "e.v202211.UpdateSiteMarketResponse\"\365\001\222A\247"
+  "\001\022\'Updates configuration of a site marke"
+  "t.\032jReplaces configuration of a site mar"
+  "ket with attributes in the request. Retu"
+  "rns the updated configuration.*\020UpdateSi"
+  "teMarket\362\327\002\020admin.site:write\202\323\344\223\0020\032+/sit"
+  "e/v202211/site_markets/{site_market.id}:"
+  "\001*\022\244\002\n\020DeleteSiteMarket\022,.kentik.site.v2"
+  "02211.DeleteSiteMarketRequest\032-.kentik.s"
+  "ite.v202211.DeleteSiteMarketResponse\"\262\001\222"
+  "At\022&Delete configuration of a site marke"
+  "t.\0328Deletes configuration of a site mark"
+  "et with specific ID.*\020DeleteSiteMarket\362\327"
+  "\002\020admin.site:write\202\323\344\223\002!*\037/site/v202211/"
+  "site_markets/{id}\032(\312A\023grpc.api.kentik.co"
+  "m\352\327\002\nadmin.site\220\330\002\003B\203\014ZCgithub.com/kenti"
+  "k/api-schema-public/gen/go/kentik/site/v"
+  "202211;site\222A\272\013\022\323\t\n\026Site Configuration A"
+  "PI\022\350\010# Overview\nThe Site Configuration A"
+  "PI provides programmatic access to confi"
+  "guration of Sites and Site Markets:\n\n* *"
+  "*Site**: A site is a specific user-defin"
+  "ed physical location (e.g. a data center"
+  " at a given address) or logical location"
+  " at which there is hosting of your devic"
+  "es, services, providers, or partner netw"
+  "orks. Information that can be associated"
+  " with a site includes the classification"
+  " of IP addresses and the site\'s logical "
+  "network topology/architecture.\n* **Site "
+  "Market**: Sites with any common characte"
+  "ristics of your choosing (e.g. all PoPs "
+  "in a particular region) can be logically"
+  " grouped into a site market.\n\nBoth REST "
+  "endpoint and gRPC RPCs are provided.\n\n**"
+  "*Notes:*** \n    - Once a site is created"
+  " in Kentik, you can assign one or more d"
+  "evices to the site via the settings for "
+  "those devices; to do so programmatically"
+  " you\'d use the v5 Device API (see [Devic"
+  "e Create](https://kb.kentik.com/v0/Ec05."
+  "htm#Ec05-Device_Create)).\n    - Sites ca"
+  "n also be managed using the legacy REST-"
+  "only [Site API](https://kb.kentik.com/v0"
+  "/Ec10.htm#Ec10-Site_API), which provides"
+  " access to a subset of site configuratio"
+  "n attributes.\"E\n\026Kentik API Engineering\022"
+  "+https://github.com/kentik/api-schema-pu"
+  "blic2\007v202211*\001\0022\020application/json:\020appl"
+  "ication/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-E"
+  "mail \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Token"
+  " \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]\n%General in"
+  "formation about Kentik APIs\0224https://kb."
+  "kentik.com/v0/Ab09.htm#Ab09-APIs_Overvie"
+  "wb\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2fsite_2fv202211_2fsite_2eproto_deps[6] = {
   &::descriptor_table_google_2fapi_2fannotations_2eproto,
@@ -992,7 +1038,7 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor
   &::descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto,
   &::descriptor_table_protoc_2dgen_2dopenapiv2_2foptions_2fannotations_2eproto,
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_kentik_2fsite_2fv202211_2fsite_2eproto_sccs[26] = {
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_kentik_2fsite_2fv202211_2fsite_2eproto_sccs[27] = {
   &scc_info_CreateSiteMarketRequest_kentik_2fsite_2fv202211_2fsite_2eproto.base,
   &scc_info_CreateSiteMarketResponse_kentik_2fsite_2fv202211_2fsite_2eproto.base,
   &scc_info_CreateSiteRequest_kentik_2fsite_2fv202211_2fsite_2eproto.base,
@@ -1011,6 +1057,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
   &scc_info_ListSiteMarketsResponse_kentik_2fsite_2fv202211_2fsite_2eproto.base,
   &scc_info_ListSitesRequest_kentik_2fsite_2fv202211_2fsite_2eproto.base,
   &scc_info_ListSitesResponse_kentik_2fsite_2fv202211_2fsite_2eproto.base,
+  &scc_info_PeeringDBSiteMapping_kentik_2fsite_2fv202211_2fsite_2eproto.base,
   &scc_info_PostalAddress_kentik_2fsite_2fv202211_2fsite_2eproto.base,
   &scc_info_Site_kentik_2fsite_2fv202211_2fsite_2eproto.base,
   &scc_info_SiteIpAddressClassification_kentik_2fsite_2fv202211_2fsite_2eproto.base,
@@ -1022,10 +1069,10 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_kentik_2fsite_2fv202211_2fsite_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_kentik_2fsite_2fv202211_2fsite_2eproto = {
-  false, false, descriptor_table_protodef_kentik_2fsite_2fv202211_2fsite_2eproto, "kentik/site/v202211/site.proto", 9252,
-  &descriptor_table_kentik_2fsite_2fv202211_2fsite_2eproto_once, descriptor_table_kentik_2fsite_2fv202211_2fsite_2eproto_sccs, descriptor_table_kentik_2fsite_2fv202211_2fsite_2eproto_deps, 26, 6,
+  false, false, descriptor_table_protodef_kentik_2fsite_2fv202211_2fsite_2eproto, "kentik/site/v202211/site.proto", 9769,
+  &descriptor_table_kentik_2fsite_2fv202211_2fsite_2eproto_once, descriptor_table_kentik_2fsite_2fv202211_2fsite_2eproto_sccs, descriptor_table_kentik_2fsite_2fv202211_2fsite_2eproto_deps, 27, 6,
   schemas, file_default_instances, TableStruct_kentik_2fsite_2fv202211_2fsite_2eproto::offsets,
-  file_level_metadata_kentik_2fsite_2fv202211_2fsite_2eproto, 26, file_level_enum_descriptors_kentik_2fsite_2fv202211_2fsite_2eproto, file_level_service_descriptors_kentik_2fsite_2fv202211_2fsite_2eproto,
+  file_level_metadata_kentik_2fsite_2fv202211_2fsite_2eproto, 27, file_level_enum_descriptors_kentik_2fsite_2fv202211_2fsite_2eproto, file_level_service_descriptors_kentik_2fsite_2fv202211_2fsite_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
@@ -2147,6 +2194,434 @@ void PostalAddress::InternalSwap(PostalAddress* other) {
 
 // ===================================================================
 
+void PeeringDBSiteMapping::InitAsDefaultInstance() {
+  ::kentik::site::v202211::_PeeringDBSiteMapping_default_instance_._instance.get_mutable()->edate_ = const_cast< PROTOBUF_NAMESPACE_ID::Timestamp*>(
+      PROTOBUF_NAMESPACE_ID::Timestamp::internal_default_instance());
+  ::kentik::site::v202211::_PeeringDBSiteMapping_default_instance_._instance.get_mutable()->cdate_ = const_cast< PROTOBUF_NAMESPACE_ID::Timestamp*>(
+      PROTOBUF_NAMESPACE_ID::Timestamp::internal_default_instance());
+}
+class PeeringDBSiteMapping::_Internal {
+ public:
+  static const PROTOBUF_NAMESPACE_ID::Timestamp& edate(const PeeringDBSiteMapping* msg);
+  static const PROTOBUF_NAMESPACE_ID::Timestamp& cdate(const PeeringDBSiteMapping* msg);
+};
+
+const PROTOBUF_NAMESPACE_ID::Timestamp&
+PeeringDBSiteMapping::_Internal::edate(const PeeringDBSiteMapping* msg) {
+  return *msg->edate_;
+}
+const PROTOBUF_NAMESPACE_ID::Timestamp&
+PeeringDBSiteMapping::_Internal::cdate(const PeeringDBSiteMapping* msg) {
+  return *msg->cdate_;
+}
+void PeeringDBSiteMapping::clear_edate() {
+  if (GetArena() == nullptr && edate_ != nullptr) {
+    delete edate_;
+  }
+  edate_ = nullptr;
+}
+void PeeringDBSiteMapping::clear_cdate() {
+  if (GetArena() == nullptr && cdate_ != nullptr) {
+    delete cdate_;
+  }
+  cdate_ = nullptr;
+}
+PeeringDBSiteMapping::PeeringDBSiteMapping(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.site.v202211.PeeringDBSiteMapping)
+}
+PeeringDBSiteMapping::PeeringDBSiteMapping(const PeeringDBSiteMapping& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_id().empty()) {
+    id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_id(),
+      GetArena());
+  }
+  site_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_site_id().empty()) {
+    site_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_site_id(),
+      GetArena());
+  }
+  peeringdb_fac_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_peeringdb_fac_id().empty()) {
+    peeringdb_fac_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_peeringdb_fac_id(),
+      GetArena());
+  }
+  company_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_company_id().empty()) {
+    company_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_company_id(),
+      GetArena());
+  }
+  if (from._internal_has_edate()) {
+    edate_ = new PROTOBUF_NAMESPACE_ID::Timestamp(*from.edate_);
+  } else {
+    edate_ = nullptr;
+  }
+  if (from._internal_has_cdate()) {
+    cdate_ = new PROTOBUF_NAMESPACE_ID::Timestamp(*from.cdate_);
+  } else {
+    cdate_ = nullptr;
+  }
+  // @@protoc_insertion_point(copy_constructor:kentik.site.v202211.PeeringDBSiteMapping)
+}
+
+void PeeringDBSiteMapping::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_PeeringDBSiteMapping_kentik_2fsite_2fv202211_2fsite_2eproto.base);
+  id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  site_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  peeringdb_fac_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  company_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  ::memset(&edate_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&cdate_) -
+      reinterpret_cast<char*>(&edate_)) + sizeof(cdate_));
+}
+
+PeeringDBSiteMapping::~PeeringDBSiteMapping() {
+  // @@protoc_insertion_point(destructor:kentik.site.v202211.PeeringDBSiteMapping)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void PeeringDBSiteMapping::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+  id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  site_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  peeringdb_fac_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  company_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (this != internal_default_instance()) delete edate_;
+  if (this != internal_default_instance()) delete cdate_;
+}
+
+void PeeringDBSiteMapping::ArenaDtor(void* object) {
+  PeeringDBSiteMapping* _this = reinterpret_cast< PeeringDBSiteMapping* >(object);
+  (void)_this;
+}
+void PeeringDBSiteMapping::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void PeeringDBSiteMapping::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const PeeringDBSiteMapping& PeeringDBSiteMapping::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_PeeringDBSiteMapping_kentik_2fsite_2fv202211_2fsite_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void PeeringDBSiteMapping::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.site.v202211.PeeringDBSiteMapping)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  site_id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  peeringdb_fac_id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  company_id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  if (GetArena() == nullptr && edate_ != nullptr) {
+    delete edate_;
+  }
+  edate_ = nullptr;
+  if (GetArena() == nullptr && cdate_ != nullptr) {
+    delete cdate_;
+  }
+  cdate_ = nullptr;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* PeeringDBSiteMapping::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // string id = 1[json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.site.v202211.PeeringDBSiteMapping.id"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // string site_id = 2[json_name = "siteId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          auto str = _internal_mutable_site_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.site.v202211.PeeringDBSiteMapping.site_id"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // string peeringdb_fac_id = 3[json_name = "peeringdbFacId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          auto str = _internal_mutable_peeringdb_fac_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.site.v202211.PeeringDBSiteMapping.peeringdb_fac_id"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // .google.protobuf.Timestamp edate = 4[json_name = "edate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
+          ptr = ctx->ParseMessage(_internal_mutable_edate(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // .google.protobuf.Timestamp cdate = 5[json_name = "cdate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 42)) {
+          ptr = ctx->ParseMessage(_internal_mutable_cdate(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // string company_id = 6[json_name = "companyId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 50)) {
+          auto str = _internal_mutable_company_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.site.v202211.PeeringDBSiteMapping.company_id"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* PeeringDBSiteMapping::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:kentik.site.v202211.PeeringDBSiteMapping)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string id = 1[json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->id().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_id().data(), static_cast<int>(this->_internal_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.site.v202211.PeeringDBSiteMapping.id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_id(), target);
+  }
+
+  // string site_id = 2[json_name = "siteId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->site_id().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_site_id().data(), static_cast<int>(this->_internal_site_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.site.v202211.PeeringDBSiteMapping.site_id");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_site_id(), target);
+  }
+
+  // string peeringdb_fac_id = 3[json_name = "peeringdbFacId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->peeringdb_fac_id().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_peeringdb_fac_id().data(), static_cast<int>(this->_internal_peeringdb_fac_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.site.v202211.PeeringDBSiteMapping.peeringdb_fac_id");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_peeringdb_fac_id(), target);
+  }
+
+  // .google.protobuf.Timestamp edate = 4[json_name = "edate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->has_edate()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        4, _Internal::edate(this), target, stream);
+  }
+
+  // .google.protobuf.Timestamp cdate = 5[json_name = "cdate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->has_cdate()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        5, _Internal::cdate(this), target, stream);
+  }
+
+  // string company_id = 6[json_name = "companyId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->company_id().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_company_id().data(), static_cast<int>(this->_internal_company_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.site.v202211.PeeringDBSiteMapping.company_id");
+    target = stream->WriteStringMaybeAliased(
+        6, this->_internal_company_id(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:kentik.site.v202211.PeeringDBSiteMapping)
+  return target;
+}
+
+size_t PeeringDBSiteMapping::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:kentik.site.v202211.PeeringDBSiteMapping)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string id = 1[json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->id().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_id());
+  }
+
+  // string site_id = 2[json_name = "siteId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->site_id().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_site_id());
+  }
+
+  // string peeringdb_fac_id = 3[json_name = "peeringdbFacId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->peeringdb_fac_id().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_peeringdb_fac_id());
+  }
+
+  // string company_id = 6[json_name = "companyId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->company_id().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_company_id());
+  }
+
+  // .google.protobuf.Timestamp edate = 4[json_name = "edate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->has_edate()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *edate_);
+  }
+
+  // .google.protobuf.Timestamp cdate = 5[json_name = "cdate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->has_cdate()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *cdate_);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void PeeringDBSiteMapping::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:kentik.site.v202211.PeeringDBSiteMapping)
+  GOOGLE_DCHECK_NE(&from, this);
+  const PeeringDBSiteMapping* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<PeeringDBSiteMapping>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:kentik.site.v202211.PeeringDBSiteMapping)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:kentik.site.v202211.PeeringDBSiteMapping)
+    MergeFrom(*source);
+  }
+}
+
+void PeeringDBSiteMapping::MergeFrom(const PeeringDBSiteMapping& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:kentik.site.v202211.PeeringDBSiteMapping)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.id().size() > 0) {
+    _internal_set_id(from._internal_id());
+  }
+  if (from.site_id().size() > 0) {
+    _internal_set_site_id(from._internal_site_id());
+  }
+  if (from.peeringdb_fac_id().size() > 0) {
+    _internal_set_peeringdb_fac_id(from._internal_peeringdb_fac_id());
+  }
+  if (from.company_id().size() > 0) {
+    _internal_set_company_id(from._internal_company_id());
+  }
+  if (from.has_edate()) {
+    _internal_mutable_edate()->PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(from._internal_edate());
+  }
+  if (from.has_cdate()) {
+    _internal_mutable_cdate()->PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(from._internal_cdate());
+  }
+}
+
+void PeeringDBSiteMapping::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:kentik.site.v202211.PeeringDBSiteMapping)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void PeeringDBSiteMapping::CopyFrom(const PeeringDBSiteMapping& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.site.v202211.PeeringDBSiteMapping)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool PeeringDBSiteMapping::IsInitialized() const {
+  return true;
+}
+
+void PeeringDBSiteMapping::InternalSwap(PeeringDBSiteMapping* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  id_.Swap(&other->id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  site_id_.Swap(&other->site_id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  peeringdb_fac_id_.Swap(&other->peeringdb_fac_id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  company_id_.Swap(&other->company_id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(PeeringDBSiteMapping, cdate_)
+      + sizeof(PeeringDBSiteMapping::cdate_)
+      - PROTOBUF_FIELD_OFFSET(PeeringDBSiteMapping, edate_)>(
+          reinterpret_cast<char*>(&edate_),
+          reinterpret_cast<char*>(&other->edate_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata PeeringDBSiteMapping::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
 void Site::InitAsDefaultInstance() {
   ::kentik::site::v202211::_Site_default_instance_._instance.get_mutable()->postal_address_ = const_cast< ::kentik::site::v202211::PostalAddress*>(
       ::kentik::site::v202211::PostalAddress::internal_default_instance());
@@ -2193,6 +2668,11 @@ Site::Site(const Site& from)
     site_market_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_site_market(),
       GetArena());
   }
+  peeringdb_site_mapping_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_peeringdb_site_mapping().empty()) {
+    peeringdb_site_mapping_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_peeringdb_site_mapping(),
+      GetArena());
+  }
   if (from._internal_has_postal_address()) {
     postal_address_ = new ::kentik::site::v202211::PostalAddress(*from.postal_address_);
   } else {
@@ -2214,6 +2694,7 @@ void Site::SharedCtor() {
   id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   title_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   site_market_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  peeringdb_site_mapping_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&postal_address_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&type_) -
       reinterpret_cast<char*>(&postal_address_)) + sizeof(type_));
@@ -2230,6 +2711,7 @@ void Site::SharedDtor() {
   id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   title_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   site_market_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  peeringdb_site_mapping_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete postal_address_;
   if (this != internal_default_instance()) delete address_classification_;
 }
@@ -2259,6 +2741,7 @@ void Site::Clear() {
   id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   title_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   site_market_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  peeringdb_site_mapping_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   if (GetArena() == nullptr && postal_address_ != nullptr) {
     delete postal_address_;
   }
@@ -2353,6 +2836,15 @@ const char* Site::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inter
           auto str = _internal_mutable_site_market();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.site.v202211.Site.site_market"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // string peeringdb_site_mapping = 11[json_name = "peeringdbSiteMapping", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 11:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 90)) {
+          auto str = _internal_mutable_peeringdb_site_mapping();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.site.v202211.Site.peeringdb_site_mapping"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -2457,6 +2949,16 @@ failure:
         10, this->_internal_site_market(), target);
   }
 
+  // string peeringdb_site_mapping = 11[json_name = "peeringdbSiteMapping", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->peeringdb_site_mapping().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_peeringdb_site_mapping().data(), static_cast<int>(this->_internal_peeringdb_site_mapping().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.site.v202211.Site.peeringdb_site_mapping");
+    target = stream->WriteStringMaybeAliased(
+        11, this->_internal_peeringdb_site_mapping(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -2499,6 +3001,13 @@ size_t Site::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_site_market());
+  }
+
+  // string peeringdb_site_mapping = 11[json_name = "peeringdbSiteMapping", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->peeringdb_site_mapping().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_peeringdb_site_mapping());
   }
 
   // .kentik.site.v202211.PostalAddress postal_address = 6[json_name = "postalAddress", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -2572,6 +3081,9 @@ void Site::MergeFrom(const Site& from) {
   if (from.site_market().size() > 0) {
     _internal_set_site_market(from._internal_site_market());
   }
+  if (from.peeringdb_site_mapping().size() > 0) {
+    _internal_set_peeringdb_site_mapping(from._internal_peeringdb_site_mapping());
+  }
   if (from.has_postal_address()) {
     _internal_mutable_postal_address()->::kentik::site::v202211::PostalAddress::MergeFrom(from._internal_postal_address());
   }
@@ -2614,6 +3126,7 @@ void Site::InternalSwap(Site* other) {
   id_.Swap(&other->id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   title_.Swap(&other->title_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   site_market_.Swap(&other->site_market_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  peeringdb_site_mapping_.Swap(&other->peeringdb_site_mapping_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Site, type_)
       + sizeof(Site::type_)
@@ -7164,6 +7677,9 @@ template<> PROTOBUF_NOINLINE ::kentik::site::v202211::LayerSet* Arena::CreateMay
 }
 template<> PROTOBUF_NOINLINE ::kentik::site::v202211::PostalAddress* Arena::CreateMaybeMessage< ::kentik::site::v202211::PostalAddress >(Arena* arena) {
   return Arena::CreateMessageInternal< ::kentik::site::v202211::PostalAddress >(arena);
+}
+template<> PROTOBUF_NOINLINE ::kentik::site::v202211::PeeringDBSiteMapping* Arena::CreateMaybeMessage< ::kentik::site::v202211::PeeringDBSiteMapping >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::kentik::site::v202211::PeeringDBSiteMapping >(arena);
 }
 template<> PROTOBUF_NOINLINE ::kentik::site::v202211::Site* Arena::CreateMaybeMessage< ::kentik::site::v202211::Site >(Arena* arena) {
   return Arena::CreateMessageInternal< ::kentik::site::v202211::Site >(arena);

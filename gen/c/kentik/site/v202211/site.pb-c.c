@@ -187,6 +187,51 @@ void   kentik__site__v202211__postal_address__free_unpacked
   assert(message->base.descriptor == &kentik__site__v202211__postal_address__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   kentik__site__v202211__peering_dbsite_mapping__init
+                     (Kentik__Site__V202211__PeeringDBSiteMapping         *message)
+{
+  static const Kentik__Site__V202211__PeeringDBSiteMapping init_value = KENTIK__SITE__V202211__PEERING_DBSITE_MAPPING__INIT;
+  *message = init_value;
+}
+size_t kentik__site__v202211__peering_dbsite_mapping__get_packed_size
+                     (const Kentik__Site__V202211__PeeringDBSiteMapping *message)
+{
+  assert(message->base.descriptor == &kentik__site__v202211__peering_dbsite_mapping__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__site__v202211__peering_dbsite_mapping__pack
+                     (const Kentik__Site__V202211__PeeringDBSiteMapping *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__site__v202211__peering_dbsite_mapping__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__site__v202211__peering_dbsite_mapping__pack_to_buffer
+                     (const Kentik__Site__V202211__PeeringDBSiteMapping *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__site__v202211__peering_dbsite_mapping__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Site__V202211__PeeringDBSiteMapping *
+       kentik__site__v202211__peering_dbsite_mapping__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Site__V202211__PeeringDBSiteMapping *)
+     protobuf_c_message_unpack (&kentik__site__v202211__peering_dbsite_mapping__descriptor,
+                                allocator, len, data);
+}
+void   kentik__site__v202211__peering_dbsite_mapping__free_unpacked
+                     (Kentik__Site__V202211__PeeringDBSiteMapping *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__site__v202211__peering_dbsite_mapping__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 void   kentik__site__v202211__site__init
                      (Kentik__Site__V202211__Site         *message)
 {
@@ -1420,7 +1465,110 @@ const ProtobufCMessageDescriptor kentik__site__v202211__postal_address__descript
   (ProtobufCMessageInit) kentik__site__v202211__postal_address__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__site__v202211__site__field_descriptors[9] =
+static const ProtobufCFieldDescriptor kentik__site__v202211__peering_dbsite_mapping__field_descriptors[6] =
+{
+  {
+    "id",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Site__V202211__PeeringDBSiteMapping, id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "site_id",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Site__V202211__PeeringDBSiteMapping, site_id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "peeringdb_fac_id",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Site__V202211__PeeringDBSiteMapping, peeringdb_fac_id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "edate",
+    4,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Site__V202211__PeeringDBSiteMapping, edate),
+    &google__protobuf__timestamp__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "cdate",
+    5,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Site__V202211__PeeringDBSiteMapping, cdate),
+    &google__protobuf__timestamp__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "company_id",
+    6,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Site__V202211__PeeringDBSiteMapping, company_id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__site__v202211__peering_dbsite_mapping__field_indices_by_name[] = {
+  4,   /* field[4] = cdate */
+  5,   /* field[5] = company_id */
+  3,   /* field[3] = edate */
+  0,   /* field[0] = id */
+  2,   /* field[2] = peeringdb_fac_id */
+  1,   /* field[1] = site_id */
+};
+static const ProtobufCIntRange kentik__site__v202211__peering_dbsite_mapping__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 6 }
+};
+const ProtobufCMessageDescriptor kentik__site__v202211__peering_dbsite_mapping__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.site.v202211.PeeringDBSiteMapping",
+  "PeeringDBSiteMapping",
+  "Kentik__Site__V202211__PeeringDBSiteMapping",
+  "kentik.site.v202211",
+  sizeof(Kentik__Site__V202211__PeeringDBSiteMapping),
+  6,
+  kentik__site__v202211__peering_dbsite_mapping__field_descriptors,
+  kentik__site__v202211__peering_dbsite_mapping__field_indices_by_name,
+  1,  kentik__site__v202211__peering_dbsite_mapping__number_ranges,
+  (ProtobufCMessageInit) kentik__site__v202211__peering_dbsite_mapping__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__site__v202211__site__field_descriptors[10] =
 {
   {
     "id",
@@ -1530,6 +1678,18 @@ static const ProtobufCFieldDescriptor kentik__site__v202211__site__field_descrip
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "peeringdb_site_mapping",
+    11,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Site__V202211__Site, peeringdb_site_mapping),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__site__v202211__site__field_indices_by_name[] = {
   6,   /* field[6] = address_classification */
@@ -1537,6 +1697,7 @@ static const unsigned kentik__site__v202211__site__field_indices_by_name[] = {
   0,   /* field[0] = id */
   2,   /* field[2] = lat */
   3,   /* field[3] = lon */
+  9,   /* field[9] = peeringdb_site_mapping */
   4,   /* field[4] = postal_address */
   8,   /* field[8] = site_market */
   1,   /* field[1] = title */
@@ -1546,7 +1707,7 @@ static const ProtobufCIntRange kentik__site__v202211__site__number_ranges[2 + 1]
 {
   { 1, 0 },
   { 4, 2 },
-  { 0, 9 }
+  { 0, 10 }
 };
 const ProtobufCMessageDescriptor kentik__site__v202211__site__descriptor =
 {
@@ -1556,7 +1717,7 @@ const ProtobufCMessageDescriptor kentik__site__v202211__site__descriptor =
   "Kentik__Site__V202211__Site",
   "kentik.site.v202211",
   sizeof(Kentik__Site__V202211__Site),
-  9,
+  10,
   kentik__site__v202211__site__field_descriptors,
   kentik__site__v202211__site__field_indices_by_name,
   2,  kentik__site__v202211__site__number_ranges,

@@ -54,7 +54,7 @@ struct TableStruct_kentik_2fsite_2fv202211_2fsite_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[26]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[27]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -118,6 +118,9 @@ extern ListSitesRequestDefaultTypeInternal _ListSitesRequest_default_instance_;
 class ListSitesResponse;
 class ListSitesResponseDefaultTypeInternal;
 extern ListSitesResponseDefaultTypeInternal _ListSitesResponse_default_instance_;
+class PeeringDBSiteMapping;
+class PeeringDBSiteMappingDefaultTypeInternal;
+extern PeeringDBSiteMappingDefaultTypeInternal _PeeringDBSiteMapping_default_instance_;
 class PostalAddress;
 class PostalAddressDefaultTypeInternal;
 extern PostalAddressDefaultTypeInternal _PostalAddress_default_instance_;
@@ -164,6 +167,7 @@ template<> ::kentik::site::v202211::ListSiteMarketsRequest* Arena::CreateMaybeMe
 template<> ::kentik::site::v202211::ListSiteMarketsResponse* Arena::CreateMaybeMessage<::kentik::site::v202211::ListSiteMarketsResponse>(Arena*);
 template<> ::kentik::site::v202211::ListSitesRequest* Arena::CreateMaybeMessage<::kentik::site::v202211::ListSitesRequest>(Arena*);
 template<> ::kentik::site::v202211::ListSitesResponse* Arena::CreateMaybeMessage<::kentik::site::v202211::ListSitesResponse>(Arena*);
+template<> ::kentik::site::v202211::PeeringDBSiteMapping* Arena::CreateMaybeMessage<::kentik::site::v202211::PeeringDBSiteMapping>(Arena*);
 template<> ::kentik::site::v202211::PostalAddress* Arena::CreateMaybeMessage<::kentik::site::v202211::PostalAddress>(Arena*);
 template<> ::kentik::site::v202211::Site* Arena::CreateMaybeMessage<::kentik::site::v202211::Site>(Arena*);
 template<> ::kentik::site::v202211::SiteIpAddressClassification* Arena::CreateMaybeMessage<::kentik::site::v202211::SiteIpAddressClassification>(Arena*);
@@ -999,6 +1003,280 @@ class PostalAddress PROTOBUF_FINAL :
 };
 // -------------------------------------------------------------------
 
+class PeeringDBSiteMapping PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:kentik.site.v202211.PeeringDBSiteMapping) */ {
+ public:
+  inline PeeringDBSiteMapping() : PeeringDBSiteMapping(nullptr) {};
+  virtual ~PeeringDBSiteMapping();
+
+  PeeringDBSiteMapping(const PeeringDBSiteMapping& from);
+  PeeringDBSiteMapping(PeeringDBSiteMapping&& from) noexcept
+    : PeeringDBSiteMapping() {
+    *this = ::std::move(from);
+  }
+
+  inline PeeringDBSiteMapping& operator=(const PeeringDBSiteMapping& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline PeeringDBSiteMapping& operator=(PeeringDBSiteMapping&& from) noexcept {
+    if (GetArena() == from.GetArena()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const PeeringDBSiteMapping& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const PeeringDBSiteMapping* internal_default_instance() {
+    return reinterpret_cast<const PeeringDBSiteMapping*>(
+               &_PeeringDBSiteMapping_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(PeeringDBSiteMapping& a, PeeringDBSiteMapping& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(PeeringDBSiteMapping* other) {
+    if (other == this) return;
+    if (GetArena() == other->GetArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(PeeringDBSiteMapping* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline PeeringDBSiteMapping* New() const final {
+    return CreateMaybeMessage<PeeringDBSiteMapping>(nullptr);
+  }
+
+  PeeringDBSiteMapping* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<PeeringDBSiteMapping>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const PeeringDBSiteMapping& from);
+  void MergeFrom(const PeeringDBSiteMapping& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(PeeringDBSiteMapping* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "kentik.site.v202211.PeeringDBSiteMapping";
+  }
+  protected:
+  explicit PeeringDBSiteMapping(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_kentik_2fsite_2fv202211_2fsite_2eproto);
+    return ::descriptor_table_kentik_2fsite_2fv202211_2fsite_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kIdFieldNumber = 1,
+    kSiteIdFieldNumber = 2,
+    kPeeringdbFacIdFieldNumber = 3,
+    kCompanyIdFieldNumber = 6,
+    kEdateFieldNumber = 4,
+    kCdateFieldNumber = 5,
+  };
+  // string id = 1[json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_id();
+  const std::string& id() const;
+  void set_id(const std::string& value);
+  void set_id(std::string&& value);
+  void set_id(const char* value);
+  void set_id(const char* value, size_t size);
+  std::string* mutable_id();
+  std::string* release_id();
+  void set_allocated_id(std::string* id);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_id();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_id(
+      std::string* id);
+  private:
+  const std::string& _internal_id() const;
+  void _internal_set_id(const std::string& value);
+  std::string* _internal_mutable_id();
+  public:
+
+  // string site_id = 2[json_name = "siteId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_site_id();
+  const std::string& site_id() const;
+  void set_site_id(const std::string& value);
+  void set_site_id(std::string&& value);
+  void set_site_id(const char* value);
+  void set_site_id(const char* value, size_t size);
+  std::string* mutable_site_id();
+  std::string* release_site_id();
+  void set_allocated_site_id(std::string* site_id);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_site_id();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_site_id(
+      std::string* site_id);
+  private:
+  const std::string& _internal_site_id() const;
+  void _internal_set_site_id(const std::string& value);
+  std::string* _internal_mutable_site_id();
+  public:
+
+  // string peeringdb_fac_id = 3[json_name = "peeringdbFacId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_peeringdb_fac_id();
+  const std::string& peeringdb_fac_id() const;
+  void set_peeringdb_fac_id(const std::string& value);
+  void set_peeringdb_fac_id(std::string&& value);
+  void set_peeringdb_fac_id(const char* value);
+  void set_peeringdb_fac_id(const char* value, size_t size);
+  std::string* mutable_peeringdb_fac_id();
+  std::string* release_peeringdb_fac_id();
+  void set_allocated_peeringdb_fac_id(std::string* peeringdb_fac_id);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_peeringdb_fac_id();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_peeringdb_fac_id(
+      std::string* peeringdb_fac_id);
+  private:
+  const std::string& _internal_peeringdb_fac_id() const;
+  void _internal_set_peeringdb_fac_id(const std::string& value);
+  std::string* _internal_mutable_peeringdb_fac_id();
+  public:
+
+  // string company_id = 6[json_name = "companyId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_company_id();
+  const std::string& company_id() const;
+  void set_company_id(const std::string& value);
+  void set_company_id(std::string&& value);
+  void set_company_id(const char* value);
+  void set_company_id(const char* value, size_t size);
+  std::string* mutable_company_id();
+  std::string* release_company_id();
+  void set_allocated_company_id(std::string* company_id);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_company_id();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_company_id(
+      std::string* company_id);
+  private:
+  const std::string& _internal_company_id() const;
+  void _internal_set_company_id(const std::string& value);
+  std::string* _internal_mutable_company_id();
+  public:
+
+  // .google.protobuf.Timestamp edate = 4[json_name = "edate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_edate() const;
+  private:
+  bool _internal_has_edate() const;
+  public:
+  void clear_edate();
+  const PROTOBUF_NAMESPACE_ID::Timestamp& edate() const;
+  PROTOBUF_NAMESPACE_ID::Timestamp* release_edate();
+  PROTOBUF_NAMESPACE_ID::Timestamp* mutable_edate();
+  void set_allocated_edate(PROTOBUF_NAMESPACE_ID::Timestamp* edate);
+  private:
+  const PROTOBUF_NAMESPACE_ID::Timestamp& _internal_edate() const;
+  PROTOBUF_NAMESPACE_ID::Timestamp* _internal_mutable_edate();
+  public:
+  void unsafe_arena_set_allocated_edate(
+      PROTOBUF_NAMESPACE_ID::Timestamp* edate);
+  PROTOBUF_NAMESPACE_ID::Timestamp* unsafe_arena_release_edate();
+
+  // .google.protobuf.Timestamp cdate = 5[json_name = "cdate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_cdate() const;
+  private:
+  bool _internal_has_cdate() const;
+  public:
+  void clear_cdate();
+  const PROTOBUF_NAMESPACE_ID::Timestamp& cdate() const;
+  PROTOBUF_NAMESPACE_ID::Timestamp* release_cdate();
+  PROTOBUF_NAMESPACE_ID::Timestamp* mutable_cdate();
+  void set_allocated_cdate(PROTOBUF_NAMESPACE_ID::Timestamp* cdate);
+  private:
+  const PROTOBUF_NAMESPACE_ID::Timestamp& _internal_cdate() const;
+  PROTOBUF_NAMESPACE_ID::Timestamp* _internal_mutable_cdate();
+  public:
+  void unsafe_arena_set_allocated_cdate(
+      PROTOBUF_NAMESPACE_ID::Timestamp* cdate);
+  PROTOBUF_NAMESPACE_ID::Timestamp* unsafe_arena_release_cdate();
+
+  // @@protoc_insertion_point(class_scope:kentik.site.v202211.PeeringDBSiteMapping)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr id_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr site_id_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr peeringdb_fac_id_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr company_id_;
+  PROTOBUF_NAMESPACE_ID::Timestamp* edate_;
+  PROTOBUF_NAMESPACE_ID::Timestamp* cdate_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_kentik_2fsite_2fv202211_2fsite_2eproto;
+};
+// -------------------------------------------------------------------
+
 class Site PROTOBUF_FINAL :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:kentik.site.v202211.Site) */ {
  public:
@@ -1041,7 +1319,7 @@ class Site PROTOBUF_FINAL :
                &_Site_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    5;
 
   friend void swap(Site& a, Site& b) {
     a.Swap(&b);
@@ -1116,6 +1394,7 @@ class Site PROTOBUF_FINAL :
     kIdFieldNumber = 1,
     kTitleFieldNumber = 2,
     kSiteMarketFieldNumber = 10,
+    kPeeringdbSiteMappingFieldNumber = 11,
     kPostalAddressFieldNumber = 6,
     kAddressClassificationFieldNumber = 8,
     kLatFieldNumber = 4,
@@ -1215,6 +1494,31 @@ class Site PROTOBUF_FINAL :
   std::string* _internal_mutable_site_market();
   public:
 
+  // string peeringdb_site_mapping = 11[json_name = "peeringdbSiteMapping", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_peeringdb_site_mapping();
+  const std::string& peeringdb_site_mapping() const;
+  void set_peeringdb_site_mapping(const std::string& value);
+  void set_peeringdb_site_mapping(std::string&& value);
+  void set_peeringdb_site_mapping(const char* value);
+  void set_peeringdb_site_mapping(const char* value, size_t size);
+  std::string* mutable_peeringdb_site_mapping();
+  std::string* release_peeringdb_site_mapping();
+  void set_allocated_peeringdb_site_mapping(std::string* peeringdb_site_mapping);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_peeringdb_site_mapping();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_peeringdb_site_mapping(
+      std::string* peeringdb_site_mapping);
+  private:
+  const std::string& _internal_peeringdb_site_mapping() const;
+  void _internal_set_peeringdb_site_mapping(const std::string& value);
+  std::string* _internal_mutable_peeringdb_site_mapping();
+  public:
+
   // .kentik.site.v202211.PostalAddress postal_address = 6[json_name = "postalAddress", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   bool has_postal_address() const;
   private:
@@ -1289,6 +1593,7 @@ class Site PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr id_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr title_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr site_market_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr peeringdb_site_mapping_;
   ::kentik::site::v202211::PostalAddress* postal_address_;
   ::kentik::site::v202211::SiteIpAddressClassification* address_classification_;
   double lat_;
@@ -1341,7 +1646,7 @@ class ListSitesRequest PROTOBUF_FINAL :
                &_ListSitesRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    6;
 
   friend void swap(ListSitesRequest& a, ListSitesRequest& b) {
     a.Swap(&b);
@@ -1465,7 +1770,7 @@ class ListSitesResponse PROTOBUF_FINAL :
                &_ListSitesResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    7;
 
   friend void swap(ListSitesResponse& a, ListSitesResponse& b) {
     a.Swap(&b);
@@ -1622,7 +1927,7 @@ class GetSiteRequest PROTOBUF_FINAL :
                &_GetSiteRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    8;
 
   friend void swap(GetSiteRequest& a, GetSiteRequest& b) {
     a.Swap(&b);
@@ -1775,7 +2080,7 @@ class GetSiteResponse PROTOBUF_FINAL :
                &_GetSiteResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    9;
 
   friend void swap(GetSiteResponse& a, GetSiteResponse& b) {
     a.Swap(&b);
@@ -1921,7 +2226,7 @@ class CreateSiteRequest PROTOBUF_FINAL :
                &_CreateSiteRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    10;
 
   friend void swap(CreateSiteRequest& a, CreateSiteRequest& b) {
     a.Swap(&b);
@@ -2067,7 +2372,7 @@ class CreateSiteResponse PROTOBUF_FINAL :
                &_CreateSiteResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    11;
 
   friend void swap(CreateSiteResponse& a, CreateSiteResponse& b) {
     a.Swap(&b);
@@ -2213,7 +2518,7 @@ class UpdateSiteRequest PROTOBUF_FINAL :
                &_UpdateSiteRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    12;
 
   friend void swap(UpdateSiteRequest& a, UpdateSiteRequest& b) {
     a.Swap(&b);
@@ -2359,7 +2664,7 @@ class UpdateSiteResponse PROTOBUF_FINAL :
                &_UpdateSiteResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    13;
 
   friend void swap(UpdateSiteResponse& a, UpdateSiteResponse& b) {
     a.Swap(&b);
@@ -2505,7 +2810,7 @@ class DeleteSiteRequest PROTOBUF_FINAL :
                &_DeleteSiteRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    14;
 
   friend void swap(DeleteSiteRequest& a, DeleteSiteRequest& b) {
     a.Swap(&b);
@@ -2658,7 +2963,7 @@ class DeleteSiteResponse PROTOBUF_FINAL :
                &_DeleteSiteResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    15;
 
   friend void swap(DeleteSiteResponse& a, DeleteSiteResponse& b) {
     a.Swap(&b);
@@ -2782,7 +3087,7 @@ class SiteMarket PROTOBUF_FINAL :
                &_SiteMarket_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    15;
+    16;
 
   friend void swap(SiteMarket& a, SiteMarket& b) {
     a.Swap(&b);
@@ -3040,7 +3345,7 @@ class ListSiteMarketsRequest PROTOBUF_FINAL :
                &_ListSiteMarketsRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    17;
 
   friend void swap(ListSiteMarketsRequest& a, ListSiteMarketsRequest& b) {
     a.Swap(&b);
@@ -3164,7 +3469,7 @@ class ListSiteMarketsResponse PROTOBUF_FINAL :
                &_ListSiteMarketsResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    17;
+    18;
 
   friend void swap(ListSiteMarketsResponse& a, ListSiteMarketsResponse& b) {
     a.Swap(&b);
@@ -3321,7 +3626,7 @@ class GetSiteMarketRequest PROTOBUF_FINAL :
                &_GetSiteMarketRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    18;
+    19;
 
   friend void swap(GetSiteMarketRequest& a, GetSiteMarketRequest& b) {
     a.Swap(&b);
@@ -3474,7 +3779,7 @@ class GetSiteMarketResponse PROTOBUF_FINAL :
                &_GetSiteMarketResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    19;
+    20;
 
   friend void swap(GetSiteMarketResponse& a, GetSiteMarketResponse& b) {
     a.Swap(&b);
@@ -3620,7 +3925,7 @@ class CreateSiteMarketRequest PROTOBUF_FINAL :
                &_CreateSiteMarketRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    20;
+    21;
 
   friend void swap(CreateSiteMarketRequest& a, CreateSiteMarketRequest& b) {
     a.Swap(&b);
@@ -3766,7 +4071,7 @@ class CreateSiteMarketResponse PROTOBUF_FINAL :
                &_CreateSiteMarketResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    21;
+    22;
 
   friend void swap(CreateSiteMarketResponse& a, CreateSiteMarketResponse& b) {
     a.Swap(&b);
@@ -3912,7 +4217,7 @@ class UpdateSiteMarketRequest PROTOBUF_FINAL :
                &_UpdateSiteMarketRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    22;
+    23;
 
   friend void swap(UpdateSiteMarketRequest& a, UpdateSiteMarketRequest& b) {
     a.Swap(&b);
@@ -4058,7 +4363,7 @@ class UpdateSiteMarketResponse PROTOBUF_FINAL :
                &_UpdateSiteMarketResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    23;
+    24;
 
   friend void swap(UpdateSiteMarketResponse& a, UpdateSiteMarketResponse& b) {
     a.Swap(&b);
@@ -4204,7 +4509,7 @@ class DeleteSiteMarketRequest PROTOBUF_FINAL :
                &_DeleteSiteMarketRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    24;
+    25;
 
   friend void swap(DeleteSiteMarketRequest& a, DeleteSiteMarketRequest& b) {
     a.Swap(&b);
@@ -4357,7 +4662,7 @@ class DeleteSiteMarketResponse PROTOBUF_FINAL :
                &_DeleteSiteMarketResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    25;
+    26;
 
   friend void swap(DeleteSiteMarketResponse& a, DeleteSiteMarketResponse& b) {
     a.Swap(&b);
@@ -5283,6 +5588,484 @@ inline void PostalAddress::unsafe_arena_set_allocated_country(
 
 // -------------------------------------------------------------------
 
+// PeeringDBSiteMapping
+
+// string id = 1[json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void PeeringDBSiteMapping::clear_id() {
+  id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline const std::string& PeeringDBSiteMapping::id() const {
+  // @@protoc_insertion_point(field_get:kentik.site.v202211.PeeringDBSiteMapping.id)
+  return _internal_id();
+}
+inline void PeeringDBSiteMapping::set_id(const std::string& value) {
+  _internal_set_id(value);
+  // @@protoc_insertion_point(field_set:kentik.site.v202211.PeeringDBSiteMapping.id)
+}
+inline std::string* PeeringDBSiteMapping::mutable_id() {
+  // @@protoc_insertion_point(field_mutable:kentik.site.v202211.PeeringDBSiteMapping.id)
+  return _internal_mutable_id();
+}
+inline const std::string& PeeringDBSiteMapping::_internal_id() const {
+  return id_.Get();
+}
+inline void PeeringDBSiteMapping::_internal_set_id(const std::string& value) {
+  
+  id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void PeeringDBSiteMapping::set_id(std::string&& value) {
+  
+  id_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:kentik.site.v202211.PeeringDBSiteMapping.id)
+}
+inline void PeeringDBSiteMapping::set_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:kentik.site.v202211.PeeringDBSiteMapping.id)
+}
+inline void PeeringDBSiteMapping::set_id(const char* value,
+    size_t size) {
+  
+  id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:kentik.site.v202211.PeeringDBSiteMapping.id)
+}
+inline std::string* PeeringDBSiteMapping::_internal_mutable_id() {
+  
+  return id_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* PeeringDBSiteMapping::release_id() {
+  // @@protoc_insertion_point(field_release:kentik.site.v202211.PeeringDBSiteMapping.id)
+  return id_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void PeeringDBSiteMapping::set_allocated_id(std::string* id) {
+  if (id != nullptr) {
+    
+  } else {
+    
+  }
+  id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), id,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:kentik.site.v202211.PeeringDBSiteMapping.id)
+}
+inline std::string* PeeringDBSiteMapping::unsafe_arena_release_id() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:kentik.site.v202211.PeeringDBSiteMapping.id)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  
+  return id_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void PeeringDBSiteMapping::unsafe_arena_set_allocated_id(
+    std::string* id) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (id != nullptr) {
+    
+  } else {
+    
+  }
+  id_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      id, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.site.v202211.PeeringDBSiteMapping.id)
+}
+
+// string site_id = 2[json_name = "siteId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void PeeringDBSiteMapping::clear_site_id() {
+  site_id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline const std::string& PeeringDBSiteMapping::site_id() const {
+  // @@protoc_insertion_point(field_get:kentik.site.v202211.PeeringDBSiteMapping.site_id)
+  return _internal_site_id();
+}
+inline void PeeringDBSiteMapping::set_site_id(const std::string& value) {
+  _internal_set_site_id(value);
+  // @@protoc_insertion_point(field_set:kentik.site.v202211.PeeringDBSiteMapping.site_id)
+}
+inline std::string* PeeringDBSiteMapping::mutable_site_id() {
+  // @@protoc_insertion_point(field_mutable:kentik.site.v202211.PeeringDBSiteMapping.site_id)
+  return _internal_mutable_site_id();
+}
+inline const std::string& PeeringDBSiteMapping::_internal_site_id() const {
+  return site_id_.Get();
+}
+inline void PeeringDBSiteMapping::_internal_set_site_id(const std::string& value) {
+  
+  site_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void PeeringDBSiteMapping::set_site_id(std::string&& value) {
+  
+  site_id_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:kentik.site.v202211.PeeringDBSiteMapping.site_id)
+}
+inline void PeeringDBSiteMapping::set_site_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  site_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:kentik.site.v202211.PeeringDBSiteMapping.site_id)
+}
+inline void PeeringDBSiteMapping::set_site_id(const char* value,
+    size_t size) {
+  
+  site_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:kentik.site.v202211.PeeringDBSiteMapping.site_id)
+}
+inline std::string* PeeringDBSiteMapping::_internal_mutable_site_id() {
+  
+  return site_id_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* PeeringDBSiteMapping::release_site_id() {
+  // @@protoc_insertion_point(field_release:kentik.site.v202211.PeeringDBSiteMapping.site_id)
+  return site_id_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void PeeringDBSiteMapping::set_allocated_site_id(std::string* site_id) {
+  if (site_id != nullptr) {
+    
+  } else {
+    
+  }
+  site_id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), site_id,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:kentik.site.v202211.PeeringDBSiteMapping.site_id)
+}
+inline std::string* PeeringDBSiteMapping::unsafe_arena_release_site_id() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:kentik.site.v202211.PeeringDBSiteMapping.site_id)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  
+  return site_id_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void PeeringDBSiteMapping::unsafe_arena_set_allocated_site_id(
+    std::string* site_id) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (site_id != nullptr) {
+    
+  } else {
+    
+  }
+  site_id_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      site_id, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.site.v202211.PeeringDBSiteMapping.site_id)
+}
+
+// string peeringdb_fac_id = 3[json_name = "peeringdbFacId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void PeeringDBSiteMapping::clear_peeringdb_fac_id() {
+  peeringdb_fac_id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline const std::string& PeeringDBSiteMapping::peeringdb_fac_id() const {
+  // @@protoc_insertion_point(field_get:kentik.site.v202211.PeeringDBSiteMapping.peeringdb_fac_id)
+  return _internal_peeringdb_fac_id();
+}
+inline void PeeringDBSiteMapping::set_peeringdb_fac_id(const std::string& value) {
+  _internal_set_peeringdb_fac_id(value);
+  // @@protoc_insertion_point(field_set:kentik.site.v202211.PeeringDBSiteMapping.peeringdb_fac_id)
+}
+inline std::string* PeeringDBSiteMapping::mutable_peeringdb_fac_id() {
+  // @@protoc_insertion_point(field_mutable:kentik.site.v202211.PeeringDBSiteMapping.peeringdb_fac_id)
+  return _internal_mutable_peeringdb_fac_id();
+}
+inline const std::string& PeeringDBSiteMapping::_internal_peeringdb_fac_id() const {
+  return peeringdb_fac_id_.Get();
+}
+inline void PeeringDBSiteMapping::_internal_set_peeringdb_fac_id(const std::string& value) {
+  
+  peeringdb_fac_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void PeeringDBSiteMapping::set_peeringdb_fac_id(std::string&& value) {
+  
+  peeringdb_fac_id_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:kentik.site.v202211.PeeringDBSiteMapping.peeringdb_fac_id)
+}
+inline void PeeringDBSiteMapping::set_peeringdb_fac_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  peeringdb_fac_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:kentik.site.v202211.PeeringDBSiteMapping.peeringdb_fac_id)
+}
+inline void PeeringDBSiteMapping::set_peeringdb_fac_id(const char* value,
+    size_t size) {
+  
+  peeringdb_fac_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:kentik.site.v202211.PeeringDBSiteMapping.peeringdb_fac_id)
+}
+inline std::string* PeeringDBSiteMapping::_internal_mutable_peeringdb_fac_id() {
+  
+  return peeringdb_fac_id_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* PeeringDBSiteMapping::release_peeringdb_fac_id() {
+  // @@protoc_insertion_point(field_release:kentik.site.v202211.PeeringDBSiteMapping.peeringdb_fac_id)
+  return peeringdb_fac_id_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void PeeringDBSiteMapping::set_allocated_peeringdb_fac_id(std::string* peeringdb_fac_id) {
+  if (peeringdb_fac_id != nullptr) {
+    
+  } else {
+    
+  }
+  peeringdb_fac_id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), peeringdb_fac_id,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:kentik.site.v202211.PeeringDBSiteMapping.peeringdb_fac_id)
+}
+inline std::string* PeeringDBSiteMapping::unsafe_arena_release_peeringdb_fac_id() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:kentik.site.v202211.PeeringDBSiteMapping.peeringdb_fac_id)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  
+  return peeringdb_fac_id_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void PeeringDBSiteMapping::unsafe_arena_set_allocated_peeringdb_fac_id(
+    std::string* peeringdb_fac_id) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (peeringdb_fac_id != nullptr) {
+    
+  } else {
+    
+  }
+  peeringdb_fac_id_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      peeringdb_fac_id, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.site.v202211.PeeringDBSiteMapping.peeringdb_fac_id)
+}
+
+// .google.protobuf.Timestamp edate = 4[json_name = "edate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool PeeringDBSiteMapping::_internal_has_edate() const {
+  return this != internal_default_instance() && edate_ != nullptr;
+}
+inline bool PeeringDBSiteMapping::has_edate() const {
+  return _internal_has_edate();
+}
+inline const PROTOBUF_NAMESPACE_ID::Timestamp& PeeringDBSiteMapping::_internal_edate() const {
+  const PROTOBUF_NAMESPACE_ID::Timestamp* p = edate_;
+  return p != nullptr ? *p : *reinterpret_cast<const PROTOBUF_NAMESPACE_ID::Timestamp*>(
+      &PROTOBUF_NAMESPACE_ID::_Timestamp_default_instance_);
+}
+inline const PROTOBUF_NAMESPACE_ID::Timestamp& PeeringDBSiteMapping::edate() const {
+  // @@protoc_insertion_point(field_get:kentik.site.v202211.PeeringDBSiteMapping.edate)
+  return _internal_edate();
+}
+inline void PeeringDBSiteMapping::unsafe_arena_set_allocated_edate(
+    PROTOBUF_NAMESPACE_ID::Timestamp* edate) {
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(edate_);
+  }
+  edate_ = edate;
+  if (edate) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.site.v202211.PeeringDBSiteMapping.edate)
+}
+inline PROTOBUF_NAMESPACE_ID::Timestamp* PeeringDBSiteMapping::release_edate() {
+  auto temp = unsafe_arena_release_edate();
+  if (GetArena() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+  return temp;
+}
+inline PROTOBUF_NAMESPACE_ID::Timestamp* PeeringDBSiteMapping::unsafe_arena_release_edate() {
+  // @@protoc_insertion_point(field_release:kentik.site.v202211.PeeringDBSiteMapping.edate)
+  
+  PROTOBUF_NAMESPACE_ID::Timestamp* temp = edate_;
+  edate_ = nullptr;
+  return temp;
+}
+inline PROTOBUF_NAMESPACE_ID::Timestamp* PeeringDBSiteMapping::_internal_mutable_edate() {
+  
+  if (edate_ == nullptr) {
+    auto* p = CreateMaybeMessage<PROTOBUF_NAMESPACE_ID::Timestamp>(GetArena());
+    edate_ = p;
+  }
+  return edate_;
+}
+inline PROTOBUF_NAMESPACE_ID::Timestamp* PeeringDBSiteMapping::mutable_edate() {
+  // @@protoc_insertion_point(field_mutable:kentik.site.v202211.PeeringDBSiteMapping.edate)
+  return _internal_mutable_edate();
+}
+inline void PeeringDBSiteMapping::set_allocated_edate(PROTOBUF_NAMESPACE_ID::Timestamp* edate) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(edate_);
+  }
+  if (edate) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(edate)->GetArena();
+    if (message_arena != submessage_arena) {
+      edate = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, edate, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  edate_ = edate;
+  // @@protoc_insertion_point(field_set_allocated:kentik.site.v202211.PeeringDBSiteMapping.edate)
+}
+
+// .google.protobuf.Timestamp cdate = 5[json_name = "cdate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool PeeringDBSiteMapping::_internal_has_cdate() const {
+  return this != internal_default_instance() && cdate_ != nullptr;
+}
+inline bool PeeringDBSiteMapping::has_cdate() const {
+  return _internal_has_cdate();
+}
+inline const PROTOBUF_NAMESPACE_ID::Timestamp& PeeringDBSiteMapping::_internal_cdate() const {
+  const PROTOBUF_NAMESPACE_ID::Timestamp* p = cdate_;
+  return p != nullptr ? *p : *reinterpret_cast<const PROTOBUF_NAMESPACE_ID::Timestamp*>(
+      &PROTOBUF_NAMESPACE_ID::_Timestamp_default_instance_);
+}
+inline const PROTOBUF_NAMESPACE_ID::Timestamp& PeeringDBSiteMapping::cdate() const {
+  // @@protoc_insertion_point(field_get:kentik.site.v202211.PeeringDBSiteMapping.cdate)
+  return _internal_cdate();
+}
+inline void PeeringDBSiteMapping::unsafe_arena_set_allocated_cdate(
+    PROTOBUF_NAMESPACE_ID::Timestamp* cdate) {
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(cdate_);
+  }
+  cdate_ = cdate;
+  if (cdate) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.site.v202211.PeeringDBSiteMapping.cdate)
+}
+inline PROTOBUF_NAMESPACE_ID::Timestamp* PeeringDBSiteMapping::release_cdate() {
+  auto temp = unsafe_arena_release_cdate();
+  if (GetArena() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+  return temp;
+}
+inline PROTOBUF_NAMESPACE_ID::Timestamp* PeeringDBSiteMapping::unsafe_arena_release_cdate() {
+  // @@protoc_insertion_point(field_release:kentik.site.v202211.PeeringDBSiteMapping.cdate)
+  
+  PROTOBUF_NAMESPACE_ID::Timestamp* temp = cdate_;
+  cdate_ = nullptr;
+  return temp;
+}
+inline PROTOBUF_NAMESPACE_ID::Timestamp* PeeringDBSiteMapping::_internal_mutable_cdate() {
+  
+  if (cdate_ == nullptr) {
+    auto* p = CreateMaybeMessage<PROTOBUF_NAMESPACE_ID::Timestamp>(GetArena());
+    cdate_ = p;
+  }
+  return cdate_;
+}
+inline PROTOBUF_NAMESPACE_ID::Timestamp* PeeringDBSiteMapping::mutable_cdate() {
+  // @@protoc_insertion_point(field_mutable:kentik.site.v202211.PeeringDBSiteMapping.cdate)
+  return _internal_mutable_cdate();
+}
+inline void PeeringDBSiteMapping::set_allocated_cdate(PROTOBUF_NAMESPACE_ID::Timestamp* cdate) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(cdate_);
+  }
+  if (cdate) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(cdate)->GetArena();
+    if (message_arena != submessage_arena) {
+      cdate = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, cdate, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  cdate_ = cdate;
+  // @@protoc_insertion_point(field_set_allocated:kentik.site.v202211.PeeringDBSiteMapping.cdate)
+}
+
+// string company_id = 6[json_name = "companyId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void PeeringDBSiteMapping::clear_company_id() {
+  company_id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline const std::string& PeeringDBSiteMapping::company_id() const {
+  // @@protoc_insertion_point(field_get:kentik.site.v202211.PeeringDBSiteMapping.company_id)
+  return _internal_company_id();
+}
+inline void PeeringDBSiteMapping::set_company_id(const std::string& value) {
+  _internal_set_company_id(value);
+  // @@protoc_insertion_point(field_set:kentik.site.v202211.PeeringDBSiteMapping.company_id)
+}
+inline std::string* PeeringDBSiteMapping::mutable_company_id() {
+  // @@protoc_insertion_point(field_mutable:kentik.site.v202211.PeeringDBSiteMapping.company_id)
+  return _internal_mutable_company_id();
+}
+inline const std::string& PeeringDBSiteMapping::_internal_company_id() const {
+  return company_id_.Get();
+}
+inline void PeeringDBSiteMapping::_internal_set_company_id(const std::string& value) {
+  
+  company_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void PeeringDBSiteMapping::set_company_id(std::string&& value) {
+  
+  company_id_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:kentik.site.v202211.PeeringDBSiteMapping.company_id)
+}
+inline void PeeringDBSiteMapping::set_company_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  company_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:kentik.site.v202211.PeeringDBSiteMapping.company_id)
+}
+inline void PeeringDBSiteMapping::set_company_id(const char* value,
+    size_t size) {
+  
+  company_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:kentik.site.v202211.PeeringDBSiteMapping.company_id)
+}
+inline std::string* PeeringDBSiteMapping::_internal_mutable_company_id() {
+  
+  return company_id_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* PeeringDBSiteMapping::release_company_id() {
+  // @@protoc_insertion_point(field_release:kentik.site.v202211.PeeringDBSiteMapping.company_id)
+  return company_id_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void PeeringDBSiteMapping::set_allocated_company_id(std::string* company_id) {
+  if (company_id != nullptr) {
+    
+  } else {
+    
+  }
+  company_id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), company_id,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:kentik.site.v202211.PeeringDBSiteMapping.company_id)
+}
+inline std::string* PeeringDBSiteMapping::unsafe_arena_release_company_id() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:kentik.site.v202211.PeeringDBSiteMapping.company_id)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  
+  return company_id_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void PeeringDBSiteMapping::unsafe_arena_set_allocated_company_id(
+    std::string* company_id) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (company_id != nullptr) {
+    
+  } else {
+    
+  }
+  company_id_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      company_id, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.site.v202211.PeeringDBSiteMapping.company_id)
+}
+
+// -------------------------------------------------------------------
+
 // Site
 
 // string id = 1[json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -5787,6 +6570,87 @@ inline void Site::unsafe_arena_set_allocated_site_market(
   site_market_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       site_market, GetArena());
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.site.v202211.Site.site_market)
+}
+
+// string peeringdb_site_mapping = 11[json_name = "peeringdbSiteMapping", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void Site::clear_peeringdb_site_mapping() {
+  peeringdb_site_mapping_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline const std::string& Site::peeringdb_site_mapping() const {
+  // @@protoc_insertion_point(field_get:kentik.site.v202211.Site.peeringdb_site_mapping)
+  return _internal_peeringdb_site_mapping();
+}
+inline void Site::set_peeringdb_site_mapping(const std::string& value) {
+  _internal_set_peeringdb_site_mapping(value);
+  // @@protoc_insertion_point(field_set:kentik.site.v202211.Site.peeringdb_site_mapping)
+}
+inline std::string* Site::mutable_peeringdb_site_mapping() {
+  // @@protoc_insertion_point(field_mutable:kentik.site.v202211.Site.peeringdb_site_mapping)
+  return _internal_mutable_peeringdb_site_mapping();
+}
+inline const std::string& Site::_internal_peeringdb_site_mapping() const {
+  return peeringdb_site_mapping_.Get();
+}
+inline void Site::_internal_set_peeringdb_site_mapping(const std::string& value) {
+  
+  peeringdb_site_mapping_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void Site::set_peeringdb_site_mapping(std::string&& value) {
+  
+  peeringdb_site_mapping_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:kentik.site.v202211.Site.peeringdb_site_mapping)
+}
+inline void Site::set_peeringdb_site_mapping(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  peeringdb_site_mapping_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:kentik.site.v202211.Site.peeringdb_site_mapping)
+}
+inline void Site::set_peeringdb_site_mapping(const char* value,
+    size_t size) {
+  
+  peeringdb_site_mapping_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:kentik.site.v202211.Site.peeringdb_site_mapping)
+}
+inline std::string* Site::_internal_mutable_peeringdb_site_mapping() {
+  
+  return peeringdb_site_mapping_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* Site::release_peeringdb_site_mapping() {
+  // @@protoc_insertion_point(field_release:kentik.site.v202211.Site.peeringdb_site_mapping)
+  return peeringdb_site_mapping_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void Site::set_allocated_peeringdb_site_mapping(std::string* peeringdb_site_mapping) {
+  if (peeringdb_site_mapping != nullptr) {
+    
+  } else {
+    
+  }
+  peeringdb_site_mapping_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), peeringdb_site_mapping,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:kentik.site.v202211.Site.peeringdb_site_mapping)
+}
+inline std::string* Site::unsafe_arena_release_peeringdb_site_mapping() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:kentik.site.v202211.Site.peeringdb_site_mapping)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  
+  return peeringdb_site_mapping_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void Site::unsafe_arena_set_allocated_peeringdb_site_mapping(
+    std::string* peeringdb_site_mapping) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (peeringdb_site_mapping != nullptr) {
+    
+  } else {
+    
+  }
+  peeringdb_site_mapping_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      peeringdb_site_mapping, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.site.v202211.Site.peeringdb_site_mapping)
 }
 
 // -------------------------------------------------------------------
@@ -7541,6 +8405,8 @@ inline void DeleteSiteMarketRequest::unsafe_arena_set_allocated_id(
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

@@ -25,6 +25,7 @@ typedef struct _Kentik__Site__V202211__SiteIpAddressClassification Kentik__Site_
 typedef struct _Kentik__Site__V202211__Layer Kentik__Site__V202211__Layer;
 typedef struct _Kentik__Site__V202211__LayerSet Kentik__Site__V202211__LayerSet;
 typedef struct _Kentik__Site__V202211__PostalAddress Kentik__Site__V202211__PostalAddress;
+typedef struct _Kentik__Site__V202211__PeeringDBSiteMapping Kentik__Site__V202211__PeeringDBSiteMapping;
 typedef struct _Kentik__Site__V202211__Site Kentik__Site__V202211__Site;
 typedef struct _Kentik__Site__V202211__ListSitesRequest Kentik__Site__V202211__ListSitesRequest;
 typedef struct _Kentik__Site__V202211__ListSitesResponse Kentik__Site__V202211__ListSitesResponse;
@@ -152,6 +153,21 @@ struct  _Kentik__Site__V202211__PostalAddress
     , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
 
 
+struct  _Kentik__Site__V202211__PeeringDBSiteMapping
+{
+  ProtobufCMessage base;
+  char *id;
+  char *site_id;
+  char *peeringdb_fac_id;
+  Google__Protobuf__Timestamp *edate;
+  Google__Protobuf__Timestamp *cdate;
+  char *company_id;
+};
+#define KENTIK__SITE__V202211__PEERING_DBSITE_MAPPING__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__site__v202211__peering_dbsite_mapping__descriptor) \
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, NULL, (char *)protobuf_c_empty_string }
+
+
 /*
  * {{.Name}}
  */
@@ -168,10 +184,11 @@ struct  _Kentik__Site__V202211__Site
   size_t n_architecture;
   Kentik__Site__V202211__LayerSet **architecture;
   char *site_market;
+  char *peeringdb_site_mapping;
 };
 #define KENTIK__SITE__V202211__SITE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__site__v202211__site__descriptor) \
-    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, 0, NULL, KENTIK__SITE__V202211__SITE_TYPE__SITE_TYPE_UNSPECIFIED, NULL, 0,NULL, (char *)protobuf_c_empty_string }
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, 0, NULL, KENTIK__SITE__V202211__SITE_TYPE__SITE_TYPE_UNSPECIFIED, NULL, 0,NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
 
 
 /*
@@ -527,6 +544,25 @@ Kentik__Site__V202211__PostalAddress *
                       const uint8_t       *data);
 void   kentik__site__v202211__postal_address__free_unpacked
                      (Kentik__Site__V202211__PostalAddress *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Site__V202211__PeeringDBSiteMapping methods */
+void   kentik__site__v202211__peering_dbsite_mapping__init
+                     (Kentik__Site__V202211__PeeringDBSiteMapping         *message);
+size_t kentik__site__v202211__peering_dbsite_mapping__get_packed_size
+                     (const Kentik__Site__V202211__PeeringDBSiteMapping   *message);
+size_t kentik__site__v202211__peering_dbsite_mapping__pack
+                     (const Kentik__Site__V202211__PeeringDBSiteMapping   *message,
+                      uint8_t             *out);
+size_t kentik__site__v202211__peering_dbsite_mapping__pack_to_buffer
+                     (const Kentik__Site__V202211__PeeringDBSiteMapping   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Site__V202211__PeeringDBSiteMapping *
+       kentik__site__v202211__peering_dbsite_mapping__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__site__v202211__peering_dbsite_mapping__free_unpacked
+                     (Kentik__Site__V202211__PeeringDBSiteMapping *message,
                       ProtobufCAllocator *allocator);
 /* Kentik__Site__V202211__Site methods */
 void   kentik__site__v202211__site__init
@@ -960,6 +996,9 @@ typedef void (*Kentik__Site__V202211__LayerSet_Closure)
 typedef void (*Kentik__Site__V202211__PostalAddress_Closure)
                  (const Kentik__Site__V202211__PostalAddress *message,
                   void *closure_data);
+typedef void (*Kentik__Site__V202211__PeeringDBSiteMapping_Closure)
+                 (const Kentik__Site__V202211__PeeringDBSiteMapping *message,
+                  void *closure_data);
 typedef void (*Kentik__Site__V202211__Site_Closure)
                  (const Kentik__Site__V202211__Site *message,
                   void *closure_data);
@@ -1139,6 +1178,7 @@ extern const ProtobufCMessageDescriptor kentik__site__v202211__site_ip_address_c
 extern const ProtobufCMessageDescriptor kentik__site__v202211__layer__descriptor;
 extern const ProtobufCMessageDescriptor kentik__site__v202211__layer_set__descriptor;
 extern const ProtobufCMessageDescriptor kentik__site__v202211__postal_address__descriptor;
+extern const ProtobufCMessageDescriptor kentik__site__v202211__peering_dbsite_mapping__descriptor;
 extern const ProtobufCMessageDescriptor kentik__site__v202211__site__descriptor;
 extern const ProtobufCMessageDescriptor kentik__site__v202211__list_sites_request__descriptor;
 extern const ProtobufCMessageDescriptor kentik__site__v202211__list_sites_response__descriptor;

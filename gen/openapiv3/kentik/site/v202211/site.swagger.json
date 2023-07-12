@@ -701,7 +701,11 @@
                     },
                     "siteMarket": {
                         "type": "string",
-                        "description": "Name of the Site Market this sire belongs to"
+                        "description": "Name of the Site Market this site belongs to"
+                    },
+                    "peeringdbSiteMapping": {
+                        "type": "string",
+                        "description": "PeeringDB Mapping of the given site"
                     }
                 },
                 "title": "Site",
