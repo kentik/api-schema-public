@@ -643,12 +643,12 @@ message ActivationSettings {
 message HealthSettings {
   float latency_critical = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "Threshold for ping or DNS response latency (in microseconds) to trigger critical alarm"
+      description: "Threshold for ping response latency (in microseconds) to trigger critical alarm"
     }
   ];
   float latency_warning = 2 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "Threshold for ping or DNS response latency (in microseconds) to trigger warning alarm"
+      description: "Threshold for ping response latency (in microseconds) to trigger warning alarm"
     }
   ];
   float packet_loss_critical = 3 [
@@ -693,12 +693,12 @@ message HealthSettings {
   ];
   float latency_critical_stddev = 11 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "Threshold for standard deviation (in microseconds) of ping or DNS response latency to trigger critical alarm"
+      description: "Threshold for standard deviation (in microseconds) of ping response latency to trigger critical alarm"
     }
   ];
   float latency_warning_stddev = 12 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "Threshold for standard deviation (in microseconds) of ping or DNS response latency to trigger warning alarm"
+      description: "Threshold for standard deviation (in microseconds) of ping response latency to trigger warning alarm"
     }
   ];
   float jitter_critical_stddev = 13 [
@@ -744,6 +744,26 @@ message HealthSettings {
   string dns_valid_ips = 21 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Comma separated list of IP addresses expected to be received in response to DNS A or AAAA query"
+    }
+  ];
+  float dns_latency_critical = 22 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Threshold for DNS response latency (in microseconds) to trigger critical alarm"
+    }
+  ];
+  float dns_latency_warning = 23 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Threshold for DNS response latency (in microseconds) to trigger warning alarm"
+    }
+  ];
+  float dns_latency_critical_stddev = 24 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Threshold for standard deviation (in microseconds) of DNS response latency to trigger critical alarm"
+    }
+  ];
+  float dns_latency_warning_stddev = 25 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Threshold for standard deviation (in microseconds) of DNS response latency to trigger warning alarm"
     }
   ];
 }

@@ -446,10 +446,14 @@ struct  _Kentik__Synthetics__V202202__HealthSettings
   uint32_t cert_expiry_warning;
   uint32_t cert_expiry_critical;
   char *dns_valid_ips;
+  float dns_latency_critical;
+  float dns_latency_warning;
+  float dns_latency_critical_stddev;
+  float dns_latency_warning_stddev;
 };
 #define KENTIK__SYNTHETICS__V202202__HEALTH_SETTINGS__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__synthetics__v202202__health_settings__descriptor) \
-    , 0, 0, 0, 0, 0, 0, 0, 0, 0,NULL, 0,NULL, 0, 0, 0, 0, 0, 0, 0, NULL, 0, 0, (char *)protobuf_c_empty_string }
+    , 0, 0, 0, 0, 0, 0, 0, 0, 0,NULL, 0,NULL, 0, 0, 0, 0, 0, 0, 0, NULL, 0, 0, (char *)protobuf_c_empty_string, 0, 0, 0, 0 }
 
 
 /*

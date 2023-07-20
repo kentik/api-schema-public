@@ -3735,7 +3735,7 @@ const ProtobufCMessageDescriptor kentik__synthetics__v202202__activation_setting
   (ProtobufCMessageInit) kentik__synthetics__v202202__activation_settings__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__synthetics__v202202__health_settings__field_descriptors[21] =
+static const ProtobufCFieldDescriptor kentik__synthetics__v202202__health_settings__field_descriptors[25] =
 {
   {
     "latency_critical",
@@ -3989,11 +3989,63 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202202__health_settin
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "dns_latency_critical",
+    22,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_FLOAT,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202202__HealthSettings, dns_latency_critical),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "dns_latency_warning",
+    23,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_FLOAT,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202202__HealthSettings, dns_latency_warning),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "dns_latency_critical_stddev",
+    24,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_FLOAT,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202202__HealthSettings, dns_latency_critical_stddev),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "dns_latency_warning_stddev",
+    25,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_FLOAT,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202202__HealthSettings, dns_latency_warning_stddev),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__synthetics__v202202__health_settings__field_indices_by_name[] = {
   17,   /* field[17] = activation */
   19,   /* field[19] = cert_expiry_critical */
   18,   /* field[18] = cert_expiry_warning */
+  21,   /* field[21] = dns_latency_critical */
+  23,   /* field[23] = dns_latency_critical_stddev */
+  22,   /* field[22] = dns_latency_warning */
+  24,   /* field[24] = dns_latency_warning_stddev */
   9,   /* field[9] = dns_valid_codes */
   20,   /* field[20] = dns_valid_ips */
   6,   /* field[6] = http_latency_critical */
@@ -4016,7 +4068,7 @@ static const unsigned kentik__synthetics__v202202__health_settings__field_indice
 static const ProtobufCIntRange kentik__synthetics__v202202__health_settings__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 21 }
+  { 0, 25 }
 };
 const ProtobufCMessageDescriptor kentik__synthetics__v202202__health_settings__descriptor =
 {
@@ -4026,7 +4078,7 @@ const ProtobufCMessageDescriptor kentik__synthetics__v202202__health_settings__d
   "Kentik__Synthetics__V202202__HealthSettings",
   "kentik.synthetics.v202202",
   sizeof(Kentik__Synthetics__V202202__HealthSettings),
-  21,
+  25,
   kentik__synthetics__v202202__health_settings__field_descriptors,
   kentik__synthetics__v202202__health_settings__field_indices_by_name,
   1,  kentik__synthetics__v202202__health_settings__number_ranges,

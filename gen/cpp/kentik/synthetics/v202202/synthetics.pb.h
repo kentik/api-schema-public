@@ -3173,6 +3173,10 @@ class HealthSettings PROTOBUF_FINAL :
     kUnhealthySubtestThresholdFieldNumber = 17,
     kCertExpiryWarningFieldNumber = 19,
     kCertExpiryCriticalFieldNumber = 20,
+    kDnsLatencyCriticalFieldNumber = 22,
+    kDnsLatencyWarningFieldNumber = 23,
+    kDnsLatencyCriticalStddevFieldNumber = 24,
+    kDnsLatencyWarningStddevFieldNumber = 25,
   };
   // repeated uint32 http_valid_codes = 9[json_name = "httpValidCodes", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   int http_valid_codes_size() const;
@@ -3414,6 +3418,42 @@ class HealthSettings PROTOBUF_FINAL :
   void _internal_set_cert_expiry_critical(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
+  // float dns_latency_critical = 22[json_name = "dnsLatencyCritical", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_dns_latency_critical();
+  float dns_latency_critical() const;
+  void set_dns_latency_critical(float value);
+  private:
+  float _internal_dns_latency_critical() const;
+  void _internal_set_dns_latency_critical(float value);
+  public:
+
+  // float dns_latency_warning = 23[json_name = "dnsLatencyWarning", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_dns_latency_warning();
+  float dns_latency_warning() const;
+  void set_dns_latency_warning(float value);
+  private:
+  float _internal_dns_latency_warning() const;
+  void _internal_set_dns_latency_warning(float value);
+  public:
+
+  // float dns_latency_critical_stddev = 24[json_name = "dnsLatencyCriticalStddev", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_dns_latency_critical_stddev();
+  float dns_latency_critical_stddev() const;
+  void set_dns_latency_critical_stddev(float value);
+  private:
+  float _internal_dns_latency_critical_stddev() const;
+  void _internal_set_dns_latency_critical_stddev(float value);
+  public:
+
+  // float dns_latency_warning_stddev = 25[json_name = "dnsLatencyWarningStddev", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_dns_latency_warning_stddev();
+  float dns_latency_warning_stddev() const;
+  void set_dns_latency_warning_stddev(float value);
+  private:
+  float _internal_dns_latency_warning_stddev() const;
+  void _internal_set_dns_latency_warning_stddev(float value);
+  public:
+
   // @@protoc_insertion_point(class_scope:kentik.synthetics.v202202.HealthSettings)
  private:
   class _Internal;
@@ -3444,6 +3484,10 @@ class HealthSettings PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::uint32 unhealthy_subtest_threshold_;
   ::PROTOBUF_NAMESPACE_ID::uint32 cert_expiry_warning_;
   ::PROTOBUF_NAMESPACE_ID::uint32 cert_expiry_critical_;
+  float dns_latency_critical_;
+  float dns_latency_warning_;
+  float dns_latency_critical_stddev_;
+  float dns_latency_warning_stddev_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_kentik_2fsynthetics_2fv202202_2fsynthetics_2eproto;
 };
@@ -17319,6 +17363,86 @@ inline void HealthSettings::unsafe_arena_set_allocated_dns_valid_ips(
   dns_valid_ips_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       dns_valid_ips, GetArena());
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.synthetics.v202202.HealthSettings.dns_valid_ips)
+}
+
+// float dns_latency_critical = 22[json_name = "dnsLatencyCritical", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void HealthSettings::clear_dns_latency_critical() {
+  dns_latency_critical_ = 0;
+}
+inline float HealthSettings::_internal_dns_latency_critical() const {
+  return dns_latency_critical_;
+}
+inline float HealthSettings::dns_latency_critical() const {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202202.HealthSettings.dns_latency_critical)
+  return _internal_dns_latency_critical();
+}
+inline void HealthSettings::_internal_set_dns_latency_critical(float value) {
+  
+  dns_latency_critical_ = value;
+}
+inline void HealthSettings::set_dns_latency_critical(float value) {
+  _internal_set_dns_latency_critical(value);
+  // @@protoc_insertion_point(field_set:kentik.synthetics.v202202.HealthSettings.dns_latency_critical)
+}
+
+// float dns_latency_warning = 23[json_name = "dnsLatencyWarning", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void HealthSettings::clear_dns_latency_warning() {
+  dns_latency_warning_ = 0;
+}
+inline float HealthSettings::_internal_dns_latency_warning() const {
+  return dns_latency_warning_;
+}
+inline float HealthSettings::dns_latency_warning() const {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202202.HealthSettings.dns_latency_warning)
+  return _internal_dns_latency_warning();
+}
+inline void HealthSettings::_internal_set_dns_latency_warning(float value) {
+  
+  dns_latency_warning_ = value;
+}
+inline void HealthSettings::set_dns_latency_warning(float value) {
+  _internal_set_dns_latency_warning(value);
+  // @@protoc_insertion_point(field_set:kentik.synthetics.v202202.HealthSettings.dns_latency_warning)
+}
+
+// float dns_latency_critical_stddev = 24[json_name = "dnsLatencyCriticalStddev", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void HealthSettings::clear_dns_latency_critical_stddev() {
+  dns_latency_critical_stddev_ = 0;
+}
+inline float HealthSettings::_internal_dns_latency_critical_stddev() const {
+  return dns_latency_critical_stddev_;
+}
+inline float HealthSettings::dns_latency_critical_stddev() const {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202202.HealthSettings.dns_latency_critical_stddev)
+  return _internal_dns_latency_critical_stddev();
+}
+inline void HealthSettings::_internal_set_dns_latency_critical_stddev(float value) {
+  
+  dns_latency_critical_stddev_ = value;
+}
+inline void HealthSettings::set_dns_latency_critical_stddev(float value) {
+  _internal_set_dns_latency_critical_stddev(value);
+  // @@protoc_insertion_point(field_set:kentik.synthetics.v202202.HealthSettings.dns_latency_critical_stddev)
+}
+
+// float dns_latency_warning_stddev = 25[json_name = "dnsLatencyWarningStddev", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void HealthSettings::clear_dns_latency_warning_stddev() {
+  dns_latency_warning_stddev_ = 0;
+}
+inline float HealthSettings::_internal_dns_latency_warning_stddev() const {
+  return dns_latency_warning_stddev_;
+}
+inline float HealthSettings::dns_latency_warning_stddev() const {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202202.HealthSettings.dns_latency_warning_stddev)
+  return _internal_dns_latency_warning_stddev();
+}
+inline void HealthSettings::_internal_set_dns_latency_warning_stddev(float value) {
+  
+  dns_latency_warning_stddev_ = value;
+}
+inline void HealthSettings::set_dns_latency_warning_stddev(float value) {
+  _internal_set_dns_latency_warning_stddev(value);
+  // @@protoc_insertion_point(field_set:kentik.synthetics.v202202.HealthSettings.dns_latency_warning_stddev)
 }
 
 // -------------------------------------------------------------------

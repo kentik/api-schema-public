@@ -1069,12 +1069,12 @@
         "latencyCritical": {
           "type": "number",
           "format": "float",
-          "description": "Threshold for ping or DNS response latency (in microseconds) to trigger critical alarm"
+          "description": "Threshold for ping response latency (in microseconds) to trigger critical alarm"
         },
         "latencyWarning": {
           "type": "number",
           "format": "float",
-          "description": "Threshold for ping or DNS response latency (in microseconds) to trigger warning alarm"
+          "description": "Threshold for ping response latency (in microseconds) to trigger warning alarm"
         },
         "packetLossCritical": {
           "type": "number",
@@ -1125,12 +1125,12 @@
         "latencyCriticalStddev": {
           "type": "number",
           "format": "float",
-          "description": "Threshold for standard deviation (in microseconds) of ping or DNS response latency to trigger critical alarm"
+          "description": "Threshold for standard deviation (in microseconds) of ping response latency to trigger critical alarm"
         },
         "latencyWarningStddev": {
           "type": "number",
           "format": "float",
-          "description": "Threshold for standard deviation (in microseconds) of ping or DNS response latency to trigger warning alarm"
+          "description": "Threshold for standard deviation (in microseconds) of ping response latency to trigger warning alarm"
         },
         "jitterCriticalStddev": {
           "type": "number",
@@ -1174,6 +1174,26 @@
         "dnsValidIps": {
           "type": "string",
           "description": "Comma separated list of IP addresses expected to be received in response to DNS A or AAAA query"
+        },
+        "dnsLatencyCritical": {
+          "type": "number",
+          "format": "float",
+          "description": "Threshold for DNS response latency (in microseconds) to trigger critical alarm"
+        },
+        "dnsLatencyWarning": {
+          "type": "number",
+          "format": "float",
+          "description": "Threshold for DNS response latency (in microseconds) to trigger warning alarm"
+        },
+        "dnsLatencyCriticalStddev": {
+          "type": "number",
+          "format": "float",
+          "description": "Threshold for standard deviation (in microseconds) of DNS response latency to trigger critical alarm"
+        },
+        "dnsLatencyWarningStddev": {
+          "type": "number",
+          "format": "float",
+          "description": "Threshold for standard deviation (in microseconds) of DNS response latency to trigger warning alarm"
         }
       },
       "title": "HealthSettings"
