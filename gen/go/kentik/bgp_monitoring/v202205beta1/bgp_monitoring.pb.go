@@ -139,6 +139,7 @@ type Nlri struct {
 	Afi  v202303.Afi  `protobuf:"varint,1,opt,name=afi,proto3,enum=kentik.net.v202303.Afi" json:"afi,omitempty"`
 	Safi v202303.Safi `protobuf:"varint,2,opt,name=safi,proto3,enum=kentik.net.v202303.Safi" json:"safi,omitempty"`
 	// Types that are assignable to Type:
+	//
 	//	*Nlri_Prefix
 	Type isNlri_Type `protobuf_oneof:"type"`
 }
@@ -561,6 +562,7 @@ type BgpMetric struct {
 	Timestamp *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
 	Nlri      *Nlri                  `protobuf:"bytes,2,opt,name=nlri,proto3" json:"nlri,omitempty"`
 	// Types that are assignable to Type:
+	//
 	//	*BgpMetric_Reachability
 	//	*BgpMetric_PathChanges
 	Type isBgpMetric_Type `protobuf_oneof:"type"`

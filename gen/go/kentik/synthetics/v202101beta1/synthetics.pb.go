@@ -1331,6 +1331,7 @@ type Task struct {
 	Status   string    `protobuf:"bytes,5,opt,name=status,proto3" json:"status,omitempty"`
 	Family   IPFamily  `protobuf:"varint,6,opt,name=family,proto3,enum=kentik.synthetics.v202101beta1.IPFamily" json:"family,omitempty"`
 	// Types that are assignable to Definition:
+	//
 	//	*Task_Ping
 	//	*Task_Traceroute
 	//	*Task_Http
@@ -2039,6 +2040,7 @@ type TestSettings struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Types that are assignable to Definition:
+	//
 	//	*TestSettings_Hostname
 	//	*TestSettings_Ip
 	//	*TestSettings_Agent

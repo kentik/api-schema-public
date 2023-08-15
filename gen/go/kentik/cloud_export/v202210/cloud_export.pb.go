@@ -161,6 +161,7 @@ type CloudExport struct {
 	// Properties specific to the cloud provider.
 	//
 	// Types that are assignable to CloudSpecificProperties:
+	//
 	//	*CloudExport_Aws
 	//	*CloudExport_Azure
 	//	*CloudExport_Gce

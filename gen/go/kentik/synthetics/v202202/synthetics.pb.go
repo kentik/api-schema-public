@@ -774,6 +774,7 @@ type TestSettings struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Types that are assignable to Definition:
+	//
 	//	*TestSettings_Hostname
 	//	*TestSettings_Ip
 	//	*TestSettings_Agent
@@ -2553,6 +2554,7 @@ type TaskResults struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Types that are assignable to TaskType:
+	//
 	//	*TaskResults_Ping
 	//	*TaskResults_Http
 	//	*TaskResults_Dns
