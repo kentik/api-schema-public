@@ -1,0 +1,902 @@
+syntax = "proto3";
+
+package kentik.device.v202308beta1;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/device/v202308beta1;device";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/timestamp.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "kentik/core/v202303/annotations.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Device API"
+    version: "v202308beta1"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api-schema-public"
+    }
+    description: "# Overview\n"
+    "The Device API provides programmatic access to configuration of devices"
+  }
+  external_docs: {
+    url: "https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview"
+    description: "General information about Kentik APIs"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+// Devices CRUD
+// -------------------------------------------------------
+
+// {{.Name}}
+message DeviceSnmpV3Conf {
+  string username = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "UserName (username) - the user name to use to authenticate via SNMP v3. ** UserName is required when device_snmp_v3_conf is not null"
+    }
+  ];
+  string authentication_protocol = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Authentication Protocol (authentication_protocol) - the auth protocol to use via SNMP v3"
+    }
+  ];
+  string authentication_passphrase = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Authentication Passphrase (authentication_passphrase) - the passphrase to use for SNMP v3 authentication protocol (required when AuthenticationProtocol not NoAuth)"
+    }
+  ];
+  string privacy_protocol = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Privacy Protocol (privacy_protocol) - the privacy protocol to use to authenticate via SNMP v3"
+    }
+  ];
+  string privacy_passphrase = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Privacy Passphrase (privacy_passphrase) - the passphrase to use for SNMP v3 privacy protocol (required when PrivacyProtocol not NoPriv)"
+    }
+  ];
+}
+
+// {{.Name}}
+message DeviceConcise {
+  // id
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "System generated unique identifier"
+    }
+  ];
+  string device_name = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device name (device_name) - The name of the device. Valid characters: alphanumeric and underscores. Length: min=4, max=60."
+    }
+  ];
+  string device_subtype = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device subtype (device_subtype) - The device subtype."
+    }
+  ];
+  string cdn_attr = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "CDN attributes (cdn_attr) - If this is a DNS server, you can contribute its queries to Kentik's CDN attribution database. Valid values: \"Y\" or \"N\". ** cdn_attr is required when the device subtype's parent type is \"host-nprobe-dns-www\""
+    }
+  ];
+  string device_description = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Description (device_description) - The device description. Valid characters: any. Length: max=128."
+    }
+  ];
+  repeated string sending_ips = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device ip (sending_ips) - Array containing one or more IP address(es), from which the device is sending flow. ** sending_ips is required when the device subtype's parent type is \"router\""
+    }
+  ];
+  double device_sample_rate = 7 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Sample rate (device_sample_rate) - The rate at which the device is sampling flows. Valid values: integer bigger than 1. Recommended rate varies depending on flow volume; see https://kb.kentik.com/Ab02.htm#Ab02-Flow_Sampling. ** device_sample_rate is required when the device subtype's parent type is \"router\""
+    }
+  ];
+  uint32 plan_id = 8 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Plan (plan_id) - The ID of the plan to which this device is assigned. Available plan(s) can be found via the Plans API. Valid value: integer."
+    }
+  ];
+  uint32 site_id = 9 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Site (site_id) - The ID of the site (if any) to which this device is assigned. Site IDs are system generated when a site is created. Valid value: integer."
+    }
+  ];
+  bool minimize_snmp = 10 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "SNMP polling (minimize_snmp) - The interval at which SNMP will be polled. If \"false\" (Standard), interface counter will be polled every 10 minutes and interface description every 30 minutes. If \"true\" (Minimum) (Minimum), interface counter won't be polled and interface description will be polled every 6 hours. ** minimize_snmp is required when the device subtype's parent type is \"router\""
+    }
+  ];
+  string device_snmp_ip = 11 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device SNMP IP (device_snmp_ip) - The SNMP IP to use when polling the device. device_snmp_ip is ignored unless the device subtype's parent type is \"router\""
+    }
+  ];
+  string device_snmp_community = 12 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "SNMP community (device_snmp_community) - The SNMP community to use when polling the device. device_snmp_community is ignored unless the device subtype's parent type is \"router\""
+    }
+  ];
+  DeviceSnmpV3Conf device_snmp_v3_conf = 13 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "SNMP v3 configuration (device_snmp_v3_conf) - SNMP v3 configuration. device_snmp_v3_conf is ignored unless the device subtype's parent type is \"router\""
+    }
+  ];
+  string device_bgp_type = 14 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "BGP (device_bgp_type) - Device bgp type. Valid values: \"none\" (use generic IP/ASN mapping), \"device\" (peer with the device itself), \"other_device\" (share routing table of existing peered device)"
+    }
+  ];
+  string device_bgp_neighbor_ip = 15 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Your IPv4 peering address (device_bgp_neighbor_ip) - A valid IPv4 address to use for peering with the device. ** An IPv4 and/or IPv6 peering address is required when device_bgp_type is set to \"device\""
+    }
+  ];
+  string device_bgp_neighbor_ip6 = 16 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Your IPv6 peering address (device_bgp_neighbor_ip6) - A valid IPv6 address to use for peering with the device. ** An IPv4 and/or IPv6 peering address is required when device_bgp_type is set to \"device\""
+    }
+  ];
+  string device_bgp_neighbor_asn = 17 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Your ASN (device_bgp_neighbor_asn) - The valid AS number (ASN) of the autonomous system that this device belongs to. ** device_bgp_neighbor_asn is required when device_bgp_type is set to \"device\""
+    }
+  ];
+  string device_bgp_password = 18 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "BGP md5 password (device_bgp_password) - Optional BGP MD5 password (shared authentication password for BGP peering). Valid characters: alphanumeric. Length: 32. device_bgp_password is optional when device_bgp_type is set to \"device\""
+    }
+  ];
+  uint32 use_bgp_device_id = 19 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Select master BGP device (use_bgp_device_id) - The ID of the device whose BGP table should be shared with this device. ** use_bgp_device_id is required when device_bgp_type is set to \"other_device\"). Valid value: a system-generated device_id"
+    }
+  ];
+  bool device_bgp_flowspec = 20 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "BGP Flowspec Compatibility (device_bgp_flowspec) - Toggle BGP Flowspec Compatibility for device."
+    }
+  ];
+}
+
+// {{.Name}}
+message Site {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Site ID"
+    }
+  ];
+  string site_name = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Site name"
+    }
+  ];
+  double lat = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Site latitude"
+    }
+  ];
+  double lon = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Site longitude"
+    }
+  ];
+  string company_id = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Company ID"
+    }
+  ];
+}
+
+// {{.Name}}
+message Plan {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Plan ID"
+    }
+  ];
+  string name = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Plan name"
+    }
+  ];
+}
+
+// {{.Name}}
+message Label {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Label ID"
+    }
+  ];
+  string name = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Label name"
+    }
+  ];
+  string description = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Label description"
+    }
+  ];
+  google.protobuf.Timestamp edate = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Label end date (UTC)"
+    }
+  ];
+  google.protobuf.Timestamp cdate = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Label creation date (UTC)"
+    }
+  ];
+  string user_id = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "User ID"
+    }
+  ];
+  string company_id = 7 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Company ID"
+    }
+  ];
+  string color = 8 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Label color"
+    }
+  ];
+  string order = 9 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Label order"
+    }
+  ];
+  string pivot_device_id = 10 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Pivot device ID"
+    }
+  ];
+  string pivot_label_id = 11 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Pivot label ID"
+    }
+  ];
+}
+
+// {{.Name}}
+message Interface {
+  string interface_description = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Interface description"
+    }
+  ];
+  string initial_snmp_speed = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Initial SNMP speed"
+    }
+  ];
+  string device_id = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device ID"
+    }
+  ];
+  string snmp_speed = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "SNMP speed"
+    }
+  ];
+  string snmp_alias = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "SNMP alias"
+    }
+  ];
+  string snmp_id = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "SNMP ID"
+    }
+  ];
+  string connectivity_type = 7 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Connectivity type"
+    }
+  ];
+  string network_boundary = 8 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Network boundary"
+    }
+  ];
+  string provider = 9 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Provider"
+    }
+  ];
+}
+
+// {{.Name}}
+message CustomColumnData {
+  string device_id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device ID"
+    }
+  ];
+  string field_id = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Field ID"
+    }
+  ];
+  string col_name = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Column name"
+    }
+  ];
+  string description = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Description"
+    }
+  ];
+  string col_type = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Column type"
+    }
+  ];
+  string device_type = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device type"
+    }
+  ];
+}
+
+// {{.Name}}
+message GnmiV1Conf {
+  string dialout_server = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Dialout server"
+    }
+  ];
+}
+
+// {{.Name}}
+message DeviceDetailed {
+  string id = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "System generated unique identifier"
+    }
+  ];
+  string company_id = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Company ID"
+    }
+  ];
+  string device_name = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device name"
+    }
+  ];
+  string device_alias = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device alias"
+    }
+  ];
+  string device_type = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device type"
+    }
+  ];
+  string device_description = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device description"
+    }
+  ];
+  Site site = 7 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Site"
+    }
+  ];
+  Plan plan = 8 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Plan"
+    }
+  ];
+  repeated Label labels = 9 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of labels"
+    }
+  ];
+  repeated Interface all_interfaces = 10 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of interfaces"
+    }
+  ];
+  string device_flow_type = 11 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device flow type"
+    }
+  ];
+  string device_sample_rate = 12 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device sample rate"
+    }
+  ];
+  repeated string sending_ips = 13 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of sending IPs"
+    }
+  ];
+  string device_snmp_ip = 14 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device SNMP IP"
+    }
+  ];
+  string device_snmp_community = 15 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device SNMP community"
+    }
+  ];
+  bool minimize_snmp = 16 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Minimize SNMP"
+    }
+  ];
+  string device_bgp_type = 17 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device BGP type"
+    }
+  ];
+  string device_bgp_neighbor_ip = 18 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device BGP neighbor IP"
+    }
+  ];
+  string device_bgp_neighbor_ip6 = 19 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device BGP neighbor IP6"
+    }
+  ];
+  string device_bgp_neighbor_asn = 20 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device BGP neighbor ASN"
+    }
+  ];
+  bool device_bgp_flowspec = 21 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device BGP flowspec"
+    }
+  ];
+  string device_bgp_password = 22 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device BGP password"
+    }
+  ];
+  bool device_bgp_label_unicast = 23 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device BGP label unicast"
+    }
+  ];
+  string bgp_lookup_strategy = 24 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "BGP lookup strategy"
+    }
+  ];
+  string device_status = 25 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device status"
+    }
+  ];
+  string use_bgp_device_id = 26 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Use BGP device ID"
+    }
+  ];
+  string custom_columns = 27 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Custom columns"
+    }
+  ];
+  repeated CustomColumnData custom_column_data = 28 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Custom column data"
+    }
+  ];
+  string device_chf_client_port = 29 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device CHF client port"
+    }
+  ];
+  string device_chf_client_protocol = 30 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device CHF client protocol"
+    }
+  ];
+  string device_chf_interface = 31 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device CHF interface"
+    }
+  ];
+  string device_agent_type = 32 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device agent type"
+    }
+  ];
+  uint32 max_flow_rate = 33 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Max flow rate"
+    }
+  ];
+  uint32 max_big_flow_rate = 34 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Max big flow rate"
+    }
+  ];
+  string device_proxy_bgp = 35 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device proxy BGP"
+    }
+  ];
+  string device_proxy_bgp6 = 36 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device proxy BGP6"
+    }
+  ];
+  google.protobuf.Timestamp created_date = 37 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Creation timestamp (UTC)"
+    }
+  ];
+  google.protobuf.Timestamp updated_date = 38 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Last modification timestamp (UTC)"
+    }
+  ];
+  bool device_snmp_v3_conf_enabled = 39 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device SNMP v3 configuration enabled"
+    }
+  ];
+  DeviceSnmpV3Conf device_snmp_v3_conf = 40 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device SNMP v3 configuration"
+    }
+  ];
+  string cdn_attr = 41 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "CDN attributes"
+    }
+  ];
+  string bgp_peer_ip4 = 42 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "BGP peer IP4"
+    }
+  ];
+  string bgp_peer_ip6 = 43 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "BGP peer IP6"
+    }
+  ];
+  string device_subtype = 44 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device subtype"
+    }
+  ];
+  string device_vendor_type = 45 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device vendor type"
+    }
+  ];
+  string device_model_type = 46 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device model type"
+    }
+  ];
+  string cloud_export_id = 47 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Cloud export ID"
+    }
+  ];
+  string device_kproxy = 48 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device KProxy"
+    }
+  ];
+  string snmp_enabled = 49 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "SNMP enabled"
+    }
+  ];
+  string snmp_disabled_reason = 50 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "SNMP disabled reason"
+    }
+  ];
+  string snmp_disabled_reason_other = 51 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "SNMP disabled reason other"
+    }
+  ];
+  string bgp_disabled_reason = 52 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "BGP disabled reason"
+    }
+  ];
+  string bgp_disabled_reason_other = 53 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "BGP disabled reason other"
+    }
+  ];
+  string device_manufacturer = 54 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device manufacturer"
+    }
+  ];
+  string device_alert = 55 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device alert"
+    }
+  ];
+  string role = 56 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Role"
+    }
+  ];
+  GnmiV1Conf device_gnmi_v1_conf = 57 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device GNMI v1 configuration"
+    }
+  ];
+  bool use_asn_from_flow = 58 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Use ASN from flow"
+    }
+  ];
+  uint32 max_interface = 59 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Max interface"
+    }
+  ];
+  uint32 max_interface_check = 60 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Max interface check"
+    }
+  ];
+}
+
+// {{.Name}}
+message LabelConcise {
+  uint32 id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Label ID"
+    }
+  ];
+}
+
+// {{.Name}}
+message ListDevicesRequest {}
+
+// {{.Name}}
+message ListDevicesResponse {
+  repeated DeviceDetailed devices = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of configurations of devices"
+    }
+  ];
+  uint32 invalid_count = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Number of invalid entries encountered while collecting data"
+    }
+  ];
+}
+
+// {{.Name}}
+message GetDeviceRequest {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the requested device"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message GetDeviceResponse {
+  DeviceDetailed device = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Configuration of the requested device"
+    }
+  ];
+}
+
+// {{.Name}}
+message CreateDeviceRequest {
+  DeviceConcise device = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Configuration of the new device"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message CreateDeviceResponse {
+  DeviceDetailed device = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Configuration of the newly created device"
+    }
+  ];
+}
+
+// {{.Name}}
+message UpdateDeviceRequest {
+  DeviceConcise device = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "New configuration attributes for the device to be updated"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message UpdateDeviceResponse {
+  DeviceDetailed device = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Updated configuration of the device"
+    }
+  ];
+}
+
+// {{.Name}}
+message UpdateDeviceLabelsRequest {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the device to be updated"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  repeated LabelConcise labels = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of labels to be added to the device"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message UpdateDeviceLabelsResponse {
+  DeviceDetailed device = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Updated configuration of the device"
+    }
+  ];
+}
+
+// {{.Name}}
+message DeleteDeviceRequest {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the device to be deleted"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message DeleteDeviceResponse {}
+
+// services and RPCs
+// -------------------------------------------------------
+
+service DeviceService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "admin.device";
+
+  // --- Devices ---
+
+  rpc ListDevices(ListDevicesRequest) returns (ListDevicesResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.device:read";
+    option (google.api.http) = {
+      get: "/device/v202308beta1/device"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ListDevices"
+      summary: "List all devices."
+      description: "Returns list of configured devices (see [About Devices](https://kb.kentik.com/v4/Cb01.htm))."
+    };
+  }
+
+  rpc GetDevice(GetDeviceRequest) returns (GetDeviceResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.device:read";
+    option (google.api.http) = {
+      get: "/device/v202308beta1/device/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetDevice"
+      summary: "Retrieve configuration of a device."
+      description: "Returns configuration of a device specified by ID (see [About Devices](https://kb.kentik.com/v4/Cb01.htm))."
+    };
+  }
+
+  rpc CreateDevice(CreateDeviceRequest) returns (CreateDeviceResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.device:write";
+    option (google.api.http) = {
+      post: "/device/v202308beta1/device"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "CreateDevice"
+      summary: "Configure a new device."
+      description: "Create configuration for a new device. Returns the newly created configuration (see [About Devices](https://kb.kentik.com/v4/Cb01.htm))."
+    };
+  }
+
+  rpc UpdateDevice(UpdateDeviceRequest) returns (UpdateDeviceResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.device:write";
+    option (google.api.http) = {
+      put: "/device/v202308beta1/device/{device.id}"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "UpdateDevice"
+      summary: "Updates configuration of a device."
+      description: "Replaces configuration of a device with attributes in the request. Returns the updated configuration (see [About Devices](https://kb.kentik.com/v4/Cb01.htm))."
+    };
+  }
+
+  rpc UpdateDeviceLabels(UpdateDeviceLabelsRequest) returns (UpdateDeviceLabelsResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.device:write";
+    option (google.api.http) = {
+      put: "/device/v202308beta1/device/{id}/labels"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "UpdateDeviceLabels"
+      summary: "Updates labels of a device."
+      description: "Removes all existing labels from the device and applies the device labels (see [About Device Labels](https://kb.kentik.com/v4/Cb16.htm)) specified by id. Returns the updated configuration."
+    };
+  }
+
+  rpc DeleteDevice(DeleteDeviceRequest) returns (DeleteDeviceResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.device:write";
+    option (google.api.http) = {
+      delete: "/device/v202308beta1/device/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "DeleteDevice"
+      summary: "Delete configuration of a device."
+      description: "Deletes configuration of a device with specific ID (see [About Devices](https://kb.kentik.com/v4/Cb01.htm))."
+    };
+  }
+}

@@ -1,0 +1,975 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Device API",
+    "description": "# Overview\nThe Device API provides programmatic access to configuration of devices",
+    "version": "v202308beta1",
+    "contact": {
+      "name": "Kentik API Engineering",
+      "url": "https://github.com/kentik/api-schema-public"
+    }
+  },
+  "tags": [
+    {
+      "name": "DeviceService"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/device/v202308beta1/device": {
+      "get": {
+        "summary": "List all devices.",
+        "description": "Returns list of configured devices (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).",
+        "operationId": "ListDevices",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202308beta1ListDevicesResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "DeviceService"
+        ]
+      },
+      "post": {
+        "summary": "Configure a new device.",
+        "description": "Create configuration for a new device. Returns the newly created configuration (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).",
+        "operationId": "CreateDevice",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202308beta1CreateDeviceResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202308beta1CreateDeviceRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/device/v202308beta1/device/{device.id}": {
+      "put": {
+        "summary": "Updates configuration of a device.",
+        "description": "Replaces configuration of a device with attributes in the request. Returns the updated configuration (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).",
+        "operationId": "UpdateDevice",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202308beta1UpdateDeviceResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "device.id",
+            "description": "System generated unique identifier",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202308beta1UpdateDeviceRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      },
+      "get": {
+        "summary": "Retrieve configuration of a device.",
+        "description": "Returns configuration of a device specified by ID (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).",
+        "operationId": "GetDevice",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202308beta1GetDeviceResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "device.id",
+            "description": "ID of the requested device",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      },
+      "delete": {
+        "summary": "Delete configuration of a device.",
+        "description": "Deletes configuration of a device with specific ID (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).",
+        "operationId": "DeleteDevice",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202308beta1DeleteDeviceResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "device.id",
+            "description": "ID of the device to be deleted",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/device/v202308beta1/device/{id}/labels": {
+      "put": {
+        "summary": "Updates labels of a device.",
+        "description": "Removes all existing labels from the device and applies the device labels (see [About Device Labels](https://kb.kentik.com/v4/Cb16.htm)) specified by id. Returns the updated configuration.",
+        "operationId": "UpdateDeviceLabels",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202308beta1UpdateDeviceLabelsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "ID of the device to be updated",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202308beta1UpdateDeviceLabelsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "devicev202308beta1Label": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Label ID"
+        },
+        "name": {
+          "type": "string",
+          "description": "Label name"
+        },
+        "description": {
+          "type": "string",
+          "description": "Label description"
+        },
+        "edate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Label end date (UTC)"
+        },
+        "cdate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Label creation date (UTC)"
+        },
+        "userId": {
+          "type": "string",
+          "description": "User ID"
+        },
+        "companyId": {
+          "type": "string",
+          "description": "Company ID"
+        },
+        "color": {
+          "type": "string",
+          "description": "Label color"
+        },
+        "order": {
+          "type": "string",
+          "description": "Label order"
+        },
+        "pivotDeviceId": {
+          "type": "string",
+          "description": "Pivot device ID"
+        },
+        "pivotLabelId": {
+          "type": "string",
+          "description": "Pivot label ID"
+        }
+      },
+      "title": "Label"
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "typeUrl": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v202308beta1CreateDeviceRequest": {
+      "type": "object",
+      "properties": {
+        "device": {
+          "$ref": "#/definitions/v202308beta1DeviceConcise",
+          "description": "Configuration of the new device",
+          "required": [
+            "device"
+          ]
+        }
+      },
+      "title": "CreateDeviceRequest",
+      "required": [
+        "device"
+      ]
+    },
+    "v202308beta1CreateDeviceResponse": {
+      "type": "object",
+      "properties": {
+        "device": {
+          "$ref": "#/definitions/v202308beta1DeviceDetailed",
+          "description": "Configuration of the newly created device"
+        }
+      },
+      "title": "CreateDeviceResponse"
+    },
+    "v202308beta1CustomColumnData": {
+      "type": "object",
+      "properties": {
+        "deviceId": {
+          "type": "string",
+          "description": "Device ID"
+        },
+        "fieldId": {
+          "type": "string",
+          "description": "Field ID"
+        },
+        "colName": {
+          "type": "string",
+          "description": "Column name"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description"
+        },
+        "colType": {
+          "type": "string",
+          "description": "Column type"
+        },
+        "deviceType": {
+          "type": "string",
+          "description": "Device type"
+        }
+      },
+      "title": "CustomColumnData"
+    },
+    "v202308beta1DeleteDeviceResponse": {
+      "type": "object",
+      "title": "DeleteDeviceResponse"
+    },
+    "v202308beta1DeviceConcise": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "System generated unique identifier",
+          "title": "id"
+        },
+        "deviceName": {
+          "type": "string",
+          "description": "Device name (device_name) - The name of the device. Valid characters: alphanumeric and underscores. Length: min=4, max=60."
+        },
+        "deviceSubtype": {
+          "type": "string",
+          "description": "Device subtype (device_subtype) - The device subtype."
+        },
+        "cdnAttr": {
+          "type": "string",
+          "description": "CDN attributes (cdn_attr) - If this is a DNS server, you can contribute its queries to Kentik's CDN attribution database. Valid values: \"Y\" or \"N\". ** cdn_attr is required when the device subtype's parent type is \"host-nprobe-dns-www\""
+        },
+        "deviceDescription": {
+          "type": "string",
+          "description": "Description (device_description) - The device description. Valid characters: any. Length: max=128."
+        },
+        "sendingIps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Device ip (sending_ips) - Array containing one or more IP address(es), from which the device is sending flow. ** sending_ips is required when the device subtype's parent type is \"router\""
+        },
+        "deviceSampleRate": {
+          "type": "number",
+          "format": "double",
+          "description": "Sample rate (device_sample_rate) - The rate at which the device is sampling flows. Valid values: integer bigger than 1. Recommended rate varies depending on flow volume; see https://kb.kentik.com/Ab02.htm#Ab02-Flow_Sampling. ** device_sample_rate is required when the device subtype's parent type is \"router\""
+        },
+        "planId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Plan (plan_id) - The ID of the plan to which this device is assigned. Available plan(s) can be found via the Plans API. Valid value: integer."
+        },
+        "siteId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Site (site_id) - The ID of the site (if any) to which this device is assigned. Site IDs are system generated when a site is created. Valid value: integer."
+        },
+        "minimizeSnmp": {
+          "type": "boolean",
+          "description": "SNMP polling (minimize_snmp) - The interval at which SNMP will be polled. If \"false\" (Standard), interface counter will be polled every 10 minutes and interface description every 30 minutes. If \"true\" (Minimum) (Minimum), interface counter won't be polled and interface description will be polled every 6 hours. ** minimize_snmp is required when the device subtype's parent type is \"router\""
+        },
+        "deviceSnmpIp": {
+          "type": "string",
+          "description": "Device SNMP IP (device_snmp_ip) - The SNMP IP to use when polling the device. device_snmp_ip is ignored unless the device subtype's parent type is \"router\""
+        },
+        "deviceSnmpCommunity": {
+          "type": "string",
+          "description": "SNMP community (device_snmp_community) - The SNMP community to use when polling the device. device_snmp_community is ignored unless the device subtype's parent type is \"router\""
+        },
+        "deviceSnmpV3Conf": {
+          "$ref": "#/definitions/v202308beta1DeviceSnmpV3Conf",
+          "description": "SNMP v3 configuration (device_snmp_v3_conf) - SNMP v3 configuration. device_snmp_v3_conf is ignored unless the device subtype's parent type is \"router\""
+        },
+        "deviceBgpType": {
+          "type": "string",
+          "description": "BGP (device_bgp_type) - Device bgp type. Valid values: \"none\" (use generic IP/ASN mapping), \"device\" (peer with the device itself), \"other_device\" (share routing table of existing peered device)"
+        },
+        "deviceBgpNeighborIp": {
+          "type": "string",
+          "description": "Your IPv4 peering address (device_bgp_neighbor_ip) - A valid IPv4 address to use for peering with the device. ** An IPv4 and/or IPv6 peering address is required when device_bgp_type is set to \"device\""
+        },
+        "deviceBgpNeighborIp6": {
+          "type": "string",
+          "description": "Your IPv6 peering address (device_bgp_neighbor_ip6) - A valid IPv6 address to use for peering with the device. ** An IPv4 and/or IPv6 peering address is required when device_bgp_type is set to \"device\""
+        },
+        "deviceBgpNeighborAsn": {
+          "type": "string",
+          "description": "Your ASN (device_bgp_neighbor_asn) - The valid AS number (ASN) of the autonomous system that this device belongs to. ** device_bgp_neighbor_asn is required when device_bgp_type is set to \"device\""
+        },
+        "deviceBgpPassword": {
+          "type": "string",
+          "description": "BGP md5 password (device_bgp_password) - Optional BGP MD5 password (shared authentication password for BGP peering). Valid characters: alphanumeric. Length: 32. device_bgp_password is optional when device_bgp_type is set to \"device\""
+        },
+        "useBgpDeviceId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Select master BGP device (use_bgp_device_id) - The ID of the device whose BGP table should be shared with this device. ** use_bgp_device_id is required when device_bgp_type is set to \"other_device\"). Valid value: a system-generated device_id"
+        },
+        "deviceBgpFlowspec": {
+          "type": "boolean",
+          "description": "BGP Flowspec Compatibility (device_bgp_flowspec) - Toggle BGP Flowspec Compatibility for device."
+        }
+      },
+      "title": "DeviceConcise"
+    },
+    "v202308beta1DeviceDetailed": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "System generated unique identifier",
+          "readOnly": true
+        },
+        "companyId": {
+          "type": "string",
+          "description": "Company ID"
+        },
+        "deviceName": {
+          "type": "string",
+          "description": "Device name"
+        },
+        "deviceAlias": {
+          "type": "string",
+          "description": "Device alias"
+        },
+        "deviceType": {
+          "type": "string",
+          "description": "Device type"
+        },
+        "deviceDescription": {
+          "type": "string",
+          "description": "Device description"
+        },
+        "site": {
+          "$ref": "#/definitions/v202308beta1Site",
+          "description": "Site"
+        },
+        "plan": {
+          "$ref": "#/definitions/v202308beta1Plan",
+          "description": "Plan"
+        },
+        "labels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/devicev202308beta1Label"
+          },
+          "description": "List of labels"
+        },
+        "allInterfaces": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202308beta1Interface"
+          },
+          "description": "List of interfaces"
+        },
+        "deviceFlowType": {
+          "type": "string",
+          "description": "Device flow type"
+        },
+        "deviceSampleRate": {
+          "type": "string",
+          "description": "Device sample rate"
+        },
+        "sendingIps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of sending IPs"
+        },
+        "deviceSnmpIp": {
+          "type": "string",
+          "description": "Device SNMP IP"
+        },
+        "deviceSnmpCommunity": {
+          "type": "string",
+          "description": "Device SNMP community"
+        },
+        "minimizeSnmp": {
+          "type": "boolean",
+          "description": "Minimize SNMP"
+        },
+        "deviceBgpType": {
+          "type": "string",
+          "description": "Device BGP type"
+        },
+        "deviceBgpNeighborIp": {
+          "type": "string",
+          "description": "Device BGP neighbor IP"
+        },
+        "deviceBgpNeighborIp6": {
+          "type": "string",
+          "description": "Device BGP neighbor IP6"
+        },
+        "deviceBgpNeighborAsn": {
+          "type": "string",
+          "description": "Device BGP neighbor ASN"
+        },
+        "deviceBgpFlowspec": {
+          "type": "boolean",
+          "description": "Device BGP flowspec"
+        },
+        "deviceBgpPassword": {
+          "type": "string",
+          "description": "Device BGP password"
+        },
+        "deviceBgpLabelUnicast": {
+          "type": "boolean",
+          "description": "Device BGP label unicast"
+        },
+        "bgpLookupStrategy": {
+          "type": "string",
+          "description": "BGP lookup strategy"
+        },
+        "deviceStatus": {
+          "type": "string",
+          "description": "Device status"
+        },
+        "useBgpDeviceId": {
+          "type": "string",
+          "description": "Use BGP device ID"
+        },
+        "customColumns": {
+          "type": "string",
+          "description": "Custom columns"
+        },
+        "customColumnData": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202308beta1CustomColumnData"
+          },
+          "description": "Custom column data"
+        },
+        "deviceChfClientPort": {
+          "type": "string",
+          "description": "Device CHF client port"
+        },
+        "deviceChfClientProtocol": {
+          "type": "string",
+          "description": "Device CHF client protocol"
+        },
+        "deviceChfInterface": {
+          "type": "string",
+          "description": "Device CHF interface"
+        },
+        "deviceAgentType": {
+          "type": "string",
+          "description": "Device agent type"
+        },
+        "maxFlowRate": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Max flow rate"
+        },
+        "maxBigFlowRate": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Max big flow rate"
+        },
+        "deviceProxyBgp": {
+          "type": "string",
+          "description": "Device proxy BGP"
+        },
+        "deviceProxyBgp6": {
+          "type": "string",
+          "description": "Device proxy BGP6"
+        },
+        "createdDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation timestamp (UTC)"
+        },
+        "updatedDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last modification timestamp (UTC)"
+        },
+        "deviceSnmpV3ConfEnabled": {
+          "type": "boolean",
+          "description": "Device SNMP v3 configuration enabled"
+        },
+        "deviceSnmpV3Conf": {
+          "$ref": "#/definitions/v202308beta1DeviceSnmpV3Conf",
+          "description": "Device SNMP v3 configuration"
+        },
+        "cdnAttr": {
+          "type": "string",
+          "description": "CDN attributes"
+        },
+        "bgpPeerIp4": {
+          "type": "string",
+          "description": "BGP peer IP4"
+        },
+        "bgpPeerIp6": {
+          "type": "string",
+          "description": "BGP peer IP6"
+        },
+        "deviceSubtype": {
+          "type": "string",
+          "description": "Device subtype"
+        },
+        "deviceVendorType": {
+          "type": "string",
+          "description": "Device vendor type"
+        },
+        "deviceModelType": {
+          "type": "string",
+          "description": "Device model type"
+        },
+        "cloudExportId": {
+          "type": "string",
+          "description": "Cloud export ID"
+        },
+        "deviceKproxy": {
+          "type": "string",
+          "description": "Device KProxy"
+        },
+        "snmpEnabled": {
+          "type": "string",
+          "description": "SNMP enabled"
+        },
+        "snmpDisabledReason": {
+          "type": "string",
+          "description": "SNMP disabled reason"
+        },
+        "snmpDisabledReasonOther": {
+          "type": "string",
+          "description": "SNMP disabled reason other"
+        },
+        "bgpDisabledReason": {
+          "type": "string",
+          "description": "BGP disabled reason"
+        },
+        "bgpDisabledReasonOther": {
+          "type": "string",
+          "description": "BGP disabled reason other"
+        },
+        "deviceManufacturer": {
+          "type": "string",
+          "description": "Device manufacturer"
+        },
+        "deviceAlert": {
+          "type": "string",
+          "description": "Device alert"
+        },
+        "role": {
+          "type": "string",
+          "description": "Role"
+        },
+        "deviceGnmiV1Conf": {
+          "$ref": "#/definitions/v202308beta1GnmiV1Conf",
+          "description": "Device GNMI v1 configuration"
+        },
+        "useAsnFromFlow": {
+          "type": "boolean",
+          "description": "Use ASN from flow"
+        },
+        "maxInterface": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Max interface"
+        },
+        "maxInterfaceCheck": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Max interface check"
+        }
+      },
+      "title": "DeviceDetailed"
+    },
+    "v202308beta1DeviceSnmpV3Conf": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "description": "UserName (username) - the user name to use to authenticate via SNMP v3. ** UserName is required when device_snmp_v3_conf is not null"
+        },
+        "authenticationProtocol": {
+          "type": "string",
+          "description": "Authentication Protocol (authentication_protocol) - the auth protocol to use via SNMP v3"
+        },
+        "authenticationPassphrase": {
+          "type": "string",
+          "description": "Authentication Passphrase (authentication_passphrase) - the passphrase to use for SNMP v3 authentication protocol (required when AuthenticationProtocol not NoAuth)"
+        },
+        "privacyProtocol": {
+          "type": "string",
+          "description": "Privacy Protocol (privacy_protocol) - the privacy protocol to use to authenticate via SNMP v3"
+        },
+        "privacyPassphrase": {
+          "type": "string",
+          "description": "Privacy Passphrase (privacy_passphrase) - the passphrase to use for SNMP v3 privacy protocol (required when PrivacyProtocol not NoPriv)"
+        }
+      },
+      "title": "DeviceSnmpV3Conf"
+    },
+    "v202308beta1GetDeviceResponse": {
+      "type": "object",
+      "properties": {
+        "device": {
+          "$ref": "#/definitions/v202308beta1DeviceDetailed",
+          "description": "Configuration of the requested device"
+        }
+      },
+      "title": "GetDeviceResponse"
+    },
+    "v202308beta1GnmiV1Conf": {
+      "type": "object",
+      "properties": {
+        "dialoutServer": {
+          "type": "string",
+          "description": "Dialout server"
+        }
+      },
+      "title": "GnmiV1Conf"
+    },
+    "v202308beta1Interface": {
+      "type": "object",
+      "properties": {
+        "interfaceDescription": {
+          "type": "string",
+          "description": "Interface description"
+        },
+        "initialSnmpSpeed": {
+          "type": "string",
+          "description": "Initial SNMP speed"
+        },
+        "deviceId": {
+          "type": "string",
+          "description": "Device ID"
+        },
+        "snmpSpeed": {
+          "type": "string",
+          "description": "SNMP speed"
+        },
+        "snmpAlias": {
+          "type": "string",
+          "description": "SNMP alias"
+        },
+        "snmpId": {
+          "type": "string",
+          "description": "SNMP ID"
+        },
+        "connectivityType": {
+          "type": "string",
+          "description": "Connectivity type"
+        },
+        "networkBoundary": {
+          "type": "string",
+          "description": "Network boundary"
+        },
+        "provider": {
+          "type": "string",
+          "description": "Provider"
+        }
+      },
+      "title": "Interface"
+    },
+    "v202308beta1LabelConcise": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Label ID"
+        }
+      },
+      "title": "LabelConcise"
+    },
+    "v202308beta1ListDevicesResponse": {
+      "type": "object",
+      "properties": {
+        "devices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202308beta1DeviceDetailed"
+          },
+          "description": "List of configurations of devices"
+        },
+        "invalidCount": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Number of invalid entries encountered while collecting data"
+        }
+      },
+      "title": "ListDevicesResponse"
+    },
+    "v202308beta1Plan": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Plan ID"
+        },
+        "name": {
+          "type": "string",
+          "description": "Plan name"
+        }
+      },
+      "title": "Plan"
+    },
+    "v202308beta1Site": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Site ID"
+        },
+        "siteName": {
+          "type": "string",
+          "description": "Site name"
+        },
+        "lat": {
+          "type": "number",
+          "format": "double",
+          "description": "Site latitude"
+        },
+        "lon": {
+          "type": "number",
+          "format": "double",
+          "description": "Site longitude"
+        },
+        "companyId": {
+          "type": "string",
+          "description": "Company ID"
+        }
+      },
+      "title": "Site"
+    },
+    "v202308beta1UpdateDeviceLabelsRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "ID of the device to be updated",
+          "required": [
+            "id"
+          ]
+        },
+        "labels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202308beta1LabelConcise"
+          },
+          "description": "List of labels to be added to the device",
+          "required": [
+            "labels"
+          ]
+        }
+      },
+      "title": "UpdateDeviceLabelsRequest",
+      "required": [
+        "id",
+        "labels"
+      ]
+    },
+    "v202308beta1UpdateDeviceLabelsResponse": {
+      "type": "object",
+      "properties": {
+        "device": {
+          "$ref": "#/definitions/v202308beta1DeviceDetailed",
+          "description": "Updated configuration of the device"
+        }
+      },
+      "title": "UpdateDeviceLabelsResponse"
+    },
+    "v202308beta1UpdateDeviceRequest": {
+      "type": "object",
+      "properties": {
+        "device": {
+          "$ref": "#/definitions/v202308beta1DeviceConcise",
+          "description": "New configuration attributes for the device to be updated",
+          "required": [
+            "device"
+          ]
+        }
+      },
+      "title": "UpdateDeviceRequest",
+      "required": [
+        "device"
+      ]
+    },
+    "v202308beta1UpdateDeviceResponse": {
+      "type": "object",
+      "properties": {
+        "device": {
+          "$ref": "#/definitions/v202308beta1DeviceDetailed",
+          "description": "Updated configuration of the device"
+        }
+      },
+      "title": "UpdateDeviceResponse"
+    }
+  },
+  "securityDefinitions": {
+    "email": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-Email",
+      "in": "header"
+    },
+    "token": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-API-Token",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "email": [],
+      "token": []
+    }
+  ],
+  "externalDocs": {
+    "description": "General information about Kentik APIs",
+    "url": "https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview"
+  }
+}
