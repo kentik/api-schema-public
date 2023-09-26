@@ -1,0 +1,293 @@
+syntax = "proto3";
+
+package kentik.cost.v202308;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/cost/v202308;cost";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/timestamp.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "kentik/core/v202303/annotations.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Connectivity Cost Configuration API"
+    version: "v202308"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api-schema-public"
+    }
+    description: "# Overview\n"
+    "The Connectivity Cost Configuration API provides programmatic access to configuration of Connectivity Costs"
+  }
+  external_docs: {
+    url: "https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview"
+    description: "General information about Kentik APIs"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+// -------------------------------------------------------
+
+// {{.Name}}
+enum Status {
+  STATUS_UNSPECIFIED = 0;
+  STATUS_INCOMPLETE = 1;
+  STATUS_COMPLETE = 2;
+}
+
+// {{.Name}}
+message CostProviderSummary {
+  string date = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Date of the cost provider summary (YYYY-MM)"
+    }
+  ];
+  Status status = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Status of the billing cycle for the cost provider. Billing cycle is complete if a month has passed since the billing cycle start date"
+    }
+  ];
+  float total_cost = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Total cost of the cost provider"
+    }
+  ];
+  string total_cost_variation = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Total cost percent variation of the cost provider (percentage changed vs the previous month)"
+    }
+  ];
+  float total_cost_group_additional_cost = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Total cost group additional cost of the cost provider"
+    }
+  ];
+  float total_cost_group_additional_interface_cost = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Total cost group additional interface cost of the cost provider"
+    }
+  ];
+  string currency = 7 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Currency (ISO 4217) used for cost values of the cost provider"
+    }
+  ];
+  float cost_per_mbps = 8 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Cost per mbps (million bits per second) of the cost provider"
+    }
+  ];
+  string cost_per_mbps_variation = 9 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Cost per mbps percent variation of the cost provider (percentage changed vs the previous month)"
+    }
+  ];
+  string provider_name = 10 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Provider name of the cost provider"
+    }
+  ];
+  string cost_group_name = 11 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Cost group name of the cost provider"
+    }
+  ];
+  string cost_group_conn_type = 12 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Cost group connection type of the cost provider"
+    }
+  ];
+  string site_name = 13 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Site name of the cost provider"
+    }
+  ];
+  string site_market = 14 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Site market of the cost provider"
+    }
+  ];
+  float ingress_traffic_mbps = 15 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Ingress traffic mbps (million bits per second) of the cost provider"
+    }
+  ];
+  string ingress_traffic_variation = 16 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Ingress traffic percent variation of the cost provider (percentage changed vs the previous month)"
+    }
+  ];
+  float egress_traffic_mbps = 17 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Egress traffic mbps (million bits per second) of the cost provider"
+    }
+  ];
+  string egress_traffic_variation = 18 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Egress traffic percent variation of the cost provider (percentage changed vs the previous month)"
+    }
+  ];
+}
+
+// {{.Name}}
+message CostProviderConcise {
+  string id = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the cost provider"
+    }
+  ];
+  string name = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Name of the cost provider"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message ListCostProvidersRequest {}
+
+// {{.Name}}
+message ListCostProvidersResponse {
+  repeated CostProviderConcise providers = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of configurations of requested cost providers"
+    }
+  ];
+  uint32 invalid_count = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Number of invalid entries encountered while collecting data"
+    }
+  ];
+}
+
+// {{.Name}}
+message ListCostProviderSummariesRequest {
+  string date = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Date of the cost provider summary (YYYY-MM)"
+    }
+  ];
+}
+
+// {{.Name}}
+message ListCostProviderSummariesResponse {
+  repeated CostProviderSummary providers = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of summaries of requested cost providers"
+    }
+  ];
+  uint32 invalid_count = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Number of invalid entries encountered while collecting data"
+    }
+  ];
+}
+
+// {{.Name}}
+message GetCostProviderSummaryRequest {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the cost provider (can be found using ListCostProviders RPC)"
+    }
+  ];
+  string date = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Date of the cost provider summary (YYYY-MM)"
+    }
+  ];
+}
+
+// {{.Name}}
+message GetCostProviderSummaryResponse {
+  repeated CostProviderSummary providers = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of summaries of requested cost providers"
+    }
+  ];
+  uint32 invalid_count = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Number of invalid entries encountered while collecting data"
+    }
+  ];
+}
+
+// services and RPCs
+// -------------------------------------------------------
+
+service CostService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "admin.cost";
+
+  // --- Connectivity Costs ---
+
+  rpc ListCostProviders(ListCostProvidersRequest) returns (ListCostProvidersResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.cost:read";
+    option (google.api.http) = {
+      get: "/cost/v202308/cost/providers"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ListCostProviders"
+      summary: "List all cost providers."
+      description: "Returns list of configured cost providers."
+    };
+  }
+
+  rpc ListCostProviderSummaries(ListCostProviderSummariesRequest) returns (ListCostProviderSummariesResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.cost:read";
+    option (google.api.http) = {
+      get: "/cost/v202308/cost/summary"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ListCostProviderSummaries"
+      summary: "List all cost provider summaries."
+      description: "Returns list of summaries of configured cost providers."
+    };
+  }
+
+  rpc GetCostProviderSummary(GetCostProviderSummaryRequest) returns (GetCostProviderSummaryResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.cost:read";
+    option (google.api.http) = {
+      get: "/cost/v202308/cost/summary/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetCostProviderSummary"
+      summary: "Get cost provider summary."
+      description: "Returns summary of configured cost provider."
+    };
+  }
+}

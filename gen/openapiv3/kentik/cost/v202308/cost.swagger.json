@@ -1,0 +1,370 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Connectivity Cost Configuration API",
+        "description": "# Overview\nThe Connectivity Cost Configuration API provides programmatic access to configuration of Connectivity Costs",
+        "version": "v202308",
+        "contact": {
+            "name": "Kentik API Engineering",
+            "url": "https://github.com/kentik/api-schema-public"
+        }
+    },
+    "tags": [
+        {
+            "name": "CostService"
+        }
+    ],
+    "paths": {
+        "/cost/v202308/cost/providers": {
+            "get": {
+                "summary": "List all cost providers.",
+                "description": "Returns list of configured cost providers.",
+                "operationId": "ListCostProviders",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202308ListCostProvidersResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/googlerpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "CostService"
+                ]
+            }
+        },
+        "/cost/v202308/cost/summary": {
+            "get": {
+                "summary": "List all cost provider summaries.",
+                "description": "Returns list of summaries of configured cost providers.",
+                "operationId": "ListCostProviderSummaries",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202308ListCostProviderSummariesResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/googlerpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "date",
+                        "description": "Date of the cost provider summary (YYYY-MM)",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "CostService"
+                ]
+            }
+        },
+        "/cost/v202308/cost/summary/{id}": {
+            "get": {
+                "summary": "Get cost provider summary.",
+                "description": "Returns summary of configured cost provider.",
+                "operationId": "GetCostProviderSummary",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202308GetCostProviderSummaryResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/googlerpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "description": "ID of the cost provider (can be found using ListCostProviders RPC)",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "date",
+                        "description": "Date of the cost provider summary (YYYY-MM)",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "CostService"
+                ]
+            }
+        }
+    },
+    "security": [
+        {
+            "email": [],
+            "token": []
+        }
+    ],
+    "externalDocs": {
+        "description": "General information about Kentik APIs",
+        "url": "https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview"
+    },
+    "components": {
+        "securitySchemes": {
+            "email": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-Email",
+                "in": "header"
+            },
+            "token": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-API-Token",
+                "in": "header"
+            }
+        },
+        "schemas": {
+            "costv202308Status": {
+                "type": "string",
+                "enum": [
+                    "STATUS_UNSPECIFIED",
+                    "STATUS_INCOMPLETE",
+                    "STATUS_COMPLETE"
+                ],
+                "default": "STATUS_UNSPECIFIED",
+                "title": "Status"
+            },
+            "googlerpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "typeUrl": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string",
+                        "format": "byte"
+                    }
+                }
+            },
+            "v202308CostProviderConcise": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "ID of the cost provider",
+                        "readOnly": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the cost provider",
+                        "required": [
+                            "name"
+                        ]
+                    }
+                },
+                "title": "CostProviderConcise",
+                "required": [
+                    "name"
+                ]
+            },
+            "v202308CostProviderSummary": {
+                "type": "object",
+                "properties": {
+                    "date": {
+                        "type": "string",
+                        "description": "Date of the cost provider summary (YYYY-MM)"
+                    },
+                    "status": {
+                        "$ref": "#/components/schemas/costv202308Status"
+                    },
+                    "totalCost": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Total cost of the cost provider"
+                    },
+                    "totalCostVariation": {
+                        "type": "string",
+                        "description": "Total cost percent variation of the cost provider (percentage changed vs the previous month)"
+                    },
+                    "totalCostGroupAdditionalCost": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Total cost group additional cost of the cost provider"
+                    },
+                    "totalCostGroupAdditionalInterfaceCost": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Total cost group additional interface cost of the cost provider"
+                    },
+                    "currency": {
+                        "type": "string",
+                        "description": "Currency (ISO 4217) used for cost values of the cost provider"
+                    },
+                    "costPerMbps": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Cost per mbps (million bits per second) of the cost provider"
+                    },
+                    "costPerMbpsVariation": {
+                        "type": "string",
+                        "description": "Cost per mbps percent variation of the cost provider (percentage changed vs the previous month)"
+                    },
+                    "providerName": {
+                        "type": "string",
+                        "description": "Provider name of the cost provider"
+                    },
+                    "costGroupName": {
+                        "type": "string",
+                        "description": "Cost group name of the cost provider"
+                    },
+                    "costGroupConnType": {
+                        "type": "string",
+                        "description": "Cost group connection type of the cost provider"
+                    },
+                    "siteName": {
+                        "type": "string",
+                        "description": "Site name of the cost provider"
+                    },
+                    "siteMarket": {
+                        "type": "string",
+                        "description": "Site market of the cost provider"
+                    },
+                    "ingressTrafficMbps": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Ingress traffic mbps (million bits per second) of the cost provider"
+                    },
+                    "ingressTrafficVariation": {
+                        "type": "string",
+                        "description": "Ingress traffic percent variation of the cost provider (percentage changed vs the previous month)"
+                    },
+                    "egressTrafficMbps": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Egress traffic mbps (million bits per second) of the cost provider"
+                    },
+                    "egressTrafficVariation": {
+                        "type": "string",
+                        "description": "Egress traffic percent variation of the cost provider (percentage changed vs the previous month)"
+                    }
+                },
+                "title": "CostProviderSummary"
+            },
+            "v202308GetCostProviderSummaryResponse": {
+                "type": "object",
+                "properties": {
+                    "providers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202308CostProviderSummary"
+                        },
+                        "description": "List of summaries of requested cost providers"
+                    },
+                    "invalidCount": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of invalid entries encountered while collecting data"
+                    }
+                },
+                "title": "GetCostProviderSummaryResponse"
+            },
+            "v202308ListCostProviderSummariesResponse": {
+                "type": "object",
+                "properties": {
+                    "providers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202308CostProviderSummary"
+                        },
+                        "description": "List of summaries of requested cost providers"
+                    },
+                    "invalidCount": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of invalid entries encountered while collecting data"
+                    }
+                },
+                "title": "ListCostProviderSummariesResponse"
+            },
+            "v202308ListCostProvidersResponse": {
+                "type": "object",
+                "properties": {
+                    "providers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202308CostProviderConcise"
+                        },
+                        "description": "List of configurations of requested cost providers"
+                    },
+                    "invalidCount": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of invalid entries encountered while collecting data"
+                    }
+                },
+                "title": "ListCostProvidersResponse"
+            }
+        }
+    }
+}

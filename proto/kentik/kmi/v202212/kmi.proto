@@ -250,8 +250,7 @@ message GetRankingsRequest {
   string market_id = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Unique Geo Market identifier (as provided by the ListMarkets RPC)"
-    },
-    (google.api.field_behavior) = REQUIRED
+    }
   ];
   string rank_type = 2 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -289,14 +288,12 @@ message GetASNDetailsRequest {
   string market_id = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Unique Geo Market identifier (as provided by the ListMarkets RPC)"
-    },
-    (google.api.field_behavior) = REQUIRED
+    }
   ];
   string asn = 2 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Autonomous System Number (ASN)"
-    },
-    (google.api.field_behavior) = REQUIRED
+    }
   ];
   string ip = 3 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -305,7 +302,7 @@ message GetASNDetailsRequest {
   ];
   string type = 4 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "Type of the requested ASN ('all', 'customer', 'provider', 'peer'). Defaults to 'all'."
+      description: "Type of the requested ASN ('all', 'customer', 'provider', 'peers'). Defaults to 'all'."
     }
   ];
   string mutual_provider = 5 [

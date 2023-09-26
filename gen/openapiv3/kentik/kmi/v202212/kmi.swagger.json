@@ -63,7 +63,7 @@
                     },
                     {
                         "name": "type",
-                        "description": "Type of the requested ASN ('all', 'customer', 'provider', 'peer'). Defaults to 'all'.",
+                        "description": "Type of the requested ASN ('all', 'customer', 'provider', 'peers'). Defaults to 'all'.",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -324,17 +324,11 @@
                 "properties": {
                     "marketId": {
                         "type": "string",
-                        "description": "Unique Geo Market identifier (as provided by the ListMarkets RPC)",
-                        "required": [
-                            "market_id"
-                        ]
+                        "description": "Unique Geo Market identifier (as provided by the ListMarkets RPC)"
                     },
                     "asn": {
                         "type": "string",
-                        "description": "Autonomous System Number (ASN)",
-                        "required": [
-                            "asn"
-                        ]
+                        "description": "Autonomous System Number (ASN)"
                     },
                     "ip": {
                         "type": "string",
@@ -342,7 +336,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "Type of the requested ASN ('all', 'customer', 'provider', 'peer'). Defaults to 'all'."
+                        "description": "Type of the requested ASN ('all', 'customer', 'provider', 'peers'). Defaults to 'all'."
                     },
                     "mutualProvider": {
                         "type": "string",
@@ -357,11 +351,7 @@
                         "description": "Filter by singlehomed customer ('all', 'only', 'exclude'). Defaults to 'all'."
                     }
                 },
-                "title": "GetASNDetailsRequest",
-                "required": [
-                    "marketId",
-                    "asn"
-                ]
+                "title": "GetASNDetailsRequest"
             },
             "v202212GetASNDetailsResponse": {
                 "type": "object",
@@ -377,10 +367,7 @@
                 "properties": {
                     "marketId": {
                         "type": "string",
-                        "description": "Unique Geo Market identifier (as provided by the ListMarkets RPC)",
-                        "required": [
-                            "market_id"
-                        ]
+                        "description": "Unique Geo Market identifier (as provided by the ListMarkets RPC)"
                     },
                     "rankType": {
                         "type": "string",
@@ -396,10 +383,7 @@
                         "description": "Maximum number of entries returned. (Default: 600)."
                     }
                 },
-                "title": "GetRankingsRequest",
-                "required": [
-                    "marketId"
-                ]
+                "title": "GetRankingsRequest"
             },
             "v202212GetRankingsResponse": {
                 "type": "object",
