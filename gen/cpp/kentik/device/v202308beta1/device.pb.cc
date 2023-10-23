@@ -92,6 +92,14 @@ class CreateDeviceResponseDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<CreateDeviceResponse> _instance;
 } _CreateDeviceResponse_default_instance_;
+class CreateDevicesRequestDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<CreateDevicesRequest> _instance;
+} _CreateDevicesRequest_default_instance_;
+class CreateDevicesResponseDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<CreateDevicesResponse> _instance;
+} _CreateDevicesResponse_default_instance_;
 class UpdateDeviceRequestDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<UpdateDeviceRequest> _instance;
@@ -100,6 +108,14 @@ class UpdateDeviceResponseDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<UpdateDeviceResponse> _instance;
 } _UpdateDeviceResponse_default_instance_;
+class UpdateDevicesRequestDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<UpdateDevicesRequest> _instance;
+} _UpdateDevicesRequest_default_instance_;
+class UpdateDevicesResponseDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<UpdateDevicesResponse> _instance;
+} _UpdateDevicesResponse_default_instance_;
 class UpdateDeviceLabelsRequestDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<UpdateDeviceLabelsRequest> _instance;
@@ -116,6 +132,14 @@ class DeleteDeviceResponseDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<DeleteDeviceResponse> _instance;
 } _DeleteDeviceResponse_default_instance_;
+class DeleteDevicesRequestDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<DeleteDevicesRequest> _instance;
+} _DeleteDevicesRequest_default_instance_;
+class DeleteDevicesResponseDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<DeleteDevicesResponse> _instance;
+} _DeleteDevicesResponse_default_instance_;
 }  // namespace v202308beta1
 }  // namespace device
 }  // namespace kentik
@@ -147,6 +171,36 @@ static void InitDefaultsscc_info_CreateDeviceResponse_kentik_2fdevice_2fv202308b
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_CreateDeviceResponse_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_CreateDeviceResponse_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto}, {
+      &scc_info_DeviceDetailed_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,}};
+
+static void InitDefaultsscc_info_CreateDevicesRequest_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::kentik::device::v202308beta1::_CreateDevicesRequest_default_instance_;
+    new (ptr) ::kentik::device::v202308beta1::CreateDevicesRequest();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::kentik::device::v202308beta1::CreateDevicesRequest::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_CreateDevicesRequest_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_CreateDevicesRequest_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto}, {
+      &scc_info_DeviceConcise_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,}};
+
+static void InitDefaultsscc_info_CreateDevicesResponse_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::kentik::device::v202308beta1::_CreateDevicesResponse_default_instance_;
+    new (ptr) ::kentik::device::v202308beta1::CreateDevicesResponse();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::kentik::device::v202308beta1::CreateDevicesResponse::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_CreateDevicesResponse_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_CreateDevicesResponse_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto}, {
       &scc_info_DeviceDetailed_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,}};
 
 static void InitDefaultsscc_info_CustomColumnData_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto() {
@@ -190,6 +244,34 @@ static void InitDefaultsscc_info_DeleteDeviceResponse_kentik_2fdevice_2fv202308b
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_DeleteDeviceResponse_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_DeleteDeviceResponse_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto}, {}};
+
+static void InitDefaultsscc_info_DeleteDevicesRequest_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::kentik::device::v202308beta1::_DeleteDevicesRequest_default_instance_;
+    new (ptr) ::kentik::device::v202308beta1::DeleteDevicesRequest();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::kentik::device::v202308beta1::DeleteDevicesRequest::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_DeleteDevicesRequest_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_DeleteDevicesRequest_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto}, {}};
+
+static void InitDefaultsscc_info_DeleteDevicesResponse_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::kentik::device::v202308beta1::_DeleteDevicesResponse_default_instance_;
+    new (ptr) ::kentik::device::v202308beta1::DeleteDevicesResponse();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::kentik::device::v202308beta1::DeleteDevicesResponse::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_DeleteDevicesResponse_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_DeleteDevicesResponse_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto}, {}};
 
 static void InitDefaultsscc_info_DeviceConcise_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -445,7 +527,37 @@ static void InitDefaultsscc_info_UpdateDeviceResponse_kentik_2fdevice_2fv202308b
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_UpdateDeviceResponse_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto}, {
       &scc_info_DeviceDetailed_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,}};
 
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto[22];
+static void InitDefaultsscc_info_UpdateDevicesRequest_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::kentik::device::v202308beta1::_UpdateDevicesRequest_default_instance_;
+    new (ptr) ::kentik::device::v202308beta1::UpdateDevicesRequest();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::kentik::device::v202308beta1::UpdateDevicesRequest::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_UpdateDevicesRequest_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_UpdateDevicesRequest_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto}, {
+      &scc_info_DeviceConcise_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,}};
+
+static void InitDefaultsscc_info_UpdateDevicesResponse_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::kentik::device::v202308beta1::_UpdateDevicesResponse_default_instance_;
+    new (ptr) ::kentik::device::v202308beta1::UpdateDevicesResponse();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::kentik::device::v202308beta1::UpdateDevicesResponse::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_UpdateDevicesResponse_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_UpdateDevicesResponse_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto}, {
+      &scc_info_DeviceDetailed_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,}};
+
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto[28];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto = nullptr;
 
@@ -657,6 +769,19 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_kentik_2fdevice_2fv202308beta1
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::CreateDeviceResponse, device_),
   ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::CreateDevicesRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::CreateDevicesRequest, devices_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::CreateDevicesResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::CreateDevicesResponse, devices_),
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::CreateDevicesResponse, failed_devices_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::UpdateDeviceRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -668,6 +793,19 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_kentik_2fdevice_2fv202308beta1
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::UpdateDeviceResponse, device_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::UpdateDevicesRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::UpdateDevicesRequest, devices_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::UpdateDevicesResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::UpdateDevicesResponse, devices_),
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::UpdateDevicesResponse, failed_devices_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::UpdateDeviceLabelsRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -692,6 +830,18 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_kentik_2fdevice_2fv202308beta1
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeleteDevicesRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeleteDevicesRequest, ids_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeleteDevicesResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeleteDevicesResponse, failed_devices_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::kentik::device::v202308beta1::DeviceSnmpV3Conf)},
@@ -710,12 +860,18 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 188, -1, sizeof(::kentik::device::v202308beta1::GetDeviceResponse)},
   { 194, -1, sizeof(::kentik::device::v202308beta1::CreateDeviceRequest)},
   { 200, -1, sizeof(::kentik::device::v202308beta1::CreateDeviceResponse)},
-  { 206, -1, sizeof(::kentik::device::v202308beta1::UpdateDeviceRequest)},
-  { 212, -1, sizeof(::kentik::device::v202308beta1::UpdateDeviceResponse)},
-  { 218, -1, sizeof(::kentik::device::v202308beta1::UpdateDeviceLabelsRequest)},
-  { 225, -1, sizeof(::kentik::device::v202308beta1::UpdateDeviceLabelsResponse)},
-  { 231, -1, sizeof(::kentik::device::v202308beta1::DeleteDeviceRequest)},
-  { 237, -1, sizeof(::kentik::device::v202308beta1::DeleteDeviceResponse)},
+  { 206, -1, sizeof(::kentik::device::v202308beta1::CreateDevicesRequest)},
+  { 212, -1, sizeof(::kentik::device::v202308beta1::CreateDevicesResponse)},
+  { 219, -1, sizeof(::kentik::device::v202308beta1::UpdateDeviceRequest)},
+  { 225, -1, sizeof(::kentik::device::v202308beta1::UpdateDeviceResponse)},
+  { 231, -1, sizeof(::kentik::device::v202308beta1::UpdateDevicesRequest)},
+  { 237, -1, sizeof(::kentik::device::v202308beta1::UpdateDevicesResponse)},
+  { 244, -1, sizeof(::kentik::device::v202308beta1::UpdateDeviceLabelsRequest)},
+  { 251, -1, sizeof(::kentik::device::v202308beta1::UpdateDeviceLabelsResponse)},
+  { 257, -1, sizeof(::kentik::device::v202308beta1::DeleteDeviceRequest)},
+  { 263, -1, sizeof(::kentik::device::v202308beta1::DeleteDeviceResponse)},
+  { 268, -1, sizeof(::kentik::device::v202308beta1::DeleteDevicesRequest)},
+  { 274, -1, sizeof(::kentik::device::v202308beta1::DeleteDevicesResponse)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -735,12 +891,18 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::device::v202308beta1::_GetDeviceResponse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::device::v202308beta1::_CreateDeviceRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::device::v202308beta1::_CreateDeviceResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::device::v202308beta1::_CreateDevicesRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::device::v202308beta1::_CreateDevicesResponse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::device::v202308beta1::_UpdateDeviceRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::device::v202308beta1::_UpdateDeviceResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::device::v202308beta1::_UpdateDevicesRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::device::v202308beta1::_UpdateDevicesResponse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::device::v202308beta1::_UpdateDeviceLabelsRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::device::v202308beta1::_UpdateDeviceLabelsResponse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::device::v202308beta1::_DeleteDeviceRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::device::v202308beta1::_DeleteDeviceResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::device::v202308beta1::_DeleteDevicesRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::device::v202308beta1::_DeleteDevicesResponse_default_instance_),
 };
 
 const char descriptor_table_protodef_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -1061,95 +1223,150 @@ const char descriptor_table_protodef_kentik_2fdevice_2fv202308beta1_2fdevice_2ep
   "ce\342A\001\002R\006device\"\212\001\n\024CreateDeviceResponse\022"
   "r\n\006device\030\001 \001(\0132*.kentik.device.v202308b"
   "eta1.DeviceDetailedB.\222A+2)Configuration "
-  "of the newly created deviceR\006device\"\235\001\n\023"
-  "UpdateDeviceRequest\022\205\001\n\006device\030\001 \001(\0132).k"
-  "entik.device.v202308beta1.DeviceConciseB"
-  "B\222A;29New configuration attributes for t"
-  "he device to be updated\342A\001\002R\006device\"\204\001\n\024"
-  "UpdateDeviceResponse\022l\n\006device\030\001 \001(\0132*.k"
-  "entik.device.v202308beta1.DeviceDetailed"
-  "B(\222A%2#Updated configuration of the devi"
-  "ceR\006device\"\311\001\n\031UpdateDeviceLabelsRequest"
-  "\0227\n\002id\030\001 \001(\tB\'\222A 2\036ID of the device to b"
-  "e updated\342A\001\002R\002id\022s\n\006labels\030\002 \003(\0132(.kent"
-  "ik.device.v202308beta1.LabelConciseB1\222A*"
-  "2(List of labels to be added to the devi"
-  "ce\342A\001\002R\006labels\"\212\001\n\032UpdateDeviceLabelsRes"
-  "ponse\022l\n\006device\030\001 \001(\0132*.kentik.device.v2"
-  "02308beta1.DeviceDetailedB(\222A%2#Updated "
-  "configuration of the deviceR\006device\"N\n\023D"
-  "eleteDeviceRequest\0227\n\002id\030\001 \001(\tB\'\222A 2\036ID "
-  "of the device to be deleted\342A\001\002R\002id\"\026\n\024D"
-  "eleteDeviceResponse2\320\021\n\rDeviceService\022\252\002"
-  "\n\013ListDevices\022..kentik.device.v202308bet"
-  "a1.ListDevicesRequest\032/.kentik.device.v2"
-  "02308beta1.ListDevicesResponse\"\271\001\222A~\022\021Li"
-  "st all devices.\032\\Returns list of configu"
-  "red devices (see [About Devices](https:/"
-  "/kb.kentik.com/v4/Cb01.htm)).*\013ListDevic"
-  "es\362\327\002\021admin.device:read\202\323\344\223\002\035\022\033/device/v"
-  "202308beta1/device\022\311\002\n\tGetDevice\022,.kenti"
-  "k.device.v202308beta1.GetDeviceRequest\032-"
-  ".kentik.device.v202308beta1.GetDeviceRes"
-  "ponse\"\336\001\222A\235\001\022#Retrieve configuration of "
-  "a device.\032kReturns configuration of a de"
-  "vice specified by ID (see [About Devices"
-  "](https://kb.kentik.com/v4/Cb01.htm)).*\t"
-  "GetDevice\362\327\002\021admin.device:read\202\323\344\223\002\"\022 /d"
-  "evice/v202308beta1/device/{id}\022\346\002\n\014Creat"
-  "eDevice\022/.kentik.device.v202308beta1.Cre"
-  "ateDeviceRequest\0320.kentik.device.v202308"
-  "beta1.CreateDeviceResponse\"\362\001\222A\262\001\022\027Confi"
-  "gure a new device.\032\210\001Create configuratio"
-  "n for a new device. Returns the newly cr"
-  "eated configuration (see [About Devices]"
-  "(https://kb.kentik.com/v4/Cb01.htm)).*\014C"
-  "reateDevice\362\327\002\022admin.device:write\202\323\344\223\002 \""
-  "\033/device/v202308beta1/device:\001*\022\223\003\n\014Upda"
-  "teDevice\022/.kentik.device.v202308beta1.Up"
-  "dateDeviceRequest\0320.kentik.device.v20230"
-  "8beta1.UpdateDeviceResponse\"\237\002\222A\323\001\022\"Upda"
-  "tes configuration of a device.\032\236\001Replace"
-  "s configuration of a device with attribu"
-  "tes in the request. Returns the updated "
-  "configuration (see [About Devices](https"
-  "://kb.kentik.com/v4/Cb01.htm)).*\014UpdateD"
-  "evice\362\327\002\022admin.device:write\202\323\344\223\002,\032\'/devi"
-  "ce/v202308beta1/device/{device.id}:\001*\022\302\003"
-  "\n\022UpdateDeviceLabels\0225.kentik.device.v20"
-  "2308beta1.UpdateDeviceLabelsRequest\0326.ke"
-  "ntik.device.v202308beta1.UpdateDeviceLab"
-  "elsResponse\"\274\002\222A\360\001\022\033Updates labels of a "
-  "device.\032\274\001Removes all existing labels fr"
-  "om the device and applies the device lab"
-  "els (see [About Device Labels](https://k"
-  "b.kentik.com/v4/Cb16.htm)) specified by "
-  "id. Returns the updated configuration.*\022"
-  "UpdateDeviceLabels\362\327\002\022admin.device:write"
-  "\202\323\344\223\002,\032\'/device/v202308beta1/device/{id}"
-  "/labels:\001*\022\325\002\n\014DeleteDevice\022/.kentik.dev"
-  "ice.v202308beta1.DeleteDeviceRequest\0320.k"
-  "entik.device.v202308beta1.DeleteDeviceRe"
-  "sponse\"\341\001\222A\237\001\022!Delete configuration of a"
-  " device.\032lDeletes configuration of a dev"
-  "ice with specific ID (see [About Devices"
-  "](https://kb.kentik.com/v4/Cb01.htm)).*\014"
-  "DeleteDevice\362\327\002\022admin.device:write\202\323\344\223\002\""
-  "* /device/v202308beta1/device/{id}\032*\312A\023g"
-  "rpc.api.kentik.com\352\327\002\014admin.device\220\330\002\003B\356"
-  "\003ZLgithub.com/kentik/api-schema-public/g"
-  "en/go/kentik/device/v202308beta1;device\222"
-  "A\234\003\022\265\001\n\nDevice API\022R# Overview\nThe Devic"
-  "e API provides programmatic access to co"
-  "nfiguration of devices\"E\n\026Kentik API Eng"
-  "ineering\022+https://github.com/kentik/api-"
-  "schema-public2\014v202308beta1*\001\0022\020applicat"
-  "ion/json:\020application/jsonZD\n\036\n\005email\022\025\010"
-  "\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-"
-  "Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000"
-  "r]\n%General information about Kentik API"
-  "s\0224https://kb.kentik.com/v0/Ab09.htm#Ab0"
-  "9-APIs_Overviewb\006proto3"
+  "of the newly created deviceR\006device\"\225\001\n\024"
+  "CreateDevicesRequest\022}\n\007devices\030\001 \003(\0132)."
+  "kentik.device.v202308beta1.DeviceConcise"
+  "B8\222A12/List of configurations of devices"
+  " to be created\342A\001\002R\007devices\"\363\001\n\025CreateDe"
+  "vicesResponse\022z\n\007devices\030\001 \003(\0132*.kentik."
+  "device.v202308beta1.DeviceDetailedB4\222A12"
+  "/List of configurations of newly created"
+  " devicesR\007devices\022^\n\016failed_devices\030\002 \003("
+  "\tB7\222A422List of names of devices that fa"
+  "iled to be createdR\rfailedDevices\"\235\001\n\023Up"
+  "dateDeviceRequest\022\205\001\n\006device\030\001 \001(\0132).ken"
+  "tik.device.v202308beta1.DeviceConciseBB\222"
+  "A;29New configuration attributes for the"
+  " device to be updated\342A\001\002R\006device\"\204\001\n\024Up"
+  "dateDeviceResponse\022l\n\006device\030\001 \001(\0132*.ken"
+  "tik.device.v202308beta1.DeviceDetailedB("
+  "\222A%2#Updated configuration of the device"
+  "R\006device\"\225\001\n\024UpdateDevicesRequest\022}\n\007dev"
+  "ices\030\001 \003(\0132).kentik.device.v202308beta1."
+  "DeviceConciseB8\222A12/List of configuratio"
+  "ns of devices to be updated\342A\001\002R\007devices"
+  "\"\353\001\n\025UpdateDevicesResponse\022t\n\007devices\030\001 "
+  "\003(\0132*.kentik.device.v202308beta1.DeviceD"
+  "etailedB.\222A+2)List of configurations of "
+  "updated devicesR\007devices\022\\\n\016failed_devic"
+  "es\030\002 \003(\tB5\222A220List of IDs of devices th"
+  "at failed to be updatedR\rfailedDevices\"\311"
+  "\001\n\031UpdateDeviceLabelsRequest\0227\n\002id\030\001 \001(\t"
+  "B\'\222A 2\036ID of the device to be updated\342A\001"
+  "\002R\002id\022s\n\006labels\030\002 \003(\0132(.kentik.device.v2"
+  "02308beta1.LabelConciseB1\222A*2(List of la"
+  "bels to be added to the device\342A\001\002R\006labe"
+  "ls\"\212\001\n\032UpdateDeviceLabelsResponse\022l\n\006dev"
+  "ice\030\001 \001(\0132*.kentik.device.v202308beta1.D"
+  "eviceDetailedB(\222A%2#Updated configuratio"
+  "n of the deviceR\006device\"N\n\023DeleteDeviceR"
+  "equest\0227\n\002id\030\001 \001(\tB\'\222A 2\036ID of the devic"
+  "e to be deleted\342A\001\002R\002id\"\026\n\024DeleteDeviceR"
+  "esponse\"W\n\024DeleteDevicesRequest\022\?\n\003ids\030\001"
+  " \003(\tB-\222A&2$List of IDs of devices to be "
+  "deleted\342A\001\002R\003ids\"u\n\025DeleteDevicesRespons"
+  "e\022\\\n\016failed_devices\030\001 \003(\tB5\222A220List of "
+  "IDs of devices that failed to be deleted"
+  "R\rfailedDevices2\366\032\n\rDeviceService\022\252\002\n\013Li"
+  "stDevices\022..kentik.device.v202308beta1.L"
+  "istDevicesRequest\032/.kentik.device.v20230"
+  "8beta1.ListDevicesResponse\"\271\001\222A~\022\021List a"
+  "ll devices.\032\\Returns list of configured "
+  "devices (see [About Devices](https://kb."
+  "kentik.com/v4/Cb01.htm)).*\013ListDevices\362\327"
+  "\002\021admin.device:read\202\323\344\223\002\035\022\033/device/v2023"
+  "08beta1/device\022\311\002\n\tGetDevice\022,.kentik.de"
+  "vice.v202308beta1.GetDeviceRequest\032-.ken"
+  "tik.device.v202308beta1.GetDeviceRespons"
+  "e\"\336\001\222A\235\001\022#Retrieve configuration of a de"
+  "vice.\032kReturns configuration of a device"
+  " specified by ID (see [About Devices](ht"
+  "tps://kb.kentik.com/v4/Cb01.htm)).*\tGetD"
+  "evice\362\327\002\021admin.device:read\202\323\344\223\002\"\022 /devic"
+  "e/v202308beta1/device/{id}\022\346\002\n\014CreateDev"
+  "ice\022/.kentik.device.v202308beta1.CreateD"
+  "eviceRequest\0320.kentik.device.v202308beta"
+  "1.CreateDeviceResponse\"\362\001\222A\262\001\022\027Configure"
+  " a new device.\032\210\001Create configuration fo"
+  "r a new device. Returns the newly create"
+  "d configuration (see [About Devices](htt"
+  "ps://kb.kentik.com/v4/Cb01.htm)).*\014Creat"
+  "eDevice\362\327\002\022admin.device:write\202\323\344\223\002 \"\033/de"
+  "vice/v202308beta1/device:\001*\022\203\003\n\rCreateDe"
+  "vices\0220.kentik.device.v202308beta1.Creat"
+  "eDevicesRequest\0321.kentik.device.v202308b"
+  "eta1.CreateDevicesResponse\"\214\002\222A\306\001\022%Confi"
+  "gure multiple devices (max 100).\032\215\001Creat"
+  "e configuration for multiple devices. Re"
+  "turns the newly created configurations ("
+  "see [About Devices](https://kb.kentik.co"
+  "m/v4/Cb01.htm)).*\rCreateDevices\362\327\002\022admin"
+  ".device:write\202\323\344\223\002&\"!/device/v202308beta"
+  "1/device/batch:\001*\022\223\003\n\014UpdateDevice\022/.ken"
+  "tik.device.v202308beta1.UpdateDeviceRequ"
+  "est\0320.kentik.device.v202308beta1.UpdateD"
+  "eviceResponse\"\237\002\222A\323\001\022\"Updates configurat"
+  "ion of a device.\032\236\001Replaces configuratio"
+  "n of a device with attributes in the req"
+  "uest. Returns the updated configuration "
+  "(see [About Devices](https://kb.kentik.c"
+  "om/v4/Cb01.htm)).*\014UpdateDevice\362\327\002\022admin"
+  ".device:write\202\323\344\223\002,\032\'/device/v202308beta"
+  "1/device/{device.id}:\001*\022\254\003\n\rUpdateDevice"
+  "s\0220.kentik.device.v202308beta1.UpdateDev"
+  "icesRequest\0321.kentik.device.v202308beta1"
+  ".UpdateDevicesResponse\"\265\002\222A\357\001\0224Updates c"
+  "onfiguration of multiple devices (max 10"
+  "0).\032\247\001Replaces configuration of multiple"
+  " devices with attributes in the request."
+  " Returns the updated configurations (see"
+  " [About Devices](https://kb.kentik.com/v"
+  "4/Cb01.htm)).*\rUpdateDevices\362\327\002\022admin.de"
+  "vice:write\202\323\344\223\002&\032!/device/v202308beta1/d"
+  "evice/batch:\001*\022\302\003\n\022UpdateDeviceLabels\0225."
+  "kentik.device.v202308beta1.UpdateDeviceL"
+  "abelsRequest\0326.kentik.device.v202308beta"
+  "1.UpdateDeviceLabelsResponse\"\274\002\222A\360\001\022\033Upd"
+  "ates labels of a device.\032\274\001Removes all e"
+  "xisting labels from the device and appli"
+  "es the device labels (see [About Device "
+  "Labels](https://kb.kentik.com/v4/Cb16.ht"
+  "m)) specified by id. Returns the updated"
+  " configuration.*\022UpdateDeviceLabels\362\327\002\022a"
+  "dmin.device:write\202\323\344\223\002,\032\'/device/v202308"
+  "beta1/device/{id}/labels:\001*\022\325\002\n\014DeleteDe"
+  "vice\022/.kentik.device.v202308beta1.Delete"
+  "DeviceRequest\0320.kentik.device.v202308bet"
+  "a1.DeleteDeviceResponse\"\341\001\222A\237\001\022!Delete c"
+  "onfiguration of a device.\032lDeletes confi"
+  "guration of a device with specific ID (s"
+  "ee [About Devices](https://kb.kentik.com"
+  "/v4/Cb01.htm)).*\014DeleteDevice\362\327\002\022admin.d"
+  "evice:write\202\323\344\223\002\"* /device/v202308beta1/"
+  "device/{id}\022\356\002\n\rDeleteDevices\0220.kentik.d"
+  "evice.v202308beta1.DeleteDevicesRequest\032"
+  "1.kentik.device.v202308beta1.DeleteDevic"
+  "esResponse\"\367\001\222A\261\001\022)Delete configuration "
+  "of multiple devices.\032uDeletes configurat"
+  "ion of multiple devices with specific ID"
+  "s (see [About Devices](https://kb.kentik"
+  ".com/v4/Cb01.htm)).*\rDeleteDevices\362\327\002\022ad"
+  "min.device:write\202\323\344\223\002&\"!/device/v202308b"
+  "eta1/device/batch:\001*\032*\312A\023grpc.api.kentik"
+  ".com\352\327\002\014admin.device\220\330\002\003B\356\003ZLgithub.com/"
+  "kentik/api-schema-public/gen/go/kentik/d"
+  "evice/v202308beta1;device\222A\234\003\022\265\001\n\nDevice"
+  " API\022R# Overview\nThe Device API provides"
+  " programmatic access to configuration of"
+  " devices\"E\n\026Kentik API Engineering\022+http"
+  "s://github.com/kentik/api-schema-public2"
+  "\014v202308beta1*\001\0022\020application/json:\020appl"
+  "ication/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-E"
+  "mail \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Token"
+  " \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]\n%General in"
+  "formation about Kentik APIs\0224https://kb."
+  "kentik.com/v0/Ab09.htm#Ab09-APIs_Overvie"
+  "wb\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto_deps[6] = {
   &::descriptor_table_google_2fapi_2fannotations_2eproto,
@@ -1159,12 +1376,16 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor
   &::descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto,
   &::descriptor_table_protoc_2dgen_2dopenapiv2_2foptions_2fannotations_2eproto,
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto_sccs[22] = {
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto_sccs[28] = {
   &scc_info_CreateDeviceRequest_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
   &scc_info_CreateDeviceResponse_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
+  &scc_info_CreateDevicesRequest_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
+  &scc_info_CreateDevicesResponse_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
   &scc_info_CustomColumnData_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
   &scc_info_DeleteDeviceRequest_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
   &scc_info_DeleteDeviceResponse_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
+  &scc_info_DeleteDevicesRequest_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
+  &scc_info_DeleteDevicesResponse_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
   &scc_info_DeviceConcise_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
   &scc_info_DeviceDetailed_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
   &scc_info_DeviceSnmpV3Conf_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
@@ -1182,13 +1403,15 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
   &scc_info_UpdateDeviceLabelsResponse_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
   &scc_info_UpdateDeviceRequest_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
   &scc_info_UpdateDeviceResponse_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
+  &scc_info_UpdateDevicesRequest_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
+  &scc_info_UpdateDevicesResponse_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto = {
-  false, false, descriptor_table_protodef_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto, "kentik/device/v202308beta1/device.proto", 16223,
-  &descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto_once, descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto_sccs, descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto_deps, 22, 6,
+  false, false, descriptor_table_protodef_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto, "kentik/device/v202308beta1/device.proto", 18409,
+  &descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto_once, descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto_sccs, descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto_deps, 28, 6,
   schemas, file_default_instances, TableStruct_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto::offsets,
-  file_level_metadata_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto, 22, file_level_enum_descriptors_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto, file_level_service_descriptors_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto,
+  file_level_metadata_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto, 28, file_level_enum_descriptors_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto, file_level_service_descriptors_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
@@ -8525,6 +8748,449 @@ void CreateDeviceResponse::InternalSwap(CreateDeviceResponse* other) {
 
 // ===================================================================
 
+void CreateDevicesRequest::InitAsDefaultInstance() {
+}
+class CreateDevicesRequest::_Internal {
+ public:
+};
+
+CreateDevicesRequest::CreateDevicesRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
+  devices_(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.device.v202308beta1.CreateDevicesRequest)
+}
+CreateDevicesRequest::CreateDevicesRequest(const CreateDevicesRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      devices_(from.devices_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:kentik.device.v202308beta1.CreateDevicesRequest)
+}
+
+void CreateDevicesRequest::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_CreateDevicesRequest_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base);
+}
+
+CreateDevicesRequest::~CreateDevicesRequest() {
+  // @@protoc_insertion_point(destructor:kentik.device.v202308beta1.CreateDevicesRequest)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void CreateDevicesRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+}
+
+void CreateDevicesRequest::ArenaDtor(void* object) {
+  CreateDevicesRequest* _this = reinterpret_cast< CreateDevicesRequest* >(object);
+  (void)_this;
+}
+void CreateDevicesRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void CreateDevicesRequest::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const CreateDevicesRequest& CreateDevicesRequest::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_CreateDevicesRequest_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void CreateDevicesRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.device.v202308beta1.CreateDevicesRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  devices_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* CreateDevicesRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // repeated .kentik.device.v202308beta1.DeviceConcise devices = 1[json_name = "devices", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_devices(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* CreateDevicesRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:kentik.device.v202308beta1.CreateDevicesRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated .kentik.device.v202308beta1.DeviceConcise devices = 1[json_name = "devices", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->_internal_devices_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, this->_internal_devices(i), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:kentik.device.v202308beta1.CreateDevicesRequest)
+  return target;
+}
+
+size_t CreateDevicesRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:kentik.device.v202308beta1.CreateDevicesRequest)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .kentik.device.v202308beta1.DeviceConcise devices = 1[json_name = "devices", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  total_size += 1UL * this->_internal_devices_size();
+  for (const auto& msg : this->devices_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void CreateDevicesRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:kentik.device.v202308beta1.CreateDevicesRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  const CreateDevicesRequest* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<CreateDevicesRequest>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:kentik.device.v202308beta1.CreateDevicesRequest)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:kentik.device.v202308beta1.CreateDevicesRequest)
+    MergeFrom(*source);
+  }
+}
+
+void CreateDevicesRequest::MergeFrom(const CreateDevicesRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:kentik.device.v202308beta1.CreateDevicesRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  devices_.MergeFrom(from.devices_);
+}
+
+void CreateDevicesRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:kentik.device.v202308beta1.CreateDevicesRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void CreateDevicesRequest::CopyFrom(const CreateDevicesRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.device.v202308beta1.CreateDevicesRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CreateDevicesRequest::IsInitialized() const {
+  return true;
+}
+
+void CreateDevicesRequest::InternalSwap(CreateDevicesRequest* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  devices_.InternalSwap(&other->devices_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata CreateDevicesRequest::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void CreateDevicesResponse::InitAsDefaultInstance() {
+}
+class CreateDevicesResponse::_Internal {
+ public:
+};
+
+CreateDevicesResponse::CreateDevicesResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
+  devices_(arena),
+  failed_devices_(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.device.v202308beta1.CreateDevicesResponse)
+}
+CreateDevicesResponse::CreateDevicesResponse(const CreateDevicesResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      devices_(from.devices_),
+      failed_devices_(from.failed_devices_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:kentik.device.v202308beta1.CreateDevicesResponse)
+}
+
+void CreateDevicesResponse::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_CreateDevicesResponse_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base);
+}
+
+CreateDevicesResponse::~CreateDevicesResponse() {
+  // @@protoc_insertion_point(destructor:kentik.device.v202308beta1.CreateDevicesResponse)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void CreateDevicesResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+}
+
+void CreateDevicesResponse::ArenaDtor(void* object) {
+  CreateDevicesResponse* _this = reinterpret_cast< CreateDevicesResponse* >(object);
+  (void)_this;
+}
+void CreateDevicesResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void CreateDevicesResponse::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const CreateDevicesResponse& CreateDevicesResponse::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_CreateDevicesResponse_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void CreateDevicesResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.device.v202308beta1.CreateDevicesResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  devices_.Clear();
+  failed_devices_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* CreateDevicesResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // repeated .kentik.device.v202308beta1.DeviceDetailed devices = 1[json_name = "devices", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_devices(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else goto handle_unusual;
+        continue;
+      // repeated string failed_devices = 2[json_name = "failedDevices", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_failed_devices();
+            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.device.v202308beta1.CreateDevicesResponse.failed_devices"));
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* CreateDevicesResponse::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:kentik.device.v202308beta1.CreateDevicesResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated .kentik.device.v202308beta1.DeviceDetailed devices = 1[json_name = "devices", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->_internal_devices_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, this->_internal_devices(i), target, stream);
+  }
+
+  // repeated string failed_devices = 2[json_name = "failedDevices", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  for (int i = 0, n = this->_internal_failed_devices_size(); i < n; i++) {
+    const auto& s = this->_internal_failed_devices(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.device.v202308beta1.CreateDevicesResponse.failed_devices");
+    target = stream->WriteString(2, s, target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:kentik.device.v202308beta1.CreateDevicesResponse)
+  return target;
+}
+
+size_t CreateDevicesResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:kentik.device.v202308beta1.CreateDevicesResponse)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .kentik.device.v202308beta1.DeviceDetailed devices = 1[json_name = "devices", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  total_size += 1UL * this->_internal_devices_size();
+  for (const auto& msg : this->devices_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  // repeated string failed_devices = 2[json_name = "failedDevices", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(failed_devices_.size());
+  for (int i = 0, n = failed_devices_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      failed_devices_.Get(i));
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void CreateDevicesResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:kentik.device.v202308beta1.CreateDevicesResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  const CreateDevicesResponse* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<CreateDevicesResponse>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:kentik.device.v202308beta1.CreateDevicesResponse)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:kentik.device.v202308beta1.CreateDevicesResponse)
+    MergeFrom(*source);
+  }
+}
+
+void CreateDevicesResponse::MergeFrom(const CreateDevicesResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:kentik.device.v202308beta1.CreateDevicesResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  devices_.MergeFrom(from.devices_);
+  failed_devices_.MergeFrom(from.failed_devices_);
+}
+
+void CreateDevicesResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:kentik.device.v202308beta1.CreateDevicesResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void CreateDevicesResponse::CopyFrom(const CreateDevicesResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.device.v202308beta1.CreateDevicesResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CreateDevicesResponse::IsInitialized() const {
+  return true;
+}
+
+void CreateDevicesResponse::InternalSwap(CreateDevicesResponse* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  devices_.InternalSwap(&other->devices_);
+  failed_devices_.InternalSwap(&other->failed_devices_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata CreateDevicesResponse::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
 void UpdateDeviceRequest::InitAsDefaultInstance() {
   ::kentik::device::v202308beta1::_UpdateDeviceRequest_default_instance_._instance.get_mutable()->device_ = const_cast< ::kentik::device::v202308beta1::DeviceConcise*>(
       ::kentik::device::v202308beta1::DeviceConcise::internal_default_instance());
@@ -8949,6 +9615,449 @@ void UpdateDeviceResponse::InternalSwap(UpdateDeviceResponse* other) {
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata UpdateDeviceResponse::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void UpdateDevicesRequest::InitAsDefaultInstance() {
+}
+class UpdateDevicesRequest::_Internal {
+ public:
+};
+
+UpdateDevicesRequest::UpdateDevicesRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
+  devices_(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.device.v202308beta1.UpdateDevicesRequest)
+}
+UpdateDevicesRequest::UpdateDevicesRequest(const UpdateDevicesRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      devices_(from.devices_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:kentik.device.v202308beta1.UpdateDevicesRequest)
+}
+
+void UpdateDevicesRequest::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_UpdateDevicesRequest_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base);
+}
+
+UpdateDevicesRequest::~UpdateDevicesRequest() {
+  // @@protoc_insertion_point(destructor:kentik.device.v202308beta1.UpdateDevicesRequest)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void UpdateDevicesRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+}
+
+void UpdateDevicesRequest::ArenaDtor(void* object) {
+  UpdateDevicesRequest* _this = reinterpret_cast< UpdateDevicesRequest* >(object);
+  (void)_this;
+}
+void UpdateDevicesRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void UpdateDevicesRequest::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const UpdateDevicesRequest& UpdateDevicesRequest::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_UpdateDevicesRequest_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void UpdateDevicesRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.device.v202308beta1.UpdateDevicesRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  devices_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* UpdateDevicesRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // repeated .kentik.device.v202308beta1.DeviceConcise devices = 1[json_name = "devices", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_devices(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* UpdateDevicesRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:kentik.device.v202308beta1.UpdateDevicesRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated .kentik.device.v202308beta1.DeviceConcise devices = 1[json_name = "devices", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->_internal_devices_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, this->_internal_devices(i), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:kentik.device.v202308beta1.UpdateDevicesRequest)
+  return target;
+}
+
+size_t UpdateDevicesRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:kentik.device.v202308beta1.UpdateDevicesRequest)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .kentik.device.v202308beta1.DeviceConcise devices = 1[json_name = "devices", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  total_size += 1UL * this->_internal_devices_size();
+  for (const auto& msg : this->devices_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void UpdateDevicesRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:kentik.device.v202308beta1.UpdateDevicesRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  const UpdateDevicesRequest* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<UpdateDevicesRequest>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:kentik.device.v202308beta1.UpdateDevicesRequest)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:kentik.device.v202308beta1.UpdateDevicesRequest)
+    MergeFrom(*source);
+  }
+}
+
+void UpdateDevicesRequest::MergeFrom(const UpdateDevicesRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:kentik.device.v202308beta1.UpdateDevicesRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  devices_.MergeFrom(from.devices_);
+}
+
+void UpdateDevicesRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:kentik.device.v202308beta1.UpdateDevicesRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void UpdateDevicesRequest::CopyFrom(const UpdateDevicesRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.device.v202308beta1.UpdateDevicesRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool UpdateDevicesRequest::IsInitialized() const {
+  return true;
+}
+
+void UpdateDevicesRequest::InternalSwap(UpdateDevicesRequest* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  devices_.InternalSwap(&other->devices_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata UpdateDevicesRequest::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void UpdateDevicesResponse::InitAsDefaultInstance() {
+}
+class UpdateDevicesResponse::_Internal {
+ public:
+};
+
+UpdateDevicesResponse::UpdateDevicesResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
+  devices_(arena),
+  failed_devices_(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.device.v202308beta1.UpdateDevicesResponse)
+}
+UpdateDevicesResponse::UpdateDevicesResponse(const UpdateDevicesResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      devices_(from.devices_),
+      failed_devices_(from.failed_devices_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:kentik.device.v202308beta1.UpdateDevicesResponse)
+}
+
+void UpdateDevicesResponse::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_UpdateDevicesResponse_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base);
+}
+
+UpdateDevicesResponse::~UpdateDevicesResponse() {
+  // @@protoc_insertion_point(destructor:kentik.device.v202308beta1.UpdateDevicesResponse)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void UpdateDevicesResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+}
+
+void UpdateDevicesResponse::ArenaDtor(void* object) {
+  UpdateDevicesResponse* _this = reinterpret_cast< UpdateDevicesResponse* >(object);
+  (void)_this;
+}
+void UpdateDevicesResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void UpdateDevicesResponse::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const UpdateDevicesResponse& UpdateDevicesResponse::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_UpdateDevicesResponse_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void UpdateDevicesResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.device.v202308beta1.UpdateDevicesResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  devices_.Clear();
+  failed_devices_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* UpdateDevicesResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // repeated .kentik.device.v202308beta1.DeviceDetailed devices = 1[json_name = "devices", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_devices(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else goto handle_unusual;
+        continue;
+      // repeated string failed_devices = 2[json_name = "failedDevices", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_failed_devices();
+            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.device.v202308beta1.UpdateDevicesResponse.failed_devices"));
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* UpdateDevicesResponse::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:kentik.device.v202308beta1.UpdateDevicesResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated .kentik.device.v202308beta1.DeviceDetailed devices = 1[json_name = "devices", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->_internal_devices_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, this->_internal_devices(i), target, stream);
+  }
+
+  // repeated string failed_devices = 2[json_name = "failedDevices", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  for (int i = 0, n = this->_internal_failed_devices_size(); i < n; i++) {
+    const auto& s = this->_internal_failed_devices(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.device.v202308beta1.UpdateDevicesResponse.failed_devices");
+    target = stream->WriteString(2, s, target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:kentik.device.v202308beta1.UpdateDevicesResponse)
+  return target;
+}
+
+size_t UpdateDevicesResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:kentik.device.v202308beta1.UpdateDevicesResponse)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .kentik.device.v202308beta1.DeviceDetailed devices = 1[json_name = "devices", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  total_size += 1UL * this->_internal_devices_size();
+  for (const auto& msg : this->devices_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  // repeated string failed_devices = 2[json_name = "failedDevices", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(failed_devices_.size());
+  for (int i = 0, n = failed_devices_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      failed_devices_.Get(i));
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void UpdateDevicesResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:kentik.device.v202308beta1.UpdateDevicesResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  const UpdateDevicesResponse* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<UpdateDevicesResponse>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:kentik.device.v202308beta1.UpdateDevicesResponse)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:kentik.device.v202308beta1.UpdateDevicesResponse)
+    MergeFrom(*source);
+  }
+}
+
+void UpdateDevicesResponse::MergeFrom(const UpdateDevicesResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:kentik.device.v202308beta1.UpdateDevicesResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  devices_.MergeFrom(from.devices_);
+  failed_devices_.MergeFrom(from.failed_devices_);
+}
+
+void UpdateDevicesResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:kentik.device.v202308beta1.UpdateDevicesResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void UpdateDevicesResponse::CopyFrom(const UpdateDevicesResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.device.v202308beta1.UpdateDevicesResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool UpdateDevicesResponse::IsInitialized() const {
+  return true;
+}
+
+void UpdateDevicesResponse::InternalSwap(UpdateDevicesResponse* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  devices_.InternalSwap(&other->devices_);
+  failed_devices_.InternalSwap(&other->failed_devices_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata UpdateDevicesResponse::GetMetadata() const {
   return GetMetadataStatic();
 }
 
@@ -9783,6 +10892,422 @@ void DeleteDeviceResponse::InternalSwap(DeleteDeviceResponse* other) {
 }
 
 
+// ===================================================================
+
+void DeleteDevicesRequest::InitAsDefaultInstance() {
+}
+class DeleteDevicesRequest::_Internal {
+ public:
+};
+
+DeleteDevicesRequest::DeleteDevicesRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
+  ids_(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.device.v202308beta1.DeleteDevicesRequest)
+}
+DeleteDevicesRequest::DeleteDevicesRequest(const DeleteDevicesRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      ids_(from.ids_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:kentik.device.v202308beta1.DeleteDevicesRequest)
+}
+
+void DeleteDevicesRequest::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_DeleteDevicesRequest_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base);
+}
+
+DeleteDevicesRequest::~DeleteDevicesRequest() {
+  // @@protoc_insertion_point(destructor:kentik.device.v202308beta1.DeleteDevicesRequest)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void DeleteDevicesRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+}
+
+void DeleteDevicesRequest::ArenaDtor(void* object) {
+  DeleteDevicesRequest* _this = reinterpret_cast< DeleteDevicesRequest* >(object);
+  (void)_this;
+}
+void DeleteDevicesRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void DeleteDevicesRequest::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const DeleteDevicesRequest& DeleteDevicesRequest::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_DeleteDevicesRequest_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void DeleteDevicesRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.device.v202308beta1.DeleteDevicesRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ids_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* DeleteDevicesRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // repeated string ids = 1[json_name = "ids", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_ids();
+            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.device.v202308beta1.DeleteDevicesRequest.ids"));
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* DeleteDevicesRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:kentik.device.v202308beta1.DeleteDevicesRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated string ids = 1[json_name = "ids", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  for (int i = 0, n = this->_internal_ids_size(); i < n; i++) {
+    const auto& s = this->_internal_ids(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.device.v202308beta1.DeleteDevicesRequest.ids");
+    target = stream->WriteString(1, s, target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:kentik.device.v202308beta1.DeleteDevicesRequest)
+  return target;
+}
+
+size_t DeleteDevicesRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:kentik.device.v202308beta1.DeleteDevicesRequest)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated string ids = 1[json_name = "ids", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(ids_.size());
+  for (int i = 0, n = ids_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      ids_.Get(i));
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void DeleteDevicesRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:kentik.device.v202308beta1.DeleteDevicesRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  const DeleteDevicesRequest* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<DeleteDevicesRequest>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:kentik.device.v202308beta1.DeleteDevicesRequest)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:kentik.device.v202308beta1.DeleteDevicesRequest)
+    MergeFrom(*source);
+  }
+}
+
+void DeleteDevicesRequest::MergeFrom(const DeleteDevicesRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:kentik.device.v202308beta1.DeleteDevicesRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  ids_.MergeFrom(from.ids_);
+}
+
+void DeleteDevicesRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:kentik.device.v202308beta1.DeleteDevicesRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void DeleteDevicesRequest::CopyFrom(const DeleteDevicesRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.device.v202308beta1.DeleteDevicesRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool DeleteDevicesRequest::IsInitialized() const {
+  return true;
+}
+
+void DeleteDevicesRequest::InternalSwap(DeleteDevicesRequest* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  ids_.InternalSwap(&other->ids_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata DeleteDevicesRequest::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void DeleteDevicesResponse::InitAsDefaultInstance() {
+}
+class DeleteDevicesResponse::_Internal {
+ public:
+};
+
+DeleteDevicesResponse::DeleteDevicesResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
+  failed_devices_(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.device.v202308beta1.DeleteDevicesResponse)
+}
+DeleteDevicesResponse::DeleteDevicesResponse(const DeleteDevicesResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      failed_devices_(from.failed_devices_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:kentik.device.v202308beta1.DeleteDevicesResponse)
+}
+
+void DeleteDevicesResponse::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_DeleteDevicesResponse_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base);
+}
+
+DeleteDevicesResponse::~DeleteDevicesResponse() {
+  // @@protoc_insertion_point(destructor:kentik.device.v202308beta1.DeleteDevicesResponse)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void DeleteDevicesResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+}
+
+void DeleteDevicesResponse::ArenaDtor(void* object) {
+  DeleteDevicesResponse* _this = reinterpret_cast< DeleteDevicesResponse* >(object);
+  (void)_this;
+}
+void DeleteDevicesResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void DeleteDevicesResponse::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const DeleteDevicesResponse& DeleteDevicesResponse::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_DeleteDevicesResponse_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void DeleteDevicesResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.device.v202308beta1.DeleteDevicesResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  failed_devices_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* DeleteDevicesResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // repeated string failed_devices = 1[json_name = "failedDevices", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_failed_devices();
+            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.device.v202308beta1.DeleteDevicesResponse.failed_devices"));
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* DeleteDevicesResponse::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:kentik.device.v202308beta1.DeleteDevicesResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated string failed_devices = 1[json_name = "failedDevices", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  for (int i = 0, n = this->_internal_failed_devices_size(); i < n; i++) {
+    const auto& s = this->_internal_failed_devices(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.device.v202308beta1.DeleteDevicesResponse.failed_devices");
+    target = stream->WriteString(1, s, target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:kentik.device.v202308beta1.DeleteDevicesResponse)
+  return target;
+}
+
+size_t DeleteDevicesResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:kentik.device.v202308beta1.DeleteDevicesResponse)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated string failed_devices = 1[json_name = "failedDevices", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(failed_devices_.size());
+  for (int i = 0, n = failed_devices_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      failed_devices_.Get(i));
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void DeleteDevicesResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:kentik.device.v202308beta1.DeleteDevicesResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  const DeleteDevicesResponse* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<DeleteDevicesResponse>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:kentik.device.v202308beta1.DeleteDevicesResponse)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:kentik.device.v202308beta1.DeleteDevicesResponse)
+    MergeFrom(*source);
+  }
+}
+
+void DeleteDevicesResponse::MergeFrom(const DeleteDevicesResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:kentik.device.v202308beta1.DeleteDevicesResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  failed_devices_.MergeFrom(from.failed_devices_);
+}
+
+void DeleteDevicesResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:kentik.device.v202308beta1.DeleteDevicesResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void DeleteDevicesResponse::CopyFrom(const DeleteDevicesResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.device.v202308beta1.DeleteDevicesResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool DeleteDevicesResponse::IsInitialized() const {
+  return true;
+}
+
+void DeleteDevicesResponse::InternalSwap(DeleteDevicesResponse* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  failed_devices_.InternalSwap(&other->failed_devices_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata DeleteDevicesResponse::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v202308beta1
 }  // namespace device
@@ -9836,11 +11361,23 @@ template<> PROTOBUF_NOINLINE ::kentik::device::v202308beta1::CreateDeviceRequest
 template<> PROTOBUF_NOINLINE ::kentik::device::v202308beta1::CreateDeviceResponse* Arena::CreateMaybeMessage< ::kentik::device::v202308beta1::CreateDeviceResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::kentik::device::v202308beta1::CreateDeviceResponse >(arena);
 }
+template<> PROTOBUF_NOINLINE ::kentik::device::v202308beta1::CreateDevicesRequest* Arena::CreateMaybeMessage< ::kentik::device::v202308beta1::CreateDevicesRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::kentik::device::v202308beta1::CreateDevicesRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::kentik::device::v202308beta1::CreateDevicesResponse* Arena::CreateMaybeMessage< ::kentik::device::v202308beta1::CreateDevicesResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::kentik::device::v202308beta1::CreateDevicesResponse >(arena);
+}
 template<> PROTOBUF_NOINLINE ::kentik::device::v202308beta1::UpdateDeviceRequest* Arena::CreateMaybeMessage< ::kentik::device::v202308beta1::UpdateDeviceRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::kentik::device::v202308beta1::UpdateDeviceRequest >(arena);
 }
 template<> PROTOBUF_NOINLINE ::kentik::device::v202308beta1::UpdateDeviceResponse* Arena::CreateMaybeMessage< ::kentik::device::v202308beta1::UpdateDeviceResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::kentik::device::v202308beta1::UpdateDeviceResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::kentik::device::v202308beta1::UpdateDevicesRequest* Arena::CreateMaybeMessage< ::kentik::device::v202308beta1::UpdateDevicesRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::kentik::device::v202308beta1::UpdateDevicesRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::kentik::device::v202308beta1::UpdateDevicesResponse* Arena::CreateMaybeMessage< ::kentik::device::v202308beta1::UpdateDevicesResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::kentik::device::v202308beta1::UpdateDevicesResponse >(arena);
 }
 template<> PROTOBUF_NOINLINE ::kentik::device::v202308beta1::UpdateDeviceLabelsRequest* Arena::CreateMaybeMessage< ::kentik::device::v202308beta1::UpdateDeviceLabelsRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::kentik::device::v202308beta1::UpdateDeviceLabelsRequest >(arena);
@@ -9853,6 +11390,12 @@ template<> PROTOBUF_NOINLINE ::kentik::device::v202308beta1::DeleteDeviceRequest
 }
 template<> PROTOBUF_NOINLINE ::kentik::device::v202308beta1::DeleteDeviceResponse* Arena::CreateMaybeMessage< ::kentik::device::v202308beta1::DeleteDeviceResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::kentik::device::v202308beta1::DeleteDeviceResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::kentik::device::v202308beta1::DeleteDevicesRequest* Arena::CreateMaybeMessage< ::kentik::device::v202308beta1::DeleteDevicesRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::kentik::device::v202308beta1::DeleteDevicesRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::kentik::device::v202308beta1::DeleteDevicesResponse* Arena::CreateMaybeMessage< ::kentik::device::v202308beta1::DeleteDevicesResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::kentik::device::v202308beta1::DeleteDevicesResponse >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

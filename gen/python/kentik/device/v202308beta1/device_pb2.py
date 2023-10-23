@@ -25,7 +25,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'ZLgithub.com/kentik/api-schema-public/gen/go/kentik/device/v202308beta1;device\222A\234\003\022\265\001\n\nDevice API\022R# Overview\nThe Device API provides programmatic access to configuration of devices\"E\n\026Kentik API Engineering\022+https://github.com/kentik/api-schema-public2\014v202308beta1*\001\0022\020application/json:\020application/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]\n%General information about Kentik APIs\0224https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\'kentik/device/v202308beta1/device.proto\x12\x1akentik.device.v202308beta1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a%kentik/core/v202303/annotations.proto\"\x92\x07\n\x10\x44\x65viceSnmpV3Conf\x12\xa8\x01\n\x08username\x18\x01 \x01(\tB\x8b\x01\x92\x41\x87\x01\x32\x84\x01UserName (username) - the user name to use to authenticate via SNMP v3. ** UserName is required when device_snmp_v3_conf is not nullR\x08username\x12\x96\x01\n\x17\x61uthentication_protocol\x18\x02 \x01(\tB]\x92\x41Z2XAuthentication Protocol (authentication_protocol) - the auth protocol to use via SNMP v3R\x16\x61uthenticationProtocol\x12\xe8\x01\n\x19\x61uthentication_passphrase\x18\x03 \x01(\tB\xaa\x01\x92\x41\xa6\x01\x32\xa3\x01\x41uthentication Passphrase (authentication_passphrase) - the passphrase to use for SNMP v3 authentication protocol (required when AuthenticationProtocol not NoAuth)R\x18\x61uthenticationPassphrase\x12\x8d\x01\n\x10privacy_protocol\x18\x04 \x01(\tBb\x92\x41_2]Privacy Protocol (privacy_protocol) - the privacy protocol to use to authenticate via SNMP v3R\x0fprivacyProtocol\x12\xbe\x01\n\x12privacy_passphrase\x18\x05 \x01(\tB\x8e\x01\x92\x41\x8a\x01\x32\x87\x01Privacy Passphrase (privacy_passphrase) - the passphrase to use for SNMP v3 privacy protocol (required when PrivacyProtocol not NoPriv)R\x11privacyPassphrase\"\x98$\n\rDeviceConcise\x12\x37\n\x02id\x18\x01 \x01(\tB\'\x92\x41$2\"System generated unique identifierR\x02id\x12\xa0\x01\n\x0b\x64\x65vice_name\x18\x02 \x01(\tB\x7f\x92\x41|2zDevice name (device_name) - The name of the device. Valid characters: alphanumeric and underscores. Length: min=4, max=60.R\ndeviceName\x12\x61\n\x0e\x64\x65vice_subtype\x18\x03 \x01(\tB:\x92\x41\x37\x32\x35\x44\x65vice subtype (device_subtype) - The device subtype.R\rdeviceSubtype\x12\x8d\x02\n\x08\x63\x64n_attr\x18\x04 \x01(\tB\xf1\x01\x92\x41\xed\x01\x32\xea\x01\x43\x44N attributes (cdn_attr) - If this is a DNS server, you can contribute its queries to Kentik\'s CDN attribution database. Valid values: \"Y\" or \"N\". ** cdn_attr is required when the device subtype\'s parent type is \"host-nprobe-dns-www\"R\x07\x63\x64nAttr\x12\x96\x01\n\x12\x64\x65vice_description\x18\x05 \x01(\tBg\x92\x41\x64\x32\x62\x44\x65scription (device_description) - The device description. Valid characters: any. Length: max=128.R\x11\x64\x65viceDescription\x12\xe3\x01\n\x0bsending_ips\x18\x06 \x03(\tB\xc1\x01\x92\x41\xbd\x01\x32\xba\x01\x44\x65vice ip (sending_ips) - Array containing one or more IP address(es), from which the device is sending flow. ** sending_ips is required when the device subtype\'s parent type is \"router\"R\nsendingIps\x12\xea\x02\n\x12\x64\x65vice_sample_rate\x18\x07 \x01(\x01\x42\xbb\x02\x92\x41\xb7\x02\x32\xb4\x02Sample rate (device_sample_rate) - The rate at which the device is sampling flows. Valid values: integer bigger than 1. Recommended rate varies depending on flow volume; see https://kb.kentik.com/Ab02.htm#Ab02-Flow_Sampling. ** device_sample_rate is required when the device subtype\'s parent type is \"router\"R\x10\x64\x65viceSampleRate\x12\xae\x01\n\x07plan_id\x18\x08 \x01(\rB\x94\x01\x92\x41\x90\x01\x32\x8d\x01Plan (plan_id) - The ID of the plan to which this device is assigned. Available plan(s) can be found via the Plans API. Valid value: integer.R\x06planId\x12\xbb\x01\n\x07site_id\x18\t \x01(\rB\xa1\x01\x92\x41\x9d\x01\x32\x9a\x01Site (site_id) - The ID of the site (if any) to which this device is assigned. Site IDs are system generated when a site is created. Valid value: integer.R\x06siteId\x12\xb3\x03\n\rminimize_snmp\x18\n \x01(\x08\x42\x8d\x03\x92\x41\x89\x03\x32\x86\x03SNMP polling (minimize_snmp) - The interval at which SNMP will be polled. If \"false\" (Standard), interface counter will be polled every 10 minutes and interface description every 30 minutes. If \"true\" (Minimum) (Minimum), interface counter won\'t be polled and interface description will be polled every 6 hours. ** minimize_snmp is required when the device subtype\'s parent type is \"router\"R\x0cminimizeSnmp\x12\xc9\x01\n\x0e\x64\x65vice_snmp_ip\x18\x0b \x01(\tB\xa2\x01\x92\x41\x9e\x01\x32\x9b\x01\x44\x65vice SNMP IP (device_snmp_ip) - The SNMP IP to use when polling the device. device_snmp_ip is ignored unless the device subtype\'s parent type is \"router\"R\x0c\x64\x65viceSnmpIp\x12\xec\x01\n\x15\x64\x65vice_snmp_community\x18\x0c \x01(\tB\xb7\x01\x92\x41\xb3\x01\x32\xb0\x01SNMP community (device_snmp_community) - The SNMP community to use when polling the device. device_snmp_community is ignored unless the device subtype\'s parent type is \"router\"R\x13\x64\x65viceSnmpCommunity\x12\xfc\x01\n\x13\x64\x65vice_snmp_v3_conf\x18\r \x01(\x0b\x32,.kentik.device.v202308beta1.DeviceSnmpV3ConfB\x9e\x01\x92\x41\x9a\x01\x32\x97\x01SNMP v3 configuration (device_snmp_v3_conf) - SNMP v3 configuration. device_snmp_v3_conf is ignored unless the device subtype\'s parent type is \"router\"R\x10\x64\x65viceSnmpV3Conf\x12\xf2\x01\n\x0f\x64\x65vice_bgp_type\x18\x0e \x01(\tB\xc9\x01\x92\x41\xc5\x01\x32\xc2\x01\x42GP (device_bgp_type) - Device bgp type. Valid values: \"none\" (use generic IP/ASN mapping), \"device\" (peer with the device itself), \"other_device\" (share routing table of existing peered device)R\rdeviceBgpType\x12\x85\x02\n\x16\x64\x65vice_bgp_neighbor_ip\x18\x0f \x01(\tB\xcf\x01\x92\x41\xcb\x01\x32\xc8\x01Your IPv4 peering address (device_bgp_neighbor_ip) - A valid IPv4 address to use for peering with the device. ** An IPv4 and/or IPv6 peering address is required when device_bgp_type is set to \"device\"R\x13\x64\x65viceBgpNeighborIp\x12\x88\x02\n\x17\x64\x65vice_bgp_neighbor_ip6\x18\x10 \x01(\tB\xd0\x01\x92\x41\xcc\x01\x32\xc9\x01Your IPv6 peering address (device_bgp_neighbor_ip6) - A valid IPv6 address to use for peering with the device. ** An IPv4 and/or IPv6 peering address is required when device_bgp_type is set to \"device\"R\x14\x64\x65viceBgpNeighborIp6\x12\x82\x02\n\x17\x64\x65vice_bgp_neighbor_asn\x18\x11 \x01(\tB\xca\x01\x92\x41\xc6\x01\x32\xc3\x01Your ASN (device_bgp_neighbor_asn) - The valid AS number (ASN) of the autonomous system that this device belongs to. ** device_bgp_neighbor_asn is required when device_bgp_type is set to \"device\"R\x14\x64\x65viceBgpNeighborAsn\x12\xa0\x02\n\x13\x64\x65vice_bgp_password\x18\x12 \x01(\tB\xef\x01\x92\x41\xeb\x01\x32\xe8\x01\x42GP md5 password (device_bgp_password) - Optional BGP MD5 password (shared authentication password for BGP peering). Valid characters: alphanumeric. Length: 32. device_bgp_password is optional when device_bgp_type is set to \"device\"R\x11\x64\x65viceBgpPassword\x12\xa4\x02\n\x11use_bgp_device_id\x18\x13 \x01(\rB\xf8\x01\x92\x41\xf4\x01\x32\xf1\x01Select master BGP device (use_bgp_device_id) - The ID of the device whose BGP table should be shared with this device. ** use_bgp_device_id is required when device_bgp_type is set to \"other_device\"). Valid value: a system-generated device_idR\x0euseBgpDeviceId\x12\x95\x01\n\x13\x64\x65vice_bgp_flowspec\x18\x14 \x01(\x08\x42\x65\x92\x41\x62\x32`BGP Flowspec Compatibility (device_bgp_flowspec) - Toggle BGP Flowspec Compatibility for device.R\x11\x64\x65viceBgpFlowspec\"\xce\x01\n\x04Site\x12\x1c\n\x02id\x18\x01 \x01(\tB\x0c\x92\x41\t2\x07Site IDR\x02id\x12+\n\tsite_name\x18\x02 \x01(\tB\x0e\x92\x41\x0b\x32\tSite nameR\x08siteName\x12$\n\x03lat\x18\x03 \x01(\x01\x42\x12\x92\x41\x0f\x32\rSite latitudeR\x03lat\x12%\n\x03lon\x18\x04 \x01(\x01\x42\x13\x92\x41\x10\x32\x0eSite longitudeR\x03lon\x12.\n\ncompany_id\x18\x05 \x01(\tB\x0f\x92\x41\x0c\x32\nCompany IDR\tcompanyId\"H\n\x04Plan\x12\x1c\n\x02id\x18\x01 \x01(\tB\x0c\x92\x41\t2\x07Plan IDR\x02id\x12\"\n\x04name\x18\x02 \x01(\tB\x0e\x92\x41\x0b\x32\tPlan nameR\x04name\"\xc4\x04\n\x05Label\x12\x1d\n\x02id\x18\x01 \x01(\tB\r\x92\x41\n2\x08Label IDR\x02id\x12#\n\x04name\x18\x02 \x01(\tB\x0f\x92\x41\x0c\x32\nLabel nameR\x04name\x12\x38\n\x0b\x64\x65scription\x18\x03 \x01(\tB\x16\x92\x41\x13\x32\x11Label descriptionR\x0b\x64\x65scription\x12K\n\x05\x65\x64\x61te\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x19\x92\x41\x16\x32\x14Label end date (UTC)R\x05\x65\x64\x61te\x12P\n\x05\x63\x64\x61te\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x1e\x92\x41\x1b\x32\x19Label creation date (UTC)R\x05\x63\x64\x61te\x12%\n\x07user_id\x18\x06 \x01(\tB\x0c\x92\x41\t2\x07User IDR\x06userId\x12.\n\ncompany_id\x18\x07 \x01(\tB\x0f\x92\x41\x0c\x32\nCompany IDR\tcompanyId\x12&\n\x05\x63olor\x18\x08 \x01(\tB\x10\x92\x41\r2\x0bLabel colorR\x05\x63olor\x12&\n\x05order\x18\t \x01(\tB\x10\x92\x41\r2\x0bLabel orderR\x05order\x12<\n\x0fpivot_device_id\x18\n \x01(\tB\x14\x92\x41\x11\x32\x0fPivot device IDR\rpivotDeviceId\x12\x39\n\x0epivot_label_id\x18\x0b \x01(\tB\x13\x92\x41\x10\x32\x0ePivot label IDR\x0cpivotLabelId\"\x89\x04\n\tInterface\x12O\n\x15interface_description\x18\x01 \x01(\tB\x1a\x92\x41\x17\x32\x15Interface descriptionR\x14interfaceDescription\x12\x45\n\x12initial_snmp_speed\x18\x02 \x01(\tB\x17\x92\x41\x14\x32\x12Initial SNMP speedR\x10initialSnmpSpeed\x12+\n\tdevice_id\x18\x03 \x01(\tB\x0e\x92\x41\x0b\x32\tDevice IDR\x08\x64\x65viceId\x12.\n\nsnmp_speed\x18\x04 \x01(\tB\x0f\x92\x41\x0c\x32\nSNMP speedR\tsnmpSpeed\x12.\n\nsnmp_alias\x18\x05 \x01(\tB\x0f\x92\x41\x0c\x32\nSNMP aliasR\tsnmpAlias\x12%\n\x07snmp_id\x18\x06 \x01(\tB\x0c\x92\x41\t2\x07SNMP IDR\x06snmpId\x12\x43\n\x11\x63onnectivity_type\x18\x07 \x01(\tB\x16\x92\x41\x13\x32\x11\x43onnectivity typeR\x10\x63onnectivityType\x12@\n\x10network_boundary\x18\x08 \x01(\tB\x15\x92\x41\x12\x32\x10Network boundaryR\x0fnetworkBoundary\x12)\n\x08provider\x18\t \x01(\tB\r\x92\x41\n2\x08ProviderR\x08provider\"\xaa\x02\n\x10\x43ustomColumnData\x12+\n\tdevice_id\x18\x01 \x01(\tB\x0e\x92\x41\x0b\x32\tDevice IDR\x08\x64\x65viceId\x12(\n\x08\x66ield_id\x18\x02 \x01(\tB\r\x92\x41\n2\x08\x46ield IDR\x07\x66ieldId\x12+\n\x08\x63ol_name\x18\x03 \x01(\tB\x10\x92\x41\r2\x0b\x43olumn nameR\x07\x63olName\x12\x32\n\x0b\x64\x65scription\x18\x04 \x01(\tB\x10\x92\x41\r2\x0b\x44\x65scriptionR\x0b\x64\x65scription\x12+\n\x08\x63ol_type\x18\x05 \x01(\tB\x10\x92\x41\r2\x0b\x43olumn typeR\x07\x63olType\x12\x31\n\x0b\x64\x65vice_type\x18\x06 \x01(\tB\x10\x92\x41\r2\x0b\x44\x65vice typeR\ndeviceType\"H\n\nGnmiV1Conf\x12:\n\x0e\x64ialout_server\x18\x01 \x01(\tB\x13\x92\x41\x10\x32\x0e\x44ialout serverR\rdialoutServer\"\xeb!\n\x0e\x44\x65viceDetailed\x12;\n\x02id\x18\x01 \x01(\tB+\x92\x41$2\"System generated unique identifier\xe2\x41\x01\x03R\x02id\x12.\n\ncompany_id\x18\x02 \x01(\tB\x0f\x92\x41\x0c\x32\nCompany IDR\tcompanyId\x12\x31\n\x0b\x64\x65vice_name\x18\x03 \x01(\tB\x10\x92\x41\r2\x0b\x44\x65vice nameR\ndeviceName\x12\x34\n\x0c\x64\x65vice_alias\x18\x04 \x01(\tB\x11\x92\x41\x0e\x32\x0c\x44\x65vice aliasR\x0b\x64\x65viceAlias\x12\x31\n\x0b\x64\x65vice_type\x18\x05 \x01(\tB\x10\x92\x41\r2\x0b\x44\x65vice typeR\ndeviceType\x12\x46\n\x12\x64\x65vice_description\x18\x06 \x01(\tB\x17\x92\x41\x14\x32\x12\x44\x65vice descriptionR\x11\x64\x65viceDescription\x12?\n\x04site\x18\x07 \x01(\x0b\x32 .kentik.device.v202308beta1.SiteB\t\x92\x41\x06\x32\x04SiteR\x04site\x12?\n\x04plan\x18\x08 \x01(\x0b\x32 .kentik.device.v202308beta1.PlanB\t\x92\x41\x06\x32\x04PlanR\x04plan\x12N\n\x06labels\x18\t \x03(\x0b\x32!.kentik.device.v202308beta1.LabelB\x13\x92\x41\x10\x32\x0eList of labelsR\x06labels\x12\x65\n\x0e\x61ll_interfaces\x18\n \x03(\x0b\x32%.kentik.device.v202308beta1.InterfaceB\x17\x92\x41\x14\x32\x12List of interfacesR\rallInterfaces\x12?\n\x10\x64\x65vice_flow_type\x18\x0b \x01(\tB\x15\x92\x41\x12\x32\x10\x44\x65vice flow typeR\x0e\x64\x65viceFlowType\x12\x45\n\x12\x64\x65vice_sample_rate\x18\x0c \x01(\tB\x17\x92\x41\x14\x32\x12\x44\x65vice sample rateR\x10\x64\x65viceSampleRate\x12\x39\n\x0bsending_ips\x18\r \x03(\tB\x18\x92\x41\x15\x32\x13List of sending IPsR\nsendingIps\x12\x39\n\x0e\x64\x65vice_snmp_ip\x18\x0e \x01(\tB\x13\x92\x41\x10\x32\x0e\x44\x65vice SNMP IPR\x0c\x64\x65viceSnmpIp\x12N\n\x15\x64\x65vice_snmp_community\x18\x0f \x01(\tB\x1a\x92\x41\x17\x32\x15\x44\x65vice SNMP communityR\x13\x64\x65viceSnmpCommunity\x12\x37\n\rminimize_snmp\x18\x10 \x01(\x08\x42\x12\x92\x41\x0f\x32\rMinimize SNMPR\x0cminimizeSnmp\x12<\n\x0f\x64\x65vice_bgp_type\x18\x11 \x01(\tB\x14\x92\x41\x11\x32\x0f\x44\x65vice BGP typeR\rdeviceBgpType\x12P\n\x16\x64\x65vice_bgp_neighbor_ip\x18\x12 \x01(\tB\x1b\x92\x41\x18\x32\x16\x44\x65vice BGP neighbor IPR\x13\x64\x65viceBgpNeighborIp\x12S\n\x17\x64\x65vice_bgp_neighbor_ip6\x18\x13 \x01(\tB\x1c\x92\x41\x19\x32\x17\x44\x65vice BGP neighbor IP6R\x14\x64\x65viceBgpNeighborIp6\x12S\n\x17\x64\x65vice_bgp_neighbor_asn\x18\x14 \x01(\tB\x1c\x92\x41\x19\x32\x17\x44\x65vice BGP neighbor ASNR\x14\x64\x65viceBgpNeighborAsn\x12H\n\x13\x64\x65vice_bgp_flowspec\x18\x15 \x01(\x08\x42\x18\x92\x41\x15\x32\x13\x44\x65vice BGP flowspecR\x11\x64\x65viceBgpFlowspec\x12H\n\x13\x64\x65vice_bgp_password\x18\x16 \x01(\tB\x18\x92\x41\x15\x32\x13\x44\x65vice BGP passwordR\x11\x64\x65viceBgpPassword\x12V\n\x18\x64\x65vice_bgp_label_unicast\x18\x17 \x01(\x08\x42\x1d\x92\x41\x1a\x32\x18\x44\x65vice BGP label unicastR\x15\x64\x65viceBgpLabelUnicast\x12H\n\x13\x62gp_lookup_strategy\x18\x18 \x01(\tB\x18\x92\x41\x15\x32\x13\x42GP lookup strategyR\x11\x62gpLookupStrategy\x12\x37\n\rdevice_status\x18\x19 \x01(\tB\x12\x92\x41\x0f\x32\rDevice statusR\x0c\x64\x65viceStatus\x12\x41\n\x11use_bgp_device_id\x18\x1a \x01(\tB\x16\x92\x41\x13\x32\x11Use BGP device IDR\x0euseBgpDeviceId\x12:\n\x0e\x63ustom_columns\x18\x1b \x01(\tB\x13\x92\x41\x10\x32\x0e\x43ustom columnsR\rcustomColumns\x12s\n\x12\x63ustom_column_data\x18\x1c \x03(\x0b\x32,.kentik.device.v202308beta1.CustomColumnDataB\x17\x92\x41\x14\x32\x12\x43ustom column dataR\x10\x63ustomColumnData\x12P\n\x16\x64\x65vice_chf_client_port\x18\x1d \x01(\tB\x1b\x92\x41\x18\x32\x16\x44\x65vice CHF client portR\x13\x64\x65viceChfClientPort\x12\\\n\x1a\x64\x65vice_chf_client_protocol\x18\x1e \x01(\tB\x1f\x92\x41\x1c\x32\x1a\x44\x65vice CHF client protocolR\x17\x64\x65viceChfClientProtocol\x12K\n\x14\x64\x65vice_chf_interface\x18\x1f \x01(\tB\x19\x92\x41\x16\x32\x14\x44\x65vice CHF interfaceR\x12\x64\x65viceChfInterface\x12\x42\n\x11\x64\x65vice_agent_type\x18  \x01(\tB\x16\x92\x41\x13\x32\x11\x44\x65vice agent typeR\x0f\x64\x65viceAgentType\x12\x36\n\rmax_flow_rate\x18! \x01(\rB\x12\x92\x41\x0f\x32\rMax flow rateR\x0bmaxFlowRate\x12\x41\n\x11max_big_flow_rate\x18\" \x01(\rB\x16\x92\x41\x13\x32\x11Max big flow rateR\x0emaxBigFlowRate\x12?\n\x10\x64\x65vice_proxy_bgp\x18# \x01(\tB\x15\x92\x41\x12\x32\x10\x44\x65vice proxy BGPR\x0e\x64\x65viceProxyBgp\x12\x42\n\x11\x64\x65vice_proxy_bgp6\x18$ \x01(\tB\x16\x92\x41\x13\x32\x11\x44\x65vice proxy BGP6R\x0f\x64\x65viceProxyBgp6\x12\\\n\x0c\x63reated_date\x18% \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x1d\x92\x41\x1a\x32\x18\x43reation timestamp (UTC)R\x0b\x63reatedDate\x12\x65\n\x0cupdated_date\x18& \x01(\x0b\x32\x1a.google.protobuf.TimestampB&\x92\x41#2!Last modification timestamp (UTC)R\x0bupdatedDate\x12g\n\x1b\x64\x65vice_snmp_v3_conf_enabled\x18\' \x01(\x08\x42)\x92\x41&2$Device SNMP v3 configuration enabledR\x17\x64\x65viceSnmpV3ConfEnabled\x12~\n\x13\x64\x65vice_snmp_v3_conf\x18( \x01(\x0b\x32,.kentik.device.v202308beta1.DeviceSnmpV3ConfB!\x92\x41\x1e\x32\x1c\x44\x65vice SNMP v3 configurationR\x10\x64\x65viceSnmpV3Conf\x12.\n\x08\x63\x64n_attr\x18) \x01(\tB\x13\x92\x41\x10\x32\x0e\x43\x44N attributesR\x07\x63\x64nAttr\x12\x33\n\x0c\x62gp_peer_ip4\x18* \x01(\tB\x11\x92\x41\x0e\x32\x0c\x42GP peer IP4R\nbgpPeerIp4\x12\x33\n\x0c\x62gp_peer_ip6\x18+ \x01(\tB\x11\x92\x41\x0e\x32\x0c\x42GP peer IP6R\nbgpPeerIp6\x12:\n\x0e\x64\x65vice_subtype\x18, \x01(\tB\x13\x92\x41\x10\x32\x0e\x44\x65vice subtypeR\rdeviceSubtype\x12\x45\n\x12\x64\x65vice_vendor_type\x18- \x01(\tB\x17\x92\x41\x14\x32\x12\x44\x65vice vendor typeR\x10\x64\x65viceVendorType\x12\x42\n\x11\x64\x65vice_model_type\x18. \x01(\tB\x16\x92\x41\x13\x32\x11\x44\x65vice model typeR\x0f\x64\x65viceModelType\x12<\n\x0f\x63loud_export_id\x18/ \x01(\tB\x14\x92\x41\x11\x32\x0f\x43loud export IDR\rcloudExportId\x12\x37\n\rdevice_kproxy\x18\x30 \x01(\tB\x12\x92\x41\x0f\x32\rDevice KProxyR\x0c\x64\x65viceKproxy\x12\x34\n\x0csnmp_enabled\x18\x31 \x01(\tB\x11\x92\x41\x0e\x32\x0cSNMP enabledR\x0bsnmpEnabled\x12K\n\x14snmp_disabled_reason\x18\x32 \x01(\tB\x19\x92\x41\x16\x32\x14SNMP disabled reasonR\x12snmpDisabledReason\x12\\\n\x1asnmp_disabled_reason_other\x18\x33 \x01(\tB\x1f\x92\x41\x1c\x32\x1aSNMP disabled reason otherR\x17snmpDisabledReasonOther\x12H\n\x13\x62gp_disabled_reason\x18\x34 \x01(\tB\x18\x92\x41\x15\x32\x13\x42GP disabled reasonR\x11\x62gpDisabledReason\x12Y\n\x19\x62gp_disabled_reason_other\x18\x35 \x01(\tB\x1e\x92\x41\x1b\x32\x19\x42GP disabled reason otherR\x16\x62gpDisabledReasonOther\x12I\n\x13\x64\x65vice_manufacturer\x18\x36 \x01(\tB\x18\x92\x41\x15\x32\x13\x44\x65vice manufacturerR\x12\x64\x65viceManufacturer\x12\x34\n\x0c\x64\x65vice_alert\x18\x37 \x01(\tB\x11\x92\x41\x0e\x32\x0c\x44\x65vice alertR\x0b\x64\x65viceAlert\x12\x1d\n\x04role\x18\x38 \x01(\tB\t\x92\x41\x06\x32\x04RoleR\x04role\x12x\n\x13\x64\x65vice_gnmi_v1_conf\x18\x39 \x01(\x0b\x32&.kentik.device.v202308beta1.GnmiV1ConfB!\x92\x41\x1e\x32\x1c\x44\x65vice GNMI v1 configurationR\x10\x64\x65viceGnmiV1Conf\x12\x41\n\x11use_asn_from_flow\x18: \x01(\x08\x42\x16\x92\x41\x13\x32\x11Use ASN from flowR\x0euseAsnFromFlow\x12\x37\n\rmax_interface\x18; \x01(\rB\x12\x92\x41\x0f\x32\rMax interfaceR\x0cmaxInterface\x12H\n\x13max_interface_check\x18< \x01(\rB\x18\x92\x41\x15\x32\x13Max interface checkR\x11maxInterfaceCheck\"-\n\x0cLabelConcise\x12\x1d\n\x02id\x18\x01 \x01(\rB\r\x92\x41\n2\x08Label IDR\x02id\"\x14\n\x12ListDevicesRequest\"\xea\x01\n\x13ListDevicesResponse\x12l\n\x07\x64\x65vices\x18\x01 \x03(\x0b\x32*.kentik.device.v202308beta1.DeviceDetailedB&\x92\x41#2!List of configurations of devicesR\x07\x64\x65vices\x12\x65\n\rinvalid_count\x18\x02 \x01(\rB@\x92\x41=2;Number of invalid entries encountered while collecting dataR\x0cinvalidCount\"G\n\x10GetDeviceRequest\x12\x33\n\x02id\x18\x01 \x01(\tB#\x92\x41\x1c\x32\x1aID of the requested device\xe2\x41\x01\x02R\x02id\"\x83\x01\n\x11GetDeviceResponse\x12n\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32*.kentik.device.v202308beta1.DeviceDetailedB*\x92\x41\'2%Configuration of the requested deviceR\x06\x64\x65vice\"\x82\x01\n\x13\x43reateDeviceRequest\x12k\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32).kentik.device.v202308beta1.DeviceConciseB(\x92\x41!2\x1f\x43onfiguration of the new device\xe2\x41\x01\x02R\x06\x64\x65vice\"\x8a\x01\n\x14\x43reateDeviceResponse\x12r\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32*.kentik.device.v202308beta1.DeviceDetailedB.\x92\x41+2)Configuration of the newly created deviceR\x06\x64\x65vice\"\x9d\x01\n\x13UpdateDeviceRequest\x12\x85\x01\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32).kentik.device.v202308beta1.DeviceConciseBB\x92\x41;29New configuration attributes for the device to be updated\xe2\x41\x01\x02R\x06\x64\x65vice\"\x84\x01\n\x14UpdateDeviceResponse\x12l\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32*.kentik.device.v202308beta1.DeviceDetailedB(\x92\x41%2#Updated configuration of the deviceR\x06\x64\x65vice\"\xc9\x01\n\x19UpdateDeviceLabelsRequest\x12\x37\n\x02id\x18\x01 \x01(\tB\'\x92\x41 2\x1eID of the device to be updated\xe2\x41\x01\x02R\x02id\x12s\n\x06labels\x18\x02 \x03(\x0b\x32(.kentik.device.v202308beta1.LabelConciseB1\x92\x41*2(List of labels to be added to the device\xe2\x41\x01\x02R\x06labels\"\x8a\x01\n\x1aUpdateDeviceLabelsResponse\x12l\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32*.kentik.device.v202308beta1.DeviceDetailedB(\x92\x41%2#Updated configuration of the deviceR\x06\x64\x65vice\"N\n\x13\x44\x65leteDeviceRequest\x12\x37\n\x02id\x18\x01 \x01(\tB\'\x92\x41 2\x1eID of the device to be deleted\xe2\x41\x01\x02R\x02id\"\x16\n\x14\x44\x65leteDeviceResponse2\xd0\x11\n\rDeviceService\x12\xaa\x02\n\x0bListDevices\x12..kentik.device.v202308beta1.ListDevicesRequest\x1a/.kentik.device.v202308beta1.ListDevicesResponse\"\xb9\x01\x92\x41~\x12\x11List all devices.\x1a\\Returns list of configured devices (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).*\x0bListDevices\xf2\xd7\x02\x11\x61\x64min.device:read\x82\xd3\xe4\x93\x02\x1d\x12\x1b/device/v202308beta1/device\x12\xc9\x02\n\tGetDevice\x12,.kentik.device.v202308beta1.GetDeviceRequest\x1a-.kentik.device.v202308beta1.GetDeviceResponse\"\xde\x01\x92\x41\x9d\x01\x12#Retrieve configuration of a device.\x1akReturns configuration of a device specified by ID (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).*\tGetDevice\xf2\xd7\x02\x11\x61\x64min.device:read\x82\xd3\xe4\x93\x02\"\x12 /device/v202308beta1/device/{id}\x12\xe6\x02\n\x0c\x43reateDevice\x12/.kentik.device.v202308beta1.CreateDeviceRequest\x1a\x30.kentik.device.v202308beta1.CreateDeviceResponse\"\xf2\x01\x92\x41\xb2\x01\x12\x17\x43onfigure a new device.\x1a\x88\x01\x43reate configuration for a new device. Returns the newly created configuration (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).*\x0c\x43reateDevice\xf2\xd7\x02\x12\x61\x64min.device:write\x82\xd3\xe4\x93\x02 \"\x1b/device/v202308beta1/device:\x01*\x12\x93\x03\n\x0cUpdateDevice\x12/.kentik.device.v202308beta1.UpdateDeviceRequest\x1a\x30.kentik.device.v202308beta1.UpdateDeviceResponse\"\x9f\x02\x92\x41\xd3\x01\x12\"Updates configuration of a device.\x1a\x9e\x01Replaces configuration of a device with attributes in the request. Returns the updated configuration (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).*\x0cUpdateDevice\xf2\xd7\x02\x12\x61\x64min.device:write\x82\xd3\xe4\x93\x02,\x1a\'/device/v202308beta1/device/{device.id}:\x01*\x12\xc2\x03\n\x12UpdateDeviceLabels\x12\x35.kentik.device.v202308beta1.UpdateDeviceLabelsRequest\x1a\x36.kentik.device.v202308beta1.UpdateDeviceLabelsResponse\"\xbc\x02\x92\x41\xf0\x01\x12\x1bUpdates labels of a device.\x1a\xbc\x01Removes all existing labels from the device and applies the device labels (see [About Device Labels](https://kb.kentik.com/v4/Cb16.htm)) specified by id. Returns the updated configuration.*\x12UpdateDeviceLabels\xf2\xd7\x02\x12\x61\x64min.device:write\x82\xd3\xe4\x93\x02,\x1a\'/device/v202308beta1/device/{id}/labels:\x01*\x12\xd5\x02\n\x0c\x44\x65leteDevice\x12/.kentik.device.v202308beta1.DeleteDeviceRequest\x1a\x30.kentik.device.v202308beta1.DeleteDeviceResponse\"\xe1\x01\x92\x41\x9f\x01\x12!Delete configuration of a device.\x1alDeletes configuration of a device with specific ID (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).*\x0c\x44\x65leteDevice\xf2\xd7\x02\x12\x61\x64min.device:write\x82\xd3\xe4\x93\x02\"* /device/v202308beta1/device/{id}\x1a*\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\x0c\x61\x64min.device\x90\xd8\x02\x03\x42\xee\x03ZLgithub.com/kentik/api-schema-public/gen/go/kentik/device/v202308beta1;device\x92\x41\x9c\x03\x12\xb5\x01\n\nDevice API\x12R# Overview\nThe Device API provides programmatic access to configuration of devices\"E\n\x16Kentik API Engineering\x12+https://github.com/kentik/api-schema-public2\x0cv202308beta1*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r]\n%General information about Kentik APIs\x12\x34https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overviewb\x06proto3'
+  serialized_pb=b'\n\'kentik/device/v202308beta1/device.proto\x12\x1akentik.device.v202308beta1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a%kentik/core/v202303/annotations.proto\"\x92\x07\n\x10\x44\x65viceSnmpV3Conf\x12\xa8\x01\n\x08username\x18\x01 \x01(\tB\x8b\x01\x92\x41\x87\x01\x32\x84\x01UserName (username) - the user name to use to authenticate via SNMP v3. ** UserName is required when device_snmp_v3_conf is not nullR\x08username\x12\x96\x01\n\x17\x61uthentication_protocol\x18\x02 \x01(\tB]\x92\x41Z2XAuthentication Protocol (authentication_protocol) - the auth protocol to use via SNMP v3R\x16\x61uthenticationProtocol\x12\xe8\x01\n\x19\x61uthentication_passphrase\x18\x03 \x01(\tB\xaa\x01\x92\x41\xa6\x01\x32\xa3\x01\x41uthentication Passphrase (authentication_passphrase) - the passphrase to use for SNMP v3 authentication protocol (required when AuthenticationProtocol not NoAuth)R\x18\x61uthenticationPassphrase\x12\x8d\x01\n\x10privacy_protocol\x18\x04 \x01(\tBb\x92\x41_2]Privacy Protocol (privacy_protocol) - the privacy protocol to use to authenticate via SNMP v3R\x0fprivacyProtocol\x12\xbe\x01\n\x12privacy_passphrase\x18\x05 \x01(\tB\x8e\x01\x92\x41\x8a\x01\x32\x87\x01Privacy Passphrase (privacy_passphrase) - the passphrase to use for SNMP v3 privacy protocol (required when PrivacyProtocol not NoPriv)R\x11privacyPassphrase\"\x98$\n\rDeviceConcise\x12\x37\n\x02id\x18\x01 \x01(\tB\'\x92\x41$2\"System generated unique identifierR\x02id\x12\xa0\x01\n\x0b\x64\x65vice_name\x18\x02 \x01(\tB\x7f\x92\x41|2zDevice name (device_name) - The name of the device. Valid characters: alphanumeric and underscores. Length: min=4, max=60.R\ndeviceName\x12\x61\n\x0e\x64\x65vice_subtype\x18\x03 \x01(\tB:\x92\x41\x37\x32\x35\x44\x65vice subtype (device_subtype) - The device subtype.R\rdeviceSubtype\x12\x8d\x02\n\x08\x63\x64n_attr\x18\x04 \x01(\tB\xf1\x01\x92\x41\xed\x01\x32\xea\x01\x43\x44N attributes (cdn_attr) - If this is a DNS server, you can contribute its queries to Kentik\'s CDN attribution database. Valid values: \"Y\" or \"N\". ** cdn_attr is required when the device subtype\'s parent type is \"host-nprobe-dns-www\"R\x07\x63\x64nAttr\x12\x96\x01\n\x12\x64\x65vice_description\x18\x05 \x01(\tBg\x92\x41\x64\x32\x62\x44\x65scription (device_description) - The device description. Valid characters: any. Length: max=128.R\x11\x64\x65viceDescription\x12\xe3\x01\n\x0bsending_ips\x18\x06 \x03(\tB\xc1\x01\x92\x41\xbd\x01\x32\xba\x01\x44\x65vice ip (sending_ips) - Array containing one or more IP address(es), from which the device is sending flow. ** sending_ips is required when the device subtype\'s parent type is \"router\"R\nsendingIps\x12\xea\x02\n\x12\x64\x65vice_sample_rate\x18\x07 \x01(\x01\x42\xbb\x02\x92\x41\xb7\x02\x32\xb4\x02Sample rate (device_sample_rate) - The rate at which the device is sampling flows. Valid values: integer bigger than 1. Recommended rate varies depending on flow volume; see https://kb.kentik.com/Ab02.htm#Ab02-Flow_Sampling. ** device_sample_rate is required when the device subtype\'s parent type is \"router\"R\x10\x64\x65viceSampleRate\x12\xae\x01\n\x07plan_id\x18\x08 \x01(\rB\x94\x01\x92\x41\x90\x01\x32\x8d\x01Plan (plan_id) - The ID of the plan to which this device is assigned. Available plan(s) can be found via the Plans API. Valid value: integer.R\x06planId\x12\xbb\x01\n\x07site_id\x18\t \x01(\rB\xa1\x01\x92\x41\x9d\x01\x32\x9a\x01Site (site_id) - The ID of the site (if any) to which this device is assigned. Site IDs are system generated when a site is created. Valid value: integer.R\x06siteId\x12\xb3\x03\n\rminimize_snmp\x18\n \x01(\x08\x42\x8d\x03\x92\x41\x89\x03\x32\x86\x03SNMP polling (minimize_snmp) - The interval at which SNMP will be polled. If \"false\" (Standard), interface counter will be polled every 10 minutes and interface description every 30 minutes. If \"true\" (Minimum) (Minimum), interface counter won\'t be polled and interface description will be polled every 6 hours. ** minimize_snmp is required when the device subtype\'s parent type is \"router\"R\x0cminimizeSnmp\x12\xc9\x01\n\x0e\x64\x65vice_snmp_ip\x18\x0b \x01(\tB\xa2\x01\x92\x41\x9e\x01\x32\x9b\x01\x44\x65vice SNMP IP (device_snmp_ip) - The SNMP IP to use when polling the device. device_snmp_ip is ignored unless the device subtype\'s parent type is \"router\"R\x0c\x64\x65viceSnmpIp\x12\xec\x01\n\x15\x64\x65vice_snmp_community\x18\x0c \x01(\tB\xb7\x01\x92\x41\xb3\x01\x32\xb0\x01SNMP community (device_snmp_community) - The SNMP community to use when polling the device. device_snmp_community is ignored unless the device subtype\'s parent type is \"router\"R\x13\x64\x65viceSnmpCommunity\x12\xfc\x01\n\x13\x64\x65vice_snmp_v3_conf\x18\r \x01(\x0b\x32,.kentik.device.v202308beta1.DeviceSnmpV3ConfB\x9e\x01\x92\x41\x9a\x01\x32\x97\x01SNMP v3 configuration (device_snmp_v3_conf) - SNMP v3 configuration. device_snmp_v3_conf is ignored unless the device subtype\'s parent type is \"router\"R\x10\x64\x65viceSnmpV3Conf\x12\xf2\x01\n\x0f\x64\x65vice_bgp_type\x18\x0e \x01(\tB\xc9\x01\x92\x41\xc5\x01\x32\xc2\x01\x42GP (device_bgp_type) - Device bgp type. Valid values: \"none\" (use generic IP/ASN mapping), \"device\" (peer with the device itself), \"other_device\" (share routing table of existing peered device)R\rdeviceBgpType\x12\x85\x02\n\x16\x64\x65vice_bgp_neighbor_ip\x18\x0f \x01(\tB\xcf\x01\x92\x41\xcb\x01\x32\xc8\x01Your IPv4 peering address (device_bgp_neighbor_ip) - A valid IPv4 address to use for peering with the device. ** An IPv4 and/or IPv6 peering address is required when device_bgp_type is set to \"device\"R\x13\x64\x65viceBgpNeighborIp\x12\x88\x02\n\x17\x64\x65vice_bgp_neighbor_ip6\x18\x10 \x01(\tB\xd0\x01\x92\x41\xcc\x01\x32\xc9\x01Your IPv6 peering address (device_bgp_neighbor_ip6) - A valid IPv6 address to use for peering with the device. ** An IPv4 and/or IPv6 peering address is required when device_bgp_type is set to \"device\"R\x14\x64\x65viceBgpNeighborIp6\x12\x82\x02\n\x17\x64\x65vice_bgp_neighbor_asn\x18\x11 \x01(\tB\xca\x01\x92\x41\xc6\x01\x32\xc3\x01Your ASN (device_bgp_neighbor_asn) - The valid AS number (ASN) of the autonomous system that this device belongs to. ** device_bgp_neighbor_asn is required when device_bgp_type is set to \"device\"R\x14\x64\x65viceBgpNeighborAsn\x12\xa0\x02\n\x13\x64\x65vice_bgp_password\x18\x12 \x01(\tB\xef\x01\x92\x41\xeb\x01\x32\xe8\x01\x42GP md5 password (device_bgp_password) - Optional BGP MD5 password (shared authentication password for BGP peering). Valid characters: alphanumeric. Length: 32. device_bgp_password is optional when device_bgp_type is set to \"device\"R\x11\x64\x65viceBgpPassword\x12\xa4\x02\n\x11use_bgp_device_id\x18\x13 \x01(\rB\xf8\x01\x92\x41\xf4\x01\x32\xf1\x01Select master BGP device (use_bgp_device_id) - The ID of the device whose BGP table should be shared with this device. ** use_bgp_device_id is required when device_bgp_type is set to \"other_device\"). Valid value: a system-generated device_idR\x0euseBgpDeviceId\x12\x95\x01\n\x13\x64\x65vice_bgp_flowspec\x18\x14 \x01(\x08\x42\x65\x92\x41\x62\x32`BGP Flowspec Compatibility (device_bgp_flowspec) - Toggle BGP Flowspec Compatibility for device.R\x11\x64\x65viceBgpFlowspec\"\xce\x01\n\x04Site\x12\x1c\n\x02id\x18\x01 \x01(\tB\x0c\x92\x41\t2\x07Site IDR\x02id\x12+\n\tsite_name\x18\x02 \x01(\tB\x0e\x92\x41\x0b\x32\tSite nameR\x08siteName\x12$\n\x03lat\x18\x03 \x01(\x01\x42\x12\x92\x41\x0f\x32\rSite latitudeR\x03lat\x12%\n\x03lon\x18\x04 \x01(\x01\x42\x13\x92\x41\x10\x32\x0eSite longitudeR\x03lon\x12.\n\ncompany_id\x18\x05 \x01(\tB\x0f\x92\x41\x0c\x32\nCompany IDR\tcompanyId\"H\n\x04Plan\x12\x1c\n\x02id\x18\x01 \x01(\tB\x0c\x92\x41\t2\x07Plan IDR\x02id\x12\"\n\x04name\x18\x02 \x01(\tB\x0e\x92\x41\x0b\x32\tPlan nameR\x04name\"\xc4\x04\n\x05Label\x12\x1d\n\x02id\x18\x01 \x01(\tB\r\x92\x41\n2\x08Label IDR\x02id\x12#\n\x04name\x18\x02 \x01(\tB\x0f\x92\x41\x0c\x32\nLabel nameR\x04name\x12\x38\n\x0b\x64\x65scription\x18\x03 \x01(\tB\x16\x92\x41\x13\x32\x11Label descriptionR\x0b\x64\x65scription\x12K\n\x05\x65\x64\x61te\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x19\x92\x41\x16\x32\x14Label end date (UTC)R\x05\x65\x64\x61te\x12P\n\x05\x63\x64\x61te\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x1e\x92\x41\x1b\x32\x19Label creation date (UTC)R\x05\x63\x64\x61te\x12%\n\x07user_id\x18\x06 \x01(\tB\x0c\x92\x41\t2\x07User IDR\x06userId\x12.\n\ncompany_id\x18\x07 \x01(\tB\x0f\x92\x41\x0c\x32\nCompany IDR\tcompanyId\x12&\n\x05\x63olor\x18\x08 \x01(\tB\x10\x92\x41\r2\x0bLabel colorR\x05\x63olor\x12&\n\x05order\x18\t \x01(\tB\x10\x92\x41\r2\x0bLabel orderR\x05order\x12<\n\x0fpivot_device_id\x18\n \x01(\tB\x14\x92\x41\x11\x32\x0fPivot device IDR\rpivotDeviceId\x12\x39\n\x0epivot_label_id\x18\x0b \x01(\tB\x13\x92\x41\x10\x32\x0ePivot label IDR\x0cpivotLabelId\"\x89\x04\n\tInterface\x12O\n\x15interface_description\x18\x01 \x01(\tB\x1a\x92\x41\x17\x32\x15Interface descriptionR\x14interfaceDescription\x12\x45\n\x12initial_snmp_speed\x18\x02 \x01(\tB\x17\x92\x41\x14\x32\x12Initial SNMP speedR\x10initialSnmpSpeed\x12+\n\tdevice_id\x18\x03 \x01(\tB\x0e\x92\x41\x0b\x32\tDevice IDR\x08\x64\x65viceId\x12.\n\nsnmp_speed\x18\x04 \x01(\tB\x0f\x92\x41\x0c\x32\nSNMP speedR\tsnmpSpeed\x12.\n\nsnmp_alias\x18\x05 \x01(\tB\x0f\x92\x41\x0c\x32\nSNMP aliasR\tsnmpAlias\x12%\n\x07snmp_id\x18\x06 \x01(\tB\x0c\x92\x41\t2\x07SNMP IDR\x06snmpId\x12\x43\n\x11\x63onnectivity_type\x18\x07 \x01(\tB\x16\x92\x41\x13\x32\x11\x43onnectivity typeR\x10\x63onnectivityType\x12@\n\x10network_boundary\x18\x08 \x01(\tB\x15\x92\x41\x12\x32\x10Network boundaryR\x0fnetworkBoundary\x12)\n\x08provider\x18\t \x01(\tB\r\x92\x41\n2\x08ProviderR\x08provider\"\xaa\x02\n\x10\x43ustomColumnData\x12+\n\tdevice_id\x18\x01 \x01(\tB\x0e\x92\x41\x0b\x32\tDevice IDR\x08\x64\x65viceId\x12(\n\x08\x66ield_id\x18\x02 \x01(\tB\r\x92\x41\n2\x08\x46ield IDR\x07\x66ieldId\x12+\n\x08\x63ol_name\x18\x03 \x01(\tB\x10\x92\x41\r2\x0b\x43olumn nameR\x07\x63olName\x12\x32\n\x0b\x64\x65scription\x18\x04 \x01(\tB\x10\x92\x41\r2\x0b\x44\x65scriptionR\x0b\x64\x65scription\x12+\n\x08\x63ol_type\x18\x05 \x01(\tB\x10\x92\x41\r2\x0b\x43olumn typeR\x07\x63olType\x12\x31\n\x0b\x64\x65vice_type\x18\x06 \x01(\tB\x10\x92\x41\r2\x0b\x44\x65vice typeR\ndeviceType\"H\n\nGnmiV1Conf\x12:\n\x0e\x64ialout_server\x18\x01 \x01(\tB\x13\x92\x41\x10\x32\x0e\x44ialout serverR\rdialoutServer\"\xeb!\n\x0e\x44\x65viceDetailed\x12;\n\x02id\x18\x01 \x01(\tB+\x92\x41$2\"System generated unique identifier\xe2\x41\x01\x03R\x02id\x12.\n\ncompany_id\x18\x02 \x01(\tB\x0f\x92\x41\x0c\x32\nCompany IDR\tcompanyId\x12\x31\n\x0b\x64\x65vice_name\x18\x03 \x01(\tB\x10\x92\x41\r2\x0b\x44\x65vice nameR\ndeviceName\x12\x34\n\x0c\x64\x65vice_alias\x18\x04 \x01(\tB\x11\x92\x41\x0e\x32\x0c\x44\x65vice aliasR\x0b\x64\x65viceAlias\x12\x31\n\x0b\x64\x65vice_type\x18\x05 \x01(\tB\x10\x92\x41\r2\x0b\x44\x65vice typeR\ndeviceType\x12\x46\n\x12\x64\x65vice_description\x18\x06 \x01(\tB\x17\x92\x41\x14\x32\x12\x44\x65vice descriptionR\x11\x64\x65viceDescription\x12?\n\x04site\x18\x07 \x01(\x0b\x32 .kentik.device.v202308beta1.SiteB\t\x92\x41\x06\x32\x04SiteR\x04site\x12?\n\x04plan\x18\x08 \x01(\x0b\x32 .kentik.device.v202308beta1.PlanB\t\x92\x41\x06\x32\x04PlanR\x04plan\x12N\n\x06labels\x18\t \x03(\x0b\x32!.kentik.device.v202308beta1.LabelB\x13\x92\x41\x10\x32\x0eList of labelsR\x06labels\x12\x65\n\x0e\x61ll_interfaces\x18\n \x03(\x0b\x32%.kentik.device.v202308beta1.InterfaceB\x17\x92\x41\x14\x32\x12List of interfacesR\rallInterfaces\x12?\n\x10\x64\x65vice_flow_type\x18\x0b \x01(\tB\x15\x92\x41\x12\x32\x10\x44\x65vice flow typeR\x0e\x64\x65viceFlowType\x12\x45\n\x12\x64\x65vice_sample_rate\x18\x0c \x01(\tB\x17\x92\x41\x14\x32\x12\x44\x65vice sample rateR\x10\x64\x65viceSampleRate\x12\x39\n\x0bsending_ips\x18\r \x03(\tB\x18\x92\x41\x15\x32\x13List of sending IPsR\nsendingIps\x12\x39\n\x0e\x64\x65vice_snmp_ip\x18\x0e \x01(\tB\x13\x92\x41\x10\x32\x0e\x44\x65vice SNMP IPR\x0c\x64\x65viceSnmpIp\x12N\n\x15\x64\x65vice_snmp_community\x18\x0f \x01(\tB\x1a\x92\x41\x17\x32\x15\x44\x65vice SNMP communityR\x13\x64\x65viceSnmpCommunity\x12\x37\n\rminimize_snmp\x18\x10 \x01(\x08\x42\x12\x92\x41\x0f\x32\rMinimize SNMPR\x0cminimizeSnmp\x12<\n\x0f\x64\x65vice_bgp_type\x18\x11 \x01(\tB\x14\x92\x41\x11\x32\x0f\x44\x65vice BGP typeR\rdeviceBgpType\x12P\n\x16\x64\x65vice_bgp_neighbor_ip\x18\x12 \x01(\tB\x1b\x92\x41\x18\x32\x16\x44\x65vice BGP neighbor IPR\x13\x64\x65viceBgpNeighborIp\x12S\n\x17\x64\x65vice_bgp_neighbor_ip6\x18\x13 \x01(\tB\x1c\x92\x41\x19\x32\x17\x44\x65vice BGP neighbor IP6R\x14\x64\x65viceBgpNeighborIp6\x12S\n\x17\x64\x65vice_bgp_neighbor_asn\x18\x14 \x01(\tB\x1c\x92\x41\x19\x32\x17\x44\x65vice BGP neighbor ASNR\x14\x64\x65viceBgpNeighborAsn\x12H\n\x13\x64\x65vice_bgp_flowspec\x18\x15 \x01(\x08\x42\x18\x92\x41\x15\x32\x13\x44\x65vice BGP flowspecR\x11\x64\x65viceBgpFlowspec\x12H\n\x13\x64\x65vice_bgp_password\x18\x16 \x01(\tB\x18\x92\x41\x15\x32\x13\x44\x65vice BGP passwordR\x11\x64\x65viceBgpPassword\x12V\n\x18\x64\x65vice_bgp_label_unicast\x18\x17 \x01(\x08\x42\x1d\x92\x41\x1a\x32\x18\x44\x65vice BGP label unicastR\x15\x64\x65viceBgpLabelUnicast\x12H\n\x13\x62gp_lookup_strategy\x18\x18 \x01(\tB\x18\x92\x41\x15\x32\x13\x42GP lookup strategyR\x11\x62gpLookupStrategy\x12\x37\n\rdevice_status\x18\x19 \x01(\tB\x12\x92\x41\x0f\x32\rDevice statusR\x0c\x64\x65viceStatus\x12\x41\n\x11use_bgp_device_id\x18\x1a \x01(\tB\x16\x92\x41\x13\x32\x11Use BGP device IDR\x0euseBgpDeviceId\x12:\n\x0e\x63ustom_columns\x18\x1b \x01(\tB\x13\x92\x41\x10\x32\x0e\x43ustom columnsR\rcustomColumns\x12s\n\x12\x63ustom_column_data\x18\x1c \x03(\x0b\x32,.kentik.device.v202308beta1.CustomColumnDataB\x17\x92\x41\x14\x32\x12\x43ustom column dataR\x10\x63ustomColumnData\x12P\n\x16\x64\x65vice_chf_client_port\x18\x1d \x01(\tB\x1b\x92\x41\x18\x32\x16\x44\x65vice CHF client portR\x13\x64\x65viceChfClientPort\x12\\\n\x1a\x64\x65vice_chf_client_protocol\x18\x1e \x01(\tB\x1f\x92\x41\x1c\x32\x1a\x44\x65vice CHF client protocolR\x17\x64\x65viceChfClientProtocol\x12K\n\x14\x64\x65vice_chf_interface\x18\x1f \x01(\tB\x19\x92\x41\x16\x32\x14\x44\x65vice CHF interfaceR\x12\x64\x65viceChfInterface\x12\x42\n\x11\x64\x65vice_agent_type\x18  \x01(\tB\x16\x92\x41\x13\x32\x11\x44\x65vice agent typeR\x0f\x64\x65viceAgentType\x12\x36\n\rmax_flow_rate\x18! \x01(\rB\x12\x92\x41\x0f\x32\rMax flow rateR\x0bmaxFlowRate\x12\x41\n\x11max_big_flow_rate\x18\" \x01(\rB\x16\x92\x41\x13\x32\x11Max big flow rateR\x0emaxBigFlowRate\x12?\n\x10\x64\x65vice_proxy_bgp\x18# \x01(\tB\x15\x92\x41\x12\x32\x10\x44\x65vice proxy BGPR\x0e\x64\x65viceProxyBgp\x12\x42\n\x11\x64\x65vice_proxy_bgp6\x18$ \x01(\tB\x16\x92\x41\x13\x32\x11\x44\x65vice proxy BGP6R\x0f\x64\x65viceProxyBgp6\x12\\\n\x0c\x63reated_date\x18% \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x1d\x92\x41\x1a\x32\x18\x43reation timestamp (UTC)R\x0b\x63reatedDate\x12\x65\n\x0cupdated_date\x18& \x01(\x0b\x32\x1a.google.protobuf.TimestampB&\x92\x41#2!Last modification timestamp (UTC)R\x0bupdatedDate\x12g\n\x1b\x64\x65vice_snmp_v3_conf_enabled\x18\' \x01(\x08\x42)\x92\x41&2$Device SNMP v3 configuration enabledR\x17\x64\x65viceSnmpV3ConfEnabled\x12~\n\x13\x64\x65vice_snmp_v3_conf\x18( \x01(\x0b\x32,.kentik.device.v202308beta1.DeviceSnmpV3ConfB!\x92\x41\x1e\x32\x1c\x44\x65vice SNMP v3 configurationR\x10\x64\x65viceSnmpV3Conf\x12.\n\x08\x63\x64n_attr\x18) \x01(\tB\x13\x92\x41\x10\x32\x0e\x43\x44N attributesR\x07\x63\x64nAttr\x12\x33\n\x0c\x62gp_peer_ip4\x18* \x01(\tB\x11\x92\x41\x0e\x32\x0c\x42GP peer IP4R\nbgpPeerIp4\x12\x33\n\x0c\x62gp_peer_ip6\x18+ \x01(\tB\x11\x92\x41\x0e\x32\x0c\x42GP peer IP6R\nbgpPeerIp6\x12:\n\x0e\x64\x65vice_subtype\x18, \x01(\tB\x13\x92\x41\x10\x32\x0e\x44\x65vice subtypeR\rdeviceSubtype\x12\x45\n\x12\x64\x65vice_vendor_type\x18- \x01(\tB\x17\x92\x41\x14\x32\x12\x44\x65vice vendor typeR\x10\x64\x65viceVendorType\x12\x42\n\x11\x64\x65vice_model_type\x18. \x01(\tB\x16\x92\x41\x13\x32\x11\x44\x65vice model typeR\x0f\x64\x65viceModelType\x12<\n\x0f\x63loud_export_id\x18/ \x01(\tB\x14\x92\x41\x11\x32\x0f\x43loud export IDR\rcloudExportId\x12\x37\n\rdevice_kproxy\x18\x30 \x01(\tB\x12\x92\x41\x0f\x32\rDevice KProxyR\x0c\x64\x65viceKproxy\x12\x34\n\x0csnmp_enabled\x18\x31 \x01(\tB\x11\x92\x41\x0e\x32\x0cSNMP enabledR\x0bsnmpEnabled\x12K\n\x14snmp_disabled_reason\x18\x32 \x01(\tB\x19\x92\x41\x16\x32\x14SNMP disabled reasonR\x12snmpDisabledReason\x12\\\n\x1asnmp_disabled_reason_other\x18\x33 \x01(\tB\x1f\x92\x41\x1c\x32\x1aSNMP disabled reason otherR\x17snmpDisabledReasonOther\x12H\n\x13\x62gp_disabled_reason\x18\x34 \x01(\tB\x18\x92\x41\x15\x32\x13\x42GP disabled reasonR\x11\x62gpDisabledReason\x12Y\n\x19\x62gp_disabled_reason_other\x18\x35 \x01(\tB\x1e\x92\x41\x1b\x32\x19\x42GP disabled reason otherR\x16\x62gpDisabledReasonOther\x12I\n\x13\x64\x65vice_manufacturer\x18\x36 \x01(\tB\x18\x92\x41\x15\x32\x13\x44\x65vice manufacturerR\x12\x64\x65viceManufacturer\x12\x34\n\x0c\x64\x65vice_alert\x18\x37 \x01(\tB\x11\x92\x41\x0e\x32\x0c\x44\x65vice alertR\x0b\x64\x65viceAlert\x12\x1d\n\x04role\x18\x38 \x01(\tB\t\x92\x41\x06\x32\x04RoleR\x04role\x12x\n\x13\x64\x65vice_gnmi_v1_conf\x18\x39 \x01(\x0b\x32&.kentik.device.v202308beta1.GnmiV1ConfB!\x92\x41\x1e\x32\x1c\x44\x65vice GNMI v1 configurationR\x10\x64\x65viceGnmiV1Conf\x12\x41\n\x11use_asn_from_flow\x18: \x01(\x08\x42\x16\x92\x41\x13\x32\x11Use ASN from flowR\x0euseAsnFromFlow\x12\x37\n\rmax_interface\x18; \x01(\rB\x12\x92\x41\x0f\x32\rMax interfaceR\x0cmaxInterface\x12H\n\x13max_interface_check\x18< \x01(\rB\x18\x92\x41\x15\x32\x13Max interface checkR\x11maxInterfaceCheck\"-\n\x0cLabelConcise\x12\x1d\n\x02id\x18\x01 \x01(\rB\r\x92\x41\n2\x08Label IDR\x02id\"\x14\n\x12ListDevicesRequest\"\xea\x01\n\x13ListDevicesResponse\x12l\n\x07\x64\x65vices\x18\x01 \x03(\x0b\x32*.kentik.device.v202308beta1.DeviceDetailedB&\x92\x41#2!List of configurations of devicesR\x07\x64\x65vices\x12\x65\n\rinvalid_count\x18\x02 \x01(\rB@\x92\x41=2;Number of invalid entries encountered while collecting dataR\x0cinvalidCount\"G\n\x10GetDeviceRequest\x12\x33\n\x02id\x18\x01 \x01(\tB#\x92\x41\x1c\x32\x1aID of the requested device\xe2\x41\x01\x02R\x02id\"\x83\x01\n\x11GetDeviceResponse\x12n\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32*.kentik.device.v202308beta1.DeviceDetailedB*\x92\x41\'2%Configuration of the requested deviceR\x06\x64\x65vice\"\x82\x01\n\x13\x43reateDeviceRequest\x12k\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32).kentik.device.v202308beta1.DeviceConciseB(\x92\x41!2\x1f\x43onfiguration of the new device\xe2\x41\x01\x02R\x06\x64\x65vice\"\x8a\x01\n\x14\x43reateDeviceResponse\x12r\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32*.kentik.device.v202308beta1.DeviceDetailedB.\x92\x41+2)Configuration of the newly created deviceR\x06\x64\x65vice\"\x95\x01\n\x14\x43reateDevicesRequest\x12}\n\x07\x64\x65vices\x18\x01 \x03(\x0b\x32).kentik.device.v202308beta1.DeviceConciseB8\x92\x41\x31\x32/List of configurations of devices to be created\xe2\x41\x01\x02R\x07\x64\x65vices\"\xf3\x01\n\x15\x43reateDevicesResponse\x12z\n\x07\x64\x65vices\x18\x01 \x03(\x0b\x32*.kentik.device.v202308beta1.DeviceDetailedB4\x92\x41\x31\x32/List of configurations of newly created devicesR\x07\x64\x65vices\x12^\n\x0e\x66\x61iled_devices\x18\x02 \x03(\tB7\x92\x41\x34\x32\x32List of names of devices that failed to be createdR\rfailedDevices\"\x9d\x01\n\x13UpdateDeviceRequest\x12\x85\x01\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32).kentik.device.v202308beta1.DeviceConciseBB\x92\x41;29New configuration attributes for the device to be updated\xe2\x41\x01\x02R\x06\x64\x65vice\"\x84\x01\n\x14UpdateDeviceResponse\x12l\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32*.kentik.device.v202308beta1.DeviceDetailedB(\x92\x41%2#Updated configuration of the deviceR\x06\x64\x65vice\"\x95\x01\n\x14UpdateDevicesRequest\x12}\n\x07\x64\x65vices\x18\x01 \x03(\x0b\x32).kentik.device.v202308beta1.DeviceConciseB8\x92\x41\x31\x32/List of configurations of devices to be updated\xe2\x41\x01\x02R\x07\x64\x65vices\"\xeb\x01\n\x15UpdateDevicesResponse\x12t\n\x07\x64\x65vices\x18\x01 \x03(\x0b\x32*.kentik.device.v202308beta1.DeviceDetailedB.\x92\x41+2)List of configurations of updated devicesR\x07\x64\x65vices\x12\\\n\x0e\x66\x61iled_devices\x18\x02 \x03(\tB5\x92\x41\x32\x32\x30List of IDs of devices that failed to be updatedR\rfailedDevices\"\xc9\x01\n\x19UpdateDeviceLabelsRequest\x12\x37\n\x02id\x18\x01 \x01(\tB\'\x92\x41 2\x1eID of the device to be updated\xe2\x41\x01\x02R\x02id\x12s\n\x06labels\x18\x02 \x03(\x0b\x32(.kentik.device.v202308beta1.LabelConciseB1\x92\x41*2(List of labels to be added to the device\xe2\x41\x01\x02R\x06labels\"\x8a\x01\n\x1aUpdateDeviceLabelsResponse\x12l\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32*.kentik.device.v202308beta1.DeviceDetailedB(\x92\x41%2#Updated configuration of the deviceR\x06\x64\x65vice\"N\n\x13\x44\x65leteDeviceRequest\x12\x37\n\x02id\x18\x01 \x01(\tB\'\x92\x41 2\x1eID of the device to be deleted\xe2\x41\x01\x02R\x02id\"\x16\n\x14\x44\x65leteDeviceResponse\"W\n\x14\x44\x65leteDevicesRequest\x12?\n\x03ids\x18\x01 \x03(\tB-\x92\x41&2$List of IDs of devices to be deleted\xe2\x41\x01\x02R\x03ids\"u\n\x15\x44\x65leteDevicesResponse\x12\\\n\x0e\x66\x61iled_devices\x18\x01 \x03(\tB5\x92\x41\x32\x32\x30List of IDs of devices that failed to be deletedR\rfailedDevices2\xf6\x1a\n\rDeviceService\x12\xaa\x02\n\x0bListDevices\x12..kentik.device.v202308beta1.ListDevicesRequest\x1a/.kentik.device.v202308beta1.ListDevicesResponse\"\xb9\x01\x92\x41~\x12\x11List all devices.\x1a\\Returns list of configured devices (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).*\x0bListDevices\xf2\xd7\x02\x11\x61\x64min.device:read\x82\xd3\xe4\x93\x02\x1d\x12\x1b/device/v202308beta1/device\x12\xc9\x02\n\tGetDevice\x12,.kentik.device.v202308beta1.GetDeviceRequest\x1a-.kentik.device.v202308beta1.GetDeviceResponse\"\xde\x01\x92\x41\x9d\x01\x12#Retrieve configuration of a device.\x1akReturns configuration of a device specified by ID (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).*\tGetDevice\xf2\xd7\x02\x11\x61\x64min.device:read\x82\xd3\xe4\x93\x02\"\x12 /device/v202308beta1/device/{id}\x12\xe6\x02\n\x0c\x43reateDevice\x12/.kentik.device.v202308beta1.CreateDeviceRequest\x1a\x30.kentik.device.v202308beta1.CreateDeviceResponse\"\xf2\x01\x92\x41\xb2\x01\x12\x17\x43onfigure a new device.\x1a\x88\x01\x43reate configuration for a new device. Returns the newly created configuration (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).*\x0c\x43reateDevice\xf2\xd7\x02\x12\x61\x64min.device:write\x82\xd3\xe4\x93\x02 \"\x1b/device/v202308beta1/device:\x01*\x12\x83\x03\n\rCreateDevices\x12\x30.kentik.device.v202308beta1.CreateDevicesRequest\x1a\x31.kentik.device.v202308beta1.CreateDevicesResponse\"\x8c\x02\x92\x41\xc6\x01\x12%Configure multiple devices (max 100).\x1a\x8d\x01\x43reate configuration for multiple devices. Returns the newly created configurations (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).*\rCreateDevices\xf2\xd7\x02\x12\x61\x64min.device:write\x82\xd3\xe4\x93\x02&\"!/device/v202308beta1/device/batch:\x01*\x12\x93\x03\n\x0cUpdateDevice\x12/.kentik.device.v202308beta1.UpdateDeviceRequest\x1a\x30.kentik.device.v202308beta1.UpdateDeviceResponse\"\x9f\x02\x92\x41\xd3\x01\x12\"Updates configuration of a device.\x1a\x9e\x01Replaces configuration of a device with attributes in the request. Returns the updated configuration (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).*\x0cUpdateDevice\xf2\xd7\x02\x12\x61\x64min.device:write\x82\xd3\xe4\x93\x02,\x1a\'/device/v202308beta1/device/{device.id}:\x01*\x12\xac\x03\n\rUpdateDevices\x12\x30.kentik.device.v202308beta1.UpdateDevicesRequest\x1a\x31.kentik.device.v202308beta1.UpdateDevicesResponse\"\xb5\x02\x92\x41\xef\x01\x12\x34Updates configuration of multiple devices (max 100).\x1a\xa7\x01Replaces configuration of multiple devices with attributes in the request. Returns the updated configurations (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).*\rUpdateDevices\xf2\xd7\x02\x12\x61\x64min.device:write\x82\xd3\xe4\x93\x02&\x1a!/device/v202308beta1/device/batch:\x01*\x12\xc2\x03\n\x12UpdateDeviceLabels\x12\x35.kentik.device.v202308beta1.UpdateDeviceLabelsRequest\x1a\x36.kentik.device.v202308beta1.UpdateDeviceLabelsResponse\"\xbc\x02\x92\x41\xf0\x01\x12\x1bUpdates labels of a device.\x1a\xbc\x01Removes all existing labels from the device and applies the device labels (see [About Device Labels](https://kb.kentik.com/v4/Cb16.htm)) specified by id. Returns the updated configuration.*\x12UpdateDeviceLabels\xf2\xd7\x02\x12\x61\x64min.device:write\x82\xd3\xe4\x93\x02,\x1a\'/device/v202308beta1/device/{id}/labels:\x01*\x12\xd5\x02\n\x0c\x44\x65leteDevice\x12/.kentik.device.v202308beta1.DeleteDeviceRequest\x1a\x30.kentik.device.v202308beta1.DeleteDeviceResponse\"\xe1\x01\x92\x41\x9f\x01\x12!Delete configuration of a device.\x1alDeletes configuration of a device with specific ID (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).*\x0c\x44\x65leteDevice\xf2\xd7\x02\x12\x61\x64min.device:write\x82\xd3\xe4\x93\x02\"* /device/v202308beta1/device/{id}\x12\xee\x02\n\rDeleteDevices\x12\x30.kentik.device.v202308beta1.DeleteDevicesRequest\x1a\x31.kentik.device.v202308beta1.DeleteDevicesResponse\"\xf7\x01\x92\x41\xb1\x01\x12)Delete configuration of multiple devices.\x1auDeletes configuration of multiple devices with specific IDs (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).*\rDeleteDevices\xf2\xd7\x02\x12\x61\x64min.device:write\x82\xd3\xe4\x93\x02&\"!/device/v202308beta1/device/batch:\x01*\x1a*\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\x0c\x61\x64min.device\x90\xd8\x02\x03\x42\xee\x03ZLgithub.com/kentik/api-schema-public/gen/go/kentik/device/v202308beta1;device\x92\x41\x9c\x03\x12\xb5\x01\n\nDevice API\x12R# Overview\nThe Device API provides programmatic access to configuration of devices\"E\n\x16Kentik API Engineering\x12+https://github.com/kentik/api-schema-public2\x0cv202308beta1*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r]\n%General information about Kentik APIs\x12\x34https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overviewb\x06proto3'
   ,
   dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_api_dot_client__pb2.DESCRIPTOR,google_dot_api_dot_field__behavior__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,protoc__gen__openapiv2_dot_options_dot_annotations__pb2.DESCRIPTOR,kentik_dot_core_dot_v202303_dot_annotations__pb2.DESCRIPTOR,])
 
@@ -1314,6 +1314,77 @@ _CREATEDEVICERESPONSE = _descriptor.Descriptor(
 )
 
 
+_CREATEDEVICESREQUEST = _descriptor.Descriptor(
+  name='CreateDevicesRequest',
+  full_name='kentik.device.v202308beta1.CreateDevicesRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='devices', full_name='kentik.device.v202308beta1.CreateDevicesRequest.devices', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=b'\222A12/List of configurations of devices to be created\342A\001\002', json_name='devices', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=12718,
+  serialized_end=12867,
+)
+
+
+_CREATEDEVICESRESPONSE = _descriptor.Descriptor(
+  name='CreateDevicesResponse',
+  full_name='kentik.device.v202308beta1.CreateDevicesResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='devices', full_name='kentik.device.v202308beta1.CreateDevicesResponse.devices', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=b'\222A12/List of configurations of newly created devices', json_name='devices', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='failed_devices', full_name='kentik.device.v202308beta1.CreateDevicesResponse.failed_devices', index=1,
+      number=2, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=b'\222A422List of names of devices that failed to be created', json_name='failedDevices', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=12870,
+  serialized_end=13113,
+)
+
+
 _UPDATEDEVICEREQUEST = _descriptor.Descriptor(
   name='UpdateDeviceRequest',
   full_name='kentik.device.v202308beta1.UpdateDeviceRequest',
@@ -1341,8 +1412,8 @@ _UPDATEDEVICEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12718,
-  serialized_end=12875,
+  serialized_start=13116,
+  serialized_end=13273,
 )
 
 
@@ -1373,8 +1444,79 @@ _UPDATEDEVICERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12878,
-  serialized_end=13010,
+  serialized_start=13276,
+  serialized_end=13408,
+)
+
+
+_UPDATEDEVICESREQUEST = _descriptor.Descriptor(
+  name='UpdateDevicesRequest',
+  full_name='kentik.device.v202308beta1.UpdateDevicesRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='devices', full_name='kentik.device.v202308beta1.UpdateDevicesRequest.devices', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=b'\222A12/List of configurations of devices to be updated\342A\001\002', json_name='devices', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=13411,
+  serialized_end=13560,
+)
+
+
+_UPDATEDEVICESRESPONSE = _descriptor.Descriptor(
+  name='UpdateDevicesResponse',
+  full_name='kentik.device.v202308beta1.UpdateDevicesResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='devices', full_name='kentik.device.v202308beta1.UpdateDevicesResponse.devices', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=b'\222A+2)List of configurations of updated devices', json_name='devices', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='failed_devices', full_name='kentik.device.v202308beta1.UpdateDevicesResponse.failed_devices', index=1,
+      number=2, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=b'\222A220List of IDs of devices that failed to be updated', json_name='failedDevices', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=13563,
+  serialized_end=13798,
 )
 
 
@@ -1412,8 +1554,8 @@ _UPDATEDEVICELABELSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13013,
-  serialized_end=13214,
+  serialized_start=13801,
+  serialized_end=14002,
 )
 
 
@@ -1444,8 +1586,8 @@ _UPDATEDEVICELABELSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13217,
-  serialized_end=13355,
+  serialized_start=14005,
+  serialized_end=14143,
 )
 
 
@@ -1476,8 +1618,8 @@ _DELETEDEVICEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13357,
-  serialized_end=13435,
+  serialized_start=14145,
+  serialized_end=14223,
 )
 
 
@@ -1501,8 +1643,72 @@ _DELETEDEVICERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13437,
-  serialized_end=13459,
+  serialized_start=14225,
+  serialized_end=14247,
+)
+
+
+_DELETEDEVICESREQUEST = _descriptor.Descriptor(
+  name='DeleteDevicesRequest',
+  full_name='kentik.device.v202308beta1.DeleteDevicesRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='ids', full_name='kentik.device.v202308beta1.DeleteDevicesRequest.ids', index=0,
+      number=1, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=b'\222A&2$List of IDs of devices to be deleted\342A\001\002', json_name='ids', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=14249,
+  serialized_end=14336,
+)
+
+
+_DELETEDEVICESRESPONSE = _descriptor.Descriptor(
+  name='DeleteDevicesResponse',
+  full_name='kentik.device.v202308beta1.DeleteDevicesResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='failed_devices', full_name='kentik.device.v202308beta1.DeleteDevicesResponse.failed_devices', index=0,
+      number=1, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=b'\222A220List of IDs of devices that failed to be deleted', json_name='failedDevices', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=14338,
+  serialized_end=14455,
 )
 
 _DEVICECONCISE.fields_by_name['device_snmp_v3_conf'].message_type = _DEVICESNMPV3CONF
@@ -1521,8 +1727,12 @@ _LISTDEVICESRESPONSE.fields_by_name['devices'].message_type = _DEVICEDETAILED
 _GETDEVICERESPONSE.fields_by_name['device'].message_type = _DEVICEDETAILED
 _CREATEDEVICEREQUEST.fields_by_name['device'].message_type = _DEVICECONCISE
 _CREATEDEVICERESPONSE.fields_by_name['device'].message_type = _DEVICEDETAILED
+_CREATEDEVICESREQUEST.fields_by_name['devices'].message_type = _DEVICECONCISE
+_CREATEDEVICESRESPONSE.fields_by_name['devices'].message_type = _DEVICEDETAILED
 _UPDATEDEVICEREQUEST.fields_by_name['device'].message_type = _DEVICECONCISE
 _UPDATEDEVICERESPONSE.fields_by_name['device'].message_type = _DEVICEDETAILED
+_UPDATEDEVICESREQUEST.fields_by_name['devices'].message_type = _DEVICECONCISE
+_UPDATEDEVICESRESPONSE.fields_by_name['devices'].message_type = _DEVICEDETAILED
 _UPDATEDEVICELABELSREQUEST.fields_by_name['labels'].message_type = _LABELCONCISE
 _UPDATEDEVICELABELSRESPONSE.fields_by_name['device'].message_type = _DEVICEDETAILED
 DESCRIPTOR.message_types_by_name['DeviceSnmpV3Conf'] = _DEVICESNMPV3CONF
@@ -1541,12 +1751,18 @@ DESCRIPTOR.message_types_by_name['GetDeviceRequest'] = _GETDEVICEREQUEST
 DESCRIPTOR.message_types_by_name['GetDeviceResponse'] = _GETDEVICERESPONSE
 DESCRIPTOR.message_types_by_name['CreateDeviceRequest'] = _CREATEDEVICEREQUEST
 DESCRIPTOR.message_types_by_name['CreateDeviceResponse'] = _CREATEDEVICERESPONSE
+DESCRIPTOR.message_types_by_name['CreateDevicesRequest'] = _CREATEDEVICESREQUEST
+DESCRIPTOR.message_types_by_name['CreateDevicesResponse'] = _CREATEDEVICESRESPONSE
 DESCRIPTOR.message_types_by_name['UpdateDeviceRequest'] = _UPDATEDEVICEREQUEST
 DESCRIPTOR.message_types_by_name['UpdateDeviceResponse'] = _UPDATEDEVICERESPONSE
+DESCRIPTOR.message_types_by_name['UpdateDevicesRequest'] = _UPDATEDEVICESREQUEST
+DESCRIPTOR.message_types_by_name['UpdateDevicesResponse'] = _UPDATEDEVICESRESPONSE
 DESCRIPTOR.message_types_by_name['UpdateDeviceLabelsRequest'] = _UPDATEDEVICELABELSREQUEST
 DESCRIPTOR.message_types_by_name['UpdateDeviceLabelsResponse'] = _UPDATEDEVICELABELSRESPONSE
 DESCRIPTOR.message_types_by_name['DeleteDeviceRequest'] = _DELETEDEVICEREQUEST
 DESCRIPTOR.message_types_by_name['DeleteDeviceResponse'] = _DELETEDEVICERESPONSE
+DESCRIPTOR.message_types_by_name['DeleteDevicesRequest'] = _DELETEDEVICESREQUEST
+DESCRIPTOR.message_types_by_name['DeleteDevicesResponse'] = _DELETEDEVICESRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 DeviceSnmpV3Conf = _reflection.GeneratedProtocolMessageType('DeviceSnmpV3Conf', (_message.Message,), {
@@ -1661,6 +1877,20 @@ CreateDeviceResponse = _reflection.GeneratedProtocolMessageType('CreateDeviceRes
   })
 _sym_db.RegisterMessage(CreateDeviceResponse)
 
+CreateDevicesRequest = _reflection.GeneratedProtocolMessageType('CreateDevicesRequest', (_message.Message,), {
+  'DESCRIPTOR' : _CREATEDEVICESREQUEST,
+  '__module__' : 'kentik.device.v202308beta1.device_pb2'
+  # @@protoc_insertion_point(class_scope:kentik.device.v202308beta1.CreateDevicesRequest)
+  })
+_sym_db.RegisterMessage(CreateDevicesRequest)
+
+CreateDevicesResponse = _reflection.GeneratedProtocolMessageType('CreateDevicesResponse', (_message.Message,), {
+  'DESCRIPTOR' : _CREATEDEVICESRESPONSE,
+  '__module__' : 'kentik.device.v202308beta1.device_pb2'
+  # @@protoc_insertion_point(class_scope:kentik.device.v202308beta1.CreateDevicesResponse)
+  })
+_sym_db.RegisterMessage(CreateDevicesResponse)
+
 UpdateDeviceRequest = _reflection.GeneratedProtocolMessageType('UpdateDeviceRequest', (_message.Message,), {
   'DESCRIPTOR' : _UPDATEDEVICEREQUEST,
   '__module__' : 'kentik.device.v202308beta1.device_pb2'
@@ -1674,6 +1904,20 @@ UpdateDeviceResponse = _reflection.GeneratedProtocolMessageType('UpdateDeviceRes
   # @@protoc_insertion_point(class_scope:kentik.device.v202308beta1.UpdateDeviceResponse)
   })
 _sym_db.RegisterMessage(UpdateDeviceResponse)
+
+UpdateDevicesRequest = _reflection.GeneratedProtocolMessageType('UpdateDevicesRequest', (_message.Message,), {
+  'DESCRIPTOR' : _UPDATEDEVICESREQUEST,
+  '__module__' : 'kentik.device.v202308beta1.device_pb2'
+  # @@protoc_insertion_point(class_scope:kentik.device.v202308beta1.UpdateDevicesRequest)
+  })
+_sym_db.RegisterMessage(UpdateDevicesRequest)
+
+UpdateDevicesResponse = _reflection.GeneratedProtocolMessageType('UpdateDevicesResponse', (_message.Message,), {
+  'DESCRIPTOR' : _UPDATEDEVICESRESPONSE,
+  '__module__' : 'kentik.device.v202308beta1.device_pb2'
+  # @@protoc_insertion_point(class_scope:kentik.device.v202308beta1.UpdateDevicesResponse)
+  })
+_sym_db.RegisterMessage(UpdateDevicesResponse)
 
 UpdateDeviceLabelsRequest = _reflection.GeneratedProtocolMessageType('UpdateDeviceLabelsRequest', (_message.Message,), {
   'DESCRIPTOR' : _UPDATEDEVICELABELSREQUEST,
@@ -1702,6 +1946,20 @@ DeleteDeviceResponse = _reflection.GeneratedProtocolMessageType('DeleteDeviceRes
   # @@protoc_insertion_point(class_scope:kentik.device.v202308beta1.DeleteDeviceResponse)
   })
 _sym_db.RegisterMessage(DeleteDeviceResponse)
+
+DeleteDevicesRequest = _reflection.GeneratedProtocolMessageType('DeleteDevicesRequest', (_message.Message,), {
+  'DESCRIPTOR' : _DELETEDEVICESREQUEST,
+  '__module__' : 'kentik.device.v202308beta1.device_pb2'
+  # @@protoc_insertion_point(class_scope:kentik.device.v202308beta1.DeleteDevicesRequest)
+  })
+_sym_db.RegisterMessage(DeleteDevicesRequest)
+
+DeleteDevicesResponse = _reflection.GeneratedProtocolMessageType('DeleteDevicesResponse', (_message.Message,), {
+  'DESCRIPTOR' : _DELETEDEVICESRESPONSE,
+  '__module__' : 'kentik.device.v202308beta1.device_pb2'
+  # @@protoc_insertion_point(class_scope:kentik.device.v202308beta1.DeleteDevicesResponse)
+  })
+_sym_db.RegisterMessage(DeleteDevicesResponse)
 
 
 DESCRIPTOR._options = None
@@ -1831,12 +2089,20 @@ _GETDEVICEREQUEST.fields_by_name['id']._options = None
 _GETDEVICERESPONSE.fields_by_name['device']._options = None
 _CREATEDEVICEREQUEST.fields_by_name['device']._options = None
 _CREATEDEVICERESPONSE.fields_by_name['device']._options = None
+_CREATEDEVICESREQUEST.fields_by_name['devices']._options = None
+_CREATEDEVICESRESPONSE.fields_by_name['devices']._options = None
+_CREATEDEVICESRESPONSE.fields_by_name['failed_devices']._options = None
 _UPDATEDEVICEREQUEST.fields_by_name['device']._options = None
 _UPDATEDEVICERESPONSE.fields_by_name['device']._options = None
+_UPDATEDEVICESREQUEST.fields_by_name['devices']._options = None
+_UPDATEDEVICESRESPONSE.fields_by_name['devices']._options = None
+_UPDATEDEVICESRESPONSE.fields_by_name['failed_devices']._options = None
 _UPDATEDEVICELABELSREQUEST.fields_by_name['id']._options = None
 _UPDATEDEVICELABELSREQUEST.fields_by_name['labels']._options = None
 _UPDATEDEVICELABELSRESPONSE.fields_by_name['device']._options = None
 _DELETEDEVICEREQUEST.fields_by_name['id']._options = None
+_DELETEDEVICESREQUEST.fields_by_name['ids']._options = None
+_DELETEDEVICESRESPONSE.fields_by_name['failed_devices']._options = None
 
 _DEVICESERVICE = _descriptor.ServiceDescriptor(
   name='DeviceService',
@@ -1845,8 +2111,8 @@ _DEVICESERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=b'\312A\023grpc.api.kentik.com\352\327\002\014admin.device\220\330\002\003',
   create_key=_descriptor._internal_create_key,
-  serialized_start=13462,
-  serialized_end=15718,
+  serialized_start=14458,
+  serialized_end=17904,
   methods=[
   _descriptor.MethodDescriptor(
     name='ListDevices',
@@ -1879,9 +2145,19 @@ _DEVICESERVICE = _descriptor.ServiceDescriptor(
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
+    name='CreateDevices',
+    full_name='kentik.device.v202308beta1.DeviceService.CreateDevices',
+    index=3,
+    containing_service=None,
+    input_type=_CREATEDEVICESREQUEST,
+    output_type=_CREATEDEVICESRESPONSE,
+    serialized_options=b'\222A\306\001\022%Configure multiple devices (max 100).\032\215\001Create configuration for multiple devices. Returns the newly created configurations (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).*\rCreateDevices\362\327\002\022admin.device:write\202\323\344\223\002&\"!/device/v202308beta1/device/batch:\001*',
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
     name='UpdateDevice',
     full_name='kentik.device.v202308beta1.DeviceService.UpdateDevice',
-    index=3,
+    index=4,
     containing_service=None,
     input_type=_UPDATEDEVICEREQUEST,
     output_type=_UPDATEDEVICERESPONSE,
@@ -1889,9 +2165,19 @@ _DEVICESERVICE = _descriptor.ServiceDescriptor(
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
+    name='UpdateDevices',
+    full_name='kentik.device.v202308beta1.DeviceService.UpdateDevices',
+    index=5,
+    containing_service=None,
+    input_type=_UPDATEDEVICESREQUEST,
+    output_type=_UPDATEDEVICESRESPONSE,
+    serialized_options=b'\222A\357\001\0224Updates configuration of multiple devices (max 100).\032\247\001Replaces configuration of multiple devices with attributes in the request. Returns the updated configurations (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).*\rUpdateDevices\362\327\002\022admin.device:write\202\323\344\223\002&\032!/device/v202308beta1/device/batch:\001*',
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
     name='UpdateDeviceLabels',
     full_name='kentik.device.v202308beta1.DeviceService.UpdateDeviceLabels',
-    index=4,
+    index=6,
     containing_service=None,
     input_type=_UPDATEDEVICELABELSREQUEST,
     output_type=_UPDATEDEVICELABELSRESPONSE,
@@ -1901,11 +2187,21 @@ _DEVICESERVICE = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='DeleteDevice',
     full_name='kentik.device.v202308beta1.DeviceService.DeleteDevice',
-    index=5,
+    index=7,
     containing_service=None,
     input_type=_DELETEDEVICEREQUEST,
     output_type=_DELETEDEVICERESPONSE,
     serialized_options=b'\222A\237\001\022!Delete configuration of a device.\032lDeletes configuration of a device with specific ID (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).*\014DeleteDevice\362\327\002\022admin.device:write\202\323\344\223\002\"* /device/v202308beta1/device/{id}',
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='DeleteDevices',
+    full_name='kentik.device.v202308beta1.DeviceService.DeleteDevices',
+    index=8,
+    containing_service=None,
+    input_type=_DELETEDEVICESREQUEST,
+    output_type=_DELETEDEVICESRESPONSE,
+    serialized_options=b'\222A\261\001\022)Delete configuration of multiple devices.\032uDeletes configuration of multiple devices with specific IDs (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).*\rDeleteDevices\362\327\002\022admin.device:write\202\323\344\223\002&\"!/device/v202308beta1/device/batch:\001*',
     create_key=_descriptor._internal_create_key,
   ),
 ])

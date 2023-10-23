@@ -21,9 +21,12 @@ type DeviceServiceClient interface {
 	ListDevices(ctx context.Context, in *ListDevicesRequest, opts ...grpc.CallOption) (*ListDevicesResponse, error)
 	GetDevice(ctx context.Context, in *GetDeviceRequest, opts ...grpc.CallOption) (*GetDeviceResponse, error)
 	CreateDevice(ctx context.Context, in *CreateDeviceRequest, opts ...grpc.CallOption) (*CreateDeviceResponse, error)
+	CreateDevices(ctx context.Context, in *CreateDevicesRequest, opts ...grpc.CallOption) (*CreateDevicesResponse, error)
 	UpdateDevice(ctx context.Context, in *UpdateDeviceRequest, opts ...grpc.CallOption) (*UpdateDeviceResponse, error)
+	UpdateDevices(ctx context.Context, in *UpdateDevicesRequest, opts ...grpc.CallOption) (*UpdateDevicesResponse, error)
 	UpdateDeviceLabels(ctx context.Context, in *UpdateDeviceLabelsRequest, opts ...grpc.CallOption) (*UpdateDeviceLabelsResponse, error)
 	DeleteDevice(ctx context.Context, in *DeleteDeviceRequest, opts ...grpc.CallOption) (*DeleteDeviceResponse, error)
+	DeleteDevices(ctx context.Context, in *DeleteDevicesRequest, opts ...grpc.CallOption) (*DeleteDevicesResponse, error)
 }
 
 type deviceServiceClient struct {
@@ -61,9 +64,27 @@ func (c *deviceServiceClient) CreateDevice(ctx context.Context, in *CreateDevice
 	return out, nil
 }
 
+func (c *deviceServiceClient) CreateDevices(ctx context.Context, in *CreateDevicesRequest, opts ...grpc.CallOption) (*CreateDevicesResponse, error) {
+	out := new(CreateDevicesResponse)
+	err := c.cc.Invoke(ctx, "/kentik.device.v202308beta1.DeviceService/CreateDevices", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *deviceServiceClient) UpdateDevice(ctx context.Context, in *UpdateDeviceRequest, opts ...grpc.CallOption) (*UpdateDeviceResponse, error) {
 	out := new(UpdateDeviceResponse)
 	err := c.cc.Invoke(ctx, "/kentik.device.v202308beta1.DeviceService/UpdateDevice", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *deviceServiceClient) UpdateDevices(ctx context.Context, in *UpdateDevicesRequest, opts ...grpc.CallOption) (*UpdateDevicesResponse, error) {
+	out := new(UpdateDevicesResponse)
+	err := c.cc.Invoke(ctx, "/kentik.device.v202308beta1.DeviceService/UpdateDevices", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -88,6 +109,15 @@ func (c *deviceServiceClient) DeleteDevice(ctx context.Context, in *DeleteDevice
 	return out, nil
 }
 
+func (c *deviceServiceClient) DeleteDevices(ctx context.Context, in *DeleteDevicesRequest, opts ...grpc.CallOption) (*DeleteDevicesResponse, error) {
+	out := new(DeleteDevicesResponse)
+	err := c.cc.Invoke(ctx, "/kentik.device.v202308beta1.DeviceService/DeleteDevices", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // DeviceServiceServer is the server API for DeviceService service.
 // All implementations should embed UnimplementedDeviceServiceServer
 // for forward compatibility
@@ -95,9 +125,12 @@ type DeviceServiceServer interface {
 	ListDevices(context.Context, *ListDevicesRequest) (*ListDevicesResponse, error)
 	GetDevice(context.Context, *GetDeviceRequest) (*GetDeviceResponse, error)
 	CreateDevice(context.Context, *CreateDeviceRequest) (*CreateDeviceResponse, error)
+	CreateDevices(context.Context, *CreateDevicesRequest) (*CreateDevicesResponse, error)
 	UpdateDevice(context.Context, *UpdateDeviceRequest) (*UpdateDeviceResponse, error)
+	UpdateDevices(context.Context, *UpdateDevicesRequest) (*UpdateDevicesResponse, error)
 	UpdateDeviceLabels(context.Context, *UpdateDeviceLabelsRequest) (*UpdateDeviceLabelsResponse, error)
 	DeleteDevice(context.Context, *DeleteDeviceRequest) (*DeleteDeviceResponse, error)
+	DeleteDevices(context.Context, *DeleteDevicesRequest) (*DeleteDevicesResponse, error)
 }
 
 // UnimplementedDeviceServiceServer should be embedded to have forward compatible implementations.
@@ -113,14 +146,23 @@ func (UnimplementedDeviceServiceServer) GetDevice(context.Context, *GetDeviceReq
 func (UnimplementedDeviceServiceServer) CreateDevice(context.Context, *CreateDeviceRequest) (*CreateDeviceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateDevice not implemented")
 }
+func (UnimplementedDeviceServiceServer) CreateDevices(context.Context, *CreateDevicesRequest) (*CreateDevicesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateDevices not implemented")
+}
 func (UnimplementedDeviceServiceServer) UpdateDevice(context.Context, *UpdateDeviceRequest) (*UpdateDeviceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateDevice not implemented")
+}
+func (UnimplementedDeviceServiceServer) UpdateDevices(context.Context, *UpdateDevicesRequest) (*UpdateDevicesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateDevices not implemented")
 }
 func (UnimplementedDeviceServiceServer) UpdateDeviceLabels(context.Context, *UpdateDeviceLabelsRequest) (*UpdateDeviceLabelsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateDeviceLabels not implemented")
 }
 func (UnimplementedDeviceServiceServer) DeleteDevice(context.Context, *DeleteDeviceRequest) (*DeleteDeviceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteDevice not implemented")
+}
+func (UnimplementedDeviceServiceServer) DeleteDevices(context.Context, *DeleteDevicesRequest) (*DeleteDevicesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteDevices not implemented")
 }
 
 // UnsafeDeviceServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -188,6 +230,24 @@ func _DeviceService_CreateDevice_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _DeviceService_CreateDevices_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateDevicesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DeviceServiceServer).CreateDevices(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kentik.device.v202308beta1.DeviceService/CreateDevices",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DeviceServiceServer).CreateDevices(ctx, req.(*CreateDevicesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _DeviceService_UpdateDevice_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateDeviceRequest)
 	if err := dec(in); err != nil {
@@ -202,6 +262,24 @@ func _DeviceService_UpdateDevice_Handler(srv interface{}, ctx context.Context, d
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(DeviceServiceServer).UpdateDevice(ctx, req.(*UpdateDeviceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DeviceService_UpdateDevices_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateDevicesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DeviceServiceServer).UpdateDevices(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kentik.device.v202308beta1.DeviceService/UpdateDevices",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DeviceServiceServer).UpdateDevices(ctx, req.(*UpdateDevicesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -242,6 +320,24 @@ func _DeviceService_DeleteDevice_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _DeviceService_DeleteDevices_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteDevicesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DeviceServiceServer).DeleteDevices(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kentik.device.v202308beta1.DeviceService/DeleteDevices",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DeviceServiceServer).DeleteDevices(ctx, req.(*DeleteDevicesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // DeviceService_ServiceDesc is the grpc.ServiceDesc for DeviceService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -262,8 +358,16 @@ var DeviceService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _DeviceService_CreateDevice_Handler,
 		},
 		{
+			MethodName: "CreateDevices",
+			Handler:    _DeviceService_CreateDevices_Handler,
+		},
+		{
 			MethodName: "UpdateDevice",
 			Handler:    _DeviceService_UpdateDevice_Handler,
+		},
+		{
+			MethodName: "UpdateDevices",
+			Handler:    _DeviceService_UpdateDevices_Handler,
 		},
 		{
 			MethodName: "UpdateDeviceLabels",
@@ -272,6 +376,10 @@ var DeviceService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteDevice",
 			Handler:    _DeviceService_DeleteDevice_Handler,
+		},
+		{
+			MethodName: "DeleteDevices",
+			Handler:    _DeviceService_DeleteDevices_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

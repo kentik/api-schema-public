@@ -37,12 +37,18 @@ typedef struct Kentik__Device__V202308beta1__GetDeviceRequest Kentik__Device__V2
 typedef struct Kentik__Device__V202308beta1__GetDeviceResponse Kentik__Device__V202308beta1__GetDeviceResponse;
 typedef struct Kentik__Device__V202308beta1__CreateDeviceRequest Kentik__Device__V202308beta1__CreateDeviceRequest;
 typedef struct Kentik__Device__V202308beta1__CreateDeviceResponse Kentik__Device__V202308beta1__CreateDeviceResponse;
+typedef struct Kentik__Device__V202308beta1__CreateDevicesRequest Kentik__Device__V202308beta1__CreateDevicesRequest;
+typedef struct Kentik__Device__V202308beta1__CreateDevicesResponse Kentik__Device__V202308beta1__CreateDevicesResponse;
 typedef struct Kentik__Device__V202308beta1__UpdateDeviceRequest Kentik__Device__V202308beta1__UpdateDeviceRequest;
 typedef struct Kentik__Device__V202308beta1__UpdateDeviceResponse Kentik__Device__V202308beta1__UpdateDeviceResponse;
+typedef struct Kentik__Device__V202308beta1__UpdateDevicesRequest Kentik__Device__V202308beta1__UpdateDevicesRequest;
+typedef struct Kentik__Device__V202308beta1__UpdateDevicesResponse Kentik__Device__V202308beta1__UpdateDevicesResponse;
 typedef struct Kentik__Device__V202308beta1__UpdateDeviceLabelsRequest Kentik__Device__V202308beta1__UpdateDeviceLabelsRequest;
 typedef struct Kentik__Device__V202308beta1__UpdateDeviceLabelsResponse Kentik__Device__V202308beta1__UpdateDeviceLabelsResponse;
 typedef struct Kentik__Device__V202308beta1__DeleteDeviceRequest Kentik__Device__V202308beta1__DeleteDeviceRequest;
 typedef struct Kentik__Device__V202308beta1__DeleteDeviceResponse Kentik__Device__V202308beta1__DeleteDeviceResponse;
+typedef struct Kentik__Device__V202308beta1__DeleteDevicesRequest Kentik__Device__V202308beta1__DeleteDevicesRequest;
+typedef struct Kentik__Device__V202308beta1__DeleteDevicesResponse Kentik__Device__V202308beta1__DeleteDevicesResponse;
 
 
 /* --- enums --- */
@@ -380,6 +386,36 @@ struct  Kentik__Device__V202308beta1__CreateDeviceResponse
 /*
  * {{.Name}}
  */
+struct  Kentik__Device__V202308beta1__CreateDevicesRequest
+{
+  ProtobufCMessage base;
+  size_t n_devices;
+  Kentik__Device__V202308beta1__DeviceConcise **devices;
+};
+#define KENTIK__DEVICE__V202308BETA1__CREATE_DEVICES_REQUEST__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__device__v202308beta1__create_devices_request__descriptor) \
+    , 0,NULL }
+
+
+/*
+ * {{.Name}}
+ */
+struct  Kentik__Device__V202308beta1__CreateDevicesResponse
+{
+  ProtobufCMessage base;
+  size_t n_devices;
+  Kentik__Device__V202308beta1__DeviceDetailed **devices;
+  size_t n_failed_devices;
+  char **failed_devices;
+};
+#define KENTIK__DEVICE__V202308BETA1__CREATE_DEVICES_RESPONSE__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__device__v202308beta1__create_devices_response__descriptor) \
+    , 0,NULL, 0,NULL }
+
+
+/*
+ * {{.Name}}
+ */
 struct  Kentik__Device__V202308beta1__UpdateDeviceRequest
 {
   ProtobufCMessage base;
@@ -401,6 +437,36 @@ struct  Kentik__Device__V202308beta1__UpdateDeviceResponse
 #define KENTIK__DEVICE__V202308BETA1__UPDATE_DEVICE_RESPONSE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__device__v202308beta1__update_device_response__descriptor) \
     , NULL }
+
+
+/*
+ * {{.Name}}
+ */
+struct  Kentik__Device__V202308beta1__UpdateDevicesRequest
+{
+  ProtobufCMessage base;
+  size_t n_devices;
+  Kentik__Device__V202308beta1__DeviceConcise **devices;
+};
+#define KENTIK__DEVICE__V202308BETA1__UPDATE_DEVICES_REQUEST__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__device__v202308beta1__update_devices_request__descriptor) \
+    , 0,NULL }
+
+
+/*
+ * {{.Name}}
+ */
+struct  Kentik__Device__V202308beta1__UpdateDevicesResponse
+{
+  ProtobufCMessage base;
+  size_t n_devices;
+  Kentik__Device__V202308beta1__DeviceDetailed **devices;
+  size_t n_failed_devices;
+  char **failed_devices;
+};
+#define KENTIK__DEVICE__V202308BETA1__UPDATE_DEVICES_RESPONSE__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__device__v202308beta1__update_devices_response__descriptor) \
+    , 0,NULL, 0,NULL }
 
 
 /*
@@ -454,6 +520,34 @@ struct  Kentik__Device__V202308beta1__DeleteDeviceResponse
 #define KENTIK__DEVICE__V202308BETA1__DELETE_DEVICE_RESPONSE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__device__v202308beta1__delete_device_response__descriptor) \
      }
+
+
+/*
+ * {{.Name}}
+ */
+struct  Kentik__Device__V202308beta1__DeleteDevicesRequest
+{
+  ProtobufCMessage base;
+  size_t n_ids;
+  char **ids;
+};
+#define KENTIK__DEVICE__V202308BETA1__DELETE_DEVICES_REQUEST__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__device__v202308beta1__delete_devices_request__descriptor) \
+    , 0,NULL }
+
+
+/*
+ * {{.Name}}
+ */
+struct  Kentik__Device__V202308beta1__DeleteDevicesResponse
+{
+  ProtobufCMessage base;
+  size_t n_failed_devices;
+  char **failed_devices;
+};
+#define KENTIK__DEVICE__V202308BETA1__DELETE_DEVICES_RESPONSE__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__device__v202308beta1__delete_devices_response__descriptor) \
+    , 0,NULL }
 
 
 /* Kentik__Device__V202308beta1__DeviceSnmpV3Conf methods */
@@ -760,6 +854,44 @@ Kentik__Device__V202308beta1__CreateDeviceResponse *
 void   kentik__device__v202308beta1__create_device_response__free_unpacked
                      (Kentik__Device__V202308beta1__CreateDeviceResponse *message,
                       ProtobufCAllocator *allocator);
+/* Kentik__Device__V202308beta1__CreateDevicesRequest methods */
+void   kentik__device__v202308beta1__create_devices_request__init
+                     (Kentik__Device__V202308beta1__CreateDevicesRequest         *message);
+size_t kentik__device__v202308beta1__create_devices_request__get_packed_size
+                     (const Kentik__Device__V202308beta1__CreateDevicesRequest   *message);
+size_t kentik__device__v202308beta1__create_devices_request__pack
+                     (const Kentik__Device__V202308beta1__CreateDevicesRequest   *message,
+                      uint8_t             *out);
+size_t kentik__device__v202308beta1__create_devices_request__pack_to_buffer
+                     (const Kentik__Device__V202308beta1__CreateDevicesRequest   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Device__V202308beta1__CreateDevicesRequest *
+       kentik__device__v202308beta1__create_devices_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__device__v202308beta1__create_devices_request__free_unpacked
+                     (Kentik__Device__V202308beta1__CreateDevicesRequest *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Device__V202308beta1__CreateDevicesResponse methods */
+void   kentik__device__v202308beta1__create_devices_response__init
+                     (Kentik__Device__V202308beta1__CreateDevicesResponse         *message);
+size_t kentik__device__v202308beta1__create_devices_response__get_packed_size
+                     (const Kentik__Device__V202308beta1__CreateDevicesResponse   *message);
+size_t kentik__device__v202308beta1__create_devices_response__pack
+                     (const Kentik__Device__V202308beta1__CreateDevicesResponse   *message,
+                      uint8_t             *out);
+size_t kentik__device__v202308beta1__create_devices_response__pack_to_buffer
+                     (const Kentik__Device__V202308beta1__CreateDevicesResponse   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Device__V202308beta1__CreateDevicesResponse *
+       kentik__device__v202308beta1__create_devices_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__device__v202308beta1__create_devices_response__free_unpacked
+                     (Kentik__Device__V202308beta1__CreateDevicesResponse *message,
+                      ProtobufCAllocator *allocator);
 /* Kentik__Device__V202308beta1__UpdateDeviceRequest methods */
 void   kentik__device__v202308beta1__update_device_request__init
                      (Kentik__Device__V202308beta1__UpdateDeviceRequest         *message);
@@ -797,6 +929,44 @@ Kentik__Device__V202308beta1__UpdateDeviceResponse *
                       const uint8_t       *data);
 void   kentik__device__v202308beta1__update_device_response__free_unpacked
                      (Kentik__Device__V202308beta1__UpdateDeviceResponse *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Device__V202308beta1__UpdateDevicesRequest methods */
+void   kentik__device__v202308beta1__update_devices_request__init
+                     (Kentik__Device__V202308beta1__UpdateDevicesRequest         *message);
+size_t kentik__device__v202308beta1__update_devices_request__get_packed_size
+                     (const Kentik__Device__V202308beta1__UpdateDevicesRequest   *message);
+size_t kentik__device__v202308beta1__update_devices_request__pack
+                     (const Kentik__Device__V202308beta1__UpdateDevicesRequest   *message,
+                      uint8_t             *out);
+size_t kentik__device__v202308beta1__update_devices_request__pack_to_buffer
+                     (const Kentik__Device__V202308beta1__UpdateDevicesRequest   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Device__V202308beta1__UpdateDevicesRequest *
+       kentik__device__v202308beta1__update_devices_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__device__v202308beta1__update_devices_request__free_unpacked
+                     (Kentik__Device__V202308beta1__UpdateDevicesRequest *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Device__V202308beta1__UpdateDevicesResponse methods */
+void   kentik__device__v202308beta1__update_devices_response__init
+                     (Kentik__Device__V202308beta1__UpdateDevicesResponse         *message);
+size_t kentik__device__v202308beta1__update_devices_response__get_packed_size
+                     (const Kentik__Device__V202308beta1__UpdateDevicesResponse   *message);
+size_t kentik__device__v202308beta1__update_devices_response__pack
+                     (const Kentik__Device__V202308beta1__UpdateDevicesResponse   *message,
+                      uint8_t             *out);
+size_t kentik__device__v202308beta1__update_devices_response__pack_to_buffer
+                     (const Kentik__Device__V202308beta1__UpdateDevicesResponse   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Device__V202308beta1__UpdateDevicesResponse *
+       kentik__device__v202308beta1__update_devices_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__device__v202308beta1__update_devices_response__free_unpacked
+                     (Kentik__Device__V202308beta1__UpdateDevicesResponse *message,
                       ProtobufCAllocator *allocator);
 /* Kentik__Device__V202308beta1__UpdateDeviceLabelsRequest methods */
 void   kentik__device__v202308beta1__update_device_labels_request__init
@@ -874,6 +1044,44 @@ Kentik__Device__V202308beta1__DeleteDeviceResponse *
 void   kentik__device__v202308beta1__delete_device_response__free_unpacked
                      (Kentik__Device__V202308beta1__DeleteDeviceResponse *message,
                       ProtobufCAllocator *allocator);
+/* Kentik__Device__V202308beta1__DeleteDevicesRequest methods */
+void   kentik__device__v202308beta1__delete_devices_request__init
+                     (Kentik__Device__V202308beta1__DeleteDevicesRequest         *message);
+size_t kentik__device__v202308beta1__delete_devices_request__get_packed_size
+                     (const Kentik__Device__V202308beta1__DeleteDevicesRequest   *message);
+size_t kentik__device__v202308beta1__delete_devices_request__pack
+                     (const Kentik__Device__V202308beta1__DeleteDevicesRequest   *message,
+                      uint8_t             *out);
+size_t kentik__device__v202308beta1__delete_devices_request__pack_to_buffer
+                     (const Kentik__Device__V202308beta1__DeleteDevicesRequest   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Device__V202308beta1__DeleteDevicesRequest *
+       kentik__device__v202308beta1__delete_devices_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__device__v202308beta1__delete_devices_request__free_unpacked
+                     (Kentik__Device__V202308beta1__DeleteDevicesRequest *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Device__V202308beta1__DeleteDevicesResponse methods */
+void   kentik__device__v202308beta1__delete_devices_response__init
+                     (Kentik__Device__V202308beta1__DeleteDevicesResponse         *message);
+size_t kentik__device__v202308beta1__delete_devices_response__get_packed_size
+                     (const Kentik__Device__V202308beta1__DeleteDevicesResponse   *message);
+size_t kentik__device__v202308beta1__delete_devices_response__pack
+                     (const Kentik__Device__V202308beta1__DeleteDevicesResponse   *message,
+                      uint8_t             *out);
+size_t kentik__device__v202308beta1__delete_devices_response__pack_to_buffer
+                     (const Kentik__Device__V202308beta1__DeleteDevicesResponse   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Device__V202308beta1__DeleteDevicesResponse *
+       kentik__device__v202308beta1__delete_devices_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__device__v202308beta1__delete_devices_response__free_unpacked
+                     (Kentik__Device__V202308beta1__DeleteDevicesResponse *message,
+                      ProtobufCAllocator *allocator);
 /* --- per-message closures --- */
 
 typedef void (*Kentik__Device__V202308beta1__DeviceSnmpV3Conf_Closure)
@@ -924,11 +1132,23 @@ typedef void (*Kentik__Device__V202308beta1__CreateDeviceRequest_Closure)
 typedef void (*Kentik__Device__V202308beta1__CreateDeviceResponse_Closure)
                  (const Kentik__Device__V202308beta1__CreateDeviceResponse *message,
                   void *closure_data);
+typedef void (*Kentik__Device__V202308beta1__CreateDevicesRequest_Closure)
+                 (const Kentik__Device__V202308beta1__CreateDevicesRequest *message,
+                  void *closure_data);
+typedef void (*Kentik__Device__V202308beta1__CreateDevicesResponse_Closure)
+                 (const Kentik__Device__V202308beta1__CreateDevicesResponse *message,
+                  void *closure_data);
 typedef void (*Kentik__Device__V202308beta1__UpdateDeviceRequest_Closure)
                  (const Kentik__Device__V202308beta1__UpdateDeviceRequest *message,
                   void *closure_data);
 typedef void (*Kentik__Device__V202308beta1__UpdateDeviceResponse_Closure)
                  (const Kentik__Device__V202308beta1__UpdateDeviceResponse *message,
+                  void *closure_data);
+typedef void (*Kentik__Device__V202308beta1__UpdateDevicesRequest_Closure)
+                 (const Kentik__Device__V202308beta1__UpdateDevicesRequest *message,
+                  void *closure_data);
+typedef void (*Kentik__Device__V202308beta1__UpdateDevicesResponse_Closure)
+                 (const Kentik__Device__V202308beta1__UpdateDevicesResponse *message,
                   void *closure_data);
 typedef void (*Kentik__Device__V202308beta1__UpdateDeviceLabelsRequest_Closure)
                  (const Kentik__Device__V202308beta1__UpdateDeviceLabelsRequest *message,
@@ -941,6 +1161,12 @@ typedef void (*Kentik__Device__V202308beta1__DeleteDeviceRequest_Closure)
                   void *closure_data);
 typedef void (*Kentik__Device__V202308beta1__DeleteDeviceResponse_Closure)
                  (const Kentik__Device__V202308beta1__DeleteDeviceResponse *message,
+                  void *closure_data);
+typedef void (*Kentik__Device__V202308beta1__DeleteDevicesRequest_Closure)
+                 (const Kentik__Device__V202308beta1__DeleteDevicesRequest *message,
+                  void *closure_data);
+typedef void (*Kentik__Device__V202308beta1__DeleteDevicesResponse_Closure)
+                 (const Kentik__Device__V202308beta1__DeleteDevicesResponse *message,
                   void *closure_data);
 
 /* --- services --- */
@@ -961,10 +1187,18 @@ struct Kentik__Device__V202308beta1__DeviceService_Service
                         const Kentik__Device__V202308beta1__CreateDeviceRequest *input,
                         Kentik__Device__V202308beta1__CreateDeviceResponse_Closure closure,
                         void *closure_data);
+  void (*create_devices)(Kentik__Device__V202308beta1__DeviceService_Service *service,
+                         const Kentik__Device__V202308beta1__CreateDevicesRequest *input,
+                         Kentik__Device__V202308beta1__CreateDevicesResponse_Closure closure,
+                         void *closure_data);
   void (*update_device)(Kentik__Device__V202308beta1__DeviceService_Service *service,
                         const Kentik__Device__V202308beta1__UpdateDeviceRequest *input,
                         Kentik__Device__V202308beta1__UpdateDeviceResponse_Closure closure,
                         void *closure_data);
+  void (*update_devices)(Kentik__Device__V202308beta1__DeviceService_Service *service,
+                         const Kentik__Device__V202308beta1__UpdateDevicesRequest *input,
+                         Kentik__Device__V202308beta1__UpdateDevicesResponse_Closure closure,
+                         void *closure_data);
   void (*update_device_labels)(Kentik__Device__V202308beta1__DeviceService_Service *service,
                                const Kentik__Device__V202308beta1__UpdateDeviceLabelsRequest *input,
                                Kentik__Device__V202308beta1__UpdateDeviceLabelsResponse_Closure closure,
@@ -973,6 +1207,10 @@ struct Kentik__Device__V202308beta1__DeviceService_Service
                         const Kentik__Device__V202308beta1__DeleteDeviceRequest *input,
                         Kentik__Device__V202308beta1__DeleteDeviceResponse_Closure closure,
                         void *closure_data);
+  void (*delete_devices)(Kentik__Device__V202308beta1__DeviceService_Service *service,
+                         const Kentik__Device__V202308beta1__DeleteDevicesRequest *input,
+                         Kentik__Device__V202308beta1__DeleteDevicesResponse_Closure closure,
+                         void *closure_data);
 };
 typedef void (*Kentik__Device__V202308beta1__DeviceService_ServiceDestroy)(Kentik__Device__V202308beta1__DeviceService_Service *);
 void kentik__device__v202308beta1__device_service__init (Kentik__Device__V202308beta1__DeviceService_Service *service,
@@ -984,9 +1222,12 @@ void kentik__device__v202308beta1__device_service__init (Kentik__Device__V202308
       function_prefix__ ## list_devices,\
       function_prefix__ ## get_device,\
       function_prefix__ ## create_device,\
+      function_prefix__ ## create_devices,\
       function_prefix__ ## update_device,\
+      function_prefix__ ## update_devices,\
       function_prefix__ ## update_device_labels,\
-      function_prefix__ ## delete_device  }
+      function_prefix__ ## delete_device,\
+      function_prefix__ ## delete_devices  }
 void kentik__device__v202308beta1__device_service__list_devices(ProtobufCService *service,
                                                                 const Kentik__Device__V202308beta1__ListDevicesRequest *input,
                                                                 Kentik__Device__V202308beta1__ListDevicesResponse_Closure closure,
@@ -999,10 +1240,18 @@ void kentik__device__v202308beta1__device_service__create_device(ProtobufCServic
                                                                  const Kentik__Device__V202308beta1__CreateDeviceRequest *input,
                                                                  Kentik__Device__V202308beta1__CreateDeviceResponse_Closure closure,
                                                                  void *closure_data);
+void kentik__device__v202308beta1__device_service__create_devices(ProtobufCService *service,
+                                                                  const Kentik__Device__V202308beta1__CreateDevicesRequest *input,
+                                                                  Kentik__Device__V202308beta1__CreateDevicesResponse_Closure closure,
+                                                                  void *closure_data);
 void kentik__device__v202308beta1__device_service__update_device(ProtobufCService *service,
                                                                  const Kentik__Device__V202308beta1__UpdateDeviceRequest *input,
                                                                  Kentik__Device__V202308beta1__UpdateDeviceResponse_Closure closure,
                                                                  void *closure_data);
+void kentik__device__v202308beta1__device_service__update_devices(ProtobufCService *service,
+                                                                  const Kentik__Device__V202308beta1__UpdateDevicesRequest *input,
+                                                                  Kentik__Device__V202308beta1__UpdateDevicesResponse_Closure closure,
+                                                                  void *closure_data);
 void kentik__device__v202308beta1__device_service__update_device_labels(ProtobufCService *service,
                                                                         const Kentik__Device__V202308beta1__UpdateDeviceLabelsRequest *input,
                                                                         Kentik__Device__V202308beta1__UpdateDeviceLabelsResponse_Closure closure,
@@ -1011,6 +1260,10 @@ void kentik__device__v202308beta1__device_service__delete_device(ProtobufCServic
                                                                  const Kentik__Device__V202308beta1__DeleteDeviceRequest *input,
                                                                  Kentik__Device__V202308beta1__DeleteDeviceResponse_Closure closure,
                                                                  void *closure_data);
+void kentik__device__v202308beta1__device_service__delete_devices(ProtobufCService *service,
+                                                                  const Kentik__Device__V202308beta1__DeleteDevicesRequest *input,
+                                                                  Kentik__Device__V202308beta1__DeleteDevicesResponse_Closure closure,
+                                                                  void *closure_data);
 
 /* --- descriptors --- */
 
@@ -1030,12 +1283,18 @@ extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__get_device
 extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__get_device_response__descriptor;
 extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__create_device_request__descriptor;
 extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__create_device_response__descriptor;
+extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__create_devices_request__descriptor;
+extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__create_devices_response__descriptor;
 extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__update_device_request__descriptor;
 extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__update_device_response__descriptor;
+extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__update_devices_request__descriptor;
+extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__update_devices_response__descriptor;
 extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__update_device_labels_request__descriptor;
 extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__update_device_labels_response__descriptor;
 extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__delete_device_request__descriptor;
 extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__delete_device_response__descriptor;
+extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__delete_devices_request__descriptor;
+extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__delete_devices_response__descriptor;
 extern const ProtobufCServiceDescriptor kentik__device__v202308beta1__device_service__descriptor;
 
 PROTOBUF_C__END_DECLS

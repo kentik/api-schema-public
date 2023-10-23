@@ -87,6 +87,88 @@
                 ]
             }
         },
+        "/device/v202308beta1/device/batch": {
+            "post": {
+                "summary": "Delete configuration of multiple devices.",
+                "description": "Deletes configuration of multiple devices with specific IDs (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).",
+                "operationId": "DeleteDevices",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202308beta1DeleteDevicesResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202308beta1DeleteDevicesRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "DeviceService"
+                ]
+            },
+            "put": {
+                "summary": "Updates configuration of multiple devices (max 100).",
+                "description": "Replaces configuration of multiple devices with attributes in the request. Returns the updated configurations (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).",
+                "operationId": "UpdateDevices",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202308beta1UpdateDevicesResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202308beta1UpdateDevicesRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "DeviceService"
+                ]
+            }
+        },
         "/device/v202308beta1/device/{device.id}": {
             "put": {
                 "summary": "Updates configuration of a device.",
@@ -403,6 +485,45 @@
                 },
                 "title": "CreateDeviceResponse"
             },
+            "v202308beta1CreateDevicesRequest": {
+                "type": "object",
+                "properties": {
+                    "devices": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202308beta1DeviceConcise"
+                        },
+                        "description": "List of configurations of devices to be created",
+                        "required": [
+                            "devices"
+                        ]
+                    }
+                },
+                "title": "CreateDevicesRequest",
+                "required": [
+                    "devices"
+                ]
+            },
+            "v202308beta1CreateDevicesResponse": {
+                "type": "object",
+                "properties": {
+                    "devices": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202308beta1DeviceDetailed"
+                        },
+                        "description": "List of configurations of newly created devices"
+                    },
+                    "failedDevices": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of names of devices that failed to be created"
+                    }
+                },
+                "title": "CreateDevicesResponse"
+            },
             "v202308beta1CustomColumnData": {
                 "type": "object",
                 "properties": {
@@ -436,6 +557,38 @@
             "v202308beta1DeleteDeviceResponse": {
                 "type": "object",
                 "title": "DeleteDeviceResponse"
+            },
+            "v202308beta1DeleteDevicesRequest": {
+                "type": "object",
+                "properties": {
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of IDs of devices to be deleted",
+                        "required": [
+                            "ids"
+                        ]
+                    }
+                },
+                "title": "DeleteDevicesRequest",
+                "required": [
+                    "ids"
+                ]
+            },
+            "v202308beta1DeleteDevicesResponse": {
+                "type": "object",
+                "properties": {
+                    "failedDevices": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of IDs of devices that failed to be deleted"
+                    }
+                },
+                "title": "DeleteDevicesResponse"
             },
             "v202308beta1DeviceConcise": {
                 "type": "object",
@@ -1005,6 +1158,45 @@
                     }
                 },
                 "title": "UpdateDeviceResponse"
+            },
+            "v202308beta1UpdateDevicesRequest": {
+                "type": "object",
+                "properties": {
+                    "devices": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202308beta1DeviceConcise"
+                        },
+                        "description": "List of configurations of devices to be updated",
+                        "required": [
+                            "devices"
+                        ]
+                    }
+                },
+                "title": "UpdateDevicesRequest",
+                "required": [
+                    "devices"
+                ]
+            },
+            "v202308beta1UpdateDevicesResponse": {
+                "type": "object",
+                "properties": {
+                    "devices": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202308beta1DeviceDetailed"
+                        },
+                        "description": "List of configurations of updated devices"
+                    },
+                    "failedDevices": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of IDs of devices that failed to be updated"
+                    }
+                },
+                "title": "UpdateDevicesResponse"
             }
         }
     }

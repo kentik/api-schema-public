@@ -33,7 +33,15 @@ class DeviceServiceBase(abc.ABC):
         pass
 
     @abc.abstractmethod
+    async def CreateDevices(self, stream: 'grpclib.server.Stream[kentik.device.v202308beta1.device_pb2.CreateDevicesRequest, kentik.device.v202308beta1.device_pb2.CreateDevicesResponse]') -> None:
+        pass
+
+    @abc.abstractmethod
     async def UpdateDevice(self, stream: 'grpclib.server.Stream[kentik.device.v202308beta1.device_pb2.UpdateDeviceRequest, kentik.device.v202308beta1.device_pb2.UpdateDeviceResponse]') -> None:
+        pass
+
+    @abc.abstractmethod
+    async def UpdateDevices(self, stream: 'grpclib.server.Stream[kentik.device.v202308beta1.device_pb2.UpdateDevicesRequest, kentik.device.v202308beta1.device_pb2.UpdateDevicesResponse]') -> None:
         pass
 
     @abc.abstractmethod
@@ -42,6 +50,10 @@ class DeviceServiceBase(abc.ABC):
 
     @abc.abstractmethod
     async def DeleteDevice(self, stream: 'grpclib.server.Stream[kentik.device.v202308beta1.device_pb2.DeleteDeviceRequest, kentik.device.v202308beta1.device_pb2.DeleteDeviceResponse]') -> None:
+        pass
+
+    @abc.abstractmethod
+    async def DeleteDevices(self, stream: 'grpclib.server.Stream[kentik.device.v202308beta1.device_pb2.DeleteDevicesRequest, kentik.device.v202308beta1.device_pb2.DeleteDevicesResponse]') -> None:
         pass
 
     def __mapping__(self) -> typing.Dict[str, grpclib.const.Handler]:
@@ -64,11 +76,23 @@ class DeviceServiceBase(abc.ABC):
                 kentik.device.v202308beta1.device_pb2.CreateDeviceRequest,
                 kentik.device.v202308beta1.device_pb2.CreateDeviceResponse,
             ),
+            '/kentik.device.v202308beta1.DeviceService/CreateDevices': grpclib.const.Handler(
+                self.CreateDevices,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                kentik.device.v202308beta1.device_pb2.CreateDevicesRequest,
+                kentik.device.v202308beta1.device_pb2.CreateDevicesResponse,
+            ),
             '/kentik.device.v202308beta1.DeviceService/UpdateDevice': grpclib.const.Handler(
                 self.UpdateDevice,
                 grpclib.const.Cardinality.UNARY_UNARY,
                 kentik.device.v202308beta1.device_pb2.UpdateDeviceRequest,
                 kentik.device.v202308beta1.device_pb2.UpdateDeviceResponse,
+            ),
+            '/kentik.device.v202308beta1.DeviceService/UpdateDevices': grpclib.const.Handler(
+                self.UpdateDevices,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                kentik.device.v202308beta1.device_pb2.UpdateDevicesRequest,
+                kentik.device.v202308beta1.device_pb2.UpdateDevicesResponse,
             ),
             '/kentik.device.v202308beta1.DeviceService/UpdateDeviceLabels': grpclib.const.Handler(
                 self.UpdateDeviceLabels,
@@ -81,6 +105,12 @@ class DeviceServiceBase(abc.ABC):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 kentik.device.v202308beta1.device_pb2.DeleteDeviceRequest,
                 kentik.device.v202308beta1.device_pb2.DeleteDeviceResponse,
+            ),
+            '/kentik.device.v202308beta1.DeviceService/DeleteDevices': grpclib.const.Handler(
+                self.DeleteDevices,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                kentik.device.v202308beta1.device_pb2.DeleteDevicesRequest,
+                kentik.device.v202308beta1.device_pb2.DeleteDevicesResponse,
             ),
         }
 
@@ -106,11 +136,23 @@ class DeviceServiceStub:
             kentik.device.v202308beta1.device_pb2.CreateDeviceRequest,
             kentik.device.v202308beta1.device_pb2.CreateDeviceResponse,
         )
+        self.CreateDevices = grpclib.client.UnaryUnaryMethod(
+            channel,
+            '/kentik.device.v202308beta1.DeviceService/CreateDevices',
+            kentik.device.v202308beta1.device_pb2.CreateDevicesRequest,
+            kentik.device.v202308beta1.device_pb2.CreateDevicesResponse,
+        )
         self.UpdateDevice = grpclib.client.UnaryUnaryMethod(
             channel,
             '/kentik.device.v202308beta1.DeviceService/UpdateDevice',
             kentik.device.v202308beta1.device_pb2.UpdateDeviceRequest,
             kentik.device.v202308beta1.device_pb2.UpdateDeviceResponse,
+        )
+        self.UpdateDevices = grpclib.client.UnaryUnaryMethod(
+            channel,
+            '/kentik.device.v202308beta1.DeviceService/UpdateDevices',
+            kentik.device.v202308beta1.device_pb2.UpdateDevicesRequest,
+            kentik.device.v202308beta1.device_pb2.UpdateDevicesResponse,
         )
         self.UpdateDeviceLabels = grpclib.client.UnaryUnaryMethod(
             channel,
@@ -123,4 +165,10 @@ class DeviceServiceStub:
             '/kentik.device.v202308beta1.DeviceService/DeleteDevice',
             kentik.device.v202308beta1.device_pb2.DeleteDeviceRequest,
             kentik.device.v202308beta1.device_pb2.DeleteDeviceResponse,
+        )
+        self.DeleteDevices = grpclib.client.UnaryUnaryMethod(
+            channel,
+            '/kentik.device.v202308beta1.DeviceService/DeleteDevices',
+            kentik.device.v202308beta1.device_pb2.DeleteDevicesRequest,
+            kentik.device.v202308beta1.device_pb2.DeleteDevicesResponse,
         )

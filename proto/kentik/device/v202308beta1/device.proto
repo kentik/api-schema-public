@@ -759,6 +759,30 @@ message CreateDeviceResponse {
 }
 
 // {{.Name}}
+message CreateDevicesRequest {
+  repeated DeviceConcise devices = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of configurations of devices to be created"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message CreateDevicesResponse {
+  repeated DeviceDetailed devices = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of configurations of newly created devices"
+    }
+  ];
+  repeated string failed_devices = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of names of devices that failed to be created"
+    }
+  ];
+}
+
+// {{.Name}}
 message UpdateDeviceRequest {
   DeviceConcise device = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -773,6 +797,30 @@ message UpdateDeviceResponse {
   DeviceDetailed device = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Updated configuration of the device"
+    }
+  ];
+}
+
+// {{.Name}}
+message UpdateDevicesRequest {
+  repeated DeviceConcise devices = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of configurations of devices to be updated"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message UpdateDevicesResponse {
+  repeated DeviceDetailed devices = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of configurations of updated devices"
+    }
+  ];
+  repeated string failed_devices = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of IDs of devices that failed to be updated"
     }
   ];
 }
@@ -814,6 +862,25 @@ message DeleteDeviceRequest {
 
 // {{.Name}}
 message DeleteDeviceResponse {}
+
+// {{.Name}}
+message DeleteDevicesRequest {
+  repeated string ids = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of IDs of devices to be deleted"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message DeleteDevicesResponse {
+  repeated string failed_devices = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of IDs of devices that failed to be deleted"
+    }
+  ];
+}
 
 // services and RPCs
 // -------------------------------------------------------
@@ -862,6 +929,19 @@ service DeviceService {
     };
   }
 
+  rpc CreateDevices(CreateDevicesRequest) returns (CreateDevicesResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.device:write";
+    option (google.api.http) = {
+      post: "/device/v202308beta1/device/batch"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "CreateDevices"
+      summary: "Configure multiple devices (max 100)."
+      description: "Create configuration for multiple devices. Returns the newly created configurations (see [About Devices](https://kb.kentik.com/v4/Cb01.htm))."
+    };
+  }
+
   rpc UpdateDevice(UpdateDeviceRequest) returns (UpdateDeviceResponse) {
     option (kentik.core.v202303.method_scope) = "admin.device:write";
     option (google.api.http) = {
@@ -872,6 +952,19 @@ service DeviceService {
       operation_id: "UpdateDevice"
       summary: "Updates configuration of a device."
       description: "Replaces configuration of a device with attributes in the request. Returns the updated configuration (see [About Devices](https://kb.kentik.com/v4/Cb01.htm))."
+    };
+  }
+
+  rpc UpdateDevices(UpdateDevicesRequest) returns (UpdateDevicesResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.device:write";
+    option (google.api.http) = {
+      put: "/device/v202308beta1/device/batch"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "UpdateDevices"
+      summary: "Updates configuration of multiple devices (max 100)."
+      description: "Replaces configuration of multiple devices with attributes in the request. Returns the updated configurations (see [About Devices](https://kb.kentik.com/v4/Cb01.htm))."
     };
   }
 
@@ -897,6 +990,19 @@ service DeviceService {
       operation_id: "DeleteDevice"
       summary: "Delete configuration of a device."
       description: "Deletes configuration of a device with specific ID (see [About Devices](https://kb.kentik.com/v4/Cb01.htm))."
+    };
+  }
+
+  rpc DeleteDevices(DeleteDevicesRequest) returns (DeleteDevicesResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.device:write";
+    option (google.api.http) = {
+      post: "/device/v202308beta1/device/batch"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "DeleteDevices"
+      summary: "Delete configuration of multiple devices."
+      description: "Deletes configuration of multiple devices with specific IDs (see [About Devices](https://kb.kentik.com/v4/Cb01.htm))."
     };
   }
 }
