@@ -944,7 +944,7 @@ const char descriptor_table_protodef_kentik_2finterface_2fv202108alpha1_2finterf
   "tik.interface.v202108alpha1.DeviceFilter"
   "R\017includedDevices\022W\n\020excluded_devices\030\t "
   "\001(\0132,.kentik.interface.v202108alpha1.Dev"
-  "iceFilterR\017excludedDevices*\355\004\n\020Connectiv"
+  "iceFilterR\017excludedDevices*\275\005\n\020Connectiv"
   "ityType\022!\n\035CONNECTIVITY_TYPE_UNSPECIFIED"
   "\020\000\022.\n*CONNECTIVITY_TYPE_AGGREGATION_INTE"
   "RCONNECT\020\001\022\037\n\033CONNECTIVITY_TYPE_AVAILABL"
@@ -960,7 +960,9 @@ const char descriptor_table_protodef_kentik_2finterface_2fv202108alpha1_2finterf
   "TIVITY_TYPE_PAID_PNI\020\r\022\036\n\032CONNECTIVITY_T"
   "YPE_RESERVED\020\016\022\035\n\031CONNECTIVITY_TYPE_TRAN"
   "SIT\020\017\022+\n\'CONNECTIVITY_TYPE_VIRTUAL_CROSS"
-  "_CONNECT\020\020*\247\001\n\017NetworkBoundary\022 \n\034NETWOR"
+  "_CONNECT\020\020\022&\n\"CONNECTIVITY_TYPE_IPX_INTE"
+  "RCONNECT\020\021\022&\n\"CONNECTIVITY_TYPE_SIP_INTE"
+  "RCONNECT\020\022*\247\001\n\017NetworkBoundary\022 \n\034NETWOR"
   "K_BOUNDARY_UNSPECIFIED\020\000\022\031\n\025NETWORK_BOUN"
   "DARY_AUTO\020\001\022\035\n\031NETWORK_BOUNDARY_INTERNAL"
   "\020\002\022\035\n\031NETWORK_BOUNDARY_EXTERNAL\020\003\022\031\n\025NET"
@@ -1068,7 +1070,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_kentik_2finterface_2fv202108alpha1_2finterface_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_kentik_2finterface_2fv202108alpha1_2finterface_2eproto = {
-  false, false, descriptor_table_protodef_kentik_2finterface_2fv202108alpha1_2finterface_2eproto, "kentik/interface/v202108alpha1/interface.proto", 10343,
+  false, false, descriptor_table_protodef_kentik_2finterface_2fv202108alpha1_2finterface_2eproto, "kentik/interface/v202108alpha1/interface.proto", 10423,
   &descriptor_table_kentik_2finterface_2fv202108alpha1_2finterface_2eproto_once, descriptor_table_kentik_2finterface_2fv202108alpha1_2finterface_2eproto_sccs, descriptor_table_kentik_2finterface_2fv202108alpha1_2finterface_2eproto_deps, 24, 5,
   schemas, file_default_instances, TableStruct_kentik_2finterface_2fv202108alpha1_2finterface_2eproto::offsets,
   file_level_metadata_kentik_2finterface_2fv202108alpha1_2finterface_2eproto, 24, file_level_enum_descriptors_kentik_2finterface_2fv202108alpha1_2finterface_2eproto, file_level_service_descriptors_kentik_2finterface_2fv202108alpha1_2finterface_2eproto,
@@ -1102,6 +1104,8 @@ bool ConnectivityType_IsValid(int value) {
     case 14:
     case 15:
     case 16:
+    case 17:
+    case 18:
       return true;
     default:
       return false;

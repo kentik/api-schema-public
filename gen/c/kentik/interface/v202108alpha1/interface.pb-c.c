@@ -3144,7 +3144,7 @@ const ProtobufCMessageDescriptor kentik__interface__v202108alpha1__rule__descrip
   (ProtobufCMessageInit) kentik__interface__v202108alpha1__rule__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCEnumValue kentik__interface__v202108alpha1__connectivity_type__enum_values_by_number[17] =
+static const ProtobufCEnumValue kentik__interface__v202108alpha1__connectivity_type__enum_values_by_number[19] =
 {
   { "CONNECTIVITY_TYPE_UNSPECIFIED", "KENTIK__INTERFACE__V202108ALPHA1__CONNECTIVITY_TYPE__CONNECTIVITY_TYPE_UNSPECIFIED", 0 },
   { "CONNECTIVITY_TYPE_AGGREGATION_INTERCONNECT", "KENTIK__INTERFACE__V202108ALPHA1__CONNECTIVITY_TYPE__CONNECTIVITY_TYPE_AGGREGATION_INTERCONNECT", 1 },
@@ -3163,11 +3163,13 @@ static const ProtobufCEnumValue kentik__interface__v202108alpha1__connectivity_t
   { "CONNECTIVITY_TYPE_RESERVED", "KENTIK__INTERFACE__V202108ALPHA1__CONNECTIVITY_TYPE__CONNECTIVITY_TYPE_RESERVED", 14 },
   { "CONNECTIVITY_TYPE_TRANSIT", "KENTIK__INTERFACE__V202108ALPHA1__CONNECTIVITY_TYPE__CONNECTIVITY_TYPE_TRANSIT", 15 },
   { "CONNECTIVITY_TYPE_VIRTUAL_CROSS_CONNECT", "KENTIK__INTERFACE__V202108ALPHA1__CONNECTIVITY_TYPE__CONNECTIVITY_TYPE_VIRTUAL_CROSS_CONNECT", 16 },
+  { "CONNECTIVITY_TYPE_IPX_INTERCONNECT", "KENTIK__INTERFACE__V202108ALPHA1__CONNECTIVITY_TYPE__CONNECTIVITY_TYPE_IPX_INTERCONNECT", 17 },
+  { "CONNECTIVITY_TYPE_SIP_INTERCONNECT", "KENTIK__INTERFACE__V202108ALPHA1__CONNECTIVITY_TYPE__CONNECTIVITY_TYPE_SIP_INTERCONNECT", 18 },
 };
 static const ProtobufCIntRange kentik__interface__v202108alpha1__connectivity_type__value_ranges[] = {
-{0, 0},{0, 17}
+{0, 0},{0, 19}
 };
-static const ProtobufCEnumValueIndex kentik__interface__v202108alpha1__connectivity_type__enum_values_by_name[17] =
+static const ProtobufCEnumValueIndex kentik__interface__v202108alpha1__connectivity_type__enum_values_by_name[19] =
 {
   { "CONNECTIVITY_TYPE_AGGREGATION_INTERCONNECT", 1 },
   { "CONNECTIVITY_TYPE_AVAILABLE", 2 },
@@ -3179,10 +3181,12 @@ static const ProtobufCEnumValueIndex kentik__interface__v202108alpha1__connectiv
   { "CONNECTIVITY_TYPE_EMBEDDED_CACHE", 8 },
   { "CONNECTIVITY_TYPE_FREE_PNI", 9 },
   { "CONNECTIVITY_TYPE_HOST", 10 },
+  { "CONNECTIVITY_TYPE_IPX_INTERCONNECT", 17 },
   { "CONNECTIVITY_TYPE_IX", 11 },
   { "CONNECTIVITY_TYPE_OTHER", 12 },
   { "CONNECTIVITY_TYPE_PAID_PNI", 13 },
   { "CONNECTIVITY_TYPE_RESERVED", 14 },
+  { "CONNECTIVITY_TYPE_SIP_INTERCONNECT", 18 },
   { "CONNECTIVITY_TYPE_TRANSIT", 15 },
   { "CONNECTIVITY_TYPE_UNSPECIFIED", 0 },
   { "CONNECTIVITY_TYPE_VIRTUAL_CROSS_CONNECT", 16 },
@@ -3194,9 +3198,9 @@ const ProtobufCEnumDescriptor kentik__interface__v202108alpha1__connectivity_typ
   "ConnectivityType",
   "Kentik__Interface__V202108alpha1__ConnectivityType",
   "kentik.interface.v202108alpha1",
-  17,
+  19,
   kentik__interface__v202108alpha1__connectivity_type__enum_values_by_number,
-  17,
+  19,
   kentik__interface__v202108alpha1__connectivity_type__enum_values_by_name,
   1,
   kentik__interface__v202108alpha1__connectivity_type__value_ranges,

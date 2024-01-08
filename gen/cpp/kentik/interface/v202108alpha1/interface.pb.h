@@ -186,12 +186,14 @@ enum ConnectivityType : int {
   CONNECTIVITY_TYPE_RESERVED = 14,
   CONNECTIVITY_TYPE_TRANSIT = 15,
   CONNECTIVITY_TYPE_VIRTUAL_CROSS_CONNECT = 16,
+  CONNECTIVITY_TYPE_IPX_INTERCONNECT = 17,
+  CONNECTIVITY_TYPE_SIP_INTERCONNECT = 18,
   ConnectivityType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
   ConnectivityType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
 };
 bool ConnectivityType_IsValid(int value);
 constexpr ConnectivityType ConnectivityType_MIN = CONNECTIVITY_TYPE_UNSPECIFIED;
-constexpr ConnectivityType ConnectivityType_MAX = CONNECTIVITY_TYPE_VIRTUAL_CROSS_CONNECT;
+constexpr ConnectivityType ConnectivityType_MAX = CONNECTIVITY_TYPE_SIP_INTERCONNECT;
 constexpr int ConnectivityType_ARRAYSIZE = ConnectivityType_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ConnectivityType_descriptor();

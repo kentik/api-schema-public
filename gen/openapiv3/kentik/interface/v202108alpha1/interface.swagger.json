@@ -90,7 +90,9 @@
                                     "CONNECTIVITY_TYPE_PAID_PNI",
                                     "CONNECTIVITY_TYPE_RESERVED",
                                     "CONNECTIVITY_TYPE_TRANSIT",
-                                    "CONNECTIVITY_TYPE_VIRTUAL_CROSS_CONNECT"
+                                    "CONNECTIVITY_TYPE_VIRTUAL_CROSS_CONNECT",
+                                    "CONNECTIVITY_TYPE_IPX_INTERCONNECT",
+                                    "CONNECTIVITY_TYPE_SIP_INTERCONNECT"
                                 ]
                             }
                         }
@@ -458,7 +460,9 @@
                     "CONNECTIVITY_TYPE_PAID_PNI",
                     "CONNECTIVITY_TYPE_RESERVED",
                     "CONNECTIVITY_TYPE_TRANSIT",
-                    "CONNECTIVITY_TYPE_VIRTUAL_CROSS_CONNECT"
+                    "CONNECTIVITY_TYPE_VIRTUAL_CROSS_CONNECT",
+                    "CONNECTIVITY_TYPE_IPX_INTERCONNECT",
+                    "CONNECTIVITY_TYPE_SIP_INTERCONNECT"
                 ],
                 "default": "CONNECTIVITY_TYPE_UNSPECIFIED"
             },
