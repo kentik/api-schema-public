@@ -42,6 +42,32 @@ typedef enum _Kentik__Core__V202303__ServiceVisibility {
   KENTIK__CORE__V202303__SERVICE_VISIBILITY__SERVICE_VISIBILITY_PUBLIC = 3
     PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__CORE__V202303__SERVICE_VISIBILITY)
 } Kentik__Core__V202303__ServiceVisibility;
+/*
+ * {{.Name}}
+ */
+typedef enum _Kentik__Core__V202303__MethodVisibility {
+  /*
+   * when unspecified, method will use service visibility
+   */
+  KENTIK__CORE__V202303__METHOD_VISIBILITY__METHOD_VISIBILITY_UNSPECIFIED = 0,
+  /*
+   * private services not served by API gateway
+   */
+  KENTIK__CORE__V202303__METHOD_VISIBILITY__METHOD_VISIBILITY_PRIVATE = 1,
+  /*
+   * non-public services served by API gateway
+   */
+  KENTIK__CORE__V202303__METHOD_VISIBILITY__METHOD_VISIBILITY_PROTECTED = 2,
+  /*
+   * internal services (not accessible from the internet)
+   */
+  KENTIK__CORE__V202303__METHOD_VISIBILITY__METHOD_VISIBILITY_INTERNAL = 3,
+  /*
+   * public customer facing services
+   */
+  KENTIK__CORE__V202303__METHOD_VISIBILITY__METHOD_VISIBILITY_PUBLIC = 4
+    PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__CORE__V202303__METHOD_VISIBILITY)
+} Kentik__Core__V202303__MethodVisibility;
 
 /* --- messages --- */
 
@@ -54,6 +80,7 @@ typedef enum _Kentik__Core__V202303__ServiceVisibility {
 /* --- descriptors --- */
 
 extern const ProtobufCEnumDescriptor    kentik__core__v202303__service_visibility__descriptor;
+extern const ProtobufCEnumDescriptor    kentik__core__v202303__method_visibility__descriptor;
 
 PROTOBUF_C__END_DECLS
 

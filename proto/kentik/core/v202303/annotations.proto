@@ -19,6 +19,20 @@ enum ServiceVisibility {
   SERVICE_VISIBILITY_PUBLIC = 3;
 }
 
+// {{.Name}}
+enum MethodVisibility {
+  // when unspecified, method will use service visibility
+  METHOD_VISIBILITY_UNSPECIFIED = 0;
+  // private services not served by API gateway
+  METHOD_VISIBILITY_PRIVATE = 1;
+  // non-public services served by API gateway
+  METHOD_VISIBILITY_PROTECTED = 2;
+  // internal services (not accessible from the internet)
+  METHOD_VISIBILITY_INTERNAL = 3;
+  // public customer facing services
+  METHOD_VISIBILITY_PUBLIC = 4;
+}
+
 extend google.protobuf.ServiceOptions {
   // auth scope for this service
   string service_scope = 5501;
@@ -38,4 +52,6 @@ extend google.protobuf.MethodOptions {
   // method permission string used by the RBAC system
   // API user must posses permission covering the method permission in order to be authorized to invoke the method
   string method_permission = 5506;
+  // method_visibility provides label allowing api owners optionally define a different visibility for an rpc
+  MethodVisibility method_visibility = 5507;
 }

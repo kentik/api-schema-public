@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'ZJgithub.com/kentik/api-schema-public/gen/go/kentik/core/v202303;kentik_core',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n%kentik/core/v202303/annotations.proto\x12\x13kentik.core.v202303\x1a google/protobuf/descriptor.proto*\x95\x01\n\x11ServiceVisibility\x12\x1e\n\x1aSERVICE_VISIBILITY_PRIVATE\x10\x00\x12 \n\x1cSERVICE_VISIBILITY_PROTECTED\x10\x01\x12\x1f\n\x1bSERVICE_VISIBILITY_INTERNAL\x10\x02\x12\x1d\n\x19SERVICE_VISIBILITY_PUBLIC\x10\x03:E\n\rservice_scope\x12\x1f.google.protobuf.ServiceOptions\x18\xfd* \x01(\tR\x0cserviceScope:I\n\x0fprivate_service\x12\x1f.google.protobuf.ServiceOptions\x18\xff* \x01(\x08R\x0eprivateService:h\n\nvisibility\x12\x1f.google.protobuf.ServiceOptions\x18\x82+ \x01(\x0e\x32&.kentik.core.v202303.ServiceVisibilityR\nvisibility:B\n\x0cmethod_scope\x12\x1e.google.protobuf.MethodOptions\x18\xfe* \x01(\tR\x0bmethodScope:F\n\x0eprivate_method\x12\x1e.google.protobuf.MethodOptions\x18\x80+ \x01(\x08R\rprivateMethod:H\n\x0fmethod_category\x12\x1e.google.protobuf.MethodOptions\x18\x81+ \x01(\tR\x0emethodCategory:L\n\x11method_permission\x12\x1e.google.protobuf.MethodOptions\x18\x82+ \x01(\tR\x10methodPermissionBLZJgithub.com/kentik/api-schema-public/gen/go/kentik/core/v202303;kentik_coreb\x06proto3'
+  serialized_pb=b'\n%kentik/core/v202303/annotations.proto\x12\x13kentik.core.v202303\x1a google/protobuf/descriptor.proto*\x95\x01\n\x11ServiceVisibility\x12\x1e\n\x1aSERVICE_VISIBILITY_PRIVATE\x10\x00\x12 \n\x1cSERVICE_VISIBILITY_PROTECTED\x10\x01\x12\x1f\n\x1bSERVICE_VISIBILITY_INTERNAL\x10\x02\x12\x1d\n\x19SERVICE_VISIBILITY_PUBLIC\x10\x03*\xb3\x01\n\x10MethodVisibility\x12!\n\x1dMETHOD_VISIBILITY_UNSPECIFIED\x10\x00\x12\x1d\n\x19METHOD_VISIBILITY_PRIVATE\x10\x01\x12\x1f\n\x1bMETHOD_VISIBILITY_PROTECTED\x10\x02\x12\x1e\n\x1aMETHOD_VISIBILITY_INTERNAL\x10\x03\x12\x1c\n\x18METHOD_VISIBILITY_PUBLIC\x10\x04:E\n\rservice_scope\x12\x1f.google.protobuf.ServiceOptions\x18\xfd* \x01(\tR\x0cserviceScope:I\n\x0fprivate_service\x12\x1f.google.protobuf.ServiceOptions\x18\xff* \x01(\x08R\x0eprivateService:h\n\nvisibility\x12\x1f.google.protobuf.ServiceOptions\x18\x82+ \x01(\x0e\x32&.kentik.core.v202303.ServiceVisibilityR\nvisibility:B\n\x0cmethod_scope\x12\x1e.google.protobuf.MethodOptions\x18\xfe* \x01(\tR\x0bmethodScope:F\n\x0eprivate_method\x12\x1e.google.protobuf.MethodOptions\x18\x80+ \x01(\x08R\rprivateMethod:H\n\x0fmethod_category\x12\x1e.google.protobuf.MethodOptions\x18\x81+ \x01(\tR\x0emethodCategory:L\n\x11method_permission\x12\x1e.google.protobuf.MethodOptions\x18\x82+ \x01(\tR\x10methodPermission:s\n\x11method_visibility\x12\x1e.google.protobuf.MethodOptions\x18\x83+ \x01(\x0e\x32%.kentik.core.v202303.MethodVisibilityR\x10methodVisibilityBLZJgithub.com/kentik/api-schema-public/gen/go/kentik/core/v202303;kentik_coreb\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_descriptor__pb2.DESCRIPTOR,])
 
@@ -61,10 +61,56 @@ _SERVICEVISIBILITY = _descriptor.EnumDescriptor(
 _sym_db.RegisterEnumDescriptor(_SERVICEVISIBILITY)
 
 ServiceVisibility = enum_type_wrapper.EnumTypeWrapper(_SERVICEVISIBILITY)
+_METHODVISIBILITY = _descriptor.EnumDescriptor(
+  name='MethodVisibility',
+  full_name='kentik.core.v202303.MethodVisibility',
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='METHOD_VISIBILITY_UNSPECIFIED', index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='METHOD_VISIBILITY_PRIVATE', index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='METHOD_VISIBILITY_PROTECTED', index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='METHOD_VISIBILITY_INTERNAL', index=3, number=3,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='METHOD_VISIBILITY_PUBLIC', index=4, number=4,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=249,
+  serialized_end=428,
+)
+_sym_db.RegisterEnumDescriptor(_METHODVISIBILITY)
+
+MethodVisibility = enum_type_wrapper.EnumTypeWrapper(_METHODVISIBILITY)
 SERVICE_VISIBILITY_PRIVATE = 0
 SERVICE_VISIBILITY_PROTECTED = 1
 SERVICE_VISIBILITY_INTERNAL = 2
 SERVICE_VISIBILITY_PUBLIC = 3
+METHOD_VISIBILITY_UNSPECIFIED = 0
+METHOD_VISIBILITY_PRIVATE = 1
+METHOD_VISIBILITY_PROTECTED = 2
+METHOD_VISIBILITY_INTERNAL = 3
+METHOD_VISIBILITY_PUBLIC = 4
 
 SERVICE_SCOPE_FIELD_NUMBER = 5501
 service_scope = _descriptor.FieldDescriptor(
@@ -122,8 +168,17 @@ method_permission = _descriptor.FieldDescriptor(
   message_type=None, enum_type=None, containing_type=None,
   is_extension=True, extension_scope=None,
   serialized_options=None, json_name='methodPermission', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key)
+METHOD_VISIBILITY_FIELD_NUMBER = 5507
+method_visibility = _descriptor.FieldDescriptor(
+  name='method_visibility', full_name='kentik.core.v202303.method_visibility', index=7,
+  number=5507, type=14, cpp_type=8, label=1,
+  has_default_value=False, default_value=0,
+  message_type=None, enum_type=None, containing_type=None,
+  is_extension=True, extension_scope=None,
+  serialized_options=None, json_name='methodVisibility', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key)
 
 DESCRIPTOR.enum_types_by_name['ServiceVisibility'] = _SERVICEVISIBILITY
+DESCRIPTOR.enum_types_by_name['MethodVisibility'] = _METHODVISIBILITY
 DESCRIPTOR.extensions_by_name['service_scope'] = service_scope
 DESCRIPTOR.extensions_by_name['private_service'] = private_service
 DESCRIPTOR.extensions_by_name['visibility'] = visibility
@@ -131,6 +186,7 @@ DESCRIPTOR.extensions_by_name['method_scope'] = method_scope
 DESCRIPTOR.extensions_by_name['private_method'] = private_method
 DESCRIPTOR.extensions_by_name['method_category'] = method_category
 DESCRIPTOR.extensions_by_name['method_permission'] = method_permission
+DESCRIPTOR.extensions_by_name['method_visibility'] = method_visibility
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 google_dot_protobuf_dot_descriptor__pb2.ServiceOptions.RegisterExtension(service_scope)
@@ -141,6 +197,8 @@ google_dot_protobuf_dot_descriptor__pb2.MethodOptions.RegisterExtension(method_s
 google_dot_protobuf_dot_descriptor__pb2.MethodOptions.RegisterExtension(private_method)
 google_dot_protobuf_dot_descriptor__pb2.MethodOptions.RegisterExtension(method_category)
 google_dot_protobuf_dot_descriptor__pb2.MethodOptions.RegisterExtension(method_permission)
+method_visibility.enum_type = _METHODVISIBILITY
+google_dot_protobuf_dot_descriptor__pb2.MethodOptions.RegisterExtension(method_visibility)
 
 DESCRIPTOR._options = None
 # @@protoc_insertion_point(module_scope)

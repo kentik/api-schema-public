@@ -21,7 +21,7 @@ namespace v202303 {
 }  // namespace core
 }  // namespace kentik
 static constexpr ::PROTOBUF_NAMESPACE_ID::Metadata* file_level_metadata_kentik_2fcore_2fv202303_2fannotations_2eproto = nullptr;
-static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_kentik_2fcore_2fv202303_2fannotations_2eproto[1];
+static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_kentik_2fcore_2fv202303_2fannotations_2eproto[2];
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_kentik_2fcore_2fv202303_2fannotations_2eproto = nullptr;
 const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_kentik_2fcore_2fv202303_2fannotations_2eproto::offsets[1] = {};
 static constexpr ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema* schemas = nullptr;
@@ -34,22 +34,30 @@ const char descriptor_table_protodef_kentik_2fcore_2fv202303_2fannotations_2epro
   "SERVICE_VISIBILITY_PRIVATE\020\000\022 \n\034SERVICE_"
   "VISIBILITY_PROTECTED\020\001\022\037\n\033SERVICE_VISIBI"
   "LITY_INTERNAL\020\002\022\035\n\031SERVICE_VISIBILITY_PU"
-  "BLIC\020\003:E\n\rservice_scope\022\037.google.protobu"
-  "f.ServiceOptions\030\375* \001(\tR\014serviceScope:I\n"
-  "\017private_service\022\037.google.protobuf.Servi"
-  "ceOptions\030\377* \001(\010R\016privateService:h\n\nvisi"
-  "bility\022\037.google.protobuf.ServiceOptions\030"
-  "\202+ \001(\0162&.kentik.core.v202303.ServiceVisi"
-  "bilityR\nvisibility:B\n\014method_scope\022\036.goo"
-  "gle.protobuf.MethodOptions\030\376* \001(\tR\013metho"
-  "dScope:F\n\016private_method\022\036.google.protob"
-  "uf.MethodOptions\030\200+ \001(\010R\rprivateMethod:H"
-  "\n\017method_category\022\036.google.protobuf.Meth"
-  "odOptions\030\201+ \001(\tR\016methodCategory:L\n\021meth"
-  "od_permission\022\036.google.protobuf.MethodOp"
-  "tions\030\202+ \001(\tR\020methodPermissionBLZJgithub"
-  ".com/kentik/api-schema-public/gen/go/ken"
-  "tik/core/v202303;kentik_coreb\006proto3"
+  "BLIC\020\003*\263\001\n\020MethodVisibility\022!\n\035METHOD_VI"
+  "SIBILITY_UNSPECIFIED\020\000\022\035\n\031METHOD_VISIBIL"
+  "ITY_PRIVATE\020\001\022\037\n\033METHOD_VISIBILITY_PROTE"
+  "CTED\020\002\022\036\n\032METHOD_VISIBILITY_INTERNAL\020\003\022\034"
+  "\n\030METHOD_VISIBILITY_PUBLIC\020\004:E\n\rservice_"
+  "scope\022\037.google.protobuf.ServiceOptions\030\375"
+  "* \001(\tR\014serviceScope:I\n\017private_service\022\037"
+  ".google.protobuf.ServiceOptions\030\377* \001(\010R\016"
+  "privateService:h\n\nvisibility\022\037.google.pr"
+  "otobuf.ServiceOptions\030\202+ \001(\0162&.kentik.co"
+  "re.v202303.ServiceVisibilityR\nvisibility"
+  ":B\n\014method_scope\022\036.google.protobuf.Metho"
+  "dOptions\030\376* \001(\tR\013methodScope:F\n\016private_"
+  "method\022\036.google.protobuf.MethodOptions\030\200"
+  "+ \001(\010R\rprivateMethod:H\n\017method_category\022"
+  "\036.google.protobuf.MethodOptions\030\201+ \001(\tR\016"
+  "methodCategory:L\n\021method_permission\022\036.go"
+  "ogle.protobuf.MethodOptions\030\202+ \001(\tR\020meth"
+  "odPermission:s\n\021method_visibility\022\036.goog"
+  "le.protobuf.MethodOptions\030\203+ \001(\0162%.kenti"
+  "k.core.v202303.MethodVisibilityR\020methodV"
+  "isibilityBLZJgithub.com/kentik/api-schem"
+  "a-public/gen/go/kentik/core/v202303;kent"
+  "ik_coreb\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fdescriptor_2eproto,
@@ -58,7 +66,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto = {
-  false, false, descriptor_table_protodef_kentik_2fcore_2fv202303_2fannotations_2eproto, "kentik/core/v202303/annotations.proto", 876,
+  false, false, descriptor_table_protodef_kentik_2fcore_2fv202303_2fannotations_2eproto, "kentik/core/v202303/annotations.proto", 1175,
   &descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto_once, descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto_sccs, descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto_deps, 0, 1,
   schemas, file_default_instances, TableStruct_kentik_2fcore_2fv202303_2fannotations_2eproto::offsets,
   file_level_metadata_kentik_2fcore_2fv202303_2fannotations_2eproto, 0, file_level_enum_descriptors_kentik_2fcore_2fv202303_2fannotations_2eproto, file_level_service_descriptors_kentik_2fcore_2fv202303_2fannotations_2eproto,
@@ -79,6 +87,23 @@ bool ServiceVisibility_IsValid(int value) {
     case 1:
     case 2:
     case 3:
+      return true;
+    default:
+      return false;
+  }
+}
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* MethodVisibility_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto);
+  return file_level_enum_descriptors_kentik_2fcore_2fv202303_2fannotations_2eproto[1];
+}
+bool MethodVisibility_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
       return true;
     default:
       return false;
@@ -110,6 +135,9 @@ const std::string method_permission_default("");
 ::PROTOBUF_NAMESPACE_ID::internal::ExtensionIdentifier< ::google::protobuf::MethodOptions,
     ::PROTOBUF_NAMESPACE_ID::internal::StringTypeTraits, 9, false >
   method_permission(kMethodPermissionFieldNumber, method_permission_default);
+::PROTOBUF_NAMESPACE_ID::internal::ExtensionIdentifier< ::google::protobuf::MethodOptions,
+    ::PROTOBUF_NAMESPACE_ID::internal::EnumTypeTraits< ::kentik::core::v202303::MethodVisibility, ::kentik::core::v202303::MethodVisibility_IsValid>, 14, false >
+  method_visibility(kMethodVisibilityFieldNumber, static_cast< ::kentik::core::v202303::MethodVisibility >(0));
 
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v202303

@@ -87,6 +87,34 @@ inline bool ServiceVisibility_Parse(
   return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<ServiceVisibility>(
     ServiceVisibility_descriptor(), name, value);
 }
+enum MethodVisibility : int {
+  METHOD_VISIBILITY_UNSPECIFIED = 0,
+  METHOD_VISIBILITY_PRIVATE = 1,
+  METHOD_VISIBILITY_PROTECTED = 2,
+  METHOD_VISIBILITY_INTERNAL = 3,
+  METHOD_VISIBILITY_PUBLIC = 4,
+  MethodVisibility_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
+  MethodVisibility_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
+};
+bool MethodVisibility_IsValid(int value);
+constexpr MethodVisibility MethodVisibility_MIN = METHOD_VISIBILITY_UNSPECIFIED;
+constexpr MethodVisibility MethodVisibility_MAX = METHOD_VISIBILITY_PUBLIC;
+constexpr int MethodVisibility_ARRAYSIZE = MethodVisibility_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* MethodVisibility_descriptor();
+template<typename T>
+inline const std::string& MethodVisibility_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, MethodVisibility>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function MethodVisibility_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    MethodVisibility_descriptor(), enum_t_value);
+}
+inline bool MethodVisibility_Parse(
+    const std::string& name, MethodVisibility* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<MethodVisibility>(
+    MethodVisibility_descriptor(), name, value);
+}
 // ===================================================================
 
 
@@ -120,6 +148,10 @@ static const int kMethodPermissionFieldNumber = 5506;
 extern ::PROTOBUF_NAMESPACE_ID::internal::ExtensionIdentifier< ::google::protobuf::MethodOptions,
     ::PROTOBUF_NAMESPACE_ID::internal::StringTypeTraits, 9, false >
   method_permission;
+static const int kMethodVisibilityFieldNumber = 5507;
+extern ::PROTOBUF_NAMESPACE_ID::internal::ExtensionIdentifier< ::google::protobuf::MethodOptions,
+    ::PROTOBUF_NAMESPACE_ID::internal::EnumTypeTraits< ::kentik::core::v202303::MethodVisibility, ::kentik::core::v202303::MethodVisibility_IsValid>, 14, false >
+  method_visibility;
 
 // ===================================================================
 
@@ -143,6 +175,11 @@ template <> struct is_proto_enum< ::kentik::core::v202303::ServiceVisibility> : 
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::kentik::core::v202303::ServiceVisibility>() {
   return ::kentik::core::v202303::ServiceVisibility_descriptor();
+}
+template <> struct is_proto_enum< ::kentik::core::v202303::MethodVisibility> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::kentik::core::v202303::MethodVisibility>() {
+  return ::kentik::core::v202303::MethodVisibility_descriptor();
 }
 
 PROTOBUF_NAMESPACE_CLOSE
