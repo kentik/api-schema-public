@@ -491,10 +491,11 @@ struct  Kentik__Synthetics__V202309__AgentTest
   ProtobufCMessage base;
   char *target;
   protobuf_c_boolean use_local_ip;
+  protobuf_c_boolean reciprocal;
 };
 #define KENTIK__SYNTHETICS__V202309__AGENT_TEST__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__synthetics__v202309__agent_test__descriptor) \
-    , (char *)protobuf_c_empty_string, 0 }
+    , (char *)protobuf_c_empty_string, 0, 0 }
 
 
 /*

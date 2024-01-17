@@ -731,6 +731,10 @@
         "useLocalIp": {
           "type": "boolean",
           "description": "Boolean value indicating whether to use local (private) IP address of the target agent"
+        },
+        "reciprocal": {
+          "type": "boolean",
+          "description": "Boolean value indicating whether to make the test bidirectional"
         }
       },
       "title": "AgentTest"

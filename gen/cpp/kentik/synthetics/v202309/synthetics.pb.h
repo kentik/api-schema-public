@@ -3913,6 +3913,7 @@ class AgentTest PROTOBUF_FINAL :
   enum : int {
     kTargetFieldNumber = 1,
     kUseLocalIpFieldNumber = 2,
+    kReciprocalFieldNumber = 3,
   };
   // string target = 1[json_name = "target", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   void clear_target();
@@ -3948,6 +3949,15 @@ class AgentTest PROTOBUF_FINAL :
   void _internal_set_use_local_ip(bool value);
   public:
 
+  // bool reciprocal = 3[json_name = "reciprocal", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_reciprocal();
+  bool reciprocal() const;
+  void set_reciprocal(bool value);
+  private:
+  bool _internal_reciprocal() const;
+  void _internal_set_reciprocal(bool value);
+  public:
+
   // @@protoc_insertion_point(class_scope:kentik.synthetics.v202309.AgentTest)
  private:
   class _Internal;
@@ -3957,6 +3967,7 @@ class AgentTest PROTOBUF_FINAL :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr target_;
   bool use_local_ip_;
+  bool reciprocal_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto;
 };
@@ -17711,6 +17722,26 @@ inline void AgentTest::_internal_set_use_local_ip(bool value) {
 inline void AgentTest::set_use_local_ip(bool value) {
   _internal_set_use_local_ip(value);
   // @@protoc_insertion_point(field_set:kentik.synthetics.v202309.AgentTest.use_local_ip)
+}
+
+// bool reciprocal = 3[json_name = "reciprocal", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void AgentTest::clear_reciprocal() {
+  reciprocal_ = false;
+}
+inline bool AgentTest::_internal_reciprocal() const {
+  return reciprocal_;
+}
+inline bool AgentTest::reciprocal() const {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202309.AgentTest.reciprocal)
+  return _internal_reciprocal();
+}
+inline void AgentTest::_internal_set_reciprocal(bool value) {
+  
+  reciprocal_ = value;
+}
+inline void AgentTest::set_reciprocal(bool value) {
+  _internal_set_reciprocal(value);
+  // @@protoc_insertion_point(field_set:kentik.synthetics.v202309.AgentTest.reciprocal)
 }
 
 // -------------------------------------------------------------------

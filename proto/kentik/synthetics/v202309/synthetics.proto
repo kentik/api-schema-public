@@ -799,6 +799,11 @@ message AgentTest {
       description: "Boolean value indicating whether to use local (private) IP address of the target agent"
     }
   ];
+  bool reciprocal = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Boolean value indicating whether to make the test bidirectional"
+    }
+  ];
 }
 
 // {{.Name}}
