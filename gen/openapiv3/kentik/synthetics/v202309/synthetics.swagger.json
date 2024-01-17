@@ -1379,6 +1379,10 @@
                             "type": "string"
                         },
                         "description": "List of IP addresses of targets"
+                    },
+                    "useLocalIp": {
+                        "type": "boolean",
+                        "description": "Boolean value indicating whether to use local (private) IP address of the target agents"
                     }
                 },
                 "title": "IpTest"

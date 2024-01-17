@@ -3760,6 +3760,7 @@ class IpTest PROTOBUF_FINAL :
 
   enum : int {
     kTargetsFieldNumber = 1,
+    kUseLocalIpFieldNumber = 2,
   };
   // repeated string targets = 1[json_name = "targets", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   int targets_size() const;
@@ -3785,6 +3786,15 @@ class IpTest PROTOBUF_FINAL :
   std::string* _internal_add_targets();
   public:
 
+  // bool use_local_ip = 2[json_name = "useLocalIp", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_use_local_ip();
+  bool use_local_ip() const;
+  void set_use_local_ip(bool value);
+  private:
+  bool _internal_use_local_ip() const;
+  void _internal_set_use_local_ip(bool value);
+  public:
+
   // @@protoc_insertion_point(class_scope:kentik.synthetics.v202309.IpTest)
  private:
   class _Internal;
@@ -3793,6 +3803,7 @@ class IpTest PROTOBUF_FINAL :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> targets_;
+  bool use_local_ip_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto;
 };
@@ -17617,6 +17628,26 @@ inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
 IpTest::mutable_targets() {
   // @@protoc_insertion_point(field_mutable_list:kentik.synthetics.v202309.IpTest.targets)
   return &targets_;
+}
+
+// bool use_local_ip = 2[json_name = "useLocalIp", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void IpTest::clear_use_local_ip() {
+  use_local_ip_ = false;
+}
+inline bool IpTest::_internal_use_local_ip() const {
+  return use_local_ip_;
+}
+inline bool IpTest::use_local_ip() const {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202309.IpTest.use_local_ip)
+  return _internal_use_local_ip();
+}
+inline void IpTest::_internal_set_use_local_ip(bool value) {
+  
+  use_local_ip_ = value;
+}
+inline void IpTest::set_use_local_ip(bool value) {
+  _internal_set_use_local_ip(value);
+  // @@protoc_insertion_point(field_set:kentik.synthetics.v202309.IpTest.use_local_ip)
 }
 
 // -------------------------------------------------------------------

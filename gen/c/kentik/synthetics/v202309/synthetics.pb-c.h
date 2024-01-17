@@ -477,10 +477,11 @@ struct  Kentik__Synthetics__V202309__IpTest
   ProtobufCMessage base;
   size_t n_targets;
   char **targets;
+  protobuf_c_boolean use_local_ip;
 };
 #define KENTIK__SYNTHETICS__V202309__IP_TEST__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__synthetics__v202309__ip_test__descriptor) \
-    , 0,NULL }
+    , 0,NULL, 0 }
 
 
 /*

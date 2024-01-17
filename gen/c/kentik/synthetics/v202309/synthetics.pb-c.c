@@ -4123,7 +4123,7 @@ const ProtobufCMessageDescriptor kentik__synthetics__v202309__hostname_test__des
   (ProtobufCMessageInit) kentik__synthetics__v202309__hostname_test__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__synthetics__v202309__ip_test__field_descriptors[1] =
+static const ProtobufCFieldDescriptor kentik__synthetics__v202309__ip_test__field_descriptors[2] =
 {
   {
     "targets",
@@ -4137,14 +4137,27 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202309__ip_test__fiel
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "use_local_ip",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__IpTest, use_local_ip),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__synthetics__v202309__ip_test__field_indices_by_name[] = {
   0,   /* field[0] = targets */
+  1,   /* field[1] = use_local_ip */
 };
 static const ProtobufCIntRange kentik__synthetics__v202309__ip_test__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 1 }
+  { 0, 2 }
 };
 const ProtobufCMessageDescriptor kentik__synthetics__v202309__ip_test__descriptor =
 {
@@ -4154,7 +4167,7 @@ const ProtobufCMessageDescriptor kentik__synthetics__v202309__ip_test__descripto
   "Kentik__Synthetics__V202309__IpTest",
   "kentik.synthetics.v202309",
   sizeof(Kentik__Synthetics__V202309__IpTest),
-  1,
+  2,
   kentik__synthetics__v202309__ip_test__field_descriptors,
   kentik__synthetics__v202309__ip_test__field_indices_by_name,
   1,  kentik__synthetics__v202309__ip_test__number_ranges,
