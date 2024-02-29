@@ -450,10 +450,11 @@ struct  Kentik__Synthetics__V202309__HealthSettings
   float dns_latency_warning;
   float dns_latency_critical_stddev;
   float dns_latency_warning_stddev;
+  protobuf_c_boolean per_agent_alerting;
 };
 #define KENTIK__SYNTHETICS__V202309__HEALTH_SETTINGS__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__synthetics__v202309__health_settings__descriptor) \
-    , 0, 0, 0, 0, 0, 0, 0, 0, 0,NULL, 0,NULL, 0, 0, 0, 0, 0, 0, 0, NULL, 0, 0, (char *)protobuf_c_empty_string, 0, 0, 0, 0 }
+    , 0, 0, 0, 0, 0, 0, 0, 0, 0,NULL, 0,NULL, 0, 0, 0, 0, 0, 0, 0, NULL, 0, 0, (char *)protobuf_c_empty_string, 0, 0, 0, 0, 0 }
 
 
 /*

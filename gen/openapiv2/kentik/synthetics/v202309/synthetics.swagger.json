@@ -1219,6 +1219,10 @@
           "type": "number",
           "format": "float",
           "description": "Threshold for standard deviation (in microseconds) of DNS response latency to trigger warning alarm"
+        },
+        "perAgentAlerting": {
+          "type": "boolean",
+          "description": "Boolean value indicating whether to use per-agent alerting"
         }
       },
       "title": "HealthSettings"

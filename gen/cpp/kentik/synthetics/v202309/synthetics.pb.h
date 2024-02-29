@@ -3177,6 +3177,7 @@ class HealthSettings PROTOBUF_FINAL :
     kDnsLatencyWarningFieldNumber = 23,
     kDnsLatencyCriticalStddevFieldNumber = 24,
     kDnsLatencyWarningStddevFieldNumber = 25,
+    kPerAgentAlertingFieldNumber = 26,
   };
   // repeated uint32 http_valid_codes = 9[json_name = "httpValidCodes", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   int http_valid_codes_size() const;
@@ -3454,6 +3455,15 @@ class HealthSettings PROTOBUF_FINAL :
   void _internal_set_dns_latency_warning_stddev(float value);
   public:
 
+  // bool per_agent_alerting = 26[json_name = "perAgentAlerting", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_per_agent_alerting();
+  bool per_agent_alerting() const;
+  void set_per_agent_alerting(bool value);
+  private:
+  bool _internal_per_agent_alerting() const;
+  void _internal_set_per_agent_alerting(bool value);
+  public:
+
   // @@protoc_insertion_point(class_scope:kentik.synthetics.v202309.HealthSettings)
  private:
   class _Internal;
@@ -3488,6 +3498,7 @@ class HealthSettings PROTOBUF_FINAL :
   float dns_latency_warning_;
   float dns_latency_critical_stddev_;
   float dns_latency_warning_stddev_;
+  bool per_agent_alerting_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto;
 };
@@ -17465,6 +17476,26 @@ inline void HealthSettings::_internal_set_dns_latency_warning_stddev(float value
 inline void HealthSettings::set_dns_latency_warning_stddev(float value) {
   _internal_set_dns_latency_warning_stddev(value);
   // @@protoc_insertion_point(field_set:kentik.synthetics.v202309.HealthSettings.dns_latency_warning_stddev)
+}
+
+// bool per_agent_alerting = 26[json_name = "perAgentAlerting", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void HealthSettings::clear_per_agent_alerting() {
+  per_agent_alerting_ = false;
+}
+inline bool HealthSettings::_internal_per_agent_alerting() const {
+  return per_agent_alerting_;
+}
+inline bool HealthSettings::per_agent_alerting() const {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202309.HealthSettings.per_agent_alerting)
+  return _internal_per_agent_alerting();
+}
+inline void HealthSettings::_internal_set_per_agent_alerting(bool value) {
+  
+  per_agent_alerting_ = value;
+}
+inline void HealthSettings::set_per_agent_alerting(bool value) {
+  _internal_set_per_agent_alerting(value);
+  // @@protoc_insertion_point(field_set:kentik.synthetics.v202309.HealthSettings.per_agent_alerting)
 }
 
 // -------------------------------------------------------------------

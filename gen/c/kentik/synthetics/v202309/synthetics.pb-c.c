@@ -3735,7 +3735,7 @@ const ProtobufCMessageDescriptor kentik__synthetics__v202309__activation_setting
   (ProtobufCMessageInit) kentik__synthetics__v202309__activation_settings__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__synthetics__v202309__health_settings__field_descriptors[25] =
+static const ProtobufCFieldDescriptor kentik__synthetics__v202309__health_settings__field_descriptors[26] =
 {
   {
     "latency_critical",
@@ -4037,6 +4037,18 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202309__health_settin
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "per_agent_alerting",
+    26,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__HealthSettings, per_agent_alerting),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__synthetics__v202309__health_settings__field_indices_by_name[] = {
   17,   /* field[17] = activation */
@@ -4063,12 +4075,13 @@ static const unsigned kentik__synthetics__v202309__health_settings__field_indice
   11,   /* field[11] = latency_warning_stddev */
   2,   /* field[2] = packet_loss_critical */
   3,   /* field[3] = packet_loss_warning */
+  25,   /* field[25] = per_agent_alerting */
   16,   /* field[16] = unhealthy_subtest_threshold */
 };
 static const ProtobufCIntRange kentik__synthetics__v202309__health_settings__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 25 }
+  { 0, 26 }
 };
 const ProtobufCMessageDescriptor kentik__synthetics__v202309__health_settings__descriptor =
 {
@@ -4078,7 +4091,7 @@ const ProtobufCMessageDescriptor kentik__synthetics__v202309__health_settings__d
   "Kentik__Synthetics__V202309__HealthSettings",
   "kentik.synthetics.v202309",
   sizeof(Kentik__Synthetics__V202309__HealthSettings),
-  25,
+  26,
   kentik__synthetics__v202309__health_settings__field_descriptors,
   kentik__synthetics__v202309__health_settings__field_indices_by_name,
   1,  kentik__synthetics__v202309__health_settings__number_ranges,
