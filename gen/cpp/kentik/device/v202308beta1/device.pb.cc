@@ -14,10 +14,14 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
+extern PROTOBUF_INTERNAL_EXPORT_google_2fprotobuf_2fduration_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Duration_google_2fprotobuf_2fduration_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_google_2fprotobuf_2ftimestamp_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Timestamp_google_2fprotobuf_2ftimestamp_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_CustomColumnData_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_DeviceConcise_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<8> scc_info_DeviceDetailed_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_DeviceConcise_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<9> scc_info_DeviceDetailed_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_DeviceNmsConfig_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_DeviceNmsSnmpConfig_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_DeviceNmsStConfig_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_DeviceSnmpV3Conf_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_GnmiV1Conf_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Interface_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto;
@@ -32,6 +36,18 @@ class DeviceSnmpV3ConfDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<DeviceSnmpV3Conf> _instance;
 } _DeviceSnmpV3Conf_default_instance_;
+class DeviceNmsConfigDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<DeviceNmsConfig> _instance;
+} _DeviceNmsConfig_default_instance_;
+class DeviceNmsSnmpConfigDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<DeviceNmsSnmpConfig> _instance;
+} _DeviceNmsSnmpConfig_default_instance_;
+class DeviceNmsStConfigDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<DeviceNmsStConfig> _instance;
+} _DeviceNmsStConfig_default_instance_;
 class DeviceConciseDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<DeviceConcise> _instance;
@@ -284,9 +300,10 @@ static void InitDefaultsscc_info_DeviceConcise_kentik_2fdevice_2fv202308beta1_2f
   ::kentik::device::v202308beta1::DeviceConcise::InitAsDefaultInstance();
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_DeviceConcise_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_DeviceConcise_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto}, {
-      &scc_info_DeviceSnmpV3Conf_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_DeviceConcise_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_DeviceConcise_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto}, {
+      &scc_info_DeviceSnmpV3Conf_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
+      &scc_info_DeviceNmsConfig_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,}};
 
 static void InitDefaultsscc_info_DeviceDetailed_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -299,8 +316,8 @@ static void InitDefaultsscc_info_DeviceDetailed_kentik_2fdevice_2fv202308beta1_2
   ::kentik::device::v202308beta1::DeviceDetailed::InitAsDefaultInstance();
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<8> scc_info_DeviceDetailed_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 8, 0, InitDefaultsscc_info_DeviceDetailed_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto}, {
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<9> scc_info_DeviceDetailed_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 9, 0, InitDefaultsscc_info_DeviceDetailed_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto}, {
       &scc_info_Site_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
       &scc_info_Plan_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
       &scc_info_Label_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
@@ -308,7 +325,54 @@ static void InitDefaultsscc_info_DeviceDetailed_kentik_2fdevice_2fv202308beta1_2
       &scc_info_CustomColumnData_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
       &scc_info_Timestamp_google_2fprotobuf_2ftimestamp_2eproto.base,
       &scc_info_DeviceSnmpV3Conf_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
-      &scc_info_GnmiV1Conf_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,}};
+      &scc_info_GnmiV1Conf_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
+      &scc_info_DeviceNmsConfig_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,}};
+
+static void InitDefaultsscc_info_DeviceNmsConfig_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::kentik::device::v202308beta1::_DeviceNmsConfig_default_instance_;
+    new (ptr) ::kentik::device::v202308beta1::DeviceNmsConfig();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::kentik::device::v202308beta1::DeviceNmsConfig::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_DeviceNmsConfig_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_DeviceNmsConfig_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto}, {
+      &scc_info_DeviceNmsSnmpConfig_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
+      &scc_info_DeviceNmsStConfig_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,}};
+
+static void InitDefaultsscc_info_DeviceNmsSnmpConfig_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::kentik::device::v202308beta1::_DeviceNmsSnmpConfig_default_instance_;
+    new (ptr) ::kentik::device::v202308beta1::DeviceNmsSnmpConfig();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::kentik::device::v202308beta1::DeviceNmsSnmpConfig::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_DeviceNmsSnmpConfig_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_DeviceNmsSnmpConfig_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto}, {
+      &scc_info_Duration_google_2fprotobuf_2fduration_2eproto.base,}};
+
+static void InitDefaultsscc_info_DeviceNmsStConfig_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::kentik::device::v202308beta1::_DeviceNmsStConfig_default_instance_;
+    new (ptr) ::kentik::device::v202308beta1::DeviceNmsStConfig();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::kentik::device::v202308beta1::DeviceNmsStConfig::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_DeviceNmsStConfig_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_DeviceNmsStConfig_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto}, {
+      &scc_info_Duration_google_2fprotobuf_2fduration_2eproto.base,}};
 
 static void InitDefaultsscc_info_DeviceSnmpV3Conf_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -557,7 +621,7 @@ static void InitDefaultsscc_info_UpdateDevicesResponse_kentik_2fdevice_2fv202308
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_UpdateDevicesResponse_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto}, {
       &scc_info_DeviceDetailed_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,}};
 
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto[28];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto[31];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto = nullptr;
 
@@ -573,6 +637,32 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_kentik_2fdevice_2fv202308beta1
   PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceSnmpV3Conf, privacy_protocol_),
   PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceSnmpV3Conf, privacy_passphrase_),
   ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceNmsConfig, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceNmsConfig, agent_id_),
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceNmsConfig, ip_address_),
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceNmsConfig, snmp_),
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceNmsConfig, st_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceNmsSnmpConfig, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceNmsSnmpConfig, credential_name_),
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceNmsSnmpConfig, port_),
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceNmsSnmpConfig, timeout_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceNmsStConfig, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceNmsStConfig, credential_name_),
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceNmsStConfig, port_),
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceNmsStConfig, timeout_),
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceNmsStConfig, secure_),
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceConcise, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceConcise, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -597,6 +687,28 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_kentik_2fdevice_2fv202308beta1
   PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceConcise, device_bgp_password_),
   PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceConcise, use_bgp_device_id_),
   PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceConcise, device_bgp_flowspec_),
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceConcise, nms_),
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  0,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::Site, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -661,7 +773,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_kentik_2fdevice_2fv202308beta1
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::GnmiV1Conf, dialout_server_),
-  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceDetailed, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceDetailed, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -726,6 +838,68 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_kentik_2fdevice_2fv202308beta1
   PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceDetailed, use_asn_from_flow_),
   PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceDetailed, max_interface_),
   PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceDetailed, max_interface_check_),
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceDetailed, nms_),
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  0,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::LabelConcise, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -845,37 +1019,43 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_kentik_2fdevice_2fv202308beta1
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::kentik::device::v202308beta1::DeviceSnmpV3Conf)},
-  { 10, -1, sizeof(::kentik::device::v202308beta1::DeviceConcise)},
-  { 35, -1, sizeof(::kentik::device::v202308beta1::Site)},
-  { 45, -1, sizeof(::kentik::device::v202308beta1::Plan)},
-  { 52, -1, sizeof(::kentik::device::v202308beta1::Label)},
-  { 68, -1, sizeof(::kentik::device::v202308beta1::Interface)},
-  { 82, -1, sizeof(::kentik::device::v202308beta1::CustomColumnData)},
-  { 93, -1, sizeof(::kentik::device::v202308beta1::GnmiV1Conf)},
-  { 99, -1, sizeof(::kentik::device::v202308beta1::DeviceDetailed)},
-  { 164, -1, sizeof(::kentik::device::v202308beta1::LabelConcise)},
-  { 170, -1, sizeof(::kentik::device::v202308beta1::ListDevicesRequest)},
-  { 175, -1, sizeof(::kentik::device::v202308beta1::ListDevicesResponse)},
-  { 182, -1, sizeof(::kentik::device::v202308beta1::GetDeviceRequest)},
-  { 188, -1, sizeof(::kentik::device::v202308beta1::GetDeviceResponse)},
-  { 194, -1, sizeof(::kentik::device::v202308beta1::CreateDeviceRequest)},
-  { 200, -1, sizeof(::kentik::device::v202308beta1::CreateDeviceResponse)},
-  { 206, -1, sizeof(::kentik::device::v202308beta1::CreateDevicesRequest)},
-  { 212, -1, sizeof(::kentik::device::v202308beta1::CreateDevicesResponse)},
-  { 219, -1, sizeof(::kentik::device::v202308beta1::UpdateDeviceRequest)},
-  { 225, -1, sizeof(::kentik::device::v202308beta1::UpdateDeviceResponse)},
-  { 231, -1, sizeof(::kentik::device::v202308beta1::UpdateDevicesRequest)},
-  { 237, -1, sizeof(::kentik::device::v202308beta1::UpdateDevicesResponse)},
-  { 244, -1, sizeof(::kentik::device::v202308beta1::UpdateDeviceLabelsRequest)},
-  { 251, -1, sizeof(::kentik::device::v202308beta1::UpdateDeviceLabelsResponse)},
-  { 257, -1, sizeof(::kentik::device::v202308beta1::DeleteDeviceRequest)},
-  { 263, -1, sizeof(::kentik::device::v202308beta1::DeleteDeviceResponse)},
-  { 268, -1, sizeof(::kentik::device::v202308beta1::DeleteDevicesRequest)},
-  { 274, -1, sizeof(::kentik::device::v202308beta1::DeleteDevicesResponse)},
+  { 10, -1, sizeof(::kentik::device::v202308beta1::DeviceNmsConfig)},
+  { 19, -1, sizeof(::kentik::device::v202308beta1::DeviceNmsSnmpConfig)},
+  { 27, -1, sizeof(::kentik::device::v202308beta1::DeviceNmsStConfig)},
+  { 36, 62, sizeof(::kentik::device::v202308beta1::DeviceConcise)},
+  { 83, -1, sizeof(::kentik::device::v202308beta1::Site)},
+  { 93, -1, sizeof(::kentik::device::v202308beta1::Plan)},
+  { 100, -1, sizeof(::kentik::device::v202308beta1::Label)},
+  { 116, -1, sizeof(::kentik::device::v202308beta1::Interface)},
+  { 130, -1, sizeof(::kentik::device::v202308beta1::CustomColumnData)},
+  { 141, -1, sizeof(::kentik::device::v202308beta1::GnmiV1Conf)},
+  { 147, 213, sizeof(::kentik::device::v202308beta1::DeviceDetailed)},
+  { 274, -1, sizeof(::kentik::device::v202308beta1::LabelConcise)},
+  { 280, -1, sizeof(::kentik::device::v202308beta1::ListDevicesRequest)},
+  { 285, -1, sizeof(::kentik::device::v202308beta1::ListDevicesResponse)},
+  { 292, -1, sizeof(::kentik::device::v202308beta1::GetDeviceRequest)},
+  { 298, -1, sizeof(::kentik::device::v202308beta1::GetDeviceResponse)},
+  { 304, -1, sizeof(::kentik::device::v202308beta1::CreateDeviceRequest)},
+  { 310, -1, sizeof(::kentik::device::v202308beta1::CreateDeviceResponse)},
+  { 316, -1, sizeof(::kentik::device::v202308beta1::CreateDevicesRequest)},
+  { 322, -1, sizeof(::kentik::device::v202308beta1::CreateDevicesResponse)},
+  { 329, -1, sizeof(::kentik::device::v202308beta1::UpdateDeviceRequest)},
+  { 335, -1, sizeof(::kentik::device::v202308beta1::UpdateDeviceResponse)},
+  { 341, -1, sizeof(::kentik::device::v202308beta1::UpdateDevicesRequest)},
+  { 347, -1, sizeof(::kentik::device::v202308beta1::UpdateDevicesResponse)},
+  { 354, -1, sizeof(::kentik::device::v202308beta1::UpdateDeviceLabelsRequest)},
+  { 361, -1, sizeof(::kentik::device::v202308beta1::UpdateDeviceLabelsResponse)},
+  { 367, -1, sizeof(::kentik::device::v202308beta1::DeleteDeviceRequest)},
+  { 373, -1, sizeof(::kentik::device::v202308beta1::DeleteDeviceResponse)},
+  { 378, -1, sizeof(::kentik::device::v202308beta1::DeleteDevicesRequest)},
+  { 384, -1, sizeof(::kentik::device::v202308beta1::DeleteDevicesResponse)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::device::v202308beta1::_DeviceSnmpV3Conf_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::device::v202308beta1::_DeviceNmsConfig_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::device::v202308beta1::_DeviceNmsSnmpConfig_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::device::v202308beta1::_DeviceNmsStConfig_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::device::v202308beta1::_DeviceConcise_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::device::v202308beta1::_Site_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::device::v202308beta1::_Plan_default_instance_),
@@ -910,473 +1090,510 @@ const char descriptor_table_protodef_kentik_2fdevice_2fv202308beta1_2fdevice_2ep
   "o\022\032kentik.device.v202308beta1\032\034google/ap"
   "i/annotations.proto\032\027google/api/client.p"
   "roto\032\037google/api/field_behavior.proto\032\037g"
-  "oogle/protobuf/timestamp.proto\032.protoc-g"
-  "en-openapiv2/options/annotations.proto\032%"
-  "kentik/core/v202303/annotations.proto\"\222\007"
-  "\n\020DeviceSnmpV3Conf\022\250\001\n\010username\030\001 \001(\tB\213\001"
-  "\222A\207\0012\204\001UserName (username) - the user na"
-  "me to use to authenticate via SNMP v3. *"
-  "* UserName is required when device_snmp_"
-  "v3_conf is not nullR\010username\022\226\001\n\027authen"
-  "tication_protocol\030\002 \001(\tB]\222AZ2XAuthentica"
-  "tion Protocol (authentication_protocol) "
-  "- the auth protocol to use via SNMP v3R\026"
-  "authenticationProtocol\022\350\001\n\031authenticatio"
-  "n_passphrase\030\003 \001(\tB\252\001\222A\246\0012\243\001Authenticati"
-  "on Passphrase (authentication_passphrase"
-  ") - the passphrase to use for SNMP v3 au"
-  "thentication protocol (required when Aut"
-  "henticationProtocol not NoAuth)R\030authent"
-  "icationPassphrase\022\215\001\n\020privacy_protocol\030\004"
-  " \001(\tBb\222A_2]Privacy Protocol (privacy_pro"
-  "tocol) - the privacy protocol to use to "
-  "authenticate via SNMP v3R\017privacyProtoco"
-  "l\022\276\001\n\022privacy_passphrase\030\005 \001(\tB\216\001\222A\212\0012\207\001"
-  "Privacy Passphrase (privacy_passphrase) "
-  "- the passphrase to use for SNMP v3 priv"
-  "acy protocol (required when PrivacyProto"
-  "col not NoPriv)R\021privacyPassphrase\"\230$\n\rD"
-  "eviceConcise\0227\n\002id\030\001 \001(\tB\'\222A$2\"System ge"
-  "nerated unique identifierR\002id\022\240\001\n\013device"
-  "_name\030\002 \001(\tB\177\222A|2zDevice name (device_na"
-  "me) - The name of the device. Valid char"
-  "acters: alphanumeric and underscores. Le"
-  "ngth: min=4, max=60.R\ndeviceName\022a\n\016devi"
-  "ce_subtype\030\003 \001(\tB:\222A725Device subtype (d"
-  "evice_subtype) - The device subtype.R\rde"
-  "viceSubtype\022\215\002\n\010cdn_attr\030\004 \001(\tB\361\001\222A\355\0012\352\001"
-  "CDN attributes (cdn_attr) - If this is a"
-  " DNS server, you can contribute its quer"
-  "ies to Kentik\'s CDN attribution database"
-  ". Valid values: \"Y\" or \"N\". ** cdn_attr "
-  "is required when the device subtype\'s pa"
-  "rent type is \"host-nprobe-dns-www\"R\007cdnA"
-  "ttr\022\226\001\n\022device_description\030\005 \001(\tBg\222Ad2bD"
-  "escription (device_description) - The de"
-  "vice description. Valid characters: any."
-  " Length: max=128.R\021deviceDescription\022\343\001\n"
-  "\013sending_ips\030\006 \003(\tB\301\001\222A\275\0012\272\001Device ip (s"
-  "ending_ips) - Array containing one or mo"
-  "re IP address(es), from which the device"
-  " is sending flow. ** sending_ips is requ"
-  "ired when the device subtype\'s parent ty"
-  "pe is \"router\"R\nsendingIps\022\352\002\n\022device_sa"
-  "mple_rate\030\007 \001(\001B\273\002\222A\267\0022\264\002Sample rate (de"
-  "vice_sample_rate) - The rate at which th"
-  "e device is sampling flows. Valid values"
-  ": integer bigger than 1. Recommended rat"
-  "e varies depending on flow volume; see h"
-  "ttps://kb.kentik.com/Ab02.htm#Ab02-Flow_"
-  "Sampling. ** device_sample_rate is requi"
-  "red when the device subtype\'s parent typ"
-  "e is \"router\"R\020deviceSampleRate\022\256\001\n\007plan"
-  "_id\030\010 \001(\rB\224\001\222A\220\0012\215\001Plan (plan_id) - The "
-  "ID of the plan to which this device is a"
-  "ssigned. Available plan(s) can be found "
-  "via the Plans API. Valid value: integer."
-  "R\006planId\022\273\001\n\007site_id\030\t \001(\rB\241\001\222A\235\0012\232\001Site"
-  " (site_id) - The ID of the site (if any)"
-  " to which this device is assigned. Site "
-  "IDs are system generated when a site is "
-  "created. Valid value: integer.R\006siteId\022\263"
-  "\003\n\rminimize_snmp\030\n \001(\010B\215\003\222A\211\0032\206\003SNMP pol"
-  "ling (minimize_snmp) - The interval at w"
-  "hich SNMP will be polled. If \"false\" (St"
-  "andard), interface counter will be polle"
-  "d every 10 minutes and interface descrip"
-  "tion every 30 minutes. If \"true\" (Minimu"
-  "m) (Minimum), interface counter won\'t be"
-  " polled and interface description will b"
-  "e polled every 6 hours. ** minimize_snmp"
-  " is required when the device subtype\'s p"
-  "arent type is \"router\"R\014minimizeSnmp\022\311\001\n"
-  "\016device_snmp_ip\030\013 \001(\tB\242\001\222A\236\0012\233\001Device SN"
-  "MP IP (device_snmp_ip) - The SNMP IP to "
-  "use when polling the device. device_snmp"
-  "_ip is ignored unless the device subtype"
-  "\'s parent type is \"router\"R\014deviceSnmpIp"
-  "\022\354\001\n\025device_snmp_community\030\014 \001(\tB\267\001\222A\263\0012"
-  "\260\001SNMP community (device_snmp_community)"
-  " - The SNMP community to use when pollin"
-  "g the device. device_snmp_community is i"
-  "gnored unless the device subtype\'s paren"
-  "t type is \"router\"R\023deviceSnmpCommunity\022"
-  "\374\001\n\023device_snmp_v3_conf\030\r \001(\0132,.kentik.d"
-  "evice.v202308beta1.DeviceSnmpV3ConfB\236\001\222A"
-  "\232\0012\227\001SNMP v3 configuration (device_snmp_"
-  "v3_conf) - SNMP v3 configuration. device"
-  "_snmp_v3_conf is ignored unless the devi"
-  "ce subtype\'s parent type is \"router\"R\020de"
-  "viceSnmpV3Conf\022\362\001\n\017device_bgp_type\030\016 \001(\t"
-  "B\311\001\222A\305\0012\302\001BGP (device_bgp_type) - Device"
-  " bgp type. Valid values: \"none\" (use gen"
-  "eric IP/ASN mapping), \"device\" (peer wit"
-  "h the device itself), \"other_device\" (sh"
-  "are routing table of existing peered dev"
-  "ice)R\rdeviceBgpType\022\205\002\n\026device_bgp_neigh"
-  "bor_ip\030\017 \001(\tB\317\001\222A\313\0012\310\001Your IPv4 peering "
-  "address (device_bgp_neighbor_ip) - A val"
-  "id IPv4 address to use for peering with "
-  "the device. ** An IPv4 and/or IPv6 peeri"
-  "ng address is required when device_bgp_t"
-  "ype is set to \"device\"R\023deviceBgpNeighbo"
-  "rIp\022\210\002\n\027device_bgp_neighbor_ip6\030\020 \001(\tB\320\001"
-  "\222A\314\0012\311\001Your IPv6 peering address (device"
-  "_bgp_neighbor_ip6) - A valid IPv6 addres"
-  "s to use for peering with the device. **"
-  " An IPv4 and/or IPv6 peering address is "
+  "oogle/protobuf/timestamp.proto\032\036google/p"
+  "rotobuf/duration.proto\032.protoc-gen-opena"
+  "piv2/options/annotations.proto\032%kentik/c"
+  "ore/v202303/annotations.proto\"\222\007\n\020Device"
+  "SnmpV3Conf\022\250\001\n\010username\030\001 \001(\tB\213\001\222A\207\0012\204\001U"
+  "serName (username) - the user name to us"
+  "e to authenticate via SNMP v3. ** UserNa"
+  "me is required when device_snmp_v3_conf "
+  "is not nullR\010username\022\226\001\n\027authentication"
+  "_protocol\030\002 \001(\tB]\222AZ2XAuthentication Pro"
+  "tocol (authentication_protocol) - the au"
+  "th protocol to use via SNMP v3R\026authenti"
+  "cationProtocol\022\350\001\n\031authentication_passph"
+  "rase\030\003 \001(\tB\252\001\222A\246\0012\243\001Authentication Passp"
+  "hrase (authentication_passphrase) - the "
+  "passphrase to use for SNMP v3 authentica"
+  "tion protocol (required when Authenticat"
+  "ionProtocol not NoAuth)R\030authenticationP"
+  "assphrase\022\215\001\n\020privacy_protocol\030\004 \001(\tBb\222A"
+  "_2]Privacy Protocol (privacy_protocol) -"
+  " the privacy protocol to use to authenti"
+  "cate via SNMP v3R\017privacyProtocol\022\276\001\n\022pr"
+  "ivacy_passphrase\030\005 \001(\tB\216\001\222A\212\0012\207\001Privacy "
+  "Passphrase (privacy_passphrase) - the pa"
+  "ssphrase to use for SNMP v3 privacy prot"
+  "ocol (required when PrivacyProtocol not "
+  "NoPriv)R\021privacyPassphrase\"\371\003\n\017DeviceNms"
+  "Config\022O\n\010agent_id\030\002 \001(\tB4\222A12/ID of the"
+  " agent that is monitoring this device.R\007"
+  "agentId\022D\n\nip_address\030\003 \001(\tB%\222A\"2 Local "
+  "IP address of this device.R\tipAddress\022\303\001"
+  "\n\004snmp\030\004 \001(\0132/.kentik.device.v202308beta"
+  "1.DeviceNmsSnmpConfigB~\222A{2yConfiguratio"
+  "n if metrics will be collected over SNMP"
+  ". Not including this configuration will "
+  "make this a ping-only device.R\004snmp\022\210\001\n\002"
+  "st\030\005 \001(\0132-.kentik.device.v202308beta1.De"
+  "viceNmsStConfigBI\222AF2DConfiguration if m"
+  "etrics will be collected over Streaming "
+  "Telemetry.R\002st\"\234\002\n\023DeviceNmsSnmpConfig\022e"
+  "\n\017credential_name\030\001 \001(\tB<\222A927Name of th"
+  "e SNMP credentials from the credential v"
+  "ault.R\016credentialName\022\?\n\004port\030\002 \001(\rB+\222A("
+  "2&SNMP port, to override default of 161."
+  "R\004port\022]\n\007timeout\030\003 \001(\0132\031.google.protobu"
+  "f.DurationB(\222A%2#Timeout, to override de"
+  "fault of 2s.R\007timeout\"\330\002\n\021DeviceNmsStCon"
+  "fig\022c\n\017credential_name\030\001 \001(\tB:\222A725Name "
+  "of the ST credentials from the credentia"
+  "l vault.R\016credentialName\022>\n\004port\030\002 \001(\rB*"
+  "\222A\'2%ST port, to override default of 603"
+  "0.R\004port\022]\n\007timeout\030\003 \001(\0132\031.google.proto"
+  "buf.DurationB(\222A%2#Timeout, to override "
+  "default of 2s.R\007timeout\022\?\n\006secure\030\004 \001(\010B"
+  "\'\222A$2\"Use SSL to connect to this device."
+  "R\006secure\"\253%\n\rDeviceConcise\0227\n\002id\030\001 \001(\tB\'"
+  "\222A$2\"System generated unique identifierR"
+  "\002id\022\240\001\n\013device_name\030\002 \001(\tB\177\222A|2zDevice n"
+  "ame (device_name) - The name of the devi"
+  "ce. Valid characters: alphanumeric and u"
+  "nderscores. Length: min=4, max=60.R\ndevi"
+  "ceName\022a\n\016device_subtype\030\003 \001(\tB:\222A725Dev"
+  "ice subtype (device_subtype) - The devic"
+  "e subtype.R\rdeviceSubtype\022\215\002\n\010cdn_attr\030\004"
+  " \001(\tB\361\001\222A\355\0012\352\001CDN attributes (cdn_attr) "
+  "- If this is a DNS server, you can contr"
+  "ibute its queries to Kentik\'s CDN attrib"
+  "ution database. Valid values: \"Y\" or \"N\""
+  ". ** cdn_attr is required when the devic"
+  "e subtype\'s parent type is \"host-nprobe-"
+  "dns-www\"R\007cdnAttr\022\226\001\n\022device_description"
+  "\030\005 \001(\tBg\222Ad2bDescription (device_descrip"
+  "tion) - The device description. Valid ch"
+  "aracters: any. Length: max=128.R\021deviceD"
+  "escription\022\343\001\n\013sending_ips\030\006 \003(\tB\301\001\222A\275\0012"
+  "\272\001Device ip (sending_ips) - Array contai"
+  "ning one or more IP address(es), from wh"
+  "ich the device is sending flow. ** sendi"
+  "ng_ips is required when the device subty"
+  "pe\'s parent type is \"router\"R\nsendingIps"
+  "\022\352\002\n\022device_sample_rate\030\007 \001(\001B\273\002\222A\267\0022\264\002S"
+  "ample rate (device_sample_rate) - The ra"
+  "te at which the device is sampling flows"
+  ". Valid values: integer bigger than 1. R"
+  "ecommended rate varies depending on flow"
+  " volume; see https://kb.kentik.com/Ab02."
+  "htm#Ab02-Flow_Sampling. ** device_sample"
+  "_rate is required when the device subtyp"
+  "e\'s parent type is \"router\"R\020deviceSampl"
+  "eRate\022\256\001\n\007plan_id\030\010 \001(\rB\224\001\222A\220\0012\215\001Plan (p"
+  "lan_id) - The ID of the plan to which th"
+  "is device is assigned. Available plan(s)"
+  " can be found via the Plans API. Valid v"
+  "alue: integer.R\006planId\022\273\001\n\007site_id\030\t \001(\r"
+  "B\241\001\222A\235\0012\232\001Site (site_id) - The ID of the"
+  " site (if any) to which this device is a"
+  "ssigned. Site IDs are system generated w"
+  "hen a site is created. Valid value: inte"
+  "ger.R\006siteId\022\270\003\n\rminimize_snmp\030\n \001(\010B\215\003\222"
+  "A\211\0032\206\003SNMP polling (minimize_snmp) - The"
+  " interval at which SNMP will be polled. "
+  "If \"false\" (Standard), interface counter"
+  " will be polled every 10 minutes and int"
+  "erface description every 30 minutes. If "
+  "\"true\" (Minimum) (Minimum), interface co"
+  "unter won\'t be polled and interface desc"
+  "ription will be polled every 6 hours. **"
+  " minimize_snmp is required when the devi"
+  "ce subtype\'s parent type is \"router\"H\000R\014"
+  "minimizeSnmp\210\001\001\022\311\001\n\016device_snmp_ip\030\013 \001(\t"
+  "B\242\001\222A\236\0012\233\001Device SNMP IP (device_snmp_ip"
+  ") - The SNMP IP to use when polling the "
+  "device. device_snmp_ip is ignored unless"
+  " the device subtype\'s parent type is \"ro"
+  "uter\"R\014deviceSnmpIp\022\354\001\n\025device_snmp_comm"
+  "unity\030\014 \001(\tB\267\001\222A\263\0012\260\001SNMP community (dev"
+  "ice_snmp_community) - The SNMP community"
+  " to use when polling the device. device_"
+  "snmp_community is ignored unless the dev"
+  "ice subtype\'s parent type is \"router\"R\023d"
+  "eviceSnmpCommunity\022\374\001\n\023device_snmp_v3_co"
+  "nf\030\r \001(\0132,.kentik.device.v202308beta1.De"
+  "viceSnmpV3ConfB\236\001\222A\232\0012\227\001SNMP v3 configur"
+  "ation (device_snmp_v3_conf) - SNMP v3 co"
+  "nfiguration. device_snmp_v3_conf is igno"
+  "red unless the device subtype\'s parent t"
+  "ype is \"router\"R\020deviceSnmpV3Conf\022\362\001\n\017de"
+  "vice_bgp_type\030\016 \001(\tB\311\001\222A\305\0012\302\001BGP (device"
+  "_bgp_type) - Device bgp type. Valid valu"
+  "es: \"none\" (use generic IP/ASN mapping),"
+  " \"device\" (peer with the device itself),"
+  " \"other_device\" (share routing table of "
+  "existing peered device)R\rdeviceBgpType\022\205"
+  "\002\n\026device_bgp_neighbor_ip\030\017 \001(\tB\317\001\222A\313\0012\310"
+  "\001Your IPv4 peering address (device_bgp_n"
+  "eighbor_ip) - A valid IPv4 address to us"
+  "e for peering with the device. ** An IPv"
+  "4 and/or IPv6 peering address is require"
+  "d when device_bgp_type is set to \"device"
+  "\"R\023deviceBgpNeighborIp\022\210\002\n\027device_bgp_ne"
+  "ighbor_ip6\030\020 \001(\tB\320\001\222A\314\0012\311\001Your IPv6 peer"
+  "ing address (device_bgp_neighbor_ip6) - "
+  "A valid IPv6 address to use for peering "
+  "with the device. ** An IPv4 and/or IPv6 "
+  "peering address is required when device_"
+  "bgp_type is set to \"device\"R\024deviceBgpNe"
+  "ighborIp6\022\202\002\n\027device_bgp_neighbor_asn\030\021 "
+  "\001(\tB\312\001\222A\306\0012\303\001Your ASN (device_bgp_neighb"
+  "or_asn) - The valid AS number (ASN) of t"
+  "he autonomous system that this device be"
+  "longs to. ** device_bgp_neighbor_asn is "
   "required when device_bgp_type is set to "
-  "\"device\"R\024deviceBgpNeighborIp6\022\202\002\n\027devic"
-  "e_bgp_neighbor_asn\030\021 \001(\tB\312\001\222A\306\0012\303\001Your A"
-  "SN (device_bgp_neighbor_asn) - The valid"
-  " AS number (ASN) of the autonomous syste"
-  "m that this device belongs to. ** device"
-  "_bgp_neighbor_asn is required when devic"
-  "e_bgp_type is set to \"device\"R\024deviceBgp"
-  "NeighborAsn\022\240\002\n\023device_bgp_password\030\022 \001("
-  "\tB\357\001\222A\353\0012\350\001BGP md5 password (device_bgp_"
-  "password) - Optional BGP MD5 password (s"
-  "hared authentication password for BGP pe"
-  "ering). Valid characters: alphanumeric. "
-  "Length: 32. device_bgp_password is optio"
-  "nal when device_bgp_type is set to \"devi"
-  "ce\"R\021deviceBgpPassword\022\244\002\n\021use_bgp_devic"
-  "e_id\030\023 \001(\rB\370\001\222A\364\0012\361\001Select master BGP de"
-  "vice (use_bgp_device_id) - The ID of the"
-  " device whose BGP table should be shared"
-  " with this device. ** use_bgp_device_id "
-  "is required when device_bgp_type is set "
-  "to \"other_device\"). Valid value: a syste"
-  "m-generated device_idR\016useBgpDeviceId\022\225\001"
-  "\n\023device_bgp_flowspec\030\024 \001(\010Be\222Ab2`BGP Fl"
-  "owspec Compatibility (device_bgp_flowspe"
-  "c) - Toggle BGP Flowspec Compatibility f"
-  "or device.R\021deviceBgpFlowspec\"\316\001\n\004Site\022\034"
-  "\n\002id\030\001 \001(\tB\014\222A\t2\007Site IDR\002id\022+\n\tsite_nam"
-  "e\030\002 \001(\tB\016\222A\0132\tSite nameR\010siteName\022$\n\003lat"
-  "\030\003 \001(\001B\022\222A\0172\rSite latitudeR\003lat\022%\n\003lon\030\004"
-  " \001(\001B\023\222A\0202\016Site longitudeR\003lon\022.\n\ncompan"
-  "y_id\030\005 \001(\tB\017\222A\0142\nCompany IDR\tcompanyId\"H"
-  "\n\004Plan\022\034\n\002id\030\001 \001(\tB\014\222A\t2\007Plan IDR\002id\022\"\n\004"
-  "name\030\002 \001(\tB\016\222A\0132\tPlan nameR\004name\"\304\004\n\005Lab"
-  "el\022\035\n\002id\030\001 \001(\tB\r\222A\n2\010Label IDR\002id\022#\n\004nam"
-  "e\030\002 \001(\tB\017\222A\0142\nLabel nameR\004name\0228\n\013descri"
-  "ption\030\003 \001(\tB\026\222A\0232\021Label descriptionR\013des"
-  "cription\022K\n\005edate\030\004 \001(\0132\032.google.protobu"
-  "f.TimestampB\031\222A\0262\024Label end date (UTC)R\005"
-  "edate\022P\n\005cdate\030\005 \001(\0132\032.google.protobuf.T"
-  "imestampB\036\222A\0332\031Label creation date (UTC)"
-  "R\005cdate\022%\n\007user_id\030\006 \001(\tB\014\222A\t2\007User IDR\006"
-  "userId\022.\n\ncompany_id\030\007 \001(\tB\017\222A\0142\nCompany"
-  " IDR\tcompanyId\022&\n\005color\030\010 \001(\tB\020\222A\r2\013Labe"
-  "l colorR\005color\022&\n\005order\030\t \001(\tB\020\222A\r2\013Labe"
-  "l orderR\005order\022<\n\017pivot_device_id\030\n \001(\tB"
-  "\024\222A\0212\017Pivot device IDR\rpivotDeviceId\0229\n\016"
-  "pivot_label_id\030\013 \001(\tB\023\222A\0202\016Pivot label I"
-  "DR\014pivotLabelId\"\211\004\n\tInterface\022O\n\025interfa"
-  "ce_description\030\001 \001(\tB\032\222A\0272\025Interface des"
-  "criptionR\024interfaceDescription\022E\n\022initia"
-  "l_snmp_speed\030\002 \001(\tB\027\222A\0242\022Initial SNMP sp"
-  "eedR\020initialSnmpSpeed\022+\n\tdevice_id\030\003 \001(\t"
-  "B\016\222A\0132\tDevice IDR\010deviceId\022.\n\nsnmp_speed"
-  "\030\004 \001(\tB\017\222A\0142\nSNMP speedR\tsnmpSpeed\022.\n\nsn"
-  "mp_alias\030\005 \001(\tB\017\222A\0142\nSNMP aliasR\tsnmpAli"
-  "as\022%\n\007snmp_id\030\006 \001(\tB\014\222A\t2\007SNMP IDR\006snmpI"
-  "d\022C\n\021connectivity_type\030\007 \001(\tB\026\222A\0232\021Conne"
-  "ctivity typeR\020connectivityType\022@\n\020networ"
-  "k_boundary\030\010 \001(\tB\025\222A\0222\020Network boundaryR"
-  "\017networkBoundary\022)\n\010provider\030\t \001(\tB\r\222A\n2"
-  "\010ProviderR\010provider\"\252\002\n\020CustomColumnData"
-  "\022+\n\tdevice_id\030\001 \001(\tB\016\222A\0132\tDevice IDR\010dev"
-  "iceId\022(\n\010field_id\030\002 \001(\tB\r\222A\n2\010Field IDR\007"
-  "fieldId\022+\n\010col_name\030\003 \001(\tB\020\222A\r2\013Column n"
-  "ameR\007colName\0222\n\013description\030\004 \001(\tB\020\222A\r2\013"
-  "DescriptionR\013description\022+\n\010col_type\030\005 \001"
-  "(\tB\020\222A\r2\013Column typeR\007colType\0221\n\013device_"
-  "type\030\006 \001(\tB\020\222A\r2\013Device typeR\ndeviceType"
-  "\"H\n\nGnmiV1Conf\022:\n\016dialout_server\030\001 \001(\tB\023"
-  "\222A\0202\016Dialout serverR\rdialoutServer\"\353!\n\016D"
-  "eviceDetailed\022;\n\002id\030\001 \001(\tB+\222A$2\"System g"
-  "enerated unique identifier\342A\001\003R\002id\022.\n\nco"
-  "mpany_id\030\002 \001(\tB\017\222A\0142\nCompany IDR\tcompany"
-  "Id\0221\n\013device_name\030\003 \001(\tB\020\222A\r2\013Device nam"
-  "eR\ndeviceName\0224\n\014device_alias\030\004 \001(\tB\021\222A\016"
-  "2\014Device aliasR\013deviceAlias\0221\n\013device_ty"
-  "pe\030\005 \001(\tB\020\222A\r2\013Device typeR\ndeviceType\022F"
-  "\n\022device_description\030\006 \001(\tB\027\222A\0242\022Device "
-  "descriptionR\021deviceDescription\022\?\n\004site\030\007"
-  " \001(\0132 .kentik.device.v202308beta1.SiteB\t"
-  "\222A\0062\004SiteR\004site\022\?\n\004plan\030\010 \001(\0132 .kentik.d"
-  "evice.v202308beta1.PlanB\t\222A\0062\004PlanR\004plan"
-  "\022N\n\006labels\030\t \003(\0132!.kentik.device.v202308"
-  "beta1.LabelB\023\222A\0202\016List of labelsR\006labels"
-  "\022e\n\016all_interfaces\030\n \003(\0132%.kentik.device"
-  ".v202308beta1.InterfaceB\027\222A\0242\022List of in"
-  "terfacesR\rallInterfaces\022\?\n\020device_flow_t"
-  "ype\030\013 \001(\tB\025\222A\0222\020Device flow typeR\016device"
-  "FlowType\022E\n\022device_sample_rate\030\014 \001(\tB\027\222A"
-  "\0242\022Device sample rateR\020deviceSampleRate\022"
-  "9\n\013sending_ips\030\r \003(\tB\030\222A\0252\023List of sendi"
-  "ng IPsR\nsendingIps\0229\n\016device_snmp_ip\030\016 \001"
-  "(\tB\023\222A\0202\016Device SNMP IPR\014deviceSnmpIp\022N\n"
-  "\025device_snmp_community\030\017 \001(\tB\032\222A\0272\025Devic"
-  "e SNMP communityR\023deviceSnmpCommunity\0227\n"
-  "\rminimize_snmp\030\020 \001(\010B\022\222A\0172\rMinimize SNMP"
-  "R\014minimizeSnmp\022<\n\017device_bgp_type\030\021 \001(\tB"
-  "\024\222A\0212\017Device BGP typeR\rdeviceBgpType\022P\n\026"
-  "device_bgp_neighbor_ip\030\022 \001(\tB\033\222A\0302\026Devic"
-  "e BGP neighbor IPR\023deviceBgpNeighborIp\022S"
-  "\n\027device_bgp_neighbor_ip6\030\023 \001(\tB\034\222A\0312\027De"
-  "vice BGP neighbor IP6R\024deviceBgpNeighbor"
-  "Ip6\022S\n\027device_bgp_neighbor_asn\030\024 \001(\tB\034\222A"
-  "\0312\027Device BGP neighbor ASNR\024deviceBgpNei"
-  "ghborAsn\022H\n\023device_bgp_flowspec\030\025 \001(\010B\030\222"
-  "A\0252\023Device BGP flowspecR\021deviceBgpFlowsp"
-  "ec\022H\n\023device_bgp_password\030\026 \001(\tB\030\222A\0252\023De"
-  "vice BGP passwordR\021deviceBgpPassword\022V\n\030"
-  "device_bgp_label_unicast\030\027 \001(\010B\035\222A\0322\030Dev"
-  "ice BGP label unicastR\025deviceBgpLabelUni"
-  "cast\022H\n\023bgp_lookup_strategy\030\030 \001(\tB\030\222A\0252\023"
-  "BGP lookup strategyR\021bgpLookupStrategy\0227"
-  "\n\rdevice_status\030\031 \001(\tB\022\222A\0172\rDevice statu"
-  "sR\014deviceStatus\022A\n\021use_bgp_device_id\030\032 \001"
-  "(\tB\026\222A\0232\021Use BGP device IDR\016useBgpDevice"
-  "Id\022:\n\016custom_columns\030\033 \001(\tB\023\222A\0202\016Custom "
-  "columnsR\rcustomColumns\022s\n\022custom_column_"
-  "data\030\034 \003(\0132,.kentik.device.v202308beta1."
-  "CustomColumnDataB\027\222A\0242\022Custom column dat"
-  "aR\020customColumnData\022P\n\026device_chf_client"
-  "_port\030\035 \001(\tB\033\222A\0302\026Device CHF client port"
-  "R\023deviceChfClientPort\022\\\n\032device_chf_clie"
-  "nt_protocol\030\036 \001(\tB\037\222A\0342\032Device CHF clien"
-  "t protocolR\027deviceChfClientProtocol\022K\n\024d"
-  "evice_chf_interface\030\037 \001(\tB\031\222A\0262\024Device C"
-  "HF interfaceR\022deviceChfInterface\022B\n\021devi"
-  "ce_agent_type\030  \001(\tB\026\222A\0232\021Device agent t"
-  "ypeR\017deviceAgentType\0226\n\rmax_flow_rate\030! "
-  "\001(\rB\022\222A\0172\rMax flow rateR\013maxFlowRate\022A\n\021"
-  "max_big_flow_rate\030\" \001(\rB\026\222A\0232\021Max big fl"
-  "ow rateR\016maxBigFlowRate\022\?\n\020device_proxy_"
-  "bgp\030# \001(\tB\025\222A\0222\020Device proxy BGPR\016device"
-  "ProxyBgp\022B\n\021device_proxy_bgp6\030$ \001(\tB\026\222A\023"
-  "2\021Device proxy BGP6R\017deviceProxyBgp6\022\\\n\014"
-  "created_date\030% \001(\0132\032.google.protobuf.Tim"
-  "estampB\035\222A\0322\030Creation timestamp (UTC)R\013c"
-  "reatedDate\022e\n\014updated_date\030& \001(\0132\032.googl"
-  "e.protobuf.TimestampB&\222A#2!Last modifica"
-  "tion timestamp (UTC)R\013updatedDate\022g\n\033dev"
-  "ice_snmp_v3_conf_enabled\030\' \001(\010B)\222A&2$Dev"
-  "ice SNMP v3 configuration enabledR\027devic"
-  "eSnmpV3ConfEnabled\022~\n\023device_snmp_v3_con"
-  "f\030( \001(\0132,.kentik.device.v202308beta1.Dev"
-  "iceSnmpV3ConfB!\222A\0362\034Device SNMP v3 confi"
-  "gurationR\020deviceSnmpV3Conf\022.\n\010cdn_attr\030)"
-  " \001(\tB\023\222A\0202\016CDN attributesR\007cdnAttr\0223\n\014bg"
-  "p_peer_ip4\030* \001(\tB\021\222A\0162\014BGP peer IP4R\nbgp"
-  "PeerIp4\0223\n\014bgp_peer_ip6\030+ \001(\tB\021\222A\0162\014BGP "
-  "peer IP6R\nbgpPeerIp6\022:\n\016device_subtype\030,"
-  " \001(\tB\023\222A\0202\016Device subtypeR\rdeviceSubtype"
-  "\022E\n\022device_vendor_type\030- \001(\tB\027\222A\0242\022Devic"
-  "e vendor typeR\020deviceVendorType\022B\n\021devic"
-  "e_model_type\030. \001(\tB\026\222A\0232\021Device model ty"
-  "peR\017deviceModelType\022<\n\017cloud_export_id\030/"
-  " \001(\tB\024\222A\0212\017Cloud export IDR\rcloudExportI"
-  "d\0227\n\rdevice_kproxy\0300 \001(\tB\022\222A\0172\rDevice KP"
-  "roxyR\014deviceKproxy\0224\n\014snmp_enabled\0301 \001(\t"
-  "B\021\222A\0162\014SNMP enabledR\013snmpEnabled\022K\n\024snmp"
-  "_disabled_reason\0302 \001(\tB\031\222A\0262\024SNMP disabl"
-  "ed reasonR\022snmpDisabledReason\022\\\n\032snmp_di"
-  "sabled_reason_other\0303 \001(\tB\037\222A\0342\032SNMP dis"
-  "abled reason otherR\027snmpDisabledReasonOt"
-  "her\022H\n\023bgp_disabled_reason\0304 \001(\tB\030\222A\0252\023B"
-  "GP disabled reasonR\021bgpDisabledReason\022Y\n"
-  "\031bgp_disabled_reason_other\0305 \001(\tB\036\222A\0332\031B"
-  "GP disabled reason otherR\026bgpDisabledRea"
-  "sonOther\022I\n\023device_manufacturer\0306 \001(\tB\030\222"
-  "A\0252\023Device manufacturerR\022deviceManufactu"
-  "rer\0224\n\014device_alert\0307 \001(\tB\021\222A\0162\014Device a"
-  "lertR\013deviceAlert\022\035\n\004role\0308 \001(\tB\t\222A\0062\004Ro"
-  "leR\004role\022x\n\023device_gnmi_v1_conf\0309 \001(\0132&."
-  "kentik.device.v202308beta1.GnmiV1ConfB!\222"
-  "A\0362\034Device GNMI v1 configurationR\020device"
-  "GnmiV1Conf\022A\n\021use_asn_from_flow\030: \001(\010B\026\222"
-  "A\0232\021Use ASN from flowR\016useAsnFromFlow\0227\n"
-  "\rmax_interface\030; \001(\rB\022\222A\0172\rMax interface"
-  "R\014maxInterface\022H\n\023max_interface_check\030< "
-  "\001(\rB\030\222A\0252\023Max interface checkR\021maxInterf"
-  "aceCheck\"-\n\014LabelConcise\022\035\n\002id\030\001 \001(\rB\r\222A"
-  "\n2\010Label IDR\002id\"\024\n\022ListDevicesRequest\"\352\001"
-  "\n\023ListDevicesResponse\022l\n\007devices\030\001 \003(\0132*"
+  "\"device\"R\024deviceBgpNeighborAsn\022\240\002\n\023devic"
+  "e_bgp_password\030\022 \001(\tB\357\001\222A\353\0012\350\001BGP md5 pa"
+  "ssword (device_bgp_password) - Optional "
+  "BGP MD5 password (shared authentication "
+  "password for BGP peering). Valid charact"
+  "ers: alphanumeric. Length: 32. device_bg"
+  "p_password is optional when device_bgp_t"
+  "ype is set to \"device\"R\021deviceBgpPasswor"
+  "d\022\244\002\n\021use_bgp_device_id\030\023 \001(\rB\370\001\222A\364\0012\361\001S"
+  "elect master BGP device (use_bgp_device_"
+  "id) - The ID of the device whose BGP tab"
+  "le should be shared with this device. **"
+  " use_bgp_device_id is required when devi"
+  "ce_bgp_type is set to \"other_device\"). V"
+  "alid value: a system-generated device_id"
+  "R\016useBgpDeviceId\022\225\001\n\023device_bgp_flowspec"
+  "\030\024 \001(\010Be\222Ab2`BGP Flowspec Compatibility "
+  "(device_bgp_flowspec) - Toggle BGP Flows"
+  "pec Compatibility for device.R\021deviceBgp"
+  "Flowspec\022z\n\003nms\030\025 \001(\0132+.kentik.device.v2"
+  "02308beta1.DeviceNmsConfigB;\222A826Configu"
+  "ration if this device will be monitored "
+  "by NMS.R\003nmsB\020\n\016_minimize_snmp\"\316\001\n\004Site\022"
+  "\034\n\002id\030\001 \001(\tB\014\222A\t2\007Site IDR\002id\022+\n\tsite_na"
+  "me\030\002 \001(\tB\016\222A\0132\tSite nameR\010siteName\022$\n\003la"
+  "t\030\003 \001(\001B\022\222A\0172\rSite latitudeR\003lat\022%\n\003lon\030"
+  "\004 \001(\001B\023\222A\0202\016Site longitudeR\003lon\022.\n\ncompa"
+  "ny_id\030\005 \001(\tB\017\222A\0142\nCompany IDR\tcompanyId\""
+  "H\n\004Plan\022\034\n\002id\030\001 \001(\tB\014\222A\t2\007Plan IDR\002id\022\"\n"
+  "\004name\030\002 \001(\tB\016\222A\0132\tPlan nameR\004name\"\304\004\n\005La"
+  "bel\022\035\n\002id\030\001 \001(\tB\r\222A\n2\010Label IDR\002id\022#\n\004na"
+  "me\030\002 \001(\tB\017\222A\0142\nLabel nameR\004name\0228\n\013descr"
+  "iption\030\003 \001(\tB\026\222A\0232\021Label descriptionR\013de"
+  "scription\022K\n\005edate\030\004 \001(\0132\032.google.protob"
+  "uf.TimestampB\031\222A\0262\024Label end date (UTC)R"
+  "\005edate\022P\n\005cdate\030\005 \001(\0132\032.google.protobuf."
+  "TimestampB\036\222A\0332\031Label creation date (UTC"
+  ")R\005cdate\022%\n\007user_id\030\006 \001(\tB\014\222A\t2\007User IDR"
+  "\006userId\022.\n\ncompany_id\030\007 \001(\tB\017\222A\0142\nCompan"
+  "y IDR\tcompanyId\022&\n\005color\030\010 \001(\tB\020\222A\r2\013Lab"
+  "el colorR\005color\022&\n\005order\030\t \001(\tB\020\222A\r2\013Lab"
+  "el orderR\005order\022<\n\017pivot_device_id\030\n \001(\t"
+  "B\024\222A\0212\017Pivot device IDR\rpivotDeviceId\0229\n"
+  "\016pivot_label_id\030\013 \001(\tB\023\222A\0202\016Pivot label "
+  "IDR\014pivotLabelId\"\211\004\n\tInterface\022O\n\025interf"
+  "ace_description\030\001 \001(\tB\032\222A\0272\025Interface de"
+  "scriptionR\024interfaceDescription\022E\n\022initi"
+  "al_snmp_speed\030\002 \001(\tB\027\222A\0242\022Initial SNMP s"
+  "peedR\020initialSnmpSpeed\022+\n\tdevice_id\030\003 \001("
+  "\tB\016\222A\0132\tDevice IDR\010deviceId\022.\n\nsnmp_spee"
+  "d\030\004 \001(\tB\017\222A\0142\nSNMP speedR\tsnmpSpeed\022.\n\ns"
+  "nmp_alias\030\005 \001(\tB\017\222A\0142\nSNMP aliasR\tsnmpAl"
+  "ias\022%\n\007snmp_id\030\006 \001(\tB\014\222A\t2\007SNMP IDR\006snmp"
+  "Id\022C\n\021connectivity_type\030\007 \001(\tB\026\222A\0232\021Conn"
+  "ectivity typeR\020connectivityType\022@\n\020netwo"
+  "rk_boundary\030\010 \001(\tB\025\222A\0222\020Network boundary"
+  "R\017networkBoundary\022)\n\010provider\030\t \001(\tB\r\222A\n"
+  "2\010ProviderR\010provider\"\252\002\n\020CustomColumnDat"
+  "a\022+\n\tdevice_id\030\001 \001(\tB\016\222A\0132\tDevice IDR\010de"
+  "viceId\022(\n\010field_id\030\002 \001(\tB\r\222A\n2\010Field IDR"
+  "\007fieldId\022+\n\010col_name\030\003 \001(\tB\020\222A\r2\013Column "
+  "nameR\007colName\0222\n\013description\030\004 \001(\tB\020\222A\r2"
+  "\013DescriptionR\013description\022+\n\010col_type\030\005 "
+  "\001(\tB\020\222A\r2\013Column typeR\007colType\0221\n\013device"
+  "_type\030\006 \001(\tB\020\222A\r2\013Device typeR\ndeviceTyp"
+  "e\"H\n\nGnmiV1Conf\022:\n\016dialout_server\030\001 \001(\tB"
+  "\023\222A\0202\016Dialout serverR\rdialoutServer\"\371\"\n\016"
+  "DeviceDetailed\022;\n\002id\030\001 \001(\tB+\222A$2\"System "
+  "generated unique identifier\342A\001\003R\002id\022.\n\nc"
+  "ompany_id\030\002 \001(\tB\017\222A\0142\nCompany IDR\tcompan"
+  "yId\0221\n\013device_name\030\003 \001(\tB\020\222A\r2\013Device na"
+  "meR\ndeviceName\0224\n\014device_alias\030\004 \001(\tB\021\222A"
+  "\0162\014Device aliasR\013deviceAlias\0221\n\013device_t"
+  "ype\030\005 \001(\tB\020\222A\r2\013Device typeR\ndeviceType\022"
+  "F\n\022device_description\030\006 \001(\tB\027\222A\0242\022Device"
+  " descriptionR\021deviceDescription\022\?\n\004site\030"
+  "\007 \001(\0132 .kentik.device.v202308beta1.SiteB"
+  "\t\222A\0062\004SiteR\004site\022\?\n\004plan\030\010 \001(\0132 .kentik."
+  "device.v202308beta1.PlanB\t\222A\0062\004PlanR\004pla"
+  "n\022N\n\006labels\030\t \003(\0132!.kentik.device.v20230"
+  "8beta1.LabelB\023\222A\0202\016List of labelsR\006label"
+  "s\022e\n\016all_interfaces\030\n \003(\0132%.kentik.devic"
+  "e.v202308beta1.InterfaceB\027\222A\0242\022List of i"
+  "nterfacesR\rallInterfaces\022\?\n\020device_flow_"
+  "type\030\013 \001(\tB\025\222A\0222\020Device flow typeR\016devic"
+  "eFlowType\022E\n\022device_sample_rate\030\014 \001(\tB\027\222"
+  "A\0242\022Device sample rateR\020deviceSampleRate"
+  "\0229\n\013sending_ips\030\r \003(\tB\030\222A\0252\023List of send"
+  "ing IPsR\nsendingIps\0229\n\016device_snmp_ip\030\016 "
+  "\001(\tB\023\222A\0202\016Device SNMP IPR\014deviceSnmpIp\022N"
+  "\n\025device_snmp_community\030\017 \001(\tB\032\222A\0272\025Devi"
+  "ce SNMP communityR\023deviceSnmpCommunity\022<"
+  "\n\rminimize_snmp\030\020 \001(\010B\022\222A\0172\rMinimize SNM"
+  "PH\000R\014minimizeSnmp\210\001\001\022<\n\017device_bgp_type\030"
+  "\021 \001(\tB\024\222A\0212\017Device BGP typeR\rdeviceBgpTy"
+  "pe\022P\n\026device_bgp_neighbor_ip\030\022 \001(\tB\033\222A\0302"
+  "\026Device BGP neighbor IPR\023deviceBgpNeighb"
+  "orIp\022S\n\027device_bgp_neighbor_ip6\030\023 \001(\tB\034\222"
+  "A\0312\027Device BGP neighbor IP6R\024deviceBgpNe"
+  "ighborIp6\022S\n\027device_bgp_neighbor_asn\030\024 \001"
+  "(\tB\034\222A\0312\027Device BGP neighbor ASNR\024device"
+  "BgpNeighborAsn\022H\n\023device_bgp_flowspec\030\025 "
+  "\001(\010B\030\222A\0252\023Device BGP flowspecR\021deviceBgp"
+  "Flowspec\022H\n\023device_bgp_password\030\026 \001(\tB\030\222"
+  "A\0252\023Device BGP passwordR\021deviceBgpPasswo"
+  "rd\022V\n\030device_bgp_label_unicast\030\027 \001(\010B\035\222A"
+  "\0322\030Device BGP label unicastR\025deviceBgpLa"
+  "belUnicast\022H\n\023bgp_lookup_strategy\030\030 \001(\tB"
+  "\030\222A\0252\023BGP lookup strategyR\021bgpLookupStra"
+  "tegy\0227\n\rdevice_status\030\031 \001(\tB\022\222A\0172\rDevice"
+  " statusR\014deviceStatus\022A\n\021use_bgp_device_"
+  "id\030\032 \001(\tB\026\222A\0232\021Use BGP device IDR\016useBgp"
+  "DeviceId\022:\n\016custom_columns\030\033 \001(\tB\023\222A\0202\016C"
+  "ustom columnsR\rcustomColumns\022s\n\022custom_c"
+  "olumn_data\030\034 \003(\0132,.kentik.device.v202308"
+  "beta1.CustomColumnDataB\027\222A\0242\022Custom colu"
+  "mn dataR\020customColumnData\022P\n\026device_chf_"
+  "client_port\030\035 \001(\tB\033\222A\0302\026Device CHF clien"
+  "t portR\023deviceChfClientPort\022\\\n\032device_ch"
+  "f_client_protocol\030\036 \001(\tB\037\222A\0342\032Device CHF"
+  " client protocolR\027deviceChfClientProtoco"
+  "l\022K\n\024device_chf_interface\030\037 \001(\tB\031\222A\0262\024De"
+  "vice CHF interfaceR\022deviceChfInterface\022B"
+  "\n\021device_agent_type\030  \001(\tB\026\222A\0232\021Device a"
+  "gent typeR\017deviceAgentType\0226\n\rmax_flow_r"
+  "ate\030! \001(\rB\022\222A\0172\rMax flow rateR\013maxFlowRa"
+  "te\022A\n\021max_big_flow_rate\030\" \001(\rB\026\222A\0232\021Max "
+  "big flow rateR\016maxBigFlowRate\022\?\n\020device_"
+  "proxy_bgp\030# \001(\tB\025\222A\0222\020Device proxy BGPR\016"
+  "deviceProxyBgp\022B\n\021device_proxy_bgp6\030$ \001("
+  "\tB\026\222A\0232\021Device proxy BGP6R\017deviceProxyBg"
+  "p6\022\\\n\014created_date\030% \001(\0132\032.google.protob"
+  "uf.TimestampB\035\222A\0322\030Creation timestamp (U"
+  "TC)R\013createdDate\022e\n\014updated_date\030& \001(\0132\032"
+  ".google.protobuf.TimestampB&\222A#2!Last mo"
+  "dification timestamp (UTC)R\013updatedDate\022"
+  "g\n\033device_snmp_v3_conf_enabled\030\' \001(\010B)\222A"
+  "&2$Device SNMP v3 configuration enabledR"
+  "\027deviceSnmpV3ConfEnabled\022~\n\023device_snmp_"
+  "v3_conf\030( \001(\0132,.kentik.device.v202308bet"
+  "a1.DeviceSnmpV3ConfB!\222A\0362\034Device SNMP v3"
+  " configurationR\020deviceSnmpV3Conf\022.\n\010cdn_"
+  "attr\030) \001(\tB\023\222A\0202\016CDN attributesR\007cdnAttr"
+  "\0223\n\014bgp_peer_ip4\030* \001(\tB\021\222A\0162\014BGP peer IP"
+  "4R\nbgpPeerIp4\0223\n\014bgp_peer_ip6\030+ \001(\tB\021\222A\016"
+  "2\014BGP peer IP6R\nbgpPeerIp6\022:\n\016device_sub"
+  "type\030, \001(\tB\023\222A\0202\016Device subtypeR\rdeviceS"
+  "ubtype\022E\n\022device_vendor_type\030- \001(\tB\027\222A\0242"
+  "\022Device vendor typeR\020deviceVendorType\022B\n"
+  "\021device_model_type\030. \001(\tB\026\222A\0232\021Device mo"
+  "del typeR\017deviceModelType\022<\n\017cloud_expor"
+  "t_id\030/ \001(\tB\024\222A\0212\017Cloud export IDR\rcloudE"
+  "xportId\0227\n\rdevice_kproxy\0300 \001(\tB\022\222A\0172\rDev"
+  "ice KProxyR\014deviceKproxy\0224\n\014snmp_enabled"
+  "\0301 \001(\tB\021\222A\0162\014SNMP enabledR\013snmpEnabled\022K"
+  "\n\024snmp_disabled_reason\0302 \001(\tB\031\222A\0262\024SNMP "
+  "disabled reasonR\022snmpDisabledReason\022\\\n\032s"
+  "nmp_disabled_reason_other\0303 \001(\tB\037\222A\0342\032SN"
+  "MP disabled reason otherR\027snmpDisabledRe"
+  "asonOther\022H\n\023bgp_disabled_reason\0304 \001(\tB\030"
+  "\222A\0252\023BGP disabled reasonR\021bgpDisabledRea"
+  "son\022Y\n\031bgp_disabled_reason_other\0305 \001(\tB\036"
+  "\222A\0332\031BGP disabled reason otherR\026bgpDisab"
+  "ledReasonOther\022I\n\023device_manufacturer\0306 "
+  "\001(\tB\030\222A\0252\023Device manufacturerR\022deviceMan"
+  "ufacturer\0224\n\014device_alert\0307 \001(\tB\021\222A\0162\014De"
+  "vice alertR\013deviceAlert\022\035\n\004role\0308 \001(\tB\t\222"
+  "A\0062\004RoleR\004role\022x\n\023device_gnmi_v1_conf\0309 "
+  "\001(\0132&.kentik.device.v202308beta1.GnmiV1C"
+  "onfB!\222A\0362\034Device GNMI v1 configurationR\020"
+  "deviceGnmiV1Conf\022A\n\021use_asn_from_flow\030: "
+  "\001(\010B\026\222A\0232\021Use ASN from flowR\016useAsnFromF"
+  "low\0227\n\rmax_interface\030; \001(\rB\022\222A\0172\rMax int"
+  "erfaceR\014maxInterface\022H\n\023max_interface_ch"
+  "eck\030< \001(\rB\030\222A\0252\023Max interface checkR\021max"
+  "InterfaceCheck\022u\n\003nms\030= \001(\0132+.kentik.dev"
+  "ice.v202308beta1.DeviceNmsConfigB6\222A321C"
+  "onfiguration if this device is monitored"
+  " by NMS.R\003nmsB\020\n\016_minimize_snmp\"-\n\014Label"
+  "Concise\022\035\n\002id\030\001 \001(\rB\r\222A\n2\010Label IDR\002id\"\024"
+  "\n\022ListDevicesRequest\"\352\001\n\023ListDevicesResp"
+  "onse\022l\n\007devices\030\001 \003(\0132*.kentik.device.v2"
+  "02308beta1.DeviceDetailedB&\222A#2!List of "
+  "configurations of devicesR\007devices\022e\n\rin"
+  "valid_count\030\002 \001(\rB@\222A=2;Number of invali"
+  "d entries encountered while collecting d"
+  "ataR\014invalidCount\"G\n\020GetDeviceRequest\0223\n"
+  "\002id\030\001 \001(\tB#\222A\0342\032ID of the requested devi"
+  "ce\342A\001\002R\002id\"\203\001\n\021GetDeviceResponse\022n\n\006devi"
+  "ce\030\001 \001(\0132*.kentik.device.v202308beta1.De"
+  "viceDetailedB*\222A\'2%Configuration of the "
+  "requested deviceR\006device\"\202\001\n\023CreateDevic"
+  "eRequest\022k\n\006device\030\001 \001(\0132).kentik.device"
+  ".v202308beta1.DeviceConciseB(\222A!2\037Config"
+  "uration of the new device\342A\001\002R\006device\"\212\001"
+  "\n\024CreateDeviceResponse\022r\n\006device\030\001 \001(\0132*"
   ".kentik.device.v202308beta1.DeviceDetail"
-  "edB&\222A#2!List of configurations of devic"
-  "esR\007devices\022e\n\rinvalid_count\030\002 \001(\rB@\222A=2"
-  ";Number of invalid entries encountered w"
-  "hile collecting dataR\014invalidCount\"G\n\020Ge"
-  "tDeviceRequest\0223\n\002id\030\001 \001(\tB#\222A\0342\032ID of t"
-  "he requested device\342A\001\002R\002id\"\203\001\n\021GetDevic"
-  "eResponse\022n\n\006device\030\001 \001(\0132*.kentik.devic"
-  "e.v202308beta1.DeviceDetailedB*\222A\'2%Conf"
-  "iguration of the requested deviceR\006devic"
-  "e\"\202\001\n\023CreateDeviceRequest\022k\n\006device\030\001 \001("
-  "\0132).kentik.device.v202308beta1.DeviceCon"
-  "ciseB(\222A!2\037Configuration of the new devi"
-  "ce\342A\001\002R\006device\"\212\001\n\024CreateDeviceResponse\022"
-  "r\n\006device\030\001 \001(\0132*.kentik.device.v202308b"
-  "eta1.DeviceDetailedB.\222A+2)Configuration "
-  "of the newly created deviceR\006device\"\225\001\n\024"
-  "CreateDevicesRequest\022}\n\007devices\030\001 \003(\0132)."
-  "kentik.device.v202308beta1.DeviceConcise"
-  "B8\222A12/List of configurations of devices"
-  " to be created\342A\001\002R\007devices\"\363\001\n\025CreateDe"
-  "vicesResponse\022z\n\007devices\030\001 \003(\0132*.kentik."
-  "device.v202308beta1.DeviceDetailedB4\222A12"
-  "/List of configurations of newly created"
-  " devicesR\007devices\022^\n\016failed_devices\030\002 \003("
-  "\tB7\222A422List of names of devices that fa"
-  "iled to be createdR\rfailedDevices\"\235\001\n\023Up"
-  "dateDeviceRequest\022\205\001\n\006device\030\001 \001(\0132).ken"
-  "tik.device.v202308beta1.DeviceConciseBB\222"
-  "A;29New configuration attributes for the"
-  " device to be updated\342A\001\002R\006device\"\204\001\n\024Up"
-  "dateDeviceResponse\022l\n\006device\030\001 \001(\0132*.ken"
-  "tik.device.v202308beta1.DeviceDetailedB("
-  "\222A%2#Updated configuration of the device"
-  "R\006device\"\225\001\n\024UpdateDevicesRequest\022}\n\007dev"
-  "ices\030\001 \003(\0132).kentik.device.v202308beta1."
-  "DeviceConciseB8\222A12/List of configuratio"
-  "ns of devices to be updated\342A\001\002R\007devices"
-  "\"\353\001\n\025UpdateDevicesResponse\022t\n\007devices\030\001 "
-  "\003(\0132*.kentik.device.v202308beta1.DeviceD"
-  "etailedB.\222A+2)List of configurations of "
-  "updated devicesR\007devices\022\\\n\016failed_devic"
-  "es\030\002 \003(\tB5\222A220List of IDs of devices th"
-  "at failed to be updatedR\rfailedDevices\"\311"
-  "\001\n\031UpdateDeviceLabelsRequest\0227\n\002id\030\001 \001(\t"
-  "B\'\222A 2\036ID of the device to be updated\342A\001"
-  "\002R\002id\022s\n\006labels\030\002 \003(\0132(.kentik.device.v2"
-  "02308beta1.LabelConciseB1\222A*2(List of la"
-  "bels to be added to the device\342A\001\002R\006labe"
-  "ls\"\212\001\n\032UpdateDeviceLabelsResponse\022l\n\006dev"
-  "ice\030\001 \001(\0132*.kentik.device.v202308beta1.D"
-  "eviceDetailedB(\222A%2#Updated configuratio"
-  "n of the deviceR\006device\"N\n\023DeleteDeviceR"
-  "equest\0227\n\002id\030\001 \001(\tB\'\222A 2\036ID of the devic"
-  "e to be deleted\342A\001\002R\002id\"\026\n\024DeleteDeviceR"
-  "esponse\"W\n\024DeleteDevicesRequest\022\?\n\003ids\030\001"
-  " \003(\tB-\222A&2$List of IDs of devices to be "
-  "deleted\342A\001\002R\003ids\"u\n\025DeleteDevicesRespons"
-  "e\022\\\n\016failed_devices\030\001 \003(\tB5\222A220List of "
-  "IDs of devices that failed to be deleted"
-  "R\rfailedDevices2\366\032\n\rDeviceService\022\252\002\n\013Li"
-  "stDevices\022..kentik.device.v202308beta1.L"
-  "istDevicesRequest\032/.kentik.device.v20230"
-  "8beta1.ListDevicesResponse\"\271\001\222A~\022\021List a"
-  "ll devices.\032\\Returns list of configured "
-  "devices (see [About Devices](https://kb."
-  "kentik.com/v4/Cb01.htm)).*\013ListDevices\362\327"
-  "\002\021admin.device:read\202\323\344\223\002\035\022\033/device/v2023"
-  "08beta1/device\022\311\002\n\tGetDevice\022,.kentik.de"
-  "vice.v202308beta1.GetDeviceRequest\032-.ken"
-  "tik.device.v202308beta1.GetDeviceRespons"
-  "e\"\336\001\222A\235\001\022#Retrieve configuration of a de"
-  "vice.\032kReturns configuration of a device"
-  " specified by ID (see [About Devices](ht"
-  "tps://kb.kentik.com/v4/Cb01.htm)).*\tGetD"
-  "evice\362\327\002\021admin.device:read\202\323\344\223\002\"\022 /devic"
-  "e/v202308beta1/device/{id}\022\346\002\n\014CreateDev"
-  "ice\022/.kentik.device.v202308beta1.CreateD"
-  "eviceRequest\0320.kentik.device.v202308beta"
-  "1.CreateDeviceResponse\"\362\001\222A\262\001\022\027Configure"
-  " a new device.\032\210\001Create configuration fo"
-  "r a new device. Returns the newly create"
-  "d configuration (see [About Devices](htt"
-  "ps://kb.kentik.com/v4/Cb01.htm)).*\014Creat"
-  "eDevice\362\327\002\022admin.device:write\202\323\344\223\002 \"\033/de"
-  "vice/v202308beta1/device:\001*\022\203\003\n\rCreateDe"
-  "vices\0220.kentik.device.v202308beta1.Creat"
-  "eDevicesRequest\0321.kentik.device.v202308b"
-  "eta1.CreateDevicesResponse\"\214\002\222A\306\001\022%Confi"
-  "gure multiple devices (max 100).\032\215\001Creat"
-  "e configuration for multiple devices. Re"
-  "turns the newly created configurations ("
-  "see [About Devices](https://kb.kentik.co"
-  "m/v4/Cb01.htm)).*\rCreateDevices\362\327\002\022admin"
-  ".device:write\202\323\344\223\002&\"!/device/v202308beta"
-  "1/device/batch:\001*\022\223\003\n\014UpdateDevice\022/.ken"
-  "tik.device.v202308beta1.UpdateDeviceRequ"
-  "est\0320.kentik.device.v202308beta1.UpdateD"
-  "eviceResponse\"\237\002\222A\323\001\022\"Updates configurat"
-  "ion of a device.\032\236\001Replaces configuratio"
-  "n of a device with attributes in the req"
-  "uest. Returns the updated configuration "
+  "edB.\222A+2)Configuration of the newly crea"
+  "ted deviceR\006device\"\225\001\n\024CreateDevicesRequ"
+  "est\022}\n\007devices\030\001 \003(\0132).kentik.device.v20"
+  "2308beta1.DeviceConciseB8\222A12/List of co"
+  "nfigurations of devices to be created\342A\001"
+  "\002R\007devices\"\363\001\n\025CreateDevicesResponse\022z\n\007"
+  "devices\030\001 \003(\0132*.kentik.device.v202308bet"
+  "a1.DeviceDetailedB4\222A12/List of configur"
+  "ations of newly created devicesR\007devices"
+  "\022^\n\016failed_devices\030\002 \003(\tB7\222A422List of n"
+  "ames of devices that failed to be create"
+  "dR\rfailedDevices\"\235\001\n\023UpdateDeviceRequest"
+  "\022\205\001\n\006device\030\001 \001(\0132).kentik.device.v20230"
+  "8beta1.DeviceConciseBB\222A;29New configura"
+  "tion attributes for the device to be upd"
+  "ated\342A\001\002R\006device\"\204\001\n\024UpdateDeviceRespons"
+  "e\022l\n\006device\030\001 \001(\0132*.kentik.device.v20230"
+  "8beta1.DeviceDetailedB(\222A%2#Updated conf"
+  "iguration of the deviceR\006device\"\225\001\n\024Upda"
+  "teDevicesRequest\022}\n\007devices\030\001 \003(\0132).kent"
+  "ik.device.v202308beta1.DeviceConciseB8\222A"
+  "12/List of configurations of devices to "
+  "be updated\342A\001\002R\007devices\"\353\001\n\025UpdateDevice"
+  "sResponse\022t\n\007devices\030\001 \003(\0132*.kentik.devi"
+  "ce.v202308beta1.DeviceDetailedB.\222A+2)Lis"
+  "t of configurations of updated devicesR\007"
+  "devices\022\\\n\016failed_devices\030\002 \003(\tB5\222A220Li"
+  "st of IDs of devices that failed to be u"
+  "pdatedR\rfailedDevices\"\311\001\n\031UpdateDeviceLa"
+  "belsRequest\0227\n\002id\030\001 \001(\tB\'\222A 2\036ID of the "
+  "device to be updated\342A\001\002R\002id\022s\n\006labels\030\002"
+  " \003(\0132(.kentik.device.v202308beta1.LabelC"
+  "onciseB1\222A*2(List of labels to be added "
+  "to the device\342A\001\002R\006labels\"\212\001\n\032UpdateDevi"
+  "ceLabelsResponse\022l\n\006device\030\001 \001(\0132*.kenti"
+  "k.device.v202308beta1.DeviceDetailedB(\222A"
+  "%2#Updated configuration of the deviceR\006"
+  "device\"N\n\023DeleteDeviceRequest\0227\n\002id\030\001 \001("
+  "\tB\'\222A 2\036ID of the device to be deleted\342A"
+  "\001\002R\002id\"\026\n\024DeleteDeviceResponse\"W\n\024Delete"
+  "DevicesRequest\022\?\n\003ids\030\001 \003(\tB-\222A&2$List o"
+  "f IDs of devices to be deleted\342A\001\002R\003ids\""
+  "u\n\025DeleteDevicesResponse\022\\\n\016failed_devic"
+  "es\030\001 \003(\tB5\222A220List of IDs of devices th"
+  "at failed to be deletedR\rfailedDevices2\366"
+  "\032\n\rDeviceService\022\252\002\n\013ListDevices\022..kenti"
+  "k.device.v202308beta1.ListDevicesRequest"
+  "\032/.kentik.device.v202308beta1.ListDevice"
+  "sResponse\"\271\001\222A~\022\021List all devices.\032\\Retu"
+  "rns list of configured devices (see [Abo"
+  "ut Devices](https://kb.kentik.com/v4/Cb0"
+  "1.htm)).*\013ListDevices\362\327\002\021admin.device:re"
+  "ad\202\323\344\223\002\035\022\033/device/v202308beta1/device\022\311\002"
+  "\n\tGetDevice\022,.kentik.device.v202308beta1"
+  ".GetDeviceRequest\032-.kentik.device.v20230"
+  "8beta1.GetDeviceResponse\"\336\001\222A\235\001\022#Retriev"
+  "e configuration of a device.\032kReturns co"
+  "nfiguration of a device specified by ID "
   "(see [About Devices](https://kb.kentik.c"
-  "om/v4/Cb01.htm)).*\014UpdateDevice\362\327\002\022admin"
-  ".device:write\202\323\344\223\002,\032\'/device/v202308beta"
-  "1/device/{device.id}:\001*\022\254\003\n\rUpdateDevice"
-  "s\0220.kentik.device.v202308beta1.UpdateDev"
-  "icesRequest\0321.kentik.device.v202308beta1"
-  ".UpdateDevicesResponse\"\265\002\222A\357\001\0224Updates c"
-  "onfiguration of multiple devices (max 10"
-  "0).\032\247\001Replaces configuration of multiple"
-  " devices with attributes in the request."
-  " Returns the updated configurations (see"
-  " [About Devices](https://kb.kentik.com/v"
-  "4/Cb01.htm)).*\rUpdateDevices\362\327\002\022admin.de"
-  "vice:write\202\323\344\223\002&\032!/device/v202308beta1/d"
-  "evice/batch:\001*\022\302\003\n\022UpdateDeviceLabels\0225."
-  "kentik.device.v202308beta1.UpdateDeviceL"
-  "abelsRequest\0326.kentik.device.v202308beta"
-  "1.UpdateDeviceLabelsResponse\"\274\002\222A\360\001\022\033Upd"
-  "ates labels of a device.\032\274\001Removes all e"
-  "xisting labels from the device and appli"
-  "es the device labels (see [About Device "
-  "Labels](https://kb.kentik.com/v4/Cb16.ht"
-  "m)) specified by id. Returns the updated"
-  " configuration.*\022UpdateDeviceLabels\362\327\002\022a"
-  "dmin.device:write\202\323\344\223\002,\032\'/device/v202308"
-  "beta1/device/{id}/labels:\001*\022\325\002\n\014DeleteDe"
-  "vice\022/.kentik.device.v202308beta1.Delete"
-  "DeviceRequest\0320.kentik.device.v202308bet"
-  "a1.DeleteDeviceResponse\"\341\001\222A\237\001\022!Delete c"
-  "onfiguration of a device.\032lDeletes confi"
-  "guration of a device with specific ID (s"
-  "ee [About Devices](https://kb.kentik.com"
-  "/v4/Cb01.htm)).*\014DeleteDevice\362\327\002\022admin.d"
-  "evice:write\202\323\344\223\002\"* /device/v202308beta1/"
-  "device/{id}\022\356\002\n\rDeleteDevices\0220.kentik.d"
-  "evice.v202308beta1.DeleteDevicesRequest\032"
-  "1.kentik.device.v202308beta1.DeleteDevic"
-  "esResponse\"\367\001\222A\261\001\022)Delete configuration "
-  "of multiple devices.\032uDeletes configurat"
-  "ion of multiple devices with specific ID"
-  "s (see [About Devices](https://kb.kentik"
-  ".com/v4/Cb01.htm)).*\rDeleteDevices\362\327\002\022ad"
-  "min.device:write\202\323\344\223\002&\"!/device/v202308b"
-  "eta1/device/batch:\001*\032*\312A\023grpc.api.kentik"
-  ".com\352\327\002\014admin.device\220\330\002\003B\356\003ZLgithub.com/"
-  "kentik/api-schema-public/gen/go/kentik/d"
-  "evice/v202308beta1;device\222A\234\003\022\265\001\n\nDevice"
-  " API\022R# Overview\nThe Device API provides"
-  " programmatic access to configuration of"
-  " devices\"E\n\026Kentik API Engineering\022+http"
-  "s://github.com/kentik/api-schema-public2"
-  "\014v202308beta1*\001\0022\020application/json:\020appl"
-  "ication/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-E"
-  "mail \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Token"
-  " \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]\n%General in"
-  "formation about Kentik APIs\0224https://kb."
-  "kentik.com/v0/Ab09.htm#Ab09-APIs_Overvie"
-  "wb\006proto3"
+  "om/v4/Cb01.htm)).*\tGetDevice\362\327\002\021admin.de"
+  "vice:read\202\323\344\223\002\"\022 /device/v202308beta1/de"
+  "vice/{id}\022\346\002\n\014CreateDevice\022/.kentik.devi"
+  "ce.v202308beta1.CreateDeviceRequest\0320.ke"
+  "ntik.device.v202308beta1.CreateDeviceRes"
+  "ponse\"\362\001\222A\262\001\022\027Configure a new device.\032\210\001"
+  "Create configuration for a new device. R"
+  "eturns the newly created configuration ("
+  "see [About Devices](https://kb.kentik.co"
+  "m/v4/Cb01.htm)).*\014CreateDevice\362\327\002\022admin."
+  "device:write\202\323\344\223\002 \"\033/device/v202308beta1"
+  "/device:\001*\022\203\003\n\rCreateDevices\0220.kentik.de"
+  "vice.v202308beta1.CreateDevicesRequest\0321"
+  ".kentik.device.v202308beta1.CreateDevice"
+  "sResponse\"\214\002\222A\306\001\022%Configure multiple dev"
+  "ices (max 100).\032\215\001Create configuration f"
+  "or multiple devices. Returns the newly c"
+  "reated configurations (see [About Device"
+  "s](https://kb.kentik.com/v4/Cb01.htm)).*"
+  "\rCreateDevices\362\327\002\022admin.device:write\202\323\344\223"
+  "\002&\"!/device/v202308beta1/device/batch:\001*"
+  "\022\223\003\n\014UpdateDevice\022/.kentik.device.v20230"
+  "8beta1.UpdateDeviceRequest\0320.kentik.devi"
+  "ce.v202308beta1.UpdateDeviceResponse\"\237\002\222"
+  "A\323\001\022\"Updates configuration of a device.\032"
+  "\236\001Replaces configuration of a device wit"
+  "h attributes in the request. Returns the"
+  " updated configuration (see [About Devic"
+  "es](https://kb.kentik.com/v4/Cb01.htm))."
+  "*\014UpdateDevice\362\327\002\022admin.device:write\202\323\344\223"
+  "\002,\032\'/device/v202308beta1/device/{device."
+  "id}:\001*\022\254\003\n\rUpdateDevices\0220.kentik.device"
+  ".v202308beta1.UpdateDevicesRequest\0321.ken"
+  "tik.device.v202308beta1.UpdateDevicesRes"
+  "ponse\"\265\002\222A\357\001\0224Updates configuration of m"
+  "ultiple devices (max 100).\032\247\001Replaces co"
+  "nfiguration of multiple devices with att"
+  "ributes in the request. Returns the upda"
+  "ted configurations (see [About Devices]("
+  "https://kb.kentik.com/v4/Cb01.htm)).*\rUp"
+  "dateDevices\362\327\002\022admin.device:write\202\323\344\223\002&\032"
+  "!/device/v202308beta1/device/batch:\001*\022\302\003"
+  "\n\022UpdateDeviceLabels\0225.kentik.device.v20"
+  "2308beta1.UpdateDeviceLabelsRequest\0326.ke"
+  "ntik.device.v202308beta1.UpdateDeviceLab"
+  "elsResponse\"\274\002\222A\360\001\022\033Updates labels of a "
+  "device.\032\274\001Removes all existing labels fr"
+  "om the device and applies the device lab"
+  "els (see [About Device Labels](https://k"
+  "b.kentik.com/v4/Cb16.htm)) specified by "
+  "id. Returns the updated configuration.*\022"
+  "UpdateDeviceLabels\362\327\002\022admin.device:write"
+  "\202\323\344\223\002,\032\'/device/v202308beta1/device/{id}"
+  "/labels:\001*\022\325\002\n\014DeleteDevice\022/.kentik.dev"
+  "ice.v202308beta1.DeleteDeviceRequest\0320.k"
+  "entik.device.v202308beta1.DeleteDeviceRe"
+  "sponse\"\341\001\222A\237\001\022!Delete configuration of a"
+  " device.\032lDeletes configuration of a dev"
+  "ice with specific ID (see [About Devices"
+  "](https://kb.kentik.com/v4/Cb01.htm)).*\014"
+  "DeleteDevice\362\327\002\022admin.device:write\202\323\344\223\002\""
+  "* /device/v202308beta1/device/{id}\022\356\002\n\rD"
+  "eleteDevices\0220.kentik.device.v202308beta"
+  "1.DeleteDevicesRequest\0321.kentik.device.v"
+  "202308beta1.DeleteDevicesResponse\"\367\001\222A\261\001"
+  "\022)Delete configuration of multiple devic"
+  "es.\032uDeletes configuration of multiple d"
+  "evices with specific IDs (see [About Dev"
+  "ices](https://kb.kentik.com/v4/Cb01.htm)"
+  ").*\rDeleteDevices\362\327\002\022admin.device:write\202"
+  "\323\344\223\002&\"!/device/v202308beta1/device/batch"
+  ":\001*\032*\312A\023grpc.api.kentik.com\352\327\002\014admin.dev"
+  "ice\220\330\002\003B\356\003ZLgithub.com/kentik/api-schema"
+  "-public/gen/go/kentik/device/v202308beta"
+  "1;device\222A\234\003\022\265\001\n\nDevice API\022R# Overview\n"
+  "The Device API provides programmatic acc"
+  "ess to configuration of devices\"E\n\026Kenti"
+  "k API Engineering\022+https://github.com/ke"
+  "ntik/api-schema-public2\014v202308beta1*\001\0022"
+  "\020application/json:\020application/jsonZD\n\036\n"
+  "\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031"
+  "\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t"
+  "\n\005token\022\000r]\n%General information about K"
+  "entik APIs\0224https://kb.kentik.com/v0/Ab0"
+  "9.htm#Ab09-APIs_Overviewb\006proto3"
   ;
-static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto_deps[6] = {
+static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto_deps[7] = {
   &::descriptor_table_google_2fapi_2fannotations_2eproto,
   &::descriptor_table_google_2fapi_2fclient_2eproto,
   &::descriptor_table_google_2fapi_2ffield_5fbehavior_2eproto,
+  &::descriptor_table_google_2fprotobuf_2fduration_2eproto,
   &::descriptor_table_google_2fprotobuf_2ftimestamp_2eproto,
   &::descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto,
   &::descriptor_table_protoc_2dgen_2dopenapiv2_2foptions_2fannotations_2eproto,
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto_sccs[28] = {
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto_sccs[31] = {
   &scc_info_CreateDeviceRequest_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
   &scc_info_CreateDeviceResponse_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
   &scc_info_CreateDevicesRequest_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
@@ -1388,6 +1605,9 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
   &scc_info_DeleteDevicesResponse_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
   &scc_info_DeviceConcise_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
   &scc_info_DeviceDetailed_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
+  &scc_info_DeviceNmsConfig_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
+  &scc_info_DeviceNmsSnmpConfig_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
+  &scc_info_DeviceNmsStConfig_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
   &scc_info_DeviceSnmpV3Conf_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
   &scc_info_GetDeviceRequest_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
   &scc_info_GetDeviceResponse_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base,
@@ -1408,10 +1628,10 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto = {
-  false, false, descriptor_table_protodef_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto, "kentik/device/v202308beta1/device.proto", 18409,
-  &descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto_once, descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto_sccs, descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto_deps, 28, 6,
+  false, false, descriptor_table_protodef_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto, "kentik/device/v202308beta1/device.proto", 19872,
+  &descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto_once, descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto_sccs, descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto_deps, 31, 7,
   schemas, file_default_instances, TableStruct_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto::offsets,
-  file_level_metadata_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto, 28, file_level_enum_descriptors_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto, file_level_service_descriptors_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto,
+  file_level_metadata_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto, 31, file_level_enum_descriptors_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto, file_level_service_descriptors_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
@@ -1783,18 +2003,976 @@ void DeviceSnmpV3Conf::InternalSwap(DeviceSnmpV3Conf* other) {
 
 // ===================================================================
 
+void DeviceNmsConfig::InitAsDefaultInstance() {
+  ::kentik::device::v202308beta1::_DeviceNmsConfig_default_instance_._instance.get_mutable()->snmp_ = const_cast< ::kentik::device::v202308beta1::DeviceNmsSnmpConfig*>(
+      ::kentik::device::v202308beta1::DeviceNmsSnmpConfig::internal_default_instance());
+  ::kentik::device::v202308beta1::_DeviceNmsConfig_default_instance_._instance.get_mutable()->st_ = const_cast< ::kentik::device::v202308beta1::DeviceNmsStConfig*>(
+      ::kentik::device::v202308beta1::DeviceNmsStConfig::internal_default_instance());
+}
+class DeviceNmsConfig::_Internal {
+ public:
+  static const ::kentik::device::v202308beta1::DeviceNmsSnmpConfig& snmp(const DeviceNmsConfig* msg);
+  static const ::kentik::device::v202308beta1::DeviceNmsStConfig& st(const DeviceNmsConfig* msg);
+};
+
+const ::kentik::device::v202308beta1::DeviceNmsSnmpConfig&
+DeviceNmsConfig::_Internal::snmp(const DeviceNmsConfig* msg) {
+  return *msg->snmp_;
+}
+const ::kentik::device::v202308beta1::DeviceNmsStConfig&
+DeviceNmsConfig::_Internal::st(const DeviceNmsConfig* msg) {
+  return *msg->st_;
+}
+DeviceNmsConfig::DeviceNmsConfig(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.device.v202308beta1.DeviceNmsConfig)
+}
+DeviceNmsConfig::DeviceNmsConfig(const DeviceNmsConfig& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  agent_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_agent_id().empty()) {
+    agent_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_agent_id(),
+      GetArena());
+  }
+  ip_address_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_ip_address().empty()) {
+    ip_address_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_ip_address(),
+      GetArena());
+  }
+  if (from._internal_has_snmp()) {
+    snmp_ = new ::kentik::device::v202308beta1::DeviceNmsSnmpConfig(*from.snmp_);
+  } else {
+    snmp_ = nullptr;
+  }
+  if (from._internal_has_st()) {
+    st_ = new ::kentik::device::v202308beta1::DeviceNmsStConfig(*from.st_);
+  } else {
+    st_ = nullptr;
+  }
+  // @@protoc_insertion_point(copy_constructor:kentik.device.v202308beta1.DeviceNmsConfig)
+}
+
+void DeviceNmsConfig::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_DeviceNmsConfig_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base);
+  agent_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  ip_address_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  ::memset(&snmp_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&st_) -
+      reinterpret_cast<char*>(&snmp_)) + sizeof(st_));
+}
+
+DeviceNmsConfig::~DeviceNmsConfig() {
+  // @@protoc_insertion_point(destructor:kentik.device.v202308beta1.DeviceNmsConfig)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void DeviceNmsConfig::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+  agent_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  ip_address_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (this != internal_default_instance()) delete snmp_;
+  if (this != internal_default_instance()) delete st_;
+}
+
+void DeviceNmsConfig::ArenaDtor(void* object) {
+  DeviceNmsConfig* _this = reinterpret_cast< DeviceNmsConfig* >(object);
+  (void)_this;
+}
+void DeviceNmsConfig::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void DeviceNmsConfig::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const DeviceNmsConfig& DeviceNmsConfig::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_DeviceNmsConfig_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void DeviceNmsConfig::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.device.v202308beta1.DeviceNmsConfig)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  agent_id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  ip_address_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  if (GetArena() == nullptr && snmp_ != nullptr) {
+    delete snmp_;
+  }
+  snmp_ = nullptr;
+  if (GetArena() == nullptr && st_ != nullptr) {
+    delete st_;
+  }
+  st_ = nullptr;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* DeviceNmsConfig::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // string agent_id = 2[json_name = "agentId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          auto str = _internal_mutable_agent_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.device.v202308beta1.DeviceNmsConfig.agent_id"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // string ip_address = 3[json_name = "ipAddress", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          auto str = _internal_mutable_ip_address();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.device.v202308beta1.DeviceNmsConfig.ip_address"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // .kentik.device.v202308beta1.DeviceNmsSnmpConfig snmp = 4[json_name = "snmp", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
+          ptr = ctx->ParseMessage(_internal_mutable_snmp(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // .kentik.device.v202308beta1.DeviceNmsStConfig st = 5[json_name = "st", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 42)) {
+          ptr = ctx->ParseMessage(_internal_mutable_st(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* DeviceNmsConfig::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:kentik.device.v202308beta1.DeviceNmsConfig)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string agent_id = 2[json_name = "agentId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->agent_id().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_agent_id().data(), static_cast<int>(this->_internal_agent_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.device.v202308beta1.DeviceNmsConfig.agent_id");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_agent_id(), target);
+  }
+
+  // string ip_address = 3[json_name = "ipAddress", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->ip_address().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_ip_address().data(), static_cast<int>(this->_internal_ip_address().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.device.v202308beta1.DeviceNmsConfig.ip_address");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_ip_address(), target);
+  }
+
+  // .kentik.device.v202308beta1.DeviceNmsSnmpConfig snmp = 4[json_name = "snmp", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->has_snmp()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        4, _Internal::snmp(this), target, stream);
+  }
+
+  // .kentik.device.v202308beta1.DeviceNmsStConfig st = 5[json_name = "st", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->has_st()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        5, _Internal::st(this), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:kentik.device.v202308beta1.DeviceNmsConfig)
+  return target;
+}
+
+size_t DeviceNmsConfig::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:kentik.device.v202308beta1.DeviceNmsConfig)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string agent_id = 2[json_name = "agentId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->agent_id().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_agent_id());
+  }
+
+  // string ip_address = 3[json_name = "ipAddress", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->ip_address().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_ip_address());
+  }
+
+  // .kentik.device.v202308beta1.DeviceNmsSnmpConfig snmp = 4[json_name = "snmp", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->has_snmp()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *snmp_);
+  }
+
+  // .kentik.device.v202308beta1.DeviceNmsStConfig st = 5[json_name = "st", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->has_st()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *st_);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void DeviceNmsConfig::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:kentik.device.v202308beta1.DeviceNmsConfig)
+  GOOGLE_DCHECK_NE(&from, this);
+  const DeviceNmsConfig* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<DeviceNmsConfig>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:kentik.device.v202308beta1.DeviceNmsConfig)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:kentik.device.v202308beta1.DeviceNmsConfig)
+    MergeFrom(*source);
+  }
+}
+
+void DeviceNmsConfig::MergeFrom(const DeviceNmsConfig& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:kentik.device.v202308beta1.DeviceNmsConfig)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.agent_id().size() > 0) {
+    _internal_set_agent_id(from._internal_agent_id());
+  }
+  if (from.ip_address().size() > 0) {
+    _internal_set_ip_address(from._internal_ip_address());
+  }
+  if (from.has_snmp()) {
+    _internal_mutable_snmp()->::kentik::device::v202308beta1::DeviceNmsSnmpConfig::MergeFrom(from._internal_snmp());
+  }
+  if (from.has_st()) {
+    _internal_mutable_st()->::kentik::device::v202308beta1::DeviceNmsStConfig::MergeFrom(from._internal_st());
+  }
+}
+
+void DeviceNmsConfig::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:kentik.device.v202308beta1.DeviceNmsConfig)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void DeviceNmsConfig::CopyFrom(const DeviceNmsConfig& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.device.v202308beta1.DeviceNmsConfig)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool DeviceNmsConfig::IsInitialized() const {
+  return true;
+}
+
+void DeviceNmsConfig::InternalSwap(DeviceNmsConfig* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  agent_id_.Swap(&other->agent_id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  ip_address_.Swap(&other->ip_address_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(DeviceNmsConfig, st_)
+      + sizeof(DeviceNmsConfig::st_)
+      - PROTOBUF_FIELD_OFFSET(DeviceNmsConfig, snmp_)>(
+          reinterpret_cast<char*>(&snmp_),
+          reinterpret_cast<char*>(&other->snmp_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata DeviceNmsConfig::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void DeviceNmsSnmpConfig::InitAsDefaultInstance() {
+  ::kentik::device::v202308beta1::_DeviceNmsSnmpConfig_default_instance_._instance.get_mutable()->timeout_ = const_cast< PROTOBUF_NAMESPACE_ID::Duration*>(
+      PROTOBUF_NAMESPACE_ID::Duration::internal_default_instance());
+}
+class DeviceNmsSnmpConfig::_Internal {
+ public:
+  static const PROTOBUF_NAMESPACE_ID::Duration& timeout(const DeviceNmsSnmpConfig* msg);
+};
+
+const PROTOBUF_NAMESPACE_ID::Duration&
+DeviceNmsSnmpConfig::_Internal::timeout(const DeviceNmsSnmpConfig* msg) {
+  return *msg->timeout_;
+}
+void DeviceNmsSnmpConfig::clear_timeout() {
+  if (GetArena() == nullptr && timeout_ != nullptr) {
+    delete timeout_;
+  }
+  timeout_ = nullptr;
+}
+DeviceNmsSnmpConfig::DeviceNmsSnmpConfig(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.device.v202308beta1.DeviceNmsSnmpConfig)
+}
+DeviceNmsSnmpConfig::DeviceNmsSnmpConfig(const DeviceNmsSnmpConfig& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  credential_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_credential_name().empty()) {
+    credential_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_credential_name(),
+      GetArena());
+  }
+  if (from._internal_has_timeout()) {
+    timeout_ = new PROTOBUF_NAMESPACE_ID::Duration(*from.timeout_);
+  } else {
+    timeout_ = nullptr;
+  }
+  port_ = from.port_;
+  // @@protoc_insertion_point(copy_constructor:kentik.device.v202308beta1.DeviceNmsSnmpConfig)
+}
+
+void DeviceNmsSnmpConfig::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_DeviceNmsSnmpConfig_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base);
+  credential_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  ::memset(&timeout_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&port_) -
+      reinterpret_cast<char*>(&timeout_)) + sizeof(port_));
+}
+
+DeviceNmsSnmpConfig::~DeviceNmsSnmpConfig() {
+  // @@protoc_insertion_point(destructor:kentik.device.v202308beta1.DeviceNmsSnmpConfig)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void DeviceNmsSnmpConfig::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+  credential_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (this != internal_default_instance()) delete timeout_;
+}
+
+void DeviceNmsSnmpConfig::ArenaDtor(void* object) {
+  DeviceNmsSnmpConfig* _this = reinterpret_cast< DeviceNmsSnmpConfig* >(object);
+  (void)_this;
+}
+void DeviceNmsSnmpConfig::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void DeviceNmsSnmpConfig::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const DeviceNmsSnmpConfig& DeviceNmsSnmpConfig::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_DeviceNmsSnmpConfig_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void DeviceNmsSnmpConfig::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.device.v202308beta1.DeviceNmsSnmpConfig)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  credential_name_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  if (GetArena() == nullptr && timeout_ != nullptr) {
+    delete timeout_;
+  }
+  timeout_ = nullptr;
+  port_ = 0u;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* DeviceNmsSnmpConfig::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // string credential_name = 1[json_name = "credentialName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_credential_name();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.device.v202308beta1.DeviceNmsSnmpConfig.credential_name"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // uint32 port = 2[json_name = "port", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          port_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // .google.protobuf.Duration timeout = 3[json_name = "timeout", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          ptr = ctx->ParseMessage(_internal_mutable_timeout(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* DeviceNmsSnmpConfig::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:kentik.device.v202308beta1.DeviceNmsSnmpConfig)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string credential_name = 1[json_name = "credentialName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->credential_name().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_credential_name().data(), static_cast<int>(this->_internal_credential_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.device.v202308beta1.DeviceNmsSnmpConfig.credential_name");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_credential_name(), target);
+  }
+
+  // uint32 port = 2[json_name = "port", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->port() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(2, this->_internal_port(), target);
+  }
+
+  // .google.protobuf.Duration timeout = 3[json_name = "timeout", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->has_timeout()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        3, _Internal::timeout(this), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:kentik.device.v202308beta1.DeviceNmsSnmpConfig)
+  return target;
+}
+
+size_t DeviceNmsSnmpConfig::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:kentik.device.v202308beta1.DeviceNmsSnmpConfig)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string credential_name = 1[json_name = "credentialName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->credential_name().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_credential_name());
+  }
+
+  // .google.protobuf.Duration timeout = 3[json_name = "timeout", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->has_timeout()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *timeout_);
+  }
+
+  // uint32 port = 2[json_name = "port", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->port() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+        this->_internal_port());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void DeviceNmsSnmpConfig::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:kentik.device.v202308beta1.DeviceNmsSnmpConfig)
+  GOOGLE_DCHECK_NE(&from, this);
+  const DeviceNmsSnmpConfig* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<DeviceNmsSnmpConfig>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:kentik.device.v202308beta1.DeviceNmsSnmpConfig)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:kentik.device.v202308beta1.DeviceNmsSnmpConfig)
+    MergeFrom(*source);
+  }
+}
+
+void DeviceNmsSnmpConfig::MergeFrom(const DeviceNmsSnmpConfig& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:kentik.device.v202308beta1.DeviceNmsSnmpConfig)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.credential_name().size() > 0) {
+    _internal_set_credential_name(from._internal_credential_name());
+  }
+  if (from.has_timeout()) {
+    _internal_mutable_timeout()->PROTOBUF_NAMESPACE_ID::Duration::MergeFrom(from._internal_timeout());
+  }
+  if (from.port() != 0) {
+    _internal_set_port(from._internal_port());
+  }
+}
+
+void DeviceNmsSnmpConfig::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:kentik.device.v202308beta1.DeviceNmsSnmpConfig)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void DeviceNmsSnmpConfig::CopyFrom(const DeviceNmsSnmpConfig& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.device.v202308beta1.DeviceNmsSnmpConfig)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool DeviceNmsSnmpConfig::IsInitialized() const {
+  return true;
+}
+
+void DeviceNmsSnmpConfig::InternalSwap(DeviceNmsSnmpConfig* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  credential_name_.Swap(&other->credential_name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(DeviceNmsSnmpConfig, port_)
+      + sizeof(DeviceNmsSnmpConfig::port_)
+      - PROTOBUF_FIELD_OFFSET(DeviceNmsSnmpConfig, timeout_)>(
+          reinterpret_cast<char*>(&timeout_),
+          reinterpret_cast<char*>(&other->timeout_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata DeviceNmsSnmpConfig::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void DeviceNmsStConfig::InitAsDefaultInstance() {
+  ::kentik::device::v202308beta1::_DeviceNmsStConfig_default_instance_._instance.get_mutable()->timeout_ = const_cast< PROTOBUF_NAMESPACE_ID::Duration*>(
+      PROTOBUF_NAMESPACE_ID::Duration::internal_default_instance());
+}
+class DeviceNmsStConfig::_Internal {
+ public:
+  static const PROTOBUF_NAMESPACE_ID::Duration& timeout(const DeviceNmsStConfig* msg);
+};
+
+const PROTOBUF_NAMESPACE_ID::Duration&
+DeviceNmsStConfig::_Internal::timeout(const DeviceNmsStConfig* msg) {
+  return *msg->timeout_;
+}
+void DeviceNmsStConfig::clear_timeout() {
+  if (GetArena() == nullptr && timeout_ != nullptr) {
+    delete timeout_;
+  }
+  timeout_ = nullptr;
+}
+DeviceNmsStConfig::DeviceNmsStConfig(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.device.v202308beta1.DeviceNmsStConfig)
+}
+DeviceNmsStConfig::DeviceNmsStConfig(const DeviceNmsStConfig& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  credential_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_credential_name().empty()) {
+    credential_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_credential_name(),
+      GetArena());
+  }
+  if (from._internal_has_timeout()) {
+    timeout_ = new PROTOBUF_NAMESPACE_ID::Duration(*from.timeout_);
+  } else {
+    timeout_ = nullptr;
+  }
+  ::memcpy(&port_, &from.port_,
+    static_cast<size_t>(reinterpret_cast<char*>(&secure_) -
+    reinterpret_cast<char*>(&port_)) + sizeof(secure_));
+  // @@protoc_insertion_point(copy_constructor:kentik.device.v202308beta1.DeviceNmsStConfig)
+}
+
+void DeviceNmsStConfig::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_DeviceNmsStConfig_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base);
+  credential_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  ::memset(&timeout_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&secure_) -
+      reinterpret_cast<char*>(&timeout_)) + sizeof(secure_));
+}
+
+DeviceNmsStConfig::~DeviceNmsStConfig() {
+  // @@protoc_insertion_point(destructor:kentik.device.v202308beta1.DeviceNmsStConfig)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void DeviceNmsStConfig::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+  credential_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (this != internal_default_instance()) delete timeout_;
+}
+
+void DeviceNmsStConfig::ArenaDtor(void* object) {
+  DeviceNmsStConfig* _this = reinterpret_cast< DeviceNmsStConfig* >(object);
+  (void)_this;
+}
+void DeviceNmsStConfig::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void DeviceNmsStConfig::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const DeviceNmsStConfig& DeviceNmsStConfig::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_DeviceNmsStConfig_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void DeviceNmsStConfig::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.device.v202308beta1.DeviceNmsStConfig)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  credential_name_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  if (GetArena() == nullptr && timeout_ != nullptr) {
+    delete timeout_;
+  }
+  timeout_ = nullptr;
+  ::memset(&port_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&secure_) -
+      reinterpret_cast<char*>(&port_)) + sizeof(secure_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* DeviceNmsStConfig::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // string credential_name = 1[json_name = "credentialName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_credential_name();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.device.v202308beta1.DeviceNmsStConfig.credential_name"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // uint32 port = 2[json_name = "port", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          port_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // .google.protobuf.Duration timeout = 3[json_name = "timeout", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          ptr = ctx->ParseMessage(_internal_mutable_timeout(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // bool secure = 4[json_name = "secure", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
+          secure_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* DeviceNmsStConfig::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:kentik.device.v202308beta1.DeviceNmsStConfig)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string credential_name = 1[json_name = "credentialName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->credential_name().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_credential_name().data(), static_cast<int>(this->_internal_credential_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.device.v202308beta1.DeviceNmsStConfig.credential_name");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_credential_name(), target);
+  }
+
+  // uint32 port = 2[json_name = "port", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->port() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(2, this->_internal_port(), target);
+  }
+
+  // .google.protobuf.Duration timeout = 3[json_name = "timeout", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->has_timeout()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        3, _Internal::timeout(this), target, stream);
+  }
+
+  // bool secure = 4[json_name = "secure", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->secure() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(4, this->_internal_secure(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:kentik.device.v202308beta1.DeviceNmsStConfig)
+  return target;
+}
+
+size_t DeviceNmsStConfig::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:kentik.device.v202308beta1.DeviceNmsStConfig)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string credential_name = 1[json_name = "credentialName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->credential_name().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_credential_name());
+  }
+
+  // .google.protobuf.Duration timeout = 3[json_name = "timeout", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->has_timeout()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *timeout_);
+  }
+
+  // uint32 port = 2[json_name = "port", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->port() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+        this->_internal_port());
+  }
+
+  // bool secure = 4[json_name = "secure", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->secure() != 0) {
+    total_size += 1 + 1;
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void DeviceNmsStConfig::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:kentik.device.v202308beta1.DeviceNmsStConfig)
+  GOOGLE_DCHECK_NE(&from, this);
+  const DeviceNmsStConfig* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<DeviceNmsStConfig>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:kentik.device.v202308beta1.DeviceNmsStConfig)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:kentik.device.v202308beta1.DeviceNmsStConfig)
+    MergeFrom(*source);
+  }
+}
+
+void DeviceNmsStConfig::MergeFrom(const DeviceNmsStConfig& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:kentik.device.v202308beta1.DeviceNmsStConfig)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.credential_name().size() > 0) {
+    _internal_set_credential_name(from._internal_credential_name());
+  }
+  if (from.has_timeout()) {
+    _internal_mutable_timeout()->PROTOBUF_NAMESPACE_ID::Duration::MergeFrom(from._internal_timeout());
+  }
+  if (from.port() != 0) {
+    _internal_set_port(from._internal_port());
+  }
+  if (from.secure() != 0) {
+    _internal_set_secure(from._internal_secure());
+  }
+}
+
+void DeviceNmsStConfig::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:kentik.device.v202308beta1.DeviceNmsStConfig)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void DeviceNmsStConfig::CopyFrom(const DeviceNmsStConfig& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.device.v202308beta1.DeviceNmsStConfig)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool DeviceNmsStConfig::IsInitialized() const {
+  return true;
+}
+
+void DeviceNmsStConfig::InternalSwap(DeviceNmsStConfig* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  credential_name_.Swap(&other->credential_name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(DeviceNmsStConfig, secure_)
+      + sizeof(DeviceNmsStConfig::secure_)
+      - PROTOBUF_FIELD_OFFSET(DeviceNmsStConfig, timeout_)>(
+          reinterpret_cast<char*>(&timeout_),
+          reinterpret_cast<char*>(&other->timeout_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata DeviceNmsStConfig::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
 void DeviceConcise::InitAsDefaultInstance() {
   ::kentik::device::v202308beta1::_DeviceConcise_default_instance_._instance.get_mutable()->device_snmp_v3_conf_ = const_cast< ::kentik::device::v202308beta1::DeviceSnmpV3Conf*>(
       ::kentik::device::v202308beta1::DeviceSnmpV3Conf::internal_default_instance());
+  ::kentik::device::v202308beta1::_DeviceConcise_default_instance_._instance.get_mutable()->nms_ = const_cast< ::kentik::device::v202308beta1::DeviceNmsConfig*>(
+      ::kentik::device::v202308beta1::DeviceNmsConfig::internal_default_instance());
 }
 class DeviceConcise::_Internal {
  public:
+  using HasBits = decltype(std::declval<DeviceConcise>()._has_bits_);
+  static void set_has_minimize_snmp(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
   static const ::kentik::device::v202308beta1::DeviceSnmpV3Conf& device_snmp_v3_conf(const DeviceConcise* msg);
+  static const ::kentik::device::v202308beta1::DeviceNmsConfig& nms(const DeviceConcise* msg);
 };
 
 const ::kentik::device::v202308beta1::DeviceSnmpV3Conf&
 DeviceConcise::_Internal::device_snmp_v3_conf(const DeviceConcise* msg) {
   return *msg->device_snmp_v3_conf_;
+}
+const ::kentik::device::v202308beta1::DeviceNmsConfig&
+DeviceConcise::_Internal::nms(const DeviceConcise* msg) {
+  return *msg->nms_;
 }
 DeviceConcise::DeviceConcise(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena),
@@ -1805,6 +2983,7 @@ DeviceConcise::DeviceConcise(::PROTOBUF_NAMESPACE_ID::Arena* arena)
 }
 DeviceConcise::DeviceConcise(const DeviceConcise& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _has_bits_(from._has_bits_),
       sending_ips_(from.sending_ips_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
@@ -1872,6 +3051,11 @@ DeviceConcise::DeviceConcise(const DeviceConcise& from)
   } else {
     device_snmp_v3_conf_ = nullptr;
   }
+  if (from._internal_has_nms()) {
+    nms_ = new ::kentik::device::v202308beta1::DeviceNmsConfig(*from.nms_);
+  } else {
+    nms_ = nullptr;
+  }
   ::memcpy(&device_sample_rate_, &from.device_sample_rate_,
     static_cast<size_t>(reinterpret_cast<char*>(&use_bgp_device_id_) -
     reinterpret_cast<char*>(&device_sample_rate_)) + sizeof(use_bgp_device_id_));
@@ -1918,6 +3102,7 @@ void DeviceConcise::SharedDtor() {
   device_bgp_neighbor_asn_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   device_bgp_password_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete device_snmp_v3_conf_;
+  if (this != internal_default_instance()) delete nms_;
 }
 
 void DeviceConcise::ArenaDtor(void* object) {
@@ -1958,14 +3143,24 @@ void DeviceConcise::Clear() {
     delete device_snmp_v3_conf_;
   }
   device_snmp_v3_conf_ = nullptr;
+  if (GetArena() == nullptr && nms_ != nullptr) {
+    delete nms_;
+  }
+  nms_ = nullptr;
   ::memset(&device_sample_rate_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&site_id_) -
+      reinterpret_cast<char*>(&device_sample_rate_)) + sizeof(site_id_));
+  minimize_snmp_ = false;
+  ::memset(&device_bgp_flowspec_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&use_bgp_device_id_) -
-      reinterpret_cast<char*>(&device_sample_rate_)) + sizeof(use_bgp_device_id_));
+      reinterpret_cast<char*>(&device_bgp_flowspec_)) + sizeof(use_bgp_device_id_));
+  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* DeviceConcise::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
@@ -2055,6 +3250,7 @@ const char* DeviceConcise::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_
       // bool minimize_snmp = 10[json_name = "minimizeSnmp", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       case 10:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 80)) {
+          _Internal::set_has_minimize_snmp(&has_bits);
           minimize_snmp_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
@@ -2143,6 +3339,13 @@ const char* DeviceConcise::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
+      // .kentik.device.v202308beta1.DeviceNmsConfig nms = 21[json_name = "nms", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 21:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 170)) {
+          ptr = ctx->ParseMessage(_internal_mutable_nms(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
         if ((tag & 7) == 4 || tag == 0) {
@@ -2158,6 +3361,7 @@ const char* DeviceConcise::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_
     }  // switch
   }  // while
 success:
+  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -2250,7 +3454,7 @@ failure:
   }
 
   // bool minimize_snmp = 10[json_name = "minimizeSnmp", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  if (this->minimize_snmp() != 0) {
+  if (_internal_has_minimize_snmp()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(10, this->_internal_minimize_snmp(), target);
   }
@@ -2343,6 +3547,14 @@ failure:
   if (this->device_bgp_flowspec() != 0) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(20, this->_internal_device_bgp_flowspec(), target);
+  }
+
+  // .kentik.device.v202308beta1.DeviceNmsConfig nms = 21[json_name = "nms", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->has_nms()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        21, _Internal::nms(this), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -2460,6 +3672,13 @@ size_t DeviceConcise::ByteSizeLong() const {
         *device_snmp_v3_conf_);
   }
 
+  // .kentik.device.v202308beta1.DeviceNmsConfig nms = 21[json_name = "nms", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->has_nms()) {
+    total_size += 2 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *nms_);
+  }
+
   // double device_sample_rate = 7[json_name = "deviceSampleRate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   if (!(this->device_sample_rate() <= 0 && this->device_sample_rate() >= 0)) {
     total_size += 1 + 8;
@@ -2480,7 +3699,8 @@ size_t DeviceConcise::ByteSizeLong() const {
   }
 
   // bool minimize_snmp = 10[json_name = "minimizeSnmp", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  if (this->minimize_snmp() != 0) {
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 + 1;
   }
 
@@ -2567,6 +3787,9 @@ void DeviceConcise::MergeFrom(const DeviceConcise& from) {
   if (from.has_device_snmp_v3_conf()) {
     _internal_mutable_device_snmp_v3_conf()->::kentik::device::v202308beta1::DeviceSnmpV3Conf::MergeFrom(from._internal_device_snmp_v3_conf());
   }
+  if (from.has_nms()) {
+    _internal_mutable_nms()->::kentik::device::v202308beta1::DeviceNmsConfig::MergeFrom(from._internal_nms());
+  }
   if (!(from.device_sample_rate() <= 0 && from.device_sample_rate() >= 0)) {
     _internal_set_device_sample_rate(from._internal_device_sample_rate());
   }
@@ -2576,7 +3799,7 @@ void DeviceConcise::MergeFrom(const DeviceConcise& from) {
   if (from.site_id() != 0) {
     _internal_set_site_id(from._internal_site_id());
   }
-  if (from.minimize_snmp() != 0) {
+  if (from._internal_has_minimize_snmp()) {
     _internal_set_minimize_snmp(from._internal_minimize_snmp());
   }
   if (from.device_bgp_flowspec() != 0) {
@@ -2608,6 +3831,7 @@ bool DeviceConcise::IsInitialized() const {
 void DeviceConcise::InternalSwap(DeviceConcise* other) {
   using std::swap;
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
   sending_ips_.InternalSwap(&other->sending_ips_);
   id_.Swap(&other->id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   device_name_.Swap(&other->device_name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
@@ -4977,15 +6201,22 @@ void DeviceDetailed::InitAsDefaultInstance() {
       ::kentik::device::v202308beta1::DeviceSnmpV3Conf::internal_default_instance());
   ::kentik::device::v202308beta1::_DeviceDetailed_default_instance_._instance.get_mutable()->device_gnmi_v1_conf_ = const_cast< ::kentik::device::v202308beta1::GnmiV1Conf*>(
       ::kentik::device::v202308beta1::GnmiV1Conf::internal_default_instance());
+  ::kentik::device::v202308beta1::_DeviceDetailed_default_instance_._instance.get_mutable()->nms_ = const_cast< ::kentik::device::v202308beta1::DeviceNmsConfig*>(
+      ::kentik::device::v202308beta1::DeviceNmsConfig::internal_default_instance());
 }
 class DeviceDetailed::_Internal {
  public:
+  using HasBits = decltype(std::declval<DeviceDetailed>()._has_bits_);
   static const ::kentik::device::v202308beta1::Site& site(const DeviceDetailed* msg);
   static const ::kentik::device::v202308beta1::Plan& plan(const DeviceDetailed* msg);
+  static void set_has_minimize_snmp(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
   static const PROTOBUF_NAMESPACE_ID::Timestamp& created_date(const DeviceDetailed* msg);
   static const PROTOBUF_NAMESPACE_ID::Timestamp& updated_date(const DeviceDetailed* msg);
   static const ::kentik::device::v202308beta1::DeviceSnmpV3Conf& device_snmp_v3_conf(const DeviceDetailed* msg);
   static const ::kentik::device::v202308beta1::GnmiV1Conf& device_gnmi_v1_conf(const DeviceDetailed* msg);
+  static const ::kentik::device::v202308beta1::DeviceNmsConfig& nms(const DeviceDetailed* msg);
 };
 
 const ::kentik::device::v202308beta1::Site&
@@ -5012,6 +6243,10 @@ const ::kentik::device::v202308beta1::GnmiV1Conf&
 DeviceDetailed::_Internal::device_gnmi_v1_conf(const DeviceDetailed* msg) {
   return *msg->device_gnmi_v1_conf_;
 }
+const ::kentik::device::v202308beta1::DeviceNmsConfig&
+DeviceDetailed::_Internal::nms(const DeviceDetailed* msg) {
+  return *msg->nms_;
+}
 void DeviceDetailed::clear_created_date() {
   if (GetArena() == nullptr && created_date_ != nullptr) {
     delete created_date_;
@@ -5036,6 +6271,7 @@ DeviceDetailed::DeviceDetailed(::PROTOBUF_NAMESPACE_ID::Arena* arena)
 }
 DeviceDetailed::DeviceDetailed(const DeviceDetailed& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _has_bits_(from._has_bits_),
       labels_(from.labels_),
       all_interfaces_(from.all_interfaces_),
       sending_ips_(from.sending_ips_),
@@ -5276,6 +6512,11 @@ DeviceDetailed::DeviceDetailed(const DeviceDetailed& from)
   } else {
     device_gnmi_v1_conf_ = nullptr;
   }
+  if (from._internal_has_nms()) {
+    nms_ = new ::kentik::device::v202308beta1::DeviceNmsConfig(*from.nms_);
+  } else {
+    nms_ = nullptr;
+  }
   ::memcpy(&minimize_snmp_, &from.minimize_snmp_,
     static_cast<size_t>(reinterpret_cast<char*>(&max_interface_check_) -
     reinterpret_cast<char*>(&minimize_snmp_)) + sizeof(max_interface_check_));
@@ -5385,6 +6626,7 @@ void DeviceDetailed::SharedDtor() {
   if (this != internal_default_instance()) delete updated_date_;
   if (this != internal_default_instance()) delete device_snmp_v3_conf_;
   if (this != internal_default_instance()) delete device_gnmi_v1_conf_;
+  if (this != internal_default_instance()) delete nms_;
 }
 
 void DeviceDetailed::ArenaDtor(void* object) {
@@ -5477,14 +6719,21 @@ void DeviceDetailed::Clear() {
     delete device_gnmi_v1_conf_;
   }
   device_gnmi_v1_conf_ = nullptr;
-  ::memset(&minimize_snmp_, 0, static_cast<size_t>(
+  if (GetArena() == nullptr && nms_ != nullptr) {
+    delete nms_;
+  }
+  nms_ = nullptr;
+  minimize_snmp_ = false;
+  ::memset(&device_bgp_flowspec_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&max_interface_check_) -
-      reinterpret_cast<char*>(&minimize_snmp_)) + sizeof(max_interface_check_));
+      reinterpret_cast<char*>(&device_bgp_flowspec_)) + sizeof(max_interface_check_));
+  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* DeviceDetailed::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
@@ -5636,6 +6885,7 @@ const char* DeviceDetailed::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
       // bool minimize_snmp = 16[json_name = "minimizeSnmp", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       case 16:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 128)) {
+          _Internal::set_has_minimize_snmp(&has_bits);
           minimize_snmp_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
@@ -6015,6 +7265,13 @@ const char* DeviceDetailed::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
+      // .kentik.device.v202308beta1.DeviceNmsConfig nms = 61[json_name = "nms", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 61:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 234)) {
+          ptr = ctx->ParseMessage(_internal_mutable_nms(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
         if ((tag & 7) == 4 || tag == 0) {
@@ -6030,6 +7287,7 @@ const char* DeviceDetailed::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
     }  // switch
   }  // while
 success:
+  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -6186,7 +7444,7 @@ failure:
   }
 
   // bool minimize_snmp = 16[json_name = "minimizeSnmp", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  if (this->minimize_snmp() != 0) {
+  if (_internal_has_minimize_snmp()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(16, this->_internal_minimize_snmp(), target);
   }
@@ -6589,6 +7847,14 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(60, this->_internal_max_interface_check(), target);
   }
 
+  // .kentik.device.v202308beta1.DeviceNmsConfig nms = 61[json_name = "nms", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->has_nms()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        61, _Internal::nms(this), target, stream);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -6963,8 +8229,16 @@ size_t DeviceDetailed::ByteSizeLong() const {
         *device_gnmi_v1_conf_);
   }
 
+  // .kentik.device.v202308beta1.DeviceNmsConfig nms = 61[json_name = "nms", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->has_nms()) {
+    total_size += 2 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *nms_);
+  }
+
   // bool minimize_snmp = 16[json_name = "minimizeSnmp", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  if (this->minimize_snmp() != 0) {
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 2 + 1;
   }
 
@@ -7192,7 +8466,10 @@ void DeviceDetailed::MergeFrom(const DeviceDetailed& from) {
   if (from.has_device_gnmi_v1_conf()) {
     _internal_mutable_device_gnmi_v1_conf()->::kentik::device::v202308beta1::GnmiV1Conf::MergeFrom(from._internal_device_gnmi_v1_conf());
   }
-  if (from.minimize_snmp() != 0) {
+  if (from.has_nms()) {
+    _internal_mutable_nms()->::kentik::device::v202308beta1::DeviceNmsConfig::MergeFrom(from._internal_nms());
+  }
+  if (from._internal_has_minimize_snmp()) {
     _internal_set_minimize_snmp(from._internal_minimize_snmp());
   }
   if (from.device_bgp_flowspec() != 0) {
@@ -7242,6 +8519,7 @@ bool DeviceDetailed::IsInitialized() const {
 void DeviceDetailed::InternalSwap(DeviceDetailed* other) {
   using std::swap;
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
   labels_.InternalSwap(&other->labels_);
   all_interfaces_.InternalSwap(&other->all_interfaces_);
   sending_ips_.InternalSwap(&other->sending_ips_);
@@ -11315,6 +12593,15 @@ void DeleteDevicesResponse::InternalSwap(DeleteDevicesResponse* other) {
 PROTOBUF_NAMESPACE_OPEN
 template<> PROTOBUF_NOINLINE ::kentik::device::v202308beta1::DeviceSnmpV3Conf* Arena::CreateMaybeMessage< ::kentik::device::v202308beta1::DeviceSnmpV3Conf >(Arena* arena) {
   return Arena::CreateMessageInternal< ::kentik::device::v202308beta1::DeviceSnmpV3Conf >(arena);
+}
+template<> PROTOBUF_NOINLINE ::kentik::device::v202308beta1::DeviceNmsConfig* Arena::CreateMaybeMessage< ::kentik::device::v202308beta1::DeviceNmsConfig >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::kentik::device::v202308beta1::DeviceNmsConfig >(arena);
+}
+template<> PROTOBUF_NOINLINE ::kentik::device::v202308beta1::DeviceNmsSnmpConfig* Arena::CreateMaybeMessage< ::kentik::device::v202308beta1::DeviceNmsSnmpConfig >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::kentik::device::v202308beta1::DeviceNmsSnmpConfig >(arena);
+}
+template<> PROTOBUF_NOINLINE ::kentik::device::v202308beta1::DeviceNmsStConfig* Arena::CreateMaybeMessage< ::kentik::device::v202308beta1::DeviceNmsStConfig >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::kentik::device::v202308beta1::DeviceNmsStConfig >(arena);
 }
 template<> PROTOBUF_NOINLINE ::kentik::device::v202308beta1::DeviceConcise* Arena::CreateMaybeMessage< ::kentik::device::v202308beta1::DeviceConcise >(Arena* arena) {
   return Arena::CreateMessageInternal< ::kentik::device::v202308beta1::DeviceConcise >(arena);

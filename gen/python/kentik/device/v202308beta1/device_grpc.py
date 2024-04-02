@@ -13,6 +13,7 @@ import google.api.annotations_pb2
 import google.api.client_pb2
 import google.api.field_behavior_pb2
 import google.protobuf.timestamp_pb2
+import google.protobuf.duration_pb2
 import protoc_gen_openapiv2.options.annotations_pb2
 import kentik.core.v202303.annotations_pb2
 import kentik.device.v202308beta1.device_pb2

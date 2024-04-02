@@ -679,6 +679,9 @@
                     "deviceBgpFlowspec": {
                         "type": "boolean",
                         "description": "BGP Flowspec Compatibility (device_bgp_flowspec) - Toggle BGP Flowspec Compatibility for device."
+                    },
+                    "nms": {
+                        "$ref": "#/components/schemas/v202308beta1DeviceNmsConfig"
                     }
                 },
                 "title": "DeviceConcise"
@@ -940,9 +943,74 @@
                         "type": "integer",
                         "format": "int64",
                         "description": "Max interface check"
+                    },
+                    "nms": {
+                        "$ref": "#/components/schemas/v202308beta1DeviceNmsConfig"
                     }
                 },
                 "title": "DeviceDetailed"
+            },
+            "v202308beta1DeviceNmsConfig": {
+                "type": "object",
+                "properties": {
+                    "agentId": {
+                        "type": "string",
+                        "description": "ID of the agent that is monitoring this device."
+                    },
+                    "ipAddress": {
+                        "type": "string",
+                        "description": "Local IP address of this device."
+                    },
+                    "snmp": {
+                        "$ref": "#/components/schemas/v202308beta1DeviceNmsSnmpConfig"
+                    },
+                    "st": {
+                        "$ref": "#/components/schemas/v202308beta1DeviceNmsStConfig"
+                    }
+                },
+                "title": "DeviceNmsConfig"
+            },
+            "v202308beta1DeviceNmsSnmpConfig": {
+                "type": "object",
+                "properties": {
+                    "credentialName": {
+                        "type": "string",
+                        "description": "Name of the SNMP credentials from the credential vault."
+                    },
+                    "port": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "SNMP port, to override default of 161."
+                    },
+                    "timeout": {
+                        "type": "string",
+                        "description": "Timeout, to override default of 2s."
+                    }
+                },
+                "title": "DeviceNmsSnmpConfig"
+            },
+            "v202308beta1DeviceNmsStConfig": {
+                "type": "object",
+                "properties": {
+                    "credentialName": {
+                        "type": "string",
+                        "description": "Name of the ST credentials from the credential vault."
+                    },
+                    "port": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "ST port, to override default of 6030."
+                    },
+                    "timeout": {
+                        "type": "string",
+                        "description": "Timeout, to override default of 2s."
+                    },
+                    "secure": {
+                        "type": "boolean",
+                        "description": "Use SSL to connect to this device."
+                    }
+                },
+                "title": "DeviceNmsStConfig"
             },
             "v202308beta1DeviceSnmpV3Conf": {
                 "type": "object",

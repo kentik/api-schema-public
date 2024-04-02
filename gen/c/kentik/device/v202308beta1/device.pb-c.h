@@ -18,10 +18,14 @@ PROTOBUF_C__BEGIN_DECLS
 #include "google/api/client.pb-c.h"
 #include "google/api/field_behavior.pb-c.h"
 #include "google/protobuf/timestamp.pb-c.h"
+#include "google/protobuf/duration.pb-c.h"
 #include "protoc-gen-openapiv2/options/annotations.pb-c.h"
 #include "kentik/core/v202303/annotations.pb-c.h"
 
 typedef struct Kentik__Device__V202308beta1__DeviceSnmpV3Conf Kentik__Device__V202308beta1__DeviceSnmpV3Conf;
+typedef struct Kentik__Device__V202308beta1__DeviceNmsConfig Kentik__Device__V202308beta1__DeviceNmsConfig;
+typedef struct Kentik__Device__V202308beta1__DeviceNmsSnmpConfig Kentik__Device__V202308beta1__DeviceNmsSnmpConfig;
+typedef struct Kentik__Device__V202308beta1__DeviceNmsStConfig Kentik__Device__V202308beta1__DeviceNmsStConfig;
 typedef struct Kentik__Device__V202308beta1__DeviceConcise Kentik__Device__V202308beta1__DeviceConcise;
 typedef struct Kentik__Device__V202308beta1__Site Kentik__Device__V202308beta1__Site;
 typedef struct Kentik__Device__V202308beta1__Plan Kentik__Device__V202308beta1__Plan;
@@ -76,6 +80,59 @@ struct  Kentik__Device__V202308beta1__DeviceSnmpV3Conf
 /*
  * {{.Name}}
  */
+struct  Kentik__Device__V202308beta1__DeviceNmsConfig
+{
+  ProtobufCMessage base;
+  char *agent_id;
+  char *ip_address;
+  Kentik__Device__V202308beta1__DeviceNmsSnmpConfig *snmp;
+  Kentik__Device__V202308beta1__DeviceNmsStConfig *st;
+};
+#define KENTIK__DEVICE__V202308BETA1__DEVICE_NMS_CONFIG__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__device__v202308beta1__device_nms_config__descriptor) \
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, NULL }
+
+
+/*
+ * {{.Name}}
+ */
+struct  Kentik__Device__V202308beta1__DeviceNmsSnmpConfig
+{
+  ProtobufCMessage base;
+  char *credential_name;
+  uint32_t port;
+  Google__Protobuf__Duration *timeout;
+};
+#define KENTIK__DEVICE__V202308BETA1__DEVICE_NMS_SNMP_CONFIG__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__device__v202308beta1__device_nms_snmp_config__descriptor) \
+    , (char *)protobuf_c_empty_string, 0, NULL }
+
+
+/*
+ * {{.Name}}
+ */
+struct  Kentik__Device__V202308beta1__DeviceNmsStConfig
+{
+  ProtobufCMessage base;
+  char *credential_name;
+  uint32_t port;
+  Google__Protobuf__Duration *timeout;
+  protobuf_c_boolean secure;
+};
+#define KENTIK__DEVICE__V202308BETA1__DEVICE_NMS_ST_CONFIG__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__device__v202308beta1__device_nms_st_config__descriptor) \
+    , (char *)protobuf_c_empty_string, 0, NULL, 0 }
+
+
+typedef enum {
+  KENTIK__DEVICE__V202308BETA1__DEVICE_CONCISE___MINIMIZE_SNMP__NOT_SET = 0,
+  KENTIK__DEVICE__V202308BETA1__DEVICE_CONCISE___MINIMIZE_SNMP_MINIMIZE_SNMP = 10
+    PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__DEVICE__V202308BETA1__DEVICE_CONCISE___MINIMIZE_SNMP__CASE)
+} Kentik__Device__V202308beta1__DeviceConcise__MinimizeSnmpCase;
+
+/*
+ * {{.Name}}
+ */
 struct  Kentik__Device__V202308beta1__DeviceConcise
 {
   ProtobufCMessage base;
@@ -92,7 +149,6 @@ struct  Kentik__Device__V202308beta1__DeviceConcise
   double device_sample_rate;
   uint32_t plan_id;
   uint32_t site_id;
-  protobuf_c_boolean minimize_snmp;
   char *device_snmp_ip;
   char *device_snmp_community;
   Kentik__Device__V202308beta1__DeviceSnmpV3Conf *device_snmp_v3_conf;
@@ -103,10 +159,15 @@ struct  Kentik__Device__V202308beta1__DeviceConcise
   char *device_bgp_password;
   uint32_t use_bgp_device_id;
   protobuf_c_boolean device_bgp_flowspec;
+  Kentik__Device__V202308beta1__DeviceNmsConfig *nms;
+  Kentik__Device__V202308beta1__DeviceConcise__MinimizeSnmpCase _minimize_snmp_case;
+  union {
+    protobuf_c_boolean minimize_snmp;
+  };
 };
 #define KENTIK__DEVICE__V202308BETA1__DEVICE_CONCISE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__device__v202308beta1__device_concise__descriptor) \
-    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL, 0, 0, 0, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, 0 }
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL, 0, 0, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, 0, NULL, KENTIK__DEVICE__V202308BETA1__DEVICE_CONCISE___MINIMIZE_SNMP__NOT_SET, {0} }
 
 
 /*
@@ -215,6 +276,12 @@ struct  Kentik__Device__V202308beta1__GnmiV1Conf
     , (char *)protobuf_c_empty_string }
 
 
+typedef enum {
+  KENTIK__DEVICE__V202308BETA1__DEVICE_DETAILED___MINIMIZE_SNMP__NOT_SET = 0,
+  KENTIK__DEVICE__V202308BETA1__DEVICE_DETAILED___MINIMIZE_SNMP_MINIMIZE_SNMP = 16
+    PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__DEVICE__V202308BETA1__DEVICE_DETAILED___MINIMIZE_SNMP__CASE)
+} Kentik__Device__V202308beta1__DeviceDetailed__MinimizeSnmpCase;
+
 /*
  * {{.Name}}
  */
@@ -239,7 +306,6 @@ struct  Kentik__Device__V202308beta1__DeviceDetailed
   char **sending_ips;
   char *device_snmp_ip;
   char *device_snmp_community;
-  protobuf_c_boolean minimize_snmp;
   char *device_bgp_type;
   char *device_bgp_neighbor_ip;
   char *device_bgp_neighbor_ip6;
@@ -285,10 +351,15 @@ struct  Kentik__Device__V202308beta1__DeviceDetailed
   protobuf_c_boolean use_asn_from_flow;
   uint32_t max_interface;
   uint32_t max_interface_check;
+  Kentik__Device__V202308beta1__DeviceNmsConfig *nms;
+  Kentik__Device__V202308beta1__DeviceDetailed__MinimizeSnmpCase _minimize_snmp_case;
+  union {
+    protobuf_c_boolean minimize_snmp;
+  };
 };
 #define KENTIK__DEVICE__V202308BETA1__DEVICE_DETAILED__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__device__v202308beta1__device_detailed__descriptor) \
-    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, NULL, 0,NULL, 0,NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, (char *)protobuf_c_empty_string, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, NULL, 0, NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, 0, 0, 0 }
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, NULL, 0,NULL, 0,NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, (char *)protobuf_c_empty_string, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, NULL, 0, NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, 0, 0, 0, NULL, KENTIK__DEVICE__V202308BETA1__DEVICE_DETAILED___MINIMIZE_SNMP__NOT_SET, {0} }
 
 
 /*
@@ -568,6 +639,63 @@ Kentik__Device__V202308beta1__DeviceSnmpV3Conf *
                       const uint8_t       *data);
 void   kentik__device__v202308beta1__device_snmp_v3_conf__free_unpacked
                      (Kentik__Device__V202308beta1__DeviceSnmpV3Conf *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Device__V202308beta1__DeviceNmsConfig methods */
+void   kentik__device__v202308beta1__device_nms_config__init
+                     (Kentik__Device__V202308beta1__DeviceNmsConfig         *message);
+size_t kentik__device__v202308beta1__device_nms_config__get_packed_size
+                     (const Kentik__Device__V202308beta1__DeviceNmsConfig   *message);
+size_t kentik__device__v202308beta1__device_nms_config__pack
+                     (const Kentik__Device__V202308beta1__DeviceNmsConfig   *message,
+                      uint8_t             *out);
+size_t kentik__device__v202308beta1__device_nms_config__pack_to_buffer
+                     (const Kentik__Device__V202308beta1__DeviceNmsConfig   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Device__V202308beta1__DeviceNmsConfig *
+       kentik__device__v202308beta1__device_nms_config__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__device__v202308beta1__device_nms_config__free_unpacked
+                     (Kentik__Device__V202308beta1__DeviceNmsConfig *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Device__V202308beta1__DeviceNmsSnmpConfig methods */
+void   kentik__device__v202308beta1__device_nms_snmp_config__init
+                     (Kentik__Device__V202308beta1__DeviceNmsSnmpConfig         *message);
+size_t kentik__device__v202308beta1__device_nms_snmp_config__get_packed_size
+                     (const Kentik__Device__V202308beta1__DeviceNmsSnmpConfig   *message);
+size_t kentik__device__v202308beta1__device_nms_snmp_config__pack
+                     (const Kentik__Device__V202308beta1__DeviceNmsSnmpConfig   *message,
+                      uint8_t             *out);
+size_t kentik__device__v202308beta1__device_nms_snmp_config__pack_to_buffer
+                     (const Kentik__Device__V202308beta1__DeviceNmsSnmpConfig   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Device__V202308beta1__DeviceNmsSnmpConfig *
+       kentik__device__v202308beta1__device_nms_snmp_config__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__device__v202308beta1__device_nms_snmp_config__free_unpacked
+                     (Kentik__Device__V202308beta1__DeviceNmsSnmpConfig *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Device__V202308beta1__DeviceNmsStConfig methods */
+void   kentik__device__v202308beta1__device_nms_st_config__init
+                     (Kentik__Device__V202308beta1__DeviceNmsStConfig         *message);
+size_t kentik__device__v202308beta1__device_nms_st_config__get_packed_size
+                     (const Kentik__Device__V202308beta1__DeviceNmsStConfig   *message);
+size_t kentik__device__v202308beta1__device_nms_st_config__pack
+                     (const Kentik__Device__V202308beta1__DeviceNmsStConfig   *message,
+                      uint8_t             *out);
+size_t kentik__device__v202308beta1__device_nms_st_config__pack_to_buffer
+                     (const Kentik__Device__V202308beta1__DeviceNmsStConfig   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Device__V202308beta1__DeviceNmsStConfig *
+       kentik__device__v202308beta1__device_nms_st_config__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__device__v202308beta1__device_nms_st_config__free_unpacked
+                     (Kentik__Device__V202308beta1__DeviceNmsStConfig *message,
                       ProtobufCAllocator *allocator);
 /* Kentik__Device__V202308beta1__DeviceConcise methods */
 void   kentik__device__v202308beta1__device_concise__init
@@ -1087,6 +1215,15 @@ void   kentik__device__v202308beta1__delete_devices_response__free_unpacked
 typedef void (*Kentik__Device__V202308beta1__DeviceSnmpV3Conf_Closure)
                  (const Kentik__Device__V202308beta1__DeviceSnmpV3Conf *message,
                   void *closure_data);
+typedef void (*Kentik__Device__V202308beta1__DeviceNmsConfig_Closure)
+                 (const Kentik__Device__V202308beta1__DeviceNmsConfig *message,
+                  void *closure_data);
+typedef void (*Kentik__Device__V202308beta1__DeviceNmsSnmpConfig_Closure)
+                 (const Kentik__Device__V202308beta1__DeviceNmsSnmpConfig *message,
+                  void *closure_data);
+typedef void (*Kentik__Device__V202308beta1__DeviceNmsStConfig_Closure)
+                 (const Kentik__Device__V202308beta1__DeviceNmsStConfig *message,
+                  void *closure_data);
 typedef void (*Kentik__Device__V202308beta1__DeviceConcise_Closure)
                  (const Kentik__Device__V202308beta1__DeviceConcise *message,
                   void *closure_data);
@@ -1268,6 +1405,9 @@ void kentik__device__v202308beta1__device_service__delete_devices(ProtobufCServi
 /* --- descriptors --- */
 
 extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__device_snmp_v3_conf__descriptor;
+extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__device_nms_config__descriptor;
+extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__device_nms_snmp_config__descriptor;
+extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__device_nms_st_config__descriptor;
 extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__device_concise__descriptor;
 extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__site__descriptor;
 extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__plan__descriptor;

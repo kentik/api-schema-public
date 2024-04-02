@@ -36,6 +36,7 @@
 #include "google/api/client.pb.h"
 #include "google/api/field_behavior.pb.h"
 #include <google/protobuf/timestamp.pb.h>
+#include <google/protobuf/duration.pb.h>
 #include "protoc-gen-openapiv2/options/annotations.pb.h"
 #include "kentik/core/v202303/annotations.pb.h"
 // @@protoc_insertion_point(includes)
@@ -53,7 +54,7 @@ struct TableStruct_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[28]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[31]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -96,6 +97,15 @@ extern DeviceConciseDefaultTypeInternal _DeviceConcise_default_instance_;
 class DeviceDetailed;
 class DeviceDetailedDefaultTypeInternal;
 extern DeviceDetailedDefaultTypeInternal _DeviceDetailed_default_instance_;
+class DeviceNmsConfig;
+class DeviceNmsConfigDefaultTypeInternal;
+extern DeviceNmsConfigDefaultTypeInternal _DeviceNmsConfig_default_instance_;
+class DeviceNmsSnmpConfig;
+class DeviceNmsSnmpConfigDefaultTypeInternal;
+extern DeviceNmsSnmpConfigDefaultTypeInternal _DeviceNmsSnmpConfig_default_instance_;
+class DeviceNmsStConfig;
+class DeviceNmsStConfigDefaultTypeInternal;
+extern DeviceNmsStConfigDefaultTypeInternal _DeviceNmsStConfig_default_instance_;
 class DeviceSnmpV3Conf;
 class DeviceSnmpV3ConfDefaultTypeInternal;
 extern DeviceSnmpV3ConfDefaultTypeInternal _DeviceSnmpV3Conf_default_instance_;
@@ -162,6 +172,9 @@ template<> ::kentik::device::v202308beta1::DeleteDevicesRequest* Arena::CreateMa
 template<> ::kentik::device::v202308beta1::DeleteDevicesResponse* Arena::CreateMaybeMessage<::kentik::device::v202308beta1::DeleteDevicesResponse>(Arena*);
 template<> ::kentik::device::v202308beta1::DeviceConcise* Arena::CreateMaybeMessage<::kentik::device::v202308beta1::DeviceConcise>(Arena*);
 template<> ::kentik::device::v202308beta1::DeviceDetailed* Arena::CreateMaybeMessage<::kentik::device::v202308beta1::DeviceDetailed>(Arena*);
+template<> ::kentik::device::v202308beta1::DeviceNmsConfig* Arena::CreateMaybeMessage<::kentik::device::v202308beta1::DeviceNmsConfig>(Arena*);
+template<> ::kentik::device::v202308beta1::DeviceNmsSnmpConfig* Arena::CreateMaybeMessage<::kentik::device::v202308beta1::DeviceNmsSnmpConfig>(Arena*);
+template<> ::kentik::device::v202308beta1::DeviceNmsStConfig* Arena::CreateMaybeMessage<::kentik::device::v202308beta1::DeviceNmsStConfig>(Arena*);
 template<> ::kentik::device::v202308beta1::DeviceSnmpV3Conf* Arena::CreateMaybeMessage<::kentik::device::v202308beta1::DeviceSnmpV3Conf>(Arena*);
 template<> ::kentik::device::v202308beta1::GetDeviceRequest* Arena::CreateMaybeMessage<::kentik::device::v202308beta1::GetDeviceRequest>(Arena*);
 template<> ::kentik::device::v202308beta1::GetDeviceResponse* Arena::CreateMaybeMessage<::kentik::device::v202308beta1::GetDeviceResponse>(Arena*);
@@ -447,6 +460,605 @@ class DeviceSnmpV3Conf PROTOBUF_FINAL :
 };
 // -------------------------------------------------------------------
 
+class DeviceNmsConfig PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:kentik.device.v202308beta1.DeviceNmsConfig) */ {
+ public:
+  inline DeviceNmsConfig() : DeviceNmsConfig(nullptr) {};
+  virtual ~DeviceNmsConfig();
+
+  DeviceNmsConfig(const DeviceNmsConfig& from);
+  DeviceNmsConfig(DeviceNmsConfig&& from) noexcept
+    : DeviceNmsConfig() {
+    *this = ::std::move(from);
+  }
+
+  inline DeviceNmsConfig& operator=(const DeviceNmsConfig& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline DeviceNmsConfig& operator=(DeviceNmsConfig&& from) noexcept {
+    if (GetArena() == from.GetArena()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const DeviceNmsConfig& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const DeviceNmsConfig* internal_default_instance() {
+    return reinterpret_cast<const DeviceNmsConfig*>(
+               &_DeviceNmsConfig_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(DeviceNmsConfig& a, DeviceNmsConfig& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(DeviceNmsConfig* other) {
+    if (other == this) return;
+    if (GetArena() == other->GetArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(DeviceNmsConfig* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline DeviceNmsConfig* New() const final {
+    return CreateMaybeMessage<DeviceNmsConfig>(nullptr);
+  }
+
+  DeviceNmsConfig* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<DeviceNmsConfig>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const DeviceNmsConfig& from);
+  void MergeFrom(const DeviceNmsConfig& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(DeviceNmsConfig* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "kentik.device.v202308beta1.DeviceNmsConfig";
+  }
+  protected:
+  explicit DeviceNmsConfig(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto);
+    return ::descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kAgentIdFieldNumber = 2,
+    kIpAddressFieldNumber = 3,
+    kSnmpFieldNumber = 4,
+    kStFieldNumber = 5,
+  };
+  // string agent_id = 2[json_name = "agentId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_agent_id();
+  const std::string& agent_id() const;
+  void set_agent_id(const std::string& value);
+  void set_agent_id(std::string&& value);
+  void set_agent_id(const char* value);
+  void set_agent_id(const char* value, size_t size);
+  std::string* mutable_agent_id();
+  std::string* release_agent_id();
+  void set_allocated_agent_id(std::string* agent_id);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_agent_id();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_agent_id(
+      std::string* agent_id);
+  private:
+  const std::string& _internal_agent_id() const;
+  void _internal_set_agent_id(const std::string& value);
+  std::string* _internal_mutable_agent_id();
+  public:
+
+  // string ip_address = 3[json_name = "ipAddress", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_ip_address();
+  const std::string& ip_address() const;
+  void set_ip_address(const std::string& value);
+  void set_ip_address(std::string&& value);
+  void set_ip_address(const char* value);
+  void set_ip_address(const char* value, size_t size);
+  std::string* mutable_ip_address();
+  std::string* release_ip_address();
+  void set_allocated_ip_address(std::string* ip_address);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_ip_address();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_ip_address(
+      std::string* ip_address);
+  private:
+  const std::string& _internal_ip_address() const;
+  void _internal_set_ip_address(const std::string& value);
+  std::string* _internal_mutable_ip_address();
+  public:
+
+  // .kentik.device.v202308beta1.DeviceNmsSnmpConfig snmp = 4[json_name = "snmp", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_snmp() const;
+  private:
+  bool _internal_has_snmp() const;
+  public:
+  void clear_snmp();
+  const ::kentik::device::v202308beta1::DeviceNmsSnmpConfig& snmp() const;
+  ::kentik::device::v202308beta1::DeviceNmsSnmpConfig* release_snmp();
+  ::kentik::device::v202308beta1::DeviceNmsSnmpConfig* mutable_snmp();
+  void set_allocated_snmp(::kentik::device::v202308beta1::DeviceNmsSnmpConfig* snmp);
+  private:
+  const ::kentik::device::v202308beta1::DeviceNmsSnmpConfig& _internal_snmp() const;
+  ::kentik::device::v202308beta1::DeviceNmsSnmpConfig* _internal_mutable_snmp();
+  public:
+  void unsafe_arena_set_allocated_snmp(
+      ::kentik::device::v202308beta1::DeviceNmsSnmpConfig* snmp);
+  ::kentik::device::v202308beta1::DeviceNmsSnmpConfig* unsafe_arena_release_snmp();
+
+  // .kentik.device.v202308beta1.DeviceNmsStConfig st = 5[json_name = "st", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_st() const;
+  private:
+  bool _internal_has_st() const;
+  public:
+  void clear_st();
+  const ::kentik::device::v202308beta1::DeviceNmsStConfig& st() const;
+  ::kentik::device::v202308beta1::DeviceNmsStConfig* release_st();
+  ::kentik::device::v202308beta1::DeviceNmsStConfig* mutable_st();
+  void set_allocated_st(::kentik::device::v202308beta1::DeviceNmsStConfig* st);
+  private:
+  const ::kentik::device::v202308beta1::DeviceNmsStConfig& _internal_st() const;
+  ::kentik::device::v202308beta1::DeviceNmsStConfig* _internal_mutable_st();
+  public:
+  void unsafe_arena_set_allocated_st(
+      ::kentik::device::v202308beta1::DeviceNmsStConfig* st);
+  ::kentik::device::v202308beta1::DeviceNmsStConfig* unsafe_arena_release_st();
+
+  // @@protoc_insertion_point(class_scope:kentik.device.v202308beta1.DeviceNmsConfig)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr agent_id_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr ip_address_;
+  ::kentik::device::v202308beta1::DeviceNmsSnmpConfig* snmp_;
+  ::kentik::device::v202308beta1::DeviceNmsStConfig* st_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto;
+};
+// -------------------------------------------------------------------
+
+class DeviceNmsSnmpConfig PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:kentik.device.v202308beta1.DeviceNmsSnmpConfig) */ {
+ public:
+  inline DeviceNmsSnmpConfig() : DeviceNmsSnmpConfig(nullptr) {};
+  virtual ~DeviceNmsSnmpConfig();
+
+  DeviceNmsSnmpConfig(const DeviceNmsSnmpConfig& from);
+  DeviceNmsSnmpConfig(DeviceNmsSnmpConfig&& from) noexcept
+    : DeviceNmsSnmpConfig() {
+    *this = ::std::move(from);
+  }
+
+  inline DeviceNmsSnmpConfig& operator=(const DeviceNmsSnmpConfig& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline DeviceNmsSnmpConfig& operator=(DeviceNmsSnmpConfig&& from) noexcept {
+    if (GetArena() == from.GetArena()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const DeviceNmsSnmpConfig& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const DeviceNmsSnmpConfig* internal_default_instance() {
+    return reinterpret_cast<const DeviceNmsSnmpConfig*>(
+               &_DeviceNmsSnmpConfig_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(DeviceNmsSnmpConfig& a, DeviceNmsSnmpConfig& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(DeviceNmsSnmpConfig* other) {
+    if (other == this) return;
+    if (GetArena() == other->GetArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(DeviceNmsSnmpConfig* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline DeviceNmsSnmpConfig* New() const final {
+    return CreateMaybeMessage<DeviceNmsSnmpConfig>(nullptr);
+  }
+
+  DeviceNmsSnmpConfig* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<DeviceNmsSnmpConfig>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const DeviceNmsSnmpConfig& from);
+  void MergeFrom(const DeviceNmsSnmpConfig& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(DeviceNmsSnmpConfig* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "kentik.device.v202308beta1.DeviceNmsSnmpConfig";
+  }
+  protected:
+  explicit DeviceNmsSnmpConfig(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto);
+    return ::descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kCredentialNameFieldNumber = 1,
+    kTimeoutFieldNumber = 3,
+    kPortFieldNumber = 2,
+  };
+  // string credential_name = 1[json_name = "credentialName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_credential_name();
+  const std::string& credential_name() const;
+  void set_credential_name(const std::string& value);
+  void set_credential_name(std::string&& value);
+  void set_credential_name(const char* value);
+  void set_credential_name(const char* value, size_t size);
+  std::string* mutable_credential_name();
+  std::string* release_credential_name();
+  void set_allocated_credential_name(std::string* credential_name);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_credential_name();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_credential_name(
+      std::string* credential_name);
+  private:
+  const std::string& _internal_credential_name() const;
+  void _internal_set_credential_name(const std::string& value);
+  std::string* _internal_mutable_credential_name();
+  public:
+
+  // .google.protobuf.Duration timeout = 3[json_name = "timeout", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_timeout() const;
+  private:
+  bool _internal_has_timeout() const;
+  public:
+  void clear_timeout();
+  const PROTOBUF_NAMESPACE_ID::Duration& timeout() const;
+  PROTOBUF_NAMESPACE_ID::Duration* release_timeout();
+  PROTOBUF_NAMESPACE_ID::Duration* mutable_timeout();
+  void set_allocated_timeout(PROTOBUF_NAMESPACE_ID::Duration* timeout);
+  private:
+  const PROTOBUF_NAMESPACE_ID::Duration& _internal_timeout() const;
+  PROTOBUF_NAMESPACE_ID::Duration* _internal_mutable_timeout();
+  public:
+  void unsafe_arena_set_allocated_timeout(
+      PROTOBUF_NAMESPACE_ID::Duration* timeout);
+  PROTOBUF_NAMESPACE_ID::Duration* unsafe_arena_release_timeout();
+
+  // uint32 port = 2[json_name = "port", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_port();
+  ::PROTOBUF_NAMESPACE_ID::uint32 port() const;
+  void set_port(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_port() const;
+  void _internal_set_port(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:kentik.device.v202308beta1.DeviceNmsSnmpConfig)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr credential_name_;
+  PROTOBUF_NAMESPACE_ID::Duration* timeout_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 port_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto;
+};
+// -------------------------------------------------------------------
+
+class DeviceNmsStConfig PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:kentik.device.v202308beta1.DeviceNmsStConfig) */ {
+ public:
+  inline DeviceNmsStConfig() : DeviceNmsStConfig(nullptr) {};
+  virtual ~DeviceNmsStConfig();
+
+  DeviceNmsStConfig(const DeviceNmsStConfig& from);
+  DeviceNmsStConfig(DeviceNmsStConfig&& from) noexcept
+    : DeviceNmsStConfig() {
+    *this = ::std::move(from);
+  }
+
+  inline DeviceNmsStConfig& operator=(const DeviceNmsStConfig& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline DeviceNmsStConfig& operator=(DeviceNmsStConfig&& from) noexcept {
+    if (GetArena() == from.GetArena()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const DeviceNmsStConfig& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const DeviceNmsStConfig* internal_default_instance() {
+    return reinterpret_cast<const DeviceNmsStConfig*>(
+               &_DeviceNmsStConfig_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(DeviceNmsStConfig& a, DeviceNmsStConfig& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(DeviceNmsStConfig* other) {
+    if (other == this) return;
+    if (GetArena() == other->GetArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(DeviceNmsStConfig* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline DeviceNmsStConfig* New() const final {
+    return CreateMaybeMessage<DeviceNmsStConfig>(nullptr);
+  }
+
+  DeviceNmsStConfig* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<DeviceNmsStConfig>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const DeviceNmsStConfig& from);
+  void MergeFrom(const DeviceNmsStConfig& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(DeviceNmsStConfig* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "kentik.device.v202308beta1.DeviceNmsStConfig";
+  }
+  protected:
+  explicit DeviceNmsStConfig(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto);
+    return ::descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kCredentialNameFieldNumber = 1,
+    kTimeoutFieldNumber = 3,
+    kPortFieldNumber = 2,
+    kSecureFieldNumber = 4,
+  };
+  // string credential_name = 1[json_name = "credentialName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_credential_name();
+  const std::string& credential_name() const;
+  void set_credential_name(const std::string& value);
+  void set_credential_name(std::string&& value);
+  void set_credential_name(const char* value);
+  void set_credential_name(const char* value, size_t size);
+  std::string* mutable_credential_name();
+  std::string* release_credential_name();
+  void set_allocated_credential_name(std::string* credential_name);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_credential_name();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_credential_name(
+      std::string* credential_name);
+  private:
+  const std::string& _internal_credential_name() const;
+  void _internal_set_credential_name(const std::string& value);
+  std::string* _internal_mutable_credential_name();
+  public:
+
+  // .google.protobuf.Duration timeout = 3[json_name = "timeout", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_timeout() const;
+  private:
+  bool _internal_has_timeout() const;
+  public:
+  void clear_timeout();
+  const PROTOBUF_NAMESPACE_ID::Duration& timeout() const;
+  PROTOBUF_NAMESPACE_ID::Duration* release_timeout();
+  PROTOBUF_NAMESPACE_ID::Duration* mutable_timeout();
+  void set_allocated_timeout(PROTOBUF_NAMESPACE_ID::Duration* timeout);
+  private:
+  const PROTOBUF_NAMESPACE_ID::Duration& _internal_timeout() const;
+  PROTOBUF_NAMESPACE_ID::Duration* _internal_mutable_timeout();
+  public:
+  void unsafe_arena_set_allocated_timeout(
+      PROTOBUF_NAMESPACE_ID::Duration* timeout);
+  PROTOBUF_NAMESPACE_ID::Duration* unsafe_arena_release_timeout();
+
+  // uint32 port = 2[json_name = "port", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_port();
+  ::PROTOBUF_NAMESPACE_ID::uint32 port() const;
+  void set_port(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_port() const;
+  void _internal_set_port(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  public:
+
+  // bool secure = 4[json_name = "secure", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_secure();
+  bool secure() const;
+  void set_secure(bool value);
+  private:
+  bool _internal_secure() const;
+  void _internal_set_secure(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:kentik.device.v202308beta1.DeviceNmsStConfig)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr credential_name_;
+  PROTOBUF_NAMESPACE_ID::Duration* timeout_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 port_;
+  bool secure_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto;
+};
+// -------------------------------------------------------------------
+
 class DeviceConcise PROTOBUF_FINAL :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:kentik.device.v202308beta1.DeviceConcise) */ {
  public:
@@ -489,7 +1101,7 @@ class DeviceConcise PROTOBUF_FINAL :
                &_DeviceConcise_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    4;
 
   friend void swap(DeviceConcise& a, DeviceConcise& b) {
     a.Swap(&b);
@@ -574,6 +1186,7 @@ class DeviceConcise PROTOBUF_FINAL :
     kDeviceBgpNeighborAsnFieldNumber = 17,
     kDeviceBgpPasswordFieldNumber = 18,
     kDeviceSnmpV3ConfFieldNumber = 13,
+    kNmsFieldNumber = 21,
     kDeviceSampleRateFieldNumber = 7,
     kPlanIdFieldNumber = 8,
     kSiteIdFieldNumber = 9,
@@ -923,6 +1536,24 @@ class DeviceConcise PROTOBUF_FINAL :
       ::kentik::device::v202308beta1::DeviceSnmpV3Conf* device_snmp_v3_conf);
   ::kentik::device::v202308beta1::DeviceSnmpV3Conf* unsafe_arena_release_device_snmp_v3_conf();
 
+  // .kentik.device.v202308beta1.DeviceNmsConfig nms = 21[json_name = "nms", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_nms() const;
+  private:
+  bool _internal_has_nms() const;
+  public:
+  void clear_nms();
+  const ::kentik::device::v202308beta1::DeviceNmsConfig& nms() const;
+  ::kentik::device::v202308beta1::DeviceNmsConfig* release_nms();
+  ::kentik::device::v202308beta1::DeviceNmsConfig* mutable_nms();
+  void set_allocated_nms(::kentik::device::v202308beta1::DeviceNmsConfig* nms);
+  private:
+  const ::kentik::device::v202308beta1::DeviceNmsConfig& _internal_nms() const;
+  ::kentik::device::v202308beta1::DeviceNmsConfig* _internal_mutable_nms();
+  public:
+  void unsafe_arena_set_allocated_nms(
+      ::kentik::device::v202308beta1::DeviceNmsConfig* nms);
+  ::kentik::device::v202308beta1::DeviceNmsConfig* unsafe_arena_release_nms();
+
   // double device_sample_rate = 7[json_name = "deviceSampleRate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   void clear_device_sample_rate();
   double device_sample_rate() const;
@@ -951,6 +1582,10 @@ class DeviceConcise PROTOBUF_FINAL :
   public:
 
   // bool minimize_snmp = 10[json_name = "minimizeSnmp", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_minimize_snmp() const;
+  private:
+  bool _internal_has_minimize_snmp() const;
+  public:
   void clear_minimize_snmp();
   bool minimize_snmp() const;
   void set_minimize_snmp(bool value);
@@ -984,6 +1619,8 @@ class DeviceConcise PROTOBUF_FINAL :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> sending_ips_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr id_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr device_name_;
@@ -998,13 +1635,13 @@ class DeviceConcise PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr device_bgp_neighbor_asn_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr device_bgp_password_;
   ::kentik::device::v202308beta1::DeviceSnmpV3Conf* device_snmp_v3_conf_;
+  ::kentik::device::v202308beta1::DeviceNmsConfig* nms_;
   double device_sample_rate_;
   ::PROTOBUF_NAMESPACE_ID::uint32 plan_id_;
   ::PROTOBUF_NAMESPACE_ID::uint32 site_id_;
   bool minimize_snmp_;
   bool device_bgp_flowspec_;
   ::PROTOBUF_NAMESPACE_ID::uint32 use_bgp_device_id_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto;
 };
 // -------------------------------------------------------------------
@@ -1051,7 +1688,7 @@ class Site PROTOBUF_FINAL :
                &_Site_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    5;
 
   friend void swap(Site& a, Site& b) {
     a.Swap(&b);
@@ -1280,7 +1917,7 @@ class Plan PROTOBUF_FINAL :
                &_Plan_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    6;
 
   friend void swap(Plan& a, Plan& b) {
     a.Swap(&b);
@@ -1460,7 +2097,7 @@ class Label PROTOBUF_FINAL :
                &_Label_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    7;
 
   friend void swap(Label& a, Label& b) {
     a.Swap(&b);
@@ -1869,7 +2506,7 @@ class Interface PROTOBUF_FINAL :
                &_Interface_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    8;
 
   friend void swap(Interface& a, Interface& b) {
     a.Swap(&b);
@@ -2238,7 +2875,7 @@ class CustomColumnData PROTOBUF_FINAL :
                &_CustomColumnData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    9;
 
   friend void swap(CustomColumnData& a, CustomColumnData& b) {
     a.Swap(&b);
@@ -2526,7 +3163,7 @@ class GnmiV1Conf PROTOBUF_FINAL :
                &_GnmiV1Conf_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    10;
 
   friend void swap(GnmiV1Conf& a, GnmiV1Conf& b) {
     a.Swap(&b);
@@ -2679,7 +3316,7 @@ class DeviceDetailed PROTOBUF_FINAL :
                &_DeviceDetailed_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    11;
 
   friend void swap(DeviceDetailed& a, DeviceDetailed& b) {
     a.Swap(&b);
@@ -2801,6 +3438,7 @@ class DeviceDetailed PROTOBUF_FINAL :
     kUpdatedDateFieldNumber = 38,
     kDeviceSnmpV3ConfFieldNumber = 40,
     kDeviceGnmiV1ConfFieldNumber = 57,
+    kNmsFieldNumber = 61,
     kMinimizeSnmpFieldNumber = 16,
     kDeviceBgpFlowspecFieldNumber = 21,
     kDeviceBgpLabelUnicastFieldNumber = 23,
@@ -4022,7 +4660,29 @@ class DeviceDetailed PROTOBUF_FINAL :
       ::kentik::device::v202308beta1::GnmiV1Conf* device_gnmi_v1_conf);
   ::kentik::device::v202308beta1::GnmiV1Conf* unsafe_arena_release_device_gnmi_v1_conf();
 
+  // .kentik.device.v202308beta1.DeviceNmsConfig nms = 61[json_name = "nms", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_nms() const;
+  private:
+  bool _internal_has_nms() const;
+  public:
+  void clear_nms();
+  const ::kentik::device::v202308beta1::DeviceNmsConfig& nms() const;
+  ::kentik::device::v202308beta1::DeviceNmsConfig* release_nms();
+  ::kentik::device::v202308beta1::DeviceNmsConfig* mutable_nms();
+  void set_allocated_nms(::kentik::device::v202308beta1::DeviceNmsConfig* nms);
+  private:
+  const ::kentik::device::v202308beta1::DeviceNmsConfig& _internal_nms() const;
+  ::kentik::device::v202308beta1::DeviceNmsConfig* _internal_mutable_nms();
+  public:
+  void unsafe_arena_set_allocated_nms(
+      ::kentik::device::v202308beta1::DeviceNmsConfig* nms);
+  ::kentik::device::v202308beta1::DeviceNmsConfig* unsafe_arena_release_nms();
+
   // bool minimize_snmp = 16[json_name = "minimizeSnmp", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_minimize_snmp() const;
+  private:
+  bool _internal_has_minimize_snmp() const;
+  public:
   void clear_minimize_snmp();
   bool minimize_snmp() const;
   void set_minimize_snmp(bool value);
@@ -4110,6 +4770,8 @@ class DeviceDetailed PROTOBUF_FINAL :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::kentik::device::v202308beta1::Label > labels_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::kentik::device::v202308beta1::Interface > all_interfaces_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> sending_ips_;
@@ -4161,6 +4823,7 @@ class DeviceDetailed PROTOBUF_FINAL :
   PROTOBUF_NAMESPACE_ID::Timestamp* updated_date_;
   ::kentik::device::v202308beta1::DeviceSnmpV3Conf* device_snmp_v3_conf_;
   ::kentik::device::v202308beta1::GnmiV1Conf* device_gnmi_v1_conf_;
+  ::kentik::device::v202308beta1::DeviceNmsConfig* nms_;
   bool minimize_snmp_;
   bool device_bgp_flowspec_;
   bool device_bgp_label_unicast_;
@@ -4170,7 +4833,6 @@ class DeviceDetailed PROTOBUF_FINAL :
   bool use_asn_from_flow_;
   ::PROTOBUF_NAMESPACE_ID::uint32 max_interface_;
   ::PROTOBUF_NAMESPACE_ID::uint32 max_interface_check_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto;
 };
 // -------------------------------------------------------------------
@@ -4217,7 +4879,7 @@ class LabelConcise PROTOBUF_FINAL :
                &_LabelConcise_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    12;
 
   friend void swap(LabelConcise& a, LabelConcise& b) {
     a.Swap(&b);
@@ -4354,7 +5016,7 @@ class ListDevicesRequest PROTOBUF_FINAL :
                &_ListDevicesRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    13;
 
   friend void swap(ListDevicesRequest& a, ListDevicesRequest& b) {
     a.Swap(&b);
@@ -4478,7 +5140,7 @@ class ListDevicesResponse PROTOBUF_FINAL :
                &_ListDevicesResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    14;
 
   friend void swap(ListDevicesResponse& a, ListDevicesResponse& b) {
     a.Swap(&b);
@@ -4635,7 +5297,7 @@ class GetDeviceRequest PROTOBUF_FINAL :
                &_GetDeviceRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    15;
 
   friend void swap(GetDeviceRequest& a, GetDeviceRequest& b) {
     a.Swap(&b);
@@ -4788,7 +5450,7 @@ class GetDeviceResponse PROTOBUF_FINAL :
                &_GetDeviceResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    16;
 
   friend void swap(GetDeviceResponse& a, GetDeviceResponse& b) {
     a.Swap(&b);
@@ -4934,7 +5596,7 @@ class CreateDeviceRequest PROTOBUF_FINAL :
                &_CreateDeviceRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    17;
 
   friend void swap(CreateDeviceRequest& a, CreateDeviceRequest& b) {
     a.Swap(&b);
@@ -5080,7 +5742,7 @@ class CreateDeviceResponse PROTOBUF_FINAL :
                &_CreateDeviceResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    15;
+    18;
 
   friend void swap(CreateDeviceResponse& a, CreateDeviceResponse& b) {
     a.Swap(&b);
@@ -5226,7 +5888,7 @@ class CreateDevicesRequest PROTOBUF_FINAL :
                &_CreateDevicesRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    19;
 
   friend void swap(CreateDevicesRequest& a, CreateDevicesRequest& b) {
     a.Swap(&b);
@@ -5372,7 +6034,7 @@ class CreateDevicesResponse PROTOBUF_FINAL :
                &_CreateDevicesResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    17;
+    20;
 
   friend void swap(CreateDevicesResponse& a, CreateDevicesResponse& b) {
     a.Swap(&b);
@@ -5544,7 +6206,7 @@ class UpdateDeviceRequest PROTOBUF_FINAL :
                &_UpdateDeviceRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    18;
+    21;
 
   friend void swap(UpdateDeviceRequest& a, UpdateDeviceRequest& b) {
     a.Swap(&b);
@@ -5690,7 +6352,7 @@ class UpdateDeviceResponse PROTOBUF_FINAL :
                &_UpdateDeviceResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    19;
+    22;
 
   friend void swap(UpdateDeviceResponse& a, UpdateDeviceResponse& b) {
     a.Swap(&b);
@@ -5836,7 +6498,7 @@ class UpdateDevicesRequest PROTOBUF_FINAL :
                &_UpdateDevicesRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    20;
+    23;
 
   friend void swap(UpdateDevicesRequest& a, UpdateDevicesRequest& b) {
     a.Swap(&b);
@@ -5982,7 +6644,7 @@ class UpdateDevicesResponse PROTOBUF_FINAL :
                &_UpdateDevicesResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    21;
+    24;
 
   friend void swap(UpdateDevicesResponse& a, UpdateDevicesResponse& b) {
     a.Swap(&b);
@@ -6154,7 +6816,7 @@ class UpdateDeviceLabelsRequest PROTOBUF_FINAL :
                &_UpdateDeviceLabelsRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    22;
+    25;
 
   friend void swap(UpdateDeviceLabelsRequest& a, UpdateDeviceLabelsRequest& b) {
     a.Swap(&b);
@@ -6327,7 +6989,7 @@ class UpdateDeviceLabelsResponse PROTOBUF_FINAL :
                &_UpdateDeviceLabelsResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    23;
+    26;
 
   friend void swap(UpdateDeviceLabelsResponse& a, UpdateDeviceLabelsResponse& b) {
     a.Swap(&b);
@@ -6473,7 +7135,7 @@ class DeleteDeviceRequest PROTOBUF_FINAL :
                &_DeleteDeviceRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    24;
+    27;
 
   friend void swap(DeleteDeviceRequest& a, DeleteDeviceRequest& b) {
     a.Swap(&b);
@@ -6626,7 +7288,7 @@ class DeleteDeviceResponse PROTOBUF_FINAL :
                &_DeleteDeviceResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    25;
+    28;
 
   friend void swap(DeleteDeviceResponse& a, DeleteDeviceResponse& b) {
     a.Swap(&b);
@@ -6750,7 +7412,7 @@ class DeleteDevicesRequest PROTOBUF_FINAL :
                &_DeleteDevicesRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    26;
+    29;
 
   friend void swap(DeleteDevicesRequest& a, DeleteDevicesRequest& b) {
     a.Swap(&b);
@@ -6902,7 +7564,7 @@ class DeleteDevicesResponse PROTOBUF_FINAL :
                &_DeleteDevicesResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    27;
+    30;
 
   friend void swap(DeleteDevicesResponse& a, DeleteDevicesResponse& b) {
     a.Swap(&b);
@@ -7424,6 +8086,714 @@ inline void DeviceSnmpV3Conf::unsafe_arena_set_allocated_privacy_passphrase(
   privacy_passphrase_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       privacy_passphrase, GetArena());
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.device.v202308beta1.DeviceSnmpV3Conf.privacy_passphrase)
+}
+
+// -------------------------------------------------------------------
+
+// DeviceNmsConfig
+
+// string agent_id = 2[json_name = "agentId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void DeviceNmsConfig::clear_agent_id() {
+  agent_id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline const std::string& DeviceNmsConfig::agent_id() const {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.DeviceNmsConfig.agent_id)
+  return _internal_agent_id();
+}
+inline void DeviceNmsConfig::set_agent_id(const std::string& value) {
+  _internal_set_agent_id(value);
+  // @@protoc_insertion_point(field_set:kentik.device.v202308beta1.DeviceNmsConfig.agent_id)
+}
+inline std::string* DeviceNmsConfig::mutable_agent_id() {
+  // @@protoc_insertion_point(field_mutable:kentik.device.v202308beta1.DeviceNmsConfig.agent_id)
+  return _internal_mutable_agent_id();
+}
+inline const std::string& DeviceNmsConfig::_internal_agent_id() const {
+  return agent_id_.Get();
+}
+inline void DeviceNmsConfig::_internal_set_agent_id(const std::string& value) {
+  
+  agent_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void DeviceNmsConfig::set_agent_id(std::string&& value) {
+  
+  agent_id_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:kentik.device.v202308beta1.DeviceNmsConfig.agent_id)
+}
+inline void DeviceNmsConfig::set_agent_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  agent_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:kentik.device.v202308beta1.DeviceNmsConfig.agent_id)
+}
+inline void DeviceNmsConfig::set_agent_id(const char* value,
+    size_t size) {
+  
+  agent_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:kentik.device.v202308beta1.DeviceNmsConfig.agent_id)
+}
+inline std::string* DeviceNmsConfig::_internal_mutable_agent_id() {
+  
+  return agent_id_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* DeviceNmsConfig::release_agent_id() {
+  // @@protoc_insertion_point(field_release:kentik.device.v202308beta1.DeviceNmsConfig.agent_id)
+  return agent_id_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void DeviceNmsConfig::set_allocated_agent_id(std::string* agent_id) {
+  if (agent_id != nullptr) {
+    
+  } else {
+    
+  }
+  agent_id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), agent_id,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:kentik.device.v202308beta1.DeviceNmsConfig.agent_id)
+}
+inline std::string* DeviceNmsConfig::unsafe_arena_release_agent_id() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:kentik.device.v202308beta1.DeviceNmsConfig.agent_id)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  
+  return agent_id_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void DeviceNmsConfig::unsafe_arena_set_allocated_agent_id(
+    std::string* agent_id) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (agent_id != nullptr) {
+    
+  } else {
+    
+  }
+  agent_id_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      agent_id, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.device.v202308beta1.DeviceNmsConfig.agent_id)
+}
+
+// string ip_address = 3[json_name = "ipAddress", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void DeviceNmsConfig::clear_ip_address() {
+  ip_address_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline const std::string& DeviceNmsConfig::ip_address() const {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.DeviceNmsConfig.ip_address)
+  return _internal_ip_address();
+}
+inline void DeviceNmsConfig::set_ip_address(const std::string& value) {
+  _internal_set_ip_address(value);
+  // @@protoc_insertion_point(field_set:kentik.device.v202308beta1.DeviceNmsConfig.ip_address)
+}
+inline std::string* DeviceNmsConfig::mutable_ip_address() {
+  // @@protoc_insertion_point(field_mutable:kentik.device.v202308beta1.DeviceNmsConfig.ip_address)
+  return _internal_mutable_ip_address();
+}
+inline const std::string& DeviceNmsConfig::_internal_ip_address() const {
+  return ip_address_.Get();
+}
+inline void DeviceNmsConfig::_internal_set_ip_address(const std::string& value) {
+  
+  ip_address_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void DeviceNmsConfig::set_ip_address(std::string&& value) {
+  
+  ip_address_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:kentik.device.v202308beta1.DeviceNmsConfig.ip_address)
+}
+inline void DeviceNmsConfig::set_ip_address(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  ip_address_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:kentik.device.v202308beta1.DeviceNmsConfig.ip_address)
+}
+inline void DeviceNmsConfig::set_ip_address(const char* value,
+    size_t size) {
+  
+  ip_address_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:kentik.device.v202308beta1.DeviceNmsConfig.ip_address)
+}
+inline std::string* DeviceNmsConfig::_internal_mutable_ip_address() {
+  
+  return ip_address_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* DeviceNmsConfig::release_ip_address() {
+  // @@protoc_insertion_point(field_release:kentik.device.v202308beta1.DeviceNmsConfig.ip_address)
+  return ip_address_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void DeviceNmsConfig::set_allocated_ip_address(std::string* ip_address) {
+  if (ip_address != nullptr) {
+    
+  } else {
+    
+  }
+  ip_address_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ip_address,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:kentik.device.v202308beta1.DeviceNmsConfig.ip_address)
+}
+inline std::string* DeviceNmsConfig::unsafe_arena_release_ip_address() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:kentik.device.v202308beta1.DeviceNmsConfig.ip_address)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  
+  return ip_address_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void DeviceNmsConfig::unsafe_arena_set_allocated_ip_address(
+    std::string* ip_address) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (ip_address != nullptr) {
+    
+  } else {
+    
+  }
+  ip_address_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ip_address, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.device.v202308beta1.DeviceNmsConfig.ip_address)
+}
+
+// .kentik.device.v202308beta1.DeviceNmsSnmpConfig snmp = 4[json_name = "snmp", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool DeviceNmsConfig::_internal_has_snmp() const {
+  return this != internal_default_instance() && snmp_ != nullptr;
+}
+inline bool DeviceNmsConfig::has_snmp() const {
+  return _internal_has_snmp();
+}
+inline void DeviceNmsConfig::clear_snmp() {
+  if (GetArena() == nullptr && snmp_ != nullptr) {
+    delete snmp_;
+  }
+  snmp_ = nullptr;
+}
+inline const ::kentik::device::v202308beta1::DeviceNmsSnmpConfig& DeviceNmsConfig::_internal_snmp() const {
+  const ::kentik::device::v202308beta1::DeviceNmsSnmpConfig* p = snmp_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::kentik::device::v202308beta1::DeviceNmsSnmpConfig*>(
+      &::kentik::device::v202308beta1::_DeviceNmsSnmpConfig_default_instance_);
+}
+inline const ::kentik::device::v202308beta1::DeviceNmsSnmpConfig& DeviceNmsConfig::snmp() const {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.DeviceNmsConfig.snmp)
+  return _internal_snmp();
+}
+inline void DeviceNmsConfig::unsafe_arena_set_allocated_snmp(
+    ::kentik::device::v202308beta1::DeviceNmsSnmpConfig* snmp) {
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(snmp_);
+  }
+  snmp_ = snmp;
+  if (snmp) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.device.v202308beta1.DeviceNmsConfig.snmp)
+}
+inline ::kentik::device::v202308beta1::DeviceNmsSnmpConfig* DeviceNmsConfig::release_snmp() {
+  auto temp = unsafe_arena_release_snmp();
+  if (GetArena() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+  return temp;
+}
+inline ::kentik::device::v202308beta1::DeviceNmsSnmpConfig* DeviceNmsConfig::unsafe_arena_release_snmp() {
+  // @@protoc_insertion_point(field_release:kentik.device.v202308beta1.DeviceNmsConfig.snmp)
+  
+  ::kentik::device::v202308beta1::DeviceNmsSnmpConfig* temp = snmp_;
+  snmp_ = nullptr;
+  return temp;
+}
+inline ::kentik::device::v202308beta1::DeviceNmsSnmpConfig* DeviceNmsConfig::_internal_mutable_snmp() {
+  
+  if (snmp_ == nullptr) {
+    auto* p = CreateMaybeMessage<::kentik::device::v202308beta1::DeviceNmsSnmpConfig>(GetArena());
+    snmp_ = p;
+  }
+  return snmp_;
+}
+inline ::kentik::device::v202308beta1::DeviceNmsSnmpConfig* DeviceNmsConfig::mutable_snmp() {
+  // @@protoc_insertion_point(field_mutable:kentik.device.v202308beta1.DeviceNmsConfig.snmp)
+  return _internal_mutable_snmp();
+}
+inline void DeviceNmsConfig::set_allocated_snmp(::kentik::device::v202308beta1::DeviceNmsSnmpConfig* snmp) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
+  if (message_arena == nullptr) {
+    delete snmp_;
+  }
+  if (snmp) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::GetArena(snmp);
+    if (message_arena != submessage_arena) {
+      snmp = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, snmp, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  snmp_ = snmp;
+  // @@protoc_insertion_point(field_set_allocated:kentik.device.v202308beta1.DeviceNmsConfig.snmp)
+}
+
+// .kentik.device.v202308beta1.DeviceNmsStConfig st = 5[json_name = "st", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool DeviceNmsConfig::_internal_has_st() const {
+  return this != internal_default_instance() && st_ != nullptr;
+}
+inline bool DeviceNmsConfig::has_st() const {
+  return _internal_has_st();
+}
+inline void DeviceNmsConfig::clear_st() {
+  if (GetArena() == nullptr && st_ != nullptr) {
+    delete st_;
+  }
+  st_ = nullptr;
+}
+inline const ::kentik::device::v202308beta1::DeviceNmsStConfig& DeviceNmsConfig::_internal_st() const {
+  const ::kentik::device::v202308beta1::DeviceNmsStConfig* p = st_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::kentik::device::v202308beta1::DeviceNmsStConfig*>(
+      &::kentik::device::v202308beta1::_DeviceNmsStConfig_default_instance_);
+}
+inline const ::kentik::device::v202308beta1::DeviceNmsStConfig& DeviceNmsConfig::st() const {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.DeviceNmsConfig.st)
+  return _internal_st();
+}
+inline void DeviceNmsConfig::unsafe_arena_set_allocated_st(
+    ::kentik::device::v202308beta1::DeviceNmsStConfig* st) {
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(st_);
+  }
+  st_ = st;
+  if (st) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.device.v202308beta1.DeviceNmsConfig.st)
+}
+inline ::kentik::device::v202308beta1::DeviceNmsStConfig* DeviceNmsConfig::release_st() {
+  auto temp = unsafe_arena_release_st();
+  if (GetArena() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+  return temp;
+}
+inline ::kentik::device::v202308beta1::DeviceNmsStConfig* DeviceNmsConfig::unsafe_arena_release_st() {
+  // @@protoc_insertion_point(field_release:kentik.device.v202308beta1.DeviceNmsConfig.st)
+  
+  ::kentik::device::v202308beta1::DeviceNmsStConfig* temp = st_;
+  st_ = nullptr;
+  return temp;
+}
+inline ::kentik::device::v202308beta1::DeviceNmsStConfig* DeviceNmsConfig::_internal_mutable_st() {
+  
+  if (st_ == nullptr) {
+    auto* p = CreateMaybeMessage<::kentik::device::v202308beta1::DeviceNmsStConfig>(GetArena());
+    st_ = p;
+  }
+  return st_;
+}
+inline ::kentik::device::v202308beta1::DeviceNmsStConfig* DeviceNmsConfig::mutable_st() {
+  // @@protoc_insertion_point(field_mutable:kentik.device.v202308beta1.DeviceNmsConfig.st)
+  return _internal_mutable_st();
+}
+inline void DeviceNmsConfig::set_allocated_st(::kentik::device::v202308beta1::DeviceNmsStConfig* st) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
+  if (message_arena == nullptr) {
+    delete st_;
+  }
+  if (st) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::GetArena(st);
+    if (message_arena != submessage_arena) {
+      st = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, st, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  st_ = st;
+  // @@protoc_insertion_point(field_set_allocated:kentik.device.v202308beta1.DeviceNmsConfig.st)
+}
+
+// -------------------------------------------------------------------
+
+// DeviceNmsSnmpConfig
+
+// string credential_name = 1[json_name = "credentialName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void DeviceNmsSnmpConfig::clear_credential_name() {
+  credential_name_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline const std::string& DeviceNmsSnmpConfig::credential_name() const {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.DeviceNmsSnmpConfig.credential_name)
+  return _internal_credential_name();
+}
+inline void DeviceNmsSnmpConfig::set_credential_name(const std::string& value) {
+  _internal_set_credential_name(value);
+  // @@protoc_insertion_point(field_set:kentik.device.v202308beta1.DeviceNmsSnmpConfig.credential_name)
+}
+inline std::string* DeviceNmsSnmpConfig::mutable_credential_name() {
+  // @@protoc_insertion_point(field_mutable:kentik.device.v202308beta1.DeviceNmsSnmpConfig.credential_name)
+  return _internal_mutable_credential_name();
+}
+inline const std::string& DeviceNmsSnmpConfig::_internal_credential_name() const {
+  return credential_name_.Get();
+}
+inline void DeviceNmsSnmpConfig::_internal_set_credential_name(const std::string& value) {
+  
+  credential_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void DeviceNmsSnmpConfig::set_credential_name(std::string&& value) {
+  
+  credential_name_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:kentik.device.v202308beta1.DeviceNmsSnmpConfig.credential_name)
+}
+inline void DeviceNmsSnmpConfig::set_credential_name(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  credential_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:kentik.device.v202308beta1.DeviceNmsSnmpConfig.credential_name)
+}
+inline void DeviceNmsSnmpConfig::set_credential_name(const char* value,
+    size_t size) {
+  
+  credential_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:kentik.device.v202308beta1.DeviceNmsSnmpConfig.credential_name)
+}
+inline std::string* DeviceNmsSnmpConfig::_internal_mutable_credential_name() {
+  
+  return credential_name_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* DeviceNmsSnmpConfig::release_credential_name() {
+  // @@protoc_insertion_point(field_release:kentik.device.v202308beta1.DeviceNmsSnmpConfig.credential_name)
+  return credential_name_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void DeviceNmsSnmpConfig::set_allocated_credential_name(std::string* credential_name) {
+  if (credential_name != nullptr) {
+    
+  } else {
+    
+  }
+  credential_name_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), credential_name,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:kentik.device.v202308beta1.DeviceNmsSnmpConfig.credential_name)
+}
+inline std::string* DeviceNmsSnmpConfig::unsafe_arena_release_credential_name() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:kentik.device.v202308beta1.DeviceNmsSnmpConfig.credential_name)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  
+  return credential_name_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void DeviceNmsSnmpConfig::unsafe_arena_set_allocated_credential_name(
+    std::string* credential_name) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (credential_name != nullptr) {
+    
+  } else {
+    
+  }
+  credential_name_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      credential_name, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.device.v202308beta1.DeviceNmsSnmpConfig.credential_name)
+}
+
+// uint32 port = 2[json_name = "port", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void DeviceNmsSnmpConfig::clear_port() {
+  port_ = 0u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 DeviceNmsSnmpConfig::_internal_port() const {
+  return port_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 DeviceNmsSnmpConfig::port() const {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.DeviceNmsSnmpConfig.port)
+  return _internal_port();
+}
+inline void DeviceNmsSnmpConfig::_internal_set_port(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  
+  port_ = value;
+}
+inline void DeviceNmsSnmpConfig::set_port(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_port(value);
+  // @@protoc_insertion_point(field_set:kentik.device.v202308beta1.DeviceNmsSnmpConfig.port)
+}
+
+// .google.protobuf.Duration timeout = 3[json_name = "timeout", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool DeviceNmsSnmpConfig::_internal_has_timeout() const {
+  return this != internal_default_instance() && timeout_ != nullptr;
+}
+inline bool DeviceNmsSnmpConfig::has_timeout() const {
+  return _internal_has_timeout();
+}
+inline const PROTOBUF_NAMESPACE_ID::Duration& DeviceNmsSnmpConfig::_internal_timeout() const {
+  const PROTOBUF_NAMESPACE_ID::Duration* p = timeout_;
+  return p != nullptr ? *p : *reinterpret_cast<const PROTOBUF_NAMESPACE_ID::Duration*>(
+      &PROTOBUF_NAMESPACE_ID::_Duration_default_instance_);
+}
+inline const PROTOBUF_NAMESPACE_ID::Duration& DeviceNmsSnmpConfig::timeout() const {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.DeviceNmsSnmpConfig.timeout)
+  return _internal_timeout();
+}
+inline void DeviceNmsSnmpConfig::unsafe_arena_set_allocated_timeout(
+    PROTOBUF_NAMESPACE_ID::Duration* timeout) {
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(timeout_);
+  }
+  timeout_ = timeout;
+  if (timeout) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.device.v202308beta1.DeviceNmsSnmpConfig.timeout)
+}
+inline PROTOBUF_NAMESPACE_ID::Duration* DeviceNmsSnmpConfig::release_timeout() {
+  auto temp = unsafe_arena_release_timeout();
+  if (GetArena() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+  return temp;
+}
+inline PROTOBUF_NAMESPACE_ID::Duration* DeviceNmsSnmpConfig::unsafe_arena_release_timeout() {
+  // @@protoc_insertion_point(field_release:kentik.device.v202308beta1.DeviceNmsSnmpConfig.timeout)
+  
+  PROTOBUF_NAMESPACE_ID::Duration* temp = timeout_;
+  timeout_ = nullptr;
+  return temp;
+}
+inline PROTOBUF_NAMESPACE_ID::Duration* DeviceNmsSnmpConfig::_internal_mutable_timeout() {
+  
+  if (timeout_ == nullptr) {
+    auto* p = CreateMaybeMessage<PROTOBUF_NAMESPACE_ID::Duration>(GetArena());
+    timeout_ = p;
+  }
+  return timeout_;
+}
+inline PROTOBUF_NAMESPACE_ID::Duration* DeviceNmsSnmpConfig::mutable_timeout() {
+  // @@protoc_insertion_point(field_mutable:kentik.device.v202308beta1.DeviceNmsSnmpConfig.timeout)
+  return _internal_mutable_timeout();
+}
+inline void DeviceNmsSnmpConfig::set_allocated_timeout(PROTOBUF_NAMESPACE_ID::Duration* timeout) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(timeout_);
+  }
+  if (timeout) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(timeout)->GetArena();
+    if (message_arena != submessage_arena) {
+      timeout = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, timeout, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  timeout_ = timeout;
+  // @@protoc_insertion_point(field_set_allocated:kentik.device.v202308beta1.DeviceNmsSnmpConfig.timeout)
+}
+
+// -------------------------------------------------------------------
+
+// DeviceNmsStConfig
+
+// string credential_name = 1[json_name = "credentialName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void DeviceNmsStConfig::clear_credential_name() {
+  credential_name_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline const std::string& DeviceNmsStConfig::credential_name() const {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.DeviceNmsStConfig.credential_name)
+  return _internal_credential_name();
+}
+inline void DeviceNmsStConfig::set_credential_name(const std::string& value) {
+  _internal_set_credential_name(value);
+  // @@protoc_insertion_point(field_set:kentik.device.v202308beta1.DeviceNmsStConfig.credential_name)
+}
+inline std::string* DeviceNmsStConfig::mutable_credential_name() {
+  // @@protoc_insertion_point(field_mutable:kentik.device.v202308beta1.DeviceNmsStConfig.credential_name)
+  return _internal_mutable_credential_name();
+}
+inline const std::string& DeviceNmsStConfig::_internal_credential_name() const {
+  return credential_name_.Get();
+}
+inline void DeviceNmsStConfig::_internal_set_credential_name(const std::string& value) {
+  
+  credential_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void DeviceNmsStConfig::set_credential_name(std::string&& value) {
+  
+  credential_name_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:kentik.device.v202308beta1.DeviceNmsStConfig.credential_name)
+}
+inline void DeviceNmsStConfig::set_credential_name(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  credential_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:kentik.device.v202308beta1.DeviceNmsStConfig.credential_name)
+}
+inline void DeviceNmsStConfig::set_credential_name(const char* value,
+    size_t size) {
+  
+  credential_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:kentik.device.v202308beta1.DeviceNmsStConfig.credential_name)
+}
+inline std::string* DeviceNmsStConfig::_internal_mutable_credential_name() {
+  
+  return credential_name_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* DeviceNmsStConfig::release_credential_name() {
+  // @@protoc_insertion_point(field_release:kentik.device.v202308beta1.DeviceNmsStConfig.credential_name)
+  return credential_name_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void DeviceNmsStConfig::set_allocated_credential_name(std::string* credential_name) {
+  if (credential_name != nullptr) {
+    
+  } else {
+    
+  }
+  credential_name_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), credential_name,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:kentik.device.v202308beta1.DeviceNmsStConfig.credential_name)
+}
+inline std::string* DeviceNmsStConfig::unsafe_arena_release_credential_name() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:kentik.device.v202308beta1.DeviceNmsStConfig.credential_name)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  
+  return credential_name_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void DeviceNmsStConfig::unsafe_arena_set_allocated_credential_name(
+    std::string* credential_name) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (credential_name != nullptr) {
+    
+  } else {
+    
+  }
+  credential_name_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      credential_name, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.device.v202308beta1.DeviceNmsStConfig.credential_name)
+}
+
+// uint32 port = 2[json_name = "port", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void DeviceNmsStConfig::clear_port() {
+  port_ = 0u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 DeviceNmsStConfig::_internal_port() const {
+  return port_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 DeviceNmsStConfig::port() const {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.DeviceNmsStConfig.port)
+  return _internal_port();
+}
+inline void DeviceNmsStConfig::_internal_set_port(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  
+  port_ = value;
+}
+inline void DeviceNmsStConfig::set_port(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_port(value);
+  // @@protoc_insertion_point(field_set:kentik.device.v202308beta1.DeviceNmsStConfig.port)
+}
+
+// .google.protobuf.Duration timeout = 3[json_name = "timeout", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool DeviceNmsStConfig::_internal_has_timeout() const {
+  return this != internal_default_instance() && timeout_ != nullptr;
+}
+inline bool DeviceNmsStConfig::has_timeout() const {
+  return _internal_has_timeout();
+}
+inline const PROTOBUF_NAMESPACE_ID::Duration& DeviceNmsStConfig::_internal_timeout() const {
+  const PROTOBUF_NAMESPACE_ID::Duration* p = timeout_;
+  return p != nullptr ? *p : *reinterpret_cast<const PROTOBUF_NAMESPACE_ID::Duration*>(
+      &PROTOBUF_NAMESPACE_ID::_Duration_default_instance_);
+}
+inline const PROTOBUF_NAMESPACE_ID::Duration& DeviceNmsStConfig::timeout() const {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.DeviceNmsStConfig.timeout)
+  return _internal_timeout();
+}
+inline void DeviceNmsStConfig::unsafe_arena_set_allocated_timeout(
+    PROTOBUF_NAMESPACE_ID::Duration* timeout) {
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(timeout_);
+  }
+  timeout_ = timeout;
+  if (timeout) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.device.v202308beta1.DeviceNmsStConfig.timeout)
+}
+inline PROTOBUF_NAMESPACE_ID::Duration* DeviceNmsStConfig::release_timeout() {
+  auto temp = unsafe_arena_release_timeout();
+  if (GetArena() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+  return temp;
+}
+inline PROTOBUF_NAMESPACE_ID::Duration* DeviceNmsStConfig::unsafe_arena_release_timeout() {
+  // @@protoc_insertion_point(field_release:kentik.device.v202308beta1.DeviceNmsStConfig.timeout)
+  
+  PROTOBUF_NAMESPACE_ID::Duration* temp = timeout_;
+  timeout_ = nullptr;
+  return temp;
+}
+inline PROTOBUF_NAMESPACE_ID::Duration* DeviceNmsStConfig::_internal_mutable_timeout() {
+  
+  if (timeout_ == nullptr) {
+    auto* p = CreateMaybeMessage<PROTOBUF_NAMESPACE_ID::Duration>(GetArena());
+    timeout_ = p;
+  }
+  return timeout_;
+}
+inline PROTOBUF_NAMESPACE_ID::Duration* DeviceNmsStConfig::mutable_timeout() {
+  // @@protoc_insertion_point(field_mutable:kentik.device.v202308beta1.DeviceNmsStConfig.timeout)
+  return _internal_mutable_timeout();
+}
+inline void DeviceNmsStConfig::set_allocated_timeout(PROTOBUF_NAMESPACE_ID::Duration* timeout) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(timeout_);
+  }
+  if (timeout) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(timeout)->GetArena();
+    if (message_arena != submessage_arena) {
+      timeout = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, timeout, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  timeout_ = timeout;
+  // @@protoc_insertion_point(field_set_allocated:kentik.device.v202308beta1.DeviceNmsStConfig.timeout)
+}
+
+// bool secure = 4[json_name = "secure", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void DeviceNmsStConfig::clear_secure() {
+  secure_ = false;
+}
+inline bool DeviceNmsStConfig::_internal_secure() const {
+  return secure_;
+}
+inline bool DeviceNmsStConfig::secure() const {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.DeviceNmsStConfig.secure)
+  return _internal_secure();
+}
+inline void DeviceNmsStConfig::_internal_set_secure(bool value) {
+  
+  secure_ = value;
+}
+inline void DeviceNmsStConfig::set_secure(bool value) {
+  _internal_set_secure(value);
+  // @@protoc_insertion_point(field_set:kentik.device.v202308beta1.DeviceNmsStConfig.secure)
 }
 
 // -------------------------------------------------------------------
@@ -7970,8 +9340,16 @@ inline void DeviceConcise::set_site_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
 }
 
 // bool minimize_snmp = 10[json_name = "minimizeSnmp", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool DeviceConcise::_internal_has_minimize_snmp() const {
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool DeviceConcise::has_minimize_snmp() const {
+  return _internal_has_minimize_snmp();
+}
 inline void DeviceConcise::clear_minimize_snmp() {
   minimize_snmp_ = false;
+  _has_bits_[0] &= ~0x00000001u;
 }
 inline bool DeviceConcise::_internal_minimize_snmp() const {
   return minimize_snmp_;
@@ -7981,7 +9359,7 @@ inline bool DeviceConcise::minimize_snmp() const {
   return _internal_minimize_snmp();
 }
 inline void DeviceConcise::_internal_set_minimize_snmp(bool value) {
-  
+  _has_bits_[0] |= 0x00000001u;
   minimize_snmp_ = value;
 }
 inline void DeviceConcise::set_minimize_snmp(bool value) {
@@ -8675,6 +10053,87 @@ inline void DeviceConcise::_internal_set_device_bgp_flowspec(bool value) {
 inline void DeviceConcise::set_device_bgp_flowspec(bool value) {
   _internal_set_device_bgp_flowspec(value);
   // @@protoc_insertion_point(field_set:kentik.device.v202308beta1.DeviceConcise.device_bgp_flowspec)
+}
+
+// .kentik.device.v202308beta1.DeviceNmsConfig nms = 21[json_name = "nms", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool DeviceConcise::_internal_has_nms() const {
+  return this != internal_default_instance() && nms_ != nullptr;
+}
+inline bool DeviceConcise::has_nms() const {
+  return _internal_has_nms();
+}
+inline void DeviceConcise::clear_nms() {
+  if (GetArena() == nullptr && nms_ != nullptr) {
+    delete nms_;
+  }
+  nms_ = nullptr;
+}
+inline const ::kentik::device::v202308beta1::DeviceNmsConfig& DeviceConcise::_internal_nms() const {
+  const ::kentik::device::v202308beta1::DeviceNmsConfig* p = nms_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::kentik::device::v202308beta1::DeviceNmsConfig*>(
+      &::kentik::device::v202308beta1::_DeviceNmsConfig_default_instance_);
+}
+inline const ::kentik::device::v202308beta1::DeviceNmsConfig& DeviceConcise::nms() const {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.DeviceConcise.nms)
+  return _internal_nms();
+}
+inline void DeviceConcise::unsafe_arena_set_allocated_nms(
+    ::kentik::device::v202308beta1::DeviceNmsConfig* nms) {
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(nms_);
+  }
+  nms_ = nms;
+  if (nms) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.device.v202308beta1.DeviceConcise.nms)
+}
+inline ::kentik::device::v202308beta1::DeviceNmsConfig* DeviceConcise::release_nms() {
+  auto temp = unsafe_arena_release_nms();
+  if (GetArena() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+  return temp;
+}
+inline ::kentik::device::v202308beta1::DeviceNmsConfig* DeviceConcise::unsafe_arena_release_nms() {
+  // @@protoc_insertion_point(field_release:kentik.device.v202308beta1.DeviceConcise.nms)
+  
+  ::kentik::device::v202308beta1::DeviceNmsConfig* temp = nms_;
+  nms_ = nullptr;
+  return temp;
+}
+inline ::kentik::device::v202308beta1::DeviceNmsConfig* DeviceConcise::_internal_mutable_nms() {
+  
+  if (nms_ == nullptr) {
+    auto* p = CreateMaybeMessage<::kentik::device::v202308beta1::DeviceNmsConfig>(GetArena());
+    nms_ = p;
+  }
+  return nms_;
+}
+inline ::kentik::device::v202308beta1::DeviceNmsConfig* DeviceConcise::mutable_nms() {
+  // @@protoc_insertion_point(field_mutable:kentik.device.v202308beta1.DeviceConcise.nms)
+  return _internal_mutable_nms();
+}
+inline void DeviceConcise::set_allocated_nms(::kentik::device::v202308beta1::DeviceNmsConfig* nms) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
+  if (message_arena == nullptr) {
+    delete nms_;
+  }
+  if (nms) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::GetArena(nms);
+    if (message_arena != submessage_arena) {
+      nms = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, nms, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  nms_ = nms;
+  // @@protoc_insertion_point(field_set_allocated:kentik.device.v202308beta1.DeviceConcise.nms)
 }
 
 // -------------------------------------------------------------------
@@ -12450,8 +13909,16 @@ inline void DeviceDetailed::unsafe_arena_set_allocated_device_snmp_community(
 }
 
 // bool minimize_snmp = 16[json_name = "minimizeSnmp", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool DeviceDetailed::_internal_has_minimize_snmp() const {
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool DeviceDetailed::has_minimize_snmp() const {
+  return _internal_has_minimize_snmp();
+}
 inline void DeviceDetailed::clear_minimize_snmp() {
   minimize_snmp_ = false;
+  _has_bits_[0] &= ~0x00000001u;
 }
 inline bool DeviceDetailed::_internal_minimize_snmp() const {
   return minimize_snmp_;
@@ -12461,7 +13928,7 @@ inline bool DeviceDetailed::minimize_snmp() const {
   return _internal_minimize_snmp();
 }
 inline void DeviceDetailed::_internal_set_minimize_snmp(bool value) {
-  
+  _has_bits_[0] |= 0x00000001u;
   minimize_snmp_ = value;
 }
 inline void DeviceDetailed::set_minimize_snmp(bool value) {
@@ -15491,6 +16958,87 @@ inline void DeviceDetailed::set_max_interface_check(::PROTOBUF_NAMESPACE_ID::uin
   // @@protoc_insertion_point(field_set:kentik.device.v202308beta1.DeviceDetailed.max_interface_check)
 }
 
+// .kentik.device.v202308beta1.DeviceNmsConfig nms = 61[json_name = "nms", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool DeviceDetailed::_internal_has_nms() const {
+  return this != internal_default_instance() && nms_ != nullptr;
+}
+inline bool DeviceDetailed::has_nms() const {
+  return _internal_has_nms();
+}
+inline void DeviceDetailed::clear_nms() {
+  if (GetArena() == nullptr && nms_ != nullptr) {
+    delete nms_;
+  }
+  nms_ = nullptr;
+}
+inline const ::kentik::device::v202308beta1::DeviceNmsConfig& DeviceDetailed::_internal_nms() const {
+  const ::kentik::device::v202308beta1::DeviceNmsConfig* p = nms_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::kentik::device::v202308beta1::DeviceNmsConfig*>(
+      &::kentik::device::v202308beta1::_DeviceNmsConfig_default_instance_);
+}
+inline const ::kentik::device::v202308beta1::DeviceNmsConfig& DeviceDetailed::nms() const {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.DeviceDetailed.nms)
+  return _internal_nms();
+}
+inline void DeviceDetailed::unsafe_arena_set_allocated_nms(
+    ::kentik::device::v202308beta1::DeviceNmsConfig* nms) {
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(nms_);
+  }
+  nms_ = nms;
+  if (nms) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.device.v202308beta1.DeviceDetailed.nms)
+}
+inline ::kentik::device::v202308beta1::DeviceNmsConfig* DeviceDetailed::release_nms() {
+  auto temp = unsafe_arena_release_nms();
+  if (GetArena() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+  return temp;
+}
+inline ::kentik::device::v202308beta1::DeviceNmsConfig* DeviceDetailed::unsafe_arena_release_nms() {
+  // @@protoc_insertion_point(field_release:kentik.device.v202308beta1.DeviceDetailed.nms)
+  
+  ::kentik::device::v202308beta1::DeviceNmsConfig* temp = nms_;
+  nms_ = nullptr;
+  return temp;
+}
+inline ::kentik::device::v202308beta1::DeviceNmsConfig* DeviceDetailed::_internal_mutable_nms() {
+  
+  if (nms_ == nullptr) {
+    auto* p = CreateMaybeMessage<::kentik::device::v202308beta1::DeviceNmsConfig>(GetArena());
+    nms_ = p;
+  }
+  return nms_;
+}
+inline ::kentik::device::v202308beta1::DeviceNmsConfig* DeviceDetailed::mutable_nms() {
+  // @@protoc_insertion_point(field_mutable:kentik.device.v202308beta1.DeviceDetailed.nms)
+  return _internal_mutable_nms();
+}
+inline void DeviceDetailed::set_allocated_nms(::kentik::device::v202308beta1::DeviceNmsConfig* nms) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
+  if (message_arena == nullptr) {
+    delete nms_;
+  }
+  if (nms) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::GetArena(nms);
+    if (message_arena != submessage_arena) {
+      nms = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, nms, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  nms_ = nms;
+  // @@protoc_insertion_point(field_set_allocated:kentik.device.v202308beta1.DeviceDetailed.nms)
+}
+
 // -------------------------------------------------------------------
 
 // LabelConcise
@@ -16869,6 +18417,12 @@ DeleteDevicesResponse::mutable_failed_devices() {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
