@@ -18,6 +18,7 @@ extern PROTOBUF_INTERNAL_EXPORT_google_2fprotobuf_2ftimestamp_2eproto ::PROTOBUF
 extern PROTOBUF_INTERNAL_EXPORT_kentik_2fcore_2fv202303_2fuser_5finfo_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_UserInfo_kentik_2fcore_2fv202303_2fuser_5finfo_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ActivationSettings_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_Agent_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_AgentAlert_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_AgentMetadata_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_AgentMetadata_IpValue_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_AgentResults_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto;
@@ -313,6 +314,50 @@ class SetTestStatusResponseDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<SetTestStatusResponse> _instance;
 } _SetTestStatusResponse_default_instance_;
+class AgentAlertDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<AgentAlert> _instance;
+} _AgentAlert_default_instance_;
+class CreateAgentAlertRequestDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<CreateAgentAlertRequest> _instance;
+} _CreateAgentAlertRequest_default_instance_;
+class CreateAgentAlertResponseDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<CreateAgentAlertResponse> _instance;
+} _CreateAgentAlertResponse_default_instance_;
+class UpdateAgentAlertRequestDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<UpdateAgentAlertRequest> _instance;
+} _UpdateAgentAlertRequest_default_instance_;
+class UpdateAgentAlertResponseDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<UpdateAgentAlertResponse> _instance;
+} _UpdateAgentAlertResponse_default_instance_;
+class GetAgentAlertRequestDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<GetAgentAlertRequest> _instance;
+} _GetAgentAlertRequest_default_instance_;
+class GetAgentAlertResponseDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<GetAgentAlertResponse> _instance;
+} _GetAgentAlertResponse_default_instance_;
+class ListAgentAlertsRequestDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ListAgentAlertsRequest> _instance;
+} _ListAgentAlertsRequest_default_instance_;
+class ListAgentAlertsResponseDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ListAgentAlertsResponse> _instance;
+} _ListAgentAlertsResponse_default_instance_;
+class DeleteAgentAlertRequestDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<DeleteAgentAlertRequest> _instance;
+} _DeleteAgentAlertRequest_default_instance_;
+class DeleteAgentAlertResponseDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<DeleteAgentAlertResponse> _instance;
+} _DeleteAgentAlertResponse_default_instance_;
 }  // namespace v202309
 }  // namespace synthetics
 }  // namespace kentik
@@ -345,6 +390,20 @@ static void InitDefaultsscc_info_Agent_kentik_2fsynthetics_2fv202309_2fsynthetic
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_Agent_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto}, {
       &scc_info_Timestamp_google_2fprotobuf_2ftimestamp_2eproto.base,
       &scc_info_AgentMetadata_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,}};
+
+static void InitDefaultsscc_info_AgentAlert_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::kentik::synthetics::v202309::_AgentAlert_default_instance_;
+    new (ptr) ::kentik::synthetics::v202309::AgentAlert();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::kentik::synthetics::v202309::AgentAlert::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_AgentAlert_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_AgentAlert_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto}, {}};
 
 static void InitDefaultsscc_info_AgentMetadata_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -403,6 +462,35 @@ static void InitDefaultsscc_info_AgentTest_kentik_2fsynthetics_2fv202309_2fsynth
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_AgentTest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_AgentTest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto}, {}};
+
+static void InitDefaultsscc_info_CreateAgentAlertRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::kentik::synthetics::v202309::_CreateAgentAlertRequest_default_instance_;
+    new (ptr) ::kentik::synthetics::v202309::CreateAgentAlertRequest();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::kentik::synthetics::v202309::CreateAgentAlertRequest::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_CreateAgentAlertRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_CreateAgentAlertRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto}, {}};
+
+static void InitDefaultsscc_info_CreateAgentAlertResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::kentik::synthetics::v202309::_CreateAgentAlertResponse_default_instance_;
+    new (ptr) ::kentik::synthetics::v202309::CreateAgentAlertResponse();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::kentik::synthetics::v202309::CreateAgentAlertResponse::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_CreateAgentAlertResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_CreateAgentAlertResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto}, {
+      &scc_info_AgentAlert_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,}};
 
 static void InitDefaultsscc_info_CreateTestRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -463,6 +551,34 @@ static void InitDefaultsscc_info_DNSResults_kentik_2fsynthetics_2fv202309_2fsynt
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_DNSResults_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto}, {
       &scc_info_MetricData_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
       &scc_info_DNSResponseData_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,}};
+
+static void InitDefaultsscc_info_DeleteAgentAlertRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::kentik::synthetics::v202309::_DeleteAgentAlertRequest_default_instance_;
+    new (ptr) ::kentik::synthetics::v202309::DeleteAgentAlertRequest();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::kentik::synthetics::v202309::DeleteAgentAlertRequest::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_DeleteAgentAlertRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_DeleteAgentAlertRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto}, {}};
+
+static void InitDefaultsscc_info_DeleteAgentAlertResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::kentik::synthetics::v202309::_DeleteAgentAlertResponse_default_instance_;
+    new (ptr) ::kentik::synthetics::v202309::DeleteAgentAlertResponse();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::kentik::synthetics::v202309::DeleteAgentAlertResponse::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_DeleteAgentAlertResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_DeleteAgentAlertResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto}, {}};
 
 static void InitDefaultsscc_info_DeleteAgentRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -547,6 +663,35 @@ static void InitDefaultsscc_info_FlowTest_kentik_2fsynthetics_2fv202309_2fsynthe
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_FlowTest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_FlowTest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto}, {}};
+
+static void InitDefaultsscc_info_GetAgentAlertRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::kentik::synthetics::v202309::_GetAgentAlertRequest_default_instance_;
+    new (ptr) ::kentik::synthetics::v202309::GetAgentAlertRequest();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::kentik::synthetics::v202309::GetAgentAlertRequest::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_GetAgentAlertRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_GetAgentAlertRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto}, {}};
+
+static void InitDefaultsscc_info_GetAgentAlertResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::kentik::synthetics::v202309::_GetAgentAlertResponse_default_instance_;
+    new (ptr) ::kentik::synthetics::v202309::GetAgentAlertResponse();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::kentik::synthetics::v202309::GetAgentAlertResponse::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_GetAgentAlertResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_GetAgentAlertResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto}, {
+      &scc_info_AgentAlert_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,}};
 
 static void InitDefaultsscc_info_GetAgentRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -753,6 +898,35 @@ static void InitDefaultsscc_info_IpTest_kentik_2fsynthetics_2fv202309_2fsyntheti
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_IpTest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_IpTest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto}, {}};
+
+static void InitDefaultsscc_info_ListAgentAlertsRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::kentik::synthetics::v202309::_ListAgentAlertsRequest_default_instance_;
+    new (ptr) ::kentik::synthetics::v202309::ListAgentAlertsRequest();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::kentik::synthetics::v202309::ListAgentAlertsRequest::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ListAgentAlertsRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_ListAgentAlertsRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto}, {}};
+
+static void InitDefaultsscc_info_ListAgentAlertsResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::kentik::synthetics::v202309::_ListAgentAlertsResponse_default_instance_;
+    new (ptr) ::kentik::synthetics::v202309::ListAgentAlertsResponse();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::kentik::synthetics::v202309::ListAgentAlertsResponse::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ListAgentAlertsResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ListAgentAlertsResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto}, {
+      &scc_info_AgentAlert_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,}};
 
 static void InitDefaultsscc_info_ListAgentsRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -1132,6 +1306,35 @@ static void InitDefaultsscc_info_TraceHop_kentik_2fsynthetics_2fv202309_2fsynthe
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_TraceHop_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_TraceHop_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto}, {}};
 
+static void InitDefaultsscc_info_UpdateAgentAlertRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::kentik::synthetics::v202309::_UpdateAgentAlertRequest_default_instance_;
+    new (ptr) ::kentik::synthetics::v202309::UpdateAgentAlertRequest();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::kentik::synthetics::v202309::UpdateAgentAlertRequest::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_UpdateAgentAlertRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_UpdateAgentAlertRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto}, {}};
+
+static void InitDefaultsscc_info_UpdateAgentAlertResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::kentik::synthetics::v202309::_UpdateAgentAlertResponse_default_instance_;
+    new (ptr) ::kentik::synthetics::v202309::UpdateAgentAlertResponse();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::kentik::synthetics::v202309::UpdateAgentAlertResponse::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_UpdateAgentAlertResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_UpdateAgentAlertResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto}, {
+      &scc_info_AgentAlert_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,}};
+
 static void InitDefaultsscc_info_UpdateAgentRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -1220,7 +1423,7 @@ static void InitDefaultsscc_info_UrlTest_HeadersEntry_DoNotUse_kentik_2fsyntheti
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_UrlTest_HeadersEntry_DoNotUse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_UrlTest_HeadersEntry_DoNotUse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto}, {}};
 
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto[61];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto[72];
 static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto[5];
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto = nullptr;
 
@@ -1772,6 +1975,79 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_kentik_2fsynthetics_2fv202309_
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::AgentAlert, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::AgentAlert, id_),
+  PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::AgentAlert, threshold_seconds_),
+  PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::AgentAlert, notification_channel_ids_),
+  PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::AgentAlert, agent_id_),
+  PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::AgentAlert, agent_name_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::CreateAgentAlertRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::CreateAgentAlertRequest, threshold_seconds_),
+  PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::CreateAgentAlertRequest, notification_channel_ids_),
+  PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::CreateAgentAlertRequest, agent_id_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::CreateAgentAlertResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::CreateAgentAlertResponse, agent_alert_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::UpdateAgentAlertRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::UpdateAgentAlertRequest, id_),
+  PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::UpdateAgentAlertRequest, threshold_seconds_),
+  PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::UpdateAgentAlertRequest, notification_channel_ids_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::UpdateAgentAlertResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::UpdateAgentAlertResponse, agent_alert_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::GetAgentAlertRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::GetAgentAlertRequest, id_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::GetAgentAlertResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::GetAgentAlertResponse, agent_alert_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::ListAgentAlertsRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::ListAgentAlertsRequest, agent_ids_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::ListAgentAlertsResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::ListAgentAlertsResponse, agent_alerts_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::DeleteAgentAlertRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::DeleteAgentAlertRequest, id_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::DeleteAgentAlertResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::kentik::synthetics::v202309::Agent)},
@@ -1835,6 +2111,17 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 530, -1, sizeof(::kentik::synthetics::v202309::DeleteTestResponse)},
   { 535, -1, sizeof(::kentik::synthetics::v202309::SetTestStatusRequest)},
   { 542, -1, sizeof(::kentik::synthetics::v202309::SetTestStatusResponse)},
+  { 547, -1, sizeof(::kentik::synthetics::v202309::AgentAlert)},
+  { 557, -1, sizeof(::kentik::synthetics::v202309::CreateAgentAlertRequest)},
+  { 565, -1, sizeof(::kentik::synthetics::v202309::CreateAgentAlertResponse)},
+  { 571, -1, sizeof(::kentik::synthetics::v202309::UpdateAgentAlertRequest)},
+  { 579, -1, sizeof(::kentik::synthetics::v202309::UpdateAgentAlertResponse)},
+  { 585, -1, sizeof(::kentik::synthetics::v202309::GetAgentAlertRequest)},
+  { 591, -1, sizeof(::kentik::synthetics::v202309::GetAgentAlertResponse)},
+  { 597, -1, sizeof(::kentik::synthetics::v202309::ListAgentAlertsRequest)},
+  { 603, -1, sizeof(::kentik::synthetics::v202309::ListAgentAlertsResponse)},
+  { 609, -1, sizeof(::kentik::synthetics::v202309::DeleteAgentAlertRequest)},
+  { 615, -1, sizeof(::kentik::synthetics::v202309::DeleteAgentAlertResponse)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -1899,6 +2186,17 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::synthetics::v202309::_DeleteTestResponse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::synthetics::v202309::_SetTestStatusRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::synthetics::v202309::_SetTestStatusResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::synthetics::v202309::_AgentAlert_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::synthetics::v202309::_CreateAgentAlertRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::synthetics::v202309::_CreateAgentAlertResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::synthetics::v202309::_UpdateAgentAlertRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::synthetics::v202309::_UpdateAgentAlertResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::synthetics::v202309::_GetAgentAlertRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::synthetics::v202309::_GetAgentAlertResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::synthetics::v202309::_ListAgentAlertsRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::synthetics::v202309::_ListAgentAlertsResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::synthetics::v202309::_DeleteAgentAlertRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::synthetics::v202309::_DeleteAgentAlertResponse_default_instance_),
 };
 
 const char descriptor_table_protodef_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -2465,329 +2763,399 @@ const char descriptor_table_protodef_kentik_2fsynthetics_2fv202309_2fsynthetics_
   "which status is to be modified\342A\001\002R\002id\022Z"
   "\n\006status\030\002 \001(\0162%.kentik.synthetics.v2023"
   "09.TestStatusB\033\222A\0242\022Target test status\342A"
-  "\001\002R\006status\"\027\n\025SetTestStatusResponse*}\n\rI"
-  "mplementType\022\036\n\032IMPLEMENT_TYPE_UNSPECIFI"
-  "ED\020\000\022\027\n\023IMPLEMENT_TYPE_RUST\020\001\022\027\n\023IMPLEME"
-  "NT_TYPE_NODE\020\002\022\032\n\026IMPLEMENT_TYPE_NETWORK"
-  "\020\003*]\n\010IPFamily\022\031\n\025IP_FAMILY_UNSPECIFIED\020"
-  "\000\022\020\n\014IP_FAMILY_V4\020\001\022\020\n\014IP_FAMILY_V6\020\002\022\022\n"
-  "\016IP_FAMILY_DUAL\020\003*\213\001\n\nTestStatus\022\033\n\027TEST"
-  "_STATUS_UNSPECIFIED\020\000\022\026\n\022TEST_STATUS_ACT"
-  "IVE\020\001\022\026\n\022TEST_STATUS_PAUSED\020\002\022\027\n\023TEST_ST"
-  "ATUS_DELETED\020\003\022\027\n\023TEST_STATUS_PREVIEW\020\004*"
-  "q\n\013AgentStatus\022\034\n\030AGENT_STATUS_UNSPECIFI"
-  "ED\020\000\022\023\n\017AGENT_STATUS_OK\020\001\022\025\n\021AGENT_STATU"
-  "S_WAIT\020\002\022\030\n\024AGENT_STATUS_DELETED\020\003*\310\001\n\tD"
-  "NSRecord\022\032\n\026DNS_RECORD_UNSPECIFIED\020\000\022\020\n\014"
-  "DNS_RECORD_A\020\001\022\023\n\017DNS_RECORD_AAAA\020\002\022\024\n\020D"
-  "NS_RECORD_CNAME\020\003\022\024\n\020DNS_RECORD_DNAME\020\004\022"
-  "\021\n\rDNS_RECORD_NS\020\005\022\021\n\rDNS_RECORD_MX\020\006\022\022\n"
-  "\016DNS_RECORD_PTR\020\007\022\022\n\016DNS_RECORD_SOA\020\0102\312\005"
-  "\n\025SyntheticsDataService\022\263\002\n\022GetResultsFo"
-  "rTests\0224.kentik.synthetics.v202309.GetRe"
-  "sultsForTestsRequest\0325.kentik.synthetics"
-  ".v202309.GetResultsForTestsResponse\"\257\001\222A"
-  "s\022\025Get results for tests\032FReturns probe "
-  "results for a set of tests for specified"
-  " period of time.*\022GetResultsForTests\362\327\002\017"
-  "synthetics:read\202\323\344\223\002 \"\033/synthetics/v2023"
-  "09/results:\001*\022\320\002\n\017GetTraceForTest\0221.kent"
-  "ik.synthetics.v202309.GetTraceForTestReq"
-  "uest\0322.kentik.synthetics.v202309.GetTrac"
-  "eForTestResponse\"\325\001\222A\232\001\022!Get network tra"
-  "ce data for a test\032dGet network trace da"
-  "ta for a specific synthetic test. The te"
-  "st must have traceroute task configured."
-  "*\017GetTraceForTest\362\327\002\017synthetics:read\202\323\344\223"
-  "\002\036\"\031/synthetics/v202309/trace:\001*\032(\312A\023grp"
-  "c.api.kentik.com\352\327\002\nsynthetics\220\330\002\0032\312\030\n\026S"
-  "yntheticsAdminService\022\247\002\n\nListAgents\022,.k"
-  "entik.synthetics.v202309.ListAgentsReque"
-  "st\032-.kentik.synthetics.v202309.ListAgent"
-  "sResponse\"\273\001\222Ac\022\025List available agents\032>"
-  "Returns list of all synthetic agents ava"
-  "ilable in the account.*\nListAgents\362\327\002\025ad"
-  "min.synthetics:read\222\330\002\026synthetics.agent:"
-  ":read\202\323\344\223\002\034\022\032/synthetics/v202309/agents\022"
-  "\247\002\n\010GetAgent\022*.kentik.synthetics.v202309"
-  ".GetAgentRequest\032+.kentik.synthetics.v20"
-  "2309.GetAgentResponse\"\301\001\222Ad\022\036Get informa"
-  "tion about an agent\0328Returns information"
-  " about the requested synthetic agent.*\010G"
-  "etAgent\362\327\002\025admin.synthetics:read\222\330\002\026synt"
-  "hetics.agent::read\202\323\344\223\002!\022\037/synthetics/v2"
-  "02309/agents/{id}\022\263\002\n\013UpdateAgent\022-.kent"
-  "ik.synthetics.v202309.UpdateAgentRequest"
-  "\032..kentik.synthetics.v202309.UpdateAgent"
-  "Response\"\304\001\222A[\022 Update configuration of "
-  "an agent\032*Update configuration of a synt"
-  "hetic agent.*\013UpdateAgent\362\327\002\026admin.synth"
-  "etics:write\222\330\002\030synthetics.agent::update\202"
-  "\323\344\223\002*\032%/synthetics/v202309/agents/{agent"
-  ".id}:\001*\022\311\002\n\013DeleteAgent\022-.kentik.synthet"
-  "ics.v202309.DeleteAgentRequest\032..kentik."
-  "synthetics.v202309.DeleteAgentResponse\"\332"
-  "\001\222Az\022\017Delete an agent\032ZDeletes the reque"
-  "sted agent. The deleted agent is removed"
-  " from configuration of all tests.*\013Delet"
+  "\001\002R\006status\"\027\n\025SetTestStatusResponse\"\275\001\n\n"
+  "AgentAlert\022\016\n\002id\030\001 \001(\tR\002id\022+\n\021threshold_"
+  "seconds\030\002 \001(\rR\020thresholdSeconds\0228\n\030notif"
+  "ication_channel_ids\030\003 \003(\tR\026notificationC"
+  "hannelIds\022\031\n\010agent_id\030\004 \001(\tR\007agentId\022\035\n\n"
+  "agent_name\030\005 \001(\tR\tagentName\"\233\001\n\027CreateAg"
+  "entAlertRequest\022+\n\021threshold_seconds\030\001 \001"
+  "(\rR\020thresholdSeconds\0228\n\030notification_cha"
+  "nnel_ids\030\002 \003(\tR\026notificationChannelIds\022\031"
+  "\n\010agent_id\030\003 \001(\tR\007agentId\"b\n\030CreateAgent"
+  "AlertResponse\022F\n\013agent_alert\030\001 \001(\0132%.ken"
+  "tik.synthetics.v202309.AgentAlertR\nagent"
+  "Alert\"\220\001\n\027UpdateAgentAlertRequest\022\016\n\002id\030"
+  "\001 \001(\tR\002id\022+\n\021threshold_seconds\030\002 \001(\rR\020th"
+  "resholdSeconds\0228\n\030notification_channel_i"
+  "ds\030\003 \003(\tR\026notificationChannelIds\"b\n\030Upda"
+  "teAgentAlertResponse\022F\n\013agent_alert\030\001 \001("
+  "\0132%.kentik.synthetics.v202309.AgentAlert"
+  "R\nagentAlert\"&\n\024GetAgentAlertRequest\022\016\n\002"
+  "id\030\001 \001(\tR\002id\"_\n\025GetAgentAlertResponse\022F\n"
+  "\013agent_alert\030\001 \001(\0132%.kentik.synthetics.v"
+  "202309.AgentAlertR\nagentAlert\"5\n\026ListAge"
+  "ntAlertsRequest\022\033\n\tagent_ids\030\001 \003(\tR\010agen"
+  "tIds\"c\n\027ListAgentAlertsResponse\022H\n\014agent"
+  "_alerts\030\001 \003(\0132%.kentik.synthetics.v20230"
+  "9.AgentAlertR\013agentAlerts\")\n\027DeleteAgent"
+  "AlertRequest\022\016\n\002id\030\001 \001(\tR\002id\"\032\n\030DeleteAg"
+  "entAlertResponse*}\n\rImplementType\022\036\n\032IMP"
+  "LEMENT_TYPE_UNSPECIFIED\020\000\022\027\n\023IMPLEMENT_T"
+  "YPE_RUST\020\001\022\027\n\023IMPLEMENT_TYPE_NODE\020\002\022\032\n\026I"
+  "MPLEMENT_TYPE_NETWORK\020\003*]\n\010IPFamily\022\031\n\025I"
+  "P_FAMILY_UNSPECIFIED\020\000\022\020\n\014IP_FAMILY_V4\020\001"
+  "\022\020\n\014IP_FAMILY_V6\020\002\022\022\n\016IP_FAMILY_DUAL\020\003*\213"
+  "\001\n\nTestStatus\022\033\n\027TEST_STATUS_UNSPECIFIED"
+  "\020\000\022\026\n\022TEST_STATUS_ACTIVE\020\001\022\026\n\022TEST_STATU"
+  "S_PAUSED\020\002\022\027\n\023TEST_STATUS_DELETED\020\003\022\027\n\023T"
+  "EST_STATUS_PREVIEW\020\004*q\n\013AgentStatus\022\034\n\030A"
+  "GENT_STATUS_UNSPECIFIED\020\000\022\023\n\017AGENT_STATU"
+  "S_OK\020\001\022\025\n\021AGENT_STATUS_WAIT\020\002\022\030\n\024AGENT_S"
+  "TATUS_DELETED\020\003*\310\001\n\tDNSRecord\022\032\n\026DNS_REC"
+  "ORD_UNSPECIFIED\020\000\022\020\n\014DNS_RECORD_A\020\001\022\023\n\017D"
+  "NS_RECORD_AAAA\020\002\022\024\n\020DNS_RECORD_CNAME\020\003\022\024"
+  "\n\020DNS_RECORD_DNAME\020\004\022\021\n\rDNS_RECORD_NS\020\005\022"
+  "\021\n\rDNS_RECORD_MX\020\006\022\022\n\016DNS_RECORD_PTR\020\007\022\022"
+  "\n\016DNS_RECORD_SOA\020\0102\312\005\n\025SyntheticsDataSer"
+  "vice\022\263\002\n\022GetResultsForTests\0224.kentik.syn"
+  "thetics.v202309.GetResultsForTestsReques"
+  "t\0325.kentik.synthetics.v202309.GetResults"
+  "ForTestsResponse\"\257\001\222As\022\025Get results for "
+  "tests\032FReturns probe results for a set o"
+  "f tests for specified period of time.*\022G"
+  "etResultsForTests\362\327\002\017synthetics:read\202\323\344\223"
+  "\002 \"\033/synthetics/v202309/results:\001*\022\320\002\n\017G"
+  "etTraceForTest\0221.kentik.synthetics.v2023"
+  "09.GetTraceForTestRequest\0322.kentik.synth"
+  "etics.v202309.GetTraceForTestResponse\"\325\001"
+  "\222A\232\001\022!Get network trace data for a test\032"
+  "dGet network trace data for a specific s"
+  "ynthetic test. The test must have tracer"
+  "oute task configured.*\017GetTraceForTest\362\327"
+  "\002\017synthetics:read\202\323\344\223\002\036\"\031/synthetics/v20"
+  "2309/trace:\001*\032(\312A\023grpc.api.kentik.com\352\327\002"
+  "\nsynthetics\220\330\002\0032\206&\n\026SyntheticsAdminServi"
+  "ce\022\247\002\n\nListAgents\022,.kentik.synthetics.v2"
+  "02309.ListAgentsRequest\032-.kentik.synthet"
+  "ics.v202309.ListAgentsResponse\"\273\001\222Ac\022\025Li"
+  "st available agents\032>Returns list of all"
+  " synthetic agents available in the accou"
+  "nt.*\nListAgents\362\327\002\025admin.synthetics:read"
+  "\222\330\002\026synthetics.agent::read\202\323\344\223\002\034\022\032/synth"
+  "etics/v202309/agents\022\247\002\n\010GetAgent\022*.kent"
+  "ik.synthetics.v202309.GetAgentRequest\032+."
+  "kentik.synthetics.v202309.GetAgentRespon"
+  "se\"\301\001\222Ad\022\036Get information about an agent"
+  "\0328Returns information about the requeste"
+  "d synthetic agent.*\010GetAgent\362\327\002\025admin.sy"
+  "nthetics:read\222\330\002\026synthetics.agent::read\202"
+  "\323\344\223\002!\022\037/synthetics/v202309/agents/{id}\022\263"
+  "\002\n\013UpdateAgent\022-.kentik.synthetics.v2023"
+  "09.UpdateAgentRequest\032..kentik.synthetic"
+  "s.v202309.UpdateAgentResponse\"\304\001\222A[\022 Upd"
+  "ate configuration of an agent\032*Update co"
+  "nfiguration of a synthetic agent.*\013Updat"
   "eAgent\362\327\002\026admin.synthetics:write\222\330\002\030synt"
-  "hetics.agent::delete\202\323\344\223\002!*\037/synthetics/"
-  "v202309/agents/{id}\022\237\002\n\tListTests\022+.kent"
-  "ik.synthetics.v202309.ListTestsRequest\032,"
-  ".kentik.synthetics.v202309.ListTestsResp"
-  "onse\"\266\001\222A`\022\016List all tests\032CReturns a li"
-  "st of all configured active and paused s"
-  "ynthetic tests.*\tListTests\362\327\002\025admin.synt"
-  "hetics:read\222\330\002\025synthetics.test::read\202\323\344\223"
-  "\002\033\022\031/synthetics/v202309/tests\022\252\002\n\nCreate"
-  "Test\022,.kentik.synthetics.v202309.CreateT"
-  "estRequest\032-.kentik.synthetics.v202309.C"
-  "reateTestResponse\"\276\001\222Ab\022\rCreate a test\032E"
-  "Create synthetic test based on configura"
-  "tion provided in the request.*\nCreateTes"
-  "t\362\327\002\026admin.synthetics:write\222\330\002\027synthetic"
-  "s.test::create\202\323\344\223\002\036\"\031/synthetics/v20230"
-  "9/tests:\001*\022\251\002\n\007GetTest\022).kentik.syntheti"
-  "cs.v202309.GetTestRequest\032*.kentik.synth"
-  "etics.v202309.GetTestResponse\"\306\001\222Ak\022\034Get"
-  " information about a test\032BReturns confi"
-  "guration and status for the requested sy"
-  "nthetic test.*\007GetTest\362\327\002\025admin.syntheti"
-  "cs:read\222\330\002\025synthetics.test::read\202\323\344\223\002 \022\036"
-  "/synthetics/v202309/tests/{id}\022\252\002\n\nUpdat"
-  "eTest\022,.kentik.synthetics.v202309.Update"
-  "TestRequest\032-.kentik.synthetics.v202309."
-  "UpdateTestResponse\"\276\001\222AX\022\036Update configu"
-  "ration of a test\032*Updates configuration "
-  "of a synthetic test.*\nUpdateTest\362\327\002\026admi"
-  "n.synthetics:write\222\330\002\027synthetics.test::u"
-  "pdate\202\323\344\223\002(\032#/synthetics/v202309/tests/{"
-  "test.id}:\001*\022\314\002\n\nDeleteTest\022,.kentik.synt"
-  "hetics.v202309.DeleteTestRequest\032-.kenti"
-  "k.synthetics.v202309.DeleteTestResponse\""
-  "\340\001\222A\201\001\022\030Delete a synthetic test.\032YDelete"
-  "s the synthetics test. All accumulated r"
-  "esults for the test cease to be accessib"
-  "le.*\nDeleteTest\362\327\002\026admin.synthetics:writ"
-  "e\222\330\002\027synthetics.test::delete\202\323\344\223\002 *\036/syn"
-  "thetics/v202309/tests/{id}\022\262\002\n\rSetTestSt"
-  "atus\022/.kentik.synthetics.v202309.SetTest"
-  "StatusRequest\0320.kentik.synthetics.v20230"
-  "9.SetTestStatusResponse\"\275\001\222AU\022!Update st"
-  "atus of a synthetic test\032!Update status "
-  "of a synthetic test*\rSetTestStatus\362\327\002\026ad"
-  "min.synthetics:write\222\330\002\027synthetics.test:"
-  ":update\202\323\344\223\002*\032%/synthetics/v202309/tests"
-  "/{id}/status:\001*\032.\312A\023grpc.api.kentik.com\352"
-  "\327\002\020admin.synthetics\220\330\002\003B\341@ZOgithub.com/k"
-  "entik/api-schema-public/gen/go/kentik/sy"
-  "nthetics/v202309;synthetics\222A\214@\022\242>\n\031Synt"
-  "hetics Monitoring API\022\264=# Overview\nThe S"
-  "ynthetics Monitoring API provides progra"
-  "mmatic access to Kentik\'s [synthetic mon"
-  "itoring system](https://kb.kentik.com/v4"
-  "/Ma00.htm). The API consists of two endp"
-  "oints:\n| Endpoint | Purpose |\n|---------"
-  "--|---------|\n| SyntheticsAdminService |"
-  " CRUD operations for synthetic tests and"
-  " agents |\n| SyntheticsDataService  | Ret"
-  "rieval of synthetic test results and net"
-  "work traces |\n\nBoth REST endpoint and gR"
-  "PC RPCs are provided.\nNote: API version "
-  "v202309 is the same as v202202 except th"
-  "at the timestamps returned for synthetic"
-  " test results are closer to when the tes"
-  "t was actually run.\n### Known Limitation"
-  "s\nThe API currently does not support the"
-  " following [Synthetic Test Types](https:"
-  "//kb.kentik.com/v4/Ma00.htm#Ma00-Synthet"
-  "ic_Test_Types):\n* BGP Monitor tests, whi"
-  "ch are supported in a [separate API](htt"
-  "ps://github.com/kentik/api-schema-public"
-  "/blob/master/proto/kentik/bgp_monitoring"
-  "/v202205beta1/bgp_monitoring.proto)\n* Tr"
-  "ansaction tests.\n\n### Additional Public "
-  "Resources\nKentik community [Python](http"
-  "s://github.com/kentik/community_sdk_pyth"
-  "on) and [Go](https://github.com/kentik/c"
-  "ommunity_sdk_golang) SDKs provide langua"
-  "ge-specific support for using this and o"
-  "ther Kentik APIs. These SDKs can be also"
-  " used as example code for development. \n"
-  " A [Terraform provider](https://registry"
-  ".terraform.io/providers/kentik/kentik-sy"
-  "nthetics) is available for configuring t"
-  "ests and agents for Kentik synthetic mon"
-  "itoring.\n# Anatomy of a Synthetic Test\nE"
-  "ach `Test` consists of one or more tasks"
-  ". Tasks are executed by monitoring `Agen"
-  "ts` that send synthetic traffic (probes)"
-  " over the network. The API currently sup"
-  "ports following tasks:\n| Task name  | Pu"
-  "rpose |\n|------------|---------|\n| ping "
-  "      | Test basic address, and optional"
-  "ly TCP port reachability |\n| traceroute "
-  "(a.k.a. trace)| Discover unidirectional "
-  "network path |\n| http | Perform a simple"
-  " HTTP/HTTPS request |\n| page-load | Use "
-  "headless Chromium to execute an HTTP/HTT"
-  "PS request |\n| dns | Execute a DNS query"
-  "|\n\nThe set of tasks executed on behalf o"
-  "f a given test depends on the `type` of "
-  "that test. The following test types are "
-  "currently supported by the API:\n| API ty"
-  "pe | Portal (UI) equivalent | Tasks |\n|-"
-  "--------------|--------------|-------|\n|"
-  " ip | IP Address | ping, traceroute |\n| "
-  "hostname | Hostname | ping, traceroute |"
-  "\n| network_grid | Network Grid | ping, t"
-  "raceroute |\n| agent | Agent-to-Agent | p"
-  "ing, traceroute |\n| network_mesh | Netwo"
-  "rk Mesh | ping, traceroute |\n| flow | Au"
-  "tonomous Tests (5 variants) | ping, trac"
-  "eroute |\n| url | HTTP(S) or API | http, "
-  "ping (optional), traceroute (optional) |"
-  "\n| page_load | Page Load | page-load, pi"
-  "ng (optional), traceroute (optional) |\n|"
-  " dns | DNS Server Monitor | dns |\n| dns_"
-  "grid | DNS Server Grid | dns |\n\n***Note:"
-  "*** `ping` and `traceroute` tasks are al"
-  "ways run together (never one without the"
-  " other).\n\n# Test Attributes and Settings"
-  "\nThe attributes of the test object enabl"
-  "e configuration of test settings, access"
-  " to test metadata, and access to runtime"
-  " state information.\n### State and Metada"
-  "ta Attributes\n The following table lists"
-  " the metadata and state attributes:\n| At"
-  "tribute | Access | Purpose |\n|----------"
-  "-|--------|---------|\n| id | RO | System"
-  "-generated unique identifier of the test"
-  " |\n| name | RW | User specified name for"
-  " the test (need not be unique) |\n| type "
-  "| RO (after creation) | Type of the test"
-  " (set on creation; read-only thereafter)"
-  " |\n| status | RW | Life-cycle status of "
-  "the test |\n| cdate | RO | Creation times"
-  "tamp |\n| edate | RO | Last-modification "
-  "timestamp |\n| created_by | RO | Identity"
-  " of the user that created the test |\n| l"
-  "ast_updated_by | RO | Identity of the la"
-  "test user to modify the test |\n| labels "
-  "| RW | List of names of labels applied t"
-  "o the test |\n\nTest configuration is perf"
-  "ormed via the test\'s `settings` attribut"
-  "e. Some settings are common to all tests"
-  " while others are specific to tests of a"
-  " given type.\n### Common Test Settings\nTh"
-  "e following settings are used for tests "
-  "of all types:\n| Attribute | Purpose | Re"
-  "quired |\n|-----------|---------|--------"
-  "--|\n| agentIds  | IDs of agents to execu"
-  "te tasks for the test | YES |\n| period |"
-  " Test execution interval in seconds | NO"
-  " (default 60s) |\n| family | IP address f"
-  "amily. Used only for tests whose type is"
-  " url or dns. Selects which type of DNS r"
-  "esource is queried for resolving hostnam"
-  "e to target address | NO (default IP_FAM"
-  "ILY_DUAL) |\n| notificationChannels | Lis"
-  "t of notification channels for the test "
-  "| NO (default empty list) |\n| healthSett"
-  "ings | A HealthSettings object that conf"
-  "igures health settings for this test, wh"
-  "ich includes metric thresholds that defi"
-  "ne health status (warning and critical) "
-  "and trigger associated alarms. | YES |\n|"
-  " ping | A TestPingSettings object that c"
-  "onfigures the ping task of the test | NO"
-  " (default depends on test type) |\n| trac"
-  "e | A TestTraceSettings object that conf"
-  "igures the trace task of the test | NO ("
-  "default depends on test type) |\n| tasks "
-  "| List of names of the tasks that will b"
-  "e executed for this test | YES |\n\n### Ty"
-  "pe-specific Settings\nEach test type has "
-  "its own configuration object that repres"
-  "ents the settings for that type. These t"
-  "ype-specific objects are referenced by t"
-  "he attributes in `Test.settings`:\n| Test"
-  " type    | Settings attribute | Configur"
-  "ation object |\n|--------------|---------"
-  "----------------|-----------------------"
-  "----|\n| ip           | ip               "
-  "       | IpTest                    |\n| h"
-  "ostname     | hostname                | "
-  "HostnameTest              |\n| network_gr"
-  "id | networkGrid             | IpTest   "
-  "                 |\n| agent        | agen"
-  "t                   | AgentTest         "
-  "        |\n| network_mesh | networkMesh  "
-  "           | NetworkMeshTest           |"
-  "\n| flow         | flow                  "
-  "  | FlowTest                  |\n| url   "
-  "       | url                     | UrlTe"
-  "st                   |\n| page_load    | "
-  "pageLoad                | PageLoadTest  "
-  "            |\n| dns          | dns      "
-  "               | DnsTest                "
-  "   |\n| dns_grid     | dnsGrid           "
-  "      | DnsTest                   |\n\n# T"
-  "est Results\nResults of synthetic tests a"
-  "re returned as a sequence of `TestResult"
-  "s` objects. Each such object represents "
-  "measurements and health evaluation for a"
-  " single test at specific point in time. "
-  "Measurements and health evaluation are g"
-  "rouped by agent and by task.\nGranularity"
-  " of timestamps in test results depends o"
-  "n the frequency (period) of the test and"
-  " on the requested time range. The minimu"
-  "m granularity is 1 minute (even when per"
-  "iod < 1 minute). The longer the time ran"
-  "ge, the lower the granularity.\n# Network"
-  " Traces\nSynthetic tests that include the"
-  " `traceroute` task collect the unidirect"
-  "ional network path from the agent to the"
-  " target for each agent/target pair. The "
-  "trace data are returned in the `GetTrace"
-  "ForTestResponse` object. The `paths` att"
-  "ribute of this object contains the colle"
-  "cted network path for each agent/target "
-  "pair and the round-trip time (RTT) to ea"
-  "ch hop.\nHops in actual network traces ar"
-  "e identified by a `nodeId`. The mapping "
-  "of node IDs to address, name, location, "
-  "and other attributes of the hop is provi"
-  "ded in a map that is stored in the `node"
-  "s` attribute of the `GetTraceForTestResp"
-  "onse` object.\n# Agents\nThe Kentik synthe"
-  "tic monitoring system recognizes 2 types"
-  " of agents:\n* **Global** (public): Manag"
-  "ed by Kentik and available to every Kent"
-  "ik user. All information about global ag"
-  "ents in this API is read-only.\n* **Priva"
-  "te**: Deployed by each customer and avai"
-  "lable only to that customer.\nTo be visib"
-  "le in this API, a private agent must fir"
-  "st associate itself with a customer acco"
-  "unt by contacting the Kentik system (via"
-  " private API). Once the agent is associa"
-  "ted it can be authorized via the API by "
-  "changing its `status` to `AGENT_STATUS_O"
-  "K`. For more information about private a"
-  "gent deployment, see [**Synthetic Agent "
-  "Deployments**](https://kb.kentik.com/v4/"
-  "Ma01.htm#Ma01-Synthetic_Agent_Deployment"
-  "s).\n\"E\n\026Kentik API Engineering\022+https://"
-  "github.com/kentik/api-schema-public2\007v20"
-  "2309*\001\0022\020application/json:\020application/j"
-  "sonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n"
-  "\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005e"
-  "mail\022\000\n\t\n\005token\022\000r`\n\"Kentik synthetic mo"
-  "nitoring system\022:https://kb.kentik.com/v"
-  "4/Ma00.htm#Ma00-Synthetics_Overviewb\006pro"
-  "to3"
+  "hetics.agent::update\202\323\344\223\002*\032%/synthetics/"
+  "v202309/agents/{agent.id}:\001*\022\311\002\n\013DeleteA"
+  "gent\022-.kentik.synthetics.v202309.DeleteA"
+  "gentRequest\032..kentik.synthetics.v202309."
+  "DeleteAgentResponse\"\332\001\222Az\022\017Delete an age"
+  "nt\032ZDeletes the requested agent. The del"
+  "eted agent is removed from configuration"
+  " of all tests.*\013DeleteAgent\362\327\002\026admin.syn"
+  "thetics:write\222\330\002\030synthetics.agent::delet"
+  "e\202\323\344\223\002!*\037/synthetics/v202309/agents/{id}"
+  "\022\237\002\n\tListTests\022+.kentik.synthetics.v2023"
+  "09.ListTestsRequest\032,.kentik.synthetics."
+  "v202309.ListTestsResponse\"\266\001\222A`\022\016List al"
+  "l tests\032CReturns a list of all configure"
+  "d active and paused synthetic tests.*\tLi"
+  "stTests\362\327\002\025admin.synthetics:read\222\330\002\025synt"
+  "hetics.test::read\202\323\344\223\002\033\022\031/synthetics/v20"
+  "2309/tests\022\252\002\n\nCreateTest\022,.kentik.synth"
+  "etics.v202309.CreateTestRequest\032-.kentik"
+  ".synthetics.v202309.CreateTestResponse\"\276"
+  "\001\222Ab\022\rCreate a test\032ECreate synthetic te"
+  "st based on configuration provided in th"
+  "e request.*\nCreateTest\362\327\002\026admin.syntheti"
+  "cs:write\222\330\002\027synthetics.test::create\202\323\344\223\002"
+  "\036\"\031/synthetics/v202309/tests:\001*\022\251\002\n\007GetT"
+  "est\022).kentik.synthetics.v202309.GetTestR"
+  "equest\032*.kentik.synthetics.v202309.GetTe"
+  "stResponse\"\306\001\222Ak\022\034Get information about "
+  "a test\032BReturns configuration and status"
+  " for the requested synthetic test.*\007GetT"
+  "est\362\327\002\025admin.synthetics:read\222\330\002\025syntheti"
+  "cs.test::read\202\323\344\223\002 \022\036/synthetics/v202309"
+  "/tests/{id}\022\252\002\n\nUpdateTest\022,.kentik.synt"
+  "hetics.v202309.UpdateTestRequest\032-.kenti"
+  "k.synthetics.v202309.UpdateTestResponse\""
+  "\276\001\222AX\022\036Update configuration of a test\032*U"
+  "pdates configuration of a synthetic test"
+  ".*\nUpdateTest\362\327\002\026admin.synthetics:write\222"
+  "\330\002\027synthetics.test::update\202\323\344\223\002(\032#/synth"
+  "etics/v202309/tests/{test.id}:\001*\022\314\002\n\nDel"
+  "eteTest\022,.kentik.synthetics.v202309.Dele"
+  "teTestRequest\032-.kentik.synthetics.v20230"
+  "9.DeleteTestResponse\"\340\001\222A\201\001\022\030Delete a sy"
+  "nthetic test.\032YDeletes the synthetics te"
+  "st. All accumulated results for the test"
+  " cease to be accessible.*\nDeleteTest\362\327\002\026"
+  "admin.synthetics:write\222\330\002\027synthetics.tes"
+  "t::delete\202\323\344\223\002 *\036/synthetics/v202309/tes"
+  "ts/{id}\022\262\002\n\rSetTestStatus\022/.kentik.synth"
+  "etics.v202309.SetTestStatusRequest\0320.ken"
+  "tik.synthetics.v202309.SetTestStatusResp"
+  "onse\"\275\001\222AU\022!Update status of a synthetic"
+  " test\032!Update status of a synthetic test"
+  "*\rSetTestStatus\362\327\002\026admin.synthetics:writ"
+  "e\222\330\002\027synthetics.test::update\202\323\344\223\002*\032%/syn"
+  "thetics/v202309/tests/{id}/status:\001*\022\302\002\n"
+  "\020CreateAgentAlert\0222.kentik.synthetics.v2"
+  "02309.CreateAgentAlertRequest\0323.kentik.s"
+  "ynthetics.v202309.CreateAgentAlertRespon"
+  "se\"\304\001\222Aa\022#Create an agent alert configur"
+  "ation\032(Creates a new agent alert configu"
+  "ration.*\020CreateAgentAlert\362\327\002\026admin.synth"
+  "etics:write\222\330\002\030synthetics.agent::create\202"
+  "\323\344\223\002$\"\037/synthetics/v202309/agentAlerts:\001"
+  "*\022\211\003\n\020UpdateAgentAlert\0222.kentik.syntheti"
+  "cs.v202309.UpdateAgentAlertRequest\0323.ken"
+  "tik.synthetics.v202309.UpdateAgentAlertR"
+  "esponse\"\213\002\222A\242\001\022#Update an agent alert co"
+  "nfiguration\032iUpdates an existing agent a"
+  "lert configuration with the time thresho"
+  "ld and notification channels provided.*\020"
+  "UpdateAgentAlert\362\327\002\026admin.synthetics:wri"
+  "te\222\330\002\030synthetics.agent::update\202\323\344\223\002)\032$/s"
+  "ynthetics/v202309/agentAlerts/{id}:\001*\022\272\002"
+  "\n\rGetAgentAlert\022/.kentik.synthetics.v202"
+  "309.GetAgentAlertRequest\0320.kentik.synthe"
+  "tics.v202309.GetAgentAlertResponse\"\305\001\222Ac"
+  "\022 Get an agent alert configuration\0320Retr"
+  "ieves an existing agent alert configurat"
+  "ion.*\rGetAgentAlert\362\327\002\025admin.synthetics:"
+  "read\222\330\002\026synthetics.agent::read\202\323\344\223\002&\022$/s"
+  "ynthetics/v202309/agentAlerts/{id}\022\336\002\n\017L"
+  "istAgentAlerts\0221.kentik.synthetics.v2023"
+  "09.ListAgentAlertsRequest\0322.kentik.synth"
+  "etics.v202309.ListAgentAlertsResponse\"\343\001"
+  "\222A\205\001\022\037List agent alert configurations\032QL"
+  "ists all agent alert configurations, opt"
+  "ionally filtered by a list of agent ids."
+  "*\017ListAgentAlerts\362\327\002\025admin.synthetics:re"
+  "ad\222\330\002\026synthetics.agent::read\202\323\344\223\002!\022\037/syn"
+  "thetics/v202309/agentAlerts\022\312\002\n\020DeleteAg"
+  "entAlert\0222.kentik.synthetics.v202309.Del"
+  "eteAgentAlertRequest\0323.kentik.synthetics"
+  ".v202309.DeleteAgentAlertResponse\"\314\001\222Ag\022"
+  "#Delete an agent alert configuration\032.De"
+  "letes an existing agent alert configurat"
+  "ion.*\020DeleteAgentAlert\362\327\002\026admin.syntheti"
+  "cs:write\222\330\002\030synthetics.agent::delete\202\323\344\223"
+  "\002&*$/synthetics/v202309/agentAlerts/{id}"
+  "\032.\312A\023grpc.api.kentik.com\352\327\002\020admin.synthe"
+  "tics\220\330\002\003B\370@ZOgithub.com/kentik/api-schem"
+  "a-public/gen/go/kentik/synthetics/v20230"
+  "9;synthetics\222A\243@\022\271>\n\031Synthetics Monitori"
+  "ng API\022\313=# Overview\nThe Synthetics Monit"
+  "oring API provides programmatic access t"
+  "o Kentik\'s [synthetic monitoring system]"
+  "(https://kb.kentik.com/v4/Ma00.htm). The"
+  " API consists of two endpoints:\n| Endpoi"
+  "nt | Purpose |\n|-----------|---------|\n|"
+  " SyntheticsAdminService | CRUD operation"
+  "s for synthetic tests, agents, and offli"
+  "ne agent alerts |\n| SyntheticsDataServic"
+  "e  | Retrieval of synthetic test results"
+  " and network traces |\n\nBoth REST endpoin"
+  "t and gRPC RPCs are provided.\nNote: API "
+  "version v202309 is the same as v202202 e"
+  "xcept that the timestamps returned for s"
+  "ynthetic test results are closer to when"
+  " the test was actually run.\n### Known Li"
+  "mitations\nThe API currently does not sup"
+  "port the following [Synthetic Test Types"
+  "](https://kb.kentik.com/v4/Ma00.htm#Ma00"
+  "-Synthetic_Test_Types):\n* BGP Monitor te"
+  "sts, which are supported in a [separate "
+  "API](https://github.com/kentik/api-schem"
+  "a-public/blob/master/proto/kentik/bgp_mo"
+  "nitoring/v202205beta1/bgp_monitoring.pro"
+  "to)\n* Transaction tests.\n\n### Additional"
+  " Public Resources\nKentik community [Pyth"
+  "on](https://github.com/kentik/community_"
+  "sdk_python) and [Go](https://github.com/"
+  "kentik/community_sdk_golang) SDKs provid"
+  "e language-specific support for using th"
+  "is and other Kentik APIs. These SDKs can"
+  " be also used as example code for develo"
+  "pment. \n A [Terraform provider](https://"
+  "registry.terraform.io/providers/kentik/k"
+  "entik-synthetics) is available for confi"
+  "guring tests and agents for Kentik synth"
+  "etic monitoring.\n# Anatomy of a Syntheti"
+  "c Test\nEach `Test` consists of one or mo"
+  "re tasks. Tasks are executed by monitori"
+  "ng `Agents` that send synthetic traffic "
+  "(probes) over the network. The API curre"
+  "ntly supports following tasks:\n| Task na"
+  "me  | Purpose |\n|------------|---------|"
+  "\n| ping       | Test basic address, and "
+  "optionally TCP port reachability |\n| tra"
+  "ceroute (a.k.a. trace)| Discover unidire"
+  "ctional network path |\n| http | Perform "
+  "a simple HTTP/HTTPS request |\n| page-loa"
+  "d | Use headless Chromium to execute an "
+  "HTTP/HTTPS request |\n| dns | Execute a D"
+  "NS query|\n\nThe set of tasks executed on "
+  "behalf of a given test depends on the `t"
+  "ype` of that test. The following test ty"
+  "pes are currently supported by the API:\n"
+  "| API type | Portal (UI) equivalent | Ta"
+  "sks |\n|---------------|--------------|--"
+  "-----|\n| ip | IP Address | ping, tracero"
+  "ute |\n| hostname | Hostname | ping, trac"
+  "eroute |\n| network_grid | Network Grid |"
+  " ping, traceroute |\n| agent | Agent-to-A"
+  "gent | ping, traceroute |\n| network_mesh"
+  " | Network Mesh | ping, traceroute |\n| f"
+  "low | Autonomous Tests (5 variants) | pi"
+  "ng, traceroute |\n| url | HTTP(S) or API "
+  "| http, ping (optional), traceroute (opt"
+  "ional) |\n| page_load | Page Load | page-"
+  "load, ping (optional), traceroute (optio"
+  "nal) |\n| dns | DNS Server Monitor | dns "
+  "|\n| dns_grid | DNS Server Grid | dns |\n\n"
+  "***Note:*** `ping` and `traceroute` task"
+  "s are always run together (never one wit"
+  "hout the other).\n\n# Test Attributes and "
+  "Settings\nThe attributes of the test obje"
+  "ct enable configuration of test settings"
+  ", access to test metadata, and access to"
+  " runtime state information.\n### State an"
+  "d Metadata Attributes\n The following tab"
+  "le lists the metadata and state attribut"
+  "es:\n| Attribute | Access | Purpose |\n|--"
+  "---------|--------|---------|\n| id | RO "
+  "| System-generated unique identifier of "
+  "the test |\n| name | RW | User specified "
+  "name for the test (need not be unique) |"
+  "\n| type | RO (after creation) | Type of "
+  "the test (set on creation; read-only the"
+  "reafter) |\n| status | RW | Life-cycle st"
+  "atus of the test |\n| cdate | RO | Creati"
+  "on timestamp |\n| edate | RO | Last-modif"
+  "ication timestamp |\n| created_by | RO | "
+  "Identity of the user that created the te"
+  "st |\n| last_updated_by | RO | Identity o"
+  "f the latest user to modify the test |\n|"
+  " labels | RW | List of names of labels a"
+  "pplied to the test |\n\nTest configuration"
+  " is performed via the test\'s `settings` "
+  "attribute. Some settings are common to a"
+  "ll tests while others are specific to te"
+  "sts of a given type.\n### Common Test Set"
+  "tings\nThe following settings are used fo"
+  "r tests of all types:\n| Attribute | Purp"
+  "ose | Required |\n|-----------|---------|"
+  "----------|\n| agentIds  | IDs of agents "
+  "to execute tasks for the test | YES |\n| "
+  "period | Test execution interval in seco"
+  "nds | NO (default 60s) |\n| family | IP a"
+  "ddress family. Used only for tests whose"
+  " type is url or dns. Selects which type "
+  "of DNS resource is queried for resolving"
+  " hostname to target address | NO (defaul"
+  "t IP_FAMILY_DUAL) |\n| notificationChanne"
+  "ls | List of notification channels for t"
+  "he test | NO (default empty list) |\n| he"
+  "althSettings | A HealthSettings object t"
+  "hat configures health settings for this "
+  "test, which includes metric thresholds t"
+  "hat define health status (warning and cr"
+  "itical) and trigger associated alarms. |"
+  " YES |\n| ping | A TestPingSettings objec"
+  "t that configures the ping task of the t"
+  "est | NO (default depends on test type) "
+  "|\n| trace | A TestTraceSettings object t"
+  "hat configures the trace task of the tes"
+  "t | NO (default depends on test type) |\n"
+  "| tasks | List of names of the tasks tha"
+  "t will be executed for this test | YES |"
+  "\n\n### Type-specific Settings\nEach test t"
+  "ype has its own configuration object tha"
+  "t represents the settings for that type."
+  " These type-specific objects are referen"
+  "ced by the attributes in `Test.settings`"
+  ":\n| Test type    | Settings attribute | "
+  "Configuration object |\n|--------------|-"
+  "------------------------|---------------"
+  "------------|\n| ip           | ip       "
+  "               | IpTest                 "
+  "   |\n| hostname     | hostname          "
+  "      | HostnameTest              |\n| ne"
+  "twork_grid | networkGrid             | I"
+  "pTest                    |\n| agent      "
+  "  | agent                   | AgentTest "
+  "                |\n| network_mesh | netwo"
+  "rkMesh             | NetworkMeshTest    "
+  "       |\n| flow         | flow          "
+  "          | FlowTest                  |\n"
+  "| url          | url                    "
+  " | UrlTest                   |\n| page_lo"
+  "ad    | pageLoad                | PageLo"
+  "adTest              |\n| dns          | d"
+  "ns                     | DnsTest        "
+  "           |\n| dns_grid     | dnsGrid   "
+  "              | DnsTest                 "
+  "  |\n\n# Test Results\nResults of synthetic"
+  " tests are returned as a sequence of `Te"
+  "stResults` objects. Each such object rep"
+  "resents measurements and health evaluati"
+  "on for a single test at specific point i"
+  "n time. Measurements and health evaluati"
+  "on are grouped by agent and by task.\nGra"
+  "nularity of timestamps in test results d"
+  "epends on the frequency (period) of the "
+  "test and on the requested time range. Th"
+  "e minimum granularity is 1 minute (even "
+  "when period < 1 minute). The longer the "
+  "time range, the lower the granularity.\n#"
+  " Network Traces\nSynthetic tests that inc"
+  "lude the `traceroute` task collect the u"
+  "nidirectional network path from the agen"
+  "t to the target for each agent/target pa"
+  "ir. The trace data are returned in the `"
+  "GetTraceForTestResponse` object. The `pa"
+  "ths` attribute of this object contains t"
+  "he collected network path for each agent"
+  "/target pair and the round-trip time (RT"
+  "T) to each hop.\nHops in actual network t"
+  "races are identified by a `nodeId`. The "
+  "mapping of node IDs to address, name, lo"
+  "cation, and other attributes of the hop "
+  "is provided in a map that is stored in t"
+  "he `nodes` attribute of the `GetTraceFor"
+  "TestResponse` object.\n# Agents\nThe Kenti"
+  "k synthetic monitoring system recognizes"
+  " 2 types of agents:\n* **Global** (public"
+  "): Managed by Kentik and available to ev"
+  "ery Kentik user. All information about g"
+  "lobal agents in this API is read-only.\n*"
+  " **Private**: Deployed by each customer "
+  "and available only to that customer.\nTo "
+  "be visible in this API, a private agent "
+  "must first associate itself with a custo"
+  "mer account by contacting the Kentik sys"
+  "tem (via private API). Once the agent is"
+  " associated it can be authorized via the"
+  " API by changing its `status` to `AGENT_"
+  "STATUS_OK`. For more information about p"
+  "rivate agent deployment, see [**Syntheti"
+  "c Agent Deployments**](https://kb.kentik"
+  ".com/v4/Ma01.htm#Ma01-Synthetic_Agent_De"
+  "ployments).\n\"E\n\026Kentik API Engineering\022+"
+  "https://github.com/kentik/api-schema-pub"
+  "lic2\007v202309*\001\0022\020application/json:\020appli"
+  "cation/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Em"
+  "ail \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Token "
+  "\002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r`\n\"Kentik synt"
+  "hetic monitoring system\022:https://kb.kent"
+  "ik.com/v4/Ma00.htm#Ma00-Synthetics_Overv"
+  "iewb\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto_deps[7] = {
   &::descriptor_table_google_2fapi_2fannotations_2eproto,
@@ -2798,23 +3166,30 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor
   &::descriptor_table_kentik_2fcore_2fv202303_2fuser_5finfo_2eproto,
   &::descriptor_table_protoc_2dgen_2dopenapiv2_2foptions_2fannotations_2eproto,
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto_sccs[61] = {
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto_sccs[72] = {
   &scc_info_ActivationSettings_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_Agent_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
+  &scc_info_AgentAlert_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_AgentMetadata_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_AgentMetadata_IpValue_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_AgentResults_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_AgentTest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
+  &scc_info_CreateAgentAlertRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
+  &scc_info_CreateAgentAlertResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_CreateTestRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_CreateTestResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_DNSResponseData_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_DNSResults_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
+  &scc_info_DeleteAgentAlertRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
+  &scc_info_DeleteAgentAlertResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_DeleteAgentRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_DeleteAgentResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_DeleteTestRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_DeleteTestResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_DnsTest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_FlowTest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
+  &scc_info_GetAgentAlertRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
+  &scc_info_GetAgentAlertResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_GetAgentRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_GetAgentResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_GetResultsForTestsRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
@@ -2829,6 +3204,8 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
   &scc_info_HealthSettings_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_HostnameTest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_IpTest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
+  &scc_info_ListAgentAlertsRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
+  &scc_info_ListAgentAlertsResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_ListAgentsRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_ListAgentsResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_ListTestsRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
@@ -2854,6 +3231,8 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
   &scc_info_TestSettings_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_TestTraceSettings_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_TraceHop_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
+  &scc_info_UpdateAgentAlertRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
+  &scc_info_UpdateAgentAlertResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_UpdateAgentRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_UpdateAgentResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_UpdateTestRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
@@ -2863,10 +3242,10 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto = {
-  false, false, descriptor_table_protodef_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto, "kentik/synthetics/v202309/synthetics.proto", 35403,
-  &descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto_once, descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto_sccs, descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto_deps, 61, 7,
+  false, false, descriptor_table_protodef_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto, "kentik/synthetics/v202309/synthetics.proto", 38211,
+  &descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto_once, descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto_sccs, descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto_deps, 72, 7,
   schemas, file_default_instances, TableStruct_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto::offsets,
-  file_level_metadata_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto, 61, file_level_enum_descriptors_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto, file_level_service_descriptors_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto,
+  file_level_metadata_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto, 72, file_level_enum_descriptors_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto, file_level_service_descriptors_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
@@ -20975,6 +21354,2540 @@ void SetTestStatusResponse::InternalSwap(SetTestStatusResponse* other) {
 }
 
 
+// ===================================================================
+
+void AgentAlert::InitAsDefaultInstance() {
+}
+class AgentAlert::_Internal {
+ public:
+};
+
+AgentAlert::AgentAlert(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
+  notification_channel_ids_(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.synthetics.v202309.AgentAlert)
+}
+AgentAlert::AgentAlert(const AgentAlert& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      notification_channel_ids_(from.notification_channel_ids_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_id().empty()) {
+    id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_id(),
+      GetArena());
+  }
+  agent_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_agent_id().empty()) {
+    agent_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_agent_id(),
+      GetArena());
+  }
+  agent_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_agent_name().empty()) {
+    agent_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_agent_name(),
+      GetArena());
+  }
+  threshold_seconds_ = from.threshold_seconds_;
+  // @@protoc_insertion_point(copy_constructor:kentik.synthetics.v202309.AgentAlert)
+}
+
+void AgentAlert::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_AgentAlert_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base);
+  id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  agent_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  agent_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  threshold_seconds_ = 0u;
+}
+
+AgentAlert::~AgentAlert() {
+  // @@protoc_insertion_point(destructor:kentik.synthetics.v202309.AgentAlert)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void AgentAlert::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+  id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  agent_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  agent_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+void AgentAlert::ArenaDtor(void* object) {
+  AgentAlert* _this = reinterpret_cast< AgentAlert* >(object);
+  (void)_this;
+}
+void AgentAlert::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void AgentAlert::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const AgentAlert& AgentAlert::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_AgentAlert_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void AgentAlert::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.synthetics.v202309.AgentAlert)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  notification_channel_ids_.Clear();
+  id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  agent_id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  agent_name_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  threshold_seconds_ = 0u;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* AgentAlert::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // string id = 1[json_name = "id"];
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.synthetics.v202309.AgentAlert.id"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // uint32 threshold_seconds = 2[json_name = "thresholdSeconds"];
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          threshold_seconds_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // repeated string notification_channel_ids = 3[json_name = "notificationChannelIds"];
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_notification_channel_ids();
+            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.synthetics.v202309.AgentAlert.notification_channel_ids"));
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
+        } else goto handle_unusual;
+        continue;
+      // string agent_id = 4[json_name = "agentId"];
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
+          auto str = _internal_mutable_agent_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.synthetics.v202309.AgentAlert.agent_id"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // string agent_name = 5[json_name = "agentName"];
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 42)) {
+          auto str = _internal_mutable_agent_name();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.synthetics.v202309.AgentAlert.agent_name"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* AgentAlert::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:kentik.synthetics.v202309.AgentAlert)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string id = 1[json_name = "id"];
+  if (this->id().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_id().data(), static_cast<int>(this->_internal_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.synthetics.v202309.AgentAlert.id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_id(), target);
+  }
+
+  // uint32 threshold_seconds = 2[json_name = "thresholdSeconds"];
+  if (this->threshold_seconds() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(2, this->_internal_threshold_seconds(), target);
+  }
+
+  // repeated string notification_channel_ids = 3[json_name = "notificationChannelIds"];
+  for (int i = 0, n = this->_internal_notification_channel_ids_size(); i < n; i++) {
+    const auto& s = this->_internal_notification_channel_ids(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.synthetics.v202309.AgentAlert.notification_channel_ids");
+    target = stream->WriteString(3, s, target);
+  }
+
+  // string agent_id = 4[json_name = "agentId"];
+  if (this->agent_id().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_agent_id().data(), static_cast<int>(this->_internal_agent_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.synthetics.v202309.AgentAlert.agent_id");
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_agent_id(), target);
+  }
+
+  // string agent_name = 5[json_name = "agentName"];
+  if (this->agent_name().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_agent_name().data(), static_cast<int>(this->_internal_agent_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.synthetics.v202309.AgentAlert.agent_name");
+    target = stream->WriteStringMaybeAliased(
+        5, this->_internal_agent_name(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:kentik.synthetics.v202309.AgentAlert)
+  return target;
+}
+
+size_t AgentAlert::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:kentik.synthetics.v202309.AgentAlert)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated string notification_channel_ids = 3[json_name = "notificationChannelIds"];
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(notification_channel_ids_.size());
+  for (int i = 0, n = notification_channel_ids_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      notification_channel_ids_.Get(i));
+  }
+
+  // string id = 1[json_name = "id"];
+  if (this->id().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_id());
+  }
+
+  // string agent_id = 4[json_name = "agentId"];
+  if (this->agent_id().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_agent_id());
+  }
+
+  // string agent_name = 5[json_name = "agentName"];
+  if (this->agent_name().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_agent_name());
+  }
+
+  // uint32 threshold_seconds = 2[json_name = "thresholdSeconds"];
+  if (this->threshold_seconds() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+        this->_internal_threshold_seconds());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void AgentAlert::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:kentik.synthetics.v202309.AgentAlert)
+  GOOGLE_DCHECK_NE(&from, this);
+  const AgentAlert* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<AgentAlert>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:kentik.synthetics.v202309.AgentAlert)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:kentik.synthetics.v202309.AgentAlert)
+    MergeFrom(*source);
+  }
+}
+
+void AgentAlert::MergeFrom(const AgentAlert& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:kentik.synthetics.v202309.AgentAlert)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  notification_channel_ids_.MergeFrom(from.notification_channel_ids_);
+  if (from.id().size() > 0) {
+    _internal_set_id(from._internal_id());
+  }
+  if (from.agent_id().size() > 0) {
+    _internal_set_agent_id(from._internal_agent_id());
+  }
+  if (from.agent_name().size() > 0) {
+    _internal_set_agent_name(from._internal_agent_name());
+  }
+  if (from.threshold_seconds() != 0) {
+    _internal_set_threshold_seconds(from._internal_threshold_seconds());
+  }
+}
+
+void AgentAlert::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:kentik.synthetics.v202309.AgentAlert)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void AgentAlert::CopyFrom(const AgentAlert& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.synthetics.v202309.AgentAlert)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool AgentAlert::IsInitialized() const {
+  return true;
+}
+
+void AgentAlert::InternalSwap(AgentAlert* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  notification_channel_ids_.InternalSwap(&other->notification_channel_ids_);
+  id_.Swap(&other->id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  agent_id_.Swap(&other->agent_id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  agent_name_.Swap(&other->agent_name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  swap(threshold_seconds_, other->threshold_seconds_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata AgentAlert::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void CreateAgentAlertRequest::InitAsDefaultInstance() {
+}
+class CreateAgentAlertRequest::_Internal {
+ public:
+};
+
+CreateAgentAlertRequest::CreateAgentAlertRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
+  notification_channel_ids_(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.synthetics.v202309.CreateAgentAlertRequest)
+}
+CreateAgentAlertRequest::CreateAgentAlertRequest(const CreateAgentAlertRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      notification_channel_ids_(from.notification_channel_ids_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  agent_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_agent_id().empty()) {
+    agent_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_agent_id(),
+      GetArena());
+  }
+  threshold_seconds_ = from.threshold_seconds_;
+  // @@protoc_insertion_point(copy_constructor:kentik.synthetics.v202309.CreateAgentAlertRequest)
+}
+
+void CreateAgentAlertRequest::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_CreateAgentAlertRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base);
+  agent_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  threshold_seconds_ = 0u;
+}
+
+CreateAgentAlertRequest::~CreateAgentAlertRequest() {
+  // @@protoc_insertion_point(destructor:kentik.synthetics.v202309.CreateAgentAlertRequest)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void CreateAgentAlertRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+  agent_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+void CreateAgentAlertRequest::ArenaDtor(void* object) {
+  CreateAgentAlertRequest* _this = reinterpret_cast< CreateAgentAlertRequest* >(object);
+  (void)_this;
+}
+void CreateAgentAlertRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void CreateAgentAlertRequest::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const CreateAgentAlertRequest& CreateAgentAlertRequest::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_CreateAgentAlertRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void CreateAgentAlertRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.synthetics.v202309.CreateAgentAlertRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  notification_channel_ids_.Clear();
+  agent_id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  threshold_seconds_ = 0u;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* CreateAgentAlertRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // uint32 threshold_seconds = 1[json_name = "thresholdSeconds"];
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          threshold_seconds_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // repeated string notification_channel_ids = 2[json_name = "notificationChannelIds"];
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_notification_channel_ids();
+            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.synthetics.v202309.CreateAgentAlertRequest.notification_channel_ids"));
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+        } else goto handle_unusual;
+        continue;
+      // string agent_id = 3[json_name = "agentId"];
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          auto str = _internal_mutable_agent_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.synthetics.v202309.CreateAgentAlertRequest.agent_id"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* CreateAgentAlertRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:kentik.synthetics.v202309.CreateAgentAlertRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint32 threshold_seconds = 1[json_name = "thresholdSeconds"];
+  if (this->threshold_seconds() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_threshold_seconds(), target);
+  }
+
+  // repeated string notification_channel_ids = 2[json_name = "notificationChannelIds"];
+  for (int i = 0, n = this->_internal_notification_channel_ids_size(); i < n; i++) {
+    const auto& s = this->_internal_notification_channel_ids(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.synthetics.v202309.CreateAgentAlertRequest.notification_channel_ids");
+    target = stream->WriteString(2, s, target);
+  }
+
+  // string agent_id = 3[json_name = "agentId"];
+  if (this->agent_id().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_agent_id().data(), static_cast<int>(this->_internal_agent_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.synthetics.v202309.CreateAgentAlertRequest.agent_id");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_agent_id(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:kentik.synthetics.v202309.CreateAgentAlertRequest)
+  return target;
+}
+
+size_t CreateAgentAlertRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:kentik.synthetics.v202309.CreateAgentAlertRequest)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated string notification_channel_ids = 2[json_name = "notificationChannelIds"];
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(notification_channel_ids_.size());
+  for (int i = 0, n = notification_channel_ids_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      notification_channel_ids_.Get(i));
+  }
+
+  // string agent_id = 3[json_name = "agentId"];
+  if (this->agent_id().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_agent_id());
+  }
+
+  // uint32 threshold_seconds = 1[json_name = "thresholdSeconds"];
+  if (this->threshold_seconds() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+        this->_internal_threshold_seconds());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void CreateAgentAlertRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:kentik.synthetics.v202309.CreateAgentAlertRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  const CreateAgentAlertRequest* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<CreateAgentAlertRequest>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:kentik.synthetics.v202309.CreateAgentAlertRequest)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:kentik.synthetics.v202309.CreateAgentAlertRequest)
+    MergeFrom(*source);
+  }
+}
+
+void CreateAgentAlertRequest::MergeFrom(const CreateAgentAlertRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:kentik.synthetics.v202309.CreateAgentAlertRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  notification_channel_ids_.MergeFrom(from.notification_channel_ids_);
+  if (from.agent_id().size() > 0) {
+    _internal_set_agent_id(from._internal_agent_id());
+  }
+  if (from.threshold_seconds() != 0) {
+    _internal_set_threshold_seconds(from._internal_threshold_seconds());
+  }
+}
+
+void CreateAgentAlertRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:kentik.synthetics.v202309.CreateAgentAlertRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void CreateAgentAlertRequest::CopyFrom(const CreateAgentAlertRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.synthetics.v202309.CreateAgentAlertRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CreateAgentAlertRequest::IsInitialized() const {
+  return true;
+}
+
+void CreateAgentAlertRequest::InternalSwap(CreateAgentAlertRequest* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  notification_channel_ids_.InternalSwap(&other->notification_channel_ids_);
+  agent_id_.Swap(&other->agent_id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  swap(threshold_seconds_, other->threshold_seconds_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata CreateAgentAlertRequest::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void CreateAgentAlertResponse::InitAsDefaultInstance() {
+  ::kentik::synthetics::v202309::_CreateAgentAlertResponse_default_instance_._instance.get_mutable()->agent_alert_ = const_cast< ::kentik::synthetics::v202309::AgentAlert*>(
+      ::kentik::synthetics::v202309::AgentAlert::internal_default_instance());
+}
+class CreateAgentAlertResponse::_Internal {
+ public:
+  static const ::kentik::synthetics::v202309::AgentAlert& agent_alert(const CreateAgentAlertResponse* msg);
+};
+
+const ::kentik::synthetics::v202309::AgentAlert&
+CreateAgentAlertResponse::_Internal::agent_alert(const CreateAgentAlertResponse* msg) {
+  return *msg->agent_alert_;
+}
+CreateAgentAlertResponse::CreateAgentAlertResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.synthetics.v202309.CreateAgentAlertResponse)
+}
+CreateAgentAlertResponse::CreateAgentAlertResponse(const CreateAgentAlertResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_agent_alert()) {
+    agent_alert_ = new ::kentik::synthetics::v202309::AgentAlert(*from.agent_alert_);
+  } else {
+    agent_alert_ = nullptr;
+  }
+  // @@protoc_insertion_point(copy_constructor:kentik.synthetics.v202309.CreateAgentAlertResponse)
+}
+
+void CreateAgentAlertResponse::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_CreateAgentAlertResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base);
+  agent_alert_ = nullptr;
+}
+
+CreateAgentAlertResponse::~CreateAgentAlertResponse() {
+  // @@protoc_insertion_point(destructor:kentik.synthetics.v202309.CreateAgentAlertResponse)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void CreateAgentAlertResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+  if (this != internal_default_instance()) delete agent_alert_;
+}
+
+void CreateAgentAlertResponse::ArenaDtor(void* object) {
+  CreateAgentAlertResponse* _this = reinterpret_cast< CreateAgentAlertResponse* >(object);
+  (void)_this;
+}
+void CreateAgentAlertResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void CreateAgentAlertResponse::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const CreateAgentAlertResponse& CreateAgentAlertResponse::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_CreateAgentAlertResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void CreateAgentAlertResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.synthetics.v202309.CreateAgentAlertResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (GetArena() == nullptr && agent_alert_ != nullptr) {
+    delete agent_alert_;
+  }
+  agent_alert_ = nullptr;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* CreateAgentAlertResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // .kentik.synthetics.v202309.AgentAlert agent_alert = 1[json_name = "agentAlert"];
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_agent_alert(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* CreateAgentAlertResponse::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:kentik.synthetics.v202309.CreateAgentAlertResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .kentik.synthetics.v202309.AgentAlert agent_alert = 1[json_name = "agentAlert"];
+  if (this->has_agent_alert()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::agent_alert(this), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:kentik.synthetics.v202309.CreateAgentAlertResponse)
+  return target;
+}
+
+size_t CreateAgentAlertResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:kentik.synthetics.v202309.CreateAgentAlertResponse)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .kentik.synthetics.v202309.AgentAlert agent_alert = 1[json_name = "agentAlert"];
+  if (this->has_agent_alert()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *agent_alert_);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void CreateAgentAlertResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:kentik.synthetics.v202309.CreateAgentAlertResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  const CreateAgentAlertResponse* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<CreateAgentAlertResponse>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:kentik.synthetics.v202309.CreateAgentAlertResponse)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:kentik.synthetics.v202309.CreateAgentAlertResponse)
+    MergeFrom(*source);
+  }
+}
+
+void CreateAgentAlertResponse::MergeFrom(const CreateAgentAlertResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:kentik.synthetics.v202309.CreateAgentAlertResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.has_agent_alert()) {
+    _internal_mutable_agent_alert()->::kentik::synthetics::v202309::AgentAlert::MergeFrom(from._internal_agent_alert());
+  }
+}
+
+void CreateAgentAlertResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:kentik.synthetics.v202309.CreateAgentAlertResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void CreateAgentAlertResponse::CopyFrom(const CreateAgentAlertResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.synthetics.v202309.CreateAgentAlertResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CreateAgentAlertResponse::IsInitialized() const {
+  return true;
+}
+
+void CreateAgentAlertResponse::InternalSwap(CreateAgentAlertResponse* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  swap(agent_alert_, other->agent_alert_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata CreateAgentAlertResponse::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void UpdateAgentAlertRequest::InitAsDefaultInstance() {
+}
+class UpdateAgentAlertRequest::_Internal {
+ public:
+};
+
+UpdateAgentAlertRequest::UpdateAgentAlertRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
+  notification_channel_ids_(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.synthetics.v202309.UpdateAgentAlertRequest)
+}
+UpdateAgentAlertRequest::UpdateAgentAlertRequest(const UpdateAgentAlertRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      notification_channel_ids_(from.notification_channel_ids_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_id().empty()) {
+    id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_id(),
+      GetArena());
+  }
+  threshold_seconds_ = from.threshold_seconds_;
+  // @@protoc_insertion_point(copy_constructor:kentik.synthetics.v202309.UpdateAgentAlertRequest)
+}
+
+void UpdateAgentAlertRequest::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_UpdateAgentAlertRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base);
+  id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  threshold_seconds_ = 0u;
+}
+
+UpdateAgentAlertRequest::~UpdateAgentAlertRequest() {
+  // @@protoc_insertion_point(destructor:kentik.synthetics.v202309.UpdateAgentAlertRequest)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void UpdateAgentAlertRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+  id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+void UpdateAgentAlertRequest::ArenaDtor(void* object) {
+  UpdateAgentAlertRequest* _this = reinterpret_cast< UpdateAgentAlertRequest* >(object);
+  (void)_this;
+}
+void UpdateAgentAlertRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void UpdateAgentAlertRequest::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const UpdateAgentAlertRequest& UpdateAgentAlertRequest::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_UpdateAgentAlertRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void UpdateAgentAlertRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.synthetics.v202309.UpdateAgentAlertRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  notification_channel_ids_.Clear();
+  id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  threshold_seconds_ = 0u;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* UpdateAgentAlertRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // string id = 1[json_name = "id"];
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.synthetics.v202309.UpdateAgentAlertRequest.id"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // uint32 threshold_seconds = 2[json_name = "thresholdSeconds"];
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          threshold_seconds_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // repeated string notification_channel_ids = 3[json_name = "notificationChannelIds"];
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_notification_channel_ids();
+            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.synthetics.v202309.UpdateAgentAlertRequest.notification_channel_ids"));
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* UpdateAgentAlertRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:kentik.synthetics.v202309.UpdateAgentAlertRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string id = 1[json_name = "id"];
+  if (this->id().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_id().data(), static_cast<int>(this->_internal_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.synthetics.v202309.UpdateAgentAlertRequest.id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_id(), target);
+  }
+
+  // uint32 threshold_seconds = 2[json_name = "thresholdSeconds"];
+  if (this->threshold_seconds() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(2, this->_internal_threshold_seconds(), target);
+  }
+
+  // repeated string notification_channel_ids = 3[json_name = "notificationChannelIds"];
+  for (int i = 0, n = this->_internal_notification_channel_ids_size(); i < n; i++) {
+    const auto& s = this->_internal_notification_channel_ids(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.synthetics.v202309.UpdateAgentAlertRequest.notification_channel_ids");
+    target = stream->WriteString(3, s, target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:kentik.synthetics.v202309.UpdateAgentAlertRequest)
+  return target;
+}
+
+size_t UpdateAgentAlertRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:kentik.synthetics.v202309.UpdateAgentAlertRequest)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated string notification_channel_ids = 3[json_name = "notificationChannelIds"];
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(notification_channel_ids_.size());
+  for (int i = 0, n = notification_channel_ids_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      notification_channel_ids_.Get(i));
+  }
+
+  // string id = 1[json_name = "id"];
+  if (this->id().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_id());
+  }
+
+  // uint32 threshold_seconds = 2[json_name = "thresholdSeconds"];
+  if (this->threshold_seconds() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+        this->_internal_threshold_seconds());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void UpdateAgentAlertRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:kentik.synthetics.v202309.UpdateAgentAlertRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  const UpdateAgentAlertRequest* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<UpdateAgentAlertRequest>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:kentik.synthetics.v202309.UpdateAgentAlertRequest)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:kentik.synthetics.v202309.UpdateAgentAlertRequest)
+    MergeFrom(*source);
+  }
+}
+
+void UpdateAgentAlertRequest::MergeFrom(const UpdateAgentAlertRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:kentik.synthetics.v202309.UpdateAgentAlertRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  notification_channel_ids_.MergeFrom(from.notification_channel_ids_);
+  if (from.id().size() > 0) {
+    _internal_set_id(from._internal_id());
+  }
+  if (from.threshold_seconds() != 0) {
+    _internal_set_threshold_seconds(from._internal_threshold_seconds());
+  }
+}
+
+void UpdateAgentAlertRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:kentik.synthetics.v202309.UpdateAgentAlertRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void UpdateAgentAlertRequest::CopyFrom(const UpdateAgentAlertRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.synthetics.v202309.UpdateAgentAlertRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool UpdateAgentAlertRequest::IsInitialized() const {
+  return true;
+}
+
+void UpdateAgentAlertRequest::InternalSwap(UpdateAgentAlertRequest* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  notification_channel_ids_.InternalSwap(&other->notification_channel_ids_);
+  id_.Swap(&other->id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  swap(threshold_seconds_, other->threshold_seconds_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata UpdateAgentAlertRequest::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void UpdateAgentAlertResponse::InitAsDefaultInstance() {
+  ::kentik::synthetics::v202309::_UpdateAgentAlertResponse_default_instance_._instance.get_mutable()->agent_alert_ = const_cast< ::kentik::synthetics::v202309::AgentAlert*>(
+      ::kentik::synthetics::v202309::AgentAlert::internal_default_instance());
+}
+class UpdateAgentAlertResponse::_Internal {
+ public:
+  static const ::kentik::synthetics::v202309::AgentAlert& agent_alert(const UpdateAgentAlertResponse* msg);
+};
+
+const ::kentik::synthetics::v202309::AgentAlert&
+UpdateAgentAlertResponse::_Internal::agent_alert(const UpdateAgentAlertResponse* msg) {
+  return *msg->agent_alert_;
+}
+UpdateAgentAlertResponse::UpdateAgentAlertResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.synthetics.v202309.UpdateAgentAlertResponse)
+}
+UpdateAgentAlertResponse::UpdateAgentAlertResponse(const UpdateAgentAlertResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_agent_alert()) {
+    agent_alert_ = new ::kentik::synthetics::v202309::AgentAlert(*from.agent_alert_);
+  } else {
+    agent_alert_ = nullptr;
+  }
+  // @@protoc_insertion_point(copy_constructor:kentik.synthetics.v202309.UpdateAgentAlertResponse)
+}
+
+void UpdateAgentAlertResponse::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_UpdateAgentAlertResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base);
+  agent_alert_ = nullptr;
+}
+
+UpdateAgentAlertResponse::~UpdateAgentAlertResponse() {
+  // @@protoc_insertion_point(destructor:kentik.synthetics.v202309.UpdateAgentAlertResponse)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void UpdateAgentAlertResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+  if (this != internal_default_instance()) delete agent_alert_;
+}
+
+void UpdateAgentAlertResponse::ArenaDtor(void* object) {
+  UpdateAgentAlertResponse* _this = reinterpret_cast< UpdateAgentAlertResponse* >(object);
+  (void)_this;
+}
+void UpdateAgentAlertResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void UpdateAgentAlertResponse::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const UpdateAgentAlertResponse& UpdateAgentAlertResponse::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_UpdateAgentAlertResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void UpdateAgentAlertResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.synthetics.v202309.UpdateAgentAlertResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (GetArena() == nullptr && agent_alert_ != nullptr) {
+    delete agent_alert_;
+  }
+  agent_alert_ = nullptr;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* UpdateAgentAlertResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // .kentik.synthetics.v202309.AgentAlert agent_alert = 1[json_name = "agentAlert"];
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_agent_alert(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* UpdateAgentAlertResponse::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:kentik.synthetics.v202309.UpdateAgentAlertResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .kentik.synthetics.v202309.AgentAlert agent_alert = 1[json_name = "agentAlert"];
+  if (this->has_agent_alert()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::agent_alert(this), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:kentik.synthetics.v202309.UpdateAgentAlertResponse)
+  return target;
+}
+
+size_t UpdateAgentAlertResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:kentik.synthetics.v202309.UpdateAgentAlertResponse)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .kentik.synthetics.v202309.AgentAlert agent_alert = 1[json_name = "agentAlert"];
+  if (this->has_agent_alert()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *agent_alert_);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void UpdateAgentAlertResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:kentik.synthetics.v202309.UpdateAgentAlertResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  const UpdateAgentAlertResponse* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<UpdateAgentAlertResponse>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:kentik.synthetics.v202309.UpdateAgentAlertResponse)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:kentik.synthetics.v202309.UpdateAgentAlertResponse)
+    MergeFrom(*source);
+  }
+}
+
+void UpdateAgentAlertResponse::MergeFrom(const UpdateAgentAlertResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:kentik.synthetics.v202309.UpdateAgentAlertResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.has_agent_alert()) {
+    _internal_mutable_agent_alert()->::kentik::synthetics::v202309::AgentAlert::MergeFrom(from._internal_agent_alert());
+  }
+}
+
+void UpdateAgentAlertResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:kentik.synthetics.v202309.UpdateAgentAlertResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void UpdateAgentAlertResponse::CopyFrom(const UpdateAgentAlertResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.synthetics.v202309.UpdateAgentAlertResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool UpdateAgentAlertResponse::IsInitialized() const {
+  return true;
+}
+
+void UpdateAgentAlertResponse::InternalSwap(UpdateAgentAlertResponse* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  swap(agent_alert_, other->agent_alert_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata UpdateAgentAlertResponse::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void GetAgentAlertRequest::InitAsDefaultInstance() {
+}
+class GetAgentAlertRequest::_Internal {
+ public:
+};
+
+GetAgentAlertRequest::GetAgentAlertRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.synthetics.v202309.GetAgentAlertRequest)
+}
+GetAgentAlertRequest::GetAgentAlertRequest(const GetAgentAlertRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_id().empty()) {
+    id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_id(),
+      GetArena());
+  }
+  // @@protoc_insertion_point(copy_constructor:kentik.synthetics.v202309.GetAgentAlertRequest)
+}
+
+void GetAgentAlertRequest::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_GetAgentAlertRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base);
+  id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+GetAgentAlertRequest::~GetAgentAlertRequest() {
+  // @@protoc_insertion_point(destructor:kentik.synthetics.v202309.GetAgentAlertRequest)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void GetAgentAlertRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+  id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+void GetAgentAlertRequest::ArenaDtor(void* object) {
+  GetAgentAlertRequest* _this = reinterpret_cast< GetAgentAlertRequest* >(object);
+  (void)_this;
+}
+void GetAgentAlertRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void GetAgentAlertRequest::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const GetAgentAlertRequest& GetAgentAlertRequest::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_GetAgentAlertRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void GetAgentAlertRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.synthetics.v202309.GetAgentAlertRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* GetAgentAlertRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // string id = 1[json_name = "id"];
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.synthetics.v202309.GetAgentAlertRequest.id"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* GetAgentAlertRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:kentik.synthetics.v202309.GetAgentAlertRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string id = 1[json_name = "id"];
+  if (this->id().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_id().data(), static_cast<int>(this->_internal_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.synthetics.v202309.GetAgentAlertRequest.id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_id(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:kentik.synthetics.v202309.GetAgentAlertRequest)
+  return target;
+}
+
+size_t GetAgentAlertRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:kentik.synthetics.v202309.GetAgentAlertRequest)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string id = 1[json_name = "id"];
+  if (this->id().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_id());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void GetAgentAlertRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:kentik.synthetics.v202309.GetAgentAlertRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  const GetAgentAlertRequest* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<GetAgentAlertRequest>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:kentik.synthetics.v202309.GetAgentAlertRequest)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:kentik.synthetics.v202309.GetAgentAlertRequest)
+    MergeFrom(*source);
+  }
+}
+
+void GetAgentAlertRequest::MergeFrom(const GetAgentAlertRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:kentik.synthetics.v202309.GetAgentAlertRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.id().size() > 0) {
+    _internal_set_id(from._internal_id());
+  }
+}
+
+void GetAgentAlertRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:kentik.synthetics.v202309.GetAgentAlertRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void GetAgentAlertRequest::CopyFrom(const GetAgentAlertRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.synthetics.v202309.GetAgentAlertRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GetAgentAlertRequest::IsInitialized() const {
+  return true;
+}
+
+void GetAgentAlertRequest::InternalSwap(GetAgentAlertRequest* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  id_.Swap(&other->id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata GetAgentAlertRequest::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void GetAgentAlertResponse::InitAsDefaultInstance() {
+  ::kentik::synthetics::v202309::_GetAgentAlertResponse_default_instance_._instance.get_mutable()->agent_alert_ = const_cast< ::kentik::synthetics::v202309::AgentAlert*>(
+      ::kentik::synthetics::v202309::AgentAlert::internal_default_instance());
+}
+class GetAgentAlertResponse::_Internal {
+ public:
+  static const ::kentik::synthetics::v202309::AgentAlert& agent_alert(const GetAgentAlertResponse* msg);
+};
+
+const ::kentik::synthetics::v202309::AgentAlert&
+GetAgentAlertResponse::_Internal::agent_alert(const GetAgentAlertResponse* msg) {
+  return *msg->agent_alert_;
+}
+GetAgentAlertResponse::GetAgentAlertResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.synthetics.v202309.GetAgentAlertResponse)
+}
+GetAgentAlertResponse::GetAgentAlertResponse(const GetAgentAlertResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_agent_alert()) {
+    agent_alert_ = new ::kentik::synthetics::v202309::AgentAlert(*from.agent_alert_);
+  } else {
+    agent_alert_ = nullptr;
+  }
+  // @@protoc_insertion_point(copy_constructor:kentik.synthetics.v202309.GetAgentAlertResponse)
+}
+
+void GetAgentAlertResponse::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_GetAgentAlertResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base);
+  agent_alert_ = nullptr;
+}
+
+GetAgentAlertResponse::~GetAgentAlertResponse() {
+  // @@protoc_insertion_point(destructor:kentik.synthetics.v202309.GetAgentAlertResponse)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void GetAgentAlertResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+  if (this != internal_default_instance()) delete agent_alert_;
+}
+
+void GetAgentAlertResponse::ArenaDtor(void* object) {
+  GetAgentAlertResponse* _this = reinterpret_cast< GetAgentAlertResponse* >(object);
+  (void)_this;
+}
+void GetAgentAlertResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void GetAgentAlertResponse::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const GetAgentAlertResponse& GetAgentAlertResponse::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_GetAgentAlertResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void GetAgentAlertResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.synthetics.v202309.GetAgentAlertResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (GetArena() == nullptr && agent_alert_ != nullptr) {
+    delete agent_alert_;
+  }
+  agent_alert_ = nullptr;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* GetAgentAlertResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // .kentik.synthetics.v202309.AgentAlert agent_alert = 1[json_name = "agentAlert"];
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_agent_alert(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* GetAgentAlertResponse::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:kentik.synthetics.v202309.GetAgentAlertResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .kentik.synthetics.v202309.AgentAlert agent_alert = 1[json_name = "agentAlert"];
+  if (this->has_agent_alert()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::agent_alert(this), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:kentik.synthetics.v202309.GetAgentAlertResponse)
+  return target;
+}
+
+size_t GetAgentAlertResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:kentik.synthetics.v202309.GetAgentAlertResponse)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .kentik.synthetics.v202309.AgentAlert agent_alert = 1[json_name = "agentAlert"];
+  if (this->has_agent_alert()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *agent_alert_);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void GetAgentAlertResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:kentik.synthetics.v202309.GetAgentAlertResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  const GetAgentAlertResponse* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<GetAgentAlertResponse>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:kentik.synthetics.v202309.GetAgentAlertResponse)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:kentik.synthetics.v202309.GetAgentAlertResponse)
+    MergeFrom(*source);
+  }
+}
+
+void GetAgentAlertResponse::MergeFrom(const GetAgentAlertResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:kentik.synthetics.v202309.GetAgentAlertResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.has_agent_alert()) {
+    _internal_mutable_agent_alert()->::kentik::synthetics::v202309::AgentAlert::MergeFrom(from._internal_agent_alert());
+  }
+}
+
+void GetAgentAlertResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:kentik.synthetics.v202309.GetAgentAlertResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void GetAgentAlertResponse::CopyFrom(const GetAgentAlertResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.synthetics.v202309.GetAgentAlertResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GetAgentAlertResponse::IsInitialized() const {
+  return true;
+}
+
+void GetAgentAlertResponse::InternalSwap(GetAgentAlertResponse* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  swap(agent_alert_, other->agent_alert_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata GetAgentAlertResponse::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void ListAgentAlertsRequest::InitAsDefaultInstance() {
+}
+class ListAgentAlertsRequest::_Internal {
+ public:
+};
+
+ListAgentAlertsRequest::ListAgentAlertsRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
+  agent_ids_(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.synthetics.v202309.ListAgentAlertsRequest)
+}
+ListAgentAlertsRequest::ListAgentAlertsRequest(const ListAgentAlertsRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      agent_ids_(from.agent_ids_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:kentik.synthetics.v202309.ListAgentAlertsRequest)
+}
+
+void ListAgentAlertsRequest::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ListAgentAlertsRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base);
+}
+
+ListAgentAlertsRequest::~ListAgentAlertsRequest() {
+  // @@protoc_insertion_point(destructor:kentik.synthetics.v202309.ListAgentAlertsRequest)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void ListAgentAlertsRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+}
+
+void ListAgentAlertsRequest::ArenaDtor(void* object) {
+  ListAgentAlertsRequest* _this = reinterpret_cast< ListAgentAlertsRequest* >(object);
+  (void)_this;
+}
+void ListAgentAlertsRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void ListAgentAlertsRequest::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const ListAgentAlertsRequest& ListAgentAlertsRequest::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ListAgentAlertsRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void ListAgentAlertsRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.synthetics.v202309.ListAgentAlertsRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  agent_ids_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* ListAgentAlertsRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // repeated string agent_ids = 1[json_name = "agentIds"];
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_agent_ids();
+            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.synthetics.v202309.ListAgentAlertsRequest.agent_ids"));
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* ListAgentAlertsRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:kentik.synthetics.v202309.ListAgentAlertsRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated string agent_ids = 1[json_name = "agentIds"];
+  for (int i = 0, n = this->_internal_agent_ids_size(); i < n; i++) {
+    const auto& s = this->_internal_agent_ids(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.synthetics.v202309.ListAgentAlertsRequest.agent_ids");
+    target = stream->WriteString(1, s, target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:kentik.synthetics.v202309.ListAgentAlertsRequest)
+  return target;
+}
+
+size_t ListAgentAlertsRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:kentik.synthetics.v202309.ListAgentAlertsRequest)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated string agent_ids = 1[json_name = "agentIds"];
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(agent_ids_.size());
+  for (int i = 0, n = agent_ids_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      agent_ids_.Get(i));
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void ListAgentAlertsRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:kentik.synthetics.v202309.ListAgentAlertsRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  const ListAgentAlertsRequest* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ListAgentAlertsRequest>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:kentik.synthetics.v202309.ListAgentAlertsRequest)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:kentik.synthetics.v202309.ListAgentAlertsRequest)
+    MergeFrom(*source);
+  }
+}
+
+void ListAgentAlertsRequest::MergeFrom(const ListAgentAlertsRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:kentik.synthetics.v202309.ListAgentAlertsRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  agent_ids_.MergeFrom(from.agent_ids_);
+}
+
+void ListAgentAlertsRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:kentik.synthetics.v202309.ListAgentAlertsRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ListAgentAlertsRequest::CopyFrom(const ListAgentAlertsRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.synthetics.v202309.ListAgentAlertsRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ListAgentAlertsRequest::IsInitialized() const {
+  return true;
+}
+
+void ListAgentAlertsRequest::InternalSwap(ListAgentAlertsRequest* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  agent_ids_.InternalSwap(&other->agent_ids_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata ListAgentAlertsRequest::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void ListAgentAlertsResponse::InitAsDefaultInstance() {
+}
+class ListAgentAlertsResponse::_Internal {
+ public:
+};
+
+ListAgentAlertsResponse::ListAgentAlertsResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
+  agent_alerts_(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.synthetics.v202309.ListAgentAlertsResponse)
+}
+ListAgentAlertsResponse::ListAgentAlertsResponse(const ListAgentAlertsResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      agent_alerts_(from.agent_alerts_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:kentik.synthetics.v202309.ListAgentAlertsResponse)
+}
+
+void ListAgentAlertsResponse::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ListAgentAlertsResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base);
+}
+
+ListAgentAlertsResponse::~ListAgentAlertsResponse() {
+  // @@protoc_insertion_point(destructor:kentik.synthetics.v202309.ListAgentAlertsResponse)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void ListAgentAlertsResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+}
+
+void ListAgentAlertsResponse::ArenaDtor(void* object) {
+  ListAgentAlertsResponse* _this = reinterpret_cast< ListAgentAlertsResponse* >(object);
+  (void)_this;
+}
+void ListAgentAlertsResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void ListAgentAlertsResponse::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const ListAgentAlertsResponse& ListAgentAlertsResponse::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ListAgentAlertsResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void ListAgentAlertsResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.synthetics.v202309.ListAgentAlertsResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  agent_alerts_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* ListAgentAlertsResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // repeated .kentik.synthetics.v202309.AgentAlert agent_alerts = 1[json_name = "agentAlerts"];
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_agent_alerts(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* ListAgentAlertsResponse::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:kentik.synthetics.v202309.ListAgentAlertsResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated .kentik.synthetics.v202309.AgentAlert agent_alerts = 1[json_name = "agentAlerts"];
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->_internal_agent_alerts_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, this->_internal_agent_alerts(i), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:kentik.synthetics.v202309.ListAgentAlertsResponse)
+  return target;
+}
+
+size_t ListAgentAlertsResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:kentik.synthetics.v202309.ListAgentAlertsResponse)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .kentik.synthetics.v202309.AgentAlert agent_alerts = 1[json_name = "agentAlerts"];
+  total_size += 1UL * this->_internal_agent_alerts_size();
+  for (const auto& msg : this->agent_alerts_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void ListAgentAlertsResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:kentik.synthetics.v202309.ListAgentAlertsResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  const ListAgentAlertsResponse* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ListAgentAlertsResponse>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:kentik.synthetics.v202309.ListAgentAlertsResponse)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:kentik.synthetics.v202309.ListAgentAlertsResponse)
+    MergeFrom(*source);
+  }
+}
+
+void ListAgentAlertsResponse::MergeFrom(const ListAgentAlertsResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:kentik.synthetics.v202309.ListAgentAlertsResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  agent_alerts_.MergeFrom(from.agent_alerts_);
+}
+
+void ListAgentAlertsResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:kentik.synthetics.v202309.ListAgentAlertsResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ListAgentAlertsResponse::CopyFrom(const ListAgentAlertsResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.synthetics.v202309.ListAgentAlertsResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ListAgentAlertsResponse::IsInitialized() const {
+  return true;
+}
+
+void ListAgentAlertsResponse::InternalSwap(ListAgentAlertsResponse* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  agent_alerts_.InternalSwap(&other->agent_alerts_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata ListAgentAlertsResponse::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void DeleteAgentAlertRequest::InitAsDefaultInstance() {
+}
+class DeleteAgentAlertRequest::_Internal {
+ public:
+};
+
+DeleteAgentAlertRequest::DeleteAgentAlertRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.synthetics.v202309.DeleteAgentAlertRequest)
+}
+DeleteAgentAlertRequest::DeleteAgentAlertRequest(const DeleteAgentAlertRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_id().empty()) {
+    id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_id(),
+      GetArena());
+  }
+  // @@protoc_insertion_point(copy_constructor:kentik.synthetics.v202309.DeleteAgentAlertRequest)
+}
+
+void DeleteAgentAlertRequest::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_DeleteAgentAlertRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base);
+  id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+DeleteAgentAlertRequest::~DeleteAgentAlertRequest() {
+  // @@protoc_insertion_point(destructor:kentik.synthetics.v202309.DeleteAgentAlertRequest)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void DeleteAgentAlertRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+  id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+void DeleteAgentAlertRequest::ArenaDtor(void* object) {
+  DeleteAgentAlertRequest* _this = reinterpret_cast< DeleteAgentAlertRequest* >(object);
+  (void)_this;
+}
+void DeleteAgentAlertRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void DeleteAgentAlertRequest::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const DeleteAgentAlertRequest& DeleteAgentAlertRequest::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_DeleteAgentAlertRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void DeleteAgentAlertRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.synthetics.v202309.DeleteAgentAlertRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* DeleteAgentAlertRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // string id = 1[json_name = "id"];
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.synthetics.v202309.DeleteAgentAlertRequest.id"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* DeleteAgentAlertRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:kentik.synthetics.v202309.DeleteAgentAlertRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string id = 1[json_name = "id"];
+  if (this->id().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_id().data(), static_cast<int>(this->_internal_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.synthetics.v202309.DeleteAgentAlertRequest.id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_id(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:kentik.synthetics.v202309.DeleteAgentAlertRequest)
+  return target;
+}
+
+size_t DeleteAgentAlertRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:kentik.synthetics.v202309.DeleteAgentAlertRequest)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string id = 1[json_name = "id"];
+  if (this->id().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_id());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void DeleteAgentAlertRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:kentik.synthetics.v202309.DeleteAgentAlertRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  const DeleteAgentAlertRequest* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<DeleteAgentAlertRequest>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:kentik.synthetics.v202309.DeleteAgentAlertRequest)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:kentik.synthetics.v202309.DeleteAgentAlertRequest)
+    MergeFrom(*source);
+  }
+}
+
+void DeleteAgentAlertRequest::MergeFrom(const DeleteAgentAlertRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:kentik.synthetics.v202309.DeleteAgentAlertRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.id().size() > 0) {
+    _internal_set_id(from._internal_id());
+  }
+}
+
+void DeleteAgentAlertRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:kentik.synthetics.v202309.DeleteAgentAlertRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void DeleteAgentAlertRequest::CopyFrom(const DeleteAgentAlertRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.synthetics.v202309.DeleteAgentAlertRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool DeleteAgentAlertRequest::IsInitialized() const {
+  return true;
+}
+
+void DeleteAgentAlertRequest::InternalSwap(DeleteAgentAlertRequest* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  id_.Swap(&other->id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata DeleteAgentAlertRequest::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void DeleteAgentAlertResponse::InitAsDefaultInstance() {
+}
+class DeleteAgentAlertResponse::_Internal {
+ public:
+};
+
+DeleteAgentAlertResponse::DeleteAgentAlertResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.synthetics.v202309.DeleteAgentAlertResponse)
+}
+DeleteAgentAlertResponse::DeleteAgentAlertResponse(const DeleteAgentAlertResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:kentik.synthetics.v202309.DeleteAgentAlertResponse)
+}
+
+void DeleteAgentAlertResponse::SharedCtor() {
+}
+
+DeleteAgentAlertResponse::~DeleteAgentAlertResponse() {
+  // @@protoc_insertion_point(destructor:kentik.synthetics.v202309.DeleteAgentAlertResponse)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void DeleteAgentAlertResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+}
+
+void DeleteAgentAlertResponse::ArenaDtor(void* object) {
+  DeleteAgentAlertResponse* _this = reinterpret_cast< DeleteAgentAlertResponse* >(object);
+  (void)_this;
+}
+void DeleteAgentAlertResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void DeleteAgentAlertResponse::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const DeleteAgentAlertResponse& DeleteAgentAlertResponse::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_DeleteAgentAlertResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void DeleteAgentAlertResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.synthetics.v202309.DeleteAgentAlertResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* DeleteAgentAlertResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* DeleteAgentAlertResponse::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:kentik.synthetics.v202309.DeleteAgentAlertResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:kentik.synthetics.v202309.DeleteAgentAlertResponse)
+  return target;
+}
+
+size_t DeleteAgentAlertResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:kentik.synthetics.v202309.DeleteAgentAlertResponse)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void DeleteAgentAlertResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:kentik.synthetics.v202309.DeleteAgentAlertResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  const DeleteAgentAlertResponse* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<DeleteAgentAlertResponse>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:kentik.synthetics.v202309.DeleteAgentAlertResponse)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:kentik.synthetics.v202309.DeleteAgentAlertResponse)
+    MergeFrom(*source);
+  }
+}
+
+void DeleteAgentAlertResponse::MergeFrom(const DeleteAgentAlertResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:kentik.synthetics.v202309.DeleteAgentAlertResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+}
+
+void DeleteAgentAlertResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:kentik.synthetics.v202309.DeleteAgentAlertResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void DeleteAgentAlertResponse::CopyFrom(const DeleteAgentAlertResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.synthetics.v202309.DeleteAgentAlertResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool DeleteAgentAlertResponse::IsInitialized() const {
+  return true;
+}
+
+void DeleteAgentAlertResponse::InternalSwap(DeleteAgentAlertResponse* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata DeleteAgentAlertResponse::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v202309
 }  // namespace synthetics
@@ -21162,6 +24075,39 @@ template<> PROTOBUF_NOINLINE ::kentik::synthetics::v202309::SetTestStatusRequest
 }
 template<> PROTOBUF_NOINLINE ::kentik::synthetics::v202309::SetTestStatusResponse* Arena::CreateMaybeMessage< ::kentik::synthetics::v202309::SetTestStatusResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::kentik::synthetics::v202309::SetTestStatusResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::kentik::synthetics::v202309::AgentAlert* Arena::CreateMaybeMessage< ::kentik::synthetics::v202309::AgentAlert >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::kentik::synthetics::v202309::AgentAlert >(arena);
+}
+template<> PROTOBUF_NOINLINE ::kentik::synthetics::v202309::CreateAgentAlertRequest* Arena::CreateMaybeMessage< ::kentik::synthetics::v202309::CreateAgentAlertRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::kentik::synthetics::v202309::CreateAgentAlertRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::kentik::synthetics::v202309::CreateAgentAlertResponse* Arena::CreateMaybeMessage< ::kentik::synthetics::v202309::CreateAgentAlertResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::kentik::synthetics::v202309::CreateAgentAlertResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::kentik::synthetics::v202309::UpdateAgentAlertRequest* Arena::CreateMaybeMessage< ::kentik::synthetics::v202309::UpdateAgentAlertRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::kentik::synthetics::v202309::UpdateAgentAlertRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::kentik::synthetics::v202309::UpdateAgentAlertResponse* Arena::CreateMaybeMessage< ::kentik::synthetics::v202309::UpdateAgentAlertResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::kentik::synthetics::v202309::UpdateAgentAlertResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::kentik::synthetics::v202309::GetAgentAlertRequest* Arena::CreateMaybeMessage< ::kentik::synthetics::v202309::GetAgentAlertRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::kentik::synthetics::v202309::GetAgentAlertRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::kentik::synthetics::v202309::GetAgentAlertResponse* Arena::CreateMaybeMessage< ::kentik::synthetics::v202309::GetAgentAlertResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::kentik::synthetics::v202309::GetAgentAlertResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::kentik::synthetics::v202309::ListAgentAlertsRequest* Arena::CreateMaybeMessage< ::kentik::synthetics::v202309::ListAgentAlertsRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::kentik::synthetics::v202309::ListAgentAlertsRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::kentik::synthetics::v202309::ListAgentAlertsResponse* Arena::CreateMaybeMessage< ::kentik::synthetics::v202309::ListAgentAlertsResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::kentik::synthetics::v202309::ListAgentAlertsResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::kentik::synthetics::v202309::DeleteAgentAlertRequest* Arena::CreateMaybeMessage< ::kentik::synthetics::v202309::DeleteAgentAlertRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::kentik::synthetics::v202309::DeleteAgentAlertRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::kentik::synthetics::v202309::DeleteAgentAlertResponse* Arena::CreateMaybeMessage< ::kentik::synthetics::v202309::DeleteAgentAlertResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::kentik::synthetics::v202309::DeleteAgentAlertResponse >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

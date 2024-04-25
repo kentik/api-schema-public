@@ -83,6 +83,17 @@ typedef struct Kentik__Synthetics__V202309__DeleteTestRequest Kentik__Synthetics
 typedef struct Kentik__Synthetics__V202309__DeleteTestResponse Kentik__Synthetics__V202309__DeleteTestResponse;
 typedef struct Kentik__Synthetics__V202309__SetTestStatusRequest Kentik__Synthetics__V202309__SetTestStatusRequest;
 typedef struct Kentik__Synthetics__V202309__SetTestStatusResponse Kentik__Synthetics__V202309__SetTestStatusResponse;
+typedef struct Kentik__Synthetics__V202309__AgentAlert Kentik__Synthetics__V202309__AgentAlert;
+typedef struct Kentik__Synthetics__V202309__CreateAgentAlertRequest Kentik__Synthetics__V202309__CreateAgentAlertRequest;
+typedef struct Kentik__Synthetics__V202309__CreateAgentAlertResponse Kentik__Synthetics__V202309__CreateAgentAlertResponse;
+typedef struct Kentik__Synthetics__V202309__UpdateAgentAlertRequest Kentik__Synthetics__V202309__UpdateAgentAlertRequest;
+typedef struct Kentik__Synthetics__V202309__UpdateAgentAlertResponse Kentik__Synthetics__V202309__UpdateAgentAlertResponse;
+typedef struct Kentik__Synthetics__V202309__GetAgentAlertRequest Kentik__Synthetics__V202309__GetAgentAlertRequest;
+typedef struct Kentik__Synthetics__V202309__GetAgentAlertResponse Kentik__Synthetics__V202309__GetAgentAlertResponse;
+typedef struct Kentik__Synthetics__V202309__ListAgentAlertsRequest Kentik__Synthetics__V202309__ListAgentAlertsRequest;
+typedef struct Kentik__Synthetics__V202309__ListAgentAlertsResponse Kentik__Synthetics__V202309__ListAgentAlertsResponse;
+typedef struct Kentik__Synthetics__V202309__DeleteAgentAlertRequest Kentik__Synthetics__V202309__DeleteAgentAlertRequest;
+typedef struct Kentik__Synthetics__V202309__DeleteAgentAlertResponse Kentik__Synthetics__V202309__DeleteAgentAlertResponse;
 
 
 /* --- enums --- */
@@ -1231,6 +1242,131 @@ struct  Kentik__Synthetics__V202309__SetTestStatusResponse
      }
 
 
+struct  Kentik__Synthetics__V202309__AgentAlert
+{
+  ProtobufCMessage base;
+  char *id;
+  uint32_t threshold_seconds;
+  size_t n_notification_channel_ids;
+  char **notification_channel_ids;
+  char *agent_id;
+  char *agent_name;
+};
+#define KENTIK__SYNTHETICS__V202309__AGENT_ALERT__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__synthetics__v202309__agent_alert__descriptor) \
+    , (char *)protobuf_c_empty_string, 0, 0,NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
+
+
+struct  Kentik__Synthetics__V202309__CreateAgentAlertRequest
+{
+  ProtobufCMessage base;
+  uint32_t threshold_seconds;
+  size_t n_notification_channel_ids;
+  char **notification_channel_ids;
+  char *agent_id;
+};
+#define KENTIK__SYNTHETICS__V202309__CREATE_AGENT_ALERT_REQUEST__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__synthetics__v202309__create_agent_alert_request__descriptor) \
+    , 0, 0,NULL, (char *)protobuf_c_empty_string }
+
+
+struct  Kentik__Synthetics__V202309__CreateAgentAlertResponse
+{
+  ProtobufCMessage base;
+  Kentik__Synthetics__V202309__AgentAlert *agent_alert;
+};
+#define KENTIK__SYNTHETICS__V202309__CREATE_AGENT_ALERT_RESPONSE__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__synthetics__v202309__create_agent_alert_response__descriptor) \
+    , NULL }
+
+
+struct  Kentik__Synthetics__V202309__UpdateAgentAlertRequest
+{
+  ProtobufCMessage base;
+  char *id;
+  uint32_t threshold_seconds;
+  size_t n_notification_channel_ids;
+  char **notification_channel_ids;
+};
+#define KENTIK__SYNTHETICS__V202309__UPDATE_AGENT_ALERT_REQUEST__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__synthetics__v202309__update_agent_alert_request__descriptor) \
+    , (char *)protobuf_c_empty_string, 0, 0,NULL }
+
+
+struct  Kentik__Synthetics__V202309__UpdateAgentAlertResponse
+{
+  ProtobufCMessage base;
+  Kentik__Synthetics__V202309__AgentAlert *agent_alert;
+};
+#define KENTIK__SYNTHETICS__V202309__UPDATE_AGENT_ALERT_RESPONSE__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__synthetics__v202309__update_agent_alert_response__descriptor) \
+    , NULL }
+
+
+struct  Kentik__Synthetics__V202309__GetAgentAlertRequest
+{
+  ProtobufCMessage base;
+  char *id;
+};
+#define KENTIK__SYNTHETICS__V202309__GET_AGENT_ALERT_REQUEST__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__synthetics__v202309__get_agent_alert_request__descriptor) \
+    , (char *)protobuf_c_empty_string }
+
+
+struct  Kentik__Synthetics__V202309__GetAgentAlertResponse
+{
+  ProtobufCMessage base;
+  Kentik__Synthetics__V202309__AgentAlert *agent_alert;
+};
+#define KENTIK__SYNTHETICS__V202309__GET_AGENT_ALERT_RESPONSE__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__synthetics__v202309__get_agent_alert_response__descriptor) \
+    , NULL }
+
+
+struct  Kentik__Synthetics__V202309__ListAgentAlertsRequest
+{
+  ProtobufCMessage base;
+  /*
+   * Optional list of agent ids to retrieve alert configurations for
+   */
+  size_t n_agent_ids;
+  char **agent_ids;
+};
+#define KENTIK__SYNTHETICS__V202309__LIST_AGENT_ALERTS_REQUEST__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__synthetics__v202309__list_agent_alerts_request__descriptor) \
+    , 0,NULL }
+
+
+struct  Kentik__Synthetics__V202309__ListAgentAlertsResponse
+{
+  ProtobufCMessage base;
+  size_t n_agent_alerts;
+  Kentik__Synthetics__V202309__AgentAlert **agent_alerts;
+};
+#define KENTIK__SYNTHETICS__V202309__LIST_AGENT_ALERTS_RESPONSE__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__synthetics__v202309__list_agent_alerts_response__descriptor) \
+    , 0,NULL }
+
+
+struct  Kentik__Synthetics__V202309__DeleteAgentAlertRequest
+{
+  ProtobufCMessage base;
+  char *id;
+};
+#define KENTIK__SYNTHETICS__V202309__DELETE_AGENT_ALERT_REQUEST__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__synthetics__v202309__delete_agent_alert_request__descriptor) \
+    , (char *)protobuf_c_empty_string }
+
+
+struct  Kentik__Synthetics__V202309__DeleteAgentAlertResponse
+{
+  ProtobufCMessage base;
+};
+#define KENTIK__SYNTHETICS__V202309__DELETE_AGENT_ALERT_RESPONSE__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__synthetics__v202309__delete_agent_alert_response__descriptor) \
+     }
+
+
 /* Kentik__Synthetics__V202309__Agent methods */
 void   kentik__synthetics__v202309__agent__init
                      (Kentik__Synthetics__V202309__Agent         *message);
@@ -2310,6 +2446,215 @@ Kentik__Synthetics__V202309__SetTestStatusResponse *
 void   kentik__synthetics__v202309__set_test_status_response__free_unpacked
                      (Kentik__Synthetics__V202309__SetTestStatusResponse *message,
                       ProtobufCAllocator *allocator);
+/* Kentik__Synthetics__V202309__AgentAlert methods */
+void   kentik__synthetics__v202309__agent_alert__init
+                     (Kentik__Synthetics__V202309__AgentAlert         *message);
+size_t kentik__synthetics__v202309__agent_alert__get_packed_size
+                     (const Kentik__Synthetics__V202309__AgentAlert   *message);
+size_t kentik__synthetics__v202309__agent_alert__pack
+                     (const Kentik__Synthetics__V202309__AgentAlert   *message,
+                      uint8_t             *out);
+size_t kentik__synthetics__v202309__agent_alert__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__AgentAlert   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Synthetics__V202309__AgentAlert *
+       kentik__synthetics__v202309__agent_alert__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__synthetics__v202309__agent_alert__free_unpacked
+                     (Kentik__Synthetics__V202309__AgentAlert *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Synthetics__V202309__CreateAgentAlertRequest methods */
+void   kentik__synthetics__v202309__create_agent_alert_request__init
+                     (Kentik__Synthetics__V202309__CreateAgentAlertRequest         *message);
+size_t kentik__synthetics__v202309__create_agent_alert_request__get_packed_size
+                     (const Kentik__Synthetics__V202309__CreateAgentAlertRequest   *message);
+size_t kentik__synthetics__v202309__create_agent_alert_request__pack
+                     (const Kentik__Synthetics__V202309__CreateAgentAlertRequest   *message,
+                      uint8_t             *out);
+size_t kentik__synthetics__v202309__create_agent_alert_request__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__CreateAgentAlertRequest   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Synthetics__V202309__CreateAgentAlertRequest *
+       kentik__synthetics__v202309__create_agent_alert_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__synthetics__v202309__create_agent_alert_request__free_unpacked
+                     (Kentik__Synthetics__V202309__CreateAgentAlertRequest *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Synthetics__V202309__CreateAgentAlertResponse methods */
+void   kentik__synthetics__v202309__create_agent_alert_response__init
+                     (Kentik__Synthetics__V202309__CreateAgentAlertResponse         *message);
+size_t kentik__synthetics__v202309__create_agent_alert_response__get_packed_size
+                     (const Kentik__Synthetics__V202309__CreateAgentAlertResponse   *message);
+size_t kentik__synthetics__v202309__create_agent_alert_response__pack
+                     (const Kentik__Synthetics__V202309__CreateAgentAlertResponse   *message,
+                      uint8_t             *out);
+size_t kentik__synthetics__v202309__create_agent_alert_response__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__CreateAgentAlertResponse   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Synthetics__V202309__CreateAgentAlertResponse *
+       kentik__synthetics__v202309__create_agent_alert_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__synthetics__v202309__create_agent_alert_response__free_unpacked
+                     (Kentik__Synthetics__V202309__CreateAgentAlertResponse *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Synthetics__V202309__UpdateAgentAlertRequest methods */
+void   kentik__synthetics__v202309__update_agent_alert_request__init
+                     (Kentik__Synthetics__V202309__UpdateAgentAlertRequest         *message);
+size_t kentik__synthetics__v202309__update_agent_alert_request__get_packed_size
+                     (const Kentik__Synthetics__V202309__UpdateAgentAlertRequest   *message);
+size_t kentik__synthetics__v202309__update_agent_alert_request__pack
+                     (const Kentik__Synthetics__V202309__UpdateAgentAlertRequest   *message,
+                      uint8_t             *out);
+size_t kentik__synthetics__v202309__update_agent_alert_request__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__UpdateAgentAlertRequest   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Synthetics__V202309__UpdateAgentAlertRequest *
+       kentik__synthetics__v202309__update_agent_alert_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__synthetics__v202309__update_agent_alert_request__free_unpacked
+                     (Kentik__Synthetics__V202309__UpdateAgentAlertRequest *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Synthetics__V202309__UpdateAgentAlertResponse methods */
+void   kentik__synthetics__v202309__update_agent_alert_response__init
+                     (Kentik__Synthetics__V202309__UpdateAgentAlertResponse         *message);
+size_t kentik__synthetics__v202309__update_agent_alert_response__get_packed_size
+                     (const Kentik__Synthetics__V202309__UpdateAgentAlertResponse   *message);
+size_t kentik__synthetics__v202309__update_agent_alert_response__pack
+                     (const Kentik__Synthetics__V202309__UpdateAgentAlertResponse   *message,
+                      uint8_t             *out);
+size_t kentik__synthetics__v202309__update_agent_alert_response__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__UpdateAgentAlertResponse   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Synthetics__V202309__UpdateAgentAlertResponse *
+       kentik__synthetics__v202309__update_agent_alert_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__synthetics__v202309__update_agent_alert_response__free_unpacked
+                     (Kentik__Synthetics__V202309__UpdateAgentAlertResponse *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Synthetics__V202309__GetAgentAlertRequest methods */
+void   kentik__synthetics__v202309__get_agent_alert_request__init
+                     (Kentik__Synthetics__V202309__GetAgentAlertRequest         *message);
+size_t kentik__synthetics__v202309__get_agent_alert_request__get_packed_size
+                     (const Kentik__Synthetics__V202309__GetAgentAlertRequest   *message);
+size_t kentik__synthetics__v202309__get_agent_alert_request__pack
+                     (const Kentik__Synthetics__V202309__GetAgentAlertRequest   *message,
+                      uint8_t             *out);
+size_t kentik__synthetics__v202309__get_agent_alert_request__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__GetAgentAlertRequest   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Synthetics__V202309__GetAgentAlertRequest *
+       kentik__synthetics__v202309__get_agent_alert_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__synthetics__v202309__get_agent_alert_request__free_unpacked
+                     (Kentik__Synthetics__V202309__GetAgentAlertRequest *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Synthetics__V202309__GetAgentAlertResponse methods */
+void   kentik__synthetics__v202309__get_agent_alert_response__init
+                     (Kentik__Synthetics__V202309__GetAgentAlertResponse         *message);
+size_t kentik__synthetics__v202309__get_agent_alert_response__get_packed_size
+                     (const Kentik__Synthetics__V202309__GetAgentAlertResponse   *message);
+size_t kentik__synthetics__v202309__get_agent_alert_response__pack
+                     (const Kentik__Synthetics__V202309__GetAgentAlertResponse   *message,
+                      uint8_t             *out);
+size_t kentik__synthetics__v202309__get_agent_alert_response__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__GetAgentAlertResponse   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Synthetics__V202309__GetAgentAlertResponse *
+       kentik__synthetics__v202309__get_agent_alert_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__synthetics__v202309__get_agent_alert_response__free_unpacked
+                     (Kentik__Synthetics__V202309__GetAgentAlertResponse *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Synthetics__V202309__ListAgentAlertsRequest methods */
+void   kentik__synthetics__v202309__list_agent_alerts_request__init
+                     (Kentik__Synthetics__V202309__ListAgentAlertsRequest         *message);
+size_t kentik__synthetics__v202309__list_agent_alerts_request__get_packed_size
+                     (const Kentik__Synthetics__V202309__ListAgentAlertsRequest   *message);
+size_t kentik__synthetics__v202309__list_agent_alerts_request__pack
+                     (const Kentik__Synthetics__V202309__ListAgentAlertsRequest   *message,
+                      uint8_t             *out);
+size_t kentik__synthetics__v202309__list_agent_alerts_request__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__ListAgentAlertsRequest   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Synthetics__V202309__ListAgentAlertsRequest *
+       kentik__synthetics__v202309__list_agent_alerts_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__synthetics__v202309__list_agent_alerts_request__free_unpacked
+                     (Kentik__Synthetics__V202309__ListAgentAlertsRequest *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Synthetics__V202309__ListAgentAlertsResponse methods */
+void   kentik__synthetics__v202309__list_agent_alerts_response__init
+                     (Kentik__Synthetics__V202309__ListAgentAlertsResponse         *message);
+size_t kentik__synthetics__v202309__list_agent_alerts_response__get_packed_size
+                     (const Kentik__Synthetics__V202309__ListAgentAlertsResponse   *message);
+size_t kentik__synthetics__v202309__list_agent_alerts_response__pack
+                     (const Kentik__Synthetics__V202309__ListAgentAlertsResponse   *message,
+                      uint8_t             *out);
+size_t kentik__synthetics__v202309__list_agent_alerts_response__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__ListAgentAlertsResponse   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Synthetics__V202309__ListAgentAlertsResponse *
+       kentik__synthetics__v202309__list_agent_alerts_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__synthetics__v202309__list_agent_alerts_response__free_unpacked
+                     (Kentik__Synthetics__V202309__ListAgentAlertsResponse *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Synthetics__V202309__DeleteAgentAlertRequest methods */
+void   kentik__synthetics__v202309__delete_agent_alert_request__init
+                     (Kentik__Synthetics__V202309__DeleteAgentAlertRequest         *message);
+size_t kentik__synthetics__v202309__delete_agent_alert_request__get_packed_size
+                     (const Kentik__Synthetics__V202309__DeleteAgentAlertRequest   *message);
+size_t kentik__synthetics__v202309__delete_agent_alert_request__pack
+                     (const Kentik__Synthetics__V202309__DeleteAgentAlertRequest   *message,
+                      uint8_t             *out);
+size_t kentik__synthetics__v202309__delete_agent_alert_request__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__DeleteAgentAlertRequest   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Synthetics__V202309__DeleteAgentAlertRequest *
+       kentik__synthetics__v202309__delete_agent_alert_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__synthetics__v202309__delete_agent_alert_request__free_unpacked
+                     (Kentik__Synthetics__V202309__DeleteAgentAlertRequest *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Synthetics__V202309__DeleteAgentAlertResponse methods */
+void   kentik__synthetics__v202309__delete_agent_alert_response__init
+                     (Kentik__Synthetics__V202309__DeleteAgentAlertResponse         *message);
+size_t kentik__synthetics__v202309__delete_agent_alert_response__get_packed_size
+                     (const Kentik__Synthetics__V202309__DeleteAgentAlertResponse   *message);
+size_t kentik__synthetics__v202309__delete_agent_alert_response__pack
+                     (const Kentik__Synthetics__V202309__DeleteAgentAlertResponse   *message,
+                      uint8_t             *out);
+size_t kentik__synthetics__v202309__delete_agent_alert_response__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__DeleteAgentAlertResponse   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Synthetics__V202309__DeleteAgentAlertResponse *
+       kentik__synthetics__v202309__delete_agent_alert_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__synthetics__v202309__delete_agent_alert_response__free_unpacked
+                     (Kentik__Synthetics__V202309__DeleteAgentAlertResponse *message,
+                      ProtobufCAllocator *allocator);
 /* --- per-message closures --- */
 
 typedef void (*Kentik__Synthetics__V202309__Agent_Closure)
@@ -2495,6 +2840,39 @@ typedef void (*Kentik__Synthetics__V202309__SetTestStatusRequest_Closure)
 typedef void (*Kentik__Synthetics__V202309__SetTestStatusResponse_Closure)
                  (const Kentik__Synthetics__V202309__SetTestStatusResponse *message,
                   void *closure_data);
+typedef void (*Kentik__Synthetics__V202309__AgentAlert_Closure)
+                 (const Kentik__Synthetics__V202309__AgentAlert *message,
+                  void *closure_data);
+typedef void (*Kentik__Synthetics__V202309__CreateAgentAlertRequest_Closure)
+                 (const Kentik__Synthetics__V202309__CreateAgentAlertRequest *message,
+                  void *closure_data);
+typedef void (*Kentik__Synthetics__V202309__CreateAgentAlertResponse_Closure)
+                 (const Kentik__Synthetics__V202309__CreateAgentAlertResponse *message,
+                  void *closure_data);
+typedef void (*Kentik__Synthetics__V202309__UpdateAgentAlertRequest_Closure)
+                 (const Kentik__Synthetics__V202309__UpdateAgentAlertRequest *message,
+                  void *closure_data);
+typedef void (*Kentik__Synthetics__V202309__UpdateAgentAlertResponse_Closure)
+                 (const Kentik__Synthetics__V202309__UpdateAgentAlertResponse *message,
+                  void *closure_data);
+typedef void (*Kentik__Synthetics__V202309__GetAgentAlertRequest_Closure)
+                 (const Kentik__Synthetics__V202309__GetAgentAlertRequest *message,
+                  void *closure_data);
+typedef void (*Kentik__Synthetics__V202309__GetAgentAlertResponse_Closure)
+                 (const Kentik__Synthetics__V202309__GetAgentAlertResponse *message,
+                  void *closure_data);
+typedef void (*Kentik__Synthetics__V202309__ListAgentAlertsRequest_Closure)
+                 (const Kentik__Synthetics__V202309__ListAgentAlertsRequest *message,
+                  void *closure_data);
+typedef void (*Kentik__Synthetics__V202309__ListAgentAlertsResponse_Closure)
+                 (const Kentik__Synthetics__V202309__ListAgentAlertsResponse *message,
+                  void *closure_data);
+typedef void (*Kentik__Synthetics__V202309__DeleteAgentAlertRequest_Closure)
+                 (const Kentik__Synthetics__V202309__DeleteAgentAlertRequest *message,
+                  void *closure_data);
+typedef void (*Kentik__Synthetics__V202309__DeleteAgentAlertResponse_Closure)
+                 (const Kentik__Synthetics__V202309__DeleteAgentAlertResponse *message,
+                  void *closure_data);
 
 /* --- services --- */
 
@@ -2572,6 +2950,26 @@ struct Kentik__Synthetics__V202309__SyntheticsAdminService_Service
                           const Kentik__Synthetics__V202309__SetTestStatusRequest *input,
                           Kentik__Synthetics__V202309__SetTestStatusResponse_Closure closure,
                           void *closure_data);
+  void (*create_agent_alert)(Kentik__Synthetics__V202309__SyntheticsAdminService_Service *service,
+                             const Kentik__Synthetics__V202309__CreateAgentAlertRequest *input,
+                             Kentik__Synthetics__V202309__CreateAgentAlertResponse_Closure closure,
+                             void *closure_data);
+  void (*update_agent_alert)(Kentik__Synthetics__V202309__SyntheticsAdminService_Service *service,
+                             const Kentik__Synthetics__V202309__UpdateAgentAlertRequest *input,
+                             Kentik__Synthetics__V202309__UpdateAgentAlertResponse_Closure closure,
+                             void *closure_data);
+  void (*get_agent_alert)(Kentik__Synthetics__V202309__SyntheticsAdminService_Service *service,
+                          const Kentik__Synthetics__V202309__GetAgentAlertRequest *input,
+                          Kentik__Synthetics__V202309__GetAgentAlertResponse_Closure closure,
+                          void *closure_data);
+  void (*list_agent_alerts)(Kentik__Synthetics__V202309__SyntheticsAdminService_Service *service,
+                            const Kentik__Synthetics__V202309__ListAgentAlertsRequest *input,
+                            Kentik__Synthetics__V202309__ListAgentAlertsResponse_Closure closure,
+                            void *closure_data);
+  void (*delete_agent_alert)(Kentik__Synthetics__V202309__SyntheticsAdminService_Service *service,
+                             const Kentik__Synthetics__V202309__DeleteAgentAlertRequest *input,
+                             Kentik__Synthetics__V202309__DeleteAgentAlertResponse_Closure closure,
+                             void *closure_data);
 };
 typedef void (*Kentik__Synthetics__V202309__SyntheticsAdminService_ServiceDestroy)(Kentik__Synthetics__V202309__SyntheticsAdminService_Service *);
 void kentik__synthetics__v202309__synthetics_admin_service__init (Kentik__Synthetics__V202309__SyntheticsAdminService_Service *service,
@@ -2589,7 +2987,12 @@ void kentik__synthetics__v202309__synthetics_admin_service__init (Kentik__Synthe
       function_prefix__ ## get_test,\
       function_prefix__ ## update_test,\
       function_prefix__ ## delete_test,\
-      function_prefix__ ## set_test_status  }
+      function_prefix__ ## set_test_status,\
+      function_prefix__ ## create_agent_alert,\
+      function_prefix__ ## update_agent_alert,\
+      function_prefix__ ## get_agent_alert,\
+      function_prefix__ ## list_agent_alerts,\
+      function_prefix__ ## delete_agent_alert  }
 void kentik__synthetics__v202309__synthetics_admin_service__list_agents(ProtobufCService *service,
                                                                         const Kentik__Synthetics__V202309__ListAgentsRequest *input,
                                                                         Kentik__Synthetics__V202309__ListAgentsResponse_Closure closure,
@@ -2630,6 +3033,26 @@ void kentik__synthetics__v202309__synthetics_admin_service__set_test_status(Prot
                                                                             const Kentik__Synthetics__V202309__SetTestStatusRequest *input,
                                                                             Kentik__Synthetics__V202309__SetTestStatusResponse_Closure closure,
                                                                             void *closure_data);
+void kentik__synthetics__v202309__synthetics_admin_service__create_agent_alert(ProtobufCService *service,
+                                                                               const Kentik__Synthetics__V202309__CreateAgentAlertRequest *input,
+                                                                               Kentik__Synthetics__V202309__CreateAgentAlertResponse_Closure closure,
+                                                                               void *closure_data);
+void kentik__synthetics__v202309__synthetics_admin_service__update_agent_alert(ProtobufCService *service,
+                                                                               const Kentik__Synthetics__V202309__UpdateAgentAlertRequest *input,
+                                                                               Kentik__Synthetics__V202309__UpdateAgentAlertResponse_Closure closure,
+                                                                               void *closure_data);
+void kentik__synthetics__v202309__synthetics_admin_service__get_agent_alert(ProtobufCService *service,
+                                                                            const Kentik__Synthetics__V202309__GetAgentAlertRequest *input,
+                                                                            Kentik__Synthetics__V202309__GetAgentAlertResponse_Closure closure,
+                                                                            void *closure_data);
+void kentik__synthetics__v202309__synthetics_admin_service__list_agent_alerts(ProtobufCService *service,
+                                                                              const Kentik__Synthetics__V202309__ListAgentAlertsRequest *input,
+                                                                              Kentik__Synthetics__V202309__ListAgentAlertsResponse_Closure closure,
+                                                                              void *closure_data);
+void kentik__synthetics__v202309__synthetics_admin_service__delete_agent_alert(ProtobufCService *service,
+                                                                               const Kentik__Synthetics__V202309__DeleteAgentAlertRequest *input,
+                                                                               Kentik__Synthetics__V202309__DeleteAgentAlertResponse_Closure closure,
+                                                                               void *closure_data);
 
 /* --- descriptors --- */
 
@@ -2699,6 +3122,17 @@ extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__delete_test
 extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__delete_test_response__descriptor;
 extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__set_test_status_request__descriptor;
 extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__set_test_status_response__descriptor;
+extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__agent_alert__descriptor;
+extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__create_agent_alert_request__descriptor;
+extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__create_agent_alert_response__descriptor;
+extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__update_agent_alert_request__descriptor;
+extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__update_agent_alert_response__descriptor;
+extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__get_agent_alert_request__descriptor;
+extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__get_agent_alert_response__descriptor;
+extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__list_agent_alerts_request__descriptor;
+extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__list_agent_alerts_response__descriptor;
+extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__delete_agent_alert_request__descriptor;
+extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__delete_agent_alert_response__descriptor;
 extern const ProtobufCServiceDescriptor kentik__synthetics__v202309__synthetics_data_service__descriptor;
 extern const ProtobufCServiceDescriptor kentik__synthetics__v202309__synthetics_admin_service__descriptor;
 

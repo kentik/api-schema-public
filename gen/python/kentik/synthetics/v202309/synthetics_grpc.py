@@ -105,6 +105,26 @@ class SyntheticsAdminServiceBase(abc.ABC):
     async def SetTestStatus(self, stream: 'grpclib.server.Stream[kentik.synthetics.v202309.synthetics_pb2.SetTestStatusRequest, kentik.synthetics.v202309.synthetics_pb2.SetTestStatusResponse]') -> None:
         pass
 
+    @abc.abstractmethod
+    async def CreateAgentAlert(self, stream: 'grpclib.server.Stream[kentik.synthetics.v202309.synthetics_pb2.CreateAgentAlertRequest, kentik.synthetics.v202309.synthetics_pb2.CreateAgentAlertResponse]') -> None:
+        pass
+
+    @abc.abstractmethod
+    async def UpdateAgentAlert(self, stream: 'grpclib.server.Stream[kentik.synthetics.v202309.synthetics_pb2.UpdateAgentAlertRequest, kentik.synthetics.v202309.synthetics_pb2.UpdateAgentAlertResponse]') -> None:
+        pass
+
+    @abc.abstractmethod
+    async def GetAgentAlert(self, stream: 'grpclib.server.Stream[kentik.synthetics.v202309.synthetics_pb2.GetAgentAlertRequest, kentik.synthetics.v202309.synthetics_pb2.GetAgentAlertResponse]') -> None:
+        pass
+
+    @abc.abstractmethod
+    async def ListAgentAlerts(self, stream: 'grpclib.server.Stream[kentik.synthetics.v202309.synthetics_pb2.ListAgentAlertsRequest, kentik.synthetics.v202309.synthetics_pb2.ListAgentAlertsResponse]') -> None:
+        pass
+
+    @abc.abstractmethod
+    async def DeleteAgentAlert(self, stream: 'grpclib.server.Stream[kentik.synthetics.v202309.synthetics_pb2.DeleteAgentAlertRequest, kentik.synthetics.v202309.synthetics_pb2.DeleteAgentAlertResponse]') -> None:
+        pass
+
     def __mapping__(self) -> typing.Dict[str, grpclib.const.Handler]:
         return {
             '/kentik.synthetics.v202309.SyntheticsAdminService/ListAgents': grpclib.const.Handler(
@@ -166,6 +186,36 @@ class SyntheticsAdminServiceBase(abc.ABC):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 kentik.synthetics.v202309.synthetics_pb2.SetTestStatusRequest,
                 kentik.synthetics.v202309.synthetics_pb2.SetTestStatusResponse,
+            ),
+            '/kentik.synthetics.v202309.SyntheticsAdminService/CreateAgentAlert': grpclib.const.Handler(
+                self.CreateAgentAlert,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                kentik.synthetics.v202309.synthetics_pb2.CreateAgentAlertRequest,
+                kentik.synthetics.v202309.synthetics_pb2.CreateAgentAlertResponse,
+            ),
+            '/kentik.synthetics.v202309.SyntheticsAdminService/UpdateAgentAlert': grpclib.const.Handler(
+                self.UpdateAgentAlert,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                kentik.synthetics.v202309.synthetics_pb2.UpdateAgentAlertRequest,
+                kentik.synthetics.v202309.synthetics_pb2.UpdateAgentAlertResponse,
+            ),
+            '/kentik.synthetics.v202309.SyntheticsAdminService/GetAgentAlert': grpclib.const.Handler(
+                self.GetAgentAlert,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                kentik.synthetics.v202309.synthetics_pb2.GetAgentAlertRequest,
+                kentik.synthetics.v202309.synthetics_pb2.GetAgentAlertResponse,
+            ),
+            '/kentik.synthetics.v202309.SyntheticsAdminService/ListAgentAlerts': grpclib.const.Handler(
+                self.ListAgentAlerts,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                kentik.synthetics.v202309.synthetics_pb2.ListAgentAlertsRequest,
+                kentik.synthetics.v202309.synthetics_pb2.ListAgentAlertsResponse,
+            ),
+            '/kentik.synthetics.v202309.SyntheticsAdminService/DeleteAgentAlert': grpclib.const.Handler(
+                self.DeleteAgentAlert,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                kentik.synthetics.v202309.synthetics_pb2.DeleteAgentAlertRequest,
+                kentik.synthetics.v202309.synthetics_pb2.DeleteAgentAlertResponse,
             ),
         }
 
@@ -232,4 +282,34 @@ class SyntheticsAdminServiceStub:
             '/kentik.synthetics.v202309.SyntheticsAdminService/SetTestStatus',
             kentik.synthetics.v202309.synthetics_pb2.SetTestStatusRequest,
             kentik.synthetics.v202309.synthetics_pb2.SetTestStatusResponse,
+        )
+        self.CreateAgentAlert = grpclib.client.UnaryUnaryMethod(
+            channel,
+            '/kentik.synthetics.v202309.SyntheticsAdminService/CreateAgentAlert',
+            kentik.synthetics.v202309.synthetics_pb2.CreateAgentAlertRequest,
+            kentik.synthetics.v202309.synthetics_pb2.CreateAgentAlertResponse,
+        )
+        self.UpdateAgentAlert = grpclib.client.UnaryUnaryMethod(
+            channel,
+            '/kentik.synthetics.v202309.SyntheticsAdminService/UpdateAgentAlert',
+            kentik.synthetics.v202309.synthetics_pb2.UpdateAgentAlertRequest,
+            kentik.synthetics.v202309.synthetics_pb2.UpdateAgentAlertResponse,
+        )
+        self.GetAgentAlert = grpclib.client.UnaryUnaryMethod(
+            channel,
+            '/kentik.synthetics.v202309.SyntheticsAdminService/GetAgentAlert',
+            kentik.synthetics.v202309.synthetics_pb2.GetAgentAlertRequest,
+            kentik.synthetics.v202309.synthetics_pb2.GetAgentAlertResponse,
+        )
+        self.ListAgentAlerts = grpclib.client.UnaryUnaryMethod(
+            channel,
+            '/kentik.synthetics.v202309.SyntheticsAdminService/ListAgentAlerts',
+            kentik.synthetics.v202309.synthetics_pb2.ListAgentAlertsRequest,
+            kentik.synthetics.v202309.synthetics_pb2.ListAgentAlertsResponse,
+        )
+        self.DeleteAgentAlert = grpclib.client.UnaryUnaryMethod(
+            channel,
+            '/kentik.synthetics.v202309.SyntheticsAdminService/DeleteAgentAlert',
+            kentik.synthetics.v202309.synthetics_pb2.DeleteAgentAlertRequest,
+            kentik.synthetics.v202309.synthetics_pb2.DeleteAgentAlertResponse,
         )

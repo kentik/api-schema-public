@@ -2557,6 +2557,501 @@ void   kentik__synthetics__v202309__set_test_status_response__free_unpacked
   assert(message->base.descriptor == &kentik__synthetics__v202309__set_test_status_response__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   kentik__synthetics__v202309__agent_alert__init
+                     (Kentik__Synthetics__V202309__AgentAlert         *message)
+{
+  static const Kentik__Synthetics__V202309__AgentAlert init_value = KENTIK__SYNTHETICS__V202309__AGENT_ALERT__INIT;
+  *message = init_value;
+}
+size_t kentik__synthetics__v202309__agent_alert__get_packed_size
+                     (const Kentik__Synthetics__V202309__AgentAlert *message)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__agent_alert__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__synthetics__v202309__agent_alert__pack
+                     (const Kentik__Synthetics__V202309__AgentAlert *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__agent_alert__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__synthetics__v202309__agent_alert__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__AgentAlert *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__agent_alert__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Synthetics__V202309__AgentAlert *
+       kentik__synthetics__v202309__agent_alert__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Synthetics__V202309__AgentAlert *)
+     protobuf_c_message_unpack (&kentik__synthetics__v202309__agent_alert__descriptor,
+                                allocator, len, data);
+}
+void   kentik__synthetics__v202309__agent_alert__free_unpacked
+                     (Kentik__Synthetics__V202309__AgentAlert *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__synthetics__v202309__agent_alert__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__synthetics__v202309__create_agent_alert_request__init
+                     (Kentik__Synthetics__V202309__CreateAgentAlertRequest         *message)
+{
+  static const Kentik__Synthetics__V202309__CreateAgentAlertRequest init_value = KENTIK__SYNTHETICS__V202309__CREATE_AGENT_ALERT_REQUEST__INIT;
+  *message = init_value;
+}
+size_t kentik__synthetics__v202309__create_agent_alert_request__get_packed_size
+                     (const Kentik__Synthetics__V202309__CreateAgentAlertRequest *message)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__create_agent_alert_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__synthetics__v202309__create_agent_alert_request__pack
+                     (const Kentik__Synthetics__V202309__CreateAgentAlertRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__create_agent_alert_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__synthetics__v202309__create_agent_alert_request__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__CreateAgentAlertRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__create_agent_alert_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Synthetics__V202309__CreateAgentAlertRequest *
+       kentik__synthetics__v202309__create_agent_alert_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Synthetics__V202309__CreateAgentAlertRequest *)
+     protobuf_c_message_unpack (&kentik__synthetics__v202309__create_agent_alert_request__descriptor,
+                                allocator, len, data);
+}
+void   kentik__synthetics__v202309__create_agent_alert_request__free_unpacked
+                     (Kentik__Synthetics__V202309__CreateAgentAlertRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__synthetics__v202309__create_agent_alert_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__synthetics__v202309__create_agent_alert_response__init
+                     (Kentik__Synthetics__V202309__CreateAgentAlertResponse         *message)
+{
+  static const Kentik__Synthetics__V202309__CreateAgentAlertResponse init_value = KENTIK__SYNTHETICS__V202309__CREATE_AGENT_ALERT_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t kentik__synthetics__v202309__create_agent_alert_response__get_packed_size
+                     (const Kentik__Synthetics__V202309__CreateAgentAlertResponse *message)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__create_agent_alert_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__synthetics__v202309__create_agent_alert_response__pack
+                     (const Kentik__Synthetics__V202309__CreateAgentAlertResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__create_agent_alert_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__synthetics__v202309__create_agent_alert_response__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__CreateAgentAlertResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__create_agent_alert_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Synthetics__V202309__CreateAgentAlertResponse *
+       kentik__synthetics__v202309__create_agent_alert_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Synthetics__V202309__CreateAgentAlertResponse *)
+     protobuf_c_message_unpack (&kentik__synthetics__v202309__create_agent_alert_response__descriptor,
+                                allocator, len, data);
+}
+void   kentik__synthetics__v202309__create_agent_alert_response__free_unpacked
+                     (Kentik__Synthetics__V202309__CreateAgentAlertResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__synthetics__v202309__create_agent_alert_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__synthetics__v202309__update_agent_alert_request__init
+                     (Kentik__Synthetics__V202309__UpdateAgentAlertRequest         *message)
+{
+  static const Kentik__Synthetics__V202309__UpdateAgentAlertRequest init_value = KENTIK__SYNTHETICS__V202309__UPDATE_AGENT_ALERT_REQUEST__INIT;
+  *message = init_value;
+}
+size_t kentik__synthetics__v202309__update_agent_alert_request__get_packed_size
+                     (const Kentik__Synthetics__V202309__UpdateAgentAlertRequest *message)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__update_agent_alert_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__synthetics__v202309__update_agent_alert_request__pack
+                     (const Kentik__Synthetics__V202309__UpdateAgentAlertRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__update_agent_alert_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__synthetics__v202309__update_agent_alert_request__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__UpdateAgentAlertRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__update_agent_alert_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Synthetics__V202309__UpdateAgentAlertRequest *
+       kentik__synthetics__v202309__update_agent_alert_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Synthetics__V202309__UpdateAgentAlertRequest *)
+     protobuf_c_message_unpack (&kentik__synthetics__v202309__update_agent_alert_request__descriptor,
+                                allocator, len, data);
+}
+void   kentik__synthetics__v202309__update_agent_alert_request__free_unpacked
+                     (Kentik__Synthetics__V202309__UpdateAgentAlertRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__synthetics__v202309__update_agent_alert_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__synthetics__v202309__update_agent_alert_response__init
+                     (Kentik__Synthetics__V202309__UpdateAgentAlertResponse         *message)
+{
+  static const Kentik__Synthetics__V202309__UpdateAgentAlertResponse init_value = KENTIK__SYNTHETICS__V202309__UPDATE_AGENT_ALERT_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t kentik__synthetics__v202309__update_agent_alert_response__get_packed_size
+                     (const Kentik__Synthetics__V202309__UpdateAgentAlertResponse *message)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__update_agent_alert_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__synthetics__v202309__update_agent_alert_response__pack
+                     (const Kentik__Synthetics__V202309__UpdateAgentAlertResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__update_agent_alert_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__synthetics__v202309__update_agent_alert_response__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__UpdateAgentAlertResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__update_agent_alert_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Synthetics__V202309__UpdateAgentAlertResponse *
+       kentik__synthetics__v202309__update_agent_alert_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Synthetics__V202309__UpdateAgentAlertResponse *)
+     protobuf_c_message_unpack (&kentik__synthetics__v202309__update_agent_alert_response__descriptor,
+                                allocator, len, data);
+}
+void   kentik__synthetics__v202309__update_agent_alert_response__free_unpacked
+                     (Kentik__Synthetics__V202309__UpdateAgentAlertResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__synthetics__v202309__update_agent_alert_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__synthetics__v202309__get_agent_alert_request__init
+                     (Kentik__Synthetics__V202309__GetAgentAlertRequest         *message)
+{
+  static const Kentik__Synthetics__V202309__GetAgentAlertRequest init_value = KENTIK__SYNTHETICS__V202309__GET_AGENT_ALERT_REQUEST__INIT;
+  *message = init_value;
+}
+size_t kentik__synthetics__v202309__get_agent_alert_request__get_packed_size
+                     (const Kentik__Synthetics__V202309__GetAgentAlertRequest *message)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__get_agent_alert_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__synthetics__v202309__get_agent_alert_request__pack
+                     (const Kentik__Synthetics__V202309__GetAgentAlertRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__get_agent_alert_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__synthetics__v202309__get_agent_alert_request__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__GetAgentAlertRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__get_agent_alert_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Synthetics__V202309__GetAgentAlertRequest *
+       kentik__synthetics__v202309__get_agent_alert_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Synthetics__V202309__GetAgentAlertRequest *)
+     protobuf_c_message_unpack (&kentik__synthetics__v202309__get_agent_alert_request__descriptor,
+                                allocator, len, data);
+}
+void   kentik__synthetics__v202309__get_agent_alert_request__free_unpacked
+                     (Kentik__Synthetics__V202309__GetAgentAlertRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__synthetics__v202309__get_agent_alert_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__synthetics__v202309__get_agent_alert_response__init
+                     (Kentik__Synthetics__V202309__GetAgentAlertResponse         *message)
+{
+  static const Kentik__Synthetics__V202309__GetAgentAlertResponse init_value = KENTIK__SYNTHETICS__V202309__GET_AGENT_ALERT_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t kentik__synthetics__v202309__get_agent_alert_response__get_packed_size
+                     (const Kentik__Synthetics__V202309__GetAgentAlertResponse *message)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__get_agent_alert_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__synthetics__v202309__get_agent_alert_response__pack
+                     (const Kentik__Synthetics__V202309__GetAgentAlertResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__get_agent_alert_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__synthetics__v202309__get_agent_alert_response__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__GetAgentAlertResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__get_agent_alert_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Synthetics__V202309__GetAgentAlertResponse *
+       kentik__synthetics__v202309__get_agent_alert_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Synthetics__V202309__GetAgentAlertResponse *)
+     protobuf_c_message_unpack (&kentik__synthetics__v202309__get_agent_alert_response__descriptor,
+                                allocator, len, data);
+}
+void   kentik__synthetics__v202309__get_agent_alert_response__free_unpacked
+                     (Kentik__Synthetics__V202309__GetAgentAlertResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__synthetics__v202309__get_agent_alert_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__synthetics__v202309__list_agent_alerts_request__init
+                     (Kentik__Synthetics__V202309__ListAgentAlertsRequest         *message)
+{
+  static const Kentik__Synthetics__V202309__ListAgentAlertsRequest init_value = KENTIK__SYNTHETICS__V202309__LIST_AGENT_ALERTS_REQUEST__INIT;
+  *message = init_value;
+}
+size_t kentik__synthetics__v202309__list_agent_alerts_request__get_packed_size
+                     (const Kentik__Synthetics__V202309__ListAgentAlertsRequest *message)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__list_agent_alerts_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__synthetics__v202309__list_agent_alerts_request__pack
+                     (const Kentik__Synthetics__V202309__ListAgentAlertsRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__list_agent_alerts_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__synthetics__v202309__list_agent_alerts_request__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__ListAgentAlertsRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__list_agent_alerts_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Synthetics__V202309__ListAgentAlertsRequest *
+       kentik__synthetics__v202309__list_agent_alerts_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Synthetics__V202309__ListAgentAlertsRequest *)
+     protobuf_c_message_unpack (&kentik__synthetics__v202309__list_agent_alerts_request__descriptor,
+                                allocator, len, data);
+}
+void   kentik__synthetics__v202309__list_agent_alerts_request__free_unpacked
+                     (Kentik__Synthetics__V202309__ListAgentAlertsRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__synthetics__v202309__list_agent_alerts_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__synthetics__v202309__list_agent_alerts_response__init
+                     (Kentik__Synthetics__V202309__ListAgentAlertsResponse         *message)
+{
+  static const Kentik__Synthetics__V202309__ListAgentAlertsResponse init_value = KENTIK__SYNTHETICS__V202309__LIST_AGENT_ALERTS_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t kentik__synthetics__v202309__list_agent_alerts_response__get_packed_size
+                     (const Kentik__Synthetics__V202309__ListAgentAlertsResponse *message)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__list_agent_alerts_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__synthetics__v202309__list_agent_alerts_response__pack
+                     (const Kentik__Synthetics__V202309__ListAgentAlertsResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__list_agent_alerts_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__synthetics__v202309__list_agent_alerts_response__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__ListAgentAlertsResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__list_agent_alerts_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Synthetics__V202309__ListAgentAlertsResponse *
+       kentik__synthetics__v202309__list_agent_alerts_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Synthetics__V202309__ListAgentAlertsResponse *)
+     protobuf_c_message_unpack (&kentik__synthetics__v202309__list_agent_alerts_response__descriptor,
+                                allocator, len, data);
+}
+void   kentik__synthetics__v202309__list_agent_alerts_response__free_unpacked
+                     (Kentik__Synthetics__V202309__ListAgentAlertsResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__synthetics__v202309__list_agent_alerts_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__synthetics__v202309__delete_agent_alert_request__init
+                     (Kentik__Synthetics__V202309__DeleteAgentAlertRequest         *message)
+{
+  static const Kentik__Synthetics__V202309__DeleteAgentAlertRequest init_value = KENTIK__SYNTHETICS__V202309__DELETE_AGENT_ALERT_REQUEST__INIT;
+  *message = init_value;
+}
+size_t kentik__synthetics__v202309__delete_agent_alert_request__get_packed_size
+                     (const Kentik__Synthetics__V202309__DeleteAgentAlertRequest *message)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__delete_agent_alert_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__synthetics__v202309__delete_agent_alert_request__pack
+                     (const Kentik__Synthetics__V202309__DeleteAgentAlertRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__delete_agent_alert_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__synthetics__v202309__delete_agent_alert_request__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__DeleteAgentAlertRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__delete_agent_alert_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Synthetics__V202309__DeleteAgentAlertRequest *
+       kentik__synthetics__v202309__delete_agent_alert_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Synthetics__V202309__DeleteAgentAlertRequest *)
+     protobuf_c_message_unpack (&kentik__synthetics__v202309__delete_agent_alert_request__descriptor,
+                                allocator, len, data);
+}
+void   kentik__synthetics__v202309__delete_agent_alert_request__free_unpacked
+                     (Kentik__Synthetics__V202309__DeleteAgentAlertRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__synthetics__v202309__delete_agent_alert_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__synthetics__v202309__delete_agent_alert_response__init
+                     (Kentik__Synthetics__V202309__DeleteAgentAlertResponse         *message)
+{
+  static const Kentik__Synthetics__V202309__DeleteAgentAlertResponse init_value = KENTIK__SYNTHETICS__V202309__DELETE_AGENT_ALERT_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t kentik__synthetics__v202309__delete_agent_alert_response__get_packed_size
+                     (const Kentik__Synthetics__V202309__DeleteAgentAlertResponse *message)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__delete_agent_alert_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__synthetics__v202309__delete_agent_alert_response__pack
+                     (const Kentik__Synthetics__V202309__DeleteAgentAlertResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__delete_agent_alert_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__synthetics__v202309__delete_agent_alert_response__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__DeleteAgentAlertResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__delete_agent_alert_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Synthetics__V202309__DeleteAgentAlertResponse *
+       kentik__synthetics__v202309__delete_agent_alert_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Synthetics__V202309__DeleteAgentAlertResponse *)
+     protobuf_c_message_unpack (&kentik__synthetics__v202309__delete_agent_alert_response__descriptor,
+                                allocator, len, data);
+}
+void   kentik__synthetics__v202309__delete_agent_alert_response__free_unpacked
+                     (Kentik__Synthetics__V202309__DeleteAgentAlertResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__synthetics__v202309__delete_agent_alert_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 static const ProtobufCFieldDescriptor kentik__synthetics__v202309__agent__field_descriptors[24] =
 {
   {
@@ -7073,6 +7568,508 @@ const ProtobufCMessageDescriptor kentik__synthetics__v202309__set_test_status_re
   (ProtobufCMessageInit) kentik__synthetics__v202309__set_test_status_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
+static const ProtobufCFieldDescriptor kentik__synthetics__v202309__agent_alert__field_descriptors[5] =
+{
+  {
+    "id",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__AgentAlert, id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "threshold_seconds",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT32,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__AgentAlert, threshold_seconds),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "notification_channel_ids",
+    3,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_STRING,
+    offsetof(Kentik__Synthetics__V202309__AgentAlert, n_notification_channel_ids),
+    offsetof(Kentik__Synthetics__V202309__AgentAlert, notification_channel_ids),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "agent_id",
+    4,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__AgentAlert, agent_id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "agent_name",
+    5,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__AgentAlert, agent_name),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__synthetics__v202309__agent_alert__field_indices_by_name[] = {
+  3,   /* field[3] = agent_id */
+  4,   /* field[4] = agent_name */
+  0,   /* field[0] = id */
+  2,   /* field[2] = notification_channel_ids */
+  1,   /* field[1] = threshold_seconds */
+};
+static const ProtobufCIntRange kentik__synthetics__v202309__agent_alert__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 5 }
+};
+const ProtobufCMessageDescriptor kentik__synthetics__v202309__agent_alert__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.synthetics.v202309.AgentAlert",
+  "AgentAlert",
+  "Kentik__Synthetics__V202309__AgentAlert",
+  "kentik.synthetics.v202309",
+  sizeof(Kentik__Synthetics__V202309__AgentAlert),
+  5,
+  kentik__synthetics__v202309__agent_alert__field_descriptors,
+  kentik__synthetics__v202309__agent_alert__field_indices_by_name,
+  1,  kentik__synthetics__v202309__agent_alert__number_ranges,
+  (ProtobufCMessageInit) kentik__synthetics__v202309__agent_alert__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__synthetics__v202309__create_agent_alert_request__field_descriptors[3] =
+{
+  {
+    "threshold_seconds",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT32,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__CreateAgentAlertRequest, threshold_seconds),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "notification_channel_ids",
+    2,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_STRING,
+    offsetof(Kentik__Synthetics__V202309__CreateAgentAlertRequest, n_notification_channel_ids),
+    offsetof(Kentik__Synthetics__V202309__CreateAgentAlertRequest, notification_channel_ids),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "agent_id",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__CreateAgentAlertRequest, agent_id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__synthetics__v202309__create_agent_alert_request__field_indices_by_name[] = {
+  2,   /* field[2] = agent_id */
+  1,   /* field[1] = notification_channel_ids */
+  0,   /* field[0] = threshold_seconds */
+};
+static const ProtobufCIntRange kentik__synthetics__v202309__create_agent_alert_request__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 3 }
+};
+const ProtobufCMessageDescriptor kentik__synthetics__v202309__create_agent_alert_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.synthetics.v202309.CreateAgentAlertRequest",
+  "CreateAgentAlertRequest",
+  "Kentik__Synthetics__V202309__CreateAgentAlertRequest",
+  "kentik.synthetics.v202309",
+  sizeof(Kentik__Synthetics__V202309__CreateAgentAlertRequest),
+  3,
+  kentik__synthetics__v202309__create_agent_alert_request__field_descriptors,
+  kentik__synthetics__v202309__create_agent_alert_request__field_indices_by_name,
+  1,  kentik__synthetics__v202309__create_agent_alert_request__number_ranges,
+  (ProtobufCMessageInit) kentik__synthetics__v202309__create_agent_alert_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__synthetics__v202309__create_agent_alert_response__field_descriptors[1] =
+{
+  {
+    "agent_alert",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__CreateAgentAlertResponse, agent_alert),
+    &kentik__synthetics__v202309__agent_alert__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__synthetics__v202309__create_agent_alert_response__field_indices_by_name[] = {
+  0,   /* field[0] = agent_alert */
+};
+static const ProtobufCIntRange kentik__synthetics__v202309__create_agent_alert_response__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor kentik__synthetics__v202309__create_agent_alert_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.synthetics.v202309.CreateAgentAlertResponse",
+  "CreateAgentAlertResponse",
+  "Kentik__Synthetics__V202309__CreateAgentAlertResponse",
+  "kentik.synthetics.v202309",
+  sizeof(Kentik__Synthetics__V202309__CreateAgentAlertResponse),
+  1,
+  kentik__synthetics__v202309__create_agent_alert_response__field_descriptors,
+  kentik__synthetics__v202309__create_agent_alert_response__field_indices_by_name,
+  1,  kentik__synthetics__v202309__create_agent_alert_response__number_ranges,
+  (ProtobufCMessageInit) kentik__synthetics__v202309__create_agent_alert_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__synthetics__v202309__update_agent_alert_request__field_descriptors[3] =
+{
+  {
+    "id",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__UpdateAgentAlertRequest, id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "threshold_seconds",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT32,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__UpdateAgentAlertRequest, threshold_seconds),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "notification_channel_ids",
+    3,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_STRING,
+    offsetof(Kentik__Synthetics__V202309__UpdateAgentAlertRequest, n_notification_channel_ids),
+    offsetof(Kentik__Synthetics__V202309__UpdateAgentAlertRequest, notification_channel_ids),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__synthetics__v202309__update_agent_alert_request__field_indices_by_name[] = {
+  0,   /* field[0] = id */
+  2,   /* field[2] = notification_channel_ids */
+  1,   /* field[1] = threshold_seconds */
+};
+static const ProtobufCIntRange kentik__synthetics__v202309__update_agent_alert_request__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 3 }
+};
+const ProtobufCMessageDescriptor kentik__synthetics__v202309__update_agent_alert_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.synthetics.v202309.UpdateAgentAlertRequest",
+  "UpdateAgentAlertRequest",
+  "Kentik__Synthetics__V202309__UpdateAgentAlertRequest",
+  "kentik.synthetics.v202309",
+  sizeof(Kentik__Synthetics__V202309__UpdateAgentAlertRequest),
+  3,
+  kentik__synthetics__v202309__update_agent_alert_request__field_descriptors,
+  kentik__synthetics__v202309__update_agent_alert_request__field_indices_by_name,
+  1,  kentik__synthetics__v202309__update_agent_alert_request__number_ranges,
+  (ProtobufCMessageInit) kentik__synthetics__v202309__update_agent_alert_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__synthetics__v202309__update_agent_alert_response__field_descriptors[1] =
+{
+  {
+    "agent_alert",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__UpdateAgentAlertResponse, agent_alert),
+    &kentik__synthetics__v202309__agent_alert__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__synthetics__v202309__update_agent_alert_response__field_indices_by_name[] = {
+  0,   /* field[0] = agent_alert */
+};
+static const ProtobufCIntRange kentik__synthetics__v202309__update_agent_alert_response__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor kentik__synthetics__v202309__update_agent_alert_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.synthetics.v202309.UpdateAgentAlertResponse",
+  "UpdateAgentAlertResponse",
+  "Kentik__Synthetics__V202309__UpdateAgentAlertResponse",
+  "kentik.synthetics.v202309",
+  sizeof(Kentik__Synthetics__V202309__UpdateAgentAlertResponse),
+  1,
+  kentik__synthetics__v202309__update_agent_alert_response__field_descriptors,
+  kentik__synthetics__v202309__update_agent_alert_response__field_indices_by_name,
+  1,  kentik__synthetics__v202309__update_agent_alert_response__number_ranges,
+  (ProtobufCMessageInit) kentik__synthetics__v202309__update_agent_alert_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__synthetics__v202309__get_agent_alert_request__field_descriptors[1] =
+{
+  {
+    "id",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__GetAgentAlertRequest, id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__synthetics__v202309__get_agent_alert_request__field_indices_by_name[] = {
+  0,   /* field[0] = id */
+};
+static const ProtobufCIntRange kentik__synthetics__v202309__get_agent_alert_request__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor kentik__synthetics__v202309__get_agent_alert_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.synthetics.v202309.GetAgentAlertRequest",
+  "GetAgentAlertRequest",
+  "Kentik__Synthetics__V202309__GetAgentAlertRequest",
+  "kentik.synthetics.v202309",
+  sizeof(Kentik__Synthetics__V202309__GetAgentAlertRequest),
+  1,
+  kentik__synthetics__v202309__get_agent_alert_request__field_descriptors,
+  kentik__synthetics__v202309__get_agent_alert_request__field_indices_by_name,
+  1,  kentik__synthetics__v202309__get_agent_alert_request__number_ranges,
+  (ProtobufCMessageInit) kentik__synthetics__v202309__get_agent_alert_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__synthetics__v202309__get_agent_alert_response__field_descriptors[1] =
+{
+  {
+    "agent_alert",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__GetAgentAlertResponse, agent_alert),
+    &kentik__synthetics__v202309__agent_alert__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__synthetics__v202309__get_agent_alert_response__field_indices_by_name[] = {
+  0,   /* field[0] = agent_alert */
+};
+static const ProtobufCIntRange kentik__synthetics__v202309__get_agent_alert_response__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor kentik__synthetics__v202309__get_agent_alert_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.synthetics.v202309.GetAgentAlertResponse",
+  "GetAgentAlertResponse",
+  "Kentik__Synthetics__V202309__GetAgentAlertResponse",
+  "kentik.synthetics.v202309",
+  sizeof(Kentik__Synthetics__V202309__GetAgentAlertResponse),
+  1,
+  kentik__synthetics__v202309__get_agent_alert_response__field_descriptors,
+  kentik__synthetics__v202309__get_agent_alert_response__field_indices_by_name,
+  1,  kentik__synthetics__v202309__get_agent_alert_response__number_ranges,
+  (ProtobufCMessageInit) kentik__synthetics__v202309__get_agent_alert_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__synthetics__v202309__list_agent_alerts_request__field_descriptors[1] =
+{
+  {
+    "agent_ids",
+    1,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_STRING,
+    offsetof(Kentik__Synthetics__V202309__ListAgentAlertsRequest, n_agent_ids),
+    offsetof(Kentik__Synthetics__V202309__ListAgentAlertsRequest, agent_ids),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__synthetics__v202309__list_agent_alerts_request__field_indices_by_name[] = {
+  0,   /* field[0] = agent_ids */
+};
+static const ProtobufCIntRange kentik__synthetics__v202309__list_agent_alerts_request__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor kentik__synthetics__v202309__list_agent_alerts_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.synthetics.v202309.ListAgentAlertsRequest",
+  "ListAgentAlertsRequest",
+  "Kentik__Synthetics__V202309__ListAgentAlertsRequest",
+  "kentik.synthetics.v202309",
+  sizeof(Kentik__Synthetics__V202309__ListAgentAlertsRequest),
+  1,
+  kentik__synthetics__v202309__list_agent_alerts_request__field_descriptors,
+  kentik__synthetics__v202309__list_agent_alerts_request__field_indices_by_name,
+  1,  kentik__synthetics__v202309__list_agent_alerts_request__number_ranges,
+  (ProtobufCMessageInit) kentik__synthetics__v202309__list_agent_alerts_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__synthetics__v202309__list_agent_alerts_response__field_descriptors[1] =
+{
+  {
+    "agent_alerts",
+    1,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Kentik__Synthetics__V202309__ListAgentAlertsResponse, n_agent_alerts),
+    offsetof(Kentik__Synthetics__V202309__ListAgentAlertsResponse, agent_alerts),
+    &kentik__synthetics__v202309__agent_alert__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__synthetics__v202309__list_agent_alerts_response__field_indices_by_name[] = {
+  0,   /* field[0] = agent_alerts */
+};
+static const ProtobufCIntRange kentik__synthetics__v202309__list_agent_alerts_response__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor kentik__synthetics__v202309__list_agent_alerts_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.synthetics.v202309.ListAgentAlertsResponse",
+  "ListAgentAlertsResponse",
+  "Kentik__Synthetics__V202309__ListAgentAlertsResponse",
+  "kentik.synthetics.v202309",
+  sizeof(Kentik__Synthetics__V202309__ListAgentAlertsResponse),
+  1,
+  kentik__synthetics__v202309__list_agent_alerts_response__field_descriptors,
+  kentik__synthetics__v202309__list_agent_alerts_response__field_indices_by_name,
+  1,  kentik__synthetics__v202309__list_agent_alerts_response__number_ranges,
+  (ProtobufCMessageInit) kentik__synthetics__v202309__list_agent_alerts_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__synthetics__v202309__delete_agent_alert_request__field_descriptors[1] =
+{
+  {
+    "id",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__DeleteAgentAlertRequest, id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__synthetics__v202309__delete_agent_alert_request__field_indices_by_name[] = {
+  0,   /* field[0] = id */
+};
+static const ProtobufCIntRange kentik__synthetics__v202309__delete_agent_alert_request__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor kentik__synthetics__v202309__delete_agent_alert_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.synthetics.v202309.DeleteAgentAlertRequest",
+  "DeleteAgentAlertRequest",
+  "Kentik__Synthetics__V202309__DeleteAgentAlertRequest",
+  "kentik.synthetics.v202309",
+  sizeof(Kentik__Synthetics__V202309__DeleteAgentAlertRequest),
+  1,
+  kentik__synthetics__v202309__delete_agent_alert_request__field_descriptors,
+  kentik__synthetics__v202309__delete_agent_alert_request__field_indices_by_name,
+  1,  kentik__synthetics__v202309__delete_agent_alert_request__number_ranges,
+  (ProtobufCMessageInit) kentik__synthetics__v202309__delete_agent_alert_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+#define kentik__synthetics__v202309__delete_agent_alert_response__field_descriptors NULL
+#define kentik__synthetics__v202309__delete_agent_alert_response__field_indices_by_name NULL
+#define kentik__synthetics__v202309__delete_agent_alert_response__number_ranges NULL
+const ProtobufCMessageDescriptor kentik__synthetics__v202309__delete_agent_alert_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.synthetics.v202309.DeleteAgentAlertResponse",
+  "DeleteAgentAlertResponse",
+  "Kentik__Synthetics__V202309__DeleteAgentAlertResponse",
+  "kentik.synthetics.v202309",
+  sizeof(Kentik__Synthetics__V202309__DeleteAgentAlertResponse),
+  0,
+  kentik__synthetics__v202309__delete_agent_alert_response__field_descriptors,
+  kentik__synthetics__v202309__delete_agent_alert_response__field_indices_by_name,
+  0,  kentik__synthetics__v202309__delete_agent_alert_response__number_ranges,
+  (ProtobufCMessageInit) kentik__synthetics__v202309__delete_agent_alert_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
 static const ProtobufCEnumValue kentik__synthetics__v202309__implement_type__enum_values_by_number[4] =
 {
   { "IMPLEMENT_TYPE_UNSPECIFIED", "KENTIK__SYNTHETICS__V202309__IMPLEMENT_TYPE__IMPLEMENT_TYPE_UNSPECIFIED", 0 },
@@ -7288,7 +8285,7 @@ void kentik__synthetics__v202309__synthetics_data_service__init (Kentik__Synthet
                                      &kentik__synthetics__v202309__synthetics_data_service__descriptor,
                                      (ProtobufCServiceDestroy) destroy);
 }
-static const ProtobufCMethodDescriptor kentik__synthetics__v202309__synthetics_admin_service__method_descriptors[10] =
+static const ProtobufCMethodDescriptor kentik__synthetics__v202309__synthetics_admin_service__method_descriptors[15] =
 {
   { "ListAgents", &kentik__synthetics__v202309__list_agents_request__descriptor, &kentik__synthetics__v202309__list_agents_response__descriptor },
   { "GetAgent", &kentik__synthetics__v202309__get_agent_request__descriptor, &kentik__synthetics__v202309__get_agent_response__descriptor },
@@ -7300,17 +8297,27 @@ static const ProtobufCMethodDescriptor kentik__synthetics__v202309__synthetics_a
   { "UpdateTest", &kentik__synthetics__v202309__update_test_request__descriptor, &kentik__synthetics__v202309__update_test_response__descriptor },
   { "DeleteTest", &kentik__synthetics__v202309__delete_test_request__descriptor, &kentik__synthetics__v202309__delete_test_response__descriptor },
   { "SetTestStatus", &kentik__synthetics__v202309__set_test_status_request__descriptor, &kentik__synthetics__v202309__set_test_status_response__descriptor },
+  { "CreateAgentAlert", &kentik__synthetics__v202309__create_agent_alert_request__descriptor, &kentik__synthetics__v202309__create_agent_alert_response__descriptor },
+  { "UpdateAgentAlert", &kentik__synthetics__v202309__update_agent_alert_request__descriptor, &kentik__synthetics__v202309__update_agent_alert_response__descriptor },
+  { "GetAgentAlert", &kentik__synthetics__v202309__get_agent_alert_request__descriptor, &kentik__synthetics__v202309__get_agent_alert_response__descriptor },
+  { "ListAgentAlerts", &kentik__synthetics__v202309__list_agent_alerts_request__descriptor, &kentik__synthetics__v202309__list_agent_alerts_response__descriptor },
+  { "DeleteAgentAlert", &kentik__synthetics__v202309__delete_agent_alert_request__descriptor, &kentik__synthetics__v202309__delete_agent_alert_response__descriptor },
 };
 const unsigned kentik__synthetics__v202309__synthetics_admin_service__method_indices_by_name[] = {
+  10,        /* CreateAgentAlert */
   5,        /* CreateTest */
   3,        /* DeleteAgent */
+  14,        /* DeleteAgentAlert */
   8,        /* DeleteTest */
   1,        /* GetAgent */
+  12,        /* GetAgentAlert */
   6,        /* GetTest */
+  13,        /* ListAgentAlerts */
   0,        /* ListAgents */
   4,        /* ListTests */
   9,        /* SetTestStatus */
   2,        /* UpdateAgent */
+  11,        /* UpdateAgentAlert */
   7         /* UpdateTest */
 };
 const ProtobufCServiceDescriptor kentik__synthetics__v202309__synthetics_admin_service__descriptor =
@@ -7320,7 +8327,7 @@ const ProtobufCServiceDescriptor kentik__synthetics__v202309__synthetics_admin_s
   "SyntheticsAdminService",
   "Kentik__Synthetics__V202309__SyntheticsAdminService",
   "kentik.synthetics.v202309",
-  10,
+  15,
   kentik__synthetics__v202309__synthetics_admin_service__method_descriptors,
   kentik__synthetics__v202309__synthetics_admin_service__method_indices_by_name
 };
@@ -7403,6 +8410,46 @@ void kentik__synthetics__v202309__synthetics_admin_service__set_test_status(Prot
 {
   assert(service->descriptor == &kentik__synthetics__v202309__synthetics_admin_service__descriptor);
   service->invoke(service, 9, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
+void kentik__synthetics__v202309__synthetics_admin_service__create_agent_alert(ProtobufCService *service,
+                                                                               const Kentik__Synthetics__V202309__CreateAgentAlertRequest *input,
+                                                                               Kentik__Synthetics__V202309__CreateAgentAlertResponse_Closure closure,
+                                                                               void *closure_data)
+{
+  assert(service->descriptor == &kentik__synthetics__v202309__synthetics_admin_service__descriptor);
+  service->invoke(service, 10, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
+void kentik__synthetics__v202309__synthetics_admin_service__update_agent_alert(ProtobufCService *service,
+                                                                               const Kentik__Synthetics__V202309__UpdateAgentAlertRequest *input,
+                                                                               Kentik__Synthetics__V202309__UpdateAgentAlertResponse_Closure closure,
+                                                                               void *closure_data)
+{
+  assert(service->descriptor == &kentik__synthetics__v202309__synthetics_admin_service__descriptor);
+  service->invoke(service, 11, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
+void kentik__synthetics__v202309__synthetics_admin_service__get_agent_alert(ProtobufCService *service,
+                                                                            const Kentik__Synthetics__V202309__GetAgentAlertRequest *input,
+                                                                            Kentik__Synthetics__V202309__GetAgentAlertResponse_Closure closure,
+                                                                            void *closure_data)
+{
+  assert(service->descriptor == &kentik__synthetics__v202309__synthetics_admin_service__descriptor);
+  service->invoke(service, 12, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
+void kentik__synthetics__v202309__synthetics_admin_service__list_agent_alerts(ProtobufCService *service,
+                                                                              const Kentik__Synthetics__V202309__ListAgentAlertsRequest *input,
+                                                                              Kentik__Synthetics__V202309__ListAgentAlertsResponse_Closure closure,
+                                                                              void *closure_data)
+{
+  assert(service->descriptor == &kentik__synthetics__v202309__synthetics_admin_service__descriptor);
+  service->invoke(service, 13, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
+void kentik__synthetics__v202309__synthetics_admin_service__delete_agent_alert(ProtobufCService *service,
+                                                                               const Kentik__Synthetics__V202309__DeleteAgentAlertRequest *input,
+                                                                               Kentik__Synthetics__V202309__DeleteAgentAlertResponse_Closure closure,
+                                                                               void *closure_data)
+{
+  assert(service->descriptor == &kentik__synthetics__v202309__synthetics_admin_service__descriptor);
+  service->invoke(service, 14, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void kentik__synthetics__v202309__synthetics_admin_service__init (Kentik__Synthetics__V202309__SyntheticsAdminService_Service *service,
                                                                   Kentik__Synthetics__V202309__SyntheticsAdminService_ServiceDestroy destroy)

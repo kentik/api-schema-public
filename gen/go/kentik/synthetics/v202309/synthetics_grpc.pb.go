@@ -150,6 +150,11 @@ type SyntheticsAdminServiceClient interface {
 	UpdateTest(ctx context.Context, in *UpdateTestRequest, opts ...grpc.CallOption) (*UpdateTestResponse, error)
 	DeleteTest(ctx context.Context, in *DeleteTestRequest, opts ...grpc.CallOption) (*DeleteTestResponse, error)
 	SetTestStatus(ctx context.Context, in *SetTestStatusRequest, opts ...grpc.CallOption) (*SetTestStatusResponse, error)
+	CreateAgentAlert(ctx context.Context, in *CreateAgentAlertRequest, opts ...grpc.CallOption) (*CreateAgentAlertResponse, error)
+	UpdateAgentAlert(ctx context.Context, in *UpdateAgentAlertRequest, opts ...grpc.CallOption) (*UpdateAgentAlertResponse, error)
+	GetAgentAlert(ctx context.Context, in *GetAgentAlertRequest, opts ...grpc.CallOption) (*GetAgentAlertResponse, error)
+	ListAgentAlerts(ctx context.Context, in *ListAgentAlertsRequest, opts ...grpc.CallOption) (*ListAgentAlertsResponse, error)
+	DeleteAgentAlert(ctx context.Context, in *DeleteAgentAlertRequest, opts ...grpc.CallOption) (*DeleteAgentAlertResponse, error)
 }
 
 type syntheticsAdminServiceClient struct {
@@ -250,6 +255,51 @@ func (c *syntheticsAdminServiceClient) SetTestStatus(ctx context.Context, in *Se
 	return out, nil
 }
 
+func (c *syntheticsAdminServiceClient) CreateAgentAlert(ctx context.Context, in *CreateAgentAlertRequest, opts ...grpc.CallOption) (*CreateAgentAlertResponse, error) {
+	out := new(CreateAgentAlertResponse)
+	err := c.cc.Invoke(ctx, "/kentik.synthetics.v202309.SyntheticsAdminService/CreateAgentAlert", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *syntheticsAdminServiceClient) UpdateAgentAlert(ctx context.Context, in *UpdateAgentAlertRequest, opts ...grpc.CallOption) (*UpdateAgentAlertResponse, error) {
+	out := new(UpdateAgentAlertResponse)
+	err := c.cc.Invoke(ctx, "/kentik.synthetics.v202309.SyntheticsAdminService/UpdateAgentAlert", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *syntheticsAdminServiceClient) GetAgentAlert(ctx context.Context, in *GetAgentAlertRequest, opts ...grpc.CallOption) (*GetAgentAlertResponse, error) {
+	out := new(GetAgentAlertResponse)
+	err := c.cc.Invoke(ctx, "/kentik.synthetics.v202309.SyntheticsAdminService/GetAgentAlert", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *syntheticsAdminServiceClient) ListAgentAlerts(ctx context.Context, in *ListAgentAlertsRequest, opts ...grpc.CallOption) (*ListAgentAlertsResponse, error) {
+	out := new(ListAgentAlertsResponse)
+	err := c.cc.Invoke(ctx, "/kentik.synthetics.v202309.SyntheticsAdminService/ListAgentAlerts", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *syntheticsAdminServiceClient) DeleteAgentAlert(ctx context.Context, in *DeleteAgentAlertRequest, opts ...grpc.CallOption) (*DeleteAgentAlertResponse, error) {
+	out := new(DeleteAgentAlertResponse)
+	err := c.cc.Invoke(ctx, "/kentik.synthetics.v202309.SyntheticsAdminService/DeleteAgentAlert", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SyntheticsAdminServiceServer is the server API for SyntheticsAdminService service.
 // All implementations should embed UnimplementedSyntheticsAdminServiceServer
 // for forward compatibility
@@ -264,6 +314,11 @@ type SyntheticsAdminServiceServer interface {
 	UpdateTest(context.Context, *UpdateTestRequest) (*UpdateTestResponse, error)
 	DeleteTest(context.Context, *DeleteTestRequest) (*DeleteTestResponse, error)
 	SetTestStatus(context.Context, *SetTestStatusRequest) (*SetTestStatusResponse, error)
+	CreateAgentAlert(context.Context, *CreateAgentAlertRequest) (*CreateAgentAlertResponse, error)
+	UpdateAgentAlert(context.Context, *UpdateAgentAlertRequest) (*UpdateAgentAlertResponse, error)
+	GetAgentAlert(context.Context, *GetAgentAlertRequest) (*GetAgentAlertResponse, error)
+	ListAgentAlerts(context.Context, *ListAgentAlertsRequest) (*ListAgentAlertsResponse, error)
+	DeleteAgentAlert(context.Context, *DeleteAgentAlertRequest) (*DeleteAgentAlertResponse, error)
 }
 
 // UnimplementedSyntheticsAdminServiceServer should be embedded to have forward compatible implementations.
@@ -299,6 +354,21 @@ func (UnimplementedSyntheticsAdminServiceServer) DeleteTest(context.Context, *De
 }
 func (UnimplementedSyntheticsAdminServiceServer) SetTestStatus(context.Context, *SetTestStatusRequest) (*SetTestStatusResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetTestStatus not implemented")
+}
+func (UnimplementedSyntheticsAdminServiceServer) CreateAgentAlert(context.Context, *CreateAgentAlertRequest) (*CreateAgentAlertResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateAgentAlert not implemented")
+}
+func (UnimplementedSyntheticsAdminServiceServer) UpdateAgentAlert(context.Context, *UpdateAgentAlertRequest) (*UpdateAgentAlertResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateAgentAlert not implemented")
+}
+func (UnimplementedSyntheticsAdminServiceServer) GetAgentAlert(context.Context, *GetAgentAlertRequest) (*GetAgentAlertResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAgentAlert not implemented")
+}
+func (UnimplementedSyntheticsAdminServiceServer) ListAgentAlerts(context.Context, *ListAgentAlertsRequest) (*ListAgentAlertsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListAgentAlerts not implemented")
+}
+func (UnimplementedSyntheticsAdminServiceServer) DeleteAgentAlert(context.Context, *DeleteAgentAlertRequest) (*DeleteAgentAlertResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteAgentAlert not implemented")
 }
 
 // UnsafeSyntheticsAdminServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -492,6 +562,96 @@ func _SyntheticsAdminService_SetTestStatus_Handler(srv interface{}, ctx context.
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SyntheticsAdminService_CreateAgentAlert_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateAgentAlertRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SyntheticsAdminServiceServer).CreateAgentAlert(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kentik.synthetics.v202309.SyntheticsAdminService/CreateAgentAlert",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SyntheticsAdminServiceServer).CreateAgentAlert(ctx, req.(*CreateAgentAlertRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SyntheticsAdminService_UpdateAgentAlert_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateAgentAlertRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SyntheticsAdminServiceServer).UpdateAgentAlert(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kentik.synthetics.v202309.SyntheticsAdminService/UpdateAgentAlert",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SyntheticsAdminServiceServer).UpdateAgentAlert(ctx, req.(*UpdateAgentAlertRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SyntheticsAdminService_GetAgentAlert_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAgentAlertRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SyntheticsAdminServiceServer).GetAgentAlert(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kentik.synthetics.v202309.SyntheticsAdminService/GetAgentAlert",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SyntheticsAdminServiceServer).GetAgentAlert(ctx, req.(*GetAgentAlertRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SyntheticsAdminService_ListAgentAlerts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListAgentAlertsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SyntheticsAdminServiceServer).ListAgentAlerts(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kentik.synthetics.v202309.SyntheticsAdminService/ListAgentAlerts",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SyntheticsAdminServiceServer).ListAgentAlerts(ctx, req.(*ListAgentAlertsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SyntheticsAdminService_DeleteAgentAlert_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteAgentAlertRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SyntheticsAdminServiceServer).DeleteAgentAlert(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kentik.synthetics.v202309.SyntheticsAdminService/DeleteAgentAlert",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SyntheticsAdminServiceServer).DeleteAgentAlert(ctx, req.(*DeleteAgentAlertRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // SyntheticsAdminService_ServiceDesc is the grpc.ServiceDesc for SyntheticsAdminService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -538,6 +698,26 @@ var SyntheticsAdminService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SetTestStatus",
 			Handler:    _SyntheticsAdminService_SetTestStatus_Handler,
+		},
+		{
+			MethodName: "CreateAgentAlert",
+			Handler:    _SyntheticsAdminService_CreateAgentAlert_Handler,
+		},
+		{
+			MethodName: "UpdateAgentAlert",
+			Handler:    _SyntheticsAdminService_UpdateAgentAlert_Handler,
+		},
+		{
+			MethodName: "GetAgentAlert",
+			Handler:    _SyntheticsAdminService_GetAgentAlert_Handler,
+		},
+		{
+			MethodName: "ListAgentAlerts",
+			Handler:    _SyntheticsAdminService_ListAgentAlerts_Handler,
+		},
+		{
+			MethodName: "DeleteAgentAlert",
+			Handler:    _SyntheticsAdminService_DeleteAgentAlert_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

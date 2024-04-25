@@ -26,7 +26,7 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
 	"The Synthetics Monitoring API provides programmatic access to Kentik's [synthetic monitoring system](https://kb.kentik.com/v4/Ma00.htm). The API consists of two endpoints:\n"
 		"| Endpoint | Purpose |\n"
 		"|-----------|---------|\n"
-		"| SyntheticsAdminService | CRUD operations for synthetic tests and agents |\n"
+		"| SyntheticsAdminService | CRUD operations for synthetic tests, agents, and offline agent alerts |\n"
 		"| SyntheticsDataService  | Retrieval of synthetic test results and network traces |\n"
 	"\n"
 	"Both REST endpoint and gRPC RPCs are provided.\n"
@@ -1641,6 +1641,56 @@ message SetTestStatusRequest {
 // {{.Name}}
 message SetTestStatusResponse {}
 
+message AgentAlert {
+  string id = 1;
+  uint32 threshold_seconds = 2;
+  repeated string notification_channel_ids = 3;
+  string agent_id = 4;
+  string agent_name = 5;
+}
+
+message CreateAgentAlertRequest {
+  uint32 threshold_seconds = 1;
+  repeated string notification_channel_ids = 2;
+  string agent_id = 3;
+}
+
+message CreateAgentAlertResponse {
+  AgentAlert agent_alert = 1;
+}
+
+message UpdateAgentAlertRequest {
+  string id = 1;
+  uint32 threshold_seconds = 2;
+  repeated string notification_channel_ids = 3;
+}
+
+message UpdateAgentAlertResponse {
+  AgentAlert agent_alert = 1;
+}
+
+message GetAgentAlertRequest {
+  string id = 1;
+}
+
+message GetAgentAlertResponse {
+  AgentAlert agent_alert = 1;
+}
+
+message ListAgentAlertsRequest {
+  repeated string agent_ids = 1; // Optional list of agent ids to retrieve alert configurations for
+}
+
+message ListAgentAlertsResponse {
+  repeated AgentAlert agent_alerts = 1;
+}
+
+message DeleteAgentAlertRequest {
+  string id = 1;
+}
+
+message DeleteAgentAlertResponse {}
+
 service SyntheticsAdminService {
   option (google.api.default_host) = "grpc.api.kentik.com";
   option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
@@ -1778,6 +1828,73 @@ service SyntheticsAdminService {
       operation_id: "SetTestStatus"
       summary: "Update status of a synthetic test"
       description: "Update status of a synthetic test"
+    };
+  }
+
+  rpc CreateAgentAlert(CreateAgentAlertRequest) returns (CreateAgentAlertResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.synthetics:write";
+    option (kentik.core.v202303.method_permission) = "synthetics.agent::create";
+    option (google.api.http) = {
+      post: "/synthetics/v202309/agentAlerts"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "CreateAgentAlert"
+      summary: "Create an agent alert configuration"
+      description: "Creates a new agent alert configuration."
+    };
+  }
+
+  rpc UpdateAgentAlert(UpdateAgentAlertRequest) returns (UpdateAgentAlertResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.synthetics:write";
+    option (kentik.core.v202303.method_permission) = "synthetics.agent::update";
+    option (google.api.http) = {
+      put: "/synthetics/v202309/agentAlerts/{id}"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "UpdateAgentAlert"
+      summary: "Update an agent alert configuration"
+      description: "Updates an existing agent alert configuration with the time threshold and notification channels provided."
+    };
+  }
+
+  rpc GetAgentAlert(GetAgentAlertRequest) returns (GetAgentAlertResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.synthetics:read";
+    option (kentik.core.v202303.method_permission) = "synthetics.agent::read";
+    option (google.api.http) = {
+      get: "/synthetics/v202309/agentAlerts/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetAgentAlert"
+      summary: "Get an agent alert configuration"
+      description: "Retrieves an existing agent alert configuration."
+    };
+  }
+
+  rpc ListAgentAlerts(ListAgentAlertsRequest) returns (ListAgentAlertsResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.synthetics:read";
+    option (kentik.core.v202303.method_permission) = "synthetics.agent::read";
+    option (google.api.http) = {
+      get: "/synthetics/v202309/agentAlerts"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ListAgentAlerts"
+      summary: "List agent alert configurations"
+      description: "Lists all agent alert configurations, optionally filtered by a list of agent ids."
+    };
+  }
+
+  rpc DeleteAgentAlert(DeleteAgentAlertRequest) returns (DeleteAgentAlertResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.synthetics:write";
+    option (kentik.core.v202303.method_permission) = "synthetics.agent::delete";
+    option (google.api.http) = {
+      delete: "/synthetics/v202309/agentAlerts/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "DeleteAgentAlert"
+      summary: "Delete an agent alert configuration"
+      description: "Deletes an existing agent alert configuration."
     };
   }
 }
