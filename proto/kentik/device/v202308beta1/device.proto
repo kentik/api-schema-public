@@ -266,6 +266,16 @@ message DeviceConcise {
       description: "Configuration if this device will be monitored by NMS."
     }
   ];
+  string device_bgp_credential_name = 22 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "BGP Credential Name (device_bgp_credential_name) - Optional Credential Name (Credential for BGP peering). Valid characters: alphanumeric. Length: 32."
+    }
+  ];
+  string flow_snmp_credential_name = 23 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Snmp Credential Name (flow_snmp_credential_name) - Optional Credential Name (Credential for Flow Snmp peering). Valid characters: alphanumeric. Length: 32."
+    }
+  ];
 }
 
 // {{.Name}}
@@ -768,6 +778,16 @@ message DeviceDetailed {
   DeviceNmsConfig nms = 61 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Configuration if this device is monitored by NMS."
+    }
+  ];
+  string device_bgp_credential_name = 62 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "BGP Credential Name (device_bgp_credential_name) - Optional Credential Name (Credential for BGP peering). Valid characters: alphanumeric. Length: 32."
+    }
+  ];
+  string flow_snmp_credential_name = 63 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Snmp Credential Name (flow_snmp_credential_name) - Optional Credential Name (Credential for Flow Snmp peering). Valid characters: alphanumeric. Length: 32."
     }
   ];
 }

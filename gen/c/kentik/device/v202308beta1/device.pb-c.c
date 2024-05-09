@@ -1710,7 +1710,7 @@ const ProtobufCMessageDescriptor kentik__device__v202308beta1__device_nms_st_con
   (ProtobufCMessageInit) kentik__device__v202308beta1__device_nms_st_config__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__device__v202308beta1__device_concise__field_descriptors[21] =
+static const ProtobufCFieldDescriptor kentik__device__v202308beta1__device_concise__field_descriptors[23] =
 {
   {
     "id",
@@ -1964,9 +1964,34 @@ static const ProtobufCFieldDescriptor kentik__device__v202308beta1__device_conci
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "device_bgp_credential_name",
+    22,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Device__V202308beta1__DeviceConcise, device_bgp_credential_name),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "flow_snmp_credential_name",
+    23,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Device__V202308beta1__DeviceConcise, flow_snmp_credential_name),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__device__v202308beta1__device_concise__field_indices_by_name[] = {
   3,   /* field[3] = cdn_attr */
+  21,   /* field[21] = device_bgp_credential_name */
   19,   /* field[19] = device_bgp_flowspec */
   16,   /* field[16] = device_bgp_neighbor_asn */
   14,   /* field[14] = device_bgp_neighbor_ip */
@@ -1980,6 +2005,7 @@ static const unsigned kentik__device__v202308beta1__device_concise__field_indice
   10,   /* field[10] = device_snmp_ip */
   12,   /* field[12] = device_snmp_v3_conf */
   2,   /* field[2] = device_subtype */
+  22,   /* field[22] = flow_snmp_credential_name */
   0,   /* field[0] = id */
   9,   /* field[9] = minimize_snmp */
   20,   /* field[20] = nms */
@@ -1991,7 +2017,7 @@ static const unsigned kentik__device__v202308beta1__device_concise__field_indice
 static const ProtobufCIntRange kentik__device__v202308beta1__device_concise__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 21 }
+  { 0, 23 }
 };
 const ProtobufCMessageDescriptor kentik__device__v202308beta1__device_concise__descriptor =
 {
@@ -2001,7 +2027,7 @@ const ProtobufCMessageDescriptor kentik__device__v202308beta1__device_concise__d
   "Kentik__Device__V202308beta1__DeviceConcise",
   "kentik.device.v202308beta1",
   sizeof(Kentik__Device__V202308beta1__DeviceConcise),
-  21,
+  23,
   kentik__device__v202308beta1__device_concise__field_descriptors,
   kentik__device__v202308beta1__device_concise__field_indices_by_name,
   1,  kentik__device__v202308beta1__device_concise__number_ranges,
@@ -2600,7 +2626,7 @@ const ProtobufCMessageDescriptor kentik__device__v202308beta1__gnmi_v1_conf__des
   (ProtobufCMessageInit) kentik__device__v202308beta1__gnmi_v1_conf__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__device__v202308beta1__device_detailed__field_descriptors[61] =
+static const ProtobufCFieldDescriptor kentik__device__v202308beta1__device_detailed__field_descriptors[63] =
 {
   {
     "id",
@@ -3334,6 +3360,30 @@ static const ProtobufCFieldDescriptor kentik__device__v202308beta1__device_detai
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "device_bgp_credential_name",
+    62,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Device__V202308beta1__DeviceDetailed, device_bgp_credential_name),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "flow_snmp_credential_name",
+    63,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Device__V202308beta1__DeviceDetailed, flow_snmp_credential_name),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__device__v202308beta1__device_detailed__field_indices_by_name[] = {
   9,   /* field[9] = all_interfaces */
@@ -3351,6 +3401,7 @@ static const unsigned kentik__device__v202308beta1__device_detailed__field_indic
   31,   /* field[31] = device_agent_type */
   54,   /* field[54] = device_alert */
   3,   /* field[3] = device_alias */
+  61,   /* field[61] = device_bgp_credential_name */
   20,   /* field[20] = device_bgp_flowspec */
   22,   /* field[22] = device_bgp_label_unicast */
   19,   /* field[19] = device_bgp_neighbor_asn */
@@ -3379,6 +3430,7 @@ static const unsigned kentik__device__v202308beta1__device_detailed__field_indic
   43,   /* field[43] = device_subtype */
   4,   /* field[4] = device_type */
   44,   /* field[44] = device_vendor_type */
+  62,   /* field[62] = flow_snmp_credential_name */
   0,   /* field[0] = id */
   8,   /* field[8] = labels */
   33,   /* field[33] = max_big_flow_rate */
@@ -3401,7 +3453,7 @@ static const unsigned kentik__device__v202308beta1__device_detailed__field_indic
 static const ProtobufCIntRange kentik__device__v202308beta1__device_detailed__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 61 }
+  { 0, 63 }
 };
 const ProtobufCMessageDescriptor kentik__device__v202308beta1__device_detailed__descriptor =
 {
@@ -3411,7 +3463,7 @@ const ProtobufCMessageDescriptor kentik__device__v202308beta1__device_detailed__
   "Kentik__Device__V202308beta1__DeviceDetailed",
   "kentik.device.v202308beta1",
   sizeof(Kentik__Device__V202308beta1__DeviceDetailed),
-  61,
+  63,
   kentik__device__v202308beta1__device_detailed__field_descriptors,
   kentik__device__v202308beta1__device_detailed__field_indices_by_name,
   1,  kentik__device__v202308beta1__device_detailed__number_ranges,

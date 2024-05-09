@@ -1185,6 +1185,8 @@ class DeviceConcise PROTOBUF_FINAL :
     kDeviceBgpNeighborIp6FieldNumber = 16,
     kDeviceBgpNeighborAsnFieldNumber = 17,
     kDeviceBgpPasswordFieldNumber = 18,
+    kDeviceBgpCredentialNameFieldNumber = 22,
+    kFlowSnmpCredentialNameFieldNumber = 23,
     kDeviceSnmpV3ConfFieldNumber = 13,
     kNmsFieldNumber = 21,
     kDeviceSampleRateFieldNumber = 7,
@@ -1518,6 +1520,56 @@ class DeviceConcise PROTOBUF_FINAL :
   std::string* _internal_mutable_device_bgp_password();
   public:
 
+  // string device_bgp_credential_name = 22[json_name = "deviceBgpCredentialName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_device_bgp_credential_name();
+  const std::string& device_bgp_credential_name() const;
+  void set_device_bgp_credential_name(const std::string& value);
+  void set_device_bgp_credential_name(std::string&& value);
+  void set_device_bgp_credential_name(const char* value);
+  void set_device_bgp_credential_name(const char* value, size_t size);
+  std::string* mutable_device_bgp_credential_name();
+  std::string* release_device_bgp_credential_name();
+  void set_allocated_device_bgp_credential_name(std::string* device_bgp_credential_name);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_device_bgp_credential_name();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_device_bgp_credential_name(
+      std::string* device_bgp_credential_name);
+  private:
+  const std::string& _internal_device_bgp_credential_name() const;
+  void _internal_set_device_bgp_credential_name(const std::string& value);
+  std::string* _internal_mutable_device_bgp_credential_name();
+  public:
+
+  // string flow_snmp_credential_name = 23[json_name = "flowSnmpCredentialName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_flow_snmp_credential_name();
+  const std::string& flow_snmp_credential_name() const;
+  void set_flow_snmp_credential_name(const std::string& value);
+  void set_flow_snmp_credential_name(std::string&& value);
+  void set_flow_snmp_credential_name(const char* value);
+  void set_flow_snmp_credential_name(const char* value, size_t size);
+  std::string* mutable_flow_snmp_credential_name();
+  std::string* release_flow_snmp_credential_name();
+  void set_allocated_flow_snmp_credential_name(std::string* flow_snmp_credential_name);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_flow_snmp_credential_name();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_flow_snmp_credential_name(
+      std::string* flow_snmp_credential_name);
+  private:
+  const std::string& _internal_flow_snmp_credential_name() const;
+  void _internal_set_flow_snmp_credential_name(const std::string& value);
+  std::string* _internal_mutable_flow_snmp_credential_name();
+  public:
+
   // .kentik.device.v202308beta1.DeviceSnmpV3Conf device_snmp_v3_conf = 13[json_name = "deviceSnmpV3Conf", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   bool has_device_snmp_v3_conf() const;
   private:
@@ -1634,6 +1686,8 @@ class DeviceConcise PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr device_bgp_neighbor_ip6_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr device_bgp_neighbor_asn_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr device_bgp_password_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr device_bgp_credential_name_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr flow_snmp_credential_name_;
   ::kentik::device::v202308beta1::DeviceSnmpV3Conf* device_snmp_v3_conf_;
   ::kentik::device::v202308beta1::DeviceNmsConfig* nms_;
   double device_sample_rate_;
@@ -3432,6 +3486,8 @@ class DeviceDetailed PROTOBUF_FINAL :
     kDeviceManufacturerFieldNumber = 54,
     kDeviceAlertFieldNumber = 55,
     kRoleFieldNumber = 56,
+    kDeviceBgpCredentialNameFieldNumber = 62,
+    kFlowSnmpCredentialNameFieldNumber = 63,
     kSiteFieldNumber = 7,
     kPlanFieldNumber = 8,
     kCreatedDateFieldNumber = 37,
@@ -4552,6 +4608,56 @@ class DeviceDetailed PROTOBUF_FINAL :
   std::string* _internal_mutable_role();
   public:
 
+  // string device_bgp_credential_name = 62[json_name = "deviceBgpCredentialName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_device_bgp_credential_name();
+  const std::string& device_bgp_credential_name() const;
+  void set_device_bgp_credential_name(const std::string& value);
+  void set_device_bgp_credential_name(std::string&& value);
+  void set_device_bgp_credential_name(const char* value);
+  void set_device_bgp_credential_name(const char* value, size_t size);
+  std::string* mutable_device_bgp_credential_name();
+  std::string* release_device_bgp_credential_name();
+  void set_allocated_device_bgp_credential_name(std::string* device_bgp_credential_name);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_device_bgp_credential_name();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_device_bgp_credential_name(
+      std::string* device_bgp_credential_name);
+  private:
+  const std::string& _internal_device_bgp_credential_name() const;
+  void _internal_set_device_bgp_credential_name(const std::string& value);
+  std::string* _internal_mutable_device_bgp_credential_name();
+  public:
+
+  // string flow_snmp_credential_name = 63[json_name = "flowSnmpCredentialName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_flow_snmp_credential_name();
+  const std::string& flow_snmp_credential_name() const;
+  void set_flow_snmp_credential_name(const std::string& value);
+  void set_flow_snmp_credential_name(std::string&& value);
+  void set_flow_snmp_credential_name(const char* value);
+  void set_flow_snmp_credential_name(const char* value, size_t size);
+  std::string* mutable_flow_snmp_credential_name();
+  std::string* release_flow_snmp_credential_name();
+  void set_allocated_flow_snmp_credential_name(std::string* flow_snmp_credential_name);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_flow_snmp_credential_name();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_flow_snmp_credential_name(
+      std::string* flow_snmp_credential_name);
+  private:
+  const std::string& _internal_flow_snmp_credential_name() const;
+  void _internal_set_flow_snmp_credential_name(const std::string& value);
+  std::string* _internal_mutable_flow_snmp_credential_name();
+  public:
+
   // .kentik.device.v202308beta1.Site site = 7[json_name = "site", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   bool has_site() const;
   private:
@@ -4817,6 +4923,8 @@ class DeviceDetailed PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr device_manufacturer_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr device_alert_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr role_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr device_bgp_credential_name_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr flow_snmp_credential_name_;
   ::kentik::device::v202308beta1::Site* site_;
   ::kentik::device::v202308beta1::Plan* plan_;
   PROTOBUF_NAMESPACE_ID::Timestamp* created_date_;
@@ -10134,6 +10242,168 @@ inline void DeviceConcise::set_allocated_nms(::kentik::device::v202308beta1::Dev
   }
   nms_ = nms;
   // @@protoc_insertion_point(field_set_allocated:kentik.device.v202308beta1.DeviceConcise.nms)
+}
+
+// string device_bgp_credential_name = 22[json_name = "deviceBgpCredentialName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void DeviceConcise::clear_device_bgp_credential_name() {
+  device_bgp_credential_name_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline const std::string& DeviceConcise::device_bgp_credential_name() const {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.DeviceConcise.device_bgp_credential_name)
+  return _internal_device_bgp_credential_name();
+}
+inline void DeviceConcise::set_device_bgp_credential_name(const std::string& value) {
+  _internal_set_device_bgp_credential_name(value);
+  // @@protoc_insertion_point(field_set:kentik.device.v202308beta1.DeviceConcise.device_bgp_credential_name)
+}
+inline std::string* DeviceConcise::mutable_device_bgp_credential_name() {
+  // @@protoc_insertion_point(field_mutable:kentik.device.v202308beta1.DeviceConcise.device_bgp_credential_name)
+  return _internal_mutable_device_bgp_credential_name();
+}
+inline const std::string& DeviceConcise::_internal_device_bgp_credential_name() const {
+  return device_bgp_credential_name_.Get();
+}
+inline void DeviceConcise::_internal_set_device_bgp_credential_name(const std::string& value) {
+  
+  device_bgp_credential_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void DeviceConcise::set_device_bgp_credential_name(std::string&& value) {
+  
+  device_bgp_credential_name_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:kentik.device.v202308beta1.DeviceConcise.device_bgp_credential_name)
+}
+inline void DeviceConcise::set_device_bgp_credential_name(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  device_bgp_credential_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:kentik.device.v202308beta1.DeviceConcise.device_bgp_credential_name)
+}
+inline void DeviceConcise::set_device_bgp_credential_name(const char* value,
+    size_t size) {
+  
+  device_bgp_credential_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:kentik.device.v202308beta1.DeviceConcise.device_bgp_credential_name)
+}
+inline std::string* DeviceConcise::_internal_mutable_device_bgp_credential_name() {
+  
+  return device_bgp_credential_name_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* DeviceConcise::release_device_bgp_credential_name() {
+  // @@protoc_insertion_point(field_release:kentik.device.v202308beta1.DeviceConcise.device_bgp_credential_name)
+  return device_bgp_credential_name_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void DeviceConcise::set_allocated_device_bgp_credential_name(std::string* device_bgp_credential_name) {
+  if (device_bgp_credential_name != nullptr) {
+    
+  } else {
+    
+  }
+  device_bgp_credential_name_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), device_bgp_credential_name,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:kentik.device.v202308beta1.DeviceConcise.device_bgp_credential_name)
+}
+inline std::string* DeviceConcise::unsafe_arena_release_device_bgp_credential_name() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:kentik.device.v202308beta1.DeviceConcise.device_bgp_credential_name)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  
+  return device_bgp_credential_name_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void DeviceConcise::unsafe_arena_set_allocated_device_bgp_credential_name(
+    std::string* device_bgp_credential_name) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (device_bgp_credential_name != nullptr) {
+    
+  } else {
+    
+  }
+  device_bgp_credential_name_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      device_bgp_credential_name, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.device.v202308beta1.DeviceConcise.device_bgp_credential_name)
+}
+
+// string flow_snmp_credential_name = 23[json_name = "flowSnmpCredentialName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void DeviceConcise::clear_flow_snmp_credential_name() {
+  flow_snmp_credential_name_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline const std::string& DeviceConcise::flow_snmp_credential_name() const {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.DeviceConcise.flow_snmp_credential_name)
+  return _internal_flow_snmp_credential_name();
+}
+inline void DeviceConcise::set_flow_snmp_credential_name(const std::string& value) {
+  _internal_set_flow_snmp_credential_name(value);
+  // @@protoc_insertion_point(field_set:kentik.device.v202308beta1.DeviceConcise.flow_snmp_credential_name)
+}
+inline std::string* DeviceConcise::mutable_flow_snmp_credential_name() {
+  // @@protoc_insertion_point(field_mutable:kentik.device.v202308beta1.DeviceConcise.flow_snmp_credential_name)
+  return _internal_mutable_flow_snmp_credential_name();
+}
+inline const std::string& DeviceConcise::_internal_flow_snmp_credential_name() const {
+  return flow_snmp_credential_name_.Get();
+}
+inline void DeviceConcise::_internal_set_flow_snmp_credential_name(const std::string& value) {
+  
+  flow_snmp_credential_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void DeviceConcise::set_flow_snmp_credential_name(std::string&& value) {
+  
+  flow_snmp_credential_name_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:kentik.device.v202308beta1.DeviceConcise.flow_snmp_credential_name)
+}
+inline void DeviceConcise::set_flow_snmp_credential_name(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  flow_snmp_credential_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:kentik.device.v202308beta1.DeviceConcise.flow_snmp_credential_name)
+}
+inline void DeviceConcise::set_flow_snmp_credential_name(const char* value,
+    size_t size) {
+  
+  flow_snmp_credential_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:kentik.device.v202308beta1.DeviceConcise.flow_snmp_credential_name)
+}
+inline std::string* DeviceConcise::_internal_mutable_flow_snmp_credential_name() {
+  
+  return flow_snmp_credential_name_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* DeviceConcise::release_flow_snmp_credential_name() {
+  // @@protoc_insertion_point(field_release:kentik.device.v202308beta1.DeviceConcise.flow_snmp_credential_name)
+  return flow_snmp_credential_name_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void DeviceConcise::set_allocated_flow_snmp_credential_name(std::string* flow_snmp_credential_name) {
+  if (flow_snmp_credential_name != nullptr) {
+    
+  } else {
+    
+  }
+  flow_snmp_credential_name_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), flow_snmp_credential_name,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:kentik.device.v202308beta1.DeviceConcise.flow_snmp_credential_name)
+}
+inline std::string* DeviceConcise::unsafe_arena_release_flow_snmp_credential_name() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:kentik.device.v202308beta1.DeviceConcise.flow_snmp_credential_name)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  
+  return flow_snmp_credential_name_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void DeviceConcise::unsafe_arena_set_allocated_flow_snmp_credential_name(
+    std::string* flow_snmp_credential_name) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (flow_snmp_credential_name != nullptr) {
+    
+  } else {
+    
+  }
+  flow_snmp_credential_name_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      flow_snmp_credential_name, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.device.v202308beta1.DeviceConcise.flow_snmp_credential_name)
 }
 
 // -------------------------------------------------------------------
@@ -17037,6 +17307,168 @@ inline void DeviceDetailed::set_allocated_nms(::kentik::device::v202308beta1::De
   }
   nms_ = nms;
   // @@protoc_insertion_point(field_set_allocated:kentik.device.v202308beta1.DeviceDetailed.nms)
+}
+
+// string device_bgp_credential_name = 62[json_name = "deviceBgpCredentialName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void DeviceDetailed::clear_device_bgp_credential_name() {
+  device_bgp_credential_name_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline const std::string& DeviceDetailed::device_bgp_credential_name() const {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.DeviceDetailed.device_bgp_credential_name)
+  return _internal_device_bgp_credential_name();
+}
+inline void DeviceDetailed::set_device_bgp_credential_name(const std::string& value) {
+  _internal_set_device_bgp_credential_name(value);
+  // @@protoc_insertion_point(field_set:kentik.device.v202308beta1.DeviceDetailed.device_bgp_credential_name)
+}
+inline std::string* DeviceDetailed::mutable_device_bgp_credential_name() {
+  // @@protoc_insertion_point(field_mutable:kentik.device.v202308beta1.DeviceDetailed.device_bgp_credential_name)
+  return _internal_mutable_device_bgp_credential_name();
+}
+inline const std::string& DeviceDetailed::_internal_device_bgp_credential_name() const {
+  return device_bgp_credential_name_.Get();
+}
+inline void DeviceDetailed::_internal_set_device_bgp_credential_name(const std::string& value) {
+  
+  device_bgp_credential_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void DeviceDetailed::set_device_bgp_credential_name(std::string&& value) {
+  
+  device_bgp_credential_name_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:kentik.device.v202308beta1.DeviceDetailed.device_bgp_credential_name)
+}
+inline void DeviceDetailed::set_device_bgp_credential_name(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  device_bgp_credential_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:kentik.device.v202308beta1.DeviceDetailed.device_bgp_credential_name)
+}
+inline void DeviceDetailed::set_device_bgp_credential_name(const char* value,
+    size_t size) {
+  
+  device_bgp_credential_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:kentik.device.v202308beta1.DeviceDetailed.device_bgp_credential_name)
+}
+inline std::string* DeviceDetailed::_internal_mutable_device_bgp_credential_name() {
+  
+  return device_bgp_credential_name_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* DeviceDetailed::release_device_bgp_credential_name() {
+  // @@protoc_insertion_point(field_release:kentik.device.v202308beta1.DeviceDetailed.device_bgp_credential_name)
+  return device_bgp_credential_name_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void DeviceDetailed::set_allocated_device_bgp_credential_name(std::string* device_bgp_credential_name) {
+  if (device_bgp_credential_name != nullptr) {
+    
+  } else {
+    
+  }
+  device_bgp_credential_name_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), device_bgp_credential_name,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:kentik.device.v202308beta1.DeviceDetailed.device_bgp_credential_name)
+}
+inline std::string* DeviceDetailed::unsafe_arena_release_device_bgp_credential_name() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:kentik.device.v202308beta1.DeviceDetailed.device_bgp_credential_name)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  
+  return device_bgp_credential_name_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void DeviceDetailed::unsafe_arena_set_allocated_device_bgp_credential_name(
+    std::string* device_bgp_credential_name) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (device_bgp_credential_name != nullptr) {
+    
+  } else {
+    
+  }
+  device_bgp_credential_name_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      device_bgp_credential_name, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.device.v202308beta1.DeviceDetailed.device_bgp_credential_name)
+}
+
+// string flow_snmp_credential_name = 63[json_name = "flowSnmpCredentialName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void DeviceDetailed::clear_flow_snmp_credential_name() {
+  flow_snmp_credential_name_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline const std::string& DeviceDetailed::flow_snmp_credential_name() const {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.DeviceDetailed.flow_snmp_credential_name)
+  return _internal_flow_snmp_credential_name();
+}
+inline void DeviceDetailed::set_flow_snmp_credential_name(const std::string& value) {
+  _internal_set_flow_snmp_credential_name(value);
+  // @@protoc_insertion_point(field_set:kentik.device.v202308beta1.DeviceDetailed.flow_snmp_credential_name)
+}
+inline std::string* DeviceDetailed::mutable_flow_snmp_credential_name() {
+  // @@protoc_insertion_point(field_mutable:kentik.device.v202308beta1.DeviceDetailed.flow_snmp_credential_name)
+  return _internal_mutable_flow_snmp_credential_name();
+}
+inline const std::string& DeviceDetailed::_internal_flow_snmp_credential_name() const {
+  return flow_snmp_credential_name_.Get();
+}
+inline void DeviceDetailed::_internal_set_flow_snmp_credential_name(const std::string& value) {
+  
+  flow_snmp_credential_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void DeviceDetailed::set_flow_snmp_credential_name(std::string&& value) {
+  
+  flow_snmp_credential_name_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:kentik.device.v202308beta1.DeviceDetailed.flow_snmp_credential_name)
+}
+inline void DeviceDetailed::set_flow_snmp_credential_name(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  flow_snmp_credential_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:kentik.device.v202308beta1.DeviceDetailed.flow_snmp_credential_name)
+}
+inline void DeviceDetailed::set_flow_snmp_credential_name(const char* value,
+    size_t size) {
+  
+  flow_snmp_credential_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:kentik.device.v202308beta1.DeviceDetailed.flow_snmp_credential_name)
+}
+inline std::string* DeviceDetailed::_internal_mutable_flow_snmp_credential_name() {
+  
+  return flow_snmp_credential_name_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* DeviceDetailed::release_flow_snmp_credential_name() {
+  // @@protoc_insertion_point(field_release:kentik.device.v202308beta1.DeviceDetailed.flow_snmp_credential_name)
+  return flow_snmp_credential_name_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void DeviceDetailed::set_allocated_flow_snmp_credential_name(std::string* flow_snmp_credential_name) {
+  if (flow_snmp_credential_name != nullptr) {
+    
+  } else {
+    
+  }
+  flow_snmp_credential_name_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), flow_snmp_credential_name,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:kentik.device.v202308beta1.DeviceDetailed.flow_snmp_credential_name)
+}
+inline std::string* DeviceDetailed::unsafe_arena_release_flow_snmp_credential_name() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:kentik.device.v202308beta1.DeviceDetailed.flow_snmp_credential_name)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  
+  return flow_snmp_credential_name_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void DeviceDetailed::unsafe_arena_set_allocated_flow_snmp_credential_name(
+    std::string* flow_snmp_credential_name) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (flow_snmp_credential_name != nullptr) {
+    
+  } else {
+    
+  }
+  flow_snmp_credential_name_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      flow_snmp_credential_name, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.device.v202308beta1.DeviceDetailed.flow_snmp_credential_name)
 }
 
 // -------------------------------------------------------------------

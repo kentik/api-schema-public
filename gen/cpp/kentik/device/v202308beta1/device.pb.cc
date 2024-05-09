@@ -688,6 +688,8 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_kentik_2fdevice_2fv202308beta1
   PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceConcise, use_bgp_device_id_),
   PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceConcise, device_bgp_flowspec_),
   PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceConcise, nms_),
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceConcise, device_bgp_credential_name_),
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceConcise, flow_snmp_credential_name_),
   ~0u,
   ~0u,
   ~0u,
@@ -698,6 +700,8 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_kentik_2fdevice_2fv202308beta1
   ~0u,
   ~0u,
   0,
+  ~0u,
+  ~0u,
   ~0u,
   ~0u,
   ~0u,
@@ -839,6 +843,8 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_kentik_2fdevice_2fv202308beta1
   PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceDetailed, max_interface_),
   PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceDetailed, max_interface_check_),
   PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceDetailed, nms_),
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceDetailed, device_bgp_credential_name_),
+  PROTOBUF_FIELD_OFFSET(::kentik::device::v202308beta1::DeviceDetailed, flow_snmp_credential_name_),
   ~0u,
   ~0u,
   ~0u,
@@ -855,6 +861,8 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_kentik_2fdevice_2fv202308beta1
   ~0u,
   ~0u,
   0,
+  ~0u,
+  ~0u,
   ~0u,
   ~0u,
   ~0u,
@@ -1022,33 +1030,33 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 10, -1, sizeof(::kentik::device::v202308beta1::DeviceNmsConfig)},
   { 19, -1, sizeof(::kentik::device::v202308beta1::DeviceNmsSnmpConfig)},
   { 27, -1, sizeof(::kentik::device::v202308beta1::DeviceNmsStConfig)},
-  { 36, 62, sizeof(::kentik::device::v202308beta1::DeviceConcise)},
-  { 83, -1, sizeof(::kentik::device::v202308beta1::Site)},
-  { 93, -1, sizeof(::kentik::device::v202308beta1::Plan)},
-  { 100, -1, sizeof(::kentik::device::v202308beta1::Label)},
-  { 116, -1, sizeof(::kentik::device::v202308beta1::Interface)},
-  { 130, -1, sizeof(::kentik::device::v202308beta1::CustomColumnData)},
-  { 141, -1, sizeof(::kentik::device::v202308beta1::GnmiV1Conf)},
-  { 147, 213, sizeof(::kentik::device::v202308beta1::DeviceDetailed)},
-  { 274, -1, sizeof(::kentik::device::v202308beta1::LabelConcise)},
-  { 280, -1, sizeof(::kentik::device::v202308beta1::ListDevicesRequest)},
-  { 285, -1, sizeof(::kentik::device::v202308beta1::ListDevicesResponse)},
-  { 292, -1, sizeof(::kentik::device::v202308beta1::GetDeviceRequest)},
-  { 298, -1, sizeof(::kentik::device::v202308beta1::GetDeviceResponse)},
-  { 304, -1, sizeof(::kentik::device::v202308beta1::CreateDeviceRequest)},
-  { 310, -1, sizeof(::kentik::device::v202308beta1::CreateDeviceResponse)},
-  { 316, -1, sizeof(::kentik::device::v202308beta1::CreateDevicesRequest)},
-  { 322, -1, sizeof(::kentik::device::v202308beta1::CreateDevicesResponse)},
-  { 329, -1, sizeof(::kentik::device::v202308beta1::UpdateDeviceRequest)},
-  { 335, -1, sizeof(::kentik::device::v202308beta1::UpdateDeviceResponse)},
-  { 341, -1, sizeof(::kentik::device::v202308beta1::UpdateDevicesRequest)},
-  { 347, -1, sizeof(::kentik::device::v202308beta1::UpdateDevicesResponse)},
-  { 354, -1, sizeof(::kentik::device::v202308beta1::UpdateDeviceLabelsRequest)},
-  { 361, -1, sizeof(::kentik::device::v202308beta1::UpdateDeviceLabelsResponse)},
-  { 367, -1, sizeof(::kentik::device::v202308beta1::DeleteDeviceRequest)},
-  { 373, -1, sizeof(::kentik::device::v202308beta1::DeleteDeviceResponse)},
-  { 378, -1, sizeof(::kentik::device::v202308beta1::DeleteDevicesRequest)},
-  { 384, -1, sizeof(::kentik::device::v202308beta1::DeleteDevicesResponse)},
+  { 36, 64, sizeof(::kentik::device::v202308beta1::DeviceConcise)},
+  { 87, -1, sizeof(::kentik::device::v202308beta1::Site)},
+  { 97, -1, sizeof(::kentik::device::v202308beta1::Plan)},
+  { 104, -1, sizeof(::kentik::device::v202308beta1::Label)},
+  { 120, -1, sizeof(::kentik::device::v202308beta1::Interface)},
+  { 134, -1, sizeof(::kentik::device::v202308beta1::CustomColumnData)},
+  { 145, -1, sizeof(::kentik::device::v202308beta1::GnmiV1Conf)},
+  { 151, 219, sizeof(::kentik::device::v202308beta1::DeviceDetailed)},
+  { 282, -1, sizeof(::kentik::device::v202308beta1::LabelConcise)},
+  { 288, -1, sizeof(::kentik::device::v202308beta1::ListDevicesRequest)},
+  { 293, -1, sizeof(::kentik::device::v202308beta1::ListDevicesResponse)},
+  { 300, -1, sizeof(::kentik::device::v202308beta1::GetDeviceRequest)},
+  { 306, -1, sizeof(::kentik::device::v202308beta1::GetDeviceResponse)},
+  { 312, -1, sizeof(::kentik::device::v202308beta1::CreateDeviceRequest)},
+  { 318, -1, sizeof(::kentik::device::v202308beta1::CreateDeviceResponse)},
+  { 324, -1, sizeof(::kentik::device::v202308beta1::CreateDevicesRequest)},
+  { 330, -1, sizeof(::kentik::device::v202308beta1::CreateDevicesResponse)},
+  { 337, -1, sizeof(::kentik::device::v202308beta1::UpdateDeviceRequest)},
+  { 343, -1, sizeof(::kentik::device::v202308beta1::UpdateDeviceResponse)},
+  { 349, -1, sizeof(::kentik::device::v202308beta1::UpdateDevicesRequest)},
+  { 355, -1, sizeof(::kentik::device::v202308beta1::UpdateDevicesResponse)},
+  { 362, -1, sizeof(::kentik::device::v202308beta1::UpdateDeviceLabelsRequest)},
+  { 369, -1, sizeof(::kentik::device::v202308beta1::UpdateDeviceLabelsResponse)},
+  { 375, -1, sizeof(::kentik::device::v202308beta1::DeleteDeviceRequest)},
+  { 381, -1, sizeof(::kentik::device::v202308beta1::DeleteDeviceResponse)},
+  { 386, -1, sizeof(::kentik::device::v202308beta1::DeleteDevicesRequest)},
+  { 392, -1, sizeof(::kentik::device::v202308beta1::DeleteDevicesResponse)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -1145,7 +1153,7 @@ const char descriptor_table_protodef_kentik_2fdevice_2fv202308beta1_2fdevice_2ep
   "buf.DurationB(\222A%2#Timeout, to override "
   "default of 2s.R\007timeout\022\?\n\006secure\030\004 \001(\010B"
   "\'\222A$2\"Use SSL to connect to this device."
-  "R\006secure\"\253%\n\rDeviceConcise\0227\n\002id\030\001 \001(\tB\'"
+  "R\006secure\"\351(\n\rDeviceConcise\0227\n\002id\030\001 \001(\tB\'"
   "\222A$2\"System generated unique identifierR"
   "\002id\022\240\001\n\013device_name\030\002 \001(\tB\177\222A|2zDevice n"
   "ame (device_name) - The name of the devi"
@@ -1264,325 +1272,348 @@ const char descriptor_table_protodef_kentik_2fdevice_2fv202308beta1_2fdevice_2ep
   "Flowspec\022z\n\003nms\030\025 \001(\0132+.kentik.device.v2"
   "02308beta1.DeviceNmsConfigB;\222A826Configu"
   "ration if this device will be monitored "
-  "by NMS.R\003nmsB\020\n\016_minimize_snmp\"\316\001\n\004Site\022"
-  "\034\n\002id\030\001 \001(\tB\014\222A\t2\007Site IDR\002id\022+\n\tsite_na"
-  "me\030\002 \001(\tB\016\222A\0132\tSite nameR\010siteName\022$\n\003la"
-  "t\030\003 \001(\001B\022\222A\0172\rSite latitudeR\003lat\022%\n\003lon\030"
-  "\004 \001(\001B\023\222A\0202\016Site longitudeR\003lon\022.\n\ncompa"
-  "ny_id\030\005 \001(\tB\017\222A\0142\nCompany IDR\tcompanyId\""
-  "H\n\004Plan\022\034\n\002id\030\001 \001(\tB\014\222A\t2\007Plan IDR\002id\022\"\n"
-  "\004name\030\002 \001(\tB\016\222A\0132\tPlan nameR\004name\"\304\004\n\005La"
-  "bel\022\035\n\002id\030\001 \001(\tB\r\222A\n2\010Label IDR\002id\022#\n\004na"
-  "me\030\002 \001(\tB\017\222A\0142\nLabel nameR\004name\0228\n\013descr"
-  "iption\030\003 \001(\tB\026\222A\0232\021Label descriptionR\013de"
-  "scription\022K\n\005edate\030\004 \001(\0132\032.google.protob"
-  "uf.TimestampB\031\222A\0262\024Label end date (UTC)R"
-  "\005edate\022P\n\005cdate\030\005 \001(\0132\032.google.protobuf."
-  "TimestampB\036\222A\0332\031Label creation date (UTC"
-  ")R\005cdate\022%\n\007user_id\030\006 \001(\tB\014\222A\t2\007User IDR"
-  "\006userId\022.\n\ncompany_id\030\007 \001(\tB\017\222A\0142\nCompan"
-  "y IDR\tcompanyId\022&\n\005color\030\010 \001(\tB\020\222A\r2\013Lab"
-  "el colorR\005color\022&\n\005order\030\t \001(\tB\020\222A\r2\013Lab"
-  "el orderR\005order\022<\n\017pivot_device_id\030\n \001(\t"
-  "B\024\222A\0212\017Pivot device IDR\rpivotDeviceId\0229\n"
-  "\016pivot_label_id\030\013 \001(\tB\023\222A\0202\016Pivot label "
-  "IDR\014pivotLabelId\"\211\004\n\tInterface\022O\n\025interf"
-  "ace_description\030\001 \001(\tB\032\222A\0272\025Interface de"
-  "scriptionR\024interfaceDescription\022E\n\022initi"
-  "al_snmp_speed\030\002 \001(\tB\027\222A\0242\022Initial SNMP s"
-  "peedR\020initialSnmpSpeed\022+\n\tdevice_id\030\003 \001("
-  "\tB\016\222A\0132\tDevice IDR\010deviceId\022.\n\nsnmp_spee"
-  "d\030\004 \001(\tB\017\222A\0142\nSNMP speedR\tsnmpSpeed\022.\n\ns"
-  "nmp_alias\030\005 \001(\tB\017\222A\0142\nSNMP aliasR\tsnmpAl"
-  "ias\022%\n\007snmp_id\030\006 \001(\tB\014\222A\t2\007SNMP IDR\006snmp"
-  "Id\022C\n\021connectivity_type\030\007 \001(\tB\026\222A\0232\021Conn"
-  "ectivity typeR\020connectivityType\022@\n\020netwo"
-  "rk_boundary\030\010 \001(\tB\025\222A\0222\020Network boundary"
-  "R\017networkBoundary\022)\n\010provider\030\t \001(\tB\r\222A\n"
-  "2\010ProviderR\010provider\"\252\002\n\020CustomColumnDat"
-  "a\022+\n\tdevice_id\030\001 \001(\tB\016\222A\0132\tDevice IDR\010de"
-  "viceId\022(\n\010field_id\030\002 \001(\tB\r\222A\n2\010Field IDR"
-  "\007fieldId\022+\n\010col_name\030\003 \001(\tB\020\222A\r2\013Column "
-  "nameR\007colName\0222\n\013description\030\004 \001(\tB\020\222A\r2"
-  "\013DescriptionR\013description\022+\n\010col_type\030\005 "
-  "\001(\tB\020\222A\r2\013Column typeR\007colType\0221\n\013device"
-  "_type\030\006 \001(\tB\020\222A\r2\013Device typeR\ndeviceTyp"
-  "e\"H\n\nGnmiV1Conf\022:\n\016dialout_server\030\001 \001(\tB"
-  "\023\222A\0202\016Dialout serverR\rdialoutServer\"\371\"\n\016"
-  "DeviceDetailed\022;\n\002id\030\001 \001(\tB+\222A$2\"System "
-  "generated unique identifier\342A\001\003R\002id\022.\n\nc"
-  "ompany_id\030\002 \001(\tB\017\222A\0142\nCompany IDR\tcompan"
-  "yId\0221\n\013device_name\030\003 \001(\tB\020\222A\r2\013Device na"
-  "meR\ndeviceName\0224\n\014device_alias\030\004 \001(\tB\021\222A"
-  "\0162\014Device aliasR\013deviceAlias\0221\n\013device_t"
-  "ype\030\005 \001(\tB\020\222A\r2\013Device typeR\ndeviceType\022"
-  "F\n\022device_description\030\006 \001(\tB\027\222A\0242\022Device"
-  " descriptionR\021deviceDescription\022\?\n\004site\030"
-  "\007 \001(\0132 .kentik.device.v202308beta1.SiteB"
-  "\t\222A\0062\004SiteR\004site\022\?\n\004plan\030\010 \001(\0132 .kentik."
-  "device.v202308beta1.PlanB\t\222A\0062\004PlanR\004pla"
-  "n\022N\n\006labels\030\t \003(\0132!.kentik.device.v20230"
-  "8beta1.LabelB\023\222A\0202\016List of labelsR\006label"
-  "s\022e\n\016all_interfaces\030\n \003(\0132%.kentik.devic"
-  "e.v202308beta1.InterfaceB\027\222A\0242\022List of i"
-  "nterfacesR\rallInterfaces\022\?\n\020device_flow_"
-  "type\030\013 \001(\tB\025\222A\0222\020Device flow typeR\016devic"
-  "eFlowType\022E\n\022device_sample_rate\030\014 \001(\tB\027\222"
-  "A\0242\022Device sample rateR\020deviceSampleRate"
-  "\0229\n\013sending_ips\030\r \003(\tB\030\222A\0252\023List of send"
-  "ing IPsR\nsendingIps\0229\n\016device_snmp_ip\030\016 "
-  "\001(\tB\023\222A\0202\016Device SNMP IPR\014deviceSnmpIp\022N"
-  "\n\025device_snmp_community\030\017 \001(\tB\032\222A\0272\025Devi"
-  "ce SNMP communityR\023deviceSnmpCommunity\022<"
-  "\n\rminimize_snmp\030\020 \001(\010B\022\222A\0172\rMinimize SNM"
-  "PH\000R\014minimizeSnmp\210\001\001\022<\n\017device_bgp_type\030"
-  "\021 \001(\tB\024\222A\0212\017Device BGP typeR\rdeviceBgpTy"
-  "pe\022P\n\026device_bgp_neighbor_ip\030\022 \001(\tB\033\222A\0302"
-  "\026Device BGP neighbor IPR\023deviceBgpNeighb"
-  "orIp\022S\n\027device_bgp_neighbor_ip6\030\023 \001(\tB\034\222"
-  "A\0312\027Device BGP neighbor IP6R\024deviceBgpNe"
-  "ighborIp6\022S\n\027device_bgp_neighbor_asn\030\024 \001"
-  "(\tB\034\222A\0312\027Device BGP neighbor ASNR\024device"
-  "BgpNeighborAsn\022H\n\023device_bgp_flowspec\030\025 "
-  "\001(\010B\030\222A\0252\023Device BGP flowspecR\021deviceBgp"
-  "Flowspec\022H\n\023device_bgp_password\030\026 \001(\tB\030\222"
-  "A\0252\023Device BGP passwordR\021deviceBgpPasswo"
-  "rd\022V\n\030device_bgp_label_unicast\030\027 \001(\010B\035\222A"
-  "\0322\030Device BGP label unicastR\025deviceBgpLa"
-  "belUnicast\022H\n\023bgp_lookup_strategy\030\030 \001(\tB"
-  "\030\222A\0252\023BGP lookup strategyR\021bgpLookupStra"
-  "tegy\0227\n\rdevice_status\030\031 \001(\tB\022\222A\0172\rDevice"
-  " statusR\014deviceStatus\022A\n\021use_bgp_device_"
-  "id\030\032 \001(\tB\026\222A\0232\021Use BGP device IDR\016useBgp"
-  "DeviceId\022:\n\016custom_columns\030\033 \001(\tB\023\222A\0202\016C"
-  "ustom columnsR\rcustomColumns\022s\n\022custom_c"
-  "olumn_data\030\034 \003(\0132,.kentik.device.v202308"
-  "beta1.CustomColumnDataB\027\222A\0242\022Custom colu"
-  "mn dataR\020customColumnData\022P\n\026device_chf_"
-  "client_port\030\035 \001(\tB\033\222A\0302\026Device CHF clien"
-  "t portR\023deviceChfClientPort\022\\\n\032device_ch"
-  "f_client_protocol\030\036 \001(\tB\037\222A\0342\032Device CHF"
-  " client protocolR\027deviceChfClientProtoco"
-  "l\022K\n\024device_chf_interface\030\037 \001(\tB\031\222A\0262\024De"
-  "vice CHF interfaceR\022deviceChfInterface\022B"
-  "\n\021device_agent_type\030  \001(\tB\026\222A\0232\021Device a"
-  "gent typeR\017deviceAgentType\0226\n\rmax_flow_r"
-  "ate\030! \001(\rB\022\222A\0172\rMax flow rateR\013maxFlowRa"
-  "te\022A\n\021max_big_flow_rate\030\" \001(\rB\026\222A\0232\021Max "
-  "big flow rateR\016maxBigFlowRate\022\?\n\020device_"
-  "proxy_bgp\030# \001(\tB\025\222A\0222\020Device proxy BGPR\016"
-  "deviceProxyBgp\022B\n\021device_proxy_bgp6\030$ \001("
-  "\tB\026\222A\0232\021Device proxy BGP6R\017deviceProxyBg"
-  "p6\022\\\n\014created_date\030% \001(\0132\032.google.protob"
-  "uf.TimestampB\035\222A\0322\030Creation timestamp (U"
-  "TC)R\013createdDate\022e\n\014updated_date\030& \001(\0132\032"
-  ".google.protobuf.TimestampB&\222A#2!Last mo"
-  "dification timestamp (UTC)R\013updatedDate\022"
-  "g\n\033device_snmp_v3_conf_enabled\030\' \001(\010B)\222A"
-  "&2$Device SNMP v3 configuration enabledR"
-  "\027deviceSnmpV3ConfEnabled\022~\n\023device_snmp_"
-  "v3_conf\030( \001(\0132,.kentik.device.v202308bet"
-  "a1.DeviceSnmpV3ConfB!\222A\0362\034Device SNMP v3"
-  " configurationR\020deviceSnmpV3Conf\022.\n\010cdn_"
-  "attr\030) \001(\tB\023\222A\0202\016CDN attributesR\007cdnAttr"
-  "\0223\n\014bgp_peer_ip4\030* \001(\tB\021\222A\0162\014BGP peer IP"
-  "4R\nbgpPeerIp4\0223\n\014bgp_peer_ip6\030+ \001(\tB\021\222A\016"
-  "2\014BGP peer IP6R\nbgpPeerIp6\022:\n\016device_sub"
-  "type\030, \001(\tB\023\222A\0202\016Device subtypeR\rdeviceS"
-  "ubtype\022E\n\022device_vendor_type\030- \001(\tB\027\222A\0242"
-  "\022Device vendor typeR\020deviceVendorType\022B\n"
-  "\021device_model_type\030. \001(\tB\026\222A\0232\021Device mo"
-  "del typeR\017deviceModelType\022<\n\017cloud_expor"
-  "t_id\030/ \001(\tB\024\222A\0212\017Cloud export IDR\rcloudE"
-  "xportId\0227\n\rdevice_kproxy\0300 \001(\tB\022\222A\0172\rDev"
-  "ice KProxyR\014deviceKproxy\0224\n\014snmp_enabled"
-  "\0301 \001(\tB\021\222A\0162\014SNMP enabledR\013snmpEnabled\022K"
-  "\n\024snmp_disabled_reason\0302 \001(\tB\031\222A\0262\024SNMP "
-  "disabled reasonR\022snmpDisabledReason\022\\\n\032s"
-  "nmp_disabled_reason_other\0303 \001(\tB\037\222A\0342\032SN"
-  "MP disabled reason otherR\027snmpDisabledRe"
-  "asonOther\022H\n\023bgp_disabled_reason\0304 \001(\tB\030"
-  "\222A\0252\023BGP disabled reasonR\021bgpDisabledRea"
-  "son\022Y\n\031bgp_disabled_reason_other\0305 \001(\tB\036"
-  "\222A\0332\031BGP disabled reason otherR\026bgpDisab"
-  "ledReasonOther\022I\n\023device_manufacturer\0306 "
-  "\001(\tB\030\222A\0252\023Device manufacturerR\022deviceMan"
-  "ufacturer\0224\n\014device_alert\0307 \001(\tB\021\222A\0162\014De"
-  "vice alertR\013deviceAlert\022\035\n\004role\0308 \001(\tB\t\222"
-  "A\0062\004RoleR\004role\022x\n\023device_gnmi_v1_conf\0309 "
-  "\001(\0132&.kentik.device.v202308beta1.GnmiV1C"
-  "onfB!\222A\0362\034Device GNMI v1 configurationR\020"
-  "deviceGnmiV1Conf\022A\n\021use_asn_from_flow\030: "
-  "\001(\010B\026\222A\0232\021Use ASN from flowR\016useAsnFromF"
-  "low\0227\n\rmax_interface\030; \001(\rB\022\222A\0172\rMax int"
-  "erfaceR\014maxInterface\022H\n\023max_interface_ch"
-  "eck\030< \001(\rB\030\222A\0252\023Max interface checkR\021max"
-  "InterfaceCheck\022u\n\003nms\030= \001(\0132+.kentik.dev"
-  "ice.v202308beta1.DeviceNmsConfigB6\222A321C"
-  "onfiguration if this device is monitored"
-  " by NMS.R\003nmsB\020\n\016_minimize_snmp\"-\n\014Label"
-  "Concise\022\035\n\002id\030\001 \001(\rB\r\222A\n2\010Label IDR\002id\"\024"
-  "\n\022ListDevicesRequest\"\352\001\n\023ListDevicesResp"
-  "onse\022l\n\007devices\030\001 \003(\0132*.kentik.device.v2"
-  "02308beta1.DeviceDetailedB&\222A#2!List of "
-  "configurations of devicesR\007devices\022e\n\rin"
-  "valid_count\030\002 \001(\rB@\222A=2;Number of invali"
-  "d entries encountered while collecting d"
-  "ataR\014invalidCount\"G\n\020GetDeviceRequest\0223\n"
-  "\002id\030\001 \001(\tB#\222A\0342\032ID of the requested devi"
-  "ce\342A\001\002R\002id\"\203\001\n\021GetDeviceResponse\022n\n\006devi"
-  "ce\030\001 \001(\0132*.kentik.device.v202308beta1.De"
-  "viceDetailedB*\222A\'2%Configuration of the "
-  "requested deviceR\006device\"\202\001\n\023CreateDevic"
-  "eRequest\022k\n\006device\030\001 \001(\0132).kentik.device"
-  ".v202308beta1.DeviceConciseB(\222A!2\037Config"
-  "uration of the new device\342A\001\002R\006device\"\212\001"
-  "\n\024CreateDeviceResponse\022r\n\006device\030\001 \001(\0132*"
+  "by NMS.R\003nms\022\332\001\n\032device_bgp_credential_n"
+  "ame\030\026 \001(\tB\234\001\222A\230\0012\225\001BGP Credential Name ("
+  "device_bgp_credential_name) - Optional C"
+  "redential Name (Credential for BGP peeri"
+  "ng). Valid characters: alphanumeric. Len"
+  "gth: 32.R\027deviceBgpCredentialName\022\336\001\n\031fl"
+  "ow_snmp_credential_name\030\027 \001(\tB\242\001\222A\236\0012\233\001S"
+  "nmp Credential Name (flow_snmp_credentia"
+  "l_name) - Optional Credential Name (Cred"
+  "ential for Flow Snmp peering). Valid cha"
+  "racters: alphanumeric. Length: 32.R\026flow"
+  "SnmpCredentialNameB\020\n\016_minimize_snmp\"\316\001\n"
+  "\004Site\022\034\n\002id\030\001 \001(\tB\014\222A\t2\007Site IDR\002id\022+\n\ts"
+  "ite_name\030\002 \001(\tB\016\222A\0132\tSite nameR\010siteName"
+  "\022$\n\003lat\030\003 \001(\001B\022\222A\0172\rSite latitudeR\003lat\022%"
+  "\n\003lon\030\004 \001(\001B\023\222A\0202\016Site longitudeR\003lon\022.\n"
+  "\ncompany_id\030\005 \001(\tB\017\222A\0142\nCompany IDR\tcomp"
+  "anyId\"H\n\004Plan\022\034\n\002id\030\001 \001(\tB\014\222A\t2\007Plan IDR"
+  "\002id\022\"\n\004name\030\002 \001(\tB\016\222A\0132\tPlan nameR\004name\""
+  "\304\004\n\005Label\022\035\n\002id\030\001 \001(\tB\r\222A\n2\010Label IDR\002id"
+  "\022#\n\004name\030\002 \001(\tB\017\222A\0142\nLabel nameR\004name\0228\n"
+  "\013description\030\003 \001(\tB\026\222A\0232\021Label descripti"
+  "onR\013description\022K\n\005edate\030\004 \001(\0132\032.google."
+  "protobuf.TimestampB\031\222A\0262\024Label end date "
+  "(UTC)R\005edate\022P\n\005cdate\030\005 \001(\0132\032.google.pro"
+  "tobuf.TimestampB\036\222A\0332\031Label creation dat"
+  "e (UTC)R\005cdate\022%\n\007user_id\030\006 \001(\tB\014\222A\t2\007Us"
+  "er IDR\006userId\022.\n\ncompany_id\030\007 \001(\tB\017\222A\0142\n"
+  "Company IDR\tcompanyId\022&\n\005color\030\010 \001(\tB\020\222A"
+  "\r2\013Label colorR\005color\022&\n\005order\030\t \001(\tB\020\222A"
+  "\r2\013Label orderR\005order\022<\n\017pivot_device_id"
+  "\030\n \001(\tB\024\222A\0212\017Pivot device IDR\rpivotDevic"
+  "eId\0229\n\016pivot_label_id\030\013 \001(\tB\023\222A\0202\016Pivot "
+  "label IDR\014pivotLabelId\"\211\004\n\tInterface\022O\n\025"
+  "interface_description\030\001 \001(\tB\032\222A\0272\025Interf"
+  "ace descriptionR\024interfaceDescription\022E\n"
+  "\022initial_snmp_speed\030\002 \001(\tB\027\222A\0242\022Initial "
+  "SNMP speedR\020initialSnmpSpeed\022+\n\tdevice_i"
+  "d\030\003 \001(\tB\016\222A\0132\tDevice IDR\010deviceId\022.\n\nsnm"
+  "p_speed\030\004 \001(\tB\017\222A\0142\nSNMP speedR\tsnmpSpee"
+  "d\022.\n\nsnmp_alias\030\005 \001(\tB\017\222A\0142\nSNMP aliasR\t"
+  "snmpAlias\022%\n\007snmp_id\030\006 \001(\tB\014\222A\t2\007SNMP ID"
+  "R\006snmpId\022C\n\021connectivity_type\030\007 \001(\tB\026\222A\023"
+  "2\021Connectivity typeR\020connectivityType\022@\n"
+  "\020network_boundary\030\010 \001(\tB\025\222A\0222\020Network bo"
+  "undaryR\017networkBoundary\022)\n\010provider\030\t \001("
+  "\tB\r\222A\n2\010ProviderR\010provider\"\252\002\n\020CustomCol"
+  "umnData\022+\n\tdevice_id\030\001 \001(\tB\016\222A\0132\tDevice "
+  "IDR\010deviceId\022(\n\010field_id\030\002 \001(\tB\r\222A\n2\010Fie"
+  "ld IDR\007fieldId\022+\n\010col_name\030\003 \001(\tB\020\222A\r2\013C"
+  "olumn nameR\007colName\0222\n\013description\030\004 \001(\t"
+  "B\020\222A\r2\013DescriptionR\013description\022+\n\010col_t"
+  "ype\030\005 \001(\tB\020\222A\r2\013Column typeR\007colType\0221\n\013"
+  "device_type\030\006 \001(\tB\020\222A\r2\013Device typeR\ndev"
+  "iceType\"H\n\nGnmiV1Conf\022:\n\016dialout_server\030"
+  "\001 \001(\tB\023\222A\0202\016Dialout serverR\rdialoutServe"
+  "r\"\267&\n\016DeviceDetailed\022;\n\002id\030\001 \001(\tB+\222A$2\"S"
+  "ystem generated unique identifier\342A\001\003R\002i"
+  "d\022.\n\ncompany_id\030\002 \001(\tB\017\222A\0142\nCompany IDR\t"
+  "companyId\0221\n\013device_name\030\003 \001(\tB\020\222A\r2\013Dev"
+  "ice nameR\ndeviceName\0224\n\014device_alias\030\004 \001"
+  "(\tB\021\222A\0162\014Device aliasR\013deviceAlias\0221\n\013de"
+  "vice_type\030\005 \001(\tB\020\222A\r2\013Device typeR\ndevic"
+  "eType\022F\n\022device_description\030\006 \001(\tB\027\222A\0242\022"
+  "Device descriptionR\021deviceDescription\022\?\n"
+  "\004site\030\007 \001(\0132 .kentik.device.v202308beta1"
+  ".SiteB\t\222A\0062\004SiteR\004site\022\?\n\004plan\030\010 \001(\0132 .k"
+  "entik.device.v202308beta1.PlanB\t\222A\0062\004Pla"
+  "nR\004plan\022N\n\006labels\030\t \003(\0132!.kentik.device."
+  "v202308beta1.LabelB\023\222A\0202\016List of labelsR"
+  "\006labels\022e\n\016all_interfaces\030\n \003(\0132%.kentik"
+  ".device.v202308beta1.InterfaceB\027\222A\0242\022Lis"
+  "t of interfacesR\rallInterfaces\022\?\n\020device"
+  "_flow_type\030\013 \001(\tB\025\222A\0222\020Device flow typeR"
+  "\016deviceFlowType\022E\n\022device_sample_rate\030\014 "
+  "\001(\tB\027\222A\0242\022Device sample rateR\020deviceSamp"
+  "leRate\0229\n\013sending_ips\030\r \003(\tB\030\222A\0252\023List o"
+  "f sending IPsR\nsendingIps\0229\n\016device_snmp"
+  "_ip\030\016 \001(\tB\023\222A\0202\016Device SNMP IPR\014deviceSn"
+  "mpIp\022N\n\025device_snmp_community\030\017 \001(\tB\032\222A\027"
+  "2\025Device SNMP communityR\023deviceSnmpCommu"
+  "nity\022<\n\rminimize_snmp\030\020 \001(\010B\022\222A\0172\rMinimi"
+  "ze SNMPH\000R\014minimizeSnmp\210\001\001\022<\n\017device_bgp"
+  "_type\030\021 \001(\tB\024\222A\0212\017Device BGP typeR\rdevic"
+  "eBgpType\022P\n\026device_bgp_neighbor_ip\030\022 \001(\t"
+  "B\033\222A\0302\026Device BGP neighbor IPR\023deviceBgp"
+  "NeighborIp\022S\n\027device_bgp_neighbor_ip6\030\023 "
+  "\001(\tB\034\222A\0312\027Device BGP neighbor IP6R\024devic"
+  "eBgpNeighborIp6\022S\n\027device_bgp_neighbor_a"
+  "sn\030\024 \001(\tB\034\222A\0312\027Device BGP neighbor ASNR\024"
+  "deviceBgpNeighborAsn\022H\n\023device_bgp_flows"
+  "pec\030\025 \001(\010B\030\222A\0252\023Device BGP flowspecR\021dev"
+  "iceBgpFlowspec\022H\n\023device_bgp_password\030\026 "
+  "\001(\tB\030\222A\0252\023Device BGP passwordR\021deviceBgp"
+  "Password\022V\n\030device_bgp_label_unicast\030\027 \001"
+  "(\010B\035\222A\0322\030Device BGP label unicastR\025devic"
+  "eBgpLabelUnicast\022H\n\023bgp_lookup_strategy\030"
+  "\030 \001(\tB\030\222A\0252\023BGP lookup strategyR\021bgpLook"
+  "upStrategy\0227\n\rdevice_status\030\031 \001(\tB\022\222A\0172\r"
+  "Device statusR\014deviceStatus\022A\n\021use_bgp_d"
+  "evice_id\030\032 \001(\tB\026\222A\0232\021Use BGP device IDR\016"
+  "useBgpDeviceId\022:\n\016custom_columns\030\033 \001(\tB\023"
+  "\222A\0202\016Custom columnsR\rcustomColumns\022s\n\022cu"
+  "stom_column_data\030\034 \003(\0132,.kentik.device.v"
+  "202308beta1.CustomColumnDataB\027\222A\0242\022Custo"
+  "m column dataR\020customColumnData\022P\n\026devic"
+  "e_chf_client_port\030\035 \001(\tB\033\222A\0302\026Device CHF"
+  " client portR\023deviceChfClientPort\022\\\n\032dev"
+  "ice_chf_client_protocol\030\036 \001(\tB\037\222A\0342\032Devi"
+  "ce CHF client protocolR\027deviceChfClientP"
+  "rotocol\022K\n\024device_chf_interface\030\037 \001(\tB\031\222"
+  "A\0262\024Device CHF interfaceR\022deviceChfInter"
+  "face\022B\n\021device_agent_type\030  \001(\tB\026\222A\0232\021De"
+  "vice agent typeR\017deviceAgentType\0226\n\rmax_"
+  "flow_rate\030! \001(\rB\022\222A\0172\rMax flow rateR\013max"
+  "FlowRate\022A\n\021max_big_flow_rate\030\" \001(\rB\026\222A\023"
+  "2\021Max big flow rateR\016maxBigFlowRate\022\?\n\020d"
+  "evice_proxy_bgp\030# \001(\tB\025\222A\0222\020Device proxy"
+  " BGPR\016deviceProxyBgp\022B\n\021device_proxy_bgp"
+  "6\030$ \001(\tB\026\222A\0232\021Device proxy BGP6R\017deviceP"
+  "roxyBgp6\022\\\n\014created_date\030% \001(\0132\032.google."
+  "protobuf.TimestampB\035\222A\0322\030Creation timest"
+  "amp (UTC)R\013createdDate\022e\n\014updated_date\030&"
+  " \001(\0132\032.google.protobuf.TimestampB&\222A#2!L"
+  "ast modification timestamp (UTC)R\013update"
+  "dDate\022g\n\033device_snmp_v3_conf_enabled\030\' \001"
+  "(\010B)\222A&2$Device SNMP v3 configuration en"
+  "abledR\027deviceSnmpV3ConfEnabled\022~\n\023device"
+  "_snmp_v3_conf\030( \001(\0132,.kentik.device.v202"
+  "308beta1.DeviceSnmpV3ConfB!\222A\0362\034Device S"
+  "NMP v3 configurationR\020deviceSnmpV3Conf\022."
+  "\n\010cdn_attr\030) \001(\tB\023\222A\0202\016CDN attributesR\007c"
+  "dnAttr\0223\n\014bgp_peer_ip4\030* \001(\tB\021\222A\0162\014BGP p"
+  "eer IP4R\nbgpPeerIp4\0223\n\014bgp_peer_ip6\030+ \001("
+  "\tB\021\222A\0162\014BGP peer IP6R\nbgpPeerIp6\022:\n\016devi"
+  "ce_subtype\030, \001(\tB\023\222A\0202\016Device subtypeR\rd"
+  "eviceSubtype\022E\n\022device_vendor_type\030- \001(\t"
+  "B\027\222A\0242\022Device vendor typeR\020deviceVendorT"
+  "ype\022B\n\021device_model_type\030. \001(\tB\026\222A\0232\021Dev"
+  "ice model typeR\017deviceModelType\022<\n\017cloud"
+  "_export_id\030/ \001(\tB\024\222A\0212\017Cloud export IDR\r"
+  "cloudExportId\0227\n\rdevice_kproxy\0300 \001(\tB\022\222A"
+  "\0172\rDevice KProxyR\014deviceKproxy\0224\n\014snmp_e"
+  "nabled\0301 \001(\tB\021\222A\0162\014SNMP enabledR\013snmpEna"
+  "bled\022K\n\024snmp_disabled_reason\0302 \001(\tB\031\222A\0262"
+  "\024SNMP disabled reasonR\022snmpDisabledReaso"
+  "n\022\\\n\032snmp_disabled_reason_other\0303 \001(\tB\037\222"
+  "A\0342\032SNMP disabled reason otherR\027snmpDisa"
+  "bledReasonOther\022H\n\023bgp_disabled_reason\0304"
+  " \001(\tB\030\222A\0252\023BGP disabled reasonR\021bgpDisab"
+  "ledReason\022Y\n\031bgp_disabled_reason_other\0305"
+  " \001(\tB\036\222A\0332\031BGP disabled reason otherR\026bg"
+  "pDisabledReasonOther\022I\n\023device_manufactu"
+  "rer\0306 \001(\tB\030\222A\0252\023Device manufacturerR\022dev"
+  "iceManufacturer\0224\n\014device_alert\0307 \001(\tB\021\222"
+  "A\0162\014Device alertR\013deviceAlert\022\035\n\004role\0308 "
+  "\001(\tB\t\222A\0062\004RoleR\004role\022x\n\023device_gnmi_v1_c"
+  "onf\0309 \001(\0132&.kentik.device.v202308beta1.G"
+  "nmiV1ConfB!\222A\0362\034Device GNMI v1 configura"
+  "tionR\020deviceGnmiV1Conf\022A\n\021use_asn_from_f"
+  "low\030: \001(\010B\026\222A\0232\021Use ASN from flowR\016useAs"
+  "nFromFlow\0227\n\rmax_interface\030; \001(\rB\022\222A\0172\rM"
+  "ax interfaceR\014maxInterface\022H\n\023max_interf"
+  "ace_check\030< \001(\rB\030\222A\0252\023Max interface chec"
+  "kR\021maxInterfaceCheck\022u\n\003nms\030= \001(\0132+.kent"
+  "ik.device.v202308beta1.DeviceNmsConfigB6"
+  "\222A321Configuration if this device is mon"
+  "itored by NMS.R\003nms\022\332\001\n\032device_bgp_crede"
+  "ntial_name\030> \001(\tB\234\001\222A\230\0012\225\001BGP Credential"
+  " Name (device_bgp_credential_name) - Opt"
+  "ional Credential Name (Credential for BG"
+  "P peering). Valid characters: alphanumer"
+  "ic. Length: 32.R\027deviceBgpCredentialName"
+  "\022\336\001\n\031flow_snmp_credential_name\030\? \001(\tB\242\001\222"
+  "A\236\0012\233\001Snmp Credential Name (flow_snmp_cr"
+  "edential_name) - Optional Credential Nam"
+  "e (Credential for Flow Snmp peering). Va"
+  "lid characters: alphanumeric. Length: 32"
+  ".R\026flowSnmpCredentialNameB\020\n\016_minimize_s"
+  "nmp\"-\n\014LabelConcise\022\035\n\002id\030\001 \001(\rB\r\222A\n2\010La"
+  "bel IDR\002id\"\024\n\022ListDevicesRequest\"\352\001\n\023Lis"
+  "tDevicesResponse\022l\n\007devices\030\001 \003(\0132*.kent"
+  "ik.device.v202308beta1.DeviceDetailedB&\222"
+  "A#2!List of configurations of devicesR\007d"
+  "evices\022e\n\rinvalid_count\030\002 \001(\rB@\222A=2;Numb"
+  "er of invalid entries encountered while "
+  "collecting dataR\014invalidCount\"G\n\020GetDevi"
+  "ceRequest\0223\n\002id\030\001 \001(\tB#\222A\0342\032ID of the re"
+  "quested device\342A\001\002R\002id\"\203\001\n\021GetDeviceResp"
+  "onse\022n\n\006device\030\001 \001(\0132*.kentik.device.v20"
+  "2308beta1.DeviceDetailedB*\222A\'2%Configura"
+  "tion of the requested deviceR\006device\"\202\001\n"
+  "\023CreateDeviceRequest\022k\n\006device\030\001 \001(\0132).k"
+  "entik.device.v202308beta1.DeviceConciseB"
+  "(\222A!2\037Configuration of the new device\342A\001"
+  "\002R\006device\"\212\001\n\024CreateDeviceResponse\022r\n\006de"
+  "vice\030\001 \001(\0132*.kentik.device.v202308beta1."
+  "DeviceDetailedB.\222A+2)Configuration of th"
+  "e newly created deviceR\006device\"\225\001\n\024Creat"
+  "eDevicesRequest\022}\n\007devices\030\001 \003(\0132).kenti"
+  "k.device.v202308beta1.DeviceConciseB8\222A1"
+  "2/List of configurations of devices to b"
+  "e created\342A\001\002R\007devices\"\363\001\n\025CreateDevices"
+  "Response\022z\n\007devices\030\001 \003(\0132*.kentik.devic"
+  "e.v202308beta1.DeviceDetailedB4\222A12/List"
+  " of configurations of newly created devi"
+  "cesR\007devices\022^\n\016failed_devices\030\002 \003(\tB7\222A"
+  "422List of names of devices that failed "
+  "to be createdR\rfailedDevices\"\235\001\n\023UpdateD"
+  "eviceRequest\022\205\001\n\006device\030\001 \001(\0132).kentik.d"
+  "evice.v202308beta1.DeviceConciseBB\222A;29N"
+  "ew configuration attributes for the devi"
+  "ce to be updated\342A\001\002R\006device\"\204\001\n\024UpdateD"
+  "eviceResponse\022l\n\006device\030\001 \001(\0132*.kentik.d"
+  "evice.v202308beta1.DeviceDetailedB(\222A%2#"
+  "Updated configuration of the deviceR\006dev"
+  "ice\"\225\001\n\024UpdateDevicesRequest\022}\n\007devices\030"
+  "\001 \003(\0132).kentik.device.v202308beta1.Devic"
+  "eConciseB8\222A12/List of configurations of"
+  " devices to be updated\342A\001\002R\007devices\"\353\001\n\025"
+  "UpdateDevicesResponse\022t\n\007devices\030\001 \003(\0132*"
   ".kentik.device.v202308beta1.DeviceDetail"
-  "edB.\222A+2)Configuration of the newly crea"
-  "ted deviceR\006device\"\225\001\n\024CreateDevicesRequ"
-  "est\022}\n\007devices\030\001 \003(\0132).kentik.device.v20"
-  "2308beta1.DeviceConciseB8\222A12/List of co"
-  "nfigurations of devices to be created\342A\001"
-  "\002R\007devices\"\363\001\n\025CreateDevicesResponse\022z\n\007"
-  "devices\030\001 \003(\0132*.kentik.device.v202308bet"
-  "a1.DeviceDetailedB4\222A12/List of configur"
-  "ations of newly created devicesR\007devices"
-  "\022^\n\016failed_devices\030\002 \003(\tB7\222A422List of n"
-  "ames of devices that failed to be create"
-  "dR\rfailedDevices\"\235\001\n\023UpdateDeviceRequest"
-  "\022\205\001\n\006device\030\001 \001(\0132).kentik.device.v20230"
-  "8beta1.DeviceConciseBB\222A;29New configura"
-  "tion attributes for the device to be upd"
-  "ated\342A\001\002R\006device\"\204\001\n\024UpdateDeviceRespons"
-  "e\022l\n\006device\030\001 \001(\0132*.kentik.device.v20230"
-  "8beta1.DeviceDetailedB(\222A%2#Updated conf"
-  "iguration of the deviceR\006device\"\225\001\n\024Upda"
-  "teDevicesRequest\022}\n\007devices\030\001 \003(\0132).kent"
-  "ik.device.v202308beta1.DeviceConciseB8\222A"
-  "12/List of configurations of devices to "
-  "be updated\342A\001\002R\007devices\"\353\001\n\025UpdateDevice"
-  "sResponse\022t\n\007devices\030\001 \003(\0132*.kentik.devi"
-  "ce.v202308beta1.DeviceDetailedB.\222A+2)Lis"
-  "t of configurations of updated devicesR\007"
-  "devices\022\\\n\016failed_devices\030\002 \003(\tB5\222A220Li"
-  "st of IDs of devices that failed to be u"
-  "pdatedR\rfailedDevices\"\311\001\n\031UpdateDeviceLa"
-  "belsRequest\0227\n\002id\030\001 \001(\tB\'\222A 2\036ID of the "
-  "device to be updated\342A\001\002R\002id\022s\n\006labels\030\002"
-  " \003(\0132(.kentik.device.v202308beta1.LabelC"
-  "onciseB1\222A*2(List of labels to be added "
-  "to the device\342A\001\002R\006labels\"\212\001\n\032UpdateDevi"
-  "ceLabelsResponse\022l\n\006device\030\001 \001(\0132*.kenti"
-  "k.device.v202308beta1.DeviceDetailedB(\222A"
-  "%2#Updated configuration of the deviceR\006"
-  "device\"N\n\023DeleteDeviceRequest\0227\n\002id\030\001 \001("
-  "\tB\'\222A 2\036ID of the device to be deleted\342A"
-  "\001\002R\002id\"\026\n\024DeleteDeviceResponse\"W\n\024Delete"
-  "DevicesRequest\022\?\n\003ids\030\001 \003(\tB-\222A&2$List o"
-  "f IDs of devices to be deleted\342A\001\002R\003ids\""
-  "u\n\025DeleteDevicesResponse\022\\\n\016failed_devic"
-  "es\030\001 \003(\tB5\222A220List of IDs of devices th"
-  "at failed to be deletedR\rfailedDevices2\366"
-  "\032\n\rDeviceService\022\252\002\n\013ListDevices\022..kenti"
-  "k.device.v202308beta1.ListDevicesRequest"
-  "\032/.kentik.device.v202308beta1.ListDevice"
-  "sResponse\"\271\001\222A~\022\021List all devices.\032\\Retu"
-  "rns list of configured devices (see [Abo"
-  "ut Devices](https://kb.kentik.com/v4/Cb0"
-  "1.htm)).*\013ListDevices\362\327\002\021admin.device:re"
-  "ad\202\323\344\223\002\035\022\033/device/v202308beta1/device\022\311\002"
-  "\n\tGetDevice\022,.kentik.device.v202308beta1"
-  ".GetDeviceRequest\032-.kentik.device.v20230"
-  "8beta1.GetDeviceResponse\"\336\001\222A\235\001\022#Retriev"
-  "e configuration of a device.\032kReturns co"
-  "nfiguration of a device specified by ID "
-  "(see [About Devices](https://kb.kentik.c"
-  "om/v4/Cb01.htm)).*\tGetDevice\362\327\002\021admin.de"
-  "vice:read\202\323\344\223\002\"\022 /device/v202308beta1/de"
-  "vice/{id}\022\346\002\n\014CreateDevice\022/.kentik.devi"
-  "ce.v202308beta1.CreateDeviceRequest\0320.ke"
-  "ntik.device.v202308beta1.CreateDeviceRes"
-  "ponse\"\362\001\222A\262\001\022\027Configure a new device.\032\210\001"
-  "Create configuration for a new device. R"
-  "eturns the newly created configuration ("
-  "see [About Devices](https://kb.kentik.co"
-  "m/v4/Cb01.htm)).*\014CreateDevice\362\327\002\022admin."
-  "device:write\202\323\344\223\002 \"\033/device/v202308beta1"
-  "/device:\001*\022\203\003\n\rCreateDevices\0220.kentik.de"
-  "vice.v202308beta1.CreateDevicesRequest\0321"
+  "edB.\222A+2)List of configurations of updat"
+  "ed devicesR\007devices\022\\\n\016failed_devices\030\002 "
+  "\003(\tB5\222A220List of IDs of devices that fa"
+  "iled to be updatedR\rfailedDevices\"\311\001\n\031Up"
+  "dateDeviceLabelsRequest\0227\n\002id\030\001 \001(\tB\'\222A "
+  "2\036ID of the device to be updated\342A\001\002R\002id"
+  "\022s\n\006labels\030\002 \003(\0132(.kentik.device.v202308"
+  "beta1.LabelConciseB1\222A*2(List of labels "
+  "to be added to the device\342A\001\002R\006labels\"\212\001"
+  "\n\032UpdateDeviceLabelsResponse\022l\n\006device\030\001"
+  " \001(\0132*.kentik.device.v202308beta1.Device"
+  "DetailedB(\222A%2#Updated configuration of "
+  "the deviceR\006device\"N\n\023DeleteDeviceReques"
+  "t\0227\n\002id\030\001 \001(\tB\'\222A 2\036ID of the device to "
+  "be deleted\342A\001\002R\002id\"\026\n\024DeleteDeviceRespon"
+  "se\"W\n\024DeleteDevicesRequest\022\?\n\003ids\030\001 \003(\tB"
+  "-\222A&2$List of IDs of devices to be delet"
+  "ed\342A\001\002R\003ids\"u\n\025DeleteDevicesResponse\022\\\n\016"
+  "failed_devices\030\001 \003(\tB5\222A220List of IDs o"
+  "f devices that failed to be deletedR\rfai"
+  "ledDevices2\366\032\n\rDeviceService\022\252\002\n\013ListDev"
+  "ices\022..kentik.device.v202308beta1.ListDe"
+  "vicesRequest\032/.kentik.device.v202308beta"
+  "1.ListDevicesResponse\"\271\001\222A~\022\021List all de"
+  "vices.\032\\Returns list of configured devic"
+  "es (see [About Devices](https://kb.kenti"
+  "k.com/v4/Cb01.htm)).*\013ListDevices\362\327\002\021adm"
+  "in.device:read\202\323\344\223\002\035\022\033/device/v202308bet"
+  "a1/device\022\311\002\n\tGetDevice\022,.kentik.device."
+  "v202308beta1.GetDeviceRequest\032-.kentik.d"
+  "evice.v202308beta1.GetDeviceResponse\"\336\001\222"
+  "A\235\001\022#Retrieve configuration of a device."
+  "\032kReturns configuration of a device spec"
+  "ified by ID (see [About Devices](https:/"
+  "/kb.kentik.com/v4/Cb01.htm)).*\tGetDevice"
+  "\362\327\002\021admin.device:read\202\323\344\223\002\"\022 /device/v20"
+  "2308beta1/device/{id}\022\346\002\n\014CreateDevice\022/"
   ".kentik.device.v202308beta1.CreateDevice"
-  "sResponse\"\214\002\222A\306\001\022%Configure multiple dev"
-  "ices (max 100).\032\215\001Create configuration f"
-  "or multiple devices. Returns the newly c"
-  "reated configurations (see [About Device"
-  "s](https://kb.kentik.com/v4/Cb01.htm)).*"
-  "\rCreateDevices\362\327\002\022admin.device:write\202\323\344\223"
-  "\002&\"!/device/v202308beta1/device/batch:\001*"
-  "\022\223\003\n\014UpdateDevice\022/.kentik.device.v20230"
-  "8beta1.UpdateDeviceRequest\0320.kentik.devi"
-  "ce.v202308beta1.UpdateDeviceResponse\"\237\002\222"
-  "A\323\001\022\"Updates configuration of a device.\032"
-  "\236\001Replaces configuration of a device wit"
-  "h attributes in the request. Returns the"
-  " updated configuration (see [About Devic"
-  "es](https://kb.kentik.com/v4/Cb01.htm))."
-  "*\014UpdateDevice\362\327\002\022admin.device:write\202\323\344\223"
-  "\002,\032\'/device/v202308beta1/device/{device."
-  "id}:\001*\022\254\003\n\rUpdateDevices\0220.kentik.device"
-  ".v202308beta1.UpdateDevicesRequest\0321.ken"
-  "tik.device.v202308beta1.UpdateDevicesRes"
-  "ponse\"\265\002\222A\357\001\0224Updates configuration of m"
-  "ultiple devices (max 100).\032\247\001Replaces co"
-  "nfiguration of multiple devices with att"
-  "ributes in the request. Returns the upda"
-  "ted configurations (see [About Devices]("
-  "https://kb.kentik.com/v4/Cb01.htm)).*\rUp"
-  "dateDevices\362\327\002\022admin.device:write\202\323\344\223\002&\032"
-  "!/device/v202308beta1/device/batch:\001*\022\302\003"
-  "\n\022UpdateDeviceLabels\0225.kentik.device.v20"
-  "2308beta1.UpdateDeviceLabelsRequest\0326.ke"
-  "ntik.device.v202308beta1.UpdateDeviceLab"
-  "elsResponse\"\274\002\222A\360\001\022\033Updates labels of a "
-  "device.\032\274\001Removes all existing labels fr"
-  "om the device and applies the device lab"
-  "els (see [About Device Labels](https://k"
-  "b.kentik.com/v4/Cb16.htm)) specified by "
-  "id. Returns the updated configuration.*\022"
-  "UpdateDeviceLabels\362\327\002\022admin.device:write"
-  "\202\323\344\223\002,\032\'/device/v202308beta1/device/{id}"
-  "/labels:\001*\022\325\002\n\014DeleteDevice\022/.kentik.dev"
-  "ice.v202308beta1.DeleteDeviceRequest\0320.k"
-  "entik.device.v202308beta1.DeleteDeviceRe"
-  "sponse\"\341\001\222A\237\001\022!Delete configuration of a"
-  " device.\032lDeletes configuration of a dev"
-  "ice with specific ID (see [About Devices"
-  "](https://kb.kentik.com/v4/Cb01.htm)).*\014"
-  "DeleteDevice\362\327\002\022admin.device:write\202\323\344\223\002\""
-  "* /device/v202308beta1/device/{id}\022\356\002\n\rD"
-  "eleteDevices\0220.kentik.device.v202308beta"
-  "1.DeleteDevicesRequest\0321.kentik.device.v"
-  "202308beta1.DeleteDevicesResponse\"\367\001\222A\261\001"
-  "\022)Delete configuration of multiple devic"
-  "es.\032uDeletes configuration of multiple d"
-  "evices with specific IDs (see [About Dev"
-  "ices](https://kb.kentik.com/v4/Cb01.htm)"
-  ").*\rDeleteDevices\362\327\002\022admin.device:write\202"
-  "\323\344\223\002&\"!/device/v202308beta1/device/batch"
-  ":\001*\032*\312A\023grpc.api.kentik.com\352\327\002\014admin.dev"
-  "ice\220\330\002\003B\356\003ZLgithub.com/kentik/api-schema"
-  "-public/gen/go/kentik/device/v202308beta"
-  "1;device\222A\234\003\022\265\001\n\nDevice API\022R# Overview\n"
-  "The Device API provides programmatic acc"
-  "ess to configuration of devices\"E\n\026Kenti"
-  "k API Engineering\022+https://github.com/ke"
-  "ntik/api-schema-public2\014v202308beta1*\001\0022"
-  "\020application/json:\020application/jsonZD\n\036\n"
-  "\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031"
-  "\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t"
-  "\n\005token\022\000r]\n%General information about K"
-  "entik APIs\0224https://kb.kentik.com/v0/Ab0"
-  "9.htm#Ab09-APIs_Overviewb\006proto3"
+  "Request\0320.kentik.device.v202308beta1.Cre"
+  "ateDeviceResponse\"\362\001\222A\262\001\022\027Configure a ne"
+  "w device.\032\210\001Create configuration for a n"
+  "ew device. Returns the newly created con"
+  "figuration (see [About Devices](https://"
+  "kb.kentik.com/v4/Cb01.htm)).*\014CreateDevi"
+  "ce\362\327\002\022admin.device:write\202\323\344\223\002 \"\033/device/"
+  "v202308beta1/device:\001*\022\203\003\n\rCreateDevices"
+  "\0220.kentik.device.v202308beta1.CreateDevi"
+  "cesRequest\0321.kentik.device.v202308beta1."
+  "CreateDevicesResponse\"\214\002\222A\306\001\022%Configure "
+  "multiple devices (max 100).\032\215\001Create con"
+  "figuration for multiple devices. Returns"
+  " the newly created configurations (see ["
+  "About Devices](https://kb.kentik.com/v4/"
+  "Cb01.htm)).*\rCreateDevices\362\327\002\022admin.devi"
+  "ce:write\202\323\344\223\002&\"!/device/v202308beta1/dev"
+  "ice/batch:\001*\022\223\003\n\014UpdateDevice\022/.kentik.d"
+  "evice.v202308beta1.UpdateDeviceRequest\0320"
+  ".kentik.device.v202308beta1.UpdateDevice"
+  "Response\"\237\002\222A\323\001\022\"Updates configuration o"
+  "f a device.\032\236\001Replaces configuration of "
+  "a device with attributes in the request."
+  " Returns the updated configuration (see "
+  "[About Devices](https://kb.kentik.com/v4"
+  "/Cb01.htm)).*\014UpdateDevice\362\327\002\022admin.devi"
+  "ce:write\202\323\344\223\002,\032\'/device/v202308beta1/dev"
+  "ice/{device.id}:\001*\022\254\003\n\rUpdateDevices\0220.k"
+  "entik.device.v202308beta1.UpdateDevicesR"
+  "equest\0321.kentik.device.v202308beta1.Upda"
+  "teDevicesResponse\"\265\002\222A\357\001\0224Updates config"
+  "uration of multiple devices (max 100).\032\247"
+  "\001Replaces configuration of multiple devi"
+  "ces with attributes in the request. Retu"
+  "rns the updated configurations (see [Abo"
+  "ut Devices](https://kb.kentik.com/v4/Cb0"
+  "1.htm)).*\rUpdateDevices\362\327\002\022admin.device:"
+  "write\202\323\344\223\002&\032!/device/v202308beta1/device"
+  "/batch:\001*\022\302\003\n\022UpdateDeviceLabels\0225.kenti"
+  "k.device.v202308beta1.UpdateDeviceLabels"
+  "Request\0326.kentik.device.v202308beta1.Upd"
+  "ateDeviceLabelsResponse\"\274\002\222A\360\001\022\033Updates "
+  "labels of a device.\032\274\001Removes all existi"
+  "ng labels from the device and applies th"
+  "e device labels (see [About Device Label"
+  "s](https://kb.kentik.com/v4/Cb16.htm)) s"
+  "pecified by id. Returns the updated conf"
+  "iguration.*\022UpdateDeviceLabels\362\327\002\022admin."
+  "device:write\202\323\344\223\002,\032\'/device/v202308beta1"
+  "/device/{id}/labels:\001*\022\325\002\n\014DeleteDevice\022"
+  "/.kentik.device.v202308beta1.DeleteDevic"
+  "eRequest\0320.kentik.device.v202308beta1.De"
+  "leteDeviceResponse\"\341\001\222A\237\001\022!Delete config"
+  "uration of a device.\032lDeletes configurat"
+  "ion of a device with specific ID (see [A"
+  "bout Devices](https://kb.kentik.com/v4/C"
+  "b01.htm)).*\014DeleteDevice\362\327\002\022admin.device"
+  ":write\202\323\344\223\002\"* /device/v202308beta1/devic"
+  "e/{id}\022\356\002\n\rDeleteDevices\0220.kentik.device"
+  ".v202308beta1.DeleteDevicesRequest\0321.ken"
+  "tik.device.v202308beta1.DeleteDevicesRes"
+  "ponse\"\367\001\222A\261\001\022)Delete configuration of mu"
+  "ltiple devices.\032uDeletes configuration o"
+  "f multiple devices with specific IDs (se"
+  "e [About Devices](https://kb.kentik.com/"
+  "v4/Cb01.htm)).*\rDeleteDevices\362\327\002\022admin.d"
+  "evice:write\202\323\344\223\002&\"!/device/v202308beta1/"
+  "device/batch:\001*\032*\312A\023grpc.api.kentik.com\352"
+  "\327\002\014admin.device\220\330\002\003B\356\003ZLgithub.com/kenti"
+  "k/api-schema-public/gen/go/kentik/device"
+  "/v202308beta1;device\222A\234\003\022\265\001\n\nDevice API\022"
+  "R# Overview\nThe Device API provides prog"
+  "rammatic access to configuration of devi"
+  "ces\"E\n\026Kentik API Engineering\022+https://g"
+  "ithub.com/kentik/api-schema-public2\014v202"
+  "308beta1*\001\0022\020application/json:\020applicati"
+  "on/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email "
+  "\002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n"
+  "\t\n\005email\022\000\n\t\n\005token\022\000r]\n%General informa"
+  "tion about Kentik APIs\0224https://kb.kenti"
+  "k.com/v0/Ab09.htm#Ab09-APIs_Overviewb\006pr"
+  "oto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto_deps[7] = {
   &::descriptor_table_google_2fapi_2fannotations_2eproto,
@@ -1628,7 +1659,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto = {
-  false, false, descriptor_table_protodef_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto, "kentik/device/v202308beta1/device.proto", 19872,
+  false, false, descriptor_table_protodef_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto, "kentik/device/v202308beta1/device.proto", 20764,
   &descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto_once, descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto_sccs, descriptor_table_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto_deps, 31, 7,
   schemas, file_default_instances, TableStruct_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto::offsets,
   file_level_metadata_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto, 31, file_level_enum_descriptors_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto, file_level_service_descriptors_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto,
@@ -3046,6 +3077,16 @@ DeviceConcise::DeviceConcise(const DeviceConcise& from)
     device_bgp_password_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_device_bgp_password(),
       GetArena());
   }
+  device_bgp_credential_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_device_bgp_credential_name().empty()) {
+    device_bgp_credential_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_device_bgp_credential_name(),
+      GetArena());
+  }
+  flow_snmp_credential_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_flow_snmp_credential_name().empty()) {
+    flow_snmp_credential_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_flow_snmp_credential_name(),
+      GetArena());
+  }
   if (from._internal_has_device_snmp_v3_conf()) {
     device_snmp_v3_conf_ = new ::kentik::device::v202308beta1::DeviceSnmpV3Conf(*from.device_snmp_v3_conf_);
   } else {
@@ -3076,6 +3117,8 @@ void DeviceConcise::SharedCtor() {
   device_bgp_neighbor_ip6_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   device_bgp_neighbor_asn_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   device_bgp_password_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  device_bgp_credential_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  flow_snmp_credential_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&device_snmp_v3_conf_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&use_bgp_device_id_) -
       reinterpret_cast<char*>(&device_snmp_v3_conf_)) + sizeof(use_bgp_device_id_));
@@ -3101,6 +3144,8 @@ void DeviceConcise::SharedDtor() {
   device_bgp_neighbor_ip6_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   device_bgp_neighbor_asn_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   device_bgp_password_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  device_bgp_credential_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  flow_snmp_credential_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete device_snmp_v3_conf_;
   if (this != internal_default_instance()) delete nms_;
 }
@@ -3139,6 +3184,8 @@ void DeviceConcise::Clear() {
   device_bgp_neighbor_ip6_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   device_bgp_neighbor_asn_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   device_bgp_password_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  device_bgp_credential_name_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  flow_snmp_credential_name_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   if (GetArena() == nullptr && device_snmp_v3_conf_ != nullptr) {
     delete device_snmp_v3_conf_;
   }
@@ -3343,6 +3390,24 @@ const char* DeviceConcise::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_
       case 21:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 170)) {
           ptr = ctx->ParseMessage(_internal_mutable_nms(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // string device_bgp_credential_name = 22[json_name = "deviceBgpCredentialName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 22:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 178)) {
+          auto str = _internal_mutable_device_bgp_credential_name();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.device.v202308beta1.DeviceConcise.device_bgp_credential_name"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // string flow_snmp_credential_name = 23[json_name = "flowSnmpCredentialName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 23:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 186)) {
+          auto str = _internal_mutable_flow_snmp_credential_name();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.device.v202308beta1.DeviceConcise.flow_snmp_credential_name"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -3557,6 +3622,26 @@ failure:
         21, _Internal::nms(this), target, stream);
   }
 
+  // string device_bgp_credential_name = 22[json_name = "deviceBgpCredentialName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->device_bgp_credential_name().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_device_bgp_credential_name().data(), static_cast<int>(this->_internal_device_bgp_credential_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.device.v202308beta1.DeviceConcise.device_bgp_credential_name");
+    target = stream->WriteStringMaybeAliased(
+        22, this->_internal_device_bgp_credential_name(), target);
+  }
+
+  // string flow_snmp_credential_name = 23[json_name = "flowSnmpCredentialName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->flow_snmp_credential_name().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_flow_snmp_credential_name().data(), static_cast<int>(this->_internal_flow_snmp_credential_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.device.v202308beta1.DeviceConcise.flow_snmp_credential_name");
+    target = stream->WriteStringMaybeAliased(
+        23, this->_internal_flow_snmp_credential_name(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -3663,6 +3748,20 @@ size_t DeviceConcise::ByteSizeLong() const {
     total_size += 2 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_device_bgp_password());
+  }
+
+  // string device_bgp_credential_name = 22[json_name = "deviceBgpCredentialName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->device_bgp_credential_name().size() > 0) {
+    total_size += 2 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_device_bgp_credential_name());
+  }
+
+  // string flow_snmp_credential_name = 23[json_name = "flowSnmpCredentialName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->flow_snmp_credential_name().size() > 0) {
+    total_size += 2 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_flow_snmp_credential_name());
   }
 
   // .kentik.device.v202308beta1.DeviceSnmpV3Conf device_snmp_v3_conf = 13[json_name = "deviceSnmpV3Conf", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -3784,6 +3883,12 @@ void DeviceConcise::MergeFrom(const DeviceConcise& from) {
   if (from.device_bgp_password().size() > 0) {
     _internal_set_device_bgp_password(from._internal_device_bgp_password());
   }
+  if (from.device_bgp_credential_name().size() > 0) {
+    _internal_set_device_bgp_credential_name(from._internal_device_bgp_credential_name());
+  }
+  if (from.flow_snmp_credential_name().size() > 0) {
+    _internal_set_flow_snmp_credential_name(from._internal_flow_snmp_credential_name());
+  }
   if (from.has_device_snmp_v3_conf()) {
     _internal_mutable_device_snmp_v3_conf()->::kentik::device::v202308beta1::DeviceSnmpV3Conf::MergeFrom(from._internal_device_snmp_v3_conf());
   }
@@ -3845,6 +3950,8 @@ void DeviceConcise::InternalSwap(DeviceConcise* other) {
   device_bgp_neighbor_ip6_.Swap(&other->device_bgp_neighbor_ip6_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   device_bgp_neighbor_asn_.Swap(&other->device_bgp_neighbor_asn_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   device_bgp_password_.Swap(&other->device_bgp_password_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  device_bgp_credential_name_.Swap(&other->device_bgp_credential_name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  flow_snmp_credential_name_.Swap(&other->flow_snmp_credential_name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(DeviceConcise, use_bgp_device_id_)
       + sizeof(DeviceConcise::use_bgp_device_id_)
@@ -6482,6 +6589,16 @@ DeviceDetailed::DeviceDetailed(const DeviceDetailed& from)
     role_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_role(),
       GetArena());
   }
+  device_bgp_credential_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_device_bgp_credential_name().empty()) {
+    device_bgp_credential_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_device_bgp_credential_name(),
+      GetArena());
+  }
+  flow_snmp_credential_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_flow_snmp_credential_name().empty()) {
+    flow_snmp_credential_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_flow_snmp_credential_name(),
+      GetArena());
+  }
   if (from._internal_has_site()) {
     site_ = new ::kentik::device::v202308beta1::Site(*from.site_);
   } else {
@@ -6566,6 +6683,8 @@ void DeviceDetailed::SharedCtor() {
   device_manufacturer_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   device_alert_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   role_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  device_bgp_credential_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  flow_snmp_credential_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&site_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&max_interface_check_) -
       reinterpret_cast<char*>(&site_)) + sizeof(max_interface_check_));
@@ -6620,6 +6739,8 @@ void DeviceDetailed::SharedDtor() {
   device_manufacturer_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   device_alert_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   role_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  device_bgp_credential_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  flow_snmp_credential_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete site_;
   if (this != internal_default_instance()) delete plan_;
   if (this != internal_default_instance()) delete created_date_;
@@ -6695,6 +6816,8 @@ void DeviceDetailed::Clear() {
   device_manufacturer_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   device_alert_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   role_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  device_bgp_credential_name_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  flow_snmp_credential_name_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   if (GetArena() == nullptr && site_ != nullptr) {
     delete site_;
   }
@@ -7269,6 +7392,24 @@ const char* DeviceDetailed::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
       case 61:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 234)) {
           ptr = ctx->ParseMessage(_internal_mutable_nms(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // string device_bgp_credential_name = 62[json_name = "deviceBgpCredentialName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 62:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 242)) {
+          auto str = _internal_mutable_device_bgp_credential_name();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.device.v202308beta1.DeviceDetailed.device_bgp_credential_name"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // string flow_snmp_credential_name = 63[json_name = "flowSnmpCredentialName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 63:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 250)) {
+          auto str = _internal_mutable_flow_snmp_credential_name();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.device.v202308beta1.DeviceDetailed.flow_snmp_credential_name"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -7855,6 +7996,26 @@ failure:
         61, _Internal::nms(this), target, stream);
   }
 
+  // string device_bgp_credential_name = 62[json_name = "deviceBgpCredentialName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->device_bgp_credential_name().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_device_bgp_credential_name().data(), static_cast<int>(this->_internal_device_bgp_credential_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.device.v202308beta1.DeviceDetailed.device_bgp_credential_name");
+    target = stream->WriteStringMaybeAliased(
+        62, this->_internal_device_bgp_credential_name(), target);
+  }
+
+  // string flow_snmp_credential_name = 63[json_name = "flowSnmpCredentialName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->flow_snmp_credential_name().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_flow_snmp_credential_name().data(), static_cast<int>(this->_internal_flow_snmp_credential_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.device.v202308beta1.DeviceDetailed.flow_snmp_credential_name");
+    target = stream->WriteStringMaybeAliased(
+        63, this->_internal_flow_snmp_credential_name(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -8187,6 +8348,20 @@ size_t DeviceDetailed::ByteSizeLong() const {
         this->_internal_role());
   }
 
+  // string device_bgp_credential_name = 62[json_name = "deviceBgpCredentialName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->device_bgp_credential_name().size() > 0) {
+    total_size += 2 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_device_bgp_credential_name());
+  }
+
+  // string flow_snmp_credential_name = 63[json_name = "flowSnmpCredentialName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->flow_snmp_credential_name().size() > 0) {
+    total_size += 2 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_flow_snmp_credential_name());
+  }
+
   // .kentik.device.v202308beta1.Site site = 7[json_name = "site", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   if (this->has_site()) {
     total_size += 1 +
@@ -8448,6 +8623,12 @@ void DeviceDetailed::MergeFrom(const DeviceDetailed& from) {
   if (from.role().size() > 0) {
     _internal_set_role(from._internal_role());
   }
+  if (from.device_bgp_credential_name().size() > 0) {
+    _internal_set_device_bgp_credential_name(from._internal_device_bgp_credential_name());
+  }
+  if (from.flow_snmp_credential_name().size() > 0) {
+    _internal_set_flow_snmp_credential_name(from._internal_flow_snmp_credential_name());
+  }
   if (from.has_site()) {
     _internal_mutable_site()->::kentik::device::v202308beta1::Site::MergeFrom(from._internal_site());
   }
@@ -8565,6 +8746,8 @@ void DeviceDetailed::InternalSwap(DeviceDetailed* other) {
   device_manufacturer_.Swap(&other->device_manufacturer_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   device_alert_.Swap(&other->device_alert_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   role_.Swap(&other->role_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  device_bgp_credential_name_.Swap(&other->device_bgp_credential_name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  flow_snmp_credential_name_.Swap(&other->flow_snmp_credential_name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(DeviceDetailed, max_interface_check_)
       + sizeof(DeviceDetailed::max_interface_check_)

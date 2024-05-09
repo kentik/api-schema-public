@@ -682,6 +682,14 @@
                     },
                     "nms": {
                         "$ref": "#/components/schemas/v202308beta1DeviceNmsConfig"
+                    },
+                    "deviceBgpCredentialName": {
+                        "type": "string",
+                        "description": "BGP Credential Name (device_bgp_credential_name) - Optional Credential Name (Credential for BGP peering). Valid characters: alphanumeric. Length: 32."
+                    },
+                    "flowSnmpCredentialName": {
+                        "type": "string",
+                        "description": "Snmp Credential Name (flow_snmp_credential_name) - Optional Credential Name (Credential for Flow Snmp peering). Valid characters: alphanumeric. Length: 32."
                     }
                 },
                 "title": "DeviceConcise"
@@ -946,6 +954,14 @@
                     },
                     "nms": {
                         "$ref": "#/components/schemas/v202308beta1DeviceNmsConfig"
+                    },
+                    "deviceBgpCredentialName": {
+                        "type": "string",
+                        "description": "BGP Credential Name (device_bgp_credential_name) - Optional Credential Name (Credential for BGP peering). Valid characters: alphanumeric. Length: 32."
+                    },
+                    "flowSnmpCredentialName": {
+                        "type": "string",
+                        "description": "Snmp Credential Name (flow_snmp_credential_name) - Optional Credential Name (Credential for Flow Snmp peering). Valid characters: alphanumeric. Length: 32."
                     }
                 },
                 "title": "DeviceDetailed"

@@ -160,6 +160,8 @@ struct  Kentik__Device__V202308beta1__DeviceConcise
   uint32_t use_bgp_device_id;
   protobuf_c_boolean device_bgp_flowspec;
   Kentik__Device__V202308beta1__DeviceNmsConfig *nms;
+  char *device_bgp_credential_name;
+  char *flow_snmp_credential_name;
   Kentik__Device__V202308beta1__DeviceConcise__MinimizeSnmpCase _minimize_snmp_case;
   union {
     protobuf_c_boolean minimize_snmp;
@@ -167,7 +169,7 @@ struct  Kentik__Device__V202308beta1__DeviceConcise
 };
 #define KENTIK__DEVICE__V202308BETA1__DEVICE_CONCISE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__device__v202308beta1__device_concise__descriptor) \
-    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL, 0, 0, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, 0, NULL, KENTIK__DEVICE__V202308BETA1__DEVICE_CONCISE___MINIMIZE_SNMP__NOT_SET, {0} }
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL, 0, 0, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, 0, NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, KENTIK__DEVICE__V202308BETA1__DEVICE_CONCISE___MINIMIZE_SNMP__NOT_SET, {0} }
 
 
 /*
@@ -352,6 +354,8 @@ struct  Kentik__Device__V202308beta1__DeviceDetailed
   uint32_t max_interface;
   uint32_t max_interface_check;
   Kentik__Device__V202308beta1__DeviceNmsConfig *nms;
+  char *device_bgp_credential_name;
+  char *flow_snmp_credential_name;
   Kentik__Device__V202308beta1__DeviceDetailed__MinimizeSnmpCase _minimize_snmp_case;
   union {
     protobuf_c_boolean minimize_snmp;
@@ -359,7 +363,7 @@ struct  Kentik__Device__V202308beta1__DeviceDetailed
 };
 #define KENTIK__DEVICE__V202308BETA1__DEVICE_DETAILED__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__device__v202308beta1__device_detailed__descriptor) \
-    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, NULL, 0,NULL, 0,NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, (char *)protobuf_c_empty_string, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, NULL, 0, NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, 0, 0, 0, NULL, KENTIK__DEVICE__V202308BETA1__DEVICE_DETAILED___MINIMIZE_SNMP__NOT_SET, {0} }
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, NULL, 0,NULL, 0,NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, (char *)protobuf_c_empty_string, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, NULL, 0, NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, 0, 0, 0, NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, KENTIK__DEVICE__V202308BETA1__DEVICE_DETAILED___MINIMIZE_SNMP__NOT_SET, {0} }
 
 
 /*
