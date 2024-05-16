@@ -7,6 +7,51 @@
 #endif
 
 #include "kentik/synthetics/v202309/synthetics.pb-c.h"
+void   kentik__synthetics__v202309__disabled_metrics__init
+                     (Kentik__Synthetics__V202309__DisabledMetrics         *message)
+{
+  static const Kentik__Synthetics__V202309__DisabledMetrics init_value = KENTIK__SYNTHETICS__V202309__DISABLED_METRICS__INIT;
+  *message = init_value;
+}
+size_t kentik__synthetics__v202309__disabled_metrics__get_packed_size
+                     (const Kentik__Synthetics__V202309__DisabledMetrics *message)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__disabled_metrics__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__synthetics__v202309__disabled_metrics__pack
+                     (const Kentik__Synthetics__V202309__DisabledMetrics *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__disabled_metrics__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__synthetics__v202309__disabled_metrics__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__DisabledMetrics *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__disabled_metrics__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Synthetics__V202309__DisabledMetrics *
+       kentik__synthetics__v202309__disabled_metrics__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Synthetics__V202309__DisabledMetrics *)
+     protobuf_c_message_unpack (&kentik__synthetics__v202309__disabled_metrics__descriptor,
+                                allocator, len, data);
+}
+void   kentik__synthetics__v202309__disabled_metrics__free_unpacked
+                     (Kentik__Synthetics__V202309__DisabledMetrics *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__synthetics__v202309__disabled_metrics__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 void   kentik__synthetics__v202309__agent__init
                      (Kentik__Synthetics__V202309__Agent         *message)
 {
@@ -3052,6 +3097,174 @@ void   kentik__synthetics__v202309__delete_agent_alert_response__free_unpacked
   assert(message->base.descriptor == &kentik__synthetics__v202309__delete_agent_alert_response__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+static const ProtobufCFieldDescriptor kentik__synthetics__v202309__disabled_metrics__field_descriptors[11] =
+{
+  {
+    "ping_latency",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__DisabledMetrics, ping_latency),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "ping_jitter",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__DisabledMetrics, ping_jitter),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "ping_packet_loss",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__DisabledMetrics, ping_packet_loss),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "http_latency",
+    4,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__DisabledMetrics, http_latency),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "http_headers",
+    5,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__DisabledMetrics, http_headers),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "http_codes",
+    6,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__DisabledMetrics, http_codes),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "http_cert_expiry",
+    7,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__DisabledMetrics, http_cert_expiry),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "transaction_latency",
+    8,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__DisabledMetrics, transaction_latency),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "dns_latency",
+    9,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__DisabledMetrics, dns_latency),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "dns_codes",
+    10,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__DisabledMetrics, dns_codes),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "dns_ips",
+    11,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__DisabledMetrics, dns_ips),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__synthetics__v202309__disabled_metrics__field_indices_by_name[] = {
+  9,   /* field[9] = dns_codes */
+  10,   /* field[10] = dns_ips */
+  8,   /* field[8] = dns_latency */
+  6,   /* field[6] = http_cert_expiry */
+  5,   /* field[5] = http_codes */
+  4,   /* field[4] = http_headers */
+  3,   /* field[3] = http_latency */
+  1,   /* field[1] = ping_jitter */
+  0,   /* field[0] = ping_latency */
+  2,   /* field[2] = ping_packet_loss */
+  7,   /* field[7] = transaction_latency */
+};
+static const ProtobufCIntRange kentik__synthetics__v202309__disabled_metrics__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 11 }
+};
+const ProtobufCMessageDescriptor kentik__synthetics__v202309__disabled_metrics__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.synthetics.v202309.DisabledMetrics",
+  "DisabledMetrics",
+  "Kentik__Synthetics__V202309__DisabledMetrics",
+  "kentik.synthetics.v202309",
+  sizeof(Kentik__Synthetics__V202309__DisabledMetrics),
+  11,
+  kentik__synthetics__v202309__disabled_metrics__field_descriptors,
+  kentik__synthetics__v202309__disabled_metrics__field_indices_by_name,
+  1,  kentik__synthetics__v202309__disabled_metrics__number_ranges,
+  (ProtobufCMessageInit) kentik__synthetics__v202309__disabled_metrics__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
 static const ProtobufCFieldDescriptor kentik__synthetics__v202309__agent__field_descriptors[24] =
 {
   {
@@ -4230,7 +4443,7 @@ const ProtobufCMessageDescriptor kentik__synthetics__v202309__activation_setting
   (ProtobufCMessageInit) kentik__synthetics__v202309__activation_settings__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__synthetics__v202309__health_settings__field_descriptors[26] =
+static const ProtobufCFieldDescriptor kentik__synthetics__v202309__health_settings__field_descriptors[28] =
 {
   {
     "latency_critical",
@@ -4544,17 +4757,43 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202309__health_settin
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "disabled_metrics",
+    27,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__HealthSettings, disabled_metrics),
+    &kentik__synthetics__v202309__disabled_metrics__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "health_disabled",
+    28,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__HealthSettings, health_disabled),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__synthetics__v202309__health_settings__field_indices_by_name[] = {
   17,   /* field[17] = activation */
   19,   /* field[19] = cert_expiry_critical */
   18,   /* field[18] = cert_expiry_warning */
+  26,   /* field[26] = disabled_metrics */
   21,   /* field[21] = dns_latency_critical */
   23,   /* field[23] = dns_latency_critical_stddev */
   22,   /* field[22] = dns_latency_warning */
   24,   /* field[24] = dns_latency_warning_stddev */
   9,   /* field[9] = dns_valid_codes */
   20,   /* field[20] = dns_valid_ips */
+  27,   /* field[27] = health_disabled */
   6,   /* field[6] = http_latency_critical */
   14,   /* field[14] = http_latency_critical_stddev */
   7,   /* field[7] = http_latency_warning */
@@ -4576,7 +4815,7 @@ static const unsigned kentik__synthetics__v202309__health_settings__field_indice
 static const ProtobufCIntRange kentik__synthetics__v202309__health_settings__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 26 }
+  { 0, 28 }
 };
 const ProtobufCMessageDescriptor kentik__synthetics__v202309__health_settings__descriptor =
 {
@@ -4586,7 +4825,7 @@ const ProtobufCMessageDescriptor kentik__synthetics__v202309__health_settings__d
   "Kentik__Synthetics__V202309__HealthSettings",
   "kentik.synthetics.v202309",
   sizeof(Kentik__Synthetics__V202309__HealthSettings),
-  26,
+  28,
   kentik__synthetics__v202309__health_settings__field_descriptors,
   kentik__synthetics__v202309__health_settings__field_indices_by_name,
   1,  kentik__synthetics__v202309__health_settings__number_ranges,

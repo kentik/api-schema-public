@@ -195,6 +195,20 @@ enum ImplementType {
   IMPLEMENT_TYPE_NETWORK = 3;
 }
 
+message DisabledMetrics {
+  bool ping_latency = 1;
+  bool ping_jitter = 2;
+  bool ping_packet_loss = 3;
+  bool http_latency = 4;
+  bool http_headers = 5;
+  bool http_codes = 6;
+  bool http_cert_expiry = 7;
+  bool transaction_latency = 8;
+  bool dns_latency = 9;
+  bool dns_codes = 10;
+  bool dns_ips = 11;
+}
+
 // {{.Name}}
 message Agent {
   string id = 1 [
@@ -770,6 +784,16 @@ message HealthSettings {
   bool per_agent_alerting = 26 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Boolean value indicating whether to use per-agent alerting"
+    }
+  ];
+  DisabledMetrics disabled_metrics = 27 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Set of metrics to be skipped during health evaluation"
+    }
+  ];
+  bool health_disabled = 28 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Disable all health evaluation for this test"
     }
   ];
 }

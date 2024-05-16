@@ -1048,6 +1048,44 @@
       "type": "object",
       "title": "DeleteTestResponse"
     },
+    "v202309DisabledMetrics": {
+      "type": "object",
+      "properties": {
+        "pingLatency": {
+          "type": "boolean"
+        },
+        "pingJitter": {
+          "type": "boolean"
+        },
+        "pingPacketLoss": {
+          "type": "boolean"
+        },
+        "httpLatency": {
+          "type": "boolean"
+        },
+        "httpHeaders": {
+          "type": "boolean"
+        },
+        "httpCodes": {
+          "type": "boolean"
+        },
+        "httpCertExpiry": {
+          "type": "boolean"
+        },
+        "transactionLatency": {
+          "type": "boolean"
+        },
+        "dnsLatency": {
+          "type": "boolean"
+        },
+        "dnsCodes": {
+          "type": "boolean"
+        },
+        "dnsIps": {
+          "type": "boolean"
+        }
+      }
+    },
     "v202309DnsTest": {
       "type": "object",
       "properties": {
@@ -1452,6 +1490,14 @@
         "perAgentAlerting": {
           "type": "boolean",
           "description": "Boolean value indicating whether to use per-agent alerting"
+        },
+        "disabledMetrics": {
+          "$ref": "#/definitions/v202309DisabledMetrics",
+          "description": "Set of metrics to be skipped during health evaluation"
+        },
+        "healthDisabled": {
+          "type": "boolean",
+          "description": "Disable all health evaluation for this test"
         }
       },
       "title": "HealthSettings"

@@ -22,6 +22,7 @@ PROTOBUF_C__BEGIN_DECLS
 #include "kentik/core/v202303/annotations.pb-c.h"
 #include "kentik/core/v202303/user_info.pb-c.h"
 
+typedef struct Kentik__Synthetics__V202309__DisabledMetrics Kentik__Synthetics__V202309__DisabledMetrics;
 typedef struct Kentik__Synthetics__V202309__Agent Kentik__Synthetics__V202309__Agent;
 typedef struct Kentik__Synthetics__V202309__AgentMetadata Kentik__Synthetics__V202309__AgentMetadata;
 typedef struct Kentik__Synthetics__V202309__AgentMetadata__IpValue Kentik__Synthetics__V202309__AgentMetadata__IpValue;
@@ -231,6 +232,26 @@ typedef enum _Kentik__Synthetics__V202309__DNSRecord {
 } Kentik__Synthetics__V202309__DNSRecord;
 
 /* --- messages --- */
+
+struct  Kentik__Synthetics__V202309__DisabledMetrics
+{
+  ProtobufCMessage base;
+  protobuf_c_boolean ping_latency;
+  protobuf_c_boolean ping_jitter;
+  protobuf_c_boolean ping_packet_loss;
+  protobuf_c_boolean http_latency;
+  protobuf_c_boolean http_headers;
+  protobuf_c_boolean http_codes;
+  protobuf_c_boolean http_cert_expiry;
+  protobuf_c_boolean transaction_latency;
+  protobuf_c_boolean dns_latency;
+  protobuf_c_boolean dns_codes;
+  protobuf_c_boolean dns_ips;
+};
+#define KENTIK__SYNTHETICS__V202309__DISABLED_METRICS__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__synthetics__v202309__disabled_metrics__descriptor) \
+    , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+
 
 /*
  * {{.Name}}
@@ -462,10 +483,12 @@ struct  Kentik__Synthetics__V202309__HealthSettings
   float dns_latency_critical_stddev;
   float dns_latency_warning_stddev;
   protobuf_c_boolean per_agent_alerting;
+  Kentik__Synthetics__V202309__DisabledMetrics *disabled_metrics;
+  protobuf_c_boolean health_disabled;
 };
 #define KENTIK__SYNTHETICS__V202309__HEALTH_SETTINGS__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__synthetics__v202309__health_settings__descriptor) \
-    , 0, 0, 0, 0, 0, 0, 0, 0, 0,NULL, 0,NULL, 0, 0, 0, 0, 0, 0, 0, NULL, 0, 0, (char *)protobuf_c_empty_string, 0, 0, 0, 0, 0 }
+    , 0, 0, 0, 0, 0, 0, 0, 0, 0,NULL, 0,NULL, 0, 0, 0, 0, 0, 0, 0, NULL, 0, 0, (char *)protobuf_c_empty_string, 0, 0, 0, 0, 0, NULL, 0 }
 
 
 /*
@@ -1367,6 +1390,25 @@ struct  Kentik__Synthetics__V202309__DeleteAgentAlertResponse
      }
 
 
+/* Kentik__Synthetics__V202309__DisabledMetrics methods */
+void   kentik__synthetics__v202309__disabled_metrics__init
+                     (Kentik__Synthetics__V202309__DisabledMetrics         *message);
+size_t kentik__synthetics__v202309__disabled_metrics__get_packed_size
+                     (const Kentik__Synthetics__V202309__DisabledMetrics   *message);
+size_t kentik__synthetics__v202309__disabled_metrics__pack
+                     (const Kentik__Synthetics__V202309__DisabledMetrics   *message,
+                      uint8_t             *out);
+size_t kentik__synthetics__v202309__disabled_metrics__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__DisabledMetrics   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Synthetics__V202309__DisabledMetrics *
+       kentik__synthetics__v202309__disabled_metrics__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__synthetics__v202309__disabled_metrics__free_unpacked
+                     (Kentik__Synthetics__V202309__DisabledMetrics *message,
+                      ProtobufCAllocator *allocator);
 /* Kentik__Synthetics__V202309__Agent methods */
 void   kentik__synthetics__v202309__agent__init
                      (Kentik__Synthetics__V202309__Agent         *message);
@@ -2657,6 +2699,9 @@ void   kentik__synthetics__v202309__delete_agent_alert_response__free_unpacked
                       ProtobufCAllocator *allocator);
 /* --- per-message closures --- */
 
+typedef void (*Kentik__Synthetics__V202309__DisabledMetrics_Closure)
+                 (const Kentik__Synthetics__V202309__DisabledMetrics *message,
+                  void *closure_data);
 typedef void (*Kentik__Synthetics__V202309__Agent_Closure)
                  (const Kentik__Synthetics__V202309__Agent *message,
                   void *closure_data);
@@ -3061,6 +3106,7 @@ extern const ProtobufCEnumDescriptor    kentik__synthetics__v202309__ipfamily__d
 extern const ProtobufCEnumDescriptor    kentik__synthetics__v202309__test_status__descriptor;
 extern const ProtobufCEnumDescriptor    kentik__synthetics__v202309__agent_status__descriptor;
 extern const ProtobufCEnumDescriptor    kentik__synthetics__v202309__dnsrecord__descriptor;
+extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__disabled_metrics__descriptor;
 extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__agent__descriptor;
 extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__agent_metadata__descriptor;
 extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__agent_metadata__ip_value__descriptor;
