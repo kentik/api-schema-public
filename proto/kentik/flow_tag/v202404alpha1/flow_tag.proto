@@ -1,0 +1,398 @@
+syntax = "proto3";
+
+package kentik.flow_tag.v202404alpha1;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/flow_tag/v202404alpha1;flow_tag";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/timestamp.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "kentik/core/v202303/annotations.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Flow Tag API"
+    version: "v202404alpha1"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api-schema-public"
+    }
+    description: "# Overview\n"
+    "The Flow Tag API enables programmatic creation and management of flow tags."
+    " * In addition to tag name, at least one other field must be specified to create a tag.\n"
+    " * All specified tag fields are ANDed for evaluation.\n"
+    " * Except for Tag Name, any field may contain multiple comma-separated values, which will be ORed for evaluation.\n"
+    " * A tag will be applied to a flow only when all of the fields specified for that tag are matched. Source and Destination flows are each evaluated independently for matches.\n"
+    " * Source and Destination flows are each evaluated independently for matches.\n"
+    " * A match results in the addition of the tag name to a delimited list of tags in the src_flow_tags and/or dst_flow_tags column of each specified devices KDE main table.\n"
+    " * Tags in a KDE table can be searched as part of a query. Tag searches are substring-based. Query results vary depending on how tags are named; [see Queries Using Tags](https://kb.kentik.com/v0/Eb02.htm#Eb02-Queries_Using_Tags).\n"
+    " * Additional information on the values of individual fields may be found in [Tag Field Definitions](https://kb.kentik.com/v4/Cb04.htm#Cb04-Tag_Field_Definitions) in the Kentik Knowledge Base.\n"
+    "\n"
+  }
+  external_docs: {
+    url: "https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview"
+    description: "General information about Kentik APIs"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+// {{.Name}}
+enum ModelType {
+  // Invalid value
+  MODEL_TYPE_UNSPECIFIED = 0;
+  // Not used
+  MODEL_TYPE_POPULATORS = 1;
+  // Default flow tag type
+  MODEL_TYPE_TAGS = 2;
+  // Not used
+  MODEL_TYPE_IP_ADDRESSES = 3;
+
+}
+
+// {{.Name}}
+enum LookupField {
+  // Invalid value
+  LOOKUP_FIELD_UNSPECIFIED = 0;
+  // Lookup by name of tag
+  LOOKUP_FIELD_VALUE = 1;
+}
+
+// {{.Name}}
+enum OrderDirection {
+  // Invalid value
+  ORDER_DIRECTION_UNSPECIFIED = 0;
+  // Ascending sort order
+  ORDER_DIRECTION_ASC = 1;
+  // Descending sort order
+  ORDER_DIRECTION_DESC = 2;
+}
+
+// {{.Name}}
+message Model {
+  // type of model (default Tags)
+  ModelType type = 1;
+}
+
+// {{.Name}}
+message OrderField {
+  // Sort by field
+  LookupField field = 1;
+  // Sort by direction
+  OrderDirection direction = 2;
+}
+
+// {{.Name}}
+message FlowTagSearch {
+  // Limit the number of rows to fetch
+  int32 limit = 1;
+  // The number rows to skip before returning
+  int32 offset = 2;
+  // List of lookup fields
+  repeated LookupField lookup_fields = 3;
+  // List of lookup values
+  repeated string lookup_values = 4;
+  // Sort order
+  repeated OrderField order_by = 5;
+  // Limit the number of record to return for nested fields
+  int32 field_limit = 6;
+}
+
+// {{.Name}}
+message AddressInfo {
+  // List of returning mac or ip address
+  repeated string addresses = 1;
+  // Total number of addresses available
+  int32 total_count = 2;
+}
+
+// {{.Name}}
+message FlowTag {
+  string id = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Unique system assigned identifier of the flow tag"
+    }
+  ];
+  string name = 3 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "This will appear in places where selecting a tag is necessary"
+    }
+  ];
+  string edited_by = 4 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "User who last edited this tag"
+    }
+  ];
+  string created_by = 25 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "User who created this tag"
+    }
+  ];
+  google.protobuf.Timestamp cdate = 5 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Date and time when this tag was created"
+    }
+  ];
+  google.protobuf.Timestamp edate = 6 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Date and time when this tag was last updated"
+    }
+  ];
+  
+  AddressInfo ip = 7 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "IP address associated with the flow tag"
+    }
+  ];
+  repeated string port = 8 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Port number associated with the flow tag"
+    }
+  ];
+  uint32 tcp_flags = 9 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "TCP flags associated with the flow tag"
+    }
+  ];
+  repeated uint32 protocol = 10 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Protocol numbers associated with the flow tag"
+    }
+  ];
+
+  
+  repeated string device_name = 11 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Name of the device associated with the flow tag"
+    }
+  ];
+  repeated string device_type = 12 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Type of the device associated with the flow tag"
+    }
+  ];
+  repeated string site = 13 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Site where the device associated with the flow tag is located"
+    }
+  ];
+  repeated string interface_name = 14 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Name of the interface associated with the flow tag"
+    }
+  ];
+
+  
+  repeated string asn = 15 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Autonomous System Number (ASN) associated with the flow tag"
+    }
+  ];
+  repeated string lasthop_as_name = 16 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Name of the last hop's Autonomous System (AS) associated with the flow tag"
+    }
+  ];
+  repeated string nexthop_asn = 17 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Autonomous System Number (ASN) of the next hop associated with the flow tag"
+    }
+  ];
+  repeated string nexthop_as_name = 18 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Name of the next hop's Autonomous System (AS) associated with the flow tag"
+    }
+  ];
+  repeated string nexthop = 19 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Next hop associated with the flow tag"
+    }
+  ];
+  repeated string bgp_aspath = 20 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "BGP AS path associated with the flow tag"
+    }
+  ];
+  repeated string bgp_community = 21 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "BGP community associated with the flow tag"
+    }
+  ];
+  
+  
+  AddressInfo mac = 22 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "MAC address associated with the flow tag"
+    }
+  ];
+  repeated string country = 23 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Country associated with the flow tag"
+    }
+  ];
+  repeated string vlans = 24 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "VLANs associated with the flow tag"
+    }
+  ];
+}
+
+
+// {{.Name}}
+message GetFlowTagRequest {
+  string id = 1;
+}
+
+// {{.Name}}
+message GetFlowTagResponse {
+  FlowTag flow_tag = 1;
+}
+
+// {{.Name}}
+message SearchFlowTagRequest {
+  FlowTagSearch search = 1;
+}
+
+// {{.Name}}
+message SearchFlowTagResponse {
+  repeated FlowTag flow_tags = 1;
+  uint32 total_count = 2;
+  uint32 invalid_count = 3;
+}
+
+// {{.Name}}
+message CreateFlowTagRequest {
+  FlowTag flow_tag = 1;
+}
+
+// {{.Name}}
+message CreateFlowTagResponse {
+  FlowTag flow_tag = 1;
+
+}
+
+// {{.Name}}
+message UpdateFlowTagRequest {
+  FlowTag flow_tag = 1;
+}
+
+// {{.Name}}
+message UpdateFlowTagResponse {
+  FlowTag flow_tag = 1;
+}
+
+// {{.Name}}
+message DeleteFlowTagRequest {
+  string id = 1;
+}
+
+// {{.Name}}
+message DeleteFlowTagResponse {}
+
+// services and RPCs
+// -------------------------------------------------------
+
+service FlowTagService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "admin.flow_tag";
+
+  rpc GetFlowTag(GetFlowTagRequest) returns (GetFlowTagResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.flow_tag:read";
+    option (google.api.http) = {
+      get: "/flow_tag/v202404alpha1/tag/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetFlowTag"
+      summary: "Get flow tag configuration."
+      description: "Returns configuration of flow tag with specified ID."
+    };
+  }
+
+  rpc SearchFlowTag(SearchFlowTagRequest) returns (SearchFlowTagResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.flow_tag:read";
+    option (google.api.http) = {
+      get: "/flow_tag/v202404alpha1/tag"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "SearchFlowTag"
+      summary: "Search flow tag configuration."
+      description: "Returns configuration of flow tag with search parameters."
+    };
+  }
+
+  rpc CreateFlowTag(CreateFlowTagRequest) returns (CreateFlowTagResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.flow_tag:write";
+    option (google.api.http) = {
+      post: "/flow_tag/v202404alpha1/tag"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "CreateFlowTag"
+      summary: "Create flow tag configuration."
+      description: "Create a flow tag configuration."
+    };
+  }
+
+  rpc UpdateFlowTag(UpdateFlowTagRequest) returns (UpdateFlowTagResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.flow_tag:write";
+    option (google.api.http) = {
+      put: "/flow_tag/v202404alpha1/tag/{flow_tag.id}"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "UpdateFlowTag"
+      summary: "Update flow tag configuration."
+      description: "Update a flow tag configuration."
+    };
+  }
+
+  rpc DeleteFlowTag(DeleteFlowTagRequest) returns (DeleteFlowTagResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.flow_tag:write";
+    option (google.api.http) = {
+      delete: "/flow_tag/v202404alpha1/tag/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "DeleteFlowTag"
+      summary: "Delete flow tag configuration."
+      description: "Delete a flow tag configuration with id."
+    };
+  }
+
+}

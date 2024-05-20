@@ -1,0 +1,612 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Flow Tag API",
+    "description": "# Overview\nThe Flow Tag API enables programmatic creation and management of flow tags. * In addition to tag name, at least one other field must be specified to create a tag.\n * All specified tag fields are ANDed for evaluation.\n * Except for Tag Name, any field may contain multiple comma-separated values, which will be ORed for evaluation.\n * A tag will be applied to a flow only when all of the fields specified for that tag are matched. Source and Destination flows are each evaluated independently for matches.\n * Source and Destination flows are each evaluated independently for matches.\n * A match results in the addition of the tag name to a delimited list of tags in the src_flow_tags and/or dst_flow_tags column of each specified devices KDE main table.\n * Tags in a KDE table can be searched as part of a query. Tag searches are substring-based. Query results vary depending on how tags are named; [see Queries Using Tags](https://kb.kentik.com/v0/Eb02.htm#Eb02-Queries_Using_Tags).\n * Additional information on the values of individual fields may be found in [Tag Field Definitions](https://kb.kentik.com/v4/Cb04.htm#Cb04-Tag_Field_Definitions) in the Kentik Knowledge Base.\n\n",
+    "version": "v202404alpha1",
+    "contact": {
+      "name": "Kentik API Engineering",
+      "url": "https://github.com/kentik/api-schema-public"
+    }
+  },
+  "tags": [
+    {
+      "name": "FlowTagService"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/flow_tag/v202404alpha1/tag": {
+      "get": {
+        "summary": "Search flow tag configuration.",
+        "description": "Returns configuration of flow tag with search parameters.",
+        "operationId": "SearchFlowTag",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202404alpha1SearchFlowTagResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "search.limit",
+            "description": "Limit the number of rows to fetch.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "search.offset",
+            "description": "The number rows to skip before returning.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "search.lookupFields",
+            "description": "List of lookup fields.\n\n - LOOKUP_FIELD_UNSPECIFIED: Invalid value\n - LOOKUP_FIELD_VALUE: Lookup by name of tag",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "LOOKUP_FIELD_UNSPECIFIED",
+                "LOOKUP_FIELD_VALUE"
+              ]
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "search.lookupValues",
+            "description": "List of lookup values.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "search.fieldLimit",
+            "description": "Limit the number of record to return for nested fields.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "FlowTagService"
+        ]
+      },
+      "post": {
+        "summary": "Create flow tag configuration.",
+        "description": "Create a flow tag configuration.",
+        "operationId": "CreateFlowTag",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202404alpha1CreateFlowTagResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202404alpha1CreateFlowTagRequest"
+            }
+          }
+        ],
+        "tags": [
+          "FlowTagService"
+        ]
+      }
+    },
+    "/flow_tag/v202404alpha1/tag/{flowTag.id}": {
+      "put": {
+        "summary": "Update flow tag configuration.",
+        "description": "Update a flow tag configuration.",
+        "operationId": "UpdateFlowTag",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202404alpha1UpdateFlowTagResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "flowTag.id",
+            "description": "Unique system assigned identifier of the flow tag",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202404alpha1UpdateFlowTagRequest"
+            }
+          }
+        ],
+        "tags": [
+          "FlowTagService"
+        ]
+      },
+      "get": {
+        "summary": "Get flow tag configuration.",
+        "description": "Returns configuration of flow tag with specified ID.",
+        "operationId": "GetFlowTag",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202404alpha1GetFlowTagResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "flowTag.id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "FlowTagService"
+        ]
+      },
+      "delete": {
+        "summary": "Delete flow tag configuration.",
+        "description": "Delete a flow tag configuration with id.",
+        "operationId": "DeleteFlowTag",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202404alpha1DeleteFlowTagResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "flowTag.id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "FlowTagService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "typeUrl": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v202404alpha1AddressInfo": {
+      "type": "object",
+      "properties": {
+        "addresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "List of returning mac or ip address"
+        },
+        "totalCount": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Total number of addresses available"
+        }
+      },
+      "title": "AddressInfo"
+    },
+    "v202404alpha1CreateFlowTagRequest": {
+      "type": "object",
+      "properties": {
+        "flowTag": {
+          "$ref": "#/definitions/v202404alpha1FlowTag"
+        }
+      },
+      "title": "CreateFlowTagRequest"
+    },
+    "v202404alpha1CreateFlowTagResponse": {
+      "type": "object",
+      "properties": {
+        "flowTag": {
+          "$ref": "#/definitions/v202404alpha1FlowTag"
+        }
+      },
+      "title": "CreateFlowTagResponse"
+    },
+    "v202404alpha1DeleteFlowTagResponse": {
+      "type": "object",
+      "title": "DeleteFlowTagResponse"
+    },
+    "v202404alpha1FlowTag": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique system assigned identifier of the flow tag",
+          "readOnly": true
+        },
+        "name": {
+          "type": "string",
+          "description": "This will appear in places where selecting a tag is necessary",
+          "readOnly": true
+        },
+        "editedBy": {
+          "type": "string",
+          "description": "User who last edited this tag",
+          "readOnly": true
+        },
+        "createdBy": {
+          "type": "string",
+          "description": "User who created this tag",
+          "readOnly": true
+        },
+        "cdate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date and time when this tag was created",
+          "readOnly": true
+        },
+        "edate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date and time when this tag was last updated",
+          "readOnly": true
+        },
+        "ip": {
+          "$ref": "#/definitions/v202404alpha1AddressInfo",
+          "description": "IP address associated with the flow tag"
+        },
+        "port": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Port number associated with the flow tag"
+        },
+        "tcpFlags": {
+          "type": "integer",
+          "format": "int64",
+          "description": "TCP flags associated with the flow tag"
+        },
+        "protocol": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "description": "Protocol numbers associated with the flow tag"
+        },
+        "deviceName": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Name of the device associated with the flow tag"
+        },
+        "deviceType": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Type of the device associated with the flow tag"
+        },
+        "site": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Site where the device associated with the flow tag is located"
+        },
+        "interfaceName": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Name of the interface associated with the flow tag"
+        },
+        "asn": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Autonomous System Number (ASN) associated with the flow tag"
+        },
+        "lasthopAsName": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Name of the last hop's Autonomous System (AS) associated with the flow tag"
+        },
+        "nexthopAsn": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Autonomous System Number (ASN) of the next hop associated with the flow tag"
+        },
+        "nexthopAsName": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Name of the next hop's Autonomous System (AS) associated with the flow tag"
+        },
+        "nexthop": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Next hop associated with the flow tag"
+        },
+        "bgpAspath": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "BGP AS path associated with the flow tag"
+        },
+        "bgpCommunity": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "BGP community associated with the flow tag"
+        },
+        "mac": {
+          "$ref": "#/definitions/v202404alpha1AddressInfo",
+          "description": "MAC address associated with the flow tag"
+        },
+        "country": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Country associated with the flow tag"
+        },
+        "vlans": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "VLANs associated with the flow tag"
+        }
+      },
+      "title": "FlowTag"
+    },
+    "v202404alpha1FlowTagSearch": {
+      "type": "object",
+      "properties": {
+        "limit": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Limit the number of rows to fetch"
+        },
+        "offset": {
+          "type": "integer",
+          "format": "int32",
+          "title": "The number rows to skip before returning"
+        },
+        "lookupFields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202404alpha1LookupField"
+          },
+          "title": "List of lookup fields"
+        },
+        "lookupValues": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "List of lookup values"
+        },
+        "orderBy": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202404alpha1OrderField"
+          },
+          "title": "Sort order"
+        },
+        "fieldLimit": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Limit the number of record to return for nested fields"
+        }
+      },
+      "title": "FlowTagSearch"
+    },
+    "v202404alpha1GetFlowTagResponse": {
+      "type": "object",
+      "properties": {
+        "flowTag": {
+          "$ref": "#/definitions/v202404alpha1FlowTag"
+        }
+      },
+      "title": "GetFlowTagResponse"
+    },
+    "v202404alpha1LookupField": {
+      "type": "string",
+      "enum": [
+        "LOOKUP_FIELD_UNSPECIFIED",
+        "LOOKUP_FIELD_VALUE"
+      ],
+      "default": "LOOKUP_FIELD_UNSPECIFIED",
+      "description": "- LOOKUP_FIELD_UNSPECIFIED: Invalid value\n - LOOKUP_FIELD_VALUE: Lookup by name of tag",
+      "title": "LookupField"
+    },
+    "v202404alpha1OrderDirection": {
+      "type": "string",
+      "enum": [
+        "ORDER_DIRECTION_UNSPECIFIED",
+        "ORDER_DIRECTION_ASC",
+        "ORDER_DIRECTION_DESC"
+      ],
+      "default": "ORDER_DIRECTION_UNSPECIFIED",
+      "description": "- ORDER_DIRECTION_UNSPECIFIED: Invalid value\n - ORDER_DIRECTION_ASC: Ascending sort order\n - ORDER_DIRECTION_DESC: Descending sort order",
+      "title": "OrderDirection"
+    },
+    "v202404alpha1OrderField": {
+      "type": "object",
+      "properties": {
+        "field": {
+          "$ref": "#/definitions/v202404alpha1LookupField",
+          "title": "Sort by field"
+        },
+        "direction": {
+          "$ref": "#/definitions/v202404alpha1OrderDirection",
+          "title": "Sort by direction"
+        }
+      },
+      "title": "OrderField"
+    },
+    "v202404alpha1SearchFlowTagResponse": {
+      "type": "object",
+      "properties": {
+        "flowTags": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202404alpha1FlowTag"
+          }
+        },
+        "totalCount": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "invalidCount": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "SearchFlowTagResponse"
+    },
+    "v202404alpha1UpdateFlowTagRequest": {
+      "type": "object",
+      "properties": {
+        "flowTag": {
+          "$ref": "#/definitions/v202404alpha1FlowTag"
+        }
+      },
+      "title": "UpdateFlowTagRequest"
+    },
+    "v202404alpha1UpdateFlowTagResponse": {
+      "type": "object",
+      "properties": {
+        "flowTag": {
+          "$ref": "#/definitions/v202404alpha1FlowTag"
+        }
+      },
+      "title": "UpdateFlowTagResponse"
+    }
+  },
+  "securityDefinitions": {
+    "email": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-Email",
+      "in": "header"
+    },
+    "token": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-API-Token",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "email": [],
+      "token": []
+    }
+  ],
+  "externalDocs": {
+    "description": "General information about Kentik APIs",
+    "url": "https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview"
+  }
+}
