@@ -682,7 +682,8 @@
         },
         "deviceSnmpCommunity": {
           "type": "string",
-          "description": "Device SNMP community"
+          "description": "Device SNMP community",
+          "title": "Keeping these tokens so we can give the user a useful error.  They are removed from DeviceRequest"
         },
         "minimizeSnmp": {
           "type": "boolean",
@@ -710,7 +711,8 @@
         },
         "deviceBgpPassword": {
           "type": "string",
-          "description": "Device BGP password"
+          "description": "Device BGP password",
+          "title": "Keeping these tokens so we can give the user a useful error.  They are removed from DeviceRequest"
         },
         "deviceBgpLabelUnicast": {
           "type": "boolean",
@@ -789,7 +791,8 @@
         },
         "deviceSnmpV3Conf": {
           "$ref": "#/definitions/v202308beta1DeviceSnmpV3Conf",
-          "description": "Device SNMP v3 configuration"
+          "description": "Device SNMP v3 configuration",
+          "title": "Keeping these tokens so we can give the user a useful error.  They are removed from DeviceRequest"
         },
         "cdnAttr": {
           "type": "string",

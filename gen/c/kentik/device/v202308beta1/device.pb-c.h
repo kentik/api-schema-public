@@ -307,12 +307,18 @@ struct  Kentik__Device__V202308beta1__DeviceDetailed
   size_t n_sending_ips;
   char **sending_ips;
   char *device_snmp_ip;
+  /*
+   * Keeping these tokens so we can give the user a useful error.  They are removed from DeviceRequest
+   */
   char *device_snmp_community;
   char *device_bgp_type;
   char *device_bgp_neighbor_ip;
   char *device_bgp_neighbor_ip6;
   char *device_bgp_neighbor_asn;
   protobuf_c_boolean device_bgp_flowspec;
+  /*
+   * Keeping these tokens so we can give the user a useful error.  They are removed from DeviceRequest
+   */
   char *device_bgp_password;
   protobuf_c_boolean device_bgp_label_unicast;
   char *bgp_lookup_strategy;
@@ -332,6 +338,9 @@ struct  Kentik__Device__V202308beta1__DeviceDetailed
   Google__Protobuf__Timestamp *created_date;
   Google__Protobuf__Timestamp *updated_date;
   protobuf_c_boolean device_snmp_v3_conf_enabled;
+  /*
+   * Keeping these tokens so we can give the user a useful error.  They are removed from DeviceRequest
+   */
   Kentik__Device__V202308beta1__DeviceSnmpV3Conf *device_snmp_v3_conf;
   char *cdn_attr;
   char *bgp_peer_ip4;

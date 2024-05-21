@@ -1061,27 +1061,29 @@ type DeviceDetailed struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id                      string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	CompanyId               string                 `protobuf:"bytes,2,opt,name=company_id,json=companyId,proto3" json:"company_id,omitempty"`
-	DeviceName              string                 `protobuf:"bytes,3,opt,name=device_name,json=deviceName,proto3" json:"device_name,omitempty"`
-	DeviceAlias             string                 `protobuf:"bytes,4,opt,name=device_alias,json=deviceAlias,proto3" json:"device_alias,omitempty"`
-	DeviceType              string                 `protobuf:"bytes,5,opt,name=device_type,json=deviceType,proto3" json:"device_type,omitempty"`
-	DeviceDescription       string                 `protobuf:"bytes,6,opt,name=device_description,json=deviceDescription,proto3" json:"device_description,omitempty"`
-	Site                    *Site                  `protobuf:"bytes,7,opt,name=site,proto3" json:"site,omitempty"`
-	Plan                    *Plan                  `protobuf:"bytes,8,opt,name=plan,proto3" json:"plan,omitempty"`
-	Labels                  []*Label               `protobuf:"bytes,9,rep,name=labels,proto3" json:"labels,omitempty"`
-	AllInterfaces           []*Interface           `protobuf:"bytes,10,rep,name=all_interfaces,json=allInterfaces,proto3" json:"all_interfaces,omitempty"`
-	DeviceFlowType          string                 `protobuf:"bytes,11,opt,name=device_flow_type,json=deviceFlowType,proto3" json:"device_flow_type,omitempty"`
-	DeviceSampleRate        string                 `protobuf:"bytes,12,opt,name=device_sample_rate,json=deviceSampleRate,proto3" json:"device_sample_rate,omitempty"`
-	SendingIps              []string               `protobuf:"bytes,13,rep,name=sending_ips,json=sendingIps,proto3" json:"sending_ips,omitempty"`
-	DeviceSnmpIp            string                 `protobuf:"bytes,14,opt,name=device_snmp_ip,json=deviceSnmpIp,proto3" json:"device_snmp_ip,omitempty"`
-	DeviceSnmpCommunity     string                 `protobuf:"bytes,15,opt,name=device_snmp_community,json=deviceSnmpCommunity,proto3" json:"device_snmp_community,omitempty"`
-	MinimizeSnmp            *bool                  `protobuf:"varint,16,opt,name=minimize_snmp,json=minimizeSnmp,proto3,oneof" json:"minimize_snmp,omitempty"`
-	DeviceBgpType           string                 `protobuf:"bytes,17,opt,name=device_bgp_type,json=deviceBgpType,proto3" json:"device_bgp_type,omitempty"`
-	DeviceBgpNeighborIp     string                 `protobuf:"bytes,18,opt,name=device_bgp_neighbor_ip,json=deviceBgpNeighborIp,proto3" json:"device_bgp_neighbor_ip,omitempty"`
-	DeviceBgpNeighborIp6    string                 `protobuf:"bytes,19,opt,name=device_bgp_neighbor_ip6,json=deviceBgpNeighborIp6,proto3" json:"device_bgp_neighbor_ip6,omitempty"`
-	DeviceBgpNeighborAsn    string                 `protobuf:"bytes,20,opt,name=device_bgp_neighbor_asn,json=deviceBgpNeighborAsn,proto3" json:"device_bgp_neighbor_asn,omitempty"`
-	DeviceBgpFlowspec       bool                   `protobuf:"varint,21,opt,name=device_bgp_flowspec,json=deviceBgpFlowspec,proto3" json:"device_bgp_flowspec,omitempty"`
+	Id                string       `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	CompanyId         string       `protobuf:"bytes,2,opt,name=company_id,json=companyId,proto3" json:"company_id,omitempty"`
+	DeviceName        string       `protobuf:"bytes,3,opt,name=device_name,json=deviceName,proto3" json:"device_name,omitempty"`
+	DeviceAlias       string       `protobuf:"bytes,4,opt,name=device_alias,json=deviceAlias,proto3" json:"device_alias,omitempty"`
+	DeviceType        string       `protobuf:"bytes,5,opt,name=device_type,json=deviceType,proto3" json:"device_type,omitempty"`
+	DeviceDescription string       `protobuf:"bytes,6,opt,name=device_description,json=deviceDescription,proto3" json:"device_description,omitempty"`
+	Site              *Site        `protobuf:"bytes,7,opt,name=site,proto3" json:"site,omitempty"`
+	Plan              *Plan        `protobuf:"bytes,8,opt,name=plan,proto3" json:"plan,omitempty"`
+	Labels            []*Label     `protobuf:"bytes,9,rep,name=labels,proto3" json:"labels,omitempty"`
+	AllInterfaces     []*Interface `protobuf:"bytes,10,rep,name=all_interfaces,json=allInterfaces,proto3" json:"all_interfaces,omitempty"`
+	DeviceFlowType    string       `protobuf:"bytes,11,opt,name=device_flow_type,json=deviceFlowType,proto3" json:"device_flow_type,omitempty"`
+	DeviceSampleRate  string       `protobuf:"bytes,12,opt,name=device_sample_rate,json=deviceSampleRate,proto3" json:"device_sample_rate,omitempty"`
+	SendingIps        []string     `protobuf:"bytes,13,rep,name=sending_ips,json=sendingIps,proto3" json:"sending_ips,omitempty"`
+	DeviceSnmpIp      string       `protobuf:"bytes,14,opt,name=device_snmp_ip,json=deviceSnmpIp,proto3" json:"device_snmp_ip,omitempty"`
+	// Keeping these tokens so we can give the user a useful error.  They are removed from DeviceRequest
+	DeviceSnmpCommunity  string `protobuf:"bytes,15,opt,name=device_snmp_community,json=deviceSnmpCommunity,proto3" json:"device_snmp_community,omitempty"`
+	MinimizeSnmp         *bool  `protobuf:"varint,16,opt,name=minimize_snmp,json=minimizeSnmp,proto3,oneof" json:"minimize_snmp,omitempty"`
+	DeviceBgpType        string `protobuf:"bytes,17,opt,name=device_bgp_type,json=deviceBgpType,proto3" json:"device_bgp_type,omitempty"`
+	DeviceBgpNeighborIp  string `protobuf:"bytes,18,opt,name=device_bgp_neighbor_ip,json=deviceBgpNeighborIp,proto3" json:"device_bgp_neighbor_ip,omitempty"`
+	DeviceBgpNeighborIp6 string `protobuf:"bytes,19,opt,name=device_bgp_neighbor_ip6,json=deviceBgpNeighborIp6,proto3" json:"device_bgp_neighbor_ip6,omitempty"`
+	DeviceBgpNeighborAsn string `protobuf:"bytes,20,opt,name=device_bgp_neighbor_asn,json=deviceBgpNeighborAsn,proto3" json:"device_bgp_neighbor_asn,omitempty"`
+	DeviceBgpFlowspec    bool   `protobuf:"varint,21,opt,name=device_bgp_flowspec,json=deviceBgpFlowspec,proto3" json:"device_bgp_flowspec,omitempty"`
+	// Keeping these tokens so we can give the user a useful error.  They are removed from DeviceRequest
 	DeviceBgpPassword       string                 `protobuf:"bytes,22,opt,name=device_bgp_password,json=deviceBgpPassword,proto3" json:"device_bgp_password,omitempty"`
 	DeviceBgpLabelUnicast   bool                   `protobuf:"varint,23,opt,name=device_bgp_label_unicast,json=deviceBgpLabelUnicast,proto3" json:"device_bgp_label_unicast,omitempty"`
 	BgpLookupStrategy       string                 `protobuf:"bytes,24,opt,name=bgp_lookup_strategy,json=bgpLookupStrategy,proto3" json:"bgp_lookup_strategy,omitempty"`
@@ -1100,30 +1102,31 @@ type DeviceDetailed struct {
 	CreatedDate             *timestamppb.Timestamp `protobuf:"bytes,37,opt,name=created_date,json=createdDate,proto3" json:"created_date,omitempty"`
 	UpdatedDate             *timestamppb.Timestamp `protobuf:"bytes,38,opt,name=updated_date,json=updatedDate,proto3" json:"updated_date,omitempty"`
 	DeviceSnmpV3ConfEnabled bool                   `protobuf:"varint,39,opt,name=device_snmp_v3_conf_enabled,json=deviceSnmpV3ConfEnabled,proto3" json:"device_snmp_v3_conf_enabled,omitempty"`
-	DeviceSnmpV3Conf        *DeviceSnmpV3Conf      `protobuf:"bytes,40,opt,name=device_snmp_v3_conf,json=deviceSnmpV3Conf,proto3" json:"device_snmp_v3_conf,omitempty"`
-	CdnAttr                 string                 `protobuf:"bytes,41,opt,name=cdn_attr,json=cdnAttr,proto3" json:"cdn_attr,omitempty"`
-	BgpPeerIp4              string                 `protobuf:"bytes,42,opt,name=bgp_peer_ip4,json=bgpPeerIp4,proto3" json:"bgp_peer_ip4,omitempty"`
-	BgpPeerIp6              string                 `protobuf:"bytes,43,opt,name=bgp_peer_ip6,json=bgpPeerIp6,proto3" json:"bgp_peer_ip6,omitempty"`
-	DeviceSubtype           string                 `protobuf:"bytes,44,opt,name=device_subtype,json=deviceSubtype,proto3" json:"device_subtype,omitempty"`
-	DeviceVendorType        string                 `protobuf:"bytes,45,opt,name=device_vendor_type,json=deviceVendorType,proto3" json:"device_vendor_type,omitempty"`
-	DeviceModelType         string                 `protobuf:"bytes,46,opt,name=device_model_type,json=deviceModelType,proto3" json:"device_model_type,omitempty"`
-	CloudExportId           string                 `protobuf:"bytes,47,opt,name=cloud_export_id,json=cloudExportId,proto3" json:"cloud_export_id,omitempty"`
-	DeviceKproxy            string                 `protobuf:"bytes,48,opt,name=device_kproxy,json=deviceKproxy,proto3" json:"device_kproxy,omitempty"`
-	SnmpEnabled             string                 `protobuf:"bytes,49,opt,name=snmp_enabled,json=snmpEnabled,proto3" json:"snmp_enabled,omitempty"`
-	SnmpDisabledReason      string                 `protobuf:"bytes,50,opt,name=snmp_disabled_reason,json=snmpDisabledReason,proto3" json:"snmp_disabled_reason,omitempty"`
-	SnmpDisabledReasonOther string                 `protobuf:"bytes,51,opt,name=snmp_disabled_reason_other,json=snmpDisabledReasonOther,proto3" json:"snmp_disabled_reason_other,omitempty"`
-	BgpDisabledReason       string                 `protobuf:"bytes,52,opt,name=bgp_disabled_reason,json=bgpDisabledReason,proto3" json:"bgp_disabled_reason,omitempty"`
-	BgpDisabledReasonOther  string                 `protobuf:"bytes,53,opt,name=bgp_disabled_reason_other,json=bgpDisabledReasonOther,proto3" json:"bgp_disabled_reason_other,omitempty"`
-	DeviceManufacturer      string                 `protobuf:"bytes,54,opt,name=device_manufacturer,json=deviceManufacturer,proto3" json:"device_manufacturer,omitempty"`
-	DeviceAlert             string                 `protobuf:"bytes,55,opt,name=device_alert,json=deviceAlert,proto3" json:"device_alert,omitempty"`
-	Role                    string                 `protobuf:"bytes,56,opt,name=role,proto3" json:"role,omitempty"`
-	DeviceGnmiV1Conf        *GnmiV1Conf            `protobuf:"bytes,57,opt,name=device_gnmi_v1_conf,json=deviceGnmiV1Conf,proto3" json:"device_gnmi_v1_conf,omitempty"`
-	UseAsnFromFlow          bool                   `protobuf:"varint,58,opt,name=use_asn_from_flow,json=useAsnFromFlow,proto3" json:"use_asn_from_flow,omitempty"`
-	MaxInterface            uint32                 `protobuf:"varint,59,opt,name=max_interface,json=maxInterface,proto3" json:"max_interface,omitempty"`
-	MaxInterfaceCheck       uint32                 `protobuf:"varint,60,opt,name=max_interface_check,json=maxInterfaceCheck,proto3" json:"max_interface_check,omitempty"`
-	Nms                     *DeviceNmsConfig       `protobuf:"bytes,61,opt,name=nms,proto3" json:"nms,omitempty"`
-	DeviceBgpCredentialName string                 `protobuf:"bytes,62,opt,name=device_bgp_credential_name,json=deviceBgpCredentialName,proto3" json:"device_bgp_credential_name,omitempty"`
-	FlowSnmpCredentialName  string                 `protobuf:"bytes,63,opt,name=flow_snmp_credential_name,json=flowSnmpCredentialName,proto3" json:"flow_snmp_credential_name,omitempty"`
+	// Keeping these tokens so we can give the user a useful error.  They are removed from DeviceRequest
+	DeviceSnmpV3Conf        *DeviceSnmpV3Conf `protobuf:"bytes,40,opt,name=device_snmp_v3_conf,json=deviceSnmpV3Conf,proto3" json:"device_snmp_v3_conf,omitempty"`
+	CdnAttr                 string            `protobuf:"bytes,41,opt,name=cdn_attr,json=cdnAttr,proto3" json:"cdn_attr,omitempty"`
+	BgpPeerIp4              string            `protobuf:"bytes,42,opt,name=bgp_peer_ip4,json=bgpPeerIp4,proto3" json:"bgp_peer_ip4,omitempty"`
+	BgpPeerIp6              string            `protobuf:"bytes,43,opt,name=bgp_peer_ip6,json=bgpPeerIp6,proto3" json:"bgp_peer_ip6,omitempty"`
+	DeviceSubtype           string            `protobuf:"bytes,44,opt,name=device_subtype,json=deviceSubtype,proto3" json:"device_subtype,omitempty"`
+	DeviceVendorType        string            `protobuf:"bytes,45,opt,name=device_vendor_type,json=deviceVendorType,proto3" json:"device_vendor_type,omitempty"`
+	DeviceModelType         string            `protobuf:"bytes,46,opt,name=device_model_type,json=deviceModelType,proto3" json:"device_model_type,omitempty"`
+	CloudExportId           string            `protobuf:"bytes,47,opt,name=cloud_export_id,json=cloudExportId,proto3" json:"cloud_export_id,omitempty"`
+	DeviceKproxy            string            `protobuf:"bytes,48,opt,name=device_kproxy,json=deviceKproxy,proto3" json:"device_kproxy,omitempty"`
+	SnmpEnabled             string            `protobuf:"bytes,49,opt,name=snmp_enabled,json=snmpEnabled,proto3" json:"snmp_enabled,omitempty"`
+	SnmpDisabledReason      string            `protobuf:"bytes,50,opt,name=snmp_disabled_reason,json=snmpDisabledReason,proto3" json:"snmp_disabled_reason,omitempty"`
+	SnmpDisabledReasonOther string            `protobuf:"bytes,51,opt,name=snmp_disabled_reason_other,json=snmpDisabledReasonOther,proto3" json:"snmp_disabled_reason_other,omitempty"`
+	BgpDisabledReason       string            `protobuf:"bytes,52,opt,name=bgp_disabled_reason,json=bgpDisabledReason,proto3" json:"bgp_disabled_reason,omitempty"`
+	BgpDisabledReasonOther  string            `protobuf:"bytes,53,opt,name=bgp_disabled_reason_other,json=bgpDisabledReasonOther,proto3" json:"bgp_disabled_reason_other,omitempty"`
+	DeviceManufacturer      string            `protobuf:"bytes,54,opt,name=device_manufacturer,json=deviceManufacturer,proto3" json:"device_manufacturer,omitempty"`
+	DeviceAlert             string            `protobuf:"bytes,55,opt,name=device_alert,json=deviceAlert,proto3" json:"device_alert,omitempty"`
+	Role                    string            `protobuf:"bytes,56,opt,name=role,proto3" json:"role,omitempty"`
+	DeviceGnmiV1Conf        *GnmiV1Conf       `protobuf:"bytes,57,opt,name=device_gnmi_v1_conf,json=deviceGnmiV1Conf,proto3" json:"device_gnmi_v1_conf,omitempty"`
+	UseAsnFromFlow          bool              `protobuf:"varint,58,opt,name=use_asn_from_flow,json=useAsnFromFlow,proto3" json:"use_asn_from_flow,omitempty"`
+	MaxInterface            uint32            `protobuf:"varint,59,opt,name=max_interface,json=maxInterface,proto3" json:"max_interface,omitempty"`
+	MaxInterfaceCheck       uint32            `protobuf:"varint,60,opt,name=max_interface_check,json=maxInterfaceCheck,proto3" json:"max_interface_check,omitempty"`
+	Nms                     *DeviceNmsConfig  `protobuf:"bytes,61,opt,name=nms,proto3" json:"nms,omitempty"`
+	DeviceBgpCredentialName string            `protobuf:"bytes,62,opt,name=device_bgp_credential_name,json=deviceBgpCredentialName,proto3" json:"device_bgp_credential_name,omitempty"`
+	FlowSnmpCredentialName  string            `protobuf:"bytes,63,opt,name=flow_snmp_credential_name,json=flowSnmpCredentialName,proto3" json:"flow_snmp_credential_name,omitempty"`
 }
 
 func (x *DeviceDetailed) Reset() {

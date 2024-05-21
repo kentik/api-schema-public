@@ -545,6 +545,7 @@ message DeviceDetailed {
       description: "Device SNMP IP"
     }
   ];
+  // Keeping these tokens so we can give the user a useful error.  They are removed from DeviceRequest
   string device_snmp_community = 15 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Device SNMP community"
@@ -580,6 +581,7 @@ message DeviceDetailed {
       description: "Device BGP flowspec"
     }
   ];
+  // Keeping these tokens so we can give the user a useful error.  They are removed from DeviceRequest
   string device_bgp_password = 22 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Device BGP password"
@@ -670,6 +672,7 @@ message DeviceDetailed {
       description: "Device SNMP v3 configuration enabled"
     }
   ];
+  // Keeping these tokens so we can give the user a useful error.  They are removed from DeviceRequest
   DeviceSnmpV3Conf device_snmp_v3_conf = 40 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Device SNMP v3 configuration"

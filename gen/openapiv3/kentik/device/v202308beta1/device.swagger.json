@@ -763,7 +763,8 @@
                     },
                     "deviceSnmpCommunity": {
                         "type": "string",
-                        "description": "Device SNMP community"
+                        "description": "Device SNMP community",
+                        "title": "Keeping these tokens so we can give the user a useful error.  They are removed from DeviceRequest"
                     },
                     "minimizeSnmp": {
                         "type": "boolean",
@@ -791,7 +792,8 @@
                     },
                     "deviceBgpPassword": {
                         "type": "string",
-                        "description": "Device BGP password"
+                        "description": "Device BGP password",
+                        "title": "Keeping these tokens so we can give the user a useful error.  They are removed from DeviceRequest"
                     },
                     "deviceBgpLabelUnicast": {
                         "type": "boolean",
