@@ -1,0 +1,152 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Journeys AI NLQ API",
+    "description": "# Overview\nJourneys AI API provides programmatic access to Natural Language Query (NLQ)",
+    "version": "v202406",
+    "contact": {
+      "name": "Kentik API Engineering",
+      "url": "https://github.com/kentik/api-schema-public"
+    }
+  },
+  "tags": [
+    {
+      "name": "JourneysDataService"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/journeys/v202406/GetJourneysNlq": {
+      "get": {
+        "summary": "Journeys AI NLQ Service",
+        "description": "Perform Natural Language (NLQ) to query object translation",
+        "operationId": "GetJourneysNlq",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202406GetJourneysNlqResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "prompt",
+            "description": "The text prompt to be converted to a Journeys NLQ result.",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "JourneysDataService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "typeUrl": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v202406GetJourneysNlqResponse": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "type": "string"
+        },
+        "resultType": {
+          "$ref": "#/definitions/v202406ResultType"
+        },
+        "resultFormat": {
+          "$ref": "#/definitions/v202406ResultFormat"
+        }
+      },
+      "title": "GetJourneysNlqResponse"
+    },
+    "v202406ResultFormat": {
+      "type": "string",
+      "enum": [
+        "RESULT_FORMAT_UNSPECIFIED",
+        "RESULT_FORMAT_JSON",
+        "RESULT_FORMAT_MARKDOWN",
+        "RESULT_FORMAT_PLAIN_TEXT"
+      ],
+      "default": "RESULT_FORMAT_UNSPECIFIED"
+    },
+    "v202406ResultType": {
+      "type": "string",
+      "enum": [
+        "RESULT_TYPE_UNSPECIFIED",
+        "RESULT_TYPE_ERROR",
+        "RESULT_TYPE_DE_QUERY_OBJECT",
+        "RESULT_TYPE_ME_QUERY_OBJECT",
+        "RESULT_TYPE_KNOWLEDGE_BASE",
+        "RESULT_TYPE_DDOS_ALERTS"
+      ],
+      "default": "RESULT_TYPE_UNSPECIFIED"
+    }
+  },
+  "securityDefinitions": {
+    "email": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-Email",
+      "in": "header"
+    },
+    "token": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-API-Token",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "email": [],
+      "token": []
+    }
+  ],
+  "externalDocs": {
+    "description": "General information about Kentik APIs",
+    "url": "https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview"
+  }
+}
