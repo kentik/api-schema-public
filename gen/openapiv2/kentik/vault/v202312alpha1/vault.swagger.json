@@ -1,0 +1,256 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Vault API",
+    "description": "# Overview\nThe Vault API enables programmatic access to secrets stored in your Kentik vault.\n",
+    "version": "v202312alpha1",
+    "contact": {
+      "name": "Kentik API Engineering",
+      "url": "https://github.com/kentik/api-schema-public"
+    }
+  },
+  "tags": [
+    {
+      "name": "VaultService"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/vault/v202312alpha1/secrets": {
+      "get": {
+        "summary": "List secrets.",
+        "description": "Returns list of secret values stored in Kentik vault.",
+        "operationId": "ListSecret",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202312alpha1ListSecretResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "names",
+            "description": "The secret's name",
+            "in": "query",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "tags": [
+          "VaultService"
+        ]
+      }
+    },
+    "/vault/v202312alpha1/secrets/{name}": {
+      "get": {
+        "summary": "Get a secret by name.",
+        "description": "Returns a secret value stored in Kentik vault.",
+        "operationId": "GetSecret",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202312alpha1GetSecretResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "description": "The secret's name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "VaultService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "typeUrl": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v202312alpha1GetSecretResponse": {
+      "type": "object",
+      "properties": {
+        "secret": {
+          "$ref": "#/definitions/v202312alpha1Secret",
+          "description": "Secret",
+          "required": [
+            "secret"
+          ]
+        }
+      },
+      "title": "GetSecretResponse",
+      "required": [
+        "secret"
+      ]
+    },
+    "v202312alpha1ListSecretResponse": {
+      "type": "object",
+      "properties": {
+        "secrets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202312alpha1Secret"
+          },
+          "description": "List of secrets",
+          "required": [
+            "secrets"
+          ]
+        },
+        "invalidCredentialCount": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Number of objects with invalid data (which are not returned in the response)."
+        }
+      },
+      "required": [
+        "secrets"
+      ]
+    },
+    "v202312alpha1Secret": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The secret's name",
+          "required": [
+            "name"
+          ]
+        },
+        "value": {
+          "type": "string",
+          "description": "The secret's actual value",
+          "required": [
+            "value"
+          ]
+        },
+        "version": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The secret's version",
+          "required": [
+            "version"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "description": "Purpose of this secret"
+        },
+        "type": {
+          "$ref": "#/definitions/v202312alpha1SecretType",
+          "description": "The secret's type"
+        },
+        "id": {
+          "type": "string",
+          "description": "The secret's identifier",
+          "required": [
+            "id"
+          ]
+        }
+      },
+      "title": "Secret",
+      "required": [
+        "name",
+        "value",
+        "version",
+        "id"
+      ]
+    },
+    "v202312alpha1SecretType": {
+      "type": "string",
+      "enum": [
+        "SECRET_TYPE_UNSPECIFIED",
+        "SECRET_TYPE_BASIC_AUTH",
+        "SECRET_TYPE_SNMP_V1",
+        "SECRET_TYPE_SNMP_V2C",
+        "SECRET_TYPE_SNMP_V3",
+        "SECRET_TYPE_STREAMING_TELEMETRY",
+        "SECRET_TYPE_BGP_MD5",
+        "SECRET_TYPE_API_TOKEN",
+        "SECRET_TYPE_OTHER"
+      ],
+      "default": "SECRET_TYPE_UNSPECIFIED",
+      "title": "SecretType"
+    }
+  },
+  "securityDefinitions": {
+    "email": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-Email",
+      "in": "header"
+    },
+    "token": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-API-Token",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "email": [],
+      "token": []
+    }
+  ],
+  "externalDocs": {
+    "description": "General information about Kentik APIs",
+    "url": "https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview"
+  }
+}

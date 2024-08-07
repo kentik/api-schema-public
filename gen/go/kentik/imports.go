@@ -11,6 +11,7 @@ import (
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/cloud_export/v202210"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/core/v202303"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/cost/v202308"
+	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/credential/v202407alpha1"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/device/v202308beta1"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/flow_tag/v202404alpha1"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/interface/v202108alpha1"
@@ -31,4 +32,5 @@ import (
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/synthetics/v202309"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/user/v202106alpha1"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/user/v202211"
+	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/vault/v202312alpha1"
 )

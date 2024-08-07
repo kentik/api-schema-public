@@ -1,0 +1,185 @@
+syntax = "proto3";
+
+package kentik.vault.v202312alpha1;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/vault/v202312alpha1;vault";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/timestamp.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "kentik/core/v202303/annotations.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Vault API"
+    version: "v202312alpha1"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api-schema-public"
+    }
+    description: "# Overview\n"
+    "The Vault API enables programmatic access to secrets stored in your Kentik vault.\n"
+  }
+  external_docs: {
+    url: "https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview"
+    description: "General information about Kentik APIs"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+// {{.Name}}
+enum SecretType {
+  SECRET_TYPE_UNSPECIFIED = 0;
+  SECRET_TYPE_BASIC_AUTH = 1;
+  SECRET_TYPE_SNMP_V1 = 2;
+  SECRET_TYPE_SNMP_V2C = 3;
+  SECRET_TYPE_SNMP_V3 = 4;
+  SECRET_TYPE_STREAMING_TELEMETRY = 5;
+  SECRET_TYPE_BGP_MD5 = 6;
+  SECRET_TYPE_API_TOKEN = 7;
+  SECRET_TYPE_OTHER = 8;
+}
+
+// {{.Name}}
+message Secret {
+  string name = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The secret's name"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  string value = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The secret's actual value"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  uint32 version = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The secret's version"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  string description = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Purpose of this secret"
+    }
+  ];
+  SecretType type = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The secret's type"
+    }
+  ];
+  string id = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The secret's identifier"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message GetSecretRequest {
+  string name = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The secret's name"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message GetSecretResponse {
+  Secret secret = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Secret"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message ListSecretRequest {
+  repeated string names = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The secret's name"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+message ListSecretResponse {
+  repeated Secret secrets = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of secrets"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  uint32 invalid_credential_count = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Number of objects with invalid data (which are not returned in the response)."
+    }
+  ];
+}
+
+
+service VaultService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PRIVATE;
+  option (kentik.core.v202303.private_service) = true;
+
+  rpc GetSecret(GetSecretRequest) returns (GetSecretResponse) {
+    option (kentik.core.v202303.method_scope) = "vault:read";
+    option (google.api.http) = {
+      get: "/vault/v202312alpha1/secrets/{name}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetSecret"
+      summary: "Get a secret by name."
+      description: "Returns a secret value stored in Kentik vault."
+    };
+  }
+
+  rpc ListSecret(ListSecretRequest) returns (ListSecretResponse) {
+    option (kentik.core.v202303.method_scope) = "vault:read";
+    option (google.api.http) = {
+      get: "/vault/v202312alpha1/secrets"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ListSecret"
+      summary: "List secrets."
+      description: "Returns list of secret values stored in Kentik vault."
+    };
+  }
+}
