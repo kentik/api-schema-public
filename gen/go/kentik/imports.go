@@ -21,6 +21,7 @@ import (
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/label/v202203alpha1"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/label/v202210"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/mkp/v202102alpha1"
+	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/mkp/v202407"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/net/v202303"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/network_class/v202109alpha1"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/notification_channel/v202204alpha1"

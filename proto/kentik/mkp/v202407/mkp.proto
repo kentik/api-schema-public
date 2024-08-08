@@ -1,0 +1,621 @@
+// My Kentik Portal management
+
+syntax = "proto3";
+
+package kentik.mkp.v202407;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/mkp/v202407;mkp";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "kentik/core/v202303/annotations.proto";
+import "kentik/user/v202211/user.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "MKP API"
+    version: "v202407"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api-schema-public"
+    }
+    description: "# Overview\n"
+  "My Kentik Portal API enables programmatic access to tenants and package templates.\n"
+  "| Endpoint | Purpose |\n"
+  "|-----------|---------|\n"
+  "| TenantService  | CRUD operations for MKP tenants. |\n"
+  "| PackageService | CRUD operations for MKP templates. |\n"
+"\n"
+"Both REST endpoint and gRPC RPCs are provided.\n"
+"\n"
+"\n"
+" # Tenant Attributes and Settings\n"
+"| Attribute | Access | Purpose |\n"
+"|-----------|--------|---------|\n"
+"| id | RO | System-generated unique identifier of the tenant |\n"
+"| company_id | RO | System-generated unique identifier of the company |\n"
+"| name | RW | User specified name for the tenant |\n"
+"| description | RW | User specified description for the tenant |\n"
+"| type | RO | subtenant |\n"
+"| enabled | RW | User specified tenant active status |\n"
+"| cdate | RO | Creation timestamp |\n"
+"| edate | RO | Last-modification timestamp |\n"
+"| alerts | RO | Alert policy configurations |\n"
+"| assets | RW | dashboard, views, and templates associate with tenant |\n"
+"| asn | RW | ASN data source |\n"
+"| cidr | RW | CIDR data source |\n"
+"| custom_dimensions | RW | Custom dimension data source |\n"
+"| devices | RW | Devices data source |\n"
+"| filters | RW | Data source filters |\n"
+"| interface_name | RW | Interface source filters |\n"
+"| snmp_alias | RW | SNMP source filters |\n"
+"| packages | RO | Package templates use by the tenant |\n"
+"| users | RO | Users assign to the tenant |\n"
+"| template_id | WO | Update tenant's packages setting with package/template id |\n"
+"\n"
+"\n"
+" # Package Attributes and Settings\n"
+"| Attribute | Access | Purpose |\n"
+"|-----------|--------|---------|\n"
+"| id | RO | System-generated unique identifier of the package |\n"
+"| company_id | RO | System-generated unique identifier of the company |\n"
+"| name | RW | User specified name for the package template |\n"
+"| description | RW | User specified description for the package template |\n"
+"| icon | RO | User specified icon |\n"
+"| color | RW | User specified color of icon |\n"
+"| alerts | RO | Alert policy configurations |\n"
+"| assets | RW | dashboard, views, and templates associate with tenant |\n"
+"| is_default | RW | Default package template to include for new tenant |\n"
+"| tenants | RO | Tenants using this package template |\n"
+"\n"
+"\n"
+
+
+  }
+  external_docs: {
+    url: "https://docs.kentik.com/api"
+    description: "More about Kentik APIs"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+// {{.Name}}
+message Alert {
+  bool saved = 1;
+  string policy_id = 2;
+  repeated Threshold thresholds = 3;
+  string primary_metric = 4;
+  repeated string secondary_metrics = 5;
+  bool is_template = 6;
+  string subpolicy_id = 7;
+}
+
+// {{.Name}}
+message Asset {
+  message Report {
+    string id = 1;
+    string type = 2;
+  }
+  repeated Report reports = 1;
+  Report default_report = 2;
+};
+
+// {{.Name}}
+message Threshold {
+  string id = 1;
+  Activate activate = 2;
+  string severity = 3;
+  repeated Condition conditions = 4;
+  repeated Mitigation mitigations = 5;
+  repeated NotificationChannel notification_channels = 6;
+  bool threshold_ack_required = 7;
+  bool enable_tenant_notifications = 8;
+  bool receive_landlord_notifications = 9;
+}
+
+// {{.Name}}
+message Activate {
+  uint32 times = 1;
+  string operator = 2;
+  uint32 time_window_seconds = 3;
+  uint32 grace_period_seconds = 4;
+}
+
+// {{.Name}}
+message Condition {
+  string type = 1;
+  string value = 2;
+  string metric = 3;
+  string operator = 4;
+  string value_type = 5;
+  string value_select = 6;
+}
+
+// {{.Name}}
+message Mitigation {
+  string id = 13;
+  string status = 1;
+  string company_id = 2;
+  string pairing_id = 3;
+  string threshold_id = 4;
+  bool is_method_overridable = 5;
+  string mitigation_apply_type = 6;
+  string mitigation_clear_type = 7;
+  uint32 mitigation_apply_timer = 8;
+  uint32 mitigation_clear_timer = 9;
+  bool is_platform_overridable = 10;
+}
+
+// {{.Name}}
+message NotificationChannel {
+  string id = 1;
+}
+
+// {{.Name}}
+message TenantLink {
+  string id = 1;
+  string pivot_template_id = 2;
+  string pivot_user_group_id = 3;
+}
+
+// {{.Name}}
+message Package {
+  string id = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Unique system assigned identifier of the package"
+    }
+  ];
+  string company_id = 2 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Company id of the associated package"
+    }
+  ];
+  string name = 3 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Name of package template"
+    }
+  ];
+  string description = 4 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Description of package template"
+    }
+  ];
+  string icon = 5 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Icon to display"
+    }
+  ];
+  string color = 6 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Color of Icon"
+    }
+  ];
+  repeated Alert alerts = 7 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Alert thresholds and policies"
+    }
+  ];
+  Asset assets = 8 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Views and Dashboards associated with the package."
+    }
+  ];
+  bool is_default = 9 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Is default template"
+    }
+  ];
+  repeated TenantLink tenants = 10 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Tenant link information"
+    }
+  ];
+}
+
+// {{.Name}}
+message CustomDimension {
+  string dimension = 1;
+  string populator = 2;
+}
+
+// {{.Name}}
+message Devices {
+  bool all_devices = 1;
+  repeated string device_types = 2;
+  repeated uint32 device_labels = 3;
+  repeated uint32 device_sites = 4;
+  repeated string device_name = 5;
+}
+
+// {{.Name}}
+message FilterField {
+  string filter_field = 1;
+  string operator = 2;
+  string filter_value = 3;
+}
+
+// {{.Name}}
+message Filter {
+  string name = 1;
+  bool named = 2;
+  string connector = 3;
+  bool not = 4;
+  string auto_added = 5;
+  repeated string saved_filters = 6;
+  repeated FilterField filters = 7;
+  repeated Filter filter_groups = 8;
+  repeated string metric = 9;
+}
+
+// {{.Name}}
+message Tenant {
+  string id = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Unique system assigned identifier of the tenant"
+    }
+  ];
+  string company_id = 2 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Company id of the associated package"
+    }
+  ];
+  string name = 3 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Name of tenant"
+    }
+  ];
+  string description = 4 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Description of tenant"
+    }
+  ];
+  string type = 5 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Subtenant"
+    }
+  ];
+  bool enabled = 6 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Is tenant actively enable"
+    }
+  ];
+  // config object
+  repeated Alert alerts = 7 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Alert thresholds and policies"
+    }
+  ];
+  Asset assets = 15 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Views and Dashboards associated with the tenant"
+    }
+  ];
+  string asn = 8 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ASN data source."
+    }
+  ];
+  string cidr = 9 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "CIDR data source."
+    }
+  ];
+  repeated CustomDimension custom_dimensions = 10 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Custom dimension data source"
+    }
+  ];
+  Devices devices = 11 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device data source."
+    }
+  ];
+  Filter filters = 12 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Data source filters."
+    }
+  ];
+  string interface_name = 13 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Interface data source."
+    }
+  ];
+  string snmp_alias = 14 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "SNMP data source."
+    }
+  ];
+  repeated Package packages = 16 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Packages associated with the tenant."
+    }
+  ];
+  repeated kentik.user.v202211.User users = 17 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Users associated with the tenant."
+    }
+  ];
+  string template_id = 18 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Package template ID to assign with tenant."
+    }
+  ];
+}
+
+// {{.Name}}
+message ListPackageRequest {}
+// {{.Name}}
+message ListPackageResponse {
+  repeated Package packages = 1;
+  // The number of invalid packages, for troubleshooting. Should be zero.
+  uint32 invalid_count = 2;
+}
+
+// {{.Name}}
+message GetPackageRequest {
+  string id = 1;
+}
+// {{.Name}}
+message GetPackageResponse {
+  Package package = 1;
+}
+
+// {{.Name}}
+message CreatePackageRequest {
+  Package package = 1;
+}
+// {{.Name}}
+message CreatePackageResponse {
+  Package package = 1;
+}
+
+// {{.Name}}
+message UpdatePackageRequest {
+  Package package = 1;
+}
+// {{.Name}}
+message UpdatePackageResponse {
+  Package package = 1;
+}
+
+// {{.Name}}
+message DeletePackageRequest {
+  string id = 1;
+}
+// {{.Name}}
+message DeletePackageResponse {}
+
+service PackageService {
+  option (google.api.default_host) = "mkp.api.kentik.com";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "admin.mkp";
+
+  rpc ListPackage(ListPackageRequest) returns (ListPackageResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.mkp:read";
+    option (google.api.http) = {
+      get: "/mkp/v202407/packages"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "PackageList"
+      summary: "List MKP packages."
+      description: "Returns a list of MKP packages."
+    };
+
+  }
+  rpc GetPackage(GetPackageRequest) returns (GetPackageResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.mkp:read";
+    option (google.api.http) = {
+      get: "/mkp/v202407/packages/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "PackageGet"
+      summary: "Get information aboout a package."
+      description: "Returns information about package specified with ID."
+    };
+  }
+  rpc CreatePackage(CreatePackageRequest) returns (CreatePackageResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.mkp:write";
+    option (google.api.http) = {
+      post: "/mkp/v202407/packages"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "PackageCreate"
+      summary: "Create a package template."
+      description: "Create package from request. returns created package."
+    };
+  }
+  rpc UpdatePackage(UpdatePackageRequest) returns (UpdatePackageResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.mkp:write";
+    option (google.api.http) = {
+      put: "/mkp/v202407/packages/{package.id}"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "PackageUpdate"
+      summary: "Update a package."
+      description: "Update package attributes specified with id."
+    };
+  }
+
+  rpc DeletePackage(DeletePackageRequest) returns (DeletePackageResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.mkp:write";
+    option (google.api.http) = {
+      delete: "/mkp/v202407/packages/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "PackageDelete"
+      summary: "Delete a package."
+      description: "Deletes the package specified with id."
+    };
+  }
+
+}
+
+
+// {{.Name}}
+message ListTenantRequest {}
+// {{.Name}}
+message ListTenantResponse {
+  repeated Tenant tenants = 1;
+  uint32 invalid_count = 2;
+}
+
+// {{.Name}}
+message GetTenantRequest {
+  string id = 1;
+}
+// {{.Name}}
+message GetTenantResponse {
+  Tenant tenant = 1;
+}
+
+// {{.Name}}
+message CreateTenantRequest {
+  Tenant tenant = 1;
+}
+// {{.Name}}
+message CreateTenantResponse {
+  Tenant tenant = 1;
+}
+
+// {{.Name}}
+message UpdateTenantRequest {
+  Tenant tenant = 1;
+}
+// {{.Name}}
+message UpdateTenantResponse {
+  Tenant tenant = 1;
+}
+
+// {{.Name}}
+message DeleteTenantRequest {
+  string id = 1;
+}
+// {{.Name}}
+message DeleteTenantResponse {}
+
+service TenantService {
+  option (google.api.default_host) = "mkp.api.kentik.com";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "admin.mkp";
+
+  rpc ListTenant(ListTenantRequest) returns (ListTenantResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.mkp:read";
+    option (google.api.http) = {
+      get: "/mkp/v202407/tenants"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "TenantList"
+      summary: "List MKP tenants."
+      description: "Returns a list of MKP tenants."
+    };
+  }
+  rpc GetTenant(GetTenantRequest) returns (GetTenantResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.mkp:read";
+    option (google.api.http) = {
+      get: "/mkp/v202407/tenants/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "TenantGet"
+      summary: "Get information aboout a tenant."
+      description: "Returns information about package specified with ID."
+    };
+  }
+  rpc CreateTenant(CreateTenantRequest) returns (CreateTenantResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.mkp:write";
+    option (google.api.http) = {
+      post: "/mkp/v202407/tenants"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "TenantCreate"
+      summary: "Create a tenant."
+      description: "Create tenant from request. returns created tenant."
+    };
+  }
+  rpc UpdateTenant(UpdateTenantRequest) returns (UpdateTenantResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.mkp:write";
+    option (google.api.http) = {
+      put: "/mkp/v202407/tenants/{tenant.id}"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "TenantUpdate"
+      summary: "Update a tenant."
+      description: "Update tenant attributes specified with id."
+    };
+  }
+
+  rpc DeleteTenant(DeleteTenantRequest) returns (DeleteTenantResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.mkp:write";
+    option (google.api.http) = {
+      delete: "/mkp/v202407/tenants/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "TenantDelete"
+      summary: "Delete a tenant."
+      description: "Deletes the tenant specified with id."
+    };
+  }
+
+}
