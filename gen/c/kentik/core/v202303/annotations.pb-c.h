@@ -39,7 +39,11 @@ typedef enum _Kentik__Core__V202303__ServiceVisibility {
   /*
    * public customer facing services
    */
-  KENTIK__CORE__V202303__SERVICE_VISIBILITY__SERVICE_VISIBILITY_PUBLIC = 3
+  KENTIK__CORE__V202303__SERVICE_VISIBILITY__SERVICE_VISIBILITY_PUBLIC = 3,
+  /*
+   * public facing endpoints that are only used by kentik services
+   */
+  KENTIK__CORE__V202303__SERVICE_VISIBILITY__SERVICE_VISIBILITY_PUBLIC_KENTIK = 4
     PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__CORE__V202303__SERVICE_VISIBILITY)
 } Kentik__Core__V202303__ServiceVisibility;
 /*
@@ -65,7 +69,11 @@ typedef enum _Kentik__Core__V202303__MethodVisibility {
   /*
    * public customer facing services
    */
-  KENTIK__CORE__V202303__METHOD_VISIBILITY__METHOD_VISIBILITY_PUBLIC = 4
+  KENTIK__CORE__V202303__METHOD_VISIBILITY__METHOD_VISIBILITY_PUBLIC = 4,
+  /*
+   * public facing endpoints that are only used by kentik services
+   */
+  KENTIK__CORE__V202303__METHOD_VISIBILITY__METHOD_VISIBILITY_PUBLIC_KENTIK = 5
     PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__CORE__V202303__METHOD_VISIBILITY)
 } Kentik__Core__V202303__MethodVisibility;
 

@@ -30,34 +30,36 @@ static constexpr ::PROTOBUF_NAMESPACE_ID::Message* const* file_default_instances
 const char descriptor_table_protodef_kentik_2fcore_2fv202303_2fannotations_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n%kentik/core/v202303/annotations.proto\022"
   "\023kentik.core.v202303\032 google/protobuf/de"
-  "scriptor.proto*\225\001\n\021ServiceVisibility\022\036\n\032"
+  "scriptor.proto*\273\001\n\021ServiceVisibility\022\036\n\032"
   "SERVICE_VISIBILITY_PRIVATE\020\000\022 \n\034SERVICE_"
   "VISIBILITY_PROTECTED\020\001\022\037\n\033SERVICE_VISIBI"
   "LITY_INTERNAL\020\002\022\035\n\031SERVICE_VISIBILITY_PU"
-  "BLIC\020\003*\263\001\n\020MethodVisibility\022!\n\035METHOD_VI"
-  "SIBILITY_UNSPECIFIED\020\000\022\035\n\031METHOD_VISIBIL"
-  "ITY_PRIVATE\020\001\022\037\n\033METHOD_VISIBILITY_PROTE"
-  "CTED\020\002\022\036\n\032METHOD_VISIBILITY_INTERNAL\020\003\022\034"
-  "\n\030METHOD_VISIBILITY_PUBLIC\020\004:E\n\rservice_"
-  "scope\022\037.google.protobuf.ServiceOptions\030\375"
-  "* \001(\tR\014serviceScope:I\n\017private_service\022\037"
-  ".google.protobuf.ServiceOptions\030\377* \001(\010R\016"
-  "privateService:h\n\nvisibility\022\037.google.pr"
-  "otobuf.ServiceOptions\030\202+ \001(\0162&.kentik.co"
-  "re.v202303.ServiceVisibilityR\nvisibility"
-  ":B\n\014method_scope\022\036.google.protobuf.Metho"
-  "dOptions\030\376* \001(\tR\013methodScope:F\n\016private_"
-  "method\022\036.google.protobuf.MethodOptions\030\200"
-  "+ \001(\010R\rprivateMethod:H\n\017method_category\022"
-  "\036.google.protobuf.MethodOptions\030\201+ \001(\tR\016"
-  "methodCategory:L\n\021method_permission\022\036.go"
-  "ogle.protobuf.MethodOptions\030\202+ \001(\tR\020meth"
-  "odPermission:s\n\021method_visibility\022\036.goog"
-  "le.protobuf.MethodOptions\030\203+ \001(\0162%.kenti"
-  "k.core.v202303.MethodVisibilityR\020methodV"
-  "isibilityBLZJgithub.com/kentik/api-schem"
-  "a-public/gen/go/kentik/core/v202303;kent"
-  "ik_coreb\006proto3"
+  "BLIC\020\003\022$\n SERVICE_VISIBILITY_PUBLIC_KENT"
+  "IK\020\004*\330\001\n\020MethodVisibility\022!\n\035METHOD_VISI"
+  "BILITY_UNSPECIFIED\020\000\022\035\n\031METHOD_VISIBILIT"
+  "Y_PRIVATE\020\001\022\037\n\033METHOD_VISIBILITY_PROTECT"
+  "ED\020\002\022\036\n\032METHOD_VISIBILITY_INTERNAL\020\003\022\034\n\030"
+  "METHOD_VISIBILITY_PUBLIC\020\004\022#\n\037METHOD_VIS"
+  "IBILITY_PUBLIC_KENTIK\020\005:E\n\rservice_scope"
+  "\022\037.google.protobuf.ServiceOptions\030\375* \001(\t"
+  "R\014serviceScope:I\n\017private_service\022\037.goog"
+  "le.protobuf.ServiceOptions\030\377* \001(\010R\016priva"
+  "teService:h\n\nvisibility\022\037.google.protobu"
+  "f.ServiceOptions\030\202+ \001(\0162&.kentik.core.v2"
+  "02303.ServiceVisibilityR\nvisibility:B\n\014m"
+  "ethod_scope\022\036.google.protobuf.MethodOpti"
+  "ons\030\376* \001(\tR\013methodScope:F\n\016private_metho"
+  "d\022\036.google.protobuf.MethodOptions\030\200+ \001(\010"
+  "R\rprivateMethod:H\n\017method_category\022\036.goo"
+  "gle.protobuf.MethodOptions\030\201+ \001(\tR\016metho"
+  "dCategory:L\n\021method_permission\022\036.google."
+  "protobuf.MethodOptions\030\202+ \001(\tR\020methodPer"
+  "mission:s\n\021method_visibility\022\036.google.pr"
+  "otobuf.MethodOptions\030\203+ \001(\0162%.kentik.cor"
+  "e.v202303.MethodVisibilityR\020methodVisibi"
+  "lityBLZJgithub.com/kentik/api-schema-pub"
+  "lic/gen/go/kentik/core/v202303;kentik_co"
+  "reb\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fdescriptor_2eproto,
@@ -66,7 +68,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto = {
-  false, false, descriptor_table_protodef_kentik_2fcore_2fv202303_2fannotations_2eproto, "kentik/core/v202303/annotations.proto", 1175,
+  false, false, descriptor_table_protodef_kentik_2fcore_2fv202303_2fannotations_2eproto, "kentik/core/v202303/annotations.proto", 1250,
   &descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto_once, descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto_sccs, descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto_deps, 0, 1,
   schemas, file_default_instances, TableStruct_kentik_2fcore_2fv202303_2fannotations_2eproto::offsets,
   file_level_metadata_kentik_2fcore_2fv202303_2fannotations_2eproto, 0, file_level_enum_descriptors_kentik_2fcore_2fv202303_2fannotations_2eproto, file_level_service_descriptors_kentik_2fcore_2fv202303_2fannotations_2eproto,
@@ -87,6 +89,7 @@ bool ServiceVisibility_IsValid(int value) {
     case 1:
     case 2:
     case 3:
+    case 4:
       return true;
     default:
       return false;
@@ -104,6 +107,7 @@ bool MethodVisibility_IsValid(int value) {
     case 2:
     case 3:
     case 4:
+    case 5:
       return true;
     default:
       return false;

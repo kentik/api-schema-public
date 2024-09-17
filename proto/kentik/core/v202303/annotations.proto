@@ -17,6 +17,8 @@ enum ServiceVisibility {
   SERVICE_VISIBILITY_INTERNAL = 2;
   // public customer facing services
   SERVICE_VISIBILITY_PUBLIC = 3;
+  // public facing endpoints that are only used by kentik services
+  SERVICE_VISIBILITY_PUBLIC_KENTIK = 4;
 }
 
 // {{.Name}}
@@ -31,6 +33,8 @@ enum MethodVisibility {
   METHOD_VISIBILITY_INTERNAL = 3;
   // public customer facing services
   METHOD_VISIBILITY_PUBLIC = 4;
+  // public facing endpoints that are only used by kentik services
+  METHOD_VISIBILITY_PUBLIC_KENTIK = 5;
 }
 
 extend google.protobuf.ServiceOptions {

@@ -65,12 +65,13 @@ enum ServiceVisibility : int {
   SERVICE_VISIBILITY_PROTECTED = 1,
   SERVICE_VISIBILITY_INTERNAL = 2,
   SERVICE_VISIBILITY_PUBLIC = 3,
+  SERVICE_VISIBILITY_PUBLIC_KENTIK = 4,
   ServiceVisibility_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
   ServiceVisibility_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
 };
 bool ServiceVisibility_IsValid(int value);
 constexpr ServiceVisibility ServiceVisibility_MIN = SERVICE_VISIBILITY_PRIVATE;
-constexpr ServiceVisibility ServiceVisibility_MAX = SERVICE_VISIBILITY_PUBLIC;
+constexpr ServiceVisibility ServiceVisibility_MAX = SERVICE_VISIBILITY_PUBLIC_KENTIK;
 constexpr int ServiceVisibility_ARRAYSIZE = ServiceVisibility_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ServiceVisibility_descriptor();
@@ -93,12 +94,13 @@ enum MethodVisibility : int {
   METHOD_VISIBILITY_PROTECTED = 2,
   METHOD_VISIBILITY_INTERNAL = 3,
   METHOD_VISIBILITY_PUBLIC = 4,
+  METHOD_VISIBILITY_PUBLIC_KENTIK = 5,
   MethodVisibility_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
   MethodVisibility_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
 };
 bool MethodVisibility_IsValid(int value);
 constexpr MethodVisibility MethodVisibility_MIN = METHOD_VISIBILITY_UNSPECIFIED;
-constexpr MethodVisibility MethodVisibility_MAX = METHOD_VISIBILITY_PUBLIC;
+constexpr MethodVisibility MethodVisibility_MAX = METHOD_VISIBILITY_PUBLIC_KENTIK;
 constexpr int MethodVisibility_ARRAYSIZE = MethodVisibility_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* MethodVisibility_descriptor();
