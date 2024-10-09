@@ -3391,10 +3391,10 @@ class HealthSettings PROTOBUF_FINAL :
   void _internal_set_http_latency_warning_stddev(float value);
   public:
 
-  // uint32 unhealthy_subtest_threshold = 17[json_name = "unhealthySubtestThreshold", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  void clear_unhealthy_subtest_threshold();
-  ::PROTOBUF_NAMESPACE_ID::uint32 unhealthy_subtest_threshold() const;
-  void set_unhealthy_subtest_threshold(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  // uint32 unhealthy_subtest_threshold = 17[json_name = "unhealthySubtestThreshold", deprecated = true, (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  PROTOBUF_DEPRECATED void clear_unhealthy_subtest_threshold();
+  PROTOBUF_DEPRECATED ::PROTOBUF_NAMESPACE_ID::uint32 unhealthy_subtest_threshold() const;
+  PROTOBUF_DEPRECATED void set_unhealthy_subtest_threshold(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
   ::PROTOBUF_NAMESPACE_ID::uint32 _internal_unhealthy_subtest_threshold() const;
   void _internal_set_unhealthy_subtest_threshold(::PROTOBUF_NAMESPACE_ID::uint32 value);
@@ -17143,7 +17143,7 @@ inline void HealthSettings::set_http_latency_warning_stddev(float value) {
   // @@protoc_insertion_point(field_set:kentik.synthetics.v202202.HealthSettings.http_latency_warning_stddev)
 }
 
-// uint32 unhealthy_subtest_threshold = 17[json_name = "unhealthySubtestThreshold", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+// uint32 unhealthy_subtest_threshold = 17[json_name = "unhealthySubtestThreshold", deprecated = true, (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
 inline void HealthSettings::clear_unhealthy_subtest_threshold() {
   unhealthy_subtest_threshold_ = 0u;
 }

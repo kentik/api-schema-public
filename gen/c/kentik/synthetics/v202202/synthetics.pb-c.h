@@ -441,7 +441,7 @@ struct  Kentik__Synthetics__V202202__HealthSettings
   float jitter_warning_stddev;
   float http_latency_critical_stddev;
   float http_latency_warning_stddev;
-  uint32_t unhealthy_subtest_threshold;
+  uint32_t unhealthy_subtest_threshold PROTOBUF_C__DEPRECATED;
   Kentik__Synthetics__V202202__ActivationSettings *activation;
   uint32_t cert_expiry_warning;
   uint32_t cert_expiry_critical;

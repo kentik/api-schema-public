@@ -4646,7 +4646,7 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202309__health_settin
     offsetof(Kentik__Synthetics__V202309__HealthSettings, unhealthy_subtest_threshold),
     NULL,
     NULL,
-    0,             /* flags */
+    0 | PROTOBUF_C_FIELD_FLAG_DEPRECATED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -4754,7 +4754,7 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202309__health_settin
     offsetof(Kentik__Synthetics__V202309__HealthSettings, per_agent_alerting),
     NULL,
     NULL,
-    0,             /* flags */
+    0 | PROTOBUF_C_FIELD_FLAG_DEPRECATED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {

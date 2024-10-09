@@ -473,7 +473,7 @@ struct  Kentik__Synthetics__V202309__HealthSettings
   float jitter_warning_stddev;
   float http_latency_critical_stddev;
   float http_latency_warning_stddev;
-  uint32_t unhealthy_subtest_threshold;
+  uint32_t unhealthy_subtest_threshold PROTOBUF_C__DEPRECATED;
   Kentik__Synthetics__V202309__ActivationSettings *activation;
   uint32_t cert_expiry_warning;
   uint32_t cert_expiry_critical;
@@ -482,7 +482,7 @@ struct  Kentik__Synthetics__V202309__HealthSettings
   float dns_latency_warning;
   float dns_latency_critical_stddev;
   float dns_latency_warning_stddev;
-  protobuf_c_boolean per_agent_alerting;
+  protobuf_c_boolean per_agent_alerting PROTOBUF_C__DEPRECATED;
   Kentik__Synthetics__V202309__DisabledMetrics *disabled_metrics;
   protobuf_c_boolean health_disabled;
 };

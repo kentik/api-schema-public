@@ -722,6 +722,7 @@ message HealthSettings {
     }
   ];
   uint32 unhealthy_subtest_threshold = 17 [
+    deprecated = true,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Number of tasks (across all agents) that must report unhealthy status in order for alarm to be triggered"
     }
