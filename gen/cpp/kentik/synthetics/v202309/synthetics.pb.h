@@ -58,7 +58,7 @@ struct TableStruct_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[73]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[74]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -257,6 +257,9 @@ extern TestResultsDefaultTypeInternal _TestResults_default_instance_;
 class TestSettings;
 class TestSettingsDefaultTypeInternal;
 extern TestSettingsDefaultTypeInternal _TestSettings_default_instance_;
+class TestThroughputSettings;
+class TestThroughputSettingsDefaultTypeInternal;
+extern TestThroughputSettingsDefaultTypeInternal _TestThroughputSettings_default_instance_;
 class TestTraceSettings;
 class TestTraceSettingsDefaultTypeInternal;
 extern TestTraceSettingsDefaultTypeInternal _TestTraceSettings_default_instance_;
@@ -354,6 +357,7 @@ template<> ::kentik::synthetics::v202309::Test* Arena::CreateMaybeMessage<::kent
 template<> ::kentik::synthetics::v202309::TestPingSettings* Arena::CreateMaybeMessage<::kentik::synthetics::v202309::TestPingSettings>(Arena*);
 template<> ::kentik::synthetics::v202309::TestResults* Arena::CreateMaybeMessage<::kentik::synthetics::v202309::TestResults>(Arena*);
 template<> ::kentik::synthetics::v202309::TestSettings* Arena::CreateMaybeMessage<::kentik::synthetics::v202309::TestSettings>(Arena*);
+template<> ::kentik::synthetics::v202309::TestThroughputSettings* Arena::CreateMaybeMessage<::kentik::synthetics::v202309::TestThroughputSettings>(Arena*);
 template<> ::kentik::synthetics::v202309::TestTraceSettings* Arena::CreateMaybeMessage<::kentik::synthetics::v202309::TestTraceSettings>(Arena*);
 template<> ::kentik::synthetics::v202309::TraceHop* Arena::CreateMaybeMessage<::kentik::synthetics::v202309::TraceHop>(Arena*);
 template<> ::kentik::synthetics::v202309::UpdateAgentAlertRequest* Arena::CreateMaybeMessage<::kentik::synthetics::v202309::UpdateAgentAlertRequest>(Arena*);
@@ -636,6 +640,7 @@ class DisabledMetrics PROTOBUF_FINAL :
     kDnsLatencyFieldNumber = 9,
     kDnsCodesFieldNumber = 10,
     kDnsIpsFieldNumber = 11,
+    kThroughputBandwidthFieldNumber = 12,
   };
   // bool ping_latency = 1[json_name = "pingLatency"];
   void clear_ping_latency();
@@ -736,6 +741,15 @@ class DisabledMetrics PROTOBUF_FINAL :
   void _internal_set_dns_ips(bool value);
   public:
 
+  // bool throughput_bandwidth = 12[json_name = "throughputBandwidth"];
+  void clear_throughput_bandwidth();
+  bool throughput_bandwidth() const;
+  void set_throughput_bandwidth(bool value);
+  private:
+  bool _internal_throughput_bandwidth() const;
+  void _internal_set_throughput_bandwidth(bool value);
+  public:
+
   // @@protoc_insertion_point(class_scope:kentik.synthetics.v202309.DisabledMetrics)
  private:
   class _Internal;
@@ -754,6 +768,7 @@ class DisabledMetrics PROTOBUF_FINAL :
   bool dns_latency_;
   bool dns_codes_;
   bool dns_ips_;
+  bool throughput_bandwidth_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto;
 };
@@ -2260,6 +2275,7 @@ class TestSettings PROTOBUF_FINAL :
     kHealthSettingsFieldNumber = 12,
     kPingFieldNumber = 13,
     kTraceFieldNumber = 14,
+    kThroughputFieldNumber = 20,
     kPeriodFieldNumber = 15,
     kFamilyFieldNumber = 16,
     kHostnameFieldNumber = 1,
@@ -2423,6 +2439,24 @@ class TestSettings PROTOBUF_FINAL :
   void unsafe_arena_set_allocated_trace(
       ::kentik::synthetics::v202309::TestTraceSettings* trace);
   ::kentik::synthetics::v202309::TestTraceSettings* unsafe_arena_release_trace();
+
+  // .kentik.synthetics.v202309.TestThroughputSettings throughput = 20[json_name = "throughput", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_throughput() const;
+  private:
+  bool _internal_has_throughput() const;
+  public:
+  void clear_throughput();
+  const ::kentik::synthetics::v202309::TestThroughputSettings& throughput() const;
+  ::kentik::synthetics::v202309::TestThroughputSettings* release_throughput();
+  ::kentik::synthetics::v202309::TestThroughputSettings* mutable_throughput();
+  void set_allocated_throughput(::kentik::synthetics::v202309::TestThroughputSettings* throughput);
+  private:
+  const ::kentik::synthetics::v202309::TestThroughputSettings& _internal_throughput() const;
+  ::kentik::synthetics::v202309::TestThroughputSettings* _internal_mutable_throughput();
+  public:
+  void unsafe_arena_set_allocated_throughput(
+      ::kentik::synthetics::v202309::TestThroughputSettings* throughput);
+  ::kentik::synthetics::v202309::TestThroughputSettings* unsafe_arena_release_throughput();
 
   // uint32 period = 15[json_name = "period", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   void clear_period();
@@ -2651,6 +2685,7 @@ class TestSettings PROTOBUF_FINAL :
   ::kentik::synthetics::v202309::HealthSettings* health_settings_;
   ::kentik::synthetics::v202309::TestPingSettings* ping_;
   ::kentik::synthetics::v202309::TestTraceSettings* trace_;
+  ::kentik::synthetics::v202309::TestThroughputSettings* throughput_;
   ::PROTOBUF_NAMESPACE_ID::uint32 period_;
   int family_;
   union DefinitionUnion {
@@ -3100,6 +3135,203 @@ class TestTraceSettings PROTOBUF_FINAL :
 };
 // -------------------------------------------------------------------
 
+class TestThroughputSettings PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:kentik.synthetics.v202309.TestThroughputSettings) */ {
+ public:
+  inline TestThroughputSettings() : TestThroughputSettings(nullptr) {};
+  virtual ~TestThroughputSettings();
+
+  TestThroughputSettings(const TestThroughputSettings& from);
+  TestThroughputSettings(TestThroughputSettings&& from) noexcept
+    : TestThroughputSettings() {
+    *this = ::std::move(from);
+  }
+
+  inline TestThroughputSettings& operator=(const TestThroughputSettings& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline TestThroughputSettings& operator=(TestThroughputSettings&& from) noexcept {
+    if (GetArena() == from.GetArena()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const TestThroughputSettings& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const TestThroughputSettings* internal_default_instance() {
+    return reinterpret_cast<const TestThroughputSettings*>(
+               &_TestThroughputSettings_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    8;
+
+  friend void swap(TestThroughputSettings& a, TestThroughputSettings& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(TestThroughputSettings* other) {
+    if (other == this) return;
+    if (GetArena() == other->GetArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(TestThroughputSettings* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline TestThroughputSettings* New() const final {
+    return CreateMaybeMessage<TestThroughputSettings>(nullptr);
+  }
+
+  TestThroughputSettings* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<TestThroughputSettings>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const TestThroughputSettings& from);
+  void MergeFrom(const TestThroughputSettings& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TestThroughputSettings* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "kentik.synthetics.v202309.TestThroughputSettings";
+  }
+  protected:
+  explicit TestThroughputSettings(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto);
+    return ::descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kProtocolFieldNumber = 5,
+    kPortFieldNumber = 1,
+    kOmitFieldNumber = 2,
+    kDurationFieldNumber = 3,
+    kBandwidthFieldNumber = 4,
+  };
+  // string protocol = 5[json_name = "protocol", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_protocol();
+  const std::string& protocol() const;
+  void set_protocol(const std::string& value);
+  void set_protocol(std::string&& value);
+  void set_protocol(const char* value);
+  void set_protocol(const char* value, size_t size);
+  std::string* mutable_protocol();
+  std::string* release_protocol();
+  void set_allocated_protocol(std::string* protocol);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_protocol();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_protocol(
+      std::string* protocol);
+  private:
+  const std::string& _internal_protocol() const;
+  void _internal_set_protocol(const std::string& value);
+  std::string* _internal_mutable_protocol();
+  public:
+
+  // uint32 port = 1[json_name = "port", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_port();
+  ::PROTOBUF_NAMESPACE_ID::uint32 port() const;
+  void set_port(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_port() const;
+  void _internal_set_port(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  public:
+
+  // uint32 omit = 2[json_name = "omit", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_omit();
+  ::PROTOBUF_NAMESPACE_ID::uint32 omit() const;
+  void set_omit(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_omit() const;
+  void _internal_set_omit(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  public:
+
+  // uint32 duration = 3[json_name = "duration", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_duration();
+  ::PROTOBUF_NAMESPACE_ID::uint32 duration() const;
+  void set_duration(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_duration() const;
+  void _internal_set_duration(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  public:
+
+  // uint32 bandwidth = 4[json_name = "bandwidth", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_bandwidth();
+  ::PROTOBUF_NAMESPACE_ID::uint32 bandwidth() const;
+  void set_bandwidth(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_bandwidth() const;
+  void _internal_set_bandwidth(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:kentik.synthetics.v202309.TestThroughputSettings)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr protocol_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 port_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 omit_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 duration_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 bandwidth_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto;
+};
+// -------------------------------------------------------------------
+
 class ActivationSettings PROTOBUF_FINAL :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:kentik.synthetics.v202309.ActivationSettings) */ {
  public:
@@ -3142,7 +3374,7 @@ class ActivationSettings PROTOBUF_FINAL :
                &_ActivationSettings_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    9;
 
   friend void swap(ActivationSettings& a, ActivationSettings& b) {
     a.Swap(&b);
@@ -3376,7 +3608,7 @@ class HealthSettings PROTOBUF_FINAL :
                &_HealthSettings_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    10;
 
   friend void swap(HealthSettings& a, HealthSettings& b) {
     a.Swap(&b);
@@ -3475,6 +3707,10 @@ class HealthSettings PROTOBUF_FINAL :
     kDnsLatencyWarningStddevFieldNumber = 25,
     kPerAgentAlertingFieldNumber = 26,
     kHealthDisabledFieldNumber = 28,
+    kThroughputCriticalFieldNumber = 29,
+    kThroughputWarningFieldNumber = 30,
+    kThroughputCriticalStddevFieldNumber = 31,
+    kThroughputWarningStddevFieldNumber = 32,
   };
   // repeated uint32 http_valid_codes = 9[json_name = "httpValidCodes", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   int http_valid_codes_size() const;
@@ -3788,6 +4024,42 @@ class HealthSettings PROTOBUF_FINAL :
   void _internal_set_health_disabled(bool value);
   public:
 
+  // float throughput_critical = 29[json_name = "throughputCritical", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_throughput_critical();
+  float throughput_critical() const;
+  void set_throughput_critical(float value);
+  private:
+  float _internal_throughput_critical() const;
+  void _internal_set_throughput_critical(float value);
+  public:
+
+  // float throughput_warning = 30[json_name = "throughputWarning", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_throughput_warning();
+  float throughput_warning() const;
+  void set_throughput_warning(float value);
+  private:
+  float _internal_throughput_warning() const;
+  void _internal_set_throughput_warning(float value);
+  public:
+
+  // float throughput_critical_stddev = 31[json_name = "throughputCriticalStddev", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_throughput_critical_stddev();
+  float throughput_critical_stddev() const;
+  void set_throughput_critical_stddev(float value);
+  private:
+  float _internal_throughput_critical_stddev() const;
+  void _internal_set_throughput_critical_stddev(float value);
+  public:
+
+  // float throughput_warning_stddev = 32[json_name = "throughputWarningStddev", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_throughput_warning_stddev();
+  float throughput_warning_stddev() const;
+  void set_throughput_warning_stddev(float value);
+  private:
+  float _internal_throughput_warning_stddev() const;
+  void _internal_set_throughput_warning_stddev(float value);
+  public:
+
   // @@protoc_insertion_point(class_scope:kentik.synthetics.v202309.HealthSettings)
  private:
   class _Internal;
@@ -3825,6 +4097,10 @@ class HealthSettings PROTOBUF_FINAL :
   float dns_latency_warning_stddev_;
   bool per_agent_alerting_;
   bool health_disabled_;
+  float throughput_critical_;
+  float throughput_warning_;
+  float throughput_critical_stddev_;
+  float throughput_warning_stddev_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto;
 };
@@ -3872,7 +4148,7 @@ class HostnameTest PROTOBUF_FINAL :
                &_HostnameTest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    11;
 
   friend void swap(HostnameTest& a, HostnameTest& b) {
     a.Swap(&b);
@@ -4025,7 +4301,7 @@ class IpTest PROTOBUF_FINAL :
                &_IpTest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    12;
 
   friend void swap(IpTest& a, IpTest& b) {
     a.Swap(&b);
@@ -4188,7 +4464,7 @@ class AgentTest PROTOBUF_FINAL :
                &_AgentTest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    13;
 
   friend void swap(AgentTest& a, AgentTest& b) {
     a.Swap(&b);
@@ -4363,7 +4639,7 @@ class FlowTest PROTOBUF_FINAL :
                &_FlowTest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    14;
 
   friend void swap(FlowTest& a, FlowTest& b) {
     a.Swap(&b);
@@ -4630,7 +4906,7 @@ class DnsTest PROTOBUF_FINAL :
                &_DnsTest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    15;
 
   friend void swap(DnsTest& a, DnsTest& b) {
     a.Swap(&b);
@@ -4826,7 +5102,7 @@ public:
   private:
   static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
     ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto);
-    return ::descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.file_level_metadata[15];
+    return ::descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.file_level_metadata[16];
   }
 
   public:
@@ -4876,7 +5152,7 @@ class UrlTest PROTOBUF_FINAL :
                &_UrlTest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    17;
 
   friend void swap(UrlTest& a, UrlTest& b) {
     a.Swap(&b);
@@ -5114,7 +5390,7 @@ public:
   private:
   static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
     ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto);
-    return ::descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.file_level_metadata[17];
+    return ::descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.file_level_metadata[18];
   }
 
   public:
@@ -5148,7 +5424,7 @@ public:
   private:
   static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
     ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto);
-    return ::descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.file_level_metadata[18];
+    return ::descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.file_level_metadata[19];
   }
 
   public:
@@ -5198,7 +5474,7 @@ class PageLoadTest PROTOBUF_FINAL :
                &_PageLoadTest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    19;
+    20;
 
   friend void swap(PageLoadTest& a, PageLoadTest& b) {
     a.Swap(&b);
@@ -5422,7 +5698,7 @@ class NetworkMeshTest PROTOBUF_FINAL :
                &_NetworkMeshTest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    20;
+    21;
 
   friend void swap(NetworkMeshTest& a, NetworkMeshTest& b) {
     a.Swap(&b);
@@ -5559,7 +5835,7 @@ class MetricData PROTOBUF_FINAL :
                &_MetricData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    21;
+    22;
 
   friend void swap(MetricData& a, MetricData& b) {
     a.Swap(&b);
@@ -5745,7 +6021,7 @@ class PacketLossData PROTOBUF_FINAL :
                &_PacketLossData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    22;
+    23;
 
   friend void swap(PacketLossData& a, PacketLossData& b) {
     a.Swap(&b);
@@ -5909,7 +6185,7 @@ class PingResults PROTOBUF_FINAL :
                &_PingResults_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    23;
+    24;
 
   friend void swap(PingResults& a, PingResults& b) {
     a.Swap(&b);
@@ -6149,7 +6425,7 @@ class HTTPResponseData PROTOBUF_FINAL :
                &_HTTPResponseData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    24;
+    25;
 
   friend void swap(HTTPResponseData& a, HTTPResponseData& b) {
     a.Swap(&b);
@@ -6324,7 +6600,7 @@ class HTTPResults PROTOBUF_FINAL :
                &_HTTPResults_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    25;
+    26;
 
   friend void swap(HTTPResults& a, HTTPResults& b) {
     a.Swap(&b);
@@ -6544,7 +6820,7 @@ class DNSResponseData PROTOBUF_FINAL :
                &_DNSResponseData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    26;
+    27;
 
   friend void swap(DNSResponseData& a, DNSResponseData& b) {
     a.Swap(&b);
@@ -6708,7 +6984,7 @@ class DNSResults PROTOBUF_FINAL :
                &_DNSResults_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    27;
+    28;
 
   friend void swap(DNSResults& a, DNSResults& b) {
     a.Swap(&b);
@@ -6935,7 +7211,7 @@ class TaskResults PROTOBUF_FINAL :
                &_TaskResults_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    28;
+    29;
 
   friend void swap(TaskResults& a, TaskResults& b) {
     a.Swap(&b);
@@ -7161,7 +7437,7 @@ class AgentResults PROTOBUF_FINAL :
                &_AgentResults_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    29;
+    30;
 
   friend void swap(AgentResults& a, AgentResults& b) {
     a.Swap(&b);
@@ -7361,7 +7637,7 @@ class TestResults PROTOBUF_FINAL :
                &_TestResults_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    30;
+    31;
 
   friend void swap(TestResults& a, TestResults& b) {
     a.Swap(&b);
@@ -7581,7 +7857,7 @@ class Stats PROTOBUF_FINAL :
                &_Stats_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    31;
+    32;
 
   friend void swap(Stats& a, Stats& b) {
     a.Swap(&b);
@@ -7740,7 +8016,7 @@ class Location PROTOBUF_FINAL :
                &_Location_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    32;
+    33;
 
   friend void swap(Location& a, Location& b) {
     a.Swap(&b);
@@ -7969,7 +8245,7 @@ class NetNode PROTOBUF_FINAL :
                &_NetNode_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    33;
+    34;
 
   friend void swap(NetNode& a, NetNode& b) {
     a.Swap(&b);
@@ -8261,7 +8537,7 @@ class TraceHop PROTOBUF_FINAL :
                &_TraceHop_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    34;
+    35;
 
   friend void swap(TraceHop& a, TraceHop& b) {
     a.Swap(&b);
@@ -8425,7 +8701,7 @@ class PathTrace PROTOBUF_FINAL :
                &_PathTrace_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    35;
+    36;
 
   friend void swap(PathTrace& a, PathTrace& b) {
     a.Swap(&b);
@@ -8607,7 +8883,7 @@ class Path PROTOBUF_FINAL :
                &_Path_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    36;
+    37;
 
   friend void swap(Path& a, Path& b) {
     a.Swap(&b);
@@ -8858,7 +9134,7 @@ class GetResultsForTestsRequest PROTOBUF_FINAL :
                &_GetResultsForTestsRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    37;
+    38;
 
   friend void swap(GetResultsForTestsRequest& a, GetResultsForTestsRequest& b) {
     a.Swap(&b);
@@ -9113,7 +9389,7 @@ class GetResultsForTestsResponse PROTOBUF_FINAL :
                &_GetResultsForTestsResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    38;
+    39;
 
   friend void swap(GetResultsForTestsResponse& a, GetResultsForTestsResponse& b) {
     a.Swap(&b);
@@ -9259,7 +9535,7 @@ class GetTraceForTestRequest PROTOBUF_FINAL :
                &_GetTraceForTestRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    39;
+    40;
 
   friend void swap(GetTraceForTestRequest& a, GetTraceForTestRequest& b) {
     a.Swap(&b);
@@ -9486,7 +9762,7 @@ public:
   private:
   static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
     ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto);
-    return ::descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.file_level_metadata[40];
+    return ::descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.file_level_metadata[41];
   }
 
   public:
@@ -9536,7 +9812,7 @@ class GetTraceForTestResponse PROTOBUF_FINAL :
                &_GetTraceForTestResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    41;
+    42;
 
   friend void swap(GetTraceForTestResponse& a, GetTraceForTestResponse& b) {
     a.Swap(&b);
@@ -9707,7 +9983,7 @@ class ListAgentsRequest PROTOBUF_FINAL :
                &_ListAgentsRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    42;
+    43;
 
   friend void swap(ListAgentsRequest& a, ListAgentsRequest& b) {
     a.Swap(&b);
@@ -9831,7 +10107,7 @@ class ListAgentsResponse PROTOBUF_FINAL :
                &_ListAgentsResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    43;
+    44;
 
   friend void swap(ListAgentsResponse& a, ListAgentsResponse& b) {
     a.Swap(&b);
@@ -9988,7 +10264,7 @@ class GetAgentRequest PROTOBUF_FINAL :
                &_GetAgentRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    44;
+    45;
 
   friend void swap(GetAgentRequest& a, GetAgentRequest& b) {
     a.Swap(&b);
@@ -10141,7 +10417,7 @@ class GetAgentResponse PROTOBUF_FINAL :
                &_GetAgentResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    45;
+    46;
 
   friend void swap(GetAgentResponse& a, GetAgentResponse& b) {
     a.Swap(&b);
@@ -10287,7 +10563,7 @@ class UpdateAgentRequest PROTOBUF_FINAL :
                &_UpdateAgentRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    46;
+    47;
 
   friend void swap(UpdateAgentRequest& a, UpdateAgentRequest& b) {
     a.Swap(&b);
@@ -10433,7 +10709,7 @@ class UpdateAgentResponse PROTOBUF_FINAL :
                &_UpdateAgentResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    47;
+    48;
 
   friend void swap(UpdateAgentResponse& a, UpdateAgentResponse& b) {
     a.Swap(&b);
@@ -10579,7 +10855,7 @@ class DeleteAgentRequest PROTOBUF_FINAL :
                &_DeleteAgentRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    48;
+    49;
 
   friend void swap(DeleteAgentRequest& a, DeleteAgentRequest& b) {
     a.Swap(&b);
@@ -10732,7 +11008,7 @@ class DeleteAgentResponse PROTOBUF_FINAL :
                &_DeleteAgentResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    49;
+    50;
 
   friend void swap(DeleteAgentResponse& a, DeleteAgentResponse& b) {
     a.Swap(&b);
@@ -10856,7 +11132,7 @@ class ListTestsRequest PROTOBUF_FINAL :
                &_ListTestsRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    50;
+    51;
 
   friend void swap(ListTestsRequest& a, ListTestsRequest& b) {
     a.Swap(&b);
@@ -10980,7 +11256,7 @@ class ListTestsResponse PROTOBUF_FINAL :
                &_ListTestsResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    51;
+    52;
 
   friend void swap(ListTestsResponse& a, ListTestsResponse& b) {
     a.Swap(&b);
@@ -11137,7 +11413,7 @@ class CreateTestRequest PROTOBUF_FINAL :
                &_CreateTestRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    52;
+    53;
 
   friend void swap(CreateTestRequest& a, CreateTestRequest& b) {
     a.Swap(&b);
@@ -11283,7 +11559,7 @@ class CreateTestResponse PROTOBUF_FINAL :
                &_CreateTestResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    53;
+    54;
 
   friend void swap(CreateTestResponse& a, CreateTestResponse& b) {
     a.Swap(&b);
@@ -11429,7 +11705,7 @@ class GetTestRequest PROTOBUF_FINAL :
                &_GetTestRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    54;
+    55;
 
   friend void swap(GetTestRequest& a, GetTestRequest& b) {
     a.Swap(&b);
@@ -11582,7 +11858,7 @@ class GetTestResponse PROTOBUF_FINAL :
                &_GetTestResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    55;
+    56;
 
   friend void swap(GetTestResponse& a, GetTestResponse& b) {
     a.Swap(&b);
@@ -11728,7 +12004,7 @@ class UpdateTestRequest PROTOBUF_FINAL :
                &_UpdateTestRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    56;
+    57;
 
   friend void swap(UpdateTestRequest& a, UpdateTestRequest& b) {
     a.Swap(&b);
@@ -11874,7 +12150,7 @@ class UpdateTestResponse PROTOBUF_FINAL :
                &_UpdateTestResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    57;
+    58;
 
   friend void swap(UpdateTestResponse& a, UpdateTestResponse& b) {
     a.Swap(&b);
@@ -12020,7 +12296,7 @@ class DeleteTestRequest PROTOBUF_FINAL :
                &_DeleteTestRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    58;
+    59;
 
   friend void swap(DeleteTestRequest& a, DeleteTestRequest& b) {
     a.Swap(&b);
@@ -12173,7 +12449,7 @@ class DeleteTestResponse PROTOBUF_FINAL :
                &_DeleteTestResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    59;
+    60;
 
   friend void swap(DeleteTestResponse& a, DeleteTestResponse& b) {
     a.Swap(&b);
@@ -12297,7 +12573,7 @@ class SetTestStatusRequest PROTOBUF_FINAL :
                &_SetTestStatusRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    60;
+    61;
 
   friend void swap(SetTestStatusRequest& a, SetTestStatusRequest& b) {
     a.Swap(&b);
@@ -12461,7 +12737,7 @@ class SetTestStatusResponse PROTOBUF_FINAL :
                &_SetTestStatusResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    61;
+    62;
 
   friend void swap(SetTestStatusResponse& a, SetTestStatusResponse& b) {
     a.Swap(&b);
@@ -12585,7 +12861,7 @@ class AgentAlert PROTOBUF_FINAL :
                &_AgentAlert_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    62;
+    63;
 
   friend void swap(AgentAlert& a, AgentAlert& b) {
     a.Swap(&b);
@@ -12829,7 +13105,7 @@ class CreateAgentAlertRequest PROTOBUF_FINAL :
                &_CreateAgentAlertRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    63;
+    64;
 
   friend void swap(CreateAgentAlertRequest& a, CreateAgentAlertRequest& b) {
     a.Swap(&b);
@@ -13019,7 +13295,7 @@ class CreateAgentAlertResponse PROTOBUF_FINAL :
                &_CreateAgentAlertResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    64;
+    65;
 
   friend void swap(CreateAgentAlertResponse& a, CreateAgentAlertResponse& b) {
     a.Swap(&b);
@@ -13165,7 +13441,7 @@ class UpdateAgentAlertRequest PROTOBUF_FINAL :
                &_UpdateAgentAlertRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    65;
+    66;
 
   friend void swap(UpdateAgentAlertRequest& a, UpdateAgentAlertRequest& b) {
     a.Swap(&b);
@@ -13355,7 +13631,7 @@ class UpdateAgentAlertResponse PROTOBUF_FINAL :
                &_UpdateAgentAlertResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    66;
+    67;
 
   friend void swap(UpdateAgentAlertResponse& a, UpdateAgentAlertResponse& b) {
     a.Swap(&b);
@@ -13501,7 +13777,7 @@ class GetAgentAlertRequest PROTOBUF_FINAL :
                &_GetAgentAlertRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    67;
+    68;
 
   friend void swap(GetAgentAlertRequest& a, GetAgentAlertRequest& b) {
     a.Swap(&b);
@@ -13654,7 +13930,7 @@ class GetAgentAlertResponse PROTOBUF_FINAL :
                &_GetAgentAlertResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    68;
+    69;
 
   friend void swap(GetAgentAlertResponse& a, GetAgentAlertResponse& b) {
     a.Swap(&b);
@@ -13800,7 +14076,7 @@ class ListAgentAlertsRequest PROTOBUF_FINAL :
                &_ListAgentAlertsRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    69;
+    70;
 
   friend void swap(ListAgentAlertsRequest& a, ListAgentAlertsRequest& b) {
     a.Swap(&b);
@@ -13952,7 +14228,7 @@ class ListAgentAlertsResponse PROTOBUF_FINAL :
                &_ListAgentAlertsResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    70;
+    71;
 
   friend void swap(ListAgentAlertsResponse& a, ListAgentAlertsResponse& b) {
     a.Swap(&b);
@@ -14098,7 +14374,7 @@ class DeleteAgentAlertRequest PROTOBUF_FINAL :
                &_DeleteAgentAlertRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    71;
+    72;
 
   friend void swap(DeleteAgentAlertRequest& a, DeleteAgentAlertRequest& b) {
     a.Swap(&b);
@@ -14251,7 +14527,7 @@ class DeleteAgentAlertResponse PROTOBUF_FINAL :
                &_DeleteAgentAlertResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    72;
+    73;
 
   friend void swap(DeleteAgentAlertResponse& a, DeleteAgentAlertResponse& b) {
     a.Swap(&b);
@@ -14560,6 +14836,26 @@ inline void DisabledMetrics::_internal_set_dns_ips(bool value) {
 inline void DisabledMetrics::set_dns_ips(bool value) {
   _internal_set_dns_ips(value);
   // @@protoc_insertion_point(field_set:kentik.synthetics.v202309.DisabledMetrics.dns_ips)
+}
+
+// bool throughput_bandwidth = 12[json_name = "throughputBandwidth"];
+inline void DisabledMetrics::clear_throughput_bandwidth() {
+  throughput_bandwidth_ = false;
+}
+inline bool DisabledMetrics::_internal_throughput_bandwidth() const {
+  return throughput_bandwidth_;
+}
+inline bool DisabledMetrics::throughput_bandwidth() const {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202309.DisabledMetrics.throughput_bandwidth)
+  return _internal_throughput_bandwidth();
+}
+inline void DisabledMetrics::_internal_set_throughput_bandwidth(bool value) {
+  
+  throughput_bandwidth_ = value;
+}
+inline void DisabledMetrics::set_throughput_bandwidth(bool value) {
+  _internal_set_throughput_bandwidth(value);
+  // @@protoc_insertion_point(field_set:kentik.synthetics.v202309.DisabledMetrics.throughput_bandwidth)
 }
 
 // -------------------------------------------------------------------
@@ -18411,6 +18707,87 @@ inline void TestSettings::unsafe_arena_set_allocated_notes(
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.synthetics.v202309.TestSettings.notes)
 }
 
+// .kentik.synthetics.v202309.TestThroughputSettings throughput = 20[json_name = "throughput", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool TestSettings::_internal_has_throughput() const {
+  return this != internal_default_instance() && throughput_ != nullptr;
+}
+inline bool TestSettings::has_throughput() const {
+  return _internal_has_throughput();
+}
+inline void TestSettings::clear_throughput() {
+  if (GetArena() == nullptr && throughput_ != nullptr) {
+    delete throughput_;
+  }
+  throughput_ = nullptr;
+}
+inline const ::kentik::synthetics::v202309::TestThroughputSettings& TestSettings::_internal_throughput() const {
+  const ::kentik::synthetics::v202309::TestThroughputSettings* p = throughput_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::kentik::synthetics::v202309::TestThroughputSettings*>(
+      &::kentik::synthetics::v202309::_TestThroughputSettings_default_instance_);
+}
+inline const ::kentik::synthetics::v202309::TestThroughputSettings& TestSettings::throughput() const {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202309.TestSettings.throughput)
+  return _internal_throughput();
+}
+inline void TestSettings::unsafe_arena_set_allocated_throughput(
+    ::kentik::synthetics::v202309::TestThroughputSettings* throughput) {
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(throughput_);
+  }
+  throughput_ = throughput;
+  if (throughput) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.synthetics.v202309.TestSettings.throughput)
+}
+inline ::kentik::synthetics::v202309::TestThroughputSettings* TestSettings::release_throughput() {
+  auto temp = unsafe_arena_release_throughput();
+  if (GetArena() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+  return temp;
+}
+inline ::kentik::synthetics::v202309::TestThroughputSettings* TestSettings::unsafe_arena_release_throughput() {
+  // @@protoc_insertion_point(field_release:kentik.synthetics.v202309.TestSettings.throughput)
+  
+  ::kentik::synthetics::v202309::TestThroughputSettings* temp = throughput_;
+  throughput_ = nullptr;
+  return temp;
+}
+inline ::kentik::synthetics::v202309::TestThroughputSettings* TestSettings::_internal_mutable_throughput() {
+  
+  if (throughput_ == nullptr) {
+    auto* p = CreateMaybeMessage<::kentik::synthetics::v202309::TestThroughputSettings>(GetArena());
+    throughput_ = p;
+  }
+  return throughput_;
+}
+inline ::kentik::synthetics::v202309::TestThroughputSettings* TestSettings::mutable_throughput() {
+  // @@protoc_insertion_point(field_mutable:kentik.synthetics.v202309.TestSettings.throughput)
+  return _internal_mutable_throughput();
+}
+inline void TestSettings::set_allocated_throughput(::kentik::synthetics::v202309::TestThroughputSettings* throughput) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
+  if (message_arena == nullptr) {
+    delete throughput_;
+  }
+  if (throughput) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::GetArena(throughput);
+    if (message_arena != submessage_arena) {
+      throughput = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, throughput, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  throughput_ = throughput;
+  // @@protoc_insertion_point(field_set_allocated:kentik.synthetics.v202309.TestSettings.throughput)
+}
+
 inline bool TestSettings::has_definition() const {
   return definition_case() != DEFINITION_NOT_SET;
 }
@@ -18808,6 +19185,171 @@ inline void TestTraceSettings::_internal_set_dscp(::PROTOBUF_NAMESPACE_ID::uint3
 inline void TestTraceSettings::set_dscp(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_set_dscp(value);
   // @@protoc_insertion_point(field_set:kentik.synthetics.v202309.TestTraceSettings.dscp)
+}
+
+// -------------------------------------------------------------------
+
+// TestThroughputSettings
+
+// uint32 port = 1[json_name = "port", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void TestThroughputSettings::clear_port() {
+  port_ = 0u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 TestThroughputSettings::_internal_port() const {
+  return port_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 TestThroughputSettings::port() const {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202309.TestThroughputSettings.port)
+  return _internal_port();
+}
+inline void TestThroughputSettings::_internal_set_port(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  
+  port_ = value;
+}
+inline void TestThroughputSettings::set_port(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_port(value);
+  // @@protoc_insertion_point(field_set:kentik.synthetics.v202309.TestThroughputSettings.port)
+}
+
+// uint32 omit = 2[json_name = "omit", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void TestThroughputSettings::clear_omit() {
+  omit_ = 0u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 TestThroughputSettings::_internal_omit() const {
+  return omit_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 TestThroughputSettings::omit() const {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202309.TestThroughputSettings.omit)
+  return _internal_omit();
+}
+inline void TestThroughputSettings::_internal_set_omit(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  
+  omit_ = value;
+}
+inline void TestThroughputSettings::set_omit(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_omit(value);
+  // @@protoc_insertion_point(field_set:kentik.synthetics.v202309.TestThroughputSettings.omit)
+}
+
+// uint32 duration = 3[json_name = "duration", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void TestThroughputSettings::clear_duration() {
+  duration_ = 0u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 TestThroughputSettings::_internal_duration() const {
+  return duration_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 TestThroughputSettings::duration() const {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202309.TestThroughputSettings.duration)
+  return _internal_duration();
+}
+inline void TestThroughputSettings::_internal_set_duration(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  
+  duration_ = value;
+}
+inline void TestThroughputSettings::set_duration(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_duration(value);
+  // @@protoc_insertion_point(field_set:kentik.synthetics.v202309.TestThroughputSettings.duration)
+}
+
+// uint32 bandwidth = 4[json_name = "bandwidth", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void TestThroughputSettings::clear_bandwidth() {
+  bandwidth_ = 0u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 TestThroughputSettings::_internal_bandwidth() const {
+  return bandwidth_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 TestThroughputSettings::bandwidth() const {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202309.TestThroughputSettings.bandwidth)
+  return _internal_bandwidth();
+}
+inline void TestThroughputSettings::_internal_set_bandwidth(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  
+  bandwidth_ = value;
+}
+inline void TestThroughputSettings::set_bandwidth(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_bandwidth(value);
+  // @@protoc_insertion_point(field_set:kentik.synthetics.v202309.TestThroughputSettings.bandwidth)
+}
+
+// string protocol = 5[json_name = "protocol", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void TestThroughputSettings::clear_protocol() {
+  protocol_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline const std::string& TestThroughputSettings::protocol() const {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202309.TestThroughputSettings.protocol)
+  return _internal_protocol();
+}
+inline void TestThroughputSettings::set_protocol(const std::string& value) {
+  _internal_set_protocol(value);
+  // @@protoc_insertion_point(field_set:kentik.synthetics.v202309.TestThroughputSettings.protocol)
+}
+inline std::string* TestThroughputSettings::mutable_protocol() {
+  // @@protoc_insertion_point(field_mutable:kentik.synthetics.v202309.TestThroughputSettings.protocol)
+  return _internal_mutable_protocol();
+}
+inline const std::string& TestThroughputSettings::_internal_protocol() const {
+  return protocol_.Get();
+}
+inline void TestThroughputSettings::_internal_set_protocol(const std::string& value) {
+  
+  protocol_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void TestThroughputSettings::set_protocol(std::string&& value) {
+  
+  protocol_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:kentik.synthetics.v202309.TestThroughputSettings.protocol)
+}
+inline void TestThroughputSettings::set_protocol(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  protocol_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:kentik.synthetics.v202309.TestThroughputSettings.protocol)
+}
+inline void TestThroughputSettings::set_protocol(const char* value,
+    size_t size) {
+  
+  protocol_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:kentik.synthetics.v202309.TestThroughputSettings.protocol)
+}
+inline std::string* TestThroughputSettings::_internal_mutable_protocol() {
+  
+  return protocol_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* TestThroughputSettings::release_protocol() {
+  // @@protoc_insertion_point(field_release:kentik.synthetics.v202309.TestThroughputSettings.protocol)
+  return protocol_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void TestThroughputSettings::set_allocated_protocol(std::string* protocol) {
+  if (protocol != nullptr) {
+    
+  } else {
+    
+  }
+  protocol_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), protocol,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:kentik.synthetics.v202309.TestThroughputSettings.protocol)
+}
+inline std::string* TestThroughputSettings::unsafe_arena_release_protocol() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:kentik.synthetics.v202309.TestThroughputSettings.protocol)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  
+  return protocol_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void TestThroughputSettings::unsafe_arena_set_allocated_protocol(
+    std::string* protocol) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (protocol != nullptr) {
+    
+  } else {
+    
+  }
+  protocol_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      protocol, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.synthetics.v202309.TestThroughputSettings.protocol)
 }
 
 // -------------------------------------------------------------------
@@ -19937,6 +20479,86 @@ inline void HealthSettings::_internal_set_health_disabled(bool value) {
 inline void HealthSettings::set_health_disabled(bool value) {
   _internal_set_health_disabled(value);
   // @@protoc_insertion_point(field_set:kentik.synthetics.v202309.HealthSettings.health_disabled)
+}
+
+// float throughput_critical = 29[json_name = "throughputCritical", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void HealthSettings::clear_throughput_critical() {
+  throughput_critical_ = 0;
+}
+inline float HealthSettings::_internal_throughput_critical() const {
+  return throughput_critical_;
+}
+inline float HealthSettings::throughput_critical() const {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202309.HealthSettings.throughput_critical)
+  return _internal_throughput_critical();
+}
+inline void HealthSettings::_internal_set_throughput_critical(float value) {
+  
+  throughput_critical_ = value;
+}
+inline void HealthSettings::set_throughput_critical(float value) {
+  _internal_set_throughput_critical(value);
+  // @@protoc_insertion_point(field_set:kentik.synthetics.v202309.HealthSettings.throughput_critical)
+}
+
+// float throughput_warning = 30[json_name = "throughputWarning", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void HealthSettings::clear_throughput_warning() {
+  throughput_warning_ = 0;
+}
+inline float HealthSettings::_internal_throughput_warning() const {
+  return throughput_warning_;
+}
+inline float HealthSettings::throughput_warning() const {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202309.HealthSettings.throughput_warning)
+  return _internal_throughput_warning();
+}
+inline void HealthSettings::_internal_set_throughput_warning(float value) {
+  
+  throughput_warning_ = value;
+}
+inline void HealthSettings::set_throughput_warning(float value) {
+  _internal_set_throughput_warning(value);
+  // @@protoc_insertion_point(field_set:kentik.synthetics.v202309.HealthSettings.throughput_warning)
+}
+
+// float throughput_critical_stddev = 31[json_name = "throughputCriticalStddev", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void HealthSettings::clear_throughput_critical_stddev() {
+  throughput_critical_stddev_ = 0;
+}
+inline float HealthSettings::_internal_throughput_critical_stddev() const {
+  return throughput_critical_stddev_;
+}
+inline float HealthSettings::throughput_critical_stddev() const {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202309.HealthSettings.throughput_critical_stddev)
+  return _internal_throughput_critical_stddev();
+}
+inline void HealthSettings::_internal_set_throughput_critical_stddev(float value) {
+  
+  throughput_critical_stddev_ = value;
+}
+inline void HealthSettings::set_throughput_critical_stddev(float value) {
+  _internal_set_throughput_critical_stddev(value);
+  // @@protoc_insertion_point(field_set:kentik.synthetics.v202309.HealthSettings.throughput_critical_stddev)
+}
+
+// float throughput_warning_stddev = 32[json_name = "throughputWarningStddev", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void HealthSettings::clear_throughput_warning_stddev() {
+  throughput_warning_stddev_ = 0;
+}
+inline float HealthSettings::_internal_throughput_warning_stddev() const {
+  return throughput_warning_stddev_;
+}
+inline float HealthSettings::throughput_warning_stddev() const {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202309.HealthSettings.throughput_warning_stddev)
+  return _internal_throughput_warning_stddev();
+}
+inline void HealthSettings::_internal_set_throughput_warning_stddev(float value) {
+  
+  throughput_warning_stddev_ = value;
+}
+inline void HealthSettings::set_throughput_warning_stddev(float value) {
+  _internal_set_throughput_warning_stddev(value);
+  // @@protoc_insertion_point(field_set:kentik.synthetics.v202309.HealthSettings.throughput_warning_stddev)
 }
 
 // -------------------------------------------------------------------
@@ -28602,6 +29224,8 @@ inline void DeleteAgentAlertRequest::unsafe_arena_set_allocated_id(
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

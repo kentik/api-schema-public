@@ -25,9 +25,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='kentik/synthetics/v202309/synthetics.proto',
   package='kentik.synthetics.v202309',
   syntax='proto3',
-  serialized_options=b'ZOgithub.com/kentik/api-schema-public/gen/go/kentik/synthetics/v202309;synthetics\222A\243@\022\271>\n\031Synthetics Monitoring API\022\313=# Overview\nThe Synthetics Monitoring API provides programmatic access to Kentik\'s [synthetic monitoring system](https://kb.kentik.com/v4/Ma00.htm). The API consists of two endpoints:\n| Endpoint | Purpose |\n|-----------|---------|\n| SyntheticsAdminService | CRUD operations for synthetic tests, agents, and offline agent alerts |\n| SyntheticsDataService  | Retrieval of synthetic test results and network traces |\n\nBoth REST endpoint and gRPC RPCs are provided.\nNote: API version v202309 is the same as v202202 except that the timestamps returned for synthetic test results are closer to when the test was actually run.\n### Known Limitations\nThe API currently does not support the following [Synthetic Test Types](https://kb.kentik.com/v4/Ma00.htm#Ma00-Synthetic_Test_Types):\n* BGP Monitor tests, which are supported in a [separate API](https://github.com/kentik/api-schema-public/blob/master/proto/kentik/bgp_monitoring/v202205beta1/bgp_monitoring.proto)\n* Transaction tests.\n\n### Additional Public Resources\nKentik community [Python](https://github.com/kentik/community_sdk_python) and [Go](https://github.com/kentik/community_sdk_golang) SDKs provide language-specific support for using this and other Kentik APIs. These SDKs can be also used as example code for development. \n A [Terraform provider](https://registry.terraform.io/providers/kentik/kentik-synthetics) is available for configuring tests and agents for Kentik synthetic monitoring.\n# Anatomy of a Synthetic Test\nEach `Test` consists of one or more tasks. Tasks are executed by monitoring `Agents` that send synthetic traffic (probes) over the network. The API currently supports following tasks:\n| Task name  | Purpose |\n|------------|---------|\n| ping       | Test basic address, and optionally TCP port reachability |\n| traceroute (a.k.a. trace)| Discover unidirectional network path |\n| http | Perform a simple HTTP/HTTPS request |\n| page-load | Use headless Chromium to execute an HTTP/HTTPS request |\n| dns | Execute a DNS query|\n\nThe set of tasks executed on behalf of a given test depends on the `type` of that test. The following test types are currently supported by the API:\n| API type | Portal (UI) equivalent | Tasks |\n|---------------|--------------|-------|\n| ip | IP Address | ping, traceroute |\n| hostname | Hostname | ping, traceroute |\n| network_grid | Network Grid | ping, traceroute |\n| agent | Agent-to-Agent | ping, traceroute |\n| network_mesh | Network Mesh | ping, traceroute |\n| flow | Autonomous Tests (5 variants) | ping, traceroute |\n| url | HTTP(S) or API | http, ping (optional), traceroute (optional) |\n| page_load | Page Load | page-load, ping (optional), traceroute (optional) |\n| dns | DNS Server Monitor | dns |\n| dns_grid | DNS Server Grid | dns |\n\n***Note:*** `ping` and `traceroute` tasks are always run together (never one without the other).\n\n# Test Attributes and Settings\nThe attributes of the test object enable configuration of test settings, access to test metadata, and access to runtime state information.\n### State and Metadata Attributes\n The following table lists the metadata and state attributes:\n| Attribute | Access | Purpose |\n|-----------|--------|---------|\n| id | RO | System-generated unique identifier of the test |\n| name | RW | User specified name for the test (need not be unique) |\n| type | RO (after creation) | Type of the test (set on creation; read-only thereafter) |\n| status | RW | Life-cycle status of the test |\n| cdate | RO | Creation timestamp |\n| edate | RO | Last-modification timestamp |\n| created_by | RO | Identity of the user that created the test |\n| last_updated_by | RO | Identity of the latest user to modify the test |\n| labels | RW | List of names of labels applied to the test |\n\nTest configuration is performed via the test\'s `settings` attribute. Some settings are common to all tests while others are specific to tests of a given type.\n### Common Test Settings\nThe following settings are used for tests of all types:\n| Attribute | Purpose | Required |\n|-----------|---------|----------|\n| agentIds  | IDs of agents to execute tasks for the test | YES |\n| period | Test execution interval in seconds | NO (default 60s) |\n| family | IP address family. Used only for tests whose type is url or dns. Selects which type of DNS resource is queried for resolving hostname to target address | NO (default IP_FAMILY_DUAL) |\n| notificationChannels | List of notification channels for the test | NO (default empty list) |\n| healthSettings | A HealthSettings object that configures health settings for this test, which includes metric thresholds that define health status (warning and critical) and trigger associated alarms. | YES |\n| ping | A TestPingSettings object that configures the ping task of the test | NO (default depends on test type) |\n| trace | A TestTraceSettings object that configures the trace task of the test | NO (default depends on test type) |\n| tasks | List of names of the tasks that will be executed for this test | YES |\n\n### Type-specific Settings\nEach test type has its own configuration object that represents the settings for that type. These type-specific objects are referenced by the attributes in `Test.settings`:\n| Test type    | Settings attribute | Configuration object |\n|--------------|-------------------------|---------------------------|\n| ip           | ip                      | IpTest                    |\n| hostname     | hostname                | HostnameTest              |\n| network_grid | networkGrid             | IpTest                    |\n| agent        | agent                   | AgentTest                 |\n| network_mesh | networkMesh             | NetworkMeshTest           |\n| flow         | flow                    | FlowTest                  |\n| url          | url                     | UrlTest                   |\n| page_load    | pageLoad                | PageLoadTest              |\n| dns          | dns                     | DnsTest                   |\n| dns_grid     | dnsGrid                 | DnsTest                   |\n\n# Test Results\nResults of synthetic tests are returned as a sequence of `TestResults` objects. Each such object represents measurements and health evaluation for a single test at specific point in time. Measurements and health evaluation are grouped by agent and by task.\nGranularity of timestamps in test results depends on the frequency (period) of the test and on the requested time range. The minimum granularity is 1 minute (even when period < 1 minute). The longer the time range, the lower the granularity.\n# Network Traces\nSynthetic tests that include the `traceroute` task collect the unidirectional network path from the agent to the target for each agent/target pair. The trace data are returned in the `GetTraceForTestResponse` object. The `paths` attribute of this object contains the collected network path for each agent/target pair and the round-trip time (RTT) to each hop.\nHops in actual network traces are identified by a `nodeId`. The mapping of node IDs to address, name, location, and other attributes of the hop is provided in a map that is stored in the `nodes` attribute of the `GetTraceForTestResponse` object.\n# Agents\nThe Kentik synthetic monitoring system recognizes 2 types of agents:\n* **Global** (public): Managed by Kentik and available to every Kentik user. All information about global agents in this API is read-only.\n* **Private**: Deployed by each customer and available only to that customer.\nTo be visible in this API, a private agent must first associate itself with a customer account by contacting the Kentik system (via private API). Once the agent is associated it can be authorized via the API by changing its `status` to `AGENT_STATUS_OK`. For more information about private agent deployment, see [**Synthetic Agent Deployments**](https://kb.kentik.com/v4/Ma01.htm#Ma01-Synthetic_Agent_Deployments).\n\"E\n\026Kentik API Engineering\022+https://github.com/kentik/api-schema-public2\007v202309*\001\0022\020application/json:\020application/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r`\n\"Kentik synthetic monitoring system\022:https://kb.kentik.com/v4/Ma00.htm#Ma00-Synthetics_Overview',
+  serialized_options=b'ZOgithub.com/kentik/api-schema-public/gen/go/kentik/synthetics/v202309;synthetics\222A\366A\022\214@\n\031Synthetics Monitoring API\022\236?# Overview\nThe Synthetics Monitoring API provides programmatic access to Kentik\'s [synthetic monitoring system](https://kb.kentik.com/v4/Ma00.htm). The API consists of two endpoints:\n| Endpoint | Purpose |\n|-----------|---------|\n| SyntheticsAdminService | CRUD operations for synthetic tests, agents, and offline agent alerts |\n| SyntheticsDataService  | Retrieval of synthetic test results and network traces |\n\nBoth REST endpoint and gRPC RPCs are provided.\nNote: API version v202309 is the same as v202202 except that the timestamps returned for synthetic test results are closer to when the test was actually run.\n### Known Limitations\nThe API currently does not support the following [Synthetic Test Types](https://kb.kentik.com/v4/Ma00.htm#Ma00-Synthetic_Test_Types):\n* BGP Monitor tests, which are supported in a [separate API](https://github.com/kentik/api-schema-public/blob/master/proto/kentik/bgp_monitoring/v202205beta1/bgp_monitoring.proto)\n* Transaction tests.\n\n### Additional Public Resources\nKentik community [Python](https://github.com/kentik/community_sdk_python) and [Go](https://github.com/kentik/community_sdk_golang) SDKs provide language-specific support for using this and other Kentik APIs. These SDKs can be also used as example code for development. \n A [Terraform provider](https://registry.terraform.io/providers/kentik/kentik-synthetics) is available for configuring tests and agents for Kentik synthetic monitoring.\n# Anatomy of a Synthetic Test\nEach `Test` consists of one or more tasks. Tasks are executed by monitoring `Agents` that send synthetic traffic (probes) over the network. The API currently supports following tasks:\n| Task name  | Purpose |\n|------------|---------|\n| ping       | Test basic address, and optionally TCP port reachability |\n| traceroute (a.k.a. trace)| Discover unidirectional network path |\n| http | Perform a simple HTTP/HTTPS request |\n| page-load | Use headless Chromium to execute an HTTP/HTTPS request |\n| dns | Execute a DNS query|\n| throughput | Execute a throughput task to determine bandwidth |\n\nThe set of tasks executed on behalf of a given test depends on the `type` of that test. The following test types are currently supported by the API:\n| API type | Portal (UI) equivalent | Tasks |\n|---------------|--------------|-------|\n| ip | IP Address | ping, traceroute |\n| hostname | Hostname | ping, traceroute |\n| network_grid | Network Grid | ping, traceroute |\n| agent | Agent-to-Agent | ping, traceroute, throughput |\n| network_mesh | Network Mesh | ping, traceroute |\n| flow | Autonomous Tests (5 variants) | ping, traceroute |\n| url | HTTP(S) or API | http, ping (optional), traceroute (optional) |\n| page_load | Page Load | page-load, ping (optional), traceroute (optional) |\n| dns | DNS Server Monitor | dns |\n| dns_grid | DNS Server Grid | dns |\n\n***Note:*** `ping` and `traceroute` tasks are always run together (never one without the other).\n\n# Test Attributes and Settings\nThe attributes of the test object enable configuration of test settings, access to test metadata, and access to runtime state information.\n### State and Metadata Attributes\n The following table lists the metadata and state attributes:\n| Attribute | Access | Purpose |\n|-----------|--------|---------|\n| id | RO | System-generated unique identifier of the test |\n| name | RW | User specified name for the test (need not be unique) |\n| type | RO (after creation) | Type of the test (set on creation; read-only thereafter) |\n| status | RW | Life-cycle status of the test |\n| cdate | RO | Creation timestamp |\n| edate | RO | Last-modification timestamp |\n| created_by | RO | Identity of the user that created the test |\n| last_updated_by | RO | Identity of the latest user to modify the test |\n| labels | RW | List of names of labels applied to the test |\n\nTest configuration is performed via the test\'s `settings` attribute. Some settings are common to all tests while others are specific to tests of a given type.\n### Common Test Settings\nThe following settings are used for tests of all types:\n| Attribute | Purpose | Required |\n|-----------|---------|----------|\n| agentIds  | IDs of agents to execute tasks for the test | YES |\n| period | Test execution interval in seconds | NO (default 60s) |\n| family | IP address family. Used only for tests whose type is url or dns. Selects which type of DNS resource is queried for resolving hostname to target address | NO (default IP_FAMILY_DUAL) |\n| notificationChannels | List of notification channels for the test | NO (default empty list) |\n| healthSettings | A HealthSettings object that configures health settings for this test, which includes metric thresholds that define health status (warning and critical) and trigger associated alarms. | YES |\n| ping | A TestPingSettings object that configures the ping task of the test | NO (default depends on test type) |\n| trace | A TestTraceSettings object that configures the trace task of the test | NO (default depends on test type) |\n| throughput | A TestThroughputSettings object that configures the throughput task of the test | NO (default depends on test type) |\n| tasks | List of names of the tasks that will be executed for this test | YES |\n\n### Type-specific Settings\nEach test type has its own configuration object that represents the settings for that type. These type-specific objects are referenced by the attributes in `Test.settings`:\n| Test type    | Settings attribute | Configuration object |\n|--------------|-------------------------|---------------------------|\n| ip           | ip                      | IpTest                    |\n| hostname     | hostname                | HostnameTest              |\n| network_grid | networkGrid             | IpTest                    |\n| agent        | agent                   | AgentTest                 |\n| network_mesh | networkMesh             | NetworkMeshTest           |\n| flow         | flow                    | FlowTest                  |\n| url          | url                     | UrlTest                   |\n| page_load    | pageLoad                | PageLoadTest              |\n| dns          | dns                     | DnsTest                   |\n| dns_grid     | dnsGrid                 | DnsTest                   |\n\n# Test Results\nResults of synthetic tests are returned as a sequence of `TestResults` objects. Each such object represents measurements and health evaluation for a single test at specific point in time. Measurements and health evaluation are grouped by agent and by task.\nGranularity of timestamps in test results depends on the frequency (period) of the test and on the requested time range. The minimum granularity is 1 minute (even when period < 1 minute). The longer the time range, the lower the granularity.\n# Network Traces\nSynthetic tests that include the `traceroute` task collect the unidirectional network path from the agent to the target for each agent/target pair. The trace data are returned in the `GetTraceForTestResponse` object. The `paths` attribute of this object contains the collected network path for each agent/target pair and the round-trip time (RTT) to each hop.\nHops in actual network traces are identified by a `nodeId`. The mapping of node IDs to address, name, location, and other attributes of the hop is provided in a map that is stored in the `nodes` attribute of the `GetTraceForTestResponse` object.\n# Agents\nThe Kentik synthetic monitoring system recognizes 2 types of agents:\n* **Global** (public): Managed by Kentik and available to every Kentik user. All information about global agents in this API is read-only.\n* **Private**: Deployed by each customer and available only to that customer.\nTo be visible in this API, a private agent must first associate itself with a customer account by contacting the Kentik system (via private API). Once the agent is associated it can be authorized via the API by changing its `status` to `AGENT_STATUS_OK`. For more information about private agent deployment, see [**Synthetic Agent Deployments**](https://kb.kentik.com/v4/Ma01.htm#Ma01-Synthetic_Agent_Deployments).\n\"E\n\026Kentik API Engineering\022+https://github.com/kentik/api-schema-public2\007v202309*\001\0022\020application/json:\020application/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r`\n\"Kentik synthetic monitoring system\022:https://kb.kentik.com/v4/Ma00.htm#Ma00-Synthetics_Overview',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n*kentik/synthetics/v202309/synthetics.proto\x12\x19kentik.synthetics.v202309\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a%kentik/core/v202303/annotations.proto\x1a#kentik/core/v202303/user_info.proto\"\x96\x03\n\x0f\x44isabledMetrics\x12!\n\x0cping_latency\x18\x01 \x01(\x08R\x0bpingLatency\x12\x1f\n\x0bping_jitter\x18\x02 \x01(\x08R\npingJitter\x12(\n\x10ping_packet_loss\x18\x03 \x01(\x08R\x0epingPacketLoss\x12!\n\x0chttp_latency\x18\x04 \x01(\x08R\x0bhttpLatency\x12!\n\x0chttp_headers\x18\x05 \x01(\x08R\x0bhttpHeaders\x12\x1d\n\nhttp_codes\x18\x06 \x01(\x08R\thttpCodes\x12(\n\x10http_cert_expiry\x18\x07 \x01(\x08R\x0ehttpCertExpiry\x12/\n\x13transaction_latency\x18\x08 \x01(\x08R\x12transactionLatency\x12\x1f\n\x0b\x64ns_latency\x18\t \x01(\x08R\ndnsLatency\x12\x1b\n\tdns_codes\x18\n \x01(\x08R\x08\x64nsCodes\x12\x17\n\x07\x64ns_ips\x18\x0b \x01(\x08R\x06\x64nsIps\"\xf7\x0e\n\x05\x41gent\x12\x37\n\x02id\x18\x01 \x01(\tB\'\x92\x41 2\x1eUnique identifier of the agent\xe2\x41\x01\x03R\x02id\x12I\n\tsite_name\x18\x02 \x01(\tB,\x92\x41)2\'Name of the site where agent is locatedR\x08siteName\x12W\n\x06status\x18\x03 \x01(\x0e\x32&.kentik.synthetics.v202309.AgentStatusB\x17\x92\x41\x14\x32\x12Operational statusR\x06status\x12\x46\n\x05\x61lias\x18\x04 \x01(\tB0\x92\x41-2+User selected descriptive name of the agentR\x05\x61lias\x12=\n\x04type\x18\x05 \x01(\tB)\x92\x41\"2 Type of agent (global | private)\xe2\x41\x01\x03R\x04type\x12\x42\n\x02os\x18\x06 \x01(\tB2\x92\x41+2)OS version of server/VM hosting the agent\xe2\x41\x01\x03R\x02os\x12I\n\x02ip\x18\x07 \x01(\tB9\x18\x01\x92\x41\x30\x32.Public IP address of the agent (auto-detected)\xe2\x41\x01\x03R\x02ip\x12L\n\x03lat\x18\x08 \x01(\x01\x42:\x92\x41\x37\x32\x35Latitude of agent\'s location (signed decimal degrees)R\x03lat\x12O\n\x04long\x18\t \x01(\x01\x42;\x92\x41\x38\x32\x36Longitude of agent\'s location (signed decimal degrees)R\x04long\x12i\n\x0blast_authed\x18\n \x01(\x0b\x32\x1a.google.protobuf.TimestampB,\x92\x41%2#Timestamp of the last authorization\xe2\x41\x01\x03R\nlastAuthed\x12j\n\x06\x66\x61mily\x18\x0b \x01(\x0e\x32#.kentik.synthetics.v202309.IPFamilyB-\x92\x41*2(IP address family supported by the agentR\x06\x66\x61mily\x12\x42\n\x03\x61sn\x18\x0c \x01(\rB0\x92\x41-2+ASN of the AS owning agent\'s public addressR\x03\x61sn\x12X\n\x07site_id\x18\r \x01(\tB?\x92\x41<2:ID of the site hosting the agent (if configured in Kentik)R\x06siteId\x12@\n\x07version\x18\x0e \x01(\tB&\x92\x41\x1f\x32\x1dSoftware version of the agent\xe2\x41\x01\x03R\x07version\x12\x38\n\x04\x63ity\x18\x10 \x01(\tB$\x92\x41!2\x1f\x43ity where the agent is locatedR\x04\x63ity\x12\x44\n\x06region\x18\x11 \x01(\tB,\x92\x41)2\'Geographical region of agent\'s locationR\x06region\x12:\n\x07\x63ountry\x18\x12 \x01(\tB \x92\x41\x1d\x32\x1b\x43ountry of agent\'s locationR\x07\x63ountry\x12K\n\x08test_ids\x18\x13 \x03(\tB0\x92\x41)2\'IDs of user\'s test running on the agent\xe2\x41\x01\x03R\x07testIds\x12\x42\n\x08local_ip\x18\x14 \x01(\tB\'\x18\x01\x92\x41\"2 Internal IP address of the agentR\x07localIp\x12O\n\x0c\x63loud_region\x18\x16 \x01(\tB,\x92\x41)2\'Cloud region (if any) hosting the agentR\x0b\x63loudRegion\x12U\n\x0e\x63loud_provider\x18\x17 \x01(\tB.\x92\x41+2)Cloud provider (if any) hosting the agentR\rcloudProvider\x12M\n\nagent_impl\x18\x18 \x01(\x0e\x32(.kentik.synthetics.v202309.ImplementTypeB\x04\xe2\x41\x01\x03R\tagentImpl\x12N\n\x06labels\x18\x19 \x03(\tB6\x92\x41\x33\x32\x31List of names of labels associated with the agentR\x06labels\x12\x90\x01\n\x08metadata\x18\x1a \x01(\x0b\x32(.kentik.synthetics.v202309.AgentMetadataBJ\x92\x41G2EAdditional information about agent\'s configuration and run-time stateR\x08metadata\"\xea\x04\n\rAgentMetadata\x12\x8b\x01\n\x16private_ipv4_addresses\x18\x01 \x03(\x0b\x32\x30.kentik.synthetics.v202309.AgentMetadata.IpValueB#\x92\x41 2\x1eList of private IPv4 addressesR\x14privateIpv4Addresses\x12\x8c\x01\n\x15public_ipv4_addresses\x18\x02 \x03(\x0b\x32\x30.kentik.synthetics.v202309.AgentMetadata.IpValueB&\x92\x41\x1f\x32\x1dList of public IPv4 addresses\xe2\x41\x01\x03R\x13publicIpv4Addresses\x12\x8b\x01\n\x16private_ipv6_addresses\x18\x03 \x03(\x0b\x32\x30.kentik.synthetics.v202309.AgentMetadata.IpValueB#\x92\x41 2\x1eList of private IPv6 addressesR\x14privateIpv6Addresses\x12\x8c\x01\n\x15public_ipv6_addresses\x18\x04 \x03(\x0b\x32\x30.kentik.synthetics.v202309.AgentMetadata.IpValueB&\x92\x41\x1f\x32\x1dList of public IPv6 addresses\xe2\x41\x01\x03R\x13publicIpv6Addresses\x1a\x1f\n\x07IpValue\x12\x14\n\x05value\x18\x01 \x01(\tR\x05value\"\xb6\x06\n\x04Test\x12.\n\x02id\x18\x01 \x01(\tB\x1e\x92\x41\x17\x32\x15Unique ID of the test\xe2\x41\x01\x03R\x02id\x12\x37\n\x04name\x18\x02 \x01(\tB#\x92\x41 2\x1eUser selected name of the testR\x04name\x12)\n\x04type\x18\x03 \x01(\tB\x15\x92\x41\x12\x32\x10Type of the testR\x04type\x12\x62\n\x06status\x18\x05 \x01(\x0e\x32%.kentik.synthetics.v202309.TestStatusB#\x92\x41 2\x1eOperational status of the testR\x06status\x12\\\n\x08settings\x18\x06 \x01(\x0b\x32\'.kentik.synthetics.v202309.TestSettingsB\x17\x92\x41\x14\x32\x12Test configurationR\x08settings\x12S\n\x05\x63\x64\x61te\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.TimestampB!\x92\x41\x1a\x32\x18\x43reation timestamp (UTC)\xe2\x41\x01\x03R\x05\x63\x64\x61te\x12\\\n\x05\x65\x64\x61te\x18\x08 \x01(\x0b\x32\x1a.google.protobuf.TimestampB*\x92\x41#2!Last modification timestamp (UTC)\xe2\x41\x01\x03R\x05\x65\x64\x61te\x12_\n\ncreated_by\x18\t \x01(\x0b\x32\x1d.kentik.core.v202303.UserInfoB!\x92\x41\x1a\x32\x18Identity of test creator\xe2\x41\x01\x03R\tcreatedBy\x12\x7f\n\x0flast_updated_by\x18\n \x01(\x0b\x32\x1d.kentik.core.v202303.UserInfoB8\x92\x41\x31\x32/Identity of use that has modified the test last\xe2\x41\x01\x03R\rlastUpdatedBy\x12\x43\n\x06labels\x18\x0b \x03(\tB+\x92\x41(2&Set of labels associated with the testR\x06labels\"\xd4\x0c\n\x0cTestSettings\x12\x45\n\x08hostname\x18\x01 \x01(\x0b\x32\'.kentik.synthetics.v202309.HostnameTestH\x00R\x08hostname\x12\x33\n\x02ip\x18\x02 \x01(\x0b\x32!.kentik.synthetics.v202309.IpTestH\x00R\x02ip\x12<\n\x05\x61gent\x18\x03 \x01(\x0b\x32$.kentik.synthetics.v202309.AgentTestH\x00R\x05\x61gent\x12\x39\n\x04\x66low\x18\x04 \x01(\x0b\x32#.kentik.synthetics.v202309.FlowTestH\x00R\x04\x66low\x12\x36\n\x03\x64ns\x18\x05 \x01(\x0b\x32\".kentik.synthetics.v202309.DnsTestH\x00R\x03\x64ns\x12\x36\n\x03url\x18\x06 \x01(\x0b\x32\".kentik.synthetics.v202309.UrlTestH\x00R\x03url\x12\x46\n\x0cnetwork_grid\x18\x07 \x01(\x0b\x32!.kentik.synthetics.v202309.IpTestH\x00R\x0bnetworkGrid\x12\x46\n\tpage_load\x18\x08 \x01(\x0b\x32\'.kentik.synthetics.v202309.PageLoadTestH\x00R\x08pageLoad\x12?\n\x08\x64ns_grid\x18\t \x01(\x0b\x32\".kentik.synthetics.v202309.DnsTestH\x00R\x07\x64nsGrid\x12O\n\x0cnetwork_mesh\x18\x12 \x01(\x0b\x32*.kentik.synthetics.v202309.NetworkMeshTestH\x00R\x0bnetworkMesh\x12[\n\tagent_ids\x18\n \x03(\tB>\x92\x41;29IDs of agents assigned to run tasks on behalf of the testR\x08\x61gentIds\x12\x41\n\x05tasks\x18\x0b \x03(\tB+\x92\x41(2&List of task names to run for the testR\x05tasks\x12\xa9\x01\n\x0fhealth_settings\x18\x0c \x01(\x0b\x32).kentik.synthetics.v202309.HealthSettingsBU\x92\x41R2PHealth evaluation thresholds, acceptable responses and alarm activation settingsR\x0ehealthSettings\x12i\n\x04ping\x18\r \x01(\x0b\x32+.kentik.synthetics.v202309.TestPingSettingsB(\x92\x41%2#Ping tasks configuration parametersR\x04ping\x12q\n\x05trace\x18\x0e \x01(\x0b\x32,.kentik.synthetics.v202309.TestTraceSettingsB-\x92\x41*2(Traceroute task configuration parametersR\x05trace\x12@\n\x06period\x18\x0f \x01(\rB(\x92\x41%2#Test evaluation period (in seconds)R\x06period\x12\x81\x01\n\x06\x66\x61mily\x18\x10 \x01(\x0e\x32#.kentik.synthetics.v202309.IPFamilyBD\x92\x41\x41\x32?IP address family to select from available DNS name resolutionsR\x06\x66\x61mily\x12\x7f\n\x15notification_channels\x18\x11 \x03(\tBJ\x92\x41G2EList of IDs of notification channels for alarms triggered by the testR\x14notificationChannels\x12>\n\x05notes\x18\x13 \x01(\tB(\x92\x41%2#Add a note or comment for this testR\x05notesB\x0c\n\ndefinition\"\xcc\x03\n\x10TestPingSettings\x12K\n\x05\x63ount\x18\x01 \x01(\rB5\x92\x41\x32\x32\x30Number of probe packets to send in one iterationR\x05\x63ount\x12G\n\x08protocol\x18\x02 \x01(\tB+\x92\x41(2&Transport protocol to use (icmp | tcp)R\x08protocol\x12\x46\n\x04port\x18\x03 \x01(\rB2\x92\x41/2-Target port for TCP probes (ignored for ICMP)R\x04port\x12P\n\x07timeout\x18\x04 \x01(\rB6\x92\x41\x33\x32\x31Timeout in milliseconds for execution of the taskR\x07timeout\x12<\n\x05\x64\x65lay\x18\x05 \x01(\x02\x42&\x92\x41#2!Inter-probe delay in millisecondsR\x05\x64\x65lay\x12J\n\x04\x64scp\x18\x06 \x01(\rB6\x92\x41\x33\x32\x31\x44SCP code to be set in IP header of probe packetsR\x04\x64scp\"\xa9\x04\n\x11TestTraceSettings\x12K\n\x05\x63ount\x18\x01 \x01(\rB5\x92\x41\x32\x32\x30Number of probe packets to send in one iterationR\x05\x63ount\x12M\n\x08protocol\x18\x02 \x01(\tB1\x92\x41.2,Transport protocol to use (icmp | tcp | udp)R\x08protocol\x12M\n\x04port\x18\x03 \x01(\rB9\x92\x41\x36\x32\x34Target port for TCP or UDP probes (ignored for ICMP)R\x04port\x12P\n\x07timeout\x18\x04 \x01(\rB6\x92\x41\x33\x32\x31Timeout in milliseconds for execution of the taskR\x07timeout\x12M\n\x05limit\x18\x05 \x01(\rB7\x92\x41\x34\x32\x32Maximum number of hops to probe (i.e. maximum TTL)R\x05limit\x12<\n\x05\x64\x65lay\x18\x06 \x01(\x02\x42&\x92\x41#2!Inter-probe delay in millisecondsR\x05\x64\x65lay\x12J\n\x04\x64scp\x18\x07 \x01(\rB6\x92\x41\x33\x32\x31\x44SCP code to be set in IP header of probe packetsR\x04\x64scp\"\xc6\x03\n\x12\x41\x63tivationSettings\x12\x82\x01\n\x0cgrace_period\x18\x01 \x01(\tB_\x92\x41\\2ZPeriod of healthy status in minutes within the time window not cancelling alarm activationR\x0bgracePeriod\x12N\n\ttime_unit\x18\x02 \x01(\tB1\x92\x41.2,Time unit for specifying time window (m | h)R\x08timeUnit\x12]\n\x0btime_window\x18\x03 \x01(\tB<\x92\x41\x39\x32\x37Time window for evaluating of test for alarm activationR\ntimeWindow\x12|\n\x05times\x18\x04 \x01(\tBf\x92\x41\x63\x32\x61Number of occurrences of unhealthy test status within the time window triggering alarm activationR\x05times\"\x94\x1e\n\x0eHealthSettings\x12\x7f\n\x10latency_critical\x18\x01 \x01(\x02\x42T\x92\x41Q2OThreshold for ping response latency (in microseconds) to trigger critical alarmR\x0flatencyCritical\x12|\n\x0flatency_warning\x18\x02 \x01(\x02\x42S\x92\x41P2NThreshold for ping response latency (in microseconds) to trigger warning alarmR\x0elatencyWarning\x12v\n\x14packet_loss_critical\x18\x03 \x01(\x02\x42\x44\x92\x41\x41\x32?Threshold for ping packet loss (in %) to trigger critical alarmR\x12packetLossCritical\x12s\n\x13packet_loss_warning\x18\x04 \x01(\x02\x42\x43\x92\x41@2>Threshold for ping packet loss (in %) to trigger warning alarmR\x11packetLossWarning\x12s\n\x0fjitter_critical\x18\x05 \x01(\x02\x42J\x92\x41G2EThreshold for ping jitter (in microseconds) to trigger critical alarmR\x0ejitterCritical\x12q\n\x0ejitter_warning\x18\x06 \x01(\x02\x42J\x92\x41G2EThreshold for ping jitter (in microseconds) to trigger critical alarmR\rjitterWarning\x12\x88\x01\n\x15http_latency_critical\x18\x07 \x01(\x02\x42T\x92\x41Q2OThreshold for HTTP response latency (in microseconds) to trigger critical alarmR\x13httpLatencyCritical\x12\x85\x01\n\x14http_latency_warning\x18\x08 \x01(\x02\x42S\x92\x41P2NThreshold for HTTP response latency (in microseconds) to trigger warning alarmR\x12httpLatencyWarning\x12\x61\n\x10http_valid_codes\x18\t \x03(\rB7\x92\x41\x34\x32\x32List of HTTP status codes indicating healthy stateR\x0ehttpValidCodes\x12^\n\x0f\x64ns_valid_codes\x18\n \x03(\rB6\x92\x41\x33\x32\x31List of DNS status codes indicating healthy stateR\rdnsValidCodes\x12\xa2\x01\n\x17latency_critical_stddev\x18\x0b \x01(\x02\x42j\x92\x41g2eThreshold for standard deviation (in microseconds) of ping response latency to trigger critical alarmR\x15latencyCriticalStddev\x12\x9f\x01\n\x16latency_warning_stddev\x18\x0c \x01(\x02\x42i\x92\x41\x66\x32\x64Threshold for standard deviation (in microseconds) of ping response latency to trigger warning alarmR\x14latencyWarningStddev\x12\x96\x01\n\x16jitter_critical_stddev\x18\r \x01(\x02\x42`\x92\x41]2[Threshold for standard deviation of ping jitter (in microseconds) to trigger critical alarmR\x14jitterCriticalStddev\x12\x93\x01\n\x15jitter_warning_stddev\x18\x0e \x01(\x02\x42_\x92\x41\\2ZThreshold for standard deviation of ping jitter (in microseconds) to trigger warning alarmR\x13jitterWarningStddev\x12\xab\x01\n\x1chttp_latency_critical_stddev\x18\x0f \x01(\x02\x42j\x92\x41g2eThreshold for standard deviation of HTTP response latency (in microseconds) to trigger critical alarmR\x19httpLatencyCriticalStddev\x12\xa8\x01\n\x1bhttp_latency_warning_stddev\x18\x10 \x01(\x02\x42i\x92\x41\x66\x32\x64Threshold for standard deviation of HTTP response latency (in microseconds) to trigger warning alarmR\x18httpLatencyWarningStddev\x12\xaf\x01\n\x1bunhealthy_subtest_threshold\x18\x11 \x01(\rBo\x18\x01\x92\x41j2hNumber of tasks (across all agents) that must report unhealthy status in order for alarm to be triggeredR\x19unhealthySubtestThreshold\x12m\n\nactivation\x18\x12 \x01(\x0b\x32-.kentik.synthetics.v202309.ActivationSettingsB\x1e\x92\x41\x1b\x32\x19\x41larm activation settingsR\nactivation\x12\x8b\x01\n\x13\x63\x65rt_expiry_warning\x18\x13 \x01(\rB[\x92\x41X2VThreshold for remaining validity of TLS certificate (in days) to trigger warning alarmR\x11\x63\x65rtExpiryWarning\x12\x8e\x01\n\x14\x63\x65rt_expiry_critical\x18\x14 \x01(\rB\\\x92\x41Y2WThreshold for remaining validity of TLS certificate (in days) to trigger critical alarmR\x12\x63\x65rtExpiryCritical\x12\x88\x01\n\rdns_valid_ips\x18\x15 \x01(\tBd\x92\x41\x61\x32_Comma separated list of IP addresses expected to be received in response to DNS A or AAAA queryR\x0b\x64nsValidIps\x12\x85\x01\n\x14\x64ns_latency_critical\x18\x16 \x01(\x02\x42S\x92\x41P2NThreshold for DNS response latency (in microseconds) to trigger critical alarmR\x12\x64nsLatencyCritical\x12\x82\x01\n\x13\x64ns_latency_warning\x18\x17 \x01(\x02\x42R\x92\x41O2MThreshold for DNS response latency (in microseconds) to trigger warning alarmR\x11\x64nsLatencyWarning\x12\xa8\x01\n\x1b\x64ns_latency_critical_stddev\x18\x18 \x01(\x02\x42i\x92\x41\x66\x32\x64Threshold for standard deviation (in microseconds) of DNS response latency to trigger critical alarmR\x18\x64nsLatencyCriticalStddev\x12\xa5\x01\n\x1a\x64ns_latency_warning_stddev\x18\x19 \x01(\x02\x42h\x92\x41\x65\x32\x63Threshold for standard deviation (in microseconds) of DNS response latency to trigger warning alarmR\x17\x64nsLatencyWarningStddev\x12o\n\x12per_agent_alerting\x18\x1a \x01(\x08\x42\x41\x18\x01\x92\x41<2:Boolean value indicating whether to use per-agent alertingR\x10perAgentAlerting\x12\x91\x01\n\x10\x64isabled_metrics\x18\x1b \x01(\x0b\x32*.kentik.synthetics.v202309.DisabledMetricsB:\x92\x41\x37\x32\x35Set of metrics to be skipped during health evaluationR\x0f\x64isabledMetrics\x12Y\n\x0fhealth_disabled\x18\x1c \x01(\x08\x42\x30\x92\x41-2+Disable all health evaluation for this testR\x0ehealthDisabled\"X\n\x0cHostnameTest\x12H\n\x06target\x18\x01 \x01(\tB0\x92\x41-2+Fully qualified DNS name of the target hostR\x06target\"\xc8\x01\n\x06IpTest\x12>\n\x07targets\x18\x01 \x03(\tB$\x92\x41!2\x1fList of IP addresses of targetsR\x07targets\x12~\n\x0cuse_local_ip\x18\x02 \x01(\x08\x42\\\x92\x41Y2WBoolean value indicating whether to use local (private) IP address of the target agentsR\nuseLocalIp\"\xa5\x02\n\tAgentTest\x12\x33\n\x06target\x18\x01 \x01(\tB\x1b\x92\x41\x18\x32\x16ID of the target agentR\x06target\x12}\n\x0cuse_local_ip\x18\x02 \x01(\x08\x42[\x92\x41X2VBoolean value indicating whether to use local (private) IP address of the target agentR\nuseLocalIp\x12\x64\n\nreciprocal\x18\x03 \x01(\x08\x42\x44\x92\x41\x41\x32?Boolean value indicating whether to make the test bidirectionalR\nreciprocal\"\x8b\x07\n\x08\x46lowTest\x12\x87\x01\n\x06target\x18\x01 \x01(\tBo\x92\x41l2jTarget ASN, CDN, Country, Region of City for autonomous test (type of value depends on flow test sub-type)R\x06target\x12\x9e\x01\n\x1etarget_refresh_interval_millis\x18\x02 \x01(\rBY\x92\x41V2TPeriod (in milliseconds) for refreshing list of targets based on available flow dataR\x1btargetRefreshIntervalMillis\x12^\n\rmax_providers\x18\x03 \x01(\rB9\x92\x41\x36\x32\x34Maximum number of IP providers to track autonomouslyR\x0cmaxProviders\x12p\n\x0emax_ip_targets\x18\x04 \x01(\rBJ\x92\x41G2EMaximum number of target IP addresses to select based flow data queryR\x0cmaxIpTargets\x12W\n\x04type\x18\x05 \x01(\tBC\x92\x41@2>Autonomous test sub-type (asn | cdn | country | region | city)R\x04type\x12\xa8\x01\n\x0einet_direction\x18\x06 \x01(\tB\x80\x01\x92\x41}2{Selection of address from flow data (src = source address in inbound flows | dst = destination addresses in outbound flows)R\rinetDirection\x12~\n\tdirection\x18\x07 \x01(\tB`\x92\x41]2[Direction of flows to match target attribute for extraction of target addresses (src | dst)R\tdirection\"\xef\x02\n\x07\x44nsTest\x12>\n\x06target\x18\x01 \x01(\tB&\x92\x41#2!Fully qualified DNS name to queryR\x06target\x12\x46\n\x07timeout\x18\x02 \x01(\rB,\x18\x01\x92\x41\'2%--- Deprecated: value is ignored. ---R\x07timeout\x12g\n\x0brecord_type\x18\x03 \x01(\x0e\x32$.kentik.synthetics.v202309.DNSRecordB \x92\x41\x1d\x32\x1bType of DNS record to queryR\nrecordType\x12\x42\n\x07servers\x18\x04 \x03(\tB(\x92\x41%2#List of IP addresses of DNS serversR\x07servers\x12/\n\x04port\x18\x05 \x01(\rB\x1b\x92\x41\x18\x32\x16Target DNS server portR\x04port\"\xc6\x04\n\x07UrlTest\x12\x39\n\x06target\x18\x01 \x01(\tB!\x92\x41\x1e\x32\x1cHTTP or HTTPS URL to requestR\x06target\x12I\n\x07timeout\x18\x02 \x01(\rB/\x92\x41,2*HTTP transaction timeout (in milliseconds)R\x07timeout\x12Q\n\x06method\x18\x03 \x01(\tB9\x92\x41\x36\x32\x34HTTP method to use (GET | HEAD | PATCH | POST | PUT)R\x06method\x12\x7f\n\x07headers\x18\x04 \x03(\x0b\x32/.kentik.synthetics.v202309.UrlTest.HeadersEntryB4\x92\x41\x31\x32/Map of HTTP header values keyed by header namesR\x07headers\x12*\n\x04\x62ody\x18\x05 \x01(\tB\x16\x92\x41\x13\x32\x11HTTP request bodyR\x04\x62ody\x12y\n\x11ignore_tls_errors\x18\x06 \x01(\x08\x42M\x92\x41J2HBoolean indicating whether to ignore TLS certificate verification errorsR\x0fignoreTlsErrors\x1a:\n\x0cHeadersEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n\x05value\x18\x02 \x01(\tR\x05value:\x02\x38\x01\"\xac\x05\n\x0cPageLoadTest\x12\x39\n\x06target\x18\x01 \x01(\tB!\x92\x41\x1e\x32\x1cHTTP or HTTPS URL to requestR\x06target\x12I\n\x07timeout\x18\x02 \x01(\rB/\x92\x41,2*HTTP transaction timeout (in milliseconds)R\x07timeout\x12\x84\x01\n\x07headers\x18\x03 \x03(\x0b\x32\x34.kentik.synthetics.v202309.PageLoadTest.HeadersEntryB4\x92\x41\x31\x32/Map of HTTP header values keyed by header namesR\x07headers\x12y\n\x11ignore_tls_errors\x18\x04 \x01(\x08\x42M\x92\x41J2HBoolean indicating whether to ignore TLS certificate verification errorsR\x0fignoreTlsErrors\x12\x96\x01\n\rcss_selectors\x18\x05 \x03(\x0b\x32\x39.kentik.synthetics.v202309.PageLoadTest.CssSelectorsEntryB6\x92\x41\x33\x32\x31Map of CSS selector values keyed by selector nameR\x0c\x63ssSelectors\x1a:\n\x0cHeadersEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n\x05value\x18\x02 \x01(\tR\x05value:\x02\x38\x01\x1a?\n\x11\x43ssSelectorsEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n\x05value\x18\x02 \x01(\tR\x05value:\x02\x38\x01\"\x91\x01\n\x0fNetworkMeshTest\x12~\n\x0cuse_local_ip\x18\x01 \x01(\x08\x42\\\x92\x41Y2WBoolean value indicating whether to use local (private) IP address of the target agentsR\nuseLocalIp\"\xc7\x02\n\nMetricData\x12\x36\n\x07\x63urrent\x18\x01 \x01(\rB\x1c\x92\x41\x19\x32\x17\x43urrent value of metricR\x07\x63urrent\x12?\n\x0brolling_avg\x18\x02 \x01(\rB\x1e\x92\x41\x1b\x32\x19Rolling average of metricR\nrollingAvg\x12[\n\x0erolling_stddev\x18\x03 \x01(\rB4\x92\x41\x31\x32/Rolling average of standard deviation of metricR\rrollingStddev\x12\x63\n\x06health\x18\x04 \x01(\tBK\x92\x41H2FHealth evaluation status for the metric (healthy | warning | critical)R\x06health\"\xaf\x01\n\x0ePacketLossData\x12\x38\n\x07\x63urrent\x18\x01 \x01(\x01\x42\x1e\x92\x41\x1b\x32\x19\x43urrent packet loss valueR\x07\x63urrent\x12\x63\n\x06health\x18\x02 \x01(\tBK\x92\x41H2FHealth evaluation status for the metric (healthy | warning | critical)R\x06health\"\xd6\x03\n\x0bPingResults\x12\x45\n\x06target\x18\x01 \x01(\tB-\x92\x41*2(Hostname or address of the probed targetR\x06target\x12n\n\x0bpacket_loss\x18\x02 \x01(\x0b\x32).kentik.synthetics.v202309.PacketLossDataB\"\x92\x41\x1f\x32\x1dPacket loss metric and healthR\npacketLoss\x12\x66\n\x07latency\x18\x03 \x01(\x0b\x32%.kentik.synthetics.v202309.MetricDataB%\x92\x41\"2 Packet latency metric and healthR\x07latency\x12o\n\x06jitter\x18\x04 \x01(\x0b\x32%.kentik.synthetics.v202309.MetricDataB0\x92\x41-2+Latency jitter (variance) metric and healthR\x06jitter\x12\x37\n\x06\x64st_ip\x18\x05 \x01(\tB \x92\x41\x1d\x32\x1bIP address of probed targetR\x05\x64stIp\"\xf9\x01\n\x10HTTPResponseData\x12\x34\n\x06status\x18\x01 \x01(\rB\x1c\x92\x41\x19\x32\x17HTTP status in responseR\x06status\x12>\n\x04size\x18\x02 \x01(\rB*\x92\x41\'2%Total size of  received response bodyR\x04size\x12o\n\x04\x64\x61ta\x18\x03 \x01(\tB[\x92\x41X2VDetailed information about transaction timing, connection characteristics and responseR\x04\x64\x61ta\"\xe4\x02\n\x0bHTTPResults\x12.\n\x06target\x18\x01 \x01(\tB\x16\x92\x41\x13\x32\x11Target probed URLR\x06target\x12m\n\x07latency\x18\x02 \x01(\x0b\x32%.kentik.synthetics.v202309.MetricDataB,\x92\x41)2\'HTTP response latency metric and healthR\x07latency\x12v\n\x08response\x18\x04 \x01(\x0b\x32+.kentik.synthetics.v202309.HTTPResponseDataB-\x92\x41*2(Information about received HTTP responseR\x08response\x12>\n\x06\x64st_ip\x18\x05 \x01(\tB\'\x92\x41$2\"IP address of probed target serverR\x05\x64stIp\"\x87\x01\n\x0f\x44NSResponseData\x12\x30\n\x06status\x18\x01 \x01(\rB\x18\x92\x41\x15\x32\x13Received DNS statusR\x06status\x12\x42\n\x04\x64\x61ta\x18\x02 \x01(\tB.\x92\x41+2)Text rendering of received DNS resolutionR\x04\x64\x61ta\"\xdd\x02\n\nDNSResults\x12/\n\x06target\x18\x01 \x01(\tB\x17\x92\x41\x14\x32\x12Queried DNS recordR\x06target\x12:\n\x06server\x18\x02 \x01(\tB\"\x92\x41\x1f\x32\x1d\x44NS server used for the queryR\x06server\x12l\n\x07latency\x18\x03 \x01(\x0b\x32%.kentik.synthetics.v202309.MetricDataB+\x92\x41(2&DNS response latency metric and healthR\x07latency\x12t\n\x08response\x18\x05 \x01(\x0b\x32*.kentik.synthetics.v202309.DNSResponseDataB,\x92\x41)2\'Information about received DNS responseR\x08response\"\x83\x03\n\x0bTaskResults\x12\x65\n\x04ping\x18\x01 \x01(\x0b\x32&.kentik.synthetics.v202309.PingResultsB\'\x92\x41$2\"Entry containing ping task resultsH\x00R\x04ping\x12\x65\n\x04http\x18\x02 \x01(\x0b\x32&.kentik.synthetics.v202309.HTTPResultsB\'\x92\x41$2\"Entry containing HTTP task resultsH\x00R\x04http\x12\x61\n\x03\x64ns\x18\x03 \x01(\x0b\x32%.kentik.synthetics.v202309.DNSResultsB&\x92\x41#2!Entry containing DNS task resultsH\x00R\x03\x64ns\x12\x36\n\x06health\x18\x04 \x01(\tB\x1e\x92\x41\x1b\x32\x19Health status of the taskR\x06healthB\x0b\n\ttask_type\"\x9e\x02\n\x0c\x41gentResults\x12\x41\n\x08\x61gent_id\x18\x01 \x01(\tB&\x92\x41#2!ID of the agent providing resultsR\x07\x61gentId\x12\x62\n\x06health\x18\x02 \x01(\tBJ\x92\x41G2EOverall health status of all task for the test executed by this agentR\x06health\x12g\n\x05tasks\x18\x03 \x03(\x0b\x32&.kentik.synthetics.v202309.TaskResultsB)\x92\x41&2$List of results for individual tasksR\x05tasks\"\xea\x02\n\x0bTestResults\x12K\n\x07test_id\x18\x01 \x01(\tB2\x92\x41/2-ID of the test for which results are providedR\x06testId\x12L\n\x04time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x1c\x92\x41\x19\x32\x17Results timestamp (UTC)R\x04time\x12\x36\n\x06health\x18\x03 \x01(\tB\x1e\x92\x41\x1b\x32\x19Health status of the testR\x06health\x12\x87\x01\n\x06\x61gents\x18\x04 \x03(\x0b\x32\'.kentik.synthetics.v202309.AgentResultsBF\x92\x41\x43\x32\x41List of results from agents executing tasks on behalf of the testR\x06\x61gents\"\x81\x01\n\x05Stats\x12,\n\x07\x61verage\x18\x01 \x01(\x05\x42\x12\x92\x41\x0f\x32\rAverage valueR\x07\x61verage\x12$\n\x03min\x18\x02 \x01(\x05\x42\x12\x92\x41\x0f\x32\rMinimum valueR\x03min\x12$\n\x03max\x18\x03 \x01(\x05\x42\x12\x92\x41\x0f\x32\rMaximum valueR\x03max\"\xc1\x02\n\x08Location\x12\x43\n\x08latitude\x18\x08 \x01(\x01\x42\'\x92\x41$2\"Latitude in signed decimal degreesR\x08latitude\x12\x46\n\tlongitude\x18\t \x01(\x01\x42(\x92\x41%2#Longitude in signed decimal degreesR\tlongitude\x12\x36\n\x07\x63ountry\x18\x01 \x01(\tB\x1c\x92\x41\x19\x32\x17\x43ountry of the locationR\x07\x63ountry\x12\x41\n\x06region\x18\x02 \x01(\tB)\x92\x41&2$Geographic region within the countryR\x06region\x12-\n\x04\x63ity\x18\x03 \x01(\tB\x19\x92\x41\x16\x32\x14\x43ity of the locationR\x04\x63ity\"\x86\x05\n\x07NetNode\x12H\n\x02ip\x18\x02 \x01(\tB8\x92\x41\x35\x32\x33IP address of the node in standard textual notationR\x02ip\x12?\n\x03\x61sn\x18\x03 \x01(\rB-\x92\x41*2(AS number owning the address of the nodeR\x03\x61sn\x12K\n\x07\x61s_name\x18\x04 \x01(\tB2\x92\x41/2-Name of the AS owning the address of the nodeR\x06\x61sName\x12h\n\x08location\x18\x05 \x01(\x0b\x32#.kentik.synthetics.v202309.LocationB\'\x92\x41$2\"Location of IP address of the nodeR\x08location\x12Y\n\x08\x64ns_name\x18\x06 \x01(\tB>\x92\x41;29DNS name of the node (obtained by reverse DNS resolution)R\x07\x64nsName\x12\x66\n\tdevice_id\x18\x07 \x01(\tBI\x92\x41\x46\x32\x44ID of the device corresponding with the node in Kentik configurationR\x08\x64\x65viceId\x12v\n\x07site_id\x18\x08 \x01(\tB]\x92\x41Z2XID of the site containing the device corresponding with the node in Kentik configurationR\x06siteId\"\xf3\x01\n\x08TraceHop\x12v\n\x07latency\x18\x03 \x01(\x05\x42\\\x92\x41Y2WRound-trip packet latency to the node (in microseconds) - 0 if no response was receivedR\x07latency\x12o\n\x07node_id\x18\x05 \x01(\tBV\x92\x41S2QID of the node for this hop in the Nodes map  - empty if no response was receivedR\x06nodeId\"\xfc\x01\n\tPathTrace\x12:\n\x07\x61s_path\x18\x01 \x03(\x05\x42!\x92\x41\x1e\x32\x1c\x41S path of the network traceR\x06\x61sPath\x12Z\n\x0bis_complete\x18\x02 \x01(\x08\x42\x39\x92\x41\x36\x32\x34Indication whether response from target was receivedR\nisComplete\x12W\n\x04hops\x18\x06 \x03(\x0b\x32#.kentik.synthetics.v202309.TraceHopB\x1e\x92\x41\x1b\x32\x19List of hops in the traceR\x04hops\"\xa8\x04\n\x04Path\x12H\n\x08\x61gent_id\x18\x01 \x01(\tB-\x92\x41*2(ID of the agent generating the path dataR\x07\x61gentId\x12\x46\n\ttarget_ip\x18\x03 \x01(\tB)\x92\x41&2$IP address of the target of the pathR\x08targetIp\x12j\n\thop_count\x18\x04 \x01(\x0b\x32 .kentik.synthetics.v202309.StatsB+\x92\x41(2&Hop count statistics across all tracesR\x08hopCount\x12]\n\x12max_as_path_length\x18\x07 \x01(\x05\x42\x30\x92\x41-2+Maximum length of AS path across all tracesR\x0fmaxAsPathLength\x12]\n\x06traces\x18\x08 \x03(\x0b\x32$.kentik.synthetics.v202309.PathTraceB\x1f\x92\x41\x1c\x32\x1a\x44\x61ta for individual tracesR\x06traces\x12\x64\n\x04time\x18\t \x01(\x0b\x32\x1a.google.protobuf.TimestampB4\x92\x41\x31\x32/Timestamp (UTC) of initiation of the path traceR\x04time\"\x95\x05\n\x19GetResultsForTestsRequest\x12I\n\x03ids\x18\x01 \x03(\tB7\x92\x41\x30\x32.List of test IDs for which to retrieve results\xe2\x41\x01\x02R\x03ids\x12y\n\nstart_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampB>\x92\x41\x37\x32\x35Timestamp of the oldest results to include in results\xe2\x41\x01\x02R\tstartTime\x12u\n\x08\x65nd_time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.TimestampB>\x92\x41\x37\x32\x35Timestamp of the newest results to include in results\xe2\x41\x01\x02R\x07\x65ndTime\x12P\n\tagent_ids\x18\x04 \x03(\tB3\x92\x41\x30\x32.List of agent IDs from which to return resultsR\x08\x61gentIds\x12]\n\x07targets\x18\x05 \x03(\tBC\x92\x41@2>List of targets (test dependent) for which to retrieve resultsR\x07targets\x12\x89\x01\n\taggregate\x18\x06 \x01(\x08\x42k\x92\x41h2fIf true, retrieve result aggregated across the requested time period, else return complete time seriesR\taggregate\"^\n\x1aGetResultsForTestsResponse\x12@\n\x07results\x18\x01 \x03(\x0b\x32&.kentik.synthetics.v202309.TestResultsR\x07results\"\x8a\x04\n\x16GetTraceForTestRequest\x12M\n\x02id\x18\x01 \x01(\tB=\x92\x41:28ID of test for which to retrieve network path trace dataR\x02id\x12y\n\nstart_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampB>\x92\x41\x37\x32\x35Timestamp of the oldest results to include in results\xe2\x41\x01\x02R\tstartTime\x12u\n\x08\x65nd_time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.TimestampB>\x92\x41\x37\x32\x35Timestamp of the newest results to include in results\xe2\x41\x01\x02R\x07\x65ndTime\x12P\n\tagent_ids\x18\x04 \x03(\tB3\x92\x41\x30\x32.List of agent IDs from which to return resultsR\x08\x61gentIds\x12]\n\ntarget_ips\x18\x05 \x03(\tB>\x92\x41;29List of target IP addresses for which to retrieve resultsR\ttargetIps\"\xe6\x02\n\x17GetTraceForTestResponse\x12\x8b\x01\n\x05nodes\x18\x01 \x03(\x0b\x32=.kentik.synthetics.v202309.GetTraceForTestResponse.NodesEntryB6\x92\x41\x33\x32\x31Map of network node information keyed by node IDsR\x05nodes\x12_\n\x05paths\x18\x02 \x03(\x0b\x32\x1f.kentik.synthetics.v202309.PathB(\x92\x41%2#List of retrieved network path dataR\x05paths\x1a\\\n\nNodesEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x38\n\x05value\x18\x02 \x01(\x0b\x32\".kentik.synthetics.v202309.NetNodeR\x05value:\x02\x38\x01\"\x13\n\x11ListAgentsRequest\"\xd4\x01\n\x12ListAgentsResponse\x12W\n\x06\x61gents\x18\x01 \x03(\x0b\x32 .kentik.synthetics.v202309.AgentB\x1d\x92\x41\x1a\x32\x18List of available agentsR\x06\x61gents\x12\x65\n\rinvalid_count\x18\x02 \x01(\rB@\x92\x41=2;Number of invalid entries encountered while collecting dataR\x0cinvalidCount\"E\n\x0fGetAgentRequest\x12\x32\n\x02id\x18\x01 \x01(\tB\"\x92\x41\x1b\x32\x19ID of the requested agent\xe2\x41\x01\x02R\x02id\"t\n\x10GetAgentResponse\x12`\n\x05\x61gent\x18\x01 \x01(\x0b\x32 .kentik.synthetics.v202309.AgentB(\x92\x41%2#Agent configuration and status dataR\x05\x61gent\"k\n\x12UpdateAgentRequest\x12U\n\x05\x61gent\x18\x01 \x01(\x0b\x32 .kentik.synthetics.v202309.AgentB\x1d\x92\x41\x1a\x32\x18\x41gent configuration dataR\x05\x61gent\"w\n\x13UpdateAgentResponse\x12`\n\x05\x61gent\x18\x01 \x01(\x0b\x32 .kentik.synthetics.v202309.AgentB(\x92\x41%2#Agent configuration and status dataR\x05\x61gent\"L\n\x12\x44\x65leteAgentRequest\x12\x36\n\x02id\x18\x01 \x01(\tB&\x92\x41\x1f\x32\x1dID of the agent to be deleted\xe2\x41\x01\x02R\x02id\"\x15\n\x13\x44\x65leteAgentResponse\"\x12\n\x10ListTestsRequest\"\xe1\x01\n\x11ListTestsResponse\x12\x65\n\x05tests\x18\x01 \x03(\x0b\x32\x1f.kentik.synthetics.v202309.TestB.\x92\x41+2)List of configured active or paused testsR\x05tests\x12\x65\n\rinvalid_count\x18\x02 \x01(\rB@\x92\x41=2;Number of invalid entries encountered while collecting dataR\x0cinvalidCount\"j\n\x11\x43reateTestRequest\x12U\n\x04test\x18\x01 \x01(\x0b\x32\x1f.kentik.synthetics.v202309.TestB \x92\x41\x19\x32\x17Test configuration data\xe2\x41\x01\x02R\x04test\"r\n\x12\x43reateTestResponse\x12\\\n\x04test\x18\x01 \x01(\x0b\x32\x1f.kentik.synthetics.v202309.TestB\'\x92\x41$2\"Test configuration and status dataR\x04test\"?\n\x0eGetTestRequest\x12-\n\x02id\x18\x01 \x01(\tB\x1d\x92\x41\x16\x32\x14ID of requested test\xe2\x41\x01\x02R\x02id\"o\n\x0fGetTestResponse\x12\\\n\x04test\x18\x01 \x01(\x0b\x32\x1f.kentik.synthetics.v202309.TestB\'\x92\x41$2\"Test configuration and status dataR\x04test\"f\n\x11UpdateTestRequest\x12Q\n\x04test\x18\x01 \x01(\x0b\x32\x1f.kentik.synthetics.v202309.TestB\x1c\x92\x41\x19\x32\x17Test configuration dataR\x04test\"r\n\x12UpdateTestResponse\x12\\\n\x04test\x18\x01 \x01(\x0b\x32\x1f.kentik.synthetics.v202309.TestB\'\x92\x41$2\"Test configuration and status dataR\x04test\"J\n\x11\x44\x65leteTestRequest\x12\x35\n\x02id\x18\x01 \x01(\tB%\x92\x41\x1e\x32\x1cID of the test to be deleted\xe2\x41\x01\x02R\x02id\"\x14\n\x12\x44\x65leteTestResponse\"\xba\x01\n\x14SetTestStatusRequest\x12\x46\n\x02id\x18\x01 \x01(\tB6\x92\x41/2-ID of the test which status is to be modified\xe2\x41\x01\x02R\x02id\x12Z\n\x06status\x18\x02 \x01(\x0e\x32%.kentik.synthetics.v202309.TestStatusB\x1b\x92\x41\x14\x32\x12Target test status\xe2\x41\x01\x02R\x06status\"\x17\n\x15SetTestStatusResponse\"\xbd\x01\n\nAgentAlert\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12+\n\x11threshold_seconds\x18\x02 \x01(\rR\x10thresholdSeconds\x12\x38\n\x18notification_channel_ids\x18\x03 \x03(\tR\x16notificationChannelIds\x12\x19\n\x08\x61gent_id\x18\x04 \x01(\tR\x07\x61gentId\x12\x1d\n\nagent_name\x18\x05 \x01(\tR\tagentName\"\x9b\x01\n\x17\x43reateAgentAlertRequest\x12+\n\x11threshold_seconds\x18\x01 \x01(\rR\x10thresholdSeconds\x12\x38\n\x18notification_channel_ids\x18\x02 \x03(\tR\x16notificationChannelIds\x12\x19\n\x08\x61gent_id\x18\x03 \x01(\tR\x07\x61gentId\"b\n\x18\x43reateAgentAlertResponse\x12\x46\n\x0b\x61gent_alert\x18\x01 \x01(\x0b\x32%.kentik.synthetics.v202309.AgentAlertR\nagentAlert\"\x90\x01\n\x17UpdateAgentAlertRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12+\n\x11threshold_seconds\x18\x02 \x01(\rR\x10thresholdSeconds\x12\x38\n\x18notification_channel_ids\x18\x03 \x03(\tR\x16notificationChannelIds\"b\n\x18UpdateAgentAlertResponse\x12\x46\n\x0b\x61gent_alert\x18\x01 \x01(\x0b\x32%.kentik.synthetics.v202309.AgentAlertR\nagentAlert\"&\n\x14GetAgentAlertRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"_\n\x15GetAgentAlertResponse\x12\x46\n\x0b\x61gent_alert\x18\x01 \x01(\x0b\x32%.kentik.synthetics.v202309.AgentAlertR\nagentAlert\"5\n\x16ListAgentAlertsRequest\x12\x1b\n\tagent_ids\x18\x01 \x03(\tR\x08\x61gentIds\"c\n\x17ListAgentAlertsResponse\x12H\n\x0c\x61gent_alerts\x18\x01 \x03(\x0b\x32%.kentik.synthetics.v202309.AgentAlertR\x0b\x61gentAlerts\")\n\x17\x44\x65leteAgentAlertRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"\x1a\n\x18\x44\x65leteAgentAlertResponse*}\n\rImplementType\x12\x1e\n\x1aIMPLEMENT_TYPE_UNSPECIFIED\x10\x00\x12\x17\n\x13IMPLEMENT_TYPE_RUST\x10\x01\x12\x17\n\x13IMPLEMENT_TYPE_NODE\x10\x02\x12\x1a\n\x16IMPLEMENT_TYPE_NETWORK\x10\x03*]\n\x08IPFamily\x12\x19\n\x15IP_FAMILY_UNSPECIFIED\x10\x00\x12\x10\n\x0cIP_FAMILY_V4\x10\x01\x12\x10\n\x0cIP_FAMILY_V6\x10\x02\x12\x12\n\x0eIP_FAMILY_DUAL\x10\x03*\x8b\x01\n\nTestStatus\x12\x1b\n\x17TEST_STATUS_UNSPECIFIED\x10\x00\x12\x16\n\x12TEST_STATUS_ACTIVE\x10\x01\x12\x16\n\x12TEST_STATUS_PAUSED\x10\x02\x12\x17\n\x13TEST_STATUS_DELETED\x10\x03\x12\x17\n\x13TEST_STATUS_PREVIEW\x10\x04*q\n\x0b\x41gentStatus\x12\x1c\n\x18\x41GENT_STATUS_UNSPECIFIED\x10\x00\x12\x13\n\x0f\x41GENT_STATUS_OK\x10\x01\x12\x15\n\x11\x41GENT_STATUS_WAIT\x10\x02\x12\x18\n\x14\x41GENT_STATUS_DELETED\x10\x03*\xc8\x01\n\tDNSRecord\x12\x1a\n\x16\x44NS_RECORD_UNSPECIFIED\x10\x00\x12\x10\n\x0c\x44NS_RECORD_A\x10\x01\x12\x13\n\x0f\x44NS_RECORD_AAAA\x10\x02\x12\x14\n\x10\x44NS_RECORD_CNAME\x10\x03\x12\x14\n\x10\x44NS_RECORD_DNAME\x10\x04\x12\x11\n\rDNS_RECORD_NS\x10\x05\x12\x11\n\rDNS_RECORD_MX\x10\x06\x12\x12\n\x0e\x44NS_RECORD_PTR\x10\x07\x12\x12\n\x0e\x44NS_RECORD_SOA\x10\x08\x32\xca\x05\n\x15SyntheticsDataService\x12\xb3\x02\n\x12GetResultsForTests\x12\x34.kentik.synthetics.v202309.GetResultsForTestsRequest\x1a\x35.kentik.synthetics.v202309.GetResultsForTestsResponse\"\xaf\x01\x92\x41s\x12\x15Get results for tests\x1a\x46Returns probe results for a set of tests for specified period of time.*\x12GetResultsForTests\xf2\xd7\x02\x0fsynthetics:read\x82\xd3\xe4\x93\x02 \"\x1b/synthetics/v202309/results:\x01*\x12\xd0\x02\n\x0fGetTraceForTest\x12\x31.kentik.synthetics.v202309.GetTraceForTestRequest\x1a\x32.kentik.synthetics.v202309.GetTraceForTestResponse\"\xd5\x01\x92\x41\x9a\x01\x12!Get network trace data for a test\x1a\x64Get network trace data for a specific synthetic test. The test must have traceroute task configured.*\x0fGetTraceForTest\xf2\xd7\x02\x0fsynthetics:read\x82\xd3\xe4\x93\x02\x1e\"\x19/synthetics/v202309/trace:\x01*\x1a(\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\nsynthetics\x90\xd8\x02\x03\x32\x86&\n\x16SyntheticsAdminService\x12\xa7\x02\n\nListAgents\x12,.kentik.synthetics.v202309.ListAgentsRequest\x1a-.kentik.synthetics.v202309.ListAgentsResponse\"\xbb\x01\x92\x41\x63\x12\x15List available agents\x1a>Returns list of all synthetic agents available in the account.*\nListAgents\xf2\xd7\x02\x15\x61\x64min.synthetics:read\x92\xd8\x02\x16synthetics.agent::read\x82\xd3\xe4\x93\x02\x1c\x12\x1a/synthetics/v202309/agents\x12\xa7\x02\n\x08GetAgent\x12*.kentik.synthetics.v202309.GetAgentRequest\x1a+.kentik.synthetics.v202309.GetAgentResponse\"\xc1\x01\x92\x41\x64\x12\x1eGet information about an agent\x1a\x38Returns information about the requested synthetic agent.*\x08GetAgent\xf2\xd7\x02\x15\x61\x64min.synthetics:read\x92\xd8\x02\x16synthetics.agent::read\x82\xd3\xe4\x93\x02!\x12\x1f/synthetics/v202309/agents/{id}\x12\xb3\x02\n\x0bUpdateAgent\x12-.kentik.synthetics.v202309.UpdateAgentRequest\x1a..kentik.synthetics.v202309.UpdateAgentResponse\"\xc4\x01\x92\x41[\x12 Update configuration of an agent\x1a*Update configuration of a synthetic agent.*\x0bUpdateAgent\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x92\xd8\x02\x18synthetics.agent::update\x82\xd3\xe4\x93\x02*\x1a%/synthetics/v202309/agents/{agent.id}:\x01*\x12\xc9\x02\n\x0b\x44\x65leteAgent\x12-.kentik.synthetics.v202309.DeleteAgentRequest\x1a..kentik.synthetics.v202309.DeleteAgentResponse\"\xda\x01\x92\x41z\x12\x0f\x44\x65lete an agent\x1aZDeletes the requested agent. The deleted agent is removed from configuration of all tests.*\x0b\x44\x65leteAgent\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x92\xd8\x02\x18synthetics.agent::delete\x82\xd3\xe4\x93\x02!*\x1f/synthetics/v202309/agents/{id}\x12\x9f\x02\n\tListTests\x12+.kentik.synthetics.v202309.ListTestsRequest\x1a,.kentik.synthetics.v202309.ListTestsResponse\"\xb6\x01\x92\x41`\x12\x0eList all tests\x1a\x43Returns a list of all configured active and paused synthetic tests.*\tListTests\xf2\xd7\x02\x15\x61\x64min.synthetics:read\x92\xd8\x02\x15synthetics.test::read\x82\xd3\xe4\x93\x02\x1b\x12\x19/synthetics/v202309/tests\x12\xaa\x02\n\nCreateTest\x12,.kentik.synthetics.v202309.CreateTestRequest\x1a-.kentik.synthetics.v202309.CreateTestResponse\"\xbe\x01\x92\x41\x62\x12\rCreate a test\x1a\x45\x43reate synthetic test based on configuration provided in the request.*\nCreateTest\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x92\xd8\x02\x17synthetics.test::create\x82\xd3\xe4\x93\x02\x1e\"\x19/synthetics/v202309/tests:\x01*\x12\xa9\x02\n\x07GetTest\x12).kentik.synthetics.v202309.GetTestRequest\x1a*.kentik.synthetics.v202309.GetTestResponse\"\xc6\x01\x92\x41k\x12\x1cGet information about a test\x1a\x42Returns configuration and status for the requested synthetic test.*\x07GetTest\xf2\xd7\x02\x15\x61\x64min.synthetics:read\x92\xd8\x02\x15synthetics.test::read\x82\xd3\xe4\x93\x02 \x12\x1e/synthetics/v202309/tests/{id}\x12\xaa\x02\n\nUpdateTest\x12,.kentik.synthetics.v202309.UpdateTestRequest\x1a-.kentik.synthetics.v202309.UpdateTestResponse\"\xbe\x01\x92\x41X\x12\x1eUpdate configuration of a test\x1a*Updates configuration of a synthetic test.*\nUpdateTest\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x92\xd8\x02\x17synthetics.test::update\x82\xd3\xe4\x93\x02(\x1a#/synthetics/v202309/tests/{test.id}:\x01*\x12\xcc\x02\n\nDeleteTest\x12,.kentik.synthetics.v202309.DeleteTestRequest\x1a-.kentik.synthetics.v202309.DeleteTestResponse\"\xe0\x01\x92\x41\x81\x01\x12\x18\x44\x65lete a synthetic test.\x1aYDeletes the synthetics test. All accumulated results for the test cease to be accessible.*\nDeleteTest\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x92\xd8\x02\x17synthetics.test::delete\x82\xd3\xe4\x93\x02 *\x1e/synthetics/v202309/tests/{id}\x12\xb2\x02\n\rSetTestStatus\x12/.kentik.synthetics.v202309.SetTestStatusRequest\x1a\x30.kentik.synthetics.v202309.SetTestStatusResponse\"\xbd\x01\x92\x41U\x12!Update status of a synthetic test\x1a!Update status of a synthetic test*\rSetTestStatus\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x92\xd8\x02\x17synthetics.test::update\x82\xd3\xe4\x93\x02*\x1a%/synthetics/v202309/tests/{id}/status:\x01*\x12\xc2\x02\n\x10\x43reateAgentAlert\x12\x32.kentik.synthetics.v202309.CreateAgentAlertRequest\x1a\x33.kentik.synthetics.v202309.CreateAgentAlertResponse\"\xc4\x01\x92\x41\x61\x12#Create an agent alert configuration\x1a(Creates a new agent alert configuration.*\x10\x43reateAgentAlert\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x92\xd8\x02\x18synthetics.agent::create\x82\xd3\xe4\x93\x02$\"\x1f/synthetics/v202309/agentAlerts:\x01*\x12\x89\x03\n\x10UpdateAgentAlert\x12\x32.kentik.synthetics.v202309.UpdateAgentAlertRequest\x1a\x33.kentik.synthetics.v202309.UpdateAgentAlertResponse\"\x8b\x02\x92\x41\xa2\x01\x12#Update an agent alert configuration\x1aiUpdates an existing agent alert configuration with the time threshold and notification channels provided.*\x10UpdateAgentAlert\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x92\xd8\x02\x18synthetics.agent::update\x82\xd3\xe4\x93\x02)\x1a$/synthetics/v202309/agentAlerts/{id}:\x01*\x12\xba\x02\n\rGetAgentAlert\x12/.kentik.synthetics.v202309.GetAgentAlertRequest\x1a\x30.kentik.synthetics.v202309.GetAgentAlertResponse\"\xc5\x01\x92\x41\x63\x12 Get an agent alert configuration\x1a\x30Retrieves an existing agent alert configuration.*\rGetAgentAlert\xf2\xd7\x02\x15\x61\x64min.synthetics:read\x92\xd8\x02\x16synthetics.agent::read\x82\xd3\xe4\x93\x02&\x12$/synthetics/v202309/agentAlerts/{id}\x12\xde\x02\n\x0fListAgentAlerts\x12\x31.kentik.synthetics.v202309.ListAgentAlertsRequest\x1a\x32.kentik.synthetics.v202309.ListAgentAlertsResponse\"\xe3\x01\x92\x41\x85\x01\x12\x1fList agent alert configurations\x1aQLists all agent alert configurations, optionally filtered by a list of agent ids.*\x0fListAgentAlerts\xf2\xd7\x02\x15\x61\x64min.synthetics:read\x92\xd8\x02\x16synthetics.agent::read\x82\xd3\xe4\x93\x02!\x12\x1f/synthetics/v202309/agentAlerts\x12\xca\x02\n\x10\x44\x65leteAgentAlert\x12\x32.kentik.synthetics.v202309.DeleteAgentAlertRequest\x1a\x33.kentik.synthetics.v202309.DeleteAgentAlertResponse\"\xcc\x01\x92\x41g\x12#Delete an agent alert configuration\x1a.Deletes an existing agent alert configuration.*\x10\x44\x65leteAgentAlert\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x92\xd8\x02\x18synthetics.agent::delete\x82\xd3\xe4\x93\x02&*$/synthetics/v202309/agentAlerts/{id}\x1a.\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\x10\x61\x64min.synthetics\x90\xd8\x02\x03\x42\xf8@ZOgithub.com/kentik/api-schema-public/gen/go/kentik/synthetics/v202309;synthetics\x92\x41\xa3@\x12\xb9>\n\x19Synthetics Monitoring API\x12\xcb=# Overview\nThe Synthetics Monitoring API provides programmatic access to Kentik\'s [synthetic monitoring system](https://kb.kentik.com/v4/Ma00.htm). The API consists of two endpoints:\n| Endpoint | Purpose |\n|-----------|---------|\n| SyntheticsAdminService | CRUD operations for synthetic tests, agents, and offline agent alerts |\n| SyntheticsDataService  | Retrieval of synthetic test results and network traces |\n\nBoth REST endpoint and gRPC RPCs are provided.\nNote: API version v202309 is the same as v202202 except that the timestamps returned for synthetic test results are closer to when the test was actually run.\n### Known Limitations\nThe API currently does not support the following [Synthetic Test Types](https://kb.kentik.com/v4/Ma00.htm#Ma00-Synthetic_Test_Types):\n* BGP Monitor tests, which are supported in a [separate API](https://github.com/kentik/api-schema-public/blob/master/proto/kentik/bgp_monitoring/v202205beta1/bgp_monitoring.proto)\n* Transaction tests.\n\n### Additional Public Resources\nKentik community [Python](https://github.com/kentik/community_sdk_python) and [Go](https://github.com/kentik/community_sdk_golang) SDKs provide language-specific support for using this and other Kentik APIs. These SDKs can be also used as example code for development. \n A [Terraform provider](https://registry.terraform.io/providers/kentik/kentik-synthetics) is available for configuring tests and agents for Kentik synthetic monitoring.\n# Anatomy of a Synthetic Test\nEach `Test` consists of one or more tasks. Tasks are executed by monitoring `Agents` that send synthetic traffic (probes) over the network. The API currently supports following tasks:\n| Task name  | Purpose |\n|------------|---------|\n| ping       | Test basic address, and optionally TCP port reachability |\n| traceroute (a.k.a. trace)| Discover unidirectional network path |\n| http | Perform a simple HTTP/HTTPS request |\n| page-load | Use headless Chromium to execute an HTTP/HTTPS request |\n| dns | Execute a DNS query|\n\nThe set of tasks executed on behalf of a given test depends on the `type` of that test. The following test types are currently supported by the API:\n| API type | Portal (UI) equivalent | Tasks |\n|---------------|--------------|-------|\n| ip | IP Address | ping, traceroute |\n| hostname | Hostname | ping, traceroute |\n| network_grid | Network Grid | ping, traceroute |\n| agent | Agent-to-Agent | ping, traceroute |\n| network_mesh | Network Mesh | ping, traceroute |\n| flow | Autonomous Tests (5 variants) | ping, traceroute |\n| url | HTTP(S) or API | http, ping (optional), traceroute (optional) |\n| page_load | Page Load | page-load, ping (optional), traceroute (optional) |\n| dns | DNS Server Monitor | dns |\n| dns_grid | DNS Server Grid | dns |\n\n***Note:*** `ping` and `traceroute` tasks are always run together (never one without the other).\n\n# Test Attributes and Settings\nThe attributes of the test object enable configuration of test settings, access to test metadata, and access to runtime state information.\n### State and Metadata Attributes\n The following table lists the metadata and state attributes:\n| Attribute | Access | Purpose |\n|-----------|--------|---------|\n| id | RO | System-generated unique identifier of the test |\n| name | RW | User specified name for the test (need not be unique) |\n| type | RO (after creation) | Type of the test (set on creation; read-only thereafter) |\n| status | RW | Life-cycle status of the test |\n| cdate | RO | Creation timestamp |\n| edate | RO | Last-modification timestamp |\n| created_by | RO | Identity of the user that created the test |\n| last_updated_by | RO | Identity of the latest user to modify the test |\n| labels | RW | List of names of labels applied to the test |\n\nTest configuration is performed via the test\'s `settings` attribute. Some settings are common to all tests while others are specific to tests of a given type.\n### Common Test Settings\nThe following settings are used for tests of all types:\n| Attribute | Purpose | Required |\n|-----------|---------|----------|\n| agentIds  | IDs of agents to execute tasks for the test | YES |\n| period | Test execution interval in seconds | NO (default 60s) |\n| family | IP address family. Used only for tests whose type is url or dns. Selects which type of DNS resource is queried for resolving hostname to target address | NO (default IP_FAMILY_DUAL) |\n| notificationChannels | List of notification channels for the test | NO (default empty list) |\n| healthSettings | A HealthSettings object that configures health settings for this test, which includes metric thresholds that define health status (warning and critical) and trigger associated alarms. | YES |\n| ping | A TestPingSettings object that configures the ping task of the test | NO (default depends on test type) |\n| trace | A TestTraceSettings object that configures the trace task of the test | NO (default depends on test type) |\n| tasks | List of names of the tasks that will be executed for this test | YES |\n\n### Type-specific Settings\nEach test type has its own configuration object that represents the settings for that type. These type-specific objects are referenced by the attributes in `Test.settings`:\n| Test type    | Settings attribute | Configuration object |\n|--------------|-------------------------|---------------------------|\n| ip           | ip                      | IpTest                    |\n| hostname     | hostname                | HostnameTest              |\n| network_grid | networkGrid             | IpTest                    |\n| agent        | agent                   | AgentTest                 |\n| network_mesh | networkMesh             | NetworkMeshTest           |\n| flow         | flow                    | FlowTest                  |\n| url          | url                     | UrlTest                   |\n| page_load    | pageLoad                | PageLoadTest              |\n| dns          | dns                     | DnsTest                   |\n| dns_grid     | dnsGrid                 | DnsTest                   |\n\n# Test Results\nResults of synthetic tests are returned as a sequence of `TestResults` objects. Each such object represents measurements and health evaluation for a single test at specific point in time. Measurements and health evaluation are grouped by agent and by task.\nGranularity of timestamps in test results depends on the frequency (period) of the test and on the requested time range. The minimum granularity is 1 minute (even when period < 1 minute). The longer the time range, the lower the granularity.\n# Network Traces\nSynthetic tests that include the `traceroute` task collect the unidirectional network path from the agent to the target for each agent/target pair. The trace data are returned in the `GetTraceForTestResponse` object. The `paths` attribute of this object contains the collected network path for each agent/target pair and the round-trip time (RTT) to each hop.\nHops in actual network traces are identified by a `nodeId`. The mapping of node IDs to address, name, location, and other attributes of the hop is provided in a map that is stored in the `nodes` attribute of the `GetTraceForTestResponse` object.\n# Agents\nThe Kentik synthetic monitoring system recognizes 2 types of agents:\n* **Global** (public): Managed by Kentik and available to every Kentik user. All information about global agents in this API is read-only.\n* **Private**: Deployed by each customer and available only to that customer.\nTo be visible in this API, a private agent must first associate itself with a customer account by contacting the Kentik system (via private API). Once the agent is associated it can be authorized via the API by changing its `status` to `AGENT_STATUS_OK`. For more information about private agent deployment, see [**Synthetic Agent Deployments**](https://kb.kentik.com/v4/Ma01.htm#Ma01-Synthetic_Agent_Deployments).\n\"E\n\x16Kentik API Engineering\x12+https://github.com/kentik/api-schema-public2\x07v202309*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r`\n\"Kentik synthetic monitoring system\x12:https://kb.kentik.com/v4/Ma00.htm#Ma00-Synthetics_Overviewb\x06proto3'
+  serialized_pb=b'\n*kentik/synthetics/v202309/synthetics.proto\x12\x19kentik.synthetics.v202309\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a%kentik/core/v202303/annotations.proto\x1a#kentik/core/v202303/user_info.proto\"\xc9\x03\n\x0f\x44isabledMetrics\x12!\n\x0cping_latency\x18\x01 \x01(\x08R\x0bpingLatency\x12\x1f\n\x0bping_jitter\x18\x02 \x01(\x08R\npingJitter\x12(\n\x10ping_packet_loss\x18\x03 \x01(\x08R\x0epingPacketLoss\x12!\n\x0chttp_latency\x18\x04 \x01(\x08R\x0bhttpLatency\x12!\n\x0chttp_headers\x18\x05 \x01(\x08R\x0bhttpHeaders\x12\x1d\n\nhttp_codes\x18\x06 \x01(\x08R\thttpCodes\x12(\n\x10http_cert_expiry\x18\x07 \x01(\x08R\x0ehttpCertExpiry\x12/\n\x13transaction_latency\x18\x08 \x01(\x08R\x12transactionLatency\x12\x1f\n\x0b\x64ns_latency\x18\t \x01(\x08R\ndnsLatency\x12\x1b\n\tdns_codes\x18\n \x01(\x08R\x08\x64nsCodes\x12\x17\n\x07\x64ns_ips\x18\x0b \x01(\x08R\x06\x64nsIps\x12\x31\n\x14throughput_bandwidth\x18\x0c \x01(\x08R\x13throughputBandwidth\"\xf7\x0e\n\x05\x41gent\x12\x37\n\x02id\x18\x01 \x01(\tB\'\x92\x41 2\x1eUnique identifier of the agent\xe2\x41\x01\x03R\x02id\x12I\n\tsite_name\x18\x02 \x01(\tB,\x92\x41)2\'Name of the site where agent is locatedR\x08siteName\x12W\n\x06status\x18\x03 \x01(\x0e\x32&.kentik.synthetics.v202309.AgentStatusB\x17\x92\x41\x14\x32\x12Operational statusR\x06status\x12\x46\n\x05\x61lias\x18\x04 \x01(\tB0\x92\x41-2+User selected descriptive name of the agentR\x05\x61lias\x12=\n\x04type\x18\x05 \x01(\tB)\x92\x41\"2 Type of agent (global | private)\xe2\x41\x01\x03R\x04type\x12\x42\n\x02os\x18\x06 \x01(\tB2\x92\x41+2)OS version of server/VM hosting the agent\xe2\x41\x01\x03R\x02os\x12I\n\x02ip\x18\x07 \x01(\tB9\x18\x01\x92\x41\x30\x32.Public IP address of the agent (auto-detected)\xe2\x41\x01\x03R\x02ip\x12L\n\x03lat\x18\x08 \x01(\x01\x42:\x92\x41\x37\x32\x35Latitude of agent\'s location (signed decimal degrees)R\x03lat\x12O\n\x04long\x18\t \x01(\x01\x42;\x92\x41\x38\x32\x36Longitude of agent\'s location (signed decimal degrees)R\x04long\x12i\n\x0blast_authed\x18\n \x01(\x0b\x32\x1a.google.protobuf.TimestampB,\x92\x41%2#Timestamp of the last authorization\xe2\x41\x01\x03R\nlastAuthed\x12j\n\x06\x66\x61mily\x18\x0b \x01(\x0e\x32#.kentik.synthetics.v202309.IPFamilyB-\x92\x41*2(IP address family supported by the agentR\x06\x66\x61mily\x12\x42\n\x03\x61sn\x18\x0c \x01(\rB0\x92\x41-2+ASN of the AS owning agent\'s public addressR\x03\x61sn\x12X\n\x07site_id\x18\r \x01(\tB?\x92\x41<2:ID of the site hosting the agent (if configured in Kentik)R\x06siteId\x12@\n\x07version\x18\x0e \x01(\tB&\x92\x41\x1f\x32\x1dSoftware version of the agent\xe2\x41\x01\x03R\x07version\x12\x38\n\x04\x63ity\x18\x10 \x01(\tB$\x92\x41!2\x1f\x43ity where the agent is locatedR\x04\x63ity\x12\x44\n\x06region\x18\x11 \x01(\tB,\x92\x41)2\'Geographical region of agent\'s locationR\x06region\x12:\n\x07\x63ountry\x18\x12 \x01(\tB \x92\x41\x1d\x32\x1b\x43ountry of agent\'s locationR\x07\x63ountry\x12K\n\x08test_ids\x18\x13 \x03(\tB0\x92\x41)2\'IDs of user\'s test running on the agent\xe2\x41\x01\x03R\x07testIds\x12\x42\n\x08local_ip\x18\x14 \x01(\tB\'\x18\x01\x92\x41\"2 Internal IP address of the agentR\x07localIp\x12O\n\x0c\x63loud_region\x18\x16 \x01(\tB,\x92\x41)2\'Cloud region (if any) hosting the agentR\x0b\x63loudRegion\x12U\n\x0e\x63loud_provider\x18\x17 \x01(\tB.\x92\x41+2)Cloud provider (if any) hosting the agentR\rcloudProvider\x12M\n\nagent_impl\x18\x18 \x01(\x0e\x32(.kentik.synthetics.v202309.ImplementTypeB\x04\xe2\x41\x01\x03R\tagentImpl\x12N\n\x06labels\x18\x19 \x03(\tB6\x92\x41\x33\x32\x31List of names of labels associated with the agentR\x06labels\x12\x90\x01\n\x08metadata\x18\x1a \x01(\x0b\x32(.kentik.synthetics.v202309.AgentMetadataBJ\x92\x41G2EAdditional information about agent\'s configuration and run-time stateR\x08metadata\"\xea\x04\n\rAgentMetadata\x12\x8b\x01\n\x16private_ipv4_addresses\x18\x01 \x03(\x0b\x32\x30.kentik.synthetics.v202309.AgentMetadata.IpValueB#\x92\x41 2\x1eList of private IPv4 addressesR\x14privateIpv4Addresses\x12\x8c\x01\n\x15public_ipv4_addresses\x18\x02 \x03(\x0b\x32\x30.kentik.synthetics.v202309.AgentMetadata.IpValueB&\x92\x41\x1f\x32\x1dList of public IPv4 addresses\xe2\x41\x01\x03R\x13publicIpv4Addresses\x12\x8b\x01\n\x16private_ipv6_addresses\x18\x03 \x03(\x0b\x32\x30.kentik.synthetics.v202309.AgentMetadata.IpValueB#\x92\x41 2\x1eList of private IPv6 addressesR\x14privateIpv6Addresses\x12\x8c\x01\n\x15public_ipv6_addresses\x18\x04 \x03(\x0b\x32\x30.kentik.synthetics.v202309.AgentMetadata.IpValueB&\x92\x41\x1f\x32\x1dList of public IPv6 addresses\xe2\x41\x01\x03R\x13publicIpv6Addresses\x1a\x1f\n\x07IpValue\x12\x14\n\x05value\x18\x01 \x01(\tR\x05value\"\xb6\x06\n\x04Test\x12.\n\x02id\x18\x01 \x01(\tB\x1e\x92\x41\x17\x32\x15Unique ID of the test\xe2\x41\x01\x03R\x02id\x12\x37\n\x04name\x18\x02 \x01(\tB#\x92\x41 2\x1eUser selected name of the testR\x04name\x12)\n\x04type\x18\x03 \x01(\tB\x15\x92\x41\x12\x32\x10Type of the testR\x04type\x12\x62\n\x06status\x18\x05 \x01(\x0e\x32%.kentik.synthetics.v202309.TestStatusB#\x92\x41 2\x1eOperational status of the testR\x06status\x12\\\n\x08settings\x18\x06 \x01(\x0b\x32\'.kentik.synthetics.v202309.TestSettingsB\x17\x92\x41\x14\x32\x12Test configurationR\x08settings\x12S\n\x05\x63\x64\x61te\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.TimestampB!\x92\x41\x1a\x32\x18\x43reation timestamp (UTC)\xe2\x41\x01\x03R\x05\x63\x64\x61te\x12\\\n\x05\x65\x64\x61te\x18\x08 \x01(\x0b\x32\x1a.google.protobuf.TimestampB*\x92\x41#2!Last modification timestamp (UTC)\xe2\x41\x01\x03R\x05\x65\x64\x61te\x12_\n\ncreated_by\x18\t \x01(\x0b\x32\x1d.kentik.core.v202303.UserInfoB!\x92\x41\x1a\x32\x18Identity of test creator\xe2\x41\x01\x03R\tcreatedBy\x12\x7f\n\x0flast_updated_by\x18\n \x01(\x0b\x32\x1d.kentik.core.v202303.UserInfoB8\x92\x41\x31\x32/Identity of use that has modified the test last\xe2\x41\x01\x03R\rlastUpdatedBy\x12\x43\n\x06labels\x18\x0b \x03(\tB+\x92\x41(2&Set of labels associated with the testR\x06labels\"\xd7\r\n\x0cTestSettings\x12\x45\n\x08hostname\x18\x01 \x01(\x0b\x32\'.kentik.synthetics.v202309.HostnameTestH\x00R\x08hostname\x12\x33\n\x02ip\x18\x02 \x01(\x0b\x32!.kentik.synthetics.v202309.IpTestH\x00R\x02ip\x12<\n\x05\x61gent\x18\x03 \x01(\x0b\x32$.kentik.synthetics.v202309.AgentTestH\x00R\x05\x61gent\x12\x39\n\x04\x66low\x18\x04 \x01(\x0b\x32#.kentik.synthetics.v202309.FlowTestH\x00R\x04\x66low\x12\x36\n\x03\x64ns\x18\x05 \x01(\x0b\x32\".kentik.synthetics.v202309.DnsTestH\x00R\x03\x64ns\x12\x36\n\x03url\x18\x06 \x01(\x0b\x32\".kentik.synthetics.v202309.UrlTestH\x00R\x03url\x12\x46\n\x0cnetwork_grid\x18\x07 \x01(\x0b\x32!.kentik.synthetics.v202309.IpTestH\x00R\x0bnetworkGrid\x12\x46\n\tpage_load\x18\x08 \x01(\x0b\x32\'.kentik.synthetics.v202309.PageLoadTestH\x00R\x08pageLoad\x12?\n\x08\x64ns_grid\x18\t \x01(\x0b\x32\".kentik.synthetics.v202309.DnsTestH\x00R\x07\x64nsGrid\x12O\n\x0cnetwork_mesh\x18\x12 \x01(\x0b\x32*.kentik.synthetics.v202309.NetworkMeshTestH\x00R\x0bnetworkMesh\x12[\n\tagent_ids\x18\n \x03(\tB>\x92\x41;29IDs of agents assigned to run tasks on behalf of the testR\x08\x61gentIds\x12\x41\n\x05tasks\x18\x0b \x03(\tB+\x92\x41(2&List of task names to run for the testR\x05tasks\x12\xa9\x01\n\x0fhealth_settings\x18\x0c \x01(\x0b\x32).kentik.synthetics.v202309.HealthSettingsBU\x92\x41R2PHealth evaluation thresholds, acceptable responses and alarm activation settingsR\x0ehealthSettings\x12i\n\x04ping\x18\r \x01(\x0b\x32+.kentik.synthetics.v202309.TestPingSettingsB(\x92\x41%2#Ping tasks configuration parametersR\x04ping\x12q\n\x05trace\x18\x0e \x01(\x0b\x32,.kentik.synthetics.v202309.TestTraceSettingsB-\x92\x41*2(Traceroute task configuration parametersR\x05trace\x12@\n\x06period\x18\x0f \x01(\rB(\x92\x41%2#Test evaluation period (in seconds)R\x06period\x12\x81\x01\n\x06\x66\x61mily\x18\x10 \x01(\x0e\x32#.kentik.synthetics.v202309.IPFamilyBD\x92\x41\x41\x32?IP address family to select from available DNS name resolutionsR\x06\x66\x61mily\x12\x7f\n\x15notification_channels\x18\x11 \x03(\tBJ\x92\x41G2EList of IDs of notification channels for alarms triggered by the testR\x14notificationChannels\x12>\n\x05notes\x18\x13 \x01(\tB(\x92\x41%2#Add a note or comment for this testR\x05notes\x12\x80\x01\n\nthroughput\x18\x14 \x01(\x0b\x32\x31.kentik.synthetics.v202309.TestThroughputSettingsB-\x92\x41*2(Throughput task configuration parametersR\nthroughputB\x0c\n\ndefinition\"\xcc\x03\n\x10TestPingSettings\x12K\n\x05\x63ount\x18\x01 \x01(\rB5\x92\x41\x32\x32\x30Number of probe packets to send in one iterationR\x05\x63ount\x12G\n\x08protocol\x18\x02 \x01(\tB+\x92\x41(2&Transport protocol to use (icmp | tcp)R\x08protocol\x12\x46\n\x04port\x18\x03 \x01(\rB2\x92\x41/2-Target port for TCP probes (ignored for ICMP)R\x04port\x12P\n\x07timeout\x18\x04 \x01(\rB6\x92\x41\x33\x32\x31Timeout in milliseconds for execution of the taskR\x07timeout\x12<\n\x05\x64\x65lay\x18\x05 \x01(\x02\x42&\x92\x41#2!Inter-probe delay in millisecondsR\x05\x64\x65lay\x12J\n\x04\x64scp\x18\x06 \x01(\rB6\x92\x41\x33\x32\x31\x44SCP code to be set in IP header of probe packetsR\x04\x64scp\"\xa9\x04\n\x11TestTraceSettings\x12K\n\x05\x63ount\x18\x01 \x01(\rB5\x92\x41\x32\x32\x30Number of probe packets to send in one iterationR\x05\x63ount\x12M\n\x08protocol\x18\x02 \x01(\tB1\x92\x41.2,Transport protocol to use (icmp | tcp | udp)R\x08protocol\x12M\n\x04port\x18\x03 \x01(\rB9\x92\x41\x36\x32\x34Target port for TCP or UDP probes (ignored for ICMP)R\x04port\x12P\n\x07timeout\x18\x04 \x01(\rB6\x92\x41\x33\x32\x31Timeout in milliseconds for execution of the taskR\x07timeout\x12M\n\x05limit\x18\x05 \x01(\rB7\x92\x41\x34\x32\x32Maximum number of hops to probe (i.e. maximum TTL)R\x05limit\x12<\n\x05\x64\x65lay\x18\x06 \x01(\x02\x42&\x92\x41#2!Inter-probe delay in millisecondsR\x05\x64\x65lay\x12J\n\x04\x64scp\x18\x07 \x01(\rB6\x92\x41\x33\x32\x31\x44SCP code to be set in IP header of probe packetsR\x04\x64scp\"\xa0\x04\n\x16TestThroughputSettings\x12p\n\x04port\x18\x01 \x01(\rB\\\x92\x41Y2WTarget port for TCP or UDP throughput task (the port the target server is listening on)R\x04port\x12X\n\x04omit\x18\x02 \x01(\rBD\x92\x41\x41\x32?(optional) Number of seconds to omit from the start of the testR\x04omit\x12@\n\x08\x64uration\x18\x03 \x01(\rB$\x92\x41!2\x1f\x44uration of the test in secondsR\x08\x64uration\x12\xaf\x01\n\tbandwidth\x18\x04 \x01(\rB\x90\x01\x92\x41\x8c\x01\x32\x89\x01(optional) Target bandwidth in Mbps, if no bandwidth is specified, the test will measure the maximum bandwidth for TCP and 10Mbps for UDPR\tbandwidth\x12\x46\n\x08protocol\x18\x05 \x01(\tB*\x92\x41\'2%Transport protocol to use (tcp | udp)R\x08protocol\"\xc6\x03\n\x12\x41\x63tivationSettings\x12\x82\x01\n\x0cgrace_period\x18\x01 \x01(\tB_\x92\x41\\2ZPeriod of healthy status in minutes within the time window not cancelling alarm activationR\x0bgracePeriod\x12N\n\ttime_unit\x18\x02 \x01(\tB1\x92\x41.2,Time unit for specifying time window (m | h)R\x08timeUnit\x12]\n\x0btime_window\x18\x03 \x01(\tB<\x92\x41\x39\x32\x37Time window for evaluating of test for alarm activationR\ntimeWindow\x12|\n\x05times\x18\x04 \x01(\tBf\x92\x41\x63\x32\x61Number of occurrences of unhealthy test status within the time window triggering alarm activationR\x05times\"\xce\"\n\x0eHealthSettings\x12\x7f\n\x10latency_critical\x18\x01 \x01(\x02\x42T\x92\x41Q2OThreshold for ping response latency (in microseconds) to trigger critical alarmR\x0flatencyCritical\x12|\n\x0flatency_warning\x18\x02 \x01(\x02\x42S\x92\x41P2NThreshold for ping response latency (in microseconds) to trigger warning alarmR\x0elatencyWarning\x12v\n\x14packet_loss_critical\x18\x03 \x01(\x02\x42\x44\x92\x41\x41\x32?Threshold for ping packet loss (in %) to trigger critical alarmR\x12packetLossCritical\x12s\n\x13packet_loss_warning\x18\x04 \x01(\x02\x42\x43\x92\x41@2>Threshold for ping packet loss (in %) to trigger warning alarmR\x11packetLossWarning\x12s\n\x0fjitter_critical\x18\x05 \x01(\x02\x42J\x92\x41G2EThreshold for ping jitter (in microseconds) to trigger critical alarmR\x0ejitterCritical\x12q\n\x0ejitter_warning\x18\x06 \x01(\x02\x42J\x92\x41G2EThreshold for ping jitter (in microseconds) to trigger critical alarmR\rjitterWarning\x12\x88\x01\n\x15http_latency_critical\x18\x07 \x01(\x02\x42T\x92\x41Q2OThreshold for HTTP response latency (in microseconds) to trigger critical alarmR\x13httpLatencyCritical\x12\x85\x01\n\x14http_latency_warning\x18\x08 \x01(\x02\x42S\x92\x41P2NThreshold for HTTP response latency (in microseconds) to trigger warning alarmR\x12httpLatencyWarning\x12\x61\n\x10http_valid_codes\x18\t \x03(\rB7\x92\x41\x34\x32\x32List of HTTP status codes indicating healthy stateR\x0ehttpValidCodes\x12^\n\x0f\x64ns_valid_codes\x18\n \x03(\rB6\x92\x41\x33\x32\x31List of DNS status codes indicating healthy stateR\rdnsValidCodes\x12\xa2\x01\n\x17latency_critical_stddev\x18\x0b \x01(\x02\x42j\x92\x41g2eThreshold for standard deviation (in microseconds) of ping response latency to trigger critical alarmR\x15latencyCriticalStddev\x12\x9f\x01\n\x16latency_warning_stddev\x18\x0c \x01(\x02\x42i\x92\x41\x66\x32\x64Threshold for standard deviation (in microseconds) of ping response latency to trigger warning alarmR\x14latencyWarningStddev\x12\x96\x01\n\x16jitter_critical_stddev\x18\r \x01(\x02\x42`\x92\x41]2[Threshold for standard deviation of ping jitter (in microseconds) to trigger critical alarmR\x14jitterCriticalStddev\x12\x93\x01\n\x15jitter_warning_stddev\x18\x0e \x01(\x02\x42_\x92\x41\\2ZThreshold for standard deviation of ping jitter (in microseconds) to trigger warning alarmR\x13jitterWarningStddev\x12\xab\x01\n\x1chttp_latency_critical_stddev\x18\x0f \x01(\x02\x42j\x92\x41g2eThreshold for standard deviation of HTTP response latency (in microseconds) to trigger critical alarmR\x19httpLatencyCriticalStddev\x12\xa8\x01\n\x1bhttp_latency_warning_stddev\x18\x10 \x01(\x02\x42i\x92\x41\x66\x32\x64Threshold for standard deviation of HTTP response latency (in microseconds) to trigger warning alarmR\x18httpLatencyWarningStddev\x12\xaf\x01\n\x1bunhealthy_subtest_threshold\x18\x11 \x01(\rBo\x18\x01\x92\x41j2hNumber of tasks (across all agents) that must report unhealthy status in order for alarm to be triggeredR\x19unhealthySubtestThreshold\x12m\n\nactivation\x18\x12 \x01(\x0b\x32-.kentik.synthetics.v202309.ActivationSettingsB\x1e\x92\x41\x1b\x32\x19\x41larm activation settingsR\nactivation\x12\x8b\x01\n\x13\x63\x65rt_expiry_warning\x18\x13 \x01(\rB[\x92\x41X2VThreshold for remaining validity of TLS certificate (in days) to trigger warning alarmR\x11\x63\x65rtExpiryWarning\x12\x8e\x01\n\x14\x63\x65rt_expiry_critical\x18\x14 \x01(\rB\\\x92\x41Y2WThreshold for remaining validity of TLS certificate (in days) to trigger critical alarmR\x12\x63\x65rtExpiryCritical\x12\x88\x01\n\rdns_valid_ips\x18\x15 \x01(\tBd\x92\x41\x61\x32_Comma separated list of IP addresses expected to be received in response to DNS A or AAAA queryR\x0b\x64nsValidIps\x12\x85\x01\n\x14\x64ns_latency_critical\x18\x16 \x01(\x02\x42S\x92\x41P2NThreshold for DNS response latency (in microseconds) to trigger critical alarmR\x12\x64nsLatencyCritical\x12\x82\x01\n\x13\x64ns_latency_warning\x18\x17 \x01(\x02\x42R\x92\x41O2MThreshold for DNS response latency (in microseconds) to trigger warning alarmR\x11\x64nsLatencyWarning\x12\xa8\x01\n\x1b\x64ns_latency_critical_stddev\x18\x18 \x01(\x02\x42i\x92\x41\x66\x32\x64Threshold for standard deviation (in microseconds) of DNS response latency to trigger critical alarmR\x18\x64nsLatencyCriticalStddev\x12\xa5\x01\n\x1a\x64ns_latency_warning_stddev\x18\x19 \x01(\x02\x42h\x92\x41\x65\x32\x63Threshold for standard deviation (in microseconds) of DNS response latency to trigger warning alarmR\x17\x64nsLatencyWarningStddev\x12o\n\x12per_agent_alerting\x18\x1a \x01(\x08\x42\x41\x18\x01\x92\x41<2:Boolean value indicating whether to use per-agent alertingR\x10perAgentAlerting\x12\x91\x01\n\x10\x64isabled_metrics\x18\x1b \x01(\x0b\x32*.kentik.synthetics.v202309.DisabledMetricsB:\x92\x41\x37\x32\x35Set of metrics to be skipped during health evaluationR\x0f\x64isabledMetrics\x12Y\n\x0fhealth_disabled\x18\x1c \x01(\x08\x42\x30\x92\x41-2+Disable all health evaluation for this testR\x0ehealthDisabled\x12|\n\x13throughput_critical\x18\x1d \x01(\x02\x42K\x92\x41H2FThreshold for throughput bandwidth (in mbps) to trigger critical alarmR\x12throughputCritical\x12y\n\x12throughput_warning\x18\x1e \x01(\x02\x42J\x92\x41G2EThreshold for throughput bandwidth (in mbps) to trigger warning alarmR\x11throughputWarning\x12\x9f\x01\n\x1athroughput_critical_stddev\x18\x1f \x01(\x02\x42\x61\x92\x41^2\\Threshold for standard deviation (in mbps) of throughput bandwidth to trigger critical alarmR\x18throughputCriticalStddev\x12\x9c\x01\n\x19throughput_warning_stddev\x18  \x01(\x02\x42`\x92\x41]2[Threshold for standard deviation (in mbps) of throughput bandwidth to trigger warning alarmR\x17throughputWarningStddev\"X\n\x0cHostnameTest\x12H\n\x06target\x18\x01 \x01(\tB0\x92\x41-2+Fully qualified DNS name of the target hostR\x06target\"\xc8\x01\n\x06IpTest\x12>\n\x07targets\x18\x01 \x03(\tB$\x92\x41!2\x1fList of IP addresses of targetsR\x07targets\x12~\n\x0cuse_local_ip\x18\x02 \x01(\x08\x42\\\x92\x41Y2WBoolean value indicating whether to use local (private) IP address of the target agentsR\nuseLocalIp\"\xa5\x02\n\tAgentTest\x12\x33\n\x06target\x18\x01 \x01(\tB\x1b\x92\x41\x18\x32\x16ID of the target agentR\x06target\x12}\n\x0cuse_local_ip\x18\x02 \x01(\x08\x42[\x92\x41X2VBoolean value indicating whether to use local (private) IP address of the target agentR\nuseLocalIp\x12\x64\n\nreciprocal\x18\x03 \x01(\x08\x42\x44\x92\x41\x41\x32?Boolean value indicating whether to make the test bidirectionalR\nreciprocal\"\x8b\x07\n\x08\x46lowTest\x12\x87\x01\n\x06target\x18\x01 \x01(\tBo\x92\x41l2jTarget ASN, CDN, Country, Region of City for autonomous test (type of value depends on flow test sub-type)R\x06target\x12\x9e\x01\n\x1etarget_refresh_interval_millis\x18\x02 \x01(\rBY\x92\x41V2TPeriod (in milliseconds) for refreshing list of targets based on available flow dataR\x1btargetRefreshIntervalMillis\x12^\n\rmax_providers\x18\x03 \x01(\rB9\x92\x41\x36\x32\x34Maximum number of IP providers to track autonomouslyR\x0cmaxProviders\x12p\n\x0emax_ip_targets\x18\x04 \x01(\rBJ\x92\x41G2EMaximum number of target IP addresses to select based flow data queryR\x0cmaxIpTargets\x12W\n\x04type\x18\x05 \x01(\tBC\x92\x41@2>Autonomous test sub-type (asn | cdn | country | region | city)R\x04type\x12\xa8\x01\n\x0einet_direction\x18\x06 \x01(\tB\x80\x01\x92\x41}2{Selection of address from flow data (src = source address in inbound flows | dst = destination addresses in outbound flows)R\rinetDirection\x12~\n\tdirection\x18\x07 \x01(\tB`\x92\x41]2[Direction of flows to match target attribute for extraction of target addresses (src | dst)R\tdirection\"\xef\x02\n\x07\x44nsTest\x12>\n\x06target\x18\x01 \x01(\tB&\x92\x41#2!Fully qualified DNS name to queryR\x06target\x12\x46\n\x07timeout\x18\x02 \x01(\rB,\x18\x01\x92\x41\'2%--- Deprecated: value is ignored. ---R\x07timeout\x12g\n\x0brecord_type\x18\x03 \x01(\x0e\x32$.kentik.synthetics.v202309.DNSRecordB \x92\x41\x1d\x32\x1bType of DNS record to queryR\nrecordType\x12\x42\n\x07servers\x18\x04 \x03(\tB(\x92\x41%2#List of IP addresses of DNS serversR\x07servers\x12/\n\x04port\x18\x05 \x01(\rB\x1b\x92\x41\x18\x32\x16Target DNS server portR\x04port\"\xc6\x04\n\x07UrlTest\x12\x39\n\x06target\x18\x01 \x01(\tB!\x92\x41\x1e\x32\x1cHTTP or HTTPS URL to requestR\x06target\x12I\n\x07timeout\x18\x02 \x01(\rB/\x92\x41,2*HTTP transaction timeout (in milliseconds)R\x07timeout\x12Q\n\x06method\x18\x03 \x01(\tB9\x92\x41\x36\x32\x34HTTP method to use (GET | HEAD | PATCH | POST | PUT)R\x06method\x12\x7f\n\x07headers\x18\x04 \x03(\x0b\x32/.kentik.synthetics.v202309.UrlTest.HeadersEntryB4\x92\x41\x31\x32/Map of HTTP header values keyed by header namesR\x07headers\x12*\n\x04\x62ody\x18\x05 \x01(\tB\x16\x92\x41\x13\x32\x11HTTP request bodyR\x04\x62ody\x12y\n\x11ignore_tls_errors\x18\x06 \x01(\x08\x42M\x92\x41J2HBoolean indicating whether to ignore TLS certificate verification errorsR\x0fignoreTlsErrors\x1a:\n\x0cHeadersEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n\x05value\x18\x02 \x01(\tR\x05value:\x02\x38\x01\"\xac\x05\n\x0cPageLoadTest\x12\x39\n\x06target\x18\x01 \x01(\tB!\x92\x41\x1e\x32\x1cHTTP or HTTPS URL to requestR\x06target\x12I\n\x07timeout\x18\x02 \x01(\rB/\x92\x41,2*HTTP transaction timeout (in milliseconds)R\x07timeout\x12\x84\x01\n\x07headers\x18\x03 \x03(\x0b\x32\x34.kentik.synthetics.v202309.PageLoadTest.HeadersEntryB4\x92\x41\x31\x32/Map of HTTP header values keyed by header namesR\x07headers\x12y\n\x11ignore_tls_errors\x18\x04 \x01(\x08\x42M\x92\x41J2HBoolean indicating whether to ignore TLS certificate verification errorsR\x0fignoreTlsErrors\x12\x96\x01\n\rcss_selectors\x18\x05 \x03(\x0b\x32\x39.kentik.synthetics.v202309.PageLoadTest.CssSelectorsEntryB6\x92\x41\x33\x32\x31Map of CSS selector values keyed by selector nameR\x0c\x63ssSelectors\x1a:\n\x0cHeadersEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n\x05value\x18\x02 \x01(\tR\x05value:\x02\x38\x01\x1a?\n\x11\x43ssSelectorsEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n\x05value\x18\x02 \x01(\tR\x05value:\x02\x38\x01\"\x91\x01\n\x0fNetworkMeshTest\x12~\n\x0cuse_local_ip\x18\x01 \x01(\x08\x42\\\x92\x41Y2WBoolean value indicating whether to use local (private) IP address of the target agentsR\nuseLocalIp\"\xc7\x02\n\nMetricData\x12\x36\n\x07\x63urrent\x18\x01 \x01(\rB\x1c\x92\x41\x19\x32\x17\x43urrent value of metricR\x07\x63urrent\x12?\n\x0brolling_avg\x18\x02 \x01(\rB\x1e\x92\x41\x1b\x32\x19Rolling average of metricR\nrollingAvg\x12[\n\x0erolling_stddev\x18\x03 \x01(\rB4\x92\x41\x31\x32/Rolling average of standard deviation of metricR\rrollingStddev\x12\x63\n\x06health\x18\x04 \x01(\tBK\x92\x41H2FHealth evaluation status for the metric (healthy | warning | critical)R\x06health\"\xaf\x01\n\x0ePacketLossData\x12\x38\n\x07\x63urrent\x18\x01 \x01(\x01\x42\x1e\x92\x41\x1b\x32\x19\x43urrent packet loss valueR\x07\x63urrent\x12\x63\n\x06health\x18\x02 \x01(\tBK\x92\x41H2FHealth evaluation status for the metric (healthy | warning | critical)R\x06health\"\xd6\x03\n\x0bPingResults\x12\x45\n\x06target\x18\x01 \x01(\tB-\x92\x41*2(Hostname or address of the probed targetR\x06target\x12n\n\x0bpacket_loss\x18\x02 \x01(\x0b\x32).kentik.synthetics.v202309.PacketLossDataB\"\x92\x41\x1f\x32\x1dPacket loss metric and healthR\npacketLoss\x12\x66\n\x07latency\x18\x03 \x01(\x0b\x32%.kentik.synthetics.v202309.MetricDataB%\x92\x41\"2 Packet latency metric and healthR\x07latency\x12o\n\x06jitter\x18\x04 \x01(\x0b\x32%.kentik.synthetics.v202309.MetricDataB0\x92\x41-2+Latency jitter (variance) metric and healthR\x06jitter\x12\x37\n\x06\x64st_ip\x18\x05 \x01(\tB \x92\x41\x1d\x32\x1bIP address of probed targetR\x05\x64stIp\"\xf9\x01\n\x10HTTPResponseData\x12\x34\n\x06status\x18\x01 \x01(\rB\x1c\x92\x41\x19\x32\x17HTTP status in responseR\x06status\x12>\n\x04size\x18\x02 \x01(\rB*\x92\x41\'2%Total size of  received response bodyR\x04size\x12o\n\x04\x64\x61ta\x18\x03 \x01(\tB[\x92\x41X2VDetailed information about transaction timing, connection characteristics and responseR\x04\x64\x61ta\"\xe4\x02\n\x0bHTTPResults\x12.\n\x06target\x18\x01 \x01(\tB\x16\x92\x41\x13\x32\x11Target probed URLR\x06target\x12m\n\x07latency\x18\x02 \x01(\x0b\x32%.kentik.synthetics.v202309.MetricDataB,\x92\x41)2\'HTTP response latency metric and healthR\x07latency\x12v\n\x08response\x18\x04 \x01(\x0b\x32+.kentik.synthetics.v202309.HTTPResponseDataB-\x92\x41*2(Information about received HTTP responseR\x08response\x12>\n\x06\x64st_ip\x18\x05 \x01(\tB\'\x92\x41$2\"IP address of probed target serverR\x05\x64stIp\"\x87\x01\n\x0f\x44NSResponseData\x12\x30\n\x06status\x18\x01 \x01(\rB\x18\x92\x41\x15\x32\x13Received DNS statusR\x06status\x12\x42\n\x04\x64\x61ta\x18\x02 \x01(\tB.\x92\x41+2)Text rendering of received DNS resolutionR\x04\x64\x61ta\"\xdd\x02\n\nDNSResults\x12/\n\x06target\x18\x01 \x01(\tB\x17\x92\x41\x14\x32\x12Queried DNS recordR\x06target\x12:\n\x06server\x18\x02 \x01(\tB\"\x92\x41\x1f\x32\x1d\x44NS server used for the queryR\x06server\x12l\n\x07latency\x18\x03 \x01(\x0b\x32%.kentik.synthetics.v202309.MetricDataB+\x92\x41(2&DNS response latency metric and healthR\x07latency\x12t\n\x08response\x18\x05 \x01(\x0b\x32*.kentik.synthetics.v202309.DNSResponseDataB,\x92\x41)2\'Information about received DNS responseR\x08response\"\x83\x03\n\x0bTaskResults\x12\x65\n\x04ping\x18\x01 \x01(\x0b\x32&.kentik.synthetics.v202309.PingResultsB\'\x92\x41$2\"Entry containing ping task resultsH\x00R\x04ping\x12\x65\n\x04http\x18\x02 \x01(\x0b\x32&.kentik.synthetics.v202309.HTTPResultsB\'\x92\x41$2\"Entry containing HTTP task resultsH\x00R\x04http\x12\x61\n\x03\x64ns\x18\x03 \x01(\x0b\x32%.kentik.synthetics.v202309.DNSResultsB&\x92\x41#2!Entry containing DNS task resultsH\x00R\x03\x64ns\x12\x36\n\x06health\x18\x04 \x01(\tB\x1e\x92\x41\x1b\x32\x19Health status of the taskR\x06healthB\x0b\n\ttask_type\"\x9e\x02\n\x0c\x41gentResults\x12\x41\n\x08\x61gent_id\x18\x01 \x01(\tB&\x92\x41#2!ID of the agent providing resultsR\x07\x61gentId\x12\x62\n\x06health\x18\x02 \x01(\tBJ\x92\x41G2EOverall health status of all task for the test executed by this agentR\x06health\x12g\n\x05tasks\x18\x03 \x03(\x0b\x32&.kentik.synthetics.v202309.TaskResultsB)\x92\x41&2$List of results for individual tasksR\x05tasks\"\xea\x02\n\x0bTestResults\x12K\n\x07test_id\x18\x01 \x01(\tB2\x92\x41/2-ID of the test for which results are providedR\x06testId\x12L\n\x04time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x1c\x92\x41\x19\x32\x17Results timestamp (UTC)R\x04time\x12\x36\n\x06health\x18\x03 \x01(\tB\x1e\x92\x41\x1b\x32\x19Health status of the testR\x06health\x12\x87\x01\n\x06\x61gents\x18\x04 \x03(\x0b\x32\'.kentik.synthetics.v202309.AgentResultsBF\x92\x41\x43\x32\x41List of results from agents executing tasks on behalf of the testR\x06\x61gents\"\x81\x01\n\x05Stats\x12,\n\x07\x61verage\x18\x01 \x01(\x05\x42\x12\x92\x41\x0f\x32\rAverage valueR\x07\x61verage\x12$\n\x03min\x18\x02 \x01(\x05\x42\x12\x92\x41\x0f\x32\rMinimum valueR\x03min\x12$\n\x03max\x18\x03 \x01(\x05\x42\x12\x92\x41\x0f\x32\rMaximum valueR\x03max\"\xc1\x02\n\x08Location\x12\x43\n\x08latitude\x18\x08 \x01(\x01\x42\'\x92\x41$2\"Latitude in signed decimal degreesR\x08latitude\x12\x46\n\tlongitude\x18\t \x01(\x01\x42(\x92\x41%2#Longitude in signed decimal degreesR\tlongitude\x12\x36\n\x07\x63ountry\x18\x01 \x01(\tB\x1c\x92\x41\x19\x32\x17\x43ountry of the locationR\x07\x63ountry\x12\x41\n\x06region\x18\x02 \x01(\tB)\x92\x41&2$Geographic region within the countryR\x06region\x12-\n\x04\x63ity\x18\x03 \x01(\tB\x19\x92\x41\x16\x32\x14\x43ity of the locationR\x04\x63ity\"\x86\x05\n\x07NetNode\x12H\n\x02ip\x18\x02 \x01(\tB8\x92\x41\x35\x32\x33IP address of the node in standard textual notationR\x02ip\x12?\n\x03\x61sn\x18\x03 \x01(\rB-\x92\x41*2(AS number owning the address of the nodeR\x03\x61sn\x12K\n\x07\x61s_name\x18\x04 \x01(\tB2\x92\x41/2-Name of the AS owning the address of the nodeR\x06\x61sName\x12h\n\x08location\x18\x05 \x01(\x0b\x32#.kentik.synthetics.v202309.LocationB\'\x92\x41$2\"Location of IP address of the nodeR\x08location\x12Y\n\x08\x64ns_name\x18\x06 \x01(\tB>\x92\x41;29DNS name of the node (obtained by reverse DNS resolution)R\x07\x64nsName\x12\x66\n\tdevice_id\x18\x07 \x01(\tBI\x92\x41\x46\x32\x44ID of the device corresponding with the node in Kentik configurationR\x08\x64\x65viceId\x12v\n\x07site_id\x18\x08 \x01(\tB]\x92\x41Z2XID of the site containing the device corresponding with the node in Kentik configurationR\x06siteId\"\xf3\x01\n\x08TraceHop\x12v\n\x07latency\x18\x03 \x01(\x05\x42\\\x92\x41Y2WRound-trip packet latency to the node (in microseconds) - 0 if no response was receivedR\x07latency\x12o\n\x07node_id\x18\x05 \x01(\tBV\x92\x41S2QID of the node for this hop in the Nodes map  - empty if no response was receivedR\x06nodeId\"\xfc\x01\n\tPathTrace\x12:\n\x07\x61s_path\x18\x01 \x03(\x05\x42!\x92\x41\x1e\x32\x1c\x41S path of the network traceR\x06\x61sPath\x12Z\n\x0bis_complete\x18\x02 \x01(\x08\x42\x39\x92\x41\x36\x32\x34Indication whether response from target was receivedR\nisComplete\x12W\n\x04hops\x18\x06 \x03(\x0b\x32#.kentik.synthetics.v202309.TraceHopB\x1e\x92\x41\x1b\x32\x19List of hops in the traceR\x04hops\"\xa8\x04\n\x04Path\x12H\n\x08\x61gent_id\x18\x01 \x01(\tB-\x92\x41*2(ID of the agent generating the path dataR\x07\x61gentId\x12\x46\n\ttarget_ip\x18\x03 \x01(\tB)\x92\x41&2$IP address of the target of the pathR\x08targetIp\x12j\n\thop_count\x18\x04 \x01(\x0b\x32 .kentik.synthetics.v202309.StatsB+\x92\x41(2&Hop count statistics across all tracesR\x08hopCount\x12]\n\x12max_as_path_length\x18\x07 \x01(\x05\x42\x30\x92\x41-2+Maximum length of AS path across all tracesR\x0fmaxAsPathLength\x12]\n\x06traces\x18\x08 \x03(\x0b\x32$.kentik.synthetics.v202309.PathTraceB\x1f\x92\x41\x1c\x32\x1a\x44\x61ta for individual tracesR\x06traces\x12\x64\n\x04time\x18\t \x01(\x0b\x32\x1a.google.protobuf.TimestampB4\x92\x41\x31\x32/Timestamp (UTC) of initiation of the path traceR\x04time\"\x95\x05\n\x19GetResultsForTestsRequest\x12I\n\x03ids\x18\x01 \x03(\tB7\x92\x41\x30\x32.List of test IDs for which to retrieve results\xe2\x41\x01\x02R\x03ids\x12y\n\nstart_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampB>\x92\x41\x37\x32\x35Timestamp of the oldest results to include in results\xe2\x41\x01\x02R\tstartTime\x12u\n\x08\x65nd_time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.TimestampB>\x92\x41\x37\x32\x35Timestamp of the newest results to include in results\xe2\x41\x01\x02R\x07\x65ndTime\x12P\n\tagent_ids\x18\x04 \x03(\tB3\x92\x41\x30\x32.List of agent IDs from which to return resultsR\x08\x61gentIds\x12]\n\x07targets\x18\x05 \x03(\tBC\x92\x41@2>List of targets (test dependent) for which to retrieve resultsR\x07targets\x12\x89\x01\n\taggregate\x18\x06 \x01(\x08\x42k\x92\x41h2fIf true, retrieve result aggregated across the requested time period, else return complete time seriesR\taggregate\"^\n\x1aGetResultsForTestsResponse\x12@\n\x07results\x18\x01 \x03(\x0b\x32&.kentik.synthetics.v202309.TestResultsR\x07results\"\x8a\x04\n\x16GetTraceForTestRequest\x12M\n\x02id\x18\x01 \x01(\tB=\x92\x41:28ID of test for which to retrieve network path trace dataR\x02id\x12y\n\nstart_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampB>\x92\x41\x37\x32\x35Timestamp of the oldest results to include in results\xe2\x41\x01\x02R\tstartTime\x12u\n\x08\x65nd_time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.TimestampB>\x92\x41\x37\x32\x35Timestamp of the newest results to include in results\xe2\x41\x01\x02R\x07\x65ndTime\x12P\n\tagent_ids\x18\x04 \x03(\tB3\x92\x41\x30\x32.List of agent IDs from which to return resultsR\x08\x61gentIds\x12]\n\ntarget_ips\x18\x05 \x03(\tB>\x92\x41;29List of target IP addresses for which to retrieve resultsR\ttargetIps\"\xe6\x02\n\x17GetTraceForTestResponse\x12\x8b\x01\n\x05nodes\x18\x01 \x03(\x0b\x32=.kentik.synthetics.v202309.GetTraceForTestResponse.NodesEntryB6\x92\x41\x33\x32\x31Map of network node information keyed by node IDsR\x05nodes\x12_\n\x05paths\x18\x02 \x03(\x0b\x32\x1f.kentik.synthetics.v202309.PathB(\x92\x41%2#List of retrieved network path dataR\x05paths\x1a\\\n\nNodesEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x38\n\x05value\x18\x02 \x01(\x0b\x32\".kentik.synthetics.v202309.NetNodeR\x05value:\x02\x38\x01\"\x13\n\x11ListAgentsRequest\"\xd4\x01\n\x12ListAgentsResponse\x12W\n\x06\x61gents\x18\x01 \x03(\x0b\x32 .kentik.synthetics.v202309.AgentB\x1d\x92\x41\x1a\x32\x18List of available agentsR\x06\x61gents\x12\x65\n\rinvalid_count\x18\x02 \x01(\rB@\x92\x41=2;Number of invalid entries encountered while collecting dataR\x0cinvalidCount\"E\n\x0fGetAgentRequest\x12\x32\n\x02id\x18\x01 \x01(\tB\"\x92\x41\x1b\x32\x19ID of the requested agent\xe2\x41\x01\x02R\x02id\"t\n\x10GetAgentResponse\x12`\n\x05\x61gent\x18\x01 \x01(\x0b\x32 .kentik.synthetics.v202309.AgentB(\x92\x41%2#Agent configuration and status dataR\x05\x61gent\"k\n\x12UpdateAgentRequest\x12U\n\x05\x61gent\x18\x01 \x01(\x0b\x32 .kentik.synthetics.v202309.AgentB\x1d\x92\x41\x1a\x32\x18\x41gent configuration dataR\x05\x61gent\"w\n\x13UpdateAgentResponse\x12`\n\x05\x61gent\x18\x01 \x01(\x0b\x32 .kentik.synthetics.v202309.AgentB(\x92\x41%2#Agent configuration and status dataR\x05\x61gent\"L\n\x12\x44\x65leteAgentRequest\x12\x36\n\x02id\x18\x01 \x01(\tB&\x92\x41\x1f\x32\x1dID of the agent to be deleted\xe2\x41\x01\x02R\x02id\"\x15\n\x13\x44\x65leteAgentResponse\"\x12\n\x10ListTestsRequest\"\xe1\x01\n\x11ListTestsResponse\x12\x65\n\x05tests\x18\x01 \x03(\x0b\x32\x1f.kentik.synthetics.v202309.TestB.\x92\x41+2)List of configured active or paused testsR\x05tests\x12\x65\n\rinvalid_count\x18\x02 \x01(\rB@\x92\x41=2;Number of invalid entries encountered while collecting dataR\x0cinvalidCount\"j\n\x11\x43reateTestRequest\x12U\n\x04test\x18\x01 \x01(\x0b\x32\x1f.kentik.synthetics.v202309.TestB \x92\x41\x19\x32\x17Test configuration data\xe2\x41\x01\x02R\x04test\"r\n\x12\x43reateTestResponse\x12\\\n\x04test\x18\x01 \x01(\x0b\x32\x1f.kentik.synthetics.v202309.TestB\'\x92\x41$2\"Test configuration and status dataR\x04test\"?\n\x0eGetTestRequest\x12-\n\x02id\x18\x01 \x01(\tB\x1d\x92\x41\x16\x32\x14ID of requested test\xe2\x41\x01\x02R\x02id\"o\n\x0fGetTestResponse\x12\\\n\x04test\x18\x01 \x01(\x0b\x32\x1f.kentik.synthetics.v202309.TestB\'\x92\x41$2\"Test configuration and status dataR\x04test\"f\n\x11UpdateTestRequest\x12Q\n\x04test\x18\x01 \x01(\x0b\x32\x1f.kentik.synthetics.v202309.TestB\x1c\x92\x41\x19\x32\x17Test configuration dataR\x04test\"r\n\x12UpdateTestResponse\x12\\\n\x04test\x18\x01 \x01(\x0b\x32\x1f.kentik.synthetics.v202309.TestB\'\x92\x41$2\"Test configuration and status dataR\x04test\"J\n\x11\x44\x65leteTestRequest\x12\x35\n\x02id\x18\x01 \x01(\tB%\x92\x41\x1e\x32\x1cID of the test to be deleted\xe2\x41\x01\x02R\x02id\"\x14\n\x12\x44\x65leteTestResponse\"\xba\x01\n\x14SetTestStatusRequest\x12\x46\n\x02id\x18\x01 \x01(\tB6\x92\x41/2-ID of the test which status is to be modified\xe2\x41\x01\x02R\x02id\x12Z\n\x06status\x18\x02 \x01(\x0e\x32%.kentik.synthetics.v202309.TestStatusB\x1b\x92\x41\x14\x32\x12Target test status\xe2\x41\x01\x02R\x06status\"\x17\n\x15SetTestStatusResponse\"\xbd\x01\n\nAgentAlert\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12+\n\x11threshold_seconds\x18\x02 \x01(\rR\x10thresholdSeconds\x12\x38\n\x18notification_channel_ids\x18\x03 \x03(\tR\x16notificationChannelIds\x12\x19\n\x08\x61gent_id\x18\x04 \x01(\tR\x07\x61gentId\x12\x1d\n\nagent_name\x18\x05 \x01(\tR\tagentName\"\x9b\x01\n\x17\x43reateAgentAlertRequest\x12+\n\x11threshold_seconds\x18\x01 \x01(\rR\x10thresholdSeconds\x12\x38\n\x18notification_channel_ids\x18\x02 \x03(\tR\x16notificationChannelIds\x12\x19\n\x08\x61gent_id\x18\x03 \x01(\tR\x07\x61gentId\"b\n\x18\x43reateAgentAlertResponse\x12\x46\n\x0b\x61gent_alert\x18\x01 \x01(\x0b\x32%.kentik.synthetics.v202309.AgentAlertR\nagentAlert\"\x90\x01\n\x17UpdateAgentAlertRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12+\n\x11threshold_seconds\x18\x02 \x01(\rR\x10thresholdSeconds\x12\x38\n\x18notification_channel_ids\x18\x03 \x03(\tR\x16notificationChannelIds\"b\n\x18UpdateAgentAlertResponse\x12\x46\n\x0b\x61gent_alert\x18\x01 \x01(\x0b\x32%.kentik.synthetics.v202309.AgentAlertR\nagentAlert\"&\n\x14GetAgentAlertRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"_\n\x15GetAgentAlertResponse\x12\x46\n\x0b\x61gent_alert\x18\x01 \x01(\x0b\x32%.kentik.synthetics.v202309.AgentAlertR\nagentAlert\"5\n\x16ListAgentAlertsRequest\x12\x1b\n\tagent_ids\x18\x01 \x03(\tR\x08\x61gentIds\"c\n\x17ListAgentAlertsResponse\x12H\n\x0c\x61gent_alerts\x18\x01 \x03(\x0b\x32%.kentik.synthetics.v202309.AgentAlertR\x0b\x61gentAlerts\")\n\x17\x44\x65leteAgentAlertRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"\x1a\n\x18\x44\x65leteAgentAlertResponse*}\n\rImplementType\x12\x1e\n\x1aIMPLEMENT_TYPE_UNSPECIFIED\x10\x00\x12\x17\n\x13IMPLEMENT_TYPE_RUST\x10\x01\x12\x17\n\x13IMPLEMENT_TYPE_NODE\x10\x02\x12\x1a\n\x16IMPLEMENT_TYPE_NETWORK\x10\x03*]\n\x08IPFamily\x12\x19\n\x15IP_FAMILY_UNSPECIFIED\x10\x00\x12\x10\n\x0cIP_FAMILY_V4\x10\x01\x12\x10\n\x0cIP_FAMILY_V6\x10\x02\x12\x12\n\x0eIP_FAMILY_DUAL\x10\x03*\x8b\x01\n\nTestStatus\x12\x1b\n\x17TEST_STATUS_UNSPECIFIED\x10\x00\x12\x16\n\x12TEST_STATUS_ACTIVE\x10\x01\x12\x16\n\x12TEST_STATUS_PAUSED\x10\x02\x12\x17\n\x13TEST_STATUS_DELETED\x10\x03\x12\x17\n\x13TEST_STATUS_PREVIEW\x10\x04*q\n\x0b\x41gentStatus\x12\x1c\n\x18\x41GENT_STATUS_UNSPECIFIED\x10\x00\x12\x13\n\x0f\x41GENT_STATUS_OK\x10\x01\x12\x15\n\x11\x41GENT_STATUS_WAIT\x10\x02\x12\x18\n\x14\x41GENT_STATUS_DELETED\x10\x03*\xc8\x01\n\tDNSRecord\x12\x1a\n\x16\x44NS_RECORD_UNSPECIFIED\x10\x00\x12\x10\n\x0c\x44NS_RECORD_A\x10\x01\x12\x13\n\x0f\x44NS_RECORD_AAAA\x10\x02\x12\x14\n\x10\x44NS_RECORD_CNAME\x10\x03\x12\x14\n\x10\x44NS_RECORD_DNAME\x10\x04\x12\x11\n\rDNS_RECORD_NS\x10\x05\x12\x11\n\rDNS_RECORD_MX\x10\x06\x12\x12\n\x0e\x44NS_RECORD_PTR\x10\x07\x12\x12\n\x0e\x44NS_RECORD_SOA\x10\x08\x32\xca\x05\n\x15SyntheticsDataService\x12\xb3\x02\n\x12GetResultsForTests\x12\x34.kentik.synthetics.v202309.GetResultsForTestsRequest\x1a\x35.kentik.synthetics.v202309.GetResultsForTestsResponse\"\xaf\x01\x92\x41s\x12\x15Get results for tests\x1a\x46Returns probe results for a set of tests for specified period of time.*\x12GetResultsForTests\xf2\xd7\x02\x0fsynthetics:read\x82\xd3\xe4\x93\x02 \"\x1b/synthetics/v202309/results:\x01*\x12\xd0\x02\n\x0fGetTraceForTest\x12\x31.kentik.synthetics.v202309.GetTraceForTestRequest\x1a\x32.kentik.synthetics.v202309.GetTraceForTestResponse\"\xd5\x01\x92\x41\x9a\x01\x12!Get network trace data for a test\x1a\x64Get network trace data for a specific synthetic test. The test must have traceroute task configured.*\x0fGetTraceForTest\xf2\xd7\x02\x0fsynthetics:read\x82\xd3\xe4\x93\x02\x1e\"\x19/synthetics/v202309/trace:\x01*\x1a(\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\nsynthetics\x90\xd8\x02\x03\x32\x86&\n\x16SyntheticsAdminService\x12\xa7\x02\n\nListAgents\x12,.kentik.synthetics.v202309.ListAgentsRequest\x1a-.kentik.synthetics.v202309.ListAgentsResponse\"\xbb\x01\x92\x41\x63\x12\x15List available agents\x1a>Returns list of all synthetic agents available in the account.*\nListAgents\xf2\xd7\x02\x15\x61\x64min.synthetics:read\x92\xd8\x02\x16synthetics.agent::read\x82\xd3\xe4\x93\x02\x1c\x12\x1a/synthetics/v202309/agents\x12\xa7\x02\n\x08GetAgent\x12*.kentik.synthetics.v202309.GetAgentRequest\x1a+.kentik.synthetics.v202309.GetAgentResponse\"\xc1\x01\x92\x41\x64\x12\x1eGet information about an agent\x1a\x38Returns information about the requested synthetic agent.*\x08GetAgent\xf2\xd7\x02\x15\x61\x64min.synthetics:read\x92\xd8\x02\x16synthetics.agent::read\x82\xd3\xe4\x93\x02!\x12\x1f/synthetics/v202309/agents/{id}\x12\xb3\x02\n\x0bUpdateAgent\x12-.kentik.synthetics.v202309.UpdateAgentRequest\x1a..kentik.synthetics.v202309.UpdateAgentResponse\"\xc4\x01\x92\x41[\x12 Update configuration of an agent\x1a*Update configuration of a synthetic agent.*\x0bUpdateAgent\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x92\xd8\x02\x18synthetics.agent::update\x82\xd3\xe4\x93\x02*\x1a%/synthetics/v202309/agents/{agent.id}:\x01*\x12\xc9\x02\n\x0b\x44\x65leteAgent\x12-.kentik.synthetics.v202309.DeleteAgentRequest\x1a..kentik.synthetics.v202309.DeleteAgentResponse\"\xda\x01\x92\x41z\x12\x0f\x44\x65lete an agent\x1aZDeletes the requested agent. The deleted agent is removed from configuration of all tests.*\x0b\x44\x65leteAgent\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x92\xd8\x02\x18synthetics.agent::delete\x82\xd3\xe4\x93\x02!*\x1f/synthetics/v202309/agents/{id}\x12\x9f\x02\n\tListTests\x12+.kentik.synthetics.v202309.ListTestsRequest\x1a,.kentik.synthetics.v202309.ListTestsResponse\"\xb6\x01\x92\x41`\x12\x0eList all tests\x1a\x43Returns a list of all configured active and paused synthetic tests.*\tListTests\xf2\xd7\x02\x15\x61\x64min.synthetics:read\x92\xd8\x02\x15synthetics.test::read\x82\xd3\xe4\x93\x02\x1b\x12\x19/synthetics/v202309/tests\x12\xaa\x02\n\nCreateTest\x12,.kentik.synthetics.v202309.CreateTestRequest\x1a-.kentik.synthetics.v202309.CreateTestResponse\"\xbe\x01\x92\x41\x62\x12\rCreate a test\x1a\x45\x43reate synthetic test based on configuration provided in the request.*\nCreateTest\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x92\xd8\x02\x17synthetics.test::create\x82\xd3\xe4\x93\x02\x1e\"\x19/synthetics/v202309/tests:\x01*\x12\xa9\x02\n\x07GetTest\x12).kentik.synthetics.v202309.GetTestRequest\x1a*.kentik.synthetics.v202309.GetTestResponse\"\xc6\x01\x92\x41k\x12\x1cGet information about a test\x1a\x42Returns configuration and status for the requested synthetic test.*\x07GetTest\xf2\xd7\x02\x15\x61\x64min.synthetics:read\x92\xd8\x02\x15synthetics.test::read\x82\xd3\xe4\x93\x02 \x12\x1e/synthetics/v202309/tests/{id}\x12\xaa\x02\n\nUpdateTest\x12,.kentik.synthetics.v202309.UpdateTestRequest\x1a-.kentik.synthetics.v202309.UpdateTestResponse\"\xbe\x01\x92\x41X\x12\x1eUpdate configuration of a test\x1a*Updates configuration of a synthetic test.*\nUpdateTest\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x92\xd8\x02\x17synthetics.test::update\x82\xd3\xe4\x93\x02(\x1a#/synthetics/v202309/tests/{test.id}:\x01*\x12\xcc\x02\n\nDeleteTest\x12,.kentik.synthetics.v202309.DeleteTestRequest\x1a-.kentik.synthetics.v202309.DeleteTestResponse\"\xe0\x01\x92\x41\x81\x01\x12\x18\x44\x65lete a synthetic test.\x1aYDeletes the synthetics test. All accumulated results for the test cease to be accessible.*\nDeleteTest\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x92\xd8\x02\x17synthetics.test::delete\x82\xd3\xe4\x93\x02 *\x1e/synthetics/v202309/tests/{id}\x12\xb2\x02\n\rSetTestStatus\x12/.kentik.synthetics.v202309.SetTestStatusRequest\x1a\x30.kentik.synthetics.v202309.SetTestStatusResponse\"\xbd\x01\x92\x41U\x12!Update status of a synthetic test\x1a!Update status of a synthetic test*\rSetTestStatus\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x92\xd8\x02\x17synthetics.test::update\x82\xd3\xe4\x93\x02*\x1a%/synthetics/v202309/tests/{id}/status:\x01*\x12\xc2\x02\n\x10\x43reateAgentAlert\x12\x32.kentik.synthetics.v202309.CreateAgentAlertRequest\x1a\x33.kentik.synthetics.v202309.CreateAgentAlertResponse\"\xc4\x01\x92\x41\x61\x12#Create an agent alert configuration\x1a(Creates a new agent alert configuration.*\x10\x43reateAgentAlert\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x92\xd8\x02\x18synthetics.agent::create\x82\xd3\xe4\x93\x02$\"\x1f/synthetics/v202309/agentAlerts:\x01*\x12\x89\x03\n\x10UpdateAgentAlert\x12\x32.kentik.synthetics.v202309.UpdateAgentAlertRequest\x1a\x33.kentik.synthetics.v202309.UpdateAgentAlertResponse\"\x8b\x02\x92\x41\xa2\x01\x12#Update an agent alert configuration\x1aiUpdates an existing agent alert configuration with the time threshold and notification channels provided.*\x10UpdateAgentAlert\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x92\xd8\x02\x18synthetics.agent::update\x82\xd3\xe4\x93\x02)\x1a$/synthetics/v202309/agentAlerts/{id}:\x01*\x12\xba\x02\n\rGetAgentAlert\x12/.kentik.synthetics.v202309.GetAgentAlertRequest\x1a\x30.kentik.synthetics.v202309.GetAgentAlertResponse\"\xc5\x01\x92\x41\x63\x12 Get an agent alert configuration\x1a\x30Retrieves an existing agent alert configuration.*\rGetAgentAlert\xf2\xd7\x02\x15\x61\x64min.synthetics:read\x92\xd8\x02\x16synthetics.agent::read\x82\xd3\xe4\x93\x02&\x12$/synthetics/v202309/agentAlerts/{id}\x12\xde\x02\n\x0fListAgentAlerts\x12\x31.kentik.synthetics.v202309.ListAgentAlertsRequest\x1a\x32.kentik.synthetics.v202309.ListAgentAlertsResponse\"\xe3\x01\x92\x41\x85\x01\x12\x1fList agent alert configurations\x1aQLists all agent alert configurations, optionally filtered by a list of agent ids.*\x0fListAgentAlerts\xf2\xd7\x02\x15\x61\x64min.synthetics:read\x92\xd8\x02\x16synthetics.agent::read\x82\xd3\xe4\x93\x02!\x12\x1f/synthetics/v202309/agentAlerts\x12\xca\x02\n\x10\x44\x65leteAgentAlert\x12\x32.kentik.synthetics.v202309.DeleteAgentAlertRequest\x1a\x33.kentik.synthetics.v202309.DeleteAgentAlertResponse\"\xcc\x01\x92\x41g\x12#Delete an agent alert configuration\x1a.Deletes an existing agent alert configuration.*\x10\x44\x65leteAgentAlert\xf2\xd7\x02\x16\x61\x64min.synthetics:write\x92\xd8\x02\x18synthetics.agent::delete\x82\xd3\xe4\x93\x02&*$/synthetics/v202309/agentAlerts/{id}\x1a.\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\x10\x61\x64min.synthetics\x90\xd8\x02\x03\x42\xcb\x42ZOgithub.com/kentik/api-schema-public/gen/go/kentik/synthetics/v202309;synthetics\x92\x41\xf6\x41\x12\x8c@\n\x19Synthetics Monitoring API\x12\x9e?# Overview\nThe Synthetics Monitoring API provides programmatic access to Kentik\'s [synthetic monitoring system](https://kb.kentik.com/v4/Ma00.htm). The API consists of two endpoints:\n| Endpoint | Purpose |\n|-----------|---------|\n| SyntheticsAdminService | CRUD operations for synthetic tests, agents, and offline agent alerts |\n| SyntheticsDataService  | Retrieval of synthetic test results and network traces |\n\nBoth REST endpoint and gRPC RPCs are provided.\nNote: API version v202309 is the same as v202202 except that the timestamps returned for synthetic test results are closer to when the test was actually run.\n### Known Limitations\nThe API currently does not support the following [Synthetic Test Types](https://kb.kentik.com/v4/Ma00.htm#Ma00-Synthetic_Test_Types):\n* BGP Monitor tests, which are supported in a [separate API](https://github.com/kentik/api-schema-public/blob/master/proto/kentik/bgp_monitoring/v202205beta1/bgp_monitoring.proto)\n* Transaction tests.\n\n### Additional Public Resources\nKentik community [Python](https://github.com/kentik/community_sdk_python) and [Go](https://github.com/kentik/community_sdk_golang) SDKs provide language-specific support for using this and other Kentik APIs. These SDKs can be also used as example code for development. \n A [Terraform provider](https://registry.terraform.io/providers/kentik/kentik-synthetics) is available for configuring tests and agents for Kentik synthetic monitoring.\n# Anatomy of a Synthetic Test\nEach `Test` consists of one or more tasks. Tasks are executed by monitoring `Agents` that send synthetic traffic (probes) over the network. The API currently supports following tasks:\n| Task name  | Purpose |\n|------------|---------|\n| ping       | Test basic address, and optionally TCP port reachability |\n| traceroute (a.k.a. trace)| Discover unidirectional network path |\n| http | Perform a simple HTTP/HTTPS request |\n| page-load | Use headless Chromium to execute an HTTP/HTTPS request |\n| dns | Execute a DNS query|\n| throughput | Execute a throughput task to determine bandwidth |\n\nThe set of tasks executed on behalf of a given test depends on the `type` of that test. The following test types are currently supported by the API:\n| API type | Portal (UI) equivalent | Tasks |\n|---------------|--------------|-------|\n| ip | IP Address | ping, traceroute |\n| hostname | Hostname | ping, traceroute |\n| network_grid | Network Grid | ping, traceroute |\n| agent | Agent-to-Agent | ping, traceroute, throughput |\n| network_mesh | Network Mesh | ping, traceroute |\n| flow | Autonomous Tests (5 variants) | ping, traceroute |\n| url | HTTP(S) or API | http, ping (optional), traceroute (optional) |\n| page_load | Page Load | page-load, ping (optional), traceroute (optional) |\n| dns | DNS Server Monitor | dns |\n| dns_grid | DNS Server Grid | dns |\n\n***Note:*** `ping` and `traceroute` tasks are always run together (never one without the other).\n\n# Test Attributes and Settings\nThe attributes of the test object enable configuration of test settings, access to test metadata, and access to runtime state information.\n### State and Metadata Attributes\n The following table lists the metadata and state attributes:\n| Attribute | Access | Purpose |\n|-----------|--------|---------|\n| id | RO | System-generated unique identifier of the test |\n| name | RW | User specified name for the test (need not be unique) |\n| type | RO (after creation) | Type of the test (set on creation; read-only thereafter) |\n| status | RW | Life-cycle status of the test |\n| cdate | RO | Creation timestamp |\n| edate | RO | Last-modification timestamp |\n| created_by | RO | Identity of the user that created the test |\n| last_updated_by | RO | Identity of the latest user to modify the test |\n| labels | RW | List of names of labels applied to the test |\n\nTest configuration is performed via the test\'s `settings` attribute. Some settings are common to all tests while others are specific to tests of a given type.\n### Common Test Settings\nThe following settings are used for tests of all types:\n| Attribute | Purpose | Required |\n|-----------|---------|----------|\n| agentIds  | IDs of agents to execute tasks for the test | YES |\n| period | Test execution interval in seconds | NO (default 60s) |\n| family | IP address family. Used only for tests whose type is url or dns. Selects which type of DNS resource is queried for resolving hostname to target address | NO (default IP_FAMILY_DUAL) |\n| notificationChannels | List of notification channels for the test | NO (default empty list) |\n| healthSettings | A HealthSettings object that configures health settings for this test, which includes metric thresholds that define health status (warning and critical) and trigger associated alarms. | YES |\n| ping | A TestPingSettings object that configures the ping task of the test | NO (default depends on test type) |\n| trace | A TestTraceSettings object that configures the trace task of the test | NO (default depends on test type) |\n| throughput | A TestThroughputSettings object that configures the throughput task of the test | NO (default depends on test type) |\n| tasks | List of names of the tasks that will be executed for this test | YES |\n\n### Type-specific Settings\nEach test type has its own configuration object that represents the settings for that type. These type-specific objects are referenced by the attributes in `Test.settings`:\n| Test type    | Settings attribute | Configuration object |\n|--------------|-------------------------|---------------------------|\n| ip           | ip                      | IpTest                    |\n| hostname     | hostname                | HostnameTest              |\n| network_grid | networkGrid             | IpTest                    |\n| agent        | agent                   | AgentTest                 |\n| network_mesh | networkMesh             | NetworkMeshTest           |\n| flow         | flow                    | FlowTest                  |\n| url          | url                     | UrlTest                   |\n| page_load    | pageLoad                | PageLoadTest              |\n| dns          | dns                     | DnsTest                   |\n| dns_grid     | dnsGrid                 | DnsTest                   |\n\n# Test Results\nResults of synthetic tests are returned as a sequence of `TestResults` objects. Each such object represents measurements and health evaluation for a single test at specific point in time. Measurements and health evaluation are grouped by agent and by task.\nGranularity of timestamps in test results depends on the frequency (period) of the test and on the requested time range. The minimum granularity is 1 minute (even when period < 1 minute). The longer the time range, the lower the granularity.\n# Network Traces\nSynthetic tests that include the `traceroute` task collect the unidirectional network path from the agent to the target for each agent/target pair. The trace data are returned in the `GetTraceForTestResponse` object. The `paths` attribute of this object contains the collected network path for each agent/target pair and the round-trip time (RTT) to each hop.\nHops in actual network traces are identified by a `nodeId`. The mapping of node IDs to address, name, location, and other attributes of the hop is provided in a map that is stored in the `nodes` attribute of the `GetTraceForTestResponse` object.\n# Agents\nThe Kentik synthetic monitoring system recognizes 2 types of agents:\n* **Global** (public): Managed by Kentik and available to every Kentik user. All information about global agents in this API is read-only.\n* **Private**: Deployed by each customer and available only to that customer.\nTo be visible in this API, a private agent must first associate itself with a customer account by contacting the Kentik system (via private API). Once the agent is associated it can be authorized via the API by changing its `status` to `AGENT_STATUS_OK`. For more information about private agent deployment, see [**Synthetic Agent Deployments**](https://kb.kentik.com/v4/Ma01.htm#Ma01-Synthetic_Agent_Deployments).\n\"E\n\x16Kentik API Engineering\x12+https://github.com/kentik/api-schema-public2\x07v202309*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r`\n\"Kentik synthetic monitoring system\x12:https://kb.kentik.com/v4/Ma00.htm#Ma00-Synthetics_Overviewb\x06proto3'
   ,
   dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_api_dot_client__pb2.DESCRIPTOR,google_dot_api_dot_field__behavior__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,protoc__gen__openapiv2_dot_options_dot_annotations__pb2.DESCRIPTOR,kentik_dot_core_dot_v202303_dot_annotations__pb2.DESCRIPTOR,kentik_dot_core_dot_v202303_dot_user__info__pb2.DESCRIPTOR,])
 
@@ -61,8 +61,8 @@ _IMPLEMENTTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=24270,
-  serialized_end=24395,
+  serialized_start=25569,
+  serialized_end=25694,
 )
 _sym_db.RegisterEnumDescriptor(_IMPLEMENTTYPE)
 
@@ -97,8 +97,8 @@ _IPFAMILY = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=24397,
-  serialized_end=24490,
+  serialized_start=25696,
+  serialized_end=25789,
 )
 _sym_db.RegisterEnumDescriptor(_IPFAMILY)
 
@@ -138,8 +138,8 @@ _TESTSTATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=24493,
-  serialized_end=24632,
+  serialized_start=25792,
+  serialized_end=25931,
 )
 _sym_db.RegisterEnumDescriptor(_TESTSTATUS)
 
@@ -174,8 +174,8 @@ _AGENTSTATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=24634,
-  serialized_end=24747,
+  serialized_start=25933,
+  serialized_end=26046,
 )
 _sym_db.RegisterEnumDescriptor(_AGENTSTATUS)
 
@@ -235,8 +235,8 @@ _DNSRECORD = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=24750,
-  serialized_end=24950,
+  serialized_start=26049,
+  serialized_end=26249,
 )
 _sym_db.RegisterEnumDescriptor(_DNSRECORD)
 
@@ -355,6 +355,13 @@ _DISABLEDMETRICS = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, json_name='dnsIps', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='throughput_bandwidth', full_name='kentik.synthetics.v202309.DisabledMetrics.throughput_bandwidth', index=11,
+      number=12, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, json_name='throughputBandwidth', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -368,7 +375,7 @@ _DISABLEDMETRICS = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=319,
-  serialized_end=725,
+  serialized_end=776,
 )
 
 
@@ -560,8 +567,8 @@ _AGENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=728,
-  serialized_end=2639,
+  serialized_start=779,
+  serialized_end=2690,
 )
 
 
@@ -592,8 +599,8 @@ _AGENTMETADATA_IPVALUE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3229,
-  serialized_end=3260,
+  serialized_start=3280,
+  serialized_end=3311,
 )
 
 _AGENTMETADATA = _descriptor.Descriptor(
@@ -644,8 +651,8 @@ _AGENTMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2642,
-  serialized_end=3260,
+  serialized_start=2693,
+  serialized_end=3311,
 )
 
 
@@ -739,8 +746,8 @@ _TEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3263,
-  serialized_end=4085,
+  serialized_start=3314,
+  serialized_end=4136,
 )
 
 
@@ -885,6 +892,13 @@ _TESTSETTINGS = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=b'\222A%2#Add a note or comment for this test', json_name='notes', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='throughput', full_name='kentik.synthetics.v202309.TestSettings.throughput', index=19,
+      number=20, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=b'\222A*2(Throughput task configuration parameters', json_name='throughput', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -902,8 +916,8 @@ _TESTSETTINGS = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=4088,
-  serialized_end=5708,
+  serialized_start=4139,
+  serialized_end=5890,
 )
 
 
@@ -969,8 +983,8 @@ _TESTPINGSETTINGS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5711,
-  serialized_end=6171,
+  serialized_start=5893,
+  serialized_end=6353,
 )
 
 
@@ -1043,8 +1057,68 @@ _TESTTRACESETTINGS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6174,
-  serialized_end=6727,
+  serialized_start=6356,
+  serialized_end=6909,
+)
+
+
+_TESTTHROUGHPUTSETTINGS = _descriptor.Descriptor(
+  name='TestThroughputSettings',
+  full_name='kentik.synthetics.v202309.TestThroughputSettings',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='port', full_name='kentik.synthetics.v202309.TestThroughputSettings.port', index=0,
+      number=1, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=b'\222AY2WTarget port for TCP or UDP throughput task (the port the target server is listening on)', json_name='port', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='omit', full_name='kentik.synthetics.v202309.TestThroughputSettings.omit', index=1,
+      number=2, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=b'\222AA2?(optional) Number of seconds to omit from the start of the test', json_name='omit', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='duration', full_name='kentik.synthetics.v202309.TestThroughputSettings.duration', index=2,
+      number=3, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=b'\222A!2\037Duration of the test in seconds', json_name='duration', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='bandwidth', full_name='kentik.synthetics.v202309.TestThroughputSettings.bandwidth', index=3,
+      number=4, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=b'\222A\214\0012\211\001(optional) Target bandwidth in Mbps, if no bandwidth is specified, the test will measure the maximum bandwidth for TCP and 10Mbps for UDP', json_name='bandwidth', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='protocol', full_name='kentik.synthetics.v202309.TestThroughputSettings.protocol', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=b'\222A\'2%Transport protocol to use (tcp | udp)', json_name='protocol', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=6912,
+  serialized_end=7456,
 )
 
 
@@ -1096,8 +1170,8 @@ _ACTIVATIONSETTINGS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6730,
-  serialized_end=7184,
+  serialized_start=7459,
+  serialized_end=7913,
 )
 
 
@@ -1305,6 +1379,34 @@ _HEALTHSETTINGS = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=b'\222A-2+Disable all health evaluation for this test', json_name='healthDisabled', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='throughput_critical', full_name='kentik.synthetics.v202309.HealthSettings.throughput_critical', index=28,
+      number=29, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=b'\222AH2FThreshold for throughput bandwidth (in mbps) to trigger critical alarm', json_name='throughputCritical', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='throughput_warning', full_name='kentik.synthetics.v202309.HealthSettings.throughput_warning', index=29,
+      number=30, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=b'\222AG2EThreshold for throughput bandwidth (in mbps) to trigger warning alarm', json_name='throughputWarning', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='throughput_critical_stddev', full_name='kentik.synthetics.v202309.HealthSettings.throughput_critical_stddev', index=30,
+      number=31, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=b'\222A^2\\Threshold for standard deviation (in mbps) of throughput bandwidth to trigger critical alarm', json_name='throughputCriticalStddev', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='throughput_warning_stddev', full_name='kentik.synthetics.v202309.HealthSettings.throughput_warning_stddev', index=31,
+      number=32, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=b'\222A]2[Threshold for standard deviation (in mbps) of throughput bandwidth to trigger warning alarm', json_name='throughputWarningStddev', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1317,8 +1419,8 @@ _HEALTHSETTINGS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7187,
-  serialized_end=11047,
+  serialized_start=7916,
+  serialized_end=12346,
 )
 
 
@@ -1349,8 +1451,8 @@ _HOSTNAMETEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11049,
-  serialized_end=11137,
+  serialized_start=12348,
+  serialized_end=12436,
 )
 
 
@@ -1388,8 +1490,8 @@ _IPTEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11140,
-  serialized_end=11340,
+  serialized_start=12439,
+  serialized_end=12639,
 )
 
 
@@ -1434,8 +1536,8 @@ _AGENTTEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11343,
-  serialized_end=11636,
+  serialized_start=12642,
+  serialized_end=12935,
 )
 
 
@@ -1508,8 +1610,8 @@ _FLOWTEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11639,
-  serialized_end=12546,
+  serialized_start=12938,
+  serialized_end=13845,
 )
 
 
@@ -1568,8 +1670,8 @@ _DNSTEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12549,
-  serialized_end=12916,
+  serialized_start=13848,
+  serialized_end=14215,
 )
 
 
@@ -1607,8 +1709,8 @@ _URLTEST_HEADERSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13443,
-  serialized_end=13501,
+  serialized_start=14742,
+  serialized_end=14800,
 )
 
 _URLTEST = _descriptor.Descriptor(
@@ -1673,8 +1775,8 @@ _URLTEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12919,
-  serialized_end=13501,
+  serialized_start=14218,
+  serialized_end=14800,
 )
 
 
@@ -1712,8 +1814,8 @@ _PAGELOADTEST_HEADERSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13443,
-  serialized_end=13501,
+  serialized_start=14742,
+  serialized_end=14800,
 )
 
 _PAGELOADTEST_CSSSELECTORSENTRY = _descriptor.Descriptor(
@@ -1750,8 +1852,8 @@ _PAGELOADTEST_CSSSELECTORSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14125,
-  serialized_end=14188,
+  serialized_start=15424,
+  serialized_end=15487,
 )
 
 _PAGELOADTEST = _descriptor.Descriptor(
@@ -1809,8 +1911,8 @@ _PAGELOADTEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13504,
-  serialized_end=14188,
+  serialized_start=14803,
+  serialized_end=15487,
 )
 
 
@@ -1841,8 +1943,8 @@ _NETWORKMESHTEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14191,
-  serialized_end=14336,
+  serialized_start=15490,
+  serialized_end=15635,
 )
 
 
@@ -1894,8 +1996,8 @@ _METRICDATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14339,
-  serialized_end=14666,
+  serialized_start=15638,
+  serialized_end=15965,
 )
 
 
@@ -1933,8 +2035,8 @@ _PACKETLOSSDATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14669,
-  serialized_end=14844,
+  serialized_start=15968,
+  serialized_end=16143,
 )
 
 
@@ -1993,8 +2095,8 @@ _PINGRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14847,
-  serialized_end=15317,
+  serialized_start=16146,
+  serialized_end=16616,
 )
 
 
@@ -2039,8 +2141,8 @@ _HTTPRESPONSEDATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15320,
-  serialized_end=15569,
+  serialized_start=16619,
+  serialized_end=16868,
 )
 
 
@@ -2092,8 +2194,8 @@ _HTTPRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15572,
-  serialized_end=15928,
+  serialized_start=16871,
+  serialized_end=17227,
 )
 
 
@@ -2131,8 +2233,8 @@ _DNSRESPONSEDATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15931,
-  serialized_end=16066,
+  serialized_start=17230,
+  serialized_end=17365,
 )
 
 
@@ -2184,8 +2286,8 @@ _DNSRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16069,
-  serialized_end=16418,
+  serialized_start=17368,
+  serialized_end=17717,
 )
 
 
@@ -2242,8 +2344,8 @@ _TASKRESULTS = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=16421,
-  serialized_end=16808,
+  serialized_start=17720,
+  serialized_end=18107,
 )
 
 
@@ -2288,8 +2390,8 @@ _AGENTRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16811,
-  serialized_end=17097,
+  serialized_start=18110,
+  serialized_end=18396,
 )
 
 
@@ -2341,8 +2443,8 @@ _TESTRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17100,
-  serialized_end=17462,
+  serialized_start=18399,
+  serialized_end=18761,
 )
 
 
@@ -2387,8 +2489,8 @@ _STATS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17465,
-  serialized_end=17594,
+  serialized_start=18764,
+  serialized_end=18893,
 )
 
 
@@ -2447,8 +2549,8 @@ _LOCATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17597,
-  serialized_end=17918,
+  serialized_start=18896,
+  serialized_end=19217,
 )
 
 
@@ -2521,8 +2623,8 @@ _NETNODE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17921,
-  serialized_end=18567,
+  serialized_start=19220,
+  serialized_end=19866,
 )
 
 
@@ -2560,8 +2662,8 @@ _TRACEHOP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18570,
-  serialized_end=18813,
+  serialized_start=19869,
+  serialized_end=20112,
 )
 
 
@@ -2606,8 +2708,8 @@ _PATHTRACE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18816,
-  serialized_end=19068,
+  serialized_start=20115,
+  serialized_end=20367,
 )
 
 
@@ -2673,8 +2775,8 @@ _PATH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19071,
-  serialized_end=19623,
+  serialized_start=20370,
+  serialized_end=20922,
 )
 
 
@@ -2740,8 +2842,8 @@ _GETRESULTSFORTESTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19626,
-  serialized_end=20287,
+  serialized_start=20925,
+  serialized_end=21586,
 )
 
 
@@ -2772,8 +2874,8 @@ _GETRESULTSFORTESTSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20289,
-  serialized_end=20383,
+  serialized_start=21588,
+  serialized_end=21682,
 )
 
 
@@ -2832,8 +2934,8 @@ _GETTRACEFORTESTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20386,
-  serialized_end=20908,
+  serialized_start=21685,
+  serialized_end=22207,
 )
 
 
@@ -2871,8 +2973,8 @@ _GETTRACEFORTESTRESPONSE_NODESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21177,
-  serialized_end=21269,
+  serialized_start=22476,
+  serialized_end=22568,
 )
 
 _GETTRACEFORTESTRESPONSE = _descriptor.Descriptor(
@@ -2909,8 +3011,8 @@ _GETTRACEFORTESTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20911,
-  serialized_end=21269,
+  serialized_start=22210,
+  serialized_end=22568,
 )
 
 
@@ -2934,8 +3036,8 @@ _LISTAGENTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21271,
-  serialized_end=21290,
+  serialized_start=22570,
+  serialized_end=22589,
 )
 
 
@@ -2973,8 +3075,8 @@ _LISTAGENTSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21293,
-  serialized_end=21505,
+  serialized_start=22592,
+  serialized_end=22804,
 )
 
 
@@ -3005,8 +3107,8 @@ _GETAGENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21507,
-  serialized_end=21576,
+  serialized_start=22806,
+  serialized_end=22875,
 )
 
 
@@ -3037,8 +3139,8 @@ _GETAGENTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21578,
-  serialized_end=21694,
+  serialized_start=22877,
+  serialized_end=22993,
 )
 
 
@@ -3069,8 +3171,8 @@ _UPDATEAGENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21696,
-  serialized_end=21803,
+  serialized_start=22995,
+  serialized_end=23102,
 )
 
 
@@ -3101,8 +3203,8 @@ _UPDATEAGENTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21805,
-  serialized_end=21924,
+  serialized_start=23104,
+  serialized_end=23223,
 )
 
 
@@ -3133,8 +3235,8 @@ _DELETEAGENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21926,
-  serialized_end=22002,
+  serialized_start=23225,
+  serialized_end=23301,
 )
 
 
@@ -3158,8 +3260,8 @@ _DELETEAGENTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22004,
-  serialized_end=22025,
+  serialized_start=23303,
+  serialized_end=23324,
 )
 
 
@@ -3183,8 +3285,8 @@ _LISTTESTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22027,
-  serialized_end=22045,
+  serialized_start=23326,
+  serialized_end=23344,
 )
 
 
@@ -3222,8 +3324,8 @@ _LISTTESTSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22048,
-  serialized_end=22273,
+  serialized_start=23347,
+  serialized_end=23572,
 )
 
 
@@ -3254,8 +3356,8 @@ _CREATETESTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22275,
-  serialized_end=22381,
+  serialized_start=23574,
+  serialized_end=23680,
 )
 
 
@@ -3286,8 +3388,8 @@ _CREATETESTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22383,
-  serialized_end=22497,
+  serialized_start=23682,
+  serialized_end=23796,
 )
 
 
@@ -3318,8 +3420,8 @@ _GETTESTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22499,
-  serialized_end=22562,
+  serialized_start=23798,
+  serialized_end=23861,
 )
 
 
@@ -3350,8 +3452,8 @@ _GETTESTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22564,
-  serialized_end=22675,
+  serialized_start=23863,
+  serialized_end=23974,
 )
 
 
@@ -3382,8 +3484,8 @@ _UPDATETESTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22677,
-  serialized_end=22779,
+  serialized_start=23976,
+  serialized_end=24078,
 )
 
 
@@ -3414,8 +3516,8 @@ _UPDATETESTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22781,
-  serialized_end=22895,
+  serialized_start=24080,
+  serialized_end=24194,
 )
 
 
@@ -3446,8 +3548,8 @@ _DELETETESTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22897,
-  serialized_end=22971,
+  serialized_start=24196,
+  serialized_end=24270,
 )
 
 
@@ -3471,8 +3573,8 @@ _DELETETESTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22973,
-  serialized_end=22993,
+  serialized_start=24272,
+  serialized_end=24292,
 )
 
 
@@ -3510,8 +3612,8 @@ _SETTESTSTATUSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22996,
-  serialized_end=23182,
+  serialized_start=24295,
+  serialized_end=24481,
 )
 
 
@@ -3535,8 +3637,8 @@ _SETTESTSTATUSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23184,
-  serialized_end=23207,
+  serialized_start=24483,
+  serialized_end=24506,
 )
 
 
@@ -3595,8 +3697,8 @@ _AGENTALERT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23210,
-  serialized_end=23399,
+  serialized_start=24509,
+  serialized_end=24698,
 )
 
 
@@ -3641,8 +3743,8 @@ _CREATEAGENTALERTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23402,
-  serialized_end=23557,
+  serialized_start=24701,
+  serialized_end=24856,
 )
 
 
@@ -3673,8 +3775,8 @@ _CREATEAGENTALERTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23559,
-  serialized_end=23657,
+  serialized_start=24858,
+  serialized_end=24956,
 )
 
 
@@ -3719,8 +3821,8 @@ _UPDATEAGENTALERTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23660,
-  serialized_end=23804,
+  serialized_start=24959,
+  serialized_end=25103,
 )
 
 
@@ -3751,8 +3853,8 @@ _UPDATEAGENTALERTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23806,
-  serialized_end=23904,
+  serialized_start=25105,
+  serialized_end=25203,
 )
 
 
@@ -3783,8 +3885,8 @@ _GETAGENTALERTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23906,
-  serialized_end=23944,
+  serialized_start=25205,
+  serialized_end=25243,
 )
 
 
@@ -3815,8 +3917,8 @@ _GETAGENTALERTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23946,
-  serialized_end=24041,
+  serialized_start=25245,
+  serialized_end=25340,
 )
 
 
@@ -3847,8 +3949,8 @@ _LISTAGENTALERTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24043,
-  serialized_end=24096,
+  serialized_start=25342,
+  serialized_end=25395,
 )
 
 
@@ -3879,8 +3981,8 @@ _LISTAGENTALERTSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24098,
-  serialized_end=24197,
+  serialized_start=25397,
+  serialized_end=25496,
 )
 
 
@@ -3911,8 +4013,8 @@ _DELETEAGENTALERTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24199,
-  serialized_end=24240,
+  serialized_start=25498,
+  serialized_end=25539,
 )
 
 
@@ -3936,8 +4038,8 @@ _DELETEAGENTALERTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24242,
-  serialized_end=24268,
+  serialized_start=25541,
+  serialized_end=25567,
 )
 
 _AGENT.fields_by_name['status'].enum_type = _AGENTSTATUS
@@ -3970,6 +4072,7 @@ _TESTSETTINGS.fields_by_name['health_settings'].message_type = _HEALTHSETTINGS
 _TESTSETTINGS.fields_by_name['ping'].message_type = _TESTPINGSETTINGS
 _TESTSETTINGS.fields_by_name['trace'].message_type = _TESTTRACESETTINGS
 _TESTSETTINGS.fields_by_name['family'].enum_type = _IPFAMILY
+_TESTSETTINGS.fields_by_name['throughput'].message_type = _TESTTHROUGHPUTSETTINGS
 _TESTSETTINGS.oneofs_by_name['definition'].fields.append(
   _TESTSETTINGS.fields_by_name['hostname'])
 _TESTSETTINGS.fields_by_name['hostname'].containing_oneof = _TESTSETTINGS.oneofs_by_name['definition']
@@ -4067,6 +4170,7 @@ DESCRIPTOR.message_types_by_name['Test'] = _TEST
 DESCRIPTOR.message_types_by_name['TestSettings'] = _TESTSETTINGS
 DESCRIPTOR.message_types_by_name['TestPingSettings'] = _TESTPINGSETTINGS
 DESCRIPTOR.message_types_by_name['TestTraceSettings'] = _TESTTRACESETTINGS
+DESCRIPTOR.message_types_by_name['TestThroughputSettings'] = _TESTTHROUGHPUTSETTINGS
 DESCRIPTOR.message_types_by_name['ActivationSettings'] = _ACTIVATIONSETTINGS
 DESCRIPTOR.message_types_by_name['HealthSettings'] = _HEALTHSETTINGS
 DESCRIPTOR.message_types_by_name['HostnameTest'] = _HOSTNAMETEST
@@ -4191,6 +4295,13 @@ TestTraceSettings = _reflection.GeneratedProtocolMessageType('TestTraceSettings'
   # @@protoc_insertion_point(class_scope:kentik.synthetics.v202309.TestTraceSettings)
   })
 _sym_db.RegisterMessage(TestTraceSettings)
+
+TestThroughputSettings = _reflection.GeneratedProtocolMessageType('TestThroughputSettings', (_message.Message,), {
+  'DESCRIPTOR' : _TESTTHROUGHPUTSETTINGS,
+  '__module__' : 'kentik.synthetics.v202309.synthetics_pb2'
+  # @@protoc_insertion_point(class_scope:kentik.synthetics.v202309.TestThroughputSettings)
+  })
+_sym_db.RegisterMessage(TestThroughputSettings)
 
 ActivationSettings = _reflection.GeneratedProtocolMessageType('ActivationSettings', (_message.Message,), {
   'DESCRIPTOR' : _ACTIVATIONSETTINGS,
@@ -4700,6 +4811,7 @@ _TESTSETTINGS.fields_by_name['period']._options = None
 _TESTSETTINGS.fields_by_name['family']._options = None
 _TESTSETTINGS.fields_by_name['notification_channels']._options = None
 _TESTSETTINGS.fields_by_name['notes']._options = None
+_TESTSETTINGS.fields_by_name['throughput']._options = None
 _TESTPINGSETTINGS.fields_by_name['count']._options = None
 _TESTPINGSETTINGS.fields_by_name['protocol']._options = None
 _TESTPINGSETTINGS.fields_by_name['port']._options = None
@@ -4713,6 +4825,11 @@ _TESTTRACESETTINGS.fields_by_name['timeout']._options = None
 _TESTTRACESETTINGS.fields_by_name['limit']._options = None
 _TESTTRACESETTINGS.fields_by_name['delay']._options = None
 _TESTTRACESETTINGS.fields_by_name['dscp']._options = None
+_TESTTHROUGHPUTSETTINGS.fields_by_name['port']._options = None
+_TESTTHROUGHPUTSETTINGS.fields_by_name['omit']._options = None
+_TESTTHROUGHPUTSETTINGS.fields_by_name['duration']._options = None
+_TESTTHROUGHPUTSETTINGS.fields_by_name['bandwidth']._options = None
+_TESTTHROUGHPUTSETTINGS.fields_by_name['protocol']._options = None
 _ACTIVATIONSETTINGS.fields_by_name['grace_period']._options = None
 _ACTIVATIONSETTINGS.fields_by_name['time_unit']._options = None
 _ACTIVATIONSETTINGS.fields_by_name['time_window']._options = None
@@ -4745,6 +4862,10 @@ _HEALTHSETTINGS.fields_by_name['dns_latency_warning_stddev']._options = None
 _HEALTHSETTINGS.fields_by_name['per_agent_alerting']._options = None
 _HEALTHSETTINGS.fields_by_name['disabled_metrics']._options = None
 _HEALTHSETTINGS.fields_by_name['health_disabled']._options = None
+_HEALTHSETTINGS.fields_by_name['throughput_critical']._options = None
+_HEALTHSETTINGS.fields_by_name['throughput_warning']._options = None
+_HEALTHSETTINGS.fields_by_name['throughput_critical_stddev']._options = None
+_HEALTHSETTINGS.fields_by_name['throughput_warning_stddev']._options = None
 _HOSTNAMETEST.fields_by_name['target']._options = None
 _IPTEST.fields_by_name['targets']._options = None
 _IPTEST.fields_by_name['use_local_ip']._options = None
@@ -4879,8 +5000,8 @@ _SYNTHETICSDATASERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=b'\312A\023grpc.api.kentik.com\352\327\002\nsynthetics\220\330\002\003',
   create_key=_descriptor._internal_create_key,
-  serialized_start=24953,
-  serialized_end=25667,
+  serialized_start=26252,
+  serialized_end=26966,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetResultsForTests',
@@ -4915,8 +5036,8 @@ _SYNTHETICSADMINSERVICE = _descriptor.ServiceDescriptor(
   index=1,
   serialized_options=b'\312A\023grpc.api.kentik.com\352\327\002\020admin.synthetics\220\330\002\003',
   create_key=_descriptor._internal_create_key,
-  serialized_start=25670,
-  serialized_end=30540,
+  serialized_start=26969,
+  serialized_end=31839,
   methods=[
   _descriptor.MethodDescriptor(
     name='ListAgents',

@@ -52,6 +52,7 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
 		"| http | Perform a simple HTTP/HTTPS request |\n"
 		"| page-load | Use headless Chromium to execute an HTTP/HTTPS request |\n"
 		"| dns | Execute a DNS query|\n"
+    "| throughput | Execute a throughput task to determine bandwidth |\n"
 	"\n"
 	"The set of tasks executed on behalf of a given test depends on the `type` of that test. The following test types "
   "are currently supported by the API:\n"
@@ -60,7 +61,7 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
 		"| ip | IP Address | ping, traceroute |\n"
 		"| hostname | Hostname | ping, traceroute |\n"
 		"| network_grid | Network Grid | ping, traceroute |\n"
-		"| agent | Agent-to-Agent | ping, traceroute |\n"
+		"| agent | Agent-to-Agent | ping, traceroute, throughput |\n"
 		"| network_mesh | Network Mesh | ping, traceroute |\n"
 		"| flow | Autonomous Tests (5 variants) | ping, traceroute |\n"
 		"| url | HTTP(S) or API | http, ping (optional), traceroute (optional) |\n"
@@ -100,6 +101,7 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
 		"| healthSettings | A HealthSettings object that configures health settings for this test, which includes metric thresholds that define health status (warning and critical) and trigger associated alarms. | YES |\n"
 		"| ping | A TestPingSettings object that configures the ping task of the test | NO (default depends on test type) |\n"
 		"| trace | A TestTraceSettings object that configures the trace task of the test | NO (default depends on test type) |\n"
+    "| throughput | A TestThroughputSettings object that configures the throughput task of the test | NO (default depends on test type) |\n"
 		"| tasks | List of names of the tasks that will be executed for this test | YES |\n"
 	"\n"
 	"### Type-specific Settings\n"
@@ -207,6 +209,7 @@ message DisabledMetrics {
   bool dns_latency = 9;
   bool dns_codes = 10;
   bool dns_ips = 11;
+  bool throughput_bandwidth = 12;
 }
 
 // {{.Name}}
@@ -555,6 +558,12 @@ message TestSettings {
       description: "Add a note or comment for this test"
     }
   ];
+
+  TestThroughputSettings throughput = 20 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Throughput task configuration parameters"
+    }
+  ];
 }
 
 // {{.Name}}
@@ -626,6 +635,35 @@ message TestTraceSettings {
   uint32 dscp = 7 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "DSCP code to be set in IP header of probe packets"
+    }
+  ];
+}
+
+// {{.Name}}
+message TestThroughputSettings {
+  uint32 port = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Target port for TCP or UDP throughput task (the port the target server is listening on)"
+    }
+  ];
+  uint32 omit = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "(optional) Number of seconds to omit from the start of the test"
+    }
+  ];
+  uint32 duration = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Duration of the test in seconds"
+    }
+  ];
+  uint32 bandwidth = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "(optional) Target bandwidth in Mbps, if no bandwidth is specified, the test will measure the maximum bandwidth for TCP and 10Mbps for UDP"
+    }
+  ];
+  string protocol = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Transport protocol to use (tcp | udp)"
     }
   ];
 }
@@ -796,6 +834,26 @@ message HealthSettings {
   bool health_disabled = 28 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Disable all health evaluation for this test"
+    }
+  ];
+  float throughput_critical = 29 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Threshold for throughput bandwidth (in mbps) to trigger critical alarm"
+    }
+  ];
+  float throughput_warning = 30 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Threshold for throughput bandwidth (in mbps) to trigger warning alarm"
+    }
+  ];
+  float throughput_critical_stddev = 31 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Threshold for standard deviation (in mbps) of throughput bandwidth to trigger critical alarm"
+    }
+  ];
+  float throughput_warning_stddev = 32 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Threshold for standard deviation (in mbps) of throughput bandwidth to trigger warning alarm"
     }
   ];
 }
@@ -973,6 +1031,7 @@ message PageLoadTest {
     }
   ];
 }
+
 
 // {{.Name}}
 message NetworkMeshTest {

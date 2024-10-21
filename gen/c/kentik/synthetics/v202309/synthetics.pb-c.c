@@ -328,6 +328,51 @@ void   kentik__synthetics__v202309__test_trace_settings__free_unpacked
   assert(message->base.descriptor == &kentik__synthetics__v202309__test_trace_settings__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   kentik__synthetics__v202309__test_throughput_settings__init
+                     (Kentik__Synthetics__V202309__TestThroughputSettings         *message)
+{
+  static const Kentik__Synthetics__V202309__TestThroughputSettings init_value = KENTIK__SYNTHETICS__V202309__TEST_THROUGHPUT_SETTINGS__INIT;
+  *message = init_value;
+}
+size_t kentik__synthetics__v202309__test_throughput_settings__get_packed_size
+                     (const Kentik__Synthetics__V202309__TestThroughputSettings *message)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__test_throughput_settings__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__synthetics__v202309__test_throughput_settings__pack
+                     (const Kentik__Synthetics__V202309__TestThroughputSettings *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__test_throughput_settings__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__synthetics__v202309__test_throughput_settings__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__TestThroughputSettings *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__test_throughput_settings__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Synthetics__V202309__TestThroughputSettings *
+       kentik__synthetics__v202309__test_throughput_settings__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Synthetics__V202309__TestThroughputSettings *)
+     protobuf_c_message_unpack (&kentik__synthetics__v202309__test_throughput_settings__descriptor,
+                                allocator, len, data);
+}
+void   kentik__synthetics__v202309__test_throughput_settings__free_unpacked
+                     (Kentik__Synthetics__V202309__TestThroughputSettings *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__synthetics__v202309__test_throughput_settings__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 void   kentik__synthetics__v202309__activation_settings__init
                      (Kentik__Synthetics__V202309__ActivationSettings         *message)
 {
@@ -3097,7 +3142,7 @@ void   kentik__synthetics__v202309__delete_agent_alert_response__free_unpacked
   assert(message->base.descriptor == &kentik__synthetics__v202309__delete_agent_alert_response__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-static const ProtobufCFieldDescriptor kentik__synthetics__v202309__disabled_metrics__field_descriptors[11] =
+static const ProtobufCFieldDescriptor kentik__synthetics__v202309__disabled_metrics__field_descriptors[12] =
 {
   {
     "ping_latency",
@@ -3231,6 +3276,18 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202309__disabled_metr
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "throughput_bandwidth",
+    12,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__DisabledMetrics, throughput_bandwidth),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__synthetics__v202309__disabled_metrics__field_indices_by_name[] = {
   9,   /* field[9] = dns_codes */
@@ -3243,12 +3300,13 @@ static const unsigned kentik__synthetics__v202309__disabled_metrics__field_indic
   1,   /* field[1] = ping_jitter */
   0,   /* field[0] = ping_latency */
   2,   /* field[2] = ping_packet_loss */
+  11,   /* field[11] = throughput_bandwidth */
   7,   /* field[7] = transaction_latency */
 };
 static const ProtobufCIntRange kentik__synthetics__v202309__disabled_metrics__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 11 }
+  { 0, 12 }
 };
 const ProtobufCMessageDescriptor kentik__synthetics__v202309__disabled_metrics__descriptor =
 {
@@ -3258,7 +3316,7 @@ const ProtobufCMessageDescriptor kentik__synthetics__v202309__disabled_metrics__
   "Kentik__Synthetics__V202309__DisabledMetrics",
   "kentik.synthetics.v202309",
   sizeof(Kentik__Synthetics__V202309__DisabledMetrics),
-  11,
+  12,
   kentik__synthetics__v202309__disabled_metrics__field_descriptors,
   kentik__synthetics__v202309__disabled_metrics__field_indices_by_name,
   1,  kentik__synthetics__v202309__disabled_metrics__number_ranges,
@@ -3875,7 +3933,7 @@ const ProtobufCMessageDescriptor kentik__synthetics__v202309__test__descriptor =
   (ProtobufCMessageInit) kentik__synthetics__v202309__test__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__synthetics__v202309__test_settings__field_descriptors[19] =
+static const ProtobufCFieldDescriptor kentik__synthetics__v202309__test_settings__field_descriptors[20] =
 {
   {
     "hostname",
@@ -4105,6 +4163,18 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202309__test_settings
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "throughput",
+    20,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__TestSettings, throughput),
+    &kentik__synthetics__v202309__test_throughput_settings__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__synthetics__v202309__test_settings__field_indices_by_name[] = {
   2,   /* field[2] = agent */
@@ -4124,13 +4194,14 @@ static const unsigned kentik__synthetics__v202309__test_settings__field_indices_
   14,   /* field[14] = period */
   12,   /* field[12] = ping */
   10,   /* field[10] = tasks */
+  19,   /* field[19] = throughput */
   13,   /* field[13] = trace */
   5,   /* field[5] = url */
 };
 static const ProtobufCIntRange kentik__synthetics__v202309__test_settings__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 19 }
+  { 0, 20 }
 };
 const ProtobufCMessageDescriptor kentik__synthetics__v202309__test_settings__descriptor =
 {
@@ -4140,7 +4211,7 @@ const ProtobufCMessageDescriptor kentik__synthetics__v202309__test_settings__des
   "Kentik__Synthetics__V202309__TestSettings",
   "kentik.synthetics.v202309",
   sizeof(Kentik__Synthetics__V202309__TestSettings),
-  19,
+  20,
   kentik__synthetics__v202309__test_settings__field_descriptors,
   kentik__synthetics__v202309__test_settings__field_indices_by_name,
   1,  kentik__synthetics__v202309__test_settings__number_ranges,
@@ -4366,6 +4437,96 @@ const ProtobufCMessageDescriptor kentik__synthetics__v202309__test_trace_setting
   (ProtobufCMessageInit) kentik__synthetics__v202309__test_trace_settings__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
+static const ProtobufCFieldDescriptor kentik__synthetics__v202309__test_throughput_settings__field_descriptors[5] =
+{
+  {
+    "port",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT32,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__TestThroughputSettings, port),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "omit",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT32,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__TestThroughputSettings, omit),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "duration",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT32,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__TestThroughputSettings, duration),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "bandwidth",
+    4,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT32,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__TestThroughputSettings, bandwidth),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "protocol",
+    5,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__TestThroughputSettings, protocol),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__synthetics__v202309__test_throughput_settings__field_indices_by_name[] = {
+  3,   /* field[3] = bandwidth */
+  2,   /* field[2] = duration */
+  1,   /* field[1] = omit */
+  0,   /* field[0] = port */
+  4,   /* field[4] = protocol */
+};
+static const ProtobufCIntRange kentik__synthetics__v202309__test_throughput_settings__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 5 }
+};
+const ProtobufCMessageDescriptor kentik__synthetics__v202309__test_throughput_settings__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.synthetics.v202309.TestThroughputSettings",
+  "TestThroughputSettings",
+  "Kentik__Synthetics__V202309__TestThroughputSettings",
+  "kentik.synthetics.v202309",
+  sizeof(Kentik__Synthetics__V202309__TestThroughputSettings),
+  5,
+  kentik__synthetics__v202309__test_throughput_settings__field_descriptors,
+  kentik__synthetics__v202309__test_throughput_settings__field_indices_by_name,
+  1,  kentik__synthetics__v202309__test_throughput_settings__number_ranges,
+  (ProtobufCMessageInit) kentik__synthetics__v202309__test_throughput_settings__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
 static const ProtobufCFieldDescriptor kentik__synthetics__v202309__activation_settings__field_descriptors[4] =
 {
   {
@@ -4443,7 +4604,7 @@ const ProtobufCMessageDescriptor kentik__synthetics__v202309__activation_setting
   (ProtobufCMessageInit) kentik__synthetics__v202309__activation_settings__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__synthetics__v202309__health_settings__field_descriptors[28] =
+static const ProtobufCFieldDescriptor kentik__synthetics__v202309__health_settings__field_descriptors[32] =
 {
   {
     "latency_critical",
@@ -4781,6 +4942,54 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202309__health_settin
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "throughput_critical",
+    29,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_FLOAT,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__HealthSettings, throughput_critical),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "throughput_warning",
+    30,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_FLOAT,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__HealthSettings, throughput_warning),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "throughput_critical_stddev",
+    31,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_FLOAT,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__HealthSettings, throughput_critical_stddev),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "throughput_warning_stddev",
+    32,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_FLOAT,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__HealthSettings, throughput_warning_stddev),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__synthetics__v202309__health_settings__field_indices_by_name[] = {
   17,   /* field[17] = activation */
@@ -4810,12 +5019,16 @@ static const unsigned kentik__synthetics__v202309__health_settings__field_indice
   2,   /* field[2] = packet_loss_critical */
   3,   /* field[3] = packet_loss_warning */
   25,   /* field[25] = per_agent_alerting */
+  28,   /* field[28] = throughput_critical */
+  30,   /* field[30] = throughput_critical_stddev */
+  29,   /* field[29] = throughput_warning */
+  31,   /* field[31] = throughput_warning_stddev */
   16,   /* field[16] = unhealthy_subtest_threshold */
 };
 static const ProtobufCIntRange kentik__synthetics__v202309__health_settings__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 28 }
+  { 0, 32 }
 };
 const ProtobufCMessageDescriptor kentik__synthetics__v202309__health_settings__descriptor =
 {
@@ -4825,7 +5038,7 @@ const ProtobufCMessageDescriptor kentik__synthetics__v202309__health_settings__d
   "Kentik__Synthetics__V202309__HealthSettings",
   "kentik.synthetics.v202309",
   sizeof(Kentik__Synthetics__V202309__HealthSettings),
-  28,
+  32,
   kentik__synthetics__v202309__health_settings__field_descriptors,
   kentik__synthetics__v202309__health_settings__field_indices_by_name,
   1,  kentik__synthetics__v202309__health_settings__number_ranges,
