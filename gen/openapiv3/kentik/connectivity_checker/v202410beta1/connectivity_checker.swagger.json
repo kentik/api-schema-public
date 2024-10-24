@@ -1,0 +1,254 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Kentik Connectivity Checker API",
+        "description": "# Overview\nThe Connectivity Checker API provides programmatic access to Kentik's Connectivity Checker, which allows the checking and monitoring of forward and return paths between two points on your cloud network, over a specified time range interval, for entities such as Instances, Subnets, and Network Interfaces.### Supported Cloud Providers\nThe functionality and configuration parameters supported by this API differ by cloud provider. The API currently supports the following providers:\n* [Amazon Web Services](https://kb.kentik.com/v0/Bd06.htm) (AWS)\n* [Microsoft Azure](https://kb.kentik.com/v0/Bd08.htm)\n\n### Supported Entity Types\nFor AWS, the API currently support checking connectivity between the following entities:\n* Subnets* Instances* Network Interfaces\nFor Azure, the API currently support checking connectivity between the following entities:\n* Subnets\n### Requirements\nFor Kentik's Connectivity Checker API to successfully query the connection between entity resources, aKentik Cloud Export must be configured for a supported Cloud Provider (Aws or Azure)(see [Cloud Exports and Devices] (https://kb.kentik.com/v4/Na00.htm#Na00-Cloud_Exports_and_Devices)).Once a cloud export has been successfully configured, Kentik will pull metadata at regular intervals from the account specified in the cloud export, and the Connectivity Checker will use this metadata to: * Visualize the path for a connection between any two points in your AWS network* Check routing and NACL/SG configuration to quickly highlight where a connection is blocked* Get a direct link to the misconfigured gateway or security policy in the cloud dashboard to quickly fix the issue\n### Frequency of available data\nBecause Connectivity Checker relies upon what's discovered during metadata retrieval, query results will be limited to the timeframe of the latest metadata-retrieval fetch.  Currently this is limited to 15-minutes intervals.",
+        "version": "v202410beta1",
+        "contact": {
+            "name": "Kentik API Engineering",
+            "url": "https://github.com/kentik/api-schema-public"
+        }
+    },
+    "tags": [
+        {
+            "name": "ConnectivityCheckerAdminService"
+        }
+    ],
+    "paths": {
+        "/connectivity_checker/v202410beta1/create": {
+            "post": {
+                "summary": "Create a Connectivity Checker Report.",
+                "description": "Create a connectivity checker report based on configuration provided in the request.",
+                "operationId": "CreateConnectivityReport",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202410beta1CreateConnectivityReportResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202410beta1CreateConnectivityReportRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "ConnectivityCheckerAdminService"
+                ]
+            }
+        }
+    },
+    "security": [
+        {
+            "email": [],
+            "token": []
+        }
+    ],
+    "externalDocs": {
+        "description": "Kentik Connectivity Checker documentation",
+        "url": "https://kb.kentik.com/v4/Na05.htm#Na05-Connectivity_Checker"
+    },
+    "components": {
+        "securitySchemes": {
+            "email": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-Email",
+                "in": "header"
+            },
+            "token": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-API-Token",
+                "in": "header"
+            }
+        },
+        "schemas": {
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "typeUrl": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string",
+                        "format": "byte"
+                    }
+                }
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "v202410beta1CloudProvider": {
+                "type": "string",
+                "enum": [
+                    "CLOUD_PROVIDER_UNSPECIFIED",
+                    "CLOUD_PROVIDER_AWS",
+                    "CLOUD_PROVIDER_AZURE"
+                ],
+                "default": "CLOUD_PROVIDER_UNSPECIFIED",
+                "description": "- CLOUD_PROVIDER_UNSPECIFIED: Invalid value.\n - CLOUD_PROVIDER_AWS: Amazon Web Services\n - CLOUD_PROVIDER_AZURE: Microsoft Azure",
+                "title": "CloudProvider"
+            },
+            "v202410beta1CreateConnectivityReportRequest": {
+                "type": "object",
+                "properties": {
+                    "cloudProvider": {
+                        "$ref": "#/components/schemas/v202410beta1CloudProvider"
+                    },
+                    "src": {
+                        "type": "string",
+                        "description": "Source",
+                        "required": [
+                            "src"
+                        ]
+                    },
+                    "dst": {
+                        "type": "string",
+                        "description": "Destination",
+                        "required": [
+                            "dst"
+                        ]
+                    },
+                    "dstPort": {
+                        "type": "string",
+                        "description": "Destination Port",
+                        "required": [
+                            "dst_port"
+                        ]
+                    },
+                    "protocol": {
+                        "type": "string",
+                        "description": "Protocol",
+                        "required": [
+                            "protocol"
+                        ]
+                    },
+                    "srcType": {
+                        "$ref": "#/components/schemas/v202410beta1EntityType"
+                    },
+                    "dstType": {
+                        "$ref": "#/components/schemas/v202410beta1EntityType"
+                    },
+                    "startTime": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Start Timestamp (UTC) which defines the time range for the report.",
+                        "required": [
+                            "start_time"
+                        ]
+                    },
+                    "endTime": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "End timestamp (UTC) which defines the time range for the report.",
+                        "required": [
+                            "end_time"
+                        ]
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Report Name"
+                    }
+                },
+                "title": "CreateConnectivityReportRequest",
+                "required": [
+                    "cloudProvider",
+                    "src",
+                    "dst",
+                    "dstPort",
+                    "protocol",
+                    "startTime",
+                    "endTime"
+                ]
+            },
+            "v202410beta1CreateConnectivityReportResponse": {
+                "type": "object",
+                "properties": {
+                    "reachable": {
+                        "type": "boolean",
+                        "description": "Attribute controlling whether the instance is active",
+                        "readOnly": true
+                    },
+                    "returnReachable": {
+                        "type": "boolean",
+                        "description": "Attribute controlling whether the instance is active",
+                        "readOnly": true
+                    },
+                    "queryStatus": {
+                        "type": "string",
+                        "description": "ARN of the IAM role granted access to the S3 bucket and describe API end-points.",
+                        "readOnly": true
+                    },
+                    "reportUrl": {
+                        "type": "string",
+                        "description": "ARN of the IAM role granted access to the S3 bucket and describe API end-points.",
+                        "readOnly": true
+                    },
+                    "paths": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "ARN of the IAM role granted access to the S3 bucket and describe API end-points.",
+                        "readOnly": true
+                    },
+                    "returnPaths": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "ARN of the IAM role granted access to the S3 bucket and describe API end-points.",
+                        "readOnly": true
+                    }
+                },
+                "title": "CreateConnectivityReportResponse"
+            },
+            "v202410beta1EntityType": {
+                "type": "string",
+                "enum": [
+                    "ENTITY_TYPE_UNSPECIFIED",
+                    "ENTITY_TYPE_SUBNET",
+                    "ENTITY_TYPE_INSTANCE",
+                    "ENTITY_TYPE_NETWORK_INTERFACE"
+                ],
+                "default": "ENTITY_TYPE_UNSPECIFIED",
+                "description": "- ENTITY_TYPE_UNSPECIFIED: Invalid value.\n - ENTITY_TYPE_SUBNET: Subnet\n - ENTITY_TYPE_INSTANCE: Instance\n - ENTITY_TYPE_NETWORK_INTERFACE: Network Interfaces",
+                "title": "EntityType"
+            }
+        }
+    }
+}

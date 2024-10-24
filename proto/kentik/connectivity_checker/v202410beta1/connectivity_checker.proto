@@ -1,0 +1,235 @@
+syntax = "proto3";
+
+package kentik.connectivity_checker.v202410beta1;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/connectivity_checker/v202410beta1;connectivity_checker";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+import "kentik/core/v202303/annotations.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Kentik Connectivity Checker API"
+    version: "v202410beta1"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api-schema-public"
+    }
+    description: "# Overview\n"
+    "The Connectivity Checker API provides programmatic access to Kentik's Connectivity Checker, which allows the checking "
+    "and monitoring of forward and return paths between two points on your cloud network, over a specified time range interval, "
+    "for entities such as Instances, Subnets, and Network Interfaces."
+    "### Supported Cloud Providers\n"
+    "The functionality and configuration parameters supported by this API differ by cloud provider. The API currently "
+    "supports the following providers:\n"
+    "* [Amazon Web Services](https://kb.kentik.com/v0/Bd06.htm) (AWS)\n"
+    "* [Microsoft Azure](https://kb.kentik.com/v0/Bd08.htm)\n"
+    "\n"
+    "### Supported Entity Types\n"
+    "For AWS, the API currently support checking connectivity between the following entities:\n"
+    "* Subnets"
+    "* Instances"
+    "* Network Interfaces"
+    "\n"
+    "For Azure, the API currently support checking connectivity between the following entities:\n"
+    "* Subnets"
+    "\n"
+    "### Requirements\n"
+    "For Kentik's Connectivity Checker API to successfully query the connection between entity resources, a"
+    "Kentik Cloud Export must be configured for a supported Cloud Provider (Aws or Azure)"
+    "(see [Cloud Exports and Devices] (https://kb.kentik.com/v4/Na00.htm#Na00-Cloud_Exports_and_Devices))."
+    "Once a cloud export has been successfully configured, Kentik will pull metadata at regular intervals from "
+    "the account specified in the cloud export, and the Connectivity Checker will use this metadata to: "
+    "* Visualize the path for a connection between any two points in your AWS network"
+    "* Check routing and NACL/SG configuration to quickly highlight where a connection is blocked"
+    "* Get a direct link to the misconfigured gateway or security policy in the cloud dashboard to quickly fix the issue"
+    "\n"
+    "### Frequency of available data\n"
+    "Because Connectivity Checker relies upon what's discovered during metadata retrieval, "
+    "query results will be limited to the timeframe of the latest metadata-retrieval fetch.  Currently this is limited to 15-minutes intervals."
+  }
+  external_docs: {
+    url: "https://kb.kentik.com/v4/Na05.htm#Na05-Connectivity_Checker"
+    description: "Kentik Connectivity Checker documentation"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+// {{.Name}}
+enum CloudProvider {
+  // Invalid value.
+  CLOUD_PROVIDER_UNSPECIFIED = 0;
+  // Amazon Web Services
+  CLOUD_PROVIDER_AWS = 1;
+  // Microsoft Azure
+  CLOUD_PROVIDER_AZURE = 2;
+}
+
+
+// {{.Name}}
+enum EntityType {
+  // Invalid value.
+  ENTITY_TYPE_UNSPECIFIED = 0;
+  // Subnet
+  ENTITY_TYPE_SUBNET = 1;
+  // Instance
+  ENTITY_TYPE_INSTANCE = 2;
+  // Network Interfaces
+  ENTITY_TYPE_NETWORK_INTERFACE = 3;
+}
+
+// {{.Name}}
+message CreateConnectivityReportRequest {
+  CloudProvider cloud_provider = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Cloud provider identification"
+    }
+  ];  
+  string src = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Source"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  string dst = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Destination"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  string dst_port = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Destination Port"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  string protocol = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Protocol"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  EntityType src_type = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Source Entity Type"
+    }
+  ];
+  EntityType dst_type = 7 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Destination Entity Type"
+    }
+  ];
+  google.protobuf.Timestamp start_time = 8 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Start Timestamp (UTC) which defines the time range for the report."
+    }
+  ];
+  google.protobuf.Timestamp end_time = 9 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "End timestamp (UTC) which defines the time range for the report."
+    }
+  ];
+  string name = 10 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Report Name"
+    },
+    (google.api.field_behavior) = OPTIONAL
+  ];
+}
+
+// {{.Name}}
+message CreateConnectivityReportResponse {
+  bool reachable = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Attribute controlling whether the instance is active"
+    }
+  ];
+  bool return_reachable = 2 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Attribute controlling whether the instance is active"
+    }
+  ];
+  string query_status = 3 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ARN of the IAM role granted access to the S3 bucket and describe API end-points."
+    }
+  ];
+  string report_url = 4 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ARN of the IAM role granted access to the S3 bucket and describe API end-points."
+    }
+  ];
+  repeated string paths = 5 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ARN of the IAM role granted access to the S3 bucket and describe API end-points."
+    }
+  ];
+  repeated string return_paths = 6 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ARN of the IAM role granted access to the S3 bucket and describe API end-points."
+    }
+  ];
+}
+		
+
+service ConnectivityCheckerAdminService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "admin.connectivity_checker";
+
+  rpc CreateConnectivityReport(CreateConnectivityReportRequest) returns (CreateConnectivityReportResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.connectivity_checker:write";
+    option (google.api.http) = {
+      post: "/connectivity_checker/v202410beta1/create"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "CreateConnectivityReport"
+      summary: "Create a Connectivity Checker Report."
+      description: "Create a connectivity checker report based on configuration provided in the request."
+    };
+  }
+}
