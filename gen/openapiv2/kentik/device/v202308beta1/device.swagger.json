@@ -607,6 +607,11 @@
         "flowSnmpCredentialName": {
           "type": "string",
           "description": "Snmp Credential Name (flow_snmp_credential_name) - Optional Credential Name (Credential for Flow Snmp peering). Valid characters: alphanumeric. Length: 32."
+        },
+        "monitoringTemplateId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Monitoring template - The ID of the monitoring template assigned to this device."
         }
       },
       "title": "DeviceConcise"

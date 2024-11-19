@@ -1195,6 +1195,7 @@ class DeviceConcise PROTOBUF_FINAL :
     kMinimizeSnmpFieldNumber = 10,
     kDeviceBgpFlowspecFieldNumber = 20,
     kUseBgpDeviceIdFieldNumber = 19,
+    kMonitoringTemplateIdFieldNumber = 24,
   };
   // repeated string sending_ips = 6[json_name = "sendingIps", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   int sending_ips_size() const;
@@ -1664,6 +1665,15 @@ class DeviceConcise PROTOBUF_FINAL :
   void _internal_set_use_bgp_device_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
+  // uint32 monitoring_template_id = 24[json_name = "monitoringTemplateId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_monitoring_template_id();
+  ::PROTOBUF_NAMESPACE_ID::uint32 monitoring_template_id() const;
+  void set_monitoring_template_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_monitoring_template_id() const;
+  void _internal_set_monitoring_template_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  public:
+
   // @@protoc_insertion_point(class_scope:kentik.device.v202308beta1.DeviceConcise)
  private:
   class _Internal;
@@ -1696,6 +1706,7 @@ class DeviceConcise PROTOBUF_FINAL :
   bool minimize_snmp_;
   bool device_bgp_flowspec_;
   ::PROTOBUF_NAMESPACE_ID::uint32 use_bgp_device_id_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 monitoring_template_id_;
   friend struct ::TableStruct_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto;
 };
 // -------------------------------------------------------------------
@@ -10404,6 +10415,26 @@ inline void DeviceConcise::unsafe_arena_set_allocated_flow_snmp_credential_name(
   flow_snmp_credential_name_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       flow_snmp_credential_name, GetArena());
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.device.v202308beta1.DeviceConcise.flow_snmp_credential_name)
+}
+
+// uint32 monitoring_template_id = 24[json_name = "monitoringTemplateId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void DeviceConcise::clear_monitoring_template_id() {
+  monitoring_template_id_ = 0u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 DeviceConcise::_internal_monitoring_template_id() const {
+  return monitoring_template_id_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 DeviceConcise::monitoring_template_id() const {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.DeviceConcise.monitoring_template_id)
+  return _internal_monitoring_template_id();
+}
+inline void DeviceConcise::_internal_set_monitoring_template_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  
+  monitoring_template_id_ = value;
+}
+inline void DeviceConcise::set_monitoring_template_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_monitoring_template_id(value);
+  // @@protoc_insertion_point(field_set:kentik.device.v202308beta1.DeviceConcise.monitoring_template_id)
 }
 
 // -------------------------------------------------------------------

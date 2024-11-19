@@ -276,6 +276,11 @@ message DeviceConcise {
       description: "Snmp Credential Name (flow_snmp_credential_name) - Optional Credential Name (Credential for Flow Snmp peering). Valid characters: alphanumeric. Length: 32."
     }
   ];
+  uint32 monitoring_template_id = 24 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Monitoring template - The ID of the monitoring template assigned to this device."
+    }
+  ];
 }
 
 // {{.Name}}

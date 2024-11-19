@@ -1710,7 +1710,7 @@ const ProtobufCMessageDescriptor kentik__device__v202308beta1__device_nms_st_con
   (ProtobufCMessageInit) kentik__device__v202308beta1__device_nms_st_config__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__device__v202308beta1__device_concise__field_descriptors[23] =
+static const ProtobufCFieldDescriptor kentik__device__v202308beta1__device_concise__field_descriptors[24] =
 {
   {
     "id",
@@ -1988,6 +1988,18 @@ static const ProtobufCFieldDescriptor kentik__device__v202308beta1__device_conci
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "monitoring_template_id",
+    24,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT32,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Device__V202308beta1__DeviceConcise, monitoring_template_id),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__device__v202308beta1__device_concise__field_indices_by_name[] = {
   3,   /* field[3] = cdn_attr */
@@ -2008,6 +2020,7 @@ static const unsigned kentik__device__v202308beta1__device_concise__field_indice
   22,   /* field[22] = flow_snmp_credential_name */
   0,   /* field[0] = id */
   9,   /* field[9] = minimize_snmp */
+  23,   /* field[23] = monitoring_template_id */
   20,   /* field[20] = nms */
   7,   /* field[7] = plan_id */
   5,   /* field[5] = sending_ips */
@@ -2017,7 +2030,7 @@ static const unsigned kentik__device__v202308beta1__device_concise__field_indice
 static const ProtobufCIntRange kentik__device__v202308beta1__device_concise__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 23 }
+  { 0, 24 }
 };
 const ProtobufCMessageDescriptor kentik__device__v202308beta1__device_concise__descriptor =
 {
@@ -2027,7 +2040,7 @@ const ProtobufCMessageDescriptor kentik__device__v202308beta1__device_concise__d
   "Kentik__Device__V202308beta1__DeviceConcise",
   "kentik.device.v202308beta1",
   sizeof(Kentik__Device__V202308beta1__DeviceConcise),
-  23,
+  24,
   kentik__device__v202308beta1__device_concise__field_descriptors,
   kentik__device__v202308beta1__device_concise__field_indices_by_name,
   1,  kentik__device__v202308beta1__device_concise__number_ranges,
