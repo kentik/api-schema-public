@@ -3515,6 +3515,7 @@ class DeviceDetailed PROTOBUF_FINAL :
     kUseAsnFromFlowFieldNumber = 58,
     kMaxInterfaceFieldNumber = 59,
     kMaxInterfaceCheckFieldNumber = 60,
+    kMonitoringTemplateIdFieldNumber = 64,
   };
   // repeated .kentik.device.v202308beta1.Label labels = 9[json_name = "labels", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   int labels_size() const;
@@ -4880,6 +4881,15 @@ class DeviceDetailed PROTOBUF_FINAL :
   void _internal_set_max_interface_check(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
+  // uint32 monitoring_template_id = 64[json_name = "monitoringTemplateId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_monitoring_template_id();
+  ::PROTOBUF_NAMESPACE_ID::uint32 monitoring_template_id() const;
+  void set_monitoring_template_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_monitoring_template_id() const;
+  void _internal_set_monitoring_template_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  public:
+
   // @@protoc_insertion_point(class_scope:kentik.device.v202308beta1.DeviceDetailed)
  private:
   class _Internal;
@@ -4952,6 +4962,7 @@ class DeviceDetailed PROTOBUF_FINAL :
   bool use_asn_from_flow_;
   ::PROTOBUF_NAMESPACE_ID::uint32 max_interface_;
   ::PROTOBUF_NAMESPACE_ID::uint32 max_interface_check_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 monitoring_template_id_;
   friend struct ::TableStruct_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto;
 };
 // -------------------------------------------------------------------
@@ -17500,6 +17511,26 @@ inline void DeviceDetailed::unsafe_arena_set_allocated_flow_snmp_credential_name
   flow_snmp_credential_name_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       flow_snmp_credential_name, GetArena());
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.device.v202308beta1.DeviceDetailed.flow_snmp_credential_name)
+}
+
+// uint32 monitoring_template_id = 64[json_name = "monitoringTemplateId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void DeviceDetailed::clear_monitoring_template_id() {
+  monitoring_template_id_ = 0u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 DeviceDetailed::_internal_monitoring_template_id() const {
+  return monitoring_template_id_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 DeviceDetailed::monitoring_template_id() const {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.DeviceDetailed.monitoring_template_id)
+  return _internal_monitoring_template_id();
+}
+inline void DeviceDetailed::_internal_set_monitoring_template_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  
+  monitoring_template_id_ = value;
+}
+inline void DeviceDetailed::set_monitoring_template_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_monitoring_template_id(value);
+  // @@protoc_insertion_point(field_set:kentik.device.v202308beta1.DeviceDetailed.monitoring_template_id)
 }
 
 // -------------------------------------------------------------------
