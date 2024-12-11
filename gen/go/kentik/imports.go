@@ -13,6 +13,7 @@ import (
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/core/v202303"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/cost/v202308"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/credential/v202407alpha1"
+	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/custom_dimension/v202411alpha1"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/device/v202308beta1"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/flow_tag/v202404alpha1"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/interface/v202108alpha1"

@@ -1,0 +1,732 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Custom Dimensions API",
+        "description": "# Overview\nThe Custom Dimensions API enables programmatic access to information on Custom Dimensions and their Populators.\n",
+        "version": "v202411alpha1",
+        "contact": {
+            "name": "Kentik API Engineering",
+            "url": "https://github.com/kentik/api-schema-public"
+        }
+    },
+    "tags": [
+        {
+            "name": "CustomDimensionService"
+        }
+    ],
+    "paths": {
+        "/custom_dimensions/v202411alpha1": {
+            "get": {
+                "summary": "List Custom Dimensions",
+                "description": "Returns an array of custom dimension objects that each contain information about an individual custom dimension.",
+                "operationId": "ListCustomDimensions",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202411alpha1ListCustomDimensionsResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "CustomDimensionService"
+                ]
+            }
+        },
+        "/custom_dimensions/v202411alpha1/{customDimensionId}": {
+            "get": {
+                "summary": "Custom Dimension Info",
+                "description": "Returns a custom dimension object containing information about an individual custom dimension.",
+                "operationId": "GetCustomDimensionInfo",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202411alpha1GetCustomDimensionInfoResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "customDimensionId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "tags": [
+                    "CustomDimensionService"
+                ]
+            },
+            "delete": {
+                "summary": "Delete Custom Dimension",
+                "description": "Deletes a custom dimension.",
+                "operationId": "DeleteCustomDimension",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202411alpha1DeleteCustomDimensionResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "customDimensionId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "tags": [
+                    "CustomDimensionService"
+                ]
+            },
+            "put": {
+                "summary": "Update Custom Dimension",
+                "description": "Updates and returns a custom dimension object containing information about an individual custom dimension (see About Custom Dimensions). Populators are not sent back in the response body. To get them use 'Custom Dimension info' API instead.",
+                "operationId": "UpdateCustomDimension",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202411alpha1UpdateCustomDimensionResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "customDimensionId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/v202411alpha1CustomDimension"
+                },
+                "tags": [
+                    "CustomDimensionService"
+                ]
+            }
+        },
+        "/custom_dimensions/v202411alpha1/{customDimensionId}/populator": {
+            "post": {
+                "summary": "Create Populator",
+                "description": "Creates and returns a populator object containing information about an individual populator.",
+                "operationId": "CreatePopulator",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202411alpha1CreatePopulatorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "customDimensionId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/v202411alpha1Populator"
+                },
+                "tags": [
+                    "CustomDimensionService"
+                ]
+            }
+        },
+        "/custom_dimensions/v202411alpha1/{customDimensionId}/populator/{populatorId}": {
+            "delete": {
+                "summary": "Delete Populator",
+                "description": "Deletes a populator.",
+                "operationId": "DeletePopulator",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202411alpha1DeletePopulatorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "customDimensionId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "populatorId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "tags": [
+                    "CustomDimensionService"
+                ]
+            },
+            "put": {
+                "summary": "Update Populator",
+                "description": "Updates and returns a populator object containing information about an individual populator.",
+                "operationId": "UpdatePopulator",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202411alpha1UpdatePopulatorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "customDimensionId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "populatorId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/v202411alpha1Populator"
+                },
+                "tags": [
+                    "CustomDimensionService"
+                ]
+            }
+        },
+        "/v1/customdimension": {
+            "post": {
+                "summary": "Create Custom Dimension",
+                "description": "Creates and returns a custom dimension object containing information about an individual custom dimension",
+                "operationId": "CreateCustomDimension",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202411alpha1CreateCustomDimensionResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/v202411alpha1CustomDimension"
+                },
+                "tags": [
+                    "CustomDimensionService"
+                ]
+            }
+        }
+    },
+    "security": [
+        {
+            "email": [],
+            "token": []
+        }
+    ],
+    "externalDocs": {
+        "description": "Knowledge base article outlining the purpose and usage of Custom Dimensions and Populators.",
+        "url": "https://kb.kentik.com/proto/v4/Cb06.htm"
+    },
+    "components": {
+        "requestBodies": {
+            "v202411alpha1CustomDimension": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/v202411alpha1CustomDimension"
+                        }
+                    }
+                },
+                "required": true
+            },
+            "v202411alpha1Populator": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/v202411alpha1Populator"
+                        }
+                    }
+                },
+                "required": true
+            }
+        },
+        "securitySchemes": {
+            "email": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-Email",
+                "in": "header"
+            },
+            "token": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-API-Token",
+                "in": "header"
+            }
+        },
+        "schemas": {
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "typeUrl": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string",
+                        "format": "byte"
+                    }
+                }
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "v202411alpha1CreateCustomDimensionResponse": {
+                "type": "object",
+                "properties": {
+                    "dimension": {
+                        "$ref": "#/components/schemas/v202411alpha1CustomDimension"
+                    }
+                }
+            },
+            "v202411alpha1CreatePopulatorResponse": {
+                "type": "object",
+                "properties": {
+                    "populator": {
+                        "$ref": "#/components/schemas/v202411alpha1Populator"
+                    }
+                }
+            },
+            "v202411alpha1CustomDimension": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Unique identifier for the custom dimension.",
+                        "readOnly": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the custom dimension. Must start with 'c_'. Valid characters: alphanumeric dashes and underscores. Length: min=1, max=20.",
+                        "required": [
+                            "name"
+                        ]
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Type of the custom dimension (valid values: 'string' or 'uint32')",
+                        "title": "should be an enum instead? but also YAGNI",
+                        "required": [
+                            "type"
+                        ]
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The name to be displayed of the custom dimension. Valid characters: alphanumeric spaces, dashes and underscores. Length: min=2, max=30.",
+                        "required": [
+                            "description"
+                        ]
+                    },
+                    "populators": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202411alpha1Populator"
+                        },
+                        "description": "Populators associated with this custom dimension.",
+                        "readOnly": true
+                    },
+                    "companyId": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "The system-assigned ID of the customer.",
+                        "readOnly": true
+                    },
+                    "createdDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Date-time of populator creation, in UTC.",
+                        "readOnly": true
+                    },
+                    "updatedDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Date-time of most-recent populator edit, in UTC.",
+                        "readOnly": true
+                    }
+                },
+                "required": [
+                    "name",
+                    "type",
+                    "description"
+                ]
+            },
+            "v202411alpha1DeleteCustomDimensionResponse": {
+                "type": "object"
+            },
+            "v202411alpha1DeletePopulatorResponse": {
+                "type": "object"
+            },
+            "v202411alpha1GetCustomDimensionInfoResponse": {
+                "type": "object",
+                "properties": {
+                    "dimension": {
+                        "$ref": "#/components/schemas/v202411alpha1CustomDimension"
+                    }
+                }
+            },
+            "v202411alpha1ListCustomDimensionsResponse": {
+                "type": "object",
+                "properties": {
+                    "dimensions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202411alpha1CustomDimension"
+                        }
+                    }
+                }
+            },
+            "v202411alpha1Populator": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Unique identifier for the populator.",
+                        "readOnly": true
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "The value of the dimension. When the custom dimension's type is 'string' - Valid characters: alphanumeric, spaces, dashes and underscores. Length: min=1, max=128. When the custom dimension's type is 'uint32' - Valid values: min=0, max=4294967295."
+                    },
+                    "direction": {
+                        "type": "string",
+                        "description": "The direction of the populator. Valid values: 'src', 'dst', or 'either'."
+                    },
+                    "deviceName": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Device names, IPs, or regular expressions. A match results when any specified device name matches the device name or IP address associated with a device sending flow data."
+                    },
+                    "deviceType": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Device types or regular expressions. A match results when any specified device type matches the device_type associated with a device sending flow data."
+                    },
+                    "site": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Site names or regular expressions. A match results when any specified site matches the site associated with a device sending flow data."
+                    },
+                    "interfaceName": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Interface names or regular expressions. A match results when any specified interface name matches the name or description of an interface sending flow data."
+                    },
+                    "addr": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "IP addresses in IP/CIDR format. A match results when any specified IP address corresponds to a range of IP addresses in incoming flow. It allows IPv6 CIDRs. 'short form' (e.g. 1::2/127) is allowed. If no CIDRs are specified in a tag, the tag will be matched against both incoming IPv4 and v6 flows. If CIDRs are given, the tag will only be matched against the given type of flow; in particular, if you only give IPv4 CIDRs, the tag will not match any IPv6 flows, and vice versa."
+                    },
+                    "port": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "description": "Ports (between 0 and 65535). A match results when any specified port matches a port number in incoming flow."
+                    },
+                    "tcpFlags": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "description": "TCP flag: Numbers between 0 and 255 representing an 8-bit binary bit pattern corresponding to TCP flags. A match will result if the value in both the flow bit pattern and the bitmask is 1 at any of the eight places."
+                    },
+                    "protocol": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "description": "Protocol numbers (between 0 and 255). A match results when any specified protocol number is the same as the protocol of the traffic represented by the flow."
+                    },
+                    "asn": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "description": "Last-hop (origin) ASN: ASNs (between 1 and 2^32-1=4294967295). A match results when any specified ASN is the same as the last ASN in the path in the routing table for either the source (SRC IP) or destination (DST IP)."
+                    },
+                    "lastHopAsName": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Last-hop (origin) AS Name: AS Names or regular expressions. A match results when any specified AS Name represents the name corresponding to the last ASN in the path in the routing table for either the source (SRC IP) or destination (DST IP)."
+                    },
+                    "nextHopAsn": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "description": "Next-hop ASN. A match results when any specified ASN is the same as the ASN of the next hop router based on AS path."
+                    },
+                    "nextHopAsName": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Next-hop AS Name: AS Names or regular expressions. A match results when any specified ASN represents the name corresponding to the ASN of the next hop router based on AS path."
+                    },
+                    "nextHop": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Next-hop IP: IPv4 and/or IPv6 CIDRs. A match results when any specified IP is within a range of specified IPv4 and/or IPv6 CIDRs."
+                    },
+                    "bgpAsPath": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "BGP AS path: Numbers representing bgp aspath. A match results when any specified value is the same as the BGP AS-PATH in the route. Example: '^3737 1212,_7801_,2906$' would look for any of those 3 combinations in the AS path. Permitted characters []*:_^$.0123456789()+?,space-"
+                    },
+                    "bgpCommunity": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "BGP community: Numbers or regular expression representing BGP community (i.e. 2096:2212). A match results when any specified value is the same as the BGP community of the BGP route associated with incoming flow data. Permitted characters []*:_^$.0123456789()+?,space-"
+                    },
+                    "mac": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "MAC Addresses. A match results when any specified MAC Address matches source or destination Ethernet (L2) address."
+                    },
+                    "country": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Country: Two-character country codes. A match results when any specified country code matches source or destination country of the flow."
+                    },
+                    "vlans": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "VLAN(s): Integers or ranges of integers between 0 and 4095."
+                    },
+                    "userId": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "The system-assigned ID of the user who created the populator.",
+                        "readOnly": true
+                    },
+                    "createdDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Date-time of populator creation, in UTC.",
+                        "readOnly": true
+                    },
+                    "updatedDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Date-time of most-recent populator edit, in UTC.",
+                        "readOnly": true
+                    }
+                }
+            },
+            "v202411alpha1UpdateCustomDimensionResponse": {
+                "type": "object",
+                "properties": {
+                    "dimension": {
+                        "$ref": "#/components/schemas/v202411alpha1CustomDimension"
+                    }
+                }
+            },
+            "v202411alpha1UpdatePopulatorResponse": {
+                "type": "object",
+                "properties": {
+                    "populator": {
+                        "$ref": "#/components/schemas/v202411alpha1Populator"
+                    }
+                }
+            }
+        }
+    }
+}

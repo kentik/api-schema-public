@@ -1,0 +1,420 @@
+syntax = "proto3";
+
+package kentik.custom_dimension.v202411alpha1;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/custom_dimension/v202411alpha1;custom_dimension";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/timestamp.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "kentik/core/v202303/annotations.proto";
+import "kentik/user/v202211/user.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Custom Dimensions API"
+    version: "v202411alpha1"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api-schema-public"
+    }
+    description: "# Overview\n"
+        "The Custom Dimensions API enables programmatic access to information on Custom Dimensions and their Populators.\n"
+  }
+  external_docs: {
+    url: "https://kb.kentik.com/proto/v4/Cb06.htm"
+    description: "Knowledge base article outlining the purpose and usage of Custom Dimensions and Populators."
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+
+message CustomDimension {
+  uint32 id = 1[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Unique identifier for the custom dimension."
+    },
+    (google.api.field_behavior) = OUTPUT_ONLY
+  ];
+
+  string name = 2[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The name of the custom dimension. Must start with 'c_'. Valid characters: alphanumeric dashes and underscores. Length: min=1, max=20."
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+
+  // should be an enum instead? but also YAGNI
+  string type = 3[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Type of the custom dimension (valid values: 'string' or 'uint32')"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+
+  string description = 4[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The name to be displayed of the custom dimension. Valid characters: alphanumeric spaces, dashes and underscores. Length: min=2, max=30."
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+
+  repeated Populator populators = 5[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Populators associated with this custom dimension."
+    },
+    (google.api.field_behavior) = OUTPUT_ONLY
+  ];
+
+  uint32 company_id = 6[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The system-assigned ID of the customer."
+    },
+    (google.api.field_behavior) = OUTPUT_ONLY
+  ];
+
+  google.protobuf.Timestamp created_date = 7[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Date-time of populator creation, in UTC."
+    },
+    (google.api.field_behavior) = OUTPUT_ONLY
+  ];
+
+  google.protobuf.Timestamp updated_date = 8[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Date-time of most-recent populator edit, in UTC."
+    },
+    (google.api.field_behavior) = OUTPUT_ONLY
+  ];
+
+}
+
+message Populator {
+  uint32 id = 1[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Unique identifier for the populator."
+    },
+    (google.api.field_behavior) = OUTPUT_ONLY
+  ];
+
+  string value = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The value of the dimension. When the custom dimension's type is 'string' - Valid characters: alphanumeric, spaces, dashes and underscores. Length: min=1, max=128. When the custom dimension's type is 'uint32' - Valid values: min=0, max=4294967295."
+    }
+  ];
+
+  string direction = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The direction of the populator. Valid values: 'src', 'dst', or 'either'."
+    }
+  ];
+
+  repeated string device_name = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device names, IPs, or regular expressions. A match results when any specified device name matches the device name or IP address associated with a device sending flow data."
+    }
+  ];
+
+  repeated string device_type = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device types or regular expressions. A match results when any specified device type matches the device_type associated with a device sending flow data."
+    }
+  ];
+
+  repeated string site = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Site names or regular expressions. A match results when any specified site matches the site associated with a device sending flow data."
+    }
+  ];
+
+  repeated string interface_name = 7 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Interface names or regular expressions. A match results when any specified interface name matches the name or description of an interface sending flow data."
+    }
+  ];
+
+  repeated string addr = 8 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "IP addresses in IP/CIDR format. A match results when any specified IP address corresponds to a range of IP addresses in incoming flow. It allows IPv6 CIDRs. 'short form' (e.g. 1::2/127) is allowed. If no CIDRs are specified in a tag, the tag will be matched against both incoming IPv4 and v6 flows. If CIDRs are given, the tag will only be matched against the given type of flow; in particular, if you only give IPv4 CIDRs, the tag will not match any IPv6 flows, and vice versa."
+    }
+  ];
+
+  repeated uint32 port = 9 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Ports (between 0 and 65535). A match results when any specified port matches a port number in incoming flow."
+    }
+  ];
+
+  repeated uint32 tcp_flags = 10 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "TCP flag: Numbers between 0 and 255 representing an 8-bit binary bit pattern corresponding to TCP flags. A match will result if the value in both the flow bit pattern and the bitmask is 1 at any of the eight places."
+    }
+  ];
+
+  repeated uint32 protocol = 11 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Protocol numbers (between 0 and 255). A match results when any specified protocol number is the same as the protocol of the traffic represented by the flow."
+    }
+  ];
+
+  repeated uint32 asn = 12 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Last-hop (origin) ASN: ASNs (between 1 and 2^32-1=4294967295). A match results when any specified ASN is the same as the last ASN in the path in the routing table for either the source (SRC IP) or destination (DST IP)."
+    }
+  ];
+
+  repeated string last_hop_as_name = 13 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Last-hop (origin) AS Name: AS Names or regular expressions. A match results when any specified AS Name represents the name corresponding to the last ASN in the path in the routing table for either the source (SRC IP) or destination (DST IP)."
+    }
+  ];
+
+  repeated uint32 next_hop_asn = 14 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Next-hop ASN. A match results when any specified ASN is the same as the ASN of the next hop router based on AS path."
+    }
+  ];
+
+  repeated string next_hop_as_name = 15 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Next-hop AS Name: AS Names or regular expressions. A match results when any specified ASN represents the name corresponding to the ASN of the next hop router based on AS path."
+    }
+  ];
+
+  repeated string next_hop = 16 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Next-hop IP: IPv4 and/or IPv6 CIDRs. A match results when any specified IP is within a range of specified IPv4 and/or IPv6 CIDRs."
+    }
+  ];
+
+  repeated string bgp_as_path = 17 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "BGP AS path: Numbers representing bgp aspath. A match results when any specified value is the same as the BGP AS-PATH in the route. Example: '^3737 1212,_7801_,2906$' would look for any of those 3 combinations in the AS path. Permitted characters []*:_^$.0123456789()+?,space-"
+    }
+  ];
+
+  repeated string bgp_community = 18 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "BGP community: Numbers or regular expression representing BGP community (i.e. 2096:2212). A match results when any specified value is the same as the BGP community of the BGP route associated with incoming flow data. Permitted characters []*:_^$.0123456789()+?,space-"
+    }
+  ];
+
+  repeated string mac = 19 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "MAC Addresses. A match results when any specified MAC Address matches source or destination Ethernet (L2) address."
+    }
+  ];
+
+  repeated string country = 20 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Country: Two-character country codes. A match results when any specified country code matches source or destination country of the flow."
+    }
+  ];
+
+  repeated string vlans = 21 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "VLAN(s): Integers or ranges of integers between 0 and 4095."
+    }
+  ];
+
+  uint32 user_id = 22[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The system-assigned ID of the user who created the populator."
+    },
+    (google.api.field_behavior) = OUTPUT_ONLY
+  ];
+
+  google.protobuf.Timestamp created_date = 23[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Date-time of populator creation, in UTC."
+    },
+    (google.api.field_behavior) = OUTPUT_ONLY
+  ];
+
+  google.protobuf.Timestamp updated_date = 24[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Date-time of most-recent populator edit, in UTC."
+    },
+    (google.api.field_behavior) = OUTPUT_ONLY
+  ];
+}
+
+// {{.Name}}
+message ListCustomDimensionsRequest {
+}
+
+message ListCustomDimensionsResponse {
+  repeated CustomDimension dimensions = 1;
+}
+
+
+// {{.Name}}
+message GetCustomDimensionInfoRequest {
+  uint32 custom_dimension_id = 1;
+}
+
+message GetCustomDimensionInfoResponse {
+  CustomDimension dimension = 1;
+}
+
+message CreateCustomDimensionRequest {
+  CustomDimension dimension = 1;
+}
+
+message CreateCustomDimensionResponse {
+  CustomDimension dimension = 1;
+}
+
+message UpdateCustomDimensionRequest {
+  uint32 custom_dimension_id = 1;
+  CustomDimension dimension = 2;
+}
+
+message UpdateCustomDimensionResponse {
+  CustomDimension dimension = 1;
+}
+
+message DeleteCustomDimensionRequest {
+  uint32 custom_dimension_id = 1;
+}
+
+message DeleteCustomDimensionResponse {
+}
+
+message CreatePopulatorRequest {
+  uint32 custom_dimension_id = 1;
+  Populator populator = 2;
+}
+
+message CreatePopulatorResponse {
+  Populator populator = 1;
+}
+
+message UpdatePopulatorRequest {
+  uint32 custom_dimension_id = 1;
+  uint32 populator_id = 2;
+  Populator populator = 3;
+}
+
+message UpdatePopulatorResponse {
+  Populator populator = 1;
+}
+
+message DeletePopulatorRequest {
+  uint32 custom_dimension_id = 1;
+  uint32 populator_id = 2;
+}
+
+message DeletePopulatorResponse {
+}
+
+service CustomDimensionService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "admin.custom_dimension";
+
+  rpc ListCustomDimensions(ListCustomDimensionsRequest)  returns (ListCustomDimensionsResponse) {
+    option (google.api.http) = {
+      get: "/custom_dimensions/v202411alpha1"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ListCustomDimensions"
+      summary: "List Custom Dimensions"
+      description: "Returns an array of custom dimension objects that each contain information about an individual custom dimension."
+    };
+  }
+
+  rpc GetCustomDimensionInfo(GetCustomDimensionInfoRequest) returns (GetCustomDimensionInfoResponse) {
+    option (google.api.http) = { get: "/custom_dimensions/v202411alpha1/{custom_dimension_id}" };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetCustomDimensionInfo"
+      summary: "Custom Dimension Info"
+      description: "Returns a custom dimension object containing information about an individual custom dimension."
+    };
+  }
+
+  rpc CreateCustomDimension(CreateCustomDimensionRequest) returns (CreateCustomDimensionResponse) {
+    option (google.api.http) = { post: "/v1/customdimension" body: "dimension" };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "CreateCustomDimension"
+      summary: "Create Custom Dimension"
+      description: 'Creates and returns a custom dimension object containing information about an individual custom dimension'
+    };
+  }
+
+  rpc UpdateCustomDimension(UpdateCustomDimensionRequest) returns (UpdateCustomDimensionResponse) {
+    option (google.api.http) = { put: "/custom_dimensions/v202411alpha1/{custom_dimension_id}" body: "dimension" };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "UpdateCustomDimension"
+      summary: "Update Custom Dimension"
+      description: "Updates and returns a custom dimension object containing information about an individual custom dimension (see About Custom Dimensions). Populators are not sent back in the response body. To get them use 'Custom Dimension info' API instead."
+    };
+  }
+
+  rpc DeleteCustomDimension(DeleteCustomDimensionRequest) returns (DeleteCustomDimensionResponse) {
+    option (google.api.http) = { delete: "/custom_dimensions/v202411alpha1/{custom_dimension_id}" };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "DeleteCustomDimension"
+      summary: "Delete Custom Dimension"
+      description: "Deletes a custom dimension."
+    };
+  }
+
+  rpc CreatePopulator(CreatePopulatorRequest) returns (CreatePopulatorResponse) {
+    option (google.api.http) = { post: "/custom_dimensions/v202411alpha1/{custom_dimension_id}/populator" body: "populator" };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "CreatePopulator"
+      summary: "Create Populator"
+      description: "Creates and returns a populator object containing information about an individual populator."
+    };
+  }
+
+  rpc UpdatePopulator(UpdatePopulatorRequest) returns (UpdatePopulatorResponse) {
+    option (google.api.http) = { put: "/custom_dimensions/v202411alpha1/{custom_dimension_id}/populator/{populator_id}" body: "populator" };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "UpdatePopulator"
+      summary: "Update Populator"
+      description: "Updates and returns a populator object containing information about an individual populator."
+    };
+  }
+
+  rpc DeletePopulator(DeletePopulatorRequest) returns (DeletePopulatorResponse) {
+    option (google.api.http) = { delete: "/custom_dimensions/v202411alpha1/{custom_dimension_id}/populator/{populator_id}" };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "DeletePopulator"
+      summary: "Delete Populator"
+      description: "Deletes a populator."
+    };
+  }
+}
