@@ -176,7 +176,7 @@ message Populator {
     }
   ];
 
-  repeated uint32 tcp_flags = 10 [
+  uint32 tcp_flags = 10 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "TCP flag: Numbers between 0 and 255 representing an 8-bit binary bit pattern corresponding to TCP flags. A match will result if the value in both the flow bit pattern and the bitmask is 1 at any of the eight places."
     }
@@ -194,31 +194,31 @@ message Populator {
     }
   ];
 
-  repeated string last_hop_as_name = 13 [
+  repeated string lasthop_as_name = 13 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Last-hop (origin) AS Name: AS Names or regular expressions. A match results when any specified AS Name represents the name corresponding to the last ASN in the path in the routing table for either the source (SRC IP) or destination (DST IP)."
     }
   ];
 
-  repeated uint32 next_hop_asn = 14 [
+  repeated uint32 nexthop_asn = 14 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Next-hop ASN. A match results when any specified ASN is the same as the ASN of the next hop router based on AS path."
     }
   ];
 
-  repeated string next_hop_as_name = 15 [
+  repeated string nexthop_as_name = 15 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Next-hop AS Name: AS Names or regular expressions. A match results when any specified ASN represents the name corresponding to the ASN of the next hop router based on AS path."
     }
   ];
 
-  repeated string next_hop = 16 [
+  repeated string nexthop = 16 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Next-hop IP: IPv4 and/or IPv6 CIDRs. A match results when any specified IP is within a range of specified IPv4 and/or IPv6 CIDRs."
     }
   ];
 
-  repeated string bgp_as_path = 17 [
+  repeated string bgp_aspath = 17 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "BGP AS path: Numbers representing bgp aspath. A match results when any specified value is the same as the BGP AS-PATH in the route. Example: '^3737 1212,_7801_,2906$' would look for any of those 3 combinations in the AS path. Permitted characters []*:_^$.0123456789()+?,space-"
     }
@@ -248,7 +248,7 @@ message Populator {
     }
   ];
 
-  uint32 user_id = 22[
+  string user = 22[
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "The system-assigned ID of the user who created the populator."
     },

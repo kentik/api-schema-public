@@ -555,24 +555,24 @@ class Populator PROTOBUF_FINAL :
     kInterfaceNameFieldNumber = 7,
     kAddrFieldNumber = 8,
     kPortFieldNumber = 9,
-    kTcpFlagsFieldNumber = 10,
     kProtocolFieldNumber = 11,
     kAsnFieldNumber = 12,
-    kLastHopAsNameFieldNumber = 13,
-    kNextHopAsnFieldNumber = 14,
-    kNextHopAsNameFieldNumber = 15,
-    kNextHopFieldNumber = 16,
-    kBgpAsPathFieldNumber = 17,
+    kLasthopAsNameFieldNumber = 13,
+    kNexthopAsnFieldNumber = 14,
+    kNexthopAsNameFieldNumber = 15,
+    kNexthopFieldNumber = 16,
+    kBgpAspathFieldNumber = 17,
     kBgpCommunityFieldNumber = 18,
     kMacFieldNumber = 19,
     kCountryFieldNumber = 20,
     kVlansFieldNumber = 21,
     kValueFieldNumber = 2,
     kDirectionFieldNumber = 3,
+    kUserFieldNumber = 22,
     kCreatedDateFieldNumber = 23,
     kUpdatedDateFieldNumber = 24,
     kIdFieldNumber = 1,
-    kUserIdFieldNumber = 22,
+    kTcpFlagsFieldNumber = 10,
   };
   // repeated string device_name = 4[json_name = "deviceName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   int device_name_size() const;
@@ -716,28 +716,6 @@ class Populator PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       mutable_port();
 
-  // repeated uint32 tcp_flags = 10[json_name = "tcpFlags", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  int tcp_flags_size() const;
-  private:
-  int _internal_tcp_flags_size() const;
-  public:
-  void clear_tcp_flags();
-  private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_tcp_flags(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
-      _internal_tcp_flags() const;
-  void _internal_add_tcp_flags(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
-      _internal_mutable_tcp_flags();
-  public:
-  ::PROTOBUF_NAMESPACE_ID::uint32 tcp_flags(int index) const;
-  void set_tcp_flags(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value);
-  void add_tcp_flags(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
-      tcp_flags() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
-      mutable_tcp_flags();
-
   // repeated uint32 protocol = 11[json_name = "protocol", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   int protocol_size() const;
   private:
@@ -782,122 +760,122 @@ class Populator PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       mutable_asn();
 
-  // repeated string last_hop_as_name = 13[json_name = "lastHopAsName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  int last_hop_as_name_size() const;
+  // repeated string lasthop_as_name = 13[json_name = "lasthopAsName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  int lasthop_as_name_size() const;
   private:
-  int _internal_last_hop_as_name_size() const;
+  int _internal_lasthop_as_name_size() const;
   public:
-  void clear_last_hop_as_name();
-  const std::string& last_hop_as_name(int index) const;
-  std::string* mutable_last_hop_as_name(int index);
-  void set_last_hop_as_name(int index, const std::string& value);
-  void set_last_hop_as_name(int index, std::string&& value);
-  void set_last_hop_as_name(int index, const char* value);
-  void set_last_hop_as_name(int index, const char* value, size_t size);
-  std::string* add_last_hop_as_name();
-  void add_last_hop_as_name(const std::string& value);
-  void add_last_hop_as_name(std::string&& value);
-  void add_last_hop_as_name(const char* value);
-  void add_last_hop_as_name(const char* value, size_t size);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& last_hop_as_name() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_last_hop_as_name();
+  void clear_lasthop_as_name();
+  const std::string& lasthop_as_name(int index) const;
+  std::string* mutable_lasthop_as_name(int index);
+  void set_lasthop_as_name(int index, const std::string& value);
+  void set_lasthop_as_name(int index, std::string&& value);
+  void set_lasthop_as_name(int index, const char* value);
+  void set_lasthop_as_name(int index, const char* value, size_t size);
+  std::string* add_lasthop_as_name();
+  void add_lasthop_as_name(const std::string& value);
+  void add_lasthop_as_name(std::string&& value);
+  void add_lasthop_as_name(const char* value);
+  void add_lasthop_as_name(const char* value, size_t size);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& lasthop_as_name() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_lasthop_as_name();
   private:
-  const std::string& _internal_last_hop_as_name(int index) const;
-  std::string* _internal_add_last_hop_as_name();
+  const std::string& _internal_lasthop_as_name(int index) const;
+  std::string* _internal_add_lasthop_as_name();
   public:
 
-  // repeated uint32 next_hop_asn = 14[json_name = "nextHopAsn", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  int next_hop_asn_size() const;
+  // repeated uint32 nexthop_asn = 14[json_name = "nexthopAsn", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  int nexthop_asn_size() const;
   private:
-  int _internal_next_hop_asn_size() const;
+  int _internal_nexthop_asn_size() const;
   public:
-  void clear_next_hop_asn();
+  void clear_nexthop_asn();
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_next_hop_asn(int index) const;
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_nexthop_asn(int index) const;
   const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
-      _internal_next_hop_asn() const;
-  void _internal_add_next_hop_asn(::PROTOBUF_NAMESPACE_ID::uint32 value);
+      _internal_nexthop_asn() const;
+  void _internal_add_nexthop_asn(::PROTOBUF_NAMESPACE_ID::uint32 value);
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
-      _internal_mutable_next_hop_asn();
+      _internal_mutable_nexthop_asn();
   public:
-  ::PROTOBUF_NAMESPACE_ID::uint32 next_hop_asn(int index) const;
-  void set_next_hop_asn(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value);
-  void add_next_hop_asn(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 nexthop_asn(int index) const;
+  void set_nexthop_asn(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value);
+  void add_nexthop_asn(::PROTOBUF_NAMESPACE_ID::uint32 value);
   const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
-      next_hop_asn() const;
+      nexthop_asn() const;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
-      mutable_next_hop_asn();
+      mutable_nexthop_asn();
 
-  // repeated string next_hop_as_name = 15[json_name = "nextHopAsName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  int next_hop_as_name_size() const;
+  // repeated string nexthop_as_name = 15[json_name = "nexthopAsName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  int nexthop_as_name_size() const;
   private:
-  int _internal_next_hop_as_name_size() const;
+  int _internal_nexthop_as_name_size() const;
   public:
-  void clear_next_hop_as_name();
-  const std::string& next_hop_as_name(int index) const;
-  std::string* mutable_next_hop_as_name(int index);
-  void set_next_hop_as_name(int index, const std::string& value);
-  void set_next_hop_as_name(int index, std::string&& value);
-  void set_next_hop_as_name(int index, const char* value);
-  void set_next_hop_as_name(int index, const char* value, size_t size);
-  std::string* add_next_hop_as_name();
-  void add_next_hop_as_name(const std::string& value);
-  void add_next_hop_as_name(std::string&& value);
-  void add_next_hop_as_name(const char* value);
-  void add_next_hop_as_name(const char* value, size_t size);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& next_hop_as_name() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_next_hop_as_name();
+  void clear_nexthop_as_name();
+  const std::string& nexthop_as_name(int index) const;
+  std::string* mutable_nexthop_as_name(int index);
+  void set_nexthop_as_name(int index, const std::string& value);
+  void set_nexthop_as_name(int index, std::string&& value);
+  void set_nexthop_as_name(int index, const char* value);
+  void set_nexthop_as_name(int index, const char* value, size_t size);
+  std::string* add_nexthop_as_name();
+  void add_nexthop_as_name(const std::string& value);
+  void add_nexthop_as_name(std::string&& value);
+  void add_nexthop_as_name(const char* value);
+  void add_nexthop_as_name(const char* value, size_t size);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& nexthop_as_name() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_nexthop_as_name();
   private:
-  const std::string& _internal_next_hop_as_name(int index) const;
-  std::string* _internal_add_next_hop_as_name();
-  public:
-
-  // repeated string next_hop = 16[json_name = "nextHop", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  int next_hop_size() const;
-  private:
-  int _internal_next_hop_size() const;
-  public:
-  void clear_next_hop();
-  const std::string& next_hop(int index) const;
-  std::string* mutable_next_hop(int index);
-  void set_next_hop(int index, const std::string& value);
-  void set_next_hop(int index, std::string&& value);
-  void set_next_hop(int index, const char* value);
-  void set_next_hop(int index, const char* value, size_t size);
-  std::string* add_next_hop();
-  void add_next_hop(const std::string& value);
-  void add_next_hop(std::string&& value);
-  void add_next_hop(const char* value);
-  void add_next_hop(const char* value, size_t size);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& next_hop() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_next_hop();
-  private:
-  const std::string& _internal_next_hop(int index) const;
-  std::string* _internal_add_next_hop();
+  const std::string& _internal_nexthop_as_name(int index) const;
+  std::string* _internal_add_nexthop_as_name();
   public:
 
-  // repeated string bgp_as_path = 17[json_name = "bgpAsPath", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  int bgp_as_path_size() const;
+  // repeated string nexthop = 16[json_name = "nexthop", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  int nexthop_size() const;
   private:
-  int _internal_bgp_as_path_size() const;
+  int _internal_nexthop_size() const;
   public:
-  void clear_bgp_as_path();
-  const std::string& bgp_as_path(int index) const;
-  std::string* mutable_bgp_as_path(int index);
-  void set_bgp_as_path(int index, const std::string& value);
-  void set_bgp_as_path(int index, std::string&& value);
-  void set_bgp_as_path(int index, const char* value);
-  void set_bgp_as_path(int index, const char* value, size_t size);
-  std::string* add_bgp_as_path();
-  void add_bgp_as_path(const std::string& value);
-  void add_bgp_as_path(std::string&& value);
-  void add_bgp_as_path(const char* value);
-  void add_bgp_as_path(const char* value, size_t size);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& bgp_as_path() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_bgp_as_path();
+  void clear_nexthop();
+  const std::string& nexthop(int index) const;
+  std::string* mutable_nexthop(int index);
+  void set_nexthop(int index, const std::string& value);
+  void set_nexthop(int index, std::string&& value);
+  void set_nexthop(int index, const char* value);
+  void set_nexthop(int index, const char* value, size_t size);
+  std::string* add_nexthop();
+  void add_nexthop(const std::string& value);
+  void add_nexthop(std::string&& value);
+  void add_nexthop(const char* value);
+  void add_nexthop(const char* value, size_t size);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& nexthop() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_nexthop();
   private:
-  const std::string& _internal_bgp_as_path(int index) const;
-  std::string* _internal_add_bgp_as_path();
+  const std::string& _internal_nexthop(int index) const;
+  std::string* _internal_add_nexthop();
+  public:
+
+  // repeated string bgp_aspath = 17[json_name = "bgpAspath", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  int bgp_aspath_size() const;
+  private:
+  int _internal_bgp_aspath_size() const;
+  public:
+  void clear_bgp_aspath();
+  const std::string& bgp_aspath(int index) const;
+  std::string* mutable_bgp_aspath(int index);
+  void set_bgp_aspath(int index, const std::string& value);
+  void set_bgp_aspath(int index, std::string&& value);
+  void set_bgp_aspath(int index, const char* value);
+  void set_bgp_aspath(int index, const char* value, size_t size);
+  std::string* add_bgp_aspath();
+  void add_bgp_aspath(const std::string& value);
+  void add_bgp_aspath(std::string&& value);
+  void add_bgp_aspath(const char* value);
+  void add_bgp_aspath(const char* value, size_t size);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& bgp_aspath() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_bgp_aspath();
+  private:
+  const std::string& _internal_bgp_aspath(int index) const;
+  std::string* _internal_add_bgp_aspath();
   public:
 
   // repeated string bgp_community = 18[json_name = "bgpCommunity", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1046,6 +1024,31 @@ class Populator PROTOBUF_FINAL :
   std::string* _internal_mutable_direction();
   public:
 
+  // string user = 22[json_name = "user", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_user();
+  const std::string& user() const;
+  void set_user(const std::string& value);
+  void set_user(std::string&& value);
+  void set_user(const char* value);
+  void set_user(const char* value, size_t size);
+  std::string* mutable_user();
+  std::string* release_user();
+  void set_allocated_user(std::string* user);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_user();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_user(
+      std::string* user);
+  private:
+  const std::string& _internal_user() const;
+  void _internal_set_user(const std::string& value);
+  std::string* _internal_mutable_user();
+  public:
+
   // .google.protobuf.Timestamp created_date = 23[json_name = "createdDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   bool has_created_date() const;
   private:
@@ -1091,13 +1094,13 @@ class Populator PROTOBUF_FINAL :
   void _internal_set_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
-  // uint32 user_id = 22[json_name = "userId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  void clear_user_id();
-  ::PROTOBUF_NAMESPACE_ID::uint32 user_id() const;
-  void set_user_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  // uint32 tcp_flags = 10[json_name = "tcpFlags", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_tcp_flags();
+  ::PROTOBUF_NAMESPACE_ID::uint32 tcp_flags() const;
+  void set_tcp_flags(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_user_id() const;
-  void _internal_set_user_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_tcp_flags() const;
+  void _internal_set_tcp_flags(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:kentik.custom_dimension.v202411alpha1.Populator)
@@ -1114,28 +1117,27 @@ class Populator PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> addr_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 > port_;
   mutable std::atomic<int> _port_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 > tcp_flags_;
-  mutable std::atomic<int> _tcp_flags_cached_byte_size_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 > protocol_;
   mutable std::atomic<int> _protocol_cached_byte_size_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 > asn_;
   mutable std::atomic<int> _asn_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> last_hop_as_name_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 > next_hop_asn_;
-  mutable std::atomic<int> _next_hop_asn_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> next_hop_as_name_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> next_hop_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> bgp_as_path_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> lasthop_as_name_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 > nexthop_asn_;
+  mutable std::atomic<int> _nexthop_asn_cached_byte_size_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> nexthop_as_name_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> nexthop_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> bgp_aspath_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> bgp_community_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> mac_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> country_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> vlans_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr value_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr direction_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr user_;
   PROTOBUF_NAMESPACE_ID::Timestamp* created_date_;
   PROTOBUF_NAMESPACE_ID::Timestamp* updated_date_;
   ::PROTOBUF_NAMESPACE_ID::uint32 id_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 user_id_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 tcp_flags_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto;
 };
@@ -4523,51 +4525,24 @@ Populator::mutable_port() {
   return _internal_mutable_port();
 }
 
-// repeated uint32 tcp_flags = 10[json_name = "tcpFlags", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-inline int Populator::_internal_tcp_flags_size() const {
-  return tcp_flags_.size();
-}
-inline int Populator::tcp_flags_size() const {
-  return _internal_tcp_flags_size();
-}
+// uint32 tcp_flags = 10[json_name = "tcpFlags", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
 inline void Populator::clear_tcp_flags() {
-  tcp_flags_.Clear();
+  tcp_flags_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 Populator::_internal_tcp_flags(int index) const {
-  return tcp_flags_.Get(index);
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 Populator::tcp_flags(int index) const {
-  // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.Populator.tcp_flags)
-  return _internal_tcp_flags(index);
-}
-inline void Populator::set_tcp_flags(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  tcp_flags_.Set(index, value);
-  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.Populator.tcp_flags)
-}
-inline void Populator::_internal_add_tcp_flags(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  tcp_flags_.Add(value);
-}
-inline void Populator::add_tcp_flags(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_add_tcp_flags(value);
-  // @@protoc_insertion_point(field_add:kentik.custom_dimension.v202411alpha1.Populator.tcp_flags)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
-Populator::_internal_tcp_flags() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 Populator::_internal_tcp_flags() const {
   return tcp_flags_;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
-Populator::tcp_flags() const {
-  // @@protoc_insertion_point(field_list:kentik.custom_dimension.v202411alpha1.Populator.tcp_flags)
+inline ::PROTOBUF_NAMESPACE_ID::uint32 Populator::tcp_flags() const {
+  // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.Populator.tcp_flags)
   return _internal_tcp_flags();
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
-Populator::_internal_mutable_tcp_flags() {
-  return &tcp_flags_;
+inline void Populator::_internal_set_tcp_flags(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  
+  tcp_flags_ = value;
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
-Populator::mutable_tcp_flags() {
-  // @@protoc_insertion_point(field_mutable_list:kentik.custom_dimension.v202411alpha1.Populator.tcp_flags)
-  return _internal_mutable_tcp_flags();
+inline void Populator::set_tcp_flags(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_tcp_flags(value);
+  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.Populator.tcp_flags)
 }
 
 // repeated uint32 protocol = 11[json_name = "protocol", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -4664,347 +4639,347 @@ Populator::mutable_asn() {
   return _internal_mutable_asn();
 }
 
-// repeated string last_hop_as_name = 13[json_name = "lastHopAsName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-inline int Populator::_internal_last_hop_as_name_size() const {
-  return last_hop_as_name_.size();
+// repeated string lasthop_as_name = 13[json_name = "lasthopAsName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline int Populator::_internal_lasthop_as_name_size() const {
+  return lasthop_as_name_.size();
 }
-inline int Populator::last_hop_as_name_size() const {
-  return _internal_last_hop_as_name_size();
+inline int Populator::lasthop_as_name_size() const {
+  return _internal_lasthop_as_name_size();
 }
-inline void Populator::clear_last_hop_as_name() {
-  last_hop_as_name_.Clear();
+inline void Populator::clear_lasthop_as_name() {
+  lasthop_as_name_.Clear();
 }
-inline std::string* Populator::add_last_hop_as_name() {
-  // @@protoc_insertion_point(field_add_mutable:kentik.custom_dimension.v202411alpha1.Populator.last_hop_as_name)
-  return _internal_add_last_hop_as_name();
+inline std::string* Populator::add_lasthop_as_name() {
+  // @@protoc_insertion_point(field_add_mutable:kentik.custom_dimension.v202411alpha1.Populator.lasthop_as_name)
+  return _internal_add_lasthop_as_name();
 }
-inline const std::string& Populator::_internal_last_hop_as_name(int index) const {
-  return last_hop_as_name_.Get(index);
+inline const std::string& Populator::_internal_lasthop_as_name(int index) const {
+  return lasthop_as_name_.Get(index);
 }
-inline const std::string& Populator::last_hop_as_name(int index) const {
-  // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.Populator.last_hop_as_name)
-  return _internal_last_hop_as_name(index);
+inline const std::string& Populator::lasthop_as_name(int index) const {
+  // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.Populator.lasthop_as_name)
+  return _internal_lasthop_as_name(index);
 }
-inline std::string* Populator::mutable_last_hop_as_name(int index) {
-  // @@protoc_insertion_point(field_mutable:kentik.custom_dimension.v202411alpha1.Populator.last_hop_as_name)
-  return last_hop_as_name_.Mutable(index);
+inline std::string* Populator::mutable_lasthop_as_name(int index) {
+  // @@protoc_insertion_point(field_mutable:kentik.custom_dimension.v202411alpha1.Populator.lasthop_as_name)
+  return lasthop_as_name_.Mutable(index);
 }
-inline void Populator::set_last_hop_as_name(int index, const std::string& value) {
-  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.Populator.last_hop_as_name)
-  last_hop_as_name_.Mutable(index)->assign(value);
+inline void Populator::set_lasthop_as_name(int index, const std::string& value) {
+  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.Populator.lasthop_as_name)
+  lasthop_as_name_.Mutable(index)->assign(value);
 }
-inline void Populator::set_last_hop_as_name(int index, std::string&& value) {
-  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.Populator.last_hop_as_name)
-  last_hop_as_name_.Mutable(index)->assign(std::move(value));
+inline void Populator::set_lasthop_as_name(int index, std::string&& value) {
+  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.Populator.lasthop_as_name)
+  lasthop_as_name_.Mutable(index)->assign(std::move(value));
 }
-inline void Populator::set_last_hop_as_name(int index, const char* value) {
+inline void Populator::set_lasthop_as_name(int index, const char* value) {
   GOOGLE_DCHECK(value != nullptr);
-  last_hop_as_name_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:kentik.custom_dimension.v202411alpha1.Populator.last_hop_as_name)
+  lasthop_as_name_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:kentik.custom_dimension.v202411alpha1.Populator.lasthop_as_name)
 }
-inline void Populator::set_last_hop_as_name(int index, const char* value, size_t size) {
-  last_hop_as_name_.Mutable(index)->assign(
+inline void Populator::set_lasthop_as_name(int index, const char* value, size_t size) {
+  lasthop_as_name_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:kentik.custom_dimension.v202411alpha1.Populator.last_hop_as_name)
+  // @@protoc_insertion_point(field_set_pointer:kentik.custom_dimension.v202411alpha1.Populator.lasthop_as_name)
 }
-inline std::string* Populator::_internal_add_last_hop_as_name() {
-  return last_hop_as_name_.Add();
+inline std::string* Populator::_internal_add_lasthop_as_name() {
+  return lasthop_as_name_.Add();
 }
-inline void Populator::add_last_hop_as_name(const std::string& value) {
-  last_hop_as_name_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:kentik.custom_dimension.v202411alpha1.Populator.last_hop_as_name)
+inline void Populator::add_lasthop_as_name(const std::string& value) {
+  lasthop_as_name_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:kentik.custom_dimension.v202411alpha1.Populator.lasthop_as_name)
 }
-inline void Populator::add_last_hop_as_name(std::string&& value) {
-  last_hop_as_name_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:kentik.custom_dimension.v202411alpha1.Populator.last_hop_as_name)
+inline void Populator::add_lasthop_as_name(std::string&& value) {
+  lasthop_as_name_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:kentik.custom_dimension.v202411alpha1.Populator.lasthop_as_name)
 }
-inline void Populator::add_last_hop_as_name(const char* value) {
+inline void Populator::add_lasthop_as_name(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
-  last_hop_as_name_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:kentik.custom_dimension.v202411alpha1.Populator.last_hop_as_name)
+  lasthop_as_name_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:kentik.custom_dimension.v202411alpha1.Populator.lasthop_as_name)
 }
-inline void Populator::add_last_hop_as_name(const char* value, size_t size) {
-  last_hop_as_name_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:kentik.custom_dimension.v202411alpha1.Populator.last_hop_as_name)
+inline void Populator::add_lasthop_as_name(const char* value, size_t size) {
+  lasthop_as_name_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:kentik.custom_dimension.v202411alpha1.Populator.lasthop_as_name)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
-Populator::last_hop_as_name() const {
-  // @@protoc_insertion_point(field_list:kentik.custom_dimension.v202411alpha1.Populator.last_hop_as_name)
-  return last_hop_as_name_;
+Populator::lasthop_as_name() const {
+  // @@protoc_insertion_point(field_list:kentik.custom_dimension.v202411alpha1.Populator.lasthop_as_name)
+  return lasthop_as_name_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
-Populator::mutable_last_hop_as_name() {
-  // @@protoc_insertion_point(field_mutable_list:kentik.custom_dimension.v202411alpha1.Populator.last_hop_as_name)
-  return &last_hop_as_name_;
+Populator::mutable_lasthop_as_name() {
+  // @@protoc_insertion_point(field_mutable_list:kentik.custom_dimension.v202411alpha1.Populator.lasthop_as_name)
+  return &lasthop_as_name_;
 }
 
-// repeated uint32 next_hop_asn = 14[json_name = "nextHopAsn", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-inline int Populator::_internal_next_hop_asn_size() const {
-  return next_hop_asn_.size();
+// repeated uint32 nexthop_asn = 14[json_name = "nexthopAsn", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline int Populator::_internal_nexthop_asn_size() const {
+  return nexthop_asn_.size();
 }
-inline int Populator::next_hop_asn_size() const {
-  return _internal_next_hop_asn_size();
+inline int Populator::nexthop_asn_size() const {
+  return _internal_nexthop_asn_size();
 }
-inline void Populator::clear_next_hop_asn() {
-  next_hop_asn_.Clear();
+inline void Populator::clear_nexthop_asn() {
+  nexthop_asn_.Clear();
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 Populator::_internal_next_hop_asn(int index) const {
-  return next_hop_asn_.Get(index);
+inline ::PROTOBUF_NAMESPACE_ID::uint32 Populator::_internal_nexthop_asn(int index) const {
+  return nexthop_asn_.Get(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 Populator::next_hop_asn(int index) const {
-  // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.Populator.next_hop_asn)
-  return _internal_next_hop_asn(index);
+inline ::PROTOBUF_NAMESPACE_ID::uint32 Populator::nexthop_asn(int index) const {
+  // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.Populator.nexthop_asn)
+  return _internal_nexthop_asn(index);
 }
-inline void Populator::set_next_hop_asn(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  next_hop_asn_.Set(index, value);
-  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.Populator.next_hop_asn)
+inline void Populator::set_nexthop_asn(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  nexthop_asn_.Set(index, value);
+  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.Populator.nexthop_asn)
 }
-inline void Populator::_internal_add_next_hop_asn(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  next_hop_asn_.Add(value);
+inline void Populator::_internal_add_nexthop_asn(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  nexthop_asn_.Add(value);
 }
-inline void Populator::add_next_hop_asn(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_add_next_hop_asn(value);
-  // @@protoc_insertion_point(field_add:kentik.custom_dimension.v202411alpha1.Populator.next_hop_asn)
+inline void Populator::add_nexthop_asn(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_add_nexthop_asn(value);
+  // @@protoc_insertion_point(field_add:kentik.custom_dimension.v202411alpha1.Populator.nexthop_asn)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
-Populator::_internal_next_hop_asn() const {
-  return next_hop_asn_;
+Populator::_internal_nexthop_asn() const {
+  return nexthop_asn_;
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
-Populator::next_hop_asn() const {
-  // @@protoc_insertion_point(field_list:kentik.custom_dimension.v202411alpha1.Populator.next_hop_asn)
-  return _internal_next_hop_asn();
+Populator::nexthop_asn() const {
+  // @@protoc_insertion_point(field_list:kentik.custom_dimension.v202411alpha1.Populator.nexthop_asn)
+  return _internal_nexthop_asn();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
-Populator::_internal_mutable_next_hop_asn() {
-  return &next_hop_asn_;
+Populator::_internal_mutable_nexthop_asn() {
+  return &nexthop_asn_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
-Populator::mutable_next_hop_asn() {
-  // @@protoc_insertion_point(field_mutable_list:kentik.custom_dimension.v202411alpha1.Populator.next_hop_asn)
-  return _internal_mutable_next_hop_asn();
+Populator::mutable_nexthop_asn() {
+  // @@protoc_insertion_point(field_mutable_list:kentik.custom_dimension.v202411alpha1.Populator.nexthop_asn)
+  return _internal_mutable_nexthop_asn();
 }
 
-// repeated string next_hop_as_name = 15[json_name = "nextHopAsName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-inline int Populator::_internal_next_hop_as_name_size() const {
-  return next_hop_as_name_.size();
+// repeated string nexthop_as_name = 15[json_name = "nexthopAsName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline int Populator::_internal_nexthop_as_name_size() const {
+  return nexthop_as_name_.size();
 }
-inline int Populator::next_hop_as_name_size() const {
-  return _internal_next_hop_as_name_size();
+inline int Populator::nexthop_as_name_size() const {
+  return _internal_nexthop_as_name_size();
 }
-inline void Populator::clear_next_hop_as_name() {
-  next_hop_as_name_.Clear();
+inline void Populator::clear_nexthop_as_name() {
+  nexthop_as_name_.Clear();
 }
-inline std::string* Populator::add_next_hop_as_name() {
-  // @@protoc_insertion_point(field_add_mutable:kentik.custom_dimension.v202411alpha1.Populator.next_hop_as_name)
-  return _internal_add_next_hop_as_name();
+inline std::string* Populator::add_nexthop_as_name() {
+  // @@protoc_insertion_point(field_add_mutable:kentik.custom_dimension.v202411alpha1.Populator.nexthop_as_name)
+  return _internal_add_nexthop_as_name();
 }
-inline const std::string& Populator::_internal_next_hop_as_name(int index) const {
-  return next_hop_as_name_.Get(index);
+inline const std::string& Populator::_internal_nexthop_as_name(int index) const {
+  return nexthop_as_name_.Get(index);
 }
-inline const std::string& Populator::next_hop_as_name(int index) const {
-  // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.Populator.next_hop_as_name)
-  return _internal_next_hop_as_name(index);
+inline const std::string& Populator::nexthop_as_name(int index) const {
+  // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.Populator.nexthop_as_name)
+  return _internal_nexthop_as_name(index);
 }
-inline std::string* Populator::mutable_next_hop_as_name(int index) {
-  // @@protoc_insertion_point(field_mutable:kentik.custom_dimension.v202411alpha1.Populator.next_hop_as_name)
-  return next_hop_as_name_.Mutable(index);
+inline std::string* Populator::mutable_nexthop_as_name(int index) {
+  // @@protoc_insertion_point(field_mutable:kentik.custom_dimension.v202411alpha1.Populator.nexthop_as_name)
+  return nexthop_as_name_.Mutable(index);
 }
-inline void Populator::set_next_hop_as_name(int index, const std::string& value) {
-  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.Populator.next_hop_as_name)
-  next_hop_as_name_.Mutable(index)->assign(value);
+inline void Populator::set_nexthop_as_name(int index, const std::string& value) {
+  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.Populator.nexthop_as_name)
+  nexthop_as_name_.Mutable(index)->assign(value);
 }
-inline void Populator::set_next_hop_as_name(int index, std::string&& value) {
-  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.Populator.next_hop_as_name)
-  next_hop_as_name_.Mutable(index)->assign(std::move(value));
+inline void Populator::set_nexthop_as_name(int index, std::string&& value) {
+  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.Populator.nexthop_as_name)
+  nexthop_as_name_.Mutable(index)->assign(std::move(value));
 }
-inline void Populator::set_next_hop_as_name(int index, const char* value) {
+inline void Populator::set_nexthop_as_name(int index, const char* value) {
   GOOGLE_DCHECK(value != nullptr);
-  next_hop_as_name_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:kentik.custom_dimension.v202411alpha1.Populator.next_hop_as_name)
+  nexthop_as_name_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:kentik.custom_dimension.v202411alpha1.Populator.nexthop_as_name)
 }
-inline void Populator::set_next_hop_as_name(int index, const char* value, size_t size) {
-  next_hop_as_name_.Mutable(index)->assign(
+inline void Populator::set_nexthop_as_name(int index, const char* value, size_t size) {
+  nexthop_as_name_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:kentik.custom_dimension.v202411alpha1.Populator.next_hop_as_name)
+  // @@protoc_insertion_point(field_set_pointer:kentik.custom_dimension.v202411alpha1.Populator.nexthop_as_name)
 }
-inline std::string* Populator::_internal_add_next_hop_as_name() {
-  return next_hop_as_name_.Add();
+inline std::string* Populator::_internal_add_nexthop_as_name() {
+  return nexthop_as_name_.Add();
 }
-inline void Populator::add_next_hop_as_name(const std::string& value) {
-  next_hop_as_name_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:kentik.custom_dimension.v202411alpha1.Populator.next_hop_as_name)
+inline void Populator::add_nexthop_as_name(const std::string& value) {
+  nexthop_as_name_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:kentik.custom_dimension.v202411alpha1.Populator.nexthop_as_name)
 }
-inline void Populator::add_next_hop_as_name(std::string&& value) {
-  next_hop_as_name_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:kentik.custom_dimension.v202411alpha1.Populator.next_hop_as_name)
+inline void Populator::add_nexthop_as_name(std::string&& value) {
+  nexthop_as_name_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:kentik.custom_dimension.v202411alpha1.Populator.nexthop_as_name)
 }
-inline void Populator::add_next_hop_as_name(const char* value) {
+inline void Populator::add_nexthop_as_name(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
-  next_hop_as_name_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:kentik.custom_dimension.v202411alpha1.Populator.next_hop_as_name)
+  nexthop_as_name_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:kentik.custom_dimension.v202411alpha1.Populator.nexthop_as_name)
 }
-inline void Populator::add_next_hop_as_name(const char* value, size_t size) {
-  next_hop_as_name_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:kentik.custom_dimension.v202411alpha1.Populator.next_hop_as_name)
+inline void Populator::add_nexthop_as_name(const char* value, size_t size) {
+  nexthop_as_name_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:kentik.custom_dimension.v202411alpha1.Populator.nexthop_as_name)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
-Populator::next_hop_as_name() const {
-  // @@protoc_insertion_point(field_list:kentik.custom_dimension.v202411alpha1.Populator.next_hop_as_name)
-  return next_hop_as_name_;
+Populator::nexthop_as_name() const {
+  // @@protoc_insertion_point(field_list:kentik.custom_dimension.v202411alpha1.Populator.nexthop_as_name)
+  return nexthop_as_name_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
-Populator::mutable_next_hop_as_name() {
-  // @@protoc_insertion_point(field_mutable_list:kentik.custom_dimension.v202411alpha1.Populator.next_hop_as_name)
-  return &next_hop_as_name_;
+Populator::mutable_nexthop_as_name() {
+  // @@protoc_insertion_point(field_mutable_list:kentik.custom_dimension.v202411alpha1.Populator.nexthop_as_name)
+  return &nexthop_as_name_;
 }
 
-// repeated string next_hop = 16[json_name = "nextHop", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-inline int Populator::_internal_next_hop_size() const {
-  return next_hop_.size();
+// repeated string nexthop = 16[json_name = "nexthop", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline int Populator::_internal_nexthop_size() const {
+  return nexthop_.size();
 }
-inline int Populator::next_hop_size() const {
-  return _internal_next_hop_size();
+inline int Populator::nexthop_size() const {
+  return _internal_nexthop_size();
 }
-inline void Populator::clear_next_hop() {
-  next_hop_.Clear();
+inline void Populator::clear_nexthop() {
+  nexthop_.Clear();
 }
-inline std::string* Populator::add_next_hop() {
-  // @@protoc_insertion_point(field_add_mutable:kentik.custom_dimension.v202411alpha1.Populator.next_hop)
-  return _internal_add_next_hop();
+inline std::string* Populator::add_nexthop() {
+  // @@protoc_insertion_point(field_add_mutable:kentik.custom_dimension.v202411alpha1.Populator.nexthop)
+  return _internal_add_nexthop();
 }
-inline const std::string& Populator::_internal_next_hop(int index) const {
-  return next_hop_.Get(index);
+inline const std::string& Populator::_internal_nexthop(int index) const {
+  return nexthop_.Get(index);
 }
-inline const std::string& Populator::next_hop(int index) const {
-  // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.Populator.next_hop)
-  return _internal_next_hop(index);
+inline const std::string& Populator::nexthop(int index) const {
+  // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.Populator.nexthop)
+  return _internal_nexthop(index);
 }
-inline std::string* Populator::mutable_next_hop(int index) {
-  // @@protoc_insertion_point(field_mutable:kentik.custom_dimension.v202411alpha1.Populator.next_hop)
-  return next_hop_.Mutable(index);
+inline std::string* Populator::mutable_nexthop(int index) {
+  // @@protoc_insertion_point(field_mutable:kentik.custom_dimension.v202411alpha1.Populator.nexthop)
+  return nexthop_.Mutable(index);
 }
-inline void Populator::set_next_hop(int index, const std::string& value) {
-  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.Populator.next_hop)
-  next_hop_.Mutable(index)->assign(value);
+inline void Populator::set_nexthop(int index, const std::string& value) {
+  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.Populator.nexthop)
+  nexthop_.Mutable(index)->assign(value);
 }
-inline void Populator::set_next_hop(int index, std::string&& value) {
-  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.Populator.next_hop)
-  next_hop_.Mutable(index)->assign(std::move(value));
+inline void Populator::set_nexthop(int index, std::string&& value) {
+  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.Populator.nexthop)
+  nexthop_.Mutable(index)->assign(std::move(value));
 }
-inline void Populator::set_next_hop(int index, const char* value) {
+inline void Populator::set_nexthop(int index, const char* value) {
   GOOGLE_DCHECK(value != nullptr);
-  next_hop_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:kentik.custom_dimension.v202411alpha1.Populator.next_hop)
+  nexthop_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:kentik.custom_dimension.v202411alpha1.Populator.nexthop)
 }
-inline void Populator::set_next_hop(int index, const char* value, size_t size) {
-  next_hop_.Mutable(index)->assign(
+inline void Populator::set_nexthop(int index, const char* value, size_t size) {
+  nexthop_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:kentik.custom_dimension.v202411alpha1.Populator.next_hop)
+  // @@protoc_insertion_point(field_set_pointer:kentik.custom_dimension.v202411alpha1.Populator.nexthop)
 }
-inline std::string* Populator::_internal_add_next_hop() {
-  return next_hop_.Add();
+inline std::string* Populator::_internal_add_nexthop() {
+  return nexthop_.Add();
 }
-inline void Populator::add_next_hop(const std::string& value) {
-  next_hop_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:kentik.custom_dimension.v202411alpha1.Populator.next_hop)
+inline void Populator::add_nexthop(const std::string& value) {
+  nexthop_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:kentik.custom_dimension.v202411alpha1.Populator.nexthop)
 }
-inline void Populator::add_next_hop(std::string&& value) {
-  next_hop_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:kentik.custom_dimension.v202411alpha1.Populator.next_hop)
+inline void Populator::add_nexthop(std::string&& value) {
+  nexthop_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:kentik.custom_dimension.v202411alpha1.Populator.nexthop)
 }
-inline void Populator::add_next_hop(const char* value) {
+inline void Populator::add_nexthop(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
-  next_hop_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:kentik.custom_dimension.v202411alpha1.Populator.next_hop)
+  nexthop_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:kentik.custom_dimension.v202411alpha1.Populator.nexthop)
 }
-inline void Populator::add_next_hop(const char* value, size_t size) {
-  next_hop_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:kentik.custom_dimension.v202411alpha1.Populator.next_hop)
+inline void Populator::add_nexthop(const char* value, size_t size) {
+  nexthop_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:kentik.custom_dimension.v202411alpha1.Populator.nexthop)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
-Populator::next_hop() const {
-  // @@protoc_insertion_point(field_list:kentik.custom_dimension.v202411alpha1.Populator.next_hop)
-  return next_hop_;
+Populator::nexthop() const {
+  // @@protoc_insertion_point(field_list:kentik.custom_dimension.v202411alpha1.Populator.nexthop)
+  return nexthop_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
-Populator::mutable_next_hop() {
-  // @@protoc_insertion_point(field_mutable_list:kentik.custom_dimension.v202411alpha1.Populator.next_hop)
-  return &next_hop_;
+Populator::mutable_nexthop() {
+  // @@protoc_insertion_point(field_mutable_list:kentik.custom_dimension.v202411alpha1.Populator.nexthop)
+  return &nexthop_;
 }
 
-// repeated string bgp_as_path = 17[json_name = "bgpAsPath", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-inline int Populator::_internal_bgp_as_path_size() const {
-  return bgp_as_path_.size();
+// repeated string bgp_aspath = 17[json_name = "bgpAspath", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline int Populator::_internal_bgp_aspath_size() const {
+  return bgp_aspath_.size();
 }
-inline int Populator::bgp_as_path_size() const {
-  return _internal_bgp_as_path_size();
+inline int Populator::bgp_aspath_size() const {
+  return _internal_bgp_aspath_size();
 }
-inline void Populator::clear_bgp_as_path() {
-  bgp_as_path_.Clear();
+inline void Populator::clear_bgp_aspath() {
+  bgp_aspath_.Clear();
 }
-inline std::string* Populator::add_bgp_as_path() {
-  // @@protoc_insertion_point(field_add_mutable:kentik.custom_dimension.v202411alpha1.Populator.bgp_as_path)
-  return _internal_add_bgp_as_path();
+inline std::string* Populator::add_bgp_aspath() {
+  // @@protoc_insertion_point(field_add_mutable:kentik.custom_dimension.v202411alpha1.Populator.bgp_aspath)
+  return _internal_add_bgp_aspath();
 }
-inline const std::string& Populator::_internal_bgp_as_path(int index) const {
-  return bgp_as_path_.Get(index);
+inline const std::string& Populator::_internal_bgp_aspath(int index) const {
+  return bgp_aspath_.Get(index);
 }
-inline const std::string& Populator::bgp_as_path(int index) const {
-  // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.Populator.bgp_as_path)
-  return _internal_bgp_as_path(index);
+inline const std::string& Populator::bgp_aspath(int index) const {
+  // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.Populator.bgp_aspath)
+  return _internal_bgp_aspath(index);
 }
-inline std::string* Populator::mutable_bgp_as_path(int index) {
-  // @@protoc_insertion_point(field_mutable:kentik.custom_dimension.v202411alpha1.Populator.bgp_as_path)
-  return bgp_as_path_.Mutable(index);
+inline std::string* Populator::mutable_bgp_aspath(int index) {
+  // @@protoc_insertion_point(field_mutable:kentik.custom_dimension.v202411alpha1.Populator.bgp_aspath)
+  return bgp_aspath_.Mutable(index);
 }
-inline void Populator::set_bgp_as_path(int index, const std::string& value) {
-  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.Populator.bgp_as_path)
-  bgp_as_path_.Mutable(index)->assign(value);
+inline void Populator::set_bgp_aspath(int index, const std::string& value) {
+  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.Populator.bgp_aspath)
+  bgp_aspath_.Mutable(index)->assign(value);
 }
-inline void Populator::set_bgp_as_path(int index, std::string&& value) {
-  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.Populator.bgp_as_path)
-  bgp_as_path_.Mutable(index)->assign(std::move(value));
+inline void Populator::set_bgp_aspath(int index, std::string&& value) {
+  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.Populator.bgp_aspath)
+  bgp_aspath_.Mutable(index)->assign(std::move(value));
 }
-inline void Populator::set_bgp_as_path(int index, const char* value) {
+inline void Populator::set_bgp_aspath(int index, const char* value) {
   GOOGLE_DCHECK(value != nullptr);
-  bgp_as_path_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:kentik.custom_dimension.v202411alpha1.Populator.bgp_as_path)
+  bgp_aspath_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:kentik.custom_dimension.v202411alpha1.Populator.bgp_aspath)
 }
-inline void Populator::set_bgp_as_path(int index, const char* value, size_t size) {
-  bgp_as_path_.Mutable(index)->assign(
+inline void Populator::set_bgp_aspath(int index, const char* value, size_t size) {
+  bgp_aspath_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:kentik.custom_dimension.v202411alpha1.Populator.bgp_as_path)
+  // @@protoc_insertion_point(field_set_pointer:kentik.custom_dimension.v202411alpha1.Populator.bgp_aspath)
 }
-inline std::string* Populator::_internal_add_bgp_as_path() {
-  return bgp_as_path_.Add();
+inline std::string* Populator::_internal_add_bgp_aspath() {
+  return bgp_aspath_.Add();
 }
-inline void Populator::add_bgp_as_path(const std::string& value) {
-  bgp_as_path_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:kentik.custom_dimension.v202411alpha1.Populator.bgp_as_path)
+inline void Populator::add_bgp_aspath(const std::string& value) {
+  bgp_aspath_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:kentik.custom_dimension.v202411alpha1.Populator.bgp_aspath)
 }
-inline void Populator::add_bgp_as_path(std::string&& value) {
-  bgp_as_path_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:kentik.custom_dimension.v202411alpha1.Populator.bgp_as_path)
+inline void Populator::add_bgp_aspath(std::string&& value) {
+  bgp_aspath_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:kentik.custom_dimension.v202411alpha1.Populator.bgp_aspath)
 }
-inline void Populator::add_bgp_as_path(const char* value) {
+inline void Populator::add_bgp_aspath(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
-  bgp_as_path_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:kentik.custom_dimension.v202411alpha1.Populator.bgp_as_path)
+  bgp_aspath_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:kentik.custom_dimension.v202411alpha1.Populator.bgp_aspath)
 }
-inline void Populator::add_bgp_as_path(const char* value, size_t size) {
-  bgp_as_path_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:kentik.custom_dimension.v202411alpha1.Populator.bgp_as_path)
+inline void Populator::add_bgp_aspath(const char* value, size_t size) {
+  bgp_aspath_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:kentik.custom_dimension.v202411alpha1.Populator.bgp_aspath)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
-Populator::bgp_as_path() const {
-  // @@protoc_insertion_point(field_list:kentik.custom_dimension.v202411alpha1.Populator.bgp_as_path)
-  return bgp_as_path_;
+Populator::bgp_aspath() const {
+  // @@protoc_insertion_point(field_list:kentik.custom_dimension.v202411alpha1.Populator.bgp_aspath)
+  return bgp_aspath_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
-Populator::mutable_bgp_as_path() {
-  // @@protoc_insertion_point(field_mutable_list:kentik.custom_dimension.v202411alpha1.Populator.bgp_as_path)
-  return &bgp_as_path_;
+Populator::mutable_bgp_aspath() {
+  // @@protoc_insertion_point(field_mutable_list:kentik.custom_dimension.v202411alpha1.Populator.bgp_aspath)
+  return &bgp_aspath_;
 }
 
 // repeated string bgp_community = 18[json_name = "bgpCommunity", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -5303,24 +5278,85 @@ Populator::mutable_vlans() {
   return &vlans_;
 }
 
-// uint32 user_id = 22[json_name = "userId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-inline void Populator::clear_user_id() {
-  user_id_ = 0u;
+// string user = 22[json_name = "user", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void Populator::clear_user() {
+  user_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 Populator::_internal_user_id() const {
-  return user_id_;
+inline const std::string& Populator::user() const {
+  // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.Populator.user)
+  return _internal_user();
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 Populator::user_id() const {
-  // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.Populator.user_id)
-  return _internal_user_id();
+inline void Populator::set_user(const std::string& value) {
+  _internal_set_user(value);
+  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.Populator.user)
 }
-inline void Populator::_internal_set_user_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline std::string* Populator::mutable_user() {
+  // @@protoc_insertion_point(field_mutable:kentik.custom_dimension.v202411alpha1.Populator.user)
+  return _internal_mutable_user();
+}
+inline const std::string& Populator::_internal_user() const {
+  return user_.Get();
+}
+inline void Populator::_internal_set_user(const std::string& value) {
   
-  user_id_ = value;
+  user_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
 }
-inline void Populator::set_user_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _internal_set_user_id(value);
-  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.Populator.user_id)
+inline void Populator::set_user(std::string&& value) {
+  
+  user_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:kentik.custom_dimension.v202411alpha1.Populator.user)
+}
+inline void Populator::set_user(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  user_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:kentik.custom_dimension.v202411alpha1.Populator.user)
+}
+inline void Populator::set_user(const char* value,
+    size_t size) {
+  
+  user_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:kentik.custom_dimension.v202411alpha1.Populator.user)
+}
+inline std::string* Populator::_internal_mutable_user() {
+  
+  return user_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* Populator::release_user() {
+  // @@protoc_insertion_point(field_release:kentik.custom_dimension.v202411alpha1.Populator.user)
+  return user_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void Populator::set_allocated_user(std::string* user) {
+  if (user != nullptr) {
+    
+  } else {
+    
+  }
+  user_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), user,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:kentik.custom_dimension.v202411alpha1.Populator.user)
+}
+inline std::string* Populator::unsafe_arena_release_user() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:kentik.custom_dimension.v202411alpha1.Populator.user)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  
+  return user_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void Populator::unsafe_arena_set_allocated_user(
+    std::string* user) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (user != nullptr) {
+    
+  } else {
+    
+  }
+  user_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      user, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.custom_dimension.v202411alpha1.Populator.user)
 }
 
 // .google.protobuf.Timestamp created_date = 23[json_name = "createdDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {

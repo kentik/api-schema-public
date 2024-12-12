@@ -1059,13 +1059,13 @@ static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__p
   {
     "tcp_flags",
     10,
-    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_UINT32,
-    offsetof(Kentik__CustomDimension__V202411alpha1__Populator, n_tcp_flags),
+    0,   /* quantifier_offset */
     offsetof(Kentik__CustomDimension__V202411alpha1__Populator, tcp_flags),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -1093,60 +1093,60 @@ static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__p
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "last_hop_as_name",
+    "lasthop_as_name",
     13,
     PROTOBUF_C_LABEL_REPEATED,
     PROTOBUF_C_TYPE_STRING,
-    offsetof(Kentik__CustomDimension__V202411alpha1__Populator, n_last_hop_as_name),
-    offsetof(Kentik__CustomDimension__V202411alpha1__Populator, last_hop_as_name),
+    offsetof(Kentik__CustomDimension__V202411alpha1__Populator, n_lasthop_as_name),
+    offsetof(Kentik__CustomDimension__V202411alpha1__Populator, lasthop_as_name),
     NULL,
     &protobuf_c_empty_string,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "next_hop_asn",
+    "nexthop_asn",
     14,
     PROTOBUF_C_LABEL_REPEATED,
     PROTOBUF_C_TYPE_UINT32,
-    offsetof(Kentik__CustomDimension__V202411alpha1__Populator, n_next_hop_asn),
-    offsetof(Kentik__CustomDimension__V202411alpha1__Populator, next_hop_asn),
+    offsetof(Kentik__CustomDimension__V202411alpha1__Populator, n_nexthop_asn),
+    offsetof(Kentik__CustomDimension__V202411alpha1__Populator, nexthop_asn),
     NULL,
     NULL,
     0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "next_hop_as_name",
+    "nexthop_as_name",
     15,
     PROTOBUF_C_LABEL_REPEATED,
     PROTOBUF_C_TYPE_STRING,
-    offsetof(Kentik__CustomDimension__V202411alpha1__Populator, n_next_hop_as_name),
-    offsetof(Kentik__CustomDimension__V202411alpha1__Populator, next_hop_as_name),
+    offsetof(Kentik__CustomDimension__V202411alpha1__Populator, n_nexthop_as_name),
+    offsetof(Kentik__CustomDimension__V202411alpha1__Populator, nexthop_as_name),
     NULL,
     &protobuf_c_empty_string,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "next_hop",
+    "nexthop",
     16,
     PROTOBUF_C_LABEL_REPEATED,
     PROTOBUF_C_TYPE_STRING,
-    offsetof(Kentik__CustomDimension__V202411alpha1__Populator, n_next_hop),
-    offsetof(Kentik__CustomDimension__V202411alpha1__Populator, next_hop),
+    offsetof(Kentik__CustomDimension__V202411alpha1__Populator, n_nexthop),
+    offsetof(Kentik__CustomDimension__V202411alpha1__Populator, nexthop),
     NULL,
     &protobuf_c_empty_string,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "bgp_as_path",
+    "bgp_aspath",
     17,
     PROTOBUF_C_LABEL_REPEATED,
     PROTOBUF_C_TYPE_STRING,
-    offsetof(Kentik__CustomDimension__V202411alpha1__Populator, n_bgp_as_path),
-    offsetof(Kentik__CustomDimension__V202411alpha1__Populator, bgp_as_path),
+    offsetof(Kentik__CustomDimension__V202411alpha1__Populator, n_bgp_aspath),
+    offsetof(Kentik__CustomDimension__V202411alpha1__Populator, bgp_aspath),
     NULL,
     &protobuf_c_empty_string,
     0,             /* flags */
@@ -1201,14 +1201,14 @@ static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__p
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "user_id",
+    "user",
     22,
     PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_UINT32,
+    PROTOBUF_C_TYPE_STRING,
     0,   /* quantifier_offset */
-    offsetof(Kentik__CustomDimension__V202411alpha1__Populator, user_id),
+    offsetof(Kentik__CustomDimension__V202411alpha1__Populator, user),
     NULL,
-    NULL,
+    &protobuf_c_empty_string,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
@@ -1240,7 +1240,7 @@ static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__p
 static const unsigned kentik__custom_dimension__v202411alpha1__populator__field_indices_by_name[] = {
   7,   /* field[7] = addr */
   11,   /* field[11] = asn */
-  16,   /* field[16] = bgp_as_path */
+  16,   /* field[16] = bgp_aspath */
   17,   /* field[17] = bgp_community */
   19,   /* field[19] = country */
   22,   /* field[22] = created_date */
@@ -1249,17 +1249,17 @@ static const unsigned kentik__custom_dimension__v202411alpha1__populator__field_
   2,   /* field[2] = direction */
   0,   /* field[0] = id */
   6,   /* field[6] = interface_name */
-  12,   /* field[12] = last_hop_as_name */
+  12,   /* field[12] = lasthop_as_name */
   18,   /* field[18] = mac */
-  15,   /* field[15] = next_hop */
-  14,   /* field[14] = next_hop_as_name */
-  13,   /* field[13] = next_hop_asn */
+  15,   /* field[15] = nexthop */
+  14,   /* field[14] = nexthop_as_name */
+  13,   /* field[13] = nexthop_asn */
   8,   /* field[8] = port */
   10,   /* field[10] = protocol */
   5,   /* field[5] = site */
   9,   /* field[9] = tcp_flags */
   23,   /* field[23] = updated_date */
-  21,   /* field[21] = user_id */
+  21,   /* field[21] = user */
   1,   /* field[1] = value */
   20,   /* field[20] = vlans */
 };

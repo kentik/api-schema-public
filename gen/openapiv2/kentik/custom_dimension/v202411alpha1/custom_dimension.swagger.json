@@ -510,11 +510,8 @@
           "description": "Ports (between 0 and 65535). A match results when any specified port matches a port number in incoming flow."
         },
         "tcpFlags": {
-          "type": "array",
-          "items": {
-            "type": "integer",
-            "format": "int64"
-          },
+          "type": "integer",
+          "format": "int64",
           "description": "TCP flag: Numbers between 0 and 255 representing an 8-bit binary bit pattern corresponding to TCP flags. A match will result if the value in both the flow bit pattern and the bitmask is 1 at any of the eight places."
         },
         "protocol": {
@@ -533,14 +530,14 @@
           },
           "description": "Last-hop (origin) ASN: ASNs (between 1 and 2^32-1=4294967295). A match results when any specified ASN is the same as the last ASN in the path in the routing table for either the source (SRC IP) or destination (DST IP)."
         },
-        "lastHopAsName": {
+        "lasthopAsName": {
           "type": "array",
           "items": {
             "type": "string"
           },
           "description": "Last-hop (origin) AS Name: AS Names or regular expressions. A match results when any specified AS Name represents the name corresponding to the last ASN in the path in the routing table for either the source (SRC IP) or destination (DST IP)."
         },
-        "nextHopAsn": {
+        "nexthopAsn": {
           "type": "array",
           "items": {
             "type": "integer",
@@ -548,21 +545,21 @@
           },
           "description": "Next-hop ASN. A match results when any specified ASN is the same as the ASN of the next hop router based on AS path."
         },
-        "nextHopAsName": {
+        "nexthopAsName": {
           "type": "array",
           "items": {
             "type": "string"
           },
           "description": "Next-hop AS Name: AS Names or regular expressions. A match results when any specified ASN represents the name corresponding to the ASN of the next hop router based on AS path."
         },
-        "nextHop": {
+        "nexthop": {
           "type": "array",
           "items": {
             "type": "string"
           },
           "description": "Next-hop IP: IPv4 and/or IPv6 CIDRs. A match results when any specified IP is within a range of specified IPv4 and/or IPv6 CIDRs."
         },
-        "bgpAsPath": {
+        "bgpAspath": {
           "type": "array",
           "items": {
             "type": "string"
@@ -597,9 +594,8 @@
           },
           "description": "VLAN(s): Integers or ranges of integers between 0 and 4095."
         },
-        "userId": {
-          "type": "integer",
-          "format": "int64",
+        "user": {
+          "type": "string",
           "description": "The system-assigned ID of the user who created the populator.",
           "readOnly": true
         },

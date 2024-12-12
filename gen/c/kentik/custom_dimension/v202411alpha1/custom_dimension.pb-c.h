@@ -86,22 +86,21 @@ struct  Kentik__CustomDimension__V202411alpha1__Populator
   char **addr;
   size_t n_port;
   uint32_t *port;
-  size_t n_tcp_flags;
-  uint32_t *tcp_flags;
+  uint32_t tcp_flags;
   size_t n_protocol;
   uint32_t *protocol;
   size_t n_asn;
   uint32_t *asn;
-  size_t n_last_hop_as_name;
-  char **last_hop_as_name;
-  size_t n_next_hop_asn;
-  uint32_t *next_hop_asn;
-  size_t n_next_hop_as_name;
-  char **next_hop_as_name;
-  size_t n_next_hop;
-  char **next_hop;
-  size_t n_bgp_as_path;
-  char **bgp_as_path;
+  size_t n_lasthop_as_name;
+  char **lasthop_as_name;
+  size_t n_nexthop_asn;
+  uint32_t *nexthop_asn;
+  size_t n_nexthop_as_name;
+  char **nexthop_as_name;
+  size_t n_nexthop;
+  char **nexthop;
+  size_t n_bgp_aspath;
+  char **bgp_aspath;
   size_t n_bgp_community;
   char **bgp_community;
   size_t n_mac;
@@ -110,13 +109,13 @@ struct  Kentik__CustomDimension__V202411alpha1__Populator
   char **country;
   size_t n_vlans;
   char **vlans;
-  uint32_t user_id;
+  char *user;
   Google__Protobuf__Timestamp *created_date;
   Google__Protobuf__Timestamp *updated_date;
 };
 #define KENTIK__CUSTOM_DIMENSION__V202411ALPHA1__POPULATOR__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__custom_dimension__v202411alpha1__populator__descriptor) \
-    , 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0, NULL, NULL }
+    , 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, (char *)protobuf_c_empty_string, NULL, NULL }
 
 
 /*
