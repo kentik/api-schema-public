@@ -935,7 +935,7 @@ const ProtobufCMessageDescriptor kentik__cloud_export__v202210__cloud_export__de
   (ProtobufCMessageInit) kentik__cloud_export__v202210__cloud_export__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__cloud_export__v202210__aws_properties__field_descriptors[5] =
+static const ProtobufCFieldDescriptor kentik__cloud_export__v202210__aws_properties__field_descriptors[10] =
 {
   {
     "bucket",
@@ -997,18 +997,83 @@ static const ProtobufCFieldDescriptor kentik__cloud_export__v202210__aws_propert
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "aws_iam_role_arn_is_org",
+    6,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__CloudExport__V202210__AwsProperties, aws_iam_role_arn_is_org),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "secondary_aws_accounts",
+    7,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_STRING,
+    offsetof(Kentik__CloudExport__V202210__AwsProperties, n_secondary_aws_accounts),
+    offsetof(Kentik__CloudExport__V202210__AwsProperties, secondary_aws_accounts),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "secondary_aws_blocked_accounts",
+    8,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_STRING,
+    offsetof(Kentik__CloudExport__V202210__AwsProperties, n_secondary_aws_blocked_accounts),
+    offsetof(Kentik__CloudExport__V202210__AwsProperties, secondary_aws_blocked_accounts),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "secondary_aws_regions",
+    9,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_STRING,
+    offsetof(Kentik__CloudExport__V202210__AwsProperties, n_secondary_aws_regions),
+    offsetof(Kentik__CloudExport__V202210__AwsProperties, secondary_aws_regions),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "secondary_aws_suffix",
+    10,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__CloudExport__V202210__AwsProperties, secondary_aws_suffix),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__cloud_export__v202210__aws_properties__field_indices_by_name[] = {
+  5,   /* field[5] = aws_iam_role_arn_is_org */
   0,   /* field[0] = bucket */
   3,   /* field[3] = delete_after_read */
   1,   /* field[1] = iam_role_arn */
   4,   /* field[4] = metadata_only */
   2,   /* field[2] = region */
+  6,   /* field[6] = secondary_aws_accounts */
+  7,   /* field[7] = secondary_aws_blocked_accounts */
+  8,   /* field[8] = secondary_aws_regions */
+  9,   /* field[9] = secondary_aws_suffix */
 };
 static const ProtobufCIntRange kentik__cloud_export__v202210__aws_properties__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 5 }
+  { 0, 10 }
 };
 const ProtobufCMessageDescriptor kentik__cloud_export__v202210__aws_properties__descriptor =
 {
@@ -1018,7 +1083,7 @@ const ProtobufCMessageDescriptor kentik__cloud_export__v202210__aws_properties__
   "Kentik__CloudExport__V202210__AwsProperties",
   "kentik.cloud_export.v202210",
   sizeof(Kentik__CloudExport__V202210__AwsProperties),
-  5,
+  10,
   kentik__cloud_export__v202210__aws_properties__field_descriptors,
   kentik__cloud_export__v202210__aws_properties__field_indices_by_name,
   1,  kentik__cloud_export__v202210__aws_properties__number_ranges,

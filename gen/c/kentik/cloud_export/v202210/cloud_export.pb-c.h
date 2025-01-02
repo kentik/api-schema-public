@@ -81,6 +81,7 @@ typedef enum _Kentik__CloudExport__V202210__CloudProvider {
   KENTIK__CLOUD_EXPORT__V202210__CLOUD_PROVIDER__CLOUD_PROVIDER_GCE = 3,
   /*
    * IBM Cloud
+   * Deprecated: IBM Cloud exports are no longer supported.
    */
   KENTIK__CLOUD_EXPORT__V202210__CLOUD_PROVIDER__CLOUD_PROVIDER_IBM = 4
     PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__CLOUD_EXPORT__V202210__CLOUD_PROVIDER)
@@ -137,10 +138,18 @@ struct  Kentik__CloudExport__V202210__AwsProperties
   char *region;
   protobuf_c_boolean delete_after_read;
   protobuf_c_boolean metadata_only;
+  protobuf_c_boolean aws_iam_role_arn_is_org;
+  size_t n_secondary_aws_accounts;
+  char **secondary_aws_accounts;
+  size_t n_secondary_aws_blocked_accounts;
+  char **secondary_aws_blocked_accounts;
+  size_t n_secondary_aws_regions;
+  char **secondary_aws_regions;
+  char *secondary_aws_suffix;
 };
 #define KENTIK__CLOUD_EXPORT__V202210__AWS_PROPERTIES__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__cloud_export__v202210__aws_properties__descriptor) \
-    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, 0 }
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, 0, 0, 0,NULL, 0,NULL, 0,NULL, (char *)protobuf_c_empty_string }
 
 
 /*

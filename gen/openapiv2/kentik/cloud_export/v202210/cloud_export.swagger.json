@@ -243,6 +243,35 @@
         "metadataOnly": {
           "type": "boolean",
           "description": "Import only metadata without any flows (default false)."
+        },
+        "awsIamRoleArnIsOrg": {
+          "type": "boolean",
+          "description": "Iam role is organization role (default false)."
+        },
+        "secondaryAwsAccounts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Accounts ids granted access to the describe API end-points."
+        },
+        "secondaryAwsBlockedAccounts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Accounts ids that should be filtered from organization when running describe API end-points."
+        },
+        "secondaryAwsRegions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Regions that secondary accounts to scrape."
+        },
+        "secondaryAwsSuffix": {
+          "type": "string",
+          "description": "Used to generate secondary account ARN based on template arn:aws:iam::<<aws_account_id>>:role/<<role_suffix>>"
         }
       },
       "title": "AwsProperties",
@@ -429,7 +458,7 @@
         "CLOUD_PROVIDER_IBM"
       ],
       "default": "CLOUD_PROVIDER_UNSPECIFIED",
-      "description": "- CLOUD_PROVIDER_UNSPECIFIED: Invalid value.\n - CLOUD_PROVIDER_AWS: Amazon Web Services\n - CLOUD_PROVIDER_AZURE: Microsoft Azure\n - CLOUD_PROVIDER_GCE: Google Cloud\n - CLOUD_PROVIDER_IBM: IBM Cloud",
+      "description": "- CLOUD_PROVIDER_UNSPECIFIED: Invalid value.\n - CLOUD_PROVIDER_AWS: Amazon Web Services\n - CLOUD_PROVIDER_AZURE: Microsoft Azure\n - CLOUD_PROVIDER_GCE: Google Cloud\n - CLOUD_PROVIDER_IBM: IBM Cloud\nDeprecated: IBM Cloud exports are no longer supported.",
       "title": "CloudProvider"
     },
     "v202210CreateCloudExportRequest": {

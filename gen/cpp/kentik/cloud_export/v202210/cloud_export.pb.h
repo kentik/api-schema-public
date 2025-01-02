@@ -168,7 +168,7 @@ enum CloudProvider : int {
   CLOUD_PROVIDER_AWS = 1,
   CLOUD_PROVIDER_AZURE = 2,
   CLOUD_PROVIDER_GCE = 3,
-  CLOUD_PROVIDER_IBM = 4,
+  CLOUD_PROVIDER_IBM PROTOBUF_DEPRECATED_ENUM = 4,
   CloudProvider_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
   CloudProvider_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
 };
@@ -735,12 +735,89 @@ class AwsProperties PROTOBUF_FINAL :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kSecondaryAwsAccountsFieldNumber = 7,
+    kSecondaryAwsBlockedAccountsFieldNumber = 8,
+    kSecondaryAwsRegionsFieldNumber = 9,
     kBucketFieldNumber = 1,
     kIamRoleArnFieldNumber = 2,
     kRegionFieldNumber = 3,
+    kSecondaryAwsSuffixFieldNumber = 10,
     kDeleteAfterReadFieldNumber = 4,
     kMetadataOnlyFieldNumber = 5,
+    kAwsIamRoleArnIsOrgFieldNumber = 6,
   };
+  // repeated string secondary_aws_accounts = 7[json_name = "secondaryAwsAccounts", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  int secondary_aws_accounts_size() const;
+  private:
+  int _internal_secondary_aws_accounts_size() const;
+  public:
+  void clear_secondary_aws_accounts();
+  const std::string& secondary_aws_accounts(int index) const;
+  std::string* mutable_secondary_aws_accounts(int index);
+  void set_secondary_aws_accounts(int index, const std::string& value);
+  void set_secondary_aws_accounts(int index, std::string&& value);
+  void set_secondary_aws_accounts(int index, const char* value);
+  void set_secondary_aws_accounts(int index, const char* value, size_t size);
+  std::string* add_secondary_aws_accounts();
+  void add_secondary_aws_accounts(const std::string& value);
+  void add_secondary_aws_accounts(std::string&& value);
+  void add_secondary_aws_accounts(const char* value);
+  void add_secondary_aws_accounts(const char* value, size_t size);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& secondary_aws_accounts() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_secondary_aws_accounts();
+  private:
+  const std::string& _internal_secondary_aws_accounts(int index) const;
+  std::string* _internal_add_secondary_aws_accounts();
+  public:
+
+  // repeated string secondary_aws_blocked_accounts = 8[json_name = "secondaryAwsBlockedAccounts", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  int secondary_aws_blocked_accounts_size() const;
+  private:
+  int _internal_secondary_aws_blocked_accounts_size() const;
+  public:
+  void clear_secondary_aws_blocked_accounts();
+  const std::string& secondary_aws_blocked_accounts(int index) const;
+  std::string* mutable_secondary_aws_blocked_accounts(int index);
+  void set_secondary_aws_blocked_accounts(int index, const std::string& value);
+  void set_secondary_aws_blocked_accounts(int index, std::string&& value);
+  void set_secondary_aws_blocked_accounts(int index, const char* value);
+  void set_secondary_aws_blocked_accounts(int index, const char* value, size_t size);
+  std::string* add_secondary_aws_blocked_accounts();
+  void add_secondary_aws_blocked_accounts(const std::string& value);
+  void add_secondary_aws_blocked_accounts(std::string&& value);
+  void add_secondary_aws_blocked_accounts(const char* value);
+  void add_secondary_aws_blocked_accounts(const char* value, size_t size);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& secondary_aws_blocked_accounts() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_secondary_aws_blocked_accounts();
+  private:
+  const std::string& _internal_secondary_aws_blocked_accounts(int index) const;
+  std::string* _internal_add_secondary_aws_blocked_accounts();
+  public:
+
+  // repeated string secondary_aws_regions = 9[json_name = "secondaryAwsRegions", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  int secondary_aws_regions_size() const;
+  private:
+  int _internal_secondary_aws_regions_size() const;
+  public:
+  void clear_secondary_aws_regions();
+  const std::string& secondary_aws_regions(int index) const;
+  std::string* mutable_secondary_aws_regions(int index);
+  void set_secondary_aws_regions(int index, const std::string& value);
+  void set_secondary_aws_regions(int index, std::string&& value);
+  void set_secondary_aws_regions(int index, const char* value);
+  void set_secondary_aws_regions(int index, const char* value, size_t size);
+  std::string* add_secondary_aws_regions();
+  void add_secondary_aws_regions(const std::string& value);
+  void add_secondary_aws_regions(std::string&& value);
+  void add_secondary_aws_regions(const char* value);
+  void add_secondary_aws_regions(const char* value, size_t size);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& secondary_aws_regions() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_secondary_aws_regions();
+  private:
+  const std::string& _internal_secondary_aws_regions(int index) const;
+  std::string* _internal_add_secondary_aws_regions();
+  public:
+
   // string bucket = 1[json_name = "bucket", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   void clear_bucket();
   const std::string& bucket() const;
@@ -816,6 +893,31 @@ class AwsProperties PROTOBUF_FINAL :
   std::string* _internal_mutable_region();
   public:
 
+  // string secondary_aws_suffix = 10[json_name = "secondaryAwsSuffix", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_secondary_aws_suffix();
+  const std::string& secondary_aws_suffix() const;
+  void set_secondary_aws_suffix(const std::string& value);
+  void set_secondary_aws_suffix(std::string&& value);
+  void set_secondary_aws_suffix(const char* value);
+  void set_secondary_aws_suffix(const char* value, size_t size);
+  std::string* mutable_secondary_aws_suffix();
+  std::string* release_secondary_aws_suffix();
+  void set_allocated_secondary_aws_suffix(std::string* secondary_aws_suffix);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_secondary_aws_suffix();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_secondary_aws_suffix(
+      std::string* secondary_aws_suffix);
+  private:
+  const std::string& _internal_secondary_aws_suffix() const;
+  void _internal_set_secondary_aws_suffix(const std::string& value);
+  std::string* _internal_mutable_secondary_aws_suffix();
+  public:
+
   // bool delete_after_read = 4[json_name = "deleteAfterRead", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   void clear_delete_after_read();
   bool delete_after_read() const;
@@ -834,6 +936,15 @@ class AwsProperties PROTOBUF_FINAL :
   void _internal_set_metadata_only(bool value);
   public:
 
+  // bool aws_iam_role_arn_is_org = 6[json_name = "awsIamRoleArnIsOrg", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_aws_iam_role_arn_is_org();
+  bool aws_iam_role_arn_is_org() const;
+  void set_aws_iam_role_arn_is_org(bool value);
+  private:
+  bool _internal_aws_iam_role_arn_is_org() const;
+  void _internal_set_aws_iam_role_arn_is_org(bool value);
+  public:
+
   // @@protoc_insertion_point(class_scope:kentik.cloud_export.v202210.AwsProperties)
  private:
   class _Internal;
@@ -841,11 +952,16 @@ class AwsProperties PROTOBUF_FINAL :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> secondary_aws_accounts_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> secondary_aws_blocked_accounts_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> secondary_aws_regions_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr bucket_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr iam_role_arn_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr region_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr secondary_aws_suffix_;
   bool delete_after_read_;
   bool metadata_only_;
+  bool aws_iam_role_arn_is_org_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_kentik_2fcloud_5fexport_2fv202210_2fcloud_5fexport_2eproto;
 };
@@ -4293,6 +4409,329 @@ inline void AwsProperties::_internal_set_metadata_only(bool value) {
 inline void AwsProperties::set_metadata_only(bool value) {
   _internal_set_metadata_only(value);
   // @@protoc_insertion_point(field_set:kentik.cloud_export.v202210.AwsProperties.metadata_only)
+}
+
+// bool aws_iam_role_arn_is_org = 6[json_name = "awsIamRoleArnIsOrg", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void AwsProperties::clear_aws_iam_role_arn_is_org() {
+  aws_iam_role_arn_is_org_ = false;
+}
+inline bool AwsProperties::_internal_aws_iam_role_arn_is_org() const {
+  return aws_iam_role_arn_is_org_;
+}
+inline bool AwsProperties::aws_iam_role_arn_is_org() const {
+  // @@protoc_insertion_point(field_get:kentik.cloud_export.v202210.AwsProperties.aws_iam_role_arn_is_org)
+  return _internal_aws_iam_role_arn_is_org();
+}
+inline void AwsProperties::_internal_set_aws_iam_role_arn_is_org(bool value) {
+  
+  aws_iam_role_arn_is_org_ = value;
+}
+inline void AwsProperties::set_aws_iam_role_arn_is_org(bool value) {
+  _internal_set_aws_iam_role_arn_is_org(value);
+  // @@protoc_insertion_point(field_set:kentik.cloud_export.v202210.AwsProperties.aws_iam_role_arn_is_org)
+}
+
+// repeated string secondary_aws_accounts = 7[json_name = "secondaryAwsAccounts", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline int AwsProperties::_internal_secondary_aws_accounts_size() const {
+  return secondary_aws_accounts_.size();
+}
+inline int AwsProperties::secondary_aws_accounts_size() const {
+  return _internal_secondary_aws_accounts_size();
+}
+inline void AwsProperties::clear_secondary_aws_accounts() {
+  secondary_aws_accounts_.Clear();
+}
+inline std::string* AwsProperties::add_secondary_aws_accounts() {
+  // @@protoc_insertion_point(field_add_mutable:kentik.cloud_export.v202210.AwsProperties.secondary_aws_accounts)
+  return _internal_add_secondary_aws_accounts();
+}
+inline const std::string& AwsProperties::_internal_secondary_aws_accounts(int index) const {
+  return secondary_aws_accounts_.Get(index);
+}
+inline const std::string& AwsProperties::secondary_aws_accounts(int index) const {
+  // @@protoc_insertion_point(field_get:kentik.cloud_export.v202210.AwsProperties.secondary_aws_accounts)
+  return _internal_secondary_aws_accounts(index);
+}
+inline std::string* AwsProperties::mutable_secondary_aws_accounts(int index) {
+  // @@protoc_insertion_point(field_mutable:kentik.cloud_export.v202210.AwsProperties.secondary_aws_accounts)
+  return secondary_aws_accounts_.Mutable(index);
+}
+inline void AwsProperties::set_secondary_aws_accounts(int index, const std::string& value) {
+  // @@protoc_insertion_point(field_set:kentik.cloud_export.v202210.AwsProperties.secondary_aws_accounts)
+  secondary_aws_accounts_.Mutable(index)->assign(value);
+}
+inline void AwsProperties::set_secondary_aws_accounts(int index, std::string&& value) {
+  // @@protoc_insertion_point(field_set:kentik.cloud_export.v202210.AwsProperties.secondary_aws_accounts)
+  secondary_aws_accounts_.Mutable(index)->assign(std::move(value));
+}
+inline void AwsProperties::set_secondary_aws_accounts(int index, const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  secondary_aws_accounts_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:kentik.cloud_export.v202210.AwsProperties.secondary_aws_accounts)
+}
+inline void AwsProperties::set_secondary_aws_accounts(int index, const char* value, size_t size) {
+  secondary_aws_accounts_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:kentik.cloud_export.v202210.AwsProperties.secondary_aws_accounts)
+}
+inline std::string* AwsProperties::_internal_add_secondary_aws_accounts() {
+  return secondary_aws_accounts_.Add();
+}
+inline void AwsProperties::add_secondary_aws_accounts(const std::string& value) {
+  secondary_aws_accounts_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:kentik.cloud_export.v202210.AwsProperties.secondary_aws_accounts)
+}
+inline void AwsProperties::add_secondary_aws_accounts(std::string&& value) {
+  secondary_aws_accounts_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:kentik.cloud_export.v202210.AwsProperties.secondary_aws_accounts)
+}
+inline void AwsProperties::add_secondary_aws_accounts(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  secondary_aws_accounts_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:kentik.cloud_export.v202210.AwsProperties.secondary_aws_accounts)
+}
+inline void AwsProperties::add_secondary_aws_accounts(const char* value, size_t size) {
+  secondary_aws_accounts_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:kentik.cloud_export.v202210.AwsProperties.secondary_aws_accounts)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
+AwsProperties::secondary_aws_accounts() const {
+  // @@protoc_insertion_point(field_list:kentik.cloud_export.v202210.AwsProperties.secondary_aws_accounts)
+  return secondary_aws_accounts_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
+AwsProperties::mutable_secondary_aws_accounts() {
+  // @@protoc_insertion_point(field_mutable_list:kentik.cloud_export.v202210.AwsProperties.secondary_aws_accounts)
+  return &secondary_aws_accounts_;
+}
+
+// repeated string secondary_aws_blocked_accounts = 8[json_name = "secondaryAwsBlockedAccounts", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline int AwsProperties::_internal_secondary_aws_blocked_accounts_size() const {
+  return secondary_aws_blocked_accounts_.size();
+}
+inline int AwsProperties::secondary_aws_blocked_accounts_size() const {
+  return _internal_secondary_aws_blocked_accounts_size();
+}
+inline void AwsProperties::clear_secondary_aws_blocked_accounts() {
+  secondary_aws_blocked_accounts_.Clear();
+}
+inline std::string* AwsProperties::add_secondary_aws_blocked_accounts() {
+  // @@protoc_insertion_point(field_add_mutable:kentik.cloud_export.v202210.AwsProperties.secondary_aws_blocked_accounts)
+  return _internal_add_secondary_aws_blocked_accounts();
+}
+inline const std::string& AwsProperties::_internal_secondary_aws_blocked_accounts(int index) const {
+  return secondary_aws_blocked_accounts_.Get(index);
+}
+inline const std::string& AwsProperties::secondary_aws_blocked_accounts(int index) const {
+  // @@protoc_insertion_point(field_get:kentik.cloud_export.v202210.AwsProperties.secondary_aws_blocked_accounts)
+  return _internal_secondary_aws_blocked_accounts(index);
+}
+inline std::string* AwsProperties::mutable_secondary_aws_blocked_accounts(int index) {
+  // @@protoc_insertion_point(field_mutable:kentik.cloud_export.v202210.AwsProperties.secondary_aws_blocked_accounts)
+  return secondary_aws_blocked_accounts_.Mutable(index);
+}
+inline void AwsProperties::set_secondary_aws_blocked_accounts(int index, const std::string& value) {
+  // @@protoc_insertion_point(field_set:kentik.cloud_export.v202210.AwsProperties.secondary_aws_blocked_accounts)
+  secondary_aws_blocked_accounts_.Mutable(index)->assign(value);
+}
+inline void AwsProperties::set_secondary_aws_blocked_accounts(int index, std::string&& value) {
+  // @@protoc_insertion_point(field_set:kentik.cloud_export.v202210.AwsProperties.secondary_aws_blocked_accounts)
+  secondary_aws_blocked_accounts_.Mutable(index)->assign(std::move(value));
+}
+inline void AwsProperties::set_secondary_aws_blocked_accounts(int index, const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  secondary_aws_blocked_accounts_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:kentik.cloud_export.v202210.AwsProperties.secondary_aws_blocked_accounts)
+}
+inline void AwsProperties::set_secondary_aws_blocked_accounts(int index, const char* value, size_t size) {
+  secondary_aws_blocked_accounts_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:kentik.cloud_export.v202210.AwsProperties.secondary_aws_blocked_accounts)
+}
+inline std::string* AwsProperties::_internal_add_secondary_aws_blocked_accounts() {
+  return secondary_aws_blocked_accounts_.Add();
+}
+inline void AwsProperties::add_secondary_aws_blocked_accounts(const std::string& value) {
+  secondary_aws_blocked_accounts_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:kentik.cloud_export.v202210.AwsProperties.secondary_aws_blocked_accounts)
+}
+inline void AwsProperties::add_secondary_aws_blocked_accounts(std::string&& value) {
+  secondary_aws_blocked_accounts_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:kentik.cloud_export.v202210.AwsProperties.secondary_aws_blocked_accounts)
+}
+inline void AwsProperties::add_secondary_aws_blocked_accounts(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  secondary_aws_blocked_accounts_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:kentik.cloud_export.v202210.AwsProperties.secondary_aws_blocked_accounts)
+}
+inline void AwsProperties::add_secondary_aws_blocked_accounts(const char* value, size_t size) {
+  secondary_aws_blocked_accounts_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:kentik.cloud_export.v202210.AwsProperties.secondary_aws_blocked_accounts)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
+AwsProperties::secondary_aws_blocked_accounts() const {
+  // @@protoc_insertion_point(field_list:kentik.cloud_export.v202210.AwsProperties.secondary_aws_blocked_accounts)
+  return secondary_aws_blocked_accounts_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
+AwsProperties::mutable_secondary_aws_blocked_accounts() {
+  // @@protoc_insertion_point(field_mutable_list:kentik.cloud_export.v202210.AwsProperties.secondary_aws_blocked_accounts)
+  return &secondary_aws_blocked_accounts_;
+}
+
+// repeated string secondary_aws_regions = 9[json_name = "secondaryAwsRegions", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline int AwsProperties::_internal_secondary_aws_regions_size() const {
+  return secondary_aws_regions_.size();
+}
+inline int AwsProperties::secondary_aws_regions_size() const {
+  return _internal_secondary_aws_regions_size();
+}
+inline void AwsProperties::clear_secondary_aws_regions() {
+  secondary_aws_regions_.Clear();
+}
+inline std::string* AwsProperties::add_secondary_aws_regions() {
+  // @@protoc_insertion_point(field_add_mutable:kentik.cloud_export.v202210.AwsProperties.secondary_aws_regions)
+  return _internal_add_secondary_aws_regions();
+}
+inline const std::string& AwsProperties::_internal_secondary_aws_regions(int index) const {
+  return secondary_aws_regions_.Get(index);
+}
+inline const std::string& AwsProperties::secondary_aws_regions(int index) const {
+  // @@protoc_insertion_point(field_get:kentik.cloud_export.v202210.AwsProperties.secondary_aws_regions)
+  return _internal_secondary_aws_regions(index);
+}
+inline std::string* AwsProperties::mutable_secondary_aws_regions(int index) {
+  // @@protoc_insertion_point(field_mutable:kentik.cloud_export.v202210.AwsProperties.secondary_aws_regions)
+  return secondary_aws_regions_.Mutable(index);
+}
+inline void AwsProperties::set_secondary_aws_regions(int index, const std::string& value) {
+  // @@protoc_insertion_point(field_set:kentik.cloud_export.v202210.AwsProperties.secondary_aws_regions)
+  secondary_aws_regions_.Mutable(index)->assign(value);
+}
+inline void AwsProperties::set_secondary_aws_regions(int index, std::string&& value) {
+  // @@protoc_insertion_point(field_set:kentik.cloud_export.v202210.AwsProperties.secondary_aws_regions)
+  secondary_aws_regions_.Mutable(index)->assign(std::move(value));
+}
+inline void AwsProperties::set_secondary_aws_regions(int index, const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  secondary_aws_regions_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:kentik.cloud_export.v202210.AwsProperties.secondary_aws_regions)
+}
+inline void AwsProperties::set_secondary_aws_regions(int index, const char* value, size_t size) {
+  secondary_aws_regions_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:kentik.cloud_export.v202210.AwsProperties.secondary_aws_regions)
+}
+inline std::string* AwsProperties::_internal_add_secondary_aws_regions() {
+  return secondary_aws_regions_.Add();
+}
+inline void AwsProperties::add_secondary_aws_regions(const std::string& value) {
+  secondary_aws_regions_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:kentik.cloud_export.v202210.AwsProperties.secondary_aws_regions)
+}
+inline void AwsProperties::add_secondary_aws_regions(std::string&& value) {
+  secondary_aws_regions_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:kentik.cloud_export.v202210.AwsProperties.secondary_aws_regions)
+}
+inline void AwsProperties::add_secondary_aws_regions(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  secondary_aws_regions_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:kentik.cloud_export.v202210.AwsProperties.secondary_aws_regions)
+}
+inline void AwsProperties::add_secondary_aws_regions(const char* value, size_t size) {
+  secondary_aws_regions_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:kentik.cloud_export.v202210.AwsProperties.secondary_aws_regions)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
+AwsProperties::secondary_aws_regions() const {
+  // @@protoc_insertion_point(field_list:kentik.cloud_export.v202210.AwsProperties.secondary_aws_regions)
+  return secondary_aws_regions_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
+AwsProperties::mutable_secondary_aws_regions() {
+  // @@protoc_insertion_point(field_mutable_list:kentik.cloud_export.v202210.AwsProperties.secondary_aws_regions)
+  return &secondary_aws_regions_;
+}
+
+// string secondary_aws_suffix = 10[json_name = "secondaryAwsSuffix", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void AwsProperties::clear_secondary_aws_suffix() {
+  secondary_aws_suffix_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline const std::string& AwsProperties::secondary_aws_suffix() const {
+  // @@protoc_insertion_point(field_get:kentik.cloud_export.v202210.AwsProperties.secondary_aws_suffix)
+  return _internal_secondary_aws_suffix();
+}
+inline void AwsProperties::set_secondary_aws_suffix(const std::string& value) {
+  _internal_set_secondary_aws_suffix(value);
+  // @@protoc_insertion_point(field_set:kentik.cloud_export.v202210.AwsProperties.secondary_aws_suffix)
+}
+inline std::string* AwsProperties::mutable_secondary_aws_suffix() {
+  // @@protoc_insertion_point(field_mutable:kentik.cloud_export.v202210.AwsProperties.secondary_aws_suffix)
+  return _internal_mutable_secondary_aws_suffix();
+}
+inline const std::string& AwsProperties::_internal_secondary_aws_suffix() const {
+  return secondary_aws_suffix_.Get();
+}
+inline void AwsProperties::_internal_set_secondary_aws_suffix(const std::string& value) {
+  
+  secondary_aws_suffix_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void AwsProperties::set_secondary_aws_suffix(std::string&& value) {
+  
+  secondary_aws_suffix_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:kentik.cloud_export.v202210.AwsProperties.secondary_aws_suffix)
+}
+inline void AwsProperties::set_secondary_aws_suffix(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  secondary_aws_suffix_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:kentik.cloud_export.v202210.AwsProperties.secondary_aws_suffix)
+}
+inline void AwsProperties::set_secondary_aws_suffix(const char* value,
+    size_t size) {
+  
+  secondary_aws_suffix_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:kentik.cloud_export.v202210.AwsProperties.secondary_aws_suffix)
+}
+inline std::string* AwsProperties::_internal_mutable_secondary_aws_suffix() {
+  
+  return secondary_aws_suffix_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* AwsProperties::release_secondary_aws_suffix() {
+  // @@protoc_insertion_point(field_release:kentik.cloud_export.v202210.AwsProperties.secondary_aws_suffix)
+  return secondary_aws_suffix_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void AwsProperties::set_allocated_secondary_aws_suffix(std::string* secondary_aws_suffix) {
+  if (secondary_aws_suffix != nullptr) {
+    
+  } else {
+    
+  }
+  secondary_aws_suffix_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), secondary_aws_suffix,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:kentik.cloud_export.v202210.AwsProperties.secondary_aws_suffix)
+}
+inline std::string* AwsProperties::unsafe_arena_release_secondary_aws_suffix() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:kentik.cloud_export.v202210.AwsProperties.secondary_aws_suffix)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  
+  return secondary_aws_suffix_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void AwsProperties::unsafe_arena_set_allocated_secondary_aws_suffix(
+    std::string* secondary_aws_suffix) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (secondary_aws_suffix != nullptr) {
+    
+  } else {
+    
+  }
+  secondary_aws_suffix_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      secondary_aws_suffix, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.cloud_export.v202210.AwsProperties.secondary_aws_suffix)
 }
 
 // -------------------------------------------------------------------

@@ -366,6 +366,11 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_kentik_2fcloud_5fexport_2fv202
   PROTOBUF_FIELD_OFFSET(::kentik::cloud_export::v202210::AwsProperties, region_),
   PROTOBUF_FIELD_OFFSET(::kentik::cloud_export::v202210::AwsProperties, delete_after_read_),
   PROTOBUF_FIELD_OFFSET(::kentik::cloud_export::v202210::AwsProperties, metadata_only_),
+  PROTOBUF_FIELD_OFFSET(::kentik::cloud_export::v202210::AwsProperties, aws_iam_role_arn_is_org_),
+  PROTOBUF_FIELD_OFFSET(::kentik::cloud_export::v202210::AwsProperties, secondary_aws_accounts_),
+  PROTOBUF_FIELD_OFFSET(::kentik::cloud_export::v202210::AwsProperties, secondary_aws_blocked_accounts_),
+  PROTOBUF_FIELD_OFFSET(::kentik::cloud_export::v202210::AwsProperties, secondary_aws_regions_),
+  PROTOBUF_FIELD_OFFSET(::kentik::cloud_export::v202210::AwsProperties, secondary_aws_suffix_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::kentik::cloud_export::v202210::AzureProperties, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -462,20 +467,20 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_kentik_2fcloud_5fexport_2fv202
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::kentik::cloud_export::v202210::CloudExport)},
   { 20, -1, sizeof(::kentik::cloud_export::v202210::AwsProperties)},
-  { 30, -1, sizeof(::kentik::cloud_export::v202210::AzureProperties)},
-  { 40, -1, sizeof(::kentik::cloud_export::v202210::GceProperties)},
-  { 47, -1, sizeof(::kentik::cloud_export::v202210::IbmProperties)},
-  { 53, -1, sizeof(::kentik::cloud_export::v202210::CloudExportStatus)},
-  { 63, -1, sizeof(::kentik::cloud_export::v202210::CreateCloudExportRequest)},
-  { 69, -1, sizeof(::kentik::cloud_export::v202210::CreateCloudExportResponse)},
-  { 75, -1, sizeof(::kentik::cloud_export::v202210::ListCloudExportsRequest)},
-  { 80, -1, sizeof(::kentik::cloud_export::v202210::ListCloudExportsResponse)},
-  { 87, -1, sizeof(::kentik::cloud_export::v202210::GetCloudExportRequest)},
-  { 93, -1, sizeof(::kentik::cloud_export::v202210::GetCloudExportResponse)},
-  { 99, -1, sizeof(::kentik::cloud_export::v202210::UpdateCloudExportRequest)},
-  { 105, -1, sizeof(::kentik::cloud_export::v202210::UpdateCloudExportResponse)},
-  { 111, -1, sizeof(::kentik::cloud_export::v202210::DeleteCloudExportRequest)},
-  { 117, -1, sizeof(::kentik::cloud_export::v202210::DeleteCloudExportResponse)},
+  { 35, -1, sizeof(::kentik::cloud_export::v202210::AzureProperties)},
+  { 45, -1, sizeof(::kentik::cloud_export::v202210::GceProperties)},
+  { 52, -1, sizeof(::kentik::cloud_export::v202210::IbmProperties)},
+  { 58, -1, sizeof(::kentik::cloud_export::v202210::CloudExportStatus)},
+  { 68, -1, sizeof(::kentik::cloud_export::v202210::CreateCloudExportRequest)},
+  { 74, -1, sizeof(::kentik::cloud_export::v202210::CreateCloudExportResponse)},
+  { 80, -1, sizeof(::kentik::cloud_export::v202210::ListCloudExportsRequest)},
+  { 85, -1, sizeof(::kentik::cloud_export::v202210::ListCloudExportsResponse)},
+  { 92, -1, sizeof(::kentik::cloud_export::v202210::GetCloudExportRequest)},
+  { 98, -1, sizeof(::kentik::cloud_export::v202210::GetCloudExportResponse)},
+  { 104, -1, sizeof(::kentik::cloud_export::v202210::UpdateCloudExportRequest)},
+  { 110, -1, sizeof(::kentik::cloud_export::v202210::UpdateCloudExportResponse)},
+  { 116, -1, sizeof(::kentik::cloud_export::v202210::DeleteCloudExportRequest)},
+  { 122, -1, sizeof(::kentik::cloud_export::v202210::DeleteCloudExportResponse)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -535,7 +540,7 @@ const char descriptor_table_protodef_kentik_2fcloud_5fexport_2fv202210_2fcloud_5
   " timestamp (UTC)\342A\001\003R\005cdate\022\\\n\005edate\030\017 \001"
   "(\0132\032.google.protobuf.TimestampB*\222A#2!Las"
   "t modification timestamp (UTC)\342A\001\003R\005edat"
-  "eB\033\n\031cloud_specific_properties\"\221\004\n\rAwsPr"
+  "eB\033\n\031cloud_specific_properties\"\250\t\n\rAwsPr"
   "operties\022W\n\006bucket\030\001 \001(\tB\?\222A<2:Name of S"
   "3 bucket from which flow logs are to be "
   "exported.R\006bucket\022{\n\014iam_role_arn\030\002 \001(\tB"
@@ -549,216 +554,232 @@ const char descriptor_table_protodef_kentik_2fcloud_5fexport_2fv202210_2fcloud_5
   "alse).R\017deleteAfterRead\022a\n\rmetadata_only"
   "\030\005 \001(\010B<\222A927Import only metadata withou"
   "t any flows (default false).R\014metadataOn"
-  "ly\"\333\004\n\017AzureProperties\022Z\n\010location\030\001 \001(\t"
-  "B>\222A725Azure region/location from which "
-  "to export flow logs.\342A\001\002R\010location\022g\n\016re"
-  "source_group\030\002 \001(\tB@\222A927Resource group "
-  "containing the NSG generating flow logs."
-  "\342A\001\002R\rresourceGroup\022k\n\017storage_account\030\003"
-  " \001(\tBB\222A;29Storage account from which fl"
-  "ow logs are to be extracted.\342A\001\002R\016storag"
-  "eAccount\022o\n\017subscription_id\030\004 \001(\tBF\222A\?2="
-  "ID of Azure account from which flows log"
-  "s are to be exported.\342A\001\002R\016subscriptionI"
-  "d\022\244\001\n\032security_principal_enabled\030\005 \001(\010Bf"
-  "\222Ac2aIndication whether security princip"
-  "al for the Kentik flow export applicatio"
-  "n has been authorized.R\030securityPrincipa"
-  "lEnabled\"\303\001\n\rGceProperties\022V\n\007project\030\001 "
-  "\001(\tB<\222A523Name of the project from which"
-  " to export flow logs.\342A\001\002R\007project\022Z\n\014su"
-  "bscription\030\002 \001(\tB6\222A/2-GCP Pub/Sub subsc"
-  "ription providing flow logs.\342A\001\002R\014subscr"
-  "iption\"f\n\rIbmProperties\022U\n\006bucket\030\001 \001(\tB"
-  "=\222A:28Storage bucket from which flow log"
-  "s are to be extracted.R\006bucket\"\233\004\n\021Cloud"
-  "ExportStatus\022;\n\006status\030\001 \001(\tB#\222A\0342\032Statu"
-  "s of the export task.\342A\001\003R\006status\022e\n\rerr"
-  "or_message\030\002 \001(\tB@\222A927Text of the last "
-  "error message (empty if status is OK).\342A"
-  "\001\003R\014errorMessage\022W\n\nflow_found\030\003 \001(\010B8\222A"
-  "12/Indication whether any flow data were"
-  " exported.\342A\001\003R\tflowFound\022j\n\napi_access\030"
-  "\004 \001(\010BK\222AD2BIndication whether the expor"
-  "t process is able to access cloud API.\342A"
-  "\001\003R\tapiAccess\022\234\001\n\026storage_account_access"
-  "\030\005 \001(\010Bf\222A_2]Indication whether the expo"
-  "rt process is able to access storage acc"
-  "ount containing flow logs.\342A\001\003R\024storageA"
-  "ccountAccess\"~\n\030CreateCloudExportRequest"
-  "\022b\n\006export\030\001 \001(\0132(.kentik.cloud_export.v"
-  "202210.CloudExportB \222A\0352\033Cloud export co"
-  "nfiguration.R\006export\"\200\001\n\031CreateCloudExpo"
-  "rtResponse\022c\n\006export\030\001 \001(\0132(.kentik.clou"
-  "d_export.v202210.CloudExportB!\222A\0362\034Creat"
-  "ed cloud export object.R\006export\"\031\n\027ListC"
-  "loudExportsRequest\"\213\002\n\030ListCloudExportsR"
-  "esponse\022f\n\007exports\030\001 \003(\0132(.kentik.cloud_"
-  "export.v202210.CloudExportB\"\222A\0372\035List of"
-  " cloud export objects.R\007exports\022\206\001\n\025inva"
-  "lid_exports_count\030\002 \001(\rBR\222AO2MNumber of "
-  "objects with invalid data (which are not"
-  " returned in the response).R\023invalidExpo"
-  "rtsCount\"U\n\025GetCloudExportRequest\022<\n\002id\030"
-  "\001 \001(\tB,\222A)2\'ID of the cloud export to be"
-  " retrieved.R\002id\"u\n\026GetCloudExportRespons"
-  "e\022[\n\006export\030\001 \001(\0132(.kentik.cloud_export."
-  "v202210.CloudExportB\031\222A\0262\024Cloud export o"
-  "bject.R\006export\"~\n\030UpdateCloudExportReque"
-  "st\022b\n\006export\030\001 \001(\0132(.kentik.cloud_export"
-  ".v202210.CloudExportB \222A\0352\033Cloud export "
-  "configuration.R\006export\"\200\001\n\031UpdateCloudEx"
-  "portResponse\022c\n\006export\030\001 \001(\0132(.kentik.cl"
-  "oud_export.v202210.CloudExportB!\222A\0362\034Upd"
-  "ated cloud export object.R\006export\"V\n\030Del"
-  "eteCloudExportRequest\022:\n\002id\030\001 \001(\tB*\222A\'2%"
-  "ID of the cloud export to be deleted.R\002i"
-  "d\"\033\n\031DeleteCloudExportResponse*\202\001\n\017Cloud"
-  "ExportType\022!\n\035CLOUD_EXPORT_TYPE_UNSPECIF"
-  "IED\020\000\022$\n CLOUD_EXPORT_TYPE_KENTIK_MANAGE"
-  "D\020\001\022&\n\"CLOUD_EXPORT_TYPE_CUSTOMER_MANAGE"
-  "D\020\002*\221\001\n\rCloudProvider\022\036\n\032CLOUD_PROVIDER_"
-  "UNSPECIFIED\020\000\022\026\n\022CLOUD_PROVIDER_AWS\020\001\022\030\n"
-  "\024CLOUD_PROVIDER_AZURE\020\002\022\026\n\022CLOUD_PROVIDE"
-  "R_GCE\020\003\022\026\n\022CLOUD_PROVIDER_IBM\020\0042\366\014\n\027Clou"
-  "dExportAdminService\022\265\002\n\021CreateCloudExpor"
-  "t\0225.kentik.cloud_export.v202210.CreateCl"
+  "ly\022h\n\027aws_iam_role_arn_is_org\030\006 \001(\010B3\222A0"
+  "2.Iam role is organization role (default"
+  " false).R\022awsIamRoleArnIsOrg\022v\n\026secondar"
+  "y_aws_accounts\030\007 \003(\tB@\222A=2;Accounts ids "
+  "granted access to the describe API end-p"
+  "oints.R\024secondaryAwsAccounts\022\246\001\n\036seconda"
+  "ry_aws_blocked_accounts\030\010 \003(\tBa\222A^2\\Acco"
+  "unts ids that should be filtered from or"
+  "ganization when running describe API end"
+  "-points.R\033secondaryAwsBlockedAccounts\022c\n"
+  "\025secondary_aws_regions\030\t \003(\tB/\222A,2*Regio"
+  "ns that secondary accounts to scrape.R\023s"
+  "econdaryAwsRegions\022\244\001\n\024secondary_aws_suf"
+  "fix\030\n \001(\tBr\222Ao2mUsed to generate seconda"
+  "ry account ARN based on template arn:aws"
+  ":iam::<<aws_account_id>>:role/<<role_suf"
+  "fix>>R\022secondaryAwsSuffix\"\333\004\n\017AzurePrope"
+  "rties\022Z\n\010location\030\001 \001(\tB>\222A725Azure regi"
+  "on/location from which to export flow lo"
+  "gs.\342A\001\002R\010location\022g\n\016resource_group\030\002 \001("
+  "\tB@\222A927Resource group containing the NS"
+  "G generating flow logs.\342A\001\002R\rresourceGro"
+  "up\022k\n\017storage_account\030\003 \001(\tBB\222A;29Storag"
+  "e account from which flow logs are to be"
+  " extracted.\342A\001\002R\016storageAccount\022o\n\017subsc"
+  "ription_id\030\004 \001(\tBF\222A\?2=ID of Azure accou"
+  "nt from which flows logs are to be expor"
+  "ted.\342A\001\002R\016subscriptionId\022\244\001\n\032security_pr"
+  "incipal_enabled\030\005 \001(\010Bf\222Ac2aIndication w"
+  "hether security principal for the Kentik"
+  " flow export application has been author"
+  "ized.R\030securityPrincipalEnabled\"\303\001\n\rGceP"
+  "roperties\022V\n\007project\030\001 \001(\tB<\222A523Name of"
+  " the project from which to export flow l"
+  "ogs.\342A\001\002R\007project\022Z\n\014subscription\030\002 \001(\tB"
+  "6\222A/2-GCP Pub/Sub subscription providing"
+  " flow logs.\342A\001\002R\014subscription\"f\n\rIbmProp"
+  "erties\022U\n\006bucket\030\001 \001(\tB=\222A:28Storage buc"
+  "ket from which flow logs are to be extra"
+  "cted.R\006bucket\"\233\004\n\021CloudExportStatus\022;\n\006s"
+  "tatus\030\001 \001(\tB#\222A\0342\032Status of the export t"
+  "ask.\342A\001\003R\006status\022e\n\rerror_message\030\002 \001(\tB"
+  "@\222A927Text of the last error message (em"
+  "pty if status is OK).\342A\001\003R\014errorMessage\022"
+  "W\n\nflow_found\030\003 \001(\010B8\222A12/Indication whe"
+  "ther any flow data were exported.\342A\001\003R\tf"
+  "lowFound\022j\n\napi_access\030\004 \001(\010BK\222AD2BIndic"
+  "ation whether the export process is able"
+  " to access cloud API.\342A\001\003R\tapiAccess\022\234\001\n"
+  "\026storage_account_access\030\005 \001(\010Bf\222A_2]Indi"
+  "cation whether the export process is abl"
+  "e to access storage account containing f"
+  "low logs.\342A\001\003R\024storageAccountAccess\"~\n\030C"
+  "reateCloudExportRequest\022b\n\006export\030\001 \001(\0132"
+  "(.kentik.cloud_export.v202210.CloudExpor"
+  "tB \222A\0352\033Cloud export configuration.R\006exp"
+  "ort\"\200\001\n\031CreateCloudExportResponse\022c\n\006exp"
+  "ort\030\001 \001(\0132(.kentik.cloud_export.v202210."
+  "CloudExportB!\222A\0362\034Created cloud export o"
+  "bject.R\006export\"\031\n\027ListCloudExportsReques"
+  "t\"\213\002\n\030ListCloudExportsResponse\022f\n\007export"
+  "s\030\001 \003(\0132(.kentik.cloud_export.v202210.Cl"
+  "oudExportB\"\222A\0372\035List of cloud export obj"
+  "ects.R\007exports\022\206\001\n\025invalid_exports_count"
+  "\030\002 \001(\rBR\222AO2MNumber of objects with inva"
+  "lid data (which are not returned in the "
+  "response).R\023invalidExportsCount\"U\n\025GetCl"
+  "oudExportRequest\022<\n\002id\030\001 \001(\tB,\222A)2\'ID of"
+  " the cloud export to be retrieved.R\002id\"u"
+  "\n\026GetCloudExportResponse\022[\n\006export\030\001 \001(\013"
+  "2(.kentik.cloud_export.v202210.CloudExpo"
+  "rtB\031\222A\0262\024Cloud export object.R\006export\"~\n"
+  "\030UpdateCloudExportRequest\022b\n\006export\030\001 \001("
+  "\0132(.kentik.cloud_export.v202210.CloudExp"
+  "ortB \222A\0352\033Cloud export configuration.R\006e"
+  "xport\"\200\001\n\031UpdateCloudExportResponse\022c\n\006e"
+  "xport\030\001 \001(\0132(.kentik.cloud_export.v20221"
+  "0.CloudExportB!\222A\0362\034Updated cloud export"
+  " object.R\006export\"V\n\030DeleteCloudExportReq"
+  "uest\022:\n\002id\030\001 \001(\tB*\222A\'2%ID of the cloud e"
+  "xport to be deleted.R\002id\"\033\n\031DeleteCloudE"
+  "xportResponse*\202\001\n\017CloudExportType\022!\n\035CLO"
+  "UD_EXPORT_TYPE_UNSPECIFIED\020\000\022$\n CLOUD_EX"
+  "PORT_TYPE_KENTIK_MANAGED\020\001\022&\n\"CLOUD_EXPO"
+  "RT_TYPE_CUSTOMER_MANAGED\020\002*\225\001\n\rCloudProv"
+  "ider\022\036\n\032CLOUD_PROVIDER_UNSPECIFIED\020\000\022\026\n\022"
+  "CLOUD_PROVIDER_AWS\020\001\022\030\n\024CLOUD_PROVIDER_A"
+  "ZURE\020\002\022\026\n\022CLOUD_PROVIDER_GCE\020\003\022\032\n\022CLOUD_"
+  "PROVIDER_IBM\020\004\032\002\010\0012\366\014\n\027CloudExportAdminS"
+  "ervice\022\265\002\n\021CreateCloudExport\0225.kentik.cl"
+  "oud_export.v202210.CreateCloudExportRequ"
+  "est\0326.kentik.cloud_export.v202210.Create"
+  "CloudExportResponse\"\260\001\222Ai\022\024Create Cloud "
+  "Export.\032>Create new cloud export based o"
+  "n configuration in the request.*\021CreateC"
+  "loudExport\362\327\002\030admin.cloud_export:write\202\323"
+  "\344\223\002\"\"\035/cloud_export/v202210/exports:\001*\022\241"
+  "\002\n\020ListCloudExports\0224.kentik.cloud_expor"
+  "t.v202210.ListCloudExportsRequest\0325.kent"
+  "ik.cloud_export.v202210.ListCloudExports"
+  "Response\"\237\001\222A\\\022\023List cloud exports.\0323Ret"
+  "urns a list of all cloud exports in the "
+  "account.*\020ListCloudExports\362\327\002\027admin.clou"
+  "d_export:read\202\323\344\223\002\037\022\035/cloud_export/v2022"
+  "10/exports\022\306\002\n\016GetCloudExport\0222.kentik.c"
+  "loud_export.v202210.GetCloudExportReques"
+  "t\0323.kentik.cloud_export.v202210.GetCloud"
+  "ExportResponse\"\312\001\222A\201\001\022*Get cloud export "
+  "configuration and status.\032CReturns confi"
+  "guration and status of cloud export with"
+  " specified ID.*\016GetCloudExport\362\327\002\027admin."
+  "cloud_export:read\202\323\344\223\002$\022\"/cloud_export/v"
+  "202210/exports/{id}\022\337\002\n\021UpdateCloudExpor"
+  "t\0225.kentik.cloud_export.v202210.UpdateCl"
   "oudExportRequest\0326.kentik.cloud_export.v"
-  "202210.CreateCloudExportResponse\"\260\001\222Ai\022\024"
-  "Create Cloud Export.\032>Create new cloud e"
-  "xport based on configuration in the requ"
-  "est.*\021CreateCloudExport\362\327\002\030admin.cloud_e"
-  "xport:write\202\323\344\223\002\"\"\035/cloud_export/v202210"
-  "/exports:\001*\022\241\002\n\020ListCloudExports\0224.kenti"
-  "k.cloud_export.v202210.ListCloudExportsR"
-  "equest\0325.kentik.cloud_export.v202210.Lis"
-  "tCloudExportsResponse\"\237\001\222A\\\022\023List cloud "
-  "exports.\0323Returns a list of all cloud ex"
-  "ports in the account.*\020ListCloudExports\362"
-  "\327\002\027admin.cloud_export:read\202\323\344\223\002\037\022\035/cloud"
-  "_export/v202210/exports\022\306\002\n\016GetCloudExpo"
-  "rt\0222.kentik.cloud_export.v202210.GetClou"
-  "dExportRequest\0323.kentik.cloud_export.v20"
-  "2210.GetCloudExportResponse\"\312\001\222A\201\001\022*Get "
-  "cloud export configuration and status.\032C"
-  "Returns configuration and status of clou"
-  "d export with specified ID.*\016GetCloudExp"
-  "ort\362\327\002\027admin.cloud_export:read\202\323\344\223\002$\022\"/c"
-  "loud_export/v202210/exports/{id}\022\337\002\n\021Upd"
-  "ateCloudExport\0225.kentik.cloud_export.v20"
-  "2210.UpdateCloudExportRequest\0326.kentik.c"
-  "loud_export.v202210.UpdateCloudExportRes"
-  "ponse\"\332\001\222A\206\001\022%Update configuration of cl"
-  "oud export.\032JReplace complete configurat"
-  "ion of a cloud export with data in the r"
-  "equest.*\021UpdateCloudExport\362\327\002\030admin.clou"
-  "d_export:write\202\323\344\223\002.\032)/cloud_export/v202"
-  "210/exports/{export.id}:\001*\022\241\002\n\021DeleteClo"
-  "udExport\0225.kentik.cloud_export.v202210.D"
-  "eleteCloudExportRequest\0326.kentik.cloud_e"
-  "xport.v202210.DeleteCloudExportResponse\""
-  "\234\001\222AS\022\026Delete a cloud export.\032&Delete cl"
-  "oud export with specified ID.*\021DeleteClo"
-  "udExport\362\327\002\030admin.cloud_export:write\202\323\344\223"
-  "\002$*\"/cloud_export/v202210/exports/{id}\0320"
-  "\312A\023grpc.api.kentik.com\352\327\002\022admin.cloud_ex"
-  "port\220\330\002\003B\367\035ZSgithub.com/kentik/api-schem"
-  "a-public/gen/go/kentik/cloud_export/v202"
-  "210;cloud_export\222A\236\035\022\317\033\n\036Cloud Export Co"
-  "nfiguration API\022\334\032# Overview\nIn Kentik, "
-  "a \"cloud export\" is an object whose prop"
-  "erties are the values that Kentik needs "
-  "to access network flow logs from a given"
-  " set of resources in a given cloud provi"
-  "der (see [Cloud Exports and Devices](htt"
-  "ps://kb.kentik.com/v4/Na00.htm#Na00-Clou"
-  "d_Exports_and_Devices)). The Cloud Expor"
-  "t API enables programmatic management of"
-  " cloud exports, serving two primary func"
-  "tions:\n* Configuration of the Kentik res"
-  "ources required to export network flow l"
-  "ogs and metadata from [public clouds](ht"
-  "tps://kb.kentik.com/v4/Na00.htm).\n* Basi"
-  "c status information on active export pr"
-  "ocesses.\n\n### Supported Cloud Providers\n"
-  "The functionality and configuration para"
-  "meters supported by this API differ by c"
-  "loud provider. The API currently support"
-  "s the following providers:\n* [Amazon Web"
-  " Services](https://kb.kentik.com/v0/Bd06"
-  ".htm) (AWS)\n* [Microsoft Azure](https://"
-  "kb.kentik.com/v0/Bd08.htm)\n* [Google Clo"
-  "ud](https://kb.kentik.com/v0/Bd07.htm) ("
-  "GCP)\n* [IBM Cloud](https://kb.kentik.com"
-  "/v0/Bd09.htm)\n\n### Additional Public Res"
-  "ources\nThe following additional resource"
-  "s are available for working with this AP"
-  "I:\n* Kentik community [Python](https://g"
-  "ithub.com/kentik/community_sdk_python) a"
-  "nd [Go](https://github.com/kentik/commun"
-  "ity_sdk_golang) SDKs provide language-sp"
-  "ecific support for using this and other "
-  "Kentik APIs. These SDKs can be also used"
-  " as example code for development.\n* A [T"
-  "erraform provider](https://registry.terr"
-  "aform.io/providers/kentik/kentik-cloudex"
-  "port) is available for configuring `clou"
-  "d_export` instances in Kentik. Terraform"
-  " modules are available for [AWS](https:/"
-  "/github.com/kentik/config-snippets-cloud"
-  "/tree/master/cloud_AWS/terraform/module)"
-  ", [Azure](https://github.com/kentik/conf"
-  "ig-snippets-cloud/tree/master/cloud_Azur"
-  "e/terraform/module) \nand [GCP](https://g"
-  "ithub.com/kentik/config-snippets-cloud/t"
-  "ree/master/cloud_GCP/terraform/module).\n"
-  "These modules support onboarding and ong"
-  "oing management of all resources (in pub"
-  "lic clouds and in Kentik) required to ex"
-  "port flow logs to Kentik.\n\n# Anatomy of "
-  "a Cloud Export\nConfiguration and status "
-  "of a `cloud_export` instance is represen"
-  "ted by the `CloudExport` object, which c"
-  "ontains three categories of attributes:\n"
-  "* Common Configuration Attributes\n* Clou"
-  "d Provider Configuration Attributes\n* Me"
-  "tadata and Status Attributes\n\n### Common"
-  " Configuration Attributes\nThe configurat"
-  "ion attributes in the table below are co"
-  "mmon to `CloudExport` objects for all cl"
-  "oud providers.\n| Attribute | Required | "
-  "Default |\n|-----------|----------| -----"
-  "-- |\n| enabled | No | False |\n| name | Y"
-  "es |   |\n| description | No | <empty str"
-  "ing> |\n| type | Yes | |\n| cloud_provider"
-  " | Yes | |\n| plan_id | Yes | |\n\n### Clou"
-  "d Provider Specific Attributes\nThe attri"
-  "butes listed in the table below are obje"
-  "cts whose parameters are specific to eac"
-  "h cloud provider.\n| Cloud Provider | Att"
-  "ribute | Object Name |\n|-----------|----"
-  "------| ------- |\n| AWS | aws | AwsPrope"
-  "rties |\n| Azure | azure | AzurePropertie"
-  "s |\n| Google Cloud | gce | GceProperties"
-  " |\n| IBM Cloud | ibm | IbmProperties |\n\n"
-  "### Metadata and Status Attributes\nThe a"
-  "ttributes in the table below provide rea"
-  "d-only metadata and status for a `cloud_"
-  "export` instance.\n| Attribute | Purpose "
-  "|\n|-----------|---------|\n| id | System-"
-  "generated unique identifier of the insta"
-  "nce |\n| cdate | Creation timestamp |\n| e"
-  "date | Last-modification timestamp |\n| c"
-  "urrent_status | Runtime status of the fl"
-  "ow and metadata collection process |\n\n\"E"
-  "\n\026Kentik API Engineering\022+https://github"
-  ".com/kentik/api-schema-public2\007v202210*\001"
-  "\0022\020application/json:\020application/jsonZD\n"
-  "\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token"
-  "\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email\022\000"
-  "\n\t\n\005token\022\000rE\n Kentik support for public"
-  " clouds\022!https://kb.kentik.com/v4/Na00.h"
-  "tmb\006proto3"
+  "202210.UpdateCloudExportResponse\"\332\001\222A\206\001\022"
+  "%Update configuration of cloud export.\032J"
+  "Replace complete configuration of a clou"
+  "d export with data in the request.*\021Upda"
+  "teCloudExport\362\327\002\030admin.cloud_export:writ"
+  "e\202\323\344\223\002.\032)/cloud_export/v202210/exports/{"
+  "export.id}:\001*\022\241\002\n\021DeleteCloudExport\0225.ke"
+  "ntik.cloud_export.v202210.DeleteCloudExp"
+  "ortRequest\0326.kentik.cloud_export.v202210"
+  ".DeleteCloudExportResponse\"\234\001\222AS\022\026Delete"
+  " a cloud export.\032&Delete cloud export wi"
+  "th specified ID.*\021DeleteCloudExport\362\327\002\030a"
+  "dmin.cloud_export:write\202\323\344\223\002$*\"/cloud_ex"
+  "port/v202210/exports/{id}\0320\312A\023grpc.api.k"
+  "entik.com\352\327\002\022admin.cloud_export\220\330\002\003B\367\035ZS"
+  "github.com/kentik/api-schema-public/gen/"
+  "go/kentik/cloud_export/v202210;cloud_exp"
+  "ort\222A\236\035\022\317\033\n\036Cloud Export Configuration A"
+  "PI\022\334\032# Overview\nIn Kentik, a \"cloud expo"
+  "rt\" is an object whose properties are th"
+  "e values that Kentik needs to access net"
+  "work flow logs from a given set of resou"
+  "rces in a given cloud provider (see [Clo"
+  "ud Exports and Devices](https://kb.kenti"
+  "k.com/v4/Na00.htm#Na00-Cloud_Exports_and"
+  "_Devices)). The Cloud Export API enables"
+  " programmatic management of cloud export"
+  "s, serving two primary functions:\n* Conf"
+  "iguration of the Kentik resources requir"
+  "ed to export network flow logs and metad"
+  "ata from [public clouds](https://kb.kent"
+  "ik.com/v4/Na00.htm).\n* Basic status info"
+  "rmation on active export processes.\n\n###"
+  " Supported Cloud Providers\nThe functiona"
+  "lity and configuration parameters suppor"
+  "ted by this API differ by cloud provider"
+  ". The API currently supports the followi"
+  "ng providers:\n* [Amazon Web Services](ht"
+  "tps://kb.kentik.com/v0/Bd06.htm) (AWS)\n*"
+  " [Microsoft Azure](https://kb.kentik.com"
+  "/v0/Bd08.htm)\n* [Google Cloud](https://k"
+  "b.kentik.com/v0/Bd07.htm) (GCP)\n* [IBM C"
+  "loud](https://kb.kentik.com/v0/Bd09.htm)"
+  "\n\n### Additional Public Resources\nThe fo"
+  "llowing additional resources are availab"
+  "le for working with this API:\n* Kentik c"
+  "ommunity [Python](https://github.com/ken"
+  "tik/community_sdk_python) and [Go](https"
+  "://github.com/kentik/community_sdk_golan"
+  "g) SDKs provide language-specific suppor"
+  "t for using this and other Kentik APIs. "
+  "These SDKs can be also used as example c"
+  "ode for development.\n* A [Terraform prov"
+  "ider](https://registry.terraform.io/prov"
+  "iders/kentik/kentik-cloudexport) is avai"
+  "lable for configuring `cloud_export` ins"
+  "tances in Kentik. Terraform modules are "
+  "available for [AWS](https://github.com/k"
+  "entik/config-snippets-cloud/tree/master/"
+  "cloud_AWS/terraform/module), [Azure](htt"
+  "ps://github.com/kentik/config-snippets-c"
+  "loud/tree/master/cloud_Azure/terraform/m"
+  "odule) \nand [GCP](https://github.com/ken"
+  "tik/config-snippets-cloud/tree/master/cl"
+  "oud_GCP/terraform/module).\nThese modules"
+  " support onboarding and ongoing manageme"
+  "nt of all resources (in public clouds an"
+  "d in Kentik) required to export flow log"
+  "s to Kentik.\n\n# Anatomy of a Cloud Expor"
+  "t\nConfiguration and status of a `cloud_e"
+  "xport` instance is represented by the `C"
+  "loudExport` object, which contains three"
+  " categories of attributes:\n* Common Conf"
+  "iguration Attributes\n* Cloud Provider Co"
+  "nfiguration Attributes\n* Metadata and St"
+  "atus Attributes\n\n### Common Configuratio"
+  "n Attributes\nThe configuration attribute"
+  "s in the table below are common to `Clou"
+  "dExport` objects for all cloud providers"
+  ".\n| Attribute | Required | Default |\n|--"
+  "---------|----------| ------- |\n| enable"
+  "d | No | False |\n| name | Yes |   |\n| de"
+  "scription | No | <empty string> |\n| type"
+  " | Yes | |\n| cloud_provider | Yes | |\n| "
+  "plan_id | Yes | |\n\n### Cloud Provider Sp"
+  "ecific Attributes\nThe attributes listed "
+  "in the table below are objects whose par"
+  "ameters are specific to each cloud provi"
+  "der.\n| Cloud Provider | Attribute | Obje"
+  "ct Name |\n|-----------|----------| -----"
+  "-- |\n| AWS | aws | AwsProperties |\n| Azu"
+  "re | azure | AzureProperties |\n| Google "
+  "Cloud | gce | GceProperties |\n| IBM Clou"
+  "d | ibm | IbmProperties |\n\n### Metadata "
+  "and Status Attributes\nThe attributes in "
+  "the table below provide read-only metada"
+  "ta and status for a `cloud_export` insta"
+  "nce.\n| Attribute | Purpose |\n|----------"
+  "-|---------|\n| id | System-generated uni"
+  "que identifier of the instance |\n| cdate"
+  " | Creation timestamp |\n| edate | Last-m"
+  "odification timestamp |\n| current_status"
+  " | Runtime status of the flow and metada"
+  "ta collection process |\n\n\"E\n\026Kentik API "
+  "Engineering\022+https://github.com/kentik/a"
+  "pi-schema-public2\007v202210*\001\0022\020applicatio"
+  "n/json:\020application/jsonZD\n\036\n\005email\022\025\010\002\032"
+  "\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Au"
+  "th-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000rE"
+  "\n Kentik support for public clouds\022!http"
+  "s://kb.kentik.com/v4/Na00.htmb\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2fcloud_5fexport_2fv202210_2fcloud_5fexport_2eproto_deps[6] = {
   &::descriptor_table_google_2fapi_2fannotations_2eproto,
@@ -788,7 +809,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_kentik_2fcloud_5fexport_2fv202210_2fcloud_5fexport_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_kentik_2fcloud_5fexport_2fv202210_2fcloud_5fexport_2eproto = {
-  false, false, descriptor_table_protodef_kentik_2fcloud_5fexport_2fv202210_2fcloud_5fexport_2eproto, "kentik/cloud_export/v202210/cloud_export.proto", 10410,
+  false, false, descriptor_table_protodef_kentik_2fcloud_5fexport_2fv202210_2fcloud_5fexport_2eproto, "kentik/cloud_export/v202210/cloud_export.proto", 11077,
   &descriptor_table_kentik_2fcloud_5fexport_2fv202210_2fcloud_5fexport_2eproto_once, descriptor_table_kentik_2fcloud_5fexport_2fv202210_2fcloud_5fexport_2eproto_sccs, descriptor_table_kentik_2fcloud_5fexport_2fv202210_2fcloud_5fexport_2eproto_deps, 16, 6,
   schemas, file_default_instances, TableStruct_kentik_2fcloud_5fexport_2fv202210_2fcloud_5fexport_2eproto::offsets,
   file_level_metadata_kentik_2fcloud_5fexport_2fv202210_2fcloud_5fexport_2eproto, 16, file_level_enum_descriptors_kentik_2fcloud_5fexport_2fv202210_2fcloud_5fexport_2eproto, file_level_service_descriptors_kentik_2fcloud_5fexport_2fv202210_2fcloud_5fexport_2eproto,
@@ -1652,13 +1673,19 @@ class AwsProperties::_Internal {
 };
 
 AwsProperties::AwsProperties(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
+  secondary_aws_accounts_(arena),
+  secondary_aws_blocked_accounts_(arena),
+  secondary_aws_regions_(arena) {
   SharedCtor();
   RegisterArenaDtor(arena);
   // @@protoc_insertion_point(arena_constructor:kentik.cloud_export.v202210.AwsProperties)
 }
 AwsProperties::AwsProperties(const AwsProperties& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      secondary_aws_accounts_(from.secondary_aws_accounts_),
+      secondary_aws_blocked_accounts_(from.secondary_aws_blocked_accounts_),
+      secondary_aws_regions_(from.secondary_aws_regions_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   bucket_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_bucket().empty()) {
@@ -1675,9 +1702,14 @@ AwsProperties::AwsProperties(const AwsProperties& from)
     region_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_region(),
       GetArena());
   }
+  secondary_aws_suffix_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_secondary_aws_suffix().empty()) {
+    secondary_aws_suffix_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_secondary_aws_suffix(),
+      GetArena());
+  }
   ::memcpy(&delete_after_read_, &from.delete_after_read_,
-    static_cast<size_t>(reinterpret_cast<char*>(&metadata_only_) -
-    reinterpret_cast<char*>(&delete_after_read_)) + sizeof(metadata_only_));
+    static_cast<size_t>(reinterpret_cast<char*>(&aws_iam_role_arn_is_org_) -
+    reinterpret_cast<char*>(&delete_after_read_)) + sizeof(aws_iam_role_arn_is_org_));
   // @@protoc_insertion_point(copy_constructor:kentik.cloud_export.v202210.AwsProperties)
 }
 
@@ -1686,9 +1718,10 @@ void AwsProperties::SharedCtor() {
   bucket_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   iam_role_arn_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   region_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  secondary_aws_suffix_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&delete_after_read_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&metadata_only_) -
-      reinterpret_cast<char*>(&delete_after_read_)) + sizeof(metadata_only_));
+      reinterpret_cast<char*>(&aws_iam_role_arn_is_org_) -
+      reinterpret_cast<char*>(&delete_after_read_)) + sizeof(aws_iam_role_arn_is_org_));
 }
 
 AwsProperties::~AwsProperties() {
@@ -1702,6 +1735,7 @@ void AwsProperties::SharedDtor() {
   bucket_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   iam_role_arn_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   region_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  secondary_aws_suffix_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void AwsProperties::ArenaDtor(void* object) {
@@ -1725,12 +1759,16 @@ void AwsProperties::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  secondary_aws_accounts_.Clear();
+  secondary_aws_blocked_accounts_.Clear();
+  secondary_aws_regions_.Clear();
   bucket_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   iam_role_arn_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   region_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  secondary_aws_suffix_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   ::memset(&delete_after_read_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&metadata_only_) -
-      reinterpret_cast<char*>(&delete_after_read_)) + sizeof(metadata_only_));
+      reinterpret_cast<char*>(&aws_iam_role_arn_is_org_) -
+      reinterpret_cast<char*>(&delete_after_read_)) + sizeof(aws_iam_role_arn_is_org_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1780,6 +1818,64 @@ const char* AwsProperties::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_
       case 5:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 40)) {
           metadata_only_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // bool aws_iam_role_arn_is_org = 6[json_name = "awsIamRoleArnIsOrg", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 48)) {
+          aws_iam_role_arn_is_org_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // repeated string secondary_aws_accounts = 7[json_name = "secondaryAwsAccounts", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 58)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_secondary_aws_accounts();
+            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.cloud_export.v202210.AwsProperties.secondary_aws_accounts"));
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<58>(ptr));
+        } else goto handle_unusual;
+        continue;
+      // repeated string secondary_aws_blocked_accounts = 8[json_name = "secondaryAwsBlockedAccounts", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 66)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_secondary_aws_blocked_accounts();
+            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.cloud_export.v202210.AwsProperties.secondary_aws_blocked_accounts"));
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<66>(ptr));
+        } else goto handle_unusual;
+        continue;
+      // repeated string secondary_aws_regions = 9[json_name = "secondaryAwsRegions", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 74)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_secondary_aws_regions();
+            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.cloud_export.v202210.AwsProperties.secondary_aws_regions"));
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<74>(ptr));
+        } else goto handle_unusual;
+        continue;
+      // string secondary_aws_suffix = 10[json_name = "secondaryAwsSuffix", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 10:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 82)) {
+          auto str = _internal_mutable_secondary_aws_suffix();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.cloud_export.v202210.AwsProperties.secondary_aws_suffix"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1853,6 +1949,52 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(5, this->_internal_metadata_only(), target);
   }
 
+  // bool aws_iam_role_arn_is_org = 6[json_name = "awsIamRoleArnIsOrg", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->aws_iam_role_arn_is_org() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(6, this->_internal_aws_iam_role_arn_is_org(), target);
+  }
+
+  // repeated string secondary_aws_accounts = 7[json_name = "secondaryAwsAccounts", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  for (int i = 0, n = this->_internal_secondary_aws_accounts_size(); i < n; i++) {
+    const auto& s = this->_internal_secondary_aws_accounts(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.cloud_export.v202210.AwsProperties.secondary_aws_accounts");
+    target = stream->WriteString(7, s, target);
+  }
+
+  // repeated string secondary_aws_blocked_accounts = 8[json_name = "secondaryAwsBlockedAccounts", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  for (int i = 0, n = this->_internal_secondary_aws_blocked_accounts_size(); i < n; i++) {
+    const auto& s = this->_internal_secondary_aws_blocked_accounts(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.cloud_export.v202210.AwsProperties.secondary_aws_blocked_accounts");
+    target = stream->WriteString(8, s, target);
+  }
+
+  // repeated string secondary_aws_regions = 9[json_name = "secondaryAwsRegions", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  for (int i = 0, n = this->_internal_secondary_aws_regions_size(); i < n; i++) {
+    const auto& s = this->_internal_secondary_aws_regions(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.cloud_export.v202210.AwsProperties.secondary_aws_regions");
+    target = stream->WriteString(9, s, target);
+  }
+
+  // string secondary_aws_suffix = 10[json_name = "secondaryAwsSuffix", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->secondary_aws_suffix().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_secondary_aws_suffix().data(), static_cast<int>(this->_internal_secondary_aws_suffix().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.cloud_export.v202210.AwsProperties.secondary_aws_suffix");
+    target = stream->WriteStringMaybeAliased(
+        10, this->_internal_secondary_aws_suffix(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1868,6 +2010,30 @@ size_t AwsProperties::ByteSizeLong() const {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
+
+  // repeated string secondary_aws_accounts = 7[json_name = "secondaryAwsAccounts", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(secondary_aws_accounts_.size());
+  for (int i = 0, n = secondary_aws_accounts_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      secondary_aws_accounts_.Get(i));
+  }
+
+  // repeated string secondary_aws_blocked_accounts = 8[json_name = "secondaryAwsBlockedAccounts", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(secondary_aws_blocked_accounts_.size());
+  for (int i = 0, n = secondary_aws_blocked_accounts_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      secondary_aws_blocked_accounts_.Get(i));
+  }
+
+  // repeated string secondary_aws_regions = 9[json_name = "secondaryAwsRegions", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(secondary_aws_regions_.size());
+  for (int i = 0, n = secondary_aws_regions_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      secondary_aws_regions_.Get(i));
+  }
 
   // string bucket = 1[json_name = "bucket", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   if (this->bucket().size() > 0) {
@@ -1890,6 +2056,13 @@ size_t AwsProperties::ByteSizeLong() const {
         this->_internal_region());
   }
 
+  // string secondary_aws_suffix = 10[json_name = "secondaryAwsSuffix", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->secondary_aws_suffix().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_secondary_aws_suffix());
+  }
+
   // bool delete_after_read = 4[json_name = "deleteAfterRead", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   if (this->delete_after_read() != 0) {
     total_size += 1 + 1;
@@ -1897,6 +2070,11 @@ size_t AwsProperties::ByteSizeLong() const {
 
   // bool metadata_only = 5[json_name = "metadataOnly", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   if (this->metadata_only() != 0) {
+    total_size += 1 + 1;
+  }
+
+  // bool aws_iam_role_arn_is_org = 6[json_name = "awsIamRoleArnIsOrg", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->aws_iam_role_arn_is_org() != 0) {
     total_size += 1 + 1;
   }
 
@@ -1931,6 +2109,9 @@ void AwsProperties::MergeFrom(const AwsProperties& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  secondary_aws_accounts_.MergeFrom(from.secondary_aws_accounts_);
+  secondary_aws_blocked_accounts_.MergeFrom(from.secondary_aws_blocked_accounts_);
+  secondary_aws_regions_.MergeFrom(from.secondary_aws_regions_);
   if (from.bucket().size() > 0) {
     _internal_set_bucket(from._internal_bucket());
   }
@@ -1940,11 +2121,17 @@ void AwsProperties::MergeFrom(const AwsProperties& from) {
   if (from.region().size() > 0) {
     _internal_set_region(from._internal_region());
   }
+  if (from.secondary_aws_suffix().size() > 0) {
+    _internal_set_secondary_aws_suffix(from._internal_secondary_aws_suffix());
+  }
   if (from.delete_after_read() != 0) {
     _internal_set_delete_after_read(from._internal_delete_after_read());
   }
   if (from.metadata_only() != 0) {
     _internal_set_metadata_only(from._internal_metadata_only());
+  }
+  if (from.aws_iam_role_arn_is_org() != 0) {
+    _internal_set_aws_iam_role_arn_is_org(from._internal_aws_iam_role_arn_is_org());
   }
 }
 
@@ -1969,12 +2156,16 @@ bool AwsProperties::IsInitialized() const {
 void AwsProperties::InternalSwap(AwsProperties* other) {
   using std::swap;
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  secondary_aws_accounts_.InternalSwap(&other->secondary_aws_accounts_);
+  secondary_aws_blocked_accounts_.InternalSwap(&other->secondary_aws_blocked_accounts_);
+  secondary_aws_regions_.InternalSwap(&other->secondary_aws_regions_);
   bucket_.Swap(&other->bucket_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   iam_role_arn_.Swap(&other->iam_role_arn_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   region_.Swap(&other->region_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  secondary_aws_suffix_.Swap(&other->secondary_aws_suffix_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(AwsProperties, metadata_only_)
-      + sizeof(AwsProperties::metadata_only_)
+      PROTOBUF_FIELD_OFFSET(AwsProperties, aws_iam_role_arn_is_org_)
+      + sizeof(AwsProperties::aws_iam_role_arn_is_org_)
       - PROTOBUF_FIELD_OFFSET(AwsProperties, delete_after_read_)>(
           reinterpret_cast<char*>(&delete_after_read_),
           reinterpret_cast<char*>(&other->delete_after_read_));

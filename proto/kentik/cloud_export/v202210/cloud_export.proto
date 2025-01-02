@@ -149,7 +149,8 @@ enum CloudProvider {
   // Google Cloud
   CLOUD_PROVIDER_GCE = 3;
   // IBM Cloud
-  CLOUD_PROVIDER_IBM = 4;
+  // Deprecated: IBM Cloud exports are no longer supported.
+  CLOUD_PROVIDER_IBM = 4 [deprecated = true];
 }
 
 // {{.Name}}
@@ -248,6 +249,36 @@ message AwsProperties {
   bool metadata_only = 5 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Import only metadata without any flows (default false)."
+    }
+  ];
+
+  bool aws_iam_role_arn_is_org = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Iam role is organization role (default false)."
+    }
+  ];
+
+  repeated string secondary_aws_accounts = 7 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Accounts ids granted access to the describe API end-points."
+    }
+  ];
+
+  repeated string secondary_aws_blocked_accounts = 8 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Accounts ids that should be filtered from organization when running describe API end-points."
+    }
+  ];
+
+  repeated string secondary_aws_regions = 9 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Regions that secondary accounts to scrape."
+    }
+  ];
+
+  string secondary_aws_suffix = 10 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Used to generate secondary account ARN based on template arn:aws:iam::<<aws_account_id>>:role/<<role_suffix>>"
     }
   ];
 }
