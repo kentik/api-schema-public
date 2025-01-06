@@ -344,6 +344,22 @@
         }
       }
     },
+    "v202303PseudoTimestamp": {
+      "type": "object",
+      "properties": {
+        "seconds": {
+          "type": "string",
+          "format": "int64",
+          "description": "Represents seconds of UTC time since Unix epoch\n1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to\n9999-12-31T23:59:59Z inclusive."
+        },
+        "nanos": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Non-negative fractions of a second at nanosecond resolution. Negative\nsecond values with fractions must still have non-negative nanos values\nthat count forward in time. Must be from 0 to 999,999,999\ninclusive."
+        }
+      },
+      "description": "This is an override for google.protobuf.Timestamp which exists solely to provide compatibility between buf and grpc-js.\nAs far as protobuf consumers are concerned this is identical to a regular timestamp and should be treated as such."
+    },
     "v202411alpha1CreateCustomDimensionResponse": {
       "type": "object",
       "properties": {
@@ -406,14 +422,12 @@
           "readOnly": true
         },
         "createdDate": {
-          "type": "string",
-          "format": "date-time",
+          "$ref": "#/definitions/v202303PseudoTimestamp",
           "description": "Date-time of populator creation, in UTC.",
           "readOnly": true
         },
         "updatedDate": {
-          "type": "string",
-          "format": "date-time",
+          "$ref": "#/definitions/v202303PseudoTimestamp",
           "description": "Date-time of most-recent populator edit, in UTC.",
           "readOnly": true
         }
@@ -600,14 +614,12 @@
           "readOnly": true
         },
         "createdDate": {
-          "type": "string",
-          "format": "date-time",
+          "$ref": "#/definitions/v202303PseudoTimestamp",
           "description": "Date-time of populator creation, in UTC.",
           "readOnly": true
         },
         "updatedDate": {
-          "type": "string",
-          "format": "date-time",
+          "$ref": "#/definitions/v202303PseudoTimestamp",
           "description": "Date-time of most-recent populator edit, in UTC.",
           "readOnly": true
         }

@@ -898,7 +898,7 @@ static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__c
     PROTOBUF_C_TYPE_MESSAGE,
     0,   /* quantifier_offset */
     offsetof(Kentik__CustomDimension__V202411alpha1__CustomDimension, created_date),
-    &google__protobuf__timestamp__descriptor,
+    &kentik__core__v202303__pseudo_timestamp__descriptor,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
@@ -910,7 +910,7 @@ static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__c
     PROTOBUF_C_TYPE_MESSAGE,
     0,   /* quantifier_offset */
     offsetof(Kentik__CustomDimension__V202411alpha1__CustomDimension, updated_date),
-    &google__protobuf__timestamp__descriptor,
+    &kentik__core__v202303__pseudo_timestamp__descriptor,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
@@ -1219,7 +1219,7 @@ static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__p
     PROTOBUF_C_TYPE_MESSAGE,
     0,   /* quantifier_offset */
     offsetof(Kentik__CustomDimension__V202411alpha1__Populator, created_date),
-    &google__protobuf__timestamp__descriptor,
+    &kentik__core__v202303__pseudo_timestamp__descriptor,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
@@ -1231,7 +1231,7 @@ static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__p
     PROTOBUF_C_TYPE_MESSAGE,
     0,   /* quantifier_offset */
     offsetof(Kentik__CustomDimension__V202411alpha1__Populator, updated_date),
-    &google__protobuf__timestamp__descriptor,
+    &kentik__core__v202303__pseudo_timestamp__descriptor,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */

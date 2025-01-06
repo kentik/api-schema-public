@@ -21,6 +21,7 @@ PROTOBUF_C__BEGIN_DECLS
 #include "protoc-gen-openapiv2/options/annotations.pb-c.h"
 #include "kentik/core/v202303/annotations.pb-c.h"
 #include "kentik/user/v202211/user.pb-c.h"
+#include "kentik/core/v202303/timestamp.pb-c.h"
 
 typedef struct Kentik__CustomDimension__V202411alpha1__CustomDimension Kentik__CustomDimension__V202411alpha1__CustomDimension;
 typedef struct Kentik__CustomDimension__V202411alpha1__Populator Kentik__CustomDimension__V202411alpha1__Populator;
@@ -60,8 +61,8 @@ struct  Kentik__CustomDimension__V202411alpha1__CustomDimension
   size_t n_populators;
   Kentik__CustomDimension__V202411alpha1__Populator **populators;
   uint32_t company_id;
-  Google__Protobuf__Timestamp *created_date;
-  Google__Protobuf__Timestamp *updated_date;
+  Kentik__Core__V202303__PseudoTimestamp *created_date;
+  Kentik__Core__V202303__PseudoTimestamp *updated_date;
 };
 #define KENTIK__CUSTOM_DIMENSION__V202411ALPHA1__CUSTOM_DIMENSION__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__custom_dimension__v202411alpha1__custom_dimension__descriptor) \
@@ -110,8 +111,8 @@ struct  Kentik__CustomDimension__V202411alpha1__Populator
   size_t n_vlans;
   char **vlans;
   char *user;
-  Google__Protobuf__Timestamp *created_date;
-  Google__Protobuf__Timestamp *updated_date;
+  Kentik__Core__V202303__PseudoTimestamp *created_date;
+  Kentik__Core__V202303__PseudoTimestamp *updated_date;
 };
 #define KENTIK__CUSTOM_DIMENSION__V202411ALPHA1__POPULATOR__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__custom_dimension__v202411alpha1__populator__descriptor) \
