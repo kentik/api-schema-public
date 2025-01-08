@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package kentik.diagnostic.v202501;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/diagnostic/v202501;diagnostic";
+
+import "google/api/client.proto";
+import "kentik/core/v202303/annotations.proto";
+
+message EchoRequest {
+  string message = 1;
+}
+
+message EchoResponse {
+  string message = 1;
+}
+
+message ChatRequest {
+  string message_id = 1;
+  oneof msg {
+    EchoRequest echo_request = 2;
+    EchoResponse echo_response = 3;
+  }
+}
+
+message ChatResponse {
+  string message_id = 1;
+  oneof msg {
+    EchoRequest echo_request = 2;
+    EchoResponse echo_response = 3;
+  }
+}
+
+service DiagnosticService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC_KENTIK;
+
+  rpc Echo(EchoRequest) returns (EchoResponse) {
+    option (kentik.core.v202303.method_scope) = "PUBLIC";
+  }
+
+  rpc Chat(stream ChatRequest) returns (stream ChatResponse) {
+    option (kentik.core.v202303.method_scope) = "PUBLIC";
+  }
+}

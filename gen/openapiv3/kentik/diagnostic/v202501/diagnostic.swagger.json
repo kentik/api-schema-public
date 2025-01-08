@@ -1,0 +1,77 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "kentik/diagnostic/v202501/diagnostic.proto",
+        "version": "version not set"
+    },
+    "tags": [
+        {
+            "name": "DiagnosticService"
+        }
+    ],
+    "paths": {},
+    "components": {
+        "schemas": {
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "typeUrl": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string",
+                        "format": "byte"
+                    }
+                }
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "v202501ChatResponse": {
+                "type": "object",
+                "properties": {
+                    "messageId": {
+                        "type": "string"
+                    },
+                    "echoRequest": {
+                        "$ref": "#/components/schemas/v202501EchoRequest"
+                    },
+                    "echoResponse": {
+                        "$ref": "#/components/schemas/v202501EchoResponse"
+                    }
+                }
+            },
+            "v202501EchoRequest": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            },
+            "v202501EchoResponse": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

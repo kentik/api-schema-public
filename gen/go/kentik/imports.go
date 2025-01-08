@@ -15,6 +15,7 @@ import (
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/credential/v202407alpha1"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/custom_dimension/v202411alpha1"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/device/v202308beta1"
+	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/diagnostic/v202501"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/flow_tag/v202404alpha1"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/interface/v202108alpha1"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/journeys/v202405alpha1"
