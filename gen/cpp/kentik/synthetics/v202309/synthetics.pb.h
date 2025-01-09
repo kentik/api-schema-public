@@ -58,7 +58,7 @@ struct TableStruct_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[74]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[75]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -233,6 +233,9 @@ extern PathTraceDefaultTypeInternal _PathTrace_default_instance_;
 class PingResults;
 class PingResultsDefaultTypeInternal;
 extern PingResultsDefaultTypeInternal _PingResults_default_instance_;
+class ScheduleSettings;
+class ScheduleSettingsDefaultTypeInternal;
+extern ScheduleSettingsDefaultTypeInternal _ScheduleSettings_default_instance_;
 class SetTestStatusRequest;
 class SetTestStatusRequestDefaultTypeInternal;
 extern SetTestStatusRequestDefaultTypeInternal _SetTestStatusRequest_default_instance_;
@@ -349,6 +352,7 @@ template<> ::kentik::synthetics::v202309::PageLoadTest_HeadersEntry_DoNotUse* Ar
 template<> ::kentik::synthetics::v202309::Path* Arena::CreateMaybeMessage<::kentik::synthetics::v202309::Path>(Arena*);
 template<> ::kentik::synthetics::v202309::PathTrace* Arena::CreateMaybeMessage<::kentik::synthetics::v202309::PathTrace>(Arena*);
 template<> ::kentik::synthetics::v202309::PingResults* Arena::CreateMaybeMessage<::kentik::synthetics::v202309::PingResults>(Arena*);
+template<> ::kentik::synthetics::v202309::ScheduleSettings* Arena::CreateMaybeMessage<::kentik::synthetics::v202309::ScheduleSettings>(Arena*);
 template<> ::kentik::synthetics::v202309::SetTestStatusRequest* Arena::CreateMaybeMessage<::kentik::synthetics::v202309::SetTestStatusRequest>(Arena*);
 template<> ::kentik::synthetics::v202309::SetTestStatusResponse* Arena::CreateMaybeMessage<::kentik::synthetics::v202309::SetTestStatusResponse>(Arena*);
 template<> ::kentik::synthetics::v202309::Stats* Arena::CreateMaybeMessage<::kentik::synthetics::v202309::Stats>(Arena*);
@@ -2276,6 +2280,7 @@ class TestSettings PROTOBUF_FINAL :
     kPingFieldNumber = 13,
     kTraceFieldNumber = 14,
     kThroughputFieldNumber = 20,
+    kScheduleFieldNumber = 21,
     kPeriodFieldNumber = 15,
     kFamilyFieldNumber = 16,
     kHostnameFieldNumber = 1,
@@ -2457,6 +2462,24 @@ class TestSettings PROTOBUF_FINAL :
   void unsafe_arena_set_allocated_throughput(
       ::kentik::synthetics::v202309::TestThroughputSettings* throughput);
   ::kentik::synthetics::v202309::TestThroughputSettings* unsafe_arena_release_throughput();
+
+  // .kentik.synthetics.v202309.ScheduleSettings schedule = 21[json_name = "schedule", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_schedule() const;
+  private:
+  bool _internal_has_schedule() const;
+  public:
+  void clear_schedule();
+  const ::kentik::synthetics::v202309::ScheduleSettings& schedule() const;
+  ::kentik::synthetics::v202309::ScheduleSettings* release_schedule();
+  ::kentik::synthetics::v202309::ScheduleSettings* mutable_schedule();
+  void set_allocated_schedule(::kentik::synthetics::v202309::ScheduleSettings* schedule);
+  private:
+  const ::kentik::synthetics::v202309::ScheduleSettings& _internal_schedule() const;
+  ::kentik::synthetics::v202309::ScheduleSettings* _internal_mutable_schedule();
+  public:
+  void unsafe_arena_set_allocated_schedule(
+      ::kentik::synthetics::v202309::ScheduleSettings* schedule);
+  ::kentik::synthetics::v202309::ScheduleSettings* unsafe_arena_release_schedule();
 
   // uint32 period = 15[json_name = "period", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   void clear_period();
@@ -2686,6 +2709,7 @@ class TestSettings PROTOBUF_FINAL :
   ::kentik::synthetics::v202309::TestPingSettings* ping_;
   ::kentik::synthetics::v202309::TestTraceSettings* trace_;
   ::kentik::synthetics::v202309::TestThroughputSettings* throughput_;
+  ::kentik::synthetics::v202309::ScheduleSettings* schedule_;
   ::PROTOBUF_NAMESPACE_ID::uint32 period_;
   int family_;
   union DefinitionUnion {
@@ -3332,6 +3356,165 @@ class TestThroughputSettings PROTOBUF_FINAL :
 };
 // -------------------------------------------------------------------
 
+class ScheduleSettings PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:kentik.synthetics.v202309.ScheduleSettings) */ {
+ public:
+  inline ScheduleSettings() : ScheduleSettings(nullptr) {};
+  virtual ~ScheduleSettings();
+
+  ScheduleSettings(const ScheduleSettings& from);
+  ScheduleSettings(ScheduleSettings&& from) noexcept
+    : ScheduleSettings() {
+    *this = ::std::move(from);
+  }
+
+  inline ScheduleSettings& operator=(const ScheduleSettings& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ScheduleSettings& operator=(ScheduleSettings&& from) noexcept {
+    if (GetArena() == from.GetArena()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const ScheduleSettings& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const ScheduleSettings* internal_default_instance() {
+    return reinterpret_cast<const ScheduleSettings*>(
+               &_ScheduleSettings_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    9;
+
+  friend void swap(ScheduleSettings& a, ScheduleSettings& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ScheduleSettings* other) {
+    if (other == this) return;
+    if (GetArena() == other->GetArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ScheduleSettings* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline ScheduleSettings* New() const final {
+    return CreateMaybeMessage<ScheduleSettings>(nullptr);
+  }
+
+  ScheduleSettings* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<ScheduleSettings>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const ScheduleSettings& from);
+  void MergeFrom(const ScheduleSettings& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ScheduleSettings* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "kentik.synthetics.v202309.ScheduleSettings";
+  }
+  protected:
+  explicit ScheduleSettings(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto);
+    return ::descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kEnabledFieldNumber = 1,
+    kStartFieldNumber = 2,
+    kEndFieldNumber = 3,
+  };
+  // bool enabled = 1[json_name = "enabled", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_enabled();
+  bool enabled() const;
+  void set_enabled(bool value);
+  private:
+  bool _internal_enabled() const;
+  void _internal_set_enabled(bool value);
+  public:
+
+  // uint32 start = 2[json_name = "start", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_start();
+  ::PROTOBUF_NAMESPACE_ID::uint32 start() const;
+  void set_start(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_start() const;
+  void _internal_set_start(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  public:
+
+  // uint32 end = 3[json_name = "end", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_end();
+  ::PROTOBUF_NAMESPACE_ID::uint32 end() const;
+  void set_end(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_end() const;
+  void _internal_set_end(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:kentik.synthetics.v202309.ScheduleSettings)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  bool enabled_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 start_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 end_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto;
+};
+// -------------------------------------------------------------------
+
 class ActivationSettings PROTOBUF_FINAL :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:kentik.synthetics.v202309.ActivationSettings) */ {
  public:
@@ -3374,7 +3557,7 @@ class ActivationSettings PROTOBUF_FINAL :
                &_ActivationSettings_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    10;
 
   friend void swap(ActivationSettings& a, ActivationSettings& b) {
     a.Swap(&b);
@@ -3608,7 +3791,7 @@ class HealthSettings PROTOBUF_FINAL :
                &_HealthSettings_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    11;
 
   friend void swap(HealthSettings& a, HealthSettings& b) {
     a.Swap(&b);
@@ -4148,7 +4331,7 @@ class HostnameTest PROTOBUF_FINAL :
                &_HostnameTest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    12;
 
   friend void swap(HostnameTest& a, HostnameTest& b) {
     a.Swap(&b);
@@ -4301,7 +4484,7 @@ class IpTest PROTOBUF_FINAL :
                &_IpTest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    13;
 
   friend void swap(IpTest& a, IpTest& b) {
     a.Swap(&b);
@@ -4464,7 +4647,7 @@ class AgentTest PROTOBUF_FINAL :
                &_AgentTest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    14;
 
   friend void swap(AgentTest& a, AgentTest& b) {
     a.Swap(&b);
@@ -4639,7 +4822,7 @@ class FlowTest PROTOBUF_FINAL :
                &_FlowTest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    15;
 
   friend void swap(FlowTest& a, FlowTest& b) {
     a.Swap(&b);
@@ -4906,7 +5089,7 @@ class DnsTest PROTOBUF_FINAL :
                &_DnsTest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    15;
+    16;
 
   friend void swap(DnsTest& a, DnsTest& b) {
     a.Swap(&b);
@@ -5102,7 +5285,7 @@ public:
   private:
   static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
     ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto);
-    return ::descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.file_level_metadata[16];
+    return ::descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.file_level_metadata[17];
   }
 
   public:
@@ -5152,7 +5335,7 @@ class UrlTest PROTOBUF_FINAL :
                &_UrlTest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    17;
+    18;
 
   friend void swap(UrlTest& a, UrlTest& b) {
     a.Swap(&b);
@@ -5390,7 +5573,7 @@ public:
   private:
   static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
     ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto);
-    return ::descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.file_level_metadata[18];
+    return ::descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.file_level_metadata[19];
   }
 
   public:
@@ -5424,7 +5607,7 @@ public:
   private:
   static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
     ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto);
-    return ::descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.file_level_metadata[19];
+    return ::descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.file_level_metadata[20];
   }
 
   public:
@@ -5474,7 +5657,7 @@ class PageLoadTest PROTOBUF_FINAL :
                &_PageLoadTest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    20;
+    21;
 
   friend void swap(PageLoadTest& a, PageLoadTest& b) {
     a.Swap(&b);
@@ -5698,7 +5881,7 @@ class NetworkMeshTest PROTOBUF_FINAL :
                &_NetworkMeshTest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    21;
+    22;
 
   friend void swap(NetworkMeshTest& a, NetworkMeshTest& b) {
     a.Swap(&b);
@@ -5835,7 +6018,7 @@ class MetricData PROTOBUF_FINAL :
                &_MetricData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    22;
+    23;
 
   friend void swap(MetricData& a, MetricData& b) {
     a.Swap(&b);
@@ -6021,7 +6204,7 @@ class PacketLossData PROTOBUF_FINAL :
                &_PacketLossData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    23;
+    24;
 
   friend void swap(PacketLossData& a, PacketLossData& b) {
     a.Swap(&b);
@@ -6185,7 +6368,7 @@ class PingResults PROTOBUF_FINAL :
                &_PingResults_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    24;
+    25;
 
   friend void swap(PingResults& a, PingResults& b) {
     a.Swap(&b);
@@ -6425,7 +6608,7 @@ class HTTPResponseData PROTOBUF_FINAL :
                &_HTTPResponseData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    25;
+    26;
 
   friend void swap(HTTPResponseData& a, HTTPResponseData& b) {
     a.Swap(&b);
@@ -6600,7 +6783,7 @@ class HTTPResults PROTOBUF_FINAL :
                &_HTTPResults_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    26;
+    27;
 
   friend void swap(HTTPResults& a, HTTPResults& b) {
     a.Swap(&b);
@@ -6820,7 +7003,7 @@ class DNSResponseData PROTOBUF_FINAL :
                &_DNSResponseData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    27;
+    28;
 
   friend void swap(DNSResponseData& a, DNSResponseData& b) {
     a.Swap(&b);
@@ -6984,7 +7167,7 @@ class DNSResults PROTOBUF_FINAL :
                &_DNSResults_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    28;
+    29;
 
   friend void swap(DNSResults& a, DNSResults& b) {
     a.Swap(&b);
@@ -7211,7 +7394,7 @@ class TaskResults PROTOBUF_FINAL :
                &_TaskResults_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    29;
+    30;
 
   friend void swap(TaskResults& a, TaskResults& b) {
     a.Swap(&b);
@@ -7437,7 +7620,7 @@ class AgentResults PROTOBUF_FINAL :
                &_AgentResults_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    30;
+    31;
 
   friend void swap(AgentResults& a, AgentResults& b) {
     a.Swap(&b);
@@ -7637,7 +7820,7 @@ class TestResults PROTOBUF_FINAL :
                &_TestResults_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    31;
+    32;
 
   friend void swap(TestResults& a, TestResults& b) {
     a.Swap(&b);
@@ -7857,7 +8040,7 @@ class Stats PROTOBUF_FINAL :
                &_Stats_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    32;
+    33;
 
   friend void swap(Stats& a, Stats& b) {
     a.Swap(&b);
@@ -8016,7 +8199,7 @@ class Location PROTOBUF_FINAL :
                &_Location_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    33;
+    34;
 
   friend void swap(Location& a, Location& b) {
     a.Swap(&b);
@@ -8245,7 +8428,7 @@ class NetNode PROTOBUF_FINAL :
                &_NetNode_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    34;
+    35;
 
   friend void swap(NetNode& a, NetNode& b) {
     a.Swap(&b);
@@ -8537,7 +8720,7 @@ class TraceHop PROTOBUF_FINAL :
                &_TraceHop_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    35;
+    36;
 
   friend void swap(TraceHop& a, TraceHop& b) {
     a.Swap(&b);
@@ -8701,7 +8884,7 @@ class PathTrace PROTOBUF_FINAL :
                &_PathTrace_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    36;
+    37;
 
   friend void swap(PathTrace& a, PathTrace& b) {
     a.Swap(&b);
@@ -8883,7 +9066,7 @@ class Path PROTOBUF_FINAL :
                &_Path_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    37;
+    38;
 
   friend void swap(Path& a, Path& b) {
     a.Swap(&b);
@@ -9134,7 +9317,7 @@ class GetResultsForTestsRequest PROTOBUF_FINAL :
                &_GetResultsForTestsRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    38;
+    39;
 
   friend void swap(GetResultsForTestsRequest& a, GetResultsForTestsRequest& b) {
     a.Swap(&b);
@@ -9389,7 +9572,7 @@ class GetResultsForTestsResponse PROTOBUF_FINAL :
                &_GetResultsForTestsResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    39;
+    40;
 
   friend void swap(GetResultsForTestsResponse& a, GetResultsForTestsResponse& b) {
     a.Swap(&b);
@@ -9535,7 +9718,7 @@ class GetTraceForTestRequest PROTOBUF_FINAL :
                &_GetTraceForTestRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    40;
+    41;
 
   friend void swap(GetTraceForTestRequest& a, GetTraceForTestRequest& b) {
     a.Swap(&b);
@@ -9762,7 +9945,7 @@ public:
   private:
   static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
     ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto);
-    return ::descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.file_level_metadata[41];
+    return ::descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.file_level_metadata[42];
   }
 
   public:
@@ -9812,7 +9995,7 @@ class GetTraceForTestResponse PROTOBUF_FINAL :
                &_GetTraceForTestResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    42;
+    43;
 
   friend void swap(GetTraceForTestResponse& a, GetTraceForTestResponse& b) {
     a.Swap(&b);
@@ -9983,7 +10166,7 @@ class ListAgentsRequest PROTOBUF_FINAL :
                &_ListAgentsRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    43;
+    44;
 
   friend void swap(ListAgentsRequest& a, ListAgentsRequest& b) {
     a.Swap(&b);
@@ -10107,7 +10290,7 @@ class ListAgentsResponse PROTOBUF_FINAL :
                &_ListAgentsResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    44;
+    45;
 
   friend void swap(ListAgentsResponse& a, ListAgentsResponse& b) {
     a.Swap(&b);
@@ -10264,7 +10447,7 @@ class GetAgentRequest PROTOBUF_FINAL :
                &_GetAgentRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    45;
+    46;
 
   friend void swap(GetAgentRequest& a, GetAgentRequest& b) {
     a.Swap(&b);
@@ -10417,7 +10600,7 @@ class GetAgentResponse PROTOBUF_FINAL :
                &_GetAgentResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    46;
+    47;
 
   friend void swap(GetAgentResponse& a, GetAgentResponse& b) {
     a.Swap(&b);
@@ -10563,7 +10746,7 @@ class UpdateAgentRequest PROTOBUF_FINAL :
                &_UpdateAgentRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    47;
+    48;
 
   friend void swap(UpdateAgentRequest& a, UpdateAgentRequest& b) {
     a.Swap(&b);
@@ -10709,7 +10892,7 @@ class UpdateAgentResponse PROTOBUF_FINAL :
                &_UpdateAgentResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    48;
+    49;
 
   friend void swap(UpdateAgentResponse& a, UpdateAgentResponse& b) {
     a.Swap(&b);
@@ -10855,7 +11038,7 @@ class DeleteAgentRequest PROTOBUF_FINAL :
                &_DeleteAgentRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    49;
+    50;
 
   friend void swap(DeleteAgentRequest& a, DeleteAgentRequest& b) {
     a.Swap(&b);
@@ -11008,7 +11191,7 @@ class DeleteAgentResponse PROTOBUF_FINAL :
                &_DeleteAgentResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    50;
+    51;
 
   friend void swap(DeleteAgentResponse& a, DeleteAgentResponse& b) {
     a.Swap(&b);
@@ -11132,7 +11315,7 @@ class ListTestsRequest PROTOBUF_FINAL :
                &_ListTestsRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    51;
+    52;
 
   friend void swap(ListTestsRequest& a, ListTestsRequest& b) {
     a.Swap(&b);
@@ -11256,7 +11439,7 @@ class ListTestsResponse PROTOBUF_FINAL :
                &_ListTestsResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    52;
+    53;
 
   friend void swap(ListTestsResponse& a, ListTestsResponse& b) {
     a.Swap(&b);
@@ -11413,7 +11596,7 @@ class CreateTestRequest PROTOBUF_FINAL :
                &_CreateTestRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    53;
+    54;
 
   friend void swap(CreateTestRequest& a, CreateTestRequest& b) {
     a.Swap(&b);
@@ -11559,7 +11742,7 @@ class CreateTestResponse PROTOBUF_FINAL :
                &_CreateTestResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    54;
+    55;
 
   friend void swap(CreateTestResponse& a, CreateTestResponse& b) {
     a.Swap(&b);
@@ -11705,7 +11888,7 @@ class GetTestRequest PROTOBUF_FINAL :
                &_GetTestRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    55;
+    56;
 
   friend void swap(GetTestRequest& a, GetTestRequest& b) {
     a.Swap(&b);
@@ -11858,7 +12041,7 @@ class GetTestResponse PROTOBUF_FINAL :
                &_GetTestResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    56;
+    57;
 
   friend void swap(GetTestResponse& a, GetTestResponse& b) {
     a.Swap(&b);
@@ -12004,7 +12187,7 @@ class UpdateTestRequest PROTOBUF_FINAL :
                &_UpdateTestRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    57;
+    58;
 
   friend void swap(UpdateTestRequest& a, UpdateTestRequest& b) {
     a.Swap(&b);
@@ -12150,7 +12333,7 @@ class UpdateTestResponse PROTOBUF_FINAL :
                &_UpdateTestResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    58;
+    59;
 
   friend void swap(UpdateTestResponse& a, UpdateTestResponse& b) {
     a.Swap(&b);
@@ -12296,7 +12479,7 @@ class DeleteTestRequest PROTOBUF_FINAL :
                &_DeleteTestRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    59;
+    60;
 
   friend void swap(DeleteTestRequest& a, DeleteTestRequest& b) {
     a.Swap(&b);
@@ -12449,7 +12632,7 @@ class DeleteTestResponse PROTOBUF_FINAL :
                &_DeleteTestResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    60;
+    61;
 
   friend void swap(DeleteTestResponse& a, DeleteTestResponse& b) {
     a.Swap(&b);
@@ -12573,7 +12756,7 @@ class SetTestStatusRequest PROTOBUF_FINAL :
                &_SetTestStatusRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    61;
+    62;
 
   friend void swap(SetTestStatusRequest& a, SetTestStatusRequest& b) {
     a.Swap(&b);
@@ -12737,7 +12920,7 @@ class SetTestStatusResponse PROTOBUF_FINAL :
                &_SetTestStatusResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    62;
+    63;
 
   friend void swap(SetTestStatusResponse& a, SetTestStatusResponse& b) {
     a.Swap(&b);
@@ -12861,7 +13044,7 @@ class AgentAlert PROTOBUF_FINAL :
                &_AgentAlert_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    63;
+    64;
 
   friend void swap(AgentAlert& a, AgentAlert& b) {
     a.Swap(&b);
@@ -13105,7 +13288,7 @@ class CreateAgentAlertRequest PROTOBUF_FINAL :
                &_CreateAgentAlertRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    64;
+    65;
 
   friend void swap(CreateAgentAlertRequest& a, CreateAgentAlertRequest& b) {
     a.Swap(&b);
@@ -13295,7 +13478,7 @@ class CreateAgentAlertResponse PROTOBUF_FINAL :
                &_CreateAgentAlertResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    65;
+    66;
 
   friend void swap(CreateAgentAlertResponse& a, CreateAgentAlertResponse& b) {
     a.Swap(&b);
@@ -13441,7 +13624,7 @@ class UpdateAgentAlertRequest PROTOBUF_FINAL :
                &_UpdateAgentAlertRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    66;
+    67;
 
   friend void swap(UpdateAgentAlertRequest& a, UpdateAgentAlertRequest& b) {
     a.Swap(&b);
@@ -13631,7 +13814,7 @@ class UpdateAgentAlertResponse PROTOBUF_FINAL :
                &_UpdateAgentAlertResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    67;
+    68;
 
   friend void swap(UpdateAgentAlertResponse& a, UpdateAgentAlertResponse& b) {
     a.Swap(&b);
@@ -13777,7 +13960,7 @@ class GetAgentAlertRequest PROTOBUF_FINAL :
                &_GetAgentAlertRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    68;
+    69;
 
   friend void swap(GetAgentAlertRequest& a, GetAgentAlertRequest& b) {
     a.Swap(&b);
@@ -13930,7 +14113,7 @@ class GetAgentAlertResponse PROTOBUF_FINAL :
                &_GetAgentAlertResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    69;
+    70;
 
   friend void swap(GetAgentAlertResponse& a, GetAgentAlertResponse& b) {
     a.Swap(&b);
@@ -14076,7 +14259,7 @@ class ListAgentAlertsRequest PROTOBUF_FINAL :
                &_ListAgentAlertsRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    70;
+    71;
 
   friend void swap(ListAgentAlertsRequest& a, ListAgentAlertsRequest& b) {
     a.Swap(&b);
@@ -14228,7 +14411,7 @@ class ListAgentAlertsResponse PROTOBUF_FINAL :
                &_ListAgentAlertsResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    71;
+    72;
 
   friend void swap(ListAgentAlertsResponse& a, ListAgentAlertsResponse& b) {
     a.Swap(&b);
@@ -14374,7 +14557,7 @@ class DeleteAgentAlertRequest PROTOBUF_FINAL :
                &_DeleteAgentAlertRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    72;
+    73;
 
   friend void swap(DeleteAgentAlertRequest& a, DeleteAgentAlertRequest& b) {
     a.Swap(&b);
@@ -14527,7 +14710,7 @@ class DeleteAgentAlertResponse PROTOBUF_FINAL :
                &_DeleteAgentAlertResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    73;
+    74;
 
   friend void swap(DeleteAgentAlertResponse& a, DeleteAgentAlertResponse& b) {
     a.Swap(&b);
@@ -18788,6 +18971,87 @@ inline void TestSettings::set_allocated_throughput(::kentik::synthetics::v202309
   // @@protoc_insertion_point(field_set_allocated:kentik.synthetics.v202309.TestSettings.throughput)
 }
 
+// .kentik.synthetics.v202309.ScheduleSettings schedule = 21[json_name = "schedule", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool TestSettings::_internal_has_schedule() const {
+  return this != internal_default_instance() && schedule_ != nullptr;
+}
+inline bool TestSettings::has_schedule() const {
+  return _internal_has_schedule();
+}
+inline void TestSettings::clear_schedule() {
+  if (GetArena() == nullptr && schedule_ != nullptr) {
+    delete schedule_;
+  }
+  schedule_ = nullptr;
+}
+inline const ::kentik::synthetics::v202309::ScheduleSettings& TestSettings::_internal_schedule() const {
+  const ::kentik::synthetics::v202309::ScheduleSettings* p = schedule_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::kentik::synthetics::v202309::ScheduleSettings*>(
+      &::kentik::synthetics::v202309::_ScheduleSettings_default_instance_);
+}
+inline const ::kentik::synthetics::v202309::ScheduleSettings& TestSettings::schedule() const {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202309.TestSettings.schedule)
+  return _internal_schedule();
+}
+inline void TestSettings::unsafe_arena_set_allocated_schedule(
+    ::kentik::synthetics::v202309::ScheduleSettings* schedule) {
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(schedule_);
+  }
+  schedule_ = schedule;
+  if (schedule) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.synthetics.v202309.TestSettings.schedule)
+}
+inline ::kentik::synthetics::v202309::ScheduleSettings* TestSettings::release_schedule() {
+  auto temp = unsafe_arena_release_schedule();
+  if (GetArena() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+  return temp;
+}
+inline ::kentik::synthetics::v202309::ScheduleSettings* TestSettings::unsafe_arena_release_schedule() {
+  // @@protoc_insertion_point(field_release:kentik.synthetics.v202309.TestSettings.schedule)
+  
+  ::kentik::synthetics::v202309::ScheduleSettings* temp = schedule_;
+  schedule_ = nullptr;
+  return temp;
+}
+inline ::kentik::synthetics::v202309::ScheduleSettings* TestSettings::_internal_mutable_schedule() {
+  
+  if (schedule_ == nullptr) {
+    auto* p = CreateMaybeMessage<::kentik::synthetics::v202309::ScheduleSettings>(GetArena());
+    schedule_ = p;
+  }
+  return schedule_;
+}
+inline ::kentik::synthetics::v202309::ScheduleSettings* TestSettings::mutable_schedule() {
+  // @@protoc_insertion_point(field_mutable:kentik.synthetics.v202309.TestSettings.schedule)
+  return _internal_mutable_schedule();
+}
+inline void TestSettings::set_allocated_schedule(::kentik::synthetics::v202309::ScheduleSettings* schedule) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
+  if (message_arena == nullptr) {
+    delete schedule_;
+  }
+  if (schedule) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::GetArena(schedule);
+    if (message_arena != submessage_arena) {
+      schedule = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, schedule, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  schedule_ = schedule;
+  // @@protoc_insertion_point(field_set_allocated:kentik.synthetics.v202309.TestSettings.schedule)
+}
+
 inline bool TestSettings::has_definition() const {
   return definition_case() != DEFINITION_NOT_SET;
 }
@@ -19350,6 +19614,70 @@ inline void TestThroughputSettings::unsafe_arena_set_allocated_protocol(
   protocol_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       protocol, GetArena());
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.synthetics.v202309.TestThroughputSettings.protocol)
+}
+
+// -------------------------------------------------------------------
+
+// ScheduleSettings
+
+// bool enabled = 1[json_name = "enabled", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void ScheduleSettings::clear_enabled() {
+  enabled_ = false;
+}
+inline bool ScheduleSettings::_internal_enabled() const {
+  return enabled_;
+}
+inline bool ScheduleSettings::enabled() const {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202309.ScheduleSettings.enabled)
+  return _internal_enabled();
+}
+inline void ScheduleSettings::_internal_set_enabled(bool value) {
+  
+  enabled_ = value;
+}
+inline void ScheduleSettings::set_enabled(bool value) {
+  _internal_set_enabled(value);
+  // @@protoc_insertion_point(field_set:kentik.synthetics.v202309.ScheduleSettings.enabled)
+}
+
+// uint32 start = 2[json_name = "start", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void ScheduleSettings::clear_start() {
+  start_ = 0u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 ScheduleSettings::_internal_start() const {
+  return start_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 ScheduleSettings::start() const {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202309.ScheduleSettings.start)
+  return _internal_start();
+}
+inline void ScheduleSettings::_internal_set_start(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  
+  start_ = value;
+}
+inline void ScheduleSettings::set_start(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_start(value);
+  // @@protoc_insertion_point(field_set:kentik.synthetics.v202309.ScheduleSettings.start)
+}
+
+// uint32 end = 3[json_name = "end", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void ScheduleSettings::clear_end() {
+  end_ = 0u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 ScheduleSettings::_internal_end() const {
+  return end_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 ScheduleSettings::end() const {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202309.ScheduleSettings.end)
+  return _internal_end();
+}
+inline void ScheduleSettings::_internal_set_end(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  
+  end_ = value;
+}
+inline void ScheduleSettings::set_end(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_end(value);
+  // @@protoc_insertion_point(field_set:kentik.synthetics.v202309.ScheduleSettings.end)
 }
 
 // -------------------------------------------------------------------
@@ -29224,6 +29552,8 @@ inline void DeleteAgentAlertRequest::unsafe_arena_set_allocated_id(
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

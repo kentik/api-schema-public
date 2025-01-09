@@ -1827,6 +1827,26 @@
       },
       "title": "PingResults"
     },
+    "v202309ScheduleSettings": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Boolean indicating an (dis|en)abled schedule"
+        },
+        "start": {
+          "type": "integer",
+          "format": "int64",
+          "description": "UTC unix timestamps indicating the start of the schedule"
+        },
+        "end": {
+          "type": "integer",
+          "format": "int64",
+          "description": "UTC unix timestamp indicating the end of the schedule"
+        }
+      },
+      "title": "ScheduleSettings"
+    },
     "v202309SetTestStatusRequest": {
       "type": "object",
       "properties": {
@@ -2097,6 +2117,10 @@
         "throughput": {
           "$ref": "#/definitions/v202309TestThroughputSettings",
           "description": "Throughput task configuration parameters"
+        },
+        "schedule": {
+          "$ref": "#/definitions/v202309ScheduleSettings",
+          "description": "Scheduled test configuration parameters"
         }
       },
       "title": "TestSettings"

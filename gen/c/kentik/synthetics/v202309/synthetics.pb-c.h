@@ -31,6 +31,7 @@ typedef struct Kentik__Synthetics__V202309__TestSettings Kentik__Synthetics__V20
 typedef struct Kentik__Synthetics__V202309__TestPingSettings Kentik__Synthetics__V202309__TestPingSettings;
 typedef struct Kentik__Synthetics__V202309__TestTraceSettings Kentik__Synthetics__V202309__TestTraceSettings;
 typedef struct Kentik__Synthetics__V202309__TestThroughputSettings Kentik__Synthetics__V202309__TestThroughputSettings;
+typedef struct Kentik__Synthetics__V202309__ScheduleSettings Kentik__Synthetics__V202309__ScheduleSettings;
 typedef struct Kentik__Synthetics__V202309__ActivationSettings Kentik__Synthetics__V202309__ActivationSettings;
 typedef struct Kentik__Synthetics__V202309__HealthSettings Kentik__Synthetics__V202309__HealthSettings;
 typedef struct Kentik__Synthetics__V202309__HostnameTest Kentik__Synthetics__V202309__HostnameTest;
@@ -380,6 +381,7 @@ struct  Kentik__Synthetics__V202309__TestSettings
   char **notification_channels;
   char *notes;
   Kentik__Synthetics__V202309__TestThroughputSettings *throughput;
+  Kentik__Synthetics__V202309__ScheduleSettings *schedule;
   Kentik__Synthetics__V202309__TestSettings__DefinitionCase definition_case;
   union {
     Kentik__Synthetics__V202309__HostnameTest *hostname;
@@ -396,7 +398,7 @@ struct  Kentik__Synthetics__V202309__TestSettings
 };
 #define KENTIK__SYNTHETICS__V202309__TEST_SETTINGS__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__synthetics__v202309__test_settings__descriptor) \
-    , 0,NULL, 0,NULL, NULL, NULL, NULL, 0, KENTIK__SYNTHETICS__V202309__IPFAMILY__IP_FAMILY_UNSPECIFIED, 0,NULL, (char *)protobuf_c_empty_string, NULL, KENTIK__SYNTHETICS__V202309__TEST_SETTINGS__DEFINITION__NOT_SET, {0} }
+    , 0,NULL, 0,NULL, NULL, NULL, NULL, 0, KENTIK__SYNTHETICS__V202309__IPFAMILY__IP_FAMILY_UNSPECIFIED, 0,NULL, (char *)protobuf_c_empty_string, NULL, NULL, KENTIK__SYNTHETICS__V202309__TEST_SETTINGS__DEFINITION__NOT_SET, {0} }
 
 
 /*
@@ -451,6 +453,21 @@ struct  Kentik__Synthetics__V202309__TestThroughputSettings
 #define KENTIK__SYNTHETICS__V202309__TEST_THROUGHPUT_SETTINGS__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__synthetics__v202309__test_throughput_settings__descriptor) \
     , 0, 0, 0, 0, (char *)protobuf_c_empty_string }
+
+
+/*
+ * {{.Name}}
+ */
+struct  Kentik__Synthetics__V202309__ScheduleSettings
+{
+  ProtobufCMessage base;
+  protobuf_c_boolean enabled;
+  uint32_t start;
+  uint32_t end;
+};
+#define KENTIK__SYNTHETICS__V202309__SCHEDULE_SETTINGS__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__synthetics__v202309__schedule_settings__descriptor) \
+    , 0, 0, 0 }
 
 
 /*
@@ -1568,6 +1585,25 @@ Kentik__Synthetics__V202309__TestThroughputSettings *
                       const uint8_t       *data);
 void   kentik__synthetics__v202309__test_throughput_settings__free_unpacked
                      (Kentik__Synthetics__V202309__TestThroughputSettings *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Synthetics__V202309__ScheduleSettings methods */
+void   kentik__synthetics__v202309__schedule_settings__init
+                     (Kentik__Synthetics__V202309__ScheduleSettings         *message);
+size_t kentik__synthetics__v202309__schedule_settings__get_packed_size
+                     (const Kentik__Synthetics__V202309__ScheduleSettings   *message);
+size_t kentik__synthetics__v202309__schedule_settings__pack
+                     (const Kentik__Synthetics__V202309__ScheduleSettings   *message,
+                      uint8_t             *out);
+size_t kentik__synthetics__v202309__schedule_settings__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__ScheduleSettings   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Synthetics__V202309__ScheduleSettings *
+       kentik__synthetics__v202309__schedule_settings__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__synthetics__v202309__schedule_settings__free_unpacked
+                     (Kentik__Synthetics__V202309__ScheduleSettings *message,
                       ProtobufCAllocator *allocator);
 /* Kentik__Synthetics__V202309__ActivationSettings methods */
 void   kentik__synthetics__v202309__activation_settings__init
@@ -2769,6 +2805,9 @@ typedef void (*Kentik__Synthetics__V202309__TestTraceSettings_Closure)
 typedef void (*Kentik__Synthetics__V202309__TestThroughputSettings_Closure)
                  (const Kentik__Synthetics__V202309__TestThroughputSettings *message,
                   void *closure_data);
+typedef void (*Kentik__Synthetics__V202309__ScheduleSettings_Closure)
+                 (const Kentik__Synthetics__V202309__ScheduleSettings *message,
+                  void *closure_data);
 typedef void (*Kentik__Synthetics__V202309__ActivationSettings_Closure)
                  (const Kentik__Synthetics__V202309__ActivationSettings *message,
                   void *closure_data);
@@ -3161,6 +3200,7 @@ extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__test_settin
 extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__test_ping_settings__descriptor;
 extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__test_trace_settings__descriptor;
 extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__test_throughput_settings__descriptor;
+extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__schedule_settings__descriptor;
 extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__activation_settings__descriptor;
 extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__health_settings__descriptor;
 extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__hostname_test__descriptor;

@@ -564,6 +564,12 @@ message TestSettings {
       description: "Throughput task configuration parameters"
     }
   ];
+
+  ScheduleSettings schedule = 21 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Scheduled test configuration parameters"
+    }
+  ];
 }
 
 // {{.Name}}
@@ -664,6 +670,25 @@ message TestThroughputSettings {
   string protocol = 5 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Transport protocol to use (tcp | udp)"
+    }
+  ];
+}
+
+// {{.Name}}
+message ScheduleSettings {
+  bool enabled = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Boolean indicating an (dis|en)abled schedule"
+    }
+  ];
+  uint32 start = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "UTC unix timestamps indicating the start of the schedule"
+    }
+  ];
+  uint32 end = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "UTC unix timestamp indicating the end of the schedule"
     }
   ];
 }

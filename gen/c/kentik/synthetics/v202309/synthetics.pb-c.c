@@ -373,6 +373,51 @@ void   kentik__synthetics__v202309__test_throughput_settings__free_unpacked
   assert(message->base.descriptor == &kentik__synthetics__v202309__test_throughput_settings__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   kentik__synthetics__v202309__schedule_settings__init
+                     (Kentik__Synthetics__V202309__ScheduleSettings         *message)
+{
+  static const Kentik__Synthetics__V202309__ScheduleSettings init_value = KENTIK__SYNTHETICS__V202309__SCHEDULE_SETTINGS__INIT;
+  *message = init_value;
+}
+size_t kentik__synthetics__v202309__schedule_settings__get_packed_size
+                     (const Kentik__Synthetics__V202309__ScheduleSettings *message)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__schedule_settings__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__synthetics__v202309__schedule_settings__pack
+                     (const Kentik__Synthetics__V202309__ScheduleSettings *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__schedule_settings__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__synthetics__v202309__schedule_settings__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__ScheduleSettings *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__schedule_settings__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Synthetics__V202309__ScheduleSettings *
+       kentik__synthetics__v202309__schedule_settings__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Synthetics__V202309__ScheduleSettings *)
+     protobuf_c_message_unpack (&kentik__synthetics__v202309__schedule_settings__descriptor,
+                                allocator, len, data);
+}
+void   kentik__synthetics__v202309__schedule_settings__free_unpacked
+                     (Kentik__Synthetics__V202309__ScheduleSettings *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__synthetics__v202309__schedule_settings__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 void   kentik__synthetics__v202309__activation_settings__init
                      (Kentik__Synthetics__V202309__ActivationSettings         *message)
 {
@@ -3933,7 +3978,7 @@ const ProtobufCMessageDescriptor kentik__synthetics__v202309__test__descriptor =
   (ProtobufCMessageInit) kentik__synthetics__v202309__test__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__synthetics__v202309__test_settings__field_descriptors[20] =
+static const ProtobufCFieldDescriptor kentik__synthetics__v202309__test_settings__field_descriptors[21] =
 {
   {
     "hostname",
@@ -4175,6 +4220,18 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202309__test_settings
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "schedule",
+    21,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__TestSettings, schedule),
+    &kentik__synthetics__v202309__schedule_settings__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__synthetics__v202309__test_settings__field_indices_by_name[] = {
   2,   /* field[2] = agent */
@@ -4193,6 +4250,7 @@ static const unsigned kentik__synthetics__v202309__test_settings__field_indices_
   7,   /* field[7] = page_load */
   14,   /* field[14] = period */
   12,   /* field[12] = ping */
+  20,   /* field[20] = schedule */
   10,   /* field[10] = tasks */
   19,   /* field[19] = throughput */
   13,   /* field[13] = trace */
@@ -4201,7 +4259,7 @@ static const unsigned kentik__synthetics__v202309__test_settings__field_indices_
 static const ProtobufCIntRange kentik__synthetics__v202309__test_settings__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 20 }
+  { 0, 21 }
 };
 const ProtobufCMessageDescriptor kentik__synthetics__v202309__test_settings__descriptor =
 {
@@ -4211,7 +4269,7 @@ const ProtobufCMessageDescriptor kentik__synthetics__v202309__test_settings__des
   "Kentik__Synthetics__V202309__TestSettings",
   "kentik.synthetics.v202309",
   sizeof(Kentik__Synthetics__V202309__TestSettings),
-  20,
+  21,
   kentik__synthetics__v202309__test_settings__field_descriptors,
   kentik__synthetics__v202309__test_settings__field_indices_by_name,
   1,  kentik__synthetics__v202309__test_settings__number_ranges,
@@ -4525,6 +4583,70 @@ const ProtobufCMessageDescriptor kentik__synthetics__v202309__test_throughput_se
   kentik__synthetics__v202309__test_throughput_settings__field_indices_by_name,
   1,  kentik__synthetics__v202309__test_throughput_settings__number_ranges,
   (ProtobufCMessageInit) kentik__synthetics__v202309__test_throughput_settings__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__synthetics__v202309__schedule_settings__field_descriptors[3] =
+{
+  {
+    "enabled",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__ScheduleSettings, enabled),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "start",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT32,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__ScheduleSettings, start),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "end",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT32,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__ScheduleSettings, end),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__synthetics__v202309__schedule_settings__field_indices_by_name[] = {
+  0,   /* field[0] = enabled */
+  2,   /* field[2] = end */
+  1,   /* field[1] = start */
+};
+static const ProtobufCIntRange kentik__synthetics__v202309__schedule_settings__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 3 }
+};
+const ProtobufCMessageDescriptor kentik__synthetics__v202309__schedule_settings__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.synthetics.v202309.ScheduleSettings",
+  "ScheduleSettings",
+  "Kentik__Synthetics__V202309__ScheduleSettings",
+  "kentik.synthetics.v202309",
+  sizeof(Kentik__Synthetics__V202309__ScheduleSettings),
+  3,
+  kentik__synthetics__v202309__schedule_settings__field_descriptors,
+  kentik__synthetics__v202309__schedule_settings__field_indices_by_name,
+  1,  kentik__synthetics__v202309__schedule_settings__number_ranges,
+  (ProtobufCMessageInit) kentik__synthetics__v202309__schedule_settings__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
 static const ProtobufCFieldDescriptor kentik__synthetics__v202309__activation_settings__field_descriptors[4] =
