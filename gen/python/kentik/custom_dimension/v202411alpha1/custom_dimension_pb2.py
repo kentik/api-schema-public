@@ -18,7 +18,6 @@ from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__
 from protoc_gen_openapiv2.options import annotations_pb2 as protoc__gen__openapiv2_dot_options_dot_annotations__pb2
 from kentik.core.v202303 import annotations_pb2 as kentik_dot_core_dot_v202303_dot_annotations__pb2
 from kentik.user.v202211 import user_pb2 as kentik_dot_user_dot_v202211_dot_user__pb2
-from kentik.core.v202303 import timestamp_pb2 as kentik_dot_core_dot_v202303_dot_timestamp__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -27,9 +26,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Zagithub.com/kentik/api-schema-public/gen/go/kentik/custom_dimension/v202411alpha1;custom_dimension\222A\373\003\022\352\001\n\025Custom Dimensions API\022{# Overview\nThe Custom Dimensions API enables programmatic access to information on Custom Dimensions and their Populators.\n\"E\n\026Kentik API Engineering\022+https://github.com/kentik/api-schema-public2\rv202411alpha1*\001\0022\020application/json:\020application/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r\206\001\n[Knowledge base article outlining the purpose and usage of Custom Dimensions and Populators.\022\'https://kb.kentik.com/proto/v4/Cb06.htm',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n<kentik/custom_dimension/v202411alpha1/custom_dimension.proto\x12%kentik.custom_dimension.v202411alpha1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a%kentik/core/v202303/annotations.proto\x1a\x1ekentik/user/v202211/user.proto\x1a#kentik/core/v202303/timestamp.proto\"\xf8\x07\n\x0f\x43ustomDimension\x12\x44\n\x02id\x18\x01 \x01(\rB4\x92\x41-2+Unique identifier for the custom dimension.\xe2\x41\x01\x03R\x02id\x12\xa5\x01\n\x04name\x18\x02 \x01(\tB\x90\x01\x92\x41\x88\x01\x32\x85\x01The name of the custom dimension. Must start with \'c_\'. Valid characters: alphanumeric dashes and underscores. Length: min=1, max=20.\xe2\x41\x01\x02R\x04name\x12^\n\x04type\x18\x03 \x01(\tBJ\x92\x41\x43\x32\x41Type of the custom dimension (valid values: \'string\' or \'uint32\')\xe2\x41\x01\x02R\x04type\x12\xb5\x01\n\x0b\x64\x65scription\x18\x04 \x01(\tB\x92\x01\x92\x41\x8a\x01\x32\x87\x01The name to be displayed of the custom dimension. Valid characters: alphanumeric spaces, dashes and underscores. Length: min=2, max=30.\xe2\x41\x01\x02R\x0b\x64\x65scription\x12\x8c\x01\n\npopulators\x18\x05 \x03(\x0b\x32\x30.kentik.custom_dimension.v202411alpha1.PopulatorB:\x92\x41\x33\x32\x31Populators associated with this custom dimension.\xe2\x41\x01\x03R\npopulators\x12O\n\ncompany_id\x18\x06 \x01(\rB0\x92\x41)2\'The system-assigned ID of the customer.\xe2\x41\x01\x03R\tcompanyId\x12z\n\x0c\x63reated_date\x18\x07 \x01(\x0b\x32$.kentik.core.v202303.PseudoTimestampB1\x92\x41*2(Date-time of populator creation, in UTC.\xe2\x41\x01\x03R\x0b\x63reatedDate\x12\x82\x01\n\x0cupdated_date\x18\x08 \x01(\x0b\x32$.kentik.core.v202303.PseudoTimestampB9\x92\x41\x32\x32\x30\x44\x61te-time of most-recent populator edit, in UTC.\xe2\x41\x01\x03R\x0bupdatedDate\"\xca%\n\tPopulator\x12=\n\x02id\x18\x01 \x01(\rB-\x92\x41&2$Unique identifier for the populator.\xe2\x41\x01\x03R\x02id\x12\x94\x02\n\x05value\x18\x02 \x01(\tB\xfd\x01\x92\x41\xf9\x01\x32\xf6\x01The value of the dimension. When the custom dimension\'s type is \'string\' - Valid characters: alphanumeric, spaces, dashes and underscores. Length: min=1, max=128. When the custom dimension\'s type is \'uint32\' - Valid values: min=0, max=4294967295.R\x05value\x12k\n\tdirection\x18\x03 \x01(\tBM\x92\x41J2HThe direction of the populator. Valid values: \'src\', \'dst\', or \'either\'.R\tdirection\x12\xd4\x01\n\x0b\x64\x65vice_name\x18\x04 \x03(\tB\xb2\x01\x92\x41\xae\x01\x32\xab\x01\x44\x65vice names, IPs, or regular expressions. A match results when any specified device name matches the device name or IP address associated with a device sending flow data.R\ndeviceName\x12\xc0\x01\n\x0b\x64\x65vice_type\x18\x05 \x03(\tB\x9e\x01\x92\x41\x9a\x01\x32\x97\x01\x44\x65vice types or regular expressions. A match results when any specified device type matches the device_type associated with a device sending flow data.R\ndeviceType\x12\xa3\x01\n\x04site\x18\x06 \x03(\tB\x8e\x01\x92\x41\x8a\x01\x32\x87\x01Site names or regular expressions. A match results when any specified site matches the site associated with a device sending flow data.R\x04site\x12\xcb\x01\n\x0einterface_name\x18\x07 \x03(\tB\xa3\x01\x92\x41\x9f\x01\x32\x9c\x01Interface names or regular expressions. A match results when any specified interface name matches the name or description of an interface sending flow data.R\rinterfaceName\x12\xfa\x03\n\x04\x61\x64\x64r\x18\x08 \x03(\tB\xe5\x03\x92\x41\xe1\x03\x32\xde\x03IP addresses in IP/CIDR format. A match results when any specified IP address corresponds to a range of IP addresses in incoming flow. It allows IPv6 CIDRs. \'short form\' (e.g. 1::2/127) is allowed. If no CIDRs are specified in a tag, the tag will be matched against both incoming IPv4 and v6 flows. If CIDRs are given, the tag will only be matched against the given type of flow; in particular, if you only give IPv4 CIDRs, the tag will not match any IPv6 flows, and vice versa.R\x04\x61\x64\x64r\x12\x85\x01\n\x04port\x18\t \x03(\rBq\x92\x41n2lPorts (between 0 and 65535). A match results when any specified port matches a port number in incoming flow.R\x04port\x12\xfc\x01\n\ttcp_flags\x18\n \x01(\rB\xde\x01\x92\x41\xda\x01\x32\xd7\x01TCP flag: Numbers between 0 and 255 representing an 8-bit binary bit pattern corresponding to TCP flags. A match will result if the value in both the flow bit pattern and the bitmask is 1 at any of the eight places.R\x08tcpFlags\x12\xc0\x01\n\x08protocol\x18\x0b \x03(\rB\xa3\x01\x92\x41\x9f\x01\x32\x9c\x01Protocol numbers (between 0 and 255). A match results when any specified protocol number is the same as the protocol of the traffic represented by the flow.R\x08protocol\x12\xf4\x01\n\x03\x61sn\x18\x0c \x03(\rB\xe1\x01\x92\x41\xdd\x01\x32\xda\x01Last-hop (origin) ASN: ASNs (between 1 and 2^32-1=4294967295). A match results when any specified ASN is the same as the last ASN in the path in the routing table for either the source (SRC IP) or destination (DST IP).R\x03\x61sn\x12\xa1\x02\n\x0flasthop_as_name\x18\r \x03(\tB\xf8\x01\x92\x41\xf4\x01\x32\xf1\x01Last-hop (origin) AS Name: AS Names or regular expressions. A match results when any specified AS Name represents the name corresponding to the last ASN in the path in the routing table for either the source (SRC IP) or destination (DST IP).R\rlasthopAsName\x12\x9a\x01\n\x0bnexthop_asn\x18\x0e \x03(\rBy\x92\x41v2tNext-hop ASN. A match results when any specified ASN is the same as the ASN of the next hop router based on AS path.R\nnexthopAsn\x12\xdf\x01\n\x0fnexthop_as_name\x18\x0f \x03(\tB\xb6\x01\x92\x41\xb2\x01\x32\xaf\x01Next-hop AS Name: AS Names or regular expressions. A match results when any specified ASN represents the name corresponding to the ASN of the next hop router based on AS path.R\rnexthopAsName\x12\xa3\x01\n\x07nexthop\x18\x10 \x03(\tB\x88\x01\x92\x41\x84\x01\x32\x81\x01Next-hop IP: IPv4 and/or IPv6 CIDRs. A match results when any specified IP is within a range of specified IPv4 and/or IPv6 CIDRs.R\x07nexthop\x12\xbb\x02\n\nbgp_aspath\x18\x11 \x03(\tB\x9b\x02\x92\x41\x97\x02\x32\x94\x02\x42GP AS path: Numbers representing bgp aspath. A match results when any specified value is the same as the BGP AS-PATH in the route. Example: \'^3737 1212,_7801_,2906$\' would look for any of those 3 combinations in the AS path. Permitted characters []*:_^$.0123456789()+?,space-R\tbgpAspath\x12\xb8\x02\n\rbgp_community\x18\x12 \x03(\tB\x92\x02\x92\x41\x8e\x02\x32\x8b\x02\x42GP community: Numbers or regular expression representing BGP community (i.e. 2096:2212). A match results when any specified value is the same as the BGP community of the BGP route associated with incoming flow data. Permitted characters []*:_^$.0123456789()+?,space-R\x0c\x62gpCommunity\x12\x89\x01\n\x03mac\x18\x13 \x03(\tBw\x92\x41t2rMAC Addresses. A match results when any specified MAC Address matches source or destination Ethernet (L2) address.R\x03mac\x12\xaa\x01\n\x07\x63ountry\x18\x14 \x03(\tB\x8f\x01\x92\x41\x8b\x01\x32\x88\x01\x43ountry: Two-character country codes. A match results when any specified country code matches source or destination country of the flow.R\x07\x63ountry\x12V\n\x05vlans\x18\x15 \x03(\tB@\x92\x41=2;VLAN(s): Integers or ranges of integers between 0 and 4095.R\x05vlans\x12Z\n\x04user\x18\x16 \x01(\tBF\x92\x41?2=The system-assigned ID of the user who created the populator.\xe2\x41\x01\x03R\x04user\x12z\n\x0c\x63reated_date\x18\x17 \x01(\x0b\x32$.kentik.core.v202303.PseudoTimestampB1\x92\x41*2(Date-time of populator creation, in UTC.\xe2\x41\x01\x03R\x0b\x63reatedDate\x12\x82\x01\n\x0cupdated_date\x18\x18 \x01(\x0b\x32$.kentik.core.v202303.PseudoTimestampB9\x92\x41\x32\x32\x30\x44\x61te-time of most-recent populator edit, in UTC.\xe2\x41\x01\x03R\x0bupdatedDate\"\x1d\n\x1bListCustomDimensionsRequest\"v\n\x1cListCustomDimensionsResponse\x12V\n\ndimensions\x18\x01 \x03(\x0b\x32\x36.kentik.custom_dimension.v202411alpha1.CustomDimensionR\ndimensions\"O\n\x1dGetCustomDimensionInfoRequest\x12.\n\x13\x63ustom_dimension_id\x18\x01 \x01(\rR\x11\x63ustomDimensionId\"v\n\x1eGetCustomDimensionInfoResponse\x12T\n\tdimension\x18\x01 \x01(\x0b\x32\x36.kentik.custom_dimension.v202411alpha1.CustomDimensionR\tdimension\"t\n\x1c\x43reateCustomDimensionRequest\x12T\n\tdimension\x18\x01 \x01(\x0b\x32\x36.kentik.custom_dimension.v202411alpha1.CustomDimensionR\tdimension\"u\n\x1d\x43reateCustomDimensionResponse\x12T\n\tdimension\x18\x01 \x01(\x0b\x32\x36.kentik.custom_dimension.v202411alpha1.CustomDimensionR\tdimension\"\xa4\x01\n\x1cUpdateCustomDimensionRequest\x12.\n\x13\x63ustom_dimension_id\x18\x01 \x01(\rR\x11\x63ustomDimensionId\x12T\n\tdimension\x18\x02 \x01(\x0b\x32\x36.kentik.custom_dimension.v202411alpha1.CustomDimensionR\tdimension\"u\n\x1dUpdateCustomDimensionResponse\x12T\n\tdimension\x18\x01 \x01(\x0b\x32\x36.kentik.custom_dimension.v202411alpha1.CustomDimensionR\tdimension\"N\n\x1c\x44\x65leteCustomDimensionRequest\x12.\n\x13\x63ustom_dimension_id\x18\x01 \x01(\rR\x11\x63ustomDimensionId\"\x1f\n\x1d\x44\x65leteCustomDimensionResponse\"\x98\x01\n\x16\x43reatePopulatorRequest\x12.\n\x13\x63ustom_dimension_id\x18\x01 \x01(\rR\x11\x63ustomDimensionId\x12N\n\tpopulator\x18\x02 \x01(\x0b\x32\x30.kentik.custom_dimension.v202411alpha1.PopulatorR\tpopulator\"i\n\x17\x43reatePopulatorResponse\x12N\n\tpopulator\x18\x01 \x01(\x0b\x32\x30.kentik.custom_dimension.v202411alpha1.PopulatorR\tpopulator\"\xbb\x01\n\x16UpdatePopulatorRequest\x12.\n\x13\x63ustom_dimension_id\x18\x01 \x01(\rR\x11\x63ustomDimensionId\x12!\n\x0cpopulator_id\x18\x02 \x01(\rR\x0bpopulatorId\x12N\n\tpopulator\x18\x03 \x01(\x0b\x32\x30.kentik.custom_dimension.v202411alpha1.PopulatorR\tpopulator\"i\n\x17UpdatePopulatorResponse\x12N\n\tpopulator\x18\x01 \x01(\x0b\x32\x30.kentik.custom_dimension.v202411alpha1.PopulatorR\tpopulator\"k\n\x16\x44\x65letePopulatorRequest\x12.\n\x13\x63ustom_dimension_id\x18\x01 \x01(\rR\x11\x63ustomDimensionId\x12!\n\x0cpopulator_id\x18\x02 \x01(\rR\x0bpopulatorId\"\x19\n\x17\x44\x65letePopulatorResponse2\x8a\x18\n\x16\x43ustomDimensionService\x12\xee\x02\n\x14ListCustomDimensions\x12\x42.kentik.custom_dimension.v202411alpha1.ListCustomDimensionsRequest\x1a\x43.kentik.custom_dimension.v202411alpha1.ListCustomDimensionsResponse\"\xcc\x01\x92\x41\xa0\x01\x12\x16List Custom Dimensions\x1apReturns an array of custom dimension objects that each contain information about an individual custom dimension.*\x14ListCustomDimensions\x82\xd3\xe4\x93\x02\"\x12 /custom_dimensions/v202411alpha1\x12\xf9\x02\n\x16GetCustomDimensionInfo\x12\x44.kentik.custom_dimension.v202411alpha1.GetCustomDimensionInfoRequest\x1a\x45.kentik.custom_dimension.v202411alpha1.GetCustomDimensionInfoResponse\"\xd1\x01\x92\x41\x8f\x01\x12\x15\x43ustom Dimension Info\x1a^Returns a custom dimension object containing information about an individual custom dimension.*\x16GetCustomDimensionInfo\x82\xd3\xe4\x93\x02\x38\x12\x36/custom_dimensions/v202411alpha1/{custom_dimension_id}\x12\xea\x02\n\x15\x43reateCustomDimension\x12\x43.kentik.custom_dimension.v202411alpha1.CreateCustomDimensionRequest\x1a\x44.kentik.custom_dimension.v202411alpha1.CreateCustomDimensionResponse\"\xc5\x01\x92\x41\x9b\x01\x12\x17\x43reate Custom Dimension\x1aiCreates and returns a custom dimension object containing information about an individual custom dimension*\x15\x43reateCustomDimension\x82\xd3\xe4\x93\x02 \"\x13/v1/customdimension:\tdimension\x12\x95\x04\n\x15UpdateCustomDimension\x12\x43.kentik.custom_dimension.v202411alpha1.UpdateCustomDimensionRequest\x1a\x44.kentik.custom_dimension.v202411alpha1.UpdateCustomDimensionResponse\"\xf0\x02\x92\x41\xa3\x02\x12\x17Update Custom Dimension\x1a\xf0\x01Updates and returns a custom dimension object containing information about an individual custom dimension (see About Custom Dimensions). Populators are not sent back in the response body. To get them use \'Custom Dimension info\' API instead.*\x15UpdateCustomDimension\x82\xd3\xe4\x93\x02\x43\x1a\x36/custom_dimensions/v202411alpha1/{custom_dimension_id}:\tdimension\x12\xb3\x02\n\x15\x44\x65leteCustomDimension\x12\x43.kentik.custom_dimension.v202411alpha1.DeleteCustomDimensionRequest\x1a\x44.kentik.custom_dimension.v202411alpha1.DeleteCustomDimensionResponse\"\x8e\x01\x92\x41M\x12\x17\x44\x65lete Custom Dimension\x1a\x1b\x44\x65letes a custom dimension.*\x15\x44\x65leteCustomDimension\x82\xd3\xe4\x93\x02\x38*6/custom_dimensions/v202411alpha1/{custom_dimension_id}\x12\xeb\x02\n\x0f\x43reatePopulator\x12=.kentik.custom_dimension.v202411alpha1.CreatePopulatorRequest\x1a>.kentik.custom_dimension.v202411alpha1.CreatePopulatorResponse\"\xd8\x01\x92\x41\x81\x01\x12\x10\x43reate Populator\x1a\\Creates and returns a populator object containing information about an individual populator.*\x0f\x43reatePopulator\x82\xd3\xe4\x93\x02M\"@/custom_dimensions/v202411alpha1/{custom_dimension_id}/populator:\tpopulator\x12\xfa\x02\n\x0fUpdatePopulator\x12=.kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest\x1a>.kentik.custom_dimension.v202411alpha1.UpdatePopulatorResponse\"\xe7\x01\x92\x41\x81\x01\x12\x10Update Populator\x1a\\Updates and returns a populator object containing information about an individual populator.*\x0fUpdatePopulator\x82\xd3\xe4\x93\x02\\\x1aO/custom_dimensions/v202411alpha1/{custom_dimension_id}/populator/{populator_id}:\tpopulator\x12\xa6\x02\n\x0f\x44\x65letePopulator\x12=.kentik.custom_dimension.v202411alpha1.DeletePopulatorRequest\x1a>.kentik.custom_dimension.v202411alpha1.DeletePopulatorResponse\"\x93\x01\x92\x41\x39\x12\x10\x44\x65lete Populator\x1a\x14\x44\x65letes a populator.*\x0f\x44\x65letePopulator\x82\xd3\xe4\x93\x02Q*O/custom_dimensions/v202411alpha1/{custom_dimension_id}/populator/{populator_id}\x1a\x34\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\x16\x61\x64min.custom_dimension\x90\xd8\x02\x03\x42\xe2\x04Zagithub.com/kentik/api-schema-public/gen/go/kentik/custom_dimension/v202411alpha1;custom_dimension\x92\x41\xfb\x03\x12\xea\x01\n\x15\x43ustom Dimensions API\x12{# Overview\nThe Custom Dimensions API enables programmatic access to information on Custom Dimensions and their Populators.\n\"E\n\x16Kentik API Engineering\x12+https://github.com/kentik/api-schema-public2\rv202411alpha1*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r\x86\x01\n[Knowledge base article outlining the purpose and usage of Custom Dimensions and Populators.\x12\'https://kb.kentik.com/proto/v4/Cb06.htmb\x06proto3'
+  serialized_pb=b'\n<kentik/custom_dimension/v202411alpha1/custom_dimension.proto\x12%kentik.custom_dimension.v202411alpha1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a%kentik/core/v202303/annotations.proto\x1a\x1ekentik/user/v202211/user.proto\"\xe3\x07\n\x0f\x43ustomDimension\x12\x44\n\x02id\x18\x01 \x01(\rB4\x92\x41-2+Unique identifier for the custom dimension.\xe2\x41\x01\x03R\x02id\x12\xa5\x01\n\x04name\x18\x02 \x01(\tB\x90\x01\x92\x41\x88\x01\x32\x85\x01The name of the custom dimension. Must start with \'c_\'. Valid characters: alphanumeric dashes and underscores. Length: min=1, max=20.\xe2\x41\x01\x02R\x04name\x12^\n\x04type\x18\x03 \x01(\tBJ\x92\x41\x43\x32\x41Type of the custom dimension (valid values: \'string\' or \'uint32\')\xe2\x41\x01\x02R\x04type\x12\xb5\x01\n\x0b\x64\x65scription\x18\x04 \x01(\tB\x92\x01\x92\x41\x8a\x01\x32\x87\x01The name to be displayed of the custom dimension. Valid characters: alphanumeric spaces, dashes and underscores. Length: min=2, max=30.\xe2\x41\x01\x02R\x0b\x64\x65scription\x12\x8c\x01\n\npopulators\x18\x05 \x03(\x0b\x32\x30.kentik.custom_dimension.v202411alpha1.PopulatorB:\x92\x41\x33\x32\x31Populators associated with this custom dimension.\xe2\x41\x01\x03R\npopulators\x12O\n\ncompany_id\x18\x06 \x01(\rB0\x92\x41)2\'The system-assigned ID of the customer.\xe2\x41\x01\x03R\tcompanyId\x12p\n\x0c\x63reated_date\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.TimestampB1\x92\x41*2(Date-time of populator creation, in UTC.\xe2\x41\x01\x03R\x0b\x63reatedDate\x12x\n\x0cupdated_date\x18\x08 \x01(\x0b\x32\x1a.google.protobuf.TimestampB9\x92\x41\x32\x32\x30\x44\x61te-time of most-recent populator edit, in UTC.\xe2\x41\x01\x03R\x0bupdatedDate\"\xb5%\n\tPopulator\x12=\n\x02id\x18\x01 \x01(\rB-\x92\x41&2$Unique identifier for the populator.\xe2\x41\x01\x03R\x02id\x12\x94\x02\n\x05value\x18\x02 \x01(\tB\xfd\x01\x92\x41\xf9\x01\x32\xf6\x01The value of the dimension. When the custom dimension\'s type is \'string\' - Valid characters: alphanumeric, spaces, dashes and underscores. Length: min=1, max=128. When the custom dimension\'s type is \'uint32\' - Valid values: min=0, max=4294967295.R\x05value\x12k\n\tdirection\x18\x03 \x01(\tBM\x92\x41J2HThe direction of the populator. Valid values: \'src\', \'dst\', or \'either\'.R\tdirection\x12\xd4\x01\n\x0b\x64\x65vice_name\x18\x04 \x03(\tB\xb2\x01\x92\x41\xae\x01\x32\xab\x01\x44\x65vice names, IPs, or regular expressions. A match results when any specified device name matches the device name or IP address associated with a device sending flow data.R\ndeviceName\x12\xc0\x01\n\x0b\x64\x65vice_type\x18\x05 \x03(\tB\x9e\x01\x92\x41\x9a\x01\x32\x97\x01\x44\x65vice types or regular expressions. A match results when any specified device type matches the device_type associated with a device sending flow data.R\ndeviceType\x12\xa3\x01\n\x04site\x18\x06 \x03(\tB\x8e\x01\x92\x41\x8a\x01\x32\x87\x01Site names or regular expressions. A match results when any specified site matches the site associated with a device sending flow data.R\x04site\x12\xcb\x01\n\x0einterface_name\x18\x07 \x03(\tB\xa3\x01\x92\x41\x9f\x01\x32\x9c\x01Interface names or regular expressions. A match results when any specified interface name matches the name or description of an interface sending flow data.R\rinterfaceName\x12\xfa\x03\n\x04\x61\x64\x64r\x18\x08 \x03(\tB\xe5\x03\x92\x41\xe1\x03\x32\xde\x03IP addresses in IP/CIDR format. A match results when any specified IP address corresponds to a range of IP addresses in incoming flow. It allows IPv6 CIDRs. \'short form\' (e.g. 1::2/127) is allowed. If no CIDRs are specified in a tag, the tag will be matched against both incoming IPv4 and v6 flows. If CIDRs are given, the tag will only be matched against the given type of flow; in particular, if you only give IPv4 CIDRs, the tag will not match any IPv6 flows, and vice versa.R\x04\x61\x64\x64r\x12\x85\x01\n\x04port\x18\t \x03(\rBq\x92\x41n2lPorts (between 0 and 65535). A match results when any specified port matches a port number in incoming flow.R\x04port\x12\xfc\x01\n\ttcp_flags\x18\n \x01(\rB\xde\x01\x92\x41\xda\x01\x32\xd7\x01TCP flag: Numbers between 0 and 255 representing an 8-bit binary bit pattern corresponding to TCP flags. A match will result if the value in both the flow bit pattern and the bitmask is 1 at any of the eight places.R\x08tcpFlags\x12\xc0\x01\n\x08protocol\x18\x0b \x03(\rB\xa3\x01\x92\x41\x9f\x01\x32\x9c\x01Protocol numbers (between 0 and 255). A match results when any specified protocol number is the same as the protocol of the traffic represented by the flow.R\x08protocol\x12\xf4\x01\n\x03\x61sn\x18\x0c \x03(\rB\xe1\x01\x92\x41\xdd\x01\x32\xda\x01Last-hop (origin) ASN: ASNs (between 1 and 2^32-1=4294967295). A match results when any specified ASN is the same as the last ASN in the path in the routing table for either the source (SRC IP) or destination (DST IP).R\x03\x61sn\x12\xa1\x02\n\x0flasthop_as_name\x18\r \x03(\tB\xf8\x01\x92\x41\xf4\x01\x32\xf1\x01Last-hop (origin) AS Name: AS Names or regular expressions. A match results when any specified AS Name represents the name corresponding to the last ASN in the path in the routing table for either the source (SRC IP) or destination (DST IP).R\rlasthopAsName\x12\x9a\x01\n\x0bnexthop_asn\x18\x0e \x03(\rBy\x92\x41v2tNext-hop ASN. A match results when any specified ASN is the same as the ASN of the next hop router based on AS path.R\nnexthopAsn\x12\xdf\x01\n\x0fnexthop_as_name\x18\x0f \x03(\tB\xb6\x01\x92\x41\xb2\x01\x32\xaf\x01Next-hop AS Name: AS Names or regular expressions. A match results when any specified ASN represents the name corresponding to the ASN of the next hop router based on AS path.R\rnexthopAsName\x12\xa3\x01\n\x07nexthop\x18\x10 \x03(\tB\x88\x01\x92\x41\x84\x01\x32\x81\x01Next-hop IP: IPv4 and/or IPv6 CIDRs. A match results when any specified IP is within a range of specified IPv4 and/or IPv6 CIDRs.R\x07nexthop\x12\xbb\x02\n\nbgp_aspath\x18\x11 \x03(\tB\x9b\x02\x92\x41\x97\x02\x32\x94\x02\x42GP AS path: Numbers representing bgp aspath. A match results when any specified value is the same as the BGP AS-PATH in the route. Example: \'^3737 1212,_7801_,2906$\' would look for any of those 3 combinations in the AS path. Permitted characters []*:_^$.0123456789()+?,space-R\tbgpAspath\x12\xb8\x02\n\rbgp_community\x18\x12 \x03(\tB\x92\x02\x92\x41\x8e\x02\x32\x8b\x02\x42GP community: Numbers or regular expression representing BGP community (i.e. 2096:2212). A match results when any specified value is the same as the BGP community of the BGP route associated with incoming flow data. Permitted characters []*:_^$.0123456789()+?,space-R\x0c\x62gpCommunity\x12\x89\x01\n\x03mac\x18\x13 \x03(\tBw\x92\x41t2rMAC Addresses. A match results when any specified MAC Address matches source or destination Ethernet (L2) address.R\x03mac\x12\xaa\x01\n\x07\x63ountry\x18\x14 \x03(\tB\x8f\x01\x92\x41\x8b\x01\x32\x88\x01\x43ountry: Two-character country codes. A match results when any specified country code matches source or destination country of the flow.R\x07\x63ountry\x12V\n\x05vlans\x18\x15 \x03(\tB@\x92\x41=2;VLAN(s): Integers or ranges of integers between 0 and 4095.R\x05vlans\x12Z\n\x04user\x18\x16 \x01(\tBF\x92\x41?2=The system-assigned ID of the user who created the populator.\xe2\x41\x01\x03R\x04user\x12p\n\x0c\x63reated_date\x18\x17 \x01(\x0b\x32\x1a.google.protobuf.TimestampB1\x92\x41*2(Date-time of populator creation, in UTC.\xe2\x41\x01\x03R\x0b\x63reatedDate\x12x\n\x0cupdated_date\x18\x18 \x01(\x0b\x32\x1a.google.protobuf.TimestampB9\x92\x41\x32\x32\x30\x44\x61te-time of most-recent populator edit, in UTC.\xe2\x41\x01\x03R\x0bupdatedDate\"\x1d\n\x1bListCustomDimensionsRequest\"v\n\x1cListCustomDimensionsResponse\x12V\n\ndimensions\x18\x01 \x03(\x0b\x32\x36.kentik.custom_dimension.v202411alpha1.CustomDimensionR\ndimensions\"O\n\x1dGetCustomDimensionInfoRequest\x12.\n\x13\x63ustom_dimension_id\x18\x01 \x01(\rR\x11\x63ustomDimensionId\"v\n\x1eGetCustomDimensionInfoResponse\x12T\n\tdimension\x18\x01 \x01(\x0b\x32\x36.kentik.custom_dimension.v202411alpha1.CustomDimensionR\tdimension\"t\n\x1c\x43reateCustomDimensionRequest\x12T\n\tdimension\x18\x01 \x01(\x0b\x32\x36.kentik.custom_dimension.v202411alpha1.CustomDimensionR\tdimension\"u\n\x1d\x43reateCustomDimensionResponse\x12T\n\tdimension\x18\x01 \x01(\x0b\x32\x36.kentik.custom_dimension.v202411alpha1.CustomDimensionR\tdimension\"\xa4\x01\n\x1cUpdateCustomDimensionRequest\x12.\n\x13\x63ustom_dimension_id\x18\x01 \x01(\rR\x11\x63ustomDimensionId\x12T\n\tdimension\x18\x02 \x01(\x0b\x32\x36.kentik.custom_dimension.v202411alpha1.CustomDimensionR\tdimension\"u\n\x1dUpdateCustomDimensionResponse\x12T\n\tdimension\x18\x01 \x01(\x0b\x32\x36.kentik.custom_dimension.v202411alpha1.CustomDimensionR\tdimension\"N\n\x1c\x44\x65leteCustomDimensionRequest\x12.\n\x13\x63ustom_dimension_id\x18\x01 \x01(\rR\x11\x63ustomDimensionId\"\x1f\n\x1d\x44\x65leteCustomDimensionResponse\"\x98\x01\n\x16\x43reatePopulatorRequest\x12.\n\x13\x63ustom_dimension_id\x18\x01 \x01(\rR\x11\x63ustomDimensionId\x12N\n\tpopulator\x18\x02 \x01(\x0b\x32\x30.kentik.custom_dimension.v202411alpha1.PopulatorR\tpopulator\"i\n\x17\x43reatePopulatorResponse\x12N\n\tpopulator\x18\x01 \x01(\x0b\x32\x30.kentik.custom_dimension.v202411alpha1.PopulatorR\tpopulator\"\xbb\x01\n\x16UpdatePopulatorRequest\x12.\n\x13\x63ustom_dimension_id\x18\x01 \x01(\rR\x11\x63ustomDimensionId\x12!\n\x0cpopulator_id\x18\x02 \x01(\rR\x0bpopulatorId\x12N\n\tpopulator\x18\x03 \x01(\x0b\x32\x30.kentik.custom_dimension.v202411alpha1.PopulatorR\tpopulator\"i\n\x17UpdatePopulatorResponse\x12N\n\tpopulator\x18\x01 \x01(\x0b\x32\x30.kentik.custom_dimension.v202411alpha1.PopulatorR\tpopulator\"k\n\x16\x44\x65letePopulatorRequest\x12.\n\x13\x63ustom_dimension_id\x18\x01 \x01(\rR\x11\x63ustomDimensionId\x12!\n\x0cpopulator_id\x18\x02 \x01(\rR\x0bpopulatorId\"\x19\n\x17\x44\x65letePopulatorResponse2\x8a\x18\n\x16\x43ustomDimensionService\x12\xee\x02\n\x14ListCustomDimensions\x12\x42.kentik.custom_dimension.v202411alpha1.ListCustomDimensionsRequest\x1a\x43.kentik.custom_dimension.v202411alpha1.ListCustomDimensionsResponse\"\xcc\x01\x92\x41\xa0\x01\x12\x16List Custom Dimensions\x1apReturns an array of custom dimension objects that each contain information about an individual custom dimension.*\x14ListCustomDimensions\x82\xd3\xe4\x93\x02\"\x12 /custom_dimensions/v202411alpha1\x12\xf9\x02\n\x16GetCustomDimensionInfo\x12\x44.kentik.custom_dimension.v202411alpha1.GetCustomDimensionInfoRequest\x1a\x45.kentik.custom_dimension.v202411alpha1.GetCustomDimensionInfoResponse\"\xd1\x01\x92\x41\x8f\x01\x12\x15\x43ustom Dimension Info\x1a^Returns a custom dimension object containing information about an individual custom dimension.*\x16GetCustomDimensionInfo\x82\xd3\xe4\x93\x02\x38\x12\x36/custom_dimensions/v202411alpha1/{custom_dimension_id}\x12\xea\x02\n\x15\x43reateCustomDimension\x12\x43.kentik.custom_dimension.v202411alpha1.CreateCustomDimensionRequest\x1a\x44.kentik.custom_dimension.v202411alpha1.CreateCustomDimensionResponse\"\xc5\x01\x92\x41\x9b\x01\x12\x17\x43reate Custom Dimension\x1aiCreates and returns a custom dimension object containing information about an individual custom dimension*\x15\x43reateCustomDimension\x82\xd3\xe4\x93\x02 \"\x13/v1/customdimension:\tdimension\x12\x95\x04\n\x15UpdateCustomDimension\x12\x43.kentik.custom_dimension.v202411alpha1.UpdateCustomDimensionRequest\x1a\x44.kentik.custom_dimension.v202411alpha1.UpdateCustomDimensionResponse\"\xf0\x02\x92\x41\xa3\x02\x12\x17Update Custom Dimension\x1a\xf0\x01Updates and returns a custom dimension object containing information about an individual custom dimension (see About Custom Dimensions). Populators are not sent back in the response body. To get them use \'Custom Dimension info\' API instead.*\x15UpdateCustomDimension\x82\xd3\xe4\x93\x02\x43\x1a\x36/custom_dimensions/v202411alpha1/{custom_dimension_id}:\tdimension\x12\xb3\x02\n\x15\x44\x65leteCustomDimension\x12\x43.kentik.custom_dimension.v202411alpha1.DeleteCustomDimensionRequest\x1a\x44.kentik.custom_dimension.v202411alpha1.DeleteCustomDimensionResponse\"\x8e\x01\x92\x41M\x12\x17\x44\x65lete Custom Dimension\x1a\x1b\x44\x65letes a custom dimension.*\x15\x44\x65leteCustomDimension\x82\xd3\xe4\x93\x02\x38*6/custom_dimensions/v202411alpha1/{custom_dimension_id}\x12\xeb\x02\n\x0f\x43reatePopulator\x12=.kentik.custom_dimension.v202411alpha1.CreatePopulatorRequest\x1a>.kentik.custom_dimension.v202411alpha1.CreatePopulatorResponse\"\xd8\x01\x92\x41\x81\x01\x12\x10\x43reate Populator\x1a\\Creates and returns a populator object containing information about an individual populator.*\x0f\x43reatePopulator\x82\xd3\xe4\x93\x02M\"@/custom_dimensions/v202411alpha1/{custom_dimension_id}/populator:\tpopulator\x12\xfa\x02\n\x0fUpdatePopulator\x12=.kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest\x1a>.kentik.custom_dimension.v202411alpha1.UpdatePopulatorResponse\"\xe7\x01\x92\x41\x81\x01\x12\x10Update Populator\x1a\\Updates and returns a populator object containing information about an individual populator.*\x0fUpdatePopulator\x82\xd3\xe4\x93\x02\\\x1aO/custom_dimensions/v202411alpha1/{custom_dimension_id}/populator/{populator_id}:\tpopulator\x12\xa6\x02\n\x0f\x44\x65letePopulator\x12=.kentik.custom_dimension.v202411alpha1.DeletePopulatorRequest\x1a>.kentik.custom_dimension.v202411alpha1.DeletePopulatorResponse\"\x93\x01\x92\x41\x39\x12\x10\x44\x65lete Populator\x1a\x14\x44\x65letes a populator.*\x0f\x44\x65letePopulator\x82\xd3\xe4\x93\x02Q*O/custom_dimensions/v202411alpha1/{custom_dimension_id}/populator/{populator_id}\x1a\x34\xca\x41\x13grpc.api.kentik.com\xea\xd7\x02\x16\x61\x64min.custom_dimension\x90\xd8\x02\x03\x42\xe2\x04Zagithub.com/kentik/api-schema-public/gen/go/kentik/custom_dimension/v202411alpha1;custom_dimension\x92\x41\xfb\x03\x12\xea\x01\n\x15\x43ustom Dimensions API\x12{# Overview\nThe Custom Dimensions API enables programmatic access to information on Custom Dimensions and their Populators.\n\"E\n\x16Kentik API Engineering\x12+https://github.com/kentik/api-schema-public2\rv202411alpha1*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZD\n\x1e\n\x05\x65mail\x12\x15\x08\x02\x1a\x0fX-CH-Auth-Email \x02\n\"\n\x05token\x12\x19\x08\x02\x1a\x13X-CH-Auth-API-Token \x02\x62\x16\n\t\n\x05\x65mail\x12\x00\n\t\n\x05token\x12\x00r\x86\x01\n[Knowledge base article outlining the purpose and usage of Custom Dimensions and Populators.\x12\'https://kb.kentik.com/proto/v4/Cb06.htmb\x06proto3'
   ,
-  dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_api_dot_client__pb2.DESCRIPTOR,google_dot_api_dot_field__behavior__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,protoc__gen__openapiv2_dot_options_dot_annotations__pb2.DESCRIPTOR,kentik_dot_core_dot_v202303_dot_annotations__pb2.DESCRIPTOR,kentik_dot_user_dot_v202211_dot_user__pb2.DESCRIPTOR,kentik_dot_core_dot_v202303_dot_timestamp__pb2.DESCRIPTOR,])
+  dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_api_dot_client__pb2.DESCRIPTOR,google_dot_api_dot_field__behavior__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,protoc__gen__openapiv2_dot_options_dot_annotations__pb2.DESCRIPTOR,kentik_dot_core_dot_v202303_dot_annotations__pb2.DESCRIPTOR,kentik_dot_user_dot_v202211_dot_user__pb2.DESCRIPTOR,])
 
 
 
@@ -110,8 +109,8 @@ _CUSTOMDIMENSION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=381,
-  serialized_end=1397,
+  serialized_start=344,
+  serialized_end=1339,
 )
 
 
@@ -303,8 +302,8 @@ _POPULATOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1400,
-  serialized_end=6210,
+  serialized_start=1342,
+  serialized_end=6131,
 )
 
 
@@ -328,8 +327,8 @@ _LISTCUSTOMDIMENSIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6212,
-  serialized_end=6241,
+  serialized_start=6133,
+  serialized_end=6162,
 )
 
 
@@ -360,8 +359,8 @@ _LISTCUSTOMDIMENSIONSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6243,
-  serialized_end=6361,
+  serialized_start=6164,
+  serialized_end=6282,
 )
 
 
@@ -392,8 +391,8 @@ _GETCUSTOMDIMENSIONINFOREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6363,
-  serialized_end=6442,
+  serialized_start=6284,
+  serialized_end=6363,
 )
 
 
@@ -424,8 +423,8 @@ _GETCUSTOMDIMENSIONINFORESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6444,
-  serialized_end=6562,
+  serialized_start=6365,
+  serialized_end=6483,
 )
 
 
@@ -456,8 +455,8 @@ _CREATECUSTOMDIMENSIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6564,
-  serialized_end=6680,
+  serialized_start=6485,
+  serialized_end=6601,
 )
 
 
@@ -488,8 +487,8 @@ _CREATECUSTOMDIMENSIONRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6682,
-  serialized_end=6799,
+  serialized_start=6603,
+  serialized_end=6720,
 )
 
 
@@ -527,8 +526,8 @@ _UPDATECUSTOMDIMENSIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6802,
-  serialized_end=6966,
+  serialized_start=6723,
+  serialized_end=6887,
 )
 
 
@@ -559,8 +558,8 @@ _UPDATECUSTOMDIMENSIONRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6968,
-  serialized_end=7085,
+  serialized_start=6889,
+  serialized_end=7006,
 )
 
 
@@ -591,8 +590,8 @@ _DELETECUSTOMDIMENSIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7087,
-  serialized_end=7165,
+  serialized_start=7008,
+  serialized_end=7086,
 )
 
 
@@ -616,8 +615,8 @@ _DELETECUSTOMDIMENSIONRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7167,
-  serialized_end=7198,
+  serialized_start=7088,
+  serialized_end=7119,
 )
 
 
@@ -655,8 +654,8 @@ _CREATEPOPULATORREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7201,
-  serialized_end=7353,
+  serialized_start=7122,
+  serialized_end=7274,
 )
 
 
@@ -687,8 +686,8 @@ _CREATEPOPULATORRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7355,
-  serialized_end=7460,
+  serialized_start=7276,
+  serialized_end=7381,
 )
 
 
@@ -733,8 +732,8 @@ _UPDATEPOPULATORREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7463,
-  serialized_end=7650,
+  serialized_start=7384,
+  serialized_end=7571,
 )
 
 
@@ -765,8 +764,8 @@ _UPDATEPOPULATORRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7652,
-  serialized_end=7757,
+  serialized_start=7573,
+  serialized_end=7678,
 )
 
 
@@ -804,8 +803,8 @@ _DELETEPOPULATORREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7759,
-  serialized_end=7866,
+  serialized_start=7680,
+  serialized_end=7787,
 )
 
 
@@ -829,15 +828,15 @@ _DELETEPOPULATORRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7868,
-  serialized_end=7893,
+  serialized_start=7789,
+  serialized_end=7814,
 )
 
 _CUSTOMDIMENSION.fields_by_name['populators'].message_type = _POPULATOR
-_CUSTOMDIMENSION.fields_by_name['created_date'].message_type = kentik_dot_core_dot_v202303_dot_timestamp__pb2._PSEUDOTIMESTAMP
-_CUSTOMDIMENSION.fields_by_name['updated_date'].message_type = kentik_dot_core_dot_v202303_dot_timestamp__pb2._PSEUDOTIMESTAMP
-_POPULATOR.fields_by_name['created_date'].message_type = kentik_dot_core_dot_v202303_dot_timestamp__pb2._PSEUDOTIMESTAMP
-_POPULATOR.fields_by_name['updated_date'].message_type = kentik_dot_core_dot_v202303_dot_timestamp__pb2._PSEUDOTIMESTAMP
+_CUSTOMDIMENSION.fields_by_name['created_date'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
+_CUSTOMDIMENSION.fields_by_name['updated_date'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
+_POPULATOR.fields_by_name['created_date'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
+_POPULATOR.fields_by_name['updated_date'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _LISTCUSTOMDIMENSIONSRESPONSE.fields_by_name['dimensions'].message_type = _CUSTOMDIMENSION
 _GETCUSTOMDIMENSIONINFORESPONSE.fields_by_name['dimension'].message_type = _CUSTOMDIMENSION
 _CREATECUSTOMDIMENSIONREQUEST.fields_by_name['dimension'].message_type = _CUSTOMDIMENSION
@@ -1036,8 +1035,8 @@ _CUSTOMDIMENSIONSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=b'\312A\023grpc.api.kentik.com\352\327\002\026admin.custom_dimension\220\330\002\003',
   create_key=_descriptor._internal_create_key,
-  serialized_start=7896,
-  serialized_end=10978,
+  serialized_start=7817,
+  serialized_end=10899,
   methods=[
   _descriptor.MethodDescriptor(
     name='ListCustomDimensions',

@@ -39,7 +39,6 @@
 #include "protoc-gen-openapiv2/options/annotations.pb.h"
 #include "kentik/core/v202303/annotations.pb.h"
 #include "kentik/user/v202211/user.pb.h"
-#include "kentik/core/v202303/timestamp.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto
@@ -363,41 +362,41 @@ class CustomDimension PROTOBUF_FINAL :
   std::string* _internal_mutable_description();
   public:
 
-  // .kentik.core.v202303.PseudoTimestamp created_date = 7[json_name = "createdDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  // .google.protobuf.Timestamp created_date = 7[json_name = "createdDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   bool has_created_date() const;
   private:
   bool _internal_has_created_date() const;
   public:
   void clear_created_date();
-  const ::kentik::core::v202303::PseudoTimestamp& created_date() const;
-  ::kentik::core::v202303::PseudoTimestamp* release_created_date();
-  ::kentik::core::v202303::PseudoTimestamp* mutable_created_date();
-  void set_allocated_created_date(::kentik::core::v202303::PseudoTimestamp* created_date);
+  const PROTOBUF_NAMESPACE_ID::Timestamp& created_date() const;
+  PROTOBUF_NAMESPACE_ID::Timestamp* release_created_date();
+  PROTOBUF_NAMESPACE_ID::Timestamp* mutable_created_date();
+  void set_allocated_created_date(PROTOBUF_NAMESPACE_ID::Timestamp* created_date);
   private:
-  const ::kentik::core::v202303::PseudoTimestamp& _internal_created_date() const;
-  ::kentik::core::v202303::PseudoTimestamp* _internal_mutable_created_date();
+  const PROTOBUF_NAMESPACE_ID::Timestamp& _internal_created_date() const;
+  PROTOBUF_NAMESPACE_ID::Timestamp* _internal_mutable_created_date();
   public:
   void unsafe_arena_set_allocated_created_date(
-      ::kentik::core::v202303::PseudoTimestamp* created_date);
-  ::kentik::core::v202303::PseudoTimestamp* unsafe_arena_release_created_date();
+      PROTOBUF_NAMESPACE_ID::Timestamp* created_date);
+  PROTOBUF_NAMESPACE_ID::Timestamp* unsafe_arena_release_created_date();
 
-  // .kentik.core.v202303.PseudoTimestamp updated_date = 8[json_name = "updatedDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  // .google.protobuf.Timestamp updated_date = 8[json_name = "updatedDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   bool has_updated_date() const;
   private:
   bool _internal_has_updated_date() const;
   public:
   void clear_updated_date();
-  const ::kentik::core::v202303::PseudoTimestamp& updated_date() const;
-  ::kentik::core::v202303::PseudoTimestamp* release_updated_date();
-  ::kentik::core::v202303::PseudoTimestamp* mutable_updated_date();
-  void set_allocated_updated_date(::kentik::core::v202303::PseudoTimestamp* updated_date);
+  const PROTOBUF_NAMESPACE_ID::Timestamp& updated_date() const;
+  PROTOBUF_NAMESPACE_ID::Timestamp* release_updated_date();
+  PROTOBUF_NAMESPACE_ID::Timestamp* mutable_updated_date();
+  void set_allocated_updated_date(PROTOBUF_NAMESPACE_ID::Timestamp* updated_date);
   private:
-  const ::kentik::core::v202303::PseudoTimestamp& _internal_updated_date() const;
-  ::kentik::core::v202303::PseudoTimestamp* _internal_mutable_updated_date();
+  const PROTOBUF_NAMESPACE_ID::Timestamp& _internal_updated_date() const;
+  PROTOBUF_NAMESPACE_ID::Timestamp* _internal_mutable_updated_date();
   public:
   void unsafe_arena_set_allocated_updated_date(
-      ::kentik::core::v202303::PseudoTimestamp* updated_date);
-  ::kentik::core::v202303::PseudoTimestamp* unsafe_arena_release_updated_date();
+      PROTOBUF_NAMESPACE_ID::Timestamp* updated_date);
+  PROTOBUF_NAMESPACE_ID::Timestamp* unsafe_arena_release_updated_date();
 
   // uint32 id = 1[json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   void clear_id();
@@ -428,8 +427,8 @@ class CustomDimension PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr type_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr description_;
-  ::kentik::core::v202303::PseudoTimestamp* created_date_;
-  ::kentik::core::v202303::PseudoTimestamp* updated_date_;
+  PROTOBUF_NAMESPACE_ID::Timestamp* created_date_;
+  PROTOBUF_NAMESPACE_ID::Timestamp* updated_date_;
   ::PROTOBUF_NAMESPACE_ID::uint32 id_;
   ::PROTOBUF_NAMESPACE_ID::uint32 company_id_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
@@ -1050,41 +1049,41 @@ class Populator PROTOBUF_FINAL :
   std::string* _internal_mutable_user();
   public:
 
-  // .kentik.core.v202303.PseudoTimestamp created_date = 23[json_name = "createdDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  // .google.protobuf.Timestamp created_date = 23[json_name = "createdDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   bool has_created_date() const;
   private:
   bool _internal_has_created_date() const;
   public:
   void clear_created_date();
-  const ::kentik::core::v202303::PseudoTimestamp& created_date() const;
-  ::kentik::core::v202303::PseudoTimestamp* release_created_date();
-  ::kentik::core::v202303::PseudoTimestamp* mutable_created_date();
-  void set_allocated_created_date(::kentik::core::v202303::PseudoTimestamp* created_date);
+  const PROTOBUF_NAMESPACE_ID::Timestamp& created_date() const;
+  PROTOBUF_NAMESPACE_ID::Timestamp* release_created_date();
+  PROTOBUF_NAMESPACE_ID::Timestamp* mutable_created_date();
+  void set_allocated_created_date(PROTOBUF_NAMESPACE_ID::Timestamp* created_date);
   private:
-  const ::kentik::core::v202303::PseudoTimestamp& _internal_created_date() const;
-  ::kentik::core::v202303::PseudoTimestamp* _internal_mutable_created_date();
+  const PROTOBUF_NAMESPACE_ID::Timestamp& _internal_created_date() const;
+  PROTOBUF_NAMESPACE_ID::Timestamp* _internal_mutable_created_date();
   public:
   void unsafe_arena_set_allocated_created_date(
-      ::kentik::core::v202303::PseudoTimestamp* created_date);
-  ::kentik::core::v202303::PseudoTimestamp* unsafe_arena_release_created_date();
+      PROTOBUF_NAMESPACE_ID::Timestamp* created_date);
+  PROTOBUF_NAMESPACE_ID::Timestamp* unsafe_arena_release_created_date();
 
-  // .kentik.core.v202303.PseudoTimestamp updated_date = 24[json_name = "updatedDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  // .google.protobuf.Timestamp updated_date = 24[json_name = "updatedDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   bool has_updated_date() const;
   private:
   bool _internal_has_updated_date() const;
   public:
   void clear_updated_date();
-  const ::kentik::core::v202303::PseudoTimestamp& updated_date() const;
-  ::kentik::core::v202303::PseudoTimestamp* release_updated_date();
-  ::kentik::core::v202303::PseudoTimestamp* mutable_updated_date();
-  void set_allocated_updated_date(::kentik::core::v202303::PseudoTimestamp* updated_date);
+  const PROTOBUF_NAMESPACE_ID::Timestamp& updated_date() const;
+  PROTOBUF_NAMESPACE_ID::Timestamp* release_updated_date();
+  PROTOBUF_NAMESPACE_ID::Timestamp* mutable_updated_date();
+  void set_allocated_updated_date(PROTOBUF_NAMESPACE_ID::Timestamp* updated_date);
   private:
-  const ::kentik::core::v202303::PseudoTimestamp& _internal_updated_date() const;
-  ::kentik::core::v202303::PseudoTimestamp* _internal_mutable_updated_date();
+  const PROTOBUF_NAMESPACE_ID::Timestamp& _internal_updated_date() const;
+  PROTOBUF_NAMESPACE_ID::Timestamp* _internal_mutable_updated_date();
   public:
   void unsafe_arena_set_allocated_updated_date(
-      ::kentik::core::v202303::PseudoTimestamp* updated_date);
-  ::kentik::core::v202303::PseudoTimestamp* unsafe_arena_release_updated_date();
+      PROTOBUF_NAMESPACE_ID::Timestamp* updated_date);
+  PROTOBUF_NAMESPACE_ID::Timestamp* unsafe_arena_release_updated_date();
 
   // uint32 id = 1[json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   void clear_id();
@@ -1135,8 +1134,8 @@ class Populator PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr value_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr direction_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr user_;
-  ::kentik::core::v202303::PseudoTimestamp* created_date_;
-  ::kentik::core::v202303::PseudoTimestamp* updated_date_;
+  PROTOBUF_NAMESPACE_ID::Timestamp* created_date_;
+  PROTOBUF_NAMESPACE_ID::Timestamp* updated_date_;
   ::PROTOBUF_NAMESPACE_ID::uint32 id_;
   ::PROTOBUF_NAMESPACE_ID::uint32 tcp_flags_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
@@ -3773,24 +3772,24 @@ inline void CustomDimension::set_company_id(::PROTOBUF_NAMESPACE_ID::uint32 valu
   // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.CustomDimension.company_id)
 }
 
-// .kentik.core.v202303.PseudoTimestamp created_date = 7[json_name = "createdDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+// .google.protobuf.Timestamp created_date = 7[json_name = "createdDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
 inline bool CustomDimension::_internal_has_created_date() const {
   return this != internal_default_instance() && created_date_ != nullptr;
 }
 inline bool CustomDimension::has_created_date() const {
   return _internal_has_created_date();
 }
-inline const ::kentik::core::v202303::PseudoTimestamp& CustomDimension::_internal_created_date() const {
-  const ::kentik::core::v202303::PseudoTimestamp* p = created_date_;
-  return p != nullptr ? *p : *reinterpret_cast<const ::kentik::core::v202303::PseudoTimestamp*>(
-      &::kentik::core::v202303::_PseudoTimestamp_default_instance_);
+inline const PROTOBUF_NAMESPACE_ID::Timestamp& CustomDimension::_internal_created_date() const {
+  const PROTOBUF_NAMESPACE_ID::Timestamp* p = created_date_;
+  return p != nullptr ? *p : *reinterpret_cast<const PROTOBUF_NAMESPACE_ID::Timestamp*>(
+      &PROTOBUF_NAMESPACE_ID::_Timestamp_default_instance_);
 }
-inline const ::kentik::core::v202303::PseudoTimestamp& CustomDimension::created_date() const {
+inline const PROTOBUF_NAMESPACE_ID::Timestamp& CustomDimension::created_date() const {
   // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.CustomDimension.created_date)
   return _internal_created_date();
 }
 inline void CustomDimension::unsafe_arena_set_allocated_created_date(
-    ::kentik::core::v202303::PseudoTimestamp* created_date) {
+    PROTOBUF_NAMESPACE_ID::Timestamp* created_date) {
   if (GetArena() == nullptr) {
     delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(created_date_);
   }
@@ -3802,33 +3801,33 @@ inline void CustomDimension::unsafe_arena_set_allocated_created_date(
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.custom_dimension.v202411alpha1.CustomDimension.created_date)
 }
-inline ::kentik::core::v202303::PseudoTimestamp* CustomDimension::release_created_date() {
+inline PROTOBUF_NAMESPACE_ID::Timestamp* CustomDimension::release_created_date() {
   auto temp = unsafe_arena_release_created_date();
   if (GetArena() != nullptr) {
     temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
   }
   return temp;
 }
-inline ::kentik::core::v202303::PseudoTimestamp* CustomDimension::unsafe_arena_release_created_date() {
+inline PROTOBUF_NAMESPACE_ID::Timestamp* CustomDimension::unsafe_arena_release_created_date() {
   // @@protoc_insertion_point(field_release:kentik.custom_dimension.v202411alpha1.CustomDimension.created_date)
   
-  ::kentik::core::v202303::PseudoTimestamp* temp = created_date_;
+  PROTOBUF_NAMESPACE_ID::Timestamp* temp = created_date_;
   created_date_ = nullptr;
   return temp;
 }
-inline ::kentik::core::v202303::PseudoTimestamp* CustomDimension::_internal_mutable_created_date() {
+inline PROTOBUF_NAMESPACE_ID::Timestamp* CustomDimension::_internal_mutable_created_date() {
   
   if (created_date_ == nullptr) {
-    auto* p = CreateMaybeMessage<::kentik::core::v202303::PseudoTimestamp>(GetArena());
+    auto* p = CreateMaybeMessage<PROTOBUF_NAMESPACE_ID::Timestamp>(GetArena());
     created_date_ = p;
   }
   return created_date_;
 }
-inline ::kentik::core::v202303::PseudoTimestamp* CustomDimension::mutable_created_date() {
+inline PROTOBUF_NAMESPACE_ID::Timestamp* CustomDimension::mutable_created_date() {
   // @@protoc_insertion_point(field_mutable:kentik.custom_dimension.v202411alpha1.CustomDimension.created_date)
   return _internal_mutable_created_date();
 }
-inline void CustomDimension::set_allocated_created_date(::kentik::core::v202303::PseudoTimestamp* created_date) {
+inline void CustomDimension::set_allocated_created_date(PROTOBUF_NAMESPACE_ID::Timestamp* created_date) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
   if (message_arena == nullptr) {
     delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(created_date_);
@@ -3848,24 +3847,24 @@ inline void CustomDimension::set_allocated_created_date(::kentik::core::v202303:
   // @@protoc_insertion_point(field_set_allocated:kentik.custom_dimension.v202411alpha1.CustomDimension.created_date)
 }
 
-// .kentik.core.v202303.PseudoTimestamp updated_date = 8[json_name = "updatedDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+// .google.protobuf.Timestamp updated_date = 8[json_name = "updatedDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
 inline bool CustomDimension::_internal_has_updated_date() const {
   return this != internal_default_instance() && updated_date_ != nullptr;
 }
 inline bool CustomDimension::has_updated_date() const {
   return _internal_has_updated_date();
 }
-inline const ::kentik::core::v202303::PseudoTimestamp& CustomDimension::_internal_updated_date() const {
-  const ::kentik::core::v202303::PseudoTimestamp* p = updated_date_;
-  return p != nullptr ? *p : *reinterpret_cast<const ::kentik::core::v202303::PseudoTimestamp*>(
-      &::kentik::core::v202303::_PseudoTimestamp_default_instance_);
+inline const PROTOBUF_NAMESPACE_ID::Timestamp& CustomDimension::_internal_updated_date() const {
+  const PROTOBUF_NAMESPACE_ID::Timestamp* p = updated_date_;
+  return p != nullptr ? *p : *reinterpret_cast<const PROTOBUF_NAMESPACE_ID::Timestamp*>(
+      &PROTOBUF_NAMESPACE_ID::_Timestamp_default_instance_);
 }
-inline const ::kentik::core::v202303::PseudoTimestamp& CustomDimension::updated_date() const {
+inline const PROTOBUF_NAMESPACE_ID::Timestamp& CustomDimension::updated_date() const {
   // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.CustomDimension.updated_date)
   return _internal_updated_date();
 }
 inline void CustomDimension::unsafe_arena_set_allocated_updated_date(
-    ::kentik::core::v202303::PseudoTimestamp* updated_date) {
+    PROTOBUF_NAMESPACE_ID::Timestamp* updated_date) {
   if (GetArena() == nullptr) {
     delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(updated_date_);
   }
@@ -3877,33 +3876,33 @@ inline void CustomDimension::unsafe_arena_set_allocated_updated_date(
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.custom_dimension.v202411alpha1.CustomDimension.updated_date)
 }
-inline ::kentik::core::v202303::PseudoTimestamp* CustomDimension::release_updated_date() {
+inline PROTOBUF_NAMESPACE_ID::Timestamp* CustomDimension::release_updated_date() {
   auto temp = unsafe_arena_release_updated_date();
   if (GetArena() != nullptr) {
     temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
   }
   return temp;
 }
-inline ::kentik::core::v202303::PseudoTimestamp* CustomDimension::unsafe_arena_release_updated_date() {
+inline PROTOBUF_NAMESPACE_ID::Timestamp* CustomDimension::unsafe_arena_release_updated_date() {
   // @@protoc_insertion_point(field_release:kentik.custom_dimension.v202411alpha1.CustomDimension.updated_date)
   
-  ::kentik::core::v202303::PseudoTimestamp* temp = updated_date_;
+  PROTOBUF_NAMESPACE_ID::Timestamp* temp = updated_date_;
   updated_date_ = nullptr;
   return temp;
 }
-inline ::kentik::core::v202303::PseudoTimestamp* CustomDimension::_internal_mutable_updated_date() {
+inline PROTOBUF_NAMESPACE_ID::Timestamp* CustomDimension::_internal_mutable_updated_date() {
   
   if (updated_date_ == nullptr) {
-    auto* p = CreateMaybeMessage<::kentik::core::v202303::PseudoTimestamp>(GetArena());
+    auto* p = CreateMaybeMessage<PROTOBUF_NAMESPACE_ID::Timestamp>(GetArena());
     updated_date_ = p;
   }
   return updated_date_;
 }
-inline ::kentik::core::v202303::PseudoTimestamp* CustomDimension::mutable_updated_date() {
+inline PROTOBUF_NAMESPACE_ID::Timestamp* CustomDimension::mutable_updated_date() {
   // @@protoc_insertion_point(field_mutable:kentik.custom_dimension.v202411alpha1.CustomDimension.updated_date)
   return _internal_mutable_updated_date();
 }
-inline void CustomDimension::set_allocated_updated_date(::kentik::core::v202303::PseudoTimestamp* updated_date) {
+inline void CustomDimension::set_allocated_updated_date(PROTOBUF_NAMESPACE_ID::Timestamp* updated_date) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
   if (message_arena == nullptr) {
     delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(updated_date_);
@@ -5360,24 +5359,24 @@ inline void Populator::unsafe_arena_set_allocated_user(
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.custom_dimension.v202411alpha1.Populator.user)
 }
 
-// .kentik.core.v202303.PseudoTimestamp created_date = 23[json_name = "createdDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+// .google.protobuf.Timestamp created_date = 23[json_name = "createdDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
 inline bool Populator::_internal_has_created_date() const {
   return this != internal_default_instance() && created_date_ != nullptr;
 }
 inline bool Populator::has_created_date() const {
   return _internal_has_created_date();
 }
-inline const ::kentik::core::v202303::PseudoTimestamp& Populator::_internal_created_date() const {
-  const ::kentik::core::v202303::PseudoTimestamp* p = created_date_;
-  return p != nullptr ? *p : *reinterpret_cast<const ::kentik::core::v202303::PseudoTimestamp*>(
-      &::kentik::core::v202303::_PseudoTimestamp_default_instance_);
+inline const PROTOBUF_NAMESPACE_ID::Timestamp& Populator::_internal_created_date() const {
+  const PROTOBUF_NAMESPACE_ID::Timestamp* p = created_date_;
+  return p != nullptr ? *p : *reinterpret_cast<const PROTOBUF_NAMESPACE_ID::Timestamp*>(
+      &PROTOBUF_NAMESPACE_ID::_Timestamp_default_instance_);
 }
-inline const ::kentik::core::v202303::PseudoTimestamp& Populator::created_date() const {
+inline const PROTOBUF_NAMESPACE_ID::Timestamp& Populator::created_date() const {
   // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.Populator.created_date)
   return _internal_created_date();
 }
 inline void Populator::unsafe_arena_set_allocated_created_date(
-    ::kentik::core::v202303::PseudoTimestamp* created_date) {
+    PROTOBUF_NAMESPACE_ID::Timestamp* created_date) {
   if (GetArena() == nullptr) {
     delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(created_date_);
   }
@@ -5389,33 +5388,33 @@ inline void Populator::unsafe_arena_set_allocated_created_date(
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.custom_dimension.v202411alpha1.Populator.created_date)
 }
-inline ::kentik::core::v202303::PseudoTimestamp* Populator::release_created_date() {
+inline PROTOBUF_NAMESPACE_ID::Timestamp* Populator::release_created_date() {
   auto temp = unsafe_arena_release_created_date();
   if (GetArena() != nullptr) {
     temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
   }
   return temp;
 }
-inline ::kentik::core::v202303::PseudoTimestamp* Populator::unsafe_arena_release_created_date() {
+inline PROTOBUF_NAMESPACE_ID::Timestamp* Populator::unsafe_arena_release_created_date() {
   // @@protoc_insertion_point(field_release:kentik.custom_dimension.v202411alpha1.Populator.created_date)
   
-  ::kentik::core::v202303::PseudoTimestamp* temp = created_date_;
+  PROTOBUF_NAMESPACE_ID::Timestamp* temp = created_date_;
   created_date_ = nullptr;
   return temp;
 }
-inline ::kentik::core::v202303::PseudoTimestamp* Populator::_internal_mutable_created_date() {
+inline PROTOBUF_NAMESPACE_ID::Timestamp* Populator::_internal_mutable_created_date() {
   
   if (created_date_ == nullptr) {
-    auto* p = CreateMaybeMessage<::kentik::core::v202303::PseudoTimestamp>(GetArena());
+    auto* p = CreateMaybeMessage<PROTOBUF_NAMESPACE_ID::Timestamp>(GetArena());
     created_date_ = p;
   }
   return created_date_;
 }
-inline ::kentik::core::v202303::PseudoTimestamp* Populator::mutable_created_date() {
+inline PROTOBUF_NAMESPACE_ID::Timestamp* Populator::mutable_created_date() {
   // @@protoc_insertion_point(field_mutable:kentik.custom_dimension.v202411alpha1.Populator.created_date)
   return _internal_mutable_created_date();
 }
-inline void Populator::set_allocated_created_date(::kentik::core::v202303::PseudoTimestamp* created_date) {
+inline void Populator::set_allocated_created_date(PROTOBUF_NAMESPACE_ID::Timestamp* created_date) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
   if (message_arena == nullptr) {
     delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(created_date_);
@@ -5435,24 +5434,24 @@ inline void Populator::set_allocated_created_date(::kentik::core::v202303::Pseud
   // @@protoc_insertion_point(field_set_allocated:kentik.custom_dimension.v202411alpha1.Populator.created_date)
 }
 
-// .kentik.core.v202303.PseudoTimestamp updated_date = 24[json_name = "updatedDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+// .google.protobuf.Timestamp updated_date = 24[json_name = "updatedDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
 inline bool Populator::_internal_has_updated_date() const {
   return this != internal_default_instance() && updated_date_ != nullptr;
 }
 inline bool Populator::has_updated_date() const {
   return _internal_has_updated_date();
 }
-inline const ::kentik::core::v202303::PseudoTimestamp& Populator::_internal_updated_date() const {
-  const ::kentik::core::v202303::PseudoTimestamp* p = updated_date_;
-  return p != nullptr ? *p : *reinterpret_cast<const ::kentik::core::v202303::PseudoTimestamp*>(
-      &::kentik::core::v202303::_PseudoTimestamp_default_instance_);
+inline const PROTOBUF_NAMESPACE_ID::Timestamp& Populator::_internal_updated_date() const {
+  const PROTOBUF_NAMESPACE_ID::Timestamp* p = updated_date_;
+  return p != nullptr ? *p : *reinterpret_cast<const PROTOBUF_NAMESPACE_ID::Timestamp*>(
+      &PROTOBUF_NAMESPACE_ID::_Timestamp_default_instance_);
 }
-inline const ::kentik::core::v202303::PseudoTimestamp& Populator::updated_date() const {
+inline const PROTOBUF_NAMESPACE_ID::Timestamp& Populator::updated_date() const {
   // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.Populator.updated_date)
   return _internal_updated_date();
 }
 inline void Populator::unsafe_arena_set_allocated_updated_date(
-    ::kentik::core::v202303::PseudoTimestamp* updated_date) {
+    PROTOBUF_NAMESPACE_ID::Timestamp* updated_date) {
   if (GetArena() == nullptr) {
     delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(updated_date_);
   }
@@ -5464,33 +5463,33 @@ inline void Populator::unsafe_arena_set_allocated_updated_date(
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.custom_dimension.v202411alpha1.Populator.updated_date)
 }
-inline ::kentik::core::v202303::PseudoTimestamp* Populator::release_updated_date() {
+inline PROTOBUF_NAMESPACE_ID::Timestamp* Populator::release_updated_date() {
   auto temp = unsafe_arena_release_updated_date();
   if (GetArena() != nullptr) {
     temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
   }
   return temp;
 }
-inline ::kentik::core::v202303::PseudoTimestamp* Populator::unsafe_arena_release_updated_date() {
+inline PROTOBUF_NAMESPACE_ID::Timestamp* Populator::unsafe_arena_release_updated_date() {
   // @@protoc_insertion_point(field_release:kentik.custom_dimension.v202411alpha1.Populator.updated_date)
   
-  ::kentik::core::v202303::PseudoTimestamp* temp = updated_date_;
+  PROTOBUF_NAMESPACE_ID::Timestamp* temp = updated_date_;
   updated_date_ = nullptr;
   return temp;
 }
-inline ::kentik::core::v202303::PseudoTimestamp* Populator::_internal_mutable_updated_date() {
+inline PROTOBUF_NAMESPACE_ID::Timestamp* Populator::_internal_mutable_updated_date() {
   
   if (updated_date_ == nullptr) {
-    auto* p = CreateMaybeMessage<::kentik::core::v202303::PseudoTimestamp>(GetArena());
+    auto* p = CreateMaybeMessage<PROTOBUF_NAMESPACE_ID::Timestamp>(GetArena());
     updated_date_ = p;
   }
   return updated_date_;
 }
-inline ::kentik::core::v202303::PseudoTimestamp* Populator::mutable_updated_date() {
+inline PROTOBUF_NAMESPACE_ID::Timestamp* Populator::mutable_updated_date() {
   // @@protoc_insertion_point(field_mutable:kentik.custom_dimension.v202411alpha1.Populator.updated_date)
   return _internal_mutable_updated_date();
 }
-inline void Populator::set_allocated_updated_date(::kentik::core::v202303::PseudoTimestamp* updated_date) {
+inline void Populator::set_allocated_updated_date(PROTOBUF_NAMESPACE_ID::Timestamp* updated_date) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
   if (message_arena == nullptr) {
     delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(updated_date_);

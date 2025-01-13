@@ -16,7 +16,6 @@ import google.protobuf.timestamp_pb2
 import protoc_gen_openapiv2.options.annotations_pb2
 import kentik.core.v202303.annotations_pb2
 import kentik.user.v202211.user_pb2
-import kentik.core.v202303.timestamp_pb2
 import kentik.custom_dimension.v202411alpha1.custom_dimension_pb2
 
 

@@ -14,7 +14,7 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
-extern PROTOBUF_INTERNAL_EXPORT_kentik_2fcore_2fv202303_2ftimestamp_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_PseudoTimestamp_kentik_2fcore_2fv202303_2ftimestamp_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_google_2fprotobuf_2ftimestamp_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Timestamp_google_2fprotobuf_2ftimestamp_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_CustomDimension_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Populator_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto;
 namespace kentik {
@@ -169,7 +169,7 @@ static void InitDefaultsscc_info_CustomDimension_kentik_2fcustom_5fdimension_2fv
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_CustomDimension_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_CustomDimension_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto}, {
       &scc_info_Populator_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto.base,
-      &scc_info_PseudoTimestamp_kentik_2fcore_2fv202303_2ftimestamp_2eproto.base,}};
+      &scc_info_Timestamp_google_2fprotobuf_2ftimestamp_2eproto.base,}};
 
 static void InitDefaultsscc_info_DeleteCustomDimensionRequest_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -298,7 +298,7 @@ static void InitDefaultsscc_info_Populator_kentik_2fcustom_5fdimension_2fv202411
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Populator_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_Populator_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto}, {
-      &scc_info_PseudoTimestamp_kentik_2fcore_2fv202303_2ftimestamp_2eproto.base,}};
+      &scc_info_Timestamp_google_2fprotobuf_2ftimestamp_2eproto.base,}};
 
 static void InitDefaultsscc_info_UpdateCustomDimensionRequest_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -557,296 +557,293 @@ const char descriptor_table_protodef_kentik_2fcustom_5fdimension_2fv202411alpha1
   "otobuf/timestamp.proto\032.protoc-gen-opena"
   "piv2/options/annotations.proto\032%kentik/c"
   "ore/v202303/annotations.proto\032\036kentik/us"
-  "er/v202211/user.proto\032#kentik/core/v2023"
-  "03/timestamp.proto\"\370\007\n\017CustomDimension\022D"
-  "\n\002id\030\001 \001(\rB4\222A-2+Unique identifier for t"
-  "he custom dimension.\342A\001\003R\002id\022\245\001\n\004name\030\002 "
-  "\001(\tB\220\001\222A\210\0012\205\001The name of the custom dime"
-  "nsion. Must start with \'c_\'. Valid chara"
-  "cters: alphanumeric dashes and underscor"
-  "es. Length: min=1, max=20.\342A\001\002R\004name\022^\n\004"
-  "type\030\003 \001(\tBJ\222AC2AType of the custom dime"
-  "nsion (valid values: \'string\' or \'uint32"
-  "\')\342A\001\002R\004type\022\265\001\n\013description\030\004 \001(\tB\222\001\222A\212"
-  "\0012\207\001The name to be displayed of the cust"
-  "om dimension. Valid characters: alphanum"
-  "eric spaces, dashes and underscores. Len"
-  "gth: min=2, max=30.\342A\001\002R\013description\022\214\001\n"
-  "\npopulators\030\005 \003(\01320.kentik.custom_dimens"
-  "ion.v202411alpha1.PopulatorB:\222A321Popula"
-  "tors associated with this custom dimensi"
-  "on.\342A\001\003R\npopulators\022O\n\ncompany_id\030\006 \001(\rB"
-  "0\222A)2\'The system-assigned ID of the cust"
-  "omer.\342A\001\003R\tcompanyId\022z\n\014created_date\030\007 \001"
-  "(\0132$.kentik.core.v202303.PseudoTimestamp"
-  "B1\222A*2(Date-time of populator creation, "
-  "in UTC.\342A\001\003R\013createdDate\022\202\001\n\014updated_dat"
-  "e\030\010 \001(\0132$.kentik.core.v202303.PseudoTime"
-  "stampB9\222A220Date-time of most-recent pop"
-  "ulator edit, in UTC.\342A\001\003R\013updatedDate\"\312%"
-  "\n\tPopulator\022=\n\002id\030\001 \001(\rB-\222A&2$Unique ide"
-  "ntifier for the populator.\342A\001\003R\002id\022\224\002\n\005v"
-  "alue\030\002 \001(\tB\375\001\222A\371\0012\366\001The value of the dim"
-  "ension. When the custom dimension\'s type"
-  " is \'string\' - Valid characters: alphanu"
-  "meric, spaces, dashes and underscores. L"
-  "ength: min=1, max=128. When the custom d"
-  "imension\'s type is \'uint32\' - Valid valu"
-  "es: min=0, max=4294967295.R\005value\022k\n\tdir"
-  "ection\030\003 \001(\tBM\222AJ2HThe direction of the "
-  "populator. Valid values: \'src\', \'dst\', o"
-  "r \'either\'.R\tdirection\022\324\001\n\013device_name\030\004"
-  " \003(\tB\262\001\222A\256\0012\253\001Device names, IPs, or regu"
-  "lar expressions. A match results when an"
-  "y specified device name matches the devi"
-  "ce name or IP address associated with a "
-  "device sending flow data.R\ndeviceName\022\300\001"
-  "\n\013device_type\030\005 \003(\tB\236\001\222A\232\0012\227\001Device type"
-  "s or regular expressions. A match result"
-  "s when any specified device type matches"
-  " the device_type associated with a devic"
-  "e sending flow data.R\ndeviceType\022\243\001\n\004sit"
-  "e\030\006 \003(\tB\216\001\222A\212\0012\207\001Site names or regular e"
-  "xpressions. A match results when any spe"
-  "cified site matches the site associated "
-  "with a device sending flow data.R\004site\022\313"
-  "\001\n\016interface_name\030\007 \003(\tB\243\001\222A\237\0012\234\001Interfa"
-  "ce names or regular expressions. A match"
-  " results when any specified interface na"
-  "me matches the name or description of an"
-  " interface sending flow data.R\rinterface"
-  "Name\022\372\003\n\004addr\030\010 \003(\tB\345\003\222A\341\0032\336\003IP addresse"
-  "s in IP/CIDR format. A match results whe"
-  "n any specified IP address corresponds t"
-  "o a range of IP addresses in incoming fl"
-  "ow. It allows IPv6 CIDRs. \'short form\' ("
-  "e.g. 1::2/127) is allowed. If no CIDRs a"
-  "re specified in a tag, the tag will be m"
-  "atched against both incoming IPv4 and v6"
-  " flows. If CIDRs are given, the tag will"
-  " only be matched against the given type "
-  "of flow; in particular, if you only give"
-  " IPv4 CIDRs, the tag will not match any "
-  "IPv6 flows, and vice versa.R\004addr\022\205\001\n\004po"
-  "rt\030\t \003(\rBq\222An2lPorts (between 0 and 6553"
-  "5). A match results when any specified p"
-  "ort matches a port number in incoming fl"
-  "ow.R\004port\022\374\001\n\ttcp_flags\030\n \001(\rB\336\001\222A\332\0012\327\001T"
-  "CP flag: Numbers between 0 and 255 repre"
-  "senting an 8-bit binary bit pattern corr"
-  "esponding to TCP flags. A match will res"
-  "ult if the value in both the flow bit pa"
-  "ttern and the bitmask is 1 at any of the"
-  " eight places.R\010tcpFlags\022\300\001\n\010protocol\030\013 "
-  "\003(\rB\243\001\222A\237\0012\234\001Protocol numbers (between 0"
-  " and 255). A match results when any spec"
-  "ified protocol number is the same as the"
-  " protocol of the traffic represented by "
-  "the flow.R\010protocol\022\364\001\n\003asn\030\014 \003(\rB\341\001\222A\335\001"
-  "2\332\001Last-hop (origin) ASN: ASNs (between "
-  "1 and 2^32-1=4294967295). A match result"
-  "s when any specified ASN is the same as "
-  "the last ASN in the path in the routing "
-  "table for either the source (SRC IP) or "
-  "destination (DST IP).R\003asn\022\241\002\n\017lasthop_a"
-  "s_name\030\r \003(\tB\370\001\222A\364\0012\361\001Last-hop (origin) "
-  "AS Name: AS Names or regular expressions"
-  ". A match results when any specified AS "
-  "Name represents the name corresponding t"
-  "o the last ASN in the path in the routin"
-  "g table for either the source (SRC IP) o"
-  "r destination (DST IP).R\rlasthopAsName\022\232"
-  "\001\n\013nexthop_asn\030\016 \003(\rBy\222Av2tNext-hop ASN."
-  " A match results when any specified ASN "
-  "is the same as the ASN of the next hop r"
-  "outer based on AS path.R\nnexthopAsn\022\337\001\n\017"
-  "nexthop_as_name\030\017 \003(\tB\266\001\222A\262\0012\257\001Next-hop "
-  "AS Name: AS Names or regular expressions"
-  ". A match results when any specified ASN"
-  " represents the name corresponding to th"
-  "e ASN of the next hop router based on AS"
-  " path.R\rnexthopAsName\022\243\001\n\007nexthop\030\020 \003(\tB"
-  "\210\001\222A\204\0012\201\001Next-hop IP: IPv4 and/or IPv6 C"
-  "IDRs. A match results when any specified"
-  " IP is within a range of specified IPv4 "
-  "and/or IPv6 CIDRs.R\007nexthop\022\273\002\n\nbgp_aspa"
-  "th\030\021 \003(\tB\233\002\222A\227\0022\224\002BGP AS path: Numbers r"
-  "epresenting bgp aspath. A match results "
-  "when any specified value is the same as "
-  "the BGP AS-PATH in the route. Example: \'"
-  "^3737 1212,_7801_,2906$\' would look for "
-  "any of those 3 combinations in the AS pa"
-  "th. Permitted characters []*:_^$.0123456"
-  "789()+\?,space-R\tbgpAspath\022\270\002\n\rbgp_commun"
-  "ity\030\022 \003(\tB\222\002\222A\216\0022\213\002BGP community: Number"
-  "s or regular expression representing BGP"
-  " community (i.e. 2096:2212). A match res"
-  "ults when any specified value is the sam"
-  "e as the BGP community of the BGP route "
-  "associated with incoming flow data. Perm"
-  "itted characters []*:_^$.0123456789()+\?,"
-  "space-R\014bgpCommunity\022\211\001\n\003mac\030\023 \003(\tBw\222At2"
-  "rMAC Addresses. A match results when any"
-  " specified MAC Address matches source or"
-  " destination Ethernet (L2) address.R\003mac"
-  "\022\252\001\n\007country\030\024 \003(\tB\217\001\222A\213\0012\210\001Country: Two"
-  "-character country codes. A match result"
-  "s when any specified country code matche"
-  "s source or destination country of the f"
-  "low.R\007country\022V\n\005vlans\030\025 \003(\tB@\222A=2;VLAN("
-  "s): Integers or ranges of integers betwe"
-  "en 0 and 4095.R\005vlans\022Z\n\004user\030\026 \001(\tBF\222A\?"
-  "2=The system-assigned ID of the user who"
-  " created the populator.\342A\001\003R\004user\022z\n\014cre"
-  "ated_date\030\027 \001(\0132$.kentik.core.v202303.Ps"
-  "eudoTimestampB1\222A*2(Date-time of populat"
-  "or creation, in UTC.\342A\001\003R\013createdDate\022\202\001"
-  "\n\014updated_date\030\030 \001(\0132$.kentik.core.v2023"
-  "03.PseudoTimestampB9\222A220Date-time of mo"
-  "st-recent populator edit, in UTC.\342A\001\003R\013u"
-  "pdatedDate\"\035\n\033ListCustomDimensionsReques"
-  "t\"v\n\034ListCustomDimensionsResponse\022V\n\ndim"
-  "ensions\030\001 \003(\01326.kentik.custom_dimension."
-  "v202411alpha1.CustomDimensionR\ndimension"
-  "s\"O\n\035GetCustomDimensionInfoRequest\022.\n\023cu"
-  "stom_dimension_id\030\001 \001(\rR\021customDimension"
-  "Id\"v\n\036GetCustomDimensionInfoResponse\022T\n\t"
-  "dimension\030\001 \001(\01326.kentik.custom_dimensio"
-  "n.v202411alpha1.CustomDimensionR\tdimensi"
-  "on\"t\n\034CreateCustomDimensionRequest\022T\n\tdi"
+  "er/v202211/user.proto\"\343\007\n\017CustomDimensio"
+  "n\022D\n\002id\030\001 \001(\rB4\222A-2+Unique identifier fo"
+  "r the custom dimension.\342A\001\003R\002id\022\245\001\n\004name"
+  "\030\002 \001(\tB\220\001\222A\210\0012\205\001The name of the custom d"
+  "imension. Must start with \'c_\'. Valid ch"
+  "aracters: alphanumeric dashes and unders"
+  "cores. Length: min=1, max=20.\342A\001\002R\004name\022"
+  "^\n\004type\030\003 \001(\tBJ\222AC2AType of the custom d"
+  "imension (valid values: \'string\' or \'uin"
+  "t32\')\342A\001\002R\004type\022\265\001\n\013description\030\004 \001(\tB\222\001"
+  "\222A\212\0012\207\001The name to be displayed of the c"
+  "ustom dimension. Valid characters: alpha"
+  "numeric spaces, dashes and underscores. "
+  "Length: min=2, max=30.\342A\001\002R\013description\022"
+  "\214\001\n\npopulators\030\005 \003(\01320.kentik.custom_dim"
+  "ension.v202411alpha1.PopulatorB:\222A321Pop"
+  "ulators associated with this custom dime"
+  "nsion.\342A\001\003R\npopulators\022O\n\ncompany_id\030\006 \001"
+  "(\rB0\222A)2\'The system-assigned ID of the c"
+  "ustomer.\342A\001\003R\tcompanyId\022p\n\014created_date\030"
+  "\007 \001(\0132\032.google.protobuf.TimestampB1\222A*2("
+  "Date-time of populator creation, in UTC."
+  "\342A\001\003R\013createdDate\022x\n\014updated_date\030\010 \001(\0132"
+  "\032.google.protobuf.TimestampB9\222A220Date-t"
+  "ime of most-recent populator edit, in UT"
+  "C.\342A\001\003R\013updatedDate\"\265%\n\tPopulator\022=\n\002id\030"
+  "\001 \001(\rB-\222A&2$Unique identifier for the po"
+  "pulator.\342A\001\003R\002id\022\224\002\n\005value\030\002 \001(\tB\375\001\222A\371\0012"
+  "\366\001The value of the dimension. When the c"
+  "ustom dimension\'s type is \'string\' - Val"
+  "id characters: alphanumeric, spaces, das"
+  "hes and underscores. Length: min=1, max="
+  "128. When the custom dimension\'s type is"
+  " \'uint32\' - Valid values: min=0, max=429"
+  "4967295.R\005value\022k\n\tdirection\030\003 \001(\tBM\222AJ2"
+  "HThe direction of the populator. Valid v"
+  "alues: \'src\', \'dst\', or \'either\'.R\tdirec"
+  "tion\022\324\001\n\013device_name\030\004 \003(\tB\262\001\222A\256\0012\253\001Devi"
+  "ce names, IPs, or regular expressions. A"
+  " match results when any specified device"
+  " name matches the device name or IP addr"
+  "ess associated with a device sending flo"
+  "w data.R\ndeviceName\022\300\001\n\013device_type\030\005 \003("
+  "\tB\236\001\222A\232\0012\227\001Device types or regular expre"
+  "ssions. A match results when any specifi"
+  "ed device type matches the device_type a"
+  "ssociated with a device sending flow dat"
+  "a.R\ndeviceType\022\243\001\n\004site\030\006 \003(\tB\216\001\222A\212\0012\207\001S"
+  "ite names or regular expressions. A matc"
+  "h results when any specified site matche"
+  "s the site associated with a device send"
+  "ing flow data.R\004site\022\313\001\n\016interface_name\030"
+  "\007 \003(\tB\243\001\222A\237\0012\234\001Interface names or regula"
+  "r expressions. A match results when any "
+  "specified interface name matches the nam"
+  "e or description of an interface sending"
+  " flow data.R\rinterfaceName\022\372\003\n\004addr\030\010 \003("
+  "\tB\345\003\222A\341\0032\336\003IP addresses in IP/CIDR forma"
+  "t. A match results when any specified IP"
+  " address corresponds to a range of IP ad"
+  "dresses in incoming flow. It allows IPv6"
+  " CIDRs. \'short form\' (e.g. 1::2/127) is "
+  "allowed. If no CIDRs are specified in a "
+  "tag, the tag will be matched against bot"
+  "h incoming IPv4 and v6 flows. If CIDRs a"
+  "re given, the tag will only be matched a"
+  "gainst the given type of flow; in partic"
+  "ular, if you only give IPv4 CIDRs, the t"
+  "ag will not match any IPv6 flows, and vi"
+  "ce versa.R\004addr\022\205\001\n\004port\030\t \003(\rBq\222An2lPor"
+  "ts (between 0 and 65535). A match result"
+  "s when any specified port matches a port"
+  " number in incoming flow.R\004port\022\374\001\n\ttcp_"
+  "flags\030\n \001(\rB\336\001\222A\332\0012\327\001TCP flag: Numbers b"
+  "etween 0 and 255 representing an 8-bit b"
+  "inary bit pattern corresponding to TCP f"
+  "lags. A match will result if the value i"
+  "n both the flow bit pattern and the bitm"
+  "ask is 1 at any of the eight places.R\010tc"
+  "pFlags\022\300\001\n\010protocol\030\013 \003(\rB\243\001\222A\237\0012\234\001Proto"
+  "col numbers (between 0 and 255). A match"
+  " results when any specified protocol num"
+  "ber is the same as the protocol of the t"
+  "raffic represented by the flow.R\010protoco"
+  "l\022\364\001\n\003asn\030\014 \003(\rB\341\001\222A\335\0012\332\001Last-hop (origi"
+  "n) ASN: ASNs (between 1 and 2^32-1=42949"
+  "67295). A match results when any specifi"
+  "ed ASN is the same as the last ASN in th"
+  "e path in the routing table for either t"
+  "he source (SRC IP) or destination (DST I"
+  "P).R\003asn\022\241\002\n\017lasthop_as_name\030\r \003(\tB\370\001\222A\364"
+  "\0012\361\001Last-hop (origin) AS Name: AS Names "
+  "or regular expressions. A match results "
+  "when any specified AS Name represents th"
+  "e name corresponding to the last ASN in "
+  "the path in the routing table for either"
+  " the source (SRC IP) or destination (DST"
+  " IP).R\rlasthopAsName\022\232\001\n\013nexthop_asn\030\016 \003"
+  "(\rBy\222Av2tNext-hop ASN. A match results w"
+  "hen any specified ASN is the same as the"
+  " ASN of the next hop router based on AS "
+  "path.R\nnexthopAsn\022\337\001\n\017nexthop_as_name\030\017 "
+  "\003(\tB\266\001\222A\262\0012\257\001Next-hop AS Name: AS Names "
+  "or regular expressions. A match results "
+  "when any specified ASN represents the na"
+  "me corresponding to the ASN of the next "
+  "hop router based on AS path.R\rnexthopAsN"
+  "ame\022\243\001\n\007nexthop\030\020 \003(\tB\210\001\222A\204\0012\201\001Next-hop "
+  "IP: IPv4 and/or IPv6 CIDRs. A match resu"
+  "lts when any specified IP is within a ra"
+  "nge of specified IPv4 and/or IPv6 CIDRs."
+  "R\007nexthop\022\273\002\n\nbgp_aspath\030\021 \003(\tB\233\002\222A\227\0022\224\002"
+  "BGP AS path: Numbers representing bgp as"
+  "path. A match results when any specified"
+  " value is the same as the BGP AS-PATH in"
+  " the route. Example: \'^3737 1212,_7801_,"
+  "2906$\' would look for any of those 3 com"
+  "binations in the AS path. Permitted char"
+  "acters []*:_^$.0123456789()+\?,space-R\tbg"
+  "pAspath\022\270\002\n\rbgp_community\030\022 \003(\tB\222\002\222A\216\0022\213"
+  "\002BGP community: Numbers or regular expre"
+  "ssion representing BGP community (i.e. 2"
+  "096:2212). A match results when any spec"
+  "ified value is the same as the BGP commu"
+  "nity of the BGP route associated with in"
+  "coming flow data. Permitted characters ["
+  "]*:_^$.0123456789()+\?,space-R\014bgpCommuni"
+  "ty\022\211\001\n\003mac\030\023 \003(\tBw\222At2rMAC Addresses. A "
+  "match results when any specified MAC Add"
+  "ress matches source or destination Ether"
+  "net (L2) address.R\003mac\022\252\001\n\007country\030\024 \003(\t"
+  "B\217\001\222A\213\0012\210\001Country: Two-character country"
+  " codes. A match results when any specifi"
+  "ed country code matches source or destin"
+  "ation country of the flow.R\007country\022V\n\005v"
+  "lans\030\025 \003(\tB@\222A=2;VLAN(s): Integers or ra"
+  "nges of integers between 0 and 4095.R\005vl"
+  "ans\022Z\n\004user\030\026 \001(\tBF\222A\?2=The system-assig"
+  "ned ID of the user who created the popul"
+  "ator.\342A\001\003R\004user\022p\n\014created_date\030\027 \001(\0132\032."
+  "google.protobuf.TimestampB1\222A*2(Date-tim"
+  "e of populator creation, in UTC.\342A\001\003R\013cr"
+  "eatedDate\022x\n\014updated_date\030\030 \001(\0132\032.google"
+  ".protobuf.TimestampB9\222A220Date-time of m"
+  "ost-recent populator edit, in UTC.\342A\001\003R\013"
+  "updatedDate\"\035\n\033ListCustomDimensionsReque"
+  "st\"v\n\034ListCustomDimensionsResponse\022V\n\ndi"
+  "mensions\030\001 \003(\01326.kentik.custom_dimension"
+  ".v202411alpha1.CustomDimensionR\ndimensio"
+  "ns\"O\n\035GetCustomDimensionInfoRequest\022.\n\023c"
+  "ustom_dimension_id\030\001 \001(\rR\021customDimensio"
+  "nId\"v\n\036GetCustomDimensionInfoResponse\022T\n"
+  "\tdimension\030\001 \001(\01326.kentik.custom_dimensi"
+  "on.v202411alpha1.CustomDimensionR\tdimens"
+  "ion\"t\n\034CreateCustomDimensionRequest\022T\n\td"
+  "imension\030\001 \001(\01326.kentik.custom_dimension"
+  ".v202411alpha1.CustomDimensionR\tdimensio"
+  "n\"u\n\035CreateCustomDimensionResponse\022T\n\tdi"
   "mension\030\001 \001(\01326.kentik.custom_dimension."
   "v202411alpha1.CustomDimensionR\tdimension"
-  "\"u\n\035CreateCustomDimensionResponse\022T\n\tdim"
-  "ension\030\001 \001(\01326.kentik.custom_dimension.v"
-  "202411alpha1.CustomDimensionR\tdimension\""
-  "\244\001\n\034UpdateCustomDimensionRequest\022.\n\023cust"
-  "om_dimension_id\030\001 \001(\rR\021customDimensionId"
-  "\022T\n\tdimension\030\002 \001(\01326.kentik.custom_dime"
+  "\"\244\001\n\034UpdateCustomDimensionRequest\022.\n\023cus"
+  "tom_dimension_id\030\001 \001(\rR\021customDimensionI"
+  "d\022T\n\tdimension\030\002 \001(\01326.kentik.custom_dim"
+  "ension.v202411alpha1.CustomDimensionR\tdi"
+  "mension\"u\n\035UpdateCustomDimensionResponse"
+  "\022T\n\tdimension\030\001 \001(\01326.kentik.custom_dime"
   "nsion.v202411alpha1.CustomDimensionR\tdim"
-  "ension\"u\n\035UpdateCustomDimensionResponse\022"
-  "T\n\tdimension\030\001 \001(\01326.kentik.custom_dimen"
-  "sion.v202411alpha1.CustomDimensionR\tdime"
-  "nsion\"N\n\034DeleteCustomDimensionRequest\022.\n"
-  "\023custom_dimension_id\030\001 \001(\rR\021customDimens"
-  "ionId\"\037\n\035DeleteCustomDimensionResponse\"\230"
-  "\001\n\026CreatePopulatorRequest\022.\n\023custom_dime"
-  "nsion_id\030\001 \001(\rR\021customDimensionId\022N\n\tpop"
-  "ulator\030\002 \001(\01320.kentik.custom_dimension.v"
-  "202411alpha1.PopulatorR\tpopulator\"i\n\027Cre"
-  "atePopulatorResponse\022N\n\tpopulator\030\001 \001(\0132"
-  "0.kentik.custom_dimension.v202411alpha1."
-  "PopulatorR\tpopulator\"\273\001\n\026UpdatePopulator"
-  "Request\022.\n\023custom_dimension_id\030\001 \001(\rR\021cu"
-  "stomDimensionId\022!\n\014populator_id\030\002 \001(\rR\013p"
-  "opulatorId\022N\n\tpopulator\030\003 \001(\01320.kentik.c"
-  "ustom_dimension.v202411alpha1.PopulatorR"
-  "\tpopulator\"i\n\027UpdatePopulatorResponse\022N\n"
-  "\tpopulator\030\001 \001(\01320.kentik.custom_dimensi"
-  "on.v202411alpha1.PopulatorR\tpopulator\"k\n"
-  "\026DeletePopulatorRequest\022.\n\023custom_dimens"
-  "ion_id\030\001 \001(\rR\021customDimensionId\022!\n\014popul"
-  "ator_id\030\002 \001(\rR\013populatorId\"\031\n\027DeletePopu"
-  "latorResponse2\212\030\n\026CustomDimensionService"
-  "\022\356\002\n\024ListCustomDimensions\022B.kentik.custo"
-  "m_dimension.v202411alpha1.ListCustomDime"
-  "nsionsRequest\032C.kentik.custom_dimension."
-  "v202411alpha1.ListCustomDimensionsRespon"
-  "se\"\314\001\222A\240\001\022\026List Custom Dimensions\032pRetur"
-  "ns an array of custom dimension objects "
-  "that each contain information about an i"
-  "ndividual custom dimension.*\024ListCustomD"
-  "imensions\202\323\344\223\002\"\022 /custom_dimensions/v202"
-  "411alpha1\022\371\002\n\026GetCustomDimensionInfo\022D.k"
-  "entik.custom_dimension.v202411alpha1.Get"
-  "CustomDimensionInfoRequest\032E.kentik.cust"
-  "om_dimension.v202411alpha1.GetCustomDime"
-  "nsionInfoResponse\"\321\001\222A\217\001\022\025Custom Dimensi"
-  "on Info\032^Returns a custom dimension obje"
-  "ct containing information about an indiv"
-  "idual custom dimension.*\026GetCustomDimens"
-  "ionInfo\202\323\344\223\0028\0226/custom_dimensions/v20241"
-  "1alpha1/{custom_dimension_id}\022\352\002\n\025Create"
-  "CustomDimension\022C.kentik.custom_dimensio"
-  "n.v202411alpha1.CreateCustomDimensionReq"
-  "uest\032D.kentik.custom_dimension.v202411al"
-  "pha1.CreateCustomDimensionResponse\"\305\001\222A\233"
-  "\001\022\027Create Custom Dimension\032iCreates and "
-  "returns a custom dimension object contai"
-  "ning information about an individual cus"
-  "tom dimension*\025CreateCustomDimension\202\323\344\223"
-  "\002 \"\023/v1/customdimension:\tdimension\022\225\004\n\025U"
-  "pdateCustomDimension\022C.kentik.custom_dim"
-  "ension.v202411alpha1.UpdateCustomDimensi"
-  "onRequest\032D.kentik.custom_dimension.v202"
-  "411alpha1.UpdateCustomDimensionResponse\""
-  "\360\002\222A\243\002\022\027Update Custom Dimension\032\360\001Update"
-  "s and returns a custom dimension object "
-  "containing information about an individu"
-  "al custom dimension (see About Custom Di"
-  "mensions). Populators are not sent back "
-  "in the response body. To get them use \'C"
-  "ustom Dimension info\' API instead.*\025Upda"
-  "teCustomDimension\202\323\344\223\002C\0326/custom_dimensi"
-  "ons/v202411alpha1/{custom_dimension_id}:"
-  "\tdimension\022\263\002\n\025DeleteCustomDimension\022C.k"
-  "entik.custom_dimension.v202411alpha1.Del"
-  "eteCustomDimensionRequest\032D.kentik.custo"
-  "m_dimension.v202411alpha1.DeleteCustomDi"
-  "mensionResponse\"\216\001\222AM\022\027Delete Custom Dim"
-  "ension\032\033Deletes a custom dimension.*\025Del"
-  "eteCustomDimension\202\323\344\223\0028*6/custom_dimens"
+  "ension\"N\n\034DeleteCustomDimensionRequest\022."
+  "\n\023custom_dimension_id\030\001 \001(\rR\021customDimen"
+  "sionId\"\037\n\035DeleteCustomDimensionResponse\""
+  "\230\001\n\026CreatePopulatorRequest\022.\n\023custom_dim"
+  "ension_id\030\001 \001(\rR\021customDimensionId\022N\n\tpo"
+  "pulator\030\002 \001(\01320.kentik.custom_dimension."
+  "v202411alpha1.PopulatorR\tpopulator\"i\n\027Cr"
+  "eatePopulatorResponse\022N\n\tpopulator\030\001 \001(\013"
+  "20.kentik.custom_dimension.v202411alpha1"
+  ".PopulatorR\tpopulator\"\273\001\n\026UpdatePopulato"
+  "rRequest\022.\n\023custom_dimension_id\030\001 \001(\rR\021c"
+  "ustomDimensionId\022!\n\014populator_id\030\002 \001(\rR\013"
+  "populatorId\022N\n\tpopulator\030\003 \001(\01320.kentik."
+  "custom_dimension.v202411alpha1.Populator"
+  "R\tpopulator\"i\n\027UpdatePopulatorResponse\022N"
+  "\n\tpopulator\030\001 \001(\01320.kentik.custom_dimens"
+  "ion.v202411alpha1.PopulatorR\tpopulator\"k"
+  "\n\026DeletePopulatorRequest\022.\n\023custom_dimen"
+  "sion_id\030\001 \001(\rR\021customDimensionId\022!\n\014popu"
+  "lator_id\030\002 \001(\rR\013populatorId\"\031\n\027DeletePop"
+  "ulatorResponse2\212\030\n\026CustomDimensionServic"
+  "e\022\356\002\n\024ListCustomDimensions\022B.kentik.cust"
+  "om_dimension.v202411alpha1.ListCustomDim"
+  "ensionsRequest\032C.kentik.custom_dimension"
+  ".v202411alpha1.ListCustomDimensionsRespo"
+  "nse\"\314\001\222A\240\001\022\026List Custom Dimensions\032pRetu"
+  "rns an array of custom dimension objects"
+  " that each contain information about an "
+  "individual custom dimension.*\024ListCustom"
+  "Dimensions\202\323\344\223\002\"\022 /custom_dimensions/v20"
+  "2411alpha1\022\371\002\n\026GetCustomDimensionInfo\022D."
+  "kentik.custom_dimension.v202411alpha1.Ge"
+  "tCustomDimensionInfoRequest\032E.kentik.cus"
+  "tom_dimension.v202411alpha1.GetCustomDim"
+  "ensionInfoResponse\"\321\001\222A\217\001\022\025Custom Dimens"
+  "ion Info\032^Returns a custom dimension obj"
+  "ect containing information about an indi"
+  "vidual custom dimension.*\026GetCustomDimen"
+  "sionInfo\202\323\344\223\0028\0226/custom_dimensions/v2024"
+  "11alpha1/{custom_dimension_id}\022\352\002\n\025Creat"
+  "eCustomDimension\022C.kentik.custom_dimensi"
+  "on.v202411alpha1.CreateCustomDimensionRe"
+  "quest\032D.kentik.custom_dimension.v202411a"
+  "lpha1.CreateCustomDimensionResponse\"\305\001\222A"
+  "\233\001\022\027Create Custom Dimension\032iCreates and"
+  " returns a custom dimension object conta"
+  "ining information about an individual cu"
+  "stom dimension*\025CreateCustomDimension\202\323\344"
+  "\223\002 \"\023/v1/customdimension:\tdimension\022\225\004\n\025"
+  "UpdateCustomDimension\022C.kentik.custom_di"
+  "mension.v202411alpha1.UpdateCustomDimens"
+  "ionRequest\032D.kentik.custom_dimension.v20"
+  "2411alpha1.UpdateCustomDimensionResponse"
+  "\"\360\002\222A\243\002\022\027Update Custom Dimension\032\360\001Updat"
+  "es and returns a custom dimension object"
+  " containing information about an individ"
+  "ual custom dimension (see About Custom D"
+  "imensions). Populators are not sent back"
+  " in the response body. To get them use \'"
+  "Custom Dimension info\' API instead.*\025Upd"
+  "ateCustomDimension\202\323\344\223\002C\0326/custom_dimens"
   "ions/v202411alpha1/{custom_dimension_id}"
-  "\022\353\002\n\017CreatePopulator\022=.kentik.custom_dim"
-  "ension.v202411alpha1.CreatePopulatorRequ"
-  "est\032>.kentik.custom_dimension.v202411alp"
-  "ha1.CreatePopulatorResponse\"\330\001\222A\201\001\022\020Crea"
-  "te Populator\032\\Creates and returns a popu"
-  "lator object containing information abou"
-  "t an individual populator.*\017CreatePopula"
-  "tor\202\323\344\223\002M\"@/custom_dimensions/v202411alp"
-  "ha1/{custom_dimension_id}/populator:\tpop"
-  "ulator\022\372\002\n\017UpdatePopulator\022=.kentik.cust"
-  "om_dimension.v202411alpha1.UpdatePopulat"
-  "orRequest\032>.kentik.custom_dimension.v202"
-  "411alpha1.UpdatePopulatorResponse\"\347\001\222A\201\001"
-  "\022\020Update Populator\032\\Updates and returns "
-  "a populator object containing informatio"
-  "n about an individual populator.*\017Update"
-  "Populator\202\323\344\223\002\\\032O/custom_dimensions/v202"
-  "411alpha1/{custom_dimension_id}/populato"
-  "r/{populator_id}:\tpopulator\022\246\002\n\017DeletePo"
-  "pulator\022=.kentik.custom_dimension.v20241"
-  "1alpha1.DeletePopulatorRequest\032>.kentik."
-  "custom_dimension.v202411alpha1.DeletePop"
-  "ulatorResponse\"\223\001\222A9\022\020Delete Populator\032\024"
-  "Deletes a populator.*\017DeletePopulator\202\323\344"
-  "\223\002Q*O/custom_dimensions/v202411alpha1/{c"
-  "ustom_dimension_id}/populator/{populator"
-  "_id}\0324\312A\023grpc.api.kentik.com\352\327\002\026admin.cu"
-  "stom_dimension\220\330\002\003B\342\004Zagithub.com/kentik"
-  "/api-schema-public/gen/go/kentik/custom_"
-  "dimension/v202411alpha1;custom_dimension"
-  "\222A\373\003\022\352\001\n\025Custom Dimensions API\022{# Overvi"
-  "ew\nThe Custom Dimensions API enables pro"
-  "grammatic access to information on Custo"
-  "m Dimensions and their Populators.\n\"E\n\026K"
-  "entik API Engineering\022+https://github.co"
-  "m/kentik/api-schema-public2\rv202411alpha"
-  "1*\001\0022\020application/json:\020application/json"
-  "ZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005to"
-  "ken\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005emai"
-  "l\022\000\n\t\n\005token\022\000r\206\001\n[Knowledge base articl"
-  "e outlining the purpose and usage of Cus"
-  "tom Dimensions and Populators.\022\'https://"
-  "kb.kentik.com/proto/v4/Cb06.htmb\006proto3"
+  ":\tdimension\022\263\002\n\025DeleteCustomDimension\022C."
+  "kentik.custom_dimension.v202411alpha1.De"
+  "leteCustomDimensionRequest\032D.kentik.cust"
+  "om_dimension.v202411alpha1.DeleteCustomD"
+  "imensionResponse\"\216\001\222AM\022\027Delete Custom Di"
+  "mension\032\033Deletes a custom dimension.*\025De"
+  "leteCustomDimension\202\323\344\223\0028*6/custom_dimen"
+  "sions/v202411alpha1/{custom_dimension_id"
+  "}\022\353\002\n\017CreatePopulator\022=.kentik.custom_di"
+  "mension.v202411alpha1.CreatePopulatorReq"
+  "uest\032>.kentik.custom_dimension.v202411al"
+  "pha1.CreatePopulatorResponse\"\330\001\222A\201\001\022\020Cre"
+  "ate Populator\032\\Creates and returns a pop"
+  "ulator object containing information abo"
+  "ut an individual populator.*\017CreatePopul"
+  "ator\202\323\344\223\002M\"@/custom_dimensions/v202411al"
+  "pha1/{custom_dimension_id}/populator:\tpo"
+  "pulator\022\372\002\n\017UpdatePopulator\022=.kentik.cus"
+  "tom_dimension.v202411alpha1.UpdatePopula"
+  "torRequest\032>.kentik.custom_dimension.v20"
+  "2411alpha1.UpdatePopulatorResponse\"\347\001\222A\201"
+  "\001\022\020Update Populator\032\\Updates and returns"
+  " a populator object containing informati"
+  "on about an individual populator.*\017Updat"
+  "ePopulator\202\323\344\223\002\\\032O/custom_dimensions/v20"
+  "2411alpha1/{custom_dimension_id}/populat"
+  "or/{populator_id}:\tpopulator\022\246\002\n\017DeleteP"
+  "opulator\022=.kentik.custom_dimension.v2024"
+  "11alpha1.DeletePopulatorRequest\032>.kentik"
+  ".custom_dimension.v202411alpha1.DeletePo"
+  "pulatorResponse\"\223\001\222A9\022\020Delete Populator\032"
+  "\024Deletes a populator.*\017DeletePopulator\202\323"
+  "\344\223\002Q*O/custom_dimensions/v202411alpha1/{"
+  "custom_dimension_id}/populator/{populato"
+  "r_id}\0324\312A\023grpc.api.kentik.com\352\327\002\026admin.c"
+  "ustom_dimension\220\330\002\003B\342\004Zagithub.com/kenti"
+  "k/api-schema-public/gen/go/kentik/custom"
+  "_dimension/v202411alpha1;custom_dimensio"
+  "n\222A\373\003\022\352\001\n\025Custom Dimensions API\022{# Overv"
+  "iew\nThe Custom Dimensions API enables pr"
+  "ogrammatic access to information on Cust"
+  "om Dimensions and their Populators.\n\"E\n\026"
+  "Kentik API Engineering\022+https://github.c"
+  "om/kentik/api-schema-public2\rv202411alph"
+  "a1*\001\0022\020application/json:\020application/jso"
+  "nZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005t"
+  "oken\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005ema"
+  "il\022\000\n\t\n\005token\022\000r\206\001\n[Knowledge base artic"
+  "le outlining the purpose and usage of Cu"
+  "stom Dimensions and Populators.\022\'https:/"
+  "/kb.kentik.com/proto/v4/Cb06.htmb\006proto3"
   ;
-static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto_deps[8] = {
+static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto_deps[7] = {
   &::descriptor_table_google_2fapi_2fannotations_2eproto,
   &::descriptor_table_google_2fapi_2fclient_2eproto,
   &::descriptor_table_google_2fapi_2ffield_5fbehavior_2eproto,
   &::descriptor_table_google_2fprotobuf_2ftimestamp_2eproto,
   &::descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto,
-  &::descriptor_table_kentik_2fcore_2fv202303_2ftimestamp_2eproto,
   &::descriptor_table_kentik_2fuser_2fv202211_2fuser_2eproto,
   &::descriptor_table_protoc_2dgen_2dopenapiv2_2foptions_2fannotations_2eproto,
 };
@@ -872,8 +869,8 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto = {
-  false, false, descriptor_table_protodef_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto, "kentik/custom_dimension/v202411alpha1/custom_dimension.proto", 11599,
-  &descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto_once, descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto_sccs, descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto_deps, 18, 8,
+  false, false, descriptor_table_protodef_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto, "kentik/custom_dimension/v202411alpha1/custom_dimension.proto", 11520,
+  &descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto_once, descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto_sccs, descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto_deps, 18, 7,
   schemas, file_default_instances, TableStruct_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto::offsets,
   file_level_metadata_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto, 18, file_level_enum_descriptors_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto, file_level_service_descriptors_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto,
 };
@@ -887,22 +884,22 @@ namespace v202411alpha1 {
 // ===================================================================
 
 void CustomDimension::InitAsDefaultInstance() {
-  ::kentik::custom_dimension::v202411alpha1::_CustomDimension_default_instance_._instance.get_mutable()->created_date_ = const_cast< ::kentik::core::v202303::PseudoTimestamp*>(
-      ::kentik::core::v202303::PseudoTimestamp::internal_default_instance());
-  ::kentik::custom_dimension::v202411alpha1::_CustomDimension_default_instance_._instance.get_mutable()->updated_date_ = const_cast< ::kentik::core::v202303::PseudoTimestamp*>(
-      ::kentik::core::v202303::PseudoTimestamp::internal_default_instance());
+  ::kentik::custom_dimension::v202411alpha1::_CustomDimension_default_instance_._instance.get_mutable()->created_date_ = const_cast< PROTOBUF_NAMESPACE_ID::Timestamp*>(
+      PROTOBUF_NAMESPACE_ID::Timestamp::internal_default_instance());
+  ::kentik::custom_dimension::v202411alpha1::_CustomDimension_default_instance_._instance.get_mutable()->updated_date_ = const_cast< PROTOBUF_NAMESPACE_ID::Timestamp*>(
+      PROTOBUF_NAMESPACE_ID::Timestamp::internal_default_instance());
 }
 class CustomDimension::_Internal {
  public:
-  static const ::kentik::core::v202303::PseudoTimestamp& created_date(const CustomDimension* msg);
-  static const ::kentik::core::v202303::PseudoTimestamp& updated_date(const CustomDimension* msg);
+  static const PROTOBUF_NAMESPACE_ID::Timestamp& created_date(const CustomDimension* msg);
+  static const PROTOBUF_NAMESPACE_ID::Timestamp& updated_date(const CustomDimension* msg);
 };
 
-const ::kentik::core::v202303::PseudoTimestamp&
+const PROTOBUF_NAMESPACE_ID::Timestamp&
 CustomDimension::_Internal::created_date(const CustomDimension* msg) {
   return *msg->created_date_;
 }
-const ::kentik::core::v202303::PseudoTimestamp&
+const PROTOBUF_NAMESPACE_ID::Timestamp&
 CustomDimension::_Internal::updated_date(const CustomDimension* msg) {
   return *msg->updated_date_;
 }
@@ -945,12 +942,12 @@ CustomDimension::CustomDimension(const CustomDimension& from)
       GetArena());
   }
   if (from._internal_has_created_date()) {
-    created_date_ = new ::kentik::core::v202303::PseudoTimestamp(*from.created_date_);
+    created_date_ = new PROTOBUF_NAMESPACE_ID::Timestamp(*from.created_date_);
   } else {
     created_date_ = nullptr;
   }
   if (from._internal_has_updated_date()) {
-    updated_date_ = new ::kentik::core::v202303::PseudoTimestamp(*from.updated_date_);
+    updated_date_ = new PROTOBUF_NAMESPACE_ID::Timestamp(*from.updated_date_);
   } else {
     updated_date_ = nullptr;
   }
@@ -1085,14 +1082,14 @@ const char* CustomDimension::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPAC
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // .kentik.core.v202303.PseudoTimestamp created_date = 7[json_name = "createdDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      // .google.protobuf.Timestamp created_date = 7[json_name = "createdDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       case 7:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 58)) {
           ptr = ctx->ParseMessage(_internal_mutable_created_date(), ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // .kentik.core.v202303.PseudoTimestamp updated_date = 8[json_name = "updatedDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      // .google.protobuf.Timestamp updated_date = 8[json_name = "updatedDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       case 8:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 66)) {
           ptr = ctx->ParseMessage(_internal_mutable_updated_date(), ptr);
@@ -1177,7 +1174,7 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(6, this->_internal_company_id(), target);
   }
 
-  // .kentik.core.v202303.PseudoTimestamp created_date = 7[json_name = "createdDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  // .google.protobuf.Timestamp created_date = 7[json_name = "createdDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   if (this->has_created_date()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
@@ -1185,7 +1182,7 @@ failure:
         7, _Internal::created_date(this), target, stream);
   }
 
-  // .kentik.core.v202303.PseudoTimestamp updated_date = 8[json_name = "updatedDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  // .google.protobuf.Timestamp updated_date = 8[json_name = "updatedDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   if (this->has_updated_date()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
@@ -1237,14 +1234,14 @@ size_t CustomDimension::ByteSizeLong() const {
         this->_internal_description());
   }
 
-  // .kentik.core.v202303.PseudoTimestamp created_date = 7[json_name = "createdDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  // .google.protobuf.Timestamp created_date = 7[json_name = "createdDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   if (this->has_created_date()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *created_date_);
   }
 
-  // .kentik.core.v202303.PseudoTimestamp updated_date = 8[json_name = "updatedDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  // .google.protobuf.Timestamp updated_date = 8[json_name = "updatedDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   if (this->has_updated_date()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
@@ -1307,10 +1304,10 @@ void CustomDimension::MergeFrom(const CustomDimension& from) {
     _internal_set_description(from._internal_description());
   }
   if (from.has_created_date()) {
-    _internal_mutable_created_date()->::kentik::core::v202303::PseudoTimestamp::MergeFrom(from._internal_created_date());
+    _internal_mutable_created_date()->PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(from._internal_created_date());
   }
   if (from.has_updated_date()) {
-    _internal_mutable_updated_date()->::kentik::core::v202303::PseudoTimestamp::MergeFrom(from._internal_updated_date());
+    _internal_mutable_updated_date()->PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(from._internal_updated_date());
   }
   if (from.id() != 0) {
     _internal_set_id(from._internal_id());
@@ -1361,22 +1358,22 @@ void CustomDimension::InternalSwap(CustomDimension* other) {
 // ===================================================================
 
 void Populator::InitAsDefaultInstance() {
-  ::kentik::custom_dimension::v202411alpha1::_Populator_default_instance_._instance.get_mutable()->created_date_ = const_cast< ::kentik::core::v202303::PseudoTimestamp*>(
-      ::kentik::core::v202303::PseudoTimestamp::internal_default_instance());
-  ::kentik::custom_dimension::v202411alpha1::_Populator_default_instance_._instance.get_mutable()->updated_date_ = const_cast< ::kentik::core::v202303::PseudoTimestamp*>(
-      ::kentik::core::v202303::PseudoTimestamp::internal_default_instance());
+  ::kentik::custom_dimension::v202411alpha1::_Populator_default_instance_._instance.get_mutable()->created_date_ = const_cast< PROTOBUF_NAMESPACE_ID::Timestamp*>(
+      PROTOBUF_NAMESPACE_ID::Timestamp::internal_default_instance());
+  ::kentik::custom_dimension::v202411alpha1::_Populator_default_instance_._instance.get_mutable()->updated_date_ = const_cast< PROTOBUF_NAMESPACE_ID::Timestamp*>(
+      PROTOBUF_NAMESPACE_ID::Timestamp::internal_default_instance());
 }
 class Populator::_Internal {
  public:
-  static const ::kentik::core::v202303::PseudoTimestamp& created_date(const Populator* msg);
-  static const ::kentik::core::v202303::PseudoTimestamp& updated_date(const Populator* msg);
+  static const PROTOBUF_NAMESPACE_ID::Timestamp& created_date(const Populator* msg);
+  static const PROTOBUF_NAMESPACE_ID::Timestamp& updated_date(const Populator* msg);
 };
 
-const ::kentik::core::v202303::PseudoTimestamp&
+const PROTOBUF_NAMESPACE_ID::Timestamp&
 Populator::_Internal::created_date(const Populator* msg) {
   return *msg->created_date_;
 }
-const ::kentik::core::v202303::PseudoTimestamp&
+const PROTOBUF_NAMESPACE_ID::Timestamp&
 Populator::_Internal::updated_date(const Populator* msg) {
   return *msg->updated_date_;
 }
@@ -1451,12 +1448,12 @@ Populator::Populator(const Populator& from)
       GetArena());
   }
   if (from._internal_has_created_date()) {
-    created_date_ = new ::kentik::core::v202303::PseudoTimestamp(*from.created_date_);
+    created_date_ = new PROTOBUF_NAMESPACE_ID::Timestamp(*from.created_date_);
   } else {
     created_date_ = nullptr;
   }
   if (from._internal_has_updated_date()) {
-    updated_date_ = new ::kentik::core::v202303::PseudoTimestamp(*from.updated_date_);
+    updated_date_ = new PROTOBUF_NAMESPACE_ID::Timestamp(*from.updated_date_);
   } else {
     updated_date_ = nullptr;
   }
@@ -1817,14 +1814,14 @@ const char* Populator::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // .kentik.core.v202303.PseudoTimestamp created_date = 23[json_name = "createdDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      // .google.protobuf.Timestamp created_date = 23[json_name = "createdDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       case 23:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 186)) {
           ptr = ctx->ParseMessage(_internal_mutable_created_date(), ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // .kentik.core.v202303.PseudoTimestamp updated_date = 24[json_name = "updatedDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      // .google.protobuf.Timestamp updated_date = 24[json_name = "updatedDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       case 24:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 194)) {
           ptr = ctx->ParseMessage(_internal_mutable_updated_date(), ptr);
@@ -2067,7 +2064,7 @@ failure:
         22, this->_internal_user(), target);
   }
 
-  // .kentik.core.v202303.PseudoTimestamp created_date = 23[json_name = "createdDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  // .google.protobuf.Timestamp created_date = 23[json_name = "createdDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   if (this->has_created_date()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
@@ -2075,7 +2072,7 @@ failure:
         23, _Internal::created_date(this), target, stream);
   }
 
-  // .kentik.core.v202303.PseudoTimestamp updated_date = 24[json_name = "updatedDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  // .google.protobuf.Timestamp updated_date = 24[json_name = "updatedDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   if (this->has_updated_date()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
@@ -2284,14 +2281,14 @@ size_t Populator::ByteSizeLong() const {
         this->_internal_user());
   }
 
-  // .kentik.core.v202303.PseudoTimestamp created_date = 23[json_name = "createdDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  // .google.protobuf.Timestamp created_date = 23[json_name = "createdDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   if (this->has_created_date()) {
     total_size += 2 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *created_date_);
   }
 
-  // .kentik.core.v202303.PseudoTimestamp updated_date = 24[json_name = "updatedDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  // .google.protobuf.Timestamp updated_date = 24[json_name = "updatedDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   if (this->has_updated_date()) {
     total_size += 2 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
@@ -2370,10 +2367,10 @@ void Populator::MergeFrom(const Populator& from) {
     _internal_set_user(from._internal_user());
   }
   if (from.has_created_date()) {
-    _internal_mutable_created_date()->::kentik::core::v202303::PseudoTimestamp::MergeFrom(from._internal_created_date());
+    _internal_mutable_created_date()->PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(from._internal_created_date());
   }
   if (from.has_updated_date()) {
-    _internal_mutable_updated_date()->::kentik::core::v202303::PseudoTimestamp::MergeFrom(from._internal_updated_date());
+    _internal_mutable_updated_date()->PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(from._internal_updated_date());
   }
   if (from.id() != 0) {
     _internal_set_id(from._internal_id());

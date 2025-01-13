@@ -10,7 +10,6 @@ import "google/protobuf/timestamp.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
 import "kentik/core/v202303/annotations.proto";
 import "kentik/user/v202211/user.proto";
-import "kentik/core/v202303/timestamp.proto";
 
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   info: {
@@ -104,14 +103,14 @@ message CustomDimension {
     (google.api.field_behavior) = OUTPUT_ONLY
   ];
 
-  kentik.core.v202303.PseudoTimestamp created_date = 7[
+  google.protobuf.Timestamp created_date = 7[
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Date-time of populator creation, in UTC."
     },
     (google.api.field_behavior) = OUTPUT_ONLY
   ];
 
-  kentik.core.v202303.PseudoTimestamp updated_date = 8[
+  google.protobuf.Timestamp updated_date = 8[
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Date-time of most-recent populator edit, in UTC."
     },
@@ -255,14 +254,14 @@ message Populator {
     (google.api.field_behavior) = OUTPUT_ONLY
   ];
 
-  kentik.core.v202303.PseudoTimestamp created_date = 23[
+  google.protobuf.Timestamp created_date = 23[
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Date-time of populator creation, in UTC."
     },
     (google.api.field_behavior) = OUTPUT_ONLY
   ];
 
-  kentik.core.v202303.PseudoTimestamp updated_date = 24[
+  google.protobuf.Timestamp updated_date = 24[
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Date-time of most-recent populator edit, in UTC."
     },
