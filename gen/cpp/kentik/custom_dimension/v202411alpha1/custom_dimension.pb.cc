@@ -16,7 +16,9 @@
 #include <google/protobuf/port_def.inc>
 extern PROTOBUF_INTERNAL_EXPORT_google_2fprotobuf_2ftimestamp_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Timestamp_google_2fprotobuf_2ftimestamp_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_CustomDimension_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Populator_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ExtendedField_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_Populator_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Populator_ExtendedFieldsEntry_DoNotUse_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto;
 namespace kentik {
 namespace custom_dimension {
 namespace v202411alpha1 {
@@ -24,10 +26,18 @@ class CustomDimensionDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<CustomDimension> _instance;
 } _CustomDimension_default_instance_;
+class Populator_ExtendedFieldsEntry_DoNotUseDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<Populator_ExtendedFieldsEntry_DoNotUse> _instance;
+} _Populator_ExtendedFieldsEntry_DoNotUse_default_instance_;
 class PopulatorDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<Populator> _instance;
 } _Populator_default_instance_;
+class ExtendedFieldDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ExtendedField> _instance;
+} _ExtendedField_default_instance_;
 class ListCustomDimensionsRequestDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ListCustomDimensionsRequest> _instance;
@@ -227,6 +237,20 @@ static void InitDefaultsscc_info_DeletePopulatorResponse_kentik_2fcustom_5fdimen
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_DeletePopulatorResponse_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_DeletePopulatorResponse_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto}, {}};
 
+static void InitDefaultsscc_info_ExtendedField_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::kentik::custom_dimension::v202411alpha1::_ExtendedField_default_instance_;
+    new (ptr) ::kentik::custom_dimension::v202411alpha1::ExtendedField();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::kentik::custom_dimension::v202411alpha1::ExtendedField::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ExtendedField_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_ExtendedField_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto}, {}};
+
 static void InitDefaultsscc_info_GetCustomDimensionInfoRequest_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -296,9 +320,24 @@ static void InitDefaultsscc_info_Populator_kentik_2fcustom_5fdimension_2fv202411
   ::kentik::custom_dimension::v202411alpha1::Populator::InitAsDefaultInstance();
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Populator_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_Populator_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto}, {
-      &scc_info_Timestamp_google_2fprotobuf_2ftimestamp_2eproto.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_Populator_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_Populator_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto}, {
+      &scc_info_Timestamp_google_2fprotobuf_2ftimestamp_2eproto.base,
+      &scc_info_Populator_ExtendedFieldsEntry_DoNotUse_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto.base,}};
+
+static void InitDefaultsscc_info_Populator_ExtendedFieldsEntry_DoNotUse_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::kentik::custom_dimension::v202411alpha1::_Populator_ExtendedFieldsEntry_DoNotUse_default_instance_;
+    new (ptr) ::kentik::custom_dimension::v202411alpha1::Populator_ExtendedFieldsEntry_DoNotUse();
+  }
+  ::kentik::custom_dimension::v202411alpha1::Populator_ExtendedFieldsEntry_DoNotUse::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Populator_ExtendedFieldsEntry_DoNotUse_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_Populator_ExtendedFieldsEntry_DoNotUse_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto}, {
+      &scc_info_ExtendedField_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto.base,}};
 
 static void InitDefaultsscc_info_UpdateCustomDimensionRequest_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -360,7 +399,7 @@ static void InitDefaultsscc_info_UpdatePopulatorResponse_kentik_2fcustom_5fdimen
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_UpdatePopulatorResponse_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto}, {
       &scc_info_Populator_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto.base,}};
 
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto[18];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto[20];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto = nullptr;
 
@@ -378,6 +417,15 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_kentik_2fcustom_5fdimension_2f
   PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::CustomDimension, company_id_),
   PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::CustomDimension, created_date_),
   PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::CustomDimension, updated_date_),
+  PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::Populator_ExtendedFieldsEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::Populator_ExtendedFieldsEntry_DoNotUse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::Populator_ExtendedFieldsEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::Populator_ExtendedFieldsEntry_DoNotUse, value_),
+  0,
+  1,
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::Populator, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -407,6 +455,15 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_kentik_2fcustom_5fdimension_2f
   PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::Populator, user_),
   PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::Populator, created_date_),
   PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::Populator, updated_date_),
+  PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::Populator, addr_count_),
+  PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::Populator, mac_count_),
+  PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::Populator, extended_fields_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::ExtendedField, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::ExtendedField, value_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::ListCustomDimensionsRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -508,28 +565,32 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_kentik_2fcustom_5fdimension_2f
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::kentik::custom_dimension::v202411alpha1::CustomDimension)},
-  { 13, -1, sizeof(::kentik::custom_dimension::v202411alpha1::Populator)},
-  { 42, -1, sizeof(::kentik::custom_dimension::v202411alpha1::ListCustomDimensionsRequest)},
-  { 47, -1, sizeof(::kentik::custom_dimension::v202411alpha1::ListCustomDimensionsResponse)},
-  { 53, -1, sizeof(::kentik::custom_dimension::v202411alpha1::GetCustomDimensionInfoRequest)},
-  { 59, -1, sizeof(::kentik::custom_dimension::v202411alpha1::GetCustomDimensionInfoResponse)},
-  { 65, -1, sizeof(::kentik::custom_dimension::v202411alpha1::CreateCustomDimensionRequest)},
-  { 71, -1, sizeof(::kentik::custom_dimension::v202411alpha1::CreateCustomDimensionResponse)},
-  { 77, -1, sizeof(::kentik::custom_dimension::v202411alpha1::UpdateCustomDimensionRequest)},
-  { 84, -1, sizeof(::kentik::custom_dimension::v202411alpha1::UpdateCustomDimensionResponse)},
-  { 90, -1, sizeof(::kentik::custom_dimension::v202411alpha1::DeleteCustomDimensionRequest)},
-  { 96, -1, sizeof(::kentik::custom_dimension::v202411alpha1::DeleteCustomDimensionResponse)},
-  { 101, -1, sizeof(::kentik::custom_dimension::v202411alpha1::CreatePopulatorRequest)},
-  { 108, -1, sizeof(::kentik::custom_dimension::v202411alpha1::CreatePopulatorResponse)},
-  { 114, -1, sizeof(::kentik::custom_dimension::v202411alpha1::UpdatePopulatorRequest)},
-  { 122, -1, sizeof(::kentik::custom_dimension::v202411alpha1::UpdatePopulatorResponse)},
-  { 128, -1, sizeof(::kentik::custom_dimension::v202411alpha1::DeletePopulatorRequest)},
-  { 135, -1, sizeof(::kentik::custom_dimension::v202411alpha1::DeletePopulatorResponse)},
+  { 13, 20, sizeof(::kentik::custom_dimension::v202411alpha1::Populator_ExtendedFieldsEntry_DoNotUse)},
+  { 22, -1, sizeof(::kentik::custom_dimension::v202411alpha1::Populator)},
+  { 54, -1, sizeof(::kentik::custom_dimension::v202411alpha1::ExtendedField)},
+  { 60, -1, sizeof(::kentik::custom_dimension::v202411alpha1::ListCustomDimensionsRequest)},
+  { 65, -1, sizeof(::kentik::custom_dimension::v202411alpha1::ListCustomDimensionsResponse)},
+  { 71, -1, sizeof(::kentik::custom_dimension::v202411alpha1::GetCustomDimensionInfoRequest)},
+  { 77, -1, sizeof(::kentik::custom_dimension::v202411alpha1::GetCustomDimensionInfoResponse)},
+  { 83, -1, sizeof(::kentik::custom_dimension::v202411alpha1::CreateCustomDimensionRequest)},
+  { 89, -1, sizeof(::kentik::custom_dimension::v202411alpha1::CreateCustomDimensionResponse)},
+  { 95, -1, sizeof(::kentik::custom_dimension::v202411alpha1::UpdateCustomDimensionRequest)},
+  { 102, -1, sizeof(::kentik::custom_dimension::v202411alpha1::UpdateCustomDimensionResponse)},
+  { 108, -1, sizeof(::kentik::custom_dimension::v202411alpha1::DeleteCustomDimensionRequest)},
+  { 114, -1, sizeof(::kentik::custom_dimension::v202411alpha1::DeleteCustomDimensionResponse)},
+  { 119, -1, sizeof(::kentik::custom_dimension::v202411alpha1::CreatePopulatorRequest)},
+  { 126, -1, sizeof(::kentik::custom_dimension::v202411alpha1::CreatePopulatorResponse)},
+  { 132, -1, sizeof(::kentik::custom_dimension::v202411alpha1::UpdatePopulatorRequest)},
+  { 140, -1, sizeof(::kentik::custom_dimension::v202411alpha1::UpdatePopulatorResponse)},
+  { 146, -1, sizeof(::kentik::custom_dimension::v202411alpha1::DeletePopulatorRequest)},
+  { 153, -1, sizeof(::kentik::custom_dimension::v202411alpha1::DeletePopulatorResponse)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::custom_dimension::v202411alpha1::_CustomDimension_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::custom_dimension::v202411alpha1::_Populator_ExtendedFieldsEntry_DoNotUse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::custom_dimension::v202411alpha1::_Populator_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::custom_dimension::v202411alpha1::_ExtendedField_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::custom_dimension::v202411alpha1::_ListCustomDimensionsRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::custom_dimension::v202411alpha1::_ListCustomDimensionsResponse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::custom_dimension::v202411alpha1::_GetCustomDimensionInfoRequest_default_instance_),
@@ -558,7 +619,7 @@ const char descriptor_table_protodef_kentik_2fcustom_5fdimension_2fv202411alpha1
   "piv2/options/annotations.proto\032%kentik/c"
   "ore/v202303/annotations.proto\032\036kentik/us"
   "er/v202211/user.proto\"\343\007\n\017CustomDimensio"
-  "n\022D\n\002id\030\001 \001(\rB4\222A-2+Unique identifier fo"
+  "n\022D\n\002id\030\001 \001(\tB4\222A-2+Unique identifier fo"
   "r the custom dimension.\342A\001\003R\002id\022\245\001\n\004name"
   "\030\002 \001(\tB\220\001\222A\210\0012\205\001The name of the custom d"
   "imension. Must start with \'c_\'. Valid ch"
@@ -575,15 +636,15 @@ const char descriptor_table_protodef_kentik_2fcustom_5fdimension_2fv202411alpha1
   "ension.v202411alpha1.PopulatorB:\222A321Pop"
   "ulators associated with this custom dime"
   "nsion.\342A\001\003R\npopulators\022O\n\ncompany_id\030\006 \001"
-  "(\rB0\222A)2\'The system-assigned ID of the c"
+  "(\tB0\222A)2\'The system-assigned ID of the c"
   "ustomer.\342A\001\003R\tcompanyId\022p\n\014created_date\030"
   "\007 \001(\0132\032.google.protobuf.TimestampB1\222A*2("
   "Date-time of populator creation, in UTC."
   "\342A\001\003R\013createdDate\022x\n\014updated_date\030\010 \001(\0132"
   "\032.google.protobuf.TimestampB9\222A220Date-t"
   "ime of most-recent populator edit, in UT"
-  "C.\342A\001\003R\013updatedDate\"\265%\n\tPopulator\022=\n\002id\030"
-  "\001 \001(\rB-\222A&2$Unique identifier for the po"
+  "C.\342A\001\003R\013updatedDate\"\355(\n\tPopulator\022=\n\002id\030"
+  "\001 \001(\tB-\222A&2$Unique identifier for the po"
   "pulator.\342A\001\003R\002id\022\224\002\n\005value\030\002 \001(\tB\375\001\222A\371\0012"
   "\366\001The value of the dimension. When the c"
   "ustom dimension\'s type is \'string\' - Val"
@@ -702,141 +763,153 @@ const char descriptor_table_protodef_kentik_2fcustom_5fdimension_2fv202411alpha1
   "eatedDate\022x\n\014updated_date\030\030 \001(\0132\032.google"
   ".protobuf.TimestampB9\222A220Date-time of m"
   "ost-recent populator edit, in UTC.\342A\001\003R\013"
-  "updatedDate\"\035\n\033ListCustomDimensionsReque"
-  "st\"v\n\034ListCustomDimensionsResponse\022V\n\ndi"
-  "mensions\030\001 \003(\01326.kentik.custom_dimension"
-  ".v202411alpha1.CustomDimensionR\ndimensio"
-  "ns\"O\n\035GetCustomDimensionInfoRequest\022.\n\023c"
-  "ustom_dimension_id\030\001 \001(\rR\021customDimensio"
-  "nId\"v\n\036GetCustomDimensionInfoResponse\022T\n"
-  "\tdimension\030\001 \001(\01326.kentik.custom_dimensi"
-  "on.v202411alpha1.CustomDimensionR\tdimens"
-  "ion\"t\n\034CreateCustomDimensionRequest\022T\n\td"
-  "imension\030\001 \001(\01326.kentik.custom_dimension"
-  ".v202411alpha1.CustomDimensionR\tdimensio"
-  "n\"u\n\035CreateCustomDimensionResponse\022T\n\tdi"
+  "updatedDate\022\?\n\naddr_count\030\031 \001(\rB \222A\0312\027Nu"
+  "mber of IP addresses.\342A\001\003R\taddrCount\022>\n\t"
+  "mac_count\030\032 \001(\rB!\222A\0322\030Number of MAC addr"
+  "esses.\342A\001\003R\010macCount\022\273\001\n\017extended_fields"
+  "\030\033 \003(\0132D.kentik.custom_dimension.v202411"
+  "alpha1.Populator.ExtendedFieldsEntryBL\222A"
+  "E2CAdditional fields set on object but n"
+  "ot currently available on API.\342A\001\003R\016exte"
+  "ndedFields\032w\n\023ExtendedFieldsEntry\022\020\n\003key"
+  "\030\001 \001(\tR\003key\022J\n\005value\030\002 \001(\01324.kentik.cust"
+  "om_dimension.v202411alpha1.ExtendedField"
+  "R\005value:\0028\001\"%\n\rExtendedField\022\024\n\005value\030\001 "
+  "\003(\tR\005value\"\035\n\033ListCustomDimensionsReques"
+  "t\"v\n\034ListCustomDimensionsResponse\022V\n\ndim"
+  "ensions\030\001 \003(\01326.kentik.custom_dimension."
+  "v202411alpha1.CustomDimensionR\ndimension"
+  "s\"O\n\035GetCustomDimensionInfoRequest\022.\n\023cu"
+  "stom_dimension_id\030\001 \001(\tR\021customDimension"
+  "Id\"v\n\036GetCustomDimensionInfoResponse\022T\n\t"
+  "dimension\030\001 \001(\01326.kentik.custom_dimensio"
+  "n.v202411alpha1.CustomDimensionR\tdimensi"
+  "on\"t\n\034CreateCustomDimensionRequest\022T\n\tdi"
   "mension\030\001 \001(\01326.kentik.custom_dimension."
   "v202411alpha1.CustomDimensionR\tdimension"
-  "\"\244\001\n\034UpdateCustomDimensionRequest\022.\n\023cus"
-  "tom_dimension_id\030\001 \001(\rR\021customDimensionI"
-  "d\022T\n\tdimension\030\002 \001(\01326.kentik.custom_dim"
-  "ension.v202411alpha1.CustomDimensionR\tdi"
-  "mension\"u\n\035UpdateCustomDimensionResponse"
-  "\022T\n\tdimension\030\001 \001(\01326.kentik.custom_dime"
+  "\"u\n\035CreateCustomDimensionResponse\022T\n\tdim"
+  "ension\030\001 \001(\01326.kentik.custom_dimension.v"
+  "202411alpha1.CustomDimensionR\tdimension\""
+  "\244\001\n\034UpdateCustomDimensionRequest\022.\n\023cust"
+  "om_dimension_id\030\001 \001(\tR\021customDimensionId"
+  "\022T\n\tdimension\030\002 \001(\01326.kentik.custom_dime"
   "nsion.v202411alpha1.CustomDimensionR\tdim"
-  "ension\"N\n\034DeleteCustomDimensionRequest\022."
-  "\n\023custom_dimension_id\030\001 \001(\rR\021customDimen"
-  "sionId\"\037\n\035DeleteCustomDimensionResponse\""
-  "\230\001\n\026CreatePopulatorRequest\022.\n\023custom_dim"
-  "ension_id\030\001 \001(\rR\021customDimensionId\022N\n\tpo"
-  "pulator\030\002 \001(\01320.kentik.custom_dimension."
-  "v202411alpha1.PopulatorR\tpopulator\"i\n\027Cr"
-  "eatePopulatorResponse\022N\n\tpopulator\030\001 \001(\013"
-  "20.kentik.custom_dimension.v202411alpha1"
-  ".PopulatorR\tpopulator\"\273\001\n\026UpdatePopulato"
-  "rRequest\022.\n\023custom_dimension_id\030\001 \001(\rR\021c"
-  "ustomDimensionId\022!\n\014populator_id\030\002 \001(\rR\013"
-  "populatorId\022N\n\tpopulator\030\003 \001(\01320.kentik."
-  "custom_dimension.v202411alpha1.Populator"
-  "R\tpopulator\"i\n\027UpdatePopulatorResponse\022N"
-  "\n\tpopulator\030\001 \001(\01320.kentik.custom_dimens"
-  "ion.v202411alpha1.PopulatorR\tpopulator\"k"
-  "\n\026DeletePopulatorRequest\022.\n\023custom_dimen"
-  "sion_id\030\001 \001(\rR\021customDimensionId\022!\n\014popu"
-  "lator_id\030\002 \001(\rR\013populatorId\"\031\n\027DeletePop"
-  "ulatorResponse2\212\030\n\026CustomDimensionServic"
-  "e\022\356\002\n\024ListCustomDimensions\022B.kentik.cust"
-  "om_dimension.v202411alpha1.ListCustomDim"
-  "ensionsRequest\032C.kentik.custom_dimension"
-  ".v202411alpha1.ListCustomDimensionsRespo"
-  "nse\"\314\001\222A\240\001\022\026List Custom Dimensions\032pRetu"
-  "rns an array of custom dimension objects"
-  " that each contain information about an "
-  "individual custom dimension.*\024ListCustom"
-  "Dimensions\202\323\344\223\002\"\022 /custom_dimensions/v20"
-  "2411alpha1\022\371\002\n\026GetCustomDimensionInfo\022D."
-  "kentik.custom_dimension.v202411alpha1.Ge"
-  "tCustomDimensionInfoRequest\032E.kentik.cus"
-  "tom_dimension.v202411alpha1.GetCustomDim"
-  "ensionInfoResponse\"\321\001\222A\217\001\022\025Custom Dimens"
-  "ion Info\032^Returns a custom dimension obj"
-  "ect containing information about an indi"
-  "vidual custom dimension.*\026GetCustomDimen"
-  "sionInfo\202\323\344\223\0028\0226/custom_dimensions/v2024"
-  "11alpha1/{custom_dimension_id}\022\352\002\n\025Creat"
-  "eCustomDimension\022C.kentik.custom_dimensi"
-  "on.v202411alpha1.CreateCustomDimensionRe"
-  "quest\032D.kentik.custom_dimension.v202411a"
-  "lpha1.CreateCustomDimensionResponse\"\305\001\222A"
-  "\233\001\022\027Create Custom Dimension\032iCreates and"
-  " returns a custom dimension object conta"
-  "ining information about an individual cu"
-  "stom dimension*\025CreateCustomDimension\202\323\344"
-  "\223\002 \"\023/v1/customdimension:\tdimension\022\225\004\n\025"
-  "UpdateCustomDimension\022C.kentik.custom_di"
-  "mension.v202411alpha1.UpdateCustomDimens"
-  "ionRequest\032D.kentik.custom_dimension.v20"
-  "2411alpha1.UpdateCustomDimensionResponse"
-  "\"\360\002\222A\243\002\022\027Update Custom Dimension\032\360\001Updat"
-  "es and returns a custom dimension object"
-  " containing information about an individ"
-  "ual custom dimension (see About Custom D"
-  "imensions). Populators are not sent back"
-  " in the response body. To get them use \'"
-  "Custom Dimension info\' API instead.*\025Upd"
-  "ateCustomDimension\202\323\344\223\002C\0326/custom_dimens"
+  "ension\"u\n\035UpdateCustomDimensionResponse\022"
+  "T\n\tdimension\030\001 \001(\01326.kentik.custom_dimen"
+  "sion.v202411alpha1.CustomDimensionR\tdime"
+  "nsion\"N\n\034DeleteCustomDimensionRequest\022.\n"
+  "\023custom_dimension_id\030\001 \001(\tR\021customDimens"
+  "ionId\"\037\n\035DeleteCustomDimensionResponse\"\230"
+  "\001\n\026CreatePopulatorRequest\022.\n\023custom_dime"
+  "nsion_id\030\001 \001(\tR\021customDimensionId\022N\n\tpop"
+  "ulator\030\002 \001(\01320.kentik.custom_dimension.v"
+  "202411alpha1.PopulatorR\tpopulator\"i\n\027Cre"
+  "atePopulatorResponse\022N\n\tpopulator\030\001 \001(\0132"
+  "0.kentik.custom_dimension.v202411alpha1."
+  "PopulatorR\tpopulator\"\273\001\n\026UpdatePopulator"
+  "Request\022.\n\023custom_dimension_id\030\001 \001(\tR\021cu"
+  "stomDimensionId\022!\n\014populator_id\030\002 \001(\tR\013p"
+  "opulatorId\022N\n\tpopulator\030\003 \001(\01320.kentik.c"
+  "ustom_dimension.v202411alpha1.PopulatorR"
+  "\tpopulator\"i\n\027UpdatePopulatorResponse\022N\n"
+  "\tpopulator\030\001 \001(\01320.kentik.custom_dimensi"
+  "on.v202411alpha1.PopulatorR\tpopulator\"k\n"
+  "\026DeletePopulatorRequest\022.\n\023custom_dimens"
+  "ion_id\030\001 \001(\tR\021customDimensionId\022!\n\014popul"
+  "ator_id\030\002 \001(\tR\013populatorId\"\031\n\027DeletePopu"
+  "latorResponse2\212\030\n\026CustomDimensionService"
+  "\022\356\002\n\024ListCustomDimensions\022B.kentik.custo"
+  "m_dimension.v202411alpha1.ListCustomDime"
+  "nsionsRequest\032C.kentik.custom_dimension."
+  "v202411alpha1.ListCustomDimensionsRespon"
+  "se\"\314\001\222A\240\001\022\026List Custom Dimensions\032pRetur"
+  "ns an array of custom dimension objects "
+  "that each contain information about an i"
+  "ndividual custom dimension.*\024ListCustomD"
+  "imensions\202\323\344\223\002\"\022 /custom_dimensions/v202"
+  "411alpha1\022\371\002\n\026GetCustomDimensionInfo\022D.k"
+  "entik.custom_dimension.v202411alpha1.Get"
+  "CustomDimensionInfoRequest\032E.kentik.cust"
+  "om_dimension.v202411alpha1.GetCustomDime"
+  "nsionInfoResponse\"\321\001\222A\217\001\022\025Custom Dimensi"
+  "on Info\032^Returns a custom dimension obje"
+  "ct containing information about an indiv"
+  "idual custom dimension.*\026GetCustomDimens"
+  "ionInfo\202\323\344\223\0028\0226/custom_dimensions/v20241"
+  "1alpha1/{custom_dimension_id}\022\352\002\n\025Create"
+  "CustomDimension\022C.kentik.custom_dimensio"
+  "n.v202411alpha1.CreateCustomDimensionReq"
+  "uest\032D.kentik.custom_dimension.v202411al"
+  "pha1.CreateCustomDimensionResponse\"\305\001\222A\233"
+  "\001\022\027Create Custom Dimension\032iCreates and "
+  "returns a custom dimension object contai"
+  "ning information about an individual cus"
+  "tom dimension*\025CreateCustomDimension\202\323\344\223"
+  "\002 \"\023/v1/customdimension:\tdimension\022\225\004\n\025U"
+  "pdateCustomDimension\022C.kentik.custom_dim"
+  "ension.v202411alpha1.UpdateCustomDimensi"
+  "onRequest\032D.kentik.custom_dimension.v202"
+  "411alpha1.UpdateCustomDimensionResponse\""
+  "\360\002\222A\243\002\022\027Update Custom Dimension\032\360\001Update"
+  "s and returns a custom dimension object "
+  "containing information about an individu"
+  "al custom dimension (see About Custom Di"
+  "mensions). Populators are not sent back "
+  "in the response body. To get them use \'C"
+  "ustom Dimension info\' API instead.*\025Upda"
+  "teCustomDimension\202\323\344\223\002C\0326/custom_dimensi"
+  "ons/v202411alpha1/{custom_dimension_id}:"
+  "\tdimension\022\263\002\n\025DeleteCustomDimension\022C.k"
+  "entik.custom_dimension.v202411alpha1.Del"
+  "eteCustomDimensionRequest\032D.kentik.custo"
+  "m_dimension.v202411alpha1.DeleteCustomDi"
+  "mensionResponse\"\216\001\222AM\022\027Delete Custom Dim"
+  "ension\032\033Deletes a custom dimension.*\025Del"
+  "eteCustomDimension\202\323\344\223\0028*6/custom_dimens"
   "ions/v202411alpha1/{custom_dimension_id}"
-  ":\tdimension\022\263\002\n\025DeleteCustomDimension\022C."
-  "kentik.custom_dimension.v202411alpha1.De"
-  "leteCustomDimensionRequest\032D.kentik.cust"
-  "om_dimension.v202411alpha1.DeleteCustomD"
-  "imensionResponse\"\216\001\222AM\022\027Delete Custom Di"
-  "mension\032\033Deletes a custom dimension.*\025De"
-  "leteCustomDimension\202\323\344\223\0028*6/custom_dimen"
-  "sions/v202411alpha1/{custom_dimension_id"
-  "}\022\353\002\n\017CreatePopulator\022=.kentik.custom_di"
-  "mension.v202411alpha1.CreatePopulatorReq"
-  "uest\032>.kentik.custom_dimension.v202411al"
-  "pha1.CreatePopulatorResponse\"\330\001\222A\201\001\022\020Cre"
-  "ate Populator\032\\Creates and returns a pop"
-  "ulator object containing information abo"
-  "ut an individual populator.*\017CreatePopul"
-  "ator\202\323\344\223\002M\"@/custom_dimensions/v202411al"
-  "pha1/{custom_dimension_id}/populator:\tpo"
-  "pulator\022\372\002\n\017UpdatePopulator\022=.kentik.cus"
-  "tom_dimension.v202411alpha1.UpdatePopula"
-  "torRequest\032>.kentik.custom_dimension.v20"
-  "2411alpha1.UpdatePopulatorResponse\"\347\001\222A\201"
-  "\001\022\020Update Populator\032\\Updates and returns"
-  " a populator object containing informati"
-  "on about an individual populator.*\017Updat"
-  "ePopulator\202\323\344\223\002\\\032O/custom_dimensions/v20"
-  "2411alpha1/{custom_dimension_id}/populat"
-  "or/{populator_id}:\tpopulator\022\246\002\n\017DeleteP"
-  "opulator\022=.kentik.custom_dimension.v2024"
-  "11alpha1.DeletePopulatorRequest\032>.kentik"
-  ".custom_dimension.v202411alpha1.DeletePo"
-  "pulatorResponse\"\223\001\222A9\022\020Delete Populator\032"
-  "\024Deletes a populator.*\017DeletePopulator\202\323"
-  "\344\223\002Q*O/custom_dimensions/v202411alpha1/{"
-  "custom_dimension_id}/populator/{populato"
-  "r_id}\0324\312A\023grpc.api.kentik.com\352\327\002\026admin.c"
-  "ustom_dimension\220\330\002\003B\342\004Zagithub.com/kenti"
-  "k/api-schema-public/gen/go/kentik/custom"
-  "_dimension/v202411alpha1;custom_dimensio"
-  "n\222A\373\003\022\352\001\n\025Custom Dimensions API\022{# Overv"
-  "iew\nThe Custom Dimensions API enables pr"
-  "ogrammatic access to information on Cust"
-  "om Dimensions and their Populators.\n\"E\n\026"
-  "Kentik API Engineering\022+https://github.c"
-  "om/kentik/api-schema-public2\rv202411alph"
-  "a1*\001\0022\020application/json:\020application/jso"
-  "nZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005t"
-  "oken\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005ema"
-  "il\022\000\n\t\n\005token\022\000r\206\001\n[Knowledge base artic"
-  "le outlining the purpose and usage of Cu"
-  "stom Dimensions and Populators.\022\'https:/"
-  "/kb.kentik.com/proto/v4/Cb06.htmb\006proto3"
+  "\022\353\002\n\017CreatePopulator\022=.kentik.custom_dim"
+  "ension.v202411alpha1.CreatePopulatorRequ"
+  "est\032>.kentik.custom_dimension.v202411alp"
+  "ha1.CreatePopulatorResponse\"\330\001\222A\201\001\022\020Crea"
+  "te Populator\032\\Creates and returns a popu"
+  "lator object containing information abou"
+  "t an individual populator.*\017CreatePopula"
+  "tor\202\323\344\223\002M\"@/custom_dimensions/v202411alp"
+  "ha1/{custom_dimension_id}/populator:\tpop"
+  "ulator\022\372\002\n\017UpdatePopulator\022=.kentik.cust"
+  "om_dimension.v202411alpha1.UpdatePopulat"
+  "orRequest\032>.kentik.custom_dimension.v202"
+  "411alpha1.UpdatePopulatorResponse\"\347\001\222A\201\001"
+  "\022\020Update Populator\032\\Updates and returns "
+  "a populator object containing informatio"
+  "n about an individual populator.*\017Update"
+  "Populator\202\323\344\223\002\\\032O/custom_dimensions/v202"
+  "411alpha1/{custom_dimension_id}/populato"
+  "r/{populator_id}:\tpopulator\022\246\002\n\017DeletePo"
+  "pulator\022=.kentik.custom_dimension.v20241"
+  "1alpha1.DeletePopulatorRequest\032>.kentik."
+  "custom_dimension.v202411alpha1.DeletePop"
+  "ulatorResponse\"\223\001\222A9\022\020Delete Populator\032\024"
+  "Deletes a populator.*\017DeletePopulator\202\323\344"
+  "\223\002Q*O/custom_dimensions/v202411alpha1/{c"
+  "ustom_dimension_id}/populator/{populator"
+  "_id}\0324\312A\023grpc.api.kentik.com\352\327\002\026admin.cu"
+  "stom_dimension\220\330\002\003B\342\004Zagithub.com/kentik"
+  "/api-schema-public/gen/go/kentik/custom_"
+  "dimension/v202411alpha1;custom_dimension"
+  "\222A\373\003\022\352\001\n\025Custom Dimensions API\022{# Overvi"
+  "ew\nThe Custom Dimensions API enables pro"
+  "grammatic access to information on Custo"
+  "m Dimensions and their Populators.\n\"E\n\026K"
+  "entik API Engineering\022+https://github.co"
+  "m/kentik/api-schema-public2\rv202411alpha"
+  "1*\001\0022\020application/json:\020application/json"
+  "ZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005to"
+  "ken\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005emai"
+  "l\022\000\n\t\n\005token\022\000r\206\001\n[Knowledge base articl"
+  "e outlining the purpose and usage of Cus"
+  "tom Dimensions and Populators.\022\'https://"
+  "kb.kentik.com/proto/v4/Cb06.htmb\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto_deps[7] = {
   &::descriptor_table_google_2fapi_2fannotations_2eproto,
@@ -847,7 +920,7 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor
   &::descriptor_table_kentik_2fuser_2fv202211_2fuser_2eproto,
   &::descriptor_table_protoc_2dgen_2dopenapiv2_2foptions_2fannotations_2eproto,
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto_sccs[18] = {
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto_sccs[20] = {
   &scc_info_CreateCustomDimensionRequest_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto.base,
   &scc_info_CreateCustomDimensionResponse_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto.base,
   &scc_info_CreatePopulatorRequest_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto.base,
@@ -857,11 +930,13 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
   &scc_info_DeleteCustomDimensionResponse_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto.base,
   &scc_info_DeletePopulatorRequest_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto.base,
   &scc_info_DeletePopulatorResponse_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto.base,
+  &scc_info_ExtendedField_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto.base,
   &scc_info_GetCustomDimensionInfoRequest_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto.base,
   &scc_info_GetCustomDimensionInfoResponse_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto.base,
   &scc_info_ListCustomDimensionsRequest_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto.base,
   &scc_info_ListCustomDimensionsResponse_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto.base,
   &scc_info_Populator_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto.base,
+  &scc_info_Populator_ExtendedFieldsEntry_DoNotUse_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto.base,
   &scc_info_UpdateCustomDimensionRequest_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto.base,
   &scc_info_UpdateCustomDimensionResponse_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto.base,
   &scc_info_UpdatePopulatorRequest_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto.base,
@@ -869,10 +944,10 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto = {
-  false, false, descriptor_table_protodef_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto, "kentik/custom_dimension/v202411alpha1/custom_dimension.proto", 11520,
-  &descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto_once, descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto_sccs, descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto_deps, 18, 7,
+  false, false, descriptor_table_protodef_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto, "kentik/custom_dimension/v202411alpha1/custom_dimension.proto", 11999,
+  &descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto_once, descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto_sccs, descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto_deps, 20, 7,
   schemas, file_default_instances, TableStruct_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto::offsets,
-  file_level_metadata_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto, 18, file_level_enum_descriptors_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto, file_level_service_descriptors_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto,
+  file_level_metadata_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto, 20, file_level_enum_descriptors_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto, file_level_service_descriptors_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
@@ -926,6 +1001,11 @@ CustomDimension::CustomDimension(const CustomDimension& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       populators_(from.populators_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_id().empty()) {
+    id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_id(),
+      GetArena());
+  }
   name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_name().empty()) {
     name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_name(),
@@ -941,6 +1021,11 @@ CustomDimension::CustomDimension(const CustomDimension& from)
     description_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_description(),
       GetArena());
   }
+  company_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_company_id().empty()) {
+    company_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_company_id(),
+      GetArena());
+  }
   if (from._internal_has_created_date()) {
     created_date_ = new PROTOBUF_NAMESPACE_ID::Timestamp(*from.created_date_);
   } else {
@@ -951,20 +1036,19 @@ CustomDimension::CustomDimension(const CustomDimension& from)
   } else {
     updated_date_ = nullptr;
   }
-  ::memcpy(&id_, &from.id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&company_id_) -
-    reinterpret_cast<char*>(&id_)) + sizeof(company_id_));
   // @@protoc_insertion_point(copy_constructor:kentik.custom_dimension.v202411alpha1.CustomDimension)
 }
 
 void CustomDimension::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_CustomDimension_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto.base);
+  id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   type_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   description_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  company_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&created_date_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&company_id_) -
-      reinterpret_cast<char*>(&created_date_)) + sizeof(company_id_));
+      reinterpret_cast<char*>(&updated_date_) -
+      reinterpret_cast<char*>(&created_date_)) + sizeof(updated_date_));
 }
 
 CustomDimension::~CustomDimension() {
@@ -975,9 +1059,11 @@ CustomDimension::~CustomDimension() {
 
 void CustomDimension::SharedDtor() {
   GOOGLE_DCHECK(GetArena() == nullptr);
+  id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   type_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   description_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  company_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete created_date_;
   if (this != internal_default_instance()) delete updated_date_;
 }
@@ -1004,9 +1090,11 @@ void CustomDimension::Clear() {
   (void) cached_has_bits;
 
   populators_.Clear();
+  id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   name_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   type_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   description_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  company_id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   if (GetArena() == nullptr && created_date_ != nullptr) {
     delete created_date_;
   }
@@ -1015,9 +1103,6 @@ void CustomDimension::Clear() {
     delete updated_date_;
   }
   updated_date_ = nullptr;
-  ::memset(&id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&company_id_) -
-      reinterpret_cast<char*>(&id_)) + sizeof(company_id_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1029,10 +1114,12 @@ const char* CustomDimension::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPAC
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // uint32 id = 1[json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      // string id = 1[json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
-          id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.custom_dimension.v202411alpha1.CustomDimension.id"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1075,10 +1162,12 @@ const char* CustomDimension::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPAC
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<42>(ptr));
         } else goto handle_unusual;
         continue;
-      // uint32 company_id = 6[json_name = "companyId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      // string company_id = 6[json_name = "companyId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       case 6:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 48)) {
-          company_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 50)) {
+          auto str = _internal_mutable_company_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.custom_dimension.v202411alpha1.CustomDimension.company_id"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1124,10 +1213,14 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 id = 1[json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  if (this->id() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_id(), target);
+  // string id = 1[json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->id().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_id().data(), static_cast<int>(this->_internal_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.custom_dimension.v202411alpha1.CustomDimension.id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_id(), target);
   }
 
   // string name = 2[json_name = "name", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1168,10 +1261,14 @@ failure:
       InternalWriteMessage(5, this->_internal_populators(i), target, stream);
   }
 
-  // uint32 company_id = 6[json_name = "companyId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  if (this->company_id() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(6, this->_internal_company_id(), target);
+  // string company_id = 6[json_name = "companyId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->company_id().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_company_id().data(), static_cast<int>(this->_internal_company_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.custom_dimension.v202411alpha1.CustomDimension.company_id");
+    target = stream->WriteStringMaybeAliased(
+        6, this->_internal_company_id(), target);
   }
 
   // .google.protobuf.Timestamp created_date = 7[json_name = "createdDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1213,6 +1310,13 @@ size_t CustomDimension::ByteSizeLong() const {
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
+  // string id = 1[json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->id().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_id());
+  }
+
   // string name = 2[json_name = "name", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   if (this->name().size() > 0) {
     total_size += 1 +
@@ -1234,6 +1338,13 @@ size_t CustomDimension::ByteSizeLong() const {
         this->_internal_description());
   }
 
+  // string company_id = 6[json_name = "companyId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->company_id().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_company_id());
+  }
+
   // .google.protobuf.Timestamp created_date = 7[json_name = "createdDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   if (this->has_created_date()) {
     total_size += 1 +
@@ -1246,20 +1357,6 @@ size_t CustomDimension::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *updated_date_);
-  }
-
-  // uint32 id = 1[json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  if (this->id() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
-        this->_internal_id());
-  }
-
-  // uint32 company_id = 6[json_name = "companyId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  if (this->company_id() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
-        this->_internal_company_id());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1294,6 +1391,9 @@ void CustomDimension::MergeFrom(const CustomDimension& from) {
   (void) cached_has_bits;
 
   populators_.MergeFrom(from.populators_);
+  if (from.id().size() > 0) {
+    _internal_set_id(from._internal_id());
+  }
   if (from.name().size() > 0) {
     _internal_set_name(from._internal_name());
   }
@@ -1303,17 +1403,14 @@ void CustomDimension::MergeFrom(const CustomDimension& from) {
   if (from.description().size() > 0) {
     _internal_set_description(from._internal_description());
   }
+  if (from.company_id().size() > 0) {
+    _internal_set_company_id(from._internal_company_id());
+  }
   if (from.has_created_date()) {
     _internal_mutable_created_date()->PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(from._internal_created_date());
   }
   if (from.has_updated_date()) {
     _internal_mutable_updated_date()->PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(from._internal_updated_date());
-  }
-  if (from.id() != 0) {
-    _internal_set_id(from._internal_id());
-  }
-  if (from.company_id() != 0) {
-    _internal_set_company_id(from._internal_company_id());
   }
 }
 
@@ -1339,12 +1436,14 @@ void CustomDimension::InternalSwap(CustomDimension* other) {
   using std::swap;
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   populators_.InternalSwap(&other->populators_);
+  id_.Swap(&other->id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   name_.Swap(&other->name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   type_.Swap(&other->type_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   description_.Swap(&other->description_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  company_id_.Swap(&other->company_id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(CustomDimension, company_id_)
-      + sizeof(CustomDimension::company_id_)
+      PROTOBUF_FIELD_OFFSET(CustomDimension, updated_date_)
+      + sizeof(CustomDimension::updated_date_)
       - PROTOBUF_FIELD_OFFSET(CustomDimension, created_date_)>(
           reinterpret_cast<char*>(&created_date_),
           reinterpret_cast<char*>(&other->created_date_));
@@ -1352,6 +1451,23 @@ void CustomDimension::InternalSwap(CustomDimension* other) {
 
 ::PROTOBUF_NAMESPACE_ID::Metadata CustomDimension::GetMetadata() const {
   return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+Populator_ExtendedFieldsEntry_DoNotUse::Populator_ExtendedFieldsEntry_DoNotUse() {}
+Populator_ExtendedFieldsEntry_DoNotUse::Populator_ExtendedFieldsEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+    : SuperType(arena) {}
+void Populator_ExtendedFieldsEntry_DoNotUse::MergeFrom(const Populator_ExtendedFieldsEntry_DoNotUse& other) {
+  MergeFromInternal(other);
+}
+::PROTOBUF_NAMESPACE_ID::Metadata Populator_ExtendedFieldsEntry_DoNotUse::GetMetadata() const {
+  return GetMetadataStatic();
+}
+void Populator_ExtendedFieldsEntry_DoNotUse::MergeFrom(
+    const ::PROTOBUF_NAMESPACE_ID::Message& other) {
+  ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom(other);
 }
 
 
@@ -1407,7 +1523,8 @@ Populator::Populator(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   bgp_community_(arena),
   mac_(arena),
   country_(arena),
-  vlans_(arena) {
+  vlans_(arena),
+  extended_fields_(arena) {
   SharedCtor();
   RegisterArenaDtor(arena);
   // @@protoc_insertion_point(arena_constructor:kentik.custom_dimension.v202411alpha1.Populator)
@@ -1432,6 +1549,12 @@ Populator::Populator(const Populator& from)
       country_(from.country_),
       vlans_(from.vlans_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  extended_fields_.MergeFrom(from.extended_fields_);
+  id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_id().empty()) {
+    id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_id(),
+      GetArena());
+  }
   value_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_value().empty()) {
     value_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_value(),
@@ -1457,20 +1580,21 @@ Populator::Populator(const Populator& from)
   } else {
     updated_date_ = nullptr;
   }
-  ::memcpy(&id_, &from.id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&tcp_flags_) -
-    reinterpret_cast<char*>(&id_)) + sizeof(tcp_flags_));
+  ::memcpy(&tcp_flags_, &from.tcp_flags_,
+    static_cast<size_t>(reinterpret_cast<char*>(&mac_count_) -
+    reinterpret_cast<char*>(&tcp_flags_)) + sizeof(mac_count_));
   // @@protoc_insertion_point(copy_constructor:kentik.custom_dimension.v202411alpha1.Populator)
 }
 
 void Populator::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_Populator_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto.base);
+  id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   value_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   direction_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   user_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&created_date_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&tcp_flags_) -
-      reinterpret_cast<char*>(&created_date_)) + sizeof(tcp_flags_));
+      reinterpret_cast<char*>(&mac_count_) -
+      reinterpret_cast<char*>(&created_date_)) + sizeof(mac_count_));
 }
 
 Populator::~Populator() {
@@ -1481,6 +1605,7 @@ Populator::~Populator() {
 
 void Populator::SharedDtor() {
   GOOGLE_DCHECK(GetArena() == nullptr);
+  id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   value_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   direction_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   user_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
@@ -1526,6 +1651,8 @@ void Populator::Clear() {
   mac_.Clear();
   country_.Clear();
   vlans_.Clear();
+  extended_fields_.Clear();
+  id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   value_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   direction_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   user_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
@@ -1537,9 +1664,9 @@ void Populator::Clear() {
     delete updated_date_;
   }
   updated_date_ = nullptr;
-  ::memset(&id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&tcp_flags_) -
-      reinterpret_cast<char*>(&id_)) + sizeof(tcp_flags_));
+  ::memset(&tcp_flags_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&mac_count_) -
+      reinterpret_cast<char*>(&tcp_flags_)) + sizeof(mac_count_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1551,10 +1678,12 @@ const char* Populator::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // uint32 id = 1[json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      // string id = 1[json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
-          id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.custom_dimension.v202411alpha1.Populator.id"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1828,6 +1957,32 @@ const char* Populator::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
+      // uint32 addr_count = 25[json_name = "addrCount", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 25:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 200)) {
+          addr_count_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // uint32 mac_count = 26[json_name = "macCount", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 26:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 208)) {
+          mac_count_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // map<string, .kentik.custom_dimension.v202411alpha1.ExtendedField> extended_fields = 27[json_name = "extendedFields", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 27:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 218)) {
+          ptr -= 2;
+          do {
+            ptr += 2;
+            ptr = ctx->ParseMessage(&extended_fields_, ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<218>(ptr));
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
         if ((tag & 7) == 4 || tag == 0) {
@@ -1856,10 +2011,14 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 id = 1[json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  if (this->id() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_id(), target);
+  // string id = 1[json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->id().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_id().data(), static_cast<int>(this->_internal_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.custom_dimension.v202411alpha1.Populator.id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_id(), target);
   }
 
   // string value = 2[json_name = "value", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -2080,6 +2239,59 @@ failure:
         24, _Internal::updated_date(this), target, stream);
   }
 
+  // uint32 addr_count = 25[json_name = "addrCount", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->addr_count() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(25, this->_internal_addr_count(), target);
+  }
+
+  // uint32 mac_count = 26[json_name = "macCount", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->mac_count() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(26, this->_internal_mac_count(), target);
+  }
+
+  // map<string, .kentik.custom_dimension.v202411alpha1.ExtendedField> extended_fields = 27[json_name = "extendedFields", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (!this->_internal_extended_fields().empty()) {
+    typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::kentik::custom_dimension::v202411alpha1::ExtendedField >::const_pointer
+        ConstPtr;
+    typedef ConstPtr SortItem;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::CompareByDerefFirst<SortItem> Less;
+    struct Utf8Check {
+      static void Check(ConstPtr p) {
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+          p->first.data(), static_cast<int>(p->first.length()),
+          ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+          "kentik.custom_dimension.v202411alpha1.Populator.ExtendedFieldsEntry.key");
+      }
+    };
+
+    if (stream->IsSerializationDeterministic() &&
+        this->_internal_extended_fields().size() > 1) {
+      ::std::unique_ptr<SortItem[]> items(
+          new SortItem[this->_internal_extended_fields().size()]);
+      typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::kentik::custom_dimension::v202411alpha1::ExtendedField >::size_type size_type;
+      size_type n = 0;
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::kentik::custom_dimension::v202411alpha1::ExtendedField >::const_iterator
+          it = this->_internal_extended_fields().begin();
+          it != this->_internal_extended_fields().end(); ++it, ++n) {
+        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
+      }
+      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
+      for (size_type i = 0; i < n; i++) {
+        target = Populator_ExtendedFieldsEntry_DoNotUse::Funcs::InternalSerialize(27, items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second, target, stream);
+        Utf8Check::Check(&(*items[static_cast<ptrdiff_t>(i)]));
+      }
+    } else {
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::kentik::custom_dimension::v202411alpha1::ExtendedField >::const_iterator
+          it = this->_internal_extended_fields().begin();
+          it != this->_internal_extended_fields().end(); ++it) {
+        target = Populator_ExtendedFieldsEntry_DoNotUse::Funcs::InternalSerialize(27, it->first, it->second, target, stream);
+        Utf8Check::Check(&(*it));
+      }
+    }
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -2260,6 +2472,22 @@ size_t Populator::ByteSizeLong() const {
       vlans_.Get(i));
   }
 
+  // map<string, .kentik.custom_dimension.v202411alpha1.ExtendedField> extended_fields = 27[json_name = "extendedFields", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  total_size += 2 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_extended_fields_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::kentik::custom_dimension::v202411alpha1::ExtendedField >::const_iterator
+      it = this->_internal_extended_fields().begin();
+      it != this->_internal_extended_fields().end(); ++it) {
+    total_size += Populator_ExtendedFieldsEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
+  }
+
+  // string id = 1[json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->id().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_id());
+  }
+
   // string value = 2[json_name = "value", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   if (this->value().size() > 0) {
     total_size += 1 +
@@ -2295,18 +2523,25 @@ size_t Populator::ByteSizeLong() const {
         *updated_date_);
   }
 
-  // uint32 id = 1[json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  if (this->id() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
-        this->_internal_id());
-  }
-
   // uint32 tcp_flags = 10[json_name = "tcpFlags", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   if (this->tcp_flags() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
         this->_internal_tcp_flags());
+  }
+
+  // uint32 addr_count = 25[json_name = "addrCount", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->addr_count() != 0) {
+    total_size += 2 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+        this->_internal_addr_count());
+  }
+
+  // uint32 mac_count = 26[json_name = "macCount", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->mac_count() != 0) {
+    total_size += 2 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+        this->_internal_mac_count());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -2357,6 +2592,10 @@ void Populator::MergeFrom(const Populator& from) {
   mac_.MergeFrom(from.mac_);
   country_.MergeFrom(from.country_);
   vlans_.MergeFrom(from.vlans_);
+  extended_fields_.MergeFrom(from.extended_fields_);
+  if (from.id().size() > 0) {
+    _internal_set_id(from._internal_id());
+  }
   if (from.value().size() > 0) {
     _internal_set_value(from._internal_value());
   }
@@ -2372,11 +2611,14 @@ void Populator::MergeFrom(const Populator& from) {
   if (from.has_updated_date()) {
     _internal_mutable_updated_date()->PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(from._internal_updated_date());
   }
-  if (from.id() != 0) {
-    _internal_set_id(from._internal_id());
-  }
   if (from.tcp_flags() != 0) {
     _internal_set_tcp_flags(from._internal_tcp_flags());
+  }
+  if (from.addr_count() != 0) {
+    _internal_set_addr_count(from._internal_addr_count());
+  }
+  if (from.mac_count() != 0) {
+    _internal_set_mac_count(from._internal_mac_count());
   }
 }
 
@@ -2418,18 +2660,228 @@ void Populator::InternalSwap(Populator* other) {
   mac_.InternalSwap(&other->mac_);
   country_.InternalSwap(&other->country_);
   vlans_.InternalSwap(&other->vlans_);
+  extended_fields_.Swap(&other->extended_fields_);
+  id_.Swap(&other->id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   value_.Swap(&other->value_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   direction_.Swap(&other->direction_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   user_.Swap(&other->user_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Populator, tcp_flags_)
-      + sizeof(Populator::tcp_flags_)
+      PROTOBUF_FIELD_OFFSET(Populator, mac_count_)
+      + sizeof(Populator::mac_count_)
       - PROTOBUF_FIELD_OFFSET(Populator, created_date_)>(
           reinterpret_cast<char*>(&created_date_),
           reinterpret_cast<char*>(&other->created_date_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Populator::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void ExtendedField::InitAsDefaultInstance() {
+}
+class ExtendedField::_Internal {
+ public:
+};
+
+ExtendedField::ExtendedField(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
+  value_(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.custom_dimension.v202411alpha1.ExtendedField)
+}
+ExtendedField::ExtendedField(const ExtendedField& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      value_(from.value_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:kentik.custom_dimension.v202411alpha1.ExtendedField)
+}
+
+void ExtendedField::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ExtendedField_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto.base);
+}
+
+ExtendedField::~ExtendedField() {
+  // @@protoc_insertion_point(destructor:kentik.custom_dimension.v202411alpha1.ExtendedField)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void ExtendedField::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+}
+
+void ExtendedField::ArenaDtor(void* object) {
+  ExtendedField* _this = reinterpret_cast< ExtendedField* >(object);
+  (void)_this;
+}
+void ExtendedField::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void ExtendedField::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const ExtendedField& ExtendedField::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ExtendedField_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void ExtendedField::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.custom_dimension.v202411alpha1.ExtendedField)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  value_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* ExtendedField::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // repeated string value = 1[json_name = "value"];
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_value();
+            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.custom_dimension.v202411alpha1.ExtendedField.value"));
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* ExtendedField::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:kentik.custom_dimension.v202411alpha1.ExtendedField)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated string value = 1[json_name = "value"];
+  for (int i = 0, n = this->_internal_value_size(); i < n; i++) {
+    const auto& s = this->_internal_value(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.custom_dimension.v202411alpha1.ExtendedField.value");
+    target = stream->WriteString(1, s, target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:kentik.custom_dimension.v202411alpha1.ExtendedField)
+  return target;
+}
+
+size_t ExtendedField::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:kentik.custom_dimension.v202411alpha1.ExtendedField)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated string value = 1[json_name = "value"];
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(value_.size());
+  for (int i = 0, n = value_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      value_.Get(i));
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void ExtendedField::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:kentik.custom_dimension.v202411alpha1.ExtendedField)
+  GOOGLE_DCHECK_NE(&from, this);
+  const ExtendedField* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ExtendedField>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:kentik.custom_dimension.v202411alpha1.ExtendedField)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:kentik.custom_dimension.v202411alpha1.ExtendedField)
+    MergeFrom(*source);
+  }
+}
+
+void ExtendedField::MergeFrom(const ExtendedField& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:kentik.custom_dimension.v202411alpha1.ExtendedField)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  value_.MergeFrom(from.value_);
+}
+
+void ExtendedField::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:kentik.custom_dimension.v202411alpha1.ExtendedField)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ExtendedField::CopyFrom(const ExtendedField& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.custom_dimension.v202411alpha1.ExtendedField)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ExtendedField::IsInitialized() const {
+  return true;
+}
+
+void ExtendedField::InternalSwap(ExtendedField* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  value_.InternalSwap(&other->value_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata ExtendedField::GetMetadata() const {
   return GetMetadataStatic();
 }
 
@@ -2819,12 +3271,17 @@ GetCustomDimensionInfoRequest::GetCustomDimensionInfoRequest(::PROTOBUF_NAMESPAC
 GetCustomDimensionInfoRequest::GetCustomDimensionInfoRequest(const GetCustomDimensionInfoRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  custom_dimension_id_ = from.custom_dimension_id_;
+  custom_dimension_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_custom_dimension_id().empty()) {
+    custom_dimension_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_custom_dimension_id(),
+      GetArena());
+  }
   // @@protoc_insertion_point(copy_constructor:kentik.custom_dimension.v202411alpha1.GetCustomDimensionInfoRequest)
 }
 
 void GetCustomDimensionInfoRequest::SharedCtor() {
-  custom_dimension_id_ = 0u;
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_GetCustomDimensionInfoRequest_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto.base);
+  custom_dimension_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 GetCustomDimensionInfoRequest::~GetCustomDimensionInfoRequest() {
@@ -2835,6 +3292,7 @@ GetCustomDimensionInfoRequest::~GetCustomDimensionInfoRequest() {
 
 void GetCustomDimensionInfoRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArena() == nullptr);
+  custom_dimension_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void GetCustomDimensionInfoRequest::ArenaDtor(void* object) {
@@ -2858,7 +3316,7 @@ void GetCustomDimensionInfoRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  custom_dimension_id_ = 0u;
+  custom_dimension_id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -2870,10 +3328,12 @@ const char* GetCustomDimensionInfoRequest::_InternalParse(const char* ptr, ::PRO
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // uint32 custom_dimension_id = 1[json_name = "customDimensionId"];
+      // string custom_dimension_id = 1[json_name = "customDimensionId"];
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
-          custom_dimension_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_custom_dimension_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.custom_dimension.v202411alpha1.GetCustomDimensionInfoRequest.custom_dimension_id"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -2905,10 +3365,14 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 custom_dimension_id = 1[json_name = "customDimensionId"];
-  if (this->custom_dimension_id() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_custom_dimension_id(), target);
+  // string custom_dimension_id = 1[json_name = "customDimensionId"];
+  if (this->custom_dimension_id().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_custom_dimension_id().data(), static_cast<int>(this->_internal_custom_dimension_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.custom_dimension.v202411alpha1.GetCustomDimensionInfoRequest.custom_dimension_id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_custom_dimension_id(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -2927,10 +3391,10 @@ size_t GetCustomDimensionInfoRequest::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // uint32 custom_dimension_id = 1[json_name = "customDimensionId"];
-  if (this->custom_dimension_id() != 0) {
+  // string custom_dimension_id = 1[json_name = "customDimensionId"];
+  if (this->custom_dimension_id().size() > 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_custom_dimension_id());
   }
 
@@ -2965,7 +3429,7 @@ void GetCustomDimensionInfoRequest::MergeFrom(const GetCustomDimensionInfoReques
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.custom_dimension_id() != 0) {
+  if (from.custom_dimension_id().size() > 0) {
     _internal_set_custom_dimension_id(from._internal_custom_dimension_id());
   }
 }
@@ -2991,7 +3455,7 @@ bool GetCustomDimensionInfoRequest::IsInitialized() const {
 void GetCustomDimensionInfoRequest::InternalSwap(GetCustomDimensionInfoRequest* other) {
   using std::swap;
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  swap(custom_dimension_id_, other->custom_dimension_id_);
+  custom_dimension_id_.Swap(&other->custom_dimension_id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata GetCustomDimensionInfoRequest::GetMetadata() const {
@@ -3668,20 +4132,23 @@ UpdateCustomDimensionRequest::UpdateCustomDimensionRequest(::PROTOBUF_NAMESPACE_
 UpdateCustomDimensionRequest::UpdateCustomDimensionRequest(const UpdateCustomDimensionRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  custom_dimension_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_custom_dimension_id().empty()) {
+    custom_dimension_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_custom_dimension_id(),
+      GetArena());
+  }
   if (from._internal_has_dimension()) {
     dimension_ = new ::kentik::custom_dimension::v202411alpha1::CustomDimension(*from.dimension_);
   } else {
     dimension_ = nullptr;
   }
-  custom_dimension_id_ = from.custom_dimension_id_;
   // @@protoc_insertion_point(copy_constructor:kentik.custom_dimension.v202411alpha1.UpdateCustomDimensionRequest)
 }
 
 void UpdateCustomDimensionRequest::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_UpdateCustomDimensionRequest_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto.base);
-  ::memset(&dimension_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&custom_dimension_id_) -
-      reinterpret_cast<char*>(&dimension_)) + sizeof(custom_dimension_id_));
+  custom_dimension_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  dimension_ = nullptr;
 }
 
 UpdateCustomDimensionRequest::~UpdateCustomDimensionRequest() {
@@ -3692,6 +4159,7 @@ UpdateCustomDimensionRequest::~UpdateCustomDimensionRequest() {
 
 void UpdateCustomDimensionRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArena() == nullptr);
+  custom_dimension_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete dimension_;
 }
 
@@ -3716,11 +4184,11 @@ void UpdateCustomDimensionRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  custom_dimension_id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   if (GetArena() == nullptr && dimension_ != nullptr) {
     delete dimension_;
   }
   dimension_ = nullptr;
-  custom_dimension_id_ = 0u;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -3732,10 +4200,12 @@ const char* UpdateCustomDimensionRequest::_InternalParse(const char* ptr, ::PROT
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // uint32 custom_dimension_id = 1[json_name = "customDimensionId"];
+      // string custom_dimension_id = 1[json_name = "customDimensionId"];
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
-          custom_dimension_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_custom_dimension_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.custom_dimension.v202411alpha1.UpdateCustomDimensionRequest.custom_dimension_id"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -3774,10 +4244,14 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 custom_dimension_id = 1[json_name = "customDimensionId"];
-  if (this->custom_dimension_id() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_custom_dimension_id(), target);
+  // string custom_dimension_id = 1[json_name = "customDimensionId"];
+  if (this->custom_dimension_id().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_custom_dimension_id().data(), static_cast<int>(this->_internal_custom_dimension_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.custom_dimension.v202411alpha1.UpdateCustomDimensionRequest.custom_dimension_id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_custom_dimension_id(), target);
   }
 
   // .kentik.custom_dimension.v202411alpha1.CustomDimension dimension = 2[json_name = "dimension"];
@@ -3804,18 +4278,18 @@ size_t UpdateCustomDimensionRequest::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  // string custom_dimension_id = 1[json_name = "customDimensionId"];
+  if (this->custom_dimension_id().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_custom_dimension_id());
+  }
+
   // .kentik.custom_dimension.v202411alpha1.CustomDimension dimension = 2[json_name = "dimension"];
   if (this->has_dimension()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *dimension_);
-  }
-
-  // uint32 custom_dimension_id = 1[json_name = "customDimensionId"];
-  if (this->custom_dimension_id() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
-        this->_internal_custom_dimension_id());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -3849,11 +4323,11 @@ void UpdateCustomDimensionRequest::MergeFrom(const UpdateCustomDimensionRequest&
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  if (from.custom_dimension_id().size() > 0) {
+    _internal_set_custom_dimension_id(from._internal_custom_dimension_id());
+  }
   if (from.has_dimension()) {
     _internal_mutable_dimension()->::kentik::custom_dimension::v202411alpha1::CustomDimension::MergeFrom(from._internal_dimension());
-  }
-  if (from.custom_dimension_id() != 0) {
-    _internal_set_custom_dimension_id(from._internal_custom_dimension_id());
   }
 }
 
@@ -3878,12 +4352,8 @@ bool UpdateCustomDimensionRequest::IsInitialized() const {
 void UpdateCustomDimensionRequest::InternalSwap(UpdateCustomDimensionRequest* other) {
   using std::swap;
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(UpdateCustomDimensionRequest, custom_dimension_id_)
-      + sizeof(UpdateCustomDimensionRequest::custom_dimension_id_)
-      - PROTOBUF_FIELD_OFFSET(UpdateCustomDimensionRequest, dimension_)>(
-          reinterpret_cast<char*>(&dimension_),
-          reinterpret_cast<char*>(&other->dimension_));
+  custom_dimension_id_.Swap(&other->custom_dimension_id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  swap(dimension_, other->dimension_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata UpdateCustomDimensionRequest::GetMetadata() const {
@@ -4123,12 +4593,17 @@ DeleteCustomDimensionRequest::DeleteCustomDimensionRequest(::PROTOBUF_NAMESPACE_
 DeleteCustomDimensionRequest::DeleteCustomDimensionRequest(const DeleteCustomDimensionRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  custom_dimension_id_ = from.custom_dimension_id_;
+  custom_dimension_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_custom_dimension_id().empty()) {
+    custom_dimension_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_custom_dimension_id(),
+      GetArena());
+  }
   // @@protoc_insertion_point(copy_constructor:kentik.custom_dimension.v202411alpha1.DeleteCustomDimensionRequest)
 }
 
 void DeleteCustomDimensionRequest::SharedCtor() {
-  custom_dimension_id_ = 0u;
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_DeleteCustomDimensionRequest_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto.base);
+  custom_dimension_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 DeleteCustomDimensionRequest::~DeleteCustomDimensionRequest() {
@@ -4139,6 +4614,7 @@ DeleteCustomDimensionRequest::~DeleteCustomDimensionRequest() {
 
 void DeleteCustomDimensionRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArena() == nullptr);
+  custom_dimension_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void DeleteCustomDimensionRequest::ArenaDtor(void* object) {
@@ -4162,7 +4638,7 @@ void DeleteCustomDimensionRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  custom_dimension_id_ = 0u;
+  custom_dimension_id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -4174,10 +4650,12 @@ const char* DeleteCustomDimensionRequest::_InternalParse(const char* ptr, ::PROT
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // uint32 custom_dimension_id = 1[json_name = "customDimensionId"];
+      // string custom_dimension_id = 1[json_name = "customDimensionId"];
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
-          custom_dimension_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_custom_dimension_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.custom_dimension.v202411alpha1.DeleteCustomDimensionRequest.custom_dimension_id"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -4209,10 +4687,14 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 custom_dimension_id = 1[json_name = "customDimensionId"];
-  if (this->custom_dimension_id() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_custom_dimension_id(), target);
+  // string custom_dimension_id = 1[json_name = "customDimensionId"];
+  if (this->custom_dimension_id().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_custom_dimension_id().data(), static_cast<int>(this->_internal_custom_dimension_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.custom_dimension.v202411alpha1.DeleteCustomDimensionRequest.custom_dimension_id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_custom_dimension_id(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -4231,10 +4713,10 @@ size_t DeleteCustomDimensionRequest::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // uint32 custom_dimension_id = 1[json_name = "customDimensionId"];
-  if (this->custom_dimension_id() != 0) {
+  // string custom_dimension_id = 1[json_name = "customDimensionId"];
+  if (this->custom_dimension_id().size() > 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_custom_dimension_id());
   }
 
@@ -4269,7 +4751,7 @@ void DeleteCustomDimensionRequest::MergeFrom(const DeleteCustomDimensionRequest&
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.custom_dimension_id() != 0) {
+  if (from.custom_dimension_id().size() > 0) {
     _internal_set_custom_dimension_id(from._internal_custom_dimension_id());
   }
 }
@@ -4295,7 +4777,7 @@ bool DeleteCustomDimensionRequest::IsInitialized() const {
 void DeleteCustomDimensionRequest::InternalSwap(DeleteCustomDimensionRequest* other) {
   using std::swap;
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  swap(custom_dimension_id_, other->custom_dimension_id_);
+  custom_dimension_id_.Swap(&other->custom_dimension_id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata DeleteCustomDimensionRequest::GetMetadata() const {
@@ -4492,20 +4974,23 @@ CreatePopulatorRequest::CreatePopulatorRequest(::PROTOBUF_NAMESPACE_ID::Arena* a
 CreatePopulatorRequest::CreatePopulatorRequest(const CreatePopulatorRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  custom_dimension_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_custom_dimension_id().empty()) {
+    custom_dimension_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_custom_dimension_id(),
+      GetArena());
+  }
   if (from._internal_has_populator()) {
     populator_ = new ::kentik::custom_dimension::v202411alpha1::Populator(*from.populator_);
   } else {
     populator_ = nullptr;
   }
-  custom_dimension_id_ = from.custom_dimension_id_;
   // @@protoc_insertion_point(copy_constructor:kentik.custom_dimension.v202411alpha1.CreatePopulatorRequest)
 }
 
 void CreatePopulatorRequest::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_CreatePopulatorRequest_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto.base);
-  ::memset(&populator_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&custom_dimension_id_) -
-      reinterpret_cast<char*>(&populator_)) + sizeof(custom_dimension_id_));
+  custom_dimension_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  populator_ = nullptr;
 }
 
 CreatePopulatorRequest::~CreatePopulatorRequest() {
@@ -4516,6 +5001,7 @@ CreatePopulatorRequest::~CreatePopulatorRequest() {
 
 void CreatePopulatorRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArena() == nullptr);
+  custom_dimension_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete populator_;
 }
 
@@ -4540,11 +5026,11 @@ void CreatePopulatorRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  custom_dimension_id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   if (GetArena() == nullptr && populator_ != nullptr) {
     delete populator_;
   }
   populator_ = nullptr;
-  custom_dimension_id_ = 0u;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -4556,10 +5042,12 @@ const char* CreatePopulatorRequest::_InternalParse(const char* ptr, ::PROTOBUF_N
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // uint32 custom_dimension_id = 1[json_name = "customDimensionId"];
+      // string custom_dimension_id = 1[json_name = "customDimensionId"];
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
-          custom_dimension_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_custom_dimension_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.custom_dimension.v202411alpha1.CreatePopulatorRequest.custom_dimension_id"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -4598,10 +5086,14 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 custom_dimension_id = 1[json_name = "customDimensionId"];
-  if (this->custom_dimension_id() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_custom_dimension_id(), target);
+  // string custom_dimension_id = 1[json_name = "customDimensionId"];
+  if (this->custom_dimension_id().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_custom_dimension_id().data(), static_cast<int>(this->_internal_custom_dimension_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.custom_dimension.v202411alpha1.CreatePopulatorRequest.custom_dimension_id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_custom_dimension_id(), target);
   }
 
   // .kentik.custom_dimension.v202411alpha1.Populator populator = 2[json_name = "populator"];
@@ -4628,18 +5120,18 @@ size_t CreatePopulatorRequest::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  // string custom_dimension_id = 1[json_name = "customDimensionId"];
+  if (this->custom_dimension_id().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_custom_dimension_id());
+  }
+
   // .kentik.custom_dimension.v202411alpha1.Populator populator = 2[json_name = "populator"];
   if (this->has_populator()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *populator_);
-  }
-
-  // uint32 custom_dimension_id = 1[json_name = "customDimensionId"];
-  if (this->custom_dimension_id() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
-        this->_internal_custom_dimension_id());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -4673,11 +5165,11 @@ void CreatePopulatorRequest::MergeFrom(const CreatePopulatorRequest& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  if (from.custom_dimension_id().size() > 0) {
+    _internal_set_custom_dimension_id(from._internal_custom_dimension_id());
+  }
   if (from.has_populator()) {
     _internal_mutable_populator()->::kentik::custom_dimension::v202411alpha1::Populator::MergeFrom(from._internal_populator());
-  }
-  if (from.custom_dimension_id() != 0) {
-    _internal_set_custom_dimension_id(from._internal_custom_dimension_id());
   }
 }
 
@@ -4702,12 +5194,8 @@ bool CreatePopulatorRequest::IsInitialized() const {
 void CreatePopulatorRequest::InternalSwap(CreatePopulatorRequest* other) {
   using std::swap;
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(CreatePopulatorRequest, custom_dimension_id_)
-      + sizeof(CreatePopulatorRequest::custom_dimension_id_)
-      - PROTOBUF_FIELD_OFFSET(CreatePopulatorRequest, populator_)>(
-          reinterpret_cast<char*>(&populator_),
-          reinterpret_cast<char*>(&other->populator_));
+  custom_dimension_id_.Swap(&other->custom_dimension_id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  swap(populator_, other->populator_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata CreatePopulatorRequest::GetMetadata() const {
@@ -4954,22 +5442,29 @@ UpdatePopulatorRequest::UpdatePopulatorRequest(::PROTOBUF_NAMESPACE_ID::Arena* a
 UpdatePopulatorRequest::UpdatePopulatorRequest(const UpdatePopulatorRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  custom_dimension_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_custom_dimension_id().empty()) {
+    custom_dimension_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_custom_dimension_id(),
+      GetArena());
+  }
+  populator_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_populator_id().empty()) {
+    populator_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_populator_id(),
+      GetArena());
+  }
   if (from._internal_has_populator()) {
     populator_ = new ::kentik::custom_dimension::v202411alpha1::Populator(*from.populator_);
   } else {
     populator_ = nullptr;
   }
-  ::memcpy(&custom_dimension_id_, &from.custom_dimension_id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&populator_id_) -
-    reinterpret_cast<char*>(&custom_dimension_id_)) + sizeof(populator_id_));
   // @@protoc_insertion_point(copy_constructor:kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest)
 }
 
 void UpdatePopulatorRequest::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_UpdatePopulatorRequest_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto.base);
-  ::memset(&populator_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&populator_id_) -
-      reinterpret_cast<char*>(&populator_)) + sizeof(populator_id_));
+  custom_dimension_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  populator_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  populator_ = nullptr;
 }
 
 UpdatePopulatorRequest::~UpdatePopulatorRequest() {
@@ -4980,6 +5475,8 @@ UpdatePopulatorRequest::~UpdatePopulatorRequest() {
 
 void UpdatePopulatorRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArena() == nullptr);
+  custom_dimension_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  populator_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete populator_;
 }
 
@@ -5004,13 +5501,12 @@ void UpdatePopulatorRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  custom_dimension_id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  populator_id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   if (GetArena() == nullptr && populator_ != nullptr) {
     delete populator_;
   }
   populator_ = nullptr;
-  ::memset(&custom_dimension_id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&populator_id_) -
-      reinterpret_cast<char*>(&custom_dimension_id_)) + sizeof(populator_id_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -5022,17 +5518,21 @@ const char* UpdatePopulatorRequest::_InternalParse(const char* ptr, ::PROTOBUF_N
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // uint32 custom_dimension_id = 1[json_name = "customDimensionId"];
+      // string custom_dimension_id = 1[json_name = "customDimensionId"];
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
-          custom_dimension_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_custom_dimension_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest.custom_dimension_id"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // uint32 populator_id = 2[json_name = "populatorId"];
+      // string populator_id = 2[json_name = "populatorId"];
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          populator_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          auto str = _internal_mutable_populator_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest.populator_id"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -5071,16 +5571,24 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 custom_dimension_id = 1[json_name = "customDimensionId"];
-  if (this->custom_dimension_id() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_custom_dimension_id(), target);
+  // string custom_dimension_id = 1[json_name = "customDimensionId"];
+  if (this->custom_dimension_id().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_custom_dimension_id().data(), static_cast<int>(this->_internal_custom_dimension_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest.custom_dimension_id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_custom_dimension_id(), target);
   }
 
-  // uint32 populator_id = 2[json_name = "populatorId"];
-  if (this->populator_id() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(2, this->_internal_populator_id(), target);
+  // string populator_id = 2[json_name = "populatorId"];
+  if (this->populator_id().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_populator_id().data(), static_cast<int>(this->_internal_populator_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest.populator_id");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_populator_id(), target);
   }
 
   // .kentik.custom_dimension.v202411alpha1.Populator populator = 3[json_name = "populator"];
@@ -5107,25 +5615,25 @@ size_t UpdatePopulatorRequest::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  // string custom_dimension_id = 1[json_name = "customDimensionId"];
+  if (this->custom_dimension_id().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_custom_dimension_id());
+  }
+
+  // string populator_id = 2[json_name = "populatorId"];
+  if (this->populator_id().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_populator_id());
+  }
+
   // .kentik.custom_dimension.v202411alpha1.Populator populator = 3[json_name = "populator"];
   if (this->has_populator()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *populator_);
-  }
-
-  // uint32 custom_dimension_id = 1[json_name = "customDimensionId"];
-  if (this->custom_dimension_id() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
-        this->_internal_custom_dimension_id());
-  }
-
-  // uint32 populator_id = 2[json_name = "populatorId"];
-  if (this->populator_id() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
-        this->_internal_populator_id());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -5159,14 +5667,14 @@ void UpdatePopulatorRequest::MergeFrom(const UpdatePopulatorRequest& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_populator()) {
-    _internal_mutable_populator()->::kentik::custom_dimension::v202411alpha1::Populator::MergeFrom(from._internal_populator());
-  }
-  if (from.custom_dimension_id() != 0) {
+  if (from.custom_dimension_id().size() > 0) {
     _internal_set_custom_dimension_id(from._internal_custom_dimension_id());
   }
-  if (from.populator_id() != 0) {
+  if (from.populator_id().size() > 0) {
     _internal_set_populator_id(from._internal_populator_id());
+  }
+  if (from.has_populator()) {
+    _internal_mutable_populator()->::kentik::custom_dimension::v202411alpha1::Populator::MergeFrom(from._internal_populator());
   }
 }
 
@@ -5191,12 +5699,9 @@ bool UpdatePopulatorRequest::IsInitialized() const {
 void UpdatePopulatorRequest::InternalSwap(UpdatePopulatorRequest* other) {
   using std::swap;
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(UpdatePopulatorRequest, populator_id_)
-      + sizeof(UpdatePopulatorRequest::populator_id_)
-      - PROTOBUF_FIELD_OFFSET(UpdatePopulatorRequest, populator_)>(
-          reinterpret_cast<char*>(&populator_),
-          reinterpret_cast<char*>(&other->populator_));
+  custom_dimension_id_.Swap(&other->custom_dimension_id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  populator_id_.Swap(&other->populator_id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  swap(populator_, other->populator_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata UpdatePopulatorRequest::GetMetadata() const {
@@ -5436,16 +5941,23 @@ DeletePopulatorRequest::DeletePopulatorRequest(::PROTOBUF_NAMESPACE_ID::Arena* a
 DeletePopulatorRequest::DeletePopulatorRequest(const DeletePopulatorRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::memcpy(&custom_dimension_id_, &from.custom_dimension_id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&populator_id_) -
-    reinterpret_cast<char*>(&custom_dimension_id_)) + sizeof(populator_id_));
+  custom_dimension_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_custom_dimension_id().empty()) {
+    custom_dimension_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_custom_dimension_id(),
+      GetArena());
+  }
+  populator_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_populator_id().empty()) {
+    populator_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_populator_id(),
+      GetArena());
+  }
   // @@protoc_insertion_point(copy_constructor:kentik.custom_dimension.v202411alpha1.DeletePopulatorRequest)
 }
 
 void DeletePopulatorRequest::SharedCtor() {
-  ::memset(&custom_dimension_id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&populator_id_) -
-      reinterpret_cast<char*>(&custom_dimension_id_)) + sizeof(populator_id_));
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_DeletePopulatorRequest_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto.base);
+  custom_dimension_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  populator_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 DeletePopulatorRequest::~DeletePopulatorRequest() {
@@ -5456,6 +5968,8 @@ DeletePopulatorRequest::~DeletePopulatorRequest() {
 
 void DeletePopulatorRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArena() == nullptr);
+  custom_dimension_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  populator_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void DeletePopulatorRequest::ArenaDtor(void* object) {
@@ -5479,9 +5993,8 @@ void DeletePopulatorRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  ::memset(&custom_dimension_id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&populator_id_) -
-      reinterpret_cast<char*>(&custom_dimension_id_)) + sizeof(populator_id_));
+  custom_dimension_id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  populator_id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -5493,17 +6006,21 @@ const char* DeletePopulatorRequest::_InternalParse(const char* ptr, ::PROTOBUF_N
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // uint32 custom_dimension_id = 1[json_name = "customDimensionId"];
+      // string custom_dimension_id = 1[json_name = "customDimensionId"];
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
-          custom_dimension_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_custom_dimension_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.custom_dimension.v202411alpha1.DeletePopulatorRequest.custom_dimension_id"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // uint32 populator_id = 2[json_name = "populatorId"];
+      // string populator_id = 2[json_name = "populatorId"];
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          populator_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          auto str = _internal_mutable_populator_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.custom_dimension.v202411alpha1.DeletePopulatorRequest.populator_id"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -5535,16 +6052,24 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 custom_dimension_id = 1[json_name = "customDimensionId"];
-  if (this->custom_dimension_id() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_custom_dimension_id(), target);
+  // string custom_dimension_id = 1[json_name = "customDimensionId"];
+  if (this->custom_dimension_id().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_custom_dimension_id().data(), static_cast<int>(this->_internal_custom_dimension_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.custom_dimension.v202411alpha1.DeletePopulatorRequest.custom_dimension_id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_custom_dimension_id(), target);
   }
 
-  // uint32 populator_id = 2[json_name = "populatorId"];
-  if (this->populator_id() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(2, this->_internal_populator_id(), target);
+  // string populator_id = 2[json_name = "populatorId"];
+  if (this->populator_id().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_populator_id().data(), static_cast<int>(this->_internal_populator_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.custom_dimension.v202411alpha1.DeletePopulatorRequest.populator_id");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_populator_id(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -5563,17 +6088,17 @@ size_t DeletePopulatorRequest::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // uint32 custom_dimension_id = 1[json_name = "customDimensionId"];
-  if (this->custom_dimension_id() != 0) {
+  // string custom_dimension_id = 1[json_name = "customDimensionId"];
+  if (this->custom_dimension_id().size() > 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_custom_dimension_id());
   }
 
-  // uint32 populator_id = 2[json_name = "populatorId"];
-  if (this->populator_id() != 0) {
+  // string populator_id = 2[json_name = "populatorId"];
+  if (this->populator_id().size() > 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_populator_id());
   }
 
@@ -5608,10 +6133,10 @@ void DeletePopulatorRequest::MergeFrom(const DeletePopulatorRequest& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.custom_dimension_id() != 0) {
+  if (from.custom_dimension_id().size() > 0) {
     _internal_set_custom_dimension_id(from._internal_custom_dimension_id());
   }
-  if (from.populator_id() != 0) {
+  if (from.populator_id().size() > 0) {
     _internal_set_populator_id(from._internal_populator_id());
   }
 }
@@ -5637,12 +6162,8 @@ bool DeletePopulatorRequest::IsInitialized() const {
 void DeletePopulatorRequest::InternalSwap(DeletePopulatorRequest* other) {
   using std::swap;
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(DeletePopulatorRequest, populator_id_)
-      + sizeof(DeletePopulatorRequest::populator_id_)
-      - PROTOBUF_FIELD_OFFSET(DeletePopulatorRequest, custom_dimension_id_)>(
-          reinterpret_cast<char*>(&custom_dimension_id_),
-          reinterpret_cast<char*>(&other->custom_dimension_id_));
+  custom_dimension_id_.Swap(&other->custom_dimension_id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  populator_id_.Swap(&other->populator_id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata DeletePopulatorRequest::GetMetadata() const {
@@ -5823,8 +6344,14 @@ PROTOBUF_NAMESPACE_OPEN
 template<> PROTOBUF_NOINLINE ::kentik::custom_dimension::v202411alpha1::CustomDimension* Arena::CreateMaybeMessage< ::kentik::custom_dimension::v202411alpha1::CustomDimension >(Arena* arena) {
   return Arena::CreateMessageInternal< ::kentik::custom_dimension::v202411alpha1::CustomDimension >(arena);
 }
+template<> PROTOBUF_NOINLINE ::kentik::custom_dimension::v202411alpha1::Populator_ExtendedFieldsEntry_DoNotUse* Arena::CreateMaybeMessage< ::kentik::custom_dimension::v202411alpha1::Populator_ExtendedFieldsEntry_DoNotUse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::kentik::custom_dimension::v202411alpha1::Populator_ExtendedFieldsEntry_DoNotUse >(arena);
+}
 template<> PROTOBUF_NOINLINE ::kentik::custom_dimension::v202411alpha1::Populator* Arena::CreateMaybeMessage< ::kentik::custom_dimension::v202411alpha1::Populator >(Arena* arena) {
   return Arena::CreateMessageInternal< ::kentik::custom_dimension::v202411alpha1::Populator >(arena);
+}
+template<> PROTOBUF_NOINLINE ::kentik::custom_dimension::v202411alpha1::ExtendedField* Arena::CreateMaybeMessage< ::kentik::custom_dimension::v202411alpha1::ExtendedField >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::kentik::custom_dimension::v202411alpha1::ExtendedField >(arena);
 }
 template<> PROTOBUF_NOINLINE ::kentik::custom_dimension::v202411alpha1::ListCustomDimensionsRequest* Arena::CreateMaybeMessage< ::kentik::custom_dimension::v202411alpha1::ListCustomDimensionsRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::kentik::custom_dimension::v202411alpha1::ListCustomDimensionsRequest >(arena);

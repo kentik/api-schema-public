@@ -20,7 +20,7 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
       url: "https://github.com/kentik/api-schema-public"
     }
     description: "# Overview\n"
-        "The Custom Dimensions API enables programmatic access to information on Custom Dimensions and their Populators.\n"
+      "The Custom Dimensions API enables programmatic access to information on Custom Dimensions and their Populators.\n"
   }
   external_docs: {
     url: "https://kb.kentik.com/proto/v4/Cb06.htm"
@@ -60,7 +60,7 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
 };
 
 message CustomDimension {
-  uint32 id = 1[
+  string id = 1[
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Unique identifier for the custom dimension."
     },
@@ -96,7 +96,7 @@ message CustomDimension {
     (google.api.field_behavior) = OUTPUT_ONLY
   ];
 
-  uint32 company_id = 6[
+  string company_id = 6[
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "The system-assigned ID of the customer."
     },
@@ -120,7 +120,7 @@ message CustomDimension {
 }
 
 message Populator {
-  uint32 id = 1[
+  string id = 1[
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Unique identifier for the populator."
     },
@@ -267,6 +267,31 @@ message Populator {
     },
     (google.api.field_behavior) = OUTPUT_ONLY
   ];
+
+  uint32 addr_count = 25 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Number of IP addresses."
+    },
+    (google.api.field_behavior) = OUTPUT_ONLY
+  ];
+
+  uint32 mac_count = 26 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Number of MAC addresses."
+    },
+    (google.api.field_behavior) = OUTPUT_ONLY
+  ];
+
+  map<string, ExtendedField> extended_fields = 27[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Additional fields set on object but not currently available on API."
+    },
+    (google.api.field_behavior) = OUTPUT_ONLY
+  ];
+}
+
+message ExtendedField {
+  repeated string value = 1;
 }
 
 // {{.Name}}
@@ -280,7 +305,7 @@ message ListCustomDimensionsResponse {
 
 // {{.Name}}
 message GetCustomDimensionInfoRequest {
-  uint32 custom_dimension_id = 1;
+  string custom_dimension_id = 1;
 }
 
 message GetCustomDimensionInfoResponse {
@@ -296,7 +321,7 @@ message CreateCustomDimensionResponse {
 }
 
 message UpdateCustomDimensionRequest {
-  uint32 custom_dimension_id = 1;
+  string custom_dimension_id = 1;
   CustomDimension dimension = 2;
 }
 
@@ -305,14 +330,14 @@ message UpdateCustomDimensionResponse {
 }
 
 message DeleteCustomDimensionRequest {
-  uint32 custom_dimension_id = 1;
+  string custom_dimension_id = 1;
 }
 
 message DeleteCustomDimensionResponse {
 }
 
 message CreatePopulatorRequest {
-  uint32 custom_dimension_id = 1;
+  string custom_dimension_id = 1;
   Populator populator = 2;
 }
 
@@ -321,8 +346,8 @@ message CreatePopulatorResponse {
 }
 
 message UpdatePopulatorRequest {
-  uint32 custom_dimension_id = 1;
-  uint32 populator_id = 2;
+  string custom_dimension_id = 1;
+  string populator_id = 2;
   Populator populator = 3;
 }
 
@@ -331,8 +356,8 @@ message UpdatePopulatorResponse {
 }
 
 message DeletePopulatorRequest {
-  uint32 custom_dimension_id = 1;
-  uint32 populator_id = 2;
+  string custom_dimension_id = 1;
+  string populator_id = 2;
 }
 
 message DeletePopulatorResponse {

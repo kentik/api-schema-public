@@ -31,6 +31,9 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/map.h>  // IWYU pragma: export
+#include <google/protobuf/map_entry.h>
+#include <google/protobuf/map_field_inl.h>
 #include <google/protobuf/unknown_field_set.h>
 #include "google/api/annotations.pb.h"
 #include "google/api/client.pb.h"
@@ -54,7 +57,7 @@ struct TableStruct_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimens
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[18]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[20]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -91,6 +94,9 @@ extern DeletePopulatorRequestDefaultTypeInternal _DeletePopulatorRequest_default
 class DeletePopulatorResponse;
 class DeletePopulatorResponseDefaultTypeInternal;
 extern DeletePopulatorResponseDefaultTypeInternal _DeletePopulatorResponse_default_instance_;
+class ExtendedField;
+class ExtendedFieldDefaultTypeInternal;
+extern ExtendedFieldDefaultTypeInternal _ExtendedField_default_instance_;
 class GetCustomDimensionInfoRequest;
 class GetCustomDimensionInfoRequestDefaultTypeInternal;
 extern GetCustomDimensionInfoRequestDefaultTypeInternal _GetCustomDimensionInfoRequest_default_instance_;
@@ -106,6 +112,9 @@ extern ListCustomDimensionsResponseDefaultTypeInternal _ListCustomDimensionsResp
 class Populator;
 class PopulatorDefaultTypeInternal;
 extern PopulatorDefaultTypeInternal _Populator_default_instance_;
+class Populator_ExtendedFieldsEntry_DoNotUse;
+class Populator_ExtendedFieldsEntry_DoNotUseDefaultTypeInternal;
+extern Populator_ExtendedFieldsEntry_DoNotUseDefaultTypeInternal _Populator_ExtendedFieldsEntry_DoNotUse_default_instance_;
 class UpdateCustomDimensionRequest;
 class UpdateCustomDimensionRequestDefaultTypeInternal;
 extern UpdateCustomDimensionRequestDefaultTypeInternal _UpdateCustomDimensionRequest_default_instance_;
@@ -131,11 +140,13 @@ template<> ::kentik::custom_dimension::v202411alpha1::DeleteCustomDimensionReque
 template<> ::kentik::custom_dimension::v202411alpha1::DeleteCustomDimensionResponse* Arena::CreateMaybeMessage<::kentik::custom_dimension::v202411alpha1::DeleteCustomDimensionResponse>(Arena*);
 template<> ::kentik::custom_dimension::v202411alpha1::DeletePopulatorRequest* Arena::CreateMaybeMessage<::kentik::custom_dimension::v202411alpha1::DeletePopulatorRequest>(Arena*);
 template<> ::kentik::custom_dimension::v202411alpha1::DeletePopulatorResponse* Arena::CreateMaybeMessage<::kentik::custom_dimension::v202411alpha1::DeletePopulatorResponse>(Arena*);
+template<> ::kentik::custom_dimension::v202411alpha1::ExtendedField* Arena::CreateMaybeMessage<::kentik::custom_dimension::v202411alpha1::ExtendedField>(Arena*);
 template<> ::kentik::custom_dimension::v202411alpha1::GetCustomDimensionInfoRequest* Arena::CreateMaybeMessage<::kentik::custom_dimension::v202411alpha1::GetCustomDimensionInfoRequest>(Arena*);
 template<> ::kentik::custom_dimension::v202411alpha1::GetCustomDimensionInfoResponse* Arena::CreateMaybeMessage<::kentik::custom_dimension::v202411alpha1::GetCustomDimensionInfoResponse>(Arena*);
 template<> ::kentik::custom_dimension::v202411alpha1::ListCustomDimensionsRequest* Arena::CreateMaybeMessage<::kentik::custom_dimension::v202411alpha1::ListCustomDimensionsRequest>(Arena*);
 template<> ::kentik::custom_dimension::v202411alpha1::ListCustomDimensionsResponse* Arena::CreateMaybeMessage<::kentik::custom_dimension::v202411alpha1::ListCustomDimensionsResponse>(Arena*);
 template<> ::kentik::custom_dimension::v202411alpha1::Populator* Arena::CreateMaybeMessage<::kentik::custom_dimension::v202411alpha1::Populator>(Arena*);
+template<> ::kentik::custom_dimension::v202411alpha1::Populator_ExtendedFieldsEntry_DoNotUse* Arena::CreateMaybeMessage<::kentik::custom_dimension::v202411alpha1::Populator_ExtendedFieldsEntry_DoNotUse>(Arena*);
 template<> ::kentik::custom_dimension::v202411alpha1::UpdateCustomDimensionRequest* Arena::CreateMaybeMessage<::kentik::custom_dimension::v202411alpha1::UpdateCustomDimensionRequest>(Arena*);
 template<> ::kentik::custom_dimension::v202411alpha1::UpdateCustomDimensionResponse* Arena::CreateMaybeMessage<::kentik::custom_dimension::v202411alpha1::UpdateCustomDimensionResponse>(Arena*);
 template<> ::kentik::custom_dimension::v202411alpha1::UpdatePopulatorRequest* Arena::CreateMaybeMessage<::kentik::custom_dimension::v202411alpha1::UpdatePopulatorRequest>(Arena*);
@@ -261,13 +272,13 @@ class CustomDimension PROTOBUF_FINAL :
 
   enum : int {
     kPopulatorsFieldNumber = 5,
+    kIdFieldNumber = 1,
     kNameFieldNumber = 2,
     kTypeFieldNumber = 3,
     kDescriptionFieldNumber = 4,
+    kCompanyIdFieldNumber = 6,
     kCreatedDateFieldNumber = 7,
     kUpdatedDateFieldNumber = 8,
-    kIdFieldNumber = 1,
-    kCompanyIdFieldNumber = 6,
   };
   // repeated .kentik.custom_dimension.v202411alpha1.Populator populators = 5[json_name = "populators", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   int populators_size() const;
@@ -286,6 +297,31 @@ class CustomDimension PROTOBUF_FINAL :
   ::kentik::custom_dimension::v202411alpha1::Populator* add_populators();
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::kentik::custom_dimension::v202411alpha1::Populator >&
       populators() const;
+
+  // string id = 1[json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_id();
+  const std::string& id() const;
+  void set_id(const std::string& value);
+  void set_id(std::string&& value);
+  void set_id(const char* value);
+  void set_id(const char* value, size_t size);
+  std::string* mutable_id();
+  std::string* release_id();
+  void set_allocated_id(std::string* id);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_id();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_id(
+      std::string* id);
+  private:
+  const std::string& _internal_id() const;
+  void _internal_set_id(const std::string& value);
+  std::string* _internal_mutable_id();
+  public:
 
   // string name = 2[json_name = "name", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   void clear_name();
@@ -362,6 +398,31 @@ class CustomDimension PROTOBUF_FINAL :
   std::string* _internal_mutable_description();
   public:
 
+  // string company_id = 6[json_name = "companyId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_company_id();
+  const std::string& company_id() const;
+  void set_company_id(const std::string& value);
+  void set_company_id(std::string&& value);
+  void set_company_id(const char* value);
+  void set_company_id(const char* value, size_t size);
+  std::string* mutable_company_id();
+  std::string* release_company_id();
+  void set_allocated_company_id(std::string* company_id);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_company_id();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_company_id(
+      std::string* company_id);
+  private:
+  const std::string& _internal_company_id() const;
+  void _internal_set_company_id(const std::string& value);
+  std::string* _internal_mutable_company_id();
+  public:
+
   // .google.protobuf.Timestamp created_date = 7[json_name = "createdDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   bool has_created_date() const;
   private:
@@ -398,24 +459,6 @@ class CustomDimension PROTOBUF_FINAL :
       PROTOBUF_NAMESPACE_ID::Timestamp* updated_date);
   PROTOBUF_NAMESPACE_ID::Timestamp* unsafe_arena_release_updated_date();
 
-  // uint32 id = 1[json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  void clear_id();
-  ::PROTOBUF_NAMESPACE_ID::uint32 id() const;
-  void set_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_id() const;
-  void _internal_set_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  public:
-
-  // uint32 company_id = 6[json_name = "companyId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  void clear_company_id();
-  ::PROTOBUF_NAMESPACE_ID::uint32 company_id() const;
-  void set_company_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_company_id() const;
-  void _internal_set_company_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  public:
-
   // @@protoc_insertion_point(class_scope:kentik.custom_dimension.v202411alpha1.CustomDimension)
  private:
   class _Internal;
@@ -424,16 +467,48 @@ class CustomDimension PROTOBUF_FINAL :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::kentik::custom_dimension::v202411alpha1::Populator > populators_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr id_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr type_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr description_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr company_id_;
   PROTOBUF_NAMESPACE_ID::Timestamp* created_date_;
   PROTOBUF_NAMESPACE_ID::Timestamp* updated_date_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 id_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 company_id_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto;
 };
+// -------------------------------------------------------------------
+
+class Populator_ExtendedFieldsEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<Populator_ExtendedFieldsEntry_DoNotUse, 
+    std::string, ::kentik::custom_dimension::v202411alpha1::ExtendedField,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE,
+    0 > {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<Populator_ExtendedFieldsEntry_DoNotUse, 
+    std::string, ::kentik::custom_dimension::v202411alpha1::ExtendedField,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE,
+    0 > SuperType;
+  Populator_ExtendedFieldsEntry_DoNotUse();
+  Populator_ExtendedFieldsEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const Populator_ExtendedFieldsEntry_DoNotUse& other);
+  static const Populator_ExtendedFieldsEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const Populator_ExtendedFieldsEntry_DoNotUse*>(&_Populator_ExtendedFieldsEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(std::string* s) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "kentik.custom_dimension.v202411alpha1.Populator.ExtendedFieldsEntry.key");
+ }
+  static bool ValidateValue(void*) { return true; }
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& other) final;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto);
+    return ::descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto.file_level_metadata[1];
+  }
+
+  public:
+};
+
 // -------------------------------------------------------------------
 
 class Populator PROTOBUF_FINAL :
@@ -478,7 +553,7 @@ class Populator PROTOBUF_FINAL :
                &_Populator_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    2;
 
   friend void swap(Populator& a, Populator& b) {
     a.Swap(&b);
@@ -546,6 +621,7 @@ class Populator PROTOBUF_FINAL :
 
   // nested types ----------------------------------------------------
 
+
   // accessors -------------------------------------------------------
 
   enum : int {
@@ -566,13 +642,16 @@ class Populator PROTOBUF_FINAL :
     kMacFieldNumber = 19,
     kCountryFieldNumber = 20,
     kVlansFieldNumber = 21,
+    kExtendedFieldsFieldNumber = 27,
+    kIdFieldNumber = 1,
     kValueFieldNumber = 2,
     kDirectionFieldNumber = 3,
     kUserFieldNumber = 22,
     kCreatedDateFieldNumber = 23,
     kUpdatedDateFieldNumber = 24,
-    kIdFieldNumber = 1,
     kTcpFlagsFieldNumber = 10,
+    kAddrCountFieldNumber = 25,
+    kMacCountFieldNumber = 26,
   };
   // repeated string device_name = 4[json_name = "deviceName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   int device_name_size() const;
@@ -974,6 +1053,48 @@ class Populator PROTOBUF_FINAL :
   std::string* _internal_add_vlans();
   public:
 
+  // map<string, .kentik.custom_dimension.v202411alpha1.ExtendedField> extended_fields = 27[json_name = "extendedFields", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  int extended_fields_size() const;
+  private:
+  int _internal_extended_fields_size() const;
+  public:
+  void clear_extended_fields();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::kentik::custom_dimension::v202411alpha1::ExtendedField >&
+      _internal_extended_fields() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::kentik::custom_dimension::v202411alpha1::ExtendedField >*
+      _internal_mutable_extended_fields();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::kentik::custom_dimension::v202411alpha1::ExtendedField >&
+      extended_fields() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::kentik::custom_dimension::v202411alpha1::ExtendedField >*
+      mutable_extended_fields();
+
+  // string id = 1[json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_id();
+  const std::string& id() const;
+  void set_id(const std::string& value);
+  void set_id(std::string&& value);
+  void set_id(const char* value);
+  void set_id(const char* value, size_t size);
+  std::string* mutable_id();
+  std::string* release_id();
+  void set_allocated_id(std::string* id);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_id();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_id(
+      std::string* id);
+  private:
+  const std::string& _internal_id() const;
+  void _internal_set_id(const std::string& value);
+  std::string* _internal_mutable_id();
+  public:
+
   // string value = 2[json_name = "value", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   void clear_value();
   const std::string& value() const;
@@ -1085,15 +1206,6 @@ class Populator PROTOBUF_FINAL :
       PROTOBUF_NAMESPACE_ID::Timestamp* updated_date);
   PROTOBUF_NAMESPACE_ID::Timestamp* unsafe_arena_release_updated_date();
 
-  // uint32 id = 1[json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  void clear_id();
-  ::PROTOBUF_NAMESPACE_ID::uint32 id() const;
-  void set_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_id() const;
-  void _internal_set_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  public:
-
   // uint32 tcp_flags = 10[json_name = "tcpFlags", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   void clear_tcp_flags();
   ::PROTOBUF_NAMESPACE_ID::uint32 tcp_flags() const;
@@ -1101,6 +1213,24 @@ class Populator PROTOBUF_FINAL :
   private:
   ::PROTOBUF_NAMESPACE_ID::uint32 _internal_tcp_flags() const;
   void _internal_set_tcp_flags(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  public:
+
+  // uint32 addr_count = 25[json_name = "addrCount", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_addr_count();
+  ::PROTOBUF_NAMESPACE_ID::uint32 addr_count() const;
+  void set_addr_count(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_addr_count() const;
+  void _internal_set_addr_count(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  public:
+
+  // uint32 mac_count = 26[json_name = "macCount", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_mac_count();
+  ::PROTOBUF_NAMESPACE_ID::uint32 mac_count() const;
+  void set_mac_count(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_mac_count() const;
+  void _internal_set_mac_count(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:kentik.custom_dimension.v202411alpha1.Populator)
@@ -1131,13 +1261,173 @@ class Populator PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> mac_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> country_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> vlans_;
+  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+      Populator_ExtendedFieldsEntry_DoNotUse,
+      std::string, ::kentik::custom_dimension::v202411alpha1::ExtendedField,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE,
+      0 > extended_fields_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr id_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr value_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr direction_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr user_;
   PROTOBUF_NAMESPACE_ID::Timestamp* created_date_;
   PROTOBUF_NAMESPACE_ID::Timestamp* updated_date_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 id_;
   ::PROTOBUF_NAMESPACE_ID::uint32 tcp_flags_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 addr_count_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 mac_count_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ExtendedField PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:kentik.custom_dimension.v202411alpha1.ExtendedField) */ {
+ public:
+  inline ExtendedField() : ExtendedField(nullptr) {};
+  virtual ~ExtendedField();
+
+  ExtendedField(const ExtendedField& from);
+  ExtendedField(ExtendedField&& from) noexcept
+    : ExtendedField() {
+    *this = ::std::move(from);
+  }
+
+  inline ExtendedField& operator=(const ExtendedField& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ExtendedField& operator=(ExtendedField&& from) noexcept {
+    if (GetArena() == from.GetArena()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const ExtendedField& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const ExtendedField* internal_default_instance() {
+    return reinterpret_cast<const ExtendedField*>(
+               &_ExtendedField_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(ExtendedField& a, ExtendedField& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ExtendedField* other) {
+    if (other == this) return;
+    if (GetArena() == other->GetArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ExtendedField* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline ExtendedField* New() const final {
+    return CreateMaybeMessage<ExtendedField>(nullptr);
+  }
+
+  ExtendedField* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<ExtendedField>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const ExtendedField& from);
+  void MergeFrom(const ExtendedField& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ExtendedField* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "kentik.custom_dimension.v202411alpha1.ExtendedField";
+  }
+  protected:
+  explicit ExtendedField(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto);
+    return ::descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kValueFieldNumber = 1,
+  };
+  // repeated string value = 1[json_name = "value"];
+  int value_size() const;
+  private:
+  int _internal_value_size() const;
+  public:
+  void clear_value();
+  const std::string& value(int index) const;
+  std::string* mutable_value(int index);
+  void set_value(int index, const std::string& value);
+  void set_value(int index, std::string&& value);
+  void set_value(int index, const char* value);
+  void set_value(int index, const char* value, size_t size);
+  std::string* add_value();
+  void add_value(const std::string& value);
+  void add_value(std::string&& value);
+  void add_value(const char* value);
+  void add_value(const char* value, size_t size);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& value() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_value();
+  private:
+  const std::string& _internal_value(int index) const;
+  std::string* _internal_add_value();
+  public:
+
+  // @@protoc_insertion_point(class_scope:kentik.custom_dimension.v202411alpha1.ExtendedField)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> value_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto;
 };
@@ -1185,7 +1475,7 @@ class ListCustomDimensionsRequest PROTOBUF_FINAL :
                &_ListCustomDimensionsRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    4;
 
   friend void swap(ListCustomDimensionsRequest& a, ListCustomDimensionsRequest& b) {
     a.Swap(&b);
@@ -1309,7 +1599,7 @@ class ListCustomDimensionsResponse PROTOBUF_FINAL :
                &_ListCustomDimensionsResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    5;
 
   friend void swap(ListCustomDimensionsResponse& a, ListCustomDimensionsResponse& b) {
     a.Swap(&b);
@@ -1455,7 +1745,7 @@ class GetCustomDimensionInfoRequest PROTOBUF_FINAL :
                &_GetCustomDimensionInfoRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    6;
 
   friend void swap(GetCustomDimensionInfoRequest& a, GetCustomDimensionInfoRequest& b) {
     a.Swap(&b);
@@ -1528,13 +1818,29 @@ class GetCustomDimensionInfoRequest PROTOBUF_FINAL :
   enum : int {
     kCustomDimensionIdFieldNumber = 1,
   };
-  // uint32 custom_dimension_id = 1[json_name = "customDimensionId"];
+  // string custom_dimension_id = 1[json_name = "customDimensionId"];
   void clear_custom_dimension_id();
-  ::PROTOBUF_NAMESPACE_ID::uint32 custom_dimension_id() const;
-  void set_custom_dimension_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  const std::string& custom_dimension_id() const;
+  void set_custom_dimension_id(const std::string& value);
+  void set_custom_dimension_id(std::string&& value);
+  void set_custom_dimension_id(const char* value);
+  void set_custom_dimension_id(const char* value, size_t size);
+  std::string* mutable_custom_dimension_id();
+  std::string* release_custom_dimension_id();
+  void set_allocated_custom_dimension_id(std::string* custom_dimension_id);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_custom_dimension_id();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_custom_dimension_id(
+      std::string* custom_dimension_id);
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_custom_dimension_id() const;
-  void _internal_set_custom_dimension_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  const std::string& _internal_custom_dimension_id() const;
+  void _internal_set_custom_dimension_id(const std::string& value);
+  std::string* _internal_mutable_custom_dimension_id();
   public:
 
   // @@protoc_insertion_point(class_scope:kentik.custom_dimension.v202411alpha1.GetCustomDimensionInfoRequest)
@@ -1544,7 +1850,7 @@ class GetCustomDimensionInfoRequest PROTOBUF_FINAL :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 custom_dimension_id_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr custom_dimension_id_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto;
 };
@@ -1592,7 +1898,7 @@ class GetCustomDimensionInfoResponse PROTOBUF_FINAL :
                &_GetCustomDimensionInfoResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    7;
 
   friend void swap(GetCustomDimensionInfoResponse& a, GetCustomDimensionInfoResponse& b) {
     a.Swap(&b);
@@ -1738,7 +2044,7 @@ class CreateCustomDimensionRequest PROTOBUF_FINAL :
                &_CreateCustomDimensionRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    8;
 
   friend void swap(CreateCustomDimensionRequest& a, CreateCustomDimensionRequest& b) {
     a.Swap(&b);
@@ -1884,7 +2190,7 @@ class CreateCustomDimensionResponse PROTOBUF_FINAL :
                &_CreateCustomDimensionResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    9;
 
   friend void swap(CreateCustomDimensionResponse& a, CreateCustomDimensionResponse& b) {
     a.Swap(&b);
@@ -2030,7 +2336,7 @@ class UpdateCustomDimensionRequest PROTOBUF_FINAL :
                &_UpdateCustomDimensionRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    10;
 
   friend void swap(UpdateCustomDimensionRequest& a, UpdateCustomDimensionRequest& b) {
     a.Swap(&b);
@@ -2101,9 +2407,34 @@ class UpdateCustomDimensionRequest PROTOBUF_FINAL :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kDimensionFieldNumber = 2,
     kCustomDimensionIdFieldNumber = 1,
+    kDimensionFieldNumber = 2,
   };
+  // string custom_dimension_id = 1[json_name = "customDimensionId"];
+  void clear_custom_dimension_id();
+  const std::string& custom_dimension_id() const;
+  void set_custom_dimension_id(const std::string& value);
+  void set_custom_dimension_id(std::string&& value);
+  void set_custom_dimension_id(const char* value);
+  void set_custom_dimension_id(const char* value, size_t size);
+  std::string* mutable_custom_dimension_id();
+  std::string* release_custom_dimension_id();
+  void set_allocated_custom_dimension_id(std::string* custom_dimension_id);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_custom_dimension_id();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_custom_dimension_id(
+      std::string* custom_dimension_id);
+  private:
+  const std::string& _internal_custom_dimension_id() const;
+  void _internal_set_custom_dimension_id(const std::string& value);
+  std::string* _internal_mutable_custom_dimension_id();
+  public:
+
   // .kentik.custom_dimension.v202411alpha1.CustomDimension dimension = 2[json_name = "dimension"];
   bool has_dimension() const;
   private:
@@ -2122,15 +2453,6 @@ class UpdateCustomDimensionRequest PROTOBUF_FINAL :
       ::kentik::custom_dimension::v202411alpha1::CustomDimension* dimension);
   ::kentik::custom_dimension::v202411alpha1::CustomDimension* unsafe_arena_release_dimension();
 
-  // uint32 custom_dimension_id = 1[json_name = "customDimensionId"];
-  void clear_custom_dimension_id();
-  ::PROTOBUF_NAMESPACE_ID::uint32 custom_dimension_id() const;
-  void set_custom_dimension_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_custom_dimension_id() const;
-  void _internal_set_custom_dimension_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  public:
-
   // @@protoc_insertion_point(class_scope:kentik.custom_dimension.v202411alpha1.UpdateCustomDimensionRequest)
  private:
   class _Internal;
@@ -2138,8 +2460,8 @@ class UpdateCustomDimensionRequest PROTOBUF_FINAL :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr custom_dimension_id_;
   ::kentik::custom_dimension::v202411alpha1::CustomDimension* dimension_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 custom_dimension_id_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto;
 };
@@ -2187,7 +2509,7 @@ class UpdateCustomDimensionResponse PROTOBUF_FINAL :
                &_UpdateCustomDimensionResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    11;
 
   friend void swap(UpdateCustomDimensionResponse& a, UpdateCustomDimensionResponse& b) {
     a.Swap(&b);
@@ -2333,7 +2655,7 @@ class DeleteCustomDimensionRequest PROTOBUF_FINAL :
                &_DeleteCustomDimensionRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    12;
 
   friend void swap(DeleteCustomDimensionRequest& a, DeleteCustomDimensionRequest& b) {
     a.Swap(&b);
@@ -2406,13 +2728,29 @@ class DeleteCustomDimensionRequest PROTOBUF_FINAL :
   enum : int {
     kCustomDimensionIdFieldNumber = 1,
   };
-  // uint32 custom_dimension_id = 1[json_name = "customDimensionId"];
+  // string custom_dimension_id = 1[json_name = "customDimensionId"];
   void clear_custom_dimension_id();
-  ::PROTOBUF_NAMESPACE_ID::uint32 custom_dimension_id() const;
-  void set_custom_dimension_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  const std::string& custom_dimension_id() const;
+  void set_custom_dimension_id(const std::string& value);
+  void set_custom_dimension_id(std::string&& value);
+  void set_custom_dimension_id(const char* value);
+  void set_custom_dimension_id(const char* value, size_t size);
+  std::string* mutable_custom_dimension_id();
+  std::string* release_custom_dimension_id();
+  void set_allocated_custom_dimension_id(std::string* custom_dimension_id);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_custom_dimension_id();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_custom_dimension_id(
+      std::string* custom_dimension_id);
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_custom_dimension_id() const;
-  void _internal_set_custom_dimension_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  const std::string& _internal_custom_dimension_id() const;
+  void _internal_set_custom_dimension_id(const std::string& value);
+  std::string* _internal_mutable_custom_dimension_id();
   public:
 
   // @@protoc_insertion_point(class_scope:kentik.custom_dimension.v202411alpha1.DeleteCustomDimensionRequest)
@@ -2422,7 +2760,7 @@ class DeleteCustomDimensionRequest PROTOBUF_FINAL :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 custom_dimension_id_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr custom_dimension_id_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto;
 };
@@ -2470,7 +2808,7 @@ class DeleteCustomDimensionResponse PROTOBUF_FINAL :
                &_DeleteCustomDimensionResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    13;
 
   friend void swap(DeleteCustomDimensionResponse& a, DeleteCustomDimensionResponse& b) {
     a.Swap(&b);
@@ -2594,7 +2932,7 @@ class CreatePopulatorRequest PROTOBUF_FINAL :
                &_CreatePopulatorRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    14;
 
   friend void swap(CreatePopulatorRequest& a, CreatePopulatorRequest& b) {
     a.Swap(&b);
@@ -2665,9 +3003,34 @@ class CreatePopulatorRequest PROTOBUF_FINAL :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kPopulatorFieldNumber = 2,
     kCustomDimensionIdFieldNumber = 1,
+    kPopulatorFieldNumber = 2,
   };
+  // string custom_dimension_id = 1[json_name = "customDimensionId"];
+  void clear_custom_dimension_id();
+  const std::string& custom_dimension_id() const;
+  void set_custom_dimension_id(const std::string& value);
+  void set_custom_dimension_id(std::string&& value);
+  void set_custom_dimension_id(const char* value);
+  void set_custom_dimension_id(const char* value, size_t size);
+  std::string* mutable_custom_dimension_id();
+  std::string* release_custom_dimension_id();
+  void set_allocated_custom_dimension_id(std::string* custom_dimension_id);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_custom_dimension_id();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_custom_dimension_id(
+      std::string* custom_dimension_id);
+  private:
+  const std::string& _internal_custom_dimension_id() const;
+  void _internal_set_custom_dimension_id(const std::string& value);
+  std::string* _internal_mutable_custom_dimension_id();
+  public:
+
   // .kentik.custom_dimension.v202411alpha1.Populator populator = 2[json_name = "populator"];
   bool has_populator() const;
   private:
@@ -2686,15 +3049,6 @@ class CreatePopulatorRequest PROTOBUF_FINAL :
       ::kentik::custom_dimension::v202411alpha1::Populator* populator);
   ::kentik::custom_dimension::v202411alpha1::Populator* unsafe_arena_release_populator();
 
-  // uint32 custom_dimension_id = 1[json_name = "customDimensionId"];
-  void clear_custom_dimension_id();
-  ::PROTOBUF_NAMESPACE_ID::uint32 custom_dimension_id() const;
-  void set_custom_dimension_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_custom_dimension_id() const;
-  void _internal_set_custom_dimension_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  public:
-
   // @@protoc_insertion_point(class_scope:kentik.custom_dimension.v202411alpha1.CreatePopulatorRequest)
  private:
   class _Internal;
@@ -2702,8 +3056,8 @@ class CreatePopulatorRequest PROTOBUF_FINAL :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr custom_dimension_id_;
   ::kentik::custom_dimension::v202411alpha1::Populator* populator_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 custom_dimension_id_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto;
 };
@@ -2751,7 +3105,7 @@ class CreatePopulatorResponse PROTOBUF_FINAL :
                &_CreatePopulatorResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    15;
 
   friend void swap(CreatePopulatorResponse& a, CreatePopulatorResponse& b) {
     a.Swap(&b);
@@ -2897,7 +3251,7 @@ class UpdatePopulatorRequest PROTOBUF_FINAL :
                &_UpdatePopulatorRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    16;
 
   friend void swap(UpdatePopulatorRequest& a, UpdatePopulatorRequest& b) {
     a.Swap(&b);
@@ -2968,10 +3322,60 @@ class UpdatePopulatorRequest PROTOBUF_FINAL :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kPopulatorFieldNumber = 3,
     kCustomDimensionIdFieldNumber = 1,
     kPopulatorIdFieldNumber = 2,
+    kPopulatorFieldNumber = 3,
   };
+  // string custom_dimension_id = 1[json_name = "customDimensionId"];
+  void clear_custom_dimension_id();
+  const std::string& custom_dimension_id() const;
+  void set_custom_dimension_id(const std::string& value);
+  void set_custom_dimension_id(std::string&& value);
+  void set_custom_dimension_id(const char* value);
+  void set_custom_dimension_id(const char* value, size_t size);
+  std::string* mutable_custom_dimension_id();
+  std::string* release_custom_dimension_id();
+  void set_allocated_custom_dimension_id(std::string* custom_dimension_id);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_custom_dimension_id();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_custom_dimension_id(
+      std::string* custom_dimension_id);
+  private:
+  const std::string& _internal_custom_dimension_id() const;
+  void _internal_set_custom_dimension_id(const std::string& value);
+  std::string* _internal_mutable_custom_dimension_id();
+  public:
+
+  // string populator_id = 2[json_name = "populatorId"];
+  void clear_populator_id();
+  const std::string& populator_id() const;
+  void set_populator_id(const std::string& value);
+  void set_populator_id(std::string&& value);
+  void set_populator_id(const char* value);
+  void set_populator_id(const char* value, size_t size);
+  std::string* mutable_populator_id();
+  std::string* release_populator_id();
+  void set_allocated_populator_id(std::string* populator_id);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_populator_id();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_populator_id(
+      std::string* populator_id);
+  private:
+  const std::string& _internal_populator_id() const;
+  void _internal_set_populator_id(const std::string& value);
+  std::string* _internal_mutable_populator_id();
+  public:
+
   // .kentik.custom_dimension.v202411alpha1.Populator populator = 3[json_name = "populator"];
   bool has_populator() const;
   private:
@@ -2990,24 +3394,6 @@ class UpdatePopulatorRequest PROTOBUF_FINAL :
       ::kentik::custom_dimension::v202411alpha1::Populator* populator);
   ::kentik::custom_dimension::v202411alpha1::Populator* unsafe_arena_release_populator();
 
-  // uint32 custom_dimension_id = 1[json_name = "customDimensionId"];
-  void clear_custom_dimension_id();
-  ::PROTOBUF_NAMESPACE_ID::uint32 custom_dimension_id() const;
-  void set_custom_dimension_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_custom_dimension_id() const;
-  void _internal_set_custom_dimension_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  public:
-
-  // uint32 populator_id = 2[json_name = "populatorId"];
-  void clear_populator_id();
-  ::PROTOBUF_NAMESPACE_ID::uint32 populator_id() const;
-  void set_populator_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_populator_id() const;
-  void _internal_set_populator_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
-  public:
-
   // @@protoc_insertion_point(class_scope:kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest)
  private:
   class _Internal;
@@ -3015,9 +3401,9 @@ class UpdatePopulatorRequest PROTOBUF_FINAL :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr custom_dimension_id_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr populator_id_;
   ::kentik::custom_dimension::v202411alpha1::Populator* populator_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 custom_dimension_id_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 populator_id_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto;
 };
@@ -3065,7 +3451,7 @@ class UpdatePopulatorResponse PROTOBUF_FINAL :
                &_UpdatePopulatorResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    15;
+    17;
 
   friend void swap(UpdatePopulatorResponse& a, UpdatePopulatorResponse& b) {
     a.Swap(&b);
@@ -3211,7 +3597,7 @@ class DeletePopulatorRequest PROTOBUF_FINAL :
                &_DeletePopulatorRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    18;
 
   friend void swap(DeletePopulatorRequest& a, DeletePopulatorRequest& b) {
     a.Swap(&b);
@@ -3285,22 +3671,54 @@ class DeletePopulatorRequest PROTOBUF_FINAL :
     kCustomDimensionIdFieldNumber = 1,
     kPopulatorIdFieldNumber = 2,
   };
-  // uint32 custom_dimension_id = 1[json_name = "customDimensionId"];
+  // string custom_dimension_id = 1[json_name = "customDimensionId"];
   void clear_custom_dimension_id();
-  ::PROTOBUF_NAMESPACE_ID::uint32 custom_dimension_id() const;
-  void set_custom_dimension_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  const std::string& custom_dimension_id() const;
+  void set_custom_dimension_id(const std::string& value);
+  void set_custom_dimension_id(std::string&& value);
+  void set_custom_dimension_id(const char* value);
+  void set_custom_dimension_id(const char* value, size_t size);
+  std::string* mutable_custom_dimension_id();
+  std::string* release_custom_dimension_id();
+  void set_allocated_custom_dimension_id(std::string* custom_dimension_id);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_custom_dimension_id();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_custom_dimension_id(
+      std::string* custom_dimension_id);
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_custom_dimension_id() const;
-  void _internal_set_custom_dimension_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  const std::string& _internal_custom_dimension_id() const;
+  void _internal_set_custom_dimension_id(const std::string& value);
+  std::string* _internal_mutable_custom_dimension_id();
   public:
 
-  // uint32 populator_id = 2[json_name = "populatorId"];
+  // string populator_id = 2[json_name = "populatorId"];
   void clear_populator_id();
-  ::PROTOBUF_NAMESPACE_ID::uint32 populator_id() const;
-  void set_populator_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  const std::string& populator_id() const;
+  void set_populator_id(const std::string& value);
+  void set_populator_id(std::string&& value);
+  void set_populator_id(const char* value);
+  void set_populator_id(const char* value, size_t size);
+  std::string* mutable_populator_id();
+  std::string* release_populator_id();
+  void set_allocated_populator_id(std::string* populator_id);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_populator_id();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_populator_id(
+      std::string* populator_id);
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_populator_id() const;
-  void _internal_set_populator_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  const std::string& _internal_populator_id() const;
+  void _internal_set_populator_id(const std::string& value);
+  std::string* _internal_mutable_populator_id();
   public:
 
   // @@protoc_insertion_point(class_scope:kentik.custom_dimension.v202411alpha1.DeletePopulatorRequest)
@@ -3310,8 +3728,8 @@ class DeletePopulatorRequest PROTOBUF_FINAL :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 custom_dimension_id_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 populator_id_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr custom_dimension_id_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr populator_id_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto;
 };
@@ -3359,7 +3777,7 @@ class DeletePopulatorResponse PROTOBUF_FINAL :
                &_DeletePopulatorResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    17;
+    19;
 
   friend void swap(DeletePopulatorResponse& a, DeletePopulatorResponse& b) {
     a.Swap(&b);
@@ -3450,24 +3868,85 @@ class DeletePopulatorResponse PROTOBUF_FINAL :
 #endif  // __GNUC__
 // CustomDimension
 
-// uint32 id = 1[json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+// string id = 1[json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
 inline void CustomDimension::clear_id() {
-  id_ = 0u;
+  id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 CustomDimension::_internal_id() const {
-  return id_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 CustomDimension::id() const {
+inline const std::string& CustomDimension::id() const {
   // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.CustomDimension.id)
   return _internal_id();
 }
-inline void CustomDimension::_internal_set_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  
-  id_ = value;
-}
-inline void CustomDimension::set_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void CustomDimension::set_id(const std::string& value) {
   _internal_set_id(value);
   // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.CustomDimension.id)
+}
+inline std::string* CustomDimension::mutable_id() {
+  // @@protoc_insertion_point(field_mutable:kentik.custom_dimension.v202411alpha1.CustomDimension.id)
+  return _internal_mutable_id();
+}
+inline const std::string& CustomDimension::_internal_id() const {
+  return id_.Get();
+}
+inline void CustomDimension::_internal_set_id(const std::string& value) {
+  
+  id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void CustomDimension::set_id(std::string&& value) {
+  
+  id_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:kentik.custom_dimension.v202411alpha1.CustomDimension.id)
+}
+inline void CustomDimension::set_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:kentik.custom_dimension.v202411alpha1.CustomDimension.id)
+}
+inline void CustomDimension::set_id(const char* value,
+    size_t size) {
+  
+  id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:kentik.custom_dimension.v202411alpha1.CustomDimension.id)
+}
+inline std::string* CustomDimension::_internal_mutable_id() {
+  
+  return id_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* CustomDimension::release_id() {
+  // @@protoc_insertion_point(field_release:kentik.custom_dimension.v202411alpha1.CustomDimension.id)
+  return id_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void CustomDimension::set_allocated_id(std::string* id) {
+  if (id != nullptr) {
+    
+  } else {
+    
+  }
+  id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), id,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:kentik.custom_dimension.v202411alpha1.CustomDimension.id)
+}
+inline std::string* CustomDimension::unsafe_arena_release_id() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:kentik.custom_dimension.v202411alpha1.CustomDimension.id)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  
+  return id_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void CustomDimension::unsafe_arena_set_allocated_id(
+    std::string* id) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (id != nullptr) {
+    
+  } else {
+    
+  }
+  id_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      id, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.custom_dimension.v202411alpha1.CustomDimension.id)
 }
 
 // string name = 2[json_name = "name", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -3752,24 +4231,85 @@ CustomDimension::populators() const {
   return populators_;
 }
 
-// uint32 company_id = 6[json_name = "companyId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+// string company_id = 6[json_name = "companyId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
 inline void CustomDimension::clear_company_id() {
-  company_id_ = 0u;
+  company_id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 CustomDimension::_internal_company_id() const {
-  return company_id_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 CustomDimension::company_id() const {
+inline const std::string& CustomDimension::company_id() const {
   // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.CustomDimension.company_id)
   return _internal_company_id();
 }
-inline void CustomDimension::_internal_set_company_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  
-  company_id_ = value;
-}
-inline void CustomDimension::set_company_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void CustomDimension::set_company_id(const std::string& value) {
   _internal_set_company_id(value);
   // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.CustomDimension.company_id)
+}
+inline std::string* CustomDimension::mutable_company_id() {
+  // @@protoc_insertion_point(field_mutable:kentik.custom_dimension.v202411alpha1.CustomDimension.company_id)
+  return _internal_mutable_company_id();
+}
+inline const std::string& CustomDimension::_internal_company_id() const {
+  return company_id_.Get();
+}
+inline void CustomDimension::_internal_set_company_id(const std::string& value) {
+  
+  company_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void CustomDimension::set_company_id(std::string&& value) {
+  
+  company_id_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:kentik.custom_dimension.v202411alpha1.CustomDimension.company_id)
+}
+inline void CustomDimension::set_company_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  company_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:kentik.custom_dimension.v202411alpha1.CustomDimension.company_id)
+}
+inline void CustomDimension::set_company_id(const char* value,
+    size_t size) {
+  
+  company_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:kentik.custom_dimension.v202411alpha1.CustomDimension.company_id)
+}
+inline std::string* CustomDimension::_internal_mutable_company_id() {
+  
+  return company_id_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* CustomDimension::release_company_id() {
+  // @@protoc_insertion_point(field_release:kentik.custom_dimension.v202411alpha1.CustomDimension.company_id)
+  return company_id_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void CustomDimension::set_allocated_company_id(std::string* company_id) {
+  if (company_id != nullptr) {
+    
+  } else {
+    
+  }
+  company_id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), company_id,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:kentik.custom_dimension.v202411alpha1.CustomDimension.company_id)
+}
+inline std::string* CustomDimension::unsafe_arena_release_company_id() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:kentik.custom_dimension.v202411alpha1.CustomDimension.company_id)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  
+  return company_id_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void CustomDimension::unsafe_arena_set_allocated_company_id(
+    std::string* company_id) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (company_id != nullptr) {
+    
+  } else {
+    
+  }
+  company_id_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      company_id, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.custom_dimension.v202411alpha1.CustomDimension.company_id)
 }
 
 // .google.protobuf.Timestamp created_date = 7[json_name = "createdDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -3924,26 +4464,89 @@ inline void CustomDimension::set_allocated_updated_date(PROTOBUF_NAMESPACE_ID::T
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
 // Populator
 
-// uint32 id = 1[json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+// string id = 1[json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
 inline void Populator::clear_id() {
-  id_ = 0u;
+  id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 Populator::_internal_id() const {
-  return id_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 Populator::id() const {
+inline const std::string& Populator::id() const {
   // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.Populator.id)
   return _internal_id();
 }
-inline void Populator::_internal_set_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  
-  id_ = value;
-}
-inline void Populator::set_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void Populator::set_id(const std::string& value) {
   _internal_set_id(value);
   // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.Populator.id)
+}
+inline std::string* Populator::mutable_id() {
+  // @@protoc_insertion_point(field_mutable:kentik.custom_dimension.v202411alpha1.Populator.id)
+  return _internal_mutable_id();
+}
+inline const std::string& Populator::_internal_id() const {
+  return id_.Get();
+}
+inline void Populator::_internal_set_id(const std::string& value) {
+  
+  id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void Populator::set_id(std::string&& value) {
+  
+  id_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:kentik.custom_dimension.v202411alpha1.Populator.id)
+}
+inline void Populator::set_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:kentik.custom_dimension.v202411alpha1.Populator.id)
+}
+inline void Populator::set_id(const char* value,
+    size_t size) {
+  
+  id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:kentik.custom_dimension.v202411alpha1.Populator.id)
+}
+inline std::string* Populator::_internal_mutable_id() {
+  
+  return id_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* Populator::release_id() {
+  // @@protoc_insertion_point(field_release:kentik.custom_dimension.v202411alpha1.Populator.id)
+  return id_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void Populator::set_allocated_id(std::string* id) {
+  if (id != nullptr) {
+    
+  } else {
+    
+  }
+  id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), id,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:kentik.custom_dimension.v202411alpha1.Populator.id)
+}
+inline std::string* Populator::unsafe_arena_release_id() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:kentik.custom_dimension.v202411alpha1.Populator.id)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  
+  return id_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void Populator::unsafe_arena_set_allocated_id(
+    std::string* id) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (id != nullptr) {
+    
+  } else {
+    
+  }
+  id_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      id, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.custom_dimension.v202411alpha1.Populator.id)
 }
 
 // string value = 2[json_name = "value", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -5509,6 +6112,153 @@ inline void Populator::set_allocated_updated_date(PROTOBUF_NAMESPACE_ID::Timesta
   // @@protoc_insertion_point(field_set_allocated:kentik.custom_dimension.v202411alpha1.Populator.updated_date)
 }
 
+// uint32 addr_count = 25[json_name = "addrCount", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void Populator::clear_addr_count() {
+  addr_count_ = 0u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 Populator::_internal_addr_count() const {
+  return addr_count_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 Populator::addr_count() const {
+  // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.Populator.addr_count)
+  return _internal_addr_count();
+}
+inline void Populator::_internal_set_addr_count(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  
+  addr_count_ = value;
+}
+inline void Populator::set_addr_count(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_addr_count(value);
+  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.Populator.addr_count)
+}
+
+// uint32 mac_count = 26[json_name = "macCount", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void Populator::clear_mac_count() {
+  mac_count_ = 0u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 Populator::_internal_mac_count() const {
+  return mac_count_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 Populator::mac_count() const {
+  // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.Populator.mac_count)
+  return _internal_mac_count();
+}
+inline void Populator::_internal_set_mac_count(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  
+  mac_count_ = value;
+}
+inline void Populator::set_mac_count(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_mac_count(value);
+  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.Populator.mac_count)
+}
+
+// map<string, .kentik.custom_dimension.v202411alpha1.ExtendedField> extended_fields = 27[json_name = "extendedFields", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline int Populator::_internal_extended_fields_size() const {
+  return extended_fields_.size();
+}
+inline int Populator::extended_fields_size() const {
+  return _internal_extended_fields_size();
+}
+inline void Populator::clear_extended_fields() {
+  extended_fields_.Clear();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::kentik::custom_dimension::v202411alpha1::ExtendedField >&
+Populator::_internal_extended_fields() const {
+  return extended_fields_.GetMap();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::kentik::custom_dimension::v202411alpha1::ExtendedField >&
+Populator::extended_fields() const {
+  // @@protoc_insertion_point(field_map:kentik.custom_dimension.v202411alpha1.Populator.extended_fields)
+  return _internal_extended_fields();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::kentik::custom_dimension::v202411alpha1::ExtendedField >*
+Populator::_internal_mutable_extended_fields() {
+  return extended_fields_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::kentik::custom_dimension::v202411alpha1::ExtendedField >*
+Populator::mutable_extended_fields() {
+  // @@protoc_insertion_point(field_mutable_map:kentik.custom_dimension.v202411alpha1.Populator.extended_fields)
+  return _internal_mutable_extended_fields();
+}
+
+// -------------------------------------------------------------------
+
+// ExtendedField
+
+// repeated string value = 1[json_name = "value"];
+inline int ExtendedField::_internal_value_size() const {
+  return value_.size();
+}
+inline int ExtendedField::value_size() const {
+  return _internal_value_size();
+}
+inline void ExtendedField::clear_value() {
+  value_.Clear();
+}
+inline std::string* ExtendedField::add_value() {
+  // @@protoc_insertion_point(field_add_mutable:kentik.custom_dimension.v202411alpha1.ExtendedField.value)
+  return _internal_add_value();
+}
+inline const std::string& ExtendedField::_internal_value(int index) const {
+  return value_.Get(index);
+}
+inline const std::string& ExtendedField::value(int index) const {
+  // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.ExtendedField.value)
+  return _internal_value(index);
+}
+inline std::string* ExtendedField::mutable_value(int index) {
+  // @@protoc_insertion_point(field_mutable:kentik.custom_dimension.v202411alpha1.ExtendedField.value)
+  return value_.Mutable(index);
+}
+inline void ExtendedField::set_value(int index, const std::string& value) {
+  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.ExtendedField.value)
+  value_.Mutable(index)->assign(value);
+}
+inline void ExtendedField::set_value(int index, std::string&& value) {
+  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.ExtendedField.value)
+  value_.Mutable(index)->assign(std::move(value));
+}
+inline void ExtendedField::set_value(int index, const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  value_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:kentik.custom_dimension.v202411alpha1.ExtendedField.value)
+}
+inline void ExtendedField::set_value(int index, const char* value, size_t size) {
+  value_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:kentik.custom_dimension.v202411alpha1.ExtendedField.value)
+}
+inline std::string* ExtendedField::_internal_add_value() {
+  return value_.Add();
+}
+inline void ExtendedField::add_value(const std::string& value) {
+  value_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:kentik.custom_dimension.v202411alpha1.ExtendedField.value)
+}
+inline void ExtendedField::add_value(std::string&& value) {
+  value_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:kentik.custom_dimension.v202411alpha1.ExtendedField.value)
+}
+inline void ExtendedField::add_value(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  value_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:kentik.custom_dimension.v202411alpha1.ExtendedField.value)
+}
+inline void ExtendedField::add_value(const char* value, size_t size) {
+  value_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:kentik.custom_dimension.v202411alpha1.ExtendedField.value)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
+ExtendedField::value() const {
+  // @@protoc_insertion_point(field_list:kentik.custom_dimension.v202411alpha1.ExtendedField.value)
+  return value_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
+ExtendedField::mutable_value() {
+  // @@protoc_insertion_point(field_mutable_list:kentik.custom_dimension.v202411alpha1.ExtendedField.value)
+  return &value_;
+}
+
 // -------------------------------------------------------------------
 
 // ListCustomDimensionsRequest
@@ -5560,24 +6310,85 @@ ListCustomDimensionsResponse::dimensions() const {
 
 // GetCustomDimensionInfoRequest
 
-// uint32 custom_dimension_id = 1[json_name = "customDimensionId"];
+// string custom_dimension_id = 1[json_name = "customDimensionId"];
 inline void GetCustomDimensionInfoRequest::clear_custom_dimension_id() {
-  custom_dimension_id_ = 0u;
+  custom_dimension_id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 GetCustomDimensionInfoRequest::_internal_custom_dimension_id() const {
-  return custom_dimension_id_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 GetCustomDimensionInfoRequest::custom_dimension_id() const {
+inline const std::string& GetCustomDimensionInfoRequest::custom_dimension_id() const {
   // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.GetCustomDimensionInfoRequest.custom_dimension_id)
   return _internal_custom_dimension_id();
 }
-inline void GetCustomDimensionInfoRequest::_internal_set_custom_dimension_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  
-  custom_dimension_id_ = value;
-}
-inline void GetCustomDimensionInfoRequest::set_custom_dimension_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void GetCustomDimensionInfoRequest::set_custom_dimension_id(const std::string& value) {
   _internal_set_custom_dimension_id(value);
   // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.GetCustomDimensionInfoRequest.custom_dimension_id)
+}
+inline std::string* GetCustomDimensionInfoRequest::mutable_custom_dimension_id() {
+  // @@protoc_insertion_point(field_mutable:kentik.custom_dimension.v202411alpha1.GetCustomDimensionInfoRequest.custom_dimension_id)
+  return _internal_mutable_custom_dimension_id();
+}
+inline const std::string& GetCustomDimensionInfoRequest::_internal_custom_dimension_id() const {
+  return custom_dimension_id_.Get();
+}
+inline void GetCustomDimensionInfoRequest::_internal_set_custom_dimension_id(const std::string& value) {
+  
+  custom_dimension_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void GetCustomDimensionInfoRequest::set_custom_dimension_id(std::string&& value) {
+  
+  custom_dimension_id_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:kentik.custom_dimension.v202411alpha1.GetCustomDimensionInfoRequest.custom_dimension_id)
+}
+inline void GetCustomDimensionInfoRequest::set_custom_dimension_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  custom_dimension_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:kentik.custom_dimension.v202411alpha1.GetCustomDimensionInfoRequest.custom_dimension_id)
+}
+inline void GetCustomDimensionInfoRequest::set_custom_dimension_id(const char* value,
+    size_t size) {
+  
+  custom_dimension_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:kentik.custom_dimension.v202411alpha1.GetCustomDimensionInfoRequest.custom_dimension_id)
+}
+inline std::string* GetCustomDimensionInfoRequest::_internal_mutable_custom_dimension_id() {
+  
+  return custom_dimension_id_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* GetCustomDimensionInfoRequest::release_custom_dimension_id() {
+  // @@protoc_insertion_point(field_release:kentik.custom_dimension.v202411alpha1.GetCustomDimensionInfoRequest.custom_dimension_id)
+  return custom_dimension_id_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void GetCustomDimensionInfoRequest::set_allocated_custom_dimension_id(std::string* custom_dimension_id) {
+  if (custom_dimension_id != nullptr) {
+    
+  } else {
+    
+  }
+  custom_dimension_id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), custom_dimension_id,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:kentik.custom_dimension.v202411alpha1.GetCustomDimensionInfoRequest.custom_dimension_id)
+}
+inline std::string* GetCustomDimensionInfoRequest::unsafe_arena_release_custom_dimension_id() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:kentik.custom_dimension.v202411alpha1.GetCustomDimensionInfoRequest.custom_dimension_id)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  
+  return custom_dimension_id_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void GetCustomDimensionInfoRequest::unsafe_arena_set_allocated_custom_dimension_id(
+    std::string* custom_dimension_id) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (custom_dimension_id != nullptr) {
+    
+  } else {
+    
+  }
+  custom_dimension_id_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      custom_dimension_id, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.custom_dimension.v202411alpha1.GetCustomDimensionInfoRequest.custom_dimension_id)
 }
 
 // -------------------------------------------------------------------
@@ -5839,24 +6650,85 @@ inline void CreateCustomDimensionResponse::set_allocated_dimension(::kentik::cus
 
 // UpdateCustomDimensionRequest
 
-// uint32 custom_dimension_id = 1[json_name = "customDimensionId"];
+// string custom_dimension_id = 1[json_name = "customDimensionId"];
 inline void UpdateCustomDimensionRequest::clear_custom_dimension_id() {
-  custom_dimension_id_ = 0u;
+  custom_dimension_id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 UpdateCustomDimensionRequest::_internal_custom_dimension_id() const {
-  return custom_dimension_id_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 UpdateCustomDimensionRequest::custom_dimension_id() const {
+inline const std::string& UpdateCustomDimensionRequest::custom_dimension_id() const {
   // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.UpdateCustomDimensionRequest.custom_dimension_id)
   return _internal_custom_dimension_id();
 }
-inline void UpdateCustomDimensionRequest::_internal_set_custom_dimension_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  
-  custom_dimension_id_ = value;
-}
-inline void UpdateCustomDimensionRequest::set_custom_dimension_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void UpdateCustomDimensionRequest::set_custom_dimension_id(const std::string& value) {
   _internal_set_custom_dimension_id(value);
   // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.UpdateCustomDimensionRequest.custom_dimension_id)
+}
+inline std::string* UpdateCustomDimensionRequest::mutable_custom_dimension_id() {
+  // @@protoc_insertion_point(field_mutable:kentik.custom_dimension.v202411alpha1.UpdateCustomDimensionRequest.custom_dimension_id)
+  return _internal_mutable_custom_dimension_id();
+}
+inline const std::string& UpdateCustomDimensionRequest::_internal_custom_dimension_id() const {
+  return custom_dimension_id_.Get();
+}
+inline void UpdateCustomDimensionRequest::_internal_set_custom_dimension_id(const std::string& value) {
+  
+  custom_dimension_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void UpdateCustomDimensionRequest::set_custom_dimension_id(std::string&& value) {
+  
+  custom_dimension_id_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:kentik.custom_dimension.v202411alpha1.UpdateCustomDimensionRequest.custom_dimension_id)
+}
+inline void UpdateCustomDimensionRequest::set_custom_dimension_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  custom_dimension_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:kentik.custom_dimension.v202411alpha1.UpdateCustomDimensionRequest.custom_dimension_id)
+}
+inline void UpdateCustomDimensionRequest::set_custom_dimension_id(const char* value,
+    size_t size) {
+  
+  custom_dimension_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:kentik.custom_dimension.v202411alpha1.UpdateCustomDimensionRequest.custom_dimension_id)
+}
+inline std::string* UpdateCustomDimensionRequest::_internal_mutable_custom_dimension_id() {
+  
+  return custom_dimension_id_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* UpdateCustomDimensionRequest::release_custom_dimension_id() {
+  // @@protoc_insertion_point(field_release:kentik.custom_dimension.v202411alpha1.UpdateCustomDimensionRequest.custom_dimension_id)
+  return custom_dimension_id_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void UpdateCustomDimensionRequest::set_allocated_custom_dimension_id(std::string* custom_dimension_id) {
+  if (custom_dimension_id != nullptr) {
+    
+  } else {
+    
+  }
+  custom_dimension_id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), custom_dimension_id,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:kentik.custom_dimension.v202411alpha1.UpdateCustomDimensionRequest.custom_dimension_id)
+}
+inline std::string* UpdateCustomDimensionRequest::unsafe_arena_release_custom_dimension_id() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:kentik.custom_dimension.v202411alpha1.UpdateCustomDimensionRequest.custom_dimension_id)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  
+  return custom_dimension_id_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void UpdateCustomDimensionRequest::unsafe_arena_set_allocated_custom_dimension_id(
+    std::string* custom_dimension_id) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (custom_dimension_id != nullptr) {
+    
+  } else {
+    
+  }
+  custom_dimension_id_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      custom_dimension_id, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.custom_dimension.v202411alpha1.UpdateCustomDimensionRequest.custom_dimension_id)
 }
 
 // .kentik.custom_dimension.v202411alpha1.CustomDimension dimension = 2[json_name = "dimension"];
@@ -6029,24 +6901,85 @@ inline void UpdateCustomDimensionResponse::set_allocated_dimension(::kentik::cus
 
 // DeleteCustomDimensionRequest
 
-// uint32 custom_dimension_id = 1[json_name = "customDimensionId"];
+// string custom_dimension_id = 1[json_name = "customDimensionId"];
 inline void DeleteCustomDimensionRequest::clear_custom_dimension_id() {
-  custom_dimension_id_ = 0u;
+  custom_dimension_id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 DeleteCustomDimensionRequest::_internal_custom_dimension_id() const {
-  return custom_dimension_id_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 DeleteCustomDimensionRequest::custom_dimension_id() const {
+inline const std::string& DeleteCustomDimensionRequest::custom_dimension_id() const {
   // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.DeleteCustomDimensionRequest.custom_dimension_id)
   return _internal_custom_dimension_id();
 }
-inline void DeleteCustomDimensionRequest::_internal_set_custom_dimension_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  
-  custom_dimension_id_ = value;
-}
-inline void DeleteCustomDimensionRequest::set_custom_dimension_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void DeleteCustomDimensionRequest::set_custom_dimension_id(const std::string& value) {
   _internal_set_custom_dimension_id(value);
   // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.DeleteCustomDimensionRequest.custom_dimension_id)
+}
+inline std::string* DeleteCustomDimensionRequest::mutable_custom_dimension_id() {
+  // @@protoc_insertion_point(field_mutable:kentik.custom_dimension.v202411alpha1.DeleteCustomDimensionRequest.custom_dimension_id)
+  return _internal_mutable_custom_dimension_id();
+}
+inline const std::string& DeleteCustomDimensionRequest::_internal_custom_dimension_id() const {
+  return custom_dimension_id_.Get();
+}
+inline void DeleteCustomDimensionRequest::_internal_set_custom_dimension_id(const std::string& value) {
+  
+  custom_dimension_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void DeleteCustomDimensionRequest::set_custom_dimension_id(std::string&& value) {
+  
+  custom_dimension_id_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:kentik.custom_dimension.v202411alpha1.DeleteCustomDimensionRequest.custom_dimension_id)
+}
+inline void DeleteCustomDimensionRequest::set_custom_dimension_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  custom_dimension_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:kentik.custom_dimension.v202411alpha1.DeleteCustomDimensionRequest.custom_dimension_id)
+}
+inline void DeleteCustomDimensionRequest::set_custom_dimension_id(const char* value,
+    size_t size) {
+  
+  custom_dimension_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:kentik.custom_dimension.v202411alpha1.DeleteCustomDimensionRequest.custom_dimension_id)
+}
+inline std::string* DeleteCustomDimensionRequest::_internal_mutable_custom_dimension_id() {
+  
+  return custom_dimension_id_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* DeleteCustomDimensionRequest::release_custom_dimension_id() {
+  // @@protoc_insertion_point(field_release:kentik.custom_dimension.v202411alpha1.DeleteCustomDimensionRequest.custom_dimension_id)
+  return custom_dimension_id_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void DeleteCustomDimensionRequest::set_allocated_custom_dimension_id(std::string* custom_dimension_id) {
+  if (custom_dimension_id != nullptr) {
+    
+  } else {
+    
+  }
+  custom_dimension_id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), custom_dimension_id,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:kentik.custom_dimension.v202411alpha1.DeleteCustomDimensionRequest.custom_dimension_id)
+}
+inline std::string* DeleteCustomDimensionRequest::unsafe_arena_release_custom_dimension_id() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:kentik.custom_dimension.v202411alpha1.DeleteCustomDimensionRequest.custom_dimension_id)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  
+  return custom_dimension_id_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void DeleteCustomDimensionRequest::unsafe_arena_set_allocated_custom_dimension_id(
+    std::string* custom_dimension_id) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (custom_dimension_id != nullptr) {
+    
+  } else {
+    
+  }
+  custom_dimension_id_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      custom_dimension_id, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.custom_dimension.v202411alpha1.DeleteCustomDimensionRequest.custom_dimension_id)
 }
 
 // -------------------------------------------------------------------
@@ -6057,24 +6990,85 @@ inline void DeleteCustomDimensionRequest::set_custom_dimension_id(::PROTOBUF_NAM
 
 // CreatePopulatorRequest
 
-// uint32 custom_dimension_id = 1[json_name = "customDimensionId"];
+// string custom_dimension_id = 1[json_name = "customDimensionId"];
 inline void CreatePopulatorRequest::clear_custom_dimension_id() {
-  custom_dimension_id_ = 0u;
+  custom_dimension_id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 CreatePopulatorRequest::_internal_custom_dimension_id() const {
-  return custom_dimension_id_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 CreatePopulatorRequest::custom_dimension_id() const {
+inline const std::string& CreatePopulatorRequest::custom_dimension_id() const {
   // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.CreatePopulatorRequest.custom_dimension_id)
   return _internal_custom_dimension_id();
 }
-inline void CreatePopulatorRequest::_internal_set_custom_dimension_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  
-  custom_dimension_id_ = value;
-}
-inline void CreatePopulatorRequest::set_custom_dimension_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void CreatePopulatorRequest::set_custom_dimension_id(const std::string& value) {
   _internal_set_custom_dimension_id(value);
   // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.CreatePopulatorRequest.custom_dimension_id)
+}
+inline std::string* CreatePopulatorRequest::mutable_custom_dimension_id() {
+  // @@protoc_insertion_point(field_mutable:kentik.custom_dimension.v202411alpha1.CreatePopulatorRequest.custom_dimension_id)
+  return _internal_mutable_custom_dimension_id();
+}
+inline const std::string& CreatePopulatorRequest::_internal_custom_dimension_id() const {
+  return custom_dimension_id_.Get();
+}
+inline void CreatePopulatorRequest::_internal_set_custom_dimension_id(const std::string& value) {
+  
+  custom_dimension_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void CreatePopulatorRequest::set_custom_dimension_id(std::string&& value) {
+  
+  custom_dimension_id_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:kentik.custom_dimension.v202411alpha1.CreatePopulatorRequest.custom_dimension_id)
+}
+inline void CreatePopulatorRequest::set_custom_dimension_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  custom_dimension_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:kentik.custom_dimension.v202411alpha1.CreatePopulatorRequest.custom_dimension_id)
+}
+inline void CreatePopulatorRequest::set_custom_dimension_id(const char* value,
+    size_t size) {
+  
+  custom_dimension_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:kentik.custom_dimension.v202411alpha1.CreatePopulatorRequest.custom_dimension_id)
+}
+inline std::string* CreatePopulatorRequest::_internal_mutable_custom_dimension_id() {
+  
+  return custom_dimension_id_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* CreatePopulatorRequest::release_custom_dimension_id() {
+  // @@protoc_insertion_point(field_release:kentik.custom_dimension.v202411alpha1.CreatePopulatorRequest.custom_dimension_id)
+  return custom_dimension_id_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void CreatePopulatorRequest::set_allocated_custom_dimension_id(std::string* custom_dimension_id) {
+  if (custom_dimension_id != nullptr) {
+    
+  } else {
+    
+  }
+  custom_dimension_id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), custom_dimension_id,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:kentik.custom_dimension.v202411alpha1.CreatePopulatorRequest.custom_dimension_id)
+}
+inline std::string* CreatePopulatorRequest::unsafe_arena_release_custom_dimension_id() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:kentik.custom_dimension.v202411alpha1.CreatePopulatorRequest.custom_dimension_id)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  
+  return custom_dimension_id_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void CreatePopulatorRequest::unsafe_arena_set_allocated_custom_dimension_id(
+    std::string* custom_dimension_id) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (custom_dimension_id != nullptr) {
+    
+  } else {
+    
+  }
+  custom_dimension_id_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      custom_dimension_id, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.custom_dimension.v202411alpha1.CreatePopulatorRequest.custom_dimension_id)
 }
 
 // .kentik.custom_dimension.v202411alpha1.Populator populator = 2[json_name = "populator"];
@@ -6247,44 +7241,166 @@ inline void CreatePopulatorResponse::set_allocated_populator(::kentik::custom_di
 
 // UpdatePopulatorRequest
 
-// uint32 custom_dimension_id = 1[json_name = "customDimensionId"];
+// string custom_dimension_id = 1[json_name = "customDimensionId"];
 inline void UpdatePopulatorRequest::clear_custom_dimension_id() {
-  custom_dimension_id_ = 0u;
+  custom_dimension_id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 UpdatePopulatorRequest::_internal_custom_dimension_id() const {
-  return custom_dimension_id_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 UpdatePopulatorRequest::custom_dimension_id() const {
+inline const std::string& UpdatePopulatorRequest::custom_dimension_id() const {
   // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest.custom_dimension_id)
   return _internal_custom_dimension_id();
 }
-inline void UpdatePopulatorRequest::_internal_set_custom_dimension_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  
-  custom_dimension_id_ = value;
-}
-inline void UpdatePopulatorRequest::set_custom_dimension_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void UpdatePopulatorRequest::set_custom_dimension_id(const std::string& value) {
   _internal_set_custom_dimension_id(value);
   // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest.custom_dimension_id)
 }
+inline std::string* UpdatePopulatorRequest::mutable_custom_dimension_id() {
+  // @@protoc_insertion_point(field_mutable:kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest.custom_dimension_id)
+  return _internal_mutable_custom_dimension_id();
+}
+inline const std::string& UpdatePopulatorRequest::_internal_custom_dimension_id() const {
+  return custom_dimension_id_.Get();
+}
+inline void UpdatePopulatorRequest::_internal_set_custom_dimension_id(const std::string& value) {
+  
+  custom_dimension_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void UpdatePopulatorRequest::set_custom_dimension_id(std::string&& value) {
+  
+  custom_dimension_id_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest.custom_dimension_id)
+}
+inline void UpdatePopulatorRequest::set_custom_dimension_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  custom_dimension_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest.custom_dimension_id)
+}
+inline void UpdatePopulatorRequest::set_custom_dimension_id(const char* value,
+    size_t size) {
+  
+  custom_dimension_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest.custom_dimension_id)
+}
+inline std::string* UpdatePopulatorRequest::_internal_mutable_custom_dimension_id() {
+  
+  return custom_dimension_id_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* UpdatePopulatorRequest::release_custom_dimension_id() {
+  // @@protoc_insertion_point(field_release:kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest.custom_dimension_id)
+  return custom_dimension_id_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void UpdatePopulatorRequest::set_allocated_custom_dimension_id(std::string* custom_dimension_id) {
+  if (custom_dimension_id != nullptr) {
+    
+  } else {
+    
+  }
+  custom_dimension_id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), custom_dimension_id,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest.custom_dimension_id)
+}
+inline std::string* UpdatePopulatorRequest::unsafe_arena_release_custom_dimension_id() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest.custom_dimension_id)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  
+  return custom_dimension_id_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void UpdatePopulatorRequest::unsafe_arena_set_allocated_custom_dimension_id(
+    std::string* custom_dimension_id) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (custom_dimension_id != nullptr) {
+    
+  } else {
+    
+  }
+  custom_dimension_id_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      custom_dimension_id, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest.custom_dimension_id)
+}
 
-// uint32 populator_id = 2[json_name = "populatorId"];
+// string populator_id = 2[json_name = "populatorId"];
 inline void UpdatePopulatorRequest::clear_populator_id() {
-  populator_id_ = 0u;
+  populator_id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 UpdatePopulatorRequest::_internal_populator_id() const {
-  return populator_id_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 UpdatePopulatorRequest::populator_id() const {
+inline const std::string& UpdatePopulatorRequest::populator_id() const {
   // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest.populator_id)
   return _internal_populator_id();
 }
-inline void UpdatePopulatorRequest::_internal_set_populator_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  
-  populator_id_ = value;
-}
-inline void UpdatePopulatorRequest::set_populator_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void UpdatePopulatorRequest::set_populator_id(const std::string& value) {
   _internal_set_populator_id(value);
   // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest.populator_id)
+}
+inline std::string* UpdatePopulatorRequest::mutable_populator_id() {
+  // @@protoc_insertion_point(field_mutable:kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest.populator_id)
+  return _internal_mutable_populator_id();
+}
+inline const std::string& UpdatePopulatorRequest::_internal_populator_id() const {
+  return populator_id_.Get();
+}
+inline void UpdatePopulatorRequest::_internal_set_populator_id(const std::string& value) {
+  
+  populator_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void UpdatePopulatorRequest::set_populator_id(std::string&& value) {
+  
+  populator_id_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest.populator_id)
+}
+inline void UpdatePopulatorRequest::set_populator_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  populator_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest.populator_id)
+}
+inline void UpdatePopulatorRequest::set_populator_id(const char* value,
+    size_t size) {
+  
+  populator_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest.populator_id)
+}
+inline std::string* UpdatePopulatorRequest::_internal_mutable_populator_id() {
+  
+  return populator_id_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* UpdatePopulatorRequest::release_populator_id() {
+  // @@protoc_insertion_point(field_release:kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest.populator_id)
+  return populator_id_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void UpdatePopulatorRequest::set_allocated_populator_id(std::string* populator_id) {
+  if (populator_id != nullptr) {
+    
+  } else {
+    
+  }
+  populator_id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), populator_id,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest.populator_id)
+}
+inline std::string* UpdatePopulatorRequest::unsafe_arena_release_populator_id() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest.populator_id)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  
+  return populator_id_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void UpdatePopulatorRequest::unsafe_arena_set_allocated_populator_id(
+    std::string* populator_id) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (populator_id != nullptr) {
+    
+  } else {
+    
+  }
+  populator_id_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      populator_id, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest.populator_id)
 }
 
 // .kentik.custom_dimension.v202411alpha1.Populator populator = 3[json_name = "populator"];
@@ -6457,44 +7573,166 @@ inline void UpdatePopulatorResponse::set_allocated_populator(::kentik::custom_di
 
 // DeletePopulatorRequest
 
-// uint32 custom_dimension_id = 1[json_name = "customDimensionId"];
+// string custom_dimension_id = 1[json_name = "customDimensionId"];
 inline void DeletePopulatorRequest::clear_custom_dimension_id() {
-  custom_dimension_id_ = 0u;
+  custom_dimension_id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 DeletePopulatorRequest::_internal_custom_dimension_id() const {
-  return custom_dimension_id_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 DeletePopulatorRequest::custom_dimension_id() const {
+inline const std::string& DeletePopulatorRequest::custom_dimension_id() const {
   // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.DeletePopulatorRequest.custom_dimension_id)
   return _internal_custom_dimension_id();
 }
-inline void DeletePopulatorRequest::_internal_set_custom_dimension_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  
-  custom_dimension_id_ = value;
-}
-inline void DeletePopulatorRequest::set_custom_dimension_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void DeletePopulatorRequest::set_custom_dimension_id(const std::string& value) {
   _internal_set_custom_dimension_id(value);
   // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.DeletePopulatorRequest.custom_dimension_id)
 }
+inline std::string* DeletePopulatorRequest::mutable_custom_dimension_id() {
+  // @@protoc_insertion_point(field_mutable:kentik.custom_dimension.v202411alpha1.DeletePopulatorRequest.custom_dimension_id)
+  return _internal_mutable_custom_dimension_id();
+}
+inline const std::string& DeletePopulatorRequest::_internal_custom_dimension_id() const {
+  return custom_dimension_id_.Get();
+}
+inline void DeletePopulatorRequest::_internal_set_custom_dimension_id(const std::string& value) {
+  
+  custom_dimension_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void DeletePopulatorRequest::set_custom_dimension_id(std::string&& value) {
+  
+  custom_dimension_id_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:kentik.custom_dimension.v202411alpha1.DeletePopulatorRequest.custom_dimension_id)
+}
+inline void DeletePopulatorRequest::set_custom_dimension_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  custom_dimension_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:kentik.custom_dimension.v202411alpha1.DeletePopulatorRequest.custom_dimension_id)
+}
+inline void DeletePopulatorRequest::set_custom_dimension_id(const char* value,
+    size_t size) {
+  
+  custom_dimension_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:kentik.custom_dimension.v202411alpha1.DeletePopulatorRequest.custom_dimension_id)
+}
+inline std::string* DeletePopulatorRequest::_internal_mutable_custom_dimension_id() {
+  
+  return custom_dimension_id_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* DeletePopulatorRequest::release_custom_dimension_id() {
+  // @@protoc_insertion_point(field_release:kentik.custom_dimension.v202411alpha1.DeletePopulatorRequest.custom_dimension_id)
+  return custom_dimension_id_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void DeletePopulatorRequest::set_allocated_custom_dimension_id(std::string* custom_dimension_id) {
+  if (custom_dimension_id != nullptr) {
+    
+  } else {
+    
+  }
+  custom_dimension_id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), custom_dimension_id,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:kentik.custom_dimension.v202411alpha1.DeletePopulatorRequest.custom_dimension_id)
+}
+inline std::string* DeletePopulatorRequest::unsafe_arena_release_custom_dimension_id() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:kentik.custom_dimension.v202411alpha1.DeletePopulatorRequest.custom_dimension_id)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  
+  return custom_dimension_id_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void DeletePopulatorRequest::unsafe_arena_set_allocated_custom_dimension_id(
+    std::string* custom_dimension_id) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (custom_dimension_id != nullptr) {
+    
+  } else {
+    
+  }
+  custom_dimension_id_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      custom_dimension_id, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.custom_dimension.v202411alpha1.DeletePopulatorRequest.custom_dimension_id)
+}
 
-// uint32 populator_id = 2[json_name = "populatorId"];
+// string populator_id = 2[json_name = "populatorId"];
 inline void DeletePopulatorRequest::clear_populator_id() {
-  populator_id_ = 0u;
+  populator_id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 DeletePopulatorRequest::_internal_populator_id() const {
-  return populator_id_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint32 DeletePopulatorRequest::populator_id() const {
+inline const std::string& DeletePopulatorRequest::populator_id() const {
   // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.DeletePopulatorRequest.populator_id)
   return _internal_populator_id();
 }
-inline void DeletePopulatorRequest::_internal_set_populator_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  
-  populator_id_ = value;
-}
-inline void DeletePopulatorRequest::set_populator_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void DeletePopulatorRequest::set_populator_id(const std::string& value) {
   _internal_set_populator_id(value);
   // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.DeletePopulatorRequest.populator_id)
+}
+inline std::string* DeletePopulatorRequest::mutable_populator_id() {
+  // @@protoc_insertion_point(field_mutable:kentik.custom_dimension.v202411alpha1.DeletePopulatorRequest.populator_id)
+  return _internal_mutable_populator_id();
+}
+inline const std::string& DeletePopulatorRequest::_internal_populator_id() const {
+  return populator_id_.Get();
+}
+inline void DeletePopulatorRequest::_internal_set_populator_id(const std::string& value) {
+  
+  populator_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void DeletePopulatorRequest::set_populator_id(std::string&& value) {
+  
+  populator_id_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:kentik.custom_dimension.v202411alpha1.DeletePopulatorRequest.populator_id)
+}
+inline void DeletePopulatorRequest::set_populator_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  populator_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:kentik.custom_dimension.v202411alpha1.DeletePopulatorRequest.populator_id)
+}
+inline void DeletePopulatorRequest::set_populator_id(const char* value,
+    size_t size) {
+  
+  populator_id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:kentik.custom_dimension.v202411alpha1.DeletePopulatorRequest.populator_id)
+}
+inline std::string* DeletePopulatorRequest::_internal_mutable_populator_id() {
+  
+  return populator_id_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* DeletePopulatorRequest::release_populator_id() {
+  // @@protoc_insertion_point(field_release:kentik.custom_dimension.v202411alpha1.DeletePopulatorRequest.populator_id)
+  return populator_id_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void DeletePopulatorRequest::set_allocated_populator_id(std::string* populator_id) {
+  if (populator_id != nullptr) {
+    
+  } else {
+    
+  }
+  populator_id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), populator_id,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:kentik.custom_dimension.v202411alpha1.DeletePopulatorRequest.populator_id)
+}
+inline std::string* DeletePopulatorRequest::unsafe_arena_release_populator_id() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:kentik.custom_dimension.v202411alpha1.DeletePopulatorRequest.populator_id)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  
+  return populator_id_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void DeletePopulatorRequest::unsafe_arena_set_allocated_populator_id(
+    std::string* populator_id) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (populator_id != nullptr) {
+    
+  } else {
+    
+  }
+  populator_id_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      populator_id, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.custom_dimension.v202411alpha1.DeletePopulatorRequest.populator_id)
 }
 
 // -------------------------------------------------------------------
@@ -6504,6 +7742,10 @@ inline void DeletePopulatorRequest::set_populator_id(::PROTOBUF_NAMESPACE_ID::ui
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

@@ -52,6 +52,12 @@ void   kentik__custom_dimension__v202411alpha1__custom_dimension__free_unpacked
   assert(message->base.descriptor == &kentik__custom_dimension__v202411alpha1__custom_dimension__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   kentik__custom_dimension__v202411alpha1__populator__extended_fields_entry__init
+                     (Kentik__CustomDimension__V202411alpha1__Populator__ExtendedFieldsEntry         *message)
+{
+  static const Kentik__CustomDimension__V202411alpha1__Populator__ExtendedFieldsEntry init_value = KENTIK__CUSTOM_DIMENSION__V202411ALPHA1__POPULATOR__EXTENDED_FIELDS_ENTRY__INIT;
+  *message = init_value;
+}
 void   kentik__custom_dimension__v202411alpha1__populator__init
                      (Kentik__CustomDimension__V202411alpha1__Populator         *message)
 {
@@ -95,6 +101,51 @@ void   kentik__custom_dimension__v202411alpha1__populator__free_unpacked
   if(!message)
     return;
   assert(message->base.descriptor == &kentik__custom_dimension__v202411alpha1__populator__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__custom_dimension__v202411alpha1__extended_field__init
+                     (Kentik__CustomDimension__V202411alpha1__ExtendedField         *message)
+{
+  static const Kentik__CustomDimension__V202411alpha1__ExtendedField init_value = KENTIK__CUSTOM_DIMENSION__V202411ALPHA1__EXTENDED_FIELD__INIT;
+  *message = init_value;
+}
+size_t kentik__custom_dimension__v202411alpha1__extended_field__get_packed_size
+                     (const Kentik__CustomDimension__V202411alpha1__ExtendedField *message)
+{
+  assert(message->base.descriptor == &kentik__custom_dimension__v202411alpha1__extended_field__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__custom_dimension__v202411alpha1__extended_field__pack
+                     (const Kentik__CustomDimension__V202411alpha1__ExtendedField *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__custom_dimension__v202411alpha1__extended_field__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__custom_dimension__v202411alpha1__extended_field__pack_to_buffer
+                     (const Kentik__CustomDimension__V202411alpha1__ExtendedField *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__custom_dimension__v202411alpha1__extended_field__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__CustomDimension__V202411alpha1__ExtendedField *
+       kentik__custom_dimension__v202411alpha1__extended_field__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__CustomDimension__V202411alpha1__ExtendedField *)
+     protobuf_c_message_unpack (&kentik__custom_dimension__v202411alpha1__extended_field__descriptor,
+                                allocator, len, data);
+}
+void   kentik__custom_dimension__v202411alpha1__extended_field__free_unpacked
+                     (Kentik__CustomDimension__V202411alpha1__ExtendedField *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__custom_dimension__v202411alpha1__extended_field__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
 void   kentik__custom_dimension__v202411alpha1__list_custom_dimensions_request__init
@@ -823,11 +874,11 @@ static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__c
     "id",
     1,
     PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_UINT32,
+    PROTOBUF_C_TYPE_STRING,
     0,   /* quantifier_offset */
     offsetof(Kentik__CustomDimension__V202411alpha1__CustomDimension, id),
     NULL,
-    NULL,
+    &protobuf_c_empty_string,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
@@ -883,11 +934,11 @@ static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__c
     "company_id",
     6,
     PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_UINT32,
+    PROTOBUF_C_TYPE_STRING,
     0,   /* quantifier_offset */
     offsetof(Kentik__CustomDimension__V202411alpha1__CustomDimension, company_id),
     NULL,
-    NULL,
+    &protobuf_c_empty_string,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
@@ -946,17 +997,68 @@ const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1__custom
   (ProtobufCMessageInit) kentik__custom_dimension__v202411alpha1__custom_dimension__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__populator__field_descriptors[24] =
+static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__populator__extended_fields_entry__field_descriptors[2] =
+{
+  {
+    "key",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__CustomDimension__V202411alpha1__Populator__ExtendedFieldsEntry, key),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "value",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__CustomDimension__V202411alpha1__Populator__ExtendedFieldsEntry, value),
+    &kentik__custom_dimension__v202411alpha1__extended_field__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__custom_dimension__v202411alpha1__populator__extended_fields_entry__field_indices_by_name[] = {
+  0,   /* field[0] = key */
+  1,   /* field[1] = value */
+};
+static const ProtobufCIntRange kentik__custom_dimension__v202411alpha1__populator__extended_fields_entry__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1__populator__extended_fields_entry__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.custom_dimension.v202411alpha1.Populator.ExtendedFieldsEntry",
+  "ExtendedFieldsEntry",
+  "Kentik__CustomDimension__V202411alpha1__Populator__ExtendedFieldsEntry",
+  "kentik.custom_dimension.v202411alpha1",
+  sizeof(Kentik__CustomDimension__V202411alpha1__Populator__ExtendedFieldsEntry),
+  2,
+  kentik__custom_dimension__v202411alpha1__populator__extended_fields_entry__field_descriptors,
+  kentik__custom_dimension__v202411alpha1__populator__extended_fields_entry__field_indices_by_name,
+  1,  kentik__custom_dimension__v202411alpha1__populator__extended_fields_entry__number_ranges,
+  (ProtobufCMessageInit) kentik__custom_dimension__v202411alpha1__populator__extended_fields_entry__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__populator__field_descriptors[27] =
 {
   {
     "id",
     1,
     PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_UINT32,
+    PROTOBUF_C_TYPE_STRING,
     0,   /* quantifier_offset */
     offsetof(Kentik__CustomDimension__V202411alpha1__Populator, id),
     NULL,
-    NULL,
+    &protobuf_c_empty_string,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
@@ -1236,9 +1338,46 @@ static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__p
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "addr_count",
+    25,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT32,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__CustomDimension__V202411alpha1__Populator, addr_count),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "mac_count",
+    26,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT32,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__CustomDimension__V202411alpha1__Populator, mac_count),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "extended_fields",
+    27,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Kentik__CustomDimension__V202411alpha1__Populator, n_extended_fields),
+    offsetof(Kentik__CustomDimension__V202411alpha1__Populator, extended_fields),
+    &kentik__custom_dimension__v202411alpha1__populator__extended_fields_entry__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__custom_dimension__v202411alpha1__populator__field_indices_by_name[] = {
   7,   /* field[7] = addr */
+  24,   /* field[24] = addr_count */
   11,   /* field[11] = asn */
   16,   /* field[16] = bgp_aspath */
   17,   /* field[17] = bgp_community */
@@ -1247,10 +1386,12 @@ static const unsigned kentik__custom_dimension__v202411alpha1__populator__field_
   3,   /* field[3] = device_name */
   4,   /* field[4] = device_type */
   2,   /* field[2] = direction */
+  26,   /* field[26] = extended_fields */
   0,   /* field[0] = id */
   6,   /* field[6] = interface_name */
   12,   /* field[12] = lasthop_as_name */
   18,   /* field[18] = mac */
+  25,   /* field[25] = mac_count */
   15,   /* field[15] = nexthop */
   14,   /* field[14] = nexthop_as_name */
   13,   /* field[13] = nexthop_asn */
@@ -1266,7 +1407,7 @@ static const unsigned kentik__custom_dimension__v202411alpha1__populator__field_
 static const ProtobufCIntRange kentik__custom_dimension__v202411alpha1__populator__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 24 }
+  { 0, 27 }
 };
 const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1__populator__descriptor =
 {
@@ -1276,11 +1417,49 @@ const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1__popula
   "Kentik__CustomDimension__V202411alpha1__Populator",
   "kentik.custom_dimension.v202411alpha1",
   sizeof(Kentik__CustomDimension__V202411alpha1__Populator),
-  24,
+  27,
   kentik__custom_dimension__v202411alpha1__populator__field_descriptors,
   kentik__custom_dimension__v202411alpha1__populator__field_indices_by_name,
   1,  kentik__custom_dimension__v202411alpha1__populator__number_ranges,
   (ProtobufCMessageInit) kentik__custom_dimension__v202411alpha1__populator__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__extended_field__field_descriptors[1] =
+{
+  {
+    "value",
+    1,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_STRING,
+    offsetof(Kentik__CustomDimension__V202411alpha1__ExtendedField, n_value),
+    offsetof(Kentik__CustomDimension__V202411alpha1__ExtendedField, value),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__custom_dimension__v202411alpha1__extended_field__field_indices_by_name[] = {
+  0,   /* field[0] = value */
+};
+static const ProtobufCIntRange kentik__custom_dimension__v202411alpha1__extended_field__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1__extended_field__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.custom_dimension.v202411alpha1.ExtendedField",
+  "ExtendedField",
+  "Kentik__CustomDimension__V202411alpha1__ExtendedField",
+  "kentik.custom_dimension.v202411alpha1",
+  sizeof(Kentik__CustomDimension__V202411alpha1__ExtendedField),
+  1,
+  kentik__custom_dimension__v202411alpha1__extended_field__field_descriptors,
+  kentik__custom_dimension__v202411alpha1__extended_field__field_indices_by_name,
+  1,  kentik__custom_dimension__v202411alpha1__extended_field__number_ranges,
+  (ProtobufCMessageInit) kentik__custom_dimension__v202411alpha1__extended_field__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
 #define kentik__custom_dimension__v202411alpha1__list_custom_dimensions_request__field_descriptors NULL
@@ -1345,11 +1524,11 @@ static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__g
     "custom_dimension_id",
     1,
     PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_UINT32,
+    PROTOBUF_C_TYPE_STRING,
     0,   /* quantifier_offset */
     offsetof(Kentik__CustomDimension__V202411alpha1__GetCustomDimensionInfoRequest, custom_dimension_id),
     NULL,
-    NULL,
+    &protobuf_c_empty_string,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
@@ -1497,11 +1676,11 @@ static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__u
     "custom_dimension_id",
     1,
     PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_UINT32,
+    PROTOBUF_C_TYPE_STRING,
     0,   /* quantifier_offset */
     offsetof(Kentik__CustomDimension__V202411alpha1__UpdateCustomDimensionRequest, custom_dimension_id),
     NULL,
-    NULL,
+    &protobuf_c_empty_string,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
@@ -1586,11 +1765,11 @@ static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__d
     "custom_dimension_id",
     1,
     PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_UINT32,
+    PROTOBUF_C_TYPE_STRING,
     0,   /* quantifier_offset */
     offsetof(Kentik__CustomDimension__V202411alpha1__DeleteCustomDimensionRequest, custom_dimension_id),
     NULL,
-    NULL,
+    &protobuf_c_empty_string,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
@@ -1642,11 +1821,11 @@ static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__c
     "custom_dimension_id",
     1,
     PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_UINT32,
+    PROTOBUF_C_TYPE_STRING,
     0,   /* quantifier_offset */
     offsetof(Kentik__CustomDimension__V202411alpha1__CreatePopulatorRequest, custom_dimension_id),
     NULL,
-    NULL,
+    &protobuf_c_empty_string,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
@@ -1731,11 +1910,11 @@ static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__u
     "custom_dimension_id",
     1,
     PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_UINT32,
+    PROTOBUF_C_TYPE_STRING,
     0,   /* quantifier_offset */
     offsetof(Kentik__CustomDimension__V202411alpha1__UpdatePopulatorRequest, custom_dimension_id),
     NULL,
-    NULL,
+    &protobuf_c_empty_string,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
@@ -1743,11 +1922,11 @@ static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__u
     "populator_id",
     2,
     PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_UINT32,
+    PROTOBUF_C_TYPE_STRING,
     0,   /* quantifier_offset */
     offsetof(Kentik__CustomDimension__V202411alpha1__UpdatePopulatorRequest, populator_id),
     NULL,
-    NULL,
+    &protobuf_c_empty_string,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
@@ -1833,11 +2012,11 @@ static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__d
     "custom_dimension_id",
     1,
     PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_UINT32,
+    PROTOBUF_C_TYPE_STRING,
     0,   /* quantifier_offset */
     offsetof(Kentik__CustomDimension__V202411alpha1__DeletePopulatorRequest, custom_dimension_id),
     NULL,
-    NULL,
+    &protobuf_c_empty_string,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
@@ -1845,11 +2024,11 @@ static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__d
     "populator_id",
     2,
     PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_UINT32,
+    PROTOBUF_C_TYPE_STRING,
     0,   /* quantifier_offset */
     offsetof(Kentik__CustomDimension__V202411alpha1__DeletePopulatorRequest, populator_id),
     NULL,
-    NULL,
+    &protobuf_c_empty_string,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },

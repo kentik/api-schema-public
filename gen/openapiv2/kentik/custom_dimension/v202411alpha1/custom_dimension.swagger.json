@@ -72,8 +72,7 @@
             "name": "customDimensionId",
             "in": "path",
             "required": true,
-            "type": "integer",
-            "format": "int64"
+            "type": "string"
           }
         ],
         "tags": [
@@ -103,8 +102,7 @@
             "name": "customDimensionId",
             "in": "path",
             "required": true,
-            "type": "integer",
-            "format": "int64"
+            "type": "string"
           }
         ],
         "tags": [
@@ -134,8 +132,7 @@
             "name": "customDimensionId",
             "in": "path",
             "required": true,
-            "type": "integer",
-            "format": "int64"
+            "type": "string"
           },
           {
             "name": "body",
@@ -175,8 +172,7 @@
             "name": "customDimensionId",
             "in": "path",
             "required": true,
-            "type": "integer",
-            "format": "int64"
+            "type": "string"
           },
           {
             "name": "body",
@@ -216,15 +212,13 @@
             "name": "customDimensionId",
             "in": "path",
             "required": true,
-            "type": "integer",
-            "format": "int64"
+            "type": "string"
           },
           {
             "name": "populatorId",
             "in": "path",
             "required": true,
-            "type": "integer",
-            "format": "int64"
+            "type": "string"
           }
         ],
         "tags": [
@@ -254,15 +248,13 @@
             "name": "customDimensionId",
             "in": "path",
             "required": true,
-            "type": "integer",
-            "format": "int64"
+            "type": "string"
           },
           {
             "name": "populatorId",
             "in": "path",
             "required": true,
-            "type": "integer",
-            "format": "int64"
+            "type": "string"
           },
           {
             "name": "body",
@@ -364,8 +356,7 @@
       "type": "object",
       "properties": {
         "id": {
-          "type": "integer",
-          "format": "int64",
+          "type": "string",
           "description": "Unique identifier for the custom dimension.",
           "readOnly": true
         },
@@ -400,8 +391,7 @@
           "readOnly": true
         },
         "companyId": {
-          "type": "integer",
-          "format": "int64",
+          "type": "string",
           "description": "The system-assigned ID of the customer.",
           "readOnly": true
         },
@@ -430,6 +420,17 @@
     "v202411alpha1DeletePopulatorResponse": {
       "type": "object"
     },
+    "v202411alpha1ExtendedField": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "v202411alpha1GetCustomDimensionInfoResponse": {
       "type": "object",
       "properties": {
@@ -453,8 +454,7 @@
       "type": "object",
       "properties": {
         "id": {
-          "type": "integer",
-          "format": "int64",
+          "type": "string",
           "description": "Unique identifier for the populator.",
           "readOnly": true
         },
@@ -609,6 +609,26 @@
           "type": "string",
           "format": "date-time",
           "description": "Date-time of most-recent populator edit, in UTC.",
+          "readOnly": true
+        },
+        "addrCount": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Number of IP addresses.",
+          "readOnly": true
+        },
+        "macCount": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Number of MAC addresses.",
+          "readOnly": true
+        },
+        "extendedFields": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/v202411alpha1ExtendedField"
+          },
+          "description": "Additional fields set on object but not currently available on API.",
           "readOnly": true
         }
       }

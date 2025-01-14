@@ -24,6 +24,8 @@ PROTOBUF_C__BEGIN_DECLS
 
 typedef struct Kentik__CustomDimension__V202411alpha1__CustomDimension Kentik__CustomDimension__V202411alpha1__CustomDimension;
 typedef struct Kentik__CustomDimension__V202411alpha1__Populator Kentik__CustomDimension__V202411alpha1__Populator;
+typedef struct Kentik__CustomDimension__V202411alpha1__Populator__ExtendedFieldsEntry Kentik__CustomDimension__V202411alpha1__Populator__ExtendedFieldsEntry;
+typedef struct Kentik__CustomDimension__V202411alpha1__ExtendedField Kentik__CustomDimension__V202411alpha1__ExtendedField;
 typedef struct Kentik__CustomDimension__V202411alpha1__ListCustomDimensionsRequest Kentik__CustomDimension__V202411alpha1__ListCustomDimensionsRequest;
 typedef struct Kentik__CustomDimension__V202411alpha1__ListCustomDimensionsResponse Kentik__CustomDimension__V202411alpha1__ListCustomDimensionsResponse;
 typedef struct Kentik__CustomDimension__V202411alpha1__GetCustomDimensionInfoRequest Kentik__CustomDimension__V202411alpha1__GetCustomDimensionInfoRequest;
@@ -50,7 +52,7 @@ typedef struct Kentik__CustomDimension__V202411alpha1__DeletePopulatorResponse K
 struct  Kentik__CustomDimension__V202411alpha1__CustomDimension
 {
   ProtobufCMessage base;
-  uint32_t id;
+  char *id;
   char *name;
   /*
    * should be an enum instead? but also YAGNI
@@ -59,19 +61,30 @@ struct  Kentik__CustomDimension__V202411alpha1__CustomDimension
   char *description;
   size_t n_populators;
   Kentik__CustomDimension__V202411alpha1__Populator **populators;
-  uint32_t company_id;
+  char *company_id;
   Google__Protobuf__Timestamp *created_date;
   Google__Protobuf__Timestamp *updated_date;
 };
 #define KENTIK__CUSTOM_DIMENSION__V202411ALPHA1__CUSTOM_DIMENSION__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__custom_dimension__v202411alpha1__custom_dimension__descriptor) \
-    , 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL, 0, NULL, NULL }
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL, (char *)protobuf_c_empty_string, NULL, NULL }
+
+
+struct  Kentik__CustomDimension__V202411alpha1__Populator__ExtendedFieldsEntry
+{
+  ProtobufCMessage base;
+  char *key;
+  Kentik__CustomDimension__V202411alpha1__ExtendedField *value;
+};
+#define KENTIK__CUSTOM_DIMENSION__V202411ALPHA1__POPULATOR__EXTENDED_FIELDS_ENTRY__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__custom_dimension__v202411alpha1__populator__extended_fields_entry__descriptor) \
+    , (char *)protobuf_c_empty_string, NULL }
 
 
 struct  Kentik__CustomDimension__V202411alpha1__Populator
 {
   ProtobufCMessage base;
-  uint32_t id;
+  char *id;
   char *value;
   char *direction;
   size_t n_device_name;
@@ -112,10 +125,25 @@ struct  Kentik__CustomDimension__V202411alpha1__Populator
   char *user;
   Google__Protobuf__Timestamp *created_date;
   Google__Protobuf__Timestamp *updated_date;
+  uint32_t addr_count;
+  uint32_t mac_count;
+  size_t n_extended_fields;
+  Kentik__CustomDimension__V202411alpha1__Populator__ExtendedFieldsEntry **extended_fields;
 };
 #define KENTIK__CUSTOM_DIMENSION__V202411ALPHA1__POPULATOR__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__custom_dimension__v202411alpha1__populator__descriptor) \
-    , 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, (char *)protobuf_c_empty_string, NULL, NULL }
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, (char *)protobuf_c_empty_string, NULL, NULL, 0, 0, 0,NULL }
+
+
+struct  Kentik__CustomDimension__V202411alpha1__ExtendedField
+{
+  ProtobufCMessage base;
+  size_t n_value;
+  char **value;
+};
+#define KENTIK__CUSTOM_DIMENSION__V202411ALPHA1__EXTENDED_FIELD__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__custom_dimension__v202411alpha1__extended_field__descriptor) \
+    , 0,NULL }
 
 
 /*
@@ -147,11 +175,11 @@ struct  Kentik__CustomDimension__V202411alpha1__ListCustomDimensionsResponse
 struct  Kentik__CustomDimension__V202411alpha1__GetCustomDimensionInfoRequest
 {
   ProtobufCMessage base;
-  uint32_t custom_dimension_id;
+  char *custom_dimension_id;
 };
 #define KENTIK__CUSTOM_DIMENSION__V202411ALPHA1__GET_CUSTOM_DIMENSION_INFO_REQUEST__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__custom_dimension__v202411alpha1__get_custom_dimension_info_request__descriptor) \
-    , 0 }
+    , (char *)protobuf_c_empty_string }
 
 
 struct  Kentik__CustomDimension__V202411alpha1__GetCustomDimensionInfoResponse
@@ -187,12 +215,12 @@ struct  Kentik__CustomDimension__V202411alpha1__CreateCustomDimensionResponse
 struct  Kentik__CustomDimension__V202411alpha1__UpdateCustomDimensionRequest
 {
   ProtobufCMessage base;
-  uint32_t custom_dimension_id;
+  char *custom_dimension_id;
   Kentik__CustomDimension__V202411alpha1__CustomDimension *dimension;
 };
 #define KENTIK__CUSTOM_DIMENSION__V202411ALPHA1__UPDATE_CUSTOM_DIMENSION_REQUEST__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__custom_dimension__v202411alpha1__update_custom_dimension_request__descriptor) \
-    , 0, NULL }
+    , (char *)protobuf_c_empty_string, NULL }
 
 
 struct  Kentik__CustomDimension__V202411alpha1__UpdateCustomDimensionResponse
@@ -208,11 +236,11 @@ struct  Kentik__CustomDimension__V202411alpha1__UpdateCustomDimensionResponse
 struct  Kentik__CustomDimension__V202411alpha1__DeleteCustomDimensionRequest
 {
   ProtobufCMessage base;
-  uint32_t custom_dimension_id;
+  char *custom_dimension_id;
 };
 #define KENTIK__CUSTOM_DIMENSION__V202411ALPHA1__DELETE_CUSTOM_DIMENSION_REQUEST__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__custom_dimension__v202411alpha1__delete_custom_dimension_request__descriptor) \
-    , 0 }
+    , (char *)protobuf_c_empty_string }
 
 
 struct  Kentik__CustomDimension__V202411alpha1__DeleteCustomDimensionResponse
@@ -227,12 +255,12 @@ struct  Kentik__CustomDimension__V202411alpha1__DeleteCustomDimensionResponse
 struct  Kentik__CustomDimension__V202411alpha1__CreatePopulatorRequest
 {
   ProtobufCMessage base;
-  uint32_t custom_dimension_id;
+  char *custom_dimension_id;
   Kentik__CustomDimension__V202411alpha1__Populator *populator;
 };
 #define KENTIK__CUSTOM_DIMENSION__V202411ALPHA1__CREATE_POPULATOR_REQUEST__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__custom_dimension__v202411alpha1__create_populator_request__descriptor) \
-    , 0, NULL }
+    , (char *)protobuf_c_empty_string, NULL }
 
 
 struct  Kentik__CustomDimension__V202411alpha1__CreatePopulatorResponse
@@ -248,13 +276,13 @@ struct  Kentik__CustomDimension__V202411alpha1__CreatePopulatorResponse
 struct  Kentik__CustomDimension__V202411alpha1__UpdatePopulatorRequest
 {
   ProtobufCMessage base;
-  uint32_t custom_dimension_id;
-  uint32_t populator_id;
+  char *custom_dimension_id;
+  char *populator_id;
   Kentik__CustomDimension__V202411alpha1__Populator *populator;
 };
 #define KENTIK__CUSTOM_DIMENSION__V202411ALPHA1__UPDATE_POPULATOR_REQUEST__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__custom_dimension__v202411alpha1__update_populator_request__descriptor) \
-    , 0, 0, NULL }
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL }
 
 
 struct  Kentik__CustomDimension__V202411alpha1__UpdatePopulatorResponse
@@ -270,12 +298,12 @@ struct  Kentik__CustomDimension__V202411alpha1__UpdatePopulatorResponse
 struct  Kentik__CustomDimension__V202411alpha1__DeletePopulatorRequest
 {
   ProtobufCMessage base;
-  uint32_t custom_dimension_id;
-  uint32_t populator_id;
+  char *custom_dimension_id;
+  char *populator_id;
 };
 #define KENTIK__CUSTOM_DIMENSION__V202411ALPHA1__DELETE_POPULATOR_REQUEST__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__custom_dimension__v202411alpha1__delete_populator_request__descriptor) \
-    , 0, 0 }
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
 
 
 struct  Kentik__CustomDimension__V202411alpha1__DeletePopulatorResponse
@@ -306,6 +334,9 @@ Kentik__CustomDimension__V202411alpha1__CustomDimension *
 void   kentik__custom_dimension__v202411alpha1__custom_dimension__free_unpacked
                      (Kentik__CustomDimension__V202411alpha1__CustomDimension *message,
                       ProtobufCAllocator *allocator);
+/* Kentik__CustomDimension__V202411alpha1__Populator__ExtendedFieldsEntry methods */
+void   kentik__custom_dimension__v202411alpha1__populator__extended_fields_entry__init
+                     (Kentik__CustomDimension__V202411alpha1__Populator__ExtendedFieldsEntry         *message);
 /* Kentik__CustomDimension__V202411alpha1__Populator methods */
 void   kentik__custom_dimension__v202411alpha1__populator__init
                      (Kentik__CustomDimension__V202411alpha1__Populator         *message);
@@ -324,6 +355,25 @@ Kentik__CustomDimension__V202411alpha1__Populator *
                       const uint8_t       *data);
 void   kentik__custom_dimension__v202411alpha1__populator__free_unpacked
                      (Kentik__CustomDimension__V202411alpha1__Populator *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__CustomDimension__V202411alpha1__ExtendedField methods */
+void   kentik__custom_dimension__v202411alpha1__extended_field__init
+                     (Kentik__CustomDimension__V202411alpha1__ExtendedField         *message);
+size_t kentik__custom_dimension__v202411alpha1__extended_field__get_packed_size
+                     (const Kentik__CustomDimension__V202411alpha1__ExtendedField   *message);
+size_t kentik__custom_dimension__v202411alpha1__extended_field__pack
+                     (const Kentik__CustomDimension__V202411alpha1__ExtendedField   *message,
+                      uint8_t             *out);
+size_t kentik__custom_dimension__v202411alpha1__extended_field__pack_to_buffer
+                     (const Kentik__CustomDimension__V202411alpha1__ExtendedField   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__CustomDimension__V202411alpha1__ExtendedField *
+       kentik__custom_dimension__v202411alpha1__extended_field__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__custom_dimension__v202411alpha1__extended_field__free_unpacked
+                     (Kentik__CustomDimension__V202411alpha1__ExtendedField *message,
                       ProtobufCAllocator *allocator);
 /* Kentik__CustomDimension__V202411alpha1__ListCustomDimensionsRequest methods */
 void   kentik__custom_dimension__v202411alpha1__list_custom_dimensions_request__init
@@ -634,8 +684,14 @@ void   kentik__custom_dimension__v202411alpha1__delete_populator_response__free_
 typedef void (*Kentik__CustomDimension__V202411alpha1__CustomDimension_Closure)
                  (const Kentik__CustomDimension__V202411alpha1__CustomDimension *message,
                   void *closure_data);
+typedef void (*Kentik__CustomDimension__V202411alpha1__Populator__ExtendedFieldsEntry_Closure)
+                 (const Kentik__CustomDimension__V202411alpha1__Populator__ExtendedFieldsEntry *message,
+                  void *closure_data);
 typedef void (*Kentik__CustomDimension__V202411alpha1__Populator_Closure)
                  (const Kentik__CustomDimension__V202411alpha1__Populator *message,
+                  void *closure_data);
+typedef void (*Kentik__CustomDimension__V202411alpha1__ExtendedField_Closure)
+                 (const Kentik__CustomDimension__V202411alpha1__ExtendedField *message,
                   void *closure_data);
 typedef void (*Kentik__CustomDimension__V202411alpha1__ListCustomDimensionsRequest_Closure)
                  (const Kentik__CustomDimension__V202411alpha1__ListCustomDimensionsRequest *message,
@@ -777,6 +833,8 @@ void kentik__custom_dimension__v202411alpha1__custom_dimension_service__delete_p
 
 extern const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1__custom_dimension__descriptor;
 extern const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1__populator__descriptor;
+extern const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1__populator__extended_fields_entry__descriptor;
+extern const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1__extended_field__descriptor;
 extern const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1__list_custom_dimensions_request__descriptor;
 extern const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1__list_custom_dimensions_response__descriptor;
 extern const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1__get_custom_dimension_info_request__descriptor;
