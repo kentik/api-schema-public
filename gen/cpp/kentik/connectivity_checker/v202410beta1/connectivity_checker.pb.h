@@ -587,6 +587,7 @@ class CreateConnectivityReportResponse PROTOBUF_FINAL :
     kReturnPathsFieldNumber = 6,
     kQueryStatusFieldNumber = 3,
     kReportUrlFieldNumber = 4,
+    kLastMetadataFetchFieldNumber = 7,
     kReachableFieldNumber = 1,
     kReturnReachableFieldNumber = 2,
   };
@@ -688,6 +689,31 @@ class CreateConnectivityReportResponse PROTOBUF_FINAL :
   std::string* _internal_mutable_report_url();
   public:
 
+  // string last_metadata_fetch = 7[json_name = "lastMetadataFetch", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_last_metadata_fetch();
+  const std::string& last_metadata_fetch() const;
+  void set_last_metadata_fetch(const std::string& value);
+  void set_last_metadata_fetch(std::string&& value);
+  void set_last_metadata_fetch(const char* value);
+  void set_last_metadata_fetch(const char* value, size_t size);
+  std::string* mutable_last_metadata_fetch();
+  std::string* release_last_metadata_fetch();
+  void set_allocated_last_metadata_fetch(std::string* last_metadata_fetch);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_last_metadata_fetch();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_last_metadata_fetch(
+      std::string* last_metadata_fetch);
+  private:
+  const std::string& _internal_last_metadata_fetch() const;
+  void _internal_set_last_metadata_fetch(const std::string& value);
+  std::string* _internal_mutable_last_metadata_fetch();
+  public:
+
   // bool reachable = 1[json_name = "reachable", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   void clear_reachable();
   bool reachable() const;
@@ -717,6 +743,7 @@ class CreateConnectivityReportResponse PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> return_paths_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr query_status_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr report_url_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr last_metadata_fetch_;
   bool reachable_;
   bool return_reachable_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
@@ -1700,6 +1727,87 @@ inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
 CreateConnectivityReportResponse::mutable_return_paths() {
   // @@protoc_insertion_point(field_mutable_list:kentik.connectivity_checker.v202410beta1.CreateConnectivityReportResponse.return_paths)
   return &return_paths_;
+}
+
+// string last_metadata_fetch = 7[json_name = "lastMetadataFetch", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void CreateConnectivityReportResponse::clear_last_metadata_fetch() {
+  last_metadata_fetch_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline const std::string& CreateConnectivityReportResponse::last_metadata_fetch() const {
+  // @@protoc_insertion_point(field_get:kentik.connectivity_checker.v202410beta1.CreateConnectivityReportResponse.last_metadata_fetch)
+  return _internal_last_metadata_fetch();
+}
+inline void CreateConnectivityReportResponse::set_last_metadata_fetch(const std::string& value) {
+  _internal_set_last_metadata_fetch(value);
+  // @@protoc_insertion_point(field_set:kentik.connectivity_checker.v202410beta1.CreateConnectivityReportResponse.last_metadata_fetch)
+}
+inline std::string* CreateConnectivityReportResponse::mutable_last_metadata_fetch() {
+  // @@protoc_insertion_point(field_mutable:kentik.connectivity_checker.v202410beta1.CreateConnectivityReportResponse.last_metadata_fetch)
+  return _internal_mutable_last_metadata_fetch();
+}
+inline const std::string& CreateConnectivityReportResponse::_internal_last_metadata_fetch() const {
+  return last_metadata_fetch_.Get();
+}
+inline void CreateConnectivityReportResponse::_internal_set_last_metadata_fetch(const std::string& value) {
+  
+  last_metadata_fetch_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void CreateConnectivityReportResponse::set_last_metadata_fetch(std::string&& value) {
+  
+  last_metadata_fetch_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:kentik.connectivity_checker.v202410beta1.CreateConnectivityReportResponse.last_metadata_fetch)
+}
+inline void CreateConnectivityReportResponse::set_last_metadata_fetch(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  last_metadata_fetch_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:kentik.connectivity_checker.v202410beta1.CreateConnectivityReportResponse.last_metadata_fetch)
+}
+inline void CreateConnectivityReportResponse::set_last_metadata_fetch(const char* value,
+    size_t size) {
+  
+  last_metadata_fetch_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:kentik.connectivity_checker.v202410beta1.CreateConnectivityReportResponse.last_metadata_fetch)
+}
+inline std::string* CreateConnectivityReportResponse::_internal_mutable_last_metadata_fetch() {
+  
+  return last_metadata_fetch_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* CreateConnectivityReportResponse::release_last_metadata_fetch() {
+  // @@protoc_insertion_point(field_release:kentik.connectivity_checker.v202410beta1.CreateConnectivityReportResponse.last_metadata_fetch)
+  return last_metadata_fetch_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void CreateConnectivityReportResponse::set_allocated_last_metadata_fetch(std::string* last_metadata_fetch) {
+  if (last_metadata_fetch != nullptr) {
+    
+  } else {
+    
+  }
+  last_metadata_fetch_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), last_metadata_fetch,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:kentik.connectivity_checker.v202410beta1.CreateConnectivityReportResponse.last_metadata_fetch)
+}
+inline std::string* CreateConnectivityReportResponse::unsafe_arena_release_last_metadata_fetch() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:kentik.connectivity_checker.v202410beta1.CreateConnectivityReportResponse.last_metadata_fetch)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  
+  return last_metadata_fetch_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void CreateConnectivityReportResponse::unsafe_arena_set_allocated_last_metadata_fetch(
+    std::string* last_metadata_fetch) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (last_metadata_fetch != nullptr) {
+    
+  } else {
+    
+  }
+  last_metadata_fetch_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      last_metadata_fetch, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.connectivity_checker.v202410beta1.CreateConnectivityReportResponse.last_metadata_fetch)
 }
 
 #ifdef __GNUC__

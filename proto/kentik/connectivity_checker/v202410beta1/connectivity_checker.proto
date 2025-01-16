@@ -191,25 +191,31 @@ message CreateConnectivityReportResponse {
   string query_status = 3 [
     (google.api.field_behavior) = OUTPUT_ONLY,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "ARN of the IAM role granted access to the S3 bucket and describe API end-points."
+      description: "Status of the query."
     }
   ];
   string report_url = 4 [
     (google.api.field_behavior) = OUTPUT_ONLY,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "ARN of the IAM role granted access to the S3 bucket and describe API end-points."
+      description: "URL to view the connectivity checker report in the Kentik platform."
     }
   ];
   repeated string paths = 5 [
     (google.api.field_behavior) = OUTPUT_ONLY,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "ARN of the IAM role granted access to the S3 bucket and describe API end-points."
+      description: "The connection paths in your network."
     }
   ];
   repeated string return_paths = 6 [
     (google.api.field_behavior) = OUTPUT_ONLY,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "ARN of the IAM role granted access to the S3 bucket and describe API end-points."
+      description: "The return connection paths in your network."
+    }
+  ];
+  string last_metadata_fetch = 7 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The timestamp indicating when the metadata used to build the connectivity checker report was last fetched."
     }
   ];
 }

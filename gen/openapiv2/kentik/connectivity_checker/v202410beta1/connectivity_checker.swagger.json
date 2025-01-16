@@ -194,12 +194,12 @@
         },
         "queryStatus": {
           "type": "string",
-          "description": "ARN of the IAM role granted access to the S3 bucket and describe API end-points.",
+          "description": "Status of the query.",
           "readOnly": true
         },
         "reportUrl": {
           "type": "string",
-          "description": "ARN of the IAM role granted access to the S3 bucket and describe API end-points.",
+          "description": "URL to view the connectivity checker report in the Kentik platform.",
           "readOnly": true
         },
         "paths": {
@@ -207,7 +207,7 @@
           "items": {
             "type": "string"
           },
-          "description": "ARN of the IAM role granted access to the S3 bucket and describe API end-points.",
+          "description": "The connection paths in your network.",
           "readOnly": true
         },
         "returnPaths": {
@@ -215,7 +215,12 @@
           "items": {
             "type": "string"
           },
-          "description": "ARN of the IAM role granted access to the S3 bucket and describe API end-points.",
+          "description": "The return connection paths in your network.",
+          "readOnly": true
+        },
+        "lastMetadataFetch": {
+          "type": "string",
+          "description": "The timestamp indicating when the metadata used to build the connectivity checker report was last fetched.",
           "readOnly": true
         }
       },

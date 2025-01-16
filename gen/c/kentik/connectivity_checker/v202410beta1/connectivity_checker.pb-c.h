@@ -106,10 +106,11 @@ struct  Kentik__ConnectivityChecker__V202410beta1__CreateConnectivityReportRespo
   char **paths;
   size_t n_return_paths;
   char **return_paths;
+  char *last_metadata_fetch;
 };
 #define KENTIK__CONNECTIVITY_CHECKER__V202410BETA1__CREATE_CONNECTIVITY_REPORT_RESPONSE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__connectivity_checker__v202410beta1__create_connectivity_report_response__descriptor) \
-    , 0, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL, 0,NULL }
+    , 0, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL, 0,NULL, (char *)protobuf_c_empty_string }
 
 
 /* Kentik__ConnectivityChecker__V202410beta1__CreateConnectivityReportRequest methods */

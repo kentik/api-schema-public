@@ -252,7 +252,7 @@ const ProtobufCMessageDescriptor kentik__connectivity_checker__v202410beta1__cre
   (ProtobufCMessageInit) kentik__connectivity_checker__v202410beta1__create_connectivity_report_request__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__connectivity_checker__v202410beta1__create_connectivity_report_response__field_descriptors[6] =
+static const ProtobufCFieldDescriptor kentik__connectivity_checker__v202410beta1__create_connectivity_report_response__field_descriptors[7] =
 {
   {
     "reachable",
@@ -326,8 +326,21 @@ static const ProtobufCFieldDescriptor kentik__connectivity_checker__v202410beta1
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "last_metadata_fetch",
+    7,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__ConnectivityChecker__V202410beta1__CreateConnectivityReportResponse, last_metadata_fetch),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__connectivity_checker__v202410beta1__create_connectivity_report_response__field_indices_by_name[] = {
+  6,   /* field[6] = last_metadata_fetch */
   4,   /* field[4] = paths */
   2,   /* field[2] = query_status */
   0,   /* field[0] = reachable */
@@ -338,7 +351,7 @@ static const unsigned kentik__connectivity_checker__v202410beta1__create_connect
 static const ProtobufCIntRange kentik__connectivity_checker__v202410beta1__create_connectivity_report_response__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 6 }
+  { 0, 7 }
 };
 const ProtobufCMessageDescriptor kentik__connectivity_checker__v202410beta1__create_connectivity_report_response__descriptor =
 {
@@ -348,7 +361,7 @@ const ProtobufCMessageDescriptor kentik__connectivity_checker__v202410beta1__cre
   "Kentik__ConnectivityChecker__V202410beta1__CreateConnectivityReportResponse",
   "kentik.connectivity_checker.v202410beta1",
   sizeof(Kentik__ConnectivityChecker__V202410beta1__CreateConnectivityReportResponse),
-  6,
+  7,
   kentik__connectivity_checker__v202410beta1__create_connectivity_report_response__field_descriptors,
   kentik__connectivity_checker__v202410beta1__create_connectivity_report_response__field_indices_by_name,
   1,  kentik__connectivity_checker__v202410beta1__create_connectivity_report_response__number_ranges,

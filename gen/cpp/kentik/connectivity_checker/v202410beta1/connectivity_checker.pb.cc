@@ -89,6 +89,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_kentik_2fconnectivity_5fchecke
   PROTOBUF_FIELD_OFFSET(::kentik::connectivity_checker::v202410beta1::CreateConnectivityReportResponse, report_url_),
   PROTOBUF_FIELD_OFFSET(::kentik::connectivity_checker::v202410beta1::CreateConnectivityReportResponse, paths_),
   PROTOBUF_FIELD_OFFSET(::kentik::connectivity_checker::v202410beta1::CreateConnectivityReportResponse, return_paths_),
+  PROTOBUF_FIELD_OFFSET(::kentik::connectivity_checker::v202410beta1::CreateConnectivityReportResponse, last_metadata_fetch_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::kentik::connectivity_checker::v202410beta1::CreateConnectivityReportRequest)},
@@ -130,104 +131,105 @@ const char descriptor_table_protodef_kentik_2fconnectivity_5fchecker_2fv202410be
   "\0132\032.google.protobuf.TimestampBI\222AB2@End "
   "timestamp (UTC) which defines the time r"
   "ange for the report.\342A\001\002R\007endTime\022(\n\004nam"
-  "e\030\n \001(\tB\024\222A\r2\013Report Name\342A\001\001R\004name\"\320\005\n "
+  "e\030\n \001(\tB\024\222A\r2\013Report Name\342A\001\001R\004name\"\336\005\n "
   "CreateConnectivityReportResponse\022[\n\treac"
   "hable\030\001 \001(\010B=\222A624Attribute controlling "
   "whether the instance is active\342A\001\003R\treac"
   "hable\022h\n\020return_reachable\030\002 \001(\010B=\222A624At"
   "tribute controlling whether the instance"
-  " is active\342A\001\003R\017returnReachable\022|\n\014query"
-  "_status\030\003 \001(\tBY\222AR2PARN of the IAM role "
-  "granted access to the S3 bucket and desc"
-  "ribe API end-points.\342A\001\003R\013queryStatus\022x\n"
-  "\nreport_url\030\004 \001(\tBY\222AR2PARN of the IAM r"
-  "ole granted access to the S3 bucket and "
-  "describe API end-points.\342A\001\003R\treportUrl\022"
-  "o\n\005paths\030\005 \003(\tBY\222AR2PARN of the IAM role"
-  " granted access to the S3 bucket and des"
-  "cribe API end-points.\342A\001\003R\005paths\022|\n\014retu"
-  "rn_paths\030\006 \003(\tBY\222AR2PARN of the IAM role"
-  " granted access to the S3 bucket and des"
-  "cribe API end-points.\342A\001\003R\013returnPaths*a"
-  "\n\rCloudProvider\022\036\n\032CLOUD_PROVIDER_UNSPEC"
-  "IFIED\020\000\022\026\n\022CLOUD_PROVIDER_AWS\020\001\022\030\n\024CLOUD"
-  "_PROVIDER_AZURE\020\002*~\n\nEntityType\022\033\n\027ENTIT"
-  "Y_TYPE_UNSPECIFIED\020\000\022\026\n\022ENTITY_TYPE_SUBN"
-  "ET\020\001\022\030\n\024ENTITY_TYPE_INSTANCE\020\002\022!\n\035ENTITY"
-  "_TYPE_NETWORK_INTERFACE\020\0032\205\004\n\037Connectivi"
-  "tyCheckerAdminService\022\247\003\n\030CreateConnecti"
-  "vityReport\022I.kentik.connectivity_checker"
-  ".v202410beta1.CreateConnectivityReportRe"
-  "quest\032J.kentik.connectivity_checker.v202"
-  "410beta1.CreateConnectivityReportRespons"
-  "e\"\363\001\222A\227\001\022%Create a Connectivity Checker "
-  "Report.\032TCreate a connectivity checker r"
-  "eport based on configuration provided in"
-  " the request.*\030CreateConnectivityReport\362"
-  "\327\002 admin.connectivity_checker:write\202\323\344\223\002"
-  ".\")/connectivity_checker/v202410beta1/cr"
-  "eate:\001*\0328\312A\023grpc.api.kentik.com\352\327\002\032admin"
-  ".connectivity_checker\220\330\002\003B\336\022Zhgithub.com"
-  "/kentik/api-schema-public/gen/go/kentik/"
-  "connectivity_checker/v202410beta1;connec"
-  "tivity_checker\222A\360\021\022\376\017\n\037Kentik Connectivi"
-  "ty Checker API\022\205\017# Overview\nThe Connecti"
-  "vity Checker API provides programmatic a"
-  "ccess to Kentik\'s Connectivity Checker, "
-  "which allows the checking and monitoring"
-  " of forward and return paths between two"
-  " points on your cloud network, over a sp"
-  "ecified time range interval, for entitie"
-  "s such as Instances, Subnets, and Networ"
-  "k Interfaces.### Supported Cloud Provide"
-  "rs\nThe functionality and configuration p"
-  "arameters supported by this API differ b"
-  "y cloud provider. The API currently supp"
-  "orts the following providers:\n* [Amazon "
-  "Web Services](https://kb.kentik.com/v0/B"
-  "d06.htm) (AWS)\n* [Microsoft Azure](https"
-  "://kb.kentik.com/v0/Bd08.htm)\n\n### Suppo"
-  "rted Entity Types\nFor AWS, the API curre"
-  "ntly support checking connectivity betwe"
-  "en the following entities:\n* Subnets* In"
-  "stances* Network Interfaces\nFor Azure, t"
-  "he API currently support checking connec"
-  "tivity between the following entities:\n*"
-  " Subnets\n### Requirements\nFor Kentik\'s C"
-  "onnectivity Checker API to successfully "
-  "query the connection between entity reso"
-  "urces, aKentik Cloud Export must be conf"
-  "igured for a supported Cloud Provider (A"
-  "ws or Azure)(see [Cloud Exports and Devi"
-  "ces] (https://kb.kentik.com/v4/Na00.htm#"
-  "Na00-Cloud_Exports_and_Devices)).Once a "
-  "cloud export has been successfully confi"
-  "gured, Kentik will pull metadata at regu"
-  "lar intervals from the account specified"
-  " in the cloud export, and the Connectivi"
-  "ty Checker will use this metadata to: * "
-  "Visualize the path for a connection betw"
-  "een any two points in your AWS network* "
-  "Check routing and NACL/SG configuration "
-  "to quickly highlight where a connection "
-  "is blocked* Get a direct link to the mis"
-  "configured gateway or security policy in"
-  " the cloud dashboard to quickly fix the "
-  "issue\n### Frequency of available data\nBe"
-  "cause Connectivity Checker relies upon w"
-  "hat\'s discovered during metadata retriev"
-  "al, query results will be limited to the"
-  " timeframe of the latest metadata-retrie"
-  "val fetch.  Currently this is limited to"
-  " 15-minutes intervals.\"E\n\026Kentik API Eng"
-  "ineering\022+https://github.com/kentik/api-"
-  "schema-public2\014v202410beta1*\001\0022\020applicat"
-  "ion/json:\020application/jsonZD\n\036\n\005email\022\025\010"
-  "\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-"
-  "Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000"
-  "rh\n)Kentik Connectivity Checker document"
-  "ation\022;https://kb.kentik.com/v4/Na05.htm"
-  "#Na05-Connectivity_Checkerb\006proto3"
+  " is active\342A\001\003R\017returnReachable\022@\n\014query"
+  "_status\030\003 \001(\tB\035\222A\0262\024Status of the query."
+  "\342A\001\003R\013queryStatus\022k\n\nreport_url\030\004 \001(\tBL\222"
+  "AE2CURL to view the connectivity checker"
+  " report in the Kentik platform.\342A\001\003R\trep"
+  "ortUrl\022D\n\005paths\030\005 \003(\tB.\222A\'2%The connecti"
+  "on paths in your network.\342A\001\003R\005paths\022X\n\014"
+  "return_paths\030\006 \003(\tB5\222A.2,The return conn"
+  "ection paths in your network.\342A\001\003R\013retur"
+  "nPaths\022\243\001\n\023last_metadata_fetch\030\007 \001(\tBs\222A"
+  "l2jThe timestamp indicating when the met"
+  "adata used to build the connectivity che"
+  "cker report was last fetched.\342A\001\003R\021lastM"
+  "etadataFetch*a\n\rCloudProvider\022\036\n\032CLOUD_P"
+  "ROVIDER_UNSPECIFIED\020\000\022\026\n\022CLOUD_PROVIDER_"
+  "AWS\020\001\022\030\n\024CLOUD_PROVIDER_AZURE\020\002*~\n\nEntit"
+  "yType\022\033\n\027ENTITY_TYPE_UNSPECIFIED\020\000\022\026\n\022EN"
+  "TITY_TYPE_SUBNET\020\001\022\030\n\024ENTITY_TYPE_INSTAN"
+  "CE\020\002\022!\n\035ENTITY_TYPE_NETWORK_INTERFACE\020\0032"
+  "\205\004\n\037ConnectivityCheckerAdminService\022\247\003\n\030"
+  "CreateConnectivityReport\022I.kentik.connec"
+  "tivity_checker.v202410beta1.CreateConnec"
+  "tivityReportRequest\032J.kentik.connectivit"
+  "y_checker.v202410beta1.CreateConnectivit"
+  "yReportResponse\"\363\001\222A\227\001\022%Create a Connect"
+  "ivity Checker Report.\032TCreate a connecti"
+  "vity checker report based on configurati"
+  "on provided in the request.*\030CreateConne"
+  "ctivityReport\362\327\002 admin.connectivity_chec"
+  "ker:write\202\323\344\223\002.\")/connectivity_checker/v"
+  "202410beta1/create:\001*\0328\312A\023grpc.api.kenti"
+  "k.com\352\327\002\032admin.connectivity_checker\220\330\002\003B"
+  "\336\022Zhgithub.com/kentik/api-schema-public/"
+  "gen/go/kentik/connectivity_checker/v2024"
+  "10beta1;connectivity_checker\222A\360\021\022\376\017\n\037Ken"
+  "tik Connectivity Checker API\022\205\017# Overvie"
+  "w\nThe Connectivity Checker API provides "
+  "programmatic access to Kentik\'s Connecti"
+  "vity Checker, which allows the checking "
+  "and monitoring of forward and return pat"
+  "hs between two points on your cloud netw"
+  "ork, over a specified time range interva"
+  "l, for entities such as Instances, Subne"
+  "ts, and Network Interfaces.### Supported"
+  " Cloud Providers\nThe functionality and c"
+  "onfiguration parameters supported by thi"
+  "s API differ by cloud provider. The API "
+  "currently supports the following provide"
+  "rs:\n* [Amazon Web Services](https://kb.k"
+  "entik.com/v0/Bd06.htm) (AWS)\n* [Microsof"
+  "t Azure](https://kb.kentik.com/v0/Bd08.h"
+  "tm)\n\n### Supported Entity Types\nFor AWS,"
+  " the API currently support checking conn"
+  "ectivity between the following entities:"
+  "\n* Subnets* Instances* Network Interface"
+  "s\nFor Azure, the API currently support c"
+  "hecking connectivity between the followi"
+  "ng entities:\n* Subnets\n### Requirements\n"
+  "For Kentik\'s Connectivity Checker API to"
+  " successfully query the connection betwe"
+  "en entity resources, aKentik Cloud Expor"
+  "t must be configured for a supported Clo"
+  "ud Provider (Aws or Azure)(see [Cloud Ex"
+  "ports and Devices] (https://kb.kentik.co"
+  "m/v4/Na00.htm#Na00-Cloud_Exports_and_Dev"
+  "ices)).Once a cloud export has been succ"
+  "essfully configured, Kentik will pull me"
+  "tadata at regular intervals from the acc"
+  "ount specified in the cloud export, and "
+  "the Connectivity Checker will use this m"
+  "etadata to: * Visualize the path for a c"
+  "onnection between any two points in your"
+  " AWS network* Check routing and NACL/SG "
+  "configuration to quickly highlight where"
+  " a connection is blocked* Get a direct l"
+  "ink to the misconfigured gateway or secu"
+  "rity policy in the cloud dashboard to qu"
+  "ickly fix the issue\n### Frequency of ava"
+  "ilable data\nBecause Connectivity Checker"
+  " relies upon what\'s discovered during me"
+  "tadata retrieval, query results will be "
+  "limited to the timeframe of the latest m"
+  "etadata-retrieval fetch.  Currently this"
+  " is limited to 15-minutes intervals.\"E\n\026"
+  "Kentik API Engineering\022+https://github.c"
+  "om/kentik/api-schema-public2\014v202410beta"
+  "1*\001\0022\020application/json:\020application/json"
+  "ZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005to"
+  "ken\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005emai"
+  "l\022\000\n\t\n\005token\022\000rh\n)Kentik Connectivity Ch"
+  "ecker documentation\022;https://kb.kentik.c"
+  "om/v4/Na05.htm#Na05-Connectivity_Checker"
+  "b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2fconnectivity_5fchecker_2fv202410beta1_2fconnectivity_5fchecker_2eproto_deps[6] = {
   &::descriptor_table_google_2fapi_2fannotations_2eproto,
@@ -243,7 +245,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_kentik_2fconnectivity_5fchecker_2fv202410beta1_2fconnectivity_5fchecker_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_kentik_2fconnectivity_5fchecker_2fv202410beta1_2fconnectivity_5fchecker_2eproto = {
-  false, false, descriptor_table_protodef_kentik_2fconnectivity_5fchecker_2fv202410beta1_2fconnectivity_5fchecker_2eproto, "kentik/connectivity_checker/v202410beta1/connectivity_checker.proto", 5074,
+  false, false, descriptor_table_protodef_kentik_2fconnectivity_5fchecker_2fv202410beta1_2fconnectivity_5fchecker_2eproto, "kentik/connectivity_checker/v202410beta1/connectivity_checker.proto", 5088,
   &descriptor_table_kentik_2fconnectivity_5fchecker_2fv202410beta1_2fconnectivity_5fchecker_2eproto_once, descriptor_table_kentik_2fconnectivity_5fchecker_2fv202410beta1_2fconnectivity_5fchecker_2eproto_sccs, descriptor_table_kentik_2fconnectivity_5fchecker_2fv202410beta1_2fconnectivity_5fchecker_2eproto_deps, 2, 6,
   schemas, file_default_instances, TableStruct_kentik_2fconnectivity_5fchecker_2fv202410beta1_2fconnectivity_5fchecker_2eproto::offsets,
   file_level_metadata_kentik_2fconnectivity_5fchecker_2fv202410beta1_2fconnectivity_5fchecker_2eproto, 2, file_level_enum_descriptors_kentik_2fconnectivity_5fchecker_2fv202410beta1_2fconnectivity_5fchecker_2eproto, file_level_service_descriptors_kentik_2fconnectivity_5fchecker_2fv202410beta1_2fconnectivity_5fchecker_2eproto,
@@ -861,6 +863,11 @@ CreateConnectivityReportResponse::CreateConnectivityReportResponse(const CreateC
     report_url_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_report_url(),
       GetArena());
   }
+  last_metadata_fetch_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_last_metadata_fetch().empty()) {
+    last_metadata_fetch_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_last_metadata_fetch(),
+      GetArena());
+  }
   ::memcpy(&reachable_, &from.reachable_,
     static_cast<size_t>(reinterpret_cast<char*>(&return_reachable_) -
     reinterpret_cast<char*>(&reachable_)) + sizeof(return_reachable_));
@@ -871,6 +878,7 @@ void CreateConnectivityReportResponse::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_CreateConnectivityReportResponse_kentik_2fconnectivity_5fchecker_2fv202410beta1_2fconnectivity_5fchecker_2eproto.base);
   query_status_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   report_url_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  last_metadata_fetch_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&reachable_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&return_reachable_) -
       reinterpret_cast<char*>(&reachable_)) + sizeof(return_reachable_));
@@ -886,6 +894,7 @@ void CreateConnectivityReportResponse::SharedDtor() {
   GOOGLE_DCHECK(GetArena() == nullptr);
   query_status_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   report_url_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  last_metadata_fetch_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void CreateConnectivityReportResponse::ArenaDtor(void* object) {
@@ -913,6 +922,7 @@ void CreateConnectivityReportResponse::Clear() {
   return_paths_.Clear();
   query_status_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   report_url_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  last_metadata_fetch_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   ::memset(&reachable_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&return_reachable_) -
       reinterpret_cast<char*>(&reachable_)) + sizeof(return_reachable_));
@@ -985,6 +995,15 @@ const char* CreateConnectivityReportResponse::_InternalParse(const char* ptr, ::
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<50>(ptr));
+        } else goto handle_unusual;
+        continue;
+      // string last_metadata_fetch = 7[json_name = "lastMetadataFetch", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 58)) {
+          auto str = _internal_mutable_last_metadata_fetch();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "kentik.connectivity_checker.v202410beta1.CreateConnectivityReportResponse.last_metadata_fetch"));
+          CHK_(ptr);
         } else goto handle_unusual;
         continue;
       default: {
@@ -1067,6 +1086,16 @@ failure:
     target = stream->WriteString(6, s, target);
   }
 
+  // string last_metadata_fetch = 7[json_name = "lastMetadataFetch", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->last_metadata_fetch().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_last_metadata_fetch().data(), static_cast<int>(this->_internal_last_metadata_fetch().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "kentik.connectivity_checker.v202410beta1.CreateConnectivityReportResponse.last_metadata_fetch");
+    target = stream->WriteStringMaybeAliased(
+        7, this->_internal_last_metadata_fetch(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1111,6 +1140,13 @@ size_t CreateConnectivityReportResponse::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_report_url());
+  }
+
+  // string last_metadata_fetch = 7[json_name = "lastMetadataFetch", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->last_metadata_fetch().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_last_metadata_fetch());
   }
 
   // bool reachable = 1[json_name = "reachable", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1162,6 +1198,9 @@ void CreateConnectivityReportResponse::MergeFrom(const CreateConnectivityReportR
   if (from.report_url().size() > 0) {
     _internal_set_report_url(from._internal_report_url());
   }
+  if (from.last_metadata_fetch().size() > 0) {
+    _internal_set_last_metadata_fetch(from._internal_last_metadata_fetch());
+  }
   if (from.reachable() != 0) {
     _internal_set_reachable(from._internal_reachable());
   }
@@ -1195,6 +1234,7 @@ void CreateConnectivityReportResponse::InternalSwap(CreateConnectivityReportResp
   return_paths_.InternalSwap(&other->return_paths_);
   query_status_.Swap(&other->query_status_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   report_url_.Swap(&other->report_url_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  last_metadata_fetch_.Swap(&other->last_metadata_fetch_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(CreateConnectivityReportResponse, return_reachable_)
       + sizeof(CreateConnectivityReportResponse::return_reachable_)
