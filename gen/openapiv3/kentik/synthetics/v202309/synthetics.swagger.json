@@ -1107,6 +1107,16 @@
                 },
                 "title": "AgentTest"
             },
+            "v202309AlertingSettings": {
+                "type": "object",
+                "properties": {
+                    "disableWarningNotifications": {
+                        "type": "boolean",
+                        "description": "Boolean indicating whether to disable warning-level alert notifications"
+                    }
+                },
+                "title": "AlertingSettings"
+            },
             "v202309CreateAgentAlertRequest": {
                 "type": "object",
                 "properties": {
@@ -2259,6 +2269,9 @@
                     },
                     "schedule": {
                         "$ref": "#/components/schemas/v202309ScheduleSettings"
+                    },
+                    "alerting": {
+                        "$ref": "#/components/schemas/v202309AlertingSettings"
                     }
                 },
                 "title": "TestSettings"

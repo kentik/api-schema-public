@@ -570,6 +570,12 @@ message TestSettings {
       description: "Scheduled test configuration parameters"
     }
   ];
+
+  AlertingSettings alerting = 22 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Alerting configuration parameters"
+    }
+  ];
 }
 
 // {{.Name}}
@@ -689,6 +695,15 @@ message ScheduleSettings {
   uint32 end = 3 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "UTC unix timestamp indicating the end of the schedule"
+    }
+  ];
+}
+
+// {{.Name}}
+message AlertingSettings {
+  bool disable_warning_notifications = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Boolean indicating whether to disable warning-level alert notifications"
     }
   ];
 }

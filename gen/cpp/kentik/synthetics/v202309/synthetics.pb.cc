@@ -23,6 +23,7 @@ extern PROTOBUF_INTERNAL_EXPORT_kentik_2fsynthetics_2fv202309_2fsynthetics_2epro
 extern PROTOBUF_INTERNAL_EXPORT_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_AgentMetadata_IpValue_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_AgentResults_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_AgentTest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_AlertingSettings_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_DNSResponseData_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_DNSResults_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_DisabledMetrics_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto;
@@ -51,7 +52,7 @@ extern PROTOBUF_INTERNAL_EXPORT_kentik_2fsynthetics_2fv202309_2fsynthetics_2epro
 extern PROTOBUF_INTERNAL_EXPORT_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<3> scc_info_Test_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_TestPingSettings_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_TestResults_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<13> scc_info_TestSettings_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<14> scc_info_TestSettings_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_TestThroughputSettings_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_TestTraceSettings_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_TraceHop_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto;
@@ -110,6 +111,10 @@ class ScheduleSettingsDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ScheduleSettings> _instance;
 } _ScheduleSettings_default_instance_;
+class AlertingSettingsDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<AlertingSettings> _instance;
+} _AlertingSettings_default_instance_;
 class ActivationSettingsDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ActivationSettings> _instance;
@@ -477,6 +482,20 @@ static void InitDefaultsscc_info_AgentTest_kentik_2fsynthetics_2fv202309_2fsynth
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_AgentTest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_AgentTest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto}, {}};
+
+static void InitDefaultsscc_info_AlertingSettings_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::kentik::synthetics::v202309::_AlertingSettings_default_instance_;
+    new (ptr) ::kentik::synthetics::v202309::AlertingSettings();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::kentik::synthetics::v202309::AlertingSettings::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_AlertingSettings_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_AlertingSettings_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto}, {}};
 
 static void InitDefaultsscc_info_CreateAgentAlertRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -1308,8 +1327,8 @@ static void InitDefaultsscc_info_TestSettings_kentik_2fsynthetics_2fv202309_2fsy
   ::kentik::synthetics::v202309::TestSettings::InitAsDefaultInstance();
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<13> scc_info_TestSettings_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 13, 0, InitDefaultsscc_info_TestSettings_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto}, {
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<14> scc_info_TestSettings_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 14, 0, InitDefaultsscc_info_TestSettings_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto}, {
       &scc_info_HostnameTest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
       &scc_info_IpTest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
       &scc_info_AgentTest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
@@ -1322,7 +1341,8 @@ static void InitDefaultsscc_info_TestSettings_kentik_2fsynthetics_2fv202309_2fsy
       &scc_info_TestPingSettings_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
       &scc_info_TestTraceSettings_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
       &scc_info_TestThroughputSettings_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
-      &scc_info_ScheduleSettings_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,}};
+      &scc_info_ScheduleSettings_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
+      &scc_info_AlertingSettings_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,}};
 
 static void InitDefaultsscc_info_TestThroughputSettings_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -1483,7 +1503,7 @@ static void InitDefaultsscc_info_UrlTest_HeadersEntry_DoNotUse_kentik_2fsyntheti
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_UrlTest_HeadersEntry_DoNotUse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_UrlTest_HeadersEntry_DoNotUse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto}, {}};
 
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto[75];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto[76];
 static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto[5];
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto = nullptr;
 
@@ -1590,6 +1610,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_kentik_2fsynthetics_2fv202309_
   PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::TestSettings, notes_),
   PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::TestSettings, throughput_),
   PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::TestSettings, schedule_),
+  PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::TestSettings, alerting_),
   PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::TestSettings, definition_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::TestPingSettings, _internal_metadata_),
@@ -1632,6 +1653,12 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_kentik_2fsynthetics_2fv202309_
   PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::ScheduleSettings, enabled_),
   PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::ScheduleSettings, start_),
   PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::ScheduleSettings, end_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::AlertingSettings, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::AlertingSettings, disable_warning_notifications_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::ActivationSettings, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -2159,75 +2186,76 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 52, -1, sizeof(::kentik::synthetics::v202309::AgentMetadata)},
   { 61, -1, sizeof(::kentik::synthetics::v202309::Test)},
   { 76, -1, sizeof(::kentik::synthetics::v202309::TestSettings)},
-  { 103, -1, sizeof(::kentik::synthetics::v202309::TestPingSettings)},
-  { 114, -1, sizeof(::kentik::synthetics::v202309::TestTraceSettings)},
-  { 126, -1, sizeof(::kentik::synthetics::v202309::TestThroughputSettings)},
-  { 136, -1, sizeof(::kentik::synthetics::v202309::ScheduleSettings)},
-  { 144, -1, sizeof(::kentik::synthetics::v202309::ActivationSettings)},
-  { 153, -1, sizeof(::kentik::synthetics::v202309::HealthSettings)},
-  { 190, -1, sizeof(::kentik::synthetics::v202309::HostnameTest)},
-  { 196, -1, sizeof(::kentik::synthetics::v202309::IpTest)},
-  { 203, -1, sizeof(::kentik::synthetics::v202309::AgentTest)},
-  { 211, -1, sizeof(::kentik::synthetics::v202309::FlowTest)},
-  { 223, -1, sizeof(::kentik::synthetics::v202309::DnsTest)},
-  { 233, 240, sizeof(::kentik::synthetics::v202309::UrlTest_HeadersEntry_DoNotUse)},
-  { 242, -1, sizeof(::kentik::synthetics::v202309::UrlTest)},
-  { 253, 260, sizeof(::kentik::synthetics::v202309::PageLoadTest_HeadersEntry_DoNotUse)},
-  { 262, 269, sizeof(::kentik::synthetics::v202309::PageLoadTest_CssSelectorsEntry_DoNotUse)},
-  { 271, -1, sizeof(::kentik::synthetics::v202309::PageLoadTest)},
-  { 281, -1, sizeof(::kentik::synthetics::v202309::NetworkMeshTest)},
-  { 287, -1, sizeof(::kentik::synthetics::v202309::MetricData)},
-  { 296, -1, sizeof(::kentik::synthetics::v202309::PacketLossData)},
-  { 303, -1, sizeof(::kentik::synthetics::v202309::PingResults)},
-  { 313, -1, sizeof(::kentik::synthetics::v202309::HTTPResponseData)},
-  { 321, -1, sizeof(::kentik::synthetics::v202309::HTTPResults)},
-  { 330, -1, sizeof(::kentik::synthetics::v202309::DNSResponseData)},
-  { 337, -1, sizeof(::kentik::synthetics::v202309::DNSResults)},
-  { 346, -1, sizeof(::kentik::synthetics::v202309::TaskResults)},
-  { 356, -1, sizeof(::kentik::synthetics::v202309::AgentResults)},
-  { 364, -1, sizeof(::kentik::synthetics::v202309::TestResults)},
-  { 373, -1, sizeof(::kentik::synthetics::v202309::Stats)},
-  { 381, -1, sizeof(::kentik::synthetics::v202309::Location)},
-  { 391, -1, sizeof(::kentik::synthetics::v202309::NetNode)},
-  { 403, -1, sizeof(::kentik::synthetics::v202309::TraceHop)},
-  { 410, -1, sizeof(::kentik::synthetics::v202309::PathTrace)},
-  { 418, -1, sizeof(::kentik::synthetics::v202309::Path)},
-  { 429, -1, sizeof(::kentik::synthetics::v202309::GetResultsForTestsRequest)},
-  { 440, -1, sizeof(::kentik::synthetics::v202309::GetResultsForTestsResponse)},
-  { 446, -1, sizeof(::kentik::synthetics::v202309::GetTraceForTestRequest)},
-  { 456, 463, sizeof(::kentik::synthetics::v202309::GetTraceForTestResponse_NodesEntry_DoNotUse)},
-  { 465, -1, sizeof(::kentik::synthetics::v202309::GetTraceForTestResponse)},
-  { 472, -1, sizeof(::kentik::synthetics::v202309::ListAgentsRequest)},
-  { 477, -1, sizeof(::kentik::synthetics::v202309::ListAgentsResponse)},
-  { 484, -1, sizeof(::kentik::synthetics::v202309::GetAgentRequest)},
-  { 490, -1, sizeof(::kentik::synthetics::v202309::GetAgentResponse)},
-  { 496, -1, sizeof(::kentik::synthetics::v202309::UpdateAgentRequest)},
-  { 502, -1, sizeof(::kentik::synthetics::v202309::UpdateAgentResponse)},
-  { 508, -1, sizeof(::kentik::synthetics::v202309::DeleteAgentRequest)},
-  { 514, -1, sizeof(::kentik::synthetics::v202309::DeleteAgentResponse)},
-  { 519, -1, sizeof(::kentik::synthetics::v202309::ListTestsRequest)},
-  { 524, -1, sizeof(::kentik::synthetics::v202309::ListTestsResponse)},
-  { 531, -1, sizeof(::kentik::synthetics::v202309::CreateTestRequest)},
-  { 537, -1, sizeof(::kentik::synthetics::v202309::CreateTestResponse)},
-  { 543, -1, sizeof(::kentik::synthetics::v202309::GetTestRequest)},
-  { 549, -1, sizeof(::kentik::synthetics::v202309::GetTestResponse)},
-  { 555, -1, sizeof(::kentik::synthetics::v202309::UpdateTestRequest)},
-  { 561, -1, sizeof(::kentik::synthetics::v202309::UpdateTestResponse)},
-  { 567, -1, sizeof(::kentik::synthetics::v202309::DeleteTestRequest)},
-  { 573, -1, sizeof(::kentik::synthetics::v202309::DeleteTestResponse)},
-  { 578, -1, sizeof(::kentik::synthetics::v202309::SetTestStatusRequest)},
-  { 585, -1, sizeof(::kentik::synthetics::v202309::SetTestStatusResponse)},
-  { 590, -1, sizeof(::kentik::synthetics::v202309::AgentAlert)},
-  { 600, -1, sizeof(::kentik::synthetics::v202309::CreateAgentAlertRequest)},
-  { 608, -1, sizeof(::kentik::synthetics::v202309::CreateAgentAlertResponse)},
-  { 614, -1, sizeof(::kentik::synthetics::v202309::UpdateAgentAlertRequest)},
-  { 622, -1, sizeof(::kentik::synthetics::v202309::UpdateAgentAlertResponse)},
-  { 628, -1, sizeof(::kentik::synthetics::v202309::GetAgentAlertRequest)},
-  { 634, -1, sizeof(::kentik::synthetics::v202309::GetAgentAlertResponse)},
-  { 640, -1, sizeof(::kentik::synthetics::v202309::ListAgentAlertsRequest)},
-  { 646, -1, sizeof(::kentik::synthetics::v202309::ListAgentAlertsResponse)},
-  { 652, -1, sizeof(::kentik::synthetics::v202309::DeleteAgentAlertRequest)},
-  { 658, -1, sizeof(::kentik::synthetics::v202309::DeleteAgentAlertResponse)},
+  { 104, -1, sizeof(::kentik::synthetics::v202309::TestPingSettings)},
+  { 115, -1, sizeof(::kentik::synthetics::v202309::TestTraceSettings)},
+  { 127, -1, sizeof(::kentik::synthetics::v202309::TestThroughputSettings)},
+  { 137, -1, sizeof(::kentik::synthetics::v202309::ScheduleSettings)},
+  { 145, -1, sizeof(::kentik::synthetics::v202309::AlertingSettings)},
+  { 151, -1, sizeof(::kentik::synthetics::v202309::ActivationSettings)},
+  { 160, -1, sizeof(::kentik::synthetics::v202309::HealthSettings)},
+  { 197, -1, sizeof(::kentik::synthetics::v202309::HostnameTest)},
+  { 203, -1, sizeof(::kentik::synthetics::v202309::IpTest)},
+  { 210, -1, sizeof(::kentik::synthetics::v202309::AgentTest)},
+  { 218, -1, sizeof(::kentik::synthetics::v202309::FlowTest)},
+  { 230, -1, sizeof(::kentik::synthetics::v202309::DnsTest)},
+  { 240, 247, sizeof(::kentik::synthetics::v202309::UrlTest_HeadersEntry_DoNotUse)},
+  { 249, -1, sizeof(::kentik::synthetics::v202309::UrlTest)},
+  { 260, 267, sizeof(::kentik::synthetics::v202309::PageLoadTest_HeadersEntry_DoNotUse)},
+  { 269, 276, sizeof(::kentik::synthetics::v202309::PageLoadTest_CssSelectorsEntry_DoNotUse)},
+  { 278, -1, sizeof(::kentik::synthetics::v202309::PageLoadTest)},
+  { 288, -1, sizeof(::kentik::synthetics::v202309::NetworkMeshTest)},
+  { 294, -1, sizeof(::kentik::synthetics::v202309::MetricData)},
+  { 303, -1, sizeof(::kentik::synthetics::v202309::PacketLossData)},
+  { 310, -1, sizeof(::kentik::synthetics::v202309::PingResults)},
+  { 320, -1, sizeof(::kentik::synthetics::v202309::HTTPResponseData)},
+  { 328, -1, sizeof(::kentik::synthetics::v202309::HTTPResults)},
+  { 337, -1, sizeof(::kentik::synthetics::v202309::DNSResponseData)},
+  { 344, -1, sizeof(::kentik::synthetics::v202309::DNSResults)},
+  { 353, -1, sizeof(::kentik::synthetics::v202309::TaskResults)},
+  { 363, -1, sizeof(::kentik::synthetics::v202309::AgentResults)},
+  { 371, -1, sizeof(::kentik::synthetics::v202309::TestResults)},
+  { 380, -1, sizeof(::kentik::synthetics::v202309::Stats)},
+  { 388, -1, sizeof(::kentik::synthetics::v202309::Location)},
+  { 398, -1, sizeof(::kentik::synthetics::v202309::NetNode)},
+  { 410, -1, sizeof(::kentik::synthetics::v202309::TraceHop)},
+  { 417, -1, sizeof(::kentik::synthetics::v202309::PathTrace)},
+  { 425, -1, sizeof(::kentik::synthetics::v202309::Path)},
+  { 436, -1, sizeof(::kentik::synthetics::v202309::GetResultsForTestsRequest)},
+  { 447, -1, sizeof(::kentik::synthetics::v202309::GetResultsForTestsResponse)},
+  { 453, -1, sizeof(::kentik::synthetics::v202309::GetTraceForTestRequest)},
+  { 463, 470, sizeof(::kentik::synthetics::v202309::GetTraceForTestResponse_NodesEntry_DoNotUse)},
+  { 472, -1, sizeof(::kentik::synthetics::v202309::GetTraceForTestResponse)},
+  { 479, -1, sizeof(::kentik::synthetics::v202309::ListAgentsRequest)},
+  { 484, -1, sizeof(::kentik::synthetics::v202309::ListAgentsResponse)},
+  { 491, -1, sizeof(::kentik::synthetics::v202309::GetAgentRequest)},
+  { 497, -1, sizeof(::kentik::synthetics::v202309::GetAgentResponse)},
+  { 503, -1, sizeof(::kentik::synthetics::v202309::UpdateAgentRequest)},
+  { 509, -1, sizeof(::kentik::synthetics::v202309::UpdateAgentResponse)},
+  { 515, -1, sizeof(::kentik::synthetics::v202309::DeleteAgentRequest)},
+  { 521, -1, sizeof(::kentik::synthetics::v202309::DeleteAgentResponse)},
+  { 526, -1, sizeof(::kentik::synthetics::v202309::ListTestsRequest)},
+  { 531, -1, sizeof(::kentik::synthetics::v202309::ListTestsResponse)},
+  { 538, -1, sizeof(::kentik::synthetics::v202309::CreateTestRequest)},
+  { 544, -1, sizeof(::kentik::synthetics::v202309::CreateTestResponse)},
+  { 550, -1, sizeof(::kentik::synthetics::v202309::GetTestRequest)},
+  { 556, -1, sizeof(::kentik::synthetics::v202309::GetTestResponse)},
+  { 562, -1, sizeof(::kentik::synthetics::v202309::UpdateTestRequest)},
+  { 568, -1, sizeof(::kentik::synthetics::v202309::UpdateTestResponse)},
+  { 574, -1, sizeof(::kentik::synthetics::v202309::DeleteTestRequest)},
+  { 580, -1, sizeof(::kentik::synthetics::v202309::DeleteTestResponse)},
+  { 585, -1, sizeof(::kentik::synthetics::v202309::SetTestStatusRequest)},
+  { 592, -1, sizeof(::kentik::synthetics::v202309::SetTestStatusResponse)},
+  { 597, -1, sizeof(::kentik::synthetics::v202309::AgentAlert)},
+  { 607, -1, sizeof(::kentik::synthetics::v202309::CreateAgentAlertRequest)},
+  { 615, -1, sizeof(::kentik::synthetics::v202309::CreateAgentAlertResponse)},
+  { 621, -1, sizeof(::kentik::synthetics::v202309::UpdateAgentAlertRequest)},
+  { 629, -1, sizeof(::kentik::synthetics::v202309::UpdateAgentAlertResponse)},
+  { 635, -1, sizeof(::kentik::synthetics::v202309::GetAgentAlertRequest)},
+  { 641, -1, sizeof(::kentik::synthetics::v202309::GetAgentAlertResponse)},
+  { 647, -1, sizeof(::kentik::synthetics::v202309::ListAgentAlertsRequest)},
+  { 653, -1, sizeof(::kentik::synthetics::v202309::ListAgentAlertsResponse)},
+  { 659, -1, sizeof(::kentik::synthetics::v202309::DeleteAgentAlertRequest)},
+  { 665, -1, sizeof(::kentik::synthetics::v202309::DeleteAgentAlertResponse)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -2241,6 +2269,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::synthetics::v202309::_TestTraceSettings_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::synthetics::v202309::_TestThroughputSettings_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::synthetics::v202309::_ScheduleSettings_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::synthetics::v202309::_AlertingSettings_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::synthetics::v202309::_ActivationSettings_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::synthetics::v202309::_HealthSettings_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::kentik::synthetics::v202309::_HostnameTest_default_instance_),
@@ -2412,7 +2441,7 @@ const char descriptor_table_protodef_kentik_2fsynthetics_2fv202309_2fsynthetics_
   "/Identity of use that has modified the t"
   "est last\342A\001\003R\rlastUpdatedBy\022C\n\006labels\030\013 "
   "\003(\tB+\222A(2&Set of labels associated with "
-  "the testR\006labels\"\316\016\n\014TestSettings\022E\n\010hos"
+  "the testR\006labels\"\277\017\n\014TestSettings\022E\n\010hos"
   "tname\030\001 \001(\0132\'.kentik.synthetics.v202309."
   "HostnameTestH\000R\010hostname\0223\n\002ip\030\002 \001(\0132!.k"
   "entik.synthetics.v202309.IpTestH\000R\002ip\022<\n"
@@ -2458,412 +2487,400 @@ const char descriptor_table_protodef_kentik_2fsynthetics_2fv202309_2fsynthetics_
   "configuration parametersR\nthroughput\022u\n\010"
   "schedule\030\025 \001(\0132+.kentik.synthetics.v2023"
   "09.ScheduleSettingsB,\222A)2\'Scheduled test"
-  " configuration parametersR\010scheduleB\014\n\nd"
-  "efinition\"\314\003\n\020TestPingSettings\022K\n\005count\030"
-  "\001 \001(\rB5\222A220Number of probe packets to s"
-  "end in one iterationR\005count\022G\n\010protocol\030"
-  "\002 \001(\tB+\222A(2&Transport protocol to use (i"
-  "cmp | tcp)R\010protocol\022F\n\004port\030\003 \001(\rB2\222A/2"
-  "-Target port for TCP probes (ignored for"
-  " ICMP)R\004port\022P\n\007timeout\030\004 \001(\rB6\222A321Time"
-  "out in milliseconds for execution of the"
-  " taskR\007timeout\022<\n\005delay\030\005 \001(\002B&\222A#2!Inte"
-  "r-probe delay in millisecondsR\005delay\022J\n\004"
-  "dscp\030\006 \001(\rB6\222A321DSCP code to be set in "
-  "IP header of probe packetsR\004dscp\"\251\004\n\021Tes"
-  "tTraceSettings\022K\n\005count\030\001 \001(\rB5\222A220Numb"
-  "er of probe packets to send in one itera"
-  "tionR\005count\022M\n\010protocol\030\002 \001(\tB1\222A.2,Tran"
-  "sport protocol to use (icmp | tcp | udp)"
-  "R\010protocol\022M\n\004port\030\003 \001(\rB9\222A624Target po"
-  "rt for TCP or UDP probes (ignored for IC"
-  "MP)R\004port\022P\n\007timeout\030\004 \001(\rB6\222A321Timeout"
-  " in milliseconds for execution of the ta"
-  "skR\007timeout\022M\n\005limit\030\005 \001(\rB7\222A422Maximum"
-  " number of hops to probe (i.e. maximum T"
-  "TL)R\005limit\022<\n\005delay\030\006 \001(\002B&\222A#2!Inter-pr"
-  "obe delay in millisecondsR\005delay\022J\n\004dscp"
-  "\030\007 \001(\rB6\222A321DSCP code to be set in IP h"
-  "eader of probe packetsR\004dscp\"\240\004\n\026TestThr"
-  "oughputSettings\022p\n\004port\030\001 \001(\rB\\\222AY2WTarg"
-  "et port for TCP or UDP throughput task ("
-  "the port the target server is listening "
-  "on)R\004port\022X\n\004omit\030\002 \001(\rBD\222AA2\?(optional)"
-  " Number of seconds to omit from the star"
-  "t of the testR\004omit\022@\n\010duration\030\003 \001(\rB$\222"
-  "A!2\037Duration of the test in secondsR\010dur"
-  "ation\022\257\001\n\tbandwidth\030\004 \001(\rB\220\001\222A\214\0012\211\001(opti"
-  "onal) Target bandwidth in Mbps, if no ba"
-  "ndwidth is specified, the test will meas"
-  "ure the maximum bandwidth for TCP and 10"
-  "Mbps for UDPR\tbandwidth\022F\n\010protocol\030\005 \001("
-  "\tB*\222A\'2%Transport protocol to use (tcp |"
-  " udp)R\010protocol\"\202\002\n\020ScheduleSettings\022K\n\007"
-  "enabled\030\001 \001(\010B1\222A.2,Boolean indicating a"
-  "n (dis|en)abled scheduleR\007enabled\022S\n\005sta"
-  "rt\030\002 \001(\rB=\222A:28UTC unix timestamps indic"
-  "ating the start of the scheduleR\005start\022L"
-  "\n\003end\030\003 \001(\rB:\222A725UTC unix timestamp ind"
-  "icating the end of the scheduleR\003end\"\306\003\n"
-  "\022ActivationSettings\022\202\001\n\014grace_period\030\001 \001"
-  "(\tB_\222A\\2ZPeriod of healthy status in min"
-  "utes within the time window not cancelli"
-  "ng alarm activationR\013gracePeriod\022N\n\ttime"
-  "_unit\030\002 \001(\tB1\222A.2,Time unit for specifyi"
-  "ng time window (m | h)R\010timeUnit\022]\n\013time"
-  "_window\030\003 \001(\tB<\222A927Time window for eval"
-  "uating of test for alarm activationR\ntim"
-  "eWindow\022|\n\005times\030\004 \001(\tBf\222Ac2aNumber of o"
-  "ccurrences of unhealthy test status with"
-  "in the time window triggering alarm acti"
-  "vationR\005times\"\316\"\n\016HealthSettings\022\177\n\020late"
-  "ncy_critical\030\001 \001(\002BT\222AQ2OThreshold for p"
-  "ing response latency (in microseconds) t"
-  "o trigger critical alarmR\017latencyCritica"
-  "l\022|\n\017latency_warning\030\002 \001(\002BS\222AP2NThresho"
-  "ld for ping response latency (in microse"
-  "conds) to trigger warning alarmR\016latency"
-  "Warning\022v\n\024packet_loss_critical\030\003 \001(\002BD\222"
-  "AA2\?Threshold for ping packet loss (in %"
-  ") to trigger critical alarmR\022packetLossC"
-  "ritical\022s\n\023packet_loss_warning\030\004 \001(\002BC\222A"
-  "@2>Threshold for ping packet loss (in %)"
-  " to trigger warning alarmR\021packetLossWar"
-  "ning\022s\n\017jitter_critical\030\005 \001(\002BJ\222AG2EThre"
-  "shold for ping jitter (in microseconds) "
-  "to trigger critical alarmR\016jitterCritica"
-  "l\022q\n\016jitter_warning\030\006 \001(\002BJ\222AG2EThreshol"
-  "d for ping jitter (in microseconds) to t"
-  "rigger critical alarmR\rjitterWarning\022\210\001\n"
-  "\025http_latency_critical\030\007 \001(\002BT\222AQ2OThres"
-  "hold for HTTP response latency (in micro"
-  "seconds) to trigger critical alarmR\023http"
-  "LatencyCritical\022\205\001\n\024http_latency_warning"
-  "\030\010 \001(\002BS\222AP2NThreshold for HTTP response"
-  " latency (in microseconds) to trigger wa"
-  "rning alarmR\022httpLatencyWarning\022a\n\020http_"
-  "valid_codes\030\t \003(\rB7\222A422List of HTTP sta"
-  "tus codes indicating healthy stateR\016http"
-  "ValidCodes\022^\n\017dns_valid_codes\030\n \003(\rB6\222A3"
-  "21List of DNS status codes indicating he"
-  "althy stateR\rdnsValidCodes\022\242\001\n\027latency_c"
-  "ritical_stddev\030\013 \001(\002Bj\222Ag2eThreshold for"
-  " standard deviation (in microseconds) of"
-  " ping response latency to trigger critic"
-  "al alarmR\025latencyCriticalStddev\022\237\001\n\026late"
-  "ncy_warning_stddev\030\014 \001(\002Bi\222Af2dThreshold"
-  " for standard deviation (in microseconds"
-  ") of ping response latency to trigger wa"
-  "rning alarmR\024latencyWarningStddev\022\226\001\n\026ji"
-  "tter_critical_stddev\030\r \001(\002B`\222A]2[Thresho"
-  "ld for standard deviation of ping jitter"
+  " configuration parametersR\010schedule\022o\n\010a"
+  "lerting\030\026 \001(\0132+.kentik.synthetics.v20230"
+  "9.AlertingSettingsB&\222A#2!Alerting config"
+  "uration parametersR\010alertingB\014\n\ndefiniti"
+  "on\"\314\003\n\020TestPingSettings\022K\n\005count\030\001 \001(\rB5"
+  "\222A220Number of probe packets to send in "
+  "one iterationR\005count\022G\n\010protocol\030\002 \001(\tB+"
+  "\222A(2&Transport protocol to use (icmp | t"
+  "cp)R\010protocol\022F\n\004port\030\003 \001(\rB2\222A/2-Target"
+  " port for TCP probes (ignored for ICMP)R"
+  "\004port\022P\n\007timeout\030\004 \001(\rB6\222A321Timeout in "
+  "milliseconds for execution of the taskR\007"
+  "timeout\022<\n\005delay\030\005 \001(\002B&\222A#2!Inter-probe"
+  " delay in millisecondsR\005delay\022J\n\004dscp\030\006 "
+  "\001(\rB6\222A321DSCP code to be set in IP head"
+  "er of probe packetsR\004dscp\"\251\004\n\021TestTraceS"
+  "ettings\022K\n\005count\030\001 \001(\rB5\222A220Number of p"
+  "robe packets to send in one iterationR\005c"
+  "ount\022M\n\010protocol\030\002 \001(\tB1\222A.2,Transport p"
+  "rotocol to use (icmp | tcp | udp)R\010proto"
+  "col\022M\n\004port\030\003 \001(\rB9\222A624Target port for "
+  "TCP or UDP probes (ignored for ICMP)R\004po"
+  "rt\022P\n\007timeout\030\004 \001(\rB6\222A321Timeout in mil"
+  "liseconds for execution of the taskR\007tim"
+  "eout\022M\n\005limit\030\005 \001(\rB7\222A422Maximum number"
+  " of hops to probe (i.e. maximum TTL)R\005li"
+  "mit\022<\n\005delay\030\006 \001(\002B&\222A#2!Inter-probe del"
+  "ay in millisecondsR\005delay\022J\n\004dscp\030\007 \001(\rB"
+  "6\222A321DSCP code to be set in IP header o"
+  "f probe packetsR\004dscp\"\240\004\n\026TestThroughput"
+  "Settings\022p\n\004port\030\001 \001(\rB\\\222AY2WTarget port"
+  " for TCP or UDP throughput task (the por"
+  "t the target server is listening on)R\004po"
+  "rt\022X\n\004omit\030\002 \001(\rBD\222AA2\?(optional) Number"
+  " of seconds to omit from the start of th"
+  "e testR\004omit\022@\n\010duration\030\003 \001(\rB$\222A!2\037Dur"
+  "ation of the test in secondsR\010duration\022\257"
+  "\001\n\tbandwidth\030\004 \001(\rB\220\001\222A\214\0012\211\001(optional) T"
+  "arget bandwidth in Mbps, if no bandwidth"
+  " is specified, the test will measure the"
+  " maximum bandwidth for TCP and 10Mbps fo"
+  "r UDPR\tbandwidth\022F\n\010protocol\030\005 \001(\tB*\222A\'2"
+  "%Transport protocol to use (tcp | udp)R\010"
+  "protocol\"\202\002\n\020ScheduleSettings\022K\n\007enabled"
+  "\030\001 \001(\010B1\222A.2,Boolean indicating an (dis|"
+  "en)abled scheduleR\007enabled\022S\n\005start\030\002 \001("
+  "\rB=\222A:28UTC unix timestamps indicating t"
+  "he start of the scheduleR\005start\022L\n\003end\030\003"
+  " \001(\rB:\222A725UTC unix timestamp indicating"
+  " the end of the scheduleR\003end\"\245\001\n\020Alerti"
+  "ngSettings\022\220\001\n\035disable_warning_notificat"
+  "ions\030\001 \001(\010BL\222AI2GBoolean indicating whet"
+  "her to disable warning-level alert notif"
+  "icationsR\033disableWarningNotifications\"\306\003"
+  "\n\022ActivationSettings\022\202\001\n\014grace_period\030\001 "
+  "\001(\tB_\222A\\2ZPeriod of healthy status in mi"
+  "nutes within the time window not cancell"
+  "ing alarm activationR\013gracePeriod\022N\n\ttim"
+  "e_unit\030\002 \001(\tB1\222A.2,Time unit for specify"
+  "ing time window (m | h)R\010timeUnit\022]\n\013tim"
+  "e_window\030\003 \001(\tB<\222A927Time window for eva"
+  "luating of test for alarm activationR\nti"
+  "meWindow\022|\n\005times\030\004 \001(\tBf\222Ac2aNumber of "
+  "occurrences of unhealthy test status wit"
+  "hin the time window triggering alarm act"
+  "ivationR\005times\"\316\"\n\016HealthSettings\022\177\n\020lat"
+  "ency_critical\030\001 \001(\002BT\222AQ2OThreshold for "
+  "ping response latency (in microseconds) "
+  "to trigger critical alarmR\017latencyCritic"
+  "al\022|\n\017latency_warning\030\002 \001(\002BS\222AP2NThresh"
+  "old for ping response latency (in micros"
+  "econds) to trigger warning alarmR\016latenc"
+  "yWarning\022v\n\024packet_loss_critical\030\003 \001(\002BD"
+  "\222AA2\?Threshold for ping packet loss (in "
+  "%) to trigger critical alarmR\022packetLoss"
+  "Critical\022s\n\023packet_loss_warning\030\004 \001(\002BC\222"
+  "A@2>Threshold for ping packet loss (in %"
+  ") to trigger warning alarmR\021packetLossWa"
+  "rning\022s\n\017jitter_critical\030\005 \001(\002BJ\222AG2EThr"
+  "eshold for ping jitter (in microseconds)"
+  " to trigger critical alarmR\016jitterCritic"
+  "al\022q\n\016jitter_warning\030\006 \001(\002BJ\222AG2EThresho"
+  "ld for ping jitter (in microseconds) to "
+  "trigger critical alarmR\rjitterWarning\022\210\001"
+  "\n\025http_latency_critical\030\007 \001(\002BT\222AQ2OThre"
+  "shold for HTTP response latency (in micr"
+  "oseconds) to trigger critical alarmR\023htt"
+  "pLatencyCritical\022\205\001\n\024http_latency_warnin"
+  "g\030\010 \001(\002BS\222AP2NThreshold for HTTP respons"
+  "e latency (in microseconds) to trigger w"
+  "arning alarmR\022httpLatencyWarning\022a\n\020http"
+  "_valid_codes\030\t \003(\rB7\222A422List of HTTP st"
+  "atus codes indicating healthy stateR\016htt"
+  "pValidCodes\022^\n\017dns_valid_codes\030\n \003(\rB6\222A"
+  "321List of DNS status codes indicating h"
+  "ealthy stateR\rdnsValidCodes\022\242\001\n\027latency_"
+  "critical_stddev\030\013 \001(\002Bj\222Ag2eThreshold fo"
+  "r standard deviation (in microseconds) o"
+  "f ping response latency to trigger criti"
+  "cal alarmR\025latencyCriticalStddev\022\237\001\n\026lat"
+  "ency_warning_stddev\030\014 \001(\002Bi\222Af2dThreshol"
+  "d for standard deviation (in microsecond"
+  "s) of ping response latency to trigger w"
+  "arning alarmR\024latencyWarningStddev\022\226\001\n\026j"
+  "itter_critical_stddev\030\r \001(\002B`\222A]2[Thresh"
+  "old for standard deviation of ping jitte"
+  "r (in microseconds) to trigger critical "
+  "alarmR\024jitterCriticalStddev\022\223\001\n\025jitter_w"
+  "arning_stddev\030\016 \001(\002B_\222A\\2ZThreshold for "
+  "standard deviation of ping jitter (in mi"
+  "croseconds) to trigger warning alarmR\023ji"
+  "tterWarningStddev\022\253\001\n\034http_latency_criti"
+  "cal_stddev\030\017 \001(\002Bj\222Ag2eThreshold for sta"
+  "ndard deviation of HTTP response latency"
   " (in microseconds) to trigger critical a"
-  "larmR\024jitterCriticalStddev\022\223\001\n\025jitter_wa"
-  "rning_stddev\030\016 \001(\002B_\222A\\2ZThreshold for s"
-  "tandard deviation of ping jitter (in mic"
-  "roseconds) to trigger warning alarmR\023jit"
-  "terWarningStddev\022\253\001\n\034http_latency_critic"
-  "al_stddev\030\017 \001(\002Bj\222Ag2eThreshold for stan"
-  "dard deviation of HTTP response latency "
-  "(in microseconds) to trigger critical al"
-  "armR\031httpLatencyCriticalStddev\022\250\001\n\033http_"
-  "latency_warning_stddev\030\020 \001(\002Bi\222Af2dThres"
-  "hold for standard deviation of HTTP resp"
-  "onse latency (in microseconds) to trigge"
-  "r warning alarmR\030httpLatencyWarningStdde"
-  "v\022\257\001\n\033unhealthy_subtest_threshold\030\021 \001(\rB"
-  "o\030\001\222Aj2hNumber of tasks (across all agen"
-  "ts) that must report unhealthy status in"
-  " order for alarm to be triggeredR\031unheal"
-  "thySubtestThreshold\022m\n\nactivation\030\022 \001(\0132"
-  "-.kentik.synthetics.v202309.ActivationSe"
-  "ttingsB\036\222A\0332\031Alarm activation settingsR\n"
-  "activation\022\213\001\n\023cert_expiry_warning\030\023 \001(\r"
-  "B[\222AX2VThreshold for remaining validity "
-  "of TLS certificate (in days) to trigger "
-  "warning alarmR\021certExpiryWarning\022\216\001\n\024cer"
-  "t_expiry_critical\030\024 \001(\rB\\\222AY2WThreshold "
-  "for remaining validity of TLS certificat"
-  "e (in days) to trigger critical alarmR\022c"
-  "ertExpiryCritical\022\210\001\n\rdns_valid_ips\030\025 \001("
-  "\tBd\222Aa2_Comma separated list of IP addre"
-  "sses expected to be received in response"
-  " to DNS A or AAAA queryR\013dnsValidIps\022\205\001\n"
-  "\024dns_latency_critical\030\026 \001(\002BS\222AP2NThresh"
-  "old for DNS response latency (in microse"
-  "conds) to trigger critical alarmR\022dnsLat"
-  "encyCritical\022\202\001\n\023dns_latency_warning\030\027 \001"
-  "(\002BR\222AO2MThreshold for DNS response late"
-  "ncy (in microseconds) to trigger warning"
-  " alarmR\021dnsLatencyWarning\022\250\001\n\033dns_latenc"
-  "y_critical_stddev\030\030 \001(\002Bi\222Af2dThreshold "
-  "for standard deviation (in microseconds)"
-  " of DNS response latency to trigger crit"
-  "ical alarmR\030dnsLatencyCriticalStddev\022\245\001\n"
-  "\032dns_latency_warning_stddev\030\031 \001(\002Bh\222Ae2c"
-  "Threshold for standard deviation (in mic"
-  "roseconds) of DNS response latency to tr"
-  "igger warning alarmR\027dnsLatencyWarningSt"
-  "ddev\022o\n\022per_agent_alerting\030\032 \001(\010BA\030\001\222A<2"
-  ":Boolean value indicating whether to use"
-  " per-agent alertingR\020perAgentAlerting\022\221\001"
-  "\n\020disabled_metrics\030\033 \001(\0132*.kentik.synthe"
-  "tics.v202309.DisabledMetricsB:\222A725Set o"
-  "f metrics to be skipped during health ev"
-  "aluationR\017disabledMetrics\022Y\n\017health_disa"
-  "bled\030\034 \001(\010B0\222A-2+Disable all health eval"
-  "uation for this testR\016healthDisabled\022|\n\023"
-  "throughput_critical\030\035 \001(\002BK\222AH2FThreshol"
-  "d for throughput bandwidth (in mbps) to "
-  "trigger critical alarmR\022throughputCritic"
-  "al\022y\n\022throughput_warning\030\036 \001(\002BJ\222AG2EThr"
-  "eshold for throughput bandwidth (in mbps"
-  ") to trigger warning alarmR\021throughputWa"
-  "rning\022\237\001\n\032throughput_critical_stddev\030\037 \001"
-  "(\002Ba\222A^2\\Threshold for standard deviatio"
-  "n (in mbps) of throughput bandwidth to t"
-  "rigger critical alarmR\030throughputCritica"
-  "lStddev\022\234\001\n\031throughput_warning_stddev\030  "
-  "\001(\002B`\222A]2[Threshold for standard deviati"
+  "larmR\031httpLatencyCriticalStddev\022\250\001\n\033http"
+  "_latency_warning_stddev\030\020 \001(\002Bi\222Af2dThre"
+  "shold for standard deviation of HTTP res"
+  "ponse latency (in microseconds) to trigg"
+  "er warning alarmR\030httpLatencyWarningStdd"
+  "ev\022\257\001\n\033unhealthy_subtest_threshold\030\021 \001(\r"
+  "Bo\030\001\222Aj2hNumber of tasks (across all age"
+  "nts) that must report unhealthy status i"
+  "n order for alarm to be triggeredR\031unhea"
+  "lthySubtestThreshold\022m\n\nactivation\030\022 \001(\013"
+  "2-.kentik.synthetics.v202309.ActivationS"
+  "ettingsB\036\222A\0332\031Alarm activation settingsR"
+  "\nactivation\022\213\001\n\023cert_expiry_warning\030\023 \001("
+  "\rB[\222AX2VThreshold for remaining validity"
+  " of TLS certificate (in days) to trigger"
+  " warning alarmR\021certExpiryWarning\022\216\001\n\024ce"
+  "rt_expiry_critical\030\024 \001(\rB\\\222AY2WThreshold"
+  " for remaining validity of TLS certifica"
+  "te (in days) to trigger critical alarmR\022"
+  "certExpiryCritical\022\210\001\n\rdns_valid_ips\030\025 \001"
+  "(\tBd\222Aa2_Comma separated list of IP addr"
+  "esses expected to be received in respons"
+  "e to DNS A or AAAA queryR\013dnsValidIps\022\205\001"
+  "\n\024dns_latency_critical\030\026 \001(\002BS\222AP2NThres"
+  "hold for DNS response latency (in micros"
+  "econds) to trigger critical alarmR\022dnsLa"
+  "tencyCritical\022\202\001\n\023dns_latency_warning\030\027 "
+  "\001(\002BR\222AO2MThreshold for DNS response lat"
+  "ency (in microseconds) to trigger warnin"
+  "g alarmR\021dnsLatencyWarning\022\250\001\n\033dns_laten"
+  "cy_critical_stddev\030\030 \001(\002Bi\222Af2dThreshold"
+  " for standard deviation (in microseconds"
+  ") of DNS response latency to trigger cri"
+  "tical alarmR\030dnsLatencyCriticalStddev\022\245\001"
+  "\n\032dns_latency_warning_stddev\030\031 \001(\002Bh\222Ae2"
+  "cThreshold for standard deviation (in mi"
+  "croseconds) of DNS response latency to t"
+  "rigger warning alarmR\027dnsLatencyWarningS"
+  "tddev\022o\n\022per_agent_alerting\030\032 \001(\010BA\030\001\222A<"
+  "2:Boolean value indicating whether to us"
+  "e per-agent alertingR\020perAgentAlerting\022\221"
+  "\001\n\020disabled_metrics\030\033 \001(\0132*.kentik.synth"
+  "etics.v202309.DisabledMetricsB:\222A725Set "
+  "of metrics to be skipped during health e"
+  "valuationR\017disabledMetrics\022Y\n\017health_dis"
+  "abled\030\034 \001(\010B0\222A-2+Disable all health eva"
+  "luation for this testR\016healthDisabled\022|\n"
+  "\023throughput_critical\030\035 \001(\002BK\222AH2FThresho"
+  "ld for throughput bandwidth (in mbps) to"
+  " trigger critical alarmR\022throughputCriti"
+  "cal\022y\n\022throughput_warning\030\036 \001(\002BJ\222AG2ETh"
+  "reshold for throughput bandwidth (in mbp"
+  "s) to trigger warning alarmR\021throughputW"
+  "arning\022\237\001\n\032throughput_critical_stddev\030\037 "
+  "\001(\002Ba\222A^2\\Threshold for standard deviati"
   "on (in mbps) of throughput bandwidth to "
-  "trigger warning alarmR\027throughputWarning"
-  "Stddev\"X\n\014HostnameTest\022H\n\006target\030\001 \001(\tB0"
-  "\222A-2+Fully qualified DNS name of the tar"
-  "get hostR\006target\"\310\001\n\006IpTest\022>\n\007targets\030\001"
-  " \003(\tB$\222A!2\037List of IP addresses of targe"
-  "tsR\007targets\022~\n\014use_local_ip\030\002 \001(\010B\\\222AY2W"
-  "Boolean value indicating whether to use "
-  "local (private) IP address of the target"
-  " agentsR\nuseLocalIp\"\245\002\n\tAgentTest\0223\n\006tar"
-  "get\030\001 \001(\tB\033\222A\0302\026ID of the target agentR\006"
-  "target\022}\n\014use_local_ip\030\002 \001(\010B[\222AX2VBoole"
-  "an value indicating whether to use local"
-  " (private) IP address of the target agen"
-  "tR\nuseLocalIp\022d\n\nreciprocal\030\003 \001(\010BD\222AA2\?"
-  "Boolean value indicating whether to make"
-  " the test bidirectionalR\nreciprocal\"\213\007\n\010"
-  "FlowTest\022\207\001\n\006target\030\001 \001(\tBo\222Al2jTarget A"
-  "SN, CDN, Country, Region of City for aut"
-  "onomous test (type of value depends on f"
-  "low test sub-type)R\006target\022\236\001\n\036target_re"
-  "fresh_interval_millis\030\002 \001(\rBY\222AV2TPeriod"
-  " (in milliseconds) for refreshing list o"
-  "f targets based on available flow dataR\033"
-  "targetRefreshIntervalMillis\022^\n\rmax_provi"
-  "ders\030\003 \001(\rB9\222A624Maximum number of IP pr"
-  "oviders to track autonomouslyR\014maxProvid"
-  "ers\022p\n\016max_ip_targets\030\004 \001(\rBJ\222AG2EMaximu"
-  "m number of target IP addresses to selec"
-  "t based flow data queryR\014maxIpTargets\022W\n"
-  "\004type\030\005 \001(\tBC\222A@2>Autonomous test sub-ty"
-  "pe (asn | cdn | country | region | city)"
-  "R\004type\022\250\001\n\016inet_direction\030\006 \001(\tB\200\001\222A}2{S"
-  "election of address from flow data (src "
-  "= source address in inbound flows | dst "
-  "= destination addresses in outbound flow"
-  "s)R\rinetDirection\022~\n\tdirection\030\007 \001(\tB`\222A"
-  "]2[Direction of flows to match target at"
-  "tribute for extraction of target address"
-  "es (src | dst)R\tdirection\"\357\002\n\007DnsTest\022>\n"
-  "\006target\030\001 \001(\tB&\222A#2!Fully qualified DNS "
-  "name to queryR\006target\022F\n\007timeout\030\002 \001(\rB,"
-  "\030\001\222A\'2%--- Deprecated: value is ignored."
-  " ---R\007timeout\022g\n\013record_type\030\003 \001(\0162$.ken"
-  "tik.synthetics.v202309.DNSRecordB \222A\0352\033T"
-  "ype of DNS record to queryR\nrecordType\022B"
-  "\n\007servers\030\004 \003(\tB(\222A%2#List of IP address"
-  "es of DNS serversR\007servers\022/\n\004port\030\005 \001(\r"
-  "B\033\222A\0302\026Target DNS server portR\004port\"\306\004\n\007"
-  "UrlTest\0229\n\006target\030\001 \001(\tB!\222A\0362\034HTTP or HT"
-  "TPS URL to requestR\006target\022I\n\007timeout\030\002 "
-  "\001(\rB/\222A,2*HTTP transaction timeout (in m"
-  "illiseconds)R\007timeout\022Q\n\006method\030\003 \001(\tB9\222"
-  "A624HTTP method to use (GET | HEAD | PAT"
-  "CH | POST | PUT)R\006method\022\177\n\007headers\030\004 \003("
-  "\0132/.kentik.synthetics.v202309.UrlTest.He"
-  "adersEntryB4\222A12/Map of HTTP header valu"
-  "es keyed by header namesR\007headers\022*\n\004bod"
-  "y\030\005 \001(\tB\026\222A\0232\021HTTP request bodyR\004body\022y\n"
-  "\021ignore_tls_errors\030\006 \001(\010BM\222AJ2HBoolean i"
-  "ndicating whether to ignore TLS certific"
-  "ate verification errorsR\017ignoreTlsErrors"
-  "\032:\n\014HeadersEntry\022\020\n\003key\030\001 \001(\tR\003key\022\024\n\005va"
-  "lue\030\002 \001(\tR\005value:\0028\001\"\254\005\n\014PageLoadTest\0229\n"
-  "\006target\030\001 \001(\tB!\222A\0362\034HTTP or HTTPS URL to"
-  " requestR\006target\022I\n\007timeout\030\002 \001(\rB/\222A,2*"
-  "HTTP transaction timeout (in millisecond"
-  "s)R\007timeout\022\204\001\n\007headers\030\003 \003(\01324.kentik.s"
-  "ynthetics.v202309.PageLoadTest.HeadersEn"
-  "tryB4\222A12/Map of HTTP header values keye"
-  "d by header namesR\007headers\022y\n\021ignore_tls"
-  "_errors\030\004 \001(\010BM\222AJ2HBoolean indicating w"
-  "hether to ignore TLS certificate verific"
-  "ation errorsR\017ignoreTlsErrors\022\226\001\n\rcss_se"
-  "lectors\030\005 \003(\01329.kentik.synthetics.v20230"
-  "9.PageLoadTest.CssSelectorsEntryB6\222A321M"
-  "ap of CSS selector values keyed by selec"
-  "tor nameR\014cssSelectors\032:\n\014HeadersEntry\022\020"
-  "\n\003key\030\001 \001(\tR\003key\022\024\n\005value\030\002 \001(\tR\005value:\002"
-  "8\001\032\?\n\021CssSelectorsEntry\022\020\n\003key\030\001 \001(\tR\003ke"
-  "y\022\024\n\005value\030\002 \001(\tR\005value:\0028\001\"\221\001\n\017NetworkM"
-  "eshTest\022~\n\014use_local_ip\030\001 \001(\010B\\\222AY2WBool"
+  "trigger critical alarmR\030throughputCritic"
+  "alStddev\022\234\001\n\031throughput_warning_stddev\030 "
+  " \001(\002B`\222A]2[Threshold for standard deviat"
+  "ion (in mbps) of throughput bandwidth to"
+  " trigger warning alarmR\027throughputWarnin"
+  "gStddev\"X\n\014HostnameTest\022H\n\006target\030\001 \001(\tB"
+  "0\222A-2+Fully qualified DNS name of the ta"
+  "rget hostR\006target\"\310\001\n\006IpTest\022>\n\007targets\030"
+  "\001 \003(\tB$\222A!2\037List of IP addresses of targ"
+  "etsR\007targets\022~\n\014use_local_ip\030\002 \001(\010B\\\222AY2"
+  "WBoolean value indicating whether to use"
+  " local (private) IP address of the targe"
+  "t agentsR\nuseLocalIp\"\245\002\n\tAgentTest\0223\n\006ta"
+  "rget\030\001 \001(\tB\033\222A\0302\026ID of the target agentR"
+  "\006target\022}\n\014use_local_ip\030\002 \001(\010B[\222AX2VBool"
   "ean value indicating whether to use loca"
   "l (private) IP address of the target age"
-  "ntsR\nuseLocalIp\"\307\002\n\nMetricData\0226\n\007curren"
-  "t\030\001 \001(\rB\034\222A\0312\027Current value of metricR\007c"
-  "urrent\022\?\n\013rolling_avg\030\002 \001(\rB\036\222A\0332\031Rollin"
-  "g average of metricR\nrollingAvg\022[\n\016rolli"
-  "ng_stddev\030\003 \001(\rB4\222A12/Rolling average of"
-  " standard deviation of metricR\rrollingSt"
-  "ddev\022c\n\006health\030\004 \001(\tBK\222AH2FHealth evalua"
-  "tion status for the metric (healthy | wa"
-  "rning | critical)R\006health\"\257\001\n\016PacketLoss"
-  "Data\0228\n\007current\030\001 \001(\001B\036\222A\0332\031Current pack"
-  "et loss valueR\007current\022c\n\006health\030\002 \001(\tBK"
-  "\222AH2FHealth evaluation status for the me"
-  "tric (healthy | warning | critical)R\006hea"
-  "lth\"\326\003\n\013PingResults\022E\n\006target\030\001 \001(\tB-\222A*"
-  "2(Hostname or address of the probed targ"
-  "etR\006target\022n\n\013packet_loss\030\002 \001(\0132).kentik"
-  ".synthetics.v202309.PacketLossDataB\"\222A\0372"
-  "\035Packet loss metric and healthR\npacketLo"
-  "ss\022f\n\007latency\030\003 \001(\0132%.kentik.synthetics."
-  "v202309.MetricDataB%\222A\"2 Packet latency "
-  "metric and healthR\007latency\022o\n\006jitter\030\004 \001"
-  "(\0132%.kentik.synthetics.v202309.MetricDat"
-  "aB0\222A-2+Latency jitter (variance) metric"
-  " and healthR\006jitter\0227\n\006dst_ip\030\005 \001(\tB \222A\035"
-  "2\033IP address of probed targetR\005dstIp\"\371\001\n"
-  "\020HTTPResponseData\0224\n\006status\030\001 \001(\rB\034\222A\0312\027"
-  "HTTP status in responseR\006status\022>\n\004size\030"
-  "\002 \001(\rB*\222A\'2%Total size of  received resp"
-  "onse bodyR\004size\022o\n\004data\030\003 \001(\tB[\222AX2VDeta"
-  "iled information about transaction timin"
-  "g, connection characteristics and respon"
-  "seR\004data\"\344\002\n\013HTTPResults\022.\n\006target\030\001 \001(\t"
-  "B\026\222A\0232\021Target probed URLR\006target\022m\n\007late"
-  "ncy\030\002 \001(\0132%.kentik.synthetics.v202309.Me"
-  "tricDataB,\222A)2\'HTTP response latency met"
-  "ric and healthR\007latency\022v\n\010response\030\004 \001("
-  "\0132+.kentik.synthetics.v202309.HTTPRespon"
-  "seDataB-\222A*2(Information about received "
-  "HTTP responseR\010response\022>\n\006dst_ip\030\005 \001(\tB"
-  "\'\222A$2\"IP address of probed target server"
-  "R\005dstIp\"\207\001\n\017DNSResponseData\0220\n\006status\030\001 "
-  "\001(\rB\030\222A\0252\023Received DNS statusR\006status\022B\n"
-  "\004data\030\002 \001(\tB.\222A+2)Text rendering of rece"
-  "ived DNS resolutionR\004data\"\335\002\n\nDNSResults"
-  "\022/\n\006target\030\001 \001(\tB\027\222A\0242\022Queried DNS recor"
-  "dR\006target\022:\n\006server\030\002 \001(\tB\"\222A\0372\035DNS serv"
-  "er used for the queryR\006server\022l\n\007latency"
-  "\030\003 \001(\0132%.kentik.synthetics.v202309.Metri"
-  "cDataB+\222A(2&DNS response latency metric "
-  "and healthR\007latency\022t\n\010response\030\005 \001(\0132*."
-  "kentik.synthetics.v202309.DNSResponseDat"
-  "aB,\222A)2\'Information about received DNS r"
-  "esponseR\010response\"\203\003\n\013TaskResults\022e\n\004pin"
-  "g\030\001 \001(\0132&.kentik.synthetics.v202309.Ping"
-  "ResultsB\'\222A$2\"Entry containing ping task"
-  " resultsH\000R\004ping\022e\n\004http\030\002 \001(\0132&.kentik."
-  "synthetics.v202309.HTTPResultsB\'\222A$2\"Ent"
-  "ry containing HTTP task resultsH\000R\004http\022"
-  "a\n\003dns\030\003 \001(\0132%.kentik.synthetics.v202309"
-  ".DNSResultsB&\222A#2!Entry containing DNS t"
-  "ask resultsH\000R\003dns\0226\n\006health\030\004 \001(\tB\036\222A\0332"
-  "\031Health status of the taskR\006healthB\013\n\tta"
-  "sk_type\"\236\002\n\014AgentResults\022A\n\010agent_id\030\001 \001"
-  "(\tB&\222A#2!ID of the agent providing resul"
-  "tsR\007agentId\022b\n\006health\030\002 \001(\tBJ\222AG2EOveral"
-  "l health status of all task for the test"
-  " executed by this agentR\006health\022g\n\005tasks"
-  "\030\003 \003(\0132&.kentik.synthetics.v202309.TaskR"
-  "esultsB)\222A&2$List of results for individ"
-  "ual tasksR\005tasks\"\352\002\n\013TestResults\022K\n\007test"
-  "_id\030\001 \001(\tB2\222A/2-ID of the test for which"
-  " results are providedR\006testId\022L\n\004time\030\002 "
-  "\001(\0132\032.google.protobuf.TimestampB\034\222A\0312\027Re"
-  "sults timestamp (UTC)R\004time\0226\n\006health\030\003 "
-  "\001(\tB\036\222A\0332\031Health status of the testR\006hea"
-  "lth\022\207\001\n\006agents\030\004 \003(\0132\'.kentik.synthetics"
-  ".v202309.AgentResultsBF\222AC2AList of resu"
-  "lts from agents executing tasks on behal"
-  "f of the testR\006agents\"\201\001\n\005Stats\022,\n\007avera"
-  "ge\030\001 \001(\005B\022\222A\0172\rAverage valueR\007average\022$\n"
-  "\003min\030\002 \001(\005B\022\222A\0172\rMinimum valueR\003min\022$\n\003m"
-  "ax\030\003 \001(\005B\022\222A\0172\rMaximum valueR\003max\"\301\002\n\010Lo"
-  "cation\022C\n\010latitude\030\010 \001(\001B\'\222A$2\"Latitude "
-  "in signed decimal degreesR\010latitude\022F\n\tl"
-  "ongitude\030\t \001(\001B(\222A%2#Longitude in signed"
-  " decimal degreesR\tlongitude\0226\n\007country\030\001"
-  " \001(\tB\034\222A\0312\027Country of the locationR\007coun"
-  "try\022A\n\006region\030\002 \001(\tB)\222A&2$Geographic reg"
-  "ion within the countryR\006region\022-\n\004city\030\003"
-  " \001(\tB\031\222A\0262\024City of the locationR\004city\"\206\005"
-  "\n\007NetNode\022H\n\002ip\030\002 \001(\tB8\222A523IP address o"
-  "f the node in standard textual notationR"
-  "\002ip\022\?\n\003asn\030\003 \001(\rB-\222A*2(AS number owning "
-  "the address of the nodeR\003asn\022K\n\007as_name\030"
-  "\004 \001(\tB2\222A/2-Name of the AS owning the ad"
-  "dress of the nodeR\006asName\022h\n\010location\030\005 "
-  "\001(\0132#.kentik.synthetics.v202309.Location"
-  "B\'\222A$2\"Location of IP address of the nod"
-  "eR\010location\022Y\n\010dns_name\030\006 \001(\tB>\222A;29DNS "
-  "name of the node (obtained by reverse DN"
-  "S resolution)R\007dnsName\022f\n\tdevice_id\030\007 \001("
-  "\tBI\222AF2DID of the device corresponding w"
-  "ith the node in Kentik configurationR\010de"
-  "viceId\022v\n\007site_id\030\010 \001(\tB]\222AZ2XID of the "
-  "site containing the device corresponding"
-  " with the node in Kentik configurationR\006"
-  "siteId\"\363\001\n\010TraceHop\022v\n\007latency\030\003 \001(\005B\\\222A"
-  "Y2WRound-trip packet latency to the node"
-  " (in microseconds) - 0 if no response wa"
-  "s receivedR\007latency\022o\n\007node_id\030\005 \001(\tBV\222A"
-  "S2QID of the node for this hop in the No"
-  "des map  - empty if no response was rece"
-  "ivedR\006nodeId\"\374\001\n\tPathTrace\022:\n\007as_path\030\001 "
-  "\003(\005B!\222A\0362\034AS path of the network traceR\006"
-  "asPath\022Z\n\013is_complete\030\002 \001(\010B9\222A624Indica"
-  "tion whether response from target was re"
-  "ceivedR\nisComplete\022W\n\004hops\030\006 \003(\0132#.kenti"
-  "k.synthetics.v202309.TraceHopB\036\222A\0332\031List"
-  " of hops in the traceR\004hops\"\250\004\n\004Path\022H\n\010"
-  "agent_id\030\001 \001(\tB-\222A*2(ID of the agent gen"
-  "erating the path dataR\007agentId\022F\n\ttarget"
-  "_ip\030\003 \001(\tB)\222A&2$IP address of the target"
-  " of the pathR\010targetIp\022j\n\thop_count\030\004 \001("
-  "\0132 .kentik.synthetics.v202309.StatsB+\222A("
-  "2&Hop count statistics across all traces"
-  "R\010hopCount\022]\n\022max_as_path_length\030\007 \001(\005B0"
-  "\222A-2+Maximum length of AS path across al"
-  "l tracesR\017maxAsPathLength\022]\n\006traces\030\010 \003("
-  "\0132$.kentik.synthetics.v202309.PathTraceB"
-  "\037\222A\0342\032Data for individual tracesR\006traces"
-  "\022d\n\004time\030\t \001(\0132\032.google.protobuf.Timesta"
-  "mpB4\222A12/Timestamp (UTC) of initiation o"
-  "f the path traceR\004time\"\225\005\n\031GetResultsFor"
-  "TestsRequest\022I\n\003ids\030\001 \003(\tB7\222A02.List of "
-  "test IDs for which to retrieve results\342A"
-  "\001\002R\003ids\022y\n\nstart_time\030\002 \001(\0132\032.google.pro"
-  "tobuf.TimestampB>\222A725Timestamp of the o"
-  "ldest results to include in results\342A\001\002R"
-  "\tstartTime\022u\n\010end_time\030\003 \001(\0132\032.google.pr"
-  "otobuf.TimestampB>\222A725Timestamp of the "
-  "newest results to include in results\342A\001\002"
-  "R\007endTime\022P\n\tagent_ids\030\004 \003(\tB3\222A02.List "
-  "of agent IDs from which to return result"
-  "sR\010agentIds\022]\n\007targets\030\005 \003(\tBC\222A@2>List "
-  "of targets (test dependent) for which to"
-  " retrieve resultsR\007targets\022\211\001\n\taggregate"
-  "\030\006 \001(\010Bk\222Ah2fIf true, retrieve result ag"
-  "gregated across the requested time perio"
-  "d, else return complete time seriesR\tagg"
-  "regate\"^\n\032GetResultsForTestsResponse\022@\n\007"
-  "results\030\001 \003(\0132&.kentik.synthetics.v20230"
-  "9.TestResultsR\007results\"\212\004\n\026GetTraceForTe"
-  "stRequest\022M\n\002id\030\001 \001(\tB=\222A:28ID of test f"
-  "or which to retrieve network path trace "
-  "dataR\002id\022y\n\nstart_time\030\002 \001(\0132\032.google.pr"
+  "ntR\nuseLocalIp\022d\n\nreciprocal\030\003 \001(\010BD\222AA2"
+  "\?Boolean value indicating whether to mak"
+  "e the test bidirectionalR\nreciprocal\"\213\007\n"
+  "\010FlowTest\022\207\001\n\006target\030\001 \001(\tBo\222Al2jTarget "
+  "ASN, CDN, Country, Region of City for au"
+  "tonomous test (type of value depends on "
+  "flow test sub-type)R\006target\022\236\001\n\036target_r"
+  "efresh_interval_millis\030\002 \001(\rBY\222AV2TPerio"
+  "d (in milliseconds) for refreshing list "
+  "of targets based on available flow dataR"
+  "\033targetRefreshIntervalMillis\022^\n\rmax_prov"
+  "iders\030\003 \001(\rB9\222A624Maximum number of IP p"
+  "roviders to track autonomouslyR\014maxProvi"
+  "ders\022p\n\016max_ip_targets\030\004 \001(\rBJ\222AG2EMaxim"
+  "um number of target IP addresses to sele"
+  "ct based flow data queryR\014maxIpTargets\022W"
+  "\n\004type\030\005 \001(\tBC\222A@2>Autonomous test sub-t"
+  "ype (asn | cdn | country | region | city"
+  ")R\004type\022\250\001\n\016inet_direction\030\006 \001(\tB\200\001\222A}2{"
+  "Selection of address from flow data (src"
+  " = source address in inbound flows | dst"
+  " = destination addresses in outbound flo"
+  "ws)R\rinetDirection\022~\n\tdirection\030\007 \001(\tB`\222"
+  "A]2[Direction of flows to match target a"
+  "ttribute for extraction of target addres"
+  "ses (src | dst)R\tdirection\"\357\002\n\007DnsTest\022>"
+  "\n\006target\030\001 \001(\tB&\222A#2!Fully qualified DNS"
+  " name to queryR\006target\022F\n\007timeout\030\002 \001(\rB"
+  ",\030\001\222A\'2%--- Deprecated: value is ignored"
+  ". ---R\007timeout\022g\n\013record_type\030\003 \001(\0162$.ke"
+  "ntik.synthetics.v202309.DNSRecordB \222A\0352\033"
+  "Type of DNS record to queryR\nrecordType\022"
+  "B\n\007servers\030\004 \003(\tB(\222A%2#List of IP addres"
+  "ses of DNS serversR\007servers\022/\n\004port\030\005 \001("
+  "\rB\033\222A\0302\026Target DNS server portR\004port\"\306\004\n"
+  "\007UrlTest\0229\n\006target\030\001 \001(\tB!\222A\0362\034HTTP or H"
+  "TTPS URL to requestR\006target\022I\n\007timeout\030\002"
+  " \001(\rB/\222A,2*HTTP transaction timeout (in "
+  "milliseconds)R\007timeout\022Q\n\006method\030\003 \001(\tB9"
+  "\222A624HTTP method to use (GET | HEAD | PA"
+  "TCH | POST | PUT)R\006method\022\177\n\007headers\030\004 \003"
+  "(\0132/.kentik.synthetics.v202309.UrlTest.H"
+  "eadersEntryB4\222A12/Map of HTTP header val"
+  "ues keyed by header namesR\007headers\022*\n\004bo"
+  "dy\030\005 \001(\tB\026\222A\0232\021HTTP request bodyR\004body\022y"
+  "\n\021ignore_tls_errors\030\006 \001(\010BM\222AJ2HBoolean "
+  "indicating whether to ignore TLS certifi"
+  "cate verification errorsR\017ignoreTlsError"
+  "s\032:\n\014HeadersEntry\022\020\n\003key\030\001 \001(\tR\003key\022\024\n\005v"
+  "alue\030\002 \001(\tR\005value:\0028\001\"\254\005\n\014PageLoadTest\0229"
+  "\n\006target\030\001 \001(\tB!\222A\0362\034HTTP or HTTPS URL t"
+  "o requestR\006target\022I\n\007timeout\030\002 \001(\rB/\222A,2"
+  "*HTTP transaction timeout (in millisecon"
+  "ds)R\007timeout\022\204\001\n\007headers\030\003 \003(\01324.kentik."
+  "synthetics.v202309.PageLoadTest.HeadersE"
+  "ntryB4\222A12/Map of HTTP header values key"
+  "ed by header namesR\007headers\022y\n\021ignore_tl"
+  "s_errors\030\004 \001(\010BM\222AJ2HBoolean indicating "
+  "whether to ignore TLS certificate verifi"
+  "cation errorsR\017ignoreTlsErrors\022\226\001\n\rcss_s"
+  "electors\030\005 \003(\01329.kentik.synthetics.v2023"
+  "09.PageLoadTest.CssSelectorsEntryB6\222A321"
+  "Map of CSS selector values keyed by sele"
+  "ctor nameR\014cssSelectors\032:\n\014HeadersEntry\022"
+  "\020\n\003key\030\001 \001(\tR\003key\022\024\n\005value\030\002 \001(\tR\005value:"
+  "\0028\001\032\?\n\021CssSelectorsEntry\022\020\n\003key\030\001 \001(\tR\003k"
+  "ey\022\024\n\005value\030\002 \001(\tR\005value:\0028\001\"\221\001\n\017Network"
+  "MeshTest\022~\n\014use_local_ip\030\001 \001(\010B\\\222AY2WBoo"
+  "lean value indicating whether to use loc"
+  "al (private) IP address of the target ag"
+  "entsR\nuseLocalIp\"\307\002\n\nMetricData\0226\n\007curre"
+  "nt\030\001 \001(\rB\034\222A\0312\027Current value of metricR\007"
+  "current\022\?\n\013rolling_avg\030\002 \001(\rB\036\222A\0332\031Rolli"
+  "ng average of metricR\nrollingAvg\022[\n\016roll"
+  "ing_stddev\030\003 \001(\rB4\222A12/Rolling average o"
+  "f standard deviation of metricR\rrollingS"
+  "tddev\022c\n\006health\030\004 \001(\tBK\222AH2FHealth evalu"
+  "ation status for the metric (healthy | w"
+  "arning | critical)R\006health\"\257\001\n\016PacketLos"
+  "sData\0228\n\007current\030\001 \001(\001B\036\222A\0332\031Current pac"
+  "ket loss valueR\007current\022c\n\006health\030\002 \001(\tB"
+  "K\222AH2FHealth evaluation status for the m"
+  "etric (healthy | warning | critical)R\006he"
+  "alth\"\326\003\n\013PingResults\022E\n\006target\030\001 \001(\tB-\222A"
+  "*2(Hostname or address of the probed tar"
+  "getR\006target\022n\n\013packet_loss\030\002 \001(\0132).kenti"
+  "k.synthetics.v202309.PacketLossDataB\"\222A\037"
+  "2\035Packet loss metric and healthR\npacketL"
+  "oss\022f\n\007latency\030\003 \001(\0132%.kentik.synthetics"
+  ".v202309.MetricDataB%\222A\"2 Packet latency"
+  " metric and healthR\007latency\022o\n\006jitter\030\004 "
+  "\001(\0132%.kentik.synthetics.v202309.MetricDa"
+  "taB0\222A-2+Latency jitter (variance) metri"
+  "c and healthR\006jitter\0227\n\006dst_ip\030\005 \001(\tB \222A"
+  "\0352\033IP address of probed targetR\005dstIp\"\371\001"
+  "\n\020HTTPResponseData\0224\n\006status\030\001 \001(\rB\034\222A\0312"
+  "\027HTTP status in responseR\006status\022>\n\004size"
+  "\030\002 \001(\rB*\222A\'2%Total size of  received res"
+  "ponse bodyR\004size\022o\n\004data\030\003 \001(\tB[\222AX2VDet"
+  "ailed information about transaction timi"
+  "ng, connection characteristics and respo"
+  "nseR\004data\"\344\002\n\013HTTPResults\022.\n\006target\030\001 \001("
+  "\tB\026\222A\0232\021Target probed URLR\006target\022m\n\007lat"
+  "ency\030\002 \001(\0132%.kentik.synthetics.v202309.M"
+  "etricDataB,\222A)2\'HTTP response latency me"
+  "tric and healthR\007latency\022v\n\010response\030\004 \001"
+  "(\0132+.kentik.synthetics.v202309.HTTPRespo"
+  "nseDataB-\222A*2(Information about received"
+  " HTTP responseR\010response\022>\n\006dst_ip\030\005 \001(\t"
+  "B\'\222A$2\"IP address of probed target serve"
+  "rR\005dstIp\"\207\001\n\017DNSResponseData\0220\n\006status\030\001"
+  " \001(\rB\030\222A\0252\023Received DNS statusR\006status\022B"
+  "\n\004data\030\002 \001(\tB.\222A+2)Text rendering of rec"
+  "eived DNS resolutionR\004data\"\335\002\n\nDNSResult"
+  "s\022/\n\006target\030\001 \001(\tB\027\222A\0242\022Queried DNS reco"
+  "rdR\006target\022:\n\006server\030\002 \001(\tB\"\222A\0372\035DNS ser"
+  "ver used for the queryR\006server\022l\n\007latenc"
+  "y\030\003 \001(\0132%.kentik.synthetics.v202309.Metr"
+  "icDataB+\222A(2&DNS response latency metric"
+  " and healthR\007latency\022t\n\010response\030\005 \001(\0132*"
+  ".kentik.synthetics.v202309.DNSResponseDa"
+  "taB,\222A)2\'Information about received DNS "
+  "responseR\010response\"\203\003\n\013TaskResults\022e\n\004pi"
+  "ng\030\001 \001(\0132&.kentik.synthetics.v202309.Pin"
+  "gResultsB\'\222A$2\"Entry containing ping tas"
+  "k resultsH\000R\004ping\022e\n\004http\030\002 \001(\0132&.kentik"
+  ".synthetics.v202309.HTTPResultsB\'\222A$2\"En"
+  "try containing HTTP task resultsH\000R\004http"
+  "\022a\n\003dns\030\003 \001(\0132%.kentik.synthetics.v20230"
+  "9.DNSResultsB&\222A#2!Entry containing DNS "
+  "task resultsH\000R\003dns\0226\n\006health\030\004 \001(\tB\036\222A\033"
+  "2\031Health status of the taskR\006healthB\013\n\tt"
+  "ask_type\"\236\002\n\014AgentResults\022A\n\010agent_id\030\001 "
+  "\001(\tB&\222A#2!ID of the agent providing resu"
+  "ltsR\007agentId\022b\n\006health\030\002 \001(\tBJ\222AG2EOvera"
+  "ll health status of all task for the tes"
+  "t executed by this agentR\006health\022g\n\005task"
+  "s\030\003 \003(\0132&.kentik.synthetics.v202309.Task"
+  "ResultsB)\222A&2$List of results for indivi"
+  "dual tasksR\005tasks\"\352\002\n\013TestResults\022K\n\007tes"
+  "t_id\030\001 \001(\tB2\222A/2-ID of the test for whic"
+  "h results are providedR\006testId\022L\n\004time\030\002"
+  " \001(\0132\032.google.protobuf.TimestampB\034\222A\0312\027R"
+  "esults timestamp (UTC)R\004time\0226\n\006health\030\003"
+  " \001(\tB\036\222A\0332\031Health status of the testR\006he"
+  "alth\022\207\001\n\006agents\030\004 \003(\0132\'.kentik.synthetic"
+  "s.v202309.AgentResultsBF\222AC2AList of res"
+  "ults from agents executing tasks on beha"
+  "lf of the testR\006agents\"\201\001\n\005Stats\022,\n\007aver"
+  "age\030\001 \001(\005B\022\222A\0172\rAverage valueR\007average\022$"
+  "\n\003min\030\002 \001(\005B\022\222A\0172\rMinimum valueR\003min\022$\n\003"
+  "max\030\003 \001(\005B\022\222A\0172\rMaximum valueR\003max\"\301\002\n\010L"
+  "ocation\022C\n\010latitude\030\010 \001(\001B\'\222A$2\"Latitude"
+  " in signed decimal degreesR\010latitude\022F\n\t"
+  "longitude\030\t \001(\001B(\222A%2#Longitude in signe"
+  "d decimal degreesR\tlongitude\0226\n\007country\030"
+  "\001 \001(\tB\034\222A\0312\027Country of the locationR\007cou"
+  "ntry\022A\n\006region\030\002 \001(\tB)\222A&2$Geographic re"
+  "gion within the countryR\006region\022-\n\004city\030"
+  "\003 \001(\tB\031\222A\0262\024City of the locationR\004city\"\206"
+  "\005\n\007NetNode\022H\n\002ip\030\002 \001(\tB8\222A523IP address "
+  "of the node in standard textual notation"
+  "R\002ip\022\?\n\003asn\030\003 \001(\rB-\222A*2(AS number owning"
+  " the address of the nodeR\003asn\022K\n\007as_name"
+  "\030\004 \001(\tB2\222A/2-Name of the AS owning the a"
+  "ddress of the nodeR\006asName\022h\n\010location\030\005"
+  " \001(\0132#.kentik.synthetics.v202309.Locatio"
+  "nB\'\222A$2\"Location of IP address of the no"
+  "deR\010location\022Y\n\010dns_name\030\006 \001(\tB>\222A;29DNS"
+  " name of the node (obtained by reverse D"
+  "NS resolution)R\007dnsName\022f\n\tdevice_id\030\007 \001"
+  "(\tBI\222AF2DID of the device corresponding "
+  "with the node in Kentik configurationR\010d"
+  "eviceId\022v\n\007site_id\030\010 \001(\tB]\222AZ2XID of the"
+  " site containing the device correspondin"
+  "g with the node in Kentik configurationR"
+  "\006siteId\"\363\001\n\010TraceHop\022v\n\007latency\030\003 \001(\005B\\\222"
+  "AY2WRound-trip packet latency to the nod"
+  "e (in microseconds) - 0 if no response w"
+  "as receivedR\007latency\022o\n\007node_id\030\005 \001(\tBV\222"
+  "AS2QID of the node for this hop in the N"
+  "odes map  - empty if no response was rec"
+  "eivedR\006nodeId\"\374\001\n\tPathTrace\022:\n\007as_path\030\001"
+  " \003(\005B!\222A\0362\034AS path of the network traceR"
+  "\006asPath\022Z\n\013is_complete\030\002 \001(\010B9\222A624Indic"
+  "ation whether response from target was r"
+  "eceivedR\nisComplete\022W\n\004hops\030\006 \003(\0132#.kent"
+  "ik.synthetics.v202309.TraceHopB\036\222A\0332\031Lis"
+  "t of hops in the traceR\004hops\"\250\004\n\004Path\022H\n"
+  "\010agent_id\030\001 \001(\tB-\222A*2(ID of the agent ge"
+  "nerating the path dataR\007agentId\022F\n\ttarge"
+  "t_ip\030\003 \001(\tB)\222A&2$IP address of the targe"
+  "t of the pathR\010targetIp\022j\n\thop_count\030\004 \001"
+  "(\0132 .kentik.synthetics.v202309.StatsB+\222A"
+  "(2&Hop count statistics across all trace"
+  "sR\010hopCount\022]\n\022max_as_path_length\030\007 \001(\005B"
+  "0\222A-2+Maximum length of AS path across a"
+  "ll tracesR\017maxAsPathLength\022]\n\006traces\030\010 \003"
+  "(\0132$.kentik.synthetics.v202309.PathTrace"
+  "B\037\222A\0342\032Data for individual tracesR\006trace"
+  "s\022d\n\004time\030\t \001(\0132\032.google.protobuf.Timest"
+  "ampB4\222A12/Timestamp (UTC) of initiation "
+  "of the path traceR\004time\"\225\005\n\031GetResultsFo"
+  "rTestsRequest\022I\n\003ids\030\001 \003(\tB7\222A02.List of"
+  " test IDs for which to retrieve results\342"
+  "A\001\002R\003ids\022y\n\nstart_time\030\002 \001(\0132\032.google.pr"
   "otobuf.TimestampB>\222A725Timestamp of the "
   "oldest results to include in results\342A\001\002"
   "R\tstartTime\022u\n\010end_time\030\003 \001(\0132\032.google.p"
@@ -2871,463 +2888,482 @@ const char descriptor_table_protodef_kentik_2fsynthetics_2fv202309_2fsynthetics_
   " newest results to include in results\342A\001"
   "\002R\007endTime\022P\n\tagent_ids\030\004 \003(\tB3\222A02.List"
   " of agent IDs from which to return resul"
-  "tsR\010agentIds\022]\n\ntarget_ips\030\005 \003(\tB>\222A;29L"
-  "ist of target IP addresses for which to "
-  "retrieve resultsR\ttargetIps\"\346\002\n\027GetTrace"
-  "ForTestResponse\022\213\001\n\005nodes\030\001 \003(\0132=.kentik"
-  ".synthetics.v202309.GetTraceForTestRespo"
-  "nse.NodesEntryB6\222A321Map of network node"
-  " information keyed by node IDsR\005nodes\022_\n"
-  "\005paths\030\002 \003(\0132\037.kentik.synthetics.v202309"
-  ".PathB(\222A%2#List of retrieved network pa"
-  "th dataR\005paths\032\\\n\nNodesEntry\022\020\n\003key\030\001 \001("
-  "\tR\003key\0228\n\005value\030\002 \001(\0132\".kentik.synthetic"
-  "s.v202309.NetNodeR\005value:\0028\001\"\023\n\021ListAgen"
-  "tsRequest\"\324\001\n\022ListAgentsResponse\022W\n\006agen"
-  "ts\030\001 \003(\0132 .kentik.synthetics.v202309.Age"
-  "ntB\035\222A\0322\030List of available agentsR\006agent"
-  "s\022e\n\rinvalid_count\030\002 \001(\rB@\222A=2;Number of"
-  " invalid entries encountered while colle"
-  "cting dataR\014invalidCount\"E\n\017GetAgentRequ"
-  "est\0222\n\002id\030\001 \001(\tB\"\222A\0332\031ID of the requeste"
-  "d agent\342A\001\002R\002id\"t\n\020GetAgentResponse\022`\n\005a"
-  "gent\030\001 \001(\0132 .kentik.synthetics.v202309.A"
-  "gentB(\222A%2#Agent configuration and statu"
-  "s dataR\005agent\"k\n\022UpdateAgentRequest\022U\n\005a"
-  "gent\030\001 \001(\0132 .kentik.synthetics.v202309.A"
-  "gentB\035\222A\0322\030Agent configuration dataR\005age"
-  "nt\"w\n\023UpdateAgentResponse\022`\n\005agent\030\001 \001(\013"
-  "2 .kentik.synthetics.v202309.AgentB(\222A%2"
-  "#Agent configuration and status dataR\005ag"
-  "ent\"L\n\022DeleteAgentRequest\0226\n\002id\030\001 \001(\tB&\222"
-  "A\0372\035ID of the agent to be deleted\342A\001\002R\002i"
-  "d\"\025\n\023DeleteAgentResponse\"\022\n\020ListTestsReq"
-  "uest\"\341\001\n\021ListTestsResponse\022e\n\005tests\030\001 \003("
-  "\0132\037.kentik.synthetics.v202309.TestB.\222A+2"
-  ")List of configured active or paused tes"
-  "tsR\005tests\022e\n\rinvalid_count\030\002 \001(\rB@\222A=2;N"
-  "umber of invalid entries encountered whi"
-  "le collecting dataR\014invalidCount\"j\n\021Crea"
-  "teTestRequest\022U\n\004test\030\001 \001(\0132\037.kentik.syn"
-  "thetics.v202309.TestB \222A\0312\027Test configur"
-  "ation data\342A\001\002R\004test\"r\n\022CreateTestRespon"
-  "se\022\\\n\004test\030\001 \001(\0132\037.kentik.synthetics.v20"
-  "2309.TestB\'\222A$2\"Test configuration and s"
-  "tatus dataR\004test\"\?\n\016GetTestRequest\022-\n\002id"
-  "\030\001 \001(\tB\035\222A\0262\024ID of requested test\342A\001\002R\002i"
-  "d\"o\n\017GetTestResponse\022\\\n\004test\030\001 \001(\0132\037.ken"
-  "tik.synthetics.v202309.TestB\'\222A$2\"Test c"
-  "onfiguration and status dataR\004test\"f\n\021Up"
-  "dateTestRequest\022Q\n\004test\030\001 \001(\0132\037.kentik.s"
-  "ynthetics.v202309.TestB\034\222A\0312\027Test config"
-  "uration dataR\004test\"r\n\022UpdateTestResponse"
-  "\022\\\n\004test\030\001 \001(\0132\037.kentik.synthetics.v2023"
-  "09.TestB\'\222A$2\"Test configuration and sta"
-  "tus dataR\004test\"J\n\021DeleteTestRequest\0225\n\002i"
-  "d\030\001 \001(\tB%\222A\0362\034ID of the test to be delet"
-  "ed\342A\001\002R\002id\"\024\n\022DeleteTestResponse\"\272\001\n\024Set"
-  "TestStatusRequest\022F\n\002id\030\001 \001(\tB6\222A/2-ID o"
-  "f the test which status is to be modifie"
-  "d\342A\001\002R\002id\022Z\n\006status\030\002 \001(\0162%.kentik.synth"
-  "etics.v202309.TestStatusB\033\222A\0242\022Target te"
-  "st status\342A\001\002R\006status\"\027\n\025SetTestStatusRe"
-  "sponse\"\275\001\n\nAgentAlert\022\016\n\002id\030\001 \001(\tR\002id\022+\n"
-  "\021threshold_seconds\030\002 \001(\rR\020thresholdSecon"
-  "ds\0228\n\030notification_channel_ids\030\003 \003(\tR\026no"
-  "tificationChannelIds\022\031\n\010agent_id\030\004 \001(\tR\007"
-  "agentId\022\035\n\nagent_name\030\005 \001(\tR\tagentName\"\233"
-  "\001\n\027CreateAgentAlertRequest\022+\n\021threshold_"
-  "seconds\030\001 \001(\rR\020thresholdSeconds\0228\n\030notif"
-  "ication_channel_ids\030\002 \003(\tR\026notificationC"
-  "hannelIds\022\031\n\010agent_id\030\003 \001(\tR\007agentId\"b\n\030"
-  "CreateAgentAlertResponse\022F\n\013agent_alert\030"
-  "\001 \001(\0132%.kentik.synthetics.v202309.AgentA"
-  "lertR\nagentAlert\"\220\001\n\027UpdateAgentAlertReq"
-  "uest\022\016\n\002id\030\001 \001(\tR\002id\022+\n\021threshold_second"
-  "s\030\002 \001(\rR\020thresholdSeconds\0228\n\030notificatio"
-  "n_channel_ids\030\003 \003(\tR\026notificationChannel"
-  "Ids\"b\n\030UpdateAgentAlertResponse\022F\n\013agent"
-  "_alert\030\001 \001(\0132%.kentik.synthetics.v202309"
-  ".AgentAlertR\nagentAlert\"&\n\024GetAgentAlert"
-  "Request\022\016\n\002id\030\001 \001(\tR\002id\"_\n\025GetAgentAlert"
-  "Response\022F\n\013agent_alert\030\001 \001(\0132%.kentik.s"
-  "ynthetics.v202309.AgentAlertR\nagentAlert"
-  "\"5\n\026ListAgentAlertsRequest\022\033\n\tagent_ids\030"
-  "\001 \003(\tR\010agentIds\"c\n\027ListAgentAlertsRespon"
-  "se\022H\n\014agent_alerts\030\001 \003(\0132%.kentik.synthe"
-  "tics.v202309.AgentAlertR\013agentAlerts\")\n\027"
-  "DeleteAgentAlertRequest\022\016\n\002id\030\001 \001(\tR\002id\""
-  "\032\n\030DeleteAgentAlertResponse*}\n\rImplement"
-  "Type\022\036\n\032IMPLEMENT_TYPE_UNSPECIFIED\020\000\022\027\n\023"
-  "IMPLEMENT_TYPE_RUST\020\001\022\027\n\023IMPLEMENT_TYPE_"
-  "NODE\020\002\022\032\n\026IMPLEMENT_TYPE_NETWORK\020\003*]\n\010IP"
-  "Family\022\031\n\025IP_FAMILY_UNSPECIFIED\020\000\022\020\n\014IP_"
-  "FAMILY_V4\020\001\022\020\n\014IP_FAMILY_V6\020\002\022\022\n\016IP_FAMI"
-  "LY_DUAL\020\003*\213\001\n\nTestStatus\022\033\n\027TEST_STATUS_"
-  "UNSPECIFIED\020\000\022\026\n\022TEST_STATUS_ACTIVE\020\001\022\026\n"
-  "\022TEST_STATUS_PAUSED\020\002\022\027\n\023TEST_STATUS_DEL"
-  "ETED\020\003\022\027\n\023TEST_STATUS_PREVIEW\020\004*q\n\013Agent"
-  "Status\022\034\n\030AGENT_STATUS_UNSPECIFIED\020\000\022\023\n\017"
-  "AGENT_STATUS_OK\020\001\022\025\n\021AGENT_STATUS_WAIT\020\002"
-  "\022\030\n\024AGENT_STATUS_DELETED\020\003*\310\001\n\tDNSRecord"
-  "\022\032\n\026DNS_RECORD_UNSPECIFIED\020\000\022\020\n\014DNS_RECO"
-  "RD_A\020\001\022\023\n\017DNS_RECORD_AAAA\020\002\022\024\n\020DNS_RECOR"
-  "D_CNAME\020\003\022\024\n\020DNS_RECORD_DNAME\020\004\022\021\n\rDNS_R"
-  "ECORD_NS\020\005\022\021\n\rDNS_RECORD_MX\020\006\022\022\n\016DNS_REC"
-  "ORD_PTR\020\007\022\022\n\016DNS_RECORD_SOA\020\0102\312\005\n\025Synthe"
-  "ticsDataService\022\263\002\n\022GetResultsForTests\0224"
-  ".kentik.synthetics.v202309.GetResultsFor"
-  "TestsRequest\0325.kentik.synthetics.v202309"
-  ".GetResultsForTestsResponse\"\257\001\222As\022\025Get r"
-  "esults for tests\032FReturns probe results "
-  "for a set of tests for specified period "
-  "of time.*\022GetResultsForTests\362\327\002\017syntheti"
-  "cs:read\202\323\344\223\002 \"\033/synthetics/v202309/resul"
-  "ts:\001*\022\320\002\n\017GetTraceForTest\0221.kentik.synth"
-  "etics.v202309.GetTraceForTestRequest\0322.k"
-  "entik.synthetics.v202309.GetTraceForTest"
-  "Response\"\325\001\222A\232\001\022!Get network trace data "
-  "for a test\032dGet network trace data for a"
-  " specific synthetic test. The test must "
-  "have traceroute task configured.*\017GetTra"
-  "ceForTest\362\327\002\017synthetics:read\202\323\344\223\002\036\"\031/syn"
-  "thetics/v202309/trace:\001*\032(\312A\023grpc.api.ke"
-  "ntik.com\352\327\002\nsynthetics\220\330\002\0032\206&\n\026Synthetic"
-  "sAdminService\022\247\002\n\nListAgents\022,.kentik.sy"
-  "nthetics.v202309.ListAgentsRequest\032-.ken"
-  "tik.synthetics.v202309.ListAgentsRespons"
-  "e\"\273\001\222Ac\022\025List available agents\032>Returns "
-  "list of all synthetic agents available i"
-  "n the account.*\nListAgents\362\327\002\025admin.synt"
-  "hetics:read\222\330\002\026synthetics.agent::read\202\323\344"
-  "\223\002\034\022\032/synthetics/v202309/agents\022\247\002\n\010GetA"
-  "gent\022*.kentik.synthetics.v202309.GetAgen"
-  "tRequest\032+.kentik.synthetics.v202309.Get"
-  "AgentResponse\"\301\001\222Ad\022\036Get information abo"
-  "ut an agent\0328Returns information about t"
-  "he requested synthetic agent.*\010GetAgent\362"
-  "\327\002\025admin.synthetics:read\222\330\002\026synthetics.a"
-  "gent::read\202\323\344\223\002!\022\037/synthetics/v202309/ag"
-  "ents/{id}\022\263\002\n\013UpdateAgent\022-.kentik.synth"
-  "etics.v202309.UpdateAgentRequest\032..kenti"
-  "k.synthetics.v202309.UpdateAgentResponse"
-  "\"\304\001\222A[\022 Update configuration of an agent"
-  "\032*Update configuration of a synthetic ag"
-  "ent.*\013UpdateAgent\362\327\002\026admin.synthetics:wr"
-  "ite\222\330\002\030synthetics.agent::update\202\323\344\223\002*\032%/"
-  "synthetics/v202309/agents/{agent.id}:\001*\022"
-  "\311\002\n\013DeleteAgent\022-.kentik.synthetics.v202"
-  "309.DeleteAgentRequest\032..kentik.syntheti"
-  "cs.v202309.DeleteAgentResponse\"\332\001\222Az\022\017De"
-  "lete an agent\032ZDeletes the requested age"
-  "nt. The deleted agent is removed from co"
-  "nfiguration of all tests.*\013DeleteAgent\362\327"
-  "\002\026admin.synthetics:write\222\330\002\030synthetics.a"
-  "gent::delete\202\323\344\223\002!*\037/synthetics/v202309/"
-  "agents/{id}\022\237\002\n\tListTests\022+.kentik.synth"
-  "etics.v202309.ListTestsRequest\032,.kentik."
-  "synthetics.v202309.ListTestsResponse\"\266\001\222"
-  "A`\022\016List all tests\032CReturns a list of al"
-  "l configured active and paused synthetic"
-  " tests.*\tListTests\362\327\002\025admin.synthetics:r"
-  "ead\222\330\002\025synthetics.test::read\202\323\344\223\002\033\022\031/syn"
-  "thetics/v202309/tests\022\252\002\n\nCreateTest\022,.k"
-  "entik.synthetics.v202309.CreateTestReque"
-  "st\032-.kentik.synthetics.v202309.CreateTes"
-  "tResponse\"\276\001\222Ab\022\rCreate a test\032ECreate s"
-  "ynthetic test based on configuration pro"
-  "vided in the request.*\nCreateTest\362\327\002\026adm"
-  "in.synthetics:write\222\330\002\027synthetics.test::"
-  "create\202\323\344\223\002\036\"\031/synthetics/v202309/tests:"
-  "\001*\022\251\002\n\007GetTest\022).kentik.synthetics.v2023"
-  "09.GetTestRequest\032*.kentik.synthetics.v2"
-  "02309.GetTestResponse\"\306\001\222Ak\022\034Get informa"
-  "tion about a test\032BReturns configuration"
-  " and status for the requested synthetic "
-  "test.*\007GetTest\362\327\002\025admin.synthetics:read\222"
-  "\330\002\025synthetics.test::read\202\323\344\223\002 \022\036/synthet"
-  "ics/v202309/tests/{id}\022\252\002\n\nUpdateTest\022,."
-  "kentik.synthetics.v202309.UpdateTestRequ"
-  "est\032-.kentik.synthetics.v202309.UpdateTe"
-  "stResponse\"\276\001\222AX\022\036Update configuration o"
-  "f a test\032*Updates configuration of a syn"
-  "thetic test.*\nUpdateTest\362\327\002\026admin.synthe"
-  "tics:write\222\330\002\027synthetics.test::update\202\323\344"
-  "\223\002(\032#/synthetics/v202309/tests/{test.id}"
-  ":\001*\022\314\002\n\nDeleteTest\022,.kentik.synthetics.v"
-  "202309.DeleteTestRequest\032-.kentik.synthe"
-  "tics.v202309.DeleteTestResponse\"\340\001\222A\201\001\022\030"
-  "Delete a synthetic test.\032YDeletes the sy"
-  "nthetics test. All accumulated results f"
-  "or the test cease to be accessible.*\nDel"
-  "eteTest\362\327\002\026admin.synthetics:write\222\330\002\027syn"
-  "thetics.test::delete\202\323\344\223\002 *\036/synthetics/"
-  "v202309/tests/{id}\022\262\002\n\rSetTestStatus\022/.k"
-  "entik.synthetics.v202309.SetTestStatusRe"
-  "quest\0320.kentik.synthetics.v202309.SetTes"
-  "tStatusResponse\"\275\001\222AU\022!Update status of "
-  "a synthetic test\032!Update status of a syn"
-  "thetic test*\rSetTestStatus\362\327\002\026admin.synt"
-  "hetics:write\222\330\002\027synthetics.test::update\202"
-  "\323\344\223\002*\032%/synthetics/v202309/tests/{id}/st"
-  "atus:\001*\022\302\002\n\020CreateAgentAlert\0222.kentik.sy"
-  "nthetics.v202309.CreateAgentAlertRequest"
-  "\0323.kentik.synthetics.v202309.CreateAgent"
-  "AlertResponse\"\304\001\222Aa\022#Create an agent ale"
-  "rt configuration\032(Creates a new agent al"
-  "ert configuration.*\020CreateAgentAlert\362\327\002\026"
-  "admin.synthetics:write\222\330\002\030synthetics.age"
-  "nt::create\202\323\344\223\002$\"\037/synthetics/v202309/ag"
-  "entAlerts:\001*\022\211\003\n\020UpdateAgentAlert\0222.kent"
-  "ik.synthetics.v202309.UpdateAgentAlertRe"
-  "quest\0323.kentik.synthetics.v202309.Update"
-  "AgentAlertResponse\"\213\002\222A\242\001\022#Update an age"
-  "nt alert configuration\032iUpdates an exist"
-  "ing agent alert configuration with the t"
-  "ime threshold and notification channels "
-  "provided.*\020UpdateAgentAlert\362\327\002\026admin.syn"
-  "thetics:write\222\330\002\030synthetics.agent::updat"
-  "e\202\323\344\223\002)\032$/synthetics/v202309/agentAlerts"
-  "/{id}:\001*\022\272\002\n\rGetAgentAlert\022/.kentik.synt"
-  "hetics.v202309.GetAgentAlertRequest\0320.ke"
-  "ntik.synthetics.v202309.GetAgentAlertRes"
-  "ponse\"\305\001\222Ac\022 Get an agent alert configur"
-  "ation\0320Retrieves an existing agent alert"
-  " configuration.*\rGetAgentAlert\362\327\002\025admin."
-  "synthetics:read\222\330\002\026synthetics.agent::rea"
-  "d\202\323\344\223\002&\022$/synthetics/v202309/agentAlerts"
-  "/{id}\022\336\002\n\017ListAgentAlerts\0221.kentik.synth"
-  "etics.v202309.ListAgentAlertsRequest\0322.k"
-  "entik.synthetics.v202309.ListAgentAlerts"
-  "Response\"\343\001\222A\205\001\022\037List agent alert config"
-  "urations\032QLists all agent alert configur"
-  "ations, optionally filtered by a list of"
-  " agent ids.*\017ListAgentAlerts\362\327\002\025admin.sy"
-  "nthetics:read\222\330\002\026synthetics.agent::read\202"
-  "\323\344\223\002!\022\037/synthetics/v202309/agentAlerts\022\312"
-  "\002\n\020DeleteAgentAlert\0222.kentik.synthetics."
-  "v202309.DeleteAgentAlertRequest\0323.kentik"
-  ".synthetics.v202309.DeleteAgentAlertResp"
-  "onse\"\314\001\222Ag\022#Delete an agent alert config"
-  "uration\032.Deletes an existing agent alert"
-  " configuration.*\020DeleteAgentAlert\362\327\002\026adm"
-  "in.synthetics:write\222\330\002\030synthetics.agent:"
-  ":delete\202\323\344\223\002&*$/synthetics/v202309/agent"
-  "Alerts/{id}\032.\312A\023grpc.api.kentik.com\352\327\002\020a"
-  "dmin.synthetics\220\330\002\003B\313BZOgithub.com/kenti"
-  "k/api-schema-public/gen/go/kentik/synthe"
-  "tics/v202309;synthetics\222A\366A\022\214@\n\031Syntheti"
-  "cs Monitoring API\022\236\?# Overview\nThe Synth"
-  "etics Monitoring API provides programmat"
-  "ic access to Kentik\'s [synthetic monitor"
-  "ing system](https://kb.kentik.com/v4/Ma0"
-  "0.htm). The API consists of two endpoint"
-  "s:\n| Endpoint | Purpose |\n|-----------|-"
-  "--------|\n| SyntheticsAdminService | CRU"
-  "D operations for synthetic tests, agents"
-  ", and offline agent alerts |\n| Synthetic"
-  "sDataService  | Retrieval of synthetic t"
-  "est results and network traces |\n\nBoth R"
-  "EST endpoint and gRPC RPCs are provided."
-  "\nNote: API version v202309 is the same a"
-  "s v202202 except that the timestamps ret"
-  "urned for synthetic test results are clo"
-  "ser to when the test was actually run.\n#"
-  "## Known Limitations\nThe API currently d"
-  "oes not support the following [Synthetic"
-  " Test Types](https://kb.kentik.com/v4/Ma"
-  "00.htm#Ma00-Synthetic_Test_Types):\n* BGP"
-  " Monitor tests, which are supported in a"
-  " [separate API](https://github.com/kenti"
-  "k/api-schema-public/blob/master/proto/ke"
-  "ntik/bgp_monitoring/v202205beta1/bgp_mon"
-  "itoring.proto)\n* Transaction tests.\n\n###"
-  " Additional Public Resources\nKentik comm"
-  "unity [Python](https://github.com/kentik"
-  "/community_sdk_python) and [Go](https://"
-  "github.com/kentik/community_sdk_golang) "
-  "SDKs provide language-specific support f"
-  "or using this and other Kentik APIs. The"
-  "se SDKs can be also used as example code"
-  " for development. \n A [Terraform provide"
-  "r](https://registry.terraform.io/provide"
-  "rs/kentik/kentik-synthetics) is availabl"
-  "e for configuring tests and agents for K"
-  "entik synthetic monitoring.\n# Anatomy of"
-  " a Synthetic Test\nEach `Test` consists o"
-  "f one or more tasks. Tasks are executed "
-  "by monitoring `Agents` that send synthet"
-  "ic traffic (probes) over the network. Th"
-  "e API currently supports following tasks"
-  ":\n| Task name  | Purpose |\n|------------"
-  "|---------|\n| ping       | Test basic ad"
-  "dress, and optionally TCP port reachabil"
-  "ity |\n| traceroute (a.k.a. trace)| Disco"
-  "ver unidirectional network path |\n| http"
-  " | Perform a simple HTTP/HTTPS request |"
-  "\n| page-load | Use headless Chromium to "
-  "execute an HTTP/HTTPS request |\n| dns | "
-  "Execute a DNS query|\n| throughput | Exec"
-  "ute a throughput task to determine bandw"
-  "idth |\n\nThe set of tasks executed on beh"
-  "alf of a given test depends on the `type"
-  "` of that test. The following test types"
-  " are currently supported by the API:\n| A"
-  "PI type | Portal (UI) equivalent | Tasks"
-  " |\n|---------------|--------------|-----"
-  "--|\n| ip | IP Address | ping, traceroute"
-  " |\n| hostname | Hostname | ping, tracero"
-  "ute |\n| network_grid | Network Grid | pi"
-  "ng, traceroute |\n| agent | Agent-to-Agen"
-  "t | ping, traceroute, throughput |\n| net"
-  "work_mesh | Network Mesh | ping, tracero"
-  "ute |\n| flow | Autonomous Tests (5 varia"
-  "nts) | ping, traceroute |\n| url | HTTP(S"
-  ") or API | http, ping (optional), tracer"
-  "oute (optional) |\n| page_load | Page Loa"
-  "d | page-load, ping (optional), tracerou"
-  "te (optional) |\n| dns | DNS Server Monit"
-  "or | dns |\n| dns_grid | DNS Server Grid "
-  "| dns |\n\n***Note:*** `ping` and `tracero"
-  "ute` tasks are always run together (neve"
-  "r one without the other).\n\n# Test Attrib"
-  "utes and Settings\nThe attributes of the "
-  "test object enable configuration of test"
-  " settings, access to test metadata, and "
-  "access to runtime state information.\n###"
-  " State and Metadata Attributes\n The foll"
-  "owing table lists the metadata and state"
-  " attributes:\n| Attribute | Access | Purp"
-  "ose |\n|-----------|--------|---------|\n|"
-  " id | RO | System-generated unique ident"
-  "ifier of the test |\n| name | RW | User s"
-  "pecified name for the test (need not be "
-  "unique) |\n| type | RO (after creation) |"
-  " Type of the test (set on creation; read"
-  "-only thereafter) |\n| status | RW | Life"
-  "-cycle status of the test |\n| cdate | RO"
-  " | Creation timestamp |\n| edate | RO | L"
-  "ast-modification timestamp |\n| created_b"
-  "y | RO | Identity of the user that creat"
-  "ed the test |\n| last_updated_by | RO | I"
-  "dentity of the latest user to modify the"
-  " test |\n| labels | RW | List of names of"
-  " labels applied to the test |\n\nTest conf"
-  "iguration is performed via the test\'s `s"
-  "ettings` attribute. Some settings are co"
-  "mmon to all tests while others are speci"
-  "fic to tests of a given type.\n### Common"
-  " Test Settings\nThe following settings ar"
-  "e used for tests of all types:\n| Attribu"
-  "te | Purpose | Required |\n|-----------|-"
-  "--------|----------|\n| agentIds  | IDs o"
-  "f agents to execute tasks for the test |"
-  " YES |\n| period | Test execution interva"
-  "l in seconds | NO (default 60s) |\n| fami"
-  "ly | IP address family. Used only for te"
-  "sts whose type is url or dns. Selects wh"
-  "ich type of DNS resource is queried for "
-  "resolving hostname to target address | N"
-  "O (default IP_FAMILY_DUAL) |\n| notificat"
-  "ionChannels | List of notification chann"
-  "els for the test | NO (default empty lis"
-  "t) |\n| healthSettings | A HealthSettings"
-  " object that configures health settings "
-  "for this test, which includes metric thr"
-  "esholds that define health status (warni"
-  "ng and critical) and trigger associated "
-  "alarms. | YES |\n| ping | A TestPingSetti"
-  "ngs object that configures the ping task"
-  " of the test | NO (default depends on te"
-  "st type) |\n| trace | A TestTraceSettings"
-  " object that configures the trace task o"
-  "f the test | NO (default depends on test"
-  " type) |\n| throughput | A TestThroughput"
-  "Settings object that configures the thro"
-  "ughput task of the test | NO (default de"
-  "pends on test type) |\n| tasks | List of "
-  "names of the tasks that will be executed"
-  " for this test | YES |\n\n### Type-specifi"
-  "c Settings\nEach test type has its own co"
-  "nfiguration object that represents the s"
-  "ettings for that type. These type-specif"
-  "ic objects are referenced by the attribu"
-  "tes in `Test.settings`:\n| Test type    |"
-  " Settings attribute | Configuration obje"
-  "ct |\n|--------------|-------------------"
-  "------|---------------------------|\n| ip"
-  "           | ip                      | I"
-  "pTest                    |\n| hostname   "
-  "  | hostname                | HostnameTe"
-  "st              |\n| network_grid | netwo"
-  "rkGrid             | IpTest             "
-  "       |\n| agent        | agent         "
-  "          | AgentTest                 |\n"
-  "| network_mesh | networkMesh            "
-  " | NetworkMeshTest           |\n| flow   "
-  "      | flow                    | FlowTe"
-  "st                  |\n| url          | u"
-  "rl                     | UrlTest        "
-  "           |\n| page_load    | pageLoad  "
-  "              | PageLoadTest            "
-  "  |\n| dns          | dns                "
-  "     | DnsTest                   |\n| dns"
-  "_grid     | dnsGrid                 | Dn"
-  "sTest                   |\n\n# Test Result"
-  "s\nResults of synthetic tests are returne"
-  "d as a sequence of `TestResults` objects"
-  ". Each such object represents measuremen"
-  "ts and health evaluation for a single te"
-  "st at specific point in time. Measuremen"
-  "ts and health evaluation are grouped by "
-  "agent and by task.\nGranularity of timest"
-  "amps in test results depends on the freq"
-  "uency (period) of the test and on the re"
-  "quested time range. The minimum granular"
-  "ity is 1 minute (even when period < 1 mi"
-  "nute). The longer the time range, the lo"
-  "wer the granularity.\n# Network Traces\nSy"
-  "nthetic tests that include the `tracerou"
-  "te` task collect the unidirectional netw"
-  "ork path from the agent to the target fo"
-  "r each agent/target pair. The trace data"
-  " are returned in the `GetTraceForTestRes"
-  "ponse` object. The `paths` attribute of "
-  "this object contains the collected netwo"
-  "rk path for each agent/target pair and t"
-  "he round-trip time (RTT) to each hop.\nHo"
-  "ps in actual network traces are identifi"
-  "ed by a `nodeId`. The mapping of node ID"
-  "s to address, name, location, and other "
-  "attributes of the hop is provided in a m"
-  "ap that is stored in the `nodes` attribu"
-  "te of the `GetTraceForTestResponse` obje"
-  "ct.\n# Agents\nThe Kentik synthetic monito"
-  "ring system recognizes 2 types of agents"
-  ":\n* **Global** (public): Managed by Kent"
-  "ik and available to every Kentik user. A"
-  "ll information about global agents in th"
-  "is API is read-only.\n* **Private**: Depl"
-  "oyed by each customer and available only"
-  " to that customer.\nTo be visible in this"
-  " API, a private agent must first associa"
-  "te itself with a customer account by con"
-  "tacting the Kentik system (via private A"
-  "PI). Once the agent is associated it can"
-  " be authorized via the API by changing i"
-  "ts `status` to `AGENT_STATUS_OK`. For mo"
-  "re information about private agent deplo"
-  "yment, see [**Synthetic Agent Deployment"
-  "s**](https://kb.kentik.com/v4/Ma01.htm#M"
-  "a01-Synthetic_Agent_Deployments).\n\"E\n\026Ke"
-  "ntik API Engineering\022+https://github.com"
-  "/kentik/api-schema-public2\007v202309*\001\0022\020a"
-  "pplication/json:\020application/jsonZD\n\036\n\005e"
-  "mail\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002"
-  "\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005"
-  "token\022\000r`\n\"Kentik synthetic monitoring s"
-  "ystem\022:https://kb.kentik.com/v4/Ma00.htm"
-  "#Ma00-Synthetics_Overviewb\006proto3"
+  "tsR\010agentIds\022]\n\007targets\030\005 \003(\tBC\222A@2>List"
+  " of targets (test dependent) for which t"
+  "o retrieve resultsR\007targets\022\211\001\n\taggregat"
+  "e\030\006 \001(\010Bk\222Ah2fIf true, retrieve result a"
+  "ggregated across the requested time peri"
+  "od, else return complete time seriesR\tag"
+  "gregate\"^\n\032GetResultsForTestsResponse\022@\n"
+  "\007results\030\001 \003(\0132&.kentik.synthetics.v2023"
+  "09.TestResultsR\007results\"\212\004\n\026GetTraceForT"
+  "estRequest\022M\n\002id\030\001 \001(\tB=\222A:28ID of test "
+  "for which to retrieve network path trace"
+  " dataR\002id\022y\n\nstart_time\030\002 \001(\0132\032.google.p"
+  "rotobuf.TimestampB>\222A725Timestamp of the"
+  " oldest results to include in results\342A\001"
+  "\002R\tstartTime\022u\n\010end_time\030\003 \001(\0132\032.google."
+  "protobuf.TimestampB>\222A725Timestamp of th"
+  "e newest results to include in results\342A"
+  "\001\002R\007endTime\022P\n\tagent_ids\030\004 \003(\tB3\222A02.Lis"
+  "t of agent IDs from which to return resu"
+  "ltsR\010agentIds\022]\n\ntarget_ips\030\005 \003(\tB>\222A;29"
+  "List of target IP addresses for which to"
+  " retrieve resultsR\ttargetIps\"\346\002\n\027GetTrac"
+  "eForTestResponse\022\213\001\n\005nodes\030\001 \003(\0132=.kenti"
+  "k.synthetics.v202309.GetTraceForTestResp"
+  "onse.NodesEntryB6\222A321Map of network nod"
+  "e information keyed by node IDsR\005nodes\022_"
+  "\n\005paths\030\002 \003(\0132\037.kentik.synthetics.v20230"
+  "9.PathB(\222A%2#List of retrieved network p"
+  "ath dataR\005paths\032\\\n\nNodesEntry\022\020\n\003key\030\001 \001"
+  "(\tR\003key\0228\n\005value\030\002 \001(\0132\".kentik.syntheti"
+  "cs.v202309.NetNodeR\005value:\0028\001\"\023\n\021ListAge"
+  "ntsRequest\"\324\001\n\022ListAgentsResponse\022W\n\006age"
+  "nts\030\001 \003(\0132 .kentik.synthetics.v202309.Ag"
+  "entB\035\222A\0322\030List of available agentsR\006agen"
+  "ts\022e\n\rinvalid_count\030\002 \001(\rB@\222A=2;Number o"
+  "f invalid entries encountered while coll"
+  "ecting dataR\014invalidCount\"E\n\017GetAgentReq"
+  "uest\0222\n\002id\030\001 \001(\tB\"\222A\0332\031ID of the request"
+  "ed agent\342A\001\002R\002id\"t\n\020GetAgentResponse\022`\n\005"
+  "agent\030\001 \001(\0132 .kentik.synthetics.v202309."
+  "AgentB(\222A%2#Agent configuration and stat"
+  "us dataR\005agent\"k\n\022UpdateAgentRequest\022U\n\005"
+  "agent\030\001 \001(\0132 .kentik.synthetics.v202309."
+  "AgentB\035\222A\0322\030Agent configuration dataR\005ag"
+  "ent\"w\n\023UpdateAgentResponse\022`\n\005agent\030\001 \001("
+  "\0132 .kentik.synthetics.v202309.AgentB(\222A%"
+  "2#Agent configuration and status dataR\005a"
+  "gent\"L\n\022DeleteAgentRequest\0226\n\002id\030\001 \001(\tB&"
+  "\222A\0372\035ID of the agent to be deleted\342A\001\002R\002"
+  "id\"\025\n\023DeleteAgentResponse\"\022\n\020ListTestsRe"
+  "quest\"\341\001\n\021ListTestsResponse\022e\n\005tests\030\001 \003"
+  "(\0132\037.kentik.synthetics.v202309.TestB.\222A+"
+  "2)List of configured active or paused te"
+  "stsR\005tests\022e\n\rinvalid_count\030\002 \001(\rB@\222A=2;"
+  "Number of invalid entries encountered wh"
+  "ile collecting dataR\014invalidCount\"j\n\021Cre"
+  "ateTestRequest\022U\n\004test\030\001 \001(\0132\037.kentik.sy"
+  "nthetics.v202309.TestB \222A\0312\027Test configu"
+  "ration data\342A\001\002R\004test\"r\n\022CreateTestRespo"
+  "nse\022\\\n\004test\030\001 \001(\0132\037.kentik.synthetics.v2"
+  "02309.TestB\'\222A$2\"Test configuration and "
+  "status dataR\004test\"\?\n\016GetTestRequest\022-\n\002i"
+  "d\030\001 \001(\tB\035\222A\0262\024ID of requested test\342A\001\002R\002"
+  "id\"o\n\017GetTestResponse\022\\\n\004test\030\001 \001(\0132\037.ke"
+  "ntik.synthetics.v202309.TestB\'\222A$2\"Test "
+  "configuration and status dataR\004test\"f\n\021U"
+  "pdateTestRequest\022Q\n\004test\030\001 \001(\0132\037.kentik."
+  "synthetics.v202309.TestB\034\222A\0312\027Test confi"
+  "guration dataR\004test\"r\n\022UpdateTestRespons"
+  "e\022\\\n\004test\030\001 \001(\0132\037.kentik.synthetics.v202"
+  "309.TestB\'\222A$2\"Test configuration and st"
+  "atus dataR\004test\"J\n\021DeleteTestRequest\0225\n\002"
+  "id\030\001 \001(\tB%\222A\0362\034ID of the test to be dele"
+  "ted\342A\001\002R\002id\"\024\n\022DeleteTestResponse\"\272\001\n\024Se"
+  "tTestStatusRequest\022F\n\002id\030\001 \001(\tB6\222A/2-ID "
+  "of the test which status is to be modifi"
+  "ed\342A\001\002R\002id\022Z\n\006status\030\002 \001(\0162%.kentik.synt"
+  "hetics.v202309.TestStatusB\033\222A\0242\022Target t"
+  "est status\342A\001\002R\006status\"\027\n\025SetTestStatusR"
+  "esponse\"\275\001\n\nAgentAlert\022\016\n\002id\030\001 \001(\tR\002id\022+"
+  "\n\021threshold_seconds\030\002 \001(\rR\020thresholdSeco"
+  "nds\0228\n\030notification_channel_ids\030\003 \003(\tR\026n"
+  "otificationChannelIds\022\031\n\010agent_id\030\004 \001(\tR"
+  "\007agentId\022\035\n\nagent_name\030\005 \001(\tR\tagentName\""
+  "\233\001\n\027CreateAgentAlertRequest\022+\n\021threshold"
+  "_seconds\030\001 \001(\rR\020thresholdSeconds\0228\n\030noti"
+  "fication_channel_ids\030\002 \003(\tR\026notification"
+  "ChannelIds\022\031\n\010agent_id\030\003 \001(\tR\007agentId\"b\n"
+  "\030CreateAgentAlertResponse\022F\n\013agent_alert"
+  "\030\001 \001(\0132%.kentik.synthetics.v202309.Agent"
+  "AlertR\nagentAlert\"\220\001\n\027UpdateAgentAlertRe"
+  "quest\022\016\n\002id\030\001 \001(\tR\002id\022+\n\021threshold_secon"
+  "ds\030\002 \001(\rR\020thresholdSeconds\0228\n\030notificati"
+  "on_channel_ids\030\003 \003(\tR\026notificationChanne"
+  "lIds\"b\n\030UpdateAgentAlertResponse\022F\n\013agen"
+  "t_alert\030\001 \001(\0132%.kentik.synthetics.v20230"
+  "9.AgentAlertR\nagentAlert\"&\n\024GetAgentAler"
+  "tRequest\022\016\n\002id\030\001 \001(\tR\002id\"_\n\025GetAgentAler"
+  "tResponse\022F\n\013agent_alert\030\001 \001(\0132%.kentik."
+  "synthetics.v202309.AgentAlertR\nagentAler"
+  "t\"5\n\026ListAgentAlertsRequest\022\033\n\tagent_ids"
+  "\030\001 \003(\tR\010agentIds\"c\n\027ListAgentAlertsRespo"
+  "nse\022H\n\014agent_alerts\030\001 \003(\0132%.kentik.synth"
+  "etics.v202309.AgentAlertR\013agentAlerts\")\n"
+  "\027DeleteAgentAlertRequest\022\016\n\002id\030\001 \001(\tR\002id"
+  "\"\032\n\030DeleteAgentAlertResponse*}\n\rImplemen"
+  "tType\022\036\n\032IMPLEMENT_TYPE_UNSPECIFIED\020\000\022\027\n"
+  "\023IMPLEMENT_TYPE_RUST\020\001\022\027\n\023IMPLEMENT_TYPE"
+  "_NODE\020\002\022\032\n\026IMPLEMENT_TYPE_NETWORK\020\003*]\n\010I"
+  "PFamily\022\031\n\025IP_FAMILY_UNSPECIFIED\020\000\022\020\n\014IP"
+  "_FAMILY_V4\020\001\022\020\n\014IP_FAMILY_V6\020\002\022\022\n\016IP_FAM"
+  "ILY_DUAL\020\003*\213\001\n\nTestStatus\022\033\n\027TEST_STATUS"
+  "_UNSPECIFIED\020\000\022\026\n\022TEST_STATUS_ACTIVE\020\001\022\026"
+  "\n\022TEST_STATUS_PAUSED\020\002\022\027\n\023TEST_STATUS_DE"
+  "LETED\020\003\022\027\n\023TEST_STATUS_PREVIEW\020\004*q\n\013Agen"
+  "tStatus\022\034\n\030AGENT_STATUS_UNSPECIFIED\020\000\022\023\n"
+  "\017AGENT_STATUS_OK\020\001\022\025\n\021AGENT_STATUS_WAIT\020"
+  "\002\022\030\n\024AGENT_STATUS_DELETED\020\003*\310\001\n\tDNSRecor"
+  "d\022\032\n\026DNS_RECORD_UNSPECIFIED\020\000\022\020\n\014DNS_REC"
+  "ORD_A\020\001\022\023\n\017DNS_RECORD_AAAA\020\002\022\024\n\020DNS_RECO"
+  "RD_CNAME\020\003\022\024\n\020DNS_RECORD_DNAME\020\004\022\021\n\rDNS_"
+  "RECORD_NS\020\005\022\021\n\rDNS_RECORD_MX\020\006\022\022\n\016DNS_RE"
+  "CORD_PTR\020\007\022\022\n\016DNS_RECORD_SOA\020\0102\312\005\n\025Synth"
+  "eticsDataService\022\263\002\n\022GetResultsForTests\022"
+  "4.kentik.synthetics.v202309.GetResultsFo"
+  "rTestsRequest\0325.kentik.synthetics.v20230"
+  "9.GetResultsForTestsResponse\"\257\001\222As\022\025Get "
+  "results for tests\032FReturns probe results"
+  " for a set of tests for specified period"
+  " of time.*\022GetResultsForTests\362\327\002\017synthet"
+  "ics:read\202\323\344\223\002 \"\033/synthetics/v202309/resu"
+  "lts:\001*\022\320\002\n\017GetTraceForTest\0221.kentik.synt"
+  "hetics.v202309.GetTraceForTestRequest\0322."
+  "kentik.synthetics.v202309.GetTraceForTes"
+  "tResponse\"\325\001\222A\232\001\022!Get network trace data"
+  " for a test\032dGet network trace data for "
+  "a specific synthetic test. The test must"
+  " have traceroute task configured.*\017GetTr"
+  "aceForTest\362\327\002\017synthetics:read\202\323\344\223\002\036\"\031/sy"
+  "nthetics/v202309/trace:\001*\032(\312A\023grpc.api.k"
+  "entik.com\352\327\002\nsynthetics\220\330\002\0032\206&\n\026Syntheti"
+  "csAdminService\022\247\002\n\nListAgents\022,.kentik.s"
+  "ynthetics.v202309.ListAgentsRequest\032-.ke"
+  "ntik.synthetics.v202309.ListAgentsRespon"
+  "se\"\273\001\222Ac\022\025List available agents\032>Returns"
+  " list of all synthetic agents available "
+  "in the account.*\nListAgents\362\327\002\025admin.syn"
+  "thetics:read\222\330\002\026synthetics.agent::read\202\323"
+  "\344\223\002\034\022\032/synthetics/v202309/agents\022\247\002\n\010Get"
+  "Agent\022*.kentik.synthetics.v202309.GetAge"
+  "ntRequest\032+.kentik.synthetics.v202309.Ge"
+  "tAgentResponse\"\301\001\222Ad\022\036Get information ab"
+  "out an agent\0328Returns information about "
+  "the requested synthetic agent.*\010GetAgent"
+  "\362\327\002\025admin.synthetics:read\222\330\002\026synthetics."
+  "agent::read\202\323\344\223\002!\022\037/synthetics/v202309/a"
+  "gents/{id}\022\263\002\n\013UpdateAgent\022-.kentik.synt"
+  "hetics.v202309.UpdateAgentRequest\032..kent"
+  "ik.synthetics.v202309.UpdateAgentRespons"
+  "e\"\304\001\222A[\022 Update configuration of an agen"
+  "t\032*Update configuration of a synthetic a"
+  "gent.*\013UpdateAgent\362\327\002\026admin.synthetics:w"
+  "rite\222\330\002\030synthetics.agent::update\202\323\344\223\002*\032%"
+  "/synthetics/v202309/agents/{agent.id}:\001*"
+  "\022\311\002\n\013DeleteAgent\022-.kentik.synthetics.v20"
+  "2309.DeleteAgentRequest\032..kentik.synthet"
+  "ics.v202309.DeleteAgentResponse\"\332\001\222Az\022\017D"
+  "elete an agent\032ZDeletes the requested ag"
+  "ent. The deleted agent is removed from c"
+  "onfiguration of all tests.*\013DeleteAgent\362"
+  "\327\002\026admin.synthetics:write\222\330\002\030synthetics."
+  "agent::delete\202\323\344\223\002!*\037/synthetics/v202309"
+  "/agents/{id}\022\237\002\n\tListTests\022+.kentik.synt"
+  "hetics.v202309.ListTestsRequest\032,.kentik"
+  ".synthetics.v202309.ListTestsResponse\"\266\001"
+  "\222A`\022\016List all tests\032CReturns a list of a"
+  "ll configured active and paused syntheti"
+  "c tests.*\tListTests\362\327\002\025admin.synthetics:"
+  "read\222\330\002\025synthetics.test::read\202\323\344\223\002\033\022\031/sy"
+  "nthetics/v202309/tests\022\252\002\n\nCreateTest\022,."
+  "kentik.synthetics.v202309.CreateTestRequ"
+  "est\032-.kentik.synthetics.v202309.CreateTe"
+  "stResponse\"\276\001\222Ab\022\rCreate a test\032ECreate "
+  "synthetic test based on configuration pr"
+  "ovided in the request.*\nCreateTest\362\327\002\026ad"
+  "min.synthetics:write\222\330\002\027synthetics.test:"
+  ":create\202\323\344\223\002\036\"\031/synthetics/v202309/tests"
+  ":\001*\022\251\002\n\007GetTest\022).kentik.synthetics.v202"
+  "309.GetTestRequest\032*.kentik.synthetics.v"
+  "202309.GetTestResponse\"\306\001\222Ak\022\034Get inform"
+  "ation about a test\032BReturns configuratio"
+  "n and status for the requested synthetic"
+  " test.*\007GetTest\362\327\002\025admin.synthetics:read"
+  "\222\330\002\025synthetics.test::read\202\323\344\223\002 \022\036/synthe"
+  "tics/v202309/tests/{id}\022\252\002\n\nUpdateTest\022,"
+  ".kentik.synthetics.v202309.UpdateTestReq"
+  "uest\032-.kentik.synthetics.v202309.UpdateT"
+  "estResponse\"\276\001\222AX\022\036Update configuration "
+  "of a test\032*Updates configuration of a sy"
+  "nthetic test.*\nUpdateTest\362\327\002\026admin.synth"
+  "etics:write\222\330\002\027synthetics.test::update\202\323"
+  "\344\223\002(\032#/synthetics/v202309/tests/{test.id"
+  "}:\001*\022\314\002\n\nDeleteTest\022,.kentik.synthetics."
+  "v202309.DeleteTestRequest\032-.kentik.synth"
+  "etics.v202309.DeleteTestResponse\"\340\001\222A\201\001\022"
+  "\030Delete a synthetic test.\032YDeletes the s"
+  "ynthetics test. All accumulated results "
+  "for the test cease to be accessible.*\nDe"
+  "leteTest\362\327\002\026admin.synthetics:write\222\330\002\027sy"
+  "nthetics.test::delete\202\323\344\223\002 *\036/synthetics"
+  "/v202309/tests/{id}\022\262\002\n\rSetTestStatus\022/."
+  "kentik.synthetics.v202309.SetTestStatusR"
+  "equest\0320.kentik.synthetics.v202309.SetTe"
+  "stStatusResponse\"\275\001\222AU\022!Update status of"
+  " a synthetic test\032!Update status of a sy"
+  "nthetic test*\rSetTestStatus\362\327\002\026admin.syn"
+  "thetics:write\222\330\002\027synthetics.test::update"
+  "\202\323\344\223\002*\032%/synthetics/v202309/tests/{id}/s"
+  "tatus:\001*\022\302\002\n\020CreateAgentAlert\0222.kentik.s"
+  "ynthetics.v202309.CreateAgentAlertReques"
+  "t\0323.kentik.synthetics.v202309.CreateAgen"
+  "tAlertResponse\"\304\001\222Aa\022#Create an agent al"
+  "ert configuration\032(Creates a new agent a"
+  "lert configuration.*\020CreateAgentAlert\362\327\002"
+  "\026admin.synthetics:write\222\330\002\030synthetics.ag"
+  "ent::create\202\323\344\223\002$\"\037/synthetics/v202309/a"
+  "gentAlerts:\001*\022\211\003\n\020UpdateAgentAlert\0222.ken"
+  "tik.synthetics.v202309.UpdateAgentAlertR"
+  "equest\0323.kentik.synthetics.v202309.Updat"
+  "eAgentAlertResponse\"\213\002\222A\242\001\022#Update an ag"
+  "ent alert configuration\032iUpdates an exis"
+  "ting agent alert configuration with the "
+  "time threshold and notification channels"
+  " provided.*\020UpdateAgentAlert\362\327\002\026admin.sy"
+  "nthetics:write\222\330\002\030synthetics.agent::upda"
+  "te\202\323\344\223\002)\032$/synthetics/v202309/agentAlert"
+  "s/{id}:\001*\022\272\002\n\rGetAgentAlert\022/.kentik.syn"
+  "thetics.v202309.GetAgentAlertRequest\0320.k"
+  "entik.synthetics.v202309.GetAgentAlertRe"
+  "sponse\"\305\001\222Ac\022 Get an agent alert configu"
+  "ration\0320Retrieves an existing agent aler"
+  "t configuration.*\rGetAgentAlert\362\327\002\025admin"
+  ".synthetics:read\222\330\002\026synthetics.agent::re"
+  "ad\202\323\344\223\002&\022$/synthetics/v202309/agentAlert"
+  "s/{id}\022\336\002\n\017ListAgentAlerts\0221.kentik.synt"
+  "hetics.v202309.ListAgentAlertsRequest\0322."
+  "kentik.synthetics.v202309.ListAgentAlert"
+  "sResponse\"\343\001\222A\205\001\022\037List agent alert confi"
+  "gurations\032QLists all agent alert configu"
+  "rations, optionally filtered by a list o"
+  "f agent ids.*\017ListAgentAlerts\362\327\002\025admin.s"
+  "ynthetics:read\222\330\002\026synthetics.agent::read"
+  "\202\323\344\223\002!\022\037/synthetics/v202309/agentAlerts\022"
+  "\312\002\n\020DeleteAgentAlert\0222.kentik.synthetics"
+  ".v202309.DeleteAgentAlertRequest\0323.kenti"
+  "k.synthetics.v202309.DeleteAgentAlertRes"
+  "ponse\"\314\001\222Ag\022#Delete an agent alert confi"
+  "guration\032.Deletes an existing agent aler"
+  "t configuration.*\020DeleteAgentAlert\362\327\002\026ad"
+  "min.synthetics:write\222\330\002\030synthetics.agent"
+  "::delete\202\323\344\223\002&*$/synthetics/v202309/agen"
+  "tAlerts/{id}\032.\312A\023grpc.api.kentik.com\352\327\002\020"
+  "admin.synthetics\220\330\002\003B\313BZOgithub.com/kent"
+  "ik/api-schema-public/gen/go/kentik/synth"
+  "etics/v202309;synthetics\222A\366A\022\214@\n\031Synthet"
+  "ics Monitoring API\022\236\?# Overview\nThe Synt"
+  "hetics Monitoring API provides programma"
+  "tic access to Kentik\'s [synthetic monito"
+  "ring system](https://kb.kentik.com/v4/Ma"
+  "00.htm). The API consists of two endpoin"
+  "ts:\n| Endpoint | Purpose |\n|-----------|"
+  "---------|\n| SyntheticsAdminService | CR"
+  "UD operations for synthetic tests, agent"
+  "s, and offline agent alerts |\n| Syntheti"
+  "csDataService  | Retrieval of synthetic "
+  "test results and network traces |\n\nBoth "
+  "REST endpoint and gRPC RPCs are provided"
+  ".\nNote: API version v202309 is the same "
+  "as v202202 except that the timestamps re"
+  "turned for synthetic test results are cl"
+  "oser to when the test was actually run.\n"
+  "### Known Limitations\nThe API currently "
+  "does not support the following [Syntheti"
+  "c Test Types](https://kb.kentik.com/v4/M"
+  "a00.htm#Ma00-Synthetic_Test_Types):\n* BG"
+  "P Monitor tests, which are supported in "
+  "a [separate API](https://github.com/kent"
+  "ik/api-schema-public/blob/master/proto/k"
+  "entik/bgp_monitoring/v202205beta1/bgp_mo"
+  "nitoring.proto)\n* Transaction tests.\n\n##"
+  "# Additional Public Resources\nKentik com"
+  "munity [Python](https://github.com/kenti"
+  "k/community_sdk_python) and [Go](https:/"
+  "/github.com/kentik/community_sdk_golang)"
+  " SDKs provide language-specific support "
+  "for using this and other Kentik APIs. Th"
+  "ese SDKs can be also used as example cod"
+  "e for development. \n A [Terraform provid"
+  "er](https://registry.terraform.io/provid"
+  "ers/kentik/kentik-synthetics) is availab"
+  "le for configuring tests and agents for "
+  "Kentik synthetic monitoring.\n# Anatomy o"
+  "f a Synthetic Test\nEach `Test` consists "
+  "of one or more tasks. Tasks are executed"
+  " by monitoring `Agents` that send synthe"
+  "tic traffic (probes) over the network. T"
+  "he API currently supports following task"
+  "s:\n| Task name  | Purpose |\n|-----------"
+  "-|---------|\n| ping       | Test basic a"
+  "ddress, and optionally TCP port reachabi"
+  "lity |\n| traceroute (a.k.a. trace)| Disc"
+  "over unidirectional network path |\n| htt"
+  "p | Perform a simple HTTP/HTTPS request "
+  "|\n| page-load | Use headless Chromium to"
+  " execute an HTTP/HTTPS request |\n| dns |"
+  " Execute a DNS query|\n| throughput | Exe"
+  "cute a throughput task to determine band"
+  "width |\n\nThe set of tasks executed on be"
+  "half of a given test depends on the `typ"
+  "e` of that test. The following test type"
+  "s are currently supported by the API:\n| "
+  "API type | Portal (UI) equivalent | Task"
+  "s |\n|---------------|--------------|----"
+  "---|\n| ip | IP Address | ping, tracerout"
+  "e |\n| hostname | Hostname | ping, tracer"
+  "oute |\n| network_grid | Network Grid | p"
+  "ing, traceroute |\n| agent | Agent-to-Age"
+  "nt | ping, traceroute, throughput |\n| ne"
+  "twork_mesh | Network Mesh | ping, tracer"
+  "oute |\n| flow | Autonomous Tests (5 vari"
+  "ants) | ping, traceroute |\n| url | HTTP("
+  "S) or API | http, ping (optional), trace"
+  "route (optional) |\n| page_load | Page Lo"
+  "ad | page-load, ping (optional), tracero"
+  "ute (optional) |\n| dns | DNS Server Moni"
+  "tor | dns |\n| dns_grid | DNS Server Grid"
+  " | dns |\n\n***Note:*** `ping` and `tracer"
+  "oute` tasks are always run together (nev"
+  "er one without the other).\n\n# Test Attri"
+  "butes and Settings\nThe attributes of the"
+  " test object enable configuration of tes"
+  "t settings, access to test metadata, and"
+  " access to runtime state information.\n##"
+  "# State and Metadata Attributes\n The fol"
+  "lowing table lists the metadata and stat"
+  "e attributes:\n| Attribute | Access | Pur"
+  "pose |\n|-----------|--------|---------|\n"
+  "| id | RO | System-generated unique iden"
+  "tifier of the test |\n| name | RW | User "
+  "specified name for the test (need not be"
+  " unique) |\n| type | RO (after creation) "
+  "| Type of the test (set on creation; rea"
+  "d-only thereafter) |\n| status | RW | Lif"
+  "e-cycle status of the test |\n| cdate | R"
+  "O | Creation timestamp |\n| edate | RO | "
+  "Last-modification timestamp |\n| created_"
+  "by | RO | Identity of the user that crea"
+  "ted the test |\n| last_updated_by | RO | "
+  "Identity of the latest user to modify th"
+  "e test |\n| labels | RW | List of names o"
+  "f labels applied to the test |\n\nTest con"
+  "figuration is performed via the test\'s `"
+  "settings` attribute. Some settings are c"
+  "ommon to all tests while others are spec"
+  "ific to tests of a given type.\n### Commo"
+  "n Test Settings\nThe following settings a"
+  "re used for tests of all types:\n| Attrib"
+  "ute | Purpose | Required |\n|-----------|"
+  "---------|----------|\n| agentIds  | IDs "
+  "of agents to execute tasks for the test "
+  "| YES |\n| period | Test execution interv"
+  "al in seconds | NO (default 60s) |\n| fam"
+  "ily | IP address family. Used only for t"
+  "ests whose type is url or dns. Selects w"
+  "hich type of DNS resource is queried for"
+  " resolving hostname to target address | "
+  "NO (default IP_FAMILY_DUAL) |\n| notifica"
+  "tionChannels | List of notification chan"
+  "nels for the test | NO (default empty li"
+  "st) |\n| healthSettings | A HealthSetting"
+  "s object that configures health settings"
+  " for this test, which includes metric th"
+  "resholds that define health status (warn"
+  "ing and critical) and trigger associated"
+  " alarms. | YES |\n| ping | A TestPingSett"
+  "ings object that configures the ping tas"
+  "k of the test | NO (default depends on t"
+  "est type) |\n| trace | A TestTraceSetting"
+  "s object that configures the trace task "
+  "of the test | NO (default depends on tes"
+  "t type) |\n| throughput | A TestThroughpu"
+  "tSettings object that configures the thr"
+  "oughput task of the test | NO (default d"
+  "epends on test type) |\n| tasks | List of"
+  " names of the tasks that will be execute"
+  "d for this test | YES |\n\n### Type-specif"
+  "ic Settings\nEach test type has its own c"
+  "onfiguration object that represents the "
+  "settings for that type. These type-speci"
+  "fic objects are referenced by the attrib"
+  "utes in `Test.settings`:\n| Test type    "
+  "| Settings attribute | Configuration obj"
+  "ect |\n|--------------|------------------"
+  "-------|---------------------------|\n| i"
+  "p           | ip                      | "
+  "IpTest                    |\n| hostname  "
+  "   | hostname                | HostnameT"
+  "est              |\n| network_grid | netw"
+  "orkGrid             | IpTest            "
+  "        |\n| agent        | agent        "
+  "           | AgentTest                 |"
+  "\n| network_mesh | networkMesh           "
+  "  | NetworkMeshTest           |\n| flow  "
+  "       | flow                    | FlowT"
+  "est                  |\n| url          | "
+  "url                     | UrlTest       "
+  "            |\n| page_load    | pageLoad "
+  "               | PageLoadTest           "
+  "   |\n| dns          | dns               "
+  "      | DnsTest                   |\n| dn"
+  "s_grid     | dnsGrid                 | D"
+  "nsTest                   |\n\n# Test Resul"
+  "ts\nResults of synthetic tests are return"
+  "ed as a sequence of `TestResults` object"
+  "s. Each such object represents measureme"
+  "nts and health evaluation for a single t"
+  "est at specific point in time. Measureme"
+  "nts and health evaluation are grouped by"
+  " agent and by task.\nGranularity of times"
+  "tamps in test results depends on the fre"
+  "quency (period) of the test and on the r"
+  "equested time range. The minimum granula"
+  "rity is 1 minute (even when period < 1 m"
+  "inute). The longer the time range, the l"
+  "ower the granularity.\n# Network Traces\nS"
+  "ynthetic tests that include the `tracero"
+  "ute` task collect the unidirectional net"
+  "work path from the agent to the target f"
+  "or each agent/target pair. The trace dat"
+  "a are returned in the `GetTraceForTestRe"
+  "sponse` object. The `paths` attribute of"
+  " this object contains the collected netw"
+  "ork path for each agent/target pair and "
+  "the round-trip time (RTT) to each hop.\nH"
+  "ops in actual network traces are identif"
+  "ied by a `nodeId`. The mapping of node I"
+  "Ds to address, name, location, and other"
+  " attributes of the hop is provided in a "
+  "map that is stored in the `nodes` attrib"
+  "ute of the `GetTraceForTestResponse` obj"
+  "ect.\n# Agents\nThe Kentik synthetic monit"
+  "oring system recognizes 2 types of agent"
+  "s:\n* **Global** (public): Managed by Ken"
+  "tik and available to every Kentik user. "
+  "All information about global agents in t"
+  "his API is read-only.\n* **Private**: Dep"
+  "loyed by each customer and available onl"
+  "y to that customer.\nTo be visible in thi"
+  "s API, a private agent must first associ"
+  "ate itself with a customer account by co"
+  "ntacting the Kentik system (via private "
+  "API). Once the agent is associated it ca"
+  "n be authorized via the API by changing "
+  "its `status` to `AGENT_STATUS_OK`. For m"
+  "ore information about private agent depl"
+  "oyment, see [**Synthetic Agent Deploymen"
+  "ts**](https://kb.kentik.com/v4/Ma01.htm#"
+  "Ma01-Synthetic_Agent_Deployments).\n\"E\n\026K"
+  "entik API Engineering\022+https://github.co"
+  "m/kentik/api-schema-public2\007v202309*\001\0022\020"
+  "application/json:\020application/jsonZD\n\036\n\005"
+  "email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010"
+  "\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n"
+  "\005token\022\000r`\n\"Kentik synthetic monitoring "
+  "system\022:https://kb.kentik.com/v4/Ma00.ht"
+  "m#Ma00-Synthetics_Overviewb\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto_deps[7] = {
   &::descriptor_table_google_2fapi_2fannotations_2eproto,
@@ -3338,7 +3374,7 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor
   &::descriptor_table_kentik_2fcore_2fv202303_2fuser_5finfo_2eproto,
   &::descriptor_table_protoc_2dgen_2dopenapiv2_2foptions_2fannotations_2eproto,
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto_sccs[75] = {
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto_sccs[76] = {
   &scc_info_ActivationSettings_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_Agent_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_AgentAlert_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
@@ -3346,6 +3382,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
   &scc_info_AgentMetadata_IpValue_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_AgentResults_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_AgentTest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
+  &scc_info_AlertingSettings_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_CreateAgentAlertRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_CreateAgentAlertResponse_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
   &scc_info_CreateTestRequest_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base,
@@ -3417,10 +3454,10 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ken
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto = {
-  false, false, descriptor_table_protodef_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto, "kentik/synthetics/v202309/synthetics.proto", 40753,
-  &descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto_once, descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto_sccs, descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto_deps, 75, 7,
+  false, false, descriptor_table_protodef_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto, "kentik/synthetics/v202309/synthetics.proto", 41034,
+  &descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto_once, descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto_sccs, descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto_deps, 76, 7,
   schemas, file_default_instances, TableStruct_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto::offsets,
-  file_level_metadata_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto, 75, file_level_enum_descriptors_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto, file_level_service_descriptors_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto,
+  file_level_metadata_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto, 76, file_level_enum_descriptors_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto, file_level_service_descriptors_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
@@ -6103,6 +6140,8 @@ void TestSettings::InitAsDefaultInstance() {
       ::kentik::synthetics::v202309::TestThroughputSettings::internal_default_instance());
   ::kentik::synthetics::v202309::_TestSettings_default_instance_._instance.get_mutable()->schedule_ = const_cast< ::kentik::synthetics::v202309::ScheduleSettings*>(
       ::kentik::synthetics::v202309::ScheduleSettings::internal_default_instance());
+  ::kentik::synthetics::v202309::_TestSettings_default_instance_._instance.get_mutable()->alerting_ = const_cast< ::kentik::synthetics::v202309::AlertingSettings*>(
+      ::kentik::synthetics::v202309::AlertingSettings::internal_default_instance());
 }
 class TestSettings::_Internal {
  public:
@@ -6121,6 +6160,7 @@ class TestSettings::_Internal {
   static const ::kentik::synthetics::v202309::TestTraceSettings& trace(const TestSettings* msg);
   static const ::kentik::synthetics::v202309::TestThroughputSettings& throughput(const TestSettings* msg);
   static const ::kentik::synthetics::v202309::ScheduleSettings& schedule(const TestSettings* msg);
+  static const ::kentik::synthetics::v202309::AlertingSettings& alerting(const TestSettings* msg);
 };
 
 const ::kentik::synthetics::v202309::HostnameTest&
@@ -6182,6 +6222,10 @@ TestSettings::_Internal::throughput(const TestSettings* msg) {
 const ::kentik::synthetics::v202309::ScheduleSettings&
 TestSettings::_Internal::schedule(const TestSettings* msg) {
   return *msg->schedule_;
+}
+const ::kentik::synthetics::v202309::AlertingSettings&
+TestSettings::_Internal::alerting(const TestSettings* msg) {
+  return *msg->alerting_;
 }
 void TestSettings::set_allocated_hostname(::kentik::synthetics::v202309::HostnameTest* hostname) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
@@ -6378,6 +6422,11 @@ TestSettings::TestSettings(const TestSettings& from)
   } else {
     schedule_ = nullptr;
   }
+  if (from._internal_has_alerting()) {
+    alerting_ = new ::kentik::synthetics::v202309::AlertingSettings(*from.alerting_);
+  } else {
+    alerting_ = nullptr;
+  }
   ::memcpy(&period_, &from.period_,
     static_cast<size_t>(reinterpret_cast<char*>(&family_) -
     reinterpret_cast<char*>(&period_)) + sizeof(family_));
@@ -6453,6 +6502,7 @@ void TestSettings::SharedDtor() {
   if (this != internal_default_instance()) delete trace_;
   if (this != internal_default_instance()) delete throughput_;
   if (this != internal_default_instance()) delete schedule_;
+  if (this != internal_default_instance()) delete alerting_;
   if (has_definition()) {
     clear_definition();
   }
@@ -6574,6 +6624,10 @@ void TestSettings::Clear() {
     delete schedule_;
   }
   schedule_ = nullptr;
+  if (GetArena() == nullptr && alerting_ != nullptr) {
+    delete alerting_;
+  }
+  alerting_ = nullptr;
   ::memset(&period_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&family_) -
       reinterpret_cast<char*>(&period_)) + sizeof(family_));
@@ -6757,6 +6811,13 @@ const char* TestSettings::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
       case 21:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 170)) {
           ptr = ctx->ParseMessage(_internal_mutable_schedule(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // .kentik.synthetics.v202309.AlertingSettings alerting = 22[json_name = "alerting", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 22:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 178)) {
+          ptr = ctx->ParseMessage(_internal_mutable_alerting(), ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -6961,6 +7022,14 @@ failure:
         21, _Internal::schedule(this), target, stream);
   }
 
+  // .kentik.synthetics.v202309.AlertingSettings alerting = 22[json_name = "alerting", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->has_alerting()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        22, _Internal::alerting(this), target, stream);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -7041,6 +7110,13 @@ size_t TestSettings::ByteSizeLong() const {
     total_size += 2 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *schedule_);
+  }
+
+  // .kentik.synthetics.v202309.AlertingSettings alerting = 22[json_name = "alerting", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->has_alerting()) {
+    total_size += 2 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *alerting_);
   }
 
   // uint32 period = 15[json_name = "period", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -7182,6 +7258,9 @@ void TestSettings::MergeFrom(const TestSettings& from) {
   }
   if (from.has_schedule()) {
     _internal_mutable_schedule()->::kentik::synthetics::v202309::ScheduleSettings::MergeFrom(from._internal_schedule());
+  }
+  if (from.has_alerting()) {
+    _internal_mutable_alerting()->::kentik::synthetics::v202309::AlertingSettings::MergeFrom(from._internal_alerting());
   }
   if (from.period() != 0) {
     _internal_set_period(from._internal_period());
@@ -8537,6 +8616,201 @@ void ScheduleSettings::InternalSwap(ScheduleSettings* other) {
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata ScheduleSettings::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void AlertingSettings::InitAsDefaultInstance() {
+}
+class AlertingSettings::_Internal {
+ public:
+};
+
+AlertingSettings::AlertingSettings(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.synthetics.v202309.AlertingSettings)
+}
+AlertingSettings::AlertingSettings(const AlertingSettings& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  disable_warning_notifications_ = from.disable_warning_notifications_;
+  // @@protoc_insertion_point(copy_constructor:kentik.synthetics.v202309.AlertingSettings)
+}
+
+void AlertingSettings::SharedCtor() {
+  disable_warning_notifications_ = false;
+}
+
+AlertingSettings::~AlertingSettings() {
+  // @@protoc_insertion_point(destructor:kentik.synthetics.v202309.AlertingSettings)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void AlertingSettings::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+}
+
+void AlertingSettings::ArenaDtor(void* object) {
+  AlertingSettings* _this = reinterpret_cast< AlertingSettings* >(object);
+  (void)_this;
+}
+void AlertingSettings::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void AlertingSettings::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const AlertingSettings& AlertingSettings::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_AlertingSettings_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void AlertingSettings::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.synthetics.v202309.AlertingSettings)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  disable_warning_notifications_ = false;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* AlertingSettings::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // bool disable_warning_notifications = 1[json_name = "disableWarningNotifications", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          disable_warning_notifications_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* AlertingSettings::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:kentik.synthetics.v202309.AlertingSettings)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // bool disable_warning_notifications = 1[json_name = "disableWarningNotifications", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->disable_warning_notifications() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(1, this->_internal_disable_warning_notifications(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:kentik.synthetics.v202309.AlertingSettings)
+  return target;
+}
+
+size_t AlertingSettings::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:kentik.synthetics.v202309.AlertingSettings)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // bool disable_warning_notifications = 1[json_name = "disableWarningNotifications", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  if (this->disable_warning_notifications() != 0) {
+    total_size += 1 + 1;
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void AlertingSettings::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:kentik.synthetics.v202309.AlertingSettings)
+  GOOGLE_DCHECK_NE(&from, this);
+  const AlertingSettings* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<AlertingSettings>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:kentik.synthetics.v202309.AlertingSettings)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:kentik.synthetics.v202309.AlertingSettings)
+    MergeFrom(*source);
+  }
+}
+
+void AlertingSettings::MergeFrom(const AlertingSettings& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:kentik.synthetics.v202309.AlertingSettings)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.disable_warning_notifications() != 0) {
+    _internal_set_disable_warning_notifications(from._internal_disable_warning_notifications());
+  }
+}
+
+void AlertingSettings::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:kentik.synthetics.v202309.AlertingSettings)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void AlertingSettings::CopyFrom(const AlertingSettings& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.synthetics.v202309.AlertingSettings)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool AlertingSettings::IsInitialized() const {
+  return true;
+}
+
+void AlertingSettings::InternalSwap(AlertingSettings* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  swap(disable_warning_notifications_, other->disable_warning_notifications_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata AlertingSettings::GetMetadata() const {
   return GetMetadataStatic();
 }
 
@@ -25333,6 +25607,9 @@ template<> PROTOBUF_NOINLINE ::kentik::synthetics::v202309::TestThroughputSettin
 }
 template<> PROTOBUF_NOINLINE ::kentik::synthetics::v202309::ScheduleSettings* Arena::CreateMaybeMessage< ::kentik::synthetics::v202309::ScheduleSettings >(Arena* arena) {
   return Arena::CreateMessageInternal< ::kentik::synthetics::v202309::ScheduleSettings >(arena);
+}
+template<> PROTOBUF_NOINLINE ::kentik::synthetics::v202309::AlertingSettings* Arena::CreateMaybeMessage< ::kentik::synthetics::v202309::AlertingSettings >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::kentik::synthetics::v202309::AlertingSettings >(arena);
 }
 template<> PROTOBUF_NOINLINE ::kentik::synthetics::v202309::ActivationSettings* Arena::CreateMaybeMessage< ::kentik::synthetics::v202309::ActivationSettings >(Arena* arena) {
   return Arena::CreateMessageInternal< ::kentik::synthetics::v202309::ActivationSettings >(arena);

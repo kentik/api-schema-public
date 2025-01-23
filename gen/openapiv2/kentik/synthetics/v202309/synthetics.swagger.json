@@ -931,6 +931,16 @@
       },
       "title": "AgentTest"
     },
+    "v202309AlertingSettings": {
+      "type": "object",
+      "properties": {
+        "disableWarningNotifications": {
+          "type": "boolean",
+          "description": "Boolean indicating whether to disable warning-level alert notifications"
+        }
+      },
+      "title": "AlertingSettings"
+    },
     "v202309CreateAgentAlertRequest": {
       "type": "object",
       "properties": {
@@ -2121,6 +2131,10 @@
         "schedule": {
           "$ref": "#/definitions/v202309ScheduleSettings",
           "description": "Scheduled test configuration parameters"
+        },
+        "alerting": {
+          "$ref": "#/definitions/v202309AlertingSettings",
+          "description": "Alerting configuration parameters"
         }
       },
       "title": "TestSettings"

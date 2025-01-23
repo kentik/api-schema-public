@@ -418,6 +418,51 @@ void   kentik__synthetics__v202309__schedule_settings__free_unpacked
   assert(message->base.descriptor == &kentik__synthetics__v202309__schedule_settings__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   kentik__synthetics__v202309__alerting_settings__init
+                     (Kentik__Synthetics__V202309__AlertingSettings         *message)
+{
+  static const Kentik__Synthetics__V202309__AlertingSettings init_value = KENTIK__SYNTHETICS__V202309__ALERTING_SETTINGS__INIT;
+  *message = init_value;
+}
+size_t kentik__synthetics__v202309__alerting_settings__get_packed_size
+                     (const Kentik__Synthetics__V202309__AlertingSettings *message)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__alerting_settings__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__synthetics__v202309__alerting_settings__pack
+                     (const Kentik__Synthetics__V202309__AlertingSettings *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__alerting_settings__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__synthetics__v202309__alerting_settings__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__AlertingSettings *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__alerting_settings__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Synthetics__V202309__AlertingSettings *
+       kentik__synthetics__v202309__alerting_settings__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Synthetics__V202309__AlertingSettings *)
+     protobuf_c_message_unpack (&kentik__synthetics__v202309__alerting_settings__descriptor,
+                                allocator, len, data);
+}
+void   kentik__synthetics__v202309__alerting_settings__free_unpacked
+                     (Kentik__Synthetics__V202309__AlertingSettings *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__synthetics__v202309__alerting_settings__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 void   kentik__synthetics__v202309__activation_settings__init
                      (Kentik__Synthetics__V202309__ActivationSettings         *message)
 {
@@ -3978,7 +4023,7 @@ const ProtobufCMessageDescriptor kentik__synthetics__v202309__test__descriptor =
   (ProtobufCMessageInit) kentik__synthetics__v202309__test__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__synthetics__v202309__test_settings__field_descriptors[21] =
+static const ProtobufCFieldDescriptor kentik__synthetics__v202309__test_settings__field_descriptors[22] =
 {
   {
     "hostname",
@@ -4232,10 +4277,23 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202309__test_settings
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "alerting",
+    22,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__TestSettings, alerting),
+    &kentik__synthetics__v202309__alerting_settings__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__synthetics__v202309__test_settings__field_indices_by_name[] = {
   2,   /* field[2] = agent */
   9,   /* field[9] = agent_ids */
+  21,   /* field[21] = alerting */
   4,   /* field[4] = dns */
   8,   /* field[8] = dns_grid */
   15,   /* field[15] = family */
@@ -4259,7 +4317,7 @@ static const unsigned kentik__synthetics__v202309__test_settings__field_indices_
 static const ProtobufCIntRange kentik__synthetics__v202309__test_settings__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 21 }
+  { 0, 22 }
 };
 const ProtobufCMessageDescriptor kentik__synthetics__v202309__test_settings__descriptor =
 {
@@ -4269,7 +4327,7 @@ const ProtobufCMessageDescriptor kentik__synthetics__v202309__test_settings__des
   "Kentik__Synthetics__V202309__TestSettings",
   "kentik.synthetics.v202309",
   sizeof(Kentik__Synthetics__V202309__TestSettings),
-  21,
+  22,
   kentik__synthetics__v202309__test_settings__field_descriptors,
   kentik__synthetics__v202309__test_settings__field_indices_by_name,
   1,  kentik__synthetics__v202309__test_settings__number_ranges,
@@ -4647,6 +4705,44 @@ const ProtobufCMessageDescriptor kentik__synthetics__v202309__schedule_settings_
   kentik__synthetics__v202309__schedule_settings__field_indices_by_name,
   1,  kentik__synthetics__v202309__schedule_settings__number_ranges,
   (ProtobufCMessageInit) kentik__synthetics__v202309__schedule_settings__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__synthetics__v202309__alerting_settings__field_descriptors[1] =
+{
+  {
+    "disable_warning_notifications",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__AlertingSettings, disable_warning_notifications),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__synthetics__v202309__alerting_settings__field_indices_by_name[] = {
+  0,   /* field[0] = disable_warning_notifications */
+};
+static const ProtobufCIntRange kentik__synthetics__v202309__alerting_settings__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor kentik__synthetics__v202309__alerting_settings__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.synthetics.v202309.AlertingSettings",
+  "AlertingSettings",
+  "Kentik__Synthetics__V202309__AlertingSettings",
+  "kentik.synthetics.v202309",
+  sizeof(Kentik__Synthetics__V202309__AlertingSettings),
+  1,
+  kentik__synthetics__v202309__alerting_settings__field_descriptors,
+  kentik__synthetics__v202309__alerting_settings__field_indices_by_name,
+  1,  kentik__synthetics__v202309__alerting_settings__number_ranges,
+  (ProtobufCMessageInit) kentik__synthetics__v202309__alerting_settings__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
 static const ProtobufCFieldDescriptor kentik__synthetics__v202309__activation_settings__field_descriptors[4] =
