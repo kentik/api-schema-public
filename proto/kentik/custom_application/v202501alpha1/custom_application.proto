@@ -1,0 +1,222 @@
+syntax = "proto3";
+
+package kentik.custom_application.v202501alpha1;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/custom_application/v202501alpha1;custom_application";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/timestamp.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "kentik/core/v202303/annotations.proto";
+import "kentik/user/v202211/user.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Custom Applications API"
+    version: "v202501alpha1"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api-schema-public"
+    }
+    description: "# Overview\n"
+      "The Custom Applications API enables programmatic access to information on Custom Applications.\n"
+  }
+  external_docs: {
+    url: "https://kb.kentik.com/proto/v4/Cb22.htm"
+    description: "Knowledge base article outlining the purpose and usage of Custom Applications."
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+
+message CustomApplication {
+  string id = 1[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Unique identifier for the custom application."
+    },
+    (google.api.field_behavior) = OUTPUT_ONLY
+  ];
+  string name = 2[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "A unique name for the custom application."
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  string description = 3[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "An optional description for the custom application."
+    }
+  ];
+  repeated string ip_range = 4[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of IP addresses in IP/CIDR format."
+    }
+  ];
+  repeated uint32 protocol = 5[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of Protocol numbers."
+    }
+  ];
+  repeated uint32 port = 6[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of Port numbers."
+    }
+  ];
+  repeated uint32 asn = 7[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of ASNs."
+    }
+  ];
+  google.protobuf.Timestamp created_date = 8[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Date-time of custom application creation, in UTC."
+    },
+    (google.api.field_behavior) = OUTPUT_ONLY
+  ];
+  google.protobuf.Timestamp updated_date = 9[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Date-time of most-recent custom application edit, in UTC."
+    },
+    (google.api.field_behavior) = OUTPUT_ONLY
+  ];
+  string user_id = 10[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "User ID associated with this custom application."
+    },
+    (google.api.field_behavior) = OUTPUT_ONLY
+  ];
+}
+
+message ListCustomApplicationsRequest {
+}
+
+message ListCustomApplicationsResponse {
+  repeated CustomApplication applications = 1;
+}
+
+message GetCustomApplicationRequest {
+  string custom_application_id = 1;
+}
+
+message GetCustomApplicationResponse {
+  CustomApplication application = 1;
+}
+
+message CreateCustomApplicationRequest {
+  CustomApplication application = 1;
+}
+
+message CreateCustomApplicationResponse {
+  CustomApplication application = 1;
+}
+
+message UpdateCustomApplicationRequest {
+  string custom_application_id = 1;
+  CustomApplication application = 2;
+}
+
+message UpdateCustomApplicationResponse {
+  CustomApplication application = 1;
+}
+
+message DeleteCustomApplicationRequest {
+  string custom_application_id = 1;
+}
+
+message DeleteCustomApplicationResponse {
+}
+
+
+service CustomApplicationService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "admin.custom_application";
+
+  rpc CreateCustomApplication(CreateCustomApplicationRequest) returns (CreateCustomApplicationResponse) {
+    option (google.api.http) = {
+      post: "/custom_application/v202501alpha1"
+      body: "application"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "CreateCustomApplication"
+      summary: "Create Custom Application"
+      description: "Creates and returns a custom application object containing information about an individual custom application."
+    };
+  }
+
+  rpc ListCustomApplications(ListCustomApplicationsRequest) returns (ListCustomApplicationsResponse) {
+    option (google.api.http) = {
+      get: "/custom_application/v202501alpha1"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ListCustomApplications"
+      summary: "List Custom Applications"
+      description: "Returns an array of custom application objects that each contain information about an individual custom application."
+    };
+  }
+
+  rpc GetCustomApplication(GetCustomApplicationRequest) returns (GetCustomApplicationResponse) {
+    option (google.api.http) = {
+      get: "/custom_application/v202501alpha1/{custom_application_id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetCustomApplication"
+      summary: "Custom Application Info"
+      description: "Returns a custom application object containing information about an individual custom application."
+    };
+  }
+
+  rpc UpdateCustomApplication(UpdateCustomApplicationRequest) returns (UpdateCustomApplicationResponse) {
+    option (google.api.http) = {
+      put: "/custom_application/v202501alpha1/{custom_application_id}"
+      body: "application"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "UpdateCustomApplication"
+      summary: "Update Custom Application"
+      description: "Updates and returns a custom application object containing information about an individual custom application."
+    };
+  }
+
+  rpc DeleteCustomApplication(DeleteCustomApplicationRequest) returns (DeleteCustomApplicationResponse) {
+    option (google.api.http) = {
+      delete: "/custom_application/v202501alpha1/{custom_application_id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "DeleteCustomApplication"
+      summary: "Delete Custom Application"
+      description: "Deletes a custom application."
+    };
+  }
+}

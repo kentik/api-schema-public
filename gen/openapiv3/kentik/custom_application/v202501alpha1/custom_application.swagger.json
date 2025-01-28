@@ -1,0 +1,387 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Custom Applications API",
+        "description": "# Overview\nThe Custom Applications API enables programmatic access to information on Custom Applications.\n",
+        "version": "v202501alpha1",
+        "contact": {
+            "name": "Kentik API Engineering",
+            "url": "https://github.com/kentik/api-schema-public"
+        }
+    },
+    "tags": [
+        {
+            "name": "CustomApplicationService"
+        }
+    ],
+    "paths": {
+        "/custom_application/v202501alpha1": {
+            "get": {
+                "summary": "List Custom Applications",
+                "description": "Returns an array of custom application objects that each contain information about an individual custom application.",
+                "operationId": "ListCustomApplications",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202501alpha1ListCustomApplicationsResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "CustomApplicationService"
+                ]
+            },
+            "post": {
+                "summary": "Create Custom Application",
+                "description": "Creates and returns a custom application object containing information about an individual custom application.",
+                "operationId": "CreateCustomApplication",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202501alpha1CreateCustomApplicationResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/v202501alpha1CustomApplication"
+                },
+                "tags": [
+                    "CustomApplicationService"
+                ]
+            }
+        },
+        "/custom_application/v202501alpha1/{customApplicationId}": {
+            "get": {
+                "summary": "Custom Application Info",
+                "description": "Returns a custom application object containing information about an individual custom application.",
+                "operationId": "GetCustomApplication",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202501alpha1GetCustomApplicationResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "customApplicationId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "CustomApplicationService"
+                ]
+            },
+            "delete": {
+                "summary": "Delete Custom Application",
+                "description": "Deletes a custom application.",
+                "operationId": "DeleteCustomApplication",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202501alpha1DeleteCustomApplicationResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "customApplicationId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "CustomApplicationService"
+                ]
+            },
+            "put": {
+                "summary": "Update Custom Application",
+                "description": "Updates and returns a custom application object containing information about an individual custom application.",
+                "operationId": "UpdateCustomApplication",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202501alpha1UpdateCustomApplicationResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "customApplicationId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/v202501alpha1CustomApplication"
+                },
+                "tags": [
+                    "CustomApplicationService"
+                ]
+            }
+        }
+    },
+    "security": [
+        {
+            "email": [],
+            "token": []
+        }
+    ],
+    "externalDocs": {
+        "description": "Knowledge base article outlining the purpose and usage of Custom Applications.",
+        "url": "https://kb.kentik.com/proto/v4/Cb22.htm"
+    },
+    "components": {
+        "requestBodies": {
+            "v202501alpha1CustomApplication": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/v202501alpha1CustomApplication"
+                        }
+                    }
+                },
+                "required": true
+            }
+        },
+        "securitySchemes": {
+            "email": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-Email",
+                "in": "header"
+            },
+            "token": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-API-Token",
+                "in": "header"
+            }
+        },
+        "schemas": {
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "typeUrl": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string",
+                        "format": "byte"
+                    }
+                }
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "v202501alpha1CreateCustomApplicationResponse": {
+                "type": "object",
+                "properties": {
+                    "application": {
+                        "$ref": "#/components/schemas/v202501alpha1CustomApplication"
+                    }
+                }
+            },
+            "v202501alpha1CustomApplication": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier for the custom application.",
+                        "readOnly": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "A unique name for the custom application.",
+                        "required": [
+                            "name"
+                        ]
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "An optional description for the custom application."
+                    },
+                    "ipRange": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of IP addresses in IP/CIDR format."
+                    },
+                    "protocol": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "description": "List of Protocol numbers."
+                    },
+                    "port": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "description": "List of Port numbers."
+                    },
+                    "asn": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "description": "List of ASNs."
+                    },
+                    "createdDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Date-time of custom application creation, in UTC.",
+                        "readOnly": true
+                    },
+                    "updatedDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Date-time of most-recent custom application edit, in UTC.",
+                        "readOnly": true
+                    },
+                    "userId": {
+                        "type": "string",
+                        "description": "User ID associated with this custom application.",
+                        "readOnly": true
+                    }
+                },
+                "required": [
+                    "name"
+                ]
+            },
+            "v202501alpha1DeleteCustomApplicationResponse": {
+                "type": "object"
+            },
+            "v202501alpha1GetCustomApplicationResponse": {
+                "type": "object",
+                "properties": {
+                    "application": {
+                        "$ref": "#/components/schemas/v202501alpha1CustomApplication"
+                    }
+                }
+            },
+            "v202501alpha1ListCustomApplicationsResponse": {
+                "type": "object",
+                "properties": {
+                    "applications": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202501alpha1CustomApplication"
+                        }
+                    }
+                }
+            },
+            "v202501alpha1UpdateCustomApplicationResponse": {
+                "type": "object",
+                "properties": {
+                    "application": {
+                        "$ref": "#/components/schemas/v202501alpha1CustomApplication"
+                    }
+                }
+            }
+        }
+    }
+}
