@@ -1,0 +1,168 @@
+syntax = "proto3";
+
+package kentik.plan.v202501alpha1;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/plan/v202501alpha1;plan";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+// Device Subtype Enum (see https://kb.kentik.com/v4/Cb01.htm#Cb01-Supported_Device_Types)
+// note, this could be moved to a shared location if used by other services
+enum DeviceSubtype {
+  DEVICE_SUBTYPE_UNSPECIFIED = 0; // Unspecified (default value)
+  DEVICE_SUBTYPE_A10_CGN = 1; // A10 CGN
+  DEVICE_SUBTYPE_ADVANCED_SFLOW = 2; // Advanced sFlow
+  DEVICE_SUBTYPE_AWS_SUBNET = 3; // Amazon Web Services
+  DEVICE_SUBTYPE_AZURE_SUBNET = 4; // Microsoft Azure
+  DEVICE_SUBTYPE_CISCO_ASA = 5; // Cisco ASA
+  DEVICE_SUBTYPE_CISCO_ASA_SYSLOG = 6; // Cisco ASA (Syslog)
+  DEVICE_SUBTYPE_CISCO_NBAR = 7; // Cisco NBAR-Enabled Router
+  DEVICE_SUBTYPE_CISCO_NVZFLOW = 8; // Cisco nvzFlow
+  DEVICE_SUBTYPE_CISCO_SDWAN_XE = 9; // Cisco SD-WAN IOS XE
+  DEVICE_SUBTYPE_CISCO_ZONE_BASED_FIREWALL = 10; // Cisco Zone-Based Firewall
+  DEVICE_SUBTYPE_DARKNET = 11; // Kentik-internal value, darknet stream
+  DEVICE_SUBTYPE_FORTINET_FORTIGATE = 12; // Fortinet FortiGate
+  DEVICE_SUBTYPE_GCP_CLOUD_RUN = 13; // Google Cloud Run
+  DEVICE_SUBTYPE_GCP_SUBNET = 14; // Google Cloud Platform
+  DEVICE_SUBTYPE_GIGAMON = 15; // Gigamon Network Tap
+  DEVICE_SUBTYPE_IBM_SUBNET = 16; // IBM Cloud Platform
+  DEVICE_SUBTYPE_IOS_XR = 17; // Cisco IOS XR
+  DEVICE_SUBTYPE_ISTIO = 18; // Istio (Beta)
+  DEVICE_SUBTYPE_JUNIPER_DDOS = 19; // Juniper DDoS Flow
+  DEVICE_SUBTYPE_KAGENT = 20; // kentik agent
+  DEVICE_SUBTYPE_KAPPA = 21; // Process-Aware Telemetry Agent
+  DEVICE_SUBTYPE_KMETRICS = 22; // Virtual device for storing kmetrics data
+  DEVICE_SUBTYPE_KPROBE = 23; // Kentik Host Agent (kprobe)
+  DEVICE_SUBTYPE_KROBE_TAP = 24; // kProbe True Origin Tap
+  DEVICE_SUBTYPE_KPROXY = 25; // kproxy agent
+  DEVICE_SUBTYPE_MERAKI = 26; // Cisco Meraki
+  DEVICE_SUBTYPE_MPLS = 27; // MPLS Router
+  DEVICE_SUBTYPE_NOKIALAYER2 = 28; // Nokia Layer 2
+  DEVICE_SUBTYPE_NPROBE = 29; // ntop Host Agent (nProbe)
+  DEVICE_SUBTYPE_OCI_FLOW_LOG = 30; // OCI Flow Log
+  DEVICE_SUBTYPE_OCI_SUBNET = 31; // Oracle Cloud Infrastructure
+  DEVICE_SUBTYPE_OPEN_NMS = 32; // OpenNMS SNMP Export Device
+  DEVICE_SUBTYPE_PALOALTO = 33; // Palo Alto Networks Firewall
+  DEVICE_SUBTYPE_PALOALTO_PRISMASDWAN = 34; // Palo Alto Prisma SD-WAN
+  DEVICE_SUBTYPE_PFE_SYSLOG = 35; // Juniper PFE (Syslog)
+  DEVICE_SUBTYPE_ROUTER = 36; // NetFlow-Enabled Router
+  DEVICE_SUBTYPE_SFLOW_TUNNEL = 37; // sFlow Tunnel decode
+  DEVICE_SUBTYPE_SILVERPEAK = 38; // Silver Peak EdgeConnect
+  DEVICE_SUBTYPE_SYSLOG = 39; // Generic Syslog
+  DEVICE_SUBTYPE_VERSA = 40; // Versa
+  DEVICE_SUBTYPE_VIPTELA = 41; // Cisco SDWAN vEdge
+  DEVICE_SUBTYPE_VMWARE_VELOCLOUD = 42; // VMware SD-WAN
+  DEVICE_SUBTYPE_VMWARE_VSPHERE = 43; // VMWare vSphere
+  DEVICE_SUBTYPE_VXLAN = 44; // VXLAN
+  DEVICE_SUBTYPE_KSYNTH = 45; // Kentik-internal value
+  DEVICE_SUBTYPE_SDM_LEADER = 46; // Kentik-internal value
+}
+
+// Represents a device that is associated with a plan.
+message PlanDevice {
+  string id = 1[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The system-assigned unique ID of a device associated with this plan."
+    },
+    (google.api.field_behavior) = OUTPUT_ONLY
+  ];
+  string device_name = 2[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The user-assigned name of a device associated with this plan."
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  DeviceSubtype device_subtype = 3[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "A type of device that sends flow records to Kentik."
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// Represents a plan object.
+message Plan {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The system-assigned unique ID of the plan."
+    },
+    (google.api.field_behavior) = OUTPUT_ONLY
+  ];
+  string company_id = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The system-assigned unique ID of your organization."
+    },
+    (google.api.field_behavior) = OUTPUT_ONLY
+  ];
+  string name = 3[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "A name for the plan. Every Kentik customer is initially provided with a plan called \"Default.\""
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  string description = 4[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "An optional description of the plan."
+    }
+  ];
+  bool active = 5[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Indicates if the plan is currently activated."
+    }
+  ];
+  int32 max_devices = 6[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The maximum number of devices that can send flow records to Kentik under this plan."
+    }
+  ];
+  int32 max_fps = 7[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Per device limit on flow records per second that can be sent to Kentik (excess FPS may trigger rate-limiting)."
+    }
+  ];
+  bool bgp_enabled = 8[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Indicates whether or not devices on this plan may be peered to enable Kentik to collect BGP routing data."
+    }
+  ];
+  int32 fast_retention = 9[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The number of days that data will be stored in the Fast dataseries."
+    }
+  ];
+  int32 full_retention = 10[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The number of days that data will be stored in the Full dataseries."
+    }
+  ];
+  google.protobuf.Timestamp created_date = 11[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The system-assigned date-time of filter creation, in UTC."
+    },
+    (google.api.field_behavior) = OUTPUT_ONLY
+  ];
+  google.protobuf.Timestamp updated_date = 12[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The system-assigned date-time of most-recent modification, in UTC."
+    },
+    (google.api.field_behavior) = OUTPUT_ONLY
+  ];
+  int32 max_bigdata_fps = 13[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Max FPS applied to fast data rollups."
+    }
+  ];
+  repeated DeviceSubtype device_types = 14[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The types of allowed devices."
+    }
+  ];
+  repeated PlanDevice devices = 15 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The devices currently assigned to this plan."
+    }
+  ];
+}
