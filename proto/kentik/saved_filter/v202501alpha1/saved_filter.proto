@@ -1,0 +1,183 @@
+syntax = "proto3";
+
+package kentik.saved_filter.v202501alpha1;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/saved_filter/v202501alpha1;saved_filter";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "kentik/core/v202303/annotations.proto";
+import "kentik/saved_filter/v202501alpha1/saved_filter_message.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Saved Filters API"
+    version: "v202501alpha1"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api-schema-public"
+    }
+    description: "# Overview\n"
+        "The Saved Filters API enables programmatic access to information on Saved Filters.\n"
+  }
+  external_docs: {
+    url: "https://kb.kentik.com/proto/v4/Cb07.htm"
+    description: "Knowledge base article outlining the purpose and usage of Saved Filters."
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+message CreateSavedFilterRequest {
+  SavedFilter filter = 1;
+}
+
+message CreateSavedFilterResponse {
+  SavedFilter filter = 1;
+}
+
+message UpdateSavedFilterRequest {
+  string id = 1;
+  SavedFilter filter = 2;
+}
+
+message UpdateSavedFilterResponse {
+  SavedFilter filter = 1;
+}
+
+
+message ListSavedFiltersRequest {
+}
+
+message ListSavedFiltersAllRequest {
+}
+
+
+message ListSavedFiltersResponse {
+  repeated SavedFilter filters = 1;
+}
+
+message ListSavedFiltersAllResponse {
+  repeated SavedFilter filters = 1;
+}
+
+
+message GetSavedFilterRequest {
+  string id = 1;
+}
+
+message GetSavedFilterResponse {
+  SavedFilter filter = 1;
+}
+
+message DeleteSavedFilterRequest {
+  string id = 1;
+}
+
+message DeleteSavedFilterResponse {
+}
+
+
+service SavedFilterService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "admin.saved_filter";
+
+  rpc CreateSavedFilter(CreateSavedFilterRequest) returns (CreateSavedFilterResponse) {
+    option (google.api.http) = {
+      post: "/saved-filter/v202501alpha1"
+      body: "filter"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "CreateSavedFilter"
+      summary: "Create Saved Filter"
+      description: "Creates and returns a saved filter object containing information about an individual saved filter."
+    };
+  }
+
+  rpc ListSavedFilters(ListSavedFiltersRequest) returns (ListSavedFiltersResponse) {
+    option (google.api.http) = {
+      get: "/saved-filters/v202501alpha1"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ListSavedFilters"
+      summary: "List Saved Filters"
+      description: "Returns all custom saved filters created by the user's company."
+    };
+  }
+
+  rpc ListSavedFiltersAll(ListSavedFiltersAllRequest) returns (ListSavedFiltersAllResponse) {
+    option (google.api.http) = {
+      get: "/saved-filters/v202501alpha1/all"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ListSavedFiltersAll"
+      summary: "List All Saved Filters"
+      description: "Returns all saved filters, including system default filters."
+    };
+  }
+
+  rpc GetSavedFilter(GetSavedFilterRequest) returns (GetSavedFilterResponse) {
+    option (google.api.http) = {
+      get: "/saved-filter/v202501alpha1/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetSavedFilter"
+      summary: "Custom Saved Filter Info"
+      description: "Returns a saved filter object containing information about an individual saved filter."
+    };
+  }
+
+  rpc UpdateSavedFilter(UpdateSavedFilterRequest) returns (UpdateSavedFilterResponse) {
+    option (google.api.http) = {
+      put: "/saved-filter/v202501alpha1/{id}"
+      body: "filter"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "UpdateSavedFilter"
+      summary: "Update Saved Filter"
+      description: "Updates and returns a saved filter object containing information about an individual saved filter."
+    };
+  }
+
+  rpc DeleteSavedFilter(DeleteSavedFilterRequest) returns (DeleteSavedFilterResponse) {
+    option (google.api.http) = {
+      delete: "/saved-filter/v202501alpha1/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "DeleteSavedFilter"
+      summary: "Delete Saved Filter"
+      description: "Deletes a saved filter."
+    };
+  }
+}

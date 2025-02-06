@@ -1,0 +1,180 @@
+syntax = "proto3";
+
+package kentik.saved_filter.v202501alpha1;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/saved_filter/v202501alpha1;saved_filter";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+enum FilterField {
+  FILTER_FIELD_UNSPECIFIED = 0;
+  FILTER_FIELD_DST_AS = 1; // default value
+  FILTER_FIELD_DST_NEXTHOP_AS = 2;
+  FILTER_FIELD_DST_SECOND_ASN = 3;
+  FILTER_FIELD_DST_THIRD_ASN = 4;
+  FILTER_FIELD_DST_BGP_ASPATH = 5;
+  FILTER_FIELD_DST_BGP_COMMUNITY = 6;
+  FILTER_FIELD_DST_ETH_MAC = 7;
+  FILTER_FIELD_DST_FLOW_TAGS = 8;
+  FILTER_FIELD_DST_GEO = 9;
+  FILTER_FIELD_DST_GEO_REGION = 10;
+  FILTER_FIELD_DST_GEO_CITY = 11;
+  FILTER_FIELD_DST_ROUTE_LENGTH = 12;
+  FILTER_FIELD_INET_DST_ADDR = 13;
+  FILTER_FIELD_IPV4_DST_ROUTE_PREFIX = 14;
+  FILTER_FIELD_IPV4_DST_NEXT_HOP = 15;
+  FILTER_FIELD_L4_DST_PORT = 16;
+
+  FILTER_FIELD_OUTPUT_PORT = 17;
+  FILTER_FIELD_I_OUTPUT_SNMP_ALIAS = 18;
+  FILTER_FIELD_I_OUTPUT_INTERFACE_DESCRIPTION = 19;
+
+  FILTER_FIELD_SRC_AS = 20;
+  FILTER_FIELD_SRC_NEXTHOP_AS = 21;
+  FILTER_FIELD_SRC_SECOND_ASN = 22;
+  FILTER_FIELD_SRC_THIRD_ASN = 23;
+  FILTER_FIELD_SRC_BGP_ASPATH = 24;
+  FILTER_FIELD_SRC_BGP_COMMUNITY = 25;
+  FILTER_FIELD_SRC_ETH_MAC = 26;
+  FILTER_FIELD_SRC_FLOW_TAGS = 27;
+  FILTER_FIELD_SRC_GEO = 28;
+  FILTER_FIELD_SRC_GEO_REGION = 29;
+  FILTER_FIELD_SRC_GEO_CITY = 30;
+  FILTER_FIELD_SRC_ROUTE_LENGTH = 31;
+  FILTER_FIELD_INET_SRC_ADDR = 32;
+  FILTER_FIELD_IPV4_SRC_ROUTE_PREFIX = 33;
+  FILTER_FIELD_IPV4_SRC_NEXT_HOP = 34;
+  FILTER_FIELD_L4_SRC_PORT = 35;
+
+  FILTER_FIELD_INPUT_PORT = 36;
+  FILTER_FIELD_I_INPUT_SNMP_ALIAS = 37;
+  FILTER_FIELD_I_INPUT_INTERFACE_DESCRIPTION = 38;
+
+  FILTER_FIELD_BOTH_PKTS = 39;
+  FILTER_FIELD_I_DEVICE_NAME = 40;
+  FILTER_FIELD_PROTOCOL = 41;
+  FILTER_FIELD_TCP_FLAGS = 42;
+  FILTER_FIELD_TCP_FLAGS_RAW = 43;
+  FILTER_FIELD_TCP_RETRANSMIT = 44;
+  FILTER_FIELD_TOS = 45;
+  FILTER_FIELD_VLAN_IN = 46;
+  FILTER_FIELD_VLAN_OUT = 47;
+}
+
+enum FilterOperator {
+  FILTER_OPERATOR_UNSPECIFIED = 0;
+  FILTER_OPERATOR_EQUAL = 1;              // "=", default value
+  FILTER_OPERATOR_NOT_EQUAL = 2;          // "<>"
+  FILTER_OPERATOR_CONTAINS = 3;           // "ILIKE"
+  FILTER_OPERATOR_NOT_CONTAINS = 4;       // "NOT ILIKE"
+  FILTER_OPERATOR_REGEX_CONTAINS = 5;     // "~"
+  FILTER_OPERATOR_REGEX_NOT_CONTAINS = 6; // "!~"
+  FILTER_OPERATOR_GREATER_THAN = 7;       // ">"
+  FILTER_OPERATOR_LESS_THAN = 8;          // "<"
+  FILTER_OPERATOR_BITWISE_AND = 9;        // "&"
+}
+
+enum FilterLevel {
+  FILTER_LEVEL_UNSPECIFIED = 0;
+  FILTER_LEVEL_COMPANY = 1;
+  FILTER_LEVEL_GLOBAL = 2;
+  FILTER_LEVEL_USER = 3;
+}
+
+message SavedFilterFilter {
+  FilterField filter_field = 1[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "A field operand. Defaults to DST_AS."
+    }
+  ];
+  FilterOperator operator = 2[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Equality operator. Defaults to EQUAL."
+    }
+  ];
+  string filter_value = 3[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Value to perform equality comparisons."
+    }
+  ];
+}
+
+message SavedFilterFilterGroup {
+  bool any = 1[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Whether to require matches against ALL or ANY filter. Defaults to requiring a match for all."
+    }
+  ];
+  repeated SavedFilterFilter filters = 2[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Filters to operate against."
+    }
+  ];
+  bool not = 3[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Whether or not to NOT() the filter group. Defaults to false."
+    }
+  ];
+}
+
+message SavedFilterFilters {
+  bool any = 1[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Whether to require matches against ALL or ANY filter. Defaults to requiring a match for all."
+    }
+  ];
+  repeated SavedFilterFilterGroup filter_groups = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Individual groups of filters. This allows matches of e.g. ANY(ALL(x), ANY(y))."
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+message SavedFilter {
+  string id = 1[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Unique identifier for the saved filter."
+    },
+    (google.api.field_behavior) = OUTPUT_ONLY
+  ];
+  string filter_name = 2[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "An unique name for the saved filter."
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  string filter_description = 3[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The saved filter's description."
+    }
+  ];
+  SavedFilterFilters filters = 4[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Configuration values for the use of this saved filter."
+    }
+  ];
+  FilterLevel filter_level = 5[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The scope across which the shared filter is available: user (personal only), company (organization-wide), or global (Kentik-provided preset) \n"
+        "Note: User and global saved filters are not yet supported by the API"
+    }
+  ];
+  google.protobuf.Timestamp created_date = 26[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Date-time of populator creation, in UTC."
+    },
+    (google.api.field_behavior) = OUTPUT_ONLY
+  ];
+
+  google.protobuf.Timestamp updated_date = 7[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Date-time of most-recent populator edit, in UTC."
+    },
+    (google.api.field_behavior) = OUTPUT_ONLY
+  ];
+
+}

@@ -1,0 +1,496 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Saved Filters API",
+    "description": "# Overview\nThe Saved Filters API enables programmatic access to information on Saved Filters.\n",
+    "version": "v202501alpha1",
+    "contact": {
+      "name": "Kentik API Engineering",
+      "url": "https://github.com/kentik/api-schema-public"
+    }
+  },
+  "tags": [
+    {
+      "name": "SavedFilterService"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/saved-filter/v202501alpha1": {
+      "post": {
+        "summary": "Create Saved Filter",
+        "description": "Creates and returns a saved filter object containing information about an individual saved filter.",
+        "operationId": "CreateSavedFilter",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202501alpha1CreateSavedFilterResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202501alpha1SavedFilter"
+            }
+          }
+        ],
+        "tags": [
+          "SavedFilterService"
+        ]
+      }
+    },
+    "/saved-filter/v202501alpha1/{id}": {
+      "get": {
+        "summary": "Custom Saved Filter Info",
+        "description": "Returns a saved filter object containing information about an individual saved filter.",
+        "operationId": "GetSavedFilter",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202501alpha1GetSavedFilterResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "SavedFilterService"
+        ]
+      },
+      "delete": {
+        "summary": "Delete Saved Filter",
+        "description": "Deletes a saved filter.",
+        "operationId": "DeleteSavedFilter",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202501alpha1DeleteSavedFilterResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "SavedFilterService"
+        ]
+      },
+      "put": {
+        "summary": "Update Saved Filter",
+        "description": "Updates and returns a saved filter object containing information about an individual saved filter.",
+        "operationId": "UpdateSavedFilter",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202501alpha1UpdateSavedFilterResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202501alpha1SavedFilter"
+            }
+          }
+        ],
+        "tags": [
+          "SavedFilterService"
+        ]
+      }
+    },
+    "/saved-filters/v202501alpha1": {
+      "get": {
+        "summary": "List Saved Filters",
+        "description": "Returns all custom saved filters created by the user's company.",
+        "operationId": "ListSavedFilters",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202501alpha1ListSavedFiltersResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "SavedFilterService"
+        ]
+      }
+    },
+    "/saved-filters/v202501alpha1/all": {
+      "get": {
+        "summary": "List All Saved Filters",
+        "description": "Returns all saved filters, including system default filters.",
+        "operationId": "ListSavedFiltersAll",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202501alpha1ListSavedFiltersAllResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "SavedFilterService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "typeUrl": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v202501alpha1CreateSavedFilterResponse": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "$ref": "#/definitions/v202501alpha1SavedFilter"
+        }
+      }
+    },
+    "v202501alpha1DeleteSavedFilterResponse": {
+      "type": "object"
+    },
+    "v202501alpha1FilterField": {
+      "type": "string",
+      "enum": [
+        "FILTER_FIELD_UNSPECIFIED",
+        "FILTER_FIELD_DST_AS",
+        "FILTER_FIELD_DST_NEXTHOP_AS",
+        "FILTER_FIELD_DST_SECOND_ASN",
+        "FILTER_FIELD_DST_THIRD_ASN",
+        "FILTER_FIELD_DST_BGP_ASPATH",
+        "FILTER_FIELD_DST_BGP_COMMUNITY",
+        "FILTER_FIELD_DST_ETH_MAC",
+        "FILTER_FIELD_DST_FLOW_TAGS",
+        "FILTER_FIELD_DST_GEO",
+        "FILTER_FIELD_DST_GEO_REGION",
+        "FILTER_FIELD_DST_GEO_CITY",
+        "FILTER_FIELD_DST_ROUTE_LENGTH",
+        "FILTER_FIELD_INET_DST_ADDR",
+        "FILTER_FIELD_IPV4_DST_ROUTE_PREFIX",
+        "FILTER_FIELD_IPV4_DST_NEXT_HOP",
+        "FILTER_FIELD_L4_DST_PORT",
+        "FILTER_FIELD_OUTPUT_PORT",
+        "FILTER_FIELD_I_OUTPUT_SNMP_ALIAS",
+        "FILTER_FIELD_I_OUTPUT_INTERFACE_DESCRIPTION",
+        "FILTER_FIELD_SRC_AS",
+        "FILTER_FIELD_SRC_NEXTHOP_AS",
+        "FILTER_FIELD_SRC_SECOND_ASN",
+        "FILTER_FIELD_SRC_THIRD_ASN",
+        "FILTER_FIELD_SRC_BGP_ASPATH",
+        "FILTER_FIELD_SRC_BGP_COMMUNITY",
+        "FILTER_FIELD_SRC_ETH_MAC",
+        "FILTER_FIELD_SRC_FLOW_TAGS",
+        "FILTER_FIELD_SRC_GEO",
+        "FILTER_FIELD_SRC_GEO_REGION",
+        "FILTER_FIELD_SRC_GEO_CITY",
+        "FILTER_FIELD_SRC_ROUTE_LENGTH",
+        "FILTER_FIELD_INET_SRC_ADDR",
+        "FILTER_FIELD_IPV4_SRC_ROUTE_PREFIX",
+        "FILTER_FIELD_IPV4_SRC_NEXT_HOP",
+        "FILTER_FIELD_L4_SRC_PORT",
+        "FILTER_FIELD_INPUT_PORT",
+        "FILTER_FIELD_I_INPUT_SNMP_ALIAS",
+        "FILTER_FIELD_I_INPUT_INTERFACE_DESCRIPTION",
+        "FILTER_FIELD_BOTH_PKTS",
+        "FILTER_FIELD_I_DEVICE_NAME",
+        "FILTER_FIELD_PROTOCOL",
+        "FILTER_FIELD_TCP_FLAGS",
+        "FILTER_FIELD_TCP_FLAGS_RAW",
+        "FILTER_FIELD_TCP_RETRANSMIT",
+        "FILTER_FIELD_TOS",
+        "FILTER_FIELD_VLAN_IN",
+        "FILTER_FIELD_VLAN_OUT"
+      ],
+      "default": "FILTER_FIELD_UNSPECIFIED"
+    },
+    "v202501alpha1FilterLevel": {
+      "type": "string",
+      "enum": [
+        "FILTER_LEVEL_UNSPECIFIED",
+        "FILTER_LEVEL_COMPANY",
+        "FILTER_LEVEL_GLOBAL",
+        "FILTER_LEVEL_USER"
+      ],
+      "default": "FILTER_LEVEL_UNSPECIFIED"
+    },
+    "v202501alpha1FilterOperator": {
+      "type": "string",
+      "enum": [
+        "FILTER_OPERATOR_UNSPECIFIED",
+        "FILTER_OPERATOR_EQUAL",
+        "FILTER_OPERATOR_NOT_EQUAL",
+        "FILTER_OPERATOR_CONTAINS",
+        "FILTER_OPERATOR_NOT_CONTAINS",
+        "FILTER_OPERATOR_REGEX_CONTAINS",
+        "FILTER_OPERATOR_REGEX_NOT_CONTAINS",
+        "FILTER_OPERATOR_GREATER_THAN",
+        "FILTER_OPERATOR_LESS_THAN",
+        "FILTER_OPERATOR_BITWISE_AND"
+      ],
+      "default": "FILTER_OPERATOR_UNSPECIFIED"
+    },
+    "v202501alpha1GetSavedFilterResponse": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "$ref": "#/definitions/v202501alpha1SavedFilter"
+        }
+      }
+    },
+    "v202501alpha1ListSavedFiltersAllResponse": {
+      "type": "object",
+      "properties": {
+        "filters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202501alpha1SavedFilter"
+          }
+        }
+      }
+    },
+    "v202501alpha1ListSavedFiltersResponse": {
+      "type": "object",
+      "properties": {
+        "filters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202501alpha1SavedFilter"
+          }
+        }
+      }
+    },
+    "v202501alpha1SavedFilter": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the saved filter.",
+          "readOnly": true
+        },
+        "filterName": {
+          "type": "string",
+          "description": "An unique name for the saved filter.",
+          "required": [
+            "filter_name"
+          ]
+        },
+        "filterDescription": {
+          "type": "string",
+          "description": "The saved filter's description."
+        },
+        "filters": {
+          "$ref": "#/definitions/v202501alpha1SavedFilterFilters",
+          "description": "Configuration values for the use of this saved filter."
+        },
+        "filterLevel": {
+          "$ref": "#/definitions/v202501alpha1FilterLevel",
+          "description": "The scope across which the shared filter is available: user (personal only), company (organization-wide), or global (Kentik-provided preset) \nNote: User and global saved filters are not yet supported by the API"
+        },
+        "createdDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date-time of populator creation, in UTC.",
+          "readOnly": true
+        },
+        "updatedDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date-time of most-recent populator edit, in UTC.",
+          "readOnly": true
+        }
+      },
+      "required": [
+        "filterName"
+      ]
+    },
+    "v202501alpha1SavedFilterFilter": {
+      "type": "object",
+      "properties": {
+        "filterField": {
+          "$ref": "#/definitions/v202501alpha1FilterField",
+          "description": "A field operand. Defaults to DST_AS."
+        },
+        "operator": {
+          "$ref": "#/definitions/v202501alpha1FilterOperator",
+          "description": "Equality operator. Defaults to EQUAL."
+        },
+        "filterValue": {
+          "type": "string",
+          "description": "Value to perform equality comparisons."
+        }
+      }
+    },
+    "v202501alpha1SavedFilterFilterGroup": {
+      "type": "object",
+      "properties": {
+        "any": {
+          "type": "boolean",
+          "description": "Whether to require matches against ALL or ANY filter. Defaults to requiring a match for all."
+        },
+        "filters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202501alpha1SavedFilterFilter"
+          },
+          "description": "Filters to operate against."
+        },
+        "not": {
+          "type": "boolean",
+          "description": "Whether or not to NOT() the filter group. Defaults to false."
+        }
+      }
+    },
+    "v202501alpha1SavedFilterFilters": {
+      "type": "object",
+      "properties": {
+        "any": {
+          "type": "boolean",
+          "description": "Whether to require matches against ALL or ANY filter. Defaults to requiring a match for all."
+        },
+        "filterGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202501alpha1SavedFilterFilterGroup"
+          },
+          "description": "Individual groups of filters. This allows matches of e.g. ANY(ALL(x), ANY(y)).",
+          "required": [
+            "filter_groups"
+          ]
+        }
+      },
+      "required": [
+        "filterGroups"
+      ]
+    },
+    "v202501alpha1UpdateSavedFilterResponse": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "$ref": "#/definitions/v202501alpha1SavedFilter"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "email": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-Email",
+      "in": "header"
+    },
+    "token": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-API-Token",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "email": [],
+      "token": []
+    }
+  ],
+  "externalDocs": {
+    "description": "Knowledge base article outlining the purpose and usage of Saved Filters.",
+    "url": "https://kb.kentik.com/proto/v4/Cb07.htm"
+  }
+}
