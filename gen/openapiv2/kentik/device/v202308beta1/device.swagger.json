@@ -43,6 +43,14 @@
             }
           }
         },
+        "parameters": [
+          {
+            "name": "query.noCustomColumns",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
         "tags": [
           "DeviceService"
         ]
@@ -211,6 +219,12 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "query.noCustomColumns",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
           }
         ],
         "tags": [
@@ -965,6 +979,14 @@
       },
       "title": "DeviceNmsStConfig"
     },
+    "v202308beta1DeviceQuery": {
+      "type": "object",
+      "properties": {
+        "noCustomColumns": {
+          "type": "boolean"
+        }
+      }
+    },
     "v202308beta1DeviceSnmpV3Conf": {
       "type": "object",
       "properties": {
@@ -1092,6 +1114,78 @@
         "name": {
           "type": "string",
           "description": "Plan name"
+        },
+        "active": {
+          "type": "boolean",
+          "description": "Plan Status"
+        },
+        "bgp": {
+          "type": "boolean",
+          "description": "BGP enabled"
+        },
+        "companyId": {
+          "type": "string",
+          "description": "Company ID"
+        },
+        "description": {
+          "type": "string",
+          "description": "Plan Description"
+        },
+        "deviceTypes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Device Types"
+        },
+        "devices": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Devices"
+        },
+        "fastRetention": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Fast Rention in days"
+        },
+        "fullRetention": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Full Retention in days"
+        },
+        "maxBigdataFps": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Max data FPS"
+        },
+        "maxDevices": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Max Device"
+        },
+        "maxFps": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Max FPS"
+        },
+        "cdate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Created Date"
+        },
+        "edate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Updated Data"
+        },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Plan Metadata"
         }
       },
       "title": "Plan"

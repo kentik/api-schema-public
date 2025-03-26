@@ -52,6 +52,51 @@ void   kentik__saved_filter__v202501alpha1__saved_filter_filter__free_unpacked
   assert(message->base.descriptor == &kentik__saved_filter__v202501alpha1__saved_filter_filter__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   kentik__saved_filter__v202501alpha1__saved_filter_filter_id__init
+                     (Kentik__SavedFilter__V202501alpha1__SavedFilterFilterId         *message)
+{
+  static const Kentik__SavedFilter__V202501alpha1__SavedFilterFilterId init_value = KENTIK__SAVED_FILTER__V202501ALPHA1__SAVED_FILTER_FILTER_ID__INIT;
+  *message = init_value;
+}
+size_t kentik__saved_filter__v202501alpha1__saved_filter_filter_id__get_packed_size
+                     (const Kentik__SavedFilter__V202501alpha1__SavedFilterFilterId *message)
+{
+  assert(message->base.descriptor == &kentik__saved_filter__v202501alpha1__saved_filter_filter_id__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__saved_filter__v202501alpha1__saved_filter_filter_id__pack
+                     (const Kentik__SavedFilter__V202501alpha1__SavedFilterFilterId *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__saved_filter__v202501alpha1__saved_filter_filter_id__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__saved_filter__v202501alpha1__saved_filter_filter_id__pack_to_buffer
+                     (const Kentik__SavedFilter__V202501alpha1__SavedFilterFilterId *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__saved_filter__v202501alpha1__saved_filter_filter_id__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__SavedFilter__V202501alpha1__SavedFilterFilterId *
+       kentik__saved_filter__v202501alpha1__saved_filter_filter_id__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__SavedFilter__V202501alpha1__SavedFilterFilterId *)
+     protobuf_c_message_unpack (&kentik__saved_filter__v202501alpha1__saved_filter_filter_id__descriptor,
+                                allocator, len, data);
+}
+void   kentik__saved_filter__v202501alpha1__saved_filter_filter_id__free_unpacked
+                     (Kentik__SavedFilter__V202501alpha1__SavedFilterFilterId *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__saved_filter__v202501alpha1__saved_filter_filter_id__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 void   kentik__saved_filter__v202501alpha1__saved_filter_filter_group__init
                      (Kentik__SavedFilter__V202501alpha1__SavedFilterFilterGroup         *message)
 {
@@ -187,7 +232,7 @@ void   kentik__saved_filter__v202501alpha1__saved_filter__free_unpacked
   assert(message->base.descriptor == &kentik__saved_filter__v202501alpha1__saved_filter__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-static const ProtobufCFieldDescriptor kentik__saved_filter__v202501alpha1__saved_filter_filter__field_descriptors[3] =
+static const ProtobufCFieldDescriptor kentik__saved_filter__v202501alpha1__saved_filter_filter__field_descriptors[7] =
 {
   {
     "filter_field",
@@ -225,16 +270,68 @@ static const ProtobufCFieldDescriptor kentik__saved_filter__v202501alpha1__saved
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "filter_field_string",
+    4,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__SavedFilter__V202501alpha1__SavedFilterFilter, filter_field_string),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "metric",
+    5,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__SavedFilter__V202501alpha1__SavedFilterFilter, metric),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "aggregate",
+    6,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__SavedFilter__V202501alpha1__SavedFilterFilter, aggregate),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "right_filter_field",
+    7,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__SavedFilter__V202501alpha1__SavedFilterFilter, right_filter_field),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__saved_filter__v202501alpha1__saved_filter_filter__field_indices_by_name[] = {
+  5,   /* field[5] = aggregate */
   0,   /* field[0] = filter_field */
+  3,   /* field[3] = filter_field_string */
   2,   /* field[2] = filter_value */
+  4,   /* field[4] = metric */
   1,   /* field[1] = operator */
+  6,   /* field[6] = right_filter_field */
 };
 static const ProtobufCIntRange kentik__saved_filter__v202501alpha1__saved_filter_filter__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 3 }
+  { 0, 7 }
 };
 const ProtobufCMessageDescriptor kentik__saved_filter__v202501alpha1__saved_filter_filter__descriptor =
 {
@@ -244,14 +341,65 @@ const ProtobufCMessageDescriptor kentik__saved_filter__v202501alpha1__saved_filt
   "Kentik__SavedFilter__V202501alpha1__SavedFilterFilter",
   "kentik.saved_filter.v202501alpha1",
   sizeof(Kentik__SavedFilter__V202501alpha1__SavedFilterFilter),
-  3,
+  7,
   kentik__saved_filter__v202501alpha1__saved_filter_filter__field_descriptors,
   kentik__saved_filter__v202501alpha1__saved_filter_filter__field_indices_by_name,
   1,  kentik__saved_filter__v202501alpha1__saved_filter_filter__number_ranges,
   (ProtobufCMessageInit) kentik__saved_filter__v202501alpha1__saved_filter_filter__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__saved_filter__v202501alpha1__saved_filter_filter_group__field_descriptors[3] =
+static const ProtobufCFieldDescriptor kentik__saved_filter__v202501alpha1__saved_filter_filter_id__field_descriptors[2] =
+{
+  {
+    "filter_id",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__SavedFilter__V202501alpha1__SavedFilterFilterId, filter_id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "is_not",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__SavedFilter__V202501alpha1__SavedFilterFilterId, is_not),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__saved_filter__v202501alpha1__saved_filter_filter_id__field_indices_by_name[] = {
+  0,   /* field[0] = filter_id */
+  1,   /* field[1] = is_not */
+};
+static const ProtobufCIntRange kentik__saved_filter__v202501alpha1__saved_filter_filter_id__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor kentik__saved_filter__v202501alpha1__saved_filter_filter_id__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.saved_filter.v202501alpha1.SavedFilterFilterId",
+  "SavedFilterFilterId",
+  "Kentik__SavedFilter__V202501alpha1__SavedFilterFilterId",
+  "kentik.saved_filter.v202501alpha1",
+  sizeof(Kentik__SavedFilter__V202501alpha1__SavedFilterFilterId),
+  2,
+  kentik__saved_filter__v202501alpha1__saved_filter_filter_id__field_descriptors,
+  kentik__saved_filter__v202501alpha1__saved_filter_filter_id__field_indices_by_name,
+  1,  kentik__saved_filter__v202501alpha1__saved_filter_filter_id__number_ranges,
+  (ProtobufCMessageInit) kentik__saved_filter__v202501alpha1__saved_filter_filter_id__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__saved_filter__v202501alpha1__saved_filter_filter_group__field_descriptors[5] =
 {
   {
     "any",
@@ -289,16 +437,42 @@ static const ProtobufCFieldDescriptor kentik__saved_filter__v202501alpha1__saved
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "saved_filter_ids",
+    4,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Kentik__SavedFilter__V202501alpha1__SavedFilterFilterGroup, n_saved_filter_ids),
+    offsetof(Kentik__SavedFilter__V202501alpha1__SavedFilterFilterGroup, saved_filter_ids),
+    &kentik__saved_filter__v202501alpha1__saved_filter_filter_id__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "nested_filter_groups",
+    5,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Kentik__SavedFilter__V202501alpha1__SavedFilterFilterGroup, n_nested_filter_groups),
+    offsetof(Kentik__SavedFilter__V202501alpha1__SavedFilterFilterGroup, nested_filter_groups),
+    &kentik__saved_filter__v202501alpha1__saved_filter_filter_group__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__saved_filter__v202501alpha1__saved_filter_filter_group__field_indices_by_name[] = {
   0,   /* field[0] = any */
   1,   /* field[1] = filters */
+  4,   /* field[4] = nested_filter_groups */
   2,   /* field[2] = not */
+  3,   /* field[3] = saved_filter_ids */
 };
 static const ProtobufCIntRange kentik__saved_filter__v202501alpha1__saved_filter_filter_group__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 3 }
+  { 0, 5 }
 };
 const ProtobufCMessageDescriptor kentik__saved_filter__v202501alpha1__saved_filter_filter_group__descriptor =
 {
@@ -308,7 +482,7 @@ const ProtobufCMessageDescriptor kentik__saved_filter__v202501alpha1__saved_filt
   "Kentik__SavedFilter__V202501alpha1__SavedFilterFilterGroup",
   "kentik.saved_filter.v202501alpha1",
   sizeof(Kentik__SavedFilter__V202501alpha1__SavedFilterFilterGroup),
-  3,
+  5,
   kentik__saved_filter__v202501alpha1__saved_filter_filter_group__field_descriptors,
   kentik__saved_filter__v202501alpha1__saved_filter_filter_group__field_indices_by_name,
   1,  kentik__saved_filter__v202501alpha1__saved_filter_filter_group__number_ranges,

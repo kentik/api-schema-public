@@ -28,9 +28,49 @@ namespace kentik {
 namespace saved_filter {
 namespace v202501alpha1 {
 
+inline constexpr SavedFilterFilterId::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : filter_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        is_not_{false},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SavedFilterFilterId::SavedFilterFilterId(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct SavedFilterFilterIdDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SavedFilterFilterIdDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SavedFilterFilterIdDefaultTypeInternal() {}
+  union {
+    SavedFilterFilterId _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SavedFilterFilterIdDefaultTypeInternal _SavedFilterFilterId_default_instance_;
+
 inline constexpr SavedFilterFilter::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : filter_value_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        filter_field_string_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        metric_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        aggregate_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        right_filter_field_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
         filter_field_{static_cast< ::kentik::saved_filter::v202501alpha1::FilterField >(0)},
@@ -60,6 +100,8 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 inline constexpr SavedFilterFilterGroup::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : filters_{},
+        saved_filter_ids_{},
+        nested_filter_groups_{},
         any_{false},
         not__{false},
         _cached_size_{0} {}
@@ -166,6 +208,20 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::saved_filter::v202501alpha1::SavedFilterFilter, _impl_.filter_field_),
         PROTOBUF_FIELD_OFFSET(::kentik::saved_filter::v202501alpha1::SavedFilterFilter, _impl_.operator__),
         PROTOBUF_FIELD_OFFSET(::kentik::saved_filter::v202501alpha1::SavedFilterFilter, _impl_.filter_value_),
+        PROTOBUF_FIELD_OFFSET(::kentik::saved_filter::v202501alpha1::SavedFilterFilter, _impl_.filter_field_string_),
+        PROTOBUF_FIELD_OFFSET(::kentik::saved_filter::v202501alpha1::SavedFilterFilter, _impl_.metric_),
+        PROTOBUF_FIELD_OFFSET(::kentik::saved_filter::v202501alpha1::SavedFilterFilter, _impl_.aggregate_),
+        PROTOBUF_FIELD_OFFSET(::kentik::saved_filter::v202501alpha1::SavedFilterFilter, _impl_.right_filter_field_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::kentik::saved_filter::v202501alpha1::SavedFilterFilterId, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::saved_filter::v202501alpha1::SavedFilterFilterId, _impl_.filter_id_),
+        PROTOBUF_FIELD_OFFSET(::kentik::saved_filter::v202501alpha1::SavedFilterFilterId, _impl_.is_not_),
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::kentik::saved_filter::v202501alpha1::SavedFilterFilterGroup, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -177,6 +233,8 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::saved_filter::v202501alpha1::SavedFilterFilterGroup, _impl_.any_),
         PROTOBUF_FIELD_OFFSET(::kentik::saved_filter::v202501alpha1::SavedFilterFilterGroup, _impl_.filters_),
         PROTOBUF_FIELD_OFFSET(::kentik::saved_filter::v202501alpha1::SavedFilterFilterGroup, _impl_.not__),
+        PROTOBUF_FIELD_OFFSET(::kentik::saved_filter::v202501alpha1::SavedFilterFilterGroup, _impl_.saved_filter_ids_),
+        PROTOBUF_FIELD_OFFSET(::kentik::saved_filter::v202501alpha1::SavedFilterFilterGroup, _impl_.nested_filter_groups_),
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::kentik::saved_filter::v202501alpha1::SavedFilterFilters, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -214,12 +272,14 @@ const ::uint32_t
 static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
         {0, -1, -1, sizeof(::kentik::saved_filter::v202501alpha1::SavedFilterFilter)},
-        {11, -1, -1, sizeof(::kentik::saved_filter::v202501alpha1::SavedFilterFilterGroup)},
-        {22, -1, -1, sizeof(::kentik::saved_filter::v202501alpha1::SavedFilterFilters)},
-        {32, 47, -1, sizeof(::kentik::saved_filter::v202501alpha1::SavedFilter)},
+        {15, -1, -1, sizeof(::kentik::saved_filter::v202501alpha1::SavedFilterFilterId)},
+        {25, -1, -1, sizeof(::kentik::saved_filter::v202501alpha1::SavedFilterFilterGroup)},
+        {38, -1, -1, sizeof(::kentik::saved_filter::v202501alpha1::SavedFilterFilters)},
+        {48, 63, -1, sizeof(::kentik::saved_filter::v202501alpha1::SavedFilter)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::saved_filter::v202501alpha1::_SavedFilterFilter_default_instance_._instance,
+    &::kentik::saved_filter::v202501alpha1::_SavedFilterFilterId_default_instance_._instance,
     &::kentik::saved_filter::v202501alpha1::_SavedFilterFilterGroup_default_instance_._instance,
     &::kentik::saved_filter::v202501alpha1::_SavedFilterFilters_default_instance_._instance,
     &::kentik::saved_filter::v202501alpha1::_SavedFilter_default_instance_._instance,
@@ -232,7 +292,7 @@ const char descriptor_table_protodef_kentik_2fsaved_5ffilter_2fv202501alpha1_2fs
     "s.proto\032\027google/api/client.proto\032\037google"
     "/api/field_behavior.proto\032.protoc-gen-op"
     "enapiv2/options/annotations.proto\032\037googl"
-    "e/protobuf/timestamp.proto\"\334\002\n\021SavedFilt"
+    "e/protobuf/timestamp.proto\"\202\005\n\021SavedFilt"
     "erFilter\022|\n\014filter_field\030\001 \001(\0162..kentik."
     "saved_filter.v202501alpha1.FilterFieldB)"
     "\222A&2$A field operand. Defaults to DST_AS"
@@ -241,100 +301,119 @@ const char descriptor_table_protodef_kentik_2fsaved_5ffilter_2fv202501alpha1_2fs
     "torB*\222A\'2%Equality operator. Defaults to"
     " EQUAL.R\010operator\022N\n\014filter_value\030\003 \001(\tB"
     "+\222A(2&Value to perform equality comparis"
-    "ons.R\013filterValue\"\324\002\n\026SavedFilterFilterG"
-    "roup\022s\n\003any\030\001 \001(\010Ba\222A^2\\Whether to requi"
-    "re matches against ALL or ANY filter. De"
-    "faults to requiring a match for all.R\003an"
-    "y\022p\n\007filters\030\002 \003(\01324.kentik.saved_filter"
-    ".v202501alpha1.SavedFilterFilterB \222A\0352\033F"
-    "ilters to operate against.R\007filters\022S\n\003n"
-    "ot\030\003 \001(\010BA\222A>2<Whether or not to NOT() t"
-    "he filter group. Defaults to false.R\003not"
-    "\"\302\002\n\022SavedFilterFilters\022s\n\003any\030\001 \001(\010Ba\222A"
+    "ons.R\013filterValue\022[\n\023filter_field_string"
+    "\030\004 \001(\tB+\222A(2&String representation of fi"
+    "lter field.R\021filterFieldString\022D\n\006metric"
+    "\030\005 \001(\tB,\222A)2\'Filter field as metric for "
+    "data series.R\006metric\0228\n\taggregate\030\006 \001(\tB"
+    "\032\222A\0272\025Aggregating function.R\taggregate\022G"
+    "\n\022right_filter_field\030\007 \001(\tB\031\222A\0262\024Right f"
+    "ield operand.R\020rightFilterField\"\242\001\n\023Save"
+    "dFilterFilterId\022\?\n\tfilter_id\030\001 \001(\tB\"\222A\0372"
+    "\035ID of reference saved filter.R\010filterId"
+    "\022J\n\006is_not\030\002 \001(\010B3\222A02.Include/Exclude o"
+    "f the reference saved filter.R\005isNot\"\215\005\n"
+    "\026SavedFilterFilterGroup\022s\n\003any\030\001 \001(\010Ba\222A"
     "^2\\Whether to require matches against AL"
     "L or ANY filter. Defaults to requiring a"
-    " match for all.R\003any\022\266\001\n\rfilter_groups\030\002"
-    " \003(\01329.kentik.saved_filter.v202501alpha1"
-    ".SavedFilterFilterGroupBV\222AP2NIndividual"
-    " groups of filters. This allows matches "
-    "of e.g. ANY(ALL(x), ANY(y)).\340A\002R\014filterG"
-    "roups\"\233\007\n\013SavedFilter\022\?\n\002id\030\001 \001(\tB/\222A)2\'"
-    "Unique identifier for the saved filter.\340"
-    "A\003R\002id\022M\n\013filter_name\030\002 \001(\tB,\222A&2$An uni"
-    "que name for the saved filter.\340A\002R\nfilte"
-    "rName\022S\n\022filter_description\030\003 \001(\tB$\222A!2\037"
-    "The saved filter\'s description.R\021filterD"
-    "escription\022\214\001\n\007filters\030\004 \001(\01325.kentik.sa"
-    "ved_filter.v202501alpha1.SavedFilterFilt"
-    "ersB;\222A826Configuration values for the u"
-    "se of this saved filter.R\007filters\022\255\002\n\014fi"
-    "lter_level\030\005 \001(\0162..kentik.saved_filter.v"
-    "202501alpha1.FilterLevelB\331\001\222A\325\0012\322\001The sc"
-    "ope across which the shared filter is av"
-    "ailable: user (personal only), company ("
-    "organization-wide), or global (Kentik-pr"
-    "ovided preset) \nNote: User and global sa"
-    "ved filters are not yet supported by the"
-    " APIR\013filterLevel\022o\n\014created_date\030\032 \001(\0132"
-    "\032.google.protobuf.TimestampB0\222A*2(Date-t"
-    "ime of populator creation, in UTC.\340A\003R\013c"
-    "reatedDate\022w\n\014updated_date\030\007 \001(\0132\032.googl"
-    "e.protobuf.TimestampB8\222A220Date-time of "
-    "most-recent populator edit, in UTC.\340A\003R\013"
-    "updatedDate*\233\014\n\013FilterField\022\034\n\030FILTER_FI"
-    "ELD_UNSPECIFIED\020\000\022\027\n\023FILTER_FIELD_DST_AS"
-    "\020\001\022\037\n\033FILTER_FIELD_DST_NEXTHOP_AS\020\002\022\037\n\033F"
-    "ILTER_FIELD_DST_SECOND_ASN\020\003\022\036\n\032FILTER_F"
-    "IELD_DST_THIRD_ASN\020\004\022\037\n\033FILTER_FIELD_DST"
-    "_BGP_ASPATH\020\005\022\"\n\036FILTER_FIELD_DST_BGP_CO"
-    "MMUNITY\020\006\022\034\n\030FILTER_FIELD_DST_ETH_MAC\020\007\022"
-    "\036\n\032FILTER_FIELD_DST_FLOW_TAGS\020\010\022\030\n\024FILTE"
-    "R_FIELD_DST_GEO\020\t\022\037\n\033FILTER_FIELD_DST_GE"
-    "O_REGION\020\n\022\035\n\031FILTER_FIELD_DST_GEO_CITY\020"
-    "\013\022!\n\035FILTER_FIELD_DST_ROUTE_LENGTH\020\014\022\036\n\032"
-    "FILTER_FIELD_INET_DST_ADDR\020\r\022&\n\"FILTER_F"
-    "IELD_IPV4_DST_ROUTE_PREFIX\020\016\022\"\n\036FILTER_F"
-    "IELD_IPV4_DST_NEXT_HOP\020\017\022\034\n\030FILTER_FIELD"
-    "_L4_DST_PORT\020\020\022\034\n\030FILTER_FIELD_OUTPUT_PO"
-    "RT\020\021\022$\n FILTER_FIELD_I_OUTPUT_SNMP_ALIAS"
-    "\020\022\022/\n+FILTER_FIELD_I_OUTPUT_INTERFACE_DE"
-    "SCRIPTION\020\023\022\027\n\023FILTER_FIELD_SRC_AS\020\024\022\037\n\033"
-    "FILTER_FIELD_SRC_NEXTHOP_AS\020\025\022\037\n\033FILTER_"
-    "FIELD_SRC_SECOND_ASN\020\026\022\036\n\032FILTER_FIELD_S"
-    "RC_THIRD_ASN\020\027\022\037\n\033FILTER_FIELD_SRC_BGP_A"
-    "SPATH\020\030\022\"\n\036FILTER_FIELD_SRC_BGP_COMMUNIT"
-    "Y\020\031\022\034\n\030FILTER_FIELD_SRC_ETH_MAC\020\032\022\036\n\032FIL"
-    "TER_FIELD_SRC_FLOW_TAGS\020\033\022\030\n\024FILTER_FIEL"
-    "D_SRC_GEO\020\034\022\037\n\033FILTER_FIELD_SRC_GEO_REGI"
-    "ON\020\035\022\035\n\031FILTER_FIELD_SRC_GEO_CITY\020\036\022!\n\035F"
-    "ILTER_FIELD_SRC_ROUTE_LENGTH\020\037\022\036\n\032FILTER"
-    "_FIELD_INET_SRC_ADDR\020 \022&\n\"FILTER_FIELD_I"
-    "PV4_SRC_ROUTE_PREFIX\020!\022\"\n\036FILTER_FIELD_I"
-    "PV4_SRC_NEXT_HOP\020\"\022\034\n\030FILTER_FIELD_L4_SR"
-    "C_PORT\020#\022\033\n\027FILTER_FIELD_INPUT_PORT\020$\022#\n"
-    "\037FILTER_FIELD_I_INPUT_SNMP_ALIAS\020%\022.\n*FI"
-    "LTER_FIELD_I_INPUT_INTERFACE_DESCRIPTION"
-    "\020&\022\032\n\026FILTER_FIELD_BOTH_PKTS\020\'\022\036\n\032FILTER"
-    "_FIELD_I_DEVICE_NAME\020(\022\031\n\025FILTER_FIELD_P"
-    "ROTOCOL\020)\022\032\n\026FILTER_FIELD_TCP_FLAGS\020*\022\036\n"
-    "\032FILTER_FIELD_TCP_FLAGS_RAW\020+\022\037\n\033FILTER_"
-    "FIELD_TCP_RETRANSMIT\020,\022\024\n\020FILTER_FIELD_T"
-    "OS\020-\022\030\n\024FILTER_FIELD_VLAN_IN\020.\022\031\n\025FILTER"
-    "_FIELD_VLAN_OUT\020/*\331\002\n\016FilterOperator\022\037\n\033"
-    "FILTER_OPERATOR_UNSPECIFIED\020\000\022\031\n\025FILTER_"
-    "OPERATOR_EQUAL\020\001\022\035\n\031FILTER_OPERATOR_NOT_"
-    "EQUAL\020\002\022\034\n\030FILTER_OPERATOR_CONTAINS\020\003\022 \n"
-    "\034FILTER_OPERATOR_NOT_CONTAINS\020\004\022\"\n\036FILTE"
-    "R_OPERATOR_REGEX_CONTAINS\020\005\022&\n\"FILTER_OP"
-    "ERATOR_REGEX_NOT_CONTAINS\020\006\022 \n\034FILTER_OP"
-    "ERATOR_GREATER_THAN\020\007\022\035\n\031FILTER_OPERATOR"
-    "_LESS_THAN\020\010\022\037\n\033FILTER_OPERATOR_BITWISE_"
-    "AND\020\t*u\n\013FilterLevel\022\034\n\030FILTER_LEVEL_UNS"
-    "PECIFIED\020\000\022\030\n\024FILTER_LEVEL_COMPANY\020\001\022\027\n\023"
-    "FILTER_LEVEL_GLOBAL\020\002\022\025\n\021FILTER_LEVEL_US"
-    "ER\020\003B[ZYgithub.com/kentik/api-schema-pub"
-    "lic/gen/go/kentik/saved_filter/v202501al"
-    "pha1;saved_filterb\006proto3"
+    " match for all.R\003any\022p\n\007filters\030\002 \003(\01324."
+    "kentik.saved_filter.v202501alpha1.SavedF"
+    "ilterFilterB \222A\0352\033Filters to operate aga"
+    "inst.R\007filters\022S\n\003not\030\003 \001(\010BA\222A>2<Whethe"
+    "r or not to NOT() the filter group. Defa"
+    "ults to false.R\003not\022\245\001\n\020saved_filter_ids"
+    "\030\004 \003(\01326.kentik.saved_filter.v202501alph"
+    "a1.SavedFilterFilterIdBC\222A@2>Include ref"
+    "erence of other saved filters in this fi"
+    "lter group.R\016savedFilterIds\022\216\001\n\024nested_f"
+    "ilter_groups\030\005 \003(\01329.kentik.saved_filter"
+    ".v202501alpha1.SavedFilterFilterGroupB!\222"
+    "A\0362\034Include nested filter group.R\022nested"
+    "FilterGroups\"\302\002\n\022SavedFilterFilters\022s\n\003a"
+    "ny\030\001 \001(\010Ba\222A^2\\Whether to require matche"
+    "s against ALL or ANY filter. Defaults to"
+    " requiring a match for all.R\003any\022\266\001\n\rfil"
+    "ter_groups\030\002 \003(\01329.kentik.saved_filter.v"
+    "202501alpha1.SavedFilterFilterGroupBV\222AP"
+    "2NIndividual groups of filters. This all"
+    "ows matches of e.g. ANY(ALL(x), ANY(y))."
+    "\340A\002R\014filterGroups\"\233\007\n\013SavedFilter\022\?\n\002id\030"
+    "\001 \001(\tB/\222A)2\'Unique identifier for the sa"
+    "ved filter.\340A\003R\002id\022M\n\013filter_name\030\002 \001(\tB"
+    ",\222A&2$An unique name for the saved filte"
+    "r.\340A\002R\nfilterName\022S\n\022filter_description\030"
+    "\003 \001(\tB$\222A!2\037The saved filter\'s descripti"
+    "on.R\021filterDescription\022\214\001\n\007filters\030\004 \001(\013"
+    "25.kentik.saved_filter.v202501alpha1.Sav"
+    "edFilterFiltersB;\222A826Configuration valu"
+    "es for the use of this saved filter.R\007fi"
+    "lters\022\255\002\n\014filter_level\030\005 \001(\0162..kentik.sa"
+    "ved_filter.v202501alpha1.FilterLevelB\331\001\222"
+    "A\325\0012\322\001The scope across which the shared "
+    "filter is available: user (personal only"
+    "), company (organization-wide), or globa"
+    "l (Kentik-provided preset) \nNote: User a"
+    "nd global saved filters are not yet supp"
+    "orted by the APIR\013filterLevel\022o\n\014created"
+    "_date\030\032 \001(\0132\032.google.protobuf.TimestampB"
+    "0\222A*2(Date-time of populator creation, i"
+    "n UTC.\340A\003R\013createdDate\022w\n\014updated_date\030\007"
+    " \001(\0132\032.google.protobuf.TimestampB8\222A220D"
+    "ate-time of most-recent populator edit, "
+    "in UTC.\340A\003R\013updatedDate*\233\014\n\013FilterField\022"
+    "\034\n\030FILTER_FIELD_UNSPECIFIED\020\000\022\027\n\023FILTER_"
+    "FIELD_DST_AS\020\001\022\037\n\033FILTER_FIELD_DST_NEXTH"
+    "OP_AS\020\002\022\037\n\033FILTER_FIELD_DST_SECOND_ASN\020\003"
+    "\022\036\n\032FILTER_FIELD_DST_THIRD_ASN\020\004\022\037\n\033FILT"
+    "ER_FIELD_DST_BGP_ASPATH\020\005\022\"\n\036FILTER_FIEL"
+    "D_DST_BGP_COMMUNITY\020\006\022\034\n\030FILTER_FIELD_DS"
+    "T_ETH_MAC\020\007\022\036\n\032FILTER_FIELD_DST_FLOW_TAG"
+    "S\020\010\022\030\n\024FILTER_FIELD_DST_GEO\020\t\022\037\n\033FILTER_"
+    "FIELD_DST_GEO_REGION\020\n\022\035\n\031FILTER_FIELD_D"
+    "ST_GEO_CITY\020\013\022!\n\035FILTER_FIELD_DST_ROUTE_"
+    "LENGTH\020\014\022\036\n\032FILTER_FIELD_INET_DST_ADDR\020\r"
+    "\022&\n\"FILTER_FIELD_IPV4_DST_ROUTE_PREFIX\020\016"
+    "\022\"\n\036FILTER_FIELD_IPV4_DST_NEXT_HOP\020\017\022\034\n\030"
+    "FILTER_FIELD_L4_DST_PORT\020\020\022\034\n\030FILTER_FIE"
+    "LD_OUTPUT_PORT\020\021\022$\n FILTER_FIELD_I_OUTPU"
+    "T_SNMP_ALIAS\020\022\022/\n+FILTER_FIELD_I_OUTPUT_"
+    "INTERFACE_DESCRIPTION\020\023\022\027\n\023FILTER_FIELD_"
+    "SRC_AS\020\024\022\037\n\033FILTER_FIELD_SRC_NEXTHOP_AS\020"
+    "\025\022\037\n\033FILTER_FIELD_SRC_SECOND_ASN\020\026\022\036\n\032FI"
+    "LTER_FIELD_SRC_THIRD_ASN\020\027\022\037\n\033FILTER_FIE"
+    "LD_SRC_BGP_ASPATH\020\030\022\"\n\036FILTER_FIELD_SRC_"
+    "BGP_COMMUNITY\020\031\022\034\n\030FILTER_FIELD_SRC_ETH_"
+    "MAC\020\032\022\036\n\032FILTER_FIELD_SRC_FLOW_TAGS\020\033\022\030\n"
+    "\024FILTER_FIELD_SRC_GEO\020\034\022\037\n\033FILTER_FIELD_"
+    "SRC_GEO_REGION\020\035\022\035\n\031FILTER_FIELD_SRC_GEO"
+    "_CITY\020\036\022!\n\035FILTER_FIELD_SRC_ROUTE_LENGTH"
+    "\020\037\022\036\n\032FILTER_FIELD_INET_SRC_ADDR\020 \022&\n\"FI"
+    "LTER_FIELD_IPV4_SRC_ROUTE_PREFIX\020!\022\"\n\036FI"
+    "LTER_FIELD_IPV4_SRC_NEXT_HOP\020\"\022\034\n\030FILTER"
+    "_FIELD_L4_SRC_PORT\020#\022\033\n\027FILTER_FIELD_INP"
+    "UT_PORT\020$\022#\n\037FILTER_FIELD_I_INPUT_SNMP_A"
+    "LIAS\020%\022.\n*FILTER_FIELD_I_INPUT_INTERFACE"
+    "_DESCRIPTION\020&\022\032\n\026FILTER_FIELD_BOTH_PKTS"
+    "\020\'\022\036\n\032FILTER_FIELD_I_DEVICE_NAME\020(\022\031\n\025FI"
+    "LTER_FIELD_PROTOCOL\020)\022\032\n\026FILTER_FIELD_TC"
+    "P_FLAGS\020*\022\036\n\032FILTER_FIELD_TCP_FLAGS_RAW\020"
+    "+\022\037\n\033FILTER_FIELD_TCP_RETRANSMIT\020,\022\024\n\020FI"
+    "LTER_FIELD_TOS\020-\022\030\n\024FILTER_FIELD_VLAN_IN"
+    "\020.\022\031\n\025FILTER_FIELD_VLAN_OUT\020/*\331\002\n\016Filter"
+    "Operator\022\037\n\033FILTER_OPERATOR_UNSPECIFIED\020"
+    "\000\022\031\n\025FILTER_OPERATOR_EQUAL\020\001\022\035\n\031FILTER_O"
+    "PERATOR_NOT_EQUAL\020\002\022\034\n\030FILTER_OPERATOR_C"
+    "ONTAINS\020\003\022 \n\034FILTER_OPERATOR_NOT_CONTAIN"
+    "S\020\004\022\"\n\036FILTER_OPERATOR_REGEX_CONTAINS\020\005\022"
+    "&\n\"FILTER_OPERATOR_REGEX_NOT_CONTAINS\020\006\022"
+    " \n\034FILTER_OPERATOR_GREATER_THAN\020\007\022\035\n\031FIL"
+    "TER_OPERATOR_LESS_THAN\020\010\022\037\n\033FILTER_OPERA"
+    "TOR_BITWISE_AND\020\t*u\n\013FilterLevel\022\034\n\030FILT"
+    "ER_LEVEL_UNSPECIFIED\020\000\022\030\n\024FILTER_LEVEL_C"
+    "OMPANY\020\001\022\027\n\023FILTER_LEVEL_GLOBAL\020\002\022\025\n\021FIL"
+    "TER_LEVEL_USER\020\003B[ZYgithub.com/kentik/ap"
+    "i-schema-public/gen/go/kentik/saved_filt"
+    "er/v202501alpha1;saved_filterb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fsaved_5ffilter_2fv202501alpha1_2fsaved_5ffilter_5fmessage_2eproto_deps[5] =
     {
@@ -348,13 +427,13 @@ static ::absl::once_flag descriptor_table_kentik_2fsaved_5ffilter_2fv202501alpha
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fsaved_5ffilter_2fv202501alpha1_2fsaved_5ffilter_5fmessage_2eproto = {
     false,
     false,
-    4345,
+    5117,
     descriptor_table_protodef_kentik_2fsaved_5ffilter_2fv202501alpha1_2fsaved_5ffilter_5fmessage_2eproto,
     "kentik/saved_filter/v202501alpha1/saved_filter_message.proto",
     &descriptor_table_kentik_2fsaved_5ffilter_2fv202501alpha1_2fsaved_5ffilter_5fmessage_2eproto_once,
     descriptor_table_kentik_2fsaved_5ffilter_2fv202501alpha1_2fsaved_5ffilter_5fmessage_2eproto_deps,
     5,
-    4,
+    5,
     schemas,
     file_default_instances,
     TableStruct_kentik_2fsaved_5ffilter_2fv202501alpha1_2fsaved_5ffilter_5fmessage_2eproto::offsets,
@@ -410,6 +489,10 @@ inline PROTOBUF_NDEBUG_INLINE SavedFilterFilter::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
     const Impl_& from, const ::kentik::saved_filter::v202501alpha1::SavedFilterFilter& from_msg)
       : filter_value_(arena, from.filter_value_),
+        filter_field_string_(arena, from.filter_field_string_),
+        metric_(arena, from.metric_),
+        aggregate_(arena, from.aggregate_),
+        right_filter_field_(arena, from.right_filter_field_),
         _cached_size_{0} {}
 
 SavedFilterFilter::SavedFilterFilter(
@@ -439,6 +522,10 @@ inline PROTOBUF_NDEBUG_INLINE SavedFilterFilter::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
       : filter_value_(arena),
+        filter_field_string_(arena),
+        metric_(arena),
+        aggregate_(arena),
+        right_filter_field_(arena),
         _cached_size_{0} {}
 
 inline void SavedFilterFilter::SharedCtor(::_pb::Arena* arena) {
@@ -459,6 +546,10 @@ inline void SavedFilterFilter::SharedDtor(MessageLite& self) {
   this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   ABSL_DCHECK(this_.GetArena() == nullptr);
   this_._impl_.filter_value_.Destroy();
+  this_._impl_.filter_field_string_.Destroy();
+  this_._impl_.metric_.Destroy();
+  this_._impl_.aggregate_.Destroy();
+  this_._impl_.right_filter_field_.Destroy();
   this_._impl_.~Impl_();
 }
 
@@ -498,15 +589,15 @@ const ::google::protobuf::internal::ClassData* SavedFilterFilter::GetClassData()
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 3, 0, 72, 2> SavedFilterFilter::_table_ = {
+const ::_pbi::TcParseTable<3, 7, 0, 124, 2> SavedFilterFilter::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    3, 24,  // max_field_number, fast_idx_mask
+    7, 56,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967288,  // skipmap
+    4294967168,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    3,  // num_field_entries
+    7,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     _class_data_.base(),
@@ -526,6 +617,18 @@ const ::_pbi::TcParseTable<2, 3, 0, 72, 2> SavedFilterFilter::_table_ = {
     // string filter_value = 3 [json_name = "filterValue", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::FastUS1,
      {26, 63, 0, PROTOBUF_FIELD_OFFSET(SavedFilterFilter, _impl_.filter_value_)}},
+    // string filter_field_string = 4 [json_name = "filterFieldString", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {34, 63, 0, PROTOBUF_FIELD_OFFSET(SavedFilterFilter, _impl_.filter_field_string_)}},
+    // string metric = 5 [json_name = "metric", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {42, 63, 0, PROTOBUF_FIELD_OFFSET(SavedFilterFilter, _impl_.metric_)}},
+    // string aggregate = 6 [json_name = "aggregate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {50, 63, 0, PROTOBUF_FIELD_OFFSET(SavedFilterFilter, _impl_.aggregate_)}},
+    // string right_filter_field = 7 [json_name = "rightFilterField", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {58, 63, 0, PROTOBUF_FIELD_OFFSET(SavedFilterFilter, _impl_.right_filter_field_)}},
   }}, {{
     65535, 65535
   }}, {{
@@ -538,12 +641,28 @@ const ::_pbi::TcParseTable<2, 3, 0, 72, 2> SavedFilterFilter::_table_ = {
     // string filter_value = 3 [json_name = "filterValue", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {PROTOBUF_FIELD_OFFSET(SavedFilterFilter, _impl_.filter_value_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string filter_field_string = 4 [json_name = "filterFieldString", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(SavedFilterFilter, _impl_.filter_field_string_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string metric = 5 [json_name = "metric", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(SavedFilterFilter, _impl_.metric_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string aggregate = 6 [json_name = "aggregate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(SavedFilterFilter, _impl_.aggregate_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string right_filter_field = 7 [json_name = "rightFilterField", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(SavedFilterFilter, _impl_.right_filter_field_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
   }},
   // no aux_entries
   {{
-    "\63\0\0\14\0\0\0\0"
+    "\63\0\0\14\23\6\11\22"
     "kentik.saved_filter.v202501alpha1.SavedFilterFilter"
     "filter_value"
+    "filter_field_string"
+    "metric"
+    "aggregate"
+    "right_filter_field"
   }},
 };
 
@@ -555,6 +674,10 @@ PROTOBUF_NOINLINE void SavedFilterFilter::Clear() {
   (void) cached_has_bits;
 
   _impl_.filter_value_.ClearToEmpty();
+  _impl_.filter_field_string_.ClearToEmpty();
+  _impl_.metric_.ClearToEmpty();
+  _impl_.aggregate_.ClearToEmpty();
+  _impl_.right_filter_field_.ClearToEmpty();
   ::memset(&_impl_.filter_field_, 0, static_cast<::size_t>(
       reinterpret_cast<char*>(&_impl_.operator__) -
       reinterpret_cast<char*>(&_impl_.filter_field_)) + sizeof(_impl_.operator__));
@@ -598,6 +721,38 @@ PROTOBUF_NOINLINE void SavedFilterFilter::Clear() {
             target = stream->WriteStringMaybeAliased(3, _s, target);
           }
 
+          // string filter_field_string = 4 [json_name = "filterFieldString", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_filter_field_string().empty()) {
+            const std::string& _s = this_._internal_filter_field_string();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.saved_filter.v202501alpha1.SavedFilterFilter.filter_field_string");
+            target = stream->WriteStringMaybeAliased(4, _s, target);
+          }
+
+          // string metric = 5 [json_name = "metric", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_metric().empty()) {
+            const std::string& _s = this_._internal_metric();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.saved_filter.v202501alpha1.SavedFilterFilter.metric");
+            target = stream->WriteStringMaybeAliased(5, _s, target);
+          }
+
+          // string aggregate = 6 [json_name = "aggregate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_aggregate().empty()) {
+            const std::string& _s = this_._internal_aggregate();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.saved_filter.v202501alpha1.SavedFilterFilter.aggregate");
+            target = stream->WriteStringMaybeAliased(6, _s, target);
+          }
+
+          // string right_filter_field = 7 [json_name = "rightFilterField", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_right_filter_field().empty()) {
+            const std::string& _s = this_._internal_right_filter_field();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.saved_filter.v202501alpha1.SavedFilterFilter.right_filter_field");
+            target = stream->WriteStringMaybeAliased(7, _s, target);
+          }
+
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -628,6 +783,26 @@ PROTOBUF_NOINLINE void SavedFilterFilter::Clear() {
               total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                               this_._internal_filter_value());
             }
+            // string filter_field_string = 4 [json_name = "filterFieldString", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_filter_field_string().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_filter_field_string());
+            }
+            // string metric = 5 [json_name = "metric", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_metric().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_metric());
+            }
+            // string aggregate = 6 [json_name = "aggregate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_aggregate().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_aggregate());
+            }
+            // string right_filter_field = 7 [json_name = "rightFilterField", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_right_filter_field().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_right_filter_field());
+            }
             // .kentik.saved_filter.v202501alpha1.FilterField filter_field = 1 [json_name = "filterField", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
             if (this_._internal_filter_field() != 0) {
               total_size += 1 +
@@ -654,6 +829,18 @@ void SavedFilterFilter::MergeImpl(::google::protobuf::MessageLite& to_msg, const
   if (!from._internal_filter_value().empty()) {
     _this->_internal_set_filter_value(from._internal_filter_value());
   }
+  if (!from._internal_filter_field_string().empty()) {
+    _this->_internal_set_filter_field_string(from._internal_filter_field_string());
+  }
+  if (!from._internal_metric().empty()) {
+    _this->_internal_set_metric(from._internal_metric());
+  }
+  if (!from._internal_aggregate().empty()) {
+    _this->_internal_set_aggregate(from._internal_aggregate());
+  }
+  if (!from._internal_right_filter_field().empty()) {
+    _this->_internal_set_right_filter_field(from._internal_right_filter_field());
+  }
   if (from._internal_filter_field() != 0) {
     _this->_impl_.filter_field_ = from._impl_.filter_field_;
   }
@@ -677,6 +864,10 @@ void SavedFilterFilter::InternalSwap(SavedFilterFilter* PROTOBUF_RESTRICT other)
   ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.filter_value_, &other->_impl_.filter_value_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.filter_field_string_, &other->_impl_.filter_field_string_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.metric_, &other->_impl_.metric_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.aggregate_, &other->_impl_.aggregate_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.right_filter_field_, &other->_impl_.right_filter_field_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(SavedFilterFilter, _impl_.operator__)
       + sizeof(SavedFilterFilter::_impl_.operator__)
@@ -686,6 +877,262 @@ void SavedFilterFilter::InternalSwap(SavedFilterFilter* PROTOBUF_RESTRICT other)
 }
 
 ::google::protobuf::Metadata SavedFilterFilter::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class SavedFilterFilterId::_Internal {
+ public:
+};
+
+SavedFilterFilterId::SavedFilterFilterId(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.saved_filter.v202501alpha1.SavedFilterFilterId)
+}
+inline PROTOBUF_NDEBUG_INLINE SavedFilterFilterId::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::kentik::saved_filter::v202501alpha1::SavedFilterFilterId& from_msg)
+      : filter_id_(arena, from.filter_id_),
+        _cached_size_{0} {}
+
+SavedFilterFilterId::SavedFilterFilterId(
+    ::google::protobuf::Arena* arena,
+    const SavedFilterFilterId& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SavedFilterFilterId* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  _impl_.is_not_ = from._impl_.is_not_;
+
+  // @@protoc_insertion_point(copy_constructor:kentik.saved_filter.v202501alpha1.SavedFilterFilterId)
+}
+inline PROTOBUF_NDEBUG_INLINE SavedFilterFilterId::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : filter_id_(arena),
+        _cached_size_{0} {}
+
+inline void SavedFilterFilterId::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.is_not_ = {};
+}
+SavedFilterFilterId::~SavedFilterFilterId() {
+  // @@protoc_insertion_point(destructor:kentik.saved_filter.v202501alpha1.SavedFilterFilterId)
+  SharedDtor(*this);
+}
+inline void SavedFilterFilterId::SharedDtor(MessageLite& self) {
+  SavedFilterFilterId& this_ = static_cast<SavedFilterFilterId&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.filter_id_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* SavedFilterFilterId::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) SavedFilterFilterId(arena);
+}
+constexpr auto SavedFilterFilterId::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(SavedFilterFilterId),
+                                            alignof(SavedFilterFilterId));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull SavedFilterFilterId::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_SavedFilterFilterId_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &SavedFilterFilterId::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<SavedFilterFilterId>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &SavedFilterFilterId::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<SavedFilterFilterId>(), &SavedFilterFilterId::ByteSizeLong,
+            &SavedFilterFilterId::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(SavedFilterFilterId, _impl_._cached_size_),
+        false,
+    },
+    &SavedFilterFilterId::kDescriptorMethods,
+    &descriptor_table_kentik_2fsaved_5ffilter_2fv202501alpha1_2fsaved_5ffilter_5fmessage_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* SavedFilterFilterId::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 71, 2> SavedFilterFilterId::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::saved_filter::v202501alpha1::SavedFilterFilterId>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // bool is_not = 2 [json_name = "isNot", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(SavedFilterFilterId, _impl_.is_not_), 63>(),
+     {16, 63, 0, PROTOBUF_FIELD_OFFSET(SavedFilterFilterId, _impl_.is_not_)}},
+    // string filter_id = 1 [json_name = "filterId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(SavedFilterFilterId, _impl_.filter_id_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string filter_id = 1 [json_name = "filterId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(SavedFilterFilterId, _impl_.filter_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // bool is_not = 2 [json_name = "isNot", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(SavedFilterFilterId, _impl_.is_not_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
+  }},
+  // no aux_entries
+  {{
+    "\65\11\0\0\0\0\0\0"
+    "kentik.saved_filter.v202501alpha1.SavedFilterFilterId"
+    "filter_id"
+  }},
+};
+
+PROTOBUF_NOINLINE void SavedFilterFilterId::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.saved_filter.v202501alpha1.SavedFilterFilterId)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.filter_id_.ClearToEmpty();
+  _impl_.is_not_ = false;
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* SavedFilterFilterId::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const SavedFilterFilterId& this_ = static_cast<const SavedFilterFilterId&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* SavedFilterFilterId::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const SavedFilterFilterId& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:kentik.saved_filter.v202501alpha1.SavedFilterFilterId)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // string filter_id = 1 [json_name = "filterId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_filter_id().empty()) {
+            const std::string& _s = this_._internal_filter_id();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.saved_filter.v202501alpha1.SavedFilterFilterId.filter_id");
+            target = stream->WriteStringMaybeAliased(1, _s, target);
+          }
+
+          // bool is_not = 2 [json_name = "isNot", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (this_._internal_is_not() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteBoolToArray(
+                2, this_._internal_is_not(), target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:kentik.saved_filter.v202501alpha1.SavedFilterFilterId)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t SavedFilterFilterId::ByteSizeLong(const MessageLite& base) {
+          const SavedFilterFilterId& this_ = static_cast<const SavedFilterFilterId&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t SavedFilterFilterId::ByteSizeLong() const {
+          const SavedFilterFilterId& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:kentik.saved_filter.v202501alpha1.SavedFilterFilterId)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // string filter_id = 1 [json_name = "filterId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_filter_id().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_filter_id());
+            }
+            // bool is_not = 2 [json_name = "isNot", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (this_._internal_is_not() != 0) {
+              total_size += 2;
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void SavedFilterFilterId::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<SavedFilterFilterId*>(&to_msg);
+  auto& from = static_cast<const SavedFilterFilterId&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:kentik.saved_filter.v202501alpha1.SavedFilterFilterId)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_filter_id().empty()) {
+    _this->_internal_set_filter_id(from._internal_filter_id());
+  }
+  if (from._internal_is_not() != 0) {
+    _this->_impl_.is_not_ = from._impl_.is_not_;
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SavedFilterFilterId::CopyFrom(const SavedFilterFilterId& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.saved_filter.v202501alpha1.SavedFilterFilterId)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void SavedFilterFilterId::InternalSwap(SavedFilterFilterId* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.filter_id_, &other->_impl_.filter_id_, arena);
+        swap(_impl_.is_not_, other->_impl_.is_not_);
+}
+
+::google::protobuf::Metadata SavedFilterFilterId::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================
@@ -707,6 +1154,8 @@ inline PROTOBUF_NDEBUG_INLINE SavedFilterFilterGroup::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
     const Impl_& from, const ::kentik::saved_filter::v202501alpha1::SavedFilterFilterGroup& from_msg)
       : filters_{visibility, arena, from.filters_},
+        saved_filter_ids_{visibility, arena, from.saved_filter_ids_},
+        nested_filter_groups_{visibility, arena, from.nested_filter_groups_},
         _cached_size_{0} {}
 
 SavedFilterFilterGroup::SavedFilterFilterGroup(
@@ -736,6 +1185,8 @@ inline PROTOBUF_NDEBUG_INLINE SavedFilterFilterGroup::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
       : filters_{visibility, arena},
+        saved_filter_ids_{visibility, arena},
+        nested_filter_groups_{visibility, arena},
         _cached_size_{0} {}
 
 inline void SavedFilterFilterGroup::SharedCtor(::_pb::Arena* arena) {
@@ -766,6 +1217,14 @@ constexpr auto SavedFilterFilterGroup::InternalNewImpl_() {
   constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
       PROTOBUF_FIELD_OFFSET(SavedFilterFilterGroup, _impl_.filters_) +
           decltype(SavedFilterFilterGroup::_impl_.filters_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+      PROTOBUF_FIELD_OFFSET(SavedFilterFilterGroup, _impl_.saved_filter_ids_) +
+          decltype(SavedFilterFilterGroup::_impl_.saved_filter_ids_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+      PROTOBUF_FIELD_OFFSET(SavedFilterFilterGroup, _impl_.nested_filter_groups_) +
+          decltype(SavedFilterFilterGroup::_impl_.nested_filter_groups_)::
               InternalGetArenaOffset(
                   ::google::protobuf::Message::internal_visibility()),
   });
@@ -806,16 +1265,16 @@ const ::google::protobuf::internal::ClassData* SavedFilterFilterGroup::GetClassD
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 3, 1, 0, 2> SavedFilterFilterGroup::_table_ = {
+const ::_pbi::TcParseTable<3, 5, 3, 0, 2> SavedFilterFilterGroup::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    3, 24,  // max_field_number, fast_idx_mask
+    5, 56,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967288,  // skipmap
+    4294967264,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    3,  // num_field_entries
-    1,  // num_aux_entries
+    5,  // num_field_entries
+    3,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
     nullptr,  // post_loop_handler
@@ -834,6 +1293,14 @@ const ::_pbi::TcParseTable<2, 3, 1, 0, 2> SavedFilterFilterGroup::_table_ = {
     // bool not = 3 [json_name = "not", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(SavedFilterFilterGroup, _impl_.not__), 63>(),
      {24, 63, 0, PROTOBUF_FIELD_OFFSET(SavedFilterFilterGroup, _impl_.not__)}},
+    // repeated .kentik.saved_filter.v202501alpha1.SavedFilterFilterId saved_filter_ids = 4 [json_name = "savedFilterIds", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastMtR1,
+     {34, 63, 1, PROTOBUF_FIELD_OFFSET(SavedFilterFilterGroup, _impl_.saved_filter_ids_)}},
+    // repeated .kentik.saved_filter.v202501alpha1.SavedFilterFilterGroup nested_filter_groups = 5 [json_name = "nestedFilterGroups", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastMtR1,
+     {42, 63, 2, PROTOBUF_FIELD_OFFSET(SavedFilterFilterGroup, _impl_.nested_filter_groups_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
   }}, {{
@@ -846,8 +1313,16 @@ const ::_pbi::TcParseTable<2, 3, 1, 0, 2> SavedFilterFilterGroup::_table_ = {
     // bool not = 3 [json_name = "not", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {PROTOBUF_FIELD_OFFSET(SavedFilterFilterGroup, _impl_.not__), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kBool)},
+    // repeated .kentik.saved_filter.v202501alpha1.SavedFilterFilterId saved_filter_ids = 4 [json_name = "savedFilterIds", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(SavedFilterFilterGroup, _impl_.saved_filter_ids_), 0, 1,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+    // repeated .kentik.saved_filter.v202501alpha1.SavedFilterFilterGroup nested_filter_groups = 5 [json_name = "nestedFilterGroups", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(SavedFilterFilterGroup, _impl_.nested_filter_groups_), 0, 2,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
   }}, {{
     {::_pbi::TcParser::GetTable<::kentik::saved_filter::v202501alpha1::SavedFilterFilter>()},
+    {::_pbi::TcParser::GetTable<::kentik::saved_filter::v202501alpha1::SavedFilterFilterId>()},
+    {::_pbi::TcParser::GetTable<::kentik::saved_filter::v202501alpha1::SavedFilterFilterGroup>()},
   }}, {{
   }},
 };
@@ -860,6 +1335,8 @@ PROTOBUF_NOINLINE void SavedFilterFilterGroup::Clear() {
   (void) cached_has_bits;
 
   _impl_.filters_.Clear();
+  _impl_.saved_filter_ids_.Clear();
+  _impl_.nested_filter_groups_.Clear();
   ::memset(&_impl_.any_, 0, static_cast<::size_t>(
       reinterpret_cast<char*>(&_impl_.not__) -
       reinterpret_cast<char*>(&_impl_.any_)) + sizeof(_impl_.not__));
@@ -906,6 +1383,28 @@ PROTOBUF_NOINLINE void SavedFilterFilterGroup::Clear() {
                 3, this_._internal_not_(), target);
           }
 
+          // repeated .kentik.saved_filter.v202501alpha1.SavedFilterFilterId saved_filter_ids = 4 [json_name = "savedFilterIds", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          for (unsigned i = 0, n = static_cast<unsigned>(
+                                   this_._internal_saved_filter_ids_size());
+               i < n; i++) {
+            const auto& repfield = this_._internal_saved_filter_ids().Get(i);
+            target =
+                ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                    4, repfield, repfield.GetCachedSize(),
+                    target, stream);
+          }
+
+          // repeated .kentik.saved_filter.v202501alpha1.SavedFilterFilterGroup nested_filter_groups = 5 [json_name = "nestedFilterGroups", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          for (unsigned i = 0, n = static_cast<unsigned>(
+                                   this_._internal_nested_filter_groups_size());
+               i < n; i++) {
+            const auto& repfield = this_._internal_nested_filter_groups().Get(i);
+            target =
+                ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                    5, repfield, repfield.GetCachedSize(),
+                    target, stream);
+          }
+
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -938,6 +1437,20 @@ PROTOBUF_NOINLINE void SavedFilterFilterGroup::Clear() {
                 total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
               }
             }
+            // repeated .kentik.saved_filter.v202501alpha1.SavedFilterFilterId saved_filter_ids = 4 [json_name = "savedFilterIds", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            {
+              total_size += 1UL * this_._internal_saved_filter_ids_size();
+              for (const auto& msg : this_._internal_saved_filter_ids()) {
+                total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+              }
+            }
+            // repeated .kentik.saved_filter.v202501alpha1.SavedFilterFilterGroup nested_filter_groups = 5 [json_name = "nestedFilterGroups", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            {
+              total_size += 1UL * this_._internal_nested_filter_groups_size();
+              for (const auto& msg : this_._internal_nested_filter_groups()) {
+                total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+              }
+            }
           }
            {
             // bool any = 1 [json_name = "any", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -963,6 +1476,10 @@ void SavedFilterFilterGroup::MergeImpl(::google::protobuf::MessageLite& to_msg, 
 
   _this->_internal_mutable_filters()->MergeFrom(
       from._internal_filters());
+  _this->_internal_mutable_saved_filter_ids()->MergeFrom(
+      from._internal_saved_filter_ids());
+  _this->_internal_mutable_nested_filter_groups()->MergeFrom(
+      from._internal_nested_filter_groups());
   if (from._internal_any() != 0) {
     _this->_impl_.any_ = from._impl_.any_;
   }
@@ -984,6 +1501,8 @@ void SavedFilterFilterGroup::InternalSwap(SavedFilterFilterGroup* PROTOBUF_RESTR
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.filters_.InternalSwap(&other->_impl_.filters_);
+  _impl_.saved_filter_ids_.InternalSwap(&other->_impl_.saved_filter_ids_);
+  _impl_.nested_filter_groups_.InternalSwap(&other->_impl_.nested_filter_groups_);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(SavedFilterFilterGroup, _impl_.not__)
       + sizeof(SavedFilterFilterGroup::_impl_.not__)

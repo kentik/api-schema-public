@@ -175,6 +175,78 @@ struct InterfaceClassificationDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 InterfaceClassificationDefaultTypeInternal _InterfaceClassification_default_instance_;
+              template <typename>
+PROTOBUF_CONSTEXPR Interface_VrfEntry_DoNotUse::Interface_VrfEntry_DoNotUse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : Interface_VrfEntry_DoNotUse::MapEntry(_class_data_.base()){}
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : Interface_VrfEntry_DoNotUse::MapEntry() {
+}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+struct Interface_VrfEntry_DoNotUseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR Interface_VrfEntry_DoNotUseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~Interface_VrfEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    Interface_VrfEntry_DoNotUse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Interface_VrfEntry_DoNotUseDefaultTypeInternal _Interface_VrfEntry_DoNotUse_default_instance_;
+              template <typename>
+PROTOBUF_CONSTEXPR Interface_InterfaceTagsEntry_DoNotUse::Interface_InterfaceTagsEntry_DoNotUse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : Interface_InterfaceTagsEntry_DoNotUse::MapEntry(_class_data_.base()){}
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : Interface_InterfaceTagsEntry_DoNotUse::MapEntry() {
+}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+struct Interface_InterfaceTagsEntry_DoNotUseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR Interface_InterfaceTagsEntry_DoNotUseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~Interface_InterfaceTagsEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    Interface_InterfaceTagsEntry_DoNotUse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Interface_InterfaceTagsEntry_DoNotUseDefaultTypeInternal _Interface_InterfaceTagsEntry_DoNotUse_default_instance_;
+              template <typename>
+PROTOBUF_CONSTEXPR Interface_InterfaceKvsEntry_DoNotUse::Interface_InterfaceKvsEntry_DoNotUse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : Interface_InterfaceKvsEntry_DoNotUse::MapEntry(_class_data_.base()){}
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : Interface_InterfaceKvsEntry_DoNotUse::MapEntry() {
+}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+struct Interface_InterfaceKvsEntry_DoNotUseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR Interface_InterfaceKvsEntry_DoNotUseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~Interface_InterfaceKvsEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    Interface_InterfaceKvsEntry_DoNotUse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Interface_InterfaceKvsEntry_DoNotUseDefaultTypeInternal _Interface_InterfaceKvsEntry_DoNotUse_default_instance_;
+              template <typename>
+PROTOBUF_CONSTEXPR Interface_ExtraInfoEntry_DoNotUse::Interface_ExtraInfoEntry_DoNotUse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : Interface_ExtraInfoEntry_DoNotUse::MapEntry(_class_data_.base()){}
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : Interface_ExtraInfoEntry_DoNotUse::MapEntry() {
+}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+struct Interface_ExtraInfoEntry_DoNotUseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR Interface_ExtraInfoEntry_DoNotUseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~Interface_ExtraInfoEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    Interface_ExtraInfoEntry_DoNotUse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Interface_ExtraInfoEntry_DoNotUseDefaultTypeInternal _Interface_ExtraInfoEntry_DoNotUse_default_instance_;
 
 inline constexpr GetInterfaceRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -486,6 +558,10 @@ inline constexpr Interface::Impl_::Impl_(
       : _cached_size_{0},
         top_nexthop_asns_{},
         _top_nexthop_asns_cached_byte_size_{0},
+        interface_kvs_{},
+        interface_tags_{},
+        extra_info_{},
+        vrf_{},
         id_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
@@ -510,12 +586,36 @@ inline constexpr Interface::Impl_::Impl_(
         provider_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
+        interface_status_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        initial_snmp_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        initial_snmp_alias_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        initial_interface_description_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        secondary_ips_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        initial_provider_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        vrf_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
         cdate_{nullptr},
         edate_{nullptr},
         snmp_speed_{0},
         snmp_type_{0},
         connectivity_type_{static_cast< ::kentik::interface::v202108alpha1::ConnectivityType >(0)},
-        network_boundary_{static_cast< ::kentik::interface::v202108alpha1::NetworkBoundary >(0)} {}
+        network_boundary_{static_cast< ::kentik::interface::v202108alpha1::NetworkBoundary >(0)},
+        initial_snmp_speed_{0},
+        initial_connectivity_type_{static_cast< ::kentik::interface::v202108alpha1::ConnectivityType >(0)},
+        initial_network_boundary_{static_cast< ::kentik::interface::v202108alpha1::NetworkBoundary >(0)} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR Interface::Interface(::_pbi::ConstantInitialized)
@@ -768,6 +868,54 @@ static constexpr const ::_pb::ServiceDescriptor**
 const ::uint32_t
     TableStruct_kentik_2finterface_2fv202108alpha1_2finterface_2eproto::offsets[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
         protodesc_cold) = {
+        PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface_InterfaceKvsEntry_DoNotUse, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface_InterfaceKvsEntry_DoNotUse, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface_InterfaceKvsEntry_DoNotUse, _impl_.key_),
+        PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface_InterfaceKvsEntry_DoNotUse, _impl_.value_),
+        0,
+        1,
+        PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface_InterfaceTagsEntry_DoNotUse, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface_InterfaceTagsEntry_DoNotUse, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface_InterfaceTagsEntry_DoNotUse, _impl_.key_),
+        PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface_InterfaceTagsEntry_DoNotUse, _impl_.value_),
+        0,
+        1,
+        PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface_ExtraInfoEntry_DoNotUse, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface_ExtraInfoEntry_DoNotUse, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface_ExtraInfoEntry_DoNotUse, _impl_.key_),
+        PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface_ExtraInfoEntry_DoNotUse, _impl_.value_),
+        0,
+        1,
+        PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface_VrfEntry_DoNotUse, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface_VrfEntry_DoNotUse, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface_VrfEntry_DoNotUse, _impl_.key_),
+        PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface_VrfEntry_DoNotUse, _impl_.value_),
+        0,
+        1,
         PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface, _impl_._has_bits_),
         PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -791,6 +939,20 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface, _impl_.network_boundary_),
         PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface, _impl_.top_nexthop_asns_),
         PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface, _impl_.provider_),
+        PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface, _impl_.interface_kvs_),
+        PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface, _impl_.interface_tags_),
+        PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface, _impl_.interface_status_),
+        PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface, _impl_.extra_info_),
+        PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface, _impl_.initial_snmp_id_),
+        PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface, _impl_.initial_snmp_alias_),
+        PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface, _impl_.initial_interface_description_),
+        PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface, _impl_.initial_snmp_speed_),
+        PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface, _impl_.secondary_ips_),
+        PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface, _impl_.initial_connectivity_type_),
+        PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface, _impl_.initial_network_boundary_),
+        PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface, _impl_.initial_provider_),
+        PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface, _impl_.vrf_id_),
+        PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface, _impl_.vrf_),
         ~0u,
         ~0u,
         ~0u,
@@ -801,6 +963,20 @@ const ::uint32_t
         ~0u,
         0,
         1,
+        ~0u,
+        ~0u,
+        ~0u,
+        ~0u,
+        ~0u,
+        ~0u,
+        ~0u,
+        ~0u,
+        ~0u,
+        ~0u,
+        ~0u,
+        ~0u,
+        ~0u,
+        ~0u,
         ~0u,
         ~0u,
         ~0u,
@@ -1152,32 +1328,40 @@ const ::uint32_t
 
 static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-        {0, 23, -1, sizeof(::kentik::interface::v202108alpha1::Interface)},
-        {38, -1, -1, sizeof(::kentik::interface::v202108alpha1::InterfaceClassification)},
-        {49, -1, -1, sizeof(::kentik::interface::v202108alpha1::ClassifyCounter)},
-        {63, 95, -1, sizeof(::kentik::interface::v202108alpha1::InterfaceClassifyInfo)},
-        {119, 138, -1, sizeof(::kentik::interface::v202108alpha1::DeviceClassifyInfo)},
-        {149, -1, -1, sizeof(::kentik::interface::v202108alpha1::InterfaceFilter)},
-        {164, -1, -1, sizeof(::kentik::interface::v202108alpha1::AutoClassifyRequest)},
-        {172, 190, -1, sizeof(::kentik::interface::v202108alpha1::AutoClassifyResponse)},
-        {200, -1, -1, sizeof(::kentik::interface::v202108alpha1::ManualClassifyRequest)},
-        {212, -1, -1, sizeof(::kentik::interface::v202108alpha1::ManualClassifyResponse)},
-        {221, 230, -1, sizeof(::kentik::interface::v202108alpha1::ListInterfaceRequest)},
-        {231, -1, -1, sizeof(::kentik::interface::v202108alpha1::ListInterfaceResponse)},
-        {242, -1, -1, sizeof(::kentik::interface::v202108alpha1::GetInterfaceRequest)},
-        {251, 260, -1, sizeof(::kentik::interface::v202108alpha1::GetInterfaceResponse)},
-        {261, 270, -1, sizeof(::kentik::interface::v202108alpha1::CreateInterfaceRequest)},
-        {271, 280, -1, sizeof(::kentik::interface::v202108alpha1::CreateInterfaceResponse)},
-        {281, 290, -1, sizeof(::kentik::interface::v202108alpha1::UpdateInterfaceRequest)},
-        {291, 300, -1, sizeof(::kentik::interface::v202108alpha1::UpdateInterfaceResponse)},
-        {301, -1, -1, sizeof(::kentik::interface::v202108alpha1::DeleteInterfaceRequest)},
-        {310, -1, -1, sizeof(::kentik::interface::v202108alpha1::DeleteInterfaceResponse)},
-        {318, -1, -1, sizeof(::kentik::interface::v202108alpha1::Match)},
-        {329, -1, -1, sizeof(::kentik::interface::v202108alpha1::Action)},
-        {341, -1, -1, sizeof(::kentik::interface::v202108alpha1::DeviceFilter)},
-        {354, 371, -1, sizeof(::kentik::interface::v202108alpha1::Rule)},
+        {0, 10, -1, sizeof(::kentik::interface::v202108alpha1::Interface_InterfaceKvsEntry_DoNotUse)},
+        {12, 22, -1, sizeof(::kentik::interface::v202108alpha1::Interface_InterfaceTagsEntry_DoNotUse)},
+        {24, 34, -1, sizeof(::kentik::interface::v202108alpha1::Interface_ExtraInfoEntry_DoNotUse)},
+        {36, 46, -1, sizeof(::kentik::interface::v202108alpha1::Interface_VrfEntry_DoNotUse)},
+        {48, 85, -1, sizeof(::kentik::interface::v202108alpha1::Interface)},
+        {114, -1, -1, sizeof(::kentik::interface::v202108alpha1::InterfaceClassification)},
+        {125, -1, -1, sizeof(::kentik::interface::v202108alpha1::ClassifyCounter)},
+        {139, 171, -1, sizeof(::kentik::interface::v202108alpha1::InterfaceClassifyInfo)},
+        {195, 214, -1, sizeof(::kentik::interface::v202108alpha1::DeviceClassifyInfo)},
+        {225, -1, -1, sizeof(::kentik::interface::v202108alpha1::InterfaceFilter)},
+        {240, -1, -1, sizeof(::kentik::interface::v202108alpha1::AutoClassifyRequest)},
+        {248, 266, -1, sizeof(::kentik::interface::v202108alpha1::AutoClassifyResponse)},
+        {276, -1, -1, sizeof(::kentik::interface::v202108alpha1::ManualClassifyRequest)},
+        {288, -1, -1, sizeof(::kentik::interface::v202108alpha1::ManualClassifyResponse)},
+        {297, 306, -1, sizeof(::kentik::interface::v202108alpha1::ListInterfaceRequest)},
+        {307, -1, -1, sizeof(::kentik::interface::v202108alpha1::ListInterfaceResponse)},
+        {318, -1, -1, sizeof(::kentik::interface::v202108alpha1::GetInterfaceRequest)},
+        {327, 336, -1, sizeof(::kentik::interface::v202108alpha1::GetInterfaceResponse)},
+        {337, 346, -1, sizeof(::kentik::interface::v202108alpha1::CreateInterfaceRequest)},
+        {347, 356, -1, sizeof(::kentik::interface::v202108alpha1::CreateInterfaceResponse)},
+        {357, 366, -1, sizeof(::kentik::interface::v202108alpha1::UpdateInterfaceRequest)},
+        {367, 376, -1, sizeof(::kentik::interface::v202108alpha1::UpdateInterfaceResponse)},
+        {377, -1, -1, sizeof(::kentik::interface::v202108alpha1::DeleteInterfaceRequest)},
+        {386, -1, -1, sizeof(::kentik::interface::v202108alpha1::DeleteInterfaceResponse)},
+        {394, -1, -1, sizeof(::kentik::interface::v202108alpha1::Match)},
+        {405, -1, -1, sizeof(::kentik::interface::v202108alpha1::Action)},
+        {417, -1, -1, sizeof(::kentik::interface::v202108alpha1::DeviceFilter)},
+        {430, 447, -1, sizeof(::kentik::interface::v202108alpha1::Rule)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
+    &::kentik::interface::v202108alpha1::_Interface_InterfaceKvsEntry_DoNotUse_default_instance_._instance,
+    &::kentik::interface::v202108alpha1::_Interface_InterfaceTagsEntry_DoNotUse_default_instance_._instance,
+    &::kentik::interface::v202108alpha1::_Interface_ExtraInfoEntry_DoNotUse_default_instance_._instance,
+    &::kentik::interface::v202108alpha1::_Interface_VrfEntry_DoNotUse_default_instance_._instance,
     &::kentik::interface::v202108alpha1::_Interface_default_instance_._instance,
     &::kentik::interface::v202108alpha1::_InterfaceClassification_default_instance_._instance,
     &::kentik::interface::v202108alpha1::_ClassifyCounter_default_instance_._instance,
@@ -1211,7 +1395,7 @@ const char descriptor_table_protodef_kentik_2finterface_2fv202108alpha1_2finterf
     "pi/client.proto\032.protoc-gen-openapiv2/op"
     "tions/annotations.proto\032%kentik/core/v20"
     "2303/annotations.proto\032\037google/protobuf/"
-    "timestamp.proto\"\233\005\n\tInterface\022\016\n\002id\030\001 \001("
+    "timestamp.proto\"\255\016\n\tInterface\022\016\n\002id\030\001 \001("
     "\tR\002id\022\033\n\tdevice_id\030\002 \001(\tR\010deviceId\022\027\n\007sn"
     "mp_id\030\003 \001(\tR\006snmpId\022\035\n\nsnmp_speed\030\004 \001(\005R"
     "\tsnmpSpeed\022\033\n\tsnmp_type\030\005 \001(\005R\010snmpType\022"
@@ -1228,244 +1412,273 @@ const char descriptor_table_protodef_kentik_2finterface_2fv202108alpha1_2finterf
     "nterface.v202108alpha1.NetworkBoundaryR\017"
     "networkBoundary\022(\n\020top_nexthop_asns\030\016 \003("
     "\005R\016topNexthopAsns\022\032\n\010provider\030\017 \001(\tR\010pro"
-    "vider\"\364\001\n\027InterfaceClassification\022\036\n\ncla"
-    "ssified\030\001 \001(\010R\nclassified\022]\n\021connectivit"
-    "y_type\030\002 \001(\01620.kentik.interface.v202108a"
-    "lpha1.ConnectivityTypeR\020connectivityType"
-    "\022Z\n\020network_boundary\030\003 \001(\0162/.kentik.inte"
-    "rface.v202108alpha1.NetworkBoundaryR\017net"
-    "workBoundary\"\333\001\n\017ClassifyCounter\022\024\n\005coun"
-    "t\030\001 \001(\005R\005count\022%\n\016external_count\030\002 \001(\005R\r"
-    "externalCount\022$\n\016free_pni_count\030\003 \001(\005R\014f"
-    "reePniCount\022\031\n\010ix_count\030\004 \001(\005R\007ixCount\022%"
-    "\n\016provider_count\030\005 \001(\005R\rproviderCount\022#\n"
-    "\rtransit_count\030\006 \001(\005R\014transitCount\"\326\t\n\025I"
-    "nterfaceClassifyInfo\022\033\n\tdevice_id\030\001 \001(\tR"
-    "\010deviceId\022\027\n\007snmp_id\030\002 \001(\tR\006snmpId\022\035\n\nsn"
-    "mp_alias\030\003 \001(\tR\tsnmpAlias\022!\n\014interface_i"
-    "p\030\004 \001(\tR\013interfaceIp\022(\n\020interface_ip_asn"
-    "\030\005 \001(\tR\016interfaceIpAsn\022$\n\016is_internal_ip"
-    "\030\006 \001(\010R\014isInternalIp\022&\n\017is_internal_asn\030"
-    "\007 \001(\010R\risInternalAsn\022(\n\020top_nexthop_asns"
-    "\030\010 \003(\tR\016topNexthopAsns\022&\n\017pdb_global_nam"
-    "e\030\t \001(\tR\rpdbGlobalName\022h\n\023auto_classific"
-    "ation\030\n \001(\01327.kentik.interface.v202108al"
-    "pha1.InterfaceClassificationR\022autoClassi"
-    "fication\022p\n\027previous_classification\030\013 \001("
-    "\01327.kentik.interface.v202108alpha1.Inter"
-    "faceClassificationR\026previousClassificati"
-    "on\022\032\n\010provider\030\014 \001(\tR\010provider\022>\n\033networ"
-    "k_boundary_confidence\030\r \001(\005R\031networkBoun"
-    "daryConfidence\022@\n\034connectivity_type_conf"
-    "idence\030\016 \001(\005R\032connectivityTypeConfidence"
-    "\022/\n\023provider_confidence\030\017 \001(\005R\022providerC"
-    "onfidence\0228\n\030auto_classified_provider\030\020 "
-    "\001(\010R\026autoClassifiedProvider\022D\n\036previousl"
-    "y_classified_provider\030\021 \001(\tR\034previouslyC"
-    "lassifiedProvider\022D\n\036previously_classifi"
-    "ed_external\030\022 \001(\010R\034previouslyClassifiedE"
-    "xternal\022$\n\016ip_asn_matched\030\023 \001(\010R\014ipAsnMa"
-    "tched\022\035\n\nix_matched\030\024 \001(\010R\tixMatched\022\'\n\017"
-    "nexthop_matched\030\025 \001(\010R\016nexthopMatched\022:\n"
-    "\031connectivity_type_matched\030\026 \001(\010R\027connec"
-    "tivityTypeMatched\022)\n\020provider_matched\030\027 "
-    "\001(\010R\017providerMatched\0225\n\026changed_classifi"
-    "cation\030\030 \001(\010R\025changedClassification\"\337\005\n\022"
-    "DeviceClassifyInfo\022\033\n\tdevice_id\030\001 \001(\tR\010d"
-    "eviceId\022)\n\020total_interfaces\030\002 \001(\005R\017total"
-    "Interfaces\022s\n\035previously_classified_coun"
-    "ter\030\003 \001(\0132/.kentik.interface.v202108alph"
-    "a1.ClassifyCounterR\033previouslyClassified"
-    "Counter\022g\n\027auto_classified_counter\030\004 \001(\013"
-    "2/.kentik.interface.v202108alpha1.Classi"
-    "fyCounterR\025autoClassifiedCounter\022@\n\034chan"
-    "ged_classification_count\030\017 \001(\005R\032changedC"
-    "lassificationCount\022/\n\024ip_asn_matched_cou"
-    "nt\030\020 \001(\005R\021ipAsnMatchedCount\022(\n\020ix_matche"
-    "d_count\030\021 \001(\005R\016ixMatchedCount\0222\n\025nexthop"
-    "_matched_count\030\022 \001(\005R\023nexthopMatchedCoun"
-    "t\022E\n\037connectivity_type_matched_count\030\023 \001"
-    "(\005R\034connectivityTypeMatchedCount\0224\n\026prov"
-    "ider_matched_count\030\024 \001(\005R\024providerMatche"
-    "dCount\022U\n\ninterfaces\030\025 \003(\01325.kentik.inte"
-    "rface.v202108alpha1.InterfaceClassifyInf"
-    "oR\ninterfaces\"\211\003\n\017InterfaceFilter\022\022\n\004tex"
-    "t\030\001 \001(\tR\004text\022\035\n\ndevice_ids\030\002 \003(\tR\tdevic"
-    "eIds\022_\n\022connectivity_types\030\003 \003(\01620.kenti"
-    "k.interface.v202108alpha1.ConnectivityTy"
-    "peR\021connectivityTypes\022^\n\022network_boundar"
-    "ies\030\004 \003(\0162/.kentik.interface.v202108alph"
-    "a1.NetworkBoundaryR\021networkBoundaries\022\034\n"
-    "\tproviders\030\005 \003(\tR\tproviders\022\037\n\013snmp_spee"
-    "ds\030\006 \003(\005R\nsnmpSpeeds\022C\n\010ip_types\030\007 \003(\0162("
-    ".kentik.interface.v202108alpha1.IpFilter"
-    "R\007ipTypes\"\025\n\023AutoClassifyRequest\"\250\005\n\024Aut"
-    "oClassifyResponse\0220\n\024perc_auto_classifie"
-    "d\030\001 \001(\001R\022percAutoClassified\022.\n\023net_chang"
-    "ed_transit\030\002 \001(\005R\021netChangedTransit\022$\n\016n"
-    "et_changed_ix\030\003 \001(\005R\014netChangedIx\0220\n\024net"
-    "_changed_provider\030\004 \001(\005R\022netChangedProvi"
-    "der\022K\n\"total_changed_classification_coun"
-    "t\030\005 \001(\005R\037totalChangedClassificationCount"
-    "\0229\n\031total_auto_classify_count\030\006 \001(\005R\026tot"
-    "alAutoClassifyCount\022n\n\033total_auto_classi"
-    "fy_counter\030\007 \001(\0132/.kentik.interface.v202"
-    "108alpha1.ClassifyCounterR\030totalAutoClas"
-    "sifyCounter\022e\n\026total_previous_counter\030\010 "
-    "\001(\0132/.kentik.interface.v202108alpha1.Cla"
-    "ssifyCounterR\024totalPreviousCounter\022)\n\020to"
-    "tal_interfaces\030\021 \001(\005R\017totalInterfaces\022L\n"
-    "\007devices\030\022 \003(\01322.kentik.interface.v20210"
-    "8alpha1.DeviceClassifyInfoR\007devices\"\223\002\n\025"
-    "ManualClassifyRequest\022#\n\rinterface_ids\030\001"
-    " \003(\tR\014interfaceIds\022]\n\021connectivity_type\030"
-    "\002 \001(\01620.kentik.interface.v202108alpha1.C"
-    "onnectivityTypeR\020connectivityType\022Z\n\020net"
-    "work_boundary\030\003 \001(\0162/.kentik.interface.v"
-    "202108alpha1.NetworkBoundaryR\017networkBou"
-    "ndary\022\032\n\010provider\030\004 \001(\tR\010provider\"7\n\026Man"
-    "ualClassifyResponse\022\035\n\ndevice_ids\030\001 \003(\tR"
-    "\tdeviceIds\"a\n\024ListInterfaceRequest\022I\n\007fi"
-    "lters\030\001 \001(\0132/.kentik.interface.v202108al"
-    "pha1.InterfaceFilterR\007filters\"\250\001\n\025ListIn"
-    "terfaceResponse\022I\n\ninterfaces\030\001 \003(\0132).ke"
-    "ntik.interface.v202108alpha1.InterfaceR\n"
-    "interfaces\022\037\n\013total_count\030\002 \001(\005R\ntotalCo"
-    "unt\022#\n\rinvalid_count\030\003 \001(\005R\014invalidCount"
-    "\"%\n\023GetInterfaceRequest\022\016\n\002id\030\001 \001(\tR\002id\""
-    "_\n\024GetInterfaceResponse\022G\n\tinterface\030\001 \001"
-    "(\0132).kentik.interface.v202108alpha1.Inte"
-    "rfaceR\tinterface\"a\n\026CreateInterfaceReque"
-    "st\022G\n\tinterface\030\001 \001(\0132).kentik.interface"
-    ".v202108alpha1.InterfaceR\tinterface\"b\n\027C"
-    "reateInterfaceResponse\022G\n\tinterface\030\001 \001("
-    "\0132).kentik.interface.v202108alpha1.Inter"
-    "faceR\tinterface\"a\n\026UpdateInterfaceReques"
-    "t\022G\n\tinterface\030\001 \001(\0132).kentik.interface."
-    "v202108alpha1.InterfaceR\tinterface\"b\n\027Up"
-    "dateInterfaceResponse\022G\n\tinterface\030\001 \001(\013"
-    "2).kentik.interface.v202108alpha1.Interf"
-    "aceR\tinterface\"(\n\026DeleteInterfaceRequest"
-    "\022\016\n\002id\030\001 \001(\tR\002id\"\031\n\027DeleteInterfaceRespo"
-    "nse\"\313\001\n\005Match\022W\n\017match_attribute\030\001 \001(\0162."
-    ".kentik.interface.v202108alpha1.MatchAtt"
-    "ributeR\016matchAttribute\022O\n\016match_operator"
-    "\030\002 \001(\0162(.kentik.interface.v202108alpha1."
-    "OperatorR\rmatchOperator\022\030\n\007pattern\030\003 \001(\t"
-    "R\007pattern\"\242\002\n\006Action\022d\n\025set_connectivity"
-    "_type\030\001 \001(\01620.kentik.interface.v202108al"
-    "pha1.ConnectivityTypeR\023setConnectivityTy"
-    "pe\022a\n\024set_network_boundary\030\002 \001(\0162/.kenti"
-    "k.interface.v202108alpha1.NetworkBoundar"
-    "yR\022setNetworkBoundary\022,\n\022set_connected_a"
-    "sns\030\003 \001(\tR\020setConnectedAsns\022!\n\014set_provi"
-    "der\030\004 \001(\tR\013setProvider\"\273\001\n\014DeviceFilter\022"
-    "\037\n\013all_devices\030\001 \001(\010R\nallDevices\022\037\n\013devi"
-    "ce_name\030\002 \003(\tR\ndeviceName\022#\n\rdevice_labe"
-    "ls\030\003 \003(\tR\014deviceLabels\022!\n\014device_rules\030\004"
-    " \003(\tR\013deviceRules\022!\n\014device_types\030\005 \003(\tR"
-    "\013deviceTypes\"\353\003\n\004Rule\022\016\n\002id\030\001 \001(\tR\002id\022\030\n"
-    "\007enabled\030\002 \001(\010R\007enabled\022\022\n\004rank\030\003 \001(\005R\004r"
-    "ank\022H\n\014match_clause\030\004 \001(\0132%.kentik.inter"
-    "face.v202108alpha1.MatchR\013matchClause\022E\n"
-    "\naction_set\030\005 \001(\0132&.kentik.interface.v20"
-    "2108alpha1.ActionR\tactionSet\0220\n\005cdate\030\006 "
-    "\001(\0132\032.google.protobuf.TimestampR\005cdate\0220"
-    "\n\005edate\030\007 \001(\0132\032.google.protobuf.Timestam"
-    "pR\005edate\022W\n\020included_devices\030\010 \001(\0132,.ken"
-    "tik.interface.v202108alpha1.DeviceFilter"
-    "R\017includedDevices\022W\n\020excluded_devices\030\t "
-    "\001(\0132,.kentik.interface.v202108alpha1.Dev"
-    "iceFilterR\017excludedDevices*\275\005\n\020Connectiv"
-    "ityType\022!\n\035CONNECTIVITY_TYPE_UNSPECIFIED"
-    "\020\000\022.\n*CONNECTIVITY_TYPE_AGGREGATION_INTE"
-    "RCONNECT\020\001\022\037\n\033CONNECTIVITY_TYPE_AVAILABL"
-    "E\020\002\022\036\n\032CONNECTIVITY_TYPE_BACKBONE\020\003\022(\n$C"
-    "ONNECTIVITY_TYPE_CLOUD_INTERCONNECT\020\004\022\036\n"
-    "\032CONNECTIVITY_TYPE_CUSTOMER\020\005\022\'\n#CONNECT"
-    "IVITY_TYPE_DATACENTER_FABRIC\020\006\022-\n)CONNEC"
-    "TIVITY_TYPE_DATACENTER_INTERCONNECT\020\007\022$\n"
-    " CONNECTIVITY_TYPE_EMBEDDED_CACHE\020\010\022\036\n\032C"
-    "ONNECTIVITY_TYPE_FREE_PNI\020\t\022\032\n\026CONNECTIV"
-    "ITY_TYPE_HOST\020\n\022\030\n\024CONNECTIVITY_TYPE_IX\020"
-    "\013\022\033\n\027CONNECTIVITY_TYPE_OTHER\020\014\022\036\n\032CONNEC"
-    "TIVITY_TYPE_PAID_PNI\020\r\022\036\n\032CONNECTIVITY_T"
-    "YPE_RESERVED\020\016\022\035\n\031CONNECTIVITY_TYPE_TRAN"
-    "SIT\020\017\022+\n\'CONNECTIVITY_TYPE_VIRTUAL_CROSS"
-    "_CONNECT\020\020\022&\n\"CONNECTIVITY_TYPE_IPX_INTE"
-    "RCONNECT\020\021\022&\n\"CONNECTIVITY_TYPE_SIP_INTE"
-    "RCONNECT\020\022*\247\001\n\017NetworkBoundary\022 \n\034NETWOR"
-    "K_BOUNDARY_UNSPECIFIED\020\000\022\031\n\025NETWORK_BOUN"
-    "DARY_AUTO\020\001\022\035\n\031NETWORK_BOUNDARY_INTERNAL"
-    "\020\002\022\035\n\031NETWORK_BOUNDARY_EXTERNAL\020\003\022\031\n\025NET"
-    "WORK_BOUNDARY_NONE\020\004*g\n\010IpFilter\022\031\n\025IP_F"
-    "ILTER_UNSPECIFIED\020\000\022\025\n\021IP_FILTER_PRIVATE"
-    "\020\001\022\024\n\020IP_FILTER_PUBLIC\020\002\022\023\n\017IP_FILTER_UN"
-    "SET\020\003*\236\001\n\016MatchAttribute\022\037\n\033MATCH_ATTRIB"
-    "UTE_UNSPECIFIED\020\000\022)\n%MATCH_ATTRIBUTE_INT"
-    "ERFACE_DESCRIPTION\020\001\022\036\n\032MATCH_ATTRIBUTE_"
-    "SNMP_ALIAS\020\002\022 \n\034MATCH_ATTRIBUTE_INTERFAC"
-    "E_IP\020\003*\321\001\n\010Operator\022\030\n\024OPERATOR_UNSPECIF"
-    "IED\020\000\022\023\n\017OPERATOR_EQUALS\020\001\022\025\n\021OPERATOR_C"
-    "ONTAINS\020\002\022\022\n\016OPERATOR_REGEX\020\003\022 \n\034OPERATO"
-    "R_CONTAINED_IN_SUBNET\020\004\022\031\n\025OPERATOR_IS_P"
-    "UBLIC_IP\020\005\022\032\n\026OPERATOR_IS_PRIVATE_IP\020\006\022\022"
-    "\n\016OPERATOR_NO_IP\020\0072\305\016\n\020InterfaceService\022"
-    "\247\002\n\016ManualClassify\0225.kentik.interface.v2"
-    "02108alpha1.ManualClassifyRequest\0326.kent"
-    "ik.interface.v202108alpha1.ManualClassif"
-    "yResponse\"\245\001\222AV\022\031Manual Classify Interfa"
-    "ce\032)Manually set interface(s) classifica"
-    "tion.*\016ManualClassify\362\327\002\025admin.interface"
-    ":write\202\323\344\223\002-\"(/interface/v202108alpha1/m"
-    "anual_classify:\001*\022\240\002\n\rListInterface\0224.ke"
-    "ntik.interface.v202108alpha1.ListInterfa"
-    "ceRequest\0325.kentik.interface.v202108alph"
-    "a1.ListInterfaceResponse\"\241\001\222A[\022\027Fetch Se"
-    "arch Interfaces\0321Return list of interfac"
-    "es matches search critera.*\rListInterfac"
-    "e\362\327\002\024admin.interface:read\202\323\344\223\002%\022#/interf"
-    "ace/v202108alpha1/interfaces\022\241\002\n\014GetInte"
-    "rface\0223.kentik.interface.v202108alpha1.G"
-    "etInterfaceRequest\0324.kentik.interface.v2"
-    "02108alpha1.GetInterfaceResponse\"\245\001\222AZ\022\020"
-    "Get a interface.\0328Returns information ab"
-    "out a interface specified with ID.*\014Inte"
-    "rfaceGet\362\327\002\024admin.interface:read\202\323\344\223\002*\022("
-    "/interface/v202108alpha1/interfaces/{id}"
-    "\022\250\002\n\017CreateInterface\0226.kentik.interface."
-    "v202108alpha1.CreateInterfaceRequest\0327.k"
-    "entik.interface.v202108alpha1.CreateInte"
-    "rfaceResponse\"\243\001\222AY\022\023Create a interface."
-    "\0321Create a interface from request. retur"
-    "ns created.*\017InterfaceCreate\362\327\002\025admin.in"
-    "terface:write\202\323\344\223\002(\"#/interface/v202108a"
-    "lpha1/interfaces:\001*\022\301\002\n\017UpdateInterface\022"
-    "6.kentik.interface.v202108alpha1.UpdateI"
-    "nterfaceRequest\0327.kentik.interface.v2021"
-    "08alpha1.UpdateInterfaceResponse\"\274\001\222Ac\022\023"
-    "Update a interface.\032;Replaces the entire"
-    " interface attributes specified with id."
-    "*\017InterfaceUpdate\362\327\002\025admin.interface:wri"
-    "te\202\323\344\223\0027\0322/interface/v202108alpha1/inter"
-    "faces/{interface.id}:\001*\022\241\002\n\017DeleteInterf"
-    "ace\0226.kentik.interface.v202108alpha1.Del"
-    "eteInterfaceRequest\0327.kentik.interface.v"
-    "202108alpha1.DeleteInterfaceResponse\"\234\001\222"
-    "AP\022\023Delete a interface.\032(Deletes the int"
-    "erface specified with id.*\017InterfaceDele"
-    "te\362\327\002\025admin.interface:write\202\323\344\223\002**(/inte"
-    "rface/v202108alpha1/interfaces/{id}\032-\312A\023"
-    "grpc.api.kentik.com\352\327\002\017admin.interface\220\330"
-    "\002\003B\312\002ZOgithub.com/kentik/api-schema-publ"
-    "ic/gen/go/kentik/interface/v202108alpha1"
-    ";iface\222A\365\001\0227\n\rInterface API\"\030\n\026Kentik AP"
-    "I Engineering2\014202108alpha1*\001\0022\020applicat"
-    "ion/json:\020application/jsonZD\n\036\n\005email\022\025\010"
-    "\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-"
-    "Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000"
-    "r5\n\026More about Kentik APIs\022\033https://docs"
-    ".kentik.com/apib\006proto3"
+    "vider\022`\n\rinterface_kvs\030\020 \003(\0132;.kentik.in"
+    "terface.v202108alpha1.Interface.Interfac"
+    "eKvsEntryR\014interfaceKvs\022c\n\016interface_tag"
+    "s\030\021 \003(\0132<.kentik.interface.v202108alpha1"
+    ".Interface.InterfaceTagsEntryR\rinterface"
+    "Tags\022)\n\020interface_status\030\022 \001(\tR\017interfac"
+    "eStatus\022W\n\nextra_info\030\023 \003(\01328.kentik.int"
+    "erface.v202108alpha1.Interface.ExtraInfo"
+    "EntryR\textraInfo\022&\n\017initial_snmp_id\030\024 \001("
+    "\tR\rinitialSnmpId\022,\n\022initial_snmp_alias\030\025"
+    " \001(\tR\020initialSnmpAlias\022B\n\035initial_interf"
+    "ace_description\030\026 \001(\tR\033initialInterfaceD"
+    "escription\022,\n\022initial_snmp_speed\030\027 \001(\005R\020"
+    "initialSnmpSpeed\022#\n\rsecondary_ips\030\030 \001(\tR"
+    "\014secondaryIps\022l\n\031initial_connectivity_ty"
+    "pe\030\031 \001(\01620.kentik.interface.v202108alpha"
+    "1.ConnectivityTypeR\027initialConnectivityT"
+    "ype\022i\n\030initial_network_boundary\030\032 \001(\0162/."
+    "kentik.interface.v202108alpha1.NetworkBo"
+    "undaryR\026initialNetworkBoundary\022)\n\020initia"
+    "l_provider\030\033 \001(\tR\017initialProvider\022\025\n\006vrf"
+    "_id\030\034 \001(\tR\005vrfId\022D\n\003vrf\030\035 \003(\01322.kentik.i"
+    "nterface.v202108alpha1.Interface.VrfEntr"
+    "yR\003vrf\032\?\n\021InterfaceKvsEntry\022\020\n\003key\030\001 \001(\t"
+    "R\003key\022\024\n\005value\030\002 \001(\tR\005value:\0028\001\032@\n\022Inter"
+    "faceTagsEntry\022\020\n\003key\030\001 \001(\tR\003key\022\024\n\005value"
+    "\030\002 \001(\tR\005value:\0028\001\032<\n\016ExtraInfoEntry\022\020\n\003k"
+    "ey\030\001 \001(\tR\003key\022\024\n\005value\030\002 \001(\tR\005value:\0028\001\032"
+    "6\n\010VrfEntry\022\020\n\003key\030\001 \001(\tR\003key\022\024\n\005value\030\002"
+    " \001(\tR\005value:\0028\001\"\364\001\n\027InterfaceClassificat"
+    "ion\022\036\n\nclassified\030\001 \001(\010R\nclassified\022]\n\021c"
+    "onnectivity_type\030\002 \001(\01620.kentik.interfac"
+    "e.v202108alpha1.ConnectivityTypeR\020connec"
+    "tivityType\022Z\n\020network_boundary\030\003 \001(\0162/.k"
+    "entik.interface.v202108alpha1.NetworkBou"
+    "ndaryR\017networkBoundary\"\333\001\n\017ClassifyCount"
+    "er\022\024\n\005count\030\001 \001(\005R\005count\022%\n\016external_cou"
+    "nt\030\002 \001(\005R\rexternalCount\022$\n\016free_pni_coun"
+    "t\030\003 \001(\005R\014freePniCount\022\031\n\010ix_count\030\004 \001(\005R"
+    "\007ixCount\022%\n\016provider_count\030\005 \001(\005R\rprovid"
+    "erCount\022#\n\rtransit_count\030\006 \001(\005R\014transitC"
+    "ount\"\326\t\n\025InterfaceClassifyInfo\022\033\n\tdevice"
+    "_id\030\001 \001(\tR\010deviceId\022\027\n\007snmp_id\030\002 \001(\tR\006sn"
+    "mpId\022\035\n\nsnmp_alias\030\003 \001(\tR\tsnmpAlias\022!\n\014i"
+    "nterface_ip\030\004 \001(\tR\013interfaceIp\022(\n\020interf"
+    "ace_ip_asn\030\005 \001(\tR\016interfaceIpAsn\022$\n\016is_i"
+    "nternal_ip\030\006 \001(\010R\014isInternalIp\022&\n\017is_int"
+    "ernal_asn\030\007 \001(\010R\risInternalAsn\022(\n\020top_ne"
+    "xthop_asns\030\010 \003(\tR\016topNexthopAsns\022&\n\017pdb_"
+    "global_name\030\t \001(\tR\rpdbGlobalName\022h\n\023auto"
+    "_classification\030\n \001(\01327.kentik.interface"
+    ".v202108alpha1.InterfaceClassificationR\022"
+    "autoClassification\022p\n\027previous_classific"
+    "ation\030\013 \001(\01327.kentik.interface.v202108al"
+    "pha1.InterfaceClassificationR\026previousCl"
+    "assification\022\032\n\010provider\030\014 \001(\tR\010provider"
+    "\022>\n\033network_boundary_confidence\030\r \001(\005R\031n"
+    "etworkBoundaryConfidence\022@\n\034connectivity"
+    "_type_confidence\030\016 \001(\005R\032connectivityType"
+    "Confidence\022/\n\023provider_confidence\030\017 \001(\005R"
+    "\022providerConfidence\0228\n\030auto_classified_p"
+    "rovider\030\020 \001(\010R\026autoClassifiedProvider\022D\n"
+    "\036previously_classified_provider\030\021 \001(\tR\034p"
+    "reviouslyClassifiedProvider\022D\n\036previousl"
+    "y_classified_external\030\022 \001(\010R\034previouslyC"
+    "lassifiedExternal\022$\n\016ip_asn_matched\030\023 \001("
+    "\010R\014ipAsnMatched\022\035\n\nix_matched\030\024 \001(\010R\tixM"
+    "atched\022\'\n\017nexthop_matched\030\025 \001(\010R\016nexthop"
+    "Matched\022:\n\031connectivity_type_matched\030\026 \001"
+    "(\010R\027connectivityTypeMatched\022)\n\020provider_"
+    "matched\030\027 \001(\010R\017providerMatched\0225\n\026change"
+    "d_classification\030\030 \001(\010R\025changedClassific"
+    "ation\"\337\005\n\022DeviceClassifyInfo\022\033\n\tdevice_i"
+    "d\030\001 \001(\tR\010deviceId\022)\n\020total_interfaces\030\002 "
+    "\001(\005R\017totalInterfaces\022s\n\035previously_class"
+    "ified_counter\030\003 \001(\0132/.kentik.interface.v"
+    "202108alpha1.ClassifyCounterR\033previously"
+    "ClassifiedCounter\022g\n\027auto_classified_cou"
+    "nter\030\004 \001(\0132/.kentik.interface.v202108alp"
+    "ha1.ClassifyCounterR\025autoClassifiedCount"
+    "er\022@\n\034changed_classification_count\030\017 \001(\005"
+    "R\032changedClassificationCount\022/\n\024ip_asn_m"
+    "atched_count\030\020 \001(\005R\021ipAsnMatchedCount\022(\n"
+    "\020ix_matched_count\030\021 \001(\005R\016ixMatchedCount\022"
+    "2\n\025nexthop_matched_count\030\022 \001(\005R\023nexthopM"
+    "atchedCount\022E\n\037connectivity_type_matched"
+    "_count\030\023 \001(\005R\034connectivityTypeMatchedCou"
+    "nt\0224\n\026provider_matched_count\030\024 \001(\005R\024prov"
+    "iderMatchedCount\022U\n\ninterfaces\030\025 \003(\01325.k"
+    "entik.interface.v202108alpha1.InterfaceC"
+    "lassifyInfoR\ninterfaces\"\211\003\n\017InterfaceFil"
+    "ter\022\022\n\004text\030\001 \001(\tR\004text\022\035\n\ndevice_ids\030\002 "
+    "\003(\tR\tdeviceIds\022_\n\022connectivity_types\030\003 \003"
+    "(\01620.kentik.interface.v202108alpha1.Conn"
+    "ectivityTypeR\021connectivityTypes\022^\n\022netwo"
+    "rk_boundaries\030\004 \003(\0162/.kentik.interface.v"
+    "202108alpha1.NetworkBoundaryR\021networkBou"
+    "ndaries\022\034\n\tproviders\030\005 \003(\tR\tproviders\022\037\n"
+    "\013snmp_speeds\030\006 \003(\005R\nsnmpSpeeds\022C\n\010ip_typ"
+    "es\030\007 \003(\0162(.kentik.interface.v202108alpha"
+    "1.IpFilterR\007ipTypes\"\025\n\023AutoClassifyReque"
+    "st\"\250\005\n\024AutoClassifyResponse\0220\n\024perc_auto"
+    "_classified\030\001 \001(\001R\022percAutoClassified\022.\n"
+    "\023net_changed_transit\030\002 \001(\005R\021netChangedTr"
+    "ansit\022$\n\016net_changed_ix\030\003 \001(\005R\014netChange"
+    "dIx\0220\n\024net_changed_provider\030\004 \001(\005R\022netCh"
+    "angedProvider\022K\n\"total_changed_classific"
+    "ation_count\030\005 \001(\005R\037totalChangedClassific"
+    "ationCount\0229\n\031total_auto_classify_count\030"
+    "\006 \001(\005R\026totalAutoClassifyCount\022n\n\033total_a"
+    "uto_classify_counter\030\007 \001(\0132/.kentik.inte"
+    "rface.v202108alpha1.ClassifyCounterR\030tot"
+    "alAutoClassifyCounter\022e\n\026total_previous_"
+    "counter\030\010 \001(\0132/.kentik.interface.v202108"
+    "alpha1.ClassifyCounterR\024totalPreviousCou"
+    "nter\022)\n\020total_interfaces\030\021 \001(\005R\017totalInt"
+    "erfaces\022L\n\007devices\030\022 \003(\01322.kentik.interf"
+    "ace.v202108alpha1.DeviceClassifyInfoR\007de"
+    "vices\"\223\002\n\025ManualClassifyRequest\022#\n\rinter"
+    "face_ids\030\001 \003(\tR\014interfaceIds\022]\n\021connecti"
+    "vity_type\030\002 \001(\01620.kentik.interface.v2021"
+    "08alpha1.ConnectivityTypeR\020connectivityT"
+    "ype\022Z\n\020network_boundary\030\003 \001(\0162/.kentik.i"
+    "nterface.v202108alpha1.NetworkBoundaryR\017"
+    "networkBoundary\022\032\n\010provider\030\004 \001(\tR\010provi"
+    "der\"7\n\026ManualClassifyResponse\022\035\n\ndevice_"
+    "ids\030\001 \003(\tR\tdeviceIds\"a\n\024ListInterfaceReq"
+    "uest\022I\n\007filters\030\001 \001(\0132/.kentik.interface"
+    ".v202108alpha1.InterfaceFilterR\007filters\""
+    "\250\001\n\025ListInterfaceResponse\022I\n\ninterfaces\030"
+    "\001 \003(\0132).kentik.interface.v202108alpha1.I"
+    "nterfaceR\ninterfaces\022\037\n\013total_count\030\002 \001("
+    "\005R\ntotalCount\022#\n\rinvalid_count\030\003 \001(\005R\014in"
+    "validCount\"%\n\023GetInterfaceRequest\022\016\n\002id\030"
+    "\001 \001(\tR\002id\"_\n\024GetInterfaceResponse\022G\n\tint"
+    "erface\030\001 \001(\0132).kentik.interface.v202108a"
+    "lpha1.InterfaceR\tinterface\"a\n\026CreateInte"
+    "rfaceRequest\022G\n\tinterface\030\001 \001(\0132).kentik"
+    ".interface.v202108alpha1.InterfaceR\tinte"
+    "rface\"b\n\027CreateInterfaceResponse\022G\n\tinte"
+    "rface\030\001 \001(\0132).kentik.interface.v202108al"
+    "pha1.InterfaceR\tinterface\"a\n\026UpdateInter"
+    "faceRequest\022G\n\tinterface\030\001 \001(\0132).kentik."
+    "interface.v202108alpha1.InterfaceR\tinter"
+    "face\"b\n\027UpdateInterfaceResponse\022G\n\tinter"
+    "face\030\001 \001(\0132).kentik.interface.v202108alp"
+    "ha1.InterfaceR\tinterface\"(\n\026DeleteInterf"
+    "aceRequest\022\016\n\002id\030\001 \001(\tR\002id\"\031\n\027DeleteInte"
+    "rfaceResponse\"\313\001\n\005Match\022W\n\017match_attribu"
+    "te\030\001 \001(\0162..kentik.interface.v202108alpha"
+    "1.MatchAttributeR\016matchAttribute\022O\n\016matc"
+    "h_operator\030\002 \001(\0162(.kentik.interface.v202"
+    "108alpha1.OperatorR\rmatchOperator\022\030\n\007pat"
+    "tern\030\003 \001(\tR\007pattern\"\242\002\n\006Action\022d\n\025set_co"
+    "nnectivity_type\030\001 \001(\01620.kentik.interface"
+    ".v202108alpha1.ConnectivityTypeR\023setConn"
+    "ectivityType\022a\n\024set_network_boundary\030\002 \001"
+    "(\0162/.kentik.interface.v202108alpha1.Netw"
+    "orkBoundaryR\022setNetworkBoundary\022,\n\022set_c"
+    "onnected_asns\030\003 \001(\tR\020setConnectedAsns\022!\n"
+    "\014set_provider\030\004 \001(\tR\013setProvider\"\273\001\n\014Dev"
+    "iceFilter\022\037\n\013all_devices\030\001 \001(\010R\nallDevic"
+    "es\022\037\n\013device_name\030\002 \003(\tR\ndeviceName\022#\n\rd"
+    "evice_labels\030\003 \003(\tR\014deviceLabels\022!\n\014devi"
+    "ce_rules\030\004 \003(\tR\013deviceRules\022!\n\014device_ty"
+    "pes\030\005 \003(\tR\013deviceTypes\"\353\003\n\004Rule\022\016\n\002id\030\001 "
+    "\001(\tR\002id\022\030\n\007enabled\030\002 \001(\010R\007enabled\022\022\n\004ran"
+    "k\030\003 \001(\005R\004rank\022H\n\014match_clause\030\004 \001(\0132%.ke"
+    "ntik.interface.v202108alpha1.MatchR\013matc"
+    "hClause\022E\n\naction_set\030\005 \001(\0132&.kentik.int"
+    "erface.v202108alpha1.ActionR\tactionSet\0220"
+    "\n\005cdate\030\006 \001(\0132\032.google.protobuf.Timestam"
+    "pR\005cdate\0220\n\005edate\030\007 \001(\0132\032.google.protobu"
+    "f.TimestampR\005edate\022W\n\020included_devices\030\010"
+    " \001(\0132,.kentik.interface.v202108alpha1.De"
+    "viceFilterR\017includedDevices\022W\n\020excluded_"
+    "devices\030\t \001(\0132,.kentik.interface.v202108"
+    "alpha1.DeviceFilterR\017excludedDevices*\275\005\n"
+    "\020ConnectivityType\022!\n\035CONNECTIVITY_TYPE_U"
+    "NSPECIFIED\020\000\022.\n*CONNECTIVITY_TYPE_AGGREG"
+    "ATION_INTERCONNECT\020\001\022\037\n\033CONNECTIVITY_TYP"
+    "E_AVAILABLE\020\002\022\036\n\032CONNECTIVITY_TYPE_BACKB"
+    "ONE\020\003\022(\n$CONNECTIVITY_TYPE_CLOUD_INTERCO"
+    "NNECT\020\004\022\036\n\032CONNECTIVITY_TYPE_CUSTOMER\020\005\022"
+    "\'\n#CONNECTIVITY_TYPE_DATACENTER_FABRIC\020\006"
+    "\022-\n)CONNECTIVITY_TYPE_DATACENTER_INTERCO"
+    "NNECT\020\007\022$\n CONNECTIVITY_TYPE_EMBEDDED_CA"
+    "CHE\020\010\022\036\n\032CONNECTIVITY_TYPE_FREE_PNI\020\t\022\032\n"
+    "\026CONNECTIVITY_TYPE_HOST\020\n\022\030\n\024CONNECTIVIT"
+    "Y_TYPE_IX\020\013\022\033\n\027CONNECTIVITY_TYPE_OTHER\020\014"
+    "\022\036\n\032CONNECTIVITY_TYPE_PAID_PNI\020\r\022\036\n\032CONN"
+    "ECTIVITY_TYPE_RESERVED\020\016\022\035\n\031CONNECTIVITY"
+    "_TYPE_TRANSIT\020\017\022+\n\'CONNECTIVITY_TYPE_VIR"
+    "TUAL_CROSS_CONNECT\020\020\022&\n\"CONNECTIVITY_TYP"
+    "E_IPX_INTERCONNECT\020\021\022&\n\"CONNECTIVITY_TYP"
+    "E_SIP_INTERCONNECT\020\022*\247\001\n\017NetworkBoundary"
+    "\022 \n\034NETWORK_BOUNDARY_UNSPECIFIED\020\000\022\031\n\025NE"
+    "TWORK_BOUNDARY_AUTO\020\001\022\035\n\031NETWORK_BOUNDAR"
+    "Y_INTERNAL\020\002\022\035\n\031NETWORK_BOUNDARY_EXTERNA"
+    "L\020\003\022\031\n\025NETWORK_BOUNDARY_NONE\020\004*g\n\010IpFilt"
+    "er\022\031\n\025IP_FILTER_UNSPECIFIED\020\000\022\025\n\021IP_FILT"
+    "ER_PRIVATE\020\001\022\024\n\020IP_FILTER_PUBLIC\020\002\022\023\n\017IP"
+    "_FILTER_UNSET\020\003*\236\001\n\016MatchAttribute\022\037\n\033MA"
+    "TCH_ATTRIBUTE_UNSPECIFIED\020\000\022)\n%MATCH_ATT"
+    "RIBUTE_INTERFACE_DESCRIPTION\020\001\022\036\n\032MATCH_"
+    "ATTRIBUTE_SNMP_ALIAS\020\002\022 \n\034MATCH_ATTRIBUT"
+    "E_INTERFACE_IP\020\003*\321\001\n\010Operator\022\030\n\024OPERATO"
+    "R_UNSPECIFIED\020\000\022\023\n\017OPERATOR_EQUALS\020\001\022\025\n\021"
+    "OPERATOR_CONTAINS\020\002\022\022\n\016OPERATOR_REGEX\020\003\022"
+    " \n\034OPERATOR_CONTAINED_IN_SUBNET\020\004\022\031\n\025OPE"
+    "RATOR_IS_PUBLIC_IP\020\005\022\032\n\026OPERATOR_IS_PRIV"
+    "ATE_IP\020\006\022\022\n\016OPERATOR_NO_IP\020\0072\305\016\n\020Interfa"
+    "ceService\022\247\002\n\016ManualClassify\0225.kentik.in"
+    "terface.v202108alpha1.ManualClassifyRequ"
+    "est\0326.kentik.interface.v202108alpha1.Man"
+    "ualClassifyResponse\"\245\001\222AV\022\031Manual Classi"
+    "fy Interface\032)Manually set interface(s) "
+    "classification.*\016ManualClassify\362\327\002\025admin"
+    ".interface:write\202\323\344\223\002-\"(/interface/v2021"
+    "08alpha1/manual_classify:\001*\022\240\002\n\rListInte"
+    "rface\0224.kentik.interface.v202108alpha1.L"
+    "istInterfaceRequest\0325.kentik.interface.v"
+    "202108alpha1.ListInterfaceResponse\"\241\001\222A["
+    "\022\027Fetch Search Interfaces\0321Return list o"
+    "f interfaces matches search critera.*\rLi"
+    "stInterface\362\327\002\024admin.interface:read\202\323\344\223\002"
+    "%\022#/interface/v202108alpha1/interfaces\022\241"
+    "\002\n\014GetInterface\0223.kentik.interface.v2021"
+    "08alpha1.GetInterfaceRequest\0324.kentik.in"
+    "terface.v202108alpha1.GetInterfaceRespon"
+    "se\"\245\001\222AZ\022\020Get a interface.\0328Returns info"
+    "rmation about a interface specified with"
+    " ID.*\014InterfaceGet\362\327\002\024admin.interface:re"
+    "ad\202\323\344\223\002*\022(/interface/v202108alpha1/inter"
+    "faces/{id}\022\250\002\n\017CreateInterface\0226.kentik."
+    "interface.v202108alpha1.CreateInterfaceR"
+    "equest\0327.kentik.interface.v202108alpha1."
+    "CreateInterfaceResponse\"\243\001\222AY\022\023Create a "
+    "interface.\0321Create a interface from requ"
+    "est. returns created.*\017InterfaceCreate\362\327"
+    "\002\025admin.interface:write\202\323\344\223\002(\"#/interfac"
+    "e/v202108alpha1/interfaces:\001*\022\301\002\n\017Update"
+    "Interface\0226.kentik.interface.v202108alph"
+    "a1.UpdateInterfaceRequest\0327.kentik.inter"
+    "face.v202108alpha1.UpdateInterfaceRespon"
+    "se\"\274\001\222Ac\022\023Update a interface.\032;Replaces "
+    "the entire interface attributes specifie"
+    "d with id.*\017InterfaceUpdate\362\327\002\025admin.int"
+    "erface:write\202\323\344\223\0027\0322/interface/v202108al"
+    "pha1/interfaces/{interface.id}:\001*\022\241\002\n\017De"
+    "leteInterface\0226.kentik.interface.v202108"
+    "alpha1.DeleteInterfaceRequest\0327.kentik.i"
+    "nterface.v202108alpha1.DeleteInterfaceRe"
+    "sponse\"\234\001\222AP\022\023Delete a interface.\032(Delet"
+    "es the interface specified with id.*\017Int"
+    "erfaceDelete\362\327\002\025admin.interface:write\202\323\344"
+    "\223\002**(/interface/v202108alpha1/interfaces"
+    "/{id}\032-\312A\023grpc.api.kentik.com\352\327\002\017admin.i"
+    "nterface\220\330\002\003B\312\002ZOgithub.com/kentik/api-s"
+    "chema-public/gen/go/kentik/interface/v20"
+    "2108alpha1;iface\222A\365\001\0227\n\rInterface API\"\030\n"
+    "\026Kentik API Engineering2\014202108alpha1*\001\002"
+    "2\020application/json:\020application/jsonZD\n\036"
+    "\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022"
+    "\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email\022\000\n"
+    "\t\n\005token\022\000r5\n\026More about Kentik APIs\022\033ht"
+    "tps://docs.kentik.com/apib\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2finterface_2fv202108alpha1_2finterface_2eproto_deps[5] =
     {
@@ -1479,13 +1692,13 @@ static ::absl::once_flag descriptor_table_kentik_2finterface_2fv202108alpha1_2fi
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2finterface_2fv202108alpha1_2finterface_2eproto = {
     false,
     false,
-    10423,
+    11593,
     descriptor_table_protodef_kentik_2finterface_2fv202108alpha1_2finterface_2eproto,
     "kentik/interface/v202108alpha1/interface.proto",
     &descriptor_table_kentik_2finterface_2fv202108alpha1_2finterface_2eproto_once,
     descriptor_table_kentik_2finterface_2fv202108alpha1_2finterface_2eproto_deps,
     5,
-    24,
+    28,
     schemas,
     file_default_instances,
     TableStruct_kentik_2finterface_2fv202108alpha1_2finterface_2eproto::offsets,
@@ -1542,6 +1755,370 @@ bool Operator_IsValid(int value) {
 }
 // ===================================================================
 
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+              Interface_InterfaceKvsEntry_DoNotUse::Interface_InterfaceKvsEntry_DoNotUse() : SuperType(_class_data_.base()) {}
+              Interface_InterfaceKvsEntry_DoNotUse::Interface_InterfaceKvsEntry_DoNotUse(::google::protobuf::Arena* arena)
+                  : SuperType(arena, _class_data_.base()) {}
+#else   // PROTOBUF_CUSTOM_VTABLE
+              Interface_InterfaceKvsEntry_DoNotUse::Interface_InterfaceKvsEntry_DoNotUse() : SuperType() {}
+              Interface_InterfaceKvsEntry_DoNotUse::Interface_InterfaceKvsEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+              inline void* Interface_InterfaceKvsEntry_DoNotUse::PlacementNew_(const void*, void* mem,
+                                                      ::google::protobuf::Arena* arena) {
+                return ::new (mem) Interface_InterfaceKvsEntry_DoNotUse(arena);
+              }
+              constexpr auto Interface_InterfaceKvsEntry_DoNotUse::InternalNewImpl_() {
+                return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(Interface_InterfaceKvsEntry_DoNotUse),
+                                                          alignof(Interface_InterfaceKvsEntry_DoNotUse));
+              }
+              PROTOBUF_CONSTINIT
+              PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+              const ::google::protobuf::internal::ClassDataFull Interface_InterfaceKvsEntry_DoNotUse::_class_data_ = {
+                  ::google::protobuf::internal::ClassData{
+                      &_Interface_InterfaceKvsEntry_DoNotUse_default_instance_._instance,
+                      &_table_.header,
+                      nullptr,  // OnDemandRegisterArenaDtor
+                      nullptr,  // IsInitialized
+                      &Interface_InterfaceKvsEntry_DoNotUse::MergeImpl,
+                      ::google::protobuf::Message::GetNewImpl<Interface_InterfaceKvsEntry_DoNotUse>(),
+              #if defined(PROTOBUF_CUSTOM_VTABLE)
+                      &Interface_InterfaceKvsEntry_DoNotUse::SharedDtor,
+                      static_cast<void (::google::protobuf::MessageLite::*)()>(
+                          &Interface_InterfaceKvsEntry_DoNotUse::ClearImpl),
+                          ::google::protobuf::Message::ByteSizeLongImpl, ::google::protobuf::Message::_InternalSerializeImpl
+                          ,
+              #endif  // PROTOBUF_CUSTOM_VTABLE
+                      PROTOBUF_FIELD_OFFSET(Interface_InterfaceKvsEntry_DoNotUse, _impl_._cached_size_),
+                      false,
+                  },
+                  &Interface_InterfaceKvsEntry_DoNotUse::kDescriptorMethods,
+                  &descriptor_table_kentik_2finterface_2fv202108alpha1_2finterface_2eproto,
+                  nullptr,  // tracker
+              };
+              const ::google::protobuf::internal::ClassData* Interface_InterfaceKvsEntry_DoNotUse::GetClassData() const {
+                ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+                ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+                return _class_data_.base();
+              }
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 75, 2> Interface_InterfaceKvsEntry_DoNotUse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(Interface_InterfaceKvsEntry_DoNotUse, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::DiscardEverythingFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::interface::v202108alpha1::Interface_InterfaceKvsEntry_DoNotUse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // string value = 2 [json_name = "value"];
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(Interface_InterfaceKvsEntry_DoNotUse, _impl_.value_)}},
+    // string key = 1 [json_name = "key"];
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(Interface_InterfaceKvsEntry_DoNotUse, _impl_.key_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string key = 1 [json_name = "key"];
+    {PROTOBUF_FIELD_OFFSET(Interface_InterfaceKvsEntry_DoNotUse, _impl_.key_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string value = 2 [json_name = "value"];
+    {PROTOBUF_FIELD_OFFSET(Interface_InterfaceKvsEntry_DoNotUse, _impl_.value_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\72\3\5\0\0\0\0\0"
+    "kentik.interface.v202108alpha1.Interface.InterfaceKvsEntry"
+    "key"
+    "value"
+  }},
+};
+
+// ===================================================================
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+              Interface_InterfaceTagsEntry_DoNotUse::Interface_InterfaceTagsEntry_DoNotUse() : SuperType(_class_data_.base()) {}
+              Interface_InterfaceTagsEntry_DoNotUse::Interface_InterfaceTagsEntry_DoNotUse(::google::protobuf::Arena* arena)
+                  : SuperType(arena, _class_data_.base()) {}
+#else   // PROTOBUF_CUSTOM_VTABLE
+              Interface_InterfaceTagsEntry_DoNotUse::Interface_InterfaceTagsEntry_DoNotUse() : SuperType() {}
+              Interface_InterfaceTagsEntry_DoNotUse::Interface_InterfaceTagsEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+              inline void* Interface_InterfaceTagsEntry_DoNotUse::PlacementNew_(const void*, void* mem,
+                                                      ::google::protobuf::Arena* arena) {
+                return ::new (mem) Interface_InterfaceTagsEntry_DoNotUse(arena);
+              }
+              constexpr auto Interface_InterfaceTagsEntry_DoNotUse::InternalNewImpl_() {
+                return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(Interface_InterfaceTagsEntry_DoNotUse),
+                                                          alignof(Interface_InterfaceTagsEntry_DoNotUse));
+              }
+              PROTOBUF_CONSTINIT
+              PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+              const ::google::protobuf::internal::ClassDataFull Interface_InterfaceTagsEntry_DoNotUse::_class_data_ = {
+                  ::google::protobuf::internal::ClassData{
+                      &_Interface_InterfaceTagsEntry_DoNotUse_default_instance_._instance,
+                      &_table_.header,
+                      nullptr,  // OnDemandRegisterArenaDtor
+                      nullptr,  // IsInitialized
+                      &Interface_InterfaceTagsEntry_DoNotUse::MergeImpl,
+                      ::google::protobuf::Message::GetNewImpl<Interface_InterfaceTagsEntry_DoNotUse>(),
+              #if defined(PROTOBUF_CUSTOM_VTABLE)
+                      &Interface_InterfaceTagsEntry_DoNotUse::SharedDtor,
+                      static_cast<void (::google::protobuf::MessageLite::*)()>(
+                          &Interface_InterfaceTagsEntry_DoNotUse::ClearImpl),
+                          ::google::protobuf::Message::ByteSizeLongImpl, ::google::protobuf::Message::_InternalSerializeImpl
+                          ,
+              #endif  // PROTOBUF_CUSTOM_VTABLE
+                      PROTOBUF_FIELD_OFFSET(Interface_InterfaceTagsEntry_DoNotUse, _impl_._cached_size_),
+                      false,
+                  },
+                  &Interface_InterfaceTagsEntry_DoNotUse::kDescriptorMethods,
+                  &descriptor_table_kentik_2finterface_2fv202108alpha1_2finterface_2eproto,
+                  nullptr,  // tracker
+              };
+              const ::google::protobuf::internal::ClassData* Interface_InterfaceTagsEntry_DoNotUse::GetClassData() const {
+                ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+                ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+                return _class_data_.base();
+              }
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 76, 2> Interface_InterfaceTagsEntry_DoNotUse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(Interface_InterfaceTagsEntry_DoNotUse, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::DiscardEverythingFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::interface::v202108alpha1::Interface_InterfaceTagsEntry_DoNotUse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // string value = 2 [json_name = "value"];
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(Interface_InterfaceTagsEntry_DoNotUse, _impl_.value_)}},
+    // string key = 1 [json_name = "key"];
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(Interface_InterfaceTagsEntry_DoNotUse, _impl_.key_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string key = 1 [json_name = "key"];
+    {PROTOBUF_FIELD_OFFSET(Interface_InterfaceTagsEntry_DoNotUse, _impl_.key_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string value = 2 [json_name = "value"];
+    {PROTOBUF_FIELD_OFFSET(Interface_InterfaceTagsEntry_DoNotUse, _impl_.value_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\73\3\5\0\0\0\0\0"
+    "kentik.interface.v202108alpha1.Interface.InterfaceTagsEntry"
+    "key"
+    "value"
+  }},
+};
+
+// ===================================================================
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+              Interface_ExtraInfoEntry_DoNotUse::Interface_ExtraInfoEntry_DoNotUse() : SuperType(_class_data_.base()) {}
+              Interface_ExtraInfoEntry_DoNotUse::Interface_ExtraInfoEntry_DoNotUse(::google::protobuf::Arena* arena)
+                  : SuperType(arena, _class_data_.base()) {}
+#else   // PROTOBUF_CUSTOM_VTABLE
+              Interface_ExtraInfoEntry_DoNotUse::Interface_ExtraInfoEntry_DoNotUse() : SuperType() {}
+              Interface_ExtraInfoEntry_DoNotUse::Interface_ExtraInfoEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+              inline void* Interface_ExtraInfoEntry_DoNotUse::PlacementNew_(const void*, void* mem,
+                                                      ::google::protobuf::Arena* arena) {
+                return ::new (mem) Interface_ExtraInfoEntry_DoNotUse(arena);
+              }
+              constexpr auto Interface_ExtraInfoEntry_DoNotUse::InternalNewImpl_() {
+                return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(Interface_ExtraInfoEntry_DoNotUse),
+                                                          alignof(Interface_ExtraInfoEntry_DoNotUse));
+              }
+              PROTOBUF_CONSTINIT
+              PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+              const ::google::protobuf::internal::ClassDataFull Interface_ExtraInfoEntry_DoNotUse::_class_data_ = {
+                  ::google::protobuf::internal::ClassData{
+                      &_Interface_ExtraInfoEntry_DoNotUse_default_instance_._instance,
+                      &_table_.header,
+                      nullptr,  // OnDemandRegisterArenaDtor
+                      nullptr,  // IsInitialized
+                      &Interface_ExtraInfoEntry_DoNotUse::MergeImpl,
+                      ::google::protobuf::Message::GetNewImpl<Interface_ExtraInfoEntry_DoNotUse>(),
+              #if defined(PROTOBUF_CUSTOM_VTABLE)
+                      &Interface_ExtraInfoEntry_DoNotUse::SharedDtor,
+                      static_cast<void (::google::protobuf::MessageLite::*)()>(
+                          &Interface_ExtraInfoEntry_DoNotUse::ClearImpl),
+                          ::google::protobuf::Message::ByteSizeLongImpl, ::google::protobuf::Message::_InternalSerializeImpl
+                          ,
+              #endif  // PROTOBUF_CUSTOM_VTABLE
+                      PROTOBUF_FIELD_OFFSET(Interface_ExtraInfoEntry_DoNotUse, _impl_._cached_size_),
+                      false,
+                  },
+                  &Interface_ExtraInfoEntry_DoNotUse::kDescriptorMethods,
+                  &descriptor_table_kentik_2finterface_2fv202108alpha1_2finterface_2eproto,
+                  nullptr,  // tracker
+              };
+              const ::google::protobuf::internal::ClassData* Interface_ExtraInfoEntry_DoNotUse::GetClassData() const {
+                ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+                ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+                return _class_data_.base();
+              }
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 72, 2> Interface_ExtraInfoEntry_DoNotUse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(Interface_ExtraInfoEntry_DoNotUse, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::DiscardEverythingFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::interface::v202108alpha1::Interface_ExtraInfoEntry_DoNotUse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // string value = 2 [json_name = "value"];
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(Interface_ExtraInfoEntry_DoNotUse, _impl_.value_)}},
+    // string key = 1 [json_name = "key"];
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(Interface_ExtraInfoEntry_DoNotUse, _impl_.key_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string key = 1 [json_name = "key"];
+    {PROTOBUF_FIELD_OFFSET(Interface_ExtraInfoEntry_DoNotUse, _impl_.key_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string value = 2 [json_name = "value"];
+    {PROTOBUF_FIELD_OFFSET(Interface_ExtraInfoEntry_DoNotUse, _impl_.value_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\67\3\5\0\0\0\0\0"
+    "kentik.interface.v202108alpha1.Interface.ExtraInfoEntry"
+    "key"
+    "value"
+  }},
+};
+
+// ===================================================================
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+              Interface_VrfEntry_DoNotUse::Interface_VrfEntry_DoNotUse() : SuperType(_class_data_.base()) {}
+              Interface_VrfEntry_DoNotUse::Interface_VrfEntry_DoNotUse(::google::protobuf::Arena* arena)
+                  : SuperType(arena, _class_data_.base()) {}
+#else   // PROTOBUF_CUSTOM_VTABLE
+              Interface_VrfEntry_DoNotUse::Interface_VrfEntry_DoNotUse() : SuperType() {}
+              Interface_VrfEntry_DoNotUse::Interface_VrfEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+              inline void* Interface_VrfEntry_DoNotUse::PlacementNew_(const void*, void* mem,
+                                                      ::google::protobuf::Arena* arena) {
+                return ::new (mem) Interface_VrfEntry_DoNotUse(arena);
+              }
+              constexpr auto Interface_VrfEntry_DoNotUse::InternalNewImpl_() {
+                return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(Interface_VrfEntry_DoNotUse),
+                                                          alignof(Interface_VrfEntry_DoNotUse));
+              }
+              PROTOBUF_CONSTINIT
+              PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+              const ::google::protobuf::internal::ClassDataFull Interface_VrfEntry_DoNotUse::_class_data_ = {
+                  ::google::protobuf::internal::ClassData{
+                      &_Interface_VrfEntry_DoNotUse_default_instance_._instance,
+                      &_table_.header,
+                      nullptr,  // OnDemandRegisterArenaDtor
+                      nullptr,  // IsInitialized
+                      &Interface_VrfEntry_DoNotUse::MergeImpl,
+                      ::google::protobuf::Message::GetNewImpl<Interface_VrfEntry_DoNotUse>(),
+              #if defined(PROTOBUF_CUSTOM_VTABLE)
+                      &Interface_VrfEntry_DoNotUse::SharedDtor,
+                      static_cast<void (::google::protobuf::MessageLite::*)()>(
+                          &Interface_VrfEntry_DoNotUse::ClearImpl),
+                          ::google::protobuf::Message::ByteSizeLongImpl, ::google::protobuf::Message::_InternalSerializeImpl
+                          ,
+              #endif  // PROTOBUF_CUSTOM_VTABLE
+                      PROTOBUF_FIELD_OFFSET(Interface_VrfEntry_DoNotUse, _impl_._cached_size_),
+                      false,
+                  },
+                  &Interface_VrfEntry_DoNotUse::kDescriptorMethods,
+                  &descriptor_table_kentik_2finterface_2fv202108alpha1_2finterface_2eproto,
+                  nullptr,  // tracker
+              };
+              const ::google::protobuf::internal::ClassData* Interface_VrfEntry_DoNotUse::GetClassData() const {
+                ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+                ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+                return _class_data_.base();
+              }
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 66, 2> Interface_VrfEntry_DoNotUse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(Interface_VrfEntry_DoNotUse, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::DiscardEverythingFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::interface::v202108alpha1::Interface_VrfEntry_DoNotUse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // string value = 2 [json_name = "value"];
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(Interface_VrfEntry_DoNotUse, _impl_.value_)}},
+    // string key = 1 [json_name = "key"];
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(Interface_VrfEntry_DoNotUse, _impl_.key_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string key = 1 [json_name = "key"];
+    {PROTOBUF_FIELD_OFFSET(Interface_VrfEntry_DoNotUse, _impl_.key_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string value = 2 [json_name = "value"];
+    {PROTOBUF_FIELD_OFFSET(Interface_VrfEntry_DoNotUse, _impl_.value_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\61\3\5\0\0\0\0\0"
+    "kentik.interface.v202108alpha1.Interface.VrfEntry"
+    "key"
+    "value"
+  }},
+};
+
+// ===================================================================
+
 class Interface::_Internal {
  public:
   using HasBits =
@@ -1576,6 +2153,10 @@ inline PROTOBUF_NDEBUG_INLINE Interface::Impl_::Impl_(
         _cached_size_{0},
         top_nexthop_asns_{visibility, arena, from.top_nexthop_asns_},
         _top_nexthop_asns_cached_byte_size_{0},
+        interface_kvs_{visibility, arena, from.interface_kvs_},
+        interface_tags_{visibility, arena, from.interface_tags_},
+        extra_info_{visibility, arena, from.extra_info_},
+        vrf_{visibility, arena, from.vrf_},
         id_(arena, from.id_),
         device_id_(arena, from.device_id_),
         snmp_id_(arena, from.snmp_id_),
@@ -1583,7 +2164,14 @@ inline PROTOBUF_NDEBUG_INLINE Interface::Impl_::Impl_(
         interface_ip_(arena, from.interface_ip_),
         interface_description_(arena, from.interface_description_),
         interface_ip_netmask_(arena, from.interface_ip_netmask_),
-        provider_(arena, from.provider_) {}
+        provider_(arena, from.provider_),
+        interface_status_(arena, from.interface_status_),
+        initial_snmp_id_(arena, from.initial_snmp_id_),
+        initial_snmp_alias_(arena, from.initial_snmp_alias_),
+        initial_interface_description_(arena, from.initial_interface_description_),
+        secondary_ips_(arena, from.secondary_ips_),
+        initial_provider_(arena, from.initial_provider_),
+        vrf_id_(arena, from.vrf_id_) {}
 
 Interface::Interface(
     ::google::protobuf::Arena* arena,
@@ -1609,9 +2197,9 @@ Interface::Interface(
                offsetof(Impl_, snmp_speed_),
            reinterpret_cast<const char *>(&from._impl_) +
                offsetof(Impl_, snmp_speed_),
-           offsetof(Impl_, network_boundary_) -
+           offsetof(Impl_, initial_network_boundary_) -
                offsetof(Impl_, snmp_speed_) +
-               sizeof(Impl_::network_boundary_));
+               sizeof(Impl_::initial_network_boundary_));
 
   // @@protoc_insertion_point(copy_constructor:kentik.interface.v202108alpha1.Interface)
 }
@@ -1621,6 +2209,10 @@ inline PROTOBUF_NDEBUG_INLINE Interface::Impl_::Impl_(
       : _cached_size_{0},
         top_nexthop_asns_{visibility, arena},
         _top_nexthop_asns_cached_byte_size_{0},
+        interface_kvs_{visibility, arena},
+        interface_tags_{visibility, arena},
+        extra_info_{visibility, arena},
+        vrf_{visibility, arena},
         id_(arena),
         device_id_(arena),
         snmp_id_(arena),
@@ -1628,16 +2220,23 @@ inline PROTOBUF_NDEBUG_INLINE Interface::Impl_::Impl_(
         interface_ip_(arena),
         interface_description_(arena),
         interface_ip_netmask_(arena),
-        provider_(arena) {}
+        provider_(arena),
+        interface_status_(arena),
+        initial_snmp_id_(arena),
+        initial_snmp_alias_(arena),
+        initial_interface_description_(arena),
+        secondary_ips_(arena),
+        initial_provider_(arena),
+        vrf_id_(arena) {}
 
 inline void Interface::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
   ::memset(reinterpret_cast<char *>(&_impl_) +
                offsetof(Impl_, cdate_),
            0,
-           offsetof(Impl_, network_boundary_) -
+           offsetof(Impl_, initial_network_boundary_) -
                offsetof(Impl_, cdate_) +
-               sizeof(Impl_::network_boundary_));
+               sizeof(Impl_::initial_network_boundary_));
 }
 Interface::~Interface() {
   // @@protoc_insertion_point(destructor:kentik.interface.v202108alpha1.Interface)
@@ -1655,6 +2254,13 @@ inline void Interface::SharedDtor(MessageLite& self) {
   this_._impl_.interface_description_.Destroy();
   this_._impl_.interface_ip_netmask_.Destroy();
   this_._impl_.provider_.Destroy();
+  this_._impl_.interface_status_.Destroy();
+  this_._impl_.initial_snmp_id_.Destroy();
+  this_._impl_.initial_snmp_alias_.Destroy();
+  this_._impl_.initial_interface_description_.Destroy();
+  this_._impl_.secondary_ips_.Destroy();
+  this_._impl_.initial_provider_.Destroy();
+  this_._impl_.vrf_id_.Destroy();
   delete this_._impl_.cdate_;
   delete this_._impl_.edate_;
   this_._impl_.~Impl_();
@@ -1669,6 +2275,38 @@ constexpr auto Interface::InternalNewImpl_() {
       PROTOBUF_FIELD_OFFSET(Interface, _impl_.top_nexthop_asns_) +
           decltype(Interface::_impl_.top_nexthop_asns_)::
               InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+      PROTOBUF_FIELD_OFFSET(Interface, _impl_.interface_kvs_) +
+          decltype(Interface::_impl_.interface_kvs_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+      PROTOBUF_FIELD_OFFSET(Interface, _impl_.interface_kvs_) +
+          decltype(Interface::_impl_.interface_kvs_)::
+              InternalGetArenaOffsetAlt(
+                  ::google::protobuf::Message::internal_visibility()),
+      PROTOBUF_FIELD_OFFSET(Interface, _impl_.interface_tags_) +
+          decltype(Interface::_impl_.interface_tags_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+      PROTOBUF_FIELD_OFFSET(Interface, _impl_.interface_tags_) +
+          decltype(Interface::_impl_.interface_tags_)::
+              InternalGetArenaOffsetAlt(
+                  ::google::protobuf::Message::internal_visibility()),
+      PROTOBUF_FIELD_OFFSET(Interface, _impl_.extra_info_) +
+          decltype(Interface::_impl_.extra_info_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+      PROTOBUF_FIELD_OFFSET(Interface, _impl_.extra_info_) +
+          decltype(Interface::_impl_.extra_info_)::
+              InternalGetArenaOffsetAlt(
+                  ::google::protobuf::Message::internal_visibility()),
+      PROTOBUF_FIELD_OFFSET(Interface, _impl_.vrf_) +
+          decltype(Interface::_impl_.vrf_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+      PROTOBUF_FIELD_OFFSET(Interface, _impl_.vrf_) +
+          decltype(Interface::_impl_.vrf_)::
+              InternalGetArenaOffsetAlt(
                   ::google::protobuf::Message::internal_visibility()),
   });
   if (arena_bits.has_value()) {
@@ -1708,16 +2346,16 @@ const ::google::protobuf::internal::ClassData* Interface::GetClassData() const {
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<4, 15, 2, 146, 2> Interface::_table_ = {
+const ::_pbi::TcParseTable<5, 29, 6, 315, 2> Interface::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(Interface, _impl_._has_bits_),
     0, // no _extensions_
-    15, 120,  // max_field_number, fast_idx_mask
+    29, 248,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294934528,  // skipmap
+    3758096384,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    15,  // num_field_entries
-    2,  // num_aux_entries
+    29,  // num_field_entries
+    6,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
     nullptr,  // post_loop_handler
@@ -1772,6 +2410,42 @@ const ::_pbi::TcParseTable<4, 15, 2, 146, 2> Interface::_table_ = {
     // string provider = 15 [json_name = "provider"];
     {::_pbi::TcParser::FastUS1,
      {122, 63, 0, PROTOBUF_FIELD_OFFSET(Interface, _impl_.provider_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    // string interface_status = 18 [json_name = "interfaceStatus"];
+    {::_pbi::TcParser::FastUS2,
+     {402, 63, 0, PROTOBUF_FIELD_OFFSET(Interface, _impl_.interface_status_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    // string initial_snmp_id = 20 [json_name = "initialSnmpId"];
+    {::_pbi::TcParser::FastUS2,
+     {418, 63, 0, PROTOBUF_FIELD_OFFSET(Interface, _impl_.initial_snmp_id_)}},
+    // string initial_snmp_alias = 21 [json_name = "initialSnmpAlias"];
+    {::_pbi::TcParser::FastUS2,
+     {426, 63, 0, PROTOBUF_FIELD_OFFSET(Interface, _impl_.initial_snmp_alias_)}},
+    // string initial_interface_description = 22 [json_name = "initialInterfaceDescription"];
+    {::_pbi::TcParser::FastUS2,
+     {434, 63, 0, PROTOBUF_FIELD_OFFSET(Interface, _impl_.initial_interface_description_)}},
+    // int32 initial_snmp_speed = 23 [json_name = "initialSnmpSpeed"];
+    {::_pbi::TcParser::FastV32S2,
+     {440, 63, 0, PROTOBUF_FIELD_OFFSET(Interface, _impl_.initial_snmp_speed_)}},
+    // string secondary_ips = 24 [json_name = "secondaryIps"];
+    {::_pbi::TcParser::FastUS2,
+     {450, 63, 0, PROTOBUF_FIELD_OFFSET(Interface, _impl_.secondary_ips_)}},
+    // .kentik.interface.v202108alpha1.ConnectivityType initial_connectivity_type = 25 [json_name = "initialConnectivityType"];
+    {::_pbi::TcParser::FastV32S2,
+     {456, 63, 0, PROTOBUF_FIELD_OFFSET(Interface, _impl_.initial_connectivity_type_)}},
+    // .kentik.interface.v202108alpha1.NetworkBoundary initial_network_boundary = 26 [json_name = "initialNetworkBoundary"];
+    {::_pbi::TcParser::FastV32S2,
+     {464, 63, 0, PROTOBUF_FIELD_OFFSET(Interface, _impl_.initial_network_boundary_)}},
+    // string initial_provider = 27 [json_name = "initialProvider"];
+    {::_pbi::TcParser::FastUS2,
+     {474, 63, 0, PROTOBUF_FIELD_OFFSET(Interface, _impl_.initial_provider_)}},
+    // string vrf_id = 28 [json_name = "vrfId"];
+    {::_pbi::TcParser::FastUS2,
+     {482, 63, 0, PROTOBUF_FIELD_OFFSET(Interface, _impl_.vrf_id_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
   }}, {{
@@ -1820,11 +2494,69 @@ const ::_pbi::TcParseTable<4, 15, 2, 146, 2> Interface::_table_ = {
     // string provider = 15 [json_name = "provider"];
     {PROTOBUF_FIELD_OFFSET(Interface, _impl_.provider_), -1, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // map<string, string> interface_kvs = 16 [json_name = "interfaceKvs"];
+    {PROTOBUF_FIELD_OFFSET(Interface, _impl_.interface_kvs_), -1, 2,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMap)},
+    // map<string, string> interface_tags = 17 [json_name = "interfaceTags"];
+    {PROTOBUF_FIELD_OFFSET(Interface, _impl_.interface_tags_), -1, 3,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMap)},
+    // string interface_status = 18 [json_name = "interfaceStatus"];
+    {PROTOBUF_FIELD_OFFSET(Interface, _impl_.interface_status_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // map<string, string> extra_info = 19 [json_name = "extraInfo"];
+    {PROTOBUF_FIELD_OFFSET(Interface, _impl_.extra_info_), -1, 4,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMap)},
+    // string initial_snmp_id = 20 [json_name = "initialSnmpId"];
+    {PROTOBUF_FIELD_OFFSET(Interface, _impl_.initial_snmp_id_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string initial_snmp_alias = 21 [json_name = "initialSnmpAlias"];
+    {PROTOBUF_FIELD_OFFSET(Interface, _impl_.initial_snmp_alias_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string initial_interface_description = 22 [json_name = "initialInterfaceDescription"];
+    {PROTOBUF_FIELD_OFFSET(Interface, _impl_.initial_interface_description_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // int32 initial_snmp_speed = 23 [json_name = "initialSnmpSpeed"];
+    {PROTOBUF_FIELD_OFFSET(Interface, _impl_.initial_snmp_speed_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
+    // string secondary_ips = 24 [json_name = "secondaryIps"];
+    {PROTOBUF_FIELD_OFFSET(Interface, _impl_.secondary_ips_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // .kentik.interface.v202108alpha1.ConnectivityType initial_connectivity_type = 25 [json_name = "initialConnectivityType"];
+    {PROTOBUF_FIELD_OFFSET(Interface, _impl_.initial_connectivity_type_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
+    // .kentik.interface.v202108alpha1.NetworkBoundary initial_network_boundary = 26 [json_name = "initialNetworkBoundary"];
+    {PROTOBUF_FIELD_OFFSET(Interface, _impl_.initial_network_boundary_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
+    // string initial_provider = 27 [json_name = "initialProvider"];
+    {PROTOBUF_FIELD_OFFSET(Interface, _impl_.initial_provider_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string vrf_id = 28 [json_name = "vrfId"];
+    {PROTOBUF_FIELD_OFFSET(Interface, _impl_.vrf_id_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // map<string, string> vrf = 29 [json_name = "vrf"];
+    {PROTOBUF_FIELD_OFFSET(Interface, _impl_.vrf_), -1, 5,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMap)},
   }}, {{
     {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
     {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
+    {::_pbi::TcParser::GetMapAuxInfo<
+        decltype(Interface()._impl_.interface_kvs_)>(
+        1, 0, 0, 9,
+        9)},
+    {::_pbi::TcParser::GetMapAuxInfo<
+        decltype(Interface()._impl_.interface_tags_)>(
+        1, 0, 0, 9,
+        9)},
+    {::_pbi::TcParser::GetMapAuxInfo<
+        decltype(Interface()._impl_.extra_info_)>(
+        1, 0, 0, 9,
+        9)},
+    {::_pbi::TcParser::GetMapAuxInfo<
+        decltype(Interface()._impl_.vrf_)>(
+        1, 0, 0, 9,
+        9)},
   }}, {{
-    "\50\2\11\7\0\0\12\14\25\0\0\24\0\0\0\10"
+    "\50\2\11\7\0\0\12\14\25\0\0\24\0\0\0\10\15\16\20\12\17\22\35\0\15\0\0\20\6\3\0\0"
     "kentik.interface.v202108alpha1.Interface"
     "id"
     "device_id"
@@ -1834,6 +2566,17 @@ const ::_pbi::TcParseTable<4, 15, 2, 146, 2> Interface::_table_ = {
     "interface_description"
     "interface_ip_netmask"
     "provider"
+    "interface_kvs"
+    "interface_tags"
+    "interface_status"
+    "extra_info"
+    "initial_snmp_id"
+    "initial_snmp_alias"
+    "initial_interface_description"
+    "secondary_ips"
+    "initial_provider"
+    "vrf_id"
+    "vrf"
   }},
 };
 
@@ -1845,6 +2588,10 @@ PROTOBUF_NOINLINE void Interface::Clear() {
   (void) cached_has_bits;
 
   _impl_.top_nexthop_asns_.Clear();
+  _impl_.interface_kvs_.Clear();
+  _impl_.interface_tags_.Clear();
+  _impl_.extra_info_.Clear();
+  _impl_.vrf_.Clear();
   _impl_.id_.ClearToEmpty();
   _impl_.device_id_.ClearToEmpty();
   _impl_.snmp_id_.ClearToEmpty();
@@ -1853,6 +2600,13 @@ PROTOBUF_NOINLINE void Interface::Clear() {
   _impl_.interface_description_.ClearToEmpty();
   _impl_.interface_ip_netmask_.ClearToEmpty();
   _impl_.provider_.ClearToEmpty();
+  _impl_.interface_status_.ClearToEmpty();
+  _impl_.initial_snmp_id_.ClearToEmpty();
+  _impl_.initial_snmp_alias_.ClearToEmpty();
+  _impl_.initial_interface_description_.ClearToEmpty();
+  _impl_.secondary_ips_.ClearToEmpty();
+  _impl_.initial_provider_.ClearToEmpty();
+  _impl_.vrf_id_.ClearToEmpty();
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
@@ -1865,8 +2619,8 @@ PROTOBUF_NOINLINE void Interface::Clear() {
     }
   }
   ::memset(&_impl_.snmp_speed_, 0, static_cast<::size_t>(
-      reinterpret_cast<char*>(&_impl_.network_boundary_) -
-      reinterpret_cast<char*>(&_impl_.snmp_speed_)) + sizeof(_impl_.network_boundary_));
+      reinterpret_cast<char*>(&_impl_.initial_network_boundary_) -
+      reinterpret_cast<char*>(&_impl_.snmp_speed_)) + sizeof(_impl_.initial_network_boundary_));
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
@@ -2002,6 +2756,215 @@ PROTOBUF_NOINLINE void Interface::Clear() {
             target = stream->WriteStringMaybeAliased(15, _s, target);
           }
 
+          // map<string, string> interface_kvs = 16 [json_name = "interfaceKvs"];
+          if (!this_._internal_interface_kvs().empty()) {
+            using MapType = ::google::protobuf::Map<std::string, std::string>;
+            using WireHelper = _pbi::MapEntryFuncs<std::string, std::string,
+                                           _pbi::WireFormatLite::TYPE_STRING,
+                                           _pbi::WireFormatLite::TYPE_STRING>;
+            const auto& field = this_._internal_interface_kvs();
+
+            if (stream->IsSerializationDeterministic() && field.size() > 1) {
+              for (const auto& entry : ::google::protobuf::internal::MapSorterPtr<MapType>(field)) {
+                target = WireHelper::InternalSerialize(
+                    16, entry.first, entry.second, target, stream);
+                ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                    entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.interface.v202108alpha1.Interface.interface_kvs");
+                ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                    entry.second.data(), static_cast<int>(entry.second.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.interface.v202108alpha1.Interface.interface_kvs");
+              }
+            } else {
+              for (const auto& entry : field) {
+                target = WireHelper::InternalSerialize(
+                    16, entry.first, entry.second, target, stream);
+                ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                    entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.interface.v202108alpha1.Interface.interface_kvs");
+                ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                    entry.second.data(), static_cast<int>(entry.second.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.interface.v202108alpha1.Interface.interface_kvs");
+              }
+            }
+          }
+
+          // map<string, string> interface_tags = 17 [json_name = "interfaceTags"];
+          if (!this_._internal_interface_tags().empty()) {
+            using MapType = ::google::protobuf::Map<std::string, std::string>;
+            using WireHelper = _pbi::MapEntryFuncs<std::string, std::string,
+                                           _pbi::WireFormatLite::TYPE_STRING,
+                                           _pbi::WireFormatLite::TYPE_STRING>;
+            const auto& field = this_._internal_interface_tags();
+
+            if (stream->IsSerializationDeterministic() && field.size() > 1) {
+              for (const auto& entry : ::google::protobuf::internal::MapSorterPtr<MapType>(field)) {
+                target = WireHelper::InternalSerialize(
+                    17, entry.first, entry.second, target, stream);
+                ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                    entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.interface.v202108alpha1.Interface.interface_tags");
+                ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                    entry.second.data(), static_cast<int>(entry.second.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.interface.v202108alpha1.Interface.interface_tags");
+              }
+            } else {
+              for (const auto& entry : field) {
+                target = WireHelper::InternalSerialize(
+                    17, entry.first, entry.second, target, stream);
+                ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                    entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.interface.v202108alpha1.Interface.interface_tags");
+                ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                    entry.second.data(), static_cast<int>(entry.second.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.interface.v202108alpha1.Interface.interface_tags");
+              }
+            }
+          }
+
+          // string interface_status = 18 [json_name = "interfaceStatus"];
+          if (!this_._internal_interface_status().empty()) {
+            const std::string& _s = this_._internal_interface_status();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.interface.v202108alpha1.Interface.interface_status");
+            target = stream->WriteStringMaybeAliased(18, _s, target);
+          }
+
+          // map<string, string> extra_info = 19 [json_name = "extraInfo"];
+          if (!this_._internal_extra_info().empty()) {
+            using MapType = ::google::protobuf::Map<std::string, std::string>;
+            using WireHelper = _pbi::MapEntryFuncs<std::string, std::string,
+                                           _pbi::WireFormatLite::TYPE_STRING,
+                                           _pbi::WireFormatLite::TYPE_STRING>;
+            const auto& field = this_._internal_extra_info();
+
+            if (stream->IsSerializationDeterministic() && field.size() > 1) {
+              for (const auto& entry : ::google::protobuf::internal::MapSorterPtr<MapType>(field)) {
+                target = WireHelper::InternalSerialize(
+                    19, entry.first, entry.second, target, stream);
+                ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                    entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.interface.v202108alpha1.Interface.extra_info");
+                ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                    entry.second.data(), static_cast<int>(entry.second.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.interface.v202108alpha1.Interface.extra_info");
+              }
+            } else {
+              for (const auto& entry : field) {
+                target = WireHelper::InternalSerialize(
+                    19, entry.first, entry.second, target, stream);
+                ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                    entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.interface.v202108alpha1.Interface.extra_info");
+                ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                    entry.second.data(), static_cast<int>(entry.second.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.interface.v202108alpha1.Interface.extra_info");
+              }
+            }
+          }
+
+          // string initial_snmp_id = 20 [json_name = "initialSnmpId"];
+          if (!this_._internal_initial_snmp_id().empty()) {
+            const std::string& _s = this_._internal_initial_snmp_id();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.interface.v202108alpha1.Interface.initial_snmp_id");
+            target = stream->WriteStringMaybeAliased(20, _s, target);
+          }
+
+          // string initial_snmp_alias = 21 [json_name = "initialSnmpAlias"];
+          if (!this_._internal_initial_snmp_alias().empty()) {
+            const std::string& _s = this_._internal_initial_snmp_alias();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.interface.v202108alpha1.Interface.initial_snmp_alias");
+            target = stream->WriteStringMaybeAliased(21, _s, target);
+          }
+
+          // string initial_interface_description = 22 [json_name = "initialInterfaceDescription"];
+          if (!this_._internal_initial_interface_description().empty()) {
+            const std::string& _s = this_._internal_initial_interface_description();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.interface.v202108alpha1.Interface.initial_interface_description");
+            target = stream->WriteStringMaybeAliased(22, _s, target);
+          }
+
+          // int32 initial_snmp_speed = 23 [json_name = "initialSnmpSpeed"];
+          if (this_._internal_initial_snmp_speed() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteInt32ToArray(
+                23, this_._internal_initial_snmp_speed(), target);
+          }
+
+          // string secondary_ips = 24 [json_name = "secondaryIps"];
+          if (!this_._internal_secondary_ips().empty()) {
+            const std::string& _s = this_._internal_secondary_ips();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.interface.v202108alpha1.Interface.secondary_ips");
+            target = stream->WriteStringMaybeAliased(24, _s, target);
+          }
+
+          // .kentik.interface.v202108alpha1.ConnectivityType initial_connectivity_type = 25 [json_name = "initialConnectivityType"];
+          if (this_._internal_initial_connectivity_type() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteEnumToArray(
+                25, this_._internal_initial_connectivity_type(), target);
+          }
+
+          // .kentik.interface.v202108alpha1.NetworkBoundary initial_network_boundary = 26 [json_name = "initialNetworkBoundary"];
+          if (this_._internal_initial_network_boundary() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteEnumToArray(
+                26, this_._internal_initial_network_boundary(), target);
+          }
+
+          // string initial_provider = 27 [json_name = "initialProvider"];
+          if (!this_._internal_initial_provider().empty()) {
+            const std::string& _s = this_._internal_initial_provider();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.interface.v202108alpha1.Interface.initial_provider");
+            target = stream->WriteStringMaybeAliased(27, _s, target);
+          }
+
+          // string vrf_id = 28 [json_name = "vrfId"];
+          if (!this_._internal_vrf_id().empty()) {
+            const std::string& _s = this_._internal_vrf_id();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.interface.v202108alpha1.Interface.vrf_id");
+            target = stream->WriteStringMaybeAliased(28, _s, target);
+          }
+
+          // map<string, string> vrf = 29 [json_name = "vrf"];
+          if (!this_._internal_vrf().empty()) {
+            using MapType = ::google::protobuf::Map<std::string, std::string>;
+            using WireHelper = _pbi::MapEntryFuncs<std::string, std::string,
+                                           _pbi::WireFormatLite::TYPE_STRING,
+                                           _pbi::WireFormatLite::TYPE_STRING>;
+            const auto& field = this_._internal_vrf();
+
+            if (stream->IsSerializationDeterministic() && field.size() > 1) {
+              for (const auto& entry : ::google::protobuf::internal::MapSorterPtr<MapType>(field)) {
+                target = WireHelper::InternalSerialize(
+                    29, entry.first, entry.second, target, stream);
+                ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                    entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.interface.v202108alpha1.Interface.vrf");
+                ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                    entry.second.data(), static_cast<int>(entry.second.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.interface.v202108alpha1.Interface.vrf");
+              }
+            } else {
+              for (const auto& entry : field) {
+                target = WireHelper::InternalSerialize(
+                    29, entry.first, entry.second, target, stream);
+                ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                    entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.interface.v202108alpha1.Interface.vrf");
+                ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                    entry.second.data(), static_cast<int>(entry.second.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.interface.v202108alpha1.Interface.vrf");
+              }
+            }
+          }
+
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -2033,6 +2996,46 @@ PROTOBUF_NOINLINE void Interface::Clear() {
                   ::_pbi::WireFormatLite::Int32SizeWithPackedTagSize(
                       this_._internal_top_nexthop_asns(), 1,
                       this_._impl_._top_nexthop_asns_cached_byte_size_);
+            }
+            // map<string, string> interface_kvs = 16 [json_name = "interfaceKvs"];
+            {
+              total_size +=
+                  2 * ::google::protobuf::internal::FromIntSize(this_._internal_interface_kvs_size());
+              for (const auto& entry : this_._internal_interface_kvs()) {
+                total_size += _pbi::MapEntryFuncs<std::string, std::string,
+                                               _pbi::WireFormatLite::TYPE_STRING,
+                                               _pbi::WireFormatLite::TYPE_STRING>::ByteSizeLong(entry.first, entry.second);
+              }
+            }
+            // map<string, string> interface_tags = 17 [json_name = "interfaceTags"];
+            {
+              total_size +=
+                  2 * ::google::protobuf::internal::FromIntSize(this_._internal_interface_tags_size());
+              for (const auto& entry : this_._internal_interface_tags()) {
+                total_size += _pbi::MapEntryFuncs<std::string, std::string,
+                                               _pbi::WireFormatLite::TYPE_STRING,
+                                               _pbi::WireFormatLite::TYPE_STRING>::ByteSizeLong(entry.first, entry.second);
+              }
+            }
+            // map<string, string> extra_info = 19 [json_name = "extraInfo"];
+            {
+              total_size +=
+                  2 * ::google::protobuf::internal::FromIntSize(this_._internal_extra_info_size());
+              for (const auto& entry : this_._internal_extra_info()) {
+                total_size += _pbi::MapEntryFuncs<std::string, std::string,
+                                               _pbi::WireFormatLite::TYPE_STRING,
+                                               _pbi::WireFormatLite::TYPE_STRING>::ByteSizeLong(entry.first, entry.second);
+              }
+            }
+            // map<string, string> vrf = 29 [json_name = "vrf"];
+            {
+              total_size +=
+                  2 * ::google::protobuf::internal::FromIntSize(this_._internal_vrf_size());
+              for (const auto& entry : this_._internal_vrf()) {
+                total_size += _pbi::MapEntryFuncs<std::string, std::string,
+                                               _pbi::WireFormatLite::TYPE_STRING,
+                                               _pbi::WireFormatLite::TYPE_STRING>::ByteSizeLong(entry.first, entry.second);
+              }
             }
           }
            {
@@ -2076,6 +3079,41 @@ PROTOBUF_NOINLINE void Interface::Clear() {
               total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                               this_._internal_provider());
             }
+            // string interface_status = 18 [json_name = "interfaceStatus"];
+            if (!this_._internal_interface_status().empty()) {
+              total_size += 2 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_interface_status());
+            }
+            // string initial_snmp_id = 20 [json_name = "initialSnmpId"];
+            if (!this_._internal_initial_snmp_id().empty()) {
+              total_size += 2 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_initial_snmp_id());
+            }
+            // string initial_snmp_alias = 21 [json_name = "initialSnmpAlias"];
+            if (!this_._internal_initial_snmp_alias().empty()) {
+              total_size += 2 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_initial_snmp_alias());
+            }
+            // string initial_interface_description = 22 [json_name = "initialInterfaceDescription"];
+            if (!this_._internal_initial_interface_description().empty()) {
+              total_size += 2 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_initial_interface_description());
+            }
+            // string secondary_ips = 24 [json_name = "secondaryIps"];
+            if (!this_._internal_secondary_ips().empty()) {
+              total_size += 2 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_secondary_ips());
+            }
+            // string initial_provider = 27 [json_name = "initialProvider"];
+            if (!this_._internal_initial_provider().empty()) {
+              total_size += 2 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_initial_provider());
+            }
+            // string vrf_id = 28 [json_name = "vrfId"];
+            if (!this_._internal_vrf_id().empty()) {
+              total_size += 2 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_vrf_id());
+            }
           }
           cached_has_bits = this_._impl_._has_bits_[0];
           if (cached_has_bits & 0x00000003u) {
@@ -2111,6 +3149,21 @@ PROTOBUF_NOINLINE void Interface::Clear() {
               total_size += 1 +
                             ::_pbi::WireFormatLite::EnumSize(this_._internal_network_boundary());
             }
+            // int32 initial_snmp_speed = 23 [json_name = "initialSnmpSpeed"];
+            if (this_._internal_initial_snmp_speed() != 0) {
+              total_size += 2 + ::_pbi::WireFormatLite::Int32Size(
+                                              this_._internal_initial_snmp_speed());
+            }
+            // .kentik.interface.v202108alpha1.ConnectivityType initial_connectivity_type = 25 [json_name = "initialConnectivityType"];
+            if (this_._internal_initial_connectivity_type() != 0) {
+              total_size += 2 +
+                            ::_pbi::WireFormatLite::EnumSize(this_._internal_initial_connectivity_type());
+            }
+            // .kentik.interface.v202108alpha1.NetworkBoundary initial_network_boundary = 26 [json_name = "initialNetworkBoundary"];
+            if (this_._internal_initial_network_boundary() != 0) {
+              total_size += 2 +
+                            ::_pbi::WireFormatLite::EnumSize(this_._internal_initial_network_boundary());
+            }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
                                                      &this_._impl_._cached_size_);
@@ -2126,6 +3179,10 @@ void Interface::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::googl
   (void) cached_has_bits;
 
   _this->_internal_mutable_top_nexthop_asns()->MergeFrom(from._internal_top_nexthop_asns());
+  _this->_impl_.interface_kvs_.MergeFrom(from._impl_.interface_kvs_);
+  _this->_impl_.interface_tags_.MergeFrom(from._impl_.interface_tags_);
+  _this->_impl_.extra_info_.MergeFrom(from._impl_.extra_info_);
+  _this->_impl_.vrf_.MergeFrom(from._impl_.vrf_);
   if (!from._internal_id().empty()) {
     _this->_internal_set_id(from._internal_id());
   }
@@ -2149,6 +3206,27 @@ void Interface::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::googl
   }
   if (!from._internal_provider().empty()) {
     _this->_internal_set_provider(from._internal_provider());
+  }
+  if (!from._internal_interface_status().empty()) {
+    _this->_internal_set_interface_status(from._internal_interface_status());
+  }
+  if (!from._internal_initial_snmp_id().empty()) {
+    _this->_internal_set_initial_snmp_id(from._internal_initial_snmp_id());
+  }
+  if (!from._internal_initial_snmp_alias().empty()) {
+    _this->_internal_set_initial_snmp_alias(from._internal_initial_snmp_alias());
+  }
+  if (!from._internal_initial_interface_description().empty()) {
+    _this->_internal_set_initial_interface_description(from._internal_initial_interface_description());
+  }
+  if (!from._internal_secondary_ips().empty()) {
+    _this->_internal_set_secondary_ips(from._internal_secondary_ips());
+  }
+  if (!from._internal_initial_provider().empty()) {
+    _this->_internal_set_initial_provider(from._internal_initial_provider());
+  }
+  if (!from._internal_vrf_id().empty()) {
+    _this->_internal_set_vrf_id(from._internal_vrf_id());
   }
   cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
@@ -2183,6 +3261,15 @@ void Interface::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::googl
   if (from._internal_network_boundary() != 0) {
     _this->_impl_.network_boundary_ = from._impl_.network_boundary_;
   }
+  if (from._internal_initial_snmp_speed() != 0) {
+    _this->_impl_.initial_snmp_speed_ = from._impl_.initial_snmp_speed_;
+  }
+  if (from._internal_initial_connectivity_type() != 0) {
+    _this->_impl_.initial_connectivity_type_ = from._impl_.initial_connectivity_type_;
+  }
+  if (from._internal_initial_network_boundary() != 0) {
+    _this->_impl_.initial_network_boundary_ = from._impl_.initial_network_boundary_;
+  }
   _this->_impl_._has_bits_[0] |= cached_has_bits;
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -2202,6 +3289,10 @@ void Interface::InternalSwap(Interface* PROTOBUF_RESTRICT other) {
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   _impl_.top_nexthop_asns_.InternalSwap(&other->_impl_.top_nexthop_asns_);
+  _impl_.interface_kvs_.InternalSwap(&other->_impl_.interface_kvs_);
+  _impl_.interface_tags_.InternalSwap(&other->_impl_.interface_tags_);
+  _impl_.extra_info_.InternalSwap(&other->_impl_.extra_info_);
+  _impl_.vrf_.InternalSwap(&other->_impl_.vrf_);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.id_, &other->_impl_.id_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_id_, &other->_impl_.device_id_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.snmp_id_, &other->_impl_.snmp_id_, arena);
@@ -2210,9 +3301,16 @@ void Interface::InternalSwap(Interface* PROTOBUF_RESTRICT other) {
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.interface_description_, &other->_impl_.interface_description_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.interface_ip_netmask_, &other->_impl_.interface_ip_netmask_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.provider_, &other->_impl_.provider_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.interface_status_, &other->_impl_.interface_status_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.initial_snmp_id_, &other->_impl_.initial_snmp_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.initial_snmp_alias_, &other->_impl_.initial_snmp_alias_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.initial_interface_description_, &other->_impl_.initial_interface_description_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.secondary_ips_, &other->_impl_.secondary_ips_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.initial_provider_, &other->_impl_.initial_provider_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.vrf_id_, &other->_impl_.vrf_id_, arena);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Interface, _impl_.network_boundary_)
-      + sizeof(Interface::_impl_.network_boundary_)
+      PROTOBUF_FIELD_OFFSET(Interface, _impl_.initial_network_boundary_)
+      + sizeof(Interface::_impl_.initial_network_boundary_)
       - PROTOBUF_FIELD_OFFSET(Interface, _impl_.cdate_)>(
           reinterpret_cast<char*>(&_impl_.cdate_),
           reinterpret_cast<char*>(&other->_impl_.cdate_));

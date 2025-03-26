@@ -100,6 +100,39 @@ message SavedFilterFilter {
       description: "Value to perform equality comparisons."
     }
   ];
+  string filter_field_string = 4[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "String representation of filter field."
+    }
+  ];
+  string metric = 5[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Filter field as metric for data series."
+    }
+  ];
+  string aggregate = 6[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Aggregating function."
+    }
+  ];
+  string right_filter_field = 7[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Right field operand."
+    }
+  ];
+}
+
+message SavedFilterFilterId {
+  string filter_id = 1[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of reference saved filter."
+    }
+  ];
+  bool is_not = 2[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Include/Exclude of the reference saved filter."
+    }
+  ];
 }
 
 message SavedFilterFilterGroup {
@@ -116,6 +149,17 @@ message SavedFilterFilterGroup {
   bool not = 3[
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Whether or not to NOT() the filter group. Defaults to false."
+    }
+  ];
+
+  repeated SavedFilterFilterId saved_filter_ids = 4[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Include reference of other saved filters in this filter group."
+    }
+  ];
+  repeated SavedFilterFilterGroup nested_filter_groups = 5[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Include nested filter group."
     }
   ];
 }

@@ -29,6 +29,9 @@
 #include "google/protobuf/message_lite.h"
 #include "google/protobuf/repeated_field.h"  // IWYU pragma: export
 #include "google/protobuf/extension_set.h"  // IWYU pragma: export
+#include "google/protobuf/map.h"  // IWYU pragma: export
+#include "google/protobuf/map_entry.h"
+#include "google/protobuf/map_field_inl.h"
 #include "google/protobuf/unknown_field_set.h"
 #include "google/api/annotations.pb.h"
 #include "google/api/client.pb.h"
@@ -104,6 +107,9 @@ extern DeviceNmsSnmpConfigDefaultTypeInternal _DeviceNmsSnmpConfig_default_insta
 class DeviceNmsStConfig;
 struct DeviceNmsStConfigDefaultTypeInternal;
 extern DeviceNmsStConfigDefaultTypeInternal _DeviceNmsStConfig_default_instance_;
+class DeviceQuery;
+struct DeviceQueryDefaultTypeInternal;
+extern DeviceQueryDefaultTypeInternal _DeviceQuery_default_instance_;
 class DeviceSnmpV3Conf;
 struct DeviceSnmpV3ConfDefaultTypeInternal;
 extern DeviceSnmpV3ConfDefaultTypeInternal _DeviceSnmpV3Conf_default_instance_;
@@ -134,6 +140,9 @@ extern ListDevicesResponseDefaultTypeInternal _ListDevicesResponse_default_insta
 class Plan;
 struct PlanDefaultTypeInternal;
 extern PlanDefaultTypeInternal _Plan_default_instance_;
+class Plan_MetadataEntry_DoNotUse;
+struct Plan_MetadataEntry_DoNotUseDefaultTypeInternal;
+extern Plan_MetadataEntry_DoNotUseDefaultTypeInternal _Plan_MetadataEntry_DoNotUse_default_instance_;
 class Site;
 struct SiteDefaultTypeInternal;
 extern SiteDefaultTypeInternal _Site_default_instance_;
@@ -428,362 +437,42 @@ class Site final : public ::google::protobuf::Message
 };
 // -------------------------------------------------------------------
 
-class Plan final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:kentik.device.v202308beta1.Plan) */ {
+class Plan_MetadataEntry_DoNotUse final
+    : public ::google::protobuf::internal::MapEntry<
+          std::string, std::string,
+          ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+          ::google::protobuf::internal::WireFormatLite::TYPE_STRING> {
  public:
-  inline Plan() : Plan(nullptr) {}
-  ~Plan() PROTOBUF_FINAL;
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-  void operator delete(Plan* msg, std::destroying_delete_t) {
-    SharedDtor(*msg);
-    ::google::protobuf::internal::SizedDelete(msg, sizeof(Plan));
-  }
-#endif
-
+  using SuperType = ::google::protobuf::internal::MapEntry<
+      std::string, std::string,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING>;
+  Plan_MetadataEntry_DoNotUse();
   template <typename = void>
-  explicit PROTOBUF_CONSTEXPR Plan(
+  explicit PROTOBUF_CONSTEXPR Plan_MetadataEntry_DoNotUse(
       ::google::protobuf::internal::ConstantInitialized);
-
-  inline Plan(const Plan& from) : Plan(nullptr, from) {}
-  inline Plan(Plan&& from) noexcept
-      : Plan(nullptr, std::move(from)) {}
-  inline Plan& operator=(const Plan& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline Plan& operator=(Plan&& from) noexcept {
-    if (this == &from) return *this;
-    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
+  explicit Plan_MetadataEntry_DoNotUse(::google::protobuf::Arena* arena);
+  static const Plan_MetadataEntry_DoNotUse* internal_default_instance() {
+    return reinterpret_cast<const Plan_MetadataEntry_DoNotUse*>(
+        &_Plan_MetadataEntry_DoNotUse_default_instance_);
   }
 
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
-  }
 
-  static const ::google::protobuf::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::google::protobuf::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::google::protobuf::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const Plan& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const Plan* internal_default_instance() {
-    return reinterpret_cast<const Plan*>(
-        &_Plan_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages = 6;
-  friend void swap(Plan& a, Plan& b) { a.Swap(&b); }
-  inline void Swap(Plan* other) {
-    if (other == this) return;
-    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
-      InternalSwap(other);
-    } else {
-      ::google::protobuf::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(Plan* other) {
-    if (other == this) return;
-    ABSL_DCHECK(GetArena() == other->GetArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  Plan* New(::google::protobuf::Arena* arena = nullptr) const {
-    return ::google::protobuf::Message::DefaultConstruct<Plan>(arena);
-  }
-  using ::google::protobuf::Message::CopyFrom;
-  void CopyFrom(const Plan& from);
-  using ::google::protobuf::Message::MergeFrom;
-  void MergeFrom(const Plan& from) { Plan::MergeImpl(*this, from); }
-
-  private:
-  static void MergeImpl(
-      ::google::protobuf::MessageLite& to_msg,
-      const ::google::protobuf::MessageLite& from_msg);
-
-  public:
-  bool IsInitialized() const {
-    return true;
-  }
-  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
-  #if defined(PROTOBUF_CUSTOM_VTABLE)
-  private:
-  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
-  static ::uint8_t* _InternalSerialize(
-      const MessageLite& msg, ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream);
-
-  public:
-  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-    return _InternalSerialize(*this, target, stream);
-  }
-  #else   // PROTOBUF_CUSTOM_VTABLE
-  ::size_t ByteSizeLong() const final;
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
-  #endif  // PROTOBUF_CUSTOM_VTABLE
-  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
-
-  private:
-  void SharedCtor(::google::protobuf::Arena* arena);
-  static void SharedDtor(MessageLite& self);
-  void InternalSwap(Plan* other);
  private:
-  template <typename T>
-  friend ::absl::string_view(
-      ::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "kentik.device.v202308beta1.Plan"; }
+  friend class ::google::protobuf::MessageLite;
+  friend struct ::TableStruct_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto;
 
- protected:
-  explicit Plan(::google::protobuf::Arena* arena);
-  Plan(::google::protobuf::Arena* arena, const Plan& from);
-  Plan(::google::protobuf::Arena* arena, Plan&& from) noexcept
-      : Plan(arena) {
-    *this = ::std::move(from);
-  }
-  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
-  static void* PlacementNew_(const void*, void* mem,
-                             ::google::protobuf::Arena* arena);
-  static constexpr auto InternalNewImpl_();
-  static const ::google::protobuf::internal::ClassDataFull _class_data_;
-
- public:
-  ::google::protobuf::Metadata GetMetadata() const;
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-  enum : int {
-    kIdFieldNumber = 1,
-    kNameFieldNumber = 2,
-  };
-  // string id = 1 [json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  void clear_id() ;
-  const std::string& id() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_id(Arg_&& arg, Args_... args);
-  std::string* mutable_id();
-  PROTOBUF_NODISCARD std::string* release_id();
-  void set_allocated_id(std::string* value);
-
-  private:
-  const std::string& _internal_id() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_id(
-      const std::string& value);
-  std::string* _internal_mutable_id();
-
-  public:
-  // string name = 2 [json_name = "name", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  void clear_name() ;
-  const std::string& name() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_name(Arg_&& arg, Args_... args);
-  std::string* mutable_name();
-  PROTOBUF_NODISCARD std::string* release_name();
-  void set_allocated_name(std::string* value);
-
-  private:
-  const std::string& _internal_name() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(
-      const std::string& value);
-  std::string* _internal_mutable_name();
-
-  public:
-  // @@protoc_insertion_point(class_scope:kentik.device.v202308beta1.Plan)
- private:
-  class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
       1, 2, 0,
-      46, 2>
+      62, 2>
       _table_;
 
-  friend class ::google::protobuf::MessageLite;
-  friend class ::google::protobuf::Arena;
-  template <typename T>
-  friend class ::google::protobuf::Arena::InternalHelper;
-  using InternalArenaConstructable_ = void;
-  using DestructorSkippable_ = void;
-  struct Impl_ {
-    inline explicit constexpr Impl_(
-        ::google::protobuf::internal::ConstantInitialized) noexcept;
-    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                          ::google::protobuf::Arena* arena);
-    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                          ::google::protobuf::Arena* arena, const Impl_& from,
-                          const Plan& from_msg);
-    ::google::protobuf::internal::ArenaStringPtr id_;
-    ::google::protobuf::internal::ArenaStringPtr name_;
-    ::google::protobuf::internal::CachedSize _cached_size_;
-    PROTOBUF_TSAN_DECLARE_MEMBER
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto;
-};
-// -------------------------------------------------------------------
-
-class ListDevicesRequest final : public ::google::protobuf::internal::ZeroFieldsBase
-/* @@protoc_insertion_point(class_definition:kentik.device.v202308beta1.ListDevicesRequest) */ {
- public:
-  inline ListDevicesRequest() : ListDevicesRequest(nullptr) {}
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-  void operator delete(ListDevicesRequest* msg, std::destroying_delete_t) {
-    SharedDtor(*msg);
-    ::google::protobuf::internal::SizedDelete(msg, sizeof(ListDevicesRequest));
-  }
-#endif
-
-  template <typename = void>
-  explicit PROTOBUF_CONSTEXPR ListDevicesRequest(
-      ::google::protobuf::internal::ConstantInitialized);
-
-  inline ListDevicesRequest(const ListDevicesRequest& from) : ListDevicesRequest(nullptr, from) {}
-  inline ListDevicesRequest(ListDevicesRequest&& from) noexcept
-      : ListDevicesRequest(nullptr, std::move(from)) {}
-  inline ListDevicesRequest& operator=(const ListDevicesRequest& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline ListDevicesRequest& operator=(ListDevicesRequest&& from) noexcept {
-    if (this == &from) return *this;
-    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::google::protobuf::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::google::protobuf::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const ListDevicesRequest& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const ListDevicesRequest* internal_default_instance() {
-    return reinterpret_cast<const ListDevicesRequest*>(
-        &_ListDevicesRequest_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages = 13;
-  friend void swap(ListDevicesRequest& a, ListDevicesRequest& b) { a.Swap(&b); }
-  inline void Swap(ListDevicesRequest* other) {
-    if (other == this) return;
-    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
-      InternalSwap(other);
-    } else {
-      ::google::protobuf::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(ListDevicesRequest* other) {
-    if (other == this) return;
-    ABSL_DCHECK(GetArena() == other->GetArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  ListDevicesRequest* New(::google::protobuf::Arena* arena = nullptr) const {
-    return ::google::protobuf::internal::ZeroFieldsBase::DefaultConstruct<ListDevicesRequest>(arena);
-  }
-  using ::google::protobuf::internal::ZeroFieldsBase::CopyFrom;
-  inline void CopyFrom(const ListDevicesRequest& from) {
-    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl(*this, from);
-  }
-  using ::google::protobuf::internal::ZeroFieldsBase::MergeFrom;
-  void MergeFrom(const ListDevicesRequest& from) {
-    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl(*this, from);
-  }
-
-  public:
-  bool IsInitialized() const {
-    return true;
-  }
- private:
-  template <typename T>
-  friend ::absl::string_view(
-      ::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "kentik.device.v202308beta1.ListDevicesRequest"; }
-
- protected:
-  explicit ListDevicesRequest(::google::protobuf::Arena* arena);
-  ListDevicesRequest(::google::protobuf::Arena* arena, const ListDevicesRequest& from);
-  ListDevicesRequest(::google::protobuf::Arena* arena, ListDevicesRequest&& from) noexcept
-      : ListDevicesRequest(arena) {
-    *this = ::std::move(from);
-  }
   const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
   static void* PlacementNew_(const void*, void* mem,
                              ::google::protobuf::Arena* arena);
   static constexpr auto InternalNewImpl_();
   static const ::google::protobuf::internal::ClassDataFull _class_data_;
-
- public:
-  ::google::protobuf::Metadata GetMetadata() const;
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-  // @@protoc_insertion_point(class_scope:kentik.device.v202308beta1.ListDevicesRequest)
- private:
-  class _Internal;
-  friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<
-      0, 0, 0,
-      0, 2>
-      _table_;
-
-  friend class ::google::protobuf::MessageLite;
-  friend class ::google::protobuf::Arena;
-  template <typename T>
-  friend class ::google::protobuf::Arena::InternalHelper;
-  using InternalArenaConstructable_ = void;
-  using DestructorSkippable_ = void;
-  struct Impl_ {
-    inline explicit constexpr Impl_(
-        ::google::protobuf::internal::ConstantInitialized) noexcept;
-    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                          ::google::protobuf::Arena* arena);
-    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                          ::google::protobuf::Arena* arena, const Impl_& from,
-                          const ListDevicesRequest& from_msg);
-    PROTOBUF_TSAN_DECLARE_MEMBER
-  };
-  friend struct ::TableStruct_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto;
 };
 // -------------------------------------------------------------------
 
@@ -846,7 +535,7 @@ class LabelConcise final : public ::google::protobuf::Message
     return reinterpret_cast<const LabelConcise*>(
         &_LabelConcise_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 12;
+  static constexpr int kIndexInFileMessages = 14;
   friend void swap(LabelConcise& a, LabelConcise& b) { a.Swap(&b); }
   inline void Swap(LabelConcise* other) {
     if (other == this) return;
@@ -1036,7 +725,7 @@ class Interface final : public ::google::protobuf::Message
     return reinterpret_cast<const Interface*>(
         &_Interface_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 8;
+  static constexpr int kIndexInFileMessages = 9;
   friend void swap(Interface& a, Interface& b) { a.Swap(&b); }
   inline void Swap(Interface* other) {
     if (other == this) return;
@@ -1376,7 +1065,7 @@ class GnmiV1Conf final : public ::google::protobuf::Message
     return reinterpret_cast<const GnmiV1Conf*>(
         &_GnmiV1Conf_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 10;
+  static constexpr int kIndexInFileMessages = 11;
   friend void swap(GnmiV1Conf& a, GnmiV1Conf& b) { a.Swap(&b); }
   inline void Swap(GnmiV1Conf* other) {
     if (other == this) return;
@@ -1505,202 +1194,6 @@ class GnmiV1Conf final : public ::google::protobuf::Message
                           ::google::protobuf::Arena* arena, const Impl_& from,
                           const GnmiV1Conf& from_msg);
     ::google::protobuf::internal::ArenaStringPtr dialout_server_;
-    ::google::protobuf::internal::CachedSize _cached_size_;
-    PROTOBUF_TSAN_DECLARE_MEMBER
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto;
-};
-// -------------------------------------------------------------------
-
-class GetDeviceRequest final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:kentik.device.v202308beta1.GetDeviceRequest) */ {
- public:
-  inline GetDeviceRequest() : GetDeviceRequest(nullptr) {}
-  ~GetDeviceRequest() PROTOBUF_FINAL;
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-  void operator delete(GetDeviceRequest* msg, std::destroying_delete_t) {
-    SharedDtor(*msg);
-    ::google::protobuf::internal::SizedDelete(msg, sizeof(GetDeviceRequest));
-  }
-#endif
-
-  template <typename = void>
-  explicit PROTOBUF_CONSTEXPR GetDeviceRequest(
-      ::google::protobuf::internal::ConstantInitialized);
-
-  inline GetDeviceRequest(const GetDeviceRequest& from) : GetDeviceRequest(nullptr, from) {}
-  inline GetDeviceRequest(GetDeviceRequest&& from) noexcept
-      : GetDeviceRequest(nullptr, std::move(from)) {}
-  inline GetDeviceRequest& operator=(const GetDeviceRequest& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline GetDeviceRequest& operator=(GetDeviceRequest&& from) noexcept {
-    if (this == &from) return *this;
-    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::google::protobuf::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::google::protobuf::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const GetDeviceRequest& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const GetDeviceRequest* internal_default_instance() {
-    return reinterpret_cast<const GetDeviceRequest*>(
-        &_GetDeviceRequest_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages = 15;
-  friend void swap(GetDeviceRequest& a, GetDeviceRequest& b) { a.Swap(&b); }
-  inline void Swap(GetDeviceRequest* other) {
-    if (other == this) return;
-    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
-      InternalSwap(other);
-    } else {
-      ::google::protobuf::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(GetDeviceRequest* other) {
-    if (other == this) return;
-    ABSL_DCHECK(GetArena() == other->GetArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  GetDeviceRequest* New(::google::protobuf::Arena* arena = nullptr) const {
-    return ::google::protobuf::Message::DefaultConstruct<GetDeviceRequest>(arena);
-  }
-  using ::google::protobuf::Message::CopyFrom;
-  void CopyFrom(const GetDeviceRequest& from);
-  using ::google::protobuf::Message::MergeFrom;
-  void MergeFrom(const GetDeviceRequest& from) { GetDeviceRequest::MergeImpl(*this, from); }
-
-  private:
-  static void MergeImpl(
-      ::google::protobuf::MessageLite& to_msg,
-      const ::google::protobuf::MessageLite& from_msg);
-
-  public:
-  bool IsInitialized() const {
-    return true;
-  }
-  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
-  #if defined(PROTOBUF_CUSTOM_VTABLE)
-  private:
-  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
-  static ::uint8_t* _InternalSerialize(
-      const MessageLite& msg, ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream);
-
-  public:
-  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-    return _InternalSerialize(*this, target, stream);
-  }
-  #else   // PROTOBUF_CUSTOM_VTABLE
-  ::size_t ByteSizeLong() const final;
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
-  #endif  // PROTOBUF_CUSTOM_VTABLE
-  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
-
-  private:
-  void SharedCtor(::google::protobuf::Arena* arena);
-  static void SharedDtor(MessageLite& self);
-  void InternalSwap(GetDeviceRequest* other);
- private:
-  template <typename T>
-  friend ::absl::string_view(
-      ::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "kentik.device.v202308beta1.GetDeviceRequest"; }
-
- protected:
-  explicit GetDeviceRequest(::google::protobuf::Arena* arena);
-  GetDeviceRequest(::google::protobuf::Arena* arena, const GetDeviceRequest& from);
-  GetDeviceRequest(::google::protobuf::Arena* arena, GetDeviceRequest&& from) noexcept
-      : GetDeviceRequest(arena) {
-    *this = ::std::move(from);
-  }
-  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
-  static void* PlacementNew_(const void*, void* mem,
-                             ::google::protobuf::Arena* arena);
-  static constexpr auto InternalNewImpl_();
-  static const ::google::protobuf::internal::ClassDataFull _class_data_;
-
- public:
-  ::google::protobuf::Metadata GetMetadata() const;
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-  enum : int {
-    kIdFieldNumber = 1,
-  };
-  // string id = 1 [json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  void clear_id() ;
-  const std::string& id() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_id(Arg_&& arg, Args_... args);
-  std::string* mutable_id();
-  PROTOBUF_NODISCARD std::string* release_id();
-  void set_allocated_id(std::string* value);
-
-  private:
-  const std::string& _internal_id() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_id(
-      const std::string& value);
-  std::string* _internal_mutable_id();
-
-  public:
-  // @@protoc_insertion_point(class_scope:kentik.device.v202308beta1.GetDeviceRequest)
- private:
-  class _Internal;
-  friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<
-      0, 1, 0,
-      54, 2>
-      _table_;
-
-  friend class ::google::protobuf::MessageLite;
-  friend class ::google::protobuf::Arena;
-  template <typename T>
-  friend class ::google::protobuf::Arena::InternalHelper;
-  using InternalArenaConstructable_ = void;
-  using DestructorSkippable_ = void;
-  struct Impl_ {
-    inline explicit constexpr Impl_(
-        ::google::protobuf::internal::ConstantInitialized) noexcept;
-    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                          ::google::protobuf::Arena* arena);
-    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                          ::google::protobuf::Arena* arena, const Impl_& from,
-                          const GetDeviceRequest& from_msg);
-    ::google::protobuf::internal::ArenaStringPtr id_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -1977,6 +1470,196 @@ class DeviceSnmpV3Conf final : public ::google::protobuf::Message
 };
 // -------------------------------------------------------------------
 
+class DeviceQuery final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:kentik.device.v202308beta1.DeviceQuery) */ {
+ public:
+  inline DeviceQuery() : DeviceQuery(nullptr) {}
+  ~DeviceQuery() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(DeviceQuery* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(DeviceQuery));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR DeviceQuery(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline DeviceQuery(const DeviceQuery& from) : DeviceQuery(nullptr, from) {}
+  inline DeviceQuery(DeviceQuery&& from) noexcept
+      : DeviceQuery(nullptr, std::move(from)) {}
+  inline DeviceQuery& operator=(const DeviceQuery& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline DeviceQuery& operator=(DeviceQuery&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const DeviceQuery& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const DeviceQuery* internal_default_instance() {
+    return reinterpret_cast<const DeviceQuery*>(
+        &_DeviceQuery_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 13;
+  friend void swap(DeviceQuery& a, DeviceQuery& b) { a.Swap(&b); }
+  inline void Swap(DeviceQuery* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(DeviceQuery* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  DeviceQuery* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<DeviceQuery>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const DeviceQuery& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const DeviceQuery& from) { DeviceQuery::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(DeviceQuery* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "kentik.device.v202308beta1.DeviceQuery"; }
+
+ protected:
+  explicit DeviceQuery(::google::protobuf::Arena* arena);
+  DeviceQuery(::google::protobuf::Arena* arena, const DeviceQuery& from);
+  DeviceQuery(::google::protobuf::Arena* arena, DeviceQuery&& from) noexcept
+      : DeviceQuery(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kNoCustomColumnsFieldNumber = 1,
+  };
+  // bool no_custom_columns = 1 [json_name = "noCustomColumns"];
+  void clear_no_custom_columns() ;
+  bool no_custom_columns() const;
+  void set_no_custom_columns(bool value);
+
+  private:
+  bool _internal_no_custom_columns() const;
+  void _internal_set_no_custom_columns(bool value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:kentik.device.v202308beta1.DeviceQuery)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 0,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const DeviceQuery& from_msg);
+    bool no_custom_columns_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto;
+};
+// -------------------------------------------------------------------
+
 class DeleteDevicesResponse final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:kentik.device.v202308beta1.DeleteDevicesResponse) */ {
  public:
@@ -2036,7 +1719,7 @@ class DeleteDevicesResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const DeleteDevicesResponse*>(
         &_DeleteDevicesResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 30;
+  static constexpr int kIndexInFileMessages = 32;
   friend void swap(DeleteDevicesResponse& a, DeleteDevicesResponse& b) { a.Swap(&b); }
   inline void Swap(DeleteDevicesResponse* other) {
     if (other == this) return;
@@ -2238,7 +1921,7 @@ class DeleteDevicesRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const DeleteDevicesRequest*>(
         &_DeleteDevicesRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 29;
+  static constexpr int kIndexInFileMessages = 31;
   friend void swap(DeleteDevicesRequest& a, DeleteDevicesRequest& b) { a.Swap(&b); }
   inline void Swap(DeleteDevicesRequest* other) {
     if (other == this) return;
@@ -2439,7 +2122,7 @@ class DeleteDeviceResponse final : public ::google::protobuf::internal::ZeroFiel
     return reinterpret_cast<const DeleteDeviceResponse*>(
         &_DeleteDeviceResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 28;
+  static constexpr int kIndexInFileMessages = 30;
   friend void swap(DeleteDeviceResponse& a, DeleteDeviceResponse& b) { a.Swap(&b); }
   inline void Swap(DeleteDeviceResponse* other) {
     if (other == this) return;
@@ -2585,7 +2268,7 @@ class DeleteDeviceRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const DeleteDeviceRequest*>(
         &_DeleteDeviceRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 27;
+  static constexpr int kIndexInFileMessages = 29;
   friend void swap(DeleteDeviceRequest& a, DeleteDeviceRequest& b) { a.Swap(&b); }
   inline void Swap(DeleteDeviceRequest* other) {
     if (other == this) return;
@@ -2781,7 +2464,7 @@ class CustomColumnData final : public ::google::protobuf::Message
     return reinterpret_cast<const CustomColumnData*>(
         &_CustomColumnData_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 9;
+  static constexpr int kIndexInFileMessages = 10;
   friend void swap(CustomColumnData& a, CustomColumnData& b) { a.Swap(&b); }
   inline void Swap(CustomColumnData* other) {
     if (other == this) return;
@@ -3067,7 +2750,7 @@ class UpdateDeviceLabelsRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const UpdateDeviceLabelsRequest*>(
         &_UpdateDeviceLabelsRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 25;
+  static constexpr int kIndexInFileMessages = 27;
   friend void swap(UpdateDeviceLabelsRequest& a, UpdateDeviceLabelsRequest& b) { a.Swap(&b); }
   inline void Swap(UpdateDeviceLabelsRequest* other) {
     if (other == this) return;
@@ -3223,6 +2906,639 @@ class UpdateDeviceLabelsRequest final : public ::google::protobuf::Message
 };
 // -------------------------------------------------------------------
 
+class Plan final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:kentik.device.v202308beta1.Plan) */ {
+ public:
+  inline Plan() : Plan(nullptr) {}
+  ~Plan() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(Plan* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(Plan));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR Plan(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline Plan(const Plan& from) : Plan(nullptr, from) {}
+  inline Plan(Plan&& from) noexcept
+      : Plan(nullptr, std::move(from)) {}
+  inline Plan& operator=(const Plan& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Plan& operator=(Plan&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Plan& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Plan* internal_default_instance() {
+    return reinterpret_cast<const Plan*>(
+        &_Plan_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 7;
+  friend void swap(Plan& a, Plan& b) { a.Swap(&b); }
+  inline void Swap(Plan* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Plan* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Plan* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<Plan>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const Plan& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const Plan& from) { Plan::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(Plan* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "kentik.device.v202308beta1.Plan"; }
+
+ protected:
+  explicit Plan(::google::protobuf::Arena* arena);
+  Plan(::google::protobuf::Arena* arena, const Plan& from);
+  Plan(::google::protobuf::Arena* arena, Plan&& from) noexcept
+      : Plan(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kDeviceTypesFieldNumber = 7,
+    kDevicesFieldNumber = 8,
+    kMetadataFieldNumber = 16,
+    kIdFieldNumber = 1,
+    kNameFieldNumber = 2,
+    kCompanyIdFieldNumber = 5,
+    kDescriptionFieldNumber = 6,
+    kCdateFieldNumber = 14,
+    kEdateFieldNumber = 15,
+    kActiveFieldNumber = 3,
+    kBgpFieldNumber = 4,
+    kFastRetentionFieldNumber = 9,
+    kFullRetentionFieldNumber = 10,
+    kMaxBigdataFpsFieldNumber = 11,
+    kMaxDevicesFieldNumber = 12,
+    kMaxFpsFieldNumber = 13,
+  };
+  // repeated string device_types = 7 [json_name = "deviceTypes", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  int device_types_size() const;
+  private:
+  int _internal_device_types_size() const;
+
+  public:
+  void clear_device_types() ;
+  const std::string& device_types(int index) const;
+  std::string* mutable_device_types(int index);
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_device_types(int index, Arg_&& value, Args_... args);
+  std::string* add_device_types();
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void add_device_types(Arg_&& value, Args_... args);
+  const ::google::protobuf::RepeatedPtrField<std::string>& device_types() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* mutable_device_types();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<std::string>& _internal_device_types() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* _internal_mutable_device_types();
+
+  public:
+  // repeated string devices = 8 [json_name = "devices", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  int devices_size() const;
+  private:
+  int _internal_devices_size() const;
+
+  public:
+  void clear_devices() ;
+  const std::string& devices(int index) const;
+  std::string* mutable_devices(int index);
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_devices(int index, Arg_&& value, Args_... args);
+  std::string* add_devices();
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void add_devices(Arg_&& value, Args_... args);
+  const ::google::protobuf::RepeatedPtrField<std::string>& devices() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* mutable_devices();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<std::string>& _internal_devices() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* _internal_mutable_devices();
+
+  public:
+  // map<string, string> metadata = 16 [json_name = "metadata", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  int metadata_size() const;
+  private:
+  int _internal_metadata_size() const;
+
+  public:
+  void clear_metadata() ;
+  const ::google::protobuf::Map<std::string, std::string>& metadata() const;
+  ::google::protobuf::Map<std::string, std::string>* mutable_metadata();
+
+  private:
+  const ::google::protobuf::Map<std::string, std::string>& _internal_metadata() const;
+  ::google::protobuf::Map<std::string, std::string>* _internal_mutable_metadata();
+
+  public:
+  // string id = 1 [json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_id() ;
+  const std::string& id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_id(Arg_&& arg, Args_... args);
+  std::string* mutable_id();
+  PROTOBUF_NODISCARD std::string* release_id();
+  void set_allocated_id(std::string* value);
+
+  private:
+  const std::string& _internal_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_id(
+      const std::string& value);
+  std::string* _internal_mutable_id();
+
+  public:
+  // string name = 2 [json_name = "name", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_name() ;
+  const std::string& name() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_name(Arg_&& arg, Args_... args);
+  std::string* mutable_name();
+  PROTOBUF_NODISCARD std::string* release_name();
+  void set_allocated_name(std::string* value);
+
+  private:
+  const std::string& _internal_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(
+      const std::string& value);
+  std::string* _internal_mutable_name();
+
+  public:
+  // string company_id = 5 [json_name = "companyId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_company_id() ;
+  const std::string& company_id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_company_id(Arg_&& arg, Args_... args);
+  std::string* mutable_company_id();
+  PROTOBUF_NODISCARD std::string* release_company_id();
+  void set_allocated_company_id(std::string* value);
+
+  private:
+  const std::string& _internal_company_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_company_id(
+      const std::string& value);
+  std::string* _internal_mutable_company_id();
+
+  public:
+  // string description = 6 [json_name = "description", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_description() ;
+  const std::string& description() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_description(Arg_&& arg, Args_... args);
+  std::string* mutable_description();
+  PROTOBUF_NODISCARD std::string* release_description();
+  void set_allocated_description(std::string* value);
+
+  private:
+  const std::string& _internal_description() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_description(
+      const std::string& value);
+  std::string* _internal_mutable_description();
+
+  public:
+  // .google.protobuf.Timestamp cdate = 14 [json_name = "cdate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_cdate() const;
+  void clear_cdate() ;
+  const ::google::protobuf::Timestamp& cdate() const;
+  PROTOBUF_NODISCARD ::google::protobuf::Timestamp* release_cdate();
+  ::google::protobuf::Timestamp* mutable_cdate();
+  void set_allocated_cdate(::google::protobuf::Timestamp* value);
+  void unsafe_arena_set_allocated_cdate(::google::protobuf::Timestamp* value);
+  ::google::protobuf::Timestamp* unsafe_arena_release_cdate();
+
+  private:
+  const ::google::protobuf::Timestamp& _internal_cdate() const;
+  ::google::protobuf::Timestamp* _internal_mutable_cdate();
+
+  public:
+  // .google.protobuf.Timestamp edate = 15 [json_name = "edate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_edate() const;
+  void clear_edate() ;
+  const ::google::protobuf::Timestamp& edate() const;
+  PROTOBUF_NODISCARD ::google::protobuf::Timestamp* release_edate();
+  ::google::protobuf::Timestamp* mutable_edate();
+  void set_allocated_edate(::google::protobuf::Timestamp* value);
+  void unsafe_arena_set_allocated_edate(::google::protobuf::Timestamp* value);
+  ::google::protobuf::Timestamp* unsafe_arena_release_edate();
+
+  private:
+  const ::google::protobuf::Timestamp& _internal_edate() const;
+  ::google::protobuf::Timestamp* _internal_mutable_edate();
+
+  public:
+  // bool active = 3 [json_name = "active", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_active() ;
+  bool active() const;
+  void set_active(bool value);
+
+  private:
+  bool _internal_active() const;
+  void _internal_set_active(bool value);
+
+  public:
+  // bool bgp = 4 [json_name = "bgp", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_bgp() ;
+  bool bgp() const;
+  void set_bgp(bool value);
+
+  private:
+  bool _internal_bgp() const;
+  void _internal_set_bgp(bool value);
+
+  public:
+  // uint32 fast_retention = 9 [json_name = "fastRetention", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_fast_retention() ;
+  ::uint32_t fast_retention() const;
+  void set_fast_retention(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_fast_retention() const;
+  void _internal_set_fast_retention(::uint32_t value);
+
+  public:
+  // uint32 full_retention = 10 [json_name = "fullRetention", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_full_retention() ;
+  ::uint32_t full_retention() const;
+  void set_full_retention(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_full_retention() const;
+  void _internal_set_full_retention(::uint32_t value);
+
+  public:
+  // uint32 max_bigdata_fps = 11 [json_name = "maxBigdataFps", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_max_bigdata_fps() ;
+  ::uint32_t max_bigdata_fps() const;
+  void set_max_bigdata_fps(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_max_bigdata_fps() const;
+  void _internal_set_max_bigdata_fps(::uint32_t value);
+
+  public:
+  // uint32 max_devices = 12 [json_name = "maxDevices", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_max_devices() ;
+  ::uint32_t max_devices() const;
+  void set_max_devices(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_max_devices() const;
+  void _internal_set_max_devices(::uint32_t value);
+
+  public:
+  // uint32 max_fps = 13 [json_name = "maxFps", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_max_fps() ;
+  ::uint32_t max_fps() const;
+  void set_max_fps(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_max_fps() const;
+  void _internal_set_max_fps(::uint32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:kentik.device.v202308beta1.Plan)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      4, 16, 3,
+      110, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const Plan& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::RepeatedPtrField<std::string> device_types_;
+    ::google::protobuf::RepeatedPtrField<std::string> devices_;
+    ::google::protobuf::internal::MapField<Plan_MetadataEntry_DoNotUse, std::string, std::string,
+                      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+                      ::google::protobuf::internal::WireFormatLite::TYPE_STRING>
+        metadata_;
+    ::google::protobuf::internal::ArenaStringPtr id_;
+    ::google::protobuf::internal::ArenaStringPtr name_;
+    ::google::protobuf::internal::ArenaStringPtr company_id_;
+    ::google::protobuf::internal::ArenaStringPtr description_;
+    ::google::protobuf::Timestamp* cdate_;
+    ::google::protobuf::Timestamp* edate_;
+    bool active_;
+    bool bgp_;
+    ::uint32_t fast_retention_;
+    ::uint32_t full_retention_;
+    ::uint32_t max_bigdata_fps_;
+    ::uint32_t max_devices_;
+    ::uint32_t max_fps_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ListDevicesRequest final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:kentik.device.v202308beta1.ListDevicesRequest) */ {
+ public:
+  inline ListDevicesRequest() : ListDevicesRequest(nullptr) {}
+  ~ListDevicesRequest() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(ListDevicesRequest* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(ListDevicesRequest));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR ListDevicesRequest(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline ListDevicesRequest(const ListDevicesRequest& from) : ListDevicesRequest(nullptr, from) {}
+  inline ListDevicesRequest(ListDevicesRequest&& from) noexcept
+      : ListDevicesRequest(nullptr, std::move(from)) {}
+  inline ListDevicesRequest& operator=(const ListDevicesRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ListDevicesRequest& operator=(ListDevicesRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ListDevicesRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ListDevicesRequest* internal_default_instance() {
+    return reinterpret_cast<const ListDevicesRequest*>(
+        &_ListDevicesRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 15;
+  friend void swap(ListDevicesRequest& a, ListDevicesRequest& b) { a.Swap(&b); }
+  inline void Swap(ListDevicesRequest* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ListDevicesRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ListDevicesRequest* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<ListDevicesRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const ListDevicesRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const ListDevicesRequest& from) { ListDevicesRequest::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(ListDevicesRequest* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "kentik.device.v202308beta1.ListDevicesRequest"; }
+
+ protected:
+  explicit ListDevicesRequest(::google::protobuf::Arena* arena);
+  ListDevicesRequest(::google::protobuf::Arena* arena, const ListDevicesRequest& from);
+  ListDevicesRequest(::google::protobuf::Arena* arena, ListDevicesRequest&& from) noexcept
+      : ListDevicesRequest(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kQueryFieldNumber = 1,
+  };
+  // .kentik.device.v202308beta1.DeviceQuery query = 1 [json_name = "query"];
+  bool has_query() const;
+  void clear_query() ;
+  const ::kentik::device::v202308beta1::DeviceQuery& query() const;
+  PROTOBUF_NODISCARD ::kentik::device::v202308beta1::DeviceQuery* release_query();
+  ::kentik::device::v202308beta1::DeviceQuery* mutable_query();
+  void set_allocated_query(::kentik::device::v202308beta1::DeviceQuery* value);
+  void unsafe_arena_set_allocated_query(::kentik::device::v202308beta1::DeviceQuery* value);
+  ::kentik::device::v202308beta1::DeviceQuery* unsafe_arena_release_query();
+
+  private:
+  const ::kentik::device::v202308beta1::DeviceQuery& _internal_query() const;
+  ::kentik::device::v202308beta1::DeviceQuery* _internal_mutable_query();
+
+  public:
+  // @@protoc_insertion_point(class_scope:kentik.device.v202308beta1.ListDevicesRequest)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 1,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const ListDevicesRequest& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::kentik::device::v202308beta1::DeviceQuery* query_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto;
+};
+// -------------------------------------------------------------------
+
 class Label final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:kentik.device.v202308beta1.Label) */ {
  public:
@@ -3282,7 +3598,7 @@ class Label final : public ::google::protobuf::Message
     return reinterpret_cast<const Label*>(
         &_Label_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 7;
+  static constexpr int kIndexInFileMessages = 8;
   friend void swap(Label& a, Label& b) { a.Swap(&b); }
   inline void Swap(Label* other) {
     if (other == this) return;
@@ -3591,6 +3907,220 @@ class Label final : public ::google::protobuf::Message
     ::google::protobuf::internal::ArenaStringPtr pivot_label_id_;
     ::google::protobuf::Timestamp* edate_;
     ::google::protobuf::Timestamp* cdate_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_kentik_2fdevice_2fv202308beta1_2fdevice_2eproto;
+};
+// -------------------------------------------------------------------
+
+class GetDeviceRequest final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:kentik.device.v202308beta1.GetDeviceRequest) */ {
+ public:
+  inline GetDeviceRequest() : GetDeviceRequest(nullptr) {}
+  ~GetDeviceRequest() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(GetDeviceRequest* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(GetDeviceRequest));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR GetDeviceRequest(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline GetDeviceRequest(const GetDeviceRequest& from) : GetDeviceRequest(nullptr, from) {}
+  inline GetDeviceRequest(GetDeviceRequest&& from) noexcept
+      : GetDeviceRequest(nullptr, std::move(from)) {}
+  inline GetDeviceRequest& operator=(const GetDeviceRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GetDeviceRequest& operator=(GetDeviceRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const GetDeviceRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GetDeviceRequest* internal_default_instance() {
+    return reinterpret_cast<const GetDeviceRequest*>(
+        &_GetDeviceRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 17;
+  friend void swap(GetDeviceRequest& a, GetDeviceRequest& b) { a.Swap(&b); }
+  inline void Swap(GetDeviceRequest* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GetDeviceRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  GetDeviceRequest* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<GetDeviceRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const GetDeviceRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const GetDeviceRequest& from) { GetDeviceRequest::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(GetDeviceRequest* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "kentik.device.v202308beta1.GetDeviceRequest"; }
+
+ protected:
+  explicit GetDeviceRequest(::google::protobuf::Arena* arena);
+  GetDeviceRequest(::google::protobuf::Arena* arena, const GetDeviceRequest& from);
+  GetDeviceRequest(::google::protobuf::Arena* arena, GetDeviceRequest&& from) noexcept
+      : GetDeviceRequest(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kIdFieldNumber = 1,
+    kQueryFieldNumber = 2,
+  };
+  // string id = 1 [json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_id() ;
+  const std::string& id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_id(Arg_&& arg, Args_... args);
+  std::string* mutable_id();
+  PROTOBUF_NODISCARD std::string* release_id();
+  void set_allocated_id(std::string* value);
+
+  private:
+  const std::string& _internal_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_id(
+      const std::string& value);
+  std::string* _internal_mutable_id();
+
+  public:
+  // .kentik.device.v202308beta1.DeviceQuery query = 2 [json_name = "query"];
+  bool has_query() const;
+  void clear_query() ;
+  const ::kentik::device::v202308beta1::DeviceQuery& query() const;
+  PROTOBUF_NODISCARD ::kentik::device::v202308beta1::DeviceQuery* release_query();
+  ::kentik::device::v202308beta1::DeviceQuery* mutable_query();
+  void set_allocated_query(::kentik::device::v202308beta1::DeviceQuery* value);
+  void unsafe_arena_set_allocated_query(::kentik::device::v202308beta1::DeviceQuery* value);
+  ::kentik::device::v202308beta1::DeviceQuery* unsafe_arena_release_query();
+
+  private:
+  const ::kentik::device::v202308beta1::DeviceQuery& _internal_query() const;
+  ::kentik::device::v202308beta1::DeviceQuery* _internal_mutable_query();
+
+  public:
+  // @@protoc_insertion_point(class_scope:kentik.device.v202308beta1.GetDeviceRequest)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 1,
+      54, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const GetDeviceRequest& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::internal::ArenaStringPtr id_;
+    ::kentik::device::v202308beta1::DeviceQuery* query_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -4370,7 +4900,7 @@ class DeviceDetailed final : public ::google::protobuf::Message
     return reinterpret_cast<const DeviceDetailed*>(
         &_DeviceDetailed_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 11;
+  static constexpr int kIndexInFileMessages = 12;
   friend void swap(DeviceDetailed& a, DeviceDetailed& b) { a.Swap(&b); }
   inline void Swap(DeviceDetailed* other) {
     if (other == this) return;
@@ -6218,7 +6748,7 @@ class UpdateDevicesResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const UpdateDevicesResponse*>(
         &_UpdateDevicesResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 24;
+  static constexpr int kIndexInFileMessages = 26;
   friend void swap(UpdateDevicesResponse& a, UpdateDevicesResponse& b) { a.Swap(&b); }
   inline void Swap(UpdateDevicesResponse* other) {
     if (other == this) return;
@@ -6439,7 +6969,7 @@ class UpdateDevicesRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const UpdateDevicesRequest*>(
         &_UpdateDevicesRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 23;
+  static constexpr int kIndexInFileMessages = 25;
   friend void swap(UpdateDevicesRequest& a, UpdateDevicesRequest& b) { a.Swap(&b); }
   inline void Swap(UpdateDevicesRequest* other) {
     if (other == this) return;
@@ -6636,7 +7166,7 @@ class UpdateDeviceResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const UpdateDeviceResponse*>(
         &_UpdateDeviceResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 22;
+  static constexpr int kIndexInFileMessages = 24;
   friend void swap(UpdateDeviceResponse& a, UpdateDeviceResponse& b) { a.Swap(&b); }
   inline void Swap(UpdateDeviceResponse* other) {
     if (other == this) return;
@@ -6832,7 +7362,7 @@ class UpdateDeviceRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const UpdateDeviceRequest*>(
         &_UpdateDeviceRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 21;
+  static constexpr int kIndexInFileMessages = 23;
   friend void swap(UpdateDeviceRequest& a, UpdateDeviceRequest& b) { a.Swap(&b); }
   inline void Swap(UpdateDeviceRequest* other) {
     if (other == this) return;
@@ -7028,7 +7558,7 @@ class UpdateDeviceLabelsResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const UpdateDeviceLabelsResponse*>(
         &_UpdateDeviceLabelsResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 26;
+  static constexpr int kIndexInFileMessages = 28;
   friend void swap(UpdateDeviceLabelsResponse& a, UpdateDeviceLabelsResponse& b) { a.Swap(&b); }
   inline void Swap(UpdateDeviceLabelsResponse* other) {
     if (other == this) return;
@@ -7224,7 +7754,7 @@ class ListDevicesResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const ListDevicesResponse*>(
         &_ListDevicesResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 14;
+  static constexpr int kIndexInFileMessages = 16;
   friend void swap(ListDevicesResponse& a, ListDevicesResponse& b) { a.Swap(&b); }
   inline void Swap(ListDevicesResponse* other) {
     if (other == this) return;
@@ -7433,7 +7963,7 @@ class GetDeviceResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const GetDeviceResponse*>(
         &_GetDeviceResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 16;
+  static constexpr int kIndexInFileMessages = 18;
   friend void swap(GetDeviceResponse& a, GetDeviceResponse& b) { a.Swap(&b); }
   inline void Swap(GetDeviceResponse* other) {
     if (other == this) return;
@@ -7629,7 +8159,7 @@ class CreateDevicesResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const CreateDevicesResponse*>(
         &_CreateDevicesResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 20;
+  static constexpr int kIndexInFileMessages = 22;
   friend void swap(CreateDevicesResponse& a, CreateDevicesResponse& b) { a.Swap(&b); }
   inline void Swap(CreateDevicesResponse* other) {
     if (other == this) return;
@@ -7850,7 +8380,7 @@ class CreateDevicesRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const CreateDevicesRequest*>(
         &_CreateDevicesRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 19;
+  static constexpr int kIndexInFileMessages = 21;
   friend void swap(CreateDevicesRequest& a, CreateDevicesRequest& b) { a.Swap(&b); }
   inline void Swap(CreateDevicesRequest* other) {
     if (other == this) return;
@@ -8047,7 +8577,7 @@ class CreateDeviceResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const CreateDeviceResponse*>(
         &_CreateDeviceResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 18;
+  static constexpr int kIndexInFileMessages = 20;
   friend void swap(CreateDeviceResponse& a, CreateDeviceResponse& b) { a.Swap(&b); }
   inline void Swap(CreateDeviceResponse* other) {
     if (other == this) return;
@@ -8243,7 +8773,7 @@ class CreateDeviceRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const CreateDeviceRequest*>(
         &_CreateDeviceRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 17;
+  static constexpr int kIndexInFileMessages = 19;
   friend void swap(CreateDeviceRequest& a, CreateDeviceRequest& b) { a.Swap(&b); }
   inline void Swap(CreateDeviceRequest* other) {
     if (other == this) return;
@@ -10565,6 +11095,8 @@ inline void Site::set_allocated_company_id(std::string* value) {
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
 // Plan
 
 // string id = 1 [json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -10661,6 +11193,594 @@ inline void Plan::set_allocated_name(std::string* value) {
     _impl_.name_.Set("", GetArena());
   }
   // @@protoc_insertion_point(field_set_allocated:kentik.device.v202308beta1.Plan.name)
+}
+
+// bool active = 3 [json_name = "active", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void Plan::clear_active() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.active_ = false;
+}
+inline bool Plan::active() const {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.Plan.active)
+  return _internal_active();
+}
+inline void Plan::set_active(bool value) {
+  _internal_set_active(value);
+  // @@protoc_insertion_point(field_set:kentik.device.v202308beta1.Plan.active)
+}
+inline bool Plan::_internal_active() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.active_;
+}
+inline void Plan::_internal_set_active(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.active_ = value;
+}
+
+// bool bgp = 4 [json_name = "bgp", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void Plan::clear_bgp() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.bgp_ = false;
+}
+inline bool Plan::bgp() const {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.Plan.bgp)
+  return _internal_bgp();
+}
+inline void Plan::set_bgp(bool value) {
+  _internal_set_bgp(value);
+  // @@protoc_insertion_point(field_set:kentik.device.v202308beta1.Plan.bgp)
+}
+inline bool Plan::_internal_bgp() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.bgp_;
+}
+inline void Plan::_internal_set_bgp(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.bgp_ = value;
+}
+
+// string company_id = 5 [json_name = "companyId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void Plan::clear_company_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.company_id_.ClearToEmpty();
+}
+inline const std::string& Plan::company_id() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.Plan.company_id)
+  return _internal_company_id();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Plan::set_company_id(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.company_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.device.v202308beta1.Plan.company_id)
+}
+inline std::string* Plan::mutable_company_id() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_company_id();
+  // @@protoc_insertion_point(field_mutable:kentik.device.v202308beta1.Plan.company_id)
+  return _s;
+}
+inline const std::string& Plan::_internal_company_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.company_id_.Get();
+}
+inline void Plan::_internal_set_company_id(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.company_id_.Set(value, GetArena());
+}
+inline std::string* Plan::_internal_mutable_company_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.company_id_.Mutable( GetArena());
+}
+inline std::string* Plan::release_company_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.device.v202308beta1.Plan.company_id)
+  return _impl_.company_id_.Release();
+}
+inline void Plan::set_allocated_company_id(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.company_id_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.company_id_.IsDefault()) {
+    _impl_.company_id_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.device.v202308beta1.Plan.company_id)
+}
+
+// string description = 6 [json_name = "description", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void Plan::clear_description() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.description_.ClearToEmpty();
+}
+inline const std::string& Plan::description() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.Plan.description)
+  return _internal_description();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Plan::set_description(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.description_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.device.v202308beta1.Plan.description)
+}
+inline std::string* Plan::mutable_description() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_description();
+  // @@protoc_insertion_point(field_mutable:kentik.device.v202308beta1.Plan.description)
+  return _s;
+}
+inline const std::string& Plan::_internal_description() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.description_.Get();
+}
+inline void Plan::_internal_set_description(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.description_.Set(value, GetArena());
+}
+inline std::string* Plan::_internal_mutable_description() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.description_.Mutable( GetArena());
+}
+inline std::string* Plan::release_description() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.device.v202308beta1.Plan.description)
+  return _impl_.description_.Release();
+}
+inline void Plan::set_allocated_description(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.description_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.description_.IsDefault()) {
+    _impl_.description_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.device.v202308beta1.Plan.description)
+}
+
+// repeated string device_types = 7 [json_name = "deviceTypes", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline int Plan::_internal_device_types_size() const {
+  return _internal_device_types().size();
+}
+inline int Plan::device_types_size() const {
+  return _internal_device_types_size();
+}
+inline void Plan::clear_device_types() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.device_types_.Clear();
+}
+inline std::string* Plan::add_device_types() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  std::string* _s = _internal_mutable_device_types()->Add();
+  // @@protoc_insertion_point(field_add_mutable:kentik.device.v202308beta1.Plan.device_types)
+  return _s;
+}
+inline const std::string& Plan::device_types(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.Plan.device_types)
+  return _internal_device_types().Get(index);
+}
+inline std::string* Plan::mutable_device_types(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:kentik.device.v202308beta1.Plan.device_types)
+  return _internal_mutable_device_types()->Mutable(index);
+}
+template <typename Arg_, typename... Args_>
+inline void Plan::set_device_types(int index, Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::AssignToString(
+      *_internal_mutable_device_types()->Mutable(index),
+      std::forward<Arg_>(value), args... );
+  // @@protoc_insertion_point(field_set:kentik.device.v202308beta1.Plan.device_types)
+}
+template <typename Arg_, typename... Args_>
+inline void Plan::add_device_types(Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::google::protobuf::internal::AddToRepeatedPtrField(*_internal_mutable_device_types(),
+                               std::forward<Arg_>(value),
+                               args... );
+  // @@protoc_insertion_point(field_add:kentik.device.v202308beta1.Plan.device_types)
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+Plan::device_types() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:kentik.device.v202308beta1.Plan.device_types)
+  return _internal_device_types();
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+Plan::mutable_device_types() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:kentik.device.v202308beta1.Plan.device_types)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_device_types();
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+Plan::_internal_device_types() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.device_types_;
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+Plan::_internal_mutable_device_types() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.device_types_;
+}
+
+// repeated string devices = 8 [json_name = "devices", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline int Plan::_internal_devices_size() const {
+  return _internal_devices().size();
+}
+inline int Plan::devices_size() const {
+  return _internal_devices_size();
+}
+inline void Plan::clear_devices() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.devices_.Clear();
+}
+inline std::string* Plan::add_devices() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  std::string* _s = _internal_mutable_devices()->Add();
+  // @@protoc_insertion_point(field_add_mutable:kentik.device.v202308beta1.Plan.devices)
+  return _s;
+}
+inline const std::string& Plan::devices(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.Plan.devices)
+  return _internal_devices().Get(index);
+}
+inline std::string* Plan::mutable_devices(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:kentik.device.v202308beta1.Plan.devices)
+  return _internal_mutable_devices()->Mutable(index);
+}
+template <typename Arg_, typename... Args_>
+inline void Plan::set_devices(int index, Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::AssignToString(
+      *_internal_mutable_devices()->Mutable(index),
+      std::forward<Arg_>(value), args... );
+  // @@protoc_insertion_point(field_set:kentik.device.v202308beta1.Plan.devices)
+}
+template <typename Arg_, typename... Args_>
+inline void Plan::add_devices(Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::google::protobuf::internal::AddToRepeatedPtrField(*_internal_mutable_devices(),
+                               std::forward<Arg_>(value),
+                               args... );
+  // @@protoc_insertion_point(field_add:kentik.device.v202308beta1.Plan.devices)
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+Plan::devices() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:kentik.device.v202308beta1.Plan.devices)
+  return _internal_devices();
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+Plan::mutable_devices() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:kentik.device.v202308beta1.Plan.devices)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_devices();
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+Plan::_internal_devices() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.devices_;
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+Plan::_internal_mutable_devices() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.devices_;
+}
+
+// uint32 fast_retention = 9 [json_name = "fastRetention", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void Plan::clear_fast_retention() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.fast_retention_ = 0u;
+}
+inline ::uint32_t Plan::fast_retention() const {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.Plan.fast_retention)
+  return _internal_fast_retention();
+}
+inline void Plan::set_fast_retention(::uint32_t value) {
+  _internal_set_fast_retention(value);
+  // @@protoc_insertion_point(field_set:kentik.device.v202308beta1.Plan.fast_retention)
+}
+inline ::uint32_t Plan::_internal_fast_retention() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.fast_retention_;
+}
+inline void Plan::_internal_set_fast_retention(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.fast_retention_ = value;
+}
+
+// uint32 full_retention = 10 [json_name = "fullRetention", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void Plan::clear_full_retention() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.full_retention_ = 0u;
+}
+inline ::uint32_t Plan::full_retention() const {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.Plan.full_retention)
+  return _internal_full_retention();
+}
+inline void Plan::set_full_retention(::uint32_t value) {
+  _internal_set_full_retention(value);
+  // @@protoc_insertion_point(field_set:kentik.device.v202308beta1.Plan.full_retention)
+}
+inline ::uint32_t Plan::_internal_full_retention() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.full_retention_;
+}
+inline void Plan::_internal_set_full_retention(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.full_retention_ = value;
+}
+
+// uint32 max_bigdata_fps = 11 [json_name = "maxBigdataFps", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void Plan::clear_max_bigdata_fps() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.max_bigdata_fps_ = 0u;
+}
+inline ::uint32_t Plan::max_bigdata_fps() const {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.Plan.max_bigdata_fps)
+  return _internal_max_bigdata_fps();
+}
+inline void Plan::set_max_bigdata_fps(::uint32_t value) {
+  _internal_set_max_bigdata_fps(value);
+  // @@protoc_insertion_point(field_set:kentik.device.v202308beta1.Plan.max_bigdata_fps)
+}
+inline ::uint32_t Plan::_internal_max_bigdata_fps() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.max_bigdata_fps_;
+}
+inline void Plan::_internal_set_max_bigdata_fps(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.max_bigdata_fps_ = value;
+}
+
+// uint32 max_devices = 12 [json_name = "maxDevices", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void Plan::clear_max_devices() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.max_devices_ = 0u;
+}
+inline ::uint32_t Plan::max_devices() const {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.Plan.max_devices)
+  return _internal_max_devices();
+}
+inline void Plan::set_max_devices(::uint32_t value) {
+  _internal_set_max_devices(value);
+  // @@protoc_insertion_point(field_set:kentik.device.v202308beta1.Plan.max_devices)
+}
+inline ::uint32_t Plan::_internal_max_devices() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.max_devices_;
+}
+inline void Plan::_internal_set_max_devices(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.max_devices_ = value;
+}
+
+// uint32 max_fps = 13 [json_name = "maxFps", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void Plan::clear_max_fps() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.max_fps_ = 0u;
+}
+inline ::uint32_t Plan::max_fps() const {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.Plan.max_fps)
+  return _internal_max_fps();
+}
+inline void Plan::set_max_fps(::uint32_t value) {
+  _internal_set_max_fps(value);
+  // @@protoc_insertion_point(field_set:kentik.device.v202308beta1.Plan.max_fps)
+}
+inline ::uint32_t Plan::_internal_max_fps() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.max_fps_;
+}
+inline void Plan::_internal_set_max_fps(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.max_fps_ = value;
+}
+
+// .google.protobuf.Timestamp cdate = 14 [json_name = "cdate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool Plan::has_cdate() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.cdate_ != nullptr);
+  return value;
+}
+inline const ::google::protobuf::Timestamp& Plan::_internal_cdate() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::google::protobuf::Timestamp* p = _impl_.cdate_;
+  return p != nullptr ? *p : reinterpret_cast<const ::google::protobuf::Timestamp&>(::google::protobuf::_Timestamp_default_instance_);
+}
+inline const ::google::protobuf::Timestamp& Plan::cdate() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.Plan.cdate)
+  return _internal_cdate();
+}
+inline void Plan::unsafe_arena_set_allocated_cdate(::google::protobuf::Timestamp* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.cdate_);
+  }
+  _impl_.cdate_ = reinterpret_cast<::google::protobuf::Timestamp*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.device.v202308beta1.Plan.cdate)
+}
+inline ::google::protobuf::Timestamp* Plan::release_cdate() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::google::protobuf::Timestamp* released = _impl_.cdate_;
+  _impl_.cdate_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::google::protobuf::Timestamp* Plan::unsafe_arena_release_cdate() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.device.v202308beta1.Plan.cdate)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::google::protobuf::Timestamp* temp = _impl_.cdate_;
+  _impl_.cdate_ = nullptr;
+  return temp;
+}
+inline ::google::protobuf::Timestamp* Plan::_internal_mutable_cdate() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.cdate_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::google::protobuf::Timestamp>(GetArena());
+    _impl_.cdate_ = reinterpret_cast<::google::protobuf::Timestamp*>(p);
+  }
+  return _impl_.cdate_;
+}
+inline ::google::protobuf::Timestamp* Plan::mutable_cdate() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  ::google::protobuf::Timestamp* _msg = _internal_mutable_cdate();
+  // @@protoc_insertion_point(field_mutable:kentik.device.v202308beta1.Plan.cdate)
+  return _msg;
+}
+inline void Plan::set_allocated_cdate(::google::protobuf::Timestamp* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.cdate_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::google::protobuf::MessageLite*>(value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.cdate_ = reinterpret_cast<::google::protobuf::Timestamp*>(value);
+  // @@protoc_insertion_point(field_set_allocated:kentik.device.v202308beta1.Plan.cdate)
+}
+
+// .google.protobuf.Timestamp edate = 15 [json_name = "edate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool Plan::has_edate() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.edate_ != nullptr);
+  return value;
+}
+inline const ::google::protobuf::Timestamp& Plan::_internal_edate() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::google::protobuf::Timestamp* p = _impl_.edate_;
+  return p != nullptr ? *p : reinterpret_cast<const ::google::protobuf::Timestamp&>(::google::protobuf::_Timestamp_default_instance_);
+}
+inline const ::google::protobuf::Timestamp& Plan::edate() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.Plan.edate)
+  return _internal_edate();
+}
+inline void Plan::unsafe_arena_set_allocated_edate(::google::protobuf::Timestamp* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.edate_);
+  }
+  _impl_.edate_ = reinterpret_cast<::google::protobuf::Timestamp*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.device.v202308beta1.Plan.edate)
+}
+inline ::google::protobuf::Timestamp* Plan::release_edate() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  ::google::protobuf::Timestamp* released = _impl_.edate_;
+  _impl_.edate_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::google::protobuf::Timestamp* Plan::unsafe_arena_release_edate() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.device.v202308beta1.Plan.edate)
+
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  ::google::protobuf::Timestamp* temp = _impl_.edate_;
+  _impl_.edate_ = nullptr;
+  return temp;
+}
+inline ::google::protobuf::Timestamp* Plan::_internal_mutable_edate() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.edate_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::google::protobuf::Timestamp>(GetArena());
+    _impl_.edate_ = reinterpret_cast<::google::protobuf::Timestamp*>(p);
+  }
+  return _impl_.edate_;
+}
+inline ::google::protobuf::Timestamp* Plan::mutable_edate() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  ::google::protobuf::Timestamp* _msg = _internal_mutable_edate();
+  // @@protoc_insertion_point(field_mutable:kentik.device.v202308beta1.Plan.edate)
+  return _msg;
+}
+inline void Plan::set_allocated_edate(::google::protobuf::Timestamp* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.edate_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::google::protobuf::MessageLite*>(value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+
+  _impl_.edate_ = reinterpret_cast<::google::protobuf::Timestamp*>(value);
+  // @@protoc_insertion_point(field_set_allocated:kentik.device.v202308beta1.Plan.edate)
+}
+
+// map<string, string> metadata = 16 [json_name = "metadata", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline int Plan::_internal_metadata_size() const {
+  return _internal_metadata().size();
+}
+inline int Plan::metadata_size() const {
+  return _internal_metadata_size();
+}
+inline void Plan::clear_metadata() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.metadata_.Clear();
+}
+inline const ::google::protobuf::Map<std::string, std::string>& Plan::_internal_metadata() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.metadata_.GetMap();
+}
+inline const ::google::protobuf::Map<std::string, std::string>& Plan::metadata() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_map:kentik.device.v202308beta1.Plan.metadata)
+  return _internal_metadata();
+}
+inline ::google::protobuf::Map<std::string, std::string>* Plan::_internal_mutable_metadata() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.metadata_.MutableMap();
+}
+inline ::google::protobuf::Map<std::string, std::string>* Plan::mutable_metadata() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_map:kentik.device.v202308beta1.Plan.metadata)
+  return _internal_mutable_metadata();
 }
 
 // -------------------------------------------------------------------
@@ -15230,6 +16350,32 @@ inline void DeviceDetailed::_internal_set_monitoring_template_id(::uint32_t valu
 
 // -------------------------------------------------------------------
 
+// DeviceQuery
+
+// bool no_custom_columns = 1 [json_name = "noCustomColumns"];
+inline void DeviceQuery::clear_no_custom_columns() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.no_custom_columns_ = false;
+}
+inline bool DeviceQuery::no_custom_columns() const {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.DeviceQuery.no_custom_columns)
+  return _internal_no_custom_columns();
+}
+inline void DeviceQuery::set_no_custom_columns(bool value) {
+  _internal_set_no_custom_columns(value);
+  // @@protoc_insertion_point(field_set:kentik.device.v202308beta1.DeviceQuery.no_custom_columns)
+}
+inline bool DeviceQuery::_internal_no_custom_columns() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.no_custom_columns_;
+}
+inline void DeviceQuery::_internal_set_no_custom_columns(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.no_custom_columns_ = value;
+}
+
+// -------------------------------------------------------------------
+
 // LabelConcise
 
 // uint32 id = 1 [json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -15257,6 +16403,102 @@ inline void LabelConcise::_internal_set_id(::uint32_t value) {
 // -------------------------------------------------------------------
 
 // ListDevicesRequest
+
+// .kentik.device.v202308beta1.DeviceQuery query = 1 [json_name = "query"];
+inline bool ListDevicesRequest::has_query() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.query_ != nullptr);
+  return value;
+}
+inline void ListDevicesRequest::clear_query() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.query_ != nullptr) _impl_.query_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const ::kentik::device::v202308beta1::DeviceQuery& ListDevicesRequest::_internal_query() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::kentik::device::v202308beta1::DeviceQuery* p = _impl_.query_;
+  return p != nullptr ? *p : reinterpret_cast<const ::kentik::device::v202308beta1::DeviceQuery&>(::kentik::device::v202308beta1::_DeviceQuery_default_instance_);
+}
+inline const ::kentik::device::v202308beta1::DeviceQuery& ListDevicesRequest::query() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.ListDevicesRequest.query)
+  return _internal_query();
+}
+inline void ListDevicesRequest::unsafe_arena_set_allocated_query(::kentik::device::v202308beta1::DeviceQuery* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.query_);
+  }
+  _impl_.query_ = reinterpret_cast<::kentik::device::v202308beta1::DeviceQuery*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.device.v202308beta1.ListDevicesRequest.query)
+}
+inline ::kentik::device::v202308beta1::DeviceQuery* ListDevicesRequest::release_query() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::kentik::device::v202308beta1::DeviceQuery* released = _impl_.query_;
+  _impl_.query_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::kentik::device::v202308beta1::DeviceQuery* ListDevicesRequest::unsafe_arena_release_query() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.device.v202308beta1.ListDevicesRequest.query)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::kentik::device::v202308beta1::DeviceQuery* temp = _impl_.query_;
+  _impl_.query_ = nullptr;
+  return temp;
+}
+inline ::kentik::device::v202308beta1::DeviceQuery* ListDevicesRequest::_internal_mutable_query() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.query_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::kentik::device::v202308beta1::DeviceQuery>(GetArena());
+    _impl_.query_ = reinterpret_cast<::kentik::device::v202308beta1::DeviceQuery*>(p);
+  }
+  return _impl_.query_;
+}
+inline ::kentik::device::v202308beta1::DeviceQuery* ListDevicesRequest::mutable_query() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  ::kentik::device::v202308beta1::DeviceQuery* _msg = _internal_mutable_query();
+  // @@protoc_insertion_point(field_mutable:kentik.device.v202308beta1.ListDevicesRequest.query)
+  return _msg;
+}
+inline void ListDevicesRequest::set_allocated_query(::kentik::device::v202308beta1::DeviceQuery* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete (_impl_.query_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = (value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.query_ = reinterpret_cast<::kentik::device::v202308beta1::DeviceQuery*>(value);
+  // @@protoc_insertion_point(field_set_allocated:kentik.device.v202308beta1.ListDevicesRequest.query)
+}
 
 // -------------------------------------------------------------------
 
@@ -15383,6 +16625,102 @@ inline void GetDeviceRequest::set_allocated_id(std::string* value) {
     _impl_.id_.Set("", GetArena());
   }
   // @@protoc_insertion_point(field_set_allocated:kentik.device.v202308beta1.GetDeviceRequest.id)
+}
+
+// .kentik.device.v202308beta1.DeviceQuery query = 2 [json_name = "query"];
+inline bool GetDeviceRequest::has_query() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.query_ != nullptr);
+  return value;
+}
+inline void GetDeviceRequest::clear_query() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.query_ != nullptr) _impl_.query_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const ::kentik::device::v202308beta1::DeviceQuery& GetDeviceRequest::_internal_query() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::kentik::device::v202308beta1::DeviceQuery* p = _impl_.query_;
+  return p != nullptr ? *p : reinterpret_cast<const ::kentik::device::v202308beta1::DeviceQuery&>(::kentik::device::v202308beta1::_DeviceQuery_default_instance_);
+}
+inline const ::kentik::device::v202308beta1::DeviceQuery& GetDeviceRequest::query() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.device.v202308beta1.GetDeviceRequest.query)
+  return _internal_query();
+}
+inline void GetDeviceRequest::unsafe_arena_set_allocated_query(::kentik::device::v202308beta1::DeviceQuery* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.query_);
+  }
+  _impl_.query_ = reinterpret_cast<::kentik::device::v202308beta1::DeviceQuery*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.device.v202308beta1.GetDeviceRequest.query)
+}
+inline ::kentik::device::v202308beta1::DeviceQuery* GetDeviceRequest::release_query() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::kentik::device::v202308beta1::DeviceQuery* released = _impl_.query_;
+  _impl_.query_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::kentik::device::v202308beta1::DeviceQuery* GetDeviceRequest::unsafe_arena_release_query() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.device.v202308beta1.GetDeviceRequest.query)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::kentik::device::v202308beta1::DeviceQuery* temp = _impl_.query_;
+  _impl_.query_ = nullptr;
+  return temp;
+}
+inline ::kentik::device::v202308beta1::DeviceQuery* GetDeviceRequest::_internal_mutable_query() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.query_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::kentik::device::v202308beta1::DeviceQuery>(GetArena());
+    _impl_.query_ = reinterpret_cast<::kentik::device::v202308beta1::DeviceQuery*>(p);
+  }
+  return _impl_.query_;
+}
+inline ::kentik::device::v202308beta1::DeviceQuery* GetDeviceRequest::mutable_query() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  ::kentik::device::v202308beta1::DeviceQuery* _msg = _internal_mutable_query();
+  // @@protoc_insertion_point(field_mutable:kentik.device.v202308beta1.GetDeviceRequest.query)
+  return _msg;
+}
+inline void GetDeviceRequest::set_allocated_query(::kentik::device::v202308beta1::DeviceQuery* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete (_impl_.query_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = (value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.query_ = reinterpret_cast<::kentik::device::v202308beta1::DeviceQuery*>(value);
+  // @@protoc_insertion_point(field_set_allocated:kentik.device.v202308beta1.GetDeviceRequest.query)
 }
 
 // -------------------------------------------------------------------

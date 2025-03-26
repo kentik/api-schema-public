@@ -29,6 +29,9 @@
 #include "google/protobuf/message_lite.h"
 #include "google/protobuf/repeated_field.h"  // IWYU pragma: export
 #include "google/protobuf/extension_set.h"  // IWYU pragma: export
+#include "google/protobuf/map.h"  // IWYU pragma: export
+#include "google/protobuf/map_entry.h"
+#include "google/protobuf/map_field_inl.h"
 #include "google/protobuf/generated_enum_reflection.h"
 #include "google/protobuf/unknown_field_set.h"
 #include "google/api/annotations.pb.h"
@@ -109,6 +112,18 @@ extern InterfaceClassifyInfoDefaultTypeInternal _InterfaceClassifyInfo_default_i
 class InterfaceFilter;
 struct InterfaceFilterDefaultTypeInternal;
 extern InterfaceFilterDefaultTypeInternal _InterfaceFilter_default_instance_;
+class Interface_ExtraInfoEntry_DoNotUse;
+struct Interface_ExtraInfoEntry_DoNotUseDefaultTypeInternal;
+extern Interface_ExtraInfoEntry_DoNotUseDefaultTypeInternal _Interface_ExtraInfoEntry_DoNotUse_default_instance_;
+class Interface_InterfaceKvsEntry_DoNotUse;
+struct Interface_InterfaceKvsEntry_DoNotUseDefaultTypeInternal;
+extern Interface_InterfaceKvsEntry_DoNotUseDefaultTypeInternal _Interface_InterfaceKvsEntry_DoNotUse_default_instance_;
+class Interface_InterfaceTagsEntry_DoNotUse;
+struct Interface_InterfaceTagsEntry_DoNotUseDefaultTypeInternal;
+extern Interface_InterfaceTagsEntry_DoNotUseDefaultTypeInternal _Interface_InterfaceTagsEntry_DoNotUse_default_instance_;
+class Interface_VrfEntry_DoNotUse;
+struct Interface_VrfEntry_DoNotUseDefaultTypeInternal;
+extern Interface_VrfEntry_DoNotUseDefaultTypeInternal _Interface_VrfEntry_DoNotUse_default_instance_;
 class ListInterfaceRequest;
 struct ListInterfaceRequestDefaultTypeInternal;
 extern ListInterfaceRequestDefaultTypeInternal _ListInterfaceRequest_default_instance_;
@@ -404,7 +419,7 @@ class Match final : public ::google::protobuf::Message
     return reinterpret_cast<const Match*>(
         &_Match_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 20;
+  static constexpr int kIndexInFileMessages = 24;
   friend void swap(Match& a, Match& b) { a.Swap(&b); }
   inline void Swap(Match* other) {
     if (other == this) return;
@@ -624,7 +639,7 @@ class ManualClassifyResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const ManualClassifyResponse*>(
         &_ManualClassifyResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 9;
+  static constexpr int kIndexInFileMessages = 13;
   friend void swap(ManualClassifyResponse& a, ManualClassifyResponse& b) { a.Swap(&b); }
   inline void Swap(ManualClassifyResponse* other) {
     if (other == this) return;
@@ -826,7 +841,7 @@ class ManualClassifyRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const ManualClassifyRequest*>(
         &_ManualClassifyRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 8;
+  static constexpr int kIndexInFileMessages = 12;
   friend void swap(ManualClassifyRequest& a, ManualClassifyRequest& b) { a.Swap(&b); }
   inline void Swap(ManualClassifyRequest* other) {
     if (other == this) return;
@@ -1070,7 +1085,7 @@ class InterfaceFilter final : public ::google::protobuf::Message
     return reinterpret_cast<const InterfaceFilter*>(
         &_InterfaceFilter_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 5;
+  static constexpr int kIndexInFileMessages = 9;
   friend void swap(InterfaceFilter& a, InterfaceFilter& b) { a.Swap(&b); }
   inline void Swap(InterfaceFilter* other) {
     if (other == this) return;
@@ -1401,7 +1416,7 @@ class InterfaceClassification final : public ::google::protobuf::Message
     return reinterpret_cast<const InterfaceClassification*>(
         &_InterfaceClassification_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 1;
+  static constexpr int kIndexInFileMessages = 5;
   friend void swap(InterfaceClassification& a, InterfaceClassification& b) { a.Swap(&b); }
   inline void Swap(InterfaceClassification* other) {
     if (other == this) return;
@@ -1556,6 +1571,162 @@ class InterfaceClassification final : public ::google::protobuf::Message
 };
 // -------------------------------------------------------------------
 
+class Interface_VrfEntry_DoNotUse final
+    : public ::google::protobuf::internal::MapEntry<
+          std::string, std::string,
+          ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+          ::google::protobuf::internal::WireFormatLite::TYPE_STRING> {
+ public:
+  using SuperType = ::google::protobuf::internal::MapEntry<
+      std::string, std::string,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING>;
+  Interface_VrfEntry_DoNotUse();
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR Interface_VrfEntry_DoNotUse(
+      ::google::protobuf::internal::ConstantInitialized);
+  explicit Interface_VrfEntry_DoNotUse(::google::protobuf::Arena* arena);
+  static const Interface_VrfEntry_DoNotUse* internal_default_instance() {
+    return reinterpret_cast<const Interface_VrfEntry_DoNotUse*>(
+        &_Interface_VrfEntry_DoNotUse_default_instance_);
+  }
+
+
+ private:
+  friend class ::google::protobuf::MessageLite;
+  friend struct ::TableStruct_kentik_2finterface_2fv202108alpha1_2finterface_2eproto;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 0,
+      66, 2>
+      _table_;
+
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+};
+// -------------------------------------------------------------------
+
+class Interface_InterfaceTagsEntry_DoNotUse final
+    : public ::google::protobuf::internal::MapEntry<
+          std::string, std::string,
+          ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+          ::google::protobuf::internal::WireFormatLite::TYPE_STRING> {
+ public:
+  using SuperType = ::google::protobuf::internal::MapEntry<
+      std::string, std::string,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING>;
+  Interface_InterfaceTagsEntry_DoNotUse();
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR Interface_InterfaceTagsEntry_DoNotUse(
+      ::google::protobuf::internal::ConstantInitialized);
+  explicit Interface_InterfaceTagsEntry_DoNotUse(::google::protobuf::Arena* arena);
+  static const Interface_InterfaceTagsEntry_DoNotUse* internal_default_instance() {
+    return reinterpret_cast<const Interface_InterfaceTagsEntry_DoNotUse*>(
+        &_Interface_InterfaceTagsEntry_DoNotUse_default_instance_);
+  }
+
+
+ private:
+  friend class ::google::protobuf::MessageLite;
+  friend struct ::TableStruct_kentik_2finterface_2fv202108alpha1_2finterface_2eproto;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 0,
+      76, 2>
+      _table_;
+
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+};
+// -------------------------------------------------------------------
+
+class Interface_InterfaceKvsEntry_DoNotUse final
+    : public ::google::protobuf::internal::MapEntry<
+          std::string, std::string,
+          ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+          ::google::protobuf::internal::WireFormatLite::TYPE_STRING> {
+ public:
+  using SuperType = ::google::protobuf::internal::MapEntry<
+      std::string, std::string,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING>;
+  Interface_InterfaceKvsEntry_DoNotUse();
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR Interface_InterfaceKvsEntry_DoNotUse(
+      ::google::protobuf::internal::ConstantInitialized);
+  explicit Interface_InterfaceKvsEntry_DoNotUse(::google::protobuf::Arena* arena);
+  static const Interface_InterfaceKvsEntry_DoNotUse* internal_default_instance() {
+    return reinterpret_cast<const Interface_InterfaceKvsEntry_DoNotUse*>(
+        &_Interface_InterfaceKvsEntry_DoNotUse_default_instance_);
+  }
+
+
+ private:
+  friend class ::google::protobuf::MessageLite;
+  friend struct ::TableStruct_kentik_2finterface_2fv202108alpha1_2finterface_2eproto;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 0,
+      75, 2>
+      _table_;
+
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+};
+// -------------------------------------------------------------------
+
+class Interface_ExtraInfoEntry_DoNotUse final
+    : public ::google::protobuf::internal::MapEntry<
+          std::string, std::string,
+          ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+          ::google::protobuf::internal::WireFormatLite::TYPE_STRING> {
+ public:
+  using SuperType = ::google::protobuf::internal::MapEntry<
+      std::string, std::string,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING>;
+  Interface_ExtraInfoEntry_DoNotUse();
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR Interface_ExtraInfoEntry_DoNotUse(
+      ::google::protobuf::internal::ConstantInitialized);
+  explicit Interface_ExtraInfoEntry_DoNotUse(::google::protobuf::Arena* arena);
+  static const Interface_ExtraInfoEntry_DoNotUse* internal_default_instance() {
+    return reinterpret_cast<const Interface_ExtraInfoEntry_DoNotUse*>(
+        &_Interface_ExtraInfoEntry_DoNotUse_default_instance_);
+  }
+
+
+ private:
+  friend class ::google::protobuf::MessageLite;
+  friend struct ::TableStruct_kentik_2finterface_2fv202108alpha1_2finterface_2eproto;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 0,
+      72, 2>
+      _table_;
+
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+};
+// -------------------------------------------------------------------
+
 class GetInterfaceRequest final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:kentik.interface.v202108alpha1.GetInterfaceRequest) */ {
  public:
@@ -1615,7 +1786,7 @@ class GetInterfaceRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const GetInterfaceRequest*>(
         &_GetInterfaceRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 12;
+  static constexpr int kIndexInFileMessages = 16;
   friend void swap(GetInterfaceRequest& a, GetInterfaceRequest& b) { a.Swap(&b); }
   inline void Swap(GetInterfaceRequest* other) {
     if (other == this) return;
@@ -1811,7 +1982,7 @@ class DeviceFilter final : public ::google::protobuf::Message
     return reinterpret_cast<const DeviceFilter*>(
         &_DeviceFilter_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 22;
+  static constexpr int kIndexInFileMessages = 26;
   friend void swap(DeviceFilter& a, DeviceFilter& b) { a.Swap(&b); }
   inline void Swap(DeviceFilter* other) {
     if (other == this) return;
@@ -2096,7 +2267,7 @@ class DeleteInterfaceResponse final : public ::google::protobuf::internal::ZeroF
     return reinterpret_cast<const DeleteInterfaceResponse*>(
         &_DeleteInterfaceResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 19;
+  static constexpr int kIndexInFileMessages = 23;
   friend void swap(DeleteInterfaceResponse& a, DeleteInterfaceResponse& b) { a.Swap(&b); }
   inline void Swap(DeleteInterfaceResponse* other) {
     if (other == this) return;
@@ -2242,7 +2413,7 @@ class DeleteInterfaceRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const DeleteInterfaceRequest*>(
         &_DeleteInterfaceRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 18;
+  static constexpr int kIndexInFileMessages = 22;
   friend void swap(DeleteInterfaceRequest& a, DeleteInterfaceRequest& b) { a.Swap(&b); }
   inline void Swap(DeleteInterfaceRequest* other) {
     if (other == this) return;
@@ -2438,7 +2609,7 @@ class ClassifyCounter final : public ::google::protobuf::Message
     return reinterpret_cast<const ClassifyCounter*>(
         &_ClassifyCounter_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 2;
+  static constexpr int kIndexInFileMessages = 6;
   friend void swap(ClassifyCounter& a, ClassifyCounter& b) { a.Swap(&b); }
   inline void Swap(ClassifyCounter* other) {
     if (other == this) return;
@@ -2687,7 +2858,7 @@ class AutoClassifyRequest final : public ::google::protobuf::internal::ZeroField
     return reinterpret_cast<const AutoClassifyRequest*>(
         &_AutoClassifyRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 6;
+  static constexpr int kIndexInFileMessages = 10;
   friend void swap(AutoClassifyRequest& a, AutoClassifyRequest& b) { a.Swap(&b); }
   inline void Swap(AutoClassifyRequest* other) {
     if (other == this) return;
@@ -2833,7 +3004,7 @@ class Action final : public ::google::protobuf::Message
     return reinterpret_cast<const Action*>(
         &_Action_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 21;
+  static constexpr int kIndexInFileMessages = 25;
   friend void swap(Action& a, Action& b) { a.Swap(&b); }
   inline void Swap(Action* other) {
     if (other == this) return;
@@ -3071,7 +3242,7 @@ class Rule final : public ::google::protobuf::Message
     return reinterpret_cast<const Rule*>(
         &_Rule_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 23;
+  static constexpr int kIndexInFileMessages = 27;
   friend void swap(Rule& a, Rule& b) { a.Swap(&b); }
   inline void Swap(Rule* other) {
     if (other == this) return;
@@ -3394,7 +3565,7 @@ class ListInterfaceRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const ListInterfaceRequest*>(
         &_ListInterfaceRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 10;
+  static constexpr int kIndexInFileMessages = 14;
   friend void swap(ListInterfaceRequest& a, ListInterfaceRequest& b) { a.Swap(&b); }
   inline void Swap(ListInterfaceRequest* other) {
     if (other == this) return;
@@ -3590,7 +3761,7 @@ class InterfaceClassifyInfo final : public ::google::protobuf::Message
     return reinterpret_cast<const InterfaceClassifyInfo*>(
         &_InterfaceClassifyInfo_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 3;
+  static constexpr int kIndexInFileMessages = 7;
   friend void swap(InterfaceClassifyInfo& a, InterfaceClassifyInfo& b) { a.Swap(&b); }
   inline void Swap(InterfaceClassifyInfo* other) {
     if (other == this) return;
@@ -4127,7 +4298,7 @@ class Interface final : public ::google::protobuf::Message
     return reinterpret_cast<const Interface*>(
         &_Interface_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 0;
+  static constexpr int kIndexInFileMessages = 4;
   friend void swap(Interface& a, Interface& b) { a.Swap(&b); }
   inline void Swap(Interface* other) {
     if (other == this) return;
@@ -4215,6 +4386,10 @@ class Interface final : public ::google::protobuf::Message
   // accessors -------------------------------------------------------
   enum : int {
     kTopNexthopAsnsFieldNumber = 14,
+    kInterfaceKvsFieldNumber = 16,
+    kInterfaceTagsFieldNumber = 17,
+    kExtraInfoFieldNumber = 19,
+    kVrfFieldNumber = 29,
     kIdFieldNumber = 1,
     kDeviceIdFieldNumber = 2,
     kSnmpIdFieldNumber = 3,
@@ -4223,12 +4398,22 @@ class Interface final : public ::google::protobuf::Message
     kInterfaceDescriptionFieldNumber = 8,
     kInterfaceIpNetmaskFieldNumber = 11,
     kProviderFieldNumber = 15,
+    kInterfaceStatusFieldNumber = 18,
+    kInitialSnmpIdFieldNumber = 20,
+    kInitialSnmpAliasFieldNumber = 21,
+    kInitialInterfaceDescriptionFieldNumber = 22,
+    kSecondaryIpsFieldNumber = 24,
+    kInitialProviderFieldNumber = 27,
+    kVrfIdFieldNumber = 28,
     kCdateFieldNumber = 9,
     kEdateFieldNumber = 10,
     kSnmpSpeedFieldNumber = 4,
     kSnmpTypeFieldNumber = 5,
     kConnectivityTypeFieldNumber = 12,
     kNetworkBoundaryFieldNumber = 13,
+    kInitialSnmpSpeedFieldNumber = 23,
+    kInitialConnectivityTypeFieldNumber = 25,
+    kInitialNetworkBoundaryFieldNumber = 26,
   };
   // repeated int32 top_nexthop_asns = 14 [json_name = "topNexthopAsns"];
   int top_nexthop_asns_size() const;
@@ -4246,6 +4431,66 @@ class Interface final : public ::google::protobuf::Message
   private:
   const ::google::protobuf::RepeatedField<::int32_t>& _internal_top_nexthop_asns() const;
   ::google::protobuf::RepeatedField<::int32_t>* _internal_mutable_top_nexthop_asns();
+
+  public:
+  // map<string, string> interface_kvs = 16 [json_name = "interfaceKvs"];
+  int interface_kvs_size() const;
+  private:
+  int _internal_interface_kvs_size() const;
+
+  public:
+  void clear_interface_kvs() ;
+  const ::google::protobuf::Map<std::string, std::string>& interface_kvs() const;
+  ::google::protobuf::Map<std::string, std::string>* mutable_interface_kvs();
+
+  private:
+  const ::google::protobuf::Map<std::string, std::string>& _internal_interface_kvs() const;
+  ::google::protobuf::Map<std::string, std::string>* _internal_mutable_interface_kvs();
+
+  public:
+  // map<string, string> interface_tags = 17 [json_name = "interfaceTags"];
+  int interface_tags_size() const;
+  private:
+  int _internal_interface_tags_size() const;
+
+  public:
+  void clear_interface_tags() ;
+  const ::google::protobuf::Map<std::string, std::string>& interface_tags() const;
+  ::google::protobuf::Map<std::string, std::string>* mutable_interface_tags();
+
+  private:
+  const ::google::protobuf::Map<std::string, std::string>& _internal_interface_tags() const;
+  ::google::protobuf::Map<std::string, std::string>* _internal_mutable_interface_tags();
+
+  public:
+  // map<string, string> extra_info = 19 [json_name = "extraInfo"];
+  int extra_info_size() const;
+  private:
+  int _internal_extra_info_size() const;
+
+  public:
+  void clear_extra_info() ;
+  const ::google::protobuf::Map<std::string, std::string>& extra_info() const;
+  ::google::protobuf::Map<std::string, std::string>* mutable_extra_info();
+
+  private:
+  const ::google::protobuf::Map<std::string, std::string>& _internal_extra_info() const;
+  ::google::protobuf::Map<std::string, std::string>* _internal_mutable_extra_info();
+
+  public:
+  // map<string, string> vrf = 29 [json_name = "vrf"];
+  int vrf_size() const;
+  private:
+  int _internal_vrf_size() const;
+
+  public:
+  void clear_vrf() ;
+  const ::google::protobuf::Map<std::string, std::string>& vrf() const;
+  ::google::protobuf::Map<std::string, std::string>* mutable_vrf();
+
+  private:
+  const ::google::protobuf::Map<std::string, std::string>& _internal_vrf() const;
+  ::google::protobuf::Map<std::string, std::string>* _internal_mutable_vrf();
 
   public:
   // string id = 1 [json_name = "id"];
@@ -4376,6 +4621,118 @@ class Interface final : public ::google::protobuf::Message
   std::string* _internal_mutable_provider();
 
   public:
+  // string interface_status = 18 [json_name = "interfaceStatus"];
+  void clear_interface_status() ;
+  const std::string& interface_status() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_interface_status(Arg_&& arg, Args_... args);
+  std::string* mutable_interface_status();
+  PROTOBUF_NODISCARD std::string* release_interface_status();
+  void set_allocated_interface_status(std::string* value);
+
+  private:
+  const std::string& _internal_interface_status() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_interface_status(
+      const std::string& value);
+  std::string* _internal_mutable_interface_status();
+
+  public:
+  // string initial_snmp_id = 20 [json_name = "initialSnmpId"];
+  void clear_initial_snmp_id() ;
+  const std::string& initial_snmp_id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_initial_snmp_id(Arg_&& arg, Args_... args);
+  std::string* mutable_initial_snmp_id();
+  PROTOBUF_NODISCARD std::string* release_initial_snmp_id();
+  void set_allocated_initial_snmp_id(std::string* value);
+
+  private:
+  const std::string& _internal_initial_snmp_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_initial_snmp_id(
+      const std::string& value);
+  std::string* _internal_mutable_initial_snmp_id();
+
+  public:
+  // string initial_snmp_alias = 21 [json_name = "initialSnmpAlias"];
+  void clear_initial_snmp_alias() ;
+  const std::string& initial_snmp_alias() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_initial_snmp_alias(Arg_&& arg, Args_... args);
+  std::string* mutable_initial_snmp_alias();
+  PROTOBUF_NODISCARD std::string* release_initial_snmp_alias();
+  void set_allocated_initial_snmp_alias(std::string* value);
+
+  private:
+  const std::string& _internal_initial_snmp_alias() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_initial_snmp_alias(
+      const std::string& value);
+  std::string* _internal_mutable_initial_snmp_alias();
+
+  public:
+  // string initial_interface_description = 22 [json_name = "initialInterfaceDescription"];
+  void clear_initial_interface_description() ;
+  const std::string& initial_interface_description() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_initial_interface_description(Arg_&& arg, Args_... args);
+  std::string* mutable_initial_interface_description();
+  PROTOBUF_NODISCARD std::string* release_initial_interface_description();
+  void set_allocated_initial_interface_description(std::string* value);
+
+  private:
+  const std::string& _internal_initial_interface_description() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_initial_interface_description(
+      const std::string& value);
+  std::string* _internal_mutable_initial_interface_description();
+
+  public:
+  // string secondary_ips = 24 [json_name = "secondaryIps"];
+  void clear_secondary_ips() ;
+  const std::string& secondary_ips() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_secondary_ips(Arg_&& arg, Args_... args);
+  std::string* mutable_secondary_ips();
+  PROTOBUF_NODISCARD std::string* release_secondary_ips();
+  void set_allocated_secondary_ips(std::string* value);
+
+  private:
+  const std::string& _internal_secondary_ips() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_secondary_ips(
+      const std::string& value);
+  std::string* _internal_mutable_secondary_ips();
+
+  public:
+  // string initial_provider = 27 [json_name = "initialProvider"];
+  void clear_initial_provider() ;
+  const std::string& initial_provider() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_initial_provider(Arg_&& arg, Args_... args);
+  std::string* mutable_initial_provider();
+  PROTOBUF_NODISCARD std::string* release_initial_provider();
+  void set_allocated_initial_provider(std::string* value);
+
+  private:
+  const std::string& _internal_initial_provider() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_initial_provider(
+      const std::string& value);
+  std::string* _internal_mutable_initial_provider();
+
+  public:
+  // string vrf_id = 28 [json_name = "vrfId"];
+  void clear_vrf_id() ;
+  const std::string& vrf_id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_vrf_id(Arg_&& arg, Args_... args);
+  std::string* mutable_vrf_id();
+  PROTOBUF_NODISCARD std::string* release_vrf_id();
+  void set_allocated_vrf_id(std::string* value);
+
+  private:
+  const std::string& _internal_vrf_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_vrf_id(
+      const std::string& value);
+  std::string* _internal_mutable_vrf_id();
+
+  public:
   // .google.protobuf.Timestamp cdate = 9 [json_name = "cdate"];
   bool has_cdate() const;
   void clear_cdate() ;
@@ -4446,13 +4803,43 @@ class Interface final : public ::google::protobuf::Message
   void _internal_set_network_boundary(::kentik::interface::v202108alpha1::NetworkBoundary value);
 
   public:
+  // int32 initial_snmp_speed = 23 [json_name = "initialSnmpSpeed"];
+  void clear_initial_snmp_speed() ;
+  ::int32_t initial_snmp_speed() const;
+  void set_initial_snmp_speed(::int32_t value);
+
+  private:
+  ::int32_t _internal_initial_snmp_speed() const;
+  void _internal_set_initial_snmp_speed(::int32_t value);
+
+  public:
+  // .kentik.interface.v202108alpha1.ConnectivityType initial_connectivity_type = 25 [json_name = "initialConnectivityType"];
+  void clear_initial_connectivity_type() ;
+  ::kentik::interface::v202108alpha1::ConnectivityType initial_connectivity_type() const;
+  void set_initial_connectivity_type(::kentik::interface::v202108alpha1::ConnectivityType value);
+
+  private:
+  ::kentik::interface::v202108alpha1::ConnectivityType _internal_initial_connectivity_type() const;
+  void _internal_set_initial_connectivity_type(::kentik::interface::v202108alpha1::ConnectivityType value);
+
+  public:
+  // .kentik.interface.v202108alpha1.NetworkBoundary initial_network_boundary = 26 [json_name = "initialNetworkBoundary"];
+  void clear_initial_network_boundary() ;
+  ::kentik::interface::v202108alpha1::NetworkBoundary initial_network_boundary() const;
+  void set_initial_network_boundary(::kentik::interface::v202108alpha1::NetworkBoundary value);
+
+  private:
+  ::kentik::interface::v202108alpha1::NetworkBoundary _internal_initial_network_boundary() const;
+  void _internal_set_initial_network_boundary(::kentik::interface::v202108alpha1::NetworkBoundary value);
+
+  public:
   // @@protoc_insertion_point(class_scope:kentik.interface.v202108alpha1.Interface)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      4, 15, 2,
-      146, 2>
+      5, 29, 6,
+      315, 2>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -4473,6 +4860,22 @@ class Interface final : public ::google::protobuf::Message
     ::google::protobuf::internal::CachedSize _cached_size_;
     ::google::protobuf::RepeatedField<::int32_t> top_nexthop_asns_;
     ::google::protobuf::internal::CachedSize _top_nexthop_asns_cached_byte_size_;
+    ::google::protobuf::internal::MapField<Interface_InterfaceKvsEntry_DoNotUse, std::string, std::string,
+                      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+                      ::google::protobuf::internal::WireFormatLite::TYPE_STRING>
+        interface_kvs_;
+    ::google::protobuf::internal::MapField<Interface_InterfaceTagsEntry_DoNotUse, std::string, std::string,
+                      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+                      ::google::protobuf::internal::WireFormatLite::TYPE_STRING>
+        interface_tags_;
+    ::google::protobuf::internal::MapField<Interface_ExtraInfoEntry_DoNotUse, std::string, std::string,
+                      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+                      ::google::protobuf::internal::WireFormatLite::TYPE_STRING>
+        extra_info_;
+    ::google::protobuf::internal::MapField<Interface_VrfEntry_DoNotUse, std::string, std::string,
+                      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+                      ::google::protobuf::internal::WireFormatLite::TYPE_STRING>
+        vrf_;
     ::google::protobuf::internal::ArenaStringPtr id_;
     ::google::protobuf::internal::ArenaStringPtr device_id_;
     ::google::protobuf::internal::ArenaStringPtr snmp_id_;
@@ -4481,12 +4884,22 @@ class Interface final : public ::google::protobuf::Message
     ::google::protobuf::internal::ArenaStringPtr interface_description_;
     ::google::protobuf::internal::ArenaStringPtr interface_ip_netmask_;
     ::google::protobuf::internal::ArenaStringPtr provider_;
+    ::google::protobuf::internal::ArenaStringPtr interface_status_;
+    ::google::protobuf::internal::ArenaStringPtr initial_snmp_id_;
+    ::google::protobuf::internal::ArenaStringPtr initial_snmp_alias_;
+    ::google::protobuf::internal::ArenaStringPtr initial_interface_description_;
+    ::google::protobuf::internal::ArenaStringPtr secondary_ips_;
+    ::google::protobuf::internal::ArenaStringPtr initial_provider_;
+    ::google::protobuf::internal::ArenaStringPtr vrf_id_;
     ::google::protobuf::Timestamp* cdate_;
     ::google::protobuf::Timestamp* edate_;
     ::int32_t snmp_speed_;
     ::int32_t snmp_type_;
     int connectivity_type_;
     int network_boundary_;
+    ::int32_t initial_snmp_speed_;
+    int initial_connectivity_type_;
+    int initial_network_boundary_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -4553,7 +4966,7 @@ class UpdateInterfaceResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const UpdateInterfaceResponse*>(
         &_UpdateInterfaceResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 17;
+  static constexpr int kIndexInFileMessages = 21;
   friend void swap(UpdateInterfaceResponse& a, UpdateInterfaceResponse& b) { a.Swap(&b); }
   inline void Swap(UpdateInterfaceResponse* other) {
     if (other == this) return;
@@ -4749,7 +5162,7 @@ class UpdateInterfaceRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const UpdateInterfaceRequest*>(
         &_UpdateInterfaceRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 16;
+  static constexpr int kIndexInFileMessages = 20;
   friend void swap(UpdateInterfaceRequest& a, UpdateInterfaceRequest& b) { a.Swap(&b); }
   inline void Swap(UpdateInterfaceRequest* other) {
     if (other == this) return;
@@ -4945,7 +5358,7 @@ class ListInterfaceResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const ListInterfaceResponse*>(
         &_ListInterfaceResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 11;
+  static constexpr int kIndexInFileMessages = 15;
   friend void swap(ListInterfaceResponse& a, ListInterfaceResponse& b) { a.Swap(&b); }
   inline void Swap(ListInterfaceResponse* other) {
     if (other == this) return;
@@ -5166,7 +5579,7 @@ class GetInterfaceResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const GetInterfaceResponse*>(
         &_GetInterfaceResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 13;
+  static constexpr int kIndexInFileMessages = 17;
   friend void swap(GetInterfaceResponse& a, GetInterfaceResponse& b) { a.Swap(&b); }
   inline void Swap(GetInterfaceResponse* other) {
     if (other == this) return;
@@ -5362,7 +5775,7 @@ class DeviceClassifyInfo final : public ::google::protobuf::Message
     return reinterpret_cast<const DeviceClassifyInfo*>(
         &_DeviceClassifyInfo_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 4;
+  static constexpr int kIndexInFileMessages = 8;
   friend void swap(DeviceClassifyInfo& a, DeviceClassifyInfo& b) { a.Swap(&b); }
   inline void Swap(DeviceClassifyInfo* other) {
     if (other == this) return;
@@ -5696,7 +6109,7 @@ class CreateInterfaceResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const CreateInterfaceResponse*>(
         &_CreateInterfaceResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 15;
+  static constexpr int kIndexInFileMessages = 19;
   friend void swap(CreateInterfaceResponse& a, CreateInterfaceResponse& b) { a.Swap(&b); }
   inline void Swap(CreateInterfaceResponse* other) {
     if (other == this) return;
@@ -5892,7 +6305,7 @@ class CreateInterfaceRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const CreateInterfaceRequest*>(
         &_CreateInterfaceRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 14;
+  static constexpr int kIndexInFileMessages = 18;
   friend void swap(CreateInterfaceRequest& a, CreateInterfaceRequest& b) { a.Swap(&b); }
   inline void Swap(CreateInterfaceRequest* other) {
     if (other == this) return;
@@ -6088,7 +6501,7 @@ class AutoClassifyResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const AutoClassifyResponse*>(
         &_AutoClassifyResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 7;
+  static constexpr int kIndexInFileMessages = 11;
   friend void swap(AutoClassifyResponse& a, AutoClassifyResponse& b) { a.Swap(&b); }
   inline void Swap(AutoClassifyResponse* other) {
     if (other == this) return;
@@ -6356,6 +6769,14 @@ class AutoClassifyResponse final : public ::google::protobuf::Message
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // Interface
@@ -7057,6 +7478,520 @@ inline void Interface::set_allocated_provider(std::string* value) {
     _impl_.provider_.Set("", GetArena());
   }
   // @@protoc_insertion_point(field_set_allocated:kentik.interface.v202108alpha1.Interface.provider)
+}
+
+// map<string, string> interface_kvs = 16 [json_name = "interfaceKvs"];
+inline int Interface::_internal_interface_kvs_size() const {
+  return _internal_interface_kvs().size();
+}
+inline int Interface::interface_kvs_size() const {
+  return _internal_interface_kvs_size();
+}
+inline void Interface::clear_interface_kvs() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.interface_kvs_.Clear();
+}
+inline const ::google::protobuf::Map<std::string, std::string>& Interface::_internal_interface_kvs() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.interface_kvs_.GetMap();
+}
+inline const ::google::protobuf::Map<std::string, std::string>& Interface::interface_kvs() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_map:kentik.interface.v202108alpha1.Interface.interface_kvs)
+  return _internal_interface_kvs();
+}
+inline ::google::protobuf::Map<std::string, std::string>* Interface::_internal_mutable_interface_kvs() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.interface_kvs_.MutableMap();
+}
+inline ::google::protobuf::Map<std::string, std::string>* Interface::mutable_interface_kvs() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_map:kentik.interface.v202108alpha1.Interface.interface_kvs)
+  return _internal_mutable_interface_kvs();
+}
+
+// map<string, string> interface_tags = 17 [json_name = "interfaceTags"];
+inline int Interface::_internal_interface_tags_size() const {
+  return _internal_interface_tags().size();
+}
+inline int Interface::interface_tags_size() const {
+  return _internal_interface_tags_size();
+}
+inline void Interface::clear_interface_tags() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.interface_tags_.Clear();
+}
+inline const ::google::protobuf::Map<std::string, std::string>& Interface::_internal_interface_tags() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.interface_tags_.GetMap();
+}
+inline const ::google::protobuf::Map<std::string, std::string>& Interface::interface_tags() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_map:kentik.interface.v202108alpha1.Interface.interface_tags)
+  return _internal_interface_tags();
+}
+inline ::google::protobuf::Map<std::string, std::string>* Interface::_internal_mutable_interface_tags() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.interface_tags_.MutableMap();
+}
+inline ::google::protobuf::Map<std::string, std::string>* Interface::mutable_interface_tags() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_map:kentik.interface.v202108alpha1.Interface.interface_tags)
+  return _internal_mutable_interface_tags();
+}
+
+// string interface_status = 18 [json_name = "interfaceStatus"];
+inline void Interface::clear_interface_status() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.interface_status_.ClearToEmpty();
+}
+inline const std::string& Interface::interface_status() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.interface.v202108alpha1.Interface.interface_status)
+  return _internal_interface_status();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Interface::set_interface_status(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.interface_status_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.interface.v202108alpha1.Interface.interface_status)
+}
+inline std::string* Interface::mutable_interface_status() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_interface_status();
+  // @@protoc_insertion_point(field_mutable:kentik.interface.v202108alpha1.Interface.interface_status)
+  return _s;
+}
+inline const std::string& Interface::_internal_interface_status() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.interface_status_.Get();
+}
+inline void Interface::_internal_set_interface_status(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.interface_status_.Set(value, GetArena());
+}
+inline std::string* Interface::_internal_mutable_interface_status() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.interface_status_.Mutable( GetArena());
+}
+inline std::string* Interface::release_interface_status() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.interface.v202108alpha1.Interface.interface_status)
+  return _impl_.interface_status_.Release();
+}
+inline void Interface::set_allocated_interface_status(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.interface_status_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.interface_status_.IsDefault()) {
+    _impl_.interface_status_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.interface.v202108alpha1.Interface.interface_status)
+}
+
+// map<string, string> extra_info = 19 [json_name = "extraInfo"];
+inline int Interface::_internal_extra_info_size() const {
+  return _internal_extra_info().size();
+}
+inline int Interface::extra_info_size() const {
+  return _internal_extra_info_size();
+}
+inline void Interface::clear_extra_info() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.extra_info_.Clear();
+}
+inline const ::google::protobuf::Map<std::string, std::string>& Interface::_internal_extra_info() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.extra_info_.GetMap();
+}
+inline const ::google::protobuf::Map<std::string, std::string>& Interface::extra_info() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_map:kentik.interface.v202108alpha1.Interface.extra_info)
+  return _internal_extra_info();
+}
+inline ::google::protobuf::Map<std::string, std::string>* Interface::_internal_mutable_extra_info() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.extra_info_.MutableMap();
+}
+inline ::google::protobuf::Map<std::string, std::string>* Interface::mutable_extra_info() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_map:kentik.interface.v202108alpha1.Interface.extra_info)
+  return _internal_mutable_extra_info();
+}
+
+// string initial_snmp_id = 20 [json_name = "initialSnmpId"];
+inline void Interface::clear_initial_snmp_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.initial_snmp_id_.ClearToEmpty();
+}
+inline const std::string& Interface::initial_snmp_id() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.interface.v202108alpha1.Interface.initial_snmp_id)
+  return _internal_initial_snmp_id();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Interface::set_initial_snmp_id(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.initial_snmp_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.interface.v202108alpha1.Interface.initial_snmp_id)
+}
+inline std::string* Interface::mutable_initial_snmp_id() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_initial_snmp_id();
+  // @@protoc_insertion_point(field_mutable:kentik.interface.v202108alpha1.Interface.initial_snmp_id)
+  return _s;
+}
+inline const std::string& Interface::_internal_initial_snmp_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.initial_snmp_id_.Get();
+}
+inline void Interface::_internal_set_initial_snmp_id(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.initial_snmp_id_.Set(value, GetArena());
+}
+inline std::string* Interface::_internal_mutable_initial_snmp_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.initial_snmp_id_.Mutable( GetArena());
+}
+inline std::string* Interface::release_initial_snmp_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.interface.v202108alpha1.Interface.initial_snmp_id)
+  return _impl_.initial_snmp_id_.Release();
+}
+inline void Interface::set_allocated_initial_snmp_id(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.initial_snmp_id_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.initial_snmp_id_.IsDefault()) {
+    _impl_.initial_snmp_id_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.interface.v202108alpha1.Interface.initial_snmp_id)
+}
+
+// string initial_snmp_alias = 21 [json_name = "initialSnmpAlias"];
+inline void Interface::clear_initial_snmp_alias() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.initial_snmp_alias_.ClearToEmpty();
+}
+inline const std::string& Interface::initial_snmp_alias() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.interface.v202108alpha1.Interface.initial_snmp_alias)
+  return _internal_initial_snmp_alias();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Interface::set_initial_snmp_alias(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.initial_snmp_alias_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.interface.v202108alpha1.Interface.initial_snmp_alias)
+}
+inline std::string* Interface::mutable_initial_snmp_alias() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_initial_snmp_alias();
+  // @@protoc_insertion_point(field_mutable:kentik.interface.v202108alpha1.Interface.initial_snmp_alias)
+  return _s;
+}
+inline const std::string& Interface::_internal_initial_snmp_alias() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.initial_snmp_alias_.Get();
+}
+inline void Interface::_internal_set_initial_snmp_alias(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.initial_snmp_alias_.Set(value, GetArena());
+}
+inline std::string* Interface::_internal_mutable_initial_snmp_alias() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.initial_snmp_alias_.Mutable( GetArena());
+}
+inline std::string* Interface::release_initial_snmp_alias() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.interface.v202108alpha1.Interface.initial_snmp_alias)
+  return _impl_.initial_snmp_alias_.Release();
+}
+inline void Interface::set_allocated_initial_snmp_alias(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.initial_snmp_alias_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.initial_snmp_alias_.IsDefault()) {
+    _impl_.initial_snmp_alias_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.interface.v202108alpha1.Interface.initial_snmp_alias)
+}
+
+// string initial_interface_description = 22 [json_name = "initialInterfaceDescription"];
+inline void Interface::clear_initial_interface_description() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.initial_interface_description_.ClearToEmpty();
+}
+inline const std::string& Interface::initial_interface_description() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.interface.v202108alpha1.Interface.initial_interface_description)
+  return _internal_initial_interface_description();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Interface::set_initial_interface_description(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.initial_interface_description_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.interface.v202108alpha1.Interface.initial_interface_description)
+}
+inline std::string* Interface::mutable_initial_interface_description() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_initial_interface_description();
+  // @@protoc_insertion_point(field_mutable:kentik.interface.v202108alpha1.Interface.initial_interface_description)
+  return _s;
+}
+inline const std::string& Interface::_internal_initial_interface_description() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.initial_interface_description_.Get();
+}
+inline void Interface::_internal_set_initial_interface_description(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.initial_interface_description_.Set(value, GetArena());
+}
+inline std::string* Interface::_internal_mutable_initial_interface_description() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.initial_interface_description_.Mutable( GetArena());
+}
+inline std::string* Interface::release_initial_interface_description() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.interface.v202108alpha1.Interface.initial_interface_description)
+  return _impl_.initial_interface_description_.Release();
+}
+inline void Interface::set_allocated_initial_interface_description(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.initial_interface_description_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.initial_interface_description_.IsDefault()) {
+    _impl_.initial_interface_description_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.interface.v202108alpha1.Interface.initial_interface_description)
+}
+
+// int32 initial_snmp_speed = 23 [json_name = "initialSnmpSpeed"];
+inline void Interface::clear_initial_snmp_speed() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.initial_snmp_speed_ = 0;
+}
+inline ::int32_t Interface::initial_snmp_speed() const {
+  // @@protoc_insertion_point(field_get:kentik.interface.v202108alpha1.Interface.initial_snmp_speed)
+  return _internal_initial_snmp_speed();
+}
+inline void Interface::set_initial_snmp_speed(::int32_t value) {
+  _internal_set_initial_snmp_speed(value);
+  // @@protoc_insertion_point(field_set:kentik.interface.v202108alpha1.Interface.initial_snmp_speed)
+}
+inline ::int32_t Interface::_internal_initial_snmp_speed() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.initial_snmp_speed_;
+}
+inline void Interface::_internal_set_initial_snmp_speed(::int32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.initial_snmp_speed_ = value;
+}
+
+// string secondary_ips = 24 [json_name = "secondaryIps"];
+inline void Interface::clear_secondary_ips() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.secondary_ips_.ClearToEmpty();
+}
+inline const std::string& Interface::secondary_ips() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.interface.v202108alpha1.Interface.secondary_ips)
+  return _internal_secondary_ips();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Interface::set_secondary_ips(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.secondary_ips_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.interface.v202108alpha1.Interface.secondary_ips)
+}
+inline std::string* Interface::mutable_secondary_ips() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_secondary_ips();
+  // @@protoc_insertion_point(field_mutable:kentik.interface.v202108alpha1.Interface.secondary_ips)
+  return _s;
+}
+inline const std::string& Interface::_internal_secondary_ips() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.secondary_ips_.Get();
+}
+inline void Interface::_internal_set_secondary_ips(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.secondary_ips_.Set(value, GetArena());
+}
+inline std::string* Interface::_internal_mutable_secondary_ips() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.secondary_ips_.Mutable( GetArena());
+}
+inline std::string* Interface::release_secondary_ips() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.interface.v202108alpha1.Interface.secondary_ips)
+  return _impl_.secondary_ips_.Release();
+}
+inline void Interface::set_allocated_secondary_ips(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.secondary_ips_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.secondary_ips_.IsDefault()) {
+    _impl_.secondary_ips_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.interface.v202108alpha1.Interface.secondary_ips)
+}
+
+// .kentik.interface.v202108alpha1.ConnectivityType initial_connectivity_type = 25 [json_name = "initialConnectivityType"];
+inline void Interface::clear_initial_connectivity_type() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.initial_connectivity_type_ = 0;
+}
+inline ::kentik::interface::v202108alpha1::ConnectivityType Interface::initial_connectivity_type() const {
+  // @@protoc_insertion_point(field_get:kentik.interface.v202108alpha1.Interface.initial_connectivity_type)
+  return _internal_initial_connectivity_type();
+}
+inline void Interface::set_initial_connectivity_type(::kentik::interface::v202108alpha1::ConnectivityType value) {
+  _internal_set_initial_connectivity_type(value);
+  // @@protoc_insertion_point(field_set:kentik.interface.v202108alpha1.Interface.initial_connectivity_type)
+}
+inline ::kentik::interface::v202108alpha1::ConnectivityType Interface::_internal_initial_connectivity_type() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return static_cast<::kentik::interface::v202108alpha1::ConnectivityType>(_impl_.initial_connectivity_type_);
+}
+inline void Interface::_internal_set_initial_connectivity_type(::kentik::interface::v202108alpha1::ConnectivityType value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.initial_connectivity_type_ = value;
+}
+
+// .kentik.interface.v202108alpha1.NetworkBoundary initial_network_boundary = 26 [json_name = "initialNetworkBoundary"];
+inline void Interface::clear_initial_network_boundary() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.initial_network_boundary_ = 0;
+}
+inline ::kentik::interface::v202108alpha1::NetworkBoundary Interface::initial_network_boundary() const {
+  // @@protoc_insertion_point(field_get:kentik.interface.v202108alpha1.Interface.initial_network_boundary)
+  return _internal_initial_network_boundary();
+}
+inline void Interface::set_initial_network_boundary(::kentik::interface::v202108alpha1::NetworkBoundary value) {
+  _internal_set_initial_network_boundary(value);
+  // @@protoc_insertion_point(field_set:kentik.interface.v202108alpha1.Interface.initial_network_boundary)
+}
+inline ::kentik::interface::v202108alpha1::NetworkBoundary Interface::_internal_initial_network_boundary() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return static_cast<::kentik::interface::v202108alpha1::NetworkBoundary>(_impl_.initial_network_boundary_);
+}
+inline void Interface::_internal_set_initial_network_boundary(::kentik::interface::v202108alpha1::NetworkBoundary value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.initial_network_boundary_ = value;
+}
+
+// string initial_provider = 27 [json_name = "initialProvider"];
+inline void Interface::clear_initial_provider() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.initial_provider_.ClearToEmpty();
+}
+inline const std::string& Interface::initial_provider() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.interface.v202108alpha1.Interface.initial_provider)
+  return _internal_initial_provider();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Interface::set_initial_provider(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.initial_provider_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.interface.v202108alpha1.Interface.initial_provider)
+}
+inline std::string* Interface::mutable_initial_provider() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_initial_provider();
+  // @@protoc_insertion_point(field_mutable:kentik.interface.v202108alpha1.Interface.initial_provider)
+  return _s;
+}
+inline const std::string& Interface::_internal_initial_provider() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.initial_provider_.Get();
+}
+inline void Interface::_internal_set_initial_provider(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.initial_provider_.Set(value, GetArena());
+}
+inline std::string* Interface::_internal_mutable_initial_provider() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.initial_provider_.Mutable( GetArena());
+}
+inline std::string* Interface::release_initial_provider() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.interface.v202108alpha1.Interface.initial_provider)
+  return _impl_.initial_provider_.Release();
+}
+inline void Interface::set_allocated_initial_provider(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.initial_provider_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.initial_provider_.IsDefault()) {
+    _impl_.initial_provider_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.interface.v202108alpha1.Interface.initial_provider)
+}
+
+// string vrf_id = 28 [json_name = "vrfId"];
+inline void Interface::clear_vrf_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.vrf_id_.ClearToEmpty();
+}
+inline const std::string& Interface::vrf_id() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.interface.v202108alpha1.Interface.vrf_id)
+  return _internal_vrf_id();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Interface::set_vrf_id(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.vrf_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.interface.v202108alpha1.Interface.vrf_id)
+}
+inline std::string* Interface::mutable_vrf_id() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_vrf_id();
+  // @@protoc_insertion_point(field_mutable:kentik.interface.v202108alpha1.Interface.vrf_id)
+  return _s;
+}
+inline const std::string& Interface::_internal_vrf_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.vrf_id_.Get();
+}
+inline void Interface::_internal_set_vrf_id(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.vrf_id_.Set(value, GetArena());
+}
+inline std::string* Interface::_internal_mutable_vrf_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.vrf_id_.Mutable( GetArena());
+}
+inline std::string* Interface::release_vrf_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.interface.v202108alpha1.Interface.vrf_id)
+  return _impl_.vrf_id_.Release();
+}
+inline void Interface::set_allocated_vrf_id(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.vrf_id_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.vrf_id_.IsDefault()) {
+    _impl_.vrf_id_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.interface.v202108alpha1.Interface.vrf_id)
+}
+
+// map<string, string> vrf = 29 [json_name = "vrf"];
+inline int Interface::_internal_vrf_size() const {
+  return _internal_vrf().size();
+}
+inline int Interface::vrf_size() const {
+  return _internal_vrf_size();
+}
+inline void Interface::clear_vrf() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.vrf_.Clear();
+}
+inline const ::google::protobuf::Map<std::string, std::string>& Interface::_internal_vrf() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.vrf_.GetMap();
+}
+inline const ::google::protobuf::Map<std::string, std::string>& Interface::vrf() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_map:kentik.interface.v202108alpha1.Interface.vrf)
+  return _internal_vrf();
+}
+inline ::google::protobuf::Map<std::string, std::string>* Interface::_internal_mutable_vrf() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.vrf_.MutableMap();
+}
+inline ::google::protobuf::Map<std::string, std::string>* Interface::mutable_vrf() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_map:kentik.interface.v202108alpha1.Interface.vrf)
+  return _internal_mutable_vrf();
 }
 
 // -------------------------------------------------------------------

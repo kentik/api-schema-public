@@ -481,6 +481,22 @@
                     "filterValue": {
                         "type": "string",
                         "description": "Value to perform equality comparisons."
+                    },
+                    "filterFieldString": {
+                        "type": "string",
+                        "description": "String representation of filter field."
+                    },
+                    "metric": {
+                        "type": "string",
+                        "description": "Filter field as metric for data series."
+                    },
+                    "aggregate": {
+                        "type": "string",
+                        "description": "Aggregating function."
+                    },
+                    "rightFilterField": {
+                        "type": "string",
+                        "description": "Right field operand."
                     }
                 }
             },
@@ -501,6 +517,33 @@
                     "not": {
                         "type": "boolean",
                         "description": "Whether or not to NOT() the filter group. Defaults to false."
+                    },
+                    "savedFilterIds": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202501alpha1SavedFilterFilterId"
+                        },
+                        "description": "Include reference of other saved filters in this filter group."
+                    },
+                    "nestedFilterGroups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202501alpha1SavedFilterFilterGroup"
+                        },
+                        "description": "Include nested filter group."
+                    }
+                }
+            },
+            "v202501alpha1SavedFilterFilterId": {
+                "type": "object",
+                "properties": {
+                    "filterId": {
+                        "type": "string",
+                        "description": "ID of reference saved filter."
+                    },
+                    "isNot": {
+                        "type": "boolean",
+                        "description": "Include/Exclude of the reference saved filter."
                     }
                 }
             },

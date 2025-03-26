@@ -324,6 +324,76 @@ message Plan {
       description: "Plan name"
     }
   ];
+  bool active = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Plan Status"
+    }
+  ];
+  bool bgp = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "BGP enabled"
+    }
+  ];
+  string company_id = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Company ID"
+    }
+  ];
+  string description = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Plan Description"
+    }
+  ];
+  repeated string device_types  = 7 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device Types"
+    }
+  ];
+  repeated string devices = 8 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Devices"
+    }
+  ];
+  uint32 fast_retention = 9 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Fast Rention in days"
+    }
+  ];
+  uint32 full_retention = 10 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Full Retention in days"
+    }
+  ];
+  uint32 max_bigdata_fps = 11 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Max data FPS"
+    }
+  ];
+  uint32 max_devices = 12 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Max Device"
+    }
+  ];
+  uint32 max_fps = 13 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Max FPS"
+    }
+  ];
+  google.protobuf.Timestamp cdate = 14 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Created Date"
+    }
+  ];
+  google.protobuf.Timestamp edate = 15 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Updated Data"
+    }
+  ];
+  map<string, string> metadata = 16 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Plan Metadata"
+    }
+  ];
 }
 
 // {{.Name}}
@@ -805,6 +875,10 @@ message DeviceDetailed {
   ];
 }
 
+message DeviceQuery {
+  bool no_custom_columns = 1;
+}
+
 // {{.Name}}
 message LabelConcise {
   uint32 id = 1 [
@@ -815,7 +889,9 @@ message LabelConcise {
 }
 
 // {{.Name}}
-message ListDevicesRequest {}
+message ListDevicesRequest {
+  DeviceQuery query = 1;
+}
 
 // {{.Name}}
 message ListDevicesResponse {
@@ -839,6 +915,8 @@ message GetDeviceRequest {
     },
     (google.api.field_behavior) = REQUIRED
   ];
+
+  DeviceQuery query = 2;
 }
 
 // {{.Name}}

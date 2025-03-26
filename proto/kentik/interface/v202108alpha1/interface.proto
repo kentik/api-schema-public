@@ -116,6 +116,34 @@ message Interface {
   repeated int32 top_nexthop_asns = 14;
   // Network provider.
   string provider = 15;
+  // Interface KVs.
+  map<string, string> interface_kvs = 16;
+  // Interface Tags.
+  map<string, string> interface_tags = 17;
+  // Interface Status.
+  string interface_status = 18;
+  // Extra Interface Info.
+  map<string, string> extra_info = 19;
+  // Initial SMNP ID.
+  string initial_snmp_id = 20;
+  // Initial Interface Alias.
+  string initial_snmp_alias = 21;
+  // Initial Interface Description.
+  string initial_interface_description = 22;
+  // Inital Network speed in Mbps.
+  int32 initial_snmp_speed = 23;
+  // Secondary Interface IP.
+  string secondary_ips = 24;
+  // Initial type of network connectivity type.
+  ConnectivityType initial_connectivity_type = 25;
+  // Initial type of network boundary.
+  NetworkBoundary initial_network_boundary = 26;
+  // Initial Network provider.
+  string initial_provider = 27;
+  // VRF ID
+  string vrf_id = 28;
+  // VRF
+  map<string, string> vrf = 29;
 }
 
 

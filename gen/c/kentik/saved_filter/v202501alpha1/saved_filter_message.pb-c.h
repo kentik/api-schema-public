@@ -21,6 +21,7 @@ PROTOBUF_C__BEGIN_DECLS
 #include "google/protobuf/timestamp.pb-c.h"
 
 typedef struct Kentik__SavedFilter__V202501alpha1__SavedFilterFilter Kentik__SavedFilter__V202501alpha1__SavedFilterFilter;
+typedef struct Kentik__SavedFilter__V202501alpha1__SavedFilterFilterId Kentik__SavedFilter__V202501alpha1__SavedFilterFilterId;
 typedef struct Kentik__SavedFilter__V202501alpha1__SavedFilterFilterGroup Kentik__SavedFilter__V202501alpha1__SavedFilterFilterGroup;
 typedef struct Kentik__SavedFilter__V202501alpha1__SavedFilterFilters Kentik__SavedFilter__V202501alpha1__SavedFilterFilters;
 typedef struct Kentik__SavedFilter__V202501alpha1__SavedFilter Kentik__SavedFilter__V202501alpha1__SavedFilter;
@@ -138,10 +139,25 @@ struct  Kentik__SavedFilter__V202501alpha1__SavedFilterFilter
   Kentik__SavedFilter__V202501alpha1__FilterField filter_field;
   Kentik__SavedFilter__V202501alpha1__FilterOperator operator_;
   char *filter_value;
+  char *filter_field_string;
+  char *metric;
+  char *aggregate;
+  char *right_filter_field;
 };
 #define KENTIK__SAVED_FILTER__V202501ALPHA1__SAVED_FILTER_FILTER__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__saved_filter__v202501alpha1__saved_filter_filter__descriptor) \
-    , KENTIK__SAVED_FILTER__V202501ALPHA1__FILTER_FIELD__FILTER_FIELD_UNSPECIFIED, KENTIK__SAVED_FILTER__V202501ALPHA1__FILTER_OPERATOR__FILTER_OPERATOR_UNSPECIFIED, (char *)protobuf_c_empty_string }
+    , KENTIK__SAVED_FILTER__V202501ALPHA1__FILTER_FIELD__FILTER_FIELD_UNSPECIFIED, KENTIK__SAVED_FILTER__V202501ALPHA1__FILTER_OPERATOR__FILTER_OPERATOR_UNSPECIFIED, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
+
+
+struct  Kentik__SavedFilter__V202501alpha1__SavedFilterFilterId
+{
+  ProtobufCMessage base;
+  char *filter_id;
+  protobuf_c_boolean is_not;
+};
+#define KENTIK__SAVED_FILTER__V202501ALPHA1__SAVED_FILTER_FILTER_ID__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__saved_filter__v202501alpha1__saved_filter_filter_id__descriptor) \
+    , (char *)protobuf_c_empty_string, 0 }
 
 
 struct  Kentik__SavedFilter__V202501alpha1__SavedFilterFilterGroup
@@ -151,10 +167,14 @@ struct  Kentik__SavedFilter__V202501alpha1__SavedFilterFilterGroup
   size_t n_filters;
   Kentik__SavedFilter__V202501alpha1__SavedFilterFilter **filters;
   protobuf_c_boolean not_;
+  size_t n_saved_filter_ids;
+  Kentik__SavedFilter__V202501alpha1__SavedFilterFilterId **saved_filter_ids;
+  size_t n_nested_filter_groups;
+  Kentik__SavedFilter__V202501alpha1__SavedFilterFilterGroup **nested_filter_groups;
 };
 #define KENTIK__SAVED_FILTER__V202501ALPHA1__SAVED_FILTER_FILTER_GROUP__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__saved_filter__v202501alpha1__saved_filter_filter_group__descriptor) \
-    , 0, 0,NULL, 0 }
+    , 0, 0,NULL, 0, 0,NULL, 0,NULL }
 
 
 struct  Kentik__SavedFilter__V202501alpha1__SavedFilterFilters
@@ -203,6 +223,25 @@ Kentik__SavedFilter__V202501alpha1__SavedFilterFilter *
                       const uint8_t       *data);
 void   kentik__saved_filter__v202501alpha1__saved_filter_filter__free_unpacked
                      (Kentik__SavedFilter__V202501alpha1__SavedFilterFilter *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__SavedFilter__V202501alpha1__SavedFilterFilterId methods */
+void   kentik__saved_filter__v202501alpha1__saved_filter_filter_id__init
+                     (Kentik__SavedFilter__V202501alpha1__SavedFilterFilterId         *message);
+size_t kentik__saved_filter__v202501alpha1__saved_filter_filter_id__get_packed_size
+                     (const Kentik__SavedFilter__V202501alpha1__SavedFilterFilterId   *message);
+size_t kentik__saved_filter__v202501alpha1__saved_filter_filter_id__pack
+                     (const Kentik__SavedFilter__V202501alpha1__SavedFilterFilterId   *message,
+                      uint8_t             *out);
+size_t kentik__saved_filter__v202501alpha1__saved_filter_filter_id__pack_to_buffer
+                     (const Kentik__SavedFilter__V202501alpha1__SavedFilterFilterId   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__SavedFilter__V202501alpha1__SavedFilterFilterId *
+       kentik__saved_filter__v202501alpha1__saved_filter_filter_id__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__saved_filter__v202501alpha1__saved_filter_filter_id__free_unpacked
+                     (Kentik__SavedFilter__V202501alpha1__SavedFilterFilterId *message,
                       ProtobufCAllocator *allocator);
 /* Kentik__SavedFilter__V202501alpha1__SavedFilterFilterGroup methods */
 void   kentik__saved_filter__v202501alpha1__saved_filter_filter_group__init
@@ -266,6 +305,9 @@ void   kentik__saved_filter__v202501alpha1__saved_filter__free_unpacked
 typedef void (*Kentik__SavedFilter__V202501alpha1__SavedFilterFilter_Closure)
                  (const Kentik__SavedFilter__V202501alpha1__SavedFilterFilter *message,
                   void *closure_data);
+typedef void (*Kentik__SavedFilter__V202501alpha1__SavedFilterFilterId_Closure)
+                 (const Kentik__SavedFilter__V202501alpha1__SavedFilterFilterId *message,
+                  void *closure_data);
 typedef void (*Kentik__SavedFilter__V202501alpha1__SavedFilterFilterGroup_Closure)
                  (const Kentik__SavedFilter__V202501alpha1__SavedFilterFilterGroup *message,
                   void *closure_data);
@@ -285,6 +327,7 @@ extern const ProtobufCEnumDescriptor    kentik__saved_filter__v202501alpha1__fil
 extern const ProtobufCEnumDescriptor    kentik__saved_filter__v202501alpha1__filter_operator__descriptor;
 extern const ProtobufCEnumDescriptor    kentik__saved_filter__v202501alpha1__filter_level__descriptor;
 extern const ProtobufCMessageDescriptor kentik__saved_filter__v202501alpha1__saved_filter_filter__descriptor;
+extern const ProtobufCMessageDescriptor kentik__saved_filter__v202501alpha1__saved_filter_filter_id__descriptor;
 extern const ProtobufCMessageDescriptor kentik__saved_filter__v202501alpha1__saved_filter_filter_group__descriptor;
 extern const ProtobufCMessageDescriptor kentik__saved_filter__v202501alpha1__saved_filter_filters__descriptor;
 extern const ProtobufCMessageDescriptor kentik__saved_filter__v202501alpha1__saved_filter__descriptor;

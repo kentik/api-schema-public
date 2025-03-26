@@ -277,6 +277,12 @@ void   kentik__device__v202308beta1__site__free_unpacked
   assert(message->base.descriptor == &kentik__device__v202308beta1__site__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   kentik__device__v202308beta1__plan__metadata_entry__init
+                     (Kentik__Device__V202308beta1__Plan__MetadataEntry         *message)
+{
+  static const Kentik__Device__V202308beta1__Plan__MetadataEntry init_value = KENTIK__DEVICE__V202308BETA1__PLAN__METADATA_ENTRY__INIT;
+  *message = init_value;
+}
 void   kentik__device__v202308beta1__plan__init
                      (Kentik__Device__V202308beta1__Plan         *message)
 {
@@ -545,6 +551,51 @@ void   kentik__device__v202308beta1__device_detailed__free_unpacked
   if(!message)
     return;
   assert(message->base.descriptor == &kentik__device__v202308beta1__device_detailed__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__device__v202308beta1__device_query__init
+                     (Kentik__Device__V202308beta1__DeviceQuery         *message)
+{
+  static const Kentik__Device__V202308beta1__DeviceQuery init_value = KENTIK__DEVICE__V202308BETA1__DEVICE_QUERY__INIT;
+  *message = init_value;
+}
+size_t kentik__device__v202308beta1__device_query__get_packed_size
+                     (const Kentik__Device__V202308beta1__DeviceQuery *message)
+{
+  assert(message->base.descriptor == &kentik__device__v202308beta1__device_query__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__device__v202308beta1__device_query__pack
+                     (const Kentik__Device__V202308beta1__DeviceQuery *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__device__v202308beta1__device_query__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__device__v202308beta1__device_query__pack_to_buffer
+                     (const Kentik__Device__V202308beta1__DeviceQuery *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__device__v202308beta1__device_query__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Device__V202308beta1__DeviceQuery *
+       kentik__device__v202308beta1__device_query__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Device__V202308beta1__DeviceQuery *)
+     protobuf_c_message_unpack (&kentik__device__v202308beta1__device_query__descriptor,
+                                allocator, len, data);
+}
+void   kentik__device__v202308beta1__device_query__free_unpacked
+                     (Kentik__Device__V202308beta1__DeviceQuery *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__device__v202308beta1__device_query__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
 void   kentik__device__v202308beta1__label_concise__init
@@ -2137,7 +2188,58 @@ const ProtobufCMessageDescriptor kentik__device__v202308beta1__site__descriptor 
   (ProtobufCMessageInit) kentik__device__v202308beta1__site__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__device__v202308beta1__plan__field_descriptors[2] =
+static const ProtobufCFieldDescriptor kentik__device__v202308beta1__plan__metadata_entry__field_descriptors[2] =
+{
+  {
+    "key",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Device__V202308beta1__Plan__MetadataEntry, key),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "value",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Device__V202308beta1__Plan__MetadataEntry, value),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__device__v202308beta1__plan__metadata_entry__field_indices_by_name[] = {
+  0,   /* field[0] = key */
+  1,   /* field[1] = value */
+};
+static const ProtobufCIntRange kentik__device__v202308beta1__plan__metadata_entry__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor kentik__device__v202308beta1__plan__metadata_entry__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.device.v202308beta1.Plan.MetadataEntry",
+  "MetadataEntry",
+  "Kentik__Device__V202308beta1__Plan__MetadataEntry",
+  "kentik.device.v202308beta1",
+  sizeof(Kentik__Device__V202308beta1__Plan__MetadataEntry),
+  2,
+  kentik__device__v202308beta1__plan__metadata_entry__field_descriptors,
+  kentik__device__v202308beta1__plan__metadata_entry__field_indices_by_name,
+  1,  kentik__device__v202308beta1__plan__metadata_entry__number_ranges,
+  (ProtobufCMessageInit) kentik__device__v202308beta1__plan__metadata_entry__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__device__v202308beta1__plan__field_descriptors[16] =
 {
   {
     "id",
@@ -2163,15 +2265,197 @@ static const ProtobufCFieldDescriptor kentik__device__v202308beta1__plan__field_
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "active",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Device__V202308beta1__Plan, active),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "bgp",
+    4,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Device__V202308beta1__Plan, bgp),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "company_id",
+    5,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Device__V202308beta1__Plan, company_id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "description",
+    6,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Device__V202308beta1__Plan, description),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "device_types",
+    7,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_STRING,
+    offsetof(Kentik__Device__V202308beta1__Plan, n_device_types),
+    offsetof(Kentik__Device__V202308beta1__Plan, device_types),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "devices",
+    8,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_STRING,
+    offsetof(Kentik__Device__V202308beta1__Plan, n_devices),
+    offsetof(Kentik__Device__V202308beta1__Plan, devices),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "fast_retention",
+    9,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT32,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Device__V202308beta1__Plan, fast_retention),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "full_retention",
+    10,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT32,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Device__V202308beta1__Plan, full_retention),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "max_bigdata_fps",
+    11,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT32,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Device__V202308beta1__Plan, max_bigdata_fps),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "max_devices",
+    12,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT32,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Device__V202308beta1__Plan, max_devices),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "max_fps",
+    13,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT32,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Device__V202308beta1__Plan, max_fps),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "cdate",
+    14,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Device__V202308beta1__Plan, cdate),
+    &google__protobuf__timestamp__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "edate",
+    15,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Device__V202308beta1__Plan, edate),
+    &google__protobuf__timestamp__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "metadata",
+    16,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Kentik__Device__V202308beta1__Plan, n_metadata),
+    offsetof(Kentik__Device__V202308beta1__Plan, metadata),
+    &kentik__device__v202308beta1__plan__metadata_entry__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__device__v202308beta1__plan__field_indices_by_name[] = {
+  2,   /* field[2] = active */
+  3,   /* field[3] = bgp */
+  13,   /* field[13] = cdate */
+  4,   /* field[4] = company_id */
+  5,   /* field[5] = description */
+  6,   /* field[6] = device_types */
+  7,   /* field[7] = devices */
+  14,   /* field[14] = edate */
+  8,   /* field[8] = fast_retention */
+  9,   /* field[9] = full_retention */
   0,   /* field[0] = id */
+  10,   /* field[10] = max_bigdata_fps */
+  11,   /* field[11] = max_devices */
+  12,   /* field[12] = max_fps */
+  15,   /* field[15] = metadata */
   1,   /* field[1] = name */
 };
 static const ProtobufCIntRange kentik__device__v202308beta1__plan__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 2 }
+  { 0, 16 }
 };
 const ProtobufCMessageDescriptor kentik__device__v202308beta1__plan__descriptor =
 {
@@ -2181,7 +2465,7 @@ const ProtobufCMessageDescriptor kentik__device__v202308beta1__plan__descriptor 
   "Kentik__Device__V202308beta1__Plan",
   "kentik.device.v202308beta1",
   sizeof(Kentik__Device__V202308beta1__Plan),
-  2,
+  16,
   kentik__device__v202308beta1__plan__field_descriptors,
   kentik__device__v202308beta1__plan__field_indices_by_name,
   1,  kentik__device__v202308beta1__plan__number_ranges,
@@ -3496,6 +3780,44 @@ const ProtobufCMessageDescriptor kentik__device__v202308beta1__device_detailed__
   (ProtobufCMessageInit) kentik__device__v202308beta1__device_detailed__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
+static const ProtobufCFieldDescriptor kentik__device__v202308beta1__device_query__field_descriptors[1] =
+{
+  {
+    "no_custom_columns",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Device__V202308beta1__DeviceQuery, no_custom_columns),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__device__v202308beta1__device_query__field_indices_by_name[] = {
+  0,   /* field[0] = no_custom_columns */
+};
+static const ProtobufCIntRange kentik__device__v202308beta1__device_query__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor kentik__device__v202308beta1__device_query__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.device.v202308beta1.DeviceQuery",
+  "DeviceQuery",
+  "Kentik__Device__V202308beta1__DeviceQuery",
+  "kentik.device.v202308beta1",
+  sizeof(Kentik__Device__V202308beta1__DeviceQuery),
+  1,
+  kentik__device__v202308beta1__device_query__field_descriptors,
+  kentik__device__v202308beta1__device_query__field_indices_by_name,
+  1,  kentik__device__v202308beta1__device_query__number_ranges,
+  (ProtobufCMessageInit) kentik__device__v202308beta1__device_query__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
 static const ProtobufCFieldDescriptor kentik__device__v202308beta1__label_concise__field_descriptors[1] =
 {
   {
@@ -3534,9 +3856,29 @@ const ProtobufCMessageDescriptor kentik__device__v202308beta1__label_concise__de
   (ProtobufCMessageInit) kentik__device__v202308beta1__label_concise__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-#define kentik__device__v202308beta1__list_devices_request__field_descriptors NULL
-#define kentik__device__v202308beta1__list_devices_request__field_indices_by_name NULL
-#define kentik__device__v202308beta1__list_devices_request__number_ranges NULL
+static const ProtobufCFieldDescriptor kentik__device__v202308beta1__list_devices_request__field_descriptors[1] =
+{
+  {
+    "query",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Device__V202308beta1__ListDevicesRequest, query),
+    &kentik__device__v202308beta1__device_query__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__device__v202308beta1__list_devices_request__field_indices_by_name[] = {
+  0,   /* field[0] = query */
+};
+static const ProtobufCIntRange kentik__device__v202308beta1__list_devices_request__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
 const ProtobufCMessageDescriptor kentik__device__v202308beta1__list_devices_request__descriptor =
 {
   PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
@@ -3545,10 +3887,10 @@ const ProtobufCMessageDescriptor kentik__device__v202308beta1__list_devices_requ
   "Kentik__Device__V202308beta1__ListDevicesRequest",
   "kentik.device.v202308beta1",
   sizeof(Kentik__Device__V202308beta1__ListDevicesRequest),
-  0,
+  1,
   kentik__device__v202308beta1__list_devices_request__field_descriptors,
   kentik__device__v202308beta1__list_devices_request__field_indices_by_name,
-  0,  kentik__device__v202308beta1__list_devices_request__number_ranges,
+  1,  kentik__device__v202308beta1__list_devices_request__number_ranges,
   (ProtobufCMessageInit) kentik__device__v202308beta1__list_devices_request__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
@@ -3603,7 +3945,7 @@ const ProtobufCMessageDescriptor kentik__device__v202308beta1__list_devices_resp
   (ProtobufCMessageInit) kentik__device__v202308beta1__list_devices_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__device__v202308beta1__get_device_request__field_descriptors[1] =
+static const ProtobufCFieldDescriptor kentik__device__v202308beta1__get_device_request__field_descriptors[2] =
 {
   {
     "id",
@@ -3617,14 +3959,27 @@ static const ProtobufCFieldDescriptor kentik__device__v202308beta1__get_device_r
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "query",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Device__V202308beta1__GetDeviceRequest, query),
+    &kentik__device__v202308beta1__device_query__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__device__v202308beta1__get_device_request__field_indices_by_name[] = {
   0,   /* field[0] = id */
+  1,   /* field[1] = query */
 };
 static const ProtobufCIntRange kentik__device__v202308beta1__get_device_request__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 1 }
+  { 0, 2 }
 };
 const ProtobufCMessageDescriptor kentik__device__v202308beta1__get_device_request__descriptor =
 {
@@ -3634,7 +3989,7 @@ const ProtobufCMessageDescriptor kentik__device__v202308beta1__get_device_reques
   "Kentik__Device__V202308beta1__GetDeviceRequest",
   "kentik.device.v202308beta1",
   sizeof(Kentik__Device__V202308beta1__GetDeviceRequest),
-  1,
+  2,
   kentik__device__v202308beta1__get_device_request__field_descriptors,
   kentik__device__v202308beta1__get_device_request__field_indices_by_name,
   1,  kentik__device__v202308beta1__get_device_request__number_ranges,

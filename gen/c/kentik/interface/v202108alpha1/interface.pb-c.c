@@ -7,6 +7,30 @@
 #endif
 
 #include "kentik/interface/v202108alpha1/interface.pb-c.h"
+void   kentik__interface__v202108alpha1__interface__interface_kvs_entry__init
+                     (Kentik__Interface__V202108alpha1__Interface__InterfaceKvsEntry         *message)
+{
+  static const Kentik__Interface__V202108alpha1__Interface__InterfaceKvsEntry init_value = KENTIK__INTERFACE__V202108ALPHA1__INTERFACE__INTERFACE_KVS_ENTRY__INIT;
+  *message = init_value;
+}
+void   kentik__interface__v202108alpha1__interface__interface_tags_entry__init
+                     (Kentik__Interface__V202108alpha1__Interface__InterfaceTagsEntry         *message)
+{
+  static const Kentik__Interface__V202108alpha1__Interface__InterfaceTagsEntry init_value = KENTIK__INTERFACE__V202108ALPHA1__INTERFACE__INTERFACE_TAGS_ENTRY__INIT;
+  *message = init_value;
+}
+void   kentik__interface__v202108alpha1__interface__extra_info_entry__init
+                     (Kentik__Interface__V202108alpha1__Interface__ExtraInfoEntry         *message)
+{
+  static const Kentik__Interface__V202108alpha1__Interface__ExtraInfoEntry init_value = KENTIK__INTERFACE__V202108ALPHA1__INTERFACE__EXTRA_INFO_ENTRY__INIT;
+  *message = init_value;
+}
+void   kentik__interface__v202108alpha1__interface__vrf_entry__init
+                     (Kentik__Interface__V202108alpha1__Interface__VrfEntry         *message)
+{
+  static const Kentik__Interface__V202108alpha1__Interface__VrfEntry init_value = KENTIK__INTERFACE__V202108ALPHA1__INTERFACE__VRF_ENTRY__INIT;
+  *message = init_value;
+}
 void   kentik__interface__v202108alpha1__interface__init
                      (Kentik__Interface__V202108alpha1__Interface         *message)
 {
@@ -1087,7 +1111,211 @@ void   kentik__interface__v202108alpha1__rule__free_unpacked
   assert(message->base.descriptor == &kentik__interface__v202108alpha1__rule__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-static const ProtobufCFieldDescriptor kentik__interface__v202108alpha1__interface__field_descriptors[15] =
+static const ProtobufCFieldDescriptor kentik__interface__v202108alpha1__interface__interface_kvs_entry__field_descriptors[2] =
+{
+  {
+    "key",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Interface__V202108alpha1__Interface__InterfaceKvsEntry, key),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "value",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Interface__V202108alpha1__Interface__InterfaceKvsEntry, value),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__interface__v202108alpha1__interface__interface_kvs_entry__field_indices_by_name[] = {
+  0,   /* field[0] = key */
+  1,   /* field[1] = value */
+};
+static const ProtobufCIntRange kentik__interface__v202108alpha1__interface__interface_kvs_entry__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor kentik__interface__v202108alpha1__interface__interface_kvs_entry__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.interface.v202108alpha1.Interface.InterfaceKvsEntry",
+  "InterfaceKvsEntry",
+  "Kentik__Interface__V202108alpha1__Interface__InterfaceKvsEntry",
+  "kentik.interface.v202108alpha1",
+  sizeof(Kentik__Interface__V202108alpha1__Interface__InterfaceKvsEntry),
+  2,
+  kentik__interface__v202108alpha1__interface__interface_kvs_entry__field_descriptors,
+  kentik__interface__v202108alpha1__interface__interface_kvs_entry__field_indices_by_name,
+  1,  kentik__interface__v202108alpha1__interface__interface_kvs_entry__number_ranges,
+  (ProtobufCMessageInit) kentik__interface__v202108alpha1__interface__interface_kvs_entry__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__interface__v202108alpha1__interface__interface_tags_entry__field_descriptors[2] =
+{
+  {
+    "key",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Interface__V202108alpha1__Interface__InterfaceTagsEntry, key),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "value",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Interface__V202108alpha1__Interface__InterfaceTagsEntry, value),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__interface__v202108alpha1__interface__interface_tags_entry__field_indices_by_name[] = {
+  0,   /* field[0] = key */
+  1,   /* field[1] = value */
+};
+static const ProtobufCIntRange kentik__interface__v202108alpha1__interface__interface_tags_entry__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor kentik__interface__v202108alpha1__interface__interface_tags_entry__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.interface.v202108alpha1.Interface.InterfaceTagsEntry",
+  "InterfaceTagsEntry",
+  "Kentik__Interface__V202108alpha1__Interface__InterfaceTagsEntry",
+  "kentik.interface.v202108alpha1",
+  sizeof(Kentik__Interface__V202108alpha1__Interface__InterfaceTagsEntry),
+  2,
+  kentik__interface__v202108alpha1__interface__interface_tags_entry__field_descriptors,
+  kentik__interface__v202108alpha1__interface__interface_tags_entry__field_indices_by_name,
+  1,  kentik__interface__v202108alpha1__interface__interface_tags_entry__number_ranges,
+  (ProtobufCMessageInit) kentik__interface__v202108alpha1__interface__interface_tags_entry__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__interface__v202108alpha1__interface__extra_info_entry__field_descriptors[2] =
+{
+  {
+    "key",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Interface__V202108alpha1__Interface__ExtraInfoEntry, key),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "value",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Interface__V202108alpha1__Interface__ExtraInfoEntry, value),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__interface__v202108alpha1__interface__extra_info_entry__field_indices_by_name[] = {
+  0,   /* field[0] = key */
+  1,   /* field[1] = value */
+};
+static const ProtobufCIntRange kentik__interface__v202108alpha1__interface__extra_info_entry__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor kentik__interface__v202108alpha1__interface__extra_info_entry__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.interface.v202108alpha1.Interface.ExtraInfoEntry",
+  "ExtraInfoEntry",
+  "Kentik__Interface__V202108alpha1__Interface__ExtraInfoEntry",
+  "kentik.interface.v202108alpha1",
+  sizeof(Kentik__Interface__V202108alpha1__Interface__ExtraInfoEntry),
+  2,
+  kentik__interface__v202108alpha1__interface__extra_info_entry__field_descriptors,
+  kentik__interface__v202108alpha1__interface__extra_info_entry__field_indices_by_name,
+  1,  kentik__interface__v202108alpha1__interface__extra_info_entry__number_ranges,
+  (ProtobufCMessageInit) kentik__interface__v202108alpha1__interface__extra_info_entry__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__interface__v202108alpha1__interface__vrf_entry__field_descriptors[2] =
+{
+  {
+    "key",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Interface__V202108alpha1__Interface__VrfEntry, key),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "value",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Interface__V202108alpha1__Interface__VrfEntry, value),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__interface__v202108alpha1__interface__vrf_entry__field_indices_by_name[] = {
+  0,   /* field[0] = key */
+  1,   /* field[1] = value */
+};
+static const ProtobufCIntRange kentik__interface__v202108alpha1__interface__vrf_entry__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor kentik__interface__v202108alpha1__interface__vrf_entry__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.interface.v202108alpha1.Interface.VrfEntry",
+  "VrfEntry",
+  "Kentik__Interface__V202108alpha1__Interface__VrfEntry",
+  "kentik.interface.v202108alpha1",
+  sizeof(Kentik__Interface__V202108alpha1__Interface__VrfEntry),
+  2,
+  kentik__interface__v202108alpha1__interface__vrf_entry__field_descriptors,
+  kentik__interface__v202108alpha1__interface__vrf_entry__field_indices_by_name,
+  1,  kentik__interface__v202108alpha1__interface__vrf_entry__number_ranges,
+  (ProtobufCMessageInit) kentik__interface__v202108alpha1__interface__vrf_entry__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__interface__v202108alpha1__interface__field_descriptors[29] =
 {
   {
     "id",
@@ -1269,28 +1497,210 @@ static const ProtobufCFieldDescriptor kentik__interface__v202108alpha1__interfac
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "interface_kvs",
+    16,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Kentik__Interface__V202108alpha1__Interface, n_interface_kvs),
+    offsetof(Kentik__Interface__V202108alpha1__Interface, interface_kvs),
+    &kentik__interface__v202108alpha1__interface__interface_kvs_entry__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "interface_tags",
+    17,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Kentik__Interface__V202108alpha1__Interface, n_interface_tags),
+    offsetof(Kentik__Interface__V202108alpha1__Interface, interface_tags),
+    &kentik__interface__v202108alpha1__interface__interface_tags_entry__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "interface_status",
+    18,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Interface__V202108alpha1__Interface, interface_status),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "extra_info",
+    19,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Kentik__Interface__V202108alpha1__Interface, n_extra_info),
+    offsetof(Kentik__Interface__V202108alpha1__Interface, extra_info),
+    &kentik__interface__v202108alpha1__interface__extra_info_entry__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "initial_snmp_id",
+    20,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Interface__V202108alpha1__Interface, initial_snmp_id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "initial_snmp_alias",
+    21,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Interface__V202108alpha1__Interface, initial_snmp_alias),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "initial_interface_description",
+    22,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Interface__V202108alpha1__Interface, initial_interface_description),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "initial_snmp_speed",
+    23,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_INT32,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Interface__V202108alpha1__Interface, initial_snmp_speed),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "secondary_ips",
+    24,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Interface__V202108alpha1__Interface, secondary_ips),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "initial_connectivity_type",
+    25,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_ENUM,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Interface__V202108alpha1__Interface, initial_connectivity_type),
+    &kentik__interface__v202108alpha1__connectivity_type__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "initial_network_boundary",
+    26,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_ENUM,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Interface__V202108alpha1__Interface, initial_network_boundary),
+    &kentik__interface__v202108alpha1__network_boundary__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "initial_provider",
+    27,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Interface__V202108alpha1__Interface, initial_provider),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "vrf_id",
+    28,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Interface__V202108alpha1__Interface, vrf_id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "vrf",
+    29,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Kentik__Interface__V202108alpha1__Interface, n_vrf),
+    offsetof(Kentik__Interface__V202108alpha1__Interface, vrf),
+    &kentik__interface__v202108alpha1__interface__vrf_entry__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__interface__v202108alpha1__interface__field_indices_by_name[] = {
   8,   /* field[8] = cdate */
   11,   /* field[11] = connectivity_type */
   1,   /* field[1] = device_id */
   9,   /* field[9] = edate */
+  18,   /* field[18] = extra_info */
   0,   /* field[0] = id */
+  24,   /* field[24] = initial_connectivity_type */
+  21,   /* field[21] = initial_interface_description */
+  25,   /* field[25] = initial_network_boundary */
+  26,   /* field[26] = initial_provider */
+  20,   /* field[20] = initial_snmp_alias */
+  19,   /* field[19] = initial_snmp_id */
+  22,   /* field[22] = initial_snmp_speed */
   7,   /* field[7] = interface_description */
   6,   /* field[6] = interface_ip */
   10,   /* field[10] = interface_ip_netmask */
+  15,   /* field[15] = interface_kvs */
+  17,   /* field[17] = interface_status */
+  16,   /* field[16] = interface_tags */
   12,   /* field[12] = network_boundary */
   14,   /* field[14] = provider */
+  23,   /* field[23] = secondary_ips */
   5,   /* field[5] = snmp_alias */
   2,   /* field[2] = snmp_id */
   3,   /* field[3] = snmp_speed */
   4,   /* field[4] = snmp_type */
   13,   /* field[13] = top_nexthop_asns */
+  28,   /* field[28] = vrf */
+  27,   /* field[27] = vrf_id */
 };
 static const ProtobufCIntRange kentik__interface__v202108alpha1__interface__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 15 }
+  { 0, 29 }
 };
 const ProtobufCMessageDescriptor kentik__interface__v202108alpha1__interface__descriptor =
 {
@@ -1300,7 +1710,7 @@ const ProtobufCMessageDescriptor kentik__interface__v202108alpha1__interface__de
   "Kentik__Interface__V202108alpha1__Interface",
   "kentik.interface.v202108alpha1",
   sizeof(Kentik__Interface__V202108alpha1__Interface),
-  15,
+  29,
   kentik__interface__v202108alpha1__interface__field_descriptors,
   kentik__interface__v202108alpha1__interface__field_indices_by_name,
   1,  kentik__interface__v202108alpha1__interface__number_ranges,

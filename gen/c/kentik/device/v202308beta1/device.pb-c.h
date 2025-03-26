@@ -29,11 +29,13 @@ typedef struct Kentik__Device__V202308beta1__DeviceNmsStConfig Kentik__Device__V
 typedef struct Kentik__Device__V202308beta1__DeviceConcise Kentik__Device__V202308beta1__DeviceConcise;
 typedef struct Kentik__Device__V202308beta1__Site Kentik__Device__V202308beta1__Site;
 typedef struct Kentik__Device__V202308beta1__Plan Kentik__Device__V202308beta1__Plan;
+typedef struct Kentik__Device__V202308beta1__Plan__MetadataEntry Kentik__Device__V202308beta1__Plan__MetadataEntry;
 typedef struct Kentik__Device__V202308beta1__Label Kentik__Device__V202308beta1__Label;
 typedef struct Kentik__Device__V202308beta1__Interface Kentik__Device__V202308beta1__Interface;
 typedef struct Kentik__Device__V202308beta1__CustomColumnData Kentik__Device__V202308beta1__CustomColumnData;
 typedef struct Kentik__Device__V202308beta1__GnmiV1Conf Kentik__Device__V202308beta1__GnmiV1Conf;
 typedef struct Kentik__Device__V202308beta1__DeviceDetailed Kentik__Device__V202308beta1__DeviceDetailed;
+typedef struct Kentik__Device__V202308beta1__DeviceQuery Kentik__Device__V202308beta1__DeviceQuery;
 typedef struct Kentik__Device__V202308beta1__LabelConcise Kentik__Device__V202308beta1__LabelConcise;
 typedef struct Kentik__Device__V202308beta1__ListDevicesRequest Kentik__Device__V202308beta1__ListDevicesRequest;
 typedef struct Kentik__Device__V202308beta1__ListDevicesResponse Kentik__Device__V202308beta1__ListDevicesResponse;
@@ -190,6 +192,17 @@ struct  Kentik__Device__V202308beta1__Site
     , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, 0, (char *)protobuf_c_empty_string }
 
 
+struct  Kentik__Device__V202308beta1__Plan__MetadataEntry
+{
+  ProtobufCMessage base;
+  char *key;
+  char *value;
+};
+#define KENTIK__DEVICE__V202308BETA1__PLAN__METADATA_ENTRY__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__device__v202308beta1__plan__metadata_entry__descriptor) \
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
+
+
 /*
  * {{.Name}}
  */
@@ -198,10 +211,27 @@ struct  Kentik__Device__V202308beta1__Plan
   ProtobufCMessage base;
   char *id;
   char *name;
+  protobuf_c_boolean active;
+  protobuf_c_boolean bgp;
+  char *company_id;
+  char *description;
+  size_t n_device_types;
+  char **device_types;
+  size_t n_devices;
+  char **devices;
+  uint32_t fast_retention;
+  uint32_t full_retention;
+  uint32_t max_bigdata_fps;
+  uint32_t max_devices;
+  uint32_t max_fps;
+  Google__Protobuf__Timestamp *cdate;
+  Google__Protobuf__Timestamp *edate;
+  size_t n_metadata;
+  Kentik__Device__V202308beta1__Plan__MetadataEntry **metadata;
 };
 #define KENTIK__DEVICE__V202308BETA1__PLAN__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__device__v202308beta1__plan__descriptor) \
-    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL, 0,NULL, 0, 0, 0, 0, 0, NULL, NULL, 0,NULL }
 
 
 /*
@@ -377,6 +407,16 @@ struct  Kentik__Device__V202308beta1__DeviceDetailed
     , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, NULL, 0,NULL, 0,NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, (char *)protobuf_c_empty_string, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, NULL, 0, NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, 0, 0, 0, NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, KENTIK__DEVICE__V202308BETA1__DEVICE_DETAILED___MINIMIZE_SNMP__NOT_SET, {0} }
 
 
+struct  Kentik__Device__V202308beta1__DeviceQuery
+{
+  ProtobufCMessage base;
+  protobuf_c_boolean no_custom_columns;
+};
+#define KENTIK__DEVICE__V202308BETA1__DEVICE_QUERY__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__device__v202308beta1__device_query__descriptor) \
+    , 0 }
+
+
 /*
  * {{.Name}}
  */
@@ -396,10 +436,11 @@ struct  Kentik__Device__V202308beta1__LabelConcise
 struct  Kentik__Device__V202308beta1__ListDevicesRequest
 {
   ProtobufCMessage base;
+  Kentik__Device__V202308beta1__DeviceQuery *query;
 };
 #define KENTIK__DEVICE__V202308BETA1__LIST_DEVICES_REQUEST__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__device__v202308beta1__list_devices_request__descriptor) \
-     }
+    , NULL }
 
 
 /*
@@ -424,10 +465,11 @@ struct  Kentik__Device__V202308beta1__GetDeviceRequest
 {
   ProtobufCMessage base;
   char *id;
+  Kentik__Device__V202308beta1__DeviceQuery *query;
 };
 #define KENTIK__DEVICE__V202308BETA1__GET_DEVICE_REQUEST__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__device__v202308beta1__get_device_request__descriptor) \
-    , (char *)protobuf_c_empty_string }
+    , (char *)protobuf_c_empty_string, NULL }
 
 
 /*
@@ -750,6 +792,9 @@ Kentik__Device__V202308beta1__Site *
 void   kentik__device__v202308beta1__site__free_unpacked
                      (Kentik__Device__V202308beta1__Site *message,
                       ProtobufCAllocator *allocator);
+/* Kentik__Device__V202308beta1__Plan__MetadataEntry methods */
+void   kentik__device__v202308beta1__plan__metadata_entry__init
+                     (Kentik__Device__V202308beta1__Plan__MetadataEntry         *message);
 /* Kentik__Device__V202308beta1__Plan methods */
 void   kentik__device__v202308beta1__plan__init
                      (Kentik__Device__V202308beta1__Plan         *message);
@@ -863,6 +908,25 @@ Kentik__Device__V202308beta1__DeviceDetailed *
                       const uint8_t       *data);
 void   kentik__device__v202308beta1__device_detailed__free_unpacked
                      (Kentik__Device__V202308beta1__DeviceDetailed *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Device__V202308beta1__DeviceQuery methods */
+void   kentik__device__v202308beta1__device_query__init
+                     (Kentik__Device__V202308beta1__DeviceQuery         *message);
+size_t kentik__device__v202308beta1__device_query__get_packed_size
+                     (const Kentik__Device__V202308beta1__DeviceQuery   *message);
+size_t kentik__device__v202308beta1__device_query__pack
+                     (const Kentik__Device__V202308beta1__DeviceQuery   *message,
+                      uint8_t             *out);
+size_t kentik__device__v202308beta1__device_query__pack_to_buffer
+                     (const Kentik__Device__V202308beta1__DeviceQuery   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Device__V202308beta1__DeviceQuery *
+       kentik__device__v202308beta1__device_query__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__device__v202308beta1__device_query__free_unpacked
+                     (Kentik__Device__V202308beta1__DeviceQuery *message,
                       ProtobufCAllocator *allocator);
 /* Kentik__Device__V202308beta1__LabelConcise methods */
 void   kentik__device__v202308beta1__label_concise__init
@@ -1245,6 +1309,9 @@ typedef void (*Kentik__Device__V202308beta1__DeviceConcise_Closure)
 typedef void (*Kentik__Device__V202308beta1__Site_Closure)
                  (const Kentik__Device__V202308beta1__Site *message,
                   void *closure_data);
+typedef void (*Kentik__Device__V202308beta1__Plan__MetadataEntry_Closure)
+                 (const Kentik__Device__V202308beta1__Plan__MetadataEntry *message,
+                  void *closure_data);
 typedef void (*Kentik__Device__V202308beta1__Plan_Closure)
                  (const Kentik__Device__V202308beta1__Plan *message,
                   void *closure_data);
@@ -1262,6 +1329,9 @@ typedef void (*Kentik__Device__V202308beta1__GnmiV1Conf_Closure)
                   void *closure_data);
 typedef void (*Kentik__Device__V202308beta1__DeviceDetailed_Closure)
                  (const Kentik__Device__V202308beta1__DeviceDetailed *message,
+                  void *closure_data);
+typedef void (*Kentik__Device__V202308beta1__DeviceQuery_Closure)
+                 (const Kentik__Device__V202308beta1__DeviceQuery *message,
                   void *closure_data);
 typedef void (*Kentik__Device__V202308beta1__LabelConcise_Closure)
                  (const Kentik__Device__V202308beta1__LabelConcise *message,
@@ -1426,11 +1496,13 @@ extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__device_nms
 extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__device_concise__descriptor;
 extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__site__descriptor;
 extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__plan__descriptor;
+extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__plan__metadata_entry__descriptor;
 extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__label__descriptor;
 extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__interface__descriptor;
 extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__custom_column_data__descriptor;
 extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__gnmi_v1_conf__descriptor;
 extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__device_detailed__descriptor;
+extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__device_query__descriptor;
 extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__label_concise__descriptor;
 extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__list_devices_request__descriptor;
 extern const ProtobufCMessageDescriptor kentik__device__v202308beta1__list_devices_response__descriptor;

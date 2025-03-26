@@ -479,6 +479,75 @@
         "provider": {
           "type": "string",
           "description": "Network provider."
+        },
+        "interfaceKvs": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Interface KVs."
+        },
+        "interfaceTags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Interface Tags."
+        },
+        "interfaceStatus": {
+          "type": "string",
+          "description": "Interface Status."
+        },
+        "extraInfo": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Extra Interface Info."
+        },
+        "initialSnmpId": {
+          "type": "string",
+          "description": "Initial SMNP ID."
+        },
+        "initialSnmpAlias": {
+          "type": "string",
+          "description": "Initial Interface Alias."
+        },
+        "initialInterfaceDescription": {
+          "type": "string",
+          "description": "Initial Interface Description."
+        },
+        "initialSnmpSpeed": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Inital Network speed in Mbps."
+        },
+        "secondaryIps": {
+          "type": "string",
+          "description": "Secondary Interface IP."
+        },
+        "initialConnectivityType": {
+          "$ref": "#/definitions/v202108alpha1ConnectivityType",
+          "description": "Initial type of network connectivity type."
+        },
+        "initialNetworkBoundary": {
+          "$ref": "#/definitions/v202108alpha1NetworkBoundary",
+          "description": "Initial type of network boundary."
+        },
+        "initialProvider": {
+          "type": "string",
+          "description": "Initial Network provider."
+        },
+        "vrfId": {
+          "type": "string",
+          "title": "VRF ID"
+        },
+        "vrf": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "VRF"
         }
       }
     },
