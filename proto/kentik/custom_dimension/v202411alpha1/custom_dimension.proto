@@ -369,6 +369,7 @@ service CustomDimensionService {
   option (kentik.core.v202303.service_scope) = "admin.custom_dimension";
 
   rpc ListCustomDimensions(ListCustomDimensionsRequest)  returns (ListCustomDimensionsResponse) {
+    option (kentik.core.v202303.method_scope) = "custom_dimension:read";
     option (google.api.http) = {
       get: "/custom_dimensions/v202411alpha1"
     };
@@ -380,6 +381,7 @@ service CustomDimensionService {
   }
 
   rpc GetCustomDimensionInfo(GetCustomDimensionInfoRequest) returns (GetCustomDimensionInfoResponse) {
+    option (kentik.core.v202303.method_scope) = "custom_dimension:read";
     option (google.api.http) = { get: "/custom_dimensions/v202411alpha1/{custom_dimension_id}" };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       operation_id: "GetCustomDimensionInfo"
