@@ -232,6 +232,51 @@ void   kentik__cloud_export__v202210__ibm_properties__free_unpacked
   assert(message->base.descriptor == &kentik__cloud_export__v202210__ibm_properties__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   kentik__cloud_export__v202210__oci_properties__init
+                     (Kentik__CloudExport__V202210__OciProperties         *message)
+{
+  static const Kentik__CloudExport__V202210__OciProperties init_value = KENTIK__CLOUD_EXPORT__V202210__OCI_PROPERTIES__INIT;
+  *message = init_value;
+}
+size_t kentik__cloud_export__v202210__oci_properties__get_packed_size
+                     (const Kentik__CloudExport__V202210__OciProperties *message)
+{
+  assert(message->base.descriptor == &kentik__cloud_export__v202210__oci_properties__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__cloud_export__v202210__oci_properties__pack
+                     (const Kentik__CloudExport__V202210__OciProperties *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__cloud_export__v202210__oci_properties__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__cloud_export__v202210__oci_properties__pack_to_buffer
+                     (const Kentik__CloudExport__V202210__OciProperties *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__cloud_export__v202210__oci_properties__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__CloudExport__V202210__OciProperties *
+       kentik__cloud_export__v202210__oci_properties__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__CloudExport__V202210__OciProperties *)
+     protobuf_c_message_unpack (&kentik__cloud_export__v202210__oci_properties__descriptor,
+                                allocator, len, data);
+}
+void   kentik__cloud_export__v202210__oci_properties__free_unpacked
+                     (Kentik__CloudExport__V202210__OciProperties *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__cloud_export__v202210__oci_properties__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 void   kentik__cloud_export__v202210__cloud_export_status__init
                      (Kentik__CloudExport__V202210__CloudExportStatus         *message)
 {
@@ -727,7 +772,7 @@ void   kentik__cloud_export__v202210__delete_cloud_export_response__free_unpacke
   assert(message->base.descriptor == &kentik__cloud_export__v202210__delete_cloud_export_response__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-static const ProtobufCFieldDescriptor kentik__cloud_export__v202210__cloud_export__field_descriptors[14] =
+static const ProtobufCFieldDescriptor kentik__cloud_export__v202210__cloud_export__field_descriptors[15] =
 {
   {
     "id",
@@ -862,6 +907,18 @@ static const ProtobufCFieldDescriptor kentik__cloud_export__v202210__cloud_expor
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
+    "oci",
+    12,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Kentik__CloudExport__V202210__CloudExport, cloud_specific_properties_case),
+    offsetof(Kentik__CloudExport__V202210__CloudExport, oci),
+    &kentik__cloud_export__v202210__oci_properties__descriptor,
+    NULL,
+    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
     "current_status",
     13,
     PROTOBUF_C_LABEL_NONE,
@@ -901,24 +958,24 @@ static const ProtobufCFieldDescriptor kentik__cloud_export__v202210__cloud_expor
 static const unsigned kentik__cloud_export__v202210__cloud_export__field_indices_by_name[] = {
   7,   /* field[7] = aws */
   8,   /* field[8] = azure */
-  12,   /* field[12] = cdate */
+  13,   /* field[13] = cdate */
   6,   /* field[6] = cloud_provider */
-  11,   /* field[11] = current_status */
+  12,   /* field[12] = current_status */
   4,   /* field[4] = description */
-  13,   /* field[13] = edate */
+  14,   /* field[14] = edate */
   2,   /* field[2] = enabled */
   9,   /* field[9] = gce */
   10,   /* field[10] = ibm */
   0,   /* field[0] = id */
   3,   /* field[3] = name */
+  11,   /* field[11] = oci */
   5,   /* field[5] = plan_id */
   1,   /* field[1] = type */
 };
-static const ProtobufCIntRange kentik__cloud_export__v202210__cloud_export__number_ranges[2 + 1] =
+static const ProtobufCIntRange kentik__cloud_export__v202210__cloud_export__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 13, 11 },
-  { 0, 14 }
+  { 0, 15 }
 };
 const ProtobufCMessageDescriptor kentik__cloud_export__v202210__cloud_export__descriptor =
 {
@@ -928,10 +985,10 @@ const ProtobufCMessageDescriptor kentik__cloud_export__v202210__cloud_export__de
   "Kentik__CloudExport__V202210__CloudExport",
   "kentik.cloud_export.v202210",
   sizeof(Kentik__CloudExport__V202210__CloudExport),
-  14,
+  15,
   kentik__cloud_export__v202210__cloud_export__field_descriptors,
   kentik__cloud_export__v202210__cloud_export__field_indices_by_name,
-  2,  kentik__cloud_export__v202210__cloud_export__number_ranges,
+  1,  kentik__cloud_export__v202210__cloud_export__number_ranges,
   (ProtobufCMessageInit) kentik__cloud_export__v202210__cloud_export__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
@@ -1267,6 +1324,148 @@ const ProtobufCMessageDescriptor kentik__cloud_export__v202210__ibm_properties__
   kentik__cloud_export__v202210__ibm_properties__field_indices_by_name,
   1,  kentik__cloud_export__v202210__ibm_properties__number_ranges,
   (ProtobufCMessageInit) kentik__cloud_export__v202210__ibm_properties__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__cloud_export__v202210__oci_properties__field_descriptors[9] =
+{
+  {
+    "oci_user_id",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__CloudExport__V202210__OciProperties, oci_user_id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "oci_tenancy_id",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__CloudExport__V202210__OciProperties, oci_tenancy_id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "oci_compartment_id",
+    3,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_STRING,
+    offsetof(Kentik__CloudExport__V202210__OciProperties, n_oci_compartment_id),
+    offsetof(Kentik__CloudExport__V202210__OciProperties, oci_compartment_id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "oci_default_region",
+    4,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__CloudExport__V202210__OciProperties, oci_default_region),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "oci_collect_flow_logs",
+    5,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__CloudExport__V202210__OciProperties, oci_collect_flow_logs),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "oci_bucket_name",
+    6,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__CloudExport__V202210__OciProperties, oci_bucket_name),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "oci_bucket_namespace_name",
+    7,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__CloudExport__V202210__OciProperties, oci_bucket_namespace_name),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "oci_service_connector_ocid",
+    8,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__CloudExport__V202210__OciProperties, oci_service_connector_ocid),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "oci_flow_object_name_prefix",
+    9,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__CloudExport__V202210__OciProperties, oci_flow_object_name_prefix),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__cloud_export__v202210__oci_properties__field_indices_by_name[] = {
+  5,   /* field[5] = oci_bucket_name */
+  6,   /* field[6] = oci_bucket_namespace_name */
+  4,   /* field[4] = oci_collect_flow_logs */
+  2,   /* field[2] = oci_compartment_id */
+  3,   /* field[3] = oci_default_region */
+  8,   /* field[8] = oci_flow_object_name_prefix */
+  7,   /* field[7] = oci_service_connector_ocid */
+  1,   /* field[1] = oci_tenancy_id */
+  0,   /* field[0] = oci_user_id */
+};
+static const ProtobufCIntRange kentik__cloud_export__v202210__oci_properties__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 9 }
+};
+const ProtobufCMessageDescriptor kentik__cloud_export__v202210__oci_properties__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.cloud_export.v202210.OciProperties",
+  "OciProperties",
+  "Kentik__CloudExport__V202210__OciProperties",
+  "kentik.cloud_export.v202210",
+  sizeof(Kentik__CloudExport__V202210__OciProperties),
+  9,
+  kentik__cloud_export__v202210__oci_properties__field_descriptors,
+  kentik__cloud_export__v202210__oci_properties__field_indices_by_name,
+  1,  kentik__cloud_export__v202210__oci_properties__number_ranges,
+  (ProtobufCMessageInit) kentik__cloud_export__v202210__oci_properties__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
 static const ProtobufCFieldDescriptor kentik__cloud_export__v202210__cloud_export_status__field_descriptors[5] =
@@ -1742,23 +1941,25 @@ const ProtobufCEnumDescriptor kentik__cloud_export__v202210__cloud_export_type__
   kentik__cloud_export__v202210__cloud_export_type__value_ranges,
   NULL,NULL,NULL,NULL   /* reserved[1234] */
 };
-static const ProtobufCEnumValue kentik__cloud_export__v202210__cloud_provider__enum_values_by_number[5] =
+static const ProtobufCEnumValue kentik__cloud_export__v202210__cloud_provider__enum_values_by_number[6] =
 {
   { "CLOUD_PROVIDER_UNSPECIFIED", "KENTIK__CLOUD_EXPORT__V202210__CLOUD_PROVIDER__CLOUD_PROVIDER_UNSPECIFIED", 0 },
   { "CLOUD_PROVIDER_AWS", "KENTIK__CLOUD_EXPORT__V202210__CLOUD_PROVIDER__CLOUD_PROVIDER_AWS", 1 },
   { "CLOUD_PROVIDER_AZURE", "KENTIK__CLOUD_EXPORT__V202210__CLOUD_PROVIDER__CLOUD_PROVIDER_AZURE", 2 },
   { "CLOUD_PROVIDER_GCE", "KENTIK__CLOUD_EXPORT__V202210__CLOUD_PROVIDER__CLOUD_PROVIDER_GCE", 3 },
   { "CLOUD_PROVIDER_IBM", "KENTIK__CLOUD_EXPORT__V202210__CLOUD_PROVIDER__CLOUD_PROVIDER_IBM", 4 },
+  { "CLOUD_PROVIDER_OCI", "KENTIK__CLOUD_EXPORT__V202210__CLOUD_PROVIDER__CLOUD_PROVIDER_OCI", 5 },
 };
 static const ProtobufCIntRange kentik__cloud_export__v202210__cloud_provider__value_ranges[] = {
-{0, 0},{0, 5}
+{0, 0},{0, 6}
 };
-static const ProtobufCEnumValueIndex kentik__cloud_export__v202210__cloud_provider__enum_values_by_name[5] =
+static const ProtobufCEnumValueIndex kentik__cloud_export__v202210__cloud_provider__enum_values_by_name[6] =
 {
   { "CLOUD_PROVIDER_AWS", 1 },
   { "CLOUD_PROVIDER_AZURE", 2 },
   { "CLOUD_PROVIDER_GCE", 3 },
   { "CLOUD_PROVIDER_IBM", 4 },
+  { "CLOUD_PROVIDER_OCI", 5 },
   { "CLOUD_PROVIDER_UNSPECIFIED", 0 },
 };
 const ProtobufCEnumDescriptor kentik__cloud_export__v202210__cloud_provider__descriptor =
@@ -1768,9 +1969,9 @@ const ProtobufCEnumDescriptor kentik__cloud_export__v202210__cloud_provider__des
   "CloudProvider",
   "Kentik__CloudExport__V202210__CloudProvider",
   "kentik.cloud_export.v202210",
-  5,
+  6,
   kentik__cloud_export__v202210__cloud_provider__enum_values_by_number,
-  5,
+  6,
   kentik__cloud_export__v202210__cloud_provider__enum_values_by_name,
   1,
   kentik__cloud_export__v202210__cloud_provider__value_ranges,

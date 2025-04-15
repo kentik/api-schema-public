@@ -27,6 +27,53 @@ namespace _fl = ::google::protobuf::internal::field_layout;
 namespace kentik {
 namespace cloud_export {
 namespace v202210 {
+
+inline constexpr OciProperties::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : oci_compartment_id_{},
+        oci_user_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        oci_tenancy_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        oci_default_region_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        oci_bucket_name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        oci_bucket_namespace_name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        oci_service_connector_ocid_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        oci_flow_object_name_prefix_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        oci_collect_flow_logs_{false},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR OciProperties::OciProperties(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct OciPropertiesDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR OciPropertiesDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~OciPropertiesDefaultTypeInternal() {}
+  union {
+    OciProperties _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 OciPropertiesDefaultTypeInternal _OciProperties_default_instance_;
               template <typename>
 PROTOBUF_CONSTEXPR ListCloudExportsRequest::ListCloudExportsRequest(::_pbi::ConstantInitialized)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
@@ -509,10 +556,12 @@ const ::uint32_t
         ::_pbi::kInvalidFieldOffsetTag,
         ::_pbi::kInvalidFieldOffsetTag,
         ::_pbi::kInvalidFieldOffsetTag,
+        ::_pbi::kInvalidFieldOffsetTag,
         PROTOBUF_FIELD_OFFSET(::kentik::cloud_export::v202210::CloudExport, _impl_.current_status_),
         PROTOBUF_FIELD_OFFSET(::kentik::cloud_export::v202210::CloudExport, _impl_.cdate_),
         PROTOBUF_FIELD_OFFSET(::kentik::cloud_export::v202210::CloudExport, _impl_.edate_),
         PROTOBUF_FIELD_OFFSET(::kentik::cloud_export::v202210::CloudExport, _impl_.cloud_specific_properties_),
+        ~0u,
         ~0u,
         ~0u,
         ~0u,
@@ -577,6 +626,23 @@ const ::uint32_t
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::kentik::cloud_export::v202210::IbmProperties, _impl_.bucket_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::kentik::cloud_export::v202210::OciProperties, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::cloud_export::v202210::OciProperties, _impl_.oci_user_id_),
+        PROTOBUF_FIELD_OFFSET(::kentik::cloud_export::v202210::OciProperties, _impl_.oci_tenancy_id_),
+        PROTOBUF_FIELD_OFFSET(::kentik::cloud_export::v202210::OciProperties, _impl_.oci_compartment_id_),
+        PROTOBUF_FIELD_OFFSET(::kentik::cloud_export::v202210::OciProperties, _impl_.oci_default_region_),
+        PROTOBUF_FIELD_OFFSET(::kentik::cloud_export::v202210::OciProperties, _impl_.oci_collect_flow_logs_),
+        PROTOBUF_FIELD_OFFSET(::kentik::cloud_export::v202210::OciProperties, _impl_.oci_bucket_name_),
+        PROTOBUF_FIELD_OFFSET(::kentik::cloud_export::v202210::OciProperties, _impl_.oci_bucket_namespace_name_),
+        PROTOBUF_FIELD_OFFSET(::kentik::cloud_export::v202210::OciProperties, _impl_.oci_service_connector_ocid_),
+        PROTOBUF_FIELD_OFFSET(::kentik::cloud_export::v202210::OciProperties, _impl_.oci_flow_object_name_prefix_),
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::kentik::cloud_export::v202210::CloudExportStatus, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -688,22 +754,23 @@ const ::uint32_t
 
 static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-        {0, 23, -1, sizeof(::kentik::cloud_export::v202210::CloudExport)},
-        {37, -1, -1, sizeof(::kentik::cloud_export::v202210::AwsProperties)},
-        {55, -1, -1, sizeof(::kentik::cloud_export::v202210::AzureProperties)},
-        {68, -1, -1, sizeof(::kentik::cloud_export::v202210::GceProperties)},
-        {78, -1, -1, sizeof(::kentik::cloud_export::v202210::IbmProperties)},
-        {87, -1, -1, sizeof(::kentik::cloud_export::v202210::CloudExportStatus)},
-        {100, 109, -1, sizeof(::kentik::cloud_export::v202210::CreateCloudExportRequest)},
-        {110, 119, -1, sizeof(::kentik::cloud_export::v202210::CreateCloudExportResponse)},
-        {120, -1, -1, sizeof(::kentik::cloud_export::v202210::ListCloudExportsRequest)},
-        {128, -1, -1, sizeof(::kentik::cloud_export::v202210::ListCloudExportsResponse)},
-        {138, -1, -1, sizeof(::kentik::cloud_export::v202210::GetCloudExportRequest)},
-        {147, 156, -1, sizeof(::kentik::cloud_export::v202210::GetCloudExportResponse)},
-        {157, 166, -1, sizeof(::kentik::cloud_export::v202210::UpdateCloudExportRequest)},
-        {167, 176, -1, sizeof(::kentik::cloud_export::v202210::UpdateCloudExportResponse)},
-        {177, -1, -1, sizeof(::kentik::cloud_export::v202210::DeleteCloudExportRequest)},
-        {186, -1, -1, sizeof(::kentik::cloud_export::v202210::DeleteCloudExportResponse)},
+        {0, 24, -1, sizeof(::kentik::cloud_export::v202210::CloudExport)},
+        {39, -1, -1, sizeof(::kentik::cloud_export::v202210::AwsProperties)},
+        {57, -1, -1, sizeof(::kentik::cloud_export::v202210::AzureProperties)},
+        {70, -1, -1, sizeof(::kentik::cloud_export::v202210::GceProperties)},
+        {80, -1, -1, sizeof(::kentik::cloud_export::v202210::IbmProperties)},
+        {89, -1, -1, sizeof(::kentik::cloud_export::v202210::OciProperties)},
+        {106, -1, -1, sizeof(::kentik::cloud_export::v202210::CloudExportStatus)},
+        {119, 128, -1, sizeof(::kentik::cloud_export::v202210::CreateCloudExportRequest)},
+        {129, 138, -1, sizeof(::kentik::cloud_export::v202210::CreateCloudExportResponse)},
+        {139, -1, -1, sizeof(::kentik::cloud_export::v202210::ListCloudExportsRequest)},
+        {147, -1, -1, sizeof(::kentik::cloud_export::v202210::ListCloudExportsResponse)},
+        {157, -1, -1, sizeof(::kentik::cloud_export::v202210::GetCloudExportRequest)},
+        {166, 175, -1, sizeof(::kentik::cloud_export::v202210::GetCloudExportResponse)},
+        {176, 185, -1, sizeof(::kentik::cloud_export::v202210::UpdateCloudExportRequest)},
+        {186, 195, -1, sizeof(::kentik::cloud_export::v202210::UpdateCloudExportResponse)},
+        {196, -1, -1, sizeof(::kentik::cloud_export::v202210::DeleteCloudExportRequest)},
+        {205, -1, -1, sizeof(::kentik::cloud_export::v202210::DeleteCloudExportResponse)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::cloud_export::v202210::_CloudExport_default_instance_._instance,
@@ -711,6 +778,7 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::cloud_export::v202210::_AzureProperties_default_instance_._instance,
     &::kentik::cloud_export::v202210::_GceProperties_default_instance_._instance,
     &::kentik::cloud_export::v202210::_IbmProperties_default_instance_._instance,
+    &::kentik::cloud_export::v202210::_OciProperties_default_instance_._instance,
     &::kentik::cloud_export::v202210::_CloudExportStatus_default_instance_._instance,
     &::kentik::cloud_export::v202210::_CreateCloudExportRequest_default_instance_._instance,
     &::kentik::cloud_export::v202210::_CreateCloudExportResponse_default_instance_._instance,
@@ -732,7 +800,7 @@ const char descriptor_table_protodef_kentik_2fcloud_5fexport_2fv202210_2fcloud_5
     "ns/annotations.proto\032\037google/api/field_b"
     "ehavior.proto\032\037google/protobuf/timestamp"
     ".proto\032%kentik/core/v202303/annotations."
-    "proto\"\276\t\n\013CloudExport\0229\n\002id\030\001 \001(\tB)\222A#2!"
+    "proto\"\376\t\n\013CloudExport\0229\n\002id\030\001 \001(\tB)\222A#2!"
     "Unique identifier of the instance\340A\003R\002id"
     "\022r\n\004type\030\002 \001(\0162,.kentik.cloud_export.v20"
     "2210.CloudExportTypeB0\222A-2+Ownership of "
@@ -754,254 +822,279 @@ const char descriptor_table_protodef_kentik_2fcloud_5fexport_2fv202210_2fcloud_5
     "e\030\n \001(\0132*.kentik.cloud_export.v202210.Gc"
     "ePropertiesH\000R\003gce\022>\n\003ibm\030\013 \001(\0132*.kentik"
     ".cloud_export.v202210.IbmPropertiesH\000R\003i"
-    "bm\022\203\001\n\016current_status\030\r \001(\0132..kentik.clo"
-    "ud_export.v202210.CloudExportStatusB,\222A&"
-    "2$Runtime status of the export process\340A"
-    "\003R\rcurrentStatus\022R\n\005cdate\030\016 \001(\0132\032.google"
-    ".protobuf.TimestampB \222A\0322\030Creation times"
-    "tamp (UTC)\340A\003R\005cdate\022[\n\005edate\030\017 \001(\0132\032.go"
-    "ogle.protobuf.TimestampB)\222A#2!Last modif"
-    "ication timestamp (UTC)\340A\003R\005edateB\033\n\031clo"
-    "ud_specific_properties\"\246\t\n\rAwsProperties"
-    "\022W\n\006bucket\030\001 \001(\tB\?\222A<2:Name of S3 bucket"
-    " from which flow logs are to be exported"
-    ".R\006bucket\022z\n\014iam_role_arn\030\002 \001(\tBX\222AR2PAR"
-    "N of the IAM role granted access to the "
-    "S3 bucket and describe API end-points.\340A"
-    "\002R\niamRoleArn\022R\n\006region\030\003 \001(\tB:\222A422Name"
-    " of AWS region from which to export flow"
-    " logs.\340A\002R\006region\022r\n\021delete_after_read\030\004"
-    " \001(\010BF\222AC2ADelete from logs from the S3 "
-    "bucket after export (default false).R\017de"
-    "leteAfterRead\022a\n\rmetadata_only\030\005 \001(\010B<\222A"
-    "927Import only metadata without any flow"
-    "s (default false).R\014metadataOnly\022h\n\027aws_"
-    "iam_role_arn_is_org\030\006 \001(\010B3\222A02.Iam role"
-    " is organization role (default false).R\022"
-    "awsIamRoleArnIsOrg\022v\n\026secondary_aws_acco"
-    "unts\030\007 \003(\tB@\222A=2;Accounts ids granted ac"
-    "cess to the describe API end-points.R\024se"
-    "condaryAwsAccounts\022\246\001\n\036secondary_aws_blo"
-    "cked_accounts\030\010 \003(\tBa\222A^2\\Accounts ids t"
-    "hat should be filtered from organization"
-    " when running describe API end-points.R\033"
-    "secondaryAwsBlockedAccounts\022c\n\025secondary"
-    "_aws_regions\030\t \003(\tB/\222A,2*Regions that se"
-    "condary accounts to scrape.R\023secondaryAw"
-    "sRegions\022\244\001\n\024secondary_aws_suffix\030\n \001(\tB"
-    "r\222Ao2mUsed to generate secondary account"
-    " ARN based on template arn:aws:iam::<<aw"
-    "s_account_id>>:role/<<role_suffix>>R\022sec"
-    "ondaryAwsSuffix\"\327\004\n\017AzureProperties\022Y\n\010l"
-    "ocation\030\001 \001(\tB=\222A725Azure region/locatio"
-    "n from which to export flow logs.\340A\002R\010lo"
-    "cation\022f\n\016resource_group\030\002 \001(\tB\?\222A927Res"
-    "ource group containing the NSG generatin"
-    "g flow logs.\340A\002R\rresourceGroup\022j\n\017storag"
-    "e_account\030\003 \001(\tBA\222A;29Storage account fr"
-    "om which flow logs are to be extracted.\340"
-    "A\002R\016storageAccount\022n\n\017subscription_id\030\004 "
-    "\001(\tBE\222A\?2=ID of Azure account from which"
-    " flows logs are to be exported.\340A\002R\016subs"
-    "criptionId\022\244\001\n\032security_principal_enable"
-    "d\030\005 \001(\010Bf\222Ac2aIndication whether securit"
-    "y principal for the Kentik flow export a"
-    "pplication has been authorized.R\030securit"
-    "yPrincipalEnabled\"\301\001\n\rGceProperties\022U\n\007p"
-    "roject\030\001 \001(\tB;\222A523Name of the project f"
-    "rom which to export flow logs.\340A\002R\007proje"
-    "ct\022Y\n\014subscription\030\002 \001(\tB5\222A/2-GCP Pub/S"
-    "ub subscription providing flow logs.\340A\002R"
-    "\014subscription\"f\n\rIbmProperties\022U\n\006bucket"
-    "\030\001 \001(\tB=\222A:28Storage bucket from which f"
-    "low logs are to be extracted.R\006bucket\"\226\004"
-    "\n\021CloudExportStatus\022:\n\006status\030\001 \001(\tB\"\222A\034"
-    "2\032Status of the export task.\340A\003R\006status\022"
-    "d\n\rerror_message\030\002 \001(\tB\?\222A927Text of the"
-    " last error message (empty if status is "
-    "OK).\340A\003R\014errorMessage\022V\n\nflow_found\030\003 \001("
-    "\010B7\222A12/Indication whether any flow data"
-    " were exported.\340A\003R\tflowFound\022i\n\napi_acc"
-    "ess\030\004 \001(\010BJ\222AD2BIndication whether the e"
-    "xport process is able to access cloud AP"
-    "I.\340A\003R\tapiAccess\022\233\001\n\026storage_account_acc"
-    "ess\030\005 \001(\010Be\222A_2]Indication whether the e"
-    "xport process is able to access storage "
-    "account containing flow logs.\340A\003R\024storag"
-    "eAccountAccess\"~\n\030CreateCloudExportReque"
-    "st\022b\n\006export\030\001 \001(\0132(.kentik.cloud_export"
-    ".v202210.CloudExportB \222A\0352\033Cloud export "
-    "configuration.R\006export\"\200\001\n\031CreateCloudEx"
-    "portResponse\022c\n\006export\030\001 \001(\0132(.kentik.cl"
-    "oud_export.v202210.CloudExportB!\222A\0362\034Cre"
-    "ated cloud export object.R\006export\"\031\n\027Lis"
-    "tCloudExportsRequest\"\213\002\n\030ListCloudExport"
-    "sResponse\022f\n\007exports\030\001 \003(\0132(.kentik.clou"
-    "d_export.v202210.CloudExportB\"\222A\0372\035List "
-    "of cloud export objects.R\007exports\022\206\001\n\025in"
-    "valid_exports_count\030\002 \001(\rBR\222AO2MNumber o"
-    "f objects with invalid data (which are n"
-    "ot returned in the response).R\023invalidEx"
-    "portsCount\"U\n\025GetCloudExportRequest\022<\n\002i"
-    "d\030\001 \001(\tB,\222A)2\'ID of the cloud export to "
-    "be retrieved.R\002id\"u\n\026GetCloudExportRespo"
-    "nse\022[\n\006export\030\001 \001(\0132(.kentik.cloud_expor"
-    "t.v202210.CloudExportB\031\222A\0262\024Cloud export"
-    " object.R\006export\"~\n\030UpdateCloudExportReq"
-    "uest\022b\n\006export\030\001 \001(\0132(.kentik.cloud_expo"
-    "rt.v202210.CloudExportB \222A\0352\033Cloud expor"
-    "t configuration.R\006export\"\200\001\n\031UpdateCloud"
-    "ExportResponse\022c\n\006export\030\001 \001(\0132(.kentik."
-    "cloud_export.v202210.CloudExportB!\222A\0362\034U"
-    "pdated cloud export object.R\006export\"V\n\030D"
-    "eleteCloudExportRequest\022:\n\002id\030\001 \001(\tB*\222A\'"
-    "2%ID of the cloud export to be deleted.R"
-    "\002id\"\033\n\031DeleteCloudExportResponse*\202\001\n\017Clo"
-    "udExportType\022!\n\035CLOUD_EXPORT_TYPE_UNSPEC"
-    "IFIED\020\000\022$\n CLOUD_EXPORT_TYPE_KENTIK_MANA"
-    "GED\020\001\022&\n\"CLOUD_EXPORT_TYPE_CUSTOMER_MANA"
-    "GED\020\002*\225\001\n\rCloudProvider\022\036\n\032CLOUD_PROVIDE"
-    "R_UNSPECIFIED\020\000\022\026\n\022CLOUD_PROVIDER_AWS\020\001\022"
-    "\030\n\024CLOUD_PROVIDER_AZURE\020\002\022\026\n\022CLOUD_PROVI"
-    "DER_GCE\020\003\022\032\n\022CLOUD_PROVIDER_IBM\020\004\032\002\010\0012\366\014"
-    "\n\027CloudExportAdminService\022\265\002\n\021CreateClou"
-    "dExport\0225.kentik.cloud_export.v202210.Cr"
-    "eateCloudExportRequest\0326.kentik.cloud_ex"
-    "port.v202210.CreateCloudExportResponse\"\260"
-    "\001\222Ai\022\024Create Cloud Export.\032>Create new c"
-    "loud export based on configuration in th"
-    "e request.*\021CreateCloudExport\362\327\002\030admin.c"
-    "loud_export:write\202\323\344\223\002\"\"\035/cloud_export/v"
-    "202210/exports:\001*\022\241\002\n\020ListCloudExports\0224"
-    ".kentik.cloud_export.v202210.ListCloudEx"
-    "portsRequest\0325.kentik.cloud_export.v2022"
-    "10.ListCloudExportsResponse\"\237\001\222A\\\022\023List "
-    "cloud exports.\0323Returns a list of all cl"
-    "oud exports in the account.*\020ListCloudEx"
-    "ports\362\327\002\027admin.cloud_export:read\202\323\344\223\002\037\022\035"
-    "/cloud_export/v202210/exports\022\306\002\n\016GetClo"
-    "udExport\0222.kentik.cloud_export.v202210.G"
-    "etCloudExportRequest\0323.kentik.cloud_expo"
-    "rt.v202210.GetCloudExportResponse\"\312\001\222A\201\001"
-    "\022*Get cloud export configuration and sta"
-    "tus.\032CReturns configuration and status o"
-    "f cloud export with specified ID.*\016GetCl"
-    "oudExport\362\327\002\027admin.cloud_export:read\202\323\344\223"
-    "\002$\022\"/cloud_export/v202210/exports/{id}\022\337"
-    "\002\n\021UpdateCloudExport\0225.kentik.cloud_expo"
-    "rt.v202210.UpdateCloudExportRequest\0326.ke"
-    "ntik.cloud_export.v202210.UpdateCloudExp"
-    "ortResponse\"\332\001\222A\206\001\022%Update configuration"
-    " of cloud export.\032JReplace complete conf"
-    "iguration of a cloud export with data in"
-    " the request.*\021UpdateCloudExport\362\327\002\030admi"
-    "n.cloud_export:write\202\323\344\223\002.\032)/cloud_expor"
-    "t/v202210/exports/{export.id}:\001*\022\241\002\n\021Del"
-    "eteCloudExport\0225.kentik.cloud_export.v20"
-    "2210.DeleteCloudExportRequest\0326.kentik.c"
-    "loud_export.v202210.DeleteCloudExportRes"
-    "ponse\"\234\001\222AS\022\026Delete a cloud export.\032&Del"
-    "ete cloud export with specified ID.*\021Del"
-    "eteCloudExport\362\327\002\030admin.cloud_export:wri"
-    "te\202\323\344\223\002$*\"/cloud_export/v202210/exports/"
-    "{id}\0320\312A\023grpc.api.kentik.com\352\327\002\022admin.cl"
-    "oud_export\220\330\002\003B\367\035ZSgithub.com/kentik/api"
-    "-schema-public/gen/go/kentik/cloud_expor"
-    "t/v202210;cloud_export\222A\236\035\022\317\033\n\036Cloud Exp"
-    "ort Configuration API\022\334\032# Overview\nIn Ke"
-    "ntik, a \"cloud export\" is an object whos"
-    "e properties are the values that Kentik "
-    "needs to access network flow logs from a"
-    " given set of resources in a given cloud"
-    " provider (see [Cloud Exports and Device"
-    "s](https://kb.kentik.com/v4/Na00.htm#Na0"
-    "0-Cloud_Exports_and_Devices)). The Cloud"
-    " Export API enables programmatic managem"
-    "ent of cloud exports, serving two primar"
-    "y functions:\n* Configuration of the Kent"
-    "ik resources required to export network "
-    "flow logs and metadata from [public clou"
-    "ds](https://kb.kentik.com/v4/Na00.htm).\n"
-    "* Basic status information on active exp"
-    "ort processes.\n\n### Supported Cloud Prov"
-    "iders\nThe functionality and configuratio"
-    "n parameters supported by this API diffe"
-    "r by cloud provider. The API currently s"
-    "upports the following providers:\n* [Amaz"
-    "on Web Services](https://kb.kentik.com/v"
-    "0/Bd06.htm) (AWS)\n* [Microsoft Azure](ht"
-    "tps://kb.kentik.com/v0/Bd08.htm)\n* [Goog"
-    "le Cloud](https://kb.kentik.com/v0/Bd07."
-    "htm) (GCP)\n* [IBM Cloud](https://kb.kent"
-    "ik.com/v0/Bd09.htm)\n\n### Additional Publ"
-    "ic Resources\nThe following additional re"
-    "sources are available for working with t"
-    "his API:\n* Kentik community [Python](htt"
-    "ps://github.com/kentik/community_sdk_pyt"
-    "hon) and [Go](https://github.com/kentik/"
-    "community_sdk_golang) SDKs provide langu"
-    "age-specific support for using this and "
-    "other Kentik APIs. These SDKs can be als"
-    "o used as example code for development.\n"
-    "* A [Terraform provider](https://registr"
-    "y.terraform.io/providers/kentik/kentik-c"
-    "loudexport) is available for configuring"
-    " `cloud_export` instances in Kentik. Ter"
-    "raform modules are available for [AWS](h"
-    "ttps://github.com/kentik/config-snippets"
-    "-cloud/tree/master/cloud_AWS/terraform/m"
-    "odule), [Azure](https://github.com/kenti"
-    "k/config-snippets-cloud/tree/master/clou"
-    "d_Azure/terraform/module) \nand [GCP](htt"
-    "ps://github.com/kentik/config-snippets-c"
-    "loud/tree/master/cloud_GCP/terraform/mod"
-    "ule).\nThese modules support onboarding a"
-    "nd ongoing management of all resources ("
-    "in public clouds and in Kentik) required"
-    " to export flow logs to Kentik.\n\n# Anato"
-    "my of a Cloud Export\nConfiguration and s"
-    "tatus of a `cloud_export` instance is re"
-    "presented by the `CloudExport` object, w"
-    "hich contains three categories of attrib"
-    "utes:\n* Common Configuration Attributes\n"
-    "* Cloud Provider Configuration Attribute"
-    "s\n* Metadata and Status Attributes\n\n### "
-    "Common Configuration Attributes\nThe conf"
-    "iguration attributes in the table below "
-    "are common to `CloudExport` objects for "
-    "all cloud providers.\n| Attribute | Requi"
-    "red | Default |\n|-----------|----------|"
-    " ------- |\n| enabled | No | False |\n| na"
-    "me | Yes |   |\n| description | No | <emp"
-    "ty string> |\n| type | Yes | |\n| cloud_pr"
-    "ovider | Yes | |\n| plan_id | Yes | |\n\n##"
-    "# Cloud Provider Specific Attributes\nThe"
-    " attributes listed in the table below ar"
-    "e objects whose parameters are specific "
-    "to each cloud provider.\n| Cloud Provider"
-    " | Attribute | Object Name |\n|----------"
-    "-|----------| ------- |\n| AWS | aws | Aw"
-    "sProperties |\n| Azure | azure | AzurePro"
-    "perties |\n| Google Cloud | gce | GceProp"
-    "erties |\n| IBM Cloud | ibm | IbmProperti"
-    "es |\n\n### Metadata and Status Attributes"
-    "\nThe attributes in the table below provi"
-    "de read-only metadata and status for a `"
-    "cloud_export` instance.\n| Attribute | Pu"
-    "rpose |\n|-----------|---------|\n| id | S"
-    "ystem-generated unique identifier of the"
-    " instance |\n| cdate | Creation timestamp"
-    " |\n| edate | Last-modification timestamp"
-    " |\n| current_status | Runtime status of "
-    "the flow and metadata collection process"
-    " |\n\n\"E\n\026Kentik API Engineering\022+https://"
-    "github.com/kentik/api-schema-public2\007v20"
-    "2210*\001\0022\020application/json:\020application/j"
-    "sonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n"
-    "\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005e"
-    "mail\022\000\n\t\n\005token\022\000rE\n Kentik support for "
-    "public clouds\022!https://kb.kentik.com/v4/"
-    "Na00.htmb\006proto3"
+    "bm\022>\n\003oci\030\014 \001(\0132*.kentik.cloud_export.v2"
+    "02210.OciPropertiesH\000R\003oci\022\203\001\n\016current_s"
+    "tatus\030\r \001(\0132..kentik.cloud_export.v20221"
+    "0.CloudExportStatusB,\222A&2$Runtime status"
+    " of the export process\340A\003R\rcurrentStatus"
+    "\022R\n\005cdate\030\016 \001(\0132\032.google.protobuf.Timest"
+    "ampB \222A\0322\030Creation timestamp (UTC)\340A\003R\005c"
+    "date\022[\n\005edate\030\017 \001(\0132\032.google.protobuf.Ti"
+    "mestampB)\222A#2!Last modification timestam"
+    "p (UTC)\340A\003R\005edateB\033\n\031cloud_specific_prop"
+    "erties\"\246\t\n\rAwsProperties\022W\n\006bucket\030\001 \001(\t"
+    "B\?\222A<2:Name of S3 bucket from which flow"
+    " logs are to be exported.R\006bucket\022z\n\014iam"
+    "_role_arn\030\002 \001(\tBX\222AR2PARN of the IAM rol"
+    "e granted access to the S3 bucket and de"
+    "scribe API end-points.\340A\002R\niamRoleArn\022R\n"
+    "\006region\030\003 \001(\tB:\222A422Name of AWS region f"
+    "rom which to export flow logs.\340A\002R\006regio"
+    "n\022r\n\021delete_after_read\030\004 \001(\010BF\222AC2ADelet"
+    "e from logs from the S3 bucket after exp"
+    "ort (default false).R\017deleteAfterRead\022a\n"
+    "\rmetadata_only\030\005 \001(\010B<\222A927Import only m"
+    "etadata without any flows (default false"
+    ").R\014metadataOnly\022h\n\027aws_iam_role_arn_is_"
+    "org\030\006 \001(\010B3\222A02.Iam role is organization"
+    " role (default false).R\022awsIamRoleArnIsO"
+    "rg\022v\n\026secondary_aws_accounts\030\007 \003(\tB@\222A=2"
+    ";Accounts ids granted access to the desc"
+    "ribe API end-points.R\024secondaryAwsAccoun"
+    "ts\022\246\001\n\036secondary_aws_blocked_accounts\030\010 "
+    "\003(\tBa\222A^2\\Accounts ids that should be fi"
+    "ltered from organization when running de"
+    "scribe API end-points.R\033secondaryAwsBloc"
+    "kedAccounts\022c\n\025secondary_aws_regions\030\t \003"
+    "(\tB/\222A,2*Regions that secondary accounts"
+    " to scrape.R\023secondaryAwsRegions\022\244\001\n\024sec"
+    "ondary_aws_suffix\030\n \001(\tBr\222Ao2mUsed to ge"
+    "nerate secondary account ARN based on te"
+    "mplate arn:aws:iam::<<aws_account_id>>:r"
+    "ole/<<role_suffix>>R\022secondaryAwsSuffix\""
+    "\327\004\n\017AzureProperties\022Y\n\010location\030\001 \001(\tB=\222"
+    "A725Azure region/location from which to "
+    "export flow logs.\340A\002R\010location\022f\n\016resour"
+    "ce_group\030\002 \001(\tB\?\222A927Resource group cont"
+    "aining the NSG generating flow logs.\340A\002R"
+    "\rresourceGroup\022j\n\017storage_account\030\003 \001(\tB"
+    "A\222A;29Storage account from which flow lo"
+    "gs are to be extracted.\340A\002R\016storageAccou"
+    "nt\022n\n\017subscription_id\030\004 \001(\tBE\222A\?2=ID of "
+    "Azure account from which flows logs are "
+    "to be exported.\340A\002R\016subscriptionId\022\244\001\n\032s"
+    "ecurity_principal_enabled\030\005 \001(\010Bf\222Ac2aIn"
+    "dication whether security principal for "
+    "the Kentik flow export application has b"
+    "een authorized.R\030securityPrincipalEnable"
+    "d\"\301\001\n\rGceProperties\022U\n\007project\030\001 \001(\tB;\222A"
+    "523Name of the project from which to exp"
+    "ort flow logs.\340A\002R\007project\022Y\n\014subscripti"
+    "on\030\002 \001(\tB5\222A/2-GCP Pub/Sub subscription "
+    "providing flow logs.\340A\002R\014subscription\"f\n"
+    "\rIbmProperties\022U\n\006bucket\030\001 \001(\tB=\222A:28Sto"
+    "rage bucket from which flow logs are to "
+    "be extracted.R\006bucket\"\223\007\n\rOciProperties\022"
+    "i\n\013oci_user_id\030\001 \001(\tBI\222AC2AID of the use"
+    "r created to represent the Kentik cloud "
+    "export tool.\340A\002R\tociUserId\022B\n\016oci_tenanc"
+    "y_id\030\002 \001(\tB\034\222A\0262\024OCI Tenancy details.\340A\002"
+    "R\014ociTenancyId\022[\n\022oci_compartment_id\030\003 \003"
+    "(\tB-\222A*2(Compartment IDs to scrape metad"
+    "ata from.R\020ociCompartmentId\022X\n\022oci_defau"
+    "lt_region\030\004 \001(\tB*\222A$2\"Default Enabled Re"
+    "gion to scrape..\340A\002R\020ociDefaultRegion\022Z\n"
+    "\025oci_collect_flow_logs\030\005 \001(\010B\'\222A$2\"Defau"
+    "lt Enabled Region to scrape..R\022ociCollec"
+    "tFlowLogs\022O\n\017oci_bucket_name\030\006 \001(\tB\'\222A$2"
+    "\"Default Enabled Region to scrape..R\roci"
+    "BucketName\022b\n\031oci_bucket_namespace_name\030"
+    "\007 \001(\tB\'\222A$2\"Default Enabled Region to sc"
+    "rape..R\026ociBucketNamespaceName\022d\n\032oci_se"
+    "rvice_connector_ocid\030\010 \001(\tB\'\222A$2\"Default"
+    " Enabled Region to scrape..R\027ociServiceC"
+    "onnectorOcid\022\244\001\n\033oci_flow_object_name_pr"
+    "efix\030\t \001(\tBf\222Ac2aWe will look for files "
+    "in the bucket whose names start with {%p"
+    "refix%}/{%service_connector_ocid%}R\027ociF"
+    "lowObjectNamePrefix\"\226\004\n\021CloudExportStatu"
+    "s\022:\n\006status\030\001 \001(\tB\"\222A\0342\032Status of the ex"
+    "port task.\340A\003R\006status\022d\n\rerror_message\030\002"
+    " \001(\tB\?\222A927Text of the last error messag"
+    "e (empty if status is OK).\340A\003R\014errorMess"
+    "age\022V\n\nflow_found\030\003 \001(\010B7\222A12/Indication"
+    " whether any flow data were exported.\340A\003"
+    "R\tflowFound\022i\n\napi_access\030\004 \001(\010BJ\222AD2BIn"
+    "dication whether the export process is a"
+    "ble to access cloud API.\340A\003R\tapiAccess\022\233"
+    "\001\n\026storage_account_access\030\005 \001(\010Be\222A_2]In"
+    "dication whether the export process is a"
+    "ble to access storage account containing"
+    " flow logs.\340A\003R\024storageAccountAccess\"~\n\030"
+    "CreateCloudExportRequest\022b\n\006export\030\001 \001(\013"
+    "2(.kentik.cloud_export.v202210.CloudExpo"
+    "rtB \222A\0352\033Cloud export configuration.R\006ex"
+    "port\"\200\001\n\031CreateCloudExportResponse\022c\n\006ex"
+    "port\030\001 \001(\0132(.kentik.cloud_export.v202210"
+    ".CloudExportB!\222A\0362\034Created cloud export "
+    "object.R\006export\"\031\n\027ListCloudExportsReque"
+    "st\"\213\002\n\030ListCloudExportsResponse\022f\n\007expor"
+    "ts\030\001 \003(\0132(.kentik.cloud_export.v202210.C"
+    "loudExportB\"\222A\0372\035List of cloud export ob"
+    "jects.R\007exports\022\206\001\n\025invalid_exports_coun"
+    "t\030\002 \001(\rBR\222AO2MNumber of objects with inv"
+    "alid data (which are not returned in the"
+    " response).R\023invalidExportsCount\"U\n\025GetC"
+    "loudExportRequest\022<\n\002id\030\001 \001(\tB,\222A)2\'ID o"
+    "f the cloud export to be retrieved.R\002id\""
+    "u\n\026GetCloudExportResponse\022[\n\006export\030\001 \001("
+    "\0132(.kentik.cloud_export.v202210.CloudExp"
+    "ortB\031\222A\0262\024Cloud export object.R\006export\"~"
+    "\n\030UpdateCloudExportRequest\022b\n\006export\030\001 \001"
+    "(\0132(.kentik.cloud_export.v202210.CloudEx"
+    "portB \222A\0352\033Cloud export configuration.R\006"
+    "export\"\200\001\n\031UpdateCloudExportResponse\022c\n\006"
+    "export\030\001 \001(\0132(.kentik.cloud_export.v2022"
+    "10.CloudExportB!\222A\0362\034Updated cloud expor"
+    "t object.R\006export\"V\n\030DeleteCloudExportRe"
+    "quest\022:\n\002id\030\001 \001(\tB*\222A\'2%ID of the cloud "
+    "export to be deleted.R\002id\"\033\n\031DeleteCloud"
+    "ExportResponse*\202\001\n\017CloudExportType\022!\n\035CL"
+    "OUD_EXPORT_TYPE_UNSPECIFIED\020\000\022$\n CLOUD_E"
+    "XPORT_TYPE_KENTIK_MANAGED\020\001\022&\n\"CLOUD_EXP"
+    "ORT_TYPE_CUSTOMER_MANAGED\020\002*\255\001\n\rCloudPro"
+    "vider\022\036\n\032CLOUD_PROVIDER_UNSPECIFIED\020\000\022\026\n"
+    "\022CLOUD_PROVIDER_AWS\020\001\022\030\n\024CLOUD_PROVIDER_"
+    "AZURE\020\002\022\026\n\022CLOUD_PROVIDER_GCE\020\003\022\032\n\022CLOUD"
+    "_PROVIDER_IBM\020\004\032\002\010\001\022\026\n\022CLOUD_PROVIDER_OC"
+    "I\020\0052\366\014\n\027CloudExportAdminService\022\265\002\n\021Crea"
+    "teCloudExport\0225.kentik.cloud_export.v202"
+    "210.CreateCloudExportRequest\0326.kentik.cl"
+    "oud_export.v202210.CreateCloudExportResp"
+    "onse\"\260\001\222Ai\022\024Create Cloud Export.\032>Create"
+    " new cloud export based on configuration"
+    " in the request.*\021CreateCloudExport\362\327\002\030a"
+    "dmin.cloud_export:write\202\323\344\223\002\"\"\035/cloud_ex"
+    "port/v202210/exports:\001*\022\241\002\n\020ListCloudExp"
+    "orts\0224.kentik.cloud_export.v202210.ListC"
+    "loudExportsRequest\0325.kentik.cloud_export"
+    ".v202210.ListCloudExportsResponse\"\237\001\222A\\\022"
+    "\023List cloud exports.\0323Returns a list of "
+    "all cloud exports in the account.*\020ListC"
+    "loudExports\362\327\002\027admin.cloud_export:read\202\323"
+    "\344\223\002\037\022\035/cloud_export/v202210/exports\022\306\002\n\016"
+    "GetCloudExport\0222.kentik.cloud_export.v20"
+    "2210.GetCloudExportRequest\0323.kentik.clou"
+    "d_export.v202210.GetCloudExportResponse\""
+    "\312\001\222A\201\001\022*Get cloud export configuration a"
+    "nd status.\032CReturns configuration and st"
+    "atus of cloud export with specified ID.*"
+    "\016GetCloudExport\362\327\002\027admin.cloud_export:re"
+    "ad\202\323\344\223\002$\022\"/cloud_export/v202210/exports/"
+    "{id}\022\337\002\n\021UpdateCloudExport\0225.kentik.clou"
+    "d_export.v202210.UpdateCloudExportReques"
+    "t\0326.kentik.cloud_export.v202210.UpdateCl"
+    "oudExportResponse\"\332\001\222A\206\001\022%Update configu"
+    "ration of cloud export.\032JReplace complet"
+    "e configuration of a cloud export with d"
+    "ata in the request.*\021UpdateCloudExport\362\327"
+    "\002\030admin.cloud_export:write\202\323\344\223\002.\032)/cloud"
+    "_export/v202210/exports/{export.id}:\001*\022\241"
+    "\002\n\021DeleteCloudExport\0225.kentik.cloud_expo"
+    "rt.v202210.DeleteCloudExportRequest\0326.ke"
+    "ntik.cloud_export.v202210.DeleteCloudExp"
+    "ortResponse\"\234\001\222AS\022\026Delete a cloud export"
+    ".\032&Delete cloud export with specified ID"
+    ".*\021DeleteCloudExport\362\327\002\030admin.cloud_expo"
+    "rt:write\202\323\344\223\002$*\"/cloud_export/v202210/ex"
+    "ports/{id}\0320\312A\023grpc.api.kentik.com\352\327\002\022ad"
+    "min.cloud_export\220\330\002\003B\367\035ZSgithub.com/kent"
+    "ik/api-schema-public/gen/go/kentik/cloud"
+    "_export/v202210;cloud_export\222A\236\035\022\317\033\n\036Clo"
+    "ud Export Configuration API\022\334\032# Overview"
+    "\nIn Kentik, a \"cloud export\" is an objec"
+    "t whose properties are the values that K"
+    "entik needs to access network flow logs "
+    "from a given set of resources in a given"
+    " cloud provider (see [Cloud Exports and "
+    "Devices](https://kb.kentik.com/v4/Na00.h"
+    "tm#Na00-Cloud_Exports_and_Devices)). The"
+    " Cloud Export API enables programmatic m"
+    "anagement of cloud exports, serving two "
+    "primary functions:\n* Configuration of th"
+    "e Kentik resources required to export ne"
+    "twork flow logs and metadata from [publi"
+    "c clouds](https://kb.kentik.com/v4/Na00."
+    "htm).\n* Basic status information on acti"
+    "ve export processes.\n\n### Supported Clou"
+    "d Providers\nThe functionality and config"
+    "uration parameters supported by this API"
+    " differ by cloud provider. The API curre"
+    "ntly supports the following providers:\n*"
+    " [Amazon Web Services](https://kb.kentik"
+    ".com/v0/Bd06.htm) (AWS)\n* [Microsoft Azu"
+    "re](https://kb.kentik.com/v0/Bd08.htm)\n*"
+    " [Google Cloud](https://kb.kentik.com/v0"
+    "/Bd07.htm) (GCP)\n* [IBM Cloud](https://k"
+    "b.kentik.com/v0/Bd09.htm)\n\n### Additiona"
+    "l Public Resources\nThe following additio"
+    "nal resources are available for working "
+    "with this API:\n* Kentik community [Pytho"
+    "n](https://github.com/kentik/community_s"
+    "dk_python) and [Go](https://github.com/k"
+    "entik/community_sdk_golang) SDKs provide"
+    " language-specific support for using thi"
+    "s and other Kentik APIs. These SDKs can "
+    "be also used as example code for develop"
+    "ment.\n* A [Terraform provider](https://r"
+    "egistry.terraform.io/providers/kentik/ke"
+    "ntik-cloudexport) is available for confi"
+    "guring `cloud_export` instances in Kenti"
+    "k. Terraform modules are available for ["
+    "AWS](https://github.com/kentik/config-sn"
+    "ippets-cloud/tree/master/cloud_AWS/terra"
+    "form/module), [Azure](https://github.com"
+    "/kentik/config-snippets-cloud/tree/maste"
+    "r/cloud_Azure/terraform/module) \nand [GC"
+    "P](https://github.com/kentik/config-snip"
+    "pets-cloud/tree/master/cloud_GCP/terrafo"
+    "rm/module).\nThese modules support onboar"
+    "ding and ongoing management of all resou"
+    "rces (in public clouds and in Kentik) re"
+    "quired to export flow logs to Kentik.\n\n#"
+    " Anatomy of a Cloud Export\nConfiguration"
+    " and status of a `cloud_export` instance"
+    " is represented by the `CloudExport` obj"
+    "ect, which contains three categories of "
+    "attributes:\n* Common Configuration Attri"
+    "butes\n* Cloud Provider Configuration Att"
+    "ributes\n* Metadata and Status Attributes"
+    "\n\n### Common Configuration Attributes\nTh"
+    "e configuration attributes in the table "
+    "below are common to `CloudExport` object"
+    "s for all cloud providers.\n| Attribute |"
+    " Required | Default |\n|-----------|-----"
+    "-----| ------- |\n| enabled | No | False "
+    "|\n| name | Yes |   |\n| description | No "
+    "| <empty string> |\n| type | Yes | |\n| cl"
+    "oud_provider | Yes | |\n| plan_id | Yes |"
+    " |\n\n### Cloud Provider Specific Attribut"
+    "es\nThe attributes listed in the table be"
+    "low are objects whose parameters are spe"
+    "cific to each cloud provider.\n| Cloud Pr"
+    "ovider | Attribute | Object Name |\n|----"
+    "-------|----------| ------- |\n| AWS | aw"
+    "s | AwsProperties |\n| Azure | azure | Az"
+    "ureProperties |\n| Google Cloud | gce | G"
+    "ceProperties |\n| IBM Cloud | ibm | IbmPr"
+    "operties |\n\n### Metadata and Status Attr"
+    "ibutes\nThe attributes in the table below"
+    " provide read-only metadata and status f"
+    "or a `cloud_export` instance.\n| Attribut"
+    "e | Purpose |\n|-----------|---------|\n| "
+    "id | System-generated unique identifier "
+    "of the instance |\n| cdate | Creation tim"
+    "estamp |\n| edate | Last-modification tim"
+    "estamp |\n| current_status | Runtime stat"
+    "us of the flow and metadata collection p"
+    "rocess |\n\n\"E\n\026Kentik API Engineering\022+ht"
+    "tps://github.com/kentik/api-schema-publi"
+    "c2\007v202210*\001\0022\020application/json:\020applica"
+    "tion/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Emai"
+    "l \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002b"
+    "\026\n\t\n\005email\022\000\n\t\n\005token\022\000rE\n Kentik suppor"
+    "t for public clouds\022!https://kb.kentik.c"
+    "om/v4/Na00.htmb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fcloud_5fexport_2fv202210_2fcloud_5fexport_2eproto_deps[6] =
     {
@@ -1016,13 +1109,13 @@ static ::absl::once_flag descriptor_table_kentik_2fcloud_5fexport_2fv202210_2fcl
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fcloud_5fexport_2fv202210_2fcloud_5fexport_2eproto = {
     false,
     false,
-    11056,
+    12062,
     descriptor_table_protodef_kentik_2fcloud_5fexport_2fv202210_2fcloud_5fexport_2eproto,
     "kentik/cloud_export/v202210/cloud_export.proto",
     &descriptor_table_kentik_2fcloud_5fexport_2fv202210_2fcloud_5fexport_2eproto_once,
     descriptor_table_kentik_2fcloud_5fexport_2fv202210_2fcloud_5fexport_2eproto_deps,
     6,
-    16,
+    17,
     schemas,
     file_default_instances,
     TableStruct_kentik_2fcloud_5fexport_2fv202210_2fcloud_5fexport_2eproto::offsets,
@@ -1046,9 +1139,9 @@ const ::google::protobuf::EnumDescriptor* CloudProvider_descriptor() {
   return file_level_enum_descriptors_kentik_2fcloud_5fexport_2fv202210_2fcloud_5fexport_2eproto[1];
 }
 PROTOBUF_CONSTINIT const uint32_t CloudProvider_internal_data_[] = {
-    327680u, 0u, };
+    393216u, 0u, };
 bool CloudProvider_IsValid(int value) {
-  return 0 <= value && value <= 4;
+  return 0 <= value && value <= 5;
 }
 // ===================================================================
 
@@ -1113,6 +1206,19 @@ void CloudExport::set_allocated_ibm(::kentik::cloud_export::v202210::IbmProperti
     _impl_.cloud_specific_properties_.ibm_ = ibm;
   }
   // @@protoc_insertion_point(field_set_allocated:kentik.cloud_export.v202210.CloudExport.ibm)
+}
+void CloudExport::set_allocated_oci(::kentik::cloud_export::v202210::OciProperties* oci) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  clear_cloud_specific_properties();
+  if (oci) {
+    ::google::protobuf::Arena* submessage_arena = oci->GetArena();
+    if (message_arena != submessage_arena) {
+      oci = ::google::protobuf::internal::GetOwnedMessage(message_arena, oci, submessage_arena);
+    }
+    set_has_oci();
+    _impl_.cloud_specific_properties_.oci_ = oci;
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.cloud_export.v202210.CloudExport.oci)
 }
 void CloudExport::clear_cdate() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
@@ -1189,6 +1295,9 @@ CloudExport::CloudExport(
         break;
       case kIbm:
         _impl_.cloud_specific_properties_.ibm_ = ::google::protobuf::Message::CopyConstruct<::kentik::cloud_export::v202210::IbmProperties>(arena, *from._impl_.cloud_specific_properties_.ibm_);
+        break;
+      case kOci:
+        _impl_.cloud_specific_properties_.oci_ = ::google::protobuf::Message::CopyConstruct<::kentik::cloud_export::v202210::OciProperties>(arena, *from._impl_.cloud_specific_properties_.oci_);
         break;
   }
 
@@ -1271,6 +1380,14 @@ void CloudExport::clear_cloud_specific_properties() {
       }
       break;
     }
+    case kOci: {
+      if (GetArena() == nullptr) {
+        delete _impl_.cloud_specific_properties_.oci_;
+      } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
+        ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.cloud_specific_properties_.oci_);
+      }
+      break;
+    }
     case CLOUD_SPECIFIC_PROPERTIES_NOT_SET: {
       break;
     }
@@ -1315,16 +1432,16 @@ const ::google::protobuf::internal::ClassData* CloudExport::GetClassData() const
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<4, 14, 7, 80, 2> CloudExport::_table_ = {
+const ::_pbi::TcParseTable<4, 15, 8, 80, 2> CloudExport::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(CloudExport, _impl_._has_bits_),
     0, // no _extensions_
     15, 120,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294936576,  // skipmap
+    4294934528,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    14,  // num_field_entries
-    7,  // num_aux_entries
+    15,  // num_field_entries
+    8,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
     nullptr,  // post_loop_handler
@@ -1362,13 +1479,13 @@ const ::_pbi::TcParseTable<4, 14, 7, 80, 2> CloudExport::_table_ = {
     {::_pbi::TcParser::MiniParse, {}},
     // .kentik.cloud_export.v202210.CloudExportStatus current_status = 13 [json_name = "currentStatus", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::FastMtS1,
-     {106, 0, 4, PROTOBUF_FIELD_OFFSET(CloudExport, _impl_.current_status_)}},
+     {106, 0, 5, PROTOBUF_FIELD_OFFSET(CloudExport, _impl_.current_status_)}},
     // .google.protobuf.Timestamp cdate = 14 [json_name = "cdate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::FastMtS1,
-     {114, 1, 5, PROTOBUF_FIELD_OFFSET(CloudExport, _impl_.cdate_)}},
+     {114, 1, 6, PROTOBUF_FIELD_OFFSET(CloudExport, _impl_.cdate_)}},
     // .google.protobuf.Timestamp edate = 15 [json_name = "edate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::FastMtS1,
-     {122, 2, 6, PROTOBUF_FIELD_OFFSET(CloudExport, _impl_.edate_)}},
+     {122, 2, 7, PROTOBUF_FIELD_OFFSET(CloudExport, _impl_.edate_)}},
   }}, {{
     65535, 65535
   }}, {{
@@ -1405,20 +1522,24 @@ const ::_pbi::TcParseTable<4, 14, 7, 80, 2> CloudExport::_table_ = {
     // .kentik.cloud_export.v202210.IbmProperties ibm = 11 [json_name = "ibm"];
     {PROTOBUF_FIELD_OFFSET(CloudExport, _impl_.cloud_specific_properties_.ibm_), _Internal::kOneofCaseOffset + 0, 3,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
+    // .kentik.cloud_export.v202210.OciProperties oci = 12 [json_name = "oci"];
+    {PROTOBUF_FIELD_OFFSET(CloudExport, _impl_.cloud_specific_properties_.oci_), _Internal::kOneofCaseOffset + 0, 4,
+    (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
     // .kentik.cloud_export.v202210.CloudExportStatus current_status = 13 [json_name = "currentStatus", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    {PROTOBUF_FIELD_OFFSET(CloudExport, _impl_.current_status_), _Internal::kHasBitsOffset + 0, 4,
+    {PROTOBUF_FIELD_OFFSET(CloudExport, _impl_.current_status_), _Internal::kHasBitsOffset + 0, 5,
     (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
     // .google.protobuf.Timestamp cdate = 14 [json_name = "cdate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    {PROTOBUF_FIELD_OFFSET(CloudExport, _impl_.cdate_), _Internal::kHasBitsOffset + 1, 5,
+    {PROTOBUF_FIELD_OFFSET(CloudExport, _impl_.cdate_), _Internal::kHasBitsOffset + 1, 6,
     (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
     // .google.protobuf.Timestamp edate = 15 [json_name = "edate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    {PROTOBUF_FIELD_OFFSET(CloudExport, _impl_.edate_), _Internal::kHasBitsOffset + 2, 6,
+    {PROTOBUF_FIELD_OFFSET(CloudExport, _impl_.edate_), _Internal::kHasBitsOffset + 2, 7,
     (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
   }}, {{
     {::_pbi::TcParser::GetTable<::kentik::cloud_export::v202210::AwsProperties>()},
     {::_pbi::TcParser::GetTable<::kentik::cloud_export::v202210::AzureProperties>()},
     {::_pbi::TcParser::GetTable<::kentik::cloud_export::v202210::GceProperties>()},
     {::_pbi::TcParser::GetTable<::kentik::cloud_export::v202210::IbmProperties>()},
+    {::_pbi::TcParser::GetTable<::kentik::cloud_export::v202210::OciProperties>()},
     {::_pbi::TcParser::GetTable<::kentik::cloud_export::v202210::CloudExportStatus>()},
     {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
     {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
@@ -1559,6 +1680,12 @@ PROTOBUF_NOINLINE void CloudExport::Clear() {
                   stream);
               break;
             }
+            case kOci: {
+              target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                  12, *this_._impl_.cloud_specific_properties_.oci_, this_._impl_.cloud_specific_properties_.oci_->GetCachedSize(), target,
+                  stream);
+              break;
+            }
             default:
               break;
           }
@@ -1689,6 +1816,12 @@ PROTOBUF_NOINLINE void CloudExport::Clear() {
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.cloud_specific_properties_.ibm_);
               break;
             }
+            // .kentik.cloud_export.v202210.OciProperties oci = 12 [json_name = "oci"];
+            case kOci: {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.cloud_specific_properties_.oci_);
+              break;
+            }
             case CLOUD_SPECIFIC_PROPERTIES_NOT_SET: {
               break;
             }
@@ -1802,6 +1935,15 @@ void CloudExport::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::goo
               ::google::protobuf::Message::CopyConstruct<::kentik::cloud_export::v202210::IbmProperties>(arena, *from._impl_.cloud_specific_properties_.ibm_);
         } else {
           _this->_impl_.cloud_specific_properties_.ibm_->MergeFrom(from._internal_ibm());
+        }
+        break;
+      }
+      case kOci: {
+        if (oneof_needs_init) {
+          _this->_impl_.cloud_specific_properties_.oci_ =
+              ::google::protobuf::Message::CopyConstruct<::kentik::cloud_export::v202210::OciProperties>(arena, *from._impl_.cloud_specific_properties_.oci_);
+        } else {
+          _this->_impl_.cloud_specific_properties_.oci_->MergeFrom(from._internal_oci());
         }
         break;
       }
@@ -3188,6 +3330,480 @@ void IbmProperties::InternalSwap(IbmProperties* PROTOBUF_RESTRICT other) {
 }
 
 ::google::protobuf::Metadata IbmProperties::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class OciProperties::_Internal {
+ public:
+};
+
+OciProperties::OciProperties(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.cloud_export.v202210.OciProperties)
+}
+inline PROTOBUF_NDEBUG_INLINE OciProperties::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::kentik::cloud_export::v202210::OciProperties& from_msg)
+      : oci_compartment_id_{visibility, arena, from.oci_compartment_id_},
+        oci_user_id_(arena, from.oci_user_id_),
+        oci_tenancy_id_(arena, from.oci_tenancy_id_),
+        oci_default_region_(arena, from.oci_default_region_),
+        oci_bucket_name_(arena, from.oci_bucket_name_),
+        oci_bucket_namespace_name_(arena, from.oci_bucket_namespace_name_),
+        oci_service_connector_ocid_(arena, from.oci_service_connector_ocid_),
+        oci_flow_object_name_prefix_(arena, from.oci_flow_object_name_prefix_),
+        _cached_size_{0} {}
+
+OciProperties::OciProperties(
+    ::google::protobuf::Arena* arena,
+    const OciProperties& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  OciProperties* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  _impl_.oci_collect_flow_logs_ = from._impl_.oci_collect_flow_logs_;
+
+  // @@protoc_insertion_point(copy_constructor:kentik.cloud_export.v202210.OciProperties)
+}
+inline PROTOBUF_NDEBUG_INLINE OciProperties::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : oci_compartment_id_{visibility, arena},
+        oci_user_id_(arena),
+        oci_tenancy_id_(arena),
+        oci_default_region_(arena),
+        oci_bucket_name_(arena),
+        oci_bucket_namespace_name_(arena),
+        oci_service_connector_ocid_(arena),
+        oci_flow_object_name_prefix_(arena),
+        _cached_size_{0} {}
+
+inline void OciProperties::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.oci_collect_flow_logs_ = {};
+}
+OciProperties::~OciProperties() {
+  // @@protoc_insertion_point(destructor:kentik.cloud_export.v202210.OciProperties)
+  SharedDtor(*this);
+}
+inline void OciProperties::SharedDtor(MessageLite& self) {
+  OciProperties& this_ = static_cast<OciProperties&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.oci_user_id_.Destroy();
+  this_._impl_.oci_tenancy_id_.Destroy();
+  this_._impl_.oci_default_region_.Destroy();
+  this_._impl_.oci_bucket_name_.Destroy();
+  this_._impl_.oci_bucket_namespace_name_.Destroy();
+  this_._impl_.oci_service_connector_ocid_.Destroy();
+  this_._impl_.oci_flow_object_name_prefix_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* OciProperties::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) OciProperties(arena);
+}
+constexpr auto OciProperties::InternalNewImpl_() {
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(OciProperties, _impl_.oci_compartment_id_) +
+          decltype(OciProperties::_impl_.oci_compartment_id_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::CopyInit(
+        sizeof(OciProperties), alignof(OciProperties), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&OciProperties::PlacementNew_,
+                                 sizeof(OciProperties),
+                                 alignof(OciProperties));
+  }
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull OciProperties::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_OciProperties_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &OciProperties::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<OciProperties>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &OciProperties::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<OciProperties>(), &OciProperties::ByteSizeLong,
+            &OciProperties::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(OciProperties, _impl_._cached_size_),
+        false,
+    },
+    &OciProperties::kDescriptorMethods,
+    &descriptor_table_kentik_2fcloud_5fexport_2fv202210_2fcloud_5fexport_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* OciProperties::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<4, 9, 0, 212, 2> OciProperties::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    9, 120,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294966784,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    9,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::cloud_export::v202210::OciProperties>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // string oci_user_id = 1 [json_name = "ociUserId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(OciProperties, _impl_.oci_user_id_)}},
+    // string oci_tenancy_id = 2 [json_name = "ociTenancyId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(OciProperties, _impl_.oci_tenancy_id_)}},
+    // repeated string oci_compartment_id = 3 [json_name = "ociCompartmentId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUR1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(OciProperties, _impl_.oci_compartment_id_)}},
+    // string oci_default_region = 4 [json_name = "ociDefaultRegion", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {34, 63, 0, PROTOBUF_FIELD_OFFSET(OciProperties, _impl_.oci_default_region_)}},
+    // bool oci_collect_flow_logs = 5 [json_name = "ociCollectFlowLogs", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(OciProperties, _impl_.oci_collect_flow_logs_), 63>(),
+     {40, 63, 0, PROTOBUF_FIELD_OFFSET(OciProperties, _impl_.oci_collect_flow_logs_)}},
+    // string oci_bucket_name = 6 [json_name = "ociBucketName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {50, 63, 0, PROTOBUF_FIELD_OFFSET(OciProperties, _impl_.oci_bucket_name_)}},
+    // string oci_bucket_namespace_name = 7 [json_name = "ociBucketNamespaceName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {58, 63, 0, PROTOBUF_FIELD_OFFSET(OciProperties, _impl_.oci_bucket_namespace_name_)}},
+    // string oci_service_connector_ocid = 8 [json_name = "ociServiceConnectorOcid", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {66, 63, 0, PROTOBUF_FIELD_OFFSET(OciProperties, _impl_.oci_service_connector_ocid_)}},
+    // string oci_flow_object_name_prefix = 9 [json_name = "ociFlowObjectNamePrefix", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {74, 63, 0, PROTOBUF_FIELD_OFFSET(OciProperties, _impl_.oci_flow_object_name_prefix_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string oci_user_id = 1 [json_name = "ociUserId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(OciProperties, _impl_.oci_user_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string oci_tenancy_id = 2 [json_name = "ociTenancyId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(OciProperties, _impl_.oci_tenancy_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // repeated string oci_compartment_id = 3 [json_name = "ociCompartmentId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(OciProperties, _impl_.oci_compartment_id_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
+    // string oci_default_region = 4 [json_name = "ociDefaultRegion", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(OciProperties, _impl_.oci_default_region_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // bool oci_collect_flow_logs = 5 [json_name = "ociCollectFlowLogs", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(OciProperties, _impl_.oci_collect_flow_logs_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
+    // string oci_bucket_name = 6 [json_name = "ociBucketName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(OciProperties, _impl_.oci_bucket_name_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string oci_bucket_namespace_name = 7 [json_name = "ociBucketNamespaceName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(OciProperties, _impl_.oci_bucket_namespace_name_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string oci_service_connector_ocid = 8 [json_name = "ociServiceConnectorOcid", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(OciProperties, _impl_.oci_service_connector_ocid_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string oci_flow_object_name_prefix = 9 [json_name = "ociFlowObjectNamePrefix", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(OciProperties, _impl_.oci_flow_object_name_prefix_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\51\13\16\22\22\0\17\31\32\33\0\0\0\0\0\0"
+    "kentik.cloud_export.v202210.OciProperties"
+    "oci_user_id"
+    "oci_tenancy_id"
+    "oci_compartment_id"
+    "oci_default_region"
+    "oci_bucket_name"
+    "oci_bucket_namespace_name"
+    "oci_service_connector_ocid"
+    "oci_flow_object_name_prefix"
+  }},
+};
+
+PROTOBUF_NOINLINE void OciProperties::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.cloud_export.v202210.OciProperties)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.oci_compartment_id_.Clear();
+  _impl_.oci_user_id_.ClearToEmpty();
+  _impl_.oci_tenancy_id_.ClearToEmpty();
+  _impl_.oci_default_region_.ClearToEmpty();
+  _impl_.oci_bucket_name_.ClearToEmpty();
+  _impl_.oci_bucket_namespace_name_.ClearToEmpty();
+  _impl_.oci_service_connector_ocid_.ClearToEmpty();
+  _impl_.oci_flow_object_name_prefix_.ClearToEmpty();
+  _impl_.oci_collect_flow_logs_ = false;
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* OciProperties::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const OciProperties& this_ = static_cast<const OciProperties&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* OciProperties::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const OciProperties& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:kentik.cloud_export.v202210.OciProperties)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // string oci_user_id = 1 [json_name = "ociUserId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_oci_user_id().empty()) {
+            const std::string& _s = this_._internal_oci_user_id();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.cloud_export.v202210.OciProperties.oci_user_id");
+            target = stream->WriteStringMaybeAliased(1, _s, target);
+          }
+
+          // string oci_tenancy_id = 2 [json_name = "ociTenancyId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_oci_tenancy_id().empty()) {
+            const std::string& _s = this_._internal_oci_tenancy_id();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.cloud_export.v202210.OciProperties.oci_tenancy_id");
+            target = stream->WriteStringMaybeAliased(2, _s, target);
+          }
+
+          // repeated string oci_compartment_id = 3 [json_name = "ociCompartmentId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          for (int i = 0, n = this_._internal_oci_compartment_id_size(); i < n; ++i) {
+            const auto& s = this_._internal_oci_compartment_id().Get(i);
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.cloud_export.v202210.OciProperties.oci_compartment_id");
+            target = stream->WriteString(3, s, target);
+          }
+
+          // string oci_default_region = 4 [json_name = "ociDefaultRegion", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_oci_default_region().empty()) {
+            const std::string& _s = this_._internal_oci_default_region();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.cloud_export.v202210.OciProperties.oci_default_region");
+            target = stream->WriteStringMaybeAliased(4, _s, target);
+          }
+
+          // bool oci_collect_flow_logs = 5 [json_name = "ociCollectFlowLogs", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (this_._internal_oci_collect_flow_logs() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteBoolToArray(
+                5, this_._internal_oci_collect_flow_logs(), target);
+          }
+
+          // string oci_bucket_name = 6 [json_name = "ociBucketName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_oci_bucket_name().empty()) {
+            const std::string& _s = this_._internal_oci_bucket_name();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.cloud_export.v202210.OciProperties.oci_bucket_name");
+            target = stream->WriteStringMaybeAliased(6, _s, target);
+          }
+
+          // string oci_bucket_namespace_name = 7 [json_name = "ociBucketNamespaceName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_oci_bucket_namespace_name().empty()) {
+            const std::string& _s = this_._internal_oci_bucket_namespace_name();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.cloud_export.v202210.OciProperties.oci_bucket_namespace_name");
+            target = stream->WriteStringMaybeAliased(7, _s, target);
+          }
+
+          // string oci_service_connector_ocid = 8 [json_name = "ociServiceConnectorOcid", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_oci_service_connector_ocid().empty()) {
+            const std::string& _s = this_._internal_oci_service_connector_ocid();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.cloud_export.v202210.OciProperties.oci_service_connector_ocid");
+            target = stream->WriteStringMaybeAliased(8, _s, target);
+          }
+
+          // string oci_flow_object_name_prefix = 9 [json_name = "ociFlowObjectNamePrefix", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_oci_flow_object_name_prefix().empty()) {
+            const std::string& _s = this_._internal_oci_flow_object_name_prefix();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.cloud_export.v202210.OciProperties.oci_flow_object_name_prefix");
+            target = stream->WriteStringMaybeAliased(9, _s, target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:kentik.cloud_export.v202210.OciProperties)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t OciProperties::ByteSizeLong(const MessageLite& base) {
+          const OciProperties& this_ = static_cast<const OciProperties&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t OciProperties::ByteSizeLong() const {
+          const OciProperties& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:kentik.cloud_export.v202210.OciProperties)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // repeated string oci_compartment_id = 3 [json_name = "ociCompartmentId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            {
+              total_size +=
+                  1 * ::google::protobuf::internal::FromIntSize(this_._internal_oci_compartment_id().size());
+              for (int i = 0, n = this_._internal_oci_compartment_id().size(); i < n; ++i) {
+                total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+                    this_._internal_oci_compartment_id().Get(i));
+              }
+            }
+          }
+           {
+            // string oci_user_id = 1 [json_name = "ociUserId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_oci_user_id().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_oci_user_id());
+            }
+            // string oci_tenancy_id = 2 [json_name = "ociTenancyId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_oci_tenancy_id().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_oci_tenancy_id());
+            }
+            // string oci_default_region = 4 [json_name = "ociDefaultRegion", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_oci_default_region().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_oci_default_region());
+            }
+            // string oci_bucket_name = 6 [json_name = "ociBucketName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_oci_bucket_name().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_oci_bucket_name());
+            }
+            // string oci_bucket_namespace_name = 7 [json_name = "ociBucketNamespaceName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_oci_bucket_namespace_name().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_oci_bucket_namespace_name());
+            }
+            // string oci_service_connector_ocid = 8 [json_name = "ociServiceConnectorOcid", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_oci_service_connector_ocid().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_oci_service_connector_ocid());
+            }
+            // string oci_flow_object_name_prefix = 9 [json_name = "ociFlowObjectNamePrefix", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_oci_flow_object_name_prefix().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_oci_flow_object_name_prefix());
+            }
+            // bool oci_collect_flow_logs = 5 [json_name = "ociCollectFlowLogs", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (this_._internal_oci_collect_flow_logs() != 0) {
+              total_size += 2;
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void OciProperties::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<OciProperties*>(&to_msg);
+  auto& from = static_cast<const OciProperties&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:kentik.cloud_export.v202210.OciProperties)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_internal_mutable_oci_compartment_id()->MergeFrom(from._internal_oci_compartment_id());
+  if (!from._internal_oci_user_id().empty()) {
+    _this->_internal_set_oci_user_id(from._internal_oci_user_id());
+  }
+  if (!from._internal_oci_tenancy_id().empty()) {
+    _this->_internal_set_oci_tenancy_id(from._internal_oci_tenancy_id());
+  }
+  if (!from._internal_oci_default_region().empty()) {
+    _this->_internal_set_oci_default_region(from._internal_oci_default_region());
+  }
+  if (!from._internal_oci_bucket_name().empty()) {
+    _this->_internal_set_oci_bucket_name(from._internal_oci_bucket_name());
+  }
+  if (!from._internal_oci_bucket_namespace_name().empty()) {
+    _this->_internal_set_oci_bucket_namespace_name(from._internal_oci_bucket_namespace_name());
+  }
+  if (!from._internal_oci_service_connector_ocid().empty()) {
+    _this->_internal_set_oci_service_connector_ocid(from._internal_oci_service_connector_ocid());
+  }
+  if (!from._internal_oci_flow_object_name_prefix().empty()) {
+    _this->_internal_set_oci_flow_object_name_prefix(from._internal_oci_flow_object_name_prefix());
+  }
+  if (from._internal_oci_collect_flow_logs() != 0) {
+    _this->_impl_.oci_collect_flow_logs_ = from._impl_.oci_collect_flow_logs_;
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void OciProperties::CopyFrom(const OciProperties& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.cloud_export.v202210.OciProperties)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void OciProperties::InternalSwap(OciProperties* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.oci_compartment_id_.InternalSwap(&other->_impl_.oci_compartment_id_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.oci_user_id_, &other->_impl_.oci_user_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.oci_tenancy_id_, &other->_impl_.oci_tenancy_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.oci_default_region_, &other->_impl_.oci_default_region_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.oci_bucket_name_, &other->_impl_.oci_bucket_name_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.oci_bucket_namespace_name_, &other->_impl_.oci_bucket_namespace_name_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.oci_service_connector_ocid_, &other->_impl_.oci_service_connector_ocid_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.oci_flow_object_name_prefix_, &other->_impl_.oci_flow_object_name_prefix_, arena);
+        swap(_impl_.oci_collect_flow_logs_, other->_impl_.oci_collect_flow_logs_);
+}
+
+::google::protobuf::Metadata OciProperties::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================

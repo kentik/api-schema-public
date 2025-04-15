@@ -437,6 +437,9 @@
                     "ibm": {
                         "$ref": "#/components/schemas/v202210IbmProperties"
                     },
+                    "oci": {
+                        "$ref": "#/components/schemas/v202210OciProperties"
+                    },
                     "currentStatus": {
                         "$ref": "#/components/schemas/v202210CloudExportStatus"
                     },
@@ -510,10 +513,11 @@
                     "CLOUD_PROVIDER_AWS",
                     "CLOUD_PROVIDER_AZURE",
                     "CLOUD_PROVIDER_GCE",
-                    "CLOUD_PROVIDER_IBM"
+                    "CLOUD_PROVIDER_IBM",
+                    "CLOUD_PROVIDER_OCI"
                 ],
                 "default": "CLOUD_PROVIDER_UNSPECIFIED",
-                "description": "- CLOUD_PROVIDER_UNSPECIFIED: Invalid value.\n - CLOUD_PROVIDER_AWS: Amazon Web Services\n - CLOUD_PROVIDER_AZURE: Microsoft Azure\n - CLOUD_PROVIDER_GCE: Google Cloud\n - CLOUD_PROVIDER_IBM: IBM Cloud\nDeprecated: IBM Cloud exports are no longer supported.",
+                "description": "- CLOUD_PROVIDER_UNSPECIFIED: Invalid value.\n - CLOUD_PROVIDER_AWS: Amazon Web Services\n - CLOUD_PROVIDER_AZURE: Microsoft Azure\n - CLOUD_PROVIDER_GCE: Google Cloud\n - CLOUD_PROVIDER_IBM: IBM Cloud\nDeprecated: IBM Cloud exports are no longer supported.\n - CLOUD_PROVIDER_OCI: OCI",
                 "title": "CloudProvider"
             },
             "v202210CreateCloudExportRequest": {
@@ -598,6 +602,65 @@
                     }
                 },
                 "title": "ListCloudExportsResponse"
+            },
+            "v202210OciProperties": {
+                "type": "object",
+                "properties": {
+                    "ociUserId": {
+                        "type": "string",
+                        "description": "ID of the user created to represent the Kentik cloud export tool.",
+                        "required": [
+                            "oci_user_id"
+                        ]
+                    },
+                    "ociTenancyId": {
+                        "type": "string",
+                        "description": "OCI Tenancy details.",
+                        "required": [
+                            "oci_tenancy_id"
+                        ]
+                    },
+                    "ociCompartmentId": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Compartment IDs to scrape metadata from."
+                    },
+                    "ociDefaultRegion": {
+                        "type": "string",
+                        "description": "Default Enabled Region to scrape..",
+                        "required": [
+                            "oci_default_region"
+                        ]
+                    },
+                    "ociCollectFlowLogs": {
+                        "type": "boolean",
+                        "description": "Default Enabled Region to scrape.."
+                    },
+                    "ociBucketName": {
+                        "type": "string",
+                        "description": "Default Enabled Region to scrape.."
+                    },
+                    "ociBucketNamespaceName": {
+                        "type": "string",
+                        "description": "Default Enabled Region to scrape.."
+                    },
+                    "ociServiceConnectorOcid": {
+                        "type": "string",
+                        "description": "Default Enabled Region to scrape.."
+                    },
+                    "ociFlowObjectNamePrefix": {
+                        "type": "string",
+                        "description": "We will look for files in the bucket whose names start with {%prefix%}/{%service_connector_ocid%}"
+                    }
+                },
+                "title": "OciProperties",
+                "required": [
+                    "ociUserId",
+                    "ociTenancyId",
+                    "ociDefaultRegion"
+                ]
             },
             "v202210UpdateCloudExportRequest": {
                 "type": "object",

@@ -26,6 +26,7 @@ typedef struct Kentik__CloudExport__V202210__AwsProperties Kentik__CloudExport__
 typedef struct Kentik__CloudExport__V202210__AzureProperties Kentik__CloudExport__V202210__AzureProperties;
 typedef struct Kentik__CloudExport__V202210__GceProperties Kentik__CloudExport__V202210__GceProperties;
 typedef struct Kentik__CloudExport__V202210__IbmProperties Kentik__CloudExport__V202210__IbmProperties;
+typedef struct Kentik__CloudExport__V202210__OciProperties Kentik__CloudExport__V202210__OciProperties;
 typedef struct Kentik__CloudExport__V202210__CloudExportStatus Kentik__CloudExport__V202210__CloudExportStatus;
 typedef struct Kentik__CloudExport__V202210__CreateCloudExportRequest Kentik__CloudExport__V202210__CreateCloudExportRequest;
 typedef struct Kentik__CloudExport__V202210__CreateCloudExportResponse Kentik__CloudExport__V202210__CreateCloudExportResponse;
@@ -83,7 +84,11 @@ typedef enum _Kentik__CloudExport__V202210__CloudProvider {
    * IBM Cloud
    * Deprecated: IBM Cloud exports are no longer supported.
    */
-  KENTIK__CLOUD_EXPORT__V202210__CLOUD_PROVIDER__CLOUD_PROVIDER_IBM = 4
+  KENTIK__CLOUD_EXPORT__V202210__CLOUD_PROVIDER__CLOUD_PROVIDER_IBM = 4,
+  /*
+   * OCI
+   */
+  KENTIK__CLOUD_EXPORT__V202210__CLOUD_PROVIDER__CLOUD_PROVIDER_OCI = 5
     PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__CLOUD_EXPORT__V202210__CLOUD_PROVIDER)
 } Kentik__CloudExport__V202210__CloudProvider;
 
@@ -94,7 +99,8 @@ typedef enum {
   KENTIK__CLOUD_EXPORT__V202210__CLOUD_EXPORT__CLOUD_SPECIFIC_PROPERTIES_AWS = 8,
   KENTIK__CLOUD_EXPORT__V202210__CLOUD_EXPORT__CLOUD_SPECIFIC_PROPERTIES_AZURE = 9,
   KENTIK__CLOUD_EXPORT__V202210__CLOUD_EXPORT__CLOUD_SPECIFIC_PROPERTIES_GCE = 10,
-  KENTIK__CLOUD_EXPORT__V202210__CLOUD_EXPORT__CLOUD_SPECIFIC_PROPERTIES_IBM = 11
+  KENTIK__CLOUD_EXPORT__V202210__CLOUD_EXPORT__CLOUD_SPECIFIC_PROPERTIES_IBM = 11,
+  KENTIK__CLOUD_EXPORT__V202210__CLOUD_EXPORT__CLOUD_SPECIFIC_PROPERTIES_OCI = 12
     PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__CLOUD_EXPORT__V202210__CLOUD_EXPORT__CLOUD_SPECIFIC_PROPERTIES__CASE)
 } Kentik__CloudExport__V202210__CloudExport__CloudSpecificPropertiesCase;
 
@@ -120,6 +126,7 @@ struct  Kentik__CloudExport__V202210__CloudExport
     Kentik__CloudExport__V202210__AzureProperties *azure;
     Kentik__CloudExport__V202210__GceProperties *gce;
     Kentik__CloudExport__V202210__IbmProperties *ibm;
+    Kentik__CloudExport__V202210__OciProperties *oci;
   };
 };
 #define KENTIK__CLOUD_EXPORT__V202210__CLOUD_EXPORT__INIT \
@@ -194,6 +201,28 @@ struct  Kentik__CloudExport__V202210__IbmProperties
 #define KENTIK__CLOUD_EXPORT__V202210__IBM_PROPERTIES__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__cloud_export__v202210__ibm_properties__descriptor) \
     , (char *)protobuf_c_empty_string }
+
+
+/*
+ * {{.Name}}
+ */
+struct  Kentik__CloudExport__V202210__OciProperties
+{
+  ProtobufCMessage base;
+  char *oci_user_id;
+  char *oci_tenancy_id;
+  size_t n_oci_compartment_id;
+  char **oci_compartment_id;
+  char *oci_default_region;
+  protobuf_c_boolean oci_collect_flow_logs;
+  char *oci_bucket_name;
+  char *oci_bucket_namespace_name;
+  char *oci_service_connector_ocid;
+  char *oci_flow_object_name_prefix;
+};
+#define KENTIK__CLOUD_EXPORT__V202210__OCI_PROPERTIES__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__cloud_export__v202210__oci_properties__descriptor) \
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL, (char *)protobuf_c_empty_string, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
 
 
 /*
@@ -438,6 +467,25 @@ Kentik__CloudExport__V202210__IbmProperties *
 void   kentik__cloud_export__v202210__ibm_properties__free_unpacked
                      (Kentik__CloudExport__V202210__IbmProperties *message,
                       ProtobufCAllocator *allocator);
+/* Kentik__CloudExport__V202210__OciProperties methods */
+void   kentik__cloud_export__v202210__oci_properties__init
+                     (Kentik__CloudExport__V202210__OciProperties         *message);
+size_t kentik__cloud_export__v202210__oci_properties__get_packed_size
+                     (const Kentik__CloudExport__V202210__OciProperties   *message);
+size_t kentik__cloud_export__v202210__oci_properties__pack
+                     (const Kentik__CloudExport__V202210__OciProperties   *message,
+                      uint8_t             *out);
+size_t kentik__cloud_export__v202210__oci_properties__pack_to_buffer
+                     (const Kentik__CloudExport__V202210__OciProperties   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__CloudExport__V202210__OciProperties *
+       kentik__cloud_export__v202210__oci_properties__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__cloud_export__v202210__oci_properties__free_unpacked
+                     (Kentik__CloudExport__V202210__OciProperties *message,
+                      ProtobufCAllocator *allocator);
 /* Kentik__CloudExport__V202210__CloudExportStatus methods */
 void   kentik__cloud_export__v202210__cloud_export_status__init
                      (Kentik__CloudExport__V202210__CloudExportStatus         *message);
@@ -664,6 +712,9 @@ typedef void (*Kentik__CloudExport__V202210__GceProperties_Closure)
 typedef void (*Kentik__CloudExport__V202210__IbmProperties_Closure)
                  (const Kentik__CloudExport__V202210__IbmProperties *message,
                   void *closure_data);
+typedef void (*Kentik__CloudExport__V202210__OciProperties_Closure)
+                 (const Kentik__CloudExport__V202210__OciProperties *message,
+                  void *closure_data);
 typedef void (*Kentik__CloudExport__V202210__CloudExportStatus_Closure)
                  (const Kentik__CloudExport__V202210__CloudExportStatus *message,
                   void *closure_data);
@@ -767,6 +818,7 @@ extern const ProtobufCMessageDescriptor kentik__cloud_export__v202210__aws_prope
 extern const ProtobufCMessageDescriptor kentik__cloud_export__v202210__azure_properties__descriptor;
 extern const ProtobufCMessageDescriptor kentik__cloud_export__v202210__gce_properties__descriptor;
 extern const ProtobufCMessageDescriptor kentik__cloud_export__v202210__ibm_properties__descriptor;
+extern const ProtobufCMessageDescriptor kentik__cloud_export__v202210__oci_properties__descriptor;
 extern const ProtobufCMessageDescriptor kentik__cloud_export__v202210__cloud_export_status__descriptor;
 extern const ProtobufCMessageDescriptor kentik__cloud_export__v202210__create_cloud_export_request__descriptor;
 extern const ProtobufCMessageDescriptor kentik__cloud_export__v202210__create_cloud_export_response__descriptor;

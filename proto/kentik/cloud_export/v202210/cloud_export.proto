@@ -151,6 +151,8 @@ enum CloudProvider {
   // IBM Cloud
   // Deprecated: IBM Cloud exports are no longer supported.
   CLOUD_PROVIDER_IBM = 4 [deprecated = true];
+  // OCI
+  CLOUD_PROVIDER_OCI = 5;
 }
 
 // {{.Name}}
@@ -201,6 +203,7 @@ message CloudExport {
     AzureProperties azure = 9;
     GceProperties gce = 10;
     IbmProperties ibm = 11;
+    OciProperties oci = 12;
   }
   CloudExportStatus current_status = 13 [
     (google.api.field_behavior) = OUTPUT_ONLY,
@@ -337,6 +340,65 @@ message IbmProperties {
   string bucket = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Storage bucket from which flow logs are to be extracted."
+    }
+  ];
+}
+// {{.Name}}
+message OciProperties {
+  string oci_user_id = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the user created to represent the Kentik cloud export tool."
+    }
+  ];
+
+  string oci_tenancy_id = 2 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "OCI Tenancy details."
+    }
+  ];
+
+  repeated string oci_compartment_id = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Compartment IDs to scrape metadata from."
+    }
+  ];
+
+  string oci_default_region = 4 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Default Enabled Region to scrape.."
+    }
+  ];
+
+  bool oci_collect_flow_logs = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Default Enabled Region to scrape.."
+    }
+  ];
+
+  string oci_bucket_name = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Default Enabled Region to scrape.."
+    }
+  ];
+
+  string oci_bucket_namespace_name = 7 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Default Enabled Region to scrape.."
+    }
+  ];
+
+  string oci_service_connector_ocid = 8 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Default Enabled Region to scrape.."
+    }
+  ];
+
+  string oci_flow_object_name_prefix = 9 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "We will look for files in the bucket whose names start with {%prefix%}/{%service_connector_ocid%}"
     }
   ];
 }

@@ -104,6 +104,9 @@ extern ListCloudExportsRequestDefaultTypeInternal _ListCloudExportsRequest_defau
 class ListCloudExportsResponse;
 struct ListCloudExportsResponseDefaultTypeInternal;
 extern ListCloudExportsResponseDefaultTypeInternal _ListCloudExportsResponse_default_instance_;
+class OciProperties;
+struct OciPropertiesDefaultTypeInternal;
+extern OciPropertiesDefaultTypeInternal _OciProperties_default_instance_;
 class UpdateCloudExportRequest;
 struct UpdateCloudExportRequestDefaultTypeInternal;
 extern UpdateCloudExportRequestDefaultTypeInternal _UpdateCloudExportRequest_default_instance_;
@@ -161,6 +164,7 @@ enum CloudProvider : int {
   CLOUD_PROVIDER_AZURE = 2,
   CLOUD_PROVIDER_GCE = 3,
   CLOUD_PROVIDER_IBM [[deprecated]] = 4,
+  CLOUD_PROVIDER_OCI = 5,
   CloudProvider_INT_MIN_SENTINEL_DO_NOT_USE_ =
       std::numeric_limits<::int32_t>::min(),
   CloudProvider_INT_MAX_SENTINEL_DO_NOT_USE_ =
@@ -170,8 +174,8 @@ enum CloudProvider : int {
 bool CloudProvider_IsValid(int value);
 extern const uint32_t CloudProvider_internal_data_[];
 constexpr CloudProvider CloudProvider_MIN = static_cast<CloudProvider>(0);
-constexpr CloudProvider CloudProvider_MAX = static_cast<CloudProvider>(4);
-constexpr int CloudProvider_ARRAYSIZE = 4 + 1;
+constexpr CloudProvider CloudProvider_MAX = static_cast<CloudProvider>(5);
+constexpr int CloudProvider_ARRAYSIZE = 5 + 1;
 const ::google::protobuf::EnumDescriptor*
 CloudProvider_descriptor();
 template <typename T>
@@ -184,7 +188,7 @@ const std::string& CloudProvider_Name(T value) {
 template <>
 inline const std::string& CloudProvider_Name(CloudProvider value) {
   return ::google::protobuf::internal::NameOfDenseEnum<CloudProvider_descriptor,
-                                                 0, 4>(
+                                                 0, 5>(
       static_cast<int>(value));
 }
 inline bool CloudProvider_Parse(absl::string_view name, CloudProvider* value) {
@@ -195,6 +199,346 @@ inline bool CloudProvider_Parse(absl::string_view name, CloudProvider* value) {
 // ===================================================================
 
 
+// -------------------------------------------------------------------
+
+class OciProperties final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:kentik.cloud_export.v202210.OciProperties) */ {
+ public:
+  inline OciProperties() : OciProperties(nullptr) {}
+  ~OciProperties() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(OciProperties* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(OciProperties));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR OciProperties(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline OciProperties(const OciProperties& from) : OciProperties(nullptr, from) {}
+  inline OciProperties(OciProperties&& from) noexcept
+      : OciProperties(nullptr, std::move(from)) {}
+  inline OciProperties& operator=(const OciProperties& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline OciProperties& operator=(OciProperties&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const OciProperties& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const OciProperties* internal_default_instance() {
+    return reinterpret_cast<const OciProperties*>(
+        &_OciProperties_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 5;
+  friend void swap(OciProperties& a, OciProperties& b) { a.Swap(&b); }
+  inline void Swap(OciProperties* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(OciProperties* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  OciProperties* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<OciProperties>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const OciProperties& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const OciProperties& from) { OciProperties::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(OciProperties* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "kentik.cloud_export.v202210.OciProperties"; }
+
+ protected:
+  explicit OciProperties(::google::protobuf::Arena* arena);
+  OciProperties(::google::protobuf::Arena* arena, const OciProperties& from);
+  OciProperties(::google::protobuf::Arena* arena, OciProperties&& from) noexcept
+      : OciProperties(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kOciCompartmentIdFieldNumber = 3,
+    kOciUserIdFieldNumber = 1,
+    kOciTenancyIdFieldNumber = 2,
+    kOciDefaultRegionFieldNumber = 4,
+    kOciBucketNameFieldNumber = 6,
+    kOciBucketNamespaceNameFieldNumber = 7,
+    kOciServiceConnectorOcidFieldNumber = 8,
+    kOciFlowObjectNamePrefixFieldNumber = 9,
+    kOciCollectFlowLogsFieldNumber = 5,
+  };
+  // repeated string oci_compartment_id = 3 [json_name = "ociCompartmentId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  int oci_compartment_id_size() const;
+  private:
+  int _internal_oci_compartment_id_size() const;
+
+  public:
+  void clear_oci_compartment_id() ;
+  const std::string& oci_compartment_id(int index) const;
+  std::string* mutable_oci_compartment_id(int index);
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_oci_compartment_id(int index, Arg_&& value, Args_... args);
+  std::string* add_oci_compartment_id();
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void add_oci_compartment_id(Arg_&& value, Args_... args);
+  const ::google::protobuf::RepeatedPtrField<std::string>& oci_compartment_id() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* mutable_oci_compartment_id();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<std::string>& _internal_oci_compartment_id() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* _internal_mutable_oci_compartment_id();
+
+  public:
+  // string oci_user_id = 1 [json_name = "ociUserId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_oci_user_id() ;
+  const std::string& oci_user_id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_oci_user_id(Arg_&& arg, Args_... args);
+  std::string* mutable_oci_user_id();
+  PROTOBUF_NODISCARD std::string* release_oci_user_id();
+  void set_allocated_oci_user_id(std::string* value);
+
+  private:
+  const std::string& _internal_oci_user_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_oci_user_id(
+      const std::string& value);
+  std::string* _internal_mutable_oci_user_id();
+
+  public:
+  // string oci_tenancy_id = 2 [json_name = "ociTenancyId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_oci_tenancy_id() ;
+  const std::string& oci_tenancy_id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_oci_tenancy_id(Arg_&& arg, Args_... args);
+  std::string* mutable_oci_tenancy_id();
+  PROTOBUF_NODISCARD std::string* release_oci_tenancy_id();
+  void set_allocated_oci_tenancy_id(std::string* value);
+
+  private:
+  const std::string& _internal_oci_tenancy_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_oci_tenancy_id(
+      const std::string& value);
+  std::string* _internal_mutable_oci_tenancy_id();
+
+  public:
+  // string oci_default_region = 4 [json_name = "ociDefaultRegion", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_oci_default_region() ;
+  const std::string& oci_default_region() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_oci_default_region(Arg_&& arg, Args_... args);
+  std::string* mutable_oci_default_region();
+  PROTOBUF_NODISCARD std::string* release_oci_default_region();
+  void set_allocated_oci_default_region(std::string* value);
+
+  private:
+  const std::string& _internal_oci_default_region() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_oci_default_region(
+      const std::string& value);
+  std::string* _internal_mutable_oci_default_region();
+
+  public:
+  // string oci_bucket_name = 6 [json_name = "ociBucketName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_oci_bucket_name() ;
+  const std::string& oci_bucket_name() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_oci_bucket_name(Arg_&& arg, Args_... args);
+  std::string* mutable_oci_bucket_name();
+  PROTOBUF_NODISCARD std::string* release_oci_bucket_name();
+  void set_allocated_oci_bucket_name(std::string* value);
+
+  private:
+  const std::string& _internal_oci_bucket_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_oci_bucket_name(
+      const std::string& value);
+  std::string* _internal_mutable_oci_bucket_name();
+
+  public:
+  // string oci_bucket_namespace_name = 7 [json_name = "ociBucketNamespaceName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_oci_bucket_namespace_name() ;
+  const std::string& oci_bucket_namespace_name() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_oci_bucket_namespace_name(Arg_&& arg, Args_... args);
+  std::string* mutable_oci_bucket_namespace_name();
+  PROTOBUF_NODISCARD std::string* release_oci_bucket_namespace_name();
+  void set_allocated_oci_bucket_namespace_name(std::string* value);
+
+  private:
+  const std::string& _internal_oci_bucket_namespace_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_oci_bucket_namespace_name(
+      const std::string& value);
+  std::string* _internal_mutable_oci_bucket_namespace_name();
+
+  public:
+  // string oci_service_connector_ocid = 8 [json_name = "ociServiceConnectorOcid", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_oci_service_connector_ocid() ;
+  const std::string& oci_service_connector_ocid() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_oci_service_connector_ocid(Arg_&& arg, Args_... args);
+  std::string* mutable_oci_service_connector_ocid();
+  PROTOBUF_NODISCARD std::string* release_oci_service_connector_ocid();
+  void set_allocated_oci_service_connector_ocid(std::string* value);
+
+  private:
+  const std::string& _internal_oci_service_connector_ocid() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_oci_service_connector_ocid(
+      const std::string& value);
+  std::string* _internal_mutable_oci_service_connector_ocid();
+
+  public:
+  // string oci_flow_object_name_prefix = 9 [json_name = "ociFlowObjectNamePrefix", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_oci_flow_object_name_prefix() ;
+  const std::string& oci_flow_object_name_prefix() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_oci_flow_object_name_prefix(Arg_&& arg, Args_... args);
+  std::string* mutable_oci_flow_object_name_prefix();
+  PROTOBUF_NODISCARD std::string* release_oci_flow_object_name_prefix();
+  void set_allocated_oci_flow_object_name_prefix(std::string* value);
+
+  private:
+  const std::string& _internal_oci_flow_object_name_prefix() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_oci_flow_object_name_prefix(
+      const std::string& value);
+  std::string* _internal_mutable_oci_flow_object_name_prefix();
+
+  public:
+  // bool oci_collect_flow_logs = 5 [json_name = "ociCollectFlowLogs", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_oci_collect_flow_logs() ;
+  bool oci_collect_flow_logs() const;
+  void set_oci_collect_flow_logs(bool value);
+
+  private:
+  bool _internal_oci_collect_flow_logs() const;
+  void _internal_set_oci_collect_flow_logs(bool value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:kentik.cloud_export.v202210.OciProperties)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      4, 9, 0,
+      212, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const OciProperties& from_msg);
+    ::google::protobuf::RepeatedPtrField<std::string> oci_compartment_id_;
+    ::google::protobuf::internal::ArenaStringPtr oci_user_id_;
+    ::google::protobuf::internal::ArenaStringPtr oci_tenancy_id_;
+    ::google::protobuf::internal::ArenaStringPtr oci_default_region_;
+    ::google::protobuf::internal::ArenaStringPtr oci_bucket_name_;
+    ::google::protobuf::internal::ArenaStringPtr oci_bucket_namespace_name_;
+    ::google::protobuf::internal::ArenaStringPtr oci_service_connector_ocid_;
+    ::google::protobuf::internal::ArenaStringPtr oci_flow_object_name_prefix_;
+    bool oci_collect_flow_logs_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_kentik_2fcloud_5fexport_2fv202210_2fcloud_5fexport_2eproto;
+};
 // -------------------------------------------------------------------
 
 class ListCloudExportsRequest final : public ::google::protobuf::internal::ZeroFieldsBase
@@ -255,7 +599,7 @@ class ListCloudExportsRequest final : public ::google::protobuf::internal::ZeroF
     return reinterpret_cast<const ListCloudExportsRequest*>(
         &_ListCloudExportsRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 8;
+  static constexpr int kIndexInFileMessages = 9;
   friend void swap(ListCloudExportsRequest& a, ListCloudExportsRequest& b) { a.Swap(&b); }
   inline void Swap(ListCloudExportsRequest* other) {
     if (other == this) return;
@@ -597,7 +941,7 @@ class GetCloudExportRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const GetCloudExportRequest*>(
         &_GetCloudExportRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 10;
+  static constexpr int kIndexInFileMessages = 11;
   friend void swap(GetCloudExportRequest& a, GetCloudExportRequest& b) { a.Swap(&b); }
   inline void Swap(GetCloudExportRequest* other) {
     if (other == this) return;
@@ -1006,7 +1350,7 @@ class DeleteCloudExportResponse final : public ::google::protobuf::internal::Zer
     return reinterpret_cast<const DeleteCloudExportResponse*>(
         &_DeleteCloudExportResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 15;
+  static constexpr int kIndexInFileMessages = 16;
   friend void swap(DeleteCloudExportResponse& a, DeleteCloudExportResponse& b) { a.Swap(&b); }
   inline void Swap(DeleteCloudExportResponse* other) {
     if (other == this) return;
@@ -1152,7 +1496,7 @@ class DeleteCloudExportRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const DeleteCloudExportRequest*>(
         &_DeleteCloudExportRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 14;
+  static constexpr int kIndexInFileMessages = 15;
   friend void swap(DeleteCloudExportRequest& a, DeleteCloudExportRequest& b) { a.Swap(&b); }
   inline void Swap(DeleteCloudExportRequest* other) {
     if (other == this) return;
@@ -1348,7 +1692,7 @@ class CloudExportStatus final : public ::google::protobuf::Message
     return reinterpret_cast<const CloudExportStatus*>(
         &_CloudExportStatus_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 5;
+  static constexpr int kIndexInFileMessages = 6;
   friend void swap(CloudExportStatus& a, CloudExportStatus& b) { a.Swap(&b); }
   inline void Swap(CloudExportStatus* other) {
     if (other == this) return;
@@ -2219,6 +2563,7 @@ class CloudExport final : public ::google::protobuf::Message
     kAzure = 9,
     kGce = 10,
     kIbm = 11,
+    kOci = 12,
     CLOUD_SPECIFIC_PROPERTIES_NOT_SET = 0,
   };
   static inline const CloudExport* internal_default_instance() {
@@ -2326,6 +2671,7 @@ class CloudExport final : public ::google::protobuf::Message
     kAzureFieldNumber = 9,
     kGceFieldNumber = 10,
     kIbmFieldNumber = 11,
+    kOciFieldNumber = 12,
   };
   // string id = 1 [json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   void clear_id() ;
@@ -2542,6 +2888,25 @@ class CloudExport final : public ::google::protobuf::Message
   ::kentik::cloud_export::v202210::IbmProperties* _internal_mutable_ibm();
 
   public:
+  // .kentik.cloud_export.v202210.OciProperties oci = 12 [json_name = "oci"];
+  bool has_oci() const;
+  private:
+  bool _internal_has_oci() const;
+
+  public:
+  void clear_oci() ;
+  const ::kentik::cloud_export::v202210::OciProperties& oci() const;
+  PROTOBUF_NODISCARD ::kentik::cloud_export::v202210::OciProperties* release_oci();
+  ::kentik::cloud_export::v202210::OciProperties* mutable_oci();
+  void set_allocated_oci(::kentik::cloud_export::v202210::OciProperties* value);
+  void unsafe_arena_set_allocated_oci(::kentik::cloud_export::v202210::OciProperties* value);
+  ::kentik::cloud_export::v202210::OciProperties* unsafe_arena_release_oci();
+
+  private:
+  const ::kentik::cloud_export::v202210::OciProperties& _internal_oci() const;
+  ::kentik::cloud_export::v202210::OciProperties* _internal_mutable_oci();
+
+  public:
   void clear_cloud_specific_properties();
   CloudSpecificPropertiesCase cloud_specific_properties_case() const;
   // @@protoc_insertion_point(class_scope:kentik.cloud_export.v202210.CloudExport)
@@ -2551,11 +2916,12 @@ class CloudExport final : public ::google::protobuf::Message
   void set_has_azure();
   void set_has_gce();
   void set_has_ibm();
+  void set_has_oci();
   inline bool has_cloud_specific_properties() const;
   inline void clear_has_cloud_specific_properties();
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      4, 14, 7,
+      4, 15, 8,
       80, 2>
       _table_;
 
@@ -2592,6 +2958,7 @@ class CloudExport final : public ::google::protobuf::Message
       ::kentik::cloud_export::v202210::AzureProperties* azure_;
       ::kentik::cloud_export::v202210::GceProperties* gce_;
       ::kentik::cloud_export::v202210::IbmProperties* ibm_;
+      ::kentik::cloud_export::v202210::OciProperties* oci_;
     } cloud_specific_properties_;
     ::uint32_t _oneof_case_[1];
     PROTOBUF_TSAN_DECLARE_MEMBER
@@ -2660,7 +3027,7 @@ class UpdateCloudExportResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const UpdateCloudExportResponse*>(
         &_UpdateCloudExportResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 13;
+  static constexpr int kIndexInFileMessages = 14;
   friend void swap(UpdateCloudExportResponse& a, UpdateCloudExportResponse& b) { a.Swap(&b); }
   inline void Swap(UpdateCloudExportResponse* other) {
     if (other == this) return;
@@ -2856,7 +3223,7 @@ class UpdateCloudExportRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const UpdateCloudExportRequest*>(
         &_UpdateCloudExportRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 12;
+  static constexpr int kIndexInFileMessages = 13;
   friend void swap(UpdateCloudExportRequest& a, UpdateCloudExportRequest& b) { a.Swap(&b); }
   inline void Swap(UpdateCloudExportRequest* other) {
     if (other == this) return;
@@ -3052,7 +3419,7 @@ class ListCloudExportsResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const ListCloudExportsResponse*>(
         &_ListCloudExportsResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 9;
+  static constexpr int kIndexInFileMessages = 10;
   friend void swap(ListCloudExportsResponse& a, ListCloudExportsResponse& b) { a.Swap(&b); }
   inline void Swap(ListCloudExportsResponse* other) {
     if (other == this) return;
@@ -3261,7 +3628,7 @@ class GetCloudExportResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const GetCloudExportResponse*>(
         &_GetCloudExportResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 11;
+  static constexpr int kIndexInFileMessages = 12;
   friend void swap(GetCloudExportResponse& a, GetCloudExportResponse& b) { a.Swap(&b); }
   inline void Swap(GetCloudExportResponse* other) {
     if (other == this) return;
@@ -3457,7 +3824,7 @@ class CreateCloudExportResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const CreateCloudExportResponse*>(
         &_CreateCloudExportResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 7;
+  static constexpr int kIndexInFileMessages = 8;
   friend void swap(CreateCloudExportResponse& a, CreateCloudExportResponse& b) { a.Swap(&b); }
   inline void Swap(CreateCloudExportResponse* other) {
     if (other == this) return;
@@ -3653,7 +4020,7 @@ class CreateCloudExportRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const CreateCloudExportRequest*>(
         &_CreateCloudExportRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 6;
+  static constexpr int kIndexInFileMessages = 7;
   friend void swap(CreateCloudExportRequest& a, CreateCloudExportRequest& b) { a.Swap(&b); }
   inline void Swap(CreateCloudExportRequest* other) {
     if (other == this) return;
@@ -4376,6 +4743,85 @@ inline ::kentik::cloud_export::v202210::IbmProperties* CloudExport::_internal_mu
 inline ::kentik::cloud_export::v202210::IbmProperties* CloudExport::mutable_ibm() ABSL_ATTRIBUTE_LIFETIME_BOUND {
   ::kentik::cloud_export::v202210::IbmProperties* _msg = _internal_mutable_ibm();
   // @@protoc_insertion_point(field_mutable:kentik.cloud_export.v202210.CloudExport.ibm)
+  return _msg;
+}
+
+// .kentik.cloud_export.v202210.OciProperties oci = 12 [json_name = "oci"];
+inline bool CloudExport::has_oci() const {
+  return cloud_specific_properties_case() == kOci;
+}
+inline bool CloudExport::_internal_has_oci() const {
+  return cloud_specific_properties_case() == kOci;
+}
+inline void CloudExport::set_has_oci() {
+  _impl_._oneof_case_[0] = kOci;
+}
+inline void CloudExport::clear_oci() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (cloud_specific_properties_case() == kOci) {
+    if (GetArena() == nullptr) {
+      delete _impl_.cloud_specific_properties_.oci_;
+    } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
+      ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.cloud_specific_properties_.oci_);
+    }
+    clear_has_cloud_specific_properties();
+  }
+}
+inline ::kentik::cloud_export::v202210::OciProperties* CloudExport::release_oci() {
+  // @@protoc_insertion_point(field_release:kentik.cloud_export.v202210.CloudExport.oci)
+  if (cloud_specific_properties_case() == kOci) {
+    clear_has_cloud_specific_properties();
+    auto* temp = _impl_.cloud_specific_properties_.oci_;
+    if (GetArena() != nullptr) {
+      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.cloud_specific_properties_.oci_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::kentik::cloud_export::v202210::OciProperties& CloudExport::_internal_oci() const {
+  return cloud_specific_properties_case() == kOci ? *_impl_.cloud_specific_properties_.oci_ : reinterpret_cast<::kentik::cloud_export::v202210::OciProperties&>(::kentik::cloud_export::v202210::_OciProperties_default_instance_);
+}
+inline const ::kentik::cloud_export::v202210::OciProperties& CloudExport::oci() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.cloud_export.v202210.CloudExport.oci)
+  return _internal_oci();
+}
+inline ::kentik::cloud_export::v202210::OciProperties* CloudExport::unsafe_arena_release_oci() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:kentik.cloud_export.v202210.CloudExport.oci)
+  if (cloud_specific_properties_case() == kOci) {
+    clear_has_cloud_specific_properties();
+    auto* temp = _impl_.cloud_specific_properties_.oci_;
+    _impl_.cloud_specific_properties_.oci_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void CloudExport::unsafe_arena_set_allocated_oci(::kentik::cloud_export::v202210::OciProperties* value) {
+  // We rely on the oneof clear method to free the earlier contents
+  // of this oneof. We can directly use the pointer we're given to
+  // set the new value.
+  clear_cloud_specific_properties();
+  if (value) {
+    set_has_oci();
+    _impl_.cloud_specific_properties_.oci_ = value;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.cloud_export.v202210.CloudExport.oci)
+}
+inline ::kentik::cloud_export::v202210::OciProperties* CloudExport::_internal_mutable_oci() {
+  if (cloud_specific_properties_case() != kOci) {
+    clear_cloud_specific_properties();
+    set_has_oci();
+    _impl_.cloud_specific_properties_.oci_ =
+        ::google::protobuf::Message::DefaultConstruct<::kentik::cloud_export::v202210::OciProperties>(GetArena());
+  }
+  return _impl_.cloud_specific_properties_.oci_;
+}
+inline ::kentik::cloud_export::v202210::OciProperties* CloudExport::mutable_oci() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::kentik::cloud_export::v202210::OciProperties* _msg = _internal_mutable_oci();
+  // @@protoc_insertion_point(field_mutable:kentik.cloud_export.v202210.CloudExport.oci)
   return _msg;
 }
 
@@ -5488,6 +5934,432 @@ inline void IbmProperties::set_allocated_bucket(std::string* value) {
     _impl_.bucket_.Set("", GetArena());
   }
   // @@protoc_insertion_point(field_set_allocated:kentik.cloud_export.v202210.IbmProperties.bucket)
+}
+
+// -------------------------------------------------------------------
+
+// OciProperties
+
+// string oci_user_id = 1 [json_name = "ociUserId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void OciProperties::clear_oci_user_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.oci_user_id_.ClearToEmpty();
+}
+inline const std::string& OciProperties::oci_user_id() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.cloud_export.v202210.OciProperties.oci_user_id)
+  return _internal_oci_user_id();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void OciProperties::set_oci_user_id(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.oci_user_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.cloud_export.v202210.OciProperties.oci_user_id)
+}
+inline std::string* OciProperties::mutable_oci_user_id() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_oci_user_id();
+  // @@protoc_insertion_point(field_mutable:kentik.cloud_export.v202210.OciProperties.oci_user_id)
+  return _s;
+}
+inline const std::string& OciProperties::_internal_oci_user_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.oci_user_id_.Get();
+}
+inline void OciProperties::_internal_set_oci_user_id(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.oci_user_id_.Set(value, GetArena());
+}
+inline std::string* OciProperties::_internal_mutable_oci_user_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.oci_user_id_.Mutable( GetArena());
+}
+inline std::string* OciProperties::release_oci_user_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.cloud_export.v202210.OciProperties.oci_user_id)
+  return _impl_.oci_user_id_.Release();
+}
+inline void OciProperties::set_allocated_oci_user_id(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.oci_user_id_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.oci_user_id_.IsDefault()) {
+    _impl_.oci_user_id_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.cloud_export.v202210.OciProperties.oci_user_id)
+}
+
+// string oci_tenancy_id = 2 [json_name = "ociTenancyId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void OciProperties::clear_oci_tenancy_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.oci_tenancy_id_.ClearToEmpty();
+}
+inline const std::string& OciProperties::oci_tenancy_id() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.cloud_export.v202210.OciProperties.oci_tenancy_id)
+  return _internal_oci_tenancy_id();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void OciProperties::set_oci_tenancy_id(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.oci_tenancy_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.cloud_export.v202210.OciProperties.oci_tenancy_id)
+}
+inline std::string* OciProperties::mutable_oci_tenancy_id() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_oci_tenancy_id();
+  // @@protoc_insertion_point(field_mutable:kentik.cloud_export.v202210.OciProperties.oci_tenancy_id)
+  return _s;
+}
+inline const std::string& OciProperties::_internal_oci_tenancy_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.oci_tenancy_id_.Get();
+}
+inline void OciProperties::_internal_set_oci_tenancy_id(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.oci_tenancy_id_.Set(value, GetArena());
+}
+inline std::string* OciProperties::_internal_mutable_oci_tenancy_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.oci_tenancy_id_.Mutable( GetArena());
+}
+inline std::string* OciProperties::release_oci_tenancy_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.cloud_export.v202210.OciProperties.oci_tenancy_id)
+  return _impl_.oci_tenancy_id_.Release();
+}
+inline void OciProperties::set_allocated_oci_tenancy_id(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.oci_tenancy_id_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.oci_tenancy_id_.IsDefault()) {
+    _impl_.oci_tenancy_id_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.cloud_export.v202210.OciProperties.oci_tenancy_id)
+}
+
+// repeated string oci_compartment_id = 3 [json_name = "ociCompartmentId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline int OciProperties::_internal_oci_compartment_id_size() const {
+  return _internal_oci_compartment_id().size();
+}
+inline int OciProperties::oci_compartment_id_size() const {
+  return _internal_oci_compartment_id_size();
+}
+inline void OciProperties::clear_oci_compartment_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.oci_compartment_id_.Clear();
+}
+inline std::string* OciProperties::add_oci_compartment_id() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  std::string* _s = _internal_mutable_oci_compartment_id()->Add();
+  // @@protoc_insertion_point(field_add_mutable:kentik.cloud_export.v202210.OciProperties.oci_compartment_id)
+  return _s;
+}
+inline const std::string& OciProperties::oci_compartment_id(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.cloud_export.v202210.OciProperties.oci_compartment_id)
+  return _internal_oci_compartment_id().Get(index);
+}
+inline std::string* OciProperties::mutable_oci_compartment_id(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:kentik.cloud_export.v202210.OciProperties.oci_compartment_id)
+  return _internal_mutable_oci_compartment_id()->Mutable(index);
+}
+template <typename Arg_, typename... Args_>
+inline void OciProperties::set_oci_compartment_id(int index, Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::AssignToString(
+      *_internal_mutable_oci_compartment_id()->Mutable(index),
+      std::forward<Arg_>(value), args... );
+  // @@protoc_insertion_point(field_set:kentik.cloud_export.v202210.OciProperties.oci_compartment_id)
+}
+template <typename Arg_, typename... Args_>
+inline void OciProperties::add_oci_compartment_id(Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::google::protobuf::internal::AddToRepeatedPtrField(*_internal_mutable_oci_compartment_id(),
+                               std::forward<Arg_>(value),
+                               args... );
+  // @@protoc_insertion_point(field_add:kentik.cloud_export.v202210.OciProperties.oci_compartment_id)
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+OciProperties::oci_compartment_id() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:kentik.cloud_export.v202210.OciProperties.oci_compartment_id)
+  return _internal_oci_compartment_id();
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+OciProperties::mutable_oci_compartment_id() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:kentik.cloud_export.v202210.OciProperties.oci_compartment_id)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_oci_compartment_id();
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+OciProperties::_internal_oci_compartment_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.oci_compartment_id_;
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+OciProperties::_internal_mutable_oci_compartment_id() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.oci_compartment_id_;
+}
+
+// string oci_default_region = 4 [json_name = "ociDefaultRegion", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void OciProperties::clear_oci_default_region() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.oci_default_region_.ClearToEmpty();
+}
+inline const std::string& OciProperties::oci_default_region() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.cloud_export.v202210.OciProperties.oci_default_region)
+  return _internal_oci_default_region();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void OciProperties::set_oci_default_region(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.oci_default_region_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.cloud_export.v202210.OciProperties.oci_default_region)
+}
+inline std::string* OciProperties::mutable_oci_default_region() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_oci_default_region();
+  // @@protoc_insertion_point(field_mutable:kentik.cloud_export.v202210.OciProperties.oci_default_region)
+  return _s;
+}
+inline const std::string& OciProperties::_internal_oci_default_region() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.oci_default_region_.Get();
+}
+inline void OciProperties::_internal_set_oci_default_region(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.oci_default_region_.Set(value, GetArena());
+}
+inline std::string* OciProperties::_internal_mutable_oci_default_region() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.oci_default_region_.Mutable( GetArena());
+}
+inline std::string* OciProperties::release_oci_default_region() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.cloud_export.v202210.OciProperties.oci_default_region)
+  return _impl_.oci_default_region_.Release();
+}
+inline void OciProperties::set_allocated_oci_default_region(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.oci_default_region_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.oci_default_region_.IsDefault()) {
+    _impl_.oci_default_region_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.cloud_export.v202210.OciProperties.oci_default_region)
+}
+
+// bool oci_collect_flow_logs = 5 [json_name = "ociCollectFlowLogs", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void OciProperties::clear_oci_collect_flow_logs() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.oci_collect_flow_logs_ = false;
+}
+inline bool OciProperties::oci_collect_flow_logs() const {
+  // @@protoc_insertion_point(field_get:kentik.cloud_export.v202210.OciProperties.oci_collect_flow_logs)
+  return _internal_oci_collect_flow_logs();
+}
+inline void OciProperties::set_oci_collect_flow_logs(bool value) {
+  _internal_set_oci_collect_flow_logs(value);
+  // @@protoc_insertion_point(field_set:kentik.cloud_export.v202210.OciProperties.oci_collect_flow_logs)
+}
+inline bool OciProperties::_internal_oci_collect_flow_logs() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.oci_collect_flow_logs_;
+}
+inline void OciProperties::_internal_set_oci_collect_flow_logs(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.oci_collect_flow_logs_ = value;
+}
+
+// string oci_bucket_name = 6 [json_name = "ociBucketName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void OciProperties::clear_oci_bucket_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.oci_bucket_name_.ClearToEmpty();
+}
+inline const std::string& OciProperties::oci_bucket_name() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.cloud_export.v202210.OciProperties.oci_bucket_name)
+  return _internal_oci_bucket_name();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void OciProperties::set_oci_bucket_name(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.oci_bucket_name_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.cloud_export.v202210.OciProperties.oci_bucket_name)
+}
+inline std::string* OciProperties::mutable_oci_bucket_name() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_oci_bucket_name();
+  // @@protoc_insertion_point(field_mutable:kentik.cloud_export.v202210.OciProperties.oci_bucket_name)
+  return _s;
+}
+inline const std::string& OciProperties::_internal_oci_bucket_name() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.oci_bucket_name_.Get();
+}
+inline void OciProperties::_internal_set_oci_bucket_name(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.oci_bucket_name_.Set(value, GetArena());
+}
+inline std::string* OciProperties::_internal_mutable_oci_bucket_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.oci_bucket_name_.Mutable( GetArena());
+}
+inline std::string* OciProperties::release_oci_bucket_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.cloud_export.v202210.OciProperties.oci_bucket_name)
+  return _impl_.oci_bucket_name_.Release();
+}
+inline void OciProperties::set_allocated_oci_bucket_name(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.oci_bucket_name_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.oci_bucket_name_.IsDefault()) {
+    _impl_.oci_bucket_name_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.cloud_export.v202210.OciProperties.oci_bucket_name)
+}
+
+// string oci_bucket_namespace_name = 7 [json_name = "ociBucketNamespaceName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void OciProperties::clear_oci_bucket_namespace_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.oci_bucket_namespace_name_.ClearToEmpty();
+}
+inline const std::string& OciProperties::oci_bucket_namespace_name() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.cloud_export.v202210.OciProperties.oci_bucket_namespace_name)
+  return _internal_oci_bucket_namespace_name();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void OciProperties::set_oci_bucket_namespace_name(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.oci_bucket_namespace_name_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.cloud_export.v202210.OciProperties.oci_bucket_namespace_name)
+}
+inline std::string* OciProperties::mutable_oci_bucket_namespace_name() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_oci_bucket_namespace_name();
+  // @@protoc_insertion_point(field_mutable:kentik.cloud_export.v202210.OciProperties.oci_bucket_namespace_name)
+  return _s;
+}
+inline const std::string& OciProperties::_internal_oci_bucket_namespace_name() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.oci_bucket_namespace_name_.Get();
+}
+inline void OciProperties::_internal_set_oci_bucket_namespace_name(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.oci_bucket_namespace_name_.Set(value, GetArena());
+}
+inline std::string* OciProperties::_internal_mutable_oci_bucket_namespace_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.oci_bucket_namespace_name_.Mutable( GetArena());
+}
+inline std::string* OciProperties::release_oci_bucket_namespace_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.cloud_export.v202210.OciProperties.oci_bucket_namespace_name)
+  return _impl_.oci_bucket_namespace_name_.Release();
+}
+inline void OciProperties::set_allocated_oci_bucket_namespace_name(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.oci_bucket_namespace_name_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.oci_bucket_namespace_name_.IsDefault()) {
+    _impl_.oci_bucket_namespace_name_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.cloud_export.v202210.OciProperties.oci_bucket_namespace_name)
+}
+
+// string oci_service_connector_ocid = 8 [json_name = "ociServiceConnectorOcid", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void OciProperties::clear_oci_service_connector_ocid() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.oci_service_connector_ocid_.ClearToEmpty();
+}
+inline const std::string& OciProperties::oci_service_connector_ocid() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.cloud_export.v202210.OciProperties.oci_service_connector_ocid)
+  return _internal_oci_service_connector_ocid();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void OciProperties::set_oci_service_connector_ocid(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.oci_service_connector_ocid_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.cloud_export.v202210.OciProperties.oci_service_connector_ocid)
+}
+inline std::string* OciProperties::mutable_oci_service_connector_ocid() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_oci_service_connector_ocid();
+  // @@protoc_insertion_point(field_mutable:kentik.cloud_export.v202210.OciProperties.oci_service_connector_ocid)
+  return _s;
+}
+inline const std::string& OciProperties::_internal_oci_service_connector_ocid() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.oci_service_connector_ocid_.Get();
+}
+inline void OciProperties::_internal_set_oci_service_connector_ocid(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.oci_service_connector_ocid_.Set(value, GetArena());
+}
+inline std::string* OciProperties::_internal_mutable_oci_service_connector_ocid() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.oci_service_connector_ocid_.Mutable( GetArena());
+}
+inline std::string* OciProperties::release_oci_service_connector_ocid() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.cloud_export.v202210.OciProperties.oci_service_connector_ocid)
+  return _impl_.oci_service_connector_ocid_.Release();
+}
+inline void OciProperties::set_allocated_oci_service_connector_ocid(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.oci_service_connector_ocid_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.oci_service_connector_ocid_.IsDefault()) {
+    _impl_.oci_service_connector_ocid_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.cloud_export.v202210.OciProperties.oci_service_connector_ocid)
+}
+
+// string oci_flow_object_name_prefix = 9 [json_name = "ociFlowObjectNamePrefix", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void OciProperties::clear_oci_flow_object_name_prefix() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.oci_flow_object_name_prefix_.ClearToEmpty();
+}
+inline const std::string& OciProperties::oci_flow_object_name_prefix() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.cloud_export.v202210.OciProperties.oci_flow_object_name_prefix)
+  return _internal_oci_flow_object_name_prefix();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void OciProperties::set_oci_flow_object_name_prefix(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.oci_flow_object_name_prefix_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.cloud_export.v202210.OciProperties.oci_flow_object_name_prefix)
+}
+inline std::string* OciProperties::mutable_oci_flow_object_name_prefix() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_oci_flow_object_name_prefix();
+  // @@protoc_insertion_point(field_mutable:kentik.cloud_export.v202210.OciProperties.oci_flow_object_name_prefix)
+  return _s;
+}
+inline const std::string& OciProperties::_internal_oci_flow_object_name_prefix() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.oci_flow_object_name_prefix_.Get();
+}
+inline void OciProperties::_internal_set_oci_flow_object_name_prefix(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.oci_flow_object_name_prefix_.Set(value, GetArena());
+}
+inline std::string* OciProperties::_internal_mutable_oci_flow_object_name_prefix() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.oci_flow_object_name_prefix_.Mutable( GetArena());
+}
+inline std::string* OciProperties::release_oci_flow_object_name_prefix() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.cloud_export.v202210.OciProperties.oci_flow_object_name_prefix)
+  return _impl_.oci_flow_object_name_prefix_.Release();
+}
+inline void OciProperties::set_allocated_oci_flow_object_name_prefix(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.oci_flow_object_name_prefix_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.oci_flow_object_name_prefix_.IsDefault()) {
+    _impl_.oci_flow_object_name_prefix_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.cloud_export.v202210.OciProperties.oci_flow_object_name_prefix)
 }
 
 // -------------------------------------------------------------------
