@@ -22,6 +22,7 @@ PROTOBUF_C__BEGIN_DECLS
 
 typedef struct Kentik__Plan__V202501alpha1__PlanDevice Kentik__Plan__V202501alpha1__PlanDevice;
 typedef struct Kentik__Plan__V202501alpha1__Plan Kentik__Plan__V202501alpha1__Plan;
+typedef struct Kentik__Plan__V202501alpha1__Plan__MetadataEntry Kentik__Plan__V202501alpha1__Plan__MetadataEntry;
 
 
 /* --- enums --- */
@@ -218,7 +219,11 @@ typedef enum _Kentik__Plan__V202501alpha1__DeviceSubtype {
   /*
    * Kentik-internal value
    */
-  KENTIK__PLAN__V202501ALPHA1__DEVICE_SUBTYPE__DEVICE_SUBTYPE_SDM_LEADER = 46
+  KENTIK__PLAN__V202501ALPHA1__DEVICE_SUBTYPE__DEVICE_SUBTYPE_SDM_LEADER = 46,
+  /*
+   * Kentik-internal value
+   */
+  KENTIK__PLAN__V202501ALPHA1__DEVICE_SUBTYPE__DEVICE_SUBTYPE_HOST_NPROBE_DNS_WWW = 47
     PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__PLAN__V202501ALPHA1__DEVICE_SUBTYPE)
 } Kentik__Plan__V202501alpha1__DeviceSubtype;
 
@@ -233,10 +238,22 @@ struct  Kentik__Plan__V202501alpha1__PlanDevice
   char *id;
   char *device_name;
   Kentik__Plan__V202501alpha1__DeviceSubtype device_subtype;
+  Kentik__Plan__V202501alpha1__DeviceSubtype device_type;
 };
 #define KENTIK__PLAN__V202501ALPHA1__PLAN_DEVICE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__plan__v202501alpha1__plan_device__descriptor) \
-    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, KENTIK__PLAN__V202501ALPHA1__DEVICE_SUBTYPE__DEVICE_SUBTYPE_UNSPECIFIED }
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, KENTIK__PLAN__V202501ALPHA1__DEVICE_SUBTYPE__DEVICE_SUBTYPE_UNSPECIFIED, KENTIK__PLAN__V202501ALPHA1__DEVICE_SUBTYPE__DEVICE_SUBTYPE_UNSPECIFIED }
+
+
+struct  Kentik__Plan__V202501alpha1__Plan__MetadataEntry
+{
+  ProtobufCMessage base;
+  char *key;
+  char *value;
+};
+#define KENTIK__PLAN__V202501ALPHA1__PLAN__METADATA_ENTRY__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__plan__v202501alpha1__plan__metadata_entry__descriptor) \
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
 
 
 /*
@@ -262,10 +279,12 @@ struct  Kentik__Plan__V202501alpha1__Plan
   Kentik__Plan__V202501alpha1__DeviceSubtype *device_types;
   size_t n_devices;
   Kentik__Plan__V202501alpha1__PlanDevice **devices;
+  size_t n_metadata;
+  Kentik__Plan__V202501alpha1__Plan__MetadataEntry **metadata;
 };
 #define KENTIK__PLAN__V202501ALPHA1__PLAN__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__plan__v202501alpha1__plan__descriptor) \
-    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0,NULL, 0,NULL }
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0,NULL, 0,NULL, 0,NULL }
 
 
 /* Kentik__Plan__V202501alpha1__PlanDevice methods */
@@ -287,6 +306,9 @@ Kentik__Plan__V202501alpha1__PlanDevice *
 void   kentik__plan__v202501alpha1__plan_device__free_unpacked
                      (Kentik__Plan__V202501alpha1__PlanDevice *message,
                       ProtobufCAllocator *allocator);
+/* Kentik__Plan__V202501alpha1__Plan__MetadataEntry methods */
+void   kentik__plan__v202501alpha1__plan__metadata_entry__init
+                     (Kentik__Plan__V202501alpha1__Plan__MetadataEntry         *message);
 /* Kentik__Plan__V202501alpha1__Plan methods */
 void   kentik__plan__v202501alpha1__plan__init
                      (Kentik__Plan__V202501alpha1__Plan         *message);
@@ -311,6 +333,9 @@ void   kentik__plan__v202501alpha1__plan__free_unpacked
 typedef void (*Kentik__Plan__V202501alpha1__PlanDevice_Closure)
                  (const Kentik__Plan__V202501alpha1__PlanDevice *message,
                   void *closure_data);
+typedef void (*Kentik__Plan__V202501alpha1__Plan__MetadataEntry_Closure)
+                 (const Kentik__Plan__V202501alpha1__Plan__MetadataEntry *message,
+                  void *closure_data);
 typedef void (*Kentik__Plan__V202501alpha1__Plan_Closure)
                  (const Kentik__Plan__V202501alpha1__Plan *message,
                   void *closure_data);
@@ -323,6 +348,7 @@ typedef void (*Kentik__Plan__V202501alpha1__Plan_Closure)
 extern const ProtobufCEnumDescriptor    kentik__plan__v202501alpha1__device_subtype__descriptor;
 extern const ProtobufCMessageDescriptor kentik__plan__v202501alpha1__plan_device__descriptor;
 extern const ProtobufCMessageDescriptor kentik__plan__v202501alpha1__plan__descriptor;
+extern const ProtobufCMessageDescriptor kentik__plan__v202501alpha1__plan__metadata_entry__descriptor;
 
 PROTOBUF_C__END_DECLS
 

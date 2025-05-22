@@ -129,7 +129,8 @@
         "DEVICE_SUBTYPE_VMWARE_VSPHERE",
         "DEVICE_SUBTYPE_VXLAN",
         "DEVICE_SUBTYPE_KSYNTH",
-        "DEVICE_SUBTYPE_SDM_LEADER"
+        "DEVICE_SUBTYPE_SDM_LEADER",
+        "DEVICE_SUBTYPE_HOST_NPROBE_DNS_WWW"
       ],
       "default": "DEVICE_SUBTYPE_UNSPECIFIED",
       "title": "Device Subtype Enum (see https://kb.kentik.com/v4/Cb01.htm#Cb01-Supported_Device_Types)\nnote, this could be moved to a shared location if used by other services"
@@ -227,6 +228,13 @@
             "$ref": "#/definitions/v202501alpha1PlanDevice"
           },
           "description": "The devices currently assigned to this plan."
+        },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Additional custom metadata associated with the plan."
         }
       },
       "description": "Represents a plan object.",
@@ -255,12 +263,20 @@
           "required": [
             "device_subtype"
           ]
+        },
+        "deviceType": {
+          "$ref": "#/definitions/v202501alpha1DeviceSubtype",
+          "description": "A type of device that sends flow records to Kentik.",
+          "required": [
+            "device_type"
+          ]
         }
       },
       "description": "Represents a device that is associated with a plan.",
       "required": [
         "deviceName",
-        "deviceSubtype"
+        "deviceSubtype",
+        "deviceType"
       ]
     }
   },

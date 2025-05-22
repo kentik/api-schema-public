@@ -28,6 +28,9 @@
 #include "google/protobuf/message_lite.h"
 #include "google/protobuf/repeated_field.h"  // IWYU pragma: export
 #include "google/protobuf/extension_set.h"  // IWYU pragma: export
+#include "google/protobuf/map.h"  // IWYU pragma: export
+#include "google/protobuf/map_entry.h"
+#include "google/protobuf/map_field_inl.h"
 #include "google/protobuf/generated_enum_reflection.h"
 #include "google/protobuf/unknown_field_set.h"
 #include "google/api/annotations.pb.h"
@@ -66,6 +69,9 @@ extern PlanDefaultTypeInternal _Plan_default_instance_;
 class PlanDevice;
 struct PlanDeviceDefaultTypeInternal;
 extern PlanDeviceDefaultTypeInternal _PlanDevice_default_instance_;
+class Plan_MetadataEntry_DoNotUse;
+struct Plan_MetadataEntry_DoNotUseDefaultTypeInternal;
+extern Plan_MetadataEntry_DoNotUseDefaultTypeInternal _Plan_MetadataEntry_DoNotUse_default_instance_;
 }  // namespace v202501alpha1
 }  // namespace plan
 }  // namespace kentik
@@ -125,6 +131,7 @@ enum DeviceSubtype : int {
   DEVICE_SUBTYPE_VXLAN = 44,
   DEVICE_SUBTYPE_KSYNTH = 45,
   DEVICE_SUBTYPE_SDM_LEADER = 46,
+  DEVICE_SUBTYPE_HOST_NPROBE_DNS_WWW = 47,
   DeviceSubtype_INT_MIN_SENTINEL_DO_NOT_USE_ =
       std::numeric_limits<::int32_t>::min(),
   DeviceSubtype_INT_MAX_SENTINEL_DO_NOT_USE_ =
@@ -134,8 +141,8 @@ enum DeviceSubtype : int {
 bool DeviceSubtype_IsValid(int value);
 extern const uint32_t DeviceSubtype_internal_data_[];
 constexpr DeviceSubtype DeviceSubtype_MIN = static_cast<DeviceSubtype>(0);
-constexpr DeviceSubtype DeviceSubtype_MAX = static_cast<DeviceSubtype>(46);
-constexpr int DeviceSubtype_ARRAYSIZE = 46 + 1;
+constexpr DeviceSubtype DeviceSubtype_MAX = static_cast<DeviceSubtype>(47);
+constexpr int DeviceSubtype_ARRAYSIZE = 47 + 1;
 const ::google::protobuf::EnumDescriptor*
 DeviceSubtype_descriptor();
 template <typename T>
@@ -148,7 +155,7 @@ const std::string& DeviceSubtype_Name(T value) {
 template <>
 inline const std::string& DeviceSubtype_Name(DeviceSubtype value) {
   return ::google::protobuf::internal::NameOfDenseEnum<DeviceSubtype_descriptor,
-                                                 0, 46>(
+                                                 0, 47>(
       static_cast<int>(value));
 }
 inline bool DeviceSubtype_Parse(absl::string_view name, DeviceSubtype* value) {
@@ -310,6 +317,7 @@ class PlanDevice final : public ::google::protobuf::Message
     kIdFieldNumber = 1,
     kDeviceNameFieldNumber = 2,
     kDeviceSubtypeFieldNumber = 3,
+    kDeviceTypeFieldNumber = 4,
   };
   // string id = 1 [json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   void clear_id() ;
@@ -353,12 +361,22 @@ class PlanDevice final : public ::google::protobuf::Message
   void _internal_set_device_subtype(::kentik::plan::v202501alpha1::DeviceSubtype value);
 
   public:
+  // .kentik.plan.v202501alpha1.DeviceSubtype device_type = 4 [json_name = "deviceType", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_device_type() ;
+  ::kentik::plan::v202501alpha1::DeviceSubtype device_type() const;
+  void set_device_type(::kentik::plan::v202501alpha1::DeviceSubtype value);
+
+  private:
+  ::kentik::plan::v202501alpha1::DeviceSubtype _internal_device_type() const;
+  void _internal_set_device_type(::kentik::plan::v202501alpha1::DeviceSubtype value);
+
+  public:
   // @@protoc_insertion_point(class_scope:kentik.plan.v202501alpha1.PlanDevice)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      2, 3, 0,
+      2, 4, 0,
       58, 2>
       _table_;
 
@@ -379,11 +397,51 @@ class PlanDevice final : public ::google::protobuf::Message
     ::google::protobuf::internal::ArenaStringPtr id_;
     ::google::protobuf::internal::ArenaStringPtr device_name_;
     int device_subtype_;
+    int device_type_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_kentik_2fplan_2fv202501alpha1_2fplan_5fmessage_2eproto;
+};
+// -------------------------------------------------------------------
+
+class Plan_MetadataEntry_DoNotUse final
+    : public ::google::protobuf::internal::MapEntry<
+          std::string, std::string,
+          ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+          ::google::protobuf::internal::WireFormatLite::TYPE_STRING> {
+ public:
+  using SuperType = ::google::protobuf::internal::MapEntry<
+      std::string, std::string,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING>;
+  Plan_MetadataEntry_DoNotUse();
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR Plan_MetadataEntry_DoNotUse(
+      ::google::protobuf::internal::ConstantInitialized);
+  explicit Plan_MetadataEntry_DoNotUse(::google::protobuf::Arena* arena);
+  static const Plan_MetadataEntry_DoNotUse* internal_default_instance() {
+    return reinterpret_cast<const Plan_MetadataEntry_DoNotUse*>(
+        &_Plan_MetadataEntry_DoNotUse_default_instance_);
+  }
+
+
+ private:
+  friend class ::google::protobuf::MessageLite;
+  friend struct ::TableStruct_kentik_2fplan_2fv202501alpha1_2fplan_5fmessage_2eproto;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 0,
+      61, 2>
+      _table_;
+
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
 };
 // -------------------------------------------------------------------
 
@@ -446,7 +504,7 @@ class Plan final : public ::google::protobuf::Message
     return reinterpret_cast<const Plan*>(
         &_Plan_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 1;
+  static constexpr int kIndexInFileMessages = 2;
   friend void swap(Plan& a, Plan& b) { a.Swap(&b); }
   inline void Swap(Plan* other) {
     if (other == this) return;
@@ -535,6 +593,7 @@ class Plan final : public ::google::protobuf::Message
   enum : int {
     kDeviceTypesFieldNumber = 14,
     kDevicesFieldNumber = 15,
+    kMetadataFieldNumber = 16,
     kIdFieldNumber = 1,
     kCompanyIdFieldNumber = 2,
     kNameFieldNumber = 3,
@@ -585,6 +644,21 @@ class Plan final : public ::google::protobuf::Message
   const ::kentik::plan::v202501alpha1::PlanDevice& devices(int index) const;
   ::kentik::plan::v202501alpha1::PlanDevice* add_devices();
   const ::google::protobuf::RepeatedPtrField<::kentik::plan::v202501alpha1::PlanDevice>& devices() const;
+  // map<string, string> metadata = 16 [json_name = "metadata", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  int metadata_size() const;
+  private:
+  int _internal_metadata_size() const;
+
+  public:
+  void clear_metadata() ;
+  const ::google::protobuf::Map<std::string, std::string>& metadata() const;
+  ::google::protobuf::Map<std::string, std::string>* mutable_metadata();
+
+  private:
+  const ::google::protobuf::Map<std::string, std::string>& _internal_metadata() const;
+  ::google::protobuf::Map<std::string, std::string>* _internal_mutable_metadata();
+
+  public:
   // string id = 1 [json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   void clear_id() ;
   const std::string& id() const;
@@ -754,8 +828,8 @@ class Plan final : public ::google::protobuf::Message
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      4, 15, 3,
-      74, 2>
+      4, 16, 4,
+      90, 2>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -777,6 +851,10 @@ class Plan final : public ::google::protobuf::Message
     ::google::protobuf::RepeatedField<int> device_types_;
     ::google::protobuf::internal::CachedSize _device_types_cached_byte_size_;
     ::google::protobuf::RepeatedPtrField< ::kentik::plan::v202501alpha1::PlanDevice > devices_;
+    ::google::protobuf::internal::MapField<Plan_MetadataEntry_DoNotUse, std::string, std::string,
+                      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+                      ::google::protobuf::internal::WireFormatLite::TYPE_STRING>
+        metadata_;
     ::google::protobuf::internal::ArenaStringPtr id_;
     ::google::protobuf::internal::ArenaStringPtr company_id_;
     ::google::protobuf::internal::ArenaStringPtr name_;
@@ -929,6 +1007,30 @@ inline void PlanDevice::_internal_set_device_subtype(::kentik::plan::v202501alph
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.device_subtype_ = value;
 }
+
+// .kentik.plan.v202501alpha1.DeviceSubtype device_type = 4 [json_name = "deviceType", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void PlanDevice::clear_device_type() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.device_type_ = 0;
+}
+inline ::kentik::plan::v202501alpha1::DeviceSubtype PlanDevice::device_type() const {
+  // @@protoc_insertion_point(field_get:kentik.plan.v202501alpha1.PlanDevice.device_type)
+  return _internal_device_type();
+}
+inline void PlanDevice::set_device_type(::kentik::plan::v202501alpha1::DeviceSubtype value) {
+  _internal_set_device_type(value);
+  // @@protoc_insertion_point(field_set:kentik.plan.v202501alpha1.PlanDevice.device_type)
+}
+inline ::kentik::plan::v202501alpha1::DeviceSubtype PlanDevice::_internal_device_type() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return static_cast<::kentik::plan::v202501alpha1::DeviceSubtype>(_impl_.device_type_);
+}
+inline void PlanDevice::_internal_set_device_type(::kentik::plan::v202501alpha1::DeviceSubtype value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.device_type_ = value;
+}
+
+// -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
 
@@ -1554,6 +1656,34 @@ inline ::google::protobuf::RepeatedPtrField<::kentik::plan::v202501alpha1::PlanD
 Plan::_internal_mutable_devices() {
   ::google::protobuf::internal::TSanRead(&_impl_);
   return &_impl_.devices_;
+}
+
+// map<string, string> metadata = 16 [json_name = "metadata", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline int Plan::_internal_metadata_size() const {
+  return _internal_metadata().size();
+}
+inline int Plan::metadata_size() const {
+  return _internal_metadata_size();
+}
+inline void Plan::clear_metadata() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.metadata_.Clear();
+}
+inline const ::google::protobuf::Map<std::string, std::string>& Plan::_internal_metadata() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.metadata_.GetMap();
+}
+inline const ::google::protobuf::Map<std::string, std::string>& Plan::metadata() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_map:kentik.plan.v202501alpha1.Plan.metadata)
+  return _internal_metadata();
+}
+inline ::google::protobuf::Map<std::string, std::string>* Plan::_internal_mutable_metadata() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.metadata_.MutableMap();
+}
+inline ::google::protobuf::Map<std::string, std::string>* Plan::mutable_metadata() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_map:kentik.plan.v202501alpha1.Plan.metadata)
+  return _internal_mutable_metadata();
 }
 
 #ifdef __GNUC__

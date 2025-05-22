@@ -59,6 +59,7 @@ enum DeviceSubtype {
   DEVICE_SUBTYPE_VXLAN = 44; // VXLAN
   DEVICE_SUBTYPE_KSYNTH = 45; // Kentik-internal value
   DEVICE_SUBTYPE_SDM_LEADER = 46; // Kentik-internal value
+  DEVICE_SUBTYPE_HOST_NPROBE_DNS_WWW = 47; // Kentik-internal value
 }
 
 // Represents a device that is associated with a plan.
@@ -76,6 +77,13 @@ message PlanDevice {
     (google.api.field_behavior) = REQUIRED
   ];
   DeviceSubtype device_subtype = 3[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "A type of device that sends flow records to Kentik."
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+
+  DeviceSubtype device_type = 4[
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "A type of device that sends flow records to Kentik."
     },
@@ -163,6 +171,11 @@ message Plan {
   repeated PlanDevice devices = 15 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "The devices currently assigned to this plan."
+    }
+  ];
+  map<string, string> metadata = 16 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Additional custom metadata associated with the plan."
     }
   ];
 }
