@@ -1124,6 +1124,7 @@ class TestTraceSettings final : public ::google::protobuf::Message
     kLimitFieldNumber = 5,
     kDelayFieldNumber = 6,
     kDscpFieldNumber = 7,
+    kMtuFieldNumber = 8,
   };
   // string protocol = 2 [json_name = "protocol", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   void clear_protocol() ;
@@ -1201,13 +1202,23 @@ class TestTraceSettings final : public ::google::protobuf::Message
   void _internal_set_dscp(::uint32_t value);
 
   public:
+  // bool mtu = 8 [json_name = "mtu", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_mtu() ;
+  bool mtu() const;
+  void set_mtu(bool value);
+
+  private:
+  bool _internal_mtu() const;
+  void _internal_set_mtu(bool value);
+
+  public:
   // @@protoc_insertion_point(class_scope:kentik.synthetics.v202309.TestTraceSettings)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      3, 7, 0,
-      60, 2>
+      3, 8, 0,
+      68, 2>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -1231,6 +1242,7 @@ class TestTraceSettings final : public ::google::protobuf::Message
     ::uint32_t limit_;
     float delay_;
     ::uint32_t dscp_;
+    bool mtu_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -22097,6 +22109,28 @@ inline ::uint32_t TestTraceSettings::_internal_dscp() const {
 inline void TestTraceSettings::_internal_set_dscp(::uint32_t value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.dscp_ = value;
+}
+
+// bool mtu = 8 [json_name = "mtu", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void TestTraceSettings::clear_mtu() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.mtu_ = false;
+}
+inline bool TestTraceSettings::mtu() const {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202309.TestTraceSettings.mtu)
+  return _internal_mtu();
+}
+inline void TestTraceSettings::set_mtu(bool value) {
+  _internal_set_mtu(value);
+  // @@protoc_insertion_point(field_set:kentik.synthetics.v202309.TestTraceSettings.mtu)
+}
+inline bool TestTraceSettings::_internal_mtu() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.mtu_;
+}
+inline void TestTraceSettings::_internal_set_mtu(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.mtu_ = value;
 }
 
 // -------------------------------------------------------------------

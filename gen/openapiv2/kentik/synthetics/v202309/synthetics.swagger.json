@@ -2218,6 +2218,10 @@
           "type": "integer",
           "format": "int64",
           "description": "DSCP code to be set in IP header of probe packets"
+        },
+        "mtu": {
+          "type": "boolean",
+          "description": "Enable MTU in trace results"
         }
       },
       "title": "TestTraceSettings"

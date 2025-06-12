@@ -649,6 +649,11 @@ message TestTraceSettings {
       description: "DSCP code to be set in IP header of probe packets"
     }
   ];
+  bool mtu = 8 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Enable MTU in trace results"
+    }
+  ];
 }
 
 // {{.Name}}

@@ -434,10 +434,11 @@ struct  Kentik__Synthetics__V202309__TestTraceSettings
   uint32_t limit;
   float delay;
   uint32_t dscp;
+  protobuf_c_boolean mtu;
 };
 #define KENTIK__SYNTHETICS__V202309__TEST_TRACE_SETTINGS__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__synthetics__v202309__test_trace_settings__descriptor) \
-    , 0, (char *)protobuf_c_empty_string, 0, 0, 0, 0, 0 }
+    , 0, (char *)protobuf_c_empty_string, 0, 0, 0, 0, 0, 0 }
 
 
 /*

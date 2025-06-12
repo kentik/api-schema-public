@@ -4437,7 +4437,7 @@ const ProtobufCMessageDescriptor kentik__synthetics__v202309__test_ping_settings
   (ProtobufCMessageInit) kentik__synthetics__v202309__test_ping_settings__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__synthetics__v202309__test_trace_settings__field_descriptors[7] =
+static const ProtobufCFieldDescriptor kentik__synthetics__v202309__test_trace_settings__field_descriptors[8] =
 {
   {
     "count",
@@ -4523,12 +4523,25 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202309__test_trace_se
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "mtu",
+    8,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__TestTraceSettings, mtu),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__synthetics__v202309__test_trace_settings__field_indices_by_name[] = {
   0,   /* field[0] = count */
   5,   /* field[5] = delay */
   6,   /* field[6] = dscp */
   4,   /* field[4] = limit */
+  7,   /* field[7] = mtu */
   2,   /* field[2] = port */
   1,   /* field[1] = protocol */
   3,   /* field[3] = timeout */
@@ -4536,7 +4549,7 @@ static const unsigned kentik__synthetics__v202309__test_trace_settings__field_in
 static const ProtobufCIntRange kentik__synthetics__v202309__test_trace_settings__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 7 }
+  { 0, 8 }
 };
 const ProtobufCMessageDescriptor kentik__synthetics__v202309__test_trace_settings__descriptor =
 {
@@ -4546,7 +4559,7 @@ const ProtobufCMessageDescriptor kentik__synthetics__v202309__test_trace_setting
   "Kentik__Synthetics__V202309__TestTraceSettings",
   "kentik.synthetics.v202309",
   sizeof(Kentik__Synthetics__V202309__TestTraceSettings),
-  7,
+  8,
   kentik__synthetics__v202309__test_trace_settings__field_descriptors,
   kentik__synthetics__v202309__test_trace_settings__field_indices_by_name,
   1,  kentik__synthetics__v202309__test_trace_settings__number_ranges,
