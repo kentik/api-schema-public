@@ -1,0 +1,728 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Cloud Export Configuration API",
+        "description": "# Overview\nIn Kentik, a \"cloud export\" is an object whose properties are the values that Kentik needs to access network flow logs from a given set of resources in a given cloud provider (see [Cloud Exports and Devices](https://kb.kentik.com/v4/Na00.htm#Na00-Cloud_Exports_and_Devices)). The Cloud Export API enables programmatic management of cloud exports, serving two primary functions:\n* Configuration of the Kentik resources required to export network flow logs and metadata from [public clouds](https://kb.kentik.com/v4/Na00.htm).\n* Basic status information on active export processes.\n\n### Supported Cloud Providers\nThe functionality and configuration parameters supported by this API differ by cloud provider. The API currently supports the following providers:\n* [Amazon Web Services](https://kb.kentik.com/v0/Bd06.htm) (AWS)\n* [Microsoft Azure](https://kb.kentik.com/v0/Bd08.htm)\n* [Google Cloud](https://kb.kentik.com/v0/Bd07.htm) (GCP)\n* [Oracle Cloud](https://kb.kentik.com/v0/Bd12.htm) (OCI)\n\n### Additional Public Resources\nThe following additional resources are available for working with this API:\n* Kentik community [Python](https://github.com/kentik/community_sdk_python) and [Go](https://github.com/kentik/community_sdk_golang) SDKs provide language-specific support for using this and other Kentik APIs. These SDKs can be also used as example code for development.\n* A [Terraform provider](https://registry.terraform.io/providers/kentik/kentik-cloudexport) is available for configuring `cloud_export` instances in Kentik. Terraform modules are available for [AWS](https://github.com/kentik/config-snippets-cloud/tree/master/cloud_AWS/terraform/module), [Azure](https://github.com/kentik/config-snippets-cloud/tree/master/cloud_Azure/terraform/module) \nand [GCP](https://github.com/kentik/config-snippets-cloud/tree/master/cloud_GCP/terraform/module).\nThese modules support onboarding and ongoing management of all resources (in public clouds and in Kentik) required to export flow logs to Kentik.\n\n# Anatomy of a Cloud Export\nConfiguration and status of a `cloud_export` instance is represented by the `CloudExport` object, which contains three categories of attributes:\n* Common Configuration Attributes\n* Cloud Provider Configuration Attributes\n* Metadata and Status Attributes\n\n### Common Configuration Attributes\nThe configuration attributes in the table below are common to `CloudExport` objects for all cloud providers.\n| Attribute | Required | Default |\n|-----------|----------| ------- |\n| enabled | No | False |\n| name | Yes |   |\n| description | No | <empty string> |\n| type | Yes | |\n| cloud_provider | Yes | |\n| plan_id | Yes | |\n\n### Cloud Provider Specific Attributes\nThe attributes listed in the table below are objects whose parameters are specific to each cloud provider.\n| Cloud Provider | Attribute | Object Name |\n|-----------|----------| ------- |\n| AWS | aws | AwsProperties |\n| Azure | azure | AzureProperties |\n| Google Cloud | gce | GceProperties |\n| OCI Cloud | oci | OciProperties |\n\n### Metadata and Status Attributes\nThe attributes in the table below provide read-only metadata and status for a `cloud_export` instance.\n| Attribute | Purpose |\n|-----------|---------|\n| id | System-generated unique identifier of the instance |\n| cdate | Creation timestamp |\n| edate | Last-modification timestamp |\n| current_status | Runtime status of the flow and metadata collection process |\n\n",
+        "version": "v202506",
+        "contact": {
+            "name": "Kentik API Engineering",
+            "url": "https://github.com/kentik/api-schema-public"
+        }
+    },
+    "tags": [
+        {
+            "name": "CloudExportAdminService"
+        }
+    ],
+    "paths": {
+        "/cloud_export/v202506/exports": {
+            "get": {
+                "summary": "List cloud exports.",
+                "description": "Returns a list of all cloud exports in the account.",
+                "operationId": "ListCloudExports",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202506ListCloudExportsResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "CloudExportAdminService"
+                ]
+            },
+            "post": {
+                "summary": "Create Cloud Export.",
+                "description": "Create new cloud export based on configuration in the request.",
+                "operationId": "CreateCloudExport",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202506CreateCloudExportResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202506CreateCloudExportRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "CloudExportAdminService"
+                ]
+            }
+        },
+        "/cloud_export/v202506/exports/{export.id}": {
+            "put": {
+                "summary": "Update configuration of cloud export.",
+                "description": "Replace complete configuration of a cloud export with data in the request.",
+                "operationId": "UpdateCloudExport",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202506UpdateCloudExportResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "export.id",
+                        "description": "Unique identifier of the instance",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202506UpdateCloudExportRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "CloudExportAdminService"
+                ]
+            },
+            "get": {
+                "summary": "Get cloud export configuration and status.",
+                "description": "Returns configuration and status of cloud export with specified ID.",
+                "operationId": "GetCloudExport",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202506GetCloudExportResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "export.id",
+                        "description": "ID of the cloud export to be retrieved.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "CloudExportAdminService"
+                ]
+            },
+            "delete": {
+                "summary": "Delete a cloud export.",
+                "description": "Delete cloud export with specified ID.",
+                "operationId": "DeleteCloudExport",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202506DeleteCloudExportResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "export.id",
+                        "description": "ID of the cloud export to be deleted.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "CloudExportAdminService"
+                ]
+            }
+        }
+    },
+    "security": [
+        {
+            "email": [],
+            "token": []
+        }
+    ],
+    "externalDocs": {
+        "description": "Kentik support for public clouds",
+        "url": "https://kb.kentik.com/v4/Na00.htm"
+    },
+    "components": {
+        "securitySchemes": {
+            "email": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-Email",
+                "in": "header"
+            },
+            "token": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-API-Token",
+                "in": "header"
+            }
+        },
+        "schemas": {
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "typeUrl": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string",
+                        "format": "byte"
+                    }
+                }
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "v202506AwsProperties": {
+                "type": "object",
+                "properties": {
+                    "iamRoleArn": {
+                        "type": "string",
+                        "description": "ARN of the IAM role granted access to the S3 bucket and describe API end-points.",
+                        "required": [
+                            "iam_role_arn"
+                        ]
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "Name of AWS region from which to export flow logs.",
+                        "required": [
+                            "region"
+                        ]
+                    },
+                    "metadataOnly": {
+                        "type": "boolean",
+                        "description": "Import only metadata without any flows (default false)."
+                    },
+                    "collectFlowLogs": {
+                        "type": "boolean",
+                        "description": "Import metadata and collect flow logs (default true)."
+                    },
+                    "collectFirewallLogs": {
+                        "type": "boolean",
+                        "description": "Import metadata and collect firewall logs in addition to flow logs (default false). Note that in order to collect firewall logs without collection of flow logs, collect_flow_logs must be set to false."
+                    },
+                    "collectMetrics": {
+                        "type": "boolean",
+                        "description": "Import metadata and collect metrics data.  Note that flow logs will still be collected unless metadata_only is also set to true. (default false)."
+                    },
+                    "bucket": {
+                        "type": "string",
+                        "description": "Name of S3 bucket from which flow and/or firewall logs are to be exported."
+                    },
+                    "bucketPrefix": {
+                        "type": "string",
+                        "description": "Prefix of S3 bucket from which flow and/or firewall logs are to be exported."
+                    },
+                    "deleteAfterRead": {
+                        "type": "boolean",
+                        "description": "Delete from logs from the S3 bucket after export (default false)."
+                    },
+                    "awsIamRoleArnIsOrg": {
+                        "type": "boolean",
+                        "description": "Iam role is organization role (default false)."
+                    },
+                    "secondaryAwsAccounts": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Accounts ids granted access to the describe API end-points."
+                    },
+                    "secondaryAwsBlockedAccounts": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Accounts ids that should be filtered from organization when running describe API end-points."
+                    },
+                    "secondaryAwsRegions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Regions of secondary accounts from which to collect metadata."
+                    },
+                    "secondaryAwsSuffix": {
+                        "type": "string",
+                        "description": "Used to generate secondary account ARN based on template arn:aws:iam::<<aws_account_id>>:role/<<role_suffix>>"
+                    }
+                },
+                "title": "AwsProperties",
+                "required": [
+                    "iamRoleArn",
+                    "region"
+                ]
+            },
+            "v202506AzureProperties": {
+                "type": "object",
+                "properties": {
+                    "location": {
+                        "type": "string",
+                        "description": "Azure region/location from which to export flow logs.",
+                        "required": [
+                            "location"
+                        ]
+                    },
+                    "resourceGroup": {
+                        "type": "string",
+                        "description": "Resource group containing the NSG generating flow logs.",
+                        "required": [
+                            "resource_group"
+                        ]
+                    },
+                    "storageAccount": {
+                        "type": "string",
+                        "description": "Storage account from which flow logs are to be extracted.",
+                        "required": [
+                            "storage_account"
+                        ]
+                    },
+                    "subscriptionId": {
+                        "type": "string",
+                        "description": "ID of Azure account from which flows logs are to be exported.",
+                        "required": [
+                            "subscription_id"
+                        ]
+                    },
+                    "securityPrincipalEnabled": {
+                        "type": "boolean",
+                        "description": "Indication whether security principal for the Kentik flow export application has been authorized."
+                    }
+                },
+                "title": "AzureProperties",
+                "required": [
+                    "location",
+                    "resourceGroup",
+                    "storageAccount",
+                    "subscriptionId"
+                ]
+            },
+            "v202506CloudExport": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the instance",
+                        "readOnly": true
+                    },
+                    "type": {
+                        "$ref": "#/components/schemas/v202506CloudExportType"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Attribute controlling whether the instance is active",
+                        "required": [
+                            "enabled"
+                        ]
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "User selected name of the instance",
+                        "required": [
+                            "name"
+                        ]
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the instance"
+                    },
+                    "planId": {
+                        "type": "string",
+                        "description": "Identifier of the billing plan for the instance",
+                        "required": [
+                            "plan_id"
+                        ]
+                    },
+                    "cloudProvider": {
+                        "$ref": "#/components/schemas/v202506CloudProvider"
+                    },
+                    "aws": {
+                        "$ref": "#/components/schemas/v202506AwsProperties"
+                    },
+                    "azure": {
+                        "$ref": "#/components/schemas/v202506AzureProperties"
+                    },
+                    "gce": {
+                        "$ref": "#/components/schemas/v202506GceProperties"
+                    },
+                    "oci": {
+                        "$ref": "#/components/schemas/v202506OciProperties"
+                    },
+                    "currentStatus": {
+                        "$ref": "#/components/schemas/v202506CloudExportStatus"
+                    },
+                    "cdate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Creation timestamp (UTC)",
+                        "readOnly": true
+                    },
+                    "edate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Last modification timestamp (UTC)",
+                        "readOnly": true
+                    },
+                    "sampling": {
+                        "$ref": "#/components/schemas/v202506CloudExportSamplingProperties"
+                    }
+                },
+                "title": "CloudExport",
+                "required": [
+                    "enabled",
+                    "name",
+                    "planId",
+                    "cloudProvider"
+                ]
+            },
+            "v202506CloudExportSamplingProperties": {
+                "type": "object",
+                "properties": {
+                    "samplingEnabled": {
+                        "type": "boolean",
+                        "description": "Boolean indicating if sampling is used for this export."
+                    },
+                    "samplingType": {
+                        "$ref": "#/components/schemas/v202506CloudExportSamplingType"
+                    },
+                    "samplingRate": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Sampling rate for the export."
+                    }
+                }
+            },
+            "v202506CloudExportSamplingType": {
+                "type": "string",
+                "enum": [
+                    "CLOUD_EXPORT_SAMPLING_TYPE_UNSPECIFIED",
+                    "CLOUD_EXPORT_SAMPLING_TYPE_RATE",
+                    "CLOUD_EXPORT_SAMPLING_TYPE_UNSAMPLED"
+                ],
+                "default": "CLOUD_EXPORT_SAMPLING_TYPE_UNSPECIFIED",
+                "title": "- CLOUD_EXPORT_SAMPLING_TYPE_UNSPECIFIED: Invalid value.\n - CLOUD_EXPORT_SAMPLING_TYPE_RATE: Export all flows\n - CLOUD_EXPORT_SAMPLING_TYPE_UNSAMPLED: Export sampled flows"
+            },
+            "v202506CloudExportStatus": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string",
+                        "description": "Status of the export task.",
+                        "readOnly": true
+                    },
+                    "errorMessage": {
+                        "type": "string",
+                        "description": "Text of the last error message (empty if status is OK).",
+                        "readOnly": true
+                    },
+                    "flowFound": {
+                        "type": "boolean",
+                        "description": "Indication whether any flow data were exported.",
+                        "readOnly": true
+                    },
+                    "apiAccess": {
+                        "type": "boolean",
+                        "description": "Indication whether the export process is able to access cloud API.",
+                        "readOnly": true
+                    },
+                    "storageAccountAccess": {
+                        "type": "boolean",
+                        "description": "Indication whether the export process is able to access storage account containing flow logs.",
+                        "readOnly": true
+                    }
+                },
+                "title": "CloudExportStatus"
+            },
+            "v202506CloudExportType": {
+                "type": "string",
+                "enum": [
+                    "CLOUD_EXPORT_TYPE_UNSPECIFIED",
+                    "CLOUD_EXPORT_TYPE_KENTIK_MANAGED",
+                    "CLOUD_EXPORT_TYPE_CUSTOMER_MANAGED"
+                ],
+                "default": "CLOUD_EXPORT_TYPE_UNSPECIFIED",
+                "description": "- CLOUD_EXPORT_TYPE_UNSPECIFIED: Invalid value.\n - CLOUD_EXPORT_TYPE_KENTIK_MANAGED: Cloud export process is managed by Kentik\n - CLOUD_EXPORT_TYPE_CUSTOMER_MANAGED: Cloud export process is managed by customer",
+                "title": "CloudExportType"
+            },
+            "v202506CloudProvider": {
+                "type": "string",
+                "enum": [
+                    "CLOUD_PROVIDER_UNSPECIFIED",
+                    "CLOUD_PROVIDER_AWS",
+                    "CLOUD_PROVIDER_AZURE",
+                    "CLOUD_PROVIDER_GCE",
+                    "CLOUD_PROVIDER_OCI"
+                ],
+                "default": "CLOUD_PROVIDER_UNSPECIFIED",
+                "description": "- CLOUD_PROVIDER_UNSPECIFIED: Invalid value.\n - CLOUD_PROVIDER_AWS: Amazon Web Services\n - CLOUD_PROVIDER_AZURE: Microsoft Azure\n - CLOUD_PROVIDER_GCE: Google Cloud\n - CLOUD_PROVIDER_OCI: OCI",
+                "title": "CloudProvider"
+            },
+            "v202506CreateCloudExportRequest": {
+                "type": "object",
+                "properties": {
+                    "export": {
+                        "$ref": "#/components/schemas/v202506CloudExport"
+                    }
+                },
+                "title": "CreateCloudExportRequest"
+            },
+            "v202506CreateCloudExportResponse": {
+                "type": "object",
+                "properties": {
+                    "export": {
+                        "$ref": "#/components/schemas/v202506CloudExport"
+                    }
+                },
+                "title": "CreateCloudExportResponse"
+            },
+            "v202506DeleteCloudExportResponse": {
+                "type": "object",
+                "title": "DeleteCloudExportResponse"
+            },
+            "v202506GceProperties": {
+                "type": "object",
+                "properties": {
+                    "project": {
+                        "type": "string",
+                        "description": "Name of the project from which to export flow logs.",
+                        "required": [
+                            "project"
+                        ]
+                    },
+                    "subscription": {
+                        "type": "string",
+                        "description": "GCP Pub/Sub subscription providing flow logs."
+                    },
+                    "metadataOnly": {
+                        "type": "boolean",
+                        "description": "Import only metadata without any flows (default false)."
+                    },
+                    "collectFlowLogs": {
+                        "type": "boolean",
+                        "description": "Import metadata and collect flow logs (default true)."
+                    },
+                    "collectMetrics": {
+                        "type": "boolean",
+                        "description": "Import metadata and collect metrics data.  Note that flow logs will still be collected unless metadata_only is also set to true. (default false)."
+                    }
+                },
+                "title": "GceProperties",
+                "required": [
+                    "project"
+                ]
+            },
+            "v202506GetCloudExportResponse": {
+                "type": "object",
+                "properties": {
+                    "export": {
+                        "$ref": "#/components/schemas/v202506CloudExport"
+                    }
+                },
+                "title": "GetCloudExportResponse"
+            },
+            "v202506ListCloudExportsResponse": {
+                "type": "object",
+                "properties": {
+                    "exports": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202506CloudExport"
+                        },
+                        "description": "List of cloud export objects."
+                    },
+                    "invalidExportsCount": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of objects with invalid data (which are not returned in the response)."
+                    }
+                },
+                "title": "ListCloudExportsResponse"
+            },
+            "v202506OciProperties": {
+                "type": "object",
+                "properties": {
+                    "ociUserId": {
+                        "type": "string",
+                        "description": "ID of the user created to represent the Kentik cloud export tool.",
+                        "required": [
+                            "oci_user_id"
+                        ]
+                    },
+                    "ociTenancyId": {
+                        "type": "string",
+                        "description": "OCI Tenancy details.",
+                        "required": [
+                            "oci_tenancy_id"
+                        ]
+                    },
+                    "ociCompartmentId": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Compartment IDs from which to collect metadata."
+                    },
+                    "ociDefaultRegion": {
+                        "type": "string",
+                        "description": "Default Enabled Region from which to collect metadata.",
+                        "required": [
+                            "oci_default_region"
+                        ]
+                    },
+                    "ociCollectFlowLogs": {
+                        "type": "boolean",
+                        "description": "Import metadata and collect flow logs (default true)."
+                    },
+                    "ociBucketName": {
+                        "type": "string",
+                        "description": "Name of the bucket from which flow logs are to be extracted.  Required if collecting flow logs (default)"
+                    },
+                    "ociBucketNamespaceName": {
+                        "type": "string",
+                        "description": "Namespace of the bucket from which flow logs are to be extracted.  Required if collecting flow logs (default)"
+                    },
+                    "ociServiceConnectorOcid": {
+                        "type": "string"
+                    },
+                    "ociFlowObjectNamePrefix": {
+                        "type": "string",
+                        "description": "We will look for files in the bucket whose names start with {%prefix%}/{%service_connector_ocid%}"
+                    },
+                    "metadataOnly": {
+                        "type": "boolean",
+                        "description": "Import only metadata without any flows (default false)."
+                    }
+                },
+                "title": "OciProperties",
+                "required": [
+                    "ociUserId",
+                    "ociTenancyId",
+                    "ociDefaultRegion"
+                ]
+            },
+            "v202506UpdateCloudExportRequest": {
+                "type": "object",
+                "properties": {
+                    "export": {
+                        "$ref": "#/components/schemas/v202506CloudExport"
+                    }
+                },
+                "title": "UpdateCloudExportRequest"
+            },
+            "v202506UpdateCloudExportResponse": {
+                "type": "object",
+                "properties": {
+                    "export": {
+                        "$ref": "#/components/schemas/v202506CloudExport"
+                    }
+                },
+                "title": "UpdateCloudExportResponse"
+            }
+        }
+    }
+}

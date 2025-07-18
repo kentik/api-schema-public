@@ -9,6 +9,7 @@ import (
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/capacity_plan/v202212"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/cloud_export/v202101beta1"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/cloud_export/v202210"
+	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/cloud_export/v202506"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/connectivity_checker/v202410beta1"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/core/v202303"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/cost/v202308"
