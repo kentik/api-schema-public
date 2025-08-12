@@ -15,6 +15,103 @@
         }
     ],
     "paths": {
+        "/kmi/v202212/insights": {
+            "get": {
+                "summary": "List global KMI insights.",
+                "description": "Returns list of global KMI insights.",
+                "operationId": "GetGlobalInsights",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202212GetGlobalInsightsResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "description": "Maximum number of insights to return. Defaults to 100.",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "tags": [
+                    "KmiService"
+                ]
+            }
+        },
+        "/kmi/v202212/insights/{asn}": {
+            "get": {
+                "summary": "List ASN-specific KMI insights.",
+                "description": "Returns list of KMI insights for a specific Autonomous System.",
+                "operationId": "GetASNInsights",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202212GetASNInsightsResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "asn",
+                        "description": "Autonomous System Number (ASN)",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "description": "Maximum number of insights to return. Defaults to 100.",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "tags": [
+                    "KmiService"
+                ]
+            }
+        },
         "/kmi/v202212/market/{marketId}/network/{asn}/{type}": {
             "post": {
                 "summary": "List metadata and list of customers, providers, and peers for an Autonomous System.",
@@ -362,6 +459,34 @@
                 },
                 "title": "GetASNDetailsResponse"
             },
+            "v202212GetASNInsightsResponse": {
+                "type": "object",
+                "properties": {
+                    "insights": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202212Insight"
+                        },
+                        "description": "List of ASN-specific insights",
+                        "readOnly": true
+                    }
+                },
+                "title": "GetASNInsightsResponse"
+            },
+            "v202212GetGlobalInsightsResponse": {
+                "type": "object",
+                "properties": {
+                    "insights": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202212Insight"
+                        },
+                        "description": "List of global insights",
+                        "readOnly": true
+                    }
+                },
+                "title": "GetGlobalInsightsResponse"
+            },
             "v202212GetRankingsRequest": {
                 "type": "object",
                 "properties": {
@@ -402,6 +527,39 @@
                     }
                 },
                 "title": "GetRankingsResponse"
+            },
+            "v202212Insight": {
+                "type": "object",
+                "properties": {
+                    "asn": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Autonomous System Number (ASN)",
+                        "readOnly": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the Autonomous System",
+                        "readOnly": true
+                    },
+                    "type": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Type of insight",
+                        "readOnly": true
+                    },
+                    "message": {
+                        "type": "string",
+                        "description": "Insight message text",
+                        "readOnly": true
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "Timestamp when insight was created",
+                        "readOnly": true
+                    }
+                },
+                "title": "Insight"
             },
             "v202212ListMarketsResponse": {
                 "type": "object",

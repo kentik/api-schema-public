@@ -25,12 +25,17 @@ typedef struct Kentik__Kmi__V202212__Ranking Kentik__Kmi__V202212__Ranking;
 typedef struct Kentik__Kmi__V202212__CustomerProvider Kentik__Kmi__V202212__CustomerProvider;
 typedef struct Kentik__Kmi__V202212__Peer Kentik__Kmi__V202212__Peer;
 typedef struct Kentik__Kmi__V202212__ASNDetails Kentik__Kmi__V202212__ASNDetails;
+typedef struct Kentik__Kmi__V202212__Insight Kentik__Kmi__V202212__Insight;
 typedef struct Kentik__Kmi__V202212__ListMarketsRequest Kentik__Kmi__V202212__ListMarketsRequest;
 typedef struct Kentik__Kmi__V202212__ListMarketsResponse Kentik__Kmi__V202212__ListMarketsResponse;
 typedef struct Kentik__Kmi__V202212__GetRankingsRequest Kentik__Kmi__V202212__GetRankingsRequest;
 typedef struct Kentik__Kmi__V202212__GetRankingsResponse Kentik__Kmi__V202212__GetRankingsResponse;
 typedef struct Kentik__Kmi__V202212__GetASNDetailsRequest Kentik__Kmi__V202212__GetASNDetailsRequest;
 typedef struct Kentik__Kmi__V202212__GetASNDetailsResponse Kentik__Kmi__V202212__GetASNDetailsResponse;
+typedef struct Kentik__Kmi__V202212__GetGlobalInsightsRequest Kentik__Kmi__V202212__GetGlobalInsightsRequest;
+typedef struct Kentik__Kmi__V202212__GetGlobalInsightsResponse Kentik__Kmi__V202212__GetGlobalInsightsResponse;
+typedef struct Kentik__Kmi__V202212__GetASNInsightsRequest Kentik__Kmi__V202212__GetASNInsightsRequest;
+typedef struct Kentik__Kmi__V202212__GetASNInsightsResponse Kentik__Kmi__V202212__GetASNInsightsResponse;
 
 
 /* --- enums --- */
@@ -241,6 +246,41 @@ struct  Kentik__Kmi__V202212__ASNDetails
     , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL, 0,NULL, 0,NULL, KENTIK__KMI__V202212__ASNDETAILS___ASN__NOT_SET, {0} }
 
 
+typedef enum {
+  KENTIK__KMI__V202212__INSIGHT___ASN__NOT_SET = 0,
+  KENTIK__KMI__V202212__INSIGHT___ASN_ASN = 1
+    PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__KMI__V202212__INSIGHT___ASN__CASE)
+} Kentik__Kmi__V202212__Insight__AsnCase;
+
+typedef enum {
+  KENTIK__KMI__V202212__INSIGHT___TYPE__NOT_SET = 0,
+  KENTIK__KMI__V202212__INSIGHT___TYPE_TYPE = 3
+    PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__KMI__V202212__INSIGHT___TYPE__CASE)
+} Kentik__Kmi__V202212__Insight__TypeCase;
+
+/*
+ * {{.Name}}
+ */
+struct  Kentik__Kmi__V202212__Insight
+{
+  ProtobufCMessage base;
+  char *name;
+  char *message;
+  char *created_at;
+  Kentik__Kmi__V202212__Insight__AsnCase _asn_case;
+  union {
+    uint32_t asn;
+  };
+  Kentik__Kmi__V202212__Insight__TypeCase _type_case;
+  union {
+    uint32_t type;
+  };
+};
+#define KENTIK__KMI__V202212__INSIGHT__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__kmi__v202212__insight__descriptor) \
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, KENTIK__KMI__V202212__INSIGHT___ASN__NOT_SET, {0}, KENTIK__KMI__V202212__INSIGHT___TYPE__NOT_SET, {0} }
+
+
 /*
  * {{.Name}}
  */
@@ -339,6 +379,79 @@ struct  Kentik__Kmi__V202212__GetASNDetailsResponse
     , NULL }
 
 
+typedef enum {
+  KENTIK__KMI__V202212__GET_GLOBAL_INSIGHTS_REQUEST___LIMIT__NOT_SET = 0,
+  KENTIK__KMI__V202212__GET_GLOBAL_INSIGHTS_REQUEST___LIMIT_LIMIT = 1
+    PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__KMI__V202212__GET_GLOBAL_INSIGHTS_REQUEST___LIMIT__CASE)
+} Kentik__Kmi__V202212__GetGlobalInsightsRequest__LimitCase;
+
+/*
+ * {{.Name}}
+ */
+struct  Kentik__Kmi__V202212__GetGlobalInsightsRequest
+{
+  ProtobufCMessage base;
+  Kentik__Kmi__V202212__GetGlobalInsightsRequest__LimitCase _limit_case;
+  union {
+    uint32_t limit;
+  };
+};
+#define KENTIK__KMI__V202212__GET_GLOBAL_INSIGHTS_REQUEST__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__kmi__v202212__get_global_insights_request__descriptor) \
+    , KENTIK__KMI__V202212__GET_GLOBAL_INSIGHTS_REQUEST___LIMIT__NOT_SET, {0} }
+
+
+/*
+ * {{.Name}}
+ */
+struct  Kentik__Kmi__V202212__GetGlobalInsightsResponse
+{
+  ProtobufCMessage base;
+  size_t n_insights;
+  Kentik__Kmi__V202212__Insight **insights;
+};
+#define KENTIK__KMI__V202212__GET_GLOBAL_INSIGHTS_RESPONSE__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__kmi__v202212__get_global_insights_response__descriptor) \
+    , 0,NULL }
+
+
+typedef enum {
+  KENTIK__KMI__V202212__GET_ASNINSIGHTS_REQUEST___LIMIT__NOT_SET = 0,
+  KENTIK__KMI__V202212__GET_ASNINSIGHTS_REQUEST___LIMIT_LIMIT = 2
+    PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__KMI__V202212__GET_ASNINSIGHTS_REQUEST___LIMIT__CASE)
+} Kentik__Kmi__V202212__GetASNInsightsRequest__LimitCase;
+
+/*
+ * {{.Name}}
+ */
+struct  Kentik__Kmi__V202212__GetASNInsightsRequest
+{
+  ProtobufCMessage base;
+  char *asn;
+  Kentik__Kmi__V202212__GetASNInsightsRequest__LimitCase _limit_case;
+  union {
+    uint32_t limit;
+  };
+};
+#define KENTIK__KMI__V202212__GET_ASNINSIGHTS_REQUEST__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__kmi__v202212__get_asninsights_request__descriptor) \
+    , (char *)protobuf_c_empty_string, KENTIK__KMI__V202212__GET_ASNINSIGHTS_REQUEST___LIMIT__NOT_SET, {0} }
+
+
+/*
+ * {{.Name}}
+ */
+struct  Kentik__Kmi__V202212__GetASNInsightsResponse
+{
+  ProtobufCMessage base;
+  size_t n_insights;
+  Kentik__Kmi__V202212__Insight **insights;
+};
+#define KENTIK__KMI__V202212__GET_ASNINSIGHTS_RESPONSE__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__kmi__v202212__get_asninsights_response__descriptor) \
+    , 0,NULL }
+
+
 /* Kentik__Kmi__V202212__Market methods */
 void   kentik__kmi__v202212__market__init
                      (Kentik__Kmi__V202212__Market         *message);
@@ -433,6 +546,25 @@ Kentik__Kmi__V202212__ASNDetails *
                       const uint8_t       *data);
 void   kentik__kmi__v202212__asndetails__free_unpacked
                      (Kentik__Kmi__V202212__ASNDetails *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Kmi__V202212__Insight methods */
+void   kentik__kmi__v202212__insight__init
+                     (Kentik__Kmi__V202212__Insight         *message);
+size_t kentik__kmi__v202212__insight__get_packed_size
+                     (const Kentik__Kmi__V202212__Insight   *message);
+size_t kentik__kmi__v202212__insight__pack
+                     (const Kentik__Kmi__V202212__Insight   *message,
+                      uint8_t             *out);
+size_t kentik__kmi__v202212__insight__pack_to_buffer
+                     (const Kentik__Kmi__V202212__Insight   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Kmi__V202212__Insight *
+       kentik__kmi__v202212__insight__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__kmi__v202212__insight__free_unpacked
+                     (Kentik__Kmi__V202212__Insight *message,
                       ProtobufCAllocator *allocator);
 /* Kentik__Kmi__V202212__ListMarketsRequest methods */
 void   kentik__kmi__v202212__list_markets_request__init
@@ -548,6 +680,82 @@ Kentik__Kmi__V202212__GetASNDetailsResponse *
 void   kentik__kmi__v202212__get_asndetails_response__free_unpacked
                      (Kentik__Kmi__V202212__GetASNDetailsResponse *message,
                       ProtobufCAllocator *allocator);
+/* Kentik__Kmi__V202212__GetGlobalInsightsRequest methods */
+void   kentik__kmi__v202212__get_global_insights_request__init
+                     (Kentik__Kmi__V202212__GetGlobalInsightsRequest         *message);
+size_t kentik__kmi__v202212__get_global_insights_request__get_packed_size
+                     (const Kentik__Kmi__V202212__GetGlobalInsightsRequest   *message);
+size_t kentik__kmi__v202212__get_global_insights_request__pack
+                     (const Kentik__Kmi__V202212__GetGlobalInsightsRequest   *message,
+                      uint8_t             *out);
+size_t kentik__kmi__v202212__get_global_insights_request__pack_to_buffer
+                     (const Kentik__Kmi__V202212__GetGlobalInsightsRequest   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Kmi__V202212__GetGlobalInsightsRequest *
+       kentik__kmi__v202212__get_global_insights_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__kmi__v202212__get_global_insights_request__free_unpacked
+                     (Kentik__Kmi__V202212__GetGlobalInsightsRequest *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Kmi__V202212__GetGlobalInsightsResponse methods */
+void   kentik__kmi__v202212__get_global_insights_response__init
+                     (Kentik__Kmi__V202212__GetGlobalInsightsResponse         *message);
+size_t kentik__kmi__v202212__get_global_insights_response__get_packed_size
+                     (const Kentik__Kmi__V202212__GetGlobalInsightsResponse   *message);
+size_t kentik__kmi__v202212__get_global_insights_response__pack
+                     (const Kentik__Kmi__V202212__GetGlobalInsightsResponse   *message,
+                      uint8_t             *out);
+size_t kentik__kmi__v202212__get_global_insights_response__pack_to_buffer
+                     (const Kentik__Kmi__V202212__GetGlobalInsightsResponse   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Kmi__V202212__GetGlobalInsightsResponse *
+       kentik__kmi__v202212__get_global_insights_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__kmi__v202212__get_global_insights_response__free_unpacked
+                     (Kentik__Kmi__V202212__GetGlobalInsightsResponse *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Kmi__V202212__GetASNInsightsRequest methods */
+void   kentik__kmi__v202212__get_asninsights_request__init
+                     (Kentik__Kmi__V202212__GetASNInsightsRequest         *message);
+size_t kentik__kmi__v202212__get_asninsights_request__get_packed_size
+                     (const Kentik__Kmi__V202212__GetASNInsightsRequest   *message);
+size_t kentik__kmi__v202212__get_asninsights_request__pack
+                     (const Kentik__Kmi__V202212__GetASNInsightsRequest   *message,
+                      uint8_t             *out);
+size_t kentik__kmi__v202212__get_asninsights_request__pack_to_buffer
+                     (const Kentik__Kmi__V202212__GetASNInsightsRequest   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Kmi__V202212__GetASNInsightsRequest *
+       kentik__kmi__v202212__get_asninsights_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__kmi__v202212__get_asninsights_request__free_unpacked
+                     (Kentik__Kmi__V202212__GetASNInsightsRequest *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Kmi__V202212__GetASNInsightsResponse methods */
+void   kentik__kmi__v202212__get_asninsights_response__init
+                     (Kentik__Kmi__V202212__GetASNInsightsResponse         *message);
+size_t kentik__kmi__v202212__get_asninsights_response__get_packed_size
+                     (const Kentik__Kmi__V202212__GetASNInsightsResponse   *message);
+size_t kentik__kmi__v202212__get_asninsights_response__pack
+                     (const Kentik__Kmi__V202212__GetASNInsightsResponse   *message,
+                      uint8_t             *out);
+size_t kentik__kmi__v202212__get_asninsights_response__pack_to_buffer
+                     (const Kentik__Kmi__V202212__GetASNInsightsResponse   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Kmi__V202212__GetASNInsightsResponse *
+       kentik__kmi__v202212__get_asninsights_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__kmi__v202212__get_asninsights_response__free_unpacked
+                     (Kentik__Kmi__V202212__GetASNInsightsResponse *message,
+                      ProtobufCAllocator *allocator);
 /* --- per-message closures --- */
 
 typedef void (*Kentik__Kmi__V202212__Market_Closure)
@@ -564,6 +772,9 @@ typedef void (*Kentik__Kmi__V202212__Peer_Closure)
                   void *closure_data);
 typedef void (*Kentik__Kmi__V202212__ASNDetails_Closure)
                  (const Kentik__Kmi__V202212__ASNDetails *message,
+                  void *closure_data);
+typedef void (*Kentik__Kmi__V202212__Insight_Closure)
+                 (const Kentik__Kmi__V202212__Insight *message,
                   void *closure_data);
 typedef void (*Kentik__Kmi__V202212__ListMarketsRequest_Closure)
                  (const Kentik__Kmi__V202212__ListMarketsRequest *message,
@@ -582,6 +793,18 @@ typedef void (*Kentik__Kmi__V202212__GetASNDetailsRequest_Closure)
                   void *closure_data);
 typedef void (*Kentik__Kmi__V202212__GetASNDetailsResponse_Closure)
                  (const Kentik__Kmi__V202212__GetASNDetailsResponse *message,
+                  void *closure_data);
+typedef void (*Kentik__Kmi__V202212__GetGlobalInsightsRequest_Closure)
+                 (const Kentik__Kmi__V202212__GetGlobalInsightsRequest *message,
+                  void *closure_data);
+typedef void (*Kentik__Kmi__V202212__GetGlobalInsightsResponse_Closure)
+                 (const Kentik__Kmi__V202212__GetGlobalInsightsResponse *message,
+                  void *closure_data);
+typedef void (*Kentik__Kmi__V202212__GetASNInsightsRequest_Closure)
+                 (const Kentik__Kmi__V202212__GetASNInsightsRequest *message,
+                  void *closure_data);
+typedef void (*Kentik__Kmi__V202212__GetASNInsightsResponse_Closure)
+                 (const Kentik__Kmi__V202212__GetASNInsightsResponse *message,
                   void *closure_data);
 
 /* --- services --- */
@@ -602,6 +825,14 @@ struct Kentik__Kmi__V202212__KmiService_Service
                          const Kentik__Kmi__V202212__GetASNDetailsRequest *input,
                          Kentik__Kmi__V202212__GetASNDetailsResponse_Closure closure,
                          void *closure_data);
+  void (*get_global_insights)(Kentik__Kmi__V202212__KmiService_Service *service,
+                              const Kentik__Kmi__V202212__GetGlobalInsightsRequest *input,
+                              Kentik__Kmi__V202212__GetGlobalInsightsResponse_Closure closure,
+                              void *closure_data);
+  void (*get_asninsights)(Kentik__Kmi__V202212__KmiService_Service *service,
+                          const Kentik__Kmi__V202212__GetASNInsightsRequest *input,
+                          Kentik__Kmi__V202212__GetASNInsightsResponse_Closure closure,
+                          void *closure_data);
 };
 typedef void (*Kentik__Kmi__V202212__KmiService_ServiceDestroy)(Kentik__Kmi__V202212__KmiService_Service *);
 void kentik__kmi__v202212__kmi_service__init (Kentik__Kmi__V202212__KmiService_Service *service,
@@ -612,7 +843,9 @@ void kentik__kmi__v202212__kmi_service__init (Kentik__Kmi__V202212__KmiService_S
     { KENTIK__KMI__V202212__KMI_SERVICE__BASE_INIT,\
       function_prefix__ ## list_markets,\
       function_prefix__ ## get_rankings,\
-      function_prefix__ ## get_asndetails  }
+      function_prefix__ ## get_asndetails,\
+      function_prefix__ ## get_global_insights,\
+      function_prefix__ ## get_asninsights  }
 void kentik__kmi__v202212__kmi_service__list_markets(ProtobufCService *service,
                                                      const Kentik__Kmi__V202212__ListMarketsRequest *input,
                                                      Kentik__Kmi__V202212__ListMarketsResponse_Closure closure,
@@ -625,6 +858,14 @@ void kentik__kmi__v202212__kmi_service__get_asndetails(ProtobufCService *service
                                                        const Kentik__Kmi__V202212__GetASNDetailsRequest *input,
                                                        Kentik__Kmi__V202212__GetASNDetailsResponse_Closure closure,
                                                        void *closure_data);
+void kentik__kmi__v202212__kmi_service__get_global_insights(ProtobufCService *service,
+                                                            const Kentik__Kmi__V202212__GetGlobalInsightsRequest *input,
+                                                            Kentik__Kmi__V202212__GetGlobalInsightsResponse_Closure closure,
+                                                            void *closure_data);
+void kentik__kmi__v202212__kmi_service__get_asninsights(ProtobufCService *service,
+                                                        const Kentik__Kmi__V202212__GetASNInsightsRequest *input,
+                                                        Kentik__Kmi__V202212__GetASNInsightsResponse_Closure closure,
+                                                        void *closure_data);
 
 /* --- descriptors --- */
 
@@ -633,12 +874,17 @@ extern const ProtobufCMessageDescriptor kentik__kmi__v202212__ranking__descripto
 extern const ProtobufCMessageDescriptor kentik__kmi__v202212__customer_provider__descriptor;
 extern const ProtobufCMessageDescriptor kentik__kmi__v202212__peer__descriptor;
 extern const ProtobufCMessageDescriptor kentik__kmi__v202212__asndetails__descriptor;
+extern const ProtobufCMessageDescriptor kentik__kmi__v202212__insight__descriptor;
 extern const ProtobufCMessageDescriptor kentik__kmi__v202212__list_markets_request__descriptor;
 extern const ProtobufCMessageDescriptor kentik__kmi__v202212__list_markets_response__descriptor;
 extern const ProtobufCMessageDescriptor kentik__kmi__v202212__get_rankings_request__descriptor;
 extern const ProtobufCMessageDescriptor kentik__kmi__v202212__get_rankings_response__descriptor;
 extern const ProtobufCMessageDescriptor kentik__kmi__v202212__get_asndetails_request__descriptor;
 extern const ProtobufCMessageDescriptor kentik__kmi__v202212__get_asndetails_response__descriptor;
+extern const ProtobufCMessageDescriptor kentik__kmi__v202212__get_global_insights_request__descriptor;
+extern const ProtobufCMessageDescriptor kentik__kmi__v202212__get_global_insights_response__descriptor;
+extern const ProtobufCMessageDescriptor kentik__kmi__v202212__get_asninsights_request__descriptor;
+extern const ProtobufCMessageDescriptor kentik__kmi__v202212__get_asninsights_response__descriptor;
 extern const ProtobufCServiceDescriptor kentik__kmi__v202212__kmi_service__descriptor;
 
 PROTOBUF_C__END_DECLS

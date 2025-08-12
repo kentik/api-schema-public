@@ -232,6 +232,51 @@ void   kentik__kmi__v202212__asndetails__free_unpacked
   assert(message->base.descriptor == &kentik__kmi__v202212__asndetails__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   kentik__kmi__v202212__insight__init
+                     (Kentik__Kmi__V202212__Insight         *message)
+{
+  static const Kentik__Kmi__V202212__Insight init_value = KENTIK__KMI__V202212__INSIGHT__INIT;
+  *message = init_value;
+}
+size_t kentik__kmi__v202212__insight__get_packed_size
+                     (const Kentik__Kmi__V202212__Insight *message)
+{
+  assert(message->base.descriptor == &kentik__kmi__v202212__insight__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__kmi__v202212__insight__pack
+                     (const Kentik__Kmi__V202212__Insight *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__kmi__v202212__insight__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__kmi__v202212__insight__pack_to_buffer
+                     (const Kentik__Kmi__V202212__Insight *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__kmi__v202212__insight__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Kmi__V202212__Insight *
+       kentik__kmi__v202212__insight__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Kmi__V202212__Insight *)
+     protobuf_c_message_unpack (&kentik__kmi__v202212__insight__descriptor,
+                                allocator, len, data);
+}
+void   kentik__kmi__v202212__insight__free_unpacked
+                     (Kentik__Kmi__V202212__Insight *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__kmi__v202212__insight__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 void   kentik__kmi__v202212__list_markets_request__init
                      (Kentik__Kmi__V202212__ListMarketsRequest         *message)
 {
@@ -500,6 +545,186 @@ void   kentik__kmi__v202212__get_asndetails_response__free_unpacked
   if(!message)
     return;
   assert(message->base.descriptor == &kentik__kmi__v202212__get_asndetails_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__kmi__v202212__get_global_insights_request__init
+                     (Kentik__Kmi__V202212__GetGlobalInsightsRequest         *message)
+{
+  static const Kentik__Kmi__V202212__GetGlobalInsightsRequest init_value = KENTIK__KMI__V202212__GET_GLOBAL_INSIGHTS_REQUEST__INIT;
+  *message = init_value;
+}
+size_t kentik__kmi__v202212__get_global_insights_request__get_packed_size
+                     (const Kentik__Kmi__V202212__GetGlobalInsightsRequest *message)
+{
+  assert(message->base.descriptor == &kentik__kmi__v202212__get_global_insights_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__kmi__v202212__get_global_insights_request__pack
+                     (const Kentik__Kmi__V202212__GetGlobalInsightsRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__kmi__v202212__get_global_insights_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__kmi__v202212__get_global_insights_request__pack_to_buffer
+                     (const Kentik__Kmi__V202212__GetGlobalInsightsRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__kmi__v202212__get_global_insights_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Kmi__V202212__GetGlobalInsightsRequest *
+       kentik__kmi__v202212__get_global_insights_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Kmi__V202212__GetGlobalInsightsRequest *)
+     protobuf_c_message_unpack (&kentik__kmi__v202212__get_global_insights_request__descriptor,
+                                allocator, len, data);
+}
+void   kentik__kmi__v202212__get_global_insights_request__free_unpacked
+                     (Kentik__Kmi__V202212__GetGlobalInsightsRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__kmi__v202212__get_global_insights_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__kmi__v202212__get_global_insights_response__init
+                     (Kentik__Kmi__V202212__GetGlobalInsightsResponse         *message)
+{
+  static const Kentik__Kmi__V202212__GetGlobalInsightsResponse init_value = KENTIK__KMI__V202212__GET_GLOBAL_INSIGHTS_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t kentik__kmi__v202212__get_global_insights_response__get_packed_size
+                     (const Kentik__Kmi__V202212__GetGlobalInsightsResponse *message)
+{
+  assert(message->base.descriptor == &kentik__kmi__v202212__get_global_insights_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__kmi__v202212__get_global_insights_response__pack
+                     (const Kentik__Kmi__V202212__GetGlobalInsightsResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__kmi__v202212__get_global_insights_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__kmi__v202212__get_global_insights_response__pack_to_buffer
+                     (const Kentik__Kmi__V202212__GetGlobalInsightsResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__kmi__v202212__get_global_insights_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Kmi__V202212__GetGlobalInsightsResponse *
+       kentik__kmi__v202212__get_global_insights_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Kmi__V202212__GetGlobalInsightsResponse *)
+     protobuf_c_message_unpack (&kentik__kmi__v202212__get_global_insights_response__descriptor,
+                                allocator, len, data);
+}
+void   kentik__kmi__v202212__get_global_insights_response__free_unpacked
+                     (Kentik__Kmi__V202212__GetGlobalInsightsResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__kmi__v202212__get_global_insights_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__kmi__v202212__get_asninsights_request__init
+                     (Kentik__Kmi__V202212__GetASNInsightsRequest         *message)
+{
+  static const Kentik__Kmi__V202212__GetASNInsightsRequest init_value = KENTIK__KMI__V202212__GET_ASNINSIGHTS_REQUEST__INIT;
+  *message = init_value;
+}
+size_t kentik__kmi__v202212__get_asninsights_request__get_packed_size
+                     (const Kentik__Kmi__V202212__GetASNInsightsRequest *message)
+{
+  assert(message->base.descriptor == &kentik__kmi__v202212__get_asninsights_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__kmi__v202212__get_asninsights_request__pack
+                     (const Kentik__Kmi__V202212__GetASNInsightsRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__kmi__v202212__get_asninsights_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__kmi__v202212__get_asninsights_request__pack_to_buffer
+                     (const Kentik__Kmi__V202212__GetASNInsightsRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__kmi__v202212__get_asninsights_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Kmi__V202212__GetASNInsightsRequest *
+       kentik__kmi__v202212__get_asninsights_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Kmi__V202212__GetASNInsightsRequest *)
+     protobuf_c_message_unpack (&kentik__kmi__v202212__get_asninsights_request__descriptor,
+                                allocator, len, data);
+}
+void   kentik__kmi__v202212__get_asninsights_request__free_unpacked
+                     (Kentik__Kmi__V202212__GetASNInsightsRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__kmi__v202212__get_asninsights_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__kmi__v202212__get_asninsights_response__init
+                     (Kentik__Kmi__V202212__GetASNInsightsResponse         *message)
+{
+  static const Kentik__Kmi__V202212__GetASNInsightsResponse init_value = KENTIK__KMI__V202212__GET_ASNINSIGHTS_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t kentik__kmi__v202212__get_asninsights_response__get_packed_size
+                     (const Kentik__Kmi__V202212__GetASNInsightsResponse *message)
+{
+  assert(message->base.descriptor == &kentik__kmi__v202212__get_asninsights_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__kmi__v202212__get_asninsights_response__pack
+                     (const Kentik__Kmi__V202212__GetASNInsightsResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__kmi__v202212__get_asninsights_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__kmi__v202212__get_asninsights_response__pack_to_buffer
+                     (const Kentik__Kmi__V202212__GetASNInsightsResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__kmi__v202212__get_asninsights_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Kmi__V202212__GetASNInsightsResponse *
+       kentik__kmi__v202212__get_asninsights_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Kmi__V202212__GetASNInsightsResponse *)
+     protobuf_c_message_unpack (&kentik__kmi__v202212__get_asninsights_response__descriptor,
+                                allocator, len, data);
+}
+void   kentik__kmi__v202212__get_asninsights_response__free_unpacked
+                     (Kentik__Kmi__V202212__GetASNInsightsResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__kmi__v202212__get_asninsights_response__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
 static const ProtobufCFieldDescriptor kentik__kmi__v202212__market__field_descriptors[2] =
@@ -926,6 +1151,96 @@ const ProtobufCMessageDescriptor kentik__kmi__v202212__asndetails__descriptor =
   (ProtobufCMessageInit) kentik__kmi__v202212__asndetails__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
+static const ProtobufCFieldDescriptor kentik__kmi__v202212__insight__field_descriptors[5] =
+{
+  {
+    "asn",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT32,
+    offsetof(Kentik__Kmi__V202212__Insight, _asn_case),
+    offsetof(Kentik__Kmi__V202212__Insight, asn),
+    NULL,
+    NULL,
+    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "name",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Kmi__V202212__Insight, name),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "type",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT32,
+    offsetof(Kentik__Kmi__V202212__Insight, _type_case),
+    offsetof(Kentik__Kmi__V202212__Insight, type),
+    NULL,
+    NULL,
+    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "message",
+    4,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Kmi__V202212__Insight, message),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "created_at",
+    5,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Kmi__V202212__Insight, created_at),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__kmi__v202212__insight__field_indices_by_name[] = {
+  0,   /* field[0] = asn */
+  4,   /* field[4] = created_at */
+  3,   /* field[3] = message */
+  1,   /* field[1] = name */
+  2,   /* field[2] = type */
+};
+static const ProtobufCIntRange kentik__kmi__v202212__insight__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 5 }
+};
+const ProtobufCMessageDescriptor kentik__kmi__v202212__insight__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.kmi.v202212.Insight",
+  "Insight",
+  "Kentik__Kmi__V202212__Insight",
+  "kentik.kmi.v202212",
+  sizeof(Kentik__Kmi__V202212__Insight),
+  5,
+  kentik__kmi__v202212__insight__field_descriptors,
+  kentik__kmi__v202212__insight__field_indices_by_name,
+  1,  kentik__kmi__v202212__insight__number_ranges,
+  (ProtobufCMessageInit) kentik__kmi__v202212__insight__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
 #define kentik__kmi__v202212__list_markets_request__field_descriptors NULL
 #define kentik__kmi__v202212__list_markets_request__field_indices_by_name NULL
 #define kentik__kmi__v202212__list_markets_request__number_ranges NULL
@@ -1264,14 +1579,183 @@ const ProtobufCMessageDescriptor kentik__kmi__v202212__get_asndetails_response__
   (ProtobufCMessageInit) kentik__kmi__v202212__get_asndetails_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCMethodDescriptor kentik__kmi__v202212__kmi_service__method_descriptors[3] =
+static const ProtobufCFieldDescriptor kentik__kmi__v202212__get_global_insights_request__field_descriptors[1] =
+{
+  {
+    "limit",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT32,
+    offsetof(Kentik__Kmi__V202212__GetGlobalInsightsRequest, _limit_case),
+    offsetof(Kentik__Kmi__V202212__GetGlobalInsightsRequest, limit),
+    NULL,
+    NULL,
+    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__kmi__v202212__get_global_insights_request__field_indices_by_name[] = {
+  0,   /* field[0] = limit */
+};
+static const ProtobufCIntRange kentik__kmi__v202212__get_global_insights_request__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor kentik__kmi__v202212__get_global_insights_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.kmi.v202212.GetGlobalInsightsRequest",
+  "GetGlobalInsightsRequest",
+  "Kentik__Kmi__V202212__GetGlobalInsightsRequest",
+  "kentik.kmi.v202212",
+  sizeof(Kentik__Kmi__V202212__GetGlobalInsightsRequest),
+  1,
+  kentik__kmi__v202212__get_global_insights_request__field_descriptors,
+  kentik__kmi__v202212__get_global_insights_request__field_indices_by_name,
+  1,  kentik__kmi__v202212__get_global_insights_request__number_ranges,
+  (ProtobufCMessageInit) kentik__kmi__v202212__get_global_insights_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__kmi__v202212__get_global_insights_response__field_descriptors[1] =
+{
+  {
+    "insights",
+    1,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Kentik__Kmi__V202212__GetGlobalInsightsResponse, n_insights),
+    offsetof(Kentik__Kmi__V202212__GetGlobalInsightsResponse, insights),
+    &kentik__kmi__v202212__insight__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__kmi__v202212__get_global_insights_response__field_indices_by_name[] = {
+  0,   /* field[0] = insights */
+};
+static const ProtobufCIntRange kentik__kmi__v202212__get_global_insights_response__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor kentik__kmi__v202212__get_global_insights_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.kmi.v202212.GetGlobalInsightsResponse",
+  "GetGlobalInsightsResponse",
+  "Kentik__Kmi__V202212__GetGlobalInsightsResponse",
+  "kentik.kmi.v202212",
+  sizeof(Kentik__Kmi__V202212__GetGlobalInsightsResponse),
+  1,
+  kentik__kmi__v202212__get_global_insights_response__field_descriptors,
+  kentik__kmi__v202212__get_global_insights_response__field_indices_by_name,
+  1,  kentik__kmi__v202212__get_global_insights_response__number_ranges,
+  (ProtobufCMessageInit) kentik__kmi__v202212__get_global_insights_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__kmi__v202212__get_asninsights_request__field_descriptors[2] =
+{
+  {
+    "asn",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Kmi__V202212__GetASNInsightsRequest, asn),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "limit",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT32,
+    offsetof(Kentik__Kmi__V202212__GetASNInsightsRequest, _limit_case),
+    offsetof(Kentik__Kmi__V202212__GetASNInsightsRequest, limit),
+    NULL,
+    NULL,
+    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__kmi__v202212__get_asninsights_request__field_indices_by_name[] = {
+  0,   /* field[0] = asn */
+  1,   /* field[1] = limit */
+};
+static const ProtobufCIntRange kentik__kmi__v202212__get_asninsights_request__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor kentik__kmi__v202212__get_asninsights_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.kmi.v202212.GetASNInsightsRequest",
+  "GetASNInsightsRequest",
+  "Kentik__Kmi__V202212__GetASNInsightsRequest",
+  "kentik.kmi.v202212",
+  sizeof(Kentik__Kmi__V202212__GetASNInsightsRequest),
+  2,
+  kentik__kmi__v202212__get_asninsights_request__field_descriptors,
+  kentik__kmi__v202212__get_asninsights_request__field_indices_by_name,
+  1,  kentik__kmi__v202212__get_asninsights_request__number_ranges,
+  (ProtobufCMessageInit) kentik__kmi__v202212__get_asninsights_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__kmi__v202212__get_asninsights_response__field_descriptors[1] =
+{
+  {
+    "insights",
+    1,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Kentik__Kmi__V202212__GetASNInsightsResponse, n_insights),
+    offsetof(Kentik__Kmi__V202212__GetASNInsightsResponse, insights),
+    &kentik__kmi__v202212__insight__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__kmi__v202212__get_asninsights_response__field_indices_by_name[] = {
+  0,   /* field[0] = insights */
+};
+static const ProtobufCIntRange kentik__kmi__v202212__get_asninsights_response__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor kentik__kmi__v202212__get_asninsights_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.kmi.v202212.GetASNInsightsResponse",
+  "GetASNInsightsResponse",
+  "Kentik__Kmi__V202212__GetASNInsightsResponse",
+  "kentik.kmi.v202212",
+  sizeof(Kentik__Kmi__V202212__GetASNInsightsResponse),
+  1,
+  kentik__kmi__v202212__get_asninsights_response__field_descriptors,
+  kentik__kmi__v202212__get_asninsights_response__field_indices_by_name,
+  1,  kentik__kmi__v202212__get_asninsights_response__number_ranges,
+  (ProtobufCMessageInit) kentik__kmi__v202212__get_asninsights_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCMethodDescriptor kentik__kmi__v202212__kmi_service__method_descriptors[5] =
 {
   { "ListMarkets", &kentik__kmi__v202212__list_markets_request__descriptor, &kentik__kmi__v202212__list_markets_response__descriptor },
   { "GetRankings", &kentik__kmi__v202212__get_rankings_request__descriptor, &kentik__kmi__v202212__get_rankings_response__descriptor },
   { "GetASNDetails", &kentik__kmi__v202212__get_asndetails_request__descriptor, &kentik__kmi__v202212__get_asndetails_response__descriptor },
+  { "GetGlobalInsights", &kentik__kmi__v202212__get_global_insights_request__descriptor, &kentik__kmi__v202212__get_global_insights_response__descriptor },
+  { "GetASNInsights", &kentik__kmi__v202212__get_asninsights_request__descriptor, &kentik__kmi__v202212__get_asninsights_response__descriptor },
 };
 const unsigned kentik__kmi__v202212__kmi_service__method_indices_by_name[] = {
   2,        /* GetASNDetails */
+  4,        /* GetASNInsights */
+  3,        /* GetGlobalInsights */
   1,        /* GetRankings */
   0         /* ListMarkets */
 };
@@ -1282,7 +1766,7 @@ const ProtobufCServiceDescriptor kentik__kmi__v202212__kmi_service__descriptor =
   "KmiService",
   "Kentik__Kmi__V202212__KmiService",
   "kentik.kmi.v202212",
-  3,
+  5,
   kentik__kmi__v202212__kmi_service__method_descriptors,
   kentik__kmi__v202212__kmi_service__method_indices_by_name
 };
@@ -1309,6 +1793,22 @@ void kentik__kmi__v202212__kmi_service__get_asndetails(ProtobufCService *service
 {
   assert(service->descriptor == &kentik__kmi__v202212__kmi_service__descriptor);
   service->invoke(service, 2, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
+void kentik__kmi__v202212__kmi_service__get_global_insights(ProtobufCService *service,
+                                                            const Kentik__Kmi__V202212__GetGlobalInsightsRequest *input,
+                                                            Kentik__Kmi__V202212__GetGlobalInsightsResponse_Closure closure,
+                                                            void *closure_data)
+{
+  assert(service->descriptor == &kentik__kmi__v202212__kmi_service__descriptor);
+  service->invoke(service, 3, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
+void kentik__kmi__v202212__kmi_service__get_asninsights(ProtobufCService *service,
+                                                        const Kentik__Kmi__V202212__GetASNInsightsRequest *input,
+                                                        Kentik__Kmi__V202212__GetASNInsightsResponse_Closure closure,
+                                                        void *closure_data)
+{
+  assert(service->descriptor == &kentik__kmi__v202212__kmi_service__descriptor);
+  service->invoke(service, 4, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void kentik__kmi__v202212__kmi_service__init (Kentik__Kmi__V202212__KmiService_Service *service,
                                               Kentik__Kmi__V202212__KmiService_ServiceDestroy destroy)

@@ -137,6 +137,41 @@ struct ListMarketsRequestDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ListMarketsRequestDefaultTypeInternal _ListMarketsRequest_default_instance_;
 
+inline constexpr Insight::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        message_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        created_at_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        asn_{0u},
+        type_{0u} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Insight::Insight(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct InsightDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR InsightDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~InsightDefaultTypeInternal() {}
+  union {
+    Insight _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 InsightDefaultTypeInternal _Insight_default_instance_;
+
 inline constexpr GetRankingsRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
@@ -170,6 +205,59 @@ struct GetRankingsRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetRankingsRequestDefaultTypeInternal _GetRankingsRequest_default_instance_;
+
+inline constexpr GetGlobalInsightsRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        limit_{0u} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR GetGlobalInsightsRequest::GetGlobalInsightsRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct GetGlobalInsightsRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GetGlobalInsightsRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GetGlobalInsightsRequestDefaultTypeInternal() {}
+  union {
+    GetGlobalInsightsRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetGlobalInsightsRequestDefaultTypeInternal _GetGlobalInsightsRequest_default_instance_;
+
+inline constexpr GetASNInsightsRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        asn_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        limit_{0u} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR GetASNInsightsRequest::GetASNInsightsRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct GetASNInsightsRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GetASNInsightsRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GetASNInsightsRequestDefaultTypeInternal() {}
+  union {
+    GetASNInsightsRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetASNInsightsRequestDefaultTypeInternal _GetASNInsightsRequest_default_instance_;
 
 inline constexpr GetASNDetailsRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -298,6 +386,56 @@ struct GetRankingsResponseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetRankingsResponseDefaultTypeInternal _GetRankingsResponse_default_instance_;
+
+inline constexpr GetGlobalInsightsResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : insights_{},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR GetGlobalInsightsResponse::GetGlobalInsightsResponse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct GetGlobalInsightsResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GetGlobalInsightsResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GetGlobalInsightsResponseDefaultTypeInternal() {}
+  union {
+    GetGlobalInsightsResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetGlobalInsightsResponseDefaultTypeInternal _GetGlobalInsightsResponse_default_instance_;
+
+inline constexpr GetASNInsightsResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : insights_{},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR GetASNInsightsResponse::GetASNInsightsResponse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct GetASNInsightsResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GetASNInsightsResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GetASNInsightsResponseDefaultTypeInternal() {}
+  union {
+    GetASNInsightsResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetASNInsightsResponseDefaultTypeInternal _GetASNInsightsResponse_default_instance_;
 
 inline constexpr ASNDetails::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -451,6 +589,24 @@ const ::uint32_t
         ~0u,
         ~0u,
         ~0u,
+        PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::Insight, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::Insight, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::Insight, _impl_.asn_),
+        PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::Insight, _impl_.name_),
+        PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::Insight, _impl_.type_),
+        PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::Insight, _impl_.message_),
+        PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::Insight, _impl_.created_at_),
+        0,
+        ~0u,
+        1,
+        ~0u,
+        ~0u,
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::ListMarketsRequest, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -519,6 +675,46 @@ const ::uint32_t
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::GetASNDetailsResponse, _impl_.asn_details_),
         0,
+        PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::GetGlobalInsightsRequest, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::GetGlobalInsightsRequest, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::GetGlobalInsightsRequest, _impl_.limit_),
+        0,
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::GetGlobalInsightsResponse, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::GetGlobalInsightsResponse, _impl_.insights_),
+        PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::GetASNInsightsRequest, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::GetASNInsightsRequest, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::GetASNInsightsRequest, _impl_.asn_),
+        PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::GetASNInsightsRequest, _impl_.limit_),
+        ~0u,
+        0,
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::GetASNInsightsResponse, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::GetASNInsightsResponse, _impl_.insights_),
 };
 
 static const ::_pbi::MigrationSchema
@@ -528,12 +724,17 @@ static const ::_pbi::MigrationSchema
         {30, 44, -1, sizeof(::kentik::kmi::v202212::CustomerProvider)},
         {50, 61, -1, sizeof(::kentik::kmi::v202212::Peer)},
         {64, 78, -1, sizeof(::kentik::kmi::v202212::ASNDetails)},
-        {84, -1, -1, sizeof(::kentik::kmi::v202212::ListMarketsRequest)},
-        {92, -1, -1, sizeof(::kentik::kmi::v202212::ListMarketsResponse)},
-        {101, 113, -1, sizeof(::kentik::kmi::v202212::GetRankingsRequest)},
-        {117, -1, -1, sizeof(::kentik::kmi::v202212::GetRankingsResponse)},
-        {127, -1, -1, sizeof(::kentik::kmi::v202212::GetASNDetailsRequest)},
-        {142, 151, -1, sizeof(::kentik::kmi::v202212::GetASNDetailsResponse)},
+        {84, 97, -1, sizeof(::kentik::kmi::v202212::Insight)},
+        {102, -1, -1, sizeof(::kentik::kmi::v202212::ListMarketsRequest)},
+        {110, -1, -1, sizeof(::kentik::kmi::v202212::ListMarketsResponse)},
+        {119, 131, -1, sizeof(::kentik::kmi::v202212::GetRankingsRequest)},
+        {135, -1, -1, sizeof(::kentik::kmi::v202212::GetRankingsResponse)},
+        {145, -1, -1, sizeof(::kentik::kmi::v202212::GetASNDetailsRequest)},
+        {160, 169, -1, sizeof(::kentik::kmi::v202212::GetASNDetailsResponse)},
+        {170, 179, -1, sizeof(::kentik::kmi::v202212::GetGlobalInsightsRequest)},
+        {180, -1, -1, sizeof(::kentik::kmi::v202212::GetGlobalInsightsResponse)},
+        {189, 199, -1, sizeof(::kentik::kmi::v202212::GetASNInsightsRequest)},
+        {201, -1, -1, sizeof(::kentik::kmi::v202212::GetASNInsightsResponse)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::kmi::v202212::_Market_default_instance_._instance,
@@ -541,12 +742,17 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::kmi::v202212::_CustomerProvider_default_instance_._instance,
     &::kentik::kmi::v202212::_Peer_default_instance_._instance,
     &::kentik::kmi::v202212::_ASNDetails_default_instance_._instance,
+    &::kentik::kmi::v202212::_Insight_default_instance_._instance,
     &::kentik::kmi::v202212::_ListMarketsRequest_default_instance_._instance,
     &::kentik::kmi::v202212::_ListMarketsResponse_default_instance_._instance,
     &::kentik::kmi::v202212::_GetRankingsRequest_default_instance_._instance,
     &::kentik::kmi::v202212::_GetRankingsResponse_default_instance_._instance,
     &::kentik::kmi::v202212::_GetASNDetailsRequest_default_instance_._instance,
     &::kentik::kmi::v202212::_GetASNDetailsResponse_default_instance_._instance,
+    &::kentik::kmi::v202212::_GetGlobalInsightsRequest_default_instance_._instance,
+    &::kentik::kmi::v202212::_GetGlobalInsightsResponse_default_instance_._instance,
+    &::kentik::kmi::v202212::_GetASNInsightsRequest_default_instance_._instance,
+    &::kentik::kmi::v202212::_GetASNInsightsResponse_default_instance_._instance,
 };
 const char descriptor_table_protodef_kentik_2fkmi_2fv202212_2fkmi_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
@@ -604,125 +810,160 @@ const char descriptor_table_protodef_kentik_2fkmi_2fv202212_2fkmi_2eproto[] ABSL
     "viderB\031\222A\0232\021List of Providers\340A\003R\tprovid"
     "ers\022E\n\005peers\030\006 \003(\0132\030.kentik.kmi.v202212."
     "PeerB\025\222A\0172\rList of Peers\340A\003R\005peersB\006\n\004_a"
-    "sn\"\024\n\022ListMarketsRequest\"\\\n\023ListMarketsR"
-    "esponse\022E\n\007markets\030\001 \003(\0132\032.kentik.kmi.v2"
-    "02212.MarketB\017\222A\t2\007Markets\340A\003R\007markets\"\234"
-    "\004\n\022GetRankingsRequest\022c\n\tmarket_id\030\001 \001(\t"
-    "BF\222AC2AUnique Geo Market identifier (as "
-    "provided by the ListMarkets RPC)R\010market"
-    "Id\022\342\001\n\trank_type\030\002 \001(\tB\304\001\222A\300\0012\275\001Type of "
-    "the requested ranking (\'customer_base\', "
-    "\'customer_base_retail\', \'customer_base_w"
-    "holesome\', \'customer_base_backbone\', \'cu"
-    "stomer_growth\', \'peering_base\'). Default"
-    "s to \'customer_base\'.R\010rankType\022]\n\002ip\030\003 "
-    "\001(\tBM\222AJ2HIP Address Family (\'v4\' or \'v6"
-    "\') of requested ranking. Defaults to \'v4"
-    "\'.R\002ip\022S\n\005limit\030\004 \001(\rB8\222A523Maximum numb"
-    "er of entries returned. (Default: 600).H"
-    "\000R\005limit\210\001\001B\010\n\006_limit\"\314\001\n\023GetRankingsRes"
-    "ponse\022N\n\010rankings\030\001 \003(\0132\033.kentik.kmi.v20"
-    "2212.RankingB\025\222A\0222\020List of rankingsR\010ran"
-    "kings\022e\n\rinvalid_count\030\002 \001(\rB@\222A=2;Numbe"
-    "r of invalid entries encountered while c"
-    "ollecting dataR\014invalidCount\"\345\005\n\024GetASND"
-    "etailsRequest\022c\n\tmarket_id\030\001 \001(\tBF\222AC2AU"
-    "nique Geo Market identifier (as provided"
-    " by the ListMarkets RPC)R\010marketId\0225\n\003as"
-    "n\030\002 \001(\tB#\222A 2\036Autonomous System Number ("
-    "ASN)R\003asn\022H\n\002ip\030\003 \001(\tB8\222A523IP Address F"
-    "amily (\'v4\' or \'v6\'). Defaults to \'v4\'.R"
-    "\002ip\022o\n\004type\030\004 \001(\tB[\222AX2VType of the requ"
-    "ested ASN (\'all\', \'customer\', \'provider\'"
-    ", \'peers\'). Defaults to \'all\'.R\004type\022v\n\017"
-    "mutual_provider\030\005 \001(\tBM\222AJ2HFilter by mu"
-    "tual provider (\'all\', \'only\', \'exclude\')"
-    ". Defaults to \'all\'.R\016mutualProvider\022v\n\017"
-    "mutual_customer\030\006 \001(\tBM\222AJ2HFilter by mu"
-    "tual customer (\'all\', \'only\', \'exclude\')"
-    ". Defaults to \'all\'.R\016mutualCustomer\022\205\001\n"
-    "\024singlehomed_customer\030\007 \001(\tBR\222AO2MFilter"
-    " by singlehomed customer (\'all\', \'only\',"
-    " \'exclude\'). Defaults to \'all\'.R\023singleh"
-    "omedCustomer\"\255\001\n\025GetASNDetailsResponse\022\223"
-    "\001\n\013asn_details\030\001 \001(\0132\036.kentik.kmi.v20221"
-    "2.ASNDetailsBR\222AO2MMetadata and list of "
-    "customers, providers, and peers for an A"
-    "utonomous SystemR\nasnDetails2\253\007\n\nKmiServ"
-    "ice\022\344\001\n\013ListMarkets\022&.kentik.kmi.v202212"
-    ".ListMarketsRequest\032\'.kentik.kmi.v202212"
-    ".ListMarketsResponse\"\203\001\222AR\022\035List all geo"
-    " markets for KMI.\032$Returns list of geo m"
-    "arkets for KMI.*\013ListMarkets\362\327\002\016admin.km"
-    "i:read\202\323\344\223\002\026\022\024/kmi/v202212/markets\022\221\002\n\013G"
-    "etRankings\022&.kentik.kmi.v202212.GetRanki"
-    "ngsRequest\032\'.kentik.kmi.v202212.GetRanki"
-    "ngsResponse\"\260\001\222A\\\022.List KMI rankings by "
-    "geo market and rank type.\032\035Returns list "
-    "of KMI rankings.*\013GetRankings\362\327\002\016admin.k"
-    "mi:read\202\323\344\223\0029\"4/kmi/v202212/market/{mark"
-    "et_id}/rankings/{rank_type}:\001*\022\370\002\n\rGetAS"
-    "NDetails\022(.kentik.kmi.v202212.GetASNDeta"
-    "ilsRequest\032).kentik.kmi.v202212.GetASNDe"
-    "tailsResponse\"\221\002\222A\274\001\022SList metadata and "
-    "list of customers, providers, and peers "
-    "for an Autonomous System.\032VReturns metad"
-    "ata and list of customers, providers, an"
-    "d peers for an Autonomous System.*\rGetAS"
-    "NDetails\362\327\002\016admin.kmi:read\202\323\344\223\0029\"4/kmi/v"
-    "202212/market/{market_id}/network/{asn}/"
-    "{type}:\001*\032\'\312A\023grpc.api.kentik.com\352\327\002\tadm"
-    "in.kmi\220\330\002\003B\311\017ZAgithub.com/kentik/api-sch"
-    "ema-public/gen/go/kentik/kmi/v202212;kmi"
-    "\222A\202\017\022\233\r\n$Kentik Market Intelligence (KMI"
-    ") API\022\242\014# Overview\nThe Kentik Market Int"
-    "elligence (KMI) API provides programmati"
-    "c access to information related to KMI r"
-    "ankings, KMI markets, and the customers,"
-    " providers, and peers of individual Auto"
-    "nomous Systems (ASes). This information "
-    "is derived from analysis of the global r"
-    "outing table, which enables us to classi"
-    "fy the peering and transit relationships"
-    " between ASes and to identify the provid"
-    "ers, peers, and customers of a given AS "
-    "in any geography (market). KMI estimates"
-    " the volume of IP space transited by ASe"
-    "s in different geographies and produces "
-    "rankings based on that volume, thereby e"
-    "nabling users to compare ASes in various"
-    " markets.\n\n# KMI Ranking Types\n\nThe foll"
-    "owing types of rankings are shown:\n- **C"
-    "ustomer Base**: Ranked by the size of th"
-    "e overall customer base, estimated by de"
-    "termining how much IP address space a gi"
-    "ven AS transits relative to other ASes:\n"
-    "    - Retail networks  provide services "
-    "(e.g. originate content) or have end-use"
-    "rs that are consumers of services (e.g. "
-    "ISPs or \"eyeball\" networks).\n    - Whole"
-    "sale networks  connect retail networks t"
-    "o backbone networks.\n    - Backbone netw"
-    "orks carry high volumes of traffic betwe"
-    "en wholesale networks.\n- **Customer Grow"
-    "th**: Ranked by the change in overall cu"
-    "stomer base (gain/loss of prefixes) over"
-    " the last 20 days.\n- **Peering**: Ranked"
-    " by the amount of IP address space sent "
-    "to the AS over a settlement-free peering"
-    " session.\n\nBoth REST endpoint and gRPC R"
-    "PCs are provided.\n\n**_Note:_** More info"
-    "rmation about KMI can be found at [Kenti"
-    "k Market Intelligence](https://kb.kentik"
-    ".com/v4/Ha04.htm).\"E\n\026Kentik API Enginee"
-    "ring\022+https://github.com/kentik/api-sche"
-    "ma-public2\007v202212*\001\0022\020application/json:"
-    "\020application/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-A"
-    "uth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-"
-    "Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]\n%Gener"
-    "al information about Kentik APIs\0224https:"
-    "//kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Ov"
-    "erviewb\006proto3"
+    "sn\"\311\002\n\007Insight\022=\n\003asn\030\001 \001(\rB&\222A 2\036Autono"
+    "mous System Number (ASN)\340A\003H\000R\003asn\210\001\001\0229\n"
+    "\004name\030\002 \001(\tB%\222A\0372\035Name of the Autonomous"
+    " System\340A\003R\004name\0220\n\004type\030\003 \001(\rB\027\222A\0212\017Typ"
+    "e of insight\340A\003H\001R\004type\210\001\001\0226\n\007message\030\004 "
+    "\001(\tB\034\222A\0262\024Insight message text\340A\003R\007messa"
+    "ge\022I\n\ncreated_at\030\005 \001(\tB*\222A$2\"Timestamp w"
+    "hen insight was created\340A\003R\tcreatedAtB\006\n"
+    "\004_asnB\007\n\005_type\"\024\n\022ListMarketsRequest\"\\\n\023"
+    "ListMarketsResponse\022E\n\007markets\030\001 \003(\0132\032.k"
+    "entik.kmi.v202212.MarketB\017\222A\t2\007Markets\340A"
+    "\003R\007markets\"\234\004\n\022GetRankingsRequest\022c\n\tmar"
+    "ket_id\030\001 \001(\tBF\222AC2AUnique Geo Market ide"
+    "ntifier (as provided by the ListMarkets "
+    "RPC)R\010marketId\022\342\001\n\trank_type\030\002 \001(\tB\304\001\222A\300"
+    "\0012\275\001Type of the requested ranking (\'cust"
+    "omer_base\', \'customer_base_retail\', \'cus"
+    "tomer_base_wholesome\', \'customer_base_ba"
+    "ckbone\', \'customer_growth\', \'peering_bas"
+    "e\'). Defaults to \'customer_base\'.R\010rankT"
+    "ype\022]\n\002ip\030\003 \001(\tBM\222AJ2HIP Address Family "
+    "(\'v4\' or \'v6\') of requested ranking. Def"
+    "aults to \'v4\'.R\002ip\022S\n\005limit\030\004 \001(\rB8\222A523"
+    "Maximum number of entries returned. (Def"
+    "ault: 600).H\000R\005limit\210\001\001B\010\n\006_limit\"\314\001\n\023Ge"
+    "tRankingsResponse\022N\n\010rankings\030\001 \003(\0132\033.ke"
+    "ntik.kmi.v202212.RankingB\025\222A\0222\020List of r"
+    "ankingsR\010rankings\022e\n\rinvalid_count\030\002 \001(\r"
+    "B@\222A=2;Number of invalid entries encount"
+    "ered while collecting dataR\014invalidCount"
+    "\"\345\005\n\024GetASNDetailsRequest\022c\n\tmarket_id\030\001"
+    " \001(\tBF\222AC2AUnique Geo Market identifier "
+    "(as provided by the ListMarkets RPC)R\010ma"
+    "rketId\0225\n\003asn\030\002 \001(\tB#\222A 2\036Autonomous Sys"
+    "tem Number (ASN)R\003asn\022H\n\002ip\030\003 \001(\tB8\222A523"
+    "IP Address Family (\'v4\' or \'v6\'). Defaul"
+    "ts to \'v4\'.R\002ip\022o\n\004type\030\004 \001(\tB[\222AX2VType"
+    " of the requested ASN (\'all\', \'customer\'"
+    ", \'provider\', \'peers\'). Defaults to \'all"
+    "\'.R\004type\022v\n\017mutual_provider\030\005 \001(\tBM\222AJ2H"
+    "Filter by mutual provider (\'all\', \'only\'"
+    ", \'exclude\'). Defaults to \'all\'.R\016mutual"
+    "Provider\022v\n\017mutual_customer\030\006 \001(\tBM\222AJ2H"
+    "Filter by mutual customer (\'all\', \'only\'"
+    ", \'exclude\'). Defaults to \'all\'.R\016mutual"
+    "Customer\022\205\001\n\024singlehomed_customer\030\007 \001(\tB"
+    "R\222AO2MFilter by singlehomed customer (\'a"
+    "ll\', \'only\', \'exclude\'). Defaults to \'al"
+    "l\'.R\023singlehomedCustomer\"\255\001\n\025GetASNDetai"
+    "lsResponse\022\223\001\n\013asn_details\030\001 \001(\0132\036.kenti"
+    "k.kmi.v202212.ASNDetailsBR\222AO2MMetadata "
+    "and list of customers, providers, and pe"
+    "ers for an Autonomous SystemR\nasnDetails"
+    "\"|\n\030GetGlobalInsightsRequest\022V\n\005limit\030\001 "
+    "\001(\rB;\222A826Maximum number of insights to "
+    "return. Defaults to 100.H\000R\005limit\210\001\001B\010\n\006"
+    "_limit\"u\n\031GetGlobalInsightsResponse\022X\n\010i"
+    "nsights\030\001 \003(\0132\033.kentik.kmi.v202212.Insig"
+    "htB\037\222A\0312\027List of global insights\340A\003R\010ins"
+    "ights\"\260\001\n\025GetASNInsightsRequest\0225\n\003asn\030\001"
+    " \001(\tB#\222A 2\036Autonomous System Number (ASN"
+    ")R\003asn\022V\n\005limit\030\002 \001(\rB;\222A826Maximum numb"
+    "er of insights to return. Defaults to 10"
+    "0.H\000R\005limit\210\001\001B\010\n\006_limit\"x\n\026GetASNInsigh"
+    "tsResponse\022^\n\010insights\030\001 \003(\0132\033.kentik.km"
+    "i.v202212.InsightB%\222A\0372\035List of ASN-spec"
+    "ific insights\340A\003R\010insights2\275\013\n\nKmiServic"
+    "e\022\344\001\n\013ListMarkets\022&.kentik.kmi.v202212.L"
+    "istMarketsRequest\032\'.kentik.kmi.v202212.L"
+    "istMarketsResponse\"\203\001\222AR\022\035List all geo m"
+    "arkets for KMI.\032$Returns list of geo mar"
+    "kets for KMI.*\013ListMarkets\362\327\002\016admin.kmi:"
+    "read\202\323\344\223\002\026\022\024/kmi/v202212/markets\022\221\002\n\013Get"
+    "Rankings\022&.kentik.kmi.v202212.GetRanking"
+    "sRequest\032\'.kentik.kmi.v202212.GetRanking"
+    "sResponse\"\260\001\222A\\\022.List KMI rankings by ge"
+    "o market and rank type.\032\035Returns list of"
+    " KMI rankings.*\013GetRankings\362\327\002\016admin.kmi"
+    ":read\202\323\344\223\0029\"4/kmi/v202212/market/{market"
+    "_id}/rankings/{rank_type}:\001*\022\370\002\n\rGetASND"
+    "etails\022(.kentik.kmi.v202212.GetASNDetail"
+    "sRequest\032).kentik.kmi.v202212.GetASNDeta"
+    "ilsResponse\"\221\002\222A\274\001\022SList metadata and li"
+    "st of customers, providers, and peers fo"
+    "r an Autonomous System.\032VReturns metadat"
+    "a and list of customers, providers, and "
+    "peers for an Autonomous System.*\rGetASND"
+    "etails\362\327\002\016admin.kmi:read\202\323\344\223\0029\"4/kmi/v20"
+    "2212/market/{market_id}/network/{asn}/{t"
+    "ype}:\001*\022\371\001\n\021GetGlobalInsights\022,.kentik.k"
+    "mi.v202212.GetGlobalInsightsRequest\032-.ke"
+    "ntik.kmi.v202212.GetGlobalInsightsRespon"
+    "se\"\206\001\222AT\022\031List global KMI insights.\032$Ret"
+    "urns list of global KMI insights.*\021GetGl"
+    "obalInsights\362\327\002\016admin.kmi:read\202\323\344\223\002\027\022\025/k"
+    "mi/v202212/insights\022\223\002\n\016GetASNInsights\022)"
+    ".kentik.kmi.v202212.GetASNInsightsReques"
+    "t\032*.kentik.kmi.v202212.GetASNInsightsRes"
+    "ponse\"\251\001\222Aq\022\037List ASN-specific KMI insig"
+    "hts.\032>Returns list of KMI insights for a"
+    " specific Autonomous System.*\016GetASNInsi"
+    "ghts\362\327\002\016admin.kmi:read\202\323\344\223\002\035\022\033/kmi/v2022"
+    "12/insights/{asn}\032\'\312A\023grpc.api.kentik.co"
+    "m\352\327\002\tadmin.kmi\220\330\002\003B\311\017ZAgithub.com/kentik"
+    "/api-schema-public/gen/go/kentik/kmi/v20"
+    "2212;kmi\222A\202\017\022\233\r\n$Kentik Market Intellige"
+    "nce (KMI) API\022\242\014# Overview\nThe Kentik Ma"
+    "rket Intelligence (KMI) API provides pro"
+    "grammatic access to information related "
+    "to KMI rankings, KMI markets, and the cu"
+    "stomers, providers, and peers of individ"
+    "ual Autonomous Systems (ASes). This info"
+    "rmation is derived from analysis of the "
+    "global routing table, which enables us t"
+    "o classify the peering and transit relat"
+    "ionships between ASes and to identify th"
+    "e providers, peers, and customers of a g"
+    "iven AS in any geography (market). KMI e"
+    "stimates the volume of IP space transite"
+    "d by ASes in different geographies and p"
+    "roduces rankings based on that volume, t"
+    "hereby enabling users to compare ASes in"
+    " various markets.\n\n# KMI Ranking Types\n\n"
+    "The following types of rankings are show"
+    "n:\n- **Customer Base**: Ranked by the si"
+    "ze of the overall customer base, estimat"
+    "ed by determining how much IP address sp"
+    "ace a given AS transits relative to othe"
+    "r ASes:\n    - Retail networks  provide s"
+    "ervices (e.g. originate content) or have"
+    " end-users that are consumers of service"
+    "s (e.g. ISPs or \"eyeball\" networks).\n   "
+    " - Wholesale networks  connect retail ne"
+    "tworks to backbone networks.\n    - Backb"
+    "one networks carry high volumes of traff"
+    "ic between wholesale networks.\n- **Custo"
+    "mer Growth**: Ranked by the change in ov"
+    "erall customer base (gain/loss of prefix"
+    "es) over the last 20 days.\n- **Peering**"
+    ": Ranked by the amount of IP address spa"
+    "ce sent to the AS over a settlement-free"
+    " peering session.\n\nBoth REST endpoint an"
+    "d gRPC RPCs are provided.\n\n**_Note:_** M"
+    "ore information about KMI can be found a"
+    "t [Kentik Market Intelligence](https://k"
+    "b.kentik.com/v4/Ha04.htm).\"E\n\026Kentik API"
+    " Engineering\022+https://github.com/kentik/"
+    "api-schema-public2\007v202212*\001\0022\020applicati"
+    "on/json:\020application/jsonZD\n\036\n\005email\022\025\010\002"
+    "\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-A"
+    "uth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r"
+    "]\n%General information about Kentik APIs"
+    "\0224https://kb.kentik.com/v0/Ab09.htm#Ab09"
+    "-APIs_Overviewb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fkmi_2fv202212_2fkmi_2eproto_deps[5] =
     {
@@ -736,13 +977,13 @@ static ::absl::once_flag descriptor_table_kentik_2fkmi_2fv202212_2fkmi_2eproto_o
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fkmi_2fv202212_2fkmi_2eproto = {
     false,
     false,
-    6894,
+    8302,
     descriptor_table_protodef_kentik_2fkmi_2fv202212_2fkmi_2eproto,
     "kentik/kmi/v202212/kmi.proto",
     &descriptor_table_kentik_2fkmi_2fv202212_2fkmi_2eproto_once,
     descriptor_table_kentik_2fkmi_2fv202212_2fkmi_2eproto_deps,
     5,
-    11,
+    16,
     schemas,
     file_default_instances,
     TableStruct_kentik_2fkmi_2fv202212_2fkmi_2eproto::offsets,
@@ -2498,6 +2739,379 @@ void ASNDetails::InternalSwap(ASNDetails* PROTOBUF_RESTRICT other) {
 }
 // ===================================================================
 
+class Insight::_Internal {
+ public:
+  using HasBits =
+      decltype(std::declval<Insight>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(Insight, _impl_._has_bits_);
+};
+
+Insight::Insight(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.kmi.v202212.Insight)
+}
+inline PROTOBUF_NDEBUG_INLINE Insight::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::kentik::kmi::v202212::Insight& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        name_(arena, from.name_),
+        message_(arena, from.message_),
+        created_at_(arena, from.created_at_) {}
+
+Insight::Insight(
+    ::google::protobuf::Arena* arena,
+    const Insight& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  Insight* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, asn_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, asn_),
+           offsetof(Impl_, type_) -
+               offsetof(Impl_, asn_) +
+               sizeof(Impl_::type_));
+
+  // @@protoc_insertion_point(copy_constructor:kentik.kmi.v202212.Insight)
+}
+inline PROTOBUF_NDEBUG_INLINE Insight::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        name_(arena),
+        message_(arena),
+        created_at_(arena) {}
+
+inline void Insight::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, asn_),
+           0,
+           offsetof(Impl_, type_) -
+               offsetof(Impl_, asn_) +
+               sizeof(Impl_::type_));
+}
+Insight::~Insight() {
+  // @@protoc_insertion_point(destructor:kentik.kmi.v202212.Insight)
+  SharedDtor(*this);
+}
+inline void Insight::SharedDtor(MessageLite& self) {
+  Insight& this_ = static_cast<Insight&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.name_.Destroy();
+  this_._impl_.message_.Destroy();
+  this_._impl_.created_at_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* Insight::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) Insight(arena);
+}
+constexpr auto Insight::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(Insight),
+                                            alignof(Insight));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull Insight::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_Insight_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &Insight::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<Insight>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &Insight::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<Insight>(), &Insight::ByteSizeLong,
+            &Insight::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(Insight, _impl_._cached_size_),
+        false,
+    },
+    &Insight::kDescriptorMethods,
+    &descriptor_table_kentik_2fkmi_2fv202212_2fkmi_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* Insight::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 5, 0, 56, 2> Insight::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(Insight, _impl_._has_bits_),
+    0, // no _extensions_
+    5, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967264,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    5,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::kmi::v202212::Insight>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // optional uint32 asn = 1 [json_name = "asn", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(Insight, _impl_.asn_), 0>(),
+     {8, 0, 0, PROTOBUF_FIELD_OFFSET(Insight, _impl_.asn_)}},
+    // string name = 2 [json_name = "name", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(Insight, _impl_.name_)}},
+    // optional uint32 type = 3 [json_name = "type", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(Insight, _impl_.type_), 1>(),
+     {24, 1, 0, PROTOBUF_FIELD_OFFSET(Insight, _impl_.type_)}},
+    // string message = 4 [json_name = "message", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {34, 63, 0, PROTOBUF_FIELD_OFFSET(Insight, _impl_.message_)}},
+    // string created_at = 5 [json_name = "createdAt", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {42, 63, 0, PROTOBUF_FIELD_OFFSET(Insight, _impl_.created_at_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // optional uint32 asn = 1 [json_name = "asn", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(Insight, _impl_.asn_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kUInt32)},
+    // string name = 2 [json_name = "name", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(Insight, _impl_.name_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // optional uint32 type = 3 [json_name = "type", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(Insight, _impl_.type_), _Internal::kHasBitsOffset + 1, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kUInt32)},
+    // string message = 4 [json_name = "message", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(Insight, _impl_.message_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string created_at = 5 [json_name = "createdAt", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(Insight, _impl_.created_at_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\32\0\4\0\7\12\0\0"
+    "kentik.kmi.v202212.Insight"
+    "name"
+    "message"
+    "created_at"
+  }},
+};
+
+PROTOBUF_NOINLINE void Insight::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.kmi.v202212.Insight)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.name_.ClearToEmpty();
+  _impl_.message_.ClearToEmpty();
+  _impl_.created_at_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    ::memset(&_impl_.asn_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.type_) -
+        reinterpret_cast<char*>(&_impl_.asn_)) + sizeof(_impl_.type_));
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* Insight::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const Insight& this_ = static_cast<const Insight&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* Insight::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const Insight& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:kentik.kmi.v202212.Insight)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          cached_has_bits = this_._impl_._has_bits_[0];
+          // optional uint32 asn = 1 [json_name = "asn", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (cached_has_bits & 0x00000001u) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                1, this_._internal_asn(), target);
+          }
+
+          // string name = 2 [json_name = "name", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_name().empty()) {
+            const std::string& _s = this_._internal_name();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.kmi.v202212.Insight.name");
+            target = stream->WriteStringMaybeAliased(2, _s, target);
+          }
+
+          // optional uint32 type = 3 [json_name = "type", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (cached_has_bits & 0x00000002u) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                3, this_._internal_type(), target);
+          }
+
+          // string message = 4 [json_name = "message", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_message().empty()) {
+            const std::string& _s = this_._internal_message();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.kmi.v202212.Insight.message");
+            target = stream->WriteStringMaybeAliased(4, _s, target);
+          }
+
+          // string created_at = 5 [json_name = "createdAt", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_created_at().empty()) {
+            const std::string& _s = this_._internal_created_at();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.kmi.v202212.Insight.created_at");
+            target = stream->WriteStringMaybeAliased(5, _s, target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:kentik.kmi.v202212.Insight)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t Insight::ByteSizeLong(const MessageLite& base) {
+          const Insight& this_ = static_cast<const Insight&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t Insight::ByteSizeLong() const {
+          const Insight& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:kentik.kmi.v202212.Insight)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // string name = 2 [json_name = "name", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_name().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_name());
+            }
+            // string message = 4 [json_name = "message", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_message().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_message());
+            }
+            // string created_at = 5 [json_name = "createdAt", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_created_at().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_created_at());
+            }
+          }
+          cached_has_bits = this_._impl_._has_bits_[0];
+          if (cached_has_bits & 0x00000003u) {
+            // optional uint32 asn = 1 [json_name = "asn", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (cached_has_bits & 0x00000001u) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_asn());
+            }
+            // optional uint32 type = 3 [json_name = "type", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (cached_has_bits & 0x00000002u) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_type());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void Insight::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<Insight*>(&to_msg);
+  auto& from = static_cast<const Insight&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:kentik.kmi.v202212.Insight)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_name().empty()) {
+    _this->_internal_set_name(from._internal_name());
+  }
+  if (!from._internal_message().empty()) {
+    _this->_internal_set_message(from._internal_message());
+  }
+  if (!from._internal_created_at().empty()) {
+    _this->_internal_set_created_at(from._internal_created_at());
+  }
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_impl_.asn_ = from._impl_.asn_;
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_impl_.type_ = from._impl_.type_;
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Insight::CopyFrom(const Insight& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.kmi.v202212.Insight)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void Insight::InternalSwap(Insight* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, &other->_impl_.name_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.message_, &other->_impl_.message_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.created_at_, &other->_impl_.created_at_, arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(Insight, _impl_.type_)
+      + sizeof(Insight::_impl_.type_)
+      - PROTOBUF_FIELD_OFFSET(Insight, _impl_.asn_)>(
+          reinterpret_cast<char*>(&_impl_.asn_),
+          reinterpret_cast<char*>(&other->_impl_.asn_));
+}
+
+::google::protobuf::Metadata Insight::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
 class ListMarketsRequest::_Internal {
  public:
 };
@@ -4085,6 +4699,977 @@ void GetASNDetailsResponse::InternalSwap(GetASNDetailsResponse* PROTOBUF_RESTRIC
 }
 
 ::google::protobuf::Metadata GetASNDetailsResponse::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class GetGlobalInsightsRequest::_Internal {
+ public:
+  using HasBits =
+      decltype(std::declval<GetGlobalInsightsRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(GetGlobalInsightsRequest, _impl_._has_bits_);
+};
+
+GetGlobalInsightsRequest::GetGlobalInsightsRequest(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.kmi.v202212.GetGlobalInsightsRequest)
+}
+GetGlobalInsightsRequest::GetGlobalInsightsRequest(
+    ::google::protobuf::Arena* arena, const GetGlobalInsightsRequest& from)
+    : GetGlobalInsightsRequest(arena) {
+  MergeFrom(from);
+}
+inline PROTOBUF_NDEBUG_INLINE GetGlobalInsightsRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void GetGlobalInsightsRequest::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.limit_ = {};
+}
+GetGlobalInsightsRequest::~GetGlobalInsightsRequest() {
+  // @@protoc_insertion_point(destructor:kentik.kmi.v202212.GetGlobalInsightsRequest)
+  SharedDtor(*this);
+}
+inline void GetGlobalInsightsRequest::SharedDtor(MessageLite& self) {
+  GetGlobalInsightsRequest& this_ = static_cast<GetGlobalInsightsRequest&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* GetGlobalInsightsRequest::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) GetGlobalInsightsRequest(arena);
+}
+constexpr auto GetGlobalInsightsRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(GetGlobalInsightsRequest),
+                                            alignof(GetGlobalInsightsRequest));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull GetGlobalInsightsRequest::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_GetGlobalInsightsRequest_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &GetGlobalInsightsRequest::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<GetGlobalInsightsRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &GetGlobalInsightsRequest::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<GetGlobalInsightsRequest>(), &GetGlobalInsightsRequest::ByteSizeLong,
+            &GetGlobalInsightsRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(GetGlobalInsightsRequest, _impl_._cached_size_),
+        false,
+    },
+    &GetGlobalInsightsRequest::kDescriptorMethods,
+    &descriptor_table_kentik_2fkmi_2fv202212_2fkmi_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* GetGlobalInsightsRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 0, 0, 2> GetGlobalInsightsRequest::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(GetGlobalInsightsRequest, _impl_._has_bits_),
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::kmi::v202212::GetGlobalInsightsRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // optional uint32 limit = 1 [json_name = "limit", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(GetGlobalInsightsRequest, _impl_.limit_), 0>(),
+     {8, 0, 0, PROTOBUF_FIELD_OFFSET(GetGlobalInsightsRequest, _impl_.limit_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // optional uint32 limit = 1 [json_name = "limit", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(GetGlobalInsightsRequest, _impl_.limit_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kUInt32)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+PROTOBUF_NOINLINE void GetGlobalInsightsRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.kmi.v202212.GetGlobalInsightsRequest)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.limit_ = 0u;
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* GetGlobalInsightsRequest::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const GetGlobalInsightsRequest& this_ = static_cast<const GetGlobalInsightsRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* GetGlobalInsightsRequest::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const GetGlobalInsightsRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:kentik.kmi.v202212.GetGlobalInsightsRequest)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          cached_has_bits = this_._impl_._has_bits_[0];
+          // optional uint32 limit = 1 [json_name = "limit", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (cached_has_bits & 0x00000001u) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                1, this_._internal_limit(), target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:kentik.kmi.v202212.GetGlobalInsightsRequest)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t GetGlobalInsightsRequest::ByteSizeLong(const MessageLite& base) {
+          const GetGlobalInsightsRequest& this_ = static_cast<const GetGlobalInsightsRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t GetGlobalInsightsRequest::ByteSizeLong() const {
+          const GetGlobalInsightsRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:kentik.kmi.v202212.GetGlobalInsightsRequest)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+           {
+            // optional uint32 limit = 1 [json_name = "limit", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            cached_has_bits = this_._impl_._has_bits_[0];
+            if (cached_has_bits & 0x00000001u) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_limit());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void GetGlobalInsightsRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<GetGlobalInsightsRequest*>(&to_msg);
+  auto& from = static_cast<const GetGlobalInsightsRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:kentik.kmi.v202212.GetGlobalInsightsRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    _this->_impl_.limit_ = from._impl_.limit_;
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void GetGlobalInsightsRequest::CopyFrom(const GetGlobalInsightsRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.kmi.v202212.GetGlobalInsightsRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void GetGlobalInsightsRequest::InternalSwap(GetGlobalInsightsRequest* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+        swap(_impl_.limit_, other->_impl_.limit_);
+}
+
+::google::protobuf::Metadata GetGlobalInsightsRequest::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class GetGlobalInsightsResponse::_Internal {
+ public:
+};
+
+GetGlobalInsightsResponse::GetGlobalInsightsResponse(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.kmi.v202212.GetGlobalInsightsResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE GetGlobalInsightsResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::kentik::kmi::v202212::GetGlobalInsightsResponse& from_msg)
+      : insights_{visibility, arena, from.insights_},
+        _cached_size_{0} {}
+
+GetGlobalInsightsResponse::GetGlobalInsightsResponse(
+    ::google::protobuf::Arena* arena,
+    const GetGlobalInsightsResponse& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  GetGlobalInsightsResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+
+  // @@protoc_insertion_point(copy_constructor:kentik.kmi.v202212.GetGlobalInsightsResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE GetGlobalInsightsResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : insights_{visibility, arena},
+        _cached_size_{0} {}
+
+inline void GetGlobalInsightsResponse::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+}
+GetGlobalInsightsResponse::~GetGlobalInsightsResponse() {
+  // @@protoc_insertion_point(destructor:kentik.kmi.v202212.GetGlobalInsightsResponse)
+  SharedDtor(*this);
+}
+inline void GetGlobalInsightsResponse::SharedDtor(MessageLite& self) {
+  GetGlobalInsightsResponse& this_ = static_cast<GetGlobalInsightsResponse&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* GetGlobalInsightsResponse::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) GetGlobalInsightsResponse(arena);
+}
+constexpr auto GetGlobalInsightsResponse::InternalNewImpl_() {
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(GetGlobalInsightsResponse, _impl_.insights_) +
+          decltype(GetGlobalInsightsResponse::_impl_.insights_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::ZeroInit(
+        sizeof(GetGlobalInsightsResponse), alignof(GetGlobalInsightsResponse), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&GetGlobalInsightsResponse::PlacementNew_,
+                                 sizeof(GetGlobalInsightsResponse),
+                                 alignof(GetGlobalInsightsResponse));
+  }
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull GetGlobalInsightsResponse::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_GetGlobalInsightsResponse_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &GetGlobalInsightsResponse::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<GetGlobalInsightsResponse>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &GetGlobalInsightsResponse::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<GetGlobalInsightsResponse>(), &GetGlobalInsightsResponse::ByteSizeLong,
+            &GetGlobalInsightsResponse::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(GetGlobalInsightsResponse, _impl_._cached_size_),
+        false,
+    },
+    &GetGlobalInsightsResponse::kDescriptorMethods,
+    &descriptor_table_kentik_2fkmi_2fv202212_2fkmi_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* GetGlobalInsightsResponse::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2> GetGlobalInsightsResponse::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::kmi::v202212::GetGlobalInsightsResponse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // repeated .kentik.kmi.v202212.Insight insights = 1 [json_name = "insights", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastMtR1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(GetGlobalInsightsResponse, _impl_.insights_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // repeated .kentik.kmi.v202212.Insight insights = 1 [json_name = "insights", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(GetGlobalInsightsResponse, _impl_.insights_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::kentik::kmi::v202212::Insight>()},
+  }}, {{
+  }},
+};
+
+PROTOBUF_NOINLINE void GetGlobalInsightsResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.kmi.v202212.GetGlobalInsightsResponse)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.insights_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* GetGlobalInsightsResponse::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const GetGlobalInsightsResponse& this_ = static_cast<const GetGlobalInsightsResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* GetGlobalInsightsResponse::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const GetGlobalInsightsResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:kentik.kmi.v202212.GetGlobalInsightsResponse)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // repeated .kentik.kmi.v202212.Insight insights = 1 [json_name = "insights", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          for (unsigned i = 0, n = static_cast<unsigned>(
+                                   this_._internal_insights_size());
+               i < n; i++) {
+            const auto& repfield = this_._internal_insights().Get(i);
+            target =
+                ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                    1, repfield, repfield.GetCachedSize(),
+                    target, stream);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:kentik.kmi.v202212.GetGlobalInsightsResponse)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t GetGlobalInsightsResponse::ByteSizeLong(const MessageLite& base) {
+          const GetGlobalInsightsResponse& this_ = static_cast<const GetGlobalInsightsResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t GetGlobalInsightsResponse::ByteSizeLong() const {
+          const GetGlobalInsightsResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:kentik.kmi.v202212.GetGlobalInsightsResponse)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // repeated .kentik.kmi.v202212.Insight insights = 1 [json_name = "insights", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            {
+              total_size += 1UL * this_._internal_insights_size();
+              for (const auto& msg : this_._internal_insights()) {
+                total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+              }
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void GetGlobalInsightsResponse::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<GetGlobalInsightsResponse*>(&to_msg);
+  auto& from = static_cast<const GetGlobalInsightsResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:kentik.kmi.v202212.GetGlobalInsightsResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_internal_mutable_insights()->MergeFrom(
+      from._internal_insights());
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void GetGlobalInsightsResponse::CopyFrom(const GetGlobalInsightsResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.kmi.v202212.GetGlobalInsightsResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void GetGlobalInsightsResponse::InternalSwap(GetGlobalInsightsResponse* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.insights_.InternalSwap(&other->_impl_.insights_);
+}
+
+::google::protobuf::Metadata GetGlobalInsightsResponse::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class GetASNInsightsRequest::_Internal {
+ public:
+  using HasBits =
+      decltype(std::declval<GetASNInsightsRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(GetASNInsightsRequest, _impl_._has_bits_);
+};
+
+GetASNInsightsRequest::GetASNInsightsRequest(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.kmi.v202212.GetASNInsightsRequest)
+}
+inline PROTOBUF_NDEBUG_INLINE GetASNInsightsRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::kentik::kmi::v202212::GetASNInsightsRequest& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        asn_(arena, from.asn_) {}
+
+GetASNInsightsRequest::GetASNInsightsRequest(
+    ::google::protobuf::Arena* arena,
+    const GetASNInsightsRequest& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  GetASNInsightsRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  _impl_.limit_ = from._impl_.limit_;
+
+  // @@protoc_insertion_point(copy_constructor:kentik.kmi.v202212.GetASNInsightsRequest)
+}
+inline PROTOBUF_NDEBUG_INLINE GetASNInsightsRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        asn_(arena) {}
+
+inline void GetASNInsightsRequest::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.limit_ = {};
+}
+GetASNInsightsRequest::~GetASNInsightsRequest() {
+  // @@protoc_insertion_point(destructor:kentik.kmi.v202212.GetASNInsightsRequest)
+  SharedDtor(*this);
+}
+inline void GetASNInsightsRequest::SharedDtor(MessageLite& self) {
+  GetASNInsightsRequest& this_ = static_cast<GetASNInsightsRequest&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.asn_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* GetASNInsightsRequest::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) GetASNInsightsRequest(arena);
+}
+constexpr auto GetASNInsightsRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(GetASNInsightsRequest),
+                                            alignof(GetASNInsightsRequest));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull GetASNInsightsRequest::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_GetASNInsightsRequest_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &GetASNInsightsRequest::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<GetASNInsightsRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &GetASNInsightsRequest::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<GetASNInsightsRequest>(), &GetASNInsightsRequest::ByteSizeLong,
+            &GetASNInsightsRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(GetASNInsightsRequest, _impl_._cached_size_),
+        false,
+    },
+    &GetASNInsightsRequest::kDescriptorMethods,
+    &descriptor_table_kentik_2fkmi_2fv202212_2fkmi_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* GetASNInsightsRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 52, 2> GetASNInsightsRequest::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(GetASNInsightsRequest, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::kmi::v202212::GetASNInsightsRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // optional uint32 limit = 2 [json_name = "limit", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(GetASNInsightsRequest, _impl_.limit_), 0>(),
+     {16, 0, 0, PROTOBUF_FIELD_OFFSET(GetASNInsightsRequest, _impl_.limit_)}},
+    // string asn = 1 [json_name = "asn", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(GetASNInsightsRequest, _impl_.asn_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string asn = 1 [json_name = "asn", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(GetASNInsightsRequest, _impl_.asn_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // optional uint32 limit = 2 [json_name = "limit", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(GetASNInsightsRequest, _impl_.limit_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kUInt32)},
+  }},
+  // no aux_entries
+  {{
+    "\50\3\0\0\0\0\0\0"
+    "kentik.kmi.v202212.GetASNInsightsRequest"
+    "asn"
+  }},
+};
+
+PROTOBUF_NOINLINE void GetASNInsightsRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.kmi.v202212.GetASNInsightsRequest)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.asn_.ClearToEmpty();
+  _impl_.limit_ = 0u;
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* GetASNInsightsRequest::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const GetASNInsightsRequest& this_ = static_cast<const GetASNInsightsRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* GetASNInsightsRequest::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const GetASNInsightsRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:kentik.kmi.v202212.GetASNInsightsRequest)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // string asn = 1 [json_name = "asn", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_asn().empty()) {
+            const std::string& _s = this_._internal_asn();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.kmi.v202212.GetASNInsightsRequest.asn");
+            target = stream->WriteStringMaybeAliased(1, _s, target);
+          }
+
+          cached_has_bits = this_._impl_._has_bits_[0];
+          // optional uint32 limit = 2 [json_name = "limit", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (cached_has_bits & 0x00000001u) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                2, this_._internal_limit(), target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:kentik.kmi.v202212.GetASNInsightsRequest)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t GetASNInsightsRequest::ByteSizeLong(const MessageLite& base) {
+          const GetASNInsightsRequest& this_ = static_cast<const GetASNInsightsRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t GetASNInsightsRequest::ByteSizeLong() const {
+          const GetASNInsightsRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:kentik.kmi.v202212.GetASNInsightsRequest)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // string asn = 1 [json_name = "asn", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_asn().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_asn());
+            }
+          }
+           {
+            // optional uint32 limit = 2 [json_name = "limit", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            cached_has_bits = this_._impl_._has_bits_[0];
+            if (cached_has_bits & 0x00000001u) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_limit());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void GetASNInsightsRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<GetASNInsightsRequest*>(&to_msg);
+  auto& from = static_cast<const GetASNInsightsRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:kentik.kmi.v202212.GetASNInsightsRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_asn().empty()) {
+    _this->_internal_set_asn(from._internal_asn());
+  }
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    _this->_impl_.limit_ = from._impl_.limit_;
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void GetASNInsightsRequest::CopyFrom(const GetASNInsightsRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.kmi.v202212.GetASNInsightsRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void GetASNInsightsRequest::InternalSwap(GetASNInsightsRequest* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.asn_, &other->_impl_.asn_, arena);
+        swap(_impl_.limit_, other->_impl_.limit_);
+}
+
+::google::protobuf::Metadata GetASNInsightsRequest::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class GetASNInsightsResponse::_Internal {
+ public:
+};
+
+GetASNInsightsResponse::GetASNInsightsResponse(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.kmi.v202212.GetASNInsightsResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE GetASNInsightsResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::kentik::kmi::v202212::GetASNInsightsResponse& from_msg)
+      : insights_{visibility, arena, from.insights_},
+        _cached_size_{0} {}
+
+GetASNInsightsResponse::GetASNInsightsResponse(
+    ::google::protobuf::Arena* arena,
+    const GetASNInsightsResponse& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  GetASNInsightsResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+
+  // @@protoc_insertion_point(copy_constructor:kentik.kmi.v202212.GetASNInsightsResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE GetASNInsightsResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : insights_{visibility, arena},
+        _cached_size_{0} {}
+
+inline void GetASNInsightsResponse::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+}
+GetASNInsightsResponse::~GetASNInsightsResponse() {
+  // @@protoc_insertion_point(destructor:kentik.kmi.v202212.GetASNInsightsResponse)
+  SharedDtor(*this);
+}
+inline void GetASNInsightsResponse::SharedDtor(MessageLite& self) {
+  GetASNInsightsResponse& this_ = static_cast<GetASNInsightsResponse&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* GetASNInsightsResponse::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) GetASNInsightsResponse(arena);
+}
+constexpr auto GetASNInsightsResponse::InternalNewImpl_() {
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(GetASNInsightsResponse, _impl_.insights_) +
+          decltype(GetASNInsightsResponse::_impl_.insights_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::ZeroInit(
+        sizeof(GetASNInsightsResponse), alignof(GetASNInsightsResponse), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&GetASNInsightsResponse::PlacementNew_,
+                                 sizeof(GetASNInsightsResponse),
+                                 alignof(GetASNInsightsResponse));
+  }
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull GetASNInsightsResponse::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_GetASNInsightsResponse_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &GetASNInsightsResponse::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<GetASNInsightsResponse>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &GetASNInsightsResponse::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<GetASNInsightsResponse>(), &GetASNInsightsResponse::ByteSizeLong,
+            &GetASNInsightsResponse::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(GetASNInsightsResponse, _impl_._cached_size_),
+        false,
+    },
+    &GetASNInsightsResponse::kDescriptorMethods,
+    &descriptor_table_kentik_2fkmi_2fv202212_2fkmi_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* GetASNInsightsResponse::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2> GetASNInsightsResponse::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::kmi::v202212::GetASNInsightsResponse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // repeated .kentik.kmi.v202212.Insight insights = 1 [json_name = "insights", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastMtR1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(GetASNInsightsResponse, _impl_.insights_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // repeated .kentik.kmi.v202212.Insight insights = 1 [json_name = "insights", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(GetASNInsightsResponse, _impl_.insights_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::kentik::kmi::v202212::Insight>()},
+  }}, {{
+  }},
+};
+
+PROTOBUF_NOINLINE void GetASNInsightsResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.kmi.v202212.GetASNInsightsResponse)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.insights_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* GetASNInsightsResponse::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const GetASNInsightsResponse& this_ = static_cast<const GetASNInsightsResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* GetASNInsightsResponse::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const GetASNInsightsResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:kentik.kmi.v202212.GetASNInsightsResponse)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // repeated .kentik.kmi.v202212.Insight insights = 1 [json_name = "insights", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          for (unsigned i = 0, n = static_cast<unsigned>(
+                                   this_._internal_insights_size());
+               i < n; i++) {
+            const auto& repfield = this_._internal_insights().Get(i);
+            target =
+                ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                    1, repfield, repfield.GetCachedSize(),
+                    target, stream);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:kentik.kmi.v202212.GetASNInsightsResponse)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t GetASNInsightsResponse::ByteSizeLong(const MessageLite& base) {
+          const GetASNInsightsResponse& this_ = static_cast<const GetASNInsightsResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t GetASNInsightsResponse::ByteSizeLong() const {
+          const GetASNInsightsResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:kentik.kmi.v202212.GetASNInsightsResponse)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // repeated .kentik.kmi.v202212.Insight insights = 1 [json_name = "insights", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            {
+              total_size += 1UL * this_._internal_insights_size();
+              for (const auto& msg : this_._internal_insights()) {
+                total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+              }
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void GetASNInsightsResponse::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<GetASNInsightsResponse*>(&to_msg);
+  auto& from = static_cast<const GetASNInsightsResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:kentik.kmi.v202212.GetASNInsightsResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_internal_mutable_insights()->MergeFrom(
+      from._internal_insights());
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void GetASNInsightsResponse::CopyFrom(const GetASNInsightsResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.kmi.v202212.GetASNInsightsResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void GetASNInsightsResponse::InternalSwap(GetASNInsightsResponse* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.insights_.InternalSwap(&other->_impl_.insights_);
+}
+
+::google::protobuf::Metadata GetASNInsightsResponse::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // @@protoc_insertion_point(namespace_scope)

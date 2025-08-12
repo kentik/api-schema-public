@@ -21,6 +21,8 @@ type KmiServiceClient interface {
 	ListMarkets(ctx context.Context, in *ListMarketsRequest, opts ...grpc.CallOption) (*ListMarketsResponse, error)
 	GetRankings(ctx context.Context, in *GetRankingsRequest, opts ...grpc.CallOption) (*GetRankingsResponse, error)
 	GetASNDetails(ctx context.Context, in *GetASNDetailsRequest, opts ...grpc.CallOption) (*GetASNDetailsResponse, error)
+	GetGlobalInsights(ctx context.Context, in *GetGlobalInsightsRequest, opts ...grpc.CallOption) (*GetGlobalInsightsResponse, error)
+	GetASNInsights(ctx context.Context, in *GetASNInsightsRequest, opts ...grpc.CallOption) (*GetASNInsightsResponse, error)
 }
 
 type kmiServiceClient struct {
@@ -58,6 +60,24 @@ func (c *kmiServiceClient) GetASNDetails(ctx context.Context, in *GetASNDetailsR
 	return out, nil
 }
 
+func (c *kmiServiceClient) GetGlobalInsights(ctx context.Context, in *GetGlobalInsightsRequest, opts ...grpc.CallOption) (*GetGlobalInsightsResponse, error) {
+	out := new(GetGlobalInsightsResponse)
+	err := c.cc.Invoke(ctx, "/kentik.kmi.v202212.KmiService/GetGlobalInsights", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kmiServiceClient) GetASNInsights(ctx context.Context, in *GetASNInsightsRequest, opts ...grpc.CallOption) (*GetASNInsightsResponse, error) {
+	out := new(GetASNInsightsResponse)
+	err := c.cc.Invoke(ctx, "/kentik.kmi.v202212.KmiService/GetASNInsights", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // KmiServiceServer is the server API for KmiService service.
 // All implementations should embed UnimplementedKmiServiceServer
 // for forward compatibility
@@ -65,6 +85,8 @@ type KmiServiceServer interface {
 	ListMarkets(context.Context, *ListMarketsRequest) (*ListMarketsResponse, error)
 	GetRankings(context.Context, *GetRankingsRequest) (*GetRankingsResponse, error)
 	GetASNDetails(context.Context, *GetASNDetailsRequest) (*GetASNDetailsResponse, error)
+	GetGlobalInsights(context.Context, *GetGlobalInsightsRequest) (*GetGlobalInsightsResponse, error)
+	GetASNInsights(context.Context, *GetASNInsightsRequest) (*GetASNInsightsResponse, error)
 }
 
 // UnimplementedKmiServiceServer should be embedded to have forward compatible implementations.
@@ -79,6 +101,12 @@ func (UnimplementedKmiServiceServer) GetRankings(context.Context, *GetRankingsRe
 }
 func (UnimplementedKmiServiceServer) GetASNDetails(context.Context, *GetASNDetailsRequest) (*GetASNDetailsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetASNDetails not implemented")
+}
+func (UnimplementedKmiServiceServer) GetGlobalInsights(context.Context, *GetGlobalInsightsRequest) (*GetGlobalInsightsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetGlobalInsights not implemented")
+}
+func (UnimplementedKmiServiceServer) GetASNInsights(context.Context, *GetASNInsightsRequest) (*GetASNInsightsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetASNInsights not implemented")
 }
 
 // UnsafeKmiServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -146,6 +174,42 @@ func _KmiService_GetASNDetails_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _KmiService_GetGlobalInsights_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetGlobalInsightsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KmiServiceServer).GetGlobalInsights(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kentik.kmi.v202212.KmiService/GetGlobalInsights",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KmiServiceServer).GetGlobalInsights(ctx, req.(*GetGlobalInsightsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KmiService_GetASNInsights_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetASNInsightsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KmiServiceServer).GetASNInsights(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/kentik.kmi.v202212.KmiService/GetASNInsights",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KmiServiceServer).GetASNInsights(ctx, req.(*GetASNInsightsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // KmiService_ServiceDesc is the grpc.ServiceDesc for KmiService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -164,6 +228,14 @@ var KmiService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetASNDetails",
 			Handler:    _KmiService_GetASNDetails_Handler,
+		},
+		{
+			MethodName: "GetGlobalInsights",
+			Handler:    _KmiService_GetGlobalInsights_Handler,
+		},
+		{
+			MethodName: "GetASNInsights",
+			Handler:    _KmiService_GetASNInsights_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

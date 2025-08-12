@@ -229,6 +229,40 @@ message ASNDetails {
   ];
 }
 
+// {{.Name}}
+message Insight {
+  optional uint32 asn = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Autonomous System Number (ASN)"
+    }
+  ];
+  string name = 2 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Name of the Autonomous System"
+    }
+  ];
+  optional uint32 type = 3 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Type of insight"
+    }
+  ];
+  string message = 4 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Insight message text"
+    }
+  ];
+  string created_at = 5 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Timestamp when insight was created"
+    }
+  ];
+}
+
 // KMI
 // -------------------------------------------------------
 
@@ -331,6 +365,49 @@ message GetASNDetailsResponse {
   ];
 }
 
+// {{.Name}}
+message GetGlobalInsightsRequest {
+  optional uint32 limit = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Maximum number of insights to return. Defaults to 100."
+    }
+  ];
+}
+
+// {{.Name}}
+message GetGlobalInsightsResponse {
+  repeated Insight insights = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of global insights"
+    }
+  ];
+}
+
+// {{.Name}}
+message GetASNInsightsRequest {
+  string asn = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Autonomous System Number (ASN)"
+    }
+  ];
+  optional uint32 limit = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Maximum number of insights to return. Defaults to 100."
+    }
+  ];
+}
+
+// {{.Name}}
+message GetASNInsightsResponse {
+  repeated Insight insights = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of ASN-specific insights"
+    }
+  ];
+}
+
 // services and RPCs
 // -------------------------------------------------------
 
@@ -376,6 +453,30 @@ service KmiService {
       operation_id: "GetASNDetails"
       summary: "List metadata and list of customers, providers, and peers for an Autonomous System."
       description: "Returns metadata and list of customers, providers, and peers for an Autonomous System."
+    };
+  }
+
+  rpc GetGlobalInsights(GetGlobalInsightsRequest) returns (GetGlobalInsightsResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.kmi:read";
+    option (google.api.http) = {
+      get: "/kmi/v202212/insights"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetGlobalInsights"
+      summary: "List global KMI insights."
+      description: "Returns list of global KMI insights."
+    };
+  }
+
+  rpc GetASNInsights(GetASNInsightsRequest) returns (GetASNInsightsResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.kmi:read";
+    option (google.api.http) = {
+      get: "/kmi/v202212/insights/{asn}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetASNInsights"  
+      summary: "List ASN-specific KMI insights."
+      description: "Returns list of KMI insights for a specific Autonomous System."
     };
   }
 }
