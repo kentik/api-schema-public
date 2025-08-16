@@ -268,7 +268,7 @@ message DeviceConcise {
   ];
   string device_bgp_credential_name = 22 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "BGP Credential Name (device_bgp_credential_name) - Optional Credential Name (Credential for BGP peering). Valid characters: alphanumeric. Length: 32."
+      description: "BGP Credential Name (device_bgp_credential_name) - Unsupported Field. Use device_bgp_password instead."
     }
   ];
   string flow_snmp_credential_name = 23 [
@@ -860,7 +860,7 @@ message DeviceDetailed {
   ];
   string device_bgp_credential_name = 62 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "BGP Credential Name (device_bgp_credential_name) - Optional Credential Name (Credential for BGP peering). Valid characters: alphanumeric. Length: 32."
+      description: "BGP Credential Name (device_bgp_credential_name) - Unsupported Field. Use device_bgp_password instead."
     }
   ];
   string flow_snmp_credential_name = 63 [
