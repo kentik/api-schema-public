@@ -1,0 +1,232 @@
+syntax = "proto3";
+
+package kentik.alerting.public.v202505;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/alerting/public/v202505";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/struct.proto";
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+import "kentik/core/v202303/annotations.proto";
+import "kentik/alerting/types/v202303/types.proto";
+import "kentik/alerting/types/v202506/pagination.proto";
+import "kentik/alerting/types/v202506/sorting.proto";
+
+import "kentik/alerting/public/v202505/common.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Kentik Alert Mitigation Platforms API"
+    version: "v202505"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api-schema-public"
+    }
+    description: "# Overview\n"
+    "The Alert Mitigation Platforms API provides programmatic access to Kentik's capabilities of configuring and managing mitigation platforms that define where and how network infrastructure mitigations are deployed."
+  }
+  external_docs: {
+    url: "https://kb.kentik.com/docs/alerting"
+    description: "Kentik Alerts documentation"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+service MitigationPlatformsService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "admin.alerting";
+
+  rpc List(MitigationPlatformsServiceListRequest) returns (MitigationPlatformsServiceListResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.alerting:read";
+    option (google.api.http) = {
+      get: "/mitigations/platforms"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "List"
+      summary: "List Mitigation Platforms"
+      description: "Returns a list of mitigation platforms."
+    };
+  }
+
+  rpc Get(MitigationPlatformsServiceGetRequest) returns (MitigationPlatformsServiceGetResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.alerting:read";
+    option (google.api.http) = {
+      get: "/mitigations/platforms/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "Get"
+      summary: "Get Mitigation Platform"
+      description: "Returns a mitigation platform."
+    };
+  }
+}
+
+message MitigationPlatformsServiceListRequest {
+  kentik.alerting.types.v202506.PaginationConfig pagination = 1[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The pagination configuration for the list request."
+    }
+  ];
+  MitigationPlatformsFilters filters = 2[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The mitigation platform filters for the list request."
+    }
+  ];
+}
+
+message MitigationPlatformsFilters {
+  repeated string platform_ids = 1[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The IDs of the mitigation platforms to list."
+    }
+  ];
+  repeated string applications = 2[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The policy applications (integrations) the mitigation platforms are associated with."
+    }
+  ];
+  repeated Source sources = 3[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The source policies the mitigation platforms are associated with."
+    }
+  ];
+  repeated MitigationPlatformType platform_types = 4[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The types of mitigation platforms to filter by."
+    }
+  ];
+  kentik.alerting.types.v202303.TimeRange created_at = 5[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The time range for the created time of the mitigation platforms."
+    }
+  ];
+  kentik.alerting.types.v202303.TimeRange modified_at = 6[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The time range for the modified time of the mitigation platforms."
+    }
+  ];
+}
+
+message MitigationPlatformsServiceListResponse {
+  kentik.alerting.types.v202506.PaginationInfo pagination = 1[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The pagination information for the list response."
+    }
+  ];
+  repeated MitigationPlatform platforms = 2[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The mitigation platforms that were found matching the filters."
+    }
+  ];
+}
+
+message MitigationPlatformsServiceGetRequest {
+  string id = 1[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The ID of the mitigation platform to get."
+    }
+  ];
+}
+
+message MitigationPlatformsServiceGetResponse {
+  MitigationPlatform platform = 1[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The mitigation platform that was retrieved."
+    }
+  ];
+}
+
+message MitigationPlatform {
+  string id = 1[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The ID of the mitigation platform."
+    }
+  ];
+  string name = 2[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The name of the mitigation platform."
+    }
+  ];
+  string description = 3[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The description of the mitigation platform."
+    }
+  ];
+  MitigationPlatformType type = 4[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The type of the mitigation platform."
+    }
+  ];
+
+  // TODO: platform-type specific configuration
+
+  repeated string mitigation_method_ids = 5[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The mitigation method IDs associated with this platform."
+    }
+  ];
+  google.protobuf.Timestamp created_at = 6[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The time when the mitigation platform was created."
+    }
+  ];
+  google.protobuf.Timestamp modified_at = 7[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The time when the mitigation platform was last modified."
+    }
+  ];
+}

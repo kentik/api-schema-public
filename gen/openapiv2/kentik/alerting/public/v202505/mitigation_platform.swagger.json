@@ -1,0 +1,449 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Kentik Alert Mitigation Platforms API",
+    "description": "# Overview\nThe Alert Mitigation Platforms API provides programmatic access to Kentik's capabilities of configuring and managing mitigation platforms that define where and how network infrastructure mitigations are deployed.",
+    "version": "v202505",
+    "contact": {
+      "name": "Kentik API Engineering",
+      "url": "https://github.com/kentik/api-schema-public"
+    }
+  },
+  "tags": [
+    {
+      "name": "MitigationPlatformsService"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/mitigations/platforms": {
+      "get": {
+        "summary": "List Mitigation Platforms",
+        "description": "Returns a list of mitigation platforms.",
+        "operationId": "List",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202505MitigationPlatformsServiceListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "pagination.limit",
+            "description": "limit is how many items to return at most.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "pagination.offset",
+            "description": "offset is the offset into the list of items.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "pagination.includeTotalCount",
+            "description": "include_total_count is a flag to enforce API service to include the total count of items in the response,\nwhich in some cases may be very expensive to fetch.",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "filters.platformIds",
+            "description": "The IDs of the mitigation platforms to list.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "filters.applications",
+            "description": "The policy applications (integrations) the mitigation platforms are associated with.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "filters.platformTypes",
+            "description": "The types of mitigation platforms to filter by.\n\n - MITIGATION_PLATFORM_TYPE_A10: A10 mitigation platform\n - MITIGATION_PLATFORM_TYPE_FLOWSPEC: FlowSpec mitigation platform\n - MITIGATION_PLATFORM_TYPE_RADWARE: Radware mitigation platform\n - MITIGATION_PLATFORM_TYPE_RTBH: RTBH mitigation platform\n - MITIGATION_PLATFORM_TYPE_CFMT: CFMT mitigation platform\n - MITIGATION_PLATFORM_TYPE_ADAPTIVE_FLOWSPEC: Adaptive FlowSpec mitigation platform",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "MITIGATION_PLATFORM_TYPE_UNSPECIFIED",
+                "MITIGATION_PLATFORM_TYPE_A10",
+                "MITIGATION_PLATFORM_TYPE_FLOWSPEC",
+                "MITIGATION_PLATFORM_TYPE_RADWARE",
+                "MITIGATION_PLATFORM_TYPE_RTBH",
+                "MITIGATION_PLATFORM_TYPE_CFMT",
+                "MITIGATION_PLATFORM_TYPE_ADAPTIVE_FLOWSPEC"
+              ]
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "filters.createdAt.start",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "filters.createdAt.end",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "filters.modifiedAt.start",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "filters.modifiedAt.end",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          }
+        ],
+        "tags": [
+          "MitigationPlatformsService"
+        ]
+      }
+    },
+    "/mitigations/platforms/{id}": {
+      "get": {
+        "summary": "Get Mitigation Platform",
+        "description": "Returns a mitigation platform.",
+        "operationId": "Get",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202505MitigationPlatformsServiceGetResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The ID of the mitigation platform to get.",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "MitigationPlatformsService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "typeUrl": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "typesv202506PaginationConfig": {
+      "type": "object",
+      "properties": {
+        "limit": {
+          "type": "string",
+          "format": "uint64",
+          "title": "limit is how many items to return at most"
+        },
+        "offset": {
+          "type": "string",
+          "format": "uint64",
+          "title": "offset is the offset into the list of items"
+        },
+        "includeTotalCount": {
+          "type": "boolean",
+          "title": "include_total_count is a flag to enforce API service to include the total count of items in the response,\nwhich in some cases may be very expensive to fetch"
+        }
+      }
+    },
+    "typesv202506PaginationInfo": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "string",
+          "format": "uint64",
+          "description": "total_count is the total number of items in the list.\nIt may be provided optionally if include_total_count is set to false.\nIt will be provided always if include_total_count is set to true."
+        },
+        "hasMoreResults": {
+          "type": "boolean",
+          "title": "has_more_results is a flag to indicate if there are more results to fetch\nIt may be provided instead of total_count if include_total_count is set to false and it would be very expensive to fetch the total count"
+        }
+      }
+    },
+    "v202303TimeRange": {
+      "type": "object",
+      "properties": {
+        "start": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "end": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "v202505MitigationPlatform": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The ID of the mitigation platform.",
+          "readOnly": true
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the mitigation platform.",
+          "readOnly": true
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of the mitigation platform.",
+          "readOnly": true
+        },
+        "type": {
+          "$ref": "#/definitions/v202505MitigationPlatformType",
+          "description": "The type of the mitigation platform.",
+          "readOnly": true
+        },
+        "mitigationMethodIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The mitigation method IDs associated with this platform.",
+          "readOnly": true
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The time when the mitigation platform was created.",
+          "readOnly": true
+        },
+        "modifiedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The time when the mitigation platform was last modified.",
+          "readOnly": true
+        }
+      }
+    },
+    "v202505MitigationPlatformType": {
+      "type": "string",
+      "enum": [
+        "MITIGATION_PLATFORM_TYPE_UNSPECIFIED",
+        "MITIGATION_PLATFORM_TYPE_A10",
+        "MITIGATION_PLATFORM_TYPE_FLOWSPEC",
+        "MITIGATION_PLATFORM_TYPE_RADWARE",
+        "MITIGATION_PLATFORM_TYPE_RTBH",
+        "MITIGATION_PLATFORM_TYPE_CFMT",
+        "MITIGATION_PLATFORM_TYPE_ADAPTIVE_FLOWSPEC"
+      ],
+      "default": "MITIGATION_PLATFORM_TYPE_UNSPECIFIED",
+      "title": "- MITIGATION_PLATFORM_TYPE_A10: A10 mitigation platform\n - MITIGATION_PLATFORM_TYPE_FLOWSPEC: FlowSpec mitigation platform\n - MITIGATION_PLATFORM_TYPE_RADWARE: Radware mitigation platform\n - MITIGATION_PLATFORM_TYPE_RTBH: RTBH mitigation platform\n - MITIGATION_PLATFORM_TYPE_CFMT: CFMT mitigation platform\n - MITIGATION_PLATFORM_TYPE_ADAPTIVE_FLOWSPEC: Adaptive FlowSpec mitigation platform"
+    },
+    "v202505MitigationPlatformsFilters": {
+      "type": "object",
+      "properties": {
+        "platformIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The IDs of the mitigation platforms to list."
+        },
+        "applications": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The policy applications (integrations) the mitigation platforms are associated with."
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202505Source"
+          },
+          "description": "The source policies the mitigation platforms are associated with."
+        },
+        "platformTypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202505MitigationPlatformType"
+          },
+          "description": "The types of mitigation platforms to filter by."
+        },
+        "createdAt": {
+          "$ref": "#/definitions/v202303TimeRange",
+          "description": "The time range for the created time of the mitigation platforms."
+        },
+        "modifiedAt": {
+          "$ref": "#/definitions/v202303TimeRange",
+          "description": "The time range for the modified time of the mitigation platforms."
+        }
+      }
+    },
+    "v202505MitigationPlatformsServiceGetResponse": {
+      "type": "object",
+      "properties": {
+        "platform": {
+          "$ref": "#/definitions/v202505MitigationPlatform",
+          "description": "The mitigation platform that was retrieved.",
+          "readOnly": true
+        }
+      }
+    },
+    "v202505MitigationPlatformsServiceListResponse": {
+      "type": "object",
+      "properties": {
+        "pagination": {
+          "$ref": "#/definitions/typesv202506PaginationInfo",
+          "description": "The pagination information for the list response.",
+          "readOnly": true
+        },
+        "platforms": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202505MitigationPlatform"
+          },
+          "description": "The mitigation platforms that were found matching the filters.",
+          "readOnly": true
+        }
+      }
+    },
+    "v202505PolicyType": {
+      "type": "string",
+      "enum": [
+        "POLICY_TYPE_UNSPECIFIED",
+        "POLICY_TYPE_AGENT",
+        "POLICY_TYPE_COMPONENT",
+        "POLICY_TYPE_DEVICE",
+        "POLICY_TYPE_EVENT",
+        "POLICY_TYPE_INTERFACE",
+        "POLICY_TYPE_CUSTOM",
+        "POLICY_TYPE_CLOUD",
+        "POLICY_TYPE_PROTECT",
+        "POLICY_TYPE_TRAFFIC",
+        "POLICY_TYPE_KMETRICS"
+      ],
+      "default": "POLICY_TYPE_UNSPECIFIED",
+      "title": "- POLICY_TYPE_AGENT: NMS Agent Policy\n - POLICY_TYPE_COMPONENT: NMS Component Policy\n - POLICY_TYPE_DEVICE: NMS Device Policy\n - POLICY_TYPE_EVENT: NMS Event Policy\n - POLICY_TYPE_INTERFACE: NMS Interface Policy\n - POLICY_TYPE_CUSTOM: NMS Custom Policy\n - POLICY_TYPE_CLOUD: Flow Alerting Cloud Policy\n - POLICY_TYPE_PROTECT: Flow Alerting Protect Policy\n - POLICY_TYPE_TRAFFIC: Flow Alerting Traffic Policy\n - POLICY_TYPE_KMETRICS: Flow Alerting KMetrics Policy"
+    },
+    "v202505Source": {
+      "type": "object",
+      "properties": {
+        "policyType": {
+          "$ref": "#/definitions/v202505PolicyType",
+          "description": "The type of policy.",
+          "required": [
+            "policy_type"
+          ]
+        },
+        "id": {
+          "type": "string",
+          "description": "The ID of the policy, can be integer ID, UUID or any other format.",
+          "required": [
+            "id"
+          ]
+        }
+      },
+      "required": [
+        "policyType",
+        "id"
+      ]
+    }
+  },
+  "securityDefinitions": {
+    "email": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-Email",
+      "in": "header"
+    },
+    "token": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-API-Token",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "email": [],
+      "token": []
+    }
+  ],
+  "externalDocs": {
+    "description": "Kentik Alerts documentation",
+    "url": "https://kb.kentik.com/docs/alerting"
+  }
+}

@@ -1,0 +1,626 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Kentik Alert Auto-Acking API",
+        "description": "# Overview\nThe Alerts Auto-Acking API provides programmatic access to Kentik's capabilities of configuring and managing auto-acking of alerts.",
+        "version": "v202505",
+        "contact": {
+            "name": "Kentik API Engineering",
+            "url": "https://github.com/kentik/api-schema-public"
+        }
+    },
+    "tags": [
+        {
+            "name": "AlertAutoAckService"
+        }
+    ],
+    "paths": {
+        "/v202505/alerts/ack/auto": {
+            "post": {
+                "summary": "Create Auto-Ack",
+                "description": "Creates a new auto-ack configuration.",
+                "operationId": "Create",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202505AlertAutoAckServiceCreateResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202505AlertAutoAckServiceCreateRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "AlertAutoAckService"
+                ]
+            }
+        },
+        "/v202505/alerts/ack/auto/list": {
+            "post": {
+                "summary": "List Auto-Acks",
+                "description": "Returns a list of auto-ack configurations.",
+                "operationId": "List",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202505AlertAutoAckServiceListResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202505AlertAutoAckServiceListRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "AlertAutoAckService"
+                ]
+            }
+        },
+        "/v202505/alerts/ack/auto/{autoAck.id}": {
+            "patch": {
+                "summary": "Replace Auto-Ack",
+                "description": "Replaces an auto-ack configuration.",
+                "operationId": "Replace",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202505AlertAutoAckServiceReplaceResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "autoAck.id",
+                        "description": "The ID of the auto-ack configuration.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202505AlertAutoAckServiceReplaceRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "AlertAutoAckService"
+                ]
+            },
+            "get": {
+                "summary": "Get Auto-Ack",
+                "description": "Returns an auto-ack configuration.",
+                "operationId": "Get",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202505AlertAutoAckServiceGetResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "autoAck.id",
+                        "description": "The ID of the auto-ack configuration to get.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "AlertAutoAckService"
+                ]
+            },
+            "delete": {
+                "summary": "Delete Auto-Ack",
+                "description": "Deletes an auto-ack configuration.",
+                "operationId": "Delete",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202505AlertAutoAckServiceDeleteResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "autoAck.id",
+                        "description": "The ID of the auto-ack configuration to delete.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "AlertAutoAckService"
+                ]
+            }
+        }
+    },
+    "security": [
+        {
+            "email": [],
+            "token": []
+        }
+    ],
+    "externalDocs": {
+        "description": "Kentik Alerts documentation",
+        "url": "https://kb.kentik.com/docs/alerting"
+    },
+    "components": {
+        "securitySchemes": {
+            "email": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-Email",
+                "in": "header"
+            },
+            "token": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-API-Token",
+                "in": "header"
+            }
+        },
+        "schemas": {
+            "FieldBy": {
+                "type": "string",
+                "enum": [
+                    "BY_UNSPECIFIED",
+                    "BY_ID",
+                    "BY_NAME",
+                    "BY_CREATED_AT",
+                    "BY_UPDATED_AT",
+                    "BY_SEVERITY",
+                    "BY_STATUS",
+                    "BY_POLICY_TYPE",
+                    "BY_APPLICATION",
+                    "BY_START_TIME",
+                    "BY_END_TIME",
+                    "BY_ALARM_STATE",
+                    "BY_ALARM_POLICY_NAME",
+                    "BY_ALARM_PRIMARY_DIMENSION"
+                ],
+                "default": "BY_UNSPECIFIED"
+            },
+            "SortingConfigField": {
+                "type": "object",
+                "properties": {
+                    "by": {
+                        "$ref": "#/components/schemas/FieldBy"
+                    },
+                    "order": {
+                        "$ref": "#/components/schemas/SortingConfigOrder"
+                    }
+                }
+            },
+            "SortingConfigOrder": {
+                "type": "string",
+                "enum": [
+                    "ORDER_UNSPECIFIED",
+                    "ORDER_ASCENDING",
+                    "ORDER_DESCENDING"
+                ],
+                "default": "ORDER_UNSPECIFIED"
+            },
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "typeUrl": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string",
+                        "format": "byte"
+                    }
+                }
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "typesv202506PaginationConfig": {
+                "type": "object",
+                "properties": {
+                    "limit": {
+                        "type": "string",
+                        "format": "uint64",
+                        "title": "limit is how many items to return at most"
+                    },
+                    "offset": {
+                        "type": "string",
+                        "format": "uint64",
+                        "title": "offset is the offset into the list of items"
+                    },
+                    "includeTotalCount": {
+                        "type": "boolean",
+                        "title": "include_total_count is a flag to enforce API service to include the total count of items in the response,\nwhich in some cases may be very expensive to fetch"
+                    }
+                }
+            },
+            "typesv202506PaginationInfo": {
+                "type": "object",
+                "properties": {
+                    "totalCount": {
+                        "type": "string",
+                        "format": "uint64",
+                        "description": "total_count is the total number of items in the list.\nIt may be provided optionally if include_total_count is set to false.\nIt will be provided always if include_total_count is set to true."
+                    },
+                    "hasMoreResults": {
+                        "type": "boolean",
+                        "title": "has_more_results is a flag to indicate if there are more results to fetch\nIt may be provided instead of total_count if include_total_count is set to false and it would be very expensive to fetch the total count"
+                    }
+                }
+            },
+            "typesv202506SortingConfig": {
+                "type": "object",
+                "properties": {
+                    "fields": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/SortingConfigField"
+                        }
+                    }
+                }
+            },
+            "v202303KeyValue": {
+                "type": "object",
+                "properties": {
+                    "value": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "v202303TimeRange": {
+                "type": "object",
+                "properties": {
+                    "start": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "end": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "v202505AlertAutoAck": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the auto-ack configuration.",
+                        "readOnly": true
+                    },
+                    "userId": {
+                        "type": "string",
+                        "description": "The ID of the user who most recently updated the auto-ack configuration.",
+                        "readOnly": true
+                    },
+                    "source": {
+                        "$ref": "#/components/schemas/v202505Source"
+                    },
+                    "key": {
+                        "$ref": "#/components/schemas/v202303KeyValue"
+                    },
+                    "startTimeAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "The start time when the auto-ack configuration is active. Has to be at least 5 minutes in the future.",
+                        "required": [
+                            "start_time_at"
+                        ]
+                    },
+                    "endTimeAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "The end time when the auto-ack configuration is no longer active."
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "The time when the auto-ack configuration was created.",
+                        "readOnly": true
+                    },
+                    "modifiedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "The time when the auto-ack configuration was last modified.",
+                        "readOnly": true
+                    }
+                },
+                "required": [
+                    "startTimeAt"
+                ]
+            },
+            "v202505AlertAutoAckFilters": {
+                "type": "object",
+                "properties": {
+                    "autoAckIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The IDs of the auto-ack configurations to list."
+                    },
+                    "applications": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The policy applications (integrations) the auto-ack configurations are applied to."
+                    },
+                    "sources": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202505Source"
+                        },
+                        "description": "The source policies the auto-ack configurations are applied to."
+                    },
+                    "keys": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202303KeyValue"
+                        },
+                        "description": "The alert keys the auto-ack configurations are applied to."
+                    },
+                    "userIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The IDs of the users who created the auto-ack configurations."
+                    },
+                    "createdAt": {
+                        "$ref": "#/components/schemas/v202303TimeRange"
+                    },
+                    "modifiedAt": {
+                        "$ref": "#/components/schemas/v202303TimeRange"
+                    },
+                    "startTimeAt": {
+                        "$ref": "#/components/schemas/v202303TimeRange"
+                    },
+                    "endTimeAt": {
+                        "$ref": "#/components/schemas/v202303TimeRange"
+                    }
+                }
+            },
+            "v202505AlertAutoAckServiceCreateRequest": {
+                "type": "object",
+                "properties": {
+                    "autoAck": {
+                        "$ref": "#/components/schemas/v202505AlertAutoAck"
+                    }
+                },
+                "required": [
+                    "autoAck"
+                ]
+            },
+            "v202505AlertAutoAckServiceCreateResponse": {
+                "type": "object",
+                "properties": {
+                    "autoAck": {
+                        "$ref": "#/components/schemas/v202505AlertAutoAck"
+                    }
+                }
+            },
+            "v202505AlertAutoAckServiceDeleteResponse": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean",
+                        "description": "Whether the delete operation was successful.",
+                        "readOnly": true
+                    }
+                }
+            },
+            "v202505AlertAutoAckServiceGetResponse": {
+                "type": "object",
+                "properties": {
+                    "autoAck": {
+                        "$ref": "#/components/schemas/v202505AlertAutoAck"
+                    }
+                }
+            },
+            "v202505AlertAutoAckServiceListRequest": {
+                "type": "object",
+                "properties": {
+                    "pagination": {
+                        "$ref": "#/components/schemas/typesv202506PaginationConfig"
+                    },
+                    "sorting": {
+                        "$ref": "#/components/schemas/typesv202506SortingConfig"
+                    },
+                    "filters": {
+                        "$ref": "#/components/schemas/v202505AlertAutoAckFilters"
+                    }
+                }
+            },
+            "v202505AlertAutoAckServiceListResponse": {
+                "type": "object",
+                "properties": {
+                    "pagination": {
+                        "$ref": "#/components/schemas/typesv202506PaginationInfo"
+                    },
+                    "autoAcks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202505AlertAutoAck"
+                        },
+                        "description": "The auto-ack configurations that were found matching the filters.",
+                        "readOnly": true
+                    }
+                }
+            },
+            "v202505AlertAutoAckServiceReplaceRequest": {
+                "type": "object",
+                "properties": {
+                    "autoAck": {
+                        "$ref": "#/components/schemas/v202505AlertAutoAck"
+                    }
+                },
+                "required": [
+                    "autoAck"
+                ]
+            },
+            "v202505AlertAutoAckServiceReplaceResponse": {
+                "type": "object",
+                "properties": {
+                    "autoAck": {
+                        "$ref": "#/components/schemas/v202505AlertAutoAck"
+                    }
+                }
+            },
+            "v202505PolicyType": {
+                "type": "string",
+                "enum": [
+                    "POLICY_TYPE_UNSPECIFIED",
+                    "POLICY_TYPE_AGENT",
+                    "POLICY_TYPE_COMPONENT",
+                    "POLICY_TYPE_DEVICE",
+                    "POLICY_TYPE_EVENT",
+                    "POLICY_TYPE_INTERFACE",
+                    "POLICY_TYPE_CUSTOM",
+                    "POLICY_TYPE_CLOUD",
+                    "POLICY_TYPE_PROTECT",
+                    "POLICY_TYPE_TRAFFIC",
+                    "POLICY_TYPE_KMETRICS"
+                ],
+                "default": "POLICY_TYPE_UNSPECIFIED",
+                "title": "- POLICY_TYPE_AGENT: NMS Agent Policy\n - POLICY_TYPE_COMPONENT: NMS Component Policy\n - POLICY_TYPE_DEVICE: NMS Device Policy\n - POLICY_TYPE_EVENT: NMS Event Policy\n - POLICY_TYPE_INTERFACE: NMS Interface Policy\n - POLICY_TYPE_CUSTOM: NMS Custom Policy\n - POLICY_TYPE_CLOUD: Flow Alerting Cloud Policy\n - POLICY_TYPE_PROTECT: Flow Alerting Protect Policy\n - POLICY_TYPE_TRAFFIC: Flow Alerting Traffic Policy\n - POLICY_TYPE_KMETRICS: Flow Alerting KMetrics Policy"
+            },
+            "v202505Source": {
+                "type": "object",
+                "properties": {
+                    "policyType": {
+                        "$ref": "#/components/schemas/v202505PolicyType"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the policy, can be integer ID, UUID or any other format.",
+                        "required": [
+                            "id"
+                        ]
+                    }
+                },
+                "required": [
+                    "policyType",
+                    "id"
+                ]
+            }
+        }
+    }
+}

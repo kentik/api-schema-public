@@ -1,0 +1,76 @@
+syntax = "proto3";
+
+package kentik.alerting.public.v202505;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/alerting/public/v202505";
+
+import "google/api/field_behavior.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+import "kentik/core/v202303/annotations.proto";
+
+enum NmsConditionConnector {
+  NMS_CONDITION_CONNECTOR_UNSPECIFIED = 0;
+
+  // Any of the conditions must be true
+  NMS_CONDITION_CONNECTOR_ANY = 1;
+
+  // All of the conditions must be true
+  NMS_CONDITION_CONNECTOR_ALL = 2;
+}
+
+enum NmsConditionOperator {
+  NMS_CONDITION_OPERATOR_UNSPECIFIED = 0;
+
+  // Equals
+  NMS_CONDITION_OPERATOR_EQUALS = 1;
+
+  // Less than
+  NMS_CONDITION_OPERATOR_LESS_THAN = 2;
+
+  // Greater than
+  NMS_CONDITION_OPERATOR_GREATER_THAN = 3;
+
+  // Less than or equals
+  NMS_CONDITION_OPERATOR_LESS_THAN_OR_EQUALS = 4;
+
+  // Greater than or equals
+  NMS_CONDITION_OPERATOR_GREATER_THAN_OR_EQUALS = 5;
+}
+
+message NmsStateSet {
+  bool not = 1;
+  repeated string states = 2;
+}
+
+message NmsCondition {
+  string measurement = 1;
+  string metric = 2;
+
+  oneof settings {
+    NmsThresholdCondition threshold = 3;
+    NmsStateChangeCondition state_change = 4;
+    NmsStateSet state_in_condition = 5;
+  }
+}
+
+message NmsThresholdCondition {
+  NmsConditionOperator operator = 1;
+  string condition_value = 2;
+}
+
+message NmsStateChangeCondition {
+  NmsStateSet from = 1;
+  NmsStateSet to = 2;
+}
+
+message NmsConditionGroup {
+  NmsConditionConnector connector = 1;
+  bool not = 2;
+  repeated NmsCondition conditions = 3;
+  repeated NmsConditionGroup condition_groups = 4; // recursive
+}
+
+message NmsActivateOrClearConditions {
+  NmsConditionConnector connector = 1;
+  repeated NmsConditionGroup condition_groups = 2;
+}

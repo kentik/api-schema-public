@@ -1,0 +1,598 @@
+syntax = "proto3";
+
+package kentik.alerting.public.v202505;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/alerting/public/v202505";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/struct.proto";
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+import "kentik/core/v202303/annotations.proto";
+import "kentik/alerting/types/v202303/types.proto";
+import "kentik/alerting/types/v202506/pagination.proto";
+import "kentik/alerting/types/v202506/sorting.proto";
+import "kentik/alerting/types/v202506/mitigation.proto";
+
+import "kentik/alerting/public/v202505/common.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Kentik Alert Mitigations API"
+    version: "v202505"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api-schema-public"
+    }
+    description: "# Overview\n"
+    "The Alert Mitigations API provides programmatic access to Kentik's capabilities of configuring and managing network infrastructure mitigations that are triggered automatically based on alerts or manually to prevent network attacks."
+  }
+  external_docs: {
+    url: "https://kb.kentik.com/docs/alerting"
+    description: "Kentik Alerts documentation"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+service MitigationsService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "admin.alerting";
+
+  rpc List(MitigationsServiceListRequest) returns (MitigationsServiceListResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.alerting:read";
+    option (google.api.http) = {
+      get: "/mitigations"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "List"
+      summary: "List Mitigations"
+      description: "Returns a list of mitigations."
+    };
+  }
+
+  rpc Get(MitigationsServiceGetRequest) returns (MitigationsServiceGetResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.alerting:read";
+    option (google.api.http) = {
+      get: "/mitigations/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "Get"
+      summary: "Get Mitigation"
+      description: "Returns a mitigation."
+    };
+  }
+
+  rpc Create(MitigationsServiceCreateRequest) returns (MitigationsServiceCreateResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.alerting:write";
+    option (google.api.http) = {
+      post: "/mitigations"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "Create"
+      summary: "Create Mitigation"
+      description: "Creates a new manual mitigation."
+    };
+  }
+
+  rpc Act(MitigationsServiceActRequest) returns (MitigationsServiceActResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.alerting:write";
+    option (google.api.http) = {
+      post: "/mitigations/{action}"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "Act"
+      summary: "Act on Mitigation"
+      description: "Performs an action on one or more mitigations."
+    };
+  }
+
+  rpc AvailableActions(MitigationsServiceAvailableActionsRequest) returns (MitigationsServiceAvailableActionsResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.alerting:read";
+    option (google.api.http) = {
+      get: "/mitigations/actions"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "AvailableActions"
+      summary: "Get Available Actions"
+      description: "Returns available actions for mitigations."
+    };
+  }
+
+  rpc AvailableActionsForMitigation(MitigationsServiceAvailableActionsForMitigationRequest) returns (MitigationsServiceAvailableActionsForMitigationResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.alerting:read";
+    option (google.api.http) = {
+      get: "/mitigations/{id}/actions"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "AvailableActionsForMitigation"
+      summary: "Get Available Actions for Mitigation"
+      description: "Returns available actions for a specific mitigation."
+    };
+  }
+}
+
+message MitigationsServiceListRequest {
+  kentik.alerting.types.v202506.PaginationConfig pagination = 1[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The pagination configuration for the list request."
+    }
+  ];
+  MitigationFilters filters = 2[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The mitigation filters for the list request."
+    }
+  ];
+}
+
+message MitigationFilters {
+  kentik.alerting.types.v202303.TimeRange created_at = 1[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The time range for the created time of the mitigations."
+    }
+  ];
+  repeated string mitigation_ids = 2[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The IDs of the mitigations to list."
+    }
+  ];
+  repeated Source sources = 3[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The source policies the mitigations are associated with."
+    }
+  ];
+  repeated string alarm_ids = 4[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The alarm IDs the mitigations are associated with."
+    }
+  ];
+  repeated MitigationState states = 5[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The states of the mitigations to filter by."
+    }
+  ];
+  repeated string platform_ids = 6[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The mitigation platform IDs the mitigations are associated with."
+    }
+  ];
+  repeated string method_ids = 7[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The mitigation method IDs the mitigations are associated with."
+    }
+  ];
+  repeated string ip_cidrs = 8[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The IP/CIDR ranges the mitigations target."
+    }
+  ];
+  string ip_cidr_pattern = 9[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The IP/CIDR pattern to filter mitigations by."
+    }
+  ];
+  repeated MitigationType types = 10[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The types of mitigations to filter by."
+    }
+  ];
+}
+
+message MitigationsServiceListResponse {
+  kentik.alerting.types.v202506.PaginationInfo pagination = 1[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The pagination information for the list response."
+    }
+  ];
+  repeated Mitigation mitigations = 2[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The mitigations that were found matching the filters."
+    }
+  ];
+}
+
+message MitigationsServiceGetRequest {
+  string id = 1[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The ID of the mitigation to get."
+    }
+  ];
+}
+
+message MitigationsServiceGetResponse {
+  Mitigation mitigation = 1[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The mitigation configuration that was retrieved."
+    }
+  ];
+}
+
+message MitigationsServiceCreateRequest {
+  string platform_id = 1[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The mitigation platform ID where the mitigation will be deployed."
+    }
+  ];
+  string method_id = 2[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The mitigation method ID for the mitigation technique."
+    }
+  ];
+  string ip_cidr = 3[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The IP/CIDR range to mitigate."
+    }
+  ];
+  int64 src_port = 4[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The source port to mitigate."
+    }
+  ];
+  int64 dst_port = 5[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The destination port to mitigate."
+    }
+  ];
+  string comment = 6[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "A comment describing the mitigation."
+    }
+  ];
+  google.protobuf.Duration auto_stop_ttl = 7[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The automatic stop time-to-live for the mitigation."
+    }
+  ];
+}
+
+message MitigationsServiceCreateResponse {
+  string id = 1[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The ID of the created mitigation."
+    }
+  ];
+}
+
+message MitigationsServiceActRequest {
+  repeated string ids = 1[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The IDs of the mitigations to act on."
+    }
+  ];
+  MitigationUserAction action = 2[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The action to perform on the mitigations."
+    }
+  ];
+}
+
+message MitigationsServiceAvailableActionsForMitigationRequest {
+  int64 id = 1[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The ID of the mitigation to get available actions for."
+    }
+  ];
+}
+
+message MitigationsServiceAvailableActionsForMitigationResponse {
+  repeated string available_actions = 1[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The available actions for the mitigation."
+    }
+  ];
+}
+
+message MitigationsServiceAvailableActionsRequest {}
+
+message MitigationsServiceAvailableActionsResponse {
+  repeated MitigationAvailableTransitions transitions = 1[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The available state transitions for mitigations."
+    }
+  ];
+
+  message MitigationAvailableTransitions {
+    MitigationState from_state = 1[
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The from state of the mitigation."
+      }
+    ];
+    repeated MitigationActionDetail available_actions = 2[
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The available actions from this state."
+      }
+    ];
+  }
+}
+
+message MitigationActionDetails {
+  repeated MitigationActionDetail actions = 1[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The available mitigation actions."
+    }
+  ];
+}
+
+message MitigationActionDetail {
+  string event_name = 1[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The name of the event that triggers this action."
+    }
+  ];
+  MitigationUserAction action = 2[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The user action to perform."
+    }
+  ];
+  string action_description = 3[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The description of the action."
+    }
+  ];
+  MitigationState from_state = 4[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The state the mitigation is in before the action."
+    }
+  ];
+  repeated MitigationState to_states = 5[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The possible states the mitigation can transition to."
+    }
+  ];
+  string action_path = 6[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The API path for performing this action."
+    }
+  ];
+}
+
+enum MitigationUserAction {
+  MITIGATION_USER_ACTION_UNSPECIFIED = 0;
+  MITIGATION_USER_ACTION_TAKE_CONTROL = 1;
+  MITIGATION_USER_ACTION_STOP = 2;
+  MITIGATION_USER_ACTION_START = 3;
+  MITIGATION_USER_ACTION_DELETE = 4;
+  MITIGATION_USER_ACTION_APPROVE_START = 5;
+  MITIGATION_USER_ACTION_SKIP_WAIT = 6;
+  MITIGATION_USER_ACTION_RETRY = 7;
+  MITIGATION_USER_ACTION_ACK = 8;
+}
+
+message MitigationsServiceActResponse {
+  repeated MitigationsActResult results = 1[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The results of the mitigation actions."
+    }
+  ];
+}
+
+message MitigationsActResult {
+  int64 mitigation_id = 1[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The ID of the mitigation that was acted upon."
+    }
+  ];
+  bool success = 2[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Whether the action was successful."
+    }
+  ];
+  string message = 3[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "A message describing the result of the action."
+    }
+  ];
+}
+
+message Mitigation {
+  reserved 5, 6;
+
+  string id = 1[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The ID of the mitigation."
+    }
+  ];
+  MitigationType type = 2[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The type of mitigation."
+    }
+  ];
+  repeated string alarm_ids = 3[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The alarm IDs associated with this mitigation."
+    }
+  ];
+  kentik.alerting.types.v202506.MitigationTarget target = 16[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The target of the mitigation."
+    }
+  ];
+  MitigationState current_state = 7[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The current state of the mitigation."
+    }
+  ];
+  MitigationState previous_state = 8[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The previous state of the mitigation."
+    }
+  ];
+  string platform_id = 9[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The mitigation platform ID the mitigation is derived from."
+    }
+  ];
+  string method_id = 10[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The mitigation method ID the mitigation is derived from."
+    }
+  ];
+  google.protobuf.Timestamp start_time_at = 11[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The time when the mitigation started."
+    }
+  ];
+  google.protobuf.Timestamp end_time_at = 12[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The time when the mitigation ended or will end."
+    }
+  ];
+  repeated MitigationStateEntry states = 13[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The history of state changes for the mitigation."
+    }
+  ];
+  google.protobuf.Duration auto_stop_ttl = 14[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The automatic stop time-to-live for the mitigation."
+    }
+  ];
+  string comment = 15[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "A comment describing the mitigation."
+    }
+  ];
+  Source source = 17[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The source (type and ID) of the alerting policy that triggered this mitigation."
+    }
+  ];
+}
+
+message MitigationStateEntry {
+  google.protobuf.Timestamp timestamp = 1[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The timestamp when the state change occurred."
+    }
+  ];
+  MitigationState state = 2[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The state the mitigation transitioned to."
+    }
+  ];
+  MitigationEvent event = 3[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The event that caused the state change."
+    }
+  ];
+}
+
+enum MitigationState {
+  MITIGATION_STATE_UNSPECIFIED = 0;
+  MITIGATION_STATE_ACK_REQUIRED = 1;
+  MITIGATION_STATE_ARCHIVED = 2;
+  MITIGATION_STATE_CLEARING = 3;
+  MITIGATION_STATE_CLEARING_FAIL = 4;
+  MITIGATION_STATE_END_GRACE = 5;
+  MITIGATION_STATE_END_WAIT = 6;
+  MITIGATION_STATE_MANUAL_CLEAR = 7;
+  MITIGATION_STATE_MANUAL_CLEARING = 8;
+  MITIGATION_STATE_MANUAL_CLEARING_FAIL = 9;
+  MITIGATION_STATE_MANUAL_MITIGATING = 10;
+  MITIGATION_STATE_MANUAL_STARTING = 11;
+  MITIGATION_STATE_MANUAL_STARTING_FAIL = 12;
+  MITIGATION_STATE_MITIGATING = 13;
+  MITIGATION_STATE_STARTING = 14;
+  MITIGATION_STATE_STARTING_FAIL = 15;
+  MITIGATION_STATE_START_WAIT = 16;
+}
+
+enum MitigationEvent {
+  MITIGATION_EVENT_UNSPECIFIED = 0;
+  MITIGATION_EVENT_USER_MANUAL_CONTROL = 1;
+  MITIGATION_EVENT_USER_STOP = 2;
+  MITIGATION_EVENT_USER_START = 3;
+  MITIGATION_EVENT_USER_DELETE = 4;
+  MITIGATION_EVENT_USER_APPROVE_START = 5;
+  MITIGATION_EVENT_USER_SKIP_WAIT = 6;
+  MITIGATION_EVENT_USER_RETRY = 7;
+  MITIGATION_EVENT_USER_ACK = 8;
+  MITIGATION_EVENT_SKIP_WAIT = 9;
+  MITIGATION_EVENT_DONE_WAIT = 10;
+  MITIGATION_EVENT_AUTO_START = 11;
+  MITIGATION_EVENT_AUTO_STOP = 12;
+  MITIGATION_EVENT_REMOTE_ADDED = 13;
+  MITIGATION_EVENT_REMOTE_REMOVED = 14;
+  MITIGATION_EVENT_REMOTE_ERROR = 15;
+  MITIGATION_EVENT_SYSTEM_CLEAR_DELETED = 16;
+  MITIGATION_EVENT_TTL_EXPIRED = 17;
+}

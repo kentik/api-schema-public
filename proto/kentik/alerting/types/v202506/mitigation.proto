@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package kentik.alerting.types.v202506;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/alerting/types/v202506";
+
+import "kentik/alerting/types/v202303/types.proto";
+import "kentik/ktbgp/v202501/route_service.proto";
+
+message MitigationTarget {
+  oneof target {
+    string ip_cidr = 1;
+    ktbgp.v202501.FlowspecMatch flowspec = 2;
+    // Adaptive Flowspec target describes traffic dimensions and values in the
+    // syntax compatible with the Flow Policies.
+    kentik.alerting.types.v202303.KeyValue adaptive_flowspec = 3;
+  }
+}

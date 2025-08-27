@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package kentik.alerting.public.v202505;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/alerting/public/v202505";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/struct.proto";
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+import "kentik/core/v202303/annotations.proto";
+import "kentik/alerting/types/v202303/types.proto";
+
+import "kentik/alerting/public/v202505/common.proto";
+import "kentik/alerting/public/v202505/policy_filters.proto";
+
+
+message EventPolicySettings {
+  EventType type = 1[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The type of event to trigger the policy."
+    }
+  ];
+  repeated string dimensions = 2[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The dimensions of the event to trigger the policy."
+    }
+  ];
+  PolicyFilters filters = 3[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The filters matched against the event to trigger the policy."
+    }
+  ];
+
+  enum EventType {
+    EVENT_TYPE_UNSPECIFIED = 0;
+
+    // Syslog event
+    EVENT_TYPE_SYSLOG = 1;
+
+    // SNMP trap event
+    EVENT_TYPE_SNMP_TRAP = 2;
+  }
+}
+
+message EventPolicyLevelSettings {
+  PolicyDimensionFilters filters = 1[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The filters matched against the event to trigger the policy."
+    }
+  ];
+}

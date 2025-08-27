@@ -1,0 +1,1734 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Kentik Alerting Policies API",
+    "description": "# Overview\nThe Alerting Policies API provides programmatic access to Kentik's configuration of the policies that define how, when, and to whom alerts are triggered.",
+    "version": "v202505",
+    "contact": {
+      "name": "Kentik API Engineering",
+      "url": "https://github.com/kentik/api-schema-public"
+    }
+  },
+  "tags": [
+    {
+      "name": "PolicyService"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v202505/policies/list": {
+      "post": {
+        "summary": "List Policies",
+        "description": "Returns a list of alerting policies.",
+        "operationId": "List",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202505PolicyServiceListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202505PolicyServiceListRequest"
+            }
+          }
+        ],
+        "tags": [
+          "PolicyService"
+        ]
+      }
+    },
+    "/v202505/policies/{policyType}/{id}": {
+      "get": {
+        "summary": "Get Policy",
+        "description": "Returns an alerting policy.",
+        "operationId": "Get",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202505PolicyServiceGetResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "policyType",
+            "description": "The type of policy to get.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "POLICY_TYPE_UNSPECIFIED",
+              "POLICY_TYPE_AGENT",
+              "POLICY_TYPE_COMPONENT",
+              "POLICY_TYPE_DEVICE",
+              "POLICY_TYPE_EVENT",
+              "POLICY_TYPE_INTERFACE",
+              "POLICY_TYPE_CUSTOM",
+              "POLICY_TYPE_CLOUD",
+              "POLICY_TYPE_PROTECT",
+              "POLICY_TYPE_TRAFFIC",
+              "POLICY_TYPE_KMETRICS"
+            ]
+          },
+          {
+            "name": "id",
+            "description": "The ID of the policy to get.",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "PolicyService"
+        ]
+      }
+    },
+    "/v202505/policies/{policyType}/{id}/disable": {
+      "post": {
+        "summary": "Disable Policy",
+        "description": "Disables an alerting policy.",
+        "operationId": "Disable",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202505PolicyServiceDisableResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "policyType",
+            "description": "The type of policy to disable.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "POLICY_TYPE_UNSPECIFIED",
+              "POLICY_TYPE_AGENT",
+              "POLICY_TYPE_COMPONENT",
+              "POLICY_TYPE_DEVICE",
+              "POLICY_TYPE_EVENT",
+              "POLICY_TYPE_INTERFACE",
+              "POLICY_TYPE_CUSTOM",
+              "POLICY_TYPE_CLOUD",
+              "POLICY_TYPE_PROTECT",
+              "POLICY_TYPE_TRAFFIC",
+              "POLICY_TYPE_KMETRICS"
+            ]
+          },
+          {
+            "name": "id",
+            "description": "The ID of the policy to disable.",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202505PolicyServiceDisableRequest"
+            }
+          }
+        ],
+        "tags": [
+          "PolicyService"
+        ]
+      }
+    },
+    "/v202505/policies/{policyType}/{id}/enable": {
+      "post": {
+        "summary": "Enable Policy",
+        "description": "Enables an alerting policy.",
+        "operationId": "Enable",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202505PolicyServiceEnableResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "policyType",
+            "description": "The type of policy to enable.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "POLICY_TYPE_UNSPECIFIED",
+              "POLICY_TYPE_AGENT",
+              "POLICY_TYPE_COMPONENT",
+              "POLICY_TYPE_DEVICE",
+              "POLICY_TYPE_EVENT",
+              "POLICY_TYPE_INTERFACE",
+              "POLICY_TYPE_CUSTOM",
+              "POLICY_TYPE_CLOUD",
+              "POLICY_TYPE_PROTECT",
+              "POLICY_TYPE_TRAFFIC",
+              "POLICY_TYPE_KMETRICS"
+            ]
+          },
+          {
+            "name": "id",
+            "description": "The ID of the policy to enable.",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202505PolicyServiceEnableRequest"
+            }
+          }
+        ],
+        "tags": [
+          "PolicyService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "BaselineConditionDeltaType": {
+      "type": "string",
+      "enum": [
+        "DELTA_TYPE_UNSPECIFIED",
+        "DELTA_TYPE_ABOVE",
+        "DELTA_TYPE_BELOW"
+      ],
+      "default": "DELTA_TYPE_UNSPECIFIED",
+      "title": "- DELTA_TYPE_ABOVE: the traffic value must be above the baseline value\n - DELTA_TYPE_BELOW: the traffic value must be below the baseline value"
+    },
+    "BaselineConfigCompareMode": {
+      "type": "string",
+      "enum": [
+        "COMPARE_MODE_UNSPECIFIED",
+        "COMPARE_MODE_PREVIOUS_HOURS",
+        "COMPARE_MODE_PREVIOUS_DAYS",
+        "COMPARE_MODE_PREVIOUS_DAYS_DISTINGUISH_WEEKENDS",
+        "COMPARE_MODE_PREVIOUS_WEEKS"
+      ],
+      "default": "COMPARE_MODE_UNSPECIFIED",
+      "title": "- COMPARE_MODE_PREVIOUS_HOURS: pick all previous hours baseline values\n - COMPARE_MODE_PREVIOUS_DAYS: pick all previous days baseline values\n - COMPARE_MODE_PREVIOUS_DAYS_DISTINGUISH_WEEKENDS: pick previous days baseline values but distinguish weekend days from weekdays\n - COMPARE_MODE_PREVIOUS_WEEKS: pick all previous weeks baseline values"
+    },
+    "ConditionsBaselineCondition": {
+      "type": "object",
+      "properties": {
+        "absolute": {
+          "type": "number",
+          "format": "double",
+          "description": "The absolute value used for the policy level condition."
+        },
+        "percentage": {
+          "type": "string",
+          "format": "int64",
+          "description": "The percentage value used for the policy level condition."
+        },
+        "delta": {
+          "$ref": "#/definitions/BaselineConditionDeltaType",
+          "description": "The delta type used for the policy level condition.",
+          "required": [
+            "delta"
+          ]
+        },
+        "useLowest": {
+          "type": "boolean",
+          "description": "Use the lowest value for the policy level condition if valid baseline value is missing."
+        },
+        "useHighest": {
+          "type": "boolean",
+          "description": "Use the highest value for the policy level condition if valid baseline value is missing."
+        },
+        "useTrigger": {
+          "type": "boolean",
+          "description": "Use the trigger value for the policy level condition if valid baseline value is missing."
+        },
+        "skip": {
+          "type": "boolean",
+          "description": "Skip the current traffic value if valid baseline value is missing."
+        },
+        "useValue": {
+          "type": "string",
+          "format": "int64",
+          "description": "Use the given value for the policy level condition if valid baseline value is missing."
+        }
+      },
+      "required": [
+        "delta"
+      ]
+    },
+    "ConditionsForecastCondition": {
+      "type": "object",
+      "properties": {
+        "operator": {
+          "$ref": "#/definitions/FlowPolicyLevelSettingsConditionsOperator"
+        },
+        "percentageValue": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "ConditionsInterfaceCapacityCondition": {
+      "type": "object",
+      "properties": {
+        "absolute": {
+          "type": "number",
+          "format": "double",
+          "description": "The absolute value used for the policy level condition."
+        },
+        "percentage": {
+          "type": "string",
+          "format": "int64",
+          "description": "The percentage value used for the policy level condition."
+        }
+      }
+    },
+    "ConditionsRatioCondition": {
+      "type": "object",
+      "properties": {
+        "lhsMetric": {
+          "type": "string",
+          "description": "The left hand side metric used for the policy level condition.",
+          "required": [
+            "lhs_metric"
+          ]
+        },
+        "rhsMetric": {
+          "type": "string",
+          "description": "The right hand side metric used for the policy level condition.",
+          "required": [
+            "rhs_metric"
+          ]
+        },
+        "lhsProportion": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The left hand side proportion used for the policy level condition.",
+          "required": [
+            "lhs_proportion"
+          ]
+        },
+        "rhsProportion": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The right hand side proportion used for the policy level condition.",
+          "required": [
+            "rhs_proportion"
+          ]
+        },
+        "margin": {
+          "type": "number",
+          "format": "double",
+          "description": "The margin used for the policy level condition.",
+          "required": [
+            "margin"
+          ]
+        },
+        "direction": {
+          "$ref": "#/definitions/RatioConditionDirection",
+          "description": "The direction used for the policy level condition.",
+          "required": [
+            "direction"
+          ]
+        }
+      },
+      "required": [
+        "lhsMetric",
+        "rhsMetric",
+        "lhsProportion",
+        "rhsProportion",
+        "margin",
+        "direction"
+      ]
+    },
+    "ConditionsStaticCondition": {
+      "type": "object",
+      "properties": {
+        "metric": {
+          "type": "string",
+          "description": "The metric used for the policy level condition.",
+          "required": [
+            "metric"
+          ]
+        },
+        "operator": {
+          "$ref": "#/definitions/FlowPolicyLevelSettingsConditionsOperator",
+          "description": "The operator used for the policy level condition.",
+          "required": [
+            "operator"
+          ]
+        },
+        "value": {
+          "type": "number",
+          "format": "double",
+          "description": "The value used for the policy level condition.",
+          "required": [
+            "value"
+          ]
+        }
+      },
+      "required": [
+        "metric",
+        "operator",
+        "value"
+      ]
+    },
+    "ConditionsTopKeysCondition": {
+      "type": "object",
+      "properties": {
+        "event": {
+          "$ref": "#/definitions/TopKeysConditionTopKeysEvent",
+          "description": "The event type used for the policy level condition.",
+          "required": [
+            "event"
+          ]
+        },
+        "count": {
+          "type": "string",
+          "format": "int64",
+          "description": "The count of the top keys used for the policy level condition.",
+          "required": [
+            "count"
+          ]
+        }
+      },
+      "required": [
+        "event",
+        "count"
+      ]
+    },
+    "EventPolicySettingsEventType": {
+      "type": "string",
+      "enum": [
+        "EVENT_TYPE_UNSPECIFIED",
+        "EVENT_TYPE_SYSLOG",
+        "EVENT_TYPE_SNMP_TRAP"
+      ],
+      "default": "EVENT_TYPE_UNSPECIFIED",
+      "title": "- EVENT_TYPE_SYSLOG: Syslog event\n - EVENT_TYPE_SNMP_TRAP: SNMP trap event"
+    },
+    "FieldBy": {
+      "type": "string",
+      "enum": [
+        "BY_UNSPECIFIED",
+        "BY_ID",
+        "BY_NAME",
+        "BY_CREATED_AT",
+        "BY_UPDATED_AT",
+        "BY_SEVERITY",
+        "BY_STATUS",
+        "BY_POLICY_TYPE",
+        "BY_APPLICATION",
+        "BY_START_TIME",
+        "BY_END_TIME",
+        "BY_ALARM_STATE",
+        "BY_ALARM_POLICY_NAME",
+        "BY_ALARM_PRIMARY_DIMENSION"
+      ],
+      "default": "BY_UNSPECIFIED"
+    },
+    "FlowPolicyLevelSettingsActivationSettings": {
+      "type": "object",
+      "properties": {
+        "matchTimes": {
+          "type": "string",
+          "format": "int64",
+          "description": "The number of times the policy level conditions must be met within the match window to activate the alert.",
+          "required": [
+            "match_times"
+          ]
+        },
+        "matchWindow": {
+          "type": "string",
+          "description": "The window of time within which the policy level conditions must be met to activate the alert.",
+          "required": [
+            "match_window"
+          ]
+        },
+        "resetCountWindow": {
+          "type": "string",
+          "description": "The window of time within which the level conditions must not be met again to reset the match count.",
+          "required": [
+            "reset_count_window"
+          ]
+        }
+      },
+      "required": [
+        "matchTimes",
+        "matchWindow",
+        "resetCountWindow"
+      ]
+    },
+    "FlowPolicyLevelSettingsConditions": {
+      "type": "object",
+      "properties": {
+        "static": {
+          "$ref": "#/definitions/ConditionsStaticCondition",
+          "description": "The static type of the policy level condition: use a static value to compare with the traffic value with a given operator."
+        },
+        "baseline": {
+          "$ref": "#/definitions/ConditionsBaselineCondition",
+          "description": "The baseline type of the policy level condition: use a baseline value to compare with the current traffic value with a given operator."
+        },
+        "topKeys": {
+          "$ref": "#/definitions/ConditionsTopKeysCondition",
+          "description": "The top keys type of the policy level condition: use the top keys observed in the baseline values to compare with the current traffic value."
+        },
+        "interfaceCapacity": {
+          "$ref": "#/definitions/ConditionsInterfaceCapacityCondition",
+          "description": "The interface capacity type of the policy level condition: use the interface capacity to compare with the current traffic value."
+        },
+        "ratio": {
+          "$ref": "#/definitions/ConditionsRatioCondition",
+          "description": "The ratio type of the policy level condition: use the ratio of two metrics to compare their proportions."
+        },
+        "forecast": {
+          "$ref": "#/definitions/ConditionsForecastCondition",
+          "description": "The forecast type of the policy level condition: use the forecast of a metric value to compare with the current traffic value."
+        }
+      }
+    },
+    "FlowPolicyLevelSettingsConditionsOperator": {
+      "type": "string",
+      "enum": [
+        "OPERATOR_UNSPECIFIED",
+        "OPERATOR_GREATER_THAN_OR_EQUALS",
+        "OPERATOR_GREATER_THAN",
+        "OPERATOR_EQUALS",
+        "OPERATOR_NOT_EQUALS",
+        "OPERATOR_LESS_THAN",
+        "OPERATOR_LESS_THAN_OR_EQUALS",
+        "OPERATOR_IN_SET",
+        "OPERATOR_NOT_IN_SET"
+      ],
+      "default": "OPERATOR_UNSPECIFIED"
+    },
+    "FlowPolicyLevelSettingsMitigationAssociation": {
+      "type": "object",
+      "properties": {
+        "platformId": {
+          "type": "string",
+          "description": "The platform ID of the mitigation association.",
+          "required": [
+            "platform_id"
+          ]
+        },
+        "methodId": {
+          "type": "string",
+          "description": "The method ID of the mitigation association.",
+          "required": [
+            "method_id"
+          ]
+        }
+      },
+      "required": [
+        "platformId",
+        "methodId"
+      ]
+    },
+    "FlowPolicySettingsBaselineConfig": {
+      "type": "object",
+      "properties": {
+        "storedKeyCount": {
+          "type": "string",
+          "format": "int64",
+          "default": "25",
+          "description": "The number of alert keys stored in the baseline per policy window.",
+          "title": "not exposing completeness duration as this does not work",
+          "required": [
+            "stored_key_count"
+          ]
+        },
+        "windowLength": {
+          "type": "string",
+          "default": "2419200s",
+          "description": "The length of the entire policy baseline window.",
+          "required": [
+            "window_length"
+          ]
+        },
+        "windowStartOffset": {
+          "type": "string",
+          "default": "86400s",
+          "description": "The start offset from now used when calculating the baseline value.",
+          "required": [
+            "window_start_offset"
+          ]
+        },
+        "rollupAggregation": {
+          "$ref": "#/definitions/v202505AggregationType",
+          "description": "The aggregation type used to roll up the baseline value from policy window data into 1-hour baseline values.",
+          "required": [
+            "rollup_aggregation"
+          ]
+        },
+        "compareMode": {
+          "$ref": "#/definitions/BaselineConfigCompareMode",
+          "description": "The compare mode determining which baseline values are selected to calculate the final baseline value.",
+          "required": [
+            "compare_mode"
+          ]
+        },
+        "neighbourhoodRadius": {
+          "type": "string",
+          "description": "The neighbourhood radius used to calculate the neighbourhood value. This is the number of hours before and after the current hour to include in the neighbourhood value calculation.",
+          "required": [
+            "neighbourhood_radius"
+          ]
+        },
+        "neighbourhoodAggregation": {
+          "$ref": "#/definitions/v202505AggregationType",
+          "description": "The aggregation type used to roll up the neighbourhood values taken within the neighbourhood radius.",
+          "required": [
+            "neighbourhood_aggregation"
+          ]
+        },
+        "finalAggregation": {
+          "$ref": "#/definitions/v202505AggregationType",
+          "description": "The aggregation type used to roll up the final baseline value.",
+          "required": [
+            "final_aggregation"
+          ]
+        }
+      },
+      "required": [
+        "storedKeyCount",
+        "windowLength",
+        "windowStartOffset",
+        "rollupAggregation",
+        "compareMode",
+        "neighbourhoodRadius",
+        "neighbourhoodAggregation",
+        "finalAggregation"
+      ]
+    },
+    "NmsPolicyLevelSettingsClearType": {
+      "type": "string",
+      "enum": [
+        "CLEAR_TYPE_UNSPECIFIED",
+        "CLEAR_TYPE_CLEAR_MANUAL",
+        "CLEAR_TYPE_CLEAR_UNLESS_ACTIVATED"
+      ],
+      "default": "CLEAR_TYPE_UNSPECIFIED",
+      "title": "- CLEAR_TYPE_CLEAR_MANUAL: CLEAR_TYPE_CONDITIONAL = 1; we don't want to expose this yet, not implemented"
+    },
+    "PolicyDimensionFiltersConjunction": {
+      "type": "object",
+      "properties": {
+        "entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PolicyDimensionFiltersEntry"
+          },
+          "description": "The entries of the conjunction."
+        }
+      }
+    },
+    "PolicyDimensionFiltersEntry": {
+      "type": "object",
+      "properties": {
+        "not": {
+          "type": "boolean",
+          "description": "If true, the entry will be negated."
+        },
+        "dimension": {
+          "type": "string",
+          "description": "The dimension the filter entry is applied to."
+        },
+        "equalsAny": {
+          "$ref": "#/definitions/PolicyDimensionFiltersEntryStringArray",
+          "description": "The values the dimension must equal any of."
+        },
+        "matchesAny": {
+          "$ref": "#/definitions/PolicyDimensionFiltersEntryStringArray",
+          "description": "The values the dimension must match any of."
+        }
+      }
+    },
+    "PolicyDimensionFiltersEntryStringArray": {
+      "type": "object",
+      "properties": {
+        "values": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The values of the string array."
+        }
+      }
+    },
+    "PolicyFiltersFieldFilter": {
+      "type": "object",
+      "properties": {
+        "field": {
+          "type": "string",
+          "description": "The field the filter is applied to."
+        },
+        "operator": {
+          "$ref": "#/definitions/v202505PolicyFiltersOperator",
+          "description": "The operator applied to the filter."
+        },
+        "value": {
+          "type": "string",
+          "description": "The right-hand value used for the filter operation."
+        }
+      }
+    },
+    "PolicyFiltersFilterConnector": {
+      "type": "string",
+      "enum": [
+        "FILTER_CONNECTOR_UNSPECIFIED",
+        "FILTER_CONNECTOR_AND",
+        "FILTER_CONNECTOR_OR"
+      ],
+      "default": "FILTER_CONNECTOR_UNSPECIFIED",
+      "title": "- FILTER_CONNECTOR_AND: All of the conditions must be true\n - FILTER_CONNECTOR_OR: Any of the conditions must be true"
+    },
+    "PolicyFiltersSavedFilter": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The ID of the saved filter. Saved filters are pre-defined filters that can be used in the policy."
+        },
+        "not": {
+          "type": "boolean",
+          "description": "If true, the saved filter will be negated."
+        }
+      }
+    },
+    "PolicyPolicyErrorInfo": {
+      "type": "object",
+      "properties": {
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp when the error occurred."
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of the error."
+        }
+      }
+    },
+    "PolicyPolicyLevel": {
+      "type": "object",
+      "properties": {
+        "severity": {
+          "$ref": "#/definitions/v202303Severity",
+          "description": "The severity of the policy level. When level conditions are met, the alert is triggered at this severity."
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of the policy level."
+        },
+        "ackRequired": {
+          "type": "boolean",
+          "description": "Whether acknowledgment is required for alerts that match this policy level."
+        },
+        "nms": {
+          "$ref": "#/definitions/v202505NmsPolicyLevelSettings",
+          "description": "NMS policy level settings."
+        },
+        "flow": {
+          "$ref": "#/definitions/v202505FlowPolicyLevelSettings",
+          "description": "Flow policy level settings."
+        },
+        "event": {
+          "$ref": "#/definitions/v202505EventPolicyLevelSettings",
+          "description": "Event policy level settings."
+        },
+        "notifications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202505NotificationChannelAssociation"
+          },
+          "description": "The notification channel associations for this policy level. When the alert is triggered at this level, the channels are used to send the alert notification."
+        }
+      }
+    },
+    "RatioConditionDirection": {
+      "type": "string",
+      "enum": [
+        "DIRECTION_UNSPECIFIED",
+        "DIRECTION_BOTH",
+        "DIRECTION_RIGHT",
+        "DIRECTION_LEFT"
+      ],
+      "default": "DIRECTION_UNSPECIFIED"
+    },
+    "SortingConfigField": {
+      "type": "object",
+      "properties": {
+        "by": {
+          "$ref": "#/definitions/FieldBy"
+        },
+        "order": {
+          "$ref": "#/definitions/SortingConfigOrder"
+        }
+      }
+    },
+    "SortingConfigOrder": {
+      "type": "string",
+      "enum": [
+        "ORDER_UNSPECIFIED",
+        "ORDER_ASCENDING",
+        "ORDER_DESCENDING"
+      ],
+      "default": "ORDER_UNSPECIFIED"
+    },
+    "TopKeysConditionTopKeysEvent": {
+      "type": "string",
+      "enum": [
+        "TOP_KEYS_EVENT_UNSPECIFIED",
+        "TOP_KEYS_EVENT_JOINS",
+        "TOP_KEYS_EVENT_LEAVES"
+      ],
+      "default": "TOP_KEYS_EVENT_UNSPECIFIED",
+      "title": "- TOP_KEYS_EVENT_JOINS: the traffic value must join the top keys observed previously in the baseline values\n - TOP_KEYS_EVENT_LEAVES: the traffic value must leave the top keys observed previously in the baseline value"
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "typeUrl": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "typesv202506PaginationConfig": {
+      "type": "object",
+      "properties": {
+        "limit": {
+          "type": "string",
+          "format": "uint64",
+          "title": "limit is how many items to return at most"
+        },
+        "offset": {
+          "type": "string",
+          "format": "uint64",
+          "title": "offset is the offset into the list of items"
+        },
+        "includeTotalCount": {
+          "type": "boolean",
+          "title": "include_total_count is a flag to enforce API service to include the total count of items in the response,\nwhich in some cases may be very expensive to fetch"
+        }
+      }
+    },
+    "typesv202506PaginationInfo": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "string",
+          "format": "uint64",
+          "description": "total_count is the total number of items in the list.\nIt may be provided optionally if include_total_count is set to false.\nIt will be provided always if include_total_count is set to true."
+        },
+        "hasMoreResults": {
+          "type": "boolean",
+          "title": "has_more_results is a flag to indicate if there are more results to fetch\nIt may be provided instead of total_count if include_total_count is set to false and it would be very expensive to fetch the total count"
+        }
+      }
+    },
+    "typesv202506SortingConfig": {
+      "type": "object",
+      "properties": {
+        "fields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SortingConfigField"
+          }
+        }
+      }
+    },
+    "v202303Severity": {
+      "type": "string",
+      "enum": [
+        "SEVERITY_UNSPECIFIED",
+        "SEVERITY_CLEAR",
+        "SEVERITY_MINOR",
+        "SEVERITY_WARNING",
+        "SEVERITY_MAJOR",
+        "SEVERITY_SEVERE",
+        "SEVERITY_CRITICAL"
+      ],
+      "default": "SEVERITY_UNSPECIFIED"
+    },
+    "v202303TimeRange": {
+      "type": "object",
+      "properties": {
+        "start": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "end": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "v202505AggregationType": {
+      "type": "string",
+      "enum": [
+        "AGGREGATION_TYPE_UNSPECIFIED",
+        "AGGREGATION_TYPE_REL_P05",
+        "AGGREGATION_TYPE_REL_P10",
+        "AGGREGATION_TYPE_REL_P25",
+        "AGGREGATION_TYPE_REL_P50",
+        "AGGREGATION_TYPE_REL_P75",
+        "AGGREGATION_TYPE_REL_P80",
+        "AGGREGATION_TYPE_REL_P90",
+        "AGGREGATION_TYPE_REL_P95",
+        "AGGREGATION_TYPE_REL_P98",
+        "AGGREGATION_TYPE_REL_P99",
+        "AGGREGATION_TYPE_REL_MAX",
+        "AGGREGATION_TYPE_REL_MIN"
+      ],
+      "default": "AGGREGATION_TYPE_UNSPECIFIED",
+      "title": "- AGGREGATION_TYPE_REL_P05: percentile aggregation P05\n - AGGREGATION_TYPE_REL_P10: percentile aggregation P10\n - AGGREGATION_TYPE_REL_P25: percentile aggregation P25\n - AGGREGATION_TYPE_REL_P50: percentile aggregation P50\n - AGGREGATION_TYPE_REL_P75: percentile aggregation P75\n - AGGREGATION_TYPE_REL_P80: percentile aggregation P80\n - AGGREGATION_TYPE_REL_P90: percentile aggregation P90\n - AGGREGATION_TYPE_REL_P98: percentile aggregation P98\n - AGGREGATION_TYPE_REL_P99: percentile aggregation P99\n - AGGREGATION_TYPE_REL_MAX: maximum\n - AGGREGATION_TYPE_REL_MIN: minimum"
+    },
+    "v202505EventPolicyLevelSettings": {
+      "type": "object",
+      "properties": {
+        "filters": {
+          "$ref": "#/definitions/v202505PolicyDimensionFilters",
+          "description": "The filters matched against the event to trigger the policy.",
+          "required": [
+            "filters"
+          ]
+        }
+      },
+      "required": [
+        "filters"
+      ]
+    },
+    "v202505EventPolicySettings": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/EventPolicySettingsEventType",
+          "description": "The type of event to trigger the policy.",
+          "required": [
+            "type"
+          ]
+        },
+        "dimensions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The dimensions of the event to trigger the policy.",
+          "required": [
+            "dimensions"
+          ]
+        },
+        "filters": {
+          "$ref": "#/definitions/v202505PolicyFilters",
+          "description": "The filters matched against the event to trigger the policy.",
+          "required": [
+            "filters"
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "dimensions",
+        "filters"
+      ]
+    },
+    "v202505FlowPolicyLevelSettings": {
+      "type": "object",
+      "properties": {
+        "conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FlowPolicyLevelSettingsConditions"
+          },
+          "description": "The conditions of the policy level settings.",
+          "required": [
+            "conditions"
+          ]
+        },
+        "activation": {
+          "$ref": "#/definitions/FlowPolicyLevelSettingsActivationSettings",
+          "description": "The rolling window activation settings of the policy level settings.",
+          "required": [
+            "activation"
+          ]
+        },
+        "mitigationAssociations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FlowPolicyLevelSettingsMitigationAssociation"
+          },
+          "description": "The mitigation associations of the given policy level (when alert is activated with the level severity, these mitigation methods will be applied).",
+          "required": [
+            "mitigation_associations"
+          ]
+        }
+      },
+      "required": [
+        "conditions",
+        "activation",
+        "mitigationAssociations"
+      ]
+    },
+    "v202505FlowPolicySettings": {
+      "type": "object",
+      "properties": {
+        "dataset": {
+          "$ref": "#/definitions/v202505FlowPolicySettingsDatasetConfig",
+          "description": "The dataset configuration for the policy.",
+          "required": [
+            "dataset"
+          ]
+        },
+        "evaluation": {
+          "$ref": "#/definitions/v202505FlowPolicySettingsEvaluationConfig",
+          "description": "The evaluation configuration for the policy.",
+          "required": [
+            "evaluation"
+          ]
+        },
+        "baseline": {
+          "$ref": "#/definitions/FlowPolicySettingsBaselineConfig",
+          "description": "The baseline configuration for the policy.",
+          "required": [
+            "baseline"
+          ]
+        }
+      },
+      "required": [
+        "dataset",
+        "evaluation",
+        "baseline"
+      ]
+    },
+    "v202505FlowPolicySettingsDatasetConfig": {
+      "type": "object",
+      "properties": {
+        "sources": {
+          "$ref": "#/definitions/v202505PolicyDataSources",
+          "description": "The device sources of the dataset.",
+          "required": [
+            "sources"
+          ]
+        },
+        "filters": {
+          "$ref": "#/definitions/v202505PolicyFilters",
+          "description": "The filters of the dataset. Effectively this is combined with the device sources.",
+          "required": [
+            "filters"
+          ]
+        },
+        "dimensions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The dimensions of the policy used to create alert keys for activated alerts.",
+          "required": [
+            "dimensions"
+          ]
+        },
+        "metrics": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The metrics of the dataset that can be used for policy threshold conditions. Metrics are also provided with the activated alert context information",
+          "required": [
+            "metrics"
+          ]
+        }
+      },
+      "required": [
+        "sources",
+        "filters",
+        "dimensions",
+        "metrics"
+      ]
+    },
+    "v202505FlowPolicySettingsEvaluationConfig": {
+      "type": "object",
+      "properties": {
+        "frequency": {
+          "type": "string",
+          "default": "60s",
+          "description": "The frequency of the policy evaluation, also known as the policy window length.",
+          "required": [
+            "frequency"
+          ]
+        },
+        "keyCount": {
+          "type": "string",
+          "format": "int64",
+          "default": "25",
+          "description": "The number of alert keys tracked per policy window.",
+          "required": [
+            "key_count"
+          ]
+        }
+      },
+      "required": [
+        "frequency",
+        "keyCount"
+      ]
+    },
+    "v202505NmsActivateOrClearConditions": {
+      "type": "object",
+      "properties": {
+        "connector": {
+          "$ref": "#/definitions/v202505NmsConditionConnector"
+        },
+        "conditionGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202505NmsConditionGroup"
+          }
+        }
+      }
+    },
+    "v202505NmsCondition": {
+      "type": "object",
+      "properties": {
+        "measurement": {
+          "type": "string"
+        },
+        "metric": {
+          "type": "string"
+        },
+        "threshold": {
+          "$ref": "#/definitions/v202505NmsThresholdCondition"
+        },
+        "stateChange": {
+          "$ref": "#/definitions/v202505NmsStateChangeCondition"
+        },
+        "stateInCondition": {
+          "$ref": "#/definitions/v202505NmsStateSet"
+        }
+      }
+    },
+    "v202505NmsConditionConnector": {
+      "type": "string",
+      "enum": [
+        "NMS_CONDITION_CONNECTOR_UNSPECIFIED",
+        "NMS_CONDITION_CONNECTOR_ANY",
+        "NMS_CONDITION_CONNECTOR_ALL"
+      ],
+      "default": "NMS_CONDITION_CONNECTOR_UNSPECIFIED",
+      "title": "- NMS_CONDITION_CONNECTOR_ANY: Any of the conditions must be true\n - NMS_CONDITION_CONNECTOR_ALL: All of the conditions must be true"
+    },
+    "v202505NmsConditionGroup": {
+      "type": "object",
+      "properties": {
+        "connector": {
+          "$ref": "#/definitions/v202505NmsConditionConnector"
+        },
+        "not": {
+          "type": "boolean"
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202505NmsCondition"
+          }
+        },
+        "conditionGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202505NmsConditionGroup"
+          }
+        }
+      }
+    },
+    "v202505NmsConditionOperator": {
+      "type": "string",
+      "enum": [
+        "NMS_CONDITION_OPERATOR_UNSPECIFIED",
+        "NMS_CONDITION_OPERATOR_EQUALS",
+        "NMS_CONDITION_OPERATOR_LESS_THAN",
+        "NMS_CONDITION_OPERATOR_GREATER_THAN",
+        "NMS_CONDITION_OPERATOR_LESS_THAN_OR_EQUALS",
+        "NMS_CONDITION_OPERATOR_GREATER_THAN_OR_EQUALS"
+      ],
+      "default": "NMS_CONDITION_OPERATOR_UNSPECIFIED",
+      "title": "- NMS_CONDITION_OPERATOR_EQUALS: Equals\n - NMS_CONDITION_OPERATOR_LESS_THAN: Less than\n - NMS_CONDITION_OPERATOR_GREATER_THAN: Greater than\n - NMS_CONDITION_OPERATOR_LESS_THAN_OR_EQUALS: Less than or equals\n - NMS_CONDITION_OPERATOR_GREATER_THAN_OR_EQUALS: Greater than or equals"
+    },
+    "v202505NmsPolicyLevelSettings": {
+      "type": "object",
+      "properties": {
+        "activate": {
+          "$ref": "#/definitions/v202505NmsActivateOrClearConditions"
+        },
+        "clearType": {
+          "$ref": "#/definitions/NmsPolicyLevelSettingsClearType"
+        },
+        "conditional": {
+          "$ref": "#/definitions/v202505NmsActivateOrClearConditions"
+        }
+      }
+    },
+    "v202505NmsPolicySettings": {
+      "type": "object",
+      "properties": {
+        "dataset": {
+          "$ref": "#/definitions/v202505NmsPolicySettingsDatasetConfig",
+          "title": "stay consistent with flow"
+        },
+        "evaluation": {
+          "$ref": "#/definitions/v202505NmsPolicySettingsEvaluationConfig"
+        }
+      }
+    },
+    "v202505NmsPolicySettingsDatasetConfig": {
+      "type": "object",
+      "properties": {
+        "sources": {
+          "$ref": "#/definitions/v202505PolicyDataSources"
+        },
+        "filters": {
+          "$ref": "#/definitions/v202505PolicyFilters"
+        },
+        "measurements": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "customDimensions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v202505NmsPolicySettingsEvaluationConfig": {
+      "type": "object",
+      "properties": {
+        "activationDelay": {
+          "type": "string"
+        },
+        "clearanceDelay": {
+          "type": "string"
+        }
+      }
+    },
+    "v202505NmsStateChangeCondition": {
+      "type": "object",
+      "properties": {
+        "from": {
+          "$ref": "#/definitions/v202505NmsStateSet"
+        },
+        "to": {
+          "$ref": "#/definitions/v202505NmsStateSet"
+        }
+      }
+    },
+    "v202505NmsStateSet": {
+      "type": "object",
+      "properties": {
+        "not": {
+          "type": "boolean"
+        },
+        "states": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v202505NmsThresholdCondition": {
+      "type": "object",
+      "properties": {
+        "operator": {
+          "$ref": "#/definitions/v202505NmsConditionOperator"
+        },
+        "conditionValue": {
+          "type": "string"
+        }
+      }
+    },
+    "v202505NotificationChannelAssociation": {
+      "type": "object",
+      "properties": {
+        "channelId": {
+          "type": "string",
+          "description": "The ID of the notification channel.",
+          "required": [
+            "channel_id"
+          ]
+        }
+      },
+      "required": [
+        "channelId"
+      ]
+    },
+    "v202505Policy": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "$ref": "#/definitions/v202505Source",
+          "description": "The source (type and ID) of the alerting policy.",
+          "readOnly": true
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The time when the policy was created.",
+          "readOnly": true
+        },
+        "modifiedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The time when the policy was last modified.",
+          "readOnly": true
+        },
+        "createdBy": {
+          "type": "string",
+          "description": "The user who created the policy.",
+          "readOnly": true
+        },
+        "modifiedBy": {
+          "type": "string",
+          "description": "The user who last modified the policy.",
+          "readOnly": true
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the policy.",
+          "readOnly": true
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of the policy.",
+          "readOnly": true
+        },
+        "enabled": {
+          "type": "boolean",
+          "description": "Whether the policy is enabled.",
+          "readOnly": true
+        },
+        "levels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PolicyPolicyLevel"
+          },
+          "description": "The policy levels configuration.",
+          "readOnly": true
+        },
+        "flow": {
+          "$ref": "#/definitions/v202505FlowPolicySettings",
+          "description": "Flow policy settings."
+        },
+        "nms": {
+          "$ref": "#/definitions/v202505NmsPolicySettings",
+          "description": "NMS policy settings."
+        },
+        "event": {
+          "$ref": "#/definitions/v202505EventPolicySettings",
+          "description": "Event policy settings."
+        },
+        "hasErrors": {
+          "type": "boolean",
+          "description": "Whether the policy has errors in the run-time.",
+          "readOnly": true
+        },
+        "lastError": {
+          "$ref": "#/definitions/PolicyPolicyErrorInfo",
+          "description": "Information about the last error that occurred with the policy.",
+          "readOnly": true
+        }
+      }
+    },
+    "v202505PolicyDataSources": {
+      "type": "object",
+      "properties": {
+        "allDevices": {
+          "type": "boolean",
+          "description": "If true, all devices traffic will be included in the policy."
+        },
+        "deviceIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The IDs of the devices to include in the policy. If all_devices is true, this field is ignored. "
+        },
+        "labelIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The IDs of the labels to include in the policy."
+        },
+        "siteIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The IDs of the sites to include in the policy."
+        },
+        "types": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The types of devices to include in the policy."
+        }
+      }
+    },
+    "v202505PolicyDimensionFilters": {
+      "type": "object",
+      "properties": {
+        "conjunctions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PolicyDimensionFiltersConjunction"
+          },
+          "description": "The conjunctions of the policy dimension filters."
+        }
+      }
+    },
+    "v202505PolicyFilters": {
+      "type": "object",
+      "properties": {
+        "not": {
+          "type": "boolean",
+          "default": "false",
+          "description": "If true, the filter will be negated."
+        },
+        "connector": {
+          "$ref": "#/definitions/PolicyFiltersFilterConnector",
+          "description": "The connector (operator) of the filter."
+        },
+        "filters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PolicyFiltersFieldFilter"
+          },
+          "description": "The actual filters of the policy."
+        },
+        "groups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202505PolicyFilters"
+          },
+          "description": "The nested groups of the policy filters."
+        },
+        "saved": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PolicyFiltersSavedFilter"
+          },
+          "description": "The saved filters of the policy. Saved filters are pre-defined filters that can be used in the policy."
+        }
+      }
+    },
+    "v202505PolicyFiltersOperator": {
+      "type": "string",
+      "enum": [
+        "OPERATOR_UNSPECIFIED",
+        "OPERATOR_EQUALS",
+        "OPERATOR_NOT_EQUALS",
+        "OPERATOR_BITWISE_AND",
+        "OPERATOR_BITWISE_OR",
+        "OPERATOR_LESS_THAN",
+        "OPERATOR_GREATER_THAN",
+        "OPERATOR_LESS_THAN_OR_EQUALS",
+        "OPERATOR_GREATER_THAN_OR_EQUALS",
+        "OPERATOR_NOT_CONTAINS",
+        "OPERATOR_CONTAINS",
+        "OPERATOR_NOT_CONTAINS_REGULAR_EXP",
+        "OPERATOR_CONTAINS_REGULAR_EXP",
+        "OPERATOR_NOT_CONTAINS_REGULAR_EXP_STAR",
+        "OPERATOR_CONTAINS_REGULAR_EXP_STAR",
+        "OPERATOR_BITWISE_ANY",
+        "OPERATOR_BITWISE_NONE",
+        "OPERATOR_BITWISE_ALL",
+        "OPERATOR_BITWISE_NOT_ALL",
+        "OPERATOR_EXISTS",
+        "OPERATOR_NOT_EXISTS"
+      ],
+      "default": "OPERATOR_UNSPECIFIED",
+      "title": "- OPERATOR_UNSPECIFIED: TODO: expose only ones used"
+    },
+    "v202505PolicyListFilters": {
+      "type": "object",
+      "properties": {
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202505Source"
+          },
+          "description": "The source policies to list."
+        },
+        "applications": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The policy applications (integrations) to filter by."
+        },
+        "userIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The IDs of the users who created the policies to filter by."
+        },
+        "createdAt": {
+          "$ref": "#/definitions/v202303TimeRange",
+          "description": "The time range for the created time of the policies."
+        },
+        "modifiedAt": {
+          "$ref": "#/definitions/v202303TimeRange",
+          "description": "The time range for the modified time of the policies."
+        }
+      }
+    },
+    "v202505PolicyServiceDisableRequest": {
+      "type": "object",
+      "properties": {
+        "policyType": {
+          "$ref": "#/definitions/v202505PolicyType",
+          "description": "The type of policy to disable.",
+          "required": [
+            "policy_type"
+          ]
+        },
+        "id": {
+          "type": "string",
+          "description": "The ID of the policy to disable.",
+          "required": [
+            "id"
+          ]
+        }
+      },
+      "required": [
+        "policyType",
+        "id"
+      ]
+    },
+    "v202505PolicyServiceDisableResponse": {
+      "type": "object",
+      "properties": {
+        "policy": {
+          "$ref": "#/definitions/v202505Policy",
+          "description": "The alerting policy after being disabled.",
+          "readOnly": true
+        }
+      }
+    },
+    "v202505PolicyServiceEnableRequest": {
+      "type": "object",
+      "properties": {
+        "policyType": {
+          "$ref": "#/definitions/v202505PolicyType",
+          "description": "The type of policy to enable.",
+          "required": [
+            "policy_type"
+          ]
+        },
+        "id": {
+          "type": "string",
+          "description": "The ID of the policy to enable.",
+          "required": [
+            "id"
+          ]
+        }
+      },
+      "required": [
+        "policyType",
+        "id"
+      ]
+    },
+    "v202505PolicyServiceEnableResponse": {
+      "type": "object",
+      "properties": {
+        "policy": {
+          "$ref": "#/definitions/v202505Policy",
+          "description": "The alerting policy after being enabled.",
+          "readOnly": true
+        }
+      }
+    },
+    "v202505PolicyServiceGetResponse": {
+      "type": "object",
+      "properties": {
+        "policy": {
+          "$ref": "#/definitions/v202505Policy",
+          "description": "The alerting policy that was retrieved.",
+          "readOnly": true
+        }
+      }
+    },
+    "v202505PolicyServiceListRequest": {
+      "type": "object",
+      "properties": {
+        "pagination": {
+          "$ref": "#/definitions/typesv202506PaginationConfig",
+          "description": "The pagination configuration for the list request."
+        },
+        "sorting": {
+          "$ref": "#/definitions/typesv202506SortingConfig",
+          "description": "The sorting configuration for the list request."
+        },
+        "filters": {
+          "$ref": "#/definitions/v202505PolicyListFilters",
+          "description": "The policy filters for the list request."
+        }
+      }
+    },
+    "v202505PolicyServiceListResponse": {
+      "type": "object",
+      "properties": {
+        "pagination": {
+          "$ref": "#/definitions/typesv202506PaginationInfo",
+          "description": "The pagination information for the list response.",
+          "readOnly": true
+        },
+        "policies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202505Policy"
+          },
+          "description": "The alerting policies that were found matching the filters.",
+          "readOnly": true
+        }
+      }
+    },
+    "v202505PolicyType": {
+      "type": "string",
+      "enum": [
+        "POLICY_TYPE_UNSPECIFIED",
+        "POLICY_TYPE_AGENT",
+        "POLICY_TYPE_COMPONENT",
+        "POLICY_TYPE_DEVICE",
+        "POLICY_TYPE_EVENT",
+        "POLICY_TYPE_INTERFACE",
+        "POLICY_TYPE_CUSTOM",
+        "POLICY_TYPE_CLOUD",
+        "POLICY_TYPE_PROTECT",
+        "POLICY_TYPE_TRAFFIC",
+        "POLICY_TYPE_KMETRICS"
+      ],
+      "default": "POLICY_TYPE_UNSPECIFIED",
+      "title": "- POLICY_TYPE_AGENT: NMS Agent Policy\n - POLICY_TYPE_COMPONENT: NMS Component Policy\n - POLICY_TYPE_DEVICE: NMS Device Policy\n - POLICY_TYPE_EVENT: NMS Event Policy\n - POLICY_TYPE_INTERFACE: NMS Interface Policy\n - POLICY_TYPE_CUSTOM: NMS Custom Policy\n - POLICY_TYPE_CLOUD: Flow Alerting Cloud Policy\n - POLICY_TYPE_PROTECT: Flow Alerting Protect Policy\n - POLICY_TYPE_TRAFFIC: Flow Alerting Traffic Policy\n - POLICY_TYPE_KMETRICS: Flow Alerting KMetrics Policy"
+    },
+    "v202505Source": {
+      "type": "object",
+      "properties": {
+        "policyType": {
+          "$ref": "#/definitions/v202505PolicyType",
+          "description": "The type of policy.",
+          "required": [
+            "policy_type"
+          ]
+        },
+        "id": {
+          "type": "string",
+          "description": "The ID of the policy, can be integer ID, UUID or any other format.",
+          "required": [
+            "id"
+          ]
+        }
+      },
+      "required": [
+        "policyType",
+        "id"
+      ]
+    }
+  },
+  "securityDefinitions": {
+    "email": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-Email",
+      "in": "header"
+    },
+    "token": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-API-Token",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "email": [],
+      "token": []
+    }
+  ],
+  "externalDocs": {
+    "description": "Kentik Alerts documentation",
+    "url": "https://kb.kentik.com/docs/alerting"
+  }
+}

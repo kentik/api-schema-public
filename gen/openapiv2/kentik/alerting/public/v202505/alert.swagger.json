@@ -1,0 +1,1333 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Kentik Alerting Alerts API",
+    "description": "# Overview\nThe Alerts API provides programmatic access to Kentik's Alerts, which allows the retrieval and basic manual control of alerts.",
+    "version": "v202505",
+    "contact": {
+      "name": "Kentik API Engineering",
+      "url": "https://github.com/kentik/api-schema-public"
+    }
+  },
+  "tags": [
+    {
+      "name": "AlertService"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v202505/alerts": {
+      "post": {
+        "summary": "List Alerts",
+        "description": "Returns an array of alert objects that contain information about individual alerts.",
+        "operationId": "List",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202505AlertServiceListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202505AlertServiceListRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AlertService"
+        ]
+      }
+    },
+    "/v202505/alerts/clear": {
+      "post": {
+        "summary": "Clear Alerts",
+        "description": "Clears alerts.",
+        "operationId": "Clear",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202505AlertServiceClearResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202505AlertServiceClearRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AlertService"
+        ]
+      }
+    },
+    "/v202505/alerts/{id}": {
+      "get": {
+        "summary": "Get Alert",
+        "description": "Returns an alert object that contains information about an individual alert.",
+        "operationId": "Get",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202505AlertServiceGetResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The ID of the alert to get.",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AlertService"
+        ]
+      }
+    },
+    "/v202505/alerts/{id}/ack": {
+      "post": {
+        "summary": "Ack Alert",
+        "description": "Acknowledges an alert.",
+        "operationId": "Ack",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202505AlertServiceAckResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The ID of the alert to acknowledge.",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202505AlertServiceAckRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AlertService"
+        ]
+      }
+    },
+    "/v202505/alerts/{id}/unack": {
+      "post": {
+        "summary": "UnAck Alert",
+        "description": "Unacknowledges an alert (removes the acknowledgement).",
+        "operationId": "UnAck",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202505AlertServiceUnAckResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The ID of the alert to remove the acknowledgement from.",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202505AlertServiceUnAckRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AlertService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "AlertAcknowledgement": {
+      "type": "object",
+      "properties": {
+        "state": {
+          "$ref": "#/definitions/v202505AlertAcknowledgement",
+          "description": "The acknowledgement state of the alert.",
+          "readOnly": true
+        },
+        "ackedByUser": {
+          "type": "string",
+          "description": "The user ID of the user who acknowledged the alert. Present only if the alert has been acknowledged manually.",
+          "readOnly": true
+        },
+        "autoAckId": {
+          "type": "string",
+          "description": "The ID of the auto-ack that acknowledged the alert. Present only if the alert has been auto-acknowledged.",
+          "readOnly": true
+        },
+        "ackedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp of the acknowledgement.",
+          "readOnly": true
+        }
+      }
+    },
+    "FieldBy": {
+      "type": "string",
+      "enum": [
+        "BY_UNSPECIFIED",
+        "BY_ID",
+        "BY_NAME",
+        "BY_CREATED_AT",
+        "BY_UPDATED_AT",
+        "BY_SEVERITY",
+        "BY_STATUS",
+        "BY_POLICY_TYPE",
+        "BY_APPLICATION",
+        "BY_START_TIME",
+        "BY_END_TIME",
+        "BY_ALARM_STATE",
+        "BY_ALARM_POLICY_NAME",
+        "BY_ALARM_PRIMARY_DIMENSION"
+      ],
+      "default": "BY_UNSPECIFIED"
+    },
+    "FlowContextActivationStatus": {
+      "type": "string",
+      "enum": [
+        "ACTIVATION_STATUS_UNSPECIFIED",
+        "ACTIVATION_STATUS_NOT_USED_BASELINE",
+        "ACTIVATION_STATUS_BASELINE_MISSING_SKIP",
+        "ACTIVATION_STATUS_BASELINE_MISSING_TRIGGER",
+        "ACTIVATION_STATUS_BASELINE_USED_FOUND",
+        "ACTIVATION_STATUS_BASELINE_MISSING_DEFAULT",
+        "ACTIVATION_STATUS_BASELINE_MISSING_LOWEST",
+        "ACTIVATION_STATUS_BASELINE_MISSING_HIGHEST",
+        "ACTIVATION_STATUS_BASELINE_NOT_FOUND_EXISTS",
+        "ACTIVATION_STATUS_CURRENT_MISSING_SKIP",
+        "ACTIVATION_STATUS_CURRENT_MISSING_TRIGGER",
+        "ACTIVATION_STATUS_CURRENT_USED_FOUND",
+        "ACTIVATION_STATUS_CURRENT_MISSING_DEFAULT",
+        "ACTIVATION_STATUS_CURRENT_MISSING_LOWEST",
+        "ACTIVATION_STATUS_CURRENT_MISSING_HIGHEST",
+        "ACTIVATION_STATUS_CURRENT_NOT_FOUND_EXISTS",
+        "ACTIVATION_STATUS_BASELINE_MISSING_DEFAULT_INSTEAD_OF_LOWEST",
+        "ACTIVATION_STATUS_BASELINE_MISSING_DEFAULT_INSTEAD_OF_HIGHEST",
+        "ACTIVATION_STATUS_CURRENT_MISSING_DEFAULT_INSTEAD_OF_LOWEST",
+        "ACTIVATION_STATUS_CURRENT_MISSING_DEFAULT_INSTEAD_OF_HIGHEST"
+      ],
+      "default": "ACTIVATION_STATUS_UNSPECIFIED",
+      "title": "- ACTIVATION_STATUS_NOT_USED_BASELINE: baseline for this alert key was not used (e.g. policy configuration is not using baseline)\n - ACTIVATION_STATUS_BASELINE_MISSING_SKIP: baseline for this alert key was missing, and the fallback is to just skip\n - ACTIVATION_STATUS_BASELINE_MISSING_TRIGGER: baseline for this alert key was missing, and the fallback is to trigger the alert\n - ACTIVATION_STATUS_BASELINE_USED_FOUND: baseline for this alert key was valid and hence used\n - ACTIVATION_STATUS_BASELINE_MISSING_DEFAULT: baseline for this alert key was missing and default value was used\n - ACTIVATION_STATUS_BASELINE_MISSING_LOWEST: baseline for this alert key was missing and lowest baseline value was used\n - ACTIVATION_STATUS_BASELINE_MISSING_HIGHEST: baseline for this alert key was missing and highest baseline value was used\n - ACTIVATION_STATUS_BASELINE_NOT_FOUND_EXISTS: baseline for this alert key was missing and this policy wants to trigger the alert in such case\n - ACTIVATION_STATUS_CURRENT_MISSING_SKIP: current value for this alert key was missing, and the fallback is to just skip\n - ACTIVATION_STATUS_CURRENT_MISSING_TRIGGER: current value for this alert key was missing, and the fallback is to trigger the alert\n - ACTIVATION_STATUS_CURRENT_USED_FOUND: current value for this alert key was valid and hence used\n - ACTIVATION_STATUS_CURRENT_MISSING_DEFAULT: current value for this alert key was missing and default value was used\n - ACTIVATION_STATUS_CURRENT_MISSING_LOWEST: current value for this alert key was missing and lowest current traffic value was used\n - ACTIVATION_STATUS_CURRENT_MISSING_HIGHEST: current value for this alert key was missing and highest current traffic value was used\n - ACTIVATION_STATUS_CURRENT_NOT_FOUND_EXISTS: current value for this alert key was missing and this policy wants to trigger the alert in such case\n - ACTIVATION_STATUS_BASELINE_MISSING_DEFAULT_INSTEAD_OF_LOWEST: baseline for this alert key was missing and no other value was found, so default value was used instead of lowest baseline value\n - ACTIVATION_STATUS_BASELINE_MISSING_DEFAULT_INSTEAD_OF_HIGHEST: baseline for this alert key was missing and no other value was found, so default value was used instead of highest baseline value\n - ACTIVATION_STATUS_CURRENT_MISSING_DEFAULT_INSTEAD_OF_LOWEST: current value for this alert key was missing and no other value was found, so default value was used instead of lowest current traffic value\n - ACTIVATION_STATUS_CURRENT_MISSING_DEFAULT_INSTEAD_OF_HIGHEST: current value for this alert key was missing and no other value was found, so default value was used instead of highest current traffic value"
+    },
+    "FlowContextAlertKeyDetails": {
+      "type": "object",
+      "properties": {
+        "device": {
+          "$ref": "#/definitions/FlowContextDeviceDetails",
+          "description": "The device details of the alert key.",
+          "readOnly": true
+        },
+        "interface": {
+          "$ref": "#/definitions/FlowContextInterfaceDetails",
+          "description": "The interface details of the alert key.",
+          "readOnly": true
+        },
+        "site": {
+          "$ref": "#/definitions/FlowContextSiteDetails",
+          "description": "The site details of the alert key.",
+          "readOnly": true
+        },
+        "extendedValue": {
+          "type": "string",
+          "description": "The extended value of the alert key.",
+          "readOnly": true
+        }
+      }
+    },
+    "FlowContextDeviceDetails": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The ID of the device.",
+          "readOnly": true
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the device.",
+          "readOnly": true
+        },
+        "type": {
+          "type": "string",
+          "description": "The type of the device (e.g. 'router').",
+          "readOnly": true
+        },
+        "labels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The labels associated with the device.",
+          "readOnly": true
+        }
+      }
+    },
+    "FlowContextInterfaceDetails": {
+      "type": "object",
+      "properties": {
+        "snmpId": {
+          "type": "string",
+          "description": "The SNMP ID of the interface.",
+          "readOnly": true
+        },
+        "snmpAlias": {
+          "type": "string",
+          "description": "The SNMP alias of the interface (e.g. 'eth0').",
+          "readOnly": true
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of the interface.",
+          "readOnly": true
+        },
+        "snmpSpeedMbps": {
+          "type": "string",
+          "format": "int64",
+          "description": "The SNMP speed of the interface in Mbps.",
+          "readOnly": true
+        }
+      }
+    },
+    "FlowContextMetricValue": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the metric value (e.g. 'bytes_in', 'bytes_out', 'packets_in', 'packets_out', etc.).",
+          "readOnly": true
+        },
+        "value": {
+          "type": "number",
+          "format": "double",
+          "description": "The value of the given metric.",
+          "readOnly": true
+        }
+      }
+    },
+    "FlowContextSiteDetails": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The ID of the site.",
+          "readOnly": true
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the site.",
+          "readOnly": true
+        },
+        "latitude": {
+          "type": "string",
+          "description": "The geographic latitude of the site."
+        },
+        "longitude": {
+          "type": "string",
+          "description": "The geographic longitude of the site.",
+          "readOnly": true
+        },
+        "location": {
+          "type": "string",
+          "description": "The location of the site (e.g. 'New York, NY').",
+          "readOnly": true
+        },
+        "country": {
+          "type": "string",
+          "description": "The country of the site (e.g. 'United States').",
+          "readOnly": true
+        }
+      }
+    },
+    "NmsContextActivationInfo": {
+      "type": "object",
+      "properties": {
+        "activate": {
+          "$ref": "#/definitions/v202505NmsActivateOrClearConditions"
+        },
+        "severity": {
+          "type": "string"
+        },
+        "clearManual": {
+          "type": "boolean"
+        },
+        "clearUnlessActivated": {
+          "type": "boolean"
+        }
+      }
+    },
+    "NmsContextAlarmMetricMap": {
+      "type": "object",
+      "properties": {
+        "metrics": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      }
+    },
+    "NmsContextAlarmTarget": {
+      "type": "object",
+      "properties": {
+        "fields": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "tags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "NmsContextDatasetInfo": {
+      "type": "object",
+      "properties": {
+        "customType": {
+          "type": "boolean"
+        },
+        "dimensions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "entityType": {
+          "type": "string"
+        },
+        "measurements": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "SortingConfigField": {
+      "type": "object",
+      "properties": {
+        "by": {
+          "$ref": "#/definitions/FieldBy"
+        },
+        "order": {
+          "$ref": "#/definitions/SortingConfigOrder"
+        }
+      }
+    },
+    "SortingConfigOrder": {
+      "type": "string",
+      "enum": [
+        "ORDER_UNSPECIFIED",
+        "ORDER_ASCENDING",
+        "ORDER_DESCENDING"
+      ],
+      "default": "ORDER_UNSPECIFIED"
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "typeUrl": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "typesv202506PaginationConfig": {
+      "type": "object",
+      "properties": {
+        "limit": {
+          "type": "string",
+          "format": "uint64",
+          "title": "limit is how many items to return at most"
+        },
+        "offset": {
+          "type": "string",
+          "format": "uint64",
+          "title": "offset is the offset into the list of items"
+        },
+        "includeTotalCount": {
+          "type": "boolean",
+          "title": "include_total_count is a flag to enforce API service to include the total count of items in the response,\nwhich in some cases may be very expensive to fetch"
+        }
+      }
+    },
+    "typesv202506PaginationInfo": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "string",
+          "format": "uint64",
+          "description": "total_count is the total number of items in the list.\nIt may be provided optionally if include_total_count is set to false.\nIt will be provided always if include_total_count is set to true."
+        },
+        "hasMoreResults": {
+          "type": "boolean",
+          "title": "has_more_results is a flag to indicate if there are more results to fetch\nIt may be provided instead of total_count if include_total_count is set to false and it would be very expensive to fetch the total count"
+        }
+      }
+    },
+    "typesv202506SortingConfig": {
+      "type": "object",
+      "properties": {
+        "fields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SortingConfigField"
+          }
+        }
+      }
+    },
+    "v202303AttributeFilter": {
+      "type": "object",
+      "properties": {
+        "not": {
+          "type": "boolean",
+          "title": "Please note attribute filter operates on strings or stringified values"
+        },
+        "empty": {
+          "type": "boolean",
+          "description": "Indicates that we want to check for an empty value.  To use empty this value MUST be set to\ntrue.  Setting not to true enables us to look for \"not-empty\"."
+        },
+        "equals": {
+          "type": "string"
+        },
+        "startsWith": {
+          "type": "string"
+        },
+        "endsWith": {
+          "type": "string"
+        },
+        "contains": {
+          "type": "string"
+        },
+        "in": {
+          "$ref": "#/definitions/v202303AttributeFilterStringArray"
+        },
+        "any": {
+          "type": "boolean",
+          "description": "The equivalent of: value=\"*.  To use any this value MUST be set to true. Setting not to true\nenables us to look for \"not-anything\", but that predicate does not make much sense."
+        }
+      }
+    },
+    "v202303AttributeFilterStringArray": {
+      "type": "object",
+      "properties": {
+        "values": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v202303KeyValueFilter": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "$ref": "#/definitions/v202303SimpleAttributeFilter",
+          "description": "key filtering definition is limited to the SimpleAttribute filter because the \"not\" and \"empty\"\nfilter options for Attribute filter do not make logical sense for keys."
+        },
+        "value": {
+          "$ref": "#/definitions/v202303AttributeFilter"
+        }
+      }
+    },
+    "v202303MultiAttributeFilter": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/v202303AttributeFilter"
+          }
+        },
+        "filters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202303KeyValueFilter"
+          }
+        }
+      }
+    },
+    "v202303Severity": {
+      "type": "string",
+      "enum": [
+        "SEVERITY_UNSPECIFIED",
+        "SEVERITY_CLEAR",
+        "SEVERITY_MINOR",
+        "SEVERITY_WARNING",
+        "SEVERITY_MAJOR",
+        "SEVERITY_SEVERE",
+        "SEVERITY_CRITICAL"
+      ],
+      "default": "SEVERITY_UNSPECIFIED"
+    },
+    "v202303SimpleAttributeFilter": {
+      "type": "object",
+      "properties": {
+        "equals": {
+          "type": "string"
+        },
+        "startsWith": {
+          "type": "string"
+        },
+        "endsWith": {
+          "type": "string"
+        },
+        "contains": {
+          "type": "string"
+        },
+        "in": {
+          "$ref": "#/definitions/v202303SimpleAttributeFilterStringArray"
+        },
+        "any": {
+          "type": "boolean",
+          "description": "The equivalent of: value=\"*.  To use any this value MUST be set to true."
+        }
+      }
+    },
+    "v202303SimpleAttributeFilterStringArray": {
+      "type": "object",
+      "properties": {
+        "values": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v202303TimeRange": {
+      "type": "object",
+      "properties": {
+        "start": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "end": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "v202505Alert": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The ID (UUID format) of the alert.",
+          "readOnly": true
+        },
+        "source": {
+          "$ref": "#/definitions/v202505Source",
+          "description": "The source policy of the alert.",
+          "readOnly": true
+        },
+        "startTimeAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The start time of the alert.",
+          "readOnly": true
+        },
+        "endTimeAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The end time of the alert.",
+          "readOnly": true
+        },
+        "state": {
+          "$ref": "#/definitions/v202505AlertState",
+          "description": "The current state of the alert.",
+          "readOnly": true
+        },
+        "severity": {
+          "$ref": "#/definitions/v202303Severity",
+          "description": "The current severity of the alert.",
+          "readOnly": true
+        },
+        "highestSeverity": {
+          "$ref": "#/definitions/v202303Severity",
+          "description": "The highest reached severity of the alert.",
+          "readOnly": true
+        },
+        "acknowledgement": {
+          "$ref": "#/definitions/AlertAcknowledgement",
+          "description": "The acknowledgement state of the alert.",
+          "readOnly": true
+        },
+        "eventStartTimeAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp of the first trigger event that caused an alert to eventually activate.",
+          "readOnly": true
+        },
+        "flow": {
+          "$ref": "#/definitions/v202505FlowContext",
+          "description": "The context of the alert for flow alerts.",
+          "readOnly": true
+        },
+        "nms": {
+          "$ref": "#/definitions/v202505NmsContext",
+          "description": "The context of the alert for NMS alerts.",
+          "readOnly": true
+        }
+      }
+    },
+    "v202505AlertAcknowledgement": {
+      "type": "string",
+      "enum": [
+        "ALERT_ACKNOWLEDGEMENT_UNSPECIFIED",
+        "ALERT_ACKNOWLEDGEMENT_REQUIRED",
+        "ALERT_ACKNOWLEDGEMENT_DONE",
+        "ALERT_ACKNOWLEDGEMENT_NOT_ACKED"
+      ],
+      "default": "ALERT_ACKNOWLEDGEMENT_UNSPECIFIED",
+      "title": "- ALERT_ACKNOWLEDGEMENT_REQUIRED: alert acknowledgement is required (by the policy configuration)\n - ALERT_ACKNOWLEDGEMENT_DONE: alert acknowledgement is done (either manually or automatically)\n - ALERT_ACKNOWLEDGEMENT_NOT_ACKED: alert acknowledgement is not done (no matter if it's required or not)"
+    },
+    "v202505AlertFilters": {
+      "type": "object",
+      "properties": {
+        "severities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202303Severity"
+          },
+          "default": "[]",
+          "description": "The severities of the alerts to list."
+        },
+        "alertIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": "[]",
+          "description": "The IDs of the alerts to list."
+        },
+        "applications": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": "[]",
+          "description": "The applications of the alerts to list. Applications are alerting integrations. It's recommended to use sources instead of applications."
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202505Source"
+          },
+          "default": "[]",
+          "description": "The source policies of the alerts to list."
+        },
+        "keys": {
+          "$ref": "#/definitions/v202303MultiAttributeFilter",
+          "default": "{}",
+          "description": "The keys filters of the alerts to list."
+        },
+        "states": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202505AlertState"
+          },
+          "default": "[]",
+          "description": "The states of the alerts to list."
+        },
+        "startedAt": {
+          "$ref": "#/definitions/v202303TimeRange",
+          "default": "{}",
+          "description": "The time range of alert start time of the alerts to list."
+        },
+        "endedAt": {
+          "$ref": "#/definitions/v202303TimeRange",
+          "default": "{}",
+          "description": "The time range of alert end time of the alerts to list."
+        },
+        "highestSeverities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202303Severity"
+          },
+          "default": "[]",
+          "description": "The highest reached severities of the alerts to list."
+        },
+        "recentSeverities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202303Severity"
+          },
+          "default": "[]",
+          "description": "The recent severities of the alerts to list."
+        },
+        "ackStates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202505AlertAcknowledgement"
+          },
+          "default": "[]",
+          "description": "The acknowledgement states of the alerts to list."
+        },
+        "activeAt": {
+          "$ref": "#/definitions/v202303TimeRange",
+          "default": "{}",
+          "description": "The time range of alert active time of the alerts to list."
+        },
+        "ackedByUserIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": "[]",
+          "description": "The IDs of the users who acknowledged the alerts to list."
+        },
+        "includeRemovedPolicies": {
+          "type": "boolean",
+          "default": "false",
+          "description": "Whether to include removed policies in the response. If true, the response will include alerts from source that has been removed."
+        },
+        "contextSearch": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": "[]",
+          "description": "The context search terms (e.g. device name, interface name, site name, labels etc.) of the alerts to list."
+        }
+      }
+    },
+    "v202505AlertPhase": {
+      "type": "object",
+      "properties": {
+        "severity": {
+          "$ref": "#/definitions/v202303Severity",
+          "description": "The severity of the alert phase.",
+          "readOnly": true
+        },
+        "startTimeAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The start time of the alert phase.",
+          "readOnly": true
+        },
+        "endTimeAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The end time of the alert phase.",
+          "readOnly": true
+        },
+        "flow": {
+          "$ref": "#/definitions/v202505FlowContext",
+          "description": "The context of the alert phase for flow alerts.",
+          "readOnly": true
+        },
+        "nms": {
+          "$ref": "#/definitions/v202505NmsContext",
+          "description": "The context of the alert phase for NMS alerts.",
+          "readOnly": true
+        }
+      }
+    },
+    "v202505AlertServiceAckRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The ID of the alert to acknowledge.",
+          "required": [
+            "id"
+          ]
+        },
+        "comment": {
+          "type": "string",
+          "description": "The comment to add to the acknowledgement."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "v202505AlertServiceAckResponse": {
+      "type": "object",
+      "properties": {
+        "alert": {
+          "$ref": "#/definitions/v202505Alert",
+          "description": "The alert object that contains information about an individual alert which has been acknowledged.",
+          "readOnly": true
+        }
+      }
+    },
+    "v202505AlertServiceClearRequest": {
+      "type": "object",
+      "properties": {
+        "alertIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The IDs of the alerts to clear.",
+          "required": [
+            "alert_ids"
+          ]
+        }
+      },
+      "required": [
+        "alertIds"
+      ]
+    },
+    "v202505AlertServiceClearResponse": {
+      "type": "object",
+      "properties": {
+        "clearedAlertIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The IDs of the alerts that have been cleared.",
+          "readOnly": true
+        }
+      }
+    },
+    "v202505AlertServiceGetResponse": {
+      "type": "object",
+      "properties": {
+        "alert": {
+          "$ref": "#/definitions/v202505Alert",
+          "description": "The alert object that contains information about an individual alert.",
+          "readOnly": true
+        },
+        "history": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202505AlertPhase"
+          },
+          "description": "The history of the alert.",
+          "readOnly": true
+        }
+      }
+    },
+    "v202505AlertServiceListRequest": {
+      "type": "object",
+      "properties": {
+        "pagination": {
+          "$ref": "#/definitions/typesv202506PaginationConfig",
+          "default": "{\"limit\": 100, \"offset\": 0, \"include_total_count\": false}",
+          "description": "The pagination configuration for the alert list."
+        },
+        "sorting": {
+          "$ref": "#/definitions/typesv202506SortingConfig",
+          "default": "{\"fields\": [{\"by\": \"BY_START_TIME\", \"order\": \"ORDER_DESCENDING\"}]}",
+          "description": "The sorting configuration for the alert list."
+        },
+        "filters": {
+          "$ref": "#/definitions/v202505AlertFilters",
+          "default": "{}",
+          "description": "The filter criteria required to match alerts for listing. All provided filters are combined with AND operator."
+        }
+      }
+    },
+    "v202505AlertServiceListResponse": {
+      "type": "object",
+      "properties": {
+        "pagination": {
+          "$ref": "#/definitions/typesv202506PaginationInfo",
+          "description": "The pagination information for the alert list.",
+          "readOnly": true
+        },
+        "alerts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202505Alert"
+          },
+          "description": "The alerts result set.",
+          "readOnly": true
+        }
+      }
+    },
+    "v202505AlertServiceUnAckRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The ID of the alert to remove the acknowledgement from.",
+          "required": [
+            "id"
+          ]
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "v202505AlertServiceUnAckResponse": {
+      "type": "object",
+      "properties": {
+        "alert": {
+          "$ref": "#/definitions/v202505Alert",
+          "description": "The alert object that contains information about an individual alert which has been unacknowledged.",
+          "readOnly": true
+        }
+      }
+    },
+    "v202505AlertState": {
+      "type": "string",
+      "enum": [
+        "ALERT_STATE_UNSPECIFIED",
+        "ALERT_STATE_CLEAR",
+        "ALERT_STATE_ACTIVE"
+      ],
+      "default": "ALERT_STATE_UNSPECIFIED",
+      "title": "- ALERT_STATE_CLEAR: alert is cleared, no longer active\n - ALERT_STATE_ACTIVE: alert is active"
+    },
+    "v202505FlowContext": {
+      "type": "object",
+      "properties": {
+        "metricValues": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FlowContextMetricValue"
+          },
+          "description": "The metric values of the alert determined by the policy configuration.",
+          "readOnly": true
+        },
+        "activationStatus": {
+          "$ref": "#/definitions/FlowContextActivationStatus",
+          "description": "The activation status of the alert referring to potential use of baseline values.",
+          "readOnly": true
+        },
+        "baselineValue": {
+          "type": "number",
+          "format": "double",
+          "description": "The baseline value used when activating the alert.",
+          "readOnly": true
+        },
+        "alertKeyDetails": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/FlowContextAlertKeyDetails"
+          },
+          "description": "The alert key details of the alert: each key might be expanded into multiple details.",
+          "readOnly": true
+        }
+      }
+    },
+    "v202505NmsActivateOrClearConditions": {
+      "type": "object",
+      "properties": {
+        "connector": {
+          "$ref": "#/definitions/v202505NmsConditionConnector"
+        },
+        "conditionGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202505NmsConditionGroup"
+          }
+        }
+      }
+    },
+    "v202505NmsCondition": {
+      "type": "object",
+      "properties": {
+        "measurement": {
+          "type": "string"
+        },
+        "metric": {
+          "type": "string"
+        },
+        "threshold": {
+          "$ref": "#/definitions/v202505NmsThresholdCondition"
+        },
+        "stateChange": {
+          "$ref": "#/definitions/v202505NmsStateChangeCondition"
+        },
+        "stateInCondition": {
+          "$ref": "#/definitions/v202505NmsStateSet"
+        }
+      }
+    },
+    "v202505NmsConditionConnector": {
+      "type": "string",
+      "enum": [
+        "NMS_CONDITION_CONNECTOR_UNSPECIFIED",
+        "NMS_CONDITION_CONNECTOR_ANY",
+        "NMS_CONDITION_CONNECTOR_ALL"
+      ],
+      "default": "NMS_CONDITION_CONNECTOR_UNSPECIFIED",
+      "title": "- NMS_CONDITION_CONNECTOR_ANY: Any of the conditions must be true\n - NMS_CONDITION_CONNECTOR_ALL: All of the conditions must be true"
+    },
+    "v202505NmsConditionGroup": {
+      "type": "object",
+      "properties": {
+        "connector": {
+          "$ref": "#/definitions/v202505NmsConditionConnector"
+        },
+        "not": {
+          "type": "boolean"
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202505NmsCondition"
+          }
+        },
+        "conditionGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202505NmsConditionGroup"
+          }
+        }
+      }
+    },
+    "v202505NmsConditionOperator": {
+      "type": "string",
+      "enum": [
+        "NMS_CONDITION_OPERATOR_UNSPECIFIED",
+        "NMS_CONDITION_OPERATOR_EQUALS",
+        "NMS_CONDITION_OPERATOR_LESS_THAN",
+        "NMS_CONDITION_OPERATOR_GREATER_THAN",
+        "NMS_CONDITION_OPERATOR_LESS_THAN_OR_EQUALS",
+        "NMS_CONDITION_OPERATOR_GREATER_THAN_OR_EQUALS"
+      ],
+      "default": "NMS_CONDITION_OPERATOR_UNSPECIFIED",
+      "title": "- NMS_CONDITION_OPERATOR_EQUALS: Equals\n - NMS_CONDITION_OPERATOR_LESS_THAN: Less than\n - NMS_CONDITION_OPERATOR_GREATER_THAN: Greater than\n - NMS_CONDITION_OPERATOR_LESS_THAN_OR_EQUALS: Less than or equals\n - NMS_CONDITION_OPERATOR_GREATER_THAN_OR_EQUALS: Greater than or equals"
+    },
+    "v202505NmsContext": {
+      "type": "object",
+      "properties": {
+        "activationInfo": {
+          "$ref": "#/definitions/NmsContextActivationInfo"
+        },
+        "datasetInfo": {
+          "$ref": "#/definitions/NmsContextDatasetInfo"
+        },
+        "targets": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/NmsContextAlarmTarget"
+          }
+        },
+        "metricValues": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/NmsContextAlarmMetricMap"
+          }
+        },
+        "previousMetricValues": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/NmsContextAlarmMetricMap"
+          }
+        },
+        "device": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "groupKey": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "AlarmGroupKey - for example: {device_id: 123, ifindex: 42} for an interface alarm OR {agent_id: 12} for an agent alarm\nsub-set of dimensions which all matches should include"
+        }
+      },
+      "title": "in the comments are evm equivalents"
+    },
+    "v202505NmsStateChangeCondition": {
+      "type": "object",
+      "properties": {
+        "from": {
+          "$ref": "#/definitions/v202505NmsStateSet"
+        },
+        "to": {
+          "$ref": "#/definitions/v202505NmsStateSet"
+        }
+      }
+    },
+    "v202505NmsStateSet": {
+      "type": "object",
+      "properties": {
+        "not": {
+          "type": "boolean"
+        },
+        "states": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v202505NmsThresholdCondition": {
+      "type": "object",
+      "properties": {
+        "operator": {
+          "$ref": "#/definitions/v202505NmsConditionOperator"
+        },
+        "conditionValue": {
+          "type": "string"
+        }
+      }
+    },
+    "v202505PolicyType": {
+      "type": "string",
+      "enum": [
+        "POLICY_TYPE_UNSPECIFIED",
+        "POLICY_TYPE_AGENT",
+        "POLICY_TYPE_COMPONENT",
+        "POLICY_TYPE_DEVICE",
+        "POLICY_TYPE_EVENT",
+        "POLICY_TYPE_INTERFACE",
+        "POLICY_TYPE_CUSTOM",
+        "POLICY_TYPE_CLOUD",
+        "POLICY_TYPE_PROTECT",
+        "POLICY_TYPE_TRAFFIC",
+        "POLICY_TYPE_KMETRICS"
+      ],
+      "default": "POLICY_TYPE_UNSPECIFIED",
+      "title": "- POLICY_TYPE_AGENT: NMS Agent Policy\n - POLICY_TYPE_COMPONENT: NMS Component Policy\n - POLICY_TYPE_DEVICE: NMS Device Policy\n - POLICY_TYPE_EVENT: NMS Event Policy\n - POLICY_TYPE_INTERFACE: NMS Interface Policy\n - POLICY_TYPE_CUSTOM: NMS Custom Policy\n - POLICY_TYPE_CLOUD: Flow Alerting Cloud Policy\n - POLICY_TYPE_PROTECT: Flow Alerting Protect Policy\n - POLICY_TYPE_TRAFFIC: Flow Alerting Traffic Policy\n - POLICY_TYPE_KMETRICS: Flow Alerting KMetrics Policy"
+    },
+    "v202505Source": {
+      "type": "object",
+      "properties": {
+        "policyType": {
+          "$ref": "#/definitions/v202505PolicyType",
+          "description": "The type of policy.",
+          "required": [
+            "policy_type"
+          ]
+        },
+        "id": {
+          "type": "string",
+          "description": "The ID of the policy, can be integer ID, UUID or any other format.",
+          "required": [
+            "id"
+          ]
+        }
+      },
+      "required": [
+        "policyType",
+        "id"
+      ]
+    }
+  },
+  "securityDefinitions": {
+    "email": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-Email",
+      "in": "header"
+    },
+    "token": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-API-Token",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "email": [],
+      "token": []
+    }
+  ],
+  "externalDocs": {
+    "description": "Kentik Alerts documentation",
+    "url": "https://kb.kentik.com/docs/alerting"
+  }
+}

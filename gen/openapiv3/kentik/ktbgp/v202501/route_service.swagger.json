@@ -1,0 +1,810 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "kentik/ktbgp/v202501/route_service.proto",
+        "version": "version not set"
+    },
+    "tags": [
+        {
+            "name": "RouteService"
+        }
+    ],
+    "paths": {
+        "/routes/announce": {
+            "post": {
+                "summary": "Announce a BGP route to a specified set of devices",
+                "operationId": "RouteService_Announce",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202501RouteServiceAnnounceResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202501RouteServiceAnnounceRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "RouteService"
+                ]
+            }
+        },
+        "/routes/list": {
+            "post": {
+                "summary": "List active BGP updates for a specified set of devices",
+                "operationId": "RouteService_List",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202501RouteServiceListResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202501RouteServiceListRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "RouteService"
+                ]
+            }
+        },
+        "/routes/withdraw": {
+            "post": {
+                "summary": "Withdraw active BGP updates from devices",
+                "operationId": "RouteService_Withdraw",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202501RouteServiceWithdrawResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202501RouteServiceWithdrawRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "RouteService"
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "typeUrl": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string",
+                        "format": "byte"
+                    }
+                }
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "v202501AdvertStatus": {
+                "type": "string",
+                "enum": [
+                    "ADVERT_STATUS_UNSPECIFIED",
+                    "ADVERT_STATUS_ANNOUNCED",
+                    "ADVERT_STATUS_WITHDRAWN",
+                    "ADVERT_STATUS_NO_SESSION",
+                    "ADVERT_STATUS_FAILED"
+                ],
+                "default": "ADVERT_STATUS_UNSPECIFIED"
+            },
+            "v202501BitwiseOp": {
+                "type": "string",
+                "enum": [
+                    "BITWISE_OP_UNSPECIFIED",
+                    "BITWISE_OP_ANY",
+                    "BITWISE_OP_NONE",
+                    "BITWISE_OP_ALL",
+                    "BITWISE_OP_NOT_ALL"
+                ],
+                "default": "BITWISE_OP_UNSPECIFIED"
+            },
+            "v202501DeviceAdverts": {
+                "type": "object",
+                "properties": {
+                    "deviceId": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "flowspec": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202501FlowspecUpdate"
+                        }
+                    },
+                    "rtbh": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202501RTBHUpdate"
+                        }
+                    }
+                }
+            },
+            "v202501ExtendedCommunityRouteType": {
+                "type": "string",
+                "enum": [
+                    "EXTENDED_COMMUNITY_ROUTE_TYPE_UNSPECIFIED",
+                    "EXTENDED_COMMUNITY_ROUTE_TYPE_TARGET",
+                    "EXTENDED_COMMUNITY_ROUTE_TYPE_ORIGIN"
+                ],
+                "default": "EXTENDED_COMMUNITY_ROUTE_TYPE_UNSPECIFIED"
+            },
+            "v202501FlowspecAction": {
+                "type": "object",
+                "properties": {
+                    "accept": {
+                        "$ref": "#/components/schemas/v202501FlowspecActionAccept"
+                    },
+                    "discard": {
+                        "$ref": "#/components/schemas/v202501FlowspecActionDiscard"
+                    },
+                    "rateBytes": {
+                        "$ref": "#/components/schemas/v202501FlowspecActionTrafficRateBytes"
+                    },
+                    "markDscp": {
+                        "$ref": "#/components/schemas/v202501FlowspecActionMarkDSCP"
+                    },
+                    "rtRedirect": {
+                        "$ref": "#/components/schemas/v202501FlowspecActionRouteTargetRedirect"
+                    },
+                    "ipRedirect": {
+                        "$ref": "#/components/schemas/v202501FlowspecActionIPNextHopRedirect"
+                    },
+                    "actionType": {
+                        "$ref": "#/components/schemas/v202501FlowspecActionTerminalSample"
+                    },
+                    "rtCopy": {
+                        "$ref": "#/components/schemas/v202501FlowspecActionIPNextHopCopy"
+                    },
+                    "regularCommunity": {
+                        "$ref": "#/components/schemas/v202501FlowspecActionRegularCommunity"
+                    },
+                    "extendedCommunity": {
+                        "$ref": "#/components/schemas/v202501FlowspecActionExtendedCommunity"
+                    },
+                    "largeCommunity": {
+                        "$ref": "#/components/schemas/v202501FlowspecActionLargeCommunity"
+                    }
+                }
+            },
+            "v202501FlowspecActionAccept": {
+                "type": "object",
+                "title": "FlowspecActionAccept specifies that the traffic should be accepted.\nhttps://datatracker.ietf.org/doc/html/rfc8955"
+            },
+            "v202501FlowspecActionDiscard": {
+                "type": "object",
+                "description": "FlowspecActionDiscard specifies that the traffic should be discarded.\n\nThis is a special case of FlowspecActionTrafficRateBytes with 0 bytes per second.\nExtended Community type and sub-type: 0x8006\nhttps://datatracker.ietf.org/doc/html/rfc8955#traffic_rate_in_bytes"
+            },
+            "v202501FlowspecActionExtendedCommunity": {
+                "type": "object",
+                "properties": {
+                    "routeType": {
+                        "$ref": "#/components/schemas/v202501ExtendedCommunityRouteType"
+                    },
+                    "asn1": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "asn2": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                },
+                "title": "FlowspecActionExtendedCommunity\nThe attribute consists of a set of \"extended communities\".  \nAll routes with the Extended Communities attribute belong to \nthe communities listed in the attribute.\nhttps://datatracker.ietf.org/doc/html/rfc4360"
+            },
+            "v202501FlowspecActionIPNextHopCopy": {
+                "type": "object",
+                "properties": {
+                    "nextHop": {
+                        "type": "string",
+                        "title": "IPv4 or IPv6 address to copy to"
+                    }
+                },
+                "description": "FlowspecActionIPNextHopCopy allows the traffic to be copied\nto a specific Next Hop IP address.\n\nExtended Community type and sub-type: 0x0800 with least-significant bit 'C' set to 1\n\nThe target next-hop address refers to the 'Network Address of Next-Hop' field\nof the associated NLRI.\nhttps://datatracker.ietf.org/doc/html/draft-simpson-idr-flowspec-redirect"
+            },
+            "v202501FlowspecActionIPNextHopRedirect": {
+                "type": "object",
+                "properties": {
+                    "nextHop": {
+                        "type": "string",
+                        "title": "IPv4 or IPv6 address to redirect to"
+                    }
+                },
+                "description": "FlowspecActionIPNextHopRedirect allows the traffic to be redirected\nto a specific Next Hop IP address.\n\nExtended Community type and sub-type: 0x0800\n\nThe target next-hop address refers to the 'Network Address of Next-Hop' field\nof the associated NLRI.\nhttps://datatracker.ietf.org/doc/html/draft-simpson-idr-flowspec-redirect"
+            },
+            "v202501FlowspecActionLargeCommunity": {
+                "type": "object",
+                "properties": {
+                    "asn": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "data1": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "data2": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                },
+                "title": "FlowspecActionLargeCommunity\nBGP Large Communities attribute encoded as an unordered set of one or more\ntwelve-octet values, each consisting of a four-octet Global\nAdministrator field and two four-octet operator-defined fields, each\nof which can be used to denote properties or actions significant to\nthe operator of the AS assigning the values.\nhttps://datatracker.ietf.org/doc/html/rfc8092"
+            },
+            "v202501FlowspecActionMarkDSCP": {
+                "type": "object",
+                "properties": {
+                    "dscp": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                },
+                "description": "FlowspecActionMarkDSCP instructs a system to modify the DSCP bits in the IP header.\n\nExtended Community type and sub-type: 0x8009\nhttps://datatracker.ietf.org/doc/html/rfc8955#traffic_marking_subtype"
+            },
+            "v202501FlowspecActionRegularCommunity": {
+                "type": "object",
+                "properties": {
+                    "asn1": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "asn2": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                },
+                "title": "FlowspecActionRegularCommunity\nExtenstion of the two-octed AS numbers as four-octed entinties.\nhttps://datatracker.ietf.org/doc/html/rfc6793"
+            },
+            "v202501FlowspecActionRouteTargetRedirect": {
+                "type": "object",
+                "properties": {
+                    "asn": {
+                        "type": "integer",
+                        "format": "int64",
+                        "title": "If 32 bits are used for the ASN, the route target can only be 16 bits long"
+                    },
+                    "routeTarget": {
+                        "type": "integer",
+                        "format": "int64",
+                        "title": "If 32 bits are used for the route target, the asn can only be 16 bits long"
+                    }
+                },
+                "description": "FlowspecActionRouteTargetRedirect allows the traffic to be redirected to a VRF\nrouting instance that lists the specified route-target in its import policy.\n\nDepending on the contents of the message, this will be encoded as:\nExtended Community type and sub-type: 0x8008 (2-octet ASN)\nor\nExtended Community type and sub-type: 0x8208 (4-octet ASN)\nhttps://datatracker.ietf.org/doc/html/rfc8955#rt_redirect_action_subtype"
+            },
+            "v202501FlowspecActionTerminalSample": {
+                "type": "object",
+                "properties": {
+                    "terminal": {
+                        "type": "boolean"
+                    },
+                    "sample": {
+                        "type": "boolean"
+                    }
+                },
+                "description": "FlowspecActionTerminalSample specifies that the traffic action extended community.\n\nterminal, sample or sample-terminal action types.\nhttps://datatracker.ietf.org/doc/html/rfc8955#name-traffic-action-traffic-acti"
+            },
+            "v202501FlowspecActionTrafficRateBytes": {
+                "type": "object",
+                "properties": {
+                    "bytesPerSecond": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "bytes_per_second must be greater than 0.\n\nSee FlowspecActionDiscard for discarding traffic."
+                    }
+                },
+                "description": "FlowspecActionTrafficRateBytes specifies the maximum traffic rate\nin bytes per second.\n\nExtended Community type and sub-type: 0x8006\nhttps://datatracker.ietf.org/doc/html/rfc8955#traffic_rate_in_bytes"
+            },
+            "v202501FlowspecMatch": {
+                "type": "object",
+                "properties": {
+                    "dstPrefix": {
+                        "type": "string"
+                    },
+                    "srcPrefix": {
+                        "type": "string"
+                    },
+                    "ipProtocol": {
+                        "$ref": "#/components/schemas/v202501NumericFormula"
+                    },
+                    "dstPort": {
+                        "$ref": "#/components/schemas/v202501NumericFormula"
+                    },
+                    "srcPort": {
+                        "$ref": "#/components/schemas/v202501NumericFormula"
+                    },
+                    "icmpType": {
+                        "$ref": "#/components/schemas/v202501NumericFormula"
+                    },
+                    "icmpCode": {
+                        "$ref": "#/components/schemas/v202501NumericFormula"
+                    },
+                    "tcpFlags": {
+                        "$ref": "#/components/schemas/v202501TCPFlagsFormula"
+                    },
+                    "packetLength": {
+                        "$ref": "#/components/schemas/v202501NumericFormula"
+                    },
+                    "dscp": {
+                        "$ref": "#/components/schemas/v202501NumericFormula"
+                    },
+                    "fragments": {
+                        "$ref": "#/components/schemas/v202501FragmentFormula"
+                    }
+                },
+                "description": "FlowspecMatch represents the traffic filtering criteria encoded\nas Flow Specification NLRI as per RFC 8955:\nhttps://datatracker.ietf.org/doc/html/rfc8955#name-dissemination-of-ipv4-flow-\nand other related documents."
+            },
+            "v202501FlowspecUpdate": {
+                "type": "object",
+                "properties": {
+                    "match": {
+                        "$ref": "#/components/schemas/v202501FlowspecMatch"
+                    },
+                    "creationTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "inet": {
+                        "type": "string"
+                    },
+                    "inetType": {
+                        "$ref": "#/components/schemas/v202501InetType"
+                    },
+                    "key": {
+                        "type": "string"
+                    },
+                    "rateBytes": {
+                        "$ref": "#/components/schemas/v202501FlowspecActionTrafficRateBytes"
+                    },
+                    "discard": {
+                        "$ref": "#/components/schemas/v202501FlowspecActionDiscard"
+                    },
+                    "markDscp": {
+                        "$ref": "#/components/schemas/v202501FlowspecActionMarkDSCP"
+                    },
+                    "rtRedirect": {
+                        "$ref": "#/components/schemas/v202501FlowspecActionRouteTargetRedirect"
+                    },
+                    "ipRedirect": {
+                        "$ref": "#/components/schemas/v202501FlowspecActionIPNextHopRedirect"
+                    },
+                    "accept": {
+                        "$ref": "#/components/schemas/v202501FlowspecActionAccept"
+                    },
+                    "actionType": {
+                        "$ref": "#/components/schemas/v202501FlowspecActionTerminalSample"
+                    },
+                    "rtCopy": {
+                        "$ref": "#/components/schemas/v202501FlowspecActionIPNextHopCopy"
+                    },
+                    "regularCommunity": {
+                        "$ref": "#/components/schemas/v202501FlowspecActionRegularCommunity"
+                    },
+                    "extendedCommunity": {
+                        "$ref": "#/components/schemas/v202501FlowspecActionExtendedCommunity"
+                    },
+                    "largeCommunity": {
+                        "$ref": "#/components/schemas/v202501FlowspecActionLargeCommunity"
+                    },
+                    "actions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202501FlowspecAction"
+                        }
+                    },
+                    "terminal": {
+                        "type": "boolean"
+                    },
+                    "sample": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "v202501Fragment": {
+                "type": "string",
+                "enum": [
+                    "FRAGMENT_UNSPECIFIED",
+                    "FRAGMENT_DF",
+                    "FRAGMENT_ISF",
+                    "FRAGMENT_FF",
+                    "FRAGMENT_LF"
+                ],
+                "default": "FRAGMENT_UNSPECIFIED"
+            },
+            "v202501FragmentFormula": {
+                "type": "object",
+                "properties": {
+                    "or": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202501FragmentPredicateGroup"
+                        }
+                    }
+                }
+            },
+            "v202501FragmentPredicate": {
+                "type": "object",
+                "properties": {
+                    "operator": {
+                        "$ref": "#/components/schemas/v202501BitwiseOp"
+                    },
+                    "values": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202501Fragment"
+                        }
+                    }
+                }
+            },
+            "v202501FragmentPredicateGroup": {
+                "type": "object",
+                "properties": {
+                    "and": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202501FragmentPredicate"
+                        }
+                    }
+                }
+            },
+            "v202501InetType": {
+                "type": "string",
+                "enum": [
+                    "INET_TYPE_UNSPECIFIED",
+                    "INET_TYPE_IPV4",
+                    "INET_TYPE_IPV6"
+                ],
+                "default": "INET_TYPE_UNSPECIFIED"
+            },
+            "v202501NumericFormula": {
+                "type": "object",
+                "properties": {
+                    "or": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202501NumericPredicateGroup"
+                        }
+                    }
+                }
+            },
+            "v202501NumericOp": {
+                "type": "string",
+                "enum": [
+                    "NUMERIC_OP_UNSPECIFIED",
+                    "NUMERIC_OP_EQUALS",
+                    "NUMERIC_OP_NOT_EQUALS",
+                    "NUMERIC_OP_LESS_THAN",
+                    "NUMERIC_OP_GREATER_THAN",
+                    "NUMERIC_OP_LESS_THAN_OR_EQUALS",
+                    "NUMERIC_OP_GREATER_THAN_OR_EQUALS"
+                ],
+                "default": "NUMERIC_OP_UNSPECIFIED"
+            },
+            "v202501NumericPredicate": {
+                "type": "object",
+                "properties": {
+                    "operator": {
+                        "$ref": "#/components/schemas/v202501NumericOp"
+                    },
+                    "value": {
+                        "type": "string",
+                        "format": "uint64"
+                    }
+                }
+            },
+            "v202501NumericPredicateGroup": {
+                "type": "object",
+                "properties": {
+                    "and": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202501NumericPredicate"
+                        }
+                    }
+                }
+            },
+            "v202501RTBHAction": {
+                "type": "object",
+                "properties": {
+                    "bgpCommunities": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    "nextHop": {
+                        "type": "string"
+                    },
+                    "localPreference": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "v202501RTBHMatch": {
+                "type": "object",
+                "properties": {
+                    "srcPrefix": {
+                        "type": "string",
+                        "title": "IPv4 or IPv6 CIDR prefix to match"
+                    }
+                }
+            },
+            "v202501RTBHUpdate": {
+                "type": "object",
+                "properties": {
+                    "match": {
+                        "$ref": "#/components/schemas/v202501RTBHMatch"
+                    },
+                    "action": {
+                        "$ref": "#/components/schemas/v202501RTBHAction"
+                    },
+                    "creationTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "inet": {
+                        "type": "string"
+                    },
+                    "inetType": {
+                        "$ref": "#/components/schemas/v202501InetType"
+                    },
+                    "key": {
+                        "type": "string"
+                    }
+                }
+            },
+            "v202501RouteServiceAnnounceRequest": {
+                "type": "object",
+                "properties": {
+                    "deviceIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "format": "uint64"
+                        }
+                    },
+                    "flowspec": {
+                        "$ref": "#/components/schemas/v202501FlowspecUpdate"
+                    },
+                    "rtbh": {
+                        "$ref": "#/components/schemas/v202501RTBHUpdate"
+                    }
+                }
+            },
+            "v202501RouteServiceAnnounceResponse": {
+                "type": "object",
+                "properties": {
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202501UpdateResult"
+                        }
+                    }
+                }
+            },
+            "v202501RouteServiceListRequest": {
+                "type": "object",
+                "properties": {
+                    "filters": {
+                        "$ref": "#/components/schemas/v202501RoutesFilter"
+                    }
+                }
+            },
+            "v202501RouteServiceListResponse": {
+                "type": "object",
+                "properties": {
+                    "result": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202501DeviceAdverts"
+                        }
+                    }
+                }
+            },
+            "v202501RouteServiceWithdrawRequest": {
+                "type": "object",
+                "properties": {
+                    "deviceIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "format": "uint64"
+                        }
+                    },
+                    "withdraw": {
+                        "$ref": "#/components/schemas/v202501Withdraw"
+                    }
+                }
+            },
+            "v202501RouteServiceWithdrawResponse": {
+                "type": "object",
+                "properties": {
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202501UpdateResult"
+                        }
+                    }
+                }
+            },
+            "v202501RoutesFilter": {
+                "type": "object",
+                "properties": {
+                    "deviceIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "format": "uint64"
+                        }
+                    }
+                }
+            },
+            "v202501TCPFlag": {
+                "type": "string",
+                "enum": [
+                    "TCP_FLAG_UNSPECIFIED",
+                    "TCP_FLAG_FIN",
+                    "TCP_FLAG_SYN",
+                    "TCP_FLAG_RST",
+                    "TCP_FLAG_PSH",
+                    "TCP_FLAG_ACK",
+                    "TCP_FLAG_URG",
+                    "TCP_FLAG_ECE",
+                    "TCP_FLAG_CWR"
+                ],
+                "default": "TCP_FLAG_UNSPECIFIED"
+            },
+            "v202501TCPFlagsFormula": {
+                "type": "object",
+                "properties": {
+                    "or": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202501TCPFlagsPredicateGroup"
+                        }
+                    }
+                }
+            },
+            "v202501TCPFlagsPredicate": {
+                "type": "object",
+                "properties": {
+                    "operator": {
+                        "$ref": "#/components/schemas/v202501BitwiseOp"
+                    },
+                    "values": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202501TCPFlag"
+                        }
+                    }
+                }
+            },
+            "v202501TCPFlagsPredicateGroup": {
+                "type": "object",
+                "properties": {
+                    "and": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202501TCPFlagsPredicate"
+                        }
+                    }
+                }
+            },
+            "v202501UpdateResult": {
+                "type": "object",
+                "properties": {
+                    "deviceId": {
+                        "type": "string",
+                        "format": "uint64"
+                    },
+                    "status": {
+                        "$ref": "#/components/schemas/v202501AdvertStatus"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            },
+            "v202501Withdraw": {
+                "type": "object",
+                "properties": {
+                    "flowspec": {
+                        "$ref": "#/components/schemas/v202501FlowspecMatch"
+                    },
+                    "rtbh": {
+                        "$ref": "#/components/schemas/v202501RTBHMatch"
+                    }
+                }
+            }
+        }
+    }
+}

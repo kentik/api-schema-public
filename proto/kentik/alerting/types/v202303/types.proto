@@ -1,0 +1,111 @@
+syntax = "proto3";
+
+package kentik.alerting.types.v202303;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/alerting/types/v202303";
+
+
+import "google/protobuf/timestamp.proto";
+
+enum Severity {
+  SEVERITY_UNSPECIFIED = 0;
+  SEVERITY_CLEAR = 1;
+  SEVERITY_MINOR = 10;
+  SEVERITY_WARNING = 20;
+  SEVERITY_MAJOR = 40;
+  SEVERITY_SEVERE = 70;
+  SEVERITY_CRITICAL = 90;
+}
+
+message MultiAttributeFilter {
+  map<string, AttributeFilter> filter = 1 [deprecated=true];
+  repeated KeyValueFilter filters = 2;
+}
+
+message AttributeFilter {
+  // Please note attribute filter operates on strings or stringified values
+  bool not = 1;
+  oneof value {
+    // Indicates that we want to check for an empty value.  To use empty this value MUST be set to
+    // true.  Setting not to true enables us to look for "not-empty".
+    bool empty = 2;
+
+    string equals = 3;
+    string starts_with = 4;
+    string ends_with = 5;
+    string contains = 6;
+    StringArray in = 7;
+
+    // The equivalent of: value="*.  To use any this value MUST be set to true. Setting not to true
+    // enables us to look for "not-anything", but that predicate does not make much sense.
+    bool any = 8;
+  }
+
+  message StringArray {
+    repeated string values = 1;
+  }
+}
+
+message SimpleAttributeFilter {
+  // Please note simple attribute filter operates on strings or stringified values
+  oneof value {
+    string equals = 3;
+    string starts_with = 4;
+    string ends_with = 5;
+    string contains = 6;
+    StringArray in = 7;
+
+    // The equivalent of: value="*.  To use any this value MUST be set to true.
+    bool any = 8;
+  }
+
+  message StringArray {
+    repeated string values = 1;
+  }
+}
+
+message KeyValueFilter {
+  // key filtering definition is limited to the SimpleAttribute filter because the "not" and "empty"
+  // filter options for Attribute filter do not make logical sense for keys.
+  SimpleAttributeFilter key = 1;
+  AttributeFilter value = 2;
+}
+
+message PaginationConfig {
+  // limit is how many alarms to return at most
+  uint64 limit = 1;
+
+  // offset is the offset into the list of alarms
+  uint64 offset = 2;
+
+  bool include_total_count = 3;
+}
+
+message PaginationInfo {
+  uint64 total_count = 1;
+  bool has_more_results = 2;
+}
+
+message SortingConfig {
+  repeated SortingField fields = 1;
+}
+
+enum SortOrder {
+  SORT_ORDER_UNSPECIFIED = 0;
+  SORT_ORDER_ASCENDING = 1;
+  SORT_ORDER_DESCENDING = 2;
+}
+
+message SortingField {
+  string name = 1;
+  SortOrder order = 2;
+  repeated string values = 3;
+}
+
+message TimeRange {
+  google.protobuf.Timestamp start = 1;
+  google.protobuf.Timestamp end = 2;
+}
+
+message KeyValue {
+  map<string, string> value = 1;
+}

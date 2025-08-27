@@ -1,0 +1,352 @@
+syntax = "proto3";
+
+package kentik.alerting.public.v202505;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/alerting/public/v202505";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+import "kentik/core/v202303/annotations.proto";
+import "kentik/alerting/types/v202303/types.proto";
+import "kentik/alerting/types/v202506/pagination.proto";
+import "kentik/alerting/types/v202506/sorting.proto";
+
+import "kentik/alerting/public/v202505/common.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Kentik Alert Auto-Acking API"
+    version: "v202505"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api-schema-public"
+    }
+    description: "# Overview\n"
+    "The Alerts Auto-Acking API provides programmatic access to Kentik's capabilities of configuring and managing auto-acking of alerts."
+  }
+  external_docs: {
+    url: "https://kb.kentik.com/docs/alerting"
+    description: "Kentik Alerts documentation"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+service AlertAutoAckService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "admin.alerting";
+
+  rpc Create(AlertAutoAckServiceCreateRequest) returns (AlertAutoAckServiceCreateResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.alerting:write";
+    option (google.api.http) = {
+      post: "/v202505/alerts/ack/auto"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "Create"
+      summary: "Create Auto-Ack"
+      description: "Creates a new auto-ack configuration."
+    };
+  }
+
+
+  rpc Get(AlertAutoAckServiceGetRequest) returns (AlertAutoAckServiceGetResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.alerting:read";
+    option (google.api.http) = {
+      get: "/v202505/alerts/ack/auto/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "Get"
+      summary: "Get Auto-Ack"
+      description: "Returns an auto-ack configuration."
+    };
+  }
+
+  rpc List(AlertAutoAckServiceListRequest) returns (AlertAutoAckServiceListResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.alerting:read";
+    option (google.api.http) = {
+      post: "/v202505/alerts/ack/auto/list"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "List"
+      summary: "List Auto-Acks"
+      description: "Returns a list of auto-ack configurations."
+    };
+  }
+
+  rpc Replace(AlertAutoAckServiceReplaceRequest) returns (AlertAutoAckServiceReplaceResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.alerting:write";
+    option (google.api.http) = {
+      patch: "/v202505/alerts/ack/auto/{auto_ack.id}"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "Replace"
+      summary: "Replace Auto-Ack"
+      description: "Replaces an auto-ack configuration."
+    };
+  }
+
+  rpc Delete(AlertAutoAckServiceDeleteRequest) returns (AlertAutoAckServiceDeleteResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.alerting:write";
+    option (google.api.http) = {
+      delete: "/v202505/alerts/ack/auto/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "Delete"
+      summary: "Delete Auto-Ack"
+      description: "Deletes an auto-ack configuration."
+    };
+  }
+}
+
+message AlertAutoAck {
+  string id = 1[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The ID of the auto-ack configuration."
+    }
+  ];
+  string user_id = 2[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The ID of the user who most recently updated the auto-ack configuration."
+    }
+  ];
+  Source source = 3[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The source policy given auto-ack is applied to (its alerts may be auto-acked)."
+    }
+  ];
+  kentik.alerting.types.v202303.KeyValue key = 4[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The alert key the auto-ack configuration is applied to."
+    }
+  ];
+  google.protobuf.Timestamp start_time_at = 5[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The start time when the auto-ack configuration is active. Has to be at least 5 minutes in the future."
+    }
+  ];
+  google.protobuf.Timestamp end_time_at = 6[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The end time when the auto-ack configuration is no longer active."
+    }
+  ];
+  google.protobuf.Timestamp created_at = 7[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The time when the auto-ack configuration was created."
+    }
+  ];
+  google.protobuf.Timestamp modified_at = 8[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The time when the auto-ack configuration was last modified."
+    }
+  ];
+}
+
+message AlertAutoAckServiceCreateRequest {
+  AlertAutoAck auto_ack = 1[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The auto-ack configuration to create."
+    }
+  ];
+}
+
+message AlertAutoAckServiceCreateResponse {
+  AlertAutoAck auto_ack = 1[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The auto-ack configuration that was created."
+    }
+  ];
+}
+
+message AlertAutoAckServiceGetRequest {
+  string id = 1[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The ID of the auto-ack configuration to get."
+    }
+  ];
+}
+
+message AlertAutoAckServiceGetResponse {
+  AlertAutoAck auto_ack = 1[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The auto-ack configuration that was retrieved."
+    }
+  ];
+}
+
+message AlertAutoAckServiceListRequest {
+  kentik.alerting.types.v202506.PaginationConfig pagination = 1[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The pagination configuration for the list request."
+    }
+  ];
+  kentik.alerting.types.v202506.SortingConfig sorting = 2[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The sorting configuration for the list request."
+    }
+  ];
+  AlertAutoAckFilters filters = 3[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The auto-ack filters for the list request."
+    }
+  ];
+}
+
+message AlertAutoAckFilters {
+  repeated string auto_ack_ids = 1[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The IDs of the auto-ack configurations to list."
+    }
+  ];
+  repeated string applications = 2[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The policy applications (integrations) the auto-ack configurations are applied to."
+    }
+  ];
+  repeated Source sources = 3[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The source policies the auto-ack configurations are applied to."
+    }
+  ];
+  repeated kentik.alerting.types.v202303.KeyValue keys = 4[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The alert keys the auto-ack configurations are applied to."
+    }
+  ];
+  repeated string user_ids = 5[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The IDs of the users who created the auto-ack configurations."
+    }
+  ];
+  kentik.alerting.types.v202303.TimeRange created_at = 6[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The time range for the created time of the auto-ack configurations."
+    }
+  ];
+  kentik.alerting.types.v202303.TimeRange modified_at = 7[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The time range for the modified time of the auto-ack configurations."
+    }
+  ];
+  kentik.alerting.types.v202303.TimeRange start_time_at = 8[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The time range for the start time of the auto-ack configurations."
+    }
+  ];
+  kentik.alerting.types.v202303.TimeRange end_time_at = 9[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The time range for the end time of the auto-ack configurations."
+    }
+  ];
+}
+
+message AlertAutoAckServiceListResponse {
+  kentik.alerting.types.v202506.PaginationInfo pagination = 1[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The pagination information for the list response."
+    }
+  ];
+  repeated AlertAutoAck auto_acks = 2[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The auto-ack configurations that were found matching the filters."
+    }
+  ];
+}
+
+message AlertAutoAckServiceReplaceRequest {
+  AlertAutoAck auto_ack = 1[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The auto-ack configuration to replace."
+    }
+  ];
+}
+
+message AlertAutoAckServiceReplaceResponse {
+  AlertAutoAck auto_ack = 1[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Current auto-ack configuration after the replace operation."
+    }
+  ];
+}
+
+message AlertAutoAckServiceDeleteRequest {
+  string id = 1[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The ID of the auto-ack configuration to delete."
+    }
+  ];
+}
+
+message AlertAutoAckServiceDeleteResponse {
+  bool success = 1[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Whether the delete operation was successful."
+    }
+  ];
+}

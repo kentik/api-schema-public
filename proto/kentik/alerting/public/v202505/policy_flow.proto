@@ -1,0 +1,448 @@
+syntax = "proto3";
+
+package kentik.alerting.public.v202505;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/alerting/public/v202505";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/struct.proto";
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+import "kentik/core/v202303/annotations.proto";
+import "kentik/alerting/types/v202303/types.proto";
+
+import "kentik/alerting/public/v202505/common.proto";
+import "kentik/alerting/public/v202505/policy_datasources.proto";
+import "kentik/alerting/public/v202505/policy_filters.proto";
+
+message FlowPolicySettings {
+  DatasetConfig dataset = 1[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The dataset configuration for the policy."
+    }
+  ];
+  EvaluationConfig evaluation = 2[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The evaluation configuration for the policy."
+    }
+  ];
+  BaselineConfig baseline = 3[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The baseline configuration for the policy."
+    }
+  ];
+  // no suppression on policy level is exposed intentionally. use suppressions
+
+  message DatasetConfig {
+    PolicyDataSources sources = 1[
+      (google.api.field_behavior) = REQUIRED,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The device sources of the dataset."
+      }
+    ];
+    PolicyFilters filters = 2[
+      (google.api.field_behavior) = REQUIRED,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The filters of the dataset. Effectively this is combined with the device sources."
+      }
+    ];
+    repeated string dimensions = 3[
+      (google.api.field_behavior) = REQUIRED,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The dimensions of the policy used to create alert keys for activated alerts."
+      }
+    ];
+    repeated string metrics = 4[
+      (google.api.field_behavior) = REQUIRED,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The metrics of the dataset that can be used for policy threshold conditions. Metrics are also provided with the activated alert context information"
+      }
+    ];
+  }
+
+  message EvaluationConfig {
+    google.protobuf.Duration frequency = 1[
+      (google.api.field_behavior) = REQUIRED,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The frequency of the policy evaluation, also known as the policy window length.",
+        default: "60s"
+      }
+    ];
+    int64 key_count = 2[
+      (google.api.field_behavior) = REQUIRED,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The number of alert keys tracked per policy window.",
+        default: "25"
+      }
+    ];
+  }
+
+  message BaselineConfig {
+    // not exposing completeness duration as this does not work
+    int64 stored_key_count = 1[
+      (google.api.field_behavior) = REQUIRED,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The number of alert keys stored in the baseline per policy window.",
+        default: "25"
+      }
+    ];
+    google.protobuf.Duration window_length = 2[
+      (google.api.field_behavior) = REQUIRED,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The length of the entire policy baseline window.",
+        default: "2419200s"
+      }
+    ];
+    google.protobuf.Duration window_start_offset = 3[
+      (google.api.field_behavior) = REQUIRED,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The start offset from now used when calculating the baseline value.",
+        default: "86400s"
+      }
+    ];
+    AggregationType rollup_aggregation = 4[
+      (google.api.field_behavior) = REQUIRED,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The aggregation type used to roll up the baseline value from policy window data into 1-hour baseline values."
+      }
+    ];
+    CompareMode compare_mode = 5[
+      (google.api.field_behavior) = REQUIRED,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The compare mode determining which baseline values are selected to calculate the final baseline value."
+      }
+    ];
+    google.protobuf.Duration neighbourhood_radius = 6[
+      (google.api.field_behavior) = REQUIRED,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The neighbourhood radius used to calculate the neighbourhood value. This is the number of hours before and after the current hour to include in the neighbourhood value calculation."
+      }
+    ];
+    AggregationType neighbourhood_aggregation = 7[
+      (google.api.field_behavior) = REQUIRED,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The aggregation type used to roll up the neighbourhood values taken within the neighbourhood radius."
+      }
+    ];
+    AggregationType final_aggregation = 8[
+      (google.api.field_behavior) = REQUIRED,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The aggregation type used to roll up the final baseline value."
+      }
+    ];
+
+    enum CompareMode {
+      COMPARE_MODE_UNSPECIFIED = 0;
+
+      // pick all previous hours baseline values
+      COMPARE_MODE_PREVIOUS_HOURS = 1;
+
+      // pick all previous days baseline values
+      COMPARE_MODE_PREVIOUS_DAYS = 2;
+
+      // pick previous days baseline values but distinguish weekend days from weekdays
+      COMPARE_MODE_PREVIOUS_DAYS_DISTINGUISH_WEEKENDS = 3;
+
+      // pick all previous weeks baseline values
+      COMPARE_MODE_PREVIOUS_WEEKS = 4;
+    }
+  }
+}
+
+message FlowPolicyLevelSettings {
+  repeated Conditions conditions = 1[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The conditions of the policy level settings."
+    }
+  ];
+  ActivationSettings activation = 2[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The rolling window activation settings of the policy level settings."
+    }
+  ];
+  repeated MitigationAssociation mitigation_associations = 3[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The mitigation associations of the given policy level (when alert is activated with the level severity, these mitigation methods will be applied)."
+    }
+  ];
+  // in future: dimension filters for sub-policies
+
+  message ActivationSettings {
+    int64 match_times = 1[
+      (google.api.field_behavior) = REQUIRED,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The number of times the policy level conditions must be met within the match window to activate the alert."
+      }
+    ];
+    google.protobuf.Duration match_window = 2[
+      (google.api.field_behavior) = REQUIRED,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The window of time within which the policy level conditions must be met to activate the alert."
+      }
+    ];
+    google.protobuf.Duration reset_count_window = 3[
+      (google.api.field_behavior) = REQUIRED,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The window of time within which the level conditions must not be met again to reset the match count."
+      }
+    ];
+  }
+
+  message Conditions {
+    oneof type {
+      StaticCondition static = 1[
+        (google.api.field_behavior) = OPTIONAL,
+        (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          description: "The static type of the policy level condition: use a static value to compare with the traffic value with a given operator."
+        }
+      ];
+      BaselineCondition baseline = 2[
+        (google.api.field_behavior) = OPTIONAL,
+        (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          description: "The baseline type of the policy level condition: use a baseline value to compare with the current traffic value with a given operator."
+        }
+      ];
+      TopKeysCondition top_keys = 3[
+        (google.api.field_behavior) = OPTIONAL,
+        (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          description: "The top keys type of the policy level condition: use the top keys observed in the baseline values to compare with the current traffic value."
+        }
+      ];
+      InterfaceCapacityCondition interface_capacity = 4[
+        (google.api.field_behavior) = OPTIONAL,
+        (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          description: "The interface capacity type of the policy level condition: use the interface capacity to compare with the current traffic value."
+        }
+      ];
+      RatioCondition ratio = 5[
+        (google.api.field_behavior) = OPTIONAL,
+        (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          description: "The ratio type of the policy level condition: use the ratio of two metrics to compare their proportions."
+        }
+      ];
+      ForecastCondition forecast = 6[
+        (google.api.field_behavior) = OPTIONAL,
+        (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          description: "The forecast type of the policy level condition: use the forecast of a metric value to compare with the current traffic value."
+        }
+      ];
+    }
+
+    message StaticCondition {
+      string metric = 1[
+        (google.api.field_behavior) = REQUIRED,
+        (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          description: "The metric used for the policy level condition."
+        }
+      ];
+      Operator operator = 2[
+        (google.api.field_behavior) = REQUIRED,
+        (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          description: "The operator used for the policy level condition."
+        }
+      ];
+      double value = 3[
+        (google.api.field_behavior) = REQUIRED,
+        (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          description: "The value used for the policy level condition."
+        }
+      ];
+    }
+
+    message BaselineCondition {
+      oneof value {
+        double absolute = 1[
+          (google.api.field_behavior) = OPTIONAL,
+          (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            description: "The absolute value used for the policy level condition."
+          }
+        ];
+        int64 percentage = 2[
+          (google.api.field_behavior) = OPTIONAL,
+          (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            description: "The percentage value used for the policy level condition."
+          }
+        ];
+      }
+
+      DeltaType delta = 3[
+        (google.api.field_behavior) = REQUIRED,
+        (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          description: "The delta type used for the policy level condition."
+        }
+      ];
+
+      oneof fallback {
+        bool use_lowest = 4[
+          (google.api.field_behavior) = OPTIONAL,
+          (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            description: "Use the lowest value for the policy level condition if valid baseline value is missing."
+          }
+        ];
+        bool use_highest = 5[
+          (google.api.field_behavior) = OPTIONAL,
+          (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            description: "Use the highest value for the policy level condition if valid baseline value is missing."
+          }
+        ];
+        bool use_trigger = 6[
+          (google.api.field_behavior) = OPTIONAL,
+          (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            description: "Use the trigger value for the policy level condition if valid baseline value is missing."
+          }
+        ];
+        bool skip = 7[
+          (google.api.field_behavior) = OPTIONAL,
+          (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            description: "Skip the current traffic value if valid baseline value is missing."
+          }
+        ];
+        int64 use_value = 8[
+          (google.api.field_behavior) = OPTIONAL,
+          (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            description: "Use the given value for the policy level condition if valid baseline value is missing."
+          }
+        ];
+      }
+
+      enum DeltaType {
+        DELTA_TYPE_UNSPECIFIED = 0;
+
+        // the traffic value must be above the baseline value
+        DELTA_TYPE_ABOVE = 1;
+
+        // the traffic value must be below the baseline value
+        DELTA_TYPE_BELOW = 2;
+      }
+    }
+
+    message TopKeysCondition {
+      TopKeysEvent event = 1[
+        (google.api.field_behavior) = REQUIRED,
+        (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          description: "The event type used for the policy level condition."
+        }
+      ];
+      int64 count = 2[
+        (google.api.field_behavior) = REQUIRED,
+        (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          description: "The count of the top keys used for the policy level condition."
+        }
+      ];
+
+      enum TopKeysEvent {
+        TOP_KEYS_EVENT_UNSPECIFIED = 0;
+
+        // the traffic value must join the top keys observed previously in the baseline values
+        TOP_KEYS_EVENT_JOINS = 1;
+
+        // the traffic value must leave the top keys observed previously in the baseline value
+        TOP_KEYS_EVENT_LEAVES = 2;
+      }
+    }
+
+    message InterfaceCapacityCondition {
+      oneof value {
+        double absolute = 1[
+          (google.api.field_behavior) = OPTIONAL,
+          (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            description: "The absolute value used for the policy level condition."
+          }
+        ];
+        int64 percentage = 2[
+          (google.api.field_behavior) = OPTIONAL,
+          (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            description: "The percentage value used for the policy level condition."
+          }
+        ];
+      }
+    }
+
+    message RatioCondition {
+      string lhs_metric = 1[
+        (google.api.field_behavior) = REQUIRED,
+        (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          description: "The left hand side metric used for the policy level condition."
+        }
+      ];
+      string rhs_metric = 2[
+        (google.api.field_behavior) = REQUIRED,
+        (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          description: "The right hand side metric used for the policy level condition."
+        }
+      ];
+      uint32 lhs_proportion = 3[
+        (google.api.field_behavior) = REQUIRED,
+        (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          description: "The left hand side proportion used for the policy level condition."
+        }
+      ];
+      uint32 rhs_proportion = 4[
+        (google.api.field_behavior) = REQUIRED,
+        (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          description: "The right hand side proportion used for the policy level condition."
+        }
+      ];
+      double margin = 5[
+        (google.api.field_behavior) = REQUIRED,
+        (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          description: "The margin used for the policy level condition."
+        }
+      ];
+      Direction direction = 6[
+        (google.api.field_behavior) = REQUIRED,
+        (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          description: "The direction used for the policy level condition."
+        }
+      ];
+
+      enum Direction {
+        DIRECTION_UNSPECIFIED = 0;
+        DIRECTION_BOTH = 1;
+        DIRECTION_RIGHT = 2;
+        DIRECTION_LEFT = 3;
+      }
+    }
+
+    message ForecastCondition {
+      Operator operator = 1;
+      int64 percentage_value = 2;
+    }
+
+    enum Operator {
+      OPERATOR_UNSPECIFIED = 0;
+      OPERATOR_GREATER_THAN_OR_EQUALS = 1;
+      OPERATOR_GREATER_THAN = 2;
+      OPERATOR_EQUALS = 3;
+      OPERATOR_NOT_EQUALS = 4;
+      OPERATOR_LESS_THAN = 5;
+      OPERATOR_LESS_THAN_OR_EQUALS = 6;
+      OPERATOR_IN_SET = 7;
+      OPERATOR_NOT_IN_SET = 8;
+    }
+  }
+
+  message MitigationAssociation {
+    string platform_id = 1[
+      (google.api.field_behavior) = REQUIRED,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The platform ID of the mitigation association."
+      }
+    ];
+    string method_id = 2[
+      (google.api.field_behavior) = REQUIRED,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The method ID of the mitigation association."
+      }
+    ];
+  }
+}

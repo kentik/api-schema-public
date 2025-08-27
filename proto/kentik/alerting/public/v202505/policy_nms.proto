@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package kentik.alerting.public.v202505;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/alerting/public/v202505";
+
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+import "kentik/core/v202303/annotations.proto";
+import "kentik/alerting/types/v202303/types.proto";
+import "kentik/alerting/types/v202506/sorting.proto";
+
+import "kentik/alerting/public/v202505/common.proto";
+import "kentik/alerting/public/v202505/nms_common.proto";
+import "kentik/alerting/public/v202505/policy_filters.proto";
+import "kentik/alerting/public/v202505/policy_datasources.proto";
+
+
+message NmsPolicySettings {
+  // stay consistent with flow
+  DatasetConfig dataset = 1;
+  EvaluationConfig evaluation = 2;
+
+  message DatasetConfig {
+    PolicyDataSources sources = 1; // device_selector internally and different mapping too
+    PolicyFilters filters = 2;
+    repeated string measurements = 3;
+    repeated string custom_dimensions = 4; // this might be irrelevant based on policy type - only applicable if custom type
+  }
+
+  message EvaluationConfig {
+    google.protobuf.Duration activation_delay = 1;
+    google.protobuf.Duration clearance_delay = 2;
+  }
+}
+
+message NmsPolicyLevelSettings {
+  NmsActivateOrClearConditions activate = 1;
+
+  ClearType clear_type = 2;
+  NmsActivateOrClearConditions conditional = 3; // only used if clear_type == CONDITIONAL
+
+  enum ClearType {
+    CLEAR_TYPE_UNSPECIFIED = 0; // assumed CLEAR_TYPE_CLEAR_UNLESS_ACTIVATED if not specified
+    // CLEAR_TYPE_CONDITIONAL = 1; we don't want to expose this yet, not implemented
+    CLEAR_TYPE_CLEAR_MANUAL = 2;
+    CLEAR_TYPE_CLEAR_UNLESS_ACTIVATED = 3;
+  }
+}

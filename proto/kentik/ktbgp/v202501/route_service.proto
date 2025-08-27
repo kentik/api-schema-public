@@ -1,0 +1,408 @@
+syntax = "proto3";
+
+package kentik.ktbgp.v202501;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/ktbgp/v202501;ktbgp";
+
+import "google/api/annotations.proto";
+import "google/api/field_behavior.proto";
+
+import "kentik/core/v202303/annotations.proto";
+import "kentik/alerting/types/v202303/types.proto";
+import "google/protobuf/timestamp.proto";
+
+service RouteService {
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PRIVATE;
+  option (kentik.core.v202303.private_service) = true;
+
+  // Announce a BGP route to a specified set of devices
+  rpc Announce(RouteServiceAnnounceRequest) returns (RouteServiceAnnounceResponse) {
+    option (google.api.http) = {
+      post: "/routes/announce"
+      body: "*"
+    };
+  }
+
+  // Withdraw active BGP updates from devices
+  rpc Withdraw(RouteServiceWithdrawRequest) returns (RouteServiceWithdrawResponse) {
+    option (google.api.http) = {
+      post: "/routes/withdraw"
+      body: "*"
+    };
+  }
+
+  // List active BGP updates for a specified set of devices
+  rpc List(RouteServiceListRequest) returns (RouteServiceListResponse) {
+    option (google.api.http) = {
+      post: "/routes/list"
+      body: "*"
+    };
+  }
+}
+
+message RouteServiceAnnounceRequest {
+  repeated uint64 device_ids = 1;
+  oneof update {
+    FlowspecUpdate flowspec = 11;
+    RTBHUpdate rtbh = 12;
+  }
+}
+
+message RouteServiceAnnounceResponse {
+  repeated UpdateResult results = 1;
+}
+
+message RouteServiceWithdrawRequest {
+  repeated uint64 device_ids = 1;
+  Withdraw withdraw = 2;
+}
+
+message Withdraw {
+  oneof withdraw {
+    FlowspecMatch flowspec = 1;
+    RTBHMatch rtbh = 2;
+  }
+}
+
+message RouteServiceWithdrawResponse {
+  repeated UpdateResult results = 1;
+}
+
+message FlowspecAction{
+  // action represents the traffic treatment actions referring
+  // to Extended Community types and sub-types defined in RFC 8955:
+  // https://datatracker.ietf.org/doc/html/rfc8955#name-traffic-filtering-actions
+  // and other related documents
+  oneof action {
+    FlowspecActionAccept accept = 1;
+    FlowspecActionDiscard discard = 2;
+    FlowspecActionTrafficRateBytes rate_bytes = 3;
+    FlowspecActionMarkDSCP mark_dscp = 4;
+    FlowspecActionRouteTargetRedirect rt_redirect = 5;
+    FlowspecActionIPNextHopRedirect ip_redirect = 6;
+    FlowspecActionTerminalSample action_type = 7;
+    FlowspecActionIPNextHopCopy rt_copy = 8;
+    FlowspecActionRegularCommunity regular_community = 9;
+    FlowspecActionExtendedCommunity extended_community = 10;
+    FlowspecActionLargeCommunity large_community = 11;
+  }
+}
+
+message FlowspecUpdate {
+  FlowspecMatch match = 1;
+  google.protobuf.Timestamp creation_time = 2;
+  string inet = 3 [deprecated = true]; // deprecated: use inet_type instead
+  InetType inet_type = 6;
+  string key = 7; // mainly used for internal purposes
+
+  // action represents the traffic treatment actions referring
+  // to Extended Community types and sub-types defined in RFC 8955:
+  // https://datatracker.ietf.org/doc/html/rfc8955#name-traffic-filtering-actions
+  // and other related documents
+  oneof action {
+    FlowspecActionTrafficRateBytes rate_bytes = 11;
+    FlowspecActionDiscard discard = 12;
+    FlowspecActionMarkDSCP mark_dscp = 13;
+    FlowspecActionRouteTargetRedirect rt_redirect = 14;
+    FlowspecActionIPNextHopRedirect ip_redirect = 15;
+    FlowspecActionAccept accept = 16;
+    FlowspecActionTerminalSample action_type = 17;
+    FlowspecActionIPNextHopCopy rt_copy = 18;
+    FlowspecActionRegularCommunity regular_community = 19;
+    FlowspecActionExtendedCommunity extended_community = 20;
+    FlowspecActionLargeCommunity large_community = 21;
+  }
+
+  repeated FlowspecAction actions  = 8;
+
+  bool terminal = 4 [deprecated = true]; // true if this is a terminal action
+  bool sample = 5 [deprecated = true]; // true to enable traffic sampling and logging
+}
+
+message FlowspecUpdates{
+  repeated FlowspecUpdate update = 1;
+}
+
+message RTBHUpdate {
+  RTBHMatch match = 1;
+  RTBHAction action = 2;
+  google.protobuf.Timestamp creation_time = 3;
+  string inet = 4 [deprecated = true]; // deprecated: use inet_type instead
+  InetType inet_type = 5;
+  string key = 6; // mainly used for internal purposes
+}
+
+message RTBHUpdates{
+  repeated RTBHUpdate update = 1;
+}
+
+enum InetType {
+  INET_TYPE_UNSPECIFIED = 0;
+  INET_TYPE_IPV4 = 1;
+  INET_TYPE_IPV6 = 2;
+}
+
+// FlowspecMatch represents the traffic filtering criteria encoded
+// as Flow Specification NLRI as per RFC 8955:
+// https://datatracker.ietf.org/doc/html/rfc8955#name-dissemination-of-ipv4-flow-
+// and other related documents.
+message FlowspecMatch {
+  string dst_prefix = 1;  // IPv4 or IPv6 CIDR prefix to match
+  string src_prefix = 2;  // IPv4 or IPv6 CIDR prefix to match
+  NumericFormula ip_protocol = 3;
+  NumericFormula dst_port = 5;
+  NumericFormula src_port = 6;
+  NumericFormula icmp_type = 7;
+  NumericFormula icmp_code = 8;
+  TCPFlagsFormula tcp_flags = 9;
+  NumericFormula packet_length = 10;
+  NumericFormula dscp = 11;
+  FragmentFormula fragments = 12;
+
+  reserved 4; // we're not implementing port for now (RFC 8955, 4.2.2.4)
+}
+
+
+// FlowspecActionTrafficRateBytes specifies the maximum traffic rate
+// in bytes per second.
+//
+// Extended Community type and sub-type: 0x8006
+// https://datatracker.ietf.org/doc/html/rfc8955#traffic_rate_in_bytes
+message FlowspecActionTrafficRateBytes {
+  // bytes_per_second must be greater than 0.
+  //
+  // See FlowspecActionDiscard for discarding traffic.
+  float bytes_per_second = 1;
+}
+
+// FlowspecActionAccept specifies that the traffic should be accepted.
+// https://datatracker.ietf.org/doc/html/rfc8955
+message FlowspecActionAccept {
+}
+
+// FlowspecActionDiscard specifies that the traffic should be discarded.
+//
+// This is a special case of FlowspecActionTrafficRateBytes with 0 bytes per second.
+// Extended Community type and sub-type: 0x8006
+// https://datatracker.ietf.org/doc/html/rfc8955#traffic_rate_in_bytes
+message FlowspecActionDiscard {
+}
+
+// FlowspecActionTerminalSample specifies that the traffic action extended community.
+//
+// terminal, sample or sample-terminal action types.
+// https://datatracker.ietf.org/doc/html/rfc8955#name-traffic-action-traffic-acti
+message FlowspecActionTerminalSample {
+  bool terminal = 1;
+  bool sample = 2;
+}
+
+// FlowspecActionMarkDSCP instructs a system to modify the DSCP bits in the IP header.
+//
+// Extended Community type and sub-type: 0x8009
+// https://datatracker.ietf.org/doc/html/rfc8955#traffic_marking_subtype
+message FlowspecActionMarkDSCP {
+  uint32 dscp = 1;
+}
+
+// FlowspecActionRouteTargetRedirect allows the traffic to be redirected to a VRF
+// routing instance that lists the specified route-target in its import policy.
+//
+// Depending on the contents of the message, this will be encoded as:
+// Extended Community type and sub-type: 0x8008 (2-octet ASN)
+// or
+// Extended Community type and sub-type: 0x8208 (4-octet ASN)
+// https://datatracker.ietf.org/doc/html/rfc8955#rt_redirect_action_subtype
+message FlowspecActionRouteTargetRedirect {
+  // If 32 bits are used for the ASN, the route target can only be 16 bits long
+  uint32 asn = 1;
+
+  // If 32 bits are used for the route target, the asn can only be 16 bits long
+  uint32 route_target = 2;
+}
+
+// FlowspecActionIPNextHopRedirect allows the traffic to be redirected
+// to a specific Next Hop IP address.
+//
+// Extended Community type and sub-type: 0x0800
+//
+// The target next-hop address refers to the 'Network Address of Next-Hop' field
+// of the associated NLRI.
+// https://datatracker.ietf.org/doc/html/draft-simpson-idr-flowspec-redirect
+message FlowspecActionIPNextHopRedirect {
+  // IPv4 or IPv6 address to redirect to
+  string next_hop = 1;
+}
+
+// FlowspecActionIPNextHopCopy allows the traffic to be copied
+// to a specific Next Hop IP address.
+//
+// Extended Community type and sub-type: 0x0800 with least-significant bit 'C' set to 1
+//
+// The target next-hop address refers to the 'Network Address of Next-Hop' field
+// of the associated NLRI.
+// https://datatracker.ietf.org/doc/html/draft-simpson-idr-flowspec-redirect
+message FlowspecActionIPNextHopCopy {
+  // IPv4 or IPv6 address to copy to
+  string next_hop = 1;
+}
+
+// FlowspecActionRegularCommunity
+// Extenstion of the two-octed AS numbers as four-octed entinties.
+// https://datatracker.ietf.org/doc/html/rfc6793
+message FlowspecActionRegularCommunity {
+  uint32 asn1 = 1;
+  uint32 asn2 = 2;
+}
+
+enum ExtendedCommunityRouteType {
+  EXTENDED_COMMUNITY_ROUTE_TYPE_UNSPECIFIED = 0;
+  EXTENDED_COMMUNITY_ROUTE_TYPE_TARGET = 1;
+  EXTENDED_COMMUNITY_ROUTE_TYPE_ORIGIN = 2;
+}
+
+// FlowspecActionExtendedCommunity
+// The attribute consists of a set of "extended communities".  
+// All routes with the Extended Communities attribute belong to 
+// the communities listed in the attribute.
+// https://datatracker.ietf.org/doc/html/rfc4360
+message FlowspecActionExtendedCommunity {
+  ExtendedCommunityRouteType route_type = 1;
+  uint32 asn1 = 2;
+  uint32 asn2 = 3;
+}
+
+// FlowspecActionLargeCommunity
+// BGP Large Communities attribute encoded as an unordered set of one or more
+// twelve-octet values, each consisting of a four-octet Global
+// Administrator field and two four-octet operator-defined fields, each
+// of which can be used to denote properties or actions significant to
+// the operator of the AS assigning the values.
+// https://datatracker.ietf.org/doc/html/rfc8092
+message FlowspecActionLargeCommunity {
+  uint32 asn = 1;
+  uint32 data1 = 2;
+  uint32 data2 = 3;
+}
+
+message RTBHMatch {
+  // IPv4 or IPv6 CIDR prefix to match
+  string src_prefix = 1;
+}
+
+message RTBHAction {
+  repeated uint32 bgp_communities = 1;
+  string next_hop = 2;
+  uint32 local_preference = 3;
+}
+
+message NumericFormula {
+  repeated NumericPredicateGroup or = 1;
+}
+
+message NumericPredicateGroup {
+  repeated NumericPredicate and = 1;
+}
+
+message NumericPredicate {
+  NumericOp operator = 1;
+  uint64 value = 2;
+}
+
+message FragmentFormula {
+  repeated FragmentPredicateGroup or = 1;
+}
+
+message FragmentPredicateGroup {
+  repeated FragmentPredicate and = 1;
+}
+
+message FragmentPredicate {
+  BitwiseOp operator = 1;
+  repeated Fragment values = 2;
+}
+
+enum Fragment {
+  FRAGMENT_UNSPECIFIED = 0;
+  FRAGMENT_DF = 1;  // Don't Fragment
+  FRAGMENT_ISF = 2; // Is a fragment other than the first
+  FRAGMENT_FF = 3;  // First Fragment
+  FRAGMENT_LF = 4;  // Last Fragment
+}
+
+message TCPFlagsFormula {
+  repeated TCPFlagsPredicateGroup or = 1;
+}
+
+message TCPFlagsPredicateGroup {
+  repeated TCPFlagsPredicate and = 1;
+}
+
+message TCPFlagsPredicate {
+  BitwiseOp operator = 1;
+  repeated TCPFlag values = 2;
+}
+
+enum TCPFlag {
+  TCP_FLAG_UNSPECIFIED = 0;
+  TCP_FLAG_FIN = 1;
+  TCP_FLAG_SYN = 2;
+  TCP_FLAG_RST = 3;
+  TCP_FLAG_PSH = 4;
+  TCP_FLAG_ACK = 5;
+  TCP_FLAG_URG = 6;
+  TCP_FLAG_ECE = 7;
+  TCP_FLAG_CWR = 8;
+}
+
+enum NumericOp {
+  NUMERIC_OP_UNSPECIFIED = 0;
+  NUMERIC_OP_EQUALS = 1;
+  NUMERIC_OP_NOT_EQUALS = 2;
+  NUMERIC_OP_LESS_THAN = 3;
+  NUMERIC_OP_GREATER_THAN = 4;
+  NUMERIC_OP_LESS_THAN_OR_EQUALS = 5;
+  NUMERIC_OP_GREATER_THAN_OR_EQUALS = 6;
+}
+
+enum BitwiseOp {
+  BITWISE_OP_UNSPECIFIED = 0;
+  BITWISE_OP_ANY = 1;       // (data & value) != 0
+  BITWISE_OP_NONE = 2;      // (data & value) == 0
+  BITWISE_OP_ALL = 3;       // (data & value) == value
+  BITWISE_OP_NOT_ALL = 4;   // (data & value) != value
+}
+
+message UpdateResult {
+  uint64 device_id = 1;
+  AdvertStatus status = 2;
+  string message = 3;
+}
+
+enum AdvertStatus {
+  ADVERT_STATUS_UNSPECIFIED = 0;
+  ADVERT_STATUS_ANNOUNCED = 1;
+  ADVERT_STATUS_WITHDRAWN = 2;
+  ADVERT_STATUS_NO_SESSION = 4;  // when we cannot find the chf-bgp instance
+  ADVERT_STATUS_FAILED = 3;  // when we failed to parse or send the update
+}
+
+message RouteServiceListRequest {
+  RoutesFilter filters = 1;
+  // TODO: any pagination or sorting capabilities?
+}
+
+message RoutesFilter {
+  repeated uint64 device_ids = 1;
+  // TODO: we may want to search by update type or detailed attributes
+  // TODO: we may also want to search for historical updates
+}
+
+message RouteServiceListResponse {
+  repeated DeviceAdverts result = 1;
+}
+
+message DeviceAdverts {
+  uint64 device_id = 1;
+  repeated FlowspecUpdate flowspec = 2;
+  repeated RTBHUpdate rtbh = 3;
+}

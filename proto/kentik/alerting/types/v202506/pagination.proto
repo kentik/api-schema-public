@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package kentik.alerting.types.v202506;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/alerting/types/v202506";
+
+import "google/protobuf/timestamp.proto";
+
+message PaginationConfig {
+  // limit is how many items to return at most
+  uint64 limit = 1;
+
+  // offset is the offset into the list of items
+  uint64 offset = 2;
+
+  // include_total_count is a flag to enforce API service to include the total count of items in the response,
+  // which in some cases may be very expensive to fetch
+  bool include_total_count = 3;
+}
+
+message PaginationInfo {
+  oneof info {
+    // total_count is the total number of items in the list.
+    // It may be provided optionally if include_total_count is set to false.
+    // It will be provided always if include_total_count is set to true.
+    uint64 total_count = 1;
+
+    // has_more_results is a flag to indicate if there are more results to fetch
+    // It may be provided instead of total_count if include_total_count is set to false and it would be very expensive to fetch the total count
+    bool has_more_results = 2;
+  }
+}

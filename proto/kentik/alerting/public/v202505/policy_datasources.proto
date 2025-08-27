@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package kentik.alerting.public.v202505;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/alerting/public/v202505";
+
+import "google/api/field_behavior.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+import "kentik/core/v202303/annotations.proto";
+
+message PolicyDataSources {
+  bool all_devices = 1[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "If true, all devices traffic will be included in the policy."
+    }
+  ];
+  repeated string device_ids = 2[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The IDs of the devices to include in the policy. If all_devices is true, this field is ignored. "
+    }
+  ];
+  repeated string label_ids = 3[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The IDs of the labels to include in the policy."
+    }
+  ];
+  repeated string site_ids = 4[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The IDs of the sites to include in the policy."
+    }
+  ];
+  repeated string types = 5[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The types of devices to include in the policy."
+    }
+  ];
+}

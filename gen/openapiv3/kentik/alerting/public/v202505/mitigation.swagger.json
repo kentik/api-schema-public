@@ -1,0 +1,1240 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Kentik Alert Mitigations API",
+        "description": "# Overview\nThe Alert Mitigations API provides programmatic access to Kentik's capabilities of configuring and managing network infrastructure mitigations that are triggered automatically based on alerts or manually to prevent network attacks.",
+        "version": "v202505",
+        "contact": {
+            "name": "Kentik API Engineering",
+            "url": "https://github.com/kentik/api-schema-public"
+        }
+    },
+    "tags": [
+        {
+            "name": "MitigationsService"
+        }
+    ],
+    "paths": {
+        "/mitigations": {
+            "get": {
+                "summary": "List Mitigations",
+                "description": "Returns a list of mitigations.",
+                "operationId": "List",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202505MitigationsServiceListResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "pagination.limit",
+                        "description": "limit is how many items to return at most.",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "uint64"
+                        }
+                    },
+                    {
+                        "name": "pagination.offset",
+                        "description": "offset is the offset into the list of items.",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "uint64"
+                        }
+                    },
+                    {
+                        "name": "pagination.includeTotalCount",
+                        "description": "include_total_count is a flag to enforce API service to include the total count of items in the response,\nwhich in some cases may be very expensive to fetch.",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    {
+                        "name": "filters.createdAt.start",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    },
+                    {
+                        "name": "filters.createdAt.end",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    },
+                    {
+                        "name": "filters.mitigationIds",
+                        "description": "The IDs of the mitigations to list.",
+                        "in": "query",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "name": "filters.alarmIds",
+                        "description": "The alarm IDs the mitigations are associated with.",
+                        "in": "query",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "name": "filters.states",
+                        "description": "The states of the mitigations to filter by.",
+                        "in": "query",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "MITIGATION_STATE_UNSPECIFIED",
+                                    "MITIGATION_STATE_ACK_REQUIRED",
+                                    "MITIGATION_STATE_ARCHIVED",
+                                    "MITIGATION_STATE_CLEARING",
+                                    "MITIGATION_STATE_CLEARING_FAIL",
+                                    "MITIGATION_STATE_END_GRACE",
+                                    "MITIGATION_STATE_END_WAIT",
+                                    "MITIGATION_STATE_MANUAL_CLEAR",
+                                    "MITIGATION_STATE_MANUAL_CLEARING",
+                                    "MITIGATION_STATE_MANUAL_CLEARING_FAIL",
+                                    "MITIGATION_STATE_MANUAL_MITIGATING",
+                                    "MITIGATION_STATE_MANUAL_STARTING",
+                                    "MITIGATION_STATE_MANUAL_STARTING_FAIL",
+                                    "MITIGATION_STATE_MITIGATING",
+                                    "MITIGATION_STATE_STARTING",
+                                    "MITIGATION_STATE_STARTING_FAIL",
+                                    "MITIGATION_STATE_START_WAIT"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "filters.platformIds",
+                        "description": "The mitigation platform IDs the mitigations are associated with.",
+                        "in": "query",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "name": "filters.methodIds",
+                        "description": "The mitigation method IDs the mitigations are associated with.",
+                        "in": "query",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "name": "filters.ipCidrs",
+                        "description": "The IP/CIDR ranges the mitigations target.",
+                        "in": "query",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "name": "filters.ipCidrPattern",
+                        "description": "The IP/CIDR pattern to filter mitigations by.",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "filters.types",
+                        "description": "The types of mitigations to filter by.\n\n - MITIGATION_TYPE_MANUAL: Manual mitigation\n - MITIGATION_TYPE_AUTO: Automatic mitigation",
+                        "in": "query",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "MITIGATION_TYPE_UNSPECIFIED",
+                                    "MITIGATION_TYPE_MANUAL",
+                                    "MITIGATION_TYPE_AUTO"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "tags": [
+                    "MitigationsService"
+                ]
+            },
+            "post": {
+                "summary": "Create Mitigation",
+                "description": "Creates a new manual mitigation.",
+                "operationId": "Create",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202505MitigationsServiceCreateResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202505MitigationsServiceCreateRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "MitigationsService"
+                ]
+            }
+        },
+        "/mitigations/actions": {
+            "get": {
+                "summary": "Get Available Actions",
+                "description": "Returns available actions for mitigations.",
+                "operationId": "AvailableActions",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202505MitigationsServiceAvailableActionsResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "MitigationsService"
+                ]
+            }
+        },
+        "/mitigations/{action}": {
+            "post": {
+                "summary": "Act on Mitigation",
+                "description": "Performs an action on one or more mitigations.",
+                "operationId": "Act",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202505MitigationsServiceActResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "action",
+                        "description": "The action to perform on the mitigations.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "MITIGATION_USER_ACTION_UNSPECIFIED",
+                                "MITIGATION_USER_ACTION_TAKE_CONTROL",
+                                "MITIGATION_USER_ACTION_STOP",
+                                "MITIGATION_USER_ACTION_START",
+                                "MITIGATION_USER_ACTION_DELETE",
+                                "MITIGATION_USER_ACTION_APPROVE_START",
+                                "MITIGATION_USER_ACTION_SKIP_WAIT",
+                                "MITIGATION_USER_ACTION_RETRY",
+                                "MITIGATION_USER_ACTION_ACK"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202505MitigationsServiceActRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "MitigationsService"
+                ]
+            },
+            "get": {
+                "summary": "Get Mitigation",
+                "description": "Returns a mitigation.",
+                "operationId": "Get",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202505MitigationsServiceGetResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "action",
+                        "description": "The ID of the mitigation to get.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "MitigationsService"
+                ]
+            }
+        },
+        "/mitigations/{id}/actions": {
+            "get": {
+                "summary": "Get Available Actions for Mitigation",
+                "description": "Returns available actions for a specific mitigation.",
+                "operationId": "AvailableActionsForMitigation",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202505MitigationsServiceAvailableActionsForMitigationResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "description": "The ID of the mitigation to get available actions for.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "tags": [
+                    "MitigationsService"
+                ]
+            }
+        }
+    },
+    "security": [
+        {
+            "email": [],
+            "token": []
+        }
+    ],
+    "externalDocs": {
+        "description": "Kentik Alerts documentation",
+        "url": "https://kb.kentik.com/docs/alerting"
+    },
+    "components": {
+        "securitySchemes": {
+            "email": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-Email",
+                "in": "header"
+            },
+            "token": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-API-Token",
+                "in": "header"
+            }
+        },
+        "schemas": {
+            "MitigationsServiceAvailableActionsResponseMitigationAvailableTransitions": {
+                "type": "object",
+                "properties": {
+                    "fromState": {
+                        "$ref": "#/components/schemas/v202505MitigationState"
+                    },
+                    "availableActions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202505MitigationActionDetail"
+                        },
+                        "description": "The available actions from this state."
+                    }
+                }
+            },
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "typeUrl": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string",
+                        "format": "byte"
+                    }
+                }
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "typesv202506PaginationConfig": {
+                "type": "object",
+                "properties": {
+                    "limit": {
+                        "type": "string",
+                        "format": "uint64",
+                        "title": "limit is how many items to return at most"
+                    },
+                    "offset": {
+                        "type": "string",
+                        "format": "uint64",
+                        "title": "offset is the offset into the list of items"
+                    },
+                    "includeTotalCount": {
+                        "type": "boolean",
+                        "title": "include_total_count is a flag to enforce API service to include the total count of items in the response,\nwhich in some cases may be very expensive to fetch"
+                    }
+                }
+            },
+            "typesv202506PaginationInfo": {
+                "type": "object",
+                "properties": {
+                    "totalCount": {
+                        "type": "string",
+                        "format": "uint64",
+                        "description": "total_count is the total number of items in the list.\nIt may be provided optionally if include_total_count is set to false.\nIt will be provided always if include_total_count is set to true."
+                    },
+                    "hasMoreResults": {
+                        "type": "boolean",
+                        "title": "has_more_results is a flag to indicate if there are more results to fetch\nIt may be provided instead of total_count if include_total_count is set to false and it would be very expensive to fetch the total count"
+                    }
+                }
+            },
+            "v202303KeyValue": {
+                "type": "object",
+                "properties": {
+                    "value": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "v202303TimeRange": {
+                "type": "object",
+                "properties": {
+                    "start": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "end": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "v202501BitwiseOp": {
+                "type": "string",
+                "enum": [
+                    "BITWISE_OP_UNSPECIFIED",
+                    "BITWISE_OP_ANY",
+                    "BITWISE_OP_NONE",
+                    "BITWISE_OP_ALL",
+                    "BITWISE_OP_NOT_ALL"
+                ],
+                "default": "BITWISE_OP_UNSPECIFIED"
+            },
+            "v202501FlowspecMatch": {
+                "type": "object",
+                "properties": {
+                    "dstPrefix": {
+                        "type": "string"
+                    },
+                    "srcPrefix": {
+                        "type": "string"
+                    },
+                    "ipProtocol": {
+                        "$ref": "#/components/schemas/v202501NumericFormula"
+                    },
+                    "dstPort": {
+                        "$ref": "#/components/schemas/v202501NumericFormula"
+                    },
+                    "srcPort": {
+                        "$ref": "#/components/schemas/v202501NumericFormula"
+                    },
+                    "icmpType": {
+                        "$ref": "#/components/schemas/v202501NumericFormula"
+                    },
+                    "icmpCode": {
+                        "$ref": "#/components/schemas/v202501NumericFormula"
+                    },
+                    "tcpFlags": {
+                        "$ref": "#/components/schemas/v202501TCPFlagsFormula"
+                    },
+                    "packetLength": {
+                        "$ref": "#/components/schemas/v202501NumericFormula"
+                    },
+                    "dscp": {
+                        "$ref": "#/components/schemas/v202501NumericFormula"
+                    },
+                    "fragments": {
+                        "$ref": "#/components/schemas/v202501FragmentFormula"
+                    }
+                },
+                "description": "FlowspecMatch represents the traffic filtering criteria encoded\nas Flow Specification NLRI as per RFC 8955:\nhttps://datatracker.ietf.org/doc/html/rfc8955#name-dissemination-of-ipv4-flow-\nand other related documents."
+            },
+            "v202501Fragment": {
+                "type": "string",
+                "enum": [
+                    "FRAGMENT_UNSPECIFIED",
+                    "FRAGMENT_DF",
+                    "FRAGMENT_ISF",
+                    "FRAGMENT_FF",
+                    "FRAGMENT_LF"
+                ],
+                "default": "FRAGMENT_UNSPECIFIED"
+            },
+            "v202501FragmentFormula": {
+                "type": "object",
+                "properties": {
+                    "or": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202501FragmentPredicateGroup"
+                        }
+                    }
+                }
+            },
+            "v202501FragmentPredicate": {
+                "type": "object",
+                "properties": {
+                    "operator": {
+                        "$ref": "#/components/schemas/v202501BitwiseOp"
+                    },
+                    "values": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202501Fragment"
+                        }
+                    }
+                }
+            },
+            "v202501FragmentPredicateGroup": {
+                "type": "object",
+                "properties": {
+                    "and": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202501FragmentPredicate"
+                        }
+                    }
+                }
+            },
+            "v202501NumericFormula": {
+                "type": "object",
+                "properties": {
+                    "or": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202501NumericPredicateGroup"
+                        }
+                    }
+                }
+            },
+            "v202501NumericOp": {
+                "type": "string",
+                "enum": [
+                    "NUMERIC_OP_UNSPECIFIED",
+                    "NUMERIC_OP_EQUALS",
+                    "NUMERIC_OP_NOT_EQUALS",
+                    "NUMERIC_OP_LESS_THAN",
+                    "NUMERIC_OP_GREATER_THAN",
+                    "NUMERIC_OP_LESS_THAN_OR_EQUALS",
+                    "NUMERIC_OP_GREATER_THAN_OR_EQUALS"
+                ],
+                "default": "NUMERIC_OP_UNSPECIFIED"
+            },
+            "v202501NumericPredicate": {
+                "type": "object",
+                "properties": {
+                    "operator": {
+                        "$ref": "#/components/schemas/v202501NumericOp"
+                    },
+                    "value": {
+                        "type": "string",
+                        "format": "uint64"
+                    }
+                }
+            },
+            "v202501NumericPredicateGroup": {
+                "type": "object",
+                "properties": {
+                    "and": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202501NumericPredicate"
+                        }
+                    }
+                }
+            },
+            "v202501TCPFlag": {
+                "type": "string",
+                "enum": [
+                    "TCP_FLAG_UNSPECIFIED",
+                    "TCP_FLAG_FIN",
+                    "TCP_FLAG_SYN",
+                    "TCP_FLAG_RST",
+                    "TCP_FLAG_PSH",
+                    "TCP_FLAG_ACK",
+                    "TCP_FLAG_URG",
+                    "TCP_FLAG_ECE",
+                    "TCP_FLAG_CWR"
+                ],
+                "default": "TCP_FLAG_UNSPECIFIED"
+            },
+            "v202501TCPFlagsFormula": {
+                "type": "object",
+                "properties": {
+                    "or": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202501TCPFlagsPredicateGroup"
+                        }
+                    }
+                }
+            },
+            "v202501TCPFlagsPredicate": {
+                "type": "object",
+                "properties": {
+                    "operator": {
+                        "$ref": "#/components/schemas/v202501BitwiseOp"
+                    },
+                    "values": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202501TCPFlag"
+                        }
+                    }
+                }
+            },
+            "v202501TCPFlagsPredicateGroup": {
+                "type": "object",
+                "properties": {
+                    "and": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202501TCPFlagsPredicate"
+                        }
+                    }
+                }
+            },
+            "v202505Mitigation": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the mitigation.",
+                        "readOnly": true
+                    },
+                    "type": {
+                        "$ref": "#/components/schemas/v202505MitigationType"
+                    },
+                    "alarmIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The alarm IDs associated with this mitigation.",
+                        "readOnly": true
+                    },
+                    "target": {
+                        "$ref": "#/components/schemas/v202506MitigationTarget"
+                    },
+                    "currentState": {
+                        "$ref": "#/components/schemas/v202505MitigationState"
+                    },
+                    "previousState": {
+                        "$ref": "#/components/schemas/v202505MitigationState"
+                    },
+                    "platformId": {
+                        "type": "string",
+                        "description": "The mitigation platform ID the mitigation is derived from.",
+                        "readOnly": true
+                    },
+                    "methodId": {
+                        "type": "string",
+                        "description": "The mitigation method ID the mitigation is derived from.",
+                        "readOnly": true
+                    },
+                    "startTimeAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "The time when the mitigation started.",
+                        "readOnly": true
+                    },
+                    "endTimeAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "The time when the mitigation ended or will end.",
+                        "readOnly": true
+                    },
+                    "states": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202505MitigationStateEntry"
+                        },
+                        "description": "The history of state changes for the mitigation.",
+                        "readOnly": true
+                    },
+                    "autoStopTtl": {
+                        "type": "string",
+                        "description": "The automatic stop time-to-live for the mitigation.",
+                        "readOnly": true
+                    },
+                    "comment": {
+                        "type": "string",
+                        "description": "A comment describing the mitigation.",
+                        "readOnly": true
+                    },
+                    "source": {
+                        "$ref": "#/components/schemas/v202505Source"
+                    }
+                }
+            },
+            "v202505MitigationActionDetail": {
+                "type": "object",
+                "properties": {
+                    "eventName": {
+                        "type": "string",
+                        "description": "The name of the event that triggers this action."
+                    },
+                    "action": {
+                        "$ref": "#/components/schemas/v202505MitigationUserAction"
+                    },
+                    "actionDescription": {
+                        "type": "string",
+                        "description": "The description of the action."
+                    },
+                    "fromState": {
+                        "$ref": "#/components/schemas/v202505MitigationState"
+                    },
+                    "toStates": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202505MitigationState"
+                        },
+                        "description": "The possible states the mitigation can transition to."
+                    },
+                    "actionPath": {
+                        "type": "string",
+                        "description": "The API path for performing this action."
+                    }
+                }
+            },
+            "v202505MitigationEvent": {
+                "type": "string",
+                "enum": [
+                    "MITIGATION_EVENT_UNSPECIFIED",
+                    "MITIGATION_EVENT_USER_MANUAL_CONTROL",
+                    "MITIGATION_EVENT_USER_STOP",
+                    "MITIGATION_EVENT_USER_START",
+                    "MITIGATION_EVENT_USER_DELETE",
+                    "MITIGATION_EVENT_USER_APPROVE_START",
+                    "MITIGATION_EVENT_USER_SKIP_WAIT",
+                    "MITIGATION_EVENT_USER_RETRY",
+                    "MITIGATION_EVENT_USER_ACK",
+                    "MITIGATION_EVENT_SKIP_WAIT",
+                    "MITIGATION_EVENT_DONE_WAIT",
+                    "MITIGATION_EVENT_AUTO_START",
+                    "MITIGATION_EVENT_AUTO_STOP",
+                    "MITIGATION_EVENT_REMOTE_ADDED",
+                    "MITIGATION_EVENT_REMOTE_REMOVED",
+                    "MITIGATION_EVENT_REMOTE_ERROR",
+                    "MITIGATION_EVENT_SYSTEM_CLEAR_DELETED",
+                    "MITIGATION_EVENT_TTL_EXPIRED"
+                ],
+                "default": "MITIGATION_EVENT_UNSPECIFIED"
+            },
+            "v202505MitigationFilters": {
+                "type": "object",
+                "properties": {
+                    "createdAt": {
+                        "$ref": "#/components/schemas/v202303TimeRange"
+                    },
+                    "mitigationIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The IDs of the mitigations to list."
+                    },
+                    "sources": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202505Source"
+                        },
+                        "description": "The source policies the mitigations are associated with."
+                    },
+                    "alarmIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The alarm IDs the mitigations are associated with."
+                    },
+                    "states": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202505MitigationState"
+                        },
+                        "description": "The states of the mitigations to filter by."
+                    },
+                    "platformIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The mitigation platform IDs the mitigations are associated with."
+                    },
+                    "methodIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The mitigation method IDs the mitigations are associated with."
+                    },
+                    "ipCidrs": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The IP/CIDR ranges the mitigations target."
+                    },
+                    "ipCidrPattern": {
+                        "type": "string",
+                        "description": "The IP/CIDR pattern to filter mitigations by."
+                    },
+                    "types": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202505MitigationType"
+                        },
+                        "description": "The types of mitigations to filter by."
+                    }
+                }
+            },
+            "v202505MitigationState": {
+                "type": "string",
+                "enum": [
+                    "MITIGATION_STATE_UNSPECIFIED",
+                    "MITIGATION_STATE_ACK_REQUIRED",
+                    "MITIGATION_STATE_ARCHIVED",
+                    "MITIGATION_STATE_CLEARING",
+                    "MITIGATION_STATE_CLEARING_FAIL",
+                    "MITIGATION_STATE_END_GRACE",
+                    "MITIGATION_STATE_END_WAIT",
+                    "MITIGATION_STATE_MANUAL_CLEAR",
+                    "MITIGATION_STATE_MANUAL_CLEARING",
+                    "MITIGATION_STATE_MANUAL_CLEARING_FAIL",
+                    "MITIGATION_STATE_MANUAL_MITIGATING",
+                    "MITIGATION_STATE_MANUAL_STARTING",
+                    "MITIGATION_STATE_MANUAL_STARTING_FAIL",
+                    "MITIGATION_STATE_MITIGATING",
+                    "MITIGATION_STATE_STARTING",
+                    "MITIGATION_STATE_STARTING_FAIL",
+                    "MITIGATION_STATE_START_WAIT"
+                ],
+                "default": "MITIGATION_STATE_UNSPECIFIED"
+            },
+            "v202505MitigationStateEntry": {
+                "type": "object",
+                "properties": {
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "The timestamp when the state change occurred."
+                    },
+                    "state": {
+                        "$ref": "#/components/schemas/v202505MitigationState"
+                    },
+                    "event": {
+                        "$ref": "#/components/schemas/v202505MitigationEvent"
+                    }
+                }
+            },
+            "v202505MitigationType": {
+                "type": "string",
+                "enum": [
+                    "MITIGATION_TYPE_UNSPECIFIED",
+                    "MITIGATION_TYPE_MANUAL",
+                    "MITIGATION_TYPE_AUTO"
+                ],
+                "default": "MITIGATION_TYPE_UNSPECIFIED",
+                "title": "- MITIGATION_TYPE_MANUAL: Manual mitigation\n - MITIGATION_TYPE_AUTO: Automatic mitigation"
+            },
+            "v202505MitigationUserAction": {
+                "type": "string",
+                "enum": [
+                    "MITIGATION_USER_ACTION_UNSPECIFIED",
+                    "MITIGATION_USER_ACTION_TAKE_CONTROL",
+                    "MITIGATION_USER_ACTION_STOP",
+                    "MITIGATION_USER_ACTION_START",
+                    "MITIGATION_USER_ACTION_DELETE",
+                    "MITIGATION_USER_ACTION_APPROVE_START",
+                    "MITIGATION_USER_ACTION_SKIP_WAIT",
+                    "MITIGATION_USER_ACTION_RETRY",
+                    "MITIGATION_USER_ACTION_ACK"
+                ],
+                "default": "MITIGATION_USER_ACTION_UNSPECIFIED"
+            },
+            "v202505MitigationsActResult": {
+                "type": "object",
+                "properties": {
+                    "mitigationId": {
+                        "type": "string",
+                        "format": "int64",
+                        "description": "The ID of the mitigation that was acted upon."
+                    },
+                    "success": {
+                        "type": "boolean",
+                        "description": "Whether the action was successful."
+                    },
+                    "message": {
+                        "type": "string",
+                        "description": "A message describing the result of the action."
+                    }
+                }
+            },
+            "v202505MitigationsServiceActRequest": {
+                "type": "object",
+                "properties": {
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The IDs of the mitigations to act on.",
+                        "required": [
+                            "ids"
+                        ]
+                    },
+                    "action": {
+                        "$ref": "#/components/schemas/v202505MitigationUserAction"
+                    }
+                },
+                "required": [
+                    "ids",
+                    "action"
+                ]
+            },
+            "v202505MitigationsServiceActResponse": {
+                "type": "object",
+                "properties": {
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202505MitigationsActResult"
+                        },
+                        "description": "The results of the mitigation actions.",
+                        "readOnly": true
+                    }
+                }
+            },
+            "v202505MitigationsServiceAvailableActionsForMitigationResponse": {
+                "type": "object",
+                "properties": {
+                    "availableActions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The available actions for the mitigation.",
+                        "readOnly": true
+                    }
+                }
+            },
+            "v202505MitigationsServiceAvailableActionsResponse": {
+                "type": "object",
+                "properties": {
+                    "transitions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/MitigationsServiceAvailableActionsResponseMitigationAvailableTransitions"
+                        },
+                        "description": "The available state transitions for mitigations.",
+                        "readOnly": true
+                    }
+                }
+            },
+            "v202505MitigationsServiceCreateRequest": {
+                "type": "object",
+                "properties": {
+                    "platformId": {
+                        "type": "string",
+                        "description": "The mitigation platform ID where the mitigation will be deployed.",
+                        "required": [
+                            "platform_id"
+                        ]
+                    },
+                    "methodId": {
+                        "type": "string",
+                        "description": "The mitigation method ID for the mitigation technique.",
+                        "required": [
+                            "method_id"
+                        ]
+                    },
+                    "ipCidr": {
+                        "type": "string",
+                        "description": "The IP/CIDR range to mitigate.",
+                        "required": [
+                            "ip_cidr"
+                        ]
+                    },
+                    "srcPort": {
+                        "type": "string",
+                        "format": "int64",
+                        "description": "The source port to mitigate."
+                    },
+                    "dstPort": {
+                        "type": "string",
+                        "format": "int64",
+                        "description": "The destination port to mitigate."
+                    },
+                    "comment": {
+                        "type": "string",
+                        "description": "A comment describing the mitigation."
+                    },
+                    "autoStopTtl": {
+                        "type": "string",
+                        "description": "The automatic stop time-to-live for the mitigation."
+                    }
+                },
+                "required": [
+                    "platformId",
+                    "methodId",
+                    "ipCidr"
+                ]
+            },
+            "v202505MitigationsServiceCreateResponse": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the created mitigation.",
+                        "readOnly": true
+                    }
+                }
+            },
+            "v202505MitigationsServiceGetResponse": {
+                "type": "object",
+                "properties": {
+                    "mitigation": {
+                        "$ref": "#/components/schemas/v202505Mitigation"
+                    }
+                }
+            },
+            "v202505MitigationsServiceListResponse": {
+                "type": "object",
+                "properties": {
+                    "pagination": {
+                        "$ref": "#/components/schemas/typesv202506PaginationInfo"
+                    },
+                    "mitigations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202505Mitigation"
+                        },
+                        "description": "The mitigations that were found matching the filters.",
+                        "readOnly": true
+                    }
+                }
+            },
+            "v202505PolicyType": {
+                "type": "string",
+                "enum": [
+                    "POLICY_TYPE_UNSPECIFIED",
+                    "POLICY_TYPE_AGENT",
+                    "POLICY_TYPE_COMPONENT",
+                    "POLICY_TYPE_DEVICE",
+                    "POLICY_TYPE_EVENT",
+                    "POLICY_TYPE_INTERFACE",
+                    "POLICY_TYPE_CUSTOM",
+                    "POLICY_TYPE_CLOUD",
+                    "POLICY_TYPE_PROTECT",
+                    "POLICY_TYPE_TRAFFIC",
+                    "POLICY_TYPE_KMETRICS"
+                ],
+                "default": "POLICY_TYPE_UNSPECIFIED",
+                "title": "- POLICY_TYPE_AGENT: NMS Agent Policy\n - POLICY_TYPE_COMPONENT: NMS Component Policy\n - POLICY_TYPE_DEVICE: NMS Device Policy\n - POLICY_TYPE_EVENT: NMS Event Policy\n - POLICY_TYPE_INTERFACE: NMS Interface Policy\n - POLICY_TYPE_CUSTOM: NMS Custom Policy\n - POLICY_TYPE_CLOUD: Flow Alerting Cloud Policy\n - POLICY_TYPE_PROTECT: Flow Alerting Protect Policy\n - POLICY_TYPE_TRAFFIC: Flow Alerting Traffic Policy\n - POLICY_TYPE_KMETRICS: Flow Alerting KMetrics Policy"
+            },
+            "v202505Source": {
+                "type": "object",
+                "properties": {
+                    "policyType": {
+                        "$ref": "#/components/schemas/v202505PolicyType"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the policy, can be integer ID, UUID or any other format.",
+                        "required": [
+                            "id"
+                        ]
+                    }
+                },
+                "required": [
+                    "policyType",
+                    "id"
+                ]
+            },
+            "v202506MitigationTarget": {
+                "type": "object",
+                "properties": {
+                    "ipCidr": {
+                        "type": "string"
+                    },
+                    "flowspec": {
+                        "$ref": "#/components/schemas/v202501FlowspecMatch"
+                    },
+                    "adaptiveFlowspec": {
+                        "$ref": "#/components/schemas/v202303KeyValue"
+                    }
+                }
+            }
+        }
+    }
+}

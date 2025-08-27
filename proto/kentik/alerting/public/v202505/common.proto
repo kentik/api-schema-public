@@ -1,0 +1,153 @@
+syntax = "proto3";
+
+package kentik.alerting.public.v202505;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/alerting/public/v202505";
+
+import "google/api/field_behavior.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+import "kentik/core/v202303/annotations.proto";
+
+
+enum PolicyType {
+  POLICY_TYPE_UNSPECIFIED = 0;
+
+  // NMS Agent Policy
+  POLICY_TYPE_AGENT = 1;
+
+  // NMS Component Policy
+  POLICY_TYPE_COMPONENT = 2;
+
+  // NMS Device Policy
+  POLICY_TYPE_DEVICE = 4;
+
+  // NMS Event Policy
+  POLICY_TYPE_EVENT = 5;
+
+  // NMS Interface Policy
+  POLICY_TYPE_INTERFACE = 6;
+
+  // NMS Custom Policy
+  POLICY_TYPE_CUSTOM = 7;
+
+  // Flow Alerting Cloud Policy
+  POLICY_TYPE_CLOUD = 8;
+
+  // Flow Alerting Protect Policy
+  POLICY_TYPE_PROTECT = 9;
+
+  // Flow Alerting Traffic Policy
+  POLICY_TYPE_TRAFFIC = 10;
+
+  // Flow Alerting KMetrics Policy
+  POLICY_TYPE_KMETRICS = 11;
+
+  // in future other types will be added, e.g. synthetics
+}
+
+message Source {
+  PolicyType policy_type = 1[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The type of policy."
+    }
+  ];
+  string id = 2[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The ID of the policy, can be integer ID, UUID or any other format."
+    }
+  ];
+}
+
+message NotificationChannelAssociation {
+  string channel_id = 1[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The ID of the notification channel."
+    }
+  ];
+}
+
+enum ActivationMode {
+  ACTIVATION_MODE_UNSPECIFIED = 0;
+
+  // Rolling window activation algorithm
+  ACTIVATION_MODE_ROLLING_WINDOW = 1;
+
+  // Toggle activation (direct activate or clear)
+  ACTIVATION_MODE_TOGGLE = 2;
+}
+
+enum AggregationType {
+  AGGREGATION_TYPE_UNSPECIFIED = 0;
+
+  // percentile aggregation P05
+  AGGREGATION_TYPE_REL_P05 = 1;
+
+  // percentile aggregation P10
+  AGGREGATION_TYPE_REL_P10 = 2;
+
+  // percentile aggregation P25
+  AGGREGATION_TYPE_REL_P25 = 3;
+
+  // percentile aggregation P50
+  AGGREGATION_TYPE_REL_P50 = 4;
+
+  // percentile aggregation P75
+  AGGREGATION_TYPE_REL_P75 = 5;
+
+  // percentile aggregation P80
+  AGGREGATION_TYPE_REL_P80 = 6;
+
+  // percentile aggregation P90
+  AGGREGATION_TYPE_REL_P90 = 7;
+
+  AGGREGATION_TYPE_REL_P95 = 8;
+
+  // percentile aggregation P98
+  AGGREGATION_TYPE_REL_P98 = 9;
+
+  // percentile aggregation P99
+  AGGREGATION_TYPE_REL_P99 = 10;
+
+  // maximum
+  AGGREGATION_TYPE_REL_MAX = 11;
+
+  // minimum
+  AGGREGATION_TYPE_REL_MIN = 12;
+
+
+}
+
+enum MitigationType {
+  MITIGATION_TYPE_UNSPECIFIED = 0;
+
+  // Manual mitigation
+  MITIGATION_TYPE_MANUAL = 1;
+
+  // Automatic mitigation
+  MITIGATION_TYPE_AUTO = 2;
+}
+
+enum MitigationPlatformType {
+  MITIGATION_PLATFORM_TYPE_UNSPECIFIED = 0;
+
+  // A10 mitigation platform
+  MITIGATION_PLATFORM_TYPE_A10 = 1;
+
+  // FlowSpec mitigation platform
+  MITIGATION_PLATFORM_TYPE_FLOWSPEC = 2;
+
+  // Radware mitigation platform
+  MITIGATION_PLATFORM_TYPE_RADWARE = 3;
+
+  // RTBH mitigation platform
+  MITIGATION_PLATFORM_TYPE_RTBH = 4;
+
+  // CFMT mitigation platform
+  MITIGATION_PLATFORM_TYPE_CFMT = 5;
+
+  // Adaptive FlowSpec mitigation platform
+  MITIGATION_PLATFORM_TYPE_ADAPTIVE_FLOWSPEC = 6;
+}

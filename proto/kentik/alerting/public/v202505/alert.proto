@@ -1,0 +1,801 @@
+syntax = "proto3";
+
+package kentik.alerting.public.v202505;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/alerting/public/v202505";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+import "kentik/core/v202303/annotations.proto";
+import "kentik/alerting/types/v202303/types.proto";
+import "kentik/alerting/types/v202506/pagination.proto";
+import "kentik/alerting/types/v202506/sorting.proto";
+
+import "kentik/alerting/public/v202505/common.proto";
+import "kentik/alerting/public/v202505/nms_common.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Kentik Alerting Alerts API"
+    version: "v202505"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api-schema-public"
+    }
+    description: "# Overview\n"
+    "The Alerts API provides programmatic access to Kentik's Alerts, which allows the retrieval and basic manual control of alerts."
+  }
+  external_docs: {
+    url: "https://kb.kentik.com/docs/alerting"
+    description: "Kentik Alerts documentation"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+
+service AlertService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "admin.alerting";
+
+  rpc Get(AlertServiceGetRequest) returns (AlertServiceGetResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.alerting:read";
+    option (google.api.http) = {
+      get: "/v202505/alerts/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "Get"
+      summary: "Get Alert"
+      description: "Returns an alert object that contains information about an individual alert."
+    };
+  }
+
+  rpc List(AlertServiceListRequest) returns (AlertServiceListResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.alerting:read";
+    option (google.api.http) = {
+      post: "/v202505/alerts"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "List"
+      summary: "List Alerts"
+      description: "Returns an array of alert objects that contain information about individual alerts."
+    };
+  }
+
+  rpc Ack(AlertServiceAckRequest) returns (AlertServiceAckResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.alerting:write";
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "Ack"
+      summary: "Ack Alert"
+      description: "Acknowledges an alert."
+    };
+    option (google.api.http) = {
+      post: "/v202505/alerts/{id}/ack"
+      body: "*"
+    };
+  }
+
+  rpc UnAck(AlertServiceUnAckRequest) returns (AlertServiceUnAckResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.alerting:write";
+    option (google.api.http) = {
+      post: "/v202505/alerts/{id}/unack"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "UnAck"
+      summary: "UnAck Alert"
+      description: "Unacknowledges an alert (removes the acknowledgement)."
+    };
+  }
+
+  rpc Clear(AlertServiceClearRequest) returns (AlertServiceClearResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.alerting:write";
+    option (google.api.http) = {
+      post: "/v202505/alerts/clear"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "Clear"
+      summary: "Clear Alerts"
+      description: "Clears alerts."
+    };
+  }
+}
+
+message AlertServiceGetRequest {
+  string id = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The ID of the alert to get."
+    }
+  ];
+}
+
+message AlertServiceGetResponse {
+  Alert alert = 1[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The alert object that contains information about an individual alert."
+    }
+  ];
+  repeated AlertPhase history = 2[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The history of the alert."
+    }
+  ];
+
+}
+
+message AlertPhase {
+  kentik.alerting.types.v202303.Severity severity = 1[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The severity of the alert phase."
+    }
+  ];
+  google.protobuf.Timestamp start_time_at = 2[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The start time of the alert phase."
+    }
+  ];
+  google.protobuf.Timestamp end_time_at = 3[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The end time of the alert phase."
+    }
+  ];
+
+
+  oneof context {
+    FlowContext flow = 4[
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The context of the alert phase for flow alerts."
+      }
+    ];
+    NmsContext nms = 5[
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The context of the alert phase for NMS alerts."
+      }
+    ];
+    // in future:
+    // SyntheticsContext synthetics = 6;
+  }
+}
+
+message AlertServiceListRequest {
+  kentik.alerting.types.v202506.PaginationConfig pagination = 1[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The pagination configuration for the alert list.",
+      default: "{\"limit\": 100, \"offset\": 0, \"include_total_count\": false}"
+    }
+  ];
+  kentik.alerting.types.v202506.SortingConfig sorting = 2[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The sorting configuration for the alert list.",
+      default: "{\"fields\": [{\"by\": \"BY_START_TIME\", \"order\": \"ORDER_DESCENDING\"}]}"
+    }
+  ];
+  AlertFilters filters = 3[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The filter criteria required to match alerts for listing. All provided filters are combined with AND operator.",
+      default: "{}"
+    }
+  ];
+}
+
+message AlertFilters {
+  repeated kentik.alerting.types.v202303.Severity severities = 1[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The severities of the alerts to list.",
+      default: "[]"
+    }
+  ];
+  repeated string alert_ids = 2[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The IDs of the alerts to list.",
+      default: "[]"
+    }
+  ];
+  repeated string applications = 3[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The applications of the alerts to list. Applications are alerting integrations. It's recommended to use sources instead of applications.",
+      default: "[]"
+    }
+  ];
+  repeated Source sources = 4[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The source policies of the alerts to list.",
+      default: "[]"
+    }
+  ];
+  kentik.alerting.types.v202303.MultiAttributeFilter keys = 5[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The keys filters of the alerts to list.",
+      default: "{}"
+    }
+  ];
+
+  repeated AlertState states = 6[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The states of the alerts to list.",
+      default: "[]"
+    }
+  ];
+  kentik.alerting.types.v202303.TimeRange started_at = 7[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The time range of alert start time of the alerts to list.",
+      default: "{}"
+    }
+  ];
+  kentik.alerting.types.v202303.TimeRange ended_at = 8[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The time range of alert end time of the alerts to list.",
+      default: "{}"
+    }
+  ];
+  repeated kentik.alerting.types.v202303.Severity highest_severities = 9[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The highest reached severities of the alerts to list.",
+      default: "[]"
+    }
+  ];
+  repeated kentik.alerting.types.v202303.Severity recent_severities = 10[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The recent severities of the alerts to list.",
+      default: "[]"
+    }
+  ];
+
+  repeated AlertAcknowledgement ack_states = 11[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The acknowledgement states of the alerts to list.",
+      default: "[]"
+    }
+  ];
+  kentik.alerting.types.v202303.TimeRange active_at = 12[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The time range of alert active time of the alerts to list.",
+      default: "{}"
+    }
+  ];
+  repeated string acked_by_user_ids = 13[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The IDs of the users who acknowledged the alerts to list.",
+      default: "[]"
+    }
+  ];
+  bool include_removed_policies = 14[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Whether to include removed policies in the response. If true, the response will include alerts from source that has been removed.",
+      default: "false"
+    }
+  ];
+  repeated string context_search = 15[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The context search terms (e.g. device name, interface name, site name, labels etc.) of the alerts to list.",
+      default: "[]"
+    }
+  ];
+}
+
+message AlertServiceListResponse {
+  kentik.alerting.types.v202506.PaginationInfo pagination = 1[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The pagination information for the alert list."
+    }
+  ];
+  repeated Alert alerts = 2[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The alerts result set."
+    }
+  ];
+}
+
+message AlertServiceAckRequest {
+  string id = 1[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The ID of the alert to acknowledge."
+    }
+  ];
+  string comment = 2[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The comment to add to the acknowledgement.",
+      default: ""
+    }
+  ];
+}
+
+message AlertServiceAckResponse {
+  Alert alert = 1[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The alert object that contains information about an individual alert which has been acknowledged."
+    }
+  ];
+}
+
+message AlertServiceUnAckRequest {
+  string id = 1[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The ID of the alert to remove the acknowledgement from."
+    }
+  ];
+}
+
+message AlertServiceUnAckResponse {
+  Alert alert = 1[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The alert object that contains information about an individual alert which has been unacknowledged."
+    }
+  ];
+}
+
+message AlertServiceClearRequest {
+  repeated string alert_ids = 1[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The IDs of the alerts to clear."
+    }
+  ];
+}
+
+message AlertServiceClearResponse {
+  repeated string cleared_alert_ids = 1[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The IDs of the alerts that have been cleared."
+    }
+  ];
+}
+
+message Alert {
+  string id = 1[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The ID (UUID format) of the alert."
+    }
+  ];
+  Source source = 2[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The source policy of the alert."
+    }
+  ];
+  google.protobuf.Timestamp start_time_at = 4[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The start time of the alert."
+    }
+  ];
+
+  google.protobuf.Timestamp end_time_at = 5[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The end time of the alert."
+    }
+  ];
+  AlertState state = 6[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The current state of the alert."
+    }
+  ];
+  kentik.alerting.types.v202303.Severity severity = 7[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The current severity of the alert."
+    }
+  ];
+
+  kentik.alerting.types.v202303.Severity highest_severity = 8[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The highest reached severity of the alert."
+    }
+  ];
+  Acknowledgement acknowledgement = 9[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The acknowledgement state of the alert."
+    }
+  ];
+
+  google.protobuf.Timestamp event_start_time_at = 10[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The timestamp of the first trigger event that caused an alert to eventually activate."
+    }
+  ];
+
+  oneof context {
+    FlowContext flow = 11[
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The context of the alert for flow alerts."
+      }
+    ];
+    NmsContext nms = 12[
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The context of the alert for NMS alerts."
+      }
+    ];
+
+    // in future:
+    // SyntheticsContext synthetics = 13;
+  }
+
+  message Acknowledgement {
+    AlertAcknowledgement state = 1[
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The acknowledgement state of the alert."
+      }
+    ];
+    string acked_by_user = 2[
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The user ID of the user who acknowledged the alert. Present only if the alert has been acknowledged manually."
+      }
+    ];
+    string auto_ack_id = 3[
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The ID of the auto-ack that acknowledged the alert. Present only if the alert has been auto-acknowledged."
+      }
+    ];
+    google.protobuf.Timestamp acked_at = 4[
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The timestamp of the acknowledgement."
+      }
+    ];
+  }
+}
+
+enum AlertState {
+  ALERT_STATE_UNSPECIFIED = 0;
+  // alert is cleared, no longer active
+  ALERT_STATE_CLEAR = 1;
+  // alert is active
+  ALERT_STATE_ACTIVE = 2;
+}
+
+
+enum AlertAcknowledgement {
+  ALERT_ACKNOWLEDGEMENT_UNSPECIFIED = 0;
+
+  // alert acknowledgement is required (by the policy configuration)
+  ALERT_ACKNOWLEDGEMENT_REQUIRED = 1;
+
+  // alert acknowledgement is done (either manually or automatically)
+  ALERT_ACKNOWLEDGEMENT_DONE = 2;
+
+  // alert acknowledgement is not done (no matter if it's required or not)
+  ALERT_ACKNOWLEDGEMENT_NOT_ACKED = 3;
+}
+
+message FlowContext {
+  repeated MetricValue metric_values = 1[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The metric values of the alert determined by the policy configuration."
+    }
+  ];
+  ActivationStatus activation_status = 2[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The activation status of the alert referring to potential use of baseline values."
+    }
+  ];
+  double baseline_value = 3[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The baseline value used when activating the alert."
+    }
+  ];
+  map<string, AlertKeyDetails> alert_key_details = 4[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The alert key details of the alert: each key might be expanded into multiple details."
+    }
+  ];
+
+  message MetricValue {
+    string name = 1[
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The name of the metric value (e.g. 'bytes_in', 'bytes_out', 'packets_in', 'packets_out', etc.)."
+      }
+    ];
+    double value = 2[
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The value of the given metric."
+      }
+    ];
+  }
+
+  enum ActivationStatus {
+    ACTIVATION_STATUS_UNSPECIFIED = 0;
+
+    // baseline for this alert key was not used (e.g. policy configuration is not using baseline)
+    ACTIVATION_STATUS_NOT_USED_BASELINE = 1;
+
+    // baseline for this alert key was missing, and the fallback is to just skip
+    ACTIVATION_STATUS_BASELINE_MISSING_SKIP = 2;
+
+    // baseline for this alert key was missing, and the fallback is to trigger the alert
+    ACTIVATION_STATUS_BASELINE_MISSING_TRIGGER = 3;
+
+    // baseline for this alert key was valid and hence used
+    ACTIVATION_STATUS_BASELINE_USED_FOUND = 4;
+
+    // baseline for this alert key was missing and default value was used
+    ACTIVATION_STATUS_BASELINE_MISSING_DEFAULT = 5;
+
+    // baseline for this alert key was missing and lowest baseline value was used
+    ACTIVATION_STATUS_BASELINE_MISSING_LOWEST = 6;
+
+    // baseline for this alert key was missing and highest baseline value was used
+    ACTIVATION_STATUS_BASELINE_MISSING_HIGHEST = 7;
+
+    // baseline for this alert key was missing and this policy wants to trigger the alert in such case
+    ACTIVATION_STATUS_BASELINE_NOT_FOUND_EXISTS = 8;
+
+    // current value for this alert key was missing, and the fallback is to just skip
+    ACTIVATION_STATUS_CURRENT_MISSING_SKIP = 9;
+
+    // current value for this alert key was missing, and the fallback is to trigger the alert
+    ACTIVATION_STATUS_CURRENT_MISSING_TRIGGER = 10;
+
+    // current value for this alert key was valid and hence used
+    ACTIVATION_STATUS_CURRENT_USED_FOUND = 11;
+
+    // current value for this alert key was missing and default value was used
+    ACTIVATION_STATUS_CURRENT_MISSING_DEFAULT = 12;
+
+    // current value for this alert key was missing and lowest current traffic value was used
+    ACTIVATION_STATUS_CURRENT_MISSING_LOWEST = 13;
+
+    // current value for this alert key was missing and highest current traffic value was used
+    ACTIVATION_STATUS_CURRENT_MISSING_HIGHEST = 14;
+
+    // current value for this alert key was missing and this policy wants to trigger the alert in such case
+    ACTIVATION_STATUS_CURRENT_NOT_FOUND_EXISTS = 15;
+
+    // baseline for this alert key was missing and no other value was found, so default value was used instead of lowest baseline value
+    ACTIVATION_STATUS_BASELINE_MISSING_DEFAULT_INSTEAD_OF_LOWEST = 16;
+
+    // baseline for this alert key was missing and no other value was found, so default value was used instead of highest baseline value
+    ACTIVATION_STATUS_BASELINE_MISSING_DEFAULT_INSTEAD_OF_HIGHEST = 17;
+
+    // current value for this alert key was missing and no other value was found, so default value was used instead of lowest current traffic value
+    ACTIVATION_STATUS_CURRENT_MISSING_DEFAULT_INSTEAD_OF_LOWEST = 18;
+
+    // current value for this alert key was missing and no other value was found, so default value was used instead of highest current traffic value
+    ACTIVATION_STATUS_CURRENT_MISSING_DEFAULT_INSTEAD_OF_HIGHEST = 19;
+  }
+
+  message AlertKeyDetails {
+    DeviceDetails device = 1[
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The device details of the alert key."
+      }
+    ];
+    InterfaceDetails interface = 2[
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The interface details of the alert key."
+      }
+    ];
+    SiteDetails site = 3[
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The site details of the alert key."
+      }
+    ];
+    string extended_value = 4[
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The extended value of the alert key."
+      }
+    ];
+  }
+
+  message DeviceDetails {
+    string id = 1[
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The ID of the device."
+      }
+    ];
+    string name = 2[
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The name of the device."
+      }
+    ];
+    string type = 3[
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The type of the device (e.g. 'router')."
+      }
+    ];
+    repeated string labels = 4[
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The labels associated with the device."
+      }
+    ];
+  }
+
+  message InterfaceDetails {
+    string snmp_id = 1[
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The SNMP ID of the interface."
+      }
+    ];
+    string snmp_alias = 2[
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The SNMP alias of the interface (e.g. 'eth0')."
+      }
+    ];
+    string description = 3[
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The description of the interface."
+      }
+    ];
+    int64 snmp_speed_mbps = 4[
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The SNMP speed of the interface in Mbps."
+      }
+    ];
+  }
+
+  message SiteDetails {
+    string id = 1[
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The ID of the site."
+      }
+    ];
+    string name = 2[
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The name of the site."
+      }
+    ];
+    string latitude = 3[
+
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The geographic latitude of the site."
+      }
+    ];
+    string longitude = 4[
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The geographic longitude of the site."
+      }
+    ];
+    string location = 5[
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The location of the site (e.g. 'New York, NY')."
+      }
+    ];
+    string country = 6[
+      (google.api.field_behavior) = OUTPUT_ONLY,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The country of the site (e.g. 'United States')."
+      }
+    ];
+  }
+}
+
+// in the comments are evm equivalents
+message NmsContext {
+  ActivationInfo activation_info = 1; // AlarmPolicyThreshold
+  DatasetInfo dataset_info = 2; // AlarmPolicyTarget
+  map<string, AlarmTarget> targets = 3; // AlarmTargets
+  map<string, AlarmMetricMap> metric_values = 4; // AlarmMetrics
+  map<string, AlarmMetricMap> previous_metric_values = 5; // AlarmPreviousStatus
+  map<string, string> device = 6; // AlarmDevice
+  // AlarmGroupKey - for example: {device_id: 123, ifindex: 42} for an interface alarm OR {agent_id: 12} for an agent alarm
+  // sub-set of dimensions which all matches should include
+  map<string, string> group_key = 7;
+
+  message ActivationInfo {
+    NmsActivateOrClearConditions activate = 1;
+    string severity = 2;
+
+    oneof clear_type {
+      bool clear_manual = 3;
+      bool clear_unless_activated = 4;
+    }
+  }
+
+  message DatasetInfo {
+    bool custom_type = 1;
+    repeated string dimensions = 2;
+    string entity_type = 3;
+    repeated string measurements = 4;
+  }
+
+  message AlarmTarget {
+    map<string, double> fields = 1;
+    map<string, string> tags = 2;
+  }
+
+  message AlarmMetricMap {
+    map<string, double> metrics = 1;
+  }
+}

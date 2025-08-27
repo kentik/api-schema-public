@@ -1,0 +1,159 @@
+syntax = "proto3";
+
+package kentik.alerting.public.v202505;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/alerting/public/v202505";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+import "kentik/core/v202303/annotations.proto";
+import "kentik/alerting/types/v202303/types.proto";
+
+
+message PolicyFilters {
+  bool not = 1[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "If true, the filter will be negated.",
+      default: "false"
+    }
+  ];
+  FilterConnector connector = 2[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The connector (operator) of the filter."
+    }
+  ];
+  repeated FieldFilter filters = 3[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The actual filters of the policy."
+    }
+  ];
+  repeated PolicyFilters groups = 4[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The nested groups of the policy filters."
+    }
+  ];
+  repeated SavedFilter saved = 5[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The saved filters of the policy. Saved filters are pre-defined filters that can be used in the policy."
+    }
+  ];
+
+  message FieldFilter {
+    string field = 1[
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The field the filter is applied to."
+      }
+    ];
+    Operator operator = 2[
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The operator applied to the filter."
+      }
+    ];
+    string value = 3[
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The right-hand value used for the filter operation."
+      }
+    ];
+  }
+
+  message SavedFilter {
+    string id = 1[
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The ID of the saved filter. Saved filters are pre-defined filters that can be used in the policy."
+      }
+    ];
+    bool not = 2[
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "If true, the saved filter will be negated."
+      }
+    ];
+  }
+
+  enum FilterConnector {
+    FILTER_CONNECTOR_UNSPECIFIED = 0;
+
+    // All of the conditions must be true
+    FILTER_CONNECTOR_AND = 1;
+
+    // Any of the conditions must be true
+    FILTER_CONNECTOR_OR = 2;
+  }
+
+  enum Operator {
+    // TODO: expose only ones used
+    OPERATOR_UNSPECIFIED = 0;
+    OPERATOR_EQUALS = 1;
+    OPERATOR_NOT_EQUALS = 2;
+    OPERATOR_BITWISE_AND = 3;
+    OPERATOR_BITWISE_OR = 4;
+    OPERATOR_LESS_THAN = 5;
+    OPERATOR_GREATER_THAN = 6;
+    OPERATOR_LESS_THAN_OR_EQUALS = 7;
+    OPERATOR_GREATER_THAN_OR_EQUALS = 8;
+    OPERATOR_NOT_CONTAINS = 9;
+    OPERATOR_CONTAINS = 10;
+    OPERATOR_NOT_CONTAINS_REGULAR_EXP = 11;
+    OPERATOR_CONTAINS_REGULAR_EXP = 12;
+    OPERATOR_NOT_CONTAINS_REGULAR_EXP_STAR = 13;
+    OPERATOR_CONTAINS_REGULAR_EXP_STAR = 14;
+    OPERATOR_BITWISE_ANY = 15;
+    OPERATOR_BITWISE_NONE = 16;
+    OPERATOR_BITWISE_ALL = 17;
+    OPERATOR_BITWISE_NOT_ALL = 18;
+    OPERATOR_EXISTS = 19;
+    OPERATOR_NOT_EXISTS = 20;
+  }
+}
+
+message PolicyDimensionFilters {
+  repeated Conjunction conjunctions = 1[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The conjunctions of the policy dimension filters."
+    }
+  ];
+
+  message Conjunction {
+    repeated Entry entries = 1[
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The entries of the conjunction."
+      }
+    ];
+  }
+
+  message Entry {
+    bool not = 1 [
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "If true, the entry will be negated."
+      }
+    ];
+    string dimension = 2[
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The dimension the filter entry is applied to."
+      }
+    ];
+    oneof value {
+      StringArray equals_any = 3[
+        (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          description: "The values the dimension must equal any of."
+        }
+      ];
+      StringArray matches_any = 4[
+        (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          description: "The values the dimension must match any of."
+        }
+      ];
+    }
+
+    message StringArray {
+      repeated string values = 1[
+        (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          description: "The values of the string array."
+        }
+      ];
+    }
+  }
+}
