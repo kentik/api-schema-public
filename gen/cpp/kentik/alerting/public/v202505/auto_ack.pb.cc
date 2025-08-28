@@ -703,21 +703,20 @@ const char descriptor_table_protodef_kentik_2falerting_2fpublic_2fv202505_2fauto
     "o-ack configuration.*\006Delete\362\327\002\024admin.al"
     "erting:write\202\323\344\223\002\037*\035/v202505/alerts/ack/"
     "auto/{id}\032,\312A\023grpc.api.kentik.com\352\327\002\016adm"
-    "in.alerting\220\330\002\003B\232\004ZIgithub.com/kentik/ap"
+    "in.alerting\220\330\002\003B\224\004ZIgithub.com/kentik/ap"
     "i-schema-public/gen/go/kentik/alerting/p"
-    "ublic/v202505\222A\313\003\022\377\001\n\034Kentik Alert Auto-"
-    "Acking API\022\216\001# Overview\nThe Alerts Auto-"
-    "Acking API provides programmatic access "
-    "to Kentik\'s capabilities of configuring "
-    "and managing auto-acking of alerts.\"E\n\026K"
-    "entik API Engineering\022+https://github.co"
-    "m/kentik/api-schema-public2\007v202505*\001\0022\020"
-    "application/json:\020application/jsonZD\n\036\n\005"
-    "email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010"
-    "\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n"
-    "\005token\022\000rB\n\033Kentik Alerts documentation\022"
-    "#https://kb.kentik.com/docs/alertingb\006pr"
-    "oto3"
+    "ublic/v202505\222A\305\003\022\371\001\n\026Alerting Auto-Acks"
+    " API\022\216\001# Overview\nThe Alerts Auto-Acking"
+    " API provides programmatic access to Ken"
+    "tik\'s capabilities of configuring and ma"
+    "naging auto-acking of alerts.\"E\n\026Kentik "
+    "API Engineering\022+https://github.com/kent"
+    "ik/api-schema-public2\007v202505*\001\0022\020applic"
+    "ation/json:\020application/jsonZD\n\036\n\005email\022"
+    "\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-C"
+    "H-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token"
+    "\022\000rB\n\033Kentik Alerts documentation\022#https"
+    "://kb.kentik.com/docs/alertingb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fauto_5fack_2eproto_deps[11] =
     {
@@ -737,7 +736,7 @@ static ::absl::once_flag descriptor_table_kentik_2falerting_2fpublic_2fv202505_2
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fauto_5fack_2eproto = {
     false,
     false,
-    6644,
+    6638,
     descriptor_table_protodef_kentik_2falerting_2fpublic_2fv202505_2fauto_5fack_2eproto,
     "kentik/alerting/public/v202505/auto_ack.proto",
     &descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fauto_5fack_2eproto_once,

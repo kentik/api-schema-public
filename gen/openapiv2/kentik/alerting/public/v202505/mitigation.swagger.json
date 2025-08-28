@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Kentik Alert Mitigations API",
+    "title": "Mitigations API",
     "description": "# Overview\nThe Alert Mitigations API provides programmatic access to Kentik's capabilities of configuring and managing network infrastructure mitigations that are triggered automatically based on alerts or manually to prevent network attacks.",
     "version": "v202505",
     "contact": {

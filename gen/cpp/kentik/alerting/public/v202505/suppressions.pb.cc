@@ -704,21 +704,21 @@ const char descriptor_table_protodef_kentik_2falerting_2fpublic_2fv202505_2fsupp
     "sion configuration.*\006Delete\362\327\002\024admin.ale"
     "rting:write\202\323\344\223\002\034*\032/v202505/suppressions"
     "/{id}\032,\312A\023grpc.api.kentik.com\352\327\002\016admin.a"
-    "lerting\220\330\002\003B\301\004ZIgithub.com/kentik/api-sc"
+    "lerting\220\330\002\003B\275\004ZIgithub.com/kentik/api-sc"
     "hema-public/gen/go/kentik/alerting/publi"
-    "c/v202505\222A\362\003\022\246\002\n\035Kentik Alert Suppressi"
-    "ons API\022\264\001# Overview\nThe Alerts Suppress"
-    "ions API provides programmatic access to"
-    " Kentik\'s capabilities of configuring an"
-    "d managing alert suppressions, preventin"
-    "g alerts from being activated.\"E\n\026Kentik"
-    " API Engineering\022+https://github.com/ken"
-    "tik/api-schema-public2\007v202505*\001\0022\020appli"
-    "cation/json:\020application/jsonZD\n\036\n\005email"
-    "\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-"
-    "CH-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005toke"
-    "n\022\000rB\n\033Kentik Alerts documentation\022#http"
-    "s://kb.kentik.com/docs/alertingb\006proto3"
+    "c/v202505\222A\356\003\022\242\002\n\031Alerting Suppressions "
+    "API\022\264\001# Overview\nThe Alerts Suppressions"
+    " API provides programmatic access to Ken"
+    "tik\'s capabilities of configuring and ma"
+    "naging alert suppressions, preventing al"
+    "erts from being activated.\"E\n\026Kentik API"
+    " Engineering\022+https://github.com/kentik/"
+    "api-schema-public2\007v202505*\001\0022\020applicati"
+    "on/json:\020application/jsonZD\n\036\n\005email\022\025\010\002"
+    "\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-A"
+    "uth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r"
+    "B\n\033Kentik Alerts documentation\022#https://"
+    "kb.kentik.com/docs/alertingb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fsuppressions_2eproto_deps[11] =
     {
@@ -738,7 +738,7 @@ static ::absl::once_flag descriptor_table_kentik_2falerting_2fpublic_2fv202505_2
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fsuppressions_2eproto = {
     false,
     false,
-    6839,
+    6835,
     descriptor_table_protodef_kentik_2falerting_2fpublic_2fv202505_2fsuppressions_2eproto,
     "kentik/alerting/public/v202505/suppressions.proto",
     &descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fsuppressions_2eproto_once,

@@ -721,23 +721,23 @@ const char descriptor_table_protodef_kentik_2falerting_2fpublic_2fv202505_2fsile
     "otifications configuration.*\006Delete\362\327\002\024a"
     "dmin.alerting:write\202\323\344\223\002\036*\034/v202505/aler"
     "ts/silence/{id}\032,\312A\023grpc.api.kentik.com\352"
-    "\327\002\016admin.alerting\220\330\002\003B\206\005ZIgithub.com/ken"
+    "\327\002\016admin.alerting\220\330\002\003B\203\005ZIgithub.com/ken"
     "tik/api-schema-public/gen/go/kentik/aler"
-    "ting/public/v202505\222A\267\004\022\353\002\n&Kentik Alert"
-    " NotificationSilencing API\022\360\001# Overview\n"
-    "The Alert Silencing API provides program"
-    "matic access to Kentik\'s capabilities of"
-    " configuring and managing alert silencin"
-    "g, preventing notifications from being s"
-    "ent for alert state changes (activation,"
-    " severity change, clearance).\"E\n\026Kentik "
-    "API Engineering\022+https://github.com/kent"
-    "ik/api-schema-public2\007v202505*\001\0022\020applic"
-    "ation/json:\020application/jsonZD\n\036\n\005email\022"
-    "\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-C"
-    "H-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token"
-    "\022\000rB\n\033Kentik Alerts documentation\022#https"
-    "://kb.kentik.com/docs/alertingb\006proto3"
+    "ting/public/v202505\222A\264\004\022\350\002\n#Alerting Not"
+    "ification Silencing API\022\360\001# Overview\nThe"
+    " Alert Silencing API provides programmat"
+    "ic access to Kentik\'s capabilities of co"
+    "nfiguring and managing alert silencing, "
+    "preventing notifications from being sent"
+    " for alert state changes (activation, se"
+    "verity change, clearance).\"E\n\026Kentik API"
+    " Engineering\022+https://github.com/kentik/"
+    "api-schema-public2\007v202505*\001\0022\020applicati"
+    "on/json:\020application/jsonZD\n\036\n\005email\022\025\010\002"
+    "\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-A"
+    "uth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r"
+    "B\n\033Kentik Alerts documentation\022#https://"
+    "kb.kentik.com/docs/alertingb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fsilencing_2eproto_deps[11] =
     {
@@ -757,7 +757,7 @@ static ::absl::once_flag descriptor_table_kentik_2falerting_2fpublic_2fv202505_2
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fsilencing_2eproto = {
     false,
     false,
-    7798,
+    7795,
     descriptor_table_protodef_kentik_2falerting_2fpublic_2fv202505_2fsilencing_2eproto,
     "kentik/alerting/public/v202505/silencing.proto",
     &descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fsilencing_2eproto_once,

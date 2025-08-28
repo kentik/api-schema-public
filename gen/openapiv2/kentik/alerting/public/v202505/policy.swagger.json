@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Kentik Alerting Policies API",
+    "title": "Alerting Policies API",
     "description": "# Overview\nThe Alerting Policies API provides programmatic access to Kentik's configuration of the policies that define how, when, and to whom alerts are triggered.",
     "version": "v202505",
     "contact": {

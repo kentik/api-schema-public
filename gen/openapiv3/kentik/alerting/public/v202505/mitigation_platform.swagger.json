@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Kentik Alert Mitigation Platforms API",
+        "title": "Mitigation Platforms API",
         "description": "# Overview\nThe Alert Mitigation Platforms API provides programmatic access to Kentik's capabilities of configuring and managing mitigation platforms that define where and how network infrastructure mitigations are deployed.",
         "version": "v202505",
         "contact": {

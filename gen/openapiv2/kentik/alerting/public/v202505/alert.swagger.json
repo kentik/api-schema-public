@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Kentik Alerting Alerts API",
+    "title": "Alerting Alert API",
     "description": "# Overview\nThe Alerts API provides programmatic access to Kentik's Alerts, which allows the retrieval and basic manual control of alerts.",
     "version": "v202505",
     "contact": {
@@ -846,7 +846,7 @@
             "$ref": "#/definitions/v202303Severity"
           },
           "default": "[]",
-          "description": "The highest reached severities of the alerts to list."
+          "description": "Filter alerts by the highest reached severity."
         },
         "recentSeverities": {
           "type": "array",
@@ -854,7 +854,7 @@
             "$ref": "#/definitions/v202303Severity"
           },
           "default": "[]",
-          "description": "The recent severities of the alerts to list."
+          "description": "Filter alerts by the most recent (for active ones) and last (for cleared ones) severity."
         },
         "ackStates": {
           "type": "array",

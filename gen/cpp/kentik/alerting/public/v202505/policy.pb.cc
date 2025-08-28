@@ -757,21 +757,21 @@ const char descriptor_table_protodef_kentik_2falerting_2fpublic_2fv202505_2fpoli
     "\327\002\024admin.alerting:write\202\323\344\223\0020\"+/v202505/"
     "policies/{policy_type}/{id}/enable:\001*\032,\312"
     "A\023grpc.api.kentik.com\352\327\002\016admin.alerting\220"
-    "\330\002\003B\260\004ZIgithub.com/kentik/api-schema-pub"
+    "\330\002\003B\251\004ZIgithub.com/kentik/api-schema-pub"
     "lic/gen/go/kentik/alerting/public/v20250"
-    "5\222A\341\003\022\225\002\n\034Kentik Alerting Policies API\022\244"
-    "\001# Overview\nThe Alerting Policies API pr"
-    "ovides programmatic access to Kentik\'s c"
-    "onfiguration of the policies that define"
-    " how, when, and to whom alerts are trigg"
-    "ered.\"E\n\026Kentik API Engineering\022+https:/"
-    "/github.com/kentik/api-schema-public2\007v2"
-    "02505*\001\0022\020application/json:\020application/"
-    "jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\""
-    "\n\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005"
-    "email\022\000\n\t\n\005token\022\000rB\n\033Kentik Alerts docu"
-    "mentation\022#https://kb.kentik.com/docs/al"
-    "ertingb\006proto3"
+    "5\222A\332\003\022\216\002\n\025Alerting Policies API\022\244\001# Over"
+    "view\nThe Alerting Policies API provides "
+    "programmatic access to Kentik\'s configur"
+    "ation of the policies that define how, w"
+    "hen, and to whom alerts are triggered.\"E"
+    "\n\026Kentik API Engineering\022+https://github"
+    ".com/kentik/api-schema-public2\007v202505*\001"
+    "\0022\020application/json:\020application/jsonZD\n"
+    "\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token"
+    "\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email\022\000"
+    "\n\t\n\005token\022\000rB\n\033Kentik Alerts documentati"
+    "on\022#https://kb.kentik.com/docs/alertingb"
+    "\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fpolicy_2eproto_deps[16] =
     {
@@ -796,7 +796,7 @@ static ::absl::once_flag descriptor_table_kentik_2falerting_2fpublic_2fv202505_2
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fpolicy_2eproto = {
     false,
     false,
-    7374,
+    7367,
     descriptor_table_protodef_kentik_2falerting_2fpublic_2fv202505_2fpolicy_2eproto,
     "kentik/alerting/public/v202505/policy.proto",
     &descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fpolicy_2eproto_once,

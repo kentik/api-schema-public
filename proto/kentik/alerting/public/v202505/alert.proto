@@ -20,7 +20,7 @@ import "kentik/alerting/public/v202505/nms_common.proto";
 
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   info: {
-    title: "Kentik Alerting Alerts API"
+    title: "Alerting Alert API"
     version: "v202505"
     contact: {
       name: "Kentik API Engineering"
@@ -286,14 +286,14 @@ message AlertFilters {
   repeated kentik.alerting.types.v202303.Severity highest_severities = 9[
     (google.api.field_behavior) = OPTIONAL,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "The highest reached severities of the alerts to list.",
+      description: "Filter alerts by the highest reached severity.",
       default: "[]"
     }
   ];
   repeated kentik.alerting.types.v202303.Severity recent_severities = 10[
     (google.api.field_behavior) = OPTIONAL,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "The recent severities of the alerts to list.",
+      description: "Filter alerts by the most recent (for active ones) and last (for cleared ones) severity.",
       default: "[]"
     }
   ];

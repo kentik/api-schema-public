@@ -415,23 +415,22 @@ const char descriptor_table_protodef_kentik_2falerting_2fpublic_2fv202505_2fmiti
     "s a mitigation method.*\003Get\362\327\002\023admin.ale"
     "rting:read\202\323\344\223\002\033\022\031/mitigations/methods/{"
     "id}\032,\312A\023grpc.api.kentik.com\352\327\002\016admin.ale"
-    "rting\220\330\002\003B\364\004ZIgithub.com/kentik/api-sche"
+    "rting\220\330\002\003B\347\004ZIgithub.com/kentik/api-sche"
     "ma-public/gen/go/kentik/alerting/public/"
-    "v202505\222A\245\004\022\331\002\n#Kentik Alert Mitigation "
-    "Methods API\022\341\001# Overview\nThe Alert Mitig"
-    "ation Methods API provides programmatic "
-    "access to Kentik\'s capabilities of confi"
-    "guring and managing mitigation methods t"
-    "hat define the specific parameters used "
-    "for network infrastructure mitigations.\""
-    "E\n\026Kentik API Engineering\022+https://githu"
-    "b.com/kentik/api-schema-public2\007v202505*"
-    "\001\0022\020application/json:\020application/jsonZD"
-    "\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005toke"
-    "n\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email\022"
-    "\000\n\t\n\005token\022\000rB\n\033Kentik Alerts documentat"
-    "ion\022#https://kb.kentik.com/docs/alerting"
-    "b\006proto3"
+    "v202505\222A\230\004\022\314\002\n\026Mitigation Methods API\022\341"
+    "\001# Overview\nThe Alert Mitigation Methods"
+    " API provides programmatic access to Ken"
+    "tik\'s capabilities of configuring and ma"
+    "naging mitigation methods that define th"
+    "e specific parameters used for network i"
+    "nfrastructure mitigations.\"E\n\026Kentik API"
+    " Engineering\022+https://github.com/kentik/"
+    "api-schema-public2\007v202505*\001\0022\020applicati"
+    "on/json:\020application/jsonZD\n\036\n\005email\022\025\010\002"
+    "\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-A"
+    "uth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r"
+    "B\n\033Kentik Alerts documentation\022#https://"
+    "kb.kentik.com/docs/alertingb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fmitigation_5fmethod_2eproto_deps[12] =
     {
@@ -452,7 +451,7 @@ static ::absl::once_flag descriptor_table_kentik_2falerting_2fpublic_2fv202505_2
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fmitigation_5fmethod_2eproto = {
     false,
     false,
-    4448,
+    4435,
     descriptor_table_protodef_kentik_2falerting_2fpublic_2fv202505_2fmitigation_5fmethod_2eproto,
     "kentik/alerting/public/v202505/mitigation_method.proto",
     &descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fmitigation_5fmethod_2eproto_once,

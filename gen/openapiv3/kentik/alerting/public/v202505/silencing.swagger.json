@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Kentik Alert NotificationSilencing API",
+        "title": "Alerting Notification Silencing API",
         "description": "# Overview\nThe Alert Silencing API provides programmatic access to Kentik's capabilities of configuring and managing alert silencing, preventing notifications from being sent for alert state changes (activation, severity change, clearance).",
         "version": "v202505",
         "contact": {

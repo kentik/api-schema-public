@@ -19,7 +19,7 @@ import "kentik/alerting/public/v202505/common.proto";
 
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   info: {
-    title: "Kentik Alert Suppressions API"
+    title: "Alerting Suppressions API"
     version: "v202505"
     contact: {
       name: "Kentik API Engineering"

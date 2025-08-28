@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Kentik Alert Auto-Acking API",
+    "title": "Alerting Auto-Acks API",
     "description": "# Overview\nThe Alerts Auto-Acking API provides programmatic access to Kentik's capabilities of configuring and managing auto-acking of alerts.",
     "version": "v202505",
     "contact": {

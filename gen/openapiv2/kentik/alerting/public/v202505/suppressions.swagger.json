@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Kentik Alert Suppressions API",
+    "title": "Alerting Suppressions API",
     "description": "# Overview\nThe Alerts Suppressions API provides programmatic access to Kentik's capabilities of configuring and managing alert suppressions, preventing alerts from being activated.",
     "version": "v202505",
     "contact": {

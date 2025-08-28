@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Kentik Alert Mitigation Methods API",
+        "title": "Mitigation Methods API",
         "description": "# Overview\nThe Alert Mitigation Methods API provides programmatic access to Kentik's capabilities of configuring and managing mitigation methods that define the specific parameters used for network infrastructure mitigations.",
         "version": "v202505",
         "contact": {
