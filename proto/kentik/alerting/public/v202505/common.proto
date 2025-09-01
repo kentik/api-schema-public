@@ -46,6 +46,13 @@ enum PolicyType {
 }
 
 message Source {
+  option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_schema) = {
+    json_schema: {
+      title: "Source Policy"
+      description: "The source (type and ID) of the Alerting Policy. Always when used, both fields are required."
+      required: ["policy_type", "id"]
+    }
+  };
   PolicyType policy_type = 1[
     (google.api.field_behavior) = REQUIRED,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {

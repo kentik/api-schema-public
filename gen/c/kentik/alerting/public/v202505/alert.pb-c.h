@@ -245,8 +245,6 @@ struct  Kentik__Alerting__Public__V202505__AlertFilters
   Kentik__Alerting__Types__V202303__Severity *severities;
   size_t n_alert_ids;
   char **alert_ids;
-  size_t n_applications;
-  char **applications;
   size_t n_sources;
   Kentik__Alerting__Public__V202505__Source **sources;
   Kentik__Alerting__Types__V202303__MultiAttributeFilter *keys;
@@ -269,7 +267,7 @@ struct  Kentik__Alerting__Public__V202505__AlertFilters
 };
 #define KENTIK__ALERTING__PUBLIC__V202505__ALERT_FILTERS__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__alerting__public__v202505__alert_filters__descriptor) \
-    , 0,NULL, 0,NULL, 0,NULL, 0,NULL, NULL, 0,NULL, NULL, NULL, 0,NULL, 0,NULL, 0,NULL, NULL, 0,NULL, 0, 0,NULL }
+    , 0,NULL, 0,NULL, 0,NULL, NULL, 0,NULL, NULL, NULL, 0,NULL, 0,NULL, 0,NULL, NULL, 0,NULL, 0, 0,NULL }
 
 
 struct  Kentik__Alerting__Public__V202505__AlertServiceListResponse

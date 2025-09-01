@@ -622,7 +622,7 @@ const ProtobufCMessageDescriptor kentik__alerting__public__v202505__policy_servi
   (ProtobufCMessageInit) kentik__alerting__public__v202505__policy_service_list_request__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__policy_list_filters__field_descriptors[5] =
+static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__policy_list_filters__field_descriptors[4] =
 {
   {
     "sources",
@@ -633,18 +633,6 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__policy_
     offsetof(Kentik__Alerting__Public__V202505__PolicyListFilters, sources),
     &kentik__alerting__public__v202505__source__descriptor,
     NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "applications",
-    2,
-    PROTOBUF_C_LABEL_REPEATED,
-    PROTOBUF_C_TYPE_STRING,
-    offsetof(Kentik__Alerting__Public__V202505__PolicyListFilters, n_applications),
-    offsetof(Kentik__Alerting__Public__V202505__PolicyListFilters, applications),
-    NULL,
-    &protobuf_c_empty_string,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
@@ -686,16 +674,16 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__policy_
   },
 };
 static const unsigned kentik__alerting__public__v202505__policy_list_filters__field_indices_by_name[] = {
-  1,   /* field[1] = applications */
-  3,   /* field[3] = created_at */
-  4,   /* field[4] = modified_at */
+  2,   /* field[2] = created_at */
+  3,   /* field[3] = modified_at */
   0,   /* field[0] = sources */
-  2,   /* field[2] = user_ids */
+  1,   /* field[1] = user_ids */
 };
-static const ProtobufCIntRange kentik__alerting__public__v202505__policy_list_filters__number_ranges[1 + 1] =
+static const ProtobufCIntRange kentik__alerting__public__v202505__policy_list_filters__number_ranges[2 + 1] =
 {
   { 1, 0 },
-  { 0, 5 }
+  { 3, 1 },
+  { 0, 4 }
 };
 const ProtobufCMessageDescriptor kentik__alerting__public__v202505__policy_list_filters__descriptor =
 {
@@ -705,10 +693,10 @@ const ProtobufCMessageDescriptor kentik__alerting__public__v202505__policy_list_
   "Kentik__Alerting__Public__V202505__PolicyListFilters",
   "kentik.alerting.public.v202505",
   sizeof(Kentik__Alerting__Public__V202505__PolicyListFilters),
-  5,
+  4,
   kentik__alerting__public__v202505__policy_list_filters__field_descriptors,
   kentik__alerting__public__v202505__policy_list_filters__field_indices_by_name,
-  1,  kentik__alerting__public__v202505__policy_list_filters__number_ranges,
+  2,  kentik__alerting__public__v202505__policy_list_filters__number_ranges,
   (ProtobufCMessageInit) kentik__alerting__public__v202505__policy_list_filters__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
@@ -1108,7 +1096,7 @@ const ProtobufCMessageDescriptor kentik__alerting__public__v202505__policy__poli
   (ProtobufCMessageInit) kentik__alerting__public__v202505__policy__policy_level__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__policy__field_descriptors[14] =
+static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__policy__field_descriptors[15] =
 {
   {
     "source",
@@ -1278,6 +1266,18 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__policy_
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "expire_date",
+    16,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Alerting__Public__V202505__Policy, expire_date),
+    &google__protobuf__timestamp__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__alerting__public__v202505__policy__field_indices_by_name[] = {
   1,   /* field[1] = created_at */
@@ -1285,6 +1285,7 @@ static const unsigned kentik__alerting__public__v202505__policy__field_indices_b
   6,   /* field[6] = description */
   7,   /* field[7] = enabled */
   11,   /* field[11] = event */
+  14,   /* field[14] = expire_date */
   9,   /* field[9] = flow */
   12,   /* field[12] = has_errors */
   13,   /* field[13] = last_error */
@@ -1299,7 +1300,7 @@ static const ProtobufCIntRange kentik__alerting__public__v202505__policy__number
 {
   { 1, 0 },
   { 10, 8 },
-  { 0, 14 }
+  { 0, 15 }
 };
 const ProtobufCMessageDescriptor kentik__alerting__public__v202505__policy__descriptor =
 {
@@ -1309,7 +1310,7 @@ const ProtobufCMessageDescriptor kentik__alerting__public__v202505__policy__desc
   "Kentik__Alerting__Public__V202505__Policy",
   "kentik.alerting.public.v202505",
   sizeof(Kentik__Alerting__Public__V202505__Policy),
-  14,
+  15,
   kentik__alerting__public__v202505__policy__field_descriptors,
   kentik__alerting__public__v202505__policy__field_indices_by_name,
   2,  kentik__alerting__public__v202505__policy__number_ranges,

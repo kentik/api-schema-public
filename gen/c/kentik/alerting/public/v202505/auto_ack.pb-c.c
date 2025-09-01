@@ -892,7 +892,7 @@ const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_auto_a
   (ProtobufCMessageInit) kentik__alerting__public__v202505__alert_auto_ack_service_list_request__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert_auto_ack_filters__field_descriptors[9] =
+static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert_auto_ack_filters__field_descriptors[8] =
 {
   {
     "auto_ack_ids",
@@ -901,18 +901,6 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert_a
     PROTOBUF_C_TYPE_STRING,
     offsetof(Kentik__Alerting__Public__V202505__AlertAutoAckFilters, n_auto_ack_ids),
     offsetof(Kentik__Alerting__Public__V202505__AlertAutoAckFilters, auto_ack_ids),
-    NULL,
-    &protobuf_c_empty_string,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "applications",
-    2,
-    PROTOBUF_C_LABEL_REPEATED,
-    PROTOBUF_C_TYPE_STRING,
-    offsetof(Kentik__Alerting__Public__V202505__AlertAutoAckFilters, n_applications),
-    offsetof(Kentik__Alerting__Public__V202505__AlertAutoAckFilters, applications),
     NULL,
     &protobuf_c_empty_string,
     0,             /* flags */
@@ -1004,20 +992,20 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert_a
   },
 };
 static const unsigned kentik__alerting__public__v202505__alert_auto_ack_filters__field_indices_by_name[] = {
-  1,   /* field[1] = applications */
   0,   /* field[0] = auto_ack_ids */
-  5,   /* field[5] = created_at */
-  8,   /* field[8] = end_time_at */
-  3,   /* field[3] = keys */
-  6,   /* field[6] = modified_at */
-  2,   /* field[2] = sources */
-  7,   /* field[7] = start_time_at */
-  4,   /* field[4] = user_ids */
+  4,   /* field[4] = created_at */
+  7,   /* field[7] = end_time_at */
+  2,   /* field[2] = keys */
+  5,   /* field[5] = modified_at */
+  1,   /* field[1] = sources */
+  6,   /* field[6] = start_time_at */
+  3,   /* field[3] = user_ids */
 };
-static const ProtobufCIntRange kentik__alerting__public__v202505__alert_auto_ack_filters__number_ranges[1 + 1] =
+static const ProtobufCIntRange kentik__alerting__public__v202505__alert_auto_ack_filters__number_ranges[2 + 1] =
 {
   { 1, 0 },
-  { 0, 9 }
+  { 3, 1 },
+  { 0, 8 }
 };
 const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_auto_ack_filters__descriptor =
 {
@@ -1027,10 +1015,10 @@ const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_auto_a
   "Kentik__Alerting__Public__V202505__AlertAutoAckFilters",
   "kentik.alerting.public.v202505",
   sizeof(Kentik__Alerting__Public__V202505__AlertAutoAckFilters),
-  9,
+  8,
   kentik__alerting__public__v202505__alert_auto_ack_filters__field_descriptors,
   kentik__alerting__public__v202505__alert_auto_ack_filters__field_indices_by_name,
-  1,  kentik__alerting__public__v202505__alert_auto_ack_filters__number_ranges,
+  2,  kentik__alerting__public__v202505__alert_auto_ack_filters__number_ranges,
   (ProtobufCMessageInit) kentik__alerting__public__v202505__alert_auto_ack_filters__init,
   NULL,NULL,NULL    /* reserved[123] */
 };

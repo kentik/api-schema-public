@@ -118,12 +118,7 @@ message MitigationPlatformsFilters {
       description: "The IDs of the mitigation platforms to list."
     }
   ];
-  repeated string applications = 2[
-    (google.api.field_behavior) = OPTIONAL,
-    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "The policy applications (integrations) the mitigation platforms are associated with."
-    }
-  ];
+  reserved 2; // PolicyTypes filter placeholder here for future
   repeated Source sources = 3[
     (google.api.field_behavior) = OPTIONAL,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {

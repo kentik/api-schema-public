@@ -345,13 +345,6 @@
           },
           "description": "The IDs of the alert silence notifications configurations to list."
         },
-        "applications": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "The policy applications (integrations) the alert silence notifications configurations are applied to."
-        },
         "sources": {
           "type": "array",
           "items": {
@@ -576,7 +569,11 @@
           ]
         }
       },
+      "description": "The source (type and ID) of the Alerting Policy. Always when used, both fields are required.",
+      "title": "Source Policy",
       "required": [
+        "policyType",
+        "id",
         "policyType",
         "id"
       ]

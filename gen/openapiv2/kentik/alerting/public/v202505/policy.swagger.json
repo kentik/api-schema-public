@@ -1407,6 +1407,12 @@
           "$ref": "#/definitions/PolicyPolicyErrorInfo",
           "description": "Information about the last error that occurred with the policy.",
           "readOnly": true
+        },
+        "expireDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Indicates when the policy that was made from a query should expire and become disabled.",
+          "readOnly": true
         }
       }
     },
@@ -1531,13 +1537,6 @@
             "$ref": "#/definitions/v202505Source"
           },
           "description": "The source policies to list."
-        },
-        "applications": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "The policy applications (integrations) to filter by."
         },
         "userIds": {
           "type": "array",
@@ -1703,7 +1702,11 @@
           ]
         }
       },
+      "description": "The source (type and ID) of the Alerting Policy. Always when used, both fields are required.",
+      "title": "Source Policy",
       "required": [
+        "policyType",
+        "id",
         "policyType",
         "id"
       ]

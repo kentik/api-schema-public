@@ -86,19 +86,6 @@
                         }
                     },
                     {
-                        "name": "filters.applications",
-                        "description": "The policy applications (integrations) the mitigation platforms are associated with.",
-                        "in": "query",
-                        "required": false,
-                        "explode": true,
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    },
-                    {
                         "name": "filters.platformTypes",
                         "description": "The types of mitigation platforms to filter by.\n\n - MITIGATION_PLATFORM_TYPE_A10: A10 mitigation platform\n - MITIGATION_PLATFORM_TYPE_FLOWSPEC: FlowSpec mitigation platform\n - MITIGATION_PLATFORM_TYPE_RADWARE: Radware mitigation platform\n - MITIGATION_PLATFORM_TYPE_RTBH: RTBH mitigation platform\n - MITIGATION_PLATFORM_TYPE_CFMT: CFMT mitigation platform\n - MITIGATION_PLATFORM_TYPE_ADAPTIVE_FLOWSPEC: Adaptive FlowSpec mitigation platform",
                         "in": "query",
@@ -373,13 +360,6 @@
                         },
                         "description": "The IDs of the mitigation platforms to list."
                     },
-                    "applications": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "The policy applications (integrations) the mitigation platforms are associated with."
-                    },
                     "sources": {
                         "type": "array",
                         "items": {
@@ -458,7 +438,11 @@
                         ]
                     }
                 },
+                "description": "The source (type and ID) of the Alerting Policy. Always when used, both fields are required.",
+                "title": "Source Policy",
                 "required": [
+                    "policyType",
+                    "id",
                     "policyType",
                     "id"
                 ]

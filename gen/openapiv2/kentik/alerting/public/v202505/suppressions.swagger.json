@@ -467,7 +467,11 @@
           ]
         }
       },
+      "description": "The source (type and ID) of the Alerting Policy. Always when used, both fields are required.",
+      "title": "Source Policy",
       "required": [
+        "policyType",
+        "id",
         "policyType",
         "id"
       ]
@@ -540,13 +544,6 @@
             "type": "string"
           },
           "description": "The IDs of the suppression configurations to list."
-        },
-        "applications": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "The policy applications (integrations) the suppression configurations are applied to."
         },
         "sources": {
           "type": "array",

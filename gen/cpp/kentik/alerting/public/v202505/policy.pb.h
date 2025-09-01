@@ -1111,7 +1111,6 @@ class PolicyListFilters final : public ::google::protobuf::Message
   // accessors -------------------------------------------------------
   enum : int {
     kSourcesFieldNumber = 1,
-    kApplicationsFieldNumber = 2,
     kUserIdsFieldNumber = 3,
     kCreatedAtFieldNumber = 4,
     kModifiedAtFieldNumber = 5,
@@ -1133,28 +1132,6 @@ class PolicyListFilters final : public ::google::protobuf::Message
   const ::kentik::alerting::public_::v202505::Source& sources(int index) const;
   ::kentik::alerting::public_::v202505::Source* add_sources();
   const ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::Source>& sources() const;
-  // repeated string applications = 2 [json_name = "applications", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  int applications_size() const;
-  private:
-  int _internal_applications_size() const;
-
-  public:
-  void clear_applications() ;
-  const std::string& applications(int index) const;
-  std::string* mutable_applications(int index);
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_applications(int index, Arg_&& value, Args_... args);
-  std::string* add_applications();
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void add_applications(Arg_&& value, Args_... args);
-  const ::google::protobuf::RepeatedPtrField<std::string>& applications() const;
-  ::google::protobuf::RepeatedPtrField<std::string>* mutable_applications();
-
-  private:
-  const ::google::protobuf::RepeatedPtrField<std::string>& _internal_applications() const;
-  ::google::protobuf::RepeatedPtrField<std::string>* _internal_mutable_applications();
-
-  public:
   // repeated string user_ids = 3 [json_name = "userIds", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   int user_ids_size() const;
   private:
@@ -1212,8 +1189,8 @@ class PolicyListFilters final : public ::google::protobuf::Message
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      3, 5, 3,
-      77, 2>
+      3, 4, 3,
+      65, 2>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -1233,7 +1210,6 @@ class PolicyListFilters final : public ::google::protobuf::Message
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     ::google::protobuf::RepeatedPtrField< ::kentik::alerting::public_::v202505::Source > sources_;
-    ::google::protobuf::RepeatedPtrField<std::string> applications_;
     ::google::protobuf::RepeatedPtrField<std::string> user_ids_;
     ::kentik::alerting::types::v202303::TimeRange* created_at_;
     ::kentik::alerting::types::v202303::TimeRange* modified_at_;
@@ -1957,6 +1933,7 @@ class Policy final : public ::google::protobuf::Message
     kCreatedAtFieldNumber = 2,
     kModifiedAtFieldNumber = 3,
     kLastErrorFieldNumber = 15,
+    kExpireDateFieldNumber = 16,
     kEnabledFieldNumber = 8,
     kHasErrorsFieldNumber = 14,
     kFlowFieldNumber = 11,
@@ -2104,6 +2081,21 @@ class Policy final : public ::google::protobuf::Message
   ::kentik::alerting::public_::v202505::Policy_PolicyErrorInfo* _internal_mutable_last_error();
 
   public:
+  // .google.protobuf.Timestamp expire_date = 16 [json_name = "expireDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_expire_date() const;
+  void clear_expire_date() ;
+  const ::google::protobuf::Timestamp& expire_date() const;
+  PROTOBUF_NODISCARD ::google::protobuf::Timestamp* release_expire_date();
+  ::google::protobuf::Timestamp* mutable_expire_date();
+  void set_allocated_expire_date(::google::protobuf::Timestamp* value);
+  void unsafe_arena_set_allocated_expire_date(::google::protobuf::Timestamp* value);
+  ::google::protobuf::Timestamp* unsafe_arena_release_expire_date();
+
+  private:
+  const ::google::protobuf::Timestamp& _internal_expire_date() const;
+  ::google::protobuf::Timestamp* _internal_mutable_expire_date();
+
+  public:
   // optional bool enabled = 8 [json_name = "enabled", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   bool has_enabled() const;
   void clear_enabled() ;
@@ -2194,7 +2186,7 @@ class Policy final : public ::google::protobuf::Message
   inline void clear_has_settings();
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      4, 14, 8,
+      4, 15, 9,
       90, 2>
       _table_;
 
@@ -2223,6 +2215,7 @@ class Policy final : public ::google::protobuf::Message
     ::google::protobuf::Timestamp* created_at_;
     ::google::protobuf::Timestamp* modified_at_;
     ::kentik::alerting::public_::v202505::Policy_PolicyErrorInfo* last_error_;
+    ::google::protobuf::Timestamp* expire_date_;
     bool enabled_;
     bool has_errors_;
     union SettingsUnion {
@@ -3557,70 +3550,6 @@ inline ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505
 PolicyListFilters::_internal_mutable_sources() {
   ::google::protobuf::internal::TSanRead(&_impl_);
   return &_impl_.sources_;
-}
-
-// repeated string applications = 2 [json_name = "applications", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-inline int PolicyListFilters::_internal_applications_size() const {
-  return _internal_applications().size();
-}
-inline int PolicyListFilters::applications_size() const {
-  return _internal_applications_size();
-}
-inline void PolicyListFilters::clear_applications() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.applications_.Clear();
-}
-inline std::string* PolicyListFilters::add_applications() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  std::string* _s = _internal_mutable_applications()->Add();
-  // @@protoc_insertion_point(field_add_mutable:kentik.alerting.public.v202505.PolicyListFilters.applications)
-  return _s;
-}
-inline const std::string& PolicyListFilters::applications(int index) const
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:kentik.alerting.public.v202505.PolicyListFilters.applications)
-  return _internal_applications().Get(index);
-}
-inline std::string* PolicyListFilters::mutable_applications(int index)
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_mutable:kentik.alerting.public.v202505.PolicyListFilters.applications)
-  return _internal_mutable_applications()->Mutable(index);
-}
-template <typename Arg_, typename... Args_>
-inline void PolicyListFilters::set_applications(int index, Arg_&& value, Args_... args) {
-  ::google::protobuf::internal::AssignToString(
-      *_internal_mutable_applications()->Mutable(index),
-      std::forward<Arg_>(value), args... );
-  // @@protoc_insertion_point(field_set:kentik.alerting.public.v202505.PolicyListFilters.applications)
-}
-template <typename Arg_, typename... Args_>
-inline void PolicyListFilters::add_applications(Arg_&& value, Args_... args) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  ::google::protobuf::internal::AddToRepeatedPtrField(*_internal_mutable_applications(),
-                               std::forward<Arg_>(value),
-                               args... );
-  // @@protoc_insertion_point(field_add:kentik.alerting.public.v202505.PolicyListFilters.applications)
-}
-inline const ::google::protobuf::RepeatedPtrField<std::string>&
-PolicyListFilters::applications() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_list:kentik.alerting.public.v202505.PolicyListFilters.applications)
-  return _internal_applications();
-}
-inline ::google::protobuf::RepeatedPtrField<std::string>*
-PolicyListFilters::mutable_applications() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_mutable_list:kentik.alerting.public.v202505.PolicyListFilters.applications)
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  return _internal_mutable_applications();
-}
-inline const ::google::protobuf::RepeatedPtrField<std::string>&
-PolicyListFilters::_internal_applications() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.applications_;
-}
-inline ::google::protobuf::RepeatedPtrField<std::string>*
-PolicyListFilters::_internal_mutable_applications() {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return &_impl_.applications_;
 }
 
 // repeated string user_ids = 3 [json_name = "userIds", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -5329,13 +5258,13 @@ inline void Policy::set_allocated_description(std::string* value) {
 
 // optional bool enabled = 8 [json_name = "enabled", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
 inline bool Policy::has_enabled() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000010u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000020u) != 0;
   return value;
 }
 inline void Policy::clear_enabled() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.enabled_ = false;
-  _impl_._has_bits_[0] &= ~0x00000010u;
+  _impl_._has_bits_[0] &= ~0x00000020u;
 }
 inline bool Policy::enabled() const {
   // @@protoc_insertion_point(field_get:kentik.alerting.public.v202505.Policy.enabled)
@@ -5343,7 +5272,7 @@ inline bool Policy::enabled() const {
 }
 inline void Policy::set_enabled(bool value) {
   _internal_set_enabled(value);
-  _impl_._has_bits_[0] |= 0x00000010u;
+  _impl_._has_bits_[0] |= 0x00000020u;
   // @@protoc_insertion_point(field_set:kentik.alerting.public.v202505.Policy.enabled)
 }
 inline bool Policy::_internal_enabled() const {
@@ -5724,6 +5653,97 @@ inline void Policy::set_allocated_last_error(::kentik::alerting::public_::v20250
 
   _impl_.last_error_ = reinterpret_cast<::kentik::alerting::public_::v202505::Policy_PolicyErrorInfo*>(value);
   // @@protoc_insertion_point(field_set_allocated:kentik.alerting.public.v202505.Policy.last_error)
+}
+
+// .google.protobuf.Timestamp expire_date = 16 [json_name = "expireDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool Policy::has_expire_date() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000010u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.expire_date_ != nullptr);
+  return value;
+}
+inline const ::google::protobuf::Timestamp& Policy::_internal_expire_date() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::google::protobuf::Timestamp* p = _impl_.expire_date_;
+  return p != nullptr ? *p : reinterpret_cast<const ::google::protobuf::Timestamp&>(::google::protobuf::_Timestamp_default_instance_);
+}
+inline const ::google::protobuf::Timestamp& Policy::expire_date() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.alerting.public.v202505.Policy.expire_date)
+  return _internal_expire_date();
+}
+inline void Policy::unsafe_arena_set_allocated_expire_date(::google::protobuf::Timestamp* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.expire_date_);
+  }
+  _impl_.expire_date_ = reinterpret_cast<::google::protobuf::Timestamp*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000010u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000010u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.alerting.public.v202505.Policy.expire_date)
+}
+inline ::google::protobuf::Timestamp* Policy::release_expire_date() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000010u;
+  ::google::protobuf::Timestamp* released = _impl_.expire_date_;
+  _impl_.expire_date_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::google::protobuf::Timestamp* Policy::unsafe_arena_release_expire_date() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.alerting.public.v202505.Policy.expire_date)
+
+  _impl_._has_bits_[0] &= ~0x00000010u;
+  ::google::protobuf::Timestamp* temp = _impl_.expire_date_;
+  _impl_.expire_date_ = nullptr;
+  return temp;
+}
+inline ::google::protobuf::Timestamp* Policy::_internal_mutable_expire_date() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.expire_date_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::google::protobuf::Timestamp>(GetArena());
+    _impl_.expire_date_ = reinterpret_cast<::google::protobuf::Timestamp*>(p);
+  }
+  return _impl_.expire_date_;
+}
+inline ::google::protobuf::Timestamp* Policy::mutable_expire_date() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000010u;
+  ::google::protobuf::Timestamp* _msg = _internal_mutable_expire_date();
+  // @@protoc_insertion_point(field_mutable:kentik.alerting.public.v202505.Policy.expire_date)
+  return _msg;
+}
+inline void Policy::set_allocated_expire_date(::google::protobuf::Timestamp* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.expire_date_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::google::protobuf::MessageLite*>(value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000010u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000010u;
+  }
+
+  _impl_.expire_date_ = reinterpret_cast<::google::protobuf::Timestamp*>(value);
+  // @@protoc_insertion_point(field_set_allocated:kentik.alerting.public.v202505.Policy.expire_date)
 }
 
 inline bool Policy::has_settings() const {

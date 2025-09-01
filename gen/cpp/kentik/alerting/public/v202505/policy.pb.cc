@@ -145,7 +145,6 @@ inline constexpr PolicyListFilters::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
         sources_{},
-        applications_{},
         user_ids_{},
         created_at_{nullptr},
         modified_at_{nullptr} {}
@@ -249,6 +248,7 @@ inline constexpr Policy::Impl_::Impl_(
         created_at_{nullptr},
         modified_at_{nullptr},
         last_error_{nullptr},
+        expire_date_{nullptr},
         enabled_{false},
         has_errors_{false},
         settings_{},
@@ -428,11 +428,9 @@ const ::uint32_t
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::PolicyListFilters, _impl_.sources_),
-        PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::PolicyListFilters, _impl_.applications_),
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::PolicyListFilters, _impl_.user_ids_),
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::PolicyListFilters, _impl_.created_at_),
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::PolicyListFilters, _impl_.modified_at_),
-        ~0u,
         ~0u,
         ~0u,
         0,
@@ -539,6 +537,7 @@ const ::uint32_t
         ::_pbi::kInvalidFieldOffsetTag,
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::Policy, _impl_.has_errors_),
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::Policy, _impl_.last_error_),
+        PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::Policy, _impl_.expire_date_),
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::Policy, _impl_.settings_),
         0,
         1,
@@ -547,13 +546,14 @@ const ::uint32_t
         ~0u,
         ~0u,
         ~0u,
-        4,
+        5,
         ~0u,
         ~0u,
         ~0u,
         ~0u,
         ~0u,
         3,
+        4,
 };
 
 static const ::_pbi::MigrationSchema
@@ -561,15 +561,15 @@ static const ::_pbi::MigrationSchema
         {0, -1, -1, sizeof(::kentik::alerting::public_::v202505::PolicyServiceGetRequest)},
         {10, 19, -1, sizeof(::kentik::alerting::public_::v202505::PolicyServiceGetResponse)},
         {20, 31, -1, sizeof(::kentik::alerting::public_::v202505::PolicyServiceListRequest)},
-        {34, 47, -1, sizeof(::kentik::alerting::public_::v202505::PolicyListFilters)},
-        {52, 62, -1, sizeof(::kentik::alerting::public_::v202505::PolicyServiceListResponse)},
-        {64, -1, -1, sizeof(::kentik::alerting::public_::v202505::PolicyServiceDisableRequest)},
-        {74, 83, -1, sizeof(::kentik::alerting::public_::v202505::PolicyServiceDisableResponse)},
-        {84, -1, -1, sizeof(::kentik::alerting::public_::v202505::PolicyServiceEnableRequest)},
-        {94, 103, -1, sizeof(::kentik::alerting::public_::v202505::PolicyServiceEnableResponse)},
-        {104, 114, -1, sizeof(::kentik::alerting::public_::v202505::Policy_PolicyErrorInfo)},
-        {116, -1, -1, sizeof(::kentik::alerting::public_::v202505::Policy_PolicyLevel)},
-        {132, 155, -1, sizeof(::kentik::alerting::public_::v202505::Policy)},
+        {34, 46, -1, sizeof(::kentik::alerting::public_::v202505::PolicyListFilters)},
+        {50, 60, -1, sizeof(::kentik::alerting::public_::v202505::PolicyServiceListResponse)},
+        {62, -1, -1, sizeof(::kentik::alerting::public_::v202505::PolicyServiceDisableRequest)},
+        {72, 81, -1, sizeof(::kentik::alerting::public_::v202505::PolicyServiceDisableResponse)},
+        {82, -1, -1, sizeof(::kentik::alerting::public_::v202505::PolicyServiceEnableRequest)},
+        {92, 101, -1, sizeof(::kentik::alerting::public_::v202505::PolicyServiceEnableResponse)},
+        {102, 112, -1, sizeof(::kentik::alerting::public_::v202505::Policy_PolicyErrorInfo)},
+        {114, -1, -1, sizeof(::kentik::alerting::public_::v202505::Policy_PolicyLevel)},
+        {130, 154, -1, sizeof(::kentik::alerting::public_::v202505::Policy)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::alerting::public_::v202505::_PolicyServiceGetRequest_default_instance_._instance,
@@ -624,154 +624,155 @@ const char descriptor_table_protodef_kentik_2falerting_2fpublic_2fv202505_2fpoli
     "\007sorting\022}\n\007filters\030\003 \001(\01321.kentik.alert"
     "ing.public.v202505.PolicyListFiltersB0\222A"
     "*2(The policy filters for the list reque"
-    "st.\340A\001R\007filters\"\320\004\n\021PolicyListFilters\022f\n"
+    "st.\340A\001R\007filters\"\364\003\n\021PolicyListFilters\022f\n"
     "\007sources\030\001 \003(\0132&.kentik.alerting.public."
     "v202505.SourceB$\222A\0362\034The source policies"
-    " to list.\340A\001R\007sources\022`\n\014applications\030\002 "
-    "\003(\tB<\222A624The policy applications (integ"
-    "rations) to filter by.\340A\001R\014applications\022"
-    "^\n\010user_ids\030\003 \003(\tBC\222A=2;The IDs of the u"
-    "sers who created the policies to filter "
-    "by.\340A\001R\007userIds\022\205\001\n\ncreated_at\030\004 \001(\0132(.k"
-    "entik.alerting.types.v202303.TimeRangeB<"
-    "\222A624The time range for the created time"
-    " of the policies.\340A\001R\tcreatedAt\022\210\001\n\013modi"
-    "fied_at\030\005 \001(\0132(.kentik.alerting.types.v2"
-    "02303.TimeRangeB=\222A725The time range for"
-    " the modified time of the policies.\340A\001R\n"
-    "modifiedAt\"\260\002\n\031PolicyServiceListResponse"
-    "\022\210\001\n\npagination\030\001 \001(\0132-.kentik.alerting."
-    "types.v202506.PaginationInfoB9\222A321The p"
-    "agination information for the list respo"
-    "nse.\340A\003R\npagination\022\207\001\n\010policies\030\002 \003(\0132&"
-    ".kentik.alerting.public.v202505.PolicyBC"
-    "\222A=2;The alerting policies that were fou"
-    "nd matching the filters.\340A\003R\010policies\"\314\001"
-    "\n\033PolicyServiceDisableRequest\022s\n\013policy_"
-    "type\030\001 \001(\0162*.kentik.alerting.public.v202"
-    "505.PolicyTypeB&\222A 2\036The type of policy "
-    "to disable.\340A\002R\npolicyType\0228\n\002id\030\002 \001(\tB("
-    "\222A\"2 The ID of the policy to disable.\340A\002"
-    "R\002id\"\221\001\n\034PolicyServiceDisableResponse\022q\n"
-    "\006policy\030\001 \001(\0132&.kentik.alerting.public.v"
-    "202505.PolicyB1\222A+2)The alerting policy "
-    "after being disabled.\340A\003R\006policy\"\311\001\n\032Pol"
-    "icyServiceEnableRequest\022r\n\013policy_type\030\001"
-    " \001(\0162*.kentik.alerting.public.v202505.Po"
-    "licyTypeB%\222A\0372\035The type of policy to ena"
-    "ble.\340A\002R\npolicyType\0227\n\002id\030\002 \001(\tB\'\222A!2\037Th"
-    "e ID of the policy to enable.\340A\002R\002id\"\217\001\n"
-    "\033PolicyServiceEnableResponse\022p\n\006policy\030\001"
-    " \001(\0132&.kentik.alerting.public.v202505.Po"
-    "licyB0\222A*2(The alerting policy after bei"
-    "ng enabled.\340A\003R\006policy\"\254\024\n\006Policy\022x\n\006sou"
-    "rce\030\001 \001(\0132&.kentik.alerting.public.v2025"
-    "05.SourceB8\222A220The source (type and ID)"
-    " of the alerting policy.\340A\003R\006source\022h\n\nc"
-    "reated_at\030\002 \001(\0132\032.google.protobuf.Timest"
-    "ampB-\222A\'2%The time when the policy was c"
-    "reated.\340A\003R\tcreatedAt\022p\n\013modified_at\030\003 \001"
-    "(\0132\032.google.protobuf.TimestampB3\222A-2+The"
-    " time when the policy was last modified."
-    "\340A\003R\nmodifiedAt\022G\n\ncreated_by\030\004 \001(\tB(\222A\""
-    "2 The user who created the policy.\340A\003R\tc"
-    "reatedBy\022O\n\013modified_by\030\005 \001(\tB.\222A(2&The "
-    "user who last modified the policy.\340A\003R\nm"
-    "odifiedBy\0223\n\004name\030\006 \001(\tB\037\222A\0312\027The name o"
-    "f the policy.\340A\003R\004name\022H\n\013description\030\007 "
-    "\001(\tB&\222A 2\036The description of the policy."
-    "\340A\003R\013description\022E\n\007enabled\030\010 \001(\010B&\222A 2\036"
-    "Whether the policy is enabled.\340A\003H\001R\007ena"
-    "bled\210\001\001\022t\n\006levels\030\n \003(\01322.kentik.alertin"
-    "g.public.v202505.Policy.PolicyLevelB(\222A\""
-    "2 The policy levels configuration.\340A\003R\006l"
-    "evels\022d\n\004flow\030\013 \001(\01322.kentik.alerting.pu"
-    "blic.v202505.FlowPolicySettingsB\032\222A\0272\025Fl"
-    "ow policy settings.H\000R\004flow\022`\n\003nms\030\014 \001(\013"
-    "21.kentik.alerting.public.v202505.NmsPol"
-    "icySettingsB\031\222A\0262\024NMS policy settings.H\000"
-    "R\003nms\022h\n\005event\030\r \001(\01323.kentik.alerting.p"
-    "ublic.v202505.EventPolicySettingsB\033\222A\0302\026"
-    "Event policy settings.H\000R\005event\022U\n\nhas_e"
-    "rrors\030\016 \001(\010B6\222A02.Whether the policy has"
-    " errors in the run-time.\340A\003R\thasErrors\022\236"
-    "\001\n\nlast_error\030\017 \001(\01326.kentik.alerting.pu"
-    "blic.v202505.Policy.PolicyErrorInfoBG\222AA"
-    "2\?Information about the last error that "
-    "occurred with the policy.\340A\003R\tlastError\032"
-    "\276\001\n\017PolicyErrorInfo\022e\n\ttimestamp\030\001 \001(\0132\032"
-    ".google.protobuf.TimestampB+\222A(2&The tim"
-    "estamp when the error occurred.R\ttimesta"
-    "mp\022D\n\013description\030\002 \001(\tB\"\222A\0372\035The descri"
-    "ption of the error.R\013description\032\362\007\n\013Pol"
-    "icyLevel\022\263\001\n\010severity\030\001 \001(\0162\'.kentik.ale"
-    "rting.types.v202303.SeverityBn\222Ak2iThe s"
-    "everity of the policy level. When level "
-    "conditions are met, the alert is trigger"
-    "ed at this severity.R\010severity\022K\n\013descri"
-    "ption\030\002 \001(\tB)\222A&2$The description of the"
-    " policy level.R\013description\022s\n\014ack_requi"
-    "red\030\003 \001(\010BP\222AM2KWhether acknowledgment i"
-    "s required for alerts that match this po"
-    "licy level.R\013ackRequired\022k\n\003nms\030\004 \001(\01326."
-    "kentik.alerting.public.v202505.NmsPolicy"
-    "LevelSettingsB\037\222A\0342\032NMS policy level set"
-    "tings.H\000R\003nms\022o\n\004flow\030\005 \001(\01327.kentik.ale"
-    "rting.public.v202505.FlowPolicyLevelSett"
-    "ingsB \222A\0352\033Flow policy level settings.H\000"
-    "R\004flow\022s\n\005event\030\006 \001(\01328.kentik.alerting."
-    "public.v202505.EventPolicyLevelSettingsB"
-    "!\222A\0362\034Event policy level settings.H\000R\005ev"
-    "ent\022\213\002\n\rnotifications\030\007 \003(\0132>.kentik.ale"
-    "rting.public.v202505.NotificationChannel"
-    "AssociationB\244\001\222A\240\0012\235\001The notification ch"
-    "annel associations for this policy level"
-    ". When the alert is triggered at this le"
-    "vel, the channels are used to send the a"
-    "lert notification.R\rnotificationsB\n\n\010set"
-    "tingsB\n\n\010settingsB\n\n\010_enabled2\303\010\n\rPolicy"
-    "Service\022\356\001\n\003Get\0227.kentik.alerting.public"
-    ".v202505.PolicyServiceGetRequest\0328.kenti"
-    "k.alerting.public.v202505.PolicyServiceG"
-    "etResponse\"t\222A.\022\nGet Policy\032\033Returns an "
-    "alerting policy.*\003Get\362\327\002\023admin.alerting:"
-    "read\202\323\344\223\002&\022$/v202505/policies/{policy_ty"
-    "pe}/{id}\022\363\001\n\004List\0228.kentik.alerting.publ"
-    "ic.v202505.PolicyServiceListRequest\0329.ke"
-    "ntik.alerting.public.v202505.PolicyServi"
-    "ceListResponse\"v\222A;\022\rList Policies\032$Retu"
-    "rns a list of alerting policies.*\004List\362\327"
-    "\002\023admin.alerting:read\202\323\344\223\002\033\"\026/v202505/po"
-    "licies/list:\001*\022\220\002\n\007Disable\022;.kentik.aler"
-    "ting.public.v202505.PolicyServiceDisable"
-    "Request\032<.kentik.alerting.public.v202505"
-    ".PolicyServiceDisableResponse\"\211\001\222A7\022\016Dis"
-    "able Policy\032\034Disables an alerting policy"
-    ".*\007Disable\362\327\002\024admin.alerting:write\202\323\344\223\0021"
-    "\",/v202505/policies/{policy_type}/{id}/d"
-    "isable:\001*\022\211\002\n\006Enable\022:.kentik.alerting.p"
-    "ublic.v202505.PolicyServiceEnableRequest"
-    "\032;.kentik.alerting.public.v202505.Policy"
-    "ServiceEnableResponse\"\205\001\222A4\022\rEnable Poli"
-    "cy\032\033Enables an alerting policy.*\006Enable\362"
-    "\327\002\024admin.alerting:write\202\323\344\223\0020\"+/v202505/"
-    "policies/{policy_type}/{id}/enable:\001*\032,\312"
-    "A\023grpc.api.kentik.com\352\327\002\016admin.alerting\220"
-    "\330\002\003B\251\004ZIgithub.com/kentik/api-schema-pub"
-    "lic/gen/go/kentik/alerting/public/v20250"
-    "5\222A\332\003\022\216\002\n\025Alerting Policies API\022\244\001# Over"
-    "view\nThe Alerting Policies API provides "
-    "programmatic access to Kentik\'s configur"
-    "ation of the policies that define how, w"
-    "hen, and to whom alerts are triggered.\"E"
-    "\n\026Kentik API Engineering\022+https://github"
-    ".com/kentik/api-schema-public2\007v202505*\001"
-    "\0022\020application/json:\020application/jsonZD\n"
-    "\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token"
-    "\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email\022\000"
-    "\n\t\n\005token\022\000rB\n\033Kentik Alerts documentati"
-    "on\022#https://kb.kentik.com/docs/alertingb"
-    "\006proto3"
+    " to list.\340A\001R\007sources\022^\n\010user_ids\030\003 \003(\tB"
+    "C\222A=2;The IDs of the users who created t"
+    "he policies to filter by.\340A\001R\007userIds\022\205\001"
+    "\n\ncreated_at\030\004 \001(\0132(.kentik.alerting.typ"
+    "es.v202303.TimeRangeB<\222A624The time rang"
+    "e for the created time of the policies.\340"
+    "A\001R\tcreatedAt\022\210\001\n\013modified_at\030\005 \001(\0132(.ke"
+    "ntik.alerting.types.v202303.TimeRangeB=\222"
+    "A725The time range for the modified time"
+    " of the policies.\340A\001R\nmodifiedAtJ\004\010\002\020\003\"\260"
+    "\002\n\031PolicyServiceListResponse\022\210\001\n\npaginat"
+    "ion\030\001 \001(\0132-.kentik.alerting.types.v20250"
+    "6.PaginationInfoB9\222A321The pagination in"
+    "formation for the list response.\340A\003R\npag"
+    "ination\022\207\001\n\010policies\030\002 \003(\0132&.kentik.aler"
+    "ting.public.v202505.PolicyBC\222A=2;The ale"
+    "rting policies that were found matching "
+    "the filters.\340A\003R\010policies\"\314\001\n\033PolicyServ"
+    "iceDisableRequest\022s\n\013policy_type\030\001 \001(\0162*"
+    ".kentik.alerting.public.v202505.PolicyTy"
+    "peB&\222A 2\036The type of policy to disable.\340"
+    "A\002R\npolicyType\0228\n\002id\030\002 \001(\tB(\222A\"2 The ID "
+    "of the policy to disable.\340A\002R\002id\"\221\001\n\034Pol"
+    "icyServiceDisableResponse\022q\n\006policy\030\001 \001("
+    "\0132&.kentik.alerting.public.v202505.Polic"
+    "yB1\222A+2)The alerting policy after being "
+    "disabled.\340A\003R\006policy\"\311\001\n\032PolicyServiceEn"
+    "ableRequest\022r\n\013policy_type\030\001 \001(\0162*.kenti"
+    "k.alerting.public.v202505.PolicyTypeB%\222A"
+    "\0372\035The type of policy to enable.\340A\002R\npol"
+    "icyType\0227\n\002id\030\002 \001(\tB\'\222A!2\037The ID of the "
+    "policy to enable.\340A\002R\002id\"\217\001\n\033PolicyServi"
+    "ceEnableResponse\022p\n\006policy\030\001 \001(\0132&.kenti"
+    "k.alerting.public.v202505.PolicyB0\222A*2(T"
+    "he alerting policy after being enabled.\340"
+    "A\003R\006policy\"\313\025\n\006Policy\022x\n\006source\030\001 \001(\0132&."
+    "kentik.alerting.public.v202505.SourceB8\222"
+    "A220The source (type and ID) of the aler"
+    "ting policy.\340A\003R\006source\022h\n\ncreated_at\030\002 "
+    "\001(\0132\032.google.protobuf.TimestampB-\222A\'2%Th"
+    "e time when the policy was created.\340A\003R\t"
+    "createdAt\022p\n\013modified_at\030\003 \001(\0132\032.google."
+    "protobuf.TimestampB3\222A-2+The time when t"
+    "he policy was last modified.\340A\003R\nmodifie"
+    "dAt\022G\n\ncreated_by\030\004 \001(\tB(\222A\"2 The user w"
+    "ho created the policy.\340A\003R\tcreatedBy\022O\n\013"
+    "modified_by\030\005 \001(\tB.\222A(2&The user who las"
+    "t modified the policy.\340A\003R\nmodifiedBy\0223\n"
+    "\004name\030\006 \001(\tB\037\222A\0312\027The name of the policy"
+    ".\340A\003R\004name\022H\n\013description\030\007 \001(\tB&\222A 2\036Th"
+    "e description of the policy.\340A\003R\013descrip"
+    "tion\022E\n\007enabled\030\010 \001(\010B&\222A 2\036Whether the "
+    "policy is enabled.\340A\003H\001R\007enabled\210\001\001\022t\n\006l"
+    "evels\030\n \003(\01322.kentik.alerting.public.v20"
+    "2505.Policy.PolicyLevelB(\222A\"2 The policy"
+    " levels configuration.\340A\003R\006levels\022d\n\004flo"
+    "w\030\013 \001(\01322.kentik.alerting.public.v202505"
+    ".FlowPolicySettingsB\032\222A\0272\025Flow policy se"
+    "ttings.H\000R\004flow\022`\n\003nms\030\014 \001(\01321.kentik.al"
+    "erting.public.v202505.NmsPolicySettingsB"
+    "\031\222A\0262\024NMS policy settings.H\000R\003nms\022h\n\005eve"
+    "nt\030\r \001(\01323.kentik.alerting.public.v20250"
+    "5.EventPolicySettingsB\033\222A\0302\026Event policy"
+    " settings.H\000R\005event\022U\n\nhas_errors\030\016 \001(\010B"
+    "6\222A02.Whether the policy has errors in t"
+    "he run-time.\340A\003R\thasErrors\022\236\001\n\nlast_erro"
+    "r\030\017 \001(\01326.kentik.alerting.public.v202505"
+    ".Policy.PolicyErrorInfoBG\222AA2\?Informatio"
+    "n about the last error that occurred wit"
+    "h the policy.\340A\003R\tlastError\022\234\001\n\013expire_d"
+    "ate\030\020 \001(\0132\032.google.protobuf.TimestampB_\222"
+    "AY2WIndicates when the policy that was m"
+    "ade from a query should expire and becom"
+    "e disabled.\340A\003R\nexpireDate\032\276\001\n\017PolicyErr"
+    "orInfo\022e\n\ttimestamp\030\001 \001(\0132\032.google.proto"
+    "buf.TimestampB+\222A(2&The timestamp when t"
+    "he error occurred.R\ttimestamp\022D\n\013descrip"
+    "tion\030\002 \001(\tB\"\222A\0372\035The description of the "
+    "error.R\013description\032\362\007\n\013PolicyLevel\022\263\001\n\010"
+    "severity\030\001 \001(\0162\'.kentik.alerting.types.v"
+    "202303.SeverityBn\222Ak2iThe severity of th"
+    "e policy level. When level conditions ar"
+    "e met, the alert is triggered at this se"
+    "verity.R\010severity\022K\n\013description\030\002 \001(\tB)"
+    "\222A&2$The description of the policy level"
+    ".R\013description\022s\n\014ack_required\030\003 \001(\010BP\222A"
+    "M2KWhether acknowledgment is required fo"
+    "r alerts that match this policy level.R\013"
+    "ackRequired\022k\n\003nms\030\004 \001(\01326.kentik.alerti"
+    "ng.public.v202505.NmsPolicyLevelSettings"
+    "B\037\222A\0342\032NMS policy level settings.H\000R\003nms"
+    "\022o\n\004flow\030\005 \001(\01327.kentik.alerting.public."
+    "v202505.FlowPolicyLevelSettingsB \222A\0352\033Fl"
+    "ow policy level settings.H\000R\004flow\022s\n\005eve"
+    "nt\030\006 \001(\01328.kentik.alerting.public.v20250"
+    "5.EventPolicyLevelSettingsB!\222A\0362\034Event p"
+    "olicy level settings.H\000R\005event\022\213\002\n\rnotif"
+    "ications\030\007 \003(\0132>.kentik.alerting.public."
+    "v202505.NotificationChannelAssociationB\244"
+    "\001\222A\240\0012\235\001The notification channel associa"
+    "tions for this policy level. When the al"
+    "ert is triggered at this level, the chan"
+    "nels are used to send the alert notifica"
+    "tion.R\rnotificationsB\n\n\010settingsB\n\n\010sett"
+    "ingsB\n\n\010_enabled2\303\010\n\rPolicyService\022\356\001\n\003G"
+    "et\0227.kentik.alerting.public.v202505.Poli"
+    "cyServiceGetRequest\0328.kentik.alerting.pu"
+    "blic.v202505.PolicyServiceGetResponse\"t\222"
+    "A.\022\nGet Policy\032\033Returns an alerting poli"
+    "cy.*\003Get\362\327\002\023admin.alerting:read\202\323\344\223\002&\022$/"
+    "v202505/policies/{policy_type}/{id}\022\363\001\n\004"
+    "List\0228.kentik.alerting.public.v202505.Po"
+    "licyServiceListRequest\0329.kentik.alerting"
+    ".public.v202505.PolicyServiceListRespons"
+    "e\"v\222A;\022\rList Policies\032$Returns a list of"
+    " alerting policies.*\004List\362\327\002\023admin.alert"
+    "ing:read\202\323\344\223\002\033\"\026/v202505/policies/list:\001"
+    "*\022\220\002\n\007Disable\022;.kentik.alerting.public.v"
+    "202505.PolicyServiceDisableRequest\032<.ken"
+    "tik.alerting.public.v202505.PolicyServic"
+    "eDisableResponse\"\211\001\222A7\022\016Disable Policy\032\034"
+    "Disables an alerting policy.*\007Disable\362\327\002"
+    "\024admin.alerting:write\202\323\344\223\0021\",/v202505/po"
+    "licies/{policy_type}/{id}/disable:\001*\022\211\002\n"
+    "\006Enable\022:.kentik.alerting.public.v202505"
+    ".PolicyServiceEnableRequest\032;.kentik.ale"
+    "rting.public.v202505.PolicyServiceEnable"
+    "Response\"\205\001\222A4\022\rEnable Policy\032\033Enables a"
+    "n alerting policy.*\006Enable\362\327\002\024admin.aler"
+    "ting:write\202\323\344\223\0020\"+/v202505/policies/{pol"
+    "icy_type}/{id}/enable:\001*\032,\312A\023grpc.api.ke"
+    "ntik.com\352\327\002\016admin.alerting\220\330\002\003B\251\004ZIgithu"
+    "b.com/kentik/api-schema-public/gen/go/ke"
+    "ntik/alerting/public/v202505\222A\332\003\022\216\002\n\025Ale"
+    "rting Policies API\022\244\001# Overview\nThe Aler"
+    "ting Policies API provides programmatic "
+    "access to Kentik\'s configuration of the "
+    "policies that define how, when, and to w"
+    "hom alerts are triggered.\"E\n\026Kentik API "
+    "Engineering\022+https://github.com/kentik/a"
+    "pi-schema-public2\007v202505*\001\0022\020applicatio"
+    "n/json:\020application/jsonZD\n\036\n\005email\022\025\010\002\032"
+    "\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Au"
+    "th-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000rB"
+    "\n\033Kentik Alerts documentation\022#https://k"
+    "b.kentik.com/docs/alertingb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fpolicy_2eproto_deps[16] =
     {
@@ -796,7 +797,7 @@ static ::absl::once_flag descriptor_table_kentik_2falerting_2fpublic_2fv202505_2
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fpolicy_2eproto = {
     false,
     false,
-    7367,
+    7434,
     descriptor_table_protodef_kentik_2falerting_2fpublic_2fv202505_2fpolicy_2eproto,
     "kentik/alerting/public/v202505/policy.proto",
     &descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fpolicy_2eproto_once,
@@ -1707,7 +1708,6 @@ inline PROTOBUF_NDEBUG_INLINE PolicyListFilters::Impl_::Impl_(
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
         sources_{visibility, arena, from.sources_},
-        applications_{visibility, arena, from.applications_},
         user_ids_{visibility, arena, from.user_ids_} {}
 
 PolicyListFilters::PolicyListFilters(
@@ -1738,7 +1738,6 @@ inline PROTOBUF_NDEBUG_INLINE PolicyListFilters::Impl_::Impl_(
     ::google::protobuf::Arena* arena)
       : _cached_size_{0},
         sources_{visibility, arena},
-        applications_{visibility, arena},
         user_ids_{visibility, arena} {}
 
 inline void PolicyListFilters::SharedCtor(::_pb::Arena* arena) {
@@ -1771,10 +1770,6 @@ constexpr auto PolicyListFilters::InternalNewImpl_() {
   constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
       PROTOBUF_FIELD_OFFSET(PolicyListFilters, _impl_.sources_) +
           decltype(PolicyListFilters::_impl_.sources_)::
-              InternalGetArenaOffset(
-                  ::google::protobuf::Message::internal_visibility()),
-      PROTOBUF_FIELD_OFFSET(PolicyListFilters, _impl_.applications_) +
-          decltype(PolicyListFilters::_impl_.applications_)::
               InternalGetArenaOffset(
                   ::google::protobuf::Message::internal_visibility()),
       PROTOBUF_FIELD_OFFSET(PolicyListFilters, _impl_.user_ids_) +
@@ -1819,15 +1814,15 @@ const ::google::protobuf::internal::ClassData* PolicyListFilters::GetClassData()
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<3, 5, 3, 77, 2> PolicyListFilters::_table_ = {
+const ::_pbi::TcParseTable<3, 4, 3, 65, 2> PolicyListFilters::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(PolicyListFilters, _impl_._has_bits_),
     0, // no _extensions_
     5, 56,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967264,  // skipmap
+    4294967266,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    5,  // num_field_entries
+    4,  // num_field_entries
     3,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
@@ -1841,9 +1836,7 @@ const ::_pbi::TcParseTable<3, 5, 3, 77, 2> PolicyListFilters::_table_ = {
     // repeated .kentik.alerting.public.v202505.Source sources = 1 [json_name = "sources", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::FastMtR1,
      {10, 63, 0, PROTOBUF_FIELD_OFFSET(PolicyListFilters, _impl_.sources_)}},
-    // repeated string applications = 2 [json_name = "applications", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    {::_pbi::TcParser::FastUR1,
-     {18, 63, 0, PROTOBUF_FIELD_OFFSET(PolicyListFilters, _impl_.applications_)}},
+    {::_pbi::TcParser::MiniParse, {}},
     // repeated string user_ids = 3 [json_name = "userIds", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::FastUR1,
      {26, 63, 0, PROTOBUF_FIELD_OFFSET(PolicyListFilters, _impl_.user_ids_)}},
@@ -1861,9 +1854,6 @@ const ::_pbi::TcParseTable<3, 5, 3, 77, 2> PolicyListFilters::_table_ = {
     // repeated .kentik.alerting.public.v202505.Source sources = 1 [json_name = "sources", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {PROTOBUF_FIELD_OFFSET(PolicyListFilters, _impl_.sources_), -1, 0,
     (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
-    // repeated string applications = 2 [json_name = "applications", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    {PROTOBUF_FIELD_OFFSET(PolicyListFilters, _impl_.applications_), -1, 0,
-    (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
     // repeated string user_ids = 3 [json_name = "userIds", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {PROTOBUF_FIELD_OFFSET(PolicyListFilters, _impl_.user_ids_), -1, 0,
     (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
@@ -1878,9 +1868,8 @@ const ::_pbi::TcParseTable<3, 5, 3, 77, 2> PolicyListFilters::_table_ = {
     {::_pbi::TcParser::GetTable<::kentik::alerting::types::v202303::TimeRange>()},
     {::_pbi::TcParser::GetTable<::kentik::alerting::types::v202303::TimeRange>()},
   }}, {{
-    "\60\0\14\10\0\0\0\0"
+    "\60\0\10\0\0\0\0\0"
     "kentik.alerting.public.v202505.PolicyListFilters"
-    "applications"
     "user_ids"
   }},
 };
@@ -1893,7 +1882,6 @@ PROTOBUF_NOINLINE void PolicyListFilters::Clear() {
   (void) cached_has_bits;
 
   _impl_.sources_.Clear();
-  _impl_.applications_.Clear();
   _impl_.user_ids_.Clear();
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
@@ -1934,14 +1922,6 @@ PROTOBUF_NOINLINE void PolicyListFilters::Clear() {
                 ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
                     1, repfield, repfield.GetCachedSize(),
                     target, stream);
-          }
-
-          // repeated string applications = 2 [json_name = "applications", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-          for (int i = 0, n = this_._internal_applications_size(); i < n; ++i) {
-            const auto& s = this_._internal_applications().Get(i);
-            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-                s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.alerting.public.v202505.PolicyListFilters.applications");
-            target = stream->WriteString(2, s, target);
           }
 
           // repeated string user_ids = 3 [json_name = "userIds", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1999,15 +1979,6 @@ PROTOBUF_NOINLINE void PolicyListFilters::Clear() {
                 total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
               }
             }
-            // repeated string applications = 2 [json_name = "applications", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-            {
-              total_size +=
-                  1 * ::google::protobuf::internal::FromIntSize(this_._internal_applications().size());
-              for (int i = 0, n = this_._internal_applications().size(); i < n; ++i) {
-                total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
-                    this_._internal_applications().Get(i));
-              }
-            }
             // repeated string user_ids = 3 [json_name = "userIds", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
             {
               total_size +=
@@ -2046,7 +2017,6 @@ void PolicyListFilters::MergeImpl(::google::protobuf::MessageLite& to_msg, const
 
   _this->_internal_mutable_sources()->MergeFrom(
       from._internal_sources());
-  _this->_internal_mutable_applications()->MergeFrom(from._internal_applications());
   _this->_internal_mutable_user_ids()->MergeFrom(from._internal_user_ids());
   cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
@@ -2086,7 +2056,6 @@ void PolicyListFilters::InternalSwap(PolicyListFilters* PROTOBUF_RESTRICT other)
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   _impl_.sources_.InternalSwap(&other->_impl_.sources_);
-  _impl_.applications_.InternalSwap(&other->_impl_.applications_);
   _impl_.user_ids_.InternalSwap(&other->_impl_.user_ids_);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(PolicyListFilters, _impl_.modified_at_)
@@ -4383,6 +4352,11 @@ void Policy::clear_event() {
     clear_has_settings();
   }
 }
+void Policy::clear_expire_date() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.expire_date_ != nullptr) _impl_.expire_date_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000010u;
+}
 Policy::Policy(::google::protobuf::Arena* arena)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
     : ::google::protobuf::Message(arena, _class_data_.base()) {
@@ -4430,6 +4404,9 @@ Policy::Policy(
                         : nullptr;
   _impl_.last_error_ = (cached_has_bits & 0x00000008u) ? ::google::protobuf::Message::CopyConstruct<::kentik::alerting::public_::v202505::Policy_PolicyErrorInfo>(
                               arena, *from._impl_.last_error_)
+                        : nullptr;
+  _impl_.expire_date_ = (cached_has_bits & 0x00000010u) ? ::google::protobuf::Message::CopyConstruct<::google::protobuf::Timestamp>(
+                              arena, *from._impl_.expire_date_)
                         : nullptr;
   ::memcpy(reinterpret_cast<char *>(&_impl_) +
                offsetof(Impl_, enabled_),
@@ -4491,6 +4468,7 @@ inline void Policy::SharedDtor(MessageLite& self) {
   delete this_._impl_.created_at_;
   delete this_._impl_.modified_at_;
   delete this_._impl_.last_error_;
+  delete this_._impl_.expire_date_;
   if (this_.has_settings()) {
     this_.clear_settings();
   }
@@ -4581,16 +4559,16 @@ const ::google::protobuf::internal::ClassData* Policy::GetClassData() const {
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<4, 14, 8, 90, 2> Policy::_table_ = {
+const ::_pbi::TcParseTable<4, 15, 9, 90, 2> Policy::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(Policy, _impl_._has_bits_),
     0, // no _extensions_
-    15, 120,  // max_field_number, fast_idx_mask
+    16, 120,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294934784,  // skipmap
+    4294902016,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    14,  // num_field_entries
-    8,  // num_aux_entries
+    15,  // num_field_entries
+    9,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
     nullptr,  // post_loop_handler
@@ -4599,7 +4577,9 @@ const ::_pbi::TcParseTable<4, 14, 8, 90, 2> Policy::_table_ = {
     ::_pbi::TcParser::GetTable<::kentik::alerting::public_::v202505::Policy>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    {::_pbi::TcParser::MiniParse, {}},
+    // .google.protobuf.Timestamp expire_date = 16 [json_name = "expireDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastMtS2,
+     {386, 4, 8, PROTOBUF_FIELD_OFFSET(Policy, _impl_.expire_date_)}},
     // .kentik.alerting.public.v202505.Source source = 1 [json_name = "source", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::FastMtS1,
      {10, 0, 0, PROTOBUF_FIELD_OFFSET(Policy, _impl_.source_)}},
@@ -4622,8 +4602,8 @@ const ::_pbi::TcParseTable<4, 14, 8, 90, 2> Policy::_table_ = {
     {::_pbi::TcParser::FastUS1,
      {58, 63, 0, PROTOBUF_FIELD_OFFSET(Policy, _impl_.description_)}},
     // optional bool enabled = 8 [json_name = "enabled", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(Policy, _impl_.enabled_), 4>(),
-     {64, 4, 0, PROTOBUF_FIELD_OFFSET(Policy, _impl_.enabled_)}},
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(Policy, _impl_.enabled_), 5>(),
+     {64, 5, 0, PROTOBUF_FIELD_OFFSET(Policy, _impl_.enabled_)}},
     {::_pbi::TcParser::MiniParse, {}},
     // repeated .kentik.alerting.public.v202505.Policy.PolicyLevel levels = 10 [json_name = "levels", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::FastMtR1,
@@ -4662,7 +4642,7 @@ const ::_pbi::TcParseTable<4, 14, 8, 90, 2> Policy::_table_ = {
     {PROTOBUF_FIELD_OFFSET(Policy, _impl_.description_), -1, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // optional bool enabled = 8 [json_name = "enabled", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    {PROTOBUF_FIELD_OFFSET(Policy, _impl_.enabled_), _Internal::kHasBitsOffset + 4, 0,
+    {PROTOBUF_FIELD_OFFSET(Policy, _impl_.enabled_), _Internal::kHasBitsOffset + 5, 0,
     (0 | ::_fl::kFcOptional | ::_fl::kBool)},
     // repeated .kentik.alerting.public.v202505.Policy.PolicyLevel levels = 10 [json_name = "levels", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {PROTOBUF_FIELD_OFFSET(Policy, _impl_.levels_), -1, 3,
@@ -4682,6 +4662,9 @@ const ::_pbi::TcParseTable<4, 14, 8, 90, 2> Policy::_table_ = {
     // .kentik.alerting.public.v202505.Policy.PolicyErrorInfo last_error = 15 [json_name = "lastError", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {PROTOBUF_FIELD_OFFSET(Policy, _impl_.last_error_), _Internal::kHasBitsOffset + 3, 7,
     (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // .google.protobuf.Timestamp expire_date = 16 [json_name = "expireDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(Policy, _impl_.expire_date_), _Internal::kHasBitsOffset + 4, 8,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
   }}, {{
     {::_pbi::TcParser::GetTable<::kentik::alerting::public_::v202505::Source>()},
     {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
@@ -4691,6 +4674,7 @@ const ::_pbi::TcParseTable<4, 14, 8, 90, 2> Policy::_table_ = {
     {::_pbi::TcParser::GetTable<::kentik::alerting::public_::v202505::NmsPolicySettings>()},
     {::_pbi::TcParser::GetTable<::kentik::alerting::public_::v202505::EventPolicySettings>()},
     {::_pbi::TcParser::GetTable<::kentik::alerting::public_::v202505::Policy_PolicyErrorInfo>()},
+    {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
   }}, {{
     "\45\0\0\0\12\13\4\13\0\0\0\0\0\0\0\0"
     "kentik.alerting.public.v202505.Policy"
@@ -4714,7 +4698,7 @@ PROTOBUF_NOINLINE void Policy::Clear() {
   _impl_.name_.ClearToEmpty();
   _impl_.description_.ClearToEmpty();
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x0000000fu) {
+  if (cached_has_bits & 0x0000001fu) {
     if (cached_has_bits & 0x00000001u) {
       ABSL_DCHECK(_impl_.source_ != nullptr);
       _impl_.source_->Clear();
@@ -4730,6 +4714,10 @@ PROTOBUF_NOINLINE void Policy::Clear() {
     if (cached_has_bits & 0x00000008u) {
       ABSL_DCHECK(_impl_.last_error_ != nullptr);
       _impl_.last_error_->Clear();
+    }
+    if (cached_has_bits & 0x00000010u) {
+      ABSL_DCHECK(_impl_.expire_date_ != nullptr);
+      _impl_.expire_date_->Clear();
     }
   }
   _impl_.enabled_ = false;
@@ -4809,7 +4797,7 @@ PROTOBUF_NOINLINE void Policy::Clear() {
           }
 
           // optional bool enabled = 8 [json_name = "enabled", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-          if (cached_has_bits & 0x00000010u) {
+          if (cached_has_bits & 0x00000020u) {
             target = stream->EnsureSpace(target);
             target = ::_pbi::WireFormatLite::WriteBoolToArray(
                 8, this_._internal_enabled(), target);
@@ -4859,6 +4847,13 @@ PROTOBUF_NOINLINE void Policy::Clear() {
           if (cached_has_bits & 0x00000008u) {
             target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
                 15, *this_._impl_.last_error_, this_._impl_.last_error_->GetCachedSize(), target,
+                stream);
+          }
+
+          // .google.protobuf.Timestamp expire_date = 16 [json_name = "expireDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (cached_has_bits & 0x00000010u) {
+            target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                16, *this_._impl_.expire_date_, this_._impl_.expire_date_->GetCachedSize(), target,
                 stream);
           }
 
@@ -4918,7 +4913,7 @@ PROTOBUF_NOINLINE void Policy::Clear() {
             }
           }
           cached_has_bits = this_._impl_._has_bits_[0];
-          if (cached_has_bits & 0x0000001fu) {
+          if (cached_has_bits & 0x0000003fu) {
             // .kentik.alerting.public.v202505.Source source = 1 [json_name = "source", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
             if (cached_has_bits & 0x00000001u) {
               total_size += 1 +
@@ -4939,8 +4934,13 @@ PROTOBUF_NOINLINE void Policy::Clear() {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.last_error_);
             }
-            // optional bool enabled = 8 [json_name = "enabled", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            // .google.protobuf.Timestamp expire_date = 16 [json_name = "expireDate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
             if (cached_has_bits & 0x00000010u) {
+              total_size += 2 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.expire_date_);
+            }
+            // optional bool enabled = 8 [json_name = "enabled", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (cached_has_bits & 0x00000020u) {
               total_size += 2;
             }
           }
@@ -5001,7 +5001,7 @@ void Policy::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::
     _this->_internal_set_description(from._internal_description());
   }
   cached_has_bits = from._impl_._has_bits_[0];
-  if (cached_has_bits & 0x0000001fu) {
+  if (cached_has_bits & 0x0000003fu) {
     if (cached_has_bits & 0x00000001u) {
       ABSL_DCHECK(from._impl_.source_ != nullptr);
       if (_this->_impl_.source_ == nullptr) {
@@ -5039,6 +5039,15 @@ void Policy::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::
       }
     }
     if (cached_has_bits & 0x00000010u) {
+      ABSL_DCHECK(from._impl_.expire_date_ != nullptr);
+      if (_this->_impl_.expire_date_ == nullptr) {
+        _this->_impl_.expire_date_ =
+            ::google::protobuf::Message::CopyConstruct<::google::protobuf::Timestamp>(arena, *from._impl_.expire_date_);
+      } else {
+        _this->_impl_.expire_date_->MergeFrom(*from._impl_.expire_date_);
+      }
+    }
+    if (cached_has_bits & 0x00000020u) {
       _this->_impl_.enabled_ = from._impl_.enabled_;
     }
   }

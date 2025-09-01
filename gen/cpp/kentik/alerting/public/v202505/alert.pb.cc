@@ -640,7 +640,6 @@ inline constexpr AlertFilters::Impl_::Impl_(
         severities_{},
         _severities_cached_byte_size_{0},
         alert_ids_{},
-        applications_{},
         sources_{},
         states_{},
         _states_cached_byte_size_{0},
@@ -1007,7 +1006,6 @@ const ::uint32_t
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::AlertFilters, _impl_.severities_),
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::AlertFilters, _impl_.alert_ids_),
-        PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::AlertFilters, _impl_.applications_),
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::AlertFilters, _impl_.sources_),
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::AlertFilters, _impl_.keys_),
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::AlertFilters, _impl_.states_),
@@ -1020,7 +1018,6 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::AlertFilters, _impl_.acked_by_user_ids_),
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::AlertFilters, _impl_.include_removed_policies_),
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::AlertFilters, _impl_.context_search_),
-        ~0u,
         ~0u,
         ~0u,
         ~0u,
@@ -1413,36 +1410,36 @@ static const ::_pbi::MigrationSchema
         {9, 19, -1, sizeof(::kentik::alerting::public_::v202505::AlertServiceGetResponse)},
         {21, 35, -1, sizeof(::kentik::alerting::public_::v202505::AlertPhase)},
         {40, 51, -1, sizeof(::kentik::alerting::public_::v202505::AlertServiceListRequest)},
-        {54, 77, -1, sizeof(::kentik::alerting::public_::v202505::AlertFilters)},
-        {92, 102, -1, sizeof(::kentik::alerting::public_::v202505::AlertServiceListResponse)},
-        {104, -1, -1, sizeof(::kentik::alerting::public_::v202505::AlertServiceAckRequest)},
-        {114, 123, -1, sizeof(::kentik::alerting::public_::v202505::AlertServiceAckResponse)},
-        {124, -1, -1, sizeof(::kentik::alerting::public_::v202505::AlertServiceUnAckRequest)},
-        {133, 142, -1, sizeof(::kentik::alerting::public_::v202505::AlertServiceUnAckResponse)},
-        {143, -1, -1, sizeof(::kentik::alerting::public_::v202505::AlertServiceClearRequest)},
-        {152, -1, -1, sizeof(::kentik::alerting::public_::v202505::AlertServiceClearResponse)},
-        {161, 173, -1, sizeof(::kentik::alerting::public_::v202505::Alert_Acknowledgement)},
-        {177, 197, -1, sizeof(::kentik::alerting::public_::v202505::Alert)},
-        {208, 218, -1, sizeof(::kentik::alerting::public_::v202505::FlowContext_AlertKeyDetailsEntry_DoNotUse)},
-        {220, -1, -1, sizeof(::kentik::alerting::public_::v202505::FlowContext_MetricValue)},
-        {230, 242, -1, sizeof(::kentik::alerting::public_::v202505::FlowContext_AlertKeyDetails)},
-        {246, -1, -1, sizeof(::kentik::alerting::public_::v202505::FlowContext_DeviceDetails)},
-        {258, -1, -1, sizeof(::kentik::alerting::public_::v202505::FlowContext_InterfaceDetails)},
-        {270, -1, -1, sizeof(::kentik::alerting::public_::v202505::FlowContext_SiteDetails)},
-        {284, -1, -1, sizeof(::kentik::alerting::public_::v202505::FlowContext)},
-        {296, 306, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_TargetsEntry_DoNotUse)},
-        {308, 318, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_MetricValuesEntry_DoNotUse)},
-        {320, 330, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_PreviousMetricValuesEntry_DoNotUse)},
-        {332, 342, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_DeviceEntry_DoNotUse)},
-        {344, 354, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_GroupKeyEntry_DoNotUse)},
-        {356, 369, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_ActivationInfo)},
-        {373, -1, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_DatasetInfo)},
-        {385, 395, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_AlarmTarget_FieldsEntry_DoNotUse)},
-        {397, 407, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_AlarmTarget_TagsEntry_DoNotUse)},
-        {409, -1, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_AlarmTarget)},
-        {419, 429, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_AlarmMetricMap_MetricsEntry_DoNotUse)},
-        {431, -1, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_AlarmMetricMap)},
-        {440, 455, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext)},
+        {54, 76, -1, sizeof(::kentik::alerting::public_::v202505::AlertFilters)},
+        {90, 100, -1, sizeof(::kentik::alerting::public_::v202505::AlertServiceListResponse)},
+        {102, -1, -1, sizeof(::kentik::alerting::public_::v202505::AlertServiceAckRequest)},
+        {112, 121, -1, sizeof(::kentik::alerting::public_::v202505::AlertServiceAckResponse)},
+        {122, -1, -1, sizeof(::kentik::alerting::public_::v202505::AlertServiceUnAckRequest)},
+        {131, 140, -1, sizeof(::kentik::alerting::public_::v202505::AlertServiceUnAckResponse)},
+        {141, -1, -1, sizeof(::kentik::alerting::public_::v202505::AlertServiceClearRequest)},
+        {150, -1, -1, sizeof(::kentik::alerting::public_::v202505::AlertServiceClearResponse)},
+        {159, 171, -1, sizeof(::kentik::alerting::public_::v202505::Alert_Acknowledgement)},
+        {175, 195, -1, sizeof(::kentik::alerting::public_::v202505::Alert)},
+        {206, 216, -1, sizeof(::kentik::alerting::public_::v202505::FlowContext_AlertKeyDetailsEntry_DoNotUse)},
+        {218, -1, -1, sizeof(::kentik::alerting::public_::v202505::FlowContext_MetricValue)},
+        {228, 240, -1, sizeof(::kentik::alerting::public_::v202505::FlowContext_AlertKeyDetails)},
+        {244, -1, -1, sizeof(::kentik::alerting::public_::v202505::FlowContext_DeviceDetails)},
+        {256, -1, -1, sizeof(::kentik::alerting::public_::v202505::FlowContext_InterfaceDetails)},
+        {268, -1, -1, sizeof(::kentik::alerting::public_::v202505::FlowContext_SiteDetails)},
+        {282, -1, -1, sizeof(::kentik::alerting::public_::v202505::FlowContext)},
+        {294, 304, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_TargetsEntry_DoNotUse)},
+        {306, 316, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_MetricValuesEntry_DoNotUse)},
+        {318, 328, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_PreviousMetricValuesEntry_DoNotUse)},
+        {330, 340, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_DeviceEntry_DoNotUse)},
+        {342, 352, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_GroupKeyEntry_DoNotUse)},
+        {354, 367, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_ActivationInfo)},
+        {371, -1, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_DatasetInfo)},
+        {383, 393, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_AlarmTarget_FieldsEntry_DoNotUse)},
+        {395, 405, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_AlarmTarget_TagsEntry_DoNotUse)},
+        {407, -1, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_AlarmTarget)},
+        {417, 427, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_AlarmMetricMap_MetricsEntry_DoNotUse)},
+        {429, -1, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_AlarmMetricMap)},
+        {438, 453, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::alerting::public_::v202505::_AlertServiceGetRequest_default_instance_._instance,
@@ -1534,330 +1531,325 @@ const char descriptor_table_protodef_kentik_2falerting_2fpublic_2fv202505_2faler
     "05.AlertFiltersBz\222At2nThe filter criteri"
     "a required to match alerts for listing. "
     "All provided filters are combined with A"
-    "ND operator.:\002{}\340A\001R\007filters\"\361\020\n\014AlertFi"
+    "ND operator.:\002{}\340A\001R\007filters\"\271\017\n\014AlertFi"
     "lters\022z\n\nseverities\030\001 \003(\0162\'.kentik.alert"
     "ing.types.v202303.SeverityB1\222A+2%The sev"
     "erities of the alerts to list.:\002[]\340A\001R\ns"
     "everities\022G\n\talert_ids\030\002 \003(\tB*\222A$2\036The I"
     "Ds of the alerts to list.:\002[]\340A\001R\010alertI"
-    "ds\022\273\001\n\014applications\030\003 \003(\tB\226\001\222A\217\0012\210\001The a"
-    "pplications of the alerts to list. Appli"
-    "cations are alerting integrations. It\'s "
-    "recommended to use sources instead of ap"
-    "plications.:\002[]\340A\001R\014applications\022x\n\007sour"
-    "ces\030\004 \003(\0132&.kentik.alerting.public.v2025"
-    "05.SourceB6\222A02*The source policies of t"
-    "he alerts to list.:\002[]\340A\001R\007sources\022|\n\004ke"
-    "ys\030\005 \001(\01323.kentik.alerting.types.v202303"
-    ".MultiAttributeFilterB3\222A-2\'The keys fil"
-    "ters of the alerts to list.:\002{}\340A\001R\004keys"
-    "\022q\n\006states\030\006 \003(\0162*.kentik.alerting.publi"
-    "c.v202505.AlertStateB-\222A\'2!The states of"
-    " the alerts to list.:\002[]\340A\001R\006states\022\216\001\n\n"
-    "started_at\030\007 \001(\0132(.kentik.alerting.types"
-    ".v202303.TimeRangeBE\222A\?29The time range "
-    "of alert start time of the alerts to lis"
-    "t.:\002{}\340A\001R\tstartedAt\022\210\001\n\010ended_at\030\010 \001(\0132"
-    "(.kentik.alerting.types.v202303.TimeRang"
-    "eBC\222A=27The time range of alert end time"
-    " of the alerts to list.:\002{}\340A\001R\007endedAt\022"
-    "\222\001\n\022highest_severities\030\t \003(\0162\'.kentik.al"
-    "erting.types.v202303.SeverityB:\222A42.Filt"
-    "er alerts by the highest reached severit"
-    "y.:\002[]\340A\001R\021highestSeverities\022\272\001\n\021recent_"
-    "severities\030\n \003(\0162\'.kentik.alerting.types"
-    ".v202303.SeverityBd\222A^2XFilter alerts by"
-    " the most recent (for active ones) and l"
-    "ast (for cleared ones) severity.:\002[]\340A\001R"
-    "\020recentSeverities\022\222\001\n\nack_states\030\013 \003(\01624"
-    ".kentik.alerting.public.v202505.AlertAck"
-    "nowledgementB=\222A721The acknowledgement s"
-    "tates of the alerts to list.:\002[]\340A\001R\tack"
-    "States\022\215\001\n\tactive_at\030\014 \001(\0132(.kentik.aler"
-    "ting.types.v202303.TimeRangeBF\222A@2:The t"
-    "ime range of alert active time of the al"
-    "erts to list.:\002{}\340A\001R\010activeAt\022p\n\021acked_"
-    "by_user_ids\030\r \003(\tBE\222A\?29The IDs of the u"
-    "sers who acknowledged the alerts to list"
-    ".:\002[]\340A\001R\016ackedByUserIds\022\315\001\n\030include_rem"
-    "oved_policies\030\016 \001(\010B\222\001\222A\213\0012\201\001Whether to "
-    "include removed policies in the response"
-    ". If true, the response will include ale"
-    "rts from source that has been removed.:\005"
-    "false\340A\001R\026includeRemovedPolicies\022\235\001\n\016con"
-    "text_search\030\017 \003(\tBv\222Ap2jThe context sear"
-    "ch terms (e.g. device name, interface na"
-    "me, site name, labels etc.) of the alert"
-    "s to list.:\002[]\340A\001R\rcontextSearch\"\201\002\n\030Ale"
-    "rtServiceListResponse\022\205\001\n\npagination\030\001 \001"
-    "(\0132-.kentik.alerting.types.v202506.Pagin"
-    "ationInfoB6\222A02.The pagination informati"
-    "on for the alert list.\340A\003R\npagination\022]\n"
-    "\006alerts\030\002 \003(\0132%.kentik.alerting.public.v"
-    "202505.AlertB\036\222A\0302\026The alerts result set"
-    ".\340A\003R\006alerts\"\243\001\n\026AlertServiceAckRequest\022"
-    ";\n\002id\030\001 \001(\tB+\222A%2#The ID of the alert to"
-    " acknowledge.\340A\002R\002id\022L\n\007comment\030\002 \001(\tB2\222"
-    "A,2*The comment to add to the acknowledg"
-    "ement.\340A\001R\007comment\"\302\001\n\027AlertServiceAckRe"
-    "sponse\022\246\001\n\005alert\030\001 \001(\0132%.kentik.alerting"
-    ".public.v202505.AlertBi\222Ac2aThe alert ob"
-    "ject that contains information about an "
-    "individual alert which has been acknowle"
-    "dged.\340A\003R\005alert\"k\n\030AlertServiceUnAckRequ"
-    "est\022O\n\002id\030\001 \001(\tB\?\222A927The ID of the aler"
-    "t to remove the acknowledgement from.\340A\002"
-    "R\002id\"\306\001\n\031AlertServiceUnAckResponse\022\250\001\n\005a"
-    "lert\030\001 \001(\0132%.kentik.alerting.public.v202"
-    "505.AlertBk\222Ae2cThe alert object that co"
-    "ntains information about an individual a"
-    "lert which has been unacknowledged.\340A\003R\005"
-    "alert\"`\n\030AlertServiceClearRequest\022D\n\tale"
-    "rt_ids\030\001 \003(\tB\'\222A!2\037The IDs of the alerts"
-    " to clear.\340A\002R\010alertIds\"~\n\031AlertServiceC"
-    "learResponse\022a\n\021cleared_alert_ids\030\001 \003(\tB"
-    "5\222A/2-The IDs of the alerts that have be"
-    "en cleared.\340A\003R\017clearedAlertIds\"\257\016\n\005Aler"
-    "t\022:\n\002id\030\001 \001(\tB*\222A$2\"The ID (UUID format)"
-    " of the alert.\340A\003R\002id\022g\n\006source\030\002 \001(\0132&."
-    "kentik.alerting.public.v202505.SourceB\'\222"
-    "A!2\037The source policy of the alert.\340A\003R\006"
-    "source\022d\n\rstart_time_at\030\004 \001(\0132\032.google.p"
-    "rotobuf.TimestampB$\222A\0362\034The start time o"
-    "f the alert.\340A\003R\013startTimeAt\022^\n\013end_time"
-    "_at\030\005 \001(\0132\032.google.protobuf.TimestampB\"\222"
-    "A\0342\032The end time of the alert.\340A\003R\tendTi"
-    "meAt\022i\n\005state\030\006 \001(\0162*.kentik.alerting.pu"
-    "blic.v202505.AlertStateB\'\222A!2\037The curren"
-    "t state of the alert.\340A\003R\005state\022o\n\010sever"
-    "ity\030\007 \001(\0162\'.kentik.alerting.types.v20230"
-    "3.SeverityB*\222A$2\"The current severity of"
-    " the alert.\340A\003R\010severity\022\206\001\n\020highest_sev"
-    "erity\030\010 \001(\0162\'.kentik.alerting.types.v202"
-    "303.SeverityB2\222A,2*The highest reached s"
-    "everity of the alert.\340A\003R\017highestSeverit"
-    "y\022\220\001\n\017acknowledgement\030\t \001(\01325.kentik.ale"
-    "rting.public.v202505.Alert.Acknowledgeme"
-    "ntB/\222A)2\'The acknowledgement state of th"
-    "e alert.\340A\003R\017acknowledgement\022\250\001\n\023event_s"
-    "tart_time_at\030\n \001(\0132\032.google.protobuf.Tim"
-    "estampB]\222AW2UThe timestamp of the first "
-    "trigger event that caused an alert to ev"
-    "entually activate.\340A\003R\020eventStartTimeAt\022"
-    "t\n\004flow\030\013 \001(\0132+.kentik.alerting.public.v"
-    "202505.FlowContextB1\222A+2)The context of "
-    "the alert for flow alerts.\340A\003H\000R\004flow\022p\n"
-    "\003nms\030\014 \001(\0132*.kentik.alerting.public.v202"
-    "505.NmsContextB0\222A*2(The context of the "
-    "alert for NMS alerts.\340A\003H\000R\003nms\032\244\004\n\017Ackn"
-    "owledgement\022{\n\005state\030\001 \001(\01624.kentik.aler"
-    "ting.public.v202505.AlertAcknowledgement"
-    "B/\222A)2\'The acknowledgement state of the "
-    "alert.\340A\003R\005state\022\231\001\n\racked_by_user\030\002 \001(\t"
-    "Bu\222Ao2mThe user ID of the user who ackno"
-    "wledged the alert. Present only if the a"
-    "lert has been acknowledged manually.\340A\003R"
-    "\013ackedByUser\022\221\001\n\013auto_ack_id\030\003 \001(\tBq\222Ak2"
-    "iThe ID of the auto-ack that acknowledge"
-    "d the alert. Present only if the alert h"
-    "as been auto-acknowledged.\340A\003R\tautoAckId"
-    "\022d\n\010acked_at\030\004 \001(\0132\032.google.protobuf.Tim"
-    "estampB-\222A\'2%The timestamp of the acknow"
-    "ledgement.\340A\003R\007ackedAtB\t\n\007context\"\345\033\n\013Fl"
-    "owContext\022\254\001\n\rmetric_values\030\001 \003(\01327.kent"
-    "ik.alerting.public.v202505.FlowContext.M"
-    "etricValueBN\222AH2FThe metric values of th"
-    "e alert determined by the policy configu"
-    "ration.\340A\003R\014metricValues\022\304\001\n\021activation_"
-    "status\030\002 \001(\0162<.kentik.alerting.public.v2"
-    "02505.FlowContext.ActivationStatusBY\222AS2"
-    "QThe activation status of the alert refe"
-    "rring to potential use of baseline value"
-    "s.\340A\003R\020activationStatus\022a\n\016baseline_valu"
-    "e\030\003 \001(\001B:\222A422The baseline value used wh"
-    "en activating the alert.\340A\003R\rbaselineVal"
-    "ue\022\313\001\n\021alert_key_details\030\004 \003(\0132@.kentik."
-    "alerting.public.v202505.FlowContext.Aler"
-    "tKeyDetailsEntryB]\222AW2UThe alert key det"
-    "ails of the alert: each key might be exp"
-    "anded into multiple details.\340A\003R\017alertKe"
-    "yDetails\032\177\n\024AlertKeyDetailsEntry\022\020\n\003key\030"
-    "\001 \001(\tR\003key\022Q\n\005value\030\002 \001(\0132;.kentik.alert"
-    "ing.public.v202505.FlowContext.AlertKeyD"
-    "etailsR\005value:\0028\001\032\310\001\n\013MetricValue\022{\n\004nam"
-    "e\030\001 \001(\tBg\222Aa2_The name of the metric val"
-    "ue (e.g. \'bytes_in\', \'bytes_out\', \'packe"
-    "ts_in\', \'packets_out\', etc.).\340A\003R\004name\022<"
-    "\n\005value\030\002 \001(\001B&\222A 2\036The value of the giv"
-    "en metric.\340A\003R\005value\032\356\003\n\017AlertKeyDetails"
-    "\022\177\n\006device\030\001 \001(\01329.kentik.alerting.publi"
-    "c.v202505.FlowContext.DeviceDetailsB,\222A&"
-    "2$The device details of the alert key.\340A"
-    "\003R\006device\022\213\001\n\tinterface\030\002 \001(\0132<.kentik.a"
-    "lerting.public.v202505.FlowContext.Inter"
-    "faceDetailsB/\222A)2\'The interface details "
-    "of the alert key.\340A\003R\tinterface\022w\n\004site\030"
-    "\003 \001(\01327.kentik.alerting.public.v202505.F"
-    "lowContext.SiteDetailsB*\222A$2\"The site de"
-    "tails of the alert key.\340A\003R\004site\022S\n\016exte"
-    "nded_value\030\004 \001(\tB,\222A&2$The extended valu"
-    "e of the alert key.\340A\003R\rextendedValue\032\200\002"
-    "\n\rDeviceDetails\022-\n\002id\030\001 \001(\tB\035\222A\0272\025The ID"
-    " of the device.\340A\003R\002id\0223\n\004name\030\002 \001(\tB\037\222A"
-    "\0312\027The name of the device.\340A\003R\004name\022C\n\004t"
-    "ype\030\003 \001(\tB/\222A)2\'The type of the device ("
-    "e.g. \'router\').\340A\003R\004type\022F\n\006labels\030\004 \003(\t"
-    "B.\222A(2&The labels associated with the de"
-    "vice.\340A\003R\006labels\032\320\002\n\020InterfaceDetails\022>\n"
-    "\007snmp_id\030\001 \001(\tB%\222A\0372\035The SNMP ID of the "
-    "interface.\340A\003R\006snmpId\022U\n\nsnmp_alias\030\002 \001("
-    "\tB6\222A02.The SNMP alias of the interface "
-    "(e.g. \'eth0\').\340A\003R\tsnmpAlias\022K\n\013descript"
-    "ion\030\003 \001(\tB)\222A#2!The description of the i"
-    "nterface.\340A\003R\013description\022X\n\017snmp_speed_"
-    "mbps\030\004 \001(\003B0\222A*2(The SNMP speed of the i"
-    "nterface in Mbps.\340A\003R\rsnmpSpeedMbps\032\251\003\n\013"
-    "SiteDetails\022+\n\002id\030\001 \001(\tB\033\222A\0252\023The ID of "
-    "the site.\340A\003R\002id\0221\n\004name\030\002 \001(\tB\035\222A\0272\025The"
-    " name of the site.\340A\003R\004name\022E\n\010latitude\030"
-    "\003 \001(\tB)\222A&2$The geographic latitude of t"
-    "he site.R\010latitude\022K\n\tlongitude\030\004 \001(\tB-\222"
-    "A\'2%The geographic longitude of the site"
-    ".\340A\003R\tlongitude\022S\n\010location\030\005 \001(\tB7\222A12/"
-    "The location of the site (e.g. \'New York"
-    ", NY\').\340A\003R\010location\022Q\n\007country\030\006 \001(\tB7\222"
-    "A12/The country of the site (e.g. \'Unite"
-    "d States\').\340A\003R\007country\"\357\007\n\020ActivationSt"
-    "atus\022!\n\035ACTIVATION_STATUS_UNSPECIFIED\020\000\022"
-    "\'\n#ACTIVATION_STATUS_NOT_USED_BASELINE\020\001"
-    "\022+\n\'ACTIVATION_STATUS_BASELINE_MISSING_S"
-    "KIP\020\002\022.\n*ACTIVATION_STATUS_BASELINE_MISS"
-    "ING_TRIGGER\020\003\022)\n%ACTIVATION_STATUS_BASEL"
-    "INE_USED_FOUND\020\004\022.\n*ACTIVATION_STATUS_BA"
-    "SELINE_MISSING_DEFAULT\020\005\022-\n)ACTIVATION_S"
-    "TATUS_BASELINE_MISSING_LOWEST\020\006\022.\n*ACTIV"
-    "ATION_STATUS_BASELINE_MISSING_HIGHEST\020\007\022"
-    "/\n+ACTIVATION_STATUS_BASELINE_NOT_FOUND_"
-    "EXISTS\020\010\022*\n&ACTIVATION_STATUS_CURRENT_MI"
-    "SSING_SKIP\020\t\022-\n)ACTIVATION_STATUS_CURREN"
-    "T_MISSING_TRIGGER\020\n\022(\n$ACTIVATION_STATUS"
-    "_CURRENT_USED_FOUND\020\013\022-\n)ACTIVATION_STAT"
-    "US_CURRENT_MISSING_DEFAULT\020\014\022,\n(ACTIVATI"
-    "ON_STATUS_CURRENT_MISSING_LOWEST\020\r\022-\n)AC"
-    "TIVATION_STATUS_CURRENT_MISSING_HIGHEST\020"
-    "\016\022.\n*ACTIVATION_STATUS_CURRENT_NOT_FOUND"
-    "_EXISTS\020\017\022@\n<ACTIVATION_STATUS_BASELINE_"
-    "MISSING_DEFAULT_INSTEAD_OF_LOWEST\020\020\022A\n=A"
-    "CTIVATION_STATUS_BASELINE_MISSING_DEFAUL"
-    "T_INSTEAD_OF_HIGHEST\020\021\022\?\n;ACTIVATION_STA"
-    "TUS_CURRENT_MISSING_DEFAULT_INSTEAD_OF_L"
-    "OWEST\020\022\022@\n<ACTIVATION_STATUS_CURRENT_MIS"
-    "SING_DEFAULT_INSTEAD_OF_HIGHEST\020\023\"\202\020\n\nNm"
-    "sContext\022b\n\017activation_info\030\001 \001(\01329.kent"
-    "ik.alerting.public.v202505.NmsContext.Ac"
-    "tivationInfoR\016activationInfo\022Y\n\014dataset_"
-    "info\030\002 \001(\01326.kentik.alerting.public.v202"
-    "505.NmsContext.DatasetInfoR\013datasetInfo\022"
-    "Q\n\007targets\030\003 \003(\01327.kentik.alerting.publi"
-    "c.v202505.NmsContext.TargetsEntryR\007targe"
-    "ts\022a\n\rmetric_values\030\004 \003(\0132<.kentik.alert"
-    "ing.public.v202505.NmsContext.MetricValu"
-    "esEntryR\014metricValues\022z\n\026previous_metric"
-    "_values\030\005 \003(\0132D.kentik.alerting.public.v"
-    "202505.NmsContext.PreviousMetricValuesEn"
-    "tryR\024previousMetricValues\022N\n\006device\030\006 \003("
-    "\01326.kentik.alerting.public.v202505.NmsCo"
-    "ntext.DeviceEntryR\006device\022U\n\tgroup_key\030\007"
-    " \003(\01328.kentik.alerting.public.v202505.Nm"
-    "sContext.GroupKeyEntryR\010groupKey\032r\n\014Targ"
-    "etsEntry\022\020\n\003key\030\001 \001(\tR\003key\022L\n\005value\030\002 \001("
-    "\01326.kentik.alerting.public.v202505.NmsCo"
-    "ntext.AlarmTargetR\005value:\0028\001\032z\n\021MetricVa"
-    "luesEntry\022\020\n\003key\030\001 \001(\tR\003key\022O\n\005value\030\002 \001"
-    "(\01329.kentik.alerting.public.v202505.NmsC"
-    "ontext.AlarmMetricMapR\005value:\0028\001\032\202\001\n\031Pre"
-    "viousMetricValuesEntry\022\020\n\003key\030\001 \001(\tR\003key"
-    "\022O\n\005value\030\002 \001(\01329.kentik.alerting.public"
-    ".v202505.NmsContext.AlarmMetricMapR\005valu"
-    "e:\0028\001\0329\n\013DeviceEntry\022\020\n\003key\030\001 \001(\tR\003key\022\024"
-    "\n\005value\030\002 \001(\tR\005value:\0028\001\032;\n\rGroupKeyEntr"
-    "y\022\020\n\003key\030\001 \001(\tR\003key\022\024\n\005value\030\002 \001(\tR\005valu"
-    "e:\0028\001\032\361\001\n\016ActivationInfo\022X\n\010activate\030\001 \001"
-    "(\0132<.kentik.alerting.public.v202505.NmsA"
-    "ctivateOrClearConditionsR\010activate\022\032\n\010se"
-    "verity\030\002 \001(\tR\010severity\022#\n\014clear_manual\030\003"
-    " \001(\010H\000R\013clearManual\0226\n\026clear_unless_acti"
-    "vated\030\004 \001(\010H\000R\024clearUnlessActivatedB\014\n\nc"
-    "lear_type\032\223\001\n\013DatasetInfo\022\037\n\013custom_type"
-    "\030\001 \001(\010R\ncustomType\022\036\n\ndimensions\030\002 \003(\tR\n"
-    "dimensions\022\037\n\013entity_type\030\003 \001(\tR\nentityT"
-    "ype\022\"\n\014measurements\030\004 \003(\tR\014measurements\032"
-    "\263\002\n\013AlarmTarget\022Z\n\006fields\030\001 \003(\0132B.kentik"
+    "ds\022x\n\007sources\030\004 \003(\0132&.kentik.alerting.pu"
+    "blic.v202505.SourceB6\222A02*The source pol"
+    "icies of the alerts to list.:\002[]\340A\001R\007sou"
+    "rces\022|\n\004keys\030\005 \001(\01323.kentik.alerting.typ"
+    "es.v202303.MultiAttributeFilterB3\222A-2\'Th"
+    "e keys filters of the alerts to list.:\002{"
+    "}\340A\001R\004keys\022q\n\006states\030\006 \003(\0162*.kentik.aler"
+    "ting.public.v202505.AlertStateB-\222A\'2!The"
+    " states of the alerts to list.:\002[]\340A\001R\006s"
+    "tates\022\216\001\n\nstarted_at\030\007 \001(\0132(.kentik.aler"
+    "ting.types.v202303.TimeRangeBE\222A\?29The t"
+    "ime range of alert start time of the ale"
+    "rts to list.:\002{}\340A\001R\tstartedAt\022\210\001\n\010ended"
+    "_at\030\010 \001(\0132(.kentik.alerting.types.v20230"
+    "3.TimeRangeBC\222A=27The time range of aler"
+    "t end time of the alerts to list.:\002{}\340A\001"
+    "R\007endedAt\022\222\001\n\022highest_severities\030\t \003(\0162\'"
+    ".kentik.alerting.types.v202303.SeverityB"
+    ":\222A42.Filter alerts by the highest reach"
+    "ed severity.:\002[]\340A\001R\021highestSeverities\022\272"
+    "\001\n\021recent_severities\030\n \003(\0162\'.kentik.aler"
+    "ting.types.v202303.SeverityBd\222A^2XFilter"
+    " alerts by the most recent (for active o"
+    "nes) and last (for cleared ones) severit"
+    "y.:\002[]\340A\001R\020recentSeverities\022\222\001\n\nack_stat"
+    "es\030\013 \003(\01624.kentik.alerting.public.v20250"
+    "5.AlertAcknowledgementB=\222A721The acknowl"
+    "edgement states of the alerts to list.:\002"
+    "[]\340A\001R\tackStates\022\215\001\n\tactive_at\030\014 \001(\0132(.k"
+    "entik.alerting.types.v202303.TimeRangeBF"
+    "\222A@2:The time range of alert active time"
+    " of the alerts to list.:\002{}\340A\001R\010activeAt"
+    "\022p\n\021acked_by_user_ids\030\r \003(\tBE\222A\?29The ID"
+    "s of the users who acknowledged the aler"
+    "ts to list.:\002[]\340A\001R\016ackedByUserIds\022\315\001\n\030i"
+    "nclude_removed_policies\030\016 \001(\010B\222\001\222A\213\0012\201\001W"
+    "hether to include removed policies in th"
+    "e response. If true, the response will i"
+    "nclude alerts from source that has been "
+    "removed.:\005false\340A\001R\026includeRemovedPolici"
+    "es\022\235\001\n\016context_search\030\017 \003(\tBv\222Ap2jThe co"
+    "ntext search terms (e.g. device name, in"
+    "terface name, site name, labels etc.) of"
+    " the alerts to list.:\002[]\340A\001R\rcontextSear"
+    "chJ\004\010\003\020\004\"\201\002\n\030AlertServiceListResponse\022\205\001"
+    "\n\npagination\030\001 \001(\0132-.kentik.alerting.typ"
+    "es.v202506.PaginationInfoB6\222A02.The pagi"
+    "nation information for the alert list.\340A"
+    "\003R\npagination\022]\n\006alerts\030\002 \003(\0132%.kentik.a"
+    "lerting.public.v202505.AlertB\036\222A\0302\026The a"
+    "lerts result set.\340A\003R\006alerts\"\243\001\n\026AlertSe"
+    "rviceAckRequest\022;\n\002id\030\001 \001(\tB+\222A%2#The ID"
+    " of the alert to acknowledge.\340A\002R\002id\022L\n\007"
+    "comment\030\002 \001(\tB2\222A,2*The comment to add t"
+    "o the acknowledgement.\340A\001R\007comment\"\302\001\n\027A"
+    "lertServiceAckResponse\022\246\001\n\005alert\030\001 \001(\0132%"
+    ".kentik.alerting.public.v202505.AlertBi\222"
+    "Ac2aThe alert object that contains infor"
+    "mation about an individual alert which h"
+    "as been acknowledged.\340A\003R\005alert\"k\n\030Alert"
+    "ServiceUnAckRequest\022O\n\002id\030\001 \001(\tB\?\222A927Th"
+    "e ID of the alert to remove the acknowle"
+    "dgement from.\340A\002R\002id\"\306\001\n\031AlertServiceUnA"
+    "ckResponse\022\250\001\n\005alert\030\001 \001(\0132%.kentik.aler"
+    "ting.public.v202505.AlertBk\222Ae2cThe aler"
+    "t object that contains information about"
+    " an individual alert which has been unac"
+    "knowledged.\340A\003R\005alert\"`\n\030AlertServiceCle"
+    "arRequest\022D\n\talert_ids\030\001 \003(\tB\'\222A!2\037The I"
+    "Ds of the alerts to clear.\340A\002R\010alertIds\""
+    "~\n\031AlertServiceClearResponse\022a\n\021cleared_"
+    "alert_ids\030\001 \003(\tB5\222A/2-The IDs of the ale"
+    "rts that have been cleared.\340A\003R\017clearedA"
+    "lertIds\"\257\016\n\005Alert\022:\n\002id\030\001 \001(\tB*\222A$2\"The "
+    "ID (UUID format) of the alert.\340A\003R\002id\022g\n"
+    "\006source\030\002 \001(\0132&.kentik.alerting.public.v"
+    "202505.SourceB\'\222A!2\037The source policy of"
+    " the alert.\340A\003R\006source\022d\n\rstart_time_at\030"
+    "\004 \001(\0132\032.google.protobuf.TimestampB$\222A\0362\034"
+    "The start time of the alert.\340A\003R\013startTi"
+    "meAt\022^\n\013end_time_at\030\005 \001(\0132\032.google.proto"
+    "buf.TimestampB\"\222A\0342\032The end time of the "
+    "alert.\340A\003R\tendTimeAt\022i\n\005state\030\006 \001(\0162*.ke"
+    "ntik.alerting.public.v202505.AlertStateB"
+    "\'\222A!2\037The current state of the alert.\340A\003"
+    "R\005state\022o\n\010severity\030\007 \001(\0162\'.kentik.alert"
+    "ing.types.v202303.SeverityB*\222A$2\"The cur"
+    "rent severity of the alert.\340A\003R\010severity"
+    "\022\206\001\n\020highest_severity\030\010 \001(\0162\'.kentik.ale"
+    "rting.types.v202303.SeverityB2\222A,2*The h"
+    "ighest reached severity of the alert.\340A\003"
+    "R\017highestSeverity\022\220\001\n\017acknowledgement\030\t "
+    "\001(\01325.kentik.alerting.public.v202505.Ale"
+    "rt.AcknowledgementB/\222A)2\'The acknowledge"
+    "ment state of the alert.\340A\003R\017acknowledge"
+    "ment\022\250\001\n\023event_start_time_at\030\n \001(\0132\032.goo"
+    "gle.protobuf.TimestampB]\222AW2UThe timesta"
+    "mp of the first trigger event that cause"
+    "d an alert to eventually activate.\340A\003R\020e"
+    "ventStartTimeAt\022t\n\004flow\030\013 \001(\0132+.kentik.a"
+    "lerting.public.v202505.FlowContextB1\222A+2"
+    ")The context of the alert for flow alert"
+    "s.\340A\003H\000R\004flow\022p\n\003nms\030\014 \001(\0132*.kentik.aler"
+    "ting.public.v202505.NmsContextB0\222A*2(The"
+    " context of the alert for NMS alerts.\340A\003"
+    "H\000R\003nms\032\244\004\n\017Acknowledgement\022{\n\005state\030\001 \001"
+    "(\01624.kentik.alerting.public.v202505.Aler"
+    "tAcknowledgementB/\222A)2\'The acknowledgeme"
+    "nt state of the alert.\340A\003R\005state\022\231\001\n\rack"
+    "ed_by_user\030\002 \001(\tBu\222Ao2mThe user ID of th"
+    "e user who acknowledged the alert. Prese"
+    "nt only if the alert has been acknowledg"
+    "ed manually.\340A\003R\013ackedByUser\022\221\001\n\013auto_ac"
+    "k_id\030\003 \001(\tBq\222Ak2iThe ID of the auto-ack "
+    "that acknowledged the alert. Present onl"
+    "y if the alert has been auto-acknowledge"
+    "d.\340A\003R\tautoAckId\022d\n\010acked_at\030\004 \001(\0132\032.goo"
+    "gle.protobuf.TimestampB-\222A\'2%The timesta"
+    "mp of the acknowledgement.\340A\003R\007ackedAtB\t"
+    "\n\007context\"\345\033\n\013FlowContext\022\254\001\n\rmetric_val"
+    "ues\030\001 \003(\01327.kentik.alerting.public.v2025"
+    "05.FlowContext.MetricValueBN\222AH2FThe met"
+    "ric values of the alert determined by th"
+    "e policy configuration.\340A\003R\014metricValues"
+    "\022\304\001\n\021activation_status\030\002 \001(\0162<.kentik.al"
+    "erting.public.v202505.FlowContext.Activa"
+    "tionStatusBY\222AS2QThe activation status o"
+    "f the alert referring to potential use o"
+    "f baseline values.\340A\003R\020activationStatus\022"
+    "a\n\016baseline_value\030\003 \001(\001B:\222A422The baseli"
+    "ne value used when activating the alert."
+    "\340A\003R\rbaselineValue\022\313\001\n\021alert_key_details"
+    "\030\004 \003(\0132@.kentik.alerting.public.v202505."
+    "FlowContext.AlertKeyDetailsEntryB]\222AW2UT"
+    "he alert key details of the alert: each "
+    "key might be expanded into multiple deta"
+    "ils.\340A\003R\017alertKeyDetails\032\177\n\024AlertKeyDeta"
+    "ilsEntry\022\020\n\003key\030\001 \001(\tR\003key\022Q\n\005value\030\002 \001("
+    "\0132;.kentik.alerting.public.v202505.FlowC"
+    "ontext.AlertKeyDetailsR\005value:\0028\001\032\310\001\n\013Me"
+    "tricValue\022{\n\004name\030\001 \001(\tBg\222Aa2_The name o"
+    "f the metric value (e.g. \'bytes_in\', \'by"
+    "tes_out\', \'packets_in\', \'packets_out\', e"
+    "tc.).\340A\003R\004name\022<\n\005value\030\002 \001(\001B&\222A 2\036The "
+    "value of the given metric.\340A\003R\005value\032\356\003\n"
+    "\017AlertKeyDetails\022\177\n\006device\030\001 \001(\01329.kenti"
+    "k.alerting.public.v202505.FlowContext.De"
+    "viceDetailsB,\222A&2$The device details of "
+    "the alert key.\340A\003R\006device\022\213\001\n\tinterface\030"
+    "\002 \001(\0132<.kentik.alerting.public.v202505.F"
+    "lowContext.InterfaceDetailsB/\222A)2\'The in"
+    "terface details of the alert key.\340A\003R\tin"
+    "terface\022w\n\004site\030\003 \001(\01327.kentik.alerting."
+    "public.v202505.FlowContext.SiteDetailsB*"
+    "\222A$2\"The site details of the alert key.\340"
+    "A\003R\004site\022S\n\016extended_value\030\004 \001(\tB,\222A&2$T"
+    "he extended value of the alert key.\340A\003R\r"
+    "extendedValue\032\200\002\n\rDeviceDetails\022-\n\002id\030\001 "
+    "\001(\tB\035\222A\0272\025The ID of the device.\340A\003R\002id\0223"
+    "\n\004name\030\002 \001(\tB\037\222A\0312\027The name of the devic"
+    "e.\340A\003R\004name\022C\n\004type\030\003 \001(\tB/\222A)2\'The type"
+    " of the device (e.g. \'router\').\340A\003R\004type"
+    "\022F\n\006labels\030\004 \003(\tB.\222A(2&The labels associ"
+    "ated with the device.\340A\003R\006labels\032\320\002\n\020Int"
+    "erfaceDetails\022>\n\007snmp_id\030\001 \001(\tB%\222A\0372\035The"
+    " SNMP ID of the interface.\340A\003R\006snmpId\022U\n"
+    "\nsnmp_alias\030\002 \001(\tB6\222A02.The SNMP alias o"
+    "f the interface (e.g. \'eth0\').\340A\003R\tsnmpA"
+    "lias\022K\n\013description\030\003 \001(\tB)\222A#2!The desc"
+    "ription of the interface.\340A\003R\013descriptio"
+    "n\022X\n\017snmp_speed_mbps\030\004 \001(\003B0\222A*2(The SNM"
+    "P speed of the interface in Mbps.\340A\003R\rsn"
+    "mpSpeedMbps\032\251\003\n\013SiteDetails\022+\n\002id\030\001 \001(\tB"
+    "\033\222A\0252\023The ID of the site.\340A\003R\002id\0221\n\004name"
+    "\030\002 \001(\tB\035\222A\0272\025The name of the site.\340A\003R\004n"
+    "ame\022E\n\010latitude\030\003 \001(\tB)\222A&2$The geograph"
+    "ic latitude of the site.R\010latitude\022K\n\tlo"
+    "ngitude\030\004 \001(\tB-\222A\'2%The geographic longi"
+    "tude of the site.\340A\003R\tlongitude\022S\n\010locat"
+    "ion\030\005 \001(\tB7\222A12/The location of the site"
+    " (e.g. \'New York, NY\').\340A\003R\010location\022Q\n\007"
+    "country\030\006 \001(\tB7\222A12/The country of the s"
+    "ite (e.g. \'United States\').\340A\003R\007country\""
+    "\357\007\n\020ActivationStatus\022!\n\035ACTIVATION_STATU"
+    "S_UNSPECIFIED\020\000\022\'\n#ACTIVATION_STATUS_NOT"
+    "_USED_BASELINE\020\001\022+\n\'ACTIVATION_STATUS_BA"
+    "SELINE_MISSING_SKIP\020\002\022.\n*ACTIVATION_STAT"
+    "US_BASELINE_MISSING_TRIGGER\020\003\022)\n%ACTIVAT"
+    "ION_STATUS_BASELINE_USED_FOUND\020\004\022.\n*ACTI"
+    "VATION_STATUS_BASELINE_MISSING_DEFAULT\020\005"
+    "\022-\n)ACTIVATION_STATUS_BASELINE_MISSING_L"
+    "OWEST\020\006\022.\n*ACTIVATION_STATUS_BASELINE_MI"
+    "SSING_HIGHEST\020\007\022/\n+ACTIVATION_STATUS_BAS"
+    "ELINE_NOT_FOUND_EXISTS\020\010\022*\n&ACTIVATION_S"
+    "TATUS_CURRENT_MISSING_SKIP\020\t\022-\n)ACTIVATI"
+    "ON_STATUS_CURRENT_MISSING_TRIGGER\020\n\022(\n$A"
+    "CTIVATION_STATUS_CURRENT_USED_FOUND\020\013\022-\n"
+    ")ACTIVATION_STATUS_CURRENT_MISSING_DEFAU"
+    "LT\020\014\022,\n(ACTIVATION_STATUS_CURRENT_MISSIN"
+    "G_LOWEST\020\r\022-\n)ACTIVATION_STATUS_CURRENT_"
+    "MISSING_HIGHEST\020\016\022.\n*ACTIVATION_STATUS_C"
+    "URRENT_NOT_FOUND_EXISTS\020\017\022@\n<ACTIVATION_"
+    "STATUS_BASELINE_MISSING_DEFAULT_INSTEAD_"
+    "OF_LOWEST\020\020\022A\n=ACTIVATION_STATUS_BASELIN"
+    "E_MISSING_DEFAULT_INSTEAD_OF_HIGHEST\020\021\022\?"
+    "\n;ACTIVATION_STATUS_CURRENT_MISSING_DEFA"
+    "ULT_INSTEAD_OF_LOWEST\020\022\022@\n<ACTIVATION_ST"
+    "ATUS_CURRENT_MISSING_DEFAULT_INSTEAD_OF_"
+    "HIGHEST\020\023\"\202\020\n\nNmsContext\022b\n\017activation_i"
+    "nfo\030\001 \001(\01329.kentik.alerting.public.v2025"
+    "05.NmsContext.ActivationInfoR\016activation"
+    "Info\022Y\n\014dataset_info\030\002 \001(\01326.kentik.aler"
+    "ting.public.v202505.NmsContext.DatasetIn"
+    "foR\013datasetInfo\022Q\n\007targets\030\003 \003(\01327.kenti"
+    "k.alerting.public.v202505.NmsContext.Tar"
+    "getsEntryR\007targets\022a\n\rmetric_values\030\004 \003("
+    "\0132<.kentik.alerting.public.v202505.NmsCo"
+    "ntext.MetricValuesEntryR\014metricValues\022z\n"
+    "\026previous_metric_values\030\005 \003(\0132D.kentik.a"
+    "lerting.public.v202505.NmsContext.Previo"
+    "usMetricValuesEntryR\024previousMetricValue"
+    "s\022N\n\006device\030\006 \003(\01326.kentik.alerting.publ"
+    "ic.v202505.NmsContext.DeviceEntryR\006devic"
+    "e\022U\n\tgroup_key\030\007 \003(\01328.kentik.alerting.p"
+    "ublic.v202505.NmsContext.GroupKeyEntryR\010"
+    "groupKey\032r\n\014TargetsEntry\022\020\n\003key\030\001 \001(\tR\003k"
+    "ey\022L\n\005value\030\002 \001(\01326.kentik.alerting.publ"
+    "ic.v202505.NmsContext.AlarmTargetR\005value"
+    ":\0028\001\032z\n\021MetricValuesEntry\022\020\n\003key\030\001 \001(\tR\003"
+    "key\022O\n\005value\030\002 \001(\01329.kentik.alerting.pub"
+    "lic.v202505.NmsContext.AlarmMetricMapR\005v"
+    "alue:\0028\001\032\202\001\n\031PreviousMetricValuesEntry\022\020"
+    "\n\003key\030\001 \001(\tR\003key\022O\n\005value\030\002 \001(\01329.kentik"
     ".alerting.public.v202505.NmsContext.Alar"
-    "mTarget.FieldsEntryR\006fields\022T\n\004tags\030\002 \003("
-    "\0132@.kentik.alerting.public.v202505.NmsCo"
-    "ntext.AlarmTarget.TagsEntryR\004tags\0329\n\013Fie"
-    "ldsEntry\022\020\n\003key\030\001 \001(\tR\003key\022\024\n\005value\030\002 \001("
-    "\001R\005value:\0028\001\0327\n\tTagsEntry\022\020\n\003key\030\001 \001(\tR\003"
-    "key\022\024\n\005value\030\002 \001(\tR\005value:\0028\001\032\256\001\n\016AlarmM"
-    "etricMap\022`\n\007metrics\030\001 \003(\0132F.kentik.alert"
-    "ing.public.v202505.NmsContext.AlarmMetri"
-    "cMap.MetricsEntryR\007metrics\032:\n\014MetricsEnt"
-    "ry\022\020\n\003key\030\001 \001(\tR\003key\022\024\n\005value\030\002 \001(\001R\005val"
-    "ue:\0028\001*X\n\nAlertState\022\033\n\027ALERT_STATE_UNSP"
-    "ECIFIED\020\000\022\025\n\021ALERT_STATE_CLEAR\020\001\022\026\n\022ALER"
-    "T_STATE_ACTIVE\020\002*\246\001\n\024AlertAcknowledgemen"
-    "t\022%\n!ALERT_ACKNOWLEDGEMENT_UNSPECIFIED\020\000"
-    "\022\"\n\036ALERT_ACKNOWLEDGEMENT_REQUIRED\020\001\022\036\n\032"
-    "ALERT_ACKNOWLEDGEMENT_DONE\020\002\022#\n\037ALERT_AC"
-    "KNOWLEDGEMENT_NOT_ACKED\020\0032\267\n\n\014AlertServi"
-    "ce\022\215\002\n\003Get\0226.kentik.alerting.public.v202"
-    "505.AlertServiceGetRequest\0327.kentik.aler"
-    "ting.public.v202505.AlertServiceGetRespo"
-    "nse\"\224\001\222A^\022\tGet Alert\032LReturns an alert o"
-    "bject that contains information about an"
-    " individual alert.*\003Get\362\327\002\023admin.alertin"
-    "g:read\202\323\344\223\002\026\022\024/v202505/alerts/{id}\022\230\002\n\004L"
-    "ist\0227.kentik.alerting.public.v202505.Ale"
-    "rtServiceListRequest\0328.kentik.alerting.p"
-    "ublic.v202505.AlertServiceListResponse\"\234"
-    "\001\222Ah\022\013List Alerts\032SReturns an array of a"
-    "lert objects that contain information ab"
-    "out individual alerts.*\004List\362\327\002\023admin.al"
-    "erting:read\202\323\344\223\002\024\"\017/v202505/alerts:\001*\022\336\001"
-    "\n\003Ack\0226.kentik.alerting.public.v202505.A"
-    "lertServiceAckRequest\0327.kentik.alerting."
-    "public.v202505.AlertServiceAckResponse\"f"
-    "\222A(\022\tAck Alert\032\026Acknowledges an alert.*\003"
-    "Ack\362\327\002\024admin.alerting:write\202\323\344\223\002\035\"\030/v202"
-    "505/alerts/{id}/ack:\001*\022\213\002\n\005UnAck\0228.kenti"
-    "k.alerting.public.v202505.AlertServiceUn"
-    "AckRequest\0329.kentik.alerting.public.v202"
-    "505.AlertServiceUnAckResponse\"\214\001\222AL\022\013UnA"
-    "ck Alert\0326Unacknowledges an alert (remov"
-    "es the acknowledgement).*\005UnAck\362\327\002\024admin"
-    ".alerting:write\202\323\344\223\002\037\"\032/v202505/alerts/{"
-    "id}/unack:\001*\022\336\001\n\005Clear\0228.kentik.alerting"
-    ".public.v202505.AlertServiceClearRequest"
-    "\0329.kentik.alerting.public.v202505.AlertS"
-    "erviceClearResponse\"`\222A%\022\014Clear Alerts\032\016"
-    "Clears alerts.*\005Clear\362\327\002\024admin.alerting:"
-    "write\202\323\344\223\002\032\"\025/v202505/alerts/clear:\001*\032,\312"
-    "A\023grpc.api.kentik.com\352\327\002\016admin.alerting\220"
-    "\330\002\003B\213\004ZIgithub.com/kentik/api-schema-pub"
-    "lic/gen/go/kentik/alerting/public/v20250"
-    "5\222A\274\003\022\360\001\n\022Alerting Alert API\022\211\001# Overvie"
-    "w\nThe Alerts API provides programmatic a"
-    "ccess to Kentik\'s Alerts, which allows t"
-    "he retrieval and basic manual control of"
-    " alerts.\"E\n\026Kentik API Engineering\022+http"
-    "s://github.com/kentik/api-schema-public2"
-    "\007v202505*\001\0022\020application/json:\020applicati"
-    "on/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email "
-    "\002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n"
-    "\t\n\005email\022\000\n\t\n\005token\022\000rB\n\033Kentik Alerts d"
-    "ocumentation\022#https://kb.kentik.com/docs"
-    "/alertingb\006proto3"
+    "mMetricMapR\005value:\0028\001\0329\n\013DeviceEntry\022\020\n\003"
+    "key\030\001 \001(\tR\003key\022\024\n\005value\030\002 \001(\tR\005value:\0028\001"
+    "\032;\n\rGroupKeyEntry\022\020\n\003key\030\001 \001(\tR\003key\022\024\n\005v"
+    "alue\030\002 \001(\tR\005value:\0028\001\032\361\001\n\016ActivationInfo"
+    "\022X\n\010activate\030\001 \001(\0132<.kentik.alerting.pub"
+    "lic.v202505.NmsActivateOrClearConditions"
+    "R\010activate\022\032\n\010severity\030\002 \001(\tR\010severity\022#"
+    "\n\014clear_manual\030\003 \001(\010H\000R\013clearManual\0226\n\026c"
+    "lear_unless_activated\030\004 \001(\010H\000R\024clearUnle"
+    "ssActivatedB\014\n\nclear_type\032\223\001\n\013DatasetInf"
+    "o\022\037\n\013custom_type\030\001 \001(\010R\ncustomType\022\036\n\ndi"
+    "mensions\030\002 \003(\tR\ndimensions\022\037\n\013entity_typ"
+    "e\030\003 \001(\tR\nentityType\022\"\n\014measurements\030\004 \003("
+    "\tR\014measurements\032\263\002\n\013AlarmTarget\022Z\n\006field"
+    "s\030\001 \003(\0132B.kentik.alerting.public.v202505"
+    ".NmsContext.AlarmTarget.FieldsEntryR\006fie"
+    "lds\022T\n\004tags\030\002 \003(\0132@.kentik.alerting.publ"
+    "ic.v202505.NmsContext.AlarmTarget.TagsEn"
+    "tryR\004tags\0329\n\013FieldsEntry\022\020\n\003key\030\001 \001(\tR\003k"
+    "ey\022\024\n\005value\030\002 \001(\001R\005value:\0028\001\0327\n\tTagsEntr"
+    "y\022\020\n\003key\030\001 \001(\tR\003key\022\024\n\005value\030\002 \001(\tR\005valu"
+    "e:\0028\001\032\256\001\n\016AlarmMetricMap\022`\n\007metrics\030\001 \003("
+    "\0132F.kentik.alerting.public.v202505.NmsCo"
+    "ntext.AlarmMetricMap.MetricsEntryR\007metri"
+    "cs\032:\n\014MetricsEntry\022\020\n\003key\030\001 \001(\tR\003key\022\024\n\005"
+    "value\030\002 \001(\001R\005value:\0028\001*X\n\nAlertState\022\033\n\027"
+    "ALERT_STATE_UNSPECIFIED\020\000\022\025\n\021ALERT_STATE"
+    "_CLEAR\020\001\022\026\n\022ALERT_STATE_ACTIVE\020\002*\246\001\n\024Ale"
+    "rtAcknowledgement\022%\n!ALERT_ACKNOWLEDGEME"
+    "NT_UNSPECIFIED\020\000\022\"\n\036ALERT_ACKNOWLEDGEMEN"
+    "T_REQUIRED\020\001\022\036\n\032ALERT_ACKNOWLEDGEMENT_DO"
+    "NE\020\002\022#\n\037ALERT_ACKNOWLEDGEMENT_NOT_ACKED\020"
+    "\0032\267\n\n\014AlertService\022\215\002\n\003Get\0226.kentik.aler"
+    "ting.public.v202505.AlertServiceGetReque"
+    "st\0327.kentik.alerting.public.v202505.Aler"
+    "tServiceGetResponse\"\224\001\222A^\022\tGet Alert\032LRe"
+    "turns an alert object that contains info"
+    "rmation about an individual alert.*\003Get\362"
+    "\327\002\023admin.alerting:read\202\323\344\223\002\026\022\024/v202505/a"
+    "lerts/{id}\022\230\002\n\004List\0227.kentik.alerting.pu"
+    "blic.v202505.AlertServiceListRequest\0328.k"
+    "entik.alerting.public.v202505.AlertServi"
+    "ceListResponse\"\234\001\222Ah\022\013List Alerts\032SRetur"
+    "ns an array of alert objects that contai"
+    "n information about individual alerts.*\004"
+    "List\362\327\002\023admin.alerting:read\202\323\344\223\002\024\"\017/v202"
+    "505/alerts:\001*\022\336\001\n\003Ack\0226.kentik.alerting."
+    "public.v202505.AlertServiceAckRequest\0327."
+    "kentik.alerting.public.v202505.AlertServ"
+    "iceAckResponse\"f\222A(\022\tAck Alert\032\026Acknowle"
+    "dges an alert.*\003Ack\362\327\002\024admin.alerting:wr"
+    "ite\202\323\344\223\002\035\"\030/v202505/alerts/{id}/ack:\001*\022\213"
+    "\002\n\005UnAck\0228.kentik.alerting.public.v20250"
+    "5.AlertServiceUnAckRequest\0329.kentik.aler"
+    "ting.public.v202505.AlertServiceUnAckRes"
+    "ponse\"\214\001\222AL\022\013UnAck Alert\0326Unacknowledges"
+    " an alert (removes the acknowledgement)."
+    "*\005UnAck\362\327\002\024admin.alerting:write\202\323\344\223\002\037\"\032/"
+    "v202505/alerts/{id}/unack:\001*\022\336\001\n\005Clear\0228"
+    ".kentik.alerting.public.v202505.AlertSer"
+    "viceClearRequest\0329.kentik.alerting.publi"
+    "c.v202505.AlertServiceClearResponse\"`\222A%"
+    "\022\014Clear Alerts\032\016Clears alerts.*\005Clear\362\327\002"
+    "\024admin.alerting:write\202\323\344\223\002\032\"\025/v202505/al"
+    "erts/clear:\001*\032,\312A\023grpc.api.kentik.com\352\327\002"
+    "\016admin.alerting\220\330\002\003B\213\004ZIgithub.com/kenti"
+    "k/api-schema-public/gen/go/kentik/alerti"
+    "ng/public/v202505\222A\274\003\022\360\001\n\022Alerting Alert"
+    " API\022\211\001# Overview\nThe Alerts API provide"
+    "s programmatic access to Kentik\'s Alerts"
+    ", which allows the retrieval and basic m"
+    "anual control of alerts.\"E\n\026Kentik API E"
+    "ngineering\022+https://github.com/kentik/ap"
+    "i-schema-public2\007v202505*\001\0022\020application"
+    "/json:\020application/jsonZD\n\036\n\005email\022\025\010\002\032\017"
+    "X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Aut"
+    "h-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000rB\n"
+    "\033Kentik Alerts documentation\022#https://kb"
+    ".kentik.com/docs/alertingb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2falerting_2fpublic_2fv202505_2falert_2eproto_deps[12] =
     {
@@ -1878,7 +1870,7 @@ static ::absl::once_flag descriptor_table_kentik_2falerting_2fpublic_2fv202505_2
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2falerting_2fpublic_2fv202505_2falert_2eproto = {
     false,
     false,
-    15017,
+    14833,
     descriptor_table_protodef_kentik_2falerting_2fpublic_2fv202505_2falert_2eproto,
     "kentik/alerting/public/v202505/alert.proto",
     &descriptor_table_kentik_2falerting_2fpublic_2fv202505_2falert_2eproto_once,
@@ -3364,7 +3356,6 @@ inline PROTOBUF_NDEBUG_INLINE AlertFilters::Impl_::Impl_(
         severities_{visibility, arena, from.severities_},
         _severities_cached_byte_size_{0},
         alert_ids_{visibility, arena, from.alert_ids_},
-        applications_{visibility, arena, from.applications_},
         sources_{visibility, arena, from.sources_},
         states_{visibility, arena, from.states_},
         _states_cached_byte_size_{0},
@@ -3414,7 +3405,6 @@ inline PROTOBUF_NDEBUG_INLINE AlertFilters::Impl_::Impl_(
         severities_{visibility, arena},
         _severities_cached_byte_size_{0},
         alert_ids_{visibility, arena},
-        applications_{visibility, arena},
         sources_{visibility, arena},
         states_{visibility, arena},
         _states_cached_byte_size_{0},
@@ -3463,10 +3453,6 @@ constexpr auto AlertFilters::InternalNewImpl_() {
                   ::google::protobuf::Message::internal_visibility()),
       PROTOBUF_FIELD_OFFSET(AlertFilters, _impl_.alert_ids_) +
           decltype(AlertFilters::_impl_.alert_ids_)::
-              InternalGetArenaOffset(
-                  ::google::protobuf::Message::internal_visibility()),
-      PROTOBUF_FIELD_OFFSET(AlertFilters, _impl_.applications_) +
-          decltype(AlertFilters::_impl_.applications_)::
               InternalGetArenaOffset(
                   ::google::protobuf::Message::internal_visibility()),
       PROTOBUF_FIELD_OFFSET(AlertFilters, _impl_.sources_) +
@@ -3535,15 +3521,15 @@ const ::google::protobuf::internal::ClassData* AlertFilters::GetClassData() cons
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<4, 15, 5, 112, 2> AlertFilters::_table_ = {
+const ::_pbi::TcParseTable<4, 14, 5, 100, 2> AlertFilters::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(AlertFilters, _impl_._has_bits_),
     0, // no _extensions_
     15, 120,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294934528,  // skipmap
+    4294934532,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    15,  // num_field_entries
+    14,  // num_field_entries
     5,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
@@ -3560,9 +3546,7 @@ const ::_pbi::TcParseTable<4, 15, 5, 112, 2> AlertFilters::_table_ = {
     // repeated string alert_ids = 2 [json_name = "alertIds", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::FastUR1,
      {18, 63, 0, PROTOBUF_FIELD_OFFSET(AlertFilters, _impl_.alert_ids_)}},
-    // repeated string applications = 3 [json_name = "applications", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    {::_pbi::TcParser::FastUR1,
-     {26, 63, 0, PROTOBUF_FIELD_OFFSET(AlertFilters, _impl_.applications_)}},
+    {::_pbi::TcParser::MiniParse, {}},
     // repeated .kentik.alerting.public.v202505.Source sources = 4 [json_name = "sources", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::FastMtR1,
      {34, 63, 0, PROTOBUF_FIELD_OFFSET(AlertFilters, _impl_.sources_)}},
@@ -3608,9 +3592,6 @@ const ::_pbi::TcParseTable<4, 15, 5, 112, 2> AlertFilters::_table_ = {
     // repeated string alert_ids = 2 [json_name = "alertIds", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {PROTOBUF_FIELD_OFFSET(AlertFilters, _impl_.alert_ids_), -1, 0,
     (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
-    // repeated string applications = 3 [json_name = "applications", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    {PROTOBUF_FIELD_OFFSET(AlertFilters, _impl_.applications_), -1, 0,
-    (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
     // repeated .kentik.alerting.public.v202505.Source sources = 4 [json_name = "sources", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {PROTOBUF_FIELD_OFFSET(AlertFilters, _impl_.sources_), -1, 0,
     (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
@@ -3654,10 +3635,9 @@ const ::_pbi::TcParseTable<4, 15, 5, 112, 2> AlertFilters::_table_ = {
     {::_pbi::TcParser::GetTable<::kentik::alerting::types::v202303::TimeRange>()},
     {::_pbi::TcParser::GetTable<::kentik::alerting::types::v202303::TimeRange>()},
   }}, {{
-    "\53\0\11\14\0\0\0\0\0\0\0\0\0\21\0\16"
+    "\53\0\11\0\0\0\0\0\0\0\0\0\21\0\16\0"
     "kentik.alerting.public.v202505.AlertFilters"
     "alert_ids"
-    "applications"
     "acked_by_user_ids"
     "context_search"
   }},
@@ -3672,7 +3652,6 @@ PROTOBUF_NOINLINE void AlertFilters::Clear() {
 
   _impl_.severities_.Clear();
   _impl_.alert_ids_.Clear();
-  _impl_.applications_.Clear();
   _impl_.sources_.Clear();
   _impl_.states_.Clear();
   _impl_.highest_severities_.Clear();
@@ -3735,14 +3714,6 @@ PROTOBUF_NOINLINE void AlertFilters::Clear() {
             ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
                 s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.alerting.public.v202505.AlertFilters.alert_ids");
             target = stream->WriteString(2, s, target);
-          }
-
-          // repeated string applications = 3 [json_name = "applications", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-          for (int i = 0, n = this_._internal_applications_size(); i < n; ++i) {
-            const auto& s = this_._internal_applications().Get(i);
-            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-                s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.alerting.public.v202505.AlertFilters.applications");
-            target = stream->WriteString(3, s, target);
           }
 
           // repeated .kentik.alerting.public.v202505.Source sources = 4 [json_name = "sources", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -3887,15 +3858,6 @@ PROTOBUF_NOINLINE void AlertFilters::Clear() {
                     this_._internal_alert_ids().Get(i));
               }
             }
-            // repeated string applications = 3 [json_name = "applications", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-            {
-              total_size +=
-                  1 * ::google::protobuf::internal::FromIntSize(this_._internal_applications().size());
-              for (int i = 0, n = this_._internal_applications().size(); i < n; ++i) {
-                total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
-                    this_._internal_applications().Get(i));
-              }
-            }
             // repeated .kentik.alerting.public.v202505.Source sources = 4 [json_name = "sources", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
             {
               total_size += 1UL * this_._internal_sources_size();
@@ -3986,7 +3948,6 @@ void AlertFilters::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::go
 
   _this->_internal_mutable_severities()->MergeFrom(from._internal_severities());
   _this->_internal_mutable_alert_ids()->MergeFrom(from._internal_alert_ids());
-  _this->_internal_mutable_applications()->MergeFrom(from._internal_applications());
   _this->_internal_mutable_sources()->MergeFrom(
       from._internal_sources());
   _this->_internal_mutable_states()->MergeFrom(from._internal_states());
@@ -4055,7 +4016,6 @@ void AlertFilters::InternalSwap(AlertFilters* PROTOBUF_RESTRICT other) {
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   _impl_.severities_.InternalSwap(&other->_impl_.severities_);
   _impl_.alert_ids_.InternalSwap(&other->_impl_.alert_ids_);
-  _impl_.applications_.InternalSwap(&other->_impl_.applications_);
   _impl_.sources_.InternalSwap(&other->_impl_.sources_);
   _impl_.states_.InternalSwap(&other->_impl_.states_);
   _impl_.highest_severities_.InternalSwap(&other->_impl_.highest_severities_);

@@ -328,7 +328,7 @@ const ProtobufCMessageDescriptor kentik__alerting__public__v202505__mitigation_p
   (ProtobufCMessageInit) kentik__alerting__public__v202505__mitigation_platforms_service_list_request__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__mitigation_platforms_filters__field_descriptors[6] =
+static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__mitigation_platforms_filters__field_descriptors[5] =
 {
   {
     "platform_ids",
@@ -337,18 +337,6 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__mitigat
     PROTOBUF_C_TYPE_STRING,
     offsetof(Kentik__Alerting__Public__V202505__MitigationPlatformsFilters, n_platform_ids),
     offsetof(Kentik__Alerting__Public__V202505__MitigationPlatformsFilters, platform_ids),
-    NULL,
-    &protobuf_c_empty_string,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "applications",
-    2,
-    PROTOBUF_C_LABEL_REPEATED,
-    PROTOBUF_C_TYPE_STRING,
-    offsetof(Kentik__Alerting__Public__V202505__MitigationPlatformsFilters, n_applications),
-    offsetof(Kentik__Alerting__Public__V202505__MitigationPlatformsFilters, applications),
     NULL,
     &protobuf_c_empty_string,
     0,             /* flags */
@@ -404,17 +392,17 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__mitigat
   },
 };
 static const unsigned kentik__alerting__public__v202505__mitigation_platforms_filters__field_indices_by_name[] = {
-  1,   /* field[1] = applications */
-  4,   /* field[4] = created_at */
-  5,   /* field[5] = modified_at */
+  3,   /* field[3] = created_at */
+  4,   /* field[4] = modified_at */
   0,   /* field[0] = platform_ids */
-  3,   /* field[3] = platform_types */
-  2,   /* field[2] = sources */
+  2,   /* field[2] = platform_types */
+  1,   /* field[1] = sources */
 };
-static const ProtobufCIntRange kentik__alerting__public__v202505__mitigation_platforms_filters__number_ranges[1 + 1] =
+static const ProtobufCIntRange kentik__alerting__public__v202505__mitigation_platforms_filters__number_ranges[2 + 1] =
 {
   { 1, 0 },
-  { 0, 6 }
+  { 3, 1 },
+  { 0, 5 }
 };
 const ProtobufCMessageDescriptor kentik__alerting__public__v202505__mitigation_platforms_filters__descriptor =
 {
@@ -424,10 +412,10 @@ const ProtobufCMessageDescriptor kentik__alerting__public__v202505__mitigation_p
   "Kentik__Alerting__Public__V202505__MitigationPlatformsFilters",
   "kentik.alerting.public.v202505",
   sizeof(Kentik__Alerting__Public__V202505__MitigationPlatformsFilters),
-  6,
+  5,
   kentik__alerting__public__v202505__mitigation_platforms_filters__field_descriptors,
   kentik__alerting__public__v202505__mitigation_platforms_filters__field_indices_by_name,
-  1,  kentik__alerting__public__v202505__mitigation_platforms_filters__number_ranges,
+  2,  kentik__alerting__public__v202505__mitigation_platforms_filters__number_ranges,
   (ProtobufCMessageInit) kentik__alerting__public__v202505__mitigation_platforms_filters__init,
   NULL,NULL,NULL    /* reserved[123] */
 };

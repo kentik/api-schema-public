@@ -141,7 +141,6 @@ inline constexpr AlertSilenceNotificationFilters::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
         silence_ids_{},
-        applications_{},
         sources_{},
         user_ids_{},
         keys_{},
@@ -444,7 +443,6 @@ const ::uint32_t
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::AlertSilenceNotificationFilters, _impl_.silence_ids_),
-        PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::AlertSilenceNotificationFilters, _impl_.applications_),
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::AlertSilenceNotificationFilters, _impl_.sources_),
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::AlertSilenceNotificationFilters, _impl_.user_ids_),
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::AlertSilenceNotificationFilters, _impl_.created_at_),
@@ -452,7 +450,6 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::AlertSilenceNotificationFilters, _impl_.start_time_at_),
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::AlertSilenceNotificationFilters, _impl_.end_time_at_),
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::AlertSilenceNotificationFilters, _impl_.keys_),
-        ~0u,
         ~0u,
         ~0u,
         ~0u,
@@ -520,12 +517,12 @@ static const ::_pbi::MigrationSchema
         {44, -1, -1, sizeof(::kentik::alerting::public_::v202505::AlertSilenceNotificationsServiceGetRequest)},
         {53, 62, -1, sizeof(::kentik::alerting::public_::v202505::AlertSilenceNotificationsServiceGetResponse)},
         {63, 74, -1, sizeof(::kentik::alerting::public_::v202505::AlertSilenceNotificationsServiceListRequest)},
-        {77, 94, -1, sizeof(::kentik::alerting::public_::v202505::AlertSilenceNotificationFilters)},
-        {103, 113, -1, sizeof(::kentik::alerting::public_::v202505::AlertSilenceNotificationsServiceListResponse)},
-        {115, 124, -1, sizeof(::kentik::alerting::public_::v202505::AlertSilenceNotificationsServiceReplaceRequest)},
-        {125, 134, -1, sizeof(::kentik::alerting::public_::v202505::AlertSilenceNotificationsServiceReplaceResponse)},
-        {135, -1, -1, sizeof(::kentik::alerting::public_::v202505::AlertSilenceNotificationsServiceDeleteRequest)},
-        {144, -1, -1, sizeof(::kentik::alerting::public_::v202505::AlertSilenceNotificationsServiceDeleteResponse)},
+        {77, 93, -1, sizeof(::kentik::alerting::public_::v202505::AlertSilenceNotificationFilters)},
+        {101, 111, -1, sizeof(::kentik::alerting::public_::v202505::AlertSilenceNotificationsServiceListResponse)},
+        {113, 122, -1, sizeof(::kentik::alerting::public_::v202505::AlertSilenceNotificationsServiceReplaceRequest)},
+        {123, 132, -1, sizeof(::kentik::alerting::public_::v202505::AlertSilenceNotificationsServiceReplaceResponse)},
+        {133, -1, -1, sizeof(::kentik::alerting::public_::v202505::AlertSilenceNotificationsServiceDeleteRequest)},
+        {142, -1, -1, sizeof(::kentik::alerting::public_::v202505::AlertSilenceNotificationsServiceDeleteResponse)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::alerting::public_::v202505::_AlertSilenceNotificationsDefinition_default_instance_._instance,
@@ -617,127 +614,124 @@ const char descriptor_table_protodef_kentik_2falerting_2fpublic_2fv202505_2fsile
     "ters\030\003 \001(\0132\?.kentik.alerting.public.v202"
     "505.AlertSilenceNotificationFiltersB7\222A1"
     "2/The alert silence filters for the list"
-    " request.\340A\001R\007filters\"\341\n\n\037AlertSilenceNo"
+    " request.\340A\001R\007filters\"\323\t\n\037AlertSilenceNo"
     "tificationFilters\022k\n\013silence_ids\030\001 \003(\tBJ"
     "\222AD2BThe IDs of the alert silence notifi"
     "cations configurations to list.\340A\001R\nsile"
-    "nceIds\022\221\001\n\014applications\030\002 \003(\tBm\222Ag2eThe "
-    "policy applications (integrations) the a"
-    "lert silence notifications configuration"
-    "s are applied to.\340A\001R\014applications\022\234\001\n\007s"
-    "ources\030\003 \003(\0132&.kentik.alerting.public.v2"
-    "02505.SourceBZ\222AT2RThe source policies t"
-    "he alert silence notifications configura"
-    "tions are applied to.\340A\001R\007sources\022s\n\010use"
-    "r_ids\030\004 \003(\tBX\222AR2PThe IDs of the users w"
-    "ho created the alert silence notificatio"
-    "ns configurations.\340A\001R\007userIds\022\247\001\n\ncreat"
-    "ed_at\030\005 \001(\0132(.kentik.alerting.types.v202"
-    "303.TimeRangeB^\222AX2VThe time range for t"
-    "he created time of the alert silence not"
-    "ifications configurations.\340A\001R\tcreatedAt"
-    "\022\252\001\n\013modified_at\030\006 \001(\0132(.kentik.alerting"
-    ".types.v202303.TimeRangeB_\222AY2WThe time "
-    "range for the modified time of the alert"
+    "nceIds\022\234\001\n\007sources\030\003 \003(\0132&.kentik.alerti"
+    "ng.public.v202505.SourceBZ\222AT2RThe sourc"
+    "e policies the alert silence notificatio"
+    "ns configurations are applied to.\340A\001R\007so"
+    "urces\022s\n\010user_ids\030\004 \003(\tBX\222AR2PThe IDs of"
+    " the users who created the alert silence"
+    " notifications configurations.\340A\001R\007userI"
+    "ds\022\247\001\n\ncreated_at\030\005 \001(\0132(.kentik.alertin"
+    "g.types.v202303.TimeRangeB^\222AX2VThe time"
+    " range for the created time of the alert"
     " silence notifications configurations.\340A"
-    "\001R\nmodifiedAt\022\252\001\n\rstart_time_at\030\007 \001(\0132(."
-    "kentik.alerting.types.v202303.TimeRangeB"
-    "\\\222AV2TThe time range for the start time "
+    "\001R\tcreatedAt\022\252\001\n\013modified_at\030\006 \001(\0132(.ken"
+    "tik.alerting.types.v202303.TimeRangeB_\222A"
+    "Y2WThe time range for the modified time "
     "of the alert silence notifications confi"
-    "gurations.\340A\001R\013startTimeAt\022\244\001\n\013end_time_"
-    "at\030\010 \001(\0132(.kentik.alerting.types.v202303"
-    ".TimeRangeBZ\222AT2RThe time range for the "
-    "end time of the alert silence notificati"
-    "ons configurations.\340A\001R\tendTimeAt\022~\n\004key"
-    "s\030\t \003(\0132\'.kentik.alerting.types.v202303."
-    "KeyValueBA\222A;29The alert keys the silenc"
-    "e configurations are applied to.\340A\001R\004key"
-    "s\"\371\002\n,AlertSilenceNotificationsServiceLi"
-    "stResponse\022\210\001\n\npagination\030\001 \001(\0132-.kentik"
-    ".alerting.types.v202506.PaginationInfoB9"
-    "\222A321The pagination information for the "
-    "list response.\340A\003R\npagination\022\275\001\n\010silenc"
-    "es\030\002 \003(\0132C.kentik.alerting.public.v20250"
-    "5.AlertSilenceNotificationsDefinitionB\\\222"
-    "AV2TThe alert silence notifications conf"
-    "igurations that were found matching the "
-    "filters.\340A\003R\010silences\"\323\001\n.AlertSilenceNo"
-    "tificationsServiceReplaceRequest\022\240\001\n\007sil"
-    "ence\030\001 \001(\0132C.kentik.alerting.public.v202"
-    "505.AlertSilenceNotificationsDefinitionB"
-    "A\222A;29The alert silence notifications co"
-    "nfiguration to replace.\340A\002R\007silence\"\351\001\n/"
-    "AlertSilenceNotificationsServiceReplaceR"
-    "esponse\022\265\001\n\007silence\030\001 \001(\0132C.kentik.alert"
-    "ing.public.v202505.AlertSilenceNotificat"
-    "ionsDefinitionBV\222AP2NCurrent alert silen"
-    "ce notifications configuration after the"
-    " replace operation.\340A\003R\007silence\"\213\001\n-Aler"
-    "tSilenceNotificationsServiceDeleteReques"
-    "t\022Z\n\002id\030\001 \001(\tBJ\222AD2BThe ID of the alert "
-    "silence notifications configuration to d"
-    "elete.\340A\002R\002id\"0\n.AlertSilenceNotificatio"
-    "nsServiceDeleteResponse2\333\r\n AlertSilence"
-    "NotificationsService\022\315\002\n\006Create\022M.kentik"
-    ".alerting.public.v202505.AlertSilenceNot"
-    "ificationsServiceCreateRequest\032N.kentik."
+    "gurations.\340A\001R\nmodifiedAt\022\252\001\n\rstart_time"
+    "_at\030\007 \001(\0132(.kentik.alerting.types.v20230"
+    "3.TimeRangeB\\\222AV2TThe time range for the"
+    " start time of the alert silence notific"
+    "ations configurations.\340A\001R\013startTimeAt\022\244"
+    "\001\n\013end_time_at\030\010 \001(\0132(.kentik.alerting.t"
+    "ypes.v202303.TimeRangeBZ\222AT2RThe time ra"
+    "nge for the end time of the alert silenc"
+    "e notifications configurations.\340A\001R\tendT"
+    "imeAt\022~\n\004keys\030\t \003(\0132\'.kentik.alerting.ty"
+    "pes.v202303.KeyValueBA\222A;29The alert key"
+    "s the silence configurations are applied"
+    " to.\340A\001R\004keysJ\004\010\002\020\003\"\371\002\n,AlertSilenceNoti"
+    "ficationsServiceListResponse\022\210\001\n\npaginat"
+    "ion\030\001 \001(\0132-.kentik.alerting.types.v20250"
+    "6.PaginationInfoB9\222A321The pagination in"
+    "formation for the list response.\340A\003R\npag"
+    "ination\022\275\001\n\010silences\030\002 \003(\0132C.kentik.aler"
+    "ting.public.v202505.AlertSilenceNotifica"
+    "tionsDefinitionB\\\222AV2TThe alert silence "
+    "notifications configurations that were f"
+    "ound matching the filters.\340A\003R\010silences\""
+    "\323\001\n.AlertSilenceNotificationsServiceRepl"
+    "aceRequest\022\240\001\n\007silence\030\001 \001(\0132C.kentik.al"
+    "erting.public.v202505.AlertSilenceNotifi"
+    "cationsDefinitionBA\222A;29The alert silenc"
+    "e notifications configuration to replace"
+    ".\340A\002R\007silence\"\351\001\n/AlertSilenceNotificati"
+    "onsServiceReplaceResponse\022\265\001\n\007silence\030\001 "
+    "\001(\0132C.kentik.alerting.public.v202505.Ale"
+    "rtSilenceNotificationsDefinitionBV\222AP2NC"
+    "urrent alert silence notifications confi"
+    "guration after the replace operation.\340A\003"
+    "R\007silence\"\213\001\n-AlertSilenceNotificationsS"
+    "erviceDeleteRequest\022Z\n\002id\030\001 \001(\tBJ\222AD2BTh"
+    "e ID of the alert silence notifications "
+    "configuration to delete.\340A\002R\002id\"0\n.Alert"
+    "SilenceNotificationsServiceDeleteRespons"
+    "e2\333\r\n AlertSilenceNotificationsService\022\315"
+    "\002\n\006Create\022M.kentik.alerting.public.v2025"
+    "05.AlertSilenceNotificationsServiceCreat"
+    "eRequest\032N.kentik.alerting.public.v20250"
+    "5.AlertSilenceNotificationsServiceCreate"
+    "Response\"\243\001\222Af\022\"Create Alert Silence Not"
+    "ifications\0328Creates a new alert silence "
+    "notifications configuration.*\006Create\362\327\002\024"
+    "admin.alerting:write\202\323\344\223\002\034\"\027/v202505/ale"
+    "rts/silence:\001*\022\274\002\n\003Get\022J.kentik.alerting"
+    ".public.v202505.AlertSilenceNotification"
+    "sServiceGetRequest\032K.kentik.alerting.pub"
+    "lic.v202505.AlertSilenceNotificationsSer"
+    "viceGetResponse\"\233\001\222A]\022\037Get Alert Silence"
+    " Notifications\0325Returns an alert silence"
+    " notifications configuration.*\003Get\362\327\002\023ad"
+    "min.alerting:read\202\323\344\223\002\036\022\034/v202505/alerts"
+    "/silence/{id}\022\314\002\n\004List\022K.kentik.alerting"
+    ".public.v202505.AlertSilenceNotification"
+    "sServiceListRequest\032L.kentik.alerting.pu"
+    "blic.v202505.AlertSilenceNotificationsSe"
+    "rviceListResponse\"\250\001\222Ag\022 List Alert Noti"
+    "fication Silences\032=Returns a list of ale"
+    "rt silence notifications configurations."
+    "*\004List\362\327\002\023admin.alerting:read\202\323\344\223\002!\"\034/v2"
+    "02505/alerts/silence/list:\001*\022\334\002\n\007Replace"
+    "\022N.kentik.alerting.public.v202505.AlertS"
+    "ilenceNotificationsServiceReplaceRequest"
+    "\032O.kentik.alerting.public.v202505.AlertS"
+    "ilenceNotificationsServiceReplaceRespons"
+    "e\"\257\001\222Ae\022\"Replace Alert Notification Sile"
+    "nce\0326Replaces an alert silence notificat"
+    "ions configuration.*\007Replace\362\327\002\024admin.al"
+    "erting:write\202\323\344\223\002)2$/v202505/alerts/sile"
+    "nce/{silence.id}:\001*\022\313\002\n\006Delete\022M.kentik."
     "alerting.public.v202505.AlertSilenceNoti"
-    "ficationsServiceCreateResponse\"\243\001\222Af\022\"Cr"
-    "eate Alert Silence Notifications\0328Create"
-    "s a new alert silence notifications conf"
-    "iguration.*\006Create\362\327\002\024admin.alerting:wri"
-    "te\202\323\344\223\002\034\"\027/v202505/alerts/silence:\001*\022\274\002\n"
-    "\003Get\022J.kentik.alerting.public.v202505.Al"
-    "ertSilenceNotificationsServiceGetRequest"
-    "\032K.kentik.alerting.public.v202505.AlertS"
-    "ilenceNotificationsServiceGetResponse\"\233\001"
-    "\222A]\022\037Get Alert Silence Notifications\0325Re"
-    "turns an alert silence notifications con"
-    "figuration.*\003Get\362\327\002\023admin.alerting:read\202"
-    "\323\344\223\002\036\022\034/v202505/alerts/silence/{id}\022\314\002\n\004"
-    "List\022K.kentik.alerting.public.v202505.Al"
-    "ertSilenceNotificationsServiceListReques"
-    "t\032L.kentik.alerting.public.v202505.Alert"
-    "SilenceNotificationsServiceListResponse\""
-    "\250\001\222Ag\022 List Alert Notification Silences\032"
-    "=Returns a list of alert silence notific"
-    "ations configurations.*\004List\362\327\002\023admin.al"
-    "erting:read\202\323\344\223\002!\"\034/v202505/alerts/silen"
-    "ce/list:\001*\022\334\002\n\007Replace\022N.kentik.alerting"
-    ".public.v202505.AlertSilenceNotification"
-    "sServiceReplaceRequest\032O.kentik.alerting"
-    ".public.v202505.AlertSilenceNotification"
-    "sServiceReplaceResponse\"\257\001\222Ae\022\"Replace A"
-    "lert Notification Silence\0326Replaces an a"
-    "lert silence notifications configuration"
-    ".*\007Replace\362\327\002\024admin.alerting:write\202\323\344\223\002)"
-    "2$/v202505/alerts/silence/{silence.id}:\001"
-    "*\022\313\002\n\006Delete\022M.kentik.alerting.public.v2"
-    "02505.AlertSilenceNotificationsServiceDe"
-    "leteRequest\032N.kentik.alerting.public.v20"
-    "2505.AlertSilenceNotificationsServiceDel"
-    "eteResponse\"\241\001\222Ab\022!Delete Alert Notifica"
-    "tion Silence\0325Deletes an alert silence n"
-    "otifications configuration.*\006Delete\362\327\002\024a"
-    "dmin.alerting:write\202\323\344\223\002\036*\034/v202505/aler"
-    "ts/silence/{id}\032,\312A\023grpc.api.kentik.com\352"
-    "\327\002\016admin.alerting\220\330\002\003B\203\005ZIgithub.com/ken"
-    "tik/api-schema-public/gen/go/kentik/aler"
-    "ting/public/v202505\222A\264\004\022\350\002\n#Alerting Not"
-    "ification Silencing API\022\360\001# Overview\nThe"
-    " Alert Silencing API provides programmat"
-    "ic access to Kentik\'s capabilities of co"
-    "nfiguring and managing alert silencing, "
-    "preventing notifications from being sent"
-    " for alert state changes (activation, se"
-    "verity change, clearance).\"E\n\026Kentik API"
-    " Engineering\022+https://github.com/kentik/"
-    "api-schema-public2\007v202505*\001\0022\020applicati"
-    "on/json:\020application/jsonZD\n\036\n\005email\022\025\010\002"
-    "\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-A"
-    "uth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r"
-    "B\n\033Kentik Alerts documentation\022#https://"
-    "kb.kentik.com/docs/alertingb\006proto3"
+    "ficationsServiceDeleteRequest\032N.kentik.a"
+    "lerting.public.v202505.AlertSilenceNotif"
+    "icationsServiceDeleteResponse\"\241\001\222Ab\022!Del"
+    "ete Alert Notification Silence\0325Deletes "
+    "an alert silence notifications configura"
+    "tion.*\006Delete\362\327\002\024admin.alerting:write\202\323\344"
+    "\223\002\036*\034/v202505/alerts/silence/{id}\032,\312A\023gr"
+    "pc.api.kentik.com\352\327\002\016admin.alerting\220\330\002\003B"
+    "\203\005ZIgithub.com/kentik/api-schema-public/"
+    "gen/go/kentik/alerting/public/v202505\222A\264"
+    "\004\022\350\002\n#Alerting Notification Silencing AP"
+    "I\022\360\001# Overview\nThe Alert Silencing API p"
+    "rovides programmatic access to Kentik\'s "
+    "capabilities of configuring and managing"
+    " alert silencing, preventing notificatio"
+    "ns from being sent for alert state chang"
+    "es (activation, severity change, clearan"
+    "ce).\"E\n\026Kentik API Engineering\022+https://"
+    "github.com/kentik/api-schema-public2\007v20"
+    "2505*\001\0022\020application/json:\020application/j"
+    "sonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n"
+    "\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005e"
+    "mail\022\000\n\t\n\005token\022\000rB\n\033Kentik Alerts docum"
+    "entation\022#https://kb.kentik.com/docs/ale"
+    "rtingb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fsilencing_2eproto_deps[11] =
     {
@@ -757,7 +751,7 @@ static ::absl::once_flag descriptor_table_kentik_2falerting_2fpublic_2fv202505_2
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fsilencing_2eproto = {
     false,
     false,
-    7795,
+    7653,
     descriptor_table_protodef_kentik_2falerting_2fpublic_2fv202505_2fsilencing_2eproto,
     "kentik/alerting/public/v202505/silencing.proto",
     &descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fsilencing_2eproto_once,
@@ -2693,7 +2687,6 @@ inline PROTOBUF_NDEBUG_INLINE AlertSilenceNotificationFilters::Impl_::Impl_(
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
         silence_ids_{visibility, arena, from.silence_ids_},
-        applications_{visibility, arena, from.applications_},
         sources_{visibility, arena, from.sources_},
         user_ids_{visibility, arena, from.user_ids_},
         keys_{visibility, arena, from.keys_} {}
@@ -2732,7 +2725,6 @@ inline PROTOBUF_NDEBUG_INLINE AlertSilenceNotificationFilters::Impl_::Impl_(
     ::google::protobuf::Arena* arena)
       : _cached_size_{0},
         silence_ids_{visibility, arena},
-        applications_{visibility, arena},
         sources_{visibility, arena},
         user_ids_{visibility, arena},
         keys_{visibility, arena} {}
@@ -2769,10 +2761,6 @@ constexpr auto AlertSilenceNotificationFilters::InternalNewImpl_() {
   constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
       PROTOBUF_FIELD_OFFSET(AlertSilenceNotificationFilters, _impl_.silence_ids_) +
           decltype(AlertSilenceNotificationFilters::_impl_.silence_ids_)::
-              InternalGetArenaOffset(
-                  ::google::protobuf::Message::internal_visibility()),
-      PROTOBUF_FIELD_OFFSET(AlertSilenceNotificationFilters, _impl_.applications_) +
-          decltype(AlertSilenceNotificationFilters::_impl_.applications_)::
               InternalGetArenaOffset(
                   ::google::protobuf::Message::internal_visibility()),
       PROTOBUF_FIELD_OFFSET(AlertSilenceNotificationFilters, _impl_.sources_) +
@@ -2825,15 +2813,15 @@ const ::google::protobuf::internal::ClassData* AlertSilenceNotificationFilters::
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<4, 9, 6, 110, 2> AlertSilenceNotificationFilters::_table_ = {
+const ::_pbi::TcParseTable<4, 8, 6, 98, 2> AlertSilenceNotificationFilters::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(AlertSilenceNotificationFilters, _impl_._has_bits_),
     0, // no _extensions_
     9, 120,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294966784,  // skipmap
+    4294966786,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    9,  // num_field_entries
+    8,  // num_field_entries
     6,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
@@ -2847,9 +2835,7 @@ const ::_pbi::TcParseTable<4, 9, 6, 110, 2> AlertSilenceNotificationFilters::_ta
     // repeated string silence_ids = 1 [json_name = "silenceIds", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::FastUR1,
      {10, 63, 0, PROTOBUF_FIELD_OFFSET(AlertSilenceNotificationFilters, _impl_.silence_ids_)}},
-    // repeated string applications = 2 [json_name = "applications", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    {::_pbi::TcParser::FastUR1,
-     {18, 63, 0, PROTOBUF_FIELD_OFFSET(AlertSilenceNotificationFilters, _impl_.applications_)}},
+    {::_pbi::TcParser::MiniParse, {}},
     // repeated .kentik.alerting.public.v202505.Source sources = 3 [json_name = "sources", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::FastMtR1,
      {26, 63, 0, PROTOBUF_FIELD_OFFSET(AlertSilenceNotificationFilters, _impl_.sources_)}},
@@ -2883,9 +2869,6 @@ const ::_pbi::TcParseTable<4, 9, 6, 110, 2> AlertSilenceNotificationFilters::_ta
     // repeated string silence_ids = 1 [json_name = "silenceIds", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {PROTOBUF_FIELD_OFFSET(AlertSilenceNotificationFilters, _impl_.silence_ids_), -1, 0,
     (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
-    // repeated string applications = 2 [json_name = "applications", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    {PROTOBUF_FIELD_OFFSET(AlertSilenceNotificationFilters, _impl_.applications_), -1, 0,
-    (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
     // repeated .kentik.alerting.public.v202505.Source sources = 3 [json_name = "sources", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {PROTOBUF_FIELD_OFFSET(AlertSilenceNotificationFilters, _impl_.sources_), -1, 0,
     (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
@@ -2915,10 +2898,9 @@ const ::_pbi::TcParseTable<4, 9, 6, 110, 2> AlertSilenceNotificationFilters::_ta
     {::_pbi::TcParser::GetTable<::kentik::alerting::types::v202303::TimeRange>()},
     {::_pbi::TcParser::GetTable<::kentik::alerting::types::v202303::KeyValue>()},
   }}, {{
-    "\76\13\14\0\10\0\0\0\0\0\0\0\0\0\0\0"
+    "\76\13\0\10\0\0\0\0\0\0\0\0\0\0\0\0"
     "kentik.alerting.public.v202505.AlertSilenceNotificationFilters"
     "silence_ids"
-    "applications"
     "user_ids"
   }},
 };
@@ -2931,7 +2913,6 @@ PROTOBUF_NOINLINE void AlertSilenceNotificationFilters::Clear() {
   (void) cached_has_bits;
 
   _impl_.silence_ids_.Clear();
-  _impl_.applications_.Clear();
   _impl_.sources_.Clear();
   _impl_.user_ids_.Clear();
   _impl_.keys_.Clear();
@@ -2979,14 +2960,6 @@ PROTOBUF_NOINLINE void AlertSilenceNotificationFilters::Clear() {
             ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
                 s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.alerting.public.v202505.AlertSilenceNotificationFilters.silence_ids");
             target = stream->WriteString(1, s, target);
-          }
-
-          // repeated string applications = 2 [json_name = "applications", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-          for (int i = 0, n = this_._internal_applications_size(); i < n; ++i) {
-            const auto& s = this_._internal_applications().Get(i);
-            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-                s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.alerting.public.v202505.AlertSilenceNotificationFilters.applications");
-            target = stream->WriteString(2, s, target);
           }
 
           // repeated .kentik.alerting.public.v202505.Source sources = 3 [json_name = "sources", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -3082,15 +3055,6 @@ PROTOBUF_NOINLINE void AlertSilenceNotificationFilters::Clear() {
                     this_._internal_silence_ids().Get(i));
               }
             }
-            // repeated string applications = 2 [json_name = "applications", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-            {
-              total_size +=
-                  1 * ::google::protobuf::internal::FromIntSize(this_._internal_applications().size());
-              for (int i = 0, n = this_._internal_applications().size(); i < n; ++i) {
-                total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
-                    this_._internal_applications().Get(i));
-              }
-            }
             // repeated .kentik.alerting.public.v202505.Source sources = 3 [json_name = "sources", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
             {
               total_size += 1UL * this_._internal_sources_size();
@@ -3152,7 +3116,6 @@ void AlertSilenceNotificationFilters::MergeImpl(::google::protobuf::MessageLite&
   (void) cached_has_bits;
 
   _this->_internal_mutable_silence_ids()->MergeFrom(from._internal_silence_ids());
-  _this->_internal_mutable_applications()->MergeFrom(from._internal_applications());
   _this->_internal_mutable_sources()->MergeFrom(
       from._internal_sources());
   _this->_internal_mutable_user_ids()->MergeFrom(from._internal_user_ids());
@@ -3214,7 +3177,6 @@ void AlertSilenceNotificationFilters::InternalSwap(AlertSilenceNotificationFilte
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   _impl_.silence_ids_.InternalSwap(&other->_impl_.silence_ids_);
-  _impl_.applications_.InternalSwap(&other->_impl_.applications_);
   _impl_.sources_.InternalSwap(&other->_impl_.sources_);
   _impl_.user_ids_.InternalSwap(&other->_impl_.user_ids_);
   _impl_.keys_.InternalSwap(&other->_impl_.keys_);

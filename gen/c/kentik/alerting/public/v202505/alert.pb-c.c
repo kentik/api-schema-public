@@ -1039,7 +1039,7 @@ const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_servic
   (ProtobufCMessageInit) kentik__alerting__public__v202505__alert_service_list_request__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert_filters__field_descriptors[15] =
+static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert_filters__field_descriptors[14] =
 {
   {
     "severities",
@@ -1060,18 +1060,6 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert_f
     PROTOBUF_C_TYPE_STRING,
     offsetof(Kentik__Alerting__Public__V202505__AlertFilters, n_alert_ids),
     offsetof(Kentik__Alerting__Public__V202505__AlertFilters, alert_ids),
-    NULL,
-    &protobuf_c_empty_string,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "applications",
-    3,
-    PROTOBUF_C_LABEL_REPEATED,
-    PROTOBUF_C_TYPE_STRING,
-    offsetof(Kentik__Alerting__Public__V202505__AlertFilters, n_applications),
-    offsetof(Kentik__Alerting__Public__V202505__AlertFilters, applications),
     NULL,
     &protobuf_c_empty_string,
     0,             /* flags */
@@ -1223,26 +1211,26 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert_f
   },
 };
 static const unsigned kentik__alerting__public__v202505__alert_filters__field_indices_by_name[] = {
-  10,   /* field[10] = ack_states */
-  12,   /* field[12] = acked_by_user_ids */
-  11,   /* field[11] = active_at */
+  9,   /* field[9] = ack_states */
+  11,   /* field[11] = acked_by_user_ids */
+  10,   /* field[10] = active_at */
   1,   /* field[1] = alert_ids */
-  2,   /* field[2] = applications */
-  14,   /* field[14] = context_search */
-  7,   /* field[7] = ended_at */
-  8,   /* field[8] = highest_severities */
-  13,   /* field[13] = include_removed_policies */
-  4,   /* field[4] = keys */
-  9,   /* field[9] = recent_severities */
+  13,   /* field[13] = context_search */
+  6,   /* field[6] = ended_at */
+  7,   /* field[7] = highest_severities */
+  12,   /* field[12] = include_removed_policies */
+  3,   /* field[3] = keys */
+  8,   /* field[8] = recent_severities */
   0,   /* field[0] = severities */
-  3,   /* field[3] = sources */
-  6,   /* field[6] = started_at */
-  5,   /* field[5] = states */
+  2,   /* field[2] = sources */
+  5,   /* field[5] = started_at */
+  4,   /* field[4] = states */
 };
-static const ProtobufCIntRange kentik__alerting__public__v202505__alert_filters__number_ranges[1 + 1] =
+static const ProtobufCIntRange kentik__alerting__public__v202505__alert_filters__number_ranges[2 + 1] =
 {
   { 1, 0 },
-  { 0, 15 }
+  { 4, 2 },
+  { 0, 14 }
 };
 const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_filters__descriptor =
 {
@@ -1252,10 +1240,10 @@ const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_filter
   "Kentik__Alerting__Public__V202505__AlertFilters",
   "kentik.alerting.public.v202505",
   sizeof(Kentik__Alerting__Public__V202505__AlertFilters),
-  15,
+  14,
   kentik__alerting__public__v202505__alert_filters__field_descriptors,
   kentik__alerting__public__v202505__alert_filters__field_indices_by_name,
-  1,  kentik__alerting__public__v202505__alert_filters__number_ranges,
+  2,  kentik__alerting__public__v202505__alert_filters__number_ranges,
   (ProtobufCMessageInit) kentik__alerting__public__v202505__alert_filters__init,
   NULL,NULL,NULL    /* reserved[123] */
 };

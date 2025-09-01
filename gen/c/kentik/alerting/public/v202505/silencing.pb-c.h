@@ -119,8 +119,6 @@ struct  Kentik__Alerting__Public__V202505__AlertSilenceNotificationFilters
   ProtobufCMessage base;
   size_t n_silence_ids;
   char **silence_ids;
-  size_t n_applications;
-  char **applications;
   size_t n_sources;
   Kentik__Alerting__Public__V202505__Source **sources;
   size_t n_user_ids;
@@ -134,7 +132,7 @@ struct  Kentik__Alerting__Public__V202505__AlertSilenceNotificationFilters
 };
 #define KENTIK__ALERTING__PUBLIC__V202505__ALERT_SILENCE_NOTIFICATION_FILTERS__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__alerting__public__v202505__alert_silence_notification_filters__descriptor) \
-    , 0,NULL, 0,NULL, 0,NULL, 0,NULL, NULL, NULL, NULL, NULL, 0,NULL }
+    , 0,NULL, 0,NULL, 0,NULL, NULL, NULL, NULL, NULL, 0,NULL }
 
 
 struct  Kentik__Alerting__Public__V202505__AlertSilenceNotificationsServiceListResponse

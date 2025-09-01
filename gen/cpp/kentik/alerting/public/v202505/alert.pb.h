@@ -4262,7 +4262,6 @@ class AlertFilters final : public ::google::protobuf::Message
   enum : int {
     kSeveritiesFieldNumber = 1,
     kAlertIdsFieldNumber = 2,
-    kApplicationsFieldNumber = 3,
     kSourcesFieldNumber = 4,
     kStatesFieldNumber = 6,
     kHighestSeveritiesFieldNumber = 9,
@@ -4315,28 +4314,6 @@ class AlertFilters final : public ::google::protobuf::Message
   private:
   const ::google::protobuf::RepeatedPtrField<std::string>& _internal_alert_ids() const;
   ::google::protobuf::RepeatedPtrField<std::string>* _internal_mutable_alert_ids();
-
-  public:
-  // repeated string applications = 3 [json_name = "applications", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  int applications_size() const;
-  private:
-  int _internal_applications_size() const;
-
-  public:
-  void clear_applications() ;
-  const std::string& applications(int index) const;
-  std::string* mutable_applications(int index);
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_applications(int index, Arg_&& value, Args_... args);
-  std::string* add_applications();
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void add_applications(Arg_&& value, Args_... args);
-  const ::google::protobuf::RepeatedPtrField<std::string>& applications() const;
-  ::google::protobuf::RepeatedPtrField<std::string>* mutable_applications();
-
-  private:
-  const ::google::protobuf::RepeatedPtrField<std::string>& _internal_applications() const;
-  ::google::protobuf::RepeatedPtrField<std::string>* _internal_mutable_applications();
 
   public:
   // repeated .kentik.alerting.public.v202505.Source sources = 4 [json_name = "sources", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -4551,8 +4528,8 @@ class AlertFilters final : public ::google::protobuf::Message
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      4, 15, 5,
-      112, 2>
+      4, 14, 5,
+      100, 2>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -4574,7 +4551,6 @@ class AlertFilters final : public ::google::protobuf::Message
     ::google::protobuf::RepeatedField<int> severities_;
     ::google::protobuf::internal::CachedSize _severities_cached_byte_size_;
     ::google::protobuf::RepeatedPtrField<std::string> alert_ids_;
-    ::google::protobuf::RepeatedPtrField<std::string> applications_;
     ::google::protobuf::RepeatedPtrField< ::kentik::alerting::public_::v202505::Source > sources_;
     ::google::protobuf::RepeatedField<int> states_;
     ::google::protobuf::internal::CachedSize _states_cached_byte_size_;
@@ -7863,70 +7839,6 @@ inline ::google::protobuf::RepeatedPtrField<std::string>*
 AlertFilters::_internal_mutable_alert_ids() {
   ::google::protobuf::internal::TSanRead(&_impl_);
   return &_impl_.alert_ids_;
-}
-
-// repeated string applications = 3 [json_name = "applications", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-inline int AlertFilters::_internal_applications_size() const {
-  return _internal_applications().size();
-}
-inline int AlertFilters::applications_size() const {
-  return _internal_applications_size();
-}
-inline void AlertFilters::clear_applications() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.applications_.Clear();
-}
-inline std::string* AlertFilters::add_applications() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  std::string* _s = _internal_mutable_applications()->Add();
-  // @@protoc_insertion_point(field_add_mutable:kentik.alerting.public.v202505.AlertFilters.applications)
-  return _s;
-}
-inline const std::string& AlertFilters::applications(int index) const
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:kentik.alerting.public.v202505.AlertFilters.applications)
-  return _internal_applications().Get(index);
-}
-inline std::string* AlertFilters::mutable_applications(int index)
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_mutable:kentik.alerting.public.v202505.AlertFilters.applications)
-  return _internal_mutable_applications()->Mutable(index);
-}
-template <typename Arg_, typename... Args_>
-inline void AlertFilters::set_applications(int index, Arg_&& value, Args_... args) {
-  ::google::protobuf::internal::AssignToString(
-      *_internal_mutable_applications()->Mutable(index),
-      std::forward<Arg_>(value), args... );
-  // @@protoc_insertion_point(field_set:kentik.alerting.public.v202505.AlertFilters.applications)
-}
-template <typename Arg_, typename... Args_>
-inline void AlertFilters::add_applications(Arg_&& value, Args_... args) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  ::google::protobuf::internal::AddToRepeatedPtrField(*_internal_mutable_applications(),
-                               std::forward<Arg_>(value),
-                               args... );
-  // @@protoc_insertion_point(field_add:kentik.alerting.public.v202505.AlertFilters.applications)
-}
-inline const ::google::protobuf::RepeatedPtrField<std::string>&
-AlertFilters::applications() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_list:kentik.alerting.public.v202505.AlertFilters.applications)
-  return _internal_applications();
-}
-inline ::google::protobuf::RepeatedPtrField<std::string>*
-AlertFilters::mutable_applications() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_mutable_list:kentik.alerting.public.v202505.AlertFilters.applications)
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  return _internal_mutable_applications();
-}
-inline const ::google::protobuf::RepeatedPtrField<std::string>&
-AlertFilters::_internal_applications() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.applications_;
-}
-inline ::google::protobuf::RepeatedPtrField<std::string>*
-AlertFilters::_internal_mutable_applications() {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return &_impl_.applications_;
 }
 
 // repeated .kentik.alerting.public.v202505.Source sources = 4 [json_name = "sources", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {

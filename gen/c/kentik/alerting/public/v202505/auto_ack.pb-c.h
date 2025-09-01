@@ -119,8 +119,6 @@ struct  Kentik__Alerting__Public__V202505__AlertAutoAckFilters
   ProtobufCMessage base;
   size_t n_auto_ack_ids;
   char **auto_ack_ids;
-  size_t n_applications;
-  char **applications;
   size_t n_sources;
   Kentik__Alerting__Public__V202505__Source **sources;
   size_t n_keys;
@@ -134,7 +132,7 @@ struct  Kentik__Alerting__Public__V202505__AlertAutoAckFilters
 };
 #define KENTIK__ALERTING__PUBLIC__V202505__ALERT_AUTO_ACK_FILTERS__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__alerting__public__v202505__alert_auto_ack_filters__descriptor) \
-    , 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, NULL, NULL, NULL, NULL }
+    , 0,NULL, 0,NULL, 0,NULL, 0,NULL, NULL, NULL, NULL, NULL }
 
 
 struct  Kentik__Alerting__Public__V202505__AlertAutoAckServiceListResponse

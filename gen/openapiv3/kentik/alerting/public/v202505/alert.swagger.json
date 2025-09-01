@@ -842,14 +842,6 @@
                         "default": "[]",
                         "description": "The IDs of the alerts to list."
                     },
-                    "applications": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "default": "[]",
-                        "description": "The applications of the alerts to list. Applications are alerting integrations. It's recommended to use sources instead of applications."
-                    },
                     "sources": {
                         "type": "array",
                         "items": {
@@ -1309,7 +1301,11 @@
                         ]
                     }
                 },
+                "description": "The source (type and ID) of the Alerting Policy. Always when used, both fields are required.",
+                "title": "Source Policy",
                 "required": [
+                    "policyType",
+                    "id",
                     "policyType",
                     "id"
                 ]

@@ -179,12 +179,8 @@ message PolicyListFilters {
       description: "The source policies to list."
     }
   ];
-  repeated string applications = 2[
-    (google.api.field_behavior) = OPTIONAL,
-    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "The policy applications (integrations) to filter by."
-    }
-  ];
+  reserved 2; // PolicyTypes filter placeholder here for future
+
   repeated string user_ids = 3[
     (google.api.field_behavior) = OPTIONAL,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -353,6 +349,13 @@ message Policy {
     (google.api.field_behavior) = OUTPUT_ONLY,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Information about the last error that occurred with the policy."
+    }
+  ];
+
+  google.protobuf.Timestamp expire_date = 16[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Indicates when the policy that was made from a query should expire and become disabled."
     }
   ];
 

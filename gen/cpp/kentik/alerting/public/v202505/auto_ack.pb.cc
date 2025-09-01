@@ -112,7 +112,6 @@ inline constexpr AlertAutoAckFilters::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
         auto_ack_ids_{},
-        applications_{},
         sources_{},
         keys_{},
         user_ids_{},
@@ -451,7 +450,6 @@ const ::uint32_t
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::AlertAutoAckFilters, _impl_.auto_ack_ids_),
-        PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::AlertAutoAckFilters, _impl_.applications_),
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::AlertAutoAckFilters, _impl_.sources_),
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::AlertAutoAckFilters, _impl_.keys_),
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::AlertAutoAckFilters, _impl_.user_ids_),
@@ -459,7 +457,6 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::AlertAutoAckFilters, _impl_.modified_at_),
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::AlertAutoAckFilters, _impl_.start_time_at_),
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::AlertAutoAckFilters, _impl_.end_time_at_),
-        ~0u,
         ~0u,
         ~0u,
         ~0u,
@@ -528,12 +525,12 @@ static const ::_pbi::MigrationSchema
         {44, -1, -1, sizeof(::kentik::alerting::public_::v202505::AlertAutoAckServiceGetRequest)},
         {53, 62, -1, sizeof(::kentik::alerting::public_::v202505::AlertAutoAckServiceGetResponse)},
         {63, 74, -1, sizeof(::kentik::alerting::public_::v202505::AlertAutoAckServiceListRequest)},
-        {77, 94, -1, sizeof(::kentik::alerting::public_::v202505::AlertAutoAckFilters)},
-        {103, 113, -1, sizeof(::kentik::alerting::public_::v202505::AlertAutoAckServiceListResponse)},
-        {115, 124, -1, sizeof(::kentik::alerting::public_::v202505::AlertAutoAckServiceReplaceRequest)},
-        {125, 134, -1, sizeof(::kentik::alerting::public_::v202505::AlertAutoAckServiceReplaceResponse)},
-        {135, -1, -1, sizeof(::kentik::alerting::public_::v202505::AlertAutoAckServiceDeleteRequest)},
-        {144, -1, -1, sizeof(::kentik::alerting::public_::v202505::AlertAutoAckServiceDeleteResponse)},
+        {77, 93, -1, sizeof(::kentik::alerting::public_::v202505::AlertAutoAckFilters)},
+        {101, 111, -1, sizeof(::kentik::alerting::public_::v202505::AlertAutoAckServiceListResponse)},
+        {113, 122, -1, sizeof(::kentik::alerting::public_::v202505::AlertAutoAckServiceReplaceRequest)},
+        {123, 132, -1, sizeof(::kentik::alerting::public_::v202505::AlertAutoAckServiceReplaceResponse)},
+        {133, -1, -1, sizeof(::kentik::alerting::public_::v202505::AlertAutoAckServiceDeleteRequest)},
+        {142, -1, -1, sizeof(::kentik::alerting::public_::v202505::AlertAutoAckServiceDeleteResponse)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::alerting::public_::v202505::_AlertAutoAck_default_instance_._instance,
@@ -614,109 +611,106 @@ const char descriptor_table_protodef_kentik_2falerting_2fpublic_2fv202505_2fauto
     "t request.\340A\001R\007sorting\022\201\001\n\007filters\030\003 \001(\013"
     "23.kentik.alerting.public.v202505.AlertA"
     "utoAckFiltersB2\222A,2*The auto-ack filters"
-    " for the list request.\340A\001R\007filters\"\276\t\n\023A"
+    " for the list request.\340A\001R\007filters\"\304\010\n\023A"
     "lertAutoAckFilters\022Y\n\014auto_ack_ids\030\001 \003(\t"
     "B7\222A12/The IDs of the auto-ack configura"
-    "tions to list.\340A\001R\nautoAckIds\022~\n\014applica"
-    "tions\030\002 \003(\tBZ\222AT2RThe policy application"
-    "s (integrations) the auto-ack configurat"
-    "ions are applied to.\340A\001R\014applications\022\211\001"
-    "\n\007sources\030\003 \003(\0132&.kentik.alerting.public"
-    ".v202505.SourceBG\222AA2\?The source policie"
-    "s the auto-ack configurations are applie"
-    "d to.\340A\001R\007sources\022\177\n\004keys\030\004 \003(\0132\'.kentik"
-    ".alerting.types.v202303.KeyValueBB\222A<2:T"
-    "he alert keys the auto-ack configuration"
-    "s are applied to.\340A\001R\004keys\022`\n\010user_ids\030\005"
-    " \003(\tBE\222A\?2=The IDs of the users who crea"
-    "ted the auto-ack configurations.\340A\001R\007use"
-    "rIds\022\224\001\n\ncreated_at\030\006 \001(\0132(.kentik.alert"
-    "ing.types.v202303.TimeRangeBK\222AE2CThe ti"
-    "me range for the created time of the aut"
-    "o-ack configurations.\340A\001R\tcreatedAt\022\227\001\n\013"
-    "modified_at\030\007 \001(\0132(.kentik.alerting.type"
-    "s.v202303.TimeRangeBL\222AF2DThe time range"
-    " for the modified time of the auto-ack c"
-    "onfigurations.\340A\001R\nmodifiedAt\022\227\001\n\rstart_"
-    "time_at\030\010 \001(\0132(.kentik.alerting.types.v2"
-    "02303.TimeRangeBI\222AC2AThe time range for"
-    " the start time of the auto-ack configur"
-    "ations.\340A\001R\013startTimeAt\022\221\001\n\013end_time_at\030"
-    "\t \001(\0132(.kentik.alerting.types.v202303.Ti"
-    "meRangeBG\222AA2\?The time range for the end"
-    " time of the auto-ack configurations.\340A\001"
-    "R\tendTimeAt\"\303\002\n\037AlertAutoAckServiceListR"
-    "esponse\022\210\001\n\npagination\030\001 \001(\0132-.kentik.al"
-    "erting.types.v202506.PaginationInfoB9\222A3"
-    "21The pagination information for the lis"
-    "t response.\340A\003R\npagination\022\224\001\n\tauto_acks"
-    "\030\002 \003(\0132,.kentik.alerting.public.v202505."
-    "AlertAutoAckBI\222AC2AThe auto-ack configur"
-    "ations that were found matching the filt"
-    "ers.\340A\003R\010autoAcks\"\234\001\n!AlertAutoAckServic"
-    "eReplaceRequest\022w\n\010auto_ack\030\001 \001(\0132,.kent"
-    "ik.alerting.public.v202505.AlertAutoAckB"
-    ".\222A(2&The auto-ack configuration to repl"
-    "ace.\340A\002R\007autoAck\"\263\001\n\"AlertAutoAckService"
-    "ReplaceResponse\022\214\001\n\010auto_ack\030\001 \001(\0132,.ken"
-    "tik.alerting.public.v202505.AlertAutoAck"
-    "BC\222A=2;Current auto-ack configuration af"
-    "ter the replace operation.\340A\003R\007autoAck\"k"
-    "\n AlertAutoAckServiceDeleteRequest\022G\n\002id"
-    "\030\001 \001(\tB7\222A12/The ID of the auto-ack conf"
-    "iguration to delete.\340A\002R\002id\"s\n!AlertAuto"
-    "AckServiceDeleteResponse\022N\n\007success\030\001 \001("
-    "\010B4\222A.2,Whether the delete operation was"
-    " successful.\340A\003R\007success2\224\013\n\023AlertAutoAc"
-    "kService\022\215\002\n\006Create\022@.kentik.alerting.pu"
-    "blic.v202505.AlertAutoAckServiceCreateRe"
-    "quest\032A.kentik.alerting.public.v202505.A"
-    "lertAutoAckServiceCreateResponse\"~\222A@\022\017C"
-    "reate Auto-Ack\032%Creates a new auto-ack c"
-    "onfiguration.*\006Create\362\327\002\024admin.alerting:"
-    "write\202\323\344\223\002\035\"\030/v202505/alerts/ack/auto:\001*"
-    "\022\374\001\n\003Get\022=.kentik.alerting.public.v20250"
-    "5.AlertAutoAckServiceGetRequest\032>.kentik"
-    ".alerting.public.v202505.AlertAutoAckSer"
-    "viceGetResponse\"v\222A7\022\014Get Auto-Ack\032\"Retu"
-    "rns an auto-ack configuration.*\003Get\362\327\002\023a"
-    "dmin.alerting:read\202\323\344\223\002\037\022\035/v202505/alert"
-    "s/ack/auto/{id}\022\216\002\n\004List\022>.kentik.alerti"
-    "ng.public.v202505.AlertAutoAckServiceLis"
-    "tRequest\032\?.kentik.alerting.public.v20250"
-    "5.AlertAutoAckServiceListResponse\"\204\001\222AB\022"
-    "\016List Auto-Acks\032*Returns a list of auto-"
-    "ack configurations.*\004List\362\327\002\023admin.alert"
-    "ing:read\202\323\344\223\002\"\"\035/v202505/alerts/ack/auto"
-    "/list:\001*\022\237\002\n\007Replace\022A.kentik.alerting.p"
-    "ublic.v202505.AlertAutoAckServiceReplace"
-    "Request\032B.kentik.alerting.public.v202505"
-    ".AlertAutoAckServiceReplaceResponse\"\214\001\222A"
-    "@\022\020Replace Auto-Ack\032#Replaces an auto-ac"
-    "k configuration.*\007Replace\362\327\002\024admin.alert"
-    "ing:write\202\323\344\223\002+2&/v202505/alerts/ack/aut"
-    "o/{auto_ack.id}:\001*\022\214\002\n\006Delete\022@.kentik.a"
+    "tions to list.\340A\001R\nautoAckIds\022\211\001\n\007source"
+    "s\030\003 \003(\0132&.kentik.alerting.public.v202505"
+    ".SourceBG\222AA2\?The source policies the au"
+    "to-ack configurations are applied to.\340A\001"
+    "R\007sources\022\177\n\004keys\030\004 \003(\0132\'.kentik.alertin"
+    "g.types.v202303.KeyValueBB\222A<2:The alert"
+    " keys the auto-ack configurations are ap"
+    "plied to.\340A\001R\004keys\022`\n\010user_ids\030\005 \003(\tBE\222A"
+    "\?2=The IDs of the users who created the "
+    "auto-ack configurations.\340A\001R\007userIds\022\224\001\n"
+    "\ncreated_at\030\006 \001(\0132(.kentik.alerting.type"
+    "s.v202303.TimeRangeBK\222AE2CThe time range"
+    " for the created time of the auto-ack co"
+    "nfigurations.\340A\001R\tcreatedAt\022\227\001\n\013modified"
+    "_at\030\007 \001(\0132(.kentik.alerting.types.v20230"
+    "3.TimeRangeBL\222AF2DThe time range for the"
+    " modified time of the auto-ack configura"
+    "tions.\340A\001R\nmodifiedAt\022\227\001\n\rstart_time_at\030"
+    "\010 \001(\0132(.kentik.alerting.types.v202303.Ti"
+    "meRangeBI\222AC2AThe time range for the sta"
+    "rt time of the auto-ack configurations.\340"
+    "A\001R\013startTimeAt\022\221\001\n\013end_time_at\030\t \001(\0132(."
+    "kentik.alerting.types.v202303.TimeRangeB"
+    "G\222AA2\?The time range for the end time of"
+    " the auto-ack configurations.\340A\001R\tendTim"
+    "eAtJ\004\010\002\020\003\"\303\002\n\037AlertAutoAckServiceListRes"
+    "ponse\022\210\001\n\npagination\030\001 \001(\0132-.kentik.aler"
+    "ting.types.v202506.PaginationInfoB9\222A321"
+    "The pagination information for the list "
+    "response.\340A\003R\npagination\022\224\001\n\tauto_acks\030\002"
+    " \003(\0132,.kentik.alerting.public.v202505.Al"
+    "ertAutoAckBI\222AC2AThe auto-ack configurat"
+    "ions that were found matching the filter"
+    "s.\340A\003R\010autoAcks\"\234\001\n!AlertAutoAckServiceR"
+    "eplaceRequest\022w\n\010auto_ack\030\001 \001(\0132,.kentik"
+    ".alerting.public.v202505.AlertAutoAckB.\222"
+    "A(2&The auto-ack configuration to replac"
+    "e.\340A\002R\007autoAck\"\263\001\n\"AlertAutoAckServiceRe"
+    "placeResponse\022\214\001\n\010auto_ack\030\001 \001(\0132,.kenti"
+    "k.alerting.public.v202505.AlertAutoAckBC"
+    "\222A=2;Current auto-ack configuration afte"
+    "r the replace operation.\340A\003R\007autoAck\"k\n "
+    "AlertAutoAckServiceDeleteRequest\022G\n\002id\030\001"
+    " \001(\tB7\222A12/The ID of the auto-ack config"
+    "uration to delete.\340A\002R\002id\"s\n!AlertAutoAc"
+    "kServiceDeleteResponse\022N\n\007success\030\001 \001(\010B"
+    "4\222A.2,Whether the delete operation was s"
+    "uccessful.\340A\003R\007success2\224\013\n\023AlertAutoAckS"
+    "ervice\022\215\002\n\006Create\022@.kentik.alerting.publ"
+    "ic.v202505.AlertAutoAckServiceCreateRequ"
+    "est\032A.kentik.alerting.public.v202505.Ale"
+    "rtAutoAckServiceCreateResponse\"~\222A@\022\017Cre"
+    "ate Auto-Ack\032%Creates a new auto-ack con"
+    "figuration.*\006Create\362\327\002\024admin.alerting:wr"
+    "ite\202\323\344\223\002\035\"\030/v202505/alerts/ack/auto:\001*\022\374"
+    "\001\n\003Get\022=.kentik.alerting.public.v202505."
+    "AlertAutoAckServiceGetRequest\032>.kentik.a"
     "lerting.public.v202505.AlertAutoAckServi"
-    "ceDeleteRequest\032A.kentik.alerting.public"
-    ".v202505.AlertAutoAckServiceDeleteRespon"
-    "se\"}\222A=\022\017Delete Auto-Ack\032\"Deletes an aut"
-    "o-ack configuration.*\006Delete\362\327\002\024admin.al"
-    "erting:write\202\323\344\223\002\037*\035/v202505/alerts/ack/"
-    "auto/{id}\032,\312A\023grpc.api.kentik.com\352\327\002\016adm"
-    "in.alerting\220\330\002\003B\224\004ZIgithub.com/kentik/ap"
-    "i-schema-public/gen/go/kentik/alerting/p"
-    "ublic/v202505\222A\305\003\022\371\001\n\026Alerting Auto-Acks"
-    " API\022\216\001# Overview\nThe Alerts Auto-Acking"
-    " API provides programmatic access to Ken"
-    "tik\'s capabilities of configuring and ma"
-    "naging auto-acking of alerts.\"E\n\026Kentik "
-    "API Engineering\022+https://github.com/kent"
-    "ik/api-schema-public2\007v202505*\001\0022\020applic"
-    "ation/json:\020application/jsonZD\n\036\n\005email\022"
-    "\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-C"
-    "H-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token"
-    "\022\000rB\n\033Kentik Alerts documentation\022#https"
-    "://kb.kentik.com/docs/alertingb\006proto3"
+    "ceGetResponse\"v\222A7\022\014Get Auto-Ack\032\"Return"
+    "s an auto-ack configuration.*\003Get\362\327\002\023adm"
+    "in.alerting:read\202\323\344\223\002\037\022\035/v202505/alerts/"
+    "ack/auto/{id}\022\216\002\n\004List\022>.kentik.alerting"
+    ".public.v202505.AlertAutoAckServiceListR"
+    "equest\032\?.kentik.alerting.public.v202505."
+    "AlertAutoAckServiceListResponse\"\204\001\222AB\022\016L"
+    "ist Auto-Acks\032*Returns a list of auto-ac"
+    "k configurations.*\004List\362\327\002\023admin.alertin"
+    "g:read\202\323\344\223\002\"\"\035/v202505/alerts/ack/auto/l"
+    "ist:\001*\022\237\002\n\007Replace\022A.kentik.alerting.pub"
+    "lic.v202505.AlertAutoAckServiceReplaceRe"
+    "quest\032B.kentik.alerting.public.v202505.A"
+    "lertAutoAckServiceReplaceResponse\"\214\001\222A@\022"
+    "\020Replace Auto-Ack\032#Replaces an auto-ack "
+    "configuration.*\007Replace\362\327\002\024admin.alertin"
+    "g:write\202\323\344\223\002+2&/v202505/alerts/ack/auto/"
+    "{auto_ack.id}:\001*\022\214\002\n\006Delete\022@.kentik.ale"
+    "rting.public.v202505.AlertAutoAckService"
+    "DeleteRequest\032A.kentik.alerting.public.v"
+    "202505.AlertAutoAckServiceDeleteResponse"
+    "\"}\222A=\022\017Delete Auto-Ack\032\"Deletes an auto-"
+    "ack configuration.*\006Delete\362\327\002\024admin.aler"
+    "ting:write\202\323\344\223\002\037*\035/v202505/alerts/ack/au"
+    "to/{id}\032,\312A\023grpc.api.kentik.com\352\327\002\016admin"
+    ".alerting\220\330\002\003B\224\004ZIgithub.com/kentik/api-"
+    "schema-public/gen/go/kentik/alerting/pub"
+    "lic/v202505\222A\305\003\022\371\001\n\026Alerting Auto-Acks A"
+    "PI\022\216\001# Overview\nThe Alerts Auto-Acking A"
+    "PI provides programmatic access to Kenti"
+    "k\'s capabilities of configuring and mana"
+    "ging auto-acking of alerts.\"E\n\026Kentik AP"
+    "I Engineering\022+https://github.com/kentik"
+    "/api-schema-public2\007v202505*\001\0022\020applicat"
+    "ion/json:\020application/jsonZD\n\036\n\005email\022\025\010"
+    "\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-"
+    "Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000"
+    "rB\n\033Kentik Alerts documentation\022#https:/"
+    "/kb.kentik.com/docs/alertingb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fauto_5fack_2eproto_deps[11] =
     {
@@ -736,7 +730,7 @@ static ::absl::once_flag descriptor_table_kentik_2falerting_2fpublic_2fv202505_2
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fauto_5fack_2eproto = {
     false,
     false,
-    6638,
+    6516,
     descriptor_table_protodef_kentik_2falerting_2fpublic_2fv202505_2fauto_5fack_2eproto,
     "kentik/alerting/public/v202505/auto_ack.proto",
     &descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fauto_5fack_2eproto_once,
@@ -2672,7 +2666,6 @@ inline PROTOBUF_NDEBUG_INLINE AlertAutoAckFilters::Impl_::Impl_(
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
         auto_ack_ids_{visibility, arena, from.auto_ack_ids_},
-        applications_{visibility, arena, from.applications_},
         sources_{visibility, arena, from.sources_},
         keys_{visibility, arena, from.keys_},
         user_ids_{visibility, arena, from.user_ids_} {}
@@ -2711,7 +2704,6 @@ inline PROTOBUF_NDEBUG_INLINE AlertAutoAckFilters::Impl_::Impl_(
     ::google::protobuf::Arena* arena)
       : _cached_size_{0},
         auto_ack_ids_{visibility, arena},
-        applications_{visibility, arena},
         sources_{visibility, arena},
         keys_{visibility, arena},
         user_ids_{visibility, arena} {}
@@ -2748,10 +2740,6 @@ constexpr auto AlertAutoAckFilters::InternalNewImpl_() {
   constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
       PROTOBUF_FIELD_OFFSET(AlertAutoAckFilters, _impl_.auto_ack_ids_) +
           decltype(AlertAutoAckFilters::_impl_.auto_ack_ids_)::
-              InternalGetArenaOffset(
-                  ::google::protobuf::Message::internal_visibility()),
-      PROTOBUF_FIELD_OFFSET(AlertAutoAckFilters, _impl_.applications_) +
-          decltype(AlertAutoAckFilters::_impl_.applications_)::
               InternalGetArenaOffset(
                   ::google::protobuf::Message::internal_visibility()),
       PROTOBUF_FIELD_OFFSET(AlertAutoAckFilters, _impl_.sources_) +
@@ -2804,15 +2792,15 @@ const ::google::protobuf::internal::ClassData* AlertAutoAckFilters::GetClassData
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<4, 9, 6, 99, 2> AlertAutoAckFilters::_table_ = {
+const ::_pbi::TcParseTable<4, 8, 6, 87, 2> AlertAutoAckFilters::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(AlertAutoAckFilters, _impl_._has_bits_),
     0, // no _extensions_
     9, 120,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294966784,  // skipmap
+    4294966786,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    9,  // num_field_entries
+    8,  // num_field_entries
     6,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
@@ -2826,9 +2814,7 @@ const ::_pbi::TcParseTable<4, 9, 6, 99, 2> AlertAutoAckFilters::_table_ = {
     // repeated string auto_ack_ids = 1 [json_name = "autoAckIds", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::FastUR1,
      {10, 63, 0, PROTOBUF_FIELD_OFFSET(AlertAutoAckFilters, _impl_.auto_ack_ids_)}},
-    // repeated string applications = 2 [json_name = "applications", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    {::_pbi::TcParser::FastUR1,
-     {18, 63, 0, PROTOBUF_FIELD_OFFSET(AlertAutoAckFilters, _impl_.applications_)}},
+    {::_pbi::TcParser::MiniParse, {}},
     // repeated .kentik.alerting.public.v202505.Source sources = 3 [json_name = "sources", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::FastMtR1,
      {26, 63, 0, PROTOBUF_FIELD_OFFSET(AlertAutoAckFilters, _impl_.sources_)}},
@@ -2862,9 +2848,6 @@ const ::_pbi::TcParseTable<4, 9, 6, 99, 2> AlertAutoAckFilters::_table_ = {
     // repeated string auto_ack_ids = 1 [json_name = "autoAckIds", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {PROTOBUF_FIELD_OFFSET(AlertAutoAckFilters, _impl_.auto_ack_ids_), -1, 0,
     (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
-    // repeated string applications = 2 [json_name = "applications", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    {PROTOBUF_FIELD_OFFSET(AlertAutoAckFilters, _impl_.applications_), -1, 0,
-    (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
     // repeated .kentik.alerting.public.v202505.Source sources = 3 [json_name = "sources", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {PROTOBUF_FIELD_OFFSET(AlertAutoAckFilters, _impl_.sources_), -1, 0,
     (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
@@ -2894,10 +2877,9 @@ const ::_pbi::TcParseTable<4, 9, 6, 99, 2> AlertAutoAckFilters::_table_ = {
     {::_pbi::TcParser::GetTable<::kentik::alerting::types::v202303::TimeRange>()},
     {::_pbi::TcParser::GetTable<::kentik::alerting::types::v202303::TimeRange>()},
   }}, {{
-    "\62\14\14\0\0\10\0\0\0\0\0\0\0\0\0\0"
+    "\62\14\0\0\10\0\0\0\0\0\0\0\0\0\0\0"
     "kentik.alerting.public.v202505.AlertAutoAckFilters"
     "auto_ack_ids"
-    "applications"
     "user_ids"
   }},
 };
@@ -2910,7 +2892,6 @@ PROTOBUF_NOINLINE void AlertAutoAckFilters::Clear() {
   (void) cached_has_bits;
 
   _impl_.auto_ack_ids_.Clear();
-  _impl_.applications_.Clear();
   _impl_.sources_.Clear();
   _impl_.keys_.Clear();
   _impl_.user_ids_.Clear();
@@ -2958,14 +2939,6 @@ PROTOBUF_NOINLINE void AlertAutoAckFilters::Clear() {
             ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
                 s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.alerting.public.v202505.AlertAutoAckFilters.auto_ack_ids");
             target = stream->WriteString(1, s, target);
-          }
-
-          // repeated string applications = 2 [json_name = "applications", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-          for (int i = 0, n = this_._internal_applications_size(); i < n; ++i) {
-            const auto& s = this_._internal_applications().Get(i);
-            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-                s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.alerting.public.v202505.AlertAutoAckFilters.applications");
-            target = stream->WriteString(2, s, target);
           }
 
           // repeated .kentik.alerting.public.v202505.Source sources = 3 [json_name = "sources", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -3061,15 +3034,6 @@ PROTOBUF_NOINLINE void AlertAutoAckFilters::Clear() {
                     this_._internal_auto_ack_ids().Get(i));
               }
             }
-            // repeated string applications = 2 [json_name = "applications", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-            {
-              total_size +=
-                  1 * ::google::protobuf::internal::FromIntSize(this_._internal_applications().size());
-              for (int i = 0, n = this_._internal_applications().size(); i < n; ++i) {
-                total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
-                    this_._internal_applications().Get(i));
-              }
-            }
             // repeated .kentik.alerting.public.v202505.Source sources = 3 [json_name = "sources", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
             {
               total_size += 1UL * this_._internal_sources_size();
@@ -3131,7 +3095,6 @@ void AlertAutoAckFilters::MergeImpl(::google::protobuf::MessageLite& to_msg, con
   (void) cached_has_bits;
 
   _this->_internal_mutable_auto_ack_ids()->MergeFrom(from._internal_auto_ack_ids());
-  _this->_internal_mutable_applications()->MergeFrom(from._internal_applications());
   _this->_internal_mutable_sources()->MergeFrom(
       from._internal_sources());
   _this->_internal_mutable_keys()->MergeFrom(
@@ -3193,7 +3156,6 @@ void AlertAutoAckFilters::InternalSwap(AlertAutoAckFilters* PROTOBUF_RESTRICT ot
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   _impl_.auto_ack_ids_.InternalSwap(&other->_impl_.auto_ack_ids_);
-  _impl_.applications_.InternalSwap(&other->_impl_.applications_);
   _impl_.sources_.InternalSwap(&other->_impl_.sources_);
   _impl_.keys_.InternalSwap(&other->_impl_.keys_);
   _impl_.user_ids_.InternalSwap(&other->_impl_.user_ids_);

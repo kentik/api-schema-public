@@ -806,7 +806,6 @@ class SuppressionFilters final : public ::google::protobuf::Message
   // accessors -------------------------------------------------------
   enum : int {
     kSuppressionIdsFieldNumber = 1,
-    kApplicationsFieldNumber = 2,
     kSourcesFieldNumber = 3,
     kUserIdsFieldNumber = 4,
     kCreatedAtFieldNumber = 5,
@@ -834,28 +833,6 @@ class SuppressionFilters final : public ::google::protobuf::Message
   private:
   const ::google::protobuf::RepeatedPtrField<std::string>& _internal_suppression_ids() const;
   ::google::protobuf::RepeatedPtrField<std::string>* _internal_mutable_suppression_ids();
-
-  public:
-  // repeated string applications = 2 [json_name = "applications", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  int applications_size() const;
-  private:
-  int _internal_applications_size() const;
-
-  public:
-  void clear_applications() ;
-  const std::string& applications(int index) const;
-  std::string* mutable_applications(int index);
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_applications(int index, Arg_&& value, Args_... args);
-  std::string* add_applications();
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void add_applications(Arg_&& value, Args_... args);
-  const ::google::protobuf::RepeatedPtrField<std::string>& applications() const;
-  ::google::protobuf::RepeatedPtrField<std::string>* mutable_applications();
-
-  private:
-  const ::google::protobuf::RepeatedPtrField<std::string>& _internal_applications() const;
-  ::google::protobuf::RepeatedPtrField<std::string>* _internal_mutable_applications();
 
   public:
   // repeated .kentik.alerting.public.v202505.Source sources = 3 [json_name = "sources", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -962,8 +939,8 @@ class SuppressionFilters final : public ::google::protobuf::Message
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      3, 8, 5,
-      101, 2>
+      3, 7, 5,
+      81, 2>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -983,7 +960,6 @@ class SuppressionFilters final : public ::google::protobuf::Message
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     ::google::protobuf::RepeatedPtrField<std::string> suppression_ids_;
-    ::google::protobuf::RepeatedPtrField<std::string> applications_;
     ::google::protobuf::RepeatedPtrField< ::kentik::alerting::public_::v202505::Source > sources_;
     ::google::protobuf::RepeatedPtrField<std::string> user_ids_;
     ::kentik::alerting::types::v202303::TimeRange* created_at_;
@@ -4196,70 +4172,6 @@ inline ::google::protobuf::RepeatedPtrField<std::string>*
 SuppressionFilters::_internal_mutable_suppression_ids() {
   ::google::protobuf::internal::TSanRead(&_impl_);
   return &_impl_.suppression_ids_;
-}
-
-// repeated string applications = 2 [json_name = "applications", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-inline int SuppressionFilters::_internal_applications_size() const {
-  return _internal_applications().size();
-}
-inline int SuppressionFilters::applications_size() const {
-  return _internal_applications_size();
-}
-inline void SuppressionFilters::clear_applications() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.applications_.Clear();
-}
-inline std::string* SuppressionFilters::add_applications() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  std::string* _s = _internal_mutable_applications()->Add();
-  // @@protoc_insertion_point(field_add_mutable:kentik.alerting.public.v202505.SuppressionFilters.applications)
-  return _s;
-}
-inline const std::string& SuppressionFilters::applications(int index) const
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:kentik.alerting.public.v202505.SuppressionFilters.applications)
-  return _internal_applications().Get(index);
-}
-inline std::string* SuppressionFilters::mutable_applications(int index)
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_mutable:kentik.alerting.public.v202505.SuppressionFilters.applications)
-  return _internal_mutable_applications()->Mutable(index);
-}
-template <typename Arg_, typename... Args_>
-inline void SuppressionFilters::set_applications(int index, Arg_&& value, Args_... args) {
-  ::google::protobuf::internal::AssignToString(
-      *_internal_mutable_applications()->Mutable(index),
-      std::forward<Arg_>(value), args... );
-  // @@protoc_insertion_point(field_set:kentik.alerting.public.v202505.SuppressionFilters.applications)
-}
-template <typename Arg_, typename... Args_>
-inline void SuppressionFilters::add_applications(Arg_&& value, Args_... args) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  ::google::protobuf::internal::AddToRepeatedPtrField(*_internal_mutable_applications(),
-                               std::forward<Arg_>(value),
-                               args... );
-  // @@protoc_insertion_point(field_add:kentik.alerting.public.v202505.SuppressionFilters.applications)
-}
-inline const ::google::protobuf::RepeatedPtrField<std::string>&
-SuppressionFilters::applications() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_list:kentik.alerting.public.v202505.SuppressionFilters.applications)
-  return _internal_applications();
-}
-inline ::google::protobuf::RepeatedPtrField<std::string>*
-SuppressionFilters::mutable_applications() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_mutable_list:kentik.alerting.public.v202505.SuppressionFilters.applications)
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  return _internal_mutable_applications();
-}
-inline const ::google::protobuf::RepeatedPtrField<std::string>&
-SuppressionFilters::_internal_applications() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.applications_;
-}
-inline ::google::protobuf::RepeatedPtrField<std::string>*
-SuppressionFilters::_internal_mutable_applications() {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return &_impl_.applications_;
 }
 
 // repeated .kentik.alerting.public.v202505.Source sources = 3 [json_name = "sources", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {

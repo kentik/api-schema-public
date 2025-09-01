@@ -88,8 +88,6 @@ struct  Kentik__Alerting__Public__V202505__PolicyListFilters
   ProtobufCMessage base;
   size_t n_sources;
   Kentik__Alerting__Public__V202505__Source **sources;
-  size_t n_applications;
-  char **applications;
   size_t n_user_ids;
   char **user_ids;
   Kentik__Alerting__Types__V202303__TimeRange *created_at;
@@ -97,7 +95,7 @@ struct  Kentik__Alerting__Public__V202505__PolicyListFilters
 };
 #define KENTIK__ALERTING__PUBLIC__V202505__POLICY_LIST_FILTERS__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__alerting__public__v202505__policy_list_filters__descriptor) \
-    , 0,NULL, 0,NULL, 0,NULL, NULL, NULL }
+    , 0,NULL, 0,NULL, NULL, NULL }
 
 
 struct  Kentik__Alerting__Public__V202505__PolicyServiceListResponse
@@ -224,6 +222,7 @@ struct  Kentik__Alerting__Public__V202505__Policy
   Kentik__Alerting__Public__V202505__Policy__PolicyLevel **levels;
   protobuf_c_boolean has_errors;
   Kentik__Alerting__Public__V202505__Policy__PolicyErrorInfo *last_error;
+  Google__Protobuf__Timestamp *expire_date;
   Kentik__Alerting__Public__V202505__Policy__SettingsCase settings_case;
   union {
     Kentik__Alerting__Public__V202505__FlowPolicySettings *flow;
@@ -240,7 +239,7 @@ struct  Kentik__Alerting__Public__V202505__Policy
 };
 #define KENTIK__ALERTING__PUBLIC__V202505__POLICY__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__alerting__public__v202505__policy__descriptor) \
-    , NULL, NULL, NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL, 0, NULL, KENTIK__ALERTING__PUBLIC__V202505__POLICY__SETTINGS__NOT_SET, {0}, KENTIK__ALERTING__PUBLIC__V202505__POLICY___ENABLED__NOT_SET, {0} }
+    , NULL, NULL, NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL, 0, NULL, NULL, KENTIK__ALERTING__PUBLIC__V202505__POLICY__SETTINGS__NOT_SET, {0}, KENTIK__ALERTING__PUBLIC__V202505__POLICY___ENABLED__NOT_SET, {0} }
 
 
 /* Kentik__Alerting__Public__V202505__PolicyServiceGetRequest methods */

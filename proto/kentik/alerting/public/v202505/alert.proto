@@ -240,13 +240,7 @@ message AlertFilters {
       default: "[]"
     }
   ];
-  repeated string applications = 3[
-    (google.api.field_behavior) = OPTIONAL,
-    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "The applications of the alerts to list. Applications are alerting integrations. It's recommended to use sources instead of applications.",
-      default: "[]"
-    }
-  ];
+  reserved 3; // PolicyTypes filter placeholder here for future
   repeated Source sources = 4[
     (google.api.field_behavior) = OPTIONAL,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {

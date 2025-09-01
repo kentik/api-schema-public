@@ -892,7 +892,7 @@ const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_silenc
   (ProtobufCMessageInit) kentik__alerting__public__v202505__alert_silence_notifications_service_list_request__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert_silence_notification_filters__field_descriptors[9] =
+static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert_silence_notification_filters__field_descriptors[8] =
 {
   {
     "silence_ids",
@@ -901,18 +901,6 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert_s
     PROTOBUF_C_TYPE_STRING,
     offsetof(Kentik__Alerting__Public__V202505__AlertSilenceNotificationFilters, n_silence_ids),
     offsetof(Kentik__Alerting__Public__V202505__AlertSilenceNotificationFilters, silence_ids),
-    NULL,
-    &protobuf_c_empty_string,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "applications",
-    2,
-    PROTOBUF_C_LABEL_REPEATED,
-    PROTOBUF_C_TYPE_STRING,
-    offsetof(Kentik__Alerting__Public__V202505__AlertSilenceNotificationFilters, n_applications),
-    offsetof(Kentik__Alerting__Public__V202505__AlertSilenceNotificationFilters, applications),
     NULL,
     &protobuf_c_empty_string,
     0,             /* flags */
@@ -1004,20 +992,20 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert_s
   },
 };
 static const unsigned kentik__alerting__public__v202505__alert_silence_notification_filters__field_indices_by_name[] = {
-  1,   /* field[1] = applications */
-  4,   /* field[4] = created_at */
-  7,   /* field[7] = end_time_at */
-  8,   /* field[8] = keys */
-  5,   /* field[5] = modified_at */
+  3,   /* field[3] = created_at */
+  6,   /* field[6] = end_time_at */
+  7,   /* field[7] = keys */
+  4,   /* field[4] = modified_at */
   0,   /* field[0] = silence_ids */
-  2,   /* field[2] = sources */
-  6,   /* field[6] = start_time_at */
-  3,   /* field[3] = user_ids */
+  1,   /* field[1] = sources */
+  5,   /* field[5] = start_time_at */
+  2,   /* field[2] = user_ids */
 };
-static const ProtobufCIntRange kentik__alerting__public__v202505__alert_silence_notification_filters__number_ranges[1 + 1] =
+static const ProtobufCIntRange kentik__alerting__public__v202505__alert_silence_notification_filters__number_ranges[2 + 1] =
 {
   { 1, 0 },
-  { 0, 9 }
+  { 3, 1 },
+  { 0, 8 }
 };
 const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_silence_notification_filters__descriptor =
 {
@@ -1027,10 +1015,10 @@ const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_silenc
   "Kentik__Alerting__Public__V202505__AlertSilenceNotificationFilters",
   "kentik.alerting.public.v202505",
   sizeof(Kentik__Alerting__Public__V202505__AlertSilenceNotificationFilters),
-  9,
+  8,
   kentik__alerting__public__v202505__alert_silence_notification_filters__field_descriptors,
   kentik__alerting__public__v202505__alert_silence_notification_filters__field_indices_by_name,
-  1,  kentik__alerting__public__v202505__alert_silence_notification_filters__number_ranges,
+  2,  kentik__alerting__public__v202505__alert_silence_notification_filters__number_ranges,
   (ProtobufCMessageInit) kentik__alerting__public__v202505__alert_silence_notification_filters__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
