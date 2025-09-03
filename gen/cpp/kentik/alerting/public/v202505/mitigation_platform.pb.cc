@@ -148,7 +148,6 @@ inline constexpr MitigationPlatformsFilters::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
         platform_ids_{},
-        sources_{},
         platform_types_{},
         _platform_types_cached_byte_size_{0},
         created_at_{nullptr},
@@ -231,11 +230,9 @@ const ::uint32_t
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::MitigationPlatformsFilters, _impl_.platform_ids_),
-        PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::MitigationPlatformsFilters, _impl_.sources_),
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::MitigationPlatformsFilters, _impl_.platform_types_),
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::MitigationPlatformsFilters, _impl_.created_at_),
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::MitigationPlatformsFilters, _impl_.modified_at_),
-        ~0u,
         ~0u,
         ~0u,
         0,
@@ -298,11 +295,11 @@ const ::uint32_t
 static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
         {0, 10, -1, sizeof(::kentik::alerting::public_::v202505::MitigationPlatformsServiceListRequest)},
-        {12, 25, -1, sizeof(::kentik::alerting::public_::v202505::MitigationPlatformsFilters)},
-        {30, 40, -1, sizeof(::kentik::alerting::public_::v202505::MitigationPlatformsServiceListResponse)},
-        {42, -1, -1, sizeof(::kentik::alerting::public_::v202505::MitigationPlatformsServiceGetRequest)},
-        {51, 60, -1, sizeof(::kentik::alerting::public_::v202505::MitigationPlatformsServiceGetResponse)},
-        {61, 76, -1, sizeof(::kentik::alerting::public_::v202505::MitigationPlatform)},
+        {12, 24, -1, sizeof(::kentik::alerting::public_::v202505::MitigationPlatformsFilters)},
+        {28, 38, -1, sizeof(::kentik::alerting::public_::v202505::MitigationPlatformsServiceListResponse)},
+        {40, -1, -1, sizeof(::kentik::alerting::public_::v202505::MitigationPlatformsServiceGetRequest)},
+        {49, 58, -1, sizeof(::kentik::alerting::public_::v202505::MitigationPlatformsServiceGetResponse)},
+        {59, 74, -1, sizeof(::kentik::alerting::public_::v202505::MitigationPlatform)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::alerting::public_::v202505::_MitigationPlatformsServiceListRequest_default_instance_._instance,
@@ -335,90 +332,87 @@ const char descriptor_table_protodef_kentik_2falerting_2fpublic_2fv202505_2fmiti
     "ation\022\223\001\n\007filters\030\002 \001(\0132:.kentik.alertin"
     "g.public.v202505.MitigationPlatformsFilt"
     "ersB=\222A725The mitigation platform filter"
-    "s for the list request.\340A\001R\007filters\"\315\005\n\032"
+    "s for the list request.\340A\001R\007filters\"\277\004\n\032"
     "MitigationPlatformsFilters\022W\n\014platform_i"
     "ds\030\001 \003(\tB4\222A.2,The IDs of the mitigation"
-    " platforms to list.\340A\001R\013platformIds\022\213\001\n\007"
-    "sources\030\003 \003(\0132&.kentik.alerting.public.v"
-    "202505.SourceBI\222AC2AThe source policies "
-    "the mitigation platforms are associated "
-    "with.\340A\001R\007sources\022\226\001\n\016platform_types\030\004 \003"
-    "(\01626.kentik.alerting.public.v202505.Miti"
-    "gationPlatformTypeB7\222A12/The types of mi"
-    "tigation platforms to filter by.\340A\001R\rpla"
-    "tformTypes\022\221\001\n\ncreated_at\030\005 \001(\0132(.kentik"
-    ".alerting.types.v202303.TimeRangeBH\222AB2@"
-    "The time range for the created time of t"
-    "he mitigation platforms.\340A\001R\tcreatedAt\022\224"
-    "\001\n\013modified_at\030\006 \001(\0132(.kentik.alerting.t"
-    "ypes.v202303.TimeRangeBI\222AC2AThe time ra"
-    "nge for the modified time of the mitigat"
-    "ion platforms.\340A\001R\nmodifiedAtJ\004\010\002\020\003\"\316\002\n&"
-    "MitigationPlatformsServiceListResponse\022\210"
-    "\001\n\npagination\030\001 \001(\0132-.kentik.alerting.ty"
-    "pes.v202506.PaginationInfoB9\222A321The pag"
-    "ination information for the list respons"
-    "e.\340A\003R\npagination\022\230\001\n\tplatforms\030\002 \003(\01322."
-    "kentik.alerting.public.v202505.Mitigatio"
-    "nPlatformBF\222A@2>The mitigation platforms"
-    " that were found matching the filters.\340A"
-    "\003R\tplatforms\"i\n$MitigationPlatformsServi"
-    "ceGetRequest\022A\n\002id\030\001 \001(\tB1\222A+2)The ID of"
-    " the mitigation platform to get.\340A\002R\002id\""
-    "\255\001\n%MitigationPlatformsServiceGetRespons"
-    "e\022\203\001\n\010platform\030\001 \001(\01322.kentik.alerting.p"
-    "ublic.v202505.MitigationPlatformB3\222A-2+T"
-    "he mitigation platform that was retrieve"
-    "d.\340A\003R\010platform\"\317\005\n\022MitigationPlatform\022:"
-    "\n\002id\030\001 \001(\tB*\222A$2\"The ID of the mitigatio"
-    "n platform.\340A\003R\002id\022@\n\004name\030\002 \001(\tB,\222A&2$T"
-    "he name of the mitigation platform.\340A\003R\004"
-    "name\022U\n\013description\030\003 \001(\tB3\222A-2+The desc"
-    "ription of the mitigation platform.\340A\003R\013"
-    "description\022x\n\004type\030\004 \001(\01626.kentik.alert"
-    "ing.public.v202505.MitigationPlatformTyp"
-    "eB,\222A&2$The type of the mitigation platf"
-    "orm.\340A\003R\004type\022t\n\025mitigation_method_ids\030\005"
-    " \003(\tB@\222A:28The mitigation method IDs ass"
-    "ociated with this platform.\340A\003R\023mitigati"
-    "onMethodIds\022u\n\ncreated_at\030\006 \001(\0132\032.google"
-    ".protobuf.TimestampB:\222A422The time when "
-    "the mitigation platform was created.\340A\003R"
-    "\tcreatedAt\022}\n\013modified_at\030\007 \001(\0132\032.google"
-    ".protobuf.TimestampB@\222A:28The time when "
-    "the mitigation platform was last modifie"
-    "d.\340A\003R\nmodifiedAt2\371\004\n\032MitigationPlatform"
-    "sService\022\232\002\n\004List\022E.kentik.alerting.publ"
-    "ic.v202505.MitigationPlatformsServiceLis"
-    "tRequest\032F.kentik.alerting.public.v20250"
-    "5.MitigationPlatformsServiceListResponse"
-    "\"\202\001\222AJ\022\031List Mitigation Platforms\032\'Retur"
-    "ns a list of mitigation platforms.*\004List"
-    "\362\327\002\023admin.alerting:read\202\323\344\223\002\030\022\026/mitigati"
-    "ons/platforms\022\217\002\n\003Get\022D.kentik.alerting."
-    "public.v202505.MitigationPlatformsServic"
-    "eGetRequest\032E.kentik.alerting.public.v20"
-    "2505.MitigationPlatformsServiceGetRespon"
-    "se\"{\222A>\022\027Get Mitigation Platform\032\036Return"
-    "s a mitigation platform.*\003Get\362\327\002\023admin.a"
-    "lerting:read\202\323\344\223\002\035\022\033/mitigations/platfor"
-    "ms/{id}\032,\312A\023grpc.api.kentik.com\352\327\002\016admin"
-    ".alerting\220\330\002\003B\347\004ZIgithub.com/kentik/api-"
-    "schema-public/gen/go/kentik/alerting/pub"
-    "lic/v202505\222A\230\004\022\314\002\n\030Mitigation Platforms"
-    " API\022\337\001# Overview\nThe Alert Mitigation P"
-    "latforms API provides programmatic acces"
-    "s to Kentik\'s capabilities of configurin"
-    "g and managing mitigation platforms that"
-    " define where and how network infrastruc"
-    "ture mitigations are deployed.\"E\n\026Kentik"
-    " API Engineering\022+https://github.com/ken"
-    "tik/api-schema-public2\007v202505*\001\0022\020appli"
-    "cation/json:\020application/jsonZD\n\036\n\005email"
-    "\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-"
-    "CH-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005toke"
-    "n\022\000rB\n\033Kentik Alerts documentation\022#http"
-    "s://kb.kentik.com/docs/alertingb\006proto3"
+    " platforms to list.\340A\001R\013platformIds\022\226\001\n\016"
+    "platform_types\030\003 \003(\01626.kentik.alerting.p"
+    "ublic.v202505.MitigationPlatformTypeB7\222A"
+    "12/The types of mitigation platforms to "
+    "filter by.\340A\001R\rplatformTypes\022\221\001\n\ncreated"
+    "_at\030\004 \001(\0132(.kentik.alerting.types.v20230"
+    "3.TimeRangeBH\222AB2@The time range for the"
+    " created time of the mitigation platform"
+    "s.\340A\001R\tcreatedAt\022\224\001\n\013modified_at\030\005 \001(\0132("
+    ".kentik.alerting.types.v202303.TimeRange"
+    "BI\222AC2AThe time range for the modified t"
+    "ime of the mitigation platforms.\340A\001R\nmod"
+    "ifiedAtJ\004\010\002\020\003\"\316\002\n&MitigationPlatformsSer"
+    "viceListResponse\022\210\001\n\npagination\030\001 \001(\0132-."
+    "kentik.alerting.types.v202506.Pagination"
+    "InfoB9\222A321The pagination information fo"
+    "r the list response.\340A\003R\npagination\022\230\001\n\t"
+    "platforms\030\002 \003(\01322.kentik.alerting.public"
+    ".v202505.MitigationPlatformBF\222A@2>The mi"
+    "tigation platforms that were found match"
+    "ing the filters.\340A\003R\tplatforms\"i\n$Mitiga"
+    "tionPlatformsServiceGetRequest\022A\n\002id\030\001 \001"
+    "(\tB1\222A+2)The ID of the mitigation platfo"
+    "rm to get.\340A\002R\002id\"\255\001\n%MitigationPlatform"
+    "sServiceGetResponse\022\203\001\n\010platform\030\001 \001(\01322"
+    ".kentik.alerting.public.v202505.Mitigati"
+    "onPlatformB3\222A-2+The mitigation platform"
+    " that was retrieved.\340A\003R\010platform\"\317\005\n\022Mi"
+    "tigationPlatform\022:\n\002id\030\001 \001(\tB*\222A$2\"The I"
+    "D of the mitigation platform.\340A\003R\002id\022@\n\004"
+    "name\030\002 \001(\tB,\222A&2$The name of the mitigat"
+    "ion platform.\340A\003R\004name\022U\n\013description\030\003 "
+    "\001(\tB3\222A-2+The description of the mitigat"
+    "ion platform.\340A\003R\013description\022x\n\004type\030\004 "
+    "\001(\01626.kentik.alerting.public.v202505.Mit"
+    "igationPlatformTypeB,\222A&2$The type of th"
+    "e mitigation platform.\340A\003R\004type\022t\n\025mitig"
+    "ation_method_ids\030\005 \003(\tB@\222A:28The mitigat"
+    "ion method IDs associated with this plat"
+    "form.\340A\003R\023mitigationMethodIds\022u\n\ncreated"
+    "_at\030\006 \001(\0132\032.google.protobuf.TimestampB:\222"
+    "A422The time when the mitigation platfor"
+    "m was created.\340A\003R\tcreatedAt\022}\n\013modified"
+    "_at\030\007 \001(\0132\032.google.protobuf.TimestampB@\222"
+    "A:28The time when the mitigation platfor"
+    "m was last modified.\340A\003R\nmodifiedAt2\371\004\n\032"
+    "MitigationPlatformsService\022\232\002\n\004List\022E.ke"
+    "ntik.alerting.public.v202505.MitigationP"
+    "latformsServiceListRequest\032F.kentik.aler"
+    "ting.public.v202505.MitigationPlatformsS"
+    "erviceListResponse\"\202\001\222AJ\022\031List Mitigatio"
+    "n Platforms\032\'Returns a list of mitigatio"
+    "n platforms.*\004List\362\327\002\023admin.alerting:rea"
+    "d\202\323\344\223\002\030\022\026/mitigations/platforms\022\217\002\n\003Get\022"
+    "D.kentik.alerting.public.v202505.Mitigat"
+    "ionPlatformsServiceGetRequest\032E.kentik.a"
+    "lerting.public.v202505.MitigationPlatfor"
+    "msServiceGetResponse\"{\222A>\022\027Get Mitigatio"
+    "n Platform\032\036Returns a mitigation platfor"
+    "m.*\003Get\362\327\002\023admin.alerting:read\202\323\344\223\002\035\022\033/m"
+    "itigations/platforms/{id}\032,\312A\023grpc.api.k"
+    "entik.com\352\327\002\016admin.alerting\220\330\002\003B\347\004ZIgith"
+    "ub.com/kentik/api-schema-public/gen/go/k"
+    "entik/alerting/public/v202505\222A\230\004\022\314\002\n\030Mi"
+    "tigation Platforms API\022\337\001# Overview\nThe "
+    "Alert Mitigation Platforms API provides "
+    "programmatic access to Kentik\'s capabili"
+    "ties of configuring and managing mitigat"
+    "ion platforms that define where and how "
+    "network infrastructure mitigations are d"
+    "eployed.\"E\n\026Kentik API Engineering\022+http"
+    "s://github.com/kentik/api-schema-public2"
+    "\007v202505*\001\0022\020application/json:\020applicati"
+    "on/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email "
+    "\002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n"
+    "\t\n\005email\022\000\n\t\n\005token\022\000rB\n\033Kentik Alerts d"
+    "ocumentation\022#https://kb.kentik.com/docs"
+    "/alertingb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fmitigation_5fplatform_2eproto_deps[12] =
     {
@@ -439,7 +433,7 @@ static ::absl::once_flag descriptor_table_kentik_2falerting_2fpublic_2fv202505_2
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fmitigation_5fplatform_2eproto = {
     false,
     false,
-    4199,
+    4057,
     descriptor_table_protodef_kentik_2falerting_2fpublic_2fv202505_2fmitigation_5fplatform_2eproto,
     "kentik/alerting/public/v202505/mitigation_platform.proto",
     &descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fmitigation_5fplatform_2eproto_once,
@@ -772,10 +766,6 @@ class MitigationPlatformsFilters::_Internal {
       8 * PROTOBUF_FIELD_OFFSET(MitigationPlatformsFilters, _impl_._has_bits_);
 };
 
-void MitigationPlatformsFilters::clear_sources() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.sources_.Clear();
-}
 void MitigationPlatformsFilters::clear_created_at() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   if (_impl_.created_at_ != nullptr) _impl_.created_at_->Clear();
@@ -801,7 +791,6 @@ inline PROTOBUF_NDEBUG_INLINE MitigationPlatformsFilters::Impl_::Impl_(
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
         platform_ids_{visibility, arena, from.platform_ids_},
-        sources_{visibility, arena, from.sources_},
         platform_types_{visibility, arena, from.platform_types_},
         _platform_types_cached_byte_size_{0} {}
 
@@ -833,7 +822,6 @@ inline PROTOBUF_NDEBUG_INLINE MitigationPlatformsFilters::Impl_::Impl_(
     ::google::protobuf::Arena* arena)
       : _cached_size_{0},
         platform_ids_{visibility, arena},
-        sources_{visibility, arena},
         platform_types_{visibility, arena},
         _platform_types_cached_byte_size_{0} {}
 
@@ -867,10 +855,6 @@ constexpr auto MitigationPlatformsFilters::InternalNewImpl_() {
   constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
       PROTOBUF_FIELD_OFFSET(MitigationPlatformsFilters, _impl_.platform_ids_) +
           decltype(MitigationPlatformsFilters::_impl_.platform_ids_)::
-              InternalGetArenaOffset(
-                  ::google::protobuf::Message::internal_visibility()),
-      PROTOBUF_FIELD_OFFSET(MitigationPlatformsFilters, _impl_.sources_) +
-          decltype(MitigationPlatformsFilters::_impl_.sources_)::
               InternalGetArenaOffset(
                   ::google::protobuf::Message::internal_visibility()),
       PROTOBUF_FIELD_OFFSET(MitigationPlatformsFilters, _impl_.platform_types_) +
@@ -915,16 +899,16 @@ const ::google::protobuf::internal::ClassData* MitigationPlatformsFilters::GetCl
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<3, 5, 3, 78, 2> MitigationPlatformsFilters::_table_ = {
+const ::_pbi::TcParseTable<3, 4, 2, 78, 2> MitigationPlatformsFilters::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(MitigationPlatformsFilters, _impl_._has_bits_),
     0, // no _extensions_
-    6, 56,  // max_field_number, fast_idx_mask
+    5, 56,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967234,  // skipmap
+    4294967266,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    5,  // num_field_entries
-    3,  // num_aux_entries
+    4,  // num_field_entries
+    2,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
     nullptr,  // post_loop_handler
@@ -938,18 +922,16 @@ const ::_pbi::TcParseTable<3, 5, 3, 78, 2> MitigationPlatformsFilters::_table_ =
     {::_pbi::TcParser::FastUR1,
      {10, 63, 0, PROTOBUF_FIELD_OFFSET(MitigationPlatformsFilters, _impl_.platform_ids_)}},
     {::_pbi::TcParser::MiniParse, {}},
-    // repeated .kentik.alerting.public.v202505.Source sources = 3 [json_name = "sources", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    {::_pbi::TcParser::FastMtR1,
-     {26, 63, 0, PROTOBUF_FIELD_OFFSET(MitigationPlatformsFilters, _impl_.sources_)}},
-    // repeated .kentik.alerting.public.v202505.MitigationPlatformType platform_types = 4 [json_name = "platformTypes", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    // repeated .kentik.alerting.public.v202505.MitigationPlatformType platform_types = 3 [json_name = "platformTypes", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::FastV32P1,
-     {34, 63, 0, PROTOBUF_FIELD_OFFSET(MitigationPlatformsFilters, _impl_.platform_types_)}},
-    // .kentik.alerting.types.v202303.TimeRange created_at = 5 [json_name = "createdAt", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(MitigationPlatformsFilters, _impl_.platform_types_)}},
+    // .kentik.alerting.types.v202303.TimeRange created_at = 4 [json_name = "createdAt", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::FastMtS1,
-     {42, 0, 1, PROTOBUF_FIELD_OFFSET(MitigationPlatformsFilters, _impl_.created_at_)}},
-    // .kentik.alerting.types.v202303.TimeRange modified_at = 6 [json_name = "modifiedAt", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+     {34, 0, 0, PROTOBUF_FIELD_OFFSET(MitigationPlatformsFilters, _impl_.created_at_)}},
+    // .kentik.alerting.types.v202303.TimeRange modified_at = 5 [json_name = "modifiedAt", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::FastMtS1,
-     {50, 1, 2, PROTOBUF_FIELD_OFFSET(MitigationPlatformsFilters, _impl_.modified_at_)}},
+     {42, 1, 1, PROTOBUF_FIELD_OFFSET(MitigationPlatformsFilters, _impl_.modified_at_)}},
+    {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
@@ -957,20 +939,16 @@ const ::_pbi::TcParseTable<3, 5, 3, 78, 2> MitigationPlatformsFilters::_table_ =
     // repeated string platform_ids = 1 [json_name = "platformIds", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {PROTOBUF_FIELD_OFFSET(MitigationPlatformsFilters, _impl_.platform_ids_), -1, 0,
     (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
-    // repeated .kentik.alerting.public.v202505.Source sources = 3 [json_name = "sources", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    {PROTOBUF_FIELD_OFFSET(MitigationPlatformsFilters, _impl_.sources_), -1, 0,
-    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
-    // repeated .kentik.alerting.public.v202505.MitigationPlatformType platform_types = 4 [json_name = "platformTypes", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    // repeated .kentik.alerting.public.v202505.MitigationPlatformType platform_types = 3 [json_name = "platformTypes", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {PROTOBUF_FIELD_OFFSET(MitigationPlatformsFilters, _impl_.platform_types_), -1, 0,
     (0 | ::_fl::kFcRepeated | ::_fl::kPackedOpenEnum)},
-    // .kentik.alerting.types.v202303.TimeRange created_at = 5 [json_name = "createdAt", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    {PROTOBUF_FIELD_OFFSET(MitigationPlatformsFilters, _impl_.created_at_), _Internal::kHasBitsOffset + 0, 1,
+    // .kentik.alerting.types.v202303.TimeRange created_at = 4 [json_name = "createdAt", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(MitigationPlatformsFilters, _impl_.created_at_), _Internal::kHasBitsOffset + 0, 0,
     (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .kentik.alerting.types.v202303.TimeRange modified_at = 6 [json_name = "modifiedAt", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    {PROTOBUF_FIELD_OFFSET(MitigationPlatformsFilters, _impl_.modified_at_), _Internal::kHasBitsOffset + 1, 2,
+    // .kentik.alerting.types.v202303.TimeRange modified_at = 5 [json_name = "modifiedAt", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(MitigationPlatformsFilters, _impl_.modified_at_), _Internal::kHasBitsOffset + 1, 1,
     (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
   }}, {{
-    {::_pbi::TcParser::GetTable<::kentik::alerting::public_::v202505::Source>()},
     {::_pbi::TcParser::GetTable<::kentik::alerting::types::v202303::TimeRange>()},
     {::_pbi::TcParser::GetTable<::kentik::alerting::types::v202303::TimeRange>()},
   }}, {{
@@ -988,7 +966,6 @@ PROTOBUF_NOINLINE void MitigationPlatformsFilters::Clear() {
   (void) cached_has_bits;
 
   _impl_.platform_ids_.Clear();
-  _impl_.sources_.Clear();
   _impl_.platform_types_.Clear();
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
@@ -1028,39 +1005,28 @@ PROTOBUF_NOINLINE void MitigationPlatformsFilters::Clear() {
             target = stream->WriteString(1, s, target);
           }
 
-          // repeated .kentik.alerting.public.v202505.Source sources = 3 [json_name = "sources", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-          for (unsigned i = 0, n = static_cast<unsigned>(
-                                   this_._internal_sources_size());
-               i < n; i++) {
-            const auto& repfield = this_._internal_sources().Get(i);
-            target =
-                ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                    3, repfield, repfield.GetCachedSize(),
-                    target, stream);
-          }
-
-          // repeated .kentik.alerting.public.v202505.MitigationPlatformType platform_types = 4 [json_name = "platformTypes", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          // repeated .kentik.alerting.public.v202505.MitigationPlatformType platform_types = 3 [json_name = "platformTypes", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
           {
             std::size_t byte_size =
                                               this_._impl_._platform_types_cached_byte_size_.Get();
             if (byte_size > 0) {
               target = stream->WriteEnumPacked(
-                  4, this_._internal_platform_types(), byte_size, target);
+                  3, this_._internal_platform_types(), byte_size, target);
             }
           }
 
           cached_has_bits = this_._impl_._has_bits_[0];
-          // .kentik.alerting.types.v202303.TimeRange created_at = 5 [json_name = "createdAt", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          // .kentik.alerting.types.v202303.TimeRange created_at = 4 [json_name = "createdAt", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
           if (cached_has_bits & 0x00000001u) {
             target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                5, *this_._impl_.created_at_, this_._impl_.created_at_->GetCachedSize(), target,
+                4, *this_._impl_.created_at_, this_._impl_.created_at_->GetCachedSize(), target,
                 stream);
           }
 
-          // .kentik.alerting.types.v202303.TimeRange modified_at = 6 [json_name = "modifiedAt", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          // .kentik.alerting.types.v202303.TimeRange modified_at = 5 [json_name = "modifiedAt", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
           if (cached_has_bits & 0x00000002u) {
             target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                6, *this_._impl_.modified_at_, this_._impl_.modified_at_->GetCachedSize(), target,
+                5, *this_._impl_.modified_at_, this_._impl_.modified_at_->GetCachedSize(), target,
                 stream);
           }
 
@@ -1098,14 +1064,7 @@ PROTOBUF_NOINLINE void MitigationPlatformsFilters::Clear() {
                     this_._internal_platform_ids().Get(i));
               }
             }
-            // repeated .kentik.alerting.public.v202505.Source sources = 3 [json_name = "sources", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-            {
-              total_size += 1UL * this_._internal_sources_size();
-              for (const auto& msg : this_._internal_sources()) {
-                total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
-              }
-            }
-            // repeated .kentik.alerting.public.v202505.MitigationPlatformType platform_types = 4 [json_name = "platformTypes", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            // repeated .kentik.alerting.public.v202505.MitigationPlatformType platform_types = 3 [json_name = "platformTypes", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
             {
               total_size += ::_pbi::WireFormatLite::EnumSizeWithPackedTagSize(
                   this_._internal_platform_types(), 1, this_._impl_._platform_types_cached_byte_size_);
@@ -1113,12 +1072,12 @@ PROTOBUF_NOINLINE void MitigationPlatformsFilters::Clear() {
           }
           cached_has_bits = this_._impl_._has_bits_[0];
           if (cached_has_bits & 0x00000003u) {
-            // .kentik.alerting.types.v202303.TimeRange created_at = 5 [json_name = "createdAt", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            // .kentik.alerting.types.v202303.TimeRange created_at = 4 [json_name = "createdAt", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
             if (cached_has_bits & 0x00000001u) {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.created_at_);
             }
-            // .kentik.alerting.types.v202303.TimeRange modified_at = 6 [json_name = "modifiedAt", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            // .kentik.alerting.types.v202303.TimeRange modified_at = 5 [json_name = "modifiedAt", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
             if (cached_has_bits & 0x00000002u) {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.modified_at_);
@@ -1138,8 +1097,6 @@ void MitigationPlatformsFilters::MergeImpl(::google::protobuf::MessageLite& to_m
   (void) cached_has_bits;
 
   _this->_internal_mutable_platform_ids()->MergeFrom(from._internal_platform_ids());
-  _this->_internal_mutable_sources()->MergeFrom(
-      from._internal_sources());
   _this->_internal_mutable_platform_types()->MergeFrom(from._internal_platform_types());
   cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
@@ -1179,7 +1136,6 @@ void MitigationPlatformsFilters::InternalSwap(MitigationPlatformsFilters* PROTOB
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   _impl_.platform_ids_.InternalSwap(&other->_impl_.platform_ids_);
-  _impl_.sources_.InternalSwap(&other->_impl_.sources_);
   _impl_.platform_types_.InternalSwap(&other->_impl_.platform_types_);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(MitigationPlatformsFilters, _impl_.modified_at_)

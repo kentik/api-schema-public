@@ -56,8 +56,6 @@ struct  Kentik__Alerting__Public__V202505__MitigationPlatformsFilters
   ProtobufCMessage base;
   size_t n_platform_ids;
   char **platform_ids;
-  size_t n_sources;
-  Kentik__Alerting__Public__V202505__Source **sources;
   size_t n_platform_types;
   Kentik__Alerting__Public__V202505__MitigationPlatformType *platform_types;
   Kentik__Alerting__Types__V202303__TimeRange *created_at;
@@ -65,7 +63,7 @@ struct  Kentik__Alerting__Public__V202505__MitigationPlatformsFilters
 };
 #define KENTIK__ALERTING__PUBLIC__V202505__MITIGATION_PLATFORMS_FILTERS__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__alerting__public__v202505__mitigation_platforms_filters__descriptor) \
-    , 0,NULL, 0,NULL, 0,NULL, NULL, NULL }
+    , 0,NULL, 0,NULL, NULL, NULL }
 
 
 struct  Kentik__Alerting__Public__V202505__MitigationPlatformsServiceListResponse

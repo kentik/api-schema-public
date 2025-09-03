@@ -360,13 +360,6 @@
                         },
                         "description": "The IDs of the mitigation platforms to list."
                     },
-                    "sources": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/v202505Source"
-                        },
-                        "description": "The source policies the mitigation platforms are associated with."
-                    },
                     "platformTypes": {
                         "type": "array",
                         "items": {
@@ -405,43 +398,6 @@
                         "readOnly": true
                     }
                 }
-            },
-            "v202505PolicyType": {
-                "type": "string",
-                "enum": [
-                    "POLICY_TYPE_UNSPECIFIED",
-                    "POLICY_TYPE_AGENT",
-                    "POLICY_TYPE_COMPONENT",
-                    "POLICY_TYPE_DEVICE",
-                    "POLICY_TYPE_EVENT",
-                    "POLICY_TYPE_INTERFACE",
-                    "POLICY_TYPE_CUSTOM",
-                    "POLICY_TYPE_CLOUD",
-                    "POLICY_TYPE_PROTECT",
-                    "POLICY_TYPE_TRAFFIC",
-                    "POLICY_TYPE_KMETRICS"
-                ],
-                "default": "POLICY_TYPE_UNSPECIFIED",
-                "title": "- POLICY_TYPE_AGENT: NMS Agent Policy\n - POLICY_TYPE_COMPONENT: NMS Component Policy\n - POLICY_TYPE_DEVICE: NMS Device Policy\n - POLICY_TYPE_EVENT: NMS Event Policy\n - POLICY_TYPE_INTERFACE: NMS Interface Policy\n - POLICY_TYPE_CUSTOM: NMS Custom Policy\n - POLICY_TYPE_CLOUD: Flow Alerting Cloud Policy\n - POLICY_TYPE_PROTECT: Flow Alerting Protect Policy\n - POLICY_TYPE_TRAFFIC: Flow Alerting Traffic Policy\n - POLICY_TYPE_KMETRICS: Flow Alerting KMetrics Policy"
-            },
-            "v202505Source": {
-                "type": "object",
-                "properties": {
-                    "policyType": {
-                        "$ref": "#/components/schemas/v202505PolicyType"
-                    },
-                    "id": {
-                        "type": "string",
-                        "description": "The ID of the policy, can be integer ID, UUID or any other format.",
-                        "required": [
-                            "id"
-                        ]
-                    }
-                },
-                "required": [
-                    "policyType",
-                    "id"
-                ]
             }
         }
     }

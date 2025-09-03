@@ -119,25 +119,20 @@ message MitigationPlatformsFilters {
     }
   ];
   reserved 2; // PolicyTypes filter placeholder here for future
-  repeated Source sources = 3[
-    (google.api.field_behavior) = OPTIONAL,
-    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "The source policies the mitigation platforms are associated with."
-    }
-  ];
-  repeated MitigationPlatformType platform_types = 4[
+
+  repeated MitigationPlatformType platform_types = 3[
     (google.api.field_behavior) = OPTIONAL,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "The types of mitigation platforms to filter by."
     }
   ];
-  kentik.alerting.types.v202303.TimeRange created_at = 5[
+  kentik.alerting.types.v202303.TimeRange created_at = 4[
     (google.api.field_behavior) = OPTIONAL,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "The time range for the created time of the mitigation platforms."
     }
   ];
-  kentik.alerting.types.v202303.TimeRange modified_at = 6[
+  kentik.alerting.types.v202303.TimeRange modified_at = 5[
     (google.api.field_behavior) = OPTIONAL,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "The time range for the modified time of the mitigation platforms."

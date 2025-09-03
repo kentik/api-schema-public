@@ -1161,10 +1161,9 @@ class MitigationPlatformsFilters final : public ::google::protobuf::Message
   // accessors -------------------------------------------------------
   enum : int {
     kPlatformIdsFieldNumber = 1,
-    kSourcesFieldNumber = 3,
-    kPlatformTypesFieldNumber = 4,
-    kCreatedAtFieldNumber = 5,
-    kModifiedAtFieldNumber = 6,
+    kPlatformTypesFieldNumber = 3,
+    kCreatedAtFieldNumber = 4,
+    kModifiedAtFieldNumber = 5,
   };
   // repeated string platform_ids = 1 [json_name = "platformIds", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   int platform_ids_size() const;
@@ -1188,24 +1187,7 @@ class MitigationPlatformsFilters final : public ::google::protobuf::Message
   ::google::protobuf::RepeatedPtrField<std::string>* _internal_mutable_platform_ids();
 
   public:
-  // repeated .kentik.alerting.public.v202505.Source sources = 3 [json_name = "sources", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  int sources_size() const;
-  private:
-  int _internal_sources_size() const;
-
-  public:
-  void clear_sources() ;
-  ::kentik::alerting::public_::v202505::Source* mutable_sources(int index);
-  ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::Source>* mutable_sources();
-
-  private:
-  const ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::Source>& _internal_sources() const;
-  ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::Source>* _internal_mutable_sources();
-  public:
-  const ::kentik::alerting::public_::v202505::Source& sources(int index) const;
-  ::kentik::alerting::public_::v202505::Source* add_sources();
-  const ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::Source>& sources() const;
-  // repeated .kentik.alerting.public.v202505.MitigationPlatformType platform_types = 4 [json_name = "platformTypes", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  // repeated .kentik.alerting.public.v202505.MitigationPlatformType platform_types = 3 [json_name = "platformTypes", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   int platform_types_size() const;
   private:
   int _internal_platform_types_size() const;
@@ -1224,7 +1206,7 @@ class MitigationPlatformsFilters final : public ::google::protobuf::Message
   ::google::protobuf::RepeatedField<int>* _internal_mutable_platform_types();
 
   public:
-  // .kentik.alerting.types.v202303.TimeRange created_at = 5 [json_name = "createdAt", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  // .kentik.alerting.types.v202303.TimeRange created_at = 4 [json_name = "createdAt", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   bool has_created_at() const;
   void clear_created_at() ;
   const ::kentik::alerting::types::v202303::TimeRange& created_at() const;
@@ -1239,7 +1221,7 @@ class MitigationPlatformsFilters final : public ::google::protobuf::Message
   ::kentik::alerting::types::v202303::TimeRange* _internal_mutable_created_at();
 
   public:
-  // .kentik.alerting.types.v202303.TimeRange modified_at = 6 [json_name = "modifiedAt", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  // .kentik.alerting.types.v202303.TimeRange modified_at = 5 [json_name = "modifiedAt", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   bool has_modified_at() const;
   void clear_modified_at() ;
   const ::kentik::alerting::types::v202303::TimeRange& modified_at() const;
@@ -1259,7 +1241,7 @@ class MitigationPlatformsFilters final : public ::google::protobuf::Message
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      3, 5, 3,
+      3, 4, 2,
       78, 2>
       _table_;
 
@@ -1280,7 +1262,6 @@ class MitigationPlatformsFilters final : public ::google::protobuf::Message
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     ::google::protobuf::RepeatedPtrField<std::string> platform_ids_;
-    ::google::protobuf::RepeatedPtrField< ::kentik::alerting::public_::v202505::Source > sources_;
     ::google::protobuf::RepeatedField<int> platform_types_;
     ::google::protobuf::internal::CachedSize _platform_types_cached_byte_size_;
     ::kentik::alerting::types::v202303::TimeRange* created_at_;
@@ -1775,52 +1756,7 @@ MitigationPlatformsFilters::_internal_mutable_platform_ids() {
   return &_impl_.platform_ids_;
 }
 
-// repeated .kentik.alerting.public.v202505.Source sources = 3 [json_name = "sources", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-inline int MitigationPlatformsFilters::_internal_sources_size() const {
-  return _internal_sources().size();
-}
-inline int MitigationPlatformsFilters::sources_size() const {
-  return _internal_sources_size();
-}
-inline ::kentik::alerting::public_::v202505::Source* MitigationPlatformsFilters::mutable_sources(int index)
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_mutable:kentik.alerting.public.v202505.MitigationPlatformsFilters.sources)
-  return _internal_mutable_sources()->Mutable(index);
-}
-inline ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::Source>* MitigationPlatformsFilters::mutable_sources()
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_mutable_list:kentik.alerting.public.v202505.MitigationPlatformsFilters.sources)
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  return _internal_mutable_sources();
-}
-inline const ::kentik::alerting::public_::v202505::Source& MitigationPlatformsFilters::sources(int index) const
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:kentik.alerting.public.v202505.MitigationPlatformsFilters.sources)
-  return _internal_sources().Get(index);
-}
-inline ::kentik::alerting::public_::v202505::Source* MitigationPlatformsFilters::add_sources() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  ::kentik::alerting::public_::v202505::Source* _add = _internal_mutable_sources()->Add();
-  // @@protoc_insertion_point(field_add:kentik.alerting.public.v202505.MitigationPlatformsFilters.sources)
-  return _add;
-}
-inline const ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::Source>& MitigationPlatformsFilters::sources() const
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_list:kentik.alerting.public.v202505.MitigationPlatformsFilters.sources)
-  return _internal_sources();
-}
-inline const ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::Source>&
-MitigationPlatformsFilters::_internal_sources() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.sources_;
-}
-inline ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::Source>*
-MitigationPlatformsFilters::_internal_mutable_sources() {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return &_impl_.sources_;
-}
-
-// repeated .kentik.alerting.public.v202505.MitigationPlatformType platform_types = 4 [json_name = "platformTypes", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+// repeated .kentik.alerting.public.v202505.MitigationPlatformType platform_types = 3 [json_name = "platformTypes", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
 inline int MitigationPlatformsFilters::_internal_platform_types_size() const {
   return _internal_platform_types().size();
 }
@@ -1865,7 +1801,7 @@ inline ::google::protobuf::RepeatedField<int>* MitigationPlatformsFilters::_inte
   return &_impl_.platform_types_;
 }
 
-// .kentik.alerting.types.v202303.TimeRange created_at = 5 [json_name = "createdAt", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+// .kentik.alerting.types.v202303.TimeRange created_at = 4 [json_name = "createdAt", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
 inline bool MitigationPlatformsFilters::has_created_at() const {
   bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
   PROTOBUF_ASSUME(!value || _impl_.created_at_ != nullptr);
@@ -1956,7 +1892,7 @@ inline void MitigationPlatformsFilters::set_allocated_created_at(::kentik::alert
   // @@protoc_insertion_point(field_set_allocated:kentik.alerting.public.v202505.MitigationPlatformsFilters.created_at)
 }
 
-// .kentik.alerting.types.v202303.TimeRange modified_at = 6 [json_name = "modifiedAt", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+// .kentik.alerting.types.v202303.TimeRange modified_at = 5 [json_name = "modifiedAt", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
 inline bool MitigationPlatformsFilters::has_modified_at() const {
   bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
   PROTOBUF_ASSUME(!value || _impl_.modified_at_ != nullptr);
