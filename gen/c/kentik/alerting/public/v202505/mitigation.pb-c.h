@@ -288,11 +288,10 @@ struct  Kentik__Alerting__Public__V202505__MitigationActionDetail
   Kentik__Alerting__Public__V202505__MitigationState from_state;
   size_t n_to_states;
   Kentik__Alerting__Public__V202505__MitigationState *to_states;
-  char *action_path;
 };
 #define KENTIK__ALERTING__PUBLIC__V202505__MITIGATION_ACTION_DETAIL__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__alerting__public__v202505__mitigation_action_detail__descriptor) \
-    , (char *)protobuf_c_empty_string, KENTIK__ALERTING__PUBLIC__V202505__MITIGATION_USER_ACTION__MITIGATION_USER_ACTION_UNSPECIFIED, (char *)protobuf_c_empty_string, KENTIK__ALERTING__PUBLIC__V202505__MITIGATION_STATE__MITIGATION_STATE_UNSPECIFIED, 0,NULL, (char *)protobuf_c_empty_string }
+    , (char *)protobuf_c_empty_string, KENTIK__ALERTING__PUBLIC__V202505__MITIGATION_USER_ACTION__MITIGATION_USER_ACTION_UNSPECIFIED, (char *)protobuf_c_empty_string, KENTIK__ALERTING__PUBLIC__V202505__MITIGATION_STATE__MITIGATION_STATE_UNSPECIFIED, 0,NULL }
 
 
 struct  Kentik__Alerting__Public__V202505__MitigationsServiceActResponse

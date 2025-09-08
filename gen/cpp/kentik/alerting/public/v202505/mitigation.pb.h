@@ -1795,7 +1795,6 @@ class MitigationActionDetail final : public ::google::protobuf::Message
     kToStatesFieldNumber = 5,
     kEventNameFieldNumber = 1,
     kActionDescriptionFieldNumber = 3,
-    kActionPathFieldNumber = 6,
     kActionFieldNumber = 2,
     kFromStateFieldNumber = 4,
   };
@@ -1850,22 +1849,6 @@ class MitigationActionDetail final : public ::google::protobuf::Message
   std::string* _internal_mutable_action_description();
 
   public:
-  // string action_path = 6 [json_name = "actionPath", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  void clear_action_path() ;
-  const std::string& action_path() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_action_path(Arg_&& arg, Args_... args);
-  std::string* mutable_action_path();
-  PROTOBUF_NODISCARD std::string* release_action_path();
-  void set_allocated_action_path(std::string* value);
-
-  private:
-  const std::string& _internal_action_path() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_action_path(
-      const std::string& value);
-  std::string* _internal_mutable_action_path();
-
-  public:
   // .kentik.alerting.public.v202505.MitigationUserAction action = 2 [json_name = "action", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   void clear_action() ;
   ::kentik::alerting::public_::v202505::MitigationUserAction action() const;
@@ -1891,8 +1874,8 @@ class MitigationActionDetail final : public ::google::protobuf::Message
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      3, 6, 0,
-      101, 2>
+      3, 5, 0,
+      90, 2>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -1913,7 +1896,6 @@ class MitigationActionDetail final : public ::google::protobuf::Message
     ::google::protobuf::internal::CachedSize _to_states_cached_byte_size_;
     ::google::protobuf::internal::ArenaStringPtr event_name_;
     ::google::protobuf::internal::ArenaStringPtr action_description_;
-    ::google::protobuf::internal::ArenaStringPtr action_path_;
     int action_;
     int from_state_;
     ::google::protobuf::internal::CachedSize _cached_size_;
@@ -6708,54 +6690,6 @@ inline const ::google::protobuf::RepeatedField<int>& MitigationActionDetail::_in
 inline ::google::protobuf::RepeatedField<int>* MitigationActionDetail::_internal_mutable_to_states() {
   ::google::protobuf::internal::TSanRead(&_impl_);
   return &_impl_.to_states_;
-}
-
-// string action_path = 6 [json_name = "actionPath", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-inline void MitigationActionDetail::clear_action_path() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.action_path_.ClearToEmpty();
-}
-inline const std::string& MitigationActionDetail::action_path() const
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:kentik.alerting.public.v202505.MitigationActionDetail.action_path)
-  return _internal_action_path();
-}
-template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void MitigationActionDetail::set_action_path(Arg_&& arg,
-                                                     Args_... args) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.action_path_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:kentik.alerting.public.v202505.MitigationActionDetail.action_path)
-}
-inline std::string* MitigationActionDetail::mutable_action_path() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  std::string* _s = _internal_mutable_action_path();
-  // @@protoc_insertion_point(field_mutable:kentik.alerting.public.v202505.MitigationActionDetail.action_path)
-  return _s;
-}
-inline const std::string& MitigationActionDetail::_internal_action_path() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.action_path_.Get();
-}
-inline void MitigationActionDetail::_internal_set_action_path(const std::string& value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.action_path_.Set(value, GetArena());
-}
-inline std::string* MitigationActionDetail::_internal_mutable_action_path() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  return _impl_.action_path_.Mutable( GetArena());
-}
-inline std::string* MitigationActionDetail::release_action_path() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:kentik.alerting.public.v202505.MitigationActionDetail.action_path)
-  return _impl_.action_path_.Release();
-}
-inline void MitigationActionDetail::set_allocated_action_path(std::string* value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.action_path_.SetAllocated(value, GetArena());
-  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.action_path_.IsDefault()) {
-    _impl_.action_path_.Set("", GetArena());
-  }
-  // @@protoc_insertion_point(field_set_allocated:kentik.alerting.public.v202505.MitigationActionDetail.action_path)
 }
 
 // -------------------------------------------------------------------

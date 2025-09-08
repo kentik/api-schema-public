@@ -859,10 +859,6 @@
                             "$ref": "#/components/schemas/v202505MitigationState"
                         },
                         "description": "The possible states the mitigation can transition to."
-                    },
-                    "actionPath": {
-                        "type": "string",
-                        "description": "The API path for performing this action."
                     }
                 }
             },

@@ -337,11 +337,4 @@ message AlertAutoAckServiceDeleteRequest {
   ];
 }
 
-message AlertAutoAckServiceDeleteResponse {
-  bool success = 1[
-    (google.api.field_behavior) = OUTPUT_ONLY,
-    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "Whether the delete operation was successful."
-    }
-  ];
-}
+message AlertAutoAckServiceDeleteResponse {}

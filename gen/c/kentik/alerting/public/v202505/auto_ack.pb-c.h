@@ -180,11 +180,10 @@ struct  Kentik__Alerting__Public__V202505__AlertAutoAckServiceDeleteRequest
 struct  Kentik__Alerting__Public__V202505__AlertAutoAckServiceDeleteResponse
 {
   ProtobufCMessage base;
-  protobuf_c_boolean success;
 };
 #define KENTIK__ALERTING__PUBLIC__V202505__ALERT_AUTO_ACK_SERVICE_DELETE_RESPONSE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__alerting__public__v202505__alert_auto_ack_service_delete_response__descriptor) \
-    , 0 }
+     }
 
 
 /* Kentik__Alerting__Public__V202505__AlertAutoAck methods */

@@ -55,21 +55,14 @@ struct AlertAutoAckServiceGetRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 AlertAutoAckServiceGetRequestDefaultTypeInternal _AlertAutoAckServiceGetRequest_default_instance_;
-
-inline constexpr AlertAutoAckServiceDeleteResponse::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : success_{false},
-        _cached_size_{0} {}
-
-template <typename>
+              template <typename>
 PROTOBUF_CONSTEXPR AlertAutoAckServiceDeleteResponse::AlertAutoAckServiceDeleteResponse(::_pbi::ConstantInitialized)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(_class_data_.base()),
+    : ::google::protobuf::internal::ZeroFieldsBase(_class_data_.base()){}
 #else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(),
-#endif  // PROTOBUF_CUSTOM_VTABLE
-      _impl_(::_pbi::ConstantInitialized()) {
+    : ::google::protobuf::internal::ZeroFieldsBase() {
 }
+#endif  // PROTOBUF_CUSTOM_VTABLE
 struct AlertAutoAckServiceDeleteResponseDefaultTypeInternal {
   PROTOBUF_CONSTEXPR AlertAutoAckServiceDeleteResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~AlertAutoAckServiceDeleteResponseDefaultTypeInternal() {}
@@ -514,7 +507,6 @@ const ::uint32_t
         ~0u,  // no _inlined_string_donated_
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
-        PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::AlertAutoAckServiceDeleteResponse, _impl_.success_),
 };
 
 static const ::_pbi::MigrationSchema
@@ -658,10 +650,8 @@ const char descriptor_table_protodef_kentik_2falerting_2fpublic_2fv202505_2fauto
     "r the replace operation.\340A\003R\007autoAck\"k\n "
     "AlertAutoAckServiceDeleteRequest\022G\n\002id\030\001"
     " \001(\tB7\222A12/The ID of the auto-ack config"
-    "uration to delete.\340A\002R\002id\"s\n!AlertAutoAc"
-    "kServiceDeleteResponse\022N\n\007success\030\001 \001(\010B"
-    "4\222A.2,Whether the delete operation was s"
-    "uccessful.\340A\003R\007success2\224\013\n\023AlertAutoAckS"
+    "uration to delete.\340A\002R\002id\"#\n!AlertAutoAc"
+    "kServiceDeleteResponse2\224\013\n\023AlertAutoAckS"
     "ervice\022\215\002\n\006Create\022@.kentik.alerting.publ"
     "ic.v202505.AlertAutoAckServiceCreateRequ"
     "est\032A.kentik.alerting.public.v202505.Ale"
@@ -730,7 +720,7 @@ static ::absl::once_flag descriptor_table_kentik_2falerting_2fpublic_2fv202505_2
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fauto_5fack_2eproto = {
     false,
     false,
-    6516,
+    6436,
     descriptor_table_protodef_kentik_2falerting_2fpublic_2fv202505_2fauto_5fack_2eproto,
     "kentik/alerting/public/v202505/auto_ack.proto",
     &descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fauto_5fack_2eproto_once,
@@ -4210,36 +4200,26 @@ class AlertAutoAckServiceDeleteResponse::_Internal {
 
 AlertAutoAckServiceDeleteResponse::AlertAutoAckServiceDeleteResponse(::google::protobuf::Arena* arena)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, _class_data_.base()) {
+    : ::google::protobuf::internal::ZeroFieldsBase(arena, _class_data_.base()) {
 #else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(arena) {
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
-  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:kentik.alerting.public.v202505.AlertAutoAckServiceDeleteResponse)
 }
 AlertAutoAckServiceDeleteResponse::AlertAutoAckServiceDeleteResponse(
-    ::google::protobuf::Arena* arena, const AlertAutoAckServiceDeleteResponse& from)
-    : AlertAutoAckServiceDeleteResponse(arena) {
-  MergeFrom(from);
-}
-inline PROTOBUF_NDEBUG_INLINE AlertAutoAckServiceDeleteResponse::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : _cached_size_{0} {}
+    ::google::protobuf::Arena* arena,
+    const AlertAutoAckServiceDeleteResponse& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  AlertAutoAckServiceDeleteResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
 
-inline void AlertAutoAckServiceDeleteResponse::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.success_ = {};
-}
-AlertAutoAckServiceDeleteResponse::~AlertAutoAckServiceDeleteResponse() {
-  // @@protoc_insertion_point(destructor:kentik.alerting.public.v202505.AlertAutoAckServiceDeleteResponse)
-  SharedDtor(*this);
-}
-inline void AlertAutoAckServiceDeleteResponse::SharedDtor(MessageLite& self) {
-  AlertAutoAckServiceDeleteResponse& this_ = static_cast<AlertAutoAckServiceDeleteResponse&>(self);
-  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  ABSL_DCHECK(this_.GetArena() == nullptr);
-  this_._impl_.~Impl_();
+  // @@protoc_insertion_point(copy_constructor:kentik.alerting.public.v202505.AlertAutoAckServiceDeleteResponse)
 }
 
 inline void* AlertAutoAckServiceDeleteResponse::PlacementNew_(const void*, void* mem,
@@ -4259,10 +4239,10 @@ const ::google::protobuf::internal::ClassDataFull AlertAutoAckServiceDeleteRespo
         nullptr,  // OnDemandRegisterArenaDtor
         nullptr,  // IsInitialized
         &AlertAutoAckServiceDeleteResponse::MergeImpl,
-        ::google::protobuf::Message::GetNewImpl<AlertAutoAckServiceDeleteResponse>(),
+        ::google::protobuf::internal::ZeroFieldsBase::GetNewImpl<AlertAutoAckServiceDeleteResponse>(),
 #if defined(PROTOBUF_CUSTOM_VTABLE)
         &AlertAutoAckServiceDeleteResponse::SharedDtor,
-        ::google::protobuf::Message::GetClearImpl<AlertAutoAckServiceDeleteResponse>(), &AlertAutoAckServiceDeleteResponse::ByteSizeLong,
+        ::google::protobuf::internal::ZeroFieldsBase::GetClearImpl<AlertAutoAckServiceDeleteResponse>(), &AlertAutoAckServiceDeleteResponse::ByteSizeLong,
             &AlertAutoAckServiceDeleteResponse::_InternalSerialize,
 #endif  // PROTOBUF_CUSTOM_VTABLE
         PROTOBUF_FIELD_OFFSET(AlertAutoAckServiceDeleteResponse, _impl_._cached_size_),
@@ -4278,15 +4258,15 @@ const ::google::protobuf::internal::ClassData* AlertAutoAckServiceDeleteResponse
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 0, 0, 2> AlertAutoAckServiceDeleteResponse::_table_ = {
+const ::_pbi::TcParseTable<0, 0, 0, 0, 2> AlertAutoAckServiceDeleteResponse::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    1, 0,  // max_field_number, fast_idx_mask
+    0, 0,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967294,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    1,  // num_field_entries
+    4294967295,  // skipmap
+    offsetof(decltype(_table_), field_names),  // no field_entries
+    0,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     _class_data_.base(),
@@ -4296,117 +4276,24 @@ const ::_pbi::TcParseTable<0, 1, 0, 0, 2> AlertAutoAckServiceDeleteResponse::_ta
     ::_pbi::TcParser::GetTable<::kentik::alerting::public_::v202505::AlertAutoAckServiceDeleteResponse>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // bool success = 1 [json_name = "success", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(AlertAutoAckServiceDeleteResponse, _impl_.success_), 63>(),
-     {8, 63, 0, PROTOBUF_FIELD_OFFSET(AlertAutoAckServiceDeleteResponse, _impl_.success_)}},
+    {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
-  }}, {{
-    // bool success = 1 [json_name = "success", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    {PROTOBUF_FIELD_OFFSET(AlertAutoAckServiceDeleteResponse, _impl_.success_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
   }},
-  // no aux_entries
+  // no field_entries, or aux_entries
   {{
   }},
 };
 
-PROTOBUF_NOINLINE void AlertAutoAckServiceDeleteResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:kentik.alerting.public.v202505.AlertAutoAckServiceDeleteResponse)
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  ::uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  _impl_.success_ = false;
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
-}
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-        ::uint8_t* AlertAutoAckServiceDeleteResponse::_InternalSerialize(
-            const MessageLite& base, ::uint8_t* target,
-            ::google::protobuf::io::EpsCopyOutputStream* stream) {
-          const AlertAutoAckServiceDeleteResponse& this_ = static_cast<const AlertAutoAckServiceDeleteResponse&>(base);
-#else   // PROTOBUF_CUSTOM_VTABLE
-        ::uint8_t* AlertAutoAckServiceDeleteResponse::_InternalSerialize(
-            ::uint8_t* target,
-            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-          const AlertAutoAckServiceDeleteResponse& this_ = *this;
-#endif  // PROTOBUF_CUSTOM_VTABLE
-          // @@protoc_insertion_point(serialize_to_array_start:kentik.alerting.public.v202505.AlertAutoAckServiceDeleteResponse)
-          ::uint32_t cached_has_bits = 0;
-          (void)cached_has_bits;
-
-          // bool success = 1 [json_name = "success", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-          if (this_._internal_success() != 0) {
-            target = stream->EnsureSpace(target);
-            target = ::_pbi::WireFormatLite::WriteBoolToArray(
-                1, this_._internal_success(), target);
-          }
-
-          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
-            target =
-                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
-          }
-          // @@protoc_insertion_point(serialize_to_array_end:kentik.alerting.public.v202505.AlertAutoAckServiceDeleteResponse)
-          return target;
-        }
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-        ::size_t AlertAutoAckServiceDeleteResponse::ByteSizeLong(const MessageLite& base) {
-          const AlertAutoAckServiceDeleteResponse& this_ = static_cast<const AlertAutoAckServiceDeleteResponse&>(base);
-#else   // PROTOBUF_CUSTOM_VTABLE
-        ::size_t AlertAutoAckServiceDeleteResponse::ByteSizeLong() const {
-          const AlertAutoAckServiceDeleteResponse& this_ = *this;
-#endif  // PROTOBUF_CUSTOM_VTABLE
-          // @@protoc_insertion_point(message_byte_size_start:kentik.alerting.public.v202505.AlertAutoAckServiceDeleteResponse)
-          ::size_t total_size = 0;
-
-          ::uint32_t cached_has_bits = 0;
-          // Prevent compiler warnings about cached_has_bits being unused
-          (void)cached_has_bits;
-
-           {
-            // bool success = 1 [json_name = "success", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-            if (this_._internal_success() != 0) {
-              total_size += 2;
-            }
-          }
-          return this_.MaybeComputeUnknownFieldsSize(total_size,
-                                                     &this_._impl_._cached_size_);
-        }
-
-void AlertAutoAckServiceDeleteResponse::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
-  auto* const _this = static_cast<AlertAutoAckServiceDeleteResponse*>(&to_msg);
-  auto& from = static_cast<const AlertAutoAckServiceDeleteResponse&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:kentik.alerting.public.v202505.AlertAutoAckServiceDeleteResponse)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from._internal_success() != 0) {
-    _this->_impl_.success_ = from._impl_.success_;
-  }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void AlertAutoAckServiceDeleteResponse::CopyFrom(const AlertAutoAckServiceDeleteResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:kentik.alerting.public.v202505.AlertAutoAckServiceDeleteResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
 
 
-void AlertAutoAckServiceDeleteResponse::InternalSwap(AlertAutoAckServiceDeleteResponse* PROTOBUF_RESTRICT other) {
-  using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-        swap(_impl_.success_, other->_impl_.success_);
-}
+
+
+
+
 
 ::google::protobuf::Metadata AlertAutoAckServiceDeleteResponse::GetMetadata() const {
-  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+  return ::google::protobuf::internal::ZeroFieldsBase::GetMetadataImpl(GetClassData()->full());
 }
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v202505

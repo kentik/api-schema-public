@@ -84,9 +84,8 @@ enum SortingConfig_Field_By : int {
   SortingConfig_Field_By_BY_SEVERITY = 5,
   SortingConfig_Field_By_BY_STATUS = 6,
   SortingConfig_Field_By_BY_POLICY_TYPE = 7,
-  SortingConfig_Field_By_BY_APPLICATION = 8,
-  SortingConfig_Field_By_BY_START_TIME = 9,
-  SortingConfig_Field_By_BY_END_TIME = 10,
+  SortingConfig_Field_By_BY_START_TIME = 8,
+  SortingConfig_Field_By_BY_END_TIME = 9,
   SortingConfig_Field_By_BY_ALARM_STATE = 101,
   SortingConfig_Field_By_BY_ALARM_POLICY_NAME = 102,
   SortingConfig_Field_By_BY_ALARM_PRIMARY_DIMENSION = 103,
@@ -306,7 +305,6 @@ class SortingConfig_Field final : public ::google::protobuf::Message
   static constexpr By BY_SEVERITY = SortingConfig_Field_By_BY_SEVERITY;
   static constexpr By BY_STATUS = SortingConfig_Field_By_BY_STATUS;
   static constexpr By BY_POLICY_TYPE = SortingConfig_Field_By_BY_POLICY_TYPE;
-  static constexpr By BY_APPLICATION = SortingConfig_Field_By_BY_APPLICATION;
   static constexpr By BY_START_TIME = SortingConfig_Field_By_BY_START_TIME;
   static constexpr By BY_END_TIME = SortingConfig_Field_By_BY_END_TIME;
   static constexpr By BY_ALARM_STATE = SortingConfig_Field_By_BY_ALARM_STATE;

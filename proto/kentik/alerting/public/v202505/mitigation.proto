@@ -403,11 +403,6 @@ message MitigationActionDetail {
       description: "The possible states the mitigation can transition to."
     }
   ];
-  string action_path = 6[
-    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "The API path for performing this action."
-    }
-  ];
 }
 
 enum MitigationUserAction {

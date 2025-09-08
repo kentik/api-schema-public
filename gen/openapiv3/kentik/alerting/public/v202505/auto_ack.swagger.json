@@ -270,7 +270,6 @@
                     "BY_SEVERITY",
                     "BY_STATUS",
                     "BY_POLICY_TYPE",
-                    "BY_APPLICATION",
                     "BY_START_TIME",
                     "BY_END_TIME",
                     "BY_ALARM_STATE",
@@ -511,14 +510,7 @@
                 }
             },
             "v202505AlertAutoAckServiceDeleteResponse": {
-                "type": "object",
-                "properties": {
-                    "success": {
-                        "type": "boolean",
-                        "description": "Whether the delete operation was successful.",
-                        "readOnly": true
-                    }
-                }
+                "type": "object"
             },
             "v202505AlertAutoAckServiceGetResponse": {
                 "type": "object",

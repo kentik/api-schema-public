@@ -20,6 +20,7 @@
 #include "google/protobuf/io/coded_stream.h"
 #include "google/protobuf/arena.h"
 #include "google/protobuf/arenastring.h"
+#include "google/protobuf/generated_message_bases.h"
 #include "google/protobuf/generated_message_tctable_decl.h"
 #include "google/protobuf/generated_message_util.h"
 #include "google/protobuf/metadata_lite.h"
@@ -317,11 +318,10 @@ class AlertAutoAckServiceGetRequest final : public ::google::protobuf::Message
 };
 // -------------------------------------------------------------------
 
-class AlertAutoAckServiceDeleteResponse final : public ::google::protobuf::Message
+class AlertAutoAckServiceDeleteResponse final : public ::google::protobuf::internal::ZeroFieldsBase
 /* @@protoc_insertion_point(class_definition:kentik.alerting.public.v202505.AlertAutoAckServiceDeleteResponse) */ {
  public:
   inline AlertAutoAckServiceDeleteResponse() : AlertAutoAckServiceDeleteResponse(nullptr) {}
-  ~AlertAutoAckServiceDeleteResponse() PROTOBUF_FINAL;
 
 #if defined(PROTOBUF_CUSTOM_VTABLE)
   void operator delete(AlertAutoAckServiceDeleteResponse* msg, std::destroying_delete_t) {
@@ -395,49 +395,21 @@ class AlertAutoAckServiceDeleteResponse final : public ::google::protobuf::Messa
   // implements Message ----------------------------------------------
 
   AlertAutoAckServiceDeleteResponse* New(::google::protobuf::Arena* arena = nullptr) const {
-    return ::google::protobuf::Message::DefaultConstruct<AlertAutoAckServiceDeleteResponse>(arena);
+    return ::google::protobuf::internal::ZeroFieldsBase::DefaultConstruct<AlertAutoAckServiceDeleteResponse>(arena);
   }
-  using ::google::protobuf::Message::CopyFrom;
-  void CopyFrom(const AlertAutoAckServiceDeleteResponse& from);
-  using ::google::protobuf::Message::MergeFrom;
-  void MergeFrom(const AlertAutoAckServiceDeleteResponse& from) { AlertAutoAckServiceDeleteResponse::MergeImpl(*this, from); }
-
-  private:
-  static void MergeImpl(
-      ::google::protobuf::MessageLite& to_msg,
-      const ::google::protobuf::MessageLite& from_msg);
+  using ::google::protobuf::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const AlertAutoAckServiceDeleteResponse& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl(*this, from);
+  }
+  using ::google::protobuf::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const AlertAutoAckServiceDeleteResponse& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl(*this, from);
+  }
 
   public:
   bool IsInitialized() const {
     return true;
   }
-  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
-  #if defined(PROTOBUF_CUSTOM_VTABLE)
-  private:
-  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
-  static ::uint8_t* _InternalSerialize(
-      const MessageLite& msg, ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream);
-
-  public:
-  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-    return _InternalSerialize(*this, target, stream);
-  }
-  #else   // PROTOBUF_CUSTOM_VTABLE
-  ::size_t ByteSizeLong() const final;
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
-  #endif  // PROTOBUF_CUSTOM_VTABLE
-  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
-
-  private:
-  void SharedCtor(::google::protobuf::Arena* arena);
-  static void SharedDtor(MessageLite& self);
-  void InternalSwap(AlertAutoAckServiceDeleteResponse* other);
  private:
   template <typename T>
   friend ::absl::string_view(
@@ -462,25 +434,12 @@ class AlertAutoAckServiceDeleteResponse final : public ::google::protobuf::Messa
   // nested types ----------------------------------------------------
 
   // accessors -------------------------------------------------------
-  enum : int {
-    kSuccessFieldNumber = 1,
-  };
-  // bool success = 1 [json_name = "success", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  void clear_success() ;
-  bool success() const;
-  void set_success(bool value);
-
-  private:
-  bool _internal_success() const;
-  void _internal_set_success(bool value);
-
-  public:
   // @@protoc_insertion_point(class_scope:kentik.alerting.public.v202505.AlertAutoAckServiceDeleteResponse)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      0, 1, 0,
+      0, 0, 0,
       0, 2>
       _table_;
 
@@ -498,11 +457,8 @@ class AlertAutoAckServiceDeleteResponse final : public ::google::protobuf::Messa
     inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
                           ::google::protobuf::Arena* arena, const Impl_& from,
                           const AlertAutoAckServiceDeleteResponse& from_msg);
-    bool success_;
-    ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
-  union { Impl_ _impl_; };
   friend struct ::TableStruct_kentik_2falerting_2fpublic_2fv202505_2fauto_5fack_2eproto;
 };
 // -------------------------------------------------------------------
@@ -5054,28 +5010,6 @@ inline void AlertAutoAckServiceDeleteRequest::set_allocated_id(std::string* valu
 // -------------------------------------------------------------------
 
 // AlertAutoAckServiceDeleteResponse
-
-// bool success = 1 [json_name = "success", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-inline void AlertAutoAckServiceDeleteResponse::clear_success() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.success_ = false;
-}
-inline bool AlertAutoAckServiceDeleteResponse::success() const {
-  // @@protoc_insertion_point(field_get:kentik.alerting.public.v202505.AlertAutoAckServiceDeleteResponse.success)
-  return _internal_success();
-}
-inline void AlertAutoAckServiceDeleteResponse::set_success(bool value) {
-  _internal_set_success(value);
-  // @@protoc_insertion_point(field_set:kentik.alerting.public.v202505.AlertAutoAckServiceDeleteResponse.success)
-}
-inline bool AlertAutoAckServiceDeleteResponse::_internal_success() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.success_;
-}
-inline void AlertAutoAckServiceDeleteResponse::_internal_set_success(bool value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.success_ = value;
-}
 
 #ifdef __GNUC__
 #pragma GCC diagnostic pop

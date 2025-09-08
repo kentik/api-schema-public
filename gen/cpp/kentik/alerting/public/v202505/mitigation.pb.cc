@@ -216,9 +216,6 @@ inline constexpr MitigationActionDetail::Impl_::Impl_(
         action_description_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
-        action_path_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
         action_{static_cast< ::kentik::alerting::public_::v202505::MitigationUserAction >(0)},
         from_state_{static_cast< ::kentik::alerting::public_::v202505::MitigationState >(0)},
         _cached_size_{0} {}
@@ -759,7 +756,6 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::MitigationActionDetail, _impl_.action_description_),
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::MitigationActionDetail, _impl_.from_state_),
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::MitigationActionDetail, _impl_.to_states_),
-        PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::MitigationActionDetail, _impl_.action_path_),
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::MitigationsServiceActResponse, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -849,10 +845,10 @@ static const ::_pbi::MigrationSchema
         {148, -1, -1, sizeof(::kentik::alerting::public_::v202505::MitigationsServiceAvailableActionsResponse)},
         {157, -1, -1, sizeof(::kentik::alerting::public_::v202505::MitigationActionDetails)},
         {166, -1, -1, sizeof(::kentik::alerting::public_::v202505::MitigationActionDetail)},
-        {180, -1, -1, sizeof(::kentik::alerting::public_::v202505::MitigationsServiceActResponse)},
-        {189, -1, -1, sizeof(::kentik::alerting::public_::v202505::MitigationsActResult)},
-        {200, 222, -1, sizeof(::kentik::alerting::public_::v202505::Mitigation)},
-        {236, 247, -1, sizeof(::kentik::alerting::public_::v202505::MitigationStateEntry)},
+        {179, -1, -1, sizeof(::kentik::alerting::public_::v202505::MitigationsServiceActResponse)},
+        {188, -1, -1, sizeof(::kentik::alerting::public_::v202505::MitigationsActResult)},
+        {199, 221, -1, sizeof(::kentik::alerting::public_::v202505::Mitigation)},
+        {235, 246, -1, sizeof(::kentik::alerting::public_::v202505::MitigationStateEntry)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::alerting::public_::v202505::_MitigationsServiceListRequest_default_instance_._instance,
@@ -990,7 +986,7 @@ const char descriptor_table_protodef_kentik_2falerting_2fpublic_2fv202505_2fmiti
     "ions\"\223\001\n\027MitigationActionDetails\022x\n\007acti"
     "ons\030\001 \003(\01326.kentik.alerting.public.v2025"
     "05.MitigationActionDetailB&\222A#2!The avai"
-    "lable mitigation actions.R\007actions\"\226\005\n\026M"
+    "lable mitigation actions.R\007actions\"\306\004\n\026M"
     "itigationActionDetail\022T\n\nevent_name\030\001 \001("
     "\tB5\222A220The name of the event that trigg"
     "ers this action.R\teventName\022n\n\006action\030\002 "
@@ -1005,9 +1001,7 @@ const char descriptor_table_protodef_kentik_2falerting_2fpublic_2fv202505_2fmiti
     "\022\210\001\n\tto_states\030\005 \003(\0162/.kentik.alerting.p"
     "ublic.v202505.MitigationStateB:\222A725The "
     "possible states the mitigation can trans"
-    "ition to.R\010toStates\022N\n\013action_path\030\006 \001(\t"
-    "B-\222A*2(The API path for performing this "
-    "action.R\nactionPath\"\237\001\n\035MitigationsServi"
+    "ition to.R\010toStates\"\237\001\n\035MitigationsServi"
     "ceActResponse\022~\n\007results\030\001 \003(\01324.kentik."
     "alerting.public.v202505.MitigationsActRe"
     "sultB.\222A(2&The results of the mitigation"
@@ -1188,7 +1182,7 @@ static ::absl::once_flag descriptor_table_kentik_2falerting_2fpublic_2fv202505_2
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fmitigation_2eproto = {
     false,
     false,
-    11599,
+    11519,
     descriptor_table_protodef_kentik_2falerting_2fpublic_2fv202505_2fmitigation_2eproto,
     "kentik/alerting/public/v202505/mitigation.proto",
     &descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fmitigation_2eproto_once,
@@ -5162,7 +5156,6 @@ inline PROTOBUF_NDEBUG_INLINE MitigationActionDetail::Impl_::Impl_(
         _to_states_cached_byte_size_{0},
         event_name_(arena, from.event_name_),
         action_description_(arena, from.action_description_),
-        action_path_(arena, from.action_path_),
         _cached_size_{0} {}
 
 MitigationActionDetail::MitigationActionDetail(
@@ -5195,7 +5188,6 @@ inline PROTOBUF_NDEBUG_INLINE MitigationActionDetail::Impl_::Impl_(
         _to_states_cached_byte_size_{0},
         event_name_(arena),
         action_description_(arena),
-        action_path_(arena),
         _cached_size_{0} {}
 
 inline void MitigationActionDetail::SharedCtor(::_pb::Arena* arena) {
@@ -5217,7 +5209,6 @@ inline void MitigationActionDetail::SharedDtor(MessageLite& self) {
   ABSL_DCHECK(this_.GetArena() == nullptr);
   this_._impl_.event_name_.Destroy();
   this_._impl_.action_description_.Destroy();
-  this_._impl_.action_path_.Destroy();
   this_._impl_.~Impl_();
 }
 
@@ -5269,15 +5260,15 @@ const ::google::protobuf::internal::ClassData* MitigationActionDetail::GetClassD
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<3, 6, 0, 101, 2> MitigationActionDetail::_table_ = {
+const ::_pbi::TcParseTable<3, 5, 0, 90, 2> MitigationActionDetail::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    6, 56,  // max_field_number, fast_idx_mask
+    5, 56,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967232,  // skipmap
+    4294967264,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    6,  // num_field_entries
+    5,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     _class_data_.base(),
@@ -5303,9 +5294,7 @@ const ::_pbi::TcParseTable<3, 6, 0, 101, 2> MitigationActionDetail::_table_ = {
     // repeated .kentik.alerting.public.v202505.MitigationState to_states = 5 [json_name = "toStates", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::FastV32P1,
      {42, 63, 0, PROTOBUF_FIELD_OFFSET(MitigationActionDetail, _impl_.to_states_)}},
-    // string action_path = 6 [json_name = "actionPath", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    {::_pbi::TcParser::FastUS1,
-     {50, 63, 0, PROTOBUF_FIELD_OFFSET(MitigationActionDetail, _impl_.action_path_)}},
+    {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
@@ -5325,17 +5314,13 @@ const ::_pbi::TcParseTable<3, 6, 0, 101, 2> MitigationActionDetail::_table_ = {
     // repeated .kentik.alerting.public.v202505.MitigationState to_states = 5 [json_name = "toStates", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {PROTOBUF_FIELD_OFFSET(MitigationActionDetail, _impl_.to_states_), 0, 0,
     (0 | ::_fl::kFcRepeated | ::_fl::kPackedOpenEnum)},
-    // string action_path = 6 [json_name = "actionPath", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    {PROTOBUF_FIELD_OFFSET(MitigationActionDetail, _impl_.action_path_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
   }},
   // no aux_entries
   {{
-    "\65\12\0\22\0\0\13\0"
+    "\65\12\0\22\0\0\0\0"
     "kentik.alerting.public.v202505.MitigationActionDetail"
     "event_name"
     "action_description"
-    "action_path"
   }},
 };
 
@@ -5349,7 +5334,6 @@ PROTOBUF_NOINLINE void MitigationActionDetail::Clear() {
   _impl_.to_states_.Clear();
   _impl_.event_name_.ClearToEmpty();
   _impl_.action_description_.ClearToEmpty();
-  _impl_.action_path_.ClearToEmpty();
   ::memset(&_impl_.action_, 0, static_cast<::size_t>(
       reinterpret_cast<char*>(&_impl_.from_state_) -
       reinterpret_cast<char*>(&_impl_.action_)) + sizeof(_impl_.from_state_));
@@ -5411,14 +5395,6 @@ PROTOBUF_NOINLINE void MitigationActionDetail::Clear() {
             }
           }
 
-          // string action_path = 6 [json_name = "actionPath", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-          if (!this_._internal_action_path().empty()) {
-            const std::string& _s = this_._internal_action_path();
-            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.alerting.public.v202505.MitigationActionDetail.action_path");
-            target = stream->WriteStringMaybeAliased(6, _s, target);
-          }
-
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -5461,11 +5437,6 @@ PROTOBUF_NOINLINE void MitigationActionDetail::Clear() {
               total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                               this_._internal_action_description());
             }
-            // string action_path = 6 [json_name = "actionPath", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-            if (!this_._internal_action_path().empty()) {
-              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                              this_._internal_action_path());
-            }
             // .kentik.alerting.public.v202505.MitigationUserAction action = 2 [json_name = "action", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
             if (this_._internal_action() != 0) {
               total_size += 1 +
@@ -5496,9 +5467,6 @@ void MitigationActionDetail::MergeImpl(::google::protobuf::MessageLite& to_msg, 
   if (!from._internal_action_description().empty()) {
     _this->_internal_set_action_description(from._internal_action_description());
   }
-  if (!from._internal_action_path().empty()) {
-    _this->_internal_set_action_path(from._internal_action_path());
-  }
   if (from._internal_action() != 0) {
     _this->_impl_.action_ = from._impl_.action_;
   }
@@ -5524,7 +5492,6 @@ void MitigationActionDetail::InternalSwap(MitigationActionDetail* PROTOBUF_RESTR
   _impl_.to_states_.InternalSwap(&other->_impl_.to_states_);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.event_name_, &other->_impl_.event_name_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.action_description_, &other->_impl_.action_description_, arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.action_path_, &other->_impl_.action_path_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(MitigationActionDetail, _impl_.from_state_)
       + sizeof(MitigationActionDetail::_impl_.from_state_)

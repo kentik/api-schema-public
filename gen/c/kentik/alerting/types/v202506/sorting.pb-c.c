@@ -58,7 +58,7 @@ void   kentik__alerting__types__v202506__sorting_config__free_unpacked
   assert(message->base.descriptor == &kentik__alerting__types__v202506__sorting_config__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-static const ProtobufCEnumValue kentik__alerting__types__v202506__sorting_config__field__by__enum_values_by_number[14] =
+static const ProtobufCEnumValue kentik__alerting__types__v202506__sorting_config__field__by__enum_values_by_number[13] =
 {
   { "BY_UNSPECIFIED", "KENTIK__ALERTING__TYPES__V202506__SORTING_CONFIG__FIELD__BY__BY_UNSPECIFIED", 0 },
   { "BY_ID", "KENTIK__ALERTING__TYPES__V202506__SORTING_CONFIG__FIELD__BY__BY_ID", 1 },
@@ -68,29 +68,27 @@ static const ProtobufCEnumValue kentik__alerting__types__v202506__sorting_config
   { "BY_SEVERITY", "KENTIK__ALERTING__TYPES__V202506__SORTING_CONFIG__FIELD__BY__BY_SEVERITY", 5 },
   { "BY_STATUS", "KENTIK__ALERTING__TYPES__V202506__SORTING_CONFIG__FIELD__BY__BY_STATUS", 6 },
   { "BY_POLICY_TYPE", "KENTIK__ALERTING__TYPES__V202506__SORTING_CONFIG__FIELD__BY__BY_POLICY_TYPE", 7 },
-  { "BY_APPLICATION", "KENTIK__ALERTING__TYPES__V202506__SORTING_CONFIG__FIELD__BY__BY_APPLICATION", 8 },
-  { "BY_START_TIME", "KENTIK__ALERTING__TYPES__V202506__SORTING_CONFIG__FIELD__BY__BY_START_TIME", 9 },
-  { "BY_END_TIME", "KENTIK__ALERTING__TYPES__V202506__SORTING_CONFIG__FIELD__BY__BY_END_TIME", 10 },
+  { "BY_START_TIME", "KENTIK__ALERTING__TYPES__V202506__SORTING_CONFIG__FIELD__BY__BY_START_TIME", 8 },
+  { "BY_END_TIME", "KENTIK__ALERTING__TYPES__V202506__SORTING_CONFIG__FIELD__BY__BY_END_TIME", 9 },
   { "BY_ALARM_STATE", "KENTIK__ALERTING__TYPES__V202506__SORTING_CONFIG__FIELD__BY__BY_ALARM_STATE", 101 },
   { "BY_ALARM_POLICY_NAME", "KENTIK__ALERTING__TYPES__V202506__SORTING_CONFIG__FIELD__BY__BY_ALARM_POLICY_NAME", 102 },
   { "BY_ALARM_PRIMARY_DIMENSION", "KENTIK__ALERTING__TYPES__V202506__SORTING_CONFIG__FIELD__BY__BY_ALARM_PRIMARY_DIMENSION", 103 },
 };
 static const ProtobufCIntRange kentik__alerting__types__v202506__sorting_config__field__by__value_ranges[] = {
-{0, 0},{101, 11},{0, 14}
+{0, 0},{101, 10},{0, 13}
 };
-static const ProtobufCEnumValueIndex kentik__alerting__types__v202506__sorting_config__field__by__enum_values_by_name[14] =
+static const ProtobufCEnumValueIndex kentik__alerting__types__v202506__sorting_config__field__by__enum_values_by_name[13] =
 {
-  { "BY_ALARM_POLICY_NAME", 12 },
-  { "BY_ALARM_PRIMARY_DIMENSION", 13 },
-  { "BY_ALARM_STATE", 11 },
-  { "BY_APPLICATION", 8 },
+  { "BY_ALARM_POLICY_NAME", 11 },
+  { "BY_ALARM_PRIMARY_DIMENSION", 12 },
+  { "BY_ALARM_STATE", 10 },
   { "BY_CREATED_AT", 3 },
-  { "BY_END_TIME", 10 },
+  { "BY_END_TIME", 9 },
   { "BY_ID", 1 },
   { "BY_NAME", 2 },
   { "BY_POLICY_TYPE", 7 },
   { "BY_SEVERITY", 5 },
-  { "BY_START_TIME", 9 },
+  { "BY_START_TIME", 8 },
   { "BY_STATUS", 6 },
   { "BY_UNSPECIFIED", 0 },
   { "BY_UPDATED_AT", 4 },
@@ -102,9 +100,9 @@ const ProtobufCEnumDescriptor kentik__alerting__types__v202506__sorting_config__
   "By",
   "Kentik__Alerting__Types__V202506__SortingConfig__Field__By",
   "kentik.alerting.types.v202506",
-  14,
+  13,
   kentik__alerting__types__v202506__sorting_config__field__by__enum_values_by_number,
-  14,
+  13,
   kentik__alerting__types__v202506__sorting_config__field__by__enum_values_by_name,
   2,
   kentik__alerting__types__v202506__sorting_config__field__by__value_ranges,

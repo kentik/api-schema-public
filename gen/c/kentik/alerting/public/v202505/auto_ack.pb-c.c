@@ -1187,29 +1187,9 @@ const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_auto_a
   (ProtobufCMessageInit) kentik__alerting__public__v202505__alert_auto_ack_service_delete_request__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert_auto_ack_service_delete_response__field_descriptors[1] =
-{
-  {
-    "success",
-    1,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_BOOL,
-    0,   /* quantifier_offset */
-    offsetof(Kentik__Alerting__Public__V202505__AlertAutoAckServiceDeleteResponse, success),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-};
-static const unsigned kentik__alerting__public__v202505__alert_auto_ack_service_delete_response__field_indices_by_name[] = {
-  0,   /* field[0] = success */
-};
-static const ProtobufCIntRange kentik__alerting__public__v202505__alert_auto_ack_service_delete_response__number_ranges[1 + 1] =
-{
-  { 1, 0 },
-  { 0, 1 }
-};
+#define kentik__alerting__public__v202505__alert_auto_ack_service_delete_response__field_descriptors NULL
+#define kentik__alerting__public__v202505__alert_auto_ack_service_delete_response__field_indices_by_name NULL
+#define kentik__alerting__public__v202505__alert_auto_ack_service_delete_response__number_ranges NULL
 const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_auto_ack_service_delete_response__descriptor =
 {
   PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
@@ -1218,10 +1198,10 @@ const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_auto_a
   "Kentik__Alerting__Public__V202505__AlertAutoAckServiceDeleteResponse",
   "kentik.alerting.public.v202505",
   sizeof(Kentik__Alerting__Public__V202505__AlertAutoAckServiceDeleteResponse),
-  1,
+  0,
   kentik__alerting__public__v202505__alert_auto_ack_service_delete_response__field_descriptors,
   kentik__alerting__public__v202505__alert_auto_ack_service_delete_response__field_indices_by_name,
-  1,  kentik__alerting__public__v202505__alert_auto_ack_service_delete_response__number_ranges,
+  0,  kentik__alerting__public__v202505__alert_auto_ack_service_delete_response__number_ranges,
   (ProtobufCMessageInit) kentik__alerting__public__v202505__alert_auto_ack_service_delete_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };

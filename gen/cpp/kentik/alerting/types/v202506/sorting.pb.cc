@@ -122,30 +122,30 @@ static const ::_pb::Message* const file_default_instances[] = {
 const char descriptor_table_protodef_kentik_2falerting_2ftypes_2fv202506_2fsorting_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
     "\n+kentik/alerting/types/v202506/sorting."
-    "proto\022\035kentik.alerting.types.v202506\"\324\004\n"
+    "proto\022\035kentik.alerting.types.v202506\"\300\004\n"
     "\rSortingConfig\022J\n\006fields\030\001 \003(\01322.kentik."
     "alerting.types.v202506.SortingConfig.Fie"
-    "ldR\006fields\032\253\003\n\005Field\022E\n\002by\030\001 \001(\01625.kenti"
+    "ldR\006fields\032\227\003\n\005Field\022E\n\002by\030\001 \001(\01625.kenti"
     "k.alerting.types.v202506.SortingConfig.F"
     "ield.ByR\002by\022H\n\005order\030\002 \001(\01622.kentik.aler"
     "ting.types.v202506.SortingConfig.OrderR\005"
-    "order\"\220\002\n\002By\022\022\n\016BY_UNSPECIFIED\020\000\022\t\n\005BY_I"
+    "order\"\374\001\n\002By\022\022\n\016BY_UNSPECIFIED\020\000\022\t\n\005BY_I"
     "D\020\001\022\013\n\007BY_NAME\020\002\022\021\n\rBY_CREATED_AT\020\003\022\021\n\rB"
     "Y_UPDATED_AT\020\004\022\017\n\013BY_SEVERITY\020\005\022\r\n\tBY_ST"
-    "ATUS\020\006\022\022\n\016BY_POLICY_TYPE\020\007\022\022\n\016BY_APPLICA"
-    "TION\020\010\022\021\n\rBY_START_TIME\020\t\022\017\n\013BY_END_TIME"
-    "\020\n\022\022\n\016BY_ALARM_STATE\020e\022\030\n\024BY_ALARM_POLIC"
-    "Y_NAME\020f\022\036\n\032BY_ALARM_PRIMARY_DIMENSION\020g"
-    "\"I\n\005Order\022\025\n\021ORDER_UNSPECIFIED\020\000\022\023\n\017ORDE"
-    "R_ASCENDING\020\001\022\024\n\020ORDER_DESCENDING\020\002BJZHg"
-    "ithub.com/kentik/api-schema-public/gen/g"
-    "o/kentik/alerting/types/v202506b\006proto3"
+    "ATUS\020\006\022\022\n\016BY_POLICY_TYPE\020\007\022\021\n\rBY_START_T"
+    "IME\020\010\022\017\n\013BY_END_TIME\020\t\022\022\n\016BY_ALARM_STATE"
+    "\020e\022\030\n\024BY_ALARM_POLICY_NAME\020f\022\036\n\032BY_ALARM"
+    "_PRIMARY_DIMENSION\020g\"I\n\005Order\022\025\n\021ORDER_U"
+    "NSPECIFIED\020\000\022\023\n\017ORDER_ASCENDING\020\001\022\024\n\020ORD"
+    "ER_DESCENDING\020\002BJZHgithub.com/kentik/api"
+    "-schema-public/gen/go/kentik/alerting/ty"
+    "pes/v202506b\006proto3"
 };
 static ::absl::once_flag descriptor_table_kentik_2falerting_2ftypes_2fv202506_2fsorting_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2falerting_2ftypes_2fv202506_2fsorting_2eproto = {
     false,
     false,
-    759,
+    739,
     descriptor_table_protodef_kentik_2falerting_2ftypes_2fv202506_2fsorting_2eproto,
     "kentik/alerting/types/v202506/sorting.proto",
     &descriptor_table_kentik_2falerting_2ftypes_2fv202506_2fsorting_2eproto_once,
@@ -167,7 +167,7 @@ const ::google::protobuf::EnumDescriptor* SortingConfig_Field_By_descriptor() {
   return file_level_enum_descriptors_kentik_2falerting_2ftypes_2fv202506_2fsorting_2eproto[0];
 }
 PROTOBUF_CONSTINIT const uint32_t SortingConfig_Field_By_internal_data_[] = {
-    720896u, 96u, 0u, 0u, 469762048u, };
+    655360u, 96u, 0u, 0u, 939524096u, };
 bool SortingConfig_Field_By_IsValid(int value) {
   return ::_pbi::ValidateEnum(value, SortingConfig_Field_By_internal_data_);
 }
@@ -182,7 +182,6 @@ constexpr SortingConfig_Field_By SortingConfig_Field::BY_UPDATED_AT;
 constexpr SortingConfig_Field_By SortingConfig_Field::BY_SEVERITY;
 constexpr SortingConfig_Field_By SortingConfig_Field::BY_STATUS;
 constexpr SortingConfig_Field_By SortingConfig_Field::BY_POLICY_TYPE;
-constexpr SortingConfig_Field_By SortingConfig_Field::BY_APPLICATION;
 constexpr SortingConfig_Field_By SortingConfig_Field::BY_START_TIME;
 constexpr SortingConfig_Field_By SortingConfig_Field::BY_END_TIME;
 constexpr SortingConfig_Field_By SortingConfig_Field::BY_ALARM_STATE;

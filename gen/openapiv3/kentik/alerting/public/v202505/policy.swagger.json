@@ -511,7 +511,6 @@
                     "BY_SEVERITY",
                     "BY_STATUS",
                     "BY_POLICY_TYPE",
-                    "BY_APPLICATION",
                     "BY_START_TIME",
                     "BY_END_TIME",
                     "BY_ALARM_STATE",

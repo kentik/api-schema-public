@@ -1582,7 +1582,7 @@ const ProtobufCMessageDescriptor kentik__alerting__public__v202505__mitigation_a
   (ProtobufCMessageInit) kentik__alerting__public__v202505__mitigation_action_details__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__mitigation_action_detail__field_descriptors[6] =
+static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__mitigation_action_detail__field_descriptors[5] =
 {
   {
     "event_name",
@@ -1644,23 +1644,10 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__mitigat
     0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
-  {
-    "action_path",
-    6,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_STRING,
-    0,   /* quantifier_offset */
-    offsetof(Kentik__Alerting__Public__V202505__MitigationActionDetail, action_path),
-    NULL,
-    &protobuf_c_empty_string,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
 };
 static const unsigned kentik__alerting__public__v202505__mitigation_action_detail__field_indices_by_name[] = {
   1,   /* field[1] = action */
   2,   /* field[2] = action_description */
-  5,   /* field[5] = action_path */
   0,   /* field[0] = event_name */
   3,   /* field[3] = from_state */
   4,   /* field[4] = to_states */
@@ -1668,7 +1655,7 @@ static const unsigned kentik__alerting__public__v202505__mitigation_action_detai
 static const ProtobufCIntRange kentik__alerting__public__v202505__mitigation_action_detail__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 6 }
+  { 0, 5 }
 };
 const ProtobufCMessageDescriptor kentik__alerting__public__v202505__mitigation_action_detail__descriptor =
 {
@@ -1678,7 +1665,7 @@ const ProtobufCMessageDescriptor kentik__alerting__public__v202505__mitigation_a
   "Kentik__Alerting__Public__V202505__MitigationActionDetail",
   "kentik.alerting.public.v202505",
   sizeof(Kentik__Alerting__Public__V202505__MitigationActionDetail),
-  6,
+  5,
   kentik__alerting__public__v202505__mitigation_action_detail__field_descriptors,
   kentik__alerting__public__v202505__mitigation_action_detail__field_indices_by_name,
   1,  kentik__alerting__public__v202505__mitigation_action_detail__number_ranges,
