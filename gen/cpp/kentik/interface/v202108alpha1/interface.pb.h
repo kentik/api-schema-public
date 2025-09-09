@@ -179,6 +179,9 @@ enum ConnectivityType : int {
   CONNECTIVITY_TYPE_VIRTUAL_CROSS_CONNECT = 16,
   CONNECTIVITY_TYPE_IPX_INTERCONNECT = 17,
   CONNECTIVITY_TYPE_SIP_INTERCONNECT = 18,
+  CONNECTIVITY_TYPE_DDOS_EXT = 19,
+  CONNECTIVITY_TYPE_DDOS_INT = 20,
+  CONNECTIVITY_TYPE_MGT = 21,
   ConnectivityType_INT_MIN_SENTINEL_DO_NOT_USE_ =
       std::numeric_limits<::int32_t>::min(),
   ConnectivityType_INT_MAX_SENTINEL_DO_NOT_USE_ =
@@ -188,8 +191,8 @@ enum ConnectivityType : int {
 bool ConnectivityType_IsValid(int value);
 extern const uint32_t ConnectivityType_internal_data_[];
 constexpr ConnectivityType ConnectivityType_MIN = static_cast<ConnectivityType>(0);
-constexpr ConnectivityType ConnectivityType_MAX = static_cast<ConnectivityType>(18);
-constexpr int ConnectivityType_ARRAYSIZE = 18 + 1;
+constexpr ConnectivityType ConnectivityType_MAX = static_cast<ConnectivityType>(21);
+constexpr int ConnectivityType_ARRAYSIZE = 21 + 1;
 const ::google::protobuf::EnumDescriptor*
 ConnectivityType_descriptor();
 template <typename T>
@@ -202,7 +205,7 @@ const std::string& ConnectivityType_Name(T value) {
 template <>
 inline const std::string& ConnectivityType_Name(ConnectivityType value) {
   return ::google::protobuf::internal::NameOfDenseEnum<ConnectivityType_descriptor,
-                                                 0, 18>(
+                                                 0, 21>(
       static_cast<int>(value));
 }
 inline bool ConnectivityType_Parse(absl::string_view name, ConnectivityType* value) {

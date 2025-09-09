@@ -92,7 +92,10 @@
                                     "CONNECTIVITY_TYPE_TRANSIT",
                                     "CONNECTIVITY_TYPE_VIRTUAL_CROSS_CONNECT",
                                     "CONNECTIVITY_TYPE_IPX_INTERCONNECT",
-                                    "CONNECTIVITY_TYPE_SIP_INTERCONNECT"
+                                    "CONNECTIVITY_TYPE_SIP_INTERCONNECT",
+                                    "CONNECTIVITY_TYPE_DDOS_EXT",
+                                    "CONNECTIVITY_TYPE_DDOS_INT",
+                                    "CONNECTIVITY_TYPE_MGT"
                                 ]
                             }
                         }
@@ -462,7 +465,10 @@
                     "CONNECTIVITY_TYPE_TRANSIT",
                     "CONNECTIVITY_TYPE_VIRTUAL_CROSS_CONNECT",
                     "CONNECTIVITY_TYPE_IPX_INTERCONNECT",
-                    "CONNECTIVITY_TYPE_SIP_INTERCONNECT"
+                    "CONNECTIVITY_TYPE_SIP_INTERCONNECT",
+                    "CONNECTIVITY_TYPE_DDOS_EXT",
+                    "CONNECTIVITY_TYPE_DDOS_INT",
+                    "CONNECTIVITY_TYPE_MGT"
                 ],
                 "default": "CONNECTIVITY_TYPE_UNSPECIFIED"
             },
