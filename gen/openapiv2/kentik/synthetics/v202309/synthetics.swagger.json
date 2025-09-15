@@ -937,9 +937,29 @@
         "disableWarningNotifications": {
           "type": "boolean",
           "description": "Boolean indicating whether to disable warning-level alert notifications"
+        },
+        "alertingType": {
+          "$ref": "#/definitions/v202309AlertingType",
+          "description": "Alerting type for the test"
+        },
+        "groupedAlertSettings": {
+          "$ref": "#/definitions/v202309GroupedAlertSettings",
+          "description": "Grouped alerting settings"
         }
       },
       "title": "AlertingSettings"
+    },
+    "v202309AlertingType": {
+      "type": "string",
+      "enum": [
+        "ALERTING_TYPE_UNSPECIFIED",
+        "ALERTING_TYPE_AGENT",
+        "ALERTING_TYPE_GROUPED",
+        "ALERTING_TYPE_SUBTEST"
+      ],
+      "default": "ALERTING_TYPE_UNSPECIFIED",
+      "description": "- ALERTING_TYPE_UNSPECIFIED: Invalid value.\n - ALERTING_TYPE_AGENT: Per-Agent - Generates alerts based on individual metric thresholds (This can be noisy)\n - ALERTING_TYPE_GROUPED: Grouped - Reduces the number of alert notifications for upstream issues by forcing alert conditions to exist across multiple network paths\n - ALERTING_TYPE_SUBTEST: All metrics - Calculates health and alerts for the test as a whole",
+      "title": "AlertingType"
     },
     "v202309CreateAgentAlertRequest": {
       "type": "object",
@@ -1325,6 +1345,42 @@
         }
       },
       "title": "GetTraceForTestResponse"
+    },
+    "v202309GroupedAlertSetting": {
+      "type": "object",
+      "properties": {
+        "metric": {
+          "type": "string",
+          "description": "Metric"
+        },
+        "srcGroupBy": {
+          "$ref": "#/definitions/v202309SrcGroupBy",
+          "description": "Grouping"
+        },
+        "percentOfSrcGroup": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Grouping percentage"
+        }
+      },
+      "title": "GroupedAlertSetting"
+    },
+    "v202309GroupedAlertSettings": {
+      "type": "object",
+      "properties": {
+        "default": {
+          "$ref": "#/definitions/v202309GroupedAlertSetting",
+          "description": "Default grouped alerting settings"
+        },
+        "overrides": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v202309GroupedAlertSetting"
+          },
+          "description": "Overrides to default grouped alerting settings"
+        }
+      },
+      "title": "GroupedAlertSettings"
     },
     "v202309HTTPResponseData": {
       "type": "object",
@@ -1884,6 +1940,18 @@
     "v202309SetTestStatusResponse": {
       "type": "object",
       "title": "SetTestStatusResponse"
+    },
+    "v202309SrcGroupBy": {
+      "type": "string",
+      "enum": [
+        "SRC_GROUP_BY_UNSPECIFIED",
+        "SRC_GROUP_BY_ALL_AGENTS",
+        "SRC_GROUP_BY_LABEL",
+        "SRC_GROUP_BY_SITE"
+      ],
+      "default": "SRC_GROUP_BY_UNSPECIFIED",
+      "description": "- SRC_GROUP_BY_UNSPECIFIED: Invalid value.\n - SRC_GROUP_BY_ALL_AGENTS: Grouped by all agents\n - SRC_GROUP_BY_LABEL: Grouped by label\n - SRC_GROUP_BY_SITE: Grouped by site",
+      "title": "SrcGroupBy"
     },
     "v202309Stats": {
       "type": "object",

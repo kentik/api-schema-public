@@ -705,10 +705,82 @@ message ScheduleSettings {
 }
 
 // {{.Name}}
+message GroupedAlertSetting {
+  string metric = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Metric"
+    }
+  ];
+
+  SrcGroupBy src_group_by = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Grouping"
+    }
+  ];
+
+  uint32 percent_of_src_group = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Grouping percentage"
+    }
+  ];
+}
+
+// {{.Name}}
+message GroupedAlertSettings {
+  GroupedAlertSetting default = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Default grouped alerting settings"
+    }
+  ];
+
+  repeated GroupedAlertSetting overrides = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Overrides to default grouped alerting settings"
+    }
+  ];
+}
+
+// {{.Name}}
+enum AlertingType {
+  // Invalid value.
+  ALERTING_TYPE_UNSPECIFIED = 0;
+  // Per-Agent - Generates alerts based on individual metric thresholds (This can be noisy)
+  ALERTING_TYPE_AGENT = 1;
+  // Grouped - Reduces the number of alert notifications for upstream issues by forcing alert conditions to exist across multiple network paths
+  ALERTING_TYPE_GROUPED = 2;
+  // All metrics - Calculates health and alerts for the test as a whole
+  ALERTING_TYPE_SUBTEST = 3;
+};
+
+// {{.Name}}
+enum SrcGroupBy {
+  // Invalid value.
+  SRC_GROUP_BY_UNSPECIFIED = 0;
+  // Grouped by all agents
+  SRC_GROUP_BY_ALL_AGENTS = 1;
+  // Grouped by label
+  SRC_GROUP_BY_LABEL = 2;
+  // Grouped by site
+  SRC_GROUP_BY_SITE = 3;
+};
+
+// {{.Name}}
 message AlertingSettings {
   bool disable_warning_notifications = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Boolean indicating whether to disable warning-level alert notifications"
+    }
+  ];
+
+  AlertingType alerting_type = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Alerting type for the test"
+    }
+  ];
+
+  GroupedAlertSettings grouped_alert_settings = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Grouped alerting settings"
     }
   ];
 }

@@ -32,6 +32,8 @@ typedef struct Kentik__Synthetics__V202309__TestPingSettings Kentik__Synthetics_
 typedef struct Kentik__Synthetics__V202309__TestTraceSettings Kentik__Synthetics__V202309__TestTraceSettings;
 typedef struct Kentik__Synthetics__V202309__TestThroughputSettings Kentik__Synthetics__V202309__TestThroughputSettings;
 typedef struct Kentik__Synthetics__V202309__ScheduleSettings Kentik__Synthetics__V202309__ScheduleSettings;
+typedef struct Kentik__Synthetics__V202309__GroupedAlertSetting Kentik__Synthetics__V202309__GroupedAlertSetting;
+typedef struct Kentik__Synthetics__V202309__GroupedAlertSettings Kentik__Synthetics__V202309__GroupedAlertSettings;
 typedef struct Kentik__Synthetics__V202309__AlertingSettings Kentik__Synthetics__V202309__AlertingSettings;
 typedef struct Kentik__Synthetics__V202309__ActivationSettings Kentik__Synthetics__V202309__ActivationSettings;
 typedef struct Kentik__Synthetics__V202309__HealthSettings Kentik__Synthetics__V202309__HealthSettings;
@@ -233,6 +235,50 @@ typedef enum _Kentik__Synthetics__V202309__DNSRecord {
   KENTIK__SYNTHETICS__V202309__DNSRECORD__DNS_RECORD_SOA = 8
     PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__SYNTHETICS__V202309__DNSRECORD)
 } Kentik__Synthetics__V202309__DNSRecord;
+/*
+ * {{.Name}}
+ */
+typedef enum _Kentik__Synthetics__V202309__AlertingType {
+  /*
+   * Invalid value.
+   */
+  KENTIK__SYNTHETICS__V202309__ALERTING_TYPE__ALERTING_TYPE_UNSPECIFIED = 0,
+  /*
+   * Per-Agent - Generates alerts based on individual metric thresholds (This can be noisy)
+   */
+  KENTIK__SYNTHETICS__V202309__ALERTING_TYPE__ALERTING_TYPE_AGENT = 1,
+  /*
+   * Grouped - Reduces the number of alert notifications for upstream issues by forcing alert conditions to exist across multiple network paths
+   */
+  KENTIK__SYNTHETICS__V202309__ALERTING_TYPE__ALERTING_TYPE_GROUPED = 2,
+  /*
+   * All metrics - Calculates health and alerts for the test as a whole
+   */
+  KENTIK__SYNTHETICS__V202309__ALERTING_TYPE__ALERTING_TYPE_SUBTEST = 3
+    PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__SYNTHETICS__V202309__ALERTING_TYPE)
+} Kentik__Synthetics__V202309__AlertingType;
+/*
+ * {{.Name}}
+ */
+typedef enum _Kentik__Synthetics__V202309__SrcGroupBy {
+  /*
+   * Invalid value.
+   */
+  KENTIK__SYNTHETICS__V202309__SRC_GROUP_BY__SRC_GROUP_BY_UNSPECIFIED = 0,
+  /*
+   * Grouped by all agents
+   */
+  KENTIK__SYNTHETICS__V202309__SRC_GROUP_BY__SRC_GROUP_BY_ALL_AGENTS = 1,
+  /*
+   * Grouped by label
+   */
+  KENTIK__SYNTHETICS__V202309__SRC_GROUP_BY__SRC_GROUP_BY_LABEL = 2,
+  /*
+   * Grouped by site
+   */
+  KENTIK__SYNTHETICS__V202309__SRC_GROUP_BY__SRC_GROUP_BY_SITE = 3
+    PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__SYNTHETICS__V202309__SRC_GROUP_BY)
+} Kentik__Synthetics__V202309__SrcGroupBy;
 
 /* --- messages --- */
 
@@ -476,14 +522,46 @@ struct  Kentik__Synthetics__V202309__ScheduleSettings
 /*
  * {{.Name}}
  */
+struct  Kentik__Synthetics__V202309__GroupedAlertSetting
+{
+  ProtobufCMessage base;
+  char *metric;
+  Kentik__Synthetics__V202309__SrcGroupBy src_group_by;
+  uint32_t percent_of_src_group;
+};
+#define KENTIK__SYNTHETICS__V202309__GROUPED_ALERT_SETTING__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__synthetics__v202309__grouped_alert_setting__descriptor) \
+    , (char *)protobuf_c_empty_string, KENTIK__SYNTHETICS__V202309__SRC_GROUP_BY__SRC_GROUP_BY_UNSPECIFIED, 0 }
+
+
+/*
+ * {{.Name}}
+ */
+struct  Kentik__Synthetics__V202309__GroupedAlertSettings
+{
+  ProtobufCMessage base;
+  Kentik__Synthetics__V202309__GroupedAlertSetting *default_;
+  size_t n_overrides;
+  Kentik__Synthetics__V202309__GroupedAlertSetting **overrides;
+};
+#define KENTIK__SYNTHETICS__V202309__GROUPED_ALERT_SETTINGS__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__synthetics__v202309__grouped_alert_settings__descriptor) \
+    , NULL, 0,NULL }
+
+
+/*
+ * {{.Name}}
+ */
 struct  Kentik__Synthetics__V202309__AlertingSettings
 {
   ProtobufCMessage base;
   protobuf_c_boolean disable_warning_notifications;
+  Kentik__Synthetics__V202309__AlertingType alerting_type;
+  Kentik__Synthetics__V202309__GroupedAlertSettings *grouped_alert_settings;
 };
 #define KENTIK__SYNTHETICS__V202309__ALERTING_SETTINGS__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__synthetics__v202309__alerting_settings__descriptor) \
-    , 0 }
+    , 0, KENTIK__SYNTHETICS__V202309__ALERTING_TYPE__ALERTING_TYPE_UNSPECIFIED, NULL }
 
 
 /*
@@ -1620,6 +1698,44 @@ Kentik__Synthetics__V202309__ScheduleSettings *
                       const uint8_t       *data);
 void   kentik__synthetics__v202309__schedule_settings__free_unpacked
                      (Kentik__Synthetics__V202309__ScheduleSettings *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Synthetics__V202309__GroupedAlertSetting methods */
+void   kentik__synthetics__v202309__grouped_alert_setting__init
+                     (Kentik__Synthetics__V202309__GroupedAlertSetting         *message);
+size_t kentik__synthetics__v202309__grouped_alert_setting__get_packed_size
+                     (const Kentik__Synthetics__V202309__GroupedAlertSetting   *message);
+size_t kentik__synthetics__v202309__grouped_alert_setting__pack
+                     (const Kentik__Synthetics__V202309__GroupedAlertSetting   *message,
+                      uint8_t             *out);
+size_t kentik__synthetics__v202309__grouped_alert_setting__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__GroupedAlertSetting   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Synthetics__V202309__GroupedAlertSetting *
+       kentik__synthetics__v202309__grouped_alert_setting__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__synthetics__v202309__grouped_alert_setting__free_unpacked
+                     (Kentik__Synthetics__V202309__GroupedAlertSetting *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Synthetics__V202309__GroupedAlertSettings methods */
+void   kentik__synthetics__v202309__grouped_alert_settings__init
+                     (Kentik__Synthetics__V202309__GroupedAlertSettings         *message);
+size_t kentik__synthetics__v202309__grouped_alert_settings__get_packed_size
+                     (const Kentik__Synthetics__V202309__GroupedAlertSettings   *message);
+size_t kentik__synthetics__v202309__grouped_alert_settings__pack
+                     (const Kentik__Synthetics__V202309__GroupedAlertSettings   *message,
+                      uint8_t             *out);
+size_t kentik__synthetics__v202309__grouped_alert_settings__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__GroupedAlertSettings   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Synthetics__V202309__GroupedAlertSettings *
+       kentik__synthetics__v202309__grouped_alert_settings__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__synthetics__v202309__grouped_alert_settings__free_unpacked
+                     (Kentik__Synthetics__V202309__GroupedAlertSettings *message,
                       ProtobufCAllocator *allocator);
 /* Kentik__Synthetics__V202309__AlertingSettings methods */
 void   kentik__synthetics__v202309__alerting_settings__init
@@ -2843,6 +2959,12 @@ typedef void (*Kentik__Synthetics__V202309__TestThroughputSettings_Closure)
 typedef void (*Kentik__Synthetics__V202309__ScheduleSettings_Closure)
                  (const Kentik__Synthetics__V202309__ScheduleSettings *message,
                   void *closure_data);
+typedef void (*Kentik__Synthetics__V202309__GroupedAlertSetting_Closure)
+                 (const Kentik__Synthetics__V202309__GroupedAlertSetting *message,
+                  void *closure_data);
+typedef void (*Kentik__Synthetics__V202309__GroupedAlertSettings_Closure)
+                 (const Kentik__Synthetics__V202309__GroupedAlertSettings *message,
+                  void *closure_data);
 typedef void (*Kentik__Synthetics__V202309__AlertingSettings_Closure)
                  (const Kentik__Synthetics__V202309__AlertingSettings *message,
                   void *closure_data);
@@ -3229,6 +3351,8 @@ extern const ProtobufCEnumDescriptor    kentik__synthetics__v202309__ipfamily__d
 extern const ProtobufCEnumDescriptor    kentik__synthetics__v202309__test_status__descriptor;
 extern const ProtobufCEnumDescriptor    kentik__synthetics__v202309__agent_status__descriptor;
 extern const ProtobufCEnumDescriptor    kentik__synthetics__v202309__dnsrecord__descriptor;
+extern const ProtobufCEnumDescriptor    kentik__synthetics__v202309__alerting_type__descriptor;
+extern const ProtobufCEnumDescriptor    kentik__synthetics__v202309__src_group_by__descriptor;
 extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__disabled_metrics__descriptor;
 extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__agent__descriptor;
 extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__agent_metadata__descriptor;
@@ -3239,6 +3363,8 @@ extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__test_ping_s
 extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__test_trace_settings__descriptor;
 extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__test_throughput_settings__descriptor;
 extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__schedule_settings__descriptor;
+extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__grouped_alert_setting__descriptor;
+extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__grouped_alert_settings__descriptor;
 extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__alerting_settings__descriptor;
 extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__activation_settings__descriptor;
 extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__health_settings__descriptor;

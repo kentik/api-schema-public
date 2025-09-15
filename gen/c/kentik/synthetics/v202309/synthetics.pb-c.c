@@ -418,6 +418,96 @@ void   kentik__synthetics__v202309__schedule_settings__free_unpacked
   assert(message->base.descriptor == &kentik__synthetics__v202309__schedule_settings__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   kentik__synthetics__v202309__grouped_alert_setting__init
+                     (Kentik__Synthetics__V202309__GroupedAlertSetting         *message)
+{
+  static const Kentik__Synthetics__V202309__GroupedAlertSetting init_value = KENTIK__SYNTHETICS__V202309__GROUPED_ALERT_SETTING__INIT;
+  *message = init_value;
+}
+size_t kentik__synthetics__v202309__grouped_alert_setting__get_packed_size
+                     (const Kentik__Synthetics__V202309__GroupedAlertSetting *message)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__grouped_alert_setting__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__synthetics__v202309__grouped_alert_setting__pack
+                     (const Kentik__Synthetics__V202309__GroupedAlertSetting *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__grouped_alert_setting__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__synthetics__v202309__grouped_alert_setting__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__GroupedAlertSetting *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__grouped_alert_setting__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Synthetics__V202309__GroupedAlertSetting *
+       kentik__synthetics__v202309__grouped_alert_setting__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Synthetics__V202309__GroupedAlertSetting *)
+     protobuf_c_message_unpack (&kentik__synthetics__v202309__grouped_alert_setting__descriptor,
+                                allocator, len, data);
+}
+void   kentik__synthetics__v202309__grouped_alert_setting__free_unpacked
+                     (Kentik__Synthetics__V202309__GroupedAlertSetting *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__synthetics__v202309__grouped_alert_setting__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__synthetics__v202309__grouped_alert_settings__init
+                     (Kentik__Synthetics__V202309__GroupedAlertSettings         *message)
+{
+  static const Kentik__Synthetics__V202309__GroupedAlertSettings init_value = KENTIK__SYNTHETICS__V202309__GROUPED_ALERT_SETTINGS__INIT;
+  *message = init_value;
+}
+size_t kentik__synthetics__v202309__grouped_alert_settings__get_packed_size
+                     (const Kentik__Synthetics__V202309__GroupedAlertSettings *message)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__grouped_alert_settings__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__synthetics__v202309__grouped_alert_settings__pack
+                     (const Kentik__Synthetics__V202309__GroupedAlertSettings *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__grouped_alert_settings__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__synthetics__v202309__grouped_alert_settings__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__GroupedAlertSettings *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__grouped_alert_settings__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Synthetics__V202309__GroupedAlertSettings *
+       kentik__synthetics__v202309__grouped_alert_settings__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Synthetics__V202309__GroupedAlertSettings *)
+     protobuf_c_message_unpack (&kentik__synthetics__v202309__grouped_alert_settings__descriptor,
+                                allocator, len, data);
+}
+void   kentik__synthetics__v202309__grouped_alert_settings__free_unpacked
+                     (Kentik__Synthetics__V202309__GroupedAlertSettings *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__synthetics__v202309__grouped_alert_settings__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 void   kentik__synthetics__v202309__alerting_settings__init
                      (Kentik__Synthetics__V202309__AlertingSettings         *message)
 {
@@ -4720,7 +4810,122 @@ const ProtobufCMessageDescriptor kentik__synthetics__v202309__schedule_settings_
   (ProtobufCMessageInit) kentik__synthetics__v202309__schedule_settings__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__synthetics__v202309__alerting_settings__field_descriptors[1] =
+static const ProtobufCFieldDescriptor kentik__synthetics__v202309__grouped_alert_setting__field_descriptors[3] =
+{
+  {
+    "metric",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__GroupedAlertSetting, metric),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "src_group_by",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_ENUM,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__GroupedAlertSetting, src_group_by),
+    &kentik__synthetics__v202309__src_group_by__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "percent_of_src_group",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT32,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__GroupedAlertSetting, percent_of_src_group),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__synthetics__v202309__grouped_alert_setting__field_indices_by_name[] = {
+  0,   /* field[0] = metric */
+  2,   /* field[2] = percent_of_src_group */
+  1,   /* field[1] = src_group_by */
+};
+static const ProtobufCIntRange kentik__synthetics__v202309__grouped_alert_setting__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 3 }
+};
+const ProtobufCMessageDescriptor kentik__synthetics__v202309__grouped_alert_setting__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.synthetics.v202309.GroupedAlertSetting",
+  "GroupedAlertSetting",
+  "Kentik__Synthetics__V202309__GroupedAlertSetting",
+  "kentik.synthetics.v202309",
+  sizeof(Kentik__Synthetics__V202309__GroupedAlertSetting),
+  3,
+  kentik__synthetics__v202309__grouped_alert_setting__field_descriptors,
+  kentik__synthetics__v202309__grouped_alert_setting__field_indices_by_name,
+  1,  kentik__synthetics__v202309__grouped_alert_setting__number_ranges,
+  (ProtobufCMessageInit) kentik__synthetics__v202309__grouped_alert_setting__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__synthetics__v202309__grouped_alert_settings__field_descriptors[2] =
+{
+  {
+    "default",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__GroupedAlertSettings, default_),
+    &kentik__synthetics__v202309__grouped_alert_setting__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "overrides",
+    2,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Kentik__Synthetics__V202309__GroupedAlertSettings, n_overrides),
+    offsetof(Kentik__Synthetics__V202309__GroupedAlertSettings, overrides),
+    &kentik__synthetics__v202309__grouped_alert_setting__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__synthetics__v202309__grouped_alert_settings__field_indices_by_name[] = {
+  0,   /* field[0] = default */
+  1,   /* field[1] = overrides */
+};
+static const ProtobufCIntRange kentik__synthetics__v202309__grouped_alert_settings__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor kentik__synthetics__v202309__grouped_alert_settings__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.synthetics.v202309.GroupedAlertSettings",
+  "GroupedAlertSettings",
+  "Kentik__Synthetics__V202309__GroupedAlertSettings",
+  "kentik.synthetics.v202309",
+  sizeof(Kentik__Synthetics__V202309__GroupedAlertSettings),
+  2,
+  kentik__synthetics__v202309__grouped_alert_settings__field_descriptors,
+  kentik__synthetics__v202309__grouped_alert_settings__field_indices_by_name,
+  1,  kentik__synthetics__v202309__grouped_alert_settings__number_ranges,
+  (ProtobufCMessageInit) kentik__synthetics__v202309__grouped_alert_settings__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__synthetics__v202309__alerting_settings__field_descriptors[3] =
 {
   {
     "disable_warning_notifications",
@@ -4734,14 +4939,40 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202309__alerting_sett
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "alerting_type",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_ENUM,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__AlertingSettings, alerting_type),
+    &kentik__synthetics__v202309__alerting_type__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "grouped_alert_settings",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__AlertingSettings, grouped_alert_settings),
+    &kentik__synthetics__v202309__grouped_alert_settings__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__synthetics__v202309__alerting_settings__field_indices_by_name[] = {
+  1,   /* field[1] = alerting_type */
   0,   /* field[0] = disable_warning_notifications */
+  2,   /* field[2] = grouped_alert_settings */
 };
 static const ProtobufCIntRange kentik__synthetics__v202309__alerting_settings__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 1 }
+  { 0, 3 }
 };
 const ProtobufCMessageDescriptor kentik__synthetics__v202309__alerting_settings__descriptor =
 {
@@ -4751,7 +4982,7 @@ const ProtobufCMessageDescriptor kentik__synthetics__v202309__alerting_settings_
   "Kentik__Synthetics__V202309__AlertingSettings",
   "kentik.synthetics.v202309",
   sizeof(Kentik__Synthetics__V202309__AlertingSettings),
-  1,
+  3,
   kentik__synthetics__v202309__alerting_settings__field_descriptors,
   kentik__synthetics__v202309__alerting_settings__field_indices_by_name,
   1,  kentik__synthetics__v202309__alerting_settings__number_ranges,
@@ -8923,6 +9154,70 @@ const ProtobufCEnumDescriptor kentik__synthetics__v202309__dnsrecord__descriptor
   kentik__synthetics__v202309__dnsrecord__enum_values_by_name,
   1,
   kentik__synthetics__v202309__dnsrecord__value_ranges,
+  NULL,NULL,NULL,NULL   /* reserved[1234] */
+};
+static const ProtobufCEnumValue kentik__synthetics__v202309__alerting_type__enum_values_by_number[4] =
+{
+  { "ALERTING_TYPE_UNSPECIFIED", "KENTIK__SYNTHETICS__V202309__ALERTING_TYPE__ALERTING_TYPE_UNSPECIFIED", 0 },
+  { "ALERTING_TYPE_AGENT", "KENTIK__SYNTHETICS__V202309__ALERTING_TYPE__ALERTING_TYPE_AGENT", 1 },
+  { "ALERTING_TYPE_GROUPED", "KENTIK__SYNTHETICS__V202309__ALERTING_TYPE__ALERTING_TYPE_GROUPED", 2 },
+  { "ALERTING_TYPE_SUBTEST", "KENTIK__SYNTHETICS__V202309__ALERTING_TYPE__ALERTING_TYPE_SUBTEST", 3 },
+};
+static const ProtobufCIntRange kentik__synthetics__v202309__alerting_type__value_ranges[] = {
+{0, 0},{0, 4}
+};
+static const ProtobufCEnumValueIndex kentik__synthetics__v202309__alerting_type__enum_values_by_name[4] =
+{
+  { "ALERTING_TYPE_AGENT", 1 },
+  { "ALERTING_TYPE_GROUPED", 2 },
+  { "ALERTING_TYPE_SUBTEST", 3 },
+  { "ALERTING_TYPE_UNSPECIFIED", 0 },
+};
+const ProtobufCEnumDescriptor kentik__synthetics__v202309__alerting_type__descriptor =
+{
+  PROTOBUF_C__ENUM_DESCRIPTOR_MAGIC,
+  "kentik.synthetics.v202309.AlertingType",
+  "AlertingType",
+  "Kentik__Synthetics__V202309__AlertingType",
+  "kentik.synthetics.v202309",
+  4,
+  kentik__synthetics__v202309__alerting_type__enum_values_by_number,
+  4,
+  kentik__synthetics__v202309__alerting_type__enum_values_by_name,
+  1,
+  kentik__synthetics__v202309__alerting_type__value_ranges,
+  NULL,NULL,NULL,NULL   /* reserved[1234] */
+};
+static const ProtobufCEnumValue kentik__synthetics__v202309__src_group_by__enum_values_by_number[4] =
+{
+  { "SRC_GROUP_BY_UNSPECIFIED", "KENTIK__SYNTHETICS__V202309__SRC_GROUP_BY__SRC_GROUP_BY_UNSPECIFIED", 0 },
+  { "SRC_GROUP_BY_ALL_AGENTS", "KENTIK__SYNTHETICS__V202309__SRC_GROUP_BY__SRC_GROUP_BY_ALL_AGENTS", 1 },
+  { "SRC_GROUP_BY_LABEL", "KENTIK__SYNTHETICS__V202309__SRC_GROUP_BY__SRC_GROUP_BY_LABEL", 2 },
+  { "SRC_GROUP_BY_SITE", "KENTIK__SYNTHETICS__V202309__SRC_GROUP_BY__SRC_GROUP_BY_SITE", 3 },
+};
+static const ProtobufCIntRange kentik__synthetics__v202309__src_group_by__value_ranges[] = {
+{0, 0},{0, 4}
+};
+static const ProtobufCEnumValueIndex kentik__synthetics__v202309__src_group_by__enum_values_by_name[4] =
+{
+  { "SRC_GROUP_BY_ALL_AGENTS", 1 },
+  { "SRC_GROUP_BY_LABEL", 2 },
+  { "SRC_GROUP_BY_SITE", 3 },
+  { "SRC_GROUP_BY_UNSPECIFIED", 0 },
+};
+const ProtobufCEnumDescriptor kentik__synthetics__v202309__src_group_by__descriptor =
+{
+  PROTOBUF_C__ENUM_DESCRIPTOR_MAGIC,
+  "kentik.synthetics.v202309.SrcGroupBy",
+  "SrcGroupBy",
+  "Kentik__Synthetics__V202309__SrcGroupBy",
+  "kentik.synthetics.v202309",
+  4,
+  kentik__synthetics__v202309__src_group_by__enum_values_by_number,
+  4,
+  kentik__synthetics__v202309__src_group_by__enum_values_by_name,
+  1,
+  kentik__synthetics__v202309__src_group_by__value_ranges,
   NULL,NULL,NULL,NULL   /* reserved[1234] */
 };
 static const ProtobufCMethodDescriptor kentik__synthetics__v202309__synthetics_data_service__method_descriptors[2] =
