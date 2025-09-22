@@ -528,10 +528,12 @@ struct  Kentik__Synthetics__V202309__GroupedAlertSetting
   char *metric;
   Kentik__Synthetics__V202309__SrcGroupBy src_group_by;
   uint32_t percent_of_src_group;
+  size_t n_filter_ids;
+  uint32_t *filter_ids;
 };
 #define KENTIK__SYNTHETICS__V202309__GROUPED_ALERT_SETTING__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__synthetics__v202309__grouped_alert_setting__descriptor) \
-    , (char *)protobuf_c_empty_string, KENTIK__SYNTHETICS__V202309__SRC_GROUP_BY__SRC_GROUP_BY_UNSPECIFIED, 0 }
+    , (char *)protobuf_c_empty_string, KENTIK__SYNTHETICS__V202309__SRC_GROUP_BY__SRC_GROUP_BY_UNSPECIFIED, 0, 0,NULL }
 
 
 /*

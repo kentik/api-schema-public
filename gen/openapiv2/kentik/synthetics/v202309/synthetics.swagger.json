@@ -1361,6 +1361,14 @@
           "type": "integer",
           "format": "int64",
           "description": "Grouping percentage"
+        },
+        "filterIds": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "description": "List of IDs to include in the group"
         }
       },
       "title": "GroupedAlertSetting"

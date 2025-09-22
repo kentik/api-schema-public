@@ -4840,10 +4840,29 @@ class GroupedAlertSetting final : public ::google::protobuf::Message
 
   // accessors -------------------------------------------------------
   enum : int {
+    kFilterIdsFieldNumber = 4,
     kMetricFieldNumber = 1,
     kSrcGroupByFieldNumber = 2,
     kPercentOfSrcGroupFieldNumber = 3,
   };
+  // repeated uint32 filter_ids = 4 [json_name = "filterIds", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  int filter_ids_size() const;
+  private:
+  int _internal_filter_ids_size() const;
+
+  public:
+  void clear_filter_ids() ;
+  ::uint32_t filter_ids(int index) const;
+  void set_filter_ids(int index, ::uint32_t value);
+  void add_filter_ids(::uint32_t value);
+  const ::google::protobuf::RepeatedField<::uint32_t>& filter_ids() const;
+  ::google::protobuf::RepeatedField<::uint32_t>* mutable_filter_ids();
+
+  private:
+  const ::google::protobuf::RepeatedField<::uint32_t>& _internal_filter_ids() const;
+  ::google::protobuf::RepeatedField<::uint32_t>* _internal_mutable_filter_ids();
+
+  public:
   // string metric = 1 [json_name = "metric", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   void clear_metric() ;
   const std::string& metric() const;
@@ -4885,7 +4904,7 @@ class GroupedAlertSetting final : public ::google::protobuf::Message
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      2, 3, 0,
+      2, 4, 0,
       60, 2>
       _table_;
 
@@ -4903,6 +4922,8 @@ class GroupedAlertSetting final : public ::google::protobuf::Message
     inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
                           ::google::protobuf::Arena* arena, const Impl_& from,
                           const GroupedAlertSetting& from_msg);
+    ::google::protobuf::RepeatedField<::uint32_t> filter_ids_;
+    ::google::protobuf::internal::CachedSize _filter_ids_cached_byte_size_;
     ::google::protobuf::internal::ArenaStringPtr metric_;
     int src_group_by_;
     ::uint32_t percent_of_src_group_;
@@ -22978,6 +22999,51 @@ inline ::uint32_t GroupedAlertSetting::_internal_percent_of_src_group() const {
 inline void GroupedAlertSetting::_internal_set_percent_of_src_group(::uint32_t value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.percent_of_src_group_ = value;
+}
+
+// repeated uint32 filter_ids = 4 [json_name = "filterIds", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline int GroupedAlertSetting::_internal_filter_ids_size() const {
+  return _internal_filter_ids().size();
+}
+inline int GroupedAlertSetting::filter_ids_size() const {
+  return _internal_filter_ids_size();
+}
+inline void GroupedAlertSetting::clear_filter_ids() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.filter_ids_.Clear();
+}
+inline ::uint32_t GroupedAlertSetting::filter_ids(int index) const {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202309.GroupedAlertSetting.filter_ids)
+  return _internal_filter_ids().Get(index);
+}
+inline void GroupedAlertSetting::set_filter_ids(int index, ::uint32_t value) {
+  _internal_mutable_filter_ids()->Set(index, value);
+  // @@protoc_insertion_point(field_set:kentik.synthetics.v202309.GroupedAlertSetting.filter_ids)
+}
+inline void GroupedAlertSetting::add_filter_ids(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _internal_mutable_filter_ids()->Add(value);
+  // @@protoc_insertion_point(field_add:kentik.synthetics.v202309.GroupedAlertSetting.filter_ids)
+}
+inline const ::google::protobuf::RepeatedField<::uint32_t>& GroupedAlertSetting::filter_ids() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:kentik.synthetics.v202309.GroupedAlertSetting.filter_ids)
+  return _internal_filter_ids();
+}
+inline ::google::protobuf::RepeatedField<::uint32_t>* GroupedAlertSetting::mutable_filter_ids()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:kentik.synthetics.v202309.GroupedAlertSetting.filter_ids)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_filter_ids();
+}
+inline const ::google::protobuf::RepeatedField<::uint32_t>&
+GroupedAlertSetting::_internal_filter_ids() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.filter_ids_;
+}
+inline ::google::protobuf::RepeatedField<::uint32_t>* GroupedAlertSetting::_internal_mutable_filter_ids() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.filter_ids_;
 }
 
 // -------------------------------------------------------------------

@@ -4810,7 +4810,7 @@ const ProtobufCMessageDescriptor kentik__synthetics__v202309__schedule_settings_
   (ProtobufCMessageInit) kentik__synthetics__v202309__schedule_settings__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__synthetics__v202309__grouped_alert_setting__field_descriptors[3] =
+static const ProtobufCFieldDescriptor kentik__synthetics__v202309__grouped_alert_setting__field_descriptors[4] =
 {
   {
     "metric",
@@ -4848,8 +4848,21 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202309__grouped_alert
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "filter_ids",
+    4,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_UINT32,
+    offsetof(Kentik__Synthetics__V202309__GroupedAlertSetting, n_filter_ids),
+    offsetof(Kentik__Synthetics__V202309__GroupedAlertSetting, filter_ids),
+    NULL,
+    NULL,
+    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__synthetics__v202309__grouped_alert_setting__field_indices_by_name[] = {
+  3,   /* field[3] = filter_ids */
   0,   /* field[0] = metric */
   2,   /* field[2] = percent_of_src_group */
   1,   /* field[1] = src_group_by */
@@ -4857,7 +4870,7 @@ static const unsigned kentik__synthetics__v202309__grouped_alert_setting__field_
 static const ProtobufCIntRange kentik__synthetics__v202309__grouped_alert_setting__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 3 }
+  { 0, 4 }
 };
 const ProtobufCMessageDescriptor kentik__synthetics__v202309__grouped_alert_setting__descriptor =
 {
@@ -4867,7 +4880,7 @@ const ProtobufCMessageDescriptor kentik__synthetics__v202309__grouped_alert_sett
   "Kentik__Synthetics__V202309__GroupedAlertSetting",
   "kentik.synthetics.v202309",
   sizeof(Kentik__Synthetics__V202309__GroupedAlertSetting),
-  3,
+  4,
   kentik__synthetics__v202309__grouped_alert_setting__field_descriptors,
   kentik__synthetics__v202309__grouped_alert_setting__field_indices_by_name,
   1,  kentik__synthetics__v202309__grouped_alert_setting__number_ranges,

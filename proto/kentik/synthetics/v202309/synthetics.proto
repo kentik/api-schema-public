@@ -723,6 +723,12 @@ message GroupedAlertSetting {
       description: "Grouping percentage"
     }
   ];
+
+  repeated uint32 filter_ids = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of IDs to include in the group"
+    }
+  ];
 }
 
 // {{.Name}}
