@@ -175,7 +175,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202407UpdatePackageRequest"
+              "$ref": "#/definitions/PackageServiceUpdatePackageBody"
             }
           }
         ],
@@ -332,7 +332,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202407UpdateTenantRequest"
+              "$ref": "#/definitions/TenantServiceUpdateTenantBody"
             }
           }
         ],
@@ -354,17 +354,193 @@
         }
       }
     },
+    "PackageServiceUpdatePackageBody": {
+      "type": "object",
+      "properties": {
+        "package": {
+          "type": "object",
+          "properties": {
+            "companyId": {
+              "type": "string",
+              "description": "Company id of the associated package",
+              "readOnly": true
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of package template",
+              "readOnly": true
+            },
+            "description": {
+              "type": "string",
+              "description": "Description of package template",
+              "readOnly": true
+            },
+            "icon": {
+              "type": "string",
+              "description": "Icon to display",
+              "readOnly": true
+            },
+            "color": {
+              "type": "string",
+              "description": "Color of Icon",
+              "readOnly": true
+            },
+            "alerts": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "$ref": "#/definitions/v202407Alert"
+              },
+              "description": "Alert thresholds and policies",
+              "readOnly": true
+            },
+            "assets": {
+              "$ref": "#/definitions/v202407Asset",
+              "description": "Views and Dashboards associated with the package.",
+              "readOnly": true
+            },
+            "isDefault": {
+              "type": "boolean",
+              "description": "Is default template",
+              "readOnly": true
+            },
+            "tenants": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "$ref": "#/definitions/v202407TenantLink"
+              },
+              "description": "Tenant link information",
+              "readOnly": true
+            }
+          },
+          "title": "Package"
+        }
+      },
+      "title": "UpdatePackageRequest"
+    },
+    "TenantServiceUpdateTenantBody": {
+      "type": "object",
+      "properties": {
+        "tenant": {
+          "type": "object",
+          "properties": {
+            "companyId": {
+              "type": "string",
+              "description": "Company id of the associated package",
+              "readOnly": true
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of tenant",
+              "readOnly": true
+            },
+            "description": {
+              "type": "string",
+              "description": "Description of tenant",
+              "readOnly": true
+            },
+            "type": {
+              "type": "string",
+              "description": "Subtenant",
+              "readOnly": true
+            },
+            "enabled": {
+              "type": "boolean",
+              "description": "Is tenant actively enable",
+              "readOnly": true
+            },
+            "alerts": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "$ref": "#/definitions/v202407Alert"
+              },
+              "description": "Alert thresholds and policies",
+              "title": "config object",
+              "readOnly": true
+            },
+            "assets": {
+              "$ref": "#/definitions/v202407Asset",
+              "description": "Views and Dashboards associated with the tenant",
+              "readOnly": true
+            },
+            "asn": {
+              "type": "string",
+              "description": "ASN data source.",
+              "readOnly": true
+            },
+            "cidr": {
+              "type": "string",
+              "description": "CIDR data source.",
+              "readOnly": true
+            },
+            "customDimensions": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "$ref": "#/definitions/v202407CustomDimension"
+              },
+              "description": "Custom dimension data source",
+              "readOnly": true
+            },
+            "devices": {
+              "$ref": "#/definitions/v202407Devices",
+              "description": "Device data source.",
+              "readOnly": true
+            },
+            "filters": {
+              "$ref": "#/definitions/v202407Filter",
+              "description": "Data source filters.",
+              "readOnly": true
+            },
+            "interfaceName": {
+              "type": "string",
+              "description": "Interface data source.",
+              "readOnly": true
+            },
+            "snmpAlias": {
+              "type": "string",
+              "description": "SNMP data source.",
+              "readOnly": true
+            },
+            "packages": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "$ref": "#/definitions/v202407Package"
+              },
+              "description": "Packages associated with the tenant.",
+              "readOnly": true
+            },
+            "users": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "$ref": "#/definitions/v202211User"
+              },
+              "description": "Users associated with the tenant.",
+              "readOnly": true
+            },
+            "templateId": {
+              "type": "string",
+              "description": "Package template ID to assign with tenant.",
+              "readOnly": true
+            }
+          },
+          "title": "Tenant"
+        }
+      },
+      "title": "UpdateTenantRequest"
+    },
     "protobufAny": {
       "type": "object",
       "properties": {
-        "typeUrl": {
+        "@type": {
           "type": "string"
-        },
-        "value": {
-          "type": "string",
-          "format": "byte"
         }
-      }
+      },
+      "additionalProperties": {}
     },
     "rpcStatus": {
       "type": "object",
@@ -379,6 +555,7 @@
         "details": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
         }
@@ -389,17 +566,11 @@
       "properties": {
         "capability": {
           "type": "string",
-          "description": "String identifying capability that is granted of denied",
-          "required": [
-            "capability"
-          ]
+          "description": "String identifying capability that is granted of denied"
         },
         "allowed": {
           "type": "boolean",
-          "description": "Flag indicating whether operation is allowed",
-          "required": [
-            "allowed"
-          ]
+          "description": "Flag indicating whether operation is allowed"
         }
       },
       "title": "PermissionEntry",
@@ -430,28 +601,20 @@
         },
         "userEmail": {
           "type": "string",
-          "description": "User e-mail address (serves also as username)",
-          "required": [
-            "user_email"
-          ]
+          "description": "User e-mail address (serves also as username)"
         },
         "userFullName": {
           "type": "string",
-          "description": "Full name",
-          "required": [
-            "user_full_name"
-          ]
+          "description": "Full name"
         },
         "role": {
           "$ref": "#/definitions/v202211Role",
-          "description": "User role (in Kentik application)",
-          "required": [
-            "role"
-          ]
+          "description": "User role (in Kentik application)"
         },
         "permissions": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202211PermissionEntry"
           },
           "description": "Optional list of permissions granted to the user"
@@ -519,6 +682,7 @@
         "thresholds": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202407Threshold"
           }
         },
@@ -546,6 +710,7 @@
         "reports": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/AssetReport"
           }
         },
@@ -697,12 +862,14 @@
         "filters": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202407FilterField"
           }
         },
         "filterGroups": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202407Filter"
           }
         },
@@ -754,6 +921,7 @@
         "packages": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202407Package"
           }
         },
@@ -771,6 +939,7 @@
         "tenants": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202407Tenant"
           }
         },
@@ -867,6 +1036,7 @@
         "alerts": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202407Alert"
           },
           "description": "Alert thresholds and policies",
@@ -885,6 +1055,7 @@
         "tenants": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202407TenantLink"
           },
           "description": "Tenant link information",
@@ -929,6 +1100,7 @@
         "alerts": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202407Alert"
           },
           "description": "Alert thresholds and policies",
@@ -953,6 +1125,7 @@
         "customDimensions": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202407CustomDimension"
           },
           "description": "Custom dimension data source",
@@ -981,6 +1154,7 @@
         "packages": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202407Package"
           },
           "description": "Packages associated with the tenant.",
@@ -989,6 +1163,7 @@
         "users": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202211User"
           },
           "description": "Users associated with the tenant.",
@@ -1032,18 +1207,21 @@
         "conditions": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202407Condition"
           }
         },
         "mitigations": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202407Mitigation"
           }
         },
         "notificationChannels": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202407NotificationChannel"
           }
         },
@@ -1059,15 +1237,6 @@
       },
       "title": "Threshold"
     },
-    "v202407UpdatePackageRequest": {
-      "type": "object",
-      "properties": {
-        "package": {
-          "$ref": "#/definitions/v202407Package"
-        }
-      },
-      "title": "UpdatePackageRequest"
-    },
     "v202407UpdatePackageResponse": {
       "type": "object",
       "properties": {
@@ -1076,15 +1245,6 @@
         }
       },
       "title": "UpdatePackageResponse"
-    },
-    "v202407UpdateTenantRequest": {
-      "type": "object",
-      "properties": {
-        "tenant": {
-          "$ref": "#/definitions/v202407Tenant"
-        }
-      },
-      "title": "UpdateTenantRequest"
     },
     "v202407UpdateTenantResponse": {
       "type": "object",

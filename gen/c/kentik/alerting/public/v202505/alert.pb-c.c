@@ -932,7 +932,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert_p
     offsetof(Kentik__Alerting__Public__V202505__AlertPhase, flow),
     &kentik__alerting__public__v202505__flow_context__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -944,7 +944,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert_p
     offsetof(Kentik__Alerting__Public__V202505__AlertPhase, nms),
     &kentik__alerting__public__v202505__nms_context__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
@@ -1050,7 +1050,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert_f
     offsetof(Kentik__Alerting__Public__V202505__AlertFilters, severities),
     &kentik__alerting__types__v202303__severity__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -1098,7 +1098,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert_f
     offsetof(Kentik__Alerting__Public__V202505__AlertFilters, states),
     &kentik__alerting__public__v202505__alert_state__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -1134,7 +1134,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert_f
     offsetof(Kentik__Alerting__Public__V202505__AlertFilters, highest_severities),
     &kentik__alerting__types__v202303__severity__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -1146,7 +1146,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert_f
     offsetof(Kentik__Alerting__Public__V202505__AlertFilters, recent_severities),
     &kentik__alerting__types__v202303__severity__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -1158,7 +1158,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert_f
     offsetof(Kentik__Alerting__Public__V202505__AlertFilters, ack_states),
     &kentik__alerting__public__v202505__alert_acknowledgement__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -1735,7 +1735,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert__
     offsetof(Kentik__Alerting__Public__V202505__Alert, flow),
     &kentik__alerting__public__v202505__flow_context__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -1747,7 +1747,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert__
     offsetof(Kentik__Alerting__Public__V202505__Alert, nms),
     &kentik__alerting__public__v202505__nms_context__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
@@ -2652,7 +2652,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__nms_con
     offsetof(Kentik__Alerting__Public__V202505__NmsContext__ActivationInfo, clear_manual),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -2664,7 +2664,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__nms_con
     offsetof(Kentik__Alerting__Public__V202505__NmsContext__ActivationInfo, clear_unless_activated),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };

@@ -67,7 +67,7 @@
         },
         "parameters": [
           {
-            "name": "body",
+            "name": "application",
             "in": "body",
             "required": true,
             "schema": {
@@ -167,7 +167,7 @@
             "type": "string"
           },
           {
-            "name": "body",
+            "name": "application",
             "in": "body",
             "required": true,
             "schema": {
@@ -185,14 +185,11 @@
     "protobufAny": {
       "type": "object",
       "properties": {
-        "typeUrl": {
+        "@type": {
           "type": "string"
-        },
-        "value": {
-          "type": "string",
-          "format": "byte"
         }
-      }
+      },
+      "additionalProperties": {}
     },
     "rpcStatus": {
       "type": "object",
@@ -207,6 +204,7 @@
         "details": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
         }
@@ -230,10 +228,7 @@
         },
         "name": {
           "type": "string",
-          "description": "A unique name for the custom application.",
-          "required": [
-            "name"
-          ]
+          "description": "A unique name for the custom application."
         },
         "description": {
           "type": "string",
@@ -309,6 +304,7 @@
         "applications": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202501alpha1CustomApplication"
           }
         }

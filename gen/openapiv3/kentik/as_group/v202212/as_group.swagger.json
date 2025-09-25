@@ -129,7 +129,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202212UpdateASGroupRequest"
+                                "$ref": "#/components/schemas/ASGroupServiceUpdateASGroupBody"
                             }
                         }
                     },
@@ -247,17 +247,53 @@
             }
         },
         "schemas": {
+            "ASGroupServiceUpdateASGroupBody": {
+                "type": "object",
+                "properties": {
+                    "asGroup": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "User selected unique name"
+                            },
+                            "asn": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "List of ASNs"
+                            },
+                            "createdDate": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Creation timestamp (UTC)",
+                                "readOnly": true
+                            },
+                            "updatedDate": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Last modification timestamp (UTC)",
+                                "readOnly": true
+                            }
+                        },
+                        "title": "ASGroupConcise"
+                    }
+                },
+                "title": "UpdateASGroupRequest",
+                "required": [
+                    "name",
+                    "asGroup"
+                ]
+            },
             "protobufAny": {
                 "type": "object",
                 "properties": {
-                    "typeUrl": {
+                    "@type": {
                         "type": "string"
-                    },
-                    "value": {
-                        "type": "string",
-                        "format": "byte"
                     }
-                }
+                },
+                "additionalProperties": {}
             },
             "rpcStatus": {
                 "type": "object",
@@ -287,10 +323,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "User selected unique name",
-                        "required": [
-                            "name"
-                        ]
+                        "description": "User selected unique name"
                     },
                     "asn": {
                         "type": "array",
@@ -327,10 +360,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "User selected unique name",
-                        "required": [
-                            "name"
-                        ]
+                        "description": "User selected unique name"
                     },
                     "asn": {
                         "type": "array",
@@ -421,18 +451,6 @@
                     }
                 },
                 "title": "ListASGroupsResponse"
-            },
-            "v202212UpdateASGroupRequest": {
-                "type": "object",
-                "properties": {
-                    "asGroup": {
-                        "$ref": "#/components/schemas/v202212ASGroupConcise"
-                    }
-                },
-                "title": "UpdateASGroupRequest",
-                "required": [
-                    "asGroup"
-                ]
             },
             "v202212UpdateASGroupResponse": {
                 "type": "object",

@@ -363,7 +363,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__nms_con
     offsetof(Kentik__Alerting__Public__V202505__NmsCondition, threshold),
     &kentik__alerting__public__v202505__nms_threshold_condition__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -375,7 +375,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__nms_con
     offsetof(Kentik__Alerting__Public__V202505__NmsCondition, state_change),
     &kentik__alerting__public__v202505__nms_state_change_condition__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -387,7 +387,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__nms_con
     offsetof(Kentik__Alerting__Public__V202505__NmsCondition, state_in_condition),
     &kentik__alerting__public__v202505__nms_state_set__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };

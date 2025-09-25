@@ -593,7 +593,7 @@ static const ProtobufCFieldDescriptor kentik__notification_channel__v202210__sea
     offsetof(Kentik__NotificationChannel__V202210__SearchNotificationChannelsRequest, types),
     &kentik__notification_channel__v202210__channel_type__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {

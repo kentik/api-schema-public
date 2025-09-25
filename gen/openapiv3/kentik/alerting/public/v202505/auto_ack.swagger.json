@@ -141,7 +141,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202505AlertAutoAckServiceReplaceRequest"
+                                "$ref": "#/components/schemas/v202505AlertAutoAckServiceReplaceBody"
                             }
                         }
                     },
@@ -301,14 +301,11 @@
             "protobufAny": {
                 "type": "object",
                 "properties": {
-                    "typeUrl": {
+                    "@type": {
                         "type": "string"
-                    },
-                    "value": {
-                        "type": "string",
-                        "format": "byte"
                     }
-                }
+                },
+                "additionalProperties": {}
             },
             "rpcStatus": {
                 "type": "object",
@@ -418,10 +415,7 @@
                     "startTimeAt": {
                         "type": "string",
                         "format": "date-time",
-                        "description": "The start time when the auto-ack configuration is active. Has to be at least 5 minutes in the future.",
-                        "required": [
-                            "start_time_at"
-                        ]
+                        "description": "The start time when the auto-ack configuration is active. Has to be at least 5 minutes in the future."
                     },
                     "endTimeAt": {
                         "type": "string",
@@ -550,14 +544,50 @@
                     }
                 }
             },
-            "v202505AlertAutoAckServiceReplaceRequest": {
+            "v202505AlertAutoAckServiceReplaceBody": {
                 "type": "object",
                 "properties": {
                     "autoAck": {
-                        "$ref": "#/components/schemas/v202505AlertAutoAck"
+                        "type": "object",
+                        "properties": {
+                            "userId": {
+                                "type": "string",
+                                "description": "The ID of the user who most recently updated the auto-ack configuration.",
+                                "readOnly": true
+                            },
+                            "source": {
+                                "$ref": "#/components/schemas/v202505Source"
+                            },
+                            "key": {
+                                "$ref": "#/components/schemas/v202303KeyValue"
+                            },
+                            "startTimeAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The start time when the auto-ack configuration is active. Has to be at least 5 minutes in the future."
+                            },
+                            "endTimeAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The end time when the auto-ack configuration is no longer active."
+                            },
+                            "createdAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The time when the auto-ack configuration was created.",
+                                "readOnly": true
+                            },
+                            "modifiedAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The time when the auto-ack configuration was last modified.",
+                                "readOnly": true
+                            }
+                        }
                     }
                 },
                 "required": [
+                    "startTimeAt",
                     "autoAck"
                 ]
             },
@@ -595,10 +625,7 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The ID of the policy, can be integer ID, UUID or any other format.",
-                        "required": [
-                            "id"
-                        ]
+                        "description": "The ID of the policy, can be integer ID, UUID or any other format."
                     }
                 },
                 "required": [

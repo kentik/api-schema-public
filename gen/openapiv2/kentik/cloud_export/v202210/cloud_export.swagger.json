@@ -112,7 +112,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202210UpdateCloudExportRequest"
+              "$ref": "#/definitions/CloudExportAdminServiceUpdateCloudExportBody"
             }
           }
         ],
@@ -185,17 +185,88 @@
     }
   },
   "definitions": {
+    "CloudExportAdminServiceUpdateCloudExportBody": {
+      "type": "object",
+      "properties": {
+        "export": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "$ref": "#/definitions/v202210CloudExportType",
+              "description": "Ownership of the cloud export process/agent"
+            },
+            "enabled": {
+              "type": "boolean",
+              "description": "Attribute controlling whether the instance is active"
+            },
+            "name": {
+              "type": "string",
+              "description": "User selected name of the instance"
+            },
+            "description": {
+              "type": "string",
+              "description": "Description of the instance"
+            },
+            "planId": {
+              "type": "string",
+              "description": "Identifier of the billing plan for the instance"
+            },
+            "cloudProvider": {
+              "$ref": "#/definitions/v202210CloudProvider",
+              "description": "Cloud provider identification"
+            },
+            "aws": {
+              "$ref": "#/definitions/v202210AwsProperties"
+            },
+            "azure": {
+              "$ref": "#/definitions/v202210AzureProperties"
+            },
+            "gce": {
+              "$ref": "#/definitions/v202210GceProperties"
+            },
+            "ibm": {
+              "$ref": "#/definitions/v202210IbmProperties"
+            },
+            "oci": {
+              "$ref": "#/definitions/v202210OciProperties"
+            },
+            "currentStatus": {
+              "$ref": "#/definitions/v202210CloudExportStatus",
+              "description": "Runtime status of the export process",
+              "readOnly": true
+            },
+            "cdate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Creation timestamp (UTC)",
+              "readOnly": true
+            },
+            "edate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Last modification timestamp (UTC)",
+              "readOnly": true
+            }
+          },
+          "title": "CloudExport"
+        }
+      },
+      "title": "UpdateCloudExportRequest",
+      "required": [
+        "enabled",
+        "name",
+        "planId",
+        "cloudProvider"
+      ]
+    },
     "protobufAny": {
       "type": "object",
       "properties": {
-        "typeUrl": {
+        "@type": {
           "type": "string"
-        },
-        "value": {
-          "type": "string",
-          "format": "byte"
         }
-      }
+      },
+      "additionalProperties": {}
     },
     "rpcStatus": {
       "type": "object",
@@ -210,6 +281,7 @@
         "details": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
         }
@@ -224,17 +296,11 @@
         },
         "iamRoleArn": {
           "type": "string",
-          "description": "ARN of the IAM role granted access to the S3 bucket and describe API end-points.",
-          "required": [
-            "iam_role_arn"
-          ]
+          "description": "ARN of the IAM role granted access to the S3 bucket and describe API end-points."
         },
         "region": {
           "type": "string",
-          "description": "Name of AWS region from which to export flow logs.",
-          "required": [
-            "region"
-          ]
+          "description": "Name of AWS region from which to export flow logs."
         },
         "deleteAfterRead": {
           "type": "boolean",
@@ -285,31 +351,19 @@
       "properties": {
         "location": {
           "type": "string",
-          "description": "Azure region/location from which to export flow logs.",
-          "required": [
-            "location"
-          ]
+          "description": "Azure region/location from which to export flow logs."
         },
         "resourceGroup": {
           "type": "string",
-          "description": "Resource group containing the NSG generating flow logs.",
-          "required": [
-            "resource_group"
-          ]
+          "description": "Resource group containing the NSG generating flow logs."
         },
         "storageAccount": {
           "type": "string",
-          "description": "Storage account from which flow logs are to be extracted.",
-          "required": [
-            "storage_account"
-          ]
+          "description": "Storage account from which flow logs are to be extracted."
         },
         "subscriptionId": {
           "type": "string",
-          "description": "ID of Azure account from which flows logs are to be exported.",
-          "required": [
-            "subscription_id"
-          ]
+          "description": "ID of Azure account from which flows logs are to be exported."
         },
         "securityPrincipalEnabled": {
           "type": "boolean",
@@ -338,17 +392,11 @@
         },
         "enabled": {
           "type": "boolean",
-          "description": "Attribute controlling whether the instance is active",
-          "required": [
-            "enabled"
-          ]
+          "description": "Attribute controlling whether the instance is active"
         },
         "name": {
           "type": "string",
-          "description": "User selected name of the instance",
-          "required": [
-            "name"
-          ]
+          "description": "User selected name of the instance"
         },
         "description": {
           "type": "string",
@@ -356,17 +404,11 @@
         },
         "planId": {
           "type": "string",
-          "description": "Identifier of the billing plan for the instance",
-          "required": [
-            "plan_id"
-          ]
+          "description": "Identifier of the billing plan for the instance"
         },
         "cloudProvider": {
           "$ref": "#/definitions/v202210CloudProvider",
-          "description": "Cloud provider identification",
-          "required": [
-            "cloud_provider"
-          ]
+          "description": "Cloud provider identification"
         },
         "aws": {
           "$ref": "#/definitions/v202210AwsProperties"
@@ -494,17 +536,11 @@
       "properties": {
         "project": {
           "type": "string",
-          "description": "Name of the project from which to export flow logs.",
-          "required": [
-            "project"
-          ]
+          "description": "Name of the project from which to export flow logs."
         },
         "subscription": {
           "type": "string",
-          "description": "GCP Pub/Sub subscription providing flow logs.",
-          "required": [
-            "subscription"
-          ]
+          "description": "GCP Pub/Sub subscription providing flow logs."
         }
       },
       "title": "GceProperties",
@@ -539,6 +575,7 @@
         "exports": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202210CloudExport"
           },
           "description": "List of cloud export objects."
@@ -556,17 +593,11 @@
       "properties": {
         "ociUserId": {
           "type": "string",
-          "description": "ID of the user created to represent the Kentik cloud export tool.",
-          "required": [
-            "oci_user_id"
-          ]
+          "description": "ID of the user created to represent the Kentik cloud export tool."
         },
         "ociTenancyId": {
           "type": "string",
-          "description": "OCI Tenancy details.",
-          "required": [
-            "oci_tenancy_id"
-          ]
+          "description": "OCI Tenancy details."
         },
         "ociCompartmentId": {
           "type": "array",
@@ -577,10 +608,7 @@
         },
         "ociDefaultRegion": {
           "type": "string",
-          "description": "Default Enabled Region to scrape..",
-          "required": [
-            "oci_default_region"
-          ]
+          "description": "Default Enabled Region to scrape.."
         },
         "ociCollectFlowLogs": {
           "type": "boolean",
@@ -609,16 +637,6 @@
         "ociTenancyId",
         "ociDefaultRegion"
       ]
-    },
-    "v202210UpdateCloudExportRequest": {
-      "type": "object",
-      "properties": {
-        "export": {
-          "$ref": "#/definitions/v202210CloudExport",
-          "description": "Cloud export configuration."
-        }
-      },
-      "title": "UpdateCloudExportRequest"
     },
     "v202210UpdateCloudExportResponse": {
       "type": "object",

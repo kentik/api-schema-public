@@ -45,7 +45,7 @@
                 "parameters": [
                     {
                         "name": "pagination.limit",
-                        "description": "limit is how many items to return at most.",
+                        "description": "limit is how many items to return at most",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -55,7 +55,7 @@
                     },
                     {
                         "name": "pagination.offset",
-                        "description": "offset is the offset into the list of items.",
+                        "description": "offset is the offset into the list of items",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -65,7 +65,7 @@
                     },
                     {
                         "name": "pagination.includeTotalCount",
-                        "description": "include_total_count is a flag to enforce API service to include the total count of items in the response,\nwhich in some cases may be very expensive to fetch.",
+                        "description": "include_total_count is a flag to enforce API service to include the total count of items in the response,\nwhich in some cases may be very expensive to fetch",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -220,14 +220,11 @@
             "protobufAny": {
                 "type": "object",
                 "properties": {
-                    "typeUrl": {
+                    "@type": {
                         "type": "string"
-                    },
-                    "value": {
-                        "type": "string",
-                        "format": "byte"
                     }
-                }
+                },
+                "additionalProperties": {}
             },
             "rpcStatus": {
                 "type": "object",

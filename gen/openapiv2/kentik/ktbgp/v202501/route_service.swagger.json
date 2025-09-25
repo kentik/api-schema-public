@@ -117,17 +117,25 @@
     }
   },
   "definitions": {
+    "ktbgpv202501Withdraw": {
+      "type": "object",
+      "properties": {
+        "flowspec": {
+          "$ref": "#/definitions/v202501FlowspecMatch"
+        },
+        "rtbh": {
+          "$ref": "#/definitions/v202501RTBHMatch"
+        }
+      }
+    },
     "protobufAny": {
       "type": "object",
       "properties": {
-        "typeUrl": {
+        "@type": {
           "type": "string"
-        },
-        "value": {
-          "type": "string",
-          "format": "byte"
         }
-      }
+      },
+      "additionalProperties": {}
     },
     "rpcStatus": {
       "type": "object",
@@ -142,6 +150,7 @@
         "details": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
         }
@@ -156,7 +165,8 @@
         "ADVERT_STATUS_NO_SESSION",
         "ADVERT_STATUS_FAILED"
       ],
-      "default": "ADVERT_STATUS_UNSPECIFIED"
+      "default": "ADVERT_STATUS_UNSPECIFIED",
+      "title": "- ADVERT_STATUS_NO_SESSION: when we cannot find the chf-bgp instance\n - ADVERT_STATUS_FAILED: when we failed to parse or send the update"
     },
     "v202501BitwiseOp": {
       "type": "string",
@@ -167,7 +177,8 @@
         "BITWISE_OP_ALL",
         "BITWISE_OP_NOT_ALL"
       ],
-      "default": "BITWISE_OP_UNSPECIFIED"
+      "default": "BITWISE_OP_UNSPECIFIED",
+      "title": "- BITWISE_OP_ANY: (data & value) != 0\n - BITWISE_OP_NONE: (data & value) == 0\n - BITWISE_OP_ALL: (data & value) == value\n - BITWISE_OP_NOT_ALL: (data & value) != value"
     },
     "v202501DeviceAdverts": {
       "type": "object",
@@ -179,12 +190,14 @@
         "flowspec": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202501FlowspecUpdate"
           }
         },
         "rtbh": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202501RTBHUpdate"
           }
         }
@@ -367,10 +380,12 @@
       "type": "object",
       "properties": {
         "dstPrefix": {
-          "type": "string"
+          "type": "string",
+          "title": "IPv4 or IPv6 CIDR prefix to match"
         },
         "srcPrefix": {
-          "type": "string"
+          "type": "string",
+          "title": "IPv4 or IPv6 CIDR prefix to match"
         },
         "ipProtocol": {
           "$ref": "#/definitions/v202501NumericFormula"
@@ -413,13 +428,15 @@
           "format": "date-time"
         },
         "inet": {
-          "type": "string"
+          "type": "string",
+          "title": "deprecated: use inet_type instead"
         },
         "inetType": {
           "$ref": "#/definitions/v202501InetType"
         },
         "key": {
-          "type": "string"
+          "type": "string",
+          "title": "mainly used for internal purposes"
         },
         "rateBytes": {
           "$ref": "#/definitions/v202501FlowspecActionTrafficRateBytes"
@@ -457,14 +474,17 @@
         "actions": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202501FlowspecAction"
           }
         },
         "terminal": {
-          "type": "boolean"
+          "type": "boolean",
+          "title": "true if this is a terminal action"
         },
         "sample": {
-          "type": "boolean"
+          "type": "boolean",
+          "title": "true to enable traffic sampling and logging"
         }
       }
     },
@@ -477,7 +497,8 @@
         "FRAGMENT_FF",
         "FRAGMENT_LF"
       ],
-      "default": "FRAGMENT_UNSPECIFIED"
+      "default": "FRAGMENT_UNSPECIFIED",
+      "title": "- FRAGMENT_DF: Don't Fragment\n - FRAGMENT_ISF: Is a fragment other than the first\n - FRAGMENT_FF: First Fragment\n - FRAGMENT_LF: Last Fragment"
     },
     "v202501FragmentFormula": {
       "type": "object",
@@ -485,6 +506,7 @@
         "or": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202501FragmentPredicateGroup"
           }
         }
@@ -510,6 +532,7 @@
         "and": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202501FragmentPredicate"
           }
         }
@@ -530,6 +553,7 @@
         "or": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202501NumericPredicateGroup"
           }
         }
@@ -566,6 +590,7 @@
         "and": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202501NumericPredicate"
           }
         }
@@ -613,13 +638,15 @@
           "format": "date-time"
         },
         "inet": {
-          "type": "string"
+          "type": "string",
+          "title": "deprecated: use inet_type instead"
         },
         "inetType": {
           "$ref": "#/definitions/v202501InetType"
         },
         "key": {
-          "type": "string"
+          "type": "string",
+          "title": "mainly used for internal purposes"
         }
       }
     },
@@ -647,6 +674,7 @@
         "results": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202501UpdateResult"
           }
         }
@@ -656,7 +684,8 @@
       "type": "object",
       "properties": {
         "filters": {
-          "$ref": "#/definitions/v202501RoutesFilter"
+          "$ref": "#/definitions/v202501RoutesFilter",
+          "title": "TODO: any pagination or sorting capabilities?"
         }
       }
     },
@@ -666,6 +695,7 @@
         "result": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202501DeviceAdverts"
           }
         }
@@ -682,7 +712,7 @@
           }
         },
         "withdraw": {
-          "$ref": "#/definitions/v202501Withdraw"
+          "$ref": "#/definitions/ktbgpv202501Withdraw"
         }
       }
     },
@@ -692,6 +722,7 @@
         "results": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202501UpdateResult"
           }
         }
@@ -705,7 +736,8 @@
           "items": {
             "type": "string",
             "format": "uint64"
-          }
+          },
+          "title": "TODO: we may want to search by update type or detailed attributes\n TODO: we may also want to search for historical updates"
         }
       }
     },
@@ -730,6 +762,7 @@
         "or": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202501TCPFlagsPredicateGroup"
           }
         }
@@ -755,6 +788,7 @@
         "and": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202501TCPFlagsPredicate"
           }
         }
@@ -772,17 +806,6 @@
         },
         "message": {
           "type": "string"
-        }
-      }
-    },
-    "v202501Withdraw": {
-      "type": "object",
-      "properties": {
-        "flowspec": {
-          "$ref": "#/definitions/v202501FlowspecMatch"
-        },
-        "rtbh": {
-          "$ref": "#/definitions/v202501RTBHMatch"
         }
       }
     }

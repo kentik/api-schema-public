@@ -1482,7 +1482,7 @@ static const ProtobufCFieldDescriptor kentik__interface__v202108alpha1__interfac
     offsetof(Kentik__Interface__V202108alpha1__Interface, top_nexthop_asns),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -2425,7 +2425,7 @@ static const ProtobufCFieldDescriptor kentik__interface__v202108alpha1__interfac
     offsetof(Kentik__Interface__V202108alpha1__InterfaceFilter, connectivity_types),
     &kentik__interface__v202108alpha1__connectivity_type__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -2437,7 +2437,7 @@ static const ProtobufCFieldDescriptor kentik__interface__v202108alpha1__interfac
     offsetof(Kentik__Interface__V202108alpha1__InterfaceFilter, network_boundaries),
     &kentik__interface__v202108alpha1__network_boundary__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -2461,7 +2461,7 @@ static const ProtobufCFieldDescriptor kentik__interface__v202108alpha1__interfac
     offsetof(Kentik__Interface__V202108alpha1__InterfaceFilter, snmp_speeds),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -2473,7 +2473,7 @@ static const ProtobufCFieldDescriptor kentik__interface__v202108alpha1__interfac
     offsetof(Kentik__Interface__V202108alpha1__InterfaceFilter, ip_types),
     &kentik__interface__v202108alpha1__ip_filter__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };

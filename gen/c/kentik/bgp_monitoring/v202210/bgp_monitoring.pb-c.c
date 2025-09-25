@@ -1038,7 +1038,7 @@ static const ProtobufCFieldDescriptor kentik__bgp_monitoring__v202210__nlri__fie
     offsetof(Kentik__BgpMonitoring__V202210__Nlri, prefix),
     NULL,
     &protobuf_c_empty_string,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
@@ -1129,7 +1129,7 @@ static const ProtobufCFieldDescriptor kentik__bgp_monitoring__v202210__bgp_monit
     offsetof(Kentik__BgpMonitoring__V202210__BgpMonitorSettings, allowed_asns),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -1213,7 +1213,7 @@ static const ProtobufCFieldDescriptor kentik__bgp_monitoring__v202210__bgp_monit
     offsetof(Kentik__BgpMonitoring__V202210__BgpMonitorSettings, allowed_upstreams),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
@@ -1527,7 +1527,7 @@ static const ProtobufCFieldDescriptor kentik__bgp_monitoring__v202210__bgp_metri
     offsetof(Kentik__BgpMonitoring__V202210__BgpMetric, reachability),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -1539,7 +1539,7 @@ static const ProtobufCFieldDescriptor kentik__bgp_monitoring__v202210__bgp_metri
     offsetof(Kentik__BgpMonitoring__V202210__BgpMetric, path_changes),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
@@ -2051,7 +2051,7 @@ static const ProtobufCFieldDescriptor kentik__bgp_monitoring__v202210__get_metri
     offsetof(Kentik__BgpMonitoring__V202210__GetMetricsForTargetRequest, metrics),
     &kentik__bgp_monitoring__v202210__bgp_metric_type__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };

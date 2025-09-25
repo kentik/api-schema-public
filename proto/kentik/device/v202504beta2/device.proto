@@ -1121,7 +1121,7 @@ service DeviceService {
   rpc CreateDevices(CreateDevicesRequest) returns (CreateDevicesResponse) {
     option (kentik.core.v202303.method_scope) = "admin.device:write";
     option (google.api.http) = {
-      post: "/device/v202504beta2/device/batch"
+      post: "/device/v202504beta2/device/batch_create"
       body: "*"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
@@ -1147,7 +1147,7 @@ service DeviceService {
   rpc UpdateDevices(UpdateDevicesRequest) returns (UpdateDevicesResponse) {
     option (kentik.core.v202303.method_scope) = "admin.device:write";
     option (google.api.http) = {
-      put: "/device/v202504beta2/device/batch"
+      put: "/device/v202504beta2/device/batch_update"
       body: "*"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
@@ -1185,7 +1185,7 @@ service DeviceService {
   rpc DeleteDevices(DeleteDevicesRequest) returns (DeleteDevicesResponse) {
     option (kentik.core.v202303.method_scope) = "admin.device:write";
     option (google.api.http) = {
-      post: "/device/v202504beta2/device/batch"
+      post: "/device/v202504beta2/device/batch_delete"
       body: "*"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {

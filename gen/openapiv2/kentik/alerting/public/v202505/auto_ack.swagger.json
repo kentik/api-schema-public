@@ -124,7 +124,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202505AlertAutoAckServiceReplaceRequest"
+              "$ref": "#/definitions/v202505AlertAutoAckServiceReplaceBody"
             }
           }
         ],
@@ -239,14 +239,11 @@
     "protobufAny": {
       "type": "object",
       "properties": {
-        "typeUrl": {
+        "@type": {
           "type": "string"
-        },
-        "value": {
-          "type": "string",
-          "format": "byte"
         }
-      }
+      },
+      "additionalProperties": {}
     },
     "rpcStatus": {
       "type": "object",
@@ -261,6 +258,7 @@
         "details": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
         }
@@ -305,6 +303,7 @@
         "fields": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/SortingConfigField"
           }
         }
@@ -358,10 +357,7 @@
         "startTimeAt": {
           "type": "string",
           "format": "date-time",
-          "description": "The start time when the auto-ack configuration is active. Has to be at least 5 minutes in the future.",
-          "required": [
-            "start_time_at"
-          ]
+          "description": "The start time when the auto-ack configuration is active. Has to be at least 5 minutes in the future."
         },
         "endTimeAt": {
           "type": "string",
@@ -398,6 +394,7 @@
         "sources": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202505Source"
           },
           "description": "The source policies the auto-ack configurations are applied to."
@@ -405,6 +402,7 @@
         "keys": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202303KeyValue"
           },
           "description": "The alert keys the auto-ack configurations are applied to."
@@ -439,10 +437,7 @@
       "properties": {
         "autoAck": {
           "$ref": "#/definitions/v202505AlertAutoAck",
-          "description": "The auto-ack configuration to create.",
-          "required": [
-            "auto_ack"
-          ]
+          "description": "The auto-ack configuration to create."
         }
       },
       "required": [
@@ -500,6 +495,7 @@
         "autoAcks": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202505AlertAutoAck"
           },
           "description": "The auto-ack configurations that were found matching the filters.",
@@ -507,18 +503,52 @@
         }
       }
     },
-    "v202505AlertAutoAckServiceReplaceRequest": {
+    "v202505AlertAutoAckServiceReplaceBody": {
       "type": "object",
       "properties": {
         "autoAck": {
-          "$ref": "#/definitions/v202505AlertAutoAck",
-          "description": "The auto-ack configuration to replace.",
-          "required": [
-            "auto_ack"
-          ]
+          "type": "object",
+          "properties": {
+            "userId": {
+              "type": "string",
+              "description": "The ID of the user who most recently updated the auto-ack configuration.",
+              "readOnly": true
+            },
+            "source": {
+              "$ref": "#/definitions/v202505Source",
+              "description": "The source policy given auto-ack is applied to (its alerts may be auto-acked)."
+            },
+            "key": {
+              "$ref": "#/definitions/v202303KeyValue",
+              "description": "The alert key the auto-ack configuration is applied to."
+            },
+            "startTimeAt": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The start time when the auto-ack configuration is active. Has to be at least 5 minutes in the future."
+            },
+            "endTimeAt": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The end time when the auto-ack configuration is no longer active."
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The time when the auto-ack configuration was created.",
+              "readOnly": true
+            },
+            "modifiedAt": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The time when the auto-ack configuration was last modified.",
+              "readOnly": true
+            }
+          }
         }
       },
       "required": [
+        "startTimeAt",
         "autoAck"
       ]
     },
@@ -555,17 +585,11 @@
       "properties": {
         "policyType": {
           "$ref": "#/definitions/v202505PolicyType",
-          "description": "The type of policy.",
-          "required": [
-            "policy_type"
-          ]
+          "description": "The type of policy."
         },
         "id": {
           "type": "string",
-          "description": "The ID of the policy, can be integer ID, UUID or any other format.",
-          "required": [
-            "id"
-          ]
+          "description": "The ID of the policy, can be integer ID, UUID or any other format."
         }
       },
       "required": [

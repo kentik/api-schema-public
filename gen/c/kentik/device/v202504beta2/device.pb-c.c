@@ -1880,7 +1880,7 @@ static const ProtobufCFieldDescriptor kentik__device__v202504beta2__device_conci
     offsetof(Kentik__Device__V202504beta2__DeviceConcise, minimize_snmp),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -3114,7 +3114,7 @@ static const ProtobufCFieldDescriptor kentik__device__v202504beta2__device_detai
     offsetof(Kentik__Device__V202504beta2__DeviceDetailed, minimize_snmp),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {

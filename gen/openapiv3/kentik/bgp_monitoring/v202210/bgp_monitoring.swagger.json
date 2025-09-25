@@ -256,7 +256,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202210UpdateMonitorRequest"
+                                "$ref": "#/components/schemas/BgpMonitoringAdminServiceUpdateMonitorBody"
                             }
                         }
                     },
@@ -309,7 +309,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202210SetMonitorStatusRequest"
+                                "$ref": "#/components/schemas/BgpMonitoringAdminServiceSetMonitorStatusBody"
                             }
                         }
                     },
@@ -387,17 +387,76 @@
             }
         },
         "schemas": {
+            "BgpMonitoringAdminServiceSetMonitorStatusBody": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "$ref": "#/components/schemas/v202210BgpMonitorStatus"
+                    }
+                },
+                "title": "SetMonitorStatusRequest",
+                "required": [
+                    "status"
+                ]
+            },
+            "BgpMonitoringAdminServiceUpdateMonitorBody": {
+                "type": "object",
+                "properties": {
+                    "monitor": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "User selected name of the monitor"
+                            },
+                            "status": {
+                                "$ref": "#/components/schemas/v202210BgpMonitorStatus"
+                            },
+                            "settings": {
+                                "$ref": "#/components/schemas/v202210BgpMonitorSettings"
+                            },
+                            "cdate": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Creation timestamp (UTC)",
+                                "readOnly": true
+                            },
+                            "edate": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Last modification timestamp (UTC)",
+                                "readOnly": true
+                            },
+                            "createdBy": {
+                                "$ref": "#/components/schemas/v202303UserInfo"
+                            },
+                            "lastUpdatedBy": {
+                                "$ref": "#/components/schemas/v202303UserInfo"
+                            },
+                            "labels": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "title": "BgpMonitor"
+                    }
+                },
+                "title": "UpdateMonitorRequest",
+                "required": [
+                    "name",
+                    "monitor"
+                ]
+            },
             "protobufAny": {
                 "type": "object",
                 "properties": {
-                    "typeUrl": {
+                    "@type": {
                         "type": "string"
-                    },
-                    "value": {
-                        "type": "string",
-                        "format": "byte"
                     }
-                }
+                },
+                "additionalProperties": {}
             },
             "rpcStatus": {
                 "type": "object",
@@ -481,10 +540,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "User selected name of the monitor",
-                        "required": [
-                            "name"
-                        ]
+                        "description": "User selected name of the monitor"
                     },
                     "status": {
                         "$ref": "#/components/schemas/v202210BgpMonitorStatus"
@@ -538,10 +594,7 @@
                         "items": {
                             "$ref": "#/components/schemas/v202210Nlri"
                         },
-                        "description": "List of prefixes to monitor",
-                        "required": [
-                            "targets"
-                        ]
+                        "description": "List of prefixes to monitor"
                     },
                     "checkRpki": {
                         "type": "boolean",
@@ -622,18 +675,12 @@
                     "startTime": {
                         "type": "string",
                         "format": "date-time",
-                        "description": "UTC timestamp of the beginning of queried interval",
-                        "required": [
-                            "start_time"
-                        ]
+                        "description": "UTC timestamp of the beginning of queried interval"
                     },
                     "endTime": {
                         "type": "string",
                         "format": "date-time",
-                        "description": "UTC timestamp of the end of queried interval",
-                        "required": [
-                            "end_time"
-                        ]
+                        "description": "UTC timestamp of the end of queried interval"
                     },
                     "target": {
                         "$ref": "#/components/schemas/v202210Nlri"
@@ -647,10 +694,7 @@
                         "items": {
                             "$ref": "#/components/schemas/v202210BgpMetricType"
                         },
-                        "description": "List of one or more BGP metric types to return",
-                        "required": [
-                            "metrics"
-                        ]
+                        "description": "List of one or more BGP metric types to return"
                     }
                 },
                 "title": "GetMetricsForTargetRequest",
@@ -690,10 +734,7 @@
                     "time": {
                         "type": "string",
                         "format": "date-time",
-                        "description": "Reference UTC time for the route information snapshot",
-                        "required": [
-                            "time"
-                        ]
+                        "description": "Reference UTC time for the route information snapshot"
                     },
                     "target": {
                         "$ref": "#/components/schemas/v202210Nlri"
@@ -766,10 +807,7 @@
                     },
                     "prefix": {
                         "type": "string",
-                        "description": "Actual prefix data (format depends on AFI)",
-                        "required": [
-                            "prefix"
-                        ]
+                        "description": "Actual prefix data (format depends on AFI)"
                     }
                 },
                 "title": "Nlri",
@@ -812,41 +850,9 @@
                 },
                 "title": "RouteInfo"
             },
-            "v202210SetMonitorStatusRequest": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "string",
-                        "description": "ID of the BGP monitor whose status is to be modified",
-                        "required": [
-                            "id"
-                        ]
-                    },
-                    "status": {
-                        "$ref": "#/components/schemas/v202210BgpMonitorStatus"
-                    }
-                },
-                "title": "SetMonitorStatusRequest",
-                "required": [
-                    "id",
-                    "status"
-                ]
-            },
             "v202210SetMonitorStatusResponse": {
                 "type": "object",
                 "title": "SetMonitorStatusResponse"
-            },
-            "v202210UpdateMonitorRequest": {
-                "type": "object",
-                "properties": {
-                    "monitor": {
-                        "$ref": "#/components/schemas/v202210BgpMonitor"
-                    }
-                },
-                "title": "UpdateMonitorRequest",
-                "required": [
-                    "monitor"
-                ]
             },
             "v202210UpdateMonitorResponse": {
                 "type": "object",

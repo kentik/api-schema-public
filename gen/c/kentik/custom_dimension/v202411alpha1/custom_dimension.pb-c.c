@@ -1155,7 +1155,7 @@ static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__p
     offsetof(Kentik__CustomDimension__V202411alpha1__Populator, port),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -1179,7 +1179,7 @@ static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__p
     offsetof(Kentik__CustomDimension__V202411alpha1__Populator, protocol),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -1191,7 +1191,7 @@ static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__p
     offsetof(Kentik__CustomDimension__V202411alpha1__Populator, asn),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -1215,7 +1215,7 @@ static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__p
     offsetof(Kentik__CustomDimension__V202411alpha1__Populator, nexthop_asn),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {

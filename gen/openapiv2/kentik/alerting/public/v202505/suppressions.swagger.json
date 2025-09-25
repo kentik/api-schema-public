@@ -186,7 +186,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202505SuppressionServiceReplaceRequest"
+              "$ref": "#/definitions/v202505SuppressionServiceReplaceBody"
             }
           }
         ],
@@ -239,14 +239,11 @@
     "protobufAny": {
       "type": "object",
       "properties": {
-        "typeUrl": {
+        "@type": {
           "type": "string"
-        },
-        "value": {
-          "type": "string",
-          "format": "byte"
         }
-      }
+      },
+      "additionalProperties": {}
     },
     "rpcStatus": {
       "type": "object",
@@ -261,6 +258,7 @@
         "details": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
         }
@@ -305,6 +303,7 @@
         "fields": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/SortingConfigField"
           }
         }
@@ -377,6 +376,7 @@
         "filters": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202303KeyValueFilter"
           }
         }
@@ -453,17 +453,11 @@
       "properties": {
         "policyType": {
           "$ref": "#/definitions/v202505PolicyType",
-          "description": "The type of policy.",
-          "required": [
-            "policy_type"
-          ]
+          "description": "The type of policy."
         },
         "id": {
           "type": "string",
-          "description": "The ID of the policy, can be integer ID, UUID or any other format.",
-          "required": [
-            "id"
-          ]
+          "description": "The ID of the policy, can be integer ID, UUID or any other format."
         }
       },
       "required": [
@@ -503,10 +497,7 @@
         "startTimeAt": {
           "type": "string",
           "format": "date-time",
-          "description": "The start time when the suppression configuration is active, preventing the alert from being activated.",
-          "required": [
-            "start_time_at"
-          ]
+          "description": "The start time when the suppression configuration is active, preventing the alert from being activated."
         },
         "endTimeAt": {
           "type": "string",
@@ -543,6 +534,7 @@
         "sources": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202505Source"
           },
           "description": "The source policies the suppression configurations are applied to."
@@ -577,10 +569,7 @@
       "properties": {
         "suppression": {
           "$ref": "#/definitions/v202505Suppression",
-          "description": "The suppression configuration to create.",
-          "required": [
-            "suppression"
-          ]
+          "description": "The suppression configuration to create."
         }
       },
       "required": [
@@ -638,6 +627,7 @@
         "suppressions": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202505Suppression"
           },
           "description": "The suppression configurations that were found matching the filters.",
@@ -645,18 +635,60 @@
         }
       }
     },
-    "v202505SuppressionServiceReplaceRequest": {
+    "v202505SuppressionServiceReplaceBody": {
       "type": "object",
       "properties": {
         "suppression": {
-          "$ref": "#/definitions/v202505Suppression",
-          "description": "The suppression configuration to replace.",
-          "required": [
-            "suppression"
-          ]
+          "type": "object",
+          "properties": {
+            "userId": {
+              "type": "string",
+              "description": "The ID of the user who most recently updated the suppression configuration.",
+              "readOnly": true
+            },
+            "source": {
+              "$ref": "#/definitions/v202505Source",
+              "description": "The source policy the suppression is applied to."
+            },
+            "keyFilter": {
+              "$ref": "#/definitions/v202303MultiAttributeFilter",
+              "description": "The alert key filter the suppression is applied to."
+            },
+            "strict": {
+              "type": "boolean",
+              "description": "Whether the suppression is strict (all alert key dimensions must have some filter applied and matching)."
+            },
+            "comment": {
+              "type": "string",
+              "description": "The comment for the suppression configuration."
+            },
+            "startTimeAt": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The start time when the suppression configuration is active, preventing the alert from being activated."
+            },
+            "endTimeAt": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The end time when the suppression configuration is no longer active, allowing the alert to be activated again."
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The time when the suppression configuration was created.",
+              "readOnly": true
+            },
+            "modifiedAt": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The time when the suppression configuration was last modified.",
+              "readOnly": true
+            }
+          }
         }
       },
       "required": [
+        "startTimeAt",
         "suppression"
       ]
     },

@@ -45,7 +45,7 @@
                 "parameters": [
                     {
                         "name": "pagination.limit",
-                        "description": "limit is how many items to return at most.",
+                        "description": "limit is how many items to return at most",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -55,7 +55,7 @@
                     },
                     {
                         "name": "pagination.offset",
-                        "description": "offset is the offset into the list of items.",
+                        "description": "offset is the offset into the list of items",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -65,7 +65,7 @@
                     },
                     {
                         "name": "pagination.includeTotalCount",
-                        "description": "include_total_count is a flag to enforce API service to include the total count of items in the response,\nwhich in some cases may be very expensive to fetch.",
+                        "description": "include_total_count is a flag to enforce API service to include the total count of items in the response,\nwhich in some cases may be very expensive to fetch",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -345,7 +345,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202505MitigationsServiceActRequest"
+                                "$ref": "#/components/schemas/MitigationsServiceActBody"
                             }
                         }
                     },
@@ -466,6 +466,21 @@
             }
         },
         "schemas": {
+            "MitigationsServiceActBody": {
+                "type": "object",
+                "properties": {
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The IDs of the mitigations to act on."
+                    }
+                },
+                "required": [
+                    "ids"
+                ]
+            },
             "MitigationsServiceAvailableActionsResponseMitigationAvailableTransitions": {
                 "type": "object",
                 "properties": {
@@ -484,14 +499,11 @@
             "protobufAny": {
                 "type": "object",
                 "properties": {
-                    "typeUrl": {
+                    "@type": {
                         "type": "string"
-                    },
-                    "value": {
-                        "type": "string",
-                        "format": "byte"
                     }
-                }
+                },
+                "additionalProperties": {}
             },
             "rpcStatus": {
                 "type": "object",
@@ -577,16 +589,19 @@
                     "BITWISE_OP_ALL",
                     "BITWISE_OP_NOT_ALL"
                 ],
-                "default": "BITWISE_OP_UNSPECIFIED"
+                "default": "BITWISE_OP_UNSPECIFIED",
+                "title": "- BITWISE_OP_ANY: (data & value) != 0\n - BITWISE_OP_NONE: (data & value) == 0\n - BITWISE_OP_ALL: (data & value) == value\n - BITWISE_OP_NOT_ALL: (data & value) != value"
             },
             "v202501FlowspecMatch": {
                 "type": "object",
                 "properties": {
                     "dstPrefix": {
-                        "type": "string"
+                        "type": "string",
+                        "title": "IPv4 or IPv6 CIDR prefix to match"
                     },
                     "srcPrefix": {
-                        "type": "string"
+                        "type": "string",
+                        "title": "IPv4 or IPv6 CIDR prefix to match"
                     },
                     "ipProtocol": {
                         "$ref": "#/components/schemas/v202501NumericFormula"
@@ -627,7 +642,8 @@
                     "FRAGMENT_FF",
                     "FRAGMENT_LF"
                 ],
-                "default": "FRAGMENT_UNSPECIFIED"
+                "default": "FRAGMENT_UNSPECIFIED",
+                "title": "- FRAGMENT_DF: Don't Fragment\n - FRAGMENT_ISF: Is a fragment other than the first\n - FRAGMENT_FF: First Fragment\n - FRAGMENT_LF: Last Fragment"
             },
             "v202501FragmentFormula": {
                 "type": "object",
@@ -1036,28 +1052,6 @@
                     }
                 }
             },
-            "v202505MitigationsServiceActRequest": {
-                "type": "object",
-                "properties": {
-                    "ids": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "The IDs of the mitigations to act on.",
-                        "required": [
-                            "ids"
-                        ]
-                    },
-                    "action": {
-                        "$ref": "#/components/schemas/v202505MitigationUserAction"
-                    }
-                },
-                "required": [
-                    "ids",
-                    "action"
-                ]
-            },
             "v202505MitigationsServiceActResponse": {
                 "type": "object",
                 "properties": {
@@ -1102,24 +1096,15 @@
                 "properties": {
                     "platformId": {
                         "type": "string",
-                        "description": "The mitigation platform ID where the mitigation will be deployed.",
-                        "required": [
-                            "platform_id"
-                        ]
+                        "description": "The mitigation platform ID where the mitigation will be deployed."
                     },
                     "methodId": {
                         "type": "string",
-                        "description": "The mitigation method ID for the mitigation technique.",
-                        "required": [
-                            "method_id"
-                        ]
+                        "description": "The mitigation method ID for the mitigation technique."
                     },
                     "ipCidr": {
                         "type": "string",
-                        "description": "The IP/CIDR range to mitigate.",
-                        "required": [
-                            "ip_cidr"
-                        ]
+                        "description": "The IP/CIDR range to mitigate."
                     },
                     "srcPort": {
                         "type": "string",
@@ -1206,10 +1191,7 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The ID of the policy, can be integer ID, UUID or any other format.",
-                        "required": [
-                            "id"
-                        ]
+                        "description": "The ID of the policy, can be integer ID, UUID or any other format."
                     }
                 },
                 "required": [

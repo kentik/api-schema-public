@@ -2640,7 +2640,7 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202202__agent__field_
     offsetof(Kentik__Synthetics__V202202__Agent, ip),
     NULL,
     &protobuf_c_empty_string,
-    0 | PROTOBUF_C_FIELD_FLAG_DEPRECATED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_DEPRECATED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -2784,7 +2784,7 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202202__agent__field_
     offsetof(Kentik__Synthetics__V202202__Agent, local_ip),
     NULL,
     &protobuf_c_empty_string,
-    0 | PROTOBUF_C_FIELD_FLAG_DEPRECATED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_DEPRECATED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -3178,7 +3178,7 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202202__test_settings
     offsetof(Kentik__Synthetics__V202202__TestSettings, hostname),
     &kentik__synthetics__v202202__hostname_test__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -3190,7 +3190,7 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202202__test_settings
     offsetof(Kentik__Synthetics__V202202__TestSettings, ip),
     &kentik__synthetics__v202202__ip_test__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -3202,7 +3202,7 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202202__test_settings
     offsetof(Kentik__Synthetics__V202202__TestSettings, agent),
     &kentik__synthetics__v202202__agent_test__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -3214,7 +3214,7 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202202__test_settings
     offsetof(Kentik__Synthetics__V202202__TestSettings, flow),
     &kentik__synthetics__v202202__flow_test__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -3226,7 +3226,7 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202202__test_settings
     offsetof(Kentik__Synthetics__V202202__TestSettings, dns),
     &kentik__synthetics__v202202__dns_test__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -3238,7 +3238,7 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202202__test_settings
     offsetof(Kentik__Synthetics__V202202__TestSettings, url),
     &kentik__synthetics__v202202__url_test__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -3250,7 +3250,7 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202202__test_settings
     offsetof(Kentik__Synthetics__V202202__TestSettings, network_grid),
     &kentik__synthetics__v202202__ip_test__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -3262,7 +3262,7 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202202__test_settings
     offsetof(Kentik__Synthetics__V202202__TestSettings, page_load),
     &kentik__synthetics__v202202__page_load_test__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -3274,7 +3274,7 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202202__test_settings
     offsetof(Kentik__Synthetics__V202202__TestSettings, dns_grid),
     &kentik__synthetics__v202202__dns_test__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -3382,7 +3382,7 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202202__test_settings
     offsetof(Kentik__Synthetics__V202202__TestSettings, network_mesh),
     &kentik__synthetics__v202202__network_mesh_test__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -3842,7 +3842,7 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202202__health_settin
     offsetof(Kentik__Synthetics__V202202__HealthSettings, http_valid_codes),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -3854,7 +3854,7 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202202__health_settin
     offsetof(Kentik__Synthetics__V202202__HealthSettings, dns_valid_codes),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -3938,7 +3938,7 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202202__health_settin
     offsetof(Kentik__Synthetics__V202202__HealthSettings, unhealthy_subtest_threshold),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_DEPRECATED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_DEPRECATED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -4351,7 +4351,7 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202202__dns_test__fie
     offsetof(Kentik__Synthetics__V202202__DnsTest, timeout),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_DEPRECATED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_DEPRECATED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -5302,7 +5302,7 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202202__task_results_
     offsetof(Kentik__Synthetics__V202202__TaskResults, ping),
     &kentik__synthetics__v202202__ping_results__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -5314,7 +5314,7 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202202__task_results_
     offsetof(Kentik__Synthetics__V202202__TaskResults, http),
     &kentik__synthetics__v202202__httpresults__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -5326,7 +5326,7 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202202__task_results_
     offsetof(Kentik__Synthetics__V202202__TaskResults, dns),
     &kentik__synthetics__v202202__dnsresults__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -5843,7 +5843,7 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202202__path_trace__f
     offsetof(Kentik__Synthetics__V202202__PathTrace, as_path),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {

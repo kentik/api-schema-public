@@ -612,7 +612,7 @@ static const ProtobufCFieldDescriptor kentik__capacity_plan__v202212__config__ru
     offsetof(Kentik__CapacityPlan__V202212__Config__RunoutConfig, warn_qty),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -624,7 +624,7 @@ static const ProtobufCFieldDescriptor kentik__capacity_plan__v202212__config__ru
     offsetof(Kentik__CapacityPlan__V202212__Config__RunoutConfig, crit_qty),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
@@ -676,7 +676,7 @@ static const ProtobufCFieldDescriptor kentik__capacity_plan__v202212__config__ut
     offsetof(Kentik__CapacityPlan__V202212__Config__UtilConfig, warn_pct),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -688,7 +688,7 @@ static const ProtobufCFieldDescriptor kentik__capacity_plan__v202212__config__ut
     offsetof(Kentik__CapacityPlan__V202212__Config__UtilConfig, crit_pct),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
@@ -791,7 +791,7 @@ static const ProtobufCFieldDescriptor kentik__capacity_plan__v202212__summary_st
     offsetof(Kentik__CapacityPlan__V202212__SummaryStatus__RunoutStatus, earliest_date),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
@@ -842,7 +842,7 @@ static const ProtobufCFieldDescriptor kentik__capacity_plan__v202212__summary_st
     offsetof(Kentik__CapacityPlan__V202212__SummaryStatus__UtilStatus, highest_pct),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
@@ -932,7 +932,7 @@ static const ProtobufCFieldDescriptor kentik__capacity_plan__v202212__capacity_s
     offsetof(Kentik__CapacityPlan__V202212__CapacitySummary__InterfacesDetail__StatusDetail, bps),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -944,7 +944,7 @@ static const ProtobufCFieldDescriptor kentik__capacity_plan__v202212__capacity_s
     offsetof(Kentik__CapacityPlan__V202212__CapacitySummary__InterfacesDetail__StatusDetail, count),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
@@ -983,7 +983,7 @@ static const ProtobufCFieldDescriptor kentik__capacity_plan__v202212__capacity_s
     offsetof(Kentik__CapacityPlan__V202212__CapacitySummary__InterfacesDetail, total_count),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -995,7 +995,7 @@ static const ProtobufCFieldDescriptor kentik__capacity_plan__v202212__capacity_s
     offsetof(Kentik__CapacityPlan__V202212__CapacitySummary__InterfacesDetail, total_capacity_bps),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {

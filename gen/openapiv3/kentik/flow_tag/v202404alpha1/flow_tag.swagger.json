@@ -45,7 +45,7 @@
                 "parameters": [
                     {
                         "name": "search.limit",
-                        "description": "Limit the number of rows to fetch.",
+                        "description": "Limit the number of rows to fetch",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -55,7 +55,7 @@
                     },
                     {
                         "name": "search.offset",
-                        "description": "The number rows to skip before returning.",
+                        "description": "The number rows to skip before returning",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -65,7 +65,7 @@
                     },
                     {
                         "name": "search.lookupFields",
-                        "description": "List of lookup fields.\n\n - LOOKUP_FIELD_UNSPECIFIED: Invalid value\n - LOOKUP_FIELD_VALUE: Lookup by name of tag",
+                        "description": "List of lookup fields\n\n - LOOKUP_FIELD_UNSPECIFIED: Invalid value\n - LOOKUP_FIELD_VALUE: Lookup by name of tag",
                         "in": "query",
                         "required": false,
                         "explode": true,
@@ -82,7 +82,7 @@
                     },
                     {
                         "name": "search.lookupValues",
-                        "description": "List of lookup values.",
+                        "description": "List of lookup values",
                         "in": "query",
                         "required": false,
                         "explode": true,
@@ -95,7 +95,7 @@
                     },
                     {
                         "name": "search.fieldLimit",
-                        "description": "Limit the number of record to return for nested fields.",
+                        "description": "Limit the number of record to return for nested fields",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -191,7 +191,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202404alpha1UpdateFlowTagRequest"
+                                "$ref": "#/components/schemas/FlowTagServiceUpdateFlowTagBody"
                             }
                         }
                     },
@@ -307,17 +307,170 @@
             }
         },
         "schemas": {
+            "FlowTagServiceUpdateFlowTagBody": {
+                "type": "object",
+                "properties": {
+                    "flowTag": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "This will appear in places where selecting a tag is necessary",
+                                "readOnly": true
+                            },
+                            "editedBy": {
+                                "type": "string",
+                                "description": "User who last edited this tag",
+                                "readOnly": true
+                            },
+                            "createdBy": {
+                                "type": "string",
+                                "description": "User who created this tag",
+                                "readOnly": true
+                            },
+                            "cdate": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Date and time when this tag was created",
+                                "readOnly": true
+                            },
+                            "edate": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Date and time when this tag was last updated",
+                                "readOnly": true
+                            },
+                            "ip": {
+                                "$ref": "#/components/schemas/v202404alpha1AddressInfo"
+                            },
+                            "port": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "Port number associated with the flow tag"
+                            },
+                            "tcpFlags": {
+                                "type": "integer",
+                                "format": "int64",
+                                "description": "TCP flags associated with the flow tag"
+                            },
+                            "protocol": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer",
+                                    "format": "int64"
+                                },
+                                "description": "Protocol numbers associated with the flow tag"
+                            },
+                            "deviceName": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "Name of the device associated with the flow tag"
+                            },
+                            "deviceType": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "Type of the device associated with the flow tag"
+                            },
+                            "site": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "Site where the device associated with the flow tag is located"
+                            },
+                            "interfaceName": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "Name of the interface associated with the flow tag"
+                            },
+                            "asn": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "Autonomous System Number (ASN) associated with the flow tag"
+                            },
+                            "lasthopAsName": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "Name of the last hop's Autonomous System (AS) associated with the flow tag"
+                            },
+                            "nexthopAsn": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "Autonomous System Number (ASN) of the next hop associated with the flow tag"
+                            },
+                            "nexthopAsName": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "Name of the next hop's Autonomous System (AS) associated with the flow tag"
+                            },
+                            "nexthop": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "Next hop associated with the flow tag"
+                            },
+                            "bgpAspath": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "BGP AS path associated with the flow tag"
+                            },
+                            "bgpCommunity": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "BGP community associated with the flow tag"
+                            },
+                            "mac": {
+                                "$ref": "#/components/schemas/v202404alpha1AddressInfo"
+                            },
+                            "country": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "Country associated with the flow tag"
+                            },
+                            "vlans": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "VLANs associated with the flow tag"
+                            }
+                        },
+                        "title": "FlowTag"
+                    }
+                },
+                "title": "UpdateFlowTagRequest"
+            },
             "protobufAny": {
                 "type": "object",
                 "properties": {
-                    "typeUrl": {
+                    "@type": {
                         "type": "string"
-                    },
-                    "value": {
-                        "type": "string",
-                        "format": "byte"
                     }
-                }
+                },
+                "additionalProperties": {}
             },
             "rpcStatus": {
                 "type": "object",
@@ -635,15 +788,6 @@
                     }
                 },
                 "title": "SearchFlowTagResponse"
-            },
-            "v202404alpha1UpdateFlowTagRequest": {
-                "type": "object",
-                "properties": {
-                    "flowTag": {
-                        "$ref": "#/components/schemas/v202404alpha1FlowTag"
-                    }
-                },
-                "title": "UpdateFlowTagRequest"
             },
             "v202404alpha1UpdateFlowTagResponse": {
                 "type": "object",

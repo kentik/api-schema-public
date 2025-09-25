@@ -75,14 +75,11 @@
             "protobufAny": {
                 "type": "object",
                 "properties": {
-                    "typeUrl": {
+                    "@type": {
                         "type": "string"
-                    },
-                    "value": {
-                        "type": "string",
-                        "format": "byte"
                     }
-                }
+                },
+                "additionalProperties": {}
             },
             "rpcStatus": {
                 "type": "object",
@@ -155,6 +152,7 @@
                     "DEVICE_SUBTYPE_HOST_NPROBE_DNS_WWW"
                 ],
                 "default": "DEVICE_SUBTYPE_UNSPECIFIED",
+                "description": "- DEVICE_SUBTYPE_UNSPECIFIED: Unspecified (default value)\n - DEVICE_SUBTYPE_A10_CGN: A10 CGN\n - DEVICE_SUBTYPE_ADVANCED_SFLOW: Advanced sFlow\n - DEVICE_SUBTYPE_AWS_SUBNET: Amazon Web Services\n - DEVICE_SUBTYPE_AZURE_SUBNET: Microsoft Azure\n - DEVICE_SUBTYPE_CISCO_ASA: Cisco ASA\n - DEVICE_SUBTYPE_CISCO_ASA_SYSLOG: Cisco ASA (Syslog)\n - DEVICE_SUBTYPE_CISCO_NBAR: Cisco NBAR-Enabled Router\n - DEVICE_SUBTYPE_CISCO_NVZFLOW: Cisco nvzFlow\n - DEVICE_SUBTYPE_CISCO_SDWAN_XE: Cisco SD-WAN IOS XE\n - DEVICE_SUBTYPE_CISCO_ZONE_BASED_FIREWALL: Cisco Zone-Based Firewall\n - DEVICE_SUBTYPE_DARKNET: Kentik-internal value, darknet stream\n - DEVICE_SUBTYPE_FORTINET_FORTIGATE: Fortinet FortiGate\n - DEVICE_SUBTYPE_GCP_CLOUD_RUN: Google Cloud Run\n - DEVICE_SUBTYPE_GCP_SUBNET: Google Cloud Platform\n - DEVICE_SUBTYPE_GIGAMON: Gigamon Network Tap\n - DEVICE_SUBTYPE_IBM_SUBNET: IBM Cloud Platform\n - DEVICE_SUBTYPE_IOS_XR: Cisco IOS XR\n - DEVICE_SUBTYPE_ISTIO: Istio (Beta)\n - DEVICE_SUBTYPE_JUNIPER_DDOS: Juniper DDoS Flow\n - DEVICE_SUBTYPE_KAGENT: kentik agent\n - DEVICE_SUBTYPE_KAPPA: Process-Aware Telemetry Agent\n - DEVICE_SUBTYPE_KMETRICS: Virtual device for storing kmetrics data\n - DEVICE_SUBTYPE_KPROBE: Kentik Host Agent (kprobe)\n - DEVICE_SUBTYPE_KROBE_TAP: kProbe True Origin Tap\n - DEVICE_SUBTYPE_KPROXY: kproxy agent\n - DEVICE_SUBTYPE_MERAKI: Cisco Meraki\n - DEVICE_SUBTYPE_MPLS: MPLS Router\n - DEVICE_SUBTYPE_NOKIALAYER2: Nokia Layer 2\n - DEVICE_SUBTYPE_NPROBE: ntop Host Agent (nProbe)\n - DEVICE_SUBTYPE_OCI_FLOW_LOG: OCI Flow Log\n - DEVICE_SUBTYPE_OCI_SUBNET: Oracle Cloud Infrastructure\n - DEVICE_SUBTYPE_OPEN_NMS: OpenNMS SNMP Export Device\n - DEVICE_SUBTYPE_PALOALTO: Palo Alto Networks Firewall\n - DEVICE_SUBTYPE_PALOALTO_PRISMASDWAN: Palo Alto Prisma SD-WAN\n - DEVICE_SUBTYPE_PFE_SYSLOG: Juniper PFE (Syslog)\n - DEVICE_SUBTYPE_ROUTER: NetFlow-Enabled Router\n - DEVICE_SUBTYPE_SFLOW_TUNNEL: sFlow Tunnel decode\n - DEVICE_SUBTYPE_SILVERPEAK: Silver Peak EdgeConnect\n - DEVICE_SUBTYPE_SYSLOG: Generic Syslog\n - DEVICE_SUBTYPE_VERSA: Versa\n - DEVICE_SUBTYPE_VIPTELA: Cisco SDWAN vEdge\n - DEVICE_SUBTYPE_VMWARE_VELOCLOUD: VMware SD-WAN\n - DEVICE_SUBTYPE_VMWARE_VSPHERE: VMWare vSphere\n - DEVICE_SUBTYPE_VXLAN: VXLAN\n - DEVICE_SUBTYPE_KSYNTH: Kentik-internal value\n - DEVICE_SUBTYPE_SDM_LEADER: Kentik-internal value\n - DEVICE_SUBTYPE_HOST_NPROBE_DNS_WWW: Kentik-internal value",
                 "title": "Device Subtype Enum (see https://kb.kentik.com/v4/Cb01.htm#Cb01-Supported_Device_Types)\nnote, this could be moved to a shared location if used by other services"
             },
             "v202501alpha1ListPlansResponse": {
@@ -183,10 +181,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "A name for the plan. Every Kentik customer is initially provided with a plan called \"Default.\"",
-                        "required": [
-                            "name"
-                        ]
+                        "description": "A name for the plan. Every Kentik customer is initially provided with a plan called \"Default.\""
                     },
                     "description": {
                         "type": "string",
@@ -274,10 +269,7 @@
                     },
                     "deviceName": {
                         "type": "string",
-                        "description": "The user-assigned name of a device associated with this plan.",
-                        "required": [
-                            "device_name"
-                        ]
+                        "description": "The user-assigned name of a device associated with this plan."
                     },
                     "deviceSubtype": {
                         "$ref": "#/components/schemas/v202501alpha1DeviceSubtype"

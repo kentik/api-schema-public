@@ -351,7 +351,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__mitigat
     offsetof(Kentik__Alerting__Public__V202505__MitigationMethodsFilters, platform_types),
     &kentik__alerting__public__v202505__mitigation_platform_type__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {

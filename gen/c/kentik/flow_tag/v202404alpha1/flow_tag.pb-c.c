@@ -806,7 +806,7 @@ static const ProtobufCFieldDescriptor kentik__flow_tag__v202404alpha1__flow_tag_
     offsetof(Kentik__FlowTag__V202404alpha1__FlowTagSearch, lookup_fields),
     &kentik__flow_tag__v202404alpha1__lookup_field__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -1032,7 +1032,7 @@ static const ProtobufCFieldDescriptor kentik__flow_tag__v202404alpha1__flow_tag_
     offsetof(Kentik__FlowTag__V202404alpha1__FlowTag, protocol),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {

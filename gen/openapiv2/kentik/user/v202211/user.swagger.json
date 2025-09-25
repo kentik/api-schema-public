@@ -174,7 +174,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202211UpdateUserRequest"
+              "$ref": "#/definitions/UserServiceUpdateUserBody"
             }
           }
         ],
@@ -251,17 +251,74 @@
     }
   },
   "definitions": {
+    "UserServiceUpdateUserBody": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "type": "object",
+          "properties": {
+            "userEmail": {
+              "type": "string",
+              "description": "User e-mail address (serves also as username)"
+            },
+            "userFullName": {
+              "type": "string",
+              "description": "Full name"
+            },
+            "role": {
+              "$ref": "#/definitions/v202211Role",
+              "description": "User role (in Kentik application)"
+            },
+            "permissions": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "$ref": "#/definitions/v202211PermissionEntry"
+              },
+              "description": "Optional list of permissions granted to the user"
+            },
+            "filter": {
+              "type": "string",
+              "description": "Optional JSON string defining filter for objects visible to the user"
+            },
+            "lastLogin": {
+              "type": "string",
+              "format": "date-time",
+              "description": "UTC Timestamp of user's last login session",
+              "readOnly": true
+            },
+            "cdate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Creation timestamp (UTC)",
+              "readOnly": true
+            },
+            "edate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Last modification timestamp (UTC)",
+              "readOnly": true
+            }
+          },
+          "title": "User"
+        }
+      },
+      "title": "UpdateUserRequest",
+      "required": [
+        "userEmail",
+        "userFullName",
+        "role",
+        "user"
+      ]
+    },
     "protobufAny": {
       "type": "object",
       "properties": {
-        "typeUrl": {
+        "@type": {
           "type": "string"
-        },
-        "value": {
-          "type": "string",
-          "format": "byte"
         }
-      }
+      },
+      "additionalProperties": {}
     },
     "rpcStatus": {
       "type": "object",
@@ -276,6 +333,7 @@
         "details": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
         }
@@ -286,10 +344,7 @@
       "properties": {
         "user": {
           "$ref": "#/definitions/v202211User",
-          "description": "Attributes for the user account to be created",
-          "required": [
-            "user"
-          ]
+          "description": "Attributes for the user account to be created"
         }
       },
       "title": "CreateUserRequest",
@@ -327,6 +382,7 @@
         "users": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202211User"
           },
           "description": "Last of users in the account",
@@ -345,17 +401,11 @@
       "properties": {
         "capability": {
           "type": "string",
-          "description": "String identifying capability that is granted of denied",
-          "required": [
-            "capability"
-          ]
+          "description": "String identifying capability that is granted of denied"
         },
         "allowed": {
           "type": "boolean",
-          "description": "Flag indicating whether operation is allowed",
-          "required": [
-            "allowed"
-          ]
+          "description": "Flag indicating whether operation is allowed"
         }
       },
       "title": "PermissionEntry",
@@ -384,22 +434,6 @@
       "description": "- ROLE_UNSPECIFIED: Invalid value.\n - ROLE_MEMBER: Member\n - ROLE_ADMINISTRATOR: Administrator\n - ROLE_SUPER_ADMINISTRATOR: Super-administrator",
       "title": "Role"
     },
-    "v202211UpdateUserRequest": {
-      "type": "object",
-      "properties": {
-        "user": {
-          "$ref": "#/definitions/v202211User",
-          "description": "New attributes for the user account",
-          "required": [
-            "user"
-          ]
-        }
-      },
-      "title": "UpdateUserRequest",
-      "required": [
-        "user"
-      ]
-    },
     "v202211UpdateUserResponse": {
       "type": "object",
       "properties": {
@@ -420,28 +454,20 @@
         },
         "userEmail": {
           "type": "string",
-          "description": "User e-mail address (serves also as username)",
-          "required": [
-            "user_email"
-          ]
+          "description": "User e-mail address (serves also as username)"
         },
         "userFullName": {
           "type": "string",
-          "description": "Full name",
-          "required": [
-            "user_full_name"
-          ]
+          "description": "Full name"
         },
         "role": {
           "$ref": "#/definitions/v202211Role",
-          "description": "User role (in Kentik application)",
-          "required": [
-            "role"
-          ]
+          "description": "User role (in Kentik application)"
         },
         "permissions": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202211PermissionEntry"
           },
           "description": "Optional list of permissions granted to the user"

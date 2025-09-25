@@ -112,7 +112,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202212UpdateASGroupRequest"
+              "$ref": "#/definitions/ASGroupServiceUpdateASGroupBody"
             }
           }
         ],
@@ -185,17 +185,53 @@
     }
   },
   "definitions": {
+    "ASGroupServiceUpdateASGroupBody": {
+      "type": "object",
+      "properties": {
+        "asGroup": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "User selected unique name"
+            },
+            "asn": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "List of ASNs"
+            },
+            "createdDate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Creation timestamp (UTC)",
+              "readOnly": true
+            },
+            "updatedDate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Last modification timestamp (UTC)",
+              "readOnly": true
+            }
+          },
+          "title": "ASGroupConcise"
+        }
+      },
+      "title": "UpdateASGroupRequest",
+      "required": [
+        "name",
+        "asGroup"
+      ]
+    },
     "protobufAny": {
       "type": "object",
       "properties": {
-        "typeUrl": {
+        "@type": {
           "type": "string"
-        },
-        "value": {
-          "type": "string",
-          "format": "byte"
         }
-      }
+      },
+      "additionalProperties": {}
     },
     "rpcStatus": {
       "type": "object",
@@ -210,6 +246,7 @@
         "details": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
         }
@@ -225,10 +262,7 @@
         },
         "name": {
           "type": "string",
-          "description": "User selected unique name",
-          "required": [
-            "name"
-          ]
+          "description": "User selected unique name"
         },
         "asn": {
           "type": "array",
@@ -265,14 +299,12 @@
         },
         "name": {
           "type": "string",
-          "description": "User selected unique name",
-          "required": [
-            "name"
-          ]
+          "description": "User selected unique name"
         },
         "asn": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202212AutonomousSystem"
           },
           "description": "List of ASNs"
@@ -313,10 +345,7 @@
       "properties": {
         "asGroup": {
           "$ref": "#/definitions/v202212ASGroupConcise",
-          "description": "Configuration of the new AS group",
-          "required": [
-            "as_group"
-          ]
+          "description": "Configuration of the new AS group"
         }
       },
       "title": "CreateASGroupRequest",
@@ -354,6 +383,7 @@
         "asGroups": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202212ASGroupDetailed"
           },
           "description": "List of configurations of requested AS groups"
@@ -365,22 +395,6 @@
         }
       },
       "title": "ListASGroupsResponse"
-    },
-    "v202212UpdateASGroupRequest": {
-      "type": "object",
-      "properties": {
-        "asGroup": {
-          "$ref": "#/definitions/v202212ASGroupConcise",
-          "description": "New configuration attributes for the AS group to be updated",
-          "required": [
-            "as_group"
-          ]
-        }
-      },
-      "title": "UpdateASGroupRequest",
-      "required": [
-        "asGroup"
-      ]
     },
     "v202212UpdateASGroupResponse": {
       "type": "object",

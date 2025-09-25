@@ -146,6 +146,7 @@
         "details": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
         }
@@ -154,14 +155,11 @@
     "protobufAny": {
       "type": "object",
       "properties": {
-        "typeUrl": {
+        "@type": {
           "type": "string"
-        },
-        "value": {
-          "type": "string",
-          "format": "byte"
         }
-      }
+      },
+      "additionalProperties": {}
     },
     "v202308CostProviderConcise": {
       "type": "object",
@@ -173,10 +171,7 @@
         },
         "name": {
           "type": "string",
-          "description": "Name of the cost provider",
-          "required": [
-            "name"
-          ]
+          "description": "Name of the cost provider"
         }
       },
       "title": "CostProviderConcise",
@@ -274,6 +269,7 @@
         "providers": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202308CostProviderSummary"
           },
           "description": "List of summaries of requested cost providers"
@@ -292,6 +288,7 @@
         "providers": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202308CostProviderSummary"
           },
           "description": "List of summaries of requested cost providers"
@@ -310,6 +307,7 @@
         "providers": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202308CostProviderConcise"
           },
           "description": "List of configurations of requested cost providers"

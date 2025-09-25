@@ -168,7 +168,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202203alpha1UpdateLabelRequest"
+                                "$ref": "#/components/schemas/LabelServiceUpdateLabelBody"
                             }
                         }
                     },
@@ -204,6 +204,36 @@
             }
         },
         "schemas": {
+            "LabelServiceUpdateLabelBody": {
+                "type": "object",
+                "properties": {
+                    "label": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "color": {
+                                "type": "string",
+                                "title": "hex color code value"
+                            },
+                            "cdate": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Create timestamp."
+                            },
+                            "edate": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Update timestamp."
+                            }
+                        }
+                    }
+                }
+            },
             "labelv202203alpha1Label": {
                 "type": "object",
                 "properties": {
@@ -235,14 +265,11 @@
             "protobufAny": {
                 "type": "object",
                 "properties": {
-                    "typeUrl": {
+                    "@type": {
                         "type": "string"
-                    },
-                    "value": {
-                        "type": "string",
-                        "format": "byte"
                     }
-                }
+                },
+                "additionalProperties": {}
             },
             "rpcStatus": {
                 "type": "object",
@@ -293,14 +320,6 @@
                     "invalidCount": {
                         "type": "integer",
                         "format": "int32"
-                    }
-                }
-            },
-            "v202203alpha1UpdateLabelRequest": {
-                "type": "object",
-                "properties": {
-                    "label": {
-                        "$ref": "#/components/schemas/labelv202203alpha1Label"
                     }
                 }
             },

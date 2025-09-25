@@ -543,7 +543,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__types__v202303__multi_at
     offsetof(Kentik__Alerting__Types__V202303__MultiAttributeFilter, filter),
     &kentik__alerting__types__v202303__multi_attribute_filter__filter_entry__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_DEPRECATED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_DEPRECATED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -644,7 +644,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__types__v202303__attribut
     offsetof(Kentik__Alerting__Types__V202303__AttributeFilter, empty),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -656,7 +656,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__types__v202303__attribut
     offsetof(Kentik__Alerting__Types__V202303__AttributeFilter, equals),
     NULL,
     &protobuf_c_empty_string,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -668,7 +668,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__types__v202303__attribut
     offsetof(Kentik__Alerting__Types__V202303__AttributeFilter, starts_with),
     NULL,
     &protobuf_c_empty_string,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -680,7 +680,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__types__v202303__attribut
     offsetof(Kentik__Alerting__Types__V202303__AttributeFilter, ends_with),
     NULL,
     &protobuf_c_empty_string,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -692,7 +692,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__types__v202303__attribut
     offsetof(Kentik__Alerting__Types__V202303__AttributeFilter, contains),
     NULL,
     &protobuf_c_empty_string,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -704,7 +704,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__types__v202303__attribut
     offsetof(Kentik__Alerting__Types__V202303__AttributeFilter, in),
     &kentik__alerting__types__v202303__attribute_filter__string_array__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -716,7 +716,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__types__v202303__attribut
     offsetof(Kentik__Alerting__Types__V202303__AttributeFilter, any),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
@@ -799,7 +799,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__types__v202303__simple_a
     offsetof(Kentik__Alerting__Types__V202303__SimpleAttributeFilter, equals),
     NULL,
     &protobuf_c_empty_string,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -811,7 +811,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__types__v202303__simple_a
     offsetof(Kentik__Alerting__Types__V202303__SimpleAttributeFilter, starts_with),
     NULL,
     &protobuf_c_empty_string,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -823,7 +823,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__types__v202303__simple_a
     offsetof(Kentik__Alerting__Types__V202303__SimpleAttributeFilter, ends_with),
     NULL,
     &protobuf_c_empty_string,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -835,7 +835,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__types__v202303__simple_a
     offsetof(Kentik__Alerting__Types__V202303__SimpleAttributeFilter, contains),
     NULL,
     &protobuf_c_empty_string,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -847,7 +847,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__types__v202303__simple_a
     offsetof(Kentik__Alerting__Types__V202303__SimpleAttributeFilter, in),
     &kentik__alerting__types__v202303__simple_attribute_filter__string_array__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -859,7 +859,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__types__v202303__simple_a
     offsetof(Kentik__Alerting__Types__V202303__SimpleAttributeFilter, any),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };

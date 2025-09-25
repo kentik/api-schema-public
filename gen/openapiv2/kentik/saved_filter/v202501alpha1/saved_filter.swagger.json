@@ -45,7 +45,7 @@
         },
         "parameters": [
           {
-            "name": "body",
+            "name": "filter",
             "in": "body",
             "required": true,
             "schema": {
@@ -145,7 +145,7 @@
             "type": "string"
           },
           {
-            "name": "body",
+            "name": "filter",
             "in": "body",
             "required": true,
             "schema": {
@@ -211,14 +211,11 @@
     "protobufAny": {
       "type": "object",
       "properties": {
-        "typeUrl": {
+        "@type": {
           "type": "string"
-        },
-        "value": {
-          "type": "string",
-          "format": "byte"
         }
-      }
+      },
+      "additionalProperties": {}
     },
     "rpcStatus": {
       "type": "object",
@@ -233,6 +230,7 @@
         "details": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
         }
@@ -301,7 +299,8 @@
         "FILTER_FIELD_VLAN_IN",
         "FILTER_FIELD_VLAN_OUT"
       ],
-      "default": "FILTER_FIELD_UNSPECIFIED"
+      "default": "FILTER_FIELD_UNSPECIFIED",
+      "title": "- FILTER_FIELD_DST_AS: default value"
     },
     "v202501alpha1FilterLevel": {
       "type": "string",
@@ -327,7 +326,8 @@
         "FILTER_OPERATOR_LESS_THAN",
         "FILTER_OPERATOR_BITWISE_AND"
       ],
-      "default": "FILTER_OPERATOR_UNSPECIFIED"
+      "default": "FILTER_OPERATOR_UNSPECIFIED",
+      "title": "- FILTER_OPERATOR_EQUAL: \"=\", default value\n - FILTER_OPERATOR_NOT_EQUAL: \"<>\"\n - FILTER_OPERATOR_CONTAINS: \"ILIKE\"\n - FILTER_OPERATOR_NOT_CONTAINS: \"NOT ILIKE\"\n - FILTER_OPERATOR_REGEX_CONTAINS: \"~\"\n - FILTER_OPERATOR_REGEX_NOT_CONTAINS: \"!~\"\n - FILTER_OPERATOR_GREATER_THAN: \">\"\n - FILTER_OPERATOR_LESS_THAN: \"<\"\n - FILTER_OPERATOR_BITWISE_AND: \"&\""
     },
     "v202501alpha1GetSavedFilterResponse": {
       "type": "object",
@@ -343,6 +343,7 @@
         "filters": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202501alpha1SavedFilter"
           }
         }
@@ -354,6 +355,7 @@
         "filters": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202501alpha1SavedFilter"
           }
         }
@@ -369,10 +371,7 @@
         },
         "filterName": {
           "type": "string",
-          "description": "An unique name for the saved filter.",
-          "required": [
-            "filter_name"
-          ]
+          "description": "An unique name for the saved filter."
         },
         "filterDescription": {
           "type": "string",
@@ -446,6 +445,7 @@
         "filters": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202501alpha1SavedFilterFilter"
           },
           "description": "Filters to operate against."
@@ -457,6 +457,7 @@
         "savedFilterIds": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202501alpha1SavedFilterFilterId"
           },
           "description": "Include reference of other saved filters in this filter group."
@@ -464,6 +465,7 @@
         "nestedFilterGroups": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202501alpha1SavedFilterFilterGroup"
           },
           "description": "Include nested filter group."
@@ -493,12 +495,10 @@
         "filterGroups": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202501alpha1SavedFilterFilterGroup"
           },
-          "description": "Individual groups of filters. This allows matches of e.g. ANY(ALL(x), ANY(y)).",
-          "required": [
-            "filter_groups"
-          ]
+          "description": "Individual groups of filters. This allows matches of e.g. ANY(ALL(x), ANY(y))."
         }
       },
       "required": [

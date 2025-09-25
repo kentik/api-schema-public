@@ -49,6 +49,7 @@
         "parameters": [
           {
             "name": "agentIds",
+            "description": "Optional list of agent ids to retrieve alert configurations for",
             "in": "query",
             "required": false,
             "type": "array",
@@ -186,7 +187,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202309UpdateAgentAlertRequest"
+              "$ref": "#/definitions/SyntheticsAdminServiceUpdateAgentAlertBody"
             }
           }
         ],
@@ -251,7 +252,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202309UpdateAgentRequest"
+              "$ref": "#/definitions/SyntheticsAdminServiceUpdateAgentBody"
             }
           }
         ],
@@ -506,7 +507,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202309UpdateTestRequest"
+              "$ref": "#/definitions/SyntheticsAdminServiceUpdateTestBody"
             }
           }
         ],
@@ -547,7 +548,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202309SetTestStatusRequest"
+              "$ref": "#/definitions/SyntheticsAdminServiceSetTestStatusBody"
             }
           }
         ],
@@ -600,17 +601,219 @@
         }
       }
     },
+    "SyntheticsAdminServiceSetTestStatusBody": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/v202309TestStatus",
+          "description": "Target test status"
+        }
+      },
+      "title": "SetTestStatusRequest",
+      "required": [
+        "status"
+      ]
+    },
+    "SyntheticsAdminServiceUpdateAgentAlertBody": {
+      "type": "object",
+      "properties": {
+        "thresholdSeconds": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "notificationChannelIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "SyntheticsAdminServiceUpdateAgentBody": {
+      "type": "object",
+      "properties": {
+        "agent": {
+          "type": "object",
+          "properties": {
+            "siteName": {
+              "type": "string",
+              "description": "Name of the site where agent is located"
+            },
+            "status": {
+              "$ref": "#/definitions/v202309AgentStatus",
+              "description": "Operational status"
+            },
+            "alias": {
+              "type": "string",
+              "description": "User selected descriptive name of the agent"
+            },
+            "type": {
+              "type": "string",
+              "description": "Type of agent (global | private)",
+              "readOnly": true
+            },
+            "os": {
+              "type": "string",
+              "description": "OS version of server/VM hosting the agent",
+              "readOnly": true
+            },
+            "ip": {
+              "type": "string",
+              "description": "Public IP address of the agent (auto-detected)",
+              "readOnly": true
+            },
+            "lat": {
+              "type": "number",
+              "format": "double",
+              "description": "Latitude of agent's location (signed decimal degrees)"
+            },
+            "long": {
+              "type": "number",
+              "format": "double",
+              "description": "Longitude of agent's location (signed decimal degrees)"
+            },
+            "lastAuthed": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Timestamp of the last authorization",
+              "readOnly": true
+            },
+            "family": {
+              "$ref": "#/definitions/v202309IPFamily",
+              "description": "IP address family supported by the agent"
+            },
+            "asn": {
+              "type": "integer",
+              "format": "int64",
+              "description": "ASN of the AS owning agent's public address"
+            },
+            "siteId": {
+              "type": "string",
+              "description": "ID of the site hosting the agent (if configured in Kentik)"
+            },
+            "version": {
+              "type": "string",
+              "description": "Software version of the agent",
+              "readOnly": true
+            },
+            "city": {
+              "type": "string",
+              "description": "City where the agent is located"
+            },
+            "region": {
+              "type": "string",
+              "description": "Geographical region of agent's location"
+            },
+            "country": {
+              "type": "string",
+              "description": "Country of agent's location"
+            },
+            "testIds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "IDs of user's test running on the agent",
+              "readOnly": true
+            },
+            "localIp": {
+              "type": "string",
+              "description": "Internal IP address of the agent"
+            },
+            "cloudRegion": {
+              "type": "string",
+              "description": "Cloud region (if any) hosting the agent"
+            },
+            "cloudProvider": {
+              "type": "string",
+              "description": "Cloud provider (if any) hosting the agent"
+            },
+            "agentImpl": {
+              "$ref": "#/definitions/v202309ImplementType",
+              "readOnly": true
+            },
+            "labels": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "List of names of labels associated with the agent"
+            },
+            "metadata": {
+              "$ref": "#/definitions/v202309AgentMetadata",
+              "description": "Additional information about agent's configuration and run-time state"
+            }
+          },
+          "title": "Agent"
+        }
+      },
+      "title": "UpdateAgentRequest"
+    },
+    "SyntheticsAdminServiceUpdateTestBody": {
+      "type": "object",
+      "properties": {
+        "test": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "User selected name of the test"
+            },
+            "type": {
+              "type": "string",
+              "description": "Type of the test"
+            },
+            "status": {
+              "$ref": "#/definitions/v202309TestStatus",
+              "description": "Operational status of the test"
+            },
+            "settings": {
+              "$ref": "#/definitions/v202309TestSettings",
+              "description": "Test configuration"
+            },
+            "cdate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Creation timestamp (UTC)",
+              "readOnly": true
+            },
+            "edate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Last modification timestamp (UTC)",
+              "readOnly": true
+            },
+            "createdBy": {
+              "$ref": "#/definitions/v202303UserInfo",
+              "description": "Identity of test creator",
+              "readOnly": true
+            },
+            "lastUpdatedBy": {
+              "$ref": "#/definitions/v202303UserInfo",
+              "description": "Identity of use that has modified the test last",
+              "readOnly": true
+            },
+            "labels": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Set of labels associated with the test"
+            }
+          },
+          "title": "Test"
+        }
+      },
+      "title": "UpdateTestRequest"
+    },
     "protobufAny": {
       "type": "object",
       "properties": {
-        "typeUrl": {
+        "@type": {
           "type": "string"
-        },
-        "value": {
-          "type": "string",
-          "format": "byte"
         }
-      }
+      },
+      "additionalProperties": {}
     },
     "rpcStatus": {
       "type": "object",
@@ -625,6 +828,7 @@
         "details": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
         }
@@ -850,6 +1054,7 @@
         "privateIpv4Addresses": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/AgentMetadataIpValue"
           },
           "description": "List of private IPv4 addresses"
@@ -857,6 +1062,7 @@
         "publicIpv4Addresses": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/AgentMetadataIpValue"
           },
           "description": "List of public IPv4 addresses",
@@ -865,6 +1071,7 @@
         "privateIpv6Addresses": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/AgentMetadataIpValue"
           },
           "description": "List of private IPv6 addresses"
@@ -872,6 +1079,7 @@
         "publicIpv6Addresses": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/AgentMetadataIpValue"
           },
           "description": "List of public IPv6 addresses",
@@ -894,6 +1102,7 @@
         "tasks": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202309TaskResults"
           },
           "description": "List of results for individual tasks"
@@ -992,10 +1201,7 @@
       "properties": {
         "test": {
           "$ref": "#/definitions/v202309Test",
-          "description": "Test configuration data",
-          "required": [
-            "test"
-          ]
+          "description": "Test configuration data"
         }
       },
       "title": "CreateTestRequest",
@@ -1213,26 +1419,17 @@
           "items": {
             "type": "string"
           },
-          "description": "List of test IDs for which to retrieve results",
-          "required": [
-            "ids"
-          ]
+          "description": "List of test IDs for which to retrieve results"
         },
         "startTime": {
           "type": "string",
           "format": "date-time",
-          "description": "Timestamp of the oldest results to include in results",
-          "required": [
-            "start_time"
-          ]
+          "description": "Timestamp of the oldest results to include in results"
         },
         "endTime": {
           "type": "string",
           "format": "date-time",
-          "description": "Timestamp of the newest results to include in results",
-          "required": [
-            "end_time"
-          ]
+          "description": "Timestamp of the newest results to include in results"
         },
         "agentIds": {
           "type": "array",
@@ -1266,6 +1463,7 @@
         "results": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202309TestResults"
           }
         }
@@ -1292,18 +1490,12 @@
         "startTime": {
           "type": "string",
           "format": "date-time",
-          "description": "Timestamp of the oldest results to include in results",
-          "required": [
-            "start_time"
-          ]
+          "description": "Timestamp of the oldest results to include in results"
         },
         "endTime": {
           "type": "string",
           "format": "date-time",
-          "description": "Timestamp of the newest results to include in results",
-          "required": [
-            "end_time"
-          ]
+          "description": "Timestamp of the newest results to include in results"
         },
         "agentIds": {
           "type": "array",
@@ -1339,6 +1531,7 @@
         "paths": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202309Path"
           },
           "description": "List of retrieved network path data"
@@ -1383,6 +1576,7 @@
         "overrides": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202309GroupedAlertSetting"
           },
           "description": "Overrides to default grouped alerting settings"
@@ -1656,6 +1850,7 @@
         "agentAlerts": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202309AgentAlert"
           }
         }
@@ -1667,6 +1862,7 @@
         "agents": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202309Agent"
           },
           "description": "List of available agents"
@@ -1685,6 +1881,7 @@
         "tests": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202309Test"
           },
           "description": "List of configured active or paused tests"
@@ -1838,6 +2035,7 @@
         "traces": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202309PathTrace"
           },
           "description": "Data for individual traces"
@@ -1868,6 +2066,7 @@
         "hops": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202309TraceHop"
           },
           "description": "List of hops in the trace"
@@ -1920,30 +2119,6 @@
         }
       },
       "title": "ScheduleSettings"
-    },
-    "v202309SetTestStatusRequest": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "ID of the test which status is to be modified",
-          "required": [
-            "id"
-          ]
-        },
-        "status": {
-          "$ref": "#/definitions/v202309TestStatus",
-          "description": "Target test status",
-          "required": [
-            "status"
-          ]
-        }
-      },
-      "title": "SetTestStatusRequest",
-      "required": [
-        "id",
-        "status"
-      ]
     },
     "v202309SetTestStatusResponse": {
       "type": "object",
@@ -2114,6 +2289,7 @@
         "agents": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202309AgentResults"
           },
           "description": "List of results from agents executing tasks on behalf of the test"
@@ -2317,24 +2493,6 @@
       },
       "title": "TraceHop"
     },
-    "v202309UpdateAgentAlertRequest": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "thresholdSeconds": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "notificationChannelIds": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
     "v202309UpdateAgentAlertResponse": {
       "type": "object",
       "properties": {
@@ -2342,16 +2500,6 @@
           "$ref": "#/definitions/v202309AgentAlert"
         }
       }
-    },
-    "v202309UpdateAgentRequest": {
-      "type": "object",
-      "properties": {
-        "agent": {
-          "$ref": "#/definitions/v202309Agent",
-          "description": "Agent configuration data"
-        }
-      },
-      "title": "UpdateAgentRequest"
     },
     "v202309UpdateAgentResponse": {
       "type": "object",
@@ -2362,16 +2510,6 @@
         }
       },
       "title": "UpdateAgentResponse"
-    },
-    "v202309UpdateTestRequest": {
-      "type": "object",
-      "properties": {
-        "test": {
-          "$ref": "#/definitions/v202309Test",
-          "description": "Test configuration data"
-        }
-      },
-      "title": "UpdateTestRequest"
     },
     "v202309UpdateTestResponse": {
       "type": "object",

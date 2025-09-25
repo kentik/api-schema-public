@@ -145,7 +145,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202212GetASNDetailsRequest"
+              "$ref": "#/definitions/KmiServiceGetASNDetailsBody"
             }
           }
         ],
@@ -193,7 +193,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202212GetRankingsRequest"
+              "$ref": "#/definitions/KmiServiceGetRankingsBody"
             }
           }
         ],
@@ -228,17 +228,51 @@
     }
   },
   "definitions": {
+    "KmiServiceGetASNDetailsBody": {
+      "type": "object",
+      "properties": {
+        "ip": {
+          "type": "string",
+          "description": "IP Address Family ('v4' or 'v6'). Defaults to 'v4'."
+        },
+        "mutualProvider": {
+          "type": "string",
+          "description": "Filter by mutual provider ('all', 'only', 'exclude'). Defaults to 'all'."
+        },
+        "mutualCustomer": {
+          "type": "string",
+          "description": "Filter by mutual customer ('all', 'only', 'exclude'). Defaults to 'all'."
+        },
+        "singlehomedCustomer": {
+          "type": "string",
+          "description": "Filter by singlehomed customer ('all', 'only', 'exclude'). Defaults to 'all'."
+        }
+      },
+      "title": "GetASNDetailsRequest"
+    },
+    "KmiServiceGetRankingsBody": {
+      "type": "object",
+      "properties": {
+        "ip": {
+          "type": "string",
+          "description": "IP Address Family ('v4' or 'v6') of requested ranking. Defaults to 'v4'."
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Maximum number of entries returned. (Default: 600)."
+        }
+      },
+      "title": "GetRankingsRequest"
+    },
     "protobufAny": {
       "type": "object",
       "properties": {
-        "typeUrl": {
+        "@type": {
           "type": "string"
-        },
-        "value": {
-          "type": "string",
-          "format": "byte"
         }
-      }
+      },
+      "additionalProperties": {}
     },
     "rpcStatus": {
       "type": "object",
@@ -253,6 +287,7 @@
         "details": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
         }
@@ -280,6 +315,7 @@
         "customers": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202212CustomerProvider"
           },
           "description": "List of Customers",
@@ -288,6 +324,7 @@
         "providers": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202212CustomerProvider"
           },
           "description": "List of Providers",
@@ -296,6 +333,7 @@
         "peers": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202212Peer"
           },
           "description": "List of Peers",
@@ -342,40 +380,6 @@
       },
       "title": "CustomerProvider"
     },
-    "v202212GetASNDetailsRequest": {
-      "type": "object",
-      "properties": {
-        "marketId": {
-          "type": "string",
-          "description": "Unique Geo Market identifier (as provided by the ListMarkets RPC)"
-        },
-        "asn": {
-          "type": "string",
-          "description": "Autonomous System Number (ASN)"
-        },
-        "ip": {
-          "type": "string",
-          "description": "IP Address Family ('v4' or 'v6'). Defaults to 'v4'."
-        },
-        "type": {
-          "type": "string",
-          "description": "Type of the requested ASN ('all', 'customer', 'provider', 'peers'). Defaults to 'all'."
-        },
-        "mutualProvider": {
-          "type": "string",
-          "description": "Filter by mutual provider ('all', 'only', 'exclude'). Defaults to 'all'."
-        },
-        "mutualCustomer": {
-          "type": "string",
-          "description": "Filter by mutual customer ('all', 'only', 'exclude'). Defaults to 'all'."
-        },
-        "singlehomedCustomer": {
-          "type": "string",
-          "description": "Filter by singlehomed customer ('all', 'only', 'exclude'). Defaults to 'all'."
-        }
-      },
-      "title": "GetASNDetailsRequest"
-    },
     "v202212GetASNDetailsResponse": {
       "type": "object",
       "properties": {
@@ -392,6 +396,7 @@
         "insights": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202212Insight"
           },
           "description": "List of ASN-specific insights",
@@ -406,6 +411,7 @@
         "insights": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202212Insight"
           },
           "description": "List of global insights",
@@ -414,35 +420,13 @@
       },
       "title": "GetGlobalInsightsResponse"
     },
-    "v202212GetRankingsRequest": {
-      "type": "object",
-      "properties": {
-        "marketId": {
-          "type": "string",
-          "description": "Unique Geo Market identifier (as provided by the ListMarkets RPC)"
-        },
-        "rankType": {
-          "type": "string",
-          "description": "Type of the requested ranking ('customer_base', 'customer_base_retail', 'customer_base_wholesome', 'customer_base_backbone', 'customer_growth', 'peering_base'). Defaults to 'customer_base'."
-        },
-        "ip": {
-          "type": "string",
-          "description": "IP Address Family ('v4' or 'v6') of requested ranking. Defaults to 'v4'."
-        },
-        "limit": {
-          "type": "integer",
-          "format": "int64",
-          "description": "Maximum number of entries returned. (Default: 600)."
-        }
-      },
-      "title": "GetRankingsRequest"
-    },
     "v202212GetRankingsResponse": {
       "type": "object",
       "properties": {
         "rankings": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202212Ranking"
           },
           "description": "List of rankings"
@@ -494,6 +478,7 @@
         "markets": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202212Market"
           },
           "description": "Markets",

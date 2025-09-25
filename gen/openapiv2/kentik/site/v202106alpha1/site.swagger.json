@@ -170,7 +170,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202106alpha1UpdateSiteRequest"
+              "$ref": "#/definitions/SiteServiceUpdateSiteBody"
             }
           }
         ],
@@ -181,17 +181,46 @@
     }
   },
   "definitions": {
+    "SiteServiceUpdateSiteBody": {
+      "type": "object",
+      "properties": {
+        "site": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "coordinate": {
+              "$ref": "#/definitions/typeLatLng"
+            },
+            "address": {
+              "$ref": "#/definitions/typePostalAddress"
+            },
+            "type": {
+              "$ref": "#/definitions/v202106alpha1SiteType"
+            },
+            "classification": {
+              "$ref": "#/definitions/v202106alpha1SiteIpClassification"
+            },
+            "architecture": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "$ref": "#/definitions/v202106alpha1Layer"
+              }
+            }
+          }
+        }
+      }
+    },
     "protobufAny": {
       "type": "object",
       "properties": {
-        "typeUrl": {
+        "@type": {
           "type": "string"
-        },
-        "value": {
-          "type": "string",
-          "format": "byte"
         }
-      }
+      },
+      "additionalProperties": {}
     },
     "rpcStatus": {
       "type": "object",
@@ -206,6 +235,7 @@
         "details": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
         }
@@ -317,6 +347,7 @@
         "subLayers": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202106alpha1SubLayer"
           }
         }
@@ -328,6 +359,7 @@
         "sites": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202106alpha1Site"
           }
         },
@@ -361,6 +393,7 @@
         "architecture": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202106alpha1Layer"
           }
         }
@@ -414,14 +447,6 @@
           "items": {
             "type": "string"
           }
-        }
-      }
-    },
-    "v202106alpha1UpdateSiteRequest": {
-      "type": "object",
-      "properties": {
-        "site": {
-          "$ref": "#/definitions/v202106alpha1Site"
         }
       }
     },

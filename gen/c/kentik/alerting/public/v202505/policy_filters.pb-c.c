@@ -539,7 +539,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__policy_
     offsetof(Kentik__Alerting__Public__V202505__PolicyDimensionFilters__Entry, equals_any),
     &kentik__alerting__public__v202505__policy_dimension_filters__entry__string_array__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -551,7 +551,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__policy_
     offsetof(Kentik__Alerting__Public__V202505__PolicyDimensionFilters__Entry, matches_any),
     &kentik__alerting__public__v202505__policy_dimension_filters__entry__string_array__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };

@@ -83,14 +83,11 @@
     "protobufAny": {
       "type": "object",
       "properties": {
-        "typeUrl": {
+        "@type": {
           "type": "string"
-        },
-        "value": {
-          "type": "string",
-          "format": "byte"
         }
-      }
+      },
+      "additionalProperties": {}
     },
     "rpcStatus": {
       "type": "object",
@@ -105,6 +102,7 @@
         "details": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
         }
@@ -173,6 +171,7 @@
         "cloudSubnets": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202109alpha1CloudSubnet"
           },
           "description": "Cloud provider and subnet info."

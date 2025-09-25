@@ -286,7 +286,7 @@ static const ProtobufCFieldDescriptor kentik__diagnostic__v202501__chat_request_
     offsetof(Kentik__Diagnostic__V202501__ChatRequest, echo_request),
     &kentik__diagnostic__v202501__echo_request__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -298,7 +298,7 @@ static const ProtobufCFieldDescriptor kentik__diagnostic__v202501__chat_request_
     offsetof(Kentik__Diagnostic__V202501__ChatRequest, echo_response),
     &kentik__diagnostic__v202501__echo_response__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
@@ -350,7 +350,7 @@ static const ProtobufCFieldDescriptor kentik__diagnostic__v202501__chat_response
     offsetof(Kentik__Diagnostic__V202501__ChatResponse, echo_request),
     &kentik__diagnostic__v202501__echo_request__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -362,7 +362,7 @@ static const ProtobufCFieldDescriptor kentik__diagnostic__v202501__chat_response
     offsetof(Kentik__Diagnostic__V202501__ChatResponse, echo_response),
     &kentik__diagnostic__v202501__echo_response__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };

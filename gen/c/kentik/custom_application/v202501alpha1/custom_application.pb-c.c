@@ -561,7 +561,7 @@ static const ProtobufCFieldDescriptor kentik__custom_application__v202501alpha1_
     offsetof(Kentik__CustomApplication__V202501alpha1__CustomApplication, protocol),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -573,7 +573,7 @@ static const ProtobufCFieldDescriptor kentik__custom_application__v202501alpha1_
     offsetof(Kentik__CustomApplication__V202501alpha1__CustomApplication, port),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -585,7 +585,7 @@ static const ProtobufCFieldDescriptor kentik__custom_application__v202501alpha1_
     offsetof(Kentik__CustomApplication__V202501alpha1__CustomApplication, asn),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {

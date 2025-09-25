@@ -693,7 +693,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__flow_po
     offsetof(Kentik__Alerting__Public__V202505__FlowPolicyLevelSettings__Conditions__BaselineCondition, absolute),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -705,7 +705,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__flow_po
     offsetof(Kentik__Alerting__Public__V202505__FlowPolicyLevelSettings__Conditions__BaselineCondition, percentage),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -729,7 +729,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__flow_po
     offsetof(Kentik__Alerting__Public__V202505__FlowPolicyLevelSettings__Conditions__BaselineCondition, use_lowest),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -741,7 +741,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__flow_po
     offsetof(Kentik__Alerting__Public__V202505__FlowPolicyLevelSettings__Conditions__BaselineCondition, use_highest),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -753,7 +753,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__flow_po
     offsetof(Kentik__Alerting__Public__V202505__FlowPolicyLevelSettings__Conditions__BaselineCondition, use_trigger),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -765,7 +765,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__flow_po
     offsetof(Kentik__Alerting__Public__V202505__FlowPolicyLevelSettings__Conditions__BaselineCondition, skip),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -777,7 +777,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__flow_po
     offsetof(Kentik__Alerting__Public__V202505__FlowPolicyLevelSettings__Conditions__BaselineCondition, use_value),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
@@ -903,7 +903,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__flow_po
     offsetof(Kentik__Alerting__Public__V202505__FlowPolicyLevelSettings__Conditions__InterfaceCapacityCondition, absolute),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -915,7 +915,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__flow_po
     offsetof(Kentik__Alerting__Public__V202505__FlowPolicyLevelSettings__Conditions__InterfaceCapacityCondition, percentage),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
@@ -1182,7 +1182,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__flow_po
     offsetof(Kentik__Alerting__Public__V202505__FlowPolicyLevelSettings__Conditions, static_),
     &kentik__alerting__public__v202505__flow_policy_level_settings__conditions__static_condition__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -1194,7 +1194,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__flow_po
     offsetof(Kentik__Alerting__Public__V202505__FlowPolicyLevelSettings__Conditions, baseline),
     &kentik__alerting__public__v202505__flow_policy_level_settings__conditions__baseline_condition__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -1206,7 +1206,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__flow_po
     offsetof(Kentik__Alerting__Public__V202505__FlowPolicyLevelSettings__Conditions, top_keys),
     &kentik__alerting__public__v202505__flow_policy_level_settings__conditions__top_keys_condition__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -1218,7 +1218,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__flow_po
     offsetof(Kentik__Alerting__Public__V202505__FlowPolicyLevelSettings__Conditions, interface_capacity),
     &kentik__alerting__public__v202505__flow_policy_level_settings__conditions__interface_capacity_condition__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -1230,7 +1230,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__flow_po
     offsetof(Kentik__Alerting__Public__V202505__FlowPolicyLevelSettings__Conditions, ratio),
     &kentik__alerting__public__v202505__flow_policy_level_settings__conditions__ratio_condition__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -1242,7 +1242,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__flow_po
     offsetof(Kentik__Alerting__Public__V202505__FlowPolicyLevelSettings__Conditions, forecast),
     &kentik__alerting__public__v202505__flow_policy_level_settings__conditions__forecast_condition__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };

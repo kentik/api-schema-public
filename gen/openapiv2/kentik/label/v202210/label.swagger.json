@@ -143,7 +143,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202210UpdateLabelRequest"
+              "$ref": "#/definitions/LabelServiceUpdateLabelBody"
             }
           }
         ],
@@ -154,6 +154,46 @@
     }
   },
   "definitions": {
+    "LabelServiceUpdateLabelBody": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Label text visible in listing of configuration of objects to which it has been applied"
+            },
+            "description": {
+              "type": "string",
+              "description": "Optional description of the label, visible only in API responses"
+            },
+            "color": {
+              "type": "string",
+              "description": "[Hexadecimal code of the color](https://www.color-hex.com/) of the label text background in the portal"
+            },
+            "cdate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Creation timestamp (UTC)",
+              "readOnly": true
+            },
+            "edate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Last modification timestamp (UTC)",
+              "readOnly": true
+            }
+          },
+          "title": "Label"
+        }
+      },
+      "title": "UpdateLabelRequest",
+      "required": [
+        "name",
+        "label"
+      ]
+    },
     "labelv202210Label": {
       "type": "object",
       "properties": {
@@ -164,10 +204,7 @@
         },
         "name": {
           "type": "string",
-          "description": "Label text visible in listing of configuration of objects to which it has been applied",
-          "required": [
-            "name"
-          ]
+          "description": "Label text visible in listing of configuration of objects to which it has been applied"
         },
         "description": {
           "type": "string",
@@ -198,14 +235,11 @@
     "protobufAny": {
       "type": "object",
       "properties": {
-        "typeUrl": {
+        "@type": {
           "type": "string"
-        },
-        "value": {
-          "type": "string",
-          "format": "byte"
         }
-      }
+      },
+      "additionalProperties": {}
     },
     "rpcStatus": {
       "type": "object",
@@ -220,6 +254,7 @@
         "details": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
         }
@@ -230,10 +265,7 @@
       "properties": {
         "label": {
           "$ref": "#/definitions/labelv202210Label",
-          "description": "Configuration of the label to be created",
-          "required": [
-            "label"
-          ]
+          "description": "Configuration of the label to be created"
         }
       },
       "title": "CreateLabelRequest",
@@ -262,6 +294,7 @@
         "labels": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/labelv202210Label"
           },
           "description": "List of configured labels",
@@ -274,22 +307,6 @@
         }
       },
       "title": "ListLabelsResponse"
-    },
-    "v202210UpdateLabelRequest": {
-      "type": "object",
-      "properties": {
-        "label": {
-          "$ref": "#/definitions/labelv202210Label",
-          "description": "Configuration of the label to be updated",
-          "required": [
-            "label"
-          ]
-        }
-      },
-      "title": "UpdateLabelRequest",
-      "required": [
-        "label"
-      ]
     },
     "v202210UpdateLabelResponse": {
       "type": "object",

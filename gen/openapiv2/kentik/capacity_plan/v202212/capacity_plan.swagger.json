@@ -365,14 +365,11 @@
     "protobufAny": {
       "type": "object",
       "properties": {
-        "typeUrl": {
+        "@type": {
           "type": "string"
-        },
-        "value": {
-          "type": "string",
-          "format": "byte"
         }
-      }
+      },
+      "additionalProperties": {}
     },
     "rpcStatus": {
       "type": "object",
@@ -387,6 +384,7 @@
         "details": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
         }
@@ -418,6 +416,7 @@
         "interfaces": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/CapacityPlanInterfaceDetail"
           },
           "description": "List of interfaces",
@@ -519,6 +518,7 @@
         "capacity": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202212CapacityPlan"
           },
           "description": "List of capacity plans"
@@ -537,6 +537,7 @@
         "capacity": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202212CapacitySummary"
           },
           "description": "List of capacity plan summaries"

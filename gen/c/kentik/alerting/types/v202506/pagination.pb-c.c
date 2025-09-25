@@ -172,7 +172,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__types__v202506__paginati
     offsetof(Kentik__Alerting__Types__V202506__PaginationInfo, total_count),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -184,7 +184,7 @@ static const ProtobufCFieldDescriptor kentik__alerting__types__v202506__paginati
     offsetof(Kentik__Alerting__Types__V202506__PaginationInfo, has_more_results),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };

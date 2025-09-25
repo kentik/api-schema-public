@@ -279,14 +279,11 @@
             "protobufAny": {
                 "type": "object",
                 "properties": {
-                    "typeUrl": {
+                    "@type": {
                         "type": "string"
-                    },
-                    "value": {
-                        "type": "string",
-                        "format": "byte"
                     }
-                }
+                },
+                "additionalProperties": {}
             },
             "rpcStatus": {
                 "type": "object",
@@ -369,7 +366,8 @@
                     "FILTER_FIELD_VLAN_IN",
                     "FILTER_FIELD_VLAN_OUT"
                 ],
-                "default": "FILTER_FIELD_UNSPECIFIED"
+                "default": "FILTER_FIELD_UNSPECIFIED",
+                "title": "- FILTER_FIELD_DST_AS: default value"
             },
             "v202501alpha1FilterLevel": {
                 "type": "string",
@@ -395,7 +393,8 @@
                     "FILTER_OPERATOR_LESS_THAN",
                     "FILTER_OPERATOR_BITWISE_AND"
                 ],
-                "default": "FILTER_OPERATOR_UNSPECIFIED"
+                "default": "FILTER_OPERATOR_UNSPECIFIED",
+                "title": "- FILTER_OPERATOR_EQUAL: \"=\", default value\n - FILTER_OPERATOR_NOT_EQUAL: \"<>\"\n - FILTER_OPERATOR_CONTAINS: \"ILIKE\"\n - FILTER_OPERATOR_NOT_CONTAINS: \"NOT ILIKE\"\n - FILTER_OPERATOR_REGEX_CONTAINS: \"~\"\n - FILTER_OPERATOR_REGEX_NOT_CONTAINS: \"!~\"\n - FILTER_OPERATOR_GREATER_THAN: \">\"\n - FILTER_OPERATOR_LESS_THAN: \"<\"\n - FILTER_OPERATOR_BITWISE_AND: \"&\""
             },
             "v202501alpha1GetSavedFilterResponse": {
                 "type": "object",
@@ -437,10 +436,7 @@
                     },
                     "filterName": {
                         "type": "string",
-                        "description": "An unique name for the saved filter.",
-                        "required": [
-                            "filter_name"
-                        ]
+                        "description": "An unique name for the saved filter."
                     },
                     "filterDescription": {
                         "type": "string",
@@ -559,10 +555,7 @@
                         "items": {
                             "$ref": "#/components/schemas/v202501alpha1SavedFilterFilterGroup"
                         },
-                        "description": "Individual groups of filters. This allows matches of e.g. ANY(ALL(x), ANY(y)).",
-                        "required": [
-                            "filter_groups"
-                        ]
+                        "description": "Individual groups of filters. This allows matches of e.g. ANY(ALL(x), ANY(y))."
                     }
                 },
                 "required": [

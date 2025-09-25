@@ -251,7 +251,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202205beta1UpdateMonitorRequest"
+                                "$ref": "#/components/schemas/BgpMonitoringAdminServiceUpdateMonitorBody"
                             }
                         }
                     },
@@ -303,7 +303,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202205beta1SetMonitorStatusRequest"
+                                "$ref": "#/components/schemas/BgpMonitoringAdminServiceSetMonitorStatusBody"
                             }
                         }
                     },
@@ -381,17 +381,61 @@
             }
         },
         "schemas": {
+            "BgpMonitoringAdminServiceSetMonitorStatusBody": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "$ref": "#/components/schemas/v202205beta1BgpMonitorStatus"
+                    }
+                }
+            },
+            "BgpMonitoringAdminServiceUpdateMonitorBody": {
+                "type": "object",
+                "properties": {
+                    "monitor": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "status": {
+                                "$ref": "#/components/schemas/v202205beta1BgpMonitorStatus"
+                            },
+                            "settings": {
+                                "$ref": "#/components/schemas/v202205beta1BgpMonitorSettings"
+                            },
+                            "cdate": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "edate": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "createdBy": {
+                                "$ref": "#/components/schemas/v202303UserInfo"
+                            },
+                            "lastUpdatedBy": {
+                                "$ref": "#/components/schemas/v202303UserInfo"
+                            },
+                            "labels": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "protobufAny": {
                 "type": "object",
                 "properties": {
-                    "typeUrl": {
+                    "@type": {
                         "type": "string"
-                    },
-                    "value": {
-                        "type": "string",
-                        "format": "byte"
                     }
-                }
+                },
+                "additionalProperties": {}
             },
             "rpcStatus": {
                 "type": "object",
@@ -453,7 +497,8 @@
                     "BGP_METRIC_TYPE_REACHABILITY",
                     "BGP_METRIC_TYPE_PATH_CHANGES"
                 ],
-                "default": "BGP_METRIC_TYPE_UNSPECIFIED"
+                "default": "BGP_METRIC_TYPE_UNSPECIFIED",
+                "description": " - BGP_METRIC_TYPE_UNSPECIFIED: Invalid value."
             },
             "v202205beta1BgpMonitor": {
                 "type": "object",
@@ -533,7 +578,8 @@
                     "BGP_MONITOR_STATUS_PAUSED",
                     "BGP_MONITOR_STATUS_DELETED"
                 ],
-                "default": "BGP_MONITOR_STATUS_UNSPECIFIED"
+                "default": "BGP_MONITOR_STATUS_UNSPECIFIED",
+                "description": " - BGP_MONITOR_STATUS_UNSPECIFIED: Invalid value.\n - BGP_MONITOR_STATUS_ACTIVE: Monitor is active.\n - BGP_MONITOR_STATUS_PAUSED: Monitor is paused.\n - BGP_MONITOR_STATUS_DELETED: Monitor is deleted. Not settable via SetMonitorStatus."
             },
             "v202205beta1CreateMonitorRequest": {
                 "type": "object",
@@ -577,7 +623,8 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/v202205beta1BgpMetricType"
-                        }
+                        },
+                        "title": "list of metric types to return"
                     }
                 }
             },
@@ -605,7 +652,8 @@
                 "properties": {
                     "time": {
                         "type": "string",
-                        "format": "date-time"
+                        "format": "date-time",
+                        "title": "reference time for route information snapshot"
                     },
                     "target": {
                         "$ref": "#/components/schemas/v202205beta1Nlri"
@@ -631,7 +679,8 @@
                         "type": "object",
                         "additionalProperties": {
                             "type": "string"
-                        }
+                        },
+                        "title": "lookaside map of AS number -> AS name mappings"
                     }
                 }
             },
@@ -693,27 +742,8 @@
                     }
                 }
             },
-            "v202205beta1SetMonitorStatusRequest": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "string"
-                    },
-                    "status": {
-                        "$ref": "#/components/schemas/v202205beta1BgpMonitorStatus"
-                    }
-                }
-            },
             "v202205beta1SetMonitorStatusResponse": {
                 "type": "object"
-            },
-            "v202205beta1UpdateMonitorRequest": {
-                "type": "object",
-                "properties": {
-                    "monitor": {
-                        "$ref": "#/components/schemas/v202205beta1BgpMonitor"
-                    }
-                }
             },
             "v202205beta1UpdateMonitorResponse": {
                 "type": "object",

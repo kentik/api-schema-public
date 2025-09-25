@@ -223,7 +223,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202505SuppressionServiceReplaceRequest"
+                                "$ref": "#/components/schemas/v202505SuppressionServiceReplaceBody"
                             }
                         }
                     },
@@ -301,14 +301,11 @@
             "protobufAny": {
                 "type": "object",
                 "properties": {
-                    "typeUrl": {
+                    "@type": {
                         "type": "string"
-                    },
-                    "value": {
-                        "type": "string",
-                        "format": "byte"
                     }
-                }
+                },
+                "additionalProperties": {}
             },
             "rpcStatus": {
                 "type": "object",
@@ -517,10 +514,7 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The ID of the policy, can be integer ID, UUID or any other format.",
-                        "required": [
-                            "id"
-                        ]
+                        "description": "The ID of the policy, can be integer ID, UUID or any other format."
                     }
                 },
                 "required": [
@@ -558,10 +552,7 @@
                     "startTimeAt": {
                         "type": "string",
                         "format": "date-time",
-                        "description": "The start time when the suppression configuration is active, preventing the alert from being activated.",
-                        "required": [
-                            "start_time_at"
-                        ]
+                        "description": "The start time when the suppression configuration is active, preventing the alert from being activated."
                     },
                     "endTimeAt": {
                         "type": "string",
@@ -683,14 +674,58 @@
                     }
                 }
             },
-            "v202505SuppressionServiceReplaceRequest": {
+            "v202505SuppressionServiceReplaceBody": {
                 "type": "object",
                 "properties": {
                     "suppression": {
-                        "$ref": "#/components/schemas/v202505Suppression"
+                        "type": "object",
+                        "properties": {
+                            "userId": {
+                                "type": "string",
+                                "description": "The ID of the user who most recently updated the suppression configuration.",
+                                "readOnly": true
+                            },
+                            "source": {
+                                "$ref": "#/components/schemas/v202505Source"
+                            },
+                            "keyFilter": {
+                                "$ref": "#/components/schemas/v202303MultiAttributeFilter"
+                            },
+                            "strict": {
+                                "type": "boolean",
+                                "description": "Whether the suppression is strict (all alert key dimensions must have some filter applied and matching)."
+                            },
+                            "comment": {
+                                "type": "string",
+                                "description": "The comment for the suppression configuration."
+                            },
+                            "startTimeAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The start time when the suppression configuration is active, preventing the alert from being activated."
+                            },
+                            "endTimeAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The end time when the suppression configuration is no longer active, allowing the alert to be activated again."
+                            },
+                            "createdAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The time when the suppression configuration was created.",
+                                "readOnly": true
+                            },
+                            "modifiedAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The time when the suppression configuration was last modified.",
+                                "readOnly": true
+                            }
+                        }
                     }
                 },
                 "required": [
+                    "startTimeAt",
                     "suppression"
                 ]
             },

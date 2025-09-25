@@ -398,7 +398,7 @@ static const ProtobufCFieldDescriptor kentik__plan__v202501alpha1__plan__field_d
     offsetof(Kentik__Plan__V202501alpha1__Plan, device_types),
     &kentik__plan__v202501alpha1__device_subtype__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {

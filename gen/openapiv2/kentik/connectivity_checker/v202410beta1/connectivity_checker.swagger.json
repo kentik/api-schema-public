@@ -63,14 +63,11 @@
     "protobufAny": {
       "type": "object",
       "properties": {
-        "typeUrl": {
+        "@type": {
           "type": "string"
-        },
-        "value": {
-          "type": "string",
-          "format": "byte"
         }
-      }
+      },
+      "additionalProperties": {}
     },
     "rpcStatus": {
       "type": "object",
@@ -85,6 +82,7 @@
         "details": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
         }
@@ -106,38 +104,23 @@
       "properties": {
         "cloudProvider": {
           "$ref": "#/definitions/v202410beta1CloudProvider",
-          "description": "Cloud provider identification",
-          "required": [
-            "cloud_provider"
-          ]
+          "description": "Cloud provider identification"
         },
         "src": {
           "type": "string",
-          "description": "Source",
-          "required": [
-            "src"
-          ]
+          "description": "Source"
         },
         "dst": {
           "type": "string",
-          "description": "Destination",
-          "required": [
-            "dst"
-          ]
+          "description": "Destination"
         },
         "dstPort": {
           "type": "string",
-          "description": "Destination Port",
-          "required": [
-            "dst_port"
-          ]
+          "description": "Destination Port"
         },
         "protocol": {
           "type": "string",
-          "description": "Protocol",
-          "required": [
-            "protocol"
-          ]
+          "description": "Protocol"
         },
         "srcType": {
           "$ref": "#/definitions/v202410beta1EntityType",
@@ -150,18 +133,12 @@
         "startTime": {
           "type": "string",
           "format": "date-time",
-          "description": "Start Timestamp (UTC) which defines the time range for the report.",
-          "required": [
-            "start_time"
-          ]
+          "description": "Start Timestamp (UTC) which defines the time range for the report."
         },
         "endTime": {
           "type": "string",
           "format": "date-time",
-          "description": "End timestamp (UTC) which defines the time range for the report.",
-          "required": [
-            "end_time"
-          ]
+          "description": "End timestamp (UTC) which defines the time range for the report."
         },
         "name": {
           "type": "string",

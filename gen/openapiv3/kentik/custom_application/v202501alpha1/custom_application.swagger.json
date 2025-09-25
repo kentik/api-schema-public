@@ -245,14 +245,11 @@
             "protobufAny": {
                 "type": "object",
                 "properties": {
-                    "typeUrl": {
+                    "@type": {
                         "type": "string"
-                    },
-                    "value": {
-                        "type": "string",
-                        "format": "byte"
                     }
-                }
+                },
+                "additionalProperties": {}
             },
             "rpcStatus": {
                 "type": "object",
@@ -290,10 +287,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "A unique name for the custom application.",
-                        "required": [
-                            "name"
-                        ]
+                        "description": "A unique name for the custom application."
                     },
                     "description": {
                         "type": "string",

@@ -208,7 +208,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202106alpha1UpdateUserRequest"
+                                "$ref": "#/components/schemas/UserServiceUpdateUserBody"
                             }
                         }
                     },
@@ -244,17 +244,48 @@
             }
         },
         "schemas": {
+            "UserServiceUpdateUserBody": {
+                "type": "object",
+                "properties": {
+                    "user": {
+                        "type": "object",
+                        "properties": {
+                            "userEmail": {
+                                "type": "string"
+                            },
+                            "username": {
+                                "type": "string"
+                            },
+                            "userFullName": {
+                                "type": "string"
+                            },
+                            "role": {
+                                "$ref": "#/components/schemas/v202106alpha1Role"
+                            },
+                            "lastLogin": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "createdDate": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "updatedDate": {
+                                "type": "string",
+                                "format": "date-time"
+                            }
+                        }
+                    }
+                }
+            },
             "protobufAny": {
                 "type": "object",
                 "properties": {
-                    "typeUrl": {
+                    "@type": {
                         "type": "string"
-                    },
-                    "value": {
-                        "type": "string",
-                        "format": "byte"
                     }
-                }
+                },
+                "additionalProperties": {}
             },
             "rpcStatus": {
                 "type": "object",
@@ -325,14 +356,6 @@
                     "ROLE_SUPER_ADMINISTRATOR"
                 ],
                 "default": "ROLE_UNSPECIFIED"
-            },
-            "v202106alpha1UpdateUserRequest": {
-                "type": "object",
-                "properties": {
-                    "user": {
-                        "$ref": "#/components/schemas/v202106alpha1User"
-                    }
-                }
             },
             "v202106alpha1UpdateUserResponse": {
                 "type": "object",

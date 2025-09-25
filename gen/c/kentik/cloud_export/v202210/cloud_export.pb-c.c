@@ -867,7 +867,7 @@ static const ProtobufCFieldDescriptor kentik__cloud_export__v202210__cloud_expor
     offsetof(Kentik__CloudExport__V202210__CloudExport, aws),
     &kentik__cloud_export__v202210__aws_properties__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -879,7 +879,7 @@ static const ProtobufCFieldDescriptor kentik__cloud_export__v202210__cloud_expor
     offsetof(Kentik__CloudExport__V202210__CloudExport, azure),
     &kentik__cloud_export__v202210__azure_properties__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -891,7 +891,7 @@ static const ProtobufCFieldDescriptor kentik__cloud_export__v202210__cloud_expor
     offsetof(Kentik__CloudExport__V202210__CloudExport, gce),
     &kentik__cloud_export__v202210__gce_properties__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -903,7 +903,7 @@ static const ProtobufCFieldDescriptor kentik__cloud_export__v202210__cloud_expor
     offsetof(Kentik__CloudExport__V202210__CloudExport, ibm),
     &kentik__cloud_export__v202210__ibm_properties__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -915,7 +915,7 @@ static const ProtobufCFieldDescriptor kentik__cloud_export__v202210__cloud_expor
     offsetof(Kentik__CloudExport__V202210__CloudExport, oci),
     &kentik__cloud_export__v202210__oci_properties__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {

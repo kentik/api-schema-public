@@ -403,14 +403,11 @@
             "protobufAny": {
                 "type": "object",
                 "properties": {
-                    "typeUrl": {
+                    "@type": {
                         "type": "string"
-                    },
-                    "value": {
-                        "type": "string",
-                        "format": "byte"
                     }
-                }
+                },
+                "additionalProperties": {}
             },
             "rpcStatus": {
                 "type": "object",
@@ -456,25 +453,16 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the custom dimension. Must start with 'c_'. Valid characters: alphanumeric dashes and underscores. Length: min=1, max=20.",
-                        "required": [
-                            "name"
-                        ]
+                        "description": "The name of the custom dimension. Must start with 'c_'. Valid characters: alphanumeric dashes and underscores. Length: min=1, max=20."
                     },
                     "type": {
                         "type": "string",
                         "description": "Type of the custom dimension (valid values: 'string' or 'uint32')",
-                        "title": "should be an enum instead? but also YAGNI",
-                        "required": [
-                            "type"
-                        ]
+                        "title": "should be an enum instead? but also YAGNI"
                     },
                     "description": {
                         "type": "string",
-                        "description": "The name to be displayed of the custom dimension. Valid characters: alphanumeric spaces, dashes and underscores. Length: min=2, max=30.",
-                        "required": [
-                            "description"
-                        ]
+                        "description": "The name to be displayed of the custom dimension. Valid characters: alphanumeric spaces, dashes and underscores. Length: min=2, max=30."
                     },
                     "populators": {
                         "type": "array",

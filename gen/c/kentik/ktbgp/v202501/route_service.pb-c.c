@@ -1728,7 +1728,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__route_service_anno
     offsetof(Kentik__Ktbgp__V202501__RouteServiceAnnounceRequest, device_ids),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -1740,7 +1740,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__route_service_anno
     offsetof(Kentik__Ktbgp__V202501__RouteServiceAnnounceRequest, flowspec),
     &kentik__ktbgp__v202501__flowspec_update__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -1752,7 +1752,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__route_service_anno
     offsetof(Kentik__Ktbgp__V202501__RouteServiceAnnounceRequest, rtbh),
     &kentik__ktbgp__v202501__rtbhupdate__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
@@ -1831,7 +1831,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__route_service_with
     offsetof(Kentik__Ktbgp__V202501__RouteServiceWithdrawRequest, device_ids),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -1882,7 +1882,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__withdraw__field_de
     offsetof(Kentik__Ktbgp__V202501__Withdraw, flowspec),
     &kentik__ktbgp__v202501__flowspec_match__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -1894,7 +1894,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__withdraw__field_de
     offsetof(Kentik__Ktbgp__V202501__Withdraw, rtbh),
     &kentik__ktbgp__v202501__rtbhmatch__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
@@ -1971,7 +1971,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__flowspec_action__f
     offsetof(Kentik__Ktbgp__V202501__FlowspecAction, accept),
     &kentik__ktbgp__v202501__flowspec_action_accept__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -1983,7 +1983,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__flowspec_action__f
     offsetof(Kentik__Ktbgp__V202501__FlowspecAction, discard),
     &kentik__ktbgp__v202501__flowspec_action_discard__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -1995,7 +1995,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__flowspec_action__f
     offsetof(Kentik__Ktbgp__V202501__FlowspecAction, rate_bytes),
     &kentik__ktbgp__v202501__flowspec_action_traffic_rate_bytes__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -2007,7 +2007,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__flowspec_action__f
     offsetof(Kentik__Ktbgp__V202501__FlowspecAction, mark_dscp),
     &kentik__ktbgp__v202501__flowspec_action_mark_dscp__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -2019,7 +2019,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__flowspec_action__f
     offsetof(Kentik__Ktbgp__V202501__FlowspecAction, rt_redirect),
     &kentik__ktbgp__v202501__flowspec_action_route_target_redirect__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -2031,7 +2031,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__flowspec_action__f
     offsetof(Kentik__Ktbgp__V202501__FlowspecAction, ip_redirect),
     &kentik__ktbgp__v202501__flowspec_action_ipnext_hop_redirect__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -2043,7 +2043,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__flowspec_action__f
     offsetof(Kentik__Ktbgp__V202501__FlowspecAction, action_type),
     &kentik__ktbgp__v202501__flowspec_action_terminal_sample__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -2055,7 +2055,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__flowspec_action__f
     offsetof(Kentik__Ktbgp__V202501__FlowspecAction, rt_copy),
     &kentik__ktbgp__v202501__flowspec_action_ipnext_hop_copy__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -2067,7 +2067,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__flowspec_action__f
     offsetof(Kentik__Ktbgp__V202501__FlowspecAction, regular_community),
     &kentik__ktbgp__v202501__flowspec_action_regular_community__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -2079,7 +2079,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__flowspec_action__f
     offsetof(Kentik__Ktbgp__V202501__FlowspecAction, extended_community),
     &kentik__ktbgp__v202501__flowspec_action_extended_community__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -2091,7 +2091,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__flowspec_action__f
     offsetof(Kentik__Ktbgp__V202501__FlowspecAction, large_community),
     &kentik__ktbgp__v202501__flowspec_action_large_community__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
@@ -2163,7 +2163,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__flowspec_update__f
     offsetof(Kentik__Ktbgp__V202501__FlowspecUpdate, inet),
     NULL,
     &protobuf_c_empty_string,
-    0 | PROTOBUF_C_FIELD_FLAG_DEPRECATED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_DEPRECATED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -2175,7 +2175,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__flowspec_update__f
     offsetof(Kentik__Ktbgp__V202501__FlowspecUpdate, terminal),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_DEPRECATED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_DEPRECATED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -2187,7 +2187,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__flowspec_update__f
     offsetof(Kentik__Ktbgp__V202501__FlowspecUpdate, sample),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_DEPRECATED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_DEPRECATED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -2235,7 +2235,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__flowspec_update__f
     offsetof(Kentik__Ktbgp__V202501__FlowspecUpdate, rate_bytes),
     &kentik__ktbgp__v202501__flowspec_action_traffic_rate_bytes__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -2247,7 +2247,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__flowspec_update__f
     offsetof(Kentik__Ktbgp__V202501__FlowspecUpdate, discard),
     &kentik__ktbgp__v202501__flowspec_action_discard__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -2259,7 +2259,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__flowspec_update__f
     offsetof(Kentik__Ktbgp__V202501__FlowspecUpdate, mark_dscp),
     &kentik__ktbgp__v202501__flowspec_action_mark_dscp__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -2271,7 +2271,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__flowspec_update__f
     offsetof(Kentik__Ktbgp__V202501__FlowspecUpdate, rt_redirect),
     &kentik__ktbgp__v202501__flowspec_action_route_target_redirect__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -2283,7 +2283,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__flowspec_update__f
     offsetof(Kentik__Ktbgp__V202501__FlowspecUpdate, ip_redirect),
     &kentik__ktbgp__v202501__flowspec_action_ipnext_hop_redirect__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -2295,7 +2295,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__flowspec_update__f
     offsetof(Kentik__Ktbgp__V202501__FlowspecUpdate, accept),
     &kentik__ktbgp__v202501__flowspec_action_accept__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -2307,7 +2307,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__flowspec_update__f
     offsetof(Kentik__Ktbgp__V202501__FlowspecUpdate, action_type),
     &kentik__ktbgp__v202501__flowspec_action_terminal_sample__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -2319,7 +2319,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__flowspec_update__f
     offsetof(Kentik__Ktbgp__V202501__FlowspecUpdate, rt_copy),
     &kentik__ktbgp__v202501__flowspec_action_ipnext_hop_copy__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -2331,7 +2331,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__flowspec_update__f
     offsetof(Kentik__Ktbgp__V202501__FlowspecUpdate, regular_community),
     &kentik__ktbgp__v202501__flowspec_action_regular_community__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -2343,7 +2343,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__flowspec_update__f
     offsetof(Kentik__Ktbgp__V202501__FlowspecUpdate, extended_community),
     &kentik__ktbgp__v202501__flowspec_action_extended_community__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -2355,7 +2355,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__flowspec_update__f
     offsetof(Kentik__Ktbgp__V202501__FlowspecUpdate, large_community),
     &kentik__ktbgp__v202501__flowspec_action_large_community__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
@@ -2486,7 +2486,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__rtbhupdate__field_
     offsetof(Kentik__Ktbgp__V202501__RTBHUpdate, inet),
     NULL,
     &protobuf_c_empty_string,
-    0 | PROTOBUF_C_FIELD_FLAG_DEPRECATED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_DEPRECATED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -3267,7 +3267,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__rtbhaction__field_
     offsetof(Kentik__Ktbgp__V202501__RTBHAction, bgp_communities),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -3546,7 +3546,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__fragment_predicate
     offsetof(Kentik__Ktbgp__V202501__FragmentPredicate, values),
     &kentik__ktbgp__v202501__fragment__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
@@ -3673,7 +3673,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__tcpflags_predicate
     offsetof(Kentik__Ktbgp__V202501__TCPFlagsPredicate, values),
     &kentik__ktbgp__v202501__tcpflag__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
@@ -3814,7 +3814,7 @@ static const ProtobufCFieldDescriptor kentik__ktbgp__v202501__routes_filter__fie
     offsetof(Kentik__Ktbgp__V202501__RoutesFilter, device_ids),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };

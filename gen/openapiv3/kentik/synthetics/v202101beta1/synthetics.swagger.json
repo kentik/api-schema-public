@@ -92,7 +92,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202101beta1PatchAgentRequest"
+                                "$ref": "#/components/schemas/SyntheticsAdminServicePatchAgentBody"
                             }
                         }
                     },
@@ -428,7 +428,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202101beta1PatchTestRequest"
+                                "$ref": "#/components/schemas/SyntheticsAdminServicePatchTestBody"
                             }
                         }
                     },
@@ -481,7 +481,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202101beta1GetTraceForTestRequest"
+                                "$ref": "#/components/schemas/SyntheticsDataServiceGetTraceForTestBody"
                             }
                         }
                     },
@@ -533,7 +533,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202101beta1SetTestStatusRequest"
+                                "$ref": "#/components/schemas/SyntheticsAdminServiceSetTestStatusBody"
                             }
                         }
                     },
@@ -569,17 +569,183 @@
             }
         },
         "schemas": {
+            "SyntheticsAdminServicePatchAgentBody": {
+                "type": "object",
+                "properties": {
+                    "agent": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "title": "revert site_name to name to prevent breaking existing users"
+                            },
+                            "status": {
+                                "$ref": "#/components/schemas/v202101beta1AgentStatus"
+                            },
+                            "alias": {
+                                "type": "string"
+                            },
+                            "type": {
+                                "type": "string"
+                            },
+                            "os": {
+                                "type": "string"
+                            },
+                            "ip": {
+                                "type": "string"
+                            },
+                            "lat": {
+                                "type": "number",
+                                "format": "double"
+                            },
+                            "long": {
+                                "type": "number",
+                                "format": "double"
+                            },
+                            "lastAuthed": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "family": {
+                                "$ref": "#/components/schemas/v202101beta1IPFamily"
+                            },
+                            "asn": {
+                                "type": "integer",
+                                "format": "int64"
+                            },
+                            "siteId": {
+                                "type": "string"
+                            },
+                            "version": {
+                                "type": "string"
+                            },
+                            "challenge": {
+                                "type": "string"
+                            },
+                            "city": {
+                                "type": "string"
+                            },
+                            "region": {
+                                "type": "string"
+                            },
+                            "country": {
+                                "type": "string"
+                            },
+                            "testIds": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "localIp": {
+                                "type": "string"
+                            },
+                            "cloudVpc": {
+                                "type": "string"
+                            },
+                            "agentImpl": {
+                                "$ref": "#/components/schemas/v202101beta1ImplementType"
+                            }
+                        }
+                    },
+                    "mask": {
+                        "type": "string",
+                        "title": "CSV values of fields follow the path of Agent object with dot notation (ie. \"agent.alias,export.type\")"
+                    }
+                }
+            },
+            "SyntheticsAdminServicePatchTestBody": {
+                "type": "object",
+                "properties": {
+                    "test": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "type": {
+                                "type": "string"
+                            },
+                            "deviceId": {
+                                "type": "string"
+                            },
+                            "status": {
+                                "$ref": "#/components/schemas/v202101beta1TestStatus"
+                            },
+                            "settings": {
+                                "$ref": "#/components/schemas/v202101beta1TestSettings"
+                            },
+                            "expiresOn": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "cdate": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "edate": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "createdBy": {
+                                "$ref": "#/components/schemas/v202101beta1UserInfo"
+                            },
+                            "lastUpdatedBy": {
+                                "$ref": "#/components/schemas/v202101beta1UserInfo"
+                            }
+                        }
+                    },
+                    "mask": {
+                        "type": "string",
+                        "title": "CSV values of fields follow the path of Test object with dot notation (ie. \"test.name,test.settings\")"
+                    }
+                }
+            },
+            "SyntheticsAdminServiceSetTestStatusBody": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "$ref": "#/components/schemas/v202101beta1TestStatus"
+                    }
+                }
+            },
+            "SyntheticsDataServiceGetTraceForTestBody": {
+                "type": "object",
+                "properties": {
+                    "startTime": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Start of the time interval for this query."
+                    },
+                    "endTime": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "End of the time interval for this query."
+                    },
+                    "agentIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Optionally, limit the query to these agent ids"
+                    },
+                    "targetIps": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "title": "Optionally, limit the query to these destination IP addresses"
+                    }
+                }
+            },
             "protobufAny": {
                 "type": "object",
                 "properties": {
-                    "typeUrl": {
+                    "@type": {
                         "type": "string"
-                    },
-                    "value": {
-                        "type": "string",
-                        "format": "byte"
                     }
-                }
+                },
+                "additionalProperties": {}
             },
             "rpcStatus": {
                 "type": "object",
@@ -619,7 +785,8 @@
                         "description": "id of this agent."
                     },
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "title": "revert site_name to name to prevent breaking existing users"
                     },
                     "status": {
                         "$ref": "#/components/schemas/v202101beta1AgentStatus"
@@ -715,7 +882,8 @@
                     "AGENT_STATUS_WAIT",
                     "AGENT_STATUS_DELETED"
                 ],
-                "default": "AGENT_STATUS_UNSPECIFIED"
+                "default": "AGENT_STATUS_UNSPECIFIED",
+                "description": " - AGENT_STATUS_UNSPECIFIED: Invalid value."
             },
             "v202101beta1AgentTaskConfig": {
                 "type": "object",
@@ -741,7 +909,8 @@
                 }
             },
             "v202101beta1ApplicationMeshTest": {
-                "type": "object"
+                "type": "object",
+                "title": "application mesh test expects empty object in target"
             },
             "v202101beta1City": {
                 "type": "object",
@@ -881,14 +1050,17 @@
                     },
                     "targetRefreshIntervalMillis": {
                         "type": "integer",
-                        "format": "int64"
+                        "format": "int64",
+                        "description": "How often to generate tasks."
                     },
                     "maxTasks": {
                         "type": "integer",
-                        "format": "int64"
+                        "format": "int64",
+                        "description": "Used for top N."
                     },
                     "type": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "What type of flow to look at -- asn, cdn, country, ..."
                     },
                     "inetDirection": {
                         "type": "string"
@@ -975,39 +1147,6 @@
                 "properties": {
                     "test": {
                         "$ref": "#/components/schemas/v202101beta1Test"
-                    }
-                }
-            },
-            "v202101beta1GetTraceForTestRequest": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "string",
-                        "title": "Test id"
-                    },
-                    "startTime": {
-                        "type": "string",
-                        "format": "date-time",
-                        "description": "Start of the time interval for this query."
-                    },
-                    "endTime": {
-                        "type": "string",
-                        "format": "date-time",
-                        "description": "End of the time interval for this query."
-                    },
-                    "agentIds": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "title": "Optionally, limit the query to these agent ids"
-                    },
-                    "targetIps": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "title": "Optionally, limit the query to these destination IP addresses"
                     }
                 }
             },
@@ -1290,7 +1429,8 @@
                     "IP_FAMILY_V6",
                     "IP_FAMILY_DUAL"
                 ],
-                "default": "IP_FAMILY_UNSPECIFIED"
+                "default": "IP_FAMILY_UNSPECIFIED",
+                "description": " - IP_FAMILY_UNSPECIFIED: Invalid value."
             },
             "v202101beta1IPInfo": {
                 "type": "object",
@@ -1478,35 +1618,11 @@
                     }
                 }
             },
-            "v202101beta1PatchAgentRequest": {
-                "type": "object",
-                "properties": {
-                    "agent": {
-                        "$ref": "#/components/schemas/v202101beta1Agent"
-                    },
-                    "mask": {
-                        "type": "string",
-                        "title": "CSV values of fields follow the path of Agent object with dot notation (ie. \"agent.alias,export.type\")"
-                    }
-                }
-            },
             "v202101beta1PatchAgentResponse": {
                 "type": "object",
                 "properties": {
                     "agent": {
                         "$ref": "#/components/schemas/v202101beta1Agent"
-                    }
-                }
-            },
-            "v202101beta1PatchTestRequest": {
-                "type": "object",
-                "properties": {
-                    "test": {
-                        "$ref": "#/components/schemas/v202101beta1Test"
-                    },
-                    "mask": {
-                        "type": "string",
-                        "title": "CSV values of fields follow the path of Test object with dot notation (ie. \"test.name,test.settings\")"
                     }
                 }
             },
@@ -1547,17 +1663,6 @@
                     },
                     "name": {
                         "type": "string"
-                    }
-                }
-            },
-            "v202101beta1SetTestStatusRequest": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "string"
-                    },
-                    "status": {
-                        "$ref": "#/components/schemas/v202101beta1TestStatus"
                     }
                 }
             },
@@ -1690,7 +1795,8 @@
                     "TASK_STATE_UPDATED",
                     "TASK_STATE_DELETED"
                 ],
-                "default": "TASK_STATE_UNSPECIFIED"
+                "default": "TASK_STATE_UNSPECIFIED",
+                "description": " - TASK_STATE_UNSPECIFIED: Invalid value."
             },
             "v202101beta1Test": {
                 "type": "object",
@@ -1877,7 +1983,8 @@
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "Task types."
                     },
                     "healthSettings": {
                         "$ref": "#/components/schemas/v202101beta1HealthSettings"
@@ -1930,7 +2037,8 @@
                     "TEST_STATUS_PAUSED",
                     "TEST_STATUS_DELETED"
                 ],
-                "default": "TEST_STATUS_UNSPECIFIED"
+                "default": "TEST_STATUS_UNSPECIFIED",
+                "description": " - TEST_STATUS_UNSPECIFIED: Invalid value.\n - TEST_STATUS_ACTIVE: Test is active.\n - TEST_STATUS_PAUSED: Test is paused.\n - TEST_STATUS_DELETED: Test is deleted. Not settable via SetTestStatus."
             },
             "v202101beta1TestTraceSettings": {
                 "type": "object",

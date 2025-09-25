@@ -211,7 +211,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202211UpdateSiteMarketRequest"
+                                "$ref": "#/components/schemas/SiteServiceUpdateSiteMarketBody"
                             }
                         }
                     },
@@ -418,7 +418,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202211UpdateSiteRequest"
+                                "$ref": "#/components/schemas/SiteServiceUpdateSiteBody"
                             }
                         }
                     },
@@ -454,17 +454,111 @@
             }
         },
         "schemas": {
+            "SiteServiceUpdateSiteBody": {
+                "type": "object",
+                "properties": {
+                    "site": {
+                        "type": "object",
+                        "properties": {
+                            "title": {
+                                "type": "string",
+                                "description": "User selected title/name"
+                            },
+                            "lat": {
+                                "type": "number",
+                                "format": "double",
+                                "description": "Latitude (signed decimal degrees)"
+                            },
+                            "lon": {
+                                "type": "number",
+                                "format": "double",
+                                "description": "Longitude (signed decimal degrees)"
+                            },
+                            "postalAddress": {
+                                "$ref": "#/components/schemas/v202211PostalAddress"
+                            },
+                            "type": {
+                                "$ref": "#/components/schemas/v202211SiteType"
+                            },
+                            "addressClassification": {
+                                "$ref": "#/components/schemas/v202211SiteIpAddressClassification"
+                            },
+                            "architecture": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/v202211LayerSet"
+                                },
+                                "description": "Logical network topology/architecture"
+                            },
+                            "siteMarket": {
+                                "type": "string",
+                                "description": "Name of the Site Market this site belongs to"
+                            },
+                            "peeringdbSiteMapping": {
+                                "type": "string",
+                                "description": "PeeringDB Mapping of the given site"
+                            }
+                        },
+                        "title": "Site"
+                    }
+                },
+                "title": "UpdateSiteRequest",
+                "required": [
+                    "title",
+                    "type",
+                    "site"
+                ]
+            },
+            "SiteServiceUpdateSiteMarketBody": {
+                "type": "object",
+                "properties": {
+                    "siteMarket": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "User selected unique name"
+                            },
+                            "description": {
+                                "type": "string",
+                                "description": "Free-form description"
+                            },
+                            "numberOfSites": {
+                                "type": "integer",
+                                "format": "int64",
+                                "description": "Number of sites in this market",
+                                "readOnly": true
+                            },
+                            "cdate": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Creation timestamp (UTC)",
+                                "readOnly": true
+                            },
+                            "edate": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Last modification timestamp (UTC)",
+                                "readOnly": true
+                            }
+                        },
+                        "title": "SiteMarket"
+                    }
+                },
+                "title": "UpdateSiteMarketRequest",
+                "required": [
+                    "name",
+                    "siteMarket"
+                ]
+            },
             "protobufAny": {
                 "type": "object",
                 "properties": {
-                    "typeUrl": {
+                    "@type": {
                         "type": "string"
-                    },
-                    "value": {
-                        "type": "string",
-                        "format": "byte"
                     }
-                }
+                },
+                "additionalProperties": {}
             },
             "rpcStatus": {
                 "type": "object",
@@ -623,17 +717,11 @@
                 "properties": {
                     "address": {
                         "type": "string",
-                        "description": "Street address",
-                        "required": [
-                            "address"
-                        ]
+                        "description": "Street address"
                     },
                     "city": {
                         "type": "string",
-                        "description": "City (full name)",
-                        "required": [
-                            "city"
-                        ]
+                        "description": "City (full name)"
                     },
                     "region": {
                         "type": "string",
@@ -645,10 +733,7 @@
                     },
                     "country": {
                         "type": "string",
-                        "description": "Country (full name or country code)",
-                        "required": [
-                            "country"
-                        ]
+                        "description": "Country (full name or country code)"
                     }
                 },
                 "title": "PostalAddress",
@@ -668,10 +753,7 @@
                     },
                     "title": {
                         "type": "string",
-                        "description": "User selected title/name",
-                        "required": [
-                            "title"
-                        ]
+                        "description": "User selected title/name"
                     },
                     "lat": {
                         "type": "number",
@@ -751,10 +833,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "User selected unique name",
-                        "required": [
-                            "name"
-                        ]
+                        "description": "User selected unique name"
                     },
                     "description": {
                         "type": "string",
@@ -799,18 +878,6 @@
                 "description": "- SITE_TYPE_UNSPECIFIED: Invalid value.\n - SITE_TYPE_DATA_CENTER: Data center site type.\n - SITE_TYPE_CLOUD: Cloud site type.\n - SITE_TYPE_BRANCH: Branch office site type.\n - SITE_TYPE_CONNECTIVITY: Connectivity/PoP site type.\n - SITE_TYPE_CUSTOMER: Customer/partner site type.\n - SITE_TYPE_OTHER: Other site type.",
                 "title": "SiteType"
             },
-            "v202211UpdateSiteMarketRequest": {
-                "type": "object",
-                "properties": {
-                    "siteMarket": {
-                        "$ref": "#/components/schemas/v202211SiteMarket"
-                    }
-                },
-                "title": "UpdateSiteMarketRequest",
-                "required": [
-                    "siteMarket"
-                ]
-            },
             "v202211UpdateSiteMarketResponse": {
                 "type": "object",
                 "properties": {
@@ -819,18 +886,6 @@
                     }
                 },
                 "title": "UpdateSiteMarketResponse"
-            },
-            "v202211UpdateSiteRequest": {
-                "type": "object",
-                "properties": {
-                    "site": {
-                        "$ref": "#/components/schemas/v202211Site"
-                    }
-                },
-                "title": "UpdateSiteRequest",
-                "required": [
-                    "site"
-                ]
             },
             "v202211UpdateSiteResponse": {
                 "type": "object",

@@ -198,14 +198,11 @@
             "protobufAny": {
                 "type": "object",
                 "properties": {
-                    "typeUrl": {
+                    "@type": {
                         "type": "string"
-                    },
-                    "value": {
-                        "type": "string",
-                        "format": "byte"
                     }
-                }
+                },
+                "additionalProperties": {}
             },
             "v202308CostProviderConcise": {
                 "type": "object",
@@ -217,10 +214,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Name of the cost provider",
-                        "required": [
-                            "name"
-                        ]
+                        "description": "Name of the cost provider"
                     }
                 },
                 "title": "CostProviderConcise",

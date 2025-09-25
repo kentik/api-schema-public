@@ -172,7 +172,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202212GetASNDetailsRequest"
+                                "$ref": "#/components/schemas/KmiServiceGetASNDetailsBody"
                             }
                         }
                     },
@@ -234,7 +234,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202212GetRankingsRequest"
+                                "$ref": "#/components/schemas/KmiServiceGetRankingsBody"
                             }
                         }
                     },
@@ -302,17 +302,51 @@
             }
         },
         "schemas": {
+            "KmiServiceGetASNDetailsBody": {
+                "type": "object",
+                "properties": {
+                    "ip": {
+                        "type": "string",
+                        "description": "IP Address Family ('v4' or 'v6'). Defaults to 'v4'."
+                    },
+                    "mutualProvider": {
+                        "type": "string",
+                        "description": "Filter by mutual provider ('all', 'only', 'exclude'). Defaults to 'all'."
+                    },
+                    "mutualCustomer": {
+                        "type": "string",
+                        "description": "Filter by mutual customer ('all', 'only', 'exclude'). Defaults to 'all'."
+                    },
+                    "singlehomedCustomer": {
+                        "type": "string",
+                        "description": "Filter by singlehomed customer ('all', 'only', 'exclude'). Defaults to 'all'."
+                    }
+                },
+                "title": "GetASNDetailsRequest"
+            },
+            "KmiServiceGetRankingsBody": {
+                "type": "object",
+                "properties": {
+                    "ip": {
+                        "type": "string",
+                        "description": "IP Address Family ('v4' or 'v6') of requested ranking. Defaults to 'v4'."
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Maximum number of entries returned. (Default: 600)."
+                    }
+                },
+                "title": "GetRankingsRequest"
+            },
             "protobufAny": {
                 "type": "object",
                 "properties": {
-                    "typeUrl": {
+                    "@type": {
                         "type": "string"
-                    },
-                    "value": {
-                        "type": "string",
-                        "format": "byte"
                     }
-                }
+                },
+                "additionalProperties": {}
             },
             "rpcStatus": {
                 "type": "object",
@@ -416,40 +450,6 @@
                 },
                 "title": "CustomerProvider"
             },
-            "v202212GetASNDetailsRequest": {
-                "type": "object",
-                "properties": {
-                    "marketId": {
-                        "type": "string",
-                        "description": "Unique Geo Market identifier (as provided by the ListMarkets RPC)"
-                    },
-                    "asn": {
-                        "type": "string",
-                        "description": "Autonomous System Number (ASN)"
-                    },
-                    "ip": {
-                        "type": "string",
-                        "description": "IP Address Family ('v4' or 'v6'). Defaults to 'v4'."
-                    },
-                    "type": {
-                        "type": "string",
-                        "description": "Type of the requested ASN ('all', 'customer', 'provider', 'peers'). Defaults to 'all'."
-                    },
-                    "mutualProvider": {
-                        "type": "string",
-                        "description": "Filter by mutual provider ('all', 'only', 'exclude'). Defaults to 'all'."
-                    },
-                    "mutualCustomer": {
-                        "type": "string",
-                        "description": "Filter by mutual customer ('all', 'only', 'exclude'). Defaults to 'all'."
-                    },
-                    "singlehomedCustomer": {
-                        "type": "string",
-                        "description": "Filter by singlehomed customer ('all', 'only', 'exclude'). Defaults to 'all'."
-                    }
-                },
-                "title": "GetASNDetailsRequest"
-            },
             "v202212GetASNDetailsResponse": {
                 "type": "object",
                 "properties": {
@@ -486,29 +486,6 @@
                     }
                 },
                 "title": "GetGlobalInsightsResponse"
-            },
-            "v202212GetRankingsRequest": {
-                "type": "object",
-                "properties": {
-                    "marketId": {
-                        "type": "string",
-                        "description": "Unique Geo Market identifier (as provided by the ListMarkets RPC)"
-                    },
-                    "rankType": {
-                        "type": "string",
-                        "description": "Type of the requested ranking ('customer_base', 'customer_base_retail', 'customer_base_wholesome', 'customer_base_backbone', 'customer_growth', 'peering_base'). Defaults to 'customer_base'."
-                    },
-                    "ip": {
-                        "type": "string",
-                        "description": "IP Address Family ('v4' or 'v6') of requested ranking. Defaults to 'v4'."
-                    },
-                    "limit": {
-                        "type": "integer",
-                        "format": "int64",
-                        "description": "Maximum number of entries returned. (Default: 600)."
-                    }
-                },
-                "title": "GetRankingsRequest"
             },
             "v202212GetRankingsResponse": {
                 "type": "object",

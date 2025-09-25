@@ -789,7 +789,7 @@ static const ProtobufCFieldDescriptor kentik__kmi__v202212__ranking__field_descr
     offsetof(Kentik__Kmi__V202212__Ranking, asn),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -813,7 +813,7 @@ static const ProtobufCFieldDescriptor kentik__kmi__v202212__ranking__field_descr
     offsetof(Kentik__Kmi__V202212__Ranking, rank),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -825,7 +825,7 @@ static const ProtobufCFieldDescriptor kentik__kmi__v202212__ranking__field_descr
     offsetof(Kentik__Kmi__V202212__Ranking, rank_change),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -837,7 +837,7 @@ static const ProtobufCFieldDescriptor kentik__kmi__v202212__ranking__field_descr
     offsetof(Kentik__Kmi__V202212__Ranking, score),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -849,7 +849,7 @@ static const ProtobufCFieldDescriptor kentik__kmi__v202212__ranking__field_descr
     offsetof(Kentik__Kmi__V202212__Ranking, score_change),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
@@ -892,7 +892,7 @@ static const ProtobufCFieldDescriptor kentik__kmi__v202212__customer_provider__f
     offsetof(Kentik__Kmi__V202212__CustomerProvider, asn),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -916,7 +916,7 @@ static const ProtobufCFieldDescriptor kentik__kmi__v202212__customer_provider__f
     offsetof(Kentik__Kmi__V202212__CustomerProvider, score),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -928,7 +928,7 @@ static const ProtobufCFieldDescriptor kentik__kmi__v202212__customer_provider__f
     offsetof(Kentik__Kmi__V202212__CustomerProvider, singlehomed_customer),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -940,7 +940,7 @@ static const ProtobufCFieldDescriptor kentik__kmi__v202212__customer_provider__f
     offsetof(Kentik__Kmi__V202212__CustomerProvider, mutual_customer),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -952,7 +952,7 @@ static const ProtobufCFieldDescriptor kentik__kmi__v202212__customer_provider__f
     offsetof(Kentik__Kmi__V202212__CustomerProvider, mutual_provider),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
@@ -995,7 +995,7 @@ static const ProtobufCFieldDescriptor kentik__kmi__v202212__peer__field_descript
     offsetof(Kentik__Kmi__V202212__Peer, asn),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -1019,7 +1019,7 @@ static const ProtobufCFieldDescriptor kentik__kmi__v202212__peer__field_descript
     offsetof(Kentik__Kmi__V202212__Peer, pfx_count),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
@@ -1059,7 +1059,7 @@ static const ProtobufCFieldDescriptor kentik__kmi__v202212__asndetails__field_de
     offsetof(Kentik__Kmi__V202212__ASNDetails, asn),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -1162,7 +1162,7 @@ static const ProtobufCFieldDescriptor kentik__kmi__v202212__insight__field_descr
     offsetof(Kentik__Kmi__V202212__Insight, asn),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -1186,7 +1186,7 @@ static const ProtobufCFieldDescriptor kentik__kmi__v202212__insight__field_descr
     offsetof(Kentik__Kmi__V202212__Insight, type),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -1344,7 +1344,7 @@ static const ProtobufCFieldDescriptor kentik__kmi__v202212__get_rankings_request
     offsetof(Kentik__Kmi__V202212__GetRankingsRequest, limit),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
@@ -1590,7 +1590,7 @@ static const ProtobufCFieldDescriptor kentik__kmi__v202212__get_global_insights_
     offsetof(Kentik__Kmi__V202212__GetGlobalInsightsRequest, limit),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
@@ -1678,7 +1678,7 @@ static const ProtobufCFieldDescriptor kentik__kmi__v202212__get_asninsights_requ
     offsetof(Kentik__Kmi__V202212__GetASNInsightsRequest, limit),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };

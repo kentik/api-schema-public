@@ -92,7 +92,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202202UpdateAgentRequest"
+                                "$ref": "#/components/schemas/SyntheticsAdminServiceUpdateAgentBody"
                             }
                         }
                     },
@@ -423,7 +423,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202202UpdateTestRequest"
+                                "$ref": "#/components/schemas/SyntheticsAdminServiceUpdateTestBody"
                             }
                         }
                     },
@@ -476,7 +476,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202202SetTestStatusRequest"
+                                "$ref": "#/components/schemas/SyntheticsAdminServiceSetTestStatusBody"
                             }
                         }
                     },
@@ -562,17 +562,193 @@
                     }
                 }
             },
+            "SyntheticsAdminServiceSetTestStatusBody": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "$ref": "#/components/schemas/v202202TestStatus"
+                    }
+                },
+                "title": "SetTestStatusRequest",
+                "required": [
+                    "status"
+                ]
+            },
+            "SyntheticsAdminServiceUpdateAgentBody": {
+                "type": "object",
+                "properties": {
+                    "agent": {
+                        "type": "object",
+                        "properties": {
+                            "siteName": {
+                                "type": "string",
+                                "description": "Name of the site where agent is located"
+                            },
+                            "status": {
+                                "$ref": "#/components/schemas/v202202AgentStatus"
+                            },
+                            "alias": {
+                                "type": "string",
+                                "description": "User selected descriptive name of the agent"
+                            },
+                            "type": {
+                                "type": "string",
+                                "description": "Type of agent (global | private)",
+                                "readOnly": true
+                            },
+                            "os": {
+                                "type": "string",
+                                "description": "OS version of server/VM hosting the agent",
+                                "readOnly": true
+                            },
+                            "ip": {
+                                "type": "string",
+                                "description": "Public IP address of the agent (auto-detected)",
+                                "readOnly": true
+                            },
+                            "lat": {
+                                "type": "number",
+                                "format": "double",
+                                "description": "Latitude of agent's location (signed decimal degrees)"
+                            },
+                            "long": {
+                                "type": "number",
+                                "format": "double",
+                                "description": "Longitude of agent's location (signed decimal degrees)"
+                            },
+                            "lastAuthed": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Timestamp of the last authorization",
+                                "readOnly": true
+                            },
+                            "family": {
+                                "$ref": "#/components/schemas/v202202IPFamily"
+                            },
+                            "asn": {
+                                "type": "integer",
+                                "format": "int64",
+                                "description": "ASN of the AS owning agent's public address"
+                            },
+                            "siteId": {
+                                "type": "string",
+                                "description": "ID of the site hosting the agent (if configured in Kentik)"
+                            },
+                            "version": {
+                                "type": "string",
+                                "description": "Software version of the agent",
+                                "readOnly": true
+                            },
+                            "city": {
+                                "type": "string",
+                                "description": "City where the agent is located"
+                            },
+                            "region": {
+                                "type": "string",
+                                "description": "Geographical region of agent's location"
+                            },
+                            "country": {
+                                "type": "string",
+                                "description": "Country of agent's location"
+                            },
+                            "testIds": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "IDs of user's test running on the agent",
+                                "readOnly": true
+                            },
+                            "localIp": {
+                                "type": "string",
+                                "description": "Internal IP address of the agent"
+                            },
+                            "cloudRegion": {
+                                "type": "string",
+                                "description": "Cloud region (if any) hosting the agent"
+                            },
+                            "cloudProvider": {
+                                "type": "string",
+                                "description": "Cloud provider (if any) hosting the agent"
+                            },
+                            "agentImpl": {
+                                "$ref": "#/components/schemas/v202202ImplementType"
+                            },
+                            "labels": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "List of names of labels associated with the agent"
+                            },
+                            "metadata": {
+                                "$ref": "#/components/schemas/v202202AgentMetadata"
+                            }
+                        },
+                        "title": "Agent"
+                    }
+                },
+                "title": "UpdateAgentRequest"
+            },
+            "SyntheticsAdminServiceUpdateTestBody": {
+                "type": "object",
+                "properties": {
+                    "test": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "User selected name of the test"
+                            },
+                            "type": {
+                                "type": "string",
+                                "description": "Type of the test"
+                            },
+                            "status": {
+                                "$ref": "#/components/schemas/v202202TestStatus"
+                            },
+                            "settings": {
+                                "$ref": "#/components/schemas/v202202TestSettings"
+                            },
+                            "cdate": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Creation timestamp (UTC)",
+                                "readOnly": true
+                            },
+                            "edate": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Last modification timestamp (UTC)",
+                                "readOnly": true
+                            },
+                            "createdBy": {
+                                "$ref": "#/components/schemas/v202303UserInfo"
+                            },
+                            "lastUpdatedBy": {
+                                "$ref": "#/components/schemas/v202303UserInfo"
+                            },
+                            "labels": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "Set of labels associated with the test"
+                            }
+                        },
+                        "title": "Test"
+                    }
+                },
+                "title": "UpdateTestRequest"
+            },
             "protobufAny": {
                 "type": "object",
                 "properties": {
-                    "typeUrl": {
+                    "@type": {
                         "type": "string"
-                    },
-                    "value": {
-                        "type": "string",
-                        "format": "byte"
                     }
-                }
+                },
+                "additionalProperties": {}
             },
             "rpcStatus": {
                 "type": "object",
@@ -1005,26 +1181,17 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "List of test IDs for which to retrieve results",
-                        "required": [
-                            "ids"
-                        ]
+                        "description": "List of test IDs for which to retrieve results"
                     },
                     "startTime": {
                         "type": "string",
                         "format": "date-time",
-                        "description": "Timestamp of the oldest results to include in results",
-                        "required": [
-                            "start_time"
-                        ]
+                        "description": "Timestamp of the oldest results to include in results"
                     },
                     "endTime": {
                         "type": "string",
                         "format": "date-time",
-                        "description": "Timestamp of the newest results to include in results",
-                        "required": [
-                            "end_time"
-                        ]
+                        "description": "Timestamp of the newest results to include in results"
                     },
                     "agentIds": {
                         "type": "array",
@@ -1083,18 +1250,12 @@
                     "startTime": {
                         "type": "string",
                         "format": "date-time",
-                        "description": "Timestamp of the oldest results to include in results",
-                        "required": [
-                            "start_time"
-                        ]
+                        "description": "Timestamp of the oldest results to include in results"
                     },
                     "endTime": {
                         "type": "string",
                         "format": "date-time",
-                        "description": "Timestamp of the newest results to include in results",
-                        "required": [
-                            "end_time"
-                        ]
+                        "description": "Timestamp of the newest results to include in results"
                     },
                     "agentIds": {
                         "type": "array",
@@ -1593,26 +1754,6 @@
                 },
                 "title": "PingResults"
             },
-            "v202202SetTestStatusRequest": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "string",
-                        "description": "ID of the test which status is to be modified",
-                        "required": [
-                            "id"
-                        ]
-                    },
-                    "status": {
-                        "$ref": "#/components/schemas/v202202TestStatus"
-                    }
-                },
-                "title": "SetTestStatusRequest",
-                "required": [
-                    "id",
-                    "status"
-                ]
-            },
             "v202202SetTestStatusResponse": {
                 "type": "object",
                 "title": "SetTestStatusResponse"
@@ -1914,15 +2055,6 @@
                 },
                 "title": "TraceHop"
             },
-            "v202202UpdateAgentRequest": {
-                "type": "object",
-                "properties": {
-                    "agent": {
-                        "$ref": "#/components/schemas/v202202Agent"
-                    }
-                },
-                "title": "UpdateAgentRequest"
-            },
             "v202202UpdateAgentResponse": {
                 "type": "object",
                 "properties": {
@@ -1931,15 +2063,6 @@
                     }
                 },
                 "title": "UpdateAgentResponse"
-            },
-            "v202202UpdateTestRequest": {
-                "type": "object",
-                "properties": {
-                    "test": {
-                        "$ref": "#/components/schemas/v202202Test"
-                    }
-                },
-                "title": "UpdateTestRequest"
             },
             "v202202UpdateTestResponse": {
                 "type": "object",

@@ -186,7 +186,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202505PolicyServiceDisableRequest"
+                                "$ref": "#/components/schemas/PolicyServiceDisableBody"
                             }
                         }
                     },
@@ -261,7 +261,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202505PolicyServiceEnableRequest"
+                                "$ref": "#/components/schemas/PolicyServiceEnableBody"
                             }
                         }
                     },
@@ -393,41 +393,26 @@
                 "properties": {
                     "lhsMetric": {
                         "type": "string",
-                        "description": "The left hand side metric used for the policy level condition.",
-                        "required": [
-                            "lhs_metric"
-                        ]
+                        "description": "The left hand side metric used for the policy level condition."
                     },
                     "rhsMetric": {
                         "type": "string",
-                        "description": "The right hand side metric used for the policy level condition.",
-                        "required": [
-                            "rhs_metric"
-                        ]
+                        "description": "The right hand side metric used for the policy level condition."
                     },
                     "lhsProportion": {
                         "type": "integer",
                         "format": "int64",
-                        "description": "The left hand side proportion used for the policy level condition.",
-                        "required": [
-                            "lhs_proportion"
-                        ]
+                        "description": "The left hand side proportion used for the policy level condition."
                     },
                     "rhsProportion": {
                         "type": "integer",
                         "format": "int64",
-                        "description": "The right hand side proportion used for the policy level condition.",
-                        "required": [
-                            "rhs_proportion"
-                        ]
+                        "description": "The right hand side proportion used for the policy level condition."
                     },
                     "margin": {
                         "type": "number",
                         "format": "double",
-                        "description": "The margin used for the policy level condition.",
-                        "required": [
-                            "margin"
-                        ]
+                        "description": "The margin used for the policy level condition."
                     },
                     "direction": {
                         "$ref": "#/components/schemas/RatioConditionDirection"
@@ -447,10 +432,7 @@
                 "properties": {
                     "metric": {
                         "type": "string",
-                        "description": "The metric used for the policy level condition.",
-                        "required": [
-                            "metric"
-                        ]
+                        "description": "The metric used for the policy level condition."
                     },
                     "operator": {
                         "$ref": "#/components/schemas/FlowPolicyLevelSettingsConditionsOperator"
@@ -458,10 +440,7 @@
                     "value": {
                         "type": "number",
                         "format": "double",
-                        "description": "The value used for the policy level condition.",
-                        "required": [
-                            "value"
-                        ]
+                        "description": "The value used for the policy level condition."
                     }
                 },
                 "required": [
@@ -479,10 +458,7 @@
                     "count": {
                         "type": "string",
                         "format": "int64",
-                        "description": "The count of the top keys used for the policy level condition.",
-                        "required": [
-                            "count"
-                        ]
+                        "description": "The count of the top keys used for the policy level condition."
                     }
                 },
                 "required": [
@@ -525,24 +501,15 @@
                     "matchTimes": {
                         "type": "string",
                         "format": "int64",
-                        "description": "The number of times the policy level conditions must be met within the match window to activate the alert.",
-                        "required": [
-                            "match_times"
-                        ]
+                        "description": "The number of times the policy level conditions must be met within the match window to activate the alert."
                     },
                     "matchWindow": {
                         "type": "string",
-                        "description": "The window of time within which the policy level conditions must be met to activate the alert.",
-                        "required": [
-                            "match_window"
-                        ]
+                        "description": "The window of time within which the policy level conditions must be met to activate the alert."
                     },
                     "resetCountWindow": {
                         "type": "string",
-                        "description": "The window of time within which the level conditions must not be met again to reset the match count.",
-                        "required": [
-                            "reset_count_window"
-                        ]
+                        "description": "The window of time within which the level conditions must not be met again to reset the match count."
                     }
                 },
                 "required": [
@@ -594,17 +561,11 @@
                 "properties": {
                     "platformId": {
                         "type": "string",
-                        "description": "The platform ID of the mitigation association.",
-                        "required": [
-                            "platform_id"
-                        ]
+                        "description": "The platform ID of the mitigation association."
                     },
                     "methodId": {
                         "type": "string",
-                        "description": "The method ID of the mitigation association.",
-                        "required": [
-                            "method_id"
-                        ]
+                        "description": "The method ID of the mitigation association."
                     }
                 },
                 "required": [
@@ -620,26 +581,17 @@
                         "format": "int64",
                         "default": "25",
                         "description": "The number of alert keys stored in the baseline per policy window.",
-                        "title": "not exposing completeness duration as this does not work",
-                        "required": [
-                            "stored_key_count"
-                        ]
+                        "title": "not exposing completeness duration as this does not work"
                     },
                     "windowLength": {
                         "type": "string",
                         "default": "2419200s",
-                        "description": "The length of the entire policy baseline window.",
-                        "required": [
-                            "window_length"
-                        ]
+                        "description": "The length of the entire policy baseline window."
                     },
                     "windowStartOffset": {
                         "type": "string",
                         "default": "86400s",
-                        "description": "The start offset from now used when calculating the baseline value.",
-                        "required": [
-                            "window_start_offset"
-                        ]
+                        "description": "The start offset from now used when calculating the baseline value."
                     },
                     "rollupAggregation": {
                         "$ref": "#/components/schemas/v202505AggregationType"
@@ -649,10 +601,7 @@
                     },
                     "neighbourhoodRadius": {
                         "type": "string",
-                        "description": "The neighbourhood radius used to calculate the neighbourhood value. This is the number of hours before and after the current hour to include in the neighbourhood value calculation.",
-                        "required": [
-                            "neighbourhood_radius"
-                        ]
+                        "description": "The neighbourhood radius used to calculate the neighbourhood value. This is the number of hours before and after the current hour to include in the neighbourhood value calculation."
                     },
                     "neighbourhoodAggregation": {
                         "$ref": "#/components/schemas/v202505AggregationType"
@@ -680,7 +629,7 @@
                     "CLEAR_TYPE_CLEAR_UNLESS_ACTIVATED"
                 ],
                 "default": "CLEAR_TYPE_UNSPECIFIED",
-                "title": "- CLEAR_TYPE_CLEAR_MANUAL: CLEAR_TYPE_CONDITIONAL = 1; we don't want to expose this yet, not implemented"
+                "title": "- CLEAR_TYPE_UNSPECIFIED: assumed CLEAR_TYPE_CLEAR_UNLESS_ACTIVATED if not specified\n - CLEAR_TYPE_CLEAR_MANUAL: CLEAR_TYPE_CONDITIONAL = 1; we don't want to expose this yet, not implemented"
             },
             "PolicyDimensionFiltersConjunction": {
                 "type": "object",
@@ -810,6 +759,12 @@
                     }
                 }
             },
+            "PolicyServiceDisableBody": {
+                "type": "object"
+            },
+            "PolicyServiceEnableBody": {
+                "type": "object"
+            },
             "RatioConditionDirection": {
                 "type": "string",
                 "enum": [
@@ -853,14 +808,11 @@
             "protobufAny": {
                 "type": "object",
                 "properties": {
-                    "typeUrl": {
+                    "@type": {
                         "type": "string"
-                    },
-                    "value": {
-                        "type": "string",
-                        "format": "byte"
                     }
-                }
+                },
+                "additionalProperties": {}
             },
             "rpcStatus": {
                 "type": "object",
@@ -992,10 +944,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The dimensions of the event to trigger the policy.",
-                        "required": [
-                            "dimensions"
-                        ]
+                        "description": "The dimensions of the event to trigger the policy."
                     },
                     "filters": {
                         "$ref": "#/components/schemas/v202505PolicyFilters"
@@ -1015,10 +964,7 @@
                         "items": {
                             "$ref": "#/components/schemas/FlowPolicyLevelSettingsConditions"
                         },
-                        "description": "The conditions of the policy level settings.",
-                        "required": [
-                            "conditions"
-                        ]
+                        "description": "The conditions of the policy level settings."
                     },
                     "activation": {
                         "$ref": "#/components/schemas/FlowPolicyLevelSettingsActivationSettings"
@@ -1029,9 +975,7 @@
                             "$ref": "#/components/schemas/FlowPolicyLevelSettingsMitigationAssociation"
                         },
                         "description": "The mitigation associations of the given policy level (when alert is activated with the level severity, these mitigation methods will be applied).",
-                        "required": [
-                            "mitigation_associations"
-                        ]
+                        "title": "in future: dimension filters for sub-policies"
                     }
                 },
                 "required": [
@@ -1073,20 +1017,14 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The dimensions of the policy used to create alert keys for activated alerts.",
-                        "required": [
-                            "dimensions"
-                        ]
+                        "description": "The dimensions of the policy used to create alert keys for activated alerts."
                     },
                     "metrics": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "The metrics of the dataset that can be used for policy threshold conditions. Metrics are also provided with the activated alert context information",
-                        "required": [
-                            "metrics"
-                        ]
+                        "description": "The metrics of the dataset that can be used for policy threshold conditions. Metrics are also provided with the activated alert context information"
                     }
                 },
                 "required": [
@@ -1102,19 +1040,13 @@
                     "frequency": {
                         "type": "string",
                         "default": "60s",
-                        "description": "The frequency of the policy evaluation, also known as the policy window length.",
-                        "required": [
-                            "frequency"
-                        ]
+                        "description": "The frequency of the policy evaluation, also known as the policy window length."
                     },
                     "keyCount": {
                         "type": "string",
                         "format": "int64",
                         "default": "25",
-                        "description": "The number of alert keys tracked per policy window.",
-                        "required": [
-                            "key_count"
-                        ]
+                        "description": "The number of alert keys tracked per policy window."
                     }
                 },
                 "required": [
@@ -1185,7 +1117,8 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/v202505NmsConditionGroup"
-                        }
+                        },
+                        "title": "recursive"
                     }
                 }
             },
@@ -1246,7 +1179,8 @@
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "title": "this might be irrelevant based on policy type - only applicable if custom type"
                     }
                 }
             },
@@ -1302,10 +1236,7 @@
                 "properties": {
                     "channelId": {
                         "type": "string",
-                        "description": "The ID of the notification channel.",
-                        "required": [
-                            "channel_id"
-                        ]
+                        "description": "The ID of the notification channel."
                     }
                 },
                 "required": [
@@ -1353,6 +1284,7 @@
                     "enabled": {
                         "type": "boolean",
                         "description": "Whether the policy is enabled.",
+                        "title": "provide annotation for default value",
                         "readOnly": true
                     },
                     "levels": {
@@ -1361,6 +1293,7 @@
                             "$ref": "#/components/schemas/PolicyPolicyLevel"
                         },
                         "description": "The policy levels configuration.",
+                        "title": "in future labels will be supported",
                         "readOnly": true
                     },
                     "flow": {
@@ -1524,25 +1457,6 @@
                     }
                 }
             },
-            "v202505PolicyServiceDisableRequest": {
-                "type": "object",
-                "properties": {
-                    "policyType": {
-                        "$ref": "#/components/schemas/v202505PolicyType"
-                    },
-                    "id": {
-                        "type": "string",
-                        "description": "The ID of the policy to disable.",
-                        "required": [
-                            "id"
-                        ]
-                    }
-                },
-                "required": [
-                    "policyType",
-                    "id"
-                ]
-            },
             "v202505PolicyServiceDisableResponse": {
                 "type": "object",
                 "properties": {
@@ -1550,25 +1464,6 @@
                         "$ref": "#/components/schemas/v202505Policy"
                     }
                 }
-            },
-            "v202505PolicyServiceEnableRequest": {
-                "type": "object",
-                "properties": {
-                    "policyType": {
-                        "$ref": "#/components/schemas/v202505PolicyType"
-                    },
-                    "id": {
-                        "type": "string",
-                        "description": "The ID of the policy to enable.",
-                        "required": [
-                            "id"
-                        ]
-                    }
-                },
-                "required": [
-                    "policyType",
-                    "id"
-                ]
             },
             "v202505PolicyServiceEnableResponse": {
                 "type": "object",
@@ -1642,10 +1537,7 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The ID of the policy, can be integer ID, UUID or any other format.",
-                        "required": [
-                            "id"
-                        ]
+                        "description": "The ID of the policy, can be integer ID, UUID or any other format."
                     }
                 },
                 "required": [

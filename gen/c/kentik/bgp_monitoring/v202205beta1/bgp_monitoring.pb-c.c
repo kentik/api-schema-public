@@ -1038,7 +1038,7 @@ static const ProtobufCFieldDescriptor kentik__bgp_monitoring__v202205beta1__nlri
     offsetof(Kentik__BgpMonitoring__V202205beta1__Nlri, prefix),
     NULL,
     &protobuf_c_empty_string,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
@@ -1129,7 +1129,7 @@ static const ProtobufCFieldDescriptor kentik__bgp_monitoring__v202205beta1__bgp_
     offsetof(Kentik__BgpMonitoring__V202205beta1__BgpMonitorSettings, allowed_asns),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -1501,7 +1501,7 @@ static const ProtobufCFieldDescriptor kentik__bgp_monitoring__v202205beta1__bgp_
     offsetof(Kentik__BgpMonitoring__V202205beta1__BgpMetric, reachability),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -1513,7 +1513,7 @@ static const ProtobufCFieldDescriptor kentik__bgp_monitoring__v202205beta1__bgp_
     offsetof(Kentik__BgpMonitoring__V202205beta1__BgpMetric, path_changes),
     NULL,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
@@ -2025,7 +2025,7 @@ static const ProtobufCFieldDescriptor kentik__bgp_monitoring__v202205beta1__get_
     offsetof(Kentik__BgpMonitoring__V202205beta1__GetMetricsForTargetRequest, metrics),
     &kentik__bgp_monitoring__v202205beta1__bgp_metric_type__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };

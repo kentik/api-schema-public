@@ -211,7 +211,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202210UpdateMonitorRequest"
+              "$ref": "#/definitions/BgpMonitoringAdminServiceUpdateMonitorBody"
             }
           }
         ],
@@ -252,7 +252,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202210SetMonitorStatusRequest"
+              "$ref": "#/definitions/BgpMonitoringAdminServiceSetMonitorStatusBody"
             }
           }
         ],
@@ -297,17 +297,83 @@
     }
   },
   "definitions": {
+    "BgpMonitoringAdminServiceSetMonitorStatusBody": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/v202210BgpMonitorStatus",
+          "description": "Desired administrative status of the monitor"
+        }
+      },
+      "title": "SetMonitorStatusRequest",
+      "required": [
+        "status"
+      ]
+    },
+    "BgpMonitoringAdminServiceUpdateMonitorBody": {
+      "type": "object",
+      "properties": {
+        "monitor": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "User selected name of the monitor"
+            },
+            "status": {
+              "$ref": "#/definitions/v202210BgpMonitorStatus",
+              "description": "Administrative status of the monitor"
+            },
+            "settings": {
+              "$ref": "#/definitions/v202210BgpMonitorSettings",
+              "description": "Configuration parameters"
+            },
+            "cdate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Creation timestamp (UTC)",
+              "readOnly": true
+            },
+            "edate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Last modification timestamp (UTC)",
+              "readOnly": true
+            },
+            "createdBy": {
+              "$ref": "#/definitions/v202303UserInfo",
+              "description": "Identity of monitor creator",
+              "readOnly": true
+            },
+            "lastUpdatedBy": {
+              "$ref": "#/definitions/v202303UserInfo",
+              "description": "Identity of user that has modified the monitor last",
+              "readOnly": true
+            },
+            "labels": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "title": "BgpMonitor"
+        }
+      },
+      "title": "UpdateMonitorRequest",
+      "required": [
+        "name",
+        "monitor"
+      ]
+    },
     "protobufAny": {
       "type": "object",
       "properties": {
-        "typeUrl": {
+        "@type": {
           "type": "string"
-        },
-        "value": {
-          "type": "string",
-          "format": "byte"
         }
-      }
+      },
+      "additionalProperties": {}
     },
     "rpcStatus": {
       "type": "object",
@@ -322,6 +388,7 @@
         "details": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
         }
@@ -393,10 +460,7 @@
         },
         "name": {
           "type": "string",
-          "description": "User selected name of the monitor",
-          "required": [
-            "name"
-          ]
+          "description": "User selected name of the monitor"
         },
         "status": {
           "$ref": "#/definitions/v202210BgpMonitorStatus",
@@ -454,12 +518,10 @@
         "targets": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202210Nlri"
           },
-          "description": "List of prefixes to monitor",
-          "required": [
-            "targets"
-          ]
+          "description": "List of prefixes to monitor"
         },
         "checkRpki": {
           "type": "boolean",
@@ -515,10 +577,7 @@
       "properties": {
         "monitor": {
           "$ref": "#/definitions/v202210BgpMonitor",
-          "description": "Configuration of the BGP monitor to be created",
-          "required": [
-            "monitor"
-          ]
+          "description": "Configuration of the BGP monitor to be created"
         }
       },
       "title": "CreateMonitorRequest",
@@ -547,25 +606,16 @@
         "startTime": {
           "type": "string",
           "format": "date-time",
-          "description": "UTC timestamp of the beginning of queried interval",
-          "required": [
-            "start_time"
-          ]
+          "description": "UTC timestamp of the beginning of queried interval"
         },
         "endTime": {
           "type": "string",
           "format": "date-time",
-          "description": "UTC timestamp of the end of queried interval",
-          "required": [
-            "end_time"
-          ]
+          "description": "UTC timestamp of the end of queried interval"
         },
         "target": {
           "$ref": "#/definitions/v202210Nlri",
-          "description": "Target prefix of the query",
-          "required": [
-            "target"
-          ]
+          "description": "Target prefix of the query"
         },
         "includeCovered": {
           "type": "boolean",
@@ -576,10 +626,7 @@
           "items": {
             "$ref": "#/definitions/v202210BgpMetricType"
           },
-          "description": "List of one or more BGP metric types to return",
-          "required": [
-            "metrics"
-          ]
+          "description": "List of one or more BGP metric types to return"
         }
       },
       "title": "GetMetricsForTargetRequest",
@@ -596,6 +643,7 @@
         "metrics": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202210BgpMetric"
           },
           "description": "List of observations (metric values)",
@@ -621,17 +669,11 @@
         "time": {
           "type": "string",
           "format": "date-time",
-          "description": "Reference UTC time for the route information snapshot",
-          "required": [
-            "time"
-          ]
+          "description": "Reference UTC time for the route information snapshot"
         },
         "target": {
           "$ref": "#/definitions/v202210Nlri",
-          "description": "Target prefix",
-          "required": [
-            "target"
-          ]
+          "description": "Target prefix"
         },
         "includeCovered": {
           "type": "boolean",
@@ -654,6 +696,7 @@
         "routes": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202210RouteInfo"
           },
           "description": "List of routes",
@@ -676,6 +719,7 @@
         "monitors": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202210BgpMonitor"
           },
           "description": "List of BGP monitors configured in the account",
@@ -695,24 +739,15 @@
       "properties": {
         "afi": {
           "$ref": "#/definitions/v202303Afi",
-          "description": "Address Family Identifier",
-          "required": [
-            "afi"
-          ]
+          "description": "Address Family Identifier"
         },
         "safi": {
           "$ref": "#/definitions/v202303Safi",
-          "description": "Subsequent Address Family Identifier",
-          "required": [
-            "safi"
-          ]
+          "description": "Subsequent Address Family Identifier"
         },
         "prefix": {
           "type": "string",
-          "description": "Actual prefix data (format depends on AFI)",
-          "required": [
-            "prefix"
-          ]
+          "description": "Actual prefix data (format depends on AFI)"
         }
       },
       "title": "Nlri",
@@ -761,49 +796,9 @@
       },
       "title": "RouteInfo"
     },
-    "v202210SetMonitorStatusRequest": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "ID of the BGP monitor whose status is to be modified",
-          "required": [
-            "id"
-          ]
-        },
-        "status": {
-          "$ref": "#/definitions/v202210BgpMonitorStatus",
-          "description": "Desired administrative status of the monitor",
-          "required": [
-            "status"
-          ]
-        }
-      },
-      "title": "SetMonitorStatusRequest",
-      "required": [
-        "id",
-        "status"
-      ]
-    },
     "v202210SetMonitorStatusResponse": {
       "type": "object",
       "title": "SetMonitorStatusResponse"
-    },
-    "v202210UpdateMonitorRequest": {
-      "type": "object",
-      "properties": {
-        "monitor": {
-          "$ref": "#/definitions/v202210BgpMonitor",
-          "description": "New configuration of the BGP monitor to be updated",
-          "required": [
-            "monitor"
-          ]
-        }
-      },
-      "title": "UpdateMonitorRequest",
-      "required": [
-        "monitor"
-      ]
     },
     "v202210UpdateMonitorResponse": {
       "type": "object",

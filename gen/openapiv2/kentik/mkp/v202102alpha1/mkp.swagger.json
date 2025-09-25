@@ -176,7 +176,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202102alpha1UpdatePackageRequest"
+              "$ref": "#/definitions/PackageServiceUpdatePackageBody"
             }
           }
         ],
@@ -215,7 +215,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202102alpha1PatchPackageRequest"
+              "$ref": "#/definitions/PackageServicePatchPackageBody"
             }
           }
         ],
@@ -374,7 +374,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202102alpha1UpdateTenantRequest"
+              "$ref": "#/definitions/TenantServiceUpdateTenantBody"
             }
           }
         ],
@@ -413,7 +413,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202102alpha1PatchTenantRequest"
+              "$ref": "#/definitions/TenantServicePatchTenantBody"
             }
           }
         ],
@@ -436,17 +436,284 @@
         }
       }
     },
+    "PackageServicePatchPackageBody": {
+      "type": "object",
+      "properties": {
+        "package": {
+          "type": "object",
+          "properties": {
+            "companyId": {
+              "type": "string",
+              "format": "uint64"
+            },
+            "name": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "icon": {
+              "type": "string"
+            },
+            "color": {
+              "type": "string"
+            },
+            "alerts": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "$ref": "#/definitions/v202102alpha1Alert"
+              }
+            },
+            "assets": {
+              "$ref": "#/definitions/v202102alpha1Asset"
+            },
+            "isDefault": {
+              "type": "boolean"
+            },
+            "tenants": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "$ref": "#/definitions/v202102alpha1TenantLink"
+              },
+              "title": "list of tenants using this Package template (for GetTenant only)"
+            }
+          },
+          "title": "Package Template definition"
+        },
+        "mask": {
+          "type": "string",
+          "title": "CSV values of fields follow the path of Package object dot notation (ie. \"package.name,package.assets.reports\")"
+        }
+      }
+    },
+    "PackageServiceUpdatePackageBody": {
+      "type": "object",
+      "properties": {
+        "package": {
+          "type": "object",
+          "properties": {
+            "companyId": {
+              "type": "string",
+              "format": "uint64"
+            },
+            "name": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "icon": {
+              "type": "string"
+            },
+            "color": {
+              "type": "string"
+            },
+            "alerts": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "$ref": "#/definitions/v202102alpha1Alert"
+              }
+            },
+            "assets": {
+              "$ref": "#/definitions/v202102alpha1Asset"
+            },
+            "isDefault": {
+              "type": "boolean"
+            },
+            "tenants": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "$ref": "#/definitions/v202102alpha1TenantLink"
+              },
+              "title": "list of tenants using this Package template (for GetTenant only)"
+            }
+          },
+          "title": "Package Template definition"
+        }
+      }
+    },
+    "TenantServicePatchTenantBody": {
+      "type": "object",
+      "properties": {
+        "tenant": {
+          "type": "object",
+          "properties": {
+            "companyId": {
+              "type": "string",
+              "format": "uint64"
+            },
+            "name": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "enabled": {
+              "type": "boolean"
+            },
+            "alerts": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "$ref": "#/definitions/v202102alpha1Alert"
+              },
+              "title": "config object"
+            },
+            "assets": {
+              "$ref": "#/definitions/v202102alpha1Asset"
+            },
+            "asn": {
+              "type": "string"
+            },
+            "cidr": {
+              "type": "string"
+            },
+            "customDimensions": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "$ref": "#/definitions/v202102alpha1CustomDimension"
+              }
+            },
+            "devices": {
+              "$ref": "#/definitions/v202102alpha1Device"
+            },
+            "filters": {
+              "$ref": "#/definitions/v202102alpha1Filter"
+            },
+            "interfaceName": {
+              "type": "string"
+            },
+            "snmpAlias": {
+              "type": "string"
+            },
+            "packages": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "$ref": "#/definitions/v202102alpha1Package"
+              },
+              "title": "Packages associated with Tenant (for GetTenant only)"
+            },
+            "users": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "$ref": "#/definitions/v202102alpha1User"
+              },
+              "title": "Users associated with Tenant (for GetTenant only)"
+            },
+            "templateId": {
+              "type": "integer",
+              "format": "int64",
+              "title": "Package ID to use with tenant"
+            }
+          }
+        },
+        "mask": {
+          "type": "string",
+          "title": "CSV values of fields follow the path of Tenant object dot notation (ie. \"tenant.name,tenant.filters.name\")"
+        }
+      }
+    },
+    "TenantServiceUpdateTenantBody": {
+      "type": "object",
+      "properties": {
+        "tenant": {
+          "type": "object",
+          "properties": {
+            "companyId": {
+              "type": "string",
+              "format": "uint64"
+            },
+            "name": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "enabled": {
+              "type": "boolean"
+            },
+            "alerts": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "$ref": "#/definitions/v202102alpha1Alert"
+              },
+              "title": "config object"
+            },
+            "assets": {
+              "$ref": "#/definitions/v202102alpha1Asset"
+            },
+            "asn": {
+              "type": "string"
+            },
+            "cidr": {
+              "type": "string"
+            },
+            "customDimensions": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "$ref": "#/definitions/v202102alpha1CustomDimension"
+              }
+            },
+            "devices": {
+              "$ref": "#/definitions/v202102alpha1Device"
+            },
+            "filters": {
+              "$ref": "#/definitions/v202102alpha1Filter"
+            },
+            "interfaceName": {
+              "type": "string"
+            },
+            "snmpAlias": {
+              "type": "string"
+            },
+            "packages": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "$ref": "#/definitions/v202102alpha1Package"
+              },
+              "title": "Packages associated with Tenant (for GetTenant only)"
+            },
+            "users": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "$ref": "#/definitions/v202102alpha1User"
+              },
+              "title": "Users associated with Tenant (for GetTenant only)"
+            },
+            "templateId": {
+              "type": "integer",
+              "format": "int64",
+              "title": "Package ID to use with tenant"
+            }
+          }
+        }
+      }
+    },
     "protobufAny": {
       "type": "object",
       "properties": {
-        "typeUrl": {
+        "@type": {
           "type": "string"
-        },
-        "value": {
-          "type": "string",
-          "format": "byte"
         }
-      }
+      },
+      "additionalProperties": {}
     },
     "rpcStatus": {
       "type": "object",
@@ -461,6 +728,7 @@
         "details": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
         }
@@ -502,6 +770,7 @@
         "thresholds": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202102alpha1Threshold"
           }
         },
@@ -529,6 +798,7 @@
         "reports": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/AssetReport"
           }
         },
@@ -671,12 +941,14 @@
         "filters": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202102alpha1FilterField"
           }
         },
         "filterGroups": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202102alpha1Filter"
           }
         },
@@ -724,6 +996,7 @@
         "packages": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202102alpha1Package"
           }
         },
@@ -740,6 +1013,7 @@
         "tenants": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202102alpha1Tenant"
           }
         },
@@ -792,10 +1066,12 @@
           "type": "boolean"
         },
         "cdate": {
-          "type": "string"
+          "type": "string",
+          "title": "revisit for timestamp"
         },
         "edate": {
-          "type": "string"
+          "type": "string",
+          "title": "revisit for timestamp"
         }
       }
     },
@@ -834,6 +1110,7 @@
         "alerts": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202102alpha1Alert"
           }
         },
@@ -846,6 +1123,7 @@
         "tenants": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202102alpha1TenantLink"
           },
           "title": "list of tenants using this Package template (for GetTenant only)"
@@ -853,35 +1131,11 @@
       },
       "title": "Package Template definition"
     },
-    "v202102alpha1PatchPackageRequest": {
-      "type": "object",
-      "properties": {
-        "package": {
-          "$ref": "#/definitions/v202102alpha1Package"
-        },
-        "mask": {
-          "type": "string",
-          "title": "CSV values of fields follow the path of Package object dot notation (ie. \"package.name,package.assets.reports\")"
-        }
-      }
-    },
     "v202102alpha1PatchPackageResponse": {
       "type": "object",
       "properties": {
         "package": {
           "$ref": "#/definitions/v202102alpha1Package"
-        }
-      }
-    },
-    "v202102alpha1PatchTenantRequest": {
-      "type": "object",
-      "properties": {
-        "tenant": {
-          "$ref": "#/definitions/v202102alpha1Tenant"
-        },
-        "mask": {
-          "type": "string",
-          "title": "CSV values of fields follow the path of Tenant object dot notation (ie. \"tenant.name,tenant.filters.name\")"
         }
       }
     },
@@ -919,6 +1173,7 @@
         "alerts": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202102alpha1Alert"
           },
           "title": "config object"
@@ -935,6 +1190,7 @@
         "customDimensions": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202102alpha1CustomDimension"
           }
         },
@@ -953,6 +1209,7 @@
         "packages": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202102alpha1Package"
           },
           "title": "Packages associated with Tenant (for GetTenant only)"
@@ -960,6 +1217,7 @@
         "users": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202102alpha1User"
           },
           "title": "Users associated with Tenant (for GetTenant only)"
@@ -1005,18 +1263,21 @@
         "conditions": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202102alpha1Condition"
           }
         },
         "mitigations": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202102alpha1Mitigation"
           }
         },
         "notificationChannels": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202102alpha1NotificationChannel"
           }
         },
@@ -1032,27 +1293,11 @@
       },
       "title": "Alert Threshold"
     },
-    "v202102alpha1UpdatePackageRequest": {
-      "type": "object",
-      "properties": {
-        "package": {
-          "$ref": "#/definitions/v202102alpha1Package"
-        }
-      }
-    },
     "v202102alpha1UpdatePackageResponse": {
       "type": "object",
       "properties": {
         "package": {
           "$ref": "#/definitions/v202102alpha1Package"
-        }
-      }
-    },
-    "v202102alpha1UpdateTenantRequest": {
-      "type": "object",
-      "properties": {
-        "tenant": {
-          "$ref": "#/definitions/v202102alpha1Tenant"
         }
       }
     },
@@ -1089,7 +1334,8 @@
           "format": "uint64"
         },
         "lastLogin": {
-          "type": "string"
+          "type": "string",
+          "title": "revisit timestamp"
         },
         "permissionOverrides": {
           "type": "boolean",

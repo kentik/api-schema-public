@@ -969,7 +969,7 @@ static const ProtobufCFieldDescriptor kentik__cloud_export__v202101beta1__cloud_
     offsetof(Kentik__CloudExport__V202101beta1__CloudExport, aws),
     &kentik__cloud_export__v202101beta1__aws_properties__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -981,7 +981,7 @@ static const ProtobufCFieldDescriptor kentik__cloud_export__v202101beta1__cloud_
     offsetof(Kentik__CloudExport__V202101beta1__CloudExport, azure),
     &kentik__cloud_export__v202101beta1__azure_properties__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -993,7 +993,7 @@ static const ProtobufCFieldDescriptor kentik__cloud_export__v202101beta1__cloud_
     offsetof(Kentik__CloudExport__V202101beta1__CloudExport, gce),
     &kentik__cloud_export__v202101beta1__gce_properties__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -1005,7 +1005,7 @@ static const ProtobufCFieldDescriptor kentik__cloud_export__v202101beta1__cloud_
     offsetof(Kentik__CloudExport__V202101beta1__CloudExport, ibm),
     &kentik__cloud_export__v202101beta1__ibm_properties__descriptor,
     NULL,
-    0 | PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {

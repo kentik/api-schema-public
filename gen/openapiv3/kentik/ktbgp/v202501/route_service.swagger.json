@@ -136,17 +136,25 @@
     },
     "components": {
         "schemas": {
+            "ktbgpv202501Withdraw": {
+                "type": "object",
+                "properties": {
+                    "flowspec": {
+                        "$ref": "#/components/schemas/v202501FlowspecMatch"
+                    },
+                    "rtbh": {
+                        "$ref": "#/components/schemas/v202501RTBHMatch"
+                    }
+                }
+            },
             "protobufAny": {
                 "type": "object",
                 "properties": {
-                    "typeUrl": {
+                    "@type": {
                         "type": "string"
-                    },
-                    "value": {
-                        "type": "string",
-                        "format": "byte"
                     }
-                }
+                },
+                "additionalProperties": {}
             },
             "rpcStatus": {
                 "type": "object",
@@ -175,7 +183,8 @@
                     "ADVERT_STATUS_NO_SESSION",
                     "ADVERT_STATUS_FAILED"
                 ],
-                "default": "ADVERT_STATUS_UNSPECIFIED"
+                "default": "ADVERT_STATUS_UNSPECIFIED",
+                "title": "- ADVERT_STATUS_NO_SESSION: when we cannot find the chf-bgp instance\n - ADVERT_STATUS_FAILED: when we failed to parse or send the update"
             },
             "v202501BitwiseOp": {
                 "type": "string",
@@ -186,7 +195,8 @@
                     "BITWISE_OP_ALL",
                     "BITWISE_OP_NOT_ALL"
                 ],
-                "default": "BITWISE_OP_UNSPECIFIED"
+                "default": "BITWISE_OP_UNSPECIFIED",
+                "title": "- BITWISE_OP_ANY: (data & value) != 0\n - BITWISE_OP_NONE: (data & value) == 0\n - BITWISE_OP_ALL: (data & value) == value\n - BITWISE_OP_NOT_ALL: (data & value) != value"
             },
             "v202501DeviceAdverts": {
                 "type": "object",
@@ -386,10 +396,12 @@
                 "type": "object",
                 "properties": {
                     "dstPrefix": {
-                        "type": "string"
+                        "type": "string",
+                        "title": "IPv4 or IPv6 CIDR prefix to match"
                     },
                     "srcPrefix": {
-                        "type": "string"
+                        "type": "string",
+                        "title": "IPv4 or IPv6 CIDR prefix to match"
                     },
                     "ipProtocol": {
                         "$ref": "#/components/schemas/v202501NumericFormula"
@@ -432,13 +444,15 @@
                         "format": "date-time"
                     },
                     "inet": {
-                        "type": "string"
+                        "type": "string",
+                        "title": "deprecated: use inet_type instead"
                     },
                     "inetType": {
                         "$ref": "#/components/schemas/v202501InetType"
                     },
                     "key": {
-                        "type": "string"
+                        "type": "string",
+                        "title": "mainly used for internal purposes"
                     },
                     "rateBytes": {
                         "$ref": "#/components/schemas/v202501FlowspecActionTrafficRateBytes"
@@ -480,10 +494,12 @@
                         }
                     },
                     "terminal": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "title": "true if this is a terminal action"
                     },
                     "sample": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "title": "true to enable traffic sampling and logging"
                     }
                 }
             },
@@ -496,7 +512,8 @@
                     "FRAGMENT_FF",
                     "FRAGMENT_LF"
                 ],
-                "default": "FRAGMENT_UNSPECIFIED"
+                "default": "FRAGMENT_UNSPECIFIED",
+                "title": "- FRAGMENT_DF: Don't Fragment\n - FRAGMENT_ISF: Is a fragment other than the first\n - FRAGMENT_FF: First Fragment\n - FRAGMENT_LF: Last Fragment"
             },
             "v202501FragmentFormula": {
                 "type": "object",
@@ -632,13 +649,15 @@
                         "format": "date-time"
                     },
                     "inet": {
-                        "type": "string"
+                        "type": "string",
+                        "title": "deprecated: use inet_type instead"
                     },
                     "inetType": {
                         "$ref": "#/components/schemas/v202501InetType"
                     },
                     "key": {
-                        "type": "string"
+                        "type": "string",
+                        "title": "mainly used for internal purposes"
                     }
                 }
             },
@@ -701,7 +720,7 @@
                         }
                     },
                     "withdraw": {
-                        "$ref": "#/components/schemas/v202501Withdraw"
+                        "$ref": "#/components/schemas/ktbgpv202501Withdraw"
                     }
                 }
             },
@@ -724,7 +743,8 @@
                         "items": {
                             "type": "string",
                             "format": "uint64"
-                        }
+                        },
+                        "title": "TODO: we may want to search by update type or detailed attributes\n TODO: we may also want to search for historical updates"
                     }
                 }
             },
@@ -791,17 +811,6 @@
                     },
                     "message": {
                         "type": "string"
-                    }
-                }
-            },
-            "v202501Withdraw": {
-                "type": "object",
-                "properties": {
-                    "flowspec": {
-                        "$ref": "#/components/schemas/v202501FlowspecMatch"
-                    },
-                    "rtbh": {
-                        "$ref": "#/components/schemas/v202501RTBHMatch"
                     }
                 }
             }

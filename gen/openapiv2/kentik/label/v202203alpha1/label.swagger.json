@@ -141,7 +141,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202203alpha1UpdateLabelRequest"
+              "$ref": "#/definitions/LabelServiceUpdateLabelBody"
             }
           }
         ],
@@ -152,6 +152,36 @@
     }
   },
   "definitions": {
+    "LabelServiceUpdateLabelBody": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "color": {
+              "type": "string",
+              "title": "hex color code value"
+            },
+            "cdate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Create timestamp."
+            },
+            "edate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Update timestamp."
+            }
+          }
+        }
+      }
+    },
     "labelv202203alpha1Label": {
       "type": "object",
       "properties": {
@@ -183,14 +213,11 @@
     "protobufAny": {
       "type": "object",
       "properties": {
-        "typeUrl": {
+        "@type": {
           "type": "string"
-        },
-        "value": {
-          "type": "string",
-          "format": "byte"
         }
-      }
+      },
+      "additionalProperties": {}
     },
     "rpcStatus": {
       "type": "object",
@@ -205,6 +232,7 @@
         "details": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
         }
@@ -235,20 +263,13 @@
         "labels": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/labelv202203alpha1Label"
           }
         },
         "invalidCount": {
           "type": "integer",
           "format": "int32"
-        }
-      }
-    },
-    "v202203alpha1UpdateLabelRequest": {
-      "type": "object",
-      "properties": {
-        "label": {
-          "$ref": "#/definitions/labelv202203alpha1Label"
         }
       }
     },

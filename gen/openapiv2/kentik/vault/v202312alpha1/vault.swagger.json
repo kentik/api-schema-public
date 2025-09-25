@@ -99,14 +99,11 @@
     "protobufAny": {
       "type": "object",
       "properties": {
-        "typeUrl": {
+        "@type": {
           "type": "string"
-        },
-        "value": {
-          "type": "string",
-          "format": "byte"
         }
-      }
+      },
+      "additionalProperties": {}
     },
     "rpcStatus": {
       "type": "object",
@@ -121,6 +118,7 @@
         "details": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
         }
@@ -131,10 +129,7 @@
       "properties": {
         "secret": {
           "$ref": "#/definitions/v202312alpha1Secret",
-          "description": "Secret",
-          "required": [
-            "secret"
-          ]
+          "description": "Secret"
         }
       },
       "title": "GetSecretResponse",
@@ -148,12 +143,10 @@
         "secrets": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202312alpha1Secret"
           },
-          "description": "List of secrets",
-          "required": [
-            "secrets"
-          ]
+          "description": "List of secrets"
         },
         "invalidCredentialCount": {
           "type": "integer",
@@ -170,25 +163,16 @@
       "properties": {
         "name": {
           "type": "string",
-          "description": "The secret's name",
-          "required": [
-            "name"
-          ]
+          "description": "The secret's name"
         },
         "value": {
           "type": "string",
-          "description": "The secret's actual value",
-          "required": [
-            "value"
-          ]
+          "description": "The secret's actual value"
         },
         "version": {
           "type": "integer",
           "format": "int64",
-          "description": "The secret's version",
-          "required": [
-            "version"
-          ]
+          "description": "The secret's version"
         },
         "description": {
           "type": "string",
@@ -200,10 +184,7 @@
         },
         "id": {
           "type": "string",
-          "description": "The secret's identifier",
-          "required": [
-            "id"
-          ]
+          "description": "The secret's identifier"
         }
       },
       "title": "Secret",

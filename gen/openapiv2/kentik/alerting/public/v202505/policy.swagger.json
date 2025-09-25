@@ -163,7 +163,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202505PolicyServiceDisableRequest"
+              "$ref": "#/definitions/PolicyServiceDisableBody"
             }
           }
         ],
@@ -224,7 +224,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202505PolicyServiceEnableRequest"
+              "$ref": "#/definitions/PolicyServiceEnableBody"
             }
           }
         ],
@@ -272,10 +272,7 @@
         },
         "delta": {
           "$ref": "#/definitions/BaselineConditionDeltaType",
-          "description": "The delta type used for the policy level condition.",
-          "required": [
-            "delta"
-          ]
+          "description": "The delta type used for the policy level condition."
         },
         "useLowest": {
           "type": "boolean",
@@ -335,48 +332,30 @@
       "properties": {
         "lhsMetric": {
           "type": "string",
-          "description": "The left hand side metric used for the policy level condition.",
-          "required": [
-            "lhs_metric"
-          ]
+          "description": "The left hand side metric used for the policy level condition."
         },
         "rhsMetric": {
           "type": "string",
-          "description": "The right hand side metric used for the policy level condition.",
-          "required": [
-            "rhs_metric"
-          ]
+          "description": "The right hand side metric used for the policy level condition."
         },
         "lhsProportion": {
           "type": "integer",
           "format": "int64",
-          "description": "The left hand side proportion used for the policy level condition.",
-          "required": [
-            "lhs_proportion"
-          ]
+          "description": "The left hand side proportion used for the policy level condition."
         },
         "rhsProportion": {
           "type": "integer",
           "format": "int64",
-          "description": "The right hand side proportion used for the policy level condition.",
-          "required": [
-            "rhs_proportion"
-          ]
+          "description": "The right hand side proportion used for the policy level condition."
         },
         "margin": {
           "type": "number",
           "format": "double",
-          "description": "The margin used for the policy level condition.",
-          "required": [
-            "margin"
-          ]
+          "description": "The margin used for the policy level condition."
         },
         "direction": {
           "$ref": "#/definitions/RatioConditionDirection",
-          "description": "The direction used for the policy level condition.",
-          "required": [
-            "direction"
-          ]
+          "description": "The direction used for the policy level condition."
         }
       },
       "required": [
@@ -393,25 +372,16 @@
       "properties": {
         "metric": {
           "type": "string",
-          "description": "The metric used for the policy level condition.",
-          "required": [
-            "metric"
-          ]
+          "description": "The metric used for the policy level condition."
         },
         "operator": {
           "$ref": "#/definitions/FlowPolicyLevelSettingsConditionsOperator",
-          "description": "The operator used for the policy level condition.",
-          "required": [
-            "operator"
-          ]
+          "description": "The operator used for the policy level condition."
         },
         "value": {
           "type": "number",
           "format": "double",
-          "description": "The value used for the policy level condition.",
-          "required": [
-            "value"
-          ]
+          "description": "The value used for the policy level condition."
         }
       },
       "required": [
@@ -425,18 +395,12 @@
       "properties": {
         "event": {
           "$ref": "#/definitions/TopKeysConditionTopKeysEvent",
-          "description": "The event type used for the policy level condition.",
-          "required": [
-            "event"
-          ]
+          "description": "The event type used for the policy level condition."
         },
         "count": {
           "type": "string",
           "format": "int64",
-          "description": "The count of the top keys used for the policy level condition.",
-          "required": [
-            "count"
-          ]
+          "description": "The count of the top keys used for the policy level condition."
         }
       },
       "required": [
@@ -479,24 +443,15 @@
         "matchTimes": {
           "type": "string",
           "format": "int64",
-          "description": "The number of times the policy level conditions must be met within the match window to activate the alert.",
-          "required": [
-            "match_times"
-          ]
+          "description": "The number of times the policy level conditions must be met within the match window to activate the alert."
         },
         "matchWindow": {
           "type": "string",
-          "description": "The window of time within which the policy level conditions must be met to activate the alert.",
-          "required": [
-            "match_window"
-          ]
+          "description": "The window of time within which the policy level conditions must be met to activate the alert."
         },
         "resetCountWindow": {
           "type": "string",
-          "description": "The window of time within which the level conditions must not be met again to reset the match count.",
-          "required": [
-            "reset_count_window"
-          ]
+          "description": "The window of time within which the level conditions must not be met again to reset the match count."
         }
       },
       "required": [
@@ -554,17 +509,11 @@
       "properties": {
         "platformId": {
           "type": "string",
-          "description": "The platform ID of the mitigation association.",
-          "required": [
-            "platform_id"
-          ]
+          "description": "The platform ID of the mitigation association."
         },
         "methodId": {
           "type": "string",
-          "description": "The method ID of the mitigation association.",
-          "required": [
-            "method_id"
-          ]
+          "description": "The method ID of the mitigation association."
         }
       },
       "required": [
@@ -580,61 +529,37 @@
           "format": "int64",
           "default": "25",
           "description": "The number of alert keys stored in the baseline per policy window.",
-          "title": "not exposing completeness duration as this does not work",
-          "required": [
-            "stored_key_count"
-          ]
+          "title": "not exposing completeness duration as this does not work"
         },
         "windowLength": {
           "type": "string",
           "default": "2419200s",
-          "description": "The length of the entire policy baseline window.",
-          "required": [
-            "window_length"
-          ]
+          "description": "The length of the entire policy baseline window."
         },
         "windowStartOffset": {
           "type": "string",
           "default": "86400s",
-          "description": "The start offset from now used when calculating the baseline value.",
-          "required": [
-            "window_start_offset"
-          ]
+          "description": "The start offset from now used when calculating the baseline value."
         },
         "rollupAggregation": {
           "$ref": "#/definitions/v202505AggregationType",
-          "description": "The aggregation type used to roll up the baseline value from policy window data into 1-hour baseline values.",
-          "required": [
-            "rollup_aggregation"
-          ]
+          "description": "The aggregation type used to roll up the baseline value from policy window data into 1-hour baseline values."
         },
         "compareMode": {
           "$ref": "#/definitions/BaselineConfigCompareMode",
-          "description": "The compare mode determining which baseline values are selected to calculate the final baseline value.",
-          "required": [
-            "compare_mode"
-          ]
+          "description": "The compare mode determining which baseline values are selected to calculate the final baseline value."
         },
         "neighbourhoodRadius": {
           "type": "string",
-          "description": "The neighbourhood radius used to calculate the neighbourhood value. This is the number of hours before and after the current hour to include in the neighbourhood value calculation.",
-          "required": [
-            "neighbourhood_radius"
-          ]
+          "description": "The neighbourhood radius used to calculate the neighbourhood value. This is the number of hours before and after the current hour to include in the neighbourhood value calculation."
         },
         "neighbourhoodAggregation": {
           "$ref": "#/definitions/v202505AggregationType",
-          "description": "The aggregation type used to roll up the neighbourhood values taken within the neighbourhood radius.",
-          "required": [
-            "neighbourhood_aggregation"
-          ]
+          "description": "The aggregation type used to roll up the neighbourhood values taken within the neighbourhood radius."
         },
         "finalAggregation": {
           "$ref": "#/definitions/v202505AggregationType",
-          "description": "The aggregation type used to roll up the final baseline value.",
-          "required": [
-            "final_aggregation"
-          ]
+          "description": "The aggregation type used to roll up the final baseline value."
         }
       },
       "required": [
@@ -656,7 +581,7 @@
         "CLEAR_TYPE_CLEAR_UNLESS_ACTIVATED"
       ],
       "default": "CLEAR_TYPE_UNSPECIFIED",
-      "title": "- CLEAR_TYPE_CLEAR_MANUAL: CLEAR_TYPE_CONDITIONAL = 1; we don't want to expose this yet, not implemented"
+      "title": "- CLEAR_TYPE_UNSPECIFIED: assumed CLEAR_TYPE_CLEAR_UNLESS_ACTIVATED if not specified\n - CLEAR_TYPE_CLEAR_MANUAL: CLEAR_TYPE_CONDITIONAL = 1; we don't want to expose this yet, not implemented"
     },
     "PolicyDimensionFiltersConjunction": {
       "type": "object",
@@ -664,6 +589,7 @@
         "entries": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/PolicyDimensionFiltersEntry"
           },
           "description": "The entries of the conjunction."
@@ -787,11 +713,18 @@
         "notifications": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202505NotificationChannelAssociation"
           },
           "description": "The notification channel associations for this policy level. When the alert is triggered at this level, the channels are used to send the alert notification."
         }
       }
+    },
+    "PolicyServiceDisableBody": {
+      "type": "object"
+    },
+    "PolicyServiceEnableBody": {
+      "type": "object"
     },
     "RatioConditionDirection": {
       "type": "string",
@@ -836,14 +769,11 @@
     "protobufAny": {
       "type": "object",
       "properties": {
-        "typeUrl": {
+        "@type": {
           "type": "string"
-        },
-        "value": {
-          "type": "string",
-          "format": "byte"
         }
-      }
+      },
+      "additionalProperties": {}
     },
     "rpcStatus": {
       "type": "object",
@@ -858,6 +788,7 @@
         "details": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
         }
@@ -902,6 +833,7 @@
         "fields": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/SortingConfigField"
           }
         }
@@ -958,10 +890,7 @@
       "properties": {
         "filters": {
           "$ref": "#/definitions/v202505PolicyDimensionFilters",
-          "description": "The filters matched against the event to trigger the policy.",
-          "required": [
-            "filters"
-          ]
+          "description": "The filters matched against the event to trigger the policy."
         }
       },
       "required": [
@@ -973,27 +902,18 @@
       "properties": {
         "type": {
           "$ref": "#/definitions/EventPolicySettingsEventType",
-          "description": "The type of event to trigger the policy.",
-          "required": [
-            "type"
-          ]
+          "description": "The type of event to trigger the policy."
         },
         "dimensions": {
           "type": "array",
           "items": {
             "type": "string"
           },
-          "description": "The dimensions of the event to trigger the policy.",
-          "required": [
-            "dimensions"
-          ]
+          "description": "The dimensions of the event to trigger the policy."
         },
         "filters": {
           "$ref": "#/definitions/v202505PolicyFilters",
-          "description": "The filters matched against the event to trigger the policy.",
-          "required": [
-            "filters"
-          ]
+          "description": "The filters matched against the event to trigger the policy."
         }
       },
       "required": [
@@ -1008,29 +928,23 @@
         "conditions": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/FlowPolicyLevelSettingsConditions"
           },
-          "description": "The conditions of the policy level settings.",
-          "required": [
-            "conditions"
-          ]
+          "description": "The conditions of the policy level settings."
         },
         "activation": {
           "$ref": "#/definitions/FlowPolicyLevelSettingsActivationSettings",
-          "description": "The rolling window activation settings of the policy level settings.",
-          "required": [
-            "activation"
-          ]
+          "description": "The rolling window activation settings of the policy level settings."
         },
         "mitigationAssociations": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/FlowPolicyLevelSettingsMitigationAssociation"
           },
           "description": "The mitigation associations of the given policy level (when alert is activated with the level severity, these mitigation methods will be applied).",
-          "required": [
-            "mitigation_associations"
-          ]
+          "title": "in future: dimension filters for sub-policies"
         }
       },
       "required": [
@@ -1044,24 +958,16 @@
       "properties": {
         "dataset": {
           "$ref": "#/definitions/v202505FlowPolicySettingsDatasetConfig",
-          "description": "The dataset configuration for the policy.",
-          "required": [
-            "dataset"
-          ]
+          "description": "The dataset configuration for the policy."
         },
         "evaluation": {
           "$ref": "#/definitions/v202505FlowPolicySettingsEvaluationConfig",
-          "description": "The evaluation configuration for the policy.",
-          "required": [
-            "evaluation"
-          ]
+          "description": "The evaluation configuration for the policy."
         },
         "baseline": {
           "$ref": "#/definitions/FlowPolicySettingsBaselineConfig",
           "description": "The baseline configuration for the policy.",
-          "required": [
-            "baseline"
-          ]
+          "title": "no suppression on policy level is exposed intentionally. use suppressions"
         }
       },
       "required": [
@@ -1075,37 +981,25 @@
       "properties": {
         "sources": {
           "$ref": "#/definitions/v202505PolicyDataSources",
-          "description": "The device sources of the dataset.",
-          "required": [
-            "sources"
-          ]
+          "description": "The device sources of the dataset."
         },
         "filters": {
           "$ref": "#/definitions/v202505PolicyFilters",
-          "description": "The filters of the dataset. Effectively this is combined with the device sources.",
-          "required": [
-            "filters"
-          ]
+          "description": "The filters of the dataset. Effectively this is combined with the device sources."
         },
         "dimensions": {
           "type": "array",
           "items": {
             "type": "string"
           },
-          "description": "The dimensions of the policy used to create alert keys for activated alerts.",
-          "required": [
-            "dimensions"
-          ]
+          "description": "The dimensions of the policy used to create alert keys for activated alerts."
         },
         "metrics": {
           "type": "array",
           "items": {
             "type": "string"
           },
-          "description": "The metrics of the dataset that can be used for policy threshold conditions. Metrics are also provided with the activated alert context information",
-          "required": [
-            "metrics"
-          ]
+          "description": "The metrics of the dataset that can be used for policy threshold conditions. Metrics are also provided with the activated alert context information"
         }
       },
       "required": [
@@ -1121,19 +1015,13 @@
         "frequency": {
           "type": "string",
           "default": "60s",
-          "description": "The frequency of the policy evaluation, also known as the policy window length.",
-          "required": [
-            "frequency"
-          ]
+          "description": "The frequency of the policy evaluation, also known as the policy window length."
         },
         "keyCount": {
           "type": "string",
           "format": "int64",
           "default": "25",
-          "description": "The number of alert keys tracked per policy window.",
-          "required": [
-            "key_count"
-          ]
+          "description": "The number of alert keys tracked per policy window."
         }
       },
       "required": [
@@ -1150,6 +1038,7 @@
         "conditionGroups": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202505NmsConditionGroup"
           }
         }
@@ -1197,14 +1086,17 @@
         "conditions": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202505NmsCondition"
           }
         },
         "conditionGroups": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202505NmsConditionGroup"
-          }
+          },
+          "title": "recursive"
         }
       }
     },
@@ -1231,7 +1123,8 @@
           "$ref": "#/definitions/NmsPolicyLevelSettingsClearType"
         },
         "conditional": {
-          "$ref": "#/definitions/v202505NmsActivateOrClearConditions"
+          "$ref": "#/definitions/v202505NmsActivateOrClearConditions",
+          "title": "only used if clear_type == CONDITIONAL"
         }
       }
     },
@@ -1251,7 +1144,8 @@
       "type": "object",
       "properties": {
         "sources": {
-          "$ref": "#/definitions/v202505PolicyDataSources"
+          "$ref": "#/definitions/v202505PolicyDataSources",
+          "title": "device_selector internally and different mapping too"
         },
         "filters": {
           "$ref": "#/definitions/v202505PolicyFilters"
@@ -1266,7 +1160,8 @@
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "title": "this might be irrelevant based on policy type - only applicable if custom type"
         }
       }
     },
@@ -1322,10 +1217,7 @@
       "properties": {
         "channelId": {
           "type": "string",
-          "description": "The ID of the notification channel.",
-          "required": [
-            "channel_id"
-          ]
+          "description": "The ID of the notification channel."
         }
       },
       "required": [
@@ -1375,14 +1267,17 @@
         "enabled": {
           "type": "boolean",
           "description": "Whether the policy is enabled.",
+          "title": "provide annotation for default value",
           "readOnly": true
         },
         "levels": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/PolicyPolicyLevel"
           },
           "description": "The policy levels configuration.",
+          "title": "in future labels will be supported",
           "readOnly": true
         },
         "flow": {
@@ -1458,6 +1353,7 @@
         "conjunctions": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/PolicyDimensionFiltersConjunction"
           },
           "description": "The conjunctions of the policy dimension filters."
@@ -1479,6 +1375,7 @@
         "filters": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/PolicyFiltersFieldFilter"
           },
           "description": "The actual filters of the policy."
@@ -1486,6 +1383,7 @@
         "groups": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202505PolicyFilters"
           },
           "description": "The nested groups of the policy filters."
@@ -1493,6 +1391,7 @@
         "saved": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/PolicyFiltersSavedFilter"
           },
           "description": "The saved filters of the policy. Saved filters are pre-defined filters that can be used in the policy."
@@ -1533,6 +1432,7 @@
         "sources": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202505Source"
           },
           "description": "The source policies to list."
@@ -1554,29 +1454,6 @@
         }
       }
     },
-    "v202505PolicyServiceDisableRequest": {
-      "type": "object",
-      "properties": {
-        "policyType": {
-          "$ref": "#/definitions/v202505PolicyType",
-          "description": "The type of policy to disable.",
-          "required": [
-            "policy_type"
-          ]
-        },
-        "id": {
-          "type": "string",
-          "description": "The ID of the policy to disable.",
-          "required": [
-            "id"
-          ]
-        }
-      },
-      "required": [
-        "policyType",
-        "id"
-      ]
-    },
     "v202505PolicyServiceDisableResponse": {
       "type": "object",
       "properties": {
@@ -1586,29 +1463,6 @@
           "readOnly": true
         }
       }
-    },
-    "v202505PolicyServiceEnableRequest": {
-      "type": "object",
-      "properties": {
-        "policyType": {
-          "$ref": "#/definitions/v202505PolicyType",
-          "description": "The type of policy to enable.",
-          "required": [
-            "policy_type"
-          ]
-        },
-        "id": {
-          "type": "string",
-          "description": "The ID of the policy to enable.",
-          "required": [
-            "id"
-          ]
-        }
-      },
-      "required": [
-        "policyType",
-        "id"
-      ]
     },
     "v202505PolicyServiceEnableResponse": {
       "type": "object",
@@ -1658,6 +1512,7 @@
         "policies": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202505Policy"
           },
           "description": "The alerting policies that were found matching the filters.",
@@ -1688,17 +1543,11 @@
       "properties": {
         "policyType": {
           "$ref": "#/definitions/v202505PolicyType",
-          "description": "The type of policy.",
-          "required": [
-            "policy_type"
-          ]
+          "description": "The type of policy."
         },
         "id": {
           "type": "string",
-          "description": "The ID of the policy, can be integer ID, UUID or any other format.",
-          "required": [
-            "id"
-          ]
+          "description": "The ID of the policy, can be integer ID, UUID or any other format."
         }
       },
       "required": [

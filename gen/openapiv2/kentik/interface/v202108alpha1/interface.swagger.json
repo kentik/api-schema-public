@@ -115,7 +115,7 @@
           },
           {
             "name": "filters.providers",
-            "description": "Search by provider.",
+            "description": "Search by provider",
             "in": "query",
             "required": false,
             "type": "array",
@@ -126,7 +126,7 @@
           },
           {
             "name": "filters.snmpSpeeds",
-            "description": "SNMP speed in Mbps.",
+            "description": "SNMP speed in Mbps",
             "in": "query",
             "required": false,
             "type": "array",
@@ -285,7 +285,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202108alpha1UpdateInterfaceRequest"
+              "$ref": "#/definitions/InterfaceServiceUpdateInterfaceBody"
             }
           }
         ],
@@ -316,6 +316,7 @@
         "parameters": [
           {
             "name": "body",
+            "description": "Set connection type, network boundary, and provider of interface id(s) specified.",
             "in": "body",
             "required": true,
             "schema": {
@@ -330,17 +331,157 @@
     }
   },
   "definitions": {
+    "InterfaceServiceUpdateInterfaceBody": {
+      "type": "object",
+      "properties": {
+        "interface": {
+          "type": "object",
+          "properties": {
+            "deviceId": {
+              "type": "string",
+              "description": "ID of device with this interface."
+            },
+            "snmpId": {
+              "type": "string",
+              "description": "SNMP ID."
+            },
+            "snmpSpeed": {
+              "type": "integer",
+              "format": "int32",
+              "description": "Network speed in Mbps."
+            },
+            "snmpType": {
+              "type": "integer",
+              "format": "int32",
+              "description": "Snmp Type."
+            },
+            "snmpAlias": {
+              "type": "string",
+              "description": "Interface alias."
+            },
+            "interfaceIp": {
+              "type": "string",
+              "description": "IP of interface."
+            },
+            "interfaceDescription": {
+              "type": "string",
+              "description": "Readable string description of interface."
+            },
+            "cdate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Create timestamp."
+            },
+            "edate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Update Timestamp."
+            },
+            "interfaceIpNetmask": {
+              "type": "string",
+              "description": "Subnet mask."
+            },
+            "connectivityType": {
+              "$ref": "#/definitions/v202108alpha1ConnectivityType",
+              "description": "Type of network connectivity type."
+            },
+            "networkBoundary": {
+              "$ref": "#/definitions/v202108alpha1NetworkBoundary",
+              "description": "Type of network boundary."
+            },
+            "topNexthopAsns": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "description": "Top asn hops."
+            },
+            "provider": {
+              "type": "string",
+              "description": "Network provider."
+            },
+            "interfaceKvs": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "description": "Interface KVs."
+            },
+            "interfaceTags": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "description": "Interface Tags."
+            },
+            "interfaceStatus": {
+              "type": "string",
+              "description": "Interface Status."
+            },
+            "extraInfo": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "description": "Extra Interface Info."
+            },
+            "initialSnmpId": {
+              "type": "string",
+              "description": "Initial SMNP ID."
+            },
+            "initialSnmpAlias": {
+              "type": "string",
+              "description": "Initial Interface Alias."
+            },
+            "initialInterfaceDescription": {
+              "type": "string",
+              "description": "Initial Interface Description."
+            },
+            "initialSnmpSpeed": {
+              "type": "integer",
+              "format": "int32",
+              "description": "Inital Network speed in Mbps."
+            },
+            "secondaryIps": {
+              "type": "string",
+              "description": "Secondary Interface IP."
+            },
+            "initialConnectivityType": {
+              "$ref": "#/definitions/v202108alpha1ConnectivityType",
+              "description": "Initial type of network connectivity type."
+            },
+            "initialNetworkBoundary": {
+              "$ref": "#/definitions/v202108alpha1NetworkBoundary",
+              "description": "Initial type of network boundary."
+            },
+            "initialProvider": {
+              "type": "string",
+              "description": "Initial Network provider."
+            },
+            "vrfId": {
+              "type": "string",
+              "title": "VRF ID"
+            },
+            "vrf": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "title": "VRF"
+            }
+          }
+        }
+      }
+    },
     "protobufAny": {
       "type": "object",
       "properties": {
-        "typeUrl": {
+        "@type": {
           "type": "string"
-        },
-        "value": {
-          "type": "string",
-          "format": "byte"
         }
-      }
+      },
+      "additionalProperties": {}
     },
     "rpcStatus": {
       "type": "object",
@@ -355,6 +496,7 @@
         "details": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
         }
@@ -626,6 +768,7 @@
         "interfaces": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202108alpha1Interface"
           }
         },
@@ -685,14 +828,6 @@
         "NETWORK_BOUNDARY_NONE"
       ],
       "default": "NETWORK_BOUNDARY_UNSPECIFIED"
-    },
-    "v202108alpha1UpdateInterfaceRequest": {
-      "type": "object",
-      "properties": {
-        "interface": {
-          "$ref": "#/definitions/v202108alpha1Interface"
-        }
-      }
     },
     "v202108alpha1UpdateInterfaceResponse": {
       "type": "object",

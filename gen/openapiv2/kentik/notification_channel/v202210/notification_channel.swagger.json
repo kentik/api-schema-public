@@ -120,14 +120,11 @@
     "protobufAny": {
       "type": "object",
       "properties": {
-        "typeUrl": {
+        "@type": {
           "type": "string"
-        },
-        "value": {
-          "type": "string",
-          "format": "byte"
         }
-      }
+      },
+      "additionalProperties": {}
     },
     "rpcStatus": {
       "type": "object",
@@ -142,6 +139,7 @@
         "details": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
         }
@@ -185,6 +183,7 @@
         "notificationChannels": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202210NotificationChannel"
           },
           "description": "List of notification channels",
@@ -265,6 +264,7 @@
         "notificationChannels": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202210NotificationChannel"
           },
           "description": "List of matching notification channels.",

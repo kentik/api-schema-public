@@ -207,7 +207,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202106alpha1UpdateSiteRequest"
+                                "$ref": "#/components/schemas/SiteServiceUpdateSiteBody"
                             }
                         }
                     },
@@ -243,17 +243,45 @@
             }
         },
         "schemas": {
+            "SiteServiceUpdateSiteBody": {
+                "type": "object",
+                "properties": {
+                    "site": {
+                        "type": "object",
+                        "properties": {
+                            "title": {
+                                "type": "string"
+                            },
+                            "coordinate": {
+                                "$ref": "#/components/schemas/typeLatLng"
+                            },
+                            "address": {
+                                "$ref": "#/components/schemas/typePostalAddress"
+                            },
+                            "type": {
+                                "$ref": "#/components/schemas/v202106alpha1SiteType"
+                            },
+                            "classification": {
+                                "$ref": "#/components/schemas/v202106alpha1SiteIpClassification"
+                            },
+                            "architecture": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/v202106alpha1Layer"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "protobufAny": {
                 "type": "object",
                 "properties": {
-                    "typeUrl": {
+                    "@type": {
                         "type": "string"
-                    },
-                    "value": {
-                        "type": "string",
-                        "format": "byte"
                     }
-                }
+                },
+                "additionalProperties": {}
             },
             "rpcStatus": {
                 "type": "object",
@@ -476,14 +504,6 @@
                         "items": {
                             "type": "string"
                         }
-                    }
-                }
-            },
-            "v202106alpha1UpdateSiteRequest": {
-                "type": "object",
-                "properties": {
-                    "site": {
-                        "$ref": "#/components/schemas/v202106alpha1Site"
                     }
                 }
             },

@@ -223,7 +223,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202505AlertSilenceNotificationsServiceReplaceRequest"
+                                "$ref": "#/components/schemas/v202505AlertSilenceNotificationsServiceReplaceBody"
                             }
                         }
                     },
@@ -301,14 +301,11 @@
             "protobufAny": {
                 "type": "object",
                 "properties": {
-                    "typeUrl": {
+                    "@type": {
                         "type": "string"
-                    },
-                    "value": {
-                        "type": "string",
-                        "format": "byte"
                     }
-                }
+                },
+                "additionalProperties": {}
             },
             "rpcStatus": {
                 "type": "object",
@@ -463,10 +460,7 @@
                     "startTimeAt": {
                         "type": "string",
                         "format": "date-time",
-                        "description": "The start time when the alert silence notifications configuration is active, preventing notifications from being sent.",
-                        "required": [
-                            "start_time_at"
-                        ]
+                        "description": "The start time when the alert silence notifications configuration is active, preventing notifications from being sent."
                     },
                     "endTimeAt": {
                         "type": "string",
@@ -550,14 +544,50 @@
                     }
                 }
             },
-            "v202505AlertSilenceNotificationsServiceReplaceRequest": {
+            "v202505AlertSilenceNotificationsServiceReplaceBody": {
                 "type": "object",
                 "properties": {
                     "silence": {
-                        "$ref": "#/components/schemas/v202505AlertSilenceNotificationsDefinition"
+                        "type": "object",
+                        "properties": {
+                            "userId": {
+                                "type": "string",
+                                "description": "The ID of the user who most recently updated the alert silence notifications configuration.",
+                                "readOnly": true
+                            },
+                            "source": {
+                                "$ref": "#/components/schemas/v202505Source"
+                            },
+                            "key": {
+                                "$ref": "#/components/schemas/v202303KeyValue"
+                            },
+                            "startTimeAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The start time when the alert silence notifications configuration is active, preventing notifications from being sent."
+                            },
+                            "endTimeAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The end time when the alert silence notifications configuration is no longer active, allowing notifications to be sent again."
+                            },
+                            "createdAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The time when the alert silence notifications configuration was created.",
+                                "readOnly": true
+                            },
+                            "modifiedAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The time when the alert silence notifications configuration was last modified.",
+                                "readOnly": true
+                            }
+                        }
                     }
                 },
                 "required": [
+                    "startTimeAt",
                     "silence"
                 ]
             },
@@ -595,10 +625,7 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The ID of the policy, can be integer ID, UUID or any other format.",
-                        "required": [
-                            "id"
-                        ]
+                        "description": "The ID of the policy, can be integer ID, UUID or any other format."
                     }
                 },
                 "required": [

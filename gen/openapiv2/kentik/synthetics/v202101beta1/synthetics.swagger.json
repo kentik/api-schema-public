@@ -83,7 +83,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202101beta1PatchAgentRequest"
+              "$ref": "#/definitions/SyntheticsAdminServicePatchAgentBody"
             }
           }
         ],
@@ -341,7 +341,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202101beta1PatchTestRequest"
+              "$ref": "#/definitions/SyntheticsAdminServicePatchTestBody"
             }
           }
         ],
@@ -382,7 +382,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202101beta1GetTraceForTestRequest"
+              "$ref": "#/definitions/SyntheticsDataServiceGetTraceForTestBody"
             }
           }
         ],
@@ -422,7 +422,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202101beta1SetTestStatusRequest"
+              "$ref": "#/definitions/SyntheticsAdminServiceSetTestStatusBody"
             }
           }
         ],
@@ -433,17 +433,183 @@
     }
   },
   "definitions": {
+    "SyntheticsAdminServicePatchAgentBody": {
+      "type": "object",
+      "properties": {
+        "agent": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "title": "revert site_name to name to prevent breaking existing users"
+            },
+            "status": {
+              "$ref": "#/definitions/v202101beta1AgentStatus"
+            },
+            "alias": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "os": {
+              "type": "string"
+            },
+            "ip": {
+              "type": "string"
+            },
+            "lat": {
+              "type": "number",
+              "format": "double"
+            },
+            "long": {
+              "type": "number",
+              "format": "double"
+            },
+            "lastAuthed": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "family": {
+              "$ref": "#/definitions/v202101beta1IPFamily"
+            },
+            "asn": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "siteId": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            },
+            "challenge": {
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            },
+            "region": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string"
+            },
+            "testIds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "localIp": {
+              "type": "string"
+            },
+            "cloudVpc": {
+              "type": "string"
+            },
+            "agentImpl": {
+              "$ref": "#/definitions/v202101beta1ImplementType"
+            }
+          }
+        },
+        "mask": {
+          "type": "string",
+          "title": "CSV values of fields follow the path of Agent object with dot notation (ie. \"agent.alias,export.type\")"
+        }
+      }
+    },
+    "SyntheticsAdminServicePatchTestBody": {
+      "type": "object",
+      "properties": {
+        "test": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "deviceId": {
+              "type": "string"
+            },
+            "status": {
+              "$ref": "#/definitions/v202101beta1TestStatus"
+            },
+            "settings": {
+              "$ref": "#/definitions/v202101beta1TestSettings"
+            },
+            "expiresOn": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "cdate": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "edate": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "createdBy": {
+              "$ref": "#/definitions/v202101beta1UserInfo"
+            },
+            "lastUpdatedBy": {
+              "$ref": "#/definitions/v202101beta1UserInfo"
+            }
+          }
+        },
+        "mask": {
+          "type": "string",
+          "title": "CSV values of fields follow the path of Test object with dot notation (ie. \"test.name,test.settings\")"
+        }
+      }
+    },
+    "SyntheticsAdminServiceSetTestStatusBody": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/v202101beta1TestStatus"
+        }
+      }
+    },
+    "SyntheticsDataServiceGetTraceForTestBody": {
+      "type": "object",
+      "properties": {
+        "startTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Start of the time interval for this query."
+        },
+        "endTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "End of the time interval for this query."
+        },
+        "agentIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "Optionally, limit the query to these agent ids"
+        },
+        "targetIps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "Optionally, limit the query to these destination IP addresses"
+        }
+      }
+    },
     "protobufAny": {
       "type": "object",
       "properties": {
-        "typeUrl": {
+        "@type": {
           "type": "string"
-        },
-        "value": {
-          "type": "string",
-          "format": "byte"
         }
-      }
+      },
+      "additionalProperties": {}
     },
     "rpcStatus": {
       "type": "object",
@@ -458,6 +624,7 @@
         "details": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
         }
@@ -483,7 +650,8 @@
           "description": "id of this agent."
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "title": "revert site_name to name to prevent breaking existing users"
         },
         "status": {
           "$ref": "#/definitions/v202101beta1AgentStatus"
@@ -563,6 +731,7 @@
         "health": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202101beta1HealthMoment"
           }
         },
@@ -579,7 +748,8 @@
         "AGENT_STATUS_WAIT",
         "AGENT_STATUS_DELETED"
       ],
-      "default": "AGENT_STATUS_UNSPECIFIED"
+      "default": "AGENT_STATUS_UNSPECIFIED",
+      "description": " - AGENT_STATUS_UNSPECIFIED: Invalid value."
     },
     "v202101beta1AgentTaskConfig": {
       "type": "object",
@@ -605,7 +775,8 @@
       }
     },
     "v202101beta1ApplicationMeshTest": {
-      "type": "object"
+      "type": "object",
+      "title": "application mesh test expects empty object in target"
     },
     "v202101beta1City": {
       "type": "object",
@@ -745,14 +916,17 @@
         },
         "targetRefreshIntervalMillis": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "How often to generate tasks."
         },
         "maxTasks": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "Used for top N."
         },
         "type": {
-          "type": "string"
+          "type": "string",
+          "description": "What type of flow to look at -- asn, cdn, country, ..."
         },
         "inetDirection": {
           "type": "string"
@@ -829,6 +1003,7 @@
         "health": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202101beta1TestHealth"
           }
         }
@@ -842,39 +1017,6 @@
         }
       }
     },
-    "v202101beta1GetTraceForTestRequest": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "title": "Test id"
-        },
-        "startTime": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Start of the time interval for this query."
-        },
-        "endTime": {
-          "type": "string",
-          "format": "date-time",
-          "description": "End of the time interval for this query."
-        },
-        "agentIds": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "title": "Optionally, limit the query to these agent ids"
-        },
-        "targetIps": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "title": "Optionally, limit the query to these destination IP addresses"
-        }
-      }
-    },
     "v202101beta1GetTraceForTestResponse": {
       "type": "object",
       "properties": {
@@ -884,6 +1026,7 @@
         "traceRoutes": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202101beta1TracerouteResult"
           }
         },
@@ -1154,7 +1297,8 @@
         "IP_FAMILY_V6",
         "IP_FAMILY_DUAL"
       ],
-      "default": "IP_FAMILY_UNSPECIFIED"
+      "default": "IP_FAMILY_UNSPECIFIED",
+      "description": " - IP_FAMILY_UNSPECIFIED: Invalid value."
     },
     "v202101beta1IPInfo": {
       "type": "object",
@@ -1233,6 +1377,7 @@
         "agents": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202101beta1Agent"
           }
         },
@@ -1248,6 +1393,7 @@
         "tests": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202101beta1Test"
           }
         },
@@ -1278,6 +1424,7 @@
         "health": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202101beta1MeshMetrics"
           }
         }
@@ -1337,20 +1484,9 @@
         "columns": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202101beta1MeshColumn"
           }
-        }
-      }
-    },
-    "v202101beta1PatchAgentRequest": {
-      "type": "object",
-      "properties": {
-        "agent": {
-          "$ref": "#/definitions/v202101beta1Agent"
-        },
-        "mask": {
-          "type": "string",
-          "title": "CSV values of fields follow the path of Agent object with dot notation (ie. \"agent.alias,export.type\")"
         }
       }
     },
@@ -1359,18 +1495,6 @@
       "properties": {
         "agent": {
           "$ref": "#/definitions/v202101beta1Agent"
-        }
-      }
-    },
-    "v202101beta1PatchTestRequest": {
-      "type": "object",
-      "properties": {
-        "test": {
-          "$ref": "#/definitions/v202101beta1Test"
-        },
-        "mask": {
-          "type": "string",
-          "title": "CSV values of fields follow the path of Test object with dot notation (ie. \"test.name,test.settings\")"
         }
       }
     },
@@ -1411,17 +1535,6 @@
         },
         "name": {
           "type": "string"
-        }
-      }
-    },
-    "v202101beta1SetTestStatusRequest": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "status": {
-          "$ref": "#/definitions/v202101beta1TestStatus"
         }
       }
     },
@@ -1535,6 +1648,7 @@
         "agents": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202101beta1AgentHealth"
           }
         },
@@ -1554,7 +1668,8 @@
         "TASK_STATE_UPDATED",
         "TASK_STATE_DELETED"
       ],
-      "default": "TASK_STATE_UNSPECIFIED"
+      "default": "TASK_STATE_UNSPECIFIED",
+      "description": " - TASK_STATE_UNSPECIFIED: Invalid value."
     },
     "v202101beta1Test": {
       "type": "object",
@@ -1606,6 +1721,7 @@
         "tasks": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202101beta1TaskHealth"
           }
         },
@@ -1615,18 +1731,21 @@
         "healthTs": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202101beta1Health"
           }
         },
         "agentTaskConfig": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202101beta1AgentTaskConfig"
           }
         },
         "mesh": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202101beta1MeshResponse"
           }
         }
@@ -1741,7 +1860,8 @@
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "description": "Task types."
         },
         "healthSettings": {
           "$ref": "#/definitions/v202101beta1HealthSettings"
@@ -1794,7 +1914,8 @@
         "TEST_STATUS_PAUSED",
         "TEST_STATUS_DELETED"
       ],
-      "default": "TEST_STATUS_UNSPECIFIED"
+      "default": "TEST_STATUS_UNSPECIFIED",
+      "description": " - TEST_STATUS_UNSPECIFIED: Invalid value.\n - TEST_STATUS_ACTIVE: Test is active.\n - TEST_STATUS_PAUSED: Test is paused.\n - TEST_STATUS_DELETED: Test is deleted. Not settable via SetTestStatus."
     },
     "v202101beta1TestTraceSettings": {
       "type": "object",
@@ -1851,6 +1972,7 @@
         "probes": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202101beta1TraceProbe"
           },
           "title": "Probing info"
@@ -1937,6 +2059,7 @@
         "hops": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202101beta1TraceHop"
           }
         }
@@ -1994,6 +2117,7 @@
         "agentIdByIp": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202101beta1IDByIP"
           },
           "title": "Agent ID by IP"
@@ -2001,6 +2125,7 @@
         "agents": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202101beta1Agent"
           },
           "title": "Agents info"
@@ -2008,6 +2133,7 @@
         "asns": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202101beta1ASN"
           },
           "title": "ASN"
@@ -2015,6 +2141,7 @@
         "deviceIdByIp": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202101beta1IDByIP"
           },
           "title": "Device ID by IP"
@@ -2022,6 +2149,7 @@
         "siteIdByIp": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202101beta1IDByIP"
           },
           "title": "Site ID by IP"
@@ -2029,6 +2157,7 @@
         "ips": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202101beta1IPInfo"
           },
           "title": "IP Info"
@@ -2046,6 +2175,7 @@
         "traces": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202101beta1Trace"
           }
         },

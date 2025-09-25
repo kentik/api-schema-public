@@ -212,7 +212,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202407UpdatePackageRequest"
+                                "$ref": "#/components/schemas/PackageServiceUpdatePackageBody"
                             }
                         }
                     },
@@ -417,7 +417,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202407UpdateTenantRequest"
+                                "$ref": "#/components/schemas/TenantServiceUpdateTenantBody"
                             }
                         }
                     },
@@ -464,17 +464,179 @@
                     }
                 }
             },
+            "PackageServiceUpdatePackageBody": {
+                "type": "object",
+                "properties": {
+                    "package": {
+                        "type": "object",
+                        "properties": {
+                            "companyId": {
+                                "type": "string",
+                                "description": "Company id of the associated package",
+                                "readOnly": true
+                            },
+                            "name": {
+                                "type": "string",
+                                "description": "Name of package template",
+                                "readOnly": true
+                            },
+                            "description": {
+                                "type": "string",
+                                "description": "Description of package template",
+                                "readOnly": true
+                            },
+                            "icon": {
+                                "type": "string",
+                                "description": "Icon to display",
+                                "readOnly": true
+                            },
+                            "color": {
+                                "type": "string",
+                                "description": "Color of Icon",
+                                "readOnly": true
+                            },
+                            "alerts": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/v202407Alert"
+                                },
+                                "description": "Alert thresholds and policies",
+                                "readOnly": true
+                            },
+                            "assets": {
+                                "$ref": "#/components/schemas/v202407Asset"
+                            },
+                            "isDefault": {
+                                "type": "boolean",
+                                "description": "Is default template",
+                                "readOnly": true
+                            },
+                            "tenants": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/v202407TenantLink"
+                                },
+                                "description": "Tenant link information",
+                                "readOnly": true
+                            }
+                        },
+                        "title": "Package"
+                    }
+                },
+                "title": "UpdatePackageRequest"
+            },
+            "TenantServiceUpdateTenantBody": {
+                "type": "object",
+                "properties": {
+                    "tenant": {
+                        "type": "object",
+                        "properties": {
+                            "companyId": {
+                                "type": "string",
+                                "description": "Company id of the associated package",
+                                "readOnly": true
+                            },
+                            "name": {
+                                "type": "string",
+                                "description": "Name of tenant",
+                                "readOnly": true
+                            },
+                            "description": {
+                                "type": "string",
+                                "description": "Description of tenant",
+                                "readOnly": true
+                            },
+                            "type": {
+                                "type": "string",
+                                "description": "Subtenant",
+                                "readOnly": true
+                            },
+                            "enabled": {
+                                "type": "boolean",
+                                "description": "Is tenant actively enable",
+                                "readOnly": true
+                            },
+                            "alerts": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/v202407Alert"
+                                },
+                                "description": "Alert thresholds and policies",
+                                "title": "config object",
+                                "readOnly": true
+                            },
+                            "assets": {
+                                "$ref": "#/components/schemas/v202407Asset"
+                            },
+                            "asn": {
+                                "type": "string",
+                                "description": "ASN data source.",
+                                "readOnly": true
+                            },
+                            "cidr": {
+                                "type": "string",
+                                "description": "CIDR data source.",
+                                "readOnly": true
+                            },
+                            "customDimensions": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/v202407CustomDimension"
+                                },
+                                "description": "Custom dimension data source",
+                                "readOnly": true
+                            },
+                            "devices": {
+                                "$ref": "#/components/schemas/v202407Devices"
+                            },
+                            "filters": {
+                                "$ref": "#/components/schemas/v202407Filter"
+                            },
+                            "interfaceName": {
+                                "type": "string",
+                                "description": "Interface data source.",
+                                "readOnly": true
+                            },
+                            "snmpAlias": {
+                                "type": "string",
+                                "description": "SNMP data source.",
+                                "readOnly": true
+                            },
+                            "packages": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/v202407Package"
+                                },
+                                "description": "Packages associated with the tenant.",
+                                "readOnly": true
+                            },
+                            "users": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/v202211User"
+                                },
+                                "description": "Users associated with the tenant.",
+                                "readOnly": true
+                            },
+                            "templateId": {
+                                "type": "string",
+                                "description": "Package template ID to assign with tenant.",
+                                "readOnly": true
+                            }
+                        },
+                        "title": "Tenant"
+                    }
+                },
+                "title": "UpdateTenantRequest"
+            },
             "protobufAny": {
                 "type": "object",
                 "properties": {
-                    "typeUrl": {
+                    "@type": {
                         "type": "string"
-                    },
-                    "value": {
-                        "type": "string",
-                        "format": "byte"
                     }
-                }
+                },
+                "additionalProperties": {}
             },
             "rpcStatus": {
                 "type": "object",
@@ -499,17 +661,11 @@
                 "properties": {
                     "capability": {
                         "type": "string",
-                        "description": "String identifying capability that is granted of denied",
-                        "required": [
-                            "capability"
-                        ]
+                        "description": "String identifying capability that is granted of denied"
                     },
                     "allowed": {
                         "type": "boolean",
-                        "description": "Flag indicating whether operation is allowed",
-                        "required": [
-                            "allowed"
-                        ]
+                        "description": "Flag indicating whether operation is allowed"
                     }
                 },
                 "title": "PermissionEntry",
@@ -540,17 +696,11 @@
                     },
                     "userEmail": {
                         "type": "string",
-                        "description": "User e-mail address (serves also as username)",
-                        "required": [
-                            "user_email"
-                        ]
+                        "description": "User e-mail address (serves also as username)"
                     },
                     "userFullName": {
                         "type": "string",
-                        "description": "Full name",
-                        "required": [
-                            "user_full_name"
-                        ]
+                        "description": "Full name"
                     },
                     "role": {
                         "$ref": "#/components/schemas/v202211Role"
@@ -1157,15 +1307,6 @@
                 },
                 "title": "Threshold"
             },
-            "v202407UpdatePackageRequest": {
-                "type": "object",
-                "properties": {
-                    "package": {
-                        "$ref": "#/components/schemas/v202407Package"
-                    }
-                },
-                "title": "UpdatePackageRequest"
-            },
             "v202407UpdatePackageResponse": {
                 "type": "object",
                 "properties": {
@@ -1174,15 +1315,6 @@
                     }
                 },
                 "title": "UpdatePackageResponse"
-            },
-            "v202407UpdateTenantRequest": {
-                "type": "object",
-                "properties": {
-                    "tenant": {
-                        "$ref": "#/components/schemas/v202407Tenant"
-                    }
-                },
-                "title": "UpdateTenantRequest"
             },
             "v202407UpdateTenantResponse": {
                 "type": "object",

@@ -135,7 +135,7 @@
             "type": "string"
           },
           {
-            "name": "body",
+            "name": "dimension",
             "in": "body",
             "required": true,
             "schema": {
@@ -175,7 +175,7 @@
             "type": "string"
           },
           {
-            "name": "body",
+            "name": "populator",
             "in": "body",
             "required": true,
             "schema": {
@@ -257,7 +257,7 @@
             "type": "string"
           },
           {
-            "name": "body",
+            "name": "populator",
             "in": "body",
             "required": true,
             "schema": {
@@ -291,7 +291,7 @@
         },
         "parameters": [
           {
-            "name": "body",
+            "name": "dimension",
             "in": "body",
             "required": true,
             "schema": {
@@ -309,14 +309,11 @@
     "protobufAny": {
       "type": "object",
       "properties": {
-        "typeUrl": {
+        "@type": {
           "type": "string"
-        },
-        "value": {
-          "type": "string",
-          "format": "byte"
         }
-      }
+      },
+      "additionalProperties": {}
     },
     "rpcStatus": {
       "type": "object",
@@ -331,6 +328,7 @@
         "details": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
         }
@@ -362,29 +360,21 @@
         },
         "name": {
           "type": "string",
-          "description": "The name of the custom dimension. Must start with 'c_'. Valid characters: alphanumeric dashes and underscores. Length: min=1, max=20.",
-          "required": [
-            "name"
-          ]
+          "description": "The name of the custom dimension. Must start with 'c_'. Valid characters: alphanumeric dashes and underscores. Length: min=1, max=20."
         },
         "type": {
           "type": "string",
           "description": "Type of the custom dimension (valid values: 'string' or 'uint32')",
-          "title": "should be an enum instead? but also YAGNI",
-          "required": [
-            "type"
-          ]
+          "title": "should be an enum instead? but also YAGNI"
         },
         "description": {
           "type": "string",
-          "description": "The name to be displayed of the custom dimension. Valid characters: alphanumeric spaces, dashes and underscores. Length: min=2, max=30.",
-          "required": [
-            "description"
-          ]
+          "description": "The name to be displayed of the custom dimension. Valid characters: alphanumeric spaces, dashes and underscores. Length: min=2, max=30."
         },
         "populators": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202411alpha1Populator"
           },
           "description": "Populators associated with this custom dimension.",
@@ -445,6 +435,7 @@
         "dimensions": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/v202411alpha1CustomDimension"
           }
         }

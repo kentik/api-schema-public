@@ -184,7 +184,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202505AlertServiceAckRequest"
+                                "$ref": "#/components/schemas/AlertServiceAckBody"
                             }
                         }
                     },
@@ -237,7 +237,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202505AlertServiceUnAckRequest"
+                                "$ref": "#/components/schemas/AlertServiceUnAckBody"
                             }
                         }
                     },
@@ -296,6 +296,18 @@
                         "readOnly": true
                     }
                 }
+            },
+            "AlertServiceAckBody": {
+                "type": "object",
+                "properties": {
+                    "comment": {
+                        "type": "string",
+                        "description": "The comment to add to the acknowledgement."
+                    }
+                }
+            },
+            "AlertServiceUnAckBody": {
+                "type": "object"
             },
             "FieldBy": {
                 "type": "string",
@@ -559,14 +571,11 @@
             "protobufAny": {
                 "type": "object",
                 "properties": {
-                    "typeUrl": {
+                    "@type": {
                         "type": "string"
-                    },
-                    "value": {
-                        "type": "string",
-                        "format": "byte"
                     }
-                }
+                },
+                "additionalProperties": {}
             },
             "rpcStatus": {
                 "type": "object",
@@ -830,15 +839,14 @@
                         "items": {
                             "$ref": "#/components/schemas/v202303Severity"
                         },
-                        "default": "[]",
                         "description": "The severities of the alerts to list."
                     },
                     "alertIds": {
                         "type": "array",
                         "items": {
-                            "type": "string"
+                            "type": "string",
+                            "default": "[]"
                         },
-                        "default": "[]",
                         "description": "The IDs of the alerts to list."
                     },
                     "sources": {
@@ -846,7 +854,6 @@
                         "items": {
                             "$ref": "#/components/schemas/v202505Source"
                         },
-                        "default": "[]",
                         "description": "The source policies of the alerts to list."
                     },
                     "keys": {
@@ -857,7 +864,6 @@
                         "items": {
                             "$ref": "#/components/schemas/v202505AlertState"
                         },
-                        "default": "[]",
                         "description": "The states of the alerts to list."
                     },
                     "startedAt": {
@@ -871,7 +877,6 @@
                         "items": {
                             "$ref": "#/components/schemas/v202303Severity"
                         },
-                        "default": "[]",
                         "description": "Filter alerts by the highest reached severity."
                     },
                     "recentSeverities": {
@@ -879,7 +884,6 @@
                         "items": {
                             "$ref": "#/components/schemas/v202303Severity"
                         },
-                        "default": "[]",
                         "description": "Filter alerts by the most recent (for active ones) and last (for cleared ones) severity."
                     },
                     "ackStates": {
@@ -887,7 +891,6 @@
                         "items": {
                             "$ref": "#/components/schemas/v202505AlertAcknowledgement"
                         },
-                        "default": "[]",
                         "description": "The acknowledgement states of the alerts to list."
                     },
                     "activeAt": {
@@ -896,9 +899,9 @@
                     "ackedByUserIds": {
                         "type": "array",
                         "items": {
-                            "type": "string"
+                            "type": "string",
+                            "default": "[]"
                         },
-                        "default": "[]",
                         "description": "The IDs of the users who acknowledged the alerts to list."
                     },
                     "includeRemovedPolicies": {
@@ -909,9 +912,9 @@
                     "contextSearch": {
                         "type": "array",
                         "items": {
-                            "type": "string"
+                            "type": "string",
+                            "default": "[]"
                         },
-                        "default": "[]",
                         "description": "The context search terms (e.g. device name, interface name, site name, labels etc.) of the alerts to list."
                     }
                 }
@@ -942,25 +945,6 @@
                     }
                 }
             },
-            "v202505AlertServiceAckRequest": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "string",
-                        "description": "The ID of the alert to acknowledge.",
-                        "required": [
-                            "id"
-                        ]
-                    },
-                    "comment": {
-                        "type": "string",
-                        "description": "The comment to add to the acknowledgement."
-                    }
-                },
-                "required": [
-                    "id"
-                ]
-            },
             "v202505AlertServiceAckResponse": {
                 "type": "object",
                 "properties": {
@@ -977,10 +961,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The IDs of the alerts to clear.",
-                        "required": [
-                            "alert_ids"
-                        ]
+                        "description": "The IDs of the alerts to clear."
                     }
                 },
                 "required": [
@@ -1045,21 +1026,6 @@
                         "readOnly": true
                     }
                 }
-            },
-            "v202505AlertServiceUnAckRequest": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "string",
-                        "description": "The ID of the alert to remove the acknowledgement from.",
-                        "required": [
-                            "id"
-                        ]
-                    }
-                },
-                "required": [
-                    "id"
-                ]
             },
             "v202505AlertServiceUnAckResponse": {
                 "type": "object",
@@ -1172,7 +1138,8 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/v202505NmsConditionGroup"
-                        }
+                        },
+                        "title": "recursive"
                     }
                 }
             },
@@ -1202,25 +1169,29 @@
                         "type": "object",
                         "additionalProperties": {
                             "$ref": "#/components/schemas/NmsContextAlarmTarget"
-                        }
+                        },
+                        "title": "AlarmTargets"
                     },
                     "metricValues": {
                         "type": "object",
                         "additionalProperties": {
                             "$ref": "#/components/schemas/NmsContextAlarmMetricMap"
-                        }
+                        },
+                        "title": "AlarmMetrics"
                     },
                     "previousMetricValues": {
                         "type": "object",
                         "additionalProperties": {
                             "$ref": "#/components/schemas/NmsContextAlarmMetricMap"
-                        }
+                        },
+                        "title": "AlarmPreviousStatus"
                     },
                     "device": {
                         "type": "object",
                         "additionalProperties": {
                             "type": "string"
-                        }
+                        },
+                        "title": "AlarmDevice"
                     },
                     "groupKey": {
                         "type": "object",
@@ -1294,10 +1265,7 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The ID of the policy, can be integer ID, UUID or any other format.",
-                        "required": [
-                            "id"
-                        ]
+                        "description": "The ID of the policy, can be integer ID, UUID or any other format."
                     }
                 },
                 "required": [
