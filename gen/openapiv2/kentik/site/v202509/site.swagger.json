@@ -3,7 +3,7 @@
   "info": {
     "title": "Site Configuration API",
     "description": "# Overview\nThe Site Configuration API provides programmatic access to configuration of Sites and Site Markets:\n\n* **Site**: A site is a specific user-defined physical location (e.g. a data center at a given address) or logical location at which there is hosting of your devices, services, providers, or partner networks. Information that can be associated with a site includes the classification of IP addresses and the site's logical network topology/architecture.\n* **Site Market**: Sites with any common characteristics of your choosing (e.g. all PoPs in a particular region) can be logically grouped into a site market.\n\nBoth REST endpoint and gRPC RPCs are provided.\n\n***Notes:*** \n    - Once a site is created in Kentik, you can assign one or more devices to the site via the settings for those devices; to do so programmatically you'd use the v5 Device API (see [Device Create](https://kb.kentik.com/v0/Ec05.htm#Ec05-Device_Create)).\n    - Sites can also be managed using the legacy REST-only [Site API](https://kb.kentik.com/v0/Ec10.htm#Ec10-Site_API), which provides access to a subset of site configuration attributes.",
-    "version": "v202211",
+    "version": "v202509",
     "contact": {
       "name": "Kentik API Engineering",
       "url": "https://github.com/kentik/api-schema-public"
@@ -24,7 +24,7 @@
     "application/json"
   ],
   "paths": {
-    "/site/v202211/site_markets": {
+    "/site/v202509/site_markets": {
       "get": {
         "summary": "List all site markets.",
         "description": "Returns list of configured site markets.",
@@ -33,7 +33,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v202211ListSiteMarketsResponse"
+              "$ref": "#/definitions/v202509ListSiteMarketsResponse"
             }
           },
           "default": {
@@ -55,7 +55,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v202211CreateSiteMarketResponse"
+              "$ref": "#/definitions/v202509CreateSiteMarketResponse"
             }
           },
           "default": {
@@ -71,7 +71,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202211CreateSiteMarketRequest"
+              "$ref": "#/definitions/v202509CreateSiteMarketRequest"
             }
           }
         ],
@@ -80,7 +80,7 @@
         ]
       }
     },
-    "/site/v202211/site_markets/{id}": {
+    "/site/v202509/site_markets/{id}": {
       "get": {
         "summary": "Retrieve configuration of a site market.",
         "description": "Returns configuration of a site market specified by ID.",
@@ -89,7 +89,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v202211GetSiteMarketResponse"
+              "$ref": "#/definitions/v202509GetSiteMarketResponse"
             }
           },
           "default": {
@@ -120,7 +120,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v202211DeleteSiteMarketResponse"
+              "$ref": "#/definitions/v202509DeleteSiteMarketResponse"
             }
           },
           "default": {
@@ -151,7 +151,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v202211UpdateSiteMarketResponse"
+              "$ref": "#/definitions/v202509UpdateSiteMarketResponse"
             }
           },
           "default": {
@@ -183,7 +183,7 @@
         ]
       }
     },
-    "/site/v202211/sites": {
+    "/site/v202509/sites": {
       "get": {
         "summary": "List all sites.",
         "description": "Returns list of configured sites.",
@@ -192,7 +192,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v202211ListSitesResponse"
+              "$ref": "#/definitions/v202509ListSitesResponse"
             }
           },
           "default": {
@@ -214,7 +214,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v202211CreateSiteResponse"
+              "$ref": "#/definitions/v202509CreateSiteResponse"
             }
           },
           "default": {
@@ -230,7 +230,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v202211CreateSiteRequest"
+              "$ref": "#/definitions/v202509CreateSiteRequest"
             }
           }
         ],
@@ -239,7 +239,7 @@
         ]
       }
     },
-    "/site/v202211/sites/{id}": {
+    "/site/v202509/sites/{id}": {
       "get": {
         "summary": "Retrieve configuration of a site.",
         "description": "Returns configuration of a site specified by ID.",
@@ -248,7 +248,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v202211GetSiteResponse"
+              "$ref": "#/definitions/v202509GetSiteResponse"
             }
           },
           "default": {
@@ -279,7 +279,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v202211DeleteSiteResponse"
+              "$ref": "#/definitions/v202509DeleteSiteResponse"
             }
           },
           "default": {
@@ -310,7 +310,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v202211UpdateSiteResponse"
+              "$ref": "#/definitions/v202509UpdateSiteResponse"
             }
           },
           "default": {
@@ -365,32 +365,36 @@
               "description": "Longitude (signed decimal degrees)"
             },
             "postalAddress": {
-              "$ref": "#/definitions/v202211PostalAddress",
+              "$ref": "#/definitions/v202509PostalAddress",
               "description": "Postal address"
             },
             "type": {
-              "$ref": "#/definitions/v202211SiteType",
+              "$ref": "#/definitions/v202509SiteType",
               "description": "Type of site"
             },
             "addressClassification": {
-              "$ref": "#/definitions/v202211SiteIpAddressClassification",
+              "$ref": "#/definitions/v202509SiteIpAddressClassification",
               "description": "Classification of site's IP addresses"
             },
             "architecture": {
               "type": "array",
               "items": {
                 "type": "object",
-                "$ref": "#/definitions/v202211LayerSet"
+                "$ref": "#/definitions/v202509LayerSet"
               },
               "description": "Logical network topology/architecture"
             },
             "siteMarket": {
-              "type": "string",
-              "description": "Name of the Site Market this site belongs to. Deprecated: Use v202509 API version instead."
+              "$ref": "#/definitions/v202509SiteMarket",
+              "description": "Site Market configuration for this site"
             },
             "peeringdbSiteMapping": {
-              "type": "string",
-              "description": "PeeringDB Mapping of the given site. Deprecated: Use v202509 API version instead."
+              "type": "array",
+              "items": {
+                "type": "object",
+                "$ref": "#/definitions/v202509PeeringDBSiteMapping"
+              },
+              "description": "List of PeeringDB site mappings associated with this site"
             }
           },
           "title": "Site"
@@ -473,11 +477,11 @@
         }
       }
     },
-    "v202211CreateSiteMarketRequest": {
+    "v202509CreateSiteMarketRequest": {
       "type": "object",
       "properties": {
         "siteMarket": {
-          "$ref": "#/definitions/v202211SiteMarket",
+          "$ref": "#/definitions/v202509SiteMarket",
           "description": "Configuration of the new site market"
         }
       },
@@ -486,21 +490,21 @@
         "siteMarket"
       ]
     },
-    "v202211CreateSiteMarketResponse": {
+    "v202509CreateSiteMarketResponse": {
       "type": "object",
       "properties": {
         "siteMarket": {
-          "$ref": "#/definitions/v202211SiteMarket",
+          "$ref": "#/definitions/v202509SiteMarket",
           "description": "Configuration of the newly created site market"
         }
       },
       "title": "CreateSiteMarketResponse"
     },
-    "v202211CreateSiteRequest": {
+    "v202509CreateSiteRequest": {
       "type": "object",
       "properties": {
         "site": {
-          "$ref": "#/definitions/v202211Site",
+          "$ref": "#/definitions/v202509Site",
           "description": "Configuration of the new site"
         }
       },
@@ -509,45 +513,45 @@
         "site"
       ]
     },
-    "v202211CreateSiteResponse": {
+    "v202509CreateSiteResponse": {
       "type": "object",
       "properties": {
         "site": {
-          "$ref": "#/definitions/v202211Site",
+          "$ref": "#/definitions/v202509Site",
           "description": "Configuration of the newly created site"
         }
       },
       "title": "CreateSiteResponse"
     },
-    "v202211DeleteSiteMarketResponse": {
+    "v202509DeleteSiteMarketResponse": {
       "type": "object",
       "title": "DeleteSiteMarketResponse"
     },
-    "v202211DeleteSiteResponse": {
+    "v202509DeleteSiteResponse": {
       "type": "object",
       "title": "DeleteSiteResponse"
     },
-    "v202211GetSiteMarketResponse": {
+    "v202509GetSiteMarketResponse": {
       "type": "object",
       "properties": {
         "siteMarket": {
-          "$ref": "#/definitions/v202211SiteMarket",
+          "$ref": "#/definitions/v202509SiteMarket",
           "description": "Configuration of the requested site market"
         }
       },
       "title": "GetSiteMarketResponse"
     },
-    "v202211GetSiteResponse": {
+    "v202509GetSiteResponse": {
       "type": "object",
       "properties": {
         "site": {
-          "$ref": "#/definitions/v202211Site",
+          "$ref": "#/definitions/v202509Site",
           "description": "Configuration of the requested site"
         }
       },
       "title": "GetSiteResponse"
     },
-    "v202211Layer": {
+    "v202509Layer": {
       "type": "object",
       "properties": {
         "name": {
@@ -564,28 +568,28 @@
       },
       "title": "Layer"
     },
-    "v202211LayerSet": {
+    "v202509LayerSet": {
       "type": "object",
       "properties": {
         "layers": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/v202211Layer"
+            "$ref": "#/definitions/v202509Layer"
           },
           "description": "List of parallel network layers"
         }
       },
       "title": "LayerSet"
     },
-    "v202211ListSiteMarketsResponse": {
+    "v202509ListSiteMarketsResponse": {
       "type": "object",
       "properties": {
         "siteMarkets": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/v202211SiteMarket"
+            "$ref": "#/definitions/v202509SiteMarket"
           },
           "description": "List of configurations of requested site markets"
         },
@@ -597,14 +601,14 @@
       },
       "title": "ListSiteMarketsResponse"
     },
-    "v202211ListSitesResponse": {
+    "v202509ListSitesResponse": {
       "type": "object",
       "properties": {
         "sites": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/v202211Site"
+            "$ref": "#/definitions/v202509Site"
           },
           "description": "List of configurations of requested sites"
         },
@@ -616,7 +620,45 @@
       },
       "title": "ListSitesResponse"
     },
-    "v202211PostalAddress": {
+    "v202509PeeringDBSiteMapping": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Peering DB id"
+        },
+        "siteId": {
+          "type": "string",
+          "description": "Peering DB site id"
+        },
+        "peeringdbFacId": {
+          "type": "string",
+          "description": "Peering DB facility id"
+        },
+        "edate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last modification timestamp (UTC)",
+          "readOnly": true
+        },
+        "cdate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation timestamp (UTC)",
+          "readOnly": true
+        },
+        "companyId": {
+          "type": "string",
+          "description": "Company ID"
+        }
+      },
+      "required": [
+        "id",
+        "siteId",
+        "peeringdbFacId"
+      ]
+    },
+    "v202509PostalAddress": {
       "type": "object",
       "properties": {
         "address": {
@@ -647,7 +689,7 @@
         "country"
       ]
     },
-    "v202211Site": {
+    "v202509Site": {
       "type": "object",
       "properties": {
         "id": {
@@ -670,32 +712,36 @@
           "description": "Longitude (signed decimal degrees)"
         },
         "postalAddress": {
-          "$ref": "#/definitions/v202211PostalAddress",
+          "$ref": "#/definitions/v202509PostalAddress",
           "description": "Postal address"
         },
         "type": {
-          "$ref": "#/definitions/v202211SiteType",
+          "$ref": "#/definitions/v202509SiteType",
           "description": "Type of site"
         },
         "addressClassification": {
-          "$ref": "#/definitions/v202211SiteIpAddressClassification",
+          "$ref": "#/definitions/v202509SiteIpAddressClassification",
           "description": "Classification of site's IP addresses"
         },
         "architecture": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/v202211LayerSet"
+            "$ref": "#/definitions/v202509LayerSet"
           },
           "description": "Logical network topology/architecture"
         },
         "siteMarket": {
-          "type": "string",
-          "description": "Name of the Site Market this site belongs to. Deprecated: Use v202509 API version instead."
+          "$ref": "#/definitions/v202509SiteMarket",
+          "description": "Site Market configuration for this site"
         },
         "peeringdbSiteMapping": {
-          "type": "string",
-          "description": "PeeringDB Mapping of the given site. Deprecated: Use v202509 API version instead."
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v202509PeeringDBSiteMapping"
+          },
+          "description": "List of PeeringDB site mappings associated with this site"
         }
       },
       "title": "Site",
@@ -704,7 +750,7 @@
         "type"
       ]
     },
-    "v202211SiteIpAddressClassification": {
+    "v202509SiteIpAddressClassification": {
       "type": "object",
       "properties": {
         "infrastructureNetworks": {
@@ -731,7 +777,7 @@
       },
       "title": "SiteIpAddressClassification"
     },
-    "v202211SiteMarket": {
+    "v202509SiteMarket": {
       "type": "object",
       "properties": {
         "id": {
@@ -771,7 +817,7 @@
         "name"
       ]
     },
-    "v202211SiteType": {
+    "v202509SiteType": {
       "type": "string",
       "enum": [
         "SITE_TYPE_UNSPECIFIED",
@@ -786,21 +832,21 @@
       "description": "- SITE_TYPE_UNSPECIFIED: Invalid value.\n - SITE_TYPE_DATA_CENTER: Data center site type.\n - SITE_TYPE_CLOUD: Cloud site type.\n - SITE_TYPE_BRANCH: Branch office site type.\n - SITE_TYPE_CONNECTIVITY: Connectivity/PoP site type.\n - SITE_TYPE_CUSTOMER: Customer/partner site type.\n - SITE_TYPE_OTHER: Other site type.",
       "title": "SiteType"
     },
-    "v202211UpdateSiteMarketResponse": {
+    "v202509UpdateSiteMarketResponse": {
       "type": "object",
       "properties": {
         "siteMarket": {
-          "$ref": "#/definitions/v202211SiteMarket",
+          "$ref": "#/definitions/v202509SiteMarket",
           "description": "Updated configuration of the site market"
         }
       },
       "title": "UpdateSiteMarketResponse"
     },
-    "v202211UpdateSiteResponse": {
+    "v202509UpdateSiteResponse": {
       "type": "object",
       "properties": {
         "site": {
-          "$ref": "#/definitions/v202211Site",
+          "$ref": "#/definitions/v202509Site",
           "description": "Updated configuration of the site"
         }
       },

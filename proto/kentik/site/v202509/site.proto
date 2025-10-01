@@ -1,7 +1,7 @@
 syntax = "proto3";
 
-package kentik.site.v202211;
-option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/site/v202211;site";
+package kentik.site.v202509;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/site/v202509;site";
 
 import "google/api/annotations.proto";
 import "google/api/client.proto";
@@ -13,7 +13,7 @@ import "kentik/core/v202303/annotations.proto";
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   info: {
     title: "Site Configuration API"
-    version: "v202211"
+    version: "v202509"
     contact: {
       name: "Kentik API Engineering"
       url: "https://github.com/kentik/api-schema-public"
@@ -251,18 +251,17 @@ message Site {
       description: "Logical network topology/architecture"
     }
   ];
-  string site_market = 10 [
-    deprecated = true,
+  SiteMarket site_market = 10 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "Name of the Site Market this site belongs to. Deprecated: Use v202509 API version instead."
+      description: "Site Market configuration for this site"
     }
   ];
-  string peeringdb_site_mapping = 11 [
-    deprecated = true,
+  repeated PeeringDBSiteMapping peeringdb_site_mapping = 11 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "PeeringDB Mapping of the given site. Deprecated: Use v202509 API version instead."
+      description: "List of PeeringDB site mappings associated with this site"
     }
   ];
+
 }
 
 // {{.Name}}
@@ -495,7 +494,7 @@ service SiteService {
   rpc ListSites(ListSitesRequest) returns (ListSitesResponse) {
     option (kentik.core.v202303.method_scope) = "admin.site:read";
     option (google.api.http) = {
-      get: "/site/v202211/sites"
+      get: "/site/v202509/sites"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       operation_id: "ListSites"
@@ -507,7 +506,7 @@ service SiteService {
   rpc GetSite(GetSiteRequest) returns (GetSiteResponse) {
     option (kentik.core.v202303.method_scope) = "admin.site:read";
     option (google.api.http) = {
-      get: "/site/v202211/sites/{id}"
+      get: "/site/v202509/sites/{id}"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       operation_id: "GetSite"
@@ -519,7 +518,7 @@ service SiteService {
   rpc CreateSite(CreateSiteRequest) returns (CreateSiteResponse) {
     option (kentik.core.v202303.method_scope) = "admin.site:write";
     option (google.api.http) = {
-      post: "/site/v202211/sites"
+      post: "/site/v202509/sites"
       body: "*"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
@@ -532,7 +531,7 @@ service SiteService {
   rpc UpdateSite(UpdateSiteRequest) returns (UpdateSiteResponse) {
     option (kentik.core.v202303.method_scope) = "admin.site:write";
     option (google.api.http) = {
-      put: "/site/v202211/sites/{site.id}"
+      put: "/site/v202509/sites/{site.id}"
       body: "*"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
@@ -545,7 +544,7 @@ service SiteService {
   rpc DeleteSite(DeleteSiteRequest) returns (DeleteSiteResponse) {
     option (kentik.core.v202303.method_scope) = "admin.site:write";
     option (google.api.http) = {
-      delete: "/site/v202211/sites/{id}"
+      delete: "/site/v202509/sites/{id}"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       operation_id: "DeleteSite"
@@ -559,7 +558,7 @@ service SiteService {
   rpc ListSiteMarkets(ListSiteMarketsRequest) returns (ListSiteMarketsResponse) {
     option (kentik.core.v202303.method_scope) = "admin.site:read";
     option (google.api.http) = {
-      get: "/site/v202211/site_markets"
+      get: "/site/v202509/site_markets"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       operation_id: "ListSiteMarkets"
@@ -571,7 +570,7 @@ service SiteService {
   rpc GetSiteMarket(GetSiteMarketRequest) returns (GetSiteMarketResponse) {
     option (kentik.core.v202303.method_scope) = "admin.site:read";
     option (google.api.http) = {
-      get: "/site/v202211/site_markets/{id}"
+      get: "/site/v202509/site_markets/{id}"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       operation_id: "GetSiteMarket"
@@ -583,7 +582,7 @@ service SiteService {
   rpc CreateSiteMarket(CreateSiteMarketRequest) returns (CreateSiteMarketResponse) {
     option (kentik.core.v202303.method_scope) = "admin.site:write";
     option (google.api.http) = {
-      post: "/site/v202211/site_markets"
+      post: "/site/v202509/site_markets"
       body: "*"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
@@ -596,7 +595,7 @@ service SiteService {
   rpc UpdateSiteMarket(UpdateSiteMarketRequest) returns (UpdateSiteMarketResponse) {
     option (kentik.core.v202303.method_scope) = "admin.site:write";
     option (google.api.http) = {
-      put: "/site/v202211/site_markets/{site_market.id}"
+      put: "/site/v202509/site_markets/{site_market.id}"
       body: "*"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
@@ -609,7 +608,7 @@ service SiteService {
   rpc DeleteSiteMarket(DeleteSiteMarketRequest) returns (DeleteSiteMarketResponse) {
     option (kentik.core.v202303.method_scope) = "admin.site:write";
     option (google.api.http) = {
-      delete: "/site/v202211/site_markets/{id}"
+      delete: "/site/v202509/site_markets/{id}"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       operation_id: "DeleteSiteMarket"

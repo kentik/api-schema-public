@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        (unknown)
-// source: kentik/site/v202211/site.proto
+// source: kentik/site/v202509/site.proto
 
 package site
 
@@ -78,11 +78,11 @@ func (x SiteType) String() string {
 }
 
 func (SiteType) Descriptor() protoreflect.EnumDescriptor {
-	return file_kentik_site_v202211_site_proto_enumTypes[0].Descriptor()
+	return file_kentik_site_v202509_site_proto_enumTypes[0].Descriptor()
 }
 
 func (SiteType) Type() protoreflect.EnumType {
-	return &file_kentik_site_v202211_site_proto_enumTypes[0]
+	return &file_kentik_site_v202509_site_proto_enumTypes[0]
 }
 
 func (x SiteType) Number() protoreflect.EnumNumber {
@@ -91,7 +91,7 @@ func (x SiteType) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use SiteType.Descriptor instead.
 func (SiteType) EnumDescriptor() ([]byte, []int) {
-	return file_kentik_site_v202211_site_proto_rawDescGZIP(), []int{0}
+	return file_kentik_site_v202509_site_proto_rawDescGZIP(), []int{0}
 }
 
 // {{.Name}}
@@ -106,7 +106,7 @@ type SiteIpAddressClassification struct {
 
 func (x *SiteIpAddressClassification) Reset() {
 	*x = SiteIpAddressClassification{}
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[0]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -118,7 +118,7 @@ func (x *SiteIpAddressClassification) String() string {
 func (*SiteIpAddressClassification) ProtoMessage() {}
 
 func (x *SiteIpAddressClassification) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[0]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -131,7 +131,7 @@ func (x *SiteIpAddressClassification) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SiteIpAddressClassification.ProtoReflect.Descriptor instead.
 func (*SiteIpAddressClassification) Descriptor() ([]byte, []int) {
-	return file_kentik_site_v202211_site_proto_rawDescGZIP(), []int{0}
+	return file_kentik_site_v202509_site_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *SiteIpAddressClassification) GetInfrastructureNetworks() []string {
@@ -166,7 +166,7 @@ type Layer struct {
 
 func (x *Layer) Reset() {
 	*x = Layer{}
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[1]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -178,7 +178,7 @@ func (x *Layer) String() string {
 func (*Layer) ProtoMessage() {}
 
 func (x *Layer) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[1]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -191,7 +191,7 @@ func (x *Layer) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Layer.ProtoReflect.Descriptor instead.
 func (*Layer) Descriptor() ([]byte, []int) {
-	return file_kentik_site_v202211_site_proto_rawDescGZIP(), []int{1}
+	return file_kentik_site_v202509_site_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *Layer) GetName() string {
@@ -218,7 +218,7 @@ type LayerSet struct {
 
 func (x *LayerSet) Reset() {
 	*x = LayerSet{}
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[2]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -230,7 +230,7 @@ func (x *LayerSet) String() string {
 func (*LayerSet) ProtoMessage() {}
 
 func (x *LayerSet) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[2]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -243,7 +243,7 @@ func (x *LayerSet) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LayerSet.ProtoReflect.Descriptor instead.
 func (*LayerSet) Descriptor() ([]byte, []int) {
-	return file_kentik_site_v202211_site_proto_rawDescGZIP(), []int{2}
+	return file_kentik_site_v202509_site_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *LayerSet) GetLayers() []*Layer {
@@ -267,7 +267,7 @@ type PostalAddress struct {
 
 func (x *PostalAddress) Reset() {
 	*x = PostalAddress{}
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[3]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -279,7 +279,7 @@ func (x *PostalAddress) String() string {
 func (*PostalAddress) ProtoMessage() {}
 
 func (x *PostalAddress) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[3]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -292,7 +292,7 @@ func (x *PostalAddress) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PostalAddress.ProtoReflect.Descriptor instead.
 func (*PostalAddress) Descriptor() ([]byte, []int) {
-	return file_kentik_site_v202211_site_proto_rawDescGZIP(), []int{3}
+	return file_kentik_site_v202509_site_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *PostalAddress) GetAddress() string {
@@ -344,7 +344,7 @@ type PeeringDBSiteMapping struct {
 
 func (x *PeeringDBSiteMapping) Reset() {
 	*x = PeeringDBSiteMapping{}
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[4]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -356,7 +356,7 @@ func (x *PeeringDBSiteMapping) String() string {
 func (*PeeringDBSiteMapping) ProtoMessage() {}
 
 func (x *PeeringDBSiteMapping) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[4]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -369,7 +369,7 @@ func (x *PeeringDBSiteMapping) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PeeringDBSiteMapping.ProtoReflect.Descriptor instead.
 func (*PeeringDBSiteMapping) Descriptor() ([]byte, []int) {
-	return file_kentik_site_v202211_site_proto_rawDescGZIP(), []int{4}
+	return file_kentik_site_v202509_site_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *PeeringDBSiteMapping) GetId() string {
@@ -422,20 +422,18 @@ type Site struct {
 	Lat                   float64                      `protobuf:"fixed64,4,opt,name=lat,proto3" json:"lat,omitempty"`
 	Lon                   float64                      `protobuf:"fixed64,5,opt,name=lon,proto3" json:"lon,omitempty"`
 	PostalAddress         *PostalAddress               `protobuf:"bytes,6,opt,name=postal_address,json=postalAddress,proto3" json:"postal_address,omitempty"`
-	Type                  SiteType                     `protobuf:"varint,7,opt,name=type,proto3,enum=kentik.site.v202211.SiteType" json:"type,omitempty"`
+	Type                  SiteType                     `protobuf:"varint,7,opt,name=type,proto3,enum=kentik.site.v202509.SiteType" json:"type,omitempty"`
 	AddressClassification *SiteIpAddressClassification `protobuf:"bytes,8,opt,name=address_classification,json=addressClassification,proto3" json:"address_classification,omitempty"`
 	Architecture          []*LayerSet                  `protobuf:"bytes,9,rep,name=architecture,proto3" json:"architecture,omitempty"`
-	// Deprecated: Marked as deprecated in kentik/site/v202211/site.proto.
-	SiteMarket string `protobuf:"bytes,10,opt,name=site_market,json=siteMarket,proto3" json:"site_market,omitempty"`
-	// Deprecated: Marked as deprecated in kentik/site/v202211/site.proto.
-	PeeringdbSiteMapping string `protobuf:"bytes,11,opt,name=peeringdb_site_mapping,json=peeringdbSiteMapping,proto3" json:"peeringdb_site_mapping,omitempty"`
-	unknownFields        protoimpl.UnknownFields
-	sizeCache            protoimpl.SizeCache
+	SiteMarket            *SiteMarket                  `protobuf:"bytes,10,opt,name=site_market,json=siteMarket,proto3" json:"site_market,omitempty"`
+	PeeringdbSiteMapping  []*PeeringDBSiteMapping      `protobuf:"bytes,11,rep,name=peeringdb_site_mapping,json=peeringdbSiteMapping,proto3" json:"peeringdb_site_mapping,omitempty"`
+	unknownFields         protoimpl.UnknownFields
+	sizeCache             protoimpl.SizeCache
 }
 
 func (x *Site) Reset() {
 	*x = Site{}
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[5]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -447,7 +445,7 @@ func (x *Site) String() string {
 func (*Site) ProtoMessage() {}
 
 func (x *Site) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[5]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -460,7 +458,7 @@ func (x *Site) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Site.ProtoReflect.Descriptor instead.
 func (*Site) Descriptor() ([]byte, []int) {
-	return file_kentik_site_v202211_site_proto_rawDescGZIP(), []int{5}
+	return file_kentik_site_v202509_site_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *Site) GetId() string {
@@ -519,20 +517,18 @@ func (x *Site) GetArchitecture() []*LayerSet {
 	return nil
 }
 
-// Deprecated: Marked as deprecated in kentik/site/v202211/site.proto.
-func (x *Site) GetSiteMarket() string {
+func (x *Site) GetSiteMarket() *SiteMarket {
 	if x != nil {
 		return x.SiteMarket
 	}
-	return ""
+	return nil
 }
 
-// Deprecated: Marked as deprecated in kentik/site/v202211/site.proto.
-func (x *Site) GetPeeringdbSiteMapping() string {
+func (x *Site) GetPeeringdbSiteMapping() []*PeeringDBSiteMapping {
 	if x != nil {
 		return x.PeeringdbSiteMapping
 	}
-	return ""
+	return nil
 }
 
 // {{.Name}}
@@ -544,7 +540,7 @@ type ListSitesRequest struct {
 
 func (x *ListSitesRequest) Reset() {
 	*x = ListSitesRequest{}
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[6]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -556,7 +552,7 @@ func (x *ListSitesRequest) String() string {
 func (*ListSitesRequest) ProtoMessage() {}
 
 func (x *ListSitesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[6]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -569,7 +565,7 @@ func (x *ListSitesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListSitesRequest.ProtoReflect.Descriptor instead.
 func (*ListSitesRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_site_v202211_site_proto_rawDescGZIP(), []int{6}
+	return file_kentik_site_v202509_site_proto_rawDescGZIP(), []int{6}
 }
 
 // {{.Name}}
@@ -583,7 +579,7 @@ type ListSitesResponse struct {
 
 func (x *ListSitesResponse) Reset() {
 	*x = ListSitesResponse{}
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[7]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -595,7 +591,7 @@ func (x *ListSitesResponse) String() string {
 func (*ListSitesResponse) ProtoMessage() {}
 
 func (x *ListSitesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[7]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -608,7 +604,7 @@ func (x *ListSitesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListSitesResponse.ProtoReflect.Descriptor instead.
 func (*ListSitesResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_site_v202211_site_proto_rawDescGZIP(), []int{7}
+	return file_kentik_site_v202509_site_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *ListSitesResponse) GetSites() []*Site {
@@ -635,7 +631,7 @@ type GetSiteRequest struct {
 
 func (x *GetSiteRequest) Reset() {
 	*x = GetSiteRequest{}
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[8]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -647,7 +643,7 @@ func (x *GetSiteRequest) String() string {
 func (*GetSiteRequest) ProtoMessage() {}
 
 func (x *GetSiteRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[8]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -660,7 +656,7 @@ func (x *GetSiteRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSiteRequest.ProtoReflect.Descriptor instead.
 func (*GetSiteRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_site_v202211_site_proto_rawDescGZIP(), []int{8}
+	return file_kentik_site_v202509_site_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *GetSiteRequest) GetId() string {
@@ -680,7 +676,7 @@ type GetSiteResponse struct {
 
 func (x *GetSiteResponse) Reset() {
 	*x = GetSiteResponse{}
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[9]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -692,7 +688,7 @@ func (x *GetSiteResponse) String() string {
 func (*GetSiteResponse) ProtoMessage() {}
 
 func (x *GetSiteResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[9]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -705,7 +701,7 @@ func (x *GetSiteResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSiteResponse.ProtoReflect.Descriptor instead.
 func (*GetSiteResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_site_v202211_site_proto_rawDescGZIP(), []int{9}
+	return file_kentik_site_v202509_site_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *GetSiteResponse) GetSite() *Site {
@@ -725,7 +721,7 @@ type CreateSiteRequest struct {
 
 func (x *CreateSiteRequest) Reset() {
 	*x = CreateSiteRequest{}
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[10]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -737,7 +733,7 @@ func (x *CreateSiteRequest) String() string {
 func (*CreateSiteRequest) ProtoMessage() {}
 
 func (x *CreateSiteRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[10]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -750,7 +746,7 @@ func (x *CreateSiteRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateSiteRequest.ProtoReflect.Descriptor instead.
 func (*CreateSiteRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_site_v202211_site_proto_rawDescGZIP(), []int{10}
+	return file_kentik_site_v202509_site_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *CreateSiteRequest) GetSite() *Site {
@@ -770,7 +766,7 @@ type CreateSiteResponse struct {
 
 func (x *CreateSiteResponse) Reset() {
 	*x = CreateSiteResponse{}
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[11]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -782,7 +778,7 @@ func (x *CreateSiteResponse) String() string {
 func (*CreateSiteResponse) ProtoMessage() {}
 
 func (x *CreateSiteResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[11]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -795,7 +791,7 @@ func (x *CreateSiteResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateSiteResponse.ProtoReflect.Descriptor instead.
 func (*CreateSiteResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_site_v202211_site_proto_rawDescGZIP(), []int{11}
+	return file_kentik_site_v202509_site_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *CreateSiteResponse) GetSite() *Site {
@@ -815,7 +811,7 @@ type UpdateSiteRequest struct {
 
 func (x *UpdateSiteRequest) Reset() {
 	*x = UpdateSiteRequest{}
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[12]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -827,7 +823,7 @@ func (x *UpdateSiteRequest) String() string {
 func (*UpdateSiteRequest) ProtoMessage() {}
 
 func (x *UpdateSiteRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[12]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -840,7 +836,7 @@ func (x *UpdateSiteRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateSiteRequest.ProtoReflect.Descriptor instead.
 func (*UpdateSiteRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_site_v202211_site_proto_rawDescGZIP(), []int{12}
+	return file_kentik_site_v202509_site_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *UpdateSiteRequest) GetSite() *Site {
@@ -860,7 +856,7 @@ type UpdateSiteResponse struct {
 
 func (x *UpdateSiteResponse) Reset() {
 	*x = UpdateSiteResponse{}
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[13]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -872,7 +868,7 @@ func (x *UpdateSiteResponse) String() string {
 func (*UpdateSiteResponse) ProtoMessage() {}
 
 func (x *UpdateSiteResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[13]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -885,7 +881,7 @@ func (x *UpdateSiteResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateSiteResponse.ProtoReflect.Descriptor instead.
 func (*UpdateSiteResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_site_v202211_site_proto_rawDescGZIP(), []int{13}
+	return file_kentik_site_v202509_site_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *UpdateSiteResponse) GetSite() *Site {
@@ -905,7 +901,7 @@ type DeleteSiteRequest struct {
 
 func (x *DeleteSiteRequest) Reset() {
 	*x = DeleteSiteRequest{}
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[14]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -917,7 +913,7 @@ func (x *DeleteSiteRequest) String() string {
 func (*DeleteSiteRequest) ProtoMessage() {}
 
 func (x *DeleteSiteRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[14]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -930,7 +926,7 @@ func (x *DeleteSiteRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteSiteRequest.ProtoReflect.Descriptor instead.
 func (*DeleteSiteRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_site_v202211_site_proto_rawDescGZIP(), []int{14}
+	return file_kentik_site_v202509_site_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *DeleteSiteRequest) GetId() string {
@@ -949,7 +945,7 @@ type DeleteSiteResponse struct {
 
 func (x *DeleteSiteResponse) Reset() {
 	*x = DeleteSiteResponse{}
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[15]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -961,7 +957,7 @@ func (x *DeleteSiteResponse) String() string {
 func (*DeleteSiteResponse) ProtoMessage() {}
 
 func (x *DeleteSiteResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[15]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -974,7 +970,7 @@ func (x *DeleteSiteResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteSiteResponse.ProtoReflect.Descriptor instead.
 func (*DeleteSiteResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_site_v202211_site_proto_rawDescGZIP(), []int{15}
+	return file_kentik_site_v202509_site_proto_rawDescGZIP(), []int{15}
 }
 
 // {{.Name}}
@@ -992,7 +988,7 @@ type SiteMarket struct {
 
 func (x *SiteMarket) Reset() {
 	*x = SiteMarket{}
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[16]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1004,7 +1000,7 @@ func (x *SiteMarket) String() string {
 func (*SiteMarket) ProtoMessage() {}
 
 func (x *SiteMarket) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[16]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1017,7 +1013,7 @@ func (x *SiteMarket) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SiteMarket.ProtoReflect.Descriptor instead.
 func (*SiteMarket) Descriptor() ([]byte, []int) {
-	return file_kentik_site_v202211_site_proto_rawDescGZIP(), []int{16}
+	return file_kentik_site_v202509_site_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *SiteMarket) GetId() string {
@@ -1071,7 +1067,7 @@ type ListSiteMarketsRequest struct {
 
 func (x *ListSiteMarketsRequest) Reset() {
 	*x = ListSiteMarketsRequest{}
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[17]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1083,7 +1079,7 @@ func (x *ListSiteMarketsRequest) String() string {
 func (*ListSiteMarketsRequest) ProtoMessage() {}
 
 func (x *ListSiteMarketsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[17]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1096,7 +1092,7 @@ func (x *ListSiteMarketsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListSiteMarketsRequest.ProtoReflect.Descriptor instead.
 func (*ListSiteMarketsRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_site_v202211_site_proto_rawDescGZIP(), []int{17}
+	return file_kentik_site_v202509_site_proto_rawDescGZIP(), []int{17}
 }
 
 // {{.Name}}
@@ -1110,7 +1106,7 @@ type ListSiteMarketsResponse struct {
 
 func (x *ListSiteMarketsResponse) Reset() {
 	*x = ListSiteMarketsResponse{}
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[18]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1122,7 +1118,7 @@ func (x *ListSiteMarketsResponse) String() string {
 func (*ListSiteMarketsResponse) ProtoMessage() {}
 
 func (x *ListSiteMarketsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[18]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1135,7 +1131,7 @@ func (x *ListSiteMarketsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListSiteMarketsResponse.ProtoReflect.Descriptor instead.
 func (*ListSiteMarketsResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_site_v202211_site_proto_rawDescGZIP(), []int{18}
+	return file_kentik_site_v202509_site_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *ListSiteMarketsResponse) GetSiteMarkets() []*SiteMarket {
@@ -1162,7 +1158,7 @@ type GetSiteMarketRequest struct {
 
 func (x *GetSiteMarketRequest) Reset() {
 	*x = GetSiteMarketRequest{}
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[19]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1174,7 +1170,7 @@ func (x *GetSiteMarketRequest) String() string {
 func (*GetSiteMarketRequest) ProtoMessage() {}
 
 func (x *GetSiteMarketRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[19]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1187,7 +1183,7 @@ func (x *GetSiteMarketRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSiteMarketRequest.ProtoReflect.Descriptor instead.
 func (*GetSiteMarketRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_site_v202211_site_proto_rawDescGZIP(), []int{19}
+	return file_kentik_site_v202509_site_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *GetSiteMarketRequest) GetId() string {
@@ -1207,7 +1203,7 @@ type GetSiteMarketResponse struct {
 
 func (x *GetSiteMarketResponse) Reset() {
 	*x = GetSiteMarketResponse{}
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[20]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1219,7 +1215,7 @@ func (x *GetSiteMarketResponse) String() string {
 func (*GetSiteMarketResponse) ProtoMessage() {}
 
 func (x *GetSiteMarketResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[20]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1232,7 +1228,7 @@ func (x *GetSiteMarketResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSiteMarketResponse.ProtoReflect.Descriptor instead.
 func (*GetSiteMarketResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_site_v202211_site_proto_rawDescGZIP(), []int{20}
+	return file_kentik_site_v202509_site_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *GetSiteMarketResponse) GetSiteMarket() *SiteMarket {
@@ -1252,7 +1248,7 @@ type CreateSiteMarketRequest struct {
 
 func (x *CreateSiteMarketRequest) Reset() {
 	*x = CreateSiteMarketRequest{}
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[21]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1264,7 +1260,7 @@ func (x *CreateSiteMarketRequest) String() string {
 func (*CreateSiteMarketRequest) ProtoMessage() {}
 
 func (x *CreateSiteMarketRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[21]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1277,7 +1273,7 @@ func (x *CreateSiteMarketRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateSiteMarketRequest.ProtoReflect.Descriptor instead.
 func (*CreateSiteMarketRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_site_v202211_site_proto_rawDescGZIP(), []int{21}
+	return file_kentik_site_v202509_site_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *CreateSiteMarketRequest) GetSiteMarket() *SiteMarket {
@@ -1297,7 +1293,7 @@ type CreateSiteMarketResponse struct {
 
 func (x *CreateSiteMarketResponse) Reset() {
 	*x = CreateSiteMarketResponse{}
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[22]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1309,7 +1305,7 @@ func (x *CreateSiteMarketResponse) String() string {
 func (*CreateSiteMarketResponse) ProtoMessage() {}
 
 func (x *CreateSiteMarketResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[22]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1322,7 +1318,7 @@ func (x *CreateSiteMarketResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateSiteMarketResponse.ProtoReflect.Descriptor instead.
 func (*CreateSiteMarketResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_site_v202211_site_proto_rawDescGZIP(), []int{22}
+	return file_kentik_site_v202509_site_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *CreateSiteMarketResponse) GetSiteMarket() *SiteMarket {
@@ -1342,7 +1338,7 @@ type UpdateSiteMarketRequest struct {
 
 func (x *UpdateSiteMarketRequest) Reset() {
 	*x = UpdateSiteMarketRequest{}
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[23]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1354,7 +1350,7 @@ func (x *UpdateSiteMarketRequest) String() string {
 func (*UpdateSiteMarketRequest) ProtoMessage() {}
 
 func (x *UpdateSiteMarketRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[23]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1367,7 +1363,7 @@ func (x *UpdateSiteMarketRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateSiteMarketRequest.ProtoReflect.Descriptor instead.
 func (*UpdateSiteMarketRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_site_v202211_site_proto_rawDescGZIP(), []int{23}
+	return file_kentik_site_v202509_site_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *UpdateSiteMarketRequest) GetSiteMarket() *SiteMarket {
@@ -1387,7 +1383,7 @@ type UpdateSiteMarketResponse struct {
 
 func (x *UpdateSiteMarketResponse) Reset() {
 	*x = UpdateSiteMarketResponse{}
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[24]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1399,7 +1395,7 @@ func (x *UpdateSiteMarketResponse) String() string {
 func (*UpdateSiteMarketResponse) ProtoMessage() {}
 
 func (x *UpdateSiteMarketResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[24]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1412,7 +1408,7 @@ func (x *UpdateSiteMarketResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateSiteMarketResponse.ProtoReflect.Descriptor instead.
 func (*UpdateSiteMarketResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_site_v202211_site_proto_rawDescGZIP(), []int{24}
+	return file_kentik_site_v202509_site_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *UpdateSiteMarketResponse) GetSiteMarket() *SiteMarket {
@@ -1432,7 +1428,7 @@ type DeleteSiteMarketRequest struct {
 
 func (x *DeleteSiteMarketRequest) Reset() {
 	*x = DeleteSiteMarketRequest{}
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[25]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1444,7 +1440,7 @@ func (x *DeleteSiteMarketRequest) String() string {
 func (*DeleteSiteMarketRequest) ProtoMessage() {}
 
 func (x *DeleteSiteMarketRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[25]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1457,7 +1453,7 @@ func (x *DeleteSiteMarketRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteSiteMarketRequest.ProtoReflect.Descriptor instead.
 func (*DeleteSiteMarketRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_site_v202211_site_proto_rawDescGZIP(), []int{25}
+	return file_kentik_site_v202509_site_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *DeleteSiteMarketRequest) GetId() string {
@@ -1476,7 +1472,7 @@ type DeleteSiteMarketResponse struct {
 
 func (x *DeleteSiteMarketResponse) Reset() {
 	*x = DeleteSiteMarketResponse{}
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[26]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1488,7 +1484,7 @@ func (x *DeleteSiteMarketResponse) String() string {
 func (*DeleteSiteMarketResponse) ProtoMessage() {}
 
 func (x *DeleteSiteMarketResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_site_v202211_site_proto_msgTypes[26]
+	mi := &file_kentik_site_v202509_site_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1501,14 +1497,14 @@ func (x *DeleteSiteMarketResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteSiteMarketResponse.ProtoReflect.Descriptor instead.
 func (*DeleteSiteMarketResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_site_v202211_site_proto_rawDescGZIP(), []int{26}
+	return file_kentik_site_v202509_site_proto_rawDescGZIP(), []int{26}
 }
 
-var File_kentik_site_v202211_site_proto protoreflect.FileDescriptor
+var File_kentik_site_v202509_site_proto protoreflect.FileDescriptor
 
-const file_kentik_site_v202211_site_proto_rawDesc = "" +
+const file_kentik_site_v202509_site_proto_rawDesc = "" +
 	"\n" +
-	"\x1ekentik/site/v202211/site.proto\x12\x13kentik.site.v202211\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a%kentik/core/v202303/annotations.proto\"\xba\x03\n" +
+	"\x1ekentik/site/v202509/site.proto\x12\x13kentik.site.v202509\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a%kentik/core/v202303/annotations.proto\"\xba\x03\n" +
 	"\x1bSiteIpAddressClassification\x12\x95\x01\n" +
 	"\x17infrastructure_networks\x18\x01 \x03(\tB\\\x92AY2WList of IP address prefixes (in standard CIDR notation) used in infrastructure networksR\x16infrastructureNetworks\x12\x86\x01\n" +
 	"\x14user_access_networks\x18\x02 \x03(\tBT\x92AQ2OList of IP address prefixes (in standard CIDR notation) used in access networksR\x12userAccessNetworks\x12z\n" +
@@ -1518,7 +1514,7 @@ const file_kentik_site_v202211_site_proto_rawDesc = "" +
 	"\n" +
 	"device_ids\x18\x02 \x03(\tBC\x92A@2>IDs of devices that are deemed to be part of the network layerR\tdeviceIds\"d\n" +
 	"\bLayerSet\x12X\n" +
-	"\x06layers\x18\x01 \x03(\v2\x1a.kentik.site.v202211.LayerB$\x92A!2\x1fList of parallel network layersR\x06layers\"\xac\x02\n" +
+	"\x06layers\x18\x01 \x03(\v2\x1a.kentik.site.v202509.LayerB$\x92A!2\x1fList of parallel network layersR\x06layers\"\xac\x02\n" +
 	"\rPostalAddress\x120\n" +
 	"\aaddress\x18\x01 \x01(\tB\x16\x92A\x102\x0eStreet address\xe0A\x02R\aaddress\x12,\n" +
 	"\x04city\x18\x02 \x01(\tB\x18\x92A\x122\x10City (full name)\xe0A\x02R\x04city\x120\n" +
@@ -1534,36 +1530,36 @@ const file_kentik_site_v202211_site_proto_rawDesc = "" +
 	"\x05cdate\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampB \x92A\x1a2\x18Creation timestamp (UTC)\xe0A\x03R\x05cdate\x12.\n" +
 	"\n" +
 	"company_id\x18\x06 \x01(\tB\x0f\x92A\f2\n" +
-	"Company IDR\tcompanyId\"\xb3\a\n" +
+	"Company IDR\tcompanyId\"\xaf\a\n" +
 	"\x04Site\x12:\n" +
 	"\x02id\x18\x01 \x01(\tB*\x92A$2\"System generated unique identifier\xe0A\x03R\x02id\x126\n" +
 	"\x05title\x18\x02 \x01(\tB \x92A\x1a2\x18User selected title/name\xe0A\x02R\x05title\x128\n" +
 	"\x03lat\x18\x04 \x01(\x01B&\x92A#2!Latitude (signed decimal degrees)R\x03lat\x129\n" +
 	"\x03lon\x18\x05 \x01(\x01B'\x92A$2\"Longitude (signed decimal degrees)R\x03lon\x12^\n" +
-	"\x0epostal_address\x18\x06 \x01(\v2\".kentik.site.v202211.PostalAddressB\x13\x92A\x102\x0ePostal addressR\rpostalAddress\x12G\n" +
-	"\x04type\x18\a \x01(\x0e2\x1d.kentik.site.v202211.SiteTypeB\x14\x92A\x0e2\fType of site\xe0A\x02R\x04type\x12\x93\x01\n" +
-	"\x16address_classification\x18\b \x01(\v20.kentik.site.v202211.SiteIpAddressClassificationB*\x92A'2%Classification of site's IP addressesR\x15addressClassification\x12m\n" +
-	"\farchitecture\x18\t \x03(\v2\x1d.kentik.site.v202211.LayerSetB*\x92A'2%Logical network topology/architectureR\farchitecture\x12\x82\x01\n" +
+	"\x0epostal_address\x18\x06 \x01(\v2\".kentik.site.v202509.PostalAddressB\x13\x92A\x102\x0ePostal addressR\rpostalAddress\x12G\n" +
+	"\x04type\x18\a \x01(\x0e2\x1d.kentik.site.v202509.SiteTypeB\x14\x92A\x0e2\fType of site\xe0A\x02R\x04type\x12\x93\x01\n" +
+	"\x16address_classification\x18\b \x01(\v20.kentik.site.v202509.SiteIpAddressClassificationB*\x92A'2%Classification of site's IP addressesR\x15addressClassification\x12m\n" +
+	"\farchitecture\x18\t \x03(\v2\x1d.kentik.site.v202509.LayerSetB*\x92A'2%Logical network topology/architectureR\farchitecture\x12n\n" +
 	"\vsite_market\x18\n" +
-	" \x01(\tBa\x92A\\2ZName of the Site Market this site belongs to. Deprecated: Use v202509 API version instead.\x18\x01R\n" +
-	"siteMarket\x12\x8e\x01\n" +
-	"\x16peeringdb_site_mapping\x18\v \x01(\tBX\x92AS2QPeeringDB Mapping of the given site. Deprecated: Use v202509 API version instead.\x18\x01R\x14peeringdbSiteMapping\"\x12\n" +
+	" \x01(\v2\x1f.kentik.site.v202509.SiteMarketB,\x92A)2'Site Market configuration for this siteR\n" +
+	"siteMarket\x12\x9f\x01\n" +
+	"\x16peeringdb_site_mapping\x18\v \x03(\v2).kentik.site.v202509.PeeringDBSiteMappingB>\x92A;29List of PeeringDB site mappings associated with this siteR\x14peeringdbSiteMapping\"\x12\n" +
 	"\x10ListSitesRequest\"\xdb\x01\n" +
 	"\x11ListSitesResponse\x12_\n" +
-	"\x05sites\x18\x01 \x03(\v2\x19.kentik.site.v202211.SiteB.\x92A+2)List of configurations of requested sitesR\x05sites\x12e\n" +
+	"\x05sites\x18\x01 \x03(\v2\x19.kentik.site.v202509.SiteB.\x92A+2)List of configurations of requested sitesR\x05sites\x12e\n" +
 	"\rinvalid_count\x18\x02 \x01(\rB@\x92A=2;Number of invalid entries encountered while collecting dataR\finvalidCount\"B\n" +
 	"\x0eGetSiteRequest\x120\n" +
 	"\x02id\x18\x01 \x01(\tB \x92A\x1a2\x18ID of the requested site\xe0A\x02R\x02id\"j\n" +
 	"\x0fGetSiteResponse\x12W\n" +
-	"\x04site\x18\x01 \x01(\v2\x19.kentik.site.v202211.SiteB(\x92A%2#Configuration of the requested siteR\x04site\"i\n" +
+	"\x04site\x18\x01 \x01(\v2\x19.kentik.site.v202509.SiteB(\x92A%2#Configuration of the requested siteR\x04site\"i\n" +
 	"\x11CreateSiteRequest\x12T\n" +
-	"\x04site\x18\x01 \x01(\v2\x19.kentik.site.v202211.SiteB%\x92A\x1f2\x1dConfiguration of the new site\xe0A\x02R\x04site\"q\n" +
+	"\x04site\x18\x01 \x01(\v2\x19.kentik.site.v202509.SiteB%\x92A\x1f2\x1dConfiguration of the new site\xe0A\x02R\x04site\"q\n" +
 	"\x12CreateSiteResponse\x12[\n" +
-	"\x04site\x18\x01 \x01(\v2\x19.kentik.site.v202211.SiteB,\x92A)2'Configuration of the newly created siteR\x04site\"\x83\x01\n" +
+	"\x04site\x18\x01 \x01(\v2\x19.kentik.site.v202509.SiteB,\x92A)2'Configuration of the newly created siteR\x04site\"\x83\x01\n" +
 	"\x11UpdateSiteRequest\x12n\n" +
-	"\x04site\x18\x01 \x01(\v2\x19.kentik.site.v202211.SiteB?\x92A927New configuration attributes for the site to be updated\xe0A\x02R\x04site\"k\n" +
+	"\x04site\x18\x01 \x01(\v2\x19.kentik.site.v202509.SiteB?\x92A927New configuration attributes for the site to be updated\xe0A\x02R\x04site\"k\n" +
 	"\x12UpdateSiteResponse\x12U\n" +
-	"\x04site\x18\x01 \x01(\v2\x19.kentik.site.v202211.SiteB&\x92A#2!Updated configuration of the siteR\x04site\"I\n" +
+	"\x04site\x18\x01 \x01(\v2\x19.kentik.site.v202509.SiteB&\x92A#2!Updated configuration of the siteR\x04site\"I\n" +
 	"\x11DeleteSiteRequest\x124\n" +
 	"\x02id\x18\x01 \x01(\tB$\x92A\x1e2\x1cID of the site to be deleted\xe0A\x02R\x02id\"\x14\n" +
 	"\x12DeleteSiteResponse\"\xbe\x03\n" +
@@ -1577,24 +1573,24 @@ const file_kentik_site_v202211_site_proto_rawDesc = "" +
 	"\x05edate\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampB)\x92A#2!Last modification timestamp (UTC)\xe0A\x03R\x05edate\"\x18\n" +
 	"\x16ListSiteMarketsRequest\"\xfb\x01\n" +
 	"\x17ListSiteMarketsResponse\x12y\n" +
-	"\fsite_markets\x18\x01 \x03(\v2\x1f.kentik.site.v202211.SiteMarketB5\x92A220List of configurations of requested site marketsR\vsiteMarkets\x12e\n" +
+	"\fsite_markets\x18\x01 \x03(\v2\x1f.kentik.site.v202509.SiteMarketB5\x92A220List of configurations of requested site marketsR\vsiteMarkets\x12e\n" +
 	"\rinvalid_count\x18\x02 \x01(\rB@\x92A=2;Number of invalid entries encountered while collecting dataR\finvalidCount\"O\n" +
 	"\x14GetSiteMarketRequest\x127\n" +
 	"\x02id\x18\x01 \x01(\tB'\x92A!2\x1fID of the requested site market\xe0A\x02R\x02id\"\x8a\x01\n" +
 	"\x15GetSiteMarketResponse\x12q\n" +
-	"\vsite_market\x18\x01 \x01(\v2\x1f.kentik.site.v202211.SiteMarketB/\x92A,2*Configuration of the requested site marketR\n" +
+	"\vsite_market\x18\x01 \x01(\v2\x1f.kentik.site.v202509.SiteMarketB/\x92A,2*Configuration of the requested site marketR\n" +
 	"siteMarket\"\x89\x01\n" +
 	"\x17CreateSiteMarketRequest\x12n\n" +
-	"\vsite_market\x18\x01 \x01(\v2\x1f.kentik.site.v202211.SiteMarketB,\x92A&2$Configuration of the new site market\xe0A\x02R\n" +
+	"\vsite_market\x18\x01 \x01(\v2\x1f.kentik.site.v202509.SiteMarketB,\x92A&2$Configuration of the new site market\xe0A\x02R\n" +
 	"siteMarket\"\x91\x01\n" +
 	"\x18CreateSiteMarketResponse\x12u\n" +
-	"\vsite_market\x18\x01 \x01(\v2\x1f.kentik.site.v202211.SiteMarketB3\x92A02.Configuration of the newly created site marketR\n" +
+	"\vsite_market\x18\x01 \x01(\v2\x1f.kentik.site.v202509.SiteMarketB3\x92A02.Configuration of the newly created site marketR\n" +
 	"siteMarket\"\x9d\x01\n" +
 	"\x17UpdateSiteMarketRequest\x12\x81\x01\n" +
-	"\vsite_market\x18\x01 \x01(\v2\x1f.kentik.site.v202211.SiteMarketB?\x92A927New configuration attributes for the site to be updated\xe0A\x02R\n" +
+	"\vsite_market\x18\x01 \x01(\v2\x1f.kentik.site.v202509.SiteMarketB?\x92A927New configuration attributes for the site to be updated\xe0A\x02R\n" +
 	"siteMarket\"\x8b\x01\n" +
 	"\x18UpdateSiteMarketResponse\x12o\n" +
-	"\vsite_market\x18\x01 \x01(\v2\x1f.kentik.site.v202211.SiteMarketB-\x92A*2(Updated configuration of the site marketR\n" +
+	"\vsite_market\x18\x01 \x01(\v2\x1f.kentik.site.v202509.SiteMarketB-\x92A*2(Updated configuration of the site marketR\n" +
 	"siteMarket\"V\n" +
 	"\x17DeleteSiteMarketRequest\x12;\n" +
 	"\x02id\x18\x01 \x01(\tB+\x92A%2#ID of the site market to be deleted\xe0A\x02R\x02id\"\x1a\n" +
@@ -1608,22 +1604,22 @@ const file_kentik_site_v202211_site_proto_rawDesc = "" +
 	"\x12SITE_TYPE_CUSTOMER\x10\x05\x12\x13\n" +
 	"\x0fSITE_TYPE_OTHER\x10\x062\x8f\x16\n" +
 	"\vSiteService\x12\xcc\x01\n" +
-	"\tListSites\x12%.kentik.site.v202211.ListSitesRequest\x1a&.kentik.site.v202211.ListSitesResponse\"p\x92A?\x12\x0fList all sites.\x1a!Returns list of configured sites.*\tListSites\xf2\xd7\x02\x0fadmin.site:read\x82\xd3\xe4\x93\x02\x15\x12\x13/site/v202211/sites\x12\xeb\x01\n" +
-	"\aGetSite\x12#.kentik.site.v202211.GetSiteRequest\x1a$.kentik.site.v202211.GetSiteResponse\"\x94\x01\x92A^\x12!Retrieve configuration of a site.\x1a0Returns configuration of a site specified by ID.*\aGetSite\xf2\xd7\x02\x0fadmin.site:read\x82\xd3\xe4\x93\x02\x1a\x12\x18/site/v202211/sites/{id}\x12\x87\x02\n" +
+	"\tListSites\x12%.kentik.site.v202509.ListSitesRequest\x1a&.kentik.site.v202509.ListSitesResponse\"p\x92A?\x12\x0fList all sites.\x1a!Returns list of configured sites.*\tListSites\xf2\xd7\x02\x0fadmin.site:read\x82\xd3\xe4\x93\x02\x15\x12\x13/site/v202509/sites\x12\xeb\x01\n" +
+	"\aGetSite\x12#.kentik.site.v202509.GetSiteRequest\x1a$.kentik.site.v202509.GetSiteResponse\"\x94\x01\x92A^\x12!Retrieve configuration of a site.\x1a0Returns configuration of a site specified by ID.*\aGetSite\xf2\xd7\x02\x0fadmin.site:read\x82\xd3\xe4\x93\x02\x1a\x12\x18/site/v202509/sites/{id}\x12\x87\x02\n" +
 	"\n" +
-	"CreateSite\x12&.kentik.site.v202211.CreateSiteRequest\x1a'.kentik.site.v202211.CreateSiteResponse\"\xa7\x01\x92Ar\x12\x15Configure a new site.\x1aMCreate configuration for a new site. Returns the newly created configuration.*\n" +
-	"CreateSite\xf2\xd7\x02\x10admin.site:write\x82\xd3\xe4\x93\x02\x18:\x01*\"\x13/site/v202211/sites\x12\xb3\x02\n" +
+	"CreateSite\x12&.kentik.site.v202509.CreateSiteRequest\x1a'.kentik.site.v202509.CreateSiteResponse\"\xa7\x01\x92Ar\x12\x15Configure a new site.\x1aMCreate configuration for a new site. Returns the newly created configuration.*\n" +
+	"CreateSite\xf2\xd7\x02\x10admin.site:write\x82\xd3\xe4\x93\x02\x18:\x01*\"\x13/site/v202509/sites\x12\xb3\x02\n" +
 	"\n" +
-	"UpdateSite\x12&.kentik.site.v202211.UpdateSiteRequest\x1a'.kentik.site.v202211.UpdateSiteResponse\"\xd3\x01\x92A\x93\x01\x12 Updates configuration of a site.\x1acReplaces configuration of a site with attributes in the request. Returns the updated configuration.*\n" +
-	"UpdateSite\xf2\xd7\x02\x10admin.site:write\x82\xd3\xe4\x93\x02\":\x01*\x1a\x1d/site/v202211/sites/{site.id}\x12\xf7\x01\n" +
+	"UpdateSite\x12&.kentik.site.v202509.UpdateSiteRequest\x1a'.kentik.site.v202509.UpdateSiteResponse\"\xd3\x01\x92A\x93\x01\x12 Updates configuration of a site.\x1acReplaces configuration of a site with attributes in the request. Returns the updated configuration.*\n" +
+	"UpdateSite\xf2\xd7\x02\x10admin.site:write\x82\xd3\xe4\x93\x02\":\x01*\x1a\x1d/site/v202509/sites/{site.id}\x12\xf7\x01\n" +
 	"\n" +
-	"DeleteSite\x12&.kentik.site.v202211.DeleteSiteRequest\x1a'.kentik.site.v202211.DeleteSiteResponse\"\x97\x01\x92A`\x12\x1fDelete configuration of a site.\x1a1Deletes configuration of a site with specific ID.*\n" +
-	"DeleteSite\xf2\xd7\x02\x10admin.site:write\x82\xd3\xe4\x93\x02\x1a*\x18/site/v202211/sites/{id}\x12\xfa\x01\n" +
-	"\x0fListSiteMarkets\x12+.kentik.site.v202211.ListSiteMarketsRequest\x1a,.kentik.site.v202211.ListSiteMarketsResponse\"\x8b\x01\x92AS\x12\x16List all site markets.\x1a(Returns list of configured site markets.*\x0fListSiteMarkets\xf2\xd7\x02\x0fadmin.site:read\x82\xd3\xe4\x93\x02\x1c\x12\x1a/site/v202211/site_markets\x12\x98\x02\n" +
-	"\rGetSiteMarket\x12).kentik.site.v202211.GetSiteMarketRequest\x1a*.kentik.site.v202211.GetSiteMarketResponse\"\xaf\x01\x92Ar\x12(Retrieve configuration of a site market.\x1a7Returns configuration of a site market specified by ID.*\rGetSiteMarket\xf2\xd7\x02\x0fadmin.site:read\x82\xd3\xe4\x93\x02!\x12\x1f/site/v202211/site_markets/{id}\x12\xb5\x02\n" +
-	"\x10CreateSiteMarket\x12,.kentik.site.v202211.CreateSiteMarketRequest\x1a-.kentik.site.v202211.CreateSiteMarketResponse\"\xc3\x01\x92A\x86\x01\x12\x1cConfigure a new site market.\x1aTCreate configuration for a new site market. Returns the newly created configuration.*\x10CreateSiteMarket\xf2\xd7\x02\x10admin.site:write\x82\xd3\xe4\x93\x02\x1f:\x01*\"\x1a/site/v202211/site_markets\x12\xe7\x02\n" +
-	"\x10UpdateSiteMarket\x12,.kentik.site.v202211.UpdateSiteMarketRequest\x1a-.kentik.site.v202211.UpdateSiteMarketResponse\"\xf5\x01\x92A\xa7\x01\x12'Updates configuration of a site market.\x1ajReplaces configuration of a site market with attributes in the request. Returns the updated configuration.*\x10UpdateSiteMarket\xf2\xd7\x02\x10admin.site:write\x82\xd3\xe4\x93\x020:\x01*\x1a+/site/v202211/site_markets/{site_market.id}\x12\xa4\x02\n" +
-	"\x10DeleteSiteMarket\x12,.kentik.site.v202211.DeleteSiteMarketRequest\x1a-.kentik.site.v202211.DeleteSiteMarketResponse\"\xb2\x01\x92At\x12&Delete configuration of a site market.\x1a8Deletes configuration of a site market with specific ID.*\x10DeleteSiteMarket\xf2\xd7\x02\x10admin.site:write\x82\xd3\xe4\x93\x02!*\x1f/site/v202211/site_markets/{id}\x1a(\xcaA\x13grpc.api.kentik.com\xea\xd7\x02\n" +
+	"DeleteSite\x12&.kentik.site.v202509.DeleteSiteRequest\x1a'.kentik.site.v202509.DeleteSiteResponse\"\x97\x01\x92A`\x12\x1fDelete configuration of a site.\x1a1Deletes configuration of a site with specific ID.*\n" +
+	"DeleteSite\xf2\xd7\x02\x10admin.site:write\x82\xd3\xe4\x93\x02\x1a*\x18/site/v202509/sites/{id}\x12\xfa\x01\n" +
+	"\x0fListSiteMarkets\x12+.kentik.site.v202509.ListSiteMarketsRequest\x1a,.kentik.site.v202509.ListSiteMarketsResponse\"\x8b\x01\x92AS\x12\x16List all site markets.\x1a(Returns list of configured site markets.*\x0fListSiteMarkets\xf2\xd7\x02\x0fadmin.site:read\x82\xd3\xe4\x93\x02\x1c\x12\x1a/site/v202509/site_markets\x12\x98\x02\n" +
+	"\rGetSiteMarket\x12).kentik.site.v202509.GetSiteMarketRequest\x1a*.kentik.site.v202509.GetSiteMarketResponse\"\xaf\x01\x92Ar\x12(Retrieve configuration of a site market.\x1a7Returns configuration of a site market specified by ID.*\rGetSiteMarket\xf2\xd7\x02\x0fadmin.site:read\x82\xd3\xe4\x93\x02!\x12\x1f/site/v202509/site_markets/{id}\x12\xb5\x02\n" +
+	"\x10CreateSiteMarket\x12,.kentik.site.v202509.CreateSiteMarketRequest\x1a-.kentik.site.v202509.CreateSiteMarketResponse\"\xc3\x01\x92A\x86\x01\x12\x1cConfigure a new site market.\x1aTCreate configuration for a new site market. Returns the newly created configuration.*\x10CreateSiteMarket\xf2\xd7\x02\x10admin.site:write\x82\xd3\xe4\x93\x02\x1f:\x01*\"\x1a/site/v202509/site_markets\x12\xe7\x02\n" +
+	"\x10UpdateSiteMarket\x12,.kentik.site.v202509.UpdateSiteMarketRequest\x1a-.kentik.site.v202509.UpdateSiteMarketResponse\"\xf5\x01\x92A\xa7\x01\x12'Updates configuration of a site market.\x1ajReplaces configuration of a site market with attributes in the request. Returns the updated configuration.*\x10UpdateSiteMarket\xf2\xd7\x02\x10admin.site:write\x82\xd3\xe4\x93\x020:\x01*\x1a+/site/v202509/site_markets/{site_market.id}\x12\xa4\x02\n" +
+	"\x10DeleteSiteMarket\x12,.kentik.site.v202509.DeleteSiteMarketRequest\x1a-.kentik.site.v202509.DeleteSiteMarketResponse\"\xb2\x01\x92At\x12&Delete configuration of a site market.\x1a8Deletes configuration of a site market with specific ID.*\x10DeleteSiteMarket\xf2\xd7\x02\x10admin.site:write\x82\xd3\xe4\x93\x02!*\x1f/site/v202509/site_markets/{id}\x1a(\xcaA\x13grpc.api.kentik.com\xea\xd7\x02\n" +
 	"admin.site\x90\xd8\x02\x03B\x83\f\x92A\xba\v\x12\xd3\t\n" +
 	"\x16Site Configuration API\x12\xe8\b# Overview\n" +
 	"The Site Configuration API provides programmatic access to configuration of Sites and Site Markets:\n" +
@@ -1636,7 +1632,7 @@ const file_kentik_site_v202211_site_proto_rawDesc = "" +
 	"***Notes:*** \n" +
 	"    - Once a site is created in Kentik, you can assign one or more devices to the site via the settings for those devices; to do so programmatically you'd use the v5 Device API (see [Device Create](https://kb.kentik.com/v0/Ec05.htm#Ec05-Device_Create)).\n" +
 	"    - Sites can also be managed using the legacy REST-only [Site API](https://kb.kentik.com/v0/Ec10.htm#Ec10-Site_API), which provides access to a subset of site configuration attributes.\"E\n" +
-	"\x16Kentik API Engineering\x12+https://github.com/kentik/api-schema-public2\av202211*\x01\x022\x10application/json:\x10application/jsonZD\n" +
+	"\x16Kentik API Engineering\x12+https://github.com/kentik/api-schema-public2\av202509*\x01\x022\x10application/json:\x10application/jsonZD\n" +
 	"\x1e\n" +
 	"\x05email\x12\x15\b\x02\x1a\x0fX-CH-Auth-Email \x02\n" +
 	"\"\n" +
@@ -1645,123 +1641,125 @@ const file_kentik_site_v202211_site_proto_rawDesc = "" +
 	"\x05email\x12\x00\n" +
 	"\t\n" +
 	"\x05token\x12\x00r]\n" +
-	"%General information about Kentik APIs\x124https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_OverviewZCgithub.com/kentik/api-schema-public/gen/go/kentik/site/v202211;siteb\x06proto3"
+	"%General information about Kentik APIs\x124https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_OverviewZCgithub.com/kentik/api-schema-public/gen/go/kentik/site/v202509;siteb\x06proto3"
 
 var (
-	file_kentik_site_v202211_site_proto_rawDescOnce sync.Once
-	file_kentik_site_v202211_site_proto_rawDescData []byte
+	file_kentik_site_v202509_site_proto_rawDescOnce sync.Once
+	file_kentik_site_v202509_site_proto_rawDescData []byte
 )
 
-func file_kentik_site_v202211_site_proto_rawDescGZIP() []byte {
-	file_kentik_site_v202211_site_proto_rawDescOnce.Do(func() {
-		file_kentik_site_v202211_site_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_kentik_site_v202211_site_proto_rawDesc), len(file_kentik_site_v202211_site_proto_rawDesc)))
+func file_kentik_site_v202509_site_proto_rawDescGZIP() []byte {
+	file_kentik_site_v202509_site_proto_rawDescOnce.Do(func() {
+		file_kentik_site_v202509_site_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_kentik_site_v202509_site_proto_rawDesc), len(file_kentik_site_v202509_site_proto_rawDesc)))
 	})
-	return file_kentik_site_v202211_site_proto_rawDescData
+	return file_kentik_site_v202509_site_proto_rawDescData
 }
 
-var file_kentik_site_v202211_site_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_kentik_site_v202211_site_proto_msgTypes = make([]protoimpl.MessageInfo, 27)
-var file_kentik_site_v202211_site_proto_goTypes = []any{
-	(SiteType)(0),                       // 0: kentik.site.v202211.SiteType
-	(*SiteIpAddressClassification)(nil), // 1: kentik.site.v202211.SiteIpAddressClassification
-	(*Layer)(nil),                       // 2: kentik.site.v202211.Layer
-	(*LayerSet)(nil),                    // 3: kentik.site.v202211.LayerSet
-	(*PostalAddress)(nil),               // 4: kentik.site.v202211.PostalAddress
-	(*PeeringDBSiteMapping)(nil),        // 5: kentik.site.v202211.PeeringDBSiteMapping
-	(*Site)(nil),                        // 6: kentik.site.v202211.Site
-	(*ListSitesRequest)(nil),            // 7: kentik.site.v202211.ListSitesRequest
-	(*ListSitesResponse)(nil),           // 8: kentik.site.v202211.ListSitesResponse
-	(*GetSiteRequest)(nil),              // 9: kentik.site.v202211.GetSiteRequest
-	(*GetSiteResponse)(nil),             // 10: kentik.site.v202211.GetSiteResponse
-	(*CreateSiteRequest)(nil),           // 11: kentik.site.v202211.CreateSiteRequest
-	(*CreateSiteResponse)(nil),          // 12: kentik.site.v202211.CreateSiteResponse
-	(*UpdateSiteRequest)(nil),           // 13: kentik.site.v202211.UpdateSiteRequest
-	(*UpdateSiteResponse)(nil),          // 14: kentik.site.v202211.UpdateSiteResponse
-	(*DeleteSiteRequest)(nil),           // 15: kentik.site.v202211.DeleteSiteRequest
-	(*DeleteSiteResponse)(nil),          // 16: kentik.site.v202211.DeleteSiteResponse
-	(*SiteMarket)(nil),                  // 17: kentik.site.v202211.SiteMarket
-	(*ListSiteMarketsRequest)(nil),      // 18: kentik.site.v202211.ListSiteMarketsRequest
-	(*ListSiteMarketsResponse)(nil),     // 19: kentik.site.v202211.ListSiteMarketsResponse
-	(*GetSiteMarketRequest)(nil),        // 20: kentik.site.v202211.GetSiteMarketRequest
-	(*GetSiteMarketResponse)(nil),       // 21: kentik.site.v202211.GetSiteMarketResponse
-	(*CreateSiteMarketRequest)(nil),     // 22: kentik.site.v202211.CreateSiteMarketRequest
-	(*CreateSiteMarketResponse)(nil),    // 23: kentik.site.v202211.CreateSiteMarketResponse
-	(*UpdateSiteMarketRequest)(nil),     // 24: kentik.site.v202211.UpdateSiteMarketRequest
-	(*UpdateSiteMarketResponse)(nil),    // 25: kentik.site.v202211.UpdateSiteMarketResponse
-	(*DeleteSiteMarketRequest)(nil),     // 26: kentik.site.v202211.DeleteSiteMarketRequest
-	(*DeleteSiteMarketResponse)(nil),    // 27: kentik.site.v202211.DeleteSiteMarketResponse
+var file_kentik_site_v202509_site_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_kentik_site_v202509_site_proto_msgTypes = make([]protoimpl.MessageInfo, 27)
+var file_kentik_site_v202509_site_proto_goTypes = []any{
+	(SiteType)(0),                       // 0: kentik.site.v202509.SiteType
+	(*SiteIpAddressClassification)(nil), // 1: kentik.site.v202509.SiteIpAddressClassification
+	(*Layer)(nil),                       // 2: kentik.site.v202509.Layer
+	(*LayerSet)(nil),                    // 3: kentik.site.v202509.LayerSet
+	(*PostalAddress)(nil),               // 4: kentik.site.v202509.PostalAddress
+	(*PeeringDBSiteMapping)(nil),        // 5: kentik.site.v202509.PeeringDBSiteMapping
+	(*Site)(nil),                        // 6: kentik.site.v202509.Site
+	(*ListSitesRequest)(nil),            // 7: kentik.site.v202509.ListSitesRequest
+	(*ListSitesResponse)(nil),           // 8: kentik.site.v202509.ListSitesResponse
+	(*GetSiteRequest)(nil),              // 9: kentik.site.v202509.GetSiteRequest
+	(*GetSiteResponse)(nil),             // 10: kentik.site.v202509.GetSiteResponse
+	(*CreateSiteRequest)(nil),           // 11: kentik.site.v202509.CreateSiteRequest
+	(*CreateSiteResponse)(nil),          // 12: kentik.site.v202509.CreateSiteResponse
+	(*UpdateSiteRequest)(nil),           // 13: kentik.site.v202509.UpdateSiteRequest
+	(*UpdateSiteResponse)(nil),          // 14: kentik.site.v202509.UpdateSiteResponse
+	(*DeleteSiteRequest)(nil),           // 15: kentik.site.v202509.DeleteSiteRequest
+	(*DeleteSiteResponse)(nil),          // 16: kentik.site.v202509.DeleteSiteResponse
+	(*SiteMarket)(nil),                  // 17: kentik.site.v202509.SiteMarket
+	(*ListSiteMarketsRequest)(nil),      // 18: kentik.site.v202509.ListSiteMarketsRequest
+	(*ListSiteMarketsResponse)(nil),     // 19: kentik.site.v202509.ListSiteMarketsResponse
+	(*GetSiteMarketRequest)(nil),        // 20: kentik.site.v202509.GetSiteMarketRequest
+	(*GetSiteMarketResponse)(nil),       // 21: kentik.site.v202509.GetSiteMarketResponse
+	(*CreateSiteMarketRequest)(nil),     // 22: kentik.site.v202509.CreateSiteMarketRequest
+	(*CreateSiteMarketResponse)(nil),    // 23: kentik.site.v202509.CreateSiteMarketResponse
+	(*UpdateSiteMarketRequest)(nil),     // 24: kentik.site.v202509.UpdateSiteMarketRequest
+	(*UpdateSiteMarketResponse)(nil),    // 25: kentik.site.v202509.UpdateSiteMarketResponse
+	(*DeleteSiteMarketRequest)(nil),     // 26: kentik.site.v202509.DeleteSiteMarketRequest
+	(*DeleteSiteMarketResponse)(nil),    // 27: kentik.site.v202509.DeleteSiteMarketResponse
 	(*timestamppb.Timestamp)(nil),       // 28: google.protobuf.Timestamp
 }
-var file_kentik_site_v202211_site_proto_depIdxs = []int32{
-	2,  // 0: kentik.site.v202211.LayerSet.layers:type_name -> kentik.site.v202211.Layer
-	28, // 1: kentik.site.v202211.PeeringDBSiteMapping.edate:type_name -> google.protobuf.Timestamp
-	28, // 2: kentik.site.v202211.PeeringDBSiteMapping.cdate:type_name -> google.protobuf.Timestamp
-	4,  // 3: kentik.site.v202211.Site.postal_address:type_name -> kentik.site.v202211.PostalAddress
-	0,  // 4: kentik.site.v202211.Site.type:type_name -> kentik.site.v202211.SiteType
-	1,  // 5: kentik.site.v202211.Site.address_classification:type_name -> kentik.site.v202211.SiteIpAddressClassification
-	3,  // 6: kentik.site.v202211.Site.architecture:type_name -> kentik.site.v202211.LayerSet
-	6,  // 7: kentik.site.v202211.ListSitesResponse.sites:type_name -> kentik.site.v202211.Site
-	6,  // 8: kentik.site.v202211.GetSiteResponse.site:type_name -> kentik.site.v202211.Site
-	6,  // 9: kentik.site.v202211.CreateSiteRequest.site:type_name -> kentik.site.v202211.Site
-	6,  // 10: kentik.site.v202211.CreateSiteResponse.site:type_name -> kentik.site.v202211.Site
-	6,  // 11: kentik.site.v202211.UpdateSiteRequest.site:type_name -> kentik.site.v202211.Site
-	6,  // 12: kentik.site.v202211.UpdateSiteResponse.site:type_name -> kentik.site.v202211.Site
-	28, // 13: kentik.site.v202211.SiteMarket.cdate:type_name -> google.protobuf.Timestamp
-	28, // 14: kentik.site.v202211.SiteMarket.edate:type_name -> google.protobuf.Timestamp
-	17, // 15: kentik.site.v202211.ListSiteMarketsResponse.site_markets:type_name -> kentik.site.v202211.SiteMarket
-	17, // 16: kentik.site.v202211.GetSiteMarketResponse.site_market:type_name -> kentik.site.v202211.SiteMarket
-	17, // 17: kentik.site.v202211.CreateSiteMarketRequest.site_market:type_name -> kentik.site.v202211.SiteMarket
-	17, // 18: kentik.site.v202211.CreateSiteMarketResponse.site_market:type_name -> kentik.site.v202211.SiteMarket
-	17, // 19: kentik.site.v202211.UpdateSiteMarketRequest.site_market:type_name -> kentik.site.v202211.SiteMarket
-	17, // 20: kentik.site.v202211.UpdateSiteMarketResponse.site_market:type_name -> kentik.site.v202211.SiteMarket
-	7,  // 21: kentik.site.v202211.SiteService.ListSites:input_type -> kentik.site.v202211.ListSitesRequest
-	9,  // 22: kentik.site.v202211.SiteService.GetSite:input_type -> kentik.site.v202211.GetSiteRequest
-	11, // 23: kentik.site.v202211.SiteService.CreateSite:input_type -> kentik.site.v202211.CreateSiteRequest
-	13, // 24: kentik.site.v202211.SiteService.UpdateSite:input_type -> kentik.site.v202211.UpdateSiteRequest
-	15, // 25: kentik.site.v202211.SiteService.DeleteSite:input_type -> kentik.site.v202211.DeleteSiteRequest
-	18, // 26: kentik.site.v202211.SiteService.ListSiteMarkets:input_type -> kentik.site.v202211.ListSiteMarketsRequest
-	20, // 27: kentik.site.v202211.SiteService.GetSiteMarket:input_type -> kentik.site.v202211.GetSiteMarketRequest
-	22, // 28: kentik.site.v202211.SiteService.CreateSiteMarket:input_type -> kentik.site.v202211.CreateSiteMarketRequest
-	24, // 29: kentik.site.v202211.SiteService.UpdateSiteMarket:input_type -> kentik.site.v202211.UpdateSiteMarketRequest
-	26, // 30: kentik.site.v202211.SiteService.DeleteSiteMarket:input_type -> kentik.site.v202211.DeleteSiteMarketRequest
-	8,  // 31: kentik.site.v202211.SiteService.ListSites:output_type -> kentik.site.v202211.ListSitesResponse
-	10, // 32: kentik.site.v202211.SiteService.GetSite:output_type -> kentik.site.v202211.GetSiteResponse
-	12, // 33: kentik.site.v202211.SiteService.CreateSite:output_type -> kentik.site.v202211.CreateSiteResponse
-	14, // 34: kentik.site.v202211.SiteService.UpdateSite:output_type -> kentik.site.v202211.UpdateSiteResponse
-	16, // 35: kentik.site.v202211.SiteService.DeleteSite:output_type -> kentik.site.v202211.DeleteSiteResponse
-	19, // 36: kentik.site.v202211.SiteService.ListSiteMarkets:output_type -> kentik.site.v202211.ListSiteMarketsResponse
-	21, // 37: kentik.site.v202211.SiteService.GetSiteMarket:output_type -> kentik.site.v202211.GetSiteMarketResponse
-	23, // 38: kentik.site.v202211.SiteService.CreateSiteMarket:output_type -> kentik.site.v202211.CreateSiteMarketResponse
-	25, // 39: kentik.site.v202211.SiteService.UpdateSiteMarket:output_type -> kentik.site.v202211.UpdateSiteMarketResponse
-	27, // 40: kentik.site.v202211.SiteService.DeleteSiteMarket:output_type -> kentik.site.v202211.DeleteSiteMarketResponse
-	31, // [31:41] is the sub-list for method output_type
-	21, // [21:31] is the sub-list for method input_type
-	21, // [21:21] is the sub-list for extension type_name
-	21, // [21:21] is the sub-list for extension extendee
-	0,  // [0:21] is the sub-list for field type_name
+var file_kentik_site_v202509_site_proto_depIdxs = []int32{
+	2,  // 0: kentik.site.v202509.LayerSet.layers:type_name -> kentik.site.v202509.Layer
+	28, // 1: kentik.site.v202509.PeeringDBSiteMapping.edate:type_name -> google.protobuf.Timestamp
+	28, // 2: kentik.site.v202509.PeeringDBSiteMapping.cdate:type_name -> google.protobuf.Timestamp
+	4,  // 3: kentik.site.v202509.Site.postal_address:type_name -> kentik.site.v202509.PostalAddress
+	0,  // 4: kentik.site.v202509.Site.type:type_name -> kentik.site.v202509.SiteType
+	1,  // 5: kentik.site.v202509.Site.address_classification:type_name -> kentik.site.v202509.SiteIpAddressClassification
+	3,  // 6: kentik.site.v202509.Site.architecture:type_name -> kentik.site.v202509.LayerSet
+	17, // 7: kentik.site.v202509.Site.site_market:type_name -> kentik.site.v202509.SiteMarket
+	5,  // 8: kentik.site.v202509.Site.peeringdb_site_mapping:type_name -> kentik.site.v202509.PeeringDBSiteMapping
+	6,  // 9: kentik.site.v202509.ListSitesResponse.sites:type_name -> kentik.site.v202509.Site
+	6,  // 10: kentik.site.v202509.GetSiteResponse.site:type_name -> kentik.site.v202509.Site
+	6,  // 11: kentik.site.v202509.CreateSiteRequest.site:type_name -> kentik.site.v202509.Site
+	6,  // 12: kentik.site.v202509.CreateSiteResponse.site:type_name -> kentik.site.v202509.Site
+	6,  // 13: kentik.site.v202509.UpdateSiteRequest.site:type_name -> kentik.site.v202509.Site
+	6,  // 14: kentik.site.v202509.UpdateSiteResponse.site:type_name -> kentik.site.v202509.Site
+	28, // 15: kentik.site.v202509.SiteMarket.cdate:type_name -> google.protobuf.Timestamp
+	28, // 16: kentik.site.v202509.SiteMarket.edate:type_name -> google.protobuf.Timestamp
+	17, // 17: kentik.site.v202509.ListSiteMarketsResponse.site_markets:type_name -> kentik.site.v202509.SiteMarket
+	17, // 18: kentik.site.v202509.GetSiteMarketResponse.site_market:type_name -> kentik.site.v202509.SiteMarket
+	17, // 19: kentik.site.v202509.CreateSiteMarketRequest.site_market:type_name -> kentik.site.v202509.SiteMarket
+	17, // 20: kentik.site.v202509.CreateSiteMarketResponse.site_market:type_name -> kentik.site.v202509.SiteMarket
+	17, // 21: kentik.site.v202509.UpdateSiteMarketRequest.site_market:type_name -> kentik.site.v202509.SiteMarket
+	17, // 22: kentik.site.v202509.UpdateSiteMarketResponse.site_market:type_name -> kentik.site.v202509.SiteMarket
+	7,  // 23: kentik.site.v202509.SiteService.ListSites:input_type -> kentik.site.v202509.ListSitesRequest
+	9,  // 24: kentik.site.v202509.SiteService.GetSite:input_type -> kentik.site.v202509.GetSiteRequest
+	11, // 25: kentik.site.v202509.SiteService.CreateSite:input_type -> kentik.site.v202509.CreateSiteRequest
+	13, // 26: kentik.site.v202509.SiteService.UpdateSite:input_type -> kentik.site.v202509.UpdateSiteRequest
+	15, // 27: kentik.site.v202509.SiteService.DeleteSite:input_type -> kentik.site.v202509.DeleteSiteRequest
+	18, // 28: kentik.site.v202509.SiteService.ListSiteMarkets:input_type -> kentik.site.v202509.ListSiteMarketsRequest
+	20, // 29: kentik.site.v202509.SiteService.GetSiteMarket:input_type -> kentik.site.v202509.GetSiteMarketRequest
+	22, // 30: kentik.site.v202509.SiteService.CreateSiteMarket:input_type -> kentik.site.v202509.CreateSiteMarketRequest
+	24, // 31: kentik.site.v202509.SiteService.UpdateSiteMarket:input_type -> kentik.site.v202509.UpdateSiteMarketRequest
+	26, // 32: kentik.site.v202509.SiteService.DeleteSiteMarket:input_type -> kentik.site.v202509.DeleteSiteMarketRequest
+	8,  // 33: kentik.site.v202509.SiteService.ListSites:output_type -> kentik.site.v202509.ListSitesResponse
+	10, // 34: kentik.site.v202509.SiteService.GetSite:output_type -> kentik.site.v202509.GetSiteResponse
+	12, // 35: kentik.site.v202509.SiteService.CreateSite:output_type -> kentik.site.v202509.CreateSiteResponse
+	14, // 36: kentik.site.v202509.SiteService.UpdateSite:output_type -> kentik.site.v202509.UpdateSiteResponse
+	16, // 37: kentik.site.v202509.SiteService.DeleteSite:output_type -> kentik.site.v202509.DeleteSiteResponse
+	19, // 38: kentik.site.v202509.SiteService.ListSiteMarkets:output_type -> kentik.site.v202509.ListSiteMarketsResponse
+	21, // 39: kentik.site.v202509.SiteService.GetSiteMarket:output_type -> kentik.site.v202509.GetSiteMarketResponse
+	23, // 40: kentik.site.v202509.SiteService.CreateSiteMarket:output_type -> kentik.site.v202509.CreateSiteMarketResponse
+	25, // 41: kentik.site.v202509.SiteService.UpdateSiteMarket:output_type -> kentik.site.v202509.UpdateSiteMarketResponse
+	27, // 42: kentik.site.v202509.SiteService.DeleteSiteMarket:output_type -> kentik.site.v202509.DeleteSiteMarketResponse
+	33, // [33:43] is the sub-list for method output_type
+	23, // [23:33] is the sub-list for method input_type
+	23, // [23:23] is the sub-list for extension type_name
+	23, // [23:23] is the sub-list for extension extendee
+	0,  // [0:23] is the sub-list for field type_name
 }
 
-func init() { file_kentik_site_v202211_site_proto_init() }
-func file_kentik_site_v202211_site_proto_init() {
-	if File_kentik_site_v202211_site_proto != nil {
+func init() { file_kentik_site_v202509_site_proto_init() }
+func file_kentik_site_v202509_site_proto_init() {
+	if File_kentik_site_v202509_site_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_kentik_site_v202211_site_proto_rawDesc), len(file_kentik_site_v202211_site_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_kentik_site_v202509_site_proto_rawDesc), len(file_kentik_site_v202509_site_proto_rawDesc)),
 			NumEnums:      1,
 			NumMessages:   27,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_kentik_site_v202211_site_proto_goTypes,
-		DependencyIndexes: file_kentik_site_v202211_site_proto_depIdxs,
-		EnumInfos:         file_kentik_site_v202211_site_proto_enumTypes,
-		MessageInfos:      file_kentik_site_v202211_site_proto_msgTypes,
+		GoTypes:           file_kentik_site_v202509_site_proto_goTypes,
+		DependencyIndexes: file_kentik_site_v202509_site_proto_depIdxs,
+		EnumInfos:         file_kentik_site_v202509_site_proto_enumTypes,
+		MessageInfos:      file_kentik_site_v202509_site_proto_msgTypes,
 	}.Build()
-	File_kentik_site_v202211_site_proto = out.File
-	file_kentik_site_v202211_site_proto_goTypes = nil
-	file_kentik_site_v202211_site_proto_depIdxs = nil
+	File_kentik_site_v202509_site_proto = out.File
+	file_kentik_site_v202509_site_proto_goTypes = nil
+	file_kentik_site_v202509_site_proto_depIdxs = nil
 }

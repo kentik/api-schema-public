@@ -183,8 +183,8 @@ struct  Kentik__Site__V202211__Site
   Kentik__Site__V202211__SiteIpAddressClassification *address_classification;
   size_t n_architecture;
   Kentik__Site__V202211__LayerSet **architecture;
-  char *site_market;
-  char *peeringdb_site_mapping;
+  char *site_market PROTOBUF_C__DEPRECATED;
+  char *peeringdb_site_mapping PROTOBUF_C__DEPRECATED;
 };
 #define KENTIK__SITE__V202211__SITE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__site__v202211__site__descriptor) \

@@ -41,6 +41,7 @@ import (
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/saved_filter/v202501alpha1"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/site/v202106alpha1"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/site/v202211"
+	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/site/v202509"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/synthetics/v202101beta1"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/synthetics/v202202"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/synthetics/v202309"

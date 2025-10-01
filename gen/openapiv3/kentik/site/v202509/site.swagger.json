@@ -3,7 +3,7 @@
     "info": {
         "title": "Site Configuration API",
         "description": "# Overview\nThe Site Configuration API provides programmatic access to configuration of Sites and Site Markets:\n\n* **Site**: A site is a specific user-defined physical location (e.g. a data center at a given address) or logical location at which there is hosting of your devices, services, providers, or partner networks. Information that can be associated with a site includes the classification of IP addresses and the site's logical network topology/architecture.\n* **Site Market**: Sites with any common characteristics of your choosing (e.g. all PoPs in a particular region) can be logically grouped into a site market.\n\nBoth REST endpoint and gRPC RPCs are provided.\n\n***Notes:*** \n    - Once a site is created in Kentik, you can assign one or more devices to the site via the settings for those devices; to do so programmatically you'd use the v5 Device API (see [Device Create](https://kb.kentik.com/v0/Ec05.htm#Ec05-Device_Create)).\n    - Sites can also be managed using the legacy REST-only [Site API](https://kb.kentik.com/v0/Ec10.htm#Ec10-Site_API), which provides access to a subset of site configuration attributes.",
-        "version": "v202211",
+        "version": "v202509",
         "contact": {
             "name": "Kentik API Engineering",
             "url": "https://github.com/kentik/api-schema-public"
@@ -15,7 +15,7 @@
         }
     ],
     "paths": {
-        "/site/v202211/site_markets": {
+        "/site/v202509/site_markets": {
             "get": {
                 "summary": "List all site markets.",
                 "description": "Returns list of configured site markets.",
@@ -26,7 +26,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/v202211ListSiteMarketsResponse"
+                                    "$ref": "#/components/schemas/v202509ListSiteMarketsResponse"
                                 }
                             }
                         }
@@ -56,7 +56,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/v202211CreateSiteMarketResponse"
+                                    "$ref": "#/components/schemas/v202509CreateSiteMarketResponse"
                                 }
                             }
                         }
@@ -76,7 +76,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202211CreateSiteMarketRequest"
+                                "$ref": "#/components/schemas/v202509CreateSiteMarketRequest"
                             }
                         }
                     },
@@ -87,7 +87,7 @@
                 ]
             }
         },
-        "/site/v202211/site_markets/{id}": {
+        "/site/v202509/site_markets/{id}": {
             "get": {
                 "summary": "Retrieve configuration of a site market.",
                 "description": "Returns configuration of a site market specified by ID.",
@@ -98,7 +98,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/v202211GetSiteMarketResponse"
+                                    "$ref": "#/components/schemas/v202509GetSiteMarketResponse"
                                 }
                             }
                         }
@@ -139,7 +139,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/v202211DeleteSiteMarketResponse"
+                                    "$ref": "#/components/schemas/v202509DeleteSiteMarketResponse"
                                 }
                             }
                         }
@@ -180,7 +180,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/v202211UpdateSiteMarketResponse"
+                                    "$ref": "#/components/schemas/v202509UpdateSiteMarketResponse"
                                 }
                             }
                         }
@@ -222,7 +222,7 @@
                 ]
             }
         },
-        "/site/v202211/sites": {
+        "/site/v202509/sites": {
             "get": {
                 "summary": "List all sites.",
                 "description": "Returns list of configured sites.",
@@ -233,7 +233,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/v202211ListSitesResponse"
+                                    "$ref": "#/components/schemas/v202509ListSitesResponse"
                                 }
                             }
                         }
@@ -263,7 +263,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/v202211CreateSiteResponse"
+                                    "$ref": "#/components/schemas/v202509CreateSiteResponse"
                                 }
                             }
                         }
@@ -283,7 +283,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/v202211CreateSiteRequest"
+                                "$ref": "#/components/schemas/v202509CreateSiteRequest"
                             }
                         }
                     },
@@ -294,7 +294,7 @@
                 ]
             }
         },
-        "/site/v202211/sites/{id}": {
+        "/site/v202509/sites/{id}": {
             "get": {
                 "summary": "Retrieve configuration of a site.",
                 "description": "Returns configuration of a site specified by ID.",
@@ -305,7 +305,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/v202211GetSiteResponse"
+                                    "$ref": "#/components/schemas/v202509GetSiteResponse"
                                 }
                             }
                         }
@@ -346,7 +346,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/v202211DeleteSiteResponse"
+                                    "$ref": "#/components/schemas/v202509DeleteSiteResponse"
                                 }
                             }
                         }
@@ -387,7 +387,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/v202211UpdateSiteResponse"
+                                    "$ref": "#/components/schemas/v202509UpdateSiteResponse"
                                 }
                             }
                         }
@@ -475,28 +475,30 @@
                                 "description": "Longitude (signed decimal degrees)"
                             },
                             "postalAddress": {
-                                "$ref": "#/components/schemas/v202211PostalAddress"
+                                "$ref": "#/components/schemas/v202509PostalAddress"
                             },
                             "type": {
-                                "$ref": "#/components/schemas/v202211SiteType"
+                                "$ref": "#/components/schemas/v202509SiteType"
                             },
                             "addressClassification": {
-                                "$ref": "#/components/schemas/v202211SiteIpAddressClassification"
+                                "$ref": "#/components/schemas/v202509SiteIpAddressClassification"
                             },
                             "architecture": {
                                 "type": "array",
                                 "items": {
-                                    "$ref": "#/components/schemas/v202211LayerSet"
+                                    "$ref": "#/components/schemas/v202509LayerSet"
                                 },
                                 "description": "Logical network topology/architecture"
                             },
                             "siteMarket": {
-                                "type": "string",
-                                "description": "Name of the Site Market this site belongs to. Deprecated: Use v202509 API version instead."
+                                "$ref": "#/components/schemas/v202509SiteMarket"
                             },
                             "peeringdbSiteMapping": {
-                                "type": "string",
-                                "description": "PeeringDB Mapping of the given site. Deprecated: Use v202509 API version instead."
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/v202509PeeringDBSiteMapping"
+                                },
+                                "description": "List of PeeringDB site mappings associated with this site"
                             }
                         },
                         "title": "Site"
@@ -578,11 +580,11 @@
                     }
                 }
             },
-            "v202211CreateSiteMarketRequest": {
+            "v202509CreateSiteMarketRequest": {
                 "type": "object",
                 "properties": {
                     "siteMarket": {
-                        "$ref": "#/components/schemas/v202211SiteMarket"
+                        "$ref": "#/components/schemas/v202509SiteMarket"
                     }
                 },
                 "title": "CreateSiteMarketRequest",
@@ -590,20 +592,20 @@
                     "siteMarket"
                 ]
             },
-            "v202211CreateSiteMarketResponse": {
+            "v202509CreateSiteMarketResponse": {
                 "type": "object",
                 "properties": {
                     "siteMarket": {
-                        "$ref": "#/components/schemas/v202211SiteMarket"
+                        "$ref": "#/components/schemas/v202509SiteMarket"
                     }
                 },
                 "title": "CreateSiteMarketResponse"
             },
-            "v202211CreateSiteRequest": {
+            "v202509CreateSiteRequest": {
                 "type": "object",
                 "properties": {
                     "site": {
-                        "$ref": "#/components/schemas/v202211Site"
+                        "$ref": "#/components/schemas/v202509Site"
                     }
                 },
                 "title": "CreateSiteRequest",
@@ -611,42 +613,42 @@
                     "site"
                 ]
             },
-            "v202211CreateSiteResponse": {
+            "v202509CreateSiteResponse": {
                 "type": "object",
                 "properties": {
                     "site": {
-                        "$ref": "#/components/schemas/v202211Site"
+                        "$ref": "#/components/schemas/v202509Site"
                     }
                 },
                 "title": "CreateSiteResponse"
             },
-            "v202211DeleteSiteMarketResponse": {
+            "v202509DeleteSiteMarketResponse": {
                 "type": "object",
                 "title": "DeleteSiteMarketResponse"
             },
-            "v202211DeleteSiteResponse": {
+            "v202509DeleteSiteResponse": {
                 "type": "object",
                 "title": "DeleteSiteResponse"
             },
-            "v202211GetSiteMarketResponse": {
+            "v202509GetSiteMarketResponse": {
                 "type": "object",
                 "properties": {
                     "siteMarket": {
-                        "$ref": "#/components/schemas/v202211SiteMarket"
+                        "$ref": "#/components/schemas/v202509SiteMarket"
                     }
                 },
                 "title": "GetSiteMarketResponse"
             },
-            "v202211GetSiteResponse": {
+            "v202509GetSiteResponse": {
                 "type": "object",
                 "properties": {
                     "site": {
-                        "$ref": "#/components/schemas/v202211Site"
+                        "$ref": "#/components/schemas/v202509Site"
                     }
                 },
                 "title": "GetSiteResponse"
             },
-            "v202211Layer": {
+            "v202509Layer": {
                 "type": "object",
                 "properties": {
                     "name": {
@@ -663,26 +665,26 @@
                 },
                 "title": "Layer"
             },
-            "v202211LayerSet": {
+            "v202509LayerSet": {
                 "type": "object",
                 "properties": {
                     "layers": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/components/schemas/v202211Layer"
+                            "$ref": "#/components/schemas/v202509Layer"
                         },
                         "description": "List of parallel network layers"
                     }
                 },
                 "title": "LayerSet"
             },
-            "v202211ListSiteMarketsResponse": {
+            "v202509ListSiteMarketsResponse": {
                 "type": "object",
                 "properties": {
                     "siteMarkets": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/components/schemas/v202211SiteMarket"
+                            "$ref": "#/components/schemas/v202509SiteMarket"
                         },
                         "description": "List of configurations of requested site markets"
                     },
@@ -694,13 +696,13 @@
                 },
                 "title": "ListSiteMarketsResponse"
             },
-            "v202211ListSitesResponse": {
+            "v202509ListSitesResponse": {
                 "type": "object",
                 "properties": {
                     "sites": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/components/schemas/v202211Site"
+                            "$ref": "#/components/schemas/v202509Site"
                         },
                         "description": "List of configurations of requested sites"
                     },
@@ -712,7 +714,45 @@
                 },
                 "title": "ListSitesResponse"
             },
-            "v202211PostalAddress": {
+            "v202509PeeringDBSiteMapping": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Peering DB id"
+                    },
+                    "siteId": {
+                        "type": "string",
+                        "description": "Peering DB site id"
+                    },
+                    "peeringdbFacId": {
+                        "type": "string",
+                        "description": "Peering DB facility id"
+                    },
+                    "edate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Last modification timestamp (UTC)",
+                        "readOnly": true
+                    },
+                    "cdate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Creation timestamp (UTC)",
+                        "readOnly": true
+                    },
+                    "companyId": {
+                        "type": "string",
+                        "description": "Company ID"
+                    }
+                },
+                "required": [
+                    "id",
+                    "siteId",
+                    "peeringdbFacId"
+                ]
+            },
+            "v202509PostalAddress": {
                 "type": "object",
                 "properties": {
                     "address": {
@@ -743,7 +783,7 @@
                     "country"
                 ]
             },
-            "v202211Site": {
+            "v202509Site": {
                 "type": "object",
                 "properties": {
                     "id": {
@@ -766,28 +806,30 @@
                         "description": "Longitude (signed decimal degrees)"
                     },
                     "postalAddress": {
-                        "$ref": "#/components/schemas/v202211PostalAddress"
+                        "$ref": "#/components/schemas/v202509PostalAddress"
                     },
                     "type": {
-                        "$ref": "#/components/schemas/v202211SiteType"
+                        "$ref": "#/components/schemas/v202509SiteType"
                     },
                     "addressClassification": {
-                        "$ref": "#/components/schemas/v202211SiteIpAddressClassification"
+                        "$ref": "#/components/schemas/v202509SiteIpAddressClassification"
                     },
                     "architecture": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/components/schemas/v202211LayerSet"
+                            "$ref": "#/components/schemas/v202509LayerSet"
                         },
                         "description": "Logical network topology/architecture"
                     },
                     "siteMarket": {
-                        "type": "string",
-                        "description": "Name of the Site Market this site belongs to. Deprecated: Use v202509 API version instead."
+                        "$ref": "#/components/schemas/v202509SiteMarket"
                     },
                     "peeringdbSiteMapping": {
-                        "type": "string",
-                        "description": "PeeringDB Mapping of the given site. Deprecated: Use v202509 API version instead."
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202509PeeringDBSiteMapping"
+                        },
+                        "description": "List of PeeringDB site mappings associated with this site"
                     }
                 },
                 "title": "Site",
@@ -796,7 +838,7 @@
                     "type"
                 ]
             },
-            "v202211SiteIpAddressClassification": {
+            "v202509SiteIpAddressClassification": {
                 "type": "object",
                 "properties": {
                     "infrastructureNetworks": {
@@ -823,7 +865,7 @@
                 },
                 "title": "SiteIpAddressClassification"
             },
-            "v202211SiteMarket": {
+            "v202509SiteMarket": {
                 "type": "object",
                 "properties": {
                     "id": {
@@ -863,7 +905,7 @@
                     "name"
                 ]
             },
-            "v202211SiteType": {
+            "v202509SiteType": {
                 "type": "string",
                 "enum": [
                     "SITE_TYPE_UNSPECIFIED",
@@ -878,20 +920,20 @@
                 "description": "- SITE_TYPE_UNSPECIFIED: Invalid value.\n - SITE_TYPE_DATA_CENTER: Data center site type.\n - SITE_TYPE_CLOUD: Cloud site type.\n - SITE_TYPE_BRANCH: Branch office site type.\n - SITE_TYPE_CONNECTIVITY: Connectivity/PoP site type.\n - SITE_TYPE_CUSTOMER: Customer/partner site type.\n - SITE_TYPE_OTHER: Other site type.",
                 "title": "SiteType"
             },
-            "v202211UpdateSiteMarketResponse": {
+            "v202509UpdateSiteMarketResponse": {
                 "type": "object",
                 "properties": {
                     "siteMarket": {
-                        "$ref": "#/components/schemas/v202211SiteMarket"
+                        "$ref": "#/components/schemas/v202509SiteMarket"
                     }
                 },
                 "title": "UpdateSiteMarketResponse"
             },
-            "v202211UpdateSiteResponse": {
+            "v202509UpdateSiteResponse": {
                 "type": "object",
                 "properties": {
                     "site": {
-                        "$ref": "#/components/schemas/v202211Site"
+                        "$ref": "#/components/schemas/v202509Site"
                     }
                 },
                 "title": "UpdateSiteResponse"

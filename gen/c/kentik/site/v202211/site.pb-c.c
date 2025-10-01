@@ -1675,7 +1675,7 @@ static const ProtobufCFieldDescriptor kentik__site__v202211__site__field_descrip
     offsetof(Kentik__Site__V202211__Site, site_market),
     NULL,
     &protobuf_c_empty_string,
-    0,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_DEPRECATED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -1687,7 +1687,7 @@ static const ProtobufCFieldDescriptor kentik__site__v202211__site__field_descrip
     offsetof(Kentik__Site__V202211__Site, peeringdb_site_mapping),
     NULL,
     &protobuf_c_empty_string,
-    0,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_DEPRECATED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };
