@@ -52,6 +52,57 @@
                             "type": "integer",
                             "format": "int64"
                         }
+                    },
+                    {
+                        "name": "marketId",
+                        "description": "Geo Market identifier (e.g., 'planet$earth'). If omitted, defaults to global market.",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ip",
+                        "description": "IP Address Family ('v4' or 'v6'). Defaults to 'v4'.",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lookback",
+                        "description": "Lookback in days. Allowed values: 1, 7, 30. Defaults to 1.",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "types",
+                        "description": "Insight types to include. Provide as repeated query params, e.g., types=market_entrance&types=market_exit. Allowed: market_entrance, market_exit, ranking_gain, ranking_loss, start_prefix_origination, stop_prefix_origination, increase_prefix_origination, decrease_prefix_origination, customer_gain, customer_loss, customer_routing_gain, customer_routing_loss, provider_gain, provider_loss, provider_routing_gain, provider_routing_loss.",
+                        "in": "query",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "name": "magnitude",
+                        "description": "Minimum magnitude (severity) threshold, integer 1–5. Defaults to 1.",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
                     }
                 ],
                 "tags": [
@@ -99,6 +150,57 @@
                     {
                         "name": "limit",
                         "description": "Maximum number of insights to return. Defaults to 100.",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "marketId",
+                        "description": "Geo Market identifier (e.g., 'planet$earth'). If omitted, defaults to global market.",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ip",
+                        "description": "IP Address Family ('v4' or 'v6'). Defaults to 'v4'.",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lookback",
+                        "description": "Lookback in days. Allowed values: 1, 7, 30. Defaults to 1.",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "types",
+                        "description": "Insight types to include. Allowed: market_entrance, market_exit, ranking_gain, ranking_loss, start_prefix_origination, stop_prefix_origination, increase_prefix_origination, decrease_prefix_origination, customer_gain, customer_loss, customer_routing_gain, customer_routing_loss, provider_gain, provider_loss, provider_routing_gain, provider_routing_loss.",
+                        "in": "query",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "name": "magnitude",
+                        "description": "Minimum magnitude (severity) threshold, integer 1–5. Defaults to 1.",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -183,7 +285,7 @@
                 ]
             }
         },
-        "/kmi/v202212/market/{marketId}/rankings/{rankType}": {
+        "/kmi/v202212/market/{marketId}/rankings/{rankType}/ip/{ip}": {
             "post": {
                 "summary": "List KMI rankings by geo market and rank type.",
                 "description": "Returns list of KMI rankings.",
@@ -223,6 +325,15 @@
                     {
                         "name": "rankType",
                         "description": "Type of the requested ranking ('customer_base', 'customer_base_retail', 'customer_base_wholesome', 'customer_base_backbone', 'customer_growth', 'peering_base'). Defaults to 'customer_base'.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ip",
+                        "description": "IP Address Family ('v4' or 'v6') of requested ranking. Defaults to 'v4'.",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -327,10 +438,6 @@
             "KmiServiceGetRankingsBody": {
                 "type": "object",
                 "properties": {
-                    "ip": {
-                        "type": "string",
-                        "description": "IP Address Family ('v4' or 'v6') of requested ranking. Defaults to 'v4'."
-                    },
                     "limit": {
                         "type": "integer",
                         "format": "int64",

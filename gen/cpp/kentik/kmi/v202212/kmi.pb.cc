@@ -209,7 +209,16 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 inline constexpr GetGlobalInsightsRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
-        limit_{0u} {}
+        types_{},
+        market_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        ip_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        limit_{0u},
+        lookback_{0u},
+        magnitude_{0u} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR GetGlobalInsightsRequest::GetGlobalInsightsRequest(::_pbi::ConstantInitialized)
@@ -234,10 +243,19 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 inline constexpr GetASNInsightsRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
+        types_{},
         asn_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
-        limit_{0u} {}
+        market_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        ip_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        limit_{0u},
+        lookback_{0u},
+        magnitude_{0u} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR GetASNInsightsRequest::GetASNInsightsRequest(::_pbi::ConstantInitialized)
@@ -684,7 +702,17 @@ const ::uint32_t
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::GetGlobalInsightsRequest, _impl_.limit_),
+        PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::GetGlobalInsightsRequest, _impl_.market_id_),
+        PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::GetGlobalInsightsRequest, _impl_.ip_),
+        PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::GetGlobalInsightsRequest, _impl_.lookback_),
+        PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::GetGlobalInsightsRequest, _impl_.types_),
+        PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::GetGlobalInsightsRequest, _impl_.magnitude_),
+        2,
         0,
+        1,
+        3,
+        ~0u,
+        4,
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::GetGlobalInsightsResponse, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -704,8 +732,18 @@ const ::uint32_t
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::GetASNInsightsRequest, _impl_.asn_),
         PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::GetASNInsightsRequest, _impl_.limit_),
+        PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::GetASNInsightsRequest, _impl_.market_id_),
+        PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::GetASNInsightsRequest, _impl_.ip_),
+        PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::GetASNInsightsRequest, _impl_.lookback_),
+        PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::GetASNInsightsRequest, _impl_.types_),
+        PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::GetASNInsightsRequest, _impl_.magnitude_),
         ~0u,
+        2,
         0,
+        1,
+        3,
+        ~0u,
+        4,
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::kentik::kmi::v202212::GetASNInsightsResponse, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -731,10 +769,10 @@ static const ::_pbi::MigrationSchema
         {135, -1, -1, sizeof(::kentik::kmi::v202212::GetRankingsResponse)},
         {145, -1, -1, sizeof(::kentik::kmi::v202212::GetASNDetailsRequest)},
         {160, 169, -1, sizeof(::kentik::kmi::v202212::GetASNDetailsResponse)},
-        {170, 179, -1, sizeof(::kentik::kmi::v202212::GetGlobalInsightsRequest)},
-        {180, -1, -1, sizeof(::kentik::kmi::v202212::GetGlobalInsightsResponse)},
-        {189, 199, -1, sizeof(::kentik::kmi::v202212::GetASNInsightsRequest)},
-        {201, -1, -1, sizeof(::kentik::kmi::v202212::GetASNInsightsResponse)},
+        {170, 184, -1, sizeof(::kentik::kmi::v202212::GetGlobalInsightsRequest)},
+        {190, -1, -1, sizeof(::kentik::kmi::v202212::GetGlobalInsightsResponse)},
+        {199, 214, -1, sizeof(::kentik::kmi::v202212::GetASNInsightsRequest)},
+        {221, -1, -1, sizeof(::kentik::kmi::v202212::GetASNInsightsResponse)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::kmi::v202212::_Market_default_instance_._instance,
@@ -863,107 +901,152 @@ const char descriptor_table_protodef_kentik_2fkmi_2fv202212_2fkmi_2eproto[] ABSL
     "k.kmi.v202212.ASNDetailsBR\222AO2MMetadata "
     "and list of customers, providers, and pe"
     "ers for an Autonomous SystemR\nasnDetails"
-    "\"|\n\030GetGlobalInsightsRequest\022V\n\005limit\030\001 "
-    "\001(\rB;\222A826Maximum number of insights to "
-    "return. Defaults to 100.H\000R\005limit\210\001\001B\010\n\006"
-    "_limit\"u\n\031GetGlobalInsightsResponse\022X\n\010i"
-    "nsights\030\001 \003(\0132\033.kentik.kmi.v202212.Insig"
-    "htB\037\222A\0312\027List of global insights\340A\003R\010ins"
-    "ights\"\260\001\n\025GetASNInsightsRequest\0225\n\003asn\030\001"
-    " \001(\tB#\222A 2\036Autonomous System Number (ASN"
-    ")R\003asn\022V\n\005limit\030\002 \001(\rB;\222A826Maximum numb"
-    "er of insights to return. Defaults to 10"
-    "0.H\000R\005limit\210\001\001B\010\n\006_limit\"x\n\026GetASNInsigh"
-    "tsResponse\022^\n\010insights\030\001 \003(\0132\033.kentik.km"
-    "i.v202212.InsightB%\222A\0372\035List of ASN-spec"
-    "ific insights\340A\003R\010insights2\275\013\n\nKmiServic"
-    "e\022\344\001\n\013ListMarkets\022&.kentik.kmi.v202212.L"
-    "istMarketsRequest\032\'.kentik.kmi.v202212.L"
-    "istMarketsResponse\"\203\001\222AR\022\035List all geo m"
-    "arkets for KMI.\032$Returns list of geo mar"
-    "kets for KMI.*\013ListMarkets\362\327\002\016admin.kmi:"
-    "read\202\323\344\223\002\026\022\024/kmi/v202212/markets\022\221\002\n\013Get"
-    "Rankings\022&.kentik.kmi.v202212.GetRanking"
-    "sRequest\032\'.kentik.kmi.v202212.GetRanking"
-    "sResponse\"\260\001\222A\\\022.List KMI rankings by ge"
-    "o market and rank type.\032\035Returns list of"
-    " KMI rankings.*\013GetRankings\362\327\002\016admin.kmi"
-    ":read\202\323\344\223\0029\"4/kmi/v202212/market/{market"
-    "_id}/rankings/{rank_type}:\001*\022\370\002\n\rGetASND"
-    "etails\022(.kentik.kmi.v202212.GetASNDetail"
-    "sRequest\032).kentik.kmi.v202212.GetASNDeta"
-    "ilsResponse\"\221\002\222A\274\001\022SList metadata and li"
-    "st of customers, providers, and peers fo"
-    "r an Autonomous System.\032VReturns metadat"
-    "a and list of customers, providers, and "
-    "peers for an Autonomous System.*\rGetASND"
-    "etails\362\327\002\016admin.kmi:read\202\323\344\223\0029\"4/kmi/v20"
-    "2212/market/{market_id}/network/{asn}/{t"
-    "ype}:\001*\022\371\001\n\021GetGlobalInsights\022,.kentik.k"
-    "mi.v202212.GetGlobalInsightsRequest\032-.ke"
-    "ntik.kmi.v202212.GetGlobalInsightsRespon"
-    "se\"\206\001\222AT\022\031List global KMI insights.\032$Ret"
-    "urns list of global KMI insights.*\021GetGl"
-    "obalInsights\362\327\002\016admin.kmi:read\202\323\344\223\002\027\022\025/k"
-    "mi/v202212/insights\022\223\002\n\016GetASNInsights\022)"
-    ".kentik.kmi.v202212.GetASNInsightsReques"
-    "t\032*.kentik.kmi.v202212.GetASNInsightsRes"
-    "ponse\"\251\001\222Aq\022\037List ASN-specific KMI insig"
-    "hts.\032>Returns list of KMI insights for a"
-    " specific Autonomous System.*\016GetASNInsi"
-    "ghts\362\327\002\016admin.kmi:read\202\323\344\223\002\035\022\033/kmi/v2022"
-    "12/insights/{asn}\032\'\312A\023grpc.api.kentik.co"
-    "m\352\327\002\tadmin.kmi\220\330\002\003B\311\017ZAgithub.com/kentik"
-    "/api-schema-public/gen/go/kentik/kmi/v20"
-    "2212;kmi\222A\202\017\022\233\r\n$Kentik Market Intellige"
-    "nce (KMI) API\022\242\014# Overview\nThe Kentik Ma"
-    "rket Intelligence (KMI) API provides pro"
-    "grammatic access to information related "
-    "to KMI rankings, KMI markets, and the cu"
-    "stomers, providers, and peers of individ"
-    "ual Autonomous Systems (ASes). This info"
-    "rmation is derived from analysis of the "
-    "global routing table, which enables us t"
-    "o classify the peering and transit relat"
-    "ionships between ASes and to identify th"
-    "e providers, peers, and customers of a g"
-    "iven AS in any geography (market). KMI e"
-    "stimates the volume of IP space transite"
-    "d by ASes in different geographies and p"
-    "roduces rankings based on that volume, t"
-    "hereby enabling users to compare ASes in"
-    " various markets.\n\n# KMI Ranking Types\n\n"
-    "The following types of rankings are show"
-    "n:\n- **Customer Base**: Ranked by the si"
-    "ze of the overall customer base, estimat"
-    "ed by determining how much IP address sp"
-    "ace a given AS transits relative to othe"
-    "r ASes:\n    - Retail networks  provide s"
-    "ervices (e.g. originate content) or have"
-    " end-users that are consumers of service"
-    "s (e.g. ISPs or \"eyeball\" networks).\n   "
-    " - Wholesale networks  connect retail ne"
-    "tworks to backbone networks.\n    - Backb"
-    "one networks carry high volumes of traff"
-    "ic between wholesale networks.\n- **Custo"
-    "mer Growth**: Ranked by the change in ov"
-    "erall customer base (gain/loss of prefix"
-    "es) over the last 20 days.\n- **Peering**"
-    ": Ranked by the amount of IP address spa"
-    "ce sent to the AS over a settlement-free"
-    " peering session.\n\nBoth REST endpoint an"
-    "d gRPC RPCs are provided.\n\n**_Note:_** M"
-    "ore information about KMI can be found a"
-    "t [Kentik Market Intelligence](https://k"
-    "b.kentik.com/v4/Ha04.htm).\"E\n\026Kentik API"
-    " Engineering\022+https://github.com/kentik/"
-    "api-schema-public2\007v202212*\001\0022\020applicati"
-    "on/json:\020application/jsonZD\n\036\n\005email\022\025\010\002"
-    "\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-A"
-    "uth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r"
-    "]\n%General information about Kentik APIs"
-    "\0224https://kb.kentik.com/v0/Ab09.htm#Ab09"
-    "-APIs_Overviewb\006proto3"
+    "\"\234\010\n\030GetGlobalInsightsRequest\022V\n\005limit\030\001"
+    " \001(\rB;\222A826Maximum number of insights to"
+    " return. Defaults to 100.H\000R\005limit\210\001\001\022{\n"
+    "\tmarket_id\030\002 \001(\tBY\222AV2TGeo Market identi"
+    "fier (e.g., \'planet$earth\'). If omitted,"
+    " defaults to global market.H\001R\010marketId\210"
+    "\001\001\022M\n\002ip\030\003 \001(\tB8\222A523IP Address Family ("
+    "\'v4\' or \'v6\'). Defaults to \'v4\'.H\002R\002ip\210\001"
+    "\001\022`\n\010lookback\030\004 \001(\rB\?\222A<2:Lookback in da"
+    "ys. Allowed values: 1, 7, 30. Defaults t"
+    "o 1.H\003R\010lookback\210\001\001\022\320\003\n\005types\030\005 \003(\tB\271\003\222A"
+    "\265\0032\262\003Insight types to include. Provide a"
+    "s repeated query params, e.g., types=mar"
+    "ket_entrance&types=market_exit. Allowed:"
+    " market_entrance, market_exit, ranking_g"
+    "ain, ranking_loss, start_prefix_originat"
+    "ion, stop_prefix_origination, increase_p"
+    "refix_origination, decrease_prefix_origi"
+    "nation, customer_gain, customer_loss, cu"
+    "stomer_routing_gain, customer_routing_lo"
+    "ss, provider_gain, provider_loss, provid"
+    "er_routing_gain, provider_routing_loss.R"
+    "\005types\022m\n\tmagnitude\030\006 \001(\rBJ\222AG2EMinimum "
+    "magnitude (severity) threshold, integer "
+    "1\342\200\2235. Defaults to 1.H\004R\tmagnitude\210\001\001B\010\n"
+    "\006_limitB\014\n\n_market_idB\005\n\003_ipB\013\n\t_lookbac"
+    "kB\014\n\n_magnitude\"u\n\031GetGlobalInsightsResp"
+    "onse\022X\n\010insights\030\001 \003(\0132\033.kentik.kmi.v202"
+    "212.InsightB\037\222A\0312\027List of global insight"
+    "s\340A\003R\010insights\"\377\007\n\025GetASNInsightsRequest"
+    "\0225\n\003asn\030\001 \001(\tB#\222A 2\036Autonomous System Nu"
+    "mber (ASN)R\003asn\022V\n\005limit\030\002 \001(\rB;\222A826Max"
+    "imum number of insights to return. Defau"
+    "lts to 100.H\000R\005limit\210\001\001\022{\n\tmarket_id\030\003 \001"
+    "(\tBY\222AV2TGeo Market identifier (e.g., \'p"
+    "lanet$earth\'). If omitted, defaults to g"
+    "lobal market.H\001R\010marketId\210\001\001\022M\n\002ip\030\004 \001(\t"
+    "B8\222A523IP Address Family (\'v4\' or \'v6\')."
+    " Defaults to \'v4\'.H\002R\002ip\210\001\001\022`\n\010lookback\030"
+    "\005 \001(\rB\?\222A<2:Lookback in days. Allowed va"
+    "lues: 1, 7, 30. Defaults to 1.H\003R\010lookba"
+    "ck\210\001\001\022\377\002\n\005types\030\006 \003(\tB\350\002\222A\344\0022\341\002Insight t"
+    "ypes to include. Allowed: market_entranc"
+    "e, market_exit, ranking_gain, ranking_lo"
+    "ss, start_prefix_origination, stop_prefi"
+    "x_origination, increase_prefix_originati"
+    "on, decrease_prefix_origination, custome"
+    "r_gain, customer_loss, customer_routing_"
+    "gain, customer_routing_loss, provider_ga"
+    "in, provider_loss, provider_routing_gain"
+    ", provider_routing_loss.R\005types\022m\n\tmagni"
+    "tude\030\007 \001(\rBJ\222AG2EMinimum magnitude (seve"
+    "rity) threshold, integer 1\342\200\2235. Defaults"
+    " to 1.H\004R\tmagnitude\210\001\001B\010\n\006_limitB\014\n\n_mar"
+    "ket_idB\005\n\003_ipB\013\n\t_lookbackB\014\n\n_magnitude"
+    "\"x\n\026GetASNInsightsResponse\022^\n\010insights\030\001"
+    " \003(\0132\033.kentik.kmi.v202212.InsightB%\222A\0372\035"
+    "List of ASN-specific insights\340A\003R\010insigh"
+    "ts2\305\013\n\nKmiService\022\344\001\n\013ListMarkets\022&.kent"
+    "ik.kmi.v202212.ListMarketsRequest\032\'.kent"
+    "ik.kmi.v202212.ListMarketsResponse\"\203\001\222AR"
+    "\022\035List all geo markets for KMI.\032$Returns"
+    " list of geo markets for KMI.*\013ListMarke"
+    "ts\362\327\002\016admin.kmi:read\202\323\344\223\002\026\022\024/kmi/v202212"
+    "/markets\022\231\002\n\013GetRankings\022&.kentik.kmi.v2"
+    "02212.GetRankingsRequest\032\'.kentik.kmi.v2"
+    "02212.GetRankingsResponse\"\270\001\222A\\\022.List KM"
+    "I rankings by geo market and rank type.\032"
+    "\035Returns list of KMI rankings.*\013GetRanki"
+    "ngs\362\327\002\016admin.kmi:read\202\323\344\223\002A\"</kmi/v20221"
+    "2/market/{market_id}/rankings/{rank_type"
+    "}/ip/{ip}:\001*\022\370\002\n\rGetASNDetails\022(.kentik."
+    "kmi.v202212.GetASNDetailsRequest\032).kenti"
+    "k.kmi.v202212.GetASNDetailsResponse\"\221\002\222A"
+    "\274\001\022SList metadata and list of customers,"
+    " providers, and peers for an Autonomous "
+    "System.\032VReturns metadata and list of cu"
+    "stomers, providers, and peers for an Aut"
+    "onomous System.*\rGetASNDetails\362\327\002\016admin."
+    "kmi:read\202\323\344\223\0029\"4/kmi/v202212/market/{mar"
+    "ket_id}/network/{asn}/{type}:\001*\022\371\001\n\021GetG"
+    "lobalInsights\022,.kentik.kmi.v202212.GetGl"
+    "obalInsightsRequest\032-.kentik.kmi.v202212"
+    ".GetGlobalInsightsResponse\"\206\001\222AT\022\031List g"
+    "lobal KMI insights.\032$Returns list of glo"
+    "bal KMI insights.*\021GetGlobalInsights\362\327\002\016"
+    "admin.kmi:read\202\323\344\223\002\027\022\025/kmi/v202212/insig"
+    "hts\022\223\002\n\016GetASNInsights\022).kentik.kmi.v202"
+    "212.GetASNInsightsRequest\032*.kentik.kmi.v"
+    "202212.GetASNInsightsResponse\"\251\001\222Aq\022\037Lis"
+    "t ASN-specific KMI insights.\032>Returns li"
+    "st of KMI insights for a specific Autono"
+    "mous System.*\016GetASNInsights\362\327\002\016admin.km"
+    "i:read\202\323\344\223\002\035\022\033/kmi/v202212/insights/{asn"
+    "}\032\'\312A\023grpc.api.kentik.com\352\327\002\tadmin.kmi\220\330"
+    "\002\003B\311\017ZAgithub.com/kentik/api-schema-publ"
+    "ic/gen/go/kentik/kmi/v202212;kmi\222A\202\017\022\233\r\n"
+    "$Kentik Market Intelligence (KMI) API\022\242\014"
+    "# Overview\nThe Kentik Market Intelligenc"
+    "e (KMI) API provides programmatic access"
+    " to information related to KMI rankings,"
+    " KMI markets, and the customers, provide"
+    "rs, and peers of individual Autonomous S"
+    "ystems (ASes). This information is deriv"
+    "ed from analysis of the global routing t"
+    "able, which enables us to classify the p"
+    "eering and transit relationships between"
+    " ASes and to identify the providers, pee"
+    "rs, and customers of a given AS in any g"
+    "eography (market). KMI estimates the vol"
+    "ume of IP space transited by ASes in dif"
+    "ferent geographies and produces rankings"
+    " based on that volume, thereby enabling "
+    "users to compare ASes in various markets"
+    ".\n\n# KMI Ranking Types\n\nThe following ty"
+    "pes of rankings are shown:\n- **Customer "
+    "Base**: Ranked by the size of the overal"
+    "l customer base, estimated by determinin"
+    "g how much IP address space a given AS t"
+    "ransits relative to other ASes:\n    - Re"
+    "tail networks  provide services (e.g. or"
+    "iginate content) or have end-users that "
+    "are consumers of services (e.g. ISPs or "
+    "\"eyeball\" networks).\n    - Wholesale net"
+    "works  connect retail networks to backbo"
+    "ne networks.\n    - Backbone networks car"
+    "ry high volumes of traffic between whole"
+    "sale networks.\n- **Customer Growth**: Ra"
+    "nked by the change in overall customer b"
+    "ase (gain/loss of prefixes) over the las"
+    "t 20 days.\n- **Peering**: Ranked by the "
+    "amount of IP address space sent to the A"
+    "S over a settlement-free peering session"
+    ".\n\nBoth REST endpoint and gRPC RPCs are "
+    "provided.\n\n**_Note:_** More information "
+    "about KMI can be found at [Kentik Market"
+    " Intelligence](https://kb.kentik.com/v4/"
+    "Ha04.htm).\"E\n\026Kentik API Engineering\022+ht"
+    "tps://github.com/kentik/api-schema-publi"
+    "c2\007v202212*\001\0022\020application/json:\020applica"
+    "tion/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Emai"
+    "l \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002b"
+    "\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]\n%General infor"
+    "mation about Kentik APIs\0224https://kb.ken"
+    "tik.com/v0/Ab09.htm#Ab09-APIs_Overviewb\006"
+    "proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fkmi_2fv202212_2fkmi_2eproto_deps[5] =
     {
@@ -977,7 +1060,7 @@ static ::absl::once_flag descriptor_table_kentik_2fkmi_2fv202212_2fkmi_2eproto_o
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fkmi_2fv202212_2fkmi_2eproto = {
     false,
     false,
-    8302,
+    10086,
     descriptor_table_protodef_kentik_2fkmi_2fv202212_2fkmi_2eproto,
     "kentik/kmi/v202212/kmi.proto",
     &descriptor_table_kentik_2fkmi_2fv202212_2fkmi_2eproto_once,
@@ -4720,19 +4803,54 @@ GetGlobalInsightsRequest::GetGlobalInsightsRequest(::google::protobuf::Arena* ar
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:kentik.kmi.v202212.GetGlobalInsightsRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE GetGlobalInsightsRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::kentik::kmi::v202212::GetGlobalInsightsRequest& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        types_{visibility, arena, from.types_},
+        market_id_(arena, from.market_id_),
+        ip_(arena, from.ip_) {}
+
 GetGlobalInsightsRequest::GetGlobalInsightsRequest(
-    ::google::protobuf::Arena* arena, const GetGlobalInsightsRequest& from)
-    : GetGlobalInsightsRequest(arena) {
-  MergeFrom(from);
+    ::google::protobuf::Arena* arena,
+    const GetGlobalInsightsRequest& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  GetGlobalInsightsRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, limit_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, limit_),
+           offsetof(Impl_, magnitude_) -
+               offsetof(Impl_, limit_) +
+               sizeof(Impl_::magnitude_));
+
+  // @@protoc_insertion_point(copy_constructor:kentik.kmi.v202212.GetGlobalInsightsRequest)
 }
 inline PROTOBUF_NDEBUG_INLINE GetGlobalInsightsRequest::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
-      : _cached_size_{0} {}
+      : _cached_size_{0},
+        types_{visibility, arena},
+        market_id_(arena),
+        ip_(arena) {}
 
 inline void GetGlobalInsightsRequest::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.limit_ = {};
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, limit_),
+           0,
+           offsetof(Impl_, magnitude_) -
+               offsetof(Impl_, limit_) +
+               sizeof(Impl_::magnitude_));
 }
 GetGlobalInsightsRequest::~GetGlobalInsightsRequest() {
   // @@protoc_insertion_point(destructor:kentik.kmi.v202212.GetGlobalInsightsRequest)
@@ -4742,6 +4860,8 @@ inline void GetGlobalInsightsRequest::SharedDtor(MessageLite& self) {
   GetGlobalInsightsRequest& this_ = static_cast<GetGlobalInsightsRequest&>(self);
   this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.market_id_.Destroy();
+  this_._impl_.ip_.Destroy();
   this_._impl_.~Impl_();
 }
 
@@ -4750,8 +4870,20 @@ inline void* GetGlobalInsightsRequest::PlacementNew_(const void*, void* mem,
   return ::new (mem) GetGlobalInsightsRequest(arena);
 }
 constexpr auto GetGlobalInsightsRequest::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(GetGlobalInsightsRequest),
-                                            alignof(GetGlobalInsightsRequest));
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(GetGlobalInsightsRequest, _impl_.types_) +
+          decltype(GetGlobalInsightsRequest::_impl_.types_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::CopyInit(
+        sizeof(GetGlobalInsightsRequest), alignof(GetGlobalInsightsRequest), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&GetGlobalInsightsRequest::PlacementNew_,
+                                 sizeof(GetGlobalInsightsRequest),
+                                 alignof(GetGlobalInsightsRequest));
+  }
 }
 PROTOBUF_CONSTINIT
 PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
@@ -4781,15 +4913,15 @@ const ::google::protobuf::internal::ClassData* GetGlobalInsightsRequest::GetClas
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 0, 0, 2> GetGlobalInsightsRequest::_table_ = {
+const ::_pbi::TcParseTable<3, 6, 0, 68, 2> GetGlobalInsightsRequest::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(GetGlobalInsightsRequest, _impl_._has_bits_),
     0, // no _extensions_
-    1, 0,  // max_field_number, fast_idx_mask
+    6, 56,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967294,  // skipmap
+    4294967232,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    1,  // num_field_entries
+    6,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     _class_data_.base(),
@@ -4799,18 +4931,55 @@ const ::_pbi::TcParseTable<0, 1, 0, 0, 2> GetGlobalInsightsRequest::_table_ = {
     ::_pbi::TcParser::GetTable<::kentik::kmi::v202212::GetGlobalInsightsRequest>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
+    {::_pbi::TcParser::MiniParse, {}},
     // optional uint32 limit = 1 [json_name = "limit", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(GetGlobalInsightsRequest, _impl_.limit_), 0>(),
-     {8, 0, 0, PROTOBUF_FIELD_OFFSET(GetGlobalInsightsRequest, _impl_.limit_)}},
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(GetGlobalInsightsRequest, _impl_.limit_), 2>(),
+     {8, 2, 0, PROTOBUF_FIELD_OFFSET(GetGlobalInsightsRequest, _impl_.limit_)}},
+    // optional string market_id = 2 [json_name = "marketId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {18, 0, 0, PROTOBUF_FIELD_OFFSET(GetGlobalInsightsRequest, _impl_.market_id_)}},
+    // optional string ip = 3 [json_name = "ip", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {26, 1, 0, PROTOBUF_FIELD_OFFSET(GetGlobalInsightsRequest, _impl_.ip_)}},
+    // optional uint32 lookback = 4 [json_name = "lookback", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(GetGlobalInsightsRequest, _impl_.lookback_), 3>(),
+     {32, 3, 0, PROTOBUF_FIELD_OFFSET(GetGlobalInsightsRequest, _impl_.lookback_)}},
+    // repeated string types = 5 [json_name = "types", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUR1,
+     {42, 63, 0, PROTOBUF_FIELD_OFFSET(GetGlobalInsightsRequest, _impl_.types_)}},
+    // optional uint32 magnitude = 6 [json_name = "magnitude", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(GetGlobalInsightsRequest, _impl_.magnitude_), 4>(),
+     {48, 4, 0, PROTOBUF_FIELD_OFFSET(GetGlobalInsightsRequest, _impl_.magnitude_)}},
+    {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
   }}, {{
     // optional uint32 limit = 1 [json_name = "limit", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    {PROTOBUF_FIELD_OFFSET(GetGlobalInsightsRequest, _impl_.limit_), _Internal::kHasBitsOffset + 0, 0,
+    {PROTOBUF_FIELD_OFFSET(GetGlobalInsightsRequest, _impl_.limit_), _Internal::kHasBitsOffset + 2, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kUInt32)},
+    // optional string market_id = 2 [json_name = "marketId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(GetGlobalInsightsRequest, _impl_.market_id_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // optional string ip = 3 [json_name = "ip", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(GetGlobalInsightsRequest, _impl_.ip_), _Internal::kHasBitsOffset + 1, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // optional uint32 lookback = 4 [json_name = "lookback", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(GetGlobalInsightsRequest, _impl_.lookback_), _Internal::kHasBitsOffset + 3, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kUInt32)},
+    // repeated string types = 5 [json_name = "types", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(GetGlobalInsightsRequest, _impl_.types_), -1, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
+    // optional uint32 magnitude = 6 [json_name = "magnitude", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(GetGlobalInsightsRequest, _impl_.magnitude_), _Internal::kHasBitsOffset + 4, 0,
     (0 | ::_fl::kFcOptional | ::_fl::kUInt32)},
   }},
   // no aux_entries
   {{
+    "\53\0\11\2\0\5\0\0"
+    "kentik.kmi.v202212.GetGlobalInsightsRequest"
+    "market_id"
+    "ip"
+    "types"
   }},
 };
 
@@ -4821,7 +4990,21 @@ PROTOBUF_NOINLINE void GetGlobalInsightsRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.limit_ = 0u;
+  _impl_.types_.Clear();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _impl_.market_id_.ClearNonDefaultToEmpty();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _impl_.ip_.ClearNonDefaultToEmpty();
+    }
+  }
+  if (cached_has_bits & 0x0000001cu) {
+    ::memset(&_impl_.limit_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.magnitude_) -
+        reinterpret_cast<char*>(&_impl_.limit_)) + sizeof(_impl_.magnitude_));
+  }
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
@@ -4843,10 +5026,48 @@ PROTOBUF_NOINLINE void GetGlobalInsightsRequest::Clear() {
 
           cached_has_bits = this_._impl_._has_bits_[0];
           // optional uint32 limit = 1 [json_name = "limit", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-          if (cached_has_bits & 0x00000001u) {
+          if (cached_has_bits & 0x00000004u) {
             target = stream->EnsureSpace(target);
             target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
                 1, this_._internal_limit(), target);
+          }
+
+          // optional string market_id = 2 [json_name = "marketId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (cached_has_bits & 0x00000001u) {
+            const std::string& _s = this_._internal_market_id();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.kmi.v202212.GetGlobalInsightsRequest.market_id");
+            target = stream->WriteStringMaybeAliased(2, _s, target);
+          }
+
+          // optional string ip = 3 [json_name = "ip", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (cached_has_bits & 0x00000002u) {
+            const std::string& _s = this_._internal_ip();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.kmi.v202212.GetGlobalInsightsRequest.ip");
+            target = stream->WriteStringMaybeAliased(3, _s, target);
+          }
+
+          // optional uint32 lookback = 4 [json_name = "lookback", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (cached_has_bits & 0x00000008u) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                4, this_._internal_lookback(), target);
+          }
+
+          // repeated string types = 5 [json_name = "types", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          for (int i = 0, n = this_._internal_types_size(); i < n; ++i) {
+            const auto& s = this_._internal_types().Get(i);
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.kmi.v202212.GetGlobalInsightsRequest.types");
+            target = stream->WriteString(5, s, target);
+          }
+
+          // optional uint32 magnitude = 6 [json_name = "magnitude", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (cached_has_bits & 0x00000010u) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                6, this_._internal_magnitude(), target);
           }
 
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
@@ -4872,12 +5093,44 @@ PROTOBUF_NOINLINE void GetGlobalInsightsRequest::Clear() {
           // Prevent compiler warnings about cached_has_bits being unused
           (void)cached_has_bits;
 
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
            {
-            // optional uint32 limit = 1 [json_name = "limit", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-            cached_has_bits = this_._impl_._has_bits_[0];
+            // repeated string types = 5 [json_name = "types", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            {
+              total_size +=
+                  1 * ::google::protobuf::internal::FromIntSize(this_._internal_types().size());
+              for (int i = 0, n = this_._internal_types().size(); i < n; ++i) {
+                total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+                    this_._internal_types().Get(i));
+              }
+            }
+          }
+          cached_has_bits = this_._impl_._has_bits_[0];
+          if (cached_has_bits & 0x0000001fu) {
+            // optional string market_id = 2 [json_name = "marketId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
             if (cached_has_bits & 0x00000001u) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_market_id());
+            }
+            // optional string ip = 3 [json_name = "ip", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (cached_has_bits & 0x00000002u) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_ip());
+            }
+            // optional uint32 limit = 1 [json_name = "limit", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (cached_has_bits & 0x00000004u) {
               total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
                   this_._internal_limit());
+            }
+            // optional uint32 lookback = 4 [json_name = "lookback", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (cached_has_bits & 0x00000008u) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_lookback());
+            }
+            // optional uint32 magnitude = 6 [json_name = "magnitude", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (cached_has_bits & 0x00000010u) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_magnitude());
             }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
@@ -4892,9 +5145,24 @@ void GetGlobalInsightsRequest::MergeImpl(::google::protobuf::MessageLite& to_msg
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  _this->_internal_mutable_types()->MergeFrom(from._internal_types());
   cached_has_bits = from._impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    _this->_impl_.limit_ = from._impl_.limit_;
+  if (cached_has_bits & 0x0000001fu) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_internal_set_market_id(from._internal_market_id());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_internal_set_ip(from._internal_ip());
+    }
+    if (cached_has_bits & 0x00000004u) {
+      _this->_impl_.limit_ = from._impl_.limit_;
+    }
+    if (cached_has_bits & 0x00000008u) {
+      _this->_impl_.lookback_ = from._impl_.lookback_;
+    }
+    if (cached_has_bits & 0x00000010u) {
+      _this->_impl_.magnitude_ = from._impl_.magnitude_;
+    }
   }
   _this->_impl_._has_bits_[0] |= cached_has_bits;
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
@@ -4910,9 +5178,19 @@ void GetGlobalInsightsRequest::CopyFrom(const GetGlobalInsightsRequest& from) {
 
 void GetGlobalInsightsRequest::InternalSwap(GetGlobalInsightsRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-        swap(_impl_.limit_, other->_impl_.limit_);
+  _impl_.types_.InternalSwap(&other->_impl_.types_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.market_id_, &other->_impl_.market_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.ip_, &other->_impl_.ip_, arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(GetGlobalInsightsRequest, _impl_.magnitude_)
+      + sizeof(GetGlobalInsightsRequest::_impl_.magnitude_)
+      - PROTOBUF_FIELD_OFFSET(GetGlobalInsightsRequest, _impl_.limit_)>(
+          reinterpret_cast<char*>(&_impl_.limit_),
+          reinterpret_cast<char*>(&other->_impl_.limit_));
 }
 
 ::google::protobuf::Metadata GetGlobalInsightsRequest::GetMetadata() const {
@@ -5184,7 +5462,10 @@ inline PROTOBUF_NDEBUG_INLINE GetASNInsightsRequest::Impl_::Impl_(
     const Impl_& from, const ::kentik::kmi::v202212::GetASNInsightsRequest& from_msg)
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
-        asn_(arena, from.asn_) {}
+        types_{visibility, arena, from.types_},
+        asn_(arena, from.asn_),
+        market_id_(arena, from.market_id_),
+        ip_(arena, from.ip_) {}
 
 GetASNInsightsRequest::GetASNInsightsRequest(
     ::google::protobuf::Arena* arena,
@@ -5199,7 +5480,13 @@ GetASNInsightsRequest::GetASNInsightsRequest(
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
-  _impl_.limit_ = from._impl_.limit_;
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, limit_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, limit_),
+           offsetof(Impl_, magnitude_) -
+               offsetof(Impl_, limit_) +
+               sizeof(Impl_::magnitude_));
 
   // @@protoc_insertion_point(copy_constructor:kentik.kmi.v202212.GetASNInsightsRequest)
 }
@@ -5207,11 +5494,19 @@ inline PROTOBUF_NDEBUG_INLINE GetASNInsightsRequest::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
       : _cached_size_{0},
-        asn_(arena) {}
+        types_{visibility, arena},
+        asn_(arena),
+        market_id_(arena),
+        ip_(arena) {}
 
 inline void GetASNInsightsRequest::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.limit_ = {};
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, limit_),
+           0,
+           offsetof(Impl_, magnitude_) -
+               offsetof(Impl_, limit_) +
+               sizeof(Impl_::magnitude_));
 }
 GetASNInsightsRequest::~GetASNInsightsRequest() {
   // @@protoc_insertion_point(destructor:kentik.kmi.v202212.GetASNInsightsRequest)
@@ -5222,6 +5517,8 @@ inline void GetASNInsightsRequest::SharedDtor(MessageLite& self) {
   this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   ABSL_DCHECK(this_.GetArena() == nullptr);
   this_._impl_.asn_.Destroy();
+  this_._impl_.market_id_.Destroy();
+  this_._impl_.ip_.Destroy();
   this_._impl_.~Impl_();
 }
 
@@ -5230,8 +5527,20 @@ inline void* GetASNInsightsRequest::PlacementNew_(const void*, void* mem,
   return ::new (mem) GetASNInsightsRequest(arena);
 }
 constexpr auto GetASNInsightsRequest::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(GetASNInsightsRequest),
-                                            alignof(GetASNInsightsRequest));
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(GetASNInsightsRequest, _impl_.types_) +
+          decltype(GetASNInsightsRequest::_impl_.types_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::CopyInit(
+        sizeof(GetASNInsightsRequest), alignof(GetASNInsightsRequest), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&GetASNInsightsRequest::PlacementNew_,
+                                 sizeof(GetASNInsightsRequest),
+                                 alignof(GetASNInsightsRequest));
+  }
 }
 PROTOBUF_CONSTINIT
 PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
@@ -5261,15 +5570,15 @@ const ::google::protobuf::internal::ClassData* GetASNInsightsRequest::GetClassDa
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 0, 52, 2> GetASNInsightsRequest::_table_ = {
+const ::_pbi::TcParseTable<3, 7, 0, 68, 2> GetASNInsightsRequest::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(GetASNInsightsRequest, _impl_._has_bits_),
     0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
+    7, 56,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
+    4294967168,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
+    7,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     _class_data_.base(),
@@ -5279,12 +5588,28 @@ const ::_pbi::TcParseTable<1, 2, 0, 52, 2> GetASNInsightsRequest::_table_ = {
     ::_pbi::TcParser::GetTable<::kentik::kmi::v202212::GetASNInsightsRequest>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // optional uint32 limit = 2 [json_name = "limit", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(GetASNInsightsRequest, _impl_.limit_), 0>(),
-     {16, 0, 0, PROTOBUF_FIELD_OFFSET(GetASNInsightsRequest, _impl_.limit_)}},
+    {::_pbi::TcParser::MiniParse, {}},
     // string asn = 1 [json_name = "asn", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::FastUS1,
      {10, 63, 0, PROTOBUF_FIELD_OFFSET(GetASNInsightsRequest, _impl_.asn_)}},
+    // optional uint32 limit = 2 [json_name = "limit", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(GetASNInsightsRequest, _impl_.limit_), 2>(),
+     {16, 2, 0, PROTOBUF_FIELD_OFFSET(GetASNInsightsRequest, _impl_.limit_)}},
+    // optional string market_id = 3 [json_name = "marketId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {26, 0, 0, PROTOBUF_FIELD_OFFSET(GetASNInsightsRequest, _impl_.market_id_)}},
+    // optional string ip = 4 [json_name = "ip", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {34, 1, 0, PROTOBUF_FIELD_OFFSET(GetASNInsightsRequest, _impl_.ip_)}},
+    // optional uint32 lookback = 5 [json_name = "lookback", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(GetASNInsightsRequest, _impl_.lookback_), 3>(),
+     {40, 3, 0, PROTOBUF_FIELD_OFFSET(GetASNInsightsRequest, _impl_.lookback_)}},
+    // repeated string types = 6 [json_name = "types", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUR1,
+     {50, 63, 0, PROTOBUF_FIELD_OFFSET(GetASNInsightsRequest, _impl_.types_)}},
+    // optional uint32 magnitude = 7 [json_name = "magnitude", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(GetASNInsightsRequest, _impl_.magnitude_), 4>(),
+     {56, 4, 0, PROTOBUF_FIELD_OFFSET(GetASNInsightsRequest, _impl_.magnitude_)}},
   }}, {{
     65535, 65535
   }}, {{
@@ -5292,14 +5617,32 @@ const ::_pbi::TcParseTable<1, 2, 0, 52, 2> GetASNInsightsRequest::_table_ = {
     {PROTOBUF_FIELD_OFFSET(GetASNInsightsRequest, _impl_.asn_), -1, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // optional uint32 limit = 2 [json_name = "limit", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    {PROTOBUF_FIELD_OFFSET(GetASNInsightsRequest, _impl_.limit_), _Internal::kHasBitsOffset + 0, 0,
+    {PROTOBUF_FIELD_OFFSET(GetASNInsightsRequest, _impl_.limit_), _Internal::kHasBitsOffset + 2, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kUInt32)},
+    // optional string market_id = 3 [json_name = "marketId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(GetASNInsightsRequest, _impl_.market_id_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // optional string ip = 4 [json_name = "ip", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(GetASNInsightsRequest, _impl_.ip_), _Internal::kHasBitsOffset + 1, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // optional uint32 lookback = 5 [json_name = "lookback", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(GetASNInsightsRequest, _impl_.lookback_), _Internal::kHasBitsOffset + 3, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kUInt32)},
+    // repeated string types = 6 [json_name = "types", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(GetASNInsightsRequest, _impl_.types_), -1, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
+    // optional uint32 magnitude = 7 [json_name = "magnitude", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(GetASNInsightsRequest, _impl_.magnitude_), _Internal::kHasBitsOffset + 4, 0,
     (0 | ::_fl::kFcOptional | ::_fl::kUInt32)},
   }},
   // no aux_entries
   {{
-    "\50\3\0\0\0\0\0\0"
+    "\50\3\0\11\2\0\5\0"
     "kentik.kmi.v202212.GetASNInsightsRequest"
     "asn"
+    "market_id"
+    "ip"
+    "types"
   }},
 };
 
@@ -5310,8 +5653,22 @@ PROTOBUF_NOINLINE void GetASNInsightsRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  _impl_.types_.Clear();
   _impl_.asn_.ClearToEmpty();
-  _impl_.limit_ = 0u;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _impl_.market_id_.ClearNonDefaultToEmpty();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _impl_.ip_.ClearNonDefaultToEmpty();
+    }
+  }
+  if (cached_has_bits & 0x0000001cu) {
+    ::memset(&_impl_.limit_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.magnitude_) -
+        reinterpret_cast<char*>(&_impl_.limit_)) + sizeof(_impl_.magnitude_));
+  }
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
@@ -5341,10 +5698,48 @@ PROTOBUF_NOINLINE void GetASNInsightsRequest::Clear() {
 
           cached_has_bits = this_._impl_._has_bits_[0];
           // optional uint32 limit = 2 [json_name = "limit", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-          if (cached_has_bits & 0x00000001u) {
+          if (cached_has_bits & 0x00000004u) {
             target = stream->EnsureSpace(target);
             target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
                 2, this_._internal_limit(), target);
+          }
+
+          // optional string market_id = 3 [json_name = "marketId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (cached_has_bits & 0x00000001u) {
+            const std::string& _s = this_._internal_market_id();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.kmi.v202212.GetASNInsightsRequest.market_id");
+            target = stream->WriteStringMaybeAliased(3, _s, target);
+          }
+
+          // optional string ip = 4 [json_name = "ip", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (cached_has_bits & 0x00000002u) {
+            const std::string& _s = this_._internal_ip();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.kmi.v202212.GetASNInsightsRequest.ip");
+            target = stream->WriteStringMaybeAliased(4, _s, target);
+          }
+
+          // optional uint32 lookback = 5 [json_name = "lookback", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (cached_has_bits & 0x00000008u) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                5, this_._internal_lookback(), target);
+          }
+
+          // repeated string types = 6 [json_name = "types", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          for (int i = 0, n = this_._internal_types_size(); i < n; ++i) {
+            const auto& s = this_._internal_types().Get(i);
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.kmi.v202212.GetASNInsightsRequest.types");
+            target = stream->WriteString(6, s, target);
+          }
+
+          // optional uint32 magnitude = 7 [json_name = "magnitude", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (cached_has_bits & 0x00000010u) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                7, this_._internal_magnitude(), target);
           }
 
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
@@ -5372,18 +5767,49 @@ PROTOBUF_NOINLINE void GetASNInsightsRequest::Clear() {
 
           ::_pbi::Prefetch5LinesFrom7Lines(&this_);
            {
+            // repeated string types = 6 [json_name = "types", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            {
+              total_size +=
+                  1 * ::google::protobuf::internal::FromIntSize(this_._internal_types().size());
+              for (int i = 0, n = this_._internal_types().size(); i < n; ++i) {
+                total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+                    this_._internal_types().Get(i));
+              }
+            }
+          }
+           {
             // string asn = 1 [json_name = "asn", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
             if (!this_._internal_asn().empty()) {
               total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                               this_._internal_asn());
             }
           }
-           {
-            // optional uint32 limit = 2 [json_name = "limit", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-            cached_has_bits = this_._impl_._has_bits_[0];
+          cached_has_bits = this_._impl_._has_bits_[0];
+          if (cached_has_bits & 0x0000001fu) {
+            // optional string market_id = 3 [json_name = "marketId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
             if (cached_has_bits & 0x00000001u) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_market_id());
+            }
+            // optional string ip = 4 [json_name = "ip", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (cached_has_bits & 0x00000002u) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_ip());
+            }
+            // optional uint32 limit = 2 [json_name = "limit", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (cached_has_bits & 0x00000004u) {
               total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
                   this_._internal_limit());
+            }
+            // optional uint32 lookback = 5 [json_name = "lookback", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (cached_has_bits & 0x00000008u) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_lookback());
+            }
+            // optional uint32 magnitude = 7 [json_name = "magnitude", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (cached_has_bits & 0x00000010u) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_magnitude());
             }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
@@ -5398,12 +5824,27 @@ void GetASNInsightsRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, c
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  _this->_internal_mutable_types()->MergeFrom(from._internal_types());
   if (!from._internal_asn().empty()) {
     _this->_internal_set_asn(from._internal_asn());
   }
   cached_has_bits = from._impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    _this->_impl_.limit_ = from._impl_.limit_;
+  if (cached_has_bits & 0x0000001fu) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_internal_set_market_id(from._internal_market_id());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_internal_set_ip(from._internal_ip());
+    }
+    if (cached_has_bits & 0x00000004u) {
+      _this->_impl_.limit_ = from._impl_.limit_;
+    }
+    if (cached_has_bits & 0x00000008u) {
+      _this->_impl_.lookback_ = from._impl_.lookback_;
+    }
+    if (cached_has_bits & 0x00000010u) {
+      _this->_impl_.magnitude_ = from._impl_.magnitude_;
+    }
   }
   _this->_impl_._has_bits_[0] |= cached_has_bits;
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
@@ -5423,8 +5864,16 @@ void GetASNInsightsRequest::InternalSwap(GetASNInsightsRequest* PROTOBUF_RESTRIC
   ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _impl_.types_.InternalSwap(&other->_impl_.types_);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.asn_, &other->_impl_.asn_, arena);
-        swap(_impl_.limit_, other->_impl_.limit_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.market_id_, &other->_impl_.market_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.ip_, &other->_impl_.ip_, arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(GetASNInsightsRequest, _impl_.magnitude_)
+      + sizeof(GetASNInsightsRequest::_impl_.magnitude_)
+      - PROTOBUF_FIELD_OFFSET(GetASNInsightsRequest, _impl_.limit_)>(
+          reinterpret_cast<char*>(&_impl_.limit_),
+          reinterpret_cast<char*>(&other->_impl_.limit_));
 }
 
 ::google::protobuf::Metadata GetASNInsightsRequest::GetMetadata() const {

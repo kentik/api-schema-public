@@ -1620,8 +1620,69 @@ class GetGlobalInsightsRequest final : public ::google::protobuf::Message
 
   // accessors -------------------------------------------------------
   enum : int {
+    kTypesFieldNumber = 5,
+    kMarketIdFieldNumber = 2,
+    kIpFieldNumber = 3,
     kLimitFieldNumber = 1,
+    kLookbackFieldNumber = 4,
+    kMagnitudeFieldNumber = 6,
   };
+  // repeated string types = 5 [json_name = "types", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  int types_size() const;
+  private:
+  int _internal_types_size() const;
+
+  public:
+  void clear_types() ;
+  const std::string& types(int index) const;
+  std::string* mutable_types(int index);
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_types(int index, Arg_&& value, Args_... args);
+  std::string* add_types();
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void add_types(Arg_&& value, Args_... args);
+  const ::google::protobuf::RepeatedPtrField<std::string>& types() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* mutable_types();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<std::string>& _internal_types() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* _internal_mutable_types();
+
+  public:
+  // optional string market_id = 2 [json_name = "marketId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_market_id() const;
+  void clear_market_id() ;
+  const std::string& market_id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_market_id(Arg_&& arg, Args_... args);
+  std::string* mutable_market_id();
+  PROTOBUF_NODISCARD std::string* release_market_id();
+  void set_allocated_market_id(std::string* value);
+
+  private:
+  const std::string& _internal_market_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_market_id(
+      const std::string& value);
+  std::string* _internal_mutable_market_id();
+
+  public:
+  // optional string ip = 3 [json_name = "ip", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_ip() const;
+  void clear_ip() ;
+  const std::string& ip() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_ip(Arg_&& arg, Args_... args);
+  std::string* mutable_ip();
+  PROTOBUF_NODISCARD std::string* release_ip();
+  void set_allocated_ip(std::string* value);
+
+  private:
+  const std::string& _internal_ip() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_ip(
+      const std::string& value);
+  std::string* _internal_mutable_ip();
+
+  public:
   // optional uint32 limit = 1 [json_name = "limit", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   bool has_limit() const;
   void clear_limit() ;
@@ -1633,13 +1694,35 @@ class GetGlobalInsightsRequest final : public ::google::protobuf::Message
   void _internal_set_limit(::uint32_t value);
 
   public:
+  // optional uint32 lookback = 4 [json_name = "lookback", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_lookback() const;
+  void clear_lookback() ;
+  ::uint32_t lookback() const;
+  void set_lookback(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_lookback() const;
+  void _internal_set_lookback(::uint32_t value);
+
+  public:
+  // optional uint32 magnitude = 6 [json_name = "magnitude", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_magnitude() const;
+  void clear_magnitude() ;
+  ::uint32_t magnitude() const;
+  void set_magnitude(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_magnitude() const;
+  void _internal_set_magnitude(::uint32_t value);
+
+  public:
   // @@protoc_insertion_point(class_scope:kentik.kmi.v202212.GetGlobalInsightsRequest)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      0, 1, 0,
-      0, 2>
+      3, 6, 0,
+      68, 2>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -1658,7 +1741,12 @@ class GetGlobalInsightsRequest final : public ::google::protobuf::Message
                           const GetGlobalInsightsRequest& from_msg);
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::RepeatedPtrField<std::string> types_;
+    ::google::protobuf::internal::ArenaStringPtr market_id_;
+    ::google::protobuf::internal::ArenaStringPtr ip_;
     ::uint32_t limit_;
+    ::uint32_t lookback_;
+    ::uint32_t magnitude_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -1812,9 +1900,36 @@ class GetASNInsightsRequest final : public ::google::protobuf::Message
 
   // accessors -------------------------------------------------------
   enum : int {
+    kTypesFieldNumber = 6,
     kAsnFieldNumber = 1,
+    kMarketIdFieldNumber = 3,
+    kIpFieldNumber = 4,
     kLimitFieldNumber = 2,
+    kLookbackFieldNumber = 5,
+    kMagnitudeFieldNumber = 7,
   };
+  // repeated string types = 6 [json_name = "types", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  int types_size() const;
+  private:
+  int _internal_types_size() const;
+
+  public:
+  void clear_types() ;
+  const std::string& types(int index) const;
+  std::string* mutable_types(int index);
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_types(int index, Arg_&& value, Args_... args);
+  std::string* add_types();
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void add_types(Arg_&& value, Args_... args);
+  const ::google::protobuf::RepeatedPtrField<std::string>& types() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* mutable_types();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<std::string>& _internal_types() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* _internal_mutable_types();
+
+  public:
   // string asn = 1 [json_name = "asn", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   void clear_asn() ;
   const std::string& asn() const;
@@ -1831,6 +1946,40 @@ class GetASNInsightsRequest final : public ::google::protobuf::Message
   std::string* _internal_mutable_asn();
 
   public:
+  // optional string market_id = 3 [json_name = "marketId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_market_id() const;
+  void clear_market_id() ;
+  const std::string& market_id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_market_id(Arg_&& arg, Args_... args);
+  std::string* mutable_market_id();
+  PROTOBUF_NODISCARD std::string* release_market_id();
+  void set_allocated_market_id(std::string* value);
+
+  private:
+  const std::string& _internal_market_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_market_id(
+      const std::string& value);
+  std::string* _internal_mutable_market_id();
+
+  public:
+  // optional string ip = 4 [json_name = "ip", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_ip() const;
+  void clear_ip() ;
+  const std::string& ip() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_ip(Arg_&& arg, Args_... args);
+  std::string* mutable_ip();
+  PROTOBUF_NODISCARD std::string* release_ip();
+  void set_allocated_ip(std::string* value);
+
+  private:
+  const std::string& _internal_ip() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_ip(
+      const std::string& value);
+  std::string* _internal_mutable_ip();
+
+  public:
   // optional uint32 limit = 2 [json_name = "limit", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   bool has_limit() const;
   void clear_limit() ;
@@ -1842,13 +1991,35 @@ class GetASNInsightsRequest final : public ::google::protobuf::Message
   void _internal_set_limit(::uint32_t value);
 
   public:
+  // optional uint32 lookback = 5 [json_name = "lookback", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_lookback() const;
+  void clear_lookback() ;
+  ::uint32_t lookback() const;
+  void set_lookback(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_lookback() const;
+  void _internal_set_lookback(::uint32_t value);
+
+  public:
+  // optional uint32 magnitude = 7 [json_name = "magnitude", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_magnitude() const;
+  void clear_magnitude() ;
+  ::uint32_t magnitude() const;
+  void set_magnitude(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_magnitude() const;
+  void _internal_set_magnitude(::uint32_t value);
+
+  public:
   // @@protoc_insertion_point(class_scope:kentik.kmi.v202212.GetASNInsightsRequest)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      1, 2, 0,
-      52, 2>
+      3, 7, 0,
+      68, 2>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -1867,8 +2038,13 @@ class GetASNInsightsRequest final : public ::google::protobuf::Message
                           const GetASNInsightsRequest& from_msg);
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::RepeatedPtrField<std::string> types_;
     ::google::protobuf::internal::ArenaStringPtr asn_;
+    ::google::protobuf::internal::ArenaStringPtr market_id_;
+    ::google::protobuf::internal::ArenaStringPtr ip_;
     ::uint32_t limit_;
+    ::uint32_t lookback_;
+    ::uint32_t magnitude_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -5559,13 +5735,13 @@ inline void GetASNDetailsResponse::set_allocated_asn_details(::kentik::kmi::v202
 
 // optional uint32 limit = 1 [json_name = "limit", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
 inline bool GetGlobalInsightsRequest::has_limit() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
   return value;
 }
 inline void GetGlobalInsightsRequest::clear_limit() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.limit_ = 0u;
-  _impl_._has_bits_[0] &= ~0x00000001u;
+  _impl_._has_bits_[0] &= ~0x00000004u;
 }
 inline ::uint32_t GetGlobalInsightsRequest::limit() const {
   // @@protoc_insertion_point(field_get:kentik.kmi.v202212.GetGlobalInsightsRequest.limit)
@@ -5573,7 +5749,7 @@ inline ::uint32_t GetGlobalInsightsRequest::limit() const {
 }
 inline void GetGlobalInsightsRequest::set_limit(::uint32_t value) {
   _internal_set_limit(value);
-  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_._has_bits_[0] |= 0x00000004u;
   // @@protoc_insertion_point(field_set:kentik.kmi.v202212.GetGlobalInsightsRequest.limit)
 }
 inline ::uint32_t GetGlobalInsightsRequest::_internal_limit() const {
@@ -5583,6 +5759,264 @@ inline ::uint32_t GetGlobalInsightsRequest::_internal_limit() const {
 inline void GetGlobalInsightsRequest::_internal_set_limit(::uint32_t value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.limit_ = value;
+}
+
+// optional string market_id = 2 [json_name = "marketId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool GetGlobalInsightsRequest::has_market_id() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline void GetGlobalInsightsRequest::clear_market_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.market_id_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& GetGlobalInsightsRequest::market_id() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.kmi.v202212.GetGlobalInsightsRequest.market_id)
+  return _internal_market_id();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void GetGlobalInsightsRequest::set_market_id(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.market_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.kmi.v202212.GetGlobalInsightsRequest.market_id)
+}
+inline std::string* GetGlobalInsightsRequest::mutable_market_id() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_market_id();
+  // @@protoc_insertion_point(field_mutable:kentik.kmi.v202212.GetGlobalInsightsRequest.market_id)
+  return _s;
+}
+inline const std::string& GetGlobalInsightsRequest::_internal_market_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.market_id_.Get();
+}
+inline void GetGlobalInsightsRequest::_internal_set_market_id(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.market_id_.Set(value, GetArena());
+}
+inline std::string* GetGlobalInsightsRequest::_internal_mutable_market_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  return _impl_.market_id_.Mutable( GetArena());
+}
+inline std::string* GetGlobalInsightsRequest::release_market_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.kmi.v202212.GetGlobalInsightsRequest.market_id)
+  if ((_impl_._has_bits_[0] & 0x00000001u) == 0) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  auto* released = _impl_.market_id_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.market_id_.Set("", GetArena());
+  }
+  return released;
+}
+inline void GetGlobalInsightsRequest::set_allocated_market_id(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  _impl_.market_id_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.market_id_.IsDefault()) {
+    _impl_.market_id_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.kmi.v202212.GetGlobalInsightsRequest.market_id)
+}
+
+// optional string ip = 3 [json_name = "ip", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool GetGlobalInsightsRequest::has_ip() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline void GetGlobalInsightsRequest::clear_ip() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.ip_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline const std::string& GetGlobalInsightsRequest::ip() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.kmi.v202212.GetGlobalInsightsRequest.ip)
+  return _internal_ip();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void GetGlobalInsightsRequest::set_ip(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.ip_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.kmi.v202212.GetGlobalInsightsRequest.ip)
+}
+inline std::string* GetGlobalInsightsRequest::mutable_ip() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_ip();
+  // @@protoc_insertion_point(field_mutable:kentik.kmi.v202212.GetGlobalInsightsRequest.ip)
+  return _s;
+}
+inline const std::string& GetGlobalInsightsRequest::_internal_ip() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.ip_.Get();
+}
+inline void GetGlobalInsightsRequest::_internal_set_ip(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.ip_.Set(value, GetArena());
+}
+inline std::string* GetGlobalInsightsRequest::_internal_mutable_ip() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_._has_bits_[0] |= 0x00000002u;
+  return _impl_.ip_.Mutable( GetArena());
+}
+inline std::string* GetGlobalInsightsRequest::release_ip() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.kmi.v202212.GetGlobalInsightsRequest.ip)
+  if ((_impl_._has_bits_[0] & 0x00000002u) == 0) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  auto* released = _impl_.ip_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.ip_.Set("", GetArena());
+  }
+  return released;
+}
+inline void GetGlobalInsightsRequest::set_allocated_ip(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+  _impl_.ip_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.ip_.IsDefault()) {
+    _impl_.ip_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.kmi.v202212.GetGlobalInsightsRequest.ip)
+}
+
+// optional uint32 lookback = 4 [json_name = "lookback", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool GetGlobalInsightsRequest::has_lookback() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
+  return value;
+}
+inline void GetGlobalInsightsRequest::clear_lookback() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.lookback_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000008u;
+}
+inline ::uint32_t GetGlobalInsightsRequest::lookback() const {
+  // @@protoc_insertion_point(field_get:kentik.kmi.v202212.GetGlobalInsightsRequest.lookback)
+  return _internal_lookback();
+}
+inline void GetGlobalInsightsRequest::set_lookback(::uint32_t value) {
+  _internal_set_lookback(value);
+  _impl_._has_bits_[0] |= 0x00000008u;
+  // @@protoc_insertion_point(field_set:kentik.kmi.v202212.GetGlobalInsightsRequest.lookback)
+}
+inline ::uint32_t GetGlobalInsightsRequest::_internal_lookback() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.lookback_;
+}
+inline void GetGlobalInsightsRequest::_internal_set_lookback(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.lookback_ = value;
+}
+
+// repeated string types = 5 [json_name = "types", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline int GetGlobalInsightsRequest::_internal_types_size() const {
+  return _internal_types().size();
+}
+inline int GetGlobalInsightsRequest::types_size() const {
+  return _internal_types_size();
+}
+inline void GetGlobalInsightsRequest::clear_types() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.types_.Clear();
+}
+inline std::string* GetGlobalInsightsRequest::add_types() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  std::string* _s = _internal_mutable_types()->Add();
+  // @@protoc_insertion_point(field_add_mutable:kentik.kmi.v202212.GetGlobalInsightsRequest.types)
+  return _s;
+}
+inline const std::string& GetGlobalInsightsRequest::types(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.kmi.v202212.GetGlobalInsightsRequest.types)
+  return _internal_types().Get(index);
+}
+inline std::string* GetGlobalInsightsRequest::mutable_types(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:kentik.kmi.v202212.GetGlobalInsightsRequest.types)
+  return _internal_mutable_types()->Mutable(index);
+}
+template <typename Arg_, typename... Args_>
+inline void GetGlobalInsightsRequest::set_types(int index, Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::AssignToString(
+      *_internal_mutable_types()->Mutable(index),
+      std::forward<Arg_>(value), args... );
+  // @@protoc_insertion_point(field_set:kentik.kmi.v202212.GetGlobalInsightsRequest.types)
+}
+template <typename Arg_, typename... Args_>
+inline void GetGlobalInsightsRequest::add_types(Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::google::protobuf::internal::AddToRepeatedPtrField(*_internal_mutable_types(),
+                               std::forward<Arg_>(value),
+                               args... );
+  // @@protoc_insertion_point(field_add:kentik.kmi.v202212.GetGlobalInsightsRequest.types)
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+GetGlobalInsightsRequest::types() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:kentik.kmi.v202212.GetGlobalInsightsRequest.types)
+  return _internal_types();
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+GetGlobalInsightsRequest::mutable_types() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:kentik.kmi.v202212.GetGlobalInsightsRequest.types)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_types();
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+GetGlobalInsightsRequest::_internal_types() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.types_;
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+GetGlobalInsightsRequest::_internal_mutable_types() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.types_;
+}
+
+// optional uint32 magnitude = 6 [json_name = "magnitude", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool GetGlobalInsightsRequest::has_magnitude() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000010u) != 0;
+  return value;
+}
+inline void GetGlobalInsightsRequest::clear_magnitude() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.magnitude_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000010u;
+}
+inline ::uint32_t GetGlobalInsightsRequest::magnitude() const {
+  // @@protoc_insertion_point(field_get:kentik.kmi.v202212.GetGlobalInsightsRequest.magnitude)
+  return _internal_magnitude();
+}
+inline void GetGlobalInsightsRequest::set_magnitude(::uint32_t value) {
+  _internal_set_magnitude(value);
+  _impl_._has_bits_[0] |= 0x00000010u;
+  // @@protoc_insertion_point(field_set:kentik.kmi.v202212.GetGlobalInsightsRequest.magnitude)
+}
+inline ::uint32_t GetGlobalInsightsRequest::_internal_magnitude() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.magnitude_;
+}
+inline void GetGlobalInsightsRequest::_internal_set_magnitude(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.magnitude_ = value;
 }
 
 // -------------------------------------------------------------------
@@ -5692,13 +6126,13 @@ inline void GetASNInsightsRequest::set_allocated_asn(std::string* value) {
 
 // optional uint32 limit = 2 [json_name = "limit", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
 inline bool GetASNInsightsRequest::has_limit() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
   return value;
 }
 inline void GetASNInsightsRequest::clear_limit() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.limit_ = 0u;
-  _impl_._has_bits_[0] &= ~0x00000001u;
+  _impl_._has_bits_[0] &= ~0x00000004u;
 }
 inline ::uint32_t GetASNInsightsRequest::limit() const {
   // @@protoc_insertion_point(field_get:kentik.kmi.v202212.GetASNInsightsRequest.limit)
@@ -5706,7 +6140,7 @@ inline ::uint32_t GetASNInsightsRequest::limit() const {
 }
 inline void GetASNInsightsRequest::set_limit(::uint32_t value) {
   _internal_set_limit(value);
-  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_._has_bits_[0] |= 0x00000004u;
   // @@protoc_insertion_point(field_set:kentik.kmi.v202212.GetASNInsightsRequest.limit)
 }
 inline ::uint32_t GetASNInsightsRequest::_internal_limit() const {
@@ -5716,6 +6150,264 @@ inline ::uint32_t GetASNInsightsRequest::_internal_limit() const {
 inline void GetASNInsightsRequest::_internal_set_limit(::uint32_t value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.limit_ = value;
+}
+
+// optional string market_id = 3 [json_name = "marketId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool GetASNInsightsRequest::has_market_id() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline void GetASNInsightsRequest::clear_market_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.market_id_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& GetASNInsightsRequest::market_id() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.kmi.v202212.GetASNInsightsRequest.market_id)
+  return _internal_market_id();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void GetASNInsightsRequest::set_market_id(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.market_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.kmi.v202212.GetASNInsightsRequest.market_id)
+}
+inline std::string* GetASNInsightsRequest::mutable_market_id() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_market_id();
+  // @@protoc_insertion_point(field_mutable:kentik.kmi.v202212.GetASNInsightsRequest.market_id)
+  return _s;
+}
+inline const std::string& GetASNInsightsRequest::_internal_market_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.market_id_.Get();
+}
+inline void GetASNInsightsRequest::_internal_set_market_id(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.market_id_.Set(value, GetArena());
+}
+inline std::string* GetASNInsightsRequest::_internal_mutable_market_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  return _impl_.market_id_.Mutable( GetArena());
+}
+inline std::string* GetASNInsightsRequest::release_market_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.kmi.v202212.GetASNInsightsRequest.market_id)
+  if ((_impl_._has_bits_[0] & 0x00000001u) == 0) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  auto* released = _impl_.market_id_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.market_id_.Set("", GetArena());
+  }
+  return released;
+}
+inline void GetASNInsightsRequest::set_allocated_market_id(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  _impl_.market_id_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.market_id_.IsDefault()) {
+    _impl_.market_id_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.kmi.v202212.GetASNInsightsRequest.market_id)
+}
+
+// optional string ip = 4 [json_name = "ip", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool GetASNInsightsRequest::has_ip() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline void GetASNInsightsRequest::clear_ip() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.ip_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline const std::string& GetASNInsightsRequest::ip() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.kmi.v202212.GetASNInsightsRequest.ip)
+  return _internal_ip();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void GetASNInsightsRequest::set_ip(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.ip_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.kmi.v202212.GetASNInsightsRequest.ip)
+}
+inline std::string* GetASNInsightsRequest::mutable_ip() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_ip();
+  // @@protoc_insertion_point(field_mutable:kentik.kmi.v202212.GetASNInsightsRequest.ip)
+  return _s;
+}
+inline const std::string& GetASNInsightsRequest::_internal_ip() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.ip_.Get();
+}
+inline void GetASNInsightsRequest::_internal_set_ip(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.ip_.Set(value, GetArena());
+}
+inline std::string* GetASNInsightsRequest::_internal_mutable_ip() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_._has_bits_[0] |= 0x00000002u;
+  return _impl_.ip_.Mutable( GetArena());
+}
+inline std::string* GetASNInsightsRequest::release_ip() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.kmi.v202212.GetASNInsightsRequest.ip)
+  if ((_impl_._has_bits_[0] & 0x00000002u) == 0) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  auto* released = _impl_.ip_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.ip_.Set("", GetArena());
+  }
+  return released;
+}
+inline void GetASNInsightsRequest::set_allocated_ip(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+  _impl_.ip_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.ip_.IsDefault()) {
+    _impl_.ip_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.kmi.v202212.GetASNInsightsRequest.ip)
+}
+
+// optional uint32 lookback = 5 [json_name = "lookback", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool GetASNInsightsRequest::has_lookback() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
+  return value;
+}
+inline void GetASNInsightsRequest::clear_lookback() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.lookback_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000008u;
+}
+inline ::uint32_t GetASNInsightsRequest::lookback() const {
+  // @@protoc_insertion_point(field_get:kentik.kmi.v202212.GetASNInsightsRequest.lookback)
+  return _internal_lookback();
+}
+inline void GetASNInsightsRequest::set_lookback(::uint32_t value) {
+  _internal_set_lookback(value);
+  _impl_._has_bits_[0] |= 0x00000008u;
+  // @@protoc_insertion_point(field_set:kentik.kmi.v202212.GetASNInsightsRequest.lookback)
+}
+inline ::uint32_t GetASNInsightsRequest::_internal_lookback() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.lookback_;
+}
+inline void GetASNInsightsRequest::_internal_set_lookback(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.lookback_ = value;
+}
+
+// repeated string types = 6 [json_name = "types", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline int GetASNInsightsRequest::_internal_types_size() const {
+  return _internal_types().size();
+}
+inline int GetASNInsightsRequest::types_size() const {
+  return _internal_types_size();
+}
+inline void GetASNInsightsRequest::clear_types() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.types_.Clear();
+}
+inline std::string* GetASNInsightsRequest::add_types() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  std::string* _s = _internal_mutable_types()->Add();
+  // @@protoc_insertion_point(field_add_mutable:kentik.kmi.v202212.GetASNInsightsRequest.types)
+  return _s;
+}
+inline const std::string& GetASNInsightsRequest::types(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.kmi.v202212.GetASNInsightsRequest.types)
+  return _internal_types().Get(index);
+}
+inline std::string* GetASNInsightsRequest::mutable_types(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:kentik.kmi.v202212.GetASNInsightsRequest.types)
+  return _internal_mutable_types()->Mutable(index);
+}
+template <typename Arg_, typename... Args_>
+inline void GetASNInsightsRequest::set_types(int index, Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::AssignToString(
+      *_internal_mutable_types()->Mutable(index),
+      std::forward<Arg_>(value), args... );
+  // @@protoc_insertion_point(field_set:kentik.kmi.v202212.GetASNInsightsRequest.types)
+}
+template <typename Arg_, typename... Args_>
+inline void GetASNInsightsRequest::add_types(Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::google::protobuf::internal::AddToRepeatedPtrField(*_internal_mutable_types(),
+                               std::forward<Arg_>(value),
+                               args... );
+  // @@protoc_insertion_point(field_add:kentik.kmi.v202212.GetASNInsightsRequest.types)
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+GetASNInsightsRequest::types() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:kentik.kmi.v202212.GetASNInsightsRequest.types)
+  return _internal_types();
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+GetASNInsightsRequest::mutable_types() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:kentik.kmi.v202212.GetASNInsightsRequest.types)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_types();
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+GetASNInsightsRequest::_internal_types() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.types_;
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+GetASNInsightsRequest::_internal_mutable_types() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.types_;
+}
+
+// optional uint32 magnitude = 7 [json_name = "magnitude", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool GetASNInsightsRequest::has_magnitude() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000010u) != 0;
+  return value;
+}
+inline void GetASNInsightsRequest::clear_magnitude() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.magnitude_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000010u;
+}
+inline ::uint32_t GetASNInsightsRequest::magnitude() const {
+  // @@protoc_insertion_point(field_get:kentik.kmi.v202212.GetASNInsightsRequest.magnitude)
+  return _internal_magnitude();
+}
+inline void GetASNInsightsRequest::set_magnitude(::uint32_t value) {
+  _internal_set_magnitude(value);
+  _impl_._has_bits_[0] |= 0x00000010u;
+  // @@protoc_insertion_point(field_set:kentik.kmi.v202212.GetASNInsightsRequest.magnitude)
+}
+inline ::uint32_t GetASNInsightsRequest::_internal_magnitude() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.magnitude_;
+}
+inline void GetASNInsightsRequest::_internal_set_magnitude(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.magnitude_ = value;
 }
 
 // -------------------------------------------------------------------

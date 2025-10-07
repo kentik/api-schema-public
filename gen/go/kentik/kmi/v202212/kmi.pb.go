@@ -816,6 +816,11 @@ func (x *GetASNDetailsResponse) GetAsnDetails() *ASNDetails {
 type GetGlobalInsightsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Limit         *uint32                `protobuf:"varint,1,opt,name=limit,proto3,oneof" json:"limit,omitempty"`
+	MarketId      *string                `protobuf:"bytes,2,opt,name=market_id,json=marketId,proto3,oneof" json:"market_id,omitempty"`
+	Ip            *string                `protobuf:"bytes,3,opt,name=ip,proto3,oneof" json:"ip,omitempty"`
+	Lookback      *uint32                `protobuf:"varint,4,opt,name=lookback,proto3,oneof" json:"lookback,omitempty"`
+	Types         []string               `protobuf:"bytes,5,rep,name=types,proto3" json:"types,omitempty"`
+	Magnitude     *uint32                `protobuf:"varint,6,opt,name=magnitude,proto3,oneof" json:"magnitude,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -853,6 +858,41 @@ func (*GetGlobalInsightsRequest) Descriptor() ([]byte, []int) {
 func (x *GetGlobalInsightsRequest) GetLimit() uint32 {
 	if x != nil && x.Limit != nil {
 		return *x.Limit
+	}
+	return 0
+}
+
+func (x *GetGlobalInsightsRequest) GetMarketId() string {
+	if x != nil && x.MarketId != nil {
+		return *x.MarketId
+	}
+	return ""
+}
+
+func (x *GetGlobalInsightsRequest) GetIp() string {
+	if x != nil && x.Ip != nil {
+		return *x.Ip
+	}
+	return ""
+}
+
+func (x *GetGlobalInsightsRequest) GetLookback() uint32 {
+	if x != nil && x.Lookback != nil {
+		return *x.Lookback
+	}
+	return 0
+}
+
+func (x *GetGlobalInsightsRequest) GetTypes() []string {
+	if x != nil {
+		return x.Types
+	}
+	return nil
+}
+
+func (x *GetGlobalInsightsRequest) GetMagnitude() uint32 {
+	if x != nil && x.Magnitude != nil {
+		return *x.Magnitude
 	}
 	return 0
 }
@@ -907,6 +947,11 @@ type GetASNInsightsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Asn           string                 `protobuf:"bytes,1,opt,name=asn,proto3" json:"asn,omitempty"`
 	Limit         *uint32                `protobuf:"varint,2,opt,name=limit,proto3,oneof" json:"limit,omitempty"`
+	MarketId      *string                `protobuf:"bytes,3,opt,name=market_id,json=marketId,proto3,oneof" json:"market_id,omitempty"`
+	Ip            *string                `protobuf:"bytes,4,opt,name=ip,proto3,oneof" json:"ip,omitempty"`
+	Lookback      *uint32                `protobuf:"varint,5,opt,name=lookback,proto3,oneof" json:"lookback,omitempty"`
+	Types         []string               `protobuf:"bytes,6,rep,name=types,proto3" json:"types,omitempty"`
+	Magnitude     *uint32                `protobuf:"varint,7,opt,name=magnitude,proto3,oneof" json:"magnitude,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -951,6 +996,41 @@ func (x *GetASNInsightsRequest) GetAsn() string {
 func (x *GetASNInsightsRequest) GetLimit() uint32 {
 	if x != nil && x.Limit != nil {
 		return *x.Limit
+	}
+	return 0
+}
+
+func (x *GetASNInsightsRequest) GetMarketId() string {
+	if x != nil && x.MarketId != nil {
+		return *x.MarketId
+	}
+	return ""
+}
+
+func (x *GetASNInsightsRequest) GetIp() string {
+	if x != nil && x.Ip != nil {
+		return *x.Ip
+	}
+	return ""
+}
+
+func (x *GetASNInsightsRequest) GetLookback() uint32 {
+	if x != nil && x.Lookback != nil {
+		return *x.Lookback
+	}
+	return 0
+}
+
+func (x *GetASNInsightsRequest) GetTypes() []string {
+	if x != nil {
+		return x.Types
+	}
+	return nil
+}
+
+func (x *GetASNInsightsRequest) GetMagnitude() uint32 {
+	if x != nil && x.Magnitude != nil {
+		return *x.Magnitude
 	}
 	return 0
 }
@@ -1080,22 +1160,44 @@ const file_kentik_kmi_v202212_kmi_proto_rawDesc = "" +
 	"\x14singlehomed_customer\x18\a \x01(\tBR\x92AO2MFilter by singlehomed customer ('all', 'only', 'exclude'). Defaults to 'all'.R\x13singlehomedCustomer\"\xad\x01\n" +
 	"\x15GetASNDetailsResponse\x12\x93\x01\n" +
 	"\vasn_details\x18\x01 \x01(\v2\x1e.kentik.kmi.v202212.ASNDetailsBR\x92AO2MMetadata and list of customers, providers, and peers for an Autonomous SystemR\n" +
-	"asnDetails\"|\n" +
+	"asnDetails\"\x9c\b\n" +
 	"\x18GetGlobalInsightsRequest\x12V\n" +
-	"\x05limit\x18\x01 \x01(\rB;\x92A826Maximum number of insights to return. Defaults to 100.H\x00R\x05limit\x88\x01\x01B\b\n" +
-	"\x06_limit\"u\n" +
+	"\x05limit\x18\x01 \x01(\rB;\x92A826Maximum number of insights to return. Defaults to 100.H\x00R\x05limit\x88\x01\x01\x12{\n" +
+	"\tmarket_id\x18\x02 \x01(\tBY\x92AV2TGeo Market identifier (e.g., 'planet$earth'). If omitted, defaults to global market.H\x01R\bmarketId\x88\x01\x01\x12M\n" +
+	"\x02ip\x18\x03 \x01(\tB8\x92A523IP Address Family ('v4' or 'v6'). Defaults to 'v4'.H\x02R\x02ip\x88\x01\x01\x12`\n" +
+	"\blookback\x18\x04 \x01(\rB?\x92A<2:Lookback in days. Allowed values: 1, 7, 30. Defaults to 1.H\x03R\blookback\x88\x01\x01\x12\xd0\x03\n" +
+	"\x05types\x18\x05 \x03(\tB\xb9\x03\x92A\xb5\x032\xb2\x03Insight types to include. Provide as repeated query params, e.g., types=market_entrance&types=market_exit. Allowed: market_entrance, market_exit, ranking_gain, ranking_loss, start_prefix_origination, stop_prefix_origination, increase_prefix_origination, decrease_prefix_origination, customer_gain, customer_loss, customer_routing_gain, customer_routing_loss, provider_gain, provider_loss, provider_routing_gain, provider_routing_loss.R\x05types\x12m\n" +
+	"\tmagnitude\x18\x06 \x01(\rBJ\x92AG2EMinimum magnitude (severity) threshold, integer 1–5. Defaults to 1.H\x04R\tmagnitude\x88\x01\x01B\b\n" +
+	"\x06_limitB\f\n" +
+	"\n" +
+	"_market_idB\x05\n" +
+	"\x03_ipB\v\n" +
+	"\t_lookbackB\f\n" +
+	"\n" +
+	"_magnitude\"u\n" +
 	"\x19GetGlobalInsightsResponse\x12X\n" +
-	"\binsights\x18\x01 \x03(\v2\x1b.kentik.kmi.v202212.InsightB\x1f\x92A\x192\x17List of global insights\xe0A\x03R\binsights\"\xb0\x01\n" +
+	"\binsights\x18\x01 \x03(\v2\x1b.kentik.kmi.v202212.InsightB\x1f\x92A\x192\x17List of global insights\xe0A\x03R\binsights\"\xff\a\n" +
 	"\x15GetASNInsightsRequest\x125\n" +
 	"\x03asn\x18\x01 \x01(\tB#\x92A 2\x1eAutonomous System Number (ASN)R\x03asn\x12V\n" +
-	"\x05limit\x18\x02 \x01(\rB;\x92A826Maximum number of insights to return. Defaults to 100.H\x00R\x05limit\x88\x01\x01B\b\n" +
-	"\x06_limit\"x\n" +
+	"\x05limit\x18\x02 \x01(\rB;\x92A826Maximum number of insights to return. Defaults to 100.H\x00R\x05limit\x88\x01\x01\x12{\n" +
+	"\tmarket_id\x18\x03 \x01(\tBY\x92AV2TGeo Market identifier (e.g., 'planet$earth'). If omitted, defaults to global market.H\x01R\bmarketId\x88\x01\x01\x12M\n" +
+	"\x02ip\x18\x04 \x01(\tB8\x92A523IP Address Family ('v4' or 'v6'). Defaults to 'v4'.H\x02R\x02ip\x88\x01\x01\x12`\n" +
+	"\blookback\x18\x05 \x01(\rB?\x92A<2:Lookback in days. Allowed values: 1, 7, 30. Defaults to 1.H\x03R\blookback\x88\x01\x01\x12\xff\x02\n" +
+	"\x05types\x18\x06 \x03(\tB\xe8\x02\x92A\xe4\x022\xe1\x02Insight types to include. Allowed: market_entrance, market_exit, ranking_gain, ranking_loss, start_prefix_origination, stop_prefix_origination, increase_prefix_origination, decrease_prefix_origination, customer_gain, customer_loss, customer_routing_gain, customer_routing_loss, provider_gain, provider_loss, provider_routing_gain, provider_routing_loss.R\x05types\x12m\n" +
+	"\tmagnitude\x18\a \x01(\rBJ\x92AG2EMinimum magnitude (severity) threshold, integer 1–5. Defaults to 1.H\x04R\tmagnitude\x88\x01\x01B\b\n" +
+	"\x06_limitB\f\n" +
+	"\n" +
+	"_market_idB\x05\n" +
+	"\x03_ipB\v\n" +
+	"\t_lookbackB\f\n" +
+	"\n" +
+	"_magnitude\"x\n" +
 	"\x16GetASNInsightsResponse\x12^\n" +
-	"\binsights\x18\x01 \x03(\v2\x1b.kentik.kmi.v202212.InsightB%\x92A\x1f2\x1dList of ASN-specific insights\xe0A\x03R\binsights2\xbd\v\n" +
+	"\binsights\x18\x01 \x03(\v2\x1b.kentik.kmi.v202212.InsightB%\x92A\x1f2\x1dList of ASN-specific insights\xe0A\x03R\binsights2\xc5\v\n" +
 	"\n" +
 	"KmiService\x12\xe4\x01\n" +
-	"\vListMarkets\x12&.kentik.kmi.v202212.ListMarketsRequest\x1a'.kentik.kmi.v202212.ListMarketsResponse\"\x83\x01\x92AR\x12\x1dList all geo markets for KMI.\x1a$Returns list of geo markets for KMI.*\vListMarkets\xf2\xd7\x02\x0eadmin.kmi:read\x82\xd3\xe4\x93\x02\x16\x12\x14/kmi/v202212/markets\x12\x91\x02\n" +
-	"\vGetRankings\x12&.kentik.kmi.v202212.GetRankingsRequest\x1a'.kentik.kmi.v202212.GetRankingsResponse\"\xb0\x01\x92A\\\x12.List KMI rankings by geo market and rank type.\x1a\x1dReturns list of KMI rankings.*\vGetRankings\xf2\xd7\x02\x0eadmin.kmi:read\x82\xd3\xe4\x93\x029:\x01*\"4/kmi/v202212/market/{market_id}/rankings/{rank_type}\x12\xf8\x02\n" +
+	"\vListMarkets\x12&.kentik.kmi.v202212.ListMarketsRequest\x1a'.kentik.kmi.v202212.ListMarketsResponse\"\x83\x01\x92AR\x12\x1dList all geo markets for KMI.\x1a$Returns list of geo markets for KMI.*\vListMarkets\xf2\xd7\x02\x0eadmin.kmi:read\x82\xd3\xe4\x93\x02\x16\x12\x14/kmi/v202212/markets\x12\x99\x02\n" +
+	"\vGetRankings\x12&.kentik.kmi.v202212.GetRankingsRequest\x1a'.kentik.kmi.v202212.GetRankingsResponse\"\xb8\x01\x92A\\\x12.List KMI rankings by geo market and rank type.\x1a\x1dReturns list of KMI rankings.*\vGetRankings\xf2\xd7\x02\x0eadmin.kmi:read\x82\xd3\xe4\x93\x02A:\x01*\"</kmi/v202212/market/{market_id}/rankings/{rank_type}/ip/{ip}\x12\xf8\x02\n" +
 	"\rGetASNDetails\x12(.kentik.kmi.v202212.GetASNDetailsRequest\x1a).kentik.kmi.v202212.GetASNDetailsResponse\"\x91\x02\x92A\xbc\x01\x12SList metadata and list of customers, providers, and peers for an Autonomous System.\x1aVReturns metadata and list of customers, providers, and peers for an Autonomous System.*\rGetASNDetails\xf2\xd7\x02\x0eadmin.kmi:read\x82\xd3\xe4\x93\x029:\x01*\"4/kmi/v202212/market/{market_id}/network/{asn}/{type}\x12\xf9\x01\n" +
 	"\x11GetGlobalInsights\x12,.kentik.kmi.v202212.GetGlobalInsightsRequest\x1a-.kentik.kmi.v202212.GetGlobalInsightsResponse\"\x86\x01\x92AT\x12\x19List global KMI insights.\x1a$Returns list of global KMI insights.*\x11GetGlobalInsights\xf2\xd7\x02\x0eadmin.kmi:read\x82\xd3\xe4\x93\x02\x17\x12\x15/kmi/v202212/insights\x12\x93\x02\n" +
 	"\x0eGetASNInsights\x12).kentik.kmi.v202212.GetASNInsightsRequest\x1a*.kentik.kmi.v202212.GetASNInsightsResponse\"\xa9\x01\x92Aq\x12\x1fList ASN-specific KMI insights.\x1a>Returns list of KMI insights for a specific Autonomous System.*\x0eGetASNInsights\xf2\xd7\x02\x0eadmin.kmi:read\x82\xd3\xe4\x93\x02\x1d\x12\x1b/kmi/v202212/insights/{asn}\x1a'\xcaA\x13grpc.api.kentik.com\xea\xd7\x02\tadmin.kmi\x90\xd8\x02\x03B\xc9\x0f\x92A\x82\x0f\x12\x9b\r\n" +

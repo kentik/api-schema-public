@@ -385,20 +385,62 @@ typedef enum {
     PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__KMI__V202212__GET_GLOBAL_INSIGHTS_REQUEST___LIMIT__CASE)
 } Kentik__Kmi__V202212__GetGlobalInsightsRequest__LimitCase;
 
+typedef enum {
+  KENTIK__KMI__V202212__GET_GLOBAL_INSIGHTS_REQUEST___MARKET_ID__NOT_SET = 0,
+  KENTIK__KMI__V202212__GET_GLOBAL_INSIGHTS_REQUEST___MARKET_ID_MARKET_ID = 2
+    PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__KMI__V202212__GET_GLOBAL_INSIGHTS_REQUEST___MARKET_ID__CASE)
+} Kentik__Kmi__V202212__GetGlobalInsightsRequest__MarketIdCase;
+
+typedef enum {
+  KENTIK__KMI__V202212__GET_GLOBAL_INSIGHTS_REQUEST___IP__NOT_SET = 0,
+  KENTIK__KMI__V202212__GET_GLOBAL_INSIGHTS_REQUEST___IP_IP = 3
+    PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__KMI__V202212__GET_GLOBAL_INSIGHTS_REQUEST___IP__CASE)
+} Kentik__Kmi__V202212__GetGlobalInsightsRequest__IpCase;
+
+typedef enum {
+  KENTIK__KMI__V202212__GET_GLOBAL_INSIGHTS_REQUEST___LOOKBACK__NOT_SET = 0,
+  KENTIK__KMI__V202212__GET_GLOBAL_INSIGHTS_REQUEST___LOOKBACK_LOOKBACK = 4
+    PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__KMI__V202212__GET_GLOBAL_INSIGHTS_REQUEST___LOOKBACK__CASE)
+} Kentik__Kmi__V202212__GetGlobalInsightsRequest__LookbackCase;
+
+typedef enum {
+  KENTIK__KMI__V202212__GET_GLOBAL_INSIGHTS_REQUEST___MAGNITUDE__NOT_SET = 0,
+  KENTIK__KMI__V202212__GET_GLOBAL_INSIGHTS_REQUEST___MAGNITUDE_MAGNITUDE = 6
+    PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__KMI__V202212__GET_GLOBAL_INSIGHTS_REQUEST___MAGNITUDE__CASE)
+} Kentik__Kmi__V202212__GetGlobalInsightsRequest__MagnitudeCase;
+
 /*
  * {{.Name}}
  */
 struct  Kentik__Kmi__V202212__GetGlobalInsightsRequest
 {
   ProtobufCMessage base;
+  size_t n_types;
+  char **types;
   Kentik__Kmi__V202212__GetGlobalInsightsRequest__LimitCase _limit_case;
   union {
     uint32_t limit;
   };
+  Kentik__Kmi__V202212__GetGlobalInsightsRequest__MarketIdCase _market_id_case;
+  union {
+    char *market_id;
+  };
+  Kentik__Kmi__V202212__GetGlobalInsightsRequest__IpCase _ip_case;
+  union {
+    char *ip;
+  };
+  Kentik__Kmi__V202212__GetGlobalInsightsRequest__LookbackCase _lookback_case;
+  union {
+    uint32_t lookback;
+  };
+  Kentik__Kmi__V202212__GetGlobalInsightsRequest__MagnitudeCase _magnitude_case;
+  union {
+    uint32_t magnitude;
+  };
 };
 #define KENTIK__KMI__V202212__GET_GLOBAL_INSIGHTS_REQUEST__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__kmi__v202212__get_global_insights_request__descriptor) \
-    , KENTIK__KMI__V202212__GET_GLOBAL_INSIGHTS_REQUEST___LIMIT__NOT_SET, {0} }
+    , 0,NULL, KENTIK__KMI__V202212__GET_GLOBAL_INSIGHTS_REQUEST___LIMIT__NOT_SET, {0}, KENTIK__KMI__V202212__GET_GLOBAL_INSIGHTS_REQUEST___MARKET_ID__NOT_SET, {0}, KENTIK__KMI__V202212__GET_GLOBAL_INSIGHTS_REQUEST___IP__NOT_SET, {0}, KENTIK__KMI__V202212__GET_GLOBAL_INSIGHTS_REQUEST___LOOKBACK__NOT_SET, {0}, KENTIK__KMI__V202212__GET_GLOBAL_INSIGHTS_REQUEST___MAGNITUDE__NOT_SET, {0} }
 
 
 /*
@@ -421,6 +463,30 @@ typedef enum {
     PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__KMI__V202212__GET_ASNINSIGHTS_REQUEST___LIMIT__CASE)
 } Kentik__Kmi__V202212__GetASNInsightsRequest__LimitCase;
 
+typedef enum {
+  KENTIK__KMI__V202212__GET_ASNINSIGHTS_REQUEST___MARKET_ID__NOT_SET = 0,
+  KENTIK__KMI__V202212__GET_ASNINSIGHTS_REQUEST___MARKET_ID_MARKET_ID = 3
+    PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__KMI__V202212__GET_ASNINSIGHTS_REQUEST___MARKET_ID__CASE)
+} Kentik__Kmi__V202212__GetASNInsightsRequest__MarketIdCase;
+
+typedef enum {
+  KENTIK__KMI__V202212__GET_ASNINSIGHTS_REQUEST___IP__NOT_SET = 0,
+  KENTIK__KMI__V202212__GET_ASNINSIGHTS_REQUEST___IP_IP = 4
+    PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__KMI__V202212__GET_ASNINSIGHTS_REQUEST___IP__CASE)
+} Kentik__Kmi__V202212__GetASNInsightsRequest__IpCase;
+
+typedef enum {
+  KENTIK__KMI__V202212__GET_ASNINSIGHTS_REQUEST___LOOKBACK__NOT_SET = 0,
+  KENTIK__KMI__V202212__GET_ASNINSIGHTS_REQUEST___LOOKBACK_LOOKBACK = 5
+    PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__KMI__V202212__GET_ASNINSIGHTS_REQUEST___LOOKBACK__CASE)
+} Kentik__Kmi__V202212__GetASNInsightsRequest__LookbackCase;
+
+typedef enum {
+  KENTIK__KMI__V202212__GET_ASNINSIGHTS_REQUEST___MAGNITUDE__NOT_SET = 0,
+  KENTIK__KMI__V202212__GET_ASNINSIGHTS_REQUEST___MAGNITUDE_MAGNITUDE = 7
+    PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__KMI__V202212__GET_ASNINSIGHTS_REQUEST___MAGNITUDE__CASE)
+} Kentik__Kmi__V202212__GetASNInsightsRequest__MagnitudeCase;
+
 /*
  * {{.Name}}
  */
@@ -428,14 +494,32 @@ struct  Kentik__Kmi__V202212__GetASNInsightsRequest
 {
   ProtobufCMessage base;
   char *asn;
+  size_t n_types;
+  char **types;
   Kentik__Kmi__V202212__GetASNInsightsRequest__LimitCase _limit_case;
   union {
     uint32_t limit;
   };
+  Kentik__Kmi__V202212__GetASNInsightsRequest__MarketIdCase _market_id_case;
+  union {
+    char *market_id;
+  };
+  Kentik__Kmi__V202212__GetASNInsightsRequest__IpCase _ip_case;
+  union {
+    char *ip;
+  };
+  Kentik__Kmi__V202212__GetASNInsightsRequest__LookbackCase _lookback_case;
+  union {
+    uint32_t lookback;
+  };
+  Kentik__Kmi__V202212__GetASNInsightsRequest__MagnitudeCase _magnitude_case;
+  union {
+    uint32_t magnitude;
+  };
 };
 #define KENTIK__KMI__V202212__GET_ASNINSIGHTS_REQUEST__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__kmi__v202212__get_asninsights_request__descriptor) \
-    , (char *)protobuf_c_empty_string, KENTIK__KMI__V202212__GET_ASNINSIGHTS_REQUEST___LIMIT__NOT_SET, {0} }
+    , (char *)protobuf_c_empty_string, 0,NULL, KENTIK__KMI__V202212__GET_ASNINSIGHTS_REQUEST___LIMIT__NOT_SET, {0}, KENTIK__KMI__V202212__GET_ASNINSIGHTS_REQUEST___MARKET_ID__NOT_SET, {0}, KENTIK__KMI__V202212__GET_ASNINSIGHTS_REQUEST___IP__NOT_SET, {0}, KENTIK__KMI__V202212__GET_ASNINSIGHTS_REQUEST___LOOKBACK__NOT_SET, {0}, KENTIK__KMI__V202212__GET_ASNINSIGHTS_REQUEST___MAGNITUDE__NOT_SET, {0} }
 
 
 /*

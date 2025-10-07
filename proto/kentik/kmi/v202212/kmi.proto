@@ -372,6 +372,31 @@ message GetGlobalInsightsRequest {
       description: "Maximum number of insights to return. Defaults to 100."
     }
   ];
+  optional string market_id = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Geo Market identifier (e.g., 'planet$earth'). If omitted, defaults to global market."
+    }
+  ];
+  optional string ip = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "IP Address Family ('v4' or 'v6'). Defaults to 'v4'."
+    }
+  ];
+  optional uint32 lookback = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Lookback in days. Allowed values: 1, 7, 30. Defaults to 1."
+    }
+  ];
+  repeated string types = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Insight types to include. Provide as repeated query params, e.g., types=market_entrance&types=market_exit. Allowed: market_entrance, market_exit, ranking_gain, ranking_loss, start_prefix_origination, stop_prefix_origination, increase_prefix_origination, decrease_prefix_origination, customer_gain, customer_loss, customer_routing_gain, customer_routing_loss, provider_gain, provider_loss, provider_routing_gain, provider_routing_loss."
+    }
+  ];
+  optional uint32 magnitude = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Minimum magnitude (severity) threshold, integer 1–5. Defaults to 1."
+    }
+  ];
 }
 
 // {{.Name}}
@@ -394,6 +419,31 @@ message GetASNInsightsRequest {
   optional uint32 limit = 2 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Maximum number of insights to return. Defaults to 100."
+    }
+  ];
+  optional string market_id = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Geo Market identifier (e.g., 'planet$earth'). If omitted, defaults to global market."
+    }
+  ];
+  optional string ip = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "IP Address Family ('v4' or 'v6'). Defaults to 'v4'."
+    }
+  ];
+  optional uint32 lookback = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Lookback in days. Allowed values: 1, 7, 30. Defaults to 1."
+    }
+  ];
+  repeated string types = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Insight types to include. Allowed: market_entrance, market_exit, ranking_gain, ranking_loss, start_prefix_origination, stop_prefix_origination, increase_prefix_origination, decrease_prefix_origination, customer_gain, customer_loss, customer_routing_gain, customer_routing_loss, provider_gain, provider_loss, provider_routing_gain, provider_routing_loss."
+    }
+  ];
+  optional uint32 magnitude = 7 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Minimum magnitude (severity) threshold, integer 1–5. Defaults to 1."
     }
   ];
 }
@@ -433,7 +483,7 @@ service KmiService {
   rpc GetRankings(GetRankingsRequest) returns (GetRankingsResponse) {
     option (kentik.core.v202303.method_scope) = "admin.kmi:read";
     option (google.api.http) = {
-      post: "/kmi/v202212/market/{market_id}/rankings/{rank_type}"
+      post: "/kmi/v202212/market/{market_id}/rankings/{rank_type}/ip/{ip}"
       body: "*"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {

@@ -1579,7 +1579,7 @@ const ProtobufCMessageDescriptor kentik__kmi__v202212__get_asndetails_response__
   (ProtobufCMessageInit) kentik__kmi__v202212__get_asndetails_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__kmi__v202212__get_global_insights_request__field_descriptors[1] =
+static const ProtobufCFieldDescriptor kentik__kmi__v202212__get_global_insights_request__field_descriptors[6] =
 {
   {
     "limit",
@@ -1593,14 +1593,79 @@ static const ProtobufCFieldDescriptor kentik__kmi__v202212__get_global_insights_
     PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "market_id",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    offsetof(Kentik__Kmi__V202212__GetGlobalInsightsRequest, _market_id_case),
+    offsetof(Kentik__Kmi__V202212__GetGlobalInsightsRequest, market_id),
+    NULL,
+    &protobuf_c_empty_string,
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "ip",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    offsetof(Kentik__Kmi__V202212__GetGlobalInsightsRequest, _ip_case),
+    offsetof(Kentik__Kmi__V202212__GetGlobalInsightsRequest, ip),
+    NULL,
+    &protobuf_c_empty_string,
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "lookback",
+    4,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT32,
+    offsetof(Kentik__Kmi__V202212__GetGlobalInsightsRequest, _lookback_case),
+    offsetof(Kentik__Kmi__V202212__GetGlobalInsightsRequest, lookback),
+    NULL,
+    NULL,
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "types",
+    5,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_STRING,
+    offsetof(Kentik__Kmi__V202212__GetGlobalInsightsRequest, n_types),
+    offsetof(Kentik__Kmi__V202212__GetGlobalInsightsRequest, types),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "magnitude",
+    6,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT32,
+    offsetof(Kentik__Kmi__V202212__GetGlobalInsightsRequest, _magnitude_case),
+    offsetof(Kentik__Kmi__V202212__GetGlobalInsightsRequest, magnitude),
+    NULL,
+    NULL,
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__kmi__v202212__get_global_insights_request__field_indices_by_name[] = {
+  2,   /* field[2] = ip */
   0,   /* field[0] = limit */
+  3,   /* field[3] = lookback */
+  5,   /* field[5] = magnitude */
+  1,   /* field[1] = market_id */
+  4,   /* field[4] = types */
 };
 static const ProtobufCIntRange kentik__kmi__v202212__get_global_insights_request__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 1 }
+  { 0, 6 }
 };
 const ProtobufCMessageDescriptor kentik__kmi__v202212__get_global_insights_request__descriptor =
 {
@@ -1610,7 +1675,7 @@ const ProtobufCMessageDescriptor kentik__kmi__v202212__get_global_insights_reque
   "Kentik__Kmi__V202212__GetGlobalInsightsRequest",
   "kentik.kmi.v202212",
   sizeof(Kentik__Kmi__V202212__GetGlobalInsightsRequest),
-  1,
+  6,
   kentik__kmi__v202212__get_global_insights_request__field_descriptors,
   kentik__kmi__v202212__get_global_insights_request__field_indices_by_name,
   1,  kentik__kmi__v202212__get_global_insights_request__number_ranges,
@@ -1655,7 +1720,7 @@ const ProtobufCMessageDescriptor kentik__kmi__v202212__get_global_insights_respo
   (ProtobufCMessageInit) kentik__kmi__v202212__get_global_insights_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__kmi__v202212__get_asninsights_request__field_descriptors[2] =
+static const ProtobufCFieldDescriptor kentik__kmi__v202212__get_asninsights_request__field_descriptors[7] =
 {
   {
     "asn",
@@ -1681,15 +1746,80 @@ static const ProtobufCFieldDescriptor kentik__kmi__v202212__get_asninsights_requ
     PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "market_id",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    offsetof(Kentik__Kmi__V202212__GetASNInsightsRequest, _market_id_case),
+    offsetof(Kentik__Kmi__V202212__GetASNInsightsRequest, market_id),
+    NULL,
+    &protobuf_c_empty_string,
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "ip",
+    4,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    offsetof(Kentik__Kmi__V202212__GetASNInsightsRequest, _ip_case),
+    offsetof(Kentik__Kmi__V202212__GetASNInsightsRequest, ip),
+    NULL,
+    &protobuf_c_empty_string,
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "lookback",
+    5,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT32,
+    offsetof(Kentik__Kmi__V202212__GetASNInsightsRequest, _lookback_case),
+    offsetof(Kentik__Kmi__V202212__GetASNInsightsRequest, lookback),
+    NULL,
+    NULL,
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "types",
+    6,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_STRING,
+    offsetof(Kentik__Kmi__V202212__GetASNInsightsRequest, n_types),
+    offsetof(Kentik__Kmi__V202212__GetASNInsightsRequest, types),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "magnitude",
+    7,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT32,
+    offsetof(Kentik__Kmi__V202212__GetASNInsightsRequest, _magnitude_case),
+    offsetof(Kentik__Kmi__V202212__GetASNInsightsRequest, magnitude),
+    NULL,
+    NULL,
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__kmi__v202212__get_asninsights_request__field_indices_by_name[] = {
   0,   /* field[0] = asn */
+  3,   /* field[3] = ip */
   1,   /* field[1] = limit */
+  4,   /* field[4] = lookback */
+  6,   /* field[6] = magnitude */
+  2,   /* field[2] = market_id */
+  5,   /* field[5] = types */
 };
 static const ProtobufCIntRange kentik__kmi__v202212__get_asninsights_request__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 2 }
+  { 0, 7 }
 };
 const ProtobufCMessageDescriptor kentik__kmi__v202212__get_asninsights_request__descriptor =
 {
@@ -1699,7 +1829,7 @@ const ProtobufCMessageDescriptor kentik__kmi__v202212__get_asninsights_request__
   "Kentik__Kmi__V202212__GetASNInsightsRequest",
   "kentik.kmi.v202212",
   sizeof(Kentik__Kmi__V202212__GetASNInsightsRequest),
-  2,
+  7,
   kentik__kmi__v202212__get_asninsights_request__field_descriptors,
   kentik__kmi__v202212__get_asninsights_request__field_indices_by_name,
   1,  kentik__kmi__v202212__get_asninsights_request__number_ranges,
