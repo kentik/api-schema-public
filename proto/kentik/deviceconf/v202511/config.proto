@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package kentik.deviceconf.v202511;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/deviceconf/v202511;deviceconf";
+
+import "google/protobuf/timestamp.proto";
+
+enum ConfigEncoding {
+  CONFIG_ENCODING_UNSPECIFIED = 0;
+  CONFIG_ENCODING_PLAIN = 1;
+  CONFIG_ENCODING_BZIP2 = 2;
+}
+
+message Revision {
+  string id = 1; // incremented for each different configuration fetched from the device
+  google.protobuf.Timestamp last_fetched = 2;
+}
+
+message Snapshot {
+  string agent_id = 1; // Agent that fetched the configuration
+  string device_id = 2;
+  Revision revision = 3;
+  bool fetch_error = 4; // error message is in config_data if true
+  ConfigEncoding encoding = 5;
+  bytes config_data = 6;
+  string digest = 7; // SHA256 digest of config_data
+}

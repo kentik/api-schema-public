@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package kentik.deviceconf.v202511;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/deviceconf/v202511;deviceconf";
+
+import "google/protobuf/duration.proto";
+
+enum DevicePlatform {
+  DEVICE_PLATFORM_UNSPECIFIED = 0;
+  DEVICE_PLATFORM_ARISTA_EOS = 1;
+  DEVICE_PLATFORM_ARUBA_WLC = 2;
+  DEVICE_PLATFORM_CISCO_IOSXE = 3;
+  DEVICE_PLATFORM_CISCO_IOSXR = 4;
+  DEVICE_PLATFORM_CISCO_NXOS = 5;
+  DEVICE_PLATFORM_CUMULUS_LINUX = 6;
+  DEVICE_PLATFORM_CUMULUS_VTYSH = 7;
+  DEVICE_PLATFORM_HP_COMWARE = 8;
+  DEVICE_PLATFORM_HUAWEI_VRP = 9;
+  DEVICE_PLATFORM_IPINFUSION_OCNOS = 10;
+  DEVICE_PLATFORM_JUNIPER_JUNOS = 11;
+  DEVICE_PLATFORM_NOKIA_SRL = 12;
+  DEVICE_PLATFORM_NOKIA_SROS = 13;
+  DEVICE_PLATFORM_NOKIA_SROS_CLASSIC = 14;
+  DEVICE_PLATFORM_PALOALTO_PANOS = 15;
+  DEVICE_PLATFORM_RUIJIE_RGOS = 16;
+  DEVICE_PLATFORM_VYATTA_VYOS = 17;
+}
+
+message DeviceSSHCreds {
+  string username = 1;
+  string private_key = 2;
+  string passphrase = 3; // used as password if private_key is empty
+}
+
+message FetchParameters {
+  google.protobuf.Duration fetch_interval = 1;
+}
+
+message Device {
+  string id = 1;
+  string name = 2;
+  string hostname = 3; // or IP address
+  DevicePlatform platform = 4;
+  DeviceSSHCreds ssh_creds = 5;
+  FetchParameters fetch_params = 6;
+}

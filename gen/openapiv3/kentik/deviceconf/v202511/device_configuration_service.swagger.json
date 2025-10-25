@@ -1,0 +1,200 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "kentik/deviceconf/v202511/device_configuration_service.proto",
+        "version": "version not set"
+    },
+    "tags": [
+        {
+            "name": "DeviceConfigurationService"
+        }
+    ],
+    "paths": {},
+    "components": {
+        "schemas": {
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "@type": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": {}
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "v202511ConfigEncoding": {
+                "type": "string",
+                "enum": [
+                    "CONFIG_ENCODING_UNSPECIFIED",
+                    "CONFIG_ENCODING_PLAIN",
+                    "CONFIG_ENCODING_BZIP2"
+                ],
+                "default": "CONFIG_ENCODING_UNSPECIFIED"
+            },
+            "v202511Device": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "hostname": {
+                        "type": "string",
+                        "title": "or IP address"
+                    },
+                    "platform": {
+                        "$ref": "#/components/schemas/v202511DevicePlatform"
+                    },
+                    "sshCreds": {
+                        "$ref": "#/components/schemas/v202511DeviceSSHCreds"
+                    },
+                    "fetchParams": {
+                        "$ref": "#/components/schemas/v202511FetchParameters"
+                    }
+                }
+            },
+            "v202511DevicePlatform": {
+                "type": "string",
+                "enum": [
+                    "DEVICE_PLATFORM_UNSPECIFIED",
+                    "DEVICE_PLATFORM_ARISTA_EOS",
+                    "DEVICE_PLATFORM_ARUBA_WLC",
+                    "DEVICE_PLATFORM_CISCO_IOSXE",
+                    "DEVICE_PLATFORM_CISCO_IOSXR",
+                    "DEVICE_PLATFORM_CISCO_NXOS",
+                    "DEVICE_PLATFORM_CUMULUS_LINUX",
+                    "DEVICE_PLATFORM_CUMULUS_VTYSH",
+                    "DEVICE_PLATFORM_HP_COMWARE",
+                    "DEVICE_PLATFORM_HUAWEI_VRP",
+                    "DEVICE_PLATFORM_IPINFUSION_OCNOS",
+                    "DEVICE_PLATFORM_JUNIPER_JUNOS",
+                    "DEVICE_PLATFORM_NOKIA_SRL",
+                    "DEVICE_PLATFORM_NOKIA_SROS",
+                    "DEVICE_PLATFORM_NOKIA_SROS_CLASSIC",
+                    "DEVICE_PLATFORM_PALOALTO_PANOS",
+                    "DEVICE_PLATFORM_RUIJIE_RGOS",
+                    "DEVICE_PLATFORM_VYATTA_VYOS"
+                ],
+                "default": "DEVICE_PLATFORM_UNSPECIFIED"
+            },
+            "v202511DeviceSSHCreds": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "type": "string"
+                    },
+                    "privateKey": {
+                        "type": "string"
+                    },
+                    "passphrase": {
+                        "type": "string",
+                        "title": "used as password if private_key is empty"
+                    }
+                }
+            },
+            "v202511FetchParameters": {
+                "type": "object",
+                "properties": {
+                    "fetchInterval": {
+                        "type": "string"
+                    }
+                }
+            },
+            "v202511GetDeviceAssignmentsResponse": {
+                "type": "object",
+                "properties": {
+                    "devices": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202511Device"
+                        }
+                    }
+                }
+            },
+            "v202511GetDeviceConfigurationResponse": {
+                "type": "object",
+                "properties": {
+                    "config": {
+                        "$ref": "#/components/schemas/v202511Snapshot"
+                    }
+                }
+            },
+            "v202511ListDeviceConfigurationRevisionsResponse": {
+                "type": "object",
+                "properties": {
+                    "revisions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202511Revision"
+                        }
+                    }
+                }
+            },
+            "v202511Revision": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "title": "incremented for each different configuration fetched from the device"
+                    },
+                    "lastFetched": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "v202511Snapshot": {
+                "type": "object",
+                "properties": {
+                    "agentId": {
+                        "type": "string",
+                        "title": "Agent that fetched the configuration"
+                    },
+                    "deviceId": {
+                        "type": "string"
+                    },
+                    "revision": {
+                        "$ref": "#/components/schemas/v202511Revision"
+                    },
+                    "fetchError": {
+                        "type": "boolean",
+                        "title": "error message is in config_data if true"
+                    },
+                    "encoding": {
+                        "$ref": "#/components/schemas/v202511ConfigEncoding"
+                    },
+                    "configData": {
+                        "type": "string",
+                        "format": "byte"
+                    },
+                    "digest": {
+                        "type": "string",
+                        "title": "SHA256 digest of config_data"
+                    }
+                }
+            },
+            "v202511UpdateDeviceConfigurationResponse": {
+                "type": "object"
+            }
+        }
+    }
+}

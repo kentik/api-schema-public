@@ -1,0 +1,117 @@
+syntax = "proto3";
+
+package kentik.deviceconf.v202511;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/deviceconf/v202511;deviceconf";
+
+import "google/protobuf/timestamp.proto";
+
+import "kentik/core/v202303/annotations.proto";
+
+import "kentik/deviceconf/v202511/device.proto";
+import "kentik/deviceconf/v202511/config.proto";
+
+service DeviceConfigurationService {
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "deviceconf:admin";
+
+  // Get devices assigned to this agent.
+  //
+  // External clients MUST set the following gRPC metadata:
+  // - x-ch-auth-email
+  // - x-ch-auth-api-token
+  // - x-kt-agentid
+  //
+  // Internal clients MUST set the following gRPC metadata:
+  // - x-kt-cid (Company ID)
+  // - x-kt-agentid
+  //
+  rpc GetDeviceAssignments(GetDeviceAssignmentsRequest) returns (GetDeviceAssignmentsResponse) {
+    option (kentik.core.v202303.method_scope) = "deviceconf:read";
+  }
+
+  // Update device configuration.
+  //
+  // External clients MUST set the following gRPC metadata:
+  // - x-ch-auth-email
+  // - x-ch-auth-api-token
+  // - x-kt-agentid
+  // - x-kt-did
+  //
+  // Internal clients MUST set the following gRPC metadata:
+  // - x-kt-cid (Company ID)
+  // - x-kt-agentid
+  // - x-kt-did
+  //
+  rpc UpdateDeviceConfiguration(UpdateDeviceConfigurationRequest) returns (UpdateDeviceConfigurationResponse) {
+    option (kentik.core.v202303.method_scope) = "deviceconf:write";
+  }
+
+  // Get device configuration.
+  //
+  // External clients MUST set the following gRPC metadata:
+  // - x-ch-auth-email
+  // - x-ch-auth-api-token
+  // - x-kt-did
+  //
+  // Internal clients MUST set the following gRPC metadata:
+  // - x-kt-cid (Company ID)
+  // - x-kt-did
+  //
+  rpc GetDeviceConfiguration(GetDeviceConfigurationRequest) returns (GetDeviceConfigurationResponse) {
+    option (kentik.core.v202303.method_scope) = "deviceconf:read";
+  }
+
+  // List device configuration revisions
+  //
+  // External clients MUST set the following gRPC metadata:
+  // - x-ch-auth-email
+  // - x-ch-auth-api-token
+  // - x-kt-did
+  //
+  // Internal clients MUST set the following gRPC metadata:
+  // - x-kt-cid (Company ID)
+  // - x-kt-did
+  //
+  rpc ListDeviceConfigurationRevisions(ListDeviceConfigurationRevisionsRequest) returns (ListDeviceConfigurationRevisionsResponse) {
+    option (kentik.core.v202303.method_scope) = "deviceconf:read";
+  }
+}
+
+message GetDeviceAssignmentsRequest {
+  // Only company ID and agent ID from metadata are used.
+}
+
+message GetDeviceAssignmentsResponse {
+  repeated Device devices = 1;
+}
+
+message UpdateDeviceConfigurationRequest {
+  Snapshot config = 1;
+}
+
+message UpdateDeviceConfigurationResponse {
+
+}
+
+message GetDeviceConfigurationRequest {
+  // If set, return the configuration closest to (but not after) this time.
+  // If not set, return the latest configuration.
+  google.protobuf.Timestamp fetch_time = 1;
+
+  // If set, return the configuration with this revision ID.
+  string revision = 2;
+}
+
+message GetDeviceConfigurationResponse {
+  Snapshot config = 1;
+}
+
+// Fetch all device configuration revisions within the given time range.
+message ListDeviceConfigurationRevisionsRequest {
+  google.protobuf.Timestamp from_time = 1;
+  google.protobuf.Timestamp until_time = 2;
+}
+
+message ListDeviceConfigurationRevisionsResponse {
+  repeated Revision revisions = 1;
+}
