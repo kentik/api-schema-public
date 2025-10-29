@@ -479,7 +479,7 @@ const ProtobufCMessageDescriptor kentik__deviceconf__v202511__update_device_conf
   (ProtobufCMessageInit) kentik__deviceconf__v202511__update_device_configuration_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__deviceconf__v202511__get_device_configuration_request__field_descriptors[2] =
+static const ProtobufCFieldDescriptor kentik__deviceconf__v202511__get_device_configuration_request__field_descriptors[3] =
 {
   {
     "fetch_time",
@@ -505,15 +505,28 @@ static const ProtobufCFieldDescriptor kentik__deviceconf__v202511__get_device_co
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "ref_revision",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Deviceconf__V202511__GetDeviceConfigurationRequest, ref_revision),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__deviceconf__v202511__get_device_configuration_request__field_indices_by_name[] = {
   0,   /* field[0] = fetch_time */
+  2,   /* field[2] = ref_revision */
   1,   /* field[1] = revision */
 };
 static const ProtobufCIntRange kentik__deviceconf__v202511__get_device_configuration_request__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 2 }
+  { 0, 3 }
 };
 const ProtobufCMessageDescriptor kentik__deviceconf__v202511__get_device_configuration_request__descriptor =
 {
@@ -523,7 +536,7 @@ const ProtobufCMessageDescriptor kentik__deviceconf__v202511__get_device_configu
   "Kentik__Deviceconf__V202511__GetDeviceConfigurationRequest",
   "kentik.deviceconf.v202511",
   sizeof(Kentik__Deviceconf__V202511__GetDeviceConfigurationRequest),
-  2,
+  3,
   kentik__deviceconf__v202511__get_device_configuration_request__field_descriptors,
   kentik__deviceconf__v202511__get_device_configuration_request__field_indices_by_name,
   1,  kentik__deviceconf__v202511__get_device_configuration_request__number_ranges,

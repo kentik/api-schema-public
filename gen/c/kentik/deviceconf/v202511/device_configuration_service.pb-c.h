@@ -85,10 +85,14 @@ struct  Kentik__Deviceconf__V202511__GetDeviceConfigurationRequest
    * If set, return the configuration with this revision ID.
    */
   char *revision;
+  /*
+   * If set, compute the diff against the given revision ID.
+   */
+  char *ref_revision;
 };
 #define KENTIK__DEVICECONF__V202511__GET_DEVICE_CONFIGURATION_REQUEST__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__deviceconf__v202511__get_device_configuration_request__descriptor) \
-    , NULL, (char *)protobuf_c_empty_string }
+    , NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
 
 
 struct  Kentik__Deviceconf__V202511__GetDeviceConfigurationResponse

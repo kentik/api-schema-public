@@ -24,4 +24,7 @@ message Snapshot {
   ConfigEncoding encoding = 5;
   bytes config_data = 6;
   string digest = 7; // SHA256 digest of config_data
+  bytes diff_data = 8;
+  Revision diff_revision = 9;
+  google.protobuf.Timestamp first_fetched = 10;
 }

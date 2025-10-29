@@ -64,10 +64,13 @@ struct  Kentik__Deviceconf__V202511__Snapshot
    * SHA256 digest of config_data
    */
   char *digest;
+  ProtobufCBinaryData diff_data;
+  Kentik__Deviceconf__V202511__Revision *diff_revision;
+  Google__Protobuf__Timestamp *first_fetched;
 };
 #define KENTIK__DEVICECONF__V202511__SNAPSHOT__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__deviceconf__v202511__snapshot__descriptor) \
-    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, 0, KENTIK__DEVICECONF__V202511__CONFIG_ENCODING__CONFIG_ENCODING_UNSPECIFIED, {0,NULL}, (char *)protobuf_c_empty_string }
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, 0, KENTIK__DEVICECONF__V202511__CONFIG_ENCODING__CONFIG_ENCODING_UNSPECIFIED, {0,NULL}, (char *)protobuf_c_empty_string, {0,NULL}, NULL, NULL }
 
 
 /* Kentik__Deviceconf__V202511__Revision methods */

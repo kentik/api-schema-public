@@ -96,6 +96,9 @@ inline constexpr GetDeviceConfigurationRequest::Impl_::Impl_(
         revision_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
+        ref_revision_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
         fetch_time_{nullptr} {}
 
 template <typename>
@@ -272,7 +275,9 @@ const ::uint32_t
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::GetDeviceConfigurationRequest, _impl_.fetch_time_),
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::GetDeviceConfigurationRequest, _impl_.revision_),
+        PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::GetDeviceConfigurationRequest, _impl_.ref_revision_),
         0,
+        ~0u,
         ~0u,
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::GetDeviceConfigurationResponse, _impl_._has_bits_),
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::GetDeviceConfigurationResponse, _internal_metadata_),
@@ -313,10 +318,10 @@ static const ::_pbi::MigrationSchema
         {8, -1, -1, sizeof(::kentik::deviceconf::v202511::GetDeviceAssignmentsResponse)},
         {17, 26, -1, sizeof(::kentik::deviceconf::v202511::UpdateDeviceConfigurationRequest)},
         {27, -1, -1, sizeof(::kentik::deviceconf::v202511::UpdateDeviceConfigurationResponse)},
-        {35, 45, -1, sizeof(::kentik::deviceconf::v202511::GetDeviceConfigurationRequest)},
-        {47, 56, -1, sizeof(::kentik::deviceconf::v202511::GetDeviceConfigurationResponse)},
-        {57, 67, -1, sizeof(::kentik::deviceconf::v202511::ListDeviceConfigurationRevisionsRequest)},
-        {69, -1, -1, sizeof(::kentik::deviceconf::v202511::ListDeviceConfigurationRevisionsResponse)},
+        {35, 46, -1, sizeof(::kentik::deviceconf::v202511::GetDeviceConfigurationRequest)},
+        {49, 58, -1, sizeof(::kentik::deviceconf::v202511::GetDeviceConfigurationResponse)},
+        {59, 69, -1, sizeof(::kentik::deviceconf::v202511::ListDeviceConfigurationRevisionsRequest)},
+        {71, -1, -1, sizeof(::kentik::deviceconf::v202511::ListDeviceConfigurationRevisionsResponse)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::deviceconf::v202511::_GetDeviceAssignmentsRequest_default_instance_._instance,
@@ -342,40 +347,41 @@ const char descriptor_table_protodef_kentik_2fdeviceconf_2fv202511_2fdevice_5fco
     "vices\"_\n UpdateDeviceConfigurationReques"
     "t\022;\n\006config\030\001 \001(\0132#.kentik.deviceconf.v2"
     "02511.SnapshotR\006config\"#\n!UpdateDeviceCo"
-    "nfigurationResponse\"v\n\035GetDeviceConfigur"
-    "ationRequest\0229\n\nfetch_time\030\001 \001(\0132\032.googl"
-    "e.protobuf.TimestampR\tfetchTime\022\032\n\010revis"
-    "ion\030\002 \001(\tR\010revision\"]\n\036GetDeviceConfigur"
-    "ationResponse\022;\n\006config\030\001 \001(\0132#.kentik.d"
-    "eviceconf.v202511.SnapshotR\006config\"\235\001\n\'L"
-    "istDeviceConfigurationRevisionsRequest\0227"
-    "\n\tfrom_time\030\001 \001(\0132\032.google.protobuf.Time"
-    "stampR\010fromTime\0229\n\nuntil_time\030\002 \001(\0132\032.go"
-    "ogle.protobuf.TimestampR\tuntilTime\"m\n(Li"
-    "stDeviceConfigurationRevisionsResponse\022A"
-    "\n\trevisions\030\001 \003(\0132#.kentik.deviceconf.v2"
-    "02511.RevisionR\trevisions2\354\005\n\032DeviceConf"
-    "igurationService\022\234\001\n\024GetDeviceAssignment"
-    "s\0226.kentik.deviceconf.v202511.GetDeviceA"
-    "ssignmentsRequest\0327.kentik.deviceconf.v2"
-    "02511.GetDeviceAssignmentsResponse\"\023\362\327\002\017"
-    "deviceconf:read\022\254\001\n\031UpdateDeviceConfigur"
-    "ation\022;.kentik.deviceconf.v202511.Update"
-    "DeviceConfigurationRequest\032<.kentik.devi"
-    "ceconf.v202511.UpdateDeviceConfiguration"
-    "Response\"\024\362\327\002\020deviceconf:write\022\242\001\n\026GetDe"
-    "viceConfiguration\0228.kentik.deviceconf.v2"
-    "02511.GetDeviceConfigurationRequest\0329.ke"
-    "ntik.deviceconf.v202511.GetDeviceConfigu"
-    "rationResponse\"\023\362\327\002\017deviceconf:read\022\300\001\n "
-    "ListDeviceConfigurationRevisions\022B.kenti"
-    "k.deviceconf.v202511.ListDeviceConfigura"
-    "tionRevisionsRequest\032C.kentik.deviceconf"
-    ".v202511.ListDeviceConfigurationRevision"
-    "sResponse\"\023\362\327\002\017deviceconf:read\032\030\352\327\002\020devi"
-    "ceconf:admin\220\330\002\003BQZOgithub.com/kentik/ap"
-    "i-schema-public/gen/go/kentik/deviceconf"
-    "/v202511;deviceconfb\006proto3"
+    "nfigurationResponse\"\231\001\n\035GetDeviceConfigu"
+    "rationRequest\0229\n\nfetch_time\030\001 \001(\0132\032.goog"
+    "le.protobuf.TimestampR\tfetchTime\022\032\n\010revi"
+    "sion\030\002 \001(\tR\010revision\022!\n\014ref_revision\030\003 \001"
+    "(\tR\013refRevision\"]\n\036GetDeviceConfiguratio"
+    "nResponse\022;\n\006config\030\001 \001(\0132#.kentik.devic"
+    "econf.v202511.SnapshotR\006config\"\235\001\n\'ListD"
+    "eviceConfigurationRevisionsRequest\0227\n\tfr"
+    "om_time\030\001 \001(\0132\032.google.protobuf.Timestam"
+    "pR\010fromTime\0229\n\nuntil_time\030\002 \001(\0132\032.google"
+    ".protobuf.TimestampR\tuntilTime\"m\n(ListDe"
+    "viceConfigurationRevisionsResponse\022A\n\tre"
+    "visions\030\001 \003(\0132#.kentik.deviceconf.v20251"
+    "1.RevisionR\trevisions2\354\005\n\032DeviceConfigur"
+    "ationService\022\234\001\n\024GetDeviceAssignments\0226."
+    "kentik.deviceconf.v202511.GetDeviceAssig"
+    "nmentsRequest\0327.kentik.deviceconf.v20251"
+    "1.GetDeviceAssignmentsResponse\"\023\362\327\002\017devi"
+    "ceconf:read\022\254\001\n\031UpdateDeviceConfiguratio"
+    "n\022;.kentik.deviceconf.v202511.UpdateDevi"
+    "ceConfigurationRequest\032<.kentik.deviceco"
+    "nf.v202511.UpdateDeviceConfigurationResp"
+    "onse\"\024\362\327\002\020deviceconf:write\022\242\001\n\026GetDevice"
+    "Configuration\0228.kentik.deviceconf.v20251"
+    "1.GetDeviceConfigurationRequest\0329.kentik"
+    ".deviceconf.v202511.GetDeviceConfigurati"
+    "onResponse\"\023\362\327\002\017deviceconf:read\022\300\001\n List"
+    "DeviceConfigurationRevisions\022B.kentik.de"
+    "viceconf.v202511.ListDeviceConfiguration"
+    "RevisionsRequest\032C.kentik.deviceconf.v20"
+    "2511.ListDeviceConfigurationRevisionsRes"
+    "ponse\"\023\362\327\002\017deviceconf:read\032\030\352\327\002\020deviceco"
+    "nf:admin\220\330\002\003BQZOgithub.com/kentik/api-sc"
+    "hema-public/gen/go/kentik/deviceconf/v20"
+    "2511;deviceconfb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice_5fconfiguration_5fservice_2eproto_deps[4] =
     {
@@ -388,7 +394,7 @@ static ::absl::once_flag descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice_5fconfiguration_5fservice_2eproto = {
     false,
     false,
-    1827,
+    1863,
     descriptor_table_protodef_kentik_2fdeviceconf_2fv202511_2fdevice_5fconfiguration_5fservice_2eproto,
     "kentik/deviceconf/v202511/device_configuration_service.proto",
     &descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice_5fconfiguration_5fservice_2eproto_once,
@@ -1140,7 +1146,8 @@ inline PROTOBUF_NDEBUG_INLINE GetDeviceConfigurationRequest::Impl_::Impl_(
     const Impl_& from, const ::kentik::deviceconf::v202511::GetDeviceConfigurationRequest& from_msg)
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
-        revision_(arena, from.revision_) {}
+        revision_(arena, from.revision_),
+        ref_revision_(arena, from.ref_revision_) {}
 
 GetDeviceConfigurationRequest::GetDeviceConfigurationRequest(
     ::google::protobuf::Arena* arena,
@@ -1166,7 +1173,8 @@ inline PROTOBUF_NDEBUG_INLINE GetDeviceConfigurationRequest::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
       : _cached_size_{0},
-        revision_(arena) {}
+        revision_(arena),
+        ref_revision_(arena) {}
 
 inline void GetDeviceConfigurationRequest::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
@@ -1181,6 +1189,7 @@ inline void GetDeviceConfigurationRequest::SharedDtor(MessageLite& self) {
   this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   ABSL_DCHECK(this_.GetArena() == nullptr);
   this_._impl_.revision_.Destroy();
+  this_._impl_.ref_revision_.Destroy();
   delete this_._impl_.fetch_time_;
   this_._impl_.~Impl_();
 }
@@ -1221,15 +1230,15 @@ const ::google::protobuf::internal::ClassData* GetDeviceConfigurationRequest::Ge
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 1, 72, 2> GetDeviceConfigurationRequest::_table_ = {
+const ::_pbi::TcParseTable<2, 3, 1, 84, 2> GetDeviceConfigurationRequest::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(GetDeviceConfigurationRequest, _impl_._has_bits_),
     0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
+    3, 24,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
+    4294967288,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
+    3,  // num_field_entries
     1,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
@@ -1239,12 +1248,16 @@ const ::_pbi::TcParseTable<1, 2, 1, 72, 2> GetDeviceConfigurationRequest::_table
     ::_pbi::TcParser::GetTable<::kentik::deviceconf::v202511::GetDeviceConfigurationRequest>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // string revision = 2 [json_name = "revision"];
-    {::_pbi::TcParser::FastUS1,
-     {18, 63, 0, PROTOBUF_FIELD_OFFSET(GetDeviceConfigurationRequest, _impl_.revision_)}},
+    {::_pbi::TcParser::MiniParse, {}},
     // .google.protobuf.Timestamp fetch_time = 1 [json_name = "fetchTime"];
     {::_pbi::TcParser::FastMtS1,
      {10, 0, 0, PROTOBUF_FIELD_OFFSET(GetDeviceConfigurationRequest, _impl_.fetch_time_)}},
+    // string revision = 2 [json_name = "revision"];
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(GetDeviceConfigurationRequest, _impl_.revision_)}},
+    // string ref_revision = 3 [json_name = "refRevision"];
+    {::_pbi::TcParser::FastUS1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(GetDeviceConfigurationRequest, _impl_.ref_revision_)}},
   }}, {{
     65535, 65535
   }}, {{
@@ -1254,12 +1267,16 @@ const ::_pbi::TcParseTable<1, 2, 1, 72, 2> GetDeviceConfigurationRequest::_table
     // string revision = 2 [json_name = "revision"];
     {PROTOBUF_FIELD_OFFSET(GetDeviceConfigurationRequest, _impl_.revision_), -1, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string ref_revision = 3 [json_name = "refRevision"];
+    {PROTOBUF_FIELD_OFFSET(GetDeviceConfigurationRequest, _impl_.ref_revision_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
   }}, {{
     {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
   }}, {{
-    "\67\0\10\0\0\0\0\0"
+    "\67\0\10\14\0\0\0\0"
     "kentik.deviceconf.v202511.GetDeviceConfigurationRequest"
     "revision"
+    "ref_revision"
   }},
 };
 
@@ -1271,6 +1288,7 @@ PROTOBUF_NOINLINE void GetDeviceConfigurationRequest::Clear() {
   (void) cached_has_bits;
 
   _impl_.revision_.ClearToEmpty();
+  _impl_.ref_revision_.ClearToEmpty();
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
     ABSL_DCHECK(_impl_.fetch_time_ != nullptr);
@@ -1311,6 +1329,14 @@ PROTOBUF_NOINLINE void GetDeviceConfigurationRequest::Clear() {
             target = stream->WriteStringMaybeAliased(2, _s, target);
           }
 
+          // string ref_revision = 3 [json_name = "refRevision"];
+          if (!this_._internal_ref_revision().empty()) {
+            const std::string& _s = this_._internal_ref_revision();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.deviceconf.v202511.GetDeviceConfigurationRequest.ref_revision");
+            target = stream->WriteStringMaybeAliased(3, _s, target);
+          }
+
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -1341,6 +1367,11 @@ PROTOBUF_NOINLINE void GetDeviceConfigurationRequest::Clear() {
               total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                               this_._internal_revision());
             }
+            // string ref_revision = 3 [json_name = "refRevision"];
+            if (!this_._internal_ref_revision().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_ref_revision());
+            }
           }
            {
             // .google.protobuf.Timestamp fetch_time = 1 [json_name = "fetchTime"];
@@ -1365,6 +1396,9 @@ void GetDeviceConfigurationRequest::MergeImpl(::google::protobuf::MessageLite& t
 
   if (!from._internal_revision().empty()) {
     _this->_internal_set_revision(from._internal_revision());
+  }
+  if (!from._internal_ref_revision().empty()) {
+    _this->_internal_set_ref_revision(from._internal_ref_revision());
   }
   cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
@@ -1395,6 +1429,7 @@ void GetDeviceConfigurationRequest::InternalSwap(GetDeviceConfigurationRequest* 
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.revision_, &other->_impl_.revision_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.ref_revision_, &other->_impl_.ref_revision_, arena);
   swap(_impl_.fetch_time_, other->_impl_.fetch_time_);
 }
 

@@ -189,7 +189,9 @@ type GetDeviceConfigurationRequest struct {
 	// If not set, return the latest configuration.
 	FetchTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=fetch_time,json=fetchTime,proto3" json:"fetch_time,omitempty"`
 	// If set, return the configuration with this revision ID.
-	Revision      string `protobuf:"bytes,2,opt,name=revision,proto3" json:"revision,omitempty"`
+	Revision string `protobuf:"bytes,2,opt,name=revision,proto3" json:"revision,omitempty"`
+	// If set, compute the diff against the given revision ID.
+	RefRevision   string `protobuf:"bytes,3,opt,name=ref_revision,json=refRevision,proto3" json:"ref_revision,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -234,6 +236,13 @@ func (x *GetDeviceConfigurationRequest) GetFetchTime() *timestamppb.Timestamp {
 func (x *GetDeviceConfigurationRequest) GetRevision() string {
 	if x != nil {
 		return x.Revision
+	}
+	return ""
+}
+
+func (x *GetDeviceConfigurationRequest) GetRefRevision() string {
+	if x != nil {
+		return x.RefRevision
 	}
 	return ""
 }
@@ -389,11 +398,12 @@ const file_kentik_deviceconf_v202511_device_configuration_service_proto_rawDesc 
 	"\adevices\x18\x01 \x03(\v2!.kentik.deviceconf.v202511.DeviceR\adevices\"_\n" +
 	" UpdateDeviceConfigurationRequest\x12;\n" +
 	"\x06config\x18\x01 \x01(\v2#.kentik.deviceconf.v202511.SnapshotR\x06config\"#\n" +
-	"!UpdateDeviceConfigurationResponse\"v\n" +
+	"!UpdateDeviceConfigurationResponse\"\x99\x01\n" +
 	"\x1dGetDeviceConfigurationRequest\x129\n" +
 	"\n" +
 	"fetch_time\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\tfetchTime\x12\x1a\n" +
-	"\brevision\x18\x02 \x01(\tR\brevision\"]\n" +
+	"\brevision\x18\x02 \x01(\tR\brevision\x12!\n" +
+	"\fref_revision\x18\x03 \x01(\tR\vrefRevision\"]\n" +
 	"\x1eGetDeviceConfigurationResponse\x12;\n" +
 	"\x06config\x18\x01 \x01(\v2#.kentik.deviceconf.v202511.SnapshotR\x06config\"\x9d\x01\n" +
 	"'ListDeviceConfigurationRevisionsRequest\x127\n" +

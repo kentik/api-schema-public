@@ -750,6 +750,7 @@ class GetDeviceConfigurationRequest final : public ::google::protobuf::Message
   // accessors -------------------------------------------------------
   enum : int {
     kRevisionFieldNumber = 2,
+    kRefRevisionFieldNumber = 3,
     kFetchTimeFieldNumber = 1,
   };
   // string revision = 2 [json_name = "revision"];
@@ -766,6 +767,22 @@ class GetDeviceConfigurationRequest final : public ::google::protobuf::Message
   inline PROTOBUF_ALWAYS_INLINE void _internal_set_revision(
       const std::string& value);
   std::string* _internal_mutable_revision();
+
+  public:
+  // string ref_revision = 3 [json_name = "refRevision"];
+  void clear_ref_revision() ;
+  const std::string& ref_revision() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_ref_revision(Arg_&& arg, Args_... args);
+  std::string* mutable_ref_revision();
+  PROTOBUF_NODISCARD std::string* release_ref_revision();
+  void set_allocated_ref_revision(std::string* value);
+
+  private:
+  const std::string& _internal_ref_revision() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_ref_revision(
+      const std::string& value);
+  std::string* _internal_mutable_ref_revision();
 
   public:
   // .google.protobuf.Timestamp fetch_time = 1 [json_name = "fetchTime"];
@@ -788,8 +805,8 @@ class GetDeviceConfigurationRequest final : public ::google::protobuf::Message
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      1, 2, 1,
-      72, 2>
+      2, 3, 1,
+      84, 2>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -809,6 +826,7 @@ class GetDeviceConfigurationRequest final : public ::google::protobuf::Message
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     ::google::protobuf::internal::ArenaStringPtr revision_;
+    ::google::protobuf::internal::ArenaStringPtr ref_revision_;
     ::google::protobuf::Timestamp* fetch_time_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -1907,6 +1925,54 @@ inline void GetDeviceConfigurationRequest::set_allocated_revision(std::string* v
     _impl_.revision_.Set("", GetArena());
   }
   // @@protoc_insertion_point(field_set_allocated:kentik.deviceconf.v202511.GetDeviceConfigurationRequest.revision)
+}
+
+// string ref_revision = 3 [json_name = "refRevision"];
+inline void GetDeviceConfigurationRequest::clear_ref_revision() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.ref_revision_.ClearToEmpty();
+}
+inline const std::string& GetDeviceConfigurationRequest::ref_revision() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.deviceconf.v202511.GetDeviceConfigurationRequest.ref_revision)
+  return _internal_ref_revision();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void GetDeviceConfigurationRequest::set_ref_revision(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.ref_revision_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.deviceconf.v202511.GetDeviceConfigurationRequest.ref_revision)
+}
+inline std::string* GetDeviceConfigurationRequest::mutable_ref_revision() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_ref_revision();
+  // @@protoc_insertion_point(field_mutable:kentik.deviceconf.v202511.GetDeviceConfigurationRequest.ref_revision)
+  return _s;
+}
+inline const std::string& GetDeviceConfigurationRequest::_internal_ref_revision() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.ref_revision_.Get();
+}
+inline void GetDeviceConfigurationRequest::_internal_set_ref_revision(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.ref_revision_.Set(value, GetArena());
+}
+inline std::string* GetDeviceConfigurationRequest::_internal_mutable_ref_revision() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.ref_revision_.Mutable( GetArena());
+}
+inline std::string* GetDeviceConfigurationRequest::release_ref_revision() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.deviceconf.v202511.GetDeviceConfigurationRequest.ref_revision)
+  return _impl_.ref_revision_.Release();
+}
+inline void GetDeviceConfigurationRequest::set_allocated_ref_revision(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.ref_revision_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.ref_revision_.IsDefault()) {
+    _impl_.ref_revision_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.deviceconf.v202511.GetDeviceConfigurationRequest.ref_revision)
 }
 
 // -------------------------------------------------------------------

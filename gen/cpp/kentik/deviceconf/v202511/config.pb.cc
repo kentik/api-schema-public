@@ -71,7 +71,12 @@ inline constexpr Snapshot::Impl_::Impl_(
         digest_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
+        diff_data_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
         revision_{nullptr},
+        diff_revision_{nullptr},
+        first_fetched_{nullptr},
         fetch_error_{false},
         encoding_{static_cast< ::kentik::deviceconf::v202511::ConfigEncoding >(0)} {}
 
@@ -130,6 +135,9 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::Snapshot, _impl_.encoding_),
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::Snapshot, _impl_.config_data_),
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::Snapshot, _impl_.digest_),
+        PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::Snapshot, _impl_.diff_data_),
+        PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::Snapshot, _impl_.diff_revision_),
+        PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::Snapshot, _impl_.first_fetched_),
         ~0u,
         ~0u,
         0,
@@ -137,12 +145,15 @@ const ::uint32_t
         ~0u,
         ~0u,
         ~0u,
+        ~0u,
+        1,
+        2,
 };
 
 static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
         {0, 10, -1, sizeof(::kentik::deviceconf::v202511::Revision)},
-        {12, 27, -1, sizeof(::kentik::deviceconf::v202511::Snapshot)},
+        {12, 30, -1, sizeof(::kentik::deviceconf::v202511::Snapshot)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::deviceconf::v202511::_Revision_default_instance_._instance,
@@ -154,7 +165,7 @@ const char descriptor_table_protodef_kentik_2fdeviceconf_2fv202511_2fconfig_2epr
     "\022\031kentik.deviceconf.v202511\032\037google/prot"
     "obuf/timestamp.proto\"Y\n\010Revision\022\016\n\002id\030\001"
     " \001(\tR\002id\022=\n\014last_fetched\030\002 \001(\0132\032.google."
-    "protobuf.TimestampR\013lastFetched\"\244\002\n\010Snap"
+    "protobuf.TimestampR\013lastFetched\"\314\003\n\010Snap"
     "shot\022\031\n\010agent_id\030\001 \001(\tR\007agentId\022\033\n\tdevic"
     "e_id\030\002 \001(\tR\010deviceId\022\?\n\010revision\030\003 \001(\0132#"
     ".kentik.deviceconf.v202511.RevisionR\010rev"
@@ -162,12 +173,16 @@ const char descriptor_table_protodef_kentik_2fdeviceconf_2fv202511_2fconfig_2epr
     "\n\010encoding\030\005 \001(\0162).kentik.deviceconf.v20"
     "2511.ConfigEncodingR\010encoding\022\037\n\013config_"
     "data\030\006 \001(\014R\nconfigData\022\026\n\006digest\030\007 \001(\tR\006"
-    "digest*g\n\016ConfigEncoding\022\037\n\033CONFIG_ENCOD"
-    "ING_UNSPECIFIED\020\000\022\031\n\025CONFIG_ENCODING_PLA"
-    "IN\020\001\022\031\n\025CONFIG_ENCODING_BZIP2\020\002BQZOgithu"
-    "b.com/kentik/api-schema-public/gen/go/ke"
-    "ntik/deviceconf/v202511;deviceconfb\006prot"
-    "o3"
+    "digest\022\033\n\tdiff_data\030\010 \001(\014R\010diffData\022H\n\rd"
+    "iff_revision\030\t \001(\0132#.kentik.deviceconf.v"
+    "202511.RevisionR\014diffRevision\022\?\n\rfirst_f"
+    "etched\030\n \001(\0132\032.google.protobuf.Timestamp"
+    "R\014firstFetched*g\n\016ConfigEncoding\022\037\n\033CONF"
+    "IG_ENCODING_UNSPECIFIED\020\000\022\031\n\025CONFIG_ENCO"
+    "DING_PLAIN\020\001\022\031\n\025CONFIG_ENCODING_BZIP2\020\002B"
+    "QZOgithub.com/kentik/api-schema-public/g"
+    "en/go/kentik/deviceconf/v202511;deviceco"
+    "nfb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fdeviceconf_2fv202511_2fconfig_2eproto_deps[1] =
     {
@@ -177,7 +192,7 @@ static ::absl::once_flag descriptor_table_kentik_2fdeviceconf_2fv202511_2fconfig
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fdeviceconf_2fv202511_2fconfig_2eproto = {
     false,
     false,
-    682,
+    850,
     descriptor_table_protodef_kentik_2fdeviceconf_2fv202511_2fconfig_2eproto,
     "kentik/deviceconf/v202511/config.proto",
     &descriptor_table_kentik_2fdeviceconf_2fv202511_2fconfig_2eproto_once,
@@ -502,6 +517,11 @@ class Snapshot::_Internal {
       8 * PROTOBUF_FIELD_OFFSET(Snapshot, _impl_._has_bits_);
 };
 
+void Snapshot::clear_first_fetched() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.first_fetched_ != nullptr) _impl_.first_fetched_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
 Snapshot::Snapshot(::google::protobuf::Arena* arena)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
     : ::google::protobuf::Message(arena, _class_data_.base()) {
@@ -519,7 +539,8 @@ inline PROTOBUF_NDEBUG_INLINE Snapshot::Impl_::Impl_(
         agent_id_(arena, from.agent_id_),
         device_id_(arena, from.device_id_),
         config_data_(arena, from.config_data_),
-        digest_(arena, from.digest_) {}
+        digest_(arena, from.digest_),
+        diff_data_(arena, from.diff_data_) {}
 
 Snapshot::Snapshot(
     ::google::protobuf::Arena* arena,
@@ -538,6 +559,12 @@ Snapshot::Snapshot(
   _impl_.revision_ = (cached_has_bits & 0x00000001u) ? ::google::protobuf::Message::CopyConstruct<::kentik::deviceconf::v202511::Revision>(
                               arena, *from._impl_.revision_)
                         : nullptr;
+  _impl_.diff_revision_ = (cached_has_bits & 0x00000002u) ? ::google::protobuf::Message::CopyConstruct<::kentik::deviceconf::v202511::Revision>(
+                              arena, *from._impl_.diff_revision_)
+                        : nullptr;
+  _impl_.first_fetched_ = (cached_has_bits & 0x00000004u) ? ::google::protobuf::Message::CopyConstruct<::google::protobuf::Timestamp>(
+                              arena, *from._impl_.first_fetched_)
+                        : nullptr;
   ::memcpy(reinterpret_cast<char *>(&_impl_) +
                offsetof(Impl_, fetch_error_),
            reinterpret_cast<const char *>(&from._impl_) +
@@ -555,7 +582,8 @@ inline PROTOBUF_NDEBUG_INLINE Snapshot::Impl_::Impl_(
         agent_id_(arena),
         device_id_(arena),
         config_data_(arena),
-        digest_(arena) {}
+        digest_(arena),
+        diff_data_(arena) {}
 
 inline void Snapshot::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
@@ -578,7 +606,10 @@ inline void Snapshot::SharedDtor(MessageLite& self) {
   this_._impl_.device_id_.Destroy();
   this_._impl_.config_data_.Destroy();
   this_._impl_.digest_.Destroy();
+  this_._impl_.diff_data_.Destroy();
   delete this_._impl_.revision_;
+  delete this_._impl_.diff_revision_;
+  delete this_._impl_.first_fetched_;
   this_._impl_.~Impl_();
 }
 
@@ -618,16 +649,16 @@ const ::google::protobuf::internal::ClassData* Snapshot::GetClassData() const {
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<3, 7, 1, 66, 2> Snapshot::_table_ = {
+const ::_pbi::TcParseTable<4, 10, 3, 74, 2> Snapshot::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(Snapshot, _impl_._has_bits_),
     0, // no _extensions_
-    7, 56,  // max_field_number, fast_idx_mask
+    10, 120,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967168,  // skipmap
+    4294966272,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    7,  // num_field_entries
-    1,  // num_aux_entries
+    10,  // num_field_entries
+    3,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
     nullptr,  // post_loop_handler
@@ -658,6 +689,20 @@ const ::_pbi::TcParseTable<3, 7, 1, 66, 2> Snapshot::_table_ = {
     // string digest = 7 [json_name = "digest"];
     {::_pbi::TcParser::FastUS1,
      {58, 63, 0, PROTOBUF_FIELD_OFFSET(Snapshot, _impl_.digest_)}},
+    // bytes diff_data = 8 [json_name = "diffData"];
+    {::_pbi::TcParser::FastBS1,
+     {66, 63, 0, PROTOBUF_FIELD_OFFSET(Snapshot, _impl_.diff_data_)}},
+    // .kentik.deviceconf.v202511.Revision diff_revision = 9 [json_name = "diffRevision"];
+    {::_pbi::TcParser::FastMtS1,
+     {74, 1, 1, PROTOBUF_FIELD_OFFSET(Snapshot, _impl_.diff_revision_)}},
+    // .google.protobuf.Timestamp first_fetched = 10 [json_name = "firstFetched"];
+    {::_pbi::TcParser::FastMtS1,
+     {82, 2, 2, PROTOBUF_FIELD_OFFSET(Snapshot, _impl_.first_fetched_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
   }}, {{
@@ -682,10 +727,21 @@ const ::_pbi::TcParseTable<3, 7, 1, 66, 2> Snapshot::_table_ = {
     // string digest = 7 [json_name = "digest"];
     {PROTOBUF_FIELD_OFFSET(Snapshot, _impl_.digest_), -1, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // bytes diff_data = 8 [json_name = "diffData"];
+    {PROTOBUF_FIELD_OFFSET(Snapshot, _impl_.diff_data_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBytes | ::_fl::kRepAString)},
+    // .kentik.deviceconf.v202511.Revision diff_revision = 9 [json_name = "diffRevision"];
+    {PROTOBUF_FIELD_OFFSET(Snapshot, _impl_.diff_revision_), _Internal::kHasBitsOffset + 1, 1,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // .google.protobuf.Timestamp first_fetched = 10 [json_name = "firstFetched"];
+    {PROTOBUF_FIELD_OFFSET(Snapshot, _impl_.first_fetched_), _Internal::kHasBitsOffset + 2, 2,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
   }}, {{
     {::_pbi::TcParser::GetTable<::kentik::deviceconf::v202511::Revision>()},
+    {::_pbi::TcParser::GetTable<::kentik::deviceconf::v202511::Revision>()},
+    {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
   }}, {{
-    "\42\10\11\0\0\0\0\6"
+    "\42\10\11\0\0\0\0\6\0\0\0\0\0\0\0\0"
     "kentik.deviceconf.v202511.Snapshot"
     "agent_id"
     "device_id"
@@ -704,10 +760,21 @@ PROTOBUF_NOINLINE void Snapshot::Clear() {
   _impl_.device_id_.ClearToEmpty();
   _impl_.config_data_.ClearToEmpty();
   _impl_.digest_.ClearToEmpty();
+  _impl_.diff_data_.ClearToEmpty();
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    ABSL_DCHECK(_impl_.revision_ != nullptr);
-    _impl_.revision_->Clear();
+  if (cached_has_bits & 0x00000007u) {
+    if (cached_has_bits & 0x00000001u) {
+      ABSL_DCHECK(_impl_.revision_ != nullptr);
+      _impl_.revision_->Clear();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      ABSL_DCHECK(_impl_.diff_revision_ != nullptr);
+      _impl_.diff_revision_->Clear();
+    }
+    if (cached_has_bits & 0x00000004u) {
+      ABSL_DCHECK(_impl_.first_fetched_ != nullptr);
+      _impl_.first_fetched_->Clear();
+    }
   }
   ::memset(&_impl_.fetch_error_, 0, static_cast<::size_t>(
       reinterpret_cast<char*>(&_impl_.encoding_) -
@@ -783,6 +850,26 @@ PROTOBUF_NOINLINE void Snapshot::Clear() {
             target = stream->WriteStringMaybeAliased(7, _s, target);
           }
 
+          // bytes diff_data = 8 [json_name = "diffData"];
+          if (!this_._internal_diff_data().empty()) {
+            const std::string& _s = this_._internal_diff_data();
+            target = stream->WriteBytesMaybeAliased(8, _s, target);
+          }
+
+          // .kentik.deviceconf.v202511.Revision diff_revision = 9 [json_name = "diffRevision"];
+          if (cached_has_bits & 0x00000002u) {
+            target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                9, *this_._impl_.diff_revision_, this_._impl_.diff_revision_->GetCachedSize(), target,
+                stream);
+          }
+
+          // .google.protobuf.Timestamp first_fetched = 10 [json_name = "firstFetched"];
+          if (cached_has_bits & 0x00000004u) {
+            target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                10, *this_._impl_.first_fetched_, this_._impl_.first_fetched_->GetCachedSize(), target,
+                stream);
+          }
+
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -828,13 +915,28 @@ PROTOBUF_NOINLINE void Snapshot::Clear() {
               total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                               this_._internal_digest());
             }
+            // bytes diff_data = 8 [json_name = "diffData"];
+            if (!this_._internal_diff_data().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
+                                              this_._internal_diff_data());
+            }
           }
-           {
+          cached_has_bits = this_._impl_._has_bits_[0];
+          if (cached_has_bits & 0x00000007u) {
             // .kentik.deviceconf.v202511.Revision revision = 3 [json_name = "revision"];
-            cached_has_bits = this_._impl_._has_bits_[0];
             if (cached_has_bits & 0x00000001u) {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.revision_);
+            }
+            // .kentik.deviceconf.v202511.Revision diff_revision = 9 [json_name = "diffRevision"];
+            if (cached_has_bits & 0x00000002u) {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.diff_revision_);
+            }
+            // .google.protobuf.Timestamp first_fetched = 10 [json_name = "firstFetched"];
+            if (cached_has_bits & 0x00000004u) {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.first_fetched_);
             }
           }
            {
@@ -873,14 +975,37 @@ void Snapshot::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google
   if (!from._internal_digest().empty()) {
     _this->_internal_set_digest(from._internal_digest());
   }
+  if (!from._internal_diff_data().empty()) {
+    _this->_internal_set_diff_data(from._internal_diff_data());
+  }
   cached_has_bits = from._impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    ABSL_DCHECK(from._impl_.revision_ != nullptr);
-    if (_this->_impl_.revision_ == nullptr) {
-      _this->_impl_.revision_ =
-          ::google::protobuf::Message::CopyConstruct<::kentik::deviceconf::v202511::Revision>(arena, *from._impl_.revision_);
-    } else {
-      _this->_impl_.revision_->MergeFrom(*from._impl_.revision_);
+  if (cached_has_bits & 0x00000007u) {
+    if (cached_has_bits & 0x00000001u) {
+      ABSL_DCHECK(from._impl_.revision_ != nullptr);
+      if (_this->_impl_.revision_ == nullptr) {
+        _this->_impl_.revision_ =
+            ::google::protobuf::Message::CopyConstruct<::kentik::deviceconf::v202511::Revision>(arena, *from._impl_.revision_);
+      } else {
+        _this->_impl_.revision_->MergeFrom(*from._impl_.revision_);
+      }
+    }
+    if (cached_has_bits & 0x00000002u) {
+      ABSL_DCHECK(from._impl_.diff_revision_ != nullptr);
+      if (_this->_impl_.diff_revision_ == nullptr) {
+        _this->_impl_.diff_revision_ =
+            ::google::protobuf::Message::CopyConstruct<::kentik::deviceconf::v202511::Revision>(arena, *from._impl_.diff_revision_);
+      } else {
+        _this->_impl_.diff_revision_->MergeFrom(*from._impl_.diff_revision_);
+      }
+    }
+    if (cached_has_bits & 0x00000004u) {
+      ABSL_DCHECK(from._impl_.first_fetched_ != nullptr);
+      if (_this->_impl_.first_fetched_ == nullptr) {
+        _this->_impl_.first_fetched_ =
+            ::google::protobuf::Message::CopyConstruct<::google::protobuf::Timestamp>(arena, *from._impl_.first_fetched_);
+      } else {
+        _this->_impl_.first_fetched_->MergeFrom(*from._impl_.first_fetched_);
+      }
     }
   }
   if (from._internal_fetch_error() != 0) {
@@ -911,6 +1036,7 @@ void Snapshot::InternalSwap(Snapshot* PROTOBUF_RESTRICT other) {
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_id_, &other->_impl_.device_id_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.config_data_, &other->_impl_.config_data_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.digest_, &other->_impl_.digest_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.diff_data_, &other->_impl_.diff_data_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Snapshot, _impl_.encoding_)
       + sizeof(Snapshot::_impl_.encoding_)

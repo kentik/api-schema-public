@@ -197,6 +197,17 @@
         "digest": {
           "type": "string",
           "title": "SHA256 digest of config_data"
+        },
+        "diffData": {
+          "type": "string",
+          "format": "byte"
+        },
+        "diffRevision": {
+          "$ref": "#/definitions/v202511Revision"
+        },
+        "firstFetched": {
+          "type": "string",
+          "format": "date-time"
         }
       }
     },

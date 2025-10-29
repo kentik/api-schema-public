@@ -132,6 +132,9 @@ type Snapshot struct {
 	Encoding      ConfigEncoding         `protobuf:"varint,5,opt,name=encoding,proto3,enum=kentik.deviceconf.v202511.ConfigEncoding" json:"encoding,omitempty"`
 	ConfigData    []byte                 `protobuf:"bytes,6,opt,name=config_data,json=configData,proto3" json:"config_data,omitempty"`
 	Digest        string                 `protobuf:"bytes,7,opt,name=digest,proto3" json:"digest,omitempty"` // SHA256 digest of config_data
+	DiffData      []byte                 `protobuf:"bytes,8,opt,name=diff_data,json=diffData,proto3" json:"diff_data,omitempty"`
+	DiffRevision  *Revision              `protobuf:"bytes,9,opt,name=diff_revision,json=diffRevision,proto3" json:"diff_revision,omitempty"`
+	FirstFetched  *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=first_fetched,json=firstFetched,proto3" json:"first_fetched,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -215,6 +218,27 @@ func (x *Snapshot) GetDigest() string {
 	return ""
 }
 
+func (x *Snapshot) GetDiffData() []byte {
+	if x != nil {
+		return x.DiffData
+	}
+	return nil
+}
+
+func (x *Snapshot) GetDiffRevision() *Revision {
+	if x != nil {
+		return x.DiffRevision
+	}
+	return nil
+}
+
+func (x *Snapshot) GetFirstFetched() *timestamppb.Timestamp {
+	if x != nil {
+		return x.FirstFetched
+	}
+	return nil
+}
+
 var File_kentik_deviceconf_v202511_config_proto protoreflect.FileDescriptor
 
 const file_kentik_deviceconf_v202511_config_proto_rawDesc = "" +
@@ -222,7 +246,7 @@ const file_kentik_deviceconf_v202511_config_proto_rawDesc = "" +
 	"&kentik/deviceconf/v202511/config.proto\x12\x19kentik.deviceconf.v202511\x1a\x1fgoogle/protobuf/timestamp.proto\"Y\n" +
 	"\bRevision\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12=\n" +
-	"\flast_fetched\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\vlastFetched\"\xa4\x02\n" +
+	"\flast_fetched\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\vlastFetched\"\xcc\x03\n" +
 	"\bSnapshot\x12\x19\n" +
 	"\bagent_id\x18\x01 \x01(\tR\aagentId\x12\x1b\n" +
 	"\tdevice_id\x18\x02 \x01(\tR\bdeviceId\x12?\n" +
@@ -232,7 +256,11 @@ const file_kentik_deviceconf_v202511_config_proto_rawDesc = "" +
 	"\bencoding\x18\x05 \x01(\x0e2).kentik.deviceconf.v202511.ConfigEncodingR\bencoding\x12\x1f\n" +
 	"\vconfig_data\x18\x06 \x01(\fR\n" +
 	"configData\x12\x16\n" +
-	"\x06digest\x18\a \x01(\tR\x06digest*g\n" +
+	"\x06digest\x18\a \x01(\tR\x06digest\x12\x1b\n" +
+	"\tdiff_data\x18\b \x01(\fR\bdiffData\x12H\n" +
+	"\rdiff_revision\x18\t \x01(\v2#.kentik.deviceconf.v202511.RevisionR\fdiffRevision\x12?\n" +
+	"\rfirst_fetched\x18\n" +
+	" \x01(\v2\x1a.google.protobuf.TimestampR\ffirstFetched*g\n" +
 	"\x0eConfigEncoding\x12\x1f\n" +
 	"\x1bCONFIG_ENCODING_UNSPECIFIED\x10\x00\x12\x19\n" +
 	"\x15CONFIG_ENCODING_PLAIN\x10\x01\x12\x19\n" +
@@ -262,11 +290,13 @@ var file_kentik_deviceconf_v202511_config_proto_depIdxs = []int32{
 	3, // 0: kentik.deviceconf.v202511.Revision.last_fetched:type_name -> google.protobuf.Timestamp
 	1, // 1: kentik.deviceconf.v202511.Snapshot.revision:type_name -> kentik.deviceconf.v202511.Revision
 	0, // 2: kentik.deviceconf.v202511.Snapshot.encoding:type_name -> kentik.deviceconf.v202511.ConfigEncoding
-	3, // [3:3] is the sub-list for method output_type
-	3, // [3:3] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	1, // 3: kentik.deviceconf.v202511.Snapshot.diff_revision:type_name -> kentik.deviceconf.v202511.Revision
+	3, // 4: kentik.deviceconf.v202511.Snapshot.first_fetched:type_name -> google.protobuf.Timestamp
+	5, // [5:5] is the sub-list for method output_type
+	5, // [5:5] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_kentik_deviceconf_v202511_config_proto_init() }

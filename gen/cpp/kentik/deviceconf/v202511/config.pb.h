@@ -477,7 +477,10 @@ class Snapshot final : public ::google::protobuf::Message
     kDeviceIdFieldNumber = 2,
     kConfigDataFieldNumber = 6,
     kDigestFieldNumber = 7,
+    kDiffDataFieldNumber = 8,
     kRevisionFieldNumber = 3,
+    kDiffRevisionFieldNumber = 9,
+    kFirstFetchedFieldNumber = 10,
     kFetchErrorFieldNumber = 4,
     kEncodingFieldNumber = 5,
   };
@@ -545,6 +548,22 @@ class Snapshot final : public ::google::protobuf::Message
   std::string* _internal_mutable_digest();
 
   public:
+  // bytes diff_data = 8 [json_name = "diffData"];
+  void clear_diff_data() ;
+  const std::string& diff_data() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_diff_data(Arg_&& arg, Args_... args);
+  std::string* mutable_diff_data();
+  PROTOBUF_NODISCARD std::string* release_diff_data();
+  void set_allocated_diff_data(std::string* value);
+
+  private:
+  const std::string& _internal_diff_data() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_diff_data(
+      const std::string& value);
+  std::string* _internal_mutable_diff_data();
+
+  public:
   // .kentik.deviceconf.v202511.Revision revision = 3 [json_name = "revision"];
   bool has_revision() const;
   void clear_revision() ;
@@ -558,6 +577,36 @@ class Snapshot final : public ::google::protobuf::Message
   private:
   const ::kentik::deviceconf::v202511::Revision& _internal_revision() const;
   ::kentik::deviceconf::v202511::Revision* _internal_mutable_revision();
+
+  public:
+  // .kentik.deviceconf.v202511.Revision diff_revision = 9 [json_name = "diffRevision"];
+  bool has_diff_revision() const;
+  void clear_diff_revision() ;
+  const ::kentik::deviceconf::v202511::Revision& diff_revision() const;
+  PROTOBUF_NODISCARD ::kentik::deviceconf::v202511::Revision* release_diff_revision();
+  ::kentik::deviceconf::v202511::Revision* mutable_diff_revision();
+  void set_allocated_diff_revision(::kentik::deviceconf::v202511::Revision* value);
+  void unsafe_arena_set_allocated_diff_revision(::kentik::deviceconf::v202511::Revision* value);
+  ::kentik::deviceconf::v202511::Revision* unsafe_arena_release_diff_revision();
+
+  private:
+  const ::kentik::deviceconf::v202511::Revision& _internal_diff_revision() const;
+  ::kentik::deviceconf::v202511::Revision* _internal_mutable_diff_revision();
+
+  public:
+  // .google.protobuf.Timestamp first_fetched = 10 [json_name = "firstFetched"];
+  bool has_first_fetched() const;
+  void clear_first_fetched() ;
+  const ::google::protobuf::Timestamp& first_fetched() const;
+  PROTOBUF_NODISCARD ::google::protobuf::Timestamp* release_first_fetched();
+  ::google::protobuf::Timestamp* mutable_first_fetched();
+  void set_allocated_first_fetched(::google::protobuf::Timestamp* value);
+  void unsafe_arena_set_allocated_first_fetched(::google::protobuf::Timestamp* value);
+  ::google::protobuf::Timestamp* unsafe_arena_release_first_fetched();
+
+  private:
+  const ::google::protobuf::Timestamp& _internal_first_fetched() const;
+  ::google::protobuf::Timestamp* _internal_mutable_first_fetched();
 
   public:
   // bool fetch_error = 4 [json_name = "fetchError"];
@@ -585,8 +634,8 @@ class Snapshot final : public ::google::protobuf::Message
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      3, 7, 1,
-      66, 2>
+      4, 10, 3,
+      74, 2>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -609,7 +658,10 @@ class Snapshot final : public ::google::protobuf::Message
     ::google::protobuf::internal::ArenaStringPtr device_id_;
     ::google::protobuf::internal::ArenaStringPtr config_data_;
     ::google::protobuf::internal::ArenaStringPtr digest_;
+    ::google::protobuf::internal::ArenaStringPtr diff_data_;
     ::kentik::deviceconf::v202511::Revision* revision_;
+    ::kentik::deviceconf::v202511::Revision* diff_revision_;
+    ::google::protobuf::Timestamp* first_fetched_;
     bool fetch_error_;
     int encoding_;
     PROTOBUF_TSAN_DECLARE_MEMBER
@@ -1107,6 +1159,241 @@ inline void Snapshot::set_allocated_digest(std::string* value) {
     _impl_.digest_.Set("", GetArena());
   }
   // @@protoc_insertion_point(field_set_allocated:kentik.deviceconf.v202511.Snapshot.digest)
+}
+
+// bytes diff_data = 8 [json_name = "diffData"];
+inline void Snapshot::clear_diff_data() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.diff_data_.ClearToEmpty();
+}
+inline const std::string& Snapshot::diff_data() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.deviceconf.v202511.Snapshot.diff_data)
+  return _internal_diff_data();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Snapshot::set_diff_data(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.diff_data_.SetBytes(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.deviceconf.v202511.Snapshot.diff_data)
+}
+inline std::string* Snapshot::mutable_diff_data() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_diff_data();
+  // @@protoc_insertion_point(field_mutable:kentik.deviceconf.v202511.Snapshot.diff_data)
+  return _s;
+}
+inline const std::string& Snapshot::_internal_diff_data() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.diff_data_.Get();
+}
+inline void Snapshot::_internal_set_diff_data(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.diff_data_.Set(value, GetArena());
+}
+inline std::string* Snapshot::_internal_mutable_diff_data() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.diff_data_.Mutable( GetArena());
+}
+inline std::string* Snapshot::release_diff_data() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.deviceconf.v202511.Snapshot.diff_data)
+  return _impl_.diff_data_.Release();
+}
+inline void Snapshot::set_allocated_diff_data(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.diff_data_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.diff_data_.IsDefault()) {
+    _impl_.diff_data_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.deviceconf.v202511.Snapshot.diff_data)
+}
+
+// .kentik.deviceconf.v202511.Revision diff_revision = 9 [json_name = "diffRevision"];
+inline bool Snapshot::has_diff_revision() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.diff_revision_ != nullptr);
+  return value;
+}
+inline void Snapshot::clear_diff_revision() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.diff_revision_ != nullptr) _impl_.diff_revision_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline const ::kentik::deviceconf::v202511::Revision& Snapshot::_internal_diff_revision() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::kentik::deviceconf::v202511::Revision* p = _impl_.diff_revision_;
+  return p != nullptr ? *p : reinterpret_cast<const ::kentik::deviceconf::v202511::Revision&>(::kentik::deviceconf::v202511::_Revision_default_instance_);
+}
+inline const ::kentik::deviceconf::v202511::Revision& Snapshot::diff_revision() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.deviceconf.v202511.Snapshot.diff_revision)
+  return _internal_diff_revision();
+}
+inline void Snapshot::unsafe_arena_set_allocated_diff_revision(::kentik::deviceconf::v202511::Revision* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.diff_revision_);
+  }
+  _impl_.diff_revision_ = reinterpret_cast<::kentik::deviceconf::v202511::Revision*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.deviceconf.v202511.Snapshot.diff_revision)
+}
+inline ::kentik::deviceconf::v202511::Revision* Snapshot::release_diff_revision() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  ::kentik::deviceconf::v202511::Revision* released = _impl_.diff_revision_;
+  _impl_.diff_revision_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::kentik::deviceconf::v202511::Revision* Snapshot::unsafe_arena_release_diff_revision() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.deviceconf.v202511.Snapshot.diff_revision)
+
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  ::kentik::deviceconf::v202511::Revision* temp = _impl_.diff_revision_;
+  _impl_.diff_revision_ = nullptr;
+  return temp;
+}
+inline ::kentik::deviceconf::v202511::Revision* Snapshot::_internal_mutable_diff_revision() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.diff_revision_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::kentik::deviceconf::v202511::Revision>(GetArena());
+    _impl_.diff_revision_ = reinterpret_cast<::kentik::deviceconf::v202511::Revision*>(p);
+  }
+  return _impl_.diff_revision_;
+}
+inline ::kentik::deviceconf::v202511::Revision* Snapshot::mutable_diff_revision() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  ::kentik::deviceconf::v202511::Revision* _msg = _internal_mutable_diff_revision();
+  // @@protoc_insertion_point(field_mutable:kentik.deviceconf.v202511.Snapshot.diff_revision)
+  return _msg;
+}
+inline void Snapshot::set_allocated_diff_revision(::kentik::deviceconf::v202511::Revision* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete (_impl_.diff_revision_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = (value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+
+  _impl_.diff_revision_ = reinterpret_cast<::kentik::deviceconf::v202511::Revision*>(value);
+  // @@protoc_insertion_point(field_set_allocated:kentik.deviceconf.v202511.Snapshot.diff_revision)
+}
+
+// .google.protobuf.Timestamp first_fetched = 10 [json_name = "firstFetched"];
+inline bool Snapshot::has_first_fetched() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.first_fetched_ != nullptr);
+  return value;
+}
+inline const ::google::protobuf::Timestamp& Snapshot::_internal_first_fetched() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::google::protobuf::Timestamp* p = _impl_.first_fetched_;
+  return p != nullptr ? *p : reinterpret_cast<const ::google::protobuf::Timestamp&>(::google::protobuf::_Timestamp_default_instance_);
+}
+inline const ::google::protobuf::Timestamp& Snapshot::first_fetched() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.deviceconf.v202511.Snapshot.first_fetched)
+  return _internal_first_fetched();
+}
+inline void Snapshot::unsafe_arena_set_allocated_first_fetched(::google::protobuf::Timestamp* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.first_fetched_);
+  }
+  _impl_.first_fetched_ = reinterpret_cast<::google::protobuf::Timestamp*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000004u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000004u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.deviceconf.v202511.Snapshot.first_fetched)
+}
+inline ::google::protobuf::Timestamp* Snapshot::release_first_fetched() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000004u;
+  ::google::protobuf::Timestamp* released = _impl_.first_fetched_;
+  _impl_.first_fetched_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::google::protobuf::Timestamp* Snapshot::unsafe_arena_release_first_fetched() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.deviceconf.v202511.Snapshot.first_fetched)
+
+  _impl_._has_bits_[0] &= ~0x00000004u;
+  ::google::protobuf::Timestamp* temp = _impl_.first_fetched_;
+  _impl_.first_fetched_ = nullptr;
+  return temp;
+}
+inline ::google::protobuf::Timestamp* Snapshot::_internal_mutable_first_fetched() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.first_fetched_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::google::protobuf::Timestamp>(GetArena());
+    _impl_.first_fetched_ = reinterpret_cast<::google::protobuf::Timestamp*>(p);
+  }
+  return _impl_.first_fetched_;
+}
+inline ::google::protobuf::Timestamp* Snapshot::mutable_first_fetched() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  ::google::protobuf::Timestamp* _msg = _internal_mutable_first_fetched();
+  // @@protoc_insertion_point(field_mutable:kentik.deviceconf.v202511.Snapshot.first_fetched)
+  return _msg;
+}
+inline void Snapshot::set_allocated_first_fetched(::google::protobuf::Timestamp* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.first_fetched_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::google::protobuf::MessageLite*>(value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000004u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000004u;
+  }
+
+  _impl_.first_fetched_ = reinterpret_cast<::google::protobuf::Timestamp*>(value);
+  // @@protoc_insertion_point(field_set_allocated:kentik.deviceconf.v202511.Snapshot.first_fetched)
 }
 
 #ifdef __GNUC__
