@@ -1616,7 +1616,7 @@ const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert__ackno
   (ProtobufCMessageInit) kentik__alerting__public__v202505__alert__acknowledgement__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert__field_descriptors[11] =
+static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert__field_descriptors[12] =
 {
   {
     "id",
@@ -1750,6 +1750,18 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert__
     PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "mitigation_id",
+    15,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT64,
+    offsetof(Kentik__Alerting__Public__V202505__Alert, context_case),
+    offsetof(Kentik__Alerting__Public__V202505__Alert, mitigation_id),
+    NULL,
+    NULL,
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__alerting__public__v202505__alert__field_indices_by_name[] = {
   7,   /* field[7] = acknowledgement */
@@ -1758,17 +1770,19 @@ static const unsigned kentik__alerting__public__v202505__alert__field_indices_by
   9,   /* field[9] = flow */
   6,   /* field[6] = highest_severity */
   0,   /* field[0] = id */
+  11,   /* field[11] = mitigation_id */
   10,   /* field[10] = nms */
   5,   /* field[5] = severity */
   1,   /* field[1] = source */
   2,   /* field[2] = start_time_at */
   4,   /* field[4] = state */
 };
-static const ProtobufCIntRange kentik__alerting__public__v202505__alert__number_ranges[2 + 1] =
+static const ProtobufCIntRange kentik__alerting__public__v202505__alert__number_ranges[3 + 1] =
 {
   { 1, 0 },
   { 4, 2 },
-  { 0, 11 }
+  { 15, 11 },
+  { 0, 12 }
 };
 const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert__descriptor =
 {
@@ -1778,10 +1792,10 @@ const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert__descr
   "Kentik__Alerting__Public__V202505__Alert",
   "kentik.alerting.public.v202505",
   sizeof(Kentik__Alerting__Public__V202505__Alert),
-  11,
+  12,
   kentik__alerting__public__v202505__alert__field_descriptors,
   kentik__alerting__public__v202505__alert__field_indices_by_name,
-  2,  kentik__alerting__public__v202505__alert__number_ranges,
+  3,  kentik__alerting__public__v202505__alert__number_ranges,
   (ProtobufCMessageInit) kentik__alerting__public__v202505__alert__init,
   NULL,NULL,NULL    /* reserved[123] */
 };

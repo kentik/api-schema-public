@@ -779,6 +779,12 @@
           "$ref": "#/definitions/v202505NmsContext",
           "description": "The context of the alert for NMS alerts.",
           "readOnly": true
+        },
+        "mitigationId": {
+          "type": "string",
+          "format": "uint64",
+          "description": "ID of the associated mitigation, if applicable.",
+          "readOnly": true
         }
       }
     },

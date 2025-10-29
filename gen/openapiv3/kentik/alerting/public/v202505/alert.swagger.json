@@ -817,6 +817,12 @@
                     },
                     "nms": {
                         "$ref": "#/components/schemas/v202505NmsContext"
+                    },
+                    "mitigationId": {
+                        "type": "string",
+                        "format": "uint64",
+                        "description": "ID of the associated mitigation, if applicable.",
+                        "readOnly": true
                     }
                 }
             },

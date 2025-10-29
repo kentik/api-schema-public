@@ -361,7 +361,8 @@ struct  Kentik__Alerting__Public__V202505__Alert__Acknowledgement
 typedef enum {
   KENTIK__ALERTING__PUBLIC__V202505__ALERT__CONTEXT__NOT_SET = 0,
   KENTIK__ALERTING__PUBLIC__V202505__ALERT__CONTEXT_FLOW = 11,
-  KENTIK__ALERTING__PUBLIC__V202505__ALERT__CONTEXT_NMS = 12
+  KENTIK__ALERTING__PUBLIC__V202505__ALERT__CONTEXT_NMS = 12,
+  KENTIK__ALERTING__PUBLIC__V202505__ALERT__CONTEXT_MITIGATION_ID = 15
     PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__ALERTING__PUBLIC__V202505__ALERT__CONTEXT__CASE)
 } Kentik__Alerting__Public__V202505__Alert__ContextCase;
 
@@ -379,6 +380,7 @@ struct  Kentik__Alerting__Public__V202505__Alert
   Google__Protobuf__Timestamp *event_start_time_at;
   Kentik__Alerting__Public__V202505__Alert__ContextCase context_case;
   union {
+    uint64_t mitigation_id;
     Kentik__Alerting__Public__V202505__FlowContext *flow;
     Kentik__Alerting__Public__V202505__NmsContext *nms;
   };

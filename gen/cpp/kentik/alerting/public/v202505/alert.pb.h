@@ -5718,6 +5718,7 @@ class Alert final : public ::google::protobuf::Message
   enum ContextCase {
     kFlow = 11,
     kNms = 12,
+    kMitigationId = 15,
     CONTEXT_NOT_SET = 0,
   };
   static inline const Alert* internal_default_instance() {
@@ -5823,6 +5824,7 @@ class Alert final : public ::google::protobuf::Message
     kHighestSeverityFieldNumber = 8,
     kFlowFieldNumber = 11,
     kNmsFieldNumber = 12,
+    kMitigationIdFieldNumber = 15,
   };
   // string id = 1 [json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   void clear_id() ;
@@ -5983,6 +5985,17 @@ class Alert final : public ::google::protobuf::Message
   ::kentik::alerting::public_::v202505::NmsContext* _internal_mutable_nms();
 
   public:
+  // uint64 mitigation_id = 15 [json_name = "mitigationId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_mitigation_id() const;
+  void clear_mitigation_id() ;
+  ::uint64_t mitigation_id() const;
+  void set_mitigation_id(::uint64_t value);
+
+  private:
+  ::uint64_t _internal_mitigation_id() const;
+  void _internal_set_mitigation_id(::uint64_t value);
+
+  public:
   void clear_context();
   ContextCase context_case() const;
   // @@protoc_insertion_point(class_scope:kentik.alerting.public.v202505.Alert)
@@ -5990,11 +6003,12 @@ class Alert final : public ::google::protobuf::Message
   class _Internal;
   void set_has_flow();
   void set_has_nms();
+  void set_has_mitigation_id();
   inline bool has_context() const;
   inline void clear_has_context();
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      4, 11, 7,
+      4, 12, 7,
       55, 2>
       _table_;
 
@@ -6028,6 +6042,7 @@ class Alert final : public ::google::protobuf::Message
       ::google::protobuf::internal::ConstantInitialized _constinit_;
       ::kentik::alerting::public_::v202505::FlowContext* flow_;
       ::kentik::alerting::public_::v202505::NmsContext* nms_;
+      ::uint64_t mitigation_id_;
     } context_;
     ::uint32_t _oneof_case_[1];
     PROTOBUF_TSAN_DECLARE_MEMBER
@@ -10159,6 +10174,39 @@ inline ::kentik::alerting::public_::v202505::NmsContext* Alert::mutable_nms() AB
   ::kentik::alerting::public_::v202505::NmsContext* _msg = _internal_mutable_nms();
   // @@protoc_insertion_point(field_mutable:kentik.alerting.public.v202505.Alert.nms)
   return _msg;
+}
+
+// uint64 mitigation_id = 15 [json_name = "mitigationId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool Alert::has_mitigation_id() const {
+  return context_case() == kMitigationId;
+}
+inline void Alert::set_has_mitigation_id() {
+  _impl_._oneof_case_[0] = kMitigationId;
+}
+inline void Alert::clear_mitigation_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (context_case() == kMitigationId) {
+    _impl_.context_.mitigation_id_ = ::uint64_t{0u};
+    clear_has_context();
+  }
+}
+inline ::uint64_t Alert::mitigation_id() const {
+  // @@protoc_insertion_point(field_get:kentik.alerting.public.v202505.Alert.mitigation_id)
+  return _internal_mitigation_id();
+}
+inline void Alert::set_mitigation_id(::uint64_t value) {
+  if (context_case() != kMitigationId) {
+    clear_context();
+    set_has_mitigation_id();
+  }
+  _impl_.context_.mitigation_id_ = value;
+  // @@protoc_insertion_point(field_set:kentik.alerting.public.v202505.Alert.mitigation_id)
+}
+inline ::uint64_t Alert::_internal_mitigation_id() const {
+  if (context_case() == kMitigationId) {
+    return _impl_.context_.mitigation_id_;
+  }
+  return ::uint64_t{0u};
 }
 
 inline bool Alert::has_context() const {

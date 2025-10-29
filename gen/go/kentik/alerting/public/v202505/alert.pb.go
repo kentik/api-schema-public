@@ -1002,6 +1002,7 @@ type Alert struct {
 	//
 	//	*Alert_Flow
 	//	*Alert_Nms
+	//	*Alert_MitigationId
 	Context       isAlert_Context `protobuf_oneof:"context"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1125,6 +1126,15 @@ func (x *Alert) GetNms() *NmsContext {
 	return nil
 }
 
+func (x *Alert) GetMitigationId() uint64 {
+	if x != nil {
+		if x, ok := x.Context.(*Alert_MitigationId); ok {
+			return x.MitigationId
+		}
+	}
+	return 0
+}
+
 type isAlert_Context interface {
 	isAlert_Context()
 }
@@ -1137,9 +1147,15 @@ type Alert_Nms struct {
 	Nms *NmsContext `protobuf:"bytes,12,opt,name=nms,proto3,oneof"`
 }
 
+type Alert_MitigationId struct {
+	MitigationId uint64 `protobuf:"varint,15,opt,name=mitigation_id,json=mitigationId,proto3,oneof"`
+}
+
 func (*Alert_Flow) isAlert_Context() {}
 
 func (*Alert_Nms) isAlert_Context() {}
+
+func (*Alert_MitigationId) isAlert_Context() {}
 
 type FlowContext struct {
 	state            protoimpl.MessageState                  `protogen:"open.v1"`
@@ -2035,7 +2051,7 @@ const file_kentik_alerting_public_v202505_alert_proto_rawDesc = "" +
 	"\x18AlertServiceClearRequest\x12D\n" +
 	"\talert_ids\x18\x01 \x03(\tB'\x92A!2\x1fThe IDs of the alerts to clear.\xe0A\x02R\balertIds\"~\n" +
 	"\x19AlertServiceClearResponse\x12a\n" +
-	"\x11cleared_alert_ids\x18\x01 \x03(\tB5\x92A/2-The IDs of the alerts that have been cleared.\xe0A\x03R\x0fclearedAlertIds\"\xaf\x0e\n" +
+	"\x11cleared_alert_ids\x18\x01 \x03(\tB5\x92A/2-The IDs of the alerts that have been cleared.\xe0A\x03R\x0fclearedAlertIds\"\x8f\x0f\n" +
 	"\x05Alert\x12:\n" +
 	"\x02id\x18\x01 \x01(\tB*\x92A$2\"The ID (UUID format) of the alert.\xe0A\x03R\x02id\x12g\n" +
 	"\x06source\x18\x02 \x01(\v2&.kentik.alerting.public.v202505.SourceB'\x92A!2\x1fThe source policy of the alert.\xe0A\x03R\x06source\x12d\n" +
@@ -2048,7 +2064,8 @@ const file_kentik_alerting_public_v202505_alert_proto_rawDesc = "" +
 	"\x13event_start_time_at\x18\n" +
 	" \x01(\v2\x1a.google.protobuf.TimestampB]\x92AW2UThe timestamp of the first trigger event that caused an alert to eventually activate.\xe0A\x03R\x10eventStartTimeAt\x12t\n" +
 	"\x04flow\x18\v \x01(\v2+.kentik.alerting.public.v202505.FlowContextB1\x92A+2)The context of the alert for flow alerts.\xe0A\x03H\x00R\x04flow\x12p\n" +
-	"\x03nms\x18\f \x01(\v2*.kentik.alerting.public.v202505.NmsContextB0\x92A*2(The context of the alert for NMS alerts.\xe0A\x03H\x00R\x03nms\x1a\xa4\x04\n" +
+	"\x03nms\x18\f \x01(\v2*.kentik.alerting.public.v202505.NmsContextB0\x92A*2(The context of the alert for NMS alerts.\xe0A\x03H\x00R\x03nms\x12^\n" +
+	"\rmitigation_id\x18\x0f \x01(\x04B7\x92A12/ID of the associated mitigation, if applicable.\xe0A\x03H\x00R\fmitigationId\x1a\xa4\x04\n" +
 	"\x0fAcknowledgement\x12{\n" +
 	"\x05state\x18\x01 \x01(\x0e24.kentik.alerting.public.v202505.AlertAcknowledgementB/\x92A)2'The acknowledgement state of the alert.\xe0A\x03R\x05state\x12\x99\x01\n" +
 	"\racked_by_user\x18\x02 \x01(\tBu\x92Ao2mThe user ID of the user who acknowledged the alert. Present only if the alert has been acknowledged manually.\xe0A\x03R\vackedByUser\x12\x91\x01\n" +
@@ -2346,6 +2363,7 @@ func file_kentik_alerting_public_v202505_alert_proto_init() {
 	file_kentik_alerting_public_v202505_alert_proto_msgTypes[12].OneofWrappers = []any{
 		(*Alert_Flow)(nil),
 		(*Alert_Nms)(nil),
+		(*Alert_MitigationId)(nil),
 	}
 	file_kentik_alerting_public_v202505_alert_proto_msgTypes[27].OneofWrappers = []any{
 		(*NmsContext_ActivationInfo_ClearManual)(nil),
