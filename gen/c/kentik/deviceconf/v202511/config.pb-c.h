@@ -18,6 +18,7 @@ PROTOBUF_C__BEGIN_DECLS
 
 typedef struct Kentik__Deviceconf__V202511__Revision Kentik__Deviceconf__V202511__Revision;
 typedef struct Kentik__Deviceconf__V202511__Snapshot Kentik__Deviceconf__V202511__Snapshot;
+typedef struct Kentik__Deviceconf__V202511__ChangeEvent Kentik__Deviceconf__V202511__ChangeEvent;
 
 
 /* --- enums --- */
@@ -73,6 +74,25 @@ struct  Kentik__Deviceconf__V202511__Snapshot
     , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, 0, KENTIK__DEVICECONF__V202511__CONFIG_ENCODING__CONFIG_ENCODING_UNSPECIFIED, {0,NULL}, (char *)protobuf_c_empty_string, {0,NULL}, NULL, NULL }
 
 
+/*
+ * Change represents a configuration change (i.e., a Snapshot where config_data is different from the previous revision).
+ */
+struct  Kentik__Deviceconf__V202511__ChangeEvent
+{
+  ProtobufCMessage base;
+  /*
+   * Agent that fetched the configuration
+   */
+  char *agent_id;
+  char *device_id;
+  Kentik__Deviceconf__V202511__Revision *revision;
+  protobuf_c_boolean fetch_error;
+};
+#define KENTIK__DEVICECONF__V202511__CHANGE_EVENT__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__deviceconf__v202511__change_event__descriptor) \
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, 0 }
+
+
 /* Kentik__Deviceconf__V202511__Revision methods */
 void   kentik__deviceconf__v202511__revision__init
                      (Kentik__Deviceconf__V202511__Revision         *message);
@@ -111,6 +131,25 @@ Kentik__Deviceconf__V202511__Snapshot *
 void   kentik__deviceconf__v202511__snapshot__free_unpacked
                      (Kentik__Deviceconf__V202511__Snapshot *message,
                       ProtobufCAllocator *allocator);
+/* Kentik__Deviceconf__V202511__ChangeEvent methods */
+void   kentik__deviceconf__v202511__change_event__init
+                     (Kentik__Deviceconf__V202511__ChangeEvent         *message);
+size_t kentik__deviceconf__v202511__change_event__get_packed_size
+                     (const Kentik__Deviceconf__V202511__ChangeEvent   *message);
+size_t kentik__deviceconf__v202511__change_event__pack
+                     (const Kentik__Deviceconf__V202511__ChangeEvent   *message,
+                      uint8_t             *out);
+size_t kentik__deviceconf__v202511__change_event__pack_to_buffer
+                     (const Kentik__Deviceconf__V202511__ChangeEvent   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Deviceconf__V202511__ChangeEvent *
+       kentik__deviceconf__v202511__change_event__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__deviceconf__v202511__change_event__free_unpacked
+                     (Kentik__Deviceconf__V202511__ChangeEvent *message,
+                      ProtobufCAllocator *allocator);
 /* --- per-message closures --- */
 
 typedef void (*Kentik__Deviceconf__V202511__Revision_Closure)
@@ -118,6 +157,9 @@ typedef void (*Kentik__Deviceconf__V202511__Revision_Closure)
                   void *closure_data);
 typedef void (*Kentik__Deviceconf__V202511__Snapshot_Closure)
                  (const Kentik__Deviceconf__V202511__Snapshot *message,
+                  void *closure_data);
+typedef void (*Kentik__Deviceconf__V202511__ChangeEvent_Closure)
+                 (const Kentik__Deviceconf__V202511__ChangeEvent *message,
                   void *closure_data);
 
 /* --- services --- */
@@ -128,6 +170,7 @@ typedef void (*Kentik__Deviceconf__V202511__Snapshot_Closure)
 extern const ProtobufCEnumDescriptor    kentik__deviceconf__v202511__config_encoding__descriptor;
 extern const ProtobufCMessageDescriptor kentik__deviceconf__v202511__revision__descriptor;
 extern const ProtobufCMessageDescriptor kentik__deviceconf__v202511__snapshot__descriptor;
+extern const ProtobufCMessageDescriptor kentik__deviceconf__v202511__change_event__descriptor;
 
 PROTOBUF_C__END_DECLS
 

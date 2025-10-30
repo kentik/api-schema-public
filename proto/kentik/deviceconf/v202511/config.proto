@@ -28,3 +28,11 @@ message Snapshot {
   Revision diff_revision = 9;
   google.protobuf.Timestamp first_fetched = 10;
 }
+
+// Change represents a configuration change (i.e., a Snapshot where config_data is different from the previous revision).
+message ChangeEvent {
+  string agent_id = 1; // Agent that fetched the configuration
+  string device_id = 2;
+  Revision revision = 3;
+  bool fetch_error = 4;
+}

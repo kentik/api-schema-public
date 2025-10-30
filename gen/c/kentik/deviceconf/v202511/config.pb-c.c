@@ -97,6 +97,51 @@ void   kentik__deviceconf__v202511__snapshot__free_unpacked
   assert(message->base.descriptor == &kentik__deviceconf__v202511__snapshot__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   kentik__deviceconf__v202511__change_event__init
+                     (Kentik__Deviceconf__V202511__ChangeEvent         *message)
+{
+  static const Kentik__Deviceconf__V202511__ChangeEvent init_value = KENTIK__DEVICECONF__V202511__CHANGE_EVENT__INIT;
+  *message = init_value;
+}
+size_t kentik__deviceconf__v202511__change_event__get_packed_size
+                     (const Kentik__Deviceconf__V202511__ChangeEvent *message)
+{
+  assert(message->base.descriptor == &kentik__deviceconf__v202511__change_event__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__deviceconf__v202511__change_event__pack
+                     (const Kentik__Deviceconf__V202511__ChangeEvent *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__deviceconf__v202511__change_event__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__deviceconf__v202511__change_event__pack_to_buffer
+                     (const Kentik__Deviceconf__V202511__ChangeEvent *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__deviceconf__v202511__change_event__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Deviceconf__V202511__ChangeEvent *
+       kentik__deviceconf__v202511__change_event__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Deviceconf__V202511__ChangeEvent *)
+     protobuf_c_message_unpack (&kentik__deviceconf__v202511__change_event__descriptor,
+                                allocator, len, data);
+}
+void   kentik__deviceconf__v202511__change_event__free_unpacked
+                     (Kentik__Deviceconf__V202511__ChangeEvent *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__deviceconf__v202511__change_event__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 static const ProtobufCFieldDescriptor kentik__deviceconf__v202511__revision__field_descriptors[2] =
 {
   {
@@ -301,6 +346,83 @@ const ProtobufCMessageDescriptor kentik__deviceconf__v202511__snapshot__descript
   kentik__deviceconf__v202511__snapshot__field_indices_by_name,
   1,  kentik__deviceconf__v202511__snapshot__number_ranges,
   (ProtobufCMessageInit) kentik__deviceconf__v202511__snapshot__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__deviceconf__v202511__change_event__field_descriptors[4] =
+{
+  {
+    "agent_id",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Deviceconf__V202511__ChangeEvent, agent_id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "device_id",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Deviceconf__V202511__ChangeEvent, device_id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "revision",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Deviceconf__V202511__ChangeEvent, revision),
+    &kentik__deviceconf__v202511__revision__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "fetch_error",
+    4,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Deviceconf__V202511__ChangeEvent, fetch_error),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__deviceconf__v202511__change_event__field_indices_by_name[] = {
+  0,   /* field[0] = agent_id */
+  1,   /* field[1] = device_id */
+  3,   /* field[3] = fetch_error */
+  2,   /* field[2] = revision */
+};
+static const ProtobufCIntRange kentik__deviceconf__v202511__change_event__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 4 }
+};
+const ProtobufCMessageDescriptor kentik__deviceconf__v202511__change_event__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.deviceconf.v202511.ChangeEvent",
+  "ChangeEvent",
+  "Kentik__Deviceconf__V202511__ChangeEvent",
+  "kentik.deviceconf.v202511",
+  sizeof(Kentik__Deviceconf__V202511__ChangeEvent),
+  4,
+  kentik__deviceconf__v202511__change_event__field_descriptors,
+  kentik__deviceconf__v202511__change_event__field_indices_by_name,
+  1,  kentik__deviceconf__v202511__change_event__number_ranges,
+  (ProtobufCMessageInit) kentik__deviceconf__v202511__change_event__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
 static const ProtobufCEnumValue kentik__deviceconf__v202511__config_encoding__enum_values_by_number[3] =
