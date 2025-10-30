@@ -5718,7 +5718,6 @@ class Alert final : public ::google::protobuf::Message
   enum ContextCase {
     kFlow = 11,
     kNms = 12,
-    kMitigationId = 15,
     CONTEXT_NOT_SET = 0,
   };
   static inline const Alert* internal_default_instance() {
@@ -5821,10 +5820,10 @@ class Alert final : public ::google::protobuf::Message
     kEventStartTimeAtFieldNumber = 10,
     kStateFieldNumber = 6,
     kSeverityFieldNumber = 7,
+    kMitigationIdFieldNumber = 15,
     kHighestSeverityFieldNumber = 8,
     kFlowFieldNumber = 11,
     kNmsFieldNumber = 12,
-    kMitigationIdFieldNumber = 15,
   };
   // string id = 1 [json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   void clear_id() ;
@@ -5937,6 +5936,16 @@ class Alert final : public ::google::protobuf::Message
   void _internal_set_severity(::kentik::alerting::types::v202303::Severity value);
 
   public:
+  // uint64 mitigation_id = 15 [json_name = "mitigationId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_mitigation_id() ;
+  ::uint64_t mitigation_id() const;
+  void set_mitigation_id(::uint64_t value);
+
+  private:
+  ::uint64_t _internal_mitigation_id() const;
+  void _internal_set_mitigation_id(::uint64_t value);
+
+  public:
   // .kentik.alerting.types.v202303.Severity highest_severity = 8 [json_name = "highestSeverity", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   void clear_highest_severity() ;
   ::kentik::alerting::types::v202303::Severity highest_severity() const;
@@ -5985,17 +5994,6 @@ class Alert final : public ::google::protobuf::Message
   ::kentik::alerting::public_::v202505::NmsContext* _internal_mutable_nms();
 
   public:
-  // uint64 mitigation_id = 15 [json_name = "mitigationId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  bool has_mitigation_id() const;
-  void clear_mitigation_id() ;
-  ::uint64_t mitigation_id() const;
-  void set_mitigation_id(::uint64_t value);
-
-  private:
-  ::uint64_t _internal_mitigation_id() const;
-  void _internal_set_mitigation_id(::uint64_t value);
-
-  public:
   void clear_context();
   ContextCase context_case() const;
   // @@protoc_insertion_point(class_scope:kentik.alerting.public.v202505.Alert)
@@ -6003,7 +6001,6 @@ class Alert final : public ::google::protobuf::Message
   class _Internal;
   void set_has_flow();
   void set_has_nms();
-  void set_has_mitigation_id();
   inline bool has_context() const;
   inline void clear_has_context();
   friend class ::google::protobuf::internal::TcParser;
@@ -6036,13 +6033,13 @@ class Alert final : public ::google::protobuf::Message
     ::google::protobuf::Timestamp* event_start_time_at_;
     int state_;
     int severity_;
+    ::uint64_t mitigation_id_;
     int highest_severity_;
     union ContextUnion {
       constexpr ContextUnion() : _constinit_{} {}
       ::google::protobuf::internal::ConstantInitialized _constinit_;
       ::kentik::alerting::public_::v202505::FlowContext* flow_;
       ::kentik::alerting::public_::v202505::NmsContext* nms_;
-      ::uint64_t mitigation_id_;
     } context_;
     ::uint32_t _oneof_case_[1];
     PROTOBUF_TSAN_DECLARE_MEMBER
@@ -10177,36 +10174,25 @@ inline ::kentik::alerting::public_::v202505::NmsContext* Alert::mutable_nms() AB
 }
 
 // uint64 mitigation_id = 15 [json_name = "mitigationId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-inline bool Alert::has_mitigation_id() const {
-  return context_case() == kMitigationId;
-}
-inline void Alert::set_has_mitigation_id() {
-  _impl_._oneof_case_[0] = kMitigationId;
-}
 inline void Alert::clear_mitigation_id() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (context_case() == kMitigationId) {
-    _impl_.context_.mitigation_id_ = ::uint64_t{0u};
-    clear_has_context();
-  }
+  _impl_.mitigation_id_ = ::uint64_t{0u};
 }
 inline ::uint64_t Alert::mitigation_id() const {
   // @@protoc_insertion_point(field_get:kentik.alerting.public.v202505.Alert.mitigation_id)
   return _internal_mitigation_id();
 }
 inline void Alert::set_mitigation_id(::uint64_t value) {
-  if (context_case() != kMitigationId) {
-    clear_context();
-    set_has_mitigation_id();
-  }
-  _impl_.context_.mitigation_id_ = value;
+  _internal_set_mitigation_id(value);
   // @@protoc_insertion_point(field_set:kentik.alerting.public.v202505.Alert.mitigation_id)
 }
 inline ::uint64_t Alert::_internal_mitigation_id() const {
-  if (context_case() == kMitigationId) {
-    return _impl_.context_.mitigation_id_;
-  }
-  return ::uint64_t{0u};
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.mitigation_id_;
+}
+inline void Alert::_internal_set_mitigation_id(::uint64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.mitigation_id_ = value;
 }
 
 inline bool Alert::has_context() const {

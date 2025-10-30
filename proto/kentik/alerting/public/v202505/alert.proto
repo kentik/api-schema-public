@@ -480,14 +480,14 @@ message Alert {
 
     // in future:
     // SyntheticsContext synthetics = 13;
-
-    uint64 mitigation_id = 15[
-      (google.api.field_behavior) = OUTPUT_ONLY,
-      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-        description: "ID of the associated mitigation, if applicable."
-      }
-    ];
   }
+
+  uint64 mitigation_id = 15[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the associated mitigation, if applicable."
+    }
+  ];
 
   message Acknowledgement {
     AlertAcknowledgement state = 1[

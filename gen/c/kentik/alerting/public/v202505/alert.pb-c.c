@@ -1755,11 +1755,11 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert__
     15,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_UINT64,
-    offsetof(Kentik__Alerting__Public__V202505__Alert, context_case),
+    0,   /* quantifier_offset */
     offsetof(Kentik__Alerting__Public__V202505__Alert, mitigation_id),
     NULL,
     NULL,
-    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };

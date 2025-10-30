@@ -361,8 +361,7 @@ struct  Kentik__Alerting__Public__V202505__Alert__Acknowledgement
 typedef enum {
   KENTIK__ALERTING__PUBLIC__V202505__ALERT__CONTEXT__NOT_SET = 0,
   KENTIK__ALERTING__PUBLIC__V202505__ALERT__CONTEXT_FLOW = 11,
-  KENTIK__ALERTING__PUBLIC__V202505__ALERT__CONTEXT_NMS = 12,
-  KENTIK__ALERTING__PUBLIC__V202505__ALERT__CONTEXT_MITIGATION_ID = 15
+  KENTIK__ALERTING__PUBLIC__V202505__ALERT__CONTEXT_NMS = 12
     PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__ALERTING__PUBLIC__V202505__ALERT__CONTEXT__CASE)
 } Kentik__Alerting__Public__V202505__Alert__ContextCase;
 
@@ -378,16 +377,16 @@ struct  Kentik__Alerting__Public__V202505__Alert
   Kentik__Alerting__Types__V202303__Severity highest_severity;
   Kentik__Alerting__Public__V202505__Alert__Acknowledgement *acknowledgement;
   Google__Protobuf__Timestamp *event_start_time_at;
+  uint64_t mitigation_id;
   Kentik__Alerting__Public__V202505__Alert__ContextCase context_case;
   union {
-    uint64_t mitigation_id;
     Kentik__Alerting__Public__V202505__FlowContext *flow;
     Kentik__Alerting__Public__V202505__NmsContext *nms;
   };
 };
 #define KENTIK__ALERTING__PUBLIC__V202505__ALERT__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__alerting__public__v202505__alert__descriptor) \
-    , (char *)protobuf_c_empty_string, NULL, NULL, NULL, KENTIK__ALERTING__PUBLIC__V202505__ALERT_STATE__ALERT_STATE_UNSPECIFIED, KENTIK__ALERTING__TYPES__V202303__SEVERITY__SEVERITY_UNSPECIFIED, KENTIK__ALERTING__TYPES__V202303__SEVERITY__SEVERITY_UNSPECIFIED, NULL, NULL, KENTIK__ALERTING__PUBLIC__V202505__ALERT__CONTEXT__NOT_SET, {0} }
+    , (char *)protobuf_c_empty_string, NULL, NULL, NULL, KENTIK__ALERTING__PUBLIC__V202505__ALERT_STATE__ALERT_STATE_UNSPECIFIED, KENTIK__ALERTING__TYPES__V202303__SEVERITY__SEVERITY_UNSPECIFIED, KENTIK__ALERTING__TYPES__V202303__SEVERITY__SEVERITY_UNSPECIFIED, NULL, NULL, 0, KENTIK__ALERTING__PUBLIC__V202505__ALERT__CONTEXT__NOT_SET, {0} }
 
 
 struct  Kentik__Alerting__Public__V202505__FlowContext__AlertKeyDetailsEntry
