@@ -200,25 +200,26 @@ const char descriptor_table_protodef_kentik_2fdeviceconf_2fv202511_2fdevice_2epr
     "m\022F\n\tssh_creds\030\005 \001(\0132).kentik.deviceconf"
     ".v202511.DeviceSSHCredsR\010sshCreds\022M\n\014fet"
     "ch_params\030\006 \001(\0132*.kentik.deviceconf.v202"
-    "511.FetchParametersR\013fetchParams*\356\004\n\016Dev"
+    "511.FetchParametersR\013fetchParams*\215\005\n\016Dev"
     "icePlatform\022\037\n\033DEVICE_PLATFORM_UNSPECIFI"
     "ED\020\000\022\036\n\032DEVICE_PLATFORM_ARISTA_EOS\020\001\022\035\n\031"
     "DEVICE_PLATFORM_ARUBA_WLC\020\002\022\037\n\033DEVICE_PL"
     "ATFORM_CISCO_IOSXE\020\003\022\037\n\033DEVICE_PLATFORM_"
     "CISCO_IOSXR\020\004\022\036\n\032DEVICE_PLATFORM_CISCO_N"
-    "XOS\020\005\022!\n\035DEVICE_PLATFORM_CUMULUS_LINUX\020\006"
-    "\022!\n\035DEVICE_PLATFORM_CUMULUS_VTYSH\020\007\022\036\n\032D"
-    "EVICE_PLATFORM_HP_COMWARE\020\010\022\036\n\032DEVICE_PL"
-    "ATFORM_HUAWEI_VRP\020\t\022$\n DEVICE_PLATFORM_I"
-    "PINFUSION_OCNOS\020\n\022!\n\035DEVICE_PLATFORM_JUN"
-    "IPER_JUNOS\020\013\022\035\n\031DEVICE_PLATFORM_NOKIA_SR"
-    "L\020\014\022\036\n\032DEVICE_PLATFORM_NOKIA_SROS\020\r\022&\n\"D"
-    "EVICE_PLATFORM_NOKIA_SROS_CLASSIC\020\016\022\"\n\036D"
-    "EVICE_PLATFORM_PALOALTO_PANOS\020\017\022\037\n\033DEVIC"
-    "E_PLATFORM_RUIJIE_RGOS\020\020\022\037\n\033DEVICE_PLATF"
-    "ORM_VYATTA_VYOS\020\021BQZOgithub.com/kentik/a"
-    "pi-schema-public/gen/go/kentik/devicecon"
-    "f/v202511;deviceconfb\006proto3"
+    "XOS\020\005\022\035\n\031DEVICE_PLATFORM_CISCO_IOS\020\006\022!\n\035"
+    "DEVICE_PLATFORM_CUMULUS_LINUX\020\007\022!\n\035DEVIC"
+    "E_PLATFORM_CUMULUS_VTYSH\020\010\022\036\n\032DEVICE_PLA"
+    "TFORM_HP_COMWARE\020\t\022\036\n\032DEVICE_PLATFORM_HU"
+    "AWEI_VRP\020\n\022$\n DEVICE_PLATFORM_IPINFUSION"
+    "_OCNOS\020\013\022!\n\035DEVICE_PLATFORM_JUNIPER_JUNO"
+    "S\020\014\022\035\n\031DEVICE_PLATFORM_NOKIA_SRL\020\r\022\036\n\032DE"
+    "VICE_PLATFORM_NOKIA_SROS\020\016\022&\n\"DEVICE_PLA"
+    "TFORM_NOKIA_SROS_CLASSIC\020\017\022\"\n\036DEVICE_PLA"
+    "TFORM_PALOALTO_PANOS\020\020\022\037\n\033DEVICE_PLATFOR"
+    "M_RUIJIE_RGOS\020\021\022\037\n\033DEVICE_PLATFORM_VYATT"
+    "A_VYOS\020\022BQZOgithub.com/kentik/api-schema"
+    "-public/gen/go/kentik/deviceconf/v202511"
+    ";deviceconfb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice_2eproto_deps[1] =
     {
@@ -228,7 +229,7 @@ static ::absl::once_flag descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice_2eproto = {
     false,
     false,
-    1308,
+    1339,
     descriptor_table_protodef_kentik_2fdeviceconf_2fv202511_2fdevice_2eproto,
     "kentik/deviceconf/v202511/device.proto",
     &descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice_2eproto_once,
@@ -249,9 +250,9 @@ const ::google::protobuf::EnumDescriptor* DevicePlatform_descriptor() {
   return file_level_enum_descriptors_kentik_2fdeviceconf_2fv202511_2fdevice_2eproto[0];
 }
 PROTOBUF_CONSTINIT const uint32_t DevicePlatform_internal_data_[] = {
-    1179648u, 0u, };
+    1245184u, 0u, };
 bool DevicePlatform_IsValid(int value) {
-  return 0 <= value && value <= 17;
+  return 0 <= value && value <= 18;
 }
 // ===================================================================
 

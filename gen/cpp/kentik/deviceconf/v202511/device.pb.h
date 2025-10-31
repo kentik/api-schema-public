@@ -83,18 +83,19 @@ enum DevicePlatform : int {
   DEVICE_PLATFORM_CISCO_IOSXE = 3,
   DEVICE_PLATFORM_CISCO_IOSXR = 4,
   DEVICE_PLATFORM_CISCO_NXOS = 5,
-  DEVICE_PLATFORM_CUMULUS_LINUX = 6,
-  DEVICE_PLATFORM_CUMULUS_VTYSH = 7,
-  DEVICE_PLATFORM_HP_COMWARE = 8,
-  DEVICE_PLATFORM_HUAWEI_VRP = 9,
-  DEVICE_PLATFORM_IPINFUSION_OCNOS = 10,
-  DEVICE_PLATFORM_JUNIPER_JUNOS = 11,
-  DEVICE_PLATFORM_NOKIA_SRL = 12,
-  DEVICE_PLATFORM_NOKIA_SROS = 13,
-  DEVICE_PLATFORM_NOKIA_SROS_CLASSIC = 14,
-  DEVICE_PLATFORM_PALOALTO_PANOS = 15,
-  DEVICE_PLATFORM_RUIJIE_RGOS = 16,
-  DEVICE_PLATFORM_VYATTA_VYOS = 17,
+  DEVICE_PLATFORM_CISCO_IOS = 6,
+  DEVICE_PLATFORM_CUMULUS_LINUX = 7,
+  DEVICE_PLATFORM_CUMULUS_VTYSH = 8,
+  DEVICE_PLATFORM_HP_COMWARE = 9,
+  DEVICE_PLATFORM_HUAWEI_VRP = 10,
+  DEVICE_PLATFORM_IPINFUSION_OCNOS = 11,
+  DEVICE_PLATFORM_JUNIPER_JUNOS = 12,
+  DEVICE_PLATFORM_NOKIA_SRL = 13,
+  DEVICE_PLATFORM_NOKIA_SROS = 14,
+  DEVICE_PLATFORM_NOKIA_SROS_CLASSIC = 15,
+  DEVICE_PLATFORM_PALOALTO_PANOS = 16,
+  DEVICE_PLATFORM_RUIJIE_RGOS = 17,
+  DEVICE_PLATFORM_VYATTA_VYOS = 18,
   DevicePlatform_INT_MIN_SENTINEL_DO_NOT_USE_ =
       std::numeric_limits<::int32_t>::min(),
   DevicePlatform_INT_MAX_SENTINEL_DO_NOT_USE_ =
@@ -104,8 +105,8 @@ enum DevicePlatform : int {
 bool DevicePlatform_IsValid(int value);
 extern const uint32_t DevicePlatform_internal_data_[];
 constexpr DevicePlatform DevicePlatform_MIN = static_cast<DevicePlatform>(0);
-constexpr DevicePlatform DevicePlatform_MAX = static_cast<DevicePlatform>(17);
-constexpr int DevicePlatform_ARRAYSIZE = 17 + 1;
+constexpr DevicePlatform DevicePlatform_MAX = static_cast<DevicePlatform>(18);
+constexpr int DevicePlatform_ARRAYSIZE = 18 + 1;
 const ::google::protobuf::EnumDescriptor*
 DevicePlatform_descriptor();
 template <typename T>
@@ -118,7 +119,7 @@ const std::string& DevicePlatform_Name(T value) {
 template <>
 inline const std::string& DevicePlatform_Name(DevicePlatform value) {
   return ::google::protobuf::internal::NameOfDenseEnum<DevicePlatform_descriptor,
-                                                 0, 17>(
+                                                 0, 18>(
       static_cast<int>(value));
 }
 inline bool DevicePlatform_Parse(absl::string_view name, DevicePlatform* value) {

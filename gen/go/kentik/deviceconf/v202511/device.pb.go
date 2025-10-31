@@ -31,18 +31,19 @@ const (
 	DevicePlatform_DEVICE_PLATFORM_CISCO_IOSXE        DevicePlatform = 3
 	DevicePlatform_DEVICE_PLATFORM_CISCO_IOSXR        DevicePlatform = 4
 	DevicePlatform_DEVICE_PLATFORM_CISCO_NXOS         DevicePlatform = 5
-	DevicePlatform_DEVICE_PLATFORM_CUMULUS_LINUX      DevicePlatform = 6
-	DevicePlatform_DEVICE_PLATFORM_CUMULUS_VTYSH      DevicePlatform = 7
-	DevicePlatform_DEVICE_PLATFORM_HP_COMWARE         DevicePlatform = 8
-	DevicePlatform_DEVICE_PLATFORM_HUAWEI_VRP         DevicePlatform = 9
-	DevicePlatform_DEVICE_PLATFORM_IPINFUSION_OCNOS   DevicePlatform = 10
-	DevicePlatform_DEVICE_PLATFORM_JUNIPER_JUNOS      DevicePlatform = 11
-	DevicePlatform_DEVICE_PLATFORM_NOKIA_SRL          DevicePlatform = 12
-	DevicePlatform_DEVICE_PLATFORM_NOKIA_SROS         DevicePlatform = 13
-	DevicePlatform_DEVICE_PLATFORM_NOKIA_SROS_CLASSIC DevicePlatform = 14
-	DevicePlatform_DEVICE_PLATFORM_PALOALTO_PANOS     DevicePlatform = 15
-	DevicePlatform_DEVICE_PLATFORM_RUIJIE_RGOS        DevicePlatform = 16
-	DevicePlatform_DEVICE_PLATFORM_VYATTA_VYOS        DevicePlatform = 17
+	DevicePlatform_DEVICE_PLATFORM_CISCO_IOS          DevicePlatform = 6
+	DevicePlatform_DEVICE_PLATFORM_CUMULUS_LINUX      DevicePlatform = 7
+	DevicePlatform_DEVICE_PLATFORM_CUMULUS_VTYSH      DevicePlatform = 8
+	DevicePlatform_DEVICE_PLATFORM_HP_COMWARE         DevicePlatform = 9
+	DevicePlatform_DEVICE_PLATFORM_HUAWEI_VRP         DevicePlatform = 10
+	DevicePlatform_DEVICE_PLATFORM_IPINFUSION_OCNOS   DevicePlatform = 11
+	DevicePlatform_DEVICE_PLATFORM_JUNIPER_JUNOS      DevicePlatform = 12
+	DevicePlatform_DEVICE_PLATFORM_NOKIA_SRL          DevicePlatform = 13
+	DevicePlatform_DEVICE_PLATFORM_NOKIA_SROS         DevicePlatform = 14
+	DevicePlatform_DEVICE_PLATFORM_NOKIA_SROS_CLASSIC DevicePlatform = 15
+	DevicePlatform_DEVICE_PLATFORM_PALOALTO_PANOS     DevicePlatform = 16
+	DevicePlatform_DEVICE_PLATFORM_RUIJIE_RGOS        DevicePlatform = 17
+	DevicePlatform_DEVICE_PLATFORM_VYATTA_VYOS        DevicePlatform = 18
 )
 
 // Enum value maps for DevicePlatform.
@@ -54,18 +55,19 @@ var (
 		3:  "DEVICE_PLATFORM_CISCO_IOSXE",
 		4:  "DEVICE_PLATFORM_CISCO_IOSXR",
 		5:  "DEVICE_PLATFORM_CISCO_NXOS",
-		6:  "DEVICE_PLATFORM_CUMULUS_LINUX",
-		7:  "DEVICE_PLATFORM_CUMULUS_VTYSH",
-		8:  "DEVICE_PLATFORM_HP_COMWARE",
-		9:  "DEVICE_PLATFORM_HUAWEI_VRP",
-		10: "DEVICE_PLATFORM_IPINFUSION_OCNOS",
-		11: "DEVICE_PLATFORM_JUNIPER_JUNOS",
-		12: "DEVICE_PLATFORM_NOKIA_SRL",
-		13: "DEVICE_PLATFORM_NOKIA_SROS",
-		14: "DEVICE_PLATFORM_NOKIA_SROS_CLASSIC",
-		15: "DEVICE_PLATFORM_PALOALTO_PANOS",
-		16: "DEVICE_PLATFORM_RUIJIE_RGOS",
-		17: "DEVICE_PLATFORM_VYATTA_VYOS",
+		6:  "DEVICE_PLATFORM_CISCO_IOS",
+		7:  "DEVICE_PLATFORM_CUMULUS_LINUX",
+		8:  "DEVICE_PLATFORM_CUMULUS_VTYSH",
+		9:  "DEVICE_PLATFORM_HP_COMWARE",
+		10: "DEVICE_PLATFORM_HUAWEI_VRP",
+		11: "DEVICE_PLATFORM_IPINFUSION_OCNOS",
+		12: "DEVICE_PLATFORM_JUNIPER_JUNOS",
+		13: "DEVICE_PLATFORM_NOKIA_SRL",
+		14: "DEVICE_PLATFORM_NOKIA_SROS",
+		15: "DEVICE_PLATFORM_NOKIA_SROS_CLASSIC",
+		16: "DEVICE_PLATFORM_PALOALTO_PANOS",
+		17: "DEVICE_PLATFORM_RUIJIE_RGOS",
+		18: "DEVICE_PLATFORM_VYATTA_VYOS",
 	}
 	DevicePlatform_value = map[string]int32{
 		"DEVICE_PLATFORM_UNSPECIFIED":        0,
@@ -74,18 +76,19 @@ var (
 		"DEVICE_PLATFORM_CISCO_IOSXE":        3,
 		"DEVICE_PLATFORM_CISCO_IOSXR":        4,
 		"DEVICE_PLATFORM_CISCO_NXOS":         5,
-		"DEVICE_PLATFORM_CUMULUS_LINUX":      6,
-		"DEVICE_PLATFORM_CUMULUS_VTYSH":      7,
-		"DEVICE_PLATFORM_HP_COMWARE":         8,
-		"DEVICE_PLATFORM_HUAWEI_VRP":         9,
-		"DEVICE_PLATFORM_IPINFUSION_OCNOS":   10,
-		"DEVICE_PLATFORM_JUNIPER_JUNOS":      11,
-		"DEVICE_PLATFORM_NOKIA_SRL":          12,
-		"DEVICE_PLATFORM_NOKIA_SROS":         13,
-		"DEVICE_PLATFORM_NOKIA_SROS_CLASSIC": 14,
-		"DEVICE_PLATFORM_PALOALTO_PANOS":     15,
-		"DEVICE_PLATFORM_RUIJIE_RGOS":        16,
-		"DEVICE_PLATFORM_VYATTA_VYOS":        17,
+		"DEVICE_PLATFORM_CISCO_IOS":          6,
+		"DEVICE_PLATFORM_CUMULUS_LINUX":      7,
+		"DEVICE_PLATFORM_CUMULUS_VTYSH":      8,
+		"DEVICE_PLATFORM_HP_COMWARE":         9,
+		"DEVICE_PLATFORM_HUAWEI_VRP":         10,
+		"DEVICE_PLATFORM_IPINFUSION_OCNOS":   11,
+		"DEVICE_PLATFORM_JUNIPER_JUNOS":      12,
+		"DEVICE_PLATFORM_NOKIA_SRL":          13,
+		"DEVICE_PLATFORM_NOKIA_SROS":         14,
+		"DEVICE_PLATFORM_NOKIA_SROS_CLASSIC": 15,
+		"DEVICE_PLATFORM_PALOALTO_PANOS":     16,
+		"DEVICE_PLATFORM_RUIJIE_RGOS":        17,
+		"DEVICE_PLATFORM_VYATTA_VYOS":        18,
 	}
 )
 
@@ -324,27 +327,28 @@ const file_kentik_deviceconf_v202511_device_proto_rawDesc = "" +
 	"\bhostname\x18\x03 \x01(\tR\bhostname\x12E\n" +
 	"\bplatform\x18\x04 \x01(\x0e2).kentik.deviceconf.v202511.DevicePlatformR\bplatform\x12F\n" +
 	"\tssh_creds\x18\x05 \x01(\v2).kentik.deviceconf.v202511.DeviceSSHCredsR\bsshCreds\x12M\n" +
-	"\ffetch_params\x18\x06 \x01(\v2*.kentik.deviceconf.v202511.FetchParametersR\vfetchParams*\xee\x04\n" +
+	"\ffetch_params\x18\x06 \x01(\v2*.kentik.deviceconf.v202511.FetchParametersR\vfetchParams*\x8d\x05\n" +
 	"\x0eDevicePlatform\x12\x1f\n" +
 	"\x1bDEVICE_PLATFORM_UNSPECIFIED\x10\x00\x12\x1e\n" +
 	"\x1aDEVICE_PLATFORM_ARISTA_EOS\x10\x01\x12\x1d\n" +
 	"\x19DEVICE_PLATFORM_ARUBA_WLC\x10\x02\x12\x1f\n" +
 	"\x1bDEVICE_PLATFORM_CISCO_IOSXE\x10\x03\x12\x1f\n" +
 	"\x1bDEVICE_PLATFORM_CISCO_IOSXR\x10\x04\x12\x1e\n" +
-	"\x1aDEVICE_PLATFORM_CISCO_NXOS\x10\x05\x12!\n" +
-	"\x1dDEVICE_PLATFORM_CUMULUS_LINUX\x10\x06\x12!\n" +
-	"\x1dDEVICE_PLATFORM_CUMULUS_VTYSH\x10\a\x12\x1e\n" +
-	"\x1aDEVICE_PLATFORM_HP_COMWARE\x10\b\x12\x1e\n" +
-	"\x1aDEVICE_PLATFORM_HUAWEI_VRP\x10\t\x12$\n" +
-	" DEVICE_PLATFORM_IPINFUSION_OCNOS\x10\n" +
-	"\x12!\n" +
-	"\x1dDEVICE_PLATFORM_JUNIPER_JUNOS\x10\v\x12\x1d\n" +
-	"\x19DEVICE_PLATFORM_NOKIA_SRL\x10\f\x12\x1e\n" +
-	"\x1aDEVICE_PLATFORM_NOKIA_SROS\x10\r\x12&\n" +
-	"\"DEVICE_PLATFORM_NOKIA_SROS_CLASSIC\x10\x0e\x12\"\n" +
-	"\x1eDEVICE_PLATFORM_PALOALTO_PANOS\x10\x0f\x12\x1f\n" +
-	"\x1bDEVICE_PLATFORM_RUIJIE_RGOS\x10\x10\x12\x1f\n" +
-	"\x1bDEVICE_PLATFORM_VYATTA_VYOS\x10\x11BQZOgithub.com/kentik/api-schema-public/gen/go/kentik/deviceconf/v202511;deviceconfb\x06proto3"
+	"\x1aDEVICE_PLATFORM_CISCO_NXOS\x10\x05\x12\x1d\n" +
+	"\x19DEVICE_PLATFORM_CISCO_IOS\x10\x06\x12!\n" +
+	"\x1dDEVICE_PLATFORM_CUMULUS_LINUX\x10\a\x12!\n" +
+	"\x1dDEVICE_PLATFORM_CUMULUS_VTYSH\x10\b\x12\x1e\n" +
+	"\x1aDEVICE_PLATFORM_HP_COMWARE\x10\t\x12\x1e\n" +
+	"\x1aDEVICE_PLATFORM_HUAWEI_VRP\x10\n" +
+	"\x12$\n" +
+	" DEVICE_PLATFORM_IPINFUSION_OCNOS\x10\v\x12!\n" +
+	"\x1dDEVICE_PLATFORM_JUNIPER_JUNOS\x10\f\x12\x1d\n" +
+	"\x19DEVICE_PLATFORM_NOKIA_SRL\x10\r\x12\x1e\n" +
+	"\x1aDEVICE_PLATFORM_NOKIA_SROS\x10\x0e\x12&\n" +
+	"\"DEVICE_PLATFORM_NOKIA_SROS_CLASSIC\x10\x0f\x12\"\n" +
+	"\x1eDEVICE_PLATFORM_PALOALTO_PANOS\x10\x10\x12\x1f\n" +
+	"\x1bDEVICE_PLATFORM_RUIJIE_RGOS\x10\x11\x12\x1f\n" +
+	"\x1bDEVICE_PLATFORM_VYATTA_VYOS\x10\x12BQZOgithub.com/kentik/api-schema-public/gen/go/kentik/deviceconf/v202511;deviceconfb\x06proto3"
 
 var (
 	file_kentik_deviceconf_v202511_device_proto_rawDescOnce sync.Once
