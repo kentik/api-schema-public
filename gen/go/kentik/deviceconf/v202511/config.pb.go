@@ -123,6 +123,74 @@ func (x *Revision) GetLastFetched() *timestamppb.Timestamp {
 	return nil
 }
 
+type CommitDetails struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Time          *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=time,proto3" json:"time,omitempty"`
+	User          string                 `protobuf:"bytes,2,opt,name=user,proto3" json:"user,omitempty"`
+	Method        string                 `protobuf:"bytes,3,opt,name=method,proto3" json:"method,omitempty"`
+	Comment       string                 `protobuf:"bytes,4,opt,name=comment,proto3" json:"comment,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CommitDetails) Reset() {
+	*x = CommitDetails{}
+	mi := &file_kentik_deviceconf_v202511_config_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CommitDetails) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CommitDetails) ProtoMessage() {}
+
+func (x *CommitDetails) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_deviceconf_v202511_config_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CommitDetails.ProtoReflect.Descriptor instead.
+func (*CommitDetails) Descriptor() ([]byte, []int) {
+	return file_kentik_deviceconf_v202511_config_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *CommitDetails) GetTime() *timestamppb.Timestamp {
+	if x != nil {
+		return x.Time
+	}
+	return nil
+}
+
+func (x *CommitDetails) GetUser() string {
+	if x != nil {
+		return x.User
+	}
+	return ""
+}
+
+func (x *CommitDetails) GetMethod() string {
+	if x != nil {
+		return x.Method
+	}
+	return ""
+}
+
+func (x *CommitDetails) GetComment() string {
+	if x != nil {
+		return x.Comment
+	}
+	return ""
+}
+
 type Snapshot struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	AgentId       string                 `protobuf:"bytes,1,opt,name=agent_id,json=agentId,proto3" json:"agent_id,omitempty"` // Agent that fetched the configuration
@@ -135,13 +203,14 @@ type Snapshot struct {
 	DiffData      []byte                 `protobuf:"bytes,8,opt,name=diff_data,json=diffData,proto3" json:"diff_data,omitempty"`
 	DiffRevision  *Revision              `protobuf:"bytes,9,opt,name=diff_revision,json=diffRevision,proto3" json:"diff_revision,omitempty"`
 	FirstFetched  *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=first_fetched,json=firstFetched,proto3" json:"first_fetched,omitempty"`
+	CommitDetails *CommitDetails         `protobuf:"bytes,11,opt,name=commit_details,json=commitDetails,proto3" json:"commit_details,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Snapshot) Reset() {
 	*x = Snapshot{}
-	mi := &file_kentik_deviceconf_v202511_config_proto_msgTypes[1]
+	mi := &file_kentik_deviceconf_v202511_config_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -153,7 +222,7 @@ func (x *Snapshot) String() string {
 func (*Snapshot) ProtoMessage() {}
 
 func (x *Snapshot) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_deviceconf_v202511_config_proto_msgTypes[1]
+	mi := &file_kentik_deviceconf_v202511_config_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -166,7 +235,7 @@ func (x *Snapshot) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Snapshot.ProtoReflect.Descriptor instead.
 func (*Snapshot) Descriptor() ([]byte, []int) {
-	return file_kentik_deviceconf_v202511_config_proto_rawDescGZIP(), []int{1}
+	return file_kentik_deviceconf_v202511_config_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Snapshot) GetAgentId() string {
@@ -239,6 +308,13 @@ func (x *Snapshot) GetFirstFetched() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *Snapshot) GetCommitDetails() *CommitDetails {
+	if x != nil {
+		return x.CommitDetails
+	}
+	return nil
+}
+
 // Change represents a configuration change (i.e., a Snapshot where config_data is different from the previous revision).
 type ChangeEvent struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -246,13 +322,14 @@ type ChangeEvent struct {
 	DeviceId      string                 `protobuf:"bytes,2,opt,name=device_id,json=deviceId,proto3" json:"device_id,omitempty"`
 	Revision      *Revision              `protobuf:"bytes,3,opt,name=revision,proto3" json:"revision,omitempty"`
 	FetchError    bool                   `protobuf:"varint,4,opt,name=fetch_error,json=fetchError,proto3" json:"fetch_error,omitempty"`
+	CommitDetails *CommitDetails         `protobuf:"bytes,5,opt,name=commit_details,json=commitDetails,proto3" json:"commit_details,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ChangeEvent) Reset() {
 	*x = ChangeEvent{}
-	mi := &file_kentik_deviceconf_v202511_config_proto_msgTypes[2]
+	mi := &file_kentik_deviceconf_v202511_config_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -264,7 +341,7 @@ func (x *ChangeEvent) String() string {
 func (*ChangeEvent) ProtoMessage() {}
 
 func (x *ChangeEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_deviceconf_v202511_config_proto_msgTypes[2]
+	mi := &file_kentik_deviceconf_v202511_config_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -277,7 +354,7 @@ func (x *ChangeEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChangeEvent.ProtoReflect.Descriptor instead.
 func (*ChangeEvent) Descriptor() ([]byte, []int) {
-	return file_kentik_deviceconf_v202511_config_proto_rawDescGZIP(), []int{2}
+	return file_kentik_deviceconf_v202511_config_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ChangeEvent) GetAgentId() string {
@@ -308,6 +385,13 @@ func (x *ChangeEvent) GetFetchError() bool {
 	return false
 }
 
+func (x *ChangeEvent) GetCommitDetails() *CommitDetails {
+	if x != nil {
+		return x.CommitDetails
+	}
+	return nil
+}
+
 var File_kentik_deviceconf_v202511_config_proto protoreflect.FileDescriptor
 
 const file_kentik_deviceconf_v202511_config_proto_rawDesc = "" +
@@ -315,7 +399,12 @@ const file_kentik_deviceconf_v202511_config_proto_rawDesc = "" +
 	"&kentik/deviceconf/v202511/config.proto\x12\x19kentik.deviceconf.v202511\x1a\x1fgoogle/protobuf/timestamp.proto\"Y\n" +
 	"\bRevision\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12=\n" +
-	"\flast_fetched\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\vlastFetched\"\xcc\x03\n" +
+	"\flast_fetched\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\vlastFetched\"\x85\x01\n" +
+	"\rCommitDetails\x12.\n" +
+	"\x04time\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\x04time\x12\x12\n" +
+	"\x04user\x18\x02 \x01(\tR\x04user\x12\x16\n" +
+	"\x06method\x18\x03 \x01(\tR\x06method\x12\x18\n" +
+	"\acomment\x18\x04 \x01(\tR\acomment\"\x9d\x04\n" +
 	"\bSnapshot\x12\x19\n" +
 	"\bagent_id\x18\x01 \x01(\tR\aagentId\x12\x1b\n" +
 	"\tdevice_id\x18\x02 \x01(\tR\bdeviceId\x12?\n" +
@@ -329,13 +418,15 @@ const file_kentik_deviceconf_v202511_config_proto_rawDesc = "" +
 	"\tdiff_data\x18\b \x01(\fR\bdiffData\x12H\n" +
 	"\rdiff_revision\x18\t \x01(\v2#.kentik.deviceconf.v202511.RevisionR\fdiffRevision\x12?\n" +
 	"\rfirst_fetched\x18\n" +
-	" \x01(\v2\x1a.google.protobuf.TimestampR\ffirstFetched\"\xa7\x01\n" +
+	" \x01(\v2\x1a.google.protobuf.TimestampR\ffirstFetched\x12O\n" +
+	"\x0ecommit_details\x18\v \x01(\v2(.kentik.deviceconf.v202511.CommitDetailsR\rcommitDetails\"\xf8\x01\n" +
 	"\vChangeEvent\x12\x19\n" +
 	"\bagent_id\x18\x01 \x01(\tR\aagentId\x12\x1b\n" +
 	"\tdevice_id\x18\x02 \x01(\tR\bdeviceId\x12?\n" +
 	"\brevision\x18\x03 \x01(\v2#.kentik.deviceconf.v202511.RevisionR\brevision\x12\x1f\n" +
 	"\vfetch_error\x18\x04 \x01(\bR\n" +
-	"fetchError*g\n" +
+	"fetchError\x12O\n" +
+	"\x0ecommit_details\x18\x05 \x01(\v2(.kentik.deviceconf.v202511.CommitDetailsR\rcommitDetails*g\n" +
 	"\x0eConfigEncoding\x12\x1f\n" +
 	"\x1bCONFIG_ENCODING_UNSPECIFIED\x10\x00\x12\x19\n" +
 	"\x15CONFIG_ENCODING_PLAIN\x10\x01\x12\x19\n" +
@@ -354,26 +445,30 @@ func file_kentik_deviceconf_v202511_config_proto_rawDescGZIP() []byte {
 }
 
 var file_kentik_deviceconf_v202511_config_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_kentik_deviceconf_v202511_config_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_kentik_deviceconf_v202511_config_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_kentik_deviceconf_v202511_config_proto_goTypes = []any{
 	(ConfigEncoding)(0),           // 0: kentik.deviceconf.v202511.ConfigEncoding
 	(*Revision)(nil),              // 1: kentik.deviceconf.v202511.Revision
-	(*Snapshot)(nil),              // 2: kentik.deviceconf.v202511.Snapshot
-	(*ChangeEvent)(nil),           // 3: kentik.deviceconf.v202511.ChangeEvent
-	(*timestamppb.Timestamp)(nil), // 4: google.protobuf.Timestamp
+	(*CommitDetails)(nil),         // 2: kentik.deviceconf.v202511.CommitDetails
+	(*Snapshot)(nil),              // 3: kentik.deviceconf.v202511.Snapshot
+	(*ChangeEvent)(nil),           // 4: kentik.deviceconf.v202511.ChangeEvent
+	(*timestamppb.Timestamp)(nil), // 5: google.protobuf.Timestamp
 }
 var file_kentik_deviceconf_v202511_config_proto_depIdxs = []int32{
-	4, // 0: kentik.deviceconf.v202511.Revision.last_fetched:type_name -> google.protobuf.Timestamp
-	1, // 1: kentik.deviceconf.v202511.Snapshot.revision:type_name -> kentik.deviceconf.v202511.Revision
-	0, // 2: kentik.deviceconf.v202511.Snapshot.encoding:type_name -> kentik.deviceconf.v202511.ConfigEncoding
-	1, // 3: kentik.deviceconf.v202511.Snapshot.diff_revision:type_name -> kentik.deviceconf.v202511.Revision
-	4, // 4: kentik.deviceconf.v202511.Snapshot.first_fetched:type_name -> google.protobuf.Timestamp
-	1, // 5: kentik.deviceconf.v202511.ChangeEvent.revision:type_name -> kentik.deviceconf.v202511.Revision
-	6, // [6:6] is the sub-list for method output_type
-	6, // [6:6] is the sub-list for method input_type
-	6, // [6:6] is the sub-list for extension type_name
-	6, // [6:6] is the sub-list for extension extendee
-	0, // [0:6] is the sub-list for field type_name
+	5, // 0: kentik.deviceconf.v202511.Revision.last_fetched:type_name -> google.protobuf.Timestamp
+	5, // 1: kentik.deviceconf.v202511.CommitDetails.time:type_name -> google.protobuf.Timestamp
+	1, // 2: kentik.deviceconf.v202511.Snapshot.revision:type_name -> kentik.deviceconf.v202511.Revision
+	0, // 3: kentik.deviceconf.v202511.Snapshot.encoding:type_name -> kentik.deviceconf.v202511.ConfigEncoding
+	1, // 4: kentik.deviceconf.v202511.Snapshot.diff_revision:type_name -> kentik.deviceconf.v202511.Revision
+	5, // 5: kentik.deviceconf.v202511.Snapshot.first_fetched:type_name -> google.protobuf.Timestamp
+	2, // 6: kentik.deviceconf.v202511.Snapshot.commit_details:type_name -> kentik.deviceconf.v202511.CommitDetails
+	1, // 7: kentik.deviceconf.v202511.ChangeEvent.revision:type_name -> kentik.deviceconf.v202511.Revision
+	2, // 8: kentik.deviceconf.v202511.ChangeEvent.commit_details:type_name -> kentik.deviceconf.v202511.CommitDetails
+	9, // [9:9] is the sub-list for method output_type
+	9, // [9:9] is the sub-list for method input_type
+	9, // [9:9] is the sub-list for extension type_name
+	9, // [9:9] is the sub-list for extension extendee
+	0, // [0:9] is the sub-list for field type_name
 }
 
 func init() { file_kentik_deviceconf_v202511_config_proto_init() }
@@ -387,7 +482,7 @@ func file_kentik_deviceconf_v202511_config_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_kentik_deviceconf_v202511_config_proto_rawDesc), len(file_kentik_deviceconf_v202511_config_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   3,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

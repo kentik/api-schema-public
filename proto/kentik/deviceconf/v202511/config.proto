@@ -16,6 +16,13 @@ message Revision {
   google.protobuf.Timestamp last_fetched = 2;
 }
 
+message CommitDetails {
+  google.protobuf.Timestamp time = 1;
+  string user = 2;
+  string method = 3;
+  string comment = 4;
+}
+
 message Snapshot {
   string agent_id = 1; // Agent that fetched the configuration
   string device_id = 2;
@@ -27,6 +34,7 @@ message Snapshot {
   bytes diff_data = 8;
   Revision diff_revision = 9;
   google.protobuf.Timestamp first_fetched = 10;
+  CommitDetails commit_details = 11;
 }
 
 // Change represents a configuration change (i.e., a Snapshot where config_data is different from the previous revision).
@@ -35,4 +43,5 @@ message ChangeEvent {
   string device_id = 2;
   Revision revision = 3;
   bool fetch_error = 4;
+  CommitDetails commit_details = 5;
 }

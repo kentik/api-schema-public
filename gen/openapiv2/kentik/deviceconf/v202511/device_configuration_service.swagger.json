@@ -45,6 +45,24 @@
         }
       }
     },
+    "v202511CommitDetails": {
+      "type": "object",
+      "properties": {
+        "time": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "user": {
+          "type": "string"
+        },
+        "method": {
+          "type": "string"
+        },
+        "comment": {
+          "type": "string"
+        }
+      }
+    },
     "v202511ConfigEncoding": {
       "type": "string",
       "enum": [
@@ -209,6 +227,9 @@
         "firstFetched": {
           "type": "string",
           "format": "date-time"
+        },
+        "commitDetails": {
+          "$ref": "#/definitions/v202511CommitDetails"
         }
       }
     },

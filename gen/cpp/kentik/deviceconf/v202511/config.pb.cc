@@ -56,6 +56,40 @@ struct RevisionDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RevisionDefaultTypeInternal _Revision_default_instance_;
 
+inline constexpr CommitDetails::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        user_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        method_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        comment_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        time_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR CommitDetails::CommitDetails(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct CommitDetailsDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR CommitDetailsDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~CommitDetailsDefaultTypeInternal() {}
+  union {
+    CommitDetails _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CommitDetailsDefaultTypeInternal _CommitDetails_default_instance_;
+
 inline constexpr Snapshot::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
@@ -77,6 +111,7 @@ inline constexpr Snapshot::Impl_::Impl_(
         revision_{nullptr},
         diff_revision_{nullptr},
         first_fetched_{nullptr},
+        commit_details_{nullptr},
         fetch_error_{false},
         encoding_{static_cast< ::kentik::deviceconf::v202511::ConfigEncoding >(0)} {}
 
@@ -110,6 +145,7 @@ inline constexpr ChangeEvent::Impl_::Impl_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
         revision_{nullptr},
+        commit_details_{nullptr},
         fetch_error_{false} {}
 
 template <typename>
@@ -152,6 +188,22 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::Revision, _impl_.last_fetched_),
         ~0u,
         0,
+        PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::CommitDetails, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::CommitDetails, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::CommitDetails, _impl_.time_),
+        PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::CommitDetails, _impl_.user_),
+        PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::CommitDetails, _impl_.method_),
+        PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::CommitDetails, _impl_.comment_),
+        0,
+        ~0u,
+        ~0u,
+        ~0u,
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::Snapshot, _impl_._has_bits_),
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::Snapshot, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -170,6 +222,7 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::Snapshot, _impl_.diff_data_),
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::Snapshot, _impl_.diff_revision_),
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::Snapshot, _impl_.first_fetched_),
+        PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::Snapshot, _impl_.commit_details_),
         ~0u,
         ~0u,
         0,
@@ -180,6 +233,7 @@ const ::uint32_t
         ~0u,
         1,
         2,
+        3,
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::ChangeEvent, _impl_._has_bits_),
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::ChangeEvent, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -192,20 +246,24 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::ChangeEvent, _impl_.device_id_),
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::ChangeEvent, _impl_.revision_),
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::ChangeEvent, _impl_.fetch_error_),
+        PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::ChangeEvent, _impl_.commit_details_),
         ~0u,
         ~0u,
         0,
         ~0u,
+        1,
 };
 
 static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
         {0, 10, -1, sizeof(::kentik::deviceconf::v202511::Revision)},
-        {12, 30, -1, sizeof(::kentik::deviceconf::v202511::Snapshot)},
-        {40, 52, -1, sizeof(::kentik::deviceconf::v202511::ChangeEvent)},
+        {12, 24, -1, sizeof(::kentik::deviceconf::v202511::CommitDetails)},
+        {28, 47, -1, sizeof(::kentik::deviceconf::v202511::Snapshot)},
+        {58, 71, -1, sizeof(::kentik::deviceconf::v202511::ChangeEvent)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::deviceconf::v202511::_Revision_default_instance_._instance,
+    &::kentik::deviceconf::v202511::_CommitDetails_default_instance_._instance,
     &::kentik::deviceconf::v202511::_Snapshot_default_instance_._instance,
     &::kentik::deviceconf::v202511::_ChangeEvent_default_instance_._instance,
 };
@@ -215,28 +273,35 @@ const char descriptor_table_protodef_kentik_2fdeviceconf_2fv202511_2fconfig_2epr
     "\022\031kentik.deviceconf.v202511\032\037google/prot"
     "obuf/timestamp.proto\"Y\n\010Revision\022\016\n\002id\030\001"
     " \001(\tR\002id\022=\n\014last_fetched\030\002 \001(\0132\032.google."
-    "protobuf.TimestampR\013lastFetched\"\314\003\n\010Snap"
-    "shot\022\031\n\010agent_id\030\001 \001(\tR\007agentId\022\033\n\tdevic"
-    "e_id\030\002 \001(\tR\010deviceId\022\?\n\010revision\030\003 \001(\0132#"
-    ".kentik.deviceconf.v202511.RevisionR\010rev"
-    "ision\022\037\n\013fetch_error\030\004 \001(\010R\nfetchError\022E"
-    "\n\010encoding\030\005 \001(\0162).kentik.deviceconf.v20"
-    "2511.ConfigEncodingR\010encoding\022\037\n\013config_"
-    "data\030\006 \001(\014R\nconfigData\022\026\n\006digest\030\007 \001(\tR\006"
-    "digest\022\033\n\tdiff_data\030\010 \001(\014R\010diffData\022H\n\rd"
-    "iff_revision\030\t \001(\0132#.kentik.deviceconf.v"
-    "202511.RevisionR\014diffRevision\022\?\n\rfirst_f"
-    "etched\030\n \001(\0132\032.google.protobuf.Timestamp"
-    "R\014firstFetched\"\247\001\n\013ChangeEvent\022\031\n\010agent_"
-    "id\030\001 \001(\tR\007agentId\022\033\n\tdevice_id\030\002 \001(\tR\010de"
-    "viceId\022\?\n\010revision\030\003 \001(\0132#.kentik.device"
-    "conf.v202511.RevisionR\010revision\022\037\n\013fetch"
-    "_error\030\004 \001(\010R\nfetchError*g\n\016ConfigEncodi"
-    "ng\022\037\n\033CONFIG_ENCODING_UNSPECIFIED\020\000\022\031\n\025C"
-    "ONFIG_ENCODING_PLAIN\020\001\022\031\n\025CONFIG_ENCODIN"
-    "G_BZIP2\020\002BQZOgithub.com/kentik/api-schem"
-    "a-public/gen/go/kentik/deviceconf/v20251"
-    "1;deviceconfb\006proto3"
+    "protobuf.TimestampR\013lastFetched\"\205\001\n\rComm"
+    "itDetails\022.\n\004time\030\001 \001(\0132\032.google.protobu"
+    "f.TimestampR\004time\022\022\n\004user\030\002 \001(\tR\004user\022\026\n"
+    "\006method\030\003 \001(\tR\006method\022\030\n\007comment\030\004 \001(\tR\007"
+    "comment\"\235\004\n\010Snapshot\022\031\n\010agent_id\030\001 \001(\tR\007"
+    "agentId\022\033\n\tdevice_id\030\002 \001(\tR\010deviceId\022\?\n\010"
+    "revision\030\003 \001(\0132#.kentik.deviceconf.v2025"
+    "11.RevisionR\010revision\022\037\n\013fetch_error\030\004 \001"
+    "(\010R\nfetchError\022E\n\010encoding\030\005 \001(\0162).kenti"
+    "k.deviceconf.v202511.ConfigEncodingR\010enc"
+    "oding\022\037\n\013config_data\030\006 \001(\014R\nconfigData\022\026"
+    "\n\006digest\030\007 \001(\tR\006digest\022\033\n\tdiff_data\030\010 \001("
+    "\014R\010diffData\022H\n\rdiff_revision\030\t \001(\0132#.ken"
+    "tik.deviceconf.v202511.RevisionR\014diffRev"
+    "ision\022\?\n\rfirst_fetched\030\n \001(\0132\032.google.pr"
+    "otobuf.TimestampR\014firstFetched\022O\n\016commit"
+    "_details\030\013 \001(\0132(.kentik.deviceconf.v2025"
+    "11.CommitDetailsR\rcommitDetails\"\370\001\n\013Chan"
+    "geEvent\022\031\n\010agent_id\030\001 \001(\tR\007agentId\022\033\n\tde"
+    "vice_id\030\002 \001(\tR\010deviceId\022\?\n\010revision\030\003 \001("
+    "\0132#.kentik.deviceconf.v202511.RevisionR\010"
+    "revision\022\037\n\013fetch_error\030\004 \001(\010R\nfetchErro"
+    "r\022O\n\016commit_details\030\005 \001(\0132(.kentik.devic"
+    "econf.v202511.CommitDetailsR\rcommitDetai"
+    "ls*g\n\016ConfigEncoding\022\037\n\033CONFIG_ENCODING_"
+    "UNSPECIFIED\020\000\022\031\n\025CONFIG_ENCODING_PLAIN\020\001"
+    "\022\031\n\025CONFIG_ENCODING_BZIP2\020\002BQZOgithub.co"
+    "m/kentik/api-schema-public/gen/go/kentik"
+    "/deviceconf/v202511;deviceconfb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fdeviceconf_2fv202511_2fconfig_2eproto_deps[1] =
     {
@@ -246,13 +311,13 @@ static ::absl::once_flag descriptor_table_kentik_2fdeviceconf_2fv202511_2fconfig
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fdeviceconf_2fv202511_2fconfig_2eproto = {
     false,
     false,
-    1020,
+    1318,
     descriptor_table_protodef_kentik_2fdeviceconf_2fv202511_2fconfig_2eproto,
     "kentik/deviceconf/v202511/config.proto",
     &descriptor_table_kentik_2fdeviceconf_2fv202511_2fconfig_2eproto_once,
     descriptor_table_kentik_2fdeviceconf_2fv202511_2fconfig_2eproto_deps,
     1,
-    3,
+    4,
     schemas,
     file_default_instances,
     TableStruct_kentik_2fdeviceconf_2fv202511_2fconfig_2eproto::offsets,
@@ -563,6 +628,352 @@ void Revision::InternalSwap(Revision* PROTOBUF_RESTRICT other) {
 }
 // ===================================================================
 
+class CommitDetails::_Internal {
+ public:
+  using HasBits =
+      decltype(std::declval<CommitDetails>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(CommitDetails, _impl_._has_bits_);
+};
+
+void CommitDetails::clear_time() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.time_ != nullptr) _impl_.time_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+CommitDetails::CommitDetails(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.deviceconf.v202511.CommitDetails)
+}
+inline PROTOBUF_NDEBUG_INLINE CommitDetails::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::kentik::deviceconf::v202511::CommitDetails& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        user_(arena, from.user_),
+        method_(arena, from.method_),
+        comment_(arena, from.comment_) {}
+
+CommitDetails::CommitDetails(
+    ::google::protobuf::Arena* arena,
+    const CommitDetails& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  CommitDetails* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.time_ = (cached_has_bits & 0x00000001u) ? ::google::protobuf::Message::CopyConstruct<::google::protobuf::Timestamp>(
+                              arena, *from._impl_.time_)
+                        : nullptr;
+
+  // @@protoc_insertion_point(copy_constructor:kentik.deviceconf.v202511.CommitDetails)
+}
+inline PROTOBUF_NDEBUG_INLINE CommitDetails::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        user_(arena),
+        method_(arena),
+        comment_(arena) {}
+
+inline void CommitDetails::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.time_ = {};
+}
+CommitDetails::~CommitDetails() {
+  // @@protoc_insertion_point(destructor:kentik.deviceconf.v202511.CommitDetails)
+  SharedDtor(*this);
+}
+inline void CommitDetails::SharedDtor(MessageLite& self) {
+  CommitDetails& this_ = static_cast<CommitDetails&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.user_.Destroy();
+  this_._impl_.method_.Destroy();
+  this_._impl_.comment_.Destroy();
+  delete this_._impl_.time_;
+  this_._impl_.~Impl_();
+}
+
+inline void* CommitDetails::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) CommitDetails(arena);
+}
+constexpr auto CommitDetails::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(CommitDetails),
+                                            alignof(CommitDetails));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull CommitDetails::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_CommitDetails_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &CommitDetails::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<CommitDetails>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &CommitDetails::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<CommitDetails>(), &CommitDetails::ByteSizeLong,
+            &CommitDetails::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(CommitDetails, _impl_._cached_size_),
+        false,
+    },
+    &CommitDetails::kDescriptorMethods,
+    &descriptor_table_kentik_2fdeviceconf_2fv202511_2fconfig_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* CommitDetails::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 4, 1, 65, 2> CommitDetails::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(CommitDetails, _impl_._has_bits_),
+    0, // no _extensions_
+    4, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967280,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    4,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::deviceconf::v202511::CommitDetails>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // string comment = 4 [json_name = "comment"];
+    {::_pbi::TcParser::FastUS1,
+     {34, 63, 0, PROTOBUF_FIELD_OFFSET(CommitDetails, _impl_.comment_)}},
+    // .google.protobuf.Timestamp time = 1 [json_name = "time"];
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(CommitDetails, _impl_.time_)}},
+    // string user = 2 [json_name = "user"];
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(CommitDetails, _impl_.user_)}},
+    // string method = 3 [json_name = "method"];
+    {::_pbi::TcParser::FastUS1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(CommitDetails, _impl_.method_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .google.protobuf.Timestamp time = 1 [json_name = "time"];
+    {PROTOBUF_FIELD_OFFSET(CommitDetails, _impl_.time_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // string user = 2 [json_name = "user"];
+    {PROTOBUF_FIELD_OFFSET(CommitDetails, _impl_.user_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string method = 3 [json_name = "method"];
+    {PROTOBUF_FIELD_OFFSET(CommitDetails, _impl_.method_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string comment = 4 [json_name = "comment"];
+    {PROTOBUF_FIELD_OFFSET(CommitDetails, _impl_.comment_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
+  }}, {{
+    "\47\0\4\6\7\0\0\0"
+    "kentik.deviceconf.v202511.CommitDetails"
+    "user"
+    "method"
+    "comment"
+  }},
+};
+
+PROTOBUF_NOINLINE void CommitDetails::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.deviceconf.v202511.CommitDetails)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.user_.ClearToEmpty();
+  _impl_.method_.ClearToEmpty();
+  _impl_.comment_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.time_ != nullptr);
+    _impl_.time_->Clear();
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* CommitDetails::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const CommitDetails& this_ = static_cast<const CommitDetails&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* CommitDetails::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const CommitDetails& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:kentik.deviceconf.v202511.CommitDetails)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          cached_has_bits = this_._impl_._has_bits_[0];
+          // .google.protobuf.Timestamp time = 1 [json_name = "time"];
+          if (cached_has_bits & 0x00000001u) {
+            target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                1, *this_._impl_.time_, this_._impl_.time_->GetCachedSize(), target,
+                stream);
+          }
+
+          // string user = 2 [json_name = "user"];
+          if (!this_._internal_user().empty()) {
+            const std::string& _s = this_._internal_user();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.deviceconf.v202511.CommitDetails.user");
+            target = stream->WriteStringMaybeAliased(2, _s, target);
+          }
+
+          // string method = 3 [json_name = "method"];
+          if (!this_._internal_method().empty()) {
+            const std::string& _s = this_._internal_method();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.deviceconf.v202511.CommitDetails.method");
+            target = stream->WriteStringMaybeAliased(3, _s, target);
+          }
+
+          // string comment = 4 [json_name = "comment"];
+          if (!this_._internal_comment().empty()) {
+            const std::string& _s = this_._internal_comment();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.deviceconf.v202511.CommitDetails.comment");
+            target = stream->WriteStringMaybeAliased(4, _s, target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:kentik.deviceconf.v202511.CommitDetails)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t CommitDetails::ByteSizeLong(const MessageLite& base) {
+          const CommitDetails& this_ = static_cast<const CommitDetails&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t CommitDetails::ByteSizeLong() const {
+          const CommitDetails& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:kentik.deviceconf.v202511.CommitDetails)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // string user = 2 [json_name = "user"];
+            if (!this_._internal_user().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_user());
+            }
+            // string method = 3 [json_name = "method"];
+            if (!this_._internal_method().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_method());
+            }
+            // string comment = 4 [json_name = "comment"];
+            if (!this_._internal_comment().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_comment());
+            }
+          }
+           {
+            // .google.protobuf.Timestamp time = 1 [json_name = "time"];
+            cached_has_bits = this_._impl_._has_bits_[0];
+            if (cached_has_bits & 0x00000001u) {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.time_);
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void CommitDetails::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<CommitDetails*>(&to_msg);
+  auto& from = static_cast<const CommitDetails&>(from_msg);
+  ::google::protobuf::Arena* arena = _this->GetArena();
+  // @@protoc_insertion_point(class_specific_merge_from_start:kentik.deviceconf.v202511.CommitDetails)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_user().empty()) {
+    _this->_internal_set_user(from._internal_user());
+  }
+  if (!from._internal_method().empty()) {
+    _this->_internal_set_method(from._internal_method());
+  }
+  if (!from._internal_comment().empty()) {
+    _this->_internal_set_comment(from._internal_comment());
+  }
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(from._impl_.time_ != nullptr);
+    if (_this->_impl_.time_ == nullptr) {
+      _this->_impl_.time_ =
+          ::google::protobuf::Message::CopyConstruct<::google::protobuf::Timestamp>(arena, *from._impl_.time_);
+    } else {
+      _this->_impl_.time_->MergeFrom(*from._impl_.time_);
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void CommitDetails::CopyFrom(const CommitDetails& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.deviceconf.v202511.CommitDetails)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void CommitDetails::InternalSwap(CommitDetails* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.user_, &other->_impl_.user_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.method_, &other->_impl_.method_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.comment_, &other->_impl_.comment_, arena);
+  swap(_impl_.time_, other->_impl_.time_);
+}
+
+::google::protobuf::Metadata CommitDetails::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
 class Snapshot::_Internal {
  public:
   using HasBits =
@@ -619,6 +1030,9 @@ Snapshot::Snapshot(
   _impl_.first_fetched_ = (cached_has_bits & 0x00000004u) ? ::google::protobuf::Message::CopyConstruct<::google::protobuf::Timestamp>(
                               arena, *from._impl_.first_fetched_)
                         : nullptr;
+  _impl_.commit_details_ = (cached_has_bits & 0x00000008u) ? ::google::protobuf::Message::CopyConstruct<::kentik::deviceconf::v202511::CommitDetails>(
+                              arena, *from._impl_.commit_details_)
+                        : nullptr;
   ::memcpy(reinterpret_cast<char *>(&_impl_) +
                offsetof(Impl_, fetch_error_),
            reinterpret_cast<const char *>(&from._impl_) +
@@ -664,6 +1078,7 @@ inline void Snapshot::SharedDtor(MessageLite& self) {
   delete this_._impl_.revision_;
   delete this_._impl_.diff_revision_;
   delete this_._impl_.first_fetched_;
+  delete this_._impl_.commit_details_;
   this_._impl_.~Impl_();
 }
 
@@ -703,16 +1118,16 @@ const ::google::protobuf::internal::ClassData* Snapshot::GetClassData() const {
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<4, 10, 3, 74, 2> Snapshot::_table_ = {
+const ::_pbi::TcParseTable<4, 11, 4, 74, 2> Snapshot::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(Snapshot, _impl_._has_bits_),
     0, // no _extensions_
-    10, 120,  // max_field_number, fast_idx_mask
+    11, 120,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294966272,  // skipmap
+    4294965248,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    10,  // num_field_entries
-    3,  // num_aux_entries
+    11,  // num_field_entries
+    4,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
     nullptr,  // post_loop_handler
@@ -752,7 +1167,9 @@ const ::_pbi::TcParseTable<4, 10, 3, 74, 2> Snapshot::_table_ = {
     // .google.protobuf.Timestamp first_fetched = 10 [json_name = "firstFetched"];
     {::_pbi::TcParser::FastMtS1,
      {82, 2, 2, PROTOBUF_FIELD_OFFSET(Snapshot, _impl_.first_fetched_)}},
-    {::_pbi::TcParser::MiniParse, {}},
+    // .kentik.deviceconf.v202511.CommitDetails commit_details = 11 [json_name = "commitDetails"];
+    {::_pbi::TcParser::FastMtS1,
+     {90, 3, 3, PROTOBUF_FIELD_OFFSET(Snapshot, _impl_.commit_details_)}},
     {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
@@ -790,10 +1207,14 @@ const ::_pbi::TcParseTable<4, 10, 3, 74, 2> Snapshot::_table_ = {
     // .google.protobuf.Timestamp first_fetched = 10 [json_name = "firstFetched"];
     {PROTOBUF_FIELD_OFFSET(Snapshot, _impl_.first_fetched_), _Internal::kHasBitsOffset + 2, 2,
     (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // .kentik.deviceconf.v202511.CommitDetails commit_details = 11 [json_name = "commitDetails"];
+    {PROTOBUF_FIELD_OFFSET(Snapshot, _impl_.commit_details_), _Internal::kHasBitsOffset + 3, 3,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
   }}, {{
     {::_pbi::TcParser::GetTable<::kentik::deviceconf::v202511::Revision>()},
     {::_pbi::TcParser::GetTable<::kentik::deviceconf::v202511::Revision>()},
     {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
+    {::_pbi::TcParser::GetTable<::kentik::deviceconf::v202511::CommitDetails>()},
   }}, {{
     "\42\10\11\0\0\0\0\6\0\0\0\0\0\0\0\0"
     "kentik.deviceconf.v202511.Snapshot"
@@ -816,7 +1237,7 @@ PROTOBUF_NOINLINE void Snapshot::Clear() {
   _impl_.digest_.ClearToEmpty();
   _impl_.diff_data_.ClearToEmpty();
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000007u) {
+  if (cached_has_bits & 0x0000000fu) {
     if (cached_has_bits & 0x00000001u) {
       ABSL_DCHECK(_impl_.revision_ != nullptr);
       _impl_.revision_->Clear();
@@ -828,6 +1249,10 @@ PROTOBUF_NOINLINE void Snapshot::Clear() {
     if (cached_has_bits & 0x00000004u) {
       ABSL_DCHECK(_impl_.first_fetched_ != nullptr);
       _impl_.first_fetched_->Clear();
+    }
+    if (cached_has_bits & 0x00000008u) {
+      ABSL_DCHECK(_impl_.commit_details_ != nullptr);
+      _impl_.commit_details_->Clear();
     }
   }
   ::memset(&_impl_.fetch_error_, 0, static_cast<::size_t>(
@@ -924,6 +1349,13 @@ PROTOBUF_NOINLINE void Snapshot::Clear() {
                 stream);
           }
 
+          // .kentik.deviceconf.v202511.CommitDetails commit_details = 11 [json_name = "commitDetails"];
+          if (cached_has_bits & 0x00000008u) {
+            target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                11, *this_._impl_.commit_details_, this_._impl_.commit_details_->GetCachedSize(), target,
+                stream);
+          }
+
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -976,7 +1408,7 @@ PROTOBUF_NOINLINE void Snapshot::Clear() {
             }
           }
           cached_has_bits = this_._impl_._has_bits_[0];
-          if (cached_has_bits & 0x00000007u) {
+          if (cached_has_bits & 0x0000000fu) {
             // .kentik.deviceconf.v202511.Revision revision = 3 [json_name = "revision"];
             if (cached_has_bits & 0x00000001u) {
               total_size += 1 +
@@ -991,6 +1423,11 @@ PROTOBUF_NOINLINE void Snapshot::Clear() {
             if (cached_has_bits & 0x00000004u) {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.first_fetched_);
+            }
+            // .kentik.deviceconf.v202511.CommitDetails commit_details = 11 [json_name = "commitDetails"];
+            if (cached_has_bits & 0x00000008u) {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.commit_details_);
             }
           }
            {
@@ -1033,7 +1470,7 @@ void Snapshot::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google
     _this->_internal_set_diff_data(from._internal_diff_data());
   }
   cached_has_bits = from._impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000007u) {
+  if (cached_has_bits & 0x0000000fu) {
     if (cached_has_bits & 0x00000001u) {
       ABSL_DCHECK(from._impl_.revision_ != nullptr);
       if (_this->_impl_.revision_ == nullptr) {
@@ -1059,6 +1496,15 @@ void Snapshot::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google
             ::google::protobuf::Message::CopyConstruct<::google::protobuf::Timestamp>(arena, *from._impl_.first_fetched_);
       } else {
         _this->_impl_.first_fetched_->MergeFrom(*from._impl_.first_fetched_);
+      }
+    }
+    if (cached_has_bits & 0x00000008u) {
+      ABSL_DCHECK(from._impl_.commit_details_ != nullptr);
+      if (_this->_impl_.commit_details_ == nullptr) {
+        _this->_impl_.commit_details_ =
+            ::google::protobuf::Message::CopyConstruct<::kentik::deviceconf::v202511::CommitDetails>(arena, *from._impl_.commit_details_);
+      } else {
+        _this->_impl_.commit_details_->MergeFrom(*from._impl_.commit_details_);
       }
     }
   }
@@ -1146,6 +1592,9 @@ ChangeEvent::ChangeEvent(
   _impl_.revision_ = (cached_has_bits & 0x00000001u) ? ::google::protobuf::Message::CopyConstruct<::kentik::deviceconf::v202511::Revision>(
                               arena, *from._impl_.revision_)
                         : nullptr;
+  _impl_.commit_details_ = (cached_has_bits & 0x00000002u) ? ::google::protobuf::Message::CopyConstruct<::kentik::deviceconf::v202511::CommitDetails>(
+                              arena, *from._impl_.commit_details_)
+                        : nullptr;
   _impl_.fetch_error_ = from._impl_.fetch_error_;
 
   // @@protoc_insertion_point(copy_constructor:kentik.deviceconf.v202511.ChangeEvent)
@@ -1177,6 +1626,7 @@ inline void ChangeEvent::SharedDtor(MessageLite& self) {
   this_._impl_.agent_id_.Destroy();
   this_._impl_.device_id_.Destroy();
   delete this_._impl_.revision_;
+  delete this_._impl_.commit_details_;
   this_._impl_.~Impl_();
 }
 
@@ -1216,16 +1666,16 @@ const ::google::protobuf::internal::ClassData* ChangeEvent::GetClassData() const
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 4, 1, 63, 2> ChangeEvent::_table_ = {
+const ::_pbi::TcParseTable<3, 5, 2, 63, 2> ChangeEvent::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(ChangeEvent, _impl_._has_bits_),
     0, // no _extensions_
-    4, 24,  // max_field_number, fast_idx_mask
+    5, 56,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967280,  // skipmap
+    4294967264,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    4,  // num_field_entries
-    1,  // num_aux_entries
+    5,  // num_field_entries
+    2,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
     nullptr,  // post_loop_handler
@@ -1234,9 +1684,7 @@ const ::_pbi::TcParseTable<2, 4, 1, 63, 2> ChangeEvent::_table_ = {
     ::_pbi::TcParser::GetTable<::kentik::deviceconf::v202511::ChangeEvent>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // bool fetch_error = 4 [json_name = "fetchError"];
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(ChangeEvent, _impl_.fetch_error_), 63>(),
-     {32, 63, 0, PROTOBUF_FIELD_OFFSET(ChangeEvent, _impl_.fetch_error_)}},
+    {::_pbi::TcParser::MiniParse, {}},
     // string agent_id = 1 [json_name = "agentId"];
     {::_pbi::TcParser::FastUS1,
      {10, 63, 0, PROTOBUF_FIELD_OFFSET(ChangeEvent, _impl_.agent_id_)}},
@@ -1246,6 +1694,14 @@ const ::_pbi::TcParseTable<2, 4, 1, 63, 2> ChangeEvent::_table_ = {
     // .kentik.deviceconf.v202511.Revision revision = 3 [json_name = "revision"];
     {::_pbi::TcParser::FastMtS1,
      {26, 0, 0, PROTOBUF_FIELD_OFFSET(ChangeEvent, _impl_.revision_)}},
+    // bool fetch_error = 4 [json_name = "fetchError"];
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(ChangeEvent, _impl_.fetch_error_), 63>(),
+     {32, 63, 0, PROTOBUF_FIELD_OFFSET(ChangeEvent, _impl_.fetch_error_)}},
+    // .kentik.deviceconf.v202511.CommitDetails commit_details = 5 [json_name = "commitDetails"];
+    {::_pbi::TcParser::FastMtS1,
+     {42, 1, 1, PROTOBUF_FIELD_OFFSET(ChangeEvent, _impl_.commit_details_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
   }}, {{
@@ -1261,8 +1717,12 @@ const ::_pbi::TcParseTable<2, 4, 1, 63, 2> ChangeEvent::_table_ = {
     // bool fetch_error = 4 [json_name = "fetchError"];
     {PROTOBUF_FIELD_OFFSET(ChangeEvent, _impl_.fetch_error_), -1, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kBool)},
+    // .kentik.deviceconf.v202511.CommitDetails commit_details = 5 [json_name = "commitDetails"];
+    {PROTOBUF_FIELD_OFFSET(ChangeEvent, _impl_.commit_details_), _Internal::kHasBitsOffset + 1, 1,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
   }}, {{
     {::_pbi::TcParser::GetTable<::kentik::deviceconf::v202511::Revision>()},
+    {::_pbi::TcParser::GetTable<::kentik::deviceconf::v202511::CommitDetails>()},
   }}, {{
     "\45\10\11\0\0\0\0\0"
     "kentik.deviceconf.v202511.ChangeEvent"
@@ -1281,9 +1741,15 @@ PROTOBUF_NOINLINE void ChangeEvent::Clear() {
   _impl_.agent_id_.ClearToEmpty();
   _impl_.device_id_.ClearToEmpty();
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    ABSL_DCHECK(_impl_.revision_ != nullptr);
-    _impl_.revision_->Clear();
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      ABSL_DCHECK(_impl_.revision_ != nullptr);
+      _impl_.revision_->Clear();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      ABSL_DCHECK(_impl_.commit_details_ != nullptr);
+      _impl_.commit_details_->Clear();
+    }
   }
   _impl_.fetch_error_ = false;
   _impl_._has_bits_.Clear();
@@ -1336,6 +1802,13 @@ PROTOBUF_NOINLINE void ChangeEvent::Clear() {
                 4, this_._internal_fetch_error(), target);
           }
 
+          // .kentik.deviceconf.v202511.CommitDetails commit_details = 5 [json_name = "commitDetails"];
+          if (cached_has_bits & 0x00000002u) {
+            target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                5, *this_._impl_.commit_details_, this_._impl_.commit_details_->GetCachedSize(), target,
+                stream);
+          }
+
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -1372,12 +1845,17 @@ PROTOBUF_NOINLINE void ChangeEvent::Clear() {
                                               this_._internal_device_id());
             }
           }
-           {
+          cached_has_bits = this_._impl_._has_bits_[0];
+          if (cached_has_bits & 0x00000003u) {
             // .kentik.deviceconf.v202511.Revision revision = 3 [json_name = "revision"];
-            cached_has_bits = this_._impl_._has_bits_[0];
             if (cached_has_bits & 0x00000001u) {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.revision_);
+            }
+            // .kentik.deviceconf.v202511.CommitDetails commit_details = 5 [json_name = "commitDetails"];
+            if (cached_has_bits & 0x00000002u) {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.commit_details_);
             }
           }
            {
@@ -1406,13 +1884,24 @@ void ChangeEvent::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::goo
     _this->_internal_set_device_id(from._internal_device_id());
   }
   cached_has_bits = from._impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    ABSL_DCHECK(from._impl_.revision_ != nullptr);
-    if (_this->_impl_.revision_ == nullptr) {
-      _this->_impl_.revision_ =
-          ::google::protobuf::Message::CopyConstruct<::kentik::deviceconf::v202511::Revision>(arena, *from._impl_.revision_);
-    } else {
-      _this->_impl_.revision_->MergeFrom(*from._impl_.revision_);
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      ABSL_DCHECK(from._impl_.revision_ != nullptr);
+      if (_this->_impl_.revision_ == nullptr) {
+        _this->_impl_.revision_ =
+            ::google::protobuf::Message::CopyConstruct<::kentik::deviceconf::v202511::Revision>(arena, *from._impl_.revision_);
+      } else {
+        _this->_impl_.revision_->MergeFrom(*from._impl_.revision_);
+      }
+    }
+    if (cached_has_bits & 0x00000002u) {
+      ABSL_DCHECK(from._impl_.commit_details_ != nullptr);
+      if (_this->_impl_.commit_details_ == nullptr) {
+        _this->_impl_.commit_details_ =
+            ::google::protobuf::Message::CopyConstruct<::kentik::deviceconf::v202511::CommitDetails>(arena, *from._impl_.commit_details_);
+      } else {
+        _this->_impl_.commit_details_->MergeFrom(*from._impl_.commit_details_);
+      }
     }
   }
   if (from._internal_fetch_error() != 0) {

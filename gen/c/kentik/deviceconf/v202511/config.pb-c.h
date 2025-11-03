@@ -17,6 +17,7 @@ PROTOBUF_C__BEGIN_DECLS
 #include "google/protobuf/timestamp.pb-c.h"
 
 typedef struct Kentik__Deviceconf__V202511__Revision Kentik__Deviceconf__V202511__Revision;
+typedef struct Kentik__Deviceconf__V202511__CommitDetails Kentik__Deviceconf__V202511__CommitDetails;
 typedef struct Kentik__Deviceconf__V202511__Snapshot Kentik__Deviceconf__V202511__Snapshot;
 typedef struct Kentik__Deviceconf__V202511__ChangeEvent Kentik__Deviceconf__V202511__ChangeEvent;
 
@@ -46,6 +47,19 @@ struct  Kentik__Deviceconf__V202511__Revision
     , (char *)protobuf_c_empty_string, NULL }
 
 
+struct  Kentik__Deviceconf__V202511__CommitDetails
+{
+  ProtobufCMessage base;
+  Google__Protobuf__Timestamp *time;
+  char *user;
+  char *method;
+  char *comment;
+};
+#define KENTIK__DEVICECONF__V202511__COMMIT_DETAILS__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__deviceconf__v202511__commit_details__descriptor) \
+    , NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
+
+
 struct  Kentik__Deviceconf__V202511__Snapshot
 {
   ProtobufCMessage base;
@@ -68,10 +82,11 @@ struct  Kentik__Deviceconf__V202511__Snapshot
   ProtobufCBinaryData diff_data;
   Kentik__Deviceconf__V202511__Revision *diff_revision;
   Google__Protobuf__Timestamp *first_fetched;
+  Kentik__Deviceconf__V202511__CommitDetails *commit_details;
 };
 #define KENTIK__DEVICECONF__V202511__SNAPSHOT__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__deviceconf__v202511__snapshot__descriptor) \
-    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, 0, KENTIK__DEVICECONF__V202511__CONFIG_ENCODING__CONFIG_ENCODING_UNSPECIFIED, {0,NULL}, (char *)protobuf_c_empty_string, {0,NULL}, NULL, NULL }
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, 0, KENTIK__DEVICECONF__V202511__CONFIG_ENCODING__CONFIG_ENCODING_UNSPECIFIED, {0,NULL}, (char *)protobuf_c_empty_string, {0,NULL}, NULL, NULL, NULL }
 
 
 /*
@@ -87,10 +102,11 @@ struct  Kentik__Deviceconf__V202511__ChangeEvent
   char *device_id;
   Kentik__Deviceconf__V202511__Revision *revision;
   protobuf_c_boolean fetch_error;
+  Kentik__Deviceconf__V202511__CommitDetails *commit_details;
 };
 #define KENTIK__DEVICECONF__V202511__CHANGE_EVENT__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__deviceconf__v202511__change_event__descriptor) \
-    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, 0 }
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, 0, NULL }
 
 
 /* Kentik__Deviceconf__V202511__Revision methods */
@@ -111,6 +127,25 @@ Kentik__Deviceconf__V202511__Revision *
                       const uint8_t       *data);
 void   kentik__deviceconf__v202511__revision__free_unpacked
                      (Kentik__Deviceconf__V202511__Revision *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Deviceconf__V202511__CommitDetails methods */
+void   kentik__deviceconf__v202511__commit_details__init
+                     (Kentik__Deviceconf__V202511__CommitDetails         *message);
+size_t kentik__deviceconf__v202511__commit_details__get_packed_size
+                     (const Kentik__Deviceconf__V202511__CommitDetails   *message);
+size_t kentik__deviceconf__v202511__commit_details__pack
+                     (const Kentik__Deviceconf__V202511__CommitDetails   *message,
+                      uint8_t             *out);
+size_t kentik__deviceconf__v202511__commit_details__pack_to_buffer
+                     (const Kentik__Deviceconf__V202511__CommitDetails   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Deviceconf__V202511__CommitDetails *
+       kentik__deviceconf__v202511__commit_details__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__deviceconf__v202511__commit_details__free_unpacked
+                     (Kentik__Deviceconf__V202511__CommitDetails *message,
                       ProtobufCAllocator *allocator);
 /* Kentik__Deviceconf__V202511__Snapshot methods */
 void   kentik__deviceconf__v202511__snapshot__init
@@ -155,6 +190,9 @@ void   kentik__deviceconf__v202511__change_event__free_unpacked
 typedef void (*Kentik__Deviceconf__V202511__Revision_Closure)
                  (const Kentik__Deviceconf__V202511__Revision *message,
                   void *closure_data);
+typedef void (*Kentik__Deviceconf__V202511__CommitDetails_Closure)
+                 (const Kentik__Deviceconf__V202511__CommitDetails *message,
+                  void *closure_data);
 typedef void (*Kentik__Deviceconf__V202511__Snapshot_Closure)
                  (const Kentik__Deviceconf__V202511__Snapshot *message,
                   void *closure_data);
@@ -169,6 +207,7 @@ typedef void (*Kentik__Deviceconf__V202511__ChangeEvent_Closure)
 
 extern const ProtobufCEnumDescriptor    kentik__deviceconf__v202511__config_encoding__descriptor;
 extern const ProtobufCMessageDescriptor kentik__deviceconf__v202511__revision__descriptor;
+extern const ProtobufCMessageDescriptor kentik__deviceconf__v202511__commit_details__descriptor;
 extern const ProtobufCMessageDescriptor kentik__deviceconf__v202511__snapshot__descriptor;
 extern const ProtobufCMessageDescriptor kentik__deviceconf__v202511__change_event__descriptor;
 

@@ -52,6 +52,51 @@ void   kentik__deviceconf__v202511__revision__free_unpacked
   assert(message->base.descriptor == &kentik__deviceconf__v202511__revision__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   kentik__deviceconf__v202511__commit_details__init
+                     (Kentik__Deviceconf__V202511__CommitDetails         *message)
+{
+  static const Kentik__Deviceconf__V202511__CommitDetails init_value = KENTIK__DEVICECONF__V202511__COMMIT_DETAILS__INIT;
+  *message = init_value;
+}
+size_t kentik__deviceconf__v202511__commit_details__get_packed_size
+                     (const Kentik__Deviceconf__V202511__CommitDetails *message)
+{
+  assert(message->base.descriptor == &kentik__deviceconf__v202511__commit_details__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__deviceconf__v202511__commit_details__pack
+                     (const Kentik__Deviceconf__V202511__CommitDetails *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__deviceconf__v202511__commit_details__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__deviceconf__v202511__commit_details__pack_to_buffer
+                     (const Kentik__Deviceconf__V202511__CommitDetails *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__deviceconf__v202511__commit_details__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Deviceconf__V202511__CommitDetails *
+       kentik__deviceconf__v202511__commit_details__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Deviceconf__V202511__CommitDetails *)
+     protobuf_c_message_unpack (&kentik__deviceconf__v202511__commit_details__descriptor,
+                                allocator, len, data);
+}
+void   kentik__deviceconf__v202511__commit_details__free_unpacked
+                     (Kentik__Deviceconf__V202511__CommitDetails *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__deviceconf__v202511__commit_details__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 void   kentik__deviceconf__v202511__snapshot__init
                      (Kentik__Deviceconf__V202511__Snapshot         *message)
 {
@@ -193,7 +238,84 @@ const ProtobufCMessageDescriptor kentik__deviceconf__v202511__revision__descript
   (ProtobufCMessageInit) kentik__deviceconf__v202511__revision__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__deviceconf__v202511__snapshot__field_descriptors[10] =
+static const ProtobufCFieldDescriptor kentik__deviceconf__v202511__commit_details__field_descriptors[4] =
+{
+  {
+    "time",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Deviceconf__V202511__CommitDetails, time),
+    &google__protobuf__timestamp__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "user",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Deviceconf__V202511__CommitDetails, user),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "method",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Deviceconf__V202511__CommitDetails, method),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "comment",
+    4,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Deviceconf__V202511__CommitDetails, comment),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__deviceconf__v202511__commit_details__field_indices_by_name[] = {
+  3,   /* field[3] = comment */
+  2,   /* field[2] = method */
+  0,   /* field[0] = time */
+  1,   /* field[1] = user */
+};
+static const ProtobufCIntRange kentik__deviceconf__v202511__commit_details__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 4 }
+};
+const ProtobufCMessageDescriptor kentik__deviceconf__v202511__commit_details__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.deviceconf.v202511.CommitDetails",
+  "CommitDetails",
+  "Kentik__Deviceconf__V202511__CommitDetails",
+  "kentik.deviceconf.v202511",
+  sizeof(Kentik__Deviceconf__V202511__CommitDetails),
+  4,
+  kentik__deviceconf__v202511__commit_details__field_descriptors,
+  kentik__deviceconf__v202511__commit_details__field_indices_by_name,
+  1,  kentik__deviceconf__v202511__commit_details__number_ranges,
+  (ProtobufCMessageInit) kentik__deviceconf__v202511__commit_details__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__deviceconf__v202511__snapshot__field_descriptors[11] =
 {
   {
     "agent_id",
@@ -315,9 +437,22 @@ static const ProtobufCFieldDescriptor kentik__deviceconf__v202511__snapshot__fie
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "commit_details",
+    11,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Deviceconf__V202511__Snapshot, commit_details),
+    &kentik__deviceconf__v202511__commit_details__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__deviceconf__v202511__snapshot__field_indices_by_name[] = {
   0,   /* field[0] = agent_id */
+  10,   /* field[10] = commit_details */
   5,   /* field[5] = config_data */
   1,   /* field[1] = device_id */
   7,   /* field[7] = diff_data */
@@ -331,7 +466,7 @@ static const unsigned kentik__deviceconf__v202511__snapshot__field_indices_by_na
 static const ProtobufCIntRange kentik__deviceconf__v202511__snapshot__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 10 }
+  { 0, 11 }
 };
 const ProtobufCMessageDescriptor kentik__deviceconf__v202511__snapshot__descriptor =
 {
@@ -341,14 +476,14 @@ const ProtobufCMessageDescriptor kentik__deviceconf__v202511__snapshot__descript
   "Kentik__Deviceconf__V202511__Snapshot",
   "kentik.deviceconf.v202511",
   sizeof(Kentik__Deviceconf__V202511__Snapshot),
-  10,
+  11,
   kentik__deviceconf__v202511__snapshot__field_descriptors,
   kentik__deviceconf__v202511__snapshot__field_indices_by_name,
   1,  kentik__deviceconf__v202511__snapshot__number_ranges,
   (ProtobufCMessageInit) kentik__deviceconf__v202511__snapshot__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__deviceconf__v202511__change_event__field_descriptors[4] =
+static const ProtobufCFieldDescriptor kentik__deviceconf__v202511__change_event__field_descriptors[5] =
 {
   {
     "agent_id",
@@ -398,9 +533,22 @@ static const ProtobufCFieldDescriptor kentik__deviceconf__v202511__change_event_
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "commit_details",
+    5,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Deviceconf__V202511__ChangeEvent, commit_details),
+    &kentik__deviceconf__v202511__commit_details__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__deviceconf__v202511__change_event__field_indices_by_name[] = {
   0,   /* field[0] = agent_id */
+  4,   /* field[4] = commit_details */
   1,   /* field[1] = device_id */
   3,   /* field[3] = fetch_error */
   2,   /* field[2] = revision */
@@ -408,7 +556,7 @@ static const unsigned kentik__deviceconf__v202511__change_event__field_indices_b
 static const ProtobufCIntRange kentik__deviceconf__v202511__change_event__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 4 }
+  { 0, 5 }
 };
 const ProtobufCMessageDescriptor kentik__deviceconf__v202511__change_event__descriptor =
 {
@@ -418,7 +566,7 @@ const ProtobufCMessageDescriptor kentik__deviceconf__v202511__change_event__desc
   "Kentik__Deviceconf__V202511__ChangeEvent",
   "kentik.deviceconf.v202511",
   sizeof(Kentik__Deviceconf__V202511__ChangeEvent),
-  4,
+  5,
   kentik__deviceconf__v202511__change_event__field_descriptors,
   kentik__deviceconf__v202511__change_event__field_indices_by_name,
   1,  kentik__deviceconf__v202511__change_event__number_ranges,
