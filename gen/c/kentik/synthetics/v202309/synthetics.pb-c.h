@@ -65,6 +65,8 @@ typedef struct Kentik__Synthetics__V202309__TraceHop Kentik__Synthetics__V202309
 typedef struct Kentik__Synthetics__V202309__PathTrace Kentik__Synthetics__V202309__PathTrace;
 typedef struct Kentik__Synthetics__V202309__Path Kentik__Synthetics__V202309__Path;
 typedef struct Kentik__Synthetics__V202309__GetResultsForTestsRequest Kentik__Synthetics__V202309__GetResultsForTestsRequest;
+typedef struct Kentik__Synthetics__V202309__GetResultsForTestsCsvRequest Kentik__Synthetics__V202309__GetResultsForTestsCsvRequest;
+typedef struct Kentik__Synthetics__V202309__GetResultsForTestsCsvResponse Kentik__Synthetics__V202309__GetResultsForTestsCsvResponse;
 typedef struct Kentik__Synthetics__V202309__GetResultsForTestsResponse Kentik__Synthetics__V202309__GetResultsForTestsResponse;
 typedef struct Kentik__Synthetics__V202309__GetTraceForTestRequest Kentik__Synthetics__V202309__GetTraceForTestRequest;
 typedef struct Kentik__Synthetics__V202309__GetTraceForTestResponse Kentik__Synthetics__V202309__GetTraceForTestResponse;
@@ -1080,6 +1082,36 @@ struct  Kentik__Synthetics__V202309__GetResultsForTestsRequest
 #define KENTIK__SYNTHETICS__V202309__GET_RESULTS_FOR_TESTS_REQUEST__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__synthetics__v202309__get_results_for_tests_request__descriptor) \
     , 0,NULL, NULL, NULL, 0,NULL, 0,NULL, 0 }
+
+
+struct  Kentik__Synthetics__V202309__GetResultsForTestsCsvRequest
+{
+  ProtobufCMessage base;
+  size_t n_ids;
+  char **ids;
+  Google__Protobuf__Timestamp *start_time;
+  Google__Protobuf__Timestamp *end_time;
+  size_t n_agent_ids;
+  char **agent_ids;
+  protobuf_c_boolean aggregate;
+};
+#define KENTIK__SYNTHETICS__V202309__GET_RESULTS_FOR_TESTS_CSV_REQUEST__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__synthetics__v202309__get_results_for_tests_csv_request__descriptor) \
+    , 0,NULL, NULL, NULL, 0,NULL, 0 }
+
+
+/*
+ * {{.Name}}
+ */
+struct  Kentik__Synthetics__V202309__GetResultsForTestsCsvResponse
+{
+  ProtobufCMessage base;
+  char *content_type;
+  ProtobufCBinaryData data;
+};
+#define KENTIK__SYNTHETICS__V202309__GET_RESULTS_FOR_TESTS_CSV_RESPONSE__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__synthetics__v202309__get_results_for_tests_csv_response__descriptor) \
+    , (char *)protobuf_c_empty_string, {0,NULL} }
 
 
 /*
@@ -2280,6 +2312,44 @@ Kentik__Synthetics__V202309__GetResultsForTestsRequest *
 void   kentik__synthetics__v202309__get_results_for_tests_request__free_unpacked
                      (Kentik__Synthetics__V202309__GetResultsForTestsRequest *message,
                       ProtobufCAllocator *allocator);
+/* Kentik__Synthetics__V202309__GetResultsForTestsCsvRequest methods */
+void   kentik__synthetics__v202309__get_results_for_tests_csv_request__init
+                     (Kentik__Synthetics__V202309__GetResultsForTestsCsvRequest         *message);
+size_t kentik__synthetics__v202309__get_results_for_tests_csv_request__get_packed_size
+                     (const Kentik__Synthetics__V202309__GetResultsForTestsCsvRequest   *message);
+size_t kentik__synthetics__v202309__get_results_for_tests_csv_request__pack
+                     (const Kentik__Synthetics__V202309__GetResultsForTestsCsvRequest   *message,
+                      uint8_t             *out);
+size_t kentik__synthetics__v202309__get_results_for_tests_csv_request__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__GetResultsForTestsCsvRequest   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Synthetics__V202309__GetResultsForTestsCsvRequest *
+       kentik__synthetics__v202309__get_results_for_tests_csv_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__synthetics__v202309__get_results_for_tests_csv_request__free_unpacked
+                     (Kentik__Synthetics__V202309__GetResultsForTestsCsvRequest *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Synthetics__V202309__GetResultsForTestsCsvResponse methods */
+void   kentik__synthetics__v202309__get_results_for_tests_csv_response__init
+                     (Kentik__Synthetics__V202309__GetResultsForTestsCsvResponse         *message);
+size_t kentik__synthetics__v202309__get_results_for_tests_csv_response__get_packed_size
+                     (const Kentik__Synthetics__V202309__GetResultsForTestsCsvResponse   *message);
+size_t kentik__synthetics__v202309__get_results_for_tests_csv_response__pack
+                     (const Kentik__Synthetics__V202309__GetResultsForTestsCsvResponse   *message,
+                      uint8_t             *out);
+size_t kentik__synthetics__v202309__get_results_for_tests_csv_response__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__GetResultsForTestsCsvResponse   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Synthetics__V202309__GetResultsForTestsCsvResponse *
+       kentik__synthetics__v202309__get_results_for_tests_csv_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__synthetics__v202309__get_results_for_tests_csv_response__free_unpacked
+                     (Kentik__Synthetics__V202309__GetResultsForTestsCsvResponse *message,
+                      ProtobufCAllocator *allocator);
 /* Kentik__Synthetics__V202309__GetResultsForTestsResponse methods */
 void   kentik__synthetics__v202309__get_results_for_tests_response__init
                      (Kentik__Synthetics__V202309__GetResultsForTestsResponse         *message);
@@ -3060,6 +3130,12 @@ typedef void (*Kentik__Synthetics__V202309__Path_Closure)
 typedef void (*Kentik__Synthetics__V202309__GetResultsForTestsRequest_Closure)
                  (const Kentik__Synthetics__V202309__GetResultsForTestsRequest *message,
                   void *closure_data);
+typedef void (*Kentik__Synthetics__V202309__GetResultsForTestsCsvRequest_Closure)
+                 (const Kentik__Synthetics__V202309__GetResultsForTestsCsvRequest *message,
+                  void *closure_data);
+typedef void (*Kentik__Synthetics__V202309__GetResultsForTestsCsvResponse_Closure)
+                 (const Kentik__Synthetics__V202309__GetResultsForTestsCsvResponse *message,
+                  void *closure_data);
 typedef void (*Kentik__Synthetics__V202309__GetResultsForTestsResponse_Closure)
                  (const Kentik__Synthetics__V202309__GetResultsForTestsResponse *message,
                   void *closure_data);
@@ -3176,6 +3252,10 @@ struct Kentik__Synthetics__V202309__SyntheticsDataService_Service
                                 const Kentik__Synthetics__V202309__GetResultsForTestsRequest *input,
                                 Kentik__Synthetics__V202309__GetResultsForTestsResponse_Closure closure,
                                 void *closure_data);
+  void (*get_results_for_tests_csv)(Kentik__Synthetics__V202309__SyntheticsDataService_Service *service,
+                                    const Kentik__Synthetics__V202309__GetResultsForTestsCsvRequest *input,
+                                    Kentik__Synthetics__V202309__GetResultsForTestsCsvResponse_Closure closure,
+                                    void *closure_data);
   void (*get_trace_for_test)(Kentik__Synthetics__V202309__SyntheticsDataService_Service *service,
                              const Kentik__Synthetics__V202309__GetTraceForTestRequest *input,
                              Kentik__Synthetics__V202309__GetTraceForTestResponse_Closure closure,
@@ -3189,11 +3269,16 @@ void kentik__synthetics__v202309__synthetics_data_service__init (Kentik__Synthet
 #define KENTIK__SYNTHETICS__V202309__SYNTHETICS_DATA_SERVICE__INIT(function_prefix__) \
     { KENTIK__SYNTHETICS__V202309__SYNTHETICS_DATA_SERVICE__BASE_INIT,\
       function_prefix__ ## get_results_for_tests,\
+      function_prefix__ ## get_results_for_tests_csv,\
       function_prefix__ ## get_trace_for_test  }
 void kentik__synthetics__v202309__synthetics_data_service__get_results_for_tests(ProtobufCService *service,
                                                                                  const Kentik__Synthetics__V202309__GetResultsForTestsRequest *input,
                                                                                  Kentik__Synthetics__V202309__GetResultsForTestsResponse_Closure closure,
                                                                                  void *closure_data);
+void kentik__synthetics__v202309__synthetics_data_service__get_results_for_tests_csv(ProtobufCService *service,
+                                                                                     const Kentik__Synthetics__V202309__GetResultsForTestsCsvRequest *input,
+                                                                                     Kentik__Synthetics__V202309__GetResultsForTestsCsvResponse_Closure closure,
+                                                                                     void *closure_data);
 void kentik__synthetics__v202309__synthetics_data_service__get_trace_for_test(ProtobufCService *service,
                                                                               const Kentik__Synthetics__V202309__GetTraceForTestRequest *input,
                                                                               Kentik__Synthetics__V202309__GetTraceForTestResponse_Closure closure,
@@ -3398,6 +3483,8 @@ extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__trace_hop__
 extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__path_trace__descriptor;
 extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__path__descriptor;
 extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__get_results_for_tests_request__descriptor;
+extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__get_results_for_tests_csv_request__descriptor;
+extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__get_results_for_tests_csv_response__descriptor;
 extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__get_results_for_tests_response__descriptor;
 extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__get_trace_for_test_request__descriptor;
 extern const ProtobufCMessageDescriptor kentik__synthetics__v202309__get_trace_for_test_response__descriptor;

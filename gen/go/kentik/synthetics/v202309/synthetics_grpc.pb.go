@@ -21,8 +21,9 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	SyntheticsDataService_GetResultsForTests_FullMethodName = "/kentik.synthetics.v202309.SyntheticsDataService/GetResultsForTests"
-	SyntheticsDataService_GetTraceForTest_FullMethodName    = "/kentik.synthetics.v202309.SyntheticsDataService/GetTraceForTest"
+	SyntheticsDataService_GetResultsForTests_FullMethodName    = "/kentik.synthetics.v202309.SyntheticsDataService/GetResultsForTests"
+	SyntheticsDataService_GetResultsForTestsCsv_FullMethodName = "/kentik.synthetics.v202309.SyntheticsDataService/GetResultsForTestsCsv"
+	SyntheticsDataService_GetTraceForTest_FullMethodName       = "/kentik.synthetics.v202309.SyntheticsDataService/GetTraceForTest"
 )
 
 // SyntheticsDataServiceClient is the client API for SyntheticsDataService service.
@@ -31,6 +32,7 @@ const (
 type SyntheticsDataServiceClient interface {
 	// Get measurement results for a set of tests
 	GetResultsForTests(ctx context.Context, in *GetResultsForTestsRequest, opts ...grpc.CallOption) (*GetResultsForTestsResponse, error)
+	GetResultsForTestsCsv(ctx context.Context, in *GetResultsForTestsCsvRequest, opts ...grpc.CallOption) (*GetResultsForTestsCsvResponse, error)
 	GetTraceForTest(ctx context.Context, in *GetTraceForTestRequest, opts ...grpc.CallOption) (*GetTraceForTestResponse, error)
 }
 
@@ -46,6 +48,16 @@ func (c *syntheticsDataServiceClient) GetResultsForTests(ctx context.Context, in
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetResultsForTestsResponse)
 	err := c.cc.Invoke(ctx, SyntheticsDataService_GetResultsForTests_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *syntheticsDataServiceClient) GetResultsForTestsCsv(ctx context.Context, in *GetResultsForTestsCsvRequest, opts ...grpc.CallOption) (*GetResultsForTestsCsvResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetResultsForTestsCsvResponse)
+	err := c.cc.Invoke(ctx, SyntheticsDataService_GetResultsForTestsCsv_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -68,6 +80,7 @@ func (c *syntheticsDataServiceClient) GetTraceForTest(ctx context.Context, in *G
 type SyntheticsDataServiceServer interface {
 	// Get measurement results for a set of tests
 	GetResultsForTests(context.Context, *GetResultsForTestsRequest) (*GetResultsForTestsResponse, error)
+	GetResultsForTestsCsv(context.Context, *GetResultsForTestsCsvRequest) (*GetResultsForTestsCsvResponse, error)
 	GetTraceForTest(context.Context, *GetTraceForTestRequest) (*GetTraceForTestResponse, error)
 }
 
@@ -80,6 +93,9 @@ type UnimplementedSyntheticsDataServiceServer struct{}
 
 func (UnimplementedSyntheticsDataServiceServer) GetResultsForTests(context.Context, *GetResultsForTestsRequest) (*GetResultsForTestsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetResultsForTests not implemented")
+}
+func (UnimplementedSyntheticsDataServiceServer) GetResultsForTestsCsv(context.Context, *GetResultsForTestsCsvRequest) (*GetResultsForTestsCsvResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetResultsForTestsCsv not implemented")
 }
 func (UnimplementedSyntheticsDataServiceServer) GetTraceForTest(context.Context, *GetTraceForTestRequest) (*GetTraceForTestResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTraceForTest not implemented")
@@ -122,6 +138,24 @@ func _SyntheticsDataService_GetResultsForTests_Handler(srv interface{}, ctx cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SyntheticsDataService_GetResultsForTestsCsv_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetResultsForTestsCsvRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SyntheticsDataServiceServer).GetResultsForTestsCsv(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SyntheticsDataService_GetResultsForTestsCsv_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SyntheticsDataServiceServer).GetResultsForTestsCsv(ctx, req.(*GetResultsForTestsCsvRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _SyntheticsDataService_GetTraceForTest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetTraceForTestRequest)
 	if err := dec(in); err != nil {
@@ -150,6 +184,10 @@ var SyntheticsDataService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetResultsForTests",
 			Handler:    _SyntheticsDataService_GetResultsForTests_Handler,
+		},
+		{
+			MethodName: "GetResultsForTestsCsv",
+			Handler:    _SyntheticsDataService_GetResultsForTestsCsv_Handler,
 		},
 		{
 			MethodName: "GetTraceForTest",

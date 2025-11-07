@@ -147,6 +147,12 @@ extern GetAgentRequestDefaultTypeInternal _GetAgentRequest_default_instance_;
 class GetAgentResponse;
 struct GetAgentResponseDefaultTypeInternal;
 extern GetAgentResponseDefaultTypeInternal _GetAgentResponse_default_instance_;
+class GetResultsForTestsCsvRequest;
+struct GetResultsForTestsCsvRequestDefaultTypeInternal;
+extern GetResultsForTestsCsvRequestDefaultTypeInternal _GetResultsForTestsCsvRequest_default_instance_;
+class GetResultsForTestsCsvResponse;
+struct GetResultsForTestsCsvResponseDefaultTypeInternal;
+extern GetResultsForTestsCsvResponseDefaultTypeInternal _GetResultsForTestsCsvResponse_default_instance_;
 class GetResultsForTestsRequest;
 struct GetResultsForTestsRequestDefaultTypeInternal;
 extern GetResultsForTestsRequestDefaultTypeInternal _GetResultsForTestsRequest_default_instance_;
@@ -666,7 +672,7 @@ class UpdateAgentAlertRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const UpdateAgentAlertRequest*>(
         &_UpdateAgentAlertRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 70;
+  static constexpr int kIndexInFileMessages = 72;
   friend void swap(UpdateAgentAlertRequest& a, UpdateAgentAlertRequest& b) { a.Swap(&b); }
   inline void Swap(UpdateAgentAlertRequest* other) {
     if (other == this) return;
@@ -2099,7 +2105,7 @@ class SetTestStatusResponse final : public ::google::protobuf::internal::ZeroFie
     return reinterpret_cast<const SetTestStatusResponse*>(
         &_SetTestStatusResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 66;
+  static constexpr int kIndexInFileMessages = 68;
   friend void swap(SetTestStatusResponse& a, SetTestStatusResponse& b) { a.Swap(&b); }
   inline void Swap(SetTestStatusResponse* other) {
     if (other == this) return;
@@ -2245,7 +2251,7 @@ class SetTestStatusRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const SetTestStatusRequest*>(
         &_SetTestStatusRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 65;
+  static constexpr int kIndexInFileMessages = 67;
   friend void swap(SetTestStatusRequest& a, SetTestStatusRequest& b) { a.Swap(&b); }
   inline void Swap(SetTestStatusRequest* other) {
     if (other == this) return;
@@ -3630,7 +3636,7 @@ class ListTestsRequest final : public ::google::protobuf::internal::ZeroFieldsBa
     return reinterpret_cast<const ListTestsRequest*>(
         &_ListTestsRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 55;
+  static constexpr int kIndexInFileMessages = 57;
   friend void swap(ListTestsRequest& a, ListTestsRequest& b) { a.Swap(&b); }
   inline void Swap(ListTestsRequest* other) {
     if (other == this) return;
@@ -3775,7 +3781,7 @@ class ListAgentsRequest final : public ::google::protobuf::internal::ZeroFieldsB
     return reinterpret_cast<const ListAgentsRequest*>(
         &_ListAgentsRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 47;
+  static constexpr int kIndexInFileMessages = 49;
   friend void swap(ListAgentsRequest& a, ListAgentsRequest& b) { a.Swap(&b); }
   inline void Swap(ListAgentsRequest* other) {
     if (other == this) return;
@@ -3921,7 +3927,7 @@ class ListAgentAlertsRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const ListAgentAlertsRequest*>(
         &_ListAgentAlertsRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 74;
+  static constexpr int kIndexInFileMessages = 76;
   friend void swap(ListAgentAlertsRequest& a, ListAgentAlertsRequest& b) { a.Swap(&b); }
   inline void Swap(ListAgentAlertsRequest* other) {
     if (other == this) return;
@@ -4994,7 +5000,7 @@ class GetTestRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const GetTestRequest*>(
         &_GetTestRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 59;
+  static constexpr int kIndexInFileMessages = 61;
   friend void swap(GetTestRequest& a, GetTestRequest& b) { a.Swap(&b); }
   inline void Swap(GetTestRequest* other) {
     if (other == this) return;
@@ -5131,6 +5137,220 @@ class GetTestRequest final : public ::google::protobuf::Message
 };
 // -------------------------------------------------------------------
 
+class GetResultsForTestsCsvResponse final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:kentik.synthetics.v202309.GetResultsForTestsCsvResponse) */ {
+ public:
+  inline GetResultsForTestsCsvResponse() : GetResultsForTestsCsvResponse(nullptr) {}
+  ~GetResultsForTestsCsvResponse() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(GetResultsForTestsCsvResponse* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(GetResultsForTestsCsvResponse));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR GetResultsForTestsCsvResponse(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline GetResultsForTestsCsvResponse(const GetResultsForTestsCsvResponse& from) : GetResultsForTestsCsvResponse(nullptr, from) {}
+  inline GetResultsForTestsCsvResponse(GetResultsForTestsCsvResponse&& from) noexcept
+      : GetResultsForTestsCsvResponse(nullptr, std::move(from)) {}
+  inline GetResultsForTestsCsvResponse& operator=(const GetResultsForTestsCsvResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GetResultsForTestsCsvResponse& operator=(GetResultsForTestsCsvResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const GetResultsForTestsCsvResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GetResultsForTestsCsvResponse* internal_default_instance() {
+    return reinterpret_cast<const GetResultsForTestsCsvResponse*>(
+        &_GetResultsForTestsCsvResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 44;
+  friend void swap(GetResultsForTestsCsvResponse& a, GetResultsForTestsCsvResponse& b) { a.Swap(&b); }
+  inline void Swap(GetResultsForTestsCsvResponse* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GetResultsForTestsCsvResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  GetResultsForTestsCsvResponse* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<GetResultsForTestsCsvResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const GetResultsForTestsCsvResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const GetResultsForTestsCsvResponse& from) { GetResultsForTestsCsvResponse::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(GetResultsForTestsCsvResponse* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "kentik.synthetics.v202309.GetResultsForTestsCsvResponse"; }
+
+ protected:
+  explicit GetResultsForTestsCsvResponse(::google::protobuf::Arena* arena);
+  GetResultsForTestsCsvResponse(::google::protobuf::Arena* arena, const GetResultsForTestsCsvResponse& from);
+  GetResultsForTestsCsvResponse(::google::protobuf::Arena* arena, GetResultsForTestsCsvResponse&& from) noexcept
+      : GetResultsForTestsCsvResponse(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kContentTypeFieldNumber = 1,
+    kDataFieldNumber = 2,
+  };
+  // string content_type = 1 [json_name = "contentType", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_content_type() ;
+  const std::string& content_type() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_content_type(Arg_&& arg, Args_... args);
+  std::string* mutable_content_type();
+  PROTOBUF_NODISCARD std::string* release_content_type();
+  void set_allocated_content_type(std::string* value);
+
+  private:
+  const std::string& _internal_content_type() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_content_type(
+      const std::string& value);
+  std::string* _internal_mutable_content_type();
+
+  public:
+  // bytes data = 2 [json_name = "data", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_data() ;
+  const std::string& data() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_data(Arg_&& arg, Args_... args);
+  std::string* mutable_data();
+  PROTOBUF_NODISCARD std::string* release_data();
+  void set_allocated_data(std::string* value);
+
+  private:
+  const std::string& _internal_data() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_data(
+      const std::string& value);
+  std::string* _internal_mutable_data();
+
+  public:
+  // @@protoc_insertion_point(class_scope:kentik.synthetics.v202309.GetResultsForTestsCsvResponse)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 0,
+      76, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const GetResultsForTestsCsvResponse& from_msg);
+    ::google::protobuf::internal::ArenaStringPtr content_type_;
+    ::google::protobuf::internal::ArenaStringPtr data_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto;
+};
+// -------------------------------------------------------------------
+
 class GetAgentRequest final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:kentik.synthetics.v202309.GetAgentRequest) */ {
  public:
@@ -5190,7 +5410,7 @@ class GetAgentRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const GetAgentRequest*>(
         &_GetAgentRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 49;
+  static constexpr int kIndexInFileMessages = 51;
   friend void swap(GetAgentRequest& a, GetAgentRequest& b) { a.Swap(&b); }
   inline void Swap(GetAgentRequest* other) {
     if (other == this) return;
@@ -5386,7 +5606,7 @@ class GetAgentAlertRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const GetAgentAlertRequest*>(
         &_GetAgentAlertRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 72;
+  static constexpr int kIndexInFileMessages = 74;
   friend void swap(GetAgentAlertRequest& a, GetAgentAlertRequest& b) { a.Swap(&b); }
   inline void Swap(GetAgentAlertRequest* other) {
     if (other == this) return;
@@ -6445,7 +6665,7 @@ class DeleteTestResponse final : public ::google::protobuf::internal::ZeroFields
     return reinterpret_cast<const DeleteTestResponse*>(
         &_DeleteTestResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 64;
+  static constexpr int kIndexInFileMessages = 66;
   friend void swap(DeleteTestResponse& a, DeleteTestResponse& b) { a.Swap(&b); }
   inline void Swap(DeleteTestResponse* other) {
     if (other == this) return;
@@ -6591,7 +6811,7 @@ class DeleteTestRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const DeleteTestRequest*>(
         &_DeleteTestRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 63;
+  static constexpr int kIndexInFileMessages = 65;
   friend void swap(DeleteTestRequest& a, DeleteTestRequest& b) { a.Swap(&b); }
   inline void Swap(DeleteTestRequest* other) {
     if (other == this) return;
@@ -6786,7 +7006,7 @@ class DeleteAgentResponse final : public ::google::protobuf::internal::ZeroField
     return reinterpret_cast<const DeleteAgentResponse*>(
         &_DeleteAgentResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 54;
+  static constexpr int kIndexInFileMessages = 56;
   friend void swap(DeleteAgentResponse& a, DeleteAgentResponse& b) { a.Swap(&b); }
   inline void Swap(DeleteAgentResponse* other) {
     if (other == this) return;
@@ -6932,7 +7152,7 @@ class DeleteAgentRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const DeleteAgentRequest*>(
         &_DeleteAgentRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 53;
+  static constexpr int kIndexInFileMessages = 55;
   friend void swap(DeleteAgentRequest& a, DeleteAgentRequest& b) { a.Swap(&b); }
   inline void Swap(DeleteAgentRequest* other) {
     if (other == this) return;
@@ -7127,7 +7347,7 @@ class DeleteAgentAlertResponse final : public ::google::protobuf::internal::Zero
     return reinterpret_cast<const DeleteAgentAlertResponse*>(
         &_DeleteAgentAlertResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 77;
+  static constexpr int kIndexInFileMessages = 79;
   friend void swap(DeleteAgentAlertResponse& a, DeleteAgentAlertResponse& b) { a.Swap(&b); }
   inline void Swap(DeleteAgentAlertResponse* other) {
     if (other == this) return;
@@ -7273,7 +7493,7 @@ class DeleteAgentAlertRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const DeleteAgentAlertRequest*>(
         &_DeleteAgentAlertRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 76;
+  static constexpr int kIndexInFileMessages = 78;
   friend void swap(DeleteAgentAlertRequest& a, DeleteAgentAlertRequest& b) { a.Swap(&b); }
   inline void Swap(DeleteAgentAlertRequest* other) {
     if (other == this) return;
@@ -7677,7 +7897,7 @@ class CreateAgentAlertRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const CreateAgentAlertRequest*>(
         &_CreateAgentAlertRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 68;
+  static constexpr int kIndexInFileMessages = 70;
   friend void swap(CreateAgentAlertRequest& a, CreateAgentAlertRequest& b) { a.Swap(&b); }
   inline void Swap(CreateAgentAlertRequest* other) {
     if (other == this) return;
@@ -8325,7 +8545,7 @@ class AgentAlert final : public ::google::protobuf::Message
     return reinterpret_cast<const AgentAlert*>(
         &_AgentAlert_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 67;
+  static constexpr int kIndexInFileMessages = 69;
   friend void swap(AgentAlert& a, AgentAlert& b) { a.Swap(&b); }
   inline void Swap(AgentAlert* other) {
     if (other == this) return;
@@ -9119,7 +9339,7 @@ class UpdateAgentAlertResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const UpdateAgentAlertResponse*>(
         &_UpdateAgentAlertResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 71;
+  static constexpr int kIndexInFileMessages = 73;
   friend void swap(UpdateAgentAlertResponse& a, UpdateAgentAlertResponse& b) { a.Swap(&b); }
   inline void Swap(UpdateAgentAlertResponse* other) {
     if (other == this) return;
@@ -10369,7 +10589,7 @@ class ListAgentAlertsResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const ListAgentAlertsResponse*>(
         &_ListAgentAlertsResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 75;
+  static constexpr int kIndexInFileMessages = 77;
   friend void swap(ListAgentAlertsResponse& a, ListAgentAlertsResponse& b) { a.Swap(&b); }
   inline void Swap(ListAgentAlertsResponse* other) {
     if (other == this) return;
@@ -11627,7 +11847,7 @@ class GetTraceForTestRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const GetTraceForTestRequest*>(
         &_GetTraceForTestRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 44;
+  static constexpr int kIndexInFileMessages = 46;
   friend void swap(GetTraceForTestRequest& a, GetTraceForTestRequest& b) { a.Swap(&b); }
   inline void Swap(GetTraceForTestRequest* other) {
     if (other == this) return;
@@ -12144,6 +12364,279 @@ class GetResultsForTestsRequest final : public ::google::protobuf::Message
 };
 // -------------------------------------------------------------------
 
+class GetResultsForTestsCsvRequest final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:kentik.synthetics.v202309.GetResultsForTestsCsvRequest) */ {
+ public:
+  inline GetResultsForTestsCsvRequest() : GetResultsForTestsCsvRequest(nullptr) {}
+  ~GetResultsForTestsCsvRequest() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(GetResultsForTestsCsvRequest* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(GetResultsForTestsCsvRequest));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR GetResultsForTestsCsvRequest(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline GetResultsForTestsCsvRequest(const GetResultsForTestsCsvRequest& from) : GetResultsForTestsCsvRequest(nullptr, from) {}
+  inline GetResultsForTestsCsvRequest(GetResultsForTestsCsvRequest&& from) noexcept
+      : GetResultsForTestsCsvRequest(nullptr, std::move(from)) {}
+  inline GetResultsForTestsCsvRequest& operator=(const GetResultsForTestsCsvRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GetResultsForTestsCsvRequest& operator=(GetResultsForTestsCsvRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const GetResultsForTestsCsvRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GetResultsForTestsCsvRequest* internal_default_instance() {
+    return reinterpret_cast<const GetResultsForTestsCsvRequest*>(
+        &_GetResultsForTestsCsvRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 43;
+  friend void swap(GetResultsForTestsCsvRequest& a, GetResultsForTestsCsvRequest& b) { a.Swap(&b); }
+  inline void Swap(GetResultsForTestsCsvRequest* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GetResultsForTestsCsvRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  GetResultsForTestsCsvRequest* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<GetResultsForTestsCsvRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const GetResultsForTestsCsvRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const GetResultsForTestsCsvRequest& from) { GetResultsForTestsCsvRequest::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(GetResultsForTestsCsvRequest* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "kentik.synthetics.v202309.GetResultsForTestsCsvRequest"; }
+
+ protected:
+  explicit GetResultsForTestsCsvRequest(::google::protobuf::Arena* arena);
+  GetResultsForTestsCsvRequest(::google::protobuf::Arena* arena, const GetResultsForTestsCsvRequest& from);
+  GetResultsForTestsCsvRequest(::google::protobuf::Arena* arena, GetResultsForTestsCsvRequest&& from) noexcept
+      : GetResultsForTestsCsvRequest(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kIdsFieldNumber = 1,
+    kAgentIdsFieldNumber = 4,
+    kStartTimeFieldNumber = 2,
+    kEndTimeFieldNumber = 3,
+    kAggregateFieldNumber = 5,
+  };
+  // repeated string ids = 1 [json_name = "ids", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  int ids_size() const;
+  private:
+  int _internal_ids_size() const;
+
+  public:
+  void clear_ids() ;
+  const std::string& ids(int index) const;
+  std::string* mutable_ids(int index);
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_ids(int index, Arg_&& value, Args_... args);
+  std::string* add_ids();
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void add_ids(Arg_&& value, Args_... args);
+  const ::google::protobuf::RepeatedPtrField<std::string>& ids() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* mutable_ids();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<std::string>& _internal_ids() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* _internal_mutable_ids();
+
+  public:
+  // repeated string agent_ids = 4 [json_name = "agentIds", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  int agent_ids_size() const;
+  private:
+  int _internal_agent_ids_size() const;
+
+  public:
+  void clear_agent_ids() ;
+  const std::string& agent_ids(int index) const;
+  std::string* mutable_agent_ids(int index);
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_agent_ids(int index, Arg_&& value, Args_... args);
+  std::string* add_agent_ids();
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void add_agent_ids(Arg_&& value, Args_... args);
+  const ::google::protobuf::RepeatedPtrField<std::string>& agent_ids() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* mutable_agent_ids();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<std::string>& _internal_agent_ids() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* _internal_mutable_agent_ids();
+
+  public:
+  // .google.protobuf.Timestamp start_time = 2 [json_name = "startTime", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_start_time() const;
+  void clear_start_time() ;
+  const ::google::protobuf::Timestamp& start_time() const;
+  PROTOBUF_NODISCARD ::google::protobuf::Timestamp* release_start_time();
+  ::google::protobuf::Timestamp* mutable_start_time();
+  void set_allocated_start_time(::google::protobuf::Timestamp* value);
+  void unsafe_arena_set_allocated_start_time(::google::protobuf::Timestamp* value);
+  ::google::protobuf::Timestamp* unsafe_arena_release_start_time();
+
+  private:
+  const ::google::protobuf::Timestamp& _internal_start_time() const;
+  ::google::protobuf::Timestamp* _internal_mutable_start_time();
+
+  public:
+  // .google.protobuf.Timestamp end_time = 3 [json_name = "endTime", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_end_time() const;
+  void clear_end_time() ;
+  const ::google::protobuf::Timestamp& end_time() const;
+  PROTOBUF_NODISCARD ::google::protobuf::Timestamp* release_end_time();
+  ::google::protobuf::Timestamp* mutable_end_time();
+  void set_allocated_end_time(::google::protobuf::Timestamp* value);
+  void unsafe_arena_set_allocated_end_time(::google::protobuf::Timestamp* value);
+  ::google::protobuf::Timestamp* unsafe_arena_release_end_time();
+
+  private:
+  const ::google::protobuf::Timestamp& _internal_end_time() const;
+  ::google::protobuf::Timestamp* _internal_mutable_end_time();
+
+  public:
+  // bool aggregate = 5 [json_name = "aggregate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_aggregate() ;
+  bool aggregate() const;
+  void set_aggregate(bool value);
+
+  private:
+  bool _internal_aggregate() const;
+  void _internal_set_aggregate(bool value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:kentik.synthetics.v202309.GetResultsForTestsCsvRequest)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      3, 5, 2,
+      75, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const GetResultsForTestsCsvRequest& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::RepeatedPtrField<std::string> ids_;
+    ::google::protobuf::RepeatedPtrField<std::string> agent_ids_;
+    ::google::protobuf::Timestamp* start_time_;
+    ::google::protobuf::Timestamp* end_time_;
+    bool aggregate_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto;
+};
+// -------------------------------------------------------------------
+
 class GetAgentAlertResponse final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:kentik.synthetics.v202309.GetAgentAlertResponse) */ {
  public:
@@ -12203,7 +12696,7 @@ class GetAgentAlertResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const GetAgentAlertResponse*>(
         &_GetAgentAlertResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 73;
+  static constexpr int kIndexInFileMessages = 75;
   friend void swap(GetAgentAlertResponse& a, GetAgentAlertResponse& b) { a.Swap(&b); }
   inline void Swap(GetAgentAlertResponse* other) {
     if (other == this) return;
@@ -12648,7 +13141,7 @@ class CreateAgentAlertResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const CreateAgentAlertResponse*>(
         &_CreateAgentAlertResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 69;
+  static constexpr int kIndexInFileMessages = 71;
   friend void swap(CreateAgentAlertResponse& a, CreateAgentAlertResponse& b) { a.Swap(&b); }
   inline void Swap(CreateAgentAlertResponse* other) {
     if (other == this) return;
@@ -14500,7 +14993,7 @@ class UpdateAgentResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const UpdateAgentResponse*>(
         &_UpdateAgentResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 52;
+  static constexpr int kIndexInFileMessages = 54;
   friend void swap(UpdateAgentResponse& a, UpdateAgentResponse& b) { a.Swap(&b); }
   inline void Swap(UpdateAgentResponse* other) {
     if (other == this) return;
@@ -14696,7 +15189,7 @@ class UpdateAgentRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const UpdateAgentRequest*>(
         &_UpdateAgentRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 51;
+  static constexpr int kIndexInFileMessages = 53;
   friend void swap(UpdateAgentRequest& a, UpdateAgentRequest& b) { a.Swap(&b); }
   inline void Swap(UpdateAgentRequest* other) {
     if (other == this) return;
@@ -15529,7 +16022,7 @@ class ListAgentsResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const ListAgentsResponse*>(
         &_ListAgentsResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 48;
+  static constexpr int kIndexInFileMessages = 50;
   friend void swap(ListAgentsResponse& a, ListAgentsResponse& b) { a.Swap(&b); }
   inline void Swap(ListAgentsResponse* other) {
     if (other == this) return;
@@ -15738,7 +16231,7 @@ class GetTraceForTestResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const GetTraceForTestResponse*>(
         &_GetTraceForTestResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 46;
+  static constexpr int kIndexInFileMessages = 48;
   friend void swap(GetTraceForTestResponse& a, GetTraceForTestResponse& b) { a.Swap(&b); }
   inline void Swap(GetTraceForTestResponse* other) {
     if (other == this) return;
@@ -15955,7 +16448,7 @@ class GetAgentResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const GetAgentResponse*>(
         &_GetAgentResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 50;
+  static constexpr int kIndexInFileMessages = 52;
   friend void swap(GetAgentResponse& a, GetAgentResponse& b) { a.Swap(&b); }
   inline void Swap(GetAgentResponse* other) {
     if (other == this) return;
@@ -16989,7 +17482,7 @@ class UpdateTestResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const UpdateTestResponse*>(
         &_UpdateTestResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 62;
+  static constexpr int kIndexInFileMessages = 64;
   friend void swap(UpdateTestResponse& a, UpdateTestResponse& b) { a.Swap(&b); }
   inline void Swap(UpdateTestResponse* other) {
     if (other == this) return;
@@ -17185,7 +17678,7 @@ class UpdateTestRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const UpdateTestRequest*>(
         &_UpdateTestRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 61;
+  static constexpr int kIndexInFileMessages = 63;
   friend void swap(UpdateTestRequest& a, UpdateTestRequest& b) { a.Swap(&b); }
   inline void Swap(UpdateTestRequest* other) {
     if (other == this) return;
@@ -17381,7 +17874,7 @@ class ListTestsResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const ListTestsResponse*>(
         &_ListTestsResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 56;
+  static constexpr int kIndexInFileMessages = 58;
   friend void swap(ListTestsResponse& a, ListTestsResponse& b) { a.Swap(&b); }
   inline void Swap(ListTestsResponse* other) {
     if (other == this) return;
@@ -17590,7 +18083,7 @@ class GetTestResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const GetTestResponse*>(
         &_GetTestResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 60;
+  static constexpr int kIndexInFileMessages = 62;
   friend void swap(GetTestResponse& a, GetTestResponse& b) { a.Swap(&b); }
   inline void Swap(GetTestResponse* other) {
     if (other == this) return;
@@ -17786,7 +18279,7 @@ class GetResultsForTestsResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const GetResultsForTestsResponse*>(
         &_GetResultsForTestsResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 43;
+  static constexpr int kIndexInFileMessages = 45;
   friend void swap(GetResultsForTestsResponse& a, GetResultsForTestsResponse& b) { a.Swap(&b); }
   inline void Swap(GetResultsForTestsResponse* other) {
     if (other == this) return;
@@ -17983,7 +18476,7 @@ class CreateTestResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const CreateTestResponse*>(
         &_CreateTestResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 58;
+  static constexpr int kIndexInFileMessages = 60;
   friend void swap(CreateTestResponse& a, CreateTestResponse& b) { a.Swap(&b); }
   inline void Swap(CreateTestResponse* other) {
     if (other == this) return;
@@ -18179,7 +18672,7 @@ class CreateTestRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const CreateTestRequest*>(
         &_CreateTestRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 57;
+  static constexpr int kIndexInFileMessages = 59;
   friend void swap(CreateTestRequest& a, CreateTestRequest& b) { a.Swap(&b); }
   inline void Swap(CreateTestRequest* other) {
     if (other == this) return;
@@ -29144,6 +29637,442 @@ inline bool GetResultsForTestsRequest::_internal_aggregate() const {
 inline void GetResultsForTestsRequest::_internal_set_aggregate(bool value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.aggregate_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// GetResultsForTestsCsvRequest
+
+// repeated string ids = 1 [json_name = "ids", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline int GetResultsForTestsCsvRequest::_internal_ids_size() const {
+  return _internal_ids().size();
+}
+inline int GetResultsForTestsCsvRequest::ids_size() const {
+  return _internal_ids_size();
+}
+inline void GetResultsForTestsCsvRequest::clear_ids() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.ids_.Clear();
+}
+inline std::string* GetResultsForTestsCsvRequest::add_ids() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  std::string* _s = _internal_mutable_ids()->Add();
+  // @@protoc_insertion_point(field_add_mutable:kentik.synthetics.v202309.GetResultsForTestsCsvRequest.ids)
+  return _s;
+}
+inline const std::string& GetResultsForTestsCsvRequest::ids(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202309.GetResultsForTestsCsvRequest.ids)
+  return _internal_ids().Get(index);
+}
+inline std::string* GetResultsForTestsCsvRequest::mutable_ids(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:kentik.synthetics.v202309.GetResultsForTestsCsvRequest.ids)
+  return _internal_mutable_ids()->Mutable(index);
+}
+template <typename Arg_, typename... Args_>
+inline void GetResultsForTestsCsvRequest::set_ids(int index, Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::AssignToString(
+      *_internal_mutable_ids()->Mutable(index),
+      std::forward<Arg_>(value), args... );
+  // @@protoc_insertion_point(field_set:kentik.synthetics.v202309.GetResultsForTestsCsvRequest.ids)
+}
+template <typename Arg_, typename... Args_>
+inline void GetResultsForTestsCsvRequest::add_ids(Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::google::protobuf::internal::AddToRepeatedPtrField(*_internal_mutable_ids(),
+                               std::forward<Arg_>(value),
+                               args... );
+  // @@protoc_insertion_point(field_add:kentik.synthetics.v202309.GetResultsForTestsCsvRequest.ids)
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+GetResultsForTestsCsvRequest::ids() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:kentik.synthetics.v202309.GetResultsForTestsCsvRequest.ids)
+  return _internal_ids();
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+GetResultsForTestsCsvRequest::mutable_ids() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:kentik.synthetics.v202309.GetResultsForTestsCsvRequest.ids)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_ids();
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+GetResultsForTestsCsvRequest::_internal_ids() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.ids_;
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+GetResultsForTestsCsvRequest::_internal_mutable_ids() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.ids_;
+}
+
+// .google.protobuf.Timestamp start_time = 2 [json_name = "startTime", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool GetResultsForTestsCsvRequest::has_start_time() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.start_time_ != nullptr);
+  return value;
+}
+inline const ::google::protobuf::Timestamp& GetResultsForTestsCsvRequest::_internal_start_time() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::google::protobuf::Timestamp* p = _impl_.start_time_;
+  return p != nullptr ? *p : reinterpret_cast<const ::google::protobuf::Timestamp&>(::google::protobuf::_Timestamp_default_instance_);
+}
+inline const ::google::protobuf::Timestamp& GetResultsForTestsCsvRequest::start_time() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202309.GetResultsForTestsCsvRequest.start_time)
+  return _internal_start_time();
+}
+inline void GetResultsForTestsCsvRequest::unsafe_arena_set_allocated_start_time(::google::protobuf::Timestamp* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.start_time_);
+  }
+  _impl_.start_time_ = reinterpret_cast<::google::protobuf::Timestamp*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.synthetics.v202309.GetResultsForTestsCsvRequest.start_time)
+}
+inline ::google::protobuf::Timestamp* GetResultsForTestsCsvRequest::release_start_time() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::google::protobuf::Timestamp* released = _impl_.start_time_;
+  _impl_.start_time_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::google::protobuf::Timestamp* GetResultsForTestsCsvRequest::unsafe_arena_release_start_time() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.synthetics.v202309.GetResultsForTestsCsvRequest.start_time)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::google::protobuf::Timestamp* temp = _impl_.start_time_;
+  _impl_.start_time_ = nullptr;
+  return temp;
+}
+inline ::google::protobuf::Timestamp* GetResultsForTestsCsvRequest::_internal_mutable_start_time() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.start_time_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::google::protobuf::Timestamp>(GetArena());
+    _impl_.start_time_ = reinterpret_cast<::google::protobuf::Timestamp*>(p);
+  }
+  return _impl_.start_time_;
+}
+inline ::google::protobuf::Timestamp* GetResultsForTestsCsvRequest::mutable_start_time() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  ::google::protobuf::Timestamp* _msg = _internal_mutable_start_time();
+  // @@protoc_insertion_point(field_mutable:kentik.synthetics.v202309.GetResultsForTestsCsvRequest.start_time)
+  return _msg;
+}
+inline void GetResultsForTestsCsvRequest::set_allocated_start_time(::google::protobuf::Timestamp* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.start_time_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::google::protobuf::MessageLite*>(value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.start_time_ = reinterpret_cast<::google::protobuf::Timestamp*>(value);
+  // @@protoc_insertion_point(field_set_allocated:kentik.synthetics.v202309.GetResultsForTestsCsvRequest.start_time)
+}
+
+// .google.protobuf.Timestamp end_time = 3 [json_name = "endTime", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool GetResultsForTestsCsvRequest::has_end_time() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.end_time_ != nullptr);
+  return value;
+}
+inline const ::google::protobuf::Timestamp& GetResultsForTestsCsvRequest::_internal_end_time() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::google::protobuf::Timestamp* p = _impl_.end_time_;
+  return p != nullptr ? *p : reinterpret_cast<const ::google::protobuf::Timestamp&>(::google::protobuf::_Timestamp_default_instance_);
+}
+inline const ::google::protobuf::Timestamp& GetResultsForTestsCsvRequest::end_time() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202309.GetResultsForTestsCsvRequest.end_time)
+  return _internal_end_time();
+}
+inline void GetResultsForTestsCsvRequest::unsafe_arena_set_allocated_end_time(::google::protobuf::Timestamp* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.end_time_);
+  }
+  _impl_.end_time_ = reinterpret_cast<::google::protobuf::Timestamp*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.synthetics.v202309.GetResultsForTestsCsvRequest.end_time)
+}
+inline ::google::protobuf::Timestamp* GetResultsForTestsCsvRequest::release_end_time() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  ::google::protobuf::Timestamp* released = _impl_.end_time_;
+  _impl_.end_time_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::google::protobuf::Timestamp* GetResultsForTestsCsvRequest::unsafe_arena_release_end_time() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.synthetics.v202309.GetResultsForTestsCsvRequest.end_time)
+
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  ::google::protobuf::Timestamp* temp = _impl_.end_time_;
+  _impl_.end_time_ = nullptr;
+  return temp;
+}
+inline ::google::protobuf::Timestamp* GetResultsForTestsCsvRequest::_internal_mutable_end_time() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.end_time_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::google::protobuf::Timestamp>(GetArena());
+    _impl_.end_time_ = reinterpret_cast<::google::protobuf::Timestamp*>(p);
+  }
+  return _impl_.end_time_;
+}
+inline ::google::protobuf::Timestamp* GetResultsForTestsCsvRequest::mutable_end_time() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  ::google::protobuf::Timestamp* _msg = _internal_mutable_end_time();
+  // @@protoc_insertion_point(field_mutable:kentik.synthetics.v202309.GetResultsForTestsCsvRequest.end_time)
+  return _msg;
+}
+inline void GetResultsForTestsCsvRequest::set_allocated_end_time(::google::protobuf::Timestamp* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.end_time_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::google::protobuf::MessageLite*>(value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+
+  _impl_.end_time_ = reinterpret_cast<::google::protobuf::Timestamp*>(value);
+  // @@protoc_insertion_point(field_set_allocated:kentik.synthetics.v202309.GetResultsForTestsCsvRequest.end_time)
+}
+
+// repeated string agent_ids = 4 [json_name = "agentIds", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline int GetResultsForTestsCsvRequest::_internal_agent_ids_size() const {
+  return _internal_agent_ids().size();
+}
+inline int GetResultsForTestsCsvRequest::agent_ids_size() const {
+  return _internal_agent_ids_size();
+}
+inline void GetResultsForTestsCsvRequest::clear_agent_ids() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.agent_ids_.Clear();
+}
+inline std::string* GetResultsForTestsCsvRequest::add_agent_ids() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  std::string* _s = _internal_mutable_agent_ids()->Add();
+  // @@protoc_insertion_point(field_add_mutable:kentik.synthetics.v202309.GetResultsForTestsCsvRequest.agent_ids)
+  return _s;
+}
+inline const std::string& GetResultsForTestsCsvRequest::agent_ids(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202309.GetResultsForTestsCsvRequest.agent_ids)
+  return _internal_agent_ids().Get(index);
+}
+inline std::string* GetResultsForTestsCsvRequest::mutable_agent_ids(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:kentik.synthetics.v202309.GetResultsForTestsCsvRequest.agent_ids)
+  return _internal_mutable_agent_ids()->Mutable(index);
+}
+template <typename Arg_, typename... Args_>
+inline void GetResultsForTestsCsvRequest::set_agent_ids(int index, Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::AssignToString(
+      *_internal_mutable_agent_ids()->Mutable(index),
+      std::forward<Arg_>(value), args... );
+  // @@protoc_insertion_point(field_set:kentik.synthetics.v202309.GetResultsForTestsCsvRequest.agent_ids)
+}
+template <typename Arg_, typename... Args_>
+inline void GetResultsForTestsCsvRequest::add_agent_ids(Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::google::protobuf::internal::AddToRepeatedPtrField(*_internal_mutable_agent_ids(),
+                               std::forward<Arg_>(value),
+                               args... );
+  // @@protoc_insertion_point(field_add:kentik.synthetics.v202309.GetResultsForTestsCsvRequest.agent_ids)
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+GetResultsForTestsCsvRequest::agent_ids() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:kentik.synthetics.v202309.GetResultsForTestsCsvRequest.agent_ids)
+  return _internal_agent_ids();
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+GetResultsForTestsCsvRequest::mutable_agent_ids() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:kentik.synthetics.v202309.GetResultsForTestsCsvRequest.agent_ids)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_agent_ids();
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+GetResultsForTestsCsvRequest::_internal_agent_ids() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.agent_ids_;
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+GetResultsForTestsCsvRequest::_internal_mutable_agent_ids() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.agent_ids_;
+}
+
+// bool aggregate = 5 [json_name = "aggregate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void GetResultsForTestsCsvRequest::clear_aggregate() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.aggregate_ = false;
+}
+inline bool GetResultsForTestsCsvRequest::aggregate() const {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202309.GetResultsForTestsCsvRequest.aggregate)
+  return _internal_aggregate();
+}
+inline void GetResultsForTestsCsvRequest::set_aggregate(bool value) {
+  _internal_set_aggregate(value);
+  // @@protoc_insertion_point(field_set:kentik.synthetics.v202309.GetResultsForTestsCsvRequest.aggregate)
+}
+inline bool GetResultsForTestsCsvRequest::_internal_aggregate() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.aggregate_;
+}
+inline void GetResultsForTestsCsvRequest::_internal_set_aggregate(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.aggregate_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// GetResultsForTestsCsvResponse
+
+// string content_type = 1 [json_name = "contentType", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void GetResultsForTestsCsvResponse::clear_content_type() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.content_type_.ClearToEmpty();
+}
+inline const std::string& GetResultsForTestsCsvResponse::content_type() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202309.GetResultsForTestsCsvResponse.content_type)
+  return _internal_content_type();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void GetResultsForTestsCsvResponse::set_content_type(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.content_type_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.synthetics.v202309.GetResultsForTestsCsvResponse.content_type)
+}
+inline std::string* GetResultsForTestsCsvResponse::mutable_content_type() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_content_type();
+  // @@protoc_insertion_point(field_mutable:kentik.synthetics.v202309.GetResultsForTestsCsvResponse.content_type)
+  return _s;
+}
+inline const std::string& GetResultsForTestsCsvResponse::_internal_content_type() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.content_type_.Get();
+}
+inline void GetResultsForTestsCsvResponse::_internal_set_content_type(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.content_type_.Set(value, GetArena());
+}
+inline std::string* GetResultsForTestsCsvResponse::_internal_mutable_content_type() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.content_type_.Mutable( GetArena());
+}
+inline std::string* GetResultsForTestsCsvResponse::release_content_type() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.synthetics.v202309.GetResultsForTestsCsvResponse.content_type)
+  return _impl_.content_type_.Release();
+}
+inline void GetResultsForTestsCsvResponse::set_allocated_content_type(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.content_type_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.content_type_.IsDefault()) {
+    _impl_.content_type_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.synthetics.v202309.GetResultsForTestsCsvResponse.content_type)
+}
+
+// bytes data = 2 [json_name = "data", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void GetResultsForTestsCsvResponse::clear_data() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.data_.ClearToEmpty();
+}
+inline const std::string& GetResultsForTestsCsvResponse::data() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202309.GetResultsForTestsCsvResponse.data)
+  return _internal_data();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void GetResultsForTestsCsvResponse::set_data(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.data_.SetBytes(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.synthetics.v202309.GetResultsForTestsCsvResponse.data)
+}
+inline std::string* GetResultsForTestsCsvResponse::mutable_data() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_data();
+  // @@protoc_insertion_point(field_mutable:kentik.synthetics.v202309.GetResultsForTestsCsvResponse.data)
+  return _s;
+}
+inline const std::string& GetResultsForTestsCsvResponse::_internal_data() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.data_.Get();
+}
+inline void GetResultsForTestsCsvResponse::_internal_set_data(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.data_.Set(value, GetArena());
+}
+inline std::string* GetResultsForTestsCsvResponse::_internal_mutable_data() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.data_.Mutable( GetArena());
+}
+inline std::string* GetResultsForTestsCsvResponse::release_data() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.synthetics.v202309.GetResultsForTestsCsvResponse.data)
+  return _impl_.data_.Release();
+}
+inline void GetResultsForTestsCsvResponse::set_allocated_data(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.data_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.data_.IsDefault()) {
+    _impl_.data_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.synthetics.v202309.GetResultsForTestsCsvResponse.data)
 }
 
 // -------------------------------------------------------------------

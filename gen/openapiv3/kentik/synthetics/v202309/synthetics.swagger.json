@@ -446,6 +446,48 @@
                 ]
             }
         },
+        "/synthetics/v202309/results/csv": {
+            "post": {
+                "summary": "Get test results in CSV format",
+                "description": "Returns probe results for tests in CSV format.",
+                "operationId": "GetResultsForTestsCsv",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202309GetResultsForTestsCsvResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202309GetResultsForTestsCsvRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "SyntheticsDataService"
+                ]
+            }
+        },
         "/synthetics/v202309/tests": {
             "get": {
                 "summary": "List all tests",
@@ -1561,6 +1603,59 @@
                     }
                 },
                 "title": "GetAgentResponse"
+            },
+            "v202309GetResultsForTestsCsvRequest": {
+                "type": "object",
+                "properties": {
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of test IDs for which to retrieve results"
+                    },
+                    "startTime": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Timestamp of the oldest results to include in results"
+                    },
+                    "endTime": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Timestamp of the newest results to include in results"
+                    },
+                    "agentIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of agent IDs from which to return results"
+                    },
+                    "aggregate": {
+                        "type": "boolean",
+                        "description": "If true, retrieve result aggregated across the requested time period, else return complete time series"
+                    }
+                },
+                "required": [
+                    "ids",
+                    "startTime",
+                    "endTime"
+                ]
+            },
+            "v202309GetResultsForTestsCsvResponse": {
+                "type": "object",
+                "properties": {
+                    "contentType": {
+                        "type": "string",
+                        "description": "Content type of the response hardcoded to 'text/csv'"
+                    },
+                    "data": {
+                        "type": "string",
+                        "format": "byte",
+                        "description": "CSV data as byte array"
+                    }
+                },
+                "title": "GetResultsForTestsCsvResponse"
             },
             "v202309GetResultsForTestsRequest": {
                 "type": "object",

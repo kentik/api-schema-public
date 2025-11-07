@@ -1587,6 +1587,56 @@ message GetResultsForTestsRequest {
   ];
 }
 
+message GetResultsForTestsCsvRequest {
+  repeated string ids = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of test IDs for which to retrieve results"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+
+  google.protobuf.Timestamp start_time = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Timestamp of the oldest results to include in results"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+
+  google.protobuf.Timestamp end_time = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Timestamp of the newest results to include in results"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+
+  repeated string agent_ids = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of agent IDs from which to return results"
+    }
+  ];
+
+  bool aggregate = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "If true, retrieve result aggregated across the requested time period, else return complete time series"
+    }
+  ];
+}
+
+// {{.Name}}
+message GetResultsForTestsCsvResponse {
+  string content_type = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Content type of the response hardcoded to 'text/csv'"
+    }
+  ];
+
+  bytes data = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "CSV data as byte array"
+    }
+  ];
+}
+
 // {{.Name}}
 message GetResultsForTestsResponse {
   repeated TestResults results = 1;
@@ -1657,6 +1707,19 @@ service SyntheticsDataService {
       operation_id: "GetResultsForTests"
       summary: "Get results for tests"
       description: "Returns probe results for a set of tests for specified period of time."
+    };
+  }
+
+  rpc GetResultsForTestsCsv (GetResultsForTestsCsvRequest) returns (GetResultsForTestsCsvResponse) {
+    option (kentik.core.v202303.method_scope) = "synthetics:read";
+    option (google.api.http) = {
+      post: "/synthetics/v202309/results/csv"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetResultsForTestsCsv"
+      summary: "Get test results in CSV format"
+      description: "Returns probe results for tests in CSV format."
     };
   }
 

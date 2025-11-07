@@ -655,6 +655,36 @@ struct GetTestRequestDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetTestRequestDefaultTypeInternal _GetTestRequest_default_instance_;
 
+inline constexpr GetResultsForTestsCsvResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : content_type_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        data_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR GetResultsForTestsCsvResponse::GetResultsForTestsCsvResponse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct GetResultsForTestsCsvResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GetResultsForTestsCsvResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GetResultsForTestsCsvResponseDefaultTypeInternal() {}
+  union {
+    GetResultsForTestsCsvResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetResultsForTestsCsvResponseDefaultTypeInternal _GetResultsForTestsCsvResponse_default_instance_;
+
 inline constexpr GetAgentRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : id_(
@@ -1531,6 +1561,35 @@ struct GetResultsForTestsRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetResultsForTestsRequestDefaultTypeInternal _GetResultsForTestsRequest_default_instance_;
+
+inline constexpr GetResultsForTestsCsvRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        ids_{},
+        agent_ids_{},
+        start_time_{nullptr},
+        end_time_{nullptr},
+        aggregate_{false} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR GetResultsForTestsCsvRequest::GetResultsForTestsCsvRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct GetResultsForTestsCsvRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GetResultsForTestsCsvRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GetResultsForTestsCsvRequestDefaultTypeInternal() {}
+  union {
+    GetResultsForTestsCsvRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetResultsForTestsCsvRequestDefaultTypeInternal _GetResultsForTestsCsvRequest_default_instance_;
 
 inline constexpr GetAgentAlertResponse::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -3004,6 +3063,34 @@ const ::uint32_t
         ~0u,
         ~0u,
         ~0u,
+        PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::GetResultsForTestsCsvRequest, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::GetResultsForTestsCsvRequest, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::GetResultsForTestsCsvRequest, _impl_.ids_),
+        PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::GetResultsForTestsCsvRequest, _impl_.start_time_),
+        PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::GetResultsForTestsCsvRequest, _impl_.end_time_),
+        PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::GetResultsForTestsCsvRequest, _impl_.agent_ids_),
+        PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::GetResultsForTestsCsvRequest, _impl_.aggregate_),
+        ~0u,
+        0,
+        1,
+        ~0u,
+        ~0u,
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::GetResultsForTestsCsvResponse, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::GetResultsForTestsCsvResponse, _impl_.content_type_),
+        PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::GetResultsForTestsCsvResponse, _impl_.data_),
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::kentik::synthetics::v202309::GetResultsForTestsResponse, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -3395,41 +3482,43 @@ static const ::_pbi::MigrationSchema
         {673, -1, -1, sizeof(::kentik::synthetics::v202309::PathTrace)},
         {684, 698, -1, sizeof(::kentik::synthetics::v202309::Path)},
         {704, 718, -1, sizeof(::kentik::synthetics::v202309::GetResultsForTestsRequest)},
-        {724, -1, -1, sizeof(::kentik::synthetics::v202309::GetResultsForTestsResponse)},
-        {733, 746, -1, sizeof(::kentik::synthetics::v202309::GetTraceForTestRequest)},
-        {751, 761, -1, sizeof(::kentik::synthetics::v202309::GetTraceForTestResponse_NodesEntry_DoNotUse)},
-        {763, -1, -1, sizeof(::kentik::synthetics::v202309::GetTraceForTestResponse)},
-        {773, -1, -1, sizeof(::kentik::synthetics::v202309::ListAgentsRequest)},
-        {781, -1, -1, sizeof(::kentik::synthetics::v202309::ListAgentsResponse)},
-        {791, -1, -1, sizeof(::kentik::synthetics::v202309::GetAgentRequest)},
-        {800, 809, -1, sizeof(::kentik::synthetics::v202309::GetAgentResponse)},
-        {810, 819, -1, sizeof(::kentik::synthetics::v202309::UpdateAgentRequest)},
-        {820, 829, -1, sizeof(::kentik::synthetics::v202309::UpdateAgentResponse)},
-        {830, -1, -1, sizeof(::kentik::synthetics::v202309::DeleteAgentRequest)},
-        {839, -1, -1, sizeof(::kentik::synthetics::v202309::DeleteAgentResponse)},
-        {847, -1, -1, sizeof(::kentik::synthetics::v202309::ListTestsRequest)},
-        {855, -1, -1, sizeof(::kentik::synthetics::v202309::ListTestsResponse)},
-        {865, 874, -1, sizeof(::kentik::synthetics::v202309::CreateTestRequest)},
-        {875, 884, -1, sizeof(::kentik::synthetics::v202309::CreateTestResponse)},
-        {885, -1, -1, sizeof(::kentik::synthetics::v202309::GetTestRequest)},
-        {894, 903, -1, sizeof(::kentik::synthetics::v202309::GetTestResponse)},
-        {904, 913, -1, sizeof(::kentik::synthetics::v202309::UpdateTestRequest)},
-        {914, 923, -1, sizeof(::kentik::synthetics::v202309::UpdateTestResponse)},
-        {924, -1, -1, sizeof(::kentik::synthetics::v202309::DeleteTestRequest)},
-        {933, -1, -1, sizeof(::kentik::synthetics::v202309::DeleteTestResponse)},
-        {941, -1, -1, sizeof(::kentik::synthetics::v202309::SetTestStatusRequest)},
-        {951, -1, -1, sizeof(::kentik::synthetics::v202309::SetTestStatusResponse)},
-        {959, -1, -1, sizeof(::kentik::synthetics::v202309::AgentAlert)},
-        {972, -1, -1, sizeof(::kentik::synthetics::v202309::CreateAgentAlertRequest)},
-        {983, 992, -1, sizeof(::kentik::synthetics::v202309::CreateAgentAlertResponse)},
-        {993, -1, -1, sizeof(::kentik::synthetics::v202309::UpdateAgentAlertRequest)},
-        {1004, 1013, -1, sizeof(::kentik::synthetics::v202309::UpdateAgentAlertResponse)},
-        {1014, -1, -1, sizeof(::kentik::synthetics::v202309::GetAgentAlertRequest)},
-        {1023, 1032, -1, sizeof(::kentik::synthetics::v202309::GetAgentAlertResponse)},
-        {1033, -1, -1, sizeof(::kentik::synthetics::v202309::ListAgentAlertsRequest)},
-        {1042, -1, -1, sizeof(::kentik::synthetics::v202309::ListAgentAlertsResponse)},
-        {1051, -1, -1, sizeof(::kentik::synthetics::v202309::DeleteAgentAlertRequest)},
-        {1060, -1, -1, sizeof(::kentik::synthetics::v202309::DeleteAgentAlertResponse)},
+        {724, 737, -1, sizeof(::kentik::synthetics::v202309::GetResultsForTestsCsvRequest)},
+        {742, -1, -1, sizeof(::kentik::synthetics::v202309::GetResultsForTestsCsvResponse)},
+        {752, -1, -1, sizeof(::kentik::synthetics::v202309::GetResultsForTestsResponse)},
+        {761, 774, -1, sizeof(::kentik::synthetics::v202309::GetTraceForTestRequest)},
+        {779, 789, -1, sizeof(::kentik::synthetics::v202309::GetTraceForTestResponse_NodesEntry_DoNotUse)},
+        {791, -1, -1, sizeof(::kentik::synthetics::v202309::GetTraceForTestResponse)},
+        {801, -1, -1, sizeof(::kentik::synthetics::v202309::ListAgentsRequest)},
+        {809, -1, -1, sizeof(::kentik::synthetics::v202309::ListAgentsResponse)},
+        {819, -1, -1, sizeof(::kentik::synthetics::v202309::GetAgentRequest)},
+        {828, 837, -1, sizeof(::kentik::synthetics::v202309::GetAgentResponse)},
+        {838, 847, -1, sizeof(::kentik::synthetics::v202309::UpdateAgentRequest)},
+        {848, 857, -1, sizeof(::kentik::synthetics::v202309::UpdateAgentResponse)},
+        {858, -1, -1, sizeof(::kentik::synthetics::v202309::DeleteAgentRequest)},
+        {867, -1, -1, sizeof(::kentik::synthetics::v202309::DeleteAgentResponse)},
+        {875, -1, -1, sizeof(::kentik::synthetics::v202309::ListTestsRequest)},
+        {883, -1, -1, sizeof(::kentik::synthetics::v202309::ListTestsResponse)},
+        {893, 902, -1, sizeof(::kentik::synthetics::v202309::CreateTestRequest)},
+        {903, 912, -1, sizeof(::kentik::synthetics::v202309::CreateTestResponse)},
+        {913, -1, -1, sizeof(::kentik::synthetics::v202309::GetTestRequest)},
+        {922, 931, -1, sizeof(::kentik::synthetics::v202309::GetTestResponse)},
+        {932, 941, -1, sizeof(::kentik::synthetics::v202309::UpdateTestRequest)},
+        {942, 951, -1, sizeof(::kentik::synthetics::v202309::UpdateTestResponse)},
+        {952, -1, -1, sizeof(::kentik::synthetics::v202309::DeleteTestRequest)},
+        {961, -1, -1, sizeof(::kentik::synthetics::v202309::DeleteTestResponse)},
+        {969, -1, -1, sizeof(::kentik::synthetics::v202309::SetTestStatusRequest)},
+        {979, -1, -1, sizeof(::kentik::synthetics::v202309::SetTestStatusResponse)},
+        {987, -1, -1, sizeof(::kentik::synthetics::v202309::AgentAlert)},
+        {1000, -1, -1, sizeof(::kentik::synthetics::v202309::CreateAgentAlertRequest)},
+        {1011, 1020, -1, sizeof(::kentik::synthetics::v202309::CreateAgentAlertResponse)},
+        {1021, -1, -1, sizeof(::kentik::synthetics::v202309::UpdateAgentAlertRequest)},
+        {1032, 1041, -1, sizeof(::kentik::synthetics::v202309::UpdateAgentAlertResponse)},
+        {1042, -1, -1, sizeof(::kentik::synthetics::v202309::GetAgentAlertRequest)},
+        {1051, 1060, -1, sizeof(::kentik::synthetics::v202309::GetAgentAlertResponse)},
+        {1061, -1, -1, sizeof(::kentik::synthetics::v202309::ListAgentAlertsRequest)},
+        {1070, -1, -1, sizeof(::kentik::synthetics::v202309::ListAgentAlertsResponse)},
+        {1079, -1, -1, sizeof(::kentik::synthetics::v202309::DeleteAgentAlertRequest)},
+        {1088, -1, -1, sizeof(::kentik::synthetics::v202309::DeleteAgentAlertResponse)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::synthetics::v202309::_DisabledMetrics_default_instance_._instance,
@@ -3475,6 +3564,8 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::synthetics::v202309::_PathTrace_default_instance_._instance,
     &::kentik::synthetics::v202309::_Path_default_instance_._instance,
     &::kentik::synthetics::v202309::_GetResultsForTestsRequest_default_instance_._instance,
+    &::kentik::synthetics::v202309::_GetResultsForTestsCsvRequest_default_instance_._instance,
+    &::kentik::synthetics::v202309::_GetResultsForTestsCsvResponse_default_instance_._instance,
     &::kentik::synthetics::v202309::_GetResultsForTestsResponse_default_instance_._instance,
     &::kentik::synthetics::v202309::_GetTraceForTestRequest_default_instance_._instance,
     &::kentik::synthetics::v202309::_GetTraceForTestResponse_NodesEntry_DoNotUse_default_instance_._instance,
@@ -4090,482 +4181,509 @@ const char descriptor_table_protodef_kentik_2fsynthetics_2fv202309_2fsynthetics_
     "\taggregate\030\006 \001(\010Bk\222Ah2fIf true, retrieve"
     " result aggregated across the requested "
     "time period, else return complete time s"
-    "eriesR\taggregate\"^\n\032GetResultsForTestsRe"
-    "sponse\022@\n\007results\030\001 \003(\0132&.kentik.synthet"
-    "ics.v202309.TestResultsR\007results\"\210\004\n\026Get"
-    "TraceForTestRequest\022M\n\002id\030\001 \001(\tB=\222A:28ID"
-    " of test for which to retrieve network p"
-    "ath trace dataR\002id\022x\n\nstart_time\030\002 \001(\0132\032"
-    ".google.protobuf.TimestampB=\222A725Timesta"
-    "mp of the oldest results to include in r"
-    "esults\340A\002R\tstartTime\022t\n\010end_time\030\003 \001(\0132\032"
-    ".google.protobuf.TimestampB=\222A725Timesta"
-    "mp of the newest results to include in r"
-    "esults\340A\002R\007endTime\022P\n\tagent_ids\030\004 \003(\tB3\222"
-    "A02.List of agent IDs from which to retu"
-    "rn resultsR\010agentIds\022]\n\ntarget_ips\030\005 \003(\t"
-    "B>\222A;29List of target IP addresses for w"
-    "hich to retrieve resultsR\ttargetIps\"\346\002\n\027"
-    "GetTraceForTestResponse\022\213\001\n\005nodes\030\001 \003(\0132"
-    "=.kentik.synthetics.v202309.GetTraceForT"
-    "estResponse.NodesEntryB6\222A321Map of netw"
-    "ork node information keyed by node IDsR\005"
-    "nodes\022_\n\005paths\030\002 \003(\0132\037.kentik.synthetics"
-    ".v202309.PathB(\222A%2#List of retrieved ne"
-    "twork path dataR\005paths\032\\\n\nNodesEntry\022\020\n\003"
-    "key\030\001 \001(\tR\003key\0228\n\005value\030\002 \001(\0132\".kentik.s"
-    "ynthetics.v202309.NetNodeR\005value:\0028\001\"\023\n\021"
-    "ListAgentsRequest\"\324\001\n\022ListAgentsResponse"
-    "\022W\n\006agents\030\001 \003(\0132 .kentik.synthetics.v20"
-    "2309.AgentB\035\222A\0322\030List of available agent"
-    "sR\006agents\022e\n\rinvalid_count\030\002 \001(\rB@\222A=2;N"
-    "umber of invalid entries encountered whi"
-    "le collecting dataR\014invalidCount\"D\n\017GetA"
-    "gentRequest\0221\n\002id\030\001 \001(\tB!\222A\0332\031ID of the "
-    "requested agent\340A\002R\002id\"t\n\020GetAgentRespon"
-    "se\022`\n\005agent\030\001 \001(\0132 .kentik.synthetics.v2"
-    "02309.AgentB(\222A%2#Agent configuration an"
-    "d status dataR\005agent\"k\n\022UpdateAgentReque"
-    "st\022U\n\005agent\030\001 \001(\0132 .kentik.synthetics.v2"
-    "02309.AgentB\035\222A\0322\030Agent configuration da"
-    "taR\005agent\"w\n\023UpdateAgentResponse\022`\n\005agen"
-    "t\030\001 \001(\0132 .kentik.synthetics.v202309.Agen"
-    "tB(\222A%2#Agent configuration and status d"
-    "ataR\005agent\"K\n\022DeleteAgentRequest\0225\n\002id\030\001"
-    " \001(\tB%\222A\0372\035ID of the agent to be deleted"
-    "\340A\002R\002id\"\025\n\023DeleteAgentResponse\"\022\n\020ListTe"
-    "stsRequest\"\341\001\n\021ListTestsResponse\022e\n\005test"
-    "s\030\001 \003(\0132\037.kentik.synthetics.v202309.Test"
-    "B.\222A+2)List of configured active or paus"
-    "ed testsR\005tests\022e\n\rinvalid_count\030\002 \001(\rB@"
-    "\222A=2;Number of invalid entries encounter"
-    "ed while collecting dataR\014invalidCount\"i"
-    "\n\021CreateTestRequest\022T\n\004test\030\001 \001(\0132\037.kent"
-    "ik.synthetics.v202309.TestB\037\222A\0312\027Test co"
-    "nfiguration data\340A\002R\004test\"r\n\022CreateTestR"
-    "esponse\022\\\n\004test\030\001 \001(\0132\037.kentik.synthetic"
-    "s.v202309.TestB\'\222A$2\"Test configuration "
-    "and status dataR\004test\">\n\016GetTestRequest\022"
-    ",\n\002id\030\001 \001(\tB\034\222A\0262\024ID of requested test\340A"
-    "\002R\002id\"o\n\017GetTestResponse\022\\\n\004test\030\001 \001(\0132\037"
-    ".kentik.synthetics.v202309.TestB\'\222A$2\"Te"
-    "st configuration and status dataR\004test\"f"
-    "\n\021UpdateTestRequest\022Q\n\004test\030\001 \001(\0132\037.kent"
-    "ik.synthetics.v202309.TestB\034\222A\0312\027Test co"
-    "nfiguration dataR\004test\"r\n\022UpdateTestResp"
-    "onse\022\\\n\004test\030\001 \001(\0132\037.kentik.synthetics.v"
-    "202309.TestB\'\222A$2\"Test configuration and"
-    " status dataR\004test\"I\n\021DeleteTestRequest\022"
-    "4\n\002id\030\001 \001(\tB$\222A\0362\034ID of the test to be d"
-    "eleted\340A\002R\002id\"\024\n\022DeleteTestResponse\"\270\001\n\024"
-    "SetTestStatusRequest\022E\n\002id\030\001 \001(\tB5\222A/2-I"
-    "D of the test which status is to be modi"
-    "fied\340A\002R\002id\022Y\n\006status\030\002 \001(\0162%.kentik.syn"
-    "thetics.v202309.TestStatusB\032\222A\0242\022Target "
-    "test status\340A\002R\006status\"\027\n\025SetTestStatusR"
-    "esponse\"\275\001\n\nAgentAlert\022\016\n\002id\030\001 \001(\tR\002id\022+"
-    "\n\021threshold_seconds\030\002 \001(\rR\020thresholdSeco"
-    "nds\0228\n\030notification_channel_ids\030\003 \003(\tR\026n"
-    "otificationChannelIds\022\031\n\010agent_id\030\004 \001(\tR"
-    "\007agentId\022\035\n\nagent_name\030\005 \001(\tR\tagentName\""
-    "\233\001\n\027CreateAgentAlertRequest\022+\n\021threshold"
-    "_seconds\030\001 \001(\rR\020thresholdSeconds\0228\n\030noti"
-    "fication_channel_ids\030\002 \003(\tR\026notification"
-    "ChannelIds\022\031\n\010agent_id\030\003 \001(\tR\007agentId\"b\n"
-    "\030CreateAgentAlertResponse\022F\n\013agent_alert"
-    "\030\001 \001(\0132%.kentik.synthetics.v202309.Agent"
-    "AlertR\nagentAlert\"\220\001\n\027UpdateAgentAlertRe"
-    "quest\022\016\n\002id\030\001 \001(\tR\002id\022+\n\021threshold_secon"
-    "ds\030\002 \001(\rR\020thresholdSeconds\0228\n\030notificati"
-    "on_channel_ids\030\003 \003(\tR\026notificationChanne"
-    "lIds\"b\n\030UpdateAgentAlertResponse\022F\n\013agen"
-    "t_alert\030\001 \001(\0132%.kentik.synthetics.v20230"
-    "9.AgentAlertR\nagentAlert\"&\n\024GetAgentAler"
-    "tRequest\022\016\n\002id\030\001 \001(\tR\002id\"_\n\025GetAgentAler"
-    "tResponse\022F\n\013agent_alert\030\001 \001(\0132%.kentik."
-    "synthetics.v202309.AgentAlertR\nagentAler"
-    "t\"5\n\026ListAgentAlertsRequest\022\033\n\tagent_ids"
-    "\030\001 \003(\tR\010agentIds\"c\n\027ListAgentAlertsRespo"
-    "nse\022H\n\014agent_alerts\030\001 \003(\0132%.kentik.synth"
-    "etics.v202309.AgentAlertR\013agentAlerts\")\n"
-    "\027DeleteAgentAlertRequest\022\016\n\002id\030\001 \001(\tR\002id"
-    "\"\032\n\030DeleteAgentAlertResponse*}\n\rImplemen"
-    "tType\022\036\n\032IMPLEMENT_TYPE_UNSPECIFIED\020\000\022\027\n"
-    "\023IMPLEMENT_TYPE_RUST\020\001\022\027\n\023IMPLEMENT_TYPE"
-    "_NODE\020\002\022\032\n\026IMPLEMENT_TYPE_NETWORK\020\003*]\n\010I"
-    "PFamily\022\031\n\025IP_FAMILY_UNSPECIFIED\020\000\022\020\n\014IP"
-    "_FAMILY_V4\020\001\022\020\n\014IP_FAMILY_V6\020\002\022\022\n\016IP_FAM"
-    "ILY_DUAL\020\003*\213\001\n\nTestStatus\022\033\n\027TEST_STATUS"
-    "_UNSPECIFIED\020\000\022\026\n\022TEST_STATUS_ACTIVE\020\001\022\026"
-    "\n\022TEST_STATUS_PAUSED\020\002\022\027\n\023TEST_STATUS_DE"
-    "LETED\020\003\022\027\n\023TEST_STATUS_PREVIEW\020\004*q\n\013Agen"
-    "tStatus\022\034\n\030AGENT_STATUS_UNSPECIFIED\020\000\022\023\n"
-    "\017AGENT_STATUS_OK\020\001\022\025\n\021AGENT_STATUS_WAIT\020"
-    "\002\022\030\n\024AGENT_STATUS_DELETED\020\003*\310\001\n\tDNSRecor"
-    "d\022\032\n\026DNS_RECORD_UNSPECIFIED\020\000\022\020\n\014DNS_REC"
-    "ORD_A\020\001\022\023\n\017DNS_RECORD_AAAA\020\002\022\024\n\020DNS_RECO"
-    "RD_CNAME\020\003\022\024\n\020DNS_RECORD_DNAME\020\004\022\021\n\rDNS_"
-    "RECORD_NS\020\005\022\021\n\rDNS_RECORD_MX\020\006\022\022\n\016DNS_RE"
-    "CORD_PTR\020\007\022\022\n\016DNS_RECORD_SOA\020\010*|\n\014Alerti"
-    "ngType\022\035\n\031ALERTING_TYPE_UNSPECIFIED\020\000\022\027\n"
-    "\023ALERTING_TYPE_AGENT\020\001\022\031\n\025ALERTING_TYPE_"
-    "GROUPED\020\002\022\031\n\025ALERTING_TYPE_SUBTEST\020\003*v\n\n"
-    "SrcGroupBy\022\034\n\030SRC_GROUP_BY_UNSPECIFIED\020\000"
-    "\022\033\n\027SRC_GROUP_BY_ALL_AGENTS\020\001\022\026\n\022SRC_GRO"
-    "UP_BY_LABEL\020\002\022\025\n\021SRC_GROUP_BY_SITE\020\0032\312\005\n"
-    "\025SyntheticsDataService\022\263\002\n\022GetResultsFor"
-    "Tests\0224.kentik.synthetics.v202309.GetRes"
-    "ultsForTestsRequest\0325.kentik.synthetics."
-    "v202309.GetResultsForTestsResponse\"\257\001\222As"
-    "\022\025Get results for tests\032FReturns probe r"
-    "esults for a set of tests for specified "
-    "period of time.*\022GetResultsForTests\362\327\002\017s"
-    "ynthetics:read\202\323\344\223\002 \"\033/synthetics/v20230"
-    "9/results:\001*\022\320\002\n\017GetTraceForTest\0221.kenti"
-    "k.synthetics.v202309.GetTraceForTestRequ"
-    "est\0322.kentik.synthetics.v202309.GetTrace"
-    "ForTestResponse\"\325\001\222A\232\001\022!Get network trac"
-    "e data for a test\032dGet network trace dat"
-    "a for a specific synthetic test. The tes"
-    "t must have traceroute task configured.*"
-    "\017GetTraceForTest\362\327\002\017synthetics:read\202\323\344\223\002"
-    "\036\"\031/synthetics/v202309/trace:\001*\032(\312A\023grpc"
-    ".api.kentik.com\352\327\002\nsynthetics\220\330\002\0032\206&\n\026Sy"
-    "ntheticsAdminService\022\247\002\n\nListAgents\022,.ke"
-    "ntik.synthetics.v202309.ListAgentsReques"
-    "t\032-.kentik.synthetics.v202309.ListAgents"
-    "Response\"\273\001\222Ac\022\025List available agents\032>R"
-    "eturns list of all synthetic agents avai"
-    "lable in the account.*\nListAgents\362\327\002\025adm"
-    "in.synthetics:read\222\330\002\026synthetics.agent::"
-    "read\202\323\344\223\002\034\022\032/synthetics/v202309/agents\022\247"
-    "\002\n\010GetAgent\022*.kentik.synthetics.v202309."
-    "GetAgentRequest\032+.kentik.synthetics.v202"
-    "309.GetAgentResponse\"\301\001\222Ad\022\036Get informat"
-    "ion about an agent\0328Returns information "
-    "about the requested synthetic agent.*\010Ge"
-    "tAgent\362\327\002\025admin.synthetics:read\222\330\002\026synth"
-    "etics.agent::read\202\323\344\223\002!\022\037/synthetics/v20"
-    "2309/agents/{id}\022\263\002\n\013UpdateAgent\022-.kenti"
-    "k.synthetics.v202309.UpdateAgentRequest\032"
-    "..kentik.synthetics.v202309.UpdateAgentR"
-    "esponse\"\304\001\222A[\022 Update configuration of a"
-    "n agent\032*Update configuration of a synth"
-    "etic agent.*\013UpdateAgent\362\327\002\026admin.synthe"
-    "tics:write\222\330\002\030synthetics.agent::update\202\323"
-    "\344\223\002*\032%/synthetics/v202309/agents/{agent."
-    "id}:\001*\022\311\002\n\013DeleteAgent\022-.kentik.syntheti"
-    "cs.v202309.DeleteAgentRequest\032..kentik.s"
-    "ynthetics.v202309.DeleteAgentResponse\"\332\001"
-    "\222Az\022\017Delete an agent\032ZDeletes the reques"
-    "ted agent. The deleted agent is removed "
-    "from configuration of all tests.*\013Delete"
-    "Agent\362\327\002\026admin.synthetics:write\222\330\002\030synth"
-    "etics.agent::delete\202\323\344\223\002!*\037/synthetics/v"
-    "202309/agents/{id}\022\237\002\n\tListTests\022+.kenti"
-    "k.synthetics.v202309.ListTestsRequest\032,."
-    "kentik.synthetics.v202309.ListTestsRespo"
-    "nse\"\266\001\222A`\022\016List all tests\032CReturns a lis"
-    "t of all configured active and paused sy"
-    "nthetic tests.*\tListTests\362\327\002\025admin.synth"
-    "etics:read\222\330\002\025synthetics.test::read\202\323\344\223\002"
-    "\033\022\031/synthetics/v202309/tests\022\252\002\n\nCreateT"
-    "est\022,.kentik.synthetics.v202309.CreateTe"
-    "stRequest\032-.kentik.synthetics.v202309.Cr"
-    "eateTestResponse\"\276\001\222Ab\022\rCreate a test\032EC"
-    "reate synthetic test based on configurat"
-    "ion provided in the request.*\nCreateTest"
-    "\362\327\002\026admin.synthetics:write\222\330\002\027synthetics"
-    ".test::create\202\323\344\223\002\036\"\031/synthetics/v202309"
-    "/tests:\001*\022\251\002\n\007GetTest\022).kentik.synthetic"
-    "s.v202309.GetTestRequest\032*.kentik.synthe"
-    "tics.v202309.GetTestResponse\"\306\001\222Ak\022\034Get "
-    "information about a test\032BReturns config"
-    "uration and status for the requested syn"
-    "thetic test.*\007GetTest\362\327\002\025admin.synthetic"
-    "s:read\222\330\002\025synthetics.test::read\202\323\344\223\002 \022\036/"
-    "synthetics/v202309/tests/{id}\022\252\002\n\nUpdate"
-    "Test\022,.kentik.synthetics.v202309.UpdateT"
-    "estRequest\032-.kentik.synthetics.v202309.U"
-    "pdateTestResponse\"\276\001\222AX\022\036Update configur"
-    "ation of a test\032*Updates configuration o"
-    "f a synthetic test.*\nUpdateTest\362\327\002\026admin"
-    ".synthetics:write\222\330\002\027synthetics.test::up"
-    "date\202\323\344\223\002(\032#/synthetics/v202309/tests/{t"
-    "est.id}:\001*\022\314\002\n\nDeleteTest\022,.kentik.synth"
-    "etics.v202309.DeleteTestRequest\032-.kentik"
-    ".synthetics.v202309.DeleteTestResponse\"\340"
-    "\001\222A\201\001\022\030Delete a synthetic test.\032YDeletes"
-    " the synthetics test. All accumulated re"
-    "sults for the test cease to be accessibl"
-    "e.*\nDeleteTest\362\327\002\026admin.synthetics:write"
-    "\222\330\002\027synthetics.test::delete\202\323\344\223\002 *\036/synt"
-    "hetics/v202309/tests/{id}\022\262\002\n\rSetTestSta"
-    "tus\022/.kentik.synthetics.v202309.SetTestS"
-    "tatusRequest\0320.kentik.synthetics.v202309"
-    ".SetTestStatusResponse\"\275\001\222AU\022!Update sta"
-    "tus of a synthetic test\032!Update status o"
-    "f a synthetic test*\rSetTestStatus\362\327\002\026adm"
-    "in.synthetics:write\222\330\002\027synthetics.test::"
-    "update\202\323\344\223\002*\032%/synthetics/v202309/tests/"
-    "{id}/status:\001*\022\302\002\n\020CreateAgentAlert\0222.ke"
-    "ntik.synthetics.v202309.CreateAgentAlert"
-    "Request\0323.kentik.synthetics.v202309.Crea"
-    "teAgentAlertResponse\"\304\001\222Aa\022#Create an ag"
-    "ent alert configuration\032(Creates a new a"
-    "gent alert configuration.*\020CreateAgentAl"
-    "ert\362\327\002\026admin.synthetics:write\222\330\002\030synthet"
-    "ics.agent::create\202\323\344\223\002$\"\037/synthetics/v20"
-    "2309/agentAlerts:\001*\022\211\003\n\020UpdateAgentAlert"
-    "\0222.kentik.synthetics.v202309.UpdateAgent"
-    "AlertRequest\0323.kentik.synthetics.v202309"
-    ".UpdateAgentAlertResponse\"\213\002\222A\242\001\022#Update"
-    " an agent alert configuration\032iUpdates a"
-    "n existing agent alert configuration wit"
-    "h the time threshold and notification ch"
-    "annels provided.*\020UpdateAgentAlert\362\327\002\026ad"
-    "min.synthetics:write\222\330\002\030synthetics.agent"
-    "::update\202\323\344\223\002)\032$/synthetics/v202309/agen"
-    "tAlerts/{id}:\001*\022\272\002\n\rGetAgentAlert\022/.kent"
-    "ik.synthetics.v202309.GetAgentAlertReque"
-    "st\0320.kentik.synthetics.v202309.GetAgentA"
-    "lertResponse\"\305\001\222Ac\022 Get an agent alert c"
-    "onfiguration\0320Retrieves an existing agen"
-    "t alert configuration.*\rGetAgentAlert\362\327\002"
-    "\025admin.synthetics:read\222\330\002\026synthetics.age"
-    "nt::read\202\323\344\223\002&\022$/synthetics/v202309/agen"
-    "tAlerts/{id}\022\336\002\n\017ListAgentAlerts\0221.kenti"
-    "k.synthetics.v202309.ListAgentAlertsRequ"
-    "est\0322.kentik.synthetics.v202309.ListAgen"
-    "tAlertsResponse\"\343\001\222A\205\001\022\037List agent alert"
-    " configurations\032QLists all agent alert c"
-    "onfigurations, optionally filtered by a "
-    "list of agent ids.*\017ListAgentAlerts\362\327\002\025a"
-    "dmin.synthetics:read\222\330\002\026synthetics.agent"
-    "::read\202\323\344\223\002!\022\037/synthetics/v202309/agentA"
-    "lerts\022\312\002\n\020DeleteAgentAlert\0222.kentik.synt"
-    "hetics.v202309.DeleteAgentAlertRequest\0323"
-    ".kentik.synthetics.v202309.DeleteAgentAl"
-    "ertResponse\"\314\001\222Ag\022#Delete an agent alert"
-    " configuration\032.Deletes an existing agen"
-    "t alert configuration.*\020DeleteAgentAlert"
-    "\362\327\002\026admin.synthetics:write\222\330\002\030synthetics"
-    ".agent::delete\202\323\344\223\002&*$/synthetics/v20230"
-    "9/agentAlerts/{id}\032.\312A\023grpc.api.kentik.c"
-    "om\352\327\002\020admin.synthetics\220\330\002\003B\313BZOgithub.co"
-    "m/kentik/api-schema-public/gen/go/kentik"
-    "/synthetics/v202309;synthetics\222A\366A\022\214@\n\031S"
-    "ynthetics Monitoring API\022\236\?# Overview\nTh"
-    "e Synthetics Monitoring API provides pro"
-    "grammatic access to Kentik\'s [synthetic "
-    "monitoring system](https://kb.kentik.com"
-    "/v4/Ma00.htm). The API consists of two e"
-    "ndpoints:\n| Endpoint | Purpose |\n|------"
-    "-----|---------|\n| SyntheticsAdminServic"
-    "e | CRUD operations for synthetic tests,"
-    " agents, and offline agent alerts |\n| Sy"
-    "ntheticsDataService  | Retrieval of synt"
-    "hetic test results and network traces |\n"
-    "\nBoth REST endpoint and gRPC RPCs are pr"
-    "ovided.\nNote: API version v202309 is the"
-    " same as v202202 except that the timesta"
-    "mps returned for synthetic test results "
-    "are closer to when the test was actually"
-    " run.\n### Known Limitations\nThe API curr"
-    "ently does not support the following [Sy"
-    "nthetic Test Types](https://kb.kentik.co"
-    "m/v4/Ma00.htm#Ma00-Synthetic_Test_Types)"
-    ":\n* BGP Monitor tests, which are support"
-    "ed in a [separate API](https://github.co"
-    "m/kentik/api-schema-public/blob/master/p"
-    "roto/kentik/bgp_monitoring/v202205beta1/"
-    "bgp_monitoring.proto)\n* Transaction test"
-    "s.\n\n### Additional Public Resources\nKent"
-    "ik community [Python](https://github.com"
-    "/kentik/community_sdk_python) and [Go](h"
-    "ttps://github.com/kentik/community_sdk_g"
-    "olang) SDKs provide language-specific su"
-    "pport for using this and other Kentik AP"
-    "Is. These SDKs can be also used as examp"
-    "le code for development. \n A [Terraform "
-    "provider](https://registry.terraform.io/"
-    "providers/kentik/kentik-synthetics) is a"
-    "vailable for configuring tests and agent"
-    "s for Kentik synthetic monitoring.\n# Ana"
-    "tomy of a Synthetic Test\nEach `Test` con"
-    "sists of one or more tasks. Tasks are ex"
-    "ecuted by monitoring `Agents` that send "
-    "synthetic traffic (probes) over the netw"
-    "ork. The API currently supports followin"
-    "g tasks:\n| Task name  | Purpose |\n|-----"
-    "-------|---------|\n| ping       | Test b"
-    "asic address, and optionally TCP port re"
-    "achability |\n| traceroute (a.k.a. trace)"
-    "| Discover unidirectional network path |"
-    "\n| http | Perform a simple HTTP/HTTPS re"
-    "quest |\n| page-load | Use headless Chrom"
-    "ium to execute an HTTP/HTTPS request |\n|"
-    " dns | Execute a DNS query|\n| throughput"
-    " | Execute a throughput task to determin"
-    "e bandwidth |\n\nThe set of tasks executed"
-    " on behalf of a given test depends on th"
-    "e `type` of that test. The following tes"
-    "t types are currently supported by the A"
-    "PI:\n| API type | Portal (UI) equivalent "
-    "| Tasks |\n|---------------|-------------"
-    "-|-------|\n| ip | IP Address | ping, tra"
-    "ceroute |\n| hostname | Hostname | ping, "
-    "traceroute |\n| network_grid | Network Gr"
-    "id | ping, traceroute |\n| agent | Agent-"
-    "to-Agent | ping, traceroute, throughput "
-    "|\n| network_mesh | Network Mesh | ping, "
-    "traceroute |\n| flow | Autonomous Tests ("
-    "5 variants) | ping, traceroute |\n| url |"
-    " HTTP(S) or API | http, ping (optional),"
-    " traceroute (optional) |\n| page_load | P"
-    "age Load | page-load, ping (optional), t"
-    "raceroute (optional) |\n| dns | DNS Serve"
-    "r Monitor | dns |\n| dns_grid | DNS Serve"
-    "r Grid | dns |\n\n***Note:*** `ping` and `"
-    "traceroute` tasks are always run togethe"
-    "r (never one without the other).\n\n# Test"
-    " Attributes and Settings\nThe attributes "
-    "of the test object enable configuration "
-    "of test settings, access to test metadat"
-    "a, and access to runtime state informati"
-    "on.\n### State and Metadata Attributes\n T"
-    "he following table lists the metadata an"
-    "d state attributes:\n| Attribute | Access"
-    " | Purpose |\n|-----------|--------|-----"
-    "----|\n| id | RO | System-generated uniqu"
-    "e identifier of the test |\n| name | RW |"
-    " User specified name for the test (need "
-    "not be unique) |\n| type | RO (after crea"
-    "tion) | Type of the test (set on creatio"
-    "n; read-only thereafter) |\n| status | RW"
-    " | Life-cycle status of the test |\n| cda"
-    "te | RO | Creation timestamp |\n| edate |"
-    " RO | Last-modification timestamp |\n| cr"
-    "eated_by | RO | Identity of the user tha"
-    "t created the test |\n| last_updated_by |"
-    " RO | Identity of the latest user to mod"
-    "ify the test |\n| labels | RW | List of n"
-    "ames of labels applied to the test |\n\nTe"
-    "st configuration is performed via the te"
-    "st\'s `settings` attribute. Some settings"
-    " are common to all tests while others ar"
-    "e specific to tests of a given type.\n###"
-    " Common Test Settings\nThe following sett"
-    "ings are used for tests of all types:\n| "
-    "Attribute | Purpose | Required |\n|------"
-    "-----|---------|----------|\n| agentIds  "
-    "| IDs of agents to execute tasks for the"
-    " test | YES |\n| period | Test execution "
-    "interval in seconds | NO (default 60s) |"
-    "\n| family | IP address family. Used only"
-    " for tests whose type is url or dns. Sel"
-    "ects which type of DNS resource is queri"
-    "ed for resolving hostname to target addr"
-    "ess | NO (default IP_FAMILY_DUAL) |\n| no"
-    "tificationChannels | List of notificatio"
-    "n channels for the test | NO (default em"
-    "pty list) |\n| healthSettings | A HealthS"
-    "ettings object that configures health se"
-    "ttings for this test, which includes met"
-    "ric thresholds that define health status"
-    " (warning and critical) and trigger asso"
-    "ciated alarms. | YES |\n| ping | A TestPi"
-    "ngSettings object that configures the pi"
-    "ng task of the test | NO (default depend"
-    "s on test type) |\n| trace | A TestTraceS"
-    "ettings object that configures the trace"
-    " task of the test | NO (default depends "
-    "on test type) |\n| throughput | A TestThr"
-    "oughputSettings object that configures t"
-    "he throughput task of the test | NO (def"
-    "ault depends on test type) |\n| tasks | L"
-    "ist of names of the tasks that will be e"
-    "xecuted for this test | YES |\n\n### Type-"
-    "specific Settings\nEach test type has its"
-    " own configuration object that represent"
-    "s the settings for that type. These type"
-    "-specific objects are referenced by the "
-    "attributes in `Test.settings`:\n| Test ty"
-    "pe    | Settings attribute | Configurati"
-    "on object |\n|--------------|------------"
-    "-------------|--------------------------"
-    "-|\n| ip           | ip                  "
-    "    | IpTest                    |\n| host"
-    "name     | hostname                | Hos"
-    "tnameTest              |\n| network_grid "
-    "| networkGrid             | IpTest      "
-    "              |\n| agent        | agent  "
-    "                 | AgentTest            "
-    "     |\n| network_mesh | networkMesh     "
-    "        | NetworkMeshTest           |\n| "
-    "flow         | flow                    |"
-    " FlowTest                  |\n| url      "
-    "    | url                     | UrlTest "
-    "                  |\n| page_load    | pag"
-    "eLoad                | PageLoadTest     "
-    "         |\n| dns          | dns         "
-    "            | DnsTest                   "
-    "|\n| dns_grid     | dnsGrid              "
-    "   | DnsTest                   |\n\n# Test"
-    " Results\nResults of synthetic tests are "
-    "returned as a sequence of `TestResults` "
-    "objects. Each such object represents mea"
-    "surements and health evaluation for a si"
-    "ngle test at specific point in time. Mea"
-    "surements and health evaluation are grou"
-    "ped by agent and by task.\nGranularity of"
-    " timestamps in test results depends on t"
-    "he frequency (period) of the test and on"
-    " the requested time range. The minimum g"
-    "ranularity is 1 minute (even when period"
-    " < 1 minute). The longer the time range,"
-    " the lower the granularity.\n# Network Tr"
-    "aces\nSynthetic tests that include the `t"
-    "raceroute` task collect the unidirection"
-    "al network path from the agent to the ta"
-    "rget for each agent/target pair. The tra"
-    "ce data are returned in the `GetTraceFor"
-    "TestResponse` object. The `paths` attrib"
-    "ute of this object contains the collecte"
-    "d network path for each agent/target pai"
-    "r and the round-trip time (RTT) to each "
-    "hop.\nHops in actual network traces are i"
-    "dentified by a `nodeId`. The mapping of "
-    "node IDs to address, name, location, and"
-    " other attributes of the hop is provided"
-    " in a map that is stored in the `nodes` "
-    "attribute of the `GetTraceForTestRespons"
-    "e` object.\n# Agents\nThe Kentik synthetic"
-    " monitoring system recognizes 2 types of"
-    " agents:\n* **Global** (public): Managed "
-    "by Kentik and available to every Kentik "
-    "user. All information about global agent"
-    "s in this API is read-only.\n* **Private*"
-    "*: Deployed by each customer and availab"
-    "le only to that customer.\nTo be visible "
-    "in this API, a private agent must first "
-    "associate itself with a customer account"
-    " by contacting the Kentik system (via pr"
-    "ivate API). Once the agent is associated"
-    " it can be authorized via the API by cha"
-    "nging its `status` to `AGENT_STATUS_OK`."
-    " For more information about private agen"
-    "t deployment, see [**Synthetic Agent Dep"
-    "loyments**](https://kb.kentik.com/v4/Ma0"
-    "1.htm#Ma01-Synthetic_Agent_Deployments)."
-    "\n\"E\n\026Kentik API Engineering\022+https://git"
-    "hub.com/kentik/api-schema-public2\007v20230"
-    "9*\001\0022\020application/json:\020application/json"
-    "ZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005to"
-    "ken\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005emai"
-    "l\022\000\n\t\n\005token\022\000r`\n\"Kentik synthetic monit"
-    "oring system\022:https://kb.kentik.com/v4/M"
-    "a00.htm#Ma00-Synthetics_Overviewb\006proto3"
+    "eriesR\taggregate\"\266\004\n\034GetResultsForTestsC"
+    "svRequest\022H\n\003ids\030\001 \003(\tB6\222A02.List of tes"
+    "t IDs for which to retrieve results\340A\002R\003"
+    "ids\022x\n\nstart_time\030\002 \001(\0132\032.google.protobu"
+    "f.TimestampB=\222A725Timestamp of the oldes"
+    "t results to include in results\340A\002R\tstar"
+    "tTime\022t\n\010end_time\030\003 \001(\0132\032.google.protobu"
+    "f.TimestampB=\222A725Timestamp of the newes"
+    "t results to include in results\340A\002R\007endT"
+    "ime\022P\n\tagent_ids\030\004 \003(\tB3\222A02.List of age"
+    "nt IDs from which to return resultsR\010age"
+    "ntIds\022\211\001\n\taggregate\030\005 \001(\010Bk\222Ah2fIf true,"
+    " retrieve result aggregated across the r"
+    "equested time period, else return comple"
+    "te time seriesR\taggregate\"\256\001\n\035GetResults"
+    "ForTestsCsvResponse\022\\\n\014content_type\030\001 \001("
+    "\tB9\222A624Content type of the response har"
+    "dcoded to \'text/csv\'R\013contentType\022/\n\004dat"
+    "a\030\002 \001(\014B\033\222A\0302\026CSV data as byte arrayR\004da"
+    "ta\"^\n\032GetResultsForTestsResponse\022@\n\007resu"
+    "lts\030\001 \003(\0132&.kentik.synthetics.v202309.Te"
+    "stResultsR\007results\"\210\004\n\026GetTraceForTestRe"
+    "quest\022M\n\002id\030\001 \001(\tB=\222A:28ID of test for w"
+    "hich to retrieve network path trace data"
+    "R\002id\022x\n\nstart_time\030\002 \001(\0132\032.google.protob"
+    "uf.TimestampB=\222A725Timestamp of the olde"
+    "st results to include in results\340A\002R\tsta"
+    "rtTime\022t\n\010end_time\030\003 \001(\0132\032.google.protob"
+    "uf.TimestampB=\222A725Timestamp of the newe"
+    "st results to include in results\340A\002R\007end"
+    "Time\022P\n\tagent_ids\030\004 \003(\tB3\222A02.List of ag"
+    "ent IDs from which to return resultsR\010ag"
+    "entIds\022]\n\ntarget_ips\030\005 \003(\tB>\222A;29List of"
+    " target IP addresses for which to retrie"
+    "ve resultsR\ttargetIps\"\346\002\n\027GetTraceForTes"
+    "tResponse\022\213\001\n\005nodes\030\001 \003(\0132=.kentik.synth"
+    "etics.v202309.GetTraceForTestResponse.No"
+    "desEntryB6\222A321Map of network node infor"
+    "mation keyed by node IDsR\005nodes\022_\n\005paths"
+    "\030\002 \003(\0132\037.kentik.synthetics.v202309.PathB"
+    "(\222A%2#List of retrieved network path dat"
+    "aR\005paths\032\\\n\nNodesEntry\022\020\n\003key\030\001 \001(\tR\003key"
+    "\0228\n\005value\030\002 \001(\0132\".kentik.synthetics.v202"
+    "309.NetNodeR\005value:\0028\001\"\023\n\021ListAgentsRequ"
+    "est\"\324\001\n\022ListAgentsResponse\022W\n\006agents\030\001 \003"
+    "(\0132 .kentik.synthetics.v202309.AgentB\035\222A"
+    "\0322\030List of available agentsR\006agents\022e\n\ri"
+    "nvalid_count\030\002 \001(\rB@\222A=2;Number of inval"
+    "id entries encountered while collecting "
+    "dataR\014invalidCount\"D\n\017GetAgentRequest\0221\n"
+    "\002id\030\001 \001(\tB!\222A\0332\031ID of the requested agen"
+    "t\340A\002R\002id\"t\n\020GetAgentResponse\022`\n\005agent\030\001 "
+    "\001(\0132 .kentik.synthetics.v202309.AgentB(\222"
+    "A%2#Agent configuration and status dataR"
+    "\005agent\"k\n\022UpdateAgentRequest\022U\n\005agent\030\001 "
+    "\001(\0132 .kentik.synthetics.v202309.AgentB\035\222"
+    "A\0322\030Agent configuration dataR\005agent\"w\n\023U"
+    "pdateAgentResponse\022`\n\005agent\030\001 \001(\0132 .kent"
+    "ik.synthetics.v202309.AgentB(\222A%2#Agent "
+    "configuration and status dataR\005agent\"K\n\022"
+    "DeleteAgentRequest\0225\n\002id\030\001 \001(\tB%\222A\0372\035ID "
+    "of the agent to be deleted\340A\002R\002id\"\025\n\023Del"
+    "eteAgentResponse\"\022\n\020ListTestsRequest\"\341\001\n"
+    "\021ListTestsResponse\022e\n\005tests\030\001 \003(\0132\037.kent"
+    "ik.synthetics.v202309.TestB.\222A+2)List of"
+    " configured active or paused testsR\005test"
+    "s\022e\n\rinvalid_count\030\002 \001(\rB@\222A=2;Number of"
+    " invalid entries encountered while colle"
+    "cting dataR\014invalidCount\"i\n\021CreateTestRe"
+    "quest\022T\n\004test\030\001 \001(\0132\037.kentik.synthetics."
+    "v202309.TestB\037\222A\0312\027Test configuration da"
+    "ta\340A\002R\004test\"r\n\022CreateTestResponse\022\\\n\004tes"
+    "t\030\001 \001(\0132\037.kentik.synthetics.v202309.Test"
+    "B\'\222A$2\"Test configuration and status dat"
+    "aR\004test\">\n\016GetTestRequest\022,\n\002id\030\001 \001(\tB\034\222"
+    "A\0262\024ID of requested test\340A\002R\002id\"o\n\017GetTe"
+    "stResponse\022\\\n\004test\030\001 \001(\0132\037.kentik.synthe"
+    "tics.v202309.TestB\'\222A$2\"Test configurati"
+    "on and status dataR\004test\"f\n\021UpdateTestRe"
+    "quest\022Q\n\004test\030\001 \001(\0132\037.kentik.synthetics."
+    "v202309.TestB\034\222A\0312\027Test configuration da"
+    "taR\004test\"r\n\022UpdateTestResponse\022\\\n\004test\030\001"
+    " \001(\0132\037.kentik.synthetics.v202309.TestB\'\222"
+    "A$2\"Test configuration and status dataR\004"
+    "test\"I\n\021DeleteTestRequest\0224\n\002id\030\001 \001(\tB$\222"
+    "A\0362\034ID of the test to be deleted\340A\002R\002id\""
+    "\024\n\022DeleteTestResponse\"\270\001\n\024SetTestStatusR"
+    "equest\022E\n\002id\030\001 \001(\tB5\222A/2-ID of the test "
+    "which status is to be modified\340A\002R\002id\022Y\n"
+    "\006status\030\002 \001(\0162%.kentik.synthetics.v20230"
+    "9.TestStatusB\032\222A\0242\022Target test status\340A\002"
+    "R\006status\"\027\n\025SetTestStatusResponse\"\275\001\n\nAg"
+    "entAlert\022\016\n\002id\030\001 \001(\tR\002id\022+\n\021threshold_se"
+    "conds\030\002 \001(\rR\020thresholdSeconds\0228\n\030notific"
+    "ation_channel_ids\030\003 \003(\tR\026notificationCha"
+    "nnelIds\022\031\n\010agent_id\030\004 \001(\tR\007agentId\022\035\n\nag"
+    "ent_name\030\005 \001(\tR\tagentName\"\233\001\n\027CreateAgen"
+    "tAlertRequest\022+\n\021threshold_seconds\030\001 \001(\r"
+    "R\020thresholdSeconds\0228\n\030notification_chann"
+    "el_ids\030\002 \003(\tR\026notificationChannelIds\022\031\n\010"
+    "agent_id\030\003 \001(\tR\007agentId\"b\n\030CreateAgentAl"
+    "ertResponse\022F\n\013agent_alert\030\001 \001(\0132%.kenti"
+    "k.synthetics.v202309.AgentAlertR\nagentAl"
+    "ert\"\220\001\n\027UpdateAgentAlertRequest\022\016\n\002id\030\001 "
+    "\001(\tR\002id\022+\n\021threshold_seconds\030\002 \001(\rR\020thre"
+    "sholdSeconds\0228\n\030notification_channel_ids"
+    "\030\003 \003(\tR\026notificationChannelIds\"b\n\030Update"
+    "AgentAlertResponse\022F\n\013agent_alert\030\001 \001(\0132"
+    "%.kentik.synthetics.v202309.AgentAlertR\n"
+    "agentAlert\"&\n\024GetAgentAlertRequest\022\016\n\002id"
+    "\030\001 \001(\tR\002id\"_\n\025GetAgentAlertResponse\022F\n\013a"
+    "gent_alert\030\001 \001(\0132%.kentik.synthetics.v20"
+    "2309.AgentAlertR\nagentAlert\"5\n\026ListAgent"
+    "AlertsRequest\022\033\n\tagent_ids\030\001 \003(\tR\010agentI"
+    "ds\"c\n\027ListAgentAlertsResponse\022H\n\014agent_a"
+    "lerts\030\001 \003(\0132%.kentik.synthetics.v202309."
+    "AgentAlertR\013agentAlerts\")\n\027DeleteAgentAl"
+    "ertRequest\022\016\n\002id\030\001 \001(\tR\002id\"\032\n\030DeleteAgen"
+    "tAlertResponse*}\n\rImplementType\022\036\n\032IMPLE"
+    "MENT_TYPE_UNSPECIFIED\020\000\022\027\n\023IMPLEMENT_TYP"
+    "E_RUST\020\001\022\027\n\023IMPLEMENT_TYPE_NODE\020\002\022\032\n\026IMP"
+    "LEMENT_TYPE_NETWORK\020\003*]\n\010IPFamily\022\031\n\025IP_"
+    "FAMILY_UNSPECIFIED\020\000\022\020\n\014IP_FAMILY_V4\020\001\022\020"
+    "\n\014IP_FAMILY_V6\020\002\022\022\n\016IP_FAMILY_DUAL\020\003*\213\001\n"
+    "\nTestStatus\022\033\n\027TEST_STATUS_UNSPECIFIED\020\000"
+    "\022\026\n\022TEST_STATUS_ACTIVE\020\001\022\026\n\022TEST_STATUS_"
+    "PAUSED\020\002\022\027\n\023TEST_STATUS_DELETED\020\003\022\027\n\023TES"
+    "T_STATUS_PREVIEW\020\004*q\n\013AgentStatus\022\034\n\030AGE"
+    "NT_STATUS_UNSPECIFIED\020\000\022\023\n\017AGENT_STATUS_"
+    "OK\020\001\022\025\n\021AGENT_STATUS_WAIT\020\002\022\030\n\024AGENT_STA"
+    "TUS_DELETED\020\003*\310\001\n\tDNSRecord\022\032\n\026DNS_RECOR"
+    "D_UNSPECIFIED\020\000\022\020\n\014DNS_RECORD_A\020\001\022\023\n\017DNS"
+    "_RECORD_AAAA\020\002\022\024\n\020DNS_RECORD_CNAME\020\003\022\024\n\020"
+    "DNS_RECORD_DNAME\020\004\022\021\n\rDNS_RECORD_NS\020\005\022\021\n"
+    "\rDNS_RECORD_MX\020\006\022\022\n\016DNS_RECORD_PTR\020\007\022\022\n\016"
+    "DNS_RECORD_SOA\020\010*|\n\014AlertingType\022\035\n\031ALER"
+    "TING_TYPE_UNSPECIFIED\020\000\022\027\n\023ALERTING_TYPE"
+    "_AGENT\020\001\022\031\n\025ALERTING_TYPE_GROUPED\020\002\022\031\n\025A"
+    "LERTING_TYPE_SUBTEST\020\003*v\n\nSrcGroupBy\022\034\n\030"
+    "SRC_GROUP_BY_UNSPECIFIED\020\000\022\033\n\027SRC_GROUP_"
+    "BY_ALL_AGENTS\020\001\022\026\n\022SRC_GROUP_BY_LABEL\020\002\022"
+    "\025\n\021SRC_GROUP_BY_SITE\020\0032\201\010\n\025SyntheticsDat"
+    "aService\022\263\002\n\022GetResultsForTests\0224.kentik"
+    ".synthetics.v202309.GetResultsForTestsRe"
+    "quest\0325.kentik.synthetics.v202309.GetRes"
+    "ultsForTestsResponse\"\257\001\222As\022\025Get results "
+    "for tests\032FReturns probe results for a s"
+    "et of tests for specified period of time"
+    ".*\022GetResultsForTests\362\327\002\017synthetics:read"
+    "\202\323\344\223\002 \"\033/synthetics/v202309/results:\001*\022\264"
+    "\002\n\025GetResultsForTestsCsv\0227.kentik.synthe"
+    "tics.v202309.GetResultsForTestsCsvReques"
+    "t\0328.kentik.synthetics.v202309.GetResults"
+    "ForTestsCsvResponse\"\247\001\222Ag\022\036Get test resu"
+    "lts in CSV format\032.Returns probe results"
+    " for tests in CSV format.*\025GetResultsFor"
+    "TestsCsv\362\327\002\017synthetics:read\202\323\344\223\002$\"\037/synt"
+    "hetics/v202309/results/csv:\001*\022\320\002\n\017GetTra"
+    "ceForTest\0221.kentik.synthetics.v202309.Ge"
+    "tTraceForTestRequest\0322.kentik.synthetics"
+    ".v202309.GetTraceForTestResponse\"\325\001\222A\232\001\022"
+    "!Get network trace data for a test\032dGet "
+    "network trace data for a specific synthe"
+    "tic test. The test must have traceroute "
+    "task configured.*\017GetTraceForTest\362\327\002\017syn"
+    "thetics:read\202\323\344\223\002\036\"\031/synthetics/v202309/"
+    "trace:\001*\032(\312A\023grpc.api.kentik.com\352\327\002\nsynt"
+    "hetics\220\330\002\0032\206&\n\026SyntheticsAdminService\022\247\002"
+    "\n\nListAgents\022,.kentik.synthetics.v202309"
+    ".ListAgentsRequest\032-.kentik.synthetics.v"
+    "202309.ListAgentsResponse\"\273\001\222Ac\022\025List av"
+    "ailable agents\032>Returns list of all synt"
+    "hetic agents available in the account.*\n"
+    "ListAgents\362\327\002\025admin.synthetics:read\222\330\002\026s"
+    "ynthetics.agent::read\202\323\344\223\002\034\022\032/synthetics"
+    "/v202309/agents\022\247\002\n\010GetAgent\022*.kentik.sy"
+    "nthetics.v202309.GetAgentRequest\032+.kenti"
+    "k.synthetics.v202309.GetAgentResponse\"\301\001"
+    "\222Ad\022\036Get information about an agent\0328Ret"
+    "urns information about the requested syn"
+    "thetic agent.*\010GetAgent\362\327\002\025admin.synthet"
+    "ics:read\222\330\002\026synthetics.agent::read\202\323\344\223\002!"
+    "\022\037/synthetics/v202309/agents/{id}\022\263\002\n\013Up"
+    "dateAgent\022-.kentik.synthetics.v202309.Up"
+    "dateAgentRequest\032..kentik.synthetics.v20"
+    "2309.UpdateAgentResponse\"\304\001\222A[\022 Update c"
+    "onfiguration of an agent\032*Update configu"
+    "ration of a synthetic agent.*\013UpdateAgen"
+    "t\362\327\002\026admin.synthetics:write\222\330\002\030synthetic"
+    "s.agent::update\202\323\344\223\002*\032%/synthetics/v2023"
+    "09/agents/{agent.id}:\001*\022\311\002\n\013DeleteAgent\022"
+    "-.kentik.synthetics.v202309.DeleteAgentR"
+    "equest\032..kentik.synthetics.v202309.Delet"
+    "eAgentResponse\"\332\001\222Az\022\017Delete an agent\032ZD"
+    "eletes the requested agent. The deleted "
+    "agent is removed from configuration of a"
+    "ll tests.*\013DeleteAgent\362\327\002\026admin.syntheti"
+    "cs:write\222\330\002\030synthetics.agent::delete\202\323\344\223"
+    "\002!*\037/synthetics/v202309/agents/{id}\022\237\002\n\t"
+    "ListTests\022+.kentik.synthetics.v202309.Li"
+    "stTestsRequest\032,.kentik.synthetics.v2023"
+    "09.ListTestsResponse\"\266\001\222A`\022\016List all tes"
+    "ts\032CReturns a list of all configured act"
+    "ive and paused synthetic tests.*\tListTes"
+    "ts\362\327\002\025admin.synthetics:read\222\330\002\025synthetic"
+    "s.test::read\202\323\344\223\002\033\022\031/synthetics/v202309/"
+    "tests\022\252\002\n\nCreateTest\022,.kentik.synthetics"
+    ".v202309.CreateTestRequest\032-.kentik.synt"
+    "hetics.v202309.CreateTestResponse\"\276\001\222Ab\022"
+    "\rCreate a test\032ECreate synthetic test ba"
+    "sed on configuration provided in the req"
+    "uest.*\nCreateTest\362\327\002\026admin.synthetics:wr"
+    "ite\222\330\002\027synthetics.test::create\202\323\344\223\002\036\"\031/s"
+    "ynthetics/v202309/tests:\001*\022\251\002\n\007GetTest\022)"
+    ".kentik.synthetics.v202309.GetTestReques"
+    "t\032*.kentik.synthetics.v202309.GetTestRes"
+    "ponse\"\306\001\222Ak\022\034Get information about a tes"
+    "t\032BReturns configuration and status for "
+    "the requested synthetic test.*\007GetTest\362\327"
+    "\002\025admin.synthetics:read\222\330\002\025synthetics.te"
+    "st::read\202\323\344\223\002 \022\036/synthetics/v202309/test"
+    "s/{id}\022\252\002\n\nUpdateTest\022,.kentik.synthetic"
+    "s.v202309.UpdateTestRequest\032-.kentik.syn"
+    "thetics.v202309.UpdateTestResponse\"\276\001\222AX"
+    "\022\036Update configuration of a test\032*Update"
+    "s configuration of a synthetic test.*\nUp"
+    "dateTest\362\327\002\026admin.synthetics:write\222\330\002\027sy"
+    "nthetics.test::update\202\323\344\223\002(\032#/synthetics"
+    "/v202309/tests/{test.id}:\001*\022\314\002\n\nDeleteTe"
+    "st\022,.kentik.synthetics.v202309.DeleteTes"
+    "tRequest\032-.kentik.synthetics.v202309.Del"
+    "eteTestResponse\"\340\001\222A\201\001\022\030Delete a synthet"
+    "ic test.\032YDeletes the synthetics test. A"
+    "ll accumulated results for the test ceas"
+    "e to be accessible.*\nDeleteTest\362\327\002\026admin"
+    ".synthetics:write\222\330\002\027synthetics.test::de"
+    "lete\202\323\344\223\002 *\036/synthetics/v202309/tests/{i"
+    "d}\022\262\002\n\rSetTestStatus\022/.kentik.synthetics"
+    ".v202309.SetTestStatusRequest\0320.kentik.s"
+    "ynthetics.v202309.SetTestStatusResponse\""
+    "\275\001\222AU\022!Update status of a synthetic test"
+    "\032!Update status of a synthetic test*\rSet"
+    "TestStatus\362\327\002\026admin.synthetics:write\222\330\002\027"
+    "synthetics.test::update\202\323\344\223\002*\032%/syntheti"
+    "cs/v202309/tests/{id}/status:\001*\022\302\002\n\020Crea"
+    "teAgentAlert\0222.kentik.synthetics.v202309"
+    ".CreateAgentAlertRequest\0323.kentik.synthe"
+    "tics.v202309.CreateAgentAlertResponse\"\304\001"
+    "\222Aa\022#Create an agent alert configuration"
+    "\032(Creates a new agent alert configuratio"
+    "n.*\020CreateAgentAlert\362\327\002\026admin.synthetics"
+    ":write\222\330\002\030synthetics.agent::create\202\323\344\223\002$"
+    "\"\037/synthetics/v202309/agentAlerts:\001*\022\211\003\n"
+    "\020UpdateAgentAlert\0222.kentik.synthetics.v2"
+    "02309.UpdateAgentAlertRequest\0323.kentik.s"
+    "ynthetics.v202309.UpdateAgentAlertRespon"
+    "se\"\213\002\222A\242\001\022#Update an agent alert configu"
+    "ration\032iUpdates an existing agent alert "
+    "configuration with the time threshold an"
+    "d notification channels provided.*\020Updat"
+    "eAgentAlert\362\327\002\026admin.synthetics:write\222\330\002"
+    "\030synthetics.agent::update\202\323\344\223\002)\032$/synthe"
+    "tics/v202309/agentAlerts/{id}:\001*\022\272\002\n\rGet"
+    "AgentAlert\022/.kentik.synthetics.v202309.G"
+    "etAgentAlertRequest\0320.kentik.synthetics."
+    "v202309.GetAgentAlertResponse\"\305\001\222Ac\022 Get"
+    " an agent alert configuration\0320Retrieves"
+    " an existing agent alert configuration.*"
+    "\rGetAgentAlert\362\327\002\025admin.synthetics:read\222"
+    "\330\002\026synthetics.agent::read\202\323\344\223\002&\022$/synthe"
+    "tics/v202309/agentAlerts/{id}\022\336\002\n\017ListAg"
+    "entAlerts\0221.kentik.synthetics.v202309.Li"
+    "stAgentAlertsRequest\0322.kentik.synthetics"
+    ".v202309.ListAgentAlertsResponse\"\343\001\222A\205\001\022"
+    "\037List agent alert configurations\032QLists "
+    "all agent alert configurations, optional"
+    "ly filtered by a list of agent ids.*\017Lis"
+    "tAgentAlerts\362\327\002\025admin.synthetics:read\222\330\002"
+    "\026synthetics.agent::read\202\323\344\223\002!\022\037/syntheti"
+    "cs/v202309/agentAlerts\022\312\002\n\020DeleteAgentAl"
+    "ert\0222.kentik.synthetics.v202309.DeleteAg"
+    "entAlertRequest\0323.kentik.synthetics.v202"
+    "309.DeleteAgentAlertResponse\"\314\001\222Ag\022#Dele"
+    "te an agent alert configuration\032.Deletes"
+    " an existing agent alert configuration.*"
+    "\020DeleteAgentAlert\362\327\002\026admin.synthetics:wr"
+    "ite\222\330\002\030synthetics.agent::delete\202\323\344\223\002&*$/"
+    "synthetics/v202309/agentAlerts/{id}\032.\312A\023"
+    "grpc.api.kentik.com\352\327\002\020admin.synthetics\220"
+    "\330\002\003B\313BZOgithub.com/kentik/api-schema-pub"
+    "lic/gen/go/kentik/synthetics/v202309;syn"
+    "thetics\222A\366A\022\214@\n\031Synthetics Monitoring AP"
+    "I\022\236\?# Overview\nThe Synthetics Monitoring"
+    " API provides programmatic access to Ken"
+    "tik\'s [synthetic monitoring system](http"
+    "s://kb.kentik.com/v4/Ma00.htm). The API "
+    "consists of two endpoints:\n| Endpoint | "
+    "Purpose |\n|-----------|---------|\n| Synt"
+    "heticsAdminService | CRUD operations for"
+    " synthetic tests, agents, and offline ag"
+    "ent alerts |\n| SyntheticsDataService  | "
+    "Retrieval of synthetic test results and "
+    "network traces |\n\nBoth REST endpoint and"
+    " gRPC RPCs are provided.\nNote: API versi"
+    "on v202309 is the same as v202202 except"
+    " that the timestamps returned for synthe"
+    "tic test results are closer to when the "
+    "test was actually run.\n### Known Limitat"
+    "ions\nThe API currently does not support "
+    "the following [Synthetic Test Types](htt"
+    "ps://kb.kentik.com/v4/Ma00.htm#Ma00-Synt"
+    "hetic_Test_Types):\n* BGP Monitor tests, "
+    "which are supported in a [separate API]("
+    "https://github.com/kentik/api-schema-pub"
+    "lic/blob/master/proto/kentik/bgp_monitor"
+    "ing/v202205beta1/bgp_monitoring.proto)\n*"
+    " Transaction tests.\n\n### Additional Publ"
+    "ic Resources\nKentik community [Python](h"
+    "ttps://github.com/kentik/community_sdk_p"
+    "ython) and [Go](https://github.com/kenti"
+    "k/community_sdk_golang) SDKs provide lan"
+    "guage-specific support for using this an"
+    "d other Kentik APIs. These SDKs can be a"
+    "lso used as example code for development"
+    ". \n A [Terraform provider](https://regis"
+    "try.terraform.io/providers/kentik/kentik"
+    "-synthetics) is available for configurin"
+    "g tests and agents for Kentik synthetic "
+    "monitoring.\n# Anatomy of a Synthetic Tes"
+    "t\nEach `Test` consists of one or more ta"
+    "sks. Tasks are executed by monitoring `A"
+    "gents` that send synthetic traffic (prob"
+    "es) over the network. The API currently "
+    "supports following tasks:\n| Task name  |"
+    " Purpose |\n|------------|---------|\n| pi"
+    "ng       | Test basic address, and optio"
+    "nally TCP port reachability |\n| tracerou"
+    "te (a.k.a. trace)| Discover unidirection"
+    "al network path |\n| http | Perform a sim"
+    "ple HTTP/HTTPS request |\n| page-load | U"
+    "se headless Chromium to execute an HTTP/"
+    "HTTPS request |\n| dns | Execute a DNS qu"
+    "ery|\n| throughput | Execute a throughput"
+    " task to determine bandwidth |\n\nThe set "
+    "of tasks executed on behalf of a given t"
+    "est depends on the `type` of that test. "
+    "The following test types are currently s"
+    "upported by the API:\n| API type | Portal"
+    " (UI) equivalent | Tasks |\n|------------"
+    "---|--------------|-------|\n| ip | IP Ad"
+    "dress | ping, traceroute |\n| hostname | "
+    "Hostname | ping, traceroute |\n| network_"
+    "grid | Network Grid | ping, traceroute |"
+    "\n| agent | Agent-to-Agent | ping, tracer"
+    "oute, throughput |\n| network_mesh | Netw"
+    "ork Mesh | ping, traceroute |\n| flow | A"
+    "utonomous Tests (5 variants) | ping, tra"
+    "ceroute |\n| url | HTTP(S) or API | http,"
+    " ping (optional), traceroute (optional) "
+    "|\n| page_load | Page Load | page-load, p"
+    "ing (optional), traceroute (optional) |\n"
+    "| dns | DNS Server Monitor | dns |\n| dns"
+    "_grid | DNS Server Grid | dns |\n\n***Note"
+    ":*** `ping` and `traceroute` tasks are a"
+    "lways run together (never one without th"
+    "e other).\n\n# Test Attributes and Setting"
+    "s\nThe attributes of the test object enab"
+    "le configuration of test settings, acces"
+    "s to test metadata, and access to runtim"
+    "e state information.\n### State and Metad"
+    "ata Attributes\n The following table list"
+    "s the metadata and state attributes:\n| A"
+    "ttribute | Access | Purpose |\n|---------"
+    "--|--------|---------|\n| id | RO | Syste"
+    "m-generated unique identifier of the tes"
+    "t |\n| name | RW | User specified name fo"
+    "r the test (need not be unique) |\n| type"
+    " | RO (after creation) | Type of the tes"
+    "t (set on creation; read-only thereafter"
+    ") |\n| status | RW | Life-cycle status of"
+    " the test |\n| cdate | RO | Creation time"
+    "stamp |\n| edate | RO | Last-modification"
+    " timestamp |\n| created_by | RO | Identit"
+    "y of the user that created the test |\n| "
+    "last_updated_by | RO | Identity of the l"
+    "atest user to modify the test |\n| labels"
+    " | RW | List of names of labels applied "
+    "to the test |\n\nTest configuration is per"
+    "formed via the test\'s `settings` attribu"
+    "te. Some settings are common to all test"
+    "s while others are specific to tests of "
+    "a given type.\n### Common Test Settings\nT"
+    "he following settings are used for tests"
+    " of all types:\n| Attribute | Purpose | R"
+    "equired |\n|-----------|---------|-------"
+    "---|\n| agentIds  | IDs of agents to exec"
+    "ute tasks for the test | YES |\n| period "
+    "| Test execution interval in seconds | N"
+    "O (default 60s) |\n| family | IP address "
+    "family. Used only for tests whose type i"
+    "s url or dns. Selects which type of DNS "
+    "resource is queried for resolving hostna"
+    "me to target address | NO (default IP_FA"
+    "MILY_DUAL) |\n| notificationChannels | Li"
+    "st of notification channels for the test"
+    " | NO (default empty list) |\n| healthSet"
+    "tings | A HealthSettings object that con"
+    "figures health settings for this test, w"
+    "hich includes metric thresholds that def"
+    "ine health status (warning and critical)"
+    " and trigger associated alarms. | YES |\n"
+    "| ping | A TestPingSettings object that "
+    "configures the ping task of the test | N"
+    "O (default depends on test type) |\n| tra"
+    "ce | A TestTraceSettings object that con"
+    "figures the trace task of the test | NO "
+    "(default depends on test type) |\n| throu"
+    "ghput | A TestThroughputSettings object "
+    "that configures the throughput task of t"
+    "he test | NO (default depends on test ty"
+    "pe) |\n| tasks | List of names of the tas"
+    "ks that will be executed for this test |"
+    " YES |\n\n### Type-specific Settings\nEach "
+    "test type has its own configuration obje"
+    "ct that represents the settings for that"
+    " type. These type-specific objects are r"
+    "eferenced by the attributes in `Test.set"
+    "tings`:\n| Test type    | Settings attrib"
+    "ute | Configuration object |\n|----------"
+    "----|-------------------------|---------"
+    "------------------|\n| ip           | ip "
+    "                     | IpTest           "
+    "         |\n| hostname     | hostname    "
+    "            | HostnameTest              "
+    "|\n| network_grid | networkGrid          "
+    "   | IpTest                    |\n| agent"
+    "        | agent                   | Agen"
+    "tTest                 |\n| network_mesh |"
+    " networkMesh             | NetworkMeshTe"
+    "st           |\n| flow         | flow    "
+    "                | FlowTest              "
+    "    |\n| url          | url              "
+    "       | UrlTest                   |\n| p"
+    "age_load    | pageLoad                | "
+    "PageLoadTest              |\n| dns       "
+    "   | dns                     | DnsTest  "
+    "                 |\n| dns_grid     | dnsG"
+    "rid                 | DnsTest           "
+    "        |\n\n# Test Results\nResults of syn"
+    "thetic tests are returned as a sequence "
+    "of `TestResults` objects. Each such obje"
+    "ct represents measurements and health ev"
+    "aluation for a single test at specific p"
+    "oint in time. Measurements and health ev"
+    "aluation are grouped by agent and by tas"
+    "k.\nGranularity of timestamps in test res"
+    "ults depends on the frequency (period) o"
+    "f the test and on the requested time ran"
+    "ge. The minimum granularity is 1 minute "
+    "(even when period < 1 minute). The longe"
+    "r the time range, the lower the granular"
+    "ity.\n# Network Traces\nSynthetic tests th"
+    "at include the `traceroute` task collect"
+    " the unidirectional network path from th"
+    "e agent to the target for each agent/tar"
+    "get pair. The trace data are returned in"
+    " the `GetTraceForTestResponse` object. T"
+    "he `paths` attribute of this object cont"
+    "ains the collected network path for each"
+    " agent/target pair and the round-trip ti"
+    "me (RTT) to each hop.\nHops in actual net"
+    "work traces are identified by a `nodeId`"
+    ". The mapping of node IDs to address, na"
+    "me, location, and other attributes of th"
+    "e hop is provided in a map that is store"
+    "d in the `nodes` attribute of the `GetTr"
+    "aceForTestResponse` object.\n# Agents\nThe"
+    " Kentik synthetic monitoring system reco"
+    "gnizes 2 types of agents:\n* **Global** ("
+    "public): Managed by Kentik and available"
+    " to every Kentik user. All information a"
+    "bout global agents in this API is read-o"
+    "nly.\n* **Private**: Deployed by each cus"
+    "tomer and available only to that custome"
+    "r.\nTo be visible in this API, a private "
+    "agent must first associate itself with a"
+    " customer account by contacting the Kent"
+    "ik system (via private API). Once the ag"
+    "ent is associated it can be authorized v"
+    "ia the API by changing its `status` to `"
+    "AGENT_STATUS_OK`. For more information a"
+    "bout private agent deployment, see [**Sy"
+    "nthetic Agent Deployments**](https://kb."
+    "kentik.com/v4/Ma01.htm#Ma01-Synthetic_Ag"
+    "ent_Deployments).\n\"E\n\026Kentik API Enginee"
+    "ring\022+https://github.com/kentik/api-sche"
+    "ma-public2\007v202309*\001\0022\020application/json:"
+    "\020application/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-A"
+    "uth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-"
+    "Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r`\n\"Kenti"
+    "k synthetic monitoring system\022:https://k"
+    "b.kentik.com/v4/Ma00.htm#Ma00-Synthetics"
+    "_Overviewb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto_deps[7] =
     {
@@ -4581,13 +4699,13 @@ static ::absl::once_flag descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthe
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto = {
     false,
     false,
-    42120,
+    43177,
     descriptor_table_protodef_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto,
     "kentik/synthetics/v202309/synthetics.proto",
     &descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto_once,
     descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto_deps,
     7,
-    78,
+    80,
     schemas,
     file_default_instances,
     TableStruct_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto::offsets,
@@ -20723,6 +20841,679 @@ void GetResultsForTestsRequest::InternalSwap(GetResultsForTestsRequest* PROTOBUF
 }
 
 ::google::protobuf::Metadata GetResultsForTestsRequest::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class GetResultsForTestsCsvRequest::_Internal {
+ public:
+  using HasBits =
+      decltype(std::declval<GetResultsForTestsCsvRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(GetResultsForTestsCsvRequest, _impl_._has_bits_);
+};
+
+void GetResultsForTestsCsvRequest::clear_start_time() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.start_time_ != nullptr) _impl_.start_time_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+void GetResultsForTestsCsvRequest::clear_end_time() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.end_time_ != nullptr) _impl_.end_time_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+GetResultsForTestsCsvRequest::GetResultsForTestsCsvRequest(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.synthetics.v202309.GetResultsForTestsCsvRequest)
+}
+inline PROTOBUF_NDEBUG_INLINE GetResultsForTestsCsvRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::kentik::synthetics::v202309::GetResultsForTestsCsvRequest& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        ids_{visibility, arena, from.ids_},
+        agent_ids_{visibility, arena, from.agent_ids_} {}
+
+GetResultsForTestsCsvRequest::GetResultsForTestsCsvRequest(
+    ::google::protobuf::Arena* arena,
+    const GetResultsForTestsCsvRequest& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  GetResultsForTestsCsvRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.start_time_ = (cached_has_bits & 0x00000001u) ? ::google::protobuf::Message::CopyConstruct<::google::protobuf::Timestamp>(
+                              arena, *from._impl_.start_time_)
+                        : nullptr;
+  _impl_.end_time_ = (cached_has_bits & 0x00000002u) ? ::google::protobuf::Message::CopyConstruct<::google::protobuf::Timestamp>(
+                              arena, *from._impl_.end_time_)
+                        : nullptr;
+  _impl_.aggregate_ = from._impl_.aggregate_;
+
+  // @@protoc_insertion_point(copy_constructor:kentik.synthetics.v202309.GetResultsForTestsCsvRequest)
+}
+inline PROTOBUF_NDEBUG_INLINE GetResultsForTestsCsvRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        ids_{visibility, arena},
+        agent_ids_{visibility, arena} {}
+
+inline void GetResultsForTestsCsvRequest::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, start_time_),
+           0,
+           offsetof(Impl_, aggregate_) -
+               offsetof(Impl_, start_time_) +
+               sizeof(Impl_::aggregate_));
+}
+GetResultsForTestsCsvRequest::~GetResultsForTestsCsvRequest() {
+  // @@protoc_insertion_point(destructor:kentik.synthetics.v202309.GetResultsForTestsCsvRequest)
+  SharedDtor(*this);
+}
+inline void GetResultsForTestsCsvRequest::SharedDtor(MessageLite& self) {
+  GetResultsForTestsCsvRequest& this_ = static_cast<GetResultsForTestsCsvRequest&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  delete this_._impl_.start_time_;
+  delete this_._impl_.end_time_;
+  this_._impl_.~Impl_();
+}
+
+inline void* GetResultsForTestsCsvRequest::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) GetResultsForTestsCsvRequest(arena);
+}
+constexpr auto GetResultsForTestsCsvRequest::InternalNewImpl_() {
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(GetResultsForTestsCsvRequest, _impl_.ids_) +
+          decltype(GetResultsForTestsCsvRequest::_impl_.ids_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+      PROTOBUF_FIELD_OFFSET(GetResultsForTestsCsvRequest, _impl_.agent_ids_) +
+          decltype(GetResultsForTestsCsvRequest::_impl_.agent_ids_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::ZeroInit(
+        sizeof(GetResultsForTestsCsvRequest), alignof(GetResultsForTestsCsvRequest), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&GetResultsForTestsCsvRequest::PlacementNew_,
+                                 sizeof(GetResultsForTestsCsvRequest),
+                                 alignof(GetResultsForTestsCsvRequest));
+  }
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull GetResultsForTestsCsvRequest::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_GetResultsForTestsCsvRequest_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &GetResultsForTestsCsvRequest::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<GetResultsForTestsCsvRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &GetResultsForTestsCsvRequest::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<GetResultsForTestsCsvRequest>(), &GetResultsForTestsCsvRequest::ByteSizeLong,
+            &GetResultsForTestsCsvRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(GetResultsForTestsCsvRequest, _impl_._cached_size_),
+        false,
+    },
+    &GetResultsForTestsCsvRequest::kDescriptorMethods,
+    &descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* GetResultsForTestsCsvRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 5, 2, 75, 2> GetResultsForTestsCsvRequest::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(GetResultsForTestsCsvRequest, _impl_._has_bits_),
+    0, // no _extensions_
+    5, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967264,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    5,  // num_field_entries
+    2,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::synthetics::v202309::GetResultsForTestsCsvRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // repeated string ids = 1 [json_name = "ids", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUR1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(GetResultsForTestsCsvRequest, _impl_.ids_)}},
+    // .google.protobuf.Timestamp start_time = 2 [json_name = "startTime", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastMtS1,
+     {18, 0, 0, PROTOBUF_FIELD_OFFSET(GetResultsForTestsCsvRequest, _impl_.start_time_)}},
+    // .google.protobuf.Timestamp end_time = 3 [json_name = "endTime", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastMtS1,
+     {26, 1, 1, PROTOBUF_FIELD_OFFSET(GetResultsForTestsCsvRequest, _impl_.end_time_)}},
+    // repeated string agent_ids = 4 [json_name = "agentIds", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUR1,
+     {34, 63, 0, PROTOBUF_FIELD_OFFSET(GetResultsForTestsCsvRequest, _impl_.agent_ids_)}},
+    // bool aggregate = 5 [json_name = "aggregate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(GetResultsForTestsCsvRequest, _impl_.aggregate_), 63>(),
+     {40, 63, 0, PROTOBUF_FIELD_OFFSET(GetResultsForTestsCsvRequest, _impl_.aggregate_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // repeated string ids = 1 [json_name = "ids", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(GetResultsForTestsCsvRequest, _impl_.ids_), -1, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
+    // .google.protobuf.Timestamp start_time = 2 [json_name = "startTime", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(GetResultsForTestsCsvRequest, _impl_.start_time_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // .google.protobuf.Timestamp end_time = 3 [json_name = "endTime", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(GetResultsForTestsCsvRequest, _impl_.end_time_), _Internal::kHasBitsOffset + 1, 1,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // repeated string agent_ids = 4 [json_name = "agentIds", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(GetResultsForTestsCsvRequest, _impl_.agent_ids_), -1, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
+    // bool aggregate = 5 [json_name = "aggregate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(GetResultsForTestsCsvRequest, _impl_.aggregate_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
+    {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
+  }}, {{
+    "\66\3\0\0\11\0\0\0"
+    "kentik.synthetics.v202309.GetResultsForTestsCsvRequest"
+    "ids"
+    "agent_ids"
+  }},
+};
+
+PROTOBUF_NOINLINE void GetResultsForTestsCsvRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.synthetics.v202309.GetResultsForTestsCsvRequest)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.ids_.Clear();
+  _impl_.agent_ids_.Clear();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      ABSL_DCHECK(_impl_.start_time_ != nullptr);
+      _impl_.start_time_->Clear();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      ABSL_DCHECK(_impl_.end_time_ != nullptr);
+      _impl_.end_time_->Clear();
+    }
+  }
+  _impl_.aggregate_ = false;
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* GetResultsForTestsCsvRequest::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const GetResultsForTestsCsvRequest& this_ = static_cast<const GetResultsForTestsCsvRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* GetResultsForTestsCsvRequest::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const GetResultsForTestsCsvRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:kentik.synthetics.v202309.GetResultsForTestsCsvRequest)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // repeated string ids = 1 [json_name = "ids", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          for (int i = 0, n = this_._internal_ids_size(); i < n; ++i) {
+            const auto& s = this_._internal_ids().Get(i);
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.synthetics.v202309.GetResultsForTestsCsvRequest.ids");
+            target = stream->WriteString(1, s, target);
+          }
+
+          cached_has_bits = this_._impl_._has_bits_[0];
+          // .google.protobuf.Timestamp start_time = 2 [json_name = "startTime", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (cached_has_bits & 0x00000001u) {
+            target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                2, *this_._impl_.start_time_, this_._impl_.start_time_->GetCachedSize(), target,
+                stream);
+          }
+
+          // .google.protobuf.Timestamp end_time = 3 [json_name = "endTime", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (cached_has_bits & 0x00000002u) {
+            target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                3, *this_._impl_.end_time_, this_._impl_.end_time_->GetCachedSize(), target,
+                stream);
+          }
+
+          // repeated string agent_ids = 4 [json_name = "agentIds", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          for (int i = 0, n = this_._internal_agent_ids_size(); i < n; ++i) {
+            const auto& s = this_._internal_agent_ids().Get(i);
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.synthetics.v202309.GetResultsForTestsCsvRequest.agent_ids");
+            target = stream->WriteString(4, s, target);
+          }
+
+          // bool aggregate = 5 [json_name = "aggregate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (this_._internal_aggregate() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteBoolToArray(
+                5, this_._internal_aggregate(), target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:kentik.synthetics.v202309.GetResultsForTestsCsvRequest)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t GetResultsForTestsCsvRequest::ByteSizeLong(const MessageLite& base) {
+          const GetResultsForTestsCsvRequest& this_ = static_cast<const GetResultsForTestsCsvRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t GetResultsForTestsCsvRequest::ByteSizeLong() const {
+          const GetResultsForTestsCsvRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:kentik.synthetics.v202309.GetResultsForTestsCsvRequest)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // repeated string ids = 1 [json_name = "ids", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            {
+              total_size +=
+                  1 * ::google::protobuf::internal::FromIntSize(this_._internal_ids().size());
+              for (int i = 0, n = this_._internal_ids().size(); i < n; ++i) {
+                total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+                    this_._internal_ids().Get(i));
+              }
+            }
+            // repeated string agent_ids = 4 [json_name = "agentIds", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            {
+              total_size +=
+                  1 * ::google::protobuf::internal::FromIntSize(this_._internal_agent_ids().size());
+              for (int i = 0, n = this_._internal_agent_ids().size(); i < n; ++i) {
+                total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+                    this_._internal_agent_ids().Get(i));
+              }
+            }
+          }
+          cached_has_bits = this_._impl_._has_bits_[0];
+          if (cached_has_bits & 0x00000003u) {
+            // .google.protobuf.Timestamp start_time = 2 [json_name = "startTime", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (cached_has_bits & 0x00000001u) {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.start_time_);
+            }
+            // .google.protobuf.Timestamp end_time = 3 [json_name = "endTime", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (cached_has_bits & 0x00000002u) {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.end_time_);
+            }
+          }
+           {
+            // bool aggregate = 5 [json_name = "aggregate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (this_._internal_aggregate() != 0) {
+              total_size += 2;
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void GetResultsForTestsCsvRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<GetResultsForTestsCsvRequest*>(&to_msg);
+  auto& from = static_cast<const GetResultsForTestsCsvRequest&>(from_msg);
+  ::google::protobuf::Arena* arena = _this->GetArena();
+  // @@protoc_insertion_point(class_specific_merge_from_start:kentik.synthetics.v202309.GetResultsForTestsCsvRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_internal_mutable_ids()->MergeFrom(from._internal_ids());
+  _this->_internal_mutable_agent_ids()->MergeFrom(from._internal_agent_ids());
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      ABSL_DCHECK(from._impl_.start_time_ != nullptr);
+      if (_this->_impl_.start_time_ == nullptr) {
+        _this->_impl_.start_time_ =
+            ::google::protobuf::Message::CopyConstruct<::google::protobuf::Timestamp>(arena, *from._impl_.start_time_);
+      } else {
+        _this->_impl_.start_time_->MergeFrom(*from._impl_.start_time_);
+      }
+    }
+    if (cached_has_bits & 0x00000002u) {
+      ABSL_DCHECK(from._impl_.end_time_ != nullptr);
+      if (_this->_impl_.end_time_ == nullptr) {
+        _this->_impl_.end_time_ =
+            ::google::protobuf::Message::CopyConstruct<::google::protobuf::Timestamp>(arena, *from._impl_.end_time_);
+      } else {
+        _this->_impl_.end_time_->MergeFrom(*from._impl_.end_time_);
+      }
+    }
+  }
+  if (from._internal_aggregate() != 0) {
+    _this->_impl_.aggregate_ = from._impl_.aggregate_;
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void GetResultsForTestsCsvRequest::CopyFrom(const GetResultsForTestsCsvRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.synthetics.v202309.GetResultsForTestsCsvRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void GetResultsForTestsCsvRequest::InternalSwap(GetResultsForTestsCsvRequest* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _impl_.ids_.InternalSwap(&other->_impl_.ids_);
+  _impl_.agent_ids_.InternalSwap(&other->_impl_.agent_ids_);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(GetResultsForTestsCsvRequest, _impl_.aggregate_)
+      + sizeof(GetResultsForTestsCsvRequest::_impl_.aggregate_)
+      - PROTOBUF_FIELD_OFFSET(GetResultsForTestsCsvRequest, _impl_.start_time_)>(
+          reinterpret_cast<char*>(&_impl_.start_time_),
+          reinterpret_cast<char*>(&other->_impl_.start_time_));
+}
+
+::google::protobuf::Metadata GetResultsForTestsCsvRequest::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class GetResultsForTestsCsvResponse::_Internal {
+ public:
+};
+
+GetResultsForTestsCsvResponse::GetResultsForTestsCsvResponse(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.synthetics.v202309.GetResultsForTestsCsvResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE GetResultsForTestsCsvResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::kentik::synthetics::v202309::GetResultsForTestsCsvResponse& from_msg)
+      : content_type_(arena, from.content_type_),
+        data_(arena, from.data_),
+        _cached_size_{0} {}
+
+GetResultsForTestsCsvResponse::GetResultsForTestsCsvResponse(
+    ::google::protobuf::Arena* arena,
+    const GetResultsForTestsCsvResponse& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  GetResultsForTestsCsvResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+
+  // @@protoc_insertion_point(copy_constructor:kentik.synthetics.v202309.GetResultsForTestsCsvResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE GetResultsForTestsCsvResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : content_type_(arena),
+        data_(arena),
+        _cached_size_{0} {}
+
+inline void GetResultsForTestsCsvResponse::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+}
+GetResultsForTestsCsvResponse::~GetResultsForTestsCsvResponse() {
+  // @@protoc_insertion_point(destructor:kentik.synthetics.v202309.GetResultsForTestsCsvResponse)
+  SharedDtor(*this);
+}
+inline void GetResultsForTestsCsvResponse::SharedDtor(MessageLite& self) {
+  GetResultsForTestsCsvResponse& this_ = static_cast<GetResultsForTestsCsvResponse&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.content_type_.Destroy();
+  this_._impl_.data_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* GetResultsForTestsCsvResponse::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) GetResultsForTestsCsvResponse(arena);
+}
+constexpr auto GetResultsForTestsCsvResponse::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(GetResultsForTestsCsvResponse),
+                                            alignof(GetResultsForTestsCsvResponse));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull GetResultsForTestsCsvResponse::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_GetResultsForTestsCsvResponse_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &GetResultsForTestsCsvResponse::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<GetResultsForTestsCsvResponse>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &GetResultsForTestsCsvResponse::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<GetResultsForTestsCsvResponse>(), &GetResultsForTestsCsvResponse::ByteSizeLong,
+            &GetResultsForTestsCsvResponse::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(GetResultsForTestsCsvResponse, _impl_._cached_size_),
+        false,
+    },
+    &GetResultsForTestsCsvResponse::kDescriptorMethods,
+    &descriptor_table_kentik_2fsynthetics_2fv202309_2fsynthetics_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* GetResultsForTestsCsvResponse::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 76, 2> GetResultsForTestsCsvResponse::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::synthetics::v202309::GetResultsForTestsCsvResponse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // bytes data = 2 [json_name = "data", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastBS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(GetResultsForTestsCsvResponse, _impl_.data_)}},
+    // string content_type = 1 [json_name = "contentType", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(GetResultsForTestsCsvResponse, _impl_.content_type_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string content_type = 1 [json_name = "contentType", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(GetResultsForTestsCsvResponse, _impl_.content_type_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // bytes data = 2 [json_name = "data", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(GetResultsForTestsCsvResponse, _impl_.data_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBytes | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\67\14\0\0\0\0\0\0"
+    "kentik.synthetics.v202309.GetResultsForTestsCsvResponse"
+    "content_type"
+  }},
+};
+
+PROTOBUF_NOINLINE void GetResultsForTestsCsvResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.synthetics.v202309.GetResultsForTestsCsvResponse)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.content_type_.ClearToEmpty();
+  _impl_.data_.ClearToEmpty();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* GetResultsForTestsCsvResponse::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const GetResultsForTestsCsvResponse& this_ = static_cast<const GetResultsForTestsCsvResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* GetResultsForTestsCsvResponse::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const GetResultsForTestsCsvResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:kentik.synthetics.v202309.GetResultsForTestsCsvResponse)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // string content_type = 1 [json_name = "contentType", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_content_type().empty()) {
+            const std::string& _s = this_._internal_content_type();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.synthetics.v202309.GetResultsForTestsCsvResponse.content_type");
+            target = stream->WriteStringMaybeAliased(1, _s, target);
+          }
+
+          // bytes data = 2 [json_name = "data", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_data().empty()) {
+            const std::string& _s = this_._internal_data();
+            target = stream->WriteBytesMaybeAliased(2, _s, target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:kentik.synthetics.v202309.GetResultsForTestsCsvResponse)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t GetResultsForTestsCsvResponse::ByteSizeLong(const MessageLite& base) {
+          const GetResultsForTestsCsvResponse& this_ = static_cast<const GetResultsForTestsCsvResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t GetResultsForTestsCsvResponse::ByteSizeLong() const {
+          const GetResultsForTestsCsvResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:kentik.synthetics.v202309.GetResultsForTestsCsvResponse)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // string content_type = 1 [json_name = "contentType", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_content_type().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_content_type());
+            }
+            // bytes data = 2 [json_name = "data", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_data().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
+                                              this_._internal_data());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void GetResultsForTestsCsvResponse::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<GetResultsForTestsCsvResponse*>(&to_msg);
+  auto& from = static_cast<const GetResultsForTestsCsvResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:kentik.synthetics.v202309.GetResultsForTestsCsvResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_content_type().empty()) {
+    _this->_internal_set_content_type(from._internal_content_type());
+  }
+  if (!from._internal_data().empty()) {
+    _this->_internal_set_data(from._internal_data());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void GetResultsForTestsCsvResponse::CopyFrom(const GetResultsForTestsCsvResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.synthetics.v202309.GetResultsForTestsCsvResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void GetResultsForTestsCsvResponse::InternalSwap(GetResultsForTestsCsvResponse* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.content_type_, &other->_impl_.content_type_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.data_, &other->_impl_.data_, arena);
+}
+
+::google::protobuf::Metadata GetResultsForTestsCsvResponse::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================

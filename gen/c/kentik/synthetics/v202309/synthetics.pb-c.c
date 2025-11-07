@@ -1786,6 +1786,96 @@ void   kentik__synthetics__v202309__get_results_for_tests_request__free_unpacked
   assert(message->base.descriptor == &kentik__synthetics__v202309__get_results_for_tests_request__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   kentik__synthetics__v202309__get_results_for_tests_csv_request__init
+                     (Kentik__Synthetics__V202309__GetResultsForTestsCsvRequest         *message)
+{
+  static const Kentik__Synthetics__V202309__GetResultsForTestsCsvRequest init_value = KENTIK__SYNTHETICS__V202309__GET_RESULTS_FOR_TESTS_CSV_REQUEST__INIT;
+  *message = init_value;
+}
+size_t kentik__synthetics__v202309__get_results_for_tests_csv_request__get_packed_size
+                     (const Kentik__Synthetics__V202309__GetResultsForTestsCsvRequest *message)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__get_results_for_tests_csv_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__synthetics__v202309__get_results_for_tests_csv_request__pack
+                     (const Kentik__Synthetics__V202309__GetResultsForTestsCsvRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__get_results_for_tests_csv_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__synthetics__v202309__get_results_for_tests_csv_request__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__GetResultsForTestsCsvRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__get_results_for_tests_csv_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Synthetics__V202309__GetResultsForTestsCsvRequest *
+       kentik__synthetics__v202309__get_results_for_tests_csv_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Synthetics__V202309__GetResultsForTestsCsvRequest *)
+     protobuf_c_message_unpack (&kentik__synthetics__v202309__get_results_for_tests_csv_request__descriptor,
+                                allocator, len, data);
+}
+void   kentik__synthetics__v202309__get_results_for_tests_csv_request__free_unpacked
+                     (Kentik__Synthetics__V202309__GetResultsForTestsCsvRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__synthetics__v202309__get_results_for_tests_csv_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__synthetics__v202309__get_results_for_tests_csv_response__init
+                     (Kentik__Synthetics__V202309__GetResultsForTestsCsvResponse         *message)
+{
+  static const Kentik__Synthetics__V202309__GetResultsForTestsCsvResponse init_value = KENTIK__SYNTHETICS__V202309__GET_RESULTS_FOR_TESTS_CSV_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t kentik__synthetics__v202309__get_results_for_tests_csv_response__get_packed_size
+                     (const Kentik__Synthetics__V202309__GetResultsForTestsCsvResponse *message)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__get_results_for_tests_csv_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__synthetics__v202309__get_results_for_tests_csv_response__pack
+                     (const Kentik__Synthetics__V202309__GetResultsForTestsCsvResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__get_results_for_tests_csv_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__synthetics__v202309__get_results_for_tests_csv_response__pack_to_buffer
+                     (const Kentik__Synthetics__V202309__GetResultsForTestsCsvResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__synthetics__v202309__get_results_for_tests_csv_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Synthetics__V202309__GetResultsForTestsCsvResponse *
+       kentik__synthetics__v202309__get_results_for_tests_csv_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Synthetics__V202309__GetResultsForTestsCsvResponse *)
+     protobuf_c_message_unpack (&kentik__synthetics__v202309__get_results_for_tests_csv_response__descriptor,
+                                allocator, len, data);
+}
+void   kentik__synthetics__v202309__get_results_for_tests_csv_response__free_unpacked
+                     (Kentik__Synthetics__V202309__GetResultsForTestsCsvResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__synthetics__v202309__get_results_for_tests_csv_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 void   kentik__synthetics__v202309__get_results_for_tests_response__init
                      (Kentik__Synthetics__V202309__GetResultsForTestsResponse         *message)
 {
@@ -7566,6 +7656,147 @@ const ProtobufCMessageDescriptor kentik__synthetics__v202309__get_results_for_te
   (ProtobufCMessageInit) kentik__synthetics__v202309__get_results_for_tests_request__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
+static const ProtobufCFieldDescriptor kentik__synthetics__v202309__get_results_for_tests_csv_request__field_descriptors[5] =
+{
+  {
+    "ids",
+    1,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_STRING,
+    offsetof(Kentik__Synthetics__V202309__GetResultsForTestsCsvRequest, n_ids),
+    offsetof(Kentik__Synthetics__V202309__GetResultsForTestsCsvRequest, ids),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "start_time",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__GetResultsForTestsCsvRequest, start_time),
+    &google__protobuf__timestamp__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "end_time",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__GetResultsForTestsCsvRequest, end_time),
+    &google__protobuf__timestamp__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "agent_ids",
+    4,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_STRING,
+    offsetof(Kentik__Synthetics__V202309__GetResultsForTestsCsvRequest, n_agent_ids),
+    offsetof(Kentik__Synthetics__V202309__GetResultsForTestsCsvRequest, agent_ids),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "aggregate",
+    5,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__GetResultsForTestsCsvRequest, aggregate),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__synthetics__v202309__get_results_for_tests_csv_request__field_indices_by_name[] = {
+  3,   /* field[3] = agent_ids */
+  4,   /* field[4] = aggregate */
+  2,   /* field[2] = end_time */
+  0,   /* field[0] = ids */
+  1,   /* field[1] = start_time */
+};
+static const ProtobufCIntRange kentik__synthetics__v202309__get_results_for_tests_csv_request__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 5 }
+};
+const ProtobufCMessageDescriptor kentik__synthetics__v202309__get_results_for_tests_csv_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.synthetics.v202309.GetResultsForTestsCsvRequest",
+  "GetResultsForTestsCsvRequest",
+  "Kentik__Synthetics__V202309__GetResultsForTestsCsvRequest",
+  "kentik.synthetics.v202309",
+  sizeof(Kentik__Synthetics__V202309__GetResultsForTestsCsvRequest),
+  5,
+  kentik__synthetics__v202309__get_results_for_tests_csv_request__field_descriptors,
+  kentik__synthetics__v202309__get_results_for_tests_csv_request__field_indices_by_name,
+  1,  kentik__synthetics__v202309__get_results_for_tests_csv_request__number_ranges,
+  (ProtobufCMessageInit) kentik__synthetics__v202309__get_results_for_tests_csv_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__synthetics__v202309__get_results_for_tests_csv_response__field_descriptors[2] =
+{
+  {
+    "content_type",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__GetResultsForTestsCsvResponse, content_type),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "data",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BYTES,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__GetResultsForTestsCsvResponse, data),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__synthetics__v202309__get_results_for_tests_csv_response__field_indices_by_name[] = {
+  0,   /* field[0] = content_type */
+  1,   /* field[1] = data */
+};
+static const ProtobufCIntRange kentik__synthetics__v202309__get_results_for_tests_csv_response__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor kentik__synthetics__v202309__get_results_for_tests_csv_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.synthetics.v202309.GetResultsForTestsCsvResponse",
+  "GetResultsForTestsCsvResponse",
+  "Kentik__Synthetics__V202309__GetResultsForTestsCsvResponse",
+  "kentik.synthetics.v202309",
+  sizeof(Kentik__Synthetics__V202309__GetResultsForTestsCsvResponse),
+  2,
+  kentik__synthetics__v202309__get_results_for_tests_csv_response__field_descriptors,
+  kentik__synthetics__v202309__get_results_for_tests_csv_response__field_indices_by_name,
+  1,  kentik__synthetics__v202309__get_results_for_tests_csv_response__number_ranges,
+  (ProtobufCMessageInit) kentik__synthetics__v202309__get_results_for_tests_csv_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
 static const ProtobufCFieldDescriptor kentik__synthetics__v202309__get_results_for_tests_response__field_descriptors[1] =
 {
   {
@@ -9233,14 +9464,16 @@ const ProtobufCEnumDescriptor kentik__synthetics__v202309__src_group_by__descrip
   kentik__synthetics__v202309__src_group_by__value_ranges,
   NULL,NULL,NULL,NULL   /* reserved[1234] */
 };
-static const ProtobufCMethodDescriptor kentik__synthetics__v202309__synthetics_data_service__method_descriptors[2] =
+static const ProtobufCMethodDescriptor kentik__synthetics__v202309__synthetics_data_service__method_descriptors[3] =
 {
   { "GetResultsForTests", &kentik__synthetics__v202309__get_results_for_tests_request__descriptor, &kentik__synthetics__v202309__get_results_for_tests_response__descriptor },
+  { "GetResultsForTestsCsv", &kentik__synthetics__v202309__get_results_for_tests_csv_request__descriptor, &kentik__synthetics__v202309__get_results_for_tests_csv_response__descriptor },
   { "GetTraceForTest", &kentik__synthetics__v202309__get_trace_for_test_request__descriptor, &kentik__synthetics__v202309__get_trace_for_test_response__descriptor },
 };
 const unsigned kentik__synthetics__v202309__synthetics_data_service__method_indices_by_name[] = {
   0,        /* GetResultsForTests */
-  1         /* GetTraceForTest */
+  1,        /* GetResultsForTestsCsv */
+  2         /* GetTraceForTest */
 };
 const ProtobufCServiceDescriptor kentik__synthetics__v202309__synthetics_data_service__descriptor =
 {
@@ -9249,7 +9482,7 @@ const ProtobufCServiceDescriptor kentik__synthetics__v202309__synthetics_data_se
   "SyntheticsDataService",
   "Kentik__Synthetics__V202309__SyntheticsDataService",
   "kentik.synthetics.v202309",
-  2,
+  3,
   kentik__synthetics__v202309__synthetics_data_service__method_descriptors,
   kentik__synthetics__v202309__synthetics_data_service__method_indices_by_name
 };
@@ -9261,13 +9494,21 @@ void kentik__synthetics__v202309__synthetics_data_service__get_results_for_tests
   assert(service->descriptor == &kentik__synthetics__v202309__synthetics_data_service__descriptor);
   service->invoke(service, 0, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
+void kentik__synthetics__v202309__synthetics_data_service__get_results_for_tests_csv(ProtobufCService *service,
+                                                                                     const Kentik__Synthetics__V202309__GetResultsForTestsCsvRequest *input,
+                                                                                     Kentik__Synthetics__V202309__GetResultsForTestsCsvResponse_Closure closure,
+                                                                                     void *closure_data)
+{
+  assert(service->descriptor == &kentik__synthetics__v202309__synthetics_data_service__descriptor);
+  service->invoke(service, 1, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
 void kentik__synthetics__v202309__synthetics_data_service__get_trace_for_test(ProtobufCService *service,
                                                                               const Kentik__Synthetics__V202309__GetTraceForTestRequest *input,
                                                                               Kentik__Synthetics__V202309__GetTraceForTestResponse_Closure closure,
                                                                               void *closure_data)
 {
   assert(service->descriptor == &kentik__synthetics__v202309__synthetics_data_service__descriptor);
-  service->invoke(service, 1, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+  service->invoke(service, 2, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void kentik__synthetics__v202309__synthetics_data_service__init (Kentik__Synthetics__V202309__SyntheticsDataService_Service *service,
                                                                  Kentik__Synthetics__V202309__SyntheticsDataService_ServiceDestroy destroy)

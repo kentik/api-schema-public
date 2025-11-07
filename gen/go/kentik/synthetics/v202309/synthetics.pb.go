@@ -3921,6 +3921,135 @@ func (x *GetResultsForTestsRequest) GetAggregate() bool {
 	return false
 }
 
+type GetResultsForTestsCsvRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Ids           []string               `protobuf:"bytes,1,rep,name=ids,proto3" json:"ids,omitempty"`
+	StartTime     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	EndTime       *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	AgentIds      []string               `protobuf:"bytes,4,rep,name=agent_ids,json=agentIds,proto3" json:"agent_ids,omitempty"`
+	Aggregate     bool                   `protobuf:"varint,5,opt,name=aggregate,proto3" json:"aggregate,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetResultsForTestsCsvRequest) Reset() {
+	*x = GetResultsForTestsCsvRequest{}
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[39]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetResultsForTestsCsvRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetResultsForTestsCsvRequest) ProtoMessage() {}
+
+func (x *GetResultsForTestsCsvRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[39]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetResultsForTestsCsvRequest.ProtoReflect.Descriptor instead.
+func (*GetResultsForTestsCsvRequest) Descriptor() ([]byte, []int) {
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{39}
+}
+
+func (x *GetResultsForTestsCsvRequest) GetIds() []string {
+	if x != nil {
+		return x.Ids
+	}
+	return nil
+}
+
+func (x *GetResultsForTestsCsvRequest) GetStartTime() *timestamppb.Timestamp {
+	if x != nil {
+		return x.StartTime
+	}
+	return nil
+}
+
+func (x *GetResultsForTestsCsvRequest) GetEndTime() *timestamppb.Timestamp {
+	if x != nil {
+		return x.EndTime
+	}
+	return nil
+}
+
+func (x *GetResultsForTestsCsvRequest) GetAgentIds() []string {
+	if x != nil {
+		return x.AgentIds
+	}
+	return nil
+}
+
+func (x *GetResultsForTestsCsvRequest) GetAggregate() bool {
+	if x != nil {
+		return x.Aggregate
+	}
+	return false
+}
+
+// {{.Name}}
+type GetResultsForTestsCsvResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ContentType   string                 `protobuf:"bytes,1,opt,name=content_type,json=contentType,proto3" json:"content_type,omitempty"`
+	Data          []byte                 `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetResultsForTestsCsvResponse) Reset() {
+	*x = GetResultsForTestsCsvResponse{}
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[40]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetResultsForTestsCsvResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetResultsForTestsCsvResponse) ProtoMessage() {}
+
+func (x *GetResultsForTestsCsvResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[40]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetResultsForTestsCsvResponse.ProtoReflect.Descriptor instead.
+func (*GetResultsForTestsCsvResponse) Descriptor() ([]byte, []int) {
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{40}
+}
+
+func (x *GetResultsForTestsCsvResponse) GetContentType() string {
+	if x != nil {
+		return x.ContentType
+	}
+	return ""
+}
+
+func (x *GetResultsForTestsCsvResponse) GetData() []byte {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
 // {{.Name}}
 type GetResultsForTestsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -3931,7 +4060,7 @@ type GetResultsForTestsResponse struct {
 
 func (x *GetResultsForTestsResponse) Reset() {
 	*x = GetResultsForTestsResponse{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[39]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3943,7 +4072,7 @@ func (x *GetResultsForTestsResponse) String() string {
 func (*GetResultsForTestsResponse) ProtoMessage() {}
 
 func (x *GetResultsForTestsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[39]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3956,7 +4085,7 @@ func (x *GetResultsForTestsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetResultsForTestsResponse.ProtoReflect.Descriptor instead.
 func (*GetResultsForTestsResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{39}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *GetResultsForTestsResponse) GetResults() []*TestResults {
@@ -3980,7 +4109,7 @@ type GetTraceForTestRequest struct {
 
 func (x *GetTraceForTestRequest) Reset() {
 	*x = GetTraceForTestRequest{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[40]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3992,7 +4121,7 @@ func (x *GetTraceForTestRequest) String() string {
 func (*GetTraceForTestRequest) ProtoMessage() {}
 
 func (x *GetTraceForTestRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[40]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4005,7 +4134,7 @@ func (x *GetTraceForTestRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTraceForTestRequest.ProtoReflect.Descriptor instead.
 func (*GetTraceForTestRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{40}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *GetTraceForTestRequest) GetId() string {
@@ -4054,7 +4183,7 @@ type GetTraceForTestResponse struct {
 
 func (x *GetTraceForTestResponse) Reset() {
 	*x = GetTraceForTestResponse{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[41]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4066,7 +4195,7 @@ func (x *GetTraceForTestResponse) String() string {
 func (*GetTraceForTestResponse) ProtoMessage() {}
 
 func (x *GetTraceForTestResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[41]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4079,7 +4208,7 @@ func (x *GetTraceForTestResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTraceForTestResponse.ProtoReflect.Descriptor instead.
 func (*GetTraceForTestResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{41}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *GetTraceForTestResponse) GetNodes() map[string]*NetNode {
@@ -4105,7 +4234,7 @@ type ListAgentsRequest struct {
 
 func (x *ListAgentsRequest) Reset() {
 	*x = ListAgentsRequest{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[42]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4117,7 +4246,7 @@ func (x *ListAgentsRequest) String() string {
 func (*ListAgentsRequest) ProtoMessage() {}
 
 func (x *ListAgentsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[42]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4130,7 +4259,7 @@ func (x *ListAgentsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListAgentsRequest.ProtoReflect.Descriptor instead.
 func (*ListAgentsRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{42}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{44}
 }
 
 // {{.Name}}
@@ -4144,7 +4273,7 @@ type ListAgentsResponse struct {
 
 func (x *ListAgentsResponse) Reset() {
 	*x = ListAgentsResponse{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[43]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4156,7 +4285,7 @@ func (x *ListAgentsResponse) String() string {
 func (*ListAgentsResponse) ProtoMessage() {}
 
 func (x *ListAgentsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[43]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4169,7 +4298,7 @@ func (x *ListAgentsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListAgentsResponse.ProtoReflect.Descriptor instead.
 func (*ListAgentsResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{43}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *ListAgentsResponse) GetAgents() []*Agent {
@@ -4196,7 +4325,7 @@ type GetAgentRequest struct {
 
 func (x *GetAgentRequest) Reset() {
 	*x = GetAgentRequest{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[44]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4208,7 +4337,7 @@ func (x *GetAgentRequest) String() string {
 func (*GetAgentRequest) ProtoMessage() {}
 
 func (x *GetAgentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[44]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4221,7 +4350,7 @@ func (x *GetAgentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAgentRequest.ProtoReflect.Descriptor instead.
 func (*GetAgentRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{44}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *GetAgentRequest) GetId() string {
@@ -4241,7 +4370,7 @@ type GetAgentResponse struct {
 
 func (x *GetAgentResponse) Reset() {
 	*x = GetAgentResponse{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[45]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4253,7 +4382,7 @@ func (x *GetAgentResponse) String() string {
 func (*GetAgentResponse) ProtoMessage() {}
 
 func (x *GetAgentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[45]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4266,7 +4395,7 @@ func (x *GetAgentResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAgentResponse.ProtoReflect.Descriptor instead.
 func (*GetAgentResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{45}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *GetAgentResponse) GetAgent() *Agent {
@@ -4286,7 +4415,7 @@ type UpdateAgentRequest struct {
 
 func (x *UpdateAgentRequest) Reset() {
 	*x = UpdateAgentRequest{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[46]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4298,7 +4427,7 @@ func (x *UpdateAgentRequest) String() string {
 func (*UpdateAgentRequest) ProtoMessage() {}
 
 func (x *UpdateAgentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[46]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4311,7 +4440,7 @@ func (x *UpdateAgentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateAgentRequest.ProtoReflect.Descriptor instead.
 func (*UpdateAgentRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{46}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *UpdateAgentRequest) GetAgent() *Agent {
@@ -4331,7 +4460,7 @@ type UpdateAgentResponse struct {
 
 func (x *UpdateAgentResponse) Reset() {
 	*x = UpdateAgentResponse{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[47]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4343,7 +4472,7 @@ func (x *UpdateAgentResponse) String() string {
 func (*UpdateAgentResponse) ProtoMessage() {}
 
 func (x *UpdateAgentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[47]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4356,7 +4485,7 @@ func (x *UpdateAgentResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateAgentResponse.ProtoReflect.Descriptor instead.
 func (*UpdateAgentResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{47}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{49}
 }
 
 func (x *UpdateAgentResponse) GetAgent() *Agent {
@@ -4376,7 +4505,7 @@ type DeleteAgentRequest struct {
 
 func (x *DeleteAgentRequest) Reset() {
 	*x = DeleteAgentRequest{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[48]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4388,7 +4517,7 @@ func (x *DeleteAgentRequest) String() string {
 func (*DeleteAgentRequest) ProtoMessage() {}
 
 func (x *DeleteAgentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[48]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4401,7 +4530,7 @@ func (x *DeleteAgentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteAgentRequest.ProtoReflect.Descriptor instead.
 func (*DeleteAgentRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{48}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *DeleteAgentRequest) GetId() string {
@@ -4420,7 +4549,7 @@ type DeleteAgentResponse struct {
 
 func (x *DeleteAgentResponse) Reset() {
 	*x = DeleteAgentResponse{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[49]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[51]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4432,7 +4561,7 @@ func (x *DeleteAgentResponse) String() string {
 func (*DeleteAgentResponse) ProtoMessage() {}
 
 func (x *DeleteAgentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[49]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[51]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4445,7 +4574,7 @@ func (x *DeleteAgentResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteAgentResponse.ProtoReflect.Descriptor instead.
 func (*DeleteAgentResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{49}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{51}
 }
 
 // {{.Name}}
@@ -4457,7 +4586,7 @@ type ListTestsRequest struct {
 
 func (x *ListTestsRequest) Reset() {
 	*x = ListTestsRequest{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[50]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[52]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4469,7 +4598,7 @@ func (x *ListTestsRequest) String() string {
 func (*ListTestsRequest) ProtoMessage() {}
 
 func (x *ListTestsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[50]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[52]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4482,7 +4611,7 @@ func (x *ListTestsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListTestsRequest.ProtoReflect.Descriptor instead.
 func (*ListTestsRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{50}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{52}
 }
 
 // {{.Name}}
@@ -4496,7 +4625,7 @@ type ListTestsResponse struct {
 
 func (x *ListTestsResponse) Reset() {
 	*x = ListTestsResponse{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[51]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[53]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4508,7 +4637,7 @@ func (x *ListTestsResponse) String() string {
 func (*ListTestsResponse) ProtoMessage() {}
 
 func (x *ListTestsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[51]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[53]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4521,7 +4650,7 @@ func (x *ListTestsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListTestsResponse.ProtoReflect.Descriptor instead.
 func (*ListTestsResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{51}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{53}
 }
 
 func (x *ListTestsResponse) GetTests() []*Test {
@@ -4548,7 +4677,7 @@ type CreateTestRequest struct {
 
 func (x *CreateTestRequest) Reset() {
 	*x = CreateTestRequest{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[52]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[54]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4560,7 +4689,7 @@ func (x *CreateTestRequest) String() string {
 func (*CreateTestRequest) ProtoMessage() {}
 
 func (x *CreateTestRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[52]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[54]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4573,7 +4702,7 @@ func (x *CreateTestRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateTestRequest.ProtoReflect.Descriptor instead.
 func (*CreateTestRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{52}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{54}
 }
 
 func (x *CreateTestRequest) GetTest() *Test {
@@ -4593,7 +4722,7 @@ type CreateTestResponse struct {
 
 func (x *CreateTestResponse) Reset() {
 	*x = CreateTestResponse{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[53]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[55]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4605,7 +4734,7 @@ func (x *CreateTestResponse) String() string {
 func (*CreateTestResponse) ProtoMessage() {}
 
 func (x *CreateTestResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[53]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[55]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4618,7 +4747,7 @@ func (x *CreateTestResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateTestResponse.ProtoReflect.Descriptor instead.
 func (*CreateTestResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{53}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{55}
 }
 
 func (x *CreateTestResponse) GetTest() *Test {
@@ -4638,7 +4767,7 @@ type GetTestRequest struct {
 
 func (x *GetTestRequest) Reset() {
 	*x = GetTestRequest{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[54]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[56]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4650,7 +4779,7 @@ func (x *GetTestRequest) String() string {
 func (*GetTestRequest) ProtoMessage() {}
 
 func (x *GetTestRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[54]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[56]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4663,7 +4792,7 @@ func (x *GetTestRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTestRequest.ProtoReflect.Descriptor instead.
 func (*GetTestRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{54}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{56}
 }
 
 func (x *GetTestRequest) GetId() string {
@@ -4683,7 +4812,7 @@ type GetTestResponse struct {
 
 func (x *GetTestResponse) Reset() {
 	*x = GetTestResponse{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[55]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[57]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4695,7 +4824,7 @@ func (x *GetTestResponse) String() string {
 func (*GetTestResponse) ProtoMessage() {}
 
 func (x *GetTestResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[55]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[57]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4708,7 +4837,7 @@ func (x *GetTestResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTestResponse.ProtoReflect.Descriptor instead.
 func (*GetTestResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{55}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{57}
 }
 
 func (x *GetTestResponse) GetTest() *Test {
@@ -4728,7 +4857,7 @@ type UpdateTestRequest struct {
 
 func (x *UpdateTestRequest) Reset() {
 	*x = UpdateTestRequest{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[56]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[58]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4740,7 +4869,7 @@ func (x *UpdateTestRequest) String() string {
 func (*UpdateTestRequest) ProtoMessage() {}
 
 func (x *UpdateTestRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[56]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[58]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4753,7 +4882,7 @@ func (x *UpdateTestRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateTestRequest.ProtoReflect.Descriptor instead.
 func (*UpdateTestRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{56}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{58}
 }
 
 func (x *UpdateTestRequest) GetTest() *Test {
@@ -4773,7 +4902,7 @@ type UpdateTestResponse struct {
 
 func (x *UpdateTestResponse) Reset() {
 	*x = UpdateTestResponse{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[57]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[59]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4785,7 +4914,7 @@ func (x *UpdateTestResponse) String() string {
 func (*UpdateTestResponse) ProtoMessage() {}
 
 func (x *UpdateTestResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[57]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[59]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4798,7 +4927,7 @@ func (x *UpdateTestResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateTestResponse.ProtoReflect.Descriptor instead.
 func (*UpdateTestResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{57}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{59}
 }
 
 func (x *UpdateTestResponse) GetTest() *Test {
@@ -4818,7 +4947,7 @@ type DeleteTestRequest struct {
 
 func (x *DeleteTestRequest) Reset() {
 	*x = DeleteTestRequest{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[58]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[60]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4830,7 +4959,7 @@ func (x *DeleteTestRequest) String() string {
 func (*DeleteTestRequest) ProtoMessage() {}
 
 func (x *DeleteTestRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[58]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[60]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4843,7 +4972,7 @@ func (x *DeleteTestRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteTestRequest.ProtoReflect.Descriptor instead.
 func (*DeleteTestRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{58}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{60}
 }
 
 func (x *DeleteTestRequest) GetId() string {
@@ -4862,7 +4991,7 @@ type DeleteTestResponse struct {
 
 func (x *DeleteTestResponse) Reset() {
 	*x = DeleteTestResponse{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[59]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[61]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4874,7 +5003,7 @@ func (x *DeleteTestResponse) String() string {
 func (*DeleteTestResponse) ProtoMessage() {}
 
 func (x *DeleteTestResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[59]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[61]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4887,7 +5016,7 @@ func (x *DeleteTestResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteTestResponse.ProtoReflect.Descriptor instead.
 func (*DeleteTestResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{59}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{61}
 }
 
 // {{.Name}}
@@ -4901,7 +5030,7 @@ type SetTestStatusRequest struct {
 
 func (x *SetTestStatusRequest) Reset() {
 	*x = SetTestStatusRequest{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[60]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[62]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4913,7 +5042,7 @@ func (x *SetTestStatusRequest) String() string {
 func (*SetTestStatusRequest) ProtoMessage() {}
 
 func (x *SetTestStatusRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[60]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[62]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4926,7 +5055,7 @@ func (x *SetTestStatusRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetTestStatusRequest.ProtoReflect.Descriptor instead.
 func (*SetTestStatusRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{60}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{62}
 }
 
 func (x *SetTestStatusRequest) GetId() string {
@@ -4952,7 +5081,7 @@ type SetTestStatusResponse struct {
 
 func (x *SetTestStatusResponse) Reset() {
 	*x = SetTestStatusResponse{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[61]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[63]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4964,7 +5093,7 @@ func (x *SetTestStatusResponse) String() string {
 func (*SetTestStatusResponse) ProtoMessage() {}
 
 func (x *SetTestStatusResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[61]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[63]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4977,7 +5106,7 @@ func (x *SetTestStatusResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetTestStatusResponse.ProtoReflect.Descriptor instead.
 func (*SetTestStatusResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{61}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{63}
 }
 
 type AgentAlert struct {
@@ -4993,7 +5122,7 @@ type AgentAlert struct {
 
 func (x *AgentAlert) Reset() {
 	*x = AgentAlert{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[62]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[64]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5005,7 +5134,7 @@ func (x *AgentAlert) String() string {
 func (*AgentAlert) ProtoMessage() {}
 
 func (x *AgentAlert) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[62]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[64]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5018,7 +5147,7 @@ func (x *AgentAlert) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AgentAlert.ProtoReflect.Descriptor instead.
 func (*AgentAlert) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{62}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{64}
 }
 
 func (x *AgentAlert) GetId() string {
@@ -5067,7 +5196,7 @@ type CreateAgentAlertRequest struct {
 
 func (x *CreateAgentAlertRequest) Reset() {
 	*x = CreateAgentAlertRequest{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[63]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[65]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5079,7 +5208,7 @@ func (x *CreateAgentAlertRequest) String() string {
 func (*CreateAgentAlertRequest) ProtoMessage() {}
 
 func (x *CreateAgentAlertRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[63]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[65]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5092,7 +5221,7 @@ func (x *CreateAgentAlertRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateAgentAlertRequest.ProtoReflect.Descriptor instead.
 func (*CreateAgentAlertRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{63}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{65}
 }
 
 func (x *CreateAgentAlertRequest) GetThresholdSeconds() uint32 {
@@ -5125,7 +5254,7 @@ type CreateAgentAlertResponse struct {
 
 func (x *CreateAgentAlertResponse) Reset() {
 	*x = CreateAgentAlertResponse{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[64]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[66]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5137,7 +5266,7 @@ func (x *CreateAgentAlertResponse) String() string {
 func (*CreateAgentAlertResponse) ProtoMessage() {}
 
 func (x *CreateAgentAlertResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[64]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[66]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5150,7 +5279,7 @@ func (x *CreateAgentAlertResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateAgentAlertResponse.ProtoReflect.Descriptor instead.
 func (*CreateAgentAlertResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{64}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{66}
 }
 
 func (x *CreateAgentAlertResponse) GetAgentAlert() *AgentAlert {
@@ -5171,7 +5300,7 @@ type UpdateAgentAlertRequest struct {
 
 func (x *UpdateAgentAlertRequest) Reset() {
 	*x = UpdateAgentAlertRequest{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[65]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[67]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5183,7 +5312,7 @@ func (x *UpdateAgentAlertRequest) String() string {
 func (*UpdateAgentAlertRequest) ProtoMessage() {}
 
 func (x *UpdateAgentAlertRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[65]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[67]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5196,7 +5325,7 @@ func (x *UpdateAgentAlertRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateAgentAlertRequest.ProtoReflect.Descriptor instead.
 func (*UpdateAgentAlertRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{65}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{67}
 }
 
 func (x *UpdateAgentAlertRequest) GetId() string {
@@ -5229,7 +5358,7 @@ type UpdateAgentAlertResponse struct {
 
 func (x *UpdateAgentAlertResponse) Reset() {
 	*x = UpdateAgentAlertResponse{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[66]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[68]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5241,7 +5370,7 @@ func (x *UpdateAgentAlertResponse) String() string {
 func (*UpdateAgentAlertResponse) ProtoMessage() {}
 
 func (x *UpdateAgentAlertResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[66]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[68]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5254,7 +5383,7 @@ func (x *UpdateAgentAlertResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateAgentAlertResponse.ProtoReflect.Descriptor instead.
 func (*UpdateAgentAlertResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{66}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{68}
 }
 
 func (x *UpdateAgentAlertResponse) GetAgentAlert() *AgentAlert {
@@ -5273,7 +5402,7 @@ type GetAgentAlertRequest struct {
 
 func (x *GetAgentAlertRequest) Reset() {
 	*x = GetAgentAlertRequest{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[67]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[69]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5285,7 +5414,7 @@ func (x *GetAgentAlertRequest) String() string {
 func (*GetAgentAlertRequest) ProtoMessage() {}
 
 func (x *GetAgentAlertRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[67]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[69]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5298,7 +5427,7 @@ func (x *GetAgentAlertRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAgentAlertRequest.ProtoReflect.Descriptor instead.
 func (*GetAgentAlertRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{67}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{69}
 }
 
 func (x *GetAgentAlertRequest) GetId() string {
@@ -5317,7 +5446,7 @@ type GetAgentAlertResponse struct {
 
 func (x *GetAgentAlertResponse) Reset() {
 	*x = GetAgentAlertResponse{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[68]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[70]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5329,7 +5458,7 @@ func (x *GetAgentAlertResponse) String() string {
 func (*GetAgentAlertResponse) ProtoMessage() {}
 
 func (x *GetAgentAlertResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[68]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[70]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5342,7 +5471,7 @@ func (x *GetAgentAlertResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAgentAlertResponse.ProtoReflect.Descriptor instead.
 func (*GetAgentAlertResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{68}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{70}
 }
 
 func (x *GetAgentAlertResponse) GetAgentAlert() *AgentAlert {
@@ -5361,7 +5490,7 @@ type ListAgentAlertsRequest struct {
 
 func (x *ListAgentAlertsRequest) Reset() {
 	*x = ListAgentAlertsRequest{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[69]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[71]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5373,7 +5502,7 @@ func (x *ListAgentAlertsRequest) String() string {
 func (*ListAgentAlertsRequest) ProtoMessage() {}
 
 func (x *ListAgentAlertsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[69]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[71]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5386,7 +5515,7 @@ func (x *ListAgentAlertsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListAgentAlertsRequest.ProtoReflect.Descriptor instead.
 func (*ListAgentAlertsRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{69}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{71}
 }
 
 func (x *ListAgentAlertsRequest) GetAgentIds() []string {
@@ -5405,7 +5534,7 @@ type ListAgentAlertsResponse struct {
 
 func (x *ListAgentAlertsResponse) Reset() {
 	*x = ListAgentAlertsResponse{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[70]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[72]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5417,7 +5546,7 @@ func (x *ListAgentAlertsResponse) String() string {
 func (*ListAgentAlertsResponse) ProtoMessage() {}
 
 func (x *ListAgentAlertsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[70]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[72]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5430,7 +5559,7 @@ func (x *ListAgentAlertsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListAgentAlertsResponse.ProtoReflect.Descriptor instead.
 func (*ListAgentAlertsResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{70}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{72}
 }
 
 func (x *ListAgentAlertsResponse) GetAgentAlerts() []*AgentAlert {
@@ -5449,7 +5578,7 @@ type DeleteAgentAlertRequest struct {
 
 func (x *DeleteAgentAlertRequest) Reset() {
 	*x = DeleteAgentAlertRequest{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[71]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[73]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5461,7 +5590,7 @@ func (x *DeleteAgentAlertRequest) String() string {
 func (*DeleteAgentAlertRequest) ProtoMessage() {}
 
 func (x *DeleteAgentAlertRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[71]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[73]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5474,7 +5603,7 @@ func (x *DeleteAgentAlertRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteAgentAlertRequest.ProtoReflect.Descriptor instead.
 func (*DeleteAgentAlertRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{71}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{73}
 }
 
 func (x *DeleteAgentAlertRequest) GetId() string {
@@ -5492,7 +5621,7 @@ type DeleteAgentAlertResponse struct {
 
 func (x *DeleteAgentAlertResponse) Reset() {
 	*x = DeleteAgentAlertResponse{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[72]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[74]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5504,7 +5633,7 @@ func (x *DeleteAgentAlertResponse) String() string {
 func (*DeleteAgentAlertResponse) ProtoMessage() {}
 
 func (x *DeleteAgentAlertResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[72]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[74]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5517,7 +5646,7 @@ func (x *DeleteAgentAlertResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteAgentAlertResponse.ProtoReflect.Descriptor instead.
 func (*DeleteAgentAlertResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{72}
+	return file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP(), []int{74}
 }
 
 type AgentMetadata_IpValue struct {
@@ -5529,7 +5658,7 @@ type AgentMetadata_IpValue struct {
 
 func (x *AgentMetadata_IpValue) Reset() {
 	*x = AgentMetadata_IpValue{}
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[73]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[75]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5541,7 +5670,7 @@ func (x *AgentMetadata_IpValue) String() string {
 func (*AgentMetadata_IpValue) ProtoMessage() {}
 
 func (x *AgentMetadata_IpValue) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[73]
+	mi := &file_kentik_synthetics_v202309_synthetics_proto_msgTypes[75]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5888,7 +6017,17 @@ const file_kentik_synthetics_v202309_synthetics_proto_rawDesc = "" +
 	"\bend_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampB=\x92A725Timestamp of the newest results to include in results\xe0A\x02R\aendTime\x12P\n" +
 	"\tagent_ids\x18\x04 \x03(\tB3\x92A02.List of agent IDs from which to return resultsR\bagentIds\x12]\n" +
 	"\atargets\x18\x05 \x03(\tBC\x92A@2>List of targets (test dependent) for which to retrieve resultsR\atargets\x12\x89\x01\n" +
-	"\taggregate\x18\x06 \x01(\bBk\x92Ah2fIf true, retrieve result aggregated across the requested time period, else return complete time seriesR\taggregate\"^\n" +
+	"\taggregate\x18\x06 \x01(\bBk\x92Ah2fIf true, retrieve result aggregated across the requested time period, else return complete time seriesR\taggregate\"\xb6\x04\n" +
+	"\x1cGetResultsForTestsCsvRequest\x12H\n" +
+	"\x03ids\x18\x01 \x03(\tB6\x92A02.List of test IDs for which to retrieve results\xe0A\x02R\x03ids\x12x\n" +
+	"\n" +
+	"start_time\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB=\x92A725Timestamp of the oldest results to include in results\xe0A\x02R\tstartTime\x12t\n" +
+	"\bend_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampB=\x92A725Timestamp of the newest results to include in results\xe0A\x02R\aendTime\x12P\n" +
+	"\tagent_ids\x18\x04 \x03(\tB3\x92A02.List of agent IDs from which to return resultsR\bagentIds\x12\x89\x01\n" +
+	"\taggregate\x18\x05 \x01(\bBk\x92Ah2fIf true, retrieve result aggregated across the requested time period, else return complete time seriesR\taggregate\"\xae\x01\n" +
+	"\x1dGetResultsForTestsCsvResponse\x12\\\n" +
+	"\fcontent_type\x18\x01 \x01(\tB9\x92A624Content type of the response hardcoded to 'text/csv'R\vcontentType\x12/\n" +
+	"\x04data\x18\x02 \x01(\fB\x1b\x92A\x182\x16CSV data as byte arrayR\x04data\"^\n" +
 	"\x1aGetResultsForTestsResponse\x12@\n" +
 	"\aresults\x18\x01 \x03(\v2&.kentik.synthetics.v202309.TestResultsR\aresults\"\x88\x04\n" +
 	"\x16GetTraceForTestRequest\x12M\n" +
@@ -6020,9 +6159,10 @@ const file_kentik_synthetics_v202309_synthetics_proto_rawDesc = "" +
 	"\x18SRC_GROUP_BY_UNSPECIFIED\x10\x00\x12\x1b\n" +
 	"\x17SRC_GROUP_BY_ALL_AGENTS\x10\x01\x12\x16\n" +
 	"\x12SRC_GROUP_BY_LABEL\x10\x02\x12\x15\n" +
-	"\x11SRC_GROUP_BY_SITE\x10\x032\xca\x05\n" +
+	"\x11SRC_GROUP_BY_SITE\x10\x032\x81\b\n" +
 	"\x15SyntheticsDataService\x12\xb3\x02\n" +
-	"\x12GetResultsForTests\x124.kentik.synthetics.v202309.GetResultsForTestsRequest\x1a5.kentik.synthetics.v202309.GetResultsForTestsResponse\"\xaf\x01\x92As\x12\x15Get results for tests\x1aFReturns probe results for a set of tests for specified period of time.*\x12GetResultsForTests\xf2\xd7\x02\x0fsynthetics:read\x82\xd3\xe4\x93\x02 :\x01*\"\x1b/synthetics/v202309/results\x12\xd0\x02\n" +
+	"\x12GetResultsForTests\x124.kentik.synthetics.v202309.GetResultsForTestsRequest\x1a5.kentik.synthetics.v202309.GetResultsForTestsResponse\"\xaf\x01\x92As\x12\x15Get results for tests\x1aFReturns probe results for a set of tests for specified period of time.*\x12GetResultsForTests\xf2\xd7\x02\x0fsynthetics:read\x82\xd3\xe4\x93\x02 :\x01*\"\x1b/synthetics/v202309/results\x12\xb4\x02\n" +
+	"\x15GetResultsForTestsCsv\x127.kentik.synthetics.v202309.GetResultsForTestsCsvRequest\x1a8.kentik.synthetics.v202309.GetResultsForTestsCsvResponse\"\xa7\x01\x92Ag\x12\x1eGet test results in CSV format\x1a.Returns probe results for tests in CSV format.*\x15GetResultsForTestsCsv\xf2\xd7\x02\x0fsynthetics:read\x82\xd3\xe4\x93\x02$:\x01*\"\x1f/synthetics/v202309/results/csv\x12\xd0\x02\n" +
 	"\x0fGetTraceForTest\x121.kentik.synthetics.v202309.GetTraceForTestRequest\x1a2.kentik.synthetics.v202309.GetTraceForTestResponse\"\xd5\x01\x92A\x9a\x01\x12!Get network trace data for a test\x1adGet network trace data for a specific synthetic test. The test must have traceroute task configured.*\x0fGetTraceForTest\xf2\xd7\x02\x0fsynthetics:read\x82\xd3\xe4\x93\x02\x1e:\x01*\"\x19/synthetics/v202309/trace\x1a(\xcaA\x13grpc.api.kentik.com\xea\xd7\x02\n" +
 	"synthetics\x90\xd8\x02\x032\x86&\n" +
 	"\x16SyntheticsAdminService\x12\xa7\x02\n" +
@@ -6175,112 +6315,114 @@ func file_kentik_synthetics_v202309_synthetics_proto_rawDescGZIP() []byte {
 }
 
 var file_kentik_synthetics_v202309_synthetics_proto_enumTypes = make([]protoimpl.EnumInfo, 7)
-var file_kentik_synthetics_v202309_synthetics_proto_msgTypes = make([]protoimpl.MessageInfo, 78)
+var file_kentik_synthetics_v202309_synthetics_proto_msgTypes = make([]protoimpl.MessageInfo, 80)
 var file_kentik_synthetics_v202309_synthetics_proto_goTypes = []any{
-	(ImplementType)(0),                 // 0: kentik.synthetics.v202309.ImplementType
-	(IPFamily)(0),                      // 1: kentik.synthetics.v202309.IPFamily
-	(TestStatus)(0),                    // 2: kentik.synthetics.v202309.TestStatus
-	(AgentStatus)(0),                   // 3: kentik.synthetics.v202309.AgentStatus
-	(DNSRecord)(0),                     // 4: kentik.synthetics.v202309.DNSRecord
-	(AlertingType)(0),                  // 5: kentik.synthetics.v202309.AlertingType
-	(SrcGroupBy)(0),                    // 6: kentik.synthetics.v202309.SrcGroupBy
-	(*DisabledMetrics)(nil),            // 7: kentik.synthetics.v202309.DisabledMetrics
-	(*Agent)(nil),                      // 8: kentik.synthetics.v202309.Agent
-	(*AgentMetadata)(nil),              // 9: kentik.synthetics.v202309.AgentMetadata
-	(*Test)(nil),                       // 10: kentik.synthetics.v202309.Test
-	(*TestSettings)(nil),               // 11: kentik.synthetics.v202309.TestSettings
-	(*TestPingSettings)(nil),           // 12: kentik.synthetics.v202309.TestPingSettings
-	(*TestTraceSettings)(nil),          // 13: kentik.synthetics.v202309.TestTraceSettings
-	(*TestThroughputSettings)(nil),     // 14: kentik.synthetics.v202309.TestThroughputSettings
-	(*ScheduleSettings)(nil),           // 15: kentik.synthetics.v202309.ScheduleSettings
-	(*GroupedAlertSetting)(nil),        // 16: kentik.synthetics.v202309.GroupedAlertSetting
-	(*GroupedAlertSettings)(nil),       // 17: kentik.synthetics.v202309.GroupedAlertSettings
-	(*AlertingSettings)(nil),           // 18: kentik.synthetics.v202309.AlertingSettings
-	(*ActivationSettings)(nil),         // 19: kentik.synthetics.v202309.ActivationSettings
-	(*HealthSettings)(nil),             // 20: kentik.synthetics.v202309.HealthSettings
-	(*HostnameTest)(nil),               // 21: kentik.synthetics.v202309.HostnameTest
-	(*IpTest)(nil),                     // 22: kentik.synthetics.v202309.IpTest
-	(*AgentTest)(nil),                  // 23: kentik.synthetics.v202309.AgentTest
-	(*FlowTest)(nil),                   // 24: kentik.synthetics.v202309.FlowTest
-	(*DnsTest)(nil),                    // 25: kentik.synthetics.v202309.DnsTest
-	(*UrlTest)(nil),                    // 26: kentik.synthetics.v202309.UrlTest
-	(*PageLoadTest)(nil),               // 27: kentik.synthetics.v202309.PageLoadTest
-	(*NetworkMeshTest)(nil),            // 28: kentik.synthetics.v202309.NetworkMeshTest
-	(*MetricData)(nil),                 // 29: kentik.synthetics.v202309.MetricData
-	(*PacketLossData)(nil),             // 30: kentik.synthetics.v202309.PacketLossData
-	(*PingResults)(nil),                // 31: kentik.synthetics.v202309.PingResults
-	(*HTTPResponseData)(nil),           // 32: kentik.synthetics.v202309.HTTPResponseData
-	(*HTTPResults)(nil),                // 33: kentik.synthetics.v202309.HTTPResults
-	(*DNSResponseData)(nil),            // 34: kentik.synthetics.v202309.DNSResponseData
-	(*DNSResults)(nil),                 // 35: kentik.synthetics.v202309.DNSResults
-	(*TaskResults)(nil),                // 36: kentik.synthetics.v202309.TaskResults
-	(*AgentResults)(nil),               // 37: kentik.synthetics.v202309.AgentResults
-	(*TestResults)(nil),                // 38: kentik.synthetics.v202309.TestResults
-	(*Stats)(nil),                      // 39: kentik.synthetics.v202309.Stats
-	(*Location)(nil),                   // 40: kentik.synthetics.v202309.Location
-	(*NetNode)(nil),                    // 41: kentik.synthetics.v202309.NetNode
-	(*TraceHop)(nil),                   // 42: kentik.synthetics.v202309.TraceHop
-	(*PathTrace)(nil),                  // 43: kentik.synthetics.v202309.PathTrace
-	(*Path)(nil),                       // 44: kentik.synthetics.v202309.Path
-	(*GetResultsForTestsRequest)(nil),  // 45: kentik.synthetics.v202309.GetResultsForTestsRequest
-	(*GetResultsForTestsResponse)(nil), // 46: kentik.synthetics.v202309.GetResultsForTestsResponse
-	(*GetTraceForTestRequest)(nil),     // 47: kentik.synthetics.v202309.GetTraceForTestRequest
-	(*GetTraceForTestResponse)(nil),    // 48: kentik.synthetics.v202309.GetTraceForTestResponse
-	(*ListAgentsRequest)(nil),          // 49: kentik.synthetics.v202309.ListAgentsRequest
-	(*ListAgentsResponse)(nil),         // 50: kentik.synthetics.v202309.ListAgentsResponse
-	(*GetAgentRequest)(nil),            // 51: kentik.synthetics.v202309.GetAgentRequest
-	(*GetAgentResponse)(nil),           // 52: kentik.synthetics.v202309.GetAgentResponse
-	(*UpdateAgentRequest)(nil),         // 53: kentik.synthetics.v202309.UpdateAgentRequest
-	(*UpdateAgentResponse)(nil),        // 54: kentik.synthetics.v202309.UpdateAgentResponse
-	(*DeleteAgentRequest)(nil),         // 55: kentik.synthetics.v202309.DeleteAgentRequest
-	(*DeleteAgentResponse)(nil),        // 56: kentik.synthetics.v202309.DeleteAgentResponse
-	(*ListTestsRequest)(nil),           // 57: kentik.synthetics.v202309.ListTestsRequest
-	(*ListTestsResponse)(nil),          // 58: kentik.synthetics.v202309.ListTestsResponse
-	(*CreateTestRequest)(nil),          // 59: kentik.synthetics.v202309.CreateTestRequest
-	(*CreateTestResponse)(nil),         // 60: kentik.synthetics.v202309.CreateTestResponse
-	(*GetTestRequest)(nil),             // 61: kentik.synthetics.v202309.GetTestRequest
-	(*GetTestResponse)(nil),            // 62: kentik.synthetics.v202309.GetTestResponse
-	(*UpdateTestRequest)(nil),          // 63: kentik.synthetics.v202309.UpdateTestRequest
-	(*UpdateTestResponse)(nil),         // 64: kentik.synthetics.v202309.UpdateTestResponse
-	(*DeleteTestRequest)(nil),          // 65: kentik.synthetics.v202309.DeleteTestRequest
-	(*DeleteTestResponse)(nil),         // 66: kentik.synthetics.v202309.DeleteTestResponse
-	(*SetTestStatusRequest)(nil),       // 67: kentik.synthetics.v202309.SetTestStatusRequest
-	(*SetTestStatusResponse)(nil),      // 68: kentik.synthetics.v202309.SetTestStatusResponse
-	(*AgentAlert)(nil),                 // 69: kentik.synthetics.v202309.AgentAlert
-	(*CreateAgentAlertRequest)(nil),    // 70: kentik.synthetics.v202309.CreateAgentAlertRequest
-	(*CreateAgentAlertResponse)(nil),   // 71: kentik.synthetics.v202309.CreateAgentAlertResponse
-	(*UpdateAgentAlertRequest)(nil),    // 72: kentik.synthetics.v202309.UpdateAgentAlertRequest
-	(*UpdateAgentAlertResponse)(nil),   // 73: kentik.synthetics.v202309.UpdateAgentAlertResponse
-	(*GetAgentAlertRequest)(nil),       // 74: kentik.synthetics.v202309.GetAgentAlertRequest
-	(*GetAgentAlertResponse)(nil),      // 75: kentik.synthetics.v202309.GetAgentAlertResponse
-	(*ListAgentAlertsRequest)(nil),     // 76: kentik.synthetics.v202309.ListAgentAlertsRequest
-	(*ListAgentAlertsResponse)(nil),    // 77: kentik.synthetics.v202309.ListAgentAlertsResponse
-	(*DeleteAgentAlertRequest)(nil),    // 78: kentik.synthetics.v202309.DeleteAgentAlertRequest
-	(*DeleteAgentAlertResponse)(nil),   // 79: kentik.synthetics.v202309.DeleteAgentAlertResponse
-	(*AgentMetadata_IpValue)(nil),      // 80: kentik.synthetics.v202309.AgentMetadata.IpValue
-	nil,                                // 81: kentik.synthetics.v202309.UrlTest.HeadersEntry
-	nil,                                // 82: kentik.synthetics.v202309.PageLoadTest.HeadersEntry
-	nil,                                // 83: kentik.synthetics.v202309.PageLoadTest.CssSelectorsEntry
-	nil,                                // 84: kentik.synthetics.v202309.GetTraceForTestResponse.NodesEntry
-	(*timestamppb.Timestamp)(nil),      // 85: google.protobuf.Timestamp
-	(*v202303.UserInfo)(nil),           // 86: kentik.core.v202303.UserInfo
+	(ImplementType)(0),                    // 0: kentik.synthetics.v202309.ImplementType
+	(IPFamily)(0),                         // 1: kentik.synthetics.v202309.IPFamily
+	(TestStatus)(0),                       // 2: kentik.synthetics.v202309.TestStatus
+	(AgentStatus)(0),                      // 3: kentik.synthetics.v202309.AgentStatus
+	(DNSRecord)(0),                        // 4: kentik.synthetics.v202309.DNSRecord
+	(AlertingType)(0),                     // 5: kentik.synthetics.v202309.AlertingType
+	(SrcGroupBy)(0),                       // 6: kentik.synthetics.v202309.SrcGroupBy
+	(*DisabledMetrics)(nil),               // 7: kentik.synthetics.v202309.DisabledMetrics
+	(*Agent)(nil),                         // 8: kentik.synthetics.v202309.Agent
+	(*AgentMetadata)(nil),                 // 9: kentik.synthetics.v202309.AgentMetadata
+	(*Test)(nil),                          // 10: kentik.synthetics.v202309.Test
+	(*TestSettings)(nil),                  // 11: kentik.synthetics.v202309.TestSettings
+	(*TestPingSettings)(nil),              // 12: kentik.synthetics.v202309.TestPingSettings
+	(*TestTraceSettings)(nil),             // 13: kentik.synthetics.v202309.TestTraceSettings
+	(*TestThroughputSettings)(nil),        // 14: kentik.synthetics.v202309.TestThroughputSettings
+	(*ScheduleSettings)(nil),              // 15: kentik.synthetics.v202309.ScheduleSettings
+	(*GroupedAlertSetting)(nil),           // 16: kentik.synthetics.v202309.GroupedAlertSetting
+	(*GroupedAlertSettings)(nil),          // 17: kentik.synthetics.v202309.GroupedAlertSettings
+	(*AlertingSettings)(nil),              // 18: kentik.synthetics.v202309.AlertingSettings
+	(*ActivationSettings)(nil),            // 19: kentik.synthetics.v202309.ActivationSettings
+	(*HealthSettings)(nil),                // 20: kentik.synthetics.v202309.HealthSettings
+	(*HostnameTest)(nil),                  // 21: kentik.synthetics.v202309.HostnameTest
+	(*IpTest)(nil),                        // 22: kentik.synthetics.v202309.IpTest
+	(*AgentTest)(nil),                     // 23: kentik.synthetics.v202309.AgentTest
+	(*FlowTest)(nil),                      // 24: kentik.synthetics.v202309.FlowTest
+	(*DnsTest)(nil),                       // 25: kentik.synthetics.v202309.DnsTest
+	(*UrlTest)(nil),                       // 26: kentik.synthetics.v202309.UrlTest
+	(*PageLoadTest)(nil),                  // 27: kentik.synthetics.v202309.PageLoadTest
+	(*NetworkMeshTest)(nil),               // 28: kentik.synthetics.v202309.NetworkMeshTest
+	(*MetricData)(nil),                    // 29: kentik.synthetics.v202309.MetricData
+	(*PacketLossData)(nil),                // 30: kentik.synthetics.v202309.PacketLossData
+	(*PingResults)(nil),                   // 31: kentik.synthetics.v202309.PingResults
+	(*HTTPResponseData)(nil),              // 32: kentik.synthetics.v202309.HTTPResponseData
+	(*HTTPResults)(nil),                   // 33: kentik.synthetics.v202309.HTTPResults
+	(*DNSResponseData)(nil),               // 34: kentik.synthetics.v202309.DNSResponseData
+	(*DNSResults)(nil),                    // 35: kentik.synthetics.v202309.DNSResults
+	(*TaskResults)(nil),                   // 36: kentik.synthetics.v202309.TaskResults
+	(*AgentResults)(nil),                  // 37: kentik.synthetics.v202309.AgentResults
+	(*TestResults)(nil),                   // 38: kentik.synthetics.v202309.TestResults
+	(*Stats)(nil),                         // 39: kentik.synthetics.v202309.Stats
+	(*Location)(nil),                      // 40: kentik.synthetics.v202309.Location
+	(*NetNode)(nil),                       // 41: kentik.synthetics.v202309.NetNode
+	(*TraceHop)(nil),                      // 42: kentik.synthetics.v202309.TraceHop
+	(*PathTrace)(nil),                     // 43: kentik.synthetics.v202309.PathTrace
+	(*Path)(nil),                          // 44: kentik.synthetics.v202309.Path
+	(*GetResultsForTestsRequest)(nil),     // 45: kentik.synthetics.v202309.GetResultsForTestsRequest
+	(*GetResultsForTestsCsvRequest)(nil),  // 46: kentik.synthetics.v202309.GetResultsForTestsCsvRequest
+	(*GetResultsForTestsCsvResponse)(nil), // 47: kentik.synthetics.v202309.GetResultsForTestsCsvResponse
+	(*GetResultsForTestsResponse)(nil),    // 48: kentik.synthetics.v202309.GetResultsForTestsResponse
+	(*GetTraceForTestRequest)(nil),        // 49: kentik.synthetics.v202309.GetTraceForTestRequest
+	(*GetTraceForTestResponse)(nil),       // 50: kentik.synthetics.v202309.GetTraceForTestResponse
+	(*ListAgentsRequest)(nil),             // 51: kentik.synthetics.v202309.ListAgentsRequest
+	(*ListAgentsResponse)(nil),            // 52: kentik.synthetics.v202309.ListAgentsResponse
+	(*GetAgentRequest)(nil),               // 53: kentik.synthetics.v202309.GetAgentRequest
+	(*GetAgentResponse)(nil),              // 54: kentik.synthetics.v202309.GetAgentResponse
+	(*UpdateAgentRequest)(nil),            // 55: kentik.synthetics.v202309.UpdateAgentRequest
+	(*UpdateAgentResponse)(nil),           // 56: kentik.synthetics.v202309.UpdateAgentResponse
+	(*DeleteAgentRequest)(nil),            // 57: kentik.synthetics.v202309.DeleteAgentRequest
+	(*DeleteAgentResponse)(nil),           // 58: kentik.synthetics.v202309.DeleteAgentResponse
+	(*ListTestsRequest)(nil),              // 59: kentik.synthetics.v202309.ListTestsRequest
+	(*ListTestsResponse)(nil),             // 60: kentik.synthetics.v202309.ListTestsResponse
+	(*CreateTestRequest)(nil),             // 61: kentik.synthetics.v202309.CreateTestRequest
+	(*CreateTestResponse)(nil),            // 62: kentik.synthetics.v202309.CreateTestResponse
+	(*GetTestRequest)(nil),                // 63: kentik.synthetics.v202309.GetTestRequest
+	(*GetTestResponse)(nil),               // 64: kentik.synthetics.v202309.GetTestResponse
+	(*UpdateTestRequest)(nil),             // 65: kentik.synthetics.v202309.UpdateTestRequest
+	(*UpdateTestResponse)(nil),            // 66: kentik.synthetics.v202309.UpdateTestResponse
+	(*DeleteTestRequest)(nil),             // 67: kentik.synthetics.v202309.DeleteTestRequest
+	(*DeleteTestResponse)(nil),            // 68: kentik.synthetics.v202309.DeleteTestResponse
+	(*SetTestStatusRequest)(nil),          // 69: kentik.synthetics.v202309.SetTestStatusRequest
+	(*SetTestStatusResponse)(nil),         // 70: kentik.synthetics.v202309.SetTestStatusResponse
+	(*AgentAlert)(nil),                    // 71: kentik.synthetics.v202309.AgentAlert
+	(*CreateAgentAlertRequest)(nil),       // 72: kentik.synthetics.v202309.CreateAgentAlertRequest
+	(*CreateAgentAlertResponse)(nil),      // 73: kentik.synthetics.v202309.CreateAgentAlertResponse
+	(*UpdateAgentAlertRequest)(nil),       // 74: kentik.synthetics.v202309.UpdateAgentAlertRequest
+	(*UpdateAgentAlertResponse)(nil),      // 75: kentik.synthetics.v202309.UpdateAgentAlertResponse
+	(*GetAgentAlertRequest)(nil),          // 76: kentik.synthetics.v202309.GetAgentAlertRequest
+	(*GetAgentAlertResponse)(nil),         // 77: kentik.synthetics.v202309.GetAgentAlertResponse
+	(*ListAgentAlertsRequest)(nil),        // 78: kentik.synthetics.v202309.ListAgentAlertsRequest
+	(*ListAgentAlertsResponse)(nil),       // 79: kentik.synthetics.v202309.ListAgentAlertsResponse
+	(*DeleteAgentAlertRequest)(nil),       // 80: kentik.synthetics.v202309.DeleteAgentAlertRequest
+	(*DeleteAgentAlertResponse)(nil),      // 81: kentik.synthetics.v202309.DeleteAgentAlertResponse
+	(*AgentMetadata_IpValue)(nil),         // 82: kentik.synthetics.v202309.AgentMetadata.IpValue
+	nil,                                   // 83: kentik.synthetics.v202309.UrlTest.HeadersEntry
+	nil,                                   // 84: kentik.synthetics.v202309.PageLoadTest.HeadersEntry
+	nil,                                   // 85: kentik.synthetics.v202309.PageLoadTest.CssSelectorsEntry
+	nil,                                   // 86: kentik.synthetics.v202309.GetTraceForTestResponse.NodesEntry
+	(*timestamppb.Timestamp)(nil),         // 87: google.protobuf.Timestamp
+	(*v202303.UserInfo)(nil),              // 88: kentik.core.v202303.UserInfo
 }
 var file_kentik_synthetics_v202309_synthetics_proto_depIdxs = []int32{
 	3,   // 0: kentik.synthetics.v202309.Agent.status:type_name -> kentik.synthetics.v202309.AgentStatus
-	85,  // 1: kentik.synthetics.v202309.Agent.last_authed:type_name -> google.protobuf.Timestamp
+	87,  // 1: kentik.synthetics.v202309.Agent.last_authed:type_name -> google.protobuf.Timestamp
 	1,   // 2: kentik.synthetics.v202309.Agent.family:type_name -> kentik.synthetics.v202309.IPFamily
 	0,   // 3: kentik.synthetics.v202309.Agent.agent_impl:type_name -> kentik.synthetics.v202309.ImplementType
 	9,   // 4: kentik.synthetics.v202309.Agent.metadata:type_name -> kentik.synthetics.v202309.AgentMetadata
-	80,  // 5: kentik.synthetics.v202309.AgentMetadata.private_ipv4_addresses:type_name -> kentik.synthetics.v202309.AgentMetadata.IpValue
-	80,  // 6: kentik.synthetics.v202309.AgentMetadata.public_ipv4_addresses:type_name -> kentik.synthetics.v202309.AgentMetadata.IpValue
-	80,  // 7: kentik.synthetics.v202309.AgentMetadata.private_ipv6_addresses:type_name -> kentik.synthetics.v202309.AgentMetadata.IpValue
-	80,  // 8: kentik.synthetics.v202309.AgentMetadata.public_ipv6_addresses:type_name -> kentik.synthetics.v202309.AgentMetadata.IpValue
+	82,  // 5: kentik.synthetics.v202309.AgentMetadata.private_ipv4_addresses:type_name -> kentik.synthetics.v202309.AgentMetadata.IpValue
+	82,  // 6: kentik.synthetics.v202309.AgentMetadata.public_ipv4_addresses:type_name -> kentik.synthetics.v202309.AgentMetadata.IpValue
+	82,  // 7: kentik.synthetics.v202309.AgentMetadata.private_ipv6_addresses:type_name -> kentik.synthetics.v202309.AgentMetadata.IpValue
+	82,  // 8: kentik.synthetics.v202309.AgentMetadata.public_ipv6_addresses:type_name -> kentik.synthetics.v202309.AgentMetadata.IpValue
 	2,   // 9: kentik.synthetics.v202309.Test.status:type_name -> kentik.synthetics.v202309.TestStatus
 	11,  // 10: kentik.synthetics.v202309.Test.settings:type_name -> kentik.synthetics.v202309.TestSettings
-	85,  // 11: kentik.synthetics.v202309.Test.cdate:type_name -> google.protobuf.Timestamp
-	85,  // 12: kentik.synthetics.v202309.Test.edate:type_name -> google.protobuf.Timestamp
-	86,  // 13: kentik.synthetics.v202309.Test.created_by:type_name -> kentik.core.v202303.UserInfo
-	86,  // 14: kentik.synthetics.v202309.Test.last_updated_by:type_name -> kentik.core.v202303.UserInfo
+	87,  // 11: kentik.synthetics.v202309.Test.cdate:type_name -> google.protobuf.Timestamp
+	87,  // 12: kentik.synthetics.v202309.Test.edate:type_name -> google.protobuf.Timestamp
+	88,  // 13: kentik.synthetics.v202309.Test.created_by:type_name -> kentik.core.v202303.UserInfo
+	88,  // 14: kentik.synthetics.v202309.Test.last_updated_by:type_name -> kentik.core.v202303.UserInfo
 	21,  // 15: kentik.synthetics.v202309.TestSettings.hostname:type_name -> kentik.synthetics.v202309.HostnameTest
 	22,  // 16: kentik.synthetics.v202309.TestSettings.ip:type_name -> kentik.synthetics.v202309.IpTest
 	23,  // 17: kentik.synthetics.v202309.TestSettings.agent:type_name -> kentik.synthetics.v202309.AgentTest
@@ -6306,9 +6448,9 @@ var file_kentik_synthetics_v202309_synthetics_proto_depIdxs = []int32{
 	19,  // 37: kentik.synthetics.v202309.HealthSettings.activation:type_name -> kentik.synthetics.v202309.ActivationSettings
 	7,   // 38: kentik.synthetics.v202309.HealthSettings.disabled_metrics:type_name -> kentik.synthetics.v202309.DisabledMetrics
 	4,   // 39: kentik.synthetics.v202309.DnsTest.record_type:type_name -> kentik.synthetics.v202309.DNSRecord
-	81,  // 40: kentik.synthetics.v202309.UrlTest.headers:type_name -> kentik.synthetics.v202309.UrlTest.HeadersEntry
-	82,  // 41: kentik.synthetics.v202309.PageLoadTest.headers:type_name -> kentik.synthetics.v202309.PageLoadTest.HeadersEntry
-	83,  // 42: kentik.synthetics.v202309.PageLoadTest.css_selectors:type_name -> kentik.synthetics.v202309.PageLoadTest.CssSelectorsEntry
+	83,  // 40: kentik.synthetics.v202309.UrlTest.headers:type_name -> kentik.synthetics.v202309.UrlTest.HeadersEntry
+	84,  // 41: kentik.synthetics.v202309.PageLoadTest.headers:type_name -> kentik.synthetics.v202309.PageLoadTest.HeadersEntry
+	85,  // 42: kentik.synthetics.v202309.PageLoadTest.css_selectors:type_name -> kentik.synthetics.v202309.PageLoadTest.CssSelectorsEntry
 	30,  // 43: kentik.synthetics.v202309.PingResults.packet_loss:type_name -> kentik.synthetics.v202309.PacketLossData
 	29,  // 44: kentik.synthetics.v202309.PingResults.latency:type_name -> kentik.synthetics.v202309.MetricData
 	29,  // 45: kentik.synthetics.v202309.PingResults.jitter:type_name -> kentik.synthetics.v202309.MetricData
@@ -6320,75 +6462,79 @@ var file_kentik_synthetics_v202309_synthetics_proto_depIdxs = []int32{
 	33,  // 51: kentik.synthetics.v202309.TaskResults.http:type_name -> kentik.synthetics.v202309.HTTPResults
 	35,  // 52: kentik.synthetics.v202309.TaskResults.dns:type_name -> kentik.synthetics.v202309.DNSResults
 	36,  // 53: kentik.synthetics.v202309.AgentResults.tasks:type_name -> kentik.synthetics.v202309.TaskResults
-	85,  // 54: kentik.synthetics.v202309.TestResults.time:type_name -> google.protobuf.Timestamp
+	87,  // 54: kentik.synthetics.v202309.TestResults.time:type_name -> google.protobuf.Timestamp
 	37,  // 55: kentik.synthetics.v202309.TestResults.agents:type_name -> kentik.synthetics.v202309.AgentResults
 	40,  // 56: kentik.synthetics.v202309.NetNode.location:type_name -> kentik.synthetics.v202309.Location
 	42,  // 57: kentik.synthetics.v202309.PathTrace.hops:type_name -> kentik.synthetics.v202309.TraceHop
 	39,  // 58: kentik.synthetics.v202309.Path.hop_count:type_name -> kentik.synthetics.v202309.Stats
 	43,  // 59: kentik.synthetics.v202309.Path.traces:type_name -> kentik.synthetics.v202309.PathTrace
-	85,  // 60: kentik.synthetics.v202309.Path.time:type_name -> google.protobuf.Timestamp
-	85,  // 61: kentik.synthetics.v202309.GetResultsForTestsRequest.start_time:type_name -> google.protobuf.Timestamp
-	85,  // 62: kentik.synthetics.v202309.GetResultsForTestsRequest.end_time:type_name -> google.protobuf.Timestamp
-	38,  // 63: kentik.synthetics.v202309.GetResultsForTestsResponse.results:type_name -> kentik.synthetics.v202309.TestResults
-	85,  // 64: kentik.synthetics.v202309.GetTraceForTestRequest.start_time:type_name -> google.protobuf.Timestamp
-	85,  // 65: kentik.synthetics.v202309.GetTraceForTestRequest.end_time:type_name -> google.protobuf.Timestamp
-	84,  // 66: kentik.synthetics.v202309.GetTraceForTestResponse.nodes:type_name -> kentik.synthetics.v202309.GetTraceForTestResponse.NodesEntry
-	44,  // 67: kentik.synthetics.v202309.GetTraceForTestResponse.paths:type_name -> kentik.synthetics.v202309.Path
-	8,   // 68: kentik.synthetics.v202309.ListAgentsResponse.agents:type_name -> kentik.synthetics.v202309.Agent
-	8,   // 69: kentik.synthetics.v202309.GetAgentResponse.agent:type_name -> kentik.synthetics.v202309.Agent
-	8,   // 70: kentik.synthetics.v202309.UpdateAgentRequest.agent:type_name -> kentik.synthetics.v202309.Agent
-	8,   // 71: kentik.synthetics.v202309.UpdateAgentResponse.agent:type_name -> kentik.synthetics.v202309.Agent
-	10,  // 72: kentik.synthetics.v202309.ListTestsResponse.tests:type_name -> kentik.synthetics.v202309.Test
-	10,  // 73: kentik.synthetics.v202309.CreateTestRequest.test:type_name -> kentik.synthetics.v202309.Test
-	10,  // 74: kentik.synthetics.v202309.CreateTestResponse.test:type_name -> kentik.synthetics.v202309.Test
-	10,  // 75: kentik.synthetics.v202309.GetTestResponse.test:type_name -> kentik.synthetics.v202309.Test
-	10,  // 76: kentik.synthetics.v202309.UpdateTestRequest.test:type_name -> kentik.synthetics.v202309.Test
-	10,  // 77: kentik.synthetics.v202309.UpdateTestResponse.test:type_name -> kentik.synthetics.v202309.Test
-	2,   // 78: kentik.synthetics.v202309.SetTestStatusRequest.status:type_name -> kentik.synthetics.v202309.TestStatus
-	69,  // 79: kentik.synthetics.v202309.CreateAgentAlertResponse.agent_alert:type_name -> kentik.synthetics.v202309.AgentAlert
-	69,  // 80: kentik.synthetics.v202309.UpdateAgentAlertResponse.agent_alert:type_name -> kentik.synthetics.v202309.AgentAlert
-	69,  // 81: kentik.synthetics.v202309.GetAgentAlertResponse.agent_alert:type_name -> kentik.synthetics.v202309.AgentAlert
-	69,  // 82: kentik.synthetics.v202309.ListAgentAlertsResponse.agent_alerts:type_name -> kentik.synthetics.v202309.AgentAlert
-	41,  // 83: kentik.synthetics.v202309.GetTraceForTestResponse.NodesEntry.value:type_name -> kentik.synthetics.v202309.NetNode
-	45,  // 84: kentik.synthetics.v202309.SyntheticsDataService.GetResultsForTests:input_type -> kentik.synthetics.v202309.GetResultsForTestsRequest
-	47,  // 85: kentik.synthetics.v202309.SyntheticsDataService.GetTraceForTest:input_type -> kentik.synthetics.v202309.GetTraceForTestRequest
-	49,  // 86: kentik.synthetics.v202309.SyntheticsAdminService.ListAgents:input_type -> kentik.synthetics.v202309.ListAgentsRequest
-	51,  // 87: kentik.synthetics.v202309.SyntheticsAdminService.GetAgent:input_type -> kentik.synthetics.v202309.GetAgentRequest
-	53,  // 88: kentik.synthetics.v202309.SyntheticsAdminService.UpdateAgent:input_type -> kentik.synthetics.v202309.UpdateAgentRequest
-	55,  // 89: kentik.synthetics.v202309.SyntheticsAdminService.DeleteAgent:input_type -> kentik.synthetics.v202309.DeleteAgentRequest
-	57,  // 90: kentik.synthetics.v202309.SyntheticsAdminService.ListTests:input_type -> kentik.synthetics.v202309.ListTestsRequest
-	59,  // 91: kentik.synthetics.v202309.SyntheticsAdminService.CreateTest:input_type -> kentik.synthetics.v202309.CreateTestRequest
-	61,  // 92: kentik.synthetics.v202309.SyntheticsAdminService.GetTest:input_type -> kentik.synthetics.v202309.GetTestRequest
-	63,  // 93: kentik.synthetics.v202309.SyntheticsAdminService.UpdateTest:input_type -> kentik.synthetics.v202309.UpdateTestRequest
-	65,  // 94: kentik.synthetics.v202309.SyntheticsAdminService.DeleteTest:input_type -> kentik.synthetics.v202309.DeleteTestRequest
-	67,  // 95: kentik.synthetics.v202309.SyntheticsAdminService.SetTestStatus:input_type -> kentik.synthetics.v202309.SetTestStatusRequest
-	70,  // 96: kentik.synthetics.v202309.SyntheticsAdminService.CreateAgentAlert:input_type -> kentik.synthetics.v202309.CreateAgentAlertRequest
-	72,  // 97: kentik.synthetics.v202309.SyntheticsAdminService.UpdateAgentAlert:input_type -> kentik.synthetics.v202309.UpdateAgentAlertRequest
-	74,  // 98: kentik.synthetics.v202309.SyntheticsAdminService.GetAgentAlert:input_type -> kentik.synthetics.v202309.GetAgentAlertRequest
-	76,  // 99: kentik.synthetics.v202309.SyntheticsAdminService.ListAgentAlerts:input_type -> kentik.synthetics.v202309.ListAgentAlertsRequest
-	78,  // 100: kentik.synthetics.v202309.SyntheticsAdminService.DeleteAgentAlert:input_type -> kentik.synthetics.v202309.DeleteAgentAlertRequest
-	46,  // 101: kentik.synthetics.v202309.SyntheticsDataService.GetResultsForTests:output_type -> kentik.synthetics.v202309.GetResultsForTestsResponse
-	48,  // 102: kentik.synthetics.v202309.SyntheticsDataService.GetTraceForTest:output_type -> kentik.synthetics.v202309.GetTraceForTestResponse
-	50,  // 103: kentik.synthetics.v202309.SyntheticsAdminService.ListAgents:output_type -> kentik.synthetics.v202309.ListAgentsResponse
-	52,  // 104: kentik.synthetics.v202309.SyntheticsAdminService.GetAgent:output_type -> kentik.synthetics.v202309.GetAgentResponse
-	54,  // 105: kentik.synthetics.v202309.SyntheticsAdminService.UpdateAgent:output_type -> kentik.synthetics.v202309.UpdateAgentResponse
-	56,  // 106: kentik.synthetics.v202309.SyntheticsAdminService.DeleteAgent:output_type -> kentik.synthetics.v202309.DeleteAgentResponse
-	58,  // 107: kentik.synthetics.v202309.SyntheticsAdminService.ListTests:output_type -> kentik.synthetics.v202309.ListTestsResponse
-	60,  // 108: kentik.synthetics.v202309.SyntheticsAdminService.CreateTest:output_type -> kentik.synthetics.v202309.CreateTestResponse
-	62,  // 109: kentik.synthetics.v202309.SyntheticsAdminService.GetTest:output_type -> kentik.synthetics.v202309.GetTestResponse
-	64,  // 110: kentik.synthetics.v202309.SyntheticsAdminService.UpdateTest:output_type -> kentik.synthetics.v202309.UpdateTestResponse
-	66,  // 111: kentik.synthetics.v202309.SyntheticsAdminService.DeleteTest:output_type -> kentik.synthetics.v202309.DeleteTestResponse
-	68,  // 112: kentik.synthetics.v202309.SyntheticsAdminService.SetTestStatus:output_type -> kentik.synthetics.v202309.SetTestStatusResponse
-	71,  // 113: kentik.synthetics.v202309.SyntheticsAdminService.CreateAgentAlert:output_type -> kentik.synthetics.v202309.CreateAgentAlertResponse
-	73,  // 114: kentik.synthetics.v202309.SyntheticsAdminService.UpdateAgentAlert:output_type -> kentik.synthetics.v202309.UpdateAgentAlertResponse
-	75,  // 115: kentik.synthetics.v202309.SyntheticsAdminService.GetAgentAlert:output_type -> kentik.synthetics.v202309.GetAgentAlertResponse
-	77,  // 116: kentik.synthetics.v202309.SyntheticsAdminService.ListAgentAlerts:output_type -> kentik.synthetics.v202309.ListAgentAlertsResponse
-	79,  // 117: kentik.synthetics.v202309.SyntheticsAdminService.DeleteAgentAlert:output_type -> kentik.synthetics.v202309.DeleteAgentAlertResponse
-	101, // [101:118] is the sub-list for method output_type
-	84,  // [84:101] is the sub-list for method input_type
-	84,  // [84:84] is the sub-list for extension type_name
-	84,  // [84:84] is the sub-list for extension extendee
-	0,   // [0:84] is the sub-list for field type_name
+	87,  // 60: kentik.synthetics.v202309.Path.time:type_name -> google.protobuf.Timestamp
+	87,  // 61: kentik.synthetics.v202309.GetResultsForTestsRequest.start_time:type_name -> google.protobuf.Timestamp
+	87,  // 62: kentik.synthetics.v202309.GetResultsForTestsRequest.end_time:type_name -> google.protobuf.Timestamp
+	87,  // 63: kentik.synthetics.v202309.GetResultsForTestsCsvRequest.start_time:type_name -> google.protobuf.Timestamp
+	87,  // 64: kentik.synthetics.v202309.GetResultsForTestsCsvRequest.end_time:type_name -> google.protobuf.Timestamp
+	38,  // 65: kentik.synthetics.v202309.GetResultsForTestsResponse.results:type_name -> kentik.synthetics.v202309.TestResults
+	87,  // 66: kentik.synthetics.v202309.GetTraceForTestRequest.start_time:type_name -> google.protobuf.Timestamp
+	87,  // 67: kentik.synthetics.v202309.GetTraceForTestRequest.end_time:type_name -> google.protobuf.Timestamp
+	86,  // 68: kentik.synthetics.v202309.GetTraceForTestResponse.nodes:type_name -> kentik.synthetics.v202309.GetTraceForTestResponse.NodesEntry
+	44,  // 69: kentik.synthetics.v202309.GetTraceForTestResponse.paths:type_name -> kentik.synthetics.v202309.Path
+	8,   // 70: kentik.synthetics.v202309.ListAgentsResponse.agents:type_name -> kentik.synthetics.v202309.Agent
+	8,   // 71: kentik.synthetics.v202309.GetAgentResponse.agent:type_name -> kentik.synthetics.v202309.Agent
+	8,   // 72: kentik.synthetics.v202309.UpdateAgentRequest.agent:type_name -> kentik.synthetics.v202309.Agent
+	8,   // 73: kentik.synthetics.v202309.UpdateAgentResponse.agent:type_name -> kentik.synthetics.v202309.Agent
+	10,  // 74: kentik.synthetics.v202309.ListTestsResponse.tests:type_name -> kentik.synthetics.v202309.Test
+	10,  // 75: kentik.synthetics.v202309.CreateTestRequest.test:type_name -> kentik.synthetics.v202309.Test
+	10,  // 76: kentik.synthetics.v202309.CreateTestResponse.test:type_name -> kentik.synthetics.v202309.Test
+	10,  // 77: kentik.synthetics.v202309.GetTestResponse.test:type_name -> kentik.synthetics.v202309.Test
+	10,  // 78: kentik.synthetics.v202309.UpdateTestRequest.test:type_name -> kentik.synthetics.v202309.Test
+	10,  // 79: kentik.synthetics.v202309.UpdateTestResponse.test:type_name -> kentik.synthetics.v202309.Test
+	2,   // 80: kentik.synthetics.v202309.SetTestStatusRequest.status:type_name -> kentik.synthetics.v202309.TestStatus
+	71,  // 81: kentik.synthetics.v202309.CreateAgentAlertResponse.agent_alert:type_name -> kentik.synthetics.v202309.AgentAlert
+	71,  // 82: kentik.synthetics.v202309.UpdateAgentAlertResponse.agent_alert:type_name -> kentik.synthetics.v202309.AgentAlert
+	71,  // 83: kentik.synthetics.v202309.GetAgentAlertResponse.agent_alert:type_name -> kentik.synthetics.v202309.AgentAlert
+	71,  // 84: kentik.synthetics.v202309.ListAgentAlertsResponse.agent_alerts:type_name -> kentik.synthetics.v202309.AgentAlert
+	41,  // 85: kentik.synthetics.v202309.GetTraceForTestResponse.NodesEntry.value:type_name -> kentik.synthetics.v202309.NetNode
+	45,  // 86: kentik.synthetics.v202309.SyntheticsDataService.GetResultsForTests:input_type -> kentik.synthetics.v202309.GetResultsForTestsRequest
+	46,  // 87: kentik.synthetics.v202309.SyntheticsDataService.GetResultsForTestsCsv:input_type -> kentik.synthetics.v202309.GetResultsForTestsCsvRequest
+	49,  // 88: kentik.synthetics.v202309.SyntheticsDataService.GetTraceForTest:input_type -> kentik.synthetics.v202309.GetTraceForTestRequest
+	51,  // 89: kentik.synthetics.v202309.SyntheticsAdminService.ListAgents:input_type -> kentik.synthetics.v202309.ListAgentsRequest
+	53,  // 90: kentik.synthetics.v202309.SyntheticsAdminService.GetAgent:input_type -> kentik.synthetics.v202309.GetAgentRequest
+	55,  // 91: kentik.synthetics.v202309.SyntheticsAdminService.UpdateAgent:input_type -> kentik.synthetics.v202309.UpdateAgentRequest
+	57,  // 92: kentik.synthetics.v202309.SyntheticsAdminService.DeleteAgent:input_type -> kentik.synthetics.v202309.DeleteAgentRequest
+	59,  // 93: kentik.synthetics.v202309.SyntheticsAdminService.ListTests:input_type -> kentik.synthetics.v202309.ListTestsRequest
+	61,  // 94: kentik.synthetics.v202309.SyntheticsAdminService.CreateTest:input_type -> kentik.synthetics.v202309.CreateTestRequest
+	63,  // 95: kentik.synthetics.v202309.SyntheticsAdminService.GetTest:input_type -> kentik.synthetics.v202309.GetTestRequest
+	65,  // 96: kentik.synthetics.v202309.SyntheticsAdminService.UpdateTest:input_type -> kentik.synthetics.v202309.UpdateTestRequest
+	67,  // 97: kentik.synthetics.v202309.SyntheticsAdminService.DeleteTest:input_type -> kentik.synthetics.v202309.DeleteTestRequest
+	69,  // 98: kentik.synthetics.v202309.SyntheticsAdminService.SetTestStatus:input_type -> kentik.synthetics.v202309.SetTestStatusRequest
+	72,  // 99: kentik.synthetics.v202309.SyntheticsAdminService.CreateAgentAlert:input_type -> kentik.synthetics.v202309.CreateAgentAlertRequest
+	74,  // 100: kentik.synthetics.v202309.SyntheticsAdminService.UpdateAgentAlert:input_type -> kentik.synthetics.v202309.UpdateAgentAlertRequest
+	76,  // 101: kentik.synthetics.v202309.SyntheticsAdminService.GetAgentAlert:input_type -> kentik.synthetics.v202309.GetAgentAlertRequest
+	78,  // 102: kentik.synthetics.v202309.SyntheticsAdminService.ListAgentAlerts:input_type -> kentik.synthetics.v202309.ListAgentAlertsRequest
+	80,  // 103: kentik.synthetics.v202309.SyntheticsAdminService.DeleteAgentAlert:input_type -> kentik.synthetics.v202309.DeleteAgentAlertRequest
+	48,  // 104: kentik.synthetics.v202309.SyntheticsDataService.GetResultsForTests:output_type -> kentik.synthetics.v202309.GetResultsForTestsResponse
+	47,  // 105: kentik.synthetics.v202309.SyntheticsDataService.GetResultsForTestsCsv:output_type -> kentik.synthetics.v202309.GetResultsForTestsCsvResponse
+	50,  // 106: kentik.synthetics.v202309.SyntheticsDataService.GetTraceForTest:output_type -> kentik.synthetics.v202309.GetTraceForTestResponse
+	52,  // 107: kentik.synthetics.v202309.SyntheticsAdminService.ListAgents:output_type -> kentik.synthetics.v202309.ListAgentsResponse
+	54,  // 108: kentik.synthetics.v202309.SyntheticsAdminService.GetAgent:output_type -> kentik.synthetics.v202309.GetAgentResponse
+	56,  // 109: kentik.synthetics.v202309.SyntheticsAdminService.UpdateAgent:output_type -> kentik.synthetics.v202309.UpdateAgentResponse
+	58,  // 110: kentik.synthetics.v202309.SyntheticsAdminService.DeleteAgent:output_type -> kentik.synthetics.v202309.DeleteAgentResponse
+	60,  // 111: kentik.synthetics.v202309.SyntheticsAdminService.ListTests:output_type -> kentik.synthetics.v202309.ListTestsResponse
+	62,  // 112: kentik.synthetics.v202309.SyntheticsAdminService.CreateTest:output_type -> kentik.synthetics.v202309.CreateTestResponse
+	64,  // 113: kentik.synthetics.v202309.SyntheticsAdminService.GetTest:output_type -> kentik.synthetics.v202309.GetTestResponse
+	66,  // 114: kentik.synthetics.v202309.SyntheticsAdminService.UpdateTest:output_type -> kentik.synthetics.v202309.UpdateTestResponse
+	68,  // 115: kentik.synthetics.v202309.SyntheticsAdminService.DeleteTest:output_type -> kentik.synthetics.v202309.DeleteTestResponse
+	70,  // 116: kentik.synthetics.v202309.SyntheticsAdminService.SetTestStatus:output_type -> kentik.synthetics.v202309.SetTestStatusResponse
+	73,  // 117: kentik.synthetics.v202309.SyntheticsAdminService.CreateAgentAlert:output_type -> kentik.synthetics.v202309.CreateAgentAlertResponse
+	75,  // 118: kentik.synthetics.v202309.SyntheticsAdminService.UpdateAgentAlert:output_type -> kentik.synthetics.v202309.UpdateAgentAlertResponse
+	77,  // 119: kentik.synthetics.v202309.SyntheticsAdminService.GetAgentAlert:output_type -> kentik.synthetics.v202309.GetAgentAlertResponse
+	79,  // 120: kentik.synthetics.v202309.SyntheticsAdminService.ListAgentAlerts:output_type -> kentik.synthetics.v202309.ListAgentAlertsResponse
+	81,  // 121: kentik.synthetics.v202309.SyntheticsAdminService.DeleteAgentAlert:output_type -> kentik.synthetics.v202309.DeleteAgentAlertResponse
+	104, // [104:122] is the sub-list for method output_type
+	86,  // [86:104] is the sub-list for method input_type
+	86,  // [86:86] is the sub-list for extension type_name
+	86,  // [86:86] is the sub-list for extension extendee
+	0,   // [0:86] is the sub-list for field type_name
 }
 
 func init() { file_kentik_synthetics_v202309_synthetics_proto_init() }
@@ -6419,7 +6565,7 @@ func file_kentik_synthetics_v202309_synthetics_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_kentik_synthetics_v202309_synthetics_proto_rawDesc), len(file_kentik_synthetics_v202309_synthetics_proto_rawDesc)),
 			NumEnums:      7,
-			NumMessages:   78,
+			NumMessages:   80,
 			NumExtensions: 0,
 			NumServices:   2,
 		},
