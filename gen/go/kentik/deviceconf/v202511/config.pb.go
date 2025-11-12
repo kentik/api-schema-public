@@ -204,6 +204,7 @@ type Snapshot struct {
 	DiffRevision  *Revision              `protobuf:"bytes,9,opt,name=diff_revision,json=diffRevision,proto3" json:"diff_revision,omitempty"`
 	FirstFetched  *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=first_fetched,json=firstFetched,proto3" json:"first_fetched,omitempty"`
 	CommitDetails *CommitDetails         `protobuf:"bytes,11,opt,name=commit_details,json=commitDetails,proto3" json:"commit_details,omitempty"`
+	Platform      DevicePlatform         `protobuf:"varint,12,opt,name=platform,proto3,enum=kentik.deviceconf.v202511.DevicePlatform" json:"platform,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -315,6 +316,13 @@ func (x *Snapshot) GetCommitDetails() *CommitDetails {
 	return nil
 }
 
+func (x *Snapshot) GetPlatform() DevicePlatform {
+	if x != nil {
+		return x.Platform
+	}
+	return DevicePlatform_DEVICE_PLATFORM_UNSPECIFIED
+}
+
 // Change represents a configuration change (i.e., a Snapshot where config_data is different from the previous revision).
 type ChangeEvent struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -396,7 +404,7 @@ var File_kentik_deviceconf_v202511_config_proto protoreflect.FileDescriptor
 
 const file_kentik_deviceconf_v202511_config_proto_rawDesc = "" +
 	"\n" +
-	"&kentik/deviceconf/v202511/config.proto\x12\x19kentik.deviceconf.v202511\x1a\x1fgoogle/protobuf/timestamp.proto\"Y\n" +
+	"&kentik/deviceconf/v202511/config.proto\x12\x19kentik.deviceconf.v202511\x1a\x1fgoogle/protobuf/timestamp.proto\x1a&kentik/deviceconf/v202511/device.proto\"Y\n" +
 	"\bRevision\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12=\n" +
 	"\flast_fetched\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\vlastFetched\"\x85\x01\n" +
@@ -404,7 +412,7 @@ const file_kentik_deviceconf_v202511_config_proto_rawDesc = "" +
 	"\x04time\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\x04time\x12\x12\n" +
 	"\x04user\x18\x02 \x01(\tR\x04user\x12\x16\n" +
 	"\x06method\x18\x03 \x01(\tR\x06method\x12\x18\n" +
-	"\acomment\x18\x04 \x01(\tR\acomment\"\x9d\x04\n" +
+	"\acomment\x18\x04 \x01(\tR\acomment\"\xe4\x04\n" +
 	"\bSnapshot\x12\x19\n" +
 	"\bagent_id\x18\x01 \x01(\tR\aagentId\x12\x1b\n" +
 	"\tdevice_id\x18\x02 \x01(\tR\bdeviceId\x12?\n" +
@@ -419,7 +427,8 @@ const file_kentik_deviceconf_v202511_config_proto_rawDesc = "" +
 	"\rdiff_revision\x18\t \x01(\v2#.kentik.deviceconf.v202511.RevisionR\fdiffRevision\x12?\n" +
 	"\rfirst_fetched\x18\n" +
 	" \x01(\v2\x1a.google.protobuf.TimestampR\ffirstFetched\x12O\n" +
-	"\x0ecommit_details\x18\v \x01(\v2(.kentik.deviceconf.v202511.CommitDetailsR\rcommitDetails\"\xf8\x01\n" +
+	"\x0ecommit_details\x18\v \x01(\v2(.kentik.deviceconf.v202511.CommitDetailsR\rcommitDetails\x12E\n" +
+	"\bplatform\x18\f \x01(\x0e2).kentik.deviceconf.v202511.DevicePlatformR\bplatform\"\xf8\x01\n" +
 	"\vChangeEvent\x12\x19\n" +
 	"\bagent_id\x18\x01 \x01(\tR\aagentId\x12\x1b\n" +
 	"\tdevice_id\x18\x02 \x01(\tR\bdeviceId\x12?\n" +
@@ -453,22 +462,24 @@ var file_kentik_deviceconf_v202511_config_proto_goTypes = []any{
 	(*Snapshot)(nil),              // 3: kentik.deviceconf.v202511.Snapshot
 	(*ChangeEvent)(nil),           // 4: kentik.deviceconf.v202511.ChangeEvent
 	(*timestamppb.Timestamp)(nil), // 5: google.protobuf.Timestamp
+	(DevicePlatform)(0),           // 6: kentik.deviceconf.v202511.DevicePlatform
 }
 var file_kentik_deviceconf_v202511_config_proto_depIdxs = []int32{
-	5, // 0: kentik.deviceconf.v202511.Revision.last_fetched:type_name -> google.protobuf.Timestamp
-	5, // 1: kentik.deviceconf.v202511.CommitDetails.time:type_name -> google.protobuf.Timestamp
-	1, // 2: kentik.deviceconf.v202511.Snapshot.revision:type_name -> kentik.deviceconf.v202511.Revision
-	0, // 3: kentik.deviceconf.v202511.Snapshot.encoding:type_name -> kentik.deviceconf.v202511.ConfigEncoding
-	1, // 4: kentik.deviceconf.v202511.Snapshot.diff_revision:type_name -> kentik.deviceconf.v202511.Revision
-	5, // 5: kentik.deviceconf.v202511.Snapshot.first_fetched:type_name -> google.protobuf.Timestamp
-	2, // 6: kentik.deviceconf.v202511.Snapshot.commit_details:type_name -> kentik.deviceconf.v202511.CommitDetails
-	1, // 7: kentik.deviceconf.v202511.ChangeEvent.revision:type_name -> kentik.deviceconf.v202511.Revision
-	2, // 8: kentik.deviceconf.v202511.ChangeEvent.commit_details:type_name -> kentik.deviceconf.v202511.CommitDetails
-	9, // [9:9] is the sub-list for method output_type
-	9, // [9:9] is the sub-list for method input_type
-	9, // [9:9] is the sub-list for extension type_name
-	9, // [9:9] is the sub-list for extension extendee
-	0, // [0:9] is the sub-list for field type_name
+	5,  // 0: kentik.deviceconf.v202511.Revision.last_fetched:type_name -> google.protobuf.Timestamp
+	5,  // 1: kentik.deviceconf.v202511.CommitDetails.time:type_name -> google.protobuf.Timestamp
+	1,  // 2: kentik.deviceconf.v202511.Snapshot.revision:type_name -> kentik.deviceconf.v202511.Revision
+	0,  // 3: kentik.deviceconf.v202511.Snapshot.encoding:type_name -> kentik.deviceconf.v202511.ConfigEncoding
+	1,  // 4: kentik.deviceconf.v202511.Snapshot.diff_revision:type_name -> kentik.deviceconf.v202511.Revision
+	5,  // 5: kentik.deviceconf.v202511.Snapshot.first_fetched:type_name -> google.protobuf.Timestamp
+	2,  // 6: kentik.deviceconf.v202511.Snapshot.commit_details:type_name -> kentik.deviceconf.v202511.CommitDetails
+	6,  // 7: kentik.deviceconf.v202511.Snapshot.platform:type_name -> kentik.deviceconf.v202511.DevicePlatform
+	1,  // 8: kentik.deviceconf.v202511.ChangeEvent.revision:type_name -> kentik.deviceconf.v202511.Revision
+	2,  // 9: kentik.deviceconf.v202511.ChangeEvent.commit_details:type_name -> kentik.deviceconf.v202511.CommitDetails
+	10, // [10:10] is the sub-list for method output_type
+	10, // [10:10] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_kentik_deviceconf_v202511_config_proto_init() }
@@ -476,6 +487,7 @@ func file_kentik_deviceconf_v202511_config_proto_init() {
 	if File_kentik_deviceconf_v202511_config_proto != nil {
 		return
 	}
+	file_kentik_deviceconf_v202511_device_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

@@ -15,6 +15,7 @@ PROTOBUF_C__BEGIN_DECLS
 #endif
 
 #include "google/protobuf/timestamp.pb-c.h"
+#include "kentik/deviceconf/v202511/device.pb-c.h"
 
 typedef struct Kentik__Deviceconf__V202511__Revision Kentik__Deviceconf__V202511__Revision;
 typedef struct Kentik__Deviceconf__V202511__CommitDetails Kentik__Deviceconf__V202511__CommitDetails;
@@ -83,10 +84,11 @@ struct  Kentik__Deviceconf__V202511__Snapshot
   Kentik__Deviceconf__V202511__Revision *diff_revision;
   Google__Protobuf__Timestamp *first_fetched;
   Kentik__Deviceconf__V202511__CommitDetails *commit_details;
+  Kentik__Deviceconf__V202511__DevicePlatform platform;
 };
 #define KENTIK__DEVICECONF__V202511__SNAPSHOT__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__deviceconf__v202511__snapshot__descriptor) \
-    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, 0, KENTIK__DEVICECONF__V202511__CONFIG_ENCODING__CONFIG_ENCODING_UNSPECIFIED, {0,NULL}, (char *)protobuf_c_empty_string, {0,NULL}, NULL, NULL, NULL }
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, 0, KENTIK__DEVICECONF__V202511__CONFIG_ENCODING__CONFIG_ENCODING_UNSPECIFIED, {0,NULL}, (char *)protobuf_c_empty_string, {0,NULL}, NULL, NULL, NULL, KENTIK__DEVICECONF__V202511__DEVICE_PLATFORM__DEVICE_PLATFORM_UNSPECIFIED }
 
 
 /*

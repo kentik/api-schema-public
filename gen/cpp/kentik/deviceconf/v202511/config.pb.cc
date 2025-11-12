@@ -113,7 +113,8 @@ inline constexpr Snapshot::Impl_::Impl_(
         first_fetched_{nullptr},
         commit_details_{nullptr},
         fetch_error_{false},
-        encoding_{static_cast< ::kentik::deviceconf::v202511::ConfigEncoding >(0)} {}
+        encoding_{static_cast< ::kentik::deviceconf::v202511::ConfigEncoding >(0)},
+        platform_{static_cast< ::kentik::deviceconf::v202511::DevicePlatform >(0)} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR Snapshot::Snapshot(::_pbi::ConstantInitialized)
@@ -223,6 +224,7 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::Snapshot, _impl_.diff_revision_),
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::Snapshot, _impl_.first_fetched_),
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::Snapshot, _impl_.commit_details_),
+        PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::Snapshot, _impl_.platform_),
         ~0u,
         ~0u,
         0,
@@ -234,6 +236,7 @@ const ::uint32_t
         1,
         2,
         3,
+        ~0u,
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::ChangeEvent, _impl_._has_bits_),
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::ChangeEvent, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -258,8 +261,8 @@ static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
         {0, 10, -1, sizeof(::kentik::deviceconf::v202511::Revision)},
         {12, 24, -1, sizeof(::kentik::deviceconf::v202511::CommitDetails)},
-        {28, 47, -1, sizeof(::kentik::deviceconf::v202511::Snapshot)},
-        {58, 71, -1, sizeof(::kentik::deviceconf::v202511::ChangeEvent)},
+        {28, 48, -1, sizeof(::kentik::deviceconf::v202511::Snapshot)},
+        {60, 73, -1, sizeof(::kentik::deviceconf::v202511::ChangeEvent)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::deviceconf::v202511::_Revision_default_instance_._instance,
@@ -271,13 +274,14 @@ const char descriptor_table_protodef_kentik_2fdeviceconf_2fv202511_2fconfig_2epr
     protodesc_cold) = {
     "\n&kentik/deviceconf/v202511/config.proto"
     "\022\031kentik.deviceconf.v202511\032\037google/prot"
-    "obuf/timestamp.proto\"Y\n\010Revision\022\016\n\002id\030\001"
+    "obuf/timestamp.proto\032&kentik/deviceconf/"
+    "v202511/device.proto\"Y\n\010Revision\022\016\n\002id\030\001"
     " \001(\tR\002id\022=\n\014last_fetched\030\002 \001(\0132\032.google."
     "protobuf.TimestampR\013lastFetched\"\205\001\n\rComm"
     "itDetails\022.\n\004time\030\001 \001(\0132\032.google.protobu"
     "f.TimestampR\004time\022\022\n\004user\030\002 \001(\tR\004user\022\026\n"
     "\006method\030\003 \001(\tR\006method\022\030\n\007comment\030\004 \001(\tR\007"
-    "comment\"\235\004\n\010Snapshot\022\031\n\010agent_id\030\001 \001(\tR\007"
+    "comment\"\344\004\n\010Snapshot\022\031\n\010agent_id\030\001 \001(\tR\007"
     "agentId\022\033\n\tdevice_id\030\002 \001(\tR\010deviceId\022\?\n\010"
     "revision\030\003 \001(\0132#.kentik.deviceconf.v2025"
     "11.RevisionR\010revision\022\037\n\013fetch_error\030\004 \001"
@@ -290,33 +294,36 @@ const char descriptor_table_protodef_kentik_2fdeviceconf_2fv202511_2fconfig_2epr
     "ision\022\?\n\rfirst_fetched\030\n \001(\0132\032.google.pr"
     "otobuf.TimestampR\014firstFetched\022O\n\016commit"
     "_details\030\013 \001(\0132(.kentik.deviceconf.v2025"
-    "11.CommitDetailsR\rcommitDetails\"\370\001\n\013Chan"
-    "geEvent\022\031\n\010agent_id\030\001 \001(\tR\007agentId\022\033\n\tde"
-    "vice_id\030\002 \001(\tR\010deviceId\022\?\n\010revision\030\003 \001("
-    "\0132#.kentik.deviceconf.v202511.RevisionR\010"
-    "revision\022\037\n\013fetch_error\030\004 \001(\010R\nfetchErro"
-    "r\022O\n\016commit_details\030\005 \001(\0132(.kentik.devic"
-    "econf.v202511.CommitDetailsR\rcommitDetai"
-    "ls*g\n\016ConfigEncoding\022\037\n\033CONFIG_ENCODING_"
-    "UNSPECIFIED\020\000\022\031\n\025CONFIG_ENCODING_PLAIN\020\001"
-    "\022\031\n\025CONFIG_ENCODING_BZIP2\020\002BQZOgithub.co"
-    "m/kentik/api-schema-public/gen/go/kentik"
-    "/deviceconf/v202511;deviceconfb\006proto3"
+    "11.CommitDetailsR\rcommitDetails\022E\n\010platf"
+    "orm\030\014 \001(\0162).kentik.deviceconf.v202511.De"
+    "vicePlatformR\010platform\"\370\001\n\013ChangeEvent\022\031"
+    "\n\010agent_id\030\001 \001(\tR\007agentId\022\033\n\tdevice_id\030\002"
+    " \001(\tR\010deviceId\022\?\n\010revision\030\003 \001(\0132#.kenti"
+    "k.deviceconf.v202511.RevisionR\010revision\022"
+    "\037\n\013fetch_error\030\004 \001(\010R\nfetchError\022O\n\016comm"
+    "it_details\030\005 \001(\0132(.kentik.deviceconf.v20"
+    "2511.CommitDetailsR\rcommitDetails*g\n\016Con"
+    "figEncoding\022\037\n\033CONFIG_ENCODING_UNSPECIFI"
+    "ED\020\000\022\031\n\025CONFIG_ENCODING_PLAIN\020\001\022\031\n\025CONFI"
+    "G_ENCODING_BZIP2\020\002BQZOgithub.com/kentik/"
+    "api-schema-public/gen/go/kentik/deviceco"
+    "nf/v202511;deviceconfb\006proto3"
 };
-static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fdeviceconf_2fv202511_2fconfig_2eproto_deps[1] =
+static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fdeviceconf_2fv202511_2fconfig_2eproto_deps[2] =
     {
         &::descriptor_table_google_2fprotobuf_2ftimestamp_2eproto,
+        &::descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice_2eproto,
 };
 static ::absl::once_flag descriptor_table_kentik_2fdeviceconf_2fv202511_2fconfig_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fdeviceconf_2fv202511_2fconfig_2eproto = {
     false,
     false,
-    1318,
+    1429,
     descriptor_table_protodef_kentik_2fdeviceconf_2fv202511_2fconfig_2eproto,
     "kentik/deviceconf/v202511/config.proto",
     &descriptor_table_kentik_2fdeviceconf_2fv202511_2fconfig_2eproto_once,
     descriptor_table_kentik_2fdeviceconf_2fv202511_2fconfig_2eproto_deps,
-    1,
+    2,
     4,
     schemas,
     file_default_instances,
@@ -1037,9 +1044,9 @@ Snapshot::Snapshot(
                offsetof(Impl_, fetch_error_),
            reinterpret_cast<const char *>(&from._impl_) +
                offsetof(Impl_, fetch_error_),
-           offsetof(Impl_, encoding_) -
+           offsetof(Impl_, platform_) -
                offsetof(Impl_, fetch_error_) +
-               sizeof(Impl_::encoding_));
+               sizeof(Impl_::platform_));
 
   // @@protoc_insertion_point(copy_constructor:kentik.deviceconf.v202511.Snapshot)
 }
@@ -1058,9 +1065,9 @@ inline void Snapshot::SharedCtor(::_pb::Arena* arena) {
   ::memset(reinterpret_cast<char *>(&_impl_) +
                offsetof(Impl_, revision_),
            0,
-           offsetof(Impl_, encoding_) -
+           offsetof(Impl_, platform_) -
                offsetof(Impl_, revision_) +
-               sizeof(Impl_::encoding_));
+               sizeof(Impl_::platform_));
 }
 Snapshot::~Snapshot() {
   // @@protoc_insertion_point(destructor:kentik.deviceconf.v202511.Snapshot)
@@ -1118,15 +1125,15 @@ const ::google::protobuf::internal::ClassData* Snapshot::GetClassData() const {
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<4, 11, 4, 74, 2> Snapshot::_table_ = {
+const ::_pbi::TcParseTable<4, 12, 4, 74, 2> Snapshot::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(Snapshot, _impl_._has_bits_),
     0, // no _extensions_
-    11, 120,  // max_field_number, fast_idx_mask
+    12, 120,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294965248,  // skipmap
+    4294963200,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    11,  // num_field_entries
+    12,  // num_field_entries
     4,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
@@ -1170,7 +1177,9 @@ const ::_pbi::TcParseTable<4, 11, 4, 74, 2> Snapshot::_table_ = {
     // .kentik.deviceconf.v202511.CommitDetails commit_details = 11 [json_name = "commitDetails"];
     {::_pbi::TcParser::FastMtS1,
      {90, 3, 3, PROTOBUF_FIELD_OFFSET(Snapshot, _impl_.commit_details_)}},
-    {::_pbi::TcParser::MiniParse, {}},
+    // .kentik.deviceconf.v202511.DevicePlatform platform = 12 [json_name = "platform"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(Snapshot, _impl_.platform_), 63>(),
+     {96, 63, 0, PROTOBUF_FIELD_OFFSET(Snapshot, _impl_.platform_)}},
     {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
@@ -1210,6 +1219,9 @@ const ::_pbi::TcParseTable<4, 11, 4, 74, 2> Snapshot::_table_ = {
     // .kentik.deviceconf.v202511.CommitDetails commit_details = 11 [json_name = "commitDetails"];
     {PROTOBUF_FIELD_OFFSET(Snapshot, _impl_.commit_details_), _Internal::kHasBitsOffset + 3, 3,
     (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // .kentik.deviceconf.v202511.DevicePlatform platform = 12 [json_name = "platform"];
+    {PROTOBUF_FIELD_OFFSET(Snapshot, _impl_.platform_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
   }}, {{
     {::_pbi::TcParser::GetTable<::kentik::deviceconf::v202511::Revision>()},
     {::_pbi::TcParser::GetTable<::kentik::deviceconf::v202511::Revision>()},
@@ -1256,8 +1268,8 @@ PROTOBUF_NOINLINE void Snapshot::Clear() {
     }
   }
   ::memset(&_impl_.fetch_error_, 0, static_cast<::size_t>(
-      reinterpret_cast<char*>(&_impl_.encoding_) -
-      reinterpret_cast<char*>(&_impl_.fetch_error_)) + sizeof(_impl_.encoding_));
+      reinterpret_cast<char*>(&_impl_.platform_) -
+      reinterpret_cast<char*>(&_impl_.fetch_error_)) + sizeof(_impl_.platform_));
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
@@ -1356,6 +1368,13 @@ PROTOBUF_NOINLINE void Snapshot::Clear() {
                 stream);
           }
 
+          // .kentik.deviceconf.v202511.DevicePlatform platform = 12 [json_name = "platform"];
+          if (this_._internal_platform() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteEnumToArray(
+                12, this_._internal_platform(), target);
+          }
+
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -1440,6 +1459,11 @@ PROTOBUF_NOINLINE void Snapshot::Clear() {
               total_size += 1 +
                             ::_pbi::WireFormatLite::EnumSize(this_._internal_encoding());
             }
+            // .kentik.deviceconf.v202511.DevicePlatform platform = 12 [json_name = "platform"];
+            if (this_._internal_platform() != 0) {
+              total_size += 1 +
+                            ::_pbi::WireFormatLite::EnumSize(this_._internal_platform());
+            }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
                                                      &this_._impl_._cached_size_);
@@ -1514,6 +1538,9 @@ void Snapshot::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google
   if (from._internal_encoding() != 0) {
     _this->_impl_.encoding_ = from._impl_.encoding_;
   }
+  if (from._internal_platform() != 0) {
+    _this->_impl_.platform_ = from._impl_.platform_;
+  }
   _this->_impl_._has_bits_[0] |= cached_has_bits;
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -1538,8 +1565,8 @@ void Snapshot::InternalSwap(Snapshot* PROTOBUF_RESTRICT other) {
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.digest_, &other->_impl_.digest_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.diff_data_, &other->_impl_.diff_data_, arena);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Snapshot, _impl_.encoding_)
-      + sizeof(Snapshot::_impl_.encoding_)
+      PROTOBUF_FIELD_OFFSET(Snapshot, _impl_.platform_)
+      + sizeof(Snapshot::_impl_.platform_)
       - PROTOBUF_FIELD_OFFSET(Snapshot, _impl_.revision_)>(
           reinterpret_cast<char*>(&_impl_.revision_),
           reinterpret_cast<char*>(&other->_impl_.revision_));

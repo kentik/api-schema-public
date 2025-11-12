@@ -31,6 +31,7 @@
 #include "google/protobuf/generated_enum_reflection.h"
 #include "google/protobuf/unknown_field_set.h"
 #include "google/protobuf/timestamp.pb.h"
+#include "kentik/deviceconf/v202511/device.pb.h"
 // @@protoc_insertion_point(includes)
 
 // Must be included last.
@@ -740,6 +741,7 @@ class Snapshot final : public ::google::protobuf::Message
     kCommitDetailsFieldNumber = 11,
     kFetchErrorFieldNumber = 4,
     kEncodingFieldNumber = 5,
+    kPlatformFieldNumber = 12,
   };
   // string agent_id = 1 [json_name = "agentId"];
   void clear_agent_id() ;
@@ -901,12 +903,22 @@ class Snapshot final : public ::google::protobuf::Message
   void _internal_set_encoding(::kentik::deviceconf::v202511::ConfigEncoding value);
 
   public:
+  // .kentik.deviceconf.v202511.DevicePlatform platform = 12 [json_name = "platform"];
+  void clear_platform() ;
+  ::kentik::deviceconf::v202511::DevicePlatform platform() const;
+  void set_platform(::kentik::deviceconf::v202511::DevicePlatform value);
+
+  private:
+  ::kentik::deviceconf::v202511::DevicePlatform _internal_platform() const;
+  void _internal_set_platform(::kentik::deviceconf::v202511::DevicePlatform value);
+
+  public:
   // @@protoc_insertion_point(class_scope:kentik.deviceconf.v202511.Snapshot)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      4, 11, 4,
+      4, 12, 4,
       74, 2>
       _table_;
 
@@ -937,6 +949,7 @@ class Snapshot final : public ::google::protobuf::Message
     ::kentik::deviceconf::v202511::CommitDetails* commit_details_;
     bool fetch_error_;
     int encoding_;
+    int platform_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -2263,6 +2276,28 @@ inline void Snapshot::set_allocated_commit_details(::kentik::deviceconf::v202511
 
   _impl_.commit_details_ = reinterpret_cast<::kentik::deviceconf::v202511::CommitDetails*>(value);
   // @@protoc_insertion_point(field_set_allocated:kentik.deviceconf.v202511.Snapshot.commit_details)
+}
+
+// .kentik.deviceconf.v202511.DevicePlatform platform = 12 [json_name = "platform"];
+inline void Snapshot::clear_platform() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.platform_ = 0;
+}
+inline ::kentik::deviceconf::v202511::DevicePlatform Snapshot::platform() const {
+  // @@protoc_insertion_point(field_get:kentik.deviceconf.v202511.Snapshot.platform)
+  return _internal_platform();
+}
+inline void Snapshot::set_platform(::kentik::deviceconf::v202511::DevicePlatform value) {
+  _internal_set_platform(value);
+  // @@protoc_insertion_point(field_set:kentik.deviceconf.v202511.Snapshot.platform)
+}
+inline ::kentik::deviceconf::v202511::DevicePlatform Snapshot::_internal_platform() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return static_cast<::kentik::deviceconf::v202511::DevicePlatform>(_impl_.platform_);
+}
+inline void Snapshot::_internal_set_platform(::kentik::deviceconf::v202511::DevicePlatform value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.platform_ = value;
 }
 
 // -------------------------------------------------------------------

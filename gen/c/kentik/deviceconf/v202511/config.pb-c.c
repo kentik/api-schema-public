@@ -315,7 +315,7 @@ const ProtobufCMessageDescriptor kentik__deviceconf__v202511__commit_details__de
   (ProtobufCMessageInit) kentik__deviceconf__v202511__commit_details__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__deviceconf__v202511__snapshot__field_descriptors[11] =
+static const ProtobufCFieldDescriptor kentik__deviceconf__v202511__snapshot__field_descriptors[12] =
 {
   {
     "agent_id",
@@ -449,6 +449,18 @@ static const ProtobufCFieldDescriptor kentik__deviceconf__v202511__snapshot__fie
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "platform",
+    12,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_ENUM,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Deviceconf__V202511__Snapshot, platform),
+    &kentik__deviceconf__v202511__device_platform__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__deviceconf__v202511__snapshot__field_indices_by_name[] = {
   0,   /* field[0] = agent_id */
@@ -461,12 +473,13 @@ static const unsigned kentik__deviceconf__v202511__snapshot__field_indices_by_na
   4,   /* field[4] = encoding */
   3,   /* field[3] = fetch_error */
   9,   /* field[9] = first_fetched */
+  11,   /* field[11] = platform */
   2,   /* field[2] = revision */
 };
 static const ProtobufCIntRange kentik__deviceconf__v202511__snapshot__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 11 }
+  { 0, 12 }
 };
 const ProtobufCMessageDescriptor kentik__deviceconf__v202511__snapshot__descriptor =
 {
@@ -476,7 +489,7 @@ const ProtobufCMessageDescriptor kentik__deviceconf__v202511__snapshot__descript
   "Kentik__Deviceconf__V202511__Snapshot",
   "kentik.deviceconf.v202511",
   sizeof(Kentik__Deviceconf__V202511__Snapshot),
-  11,
+  12,
   kentik__deviceconf__v202511__snapshot__field_descriptors,
   kentik__deviceconf__v202511__snapshot__field_indices_by_name,
   1,  kentik__deviceconf__v202511__snapshot__number_ranges,

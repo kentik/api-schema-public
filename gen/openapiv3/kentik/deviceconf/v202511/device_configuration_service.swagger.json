@@ -222,6 +222,9 @@
                     },
                     "commitDetails": {
                         "$ref": "#/components/schemas/v202511CommitDetails"
+                    },
+                    "platform": {
+                        "$ref": "#/components/schemas/v202511DevicePlatform"
                     }
                 }
             },

@@ -230,6 +230,9 @@
         },
         "commitDetails": {
           "$ref": "#/definitions/v202511CommitDetails"
+        },
+        "platform": {
+          "$ref": "#/definitions/v202511DevicePlatform"
         }
       }
     },
