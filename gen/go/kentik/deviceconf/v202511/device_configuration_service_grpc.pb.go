@@ -23,6 +23,7 @@ const (
 	DeviceConfigurationService_UpdateDeviceConfiguration_FullMethodName        = "/kentik.deviceconf.v202511.DeviceConfigurationService/UpdateDeviceConfiguration"
 	DeviceConfigurationService_GetDeviceConfiguration_FullMethodName           = "/kentik.deviceconf.v202511.DeviceConfigurationService/GetDeviceConfiguration"
 	DeviceConfigurationService_ListDeviceConfigurationRevisions_FullMethodName = "/kentik.deviceconf.v202511.DeviceConfigurationService/ListDeviceConfigurationRevisions"
+	DeviceConfigurationService_RequestDeviceConfigurationFetch_FullMethodName  = "/kentik.deviceconf.v202511.DeviceConfigurationService/RequestDeviceConfigurationFetch"
 )
 
 // DeviceConfigurationServiceClient is the client API for DeviceConfigurationService service.
@@ -75,6 +76,16 @@ type DeviceConfigurationServiceClient interface {
 	// - x-kt-cid (Company ID)
 	// - x-kt-did
 	ListDeviceConfigurationRevisions(ctx context.Context, in *ListDeviceConfigurationRevisionsRequest, opts ...grpc.CallOption) (*ListDeviceConfigurationRevisionsResponse, error)
+	// Request an immediate device configuration fetch.
+	// The actual fetch will be performed asynchronously.
+	//
+	// External clients MUST set the following gRPC metadata:
+	// - x-ch-auth-email
+	// - x-ch-auth-api-token
+	//
+	// Internal clients MUST set the following gRPC metadata:
+	// - x-kt-cid (Company ID)
+	RequestDeviceConfigurationFetch(ctx context.Context, in *RequestDeviceConfigurationFetchRequest, opts ...grpc.CallOption) (*RequestDeviceConfigurationFetchResponse, error)
 }
 
 type deviceConfigurationServiceClient struct {
@@ -119,6 +130,16 @@ func (c *deviceConfigurationServiceClient) ListDeviceConfigurationRevisions(ctx 
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListDeviceConfigurationRevisionsResponse)
 	err := c.cc.Invoke(ctx, DeviceConfigurationService_ListDeviceConfigurationRevisions_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *deviceConfigurationServiceClient) RequestDeviceConfigurationFetch(ctx context.Context, in *RequestDeviceConfigurationFetchRequest, opts ...grpc.CallOption) (*RequestDeviceConfigurationFetchResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RequestDeviceConfigurationFetchResponse)
+	err := c.cc.Invoke(ctx, DeviceConfigurationService_RequestDeviceConfigurationFetch_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -175,6 +196,16 @@ type DeviceConfigurationServiceServer interface {
 	// - x-kt-cid (Company ID)
 	// - x-kt-did
 	ListDeviceConfigurationRevisions(context.Context, *ListDeviceConfigurationRevisionsRequest) (*ListDeviceConfigurationRevisionsResponse, error)
+	// Request an immediate device configuration fetch.
+	// The actual fetch will be performed asynchronously.
+	//
+	// External clients MUST set the following gRPC metadata:
+	// - x-ch-auth-email
+	// - x-ch-auth-api-token
+	//
+	// Internal clients MUST set the following gRPC metadata:
+	// - x-kt-cid (Company ID)
+	RequestDeviceConfigurationFetch(context.Context, *RequestDeviceConfigurationFetchRequest) (*RequestDeviceConfigurationFetchResponse, error)
 }
 
 // UnimplementedDeviceConfigurationServiceServer should be embedded to have
@@ -195,6 +226,9 @@ func (UnimplementedDeviceConfigurationServiceServer) GetDeviceConfiguration(cont
 }
 func (UnimplementedDeviceConfigurationServiceServer) ListDeviceConfigurationRevisions(context.Context, *ListDeviceConfigurationRevisionsRequest) (*ListDeviceConfigurationRevisionsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListDeviceConfigurationRevisions not implemented")
+}
+func (UnimplementedDeviceConfigurationServiceServer) RequestDeviceConfigurationFetch(context.Context, *RequestDeviceConfigurationFetchRequest) (*RequestDeviceConfigurationFetchResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RequestDeviceConfigurationFetch not implemented")
 }
 func (UnimplementedDeviceConfigurationServiceServer) testEmbeddedByValue() {}
 
@@ -288,6 +322,24 @@ func _DeviceConfigurationService_ListDeviceConfigurationRevisions_Handler(srv in
 	return interceptor(ctx, in, info, handler)
 }
 
+func _DeviceConfigurationService_RequestDeviceConfigurationFetch_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RequestDeviceConfigurationFetchRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DeviceConfigurationServiceServer).RequestDeviceConfigurationFetch(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DeviceConfigurationService_RequestDeviceConfigurationFetch_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DeviceConfigurationServiceServer).RequestDeviceConfigurationFetch(ctx, req.(*RequestDeviceConfigurationFetchRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // DeviceConfigurationService_ServiceDesc is the grpc.ServiceDesc for DeviceConfigurationService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -310,6 +362,10 @@ var DeviceConfigurationService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListDeviceConfigurationRevisions",
 			Handler:    _DeviceConfigurationService_ListDeviceConfigurationRevisions_Handler,
+		},
+		{
+			MethodName: "RequestDeviceConfigurationFetch",
+			Handler:    _DeviceConfigurationService_RequestDeviceConfigurationFetch_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

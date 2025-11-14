@@ -75,6 +75,20 @@ service DeviceConfigurationService {
   rpc ListDeviceConfigurationRevisions(ListDeviceConfigurationRevisionsRequest) returns (ListDeviceConfigurationRevisionsResponse) {
     option (kentik.core.v202303.method_scope) = "deviceconf:read";
   }
+
+  // Request an immediate device configuration fetch.
+  // The actual fetch will be performed asynchronously.
+  //
+  // External clients MUST set the following gRPC metadata:
+  // - x-ch-auth-email
+  // - x-ch-auth-api-token
+  //
+  // Internal clients MUST set the following gRPC metadata:
+  // - x-kt-cid (Company ID)
+  //
+  rpc RequestDeviceConfigurationFetch(RequestDeviceConfigurationFetchRequest) returns (RequestDeviceConfigurationFetchResponse) {
+    option (kentik.core.v202303.method_scope) = "deviceconf:write";
+  }
 }
 
 message GetDeviceAssignmentsRequest {
@@ -117,4 +131,12 @@ message ListDeviceConfigurationRevisionsRequest {
 
 message ListDeviceConfigurationRevisionsResponse {
   repeated Revision revisions = 1;
+}
+
+message RequestDeviceConfigurationFetchRequest {
+  string device_id = 1;
+}
+
+message RequestDeviceConfigurationFetchResponse {
+
 }

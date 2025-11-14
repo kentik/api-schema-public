@@ -46,6 +46,51 @@ struct UpdateDeviceConfigurationResponseDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UpdateDeviceConfigurationResponseDefaultTypeInternal _UpdateDeviceConfigurationResponse_default_instance_;
               template <typename>
+PROTOBUF_CONSTEXPR RequestDeviceConfigurationFetchResponse::RequestDeviceConfigurationFetchResponse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::internal::ZeroFieldsBase(_class_data_.base()){}
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::internal::ZeroFieldsBase() {
+}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+struct RequestDeviceConfigurationFetchResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RequestDeviceConfigurationFetchResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RequestDeviceConfigurationFetchResponseDefaultTypeInternal() {}
+  union {
+    RequestDeviceConfigurationFetchResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RequestDeviceConfigurationFetchResponseDefaultTypeInternal _RequestDeviceConfigurationFetchResponse_default_instance_;
+
+inline constexpr RequestDeviceConfigurationFetchRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : device_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR RequestDeviceConfigurationFetchRequest::RequestDeviceConfigurationFetchRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct RequestDeviceConfigurationFetchRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RequestDeviceConfigurationFetchRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RequestDeviceConfigurationFetchRequestDefaultTypeInternal() {}
+  union {
+    RequestDeviceConfigurationFetchRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RequestDeviceConfigurationFetchRequestDefaultTypeInternal _RequestDeviceConfigurationFetchRequest_default_instance_;
+              template <typename>
 PROTOBUF_CONSTEXPR GetDeviceAssignmentsRequest::GetDeviceAssignmentsRequest(::_pbi::ConstantInitialized)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
     : ::google::protobuf::internal::ZeroFieldsBase(_class_data_.base()){}
@@ -310,6 +355,23 @@ const ::uint32_t
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::ListDeviceConfigurationRevisionsResponse, _impl_.revisions_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::RequestDeviceConfigurationFetchRequest, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::RequestDeviceConfigurationFetchRequest, _impl_.device_id_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::RequestDeviceConfigurationFetchResponse, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
 };
 
 static const ::_pbi::MigrationSchema
@@ -322,6 +384,8 @@ static const ::_pbi::MigrationSchema
         {49, 58, -1, sizeof(::kentik::deviceconf::v202511::GetDeviceConfigurationResponse)},
         {59, 69, -1, sizeof(::kentik::deviceconf::v202511::ListDeviceConfigurationRevisionsRequest)},
         {71, -1, -1, sizeof(::kentik::deviceconf::v202511::ListDeviceConfigurationRevisionsResponse)},
+        {80, -1, -1, sizeof(::kentik::deviceconf::v202511::RequestDeviceConfigurationFetchRequest)},
+        {89, -1, -1, sizeof(::kentik::deviceconf::v202511::RequestDeviceConfigurationFetchResponse)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::deviceconf::v202511::_GetDeviceAssignmentsRequest_default_instance_._instance,
@@ -332,6 +396,8 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::deviceconf::v202511::_GetDeviceConfigurationResponse_default_instance_._instance,
     &::kentik::deviceconf::v202511::_ListDeviceConfigurationRevisionsRequest_default_instance_._instance,
     &::kentik::deviceconf::v202511::_ListDeviceConfigurationRevisionsResponse_default_instance_._instance,
+    &::kentik::deviceconf::v202511::_RequestDeviceConfigurationFetchRequest_default_instance_._instance,
+    &::kentik::deviceconf::v202511::_RequestDeviceConfigurationFetchResponse_default_instance_._instance,
 };
 const char descriptor_table_protodef_kentik_2fdeviceconf_2fv202511_2fdevice_5fconfiguration_5fservice_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
@@ -360,28 +426,36 @@ const char descriptor_table_protodef_kentik_2fdeviceconf_2fv202511_2fdevice_5fco
     ".protobuf.TimestampR\tuntilTime\"m\n(ListDe"
     "viceConfigurationRevisionsResponse\022A\n\tre"
     "visions\030\001 \003(\0132#.kentik.deviceconf.v20251"
-    "1.RevisionR\trevisions2\354\005\n\032DeviceConfigur"
-    "ationService\022\234\001\n\024GetDeviceAssignments\0226."
-    "kentik.deviceconf.v202511.GetDeviceAssig"
-    "nmentsRequest\0327.kentik.deviceconf.v20251"
-    "1.GetDeviceAssignmentsResponse\"\023\362\327\002\017devi"
-    "ceconf:read\022\254\001\n\031UpdateDeviceConfiguratio"
-    "n\022;.kentik.deviceconf.v202511.UpdateDevi"
-    "ceConfigurationRequest\032<.kentik.deviceco"
-    "nf.v202511.UpdateDeviceConfigurationResp"
-    "onse\"\024\362\327\002\020deviceconf:write\022\242\001\n\026GetDevice"
-    "Configuration\0228.kentik.deviceconf.v20251"
-    "1.GetDeviceConfigurationRequest\0329.kentik"
-    ".deviceconf.v202511.GetDeviceConfigurati"
-    "onResponse\"\023\362\327\002\017deviceconf:read\022\300\001\n List"
-    "DeviceConfigurationRevisions\022B.kentik.de"
-    "viceconf.v202511.ListDeviceConfiguration"
-    "RevisionsRequest\032C.kentik.deviceconf.v20"
-    "2511.ListDeviceConfigurationRevisionsRes"
-    "ponse\"\023\362\327\002\017deviceconf:read\032\030\352\327\002\020deviceco"
-    "nf:admin\220\330\002\003BQZOgithub.com/kentik/api-sc"
-    "hema-public/gen/go/kentik/deviceconf/v20"
-    "2511;deviceconfb\006proto3"
+    "1.RevisionR\trevisions\"E\n&RequestDeviceCo"
+    "nfigurationFetchRequest\022\033\n\tdevice_id\030\001 \001"
+    "(\tR\010deviceId\")\n\'RequestDeviceConfigurati"
+    "onFetchResponse2\255\007\n\032DeviceConfigurationS"
+    "ervice\022\234\001\n\024GetDeviceAssignments\0226.kentik"
+    ".deviceconf.v202511.GetDeviceAssignments"
+    "Request\0327.kentik.deviceconf.v202511.GetD"
+    "eviceAssignmentsResponse\"\023\362\327\002\017deviceconf"
+    ":read\022\254\001\n\031UpdateDeviceConfiguration\022;.ke"
+    "ntik.deviceconf.v202511.UpdateDeviceConf"
+    "igurationRequest\032<.kentik.deviceconf.v20"
+    "2511.UpdateDeviceConfigurationResponse\"\024"
+    "\362\327\002\020deviceconf:write\022\242\001\n\026GetDeviceConfig"
+    "uration\0228.kentik.deviceconf.v202511.GetD"
+    "eviceConfigurationRequest\0329.kentik.devic"
+    "econf.v202511.GetDeviceConfigurationResp"
+    "onse\"\023\362\327\002\017deviceconf:read\022\300\001\n ListDevice"
+    "ConfigurationRevisions\022B.kentik.deviceco"
+    "nf.v202511.ListDeviceConfigurationRevisi"
+    "onsRequest\032C.kentik.deviceconf.v202511.L"
+    "istDeviceConfigurationRevisionsResponse\""
+    "\023\362\327\002\017deviceconf:read\022\276\001\n\037RequestDeviceCo"
+    "nfigurationFetch\022A.kentik.deviceconf.v20"
+    "2511.RequestDeviceConfigurationFetchRequ"
+    "est\032B.kentik.deviceconf.v202511.RequestD"
+    "eviceConfigurationFetchResponse\"\024\362\327\002\020dev"
+    "iceconf:write\032\030\352\327\002\020deviceconf:admin\220\330\002\003B"
+    "QZOgithub.com/kentik/api-schema-public/g"
+    "en/go/kentik/deviceconf/v202511;deviceco"
+    "nfb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice_5fconfiguration_5fservice_2eproto_deps[4] =
     {
@@ -394,13 +468,13 @@ static ::absl::once_flag descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice_5fconfiguration_5fservice_2eproto = {
     false,
     false,
-    1863,
+    2170,
     descriptor_table_protodef_kentik_2fdeviceconf_2fv202511_2fdevice_5fconfiguration_5fservice_2eproto,
     "kentik/deviceconf/v202511/device_configuration_service.proto",
     &descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice_5fconfiguration_5fservice_2eproto_once,
     descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice_5fconfiguration_5fservice_2eproto_deps,
     4,
-    8,
+    10,
     schemas,
     file_default_instances,
     TableStruct_kentik_2fdeviceconf_2fv202511_2fdevice_5fconfiguration_5fservice_2eproto::offsets,
@@ -2247,6 +2321,340 @@ void ListDeviceConfigurationRevisionsResponse::InternalSwap(ListDeviceConfigurat
 
 ::google::protobuf::Metadata ListDeviceConfigurationRevisionsResponse::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class RequestDeviceConfigurationFetchRequest::_Internal {
+ public:
+};
+
+RequestDeviceConfigurationFetchRequest::RequestDeviceConfigurationFetchRequest(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.deviceconf.v202511.RequestDeviceConfigurationFetchRequest)
+}
+inline PROTOBUF_NDEBUG_INLINE RequestDeviceConfigurationFetchRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::kentik::deviceconf::v202511::RequestDeviceConfigurationFetchRequest& from_msg)
+      : device_id_(arena, from.device_id_),
+        _cached_size_{0} {}
+
+RequestDeviceConfigurationFetchRequest::RequestDeviceConfigurationFetchRequest(
+    ::google::protobuf::Arena* arena,
+    const RequestDeviceConfigurationFetchRequest& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  RequestDeviceConfigurationFetchRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+
+  // @@protoc_insertion_point(copy_constructor:kentik.deviceconf.v202511.RequestDeviceConfigurationFetchRequest)
+}
+inline PROTOBUF_NDEBUG_INLINE RequestDeviceConfigurationFetchRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : device_id_(arena),
+        _cached_size_{0} {}
+
+inline void RequestDeviceConfigurationFetchRequest::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+}
+RequestDeviceConfigurationFetchRequest::~RequestDeviceConfigurationFetchRequest() {
+  // @@protoc_insertion_point(destructor:kentik.deviceconf.v202511.RequestDeviceConfigurationFetchRequest)
+  SharedDtor(*this);
+}
+inline void RequestDeviceConfigurationFetchRequest::SharedDtor(MessageLite& self) {
+  RequestDeviceConfigurationFetchRequest& this_ = static_cast<RequestDeviceConfigurationFetchRequest&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.device_id_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* RequestDeviceConfigurationFetchRequest::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) RequestDeviceConfigurationFetchRequest(arena);
+}
+constexpr auto RequestDeviceConfigurationFetchRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(RequestDeviceConfigurationFetchRequest),
+                                            alignof(RequestDeviceConfigurationFetchRequest));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull RequestDeviceConfigurationFetchRequest::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_RequestDeviceConfigurationFetchRequest_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &RequestDeviceConfigurationFetchRequest::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<RequestDeviceConfigurationFetchRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &RequestDeviceConfigurationFetchRequest::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<RequestDeviceConfigurationFetchRequest>(), &RequestDeviceConfigurationFetchRequest::ByteSizeLong,
+            &RequestDeviceConfigurationFetchRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(RequestDeviceConfigurationFetchRequest, _impl_._cached_size_),
+        false,
+    },
+    &RequestDeviceConfigurationFetchRequest::kDescriptorMethods,
+    &descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice_5fconfiguration_5fservice_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* RequestDeviceConfigurationFetchRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 0, 82, 2> RequestDeviceConfigurationFetchRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::deviceconf::v202511::RequestDeviceConfigurationFetchRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // string device_id = 1 [json_name = "deviceId"];
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(RequestDeviceConfigurationFetchRequest, _impl_.device_id_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string device_id = 1 [json_name = "deviceId"];
+    {PROTOBUF_FIELD_OFFSET(RequestDeviceConfigurationFetchRequest, _impl_.device_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\100\11\0\0\0\0\0\0"
+    "kentik.deviceconf.v202511.RequestDeviceConfigurationFetchRequest"
+    "device_id"
+  }},
+};
+
+PROTOBUF_NOINLINE void RequestDeviceConfigurationFetchRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.deviceconf.v202511.RequestDeviceConfigurationFetchRequest)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.device_id_.ClearToEmpty();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* RequestDeviceConfigurationFetchRequest::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const RequestDeviceConfigurationFetchRequest& this_ = static_cast<const RequestDeviceConfigurationFetchRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* RequestDeviceConfigurationFetchRequest::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const RequestDeviceConfigurationFetchRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:kentik.deviceconf.v202511.RequestDeviceConfigurationFetchRequest)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // string device_id = 1 [json_name = "deviceId"];
+          if (!this_._internal_device_id().empty()) {
+            const std::string& _s = this_._internal_device_id();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.deviceconf.v202511.RequestDeviceConfigurationFetchRequest.device_id");
+            target = stream->WriteStringMaybeAliased(1, _s, target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:kentik.deviceconf.v202511.RequestDeviceConfigurationFetchRequest)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t RequestDeviceConfigurationFetchRequest::ByteSizeLong(const MessageLite& base) {
+          const RequestDeviceConfigurationFetchRequest& this_ = static_cast<const RequestDeviceConfigurationFetchRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t RequestDeviceConfigurationFetchRequest::ByteSizeLong() const {
+          const RequestDeviceConfigurationFetchRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:kentik.deviceconf.v202511.RequestDeviceConfigurationFetchRequest)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+           {
+            // string device_id = 1 [json_name = "deviceId"];
+            if (!this_._internal_device_id().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_device_id());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void RequestDeviceConfigurationFetchRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<RequestDeviceConfigurationFetchRequest*>(&to_msg);
+  auto& from = static_cast<const RequestDeviceConfigurationFetchRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:kentik.deviceconf.v202511.RequestDeviceConfigurationFetchRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_device_id().empty()) {
+    _this->_internal_set_device_id(from._internal_device_id());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void RequestDeviceConfigurationFetchRequest::CopyFrom(const RequestDeviceConfigurationFetchRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.deviceconf.v202511.RequestDeviceConfigurationFetchRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void RequestDeviceConfigurationFetchRequest::InternalSwap(RequestDeviceConfigurationFetchRequest* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_id_, &other->_impl_.device_id_, arena);
+}
+
+::google::protobuf::Metadata RequestDeviceConfigurationFetchRequest::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class RequestDeviceConfigurationFetchResponse::_Internal {
+ public:
+};
+
+RequestDeviceConfigurationFetchResponse::RequestDeviceConfigurationFetchResponse(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(arena_constructor:kentik.deviceconf.v202511.RequestDeviceConfigurationFetchResponse)
+}
+RequestDeviceConfigurationFetchResponse::RequestDeviceConfigurationFetchResponse(
+    ::google::protobuf::Arena* arena,
+    const RequestDeviceConfigurationFetchResponse& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  RequestDeviceConfigurationFetchResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+
+  // @@protoc_insertion_point(copy_constructor:kentik.deviceconf.v202511.RequestDeviceConfigurationFetchResponse)
+}
+
+inline void* RequestDeviceConfigurationFetchResponse::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) RequestDeviceConfigurationFetchResponse(arena);
+}
+constexpr auto RequestDeviceConfigurationFetchResponse::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(RequestDeviceConfigurationFetchResponse),
+                                            alignof(RequestDeviceConfigurationFetchResponse));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull RequestDeviceConfigurationFetchResponse::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_RequestDeviceConfigurationFetchResponse_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &RequestDeviceConfigurationFetchResponse::MergeImpl,
+        ::google::protobuf::internal::ZeroFieldsBase::GetNewImpl<RequestDeviceConfigurationFetchResponse>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &RequestDeviceConfigurationFetchResponse::SharedDtor,
+        ::google::protobuf::internal::ZeroFieldsBase::GetClearImpl<RequestDeviceConfigurationFetchResponse>(), &RequestDeviceConfigurationFetchResponse::ByteSizeLong,
+            &RequestDeviceConfigurationFetchResponse::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(RequestDeviceConfigurationFetchResponse, _impl_._cached_size_),
+        false,
+    },
+    &RequestDeviceConfigurationFetchResponse::kDescriptorMethods,
+    &descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice_5fconfiguration_5fservice_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* RequestDeviceConfigurationFetchResponse::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 0, 0, 0, 2> RequestDeviceConfigurationFetchResponse::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    0, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967295,  // skipmap
+    offsetof(decltype(_table_), field_names),  // no field_entries
+    0,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::deviceconf::v202511::RequestDeviceConfigurationFetchResponse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }},
+  // no field_entries, or aux_entries
+  {{
+  }},
+};
+
+
+
+
+
+
+
+
+::google::protobuf::Metadata RequestDeviceConfigurationFetchResponse::GetMetadata() const {
+  return ::google::protobuf::internal::ZeroFieldsBase::GetMetadataImpl(GetClassData()->full());
 }
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v202511

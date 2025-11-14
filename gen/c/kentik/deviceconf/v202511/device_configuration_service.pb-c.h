@@ -27,6 +27,8 @@ typedef struct Kentik__Deviceconf__V202511__GetDeviceConfigurationRequest Kentik
 typedef struct Kentik__Deviceconf__V202511__GetDeviceConfigurationResponse Kentik__Deviceconf__V202511__GetDeviceConfigurationResponse;
 typedef struct Kentik__Deviceconf__V202511__ListDeviceConfigurationRevisionsRequest Kentik__Deviceconf__V202511__ListDeviceConfigurationRevisionsRequest;
 typedef struct Kentik__Deviceconf__V202511__ListDeviceConfigurationRevisionsResponse Kentik__Deviceconf__V202511__ListDeviceConfigurationRevisionsResponse;
+typedef struct Kentik__Deviceconf__V202511__RequestDeviceConfigurationFetchRequest Kentik__Deviceconf__V202511__RequestDeviceConfigurationFetchRequest;
+typedef struct Kentik__Deviceconf__V202511__RequestDeviceConfigurationFetchResponse Kentik__Deviceconf__V202511__RequestDeviceConfigurationFetchResponse;
 
 
 /* --- enums --- */
@@ -128,6 +130,25 @@ struct  Kentik__Deviceconf__V202511__ListDeviceConfigurationRevisionsResponse
 #define KENTIK__DEVICECONF__V202511__LIST_DEVICE_CONFIGURATION_REVISIONS_RESPONSE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__deviceconf__v202511__list_device_configuration_revisions_response__descriptor) \
     , 0,NULL }
+
+
+struct  Kentik__Deviceconf__V202511__RequestDeviceConfigurationFetchRequest
+{
+  ProtobufCMessage base;
+  char *device_id;
+};
+#define KENTIK__DEVICECONF__V202511__REQUEST_DEVICE_CONFIGURATION_FETCH_REQUEST__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__deviceconf__v202511__request_device_configuration_fetch_request__descriptor) \
+    , (char *)protobuf_c_empty_string }
+
+
+struct  Kentik__Deviceconf__V202511__RequestDeviceConfigurationFetchResponse
+{
+  ProtobufCMessage base;
+};
+#define KENTIK__DEVICECONF__V202511__REQUEST_DEVICE_CONFIGURATION_FETCH_RESPONSE__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__deviceconf__v202511__request_device_configuration_fetch_response__descriptor) \
+     }
 
 
 /* Kentik__Deviceconf__V202511__GetDeviceAssignmentsRequest methods */
@@ -282,6 +303,44 @@ Kentik__Deviceconf__V202511__ListDeviceConfigurationRevisionsResponse *
 void   kentik__deviceconf__v202511__list_device_configuration_revisions_response__free_unpacked
                      (Kentik__Deviceconf__V202511__ListDeviceConfigurationRevisionsResponse *message,
                       ProtobufCAllocator *allocator);
+/* Kentik__Deviceconf__V202511__RequestDeviceConfigurationFetchRequest methods */
+void   kentik__deviceconf__v202511__request_device_configuration_fetch_request__init
+                     (Kentik__Deviceconf__V202511__RequestDeviceConfigurationFetchRequest         *message);
+size_t kentik__deviceconf__v202511__request_device_configuration_fetch_request__get_packed_size
+                     (const Kentik__Deviceconf__V202511__RequestDeviceConfigurationFetchRequest   *message);
+size_t kentik__deviceconf__v202511__request_device_configuration_fetch_request__pack
+                     (const Kentik__Deviceconf__V202511__RequestDeviceConfigurationFetchRequest   *message,
+                      uint8_t             *out);
+size_t kentik__deviceconf__v202511__request_device_configuration_fetch_request__pack_to_buffer
+                     (const Kentik__Deviceconf__V202511__RequestDeviceConfigurationFetchRequest   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Deviceconf__V202511__RequestDeviceConfigurationFetchRequest *
+       kentik__deviceconf__v202511__request_device_configuration_fetch_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__deviceconf__v202511__request_device_configuration_fetch_request__free_unpacked
+                     (Kentik__Deviceconf__V202511__RequestDeviceConfigurationFetchRequest *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Deviceconf__V202511__RequestDeviceConfigurationFetchResponse methods */
+void   kentik__deviceconf__v202511__request_device_configuration_fetch_response__init
+                     (Kentik__Deviceconf__V202511__RequestDeviceConfigurationFetchResponse         *message);
+size_t kentik__deviceconf__v202511__request_device_configuration_fetch_response__get_packed_size
+                     (const Kentik__Deviceconf__V202511__RequestDeviceConfigurationFetchResponse   *message);
+size_t kentik__deviceconf__v202511__request_device_configuration_fetch_response__pack
+                     (const Kentik__Deviceconf__V202511__RequestDeviceConfigurationFetchResponse   *message,
+                      uint8_t             *out);
+size_t kentik__deviceconf__v202511__request_device_configuration_fetch_response__pack_to_buffer
+                     (const Kentik__Deviceconf__V202511__RequestDeviceConfigurationFetchResponse   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Deviceconf__V202511__RequestDeviceConfigurationFetchResponse *
+       kentik__deviceconf__v202511__request_device_configuration_fetch_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__deviceconf__v202511__request_device_configuration_fetch_response__free_unpacked
+                     (Kentik__Deviceconf__V202511__RequestDeviceConfigurationFetchResponse *message,
+                      ProtobufCAllocator *allocator);
 /* --- per-message closures --- */
 
 typedef void (*Kentik__Deviceconf__V202511__GetDeviceAssignmentsRequest_Closure)
@@ -308,6 +367,12 @@ typedef void (*Kentik__Deviceconf__V202511__ListDeviceConfigurationRevisionsRequ
 typedef void (*Kentik__Deviceconf__V202511__ListDeviceConfigurationRevisionsResponse_Closure)
                  (const Kentik__Deviceconf__V202511__ListDeviceConfigurationRevisionsResponse *message,
                   void *closure_data);
+typedef void (*Kentik__Deviceconf__V202511__RequestDeviceConfigurationFetchRequest_Closure)
+                 (const Kentik__Deviceconf__V202511__RequestDeviceConfigurationFetchRequest *message,
+                  void *closure_data);
+typedef void (*Kentik__Deviceconf__V202511__RequestDeviceConfigurationFetchResponse_Closure)
+                 (const Kentik__Deviceconf__V202511__RequestDeviceConfigurationFetchResponse *message,
+                  void *closure_data);
 
 /* --- services --- */
 
@@ -331,6 +396,10 @@ struct Kentik__Deviceconf__V202511__DeviceConfigurationService_Service
                                               const Kentik__Deviceconf__V202511__ListDeviceConfigurationRevisionsRequest *input,
                                               Kentik__Deviceconf__V202511__ListDeviceConfigurationRevisionsResponse_Closure closure,
                                               void *closure_data);
+  void (*request_device_configuration_fetch)(Kentik__Deviceconf__V202511__DeviceConfigurationService_Service *service,
+                                             const Kentik__Deviceconf__V202511__RequestDeviceConfigurationFetchRequest *input,
+                                             Kentik__Deviceconf__V202511__RequestDeviceConfigurationFetchResponse_Closure closure,
+                                             void *closure_data);
 };
 typedef void (*Kentik__Deviceconf__V202511__DeviceConfigurationService_ServiceDestroy)(Kentik__Deviceconf__V202511__DeviceConfigurationService_Service *);
 void kentik__deviceconf__v202511__device_configuration_service__init (Kentik__Deviceconf__V202511__DeviceConfigurationService_Service *service,
@@ -342,7 +411,8 @@ void kentik__deviceconf__v202511__device_configuration_service__init (Kentik__De
       function_prefix__ ## get_device_assignments,\
       function_prefix__ ## update_device_configuration,\
       function_prefix__ ## get_device_configuration,\
-      function_prefix__ ## list_device_configuration_revisions  }
+      function_prefix__ ## list_device_configuration_revisions,\
+      function_prefix__ ## request_device_configuration_fetch  }
 void kentik__deviceconf__v202511__device_configuration_service__get_device_assignments(ProtobufCService *service,
                                                                                        const Kentik__Deviceconf__V202511__GetDeviceAssignmentsRequest *input,
                                                                                        Kentik__Deviceconf__V202511__GetDeviceAssignmentsResponse_Closure closure,
@@ -359,6 +429,10 @@ void kentik__deviceconf__v202511__device_configuration_service__list_device_conf
                                                                                                     const Kentik__Deviceconf__V202511__ListDeviceConfigurationRevisionsRequest *input,
                                                                                                     Kentik__Deviceconf__V202511__ListDeviceConfigurationRevisionsResponse_Closure closure,
                                                                                                     void *closure_data);
+void kentik__deviceconf__v202511__device_configuration_service__request_device_configuration_fetch(ProtobufCService *service,
+                                                                                                   const Kentik__Deviceconf__V202511__RequestDeviceConfigurationFetchRequest *input,
+                                                                                                   Kentik__Deviceconf__V202511__RequestDeviceConfigurationFetchResponse_Closure closure,
+                                                                                                   void *closure_data);
 
 /* --- descriptors --- */
 
@@ -370,6 +444,8 @@ extern const ProtobufCMessageDescriptor kentik__deviceconf__v202511__get_device_
 extern const ProtobufCMessageDescriptor kentik__deviceconf__v202511__get_device_configuration_response__descriptor;
 extern const ProtobufCMessageDescriptor kentik__deviceconf__v202511__list_device_configuration_revisions_request__descriptor;
 extern const ProtobufCMessageDescriptor kentik__deviceconf__v202511__list_device_configuration_revisions_response__descriptor;
+extern const ProtobufCMessageDescriptor kentik__deviceconf__v202511__request_device_configuration_fetch_request__descriptor;
+extern const ProtobufCMessageDescriptor kentik__deviceconf__v202511__request_device_configuration_fetch_response__descriptor;
 extern const ProtobufCServiceDescriptor kentik__deviceconf__v202511__device_configuration_service__descriptor;
 
 PROTOBUF_C__END_DECLS

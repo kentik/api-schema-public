@@ -168,6 +168,9 @@
                     }
                 }
             },
+            "v202511RequestDeviceConfigurationFetchResponse": {
+                "type": "object"
+            },
             "v202511Revision": {
                 "type": "object",
                 "properties": {
