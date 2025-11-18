@@ -127,6 +127,9 @@ message GetDeviceConfigurationResponse {
 message ListDeviceConfigurationRevisionsRequest {
   google.protobuf.Timestamp from_time = 1;
   google.protobuf.Timestamp until_time = 2;
+  // Maximum number of revisions to return. Default is to return all.
+  // Revisions are returned in descending order (latest first).
+  int32 limit = 3;
 }
 
 message ListDeviceConfigurationRevisionsResponse {

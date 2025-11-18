@@ -293,9 +293,12 @@ func (x *GetDeviceConfigurationResponse) GetConfig() *Snapshot {
 
 // Fetch all device configuration revisions within the given time range.
 type ListDeviceConfigurationRevisionsRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	FromTime      *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=from_time,json=fromTime,proto3" json:"from_time,omitempty"`
-	UntilTime     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=until_time,json=untilTime,proto3" json:"until_time,omitempty"`
+	state     protoimpl.MessageState `protogen:"open.v1"`
+	FromTime  *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=from_time,json=fromTime,proto3" json:"from_time,omitempty"`
+	UntilTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=until_time,json=untilTime,proto3" json:"until_time,omitempty"`
+	// Maximum number of revisions to return. Default is to return all.
+	// Revisions are returned in descending order (latest first).
+	Limit         int32 `protobuf:"varint,3,opt,name=limit,proto3" json:"limit,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -342,6 +345,13 @@ func (x *ListDeviceConfigurationRevisionsRequest) GetUntilTime() *timestamppb.Ti
 		return x.UntilTime
 	}
 	return nil
+}
+
+func (x *ListDeviceConfigurationRevisionsRequest) GetLimit() int32 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
 }
 
 type ListDeviceConfigurationRevisionsResponse struct {
@@ -485,11 +495,12 @@ const file_kentik_deviceconf_v202511_device_configuration_service_proto_rawDesc 
 	"\brevision\x18\x02 \x01(\tR\brevision\x12!\n" +
 	"\fref_revision\x18\x03 \x01(\tR\vrefRevision\"]\n" +
 	"\x1eGetDeviceConfigurationResponse\x12;\n" +
-	"\x06config\x18\x01 \x01(\v2#.kentik.deviceconf.v202511.SnapshotR\x06config\"\x9d\x01\n" +
+	"\x06config\x18\x01 \x01(\v2#.kentik.deviceconf.v202511.SnapshotR\x06config\"\xb3\x01\n" +
 	"'ListDeviceConfigurationRevisionsRequest\x127\n" +
 	"\tfrom_time\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\bfromTime\x129\n" +
 	"\n" +
-	"until_time\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tuntilTime\"m\n" +
+	"until_time\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tuntilTime\x12\x14\n" +
+	"\x05limit\x18\x03 \x01(\x05R\x05limit\"m\n" +
 	"(ListDeviceConfigurationRevisionsResponse\x12A\n" +
 	"\trevisions\x18\x01 \x03(\v2#.kentik.deviceconf.v202511.RevisionR\trevisions\"E\n" +
 	"&RequestDeviceConfigurationFetchRequest\x12\x1b\n" +

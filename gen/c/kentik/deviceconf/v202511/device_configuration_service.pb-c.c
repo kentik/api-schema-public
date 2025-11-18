@@ -671,7 +671,7 @@ const ProtobufCMessageDescriptor kentik__deviceconf__v202511__get_device_configu
   (ProtobufCMessageInit) kentik__deviceconf__v202511__get_device_configuration_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__deviceconf__v202511__list_device_configuration_revisions_request__field_descriptors[2] =
+static const ProtobufCFieldDescriptor kentik__deviceconf__v202511__list_device_configuration_revisions_request__field_descriptors[3] =
 {
   {
     "from_time",
@@ -697,15 +697,28 @@ static const ProtobufCFieldDescriptor kentik__deviceconf__v202511__list_device_c
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "limit",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_INT32,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Deviceconf__V202511__ListDeviceConfigurationRevisionsRequest, limit),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__deviceconf__v202511__list_device_configuration_revisions_request__field_indices_by_name[] = {
   0,   /* field[0] = from_time */
+  2,   /* field[2] = limit */
   1,   /* field[1] = until_time */
 };
 static const ProtobufCIntRange kentik__deviceconf__v202511__list_device_configuration_revisions_request__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 2 }
+  { 0, 3 }
 };
 const ProtobufCMessageDescriptor kentik__deviceconf__v202511__list_device_configuration_revisions_request__descriptor =
 {
@@ -715,7 +728,7 @@ const ProtobufCMessageDescriptor kentik__deviceconf__v202511__list_device_config
   "Kentik__Deviceconf__V202511__ListDeviceConfigurationRevisionsRequest",
   "kentik.deviceconf.v202511",
   sizeof(Kentik__Deviceconf__V202511__ListDeviceConfigurationRevisionsRequest),
-  2,
+  3,
   kentik__deviceconf__v202511__list_device_configuration_revisions_request__field_descriptors,
   kentik__deviceconf__v202511__list_device_configuration_revisions_request__field_indices_by_name,
   1,  kentik__deviceconf__v202511__list_device_configuration_revisions_request__number_ranges,

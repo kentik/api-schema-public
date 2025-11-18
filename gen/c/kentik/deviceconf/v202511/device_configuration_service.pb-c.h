@@ -115,10 +115,15 @@ struct  Kentik__Deviceconf__V202511__ListDeviceConfigurationRevisionsRequest
   ProtobufCMessage base;
   Google__Protobuf__Timestamp *from_time;
   Google__Protobuf__Timestamp *until_time;
+  /*
+   * Maximum number of revisions to return. Default is to return all.
+   * Revisions are returned in descending order (latest first).
+   */
+  int32_t limit;
 };
 #define KENTIK__DEVICECONF__V202511__LIST_DEVICE_CONFIGURATION_REVISIONS_REQUEST__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__deviceconf__v202511__list_device_configuration_revisions_request__descriptor) \
-    , NULL, NULL }
+    , NULL, NULL, 0 }
 
 
 struct  Kentik__Deviceconf__V202511__ListDeviceConfigurationRevisionsResponse

@@ -885,6 +885,7 @@ class ListDeviceConfigurationRevisionsRequest final : public ::google::protobuf:
   enum : int {
     kFromTimeFieldNumber = 1,
     kUntilTimeFieldNumber = 2,
+    kLimitFieldNumber = 3,
   };
   // .google.protobuf.Timestamp from_time = 1 [json_name = "fromTime"];
   bool has_from_time() const;
@@ -916,12 +917,22 @@ class ListDeviceConfigurationRevisionsRequest final : public ::google::protobuf:
   ::google::protobuf::Timestamp* _internal_mutable_until_time();
 
   public:
+  // int32 limit = 3 [json_name = "limit"];
+  void clear_limit() ;
+  ::int32_t limit() const;
+  void set_limit(::int32_t value);
+
+  private:
+  ::int32_t _internal_limit() const;
+  void _internal_set_limit(::int32_t value);
+
+  public:
   // @@protoc_insertion_point(class_scope:kentik.deviceconf.v202511.ListDeviceConfigurationRevisionsRequest)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      1, 2, 2,
+      2, 3, 2,
       0, 2>
       _table_;
 
@@ -943,6 +954,7 @@ class ListDeviceConfigurationRevisionsRequest final : public ::google::protobuf:
     ::google::protobuf::internal::CachedSize _cached_size_;
     ::google::protobuf::Timestamp* from_time_;
     ::google::protobuf::Timestamp* until_time_;
+    ::int32_t limit_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -2601,6 +2613,28 @@ inline void ListDeviceConfigurationRevisionsRequest::set_allocated_until_time(::
 
   _impl_.until_time_ = reinterpret_cast<::google::protobuf::Timestamp*>(value);
   // @@protoc_insertion_point(field_set_allocated:kentik.deviceconf.v202511.ListDeviceConfigurationRevisionsRequest.until_time)
+}
+
+// int32 limit = 3 [json_name = "limit"];
+inline void ListDeviceConfigurationRevisionsRequest::clear_limit() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.limit_ = 0;
+}
+inline ::int32_t ListDeviceConfigurationRevisionsRequest::limit() const {
+  // @@protoc_insertion_point(field_get:kentik.deviceconf.v202511.ListDeviceConfigurationRevisionsRequest.limit)
+  return _internal_limit();
+}
+inline void ListDeviceConfigurationRevisionsRequest::set_limit(::int32_t value) {
+  _internal_set_limit(value);
+  // @@protoc_insertion_point(field_set:kentik.deviceconf.v202511.ListDeviceConfigurationRevisionsRequest.limit)
+}
+inline ::int32_t ListDeviceConfigurationRevisionsRequest::_internal_limit() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.limit_;
+}
+inline void ListDeviceConfigurationRevisionsRequest::_internal_set_limit(::int32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.limit_ = value;
 }
 
 // -------------------------------------------------------------------
