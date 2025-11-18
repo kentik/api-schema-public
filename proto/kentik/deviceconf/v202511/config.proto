@@ -16,6 +16,7 @@ enum ConfigEncoding {
 message Revision {
   string id = 1; // incremented for each different configuration fetched from the device
   google.protobuf.Timestamp last_fetched = 2;
+  google.protobuf.Timestamp first_fetched = 3;
 }
 
 message CommitDetails {
@@ -35,6 +36,7 @@ message Snapshot {
   string digest = 7; // SHA256 digest of config_data
   bytes diff_data = 8;
   Revision diff_revision = 9;
+  // Deprecated: use revision.first_fetched instead
   google.protobuf.Timestamp first_fetched = 10;
   CommitDetails commit_details = 11;
   DevicePlatform platform = 12;

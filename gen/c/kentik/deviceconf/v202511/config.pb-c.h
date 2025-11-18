@@ -42,10 +42,11 @@ struct  Kentik__Deviceconf__V202511__Revision
    */
   char *id;
   Google__Protobuf__Timestamp *last_fetched;
+  Google__Protobuf__Timestamp *first_fetched;
 };
 #define KENTIK__DEVICECONF__V202511__REVISION__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__deviceconf__v202511__revision__descriptor) \
-    , (char *)protobuf_c_empty_string, NULL }
+    , (char *)protobuf_c_empty_string, NULL, NULL }
 
 
 struct  Kentik__Deviceconf__V202511__CommitDetails
@@ -82,6 +83,9 @@ struct  Kentik__Deviceconf__V202511__Snapshot
   char *digest;
   ProtobufCBinaryData diff_data;
   Kentik__Deviceconf__V202511__Revision *diff_revision;
+  /*
+   * Deprecated: use revision.first_fetched instead
+   */
   Google__Protobuf__Timestamp *first_fetched;
   Kentik__Deviceconf__V202511__CommitDetails *commit_details;
   Kentik__Deviceconf__V202511__DevicePlatform platform;

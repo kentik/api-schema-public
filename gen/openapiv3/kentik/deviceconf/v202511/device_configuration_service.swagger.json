@@ -181,6 +181,10 @@
                     "lastFetched": {
                         "type": "string",
                         "format": "date-time"
+                    },
+                    "firstFetched": {
+                        "type": "string",
+                        "format": "date-time"
                     }
                 }
             },
@@ -221,7 +225,8 @@
                     },
                     "firstFetched": {
                         "type": "string",
-                        "format": "date-time"
+                        "format": "date-time",
+                        "title": "Deprecated: use revision.first_fetched instead"
                     },
                     "commitDetails": {
                         "$ref": "#/components/schemas/v202511CommitDetails"

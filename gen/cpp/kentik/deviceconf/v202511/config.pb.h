@@ -268,6 +268,7 @@ class Revision final : public ::google::protobuf::Message
   enum : int {
     kIdFieldNumber = 1,
     kLastFetchedFieldNumber = 2,
+    kFirstFetchedFieldNumber = 3,
   };
   // string id = 1 [json_name = "id"];
   void clear_id() ;
@@ -300,12 +301,27 @@ class Revision final : public ::google::protobuf::Message
   ::google::protobuf::Timestamp* _internal_mutable_last_fetched();
 
   public:
+  // .google.protobuf.Timestamp first_fetched = 3 [json_name = "firstFetched"];
+  bool has_first_fetched() const;
+  void clear_first_fetched() ;
+  const ::google::protobuf::Timestamp& first_fetched() const;
+  PROTOBUF_NODISCARD ::google::protobuf::Timestamp* release_first_fetched();
+  ::google::protobuf::Timestamp* mutable_first_fetched();
+  void set_allocated_first_fetched(::google::protobuf::Timestamp* value);
+  void unsafe_arena_set_allocated_first_fetched(::google::protobuf::Timestamp* value);
+  ::google::protobuf::Timestamp* unsafe_arena_release_first_fetched();
+
+  private:
+  const ::google::protobuf::Timestamp& _internal_first_fetched() const;
+  ::google::protobuf::Timestamp* _internal_mutable_first_fetched();
+
+  public:
   // @@protoc_insertion_point(class_scope:kentik.deviceconf.v202511.Revision)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      1, 2, 1,
+      2, 3, 2,
       45, 2>
       _table_;
 
@@ -327,6 +343,7 @@ class Revision final : public ::google::protobuf::Message
     ::google::protobuf::internal::CachedSize _cached_size_;
     ::google::protobuf::internal::ArenaStringPtr id_;
     ::google::protobuf::Timestamp* last_fetched_;
+    ::google::protobuf::Timestamp* first_fetched_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -1370,6 +1387,97 @@ inline void Revision::set_allocated_last_fetched(::google::protobuf::Timestamp* 
 
   _impl_.last_fetched_ = reinterpret_cast<::google::protobuf::Timestamp*>(value);
   // @@protoc_insertion_point(field_set_allocated:kentik.deviceconf.v202511.Revision.last_fetched)
+}
+
+// .google.protobuf.Timestamp first_fetched = 3 [json_name = "firstFetched"];
+inline bool Revision::has_first_fetched() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.first_fetched_ != nullptr);
+  return value;
+}
+inline const ::google::protobuf::Timestamp& Revision::_internal_first_fetched() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::google::protobuf::Timestamp* p = _impl_.first_fetched_;
+  return p != nullptr ? *p : reinterpret_cast<const ::google::protobuf::Timestamp&>(::google::protobuf::_Timestamp_default_instance_);
+}
+inline const ::google::protobuf::Timestamp& Revision::first_fetched() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.deviceconf.v202511.Revision.first_fetched)
+  return _internal_first_fetched();
+}
+inline void Revision::unsafe_arena_set_allocated_first_fetched(::google::protobuf::Timestamp* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.first_fetched_);
+  }
+  _impl_.first_fetched_ = reinterpret_cast<::google::protobuf::Timestamp*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.deviceconf.v202511.Revision.first_fetched)
+}
+inline ::google::protobuf::Timestamp* Revision::release_first_fetched() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  ::google::protobuf::Timestamp* released = _impl_.first_fetched_;
+  _impl_.first_fetched_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::google::protobuf::Timestamp* Revision::unsafe_arena_release_first_fetched() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.deviceconf.v202511.Revision.first_fetched)
+
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  ::google::protobuf::Timestamp* temp = _impl_.first_fetched_;
+  _impl_.first_fetched_ = nullptr;
+  return temp;
+}
+inline ::google::protobuf::Timestamp* Revision::_internal_mutable_first_fetched() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.first_fetched_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::google::protobuf::Timestamp>(GetArena());
+    _impl_.first_fetched_ = reinterpret_cast<::google::protobuf::Timestamp*>(p);
+  }
+  return _impl_.first_fetched_;
+}
+inline ::google::protobuf::Timestamp* Revision::mutable_first_fetched() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  ::google::protobuf::Timestamp* _msg = _internal_mutable_first_fetched();
+  // @@protoc_insertion_point(field_mutable:kentik.deviceconf.v202511.Revision.first_fetched)
+  return _msg;
+}
+inline void Revision::set_allocated_first_fetched(::google::protobuf::Timestamp* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.first_fetched_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::google::protobuf::MessageLite*>(value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+
+  _impl_.first_fetched_ = reinterpret_cast<::google::protobuf::Timestamp*>(value);
+  // @@protoc_insertion_point(field_set_allocated:kentik.deviceconf.v202511.Revision.first_fetched)
 }
 
 // -------------------------------------------------------------------

@@ -75,6 +75,7 @@ type Revision struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"` // incremented for each different configuration fetched from the device
 	LastFetched   *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=last_fetched,json=lastFetched,proto3" json:"last_fetched,omitempty"`
+	FirstFetched  *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=first_fetched,json=firstFetched,proto3" json:"first_fetched,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -119,6 +120,13 @@ func (x *Revision) GetId() string {
 func (x *Revision) GetLastFetched() *timestamppb.Timestamp {
 	if x != nil {
 		return x.LastFetched
+	}
+	return nil
+}
+
+func (x *Revision) GetFirstFetched() *timestamppb.Timestamp {
+	if x != nil {
+		return x.FirstFetched
 	}
 	return nil
 }
@@ -192,16 +200,17 @@ func (x *CommitDetails) GetComment() string {
 }
 
 type Snapshot struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	AgentId       string                 `protobuf:"bytes,1,opt,name=agent_id,json=agentId,proto3" json:"agent_id,omitempty"` // Agent that fetched the configuration
-	DeviceId      string                 `protobuf:"bytes,2,opt,name=device_id,json=deviceId,proto3" json:"device_id,omitempty"`
-	Revision      *Revision              `protobuf:"bytes,3,opt,name=revision,proto3" json:"revision,omitempty"`
-	FetchError    bool                   `protobuf:"varint,4,opt,name=fetch_error,json=fetchError,proto3" json:"fetch_error,omitempty"` // error message is in config_data if true
-	Encoding      ConfigEncoding         `protobuf:"varint,5,opt,name=encoding,proto3,enum=kentik.deviceconf.v202511.ConfigEncoding" json:"encoding,omitempty"`
-	ConfigData    []byte                 `protobuf:"bytes,6,opt,name=config_data,json=configData,proto3" json:"config_data,omitempty"`
-	Digest        string                 `protobuf:"bytes,7,opt,name=digest,proto3" json:"digest,omitempty"` // SHA256 digest of config_data
-	DiffData      []byte                 `protobuf:"bytes,8,opt,name=diff_data,json=diffData,proto3" json:"diff_data,omitempty"`
-	DiffRevision  *Revision              `protobuf:"bytes,9,opt,name=diff_revision,json=diffRevision,proto3" json:"diff_revision,omitempty"`
+	state        protoimpl.MessageState `protogen:"open.v1"`
+	AgentId      string                 `protobuf:"bytes,1,opt,name=agent_id,json=agentId,proto3" json:"agent_id,omitempty"` // Agent that fetched the configuration
+	DeviceId     string                 `protobuf:"bytes,2,opt,name=device_id,json=deviceId,proto3" json:"device_id,omitempty"`
+	Revision     *Revision              `protobuf:"bytes,3,opt,name=revision,proto3" json:"revision,omitempty"`
+	FetchError   bool                   `protobuf:"varint,4,opt,name=fetch_error,json=fetchError,proto3" json:"fetch_error,omitempty"` // error message is in config_data if true
+	Encoding     ConfigEncoding         `protobuf:"varint,5,opt,name=encoding,proto3,enum=kentik.deviceconf.v202511.ConfigEncoding" json:"encoding,omitempty"`
+	ConfigData   []byte                 `protobuf:"bytes,6,opt,name=config_data,json=configData,proto3" json:"config_data,omitempty"`
+	Digest       string                 `protobuf:"bytes,7,opt,name=digest,proto3" json:"digest,omitempty"` // SHA256 digest of config_data
+	DiffData     []byte                 `protobuf:"bytes,8,opt,name=diff_data,json=diffData,proto3" json:"diff_data,omitempty"`
+	DiffRevision *Revision              `protobuf:"bytes,9,opt,name=diff_revision,json=diffRevision,proto3" json:"diff_revision,omitempty"`
+	// Deprecated: use revision.first_fetched instead
 	FirstFetched  *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=first_fetched,json=firstFetched,proto3" json:"first_fetched,omitempty"`
 	CommitDetails *CommitDetails         `protobuf:"bytes,11,opt,name=commit_details,json=commitDetails,proto3" json:"commit_details,omitempty"`
 	Platform      DevicePlatform         `protobuf:"varint,12,opt,name=platform,proto3,enum=kentik.deviceconf.v202511.DevicePlatform" json:"platform,omitempty"`
@@ -404,10 +413,11 @@ var File_kentik_deviceconf_v202511_config_proto protoreflect.FileDescriptor
 
 const file_kentik_deviceconf_v202511_config_proto_rawDesc = "" +
 	"\n" +
-	"&kentik/deviceconf/v202511/config.proto\x12\x19kentik.deviceconf.v202511\x1a\x1fgoogle/protobuf/timestamp.proto\x1a&kentik/deviceconf/v202511/device.proto\"Y\n" +
+	"&kentik/deviceconf/v202511/config.proto\x12\x19kentik.deviceconf.v202511\x1a\x1fgoogle/protobuf/timestamp.proto\x1a&kentik/deviceconf/v202511/device.proto\"\x9a\x01\n" +
 	"\bRevision\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12=\n" +
-	"\flast_fetched\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\vlastFetched\"\x85\x01\n" +
+	"\flast_fetched\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\vlastFetched\x12?\n" +
+	"\rfirst_fetched\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\ffirstFetched\"\x85\x01\n" +
 	"\rCommitDetails\x12.\n" +
 	"\x04time\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\x04time\x12\x12\n" +
 	"\x04user\x18\x02 \x01(\tR\x04user\x12\x16\n" +
@@ -466,20 +476,21 @@ var file_kentik_deviceconf_v202511_config_proto_goTypes = []any{
 }
 var file_kentik_deviceconf_v202511_config_proto_depIdxs = []int32{
 	5,  // 0: kentik.deviceconf.v202511.Revision.last_fetched:type_name -> google.protobuf.Timestamp
-	5,  // 1: kentik.deviceconf.v202511.CommitDetails.time:type_name -> google.protobuf.Timestamp
-	1,  // 2: kentik.deviceconf.v202511.Snapshot.revision:type_name -> kentik.deviceconf.v202511.Revision
-	0,  // 3: kentik.deviceconf.v202511.Snapshot.encoding:type_name -> kentik.deviceconf.v202511.ConfigEncoding
-	1,  // 4: kentik.deviceconf.v202511.Snapshot.diff_revision:type_name -> kentik.deviceconf.v202511.Revision
-	5,  // 5: kentik.deviceconf.v202511.Snapshot.first_fetched:type_name -> google.protobuf.Timestamp
-	2,  // 6: kentik.deviceconf.v202511.Snapshot.commit_details:type_name -> kentik.deviceconf.v202511.CommitDetails
-	6,  // 7: kentik.deviceconf.v202511.Snapshot.platform:type_name -> kentik.deviceconf.v202511.DevicePlatform
-	1,  // 8: kentik.deviceconf.v202511.ChangeEvent.revision:type_name -> kentik.deviceconf.v202511.Revision
-	2,  // 9: kentik.deviceconf.v202511.ChangeEvent.commit_details:type_name -> kentik.deviceconf.v202511.CommitDetails
-	10, // [10:10] is the sub-list for method output_type
-	10, // [10:10] is the sub-list for method input_type
-	10, // [10:10] is the sub-list for extension type_name
-	10, // [10:10] is the sub-list for extension extendee
-	0,  // [0:10] is the sub-list for field type_name
+	5,  // 1: kentik.deviceconf.v202511.Revision.first_fetched:type_name -> google.protobuf.Timestamp
+	5,  // 2: kentik.deviceconf.v202511.CommitDetails.time:type_name -> google.protobuf.Timestamp
+	1,  // 3: kentik.deviceconf.v202511.Snapshot.revision:type_name -> kentik.deviceconf.v202511.Revision
+	0,  // 4: kentik.deviceconf.v202511.Snapshot.encoding:type_name -> kentik.deviceconf.v202511.ConfigEncoding
+	1,  // 5: kentik.deviceconf.v202511.Snapshot.diff_revision:type_name -> kentik.deviceconf.v202511.Revision
+	5,  // 6: kentik.deviceconf.v202511.Snapshot.first_fetched:type_name -> google.protobuf.Timestamp
+	2,  // 7: kentik.deviceconf.v202511.Snapshot.commit_details:type_name -> kentik.deviceconf.v202511.CommitDetails
+	6,  // 8: kentik.deviceconf.v202511.Snapshot.platform:type_name -> kentik.deviceconf.v202511.DevicePlatform
+	1,  // 9: kentik.deviceconf.v202511.ChangeEvent.revision:type_name -> kentik.deviceconf.v202511.Revision
+	2,  // 10: kentik.deviceconf.v202511.ChangeEvent.commit_details:type_name -> kentik.deviceconf.v202511.CommitDetails
+	11, // [11:11] is the sub-list for method output_type
+	11, // [11:11] is the sub-list for method input_type
+	11, // [11:11] is the sub-list for extension type_name
+	11, // [11:11] is the sub-list for extension extendee
+	0,  // [0:11] is the sub-list for field type_name
 }
 
 func init() { file_kentik_deviceconf_v202511_config_proto_init() }
