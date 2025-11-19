@@ -883,10 +883,27 @@ class ListDeviceConfigurationRevisionsRequest final : public ::google::protobuf:
 
   // accessors -------------------------------------------------------
   enum : int {
+    kDeviceIdFieldNumber = 4,
     kFromTimeFieldNumber = 1,
     kUntilTimeFieldNumber = 2,
     kLimitFieldNumber = 3,
   };
+  // string device_id = 4 [json_name = "deviceId"];
+  void clear_device_id() ;
+  const std::string& device_id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_device_id(Arg_&& arg, Args_... args);
+  std::string* mutable_device_id();
+  PROTOBUF_NODISCARD std::string* release_device_id();
+  void set_allocated_device_id(std::string* value);
+
+  private:
+  const std::string& _internal_device_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_device_id(
+      const std::string& value);
+  std::string* _internal_mutable_device_id();
+
+  public:
   // .google.protobuf.Timestamp from_time = 1 [json_name = "fromTime"];
   bool has_from_time() const;
   void clear_from_time() ;
@@ -932,8 +949,8 @@ class ListDeviceConfigurationRevisionsRequest final : public ::google::protobuf:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      2, 3, 2,
-      0, 2>
+      2, 4, 2,
+      83, 2>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -952,6 +969,7 @@ class ListDeviceConfigurationRevisionsRequest final : public ::google::protobuf:
                           const ListDeviceConfigurationRevisionsRequest& from_msg);
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::internal::ArenaStringPtr device_id_;
     ::google::protobuf::Timestamp* from_time_;
     ::google::protobuf::Timestamp* until_time_;
     ::int32_t limit_;
@@ -1110,6 +1128,7 @@ class GetDeviceConfigurationRequest final : public ::google::protobuf::Message
   enum : int {
     kRevisionFieldNumber = 2,
     kRefRevisionFieldNumber = 3,
+    kDeviceIdFieldNumber = 4,
     kFetchTimeFieldNumber = 1,
   };
   // string revision = 2 [json_name = "revision"];
@@ -1144,6 +1163,22 @@ class GetDeviceConfigurationRequest final : public ::google::protobuf::Message
   std::string* _internal_mutable_ref_revision();
 
   public:
+  // string device_id = 4 [json_name = "deviceId"];
+  void clear_device_id() ;
+  const std::string& device_id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_device_id(Arg_&& arg, Args_... args);
+  std::string* mutable_device_id();
+  PROTOBUF_NODISCARD std::string* release_device_id();
+  void set_allocated_device_id(std::string* value);
+
+  private:
+  const std::string& _internal_device_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_device_id(
+      const std::string& value);
+  std::string* _internal_mutable_device_id();
+
+  public:
   // .google.protobuf.Timestamp fetch_time = 1 [json_name = "fetchTime"];
   bool has_fetch_time() const;
   void clear_fetch_time() ;
@@ -1164,8 +1199,8 @@ class GetDeviceConfigurationRequest final : public ::google::protobuf::Message
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      2, 3, 1,
-      84, 2>
+      2, 4, 1,
+      93, 2>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -1186,6 +1221,7 @@ class GetDeviceConfigurationRequest final : public ::google::protobuf::Message
     ::google::protobuf::internal::CachedSize _cached_size_;
     ::google::protobuf::internal::ArenaStringPtr revision_;
     ::google::protobuf::internal::ArenaStringPtr ref_revision_;
+    ::google::protobuf::internal::ArenaStringPtr device_id_;
     ::google::protobuf::Timestamp* fetch_time_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -2334,6 +2370,54 @@ inline void GetDeviceConfigurationRequest::set_allocated_ref_revision(std::strin
   // @@protoc_insertion_point(field_set_allocated:kentik.deviceconf.v202511.GetDeviceConfigurationRequest.ref_revision)
 }
 
+// string device_id = 4 [json_name = "deviceId"];
+inline void GetDeviceConfigurationRequest::clear_device_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.device_id_.ClearToEmpty();
+}
+inline const std::string& GetDeviceConfigurationRequest::device_id() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.deviceconf.v202511.GetDeviceConfigurationRequest.device_id)
+  return _internal_device_id();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void GetDeviceConfigurationRequest::set_device_id(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.device_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.deviceconf.v202511.GetDeviceConfigurationRequest.device_id)
+}
+inline std::string* GetDeviceConfigurationRequest::mutable_device_id() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_device_id();
+  // @@protoc_insertion_point(field_mutable:kentik.deviceconf.v202511.GetDeviceConfigurationRequest.device_id)
+  return _s;
+}
+inline const std::string& GetDeviceConfigurationRequest::_internal_device_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.device_id_.Get();
+}
+inline void GetDeviceConfigurationRequest::_internal_set_device_id(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.device_id_.Set(value, GetArena());
+}
+inline std::string* GetDeviceConfigurationRequest::_internal_mutable_device_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.device_id_.Mutable( GetArena());
+}
+inline std::string* GetDeviceConfigurationRequest::release_device_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.deviceconf.v202511.GetDeviceConfigurationRequest.device_id)
+  return _impl_.device_id_.Release();
+}
+inline void GetDeviceConfigurationRequest::set_allocated_device_id(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.device_id_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.device_id_.IsDefault()) {
+    _impl_.device_id_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.deviceconf.v202511.GetDeviceConfigurationRequest.device_id)
+}
+
 // -------------------------------------------------------------------
 
 // GetDeviceConfigurationResponse
@@ -2635,6 +2719,54 @@ inline ::int32_t ListDeviceConfigurationRevisionsRequest::_internal_limit() cons
 inline void ListDeviceConfigurationRevisionsRequest::_internal_set_limit(::int32_t value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.limit_ = value;
+}
+
+// string device_id = 4 [json_name = "deviceId"];
+inline void ListDeviceConfigurationRevisionsRequest::clear_device_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.device_id_.ClearToEmpty();
+}
+inline const std::string& ListDeviceConfigurationRevisionsRequest::device_id() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.deviceconf.v202511.ListDeviceConfigurationRevisionsRequest.device_id)
+  return _internal_device_id();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void ListDeviceConfigurationRevisionsRequest::set_device_id(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.device_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.deviceconf.v202511.ListDeviceConfigurationRevisionsRequest.device_id)
+}
+inline std::string* ListDeviceConfigurationRevisionsRequest::mutable_device_id() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_device_id();
+  // @@protoc_insertion_point(field_mutable:kentik.deviceconf.v202511.ListDeviceConfigurationRevisionsRequest.device_id)
+  return _s;
+}
+inline const std::string& ListDeviceConfigurationRevisionsRequest::_internal_device_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.device_id_.Get();
+}
+inline void ListDeviceConfigurationRevisionsRequest::_internal_set_device_id(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.device_id_.Set(value, GetArena());
+}
+inline std::string* ListDeviceConfigurationRevisionsRequest::_internal_mutable_device_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.device_id_.Mutable( GetArena());
+}
+inline std::string* ListDeviceConfigurationRevisionsRequest::release_device_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.deviceconf.v202511.ListDeviceConfigurationRevisionsRequest.device_id)
+  return _impl_.device_id_.Release();
+}
+inline void ListDeviceConfigurationRevisionsRequest::set_allocated_device_id(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.device_id_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.device_id_.IsDefault()) {
+    _impl_.device_id_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.deviceconf.v202511.ListDeviceConfigurationRevisionsRequest.device_id)
 }
 
 // -------------------------------------------------------------------

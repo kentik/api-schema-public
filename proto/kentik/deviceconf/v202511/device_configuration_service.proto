@@ -51,11 +51,9 @@ service DeviceConfigurationService {
   // External clients MUST set the following gRPC metadata:
   // - x-ch-auth-email
   // - x-ch-auth-api-token
-  // - x-kt-did
   //
   // Internal clients MUST set the following gRPC metadata:
   // - x-kt-cid (Company ID)
-  // - x-kt-did
   //
   rpc GetDeviceConfiguration(GetDeviceConfigurationRequest) returns (GetDeviceConfigurationResponse) {
     option (kentik.core.v202303.method_scope) = "deviceconf:read";
@@ -66,11 +64,9 @@ service DeviceConfigurationService {
   // External clients MUST set the following gRPC metadata:
   // - x-ch-auth-email
   // - x-ch-auth-api-token
-  // - x-kt-did
   //
   // Internal clients MUST set the following gRPC metadata:
   // - x-kt-cid (Company ID)
-  // - x-kt-did
   //
   rpc ListDeviceConfigurationRevisions(ListDeviceConfigurationRevisionsRequest) returns (ListDeviceConfigurationRevisionsResponse) {
     option (kentik.core.v202303.method_scope) = "deviceconf:read";
@@ -117,6 +113,9 @@ message GetDeviceConfigurationRequest {
 
   // If set, compute the diff against the given revision ID.
   string ref_revision = 3;
+
+  // Device ID to get configuration for.
+  string device_id = 4;
 }
 
 message GetDeviceConfigurationResponse {
@@ -130,6 +129,8 @@ message ListDeviceConfigurationRevisionsRequest {
   // Maximum number of revisions to return. Default is to return all.
   // Revisions are returned in descending order (latest first).
   int32 limit = 3;
+  // Device ID to list revisions for. If not set, list revisions for all devices.
+  string device_id = 4;
 }
 
 message ListDeviceConfigurationRevisionsResponse {

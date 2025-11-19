@@ -191,7 +191,9 @@ type GetDeviceConfigurationRequest struct {
 	// If set, return the configuration with this revision ID.
 	Revision string `protobuf:"bytes,2,opt,name=revision,proto3" json:"revision,omitempty"`
 	// If set, compute the diff against the given revision ID.
-	RefRevision   string `protobuf:"bytes,3,opt,name=ref_revision,json=refRevision,proto3" json:"ref_revision,omitempty"`
+	RefRevision string `protobuf:"bytes,3,opt,name=ref_revision,json=refRevision,proto3" json:"ref_revision,omitempty"`
+	// Device ID to get configuration for.
+	DeviceId      string `protobuf:"bytes,4,opt,name=device_id,json=deviceId,proto3" json:"device_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -247,6 +249,13 @@ func (x *GetDeviceConfigurationRequest) GetRefRevision() string {
 	return ""
 }
 
+func (x *GetDeviceConfigurationRequest) GetDeviceId() string {
+	if x != nil {
+		return x.DeviceId
+	}
+	return ""
+}
+
 type GetDeviceConfigurationResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Config        *Snapshot              `protobuf:"bytes,1,opt,name=config,proto3" json:"config,omitempty"`
@@ -298,7 +307,9 @@ type ListDeviceConfigurationRevisionsRequest struct {
 	UntilTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=until_time,json=untilTime,proto3" json:"until_time,omitempty"`
 	// Maximum number of revisions to return. Default is to return all.
 	// Revisions are returned in descending order (latest first).
-	Limit         int32 `protobuf:"varint,3,opt,name=limit,proto3" json:"limit,omitempty"`
+	Limit int32 `protobuf:"varint,3,opt,name=limit,proto3" json:"limit,omitempty"`
+	// Device ID to list revisions for. If not set, list revisions for all devices.
+	DeviceId      string `protobuf:"bytes,4,opt,name=device_id,json=deviceId,proto3" json:"device_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -352,6 +363,13 @@ func (x *ListDeviceConfigurationRevisionsRequest) GetLimit() int32 {
 		return x.Limit
 	}
 	return 0
+}
+
+func (x *ListDeviceConfigurationRevisionsRequest) GetDeviceId() string {
+	if x != nil {
+		return x.DeviceId
+	}
+	return ""
 }
 
 type ListDeviceConfigurationRevisionsResponse struct {
@@ -488,19 +506,21 @@ const file_kentik_deviceconf_v202511_device_configuration_service_proto_rawDesc 
 	"\adevices\x18\x01 \x03(\v2!.kentik.deviceconf.v202511.DeviceR\adevices\"_\n" +
 	" UpdateDeviceConfigurationRequest\x12;\n" +
 	"\x06config\x18\x01 \x01(\v2#.kentik.deviceconf.v202511.SnapshotR\x06config\"#\n" +
-	"!UpdateDeviceConfigurationResponse\"\x99\x01\n" +
+	"!UpdateDeviceConfigurationResponse\"\xb6\x01\n" +
 	"\x1dGetDeviceConfigurationRequest\x129\n" +
 	"\n" +
 	"fetch_time\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\tfetchTime\x12\x1a\n" +
 	"\brevision\x18\x02 \x01(\tR\brevision\x12!\n" +
-	"\fref_revision\x18\x03 \x01(\tR\vrefRevision\"]\n" +
+	"\fref_revision\x18\x03 \x01(\tR\vrefRevision\x12\x1b\n" +
+	"\tdevice_id\x18\x04 \x01(\tR\bdeviceId\"]\n" +
 	"\x1eGetDeviceConfigurationResponse\x12;\n" +
-	"\x06config\x18\x01 \x01(\v2#.kentik.deviceconf.v202511.SnapshotR\x06config\"\xb3\x01\n" +
+	"\x06config\x18\x01 \x01(\v2#.kentik.deviceconf.v202511.SnapshotR\x06config\"\xd0\x01\n" +
 	"'ListDeviceConfigurationRevisionsRequest\x127\n" +
 	"\tfrom_time\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\bfromTime\x129\n" +
 	"\n" +
 	"until_time\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tuntilTime\x12\x14\n" +
-	"\x05limit\x18\x03 \x01(\x05R\x05limit\"m\n" +
+	"\x05limit\x18\x03 \x01(\x05R\x05limit\x12\x1b\n" +
+	"\tdevice_id\x18\x04 \x01(\tR\bdeviceId\"m\n" +
 	"(ListDeviceConfigurationRevisionsResponse\x12A\n" +
 	"\trevisions\x18\x01 \x03(\v2#.kentik.deviceconf.v202511.RevisionR\trevisions\"E\n" +
 	"&RequestDeviceConfigurationFetchRequest\x12\x1b\n" +

@@ -91,10 +91,14 @@ struct  Kentik__Deviceconf__V202511__GetDeviceConfigurationRequest
    * If set, compute the diff against the given revision ID.
    */
   char *ref_revision;
+  /*
+   * Device ID to get configuration for.
+   */
+  char *device_id;
 };
 #define KENTIK__DEVICECONF__V202511__GET_DEVICE_CONFIGURATION_REQUEST__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__deviceconf__v202511__get_device_configuration_request__descriptor) \
-    , NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
+    , NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
 
 
 struct  Kentik__Deviceconf__V202511__GetDeviceConfigurationResponse
@@ -120,10 +124,14 @@ struct  Kentik__Deviceconf__V202511__ListDeviceConfigurationRevisionsRequest
    * Revisions are returned in descending order (latest first).
    */
   int32_t limit;
+  /*
+   * Device ID to list revisions for. If not set, list revisions for all devices.
+   */
+  char *device_id;
 };
 #define KENTIK__DEVICECONF__V202511__LIST_DEVICE_CONFIGURATION_REVISIONS_REQUEST__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__deviceconf__v202511__list_device_configuration_revisions_request__descriptor) \
-    , NULL, NULL, 0 }
+    , NULL, NULL, 0, (char *)protobuf_c_empty_string }
 
 
 struct  Kentik__Deviceconf__V202511__ListDeviceConfigurationRevisionsResponse

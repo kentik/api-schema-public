@@ -187,7 +187,7 @@ void   kentik__deviceconf__v202511__change_event__free_unpacked
   assert(message->base.descriptor == &kentik__deviceconf__v202511__change_event__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-static const ProtobufCFieldDescriptor kentik__deviceconf__v202511__revision__field_descriptors[3] =
+static const ProtobufCFieldDescriptor kentik__deviceconf__v202511__revision__field_descriptors[4] =
 {
   {
     "id",
@@ -225,8 +225,21 @@ static const ProtobufCFieldDescriptor kentik__deviceconf__v202511__revision__fie
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "device_id",
+    4,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Deviceconf__V202511__Revision, device_id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__deviceconf__v202511__revision__field_indices_by_name[] = {
+  3,   /* field[3] = device_id */
   2,   /* field[2] = first_fetched */
   0,   /* field[0] = id */
   1,   /* field[1] = last_fetched */
@@ -234,7 +247,7 @@ static const unsigned kentik__deviceconf__v202511__revision__field_indices_by_na
 static const ProtobufCIntRange kentik__deviceconf__v202511__revision__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 3 }
+  { 0, 4 }
 };
 const ProtobufCMessageDescriptor kentik__deviceconf__v202511__revision__descriptor =
 {
@@ -244,7 +257,7 @@ const ProtobufCMessageDescriptor kentik__deviceconf__v202511__revision__descript
   "Kentik__Deviceconf__V202511__Revision",
   "kentik.deviceconf.v202511",
   sizeof(Kentik__Deviceconf__V202511__Revision),
-  3,
+  4,
   kentik__deviceconf__v202511__revision__field_descriptors,
   kentik__deviceconf__v202511__revision__field_indices_by_name,
   1,  kentik__deviceconf__v202511__revision__number_ranges,

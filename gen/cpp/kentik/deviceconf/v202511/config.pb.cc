@@ -34,6 +34,9 @@ inline constexpr Revision::Impl_::Impl_(
         id_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
+        device_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
         last_fetched_{nullptr},
         first_fetched_{nullptr} {}
 
@@ -189,9 +192,11 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::Revision, _impl_.id_),
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::Revision, _impl_.last_fetched_),
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::Revision, _impl_.first_fetched_),
+        PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::Revision, _impl_.device_id_),
         ~0u,
         0,
         1,
+        ~0u,
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::CommitDetails, _impl_._has_bits_),
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::CommitDetails, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -262,10 +267,10 @@ const ::uint32_t
 
 static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-        {0, 11, -1, sizeof(::kentik::deviceconf::v202511::Revision)},
-        {14, 26, -1, sizeof(::kentik::deviceconf::v202511::CommitDetails)},
-        {30, 50, -1, sizeof(::kentik::deviceconf::v202511::Snapshot)},
-        {62, 75, -1, sizeof(::kentik::deviceconf::v202511::ChangeEvent)},
+        {0, 12, -1, sizeof(::kentik::deviceconf::v202511::Revision)},
+        {16, 28, -1, sizeof(::kentik::deviceconf::v202511::CommitDetails)},
+        {32, 52, -1, sizeof(::kentik::deviceconf::v202511::Snapshot)},
+        {64, 77, -1, sizeof(::kentik::deviceconf::v202511::ChangeEvent)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::deviceconf::v202511::_Revision_default_instance_._instance,
@@ -278,41 +283,42 @@ const char descriptor_table_protodef_kentik_2fdeviceconf_2fv202511_2fconfig_2epr
     "\n&kentik/deviceconf/v202511/config.proto"
     "\022\031kentik.deviceconf.v202511\032\037google/prot"
     "obuf/timestamp.proto\032&kentik/deviceconf/"
-    "v202511/device.proto\"\232\001\n\010Revision\022\016\n\002id\030"
+    "v202511/device.proto\"\267\001\n\010Revision\022\016\n\002id\030"
     "\001 \001(\tR\002id\022=\n\014last_fetched\030\002 \001(\0132\032.google"
     ".protobuf.TimestampR\013lastFetched\022\?\n\rfirs"
     "t_fetched\030\003 \001(\0132\032.google.protobuf.Timest"
-    "ampR\014firstFetched\"\205\001\n\rCommitDetails\022.\n\004t"
-    "ime\030\001 \001(\0132\032.google.protobuf.TimestampR\004t"
-    "ime\022\022\n\004user\030\002 \001(\tR\004user\022\026\n\006method\030\003 \001(\tR"
-    "\006method\022\030\n\007comment\030\004 \001(\tR\007comment\"\344\004\n\010Sn"
-    "apshot\022\031\n\010agent_id\030\001 \001(\tR\007agentId\022\033\n\tdev"
-    "ice_id\030\002 \001(\tR\010deviceId\022\?\n\010revision\030\003 \001(\013"
-    "2#.kentik.deviceconf.v202511.RevisionR\010r"
-    "evision\022\037\n\013fetch_error\030\004 \001(\010R\nfetchError"
-    "\022E\n\010encoding\030\005 \001(\0162).kentik.deviceconf.v"
-    "202511.ConfigEncodingR\010encoding\022\037\n\013confi"
-    "g_data\030\006 \001(\014R\nconfigData\022\026\n\006digest\030\007 \001(\t"
-    "R\006digest\022\033\n\tdiff_data\030\010 \001(\014R\010diffData\022H\n"
-    "\rdiff_revision\030\t \001(\0132#.kentik.deviceconf"
-    ".v202511.RevisionR\014diffRevision\022\?\n\rfirst"
-    "_fetched\030\n \001(\0132\032.google.protobuf.Timesta"
-    "mpR\014firstFetched\022O\n\016commit_details\030\013 \001(\013"
-    "2(.kentik.deviceconf.v202511.CommitDetai"
-    "lsR\rcommitDetails\022E\n\010platform\030\014 \001(\0162).ke"
-    "ntik.deviceconf.v202511.DevicePlatformR\010"
-    "platform\"\370\001\n\013ChangeEvent\022\031\n\010agent_id\030\001 \001"
-    "(\tR\007agentId\022\033\n\tdevice_id\030\002 \001(\tR\010deviceId"
-    "\022\?\n\010revision\030\003 \001(\0132#.kentik.deviceconf.v"
-    "202511.RevisionR\010revision\022\037\n\013fetch_error"
-    "\030\004 \001(\010R\nfetchError\022O\n\016commit_details\030\005 \001"
-    "(\0132(.kentik.deviceconf.v202511.CommitDet"
-    "ailsR\rcommitDetails*g\n\016ConfigEncoding\022\037\n"
-    "\033CONFIG_ENCODING_UNSPECIFIED\020\000\022\031\n\025CONFIG"
-    "_ENCODING_PLAIN\020\001\022\031\n\025CONFIG_ENCODING_BZI"
-    "P2\020\002BQZOgithub.com/kentik/api-schema-pub"
-    "lic/gen/go/kentik/deviceconf/v202511;dev"
-    "iceconfb\006proto3"
+    "ampR\014firstFetched\022\033\n\tdevice_id\030\004 \001(\tR\010de"
+    "viceId\"\205\001\n\rCommitDetails\022.\n\004time\030\001 \001(\0132\032"
+    ".google.protobuf.TimestampR\004time\022\022\n\004user"
+    "\030\002 \001(\tR\004user\022\026\n\006method\030\003 \001(\tR\006method\022\030\n\007"
+    "comment\030\004 \001(\tR\007comment\"\344\004\n\010Snapshot\022\031\n\010a"
+    "gent_id\030\001 \001(\tR\007agentId\022\033\n\tdevice_id\030\002 \001("
+    "\tR\010deviceId\022\?\n\010revision\030\003 \001(\0132#.kentik.d"
+    "eviceconf.v202511.RevisionR\010revision\022\037\n\013"
+    "fetch_error\030\004 \001(\010R\nfetchError\022E\n\010encodin"
+    "g\030\005 \001(\0162).kentik.deviceconf.v202511.Conf"
+    "igEncodingR\010encoding\022\037\n\013config_data\030\006 \001("
+    "\014R\nconfigData\022\026\n\006digest\030\007 \001(\tR\006digest\022\033\n"
+    "\tdiff_data\030\010 \001(\014R\010diffData\022H\n\rdiff_revis"
+    "ion\030\t \001(\0132#.kentik.deviceconf.v202511.Re"
+    "visionR\014diffRevision\022\?\n\rfirst_fetched\030\n "
+    "\001(\0132\032.google.protobuf.TimestampR\014firstFe"
+    "tched\022O\n\016commit_details\030\013 \001(\0132(.kentik.d"
+    "eviceconf.v202511.CommitDetailsR\rcommitD"
+    "etails\022E\n\010platform\030\014 \001(\0162).kentik.device"
+    "conf.v202511.DevicePlatformR\010platform\"\370\001"
+    "\n\013ChangeEvent\022\031\n\010agent_id\030\001 \001(\tR\007agentId"
+    "\022\033\n\tdevice_id\030\002 \001(\tR\010deviceId\022\?\n\010revisio"
+    "n\030\003 \001(\0132#.kentik.deviceconf.v202511.Revi"
+    "sionR\010revision\022\037\n\013fetch_error\030\004 \001(\010R\nfet"
+    "chError\022O\n\016commit_details\030\005 \001(\0132(.kentik"
+    ".deviceconf.v202511.CommitDetailsR\rcommi"
+    "tDetails*g\n\016ConfigEncoding\022\037\n\033CONFIG_ENC"
+    "ODING_UNSPECIFIED\020\000\022\031\n\025CONFIG_ENCODING_P"
+    "LAIN\020\001\022\031\n\025CONFIG_ENCODING_BZIP2\020\002BQZOgit"
+    "hub.com/kentik/api-schema-public/gen/go/"
+    "kentik/deviceconf/v202511;deviceconfb\006pr"
+    "oto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fdeviceconf_2fv202511_2fconfig_2eproto_deps[2] =
     {
@@ -323,7 +329,7 @@ static ::absl::once_flag descriptor_table_kentik_2fdeviceconf_2fv202511_2fconfig
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fdeviceconf_2fv202511_2fconfig_2eproto = {
     false,
     false,
-    1495,
+    1524,
     descriptor_table_protodef_kentik_2fdeviceconf_2fv202511_2fconfig_2eproto,
     "kentik/deviceconf/v202511/config.proto",
     &descriptor_table_kentik_2fdeviceconf_2fv202511_2fconfig_2eproto_once,
@@ -382,7 +388,8 @@ inline PROTOBUF_NDEBUG_INLINE Revision::Impl_::Impl_(
     const Impl_& from, const ::kentik::deviceconf::v202511::Revision& from_msg)
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
-        id_(arena, from.id_) {}
+        id_(arena, from.id_),
+        device_id_(arena, from.device_id_) {}
 
 Revision::Revision(
     ::google::protobuf::Arena* arena,
@@ -411,7 +418,8 @@ inline PROTOBUF_NDEBUG_INLINE Revision::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
       : _cached_size_{0},
-        id_(arena) {}
+        id_(arena),
+        device_id_(arena) {}
 
 inline void Revision::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
@@ -431,6 +439,7 @@ inline void Revision::SharedDtor(MessageLite& self) {
   this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   ABSL_DCHECK(this_.GetArena() == nullptr);
   this_._impl_.id_.Destroy();
+  this_._impl_.device_id_.Destroy();
   delete this_._impl_.last_fetched_;
   delete this_._impl_.first_fetched_;
   this_._impl_.~Impl_();
@@ -472,15 +481,15 @@ const ::google::protobuf::internal::ClassData* Revision::GetClassData() const {
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 3, 2, 45, 2> Revision::_table_ = {
+const ::_pbi::TcParseTable<2, 4, 2, 54, 2> Revision::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(Revision, _impl_._has_bits_),
     0, // no _extensions_
-    3, 24,  // max_field_number, fast_idx_mask
+    4, 24,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967288,  // skipmap
+    4294967280,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    3,  // num_field_entries
+    4,  // num_field_entries
     2,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
@@ -490,7 +499,9 @@ const ::_pbi::TcParseTable<2, 3, 2, 45, 2> Revision::_table_ = {
     ::_pbi::TcParser::GetTable<::kentik::deviceconf::v202511::Revision>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    {::_pbi::TcParser::MiniParse, {}},
+    // string device_id = 4 [json_name = "deviceId"];
+    {::_pbi::TcParser::FastUS1,
+     {34, 63, 0, PROTOBUF_FIELD_OFFSET(Revision, _impl_.device_id_)}},
     // string id = 1 [json_name = "id"];
     {::_pbi::TcParser::FastUS1,
      {10, 63, 0, PROTOBUF_FIELD_OFFSET(Revision, _impl_.id_)}},
@@ -512,13 +523,17 @@ const ::_pbi::TcParseTable<2, 3, 2, 45, 2> Revision::_table_ = {
     // .google.protobuf.Timestamp first_fetched = 3 [json_name = "firstFetched"];
     {PROTOBUF_FIELD_OFFSET(Revision, _impl_.first_fetched_), _Internal::kHasBitsOffset + 1, 1,
     (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // string device_id = 4 [json_name = "deviceId"];
+    {PROTOBUF_FIELD_OFFSET(Revision, _impl_.device_id_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
   }}, {{
     {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
     {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
   }}, {{
-    "\42\2\0\0\0\0\0\0"
+    "\42\2\0\0\11\0\0\0"
     "kentik.deviceconf.v202511.Revision"
     "id"
+    "device_id"
   }},
 };
 
@@ -530,6 +545,7 @@ PROTOBUF_NOINLINE void Revision::Clear() {
   (void) cached_has_bits;
 
   _impl_.id_.ClearToEmpty();
+  _impl_.device_id_.ClearToEmpty();
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
@@ -583,6 +599,14 @@ PROTOBUF_NOINLINE void Revision::Clear() {
                 stream);
           }
 
+          // string device_id = 4 [json_name = "deviceId"];
+          if (!this_._internal_device_id().empty()) {
+            const std::string& _s = this_._internal_device_id();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.deviceconf.v202511.Revision.device_id");
+            target = stream->WriteStringMaybeAliased(4, _s, target);
+          }
+
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -613,6 +637,11 @@ PROTOBUF_NOINLINE void Revision::Clear() {
               total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                               this_._internal_id());
             }
+            // string device_id = 4 [json_name = "deviceId"];
+            if (!this_._internal_device_id().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_device_id());
+            }
           }
           cached_has_bits = this_._impl_._has_bits_[0];
           if (cached_has_bits & 0x00000003u) {
@@ -642,6 +671,9 @@ void Revision::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google
 
   if (!from._internal_id().empty()) {
     _this->_internal_set_id(from._internal_id());
+  }
+  if (!from._internal_device_id().empty()) {
+    _this->_internal_set_device_id(from._internal_device_id());
   }
   cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
@@ -683,6 +715,7 @@ void Revision::InternalSwap(Revision* PROTOBUF_RESTRICT other) {
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.id_, &other->_impl_.id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_id_, &other->_impl_.device_id_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Revision, _impl_.first_fetched_)
       + sizeof(Revision::_impl_.first_fetched_)

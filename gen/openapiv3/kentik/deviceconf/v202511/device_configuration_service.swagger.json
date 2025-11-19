@@ -185,6 +185,9 @@
                     "firstFetched": {
                         "type": "string",
                         "format": "date-time"
+                    },
+                    "deviceId": {
+                        "type": "string"
                     }
                 }
             },

@@ -43,10 +43,11 @@ struct  Kentik__Deviceconf__V202511__Revision
   char *id;
   Google__Protobuf__Timestamp *last_fetched;
   Google__Protobuf__Timestamp *first_fetched;
+  char *device_id;
 };
 #define KENTIK__DEVICECONF__V202511__REVISION__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__deviceconf__v202511__revision__descriptor) \
-    , (char *)protobuf_c_empty_string, NULL, NULL }
+    , (char *)protobuf_c_empty_string, NULL, NULL, (char *)protobuf_c_empty_string }
 
 
 struct  Kentik__Deviceconf__V202511__CommitDetails

@@ -59,22 +59,18 @@ type DeviceConfigurationServiceClient interface {
 	// External clients MUST set the following gRPC metadata:
 	// - x-ch-auth-email
 	// - x-ch-auth-api-token
-	// - x-kt-did
 	//
 	// Internal clients MUST set the following gRPC metadata:
 	// - x-kt-cid (Company ID)
-	// - x-kt-did
 	GetDeviceConfiguration(ctx context.Context, in *GetDeviceConfigurationRequest, opts ...grpc.CallOption) (*GetDeviceConfigurationResponse, error)
 	// List device configuration revisions
 	//
 	// External clients MUST set the following gRPC metadata:
 	// - x-ch-auth-email
 	// - x-ch-auth-api-token
-	// - x-kt-did
 	//
 	// Internal clients MUST set the following gRPC metadata:
 	// - x-kt-cid (Company ID)
-	// - x-kt-did
 	ListDeviceConfigurationRevisions(ctx context.Context, in *ListDeviceConfigurationRevisionsRequest, opts ...grpc.CallOption) (*ListDeviceConfigurationRevisionsResponse, error)
 	// Request an immediate device configuration fetch.
 	// The actual fetch will be performed asynchronously.
@@ -179,22 +175,18 @@ type DeviceConfigurationServiceServer interface {
 	// External clients MUST set the following gRPC metadata:
 	// - x-ch-auth-email
 	// - x-ch-auth-api-token
-	// - x-kt-did
 	//
 	// Internal clients MUST set the following gRPC metadata:
 	// - x-kt-cid (Company ID)
-	// - x-kt-did
 	GetDeviceConfiguration(context.Context, *GetDeviceConfigurationRequest) (*GetDeviceConfigurationResponse, error)
 	// List device configuration revisions
 	//
 	// External clients MUST set the following gRPC metadata:
 	// - x-ch-auth-email
 	// - x-ch-auth-api-token
-	// - x-kt-did
 	//
 	// Internal clients MUST set the following gRPC metadata:
 	// - x-kt-cid (Company ID)
-	// - x-kt-did
 	ListDeviceConfigurationRevisions(context.Context, *ListDeviceConfigurationRevisionsRequest) (*ListDeviceConfigurationRevisionsResponse, error)
 	// Request an immediate device configuration fetch.
 	// The actual fetch will be performed asynchronously.

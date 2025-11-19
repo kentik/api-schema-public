@@ -76,6 +76,7 @@ type Revision struct {
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"` // incremented for each different configuration fetched from the device
 	LastFetched   *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=last_fetched,json=lastFetched,proto3" json:"last_fetched,omitempty"`
 	FirstFetched  *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=first_fetched,json=firstFetched,proto3" json:"first_fetched,omitempty"`
+	DeviceId      string                 `protobuf:"bytes,4,opt,name=device_id,json=deviceId,proto3" json:"device_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -129,6 +130,13 @@ func (x *Revision) GetFirstFetched() *timestamppb.Timestamp {
 		return x.FirstFetched
 	}
 	return nil
+}
+
+func (x *Revision) GetDeviceId() string {
+	if x != nil {
+		return x.DeviceId
+	}
+	return ""
 }
 
 type CommitDetails struct {
@@ -413,11 +421,12 @@ var File_kentik_deviceconf_v202511_config_proto protoreflect.FileDescriptor
 
 const file_kentik_deviceconf_v202511_config_proto_rawDesc = "" +
 	"\n" +
-	"&kentik/deviceconf/v202511/config.proto\x12\x19kentik.deviceconf.v202511\x1a\x1fgoogle/protobuf/timestamp.proto\x1a&kentik/deviceconf/v202511/device.proto\"\x9a\x01\n" +
+	"&kentik/deviceconf/v202511/config.proto\x12\x19kentik.deviceconf.v202511\x1a\x1fgoogle/protobuf/timestamp.proto\x1a&kentik/deviceconf/v202511/device.proto\"\xb7\x01\n" +
 	"\bRevision\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12=\n" +
 	"\flast_fetched\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\vlastFetched\x12?\n" +
-	"\rfirst_fetched\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\ffirstFetched\"\x85\x01\n" +
+	"\rfirst_fetched\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\ffirstFetched\x12\x1b\n" +
+	"\tdevice_id\x18\x04 \x01(\tR\bdeviceId\"\x85\x01\n" +
 	"\rCommitDetails\x12.\n" +
 	"\x04time\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\x04time\x12\x12\n" +
 	"\x04user\x18\x02 \x01(\tR\x04user\x12\x16\n" +
