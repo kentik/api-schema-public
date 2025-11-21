@@ -245,6 +245,7 @@ message AwsProperties {
     }
   ];
   bool delete_after_read = 4 [
+    deprecated = true,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Delete from logs from the S3 bucket after export (default false)."
     }

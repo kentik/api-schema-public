@@ -177,7 +177,7 @@ struct  Kentik__CloudExport__V202506__AwsProperties
   char *region;
   char *bucket;
   char *bucket_prefix;
-  protobuf_c_boolean delete_after_read;
+  protobuf_c_boolean delete_after_read PROTOBUF_C__DEPRECATED;
   protobuf_c_boolean aws_iam_role_arn_is_org;
   size_t n_secondary_aws_accounts;
   char **secondary_aws_accounts;

@@ -1099,7 +1099,7 @@ static const ProtobufCFieldDescriptor kentik__cloud_export__v202506__aws_propert
     offsetof(Kentik__CloudExport__V202506__AwsProperties, delete_after_read),
     NULL,
     NULL,
-    0,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_DEPRECATED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {

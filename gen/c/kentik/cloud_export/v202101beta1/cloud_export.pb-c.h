@@ -179,7 +179,7 @@ struct  Kentik__CloudExport__V202101beta1__AwsProperties
   /*
    * If true, attempt to delete vpc flow log chunks from S3 after they've been read
    */
-  protobuf_c_boolean delete_after_read;
+  protobuf_c_boolean delete_after_read PROTOBUF_C__DEPRECATED;
   /*
    * FIXME
    */

@@ -140,7 +140,7 @@ message AwsProperties {
   // AWS region where this bucket resides (FIXME is that right?)
   string region = 3;
   // If true, attempt to delete vpc flow log chunks from S3 after they've been read
-  bool delete_after_read = 4;
+  bool delete_after_read = 4 [deprecated = true];
   // FIXME
   bool multiple_buckets = 5;
 }

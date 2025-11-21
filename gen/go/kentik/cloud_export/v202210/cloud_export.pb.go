@@ -363,17 +363,18 @@ func (*CloudExport_Oci) isCloudExport_CloudSpecificProperties() {}
 
 // {{.Name}}
 type AwsProperties struct {
-	state                       protoimpl.MessageState `protogen:"open.v1"`
-	Bucket                      string                 `protobuf:"bytes,1,opt,name=bucket,proto3" json:"bucket,omitempty"`
-	IamRoleArn                  string                 `protobuf:"bytes,2,opt,name=iam_role_arn,json=iamRoleArn,proto3" json:"iam_role_arn,omitempty"`
-	Region                      string                 `protobuf:"bytes,3,opt,name=region,proto3" json:"region,omitempty"`
-	DeleteAfterRead             bool                   `protobuf:"varint,4,opt,name=delete_after_read,json=deleteAfterRead,proto3" json:"delete_after_read,omitempty"`
-	MetadataOnly                bool                   `protobuf:"varint,5,opt,name=metadata_only,json=metadataOnly,proto3" json:"metadata_only,omitempty"`
-	AwsIamRoleArnIsOrg          bool                   `protobuf:"varint,6,opt,name=aws_iam_role_arn_is_org,json=awsIamRoleArnIsOrg,proto3" json:"aws_iam_role_arn_is_org,omitempty"`
-	SecondaryAwsAccounts        []string               `protobuf:"bytes,7,rep,name=secondary_aws_accounts,json=secondaryAwsAccounts,proto3" json:"secondary_aws_accounts,omitempty"`
-	SecondaryAwsBlockedAccounts []string               `protobuf:"bytes,8,rep,name=secondary_aws_blocked_accounts,json=secondaryAwsBlockedAccounts,proto3" json:"secondary_aws_blocked_accounts,omitempty"`
-	SecondaryAwsRegions         []string               `protobuf:"bytes,9,rep,name=secondary_aws_regions,json=secondaryAwsRegions,proto3" json:"secondary_aws_regions,omitempty"`
-	SecondaryAwsSuffix          string                 `protobuf:"bytes,10,opt,name=secondary_aws_suffix,json=secondaryAwsSuffix,proto3" json:"secondary_aws_suffix,omitempty"`
+	state      protoimpl.MessageState `protogen:"open.v1"`
+	Bucket     string                 `protobuf:"bytes,1,opt,name=bucket,proto3" json:"bucket,omitempty"`
+	IamRoleArn string                 `protobuf:"bytes,2,opt,name=iam_role_arn,json=iamRoleArn,proto3" json:"iam_role_arn,omitempty"`
+	Region     string                 `protobuf:"bytes,3,opt,name=region,proto3" json:"region,omitempty"`
+	// Deprecated: Marked as deprecated in kentik/cloud_export/v202210/cloud_export.proto.
+	DeleteAfterRead             bool     `protobuf:"varint,4,opt,name=delete_after_read,json=deleteAfterRead,proto3" json:"delete_after_read,omitempty"`
+	MetadataOnly                bool     `protobuf:"varint,5,opt,name=metadata_only,json=metadataOnly,proto3" json:"metadata_only,omitempty"`
+	AwsIamRoleArnIsOrg          bool     `protobuf:"varint,6,opt,name=aws_iam_role_arn_is_org,json=awsIamRoleArnIsOrg,proto3" json:"aws_iam_role_arn_is_org,omitempty"`
+	SecondaryAwsAccounts        []string `protobuf:"bytes,7,rep,name=secondary_aws_accounts,json=secondaryAwsAccounts,proto3" json:"secondary_aws_accounts,omitempty"`
+	SecondaryAwsBlockedAccounts []string `protobuf:"bytes,8,rep,name=secondary_aws_blocked_accounts,json=secondaryAwsBlockedAccounts,proto3" json:"secondary_aws_blocked_accounts,omitempty"`
+	SecondaryAwsRegions         []string `protobuf:"bytes,9,rep,name=secondary_aws_regions,json=secondaryAwsRegions,proto3" json:"secondary_aws_regions,omitempty"`
+	SecondaryAwsSuffix          string   `protobuf:"bytes,10,opt,name=secondary_aws_suffix,json=secondaryAwsSuffix,proto3" json:"secondary_aws_suffix,omitempty"`
 	unknownFields               protoimpl.UnknownFields
 	sizeCache                   protoimpl.SizeCache
 }
@@ -429,6 +430,7 @@ func (x *AwsProperties) GetRegion() string {
 	return ""
 }
 
+// Deprecated: Marked as deprecated in kentik/cloud_export/v202210/cloud_export.proto.
 func (x *AwsProperties) GetDeleteAfterRead() bool {
 	if x != nil {
 		return x.DeleteAfterRead
@@ -1303,13 +1305,13 @@ const file_kentik_cloud_export_v202210_cloud_export_proto_rawDesc = "" +
 	"\x0ecurrent_status\x18\r \x01(\v2..kentik.cloud_export.v202210.CloudExportStatusB,\x92A&2$Runtime status of the export process\xe0A\x03R\rcurrentStatus\x12R\n" +
 	"\x05cdate\x18\x0e \x01(\v2\x1a.google.protobuf.TimestampB \x92A\x1a2\x18Creation timestamp (UTC)\xe0A\x03R\x05cdate\x12[\n" +
 	"\x05edate\x18\x0f \x01(\v2\x1a.google.protobuf.TimestampB)\x92A#2!Last modification timestamp (UTC)\xe0A\x03R\x05edateB\x1b\n" +
-	"\x19cloud_specific_properties\"\xa6\t\n" +
+	"\x19cloud_specific_properties\"\xa8\t\n" +
 	"\rAwsProperties\x12W\n" +
 	"\x06bucket\x18\x01 \x01(\tB?\x92A<2:Name of S3 bucket from which flow logs are to be exported.R\x06bucket\x12z\n" +
 	"\fiam_role_arn\x18\x02 \x01(\tBX\x92AR2PARN of the IAM role granted access to the S3 bucket and describe API end-points.\xe0A\x02R\n" +
 	"iamRoleArn\x12R\n" +
-	"\x06region\x18\x03 \x01(\tB:\x92A422Name of AWS region from which to export flow logs.\xe0A\x02R\x06region\x12r\n" +
-	"\x11delete_after_read\x18\x04 \x01(\bBF\x92AC2ADelete from logs from the S3 bucket after export (default false).R\x0fdeleteAfterRead\x12a\n" +
+	"\x06region\x18\x03 \x01(\tB:\x92A422Name of AWS region from which to export flow logs.\xe0A\x02R\x06region\x12t\n" +
+	"\x11delete_after_read\x18\x04 \x01(\bBH\x92AC2ADelete from logs from the S3 bucket after export (default false).\x18\x01R\x0fdeleteAfterRead\x12a\n" +
 	"\rmetadata_only\x18\x05 \x01(\bB<\x92A927Import only metadata without any flows (default false).R\fmetadataOnly\x12h\n" +
 	"\x17aws_iam_role_arn_is_org\x18\x06 \x01(\bB3\x92A02.Iam role is organization role (default false).R\x12awsIamRoleArnIsOrg\x12v\n" +
 	"\x16secondary_aws_accounts\x18\a \x03(\tB@\x92A=2;Accounts ids granted access to the describe API end-points.R\x14secondaryAwsAccounts\x12\xa6\x01\n" +

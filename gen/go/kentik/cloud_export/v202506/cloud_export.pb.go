@@ -400,21 +400,22 @@ func (*CloudExport_Oci) isCloudExport_CloudSpecificProperties() {}
 
 // {{.Name}}
 type AwsProperties struct {
-	state                       protoimpl.MessageState `protogen:"open.v1"`
-	IamRoleArn                  string                 `protobuf:"bytes,1,opt,name=iam_role_arn,json=iamRoleArn,proto3" json:"iam_role_arn,omitempty"`
-	Region                      string                 `protobuf:"bytes,2,opt,name=region,proto3" json:"region,omitempty"`
-	MetadataOnly                *bool                  `protobuf:"varint,3,opt,name=metadata_only,json=metadataOnly,proto3,oneof" json:"metadata_only,omitempty"`
-	CollectFlowLogs             *bool                  `protobuf:"varint,4,opt,name=collect_flow_logs,json=collectFlowLogs,proto3,oneof" json:"collect_flow_logs,omitempty"`
-	CollectFirewallLogs         *bool                  `protobuf:"varint,5,opt,name=collect_firewall_logs,json=collectFirewallLogs,proto3,oneof" json:"collect_firewall_logs,omitempty"`
-	CollectMetrics              *bool                  `protobuf:"varint,6,opt,name=collect_metrics,json=collectMetrics,proto3,oneof" json:"collect_metrics,omitempty"`
-	Bucket                      string                 `protobuf:"bytes,7,opt,name=bucket,proto3" json:"bucket,omitempty"`
-	BucketPrefix                string                 `protobuf:"bytes,8,opt,name=bucket_prefix,json=bucketPrefix,proto3" json:"bucket_prefix,omitempty"`
-	DeleteAfterRead             bool                   `protobuf:"varint,9,opt,name=delete_after_read,json=deleteAfterRead,proto3" json:"delete_after_read,omitempty"`
-	AwsIamRoleArnIsOrg          bool                   `protobuf:"varint,10,opt,name=aws_iam_role_arn_is_org,json=awsIamRoleArnIsOrg,proto3" json:"aws_iam_role_arn_is_org,omitempty"`
-	SecondaryAwsAccounts        []string               `protobuf:"bytes,11,rep,name=secondary_aws_accounts,json=secondaryAwsAccounts,proto3" json:"secondary_aws_accounts,omitempty"`
-	SecondaryAwsBlockedAccounts []string               `protobuf:"bytes,12,rep,name=secondary_aws_blocked_accounts,json=secondaryAwsBlockedAccounts,proto3" json:"secondary_aws_blocked_accounts,omitempty"`
-	SecondaryAwsRegions         []string               `protobuf:"bytes,13,rep,name=secondary_aws_regions,json=secondaryAwsRegions,proto3" json:"secondary_aws_regions,omitempty"`
-	SecondaryAwsSuffix          string                 `protobuf:"bytes,14,opt,name=secondary_aws_suffix,json=secondaryAwsSuffix,proto3" json:"secondary_aws_suffix,omitempty"`
+	state               protoimpl.MessageState `protogen:"open.v1"`
+	IamRoleArn          string                 `protobuf:"bytes,1,opt,name=iam_role_arn,json=iamRoleArn,proto3" json:"iam_role_arn,omitempty"`
+	Region              string                 `protobuf:"bytes,2,opt,name=region,proto3" json:"region,omitempty"`
+	MetadataOnly        *bool                  `protobuf:"varint,3,opt,name=metadata_only,json=metadataOnly,proto3,oneof" json:"metadata_only,omitempty"`
+	CollectFlowLogs     *bool                  `protobuf:"varint,4,opt,name=collect_flow_logs,json=collectFlowLogs,proto3,oneof" json:"collect_flow_logs,omitempty"`
+	CollectFirewallLogs *bool                  `protobuf:"varint,5,opt,name=collect_firewall_logs,json=collectFirewallLogs,proto3,oneof" json:"collect_firewall_logs,omitempty"`
+	CollectMetrics      *bool                  `protobuf:"varint,6,opt,name=collect_metrics,json=collectMetrics,proto3,oneof" json:"collect_metrics,omitempty"`
+	Bucket              string                 `protobuf:"bytes,7,opt,name=bucket,proto3" json:"bucket,omitempty"`
+	BucketPrefix        string                 `protobuf:"bytes,8,opt,name=bucket_prefix,json=bucketPrefix,proto3" json:"bucket_prefix,omitempty"`
+	// Deprecated: Marked as deprecated in kentik/cloud_export/v202506/cloud_export.proto.
+	DeleteAfterRead             bool     `protobuf:"varint,9,opt,name=delete_after_read,json=deleteAfterRead,proto3" json:"delete_after_read,omitempty"`
+	AwsIamRoleArnIsOrg          bool     `protobuf:"varint,10,opt,name=aws_iam_role_arn_is_org,json=awsIamRoleArnIsOrg,proto3" json:"aws_iam_role_arn_is_org,omitempty"`
+	SecondaryAwsAccounts        []string `protobuf:"bytes,11,rep,name=secondary_aws_accounts,json=secondaryAwsAccounts,proto3" json:"secondary_aws_accounts,omitempty"`
+	SecondaryAwsBlockedAccounts []string `protobuf:"bytes,12,rep,name=secondary_aws_blocked_accounts,json=secondaryAwsBlockedAccounts,proto3" json:"secondary_aws_blocked_accounts,omitempty"`
+	SecondaryAwsRegions         []string `protobuf:"bytes,13,rep,name=secondary_aws_regions,json=secondaryAwsRegions,proto3" json:"secondary_aws_regions,omitempty"`
+	SecondaryAwsSuffix          string   `protobuf:"bytes,14,opt,name=secondary_aws_suffix,json=secondaryAwsSuffix,proto3" json:"secondary_aws_suffix,omitempty"`
 	unknownFields               protoimpl.UnknownFields
 	sizeCache                   protoimpl.SizeCache
 }
@@ -505,6 +506,7 @@ func (x *AwsProperties) GetBucketPrefix() string {
 	return ""
 }
 
+// Deprecated: Marked as deprecated in kentik/cloud_export/v202506/cloud_export.proto.
 func (x *AwsProperties) GetDeleteAfterRead() bool {
 	if x != nil {
 		return x.DeleteAfterRead
@@ -1421,7 +1423,7 @@ const file_kentik_cloud_export_v202506_cloud_export_proto_rawDesc = "" +
 	"\x05cdate\x18\r \x01(\v2\x1a.google.protobuf.TimestampB \x92A\x1a2\x18Creation timestamp (UTC)\xe0A\x03R\x05cdate\x12[\n" +
 	"\x05edate\x18\x0e \x01(\v2\x1a.google.protobuf.TimestampB)\x92A#2!Last modification timestamp (UTC)\xe0A\x03R\x05edate\x12}\n" +
 	"\bsampling\x18\x0f \x01(\v2:.kentik.cloud_export.v202506.CloudExportSamplingPropertiesB%\x92A\"2 Sampling settings for the exportR\bsamplingB\x1b\n" +
-	"\x19cloud_specific_properties\"\xdf\x0f\n" +
+	"\x19cloud_specific_properties\"\xe1\x0f\n" +
 	"\rAwsProperties\x12z\n" +
 	"\fiam_role_arn\x18\x01 \x01(\tBX\x92AR2PARN of the IAM role granted access to the S3 bucket and describe API end-points.\xe0A\x02R\n" +
 	"iamRoleArn\x12R\n" +
@@ -1431,8 +1433,8 @@ const file_kentik_cloud_export_v202506_cloud_export_proto_rawDesc = "" +
 	"\x15collect_firewall_logs\x18\x05 \x01(\bB\xcf\x01\x92A\xcb\x012\xc8\x01Import metadata and collect firewall logs in addition to flow logs (default false). Note that in order to collect firewall logs without collection of flow logs, collect_flow_logs must be set to false.H\x02R\x13collectFirewallLogs\x88\x01\x01\x12\xc7\x01\n" +
 	"\x0fcollect_metrics\x18\x06 \x01(\bB\x98\x01\x92A\x94\x012\x91\x01Import metadata and collect metrics data.  Note that flow logs will still be collected unless metadata_only is also set to true. (default false).H\x03R\x0ecollectMetrics\x88\x01\x01\x12g\n" +
 	"\x06bucket\x18\a \x01(\tBO\x92AL2JName of S3 bucket from which flow and/or firewall logs are to be exported.R\x06bucket\x12v\n" +
-	"\rbucket_prefix\x18\b \x01(\tBQ\x92AN2LPrefix of S3 bucket from which flow and/or firewall logs are to be exported.R\fbucketPrefix\x12r\n" +
-	"\x11delete_after_read\x18\t \x01(\bBF\x92AC2ADelete from logs from the S3 bucket after export (default false).R\x0fdeleteAfterRead\x12h\n" +
+	"\rbucket_prefix\x18\b \x01(\tBQ\x92AN2LPrefix of S3 bucket from which flow and/or firewall logs are to be exported.R\fbucketPrefix\x12t\n" +
+	"\x11delete_after_read\x18\t \x01(\bBH\x92AC2ADelete from logs from the S3 bucket after export (default false).\x18\x01R\x0fdeleteAfterRead\x12h\n" +
 	"\x17aws_iam_role_arn_is_org\x18\n" +
 	" \x01(\bB3\x92A02.Iam role is organization role (default false).R\x12awsIamRoleArnIsOrg\x12v\n" +
 	"\x16secondary_aws_accounts\x18\v \x03(\tB@\x92A=2;Accounts ids granted access to the describe API end-points.R\x14secondaryAwsAccounts\x12\xa6\x01\n" +

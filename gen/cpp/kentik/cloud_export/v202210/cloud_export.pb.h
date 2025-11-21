@@ -2432,10 +2432,10 @@ class AwsProperties final : public ::google::protobuf::Message
   std::string* _internal_mutable_secondary_aws_suffix();
 
   public:
-  // bool delete_after_read = 4 [json_name = "deleteAfterRead", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  void clear_delete_after_read() ;
-  bool delete_after_read() const;
-  void set_delete_after_read(bool value);
+  // bool delete_after_read = 4 [json_name = "deleteAfterRead", deprecated = true, (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  [[deprecated]]  void clear_delete_after_read() ;
+  [[deprecated]] bool delete_after_read() const;
+  [[deprecated]] void set_delete_after_read(bool value);
 
   private:
   bool _internal_delete_after_read() const;
@@ -5260,7 +5260,7 @@ inline void AwsProperties::set_allocated_region(std::string* value) {
   // @@protoc_insertion_point(field_set_allocated:kentik.cloud_export.v202210.AwsProperties.region)
 }
 
-// bool delete_after_read = 4 [json_name = "deleteAfterRead", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+// bool delete_after_read = 4 [json_name = "deleteAfterRead", deprecated = true, (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
 inline void AwsProperties::clear_delete_after_read() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.delete_after_read_ = false;

@@ -143,7 +143,7 @@ struct  Kentik__CloudExport__V202210__AwsProperties
   char *bucket;
   char *iam_role_arn;
   char *region;
-  protobuf_c_boolean delete_after_read;
+  protobuf_c_boolean delete_after_read PROTOBUF_C__DEPRECATED;
   protobuf_c_boolean metadata_only;
   protobuf_c_boolean aws_iam_role_arn_is_org;
   size_t n_secondary_aws_accounts;

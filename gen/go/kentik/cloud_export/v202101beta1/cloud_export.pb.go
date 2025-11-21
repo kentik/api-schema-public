@@ -370,6 +370,8 @@ type AwsProperties struct {
 	// AWS region where this bucket resides (FIXME is that right?)
 	Region string `protobuf:"bytes,3,opt,name=region,proto3" json:"region,omitempty"`
 	// If true, attempt to delete vpc flow log chunks from S3 after they've been read
+	//
+	// Deprecated: Marked as deprecated in kentik/cloud_export/v202101beta1/cloud_export.proto.
 	DeleteAfterRead bool `protobuf:"varint,4,opt,name=delete_after_read,json=deleteAfterRead,proto3" json:"delete_after_read,omitempty"`
 	// FIXME
 	MultipleBuckets bool `protobuf:"varint,5,opt,name=multiple_buckets,json=multipleBuckets,proto3" json:"multiple_buckets,omitempty"`
@@ -428,6 +430,7 @@ func (x *AwsProperties) GetRegion() string {
 	return ""
 }
 
+// Deprecated: Marked as deprecated in kentik/cloud_export/v202101beta1/cloud_export.proto.
 func (x *AwsProperties) GetDeleteAfterRead() bool {
 	if x != nil {
 		return x.DeleteAfterRead
@@ -1253,13 +1256,13 @@ const file_kentik_cloud_export_v202101beta1_cloud_export_proto_rawDesc = "" +
 	"\rBgpProperties\x12\x1b\n" +
 	"\tapply_bgp\x18\x01 \x01(\bR\bapplyBgp\x12)\n" +
 	"\x11use_bgp_device_id\x18\x02 \x01(\tR\x0euseBgpDeviceId\x12&\n" +
-	"\x0fdevice_bgp_type\x18\x03 \x01(\tR\rdeviceBgpType\"\xb8\x01\n" +
+	"\x0fdevice_bgp_type\x18\x03 \x01(\tR\rdeviceBgpType\"\xbc\x01\n" +
 	"\rAwsProperties\x12\x16\n" +
 	"\x06bucket\x18\x01 \x01(\tR\x06bucket\x12 \n" +
 	"\fiam_role_arn\x18\x02 \x01(\tR\n" +
 	"iamRoleArn\x12\x16\n" +
-	"\x06region\x18\x03 \x01(\tR\x06region\x12*\n" +
-	"\x11delete_after_read\x18\x04 \x01(\bR\x0fdeleteAfterRead\x12)\n" +
+	"\x06region\x18\x03 \x01(\tR\x06region\x12.\n" +
+	"\x11delete_after_read\x18\x04 \x01(\bB\x02\x18\x01R\x0fdeleteAfterRead\x12)\n" +
 	"\x10multiple_buckets\x18\x05 \x01(\bR\x0fmultipleBuckets\"\xe4\x01\n" +
 	"\x0fAzureProperties\x12\x1a\n" +
 	"\blocation\x18\x01 \x01(\tR\blocation\x12%\n" +
