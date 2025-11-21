@@ -34,6 +34,15 @@ typedef enum _Kentik__Deviceconf__V202511__ConfigEncoding {
 
 /* --- messages --- */
 
+/*
+ * TODO: I somewhat regret embedding "Revision" inside "Snapshot".
+ * Being embedded means that any time we add something to Revision, it affects
+ * Snapshot as well. For example, when we added device_id to Revision, it
+ * meant that now Snapshot has device_id in two places (top-level and inside
+ * Revision). At some point we should probably flatten these fields into the
+ * top-level Snapshot message and deprecate the embedded Revision message. (Or
+ * break the coupling between Snapshot and List Revisions some other way.)
+ */
 struct  Kentik__Deviceconf__V202511__Revision
 {
   ProtobufCMessage base;

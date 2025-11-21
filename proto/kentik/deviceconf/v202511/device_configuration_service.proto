@@ -59,6 +59,19 @@ service DeviceConfigurationService {
     option (kentik.core.v202303.method_scope) = "deviceconf:read";
   }
 
+  // Get latest configuration for many devices
+  //
+  // External clients MUST set the following gRPC metadata:
+  // - x-ch-auth-email
+  // - x-ch-auth-api-token
+  //
+  // Internal clients MUST set the following gRPC metadata:
+  // - x-kt-cid (Company ID)
+  //
+  rpc GetLatestDeviceConfigurations(GetLatestDeviceConfigurationsRequest) returns (GetLatestDeviceConfigurationsResponse) {
+    option (kentik.core.v202303.method_scope) = "deviceconf:read";
+  }
+
   // List device configuration revisions
   //
   // External clients MUST set the following gRPC metadata:
@@ -114,12 +127,37 @@ message GetDeviceConfigurationRequest {
   // If set, compute the diff against the given revision ID.
   string ref_revision = 3;
 
-  // Device ID to get configuration for.
+  // Device ID to get configuration for. Required.
   string device_id = 4;
+
+  // If true, do not include config_data in the response.
+  // Useful for checking metadata without transferring large config data.
+  bool exclude_config_data = 5;
+
+  // If true, do not include diff_data in the response.
+  bool exclude_diff_data = 6;
 }
 
 message GetDeviceConfigurationResponse {
   Snapshot config = 1;
+}
+
+message GetLatestDeviceConfigurationsRequest {
+  // If set, only return configurations for these device IDs.
+  // If not set, return configurations for all devices.
+  repeated string device_ids = 1;
+
+  // If true, do not include config_data in the response.
+  // Useful for checking metadata without transferring large config data.
+  bool exclude_config_data = 2;
+
+  // If true, do not include diff_data in the response.
+  bool exclude_diff_data = 3;
+}
+
+message GetLatestDeviceConfigurationsResponse {
+  // Map from device ID to latest configuration.
+  map <string,Snapshot> configs = 1;
 }
 
 // Fetch all device configuration revisions within the given time range.

@@ -71,6 +71,13 @@ func (ConfigEncoding) EnumDescriptor() ([]byte, []int) {
 	return file_kentik_deviceconf_v202511_config_proto_rawDescGZIP(), []int{0}
 }
 
+// TODO: I somewhat regret embedding "Revision" inside "Snapshot".
+// Being embedded means that any time we add something to Revision, it affects
+// Snapshot as well. For example, when we added device_id to Revision, it
+// meant that now Snapshot has device_id in two places (top-level and inside
+// Revision). At some point we should probably flatten these fields into the
+// top-level Snapshot message and deprecate the embedded Revision message. (Or
+// break the coupling between Snapshot and List Revisions some other way.)
 type Revision struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"` // incremented for each different configuration fetched from the device

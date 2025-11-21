@@ -22,6 +22,7 @@ const (
 	DeviceConfigurationService_GetDeviceAssignments_FullMethodName             = "/kentik.deviceconf.v202511.DeviceConfigurationService/GetDeviceAssignments"
 	DeviceConfigurationService_UpdateDeviceConfiguration_FullMethodName        = "/kentik.deviceconf.v202511.DeviceConfigurationService/UpdateDeviceConfiguration"
 	DeviceConfigurationService_GetDeviceConfiguration_FullMethodName           = "/kentik.deviceconf.v202511.DeviceConfigurationService/GetDeviceConfiguration"
+	DeviceConfigurationService_GetLatestDeviceConfigurations_FullMethodName    = "/kentik.deviceconf.v202511.DeviceConfigurationService/GetLatestDeviceConfigurations"
 	DeviceConfigurationService_ListDeviceConfigurationRevisions_FullMethodName = "/kentik.deviceconf.v202511.DeviceConfigurationService/ListDeviceConfigurationRevisions"
 	DeviceConfigurationService_RequestDeviceConfigurationFetch_FullMethodName  = "/kentik.deviceconf.v202511.DeviceConfigurationService/RequestDeviceConfigurationFetch"
 )
@@ -63,6 +64,15 @@ type DeviceConfigurationServiceClient interface {
 	// Internal clients MUST set the following gRPC metadata:
 	// - x-kt-cid (Company ID)
 	GetDeviceConfiguration(ctx context.Context, in *GetDeviceConfigurationRequest, opts ...grpc.CallOption) (*GetDeviceConfigurationResponse, error)
+	// Get latest configuration for many devices
+	//
+	// External clients MUST set the following gRPC metadata:
+	// - x-ch-auth-email
+	// - x-ch-auth-api-token
+	//
+	// Internal clients MUST set the following gRPC metadata:
+	// - x-kt-cid (Company ID)
+	GetLatestDeviceConfigurations(ctx context.Context, in *GetLatestDeviceConfigurationsRequest, opts ...grpc.CallOption) (*GetLatestDeviceConfigurationsResponse, error)
 	// List device configuration revisions
 	//
 	// External clients MUST set the following gRPC metadata:
@@ -116,6 +126,16 @@ func (c *deviceConfigurationServiceClient) GetDeviceConfiguration(ctx context.Co
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetDeviceConfigurationResponse)
 	err := c.cc.Invoke(ctx, DeviceConfigurationService_GetDeviceConfiguration_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *deviceConfigurationServiceClient) GetLatestDeviceConfigurations(ctx context.Context, in *GetLatestDeviceConfigurationsRequest, opts ...grpc.CallOption) (*GetLatestDeviceConfigurationsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetLatestDeviceConfigurationsResponse)
+	err := c.cc.Invoke(ctx, DeviceConfigurationService_GetLatestDeviceConfigurations_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -179,6 +199,15 @@ type DeviceConfigurationServiceServer interface {
 	// Internal clients MUST set the following gRPC metadata:
 	// - x-kt-cid (Company ID)
 	GetDeviceConfiguration(context.Context, *GetDeviceConfigurationRequest) (*GetDeviceConfigurationResponse, error)
+	// Get latest configuration for many devices
+	//
+	// External clients MUST set the following gRPC metadata:
+	// - x-ch-auth-email
+	// - x-ch-auth-api-token
+	//
+	// Internal clients MUST set the following gRPC metadata:
+	// - x-kt-cid (Company ID)
+	GetLatestDeviceConfigurations(context.Context, *GetLatestDeviceConfigurationsRequest) (*GetLatestDeviceConfigurationsResponse, error)
 	// List device configuration revisions
 	//
 	// External clients MUST set the following gRPC metadata:
@@ -215,6 +244,9 @@ func (UnimplementedDeviceConfigurationServiceServer) UpdateDeviceConfiguration(c
 }
 func (UnimplementedDeviceConfigurationServiceServer) GetDeviceConfiguration(context.Context, *GetDeviceConfigurationRequest) (*GetDeviceConfigurationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetDeviceConfiguration not implemented")
+}
+func (UnimplementedDeviceConfigurationServiceServer) GetLatestDeviceConfigurations(context.Context, *GetLatestDeviceConfigurationsRequest) (*GetLatestDeviceConfigurationsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetLatestDeviceConfigurations not implemented")
 }
 func (UnimplementedDeviceConfigurationServiceServer) ListDeviceConfigurationRevisions(context.Context, *ListDeviceConfigurationRevisionsRequest) (*ListDeviceConfigurationRevisionsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListDeviceConfigurationRevisions not implemented")
@@ -296,6 +328,24 @@ func _DeviceConfigurationService_GetDeviceConfiguration_Handler(srv interface{},
 	return interceptor(ctx, in, info, handler)
 }
 
+func _DeviceConfigurationService_GetLatestDeviceConfigurations_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetLatestDeviceConfigurationsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DeviceConfigurationServiceServer).GetLatestDeviceConfigurations(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DeviceConfigurationService_GetLatestDeviceConfigurations_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DeviceConfigurationServiceServer).GetLatestDeviceConfigurations(ctx, req.(*GetLatestDeviceConfigurationsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _DeviceConfigurationService_ListDeviceConfigurationRevisions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListDeviceConfigurationRevisionsRequest)
 	if err := dec(in); err != nil {
@@ -350,6 +400,10 @@ var DeviceConfigurationService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetDeviceConfiguration",
 			Handler:    _DeviceConfigurationService_GetDeviceConfiguration_Handler,
+		},
+		{
+			MethodName: "GetLatestDeviceConfigurations",
+			Handler:    _DeviceConfigurationService_GetLatestDeviceConfigurations_Handler,
 		},
 		{
 			MethodName: "ListDeviceConfigurationRevisions",

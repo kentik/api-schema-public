@@ -277,6 +277,102 @@ void   kentik__deviceconf__v202511__get_device_configuration_response__free_unpa
   assert(message->base.descriptor == &kentik__deviceconf__v202511__get_device_configuration_response__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   kentik__deviceconf__v202511__get_latest_device_configurations_request__init
+                     (Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsRequest         *message)
+{
+  static const Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsRequest init_value = KENTIK__DEVICECONF__V202511__GET_LATEST_DEVICE_CONFIGURATIONS_REQUEST__INIT;
+  *message = init_value;
+}
+size_t kentik__deviceconf__v202511__get_latest_device_configurations_request__get_packed_size
+                     (const Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsRequest *message)
+{
+  assert(message->base.descriptor == &kentik__deviceconf__v202511__get_latest_device_configurations_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__deviceconf__v202511__get_latest_device_configurations_request__pack
+                     (const Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__deviceconf__v202511__get_latest_device_configurations_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__deviceconf__v202511__get_latest_device_configurations_request__pack_to_buffer
+                     (const Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__deviceconf__v202511__get_latest_device_configurations_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsRequest *
+       kentik__deviceconf__v202511__get_latest_device_configurations_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsRequest *)
+     protobuf_c_message_unpack (&kentik__deviceconf__v202511__get_latest_device_configurations_request__descriptor,
+                                allocator, len, data);
+}
+void   kentik__deviceconf__v202511__get_latest_device_configurations_request__free_unpacked
+                     (Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__deviceconf__v202511__get_latest_device_configurations_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__deviceconf__v202511__get_latest_device_configurations_response__configs_entry__init
+                     (Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsResponse__ConfigsEntry         *message)
+{
+  static const Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsResponse__ConfigsEntry init_value = KENTIK__DEVICECONF__V202511__GET_LATEST_DEVICE_CONFIGURATIONS_RESPONSE__CONFIGS_ENTRY__INIT;
+  *message = init_value;
+}
+void   kentik__deviceconf__v202511__get_latest_device_configurations_response__init
+                     (Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsResponse         *message)
+{
+  static const Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsResponse init_value = KENTIK__DEVICECONF__V202511__GET_LATEST_DEVICE_CONFIGURATIONS_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t kentik__deviceconf__v202511__get_latest_device_configurations_response__get_packed_size
+                     (const Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsResponse *message)
+{
+  assert(message->base.descriptor == &kentik__deviceconf__v202511__get_latest_device_configurations_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__deviceconf__v202511__get_latest_device_configurations_response__pack
+                     (const Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__deviceconf__v202511__get_latest_device_configurations_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__deviceconf__v202511__get_latest_device_configurations_response__pack_to_buffer
+                     (const Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__deviceconf__v202511__get_latest_device_configurations_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsResponse *
+       kentik__deviceconf__v202511__get_latest_device_configurations_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsResponse *)
+     protobuf_c_message_unpack (&kentik__deviceconf__v202511__get_latest_device_configurations_response__descriptor,
+                                allocator, len, data);
+}
+void   kentik__deviceconf__v202511__get_latest_device_configurations_response__free_unpacked
+                     (Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__deviceconf__v202511__get_latest_device_configurations_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 void   kentik__deviceconf__v202511__list_device_configuration_revisions_request__init
                      (Kentik__Deviceconf__V202511__ListDeviceConfigurationRevisionsRequest         *message)
 {
@@ -569,7 +665,7 @@ const ProtobufCMessageDescriptor kentik__deviceconf__v202511__update_device_conf
   (ProtobufCMessageInit) kentik__deviceconf__v202511__update_device_configuration_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__deviceconf__v202511__get_device_configuration_request__field_descriptors[4] =
+static const ProtobufCFieldDescriptor kentik__deviceconf__v202511__get_device_configuration_request__field_descriptors[6] =
 {
   {
     "fetch_time",
@@ -619,9 +715,35 @@ static const ProtobufCFieldDescriptor kentik__deviceconf__v202511__get_device_co
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "exclude_config_data",
+    5,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Deviceconf__V202511__GetDeviceConfigurationRequest, exclude_config_data),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "exclude_diff_data",
+    6,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Deviceconf__V202511__GetDeviceConfigurationRequest, exclude_diff_data),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__deviceconf__v202511__get_device_configuration_request__field_indices_by_name[] = {
   3,   /* field[3] = device_id */
+  4,   /* field[4] = exclude_config_data */
+  5,   /* field[5] = exclude_diff_data */
   0,   /* field[0] = fetch_time */
   2,   /* field[2] = ref_revision */
   1,   /* field[1] = revision */
@@ -629,7 +751,7 @@ static const unsigned kentik__deviceconf__v202511__get_device_configuration_requ
 static const ProtobufCIntRange kentik__deviceconf__v202511__get_device_configuration_request__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 4 }
+  { 0, 6 }
 };
 const ProtobufCMessageDescriptor kentik__deviceconf__v202511__get_device_configuration_request__descriptor =
 {
@@ -639,7 +761,7 @@ const ProtobufCMessageDescriptor kentik__deviceconf__v202511__get_device_configu
   "Kentik__Deviceconf__V202511__GetDeviceConfigurationRequest",
   "kentik.deviceconf.v202511",
   sizeof(Kentik__Deviceconf__V202511__GetDeviceConfigurationRequest),
-  4,
+  6,
   kentik__deviceconf__v202511__get_device_configuration_request__field_descriptors,
   kentik__deviceconf__v202511__get_device_configuration_request__field_indices_by_name,
   1,  kentik__deviceconf__v202511__get_device_configuration_request__number_ranges,
@@ -682,6 +804,159 @@ const ProtobufCMessageDescriptor kentik__deviceconf__v202511__get_device_configu
   kentik__deviceconf__v202511__get_device_configuration_response__field_indices_by_name,
   1,  kentik__deviceconf__v202511__get_device_configuration_response__number_ranges,
   (ProtobufCMessageInit) kentik__deviceconf__v202511__get_device_configuration_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__deviceconf__v202511__get_latest_device_configurations_request__field_descriptors[3] =
+{
+  {
+    "device_ids",
+    1,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_STRING,
+    offsetof(Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsRequest, n_device_ids),
+    offsetof(Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsRequest, device_ids),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "exclude_config_data",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsRequest, exclude_config_data),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "exclude_diff_data",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsRequest, exclude_diff_data),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__deviceconf__v202511__get_latest_device_configurations_request__field_indices_by_name[] = {
+  0,   /* field[0] = device_ids */
+  1,   /* field[1] = exclude_config_data */
+  2,   /* field[2] = exclude_diff_data */
+};
+static const ProtobufCIntRange kentik__deviceconf__v202511__get_latest_device_configurations_request__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 3 }
+};
+const ProtobufCMessageDescriptor kentik__deviceconf__v202511__get_latest_device_configurations_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.deviceconf.v202511.GetLatestDeviceConfigurationsRequest",
+  "GetLatestDeviceConfigurationsRequest",
+  "Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsRequest",
+  "kentik.deviceconf.v202511",
+  sizeof(Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsRequest),
+  3,
+  kentik__deviceconf__v202511__get_latest_device_configurations_request__field_descriptors,
+  kentik__deviceconf__v202511__get_latest_device_configurations_request__field_indices_by_name,
+  1,  kentik__deviceconf__v202511__get_latest_device_configurations_request__number_ranges,
+  (ProtobufCMessageInit) kentik__deviceconf__v202511__get_latest_device_configurations_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__deviceconf__v202511__get_latest_device_configurations_response__configs_entry__field_descriptors[2] =
+{
+  {
+    "key",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsResponse__ConfigsEntry, key),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "value",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsResponse__ConfigsEntry, value),
+    &kentik__deviceconf__v202511__snapshot__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__deviceconf__v202511__get_latest_device_configurations_response__configs_entry__field_indices_by_name[] = {
+  0,   /* field[0] = key */
+  1,   /* field[1] = value */
+};
+static const ProtobufCIntRange kentik__deviceconf__v202511__get_latest_device_configurations_response__configs_entry__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor kentik__deviceconf__v202511__get_latest_device_configurations_response__configs_entry__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.deviceconf.v202511.GetLatestDeviceConfigurationsResponse.ConfigsEntry",
+  "ConfigsEntry",
+  "Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsResponse__ConfigsEntry",
+  "kentik.deviceconf.v202511",
+  sizeof(Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsResponse__ConfigsEntry),
+  2,
+  kentik__deviceconf__v202511__get_latest_device_configurations_response__configs_entry__field_descriptors,
+  kentik__deviceconf__v202511__get_latest_device_configurations_response__configs_entry__field_indices_by_name,
+  1,  kentik__deviceconf__v202511__get_latest_device_configurations_response__configs_entry__number_ranges,
+  (ProtobufCMessageInit) kentik__deviceconf__v202511__get_latest_device_configurations_response__configs_entry__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__deviceconf__v202511__get_latest_device_configurations_response__field_descriptors[1] =
+{
+  {
+    "configs",
+    1,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsResponse, n_configs),
+    offsetof(Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsResponse, configs),
+    &kentik__deviceconf__v202511__get_latest_device_configurations_response__configs_entry__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__deviceconf__v202511__get_latest_device_configurations_response__field_indices_by_name[] = {
+  0,   /* field[0] = configs */
+};
+static const ProtobufCIntRange kentik__deviceconf__v202511__get_latest_device_configurations_response__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor kentik__deviceconf__v202511__get_latest_device_configurations_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.deviceconf.v202511.GetLatestDeviceConfigurationsResponse",
+  "GetLatestDeviceConfigurationsResponse",
+  "Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsResponse",
+  "kentik.deviceconf.v202511",
+  sizeof(Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsResponse),
+  1,
+  kentik__deviceconf__v202511__get_latest_device_configurations_response__field_descriptors,
+  kentik__deviceconf__v202511__get_latest_device_configurations_response__field_indices_by_name,
+  1,  kentik__deviceconf__v202511__get_latest_device_configurations_response__number_ranges,
+  (ProtobufCMessageInit) kentik__deviceconf__v202511__get_latest_device_configurations_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
 static const ProtobufCFieldDescriptor kentik__deviceconf__v202511__list_device_configuration_revisions_request__field_descriptors[4] =
@@ -855,19 +1130,21 @@ const ProtobufCMessageDescriptor kentik__deviceconf__v202511__request_device_con
   (ProtobufCMessageInit) kentik__deviceconf__v202511__request_device_configuration_fetch_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCMethodDescriptor kentik__deviceconf__v202511__device_configuration_service__method_descriptors[5] =
+static const ProtobufCMethodDescriptor kentik__deviceconf__v202511__device_configuration_service__method_descriptors[6] =
 {
   { "GetDeviceAssignments", &kentik__deviceconf__v202511__get_device_assignments_request__descriptor, &kentik__deviceconf__v202511__get_device_assignments_response__descriptor },
   { "UpdateDeviceConfiguration", &kentik__deviceconf__v202511__update_device_configuration_request__descriptor, &kentik__deviceconf__v202511__update_device_configuration_response__descriptor },
   { "GetDeviceConfiguration", &kentik__deviceconf__v202511__get_device_configuration_request__descriptor, &kentik__deviceconf__v202511__get_device_configuration_response__descriptor },
+  { "GetLatestDeviceConfigurations", &kentik__deviceconf__v202511__get_latest_device_configurations_request__descriptor, &kentik__deviceconf__v202511__get_latest_device_configurations_response__descriptor },
   { "ListDeviceConfigurationRevisions", &kentik__deviceconf__v202511__list_device_configuration_revisions_request__descriptor, &kentik__deviceconf__v202511__list_device_configuration_revisions_response__descriptor },
   { "RequestDeviceConfigurationFetch", &kentik__deviceconf__v202511__request_device_configuration_fetch_request__descriptor, &kentik__deviceconf__v202511__request_device_configuration_fetch_response__descriptor },
 };
 const unsigned kentik__deviceconf__v202511__device_configuration_service__method_indices_by_name[] = {
   0,        /* GetDeviceAssignments */
   2,        /* GetDeviceConfiguration */
-  3,        /* ListDeviceConfigurationRevisions */
-  4,        /* RequestDeviceConfigurationFetch */
+  3,        /* GetLatestDeviceConfigurations */
+  4,        /* ListDeviceConfigurationRevisions */
+  5,        /* RequestDeviceConfigurationFetch */
   1         /* UpdateDeviceConfiguration */
 };
 const ProtobufCServiceDescriptor kentik__deviceconf__v202511__device_configuration_service__descriptor =
@@ -877,7 +1154,7 @@ const ProtobufCServiceDescriptor kentik__deviceconf__v202511__device_configurati
   "DeviceConfigurationService",
   "Kentik__Deviceconf__V202511__DeviceConfigurationService",
   "kentik.deviceconf.v202511",
-  5,
+  6,
   kentik__deviceconf__v202511__device_configuration_service__method_descriptors,
   kentik__deviceconf__v202511__device_configuration_service__method_indices_by_name
 };
@@ -905,13 +1182,21 @@ void kentik__deviceconf__v202511__device_configuration_service__get_device_confi
   assert(service->descriptor == &kentik__deviceconf__v202511__device_configuration_service__descriptor);
   service->invoke(service, 2, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
+void kentik__deviceconf__v202511__device_configuration_service__get_latest_device_configurations(ProtobufCService *service,
+                                                                                                 const Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsRequest *input,
+                                                                                                 Kentik__Deviceconf__V202511__GetLatestDeviceConfigurationsResponse_Closure closure,
+                                                                                                 void *closure_data)
+{
+  assert(service->descriptor == &kentik__deviceconf__v202511__device_configuration_service__descriptor);
+  service->invoke(service, 3, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
 void kentik__deviceconf__v202511__device_configuration_service__list_device_configuration_revisions(ProtobufCService *service,
                                                                                                     const Kentik__Deviceconf__V202511__ListDeviceConfigurationRevisionsRequest *input,
                                                                                                     Kentik__Deviceconf__V202511__ListDeviceConfigurationRevisionsResponse_Closure closure,
                                                                                                     void *closure_data)
 {
   assert(service->descriptor == &kentik__deviceconf__v202511__device_configuration_service__descriptor);
-  service->invoke(service, 3, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+  service->invoke(service, 4, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void kentik__deviceconf__v202511__device_configuration_service__request_device_configuration_fetch(ProtobufCService *service,
                                                                                                    const Kentik__Deviceconf__V202511__RequestDeviceConfigurationFetchRequest *input,
@@ -919,7 +1204,7 @@ void kentik__deviceconf__v202511__device_configuration_service__request_device_c
                                                                                                    void *closure_data)
 {
   assert(service->descriptor == &kentik__deviceconf__v202511__device_configuration_service__descriptor);
-  service->invoke(service, 4, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+  service->invoke(service, 5, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void kentik__deviceconf__v202511__device_configuration_service__init (Kentik__Deviceconf__V202511__DeviceConfigurationService_Service *service,
                                                                       Kentik__Deviceconf__V202511__DeviceConfigurationService_ServiceDestroy destroy)

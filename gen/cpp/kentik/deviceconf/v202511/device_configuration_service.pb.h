@@ -29,6 +29,9 @@
 #include "google/protobuf/message_lite.h"
 #include "google/protobuf/repeated_field.h"  // IWYU pragma: export
 #include "google/protobuf/extension_set.h"  // IWYU pragma: export
+#include "google/protobuf/map.h"  // IWYU pragma: export
+#include "google/protobuf/map_entry.h"
+#include "google/protobuf/map_field_inl.h"
 #include "google/protobuf/unknown_field_set.h"
 #include "google/protobuf/timestamp.pb.h"
 #include "kentik/core/v202303/annotations.pb.h"
@@ -71,6 +74,15 @@ extern GetDeviceConfigurationRequestDefaultTypeInternal _GetDeviceConfigurationR
 class GetDeviceConfigurationResponse;
 struct GetDeviceConfigurationResponseDefaultTypeInternal;
 extern GetDeviceConfigurationResponseDefaultTypeInternal _GetDeviceConfigurationResponse_default_instance_;
+class GetLatestDeviceConfigurationsRequest;
+struct GetLatestDeviceConfigurationsRequestDefaultTypeInternal;
+extern GetLatestDeviceConfigurationsRequestDefaultTypeInternal _GetLatestDeviceConfigurationsRequest_default_instance_;
+class GetLatestDeviceConfigurationsResponse;
+struct GetLatestDeviceConfigurationsResponseDefaultTypeInternal;
+extern GetLatestDeviceConfigurationsResponseDefaultTypeInternal _GetLatestDeviceConfigurationsResponse_default_instance_;
+class GetLatestDeviceConfigurationsResponse_ConfigsEntry_DoNotUse;
+struct GetLatestDeviceConfigurationsResponse_ConfigsEntry_DoNotUseDefaultTypeInternal;
+extern GetLatestDeviceConfigurationsResponse_ConfigsEntry_DoNotUseDefaultTypeInternal _GetLatestDeviceConfigurationsResponse_ConfigsEntry_DoNotUse_default_instance_;
 class ListDeviceConfigurationRevisionsRequest;
 struct ListDeviceConfigurationRevisionsRequestDefaultTypeInternal;
 extern ListDeviceConfigurationRevisionsRequestDefaultTypeInternal _ListDeviceConfigurationRevisionsRequest_default_instance_;
@@ -309,7 +321,7 @@ class RequestDeviceConfigurationFetchResponse final : public ::google::protobuf:
     return reinterpret_cast<const RequestDeviceConfigurationFetchResponse*>(
         &_RequestDeviceConfigurationFetchResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 9;
+  static constexpr int kIndexInFileMessages = 12;
   friend void swap(RequestDeviceConfigurationFetchResponse& a, RequestDeviceConfigurationFetchResponse& b) { a.Swap(&b); }
   inline void Swap(RequestDeviceConfigurationFetchResponse* other) {
     if (other == this) return;
@@ -455,7 +467,7 @@ class RequestDeviceConfigurationFetchRequest final : public ::google::protobuf::
     return reinterpret_cast<const RequestDeviceConfigurationFetchRequest*>(
         &_RequestDeviceConfigurationFetchRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 8;
+  static constexpr int kIndexInFileMessages = 11;
   friend void swap(RequestDeviceConfigurationFetchRequest& a, RequestDeviceConfigurationFetchRequest& b) { a.Swap(&b); }
   inline void Swap(RequestDeviceConfigurationFetchRequest* other) {
     if (other == this) return;
@@ -584,6 +596,232 @@ class RequestDeviceConfigurationFetchRequest final : public ::google::protobuf::
                           ::google::protobuf::Arena* arena, const Impl_& from,
                           const RequestDeviceConfigurationFetchRequest& from_msg);
     ::google::protobuf::internal::ArenaStringPtr device_id_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_kentik_2fdeviceconf_2fv202511_2fdevice_5fconfiguration_5fservice_2eproto;
+};
+// -------------------------------------------------------------------
+
+class GetLatestDeviceConfigurationsRequest final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:kentik.deviceconf.v202511.GetLatestDeviceConfigurationsRequest) */ {
+ public:
+  inline GetLatestDeviceConfigurationsRequest() : GetLatestDeviceConfigurationsRequest(nullptr) {}
+  ~GetLatestDeviceConfigurationsRequest() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(GetLatestDeviceConfigurationsRequest* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(GetLatestDeviceConfigurationsRequest));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR GetLatestDeviceConfigurationsRequest(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline GetLatestDeviceConfigurationsRequest(const GetLatestDeviceConfigurationsRequest& from) : GetLatestDeviceConfigurationsRequest(nullptr, from) {}
+  inline GetLatestDeviceConfigurationsRequest(GetLatestDeviceConfigurationsRequest&& from) noexcept
+      : GetLatestDeviceConfigurationsRequest(nullptr, std::move(from)) {}
+  inline GetLatestDeviceConfigurationsRequest& operator=(const GetLatestDeviceConfigurationsRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GetLatestDeviceConfigurationsRequest& operator=(GetLatestDeviceConfigurationsRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const GetLatestDeviceConfigurationsRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GetLatestDeviceConfigurationsRequest* internal_default_instance() {
+    return reinterpret_cast<const GetLatestDeviceConfigurationsRequest*>(
+        &_GetLatestDeviceConfigurationsRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 6;
+  friend void swap(GetLatestDeviceConfigurationsRequest& a, GetLatestDeviceConfigurationsRequest& b) { a.Swap(&b); }
+  inline void Swap(GetLatestDeviceConfigurationsRequest* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GetLatestDeviceConfigurationsRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  GetLatestDeviceConfigurationsRequest* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<GetLatestDeviceConfigurationsRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const GetLatestDeviceConfigurationsRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const GetLatestDeviceConfigurationsRequest& from) { GetLatestDeviceConfigurationsRequest::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(GetLatestDeviceConfigurationsRequest* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "kentik.deviceconf.v202511.GetLatestDeviceConfigurationsRequest"; }
+
+ protected:
+  explicit GetLatestDeviceConfigurationsRequest(::google::protobuf::Arena* arena);
+  GetLatestDeviceConfigurationsRequest(::google::protobuf::Arena* arena, const GetLatestDeviceConfigurationsRequest& from);
+  GetLatestDeviceConfigurationsRequest(::google::protobuf::Arena* arena, GetLatestDeviceConfigurationsRequest&& from) noexcept
+      : GetLatestDeviceConfigurationsRequest(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kDeviceIdsFieldNumber = 1,
+    kExcludeConfigDataFieldNumber = 2,
+    kExcludeDiffDataFieldNumber = 3,
+  };
+  // repeated string device_ids = 1 [json_name = "deviceIds"];
+  int device_ids_size() const;
+  private:
+  int _internal_device_ids_size() const;
+
+  public:
+  void clear_device_ids() ;
+  const std::string& device_ids(int index) const;
+  std::string* mutable_device_ids(int index);
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_device_ids(int index, Arg_&& value, Args_... args);
+  std::string* add_device_ids();
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void add_device_ids(Arg_&& value, Args_... args);
+  const ::google::protobuf::RepeatedPtrField<std::string>& device_ids() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* mutable_device_ids();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<std::string>& _internal_device_ids() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* _internal_mutable_device_ids();
+
+  public:
+  // bool exclude_config_data = 2 [json_name = "excludeConfigData"];
+  void clear_exclude_config_data() ;
+  bool exclude_config_data() const;
+  void set_exclude_config_data(bool value);
+
+  private:
+  bool _internal_exclude_config_data() const;
+  void _internal_set_exclude_config_data(bool value);
+
+  public:
+  // bool exclude_diff_data = 3 [json_name = "excludeDiffData"];
+  void clear_exclude_diff_data() ;
+  bool exclude_diff_data() const;
+  void set_exclude_diff_data(bool value);
+
+  private:
+  bool _internal_exclude_diff_data() const;
+  void _internal_set_exclude_diff_data(bool value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:kentik.deviceconf.v202511.GetLatestDeviceConfigurationsRequest)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      2, 3, 0,
+      81, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const GetLatestDeviceConfigurationsRequest& from_msg);
+    ::google::protobuf::RepeatedPtrField<std::string> device_ids_;
+    bool exclude_config_data_;
+    bool exclude_diff_data_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -796,7 +1034,7 @@ class ListDeviceConfigurationRevisionsRequest final : public ::google::protobuf:
     return reinterpret_cast<const ListDeviceConfigurationRevisionsRequest*>(
         &_ListDeviceConfigurationRevisionsRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 6;
+  static constexpr int kIndexInFileMessages = 9;
   friend void swap(ListDeviceConfigurationRevisionsRequest& a, ListDeviceConfigurationRevisionsRequest& b) { a.Swap(&b); }
   inline void Swap(ListDeviceConfigurationRevisionsRequest* other) {
     if (other == this) return;
@@ -1130,6 +1368,8 @@ class GetDeviceConfigurationRequest final : public ::google::protobuf::Message
     kRefRevisionFieldNumber = 3,
     kDeviceIdFieldNumber = 4,
     kFetchTimeFieldNumber = 1,
+    kExcludeConfigDataFieldNumber = 5,
+    kExcludeDiffDataFieldNumber = 6,
   };
   // string revision = 2 [json_name = "revision"];
   void clear_revision() ;
@@ -1194,12 +1434,32 @@ class GetDeviceConfigurationRequest final : public ::google::protobuf::Message
   ::google::protobuf::Timestamp* _internal_mutable_fetch_time();
 
   public:
+  // bool exclude_config_data = 5 [json_name = "excludeConfigData"];
+  void clear_exclude_config_data() ;
+  bool exclude_config_data() const;
+  void set_exclude_config_data(bool value);
+
+  private:
+  bool _internal_exclude_config_data() const;
+  void _internal_set_exclude_config_data(bool value);
+
+  public:
+  // bool exclude_diff_data = 6 [json_name = "excludeDiffData"];
+  void clear_exclude_diff_data() ;
+  bool exclude_diff_data() const;
+  void set_exclude_diff_data(bool value);
+
+  private:
+  bool _internal_exclude_diff_data() const;
+  void _internal_set_exclude_diff_data(bool value);
+
+  public:
   // @@protoc_insertion_point(class_scope:kentik.deviceconf.v202511.GetDeviceConfigurationRequest)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      2, 4, 1,
+      3, 6, 1,
       93, 2>
       _table_;
 
@@ -1223,6 +1483,8 @@ class GetDeviceConfigurationRequest final : public ::google::protobuf::Message
     ::google::protobuf::internal::ArenaStringPtr ref_revision_;
     ::google::protobuf::internal::ArenaStringPtr device_id_;
     ::google::protobuf::Timestamp* fetch_time_;
+    bool exclude_config_data_;
+    bool exclude_diff_data_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -1289,7 +1551,7 @@ class ListDeviceConfigurationRevisionsResponse final : public ::google::protobuf
     return reinterpret_cast<const ListDeviceConfigurationRevisionsResponse*>(
         &_ListDeviceConfigurationRevisionsResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 7;
+  static constexpr int kIndexInFileMessages = 10;
   friend void swap(ListDeviceConfigurationRevisionsResponse& a, ListDeviceConfigurationRevisionsResponse& b) { a.Swap(&b); }
   inline void Swap(ListDeviceConfigurationRevisionsResponse* other) {
     if (other == this) return;
@@ -1620,6 +1882,45 @@ class UpdateDeviceConfigurationRequest final : public ::google::protobuf::Messag
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_kentik_2fdeviceconf_2fv202511_2fdevice_5fconfiguration_5fservice_2eproto;
+};
+// -------------------------------------------------------------------
+
+class GetLatestDeviceConfigurationsResponse_ConfigsEntry_DoNotUse final
+    : public ::google::protobuf::internal::MapEntry<
+          std::string, ::google::protobuf::Message,
+          ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+          ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE> {
+ public:
+  using SuperType = ::google::protobuf::internal::MapEntry<
+      std::string, ::google::protobuf::Message,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE>;
+  GetLatestDeviceConfigurationsResponse_ConfigsEntry_DoNotUse();
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR GetLatestDeviceConfigurationsResponse_ConfigsEntry_DoNotUse(
+      ::google::protobuf::internal::ConstantInitialized);
+  explicit GetLatestDeviceConfigurationsResponse_ConfigsEntry_DoNotUse(::google::protobuf::Arena* arena);
+  static const GetLatestDeviceConfigurationsResponse_ConfigsEntry_DoNotUse* internal_default_instance() {
+    return reinterpret_cast<const GetLatestDeviceConfigurationsResponse_ConfigsEntry_DoNotUse*>(
+        &_GetLatestDeviceConfigurationsResponse_ConfigsEntry_DoNotUse_default_instance_);
+  }
+
+
+ private:
+  friend class ::google::protobuf::MessageLite;
+  friend struct ::TableStruct_kentik_2fdeviceconf_2fv202511_2fdevice_5fconfiguration_5fservice_2eproto;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 1,
+      88, 2>
+      _table_;
+
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
 };
 // -------------------------------------------------------------------
 
@@ -2008,6 +2309,204 @@ class GetDeviceAssignmentsResponse final : public ::google::protobuf::Message
                           ::google::protobuf::Arena* arena, const Impl_& from,
                           const GetDeviceAssignmentsResponse& from_msg);
     ::google::protobuf::RepeatedPtrField< ::kentik::deviceconf::v202511::Device > devices_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_kentik_2fdeviceconf_2fv202511_2fdevice_5fconfiguration_5fservice_2eproto;
+};
+// -------------------------------------------------------------------
+
+class GetLatestDeviceConfigurationsResponse final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:kentik.deviceconf.v202511.GetLatestDeviceConfigurationsResponse) */ {
+ public:
+  inline GetLatestDeviceConfigurationsResponse() : GetLatestDeviceConfigurationsResponse(nullptr) {}
+  ~GetLatestDeviceConfigurationsResponse() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(GetLatestDeviceConfigurationsResponse* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(GetLatestDeviceConfigurationsResponse));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR GetLatestDeviceConfigurationsResponse(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline GetLatestDeviceConfigurationsResponse(const GetLatestDeviceConfigurationsResponse& from) : GetLatestDeviceConfigurationsResponse(nullptr, from) {}
+  inline GetLatestDeviceConfigurationsResponse(GetLatestDeviceConfigurationsResponse&& from) noexcept
+      : GetLatestDeviceConfigurationsResponse(nullptr, std::move(from)) {}
+  inline GetLatestDeviceConfigurationsResponse& operator=(const GetLatestDeviceConfigurationsResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GetLatestDeviceConfigurationsResponse& operator=(GetLatestDeviceConfigurationsResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const GetLatestDeviceConfigurationsResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GetLatestDeviceConfigurationsResponse* internal_default_instance() {
+    return reinterpret_cast<const GetLatestDeviceConfigurationsResponse*>(
+        &_GetLatestDeviceConfigurationsResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 8;
+  friend void swap(GetLatestDeviceConfigurationsResponse& a, GetLatestDeviceConfigurationsResponse& b) { a.Swap(&b); }
+  inline void Swap(GetLatestDeviceConfigurationsResponse* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GetLatestDeviceConfigurationsResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  GetLatestDeviceConfigurationsResponse* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<GetLatestDeviceConfigurationsResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const GetLatestDeviceConfigurationsResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const GetLatestDeviceConfigurationsResponse& from) { GetLatestDeviceConfigurationsResponse::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(GetLatestDeviceConfigurationsResponse* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "kentik.deviceconf.v202511.GetLatestDeviceConfigurationsResponse"; }
+
+ protected:
+  explicit GetLatestDeviceConfigurationsResponse(::google::protobuf::Arena* arena);
+  GetLatestDeviceConfigurationsResponse(::google::protobuf::Arena* arena, const GetLatestDeviceConfigurationsResponse& from);
+  GetLatestDeviceConfigurationsResponse(::google::protobuf::Arena* arena, GetLatestDeviceConfigurationsResponse&& from) noexcept
+      : GetLatestDeviceConfigurationsResponse(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kConfigsFieldNumber = 1,
+  };
+  // map<string, .kentik.deviceconf.v202511.Snapshot> configs = 1 [json_name = "configs"];
+  int configs_size() const;
+  private:
+  int _internal_configs_size() const;
+
+  public:
+  void clear_configs() ;
+  const ::google::protobuf::Map<std::string, ::kentik::deviceconf::v202511::Snapshot>& configs() const;
+  ::google::protobuf::Map<std::string, ::kentik::deviceconf::v202511::Snapshot>* mutable_configs();
+
+  private:
+  const ::google::protobuf::Map<std::string, ::kentik::deviceconf::v202511::Snapshot>& _internal_configs() const;
+  ::google::protobuf::Map<std::string, ::kentik::deviceconf::v202511::Snapshot>* _internal_mutable_configs();
+
+  public:
+  // @@protoc_insertion_point(class_scope:kentik.deviceconf.v202511.GetLatestDeviceConfigurationsResponse)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 2,
+      79, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const GetLatestDeviceConfigurationsResponse& from_msg);
+    ::google::protobuf::internal::MapField<GetLatestDeviceConfigurationsResponse_ConfigsEntry_DoNotUse, std::string, ::kentik::deviceconf::v202511::Snapshot,
+                      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+                      ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE>
+        configs_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -2418,6 +2917,50 @@ inline void GetDeviceConfigurationRequest::set_allocated_device_id(std::string* 
   // @@protoc_insertion_point(field_set_allocated:kentik.deviceconf.v202511.GetDeviceConfigurationRequest.device_id)
 }
 
+// bool exclude_config_data = 5 [json_name = "excludeConfigData"];
+inline void GetDeviceConfigurationRequest::clear_exclude_config_data() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.exclude_config_data_ = false;
+}
+inline bool GetDeviceConfigurationRequest::exclude_config_data() const {
+  // @@protoc_insertion_point(field_get:kentik.deviceconf.v202511.GetDeviceConfigurationRequest.exclude_config_data)
+  return _internal_exclude_config_data();
+}
+inline void GetDeviceConfigurationRequest::set_exclude_config_data(bool value) {
+  _internal_set_exclude_config_data(value);
+  // @@protoc_insertion_point(field_set:kentik.deviceconf.v202511.GetDeviceConfigurationRequest.exclude_config_data)
+}
+inline bool GetDeviceConfigurationRequest::_internal_exclude_config_data() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.exclude_config_data_;
+}
+inline void GetDeviceConfigurationRequest::_internal_set_exclude_config_data(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.exclude_config_data_ = value;
+}
+
+// bool exclude_diff_data = 6 [json_name = "excludeDiffData"];
+inline void GetDeviceConfigurationRequest::clear_exclude_diff_data() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.exclude_diff_data_ = false;
+}
+inline bool GetDeviceConfigurationRequest::exclude_diff_data() const {
+  // @@protoc_insertion_point(field_get:kentik.deviceconf.v202511.GetDeviceConfigurationRequest.exclude_diff_data)
+  return _internal_exclude_diff_data();
+}
+inline void GetDeviceConfigurationRequest::set_exclude_diff_data(bool value) {
+  _internal_set_exclude_diff_data(value);
+  // @@protoc_insertion_point(field_set:kentik.deviceconf.v202511.GetDeviceConfigurationRequest.exclude_diff_data)
+}
+inline bool GetDeviceConfigurationRequest::_internal_exclude_diff_data() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.exclude_diff_data_;
+}
+inline void GetDeviceConfigurationRequest::_internal_set_exclude_diff_data(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.exclude_diff_data_ = value;
+}
+
 // -------------------------------------------------------------------
 
 // GetDeviceConfigurationResponse
@@ -2511,6 +3054,148 @@ inline void GetDeviceConfigurationResponse::set_allocated_config(::kentik::devic
 
   _impl_.config_ = reinterpret_cast<::kentik::deviceconf::v202511::Snapshot*>(value);
   // @@protoc_insertion_point(field_set_allocated:kentik.deviceconf.v202511.GetDeviceConfigurationResponse.config)
+}
+
+// -------------------------------------------------------------------
+
+// GetLatestDeviceConfigurationsRequest
+
+// repeated string device_ids = 1 [json_name = "deviceIds"];
+inline int GetLatestDeviceConfigurationsRequest::_internal_device_ids_size() const {
+  return _internal_device_ids().size();
+}
+inline int GetLatestDeviceConfigurationsRequest::device_ids_size() const {
+  return _internal_device_ids_size();
+}
+inline void GetLatestDeviceConfigurationsRequest::clear_device_ids() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.device_ids_.Clear();
+}
+inline std::string* GetLatestDeviceConfigurationsRequest::add_device_ids() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  std::string* _s = _internal_mutable_device_ids()->Add();
+  // @@protoc_insertion_point(field_add_mutable:kentik.deviceconf.v202511.GetLatestDeviceConfigurationsRequest.device_ids)
+  return _s;
+}
+inline const std::string& GetLatestDeviceConfigurationsRequest::device_ids(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.deviceconf.v202511.GetLatestDeviceConfigurationsRequest.device_ids)
+  return _internal_device_ids().Get(index);
+}
+inline std::string* GetLatestDeviceConfigurationsRequest::mutable_device_ids(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:kentik.deviceconf.v202511.GetLatestDeviceConfigurationsRequest.device_ids)
+  return _internal_mutable_device_ids()->Mutable(index);
+}
+template <typename Arg_, typename... Args_>
+inline void GetLatestDeviceConfigurationsRequest::set_device_ids(int index, Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::AssignToString(
+      *_internal_mutable_device_ids()->Mutable(index),
+      std::forward<Arg_>(value), args... );
+  // @@protoc_insertion_point(field_set:kentik.deviceconf.v202511.GetLatestDeviceConfigurationsRequest.device_ids)
+}
+template <typename Arg_, typename... Args_>
+inline void GetLatestDeviceConfigurationsRequest::add_device_ids(Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::google::protobuf::internal::AddToRepeatedPtrField(*_internal_mutable_device_ids(),
+                               std::forward<Arg_>(value),
+                               args... );
+  // @@protoc_insertion_point(field_add:kentik.deviceconf.v202511.GetLatestDeviceConfigurationsRequest.device_ids)
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+GetLatestDeviceConfigurationsRequest::device_ids() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:kentik.deviceconf.v202511.GetLatestDeviceConfigurationsRequest.device_ids)
+  return _internal_device_ids();
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+GetLatestDeviceConfigurationsRequest::mutable_device_ids() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:kentik.deviceconf.v202511.GetLatestDeviceConfigurationsRequest.device_ids)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_device_ids();
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+GetLatestDeviceConfigurationsRequest::_internal_device_ids() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.device_ids_;
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+GetLatestDeviceConfigurationsRequest::_internal_mutable_device_ids() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.device_ids_;
+}
+
+// bool exclude_config_data = 2 [json_name = "excludeConfigData"];
+inline void GetLatestDeviceConfigurationsRequest::clear_exclude_config_data() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.exclude_config_data_ = false;
+}
+inline bool GetLatestDeviceConfigurationsRequest::exclude_config_data() const {
+  // @@protoc_insertion_point(field_get:kentik.deviceconf.v202511.GetLatestDeviceConfigurationsRequest.exclude_config_data)
+  return _internal_exclude_config_data();
+}
+inline void GetLatestDeviceConfigurationsRequest::set_exclude_config_data(bool value) {
+  _internal_set_exclude_config_data(value);
+  // @@protoc_insertion_point(field_set:kentik.deviceconf.v202511.GetLatestDeviceConfigurationsRequest.exclude_config_data)
+}
+inline bool GetLatestDeviceConfigurationsRequest::_internal_exclude_config_data() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.exclude_config_data_;
+}
+inline void GetLatestDeviceConfigurationsRequest::_internal_set_exclude_config_data(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.exclude_config_data_ = value;
+}
+
+// bool exclude_diff_data = 3 [json_name = "excludeDiffData"];
+inline void GetLatestDeviceConfigurationsRequest::clear_exclude_diff_data() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.exclude_diff_data_ = false;
+}
+inline bool GetLatestDeviceConfigurationsRequest::exclude_diff_data() const {
+  // @@protoc_insertion_point(field_get:kentik.deviceconf.v202511.GetLatestDeviceConfigurationsRequest.exclude_diff_data)
+  return _internal_exclude_diff_data();
+}
+inline void GetLatestDeviceConfigurationsRequest::set_exclude_diff_data(bool value) {
+  _internal_set_exclude_diff_data(value);
+  // @@protoc_insertion_point(field_set:kentik.deviceconf.v202511.GetLatestDeviceConfigurationsRequest.exclude_diff_data)
+}
+inline bool GetLatestDeviceConfigurationsRequest::_internal_exclude_diff_data() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.exclude_diff_data_;
+}
+inline void GetLatestDeviceConfigurationsRequest::_internal_set_exclude_diff_data(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.exclude_diff_data_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// GetLatestDeviceConfigurationsResponse
+
+// map<string, .kentik.deviceconf.v202511.Snapshot> configs = 1 [json_name = "configs"];
+inline int GetLatestDeviceConfigurationsResponse::_internal_configs_size() const {
+  return _internal_configs().size();
+}
+inline int GetLatestDeviceConfigurationsResponse::configs_size() const {
+  return _internal_configs_size();
+}
+inline const ::google::protobuf::Map<std::string, ::kentik::deviceconf::v202511::Snapshot>& GetLatestDeviceConfigurationsResponse::_internal_configs() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.configs_.GetMap();
+}
+inline const ::google::protobuf::Map<std::string, ::kentik::deviceconf::v202511::Snapshot>& GetLatestDeviceConfigurationsResponse::configs() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_map:kentik.deviceconf.v202511.GetLatestDeviceConfigurationsResponse.configs)
+  return _internal_configs();
+}
+inline ::google::protobuf::Map<std::string, ::kentik::deviceconf::v202511::Snapshot>* GetLatestDeviceConfigurationsResponse::_internal_mutable_configs() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.configs_.MutableMap();
+}
+inline ::google::protobuf::Map<std::string, ::kentik::deviceconf::v202511::Snapshot>* GetLatestDeviceConfigurationsResponse::mutable_configs() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_map:kentik.deviceconf.v202511.GetLatestDeviceConfigurationsResponse.configs)
+  return _internal_mutable_configs();
 }
 
 // -------------------------------------------------------------------

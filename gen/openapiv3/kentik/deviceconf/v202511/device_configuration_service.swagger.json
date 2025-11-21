@@ -157,6 +157,18 @@
                     }
                 }
             },
+            "v202511GetLatestDeviceConfigurationsResponse": {
+                "type": "object",
+                "properties": {
+                    "configs": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/v202511Snapshot"
+                        },
+                        "description": "Map from device ID to latest configuration."
+                    }
+                }
+            },
             "v202511ListDeviceConfigurationRevisionsResponse": {
                 "type": "object",
                 "properties": {
@@ -189,7 +201,8 @@
                     "deviceId": {
                         "type": "string"
                     }
-                }
+                },
+                "title": "TODO: I somewhat regret embedding \"Revision\" inside \"Snapshot\".\nBeing embedded means that any time we add something to Revision, it affects\nSnapshot as well. For example, when we added device_id to Revision, it\nmeant that now Snapshot has device_id in two places (top-level and inside\nRevision). At some point we should probably flatten these fields into the\ntop-level Snapshot message and deprecate the embedded Revision message. (Or\nbreak the coupling between Snapshot and List Revisions some other way.)"
             },
             "v202511Snapshot": {
                 "type": "object",
