@@ -1,0 +1,203 @@
+//
+// PUBLIC API
+//
+
+syntax = "proto3";
+
+package kentik.ai_advisor.v202511;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/ai_advisor/v202511;ai_advisor";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/timestamp.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+import "kentik/core/v202303/annotations.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "AI Advisor API"
+    version: "v202511"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api-schema-public"
+    }
+    description: "# Overview\n"
+    "Provides programmatic access to AI Advisor."
+  }
+  external_docs: {
+    url: "https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview"
+    description: "General information about Kentik APIs"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+// SessionStatus represents the state of a chat session or message
+enum SessionStatus {
+  SESSION_STATUS_UNSPECIFIED = 0;
+  SESSION_STATUS_PENDING = 1;
+  SESSION_STATUS_PROCESSING = 2;
+  SESSION_STATUS_COMPLETED = 3;
+  SESSION_STATUS_FAILED = 4;
+}
+
+// {{.Name}}
+message CreateChatSessionRequest {
+  string prompt = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The user question"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message CreateChatSessionResponse {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The unique identifier (UUID) for the chat session"
+    }
+  ];
+  SessionStatus status = 2;
+}
+
+// {{.Name}}
+message UpdateChatSessionRequest {
+  string prompt = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The user question"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  string id = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The unique identifier (UUID) for the chat session"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message UpdateChatSessionResponse {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The unique identifier (UUID) for the chat session"
+    }
+  ];
+  SessionStatus status = 2;
+}
+
+// {{.Name}}
+message ChatMessage {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The unique identifier (UUID) for the message"
+    }
+  ];
+  SessionStatus status = 2;
+  optional string final_answer = 3;
+  optional string reasoning = 4;
+  optional string data = 5;
+  optional string error_message = 6;
+  optional google.protobuf.Timestamp created_at = 7;
+  optional google.protobuf.Timestamp updated_at = 8;
+  optional string prompt = 9;
+}
+
+// {{.Name}}
+message GetChatSessionRequest {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The unique identifier (UUID) for the chat session"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message GetChatSessionResponse {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The unique identifier (UUID) for the chat session"
+    }
+  ];
+  SessionStatus status = 2;
+  repeated ChatMessage messages = 3;
+}
+
+service AiAdvisorDataService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "ai_advisor";
+
+  rpc CreateChatSession(CreateChatSessionRequest) returns (CreateChatSessionResponse) {
+    option (kentik.core.v202303.method_scope) = "ai_advisor:write";
+    option (google.api.http) = {
+      post: "/ai_advisor/v202511/chat"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "CreateChatSession"
+      summary: "Create AI Advisor Chat Session"
+      description: "Create a new AI Advisor Chat session with a prompt"
+    };
+  }
+
+
+  rpc UpdateChatSession(UpdateChatSessionRequest) returns (UpdateChatSessionResponse) {
+    option (kentik.core.v202303.method_scope) = "ai_advisor:write";
+    option (google.api.http) = {
+      put: "/ai_advisor/v202511/chat"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "UpdateChatSession"
+      summary: "Update AI Advisor Chat Session"
+      description: "Update AI Advisor Chat session with a prompt"
+    };
+  }
+
+  rpc GetChatSession(GetChatSessionRequest) returns (GetChatSessionResponse) {
+    option (kentik.core.v202303.method_scope) = "ai_advisor:read";
+    option (google.api.http) = {
+      get: "/ai_advisor/v202511/chat/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetChatSession"
+      summary: "Get AI Advisor Chat Session"
+      description: "Retrieve the status and results of an AI Advisor chat session"
+    };
+  }
+}

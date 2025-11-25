@@ -1,0 +1,304 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "AI Advisor API",
+    "description": "# Overview\nProvides programmatic access to AI Advisor.",
+    "version": "v202511",
+    "contact": {
+      "name": "Kentik API Engineering",
+      "url": "https://github.com/kentik/api-schema-public"
+    }
+  },
+  "tags": [
+    {
+      "name": "AiAdvisorDataService"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/ai_advisor/v202511/chat": {
+      "post": {
+        "summary": "Create AI Advisor Chat Session",
+        "description": "Create a new AI Advisor Chat session with a prompt",
+        "operationId": "CreateChatSession",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202511CreateChatSessionResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202511CreateChatSessionRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AiAdvisorDataService"
+        ]
+      },
+      "put": {
+        "summary": "Update AI Advisor Chat Session",
+        "description": "Update AI Advisor Chat session with a prompt",
+        "operationId": "UpdateChatSession",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202511UpdateChatSessionResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202511UpdateChatSessionRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AiAdvisorDataService"
+        ]
+      }
+    },
+    "/ai_advisor/v202511/chat/{id}": {
+      "get": {
+        "summary": "Get AI Advisor Chat Session",
+        "description": "Retrieve the status and results of an AI Advisor chat session",
+        "operationId": "GetChatSession",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202511GetChatSessionResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The unique identifier (UUID) for the chat session",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AiAdvisorDataService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v202511ChatMessage": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The unique identifier (UUID) for the message"
+        },
+        "status": {
+          "$ref": "#/definitions/v202511SessionStatus"
+        },
+        "finalAnswer": {
+          "type": "string"
+        },
+        "reasoning": {
+          "type": "string"
+        },
+        "data": {
+          "type": "string"
+        },
+        "errorMessage": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "prompt": {
+          "type": "string"
+        }
+      },
+      "title": "ChatMessage"
+    },
+    "v202511CreateChatSessionRequest": {
+      "type": "object",
+      "properties": {
+        "prompt": {
+          "type": "string",
+          "description": "The user question"
+        }
+      },
+      "title": "CreateChatSessionRequest",
+      "required": [
+        "prompt"
+      ]
+    },
+    "v202511CreateChatSessionResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The unique identifier (UUID) for the chat session"
+        },
+        "status": {
+          "$ref": "#/definitions/v202511SessionStatus"
+        }
+      },
+      "title": "CreateChatSessionResponse"
+    },
+    "v202511GetChatSessionResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The unique identifier (UUID) for the chat session"
+        },
+        "status": {
+          "$ref": "#/definitions/v202511SessionStatus"
+        },
+        "messages": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v202511ChatMessage"
+          }
+        }
+      },
+      "title": "GetChatSessionResponse"
+    },
+    "v202511SessionStatus": {
+      "type": "string",
+      "enum": [
+        "SESSION_STATUS_UNSPECIFIED",
+        "SESSION_STATUS_PENDING",
+        "SESSION_STATUS_PROCESSING",
+        "SESSION_STATUS_COMPLETED",
+        "SESSION_STATUS_FAILED"
+      ],
+      "default": "SESSION_STATUS_UNSPECIFIED",
+      "title": "SessionStatus represents the state of a chat session or message"
+    },
+    "v202511UpdateChatSessionRequest": {
+      "type": "object",
+      "properties": {
+        "prompt": {
+          "type": "string",
+          "description": "The user question"
+        },
+        "id": {
+          "type": "string",
+          "description": "The unique identifier (UUID) for the chat session"
+        }
+      },
+      "title": "UpdateChatSessionRequest",
+      "required": [
+        "prompt",
+        "id"
+      ]
+    },
+    "v202511UpdateChatSessionResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The unique identifier (UUID) for the chat session"
+        },
+        "status": {
+          "$ref": "#/definitions/v202511SessionStatus"
+        }
+      },
+      "title": "UpdateChatSessionResponse"
+    }
+  },
+  "securityDefinitions": {
+    "email": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-Email",
+      "in": "header"
+    },
+    "token": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-API-Token",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "email": [],
+      "token": []
+    }
+  ],
+  "externalDocs": {
+    "description": "General information about Kentik APIs",
+    "url": "https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview"
+  }
+}
