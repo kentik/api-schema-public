@@ -485,7 +485,7 @@
                         "$ref": "#/components/schemas/v202505NmsActivateOrClearConditions"
                     },
                     "severity": {
-                        "type": "string"
+                        "$ref": "#/components/schemas/v202303Severity"
                     },
                     "clearManual": {
                         "type": "boolean"

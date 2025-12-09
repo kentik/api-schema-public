@@ -429,7 +429,7 @@
           "$ref": "#/definitions/v202505NmsActivateOrClearConditions"
         },
         "severity": {
-          "type": "string"
+          "$ref": "#/definitions/v202303Severity"
         },
         "clearManual": {
           "type": "boolean"

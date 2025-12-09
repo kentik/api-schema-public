@@ -547,7 +547,7 @@ struct  Kentik__Alerting__Public__V202505__NmsContext__ActivationInfo
 {
   ProtobufCMessage base;
   Kentik__Alerting__Public__V202505__NmsActivateOrClearConditions *activate;
-  char *severity;
+  Kentik__Alerting__Types__V202303__Severity severity;
   Kentik__Alerting__Public__V202505__NmsContext__ActivationInfo__ClearTypeCase clear_type_case;
   union {
     protobuf_c_boolean clear_manual;
@@ -556,7 +556,7 @@ struct  Kentik__Alerting__Public__V202505__NmsContext__ActivationInfo
 };
 #define KENTIK__ALERTING__PUBLIC__V202505__NMS_CONTEXT__ACTIVATION_INFO__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__alerting__public__v202505__nms_context__activation_info__descriptor) \
-    , NULL, (char *)protobuf_c_empty_string, KENTIK__ALERTING__PUBLIC__V202505__NMS_CONTEXT__ACTIVATION_INFO__CLEAR_TYPE__NOT_SET, {0} }
+    , NULL, KENTIK__ALERTING__TYPES__V202303__SEVERITY__SEVERITY_UNSPECIFIED, KENTIK__ALERTING__PUBLIC__V202505__NMS_CONTEXT__ACTIVATION_INFO__CLEAR_TYPE__NOT_SET, {0} }
 
 
 struct  Kentik__Alerting__Public__V202505__NmsContext__DatasetInfo

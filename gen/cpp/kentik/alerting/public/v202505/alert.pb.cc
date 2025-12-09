@@ -680,10 +680,8 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 inline constexpr NmsContext_ActivationInfo::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
-        severity_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
         activate_{nullptr},
+        severity_{static_cast< ::kentik::alerting::types::v202303::Severity >(0)},
         clear_type_{},
         _oneof_case_{} {}
 
@@ -1750,7 +1748,7 @@ const char descriptor_table_protodef_kentik_2falerting_2fpublic_2fv202505_2faler
     "OF_HIGHEST\020\021\022\?\n;ACTIVATION_STATUS_CURREN"
     "T_MISSING_DEFAULT_INSTEAD_OF_LOWEST\020\022\022@\n"
     "<ACTIVATION_STATUS_CURRENT_MISSING_DEFAU"
-    "LT_INSTEAD_OF_HIGHEST\020\023\"\202\020\n\nNmsContext\022b"
+    "LT_INSTEAD_OF_HIGHEST\020\023\"\253\020\n\nNmsContext\022b"
     "\n\017activation_info\030\001 \001(\01329.kentik.alertin"
     "g.public.v202505.NmsContext.ActivationIn"
     "foR\016activationInfo\022Y\n\014dataset_info\030\002 \001(\013"
@@ -1779,83 +1777,84 @@ const char descriptor_table_protodef_kentik_2falerting_2fpublic_2fv202505_2faler
     "msContext.AlarmMetricMapR\005value:\0028\001\0329\n\013D"
     "eviceEntry\022\020\n\003key\030\001 \001(\tR\003key\022\024\n\005value\030\002 "
     "\001(\tR\005value:\0028\001\032;\n\rGroupKeyEntry\022\020\n\003key\030\001"
-    " \001(\tR\003key\022\024\n\005value\030\002 \001(\tR\005value:\0028\001\032\361\001\n\016"
+    " \001(\tR\003key\022\024\n\005value\030\002 \001(\tR\005value:\0028\001\032\232\002\n\016"
     "ActivationInfo\022X\n\010activate\030\001 \001(\0132<.kenti"
     "k.alerting.public.v202505.NmsActivateOrC"
-    "learConditionsR\010activate\022\032\n\010severity\030\002 \001"
-    "(\tR\010severity\022#\n\014clear_manual\030\003 \001(\010H\000R\013cl"
-    "earManual\0226\n\026clear_unless_activated\030\004 \001("
-    "\010H\000R\024clearUnlessActivatedB\014\n\nclear_type\032"
-    "\223\001\n\013DatasetInfo\022\037\n\013custom_type\030\001 \001(\010R\ncu"
-    "stomType\022\036\n\ndimensions\030\002 \003(\tR\ndimensions"
-    "\022\037\n\013entity_type\030\003 \001(\tR\nentityType\022\"\n\014mea"
-    "surements\030\004 \003(\tR\014measurements\032\263\002\n\013AlarmT"
-    "arget\022Z\n\006fields\030\001 \003(\0132B.kentik.alerting."
-    "public.v202505.NmsContext.AlarmTarget.Fi"
-    "eldsEntryR\006fields\022T\n\004tags\030\002 \003(\0132@.kentik"
-    ".alerting.public.v202505.NmsContext.Alar"
-    "mTarget.TagsEntryR\004tags\0329\n\013FieldsEntry\022\020"
-    "\n\003key\030\001 \001(\tR\003key\022\024\n\005value\030\002 \001(\001R\005value:\002"
-    "8\001\0327\n\tTagsEntry\022\020\n\003key\030\001 \001(\tR\003key\022\024\n\005val"
-    "ue\030\002 \001(\tR\005value:\0028\001\032\256\001\n\016AlarmMetricMap\022`"
-    "\n\007metrics\030\001 \003(\0132F.kentik.alerting.public"
-    ".v202505.NmsContext.AlarmMetricMap.Metri"
-    "csEntryR\007metrics\032:\n\014MetricsEntry\022\020\n\003key\030"
-    "\001 \001(\tR\003key\022\024\n\005value\030\002 \001(\001R\005value:\0028\001*X\n\n"
-    "AlertState\022\033\n\027ALERT_STATE_UNSPECIFIED\020\000\022"
-    "\025\n\021ALERT_STATE_CLEAR\020\001\022\026\n\022ALERT_STATE_AC"
-    "TIVE\020\002*\246\001\n\024AlertAcknowledgement\022%\n!ALERT"
-    "_ACKNOWLEDGEMENT_UNSPECIFIED\020\000\022\"\n\036ALERT_"
-    "ACKNOWLEDGEMENT_REQUIRED\020\001\022\036\n\032ALERT_ACKN"
-    "OWLEDGEMENT_DONE\020\002\022#\n\037ALERT_ACKNOWLEDGEM"
-    "ENT_NOT_ACKED\020\0032\267\n\n\014AlertService\022\215\002\n\003Get"
-    "\0226.kentik.alerting.public.v202505.AlertS"
-    "erviceGetRequest\0327.kentik.alerting.publi"
-    "c.v202505.AlertServiceGetResponse\"\224\001\222A^\022"
-    "\tGet Alert\032LReturns an alert object that"
-    " contains information about an individua"
-    "l alert.*\003Get\362\327\002\023admin.alerting:read\202\323\344\223"
-    "\002\026\022\024/v202505/alerts/{id}\022\230\002\n\004List\0227.kent"
-    "ik.alerting.public.v202505.AlertServiceL"
-    "istRequest\0328.kentik.alerting.public.v202"
-    "505.AlertServiceListResponse\"\234\001\222Ah\022\013List"
-    " Alerts\032SReturns an array of alert objec"
-    "ts that contain information about indivi"
-    "dual alerts.*\004List\362\327\002\023admin.alerting:rea"
-    "d\202\323\344\223\002\024\"\017/v202505/alerts:\001*\022\336\001\n\003Ack\0226.ke"
-    "ntik.alerting.public.v202505.AlertServic"
-    "eAckRequest\0327.kentik.alerting.public.v20"
-    "2505.AlertServiceAckResponse\"f\222A(\022\tAck A"
-    "lert\032\026Acknowledges an alert.*\003Ack\362\327\002\024adm"
-    "in.alerting:write\202\323\344\223\002\035\"\030/v202505/alerts"
-    "/{id}/ack:\001*\022\213\002\n\005UnAck\0228.kentik.alerting"
-    ".public.v202505.AlertServiceUnAckRequest"
-    "\0329.kentik.alerting.public.v202505.AlertS"
-    "erviceUnAckResponse\"\214\001\222AL\022\013UnAck Alert\0326"
-    "Unacknowledges an alert (removes the ack"
-    "nowledgement).*\005UnAck\362\327\002\024admin.alerting:"
-    "write\202\323\344\223\002\037\"\032/v202505/alerts/{id}/unack:"
-    "\001*\022\336\001\n\005Clear\0228.kentik.alerting.public.v2"
-    "02505.AlertServiceClearRequest\0329.kentik."
-    "alerting.public.v202505.AlertServiceClea"
-    "rResponse\"`\222A%\022\014Clear Alerts\032\016Clears ale"
-    "rts.*\005Clear\362\327\002\024admin.alerting:write\202\323\344\223\002"
-    "\032\"\025/v202505/alerts/clear:\001*\032,\312A\023grpc.api"
-    ".kentik.com\352\327\002\016admin.alerting\220\330\002\003B\213\004ZIgi"
-    "thub.com/kentik/api-schema-public/gen/go"
-    "/kentik/alerting/public/v202505\222A\274\003\022\360\001\n\022"
-    "Alerting Alert API\022\211\001# Overview\nThe Aler"
-    "ts API provides programmatic access to K"
-    "entik\'s Alerts, which allows the retriev"
-    "al and basic manual control of alerts.\"E"
-    "\n\026Kentik API Engineering\022+https://github"
-    ".com/kentik/api-schema-public2\007v202505*\001"
-    "\0022\020application/json:\020application/jsonZD\n"
-    "\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token"
-    "\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email\022\000"
-    "\n\t\n\005token\022\000rB\n\033Kentik Alerts documentati"
-    "on\022#https://kb.kentik.com/docs/alertingb"
-    "\006proto3"
+    "learConditionsR\010activate\022C\n\010severity\030\002 \001"
+    "(\0162\'.kentik.alerting.types.v202303.Sever"
+    "ityR\010severity\022#\n\014clear_manual\030\003 \001(\010H\000R\013c"
+    "learManual\0226\n\026clear_unless_activated\030\004 \001"
+    "(\010H\000R\024clearUnlessActivatedB\014\n\nclear_type"
+    "\032\223\001\n\013DatasetInfo\022\037\n\013custom_type\030\001 \001(\010R\nc"
+    "ustomType\022\036\n\ndimensions\030\002 \003(\tR\ndimension"
+    "s\022\037\n\013entity_type\030\003 \001(\tR\nentityType\022\"\n\014me"
+    "asurements\030\004 \003(\tR\014measurements\032\263\002\n\013Alarm"
+    "Target\022Z\n\006fields\030\001 \003(\0132B.kentik.alerting"
+    ".public.v202505.NmsContext.AlarmTarget.F"
+    "ieldsEntryR\006fields\022T\n\004tags\030\002 \003(\0132@.kenti"
+    "k.alerting.public.v202505.NmsContext.Ala"
+    "rmTarget.TagsEntryR\004tags\0329\n\013FieldsEntry\022"
+    "\020\n\003key\030\001 \001(\tR\003key\022\024\n\005value\030\002 \001(\001R\005value:"
+    "\0028\001\0327\n\tTagsEntry\022\020\n\003key\030\001 \001(\tR\003key\022\024\n\005va"
+    "lue\030\002 \001(\tR\005value:\0028\001\032\256\001\n\016AlarmMetricMap\022"
+    "`\n\007metrics\030\001 \003(\0132F.kentik.alerting.publi"
+    "c.v202505.NmsContext.AlarmMetricMap.Metr"
+    "icsEntryR\007metrics\032:\n\014MetricsEntry\022\020\n\003key"
+    "\030\001 \001(\tR\003key\022\024\n\005value\030\002 \001(\001R\005value:\0028\001*X\n"
+    "\nAlertState\022\033\n\027ALERT_STATE_UNSPECIFIED\020\000"
+    "\022\025\n\021ALERT_STATE_CLEAR\020\001\022\026\n\022ALERT_STATE_A"
+    "CTIVE\020\002*\246\001\n\024AlertAcknowledgement\022%\n!ALER"
+    "T_ACKNOWLEDGEMENT_UNSPECIFIED\020\000\022\"\n\036ALERT"
+    "_ACKNOWLEDGEMENT_REQUIRED\020\001\022\036\n\032ALERT_ACK"
+    "NOWLEDGEMENT_DONE\020\002\022#\n\037ALERT_ACKNOWLEDGE"
+    "MENT_NOT_ACKED\020\0032\267\n\n\014AlertService\022\215\002\n\003Ge"
+    "t\0226.kentik.alerting.public.v202505.Alert"
+    "ServiceGetRequest\0327.kentik.alerting.publ"
+    "ic.v202505.AlertServiceGetResponse\"\224\001\222A^"
+    "\022\tGet Alert\032LReturns an alert object tha"
+    "t contains information about an individu"
+    "al alert.*\003Get\362\327\002\023admin.alerting:read\202\323\344"
+    "\223\002\026\022\024/v202505/alerts/{id}\022\230\002\n\004List\0227.ken"
+    "tik.alerting.public.v202505.AlertService"
+    "ListRequest\0328.kentik.alerting.public.v20"
+    "2505.AlertServiceListResponse\"\234\001\222Ah\022\013Lis"
+    "t Alerts\032SReturns an array of alert obje"
+    "cts that contain information about indiv"
+    "idual alerts.*\004List\362\327\002\023admin.alerting:re"
+    "ad\202\323\344\223\002\024\"\017/v202505/alerts:\001*\022\336\001\n\003Ack\0226.k"
+    "entik.alerting.public.v202505.AlertServi"
+    "ceAckRequest\0327.kentik.alerting.public.v2"
+    "02505.AlertServiceAckResponse\"f\222A(\022\tAck "
+    "Alert\032\026Acknowledges an alert.*\003Ack\362\327\002\024ad"
+    "min.alerting:write\202\323\344\223\002\035\"\030/v202505/alert"
+    "s/{id}/ack:\001*\022\213\002\n\005UnAck\0228.kentik.alertin"
+    "g.public.v202505.AlertServiceUnAckReques"
+    "t\0329.kentik.alerting.public.v202505.Alert"
+    "ServiceUnAckResponse\"\214\001\222AL\022\013UnAck Alert\032"
+    "6Unacknowledges an alert (removes the ac"
+    "knowledgement).*\005UnAck\362\327\002\024admin.alerting"
+    ":write\202\323\344\223\002\037\"\032/v202505/alerts/{id}/unack"
+    ":\001*\022\336\001\n\005Clear\0228.kentik.alerting.public.v"
+    "202505.AlertServiceClearRequest\0329.kentik"
+    ".alerting.public.v202505.AlertServiceCle"
+    "arResponse\"`\222A%\022\014Clear Alerts\032\016Clears al"
+    "erts.*\005Clear\362\327\002\024admin.alerting:write\202\323\344\223"
+    "\002\032\"\025/v202505/alerts/clear:\001*\032,\312A\023grpc.ap"
+    "i.kentik.com\352\327\002\016admin.alerting\220\330\002\003B\213\004ZIg"
+    "ithub.com/kentik/api-schema-public/gen/g"
+    "o/kentik/alerting/public/v202505\222A\274\003\022\360\001\n"
+    "\022Alerting Alert API\022\211\001# Overview\nThe Ale"
+    "rts API provides programmatic access to "
+    "Kentik\'s Alerts, which allows the retrie"
+    "val and basic manual control of alerts.\""
+    "E\n\026Kentik API Engineering\022+https://githu"
+    "b.com/kentik/api-schema-public2\007v202505*"
+    "\001\0022\020application/json:\020application/jsonZD"
+    "\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005toke"
+    "n\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email\022"
+    "\000\n\t\n\005token\022\000rB\n\033Kentik Alerts documentat"
+    "ion\022#https://kb.kentik.com/docs/alerting"
+    "b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2falerting_2fpublic_2fv202505_2falert_2eproto_deps[12] =
     {
@@ -1876,7 +1875,7 @@ static ::absl::once_flag descriptor_table_kentik_2falerting_2fpublic_2fv202505_2
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2falerting_2fpublic_2fv202505_2falert_2eproto = {
     false,
     false,
-    14927,
+    14968,
     descriptor_table_protodef_kentik_2falerting_2fpublic_2fv202505_2falert_2eproto,
     "kentik/alerting/public/v202505/alert.proto",
     &descriptor_table_kentik_2falerting_2fpublic_2fv202505_2falert_2eproto_once,
@@ -9473,7 +9472,6 @@ inline PROTOBUF_NDEBUG_INLINE NmsContext_ActivationInfo::Impl_::Impl_(
     const Impl_& from, const ::kentik::alerting::public_::v202505::NmsContext_ActivationInfo& from_msg)
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
-        severity_(arena, from.severity_),
         clear_type_{},
         _oneof_case_{from._oneof_case_[0]} {}
 
@@ -9494,6 +9492,7 @@ NmsContext_ActivationInfo::NmsContext_ActivationInfo(
   _impl_.activate_ = (cached_has_bits & 0x00000001u) ? ::google::protobuf::Message::CopyConstruct<::kentik::alerting::public_::v202505::NmsActivateOrClearConditions>(
                               arena, *from._impl_.activate_)
                         : nullptr;
+  _impl_.severity_ = from._impl_.severity_;
   switch (clear_type_case()) {
     case CLEAR_TYPE_NOT_SET:
       break;
@@ -9511,13 +9510,17 @@ inline PROTOBUF_NDEBUG_INLINE NmsContext_ActivationInfo::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
       : _cached_size_{0},
-        severity_(arena),
         clear_type_{},
         _oneof_case_{} {}
 
 inline void NmsContext_ActivationInfo::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.activate_ = {};
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, activate_),
+           0,
+           offsetof(Impl_, severity_) -
+               offsetof(Impl_, activate_) +
+               sizeof(Impl_::severity_));
 }
 NmsContext_ActivationInfo::~NmsContext_ActivationInfo() {
   // @@protoc_insertion_point(destructor:kentik.alerting.public.v202505.NmsContext.ActivationInfo)
@@ -9527,7 +9530,6 @@ inline void NmsContext_ActivationInfo::SharedDtor(MessageLite& self) {
   NmsContext_ActivationInfo& this_ = static_cast<NmsContext_ActivationInfo&>(self);
   this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   ABSL_DCHECK(this_.GetArena() == nullptr);
-  this_._impl_.severity_.Destroy();
   delete this_._impl_.activate_;
   if (this_.has_clear_type()) {
     this_.clear_clear_type();
@@ -9560,7 +9562,7 @@ inline void* NmsContext_ActivationInfo::PlacementNew_(const void*, void* mem,
   return ::new (mem) NmsContext_ActivationInfo(arena);
 }
 constexpr auto NmsContext_ActivationInfo::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(NmsContext_ActivationInfo),
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(NmsContext_ActivationInfo),
                                             alignof(NmsContext_ActivationInfo));
 }
 PROTOBUF_CONSTINIT
@@ -9591,7 +9593,7 @@ const ::google::protobuf::internal::ClassData* NmsContext_ActivationInfo::GetCla
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 4, 1, 73, 2> NmsContext_ActivationInfo::_table_ = {
+const ::_pbi::TcParseTable<1, 4, 1, 0, 2> NmsContext_ActivationInfo::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(NmsContext_ActivationInfo, _impl_._has_bits_),
     0, // no _extensions_
@@ -9609,9 +9611,9 @@ const ::_pbi::TcParseTable<1, 4, 1, 73, 2> NmsContext_ActivationInfo::_table_ = 
     ::_pbi::TcParser::GetTable<::kentik::alerting::public_::v202505::NmsContext_ActivationInfo>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // string severity = 2 [json_name = "severity"];
-    {::_pbi::TcParser::FastUS1,
-     {18, 63, 0, PROTOBUF_FIELD_OFFSET(NmsContext_ActivationInfo, _impl_.severity_)}},
+    // .kentik.alerting.types.v202303.Severity severity = 2 [json_name = "severity"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(NmsContext_ActivationInfo, _impl_.severity_), 63>(),
+     {16, 63, 0, PROTOBUF_FIELD_OFFSET(NmsContext_ActivationInfo, _impl_.severity_)}},
     // .kentik.alerting.public.v202505.NmsActivateOrClearConditions activate = 1 [json_name = "activate"];
     {::_pbi::TcParser::FastMtS1,
      {10, 0, 0, PROTOBUF_FIELD_OFFSET(NmsContext_ActivationInfo, _impl_.activate_)}},
@@ -9621,9 +9623,9 @@ const ::_pbi::TcParseTable<1, 4, 1, 73, 2> NmsContext_ActivationInfo::_table_ = 
     // .kentik.alerting.public.v202505.NmsActivateOrClearConditions activate = 1 [json_name = "activate"];
     {PROTOBUF_FIELD_OFFSET(NmsContext_ActivationInfo, _impl_.activate_), _Internal::kHasBitsOffset + 0, 0,
     (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // string severity = 2 [json_name = "severity"];
+    // .kentik.alerting.types.v202303.Severity severity = 2 [json_name = "severity"];
     {PROTOBUF_FIELD_OFFSET(NmsContext_ActivationInfo, _impl_.severity_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
     // bool clear_manual = 3 [json_name = "clearManual"];
     {PROTOBUF_FIELD_OFFSET(NmsContext_ActivationInfo, _impl_.clear_type_.clear_manual_), _Internal::kOneofCaseOffset + 0, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kBool)},
@@ -9633,9 +9635,6 @@ const ::_pbi::TcParseTable<1, 4, 1, 73, 2> NmsContext_ActivationInfo::_table_ = 
   }}, {{
     {::_pbi::TcParser::GetTable<::kentik::alerting::public_::v202505::NmsActivateOrClearConditions>()},
   }}, {{
-    "\70\0\10\0\0\0\0\0"
-    "kentik.alerting.public.v202505.NmsContext.ActivationInfo"
-    "severity"
   }},
 };
 
@@ -9646,12 +9645,12 @@ PROTOBUF_NOINLINE void NmsContext_ActivationInfo::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.severity_.ClearToEmpty();
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
     ABSL_DCHECK(_impl_.activate_ != nullptr);
     _impl_.activate_->Clear();
   }
+  _impl_.severity_ = 0;
   clear_clear_type();
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
@@ -9680,12 +9679,11 @@ PROTOBUF_NOINLINE void NmsContext_ActivationInfo::Clear() {
                 stream);
           }
 
-          // string severity = 2 [json_name = "severity"];
-          if (!this_._internal_severity().empty()) {
-            const std::string& _s = this_._internal_severity();
-            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.alerting.public.v202505.NmsContext.ActivationInfo.severity");
-            target = stream->WriteStringMaybeAliased(2, _s, target);
+          // .kentik.alerting.types.v202303.Severity severity = 2 [json_name = "severity"];
+          if (this_._internal_severity() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteEnumToArray(
+                2, this_._internal_severity(), target);
           }
 
           switch (this_.clear_type_case()) {
@@ -9729,18 +9727,18 @@ PROTOBUF_NOINLINE void NmsContext_ActivationInfo::Clear() {
 
           ::_pbi::Prefetch5LinesFrom7Lines(&this_);
            {
-            // string severity = 2 [json_name = "severity"];
-            if (!this_._internal_severity().empty()) {
-              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                              this_._internal_severity());
-            }
-          }
-           {
             // .kentik.alerting.public.v202505.NmsActivateOrClearConditions activate = 1 [json_name = "activate"];
             cached_has_bits = this_._impl_._has_bits_[0];
             if (cached_has_bits & 0x00000001u) {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.activate_);
+            }
+          }
+           {
+            // .kentik.alerting.types.v202303.Severity severity = 2 [json_name = "severity"];
+            if (this_._internal_severity() != 0) {
+              total_size += 1 +
+                            ::_pbi::WireFormatLite::EnumSize(this_._internal_severity());
             }
           }
           switch (this_.clear_type_case()) {
@@ -9771,9 +9769,6 @@ void NmsContext_ActivationInfo::MergeImpl(::google::protobuf::MessageLite& to_ms
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_severity().empty()) {
-    _this->_internal_set_severity(from._internal_severity());
-  }
   cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
     ABSL_DCHECK(from._impl_.activate_ != nullptr);
@@ -9783,6 +9778,9 @@ void NmsContext_ActivationInfo::MergeImpl(::google::protobuf::MessageLite& to_ms
     } else {
       _this->_impl_.activate_->MergeFrom(*from._impl_.activate_);
     }
+  }
+  if (from._internal_severity() != 0) {
+    _this->_impl_.severity_ = from._impl_.severity_;
   }
   _this->_impl_._has_bits_[0] |= cached_has_bits;
   if (const uint32_t oneof_from_case = from._impl_._oneof_case_[0]) {
@@ -9821,12 +9819,14 @@ void NmsContext_ActivationInfo::CopyFrom(const NmsContext_ActivationInfo& from) 
 
 void NmsContext_ActivationInfo::InternalSwap(NmsContext_ActivationInfo* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* arena = GetArena();
-  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.severity_, &other->_impl_.severity_, arena);
-  swap(_impl_.activate_, other->_impl_.activate_);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(NmsContext_ActivationInfo, _impl_.severity_)
+      + sizeof(NmsContext_ActivationInfo::_impl_.severity_)
+      - PROTOBUF_FIELD_OFFSET(NmsContext_ActivationInfo, _impl_.activate_)>(
+          reinterpret_cast<char*>(&_impl_.activate_),
+          reinterpret_cast<char*>(&other->_impl_.activate_));
   swap(_impl_.clear_type_, other->_impl_.clear_type_);
   swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
 }

@@ -1723,7 +1723,7 @@ func (x *FlowContext_SiteDetails) GetCountry() string {
 type NmsContext_ActivationInfo struct {
 	state    protoimpl.MessageState        `protogen:"open.v1"`
 	Activate *NmsActivateOrClearConditions `protobuf:"bytes,1,opt,name=activate,proto3" json:"activate,omitempty"`
-	Severity string                        `protobuf:"bytes,2,opt,name=severity,proto3" json:"severity,omitempty"`
+	Severity v202303.Severity              `protobuf:"varint,2,opt,name=severity,proto3,enum=kentik.alerting.types.v202303.Severity" json:"severity,omitempty"`
 	// Types that are valid to be assigned to ClearType:
 	//
 	//	*NmsContext_ActivationInfo_ClearManual
@@ -1770,11 +1770,11 @@ func (x *NmsContext_ActivationInfo) GetActivate() *NmsActivateOrClearConditions 
 	return nil
 }
 
-func (x *NmsContext_ActivationInfo) GetSeverity() string {
+func (x *NmsContext_ActivationInfo) GetSeverity() v202303.Severity {
 	if x != nil {
 		return x.Severity
 	}
-	return ""
+	return v202303.Severity(0)
 }
 
 func (x *NmsContext_ActivationInfo) GetClearType() isNmsContext_ActivationInfo_ClearType {
@@ -2119,7 +2119,7 @@ const file_kentik_alerting_public_v202505_alert_proto_rawDesc = "" +
 	"<ACTIVATION_STATUS_BASELINE_MISSING_DEFAULT_INSTEAD_OF_LOWEST\x10\x10\x12A\n" +
 	"=ACTIVATION_STATUS_BASELINE_MISSING_DEFAULT_INSTEAD_OF_HIGHEST\x10\x11\x12?\n" +
 	";ACTIVATION_STATUS_CURRENT_MISSING_DEFAULT_INSTEAD_OF_LOWEST\x10\x12\x12@\n" +
-	"<ACTIVATION_STATUS_CURRENT_MISSING_DEFAULT_INSTEAD_OF_HIGHEST\x10\x13\"\x82\x10\n" +
+	"<ACTIVATION_STATUS_CURRENT_MISSING_DEFAULT_INSTEAD_OF_HIGHEST\x10\x13\"\xab\x10\n" +
 	"\n" +
 	"NmsContext\x12b\n" +
 	"\x0factivation_info\x18\x01 \x01(\v29.kentik.alerting.public.v202505.NmsContext.ActivationInfoR\x0eactivationInfo\x12Y\n" +
@@ -2143,10 +2143,10 @@ const file_kentik_alerting_public_v202505_alert_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1a;\n" +
 	"\rGroupKeyEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1a\xf1\x01\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1a\x9a\x02\n" +
 	"\x0eActivationInfo\x12X\n" +
-	"\bactivate\x18\x01 \x01(\v2<.kentik.alerting.public.v202505.NmsActivateOrClearConditionsR\bactivate\x12\x1a\n" +
-	"\bseverity\x18\x02 \x01(\tR\bseverity\x12#\n" +
+	"\bactivate\x18\x01 \x01(\v2<.kentik.alerting.public.v202505.NmsActivateOrClearConditionsR\bactivate\x12C\n" +
+	"\bseverity\x18\x02 \x01(\x0e2'.kentik.alerting.types.v202303.SeverityR\bseverity\x12#\n" +
 	"\fclear_manual\x18\x03 \x01(\bH\x00R\vclearManual\x126\n" +
 	"\x16clear_unless_activated\x18\x04 \x01(\bH\x00R\x14clearUnlessActivatedB\f\n" +
 	"\n" +
@@ -2321,24 +2321,25 @@ var file_kentik_alerting_public_v202505_alert_proto_depIdxs = []int32{
 	33, // 51: kentik.alerting.public.v202505.NmsContext.MetricValuesEntry.value:type_name -> kentik.alerting.public.v202505.NmsContext.AlarmMetricMap
 	33, // 52: kentik.alerting.public.v202505.NmsContext.PreviousMetricValuesEntry.value:type_name -> kentik.alerting.public.v202505.NmsContext.AlarmMetricMap
 	45, // 53: kentik.alerting.public.v202505.NmsContext.ActivationInfo.activate:type_name -> kentik.alerting.public.v202505.NmsActivateOrClearConditions
-	34, // 54: kentik.alerting.public.v202505.NmsContext.AlarmTarget.fields:type_name -> kentik.alerting.public.v202505.NmsContext.AlarmTarget.FieldsEntry
-	35, // 55: kentik.alerting.public.v202505.NmsContext.AlarmTarget.tags:type_name -> kentik.alerting.public.v202505.NmsContext.AlarmTarget.TagsEntry
-	36, // 56: kentik.alerting.public.v202505.NmsContext.AlarmMetricMap.metrics:type_name -> kentik.alerting.public.v202505.NmsContext.AlarmMetricMap.MetricsEntry
-	3,  // 57: kentik.alerting.public.v202505.AlertService.Get:input_type -> kentik.alerting.public.v202505.AlertServiceGetRequest
-	6,  // 58: kentik.alerting.public.v202505.AlertService.List:input_type -> kentik.alerting.public.v202505.AlertServiceListRequest
-	9,  // 59: kentik.alerting.public.v202505.AlertService.Ack:input_type -> kentik.alerting.public.v202505.AlertServiceAckRequest
-	11, // 60: kentik.alerting.public.v202505.AlertService.UnAck:input_type -> kentik.alerting.public.v202505.AlertServiceUnAckRequest
-	13, // 61: kentik.alerting.public.v202505.AlertService.Clear:input_type -> kentik.alerting.public.v202505.AlertServiceClearRequest
-	4,  // 62: kentik.alerting.public.v202505.AlertService.Get:output_type -> kentik.alerting.public.v202505.AlertServiceGetResponse
-	8,  // 63: kentik.alerting.public.v202505.AlertService.List:output_type -> kentik.alerting.public.v202505.AlertServiceListResponse
-	10, // 64: kentik.alerting.public.v202505.AlertService.Ack:output_type -> kentik.alerting.public.v202505.AlertServiceAckResponse
-	12, // 65: kentik.alerting.public.v202505.AlertService.UnAck:output_type -> kentik.alerting.public.v202505.AlertServiceUnAckResponse
-	14, // 66: kentik.alerting.public.v202505.AlertService.Clear:output_type -> kentik.alerting.public.v202505.AlertServiceClearResponse
-	62, // [62:67] is the sub-list for method output_type
-	57, // [57:62] is the sub-list for method input_type
-	57, // [57:57] is the sub-list for extension type_name
-	57, // [57:57] is the sub-list for extension extendee
-	0,  // [0:57] is the sub-list for field type_name
+	37, // 54: kentik.alerting.public.v202505.NmsContext.ActivationInfo.severity:type_name -> kentik.alerting.types.v202303.Severity
+	34, // 55: kentik.alerting.public.v202505.NmsContext.AlarmTarget.fields:type_name -> kentik.alerting.public.v202505.NmsContext.AlarmTarget.FieldsEntry
+	35, // 56: kentik.alerting.public.v202505.NmsContext.AlarmTarget.tags:type_name -> kentik.alerting.public.v202505.NmsContext.AlarmTarget.TagsEntry
+	36, // 57: kentik.alerting.public.v202505.NmsContext.AlarmMetricMap.metrics:type_name -> kentik.alerting.public.v202505.NmsContext.AlarmMetricMap.MetricsEntry
+	3,  // 58: kentik.alerting.public.v202505.AlertService.Get:input_type -> kentik.alerting.public.v202505.AlertServiceGetRequest
+	6,  // 59: kentik.alerting.public.v202505.AlertService.List:input_type -> kentik.alerting.public.v202505.AlertServiceListRequest
+	9,  // 60: kentik.alerting.public.v202505.AlertService.Ack:input_type -> kentik.alerting.public.v202505.AlertServiceAckRequest
+	11, // 61: kentik.alerting.public.v202505.AlertService.UnAck:input_type -> kentik.alerting.public.v202505.AlertServiceUnAckRequest
+	13, // 62: kentik.alerting.public.v202505.AlertService.Clear:input_type -> kentik.alerting.public.v202505.AlertServiceClearRequest
+	4,  // 63: kentik.alerting.public.v202505.AlertService.Get:output_type -> kentik.alerting.public.v202505.AlertServiceGetResponse
+	8,  // 64: kentik.alerting.public.v202505.AlertService.List:output_type -> kentik.alerting.public.v202505.AlertServiceListResponse
+	10, // 65: kentik.alerting.public.v202505.AlertService.Ack:output_type -> kentik.alerting.public.v202505.AlertServiceAckResponse
+	12, // 66: kentik.alerting.public.v202505.AlertService.UnAck:output_type -> kentik.alerting.public.v202505.AlertServiceUnAckResponse
+	14, // 67: kentik.alerting.public.v202505.AlertService.Clear:output_type -> kentik.alerting.public.v202505.AlertServiceClearResponse
+	63, // [63:68] is the sub-list for method output_type
+	58, // [58:63] is the sub-list for method input_type
+	58, // [58:58] is the sub-list for extension type_name
+	58, // [58:58] is the sub-list for extension extendee
+	0,  // [0:58] is the sub-list for field type_name
 }
 
 func init() { file_kentik_alerting_public_v202505_alert_proto_init() }

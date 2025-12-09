@@ -776,7 +776,7 @@ message NmsContext {
 
   message ActivationInfo {
     NmsActivateOrClearConditions activate = 1;
-    string severity = 2;
+    kentik.alerting.types.v202303.Severity severity = 2;
 
     oneof clear_type {
       bool clear_manual = 3;

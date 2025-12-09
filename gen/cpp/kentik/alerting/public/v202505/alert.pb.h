@@ -4725,27 +4725,11 @@ class NmsContext_ActivationInfo final : public ::google::protobuf::Message
 
   // accessors -------------------------------------------------------
   enum : int {
-    kSeverityFieldNumber = 2,
     kActivateFieldNumber = 1,
+    kSeverityFieldNumber = 2,
     kClearManualFieldNumber = 3,
     kClearUnlessActivatedFieldNumber = 4,
   };
-  // string severity = 2 [json_name = "severity"];
-  void clear_severity() ;
-  const std::string& severity() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_severity(Arg_&& arg, Args_... args);
-  std::string* mutable_severity();
-  PROTOBUF_NODISCARD std::string* release_severity();
-  void set_allocated_severity(std::string* value);
-
-  private:
-  const std::string& _internal_severity() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_severity(
-      const std::string& value);
-  std::string* _internal_mutable_severity();
-
-  public:
   // .kentik.alerting.public.v202505.NmsActivateOrClearConditions activate = 1 [json_name = "activate"];
   bool has_activate() const;
   void clear_activate() ;
@@ -4759,6 +4743,16 @@ class NmsContext_ActivationInfo final : public ::google::protobuf::Message
   private:
   const ::kentik::alerting::public_::v202505::NmsActivateOrClearConditions& _internal_activate() const;
   ::kentik::alerting::public_::v202505::NmsActivateOrClearConditions* _internal_mutable_activate();
+
+  public:
+  // .kentik.alerting.types.v202303.Severity severity = 2 [json_name = "severity"];
+  void clear_severity() ;
+  ::kentik::alerting::types::v202303::Severity severity() const;
+  void set_severity(::kentik::alerting::types::v202303::Severity value);
+
+  private:
+  ::kentik::alerting::types::v202303::Severity _internal_severity() const;
+  void _internal_set_severity(::kentik::alerting::types::v202303::Severity value);
 
   public:
   // bool clear_manual = 3 [json_name = "clearManual"];
@@ -4795,7 +4789,7 @@ class NmsContext_ActivationInfo final : public ::google::protobuf::Message
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
       1, 4, 1,
-      73, 2>
+      0, 2>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -4814,8 +4808,8 @@ class NmsContext_ActivationInfo final : public ::google::protobuf::Message
                           const NmsContext_ActivationInfo& from_msg);
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
-    ::google::protobuf::internal::ArenaStringPtr severity_;
     ::kentik::alerting::public_::v202505::NmsActivateOrClearConditions* activate_;
+    int severity_;
     union ClearTypeUnion {
       constexpr ClearTypeUnion() : _constinit_{} {}
       ::google::protobuf::internal::ConstantInitialized _constinit_;
@@ -11524,52 +11518,26 @@ inline void NmsContext_ActivationInfo::set_allocated_activate(::kentik::alerting
   // @@protoc_insertion_point(field_set_allocated:kentik.alerting.public.v202505.NmsContext.ActivationInfo.activate)
 }
 
-// string severity = 2 [json_name = "severity"];
+// .kentik.alerting.types.v202303.Severity severity = 2 [json_name = "severity"];
 inline void NmsContext_ActivationInfo::clear_severity() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.severity_.ClearToEmpty();
+  _impl_.severity_ = 0;
 }
-inline const std::string& NmsContext_ActivationInfo::severity() const
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+inline ::kentik::alerting::types::v202303::Severity NmsContext_ActivationInfo::severity() const {
   // @@protoc_insertion_point(field_get:kentik.alerting.public.v202505.NmsContext.ActivationInfo.severity)
   return _internal_severity();
 }
-template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void NmsContext_ActivationInfo::set_severity(Arg_&& arg,
-                                                     Args_... args) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.severity_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+inline void NmsContext_ActivationInfo::set_severity(::kentik::alerting::types::v202303::Severity value) {
+  _internal_set_severity(value);
   // @@protoc_insertion_point(field_set:kentik.alerting.public.v202505.NmsContext.ActivationInfo.severity)
 }
-inline std::string* NmsContext_ActivationInfo::mutable_severity() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  std::string* _s = _internal_mutable_severity();
-  // @@protoc_insertion_point(field_mutable:kentik.alerting.public.v202505.NmsContext.ActivationInfo.severity)
-  return _s;
-}
-inline const std::string& NmsContext_ActivationInfo::_internal_severity() const {
+inline ::kentik::alerting::types::v202303::Severity NmsContext_ActivationInfo::_internal_severity() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.severity_.Get();
+  return static_cast<::kentik::alerting::types::v202303::Severity>(_impl_.severity_);
 }
-inline void NmsContext_ActivationInfo::_internal_set_severity(const std::string& value) {
+inline void NmsContext_ActivationInfo::_internal_set_severity(::kentik::alerting::types::v202303::Severity value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.severity_.Set(value, GetArena());
-}
-inline std::string* NmsContext_ActivationInfo::_internal_mutable_severity() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  return _impl_.severity_.Mutable( GetArena());
-}
-inline std::string* NmsContext_ActivationInfo::release_severity() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:kentik.alerting.public.v202505.NmsContext.ActivationInfo.severity)
-  return _impl_.severity_.Release();
-}
-inline void NmsContext_ActivationInfo::set_allocated_severity(std::string* value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.severity_.SetAllocated(value, GetArena());
-  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.severity_.IsDefault()) {
-    _impl_.severity_.Set("", GetArena());
-  }
-  // @@protoc_insertion_point(field_set_allocated:kentik.alerting.public.v202505.NmsContext.ActivationInfo.severity)
+  _impl_.severity_ = value;
 }
 
 // bool clear_manual = 3 [json_name = "clearManual"];

@@ -2649,11 +2649,11 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__nms_con
     "severity",
     2,
     PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_STRING,
+    PROTOBUF_C_TYPE_ENUM,
     0,   /* quantifier_offset */
     offsetof(Kentik__Alerting__Public__V202505__NmsContext__ActivationInfo, severity),
+    &kentik__alerting__types__v202303__severity__descriptor,
     NULL,
-    &protobuf_c_empty_string,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
