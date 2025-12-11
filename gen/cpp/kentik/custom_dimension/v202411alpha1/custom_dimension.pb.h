@@ -101,6 +101,21 @@ extern GetCustomDimensionInfoRequestDefaultTypeInternal _GetCustomDimensionInfoR
 class GetCustomDimensionInfoResponse;
 struct GetCustomDimensionInfoResponseDefaultTypeInternal;
 extern GetCustomDimensionInfoResponseDefaultTypeInternal _GetCustomDimensionInfoResponse_default_instance_;
+class GetPopulatorFieldRequest;
+struct GetPopulatorFieldRequestDefaultTypeInternal;
+extern GetPopulatorFieldRequestDefaultTypeInternal _GetPopulatorFieldRequest_default_instance_;
+class GetPopulatorFieldResponse;
+struct GetPopulatorFieldResponseDefaultTypeInternal;
+extern GetPopulatorFieldResponseDefaultTypeInternal _GetPopulatorFieldResponse_default_instance_;
+class GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse;
+struct GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUseDefaultTypeInternal;
+extern GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUseDefaultTypeInternal _GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse_default_instance_;
+class GetPopulatorRequest;
+struct GetPopulatorRequestDefaultTypeInternal;
+extern GetPopulatorRequestDefaultTypeInternal _GetPopulatorRequest_default_instance_;
+class GetPopulatorResponse;
+struct GetPopulatorResponseDefaultTypeInternal;
+extern GetPopulatorResponseDefaultTypeInternal _GetPopulatorResponse_default_instance_;
 class ListCustomDimensionsRequest;
 struct ListCustomDimensionsRequestDefaultTypeInternal;
 extern ListCustomDimensionsRequestDefaultTypeInternal _ListCustomDimensionsRequest_default_instance_;
@@ -283,6 +298,476 @@ class ListCustomDimensionsRequest final : public ::google::protobuf::internal::Z
                           const ListCustomDimensionsRequest& from_msg);
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
+  friend struct ::TableStruct_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto;
+};
+// -------------------------------------------------------------------
+
+class GetPopulatorRequest final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:kentik.custom_dimension.v202411alpha1.GetPopulatorRequest) */ {
+ public:
+  inline GetPopulatorRequest() : GetPopulatorRequest(nullptr) {}
+  ~GetPopulatorRequest() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(GetPopulatorRequest* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(GetPopulatorRequest));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR GetPopulatorRequest(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline GetPopulatorRequest(const GetPopulatorRequest& from) : GetPopulatorRequest(nullptr, from) {}
+  inline GetPopulatorRequest(GetPopulatorRequest&& from) noexcept
+      : GetPopulatorRequest(nullptr, std::move(from)) {}
+  inline GetPopulatorRequest& operator=(const GetPopulatorRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GetPopulatorRequest& operator=(GetPopulatorRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const GetPopulatorRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GetPopulatorRequest* internal_default_instance() {
+    return reinterpret_cast<const GetPopulatorRequest*>(
+        &_GetPopulatorRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 14;
+  friend void swap(GetPopulatorRequest& a, GetPopulatorRequest& b) { a.Swap(&b); }
+  inline void Swap(GetPopulatorRequest* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GetPopulatorRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  GetPopulatorRequest* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<GetPopulatorRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const GetPopulatorRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const GetPopulatorRequest& from) { GetPopulatorRequest::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(GetPopulatorRequest* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "kentik.custom_dimension.v202411alpha1.GetPopulatorRequest"; }
+
+ protected:
+  explicit GetPopulatorRequest(::google::protobuf::Arena* arena);
+  GetPopulatorRequest(::google::protobuf::Arena* arena, const GetPopulatorRequest& from);
+  GetPopulatorRequest(::google::protobuf::Arena* arena, GetPopulatorRequest&& from) noexcept
+      : GetPopulatorRequest(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kCustomDimensionIdFieldNumber = 1,
+    kPopulatorIdFieldNumber = 2,
+  };
+  // string custom_dimension_id = 1 [json_name = "customDimensionId"];
+  void clear_custom_dimension_id() ;
+  const std::string& custom_dimension_id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_custom_dimension_id(Arg_&& arg, Args_... args);
+  std::string* mutable_custom_dimension_id();
+  PROTOBUF_NODISCARD std::string* release_custom_dimension_id();
+  void set_allocated_custom_dimension_id(std::string* value);
+
+  private:
+  const std::string& _internal_custom_dimension_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_custom_dimension_id(
+      const std::string& value);
+  std::string* _internal_mutable_custom_dimension_id();
+
+  public:
+  // string populator_id = 2 [json_name = "populatorId"];
+  void clear_populator_id() ;
+  const std::string& populator_id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_populator_id(Arg_&& arg, Args_... args);
+  std::string* mutable_populator_id();
+  PROTOBUF_NODISCARD std::string* release_populator_id();
+  void set_allocated_populator_id(std::string* value);
+
+  private:
+  const std::string& _internal_populator_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_populator_id(
+      const std::string& value);
+  std::string* _internal_mutable_populator_id();
+
+  public:
+  // @@protoc_insertion_point(class_scope:kentik.custom_dimension.v202411alpha1.GetPopulatorRequest)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 0,
+      97, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const GetPopulatorRequest& from_msg);
+    ::google::protobuf::internal::ArenaStringPtr custom_dimension_id_;
+    ::google::protobuf::internal::ArenaStringPtr populator_id_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto;
+};
+// -------------------------------------------------------------------
+
+class GetPopulatorFieldRequest final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest) */ {
+ public:
+  inline GetPopulatorFieldRequest() : GetPopulatorFieldRequest(nullptr) {}
+  ~GetPopulatorFieldRequest() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(GetPopulatorFieldRequest* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(GetPopulatorFieldRequest));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR GetPopulatorFieldRequest(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline GetPopulatorFieldRequest(const GetPopulatorFieldRequest& from) : GetPopulatorFieldRequest(nullptr, from) {}
+  inline GetPopulatorFieldRequest(GetPopulatorFieldRequest&& from) noexcept
+      : GetPopulatorFieldRequest(nullptr, std::move(from)) {}
+  inline GetPopulatorFieldRequest& operator=(const GetPopulatorFieldRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GetPopulatorFieldRequest& operator=(GetPopulatorFieldRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const GetPopulatorFieldRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GetPopulatorFieldRequest* internal_default_instance() {
+    return reinterpret_cast<const GetPopulatorFieldRequest*>(
+        &_GetPopulatorFieldRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 16;
+  friend void swap(GetPopulatorFieldRequest& a, GetPopulatorFieldRequest& b) { a.Swap(&b); }
+  inline void Swap(GetPopulatorFieldRequest* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GetPopulatorFieldRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  GetPopulatorFieldRequest* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<GetPopulatorFieldRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const GetPopulatorFieldRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const GetPopulatorFieldRequest& from) { GetPopulatorFieldRequest::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(GetPopulatorFieldRequest* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest"; }
+
+ protected:
+  explicit GetPopulatorFieldRequest(::google::protobuf::Arena* arena);
+  GetPopulatorFieldRequest(::google::protobuf::Arena* arena, const GetPopulatorFieldRequest& from);
+  GetPopulatorFieldRequest(::google::protobuf::Arena* arena, GetPopulatorFieldRequest&& from) noexcept
+      : GetPopulatorFieldRequest(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kCustomDimensionIdFieldNumber = 1,
+    kPopulatorIdFieldNumber = 2,
+    kFieldNameFieldNumber = 3,
+    kOffsetFieldNumber = 4,
+    kLimitFieldNumber = 5,
+  };
+  // string custom_dimension_id = 1 [json_name = "customDimensionId"];
+  void clear_custom_dimension_id() ;
+  const std::string& custom_dimension_id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_custom_dimension_id(Arg_&& arg, Args_... args);
+  std::string* mutable_custom_dimension_id();
+  PROTOBUF_NODISCARD std::string* release_custom_dimension_id();
+  void set_allocated_custom_dimension_id(std::string* value);
+
+  private:
+  const std::string& _internal_custom_dimension_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_custom_dimension_id(
+      const std::string& value);
+  std::string* _internal_mutable_custom_dimension_id();
+
+  public:
+  // string populator_id = 2 [json_name = "populatorId"];
+  void clear_populator_id() ;
+  const std::string& populator_id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_populator_id(Arg_&& arg, Args_... args);
+  std::string* mutable_populator_id();
+  PROTOBUF_NODISCARD std::string* release_populator_id();
+  void set_allocated_populator_id(std::string* value);
+
+  private:
+  const std::string& _internal_populator_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_populator_id(
+      const std::string& value);
+  std::string* _internal_mutable_populator_id();
+
+  public:
+  // string field_name = 3 [json_name = "fieldName"];
+  void clear_field_name() ;
+  const std::string& field_name() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_field_name(Arg_&& arg, Args_... args);
+  std::string* mutable_field_name();
+  PROTOBUF_NODISCARD std::string* release_field_name();
+  void set_allocated_field_name(std::string* value);
+
+  private:
+  const std::string& _internal_field_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_field_name(
+      const std::string& value);
+  std::string* _internal_mutable_field_name();
+
+  public:
+  // int32 offset = 4 [json_name = "offset"];
+  void clear_offset() ;
+  ::int32_t offset() const;
+  void set_offset(::int32_t value);
+
+  private:
+  ::int32_t _internal_offset() const;
+  void _internal_set_offset(::int32_t value);
+
+  public:
+  // int32 limit = 5 [json_name = "limit"];
+  void clear_limit() ;
+  ::int32_t limit() const;
+  void set_limit(::int32_t value);
+
+  private:
+  ::int32_t _internal_limit() const;
+  void _internal_set_limit(::int32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      3, 5, 0,
+      112, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const GetPopulatorFieldRequest& from_msg);
+    ::google::protobuf::internal::ArenaStringPtr custom_dimension_id_;
+    ::google::protobuf::internal::ArenaStringPtr populator_id_;
+    ::google::protobuf::internal::ArenaStringPtr field_name_;
+    ::int32_t offset_;
+    ::int32_t limit_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
   friend struct ::TableStruct_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto;
 };
 // -------------------------------------------------------------------
@@ -743,7 +1228,7 @@ class DeletePopulatorResponse final : public ::google::protobuf::internal::ZeroF
     return reinterpret_cast<const DeletePopulatorResponse*>(
         &_DeletePopulatorResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 19;
+  static constexpr int kIndexInFileMessages = 24;
   friend void swap(DeletePopulatorResponse& a, DeletePopulatorResponse& b) { a.Swap(&b); }
   inline void Swap(DeletePopulatorResponse* other) {
     if (other == this) return;
@@ -889,7 +1374,7 @@ class DeletePopulatorRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const DeletePopulatorRequest*>(
         &_DeletePopulatorRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 18;
+  static constexpr int kIndexInFileMessages = 23;
   friend void swap(DeletePopulatorRequest& a, DeletePopulatorRequest& b) { a.Swap(&b); }
   inline void Swap(DeletePopulatorRequest* other) {
     if (other == this) return;
@@ -1414,6 +1899,45 @@ class Populator_ExtendedFieldsEntry_DoNotUse final
   static const ::google::protobuf::internal::TcParseTable<
       1, 2, 1,
       79, 2>
+      _table_;
+
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+};
+// -------------------------------------------------------------------
+
+class GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse final
+    : public ::google::protobuf::internal::MapEntry<
+          std::string, ::google::protobuf::Message,
+          ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+          ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE> {
+ public:
+  using SuperType = ::google::protobuf::internal::MapEntry<
+      std::string, ::google::protobuf::Message,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE>;
+  GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse();
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse(
+      ::google::protobuf::internal::ConstantInitialized);
+  explicit GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse(::google::protobuf::Arena* arena);
+  static const GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse* internal_default_instance() {
+    return reinterpret_cast<const GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse*>(
+        &_GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse_default_instance_);
+  }
+
+
+ private:
+  friend class ::google::protobuf::MessageLite;
+  friend struct ::TableStruct_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 1,
+      95, 2>
       _table_;
 
   const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
@@ -2161,6 +2685,240 @@ class Populator final : public ::google::protobuf::Message
 };
 // -------------------------------------------------------------------
 
+class GetPopulatorFieldResponse final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse) */ {
+ public:
+  inline GetPopulatorFieldResponse() : GetPopulatorFieldResponse(nullptr) {}
+  ~GetPopulatorFieldResponse() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(GetPopulatorFieldResponse* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(GetPopulatorFieldResponse));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR GetPopulatorFieldResponse(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline GetPopulatorFieldResponse(const GetPopulatorFieldResponse& from) : GetPopulatorFieldResponse(nullptr, from) {}
+  inline GetPopulatorFieldResponse(GetPopulatorFieldResponse&& from) noexcept
+      : GetPopulatorFieldResponse(nullptr, std::move(from)) {}
+  inline GetPopulatorFieldResponse& operator=(const GetPopulatorFieldResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GetPopulatorFieldResponse& operator=(GetPopulatorFieldResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const GetPopulatorFieldResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GetPopulatorFieldResponse* internal_default_instance() {
+    return reinterpret_cast<const GetPopulatorFieldResponse*>(
+        &_GetPopulatorFieldResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 18;
+  friend void swap(GetPopulatorFieldResponse& a, GetPopulatorFieldResponse& b) { a.Swap(&b); }
+  inline void Swap(GetPopulatorFieldResponse* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GetPopulatorFieldResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  GetPopulatorFieldResponse* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<GetPopulatorFieldResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const GetPopulatorFieldResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const GetPopulatorFieldResponse& from) { GetPopulatorFieldResponse::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(GetPopulatorFieldResponse* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse"; }
+
+ protected:
+  explicit GetPopulatorFieldResponse(::google::protobuf::Arena* arena);
+  GetPopulatorFieldResponse(::google::protobuf::Arena* arena, const GetPopulatorFieldResponse& from);
+  GetPopulatorFieldResponse(::google::protobuf::Arena* arena, GetPopulatorFieldResponse&& from) noexcept
+      : GetPopulatorFieldResponse(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kExtendedFieldsFieldNumber = 4,
+    kTotalCountFieldNumber = 1,
+    kOffsetFieldNumber = 2,
+    kLimitFieldNumber = 3,
+  };
+  // map<string, .kentik.custom_dimension.v202411alpha1.ExtendedField> extended_fields = 4 [json_name = "extendedFields"];
+  int extended_fields_size() const;
+  private:
+  int _internal_extended_fields_size() const;
+
+  public:
+  void clear_extended_fields() ;
+  const ::google::protobuf::Map<std::string, ::kentik::custom_dimension::v202411alpha1::ExtendedField>& extended_fields() const;
+  ::google::protobuf::Map<std::string, ::kentik::custom_dimension::v202411alpha1::ExtendedField>* mutable_extended_fields();
+
+  private:
+  const ::google::protobuf::Map<std::string, ::kentik::custom_dimension::v202411alpha1::ExtendedField>& _internal_extended_fields() const;
+  ::google::protobuf::Map<std::string, ::kentik::custom_dimension::v202411alpha1::ExtendedField>* _internal_mutable_extended_fields();
+
+  public:
+  // uint32 total_count = 1 [json_name = "totalCount"];
+  void clear_total_count() ;
+  ::uint32_t total_count() const;
+  void set_total_count(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_total_count() const;
+  void _internal_set_total_count(::uint32_t value);
+
+  public:
+  // uint32 offset = 2 [json_name = "offset"];
+  void clear_offset() ;
+  ::uint32_t offset() const;
+  void set_offset(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_offset() const;
+  void _internal_set_offset(::uint32_t value);
+
+  public:
+  // uint32 limit = 3 [json_name = "limit"];
+  void clear_limit() ;
+  ::uint32_t limit() const;
+  void set_limit(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_limit() const;
+  void _internal_set_limit(::uint32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      2, 4, 2,
+      87, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const GetPopulatorFieldResponse& from_msg);
+    ::google::protobuf::internal::MapField<GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse, std::string, ::kentik::custom_dimension::v202411alpha1::ExtendedField,
+                      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+                      ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE>
+        extended_fields_;
+    ::uint32_t total_count_;
+    ::uint32_t offset_;
+    ::uint32_t limit_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto;
+};
+// -------------------------------------------------------------------
+
 class UpdatePopulatorResponse final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:kentik.custom_dimension.v202411alpha1.UpdatePopulatorResponse) */ {
  public:
@@ -2220,7 +2978,7 @@ class UpdatePopulatorResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const UpdatePopulatorResponse*>(
         &_UpdatePopulatorResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 17;
+  static constexpr int kIndexInFileMessages = 22;
   friend void swap(UpdatePopulatorResponse& a, UpdatePopulatorResponse& b) { a.Swap(&b); }
   inline void Swap(UpdatePopulatorResponse* other) {
     if (other == this) return;
@@ -2416,7 +3174,7 @@ class UpdatePopulatorRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const UpdatePopulatorRequest*>(
         &_UpdatePopulatorRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 16;
+  static constexpr int kIndexInFileMessages = 21;
   friend void swap(UpdatePopulatorRequest& a, UpdatePopulatorRequest& b) { a.Swap(&b); }
   inline void Swap(UpdatePopulatorRequest* other) {
     if (other == this) return;
@@ -2581,6 +3339,202 @@ class UpdatePopulatorRequest final : public ::google::protobuf::Message
     ::google::protobuf::internal::CachedSize _cached_size_;
     ::google::protobuf::internal::ArenaStringPtr custom_dimension_id_;
     ::google::protobuf::internal::ArenaStringPtr populator_id_;
+    ::kentik::custom_dimension::v202411alpha1::Populator* populator_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto;
+};
+// -------------------------------------------------------------------
+
+class GetPopulatorResponse final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:kentik.custom_dimension.v202411alpha1.GetPopulatorResponse) */ {
+ public:
+  inline GetPopulatorResponse() : GetPopulatorResponse(nullptr) {}
+  ~GetPopulatorResponse() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(GetPopulatorResponse* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(GetPopulatorResponse));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR GetPopulatorResponse(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline GetPopulatorResponse(const GetPopulatorResponse& from) : GetPopulatorResponse(nullptr, from) {}
+  inline GetPopulatorResponse(GetPopulatorResponse&& from) noexcept
+      : GetPopulatorResponse(nullptr, std::move(from)) {}
+  inline GetPopulatorResponse& operator=(const GetPopulatorResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GetPopulatorResponse& operator=(GetPopulatorResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const GetPopulatorResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GetPopulatorResponse* internal_default_instance() {
+    return reinterpret_cast<const GetPopulatorResponse*>(
+        &_GetPopulatorResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 15;
+  friend void swap(GetPopulatorResponse& a, GetPopulatorResponse& b) { a.Swap(&b); }
+  inline void Swap(GetPopulatorResponse* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GetPopulatorResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  GetPopulatorResponse* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<GetPopulatorResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const GetPopulatorResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const GetPopulatorResponse& from) { GetPopulatorResponse::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(GetPopulatorResponse* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "kentik.custom_dimension.v202411alpha1.GetPopulatorResponse"; }
+
+ protected:
+  explicit GetPopulatorResponse(::google::protobuf::Arena* arena);
+  GetPopulatorResponse(::google::protobuf::Arena* arena, const GetPopulatorResponse& from);
+  GetPopulatorResponse(::google::protobuf::Arena* arena, GetPopulatorResponse&& from) noexcept
+      : GetPopulatorResponse(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kPopulatorFieldNumber = 1,
+  };
+  // .kentik.custom_dimension.v202411alpha1.Populator populator = 1 [json_name = "populator"];
+  bool has_populator() const;
+  void clear_populator() ;
+  const ::kentik::custom_dimension::v202411alpha1::Populator& populator() const;
+  PROTOBUF_NODISCARD ::kentik::custom_dimension::v202411alpha1::Populator* release_populator();
+  ::kentik::custom_dimension::v202411alpha1::Populator* mutable_populator();
+  void set_allocated_populator(::kentik::custom_dimension::v202411alpha1::Populator* value);
+  void unsafe_arena_set_allocated_populator(::kentik::custom_dimension::v202411alpha1::Populator* value);
+  ::kentik::custom_dimension::v202411alpha1::Populator* unsafe_arena_release_populator();
+
+  private:
+  const ::kentik::custom_dimension::v202411alpha1::Populator& _internal_populator() const;
+  ::kentik::custom_dimension::v202411alpha1::Populator* _internal_mutable_populator();
+
+  public:
+  // @@protoc_insertion_point(class_scope:kentik.custom_dimension.v202411alpha1.GetPopulatorResponse)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 1,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const GetPopulatorResponse& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
     ::kentik::custom_dimension::v202411alpha1::Populator* populator_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -2970,7 +3924,7 @@ class CreatePopulatorResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const CreatePopulatorResponse*>(
         &_CreatePopulatorResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 15;
+  static constexpr int kIndexInFileMessages = 20;
   friend void swap(CreatePopulatorResponse& a, CreatePopulatorResponse& b) { a.Swap(&b); }
   inline void Swap(CreatePopulatorResponse* other) {
     if (other == this) return;
@@ -3166,7 +4120,7 @@ class CreatePopulatorRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const CreatePopulatorRequest*>(
         &_CreatePopulatorRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 14;
+  static constexpr int kIndexInFileMessages = 19;
   friend void swap(CreatePopulatorRequest& a, CreatePopulatorRequest& b) { a.Swap(&b); }
   inline void Swap(CreatePopulatorRequest* other) {
     if (other == this) return;
@@ -7268,6 +8222,498 @@ inline void DeleteCustomDimensionRequest::set_allocated_custom_dimension_id(std:
 // -------------------------------------------------------------------
 
 // DeleteCustomDimensionResponse
+
+// -------------------------------------------------------------------
+
+// GetPopulatorRequest
+
+// string custom_dimension_id = 1 [json_name = "customDimensionId"];
+inline void GetPopulatorRequest::clear_custom_dimension_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.custom_dimension_id_.ClearToEmpty();
+}
+inline const std::string& GetPopulatorRequest::custom_dimension_id() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.GetPopulatorRequest.custom_dimension_id)
+  return _internal_custom_dimension_id();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void GetPopulatorRequest::set_custom_dimension_id(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.custom_dimension_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.GetPopulatorRequest.custom_dimension_id)
+}
+inline std::string* GetPopulatorRequest::mutable_custom_dimension_id() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_custom_dimension_id();
+  // @@protoc_insertion_point(field_mutable:kentik.custom_dimension.v202411alpha1.GetPopulatorRequest.custom_dimension_id)
+  return _s;
+}
+inline const std::string& GetPopulatorRequest::_internal_custom_dimension_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.custom_dimension_id_.Get();
+}
+inline void GetPopulatorRequest::_internal_set_custom_dimension_id(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.custom_dimension_id_.Set(value, GetArena());
+}
+inline std::string* GetPopulatorRequest::_internal_mutable_custom_dimension_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.custom_dimension_id_.Mutable( GetArena());
+}
+inline std::string* GetPopulatorRequest::release_custom_dimension_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.custom_dimension.v202411alpha1.GetPopulatorRequest.custom_dimension_id)
+  return _impl_.custom_dimension_id_.Release();
+}
+inline void GetPopulatorRequest::set_allocated_custom_dimension_id(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.custom_dimension_id_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.custom_dimension_id_.IsDefault()) {
+    _impl_.custom_dimension_id_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.custom_dimension.v202411alpha1.GetPopulatorRequest.custom_dimension_id)
+}
+
+// string populator_id = 2 [json_name = "populatorId"];
+inline void GetPopulatorRequest::clear_populator_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.populator_id_.ClearToEmpty();
+}
+inline const std::string& GetPopulatorRequest::populator_id() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.GetPopulatorRequest.populator_id)
+  return _internal_populator_id();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void GetPopulatorRequest::set_populator_id(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.populator_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.GetPopulatorRequest.populator_id)
+}
+inline std::string* GetPopulatorRequest::mutable_populator_id() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_populator_id();
+  // @@protoc_insertion_point(field_mutable:kentik.custom_dimension.v202411alpha1.GetPopulatorRequest.populator_id)
+  return _s;
+}
+inline const std::string& GetPopulatorRequest::_internal_populator_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.populator_id_.Get();
+}
+inline void GetPopulatorRequest::_internal_set_populator_id(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.populator_id_.Set(value, GetArena());
+}
+inline std::string* GetPopulatorRequest::_internal_mutable_populator_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.populator_id_.Mutable( GetArena());
+}
+inline std::string* GetPopulatorRequest::release_populator_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.custom_dimension.v202411alpha1.GetPopulatorRequest.populator_id)
+  return _impl_.populator_id_.Release();
+}
+inline void GetPopulatorRequest::set_allocated_populator_id(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.populator_id_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.populator_id_.IsDefault()) {
+    _impl_.populator_id_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.custom_dimension.v202411alpha1.GetPopulatorRequest.populator_id)
+}
+
+// -------------------------------------------------------------------
+
+// GetPopulatorResponse
+
+// .kentik.custom_dimension.v202411alpha1.Populator populator = 1 [json_name = "populator"];
+inline bool GetPopulatorResponse::has_populator() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.populator_ != nullptr);
+  return value;
+}
+inline void GetPopulatorResponse::clear_populator() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.populator_ != nullptr) _impl_.populator_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const ::kentik::custom_dimension::v202411alpha1::Populator& GetPopulatorResponse::_internal_populator() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::kentik::custom_dimension::v202411alpha1::Populator* p = _impl_.populator_;
+  return p != nullptr ? *p : reinterpret_cast<const ::kentik::custom_dimension::v202411alpha1::Populator&>(::kentik::custom_dimension::v202411alpha1::_Populator_default_instance_);
+}
+inline const ::kentik::custom_dimension::v202411alpha1::Populator& GetPopulatorResponse::populator() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.GetPopulatorResponse.populator)
+  return _internal_populator();
+}
+inline void GetPopulatorResponse::unsafe_arena_set_allocated_populator(::kentik::custom_dimension::v202411alpha1::Populator* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.populator_);
+  }
+  _impl_.populator_ = reinterpret_cast<::kentik::custom_dimension::v202411alpha1::Populator*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.custom_dimension.v202411alpha1.GetPopulatorResponse.populator)
+}
+inline ::kentik::custom_dimension::v202411alpha1::Populator* GetPopulatorResponse::release_populator() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::kentik::custom_dimension::v202411alpha1::Populator* released = _impl_.populator_;
+  _impl_.populator_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::kentik::custom_dimension::v202411alpha1::Populator* GetPopulatorResponse::unsafe_arena_release_populator() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.custom_dimension.v202411alpha1.GetPopulatorResponse.populator)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::kentik::custom_dimension::v202411alpha1::Populator* temp = _impl_.populator_;
+  _impl_.populator_ = nullptr;
+  return temp;
+}
+inline ::kentik::custom_dimension::v202411alpha1::Populator* GetPopulatorResponse::_internal_mutable_populator() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.populator_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::kentik::custom_dimension::v202411alpha1::Populator>(GetArena());
+    _impl_.populator_ = reinterpret_cast<::kentik::custom_dimension::v202411alpha1::Populator*>(p);
+  }
+  return _impl_.populator_;
+}
+inline ::kentik::custom_dimension::v202411alpha1::Populator* GetPopulatorResponse::mutable_populator() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  ::kentik::custom_dimension::v202411alpha1::Populator* _msg = _internal_mutable_populator();
+  // @@protoc_insertion_point(field_mutable:kentik.custom_dimension.v202411alpha1.GetPopulatorResponse.populator)
+  return _msg;
+}
+inline void GetPopulatorResponse::set_allocated_populator(::kentik::custom_dimension::v202411alpha1::Populator* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete (_impl_.populator_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = (value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.populator_ = reinterpret_cast<::kentik::custom_dimension::v202411alpha1::Populator*>(value);
+  // @@protoc_insertion_point(field_set_allocated:kentik.custom_dimension.v202411alpha1.GetPopulatorResponse.populator)
+}
+
+// -------------------------------------------------------------------
+
+// GetPopulatorFieldRequest
+
+// string custom_dimension_id = 1 [json_name = "customDimensionId"];
+inline void GetPopulatorFieldRequest::clear_custom_dimension_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.custom_dimension_id_.ClearToEmpty();
+}
+inline const std::string& GetPopulatorFieldRequest::custom_dimension_id() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest.custom_dimension_id)
+  return _internal_custom_dimension_id();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void GetPopulatorFieldRequest::set_custom_dimension_id(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.custom_dimension_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest.custom_dimension_id)
+}
+inline std::string* GetPopulatorFieldRequest::mutable_custom_dimension_id() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_custom_dimension_id();
+  // @@protoc_insertion_point(field_mutable:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest.custom_dimension_id)
+  return _s;
+}
+inline const std::string& GetPopulatorFieldRequest::_internal_custom_dimension_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.custom_dimension_id_.Get();
+}
+inline void GetPopulatorFieldRequest::_internal_set_custom_dimension_id(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.custom_dimension_id_.Set(value, GetArena());
+}
+inline std::string* GetPopulatorFieldRequest::_internal_mutable_custom_dimension_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.custom_dimension_id_.Mutable( GetArena());
+}
+inline std::string* GetPopulatorFieldRequest::release_custom_dimension_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest.custom_dimension_id)
+  return _impl_.custom_dimension_id_.Release();
+}
+inline void GetPopulatorFieldRequest::set_allocated_custom_dimension_id(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.custom_dimension_id_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.custom_dimension_id_.IsDefault()) {
+    _impl_.custom_dimension_id_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest.custom_dimension_id)
+}
+
+// string populator_id = 2 [json_name = "populatorId"];
+inline void GetPopulatorFieldRequest::clear_populator_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.populator_id_.ClearToEmpty();
+}
+inline const std::string& GetPopulatorFieldRequest::populator_id() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest.populator_id)
+  return _internal_populator_id();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void GetPopulatorFieldRequest::set_populator_id(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.populator_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest.populator_id)
+}
+inline std::string* GetPopulatorFieldRequest::mutable_populator_id() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_populator_id();
+  // @@protoc_insertion_point(field_mutable:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest.populator_id)
+  return _s;
+}
+inline const std::string& GetPopulatorFieldRequest::_internal_populator_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.populator_id_.Get();
+}
+inline void GetPopulatorFieldRequest::_internal_set_populator_id(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.populator_id_.Set(value, GetArena());
+}
+inline std::string* GetPopulatorFieldRequest::_internal_mutable_populator_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.populator_id_.Mutable( GetArena());
+}
+inline std::string* GetPopulatorFieldRequest::release_populator_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest.populator_id)
+  return _impl_.populator_id_.Release();
+}
+inline void GetPopulatorFieldRequest::set_allocated_populator_id(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.populator_id_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.populator_id_.IsDefault()) {
+    _impl_.populator_id_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest.populator_id)
+}
+
+// string field_name = 3 [json_name = "fieldName"];
+inline void GetPopulatorFieldRequest::clear_field_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.field_name_.ClearToEmpty();
+}
+inline const std::string& GetPopulatorFieldRequest::field_name() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest.field_name)
+  return _internal_field_name();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void GetPopulatorFieldRequest::set_field_name(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.field_name_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest.field_name)
+}
+inline std::string* GetPopulatorFieldRequest::mutable_field_name() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_field_name();
+  // @@protoc_insertion_point(field_mutable:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest.field_name)
+  return _s;
+}
+inline const std::string& GetPopulatorFieldRequest::_internal_field_name() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.field_name_.Get();
+}
+inline void GetPopulatorFieldRequest::_internal_set_field_name(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.field_name_.Set(value, GetArena());
+}
+inline std::string* GetPopulatorFieldRequest::_internal_mutable_field_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.field_name_.Mutable( GetArena());
+}
+inline std::string* GetPopulatorFieldRequest::release_field_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest.field_name)
+  return _impl_.field_name_.Release();
+}
+inline void GetPopulatorFieldRequest::set_allocated_field_name(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.field_name_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.field_name_.IsDefault()) {
+    _impl_.field_name_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest.field_name)
+}
+
+// int32 offset = 4 [json_name = "offset"];
+inline void GetPopulatorFieldRequest::clear_offset() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.offset_ = 0;
+}
+inline ::int32_t GetPopulatorFieldRequest::offset() const {
+  // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest.offset)
+  return _internal_offset();
+}
+inline void GetPopulatorFieldRequest::set_offset(::int32_t value) {
+  _internal_set_offset(value);
+  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest.offset)
+}
+inline ::int32_t GetPopulatorFieldRequest::_internal_offset() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.offset_;
+}
+inline void GetPopulatorFieldRequest::_internal_set_offset(::int32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.offset_ = value;
+}
+
+// int32 limit = 5 [json_name = "limit"];
+inline void GetPopulatorFieldRequest::clear_limit() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.limit_ = 0;
+}
+inline ::int32_t GetPopulatorFieldRequest::limit() const {
+  // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest.limit)
+  return _internal_limit();
+}
+inline void GetPopulatorFieldRequest::set_limit(::int32_t value) {
+  _internal_set_limit(value);
+  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest.limit)
+}
+inline ::int32_t GetPopulatorFieldRequest::_internal_limit() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.limit_;
+}
+inline void GetPopulatorFieldRequest::_internal_set_limit(::int32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.limit_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// GetPopulatorFieldResponse
+
+// uint32 total_count = 1 [json_name = "totalCount"];
+inline void GetPopulatorFieldResponse::clear_total_count() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.total_count_ = 0u;
+}
+inline ::uint32_t GetPopulatorFieldResponse::total_count() const {
+  // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse.total_count)
+  return _internal_total_count();
+}
+inline void GetPopulatorFieldResponse::set_total_count(::uint32_t value) {
+  _internal_set_total_count(value);
+  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse.total_count)
+}
+inline ::uint32_t GetPopulatorFieldResponse::_internal_total_count() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.total_count_;
+}
+inline void GetPopulatorFieldResponse::_internal_set_total_count(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.total_count_ = value;
+}
+
+// uint32 offset = 2 [json_name = "offset"];
+inline void GetPopulatorFieldResponse::clear_offset() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.offset_ = 0u;
+}
+inline ::uint32_t GetPopulatorFieldResponse::offset() const {
+  // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse.offset)
+  return _internal_offset();
+}
+inline void GetPopulatorFieldResponse::set_offset(::uint32_t value) {
+  _internal_set_offset(value);
+  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse.offset)
+}
+inline ::uint32_t GetPopulatorFieldResponse::_internal_offset() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.offset_;
+}
+inline void GetPopulatorFieldResponse::_internal_set_offset(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.offset_ = value;
+}
+
+// uint32 limit = 3 [json_name = "limit"];
+inline void GetPopulatorFieldResponse::clear_limit() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.limit_ = 0u;
+}
+inline ::uint32_t GetPopulatorFieldResponse::limit() const {
+  // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse.limit)
+  return _internal_limit();
+}
+inline void GetPopulatorFieldResponse::set_limit(::uint32_t value) {
+  _internal_set_limit(value);
+  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse.limit)
+}
+inline ::uint32_t GetPopulatorFieldResponse::_internal_limit() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.limit_;
+}
+inline void GetPopulatorFieldResponse::_internal_set_limit(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.limit_ = value;
+}
+
+// map<string, .kentik.custom_dimension.v202411alpha1.ExtendedField> extended_fields = 4 [json_name = "extendedFields"];
+inline int GetPopulatorFieldResponse::_internal_extended_fields_size() const {
+  return _internal_extended_fields().size();
+}
+inline int GetPopulatorFieldResponse::extended_fields_size() const {
+  return _internal_extended_fields_size();
+}
+inline void GetPopulatorFieldResponse::clear_extended_fields() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.extended_fields_.Clear();
+}
+inline const ::google::protobuf::Map<std::string, ::kentik::custom_dimension::v202411alpha1::ExtendedField>& GetPopulatorFieldResponse::_internal_extended_fields() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.extended_fields_.GetMap();
+}
+inline const ::google::protobuf::Map<std::string, ::kentik::custom_dimension::v202411alpha1::ExtendedField>& GetPopulatorFieldResponse::extended_fields() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_map:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse.extended_fields)
+  return _internal_extended_fields();
+}
+inline ::google::protobuf::Map<std::string, ::kentik::custom_dimension::v202411alpha1::ExtendedField>* GetPopulatorFieldResponse::_internal_mutable_extended_fields() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.extended_fields_.MutableMap();
+}
+inline ::google::protobuf::Map<std::string, ::kentik::custom_dimension::v202411alpha1::ExtendedField>* GetPopulatorFieldResponse::mutable_extended_fields() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_map:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse.extended_fields)
+  return _internal_mutable_extended_fields();
+}
 
 // -------------------------------------------------------------------
 

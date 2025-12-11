@@ -336,6 +336,30 @@ message DeleteCustomDimensionRequest {
 message DeleteCustomDimensionResponse {
 }
 
+message GetPopulatorRequest {
+  string custom_dimension_id = 1;
+  string populator_id = 2;
+}
+
+message GetPopulatorResponse {
+  Populator populator = 1;
+}
+
+message GetPopulatorFieldRequest {
+  string custom_dimension_id = 1;
+  string populator_id = 2;
+  string field_name = 3;
+  int32 offset = 4;
+  int32 limit = 5;
+}
+
+message GetPopulatorFieldResponse {
+  uint32 total_count = 1;
+  uint32 offset = 2;
+  uint32 limit = 3;
+  map<string, ExtendedField> extended_fields = 4;
+}
+
 message CreatePopulatorRequest {
   string custom_dimension_id = 1;
   Populator populator = 2;
@@ -414,6 +438,24 @@ service CustomDimensionService {
       operation_id: "DeleteCustomDimension"
       summary: "Delete Custom Dimension"
       description: "Deletes a custom dimension."
+    };
+  }
+
+  rpc GetPopulator(GetPopulatorRequest) returns (GetPopulatorResponse) {
+    option (google.api.http) = { get: "/custom_dimensions/v202411alpha1/{custom_dimension_id}/populator/{populator_id}" };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetPopulator"
+      summary: "Get Populator"
+      description: "Get Populator by Dimension and Populator ID."
+    };
+  }
+  
+  rpc GetPopulatorField(GetPopulatorFieldRequest) returns (GetPopulatorFieldResponse) {
+    option (google.api.http) = { get: "/custom_dimensions/v202411alpha1/{custom_dimension_id}/populator/{populator_id}/field/{field_name}" };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetPopulatorField"
+      summary: "Get Populator Field"
+      description: "Get Populator field by Dimension, Populator ID, and field name."
     };
   }
 

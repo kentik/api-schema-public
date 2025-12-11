@@ -598,6 +598,192 @@ void   kentik__custom_dimension__v202411alpha1__delete_custom_dimension_response
   assert(message->base.descriptor == &kentik__custom_dimension__v202411alpha1__delete_custom_dimension_response__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   kentik__custom_dimension__v202411alpha1__get_populator_request__init
+                     (Kentik__CustomDimension__V202411alpha1__GetPopulatorRequest         *message)
+{
+  static const Kentik__CustomDimension__V202411alpha1__GetPopulatorRequest init_value = KENTIK__CUSTOM_DIMENSION__V202411ALPHA1__GET_POPULATOR_REQUEST__INIT;
+  *message = init_value;
+}
+size_t kentik__custom_dimension__v202411alpha1__get_populator_request__get_packed_size
+                     (const Kentik__CustomDimension__V202411alpha1__GetPopulatorRequest *message)
+{
+  assert(message->base.descriptor == &kentik__custom_dimension__v202411alpha1__get_populator_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__custom_dimension__v202411alpha1__get_populator_request__pack
+                     (const Kentik__CustomDimension__V202411alpha1__GetPopulatorRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__custom_dimension__v202411alpha1__get_populator_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__custom_dimension__v202411alpha1__get_populator_request__pack_to_buffer
+                     (const Kentik__CustomDimension__V202411alpha1__GetPopulatorRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__custom_dimension__v202411alpha1__get_populator_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__CustomDimension__V202411alpha1__GetPopulatorRequest *
+       kentik__custom_dimension__v202411alpha1__get_populator_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__CustomDimension__V202411alpha1__GetPopulatorRequest *)
+     protobuf_c_message_unpack (&kentik__custom_dimension__v202411alpha1__get_populator_request__descriptor,
+                                allocator, len, data);
+}
+void   kentik__custom_dimension__v202411alpha1__get_populator_request__free_unpacked
+                     (Kentik__CustomDimension__V202411alpha1__GetPopulatorRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__custom_dimension__v202411alpha1__get_populator_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__custom_dimension__v202411alpha1__get_populator_response__init
+                     (Kentik__CustomDimension__V202411alpha1__GetPopulatorResponse         *message)
+{
+  static const Kentik__CustomDimension__V202411alpha1__GetPopulatorResponse init_value = KENTIK__CUSTOM_DIMENSION__V202411ALPHA1__GET_POPULATOR_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t kentik__custom_dimension__v202411alpha1__get_populator_response__get_packed_size
+                     (const Kentik__CustomDimension__V202411alpha1__GetPopulatorResponse *message)
+{
+  assert(message->base.descriptor == &kentik__custom_dimension__v202411alpha1__get_populator_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__custom_dimension__v202411alpha1__get_populator_response__pack
+                     (const Kentik__CustomDimension__V202411alpha1__GetPopulatorResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__custom_dimension__v202411alpha1__get_populator_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__custom_dimension__v202411alpha1__get_populator_response__pack_to_buffer
+                     (const Kentik__CustomDimension__V202411alpha1__GetPopulatorResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__custom_dimension__v202411alpha1__get_populator_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__CustomDimension__V202411alpha1__GetPopulatorResponse *
+       kentik__custom_dimension__v202411alpha1__get_populator_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__CustomDimension__V202411alpha1__GetPopulatorResponse *)
+     protobuf_c_message_unpack (&kentik__custom_dimension__v202411alpha1__get_populator_response__descriptor,
+                                allocator, len, data);
+}
+void   kentik__custom_dimension__v202411alpha1__get_populator_response__free_unpacked
+                     (Kentik__CustomDimension__V202411alpha1__GetPopulatorResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__custom_dimension__v202411alpha1__get_populator_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__custom_dimension__v202411alpha1__get_populator_field_request__init
+                     (Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldRequest         *message)
+{
+  static const Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldRequest init_value = KENTIK__CUSTOM_DIMENSION__V202411ALPHA1__GET_POPULATOR_FIELD_REQUEST__INIT;
+  *message = init_value;
+}
+size_t kentik__custom_dimension__v202411alpha1__get_populator_field_request__get_packed_size
+                     (const Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldRequest *message)
+{
+  assert(message->base.descriptor == &kentik__custom_dimension__v202411alpha1__get_populator_field_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__custom_dimension__v202411alpha1__get_populator_field_request__pack
+                     (const Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__custom_dimension__v202411alpha1__get_populator_field_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__custom_dimension__v202411alpha1__get_populator_field_request__pack_to_buffer
+                     (const Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__custom_dimension__v202411alpha1__get_populator_field_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldRequest *
+       kentik__custom_dimension__v202411alpha1__get_populator_field_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldRequest *)
+     protobuf_c_message_unpack (&kentik__custom_dimension__v202411alpha1__get_populator_field_request__descriptor,
+                                allocator, len, data);
+}
+void   kentik__custom_dimension__v202411alpha1__get_populator_field_request__free_unpacked
+                     (Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__custom_dimension__v202411alpha1__get_populator_field_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__custom_dimension__v202411alpha1__get_populator_field_response__extended_fields_entry__init
+                     (Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse__ExtendedFieldsEntry         *message)
+{
+  static const Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse__ExtendedFieldsEntry init_value = KENTIK__CUSTOM_DIMENSION__V202411ALPHA1__GET_POPULATOR_FIELD_RESPONSE__EXTENDED_FIELDS_ENTRY__INIT;
+  *message = init_value;
+}
+void   kentik__custom_dimension__v202411alpha1__get_populator_field_response__init
+                     (Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse         *message)
+{
+  static const Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse init_value = KENTIK__CUSTOM_DIMENSION__V202411ALPHA1__GET_POPULATOR_FIELD_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t kentik__custom_dimension__v202411alpha1__get_populator_field_response__get_packed_size
+                     (const Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse *message)
+{
+  assert(message->base.descriptor == &kentik__custom_dimension__v202411alpha1__get_populator_field_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__custom_dimension__v202411alpha1__get_populator_field_response__pack
+                     (const Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__custom_dimension__v202411alpha1__get_populator_field_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__custom_dimension__v202411alpha1__get_populator_field_response__pack_to_buffer
+                     (const Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__custom_dimension__v202411alpha1__get_populator_field_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse *
+       kentik__custom_dimension__v202411alpha1__get_populator_field_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse *)
+     protobuf_c_message_unpack (&kentik__custom_dimension__v202411alpha1__get_populator_field_response__descriptor,
+                                allocator, len, data);
+}
+void   kentik__custom_dimension__v202411alpha1__get_populator_field_response__free_unpacked
+                     (Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__custom_dimension__v202411alpha1__get_populator_field_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 void   kentik__custom_dimension__v202411alpha1__create_populator_request__init
                      (Kentik__CustomDimension__V202411alpha1__CreatePopulatorRequest         *message)
 {
@@ -1815,6 +2001,313 @@ const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1__delete
   (ProtobufCMessageInit) kentik__custom_dimension__v202411alpha1__delete_custom_dimension_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
+static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__get_populator_request__field_descriptors[2] =
+{
+  {
+    "custom_dimension_id",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__CustomDimension__V202411alpha1__GetPopulatorRequest, custom_dimension_id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "populator_id",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__CustomDimension__V202411alpha1__GetPopulatorRequest, populator_id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__custom_dimension__v202411alpha1__get_populator_request__field_indices_by_name[] = {
+  0,   /* field[0] = custom_dimension_id */
+  1,   /* field[1] = populator_id */
+};
+static const ProtobufCIntRange kentik__custom_dimension__v202411alpha1__get_populator_request__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1__get_populator_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.custom_dimension.v202411alpha1.GetPopulatorRequest",
+  "GetPopulatorRequest",
+  "Kentik__CustomDimension__V202411alpha1__GetPopulatorRequest",
+  "kentik.custom_dimension.v202411alpha1",
+  sizeof(Kentik__CustomDimension__V202411alpha1__GetPopulatorRequest),
+  2,
+  kentik__custom_dimension__v202411alpha1__get_populator_request__field_descriptors,
+  kentik__custom_dimension__v202411alpha1__get_populator_request__field_indices_by_name,
+  1,  kentik__custom_dimension__v202411alpha1__get_populator_request__number_ranges,
+  (ProtobufCMessageInit) kentik__custom_dimension__v202411alpha1__get_populator_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__get_populator_response__field_descriptors[1] =
+{
+  {
+    "populator",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__CustomDimension__V202411alpha1__GetPopulatorResponse, populator),
+    &kentik__custom_dimension__v202411alpha1__populator__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__custom_dimension__v202411alpha1__get_populator_response__field_indices_by_name[] = {
+  0,   /* field[0] = populator */
+};
+static const ProtobufCIntRange kentik__custom_dimension__v202411alpha1__get_populator_response__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1__get_populator_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.custom_dimension.v202411alpha1.GetPopulatorResponse",
+  "GetPopulatorResponse",
+  "Kentik__CustomDimension__V202411alpha1__GetPopulatorResponse",
+  "kentik.custom_dimension.v202411alpha1",
+  sizeof(Kentik__CustomDimension__V202411alpha1__GetPopulatorResponse),
+  1,
+  kentik__custom_dimension__v202411alpha1__get_populator_response__field_descriptors,
+  kentik__custom_dimension__v202411alpha1__get_populator_response__field_indices_by_name,
+  1,  kentik__custom_dimension__v202411alpha1__get_populator_response__number_ranges,
+  (ProtobufCMessageInit) kentik__custom_dimension__v202411alpha1__get_populator_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__get_populator_field_request__field_descriptors[5] =
+{
+  {
+    "custom_dimension_id",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldRequest, custom_dimension_id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "populator_id",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldRequest, populator_id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "field_name",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldRequest, field_name),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "offset",
+    4,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_INT32,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldRequest, offset),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "limit",
+    5,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_INT32,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldRequest, limit),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__custom_dimension__v202411alpha1__get_populator_field_request__field_indices_by_name[] = {
+  0,   /* field[0] = custom_dimension_id */
+  2,   /* field[2] = field_name */
+  4,   /* field[4] = limit */
+  3,   /* field[3] = offset */
+  1,   /* field[1] = populator_id */
+};
+static const ProtobufCIntRange kentik__custom_dimension__v202411alpha1__get_populator_field_request__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 5 }
+};
+const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1__get_populator_field_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest",
+  "GetPopulatorFieldRequest",
+  "Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldRequest",
+  "kentik.custom_dimension.v202411alpha1",
+  sizeof(Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldRequest),
+  5,
+  kentik__custom_dimension__v202411alpha1__get_populator_field_request__field_descriptors,
+  kentik__custom_dimension__v202411alpha1__get_populator_field_request__field_indices_by_name,
+  1,  kentik__custom_dimension__v202411alpha1__get_populator_field_request__number_ranges,
+  (ProtobufCMessageInit) kentik__custom_dimension__v202411alpha1__get_populator_field_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__get_populator_field_response__extended_fields_entry__field_descriptors[2] =
+{
+  {
+    "key",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse__ExtendedFieldsEntry, key),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "value",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse__ExtendedFieldsEntry, value),
+    &kentik__custom_dimension__v202411alpha1__extended_field__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__custom_dimension__v202411alpha1__get_populator_field_response__extended_fields_entry__field_indices_by_name[] = {
+  0,   /* field[0] = key */
+  1,   /* field[1] = value */
+};
+static const ProtobufCIntRange kentik__custom_dimension__v202411alpha1__get_populator_field_response__extended_fields_entry__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1__get_populator_field_response__extended_fields_entry__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse.ExtendedFieldsEntry",
+  "ExtendedFieldsEntry",
+  "Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse__ExtendedFieldsEntry",
+  "kentik.custom_dimension.v202411alpha1",
+  sizeof(Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse__ExtendedFieldsEntry),
+  2,
+  kentik__custom_dimension__v202411alpha1__get_populator_field_response__extended_fields_entry__field_descriptors,
+  kentik__custom_dimension__v202411alpha1__get_populator_field_response__extended_fields_entry__field_indices_by_name,
+  1,  kentik__custom_dimension__v202411alpha1__get_populator_field_response__extended_fields_entry__number_ranges,
+  (ProtobufCMessageInit) kentik__custom_dimension__v202411alpha1__get_populator_field_response__extended_fields_entry__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__get_populator_field_response__field_descriptors[4] =
+{
+  {
+    "total_count",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT32,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse, total_count),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "offset",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT32,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse, offset),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "limit",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT32,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse, limit),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "extended_fields",
+    4,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse, n_extended_fields),
+    offsetof(Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse, extended_fields),
+    &kentik__custom_dimension__v202411alpha1__get_populator_field_response__extended_fields_entry__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__custom_dimension__v202411alpha1__get_populator_field_response__field_indices_by_name[] = {
+  3,   /* field[3] = extended_fields */
+  2,   /* field[2] = limit */
+  1,   /* field[1] = offset */
+  0,   /* field[0] = total_count */
+};
+static const ProtobufCIntRange kentik__custom_dimension__v202411alpha1__get_populator_field_response__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 4 }
+};
+const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1__get_populator_field_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse",
+  "GetPopulatorFieldResponse",
+  "Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse",
+  "kentik.custom_dimension.v202411alpha1",
+  sizeof(Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse),
+  4,
+  kentik__custom_dimension__v202411alpha1__get_populator_field_response__field_descriptors,
+  kentik__custom_dimension__v202411alpha1__get_populator_field_response__field_indices_by_name,
+  1,  kentik__custom_dimension__v202411alpha1__get_populator_field_response__number_ranges,
+  (ProtobufCMessageInit) kentik__custom_dimension__v202411alpha1__get_populator_field_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
 static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__create_populator_request__field_descriptors[2] =
 {
   {
@@ -2075,26 +2568,30 @@ const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1__delete
   (ProtobufCMessageInit) kentik__custom_dimension__v202411alpha1__delete_populator_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCMethodDescriptor kentik__custom_dimension__v202411alpha1__custom_dimension_service__method_descriptors[8] =
+static const ProtobufCMethodDescriptor kentik__custom_dimension__v202411alpha1__custom_dimension_service__method_descriptors[10] =
 {
   { "ListCustomDimensions", &kentik__custom_dimension__v202411alpha1__list_custom_dimensions_request__descriptor, &kentik__custom_dimension__v202411alpha1__list_custom_dimensions_response__descriptor },
   { "GetCustomDimensionInfo", &kentik__custom_dimension__v202411alpha1__get_custom_dimension_info_request__descriptor, &kentik__custom_dimension__v202411alpha1__get_custom_dimension_info_response__descriptor },
   { "CreateCustomDimension", &kentik__custom_dimension__v202411alpha1__create_custom_dimension_request__descriptor, &kentik__custom_dimension__v202411alpha1__create_custom_dimension_response__descriptor },
   { "UpdateCustomDimension", &kentik__custom_dimension__v202411alpha1__update_custom_dimension_request__descriptor, &kentik__custom_dimension__v202411alpha1__update_custom_dimension_response__descriptor },
   { "DeleteCustomDimension", &kentik__custom_dimension__v202411alpha1__delete_custom_dimension_request__descriptor, &kentik__custom_dimension__v202411alpha1__delete_custom_dimension_response__descriptor },
+  { "GetPopulator", &kentik__custom_dimension__v202411alpha1__get_populator_request__descriptor, &kentik__custom_dimension__v202411alpha1__get_populator_response__descriptor },
+  { "GetPopulatorField", &kentik__custom_dimension__v202411alpha1__get_populator_field_request__descriptor, &kentik__custom_dimension__v202411alpha1__get_populator_field_response__descriptor },
   { "CreatePopulator", &kentik__custom_dimension__v202411alpha1__create_populator_request__descriptor, &kentik__custom_dimension__v202411alpha1__create_populator_response__descriptor },
   { "UpdatePopulator", &kentik__custom_dimension__v202411alpha1__update_populator_request__descriptor, &kentik__custom_dimension__v202411alpha1__update_populator_response__descriptor },
   { "DeletePopulator", &kentik__custom_dimension__v202411alpha1__delete_populator_request__descriptor, &kentik__custom_dimension__v202411alpha1__delete_populator_response__descriptor },
 };
 const unsigned kentik__custom_dimension__v202411alpha1__custom_dimension_service__method_indices_by_name[] = {
   2,        /* CreateCustomDimension */
-  5,        /* CreatePopulator */
+  7,        /* CreatePopulator */
   4,        /* DeleteCustomDimension */
-  7,        /* DeletePopulator */
+  9,        /* DeletePopulator */
   1,        /* GetCustomDimensionInfo */
+  5,        /* GetPopulator */
+  6,        /* GetPopulatorField */
   0,        /* ListCustomDimensions */
   3,        /* UpdateCustomDimension */
-  6         /* UpdatePopulator */
+  8         /* UpdatePopulator */
 };
 const ProtobufCServiceDescriptor kentik__custom_dimension__v202411alpha1__custom_dimension_service__descriptor =
 {
@@ -2103,7 +2600,7 @@ const ProtobufCServiceDescriptor kentik__custom_dimension__v202411alpha1__custom
   "CustomDimensionService",
   "Kentik__CustomDimension__V202411alpha1__CustomDimensionService",
   "kentik.custom_dimension.v202411alpha1",
-  8,
+  10,
   kentik__custom_dimension__v202411alpha1__custom_dimension_service__method_descriptors,
   kentik__custom_dimension__v202411alpha1__custom_dimension_service__method_indices_by_name
 };
@@ -2147,13 +2644,29 @@ void kentik__custom_dimension__v202411alpha1__custom_dimension_service__delete_c
   assert(service->descriptor == &kentik__custom_dimension__v202411alpha1__custom_dimension_service__descriptor);
   service->invoke(service, 4, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
+void kentik__custom_dimension__v202411alpha1__custom_dimension_service__get_populator(ProtobufCService *service,
+                                                                                      const Kentik__CustomDimension__V202411alpha1__GetPopulatorRequest *input,
+                                                                                      Kentik__CustomDimension__V202411alpha1__GetPopulatorResponse_Closure closure,
+                                                                                      void *closure_data)
+{
+  assert(service->descriptor == &kentik__custom_dimension__v202411alpha1__custom_dimension_service__descriptor);
+  service->invoke(service, 5, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
+void kentik__custom_dimension__v202411alpha1__custom_dimension_service__get_populator_field(ProtobufCService *service,
+                                                                                            const Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldRequest *input,
+                                                                                            Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse_Closure closure,
+                                                                                            void *closure_data)
+{
+  assert(service->descriptor == &kentik__custom_dimension__v202411alpha1__custom_dimension_service__descriptor);
+  service->invoke(service, 6, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
 void kentik__custom_dimension__v202411alpha1__custom_dimension_service__create_populator(ProtobufCService *service,
                                                                                          const Kentik__CustomDimension__V202411alpha1__CreatePopulatorRequest *input,
                                                                                          Kentik__CustomDimension__V202411alpha1__CreatePopulatorResponse_Closure closure,
                                                                                          void *closure_data)
 {
   assert(service->descriptor == &kentik__custom_dimension__v202411alpha1__custom_dimension_service__descriptor);
-  service->invoke(service, 5, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+  service->invoke(service, 7, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void kentik__custom_dimension__v202411alpha1__custom_dimension_service__update_populator(ProtobufCService *service,
                                                                                          const Kentik__CustomDimension__V202411alpha1__UpdatePopulatorRequest *input,
@@ -2161,7 +2674,7 @@ void kentik__custom_dimension__v202411alpha1__custom_dimension_service__update_p
                                                                                          void *closure_data)
 {
   assert(service->descriptor == &kentik__custom_dimension__v202411alpha1__custom_dimension_service__descriptor);
-  service->invoke(service, 6, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+  service->invoke(service, 8, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void kentik__custom_dimension__v202411alpha1__custom_dimension_service__delete_populator(ProtobufCService *service,
                                                                                          const Kentik__CustomDimension__V202411alpha1__DeletePopulatorRequest *input,
@@ -2169,7 +2682,7 @@ void kentik__custom_dimension__v202411alpha1__custom_dimension_service__delete_p
                                                                                          void *closure_data)
 {
   assert(service->descriptor == &kentik__custom_dimension__v202411alpha1__custom_dimension_service__descriptor);
-  service->invoke(service, 7, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+  service->invoke(service, 9, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void kentik__custom_dimension__v202411alpha1__custom_dimension_service__init (Kentik__CustomDimension__V202411alpha1__CustomDimensionService_Service *service,
                                                                               Kentik__CustomDimension__V202411alpha1__CustomDimensionService_ServiceDestroy destroy)

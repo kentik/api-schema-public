@@ -24,6 +24,8 @@ const (
 	CustomDimensionService_CreateCustomDimension_FullMethodName  = "/kentik.custom_dimension.v202411alpha1.CustomDimensionService/CreateCustomDimension"
 	CustomDimensionService_UpdateCustomDimension_FullMethodName  = "/kentik.custom_dimension.v202411alpha1.CustomDimensionService/UpdateCustomDimension"
 	CustomDimensionService_DeleteCustomDimension_FullMethodName  = "/kentik.custom_dimension.v202411alpha1.CustomDimensionService/DeleteCustomDimension"
+	CustomDimensionService_GetPopulator_FullMethodName           = "/kentik.custom_dimension.v202411alpha1.CustomDimensionService/GetPopulator"
+	CustomDimensionService_GetPopulatorField_FullMethodName      = "/kentik.custom_dimension.v202411alpha1.CustomDimensionService/GetPopulatorField"
 	CustomDimensionService_CreatePopulator_FullMethodName        = "/kentik.custom_dimension.v202411alpha1.CustomDimensionService/CreatePopulator"
 	CustomDimensionService_UpdatePopulator_FullMethodName        = "/kentik.custom_dimension.v202411alpha1.CustomDimensionService/UpdatePopulator"
 	CustomDimensionService_DeletePopulator_FullMethodName        = "/kentik.custom_dimension.v202411alpha1.CustomDimensionService/DeletePopulator"
@@ -38,6 +40,8 @@ type CustomDimensionServiceClient interface {
 	CreateCustomDimension(ctx context.Context, in *CreateCustomDimensionRequest, opts ...grpc.CallOption) (*CreateCustomDimensionResponse, error)
 	UpdateCustomDimension(ctx context.Context, in *UpdateCustomDimensionRequest, opts ...grpc.CallOption) (*UpdateCustomDimensionResponse, error)
 	DeleteCustomDimension(ctx context.Context, in *DeleteCustomDimensionRequest, opts ...grpc.CallOption) (*DeleteCustomDimensionResponse, error)
+	GetPopulator(ctx context.Context, in *GetPopulatorRequest, opts ...grpc.CallOption) (*GetPopulatorResponse, error)
+	GetPopulatorField(ctx context.Context, in *GetPopulatorFieldRequest, opts ...grpc.CallOption) (*GetPopulatorFieldResponse, error)
 	CreatePopulator(ctx context.Context, in *CreatePopulatorRequest, opts ...grpc.CallOption) (*CreatePopulatorResponse, error)
 	UpdatePopulator(ctx context.Context, in *UpdatePopulatorRequest, opts ...grpc.CallOption) (*UpdatePopulatorResponse, error)
 	DeletePopulator(ctx context.Context, in *DeletePopulatorRequest, opts ...grpc.CallOption) (*DeletePopulatorResponse, error)
@@ -101,6 +105,26 @@ func (c *customDimensionServiceClient) DeleteCustomDimension(ctx context.Context
 	return out, nil
 }
 
+func (c *customDimensionServiceClient) GetPopulator(ctx context.Context, in *GetPopulatorRequest, opts ...grpc.CallOption) (*GetPopulatorResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetPopulatorResponse)
+	err := c.cc.Invoke(ctx, CustomDimensionService_GetPopulator_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *customDimensionServiceClient) GetPopulatorField(ctx context.Context, in *GetPopulatorFieldRequest, opts ...grpc.CallOption) (*GetPopulatorFieldResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetPopulatorFieldResponse)
+	err := c.cc.Invoke(ctx, CustomDimensionService_GetPopulatorField_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *customDimensionServiceClient) CreatePopulator(ctx context.Context, in *CreatePopulatorRequest, opts ...grpc.CallOption) (*CreatePopulatorResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CreatePopulatorResponse)
@@ -140,6 +164,8 @@ type CustomDimensionServiceServer interface {
 	CreateCustomDimension(context.Context, *CreateCustomDimensionRequest) (*CreateCustomDimensionResponse, error)
 	UpdateCustomDimension(context.Context, *UpdateCustomDimensionRequest) (*UpdateCustomDimensionResponse, error)
 	DeleteCustomDimension(context.Context, *DeleteCustomDimensionRequest) (*DeleteCustomDimensionResponse, error)
+	GetPopulator(context.Context, *GetPopulatorRequest) (*GetPopulatorResponse, error)
+	GetPopulatorField(context.Context, *GetPopulatorFieldRequest) (*GetPopulatorFieldResponse, error)
 	CreatePopulator(context.Context, *CreatePopulatorRequest) (*CreatePopulatorResponse, error)
 	UpdatePopulator(context.Context, *UpdatePopulatorRequest) (*UpdatePopulatorResponse, error)
 	DeletePopulator(context.Context, *DeletePopulatorRequest) (*DeletePopulatorResponse, error)
@@ -166,6 +192,12 @@ func (UnimplementedCustomDimensionServiceServer) UpdateCustomDimension(context.C
 }
 func (UnimplementedCustomDimensionServiceServer) DeleteCustomDimension(context.Context, *DeleteCustomDimensionRequest) (*DeleteCustomDimensionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteCustomDimension not implemented")
+}
+func (UnimplementedCustomDimensionServiceServer) GetPopulator(context.Context, *GetPopulatorRequest) (*GetPopulatorResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPopulator not implemented")
+}
+func (UnimplementedCustomDimensionServiceServer) GetPopulatorField(context.Context, *GetPopulatorFieldRequest) (*GetPopulatorFieldResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPopulatorField not implemented")
 }
 func (UnimplementedCustomDimensionServiceServer) CreatePopulator(context.Context, *CreatePopulatorRequest) (*CreatePopulatorResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreatePopulator not implemented")
@@ -286,6 +318,42 @@ func _CustomDimensionService_DeleteCustomDimension_Handler(srv interface{}, ctx 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _CustomDimensionService_GetPopulator_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetPopulatorRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CustomDimensionServiceServer).GetPopulator(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CustomDimensionService_GetPopulator_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CustomDimensionServiceServer).GetPopulator(ctx, req.(*GetPopulatorRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CustomDimensionService_GetPopulatorField_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetPopulatorFieldRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CustomDimensionServiceServer).GetPopulatorField(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CustomDimensionService_GetPopulatorField_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CustomDimensionServiceServer).GetPopulatorField(ctx, req.(*GetPopulatorFieldRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _CustomDimensionService_CreatePopulator_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreatePopulatorRequest)
 	if err := dec(in); err != nil {
@@ -366,6 +434,14 @@ var CustomDimensionService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteCustomDimension",
 			Handler:    _CustomDimensionService_DeleteCustomDimension_Handler,
+		},
+		{
+			MethodName: "GetPopulator",
+			Handler:    _CustomDimensionService_GetPopulator_Handler,
+		},
+		{
+			MethodName: "GetPopulatorField",
+			Handler:    _CustomDimensionService_GetPopulatorField_Handler,
 		},
 		{
 			MethodName: "CreatePopulator",

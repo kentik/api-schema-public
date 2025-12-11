@@ -189,6 +189,42 @@
       }
     },
     "/custom_dimensions/v202411alpha1/{customDimensionId}/populator/{populatorId}": {
+      "get": {
+        "summary": "Get Populator",
+        "description": "Get Populator by Dimension and Populator ID.",
+        "operationId": "GetPopulator",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202411alpha1GetPopulatorResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "customDimensionId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "populatorId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "CustomDimensionService"
+        ]
+      },
       "delete": {
         "summary": "Delete Populator",
         "description": "Deletes a populator.",
@@ -263,6 +299,64 @@
             "schema": {
               "$ref": "#/definitions/v202411alpha1Populator"
             }
+          }
+        ],
+        "tags": [
+          "CustomDimensionService"
+        ]
+      }
+    },
+    "/custom_dimensions/v202411alpha1/{customDimensionId}/populator/{populatorId}/field/{fieldName}": {
+      "get": {
+        "summary": "Get Populator Field",
+        "description": "Get Populator field by Dimension, Populator ID, and field name.",
+        "operationId": "GetPopulatorField",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202411alpha1GetPopulatorFieldResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "customDimensionId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "populatorId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "fieldName",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
           }
         ],
         "tags": [
@@ -426,6 +520,37 @@
       "properties": {
         "dimension": {
           "$ref": "#/definitions/v202411alpha1CustomDimension"
+        }
+      }
+    },
+    "v202411alpha1GetPopulatorFieldResponse": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "offset": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "extendedFields": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/v202411alpha1ExtendedField"
+          }
+        }
+      }
+    },
+    "v202411alpha1GetPopulatorResponse": {
+      "type": "object",
+      "properties": {
+        "populator": {
+          "$ref": "#/definitions/v202411alpha1Populator"
         }
       }
     },

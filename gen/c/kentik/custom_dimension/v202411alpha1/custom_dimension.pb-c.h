@@ -36,6 +36,11 @@ typedef struct Kentik__CustomDimension__V202411alpha1__UpdateCustomDimensionRequ
 typedef struct Kentik__CustomDimension__V202411alpha1__UpdateCustomDimensionResponse Kentik__CustomDimension__V202411alpha1__UpdateCustomDimensionResponse;
 typedef struct Kentik__CustomDimension__V202411alpha1__DeleteCustomDimensionRequest Kentik__CustomDimension__V202411alpha1__DeleteCustomDimensionRequest;
 typedef struct Kentik__CustomDimension__V202411alpha1__DeleteCustomDimensionResponse Kentik__CustomDimension__V202411alpha1__DeleteCustomDimensionResponse;
+typedef struct Kentik__CustomDimension__V202411alpha1__GetPopulatorRequest Kentik__CustomDimension__V202411alpha1__GetPopulatorRequest;
+typedef struct Kentik__CustomDimension__V202411alpha1__GetPopulatorResponse Kentik__CustomDimension__V202411alpha1__GetPopulatorResponse;
+typedef struct Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldRequest Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldRequest;
+typedef struct Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse;
+typedef struct Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse__ExtendedFieldsEntry Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse__ExtendedFieldsEntry;
 typedef struct Kentik__CustomDimension__V202411alpha1__CreatePopulatorRequest Kentik__CustomDimension__V202411alpha1__CreatePopulatorRequest;
 typedef struct Kentik__CustomDimension__V202411alpha1__CreatePopulatorResponse Kentik__CustomDimension__V202411alpha1__CreatePopulatorResponse;
 typedef struct Kentik__CustomDimension__V202411alpha1__UpdatePopulatorRequest Kentik__CustomDimension__V202411alpha1__UpdatePopulatorRequest;
@@ -250,6 +255,66 @@ struct  Kentik__CustomDimension__V202411alpha1__DeleteCustomDimensionResponse
 #define KENTIK__CUSTOM_DIMENSION__V202411ALPHA1__DELETE_CUSTOM_DIMENSION_RESPONSE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__custom_dimension__v202411alpha1__delete_custom_dimension_response__descriptor) \
      }
+
+
+struct  Kentik__CustomDimension__V202411alpha1__GetPopulatorRequest
+{
+  ProtobufCMessage base;
+  char *custom_dimension_id;
+  char *populator_id;
+};
+#define KENTIK__CUSTOM_DIMENSION__V202411ALPHA1__GET_POPULATOR_REQUEST__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__custom_dimension__v202411alpha1__get_populator_request__descriptor) \
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
+
+
+struct  Kentik__CustomDimension__V202411alpha1__GetPopulatorResponse
+{
+  ProtobufCMessage base;
+  Kentik__CustomDimension__V202411alpha1__Populator *populator;
+};
+#define KENTIK__CUSTOM_DIMENSION__V202411ALPHA1__GET_POPULATOR_RESPONSE__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__custom_dimension__v202411alpha1__get_populator_response__descriptor) \
+    , NULL }
+
+
+struct  Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldRequest
+{
+  ProtobufCMessage base;
+  char *custom_dimension_id;
+  char *populator_id;
+  char *field_name;
+  int32_t offset;
+  int32_t limit;
+};
+#define KENTIK__CUSTOM_DIMENSION__V202411ALPHA1__GET_POPULATOR_FIELD_REQUEST__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__custom_dimension__v202411alpha1__get_populator_field_request__descriptor) \
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, 0 }
+
+
+struct  Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse__ExtendedFieldsEntry
+{
+  ProtobufCMessage base;
+  char *key;
+  Kentik__CustomDimension__V202411alpha1__ExtendedField *value;
+};
+#define KENTIK__CUSTOM_DIMENSION__V202411ALPHA1__GET_POPULATOR_FIELD_RESPONSE__EXTENDED_FIELDS_ENTRY__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__custom_dimension__v202411alpha1__get_populator_field_response__extended_fields_entry__descriptor) \
+    , (char *)protobuf_c_empty_string, NULL }
+
+
+struct  Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse
+{
+  ProtobufCMessage base;
+  uint32_t total_count;
+  uint32_t offset;
+  uint32_t limit;
+  size_t n_extended_fields;
+  Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse__ExtendedFieldsEntry **extended_fields;
+};
+#define KENTIK__CUSTOM_DIMENSION__V202411ALPHA1__GET_POPULATOR_FIELD_RESPONSE__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__custom_dimension__v202411alpha1__get_populator_field_response__descriptor) \
+    , 0, 0, 0, 0,NULL }
 
 
 struct  Kentik__CustomDimension__V202411alpha1__CreatePopulatorRequest
@@ -565,6 +630,85 @@ Kentik__CustomDimension__V202411alpha1__DeleteCustomDimensionResponse *
 void   kentik__custom_dimension__v202411alpha1__delete_custom_dimension_response__free_unpacked
                      (Kentik__CustomDimension__V202411alpha1__DeleteCustomDimensionResponse *message,
                       ProtobufCAllocator *allocator);
+/* Kentik__CustomDimension__V202411alpha1__GetPopulatorRequest methods */
+void   kentik__custom_dimension__v202411alpha1__get_populator_request__init
+                     (Kentik__CustomDimension__V202411alpha1__GetPopulatorRequest         *message);
+size_t kentik__custom_dimension__v202411alpha1__get_populator_request__get_packed_size
+                     (const Kentik__CustomDimension__V202411alpha1__GetPopulatorRequest   *message);
+size_t kentik__custom_dimension__v202411alpha1__get_populator_request__pack
+                     (const Kentik__CustomDimension__V202411alpha1__GetPopulatorRequest   *message,
+                      uint8_t             *out);
+size_t kentik__custom_dimension__v202411alpha1__get_populator_request__pack_to_buffer
+                     (const Kentik__CustomDimension__V202411alpha1__GetPopulatorRequest   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__CustomDimension__V202411alpha1__GetPopulatorRequest *
+       kentik__custom_dimension__v202411alpha1__get_populator_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__custom_dimension__v202411alpha1__get_populator_request__free_unpacked
+                     (Kentik__CustomDimension__V202411alpha1__GetPopulatorRequest *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__CustomDimension__V202411alpha1__GetPopulatorResponse methods */
+void   kentik__custom_dimension__v202411alpha1__get_populator_response__init
+                     (Kentik__CustomDimension__V202411alpha1__GetPopulatorResponse         *message);
+size_t kentik__custom_dimension__v202411alpha1__get_populator_response__get_packed_size
+                     (const Kentik__CustomDimension__V202411alpha1__GetPopulatorResponse   *message);
+size_t kentik__custom_dimension__v202411alpha1__get_populator_response__pack
+                     (const Kentik__CustomDimension__V202411alpha1__GetPopulatorResponse   *message,
+                      uint8_t             *out);
+size_t kentik__custom_dimension__v202411alpha1__get_populator_response__pack_to_buffer
+                     (const Kentik__CustomDimension__V202411alpha1__GetPopulatorResponse   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__CustomDimension__V202411alpha1__GetPopulatorResponse *
+       kentik__custom_dimension__v202411alpha1__get_populator_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__custom_dimension__v202411alpha1__get_populator_response__free_unpacked
+                     (Kentik__CustomDimension__V202411alpha1__GetPopulatorResponse *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldRequest methods */
+void   kentik__custom_dimension__v202411alpha1__get_populator_field_request__init
+                     (Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldRequest         *message);
+size_t kentik__custom_dimension__v202411alpha1__get_populator_field_request__get_packed_size
+                     (const Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldRequest   *message);
+size_t kentik__custom_dimension__v202411alpha1__get_populator_field_request__pack
+                     (const Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldRequest   *message,
+                      uint8_t             *out);
+size_t kentik__custom_dimension__v202411alpha1__get_populator_field_request__pack_to_buffer
+                     (const Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldRequest   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldRequest *
+       kentik__custom_dimension__v202411alpha1__get_populator_field_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__custom_dimension__v202411alpha1__get_populator_field_request__free_unpacked
+                     (Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldRequest *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse__ExtendedFieldsEntry methods */
+void   kentik__custom_dimension__v202411alpha1__get_populator_field_response__extended_fields_entry__init
+                     (Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse__ExtendedFieldsEntry         *message);
+/* Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse methods */
+void   kentik__custom_dimension__v202411alpha1__get_populator_field_response__init
+                     (Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse         *message);
+size_t kentik__custom_dimension__v202411alpha1__get_populator_field_response__get_packed_size
+                     (const Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse   *message);
+size_t kentik__custom_dimension__v202411alpha1__get_populator_field_response__pack
+                     (const Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse   *message,
+                      uint8_t             *out);
+size_t kentik__custom_dimension__v202411alpha1__get_populator_field_response__pack_to_buffer
+                     (const Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse *
+       kentik__custom_dimension__v202411alpha1__get_populator_field_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__custom_dimension__v202411alpha1__get_populator_field_response__free_unpacked
+                     (Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse *message,
+                      ProtobufCAllocator *allocator);
 /* Kentik__CustomDimension__V202411alpha1__CreatePopulatorRequest methods */
 void   kentik__custom_dimension__v202411alpha1__create_populator_request__init
                      (Kentik__CustomDimension__V202411alpha1__CreatePopulatorRequest         *message);
@@ -723,6 +867,21 @@ typedef void (*Kentik__CustomDimension__V202411alpha1__DeleteCustomDimensionRequ
 typedef void (*Kentik__CustomDimension__V202411alpha1__DeleteCustomDimensionResponse_Closure)
                  (const Kentik__CustomDimension__V202411alpha1__DeleteCustomDimensionResponse *message,
                   void *closure_data);
+typedef void (*Kentik__CustomDimension__V202411alpha1__GetPopulatorRequest_Closure)
+                 (const Kentik__CustomDimension__V202411alpha1__GetPopulatorRequest *message,
+                  void *closure_data);
+typedef void (*Kentik__CustomDimension__V202411alpha1__GetPopulatorResponse_Closure)
+                 (const Kentik__CustomDimension__V202411alpha1__GetPopulatorResponse *message,
+                  void *closure_data);
+typedef void (*Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldRequest_Closure)
+                 (const Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldRequest *message,
+                  void *closure_data);
+typedef void (*Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse__ExtendedFieldsEntry_Closure)
+                 (const Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse__ExtendedFieldsEntry *message,
+                  void *closure_data);
+typedef void (*Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse_Closure)
+                 (const Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse *message,
+                  void *closure_data);
 typedef void (*Kentik__CustomDimension__V202411alpha1__CreatePopulatorRequest_Closure)
                  (const Kentik__CustomDimension__V202411alpha1__CreatePopulatorRequest *message,
                   void *closure_data);
@@ -768,6 +927,14 @@ struct Kentik__CustomDimension__V202411alpha1__CustomDimensionService_Service
                                   const Kentik__CustomDimension__V202411alpha1__DeleteCustomDimensionRequest *input,
                                   Kentik__CustomDimension__V202411alpha1__DeleteCustomDimensionResponse_Closure closure,
                                   void *closure_data);
+  void (*get_populator)(Kentik__CustomDimension__V202411alpha1__CustomDimensionService_Service *service,
+                        const Kentik__CustomDimension__V202411alpha1__GetPopulatorRequest *input,
+                        Kentik__CustomDimension__V202411alpha1__GetPopulatorResponse_Closure closure,
+                        void *closure_data);
+  void (*get_populator_field)(Kentik__CustomDimension__V202411alpha1__CustomDimensionService_Service *service,
+                              const Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldRequest *input,
+                              Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse_Closure closure,
+                              void *closure_data);
   void (*create_populator)(Kentik__CustomDimension__V202411alpha1__CustomDimensionService_Service *service,
                            const Kentik__CustomDimension__V202411alpha1__CreatePopulatorRequest *input,
                            Kentik__CustomDimension__V202411alpha1__CreatePopulatorResponse_Closure closure,
@@ -793,6 +960,8 @@ void kentik__custom_dimension__v202411alpha1__custom_dimension_service__init (Ke
       function_prefix__ ## create_custom_dimension,\
       function_prefix__ ## update_custom_dimension,\
       function_prefix__ ## delete_custom_dimension,\
+      function_prefix__ ## get_populator,\
+      function_prefix__ ## get_populator_field,\
       function_prefix__ ## create_populator,\
       function_prefix__ ## update_populator,\
       function_prefix__ ## delete_populator  }
@@ -816,6 +985,14 @@ void kentik__custom_dimension__v202411alpha1__custom_dimension_service__delete_c
                                                                                                 const Kentik__CustomDimension__V202411alpha1__DeleteCustomDimensionRequest *input,
                                                                                                 Kentik__CustomDimension__V202411alpha1__DeleteCustomDimensionResponse_Closure closure,
                                                                                                 void *closure_data);
+void kentik__custom_dimension__v202411alpha1__custom_dimension_service__get_populator(ProtobufCService *service,
+                                                                                      const Kentik__CustomDimension__V202411alpha1__GetPopulatorRequest *input,
+                                                                                      Kentik__CustomDimension__V202411alpha1__GetPopulatorResponse_Closure closure,
+                                                                                      void *closure_data);
+void kentik__custom_dimension__v202411alpha1__custom_dimension_service__get_populator_field(ProtobufCService *service,
+                                                                                            const Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldRequest *input,
+                                                                                            Kentik__CustomDimension__V202411alpha1__GetPopulatorFieldResponse_Closure closure,
+                                                                                            void *closure_data);
 void kentik__custom_dimension__v202411alpha1__custom_dimension_service__create_populator(ProtobufCService *service,
                                                                                          const Kentik__CustomDimension__V202411alpha1__CreatePopulatorRequest *input,
                                                                                          Kentik__CustomDimension__V202411alpha1__CreatePopulatorResponse_Closure closure,
@@ -845,6 +1022,11 @@ extern const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1_
 extern const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1__update_custom_dimension_response__descriptor;
 extern const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1__delete_custom_dimension_request__descriptor;
 extern const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1__delete_custom_dimension_response__descriptor;
+extern const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1__get_populator_request__descriptor;
+extern const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1__get_populator_response__descriptor;
+extern const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1__get_populator_field_request__descriptor;
+extern const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1__get_populator_field_response__descriptor;
+extern const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1__get_populator_field_response__extended_fields_entry__descriptor;
 extern const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1__create_populator_request__descriptor;
 extern const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1__create_populator_response__descriptor;
 extern const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1__update_populator_request__descriptor;

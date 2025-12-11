@@ -46,6 +46,71 @@ struct ListCustomDimensionsRequestDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ListCustomDimensionsRequestDefaultTypeInternal _ListCustomDimensionsRequest_default_instance_;
 
+inline constexpr GetPopulatorRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : custom_dimension_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        populator_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR GetPopulatorRequest::GetPopulatorRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct GetPopulatorRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GetPopulatorRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GetPopulatorRequestDefaultTypeInternal() {}
+  union {
+    GetPopulatorRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetPopulatorRequestDefaultTypeInternal _GetPopulatorRequest_default_instance_;
+
+inline constexpr GetPopulatorFieldRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : custom_dimension_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        populator_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        field_name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        offset_{0},
+        limit_{0},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR GetPopulatorFieldRequest::GetPopulatorFieldRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct GetPopulatorFieldRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GetPopulatorFieldRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GetPopulatorFieldRequestDefaultTypeInternal() {}
+  union {
+    GetPopulatorFieldRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetPopulatorFieldRequestDefaultTypeInternal _GetPopulatorFieldRequest_default_instance_;
+
 inline constexpr GetCustomDimensionInfoRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : custom_dimension_id_(
@@ -208,6 +273,24 @@ struct Populator_ExtendedFieldsEntry_DoNotUseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Populator_ExtendedFieldsEntry_DoNotUseDefaultTypeInternal _Populator_ExtendedFieldsEntry_DoNotUse_default_instance_;
+              template <typename>
+PROTOBUF_CONSTEXPR GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse::GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse::MapEntry(_class_data_.base()){}
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse::MapEntry() {
+}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+struct GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUseDefaultTypeInternal _GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse_default_instance_;
 
 inline constexpr Populator::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -272,6 +355,34 @@ struct PopulatorDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PopulatorDefaultTypeInternal _Populator_default_instance_;
 
+inline constexpr GetPopulatorFieldResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : extended_fields_{},
+        total_count_{0u},
+        offset_{0u},
+        limit_{0u},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR GetPopulatorFieldResponse::GetPopulatorFieldResponse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct GetPopulatorFieldResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GetPopulatorFieldResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GetPopulatorFieldResponseDefaultTypeInternal() {}
+  union {
+    GetPopulatorFieldResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetPopulatorFieldResponseDefaultTypeInternal _GetPopulatorFieldResponse_default_instance_;
+
 inline constexpr UpdatePopulatorResponse::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
@@ -327,6 +438,31 @@ struct UpdatePopulatorRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UpdatePopulatorRequestDefaultTypeInternal _UpdatePopulatorRequest_default_instance_;
+
+inline constexpr GetPopulatorResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        populator_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR GetPopulatorResponse::GetPopulatorResponse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct GetPopulatorResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GetPopulatorResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GetPopulatorResponseDefaultTypeInternal() {}
+  union {
+    GetPopulatorResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetPopulatorResponseDefaultTypeInternal _GetPopulatorResponse_default_instance_;
 
 inline constexpr CustomDimension::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -787,6 +923,63 @@ const ::uint32_t
         ~0u,  // no _inlined_string_donated_
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::GetPopulatorRequest, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::GetPopulatorRequest, _impl_.custom_dimension_id_),
+        PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::GetPopulatorRequest, _impl_.populator_id_),
+        PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::GetPopulatorResponse, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::GetPopulatorResponse, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::GetPopulatorResponse, _impl_.populator_),
+        0,
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::GetPopulatorFieldRequest, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::GetPopulatorFieldRequest, _impl_.custom_dimension_id_),
+        PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::GetPopulatorFieldRequest, _impl_.populator_id_),
+        PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::GetPopulatorFieldRequest, _impl_.field_name_),
+        PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::GetPopulatorFieldRequest, _impl_.offset_),
+        PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::GetPopulatorFieldRequest, _impl_.limit_),
+        PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse, _impl_.key_),
+        PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse, _impl_.value_),
+        0,
+        1,
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::GetPopulatorFieldResponse, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::GetPopulatorFieldResponse, _impl_.total_count_),
+        PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::GetPopulatorFieldResponse, _impl_.offset_),
+        PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::GetPopulatorFieldResponse, _impl_.limit_),
+        PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::GetPopulatorFieldResponse, _impl_.extended_fields_),
         PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::CreatePopulatorRequest, _impl_._has_bits_),
         PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::CreatePopulatorRequest, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -869,12 +1062,17 @@ static const ::_pbi::MigrationSchema
         {175, 184, -1, sizeof(::kentik::custom_dimension::v202411alpha1::UpdateCustomDimensionResponse)},
         {185, -1, -1, sizeof(::kentik::custom_dimension::v202411alpha1::DeleteCustomDimensionRequest)},
         {194, -1, -1, sizeof(::kentik::custom_dimension::v202411alpha1::DeleteCustomDimensionResponse)},
-        {202, 212, -1, sizeof(::kentik::custom_dimension::v202411alpha1::CreatePopulatorRequest)},
-        {214, 223, -1, sizeof(::kentik::custom_dimension::v202411alpha1::CreatePopulatorResponse)},
-        {224, 235, -1, sizeof(::kentik::custom_dimension::v202411alpha1::UpdatePopulatorRequest)},
-        {238, 247, -1, sizeof(::kentik::custom_dimension::v202411alpha1::UpdatePopulatorResponse)},
-        {248, -1, -1, sizeof(::kentik::custom_dimension::v202411alpha1::DeletePopulatorRequest)},
-        {258, -1, -1, sizeof(::kentik::custom_dimension::v202411alpha1::DeletePopulatorResponse)},
+        {202, -1, -1, sizeof(::kentik::custom_dimension::v202411alpha1::GetPopulatorRequest)},
+        {212, 221, -1, sizeof(::kentik::custom_dimension::v202411alpha1::GetPopulatorResponse)},
+        {222, -1, -1, sizeof(::kentik::custom_dimension::v202411alpha1::GetPopulatorFieldRequest)},
+        {235, 245, -1, sizeof(::kentik::custom_dimension::v202411alpha1::GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse)},
+        {247, -1, -1, sizeof(::kentik::custom_dimension::v202411alpha1::GetPopulatorFieldResponse)},
+        {259, 269, -1, sizeof(::kentik::custom_dimension::v202411alpha1::CreatePopulatorRequest)},
+        {271, 280, -1, sizeof(::kentik::custom_dimension::v202411alpha1::CreatePopulatorResponse)},
+        {281, 292, -1, sizeof(::kentik::custom_dimension::v202411alpha1::UpdatePopulatorRequest)},
+        {295, 304, -1, sizeof(::kentik::custom_dimension::v202411alpha1::UpdatePopulatorResponse)},
+        {305, -1, -1, sizeof(::kentik::custom_dimension::v202411alpha1::DeletePopulatorRequest)},
+        {315, -1, -1, sizeof(::kentik::custom_dimension::v202411alpha1::DeletePopulatorResponse)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::custom_dimension::v202411alpha1::_CustomDimension_default_instance_._instance,
@@ -891,6 +1089,11 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::custom_dimension::v202411alpha1::_UpdateCustomDimensionResponse_default_instance_._instance,
     &::kentik::custom_dimension::v202411alpha1::_DeleteCustomDimensionRequest_default_instance_._instance,
     &::kentik::custom_dimension::v202411alpha1::_DeleteCustomDimensionResponse_default_instance_._instance,
+    &::kentik::custom_dimension::v202411alpha1::_GetPopulatorRequest_default_instance_._instance,
+    &::kentik::custom_dimension::v202411alpha1::_GetPopulatorResponse_default_instance_._instance,
+    &::kentik::custom_dimension::v202411alpha1::_GetPopulatorFieldRequest_default_instance_._instance,
+    &::kentik::custom_dimension::v202411alpha1::_GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse_default_instance_._instance,
+    &::kentik::custom_dimension::v202411alpha1::_GetPopulatorFieldResponse_default_instance_._instance,
     &::kentik::custom_dimension::v202411alpha1::_CreatePopulatorRequest_default_instance_._instance,
     &::kentik::custom_dimension::v202411alpha1::_CreatePopulatorResponse_default_instance_._instance,
     &::kentik::custom_dimension::v202411alpha1::_UpdatePopulatorRequest_default_instance_._instance,
@@ -1089,118 +1292,154 @@ const char descriptor_table_protodef_kentik_2fcustom_5fdimension_2fv202411alpha1
     "ha1.CustomDimensionR\tdimension\"N\n\034Delete"
     "CustomDimensionRequest\022.\n\023custom_dimensi"
     "on_id\030\001 \001(\tR\021customDimensionId\"\037\n\035Delete"
-    "CustomDimensionResponse\"\230\001\n\026CreatePopula"
-    "torRequest\022.\n\023custom_dimension_id\030\001 \001(\tR"
-    "\021customDimensionId\022N\n\tpopulator\030\002 \001(\01320."
-    "kentik.custom_dimension.v202411alpha1.Po"
-    "pulatorR\tpopulator\"i\n\027CreatePopulatorRes"
-    "ponse\022N\n\tpopulator\030\001 \001(\01320.kentik.custom"
-    "_dimension.v202411alpha1.PopulatorR\tpopu"
-    "lator\"\273\001\n\026UpdatePopulatorRequest\022.\n\023cust"
-    "om_dimension_id\030\001 \001(\tR\021customDimensionId"
-    "\022!\n\014populator_id\030\002 \001(\tR\013populatorId\022N\n\tp"
-    "opulator\030\003 \001(\01320.kentik.custom_dimension"
-    ".v202411alpha1.PopulatorR\tpopulator\"i\n\027U"
-    "pdatePopulatorResponse\022N\n\tpopulator\030\001 \001("
-    "\01320.kentik.custom_dimension.v202411alpha"
-    "1.PopulatorR\tpopulator\"k\n\026DeletePopulato"
-    "rRequest\022.\n\023custom_dimension_id\030\001 \001(\tR\021c"
-    "ustomDimensionId\022!\n\014populator_id\030\002 \001(\tR\013"
-    "populatorId\"\031\n\027DeletePopulatorResponse2\274"
-    "\030\n\026CustomDimensionService\022\207\003\n\024ListCustom"
-    "Dimensions\022B.kentik.custom_dimension.v20"
-    "2411alpha1.ListCustomDimensionsRequest\032C"
-    ".kentik.custom_dimension.v202411alpha1.L"
-    "istCustomDimensionsResponse\"\345\001\222A\240\001\022\026List"
-    " Custom Dimensions\032pReturns an array of "
-    "custom dimension objects that each conta"
-    "in information about an individual custo"
-    "m dimension.*\024ListCustomDimensions\362\327\002\025cu"
-    "stom_dimension:read\202\323\344\223\002\"\022 /custom_dimen"
-    "sions/v202411alpha1\022\222\003\n\026GetCustomDimensi"
-    "onInfo\022D.kentik.custom_dimension.v202411"
-    "alpha1.GetCustomDimensionInfoRequest\032E.k"
+    "CustomDimensionResponse\"h\n\023GetPopulatorR"
+    "equest\022.\n\023custom_dimension_id\030\001 \001(\tR\021cus"
+    "tomDimensionId\022!\n\014populator_id\030\002 \001(\tR\013po"
+    "pulatorId\"f\n\024GetPopulatorResponse\022N\n\tpop"
+    "ulator\030\001 \001(\01320.kentik.custom_dimension.v"
+    "202411alpha1.PopulatorR\tpopulator\"\272\001\n\030Ge"
+    "tPopulatorFieldRequest\022.\n\023custom_dimensi"
+    "on_id\030\001 \001(\tR\021customDimensionId\022!\n\014popula"
+    "tor_id\030\002 \001(\tR\013populatorId\022\035\n\nfield_name\030"
+    "\003 \001(\tR\tfieldName\022\026\n\006offset\030\004 \001(\005R\006offset"
+    "\022\024\n\005limit\030\005 \001(\005R\005limit\"\342\002\n\031GetPopulatorF"
+    "ieldResponse\022\037\n\013total_count\030\001 \001(\rR\ntotal"
+    "Count\022\026\n\006offset\030\002 \001(\rR\006offset\022\024\n\005limit\030\003"
+    " \001(\rR\005limit\022}\n\017extended_fields\030\004 \003(\0132T.k"
     "entik.custom_dimension.v202411alpha1.Get"
-    "CustomDimensionInfoResponse\"\352\001\222A\217\001\022\025Cust"
-    "om Dimension Info\032^Returns a custom dime"
-    "nsion object containing information abou"
-    "t an individual custom dimension.*\026GetCu"
-    "stomDimensionInfo\362\327\002\025custom_dimension:re"
-    "ad\202\323\344\223\0028\0226/custom_dimensions/v202411alph"
-    "a1/{custom_dimension_id}\022\352\002\n\025CreateCusto"
-    "mDimension\022C.kentik.custom_dimension.v20"
-    "2411alpha1.CreateCustomDimensionRequest\032"
-    "D.kentik.custom_dimension.v202411alpha1."
-    "CreateCustomDimensionResponse\"\305\001\222A\233\001\022\027Cr"
-    "eate Custom Dimension\032iCreates and retur"
-    "ns a custom dimension object containing "
-    "information about an individual custom d"
-    "imension*\025CreateCustomDimension\202\323\344\223\002 \"\023/"
-    "v1/customdimension:\tdimension\022\225\004\n\025Update"
-    "CustomDimension\022C.kentik.custom_dimensio"
-    "n.v202411alpha1.UpdateCustomDimensionReq"
-    "uest\032D.kentik.custom_dimension.v202411al"
-    "pha1.UpdateCustomDimensionResponse\"\360\002\222A\243"
-    "\002\022\027Update Custom Dimension\032\360\001Updates and"
-    " returns a custom dimension object conta"
-    "ining information about an individual cu"
-    "stom dimension (see About Custom Dimensi"
-    "ons). Populators are not sent back in th"
-    "e response body. To get them use \'Custom"
-    " Dimension info\' API instead.*\025UpdateCus"
-    "tomDimension\202\323\344\223\002C\0326/custom_dimensions/v"
-    "202411alpha1/{custom_dimension_id}:\tdime"
-    "nsion\022\263\002\n\025DeleteCustomDimension\022C.kentik"
-    ".custom_dimension.v202411alpha1.DeleteCu"
-    "stomDimensionRequest\032D.kentik.custom_dim"
-    "ension.v202411alpha1.DeleteCustomDimensi"
-    "onResponse\"\216\001\222AM\022\027Delete Custom Dimensio"
-    "n\032\033Deletes a custom dimension.*\025DeleteCu"
-    "stomDimension\202\323\344\223\0028*6/custom_dimensions/"
-    "v202411alpha1/{custom_dimension_id}\022\353\002\n\017"
-    "CreatePopulator\022=.kentik.custom_dimensio"
-    "n.v202411alpha1.CreatePopulatorRequest\032>"
-    ".kentik.custom_dimension.v202411alpha1.C"
-    "reatePopulatorResponse\"\330\001\222A\201\001\022\020Create Po"
-    "pulator\032\\Creates and returns a populator"
-    " object containing information about an "
-    "individual populator.*\017CreatePopulator\202\323"
-    "\344\223\002M\"@/custom_dimensions/v202411alpha1/{"
-    "custom_dimension_id}/populator:\tpopulato"
-    "r\022\372\002\n\017UpdatePopulator\022=.kentik.custom_di"
-    "mension.v202411alpha1.UpdatePopulatorReq"
-    "uest\032>.kentik.custom_dimension.v202411al"
-    "pha1.UpdatePopulatorResponse\"\347\001\222A\201\001\022\020Upd"
-    "ate Populator\032\\Updates and returns a pop"
-    "ulator object containing information abo"
-    "ut an individual populator.*\017UpdatePopul"
-    "ator\202\323\344\223\002\\\032O/custom_dimensions/v202411al"
-    "pha1/{custom_dimension_id}/populator/{po"
-    "pulator_id}:\tpopulator\022\246\002\n\017DeletePopulat"
-    "or\022=.kentik.custom_dimension.v202411alph"
-    "a1.DeletePopulatorRequest\032>.kentik.custo"
-    "m_dimension.v202411alpha1.DeletePopulato"
-    "rResponse\"\223\001\222A9\022\020Delete Populator\032\024Delet"
-    "es a populator.*\017DeletePopulator\202\323\344\223\002Q*O"
-    "/custom_dimensions/v202411alpha1/{custom"
-    "_dimension_id}/populator/{populator_id}\032"
-    "4\312A\023grpc.api.kentik.com\352\327\002\026admin.custom_"
-    "dimension\220\330\002\003B\342\004Zagithub.com/kentik/api-"
-    "schema-public/gen/go/kentik/custom_dimen"
-    "sion/v202411alpha1;custom_dimension\222A\373\003\022"
-    "\352\001\n\025Custom Dimensions API\022{# Overview\nTh"
-    "e Custom Dimensions API enables programm"
-    "atic access to information on Custom Dim"
-    "ensions and their Populators.\n\"E\n\026Kentik"
-    " API Engineering\022+https://github.com/ken"
-    "tik/api-schema-public2\rv202411alpha1*\001\0022"
-    "\020application/json:\020application/jsonZD\n\036\n"
-    "\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031"
-    "\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t"
-    "\n\005token\022\000r\206\001\n[Knowledge base article out"
-    "lining the purpose and usage of Custom D"
-    "imensions and Populators.\022\'https://kb.ke"
-    "ntik.com/proto/v4/Cb06.htmb\006proto3"
+    "PopulatorFieldResponse.ExtendedFieldsEnt"
+    "ryR\016extendedFields\032w\n\023ExtendedFieldsEntr"
+    "y\022\020\n\003key\030\001 \001(\tR\003key\022J\n\005value\030\002 \001(\01324.ken"
+    "tik.custom_dimension.v202411alpha1.Exten"
+    "dedFieldR\005value:\0028\001\"\230\001\n\026CreatePopulatorR"
+    "equest\022.\n\023custom_dimension_id\030\001 \001(\tR\021cus"
+    "tomDimensionId\022N\n\tpopulator\030\002 \001(\01320.kent"
+    "ik.custom_dimension.v202411alpha1.Popula"
+    "torR\tpopulator\"i\n\027CreatePopulatorRespons"
+    "e\022N\n\tpopulator\030\001 \001(\01320.kentik.custom_dim"
+    "ension.v202411alpha1.PopulatorR\tpopulato"
+    "r\"\273\001\n\026UpdatePopulatorRequest\022.\n\023custom_d"
+    "imension_id\030\001 \001(\tR\021customDimensionId\022!\n\014"
+    "populator_id\030\002 \001(\tR\013populatorId\022N\n\tpopul"
+    "ator\030\003 \001(\01320.kentik.custom_dimension.v20"
+    "2411alpha1.PopulatorR\tpopulator\"i\n\027Updat"
+    "ePopulatorResponse\022N\n\tpopulator\030\001 \001(\01320."
+    "kentik.custom_dimension.v202411alpha1.Po"
+    "pulatorR\tpopulator\"k\n\026DeletePopulatorReq"
+    "uest\022.\n\023custom_dimension_id\030\001 \001(\tR\021custo"
+    "mDimensionId\022!\n\014populator_id\030\002 \001(\tR\013popu"
+    "latorId\"\031\n\027DeletePopulatorResponse2\340\035\n\026C"
+    "ustomDimensionService\022\207\003\n\024ListCustomDime"
+    "nsions\022B.kentik.custom_dimension.v202411"
+    "alpha1.ListCustomDimensionsRequest\032C.ken"
+    "tik.custom_dimension.v202411alpha1.ListC"
+    "ustomDimensionsResponse\"\345\001\222A\240\001\022\026List Cus"
+    "tom Dimensions\032pReturns an array of cust"
+    "om dimension objects that each contain i"
+    "nformation about an individual custom di"
+    "mension.*\024ListCustomDimensions\362\327\002\025custom"
+    "_dimension:read\202\323\344\223\002\"\022 /custom_dimension"
+    "s/v202411alpha1\022\222\003\n\026GetCustomDimensionIn"
+    "fo\022D.kentik.custom_dimension.v202411alph"
+    "a1.GetCustomDimensionInfoRequest\032E.kenti"
+    "k.custom_dimension.v202411alpha1.GetCust"
+    "omDimensionInfoResponse\"\352\001\222A\217\001\022\025Custom D"
+    "imension Info\032^Returns a custom dimensio"
+    "n object containing information about an"
+    " individual custom dimension.*\026GetCustom"
+    "DimensionInfo\362\327\002\025custom_dimension:read\202\323"
+    "\344\223\0028\0226/custom_dimensions/v202411alpha1/{"
+    "custom_dimension_id}\022\352\002\n\025CreateCustomDim"
+    "ension\022C.kentik.custom_dimension.v202411"
+    "alpha1.CreateCustomDimensionRequest\032D.ke"
+    "ntik.custom_dimension.v202411alpha1.Crea"
+    "teCustomDimensionResponse\"\305\001\222A\233\001\022\027Create"
+    " Custom Dimension\032iCreates and returns a"
+    " custom dimension object containing info"
+    "rmation about an individual custom dimen"
+    "sion*\025CreateCustomDimension\202\323\344\223\002 \"\023/v1/c"
+    "ustomdimension:\tdimension\022\225\004\n\025UpdateCust"
+    "omDimension\022C.kentik.custom_dimension.v2"
+    "02411alpha1.UpdateCustomDimensionRequest"
+    "\032D.kentik.custom_dimension.v202411alpha1"
+    ".UpdateCustomDimensionResponse\"\360\002\222A\243\002\022\027U"
+    "pdate Custom Dimension\032\360\001Updates and ret"
+    "urns a custom dimension object containin"
+    "g information about an individual custom"
+    " dimension (see About Custom Dimensions)"
+    ". Populators are not sent back in the re"
+    "sponse body. To get them use \'Custom Dim"
+    "ension info\' API instead.*\025UpdateCustomD"
+    "imension\202\323\344\223\002C\0326/custom_dimensions/v2024"
+    "11alpha1/{custom_dimension_id}:\tdimensio"
+    "n\022\263\002\n\025DeleteCustomDimension\022C.kentik.cus"
+    "tom_dimension.v202411alpha1.DeleteCustom"
+    "DimensionRequest\032D.kentik.custom_dimensi"
+    "on.v202411alpha1.DeleteCustomDimensionRe"
+    "sponse\"\216\001\222AM\022\027Delete Custom Dimension\032\033D"
+    "eletes a custom dimension.*\025DeleteCustom"
+    "Dimension\202\323\344\223\0028*6/custom_dimensions/v202"
+    "411alpha1/{custom_dimension_id}\022\257\002\n\014GetP"
+    "opulator\022:.kentik.custom_dimension.v2024"
+    "11alpha1.GetPopulatorRequest\032;.kentik.cu"
+    "stom_dimension.v202411alpha1.GetPopulato"
+    "rResponse\"\245\001\222AK\022\rGet Populator\032,Get Popu"
+    "lator by Dimension and Populator ID.*\014Ge"
+    "tPopulator\202\323\344\223\002Q\022O/custom_dimensions/v20"
+    "2411alpha1/{custom_dimension_id}/populat"
+    "or/{populator_id}\022\357\002\n\021GetPopulatorField\022"
+    "\?.kentik.custom_dimension.v202411alpha1."
+    "GetPopulatorFieldRequest\032@.kentik.custom"
+    "_dimension.v202411alpha1.GetPopulatorFie"
+    "ldResponse\"\326\001\222Ai\022\023Get Populator Field\032\?G"
+    "et Populator field by Dimension, Populat"
+    "or ID, and field name.*\021GetPopulatorFiel"
+    "d\202\323\344\223\002d\022b/custom_dimensions/v202411alpha"
+    "1/{custom_dimension_id}/populator/{popul"
+    "ator_id}/field/{field_name}\022\353\002\n\017CreatePo"
+    "pulator\022=.kentik.custom_dimension.v20241"
+    "1alpha1.CreatePopulatorRequest\032>.kentik."
+    "custom_dimension.v202411alpha1.CreatePop"
+    "ulatorResponse\"\330\001\222A\201\001\022\020Create Populator\032"
+    "\\Creates and returns a populator object "
+    "containing information about an individu"
+    "al populator.*\017CreatePopulator\202\323\344\223\002M\"@/c"
+    "ustom_dimensions/v202411alpha1/{custom_d"
+    "imension_id}/populator:\tpopulator\022\372\002\n\017Up"
+    "datePopulator\022=.kentik.custom_dimension."
+    "v202411alpha1.UpdatePopulatorRequest\032>.k"
+    "entik.custom_dimension.v202411alpha1.Upd"
+    "atePopulatorResponse\"\347\001\222A\201\001\022\020Update Popu"
+    "lator\032\\Updates and returns a populator o"
+    "bject containing information about an in"
+    "dividual populator.*\017UpdatePopulator\202\323\344\223"
+    "\002\\\032O/custom_dimensions/v202411alpha1/{cu"
+    "stom_dimension_id}/populator/{populator_"
+    "id}:\tpopulator\022\246\002\n\017DeletePopulator\022=.ken"
+    "tik.custom_dimension.v202411alpha1.Delet"
+    "ePopulatorRequest\032>.kentik.custom_dimens"
+    "ion.v202411alpha1.DeletePopulatorRespons"
+    "e\"\223\001\222A9\022\020Delete Populator\032\024Deletes a pop"
+    "ulator.*\017DeletePopulator\202\323\344\223\002Q*O/custom_"
+    "dimensions/v202411alpha1/{custom_dimensi"
+    "on_id}/populator/{populator_id}\0324\312A\023grpc"
+    ".api.kentik.com\352\327\002\026admin.custom_dimensio"
+    "n\220\330\002\003B\342\004Zagithub.com/kentik/api-schema-p"
+    "ublic/gen/go/kentik/custom_dimension/v20"
+    "2411alpha1;custom_dimension\222A\373\003\022\352\001\n\025Cust"
+    "om Dimensions API\022{# Overview\nThe Custom"
+    " Dimensions API enables programmatic acc"
+    "ess to information on Custom Dimensions "
+    "and their Populators.\n\"E\n\026Kentik API Eng"
+    "ineering\022+https://github.com/kentik/api-"
+    "schema-public2\rv202411alpha1*\001\0022\020applica"
+    "tion/json:\020application/jsonZD\n\036\n\005email\022\025"
+    "\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH"
+    "-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022"
+    "\000r\206\001\n[Knowledge base article outlining t"
+    "he purpose and usage of Custom Dimension"
+    "s and Populators.\022\'https://kb.kentik.com"
+    "/proto/v4/Cb06.htmb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto_deps[7] =
     {
@@ -1216,13 +1455,13 @@ static ::absl::once_flag descriptor_table_kentik_2fcustom_5fdimension_2fv202411a
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto = {
     false,
     false,
-    12034,
+    13466,
     descriptor_table_protodef_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto,
     "kentik/custom_dimension/v202411alpha1/custom_dimension.proto",
     &descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto_once,
     descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto_deps,
     7,
-    20,
+    25,
     schemas,
     file_default_instances,
     TableStruct_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto::offsets,
@@ -5401,6 +5640,1317 @@ const ::_pbi::TcParseTable<0, 0, 0, 0, 2> DeleteCustomDimensionResponse::_table_
 
 ::google::protobuf::Metadata DeleteCustomDimensionResponse::GetMetadata() const {
   return ::google::protobuf::internal::ZeroFieldsBase::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class GetPopulatorRequest::_Internal {
+ public:
+};
+
+GetPopulatorRequest::GetPopulatorRequest(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.custom_dimension.v202411alpha1.GetPopulatorRequest)
+}
+inline PROTOBUF_NDEBUG_INLINE GetPopulatorRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::kentik::custom_dimension::v202411alpha1::GetPopulatorRequest& from_msg)
+      : custom_dimension_id_(arena, from.custom_dimension_id_),
+        populator_id_(arena, from.populator_id_),
+        _cached_size_{0} {}
+
+GetPopulatorRequest::GetPopulatorRequest(
+    ::google::protobuf::Arena* arena,
+    const GetPopulatorRequest& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  GetPopulatorRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+
+  // @@protoc_insertion_point(copy_constructor:kentik.custom_dimension.v202411alpha1.GetPopulatorRequest)
+}
+inline PROTOBUF_NDEBUG_INLINE GetPopulatorRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : custom_dimension_id_(arena),
+        populator_id_(arena),
+        _cached_size_{0} {}
+
+inline void GetPopulatorRequest::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+}
+GetPopulatorRequest::~GetPopulatorRequest() {
+  // @@protoc_insertion_point(destructor:kentik.custom_dimension.v202411alpha1.GetPopulatorRequest)
+  SharedDtor(*this);
+}
+inline void GetPopulatorRequest::SharedDtor(MessageLite& self) {
+  GetPopulatorRequest& this_ = static_cast<GetPopulatorRequest&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.custom_dimension_id_.Destroy();
+  this_._impl_.populator_id_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* GetPopulatorRequest::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) GetPopulatorRequest(arena);
+}
+constexpr auto GetPopulatorRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(GetPopulatorRequest),
+                                            alignof(GetPopulatorRequest));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull GetPopulatorRequest::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_GetPopulatorRequest_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &GetPopulatorRequest::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<GetPopulatorRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &GetPopulatorRequest::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<GetPopulatorRequest>(), &GetPopulatorRequest::ByteSizeLong,
+            &GetPopulatorRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(GetPopulatorRequest, _impl_._cached_size_),
+        false,
+    },
+    &GetPopulatorRequest::kDescriptorMethods,
+    &descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* GetPopulatorRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 97, 2> GetPopulatorRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::custom_dimension::v202411alpha1::GetPopulatorRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // string populator_id = 2 [json_name = "populatorId"];
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(GetPopulatorRequest, _impl_.populator_id_)}},
+    // string custom_dimension_id = 1 [json_name = "customDimensionId"];
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(GetPopulatorRequest, _impl_.custom_dimension_id_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string custom_dimension_id = 1 [json_name = "customDimensionId"];
+    {PROTOBUF_FIELD_OFFSET(GetPopulatorRequest, _impl_.custom_dimension_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string populator_id = 2 [json_name = "populatorId"];
+    {PROTOBUF_FIELD_OFFSET(GetPopulatorRequest, _impl_.populator_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\71\23\14\0\0\0\0\0"
+    "kentik.custom_dimension.v202411alpha1.GetPopulatorRequest"
+    "custom_dimension_id"
+    "populator_id"
+  }},
+};
+
+PROTOBUF_NOINLINE void GetPopulatorRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.custom_dimension.v202411alpha1.GetPopulatorRequest)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.custom_dimension_id_.ClearToEmpty();
+  _impl_.populator_id_.ClearToEmpty();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* GetPopulatorRequest::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const GetPopulatorRequest& this_ = static_cast<const GetPopulatorRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* GetPopulatorRequest::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const GetPopulatorRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:kentik.custom_dimension.v202411alpha1.GetPopulatorRequest)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // string custom_dimension_id = 1 [json_name = "customDimensionId"];
+          if (!this_._internal_custom_dimension_id().empty()) {
+            const std::string& _s = this_._internal_custom_dimension_id();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.custom_dimension.v202411alpha1.GetPopulatorRequest.custom_dimension_id");
+            target = stream->WriteStringMaybeAliased(1, _s, target);
+          }
+
+          // string populator_id = 2 [json_name = "populatorId"];
+          if (!this_._internal_populator_id().empty()) {
+            const std::string& _s = this_._internal_populator_id();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.custom_dimension.v202411alpha1.GetPopulatorRequest.populator_id");
+            target = stream->WriteStringMaybeAliased(2, _s, target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:kentik.custom_dimension.v202411alpha1.GetPopulatorRequest)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t GetPopulatorRequest::ByteSizeLong(const MessageLite& base) {
+          const GetPopulatorRequest& this_ = static_cast<const GetPopulatorRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t GetPopulatorRequest::ByteSizeLong() const {
+          const GetPopulatorRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:kentik.custom_dimension.v202411alpha1.GetPopulatorRequest)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // string custom_dimension_id = 1 [json_name = "customDimensionId"];
+            if (!this_._internal_custom_dimension_id().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_custom_dimension_id());
+            }
+            // string populator_id = 2 [json_name = "populatorId"];
+            if (!this_._internal_populator_id().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_populator_id());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void GetPopulatorRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<GetPopulatorRequest*>(&to_msg);
+  auto& from = static_cast<const GetPopulatorRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:kentik.custom_dimension.v202411alpha1.GetPopulatorRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_custom_dimension_id().empty()) {
+    _this->_internal_set_custom_dimension_id(from._internal_custom_dimension_id());
+  }
+  if (!from._internal_populator_id().empty()) {
+    _this->_internal_set_populator_id(from._internal_populator_id());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void GetPopulatorRequest::CopyFrom(const GetPopulatorRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.custom_dimension.v202411alpha1.GetPopulatorRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void GetPopulatorRequest::InternalSwap(GetPopulatorRequest* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.custom_dimension_id_, &other->_impl_.custom_dimension_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.populator_id_, &other->_impl_.populator_id_, arena);
+}
+
+::google::protobuf::Metadata GetPopulatorRequest::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class GetPopulatorResponse::_Internal {
+ public:
+  using HasBits =
+      decltype(std::declval<GetPopulatorResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(GetPopulatorResponse, _impl_._has_bits_);
+};
+
+GetPopulatorResponse::GetPopulatorResponse(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.custom_dimension.v202411alpha1.GetPopulatorResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE GetPopulatorResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::kentik::custom_dimension::v202411alpha1::GetPopulatorResponse& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
+
+GetPopulatorResponse::GetPopulatorResponse(
+    ::google::protobuf::Arena* arena,
+    const GetPopulatorResponse& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  GetPopulatorResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.populator_ = (cached_has_bits & 0x00000001u) ? ::google::protobuf::Message::CopyConstruct<::kentik::custom_dimension::v202411alpha1::Populator>(
+                              arena, *from._impl_.populator_)
+                        : nullptr;
+
+  // @@protoc_insertion_point(copy_constructor:kentik.custom_dimension.v202411alpha1.GetPopulatorResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE GetPopulatorResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void GetPopulatorResponse::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.populator_ = {};
+}
+GetPopulatorResponse::~GetPopulatorResponse() {
+  // @@protoc_insertion_point(destructor:kentik.custom_dimension.v202411alpha1.GetPopulatorResponse)
+  SharedDtor(*this);
+}
+inline void GetPopulatorResponse::SharedDtor(MessageLite& self) {
+  GetPopulatorResponse& this_ = static_cast<GetPopulatorResponse&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  delete this_._impl_.populator_;
+  this_._impl_.~Impl_();
+}
+
+inline void* GetPopulatorResponse::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) GetPopulatorResponse(arena);
+}
+constexpr auto GetPopulatorResponse::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(GetPopulatorResponse),
+                                            alignof(GetPopulatorResponse));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull GetPopulatorResponse::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_GetPopulatorResponse_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &GetPopulatorResponse::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<GetPopulatorResponse>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &GetPopulatorResponse::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<GetPopulatorResponse>(), &GetPopulatorResponse::ByteSizeLong,
+            &GetPopulatorResponse::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(GetPopulatorResponse, _impl_._cached_size_),
+        false,
+    },
+    &GetPopulatorResponse::kDescriptorMethods,
+    &descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* GetPopulatorResponse::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2> GetPopulatorResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(GetPopulatorResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::custom_dimension::v202411alpha1::GetPopulatorResponse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // .kentik.custom_dimension.v202411alpha1.Populator populator = 1 [json_name = "populator"];
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(GetPopulatorResponse, _impl_.populator_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .kentik.custom_dimension.v202411alpha1.Populator populator = 1 [json_name = "populator"];
+    {PROTOBUF_FIELD_OFFSET(GetPopulatorResponse, _impl_.populator_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::kentik::custom_dimension::v202411alpha1::Populator>()},
+  }}, {{
+  }},
+};
+
+PROTOBUF_NOINLINE void GetPopulatorResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.custom_dimension.v202411alpha1.GetPopulatorResponse)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.populator_ != nullptr);
+    _impl_.populator_->Clear();
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* GetPopulatorResponse::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const GetPopulatorResponse& this_ = static_cast<const GetPopulatorResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* GetPopulatorResponse::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const GetPopulatorResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:kentik.custom_dimension.v202411alpha1.GetPopulatorResponse)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          cached_has_bits = this_._impl_._has_bits_[0];
+          // .kentik.custom_dimension.v202411alpha1.Populator populator = 1 [json_name = "populator"];
+          if (cached_has_bits & 0x00000001u) {
+            target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                1, *this_._impl_.populator_, this_._impl_.populator_->GetCachedSize(), target,
+                stream);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:kentik.custom_dimension.v202411alpha1.GetPopulatorResponse)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t GetPopulatorResponse::ByteSizeLong(const MessageLite& base) {
+          const GetPopulatorResponse& this_ = static_cast<const GetPopulatorResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t GetPopulatorResponse::ByteSizeLong() const {
+          const GetPopulatorResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:kentik.custom_dimension.v202411alpha1.GetPopulatorResponse)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+           {
+            // .kentik.custom_dimension.v202411alpha1.Populator populator = 1 [json_name = "populator"];
+            cached_has_bits = this_._impl_._has_bits_[0];
+            if (cached_has_bits & 0x00000001u) {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.populator_);
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void GetPopulatorResponse::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<GetPopulatorResponse*>(&to_msg);
+  auto& from = static_cast<const GetPopulatorResponse&>(from_msg);
+  ::google::protobuf::Arena* arena = _this->GetArena();
+  // @@protoc_insertion_point(class_specific_merge_from_start:kentik.custom_dimension.v202411alpha1.GetPopulatorResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(from._impl_.populator_ != nullptr);
+    if (_this->_impl_.populator_ == nullptr) {
+      _this->_impl_.populator_ =
+          ::google::protobuf::Message::CopyConstruct<::kentik::custom_dimension::v202411alpha1::Populator>(arena, *from._impl_.populator_);
+    } else {
+      _this->_impl_.populator_->MergeFrom(*from._impl_.populator_);
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void GetPopulatorResponse::CopyFrom(const GetPopulatorResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.custom_dimension.v202411alpha1.GetPopulatorResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void GetPopulatorResponse::InternalSwap(GetPopulatorResponse* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  swap(_impl_.populator_, other->_impl_.populator_);
+}
+
+::google::protobuf::Metadata GetPopulatorResponse::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class GetPopulatorFieldRequest::_Internal {
+ public:
+};
+
+GetPopulatorFieldRequest::GetPopulatorFieldRequest(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest)
+}
+inline PROTOBUF_NDEBUG_INLINE GetPopulatorFieldRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::kentik::custom_dimension::v202411alpha1::GetPopulatorFieldRequest& from_msg)
+      : custom_dimension_id_(arena, from.custom_dimension_id_),
+        populator_id_(arena, from.populator_id_),
+        field_name_(arena, from.field_name_),
+        _cached_size_{0} {}
+
+GetPopulatorFieldRequest::GetPopulatorFieldRequest(
+    ::google::protobuf::Arena* arena,
+    const GetPopulatorFieldRequest& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  GetPopulatorFieldRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, offset_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, offset_),
+           offsetof(Impl_, limit_) -
+               offsetof(Impl_, offset_) +
+               sizeof(Impl_::limit_));
+
+  // @@protoc_insertion_point(copy_constructor:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest)
+}
+inline PROTOBUF_NDEBUG_INLINE GetPopulatorFieldRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : custom_dimension_id_(arena),
+        populator_id_(arena),
+        field_name_(arena),
+        _cached_size_{0} {}
+
+inline void GetPopulatorFieldRequest::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, offset_),
+           0,
+           offsetof(Impl_, limit_) -
+               offsetof(Impl_, offset_) +
+               sizeof(Impl_::limit_));
+}
+GetPopulatorFieldRequest::~GetPopulatorFieldRequest() {
+  // @@protoc_insertion_point(destructor:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest)
+  SharedDtor(*this);
+}
+inline void GetPopulatorFieldRequest::SharedDtor(MessageLite& self) {
+  GetPopulatorFieldRequest& this_ = static_cast<GetPopulatorFieldRequest&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.custom_dimension_id_.Destroy();
+  this_._impl_.populator_id_.Destroy();
+  this_._impl_.field_name_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* GetPopulatorFieldRequest::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) GetPopulatorFieldRequest(arena);
+}
+constexpr auto GetPopulatorFieldRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(GetPopulatorFieldRequest),
+                                            alignof(GetPopulatorFieldRequest));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull GetPopulatorFieldRequest::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_GetPopulatorFieldRequest_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &GetPopulatorFieldRequest::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<GetPopulatorFieldRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &GetPopulatorFieldRequest::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<GetPopulatorFieldRequest>(), &GetPopulatorFieldRequest::ByteSizeLong,
+            &GetPopulatorFieldRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(GetPopulatorFieldRequest, _impl_._cached_size_),
+        false,
+    },
+    &GetPopulatorFieldRequest::kDescriptorMethods,
+    &descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* GetPopulatorFieldRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 5, 0, 112, 2> GetPopulatorFieldRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    5, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967264,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    5,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::custom_dimension::v202411alpha1::GetPopulatorFieldRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // string custom_dimension_id = 1 [json_name = "customDimensionId"];
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(GetPopulatorFieldRequest, _impl_.custom_dimension_id_)}},
+    // string populator_id = 2 [json_name = "populatorId"];
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(GetPopulatorFieldRequest, _impl_.populator_id_)}},
+    // string field_name = 3 [json_name = "fieldName"];
+    {::_pbi::TcParser::FastUS1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(GetPopulatorFieldRequest, _impl_.field_name_)}},
+    // int32 offset = 4 [json_name = "offset"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(GetPopulatorFieldRequest, _impl_.offset_), 63>(),
+     {32, 63, 0, PROTOBUF_FIELD_OFFSET(GetPopulatorFieldRequest, _impl_.offset_)}},
+    // int32 limit = 5 [json_name = "limit"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(GetPopulatorFieldRequest, _impl_.limit_), 63>(),
+     {40, 63, 0, PROTOBUF_FIELD_OFFSET(GetPopulatorFieldRequest, _impl_.limit_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string custom_dimension_id = 1 [json_name = "customDimensionId"];
+    {PROTOBUF_FIELD_OFFSET(GetPopulatorFieldRequest, _impl_.custom_dimension_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string populator_id = 2 [json_name = "populatorId"];
+    {PROTOBUF_FIELD_OFFSET(GetPopulatorFieldRequest, _impl_.populator_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string field_name = 3 [json_name = "fieldName"];
+    {PROTOBUF_FIELD_OFFSET(GetPopulatorFieldRequest, _impl_.field_name_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // int32 offset = 4 [json_name = "offset"];
+    {PROTOBUF_FIELD_OFFSET(GetPopulatorFieldRequest, _impl_.offset_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
+    // int32 limit = 5 [json_name = "limit"];
+    {PROTOBUF_FIELD_OFFSET(GetPopulatorFieldRequest, _impl_.limit_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
+  }},
+  // no aux_entries
+  {{
+    "\76\23\14\12\0\0\0\0"
+    "kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest"
+    "custom_dimension_id"
+    "populator_id"
+    "field_name"
+  }},
+};
+
+PROTOBUF_NOINLINE void GetPopulatorFieldRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.custom_dimension_id_.ClearToEmpty();
+  _impl_.populator_id_.ClearToEmpty();
+  _impl_.field_name_.ClearToEmpty();
+  ::memset(&_impl_.offset_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.limit_) -
+      reinterpret_cast<char*>(&_impl_.offset_)) + sizeof(_impl_.limit_));
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* GetPopulatorFieldRequest::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const GetPopulatorFieldRequest& this_ = static_cast<const GetPopulatorFieldRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* GetPopulatorFieldRequest::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const GetPopulatorFieldRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // string custom_dimension_id = 1 [json_name = "customDimensionId"];
+          if (!this_._internal_custom_dimension_id().empty()) {
+            const std::string& _s = this_._internal_custom_dimension_id();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest.custom_dimension_id");
+            target = stream->WriteStringMaybeAliased(1, _s, target);
+          }
+
+          // string populator_id = 2 [json_name = "populatorId"];
+          if (!this_._internal_populator_id().empty()) {
+            const std::string& _s = this_._internal_populator_id();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest.populator_id");
+            target = stream->WriteStringMaybeAliased(2, _s, target);
+          }
+
+          // string field_name = 3 [json_name = "fieldName"];
+          if (!this_._internal_field_name().empty()) {
+            const std::string& _s = this_._internal_field_name();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest.field_name");
+            target = stream->WriteStringMaybeAliased(3, _s, target);
+          }
+
+          // int32 offset = 4 [json_name = "offset"];
+          if (this_._internal_offset() != 0) {
+            target = ::google::protobuf::internal::WireFormatLite::
+                WriteInt32ToArrayWithField<4>(
+                    stream, this_._internal_offset(), target);
+          }
+
+          // int32 limit = 5 [json_name = "limit"];
+          if (this_._internal_limit() != 0) {
+            target = ::google::protobuf::internal::WireFormatLite::
+                WriteInt32ToArrayWithField<5>(
+                    stream, this_._internal_limit(), target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t GetPopulatorFieldRequest::ByteSizeLong(const MessageLite& base) {
+          const GetPopulatorFieldRequest& this_ = static_cast<const GetPopulatorFieldRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t GetPopulatorFieldRequest::ByteSizeLong() const {
+          const GetPopulatorFieldRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // string custom_dimension_id = 1 [json_name = "customDimensionId"];
+            if (!this_._internal_custom_dimension_id().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_custom_dimension_id());
+            }
+            // string populator_id = 2 [json_name = "populatorId"];
+            if (!this_._internal_populator_id().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_populator_id());
+            }
+            // string field_name = 3 [json_name = "fieldName"];
+            if (!this_._internal_field_name().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_field_name());
+            }
+            // int32 offset = 4 [json_name = "offset"];
+            if (this_._internal_offset() != 0) {
+              total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+                  this_._internal_offset());
+            }
+            // int32 limit = 5 [json_name = "limit"];
+            if (this_._internal_limit() != 0) {
+              total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+                  this_._internal_limit());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void GetPopulatorFieldRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<GetPopulatorFieldRequest*>(&to_msg);
+  auto& from = static_cast<const GetPopulatorFieldRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_custom_dimension_id().empty()) {
+    _this->_internal_set_custom_dimension_id(from._internal_custom_dimension_id());
+  }
+  if (!from._internal_populator_id().empty()) {
+    _this->_internal_set_populator_id(from._internal_populator_id());
+  }
+  if (!from._internal_field_name().empty()) {
+    _this->_internal_set_field_name(from._internal_field_name());
+  }
+  if (from._internal_offset() != 0) {
+    _this->_impl_.offset_ = from._impl_.offset_;
+  }
+  if (from._internal_limit() != 0) {
+    _this->_impl_.limit_ = from._impl_.limit_;
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void GetPopulatorFieldRequest::CopyFrom(const GetPopulatorFieldRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void GetPopulatorFieldRequest::InternalSwap(GetPopulatorFieldRequest* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.custom_dimension_id_, &other->_impl_.custom_dimension_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.populator_id_, &other->_impl_.populator_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.field_name_, &other->_impl_.field_name_, arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(GetPopulatorFieldRequest, _impl_.limit_)
+      + sizeof(GetPopulatorFieldRequest::_impl_.limit_)
+      - PROTOBUF_FIELD_OFFSET(GetPopulatorFieldRequest, _impl_.offset_)>(
+          reinterpret_cast<char*>(&_impl_.offset_),
+          reinterpret_cast<char*>(&other->_impl_.offset_));
+}
+
+::google::protobuf::Metadata GetPopulatorFieldRequest::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+              GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse::GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse() : SuperType(_class_data_.base()) {}
+              GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse::GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse(::google::protobuf::Arena* arena)
+                  : SuperType(arena, _class_data_.base()) {}
+#else   // PROTOBUF_CUSTOM_VTABLE
+              GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse::GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse() : SuperType() {}
+              GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse::GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+              inline void* GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse::PlacementNew_(const void*, void* mem,
+                                                      ::google::protobuf::Arena* arena) {
+                return ::new (mem) GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse(arena);
+              }
+              constexpr auto GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse::InternalNewImpl_() {
+                return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse),
+                                                          alignof(GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse));
+              }
+              PROTOBUF_CONSTINIT
+              PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+              const ::google::protobuf::internal::ClassDataFull GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse::_class_data_ = {
+                  ::google::protobuf::internal::ClassData{
+                      &_GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse_default_instance_._instance,
+                      &_table_.header,
+                      nullptr,  // OnDemandRegisterArenaDtor
+                      nullptr,  // IsInitialized
+                      &GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse::MergeImpl,
+                      ::google::protobuf::Message::GetNewImpl<GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse>(),
+              #if defined(PROTOBUF_CUSTOM_VTABLE)
+                      &GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse::SharedDtor,
+                      static_cast<void (::google::protobuf::MessageLite::*)()>(
+                          &GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse::ClearImpl),
+                          ::google::protobuf::Message::ByteSizeLongImpl, ::google::protobuf::Message::_InternalSerializeImpl
+                          ,
+              #endif  // PROTOBUF_CUSTOM_VTABLE
+                      PROTOBUF_FIELD_OFFSET(GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse, _impl_._cached_size_),
+                      false,
+                  },
+                  &GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse::kDescriptorMethods,
+                  &descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto,
+                  nullptr,  // tracker
+              };
+              const ::google::protobuf::internal::ClassData* GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse::GetClassData() const {
+                ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+                ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+                return _class_data_.base();
+              }
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 1, 95, 2> GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::DiscardEverythingFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::custom_dimension::v202411alpha1::GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // .kentik.custom_dimension.v202411alpha1.ExtendedField value = 2 [json_name = "value"];
+    {::_pbi::TcParser::FastMtS1,
+     {18, 0, 0, PROTOBUF_FIELD_OFFSET(GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse, _impl_.value_)}},
+    // string key = 1 [json_name = "key"];
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse, _impl_.key_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string key = 1 [json_name = "key"];
+    {PROTOBUF_FIELD_OFFSET(GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse, _impl_.key_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // .kentik.custom_dimension.v202411alpha1.ExtendedField value = 2 [json_name = "value"];
+    {PROTOBUF_FIELD_OFFSET(GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse, _impl_.value_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::kentik::custom_dimension::v202411alpha1::ExtendedField>()},
+  }}, {{
+    "\123\3\0\0\0\0\0\0"
+    "kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse.ExtendedFieldsEntry"
+    "key"
+  }},
+};
+
+// ===================================================================
+
+class GetPopulatorFieldResponse::_Internal {
+ public:
+};
+
+GetPopulatorFieldResponse::GetPopulatorFieldResponse(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE GetPopulatorFieldResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::kentik::custom_dimension::v202411alpha1::GetPopulatorFieldResponse& from_msg)
+      : extended_fields_{visibility, arena, from.extended_fields_},
+        _cached_size_{0} {}
+
+GetPopulatorFieldResponse::GetPopulatorFieldResponse(
+    ::google::protobuf::Arena* arena,
+    const GetPopulatorFieldResponse& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  GetPopulatorFieldResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, total_count_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, total_count_),
+           offsetof(Impl_, limit_) -
+               offsetof(Impl_, total_count_) +
+               sizeof(Impl_::limit_));
+
+  // @@protoc_insertion_point(copy_constructor:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE GetPopulatorFieldResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : extended_fields_{visibility, arena},
+        _cached_size_{0} {}
+
+inline void GetPopulatorFieldResponse::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, total_count_),
+           0,
+           offsetof(Impl_, limit_) -
+               offsetof(Impl_, total_count_) +
+               sizeof(Impl_::limit_));
+}
+GetPopulatorFieldResponse::~GetPopulatorFieldResponse() {
+  // @@protoc_insertion_point(destructor:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse)
+  SharedDtor(*this);
+}
+inline void GetPopulatorFieldResponse::SharedDtor(MessageLite& self) {
+  GetPopulatorFieldResponse& this_ = static_cast<GetPopulatorFieldResponse&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* GetPopulatorFieldResponse::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) GetPopulatorFieldResponse(arena);
+}
+constexpr auto GetPopulatorFieldResponse::InternalNewImpl_() {
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(GetPopulatorFieldResponse, _impl_.extended_fields_) +
+          decltype(GetPopulatorFieldResponse::_impl_.extended_fields_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+      PROTOBUF_FIELD_OFFSET(GetPopulatorFieldResponse, _impl_.extended_fields_) +
+          decltype(GetPopulatorFieldResponse::_impl_.extended_fields_)::
+              InternalGetArenaOffsetAlt(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::CopyInit(
+        sizeof(GetPopulatorFieldResponse), alignof(GetPopulatorFieldResponse), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&GetPopulatorFieldResponse::PlacementNew_,
+                                 sizeof(GetPopulatorFieldResponse),
+                                 alignof(GetPopulatorFieldResponse));
+  }
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull GetPopulatorFieldResponse::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_GetPopulatorFieldResponse_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &GetPopulatorFieldResponse::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<GetPopulatorFieldResponse>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &GetPopulatorFieldResponse::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<GetPopulatorFieldResponse>(), &GetPopulatorFieldResponse::ByteSizeLong,
+            &GetPopulatorFieldResponse::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(GetPopulatorFieldResponse, _impl_._cached_size_),
+        false,
+    },
+    &GetPopulatorFieldResponse::kDescriptorMethods,
+    &descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* GetPopulatorFieldResponse::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 4, 2, 87, 2> GetPopulatorFieldResponse::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    4, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967280,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    4,  // num_field_entries
+    2,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::custom_dimension::v202411alpha1::GetPopulatorFieldResponse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // uint32 total_count = 1 [json_name = "totalCount"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(GetPopulatorFieldResponse, _impl_.total_count_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(GetPopulatorFieldResponse, _impl_.total_count_)}},
+    // uint32 offset = 2 [json_name = "offset"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(GetPopulatorFieldResponse, _impl_.offset_), 63>(),
+     {16, 63, 0, PROTOBUF_FIELD_OFFSET(GetPopulatorFieldResponse, _impl_.offset_)}},
+    // uint32 limit = 3 [json_name = "limit"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(GetPopulatorFieldResponse, _impl_.limit_), 63>(),
+     {24, 63, 0, PROTOBUF_FIELD_OFFSET(GetPopulatorFieldResponse, _impl_.limit_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // uint32 total_count = 1 [json_name = "totalCount"];
+    {PROTOBUF_FIELD_OFFSET(GetPopulatorFieldResponse, _impl_.total_count_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 offset = 2 [json_name = "offset"];
+    {PROTOBUF_FIELD_OFFSET(GetPopulatorFieldResponse, _impl_.offset_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 limit = 3 [json_name = "limit"];
+    {PROTOBUF_FIELD_OFFSET(GetPopulatorFieldResponse, _impl_.limit_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // map<string, .kentik.custom_dimension.v202411alpha1.ExtendedField> extended_fields = 4 [json_name = "extendedFields"];
+    {PROTOBUF_FIELD_OFFSET(GetPopulatorFieldResponse, _impl_.extended_fields_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMap)},
+  }}, {{
+    {::_pbi::TcParser::GetMapAuxInfo<
+        decltype(GetPopulatorFieldResponse()._impl_.extended_fields_)>(
+        1, 0, 0, 9,
+        11)},
+    {::_pbi::TcParser::GetTable<::kentik::custom_dimension::v202411alpha1::ExtendedField>()},
+  }}, {{
+    "\77\0\0\0\17\0\0\0"
+    "kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse"
+    "extended_fields"
+  }},
+};
+
+PROTOBUF_NOINLINE void GetPopulatorFieldResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.extended_fields_.Clear();
+  ::memset(&_impl_.total_count_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.limit_) -
+      reinterpret_cast<char*>(&_impl_.total_count_)) + sizeof(_impl_.limit_));
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* GetPopulatorFieldResponse::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const GetPopulatorFieldResponse& this_ = static_cast<const GetPopulatorFieldResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* GetPopulatorFieldResponse::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const GetPopulatorFieldResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // uint32 total_count = 1 [json_name = "totalCount"];
+          if (this_._internal_total_count() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                1, this_._internal_total_count(), target);
+          }
+
+          // uint32 offset = 2 [json_name = "offset"];
+          if (this_._internal_offset() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                2, this_._internal_offset(), target);
+          }
+
+          // uint32 limit = 3 [json_name = "limit"];
+          if (this_._internal_limit() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                3, this_._internal_limit(), target);
+          }
+
+          // map<string, .kentik.custom_dimension.v202411alpha1.ExtendedField> extended_fields = 4 [json_name = "extendedFields"];
+          if (!this_._internal_extended_fields().empty()) {
+            using MapType = ::google::protobuf::Map<std::string, ::kentik::custom_dimension::v202411alpha1::ExtendedField>;
+            using WireHelper = _pbi::MapEntryFuncs<std::string, ::kentik::custom_dimension::v202411alpha1::ExtendedField,
+                                           _pbi::WireFormatLite::TYPE_STRING,
+                                           _pbi::WireFormatLite::TYPE_MESSAGE>;
+            const auto& field = this_._internal_extended_fields();
+
+            if (stream->IsSerializationDeterministic() && field.size() > 1) {
+              for (const auto& entry : ::google::protobuf::internal::MapSorterPtr<MapType>(field)) {
+                target = WireHelper::InternalSerialize(
+                    4, entry.first, entry.second, target, stream);
+                ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                    entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse.extended_fields");
+              }
+            } else {
+              for (const auto& entry : field) {
+                target = WireHelper::InternalSerialize(
+                    4, entry.first, entry.second, target, stream);
+                ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                    entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse.extended_fields");
+              }
+            }
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t GetPopulatorFieldResponse::ByteSizeLong(const MessageLite& base) {
+          const GetPopulatorFieldResponse& this_ = static_cast<const GetPopulatorFieldResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t GetPopulatorFieldResponse::ByteSizeLong() const {
+          const GetPopulatorFieldResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // map<string, .kentik.custom_dimension.v202411alpha1.ExtendedField> extended_fields = 4 [json_name = "extendedFields"];
+            {
+              total_size +=
+                  1 * ::google::protobuf::internal::FromIntSize(this_._internal_extended_fields_size());
+              for (const auto& entry : this_._internal_extended_fields()) {
+                total_size += _pbi::MapEntryFuncs<std::string, ::kentik::custom_dimension::v202411alpha1::ExtendedField,
+                                               _pbi::WireFormatLite::TYPE_STRING,
+                                               _pbi::WireFormatLite::TYPE_MESSAGE>::ByteSizeLong(entry.first, entry.second);
+              }
+            }
+          }
+           {
+            // uint32 total_count = 1 [json_name = "totalCount"];
+            if (this_._internal_total_count() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_total_count());
+            }
+            // uint32 offset = 2 [json_name = "offset"];
+            if (this_._internal_offset() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_offset());
+            }
+            // uint32 limit = 3 [json_name = "limit"];
+            if (this_._internal_limit() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_limit());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void GetPopulatorFieldResponse::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<GetPopulatorFieldResponse*>(&to_msg);
+  auto& from = static_cast<const GetPopulatorFieldResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_impl_.extended_fields_.MergeFrom(from._impl_.extended_fields_);
+  if (from._internal_total_count() != 0) {
+    _this->_impl_.total_count_ = from._impl_.total_count_;
+  }
+  if (from._internal_offset() != 0) {
+    _this->_impl_.offset_ = from._impl_.offset_;
+  }
+  if (from._internal_limit() != 0) {
+    _this->_impl_.limit_ = from._impl_.limit_;
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void GetPopulatorFieldResponse::CopyFrom(const GetPopulatorFieldResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void GetPopulatorFieldResponse::InternalSwap(GetPopulatorFieldResponse* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.extended_fields_.InternalSwap(&other->_impl_.extended_fields_);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(GetPopulatorFieldResponse, _impl_.limit_)
+      + sizeof(GetPopulatorFieldResponse::_impl_.limit_)
+      - PROTOBUF_FIELD_OFFSET(GetPopulatorFieldResponse, _impl_.total_count_)>(
+          reinterpret_cast<char*>(&_impl_.total_count_),
+          reinterpret_cast<char*>(&other->_impl_.total_count_));
+}
+
+::google::protobuf::Metadata GetPopulatorFieldResponse::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================
 

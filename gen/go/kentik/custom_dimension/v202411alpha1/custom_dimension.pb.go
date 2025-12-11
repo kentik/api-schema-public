@@ -857,6 +857,246 @@ func (*DeleteCustomDimensionResponse) Descriptor() ([]byte, []int) {
 	return file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_rawDescGZIP(), []int{12}
 }
 
+type GetPopulatorRequest struct {
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	CustomDimensionId string                 `protobuf:"bytes,1,opt,name=custom_dimension_id,json=customDimensionId,proto3" json:"custom_dimension_id,omitempty"`
+	PopulatorId       string                 `protobuf:"bytes,2,opt,name=populator_id,json=populatorId,proto3" json:"populator_id,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
+}
+
+func (x *GetPopulatorRequest) Reset() {
+	*x = GetPopulatorRequest{}
+	mi := &file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetPopulatorRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetPopulatorRequest) ProtoMessage() {}
+
+func (x *GetPopulatorRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetPopulatorRequest.ProtoReflect.Descriptor instead.
+func (*GetPopulatorRequest) Descriptor() ([]byte, []int) {
+	return file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *GetPopulatorRequest) GetCustomDimensionId() string {
+	if x != nil {
+		return x.CustomDimensionId
+	}
+	return ""
+}
+
+func (x *GetPopulatorRequest) GetPopulatorId() string {
+	if x != nil {
+		return x.PopulatorId
+	}
+	return ""
+}
+
+type GetPopulatorResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Populator     *Populator             `protobuf:"bytes,1,opt,name=populator,proto3" json:"populator,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetPopulatorResponse) Reset() {
+	*x = GetPopulatorResponse{}
+	mi := &file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetPopulatorResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetPopulatorResponse) ProtoMessage() {}
+
+func (x *GetPopulatorResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetPopulatorResponse.ProtoReflect.Descriptor instead.
+func (*GetPopulatorResponse) Descriptor() ([]byte, []int) {
+	return file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *GetPopulatorResponse) GetPopulator() *Populator {
+	if x != nil {
+		return x.Populator
+	}
+	return nil
+}
+
+type GetPopulatorFieldRequest struct {
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	CustomDimensionId string                 `protobuf:"bytes,1,opt,name=custom_dimension_id,json=customDimensionId,proto3" json:"custom_dimension_id,omitempty"`
+	PopulatorId       string                 `protobuf:"bytes,2,opt,name=populator_id,json=populatorId,proto3" json:"populator_id,omitempty"`
+	FieldName         string                 `protobuf:"bytes,3,opt,name=field_name,json=fieldName,proto3" json:"field_name,omitempty"`
+	Offset            int32                  `protobuf:"varint,4,opt,name=offset,proto3" json:"offset,omitempty"`
+	Limit             int32                  `protobuf:"varint,5,opt,name=limit,proto3" json:"limit,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
+}
+
+func (x *GetPopulatorFieldRequest) Reset() {
+	*x = GetPopulatorFieldRequest{}
+	mi := &file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetPopulatorFieldRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetPopulatorFieldRequest) ProtoMessage() {}
+
+func (x *GetPopulatorFieldRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetPopulatorFieldRequest.ProtoReflect.Descriptor instead.
+func (*GetPopulatorFieldRequest) Descriptor() ([]byte, []int) {
+	return file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *GetPopulatorFieldRequest) GetCustomDimensionId() string {
+	if x != nil {
+		return x.CustomDimensionId
+	}
+	return ""
+}
+
+func (x *GetPopulatorFieldRequest) GetPopulatorId() string {
+	if x != nil {
+		return x.PopulatorId
+	}
+	return ""
+}
+
+func (x *GetPopulatorFieldRequest) GetFieldName() string {
+	if x != nil {
+		return x.FieldName
+	}
+	return ""
+}
+
+func (x *GetPopulatorFieldRequest) GetOffset() int32 {
+	if x != nil {
+		return x.Offset
+	}
+	return 0
+}
+
+func (x *GetPopulatorFieldRequest) GetLimit() int32 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
+}
+
+type GetPopulatorFieldResponse struct {
+	state          protoimpl.MessageState    `protogen:"open.v1"`
+	TotalCount     uint32                    `protobuf:"varint,1,opt,name=total_count,json=totalCount,proto3" json:"total_count,omitempty"`
+	Offset         uint32                    `protobuf:"varint,2,opt,name=offset,proto3" json:"offset,omitempty"`
+	Limit          uint32                    `protobuf:"varint,3,opt,name=limit,proto3" json:"limit,omitempty"`
+	ExtendedFields map[string]*ExtendedField `protobuf:"bytes,4,rep,name=extended_fields,json=extendedFields,proto3" json:"extended_fields,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *GetPopulatorFieldResponse) Reset() {
+	*x = GetPopulatorFieldResponse{}
+	mi := &file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetPopulatorFieldResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetPopulatorFieldResponse) ProtoMessage() {}
+
+func (x *GetPopulatorFieldResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetPopulatorFieldResponse.ProtoReflect.Descriptor instead.
+func (*GetPopulatorFieldResponse) Descriptor() ([]byte, []int) {
+	return file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *GetPopulatorFieldResponse) GetTotalCount() uint32 {
+	if x != nil {
+		return x.TotalCount
+	}
+	return 0
+}
+
+func (x *GetPopulatorFieldResponse) GetOffset() uint32 {
+	if x != nil {
+		return x.Offset
+	}
+	return 0
+}
+
+func (x *GetPopulatorFieldResponse) GetLimit() uint32 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
+}
+
+func (x *GetPopulatorFieldResponse) GetExtendedFields() map[string]*ExtendedField {
+	if x != nil {
+		return x.ExtendedFields
+	}
+	return nil
+}
+
 type CreatePopulatorRequest struct {
 	state             protoimpl.MessageState `protogen:"open.v1"`
 	CustomDimensionId string                 `protobuf:"bytes,1,opt,name=custom_dimension_id,json=customDimensionId,proto3" json:"custom_dimension_id,omitempty"`
@@ -867,7 +1107,7 @@ type CreatePopulatorRequest struct {
 
 func (x *CreatePopulatorRequest) Reset() {
 	*x = CreatePopulatorRequest{}
-	mi := &file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes[13]
+	mi := &file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -879,7 +1119,7 @@ func (x *CreatePopulatorRequest) String() string {
 func (*CreatePopulatorRequest) ProtoMessage() {}
 
 func (x *CreatePopulatorRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes[13]
+	mi := &file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -892,7 +1132,7 @@ func (x *CreatePopulatorRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreatePopulatorRequest.ProtoReflect.Descriptor instead.
 func (*CreatePopulatorRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_rawDescGZIP(), []int{13}
+	return file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *CreatePopulatorRequest) GetCustomDimensionId() string {
@@ -918,7 +1158,7 @@ type CreatePopulatorResponse struct {
 
 func (x *CreatePopulatorResponse) Reset() {
 	*x = CreatePopulatorResponse{}
-	mi := &file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes[14]
+	mi := &file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -930,7 +1170,7 @@ func (x *CreatePopulatorResponse) String() string {
 func (*CreatePopulatorResponse) ProtoMessage() {}
 
 func (x *CreatePopulatorResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes[14]
+	mi := &file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -943,7 +1183,7 @@ func (x *CreatePopulatorResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreatePopulatorResponse.ProtoReflect.Descriptor instead.
 func (*CreatePopulatorResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_rawDescGZIP(), []int{14}
+	return file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *CreatePopulatorResponse) GetPopulator() *Populator {
@@ -964,7 +1204,7 @@ type UpdatePopulatorRequest struct {
 
 func (x *UpdatePopulatorRequest) Reset() {
 	*x = UpdatePopulatorRequest{}
-	mi := &file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes[15]
+	mi := &file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -976,7 +1216,7 @@ func (x *UpdatePopulatorRequest) String() string {
 func (*UpdatePopulatorRequest) ProtoMessage() {}
 
 func (x *UpdatePopulatorRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes[15]
+	mi := &file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -989,7 +1229,7 @@ func (x *UpdatePopulatorRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdatePopulatorRequest.ProtoReflect.Descriptor instead.
 func (*UpdatePopulatorRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_rawDescGZIP(), []int{15}
+	return file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *UpdatePopulatorRequest) GetCustomDimensionId() string {
@@ -1022,7 +1262,7 @@ type UpdatePopulatorResponse struct {
 
 func (x *UpdatePopulatorResponse) Reset() {
 	*x = UpdatePopulatorResponse{}
-	mi := &file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes[16]
+	mi := &file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1034,7 +1274,7 @@ func (x *UpdatePopulatorResponse) String() string {
 func (*UpdatePopulatorResponse) ProtoMessage() {}
 
 func (x *UpdatePopulatorResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes[16]
+	mi := &file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1047,7 +1287,7 @@ func (x *UpdatePopulatorResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdatePopulatorResponse.ProtoReflect.Descriptor instead.
 func (*UpdatePopulatorResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_rawDescGZIP(), []int{16}
+	return file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *UpdatePopulatorResponse) GetPopulator() *Populator {
@@ -1067,7 +1307,7 @@ type DeletePopulatorRequest struct {
 
 func (x *DeletePopulatorRequest) Reset() {
 	*x = DeletePopulatorRequest{}
-	mi := &file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes[17]
+	mi := &file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1079,7 +1319,7 @@ func (x *DeletePopulatorRequest) String() string {
 func (*DeletePopulatorRequest) ProtoMessage() {}
 
 func (x *DeletePopulatorRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes[17]
+	mi := &file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1092,7 +1332,7 @@ func (x *DeletePopulatorRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeletePopulatorRequest.ProtoReflect.Descriptor instead.
 func (*DeletePopulatorRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_rawDescGZIP(), []int{17}
+	return file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *DeletePopulatorRequest) GetCustomDimensionId() string {
@@ -1117,7 +1357,7 @@ type DeletePopulatorResponse struct {
 
 func (x *DeletePopulatorResponse) Reset() {
 	*x = DeletePopulatorResponse{}
-	mi := &file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes[18]
+	mi := &file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1129,7 +1369,7 @@ func (x *DeletePopulatorResponse) String() string {
 func (*DeletePopulatorResponse) ProtoMessage() {}
 
 func (x *DeletePopulatorResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes[18]
+	mi := &file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1142,7 +1382,7 @@ func (x *DeletePopulatorResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeletePopulatorResponse.ProtoReflect.Descriptor instead.
 func (*DeletePopulatorResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_rawDescGZIP(), []int{18}
+	return file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_rawDescGZIP(), []int{22}
 }
 
 var File_kentik_custom_dimension_v202411alpha1_custom_dimension_proto protoreflect.FileDescriptor
@@ -1221,7 +1461,28 @@ const file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_rawDesc 
 	"\tdimension\x18\x01 \x01(\v26.kentik.custom_dimension.v202411alpha1.CustomDimensionR\tdimension\"N\n" +
 	"\x1cDeleteCustomDimensionRequest\x12.\n" +
 	"\x13custom_dimension_id\x18\x01 \x01(\tR\x11customDimensionId\"\x1f\n" +
-	"\x1dDeleteCustomDimensionResponse\"\x98\x01\n" +
+	"\x1dDeleteCustomDimensionResponse\"h\n" +
+	"\x13GetPopulatorRequest\x12.\n" +
+	"\x13custom_dimension_id\x18\x01 \x01(\tR\x11customDimensionId\x12!\n" +
+	"\fpopulator_id\x18\x02 \x01(\tR\vpopulatorId\"f\n" +
+	"\x14GetPopulatorResponse\x12N\n" +
+	"\tpopulator\x18\x01 \x01(\v20.kentik.custom_dimension.v202411alpha1.PopulatorR\tpopulator\"\xba\x01\n" +
+	"\x18GetPopulatorFieldRequest\x12.\n" +
+	"\x13custom_dimension_id\x18\x01 \x01(\tR\x11customDimensionId\x12!\n" +
+	"\fpopulator_id\x18\x02 \x01(\tR\vpopulatorId\x12\x1d\n" +
+	"\n" +
+	"field_name\x18\x03 \x01(\tR\tfieldName\x12\x16\n" +
+	"\x06offset\x18\x04 \x01(\x05R\x06offset\x12\x14\n" +
+	"\x05limit\x18\x05 \x01(\x05R\x05limit\"\xe2\x02\n" +
+	"\x19GetPopulatorFieldResponse\x12\x1f\n" +
+	"\vtotal_count\x18\x01 \x01(\rR\n" +
+	"totalCount\x12\x16\n" +
+	"\x06offset\x18\x02 \x01(\rR\x06offset\x12\x14\n" +
+	"\x05limit\x18\x03 \x01(\rR\x05limit\x12}\n" +
+	"\x0fextended_fields\x18\x04 \x03(\v2T.kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse.ExtendedFieldsEntryR\x0eextendedFields\x1aw\n" +
+	"\x13ExtendedFieldsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12J\n" +
+	"\x05value\x18\x02 \x01(\v24.kentik.custom_dimension.v202411alpha1.ExtendedFieldR\x05value:\x028\x01\"\x98\x01\n" +
 	"\x16CreatePopulatorRequest\x12.\n" +
 	"\x13custom_dimension_id\x18\x01 \x01(\tR\x11customDimensionId\x12N\n" +
 	"\tpopulator\x18\x02 \x01(\v20.kentik.custom_dimension.v202411alpha1.PopulatorR\tpopulator\"i\n" +
@@ -1236,13 +1497,15 @@ const file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_rawDesc 
 	"\x16DeletePopulatorRequest\x12.\n" +
 	"\x13custom_dimension_id\x18\x01 \x01(\tR\x11customDimensionId\x12!\n" +
 	"\fpopulator_id\x18\x02 \x01(\tR\vpopulatorId\"\x19\n" +
-	"\x17DeletePopulatorResponse2\xbc\x18\n" +
+	"\x17DeletePopulatorResponse2\xe0\x1d\n" +
 	"\x16CustomDimensionService\x12\x87\x03\n" +
 	"\x14ListCustomDimensions\x12B.kentik.custom_dimension.v202411alpha1.ListCustomDimensionsRequest\x1aC.kentik.custom_dimension.v202411alpha1.ListCustomDimensionsResponse\"\xe5\x01\x92A\xa0\x01\x12\x16List Custom Dimensions\x1apReturns an array of custom dimension objects that each contain information about an individual custom dimension.*\x14ListCustomDimensions\xf2\xd7\x02\x15custom_dimension:read\x82\xd3\xe4\x93\x02\"\x12 /custom_dimensions/v202411alpha1\x12\x92\x03\n" +
 	"\x16GetCustomDimensionInfo\x12D.kentik.custom_dimension.v202411alpha1.GetCustomDimensionInfoRequest\x1aE.kentik.custom_dimension.v202411alpha1.GetCustomDimensionInfoResponse\"\xea\x01\x92A\x8f\x01\x12\x15Custom Dimension Info\x1a^Returns a custom dimension object containing information about an individual custom dimension.*\x16GetCustomDimensionInfo\xf2\xd7\x02\x15custom_dimension:read\x82\xd3\xe4\x93\x028\x126/custom_dimensions/v202411alpha1/{custom_dimension_id}\x12\xea\x02\n" +
 	"\x15CreateCustomDimension\x12C.kentik.custom_dimension.v202411alpha1.CreateCustomDimensionRequest\x1aD.kentik.custom_dimension.v202411alpha1.CreateCustomDimensionResponse\"\xc5\x01\x92A\x9b\x01\x12\x17Create Custom Dimension\x1aiCreates and returns a custom dimension object containing information about an individual custom dimension*\x15CreateCustomDimension\x82\xd3\xe4\x93\x02 :\tdimension\"\x13/v1/customdimension\x12\x95\x04\n" +
 	"\x15UpdateCustomDimension\x12C.kentik.custom_dimension.v202411alpha1.UpdateCustomDimensionRequest\x1aD.kentik.custom_dimension.v202411alpha1.UpdateCustomDimensionResponse\"\xf0\x02\x92A\xa3\x02\x12\x17Update Custom Dimension\x1a\xf0\x01Updates and returns a custom dimension object containing information about an individual custom dimension (see About Custom Dimensions). Populators are not sent back in the response body. To get them use 'Custom Dimension info' API instead.*\x15UpdateCustomDimension\x82\xd3\xe4\x93\x02C:\tdimension\x1a6/custom_dimensions/v202411alpha1/{custom_dimension_id}\x12\xb3\x02\n" +
-	"\x15DeleteCustomDimension\x12C.kentik.custom_dimension.v202411alpha1.DeleteCustomDimensionRequest\x1aD.kentik.custom_dimension.v202411alpha1.DeleteCustomDimensionResponse\"\x8e\x01\x92AM\x12\x17Delete Custom Dimension\x1a\x1bDeletes a custom dimension.*\x15DeleteCustomDimension\x82\xd3\xe4\x93\x028*6/custom_dimensions/v202411alpha1/{custom_dimension_id}\x12\xeb\x02\n" +
+	"\x15DeleteCustomDimension\x12C.kentik.custom_dimension.v202411alpha1.DeleteCustomDimensionRequest\x1aD.kentik.custom_dimension.v202411alpha1.DeleteCustomDimensionResponse\"\x8e\x01\x92AM\x12\x17Delete Custom Dimension\x1a\x1bDeletes a custom dimension.*\x15DeleteCustomDimension\x82\xd3\xe4\x93\x028*6/custom_dimensions/v202411alpha1/{custom_dimension_id}\x12\xaf\x02\n" +
+	"\fGetPopulator\x12:.kentik.custom_dimension.v202411alpha1.GetPopulatorRequest\x1a;.kentik.custom_dimension.v202411alpha1.GetPopulatorResponse\"\xa5\x01\x92AK\x12\rGet Populator\x1a,Get Populator by Dimension and Populator ID.*\fGetPopulator\x82\xd3\xe4\x93\x02Q\x12O/custom_dimensions/v202411alpha1/{custom_dimension_id}/populator/{populator_id}\x12\xef\x02\n" +
+	"\x11GetPopulatorField\x12?.kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest\x1a@.kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse\"\xd6\x01\x92Ai\x12\x13Get Populator Field\x1a?Get Populator field by Dimension, Populator ID, and field name.*\x11GetPopulatorField\x82\xd3\xe4\x93\x02d\x12b/custom_dimensions/v202411alpha1/{custom_dimension_id}/populator/{populator_id}/field/{field_name}\x12\xeb\x02\n" +
 	"\x0fCreatePopulator\x12=.kentik.custom_dimension.v202411alpha1.CreatePopulatorRequest\x1a>.kentik.custom_dimension.v202411alpha1.CreatePopulatorResponse\"\xd8\x01\x92A\x81\x01\x12\x10Create Populator\x1a\\Creates and returns a populator object containing information about an individual populator.*\x0fCreatePopulator\x82\xd3\xe4\x93\x02M:\tpopulator\"@/custom_dimensions/v202411alpha1/{custom_dimension_id}/populator\x12\xfa\x02\n" +
 	"\x0fUpdatePopulator\x12=.kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest\x1a>.kentik.custom_dimension.v202411alpha1.UpdatePopulatorResponse\"\xe7\x01\x92A\x81\x01\x12\x10Update Populator\x1a\\Updates and returns a populator object containing information about an individual populator.*\x0fUpdatePopulator\x82\xd3\xe4\x93\x02\\:\tpopulator\x1aO/custom_dimensions/v202411alpha1/{custom_dimension_id}/populator/{populator_id}\x12\xa6\x02\n" +
 	"\x0fDeletePopulator\x12=.kentik.custom_dimension.v202411alpha1.DeletePopulatorRequest\x1a>.kentik.custom_dimension.v202411alpha1.DeletePopulatorResponse\"\x93\x01\x92A9\x12\x10Delete Populator\x1a\x14Deletes a populator.*\x0fDeletePopulator\x82\xd3\xe4\x93\x02Q*O/custom_dimensions/v202411alpha1/{custom_dimension_id}/populator/{populator_id}\x1a4\xcaA\x13grpc.api.kentik.com\xea\xd7\x02\x16admin.custom_dimension\x90\xd8\x02\x03B\xe2\x04\x92A\xfb\x03\x12\xea\x01\n" +
@@ -1272,7 +1535,7 @@ func file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_rawDescGZ
 	return file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_rawDescData
 }
 
-var file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
+var file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
 var file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_goTypes = []any{
 	(*CustomDimension)(nil),                // 0: kentik.custom_dimension.v202411alpha1.CustomDimension
 	(*Populator)(nil),                      // 1: kentik.custom_dimension.v202411alpha1.Populator
@@ -1287,54 +1550,66 @@ var file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_goTypes = 
 	(*UpdateCustomDimensionResponse)(nil),  // 10: kentik.custom_dimension.v202411alpha1.UpdateCustomDimensionResponse
 	(*DeleteCustomDimensionRequest)(nil),   // 11: kentik.custom_dimension.v202411alpha1.DeleteCustomDimensionRequest
 	(*DeleteCustomDimensionResponse)(nil),  // 12: kentik.custom_dimension.v202411alpha1.DeleteCustomDimensionResponse
-	(*CreatePopulatorRequest)(nil),         // 13: kentik.custom_dimension.v202411alpha1.CreatePopulatorRequest
-	(*CreatePopulatorResponse)(nil),        // 14: kentik.custom_dimension.v202411alpha1.CreatePopulatorResponse
-	(*UpdatePopulatorRequest)(nil),         // 15: kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest
-	(*UpdatePopulatorResponse)(nil),        // 16: kentik.custom_dimension.v202411alpha1.UpdatePopulatorResponse
-	(*DeletePopulatorRequest)(nil),         // 17: kentik.custom_dimension.v202411alpha1.DeletePopulatorRequest
-	(*DeletePopulatorResponse)(nil),        // 18: kentik.custom_dimension.v202411alpha1.DeletePopulatorResponse
-	nil,                                    // 19: kentik.custom_dimension.v202411alpha1.Populator.ExtendedFieldsEntry
-	(*timestamppb.Timestamp)(nil),          // 20: google.protobuf.Timestamp
+	(*GetPopulatorRequest)(nil),            // 13: kentik.custom_dimension.v202411alpha1.GetPopulatorRequest
+	(*GetPopulatorResponse)(nil),           // 14: kentik.custom_dimension.v202411alpha1.GetPopulatorResponse
+	(*GetPopulatorFieldRequest)(nil),       // 15: kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest
+	(*GetPopulatorFieldResponse)(nil),      // 16: kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse
+	(*CreatePopulatorRequest)(nil),         // 17: kentik.custom_dimension.v202411alpha1.CreatePopulatorRequest
+	(*CreatePopulatorResponse)(nil),        // 18: kentik.custom_dimension.v202411alpha1.CreatePopulatorResponse
+	(*UpdatePopulatorRequest)(nil),         // 19: kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest
+	(*UpdatePopulatorResponse)(nil),        // 20: kentik.custom_dimension.v202411alpha1.UpdatePopulatorResponse
+	(*DeletePopulatorRequest)(nil),         // 21: kentik.custom_dimension.v202411alpha1.DeletePopulatorRequest
+	(*DeletePopulatorResponse)(nil),        // 22: kentik.custom_dimension.v202411alpha1.DeletePopulatorResponse
+	nil,                                    // 23: kentik.custom_dimension.v202411alpha1.Populator.ExtendedFieldsEntry
+	nil,                                    // 24: kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse.ExtendedFieldsEntry
+	(*timestamppb.Timestamp)(nil),          // 25: google.protobuf.Timestamp
 }
 var file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_depIdxs = []int32{
 	1,  // 0: kentik.custom_dimension.v202411alpha1.CustomDimension.populators:type_name -> kentik.custom_dimension.v202411alpha1.Populator
-	20, // 1: kentik.custom_dimension.v202411alpha1.CustomDimension.created_date:type_name -> google.protobuf.Timestamp
-	20, // 2: kentik.custom_dimension.v202411alpha1.CustomDimension.updated_date:type_name -> google.protobuf.Timestamp
-	20, // 3: kentik.custom_dimension.v202411alpha1.Populator.created_date:type_name -> google.protobuf.Timestamp
-	20, // 4: kentik.custom_dimension.v202411alpha1.Populator.updated_date:type_name -> google.protobuf.Timestamp
-	19, // 5: kentik.custom_dimension.v202411alpha1.Populator.extended_fields:type_name -> kentik.custom_dimension.v202411alpha1.Populator.ExtendedFieldsEntry
+	25, // 1: kentik.custom_dimension.v202411alpha1.CustomDimension.created_date:type_name -> google.protobuf.Timestamp
+	25, // 2: kentik.custom_dimension.v202411alpha1.CustomDimension.updated_date:type_name -> google.protobuf.Timestamp
+	25, // 3: kentik.custom_dimension.v202411alpha1.Populator.created_date:type_name -> google.protobuf.Timestamp
+	25, // 4: kentik.custom_dimension.v202411alpha1.Populator.updated_date:type_name -> google.protobuf.Timestamp
+	23, // 5: kentik.custom_dimension.v202411alpha1.Populator.extended_fields:type_name -> kentik.custom_dimension.v202411alpha1.Populator.ExtendedFieldsEntry
 	0,  // 6: kentik.custom_dimension.v202411alpha1.ListCustomDimensionsResponse.dimensions:type_name -> kentik.custom_dimension.v202411alpha1.CustomDimension
 	0,  // 7: kentik.custom_dimension.v202411alpha1.GetCustomDimensionInfoResponse.dimension:type_name -> kentik.custom_dimension.v202411alpha1.CustomDimension
 	0,  // 8: kentik.custom_dimension.v202411alpha1.CreateCustomDimensionRequest.dimension:type_name -> kentik.custom_dimension.v202411alpha1.CustomDimension
 	0,  // 9: kentik.custom_dimension.v202411alpha1.CreateCustomDimensionResponse.dimension:type_name -> kentik.custom_dimension.v202411alpha1.CustomDimension
 	0,  // 10: kentik.custom_dimension.v202411alpha1.UpdateCustomDimensionRequest.dimension:type_name -> kentik.custom_dimension.v202411alpha1.CustomDimension
 	0,  // 11: kentik.custom_dimension.v202411alpha1.UpdateCustomDimensionResponse.dimension:type_name -> kentik.custom_dimension.v202411alpha1.CustomDimension
-	1,  // 12: kentik.custom_dimension.v202411alpha1.CreatePopulatorRequest.populator:type_name -> kentik.custom_dimension.v202411alpha1.Populator
-	1,  // 13: kentik.custom_dimension.v202411alpha1.CreatePopulatorResponse.populator:type_name -> kentik.custom_dimension.v202411alpha1.Populator
-	1,  // 14: kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest.populator:type_name -> kentik.custom_dimension.v202411alpha1.Populator
-	1,  // 15: kentik.custom_dimension.v202411alpha1.UpdatePopulatorResponse.populator:type_name -> kentik.custom_dimension.v202411alpha1.Populator
-	2,  // 16: kentik.custom_dimension.v202411alpha1.Populator.ExtendedFieldsEntry.value:type_name -> kentik.custom_dimension.v202411alpha1.ExtendedField
-	3,  // 17: kentik.custom_dimension.v202411alpha1.CustomDimensionService.ListCustomDimensions:input_type -> kentik.custom_dimension.v202411alpha1.ListCustomDimensionsRequest
-	5,  // 18: kentik.custom_dimension.v202411alpha1.CustomDimensionService.GetCustomDimensionInfo:input_type -> kentik.custom_dimension.v202411alpha1.GetCustomDimensionInfoRequest
-	7,  // 19: kentik.custom_dimension.v202411alpha1.CustomDimensionService.CreateCustomDimension:input_type -> kentik.custom_dimension.v202411alpha1.CreateCustomDimensionRequest
-	9,  // 20: kentik.custom_dimension.v202411alpha1.CustomDimensionService.UpdateCustomDimension:input_type -> kentik.custom_dimension.v202411alpha1.UpdateCustomDimensionRequest
-	11, // 21: kentik.custom_dimension.v202411alpha1.CustomDimensionService.DeleteCustomDimension:input_type -> kentik.custom_dimension.v202411alpha1.DeleteCustomDimensionRequest
-	13, // 22: kentik.custom_dimension.v202411alpha1.CustomDimensionService.CreatePopulator:input_type -> kentik.custom_dimension.v202411alpha1.CreatePopulatorRequest
-	15, // 23: kentik.custom_dimension.v202411alpha1.CustomDimensionService.UpdatePopulator:input_type -> kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest
-	17, // 24: kentik.custom_dimension.v202411alpha1.CustomDimensionService.DeletePopulator:input_type -> kentik.custom_dimension.v202411alpha1.DeletePopulatorRequest
-	4,  // 25: kentik.custom_dimension.v202411alpha1.CustomDimensionService.ListCustomDimensions:output_type -> kentik.custom_dimension.v202411alpha1.ListCustomDimensionsResponse
-	6,  // 26: kentik.custom_dimension.v202411alpha1.CustomDimensionService.GetCustomDimensionInfo:output_type -> kentik.custom_dimension.v202411alpha1.GetCustomDimensionInfoResponse
-	8,  // 27: kentik.custom_dimension.v202411alpha1.CustomDimensionService.CreateCustomDimension:output_type -> kentik.custom_dimension.v202411alpha1.CreateCustomDimensionResponse
-	10, // 28: kentik.custom_dimension.v202411alpha1.CustomDimensionService.UpdateCustomDimension:output_type -> kentik.custom_dimension.v202411alpha1.UpdateCustomDimensionResponse
-	12, // 29: kentik.custom_dimension.v202411alpha1.CustomDimensionService.DeleteCustomDimension:output_type -> kentik.custom_dimension.v202411alpha1.DeleteCustomDimensionResponse
-	14, // 30: kentik.custom_dimension.v202411alpha1.CustomDimensionService.CreatePopulator:output_type -> kentik.custom_dimension.v202411alpha1.CreatePopulatorResponse
-	16, // 31: kentik.custom_dimension.v202411alpha1.CustomDimensionService.UpdatePopulator:output_type -> kentik.custom_dimension.v202411alpha1.UpdatePopulatorResponse
-	18, // 32: kentik.custom_dimension.v202411alpha1.CustomDimensionService.DeletePopulator:output_type -> kentik.custom_dimension.v202411alpha1.DeletePopulatorResponse
-	25, // [25:33] is the sub-list for method output_type
-	17, // [17:25] is the sub-list for method input_type
-	17, // [17:17] is the sub-list for extension type_name
-	17, // [17:17] is the sub-list for extension extendee
-	0,  // [0:17] is the sub-list for field type_name
+	1,  // 12: kentik.custom_dimension.v202411alpha1.GetPopulatorResponse.populator:type_name -> kentik.custom_dimension.v202411alpha1.Populator
+	24, // 13: kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse.extended_fields:type_name -> kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse.ExtendedFieldsEntry
+	1,  // 14: kentik.custom_dimension.v202411alpha1.CreatePopulatorRequest.populator:type_name -> kentik.custom_dimension.v202411alpha1.Populator
+	1,  // 15: kentik.custom_dimension.v202411alpha1.CreatePopulatorResponse.populator:type_name -> kentik.custom_dimension.v202411alpha1.Populator
+	1,  // 16: kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest.populator:type_name -> kentik.custom_dimension.v202411alpha1.Populator
+	1,  // 17: kentik.custom_dimension.v202411alpha1.UpdatePopulatorResponse.populator:type_name -> kentik.custom_dimension.v202411alpha1.Populator
+	2,  // 18: kentik.custom_dimension.v202411alpha1.Populator.ExtendedFieldsEntry.value:type_name -> kentik.custom_dimension.v202411alpha1.ExtendedField
+	2,  // 19: kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse.ExtendedFieldsEntry.value:type_name -> kentik.custom_dimension.v202411alpha1.ExtendedField
+	3,  // 20: kentik.custom_dimension.v202411alpha1.CustomDimensionService.ListCustomDimensions:input_type -> kentik.custom_dimension.v202411alpha1.ListCustomDimensionsRequest
+	5,  // 21: kentik.custom_dimension.v202411alpha1.CustomDimensionService.GetCustomDimensionInfo:input_type -> kentik.custom_dimension.v202411alpha1.GetCustomDimensionInfoRequest
+	7,  // 22: kentik.custom_dimension.v202411alpha1.CustomDimensionService.CreateCustomDimension:input_type -> kentik.custom_dimension.v202411alpha1.CreateCustomDimensionRequest
+	9,  // 23: kentik.custom_dimension.v202411alpha1.CustomDimensionService.UpdateCustomDimension:input_type -> kentik.custom_dimension.v202411alpha1.UpdateCustomDimensionRequest
+	11, // 24: kentik.custom_dimension.v202411alpha1.CustomDimensionService.DeleteCustomDimension:input_type -> kentik.custom_dimension.v202411alpha1.DeleteCustomDimensionRequest
+	13, // 25: kentik.custom_dimension.v202411alpha1.CustomDimensionService.GetPopulator:input_type -> kentik.custom_dimension.v202411alpha1.GetPopulatorRequest
+	15, // 26: kentik.custom_dimension.v202411alpha1.CustomDimensionService.GetPopulatorField:input_type -> kentik.custom_dimension.v202411alpha1.GetPopulatorFieldRequest
+	17, // 27: kentik.custom_dimension.v202411alpha1.CustomDimensionService.CreatePopulator:input_type -> kentik.custom_dimension.v202411alpha1.CreatePopulatorRequest
+	19, // 28: kentik.custom_dimension.v202411alpha1.CustomDimensionService.UpdatePopulator:input_type -> kentik.custom_dimension.v202411alpha1.UpdatePopulatorRequest
+	21, // 29: kentik.custom_dimension.v202411alpha1.CustomDimensionService.DeletePopulator:input_type -> kentik.custom_dimension.v202411alpha1.DeletePopulatorRequest
+	4,  // 30: kentik.custom_dimension.v202411alpha1.CustomDimensionService.ListCustomDimensions:output_type -> kentik.custom_dimension.v202411alpha1.ListCustomDimensionsResponse
+	6,  // 31: kentik.custom_dimension.v202411alpha1.CustomDimensionService.GetCustomDimensionInfo:output_type -> kentik.custom_dimension.v202411alpha1.GetCustomDimensionInfoResponse
+	8,  // 32: kentik.custom_dimension.v202411alpha1.CustomDimensionService.CreateCustomDimension:output_type -> kentik.custom_dimension.v202411alpha1.CreateCustomDimensionResponse
+	10, // 33: kentik.custom_dimension.v202411alpha1.CustomDimensionService.UpdateCustomDimension:output_type -> kentik.custom_dimension.v202411alpha1.UpdateCustomDimensionResponse
+	12, // 34: kentik.custom_dimension.v202411alpha1.CustomDimensionService.DeleteCustomDimension:output_type -> kentik.custom_dimension.v202411alpha1.DeleteCustomDimensionResponse
+	14, // 35: kentik.custom_dimension.v202411alpha1.CustomDimensionService.GetPopulator:output_type -> kentik.custom_dimension.v202411alpha1.GetPopulatorResponse
+	16, // 36: kentik.custom_dimension.v202411alpha1.CustomDimensionService.GetPopulatorField:output_type -> kentik.custom_dimension.v202411alpha1.GetPopulatorFieldResponse
+	18, // 37: kentik.custom_dimension.v202411alpha1.CustomDimensionService.CreatePopulator:output_type -> kentik.custom_dimension.v202411alpha1.CreatePopulatorResponse
+	20, // 38: kentik.custom_dimension.v202411alpha1.CustomDimensionService.UpdatePopulator:output_type -> kentik.custom_dimension.v202411alpha1.UpdatePopulatorResponse
+	22, // 39: kentik.custom_dimension.v202411alpha1.CustomDimensionService.DeletePopulator:output_type -> kentik.custom_dimension.v202411alpha1.DeletePopulatorResponse
+	30, // [30:40] is the sub-list for method output_type
+	20, // [20:30] is the sub-list for method input_type
+	20, // [20:20] is the sub-list for extension type_name
+	20, // [20:20] is the sub-list for extension extendee
+	0,  // [0:20] is the sub-list for field type_name
 }
 
 func init() { file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_init() }
@@ -1348,7 +1623,7 @@ func file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_rawDesc), len(file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   20,
+			NumMessages:   25,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
