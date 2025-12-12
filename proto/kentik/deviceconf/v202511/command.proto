@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package kentik.deviceconf.v202511;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/deviceconf/v202511;deviceconf";
+
+import "google/protobuf/timestamp.proto";
+
+import "kentik/deviceconf/v202511/device.proto";
+
+message DeviceCommand {
+  string device_id = 1;
+  string command = 2;
+}
+
+message CommandResult {
+  bool success = 1;
+  string output = 2; // if success is false, contains error message
+}
+
+enum AclAction {
+  ACL_ACTION_UNSPECIFIED = 0;
+  ACL_ACTION_ALLOW = 1; // Not currently supported
+  ACL_ACTION_DENY = 2;
+}
+
+enum AclMode {
+  ACL_MODE_UNSPECIFIED = 0;
+  ACL_MODE_EXACT = 1;
+  ACL_MODE_CONTAINS = 2;
+  ACL_MODE_REGEX = 3;
+}
+
+message CommandAcl {
+  AclAction action = 1;
+  AclMode mode = 2;
+  string filter = 3;
+}

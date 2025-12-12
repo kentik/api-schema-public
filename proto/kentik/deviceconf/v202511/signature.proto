@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package kentik.deviceconf.v202511;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/deviceconf/v202511;deviceconf";
+
+enum SignatureAlgorithm {
+  SIGNATURE_ALGORITHM_UNSPECIFIED = 0;
+  SIGNATURE_ALGORITHM_ECDSA_SHA256 = 1;
+}
+
+message MessageSignature {
+  string signer_id = 2;
+  SignatureAlgorithm algorithm = 3;
+  bytes signature = 4;
+}

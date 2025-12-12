@@ -39,6 +39,52 @@
                     }
                 }
             },
+            "v202511AclAction": {
+                "type": "string",
+                "enum": [
+                    "ACL_ACTION_UNSPECIFIED",
+                    "ACL_ACTION_ALLOW",
+                    "ACL_ACTION_DENY"
+                ],
+                "default": "ACL_ACTION_UNSPECIFIED",
+                "title": "- ACL_ACTION_ALLOW: Not currently supported"
+            },
+            "v202511AclMode": {
+                "type": "string",
+                "enum": [
+                    "ACL_MODE_UNSPECIFIED",
+                    "ACL_MODE_EXACT",
+                    "ACL_MODE_CONTAINS",
+                    "ACL_MODE_REGEX"
+                ],
+                "default": "ACL_MODE_UNSPECIFIED"
+            },
+            "v202511CommandAcl": {
+                "type": "object",
+                "properties": {
+                    "action": {
+                        "$ref": "#/components/schemas/v202511AclAction"
+                    },
+                    "mode": {
+                        "$ref": "#/components/schemas/v202511AclMode"
+                    },
+                    "filter": {
+                        "type": "string"
+                    }
+                }
+            },
+            "v202511CommandResult": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "output": {
+                        "type": "string",
+                        "title": "if success is false, contains error message"
+                    }
+                }
+            },
             "v202511CommitDetails": {
                 "type": "object",
                 "properties": {
@@ -90,6 +136,17 @@
                     }
                 }
             },
+            "v202511DeviceCommand": {
+                "type": "object",
+                "properties": {
+                    "deviceId": {
+                        "type": "string"
+                    },
+                    "command": {
+                        "type": "string"
+                    }
+                }
+            },
             "v202511DevicePlatform": {
                 "type": "string",
                 "enum": [
@@ -130,11 +187,30 @@
                     }
                 }
             },
+            "v202511ExecuteCommandResponse": {
+                "type": "object",
+                "properties": {
+                    "commandResult": {
+                        "$ref": "#/components/schemas/v202511CommandResult"
+                    }
+                }
+            },
             "v202511FetchParameters": {
                 "type": "object",
                 "properties": {
                     "fetchInterval": {
                         "type": "string"
+                    }
+                }
+            },
+            "v202511GetCommandAclsResponse": {
+                "type": "object",
+                "properties": {
+                    "acls": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202511CommandAcl"
+                        }
                     }
                 }
             },
@@ -180,6 +256,21 @@
                     }
                 }
             },
+            "v202511MessageSignature": {
+                "type": "object",
+                "properties": {
+                    "signerId": {
+                        "type": "string"
+                    },
+                    "algorithm": {
+                        "$ref": "#/components/schemas/v202511SignatureAlgorithm"
+                    },
+                    "signature": {
+                        "type": "string",
+                        "format": "byte"
+                    }
+                }
+            },
             "v202511RequestDeviceConfigurationFetchResponse": {
                 "type": "object"
             },
@@ -203,6 +294,14 @@
                     }
                 },
                 "title": "TODO: I somewhat regret embedding \"Revision\" inside \"Snapshot\".\nBeing embedded means that any time we add something to Revision, it affects\nSnapshot as well. For example, when we added device_id to Revision, it\nmeant that now Snapshot has device_id in two places (top-level and inside\nRevision). At some point we should probably flatten these fields into the\ntop-level Snapshot message and deprecate the embedded Revision message. (Or\nbreak the coupling between Snapshot and List Revisions some other way.)"
+            },
+            "v202511SignatureAlgorithm": {
+                "type": "string",
+                "enum": [
+                    "SIGNATURE_ALGORITHM_UNSPECIFIED",
+                    "SIGNATURE_ALGORITHM_ECDSA_SHA256"
+                ],
+                "default": "SIGNATURE_ALGORITHM_UNSPECIFIED"
             },
             "v202511Snapshot": {
                 "type": "object",
@@ -251,6 +350,9 @@
                         "$ref": "#/components/schemas/v202511DevicePlatform"
                     }
                 }
+            },
+            "v202511UpdateCommandAclsResponse": {
+                "type": "object"
             },
             "v202511UpdateDeviceConfigurationResponse": {
                 "type": "object"

@@ -7,8 +7,10 @@ import "google/protobuf/timestamp.proto";
 
 import "kentik/core/v202303/annotations.proto";
 
-import "kentik/deviceconf/v202511/device.proto";
+import "kentik/deviceconf/v202511/command.proto";
 import "kentik/deviceconf/v202511/config.proto";
+import "kentik/deviceconf/v202511/device.proto";
+import "kentik/deviceconf/v202511/signature.proto";
 
 service DeviceConfigurationService {
   option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
@@ -98,6 +100,47 @@ service DeviceConfigurationService {
   rpc RequestDeviceConfigurationFetch(RequestDeviceConfigurationFetchRequest) returns (RequestDeviceConfigurationFetchResponse) {
     option (kentik.core.v202303.method_scope) = "deviceconf:write";
   }
+
+  // Request a device execute the given command. This will be performed synchronously.
+  //
+  // This is an INTERNAL API ONLY and is not exposed to external clients.
+  // Callers must sign the request to prove that they are authorized to request command execution.
+  //
+  // Internal clients MUST set the following gRPC metadata:
+  // - x-kt-cid (Company ID)
+  // - x-kt-uid (User ID)
+  //
+  rpc ExecuteCommand(ExecuteCommandRequest) returns (ExecuteCommandResponse) {
+    option (kentik.core.v202303.method_visibility) = METHOD_VISIBILITY_PRIVATE;
+    option (kentik.core.v202303.method_scope) = "deviceconf:write";
+  }
+
+  // Get the current command ACLs for the given company.
+  //
+  // External clients MUST set the following gRPC metadata:
+  // - x-ch-auth-email
+  // - x-ch-auth-api-token
+  //
+  // Internal clients MUST set the following gRPC metadata:
+  // - x-kt-cid (Company ID; 0 will return global ACLs)
+  //
+  rpc GetCommandAcls(GetCommandAclsRequest) returns (GetCommandAclsResponse) {
+    option (kentik.core.v202303.method_scope) = "deviceconf:read";
+  }
+
+  // Update the current command ACLs for the given company.
+  // The entire ACL set is replaced with the given ACLs.
+  //
+  // External clients MUST set the following gRPC metadata:
+  // - x-ch-auth-email
+  // - x-ch-auth-api-token
+  //
+  // Internal clients MUST set the following gRPC metadata:
+  // - x-kt-cid (Company ID)
+  //
+  rpc UpdateCommandAcls(UpdateCommandAclsRequest) returns (UpdateCommandAclsResponse) {
+    option (kentik.core.v202303.method_scope) = "deviceconf:write";
+  }
 }
 
 message GetDeviceAssignmentsRequest {
@@ -181,4 +224,27 @@ message RequestDeviceConfigurationFetchRequest {
 
 message RequestDeviceConfigurationFetchResponse {
 
+}
+
+message ExecuteCommandRequest {
+  DeviceCommand device_command = 1;
+  MessageSignature signature = 2;
+}
+
+message ExecuteCommandResponse {
+  CommandResult command_result = 1;
+}
+
+message GetCommandAclsRequest {
+}
+
+message GetCommandAclsResponse {
+  repeated CommandAcl acls = 1;
+}
+
+message UpdateCommandAclsRequest {
+  repeated CommandAcl acls = 1;
+}
+
+message UpdateCommandAclsResponse {
 }

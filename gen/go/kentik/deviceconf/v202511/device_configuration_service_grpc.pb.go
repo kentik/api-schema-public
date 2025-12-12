@@ -25,6 +25,9 @@ const (
 	DeviceConfigurationService_GetLatestDeviceConfigurations_FullMethodName    = "/kentik.deviceconf.v202511.DeviceConfigurationService/GetLatestDeviceConfigurations"
 	DeviceConfigurationService_ListDeviceConfigurationRevisions_FullMethodName = "/kentik.deviceconf.v202511.DeviceConfigurationService/ListDeviceConfigurationRevisions"
 	DeviceConfigurationService_RequestDeviceConfigurationFetch_FullMethodName  = "/kentik.deviceconf.v202511.DeviceConfigurationService/RequestDeviceConfigurationFetch"
+	DeviceConfigurationService_ExecuteCommand_FullMethodName                   = "/kentik.deviceconf.v202511.DeviceConfigurationService/ExecuteCommand"
+	DeviceConfigurationService_GetCommandAcls_FullMethodName                   = "/kentik.deviceconf.v202511.DeviceConfigurationService/GetCommandAcls"
+	DeviceConfigurationService_UpdateCommandAcls_FullMethodName                = "/kentik.deviceconf.v202511.DeviceConfigurationService/UpdateCommandAcls"
 )
 
 // DeviceConfigurationServiceClient is the client API for DeviceConfigurationService service.
@@ -92,6 +95,34 @@ type DeviceConfigurationServiceClient interface {
 	// Internal clients MUST set the following gRPC metadata:
 	// - x-kt-cid (Company ID)
 	RequestDeviceConfigurationFetch(ctx context.Context, in *RequestDeviceConfigurationFetchRequest, opts ...grpc.CallOption) (*RequestDeviceConfigurationFetchResponse, error)
+	// Request a device execute the given command. This will be performed synchronously.
+	//
+	// This is an INTERNAL API ONLY and is not exposed to external clients.
+	// Callers must sign the request to prove that they are authorized to request command execution.
+	//
+	// Internal clients MUST set the following gRPC metadata:
+	// - x-kt-cid (Company ID)
+	// - x-kt-uid (User ID)
+	ExecuteCommand(ctx context.Context, in *ExecuteCommandRequest, opts ...grpc.CallOption) (*ExecuteCommandResponse, error)
+	// Get the current command ACLs for the given company.
+	//
+	// External clients MUST set the following gRPC metadata:
+	// - x-ch-auth-email
+	// - x-ch-auth-api-token
+	//
+	// Internal clients MUST set the following gRPC metadata:
+	// - x-kt-cid (Company ID; 0 will return global ACLs)
+	GetCommandAcls(ctx context.Context, in *GetCommandAclsRequest, opts ...grpc.CallOption) (*GetCommandAclsResponse, error)
+	// Update the current command ACLs for the given company.
+	// The entire ACL set is replaced with the given ACLs.
+	//
+	// External clients MUST set the following gRPC metadata:
+	// - x-ch-auth-email
+	// - x-ch-auth-api-token
+	//
+	// Internal clients MUST set the following gRPC metadata:
+	// - x-kt-cid (Company ID)
+	UpdateCommandAcls(ctx context.Context, in *UpdateCommandAclsRequest, opts ...grpc.CallOption) (*UpdateCommandAclsResponse, error)
 }
 
 type deviceConfigurationServiceClient struct {
@@ -156,6 +187,36 @@ func (c *deviceConfigurationServiceClient) RequestDeviceConfigurationFetch(ctx c
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(RequestDeviceConfigurationFetchResponse)
 	err := c.cc.Invoke(ctx, DeviceConfigurationService_RequestDeviceConfigurationFetch_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *deviceConfigurationServiceClient) ExecuteCommand(ctx context.Context, in *ExecuteCommandRequest, opts ...grpc.CallOption) (*ExecuteCommandResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ExecuteCommandResponse)
+	err := c.cc.Invoke(ctx, DeviceConfigurationService_ExecuteCommand_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *deviceConfigurationServiceClient) GetCommandAcls(ctx context.Context, in *GetCommandAclsRequest, opts ...grpc.CallOption) (*GetCommandAclsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetCommandAclsResponse)
+	err := c.cc.Invoke(ctx, DeviceConfigurationService_GetCommandAcls_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *deviceConfigurationServiceClient) UpdateCommandAcls(ctx context.Context, in *UpdateCommandAclsRequest, opts ...grpc.CallOption) (*UpdateCommandAclsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateCommandAclsResponse)
+	err := c.cc.Invoke(ctx, DeviceConfigurationService_UpdateCommandAcls_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -227,6 +288,34 @@ type DeviceConfigurationServiceServer interface {
 	// Internal clients MUST set the following gRPC metadata:
 	// - x-kt-cid (Company ID)
 	RequestDeviceConfigurationFetch(context.Context, *RequestDeviceConfigurationFetchRequest) (*RequestDeviceConfigurationFetchResponse, error)
+	// Request a device execute the given command. This will be performed synchronously.
+	//
+	// This is an INTERNAL API ONLY and is not exposed to external clients.
+	// Callers must sign the request to prove that they are authorized to request command execution.
+	//
+	// Internal clients MUST set the following gRPC metadata:
+	// - x-kt-cid (Company ID)
+	// - x-kt-uid (User ID)
+	ExecuteCommand(context.Context, *ExecuteCommandRequest) (*ExecuteCommandResponse, error)
+	// Get the current command ACLs for the given company.
+	//
+	// External clients MUST set the following gRPC metadata:
+	// - x-ch-auth-email
+	// - x-ch-auth-api-token
+	//
+	// Internal clients MUST set the following gRPC metadata:
+	// - x-kt-cid (Company ID; 0 will return global ACLs)
+	GetCommandAcls(context.Context, *GetCommandAclsRequest) (*GetCommandAclsResponse, error)
+	// Update the current command ACLs for the given company.
+	// The entire ACL set is replaced with the given ACLs.
+	//
+	// External clients MUST set the following gRPC metadata:
+	// - x-ch-auth-email
+	// - x-ch-auth-api-token
+	//
+	// Internal clients MUST set the following gRPC metadata:
+	// - x-kt-cid (Company ID)
+	UpdateCommandAcls(context.Context, *UpdateCommandAclsRequest) (*UpdateCommandAclsResponse, error)
 }
 
 // UnimplementedDeviceConfigurationServiceServer should be embedded to have
@@ -253,6 +342,15 @@ func (UnimplementedDeviceConfigurationServiceServer) ListDeviceConfigurationRevi
 }
 func (UnimplementedDeviceConfigurationServiceServer) RequestDeviceConfigurationFetch(context.Context, *RequestDeviceConfigurationFetchRequest) (*RequestDeviceConfigurationFetchResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RequestDeviceConfigurationFetch not implemented")
+}
+func (UnimplementedDeviceConfigurationServiceServer) ExecuteCommand(context.Context, *ExecuteCommandRequest) (*ExecuteCommandResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ExecuteCommand not implemented")
+}
+func (UnimplementedDeviceConfigurationServiceServer) GetCommandAcls(context.Context, *GetCommandAclsRequest) (*GetCommandAclsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCommandAcls not implemented")
+}
+func (UnimplementedDeviceConfigurationServiceServer) UpdateCommandAcls(context.Context, *UpdateCommandAclsRequest) (*UpdateCommandAclsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateCommandAcls not implemented")
 }
 func (UnimplementedDeviceConfigurationServiceServer) testEmbeddedByValue() {}
 
@@ -382,6 +480,60 @@ func _DeviceConfigurationService_RequestDeviceConfigurationFetch_Handler(srv int
 	return interceptor(ctx, in, info, handler)
 }
 
+func _DeviceConfigurationService_ExecuteCommand_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ExecuteCommandRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DeviceConfigurationServiceServer).ExecuteCommand(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DeviceConfigurationService_ExecuteCommand_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DeviceConfigurationServiceServer).ExecuteCommand(ctx, req.(*ExecuteCommandRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DeviceConfigurationService_GetCommandAcls_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCommandAclsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DeviceConfigurationServiceServer).GetCommandAcls(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DeviceConfigurationService_GetCommandAcls_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DeviceConfigurationServiceServer).GetCommandAcls(ctx, req.(*GetCommandAclsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DeviceConfigurationService_UpdateCommandAcls_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateCommandAclsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DeviceConfigurationServiceServer).UpdateCommandAcls(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DeviceConfigurationService_UpdateCommandAcls_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DeviceConfigurationServiceServer).UpdateCommandAcls(ctx, req.(*UpdateCommandAclsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // DeviceConfigurationService_ServiceDesc is the grpc.ServiceDesc for DeviceConfigurationService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -412,6 +564,18 @@ var DeviceConfigurationService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RequestDeviceConfigurationFetch",
 			Handler:    _DeviceConfigurationService_RequestDeviceConfigurationFetch_Handler,
+		},
+		{
+			MethodName: "ExecuteCommand",
+			Handler:    _DeviceConfigurationService_ExecuteCommand_Handler,
+		},
+		{
+			MethodName: "GetCommandAcls",
+			Handler:    _DeviceConfigurationService_GetCommandAcls_Handler,
+		},
+		{
+			MethodName: "UpdateCommandAcls",
+			Handler:    _DeviceConfigurationService_UpdateCommandAcls_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

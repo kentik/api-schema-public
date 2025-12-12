@@ -625,11 +625,267 @@ func (*RequestDeviceConfigurationFetchResponse) Descriptor() ([]byte, []int) {
 	return file_kentik_deviceconf_v202511_device_configuration_service_proto_rawDescGZIP(), []int{11}
 }
 
+type ExecuteCommandRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	DeviceCommand *DeviceCommand         `protobuf:"bytes,1,opt,name=device_command,json=deviceCommand,proto3" json:"device_command,omitempty"`
+	Signature     *MessageSignature      `protobuf:"bytes,2,opt,name=signature,proto3" json:"signature,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ExecuteCommandRequest) Reset() {
+	*x = ExecuteCommandRequest{}
+	mi := &file_kentik_deviceconf_v202511_device_configuration_service_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ExecuteCommandRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ExecuteCommandRequest) ProtoMessage() {}
+
+func (x *ExecuteCommandRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_deviceconf_v202511_device_configuration_service_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ExecuteCommandRequest.ProtoReflect.Descriptor instead.
+func (*ExecuteCommandRequest) Descriptor() ([]byte, []int) {
+	return file_kentik_deviceconf_v202511_device_configuration_service_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *ExecuteCommandRequest) GetDeviceCommand() *DeviceCommand {
+	if x != nil {
+		return x.DeviceCommand
+	}
+	return nil
+}
+
+func (x *ExecuteCommandRequest) GetSignature() *MessageSignature {
+	if x != nil {
+		return x.Signature
+	}
+	return nil
+}
+
+type ExecuteCommandResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CommandResult *CommandResult         `protobuf:"bytes,1,opt,name=command_result,json=commandResult,proto3" json:"command_result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ExecuteCommandResponse) Reset() {
+	*x = ExecuteCommandResponse{}
+	mi := &file_kentik_deviceconf_v202511_device_configuration_service_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ExecuteCommandResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ExecuteCommandResponse) ProtoMessage() {}
+
+func (x *ExecuteCommandResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_deviceconf_v202511_device_configuration_service_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ExecuteCommandResponse.ProtoReflect.Descriptor instead.
+func (*ExecuteCommandResponse) Descriptor() ([]byte, []int) {
+	return file_kentik_deviceconf_v202511_device_configuration_service_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *ExecuteCommandResponse) GetCommandResult() *CommandResult {
+	if x != nil {
+		return x.CommandResult
+	}
+	return nil
+}
+
+type GetCommandAclsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetCommandAclsRequest) Reset() {
+	*x = GetCommandAclsRequest{}
+	mi := &file_kentik_deviceconf_v202511_device_configuration_service_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCommandAclsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCommandAclsRequest) ProtoMessage() {}
+
+func (x *GetCommandAclsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_deviceconf_v202511_device_configuration_service_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCommandAclsRequest.ProtoReflect.Descriptor instead.
+func (*GetCommandAclsRequest) Descriptor() ([]byte, []int) {
+	return file_kentik_deviceconf_v202511_device_configuration_service_proto_rawDescGZIP(), []int{14}
+}
+
+type GetCommandAclsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Acls          []*CommandAcl          `protobuf:"bytes,1,rep,name=acls,proto3" json:"acls,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetCommandAclsResponse) Reset() {
+	*x = GetCommandAclsResponse{}
+	mi := &file_kentik_deviceconf_v202511_device_configuration_service_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCommandAclsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCommandAclsResponse) ProtoMessage() {}
+
+func (x *GetCommandAclsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_deviceconf_v202511_device_configuration_service_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCommandAclsResponse.ProtoReflect.Descriptor instead.
+func (*GetCommandAclsResponse) Descriptor() ([]byte, []int) {
+	return file_kentik_deviceconf_v202511_device_configuration_service_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *GetCommandAclsResponse) GetAcls() []*CommandAcl {
+	if x != nil {
+		return x.Acls
+	}
+	return nil
+}
+
+type UpdateCommandAclsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Acls          []*CommandAcl          `protobuf:"bytes,1,rep,name=acls,proto3" json:"acls,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateCommandAclsRequest) Reset() {
+	*x = UpdateCommandAclsRequest{}
+	mi := &file_kentik_deviceconf_v202511_device_configuration_service_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateCommandAclsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateCommandAclsRequest) ProtoMessage() {}
+
+func (x *UpdateCommandAclsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_deviceconf_v202511_device_configuration_service_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateCommandAclsRequest.ProtoReflect.Descriptor instead.
+func (*UpdateCommandAclsRequest) Descriptor() ([]byte, []int) {
+	return file_kentik_deviceconf_v202511_device_configuration_service_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *UpdateCommandAclsRequest) GetAcls() []*CommandAcl {
+	if x != nil {
+		return x.Acls
+	}
+	return nil
+}
+
+type UpdateCommandAclsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateCommandAclsResponse) Reset() {
+	*x = UpdateCommandAclsResponse{}
+	mi := &file_kentik_deviceconf_v202511_device_configuration_service_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateCommandAclsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateCommandAclsResponse) ProtoMessage() {}
+
+func (x *UpdateCommandAclsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_deviceconf_v202511_device_configuration_service_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateCommandAclsResponse.ProtoReflect.Descriptor instead.
+func (*UpdateCommandAclsResponse) Descriptor() ([]byte, []int) {
+	return file_kentik_deviceconf_v202511_device_configuration_service_proto_rawDescGZIP(), []int{17}
+}
+
 var File_kentik_deviceconf_v202511_device_configuration_service_proto protoreflect.FileDescriptor
 
 const file_kentik_deviceconf_v202511_device_configuration_service_proto_rawDesc = "" +
 	"\n" +
-	"<kentik/deviceconf/v202511/device_configuration_service.proto\x12\x19kentik.deviceconf.v202511\x1a\x1fgoogle/protobuf/timestamp.proto\x1a%kentik/core/v202303/annotations.proto\x1a&kentik/deviceconf/v202511/device.proto\x1a&kentik/deviceconf/v202511/config.proto\"\x1d\n" +
+	"<kentik/deviceconf/v202511/device_configuration_service.proto\x12\x19kentik.deviceconf.v202511\x1a\x1fgoogle/protobuf/timestamp.proto\x1a%kentik/core/v202303/annotations.proto\x1a'kentik/deviceconf/v202511/command.proto\x1a&kentik/deviceconf/v202511/config.proto\x1a&kentik/deviceconf/v202511/device.proto\x1a)kentik/deviceconf/v202511/signature.proto\"\x1d\n" +
 	"\x1bGetDeviceAssignmentsRequest\"[\n" +
 	"\x1cGetDeviceAssignmentsResponse\x12;\n" +
 	"\adevices\x18\x01 \x03(\v2!.kentik.deviceconf.v202511.DeviceR\adevices\"_\n" +
@@ -666,14 +922,28 @@ const file_kentik_deviceconf_v202511_device_configuration_service_proto_rawDesc 
 	"\trevisions\x18\x01 \x03(\v2#.kentik.deviceconf.v202511.RevisionR\trevisions\"E\n" +
 	"&RequestDeviceConfigurationFetchRequest\x12\x1b\n" +
 	"\tdevice_id\x18\x01 \x01(\tR\bdeviceId\")\n" +
-	"'RequestDeviceConfigurationFetchResponse2\xe7\b\n" +
+	"'RequestDeviceConfigurationFetchResponse\"\xb3\x01\n" +
+	"\x15ExecuteCommandRequest\x12O\n" +
+	"\x0edevice_command\x18\x01 \x01(\v2(.kentik.deviceconf.v202511.DeviceCommandR\rdeviceCommand\x12I\n" +
+	"\tsignature\x18\x02 \x01(\v2+.kentik.deviceconf.v202511.MessageSignatureR\tsignature\"i\n" +
+	"\x16ExecuteCommandResponse\x12O\n" +
+	"\x0ecommand_result\x18\x01 \x01(\v2(.kentik.deviceconf.v202511.CommandResultR\rcommandResult\"\x17\n" +
+	"\x15GetCommandAclsRequest\"S\n" +
+	"\x16GetCommandAclsResponse\x129\n" +
+	"\x04acls\x18\x01 \x03(\v2%.kentik.deviceconf.v202511.CommandAclR\x04acls\"U\n" +
+	"\x18UpdateCommandAclsRequest\x129\n" +
+	"\x04acls\x18\x01 \x03(\v2%.kentik.deviceconf.v202511.CommandAclR\x04acls\"\x1b\n" +
+	"\x19UpdateCommandAclsResponse2\x9d\f\n" +
 	"\x1aDeviceConfigurationService\x12\x9c\x01\n" +
 	"\x14GetDeviceAssignments\x126.kentik.deviceconf.v202511.GetDeviceAssignmentsRequest\x1a7.kentik.deviceconf.v202511.GetDeviceAssignmentsResponse\"\x13\xf2\xd7\x02\x0fdeviceconf:read\x12\xac\x01\n" +
 	"\x19UpdateDeviceConfiguration\x12;.kentik.deviceconf.v202511.UpdateDeviceConfigurationRequest\x1a<.kentik.deviceconf.v202511.UpdateDeviceConfigurationResponse\"\x14\xf2\xd7\x02\x10deviceconf:write\x12\xa2\x01\n" +
 	"\x16GetDeviceConfiguration\x128.kentik.deviceconf.v202511.GetDeviceConfigurationRequest\x1a9.kentik.deviceconf.v202511.GetDeviceConfigurationResponse\"\x13\xf2\xd7\x02\x0fdeviceconf:read\x12\xb7\x01\n" +
 	"\x1dGetLatestDeviceConfigurations\x12?.kentik.deviceconf.v202511.GetLatestDeviceConfigurationsRequest\x1a@.kentik.deviceconf.v202511.GetLatestDeviceConfigurationsResponse\"\x13\xf2\xd7\x02\x0fdeviceconf:read\x12\xc0\x01\n" +
 	" ListDeviceConfigurationRevisions\x12B.kentik.deviceconf.v202511.ListDeviceConfigurationRevisionsRequest\x1aC.kentik.deviceconf.v202511.ListDeviceConfigurationRevisionsResponse\"\x13\xf2\xd7\x02\x0fdeviceconf:read\x12\xbe\x01\n" +
-	"\x1fRequestDeviceConfigurationFetch\x12A.kentik.deviceconf.v202511.RequestDeviceConfigurationFetchRequest\x1aB.kentik.deviceconf.v202511.RequestDeviceConfigurationFetchResponse\"\x14\xf2\xd7\x02\x10deviceconf:write\x1a\x18\xea\xd7\x02\x10deviceconf:admin\x90\xd8\x02\x03BQZOgithub.com/kentik/api-schema-public/gen/go/kentik/deviceconf/v202511;deviceconfb\x06proto3"
+	"\x1fRequestDeviceConfigurationFetch\x12A.kentik.deviceconf.v202511.RequestDeviceConfigurationFetchRequest\x1aB.kentik.deviceconf.v202511.RequestDeviceConfigurationFetchResponse\"\x14\xf2\xd7\x02\x10deviceconf:write\x12\x8f\x01\n" +
+	"\x0eExecuteCommand\x120.kentik.deviceconf.v202511.ExecuteCommandRequest\x1a1.kentik.deviceconf.v202511.ExecuteCommandResponse\"\x18\xf2\xd7\x02\x10deviceconf:write\x98\xd8\x02\x01\x12\x8a\x01\n" +
+	"\x0eGetCommandAcls\x120.kentik.deviceconf.v202511.GetCommandAclsRequest\x1a1.kentik.deviceconf.v202511.GetCommandAclsResponse\"\x13\xf2\xd7\x02\x0fdeviceconf:read\x12\x94\x01\n" +
+	"\x11UpdateCommandAcls\x123.kentik.deviceconf.v202511.UpdateCommandAclsRequest\x1a4.kentik.deviceconf.v202511.UpdateCommandAclsResponse\"\x14\xf2\xd7\x02\x10deviceconf:write\x1a\x18\xea\xd7\x02\x10deviceconf:admin\x90\xd8\x02\x03BQZOgithub.com/kentik/api-schema-public/gen/go/kentik/deviceconf/v202511;deviceconfb\x06proto3"
 
 var (
 	file_kentik_deviceconf_v202511_device_configuration_service_proto_rawDescOnce sync.Once
@@ -687,7 +957,7 @@ func file_kentik_deviceconf_v202511_device_configuration_service_proto_rawDescGZ
 	return file_kentik_deviceconf_v202511_device_configuration_service_proto_rawDescData
 }
 
-var file_kentik_deviceconf_v202511_device_configuration_service_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
+var file_kentik_deviceconf_v202511_device_configuration_service_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
 var file_kentik_deviceconf_v202511_device_configuration_service_proto_goTypes = []any{
 	(*GetDeviceAssignmentsRequest)(nil),              // 0: kentik.deviceconf.v202511.GetDeviceAssignmentsRequest
 	(*GetDeviceAssignmentsResponse)(nil),             // 1: kentik.deviceconf.v202511.GetDeviceAssignmentsResponse
@@ -701,39 +971,60 @@ var file_kentik_deviceconf_v202511_device_configuration_service_proto_goTypes = 
 	(*ListDeviceConfigurationRevisionsResponse)(nil), // 9: kentik.deviceconf.v202511.ListDeviceConfigurationRevisionsResponse
 	(*RequestDeviceConfigurationFetchRequest)(nil),   // 10: kentik.deviceconf.v202511.RequestDeviceConfigurationFetchRequest
 	(*RequestDeviceConfigurationFetchResponse)(nil),  // 11: kentik.deviceconf.v202511.RequestDeviceConfigurationFetchResponse
-	nil,                           // 12: kentik.deviceconf.v202511.GetLatestDeviceConfigurationsResponse.ConfigsEntry
-	(*Device)(nil),                // 13: kentik.deviceconf.v202511.Device
-	(*Snapshot)(nil),              // 14: kentik.deviceconf.v202511.Snapshot
-	(*timestamppb.Timestamp)(nil), // 15: google.protobuf.Timestamp
-	(*Revision)(nil),              // 16: kentik.deviceconf.v202511.Revision
+	(*ExecuteCommandRequest)(nil),                    // 12: kentik.deviceconf.v202511.ExecuteCommandRequest
+	(*ExecuteCommandResponse)(nil),                   // 13: kentik.deviceconf.v202511.ExecuteCommandResponse
+	(*GetCommandAclsRequest)(nil),                    // 14: kentik.deviceconf.v202511.GetCommandAclsRequest
+	(*GetCommandAclsResponse)(nil),                   // 15: kentik.deviceconf.v202511.GetCommandAclsResponse
+	(*UpdateCommandAclsRequest)(nil),                 // 16: kentik.deviceconf.v202511.UpdateCommandAclsRequest
+	(*UpdateCommandAclsResponse)(nil),                // 17: kentik.deviceconf.v202511.UpdateCommandAclsResponse
+	nil,                                              // 18: kentik.deviceconf.v202511.GetLatestDeviceConfigurationsResponse.ConfigsEntry
+	(*Device)(nil),                                   // 19: kentik.deviceconf.v202511.Device
+	(*Snapshot)(nil),                                 // 20: kentik.deviceconf.v202511.Snapshot
+	(*timestamppb.Timestamp)(nil),                    // 21: google.protobuf.Timestamp
+	(*Revision)(nil),                                 // 22: kentik.deviceconf.v202511.Revision
+	(*DeviceCommand)(nil),                            // 23: kentik.deviceconf.v202511.DeviceCommand
+	(*MessageSignature)(nil),                         // 24: kentik.deviceconf.v202511.MessageSignature
+	(*CommandResult)(nil),                            // 25: kentik.deviceconf.v202511.CommandResult
+	(*CommandAcl)(nil),                               // 26: kentik.deviceconf.v202511.CommandAcl
 }
 var file_kentik_deviceconf_v202511_device_configuration_service_proto_depIdxs = []int32{
-	13, // 0: kentik.deviceconf.v202511.GetDeviceAssignmentsResponse.devices:type_name -> kentik.deviceconf.v202511.Device
-	14, // 1: kentik.deviceconf.v202511.UpdateDeviceConfigurationRequest.config:type_name -> kentik.deviceconf.v202511.Snapshot
-	15, // 2: kentik.deviceconf.v202511.GetDeviceConfigurationRequest.fetch_time:type_name -> google.protobuf.Timestamp
-	14, // 3: kentik.deviceconf.v202511.GetDeviceConfigurationResponse.config:type_name -> kentik.deviceconf.v202511.Snapshot
-	12, // 4: kentik.deviceconf.v202511.GetLatestDeviceConfigurationsResponse.configs:type_name -> kentik.deviceconf.v202511.GetLatestDeviceConfigurationsResponse.ConfigsEntry
-	15, // 5: kentik.deviceconf.v202511.ListDeviceConfigurationRevisionsRequest.from_time:type_name -> google.protobuf.Timestamp
-	15, // 6: kentik.deviceconf.v202511.ListDeviceConfigurationRevisionsRequest.until_time:type_name -> google.protobuf.Timestamp
-	16, // 7: kentik.deviceconf.v202511.ListDeviceConfigurationRevisionsResponse.revisions:type_name -> kentik.deviceconf.v202511.Revision
-	14, // 8: kentik.deviceconf.v202511.GetLatestDeviceConfigurationsResponse.ConfigsEntry.value:type_name -> kentik.deviceconf.v202511.Snapshot
-	0,  // 9: kentik.deviceconf.v202511.DeviceConfigurationService.GetDeviceAssignments:input_type -> kentik.deviceconf.v202511.GetDeviceAssignmentsRequest
-	2,  // 10: kentik.deviceconf.v202511.DeviceConfigurationService.UpdateDeviceConfiguration:input_type -> kentik.deviceconf.v202511.UpdateDeviceConfigurationRequest
-	4,  // 11: kentik.deviceconf.v202511.DeviceConfigurationService.GetDeviceConfiguration:input_type -> kentik.deviceconf.v202511.GetDeviceConfigurationRequest
-	6,  // 12: kentik.deviceconf.v202511.DeviceConfigurationService.GetLatestDeviceConfigurations:input_type -> kentik.deviceconf.v202511.GetLatestDeviceConfigurationsRequest
-	8,  // 13: kentik.deviceconf.v202511.DeviceConfigurationService.ListDeviceConfigurationRevisions:input_type -> kentik.deviceconf.v202511.ListDeviceConfigurationRevisionsRequest
-	10, // 14: kentik.deviceconf.v202511.DeviceConfigurationService.RequestDeviceConfigurationFetch:input_type -> kentik.deviceconf.v202511.RequestDeviceConfigurationFetchRequest
-	1,  // 15: kentik.deviceconf.v202511.DeviceConfigurationService.GetDeviceAssignments:output_type -> kentik.deviceconf.v202511.GetDeviceAssignmentsResponse
-	3,  // 16: kentik.deviceconf.v202511.DeviceConfigurationService.UpdateDeviceConfiguration:output_type -> kentik.deviceconf.v202511.UpdateDeviceConfigurationResponse
-	5,  // 17: kentik.deviceconf.v202511.DeviceConfigurationService.GetDeviceConfiguration:output_type -> kentik.deviceconf.v202511.GetDeviceConfigurationResponse
-	7,  // 18: kentik.deviceconf.v202511.DeviceConfigurationService.GetLatestDeviceConfigurations:output_type -> kentik.deviceconf.v202511.GetLatestDeviceConfigurationsResponse
-	9,  // 19: kentik.deviceconf.v202511.DeviceConfigurationService.ListDeviceConfigurationRevisions:output_type -> kentik.deviceconf.v202511.ListDeviceConfigurationRevisionsResponse
-	11, // 20: kentik.deviceconf.v202511.DeviceConfigurationService.RequestDeviceConfigurationFetch:output_type -> kentik.deviceconf.v202511.RequestDeviceConfigurationFetchResponse
-	15, // [15:21] is the sub-list for method output_type
-	9,  // [9:15] is the sub-list for method input_type
-	9,  // [9:9] is the sub-list for extension type_name
-	9,  // [9:9] is the sub-list for extension extendee
-	0,  // [0:9] is the sub-list for field type_name
+	19, // 0: kentik.deviceconf.v202511.GetDeviceAssignmentsResponse.devices:type_name -> kentik.deviceconf.v202511.Device
+	20, // 1: kentik.deviceconf.v202511.UpdateDeviceConfigurationRequest.config:type_name -> kentik.deviceconf.v202511.Snapshot
+	21, // 2: kentik.deviceconf.v202511.GetDeviceConfigurationRequest.fetch_time:type_name -> google.protobuf.Timestamp
+	20, // 3: kentik.deviceconf.v202511.GetDeviceConfigurationResponse.config:type_name -> kentik.deviceconf.v202511.Snapshot
+	18, // 4: kentik.deviceconf.v202511.GetLatestDeviceConfigurationsResponse.configs:type_name -> kentik.deviceconf.v202511.GetLatestDeviceConfigurationsResponse.ConfigsEntry
+	21, // 5: kentik.deviceconf.v202511.ListDeviceConfigurationRevisionsRequest.from_time:type_name -> google.protobuf.Timestamp
+	21, // 6: kentik.deviceconf.v202511.ListDeviceConfigurationRevisionsRequest.until_time:type_name -> google.protobuf.Timestamp
+	22, // 7: kentik.deviceconf.v202511.ListDeviceConfigurationRevisionsResponse.revisions:type_name -> kentik.deviceconf.v202511.Revision
+	23, // 8: kentik.deviceconf.v202511.ExecuteCommandRequest.device_command:type_name -> kentik.deviceconf.v202511.DeviceCommand
+	24, // 9: kentik.deviceconf.v202511.ExecuteCommandRequest.signature:type_name -> kentik.deviceconf.v202511.MessageSignature
+	25, // 10: kentik.deviceconf.v202511.ExecuteCommandResponse.command_result:type_name -> kentik.deviceconf.v202511.CommandResult
+	26, // 11: kentik.deviceconf.v202511.GetCommandAclsResponse.acls:type_name -> kentik.deviceconf.v202511.CommandAcl
+	26, // 12: kentik.deviceconf.v202511.UpdateCommandAclsRequest.acls:type_name -> kentik.deviceconf.v202511.CommandAcl
+	20, // 13: kentik.deviceconf.v202511.GetLatestDeviceConfigurationsResponse.ConfigsEntry.value:type_name -> kentik.deviceconf.v202511.Snapshot
+	0,  // 14: kentik.deviceconf.v202511.DeviceConfigurationService.GetDeviceAssignments:input_type -> kentik.deviceconf.v202511.GetDeviceAssignmentsRequest
+	2,  // 15: kentik.deviceconf.v202511.DeviceConfigurationService.UpdateDeviceConfiguration:input_type -> kentik.deviceconf.v202511.UpdateDeviceConfigurationRequest
+	4,  // 16: kentik.deviceconf.v202511.DeviceConfigurationService.GetDeviceConfiguration:input_type -> kentik.deviceconf.v202511.GetDeviceConfigurationRequest
+	6,  // 17: kentik.deviceconf.v202511.DeviceConfigurationService.GetLatestDeviceConfigurations:input_type -> kentik.deviceconf.v202511.GetLatestDeviceConfigurationsRequest
+	8,  // 18: kentik.deviceconf.v202511.DeviceConfigurationService.ListDeviceConfigurationRevisions:input_type -> kentik.deviceconf.v202511.ListDeviceConfigurationRevisionsRequest
+	10, // 19: kentik.deviceconf.v202511.DeviceConfigurationService.RequestDeviceConfigurationFetch:input_type -> kentik.deviceconf.v202511.RequestDeviceConfigurationFetchRequest
+	12, // 20: kentik.deviceconf.v202511.DeviceConfigurationService.ExecuteCommand:input_type -> kentik.deviceconf.v202511.ExecuteCommandRequest
+	14, // 21: kentik.deviceconf.v202511.DeviceConfigurationService.GetCommandAcls:input_type -> kentik.deviceconf.v202511.GetCommandAclsRequest
+	16, // 22: kentik.deviceconf.v202511.DeviceConfigurationService.UpdateCommandAcls:input_type -> kentik.deviceconf.v202511.UpdateCommandAclsRequest
+	1,  // 23: kentik.deviceconf.v202511.DeviceConfigurationService.GetDeviceAssignments:output_type -> kentik.deviceconf.v202511.GetDeviceAssignmentsResponse
+	3,  // 24: kentik.deviceconf.v202511.DeviceConfigurationService.UpdateDeviceConfiguration:output_type -> kentik.deviceconf.v202511.UpdateDeviceConfigurationResponse
+	5,  // 25: kentik.deviceconf.v202511.DeviceConfigurationService.GetDeviceConfiguration:output_type -> kentik.deviceconf.v202511.GetDeviceConfigurationResponse
+	7,  // 26: kentik.deviceconf.v202511.DeviceConfigurationService.GetLatestDeviceConfigurations:output_type -> kentik.deviceconf.v202511.GetLatestDeviceConfigurationsResponse
+	9,  // 27: kentik.deviceconf.v202511.DeviceConfigurationService.ListDeviceConfigurationRevisions:output_type -> kentik.deviceconf.v202511.ListDeviceConfigurationRevisionsResponse
+	11, // 28: kentik.deviceconf.v202511.DeviceConfigurationService.RequestDeviceConfigurationFetch:output_type -> kentik.deviceconf.v202511.RequestDeviceConfigurationFetchResponse
+	13, // 29: kentik.deviceconf.v202511.DeviceConfigurationService.ExecuteCommand:output_type -> kentik.deviceconf.v202511.ExecuteCommandResponse
+	15, // 30: kentik.deviceconf.v202511.DeviceConfigurationService.GetCommandAcls:output_type -> kentik.deviceconf.v202511.GetCommandAclsResponse
+	17, // 31: kentik.deviceconf.v202511.DeviceConfigurationService.UpdateCommandAcls:output_type -> kentik.deviceconf.v202511.UpdateCommandAclsResponse
+	23, // [23:32] is the sub-list for method output_type
+	14, // [14:23] is the sub-list for method input_type
+	14, // [14:14] is the sub-list for extension type_name
+	14, // [14:14] is the sub-list for extension extendee
+	0,  // [0:14] is the sub-list for field type_name
 }
 
 func init() { file_kentik_deviceconf_v202511_device_configuration_service_proto_init() }
@@ -741,15 +1032,17 @@ func file_kentik_deviceconf_v202511_device_configuration_service_proto_init() {
 	if File_kentik_deviceconf_v202511_device_configuration_service_proto != nil {
 		return
 	}
-	file_kentik_deviceconf_v202511_device_proto_init()
+	file_kentik_deviceconf_v202511_command_proto_init()
 	file_kentik_deviceconf_v202511_config_proto_init()
+	file_kentik_deviceconf_v202511_device_proto_init()
+	file_kentik_deviceconf_v202511_signature_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_kentik_deviceconf_v202511_device_configuration_service_proto_rawDesc), len(file_kentik_deviceconf_v202511_device_configuration_service_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   13,
+			NumMessages:   19,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
