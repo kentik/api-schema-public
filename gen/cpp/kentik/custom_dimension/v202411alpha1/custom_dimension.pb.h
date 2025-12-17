@@ -450,6 +450,7 @@ class GetPopulatorRequest final : public ::google::protobuf::Message
   enum : int {
     kCustomDimensionIdFieldNumber = 1,
     kPopulatorIdFieldNumber = 2,
+    kFieldLimitFieldNumber = 3,
   };
   // string custom_dimension_id = 1 [json_name = "customDimensionId"];
   void clear_custom_dimension_id() ;
@@ -483,12 +484,22 @@ class GetPopulatorRequest final : public ::google::protobuf::Message
   std::string* _internal_mutable_populator_id();
 
   public:
+  // uint32 field_limit = 3 [json_name = "fieldLimit"];
+  void clear_field_limit() ;
+  ::uint32_t field_limit() const;
+  void set_field_limit(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_field_limit() const;
+  void _internal_set_field_limit(::uint32_t value);
+
+  public:
   // @@protoc_insertion_point(class_scope:kentik.custom_dimension.v202411alpha1.GetPopulatorRequest)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      1, 2, 0,
+      2, 3, 0,
       97, 2>
       _table_;
 
@@ -508,6 +519,7 @@ class GetPopulatorRequest final : public ::google::protobuf::Message
                           const GetPopulatorRequest& from_msg);
     ::google::protobuf::internal::ArenaStringPtr custom_dimension_id_;
     ::google::protobuf::internal::ArenaStringPtr populator_id_;
+    ::uint32_t field_limit_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -8321,6 +8333,28 @@ inline void GetPopulatorRequest::set_allocated_populator_id(std::string* value) 
     _impl_.populator_id_.Set("", GetArena());
   }
   // @@protoc_insertion_point(field_set_allocated:kentik.custom_dimension.v202411alpha1.GetPopulatorRequest.populator_id)
+}
+
+// uint32 field_limit = 3 [json_name = "fieldLimit"];
+inline void GetPopulatorRequest::clear_field_limit() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.field_limit_ = 0u;
+}
+inline ::uint32_t GetPopulatorRequest::field_limit() const {
+  // @@protoc_insertion_point(field_get:kentik.custom_dimension.v202411alpha1.GetPopulatorRequest.field_limit)
+  return _internal_field_limit();
+}
+inline void GetPopulatorRequest::set_field_limit(::uint32_t value) {
+  _internal_set_field_limit(value);
+  // @@protoc_insertion_point(field_set:kentik.custom_dimension.v202411alpha1.GetPopulatorRequest.field_limit)
+}
+inline ::uint32_t GetPopulatorRequest::_internal_field_limit() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.field_limit_;
+}
+inline void GetPopulatorRequest::_internal_set_field_limit(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.field_limit_ = value;
 }
 
 // -------------------------------------------------------------------

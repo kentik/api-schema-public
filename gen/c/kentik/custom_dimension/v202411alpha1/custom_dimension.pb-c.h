@@ -262,10 +262,11 @@ struct  Kentik__CustomDimension__V202411alpha1__GetPopulatorRequest
   ProtobufCMessage base;
   char *custom_dimension_id;
   char *populator_id;
+  uint32_t field_limit;
 };
 #define KENTIK__CUSTOM_DIMENSION__V202411ALPHA1__GET_POPULATOR_REQUEST__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__custom_dimension__v202411alpha1__get_populator_request__descriptor) \
-    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0 }
 
 
 struct  Kentik__CustomDimension__V202411alpha1__GetPopulatorResponse

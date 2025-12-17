@@ -54,6 +54,7 @@ inline constexpr GetPopulatorRequest::Impl_::Impl_(
         populator_id_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
+        field_limit_{0u},
         _cached_size_{0} {}
 
 template <typename>
@@ -933,6 +934,7 @@ const ::uint32_t
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::GetPopulatorRequest, _impl_.custom_dimension_id_),
         PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::GetPopulatorRequest, _impl_.populator_id_),
+        PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::GetPopulatorRequest, _impl_.field_limit_),
         PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::GetPopulatorResponse, _impl_._has_bits_),
         PROTOBUF_FIELD_OFFSET(::kentik::custom_dimension::v202411alpha1::GetPopulatorResponse, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -1063,16 +1065,16 @@ static const ::_pbi::MigrationSchema
         {185, -1, -1, sizeof(::kentik::custom_dimension::v202411alpha1::DeleteCustomDimensionRequest)},
         {194, -1, -1, sizeof(::kentik::custom_dimension::v202411alpha1::DeleteCustomDimensionResponse)},
         {202, -1, -1, sizeof(::kentik::custom_dimension::v202411alpha1::GetPopulatorRequest)},
-        {212, 221, -1, sizeof(::kentik::custom_dimension::v202411alpha1::GetPopulatorResponse)},
-        {222, -1, -1, sizeof(::kentik::custom_dimension::v202411alpha1::GetPopulatorFieldRequest)},
-        {235, 245, -1, sizeof(::kentik::custom_dimension::v202411alpha1::GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse)},
-        {247, -1, -1, sizeof(::kentik::custom_dimension::v202411alpha1::GetPopulatorFieldResponse)},
-        {259, 269, -1, sizeof(::kentik::custom_dimension::v202411alpha1::CreatePopulatorRequest)},
-        {271, 280, -1, sizeof(::kentik::custom_dimension::v202411alpha1::CreatePopulatorResponse)},
-        {281, 292, -1, sizeof(::kentik::custom_dimension::v202411alpha1::UpdatePopulatorRequest)},
-        {295, 304, -1, sizeof(::kentik::custom_dimension::v202411alpha1::UpdatePopulatorResponse)},
-        {305, -1, -1, sizeof(::kentik::custom_dimension::v202411alpha1::DeletePopulatorRequest)},
-        {315, -1, -1, sizeof(::kentik::custom_dimension::v202411alpha1::DeletePopulatorResponse)},
+        {213, 222, -1, sizeof(::kentik::custom_dimension::v202411alpha1::GetPopulatorResponse)},
+        {223, -1, -1, sizeof(::kentik::custom_dimension::v202411alpha1::GetPopulatorFieldRequest)},
+        {236, 246, -1, sizeof(::kentik::custom_dimension::v202411alpha1::GetPopulatorFieldResponse_ExtendedFieldsEntry_DoNotUse)},
+        {248, -1, -1, sizeof(::kentik::custom_dimension::v202411alpha1::GetPopulatorFieldResponse)},
+        {260, 270, -1, sizeof(::kentik::custom_dimension::v202411alpha1::CreatePopulatorRequest)},
+        {272, 281, -1, sizeof(::kentik::custom_dimension::v202411alpha1::CreatePopulatorResponse)},
+        {282, 293, -1, sizeof(::kentik::custom_dimension::v202411alpha1::UpdatePopulatorRequest)},
+        {296, 305, -1, sizeof(::kentik::custom_dimension::v202411alpha1::UpdatePopulatorResponse)},
+        {306, -1, -1, sizeof(::kentik::custom_dimension::v202411alpha1::DeletePopulatorRequest)},
+        {316, -1, -1, sizeof(::kentik::custom_dimension::v202411alpha1::DeletePopulatorResponse)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::custom_dimension::v202411alpha1::_CustomDimension_default_instance_._instance,
@@ -1292,154 +1294,155 @@ const char descriptor_table_protodef_kentik_2fcustom_5fdimension_2fv202411alpha1
     "ha1.CustomDimensionR\tdimension\"N\n\034Delete"
     "CustomDimensionRequest\022.\n\023custom_dimensi"
     "on_id\030\001 \001(\tR\021customDimensionId\"\037\n\035Delete"
-    "CustomDimensionResponse\"h\n\023GetPopulatorR"
-    "equest\022.\n\023custom_dimension_id\030\001 \001(\tR\021cus"
-    "tomDimensionId\022!\n\014populator_id\030\002 \001(\tR\013po"
-    "pulatorId\"f\n\024GetPopulatorResponse\022N\n\tpop"
-    "ulator\030\001 \001(\01320.kentik.custom_dimension.v"
-    "202411alpha1.PopulatorR\tpopulator\"\272\001\n\030Ge"
-    "tPopulatorFieldRequest\022.\n\023custom_dimensi"
+    "CustomDimensionResponse\"\211\001\n\023GetPopulator"
+    "Request\022.\n\023custom_dimension_id\030\001 \001(\tR\021cu"
+    "stomDimensionId\022!\n\014populator_id\030\002 \001(\tR\013p"
+    "opulatorId\022\037\n\013field_limit\030\003 \001(\rR\nfieldLi"
+    "mit\"f\n\024GetPopulatorResponse\022N\n\tpopulator"
+    "\030\001 \001(\01320.kentik.custom_dimension.v202411"
+    "alpha1.PopulatorR\tpopulator\"\272\001\n\030GetPopul"
+    "atorFieldRequest\022.\n\023custom_dimension_id\030"
+    "\001 \001(\tR\021customDimensionId\022!\n\014populator_id"
+    "\030\002 \001(\tR\013populatorId\022\035\n\nfield_name\030\003 \001(\tR"
+    "\tfieldName\022\026\n\006offset\030\004 \001(\005R\006offset\022\024\n\005li"
+    "mit\030\005 \001(\005R\005limit\"\342\002\n\031GetPopulatorFieldRe"
+    "sponse\022\037\n\013total_count\030\001 \001(\rR\ntotalCount\022"
+    "\026\n\006offset\030\002 \001(\rR\006offset\022\024\n\005limit\030\003 \001(\rR\005"
+    "limit\022}\n\017extended_fields\030\004 \003(\0132T.kentik."
+    "custom_dimension.v202411alpha1.GetPopula"
+    "torFieldResponse.ExtendedFieldsEntryR\016ex"
+    "tendedFields\032w\n\023ExtendedFieldsEntry\022\020\n\003k"
+    "ey\030\001 \001(\tR\003key\022J\n\005value\030\002 \001(\01324.kentik.cu"
+    "stom_dimension.v202411alpha1.ExtendedFie"
+    "ldR\005value:\0028\001\"\230\001\n\026CreatePopulatorRequest"
+    "\022.\n\023custom_dimension_id\030\001 \001(\tR\021customDim"
+    "ensionId\022N\n\tpopulator\030\002 \001(\01320.kentik.cus"
+    "tom_dimension.v202411alpha1.PopulatorR\tp"
+    "opulator\"i\n\027CreatePopulatorResponse\022N\n\tp"
+    "opulator\030\001 \001(\01320.kentik.custom_dimension"
+    ".v202411alpha1.PopulatorR\tpopulator\"\273\001\n\026"
+    "UpdatePopulatorRequest\022.\n\023custom_dimensi"
     "on_id\030\001 \001(\tR\021customDimensionId\022!\n\014popula"
-    "tor_id\030\002 \001(\tR\013populatorId\022\035\n\nfield_name\030"
-    "\003 \001(\tR\tfieldName\022\026\n\006offset\030\004 \001(\005R\006offset"
-    "\022\024\n\005limit\030\005 \001(\005R\005limit\"\342\002\n\031GetPopulatorF"
-    "ieldResponse\022\037\n\013total_count\030\001 \001(\rR\ntotal"
-    "Count\022\026\n\006offset\030\002 \001(\rR\006offset\022\024\n\005limit\030\003"
-    " \001(\rR\005limit\022}\n\017extended_fields\030\004 \003(\0132T.k"
+    "tor_id\030\002 \001(\tR\013populatorId\022N\n\tpopulator\030\003"
+    " \001(\01320.kentik.custom_dimension.v202411al"
+    "pha1.PopulatorR\tpopulator\"i\n\027UpdatePopul"
+    "atorResponse\022N\n\tpopulator\030\001 \001(\01320.kentik"
+    ".custom_dimension.v202411alpha1.Populato"
+    "rR\tpopulator\"k\n\026DeletePopulatorRequest\022."
+    "\n\023custom_dimension_id\030\001 \001(\tR\021customDimen"
+    "sionId\022!\n\014populator_id\030\002 \001(\tR\013populatorI"
+    "d\"\031\n\027DeletePopulatorResponse2\340\035\n\026CustomD"
+    "imensionService\022\207\003\n\024ListCustomDimensions"
+    "\022B.kentik.custom_dimension.v202411alpha1"
+    ".ListCustomDimensionsRequest\032C.kentik.cu"
+    "stom_dimension.v202411alpha1.ListCustomD"
+    "imensionsResponse\"\345\001\222A\240\001\022\026List Custom Di"
+    "mensions\032pReturns an array of custom dim"
+    "ension objects that each contain informa"
+    "tion about an individual custom dimensio"
+    "n.*\024ListCustomDimensions\362\327\002\025custom_dimen"
+    "sion:read\202\323\344\223\002\"\022 /custom_dimensions/v202"
+    "411alpha1\022\222\003\n\026GetCustomDimensionInfo\022D.k"
     "entik.custom_dimension.v202411alpha1.Get"
-    "PopulatorFieldResponse.ExtendedFieldsEnt"
-    "ryR\016extendedFields\032w\n\023ExtendedFieldsEntr"
-    "y\022\020\n\003key\030\001 \001(\tR\003key\022J\n\005value\030\002 \001(\01324.ken"
-    "tik.custom_dimension.v202411alpha1.Exten"
-    "dedFieldR\005value:\0028\001\"\230\001\n\026CreatePopulatorR"
-    "equest\022.\n\023custom_dimension_id\030\001 \001(\tR\021cus"
-    "tomDimensionId\022N\n\tpopulator\030\002 \001(\01320.kent"
-    "ik.custom_dimension.v202411alpha1.Popula"
-    "torR\tpopulator\"i\n\027CreatePopulatorRespons"
-    "e\022N\n\tpopulator\030\001 \001(\01320.kentik.custom_dim"
-    "ension.v202411alpha1.PopulatorR\tpopulato"
-    "r\"\273\001\n\026UpdatePopulatorRequest\022.\n\023custom_d"
-    "imension_id\030\001 \001(\tR\021customDimensionId\022!\n\014"
-    "populator_id\030\002 \001(\tR\013populatorId\022N\n\tpopul"
-    "ator\030\003 \001(\01320.kentik.custom_dimension.v20"
-    "2411alpha1.PopulatorR\tpopulator\"i\n\027Updat"
-    "ePopulatorResponse\022N\n\tpopulator\030\001 \001(\01320."
-    "kentik.custom_dimension.v202411alpha1.Po"
-    "pulatorR\tpopulator\"k\n\026DeletePopulatorReq"
-    "uest\022.\n\023custom_dimension_id\030\001 \001(\tR\021custo"
-    "mDimensionId\022!\n\014populator_id\030\002 \001(\tR\013popu"
-    "latorId\"\031\n\027DeletePopulatorResponse2\340\035\n\026C"
-    "ustomDimensionService\022\207\003\n\024ListCustomDime"
-    "nsions\022B.kentik.custom_dimension.v202411"
-    "alpha1.ListCustomDimensionsRequest\032C.ken"
-    "tik.custom_dimension.v202411alpha1.ListC"
-    "ustomDimensionsResponse\"\345\001\222A\240\001\022\026List Cus"
-    "tom Dimensions\032pReturns an array of cust"
-    "om dimension objects that each contain i"
-    "nformation about an individual custom di"
-    "mension.*\024ListCustomDimensions\362\327\002\025custom"
-    "_dimension:read\202\323\344\223\002\"\022 /custom_dimension"
-    "s/v202411alpha1\022\222\003\n\026GetCustomDimensionIn"
-    "fo\022D.kentik.custom_dimension.v202411alph"
-    "a1.GetCustomDimensionInfoRequest\032E.kenti"
-    "k.custom_dimension.v202411alpha1.GetCust"
-    "omDimensionInfoResponse\"\352\001\222A\217\001\022\025Custom D"
-    "imension Info\032^Returns a custom dimensio"
-    "n object containing information about an"
-    " individual custom dimension.*\026GetCustom"
-    "DimensionInfo\362\327\002\025custom_dimension:read\202\323"
-    "\344\223\0028\0226/custom_dimensions/v202411alpha1/{"
-    "custom_dimension_id}\022\352\002\n\025CreateCustomDim"
-    "ension\022C.kentik.custom_dimension.v202411"
-    "alpha1.CreateCustomDimensionRequest\032D.ke"
-    "ntik.custom_dimension.v202411alpha1.Crea"
-    "teCustomDimensionResponse\"\305\001\222A\233\001\022\027Create"
-    " Custom Dimension\032iCreates and returns a"
+    "CustomDimensionInfoRequest\032E.kentik.cust"
+    "om_dimension.v202411alpha1.GetCustomDime"
+    "nsionInfoResponse\"\352\001\222A\217\001\022\025Custom Dimensi"
+    "on Info\032^Returns a custom dimension obje"
+    "ct containing information about an indiv"
+    "idual custom dimension.*\026GetCustomDimens"
+    "ionInfo\362\327\002\025custom_dimension:read\202\323\344\223\0028\0226"
+    "/custom_dimensions/v202411alpha1/{custom"
+    "_dimension_id}\022\352\002\n\025CreateCustomDimension"
+    "\022C.kentik.custom_dimension.v202411alpha1"
+    ".CreateCustomDimensionRequest\032D.kentik.c"
+    "ustom_dimension.v202411alpha1.CreateCust"
+    "omDimensionResponse\"\305\001\222A\233\001\022\027Create Custo"
+    "m Dimension\032iCreates and returns a custo"
+    "m dimension object containing informatio"
+    "n about an individual custom dimension*\025"
+    "CreateCustomDimension\202\323\344\223\002 \"\023/v1/customd"
+    "imension:\tdimension\022\225\004\n\025UpdateCustomDime"
+    "nsion\022C.kentik.custom_dimension.v202411a"
+    "lpha1.UpdateCustomDimensionRequest\032D.ken"
+    "tik.custom_dimension.v202411alpha1.Updat"
+    "eCustomDimensionResponse\"\360\002\222A\243\002\022\027Update "
+    "Custom Dimension\032\360\001Updates and returns a"
     " custom dimension object containing info"
     "rmation about an individual custom dimen"
-    "sion*\025CreateCustomDimension\202\323\344\223\002 \"\023/v1/c"
-    "ustomdimension:\tdimension\022\225\004\n\025UpdateCust"
-    "omDimension\022C.kentik.custom_dimension.v2"
-    "02411alpha1.UpdateCustomDimensionRequest"
-    "\032D.kentik.custom_dimension.v202411alpha1"
-    ".UpdateCustomDimensionResponse\"\360\002\222A\243\002\022\027U"
-    "pdate Custom Dimension\032\360\001Updates and ret"
-    "urns a custom dimension object containin"
-    "g information about an individual custom"
-    " dimension (see About Custom Dimensions)"
-    ". Populators are not sent back in the re"
-    "sponse body. To get them use \'Custom Dim"
-    "ension info\' API instead.*\025UpdateCustomD"
-    "imension\202\323\344\223\002C\0326/custom_dimensions/v2024"
-    "11alpha1/{custom_dimension_id}:\tdimensio"
-    "n\022\263\002\n\025DeleteCustomDimension\022C.kentik.cus"
-    "tom_dimension.v202411alpha1.DeleteCustom"
-    "DimensionRequest\032D.kentik.custom_dimensi"
-    "on.v202411alpha1.DeleteCustomDimensionRe"
-    "sponse\"\216\001\222AM\022\027Delete Custom Dimension\032\033D"
-    "eletes a custom dimension.*\025DeleteCustom"
-    "Dimension\202\323\344\223\0028*6/custom_dimensions/v202"
-    "411alpha1/{custom_dimension_id}\022\257\002\n\014GetP"
-    "opulator\022:.kentik.custom_dimension.v2024"
-    "11alpha1.GetPopulatorRequest\032;.kentik.cu"
-    "stom_dimension.v202411alpha1.GetPopulato"
-    "rResponse\"\245\001\222AK\022\rGet Populator\032,Get Popu"
-    "lator by Dimension and Populator ID.*\014Ge"
-    "tPopulator\202\323\344\223\002Q\022O/custom_dimensions/v20"
-    "2411alpha1/{custom_dimension_id}/populat"
-    "or/{populator_id}\022\357\002\n\021GetPopulatorField\022"
-    "\?.kentik.custom_dimension.v202411alpha1."
-    "GetPopulatorFieldRequest\032@.kentik.custom"
-    "_dimension.v202411alpha1.GetPopulatorFie"
-    "ldResponse\"\326\001\222Ai\022\023Get Populator Field\032\?G"
-    "et Populator field by Dimension, Populat"
-    "or ID, and field name.*\021GetPopulatorFiel"
-    "d\202\323\344\223\002d\022b/custom_dimensions/v202411alpha"
-    "1/{custom_dimension_id}/populator/{popul"
-    "ator_id}/field/{field_name}\022\353\002\n\017CreatePo"
-    "pulator\022=.kentik.custom_dimension.v20241"
-    "1alpha1.CreatePopulatorRequest\032>.kentik."
-    "custom_dimension.v202411alpha1.CreatePop"
-    "ulatorResponse\"\330\001\222A\201\001\022\020Create Populator\032"
-    "\\Creates and returns a populator object "
-    "containing information about an individu"
-    "al populator.*\017CreatePopulator\202\323\344\223\002M\"@/c"
-    "ustom_dimensions/v202411alpha1/{custom_d"
-    "imension_id}/populator:\tpopulator\022\372\002\n\017Up"
-    "datePopulator\022=.kentik.custom_dimension."
-    "v202411alpha1.UpdatePopulatorRequest\032>.k"
-    "entik.custom_dimension.v202411alpha1.Upd"
-    "atePopulatorResponse\"\347\001\222A\201\001\022\020Update Popu"
-    "lator\032\\Updates and returns a populator o"
-    "bject containing information about an in"
-    "dividual populator.*\017UpdatePopulator\202\323\344\223"
-    "\002\\\032O/custom_dimensions/v202411alpha1/{cu"
-    "stom_dimension_id}/populator/{populator_"
-    "id}:\tpopulator\022\246\002\n\017DeletePopulator\022=.ken"
-    "tik.custom_dimension.v202411alpha1.Delet"
-    "ePopulatorRequest\032>.kentik.custom_dimens"
-    "ion.v202411alpha1.DeletePopulatorRespons"
-    "e\"\223\001\222A9\022\020Delete Populator\032\024Deletes a pop"
-    "ulator.*\017DeletePopulator\202\323\344\223\002Q*O/custom_"
+    "sion (see About Custom Dimensions). Popu"
+    "lators are not sent back in the response"
+    " body. To get them use \'Custom Dimension"
+    " info\' API instead.*\025UpdateCustomDimensi"
+    "on\202\323\344\223\002C\0326/custom_dimensions/v202411alph"
+    "a1/{custom_dimension_id}:\tdimension\022\263\002\n\025"
+    "DeleteCustomDimension\022C.kentik.custom_di"
+    "mension.v202411alpha1.DeleteCustomDimens"
+    "ionRequest\032D.kentik.custom_dimension.v20"
+    "2411alpha1.DeleteCustomDimensionResponse"
+    "\"\216\001\222AM\022\027Delete Custom Dimension\032\033Deletes"
+    " a custom dimension.*\025DeleteCustomDimens"
+    "ion\202\323\344\223\0028*6/custom_dimensions/v202411alp"
+    "ha1/{custom_dimension_id}\022\257\002\n\014GetPopulat"
+    "or\022:.kentik.custom_dimension.v202411alph"
+    "a1.GetPopulatorRequest\032;.kentik.custom_d"
+    "imension.v202411alpha1.GetPopulatorRespo"
+    "nse\"\245\001\222AK\022\rGet Populator\032,Get Populator "
+    "by Dimension and Populator ID.*\014GetPopul"
+    "ator\202\323\344\223\002Q\022O/custom_dimensions/v202411al"
+    "pha1/{custom_dimension_id}/populator/{po"
+    "pulator_id}\022\357\002\n\021GetPopulatorField\022\?.kent"
+    "ik.custom_dimension.v202411alpha1.GetPop"
+    "ulatorFieldRequest\032@.kentik.custom_dimen"
+    "sion.v202411alpha1.GetPopulatorFieldResp"
+    "onse\"\326\001\222Ai\022\023Get Populator Field\032\?Get Pop"
+    "ulator field by Dimension, Populator ID,"
+    " and field name.*\021GetPopulatorField\202\323\344\223\002"
+    "d\022b/custom_dimensions/v202411alpha1/{cus"
+    "tom_dimension_id}/populator/{populator_i"
+    "d}/field/{field_name}\022\353\002\n\017CreatePopulato"
+    "r\022=.kentik.custom_dimension.v202411alpha"
+    "1.CreatePopulatorRequest\032>.kentik.custom"
+    "_dimension.v202411alpha1.CreatePopulator"
+    "Response\"\330\001\222A\201\001\022\020Create Populator\032\\Creat"
+    "es and returns a populator object contai"
+    "ning information about an individual pop"
+    "ulator.*\017CreatePopulator\202\323\344\223\002M\"@/custom_"
     "dimensions/v202411alpha1/{custom_dimensi"
-    "on_id}/populator/{populator_id}\0324\312A\023grpc"
-    ".api.kentik.com\352\327\002\026admin.custom_dimensio"
-    "n\220\330\002\003B\342\004Zagithub.com/kentik/api-schema-p"
-    "ublic/gen/go/kentik/custom_dimension/v20"
-    "2411alpha1;custom_dimension\222A\373\003\022\352\001\n\025Cust"
-    "om Dimensions API\022{# Overview\nThe Custom"
-    " Dimensions API enables programmatic acc"
-    "ess to information on Custom Dimensions "
-    "and their Populators.\n\"E\n\026Kentik API Eng"
-    "ineering\022+https://github.com/kentik/api-"
-    "schema-public2\rv202411alpha1*\001\0022\020applica"
-    "tion/json:\020application/jsonZD\n\036\n\005email\022\025"
-    "\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH"
-    "-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022"
-    "\000r\206\001\n[Knowledge base article outlining t"
-    "he purpose and usage of Custom Dimension"
-    "s and Populators.\022\'https://kb.kentik.com"
-    "/proto/v4/Cb06.htmb\006proto3"
+    "on_id}/populator:\tpopulator\022\372\002\n\017UpdatePo"
+    "pulator\022=.kentik.custom_dimension.v20241"
+    "1alpha1.UpdatePopulatorRequest\032>.kentik."
+    "custom_dimension.v202411alpha1.UpdatePop"
+    "ulatorResponse\"\347\001\222A\201\001\022\020Update Populator\032"
+    "\\Updates and returns a populator object "
+    "containing information about an individu"
+    "al populator.*\017UpdatePopulator\202\323\344\223\002\\\032O/c"
+    "ustom_dimensions/v202411alpha1/{custom_d"
+    "imension_id}/populator/{populator_id}:\tp"
+    "opulator\022\246\002\n\017DeletePopulator\022=.kentik.cu"
+    "stom_dimension.v202411alpha1.DeletePopul"
+    "atorRequest\032>.kentik.custom_dimension.v2"
+    "02411alpha1.DeletePopulatorResponse\"\223\001\222A"
+    "9\022\020Delete Populator\032\024Deletes a populator"
+    ".*\017DeletePopulator\202\323\344\223\002Q*O/custom_dimens"
+    "ions/v202411alpha1/{custom_dimension_id}"
+    "/populator/{populator_id}\0324\312A\023grpc.api.k"
+    "entik.com\352\327\002\026admin.custom_dimension\220\330\002\003B"
+    "\342\004Zagithub.com/kentik/api-schema-public/"
+    "gen/go/kentik/custom_dimension/v202411al"
+    "pha1;custom_dimension\222A\373\003\022\352\001\n\025Custom Dim"
+    "ensions API\022{# Overview\nThe Custom Dimen"
+    "sions API enables programmatic access to"
+    " information on Custom Dimensions and th"
+    "eir Populators.\n\"E\n\026Kentik API Engineeri"
+    "ng\022+https://github.com/kentik/api-schema"
+    "-public2\rv202411alpha1*\001\0022\020application/j"
+    "son:\020application/jsonZD\n\036\n\005email\022\025\010\002\032\017X-"
+    "CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-"
+    "API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r\206\001\n["
+    "Knowledge base article outlining the pur"
+    "pose and usage of Custom Dimensions and "
+    "Populators.\022\'https://kb.kentik.com/proto"
+    "/v4/Cb06.htmb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto_deps[7] =
     {
@@ -1455,7 +1458,7 @@ static ::absl::once_flag descriptor_table_kentik_2fcustom_5fdimension_2fv202411a
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto = {
     false,
     false,
-    13466,
+    13500,
     descriptor_table_protodef_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto,
     "kentik/custom_dimension/v202411alpha1/custom_dimension.proto",
     &descriptor_table_kentik_2fcustom_5fdimension_2fv202411alpha1_2fcustom_5fdimension_2eproto_once,
@@ -5676,6 +5679,7 @@ GetPopulatorRequest::GetPopulatorRequest(
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  _impl_.field_limit_ = from._impl_.field_limit_;
 
   // @@protoc_insertion_point(copy_constructor:kentik.custom_dimension.v202411alpha1.GetPopulatorRequest)
 }
@@ -5688,6 +5692,7 @@ inline PROTOBUF_NDEBUG_INLINE GetPopulatorRequest::Impl_::Impl_(
 
 inline void GetPopulatorRequest::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.field_limit_ = {};
 }
 GetPopulatorRequest::~GetPopulatorRequest() {
   // @@protoc_insertion_point(destructor:kentik.custom_dimension.v202411alpha1.GetPopulatorRequest)
@@ -5738,15 +5743,15 @@ const ::google::protobuf::internal::ClassData* GetPopulatorRequest::GetClassData
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 0, 97, 2> GetPopulatorRequest::_table_ = {
+const ::_pbi::TcParseTable<2, 3, 0, 97, 2> GetPopulatorRequest::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
+    3, 24,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
+    4294967288,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
+    3,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     _class_data_.base(),
@@ -5756,12 +5761,16 @@ const ::_pbi::TcParseTable<1, 2, 0, 97, 2> GetPopulatorRequest::_table_ = {
     ::_pbi::TcParser::GetTable<::kentik::custom_dimension::v202411alpha1::GetPopulatorRequest>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // string populator_id = 2 [json_name = "populatorId"];
-    {::_pbi::TcParser::FastUS1,
-     {18, 63, 0, PROTOBUF_FIELD_OFFSET(GetPopulatorRequest, _impl_.populator_id_)}},
+    {::_pbi::TcParser::MiniParse, {}},
     // string custom_dimension_id = 1 [json_name = "customDimensionId"];
     {::_pbi::TcParser::FastUS1,
      {10, 63, 0, PROTOBUF_FIELD_OFFSET(GetPopulatorRequest, _impl_.custom_dimension_id_)}},
+    // string populator_id = 2 [json_name = "populatorId"];
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(GetPopulatorRequest, _impl_.populator_id_)}},
+    // uint32 field_limit = 3 [json_name = "fieldLimit"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(GetPopulatorRequest, _impl_.field_limit_), 63>(),
+     {24, 63, 0, PROTOBUF_FIELD_OFFSET(GetPopulatorRequest, _impl_.field_limit_)}},
   }}, {{
     65535, 65535
   }}, {{
@@ -5771,6 +5780,9 @@ const ::_pbi::TcParseTable<1, 2, 0, 97, 2> GetPopulatorRequest::_table_ = {
     // string populator_id = 2 [json_name = "populatorId"];
     {PROTOBUF_FIELD_OFFSET(GetPopulatorRequest, _impl_.populator_id_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // uint32 field_limit = 3 [json_name = "fieldLimit"];
+    {PROTOBUF_FIELD_OFFSET(GetPopulatorRequest, _impl_.field_limit_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
   }},
   // no aux_entries
   {{
@@ -5790,6 +5802,7 @@ PROTOBUF_NOINLINE void GetPopulatorRequest::Clear() {
 
   _impl_.custom_dimension_id_.ClearToEmpty();
   _impl_.populator_id_.ClearToEmpty();
+  _impl_.field_limit_ = 0u;
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -5822,6 +5835,13 @@ PROTOBUF_NOINLINE void GetPopulatorRequest::Clear() {
             ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
                 _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.custom_dimension.v202411alpha1.GetPopulatorRequest.populator_id");
             target = stream->WriteStringMaybeAliased(2, _s, target);
+          }
+
+          // uint32 field_limit = 3 [json_name = "fieldLimit"];
+          if (this_._internal_field_limit() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                3, this_._internal_field_limit(), target);
           }
 
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
@@ -5859,6 +5879,11 @@ PROTOBUF_NOINLINE void GetPopulatorRequest::Clear() {
               total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                               this_._internal_populator_id());
             }
+            // uint32 field_limit = 3 [json_name = "fieldLimit"];
+            if (this_._internal_field_limit() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_field_limit());
+            }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
                                                      &this_._impl_._cached_size_);
@@ -5878,6 +5903,9 @@ void GetPopulatorRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, con
   if (!from._internal_populator_id().empty()) {
     _this->_internal_set_populator_id(from._internal_populator_id());
   }
+  if (from._internal_field_limit() != 0) {
+    _this->_impl_.field_limit_ = from._impl_.field_limit_;
+  }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -5896,6 +5924,7 @@ void GetPopulatorRequest::InternalSwap(GetPopulatorRequest* PROTOBUF_RESTRICT ot
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.custom_dimension_id_, &other->_impl_.custom_dimension_id_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.populator_id_, &other->_impl_.populator_id_, arena);
+        swap(_impl_.field_limit_, other->_impl_.field_limit_);
 }
 
 ::google::protobuf::Metadata GetPopulatorRequest::GetMetadata() const {

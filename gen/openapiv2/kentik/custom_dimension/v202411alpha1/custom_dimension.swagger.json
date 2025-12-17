@@ -219,6 +219,13 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "fieldLimit",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
           }
         ],
         "tags": [

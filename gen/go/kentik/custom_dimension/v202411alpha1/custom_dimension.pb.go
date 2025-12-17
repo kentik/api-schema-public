@@ -861,6 +861,7 @@ type GetPopulatorRequest struct {
 	state             protoimpl.MessageState `protogen:"open.v1"`
 	CustomDimensionId string                 `protobuf:"bytes,1,opt,name=custom_dimension_id,json=customDimensionId,proto3" json:"custom_dimension_id,omitempty"`
 	PopulatorId       string                 `protobuf:"bytes,2,opt,name=populator_id,json=populatorId,proto3" json:"populator_id,omitempty"`
+	FieldLimit        uint32                 `protobuf:"varint,3,opt,name=field_limit,json=fieldLimit,proto3" json:"field_limit,omitempty"`
 	unknownFields     protoimpl.UnknownFields
 	sizeCache         protoimpl.SizeCache
 }
@@ -907,6 +908,13 @@ func (x *GetPopulatorRequest) GetPopulatorId() string {
 		return x.PopulatorId
 	}
 	return ""
+}
+
+func (x *GetPopulatorRequest) GetFieldLimit() uint32 {
+	if x != nil {
+		return x.FieldLimit
+	}
+	return 0
 }
 
 type GetPopulatorResponse struct {
@@ -1461,10 +1469,12 @@ const file_kentik_custom_dimension_v202411alpha1_custom_dimension_proto_rawDesc 
 	"\tdimension\x18\x01 \x01(\v26.kentik.custom_dimension.v202411alpha1.CustomDimensionR\tdimension\"N\n" +
 	"\x1cDeleteCustomDimensionRequest\x12.\n" +
 	"\x13custom_dimension_id\x18\x01 \x01(\tR\x11customDimensionId\"\x1f\n" +
-	"\x1dDeleteCustomDimensionResponse\"h\n" +
+	"\x1dDeleteCustomDimensionResponse\"\x89\x01\n" +
 	"\x13GetPopulatorRequest\x12.\n" +
 	"\x13custom_dimension_id\x18\x01 \x01(\tR\x11customDimensionId\x12!\n" +
-	"\fpopulator_id\x18\x02 \x01(\tR\vpopulatorId\"f\n" +
+	"\fpopulator_id\x18\x02 \x01(\tR\vpopulatorId\x12\x1f\n" +
+	"\vfield_limit\x18\x03 \x01(\rR\n" +
+	"fieldLimit\"f\n" +
 	"\x14GetPopulatorResponse\x12N\n" +
 	"\tpopulator\x18\x01 \x01(\v20.kentik.custom_dimension.v202411alpha1.PopulatorR\tpopulator\"\xba\x01\n" +
 	"\x18GetPopulatorFieldRequest\x12.\n" +

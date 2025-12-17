@@ -339,6 +339,7 @@ message DeleteCustomDimensionResponse {
 message GetPopulatorRequest {
   string custom_dimension_id = 1;
   string populator_id = 2;
+  uint32 field_limit = 3;
 }
 
 message GetPopulatorResponse {

@@ -2001,7 +2001,7 @@ const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1__delete
   (ProtobufCMessageInit) kentik__custom_dimension__v202411alpha1__delete_custom_dimension_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__get_populator_request__field_descriptors[2] =
+static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__get_populator_request__field_descriptors[3] =
 {
   {
     "custom_dimension_id",
@@ -2027,15 +2027,28 @@ static const ProtobufCFieldDescriptor kentik__custom_dimension__v202411alpha1__g
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "field_limit",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT32,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__CustomDimension__V202411alpha1__GetPopulatorRequest, field_limit),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__custom_dimension__v202411alpha1__get_populator_request__field_indices_by_name[] = {
   0,   /* field[0] = custom_dimension_id */
+  2,   /* field[2] = field_limit */
   1,   /* field[1] = populator_id */
 };
 static const ProtobufCIntRange kentik__custom_dimension__v202411alpha1__get_populator_request__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 2 }
+  { 0, 3 }
 };
 const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1__get_populator_request__descriptor =
 {
@@ -2045,7 +2058,7 @@ const ProtobufCMessageDescriptor kentik__custom_dimension__v202411alpha1__get_po
   "Kentik__CustomDimension__V202411alpha1__GetPopulatorRequest",
   "kentik.custom_dimension.v202411alpha1",
   sizeof(Kentik__CustomDimension__V202411alpha1__GetPopulatorRequest),
-  2,
+  3,
   kentik__custom_dimension__v202411alpha1__get_populator_request__field_descriptors,
   kentik__custom_dimension__v202411alpha1__get_populator_request__field_indices_by_name,
   1,  kentik__custom_dimension__v202411alpha1__get_populator_request__number_ranges,
