@@ -44,6 +44,7 @@ const (
 	DevicePlatform_DEVICE_PLATFORM_PALOALTO_PANOS     DevicePlatform = 16
 	DevicePlatform_DEVICE_PLATFORM_RUIJIE_RGOS        DevicePlatform = 17
 	DevicePlatform_DEVICE_PLATFORM_VYATTA_VYOS        DevicePlatform = 18
+	DevicePlatform_DEVICE_PLATFORM_UBIQUITI_EDGEOS    DevicePlatform = 19
 )
 
 // Enum value maps for DevicePlatform.
@@ -68,6 +69,7 @@ var (
 		16: "DEVICE_PLATFORM_PALOALTO_PANOS",
 		17: "DEVICE_PLATFORM_RUIJIE_RGOS",
 		18: "DEVICE_PLATFORM_VYATTA_VYOS",
+		19: "DEVICE_PLATFORM_UBIQUITI_EDGEOS",
 	}
 	DevicePlatform_value = map[string]int32{
 		"DEVICE_PLATFORM_UNSPECIFIED":        0,
@@ -89,6 +91,7 @@ var (
 		"DEVICE_PLATFORM_PALOALTO_PANOS":     16,
 		"DEVICE_PLATFORM_RUIJIE_RGOS":        17,
 		"DEVICE_PLATFORM_VYATTA_VYOS":        18,
+		"DEVICE_PLATFORM_UBIQUITI_EDGEOS":    19,
 	}
 )
 
@@ -327,7 +330,7 @@ const file_kentik_deviceconf_v202511_device_proto_rawDesc = "" +
 	"\bhostname\x18\x03 \x01(\tR\bhostname\x12E\n" +
 	"\bplatform\x18\x04 \x01(\x0e2).kentik.deviceconf.v202511.DevicePlatformR\bplatform\x12F\n" +
 	"\tssh_creds\x18\x05 \x01(\v2).kentik.deviceconf.v202511.DeviceSSHCredsR\bsshCreds\x12M\n" +
-	"\ffetch_params\x18\x06 \x01(\v2*.kentik.deviceconf.v202511.FetchParametersR\vfetchParams*\x8d\x05\n" +
+	"\ffetch_params\x18\x06 \x01(\v2*.kentik.deviceconf.v202511.FetchParametersR\vfetchParams*\xb2\x05\n" +
 	"\x0eDevicePlatform\x12\x1f\n" +
 	"\x1bDEVICE_PLATFORM_UNSPECIFIED\x10\x00\x12\x1e\n" +
 	"\x1aDEVICE_PLATFORM_ARISTA_EOS\x10\x01\x12\x1d\n" +
@@ -348,7 +351,8 @@ const file_kentik_deviceconf_v202511_device_proto_rawDesc = "" +
 	"\"DEVICE_PLATFORM_NOKIA_SROS_CLASSIC\x10\x0f\x12\"\n" +
 	"\x1eDEVICE_PLATFORM_PALOALTO_PANOS\x10\x10\x12\x1f\n" +
 	"\x1bDEVICE_PLATFORM_RUIJIE_RGOS\x10\x11\x12\x1f\n" +
-	"\x1bDEVICE_PLATFORM_VYATTA_VYOS\x10\x12BQZOgithub.com/kentik/api-schema-public/gen/go/kentik/deviceconf/v202511;deviceconfb\x06proto3"
+	"\x1bDEVICE_PLATFORM_VYATTA_VYOS\x10\x12\x12#\n" +
+	"\x1fDEVICE_PLATFORM_UBIQUITI_EDGEOS\x10\x13BQZOgithub.com/kentik/api-schema-public/gen/go/kentik/deviceconf/v202511;deviceconfb\x06proto3"
 
 var (
 	file_kentik_deviceconf_v202511_device_proto_rawDescOnce sync.Once

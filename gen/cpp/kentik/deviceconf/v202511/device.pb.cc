@@ -200,7 +200,7 @@ const char descriptor_table_protodef_kentik_2fdeviceconf_2fv202511_2fdevice_2epr
     "m\022F\n\tssh_creds\030\005 \001(\0132).kentik.deviceconf"
     ".v202511.DeviceSSHCredsR\010sshCreds\022M\n\014fet"
     "ch_params\030\006 \001(\0132*.kentik.deviceconf.v202"
-    "511.FetchParametersR\013fetchParams*\215\005\n\016Dev"
+    "511.FetchParametersR\013fetchParams*\262\005\n\016Dev"
     "icePlatform\022\037\n\033DEVICE_PLATFORM_UNSPECIFI"
     "ED\020\000\022\036\n\032DEVICE_PLATFORM_ARISTA_EOS\020\001\022\035\n\031"
     "DEVICE_PLATFORM_ARUBA_WLC\020\002\022\037\n\033DEVICE_PL"
@@ -217,9 +217,10 @@ const char descriptor_table_protodef_kentik_2fdeviceconf_2fv202511_2fdevice_2epr
     "TFORM_NOKIA_SROS_CLASSIC\020\017\022\"\n\036DEVICE_PLA"
     "TFORM_PALOALTO_PANOS\020\020\022\037\n\033DEVICE_PLATFOR"
     "M_RUIJIE_RGOS\020\021\022\037\n\033DEVICE_PLATFORM_VYATT"
-    "A_VYOS\020\022BQZOgithub.com/kentik/api-schema"
-    "-public/gen/go/kentik/deviceconf/v202511"
-    ";deviceconfb\006proto3"
+    "A_VYOS\020\022\022#\n\037DEVICE_PLATFORM_UBIQUITI_EDG"
+    "EOS\020\023BQZOgithub.com/kentik/api-schema-pu"
+    "blic/gen/go/kentik/deviceconf/v202511;de"
+    "viceconfb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice_2eproto_deps[1] =
     {
@@ -229,7 +230,7 @@ static ::absl::once_flag descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice_2eproto = {
     false,
     false,
-    1339,
+    1376,
     descriptor_table_protodef_kentik_2fdeviceconf_2fv202511_2fdevice_2eproto,
     "kentik/deviceconf/v202511/device.proto",
     &descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice_2eproto_once,
@@ -250,9 +251,9 @@ const ::google::protobuf::EnumDescriptor* DevicePlatform_descriptor() {
   return file_level_enum_descriptors_kentik_2fdeviceconf_2fv202511_2fdevice_2eproto[0];
 }
 PROTOBUF_CONSTINIT const uint32_t DevicePlatform_internal_data_[] = {
-    1245184u, 0u, };
+    1310720u, 0u, };
 bool DevicePlatform_IsValid(int value) {
-  return 0 <= value && value <= 18;
+  return 0 <= value && value <= 19;
 }
 // ===================================================================
 

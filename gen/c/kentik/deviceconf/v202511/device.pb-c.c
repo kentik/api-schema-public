@@ -347,7 +347,7 @@ const ProtobufCMessageDescriptor kentik__deviceconf__v202511__device__descriptor
   (ProtobufCMessageInit) kentik__deviceconf__v202511__device__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCEnumValue kentik__deviceconf__v202511__device_platform__enum_values_by_number[19] =
+static const ProtobufCEnumValue kentik__deviceconf__v202511__device_platform__enum_values_by_number[20] =
 {
   { "DEVICE_PLATFORM_UNSPECIFIED", "KENTIK__DEVICECONF__V202511__DEVICE_PLATFORM__DEVICE_PLATFORM_UNSPECIFIED", 0 },
   { "DEVICE_PLATFORM_ARISTA_EOS", "KENTIK__DEVICECONF__V202511__DEVICE_PLATFORM__DEVICE_PLATFORM_ARISTA_EOS", 1 },
@@ -368,11 +368,12 @@ static const ProtobufCEnumValue kentik__deviceconf__v202511__device_platform__en
   { "DEVICE_PLATFORM_PALOALTO_PANOS", "KENTIK__DEVICECONF__V202511__DEVICE_PLATFORM__DEVICE_PLATFORM_PALOALTO_PANOS", 16 },
   { "DEVICE_PLATFORM_RUIJIE_RGOS", "KENTIK__DEVICECONF__V202511__DEVICE_PLATFORM__DEVICE_PLATFORM_RUIJIE_RGOS", 17 },
   { "DEVICE_PLATFORM_VYATTA_VYOS", "KENTIK__DEVICECONF__V202511__DEVICE_PLATFORM__DEVICE_PLATFORM_VYATTA_VYOS", 18 },
+  { "DEVICE_PLATFORM_UBIQUITI_EDGEOS", "KENTIK__DEVICECONF__V202511__DEVICE_PLATFORM__DEVICE_PLATFORM_UBIQUITI_EDGEOS", 19 },
 };
 static const ProtobufCIntRange kentik__deviceconf__v202511__device_platform__value_ranges[] = {
-{0, 0},{0, 19}
+{0, 0},{0, 20}
 };
-static const ProtobufCEnumValueIndex kentik__deviceconf__v202511__device_platform__enum_values_by_name[19] =
+static const ProtobufCEnumValueIndex kentik__deviceconf__v202511__device_platform__enum_values_by_name[20] =
 {
   { "DEVICE_PLATFORM_ARISTA_EOS", 1 },
   { "DEVICE_PLATFORM_ARUBA_WLC", 2 },
@@ -391,6 +392,7 @@ static const ProtobufCEnumValueIndex kentik__deviceconf__v202511__device_platfor
   { "DEVICE_PLATFORM_NOKIA_SROS_CLASSIC", 15 },
   { "DEVICE_PLATFORM_PALOALTO_PANOS", 16 },
   { "DEVICE_PLATFORM_RUIJIE_RGOS", 17 },
+  { "DEVICE_PLATFORM_UBIQUITI_EDGEOS", 19 },
   { "DEVICE_PLATFORM_UNSPECIFIED", 0 },
   { "DEVICE_PLATFORM_VYATTA_VYOS", 18 },
 };
@@ -401,9 +403,9 @@ const ProtobufCEnumDescriptor kentik__deviceconf__v202511__device_platform__desc
   "DevicePlatform",
   "Kentik__Deviceconf__V202511__DevicePlatform",
   "kentik.deviceconf.v202511",
-  19,
+  20,
   kentik__deviceconf__v202511__device_platform__enum_values_by_number,
-  19,
+  20,
   kentik__deviceconf__v202511__device_platform__enum_values_by_name,
   1,
   kentik__deviceconf__v202511__device_platform__value_ranges,
