@@ -444,10 +444,10 @@ const file_kentik_alerting_public_v202505_mitigation_method_proto_rawDesc = "" +
 	"created_at\x18\x0e \x01(\v2\x1a.google.protobuf.TimestampB8\x92A220The time when the mitigation method was created.\xe0A\x03R\tcreatedAt\x12{\n" +
 	"\vmodified_at\x18\x0f \x01(\v2\x1a.google.protobuf.TimestampB>\x92A826The time when the mitigation method was last modified.\xe0A\x03R\n" +
 	"modifiedAt\x12\xaf\x01\n" +
-	"\rnotifications\x18\x10 \x03(\v2>.kentik.alerting.public.v202505.NotificationChannelAssociationBI\x92AC2AThe notification channel associations for this mitigation method.\xe0A\x03R\rnotifications2\xe2\x04\n" +
-	"\x18MitigationMethodsService\x12\x8f\x02\n" +
-	"\x04List\x12C.kentik.alerting.public.v202505.MitigationMethodsServiceListRequest\x1aD.kentik.alerting.public.v202505.MitigationMethodsServiceListResponse\"|\x92AF\x12\x17List Mitigation Methods\x1a%Returns a list of mitigation methods.*\x04List\xf2\xd7\x02\x13admin.alerting:read\x82\xd3\xe4\x93\x02\x16\x12\x14/mitigations/methods\x12\x85\x02\n" +
-	"\x03Get\x12B.kentik.alerting.public.v202505.MitigationMethodsServiceGetRequest\x1aC.kentik.alerting.public.v202505.MitigationMethodsServiceGetResponse\"u\x92A:\x12\x15Get Mitigation Method\x1a\x1cReturns a mitigation method.*\x03Get\xf2\xd7\x02\x13admin.alerting:read\x82\xd3\xe4\x93\x02\x1b\x12\x19/mitigations/methods/{id}\x1a,\xcaA\x13grpc.api.kentik.com\xea\xd7\x02\x0eadmin.alerting\x90\xd8\x02\x03B\xe7\x04\x92A\x98\x04\x12\xcc\x02\n" +
+	"\rnotifications\x18\x10 \x03(\v2>.kentik.alerting.public.v202505.NotificationChannelAssociationBI\x92AC2AThe notification channel associations for this mitigation method.\xe0A\x03R\rnotifications2\xf3\x04\n" +
+	"\x18MitigationMethodsService\x12\x98\x02\n" +
+	"\x04List\x12C.kentik.alerting.public.v202505.MitigationMethodsServiceListRequest\x1aD.kentik.alerting.public.v202505.MitigationMethodsServiceListResponse\"\x84\x01\x92AF\x12\x17List Mitigation Methods\x1a%Returns a list of mitigation methods.*\x04List\xf2\xd7\x02\x13admin.alerting:read\x82\xd3\xe4\x93\x02\x1e\x12\x1c/v202505/mitigations/methods\x12\x8d\x02\n" +
+	"\x03Get\x12B.kentik.alerting.public.v202505.MitigationMethodsServiceGetRequest\x1aC.kentik.alerting.public.v202505.MitigationMethodsServiceGetResponse\"}\x92A:\x12\x15Get Mitigation Method\x1a\x1cReturns a mitigation method.*\x03Get\xf2\xd7\x02\x13admin.alerting:read\x82\xd3\xe4\x93\x02#\x12!/v202505/mitigations/methods/{id}\x1a,\xcaA\x13grpc.api.kentik.com\xea\xd7\x02\x0eadmin.alerting\x90\xd8\x02\x03B\xe7\x04\x92A\x98\x04\x12\xcc\x02\n" +
 	"\x16Mitigation Methods API\x12\xe1\x01# Overview\n" +
 	"The Alert Mitigation Methods API provides programmatic access to Kentik's capabilities of configuring and managing mitigation methods that define the specific parameters used for network infrastructure mitigations.\"E\n" +
 	"\x16Kentik API Engineering\x12+https://github.com/kentik/api-schema-public2\av202505*\x01\x022\x10application/json:\x10application/jsonZD\n" +

@@ -24,7 +24,7 @@
     "application/json"
   ],
   "paths": {
-    "/mitigations": {
+    "/v202505/mitigations": {
       "get": {
         "summary": "List Mitigations",
         "description": "Returns a list of mitigations.",
@@ -227,7 +227,7 @@
         ]
       }
     },
-    "/mitigations/actions": {
+    "/v202505/mitigations/actions": {
       "get": {
         "summary": "Get Available Actions",
         "description": "Returns available actions for mitigations.",
@@ -251,7 +251,7 @@
         ]
       }
     },
-    "/mitigations/{action}": {
+    "/v202505/mitigations/{action}": {
       "post": {
         "summary": "Act on Mitigation",
         "description": "Performs an action on one or more mitigations.",
@@ -334,7 +334,7 @@
         ]
       }
     },
-    "/mitigations/{id}/actions": {
+    "/v202505/mitigations/{id}/actions": {
       "get": {
         "summary": "Get Available Actions for Mitigation",
         "description": "Returns available actions for a specific mitigation.",

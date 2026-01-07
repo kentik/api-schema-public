@@ -74,7 +74,7 @@ service MitigationMethodsService {
   rpc List(MitigationMethodsServiceListRequest) returns (MitigationMethodsServiceListResponse) {
     option (kentik.core.v202303.method_scope) = "admin.alerting:read";
     option (google.api.http) = {
-      get: "/mitigations/methods"
+      get: "/v202505/mitigations/methods"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       operation_id: "List"
@@ -86,7 +86,7 @@ service MitigationMethodsService {
   rpc Get(MitigationMethodsServiceGetRequest) returns (MitigationMethodsServiceGetResponse) {
     option (kentik.core.v202303.method_scope) = "admin.alerting:read";
     option (google.api.http) = {
-      get: "/mitigations/methods/{id}"
+      get: "/v202505/mitigations/methods/{id}"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       operation_id: "Get"

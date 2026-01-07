@@ -75,7 +75,7 @@ service MitigationsService {
   rpc List(MitigationsServiceListRequest) returns (MitigationsServiceListResponse) {
     option (kentik.core.v202303.method_scope) = "admin.alerting:read";
     option (google.api.http) = {
-      get: "/mitigations"
+      get: "/v202505/mitigations"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       operation_id: "List"
@@ -87,7 +87,7 @@ service MitigationsService {
   rpc Get(MitigationsServiceGetRequest) returns (MitigationsServiceGetResponse) {
     option (kentik.core.v202303.method_scope) = "admin.alerting:read";
     option (google.api.http) = {
-      get: "/mitigations/{id}"
+      get: "/v202505/mitigations/{id}"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       operation_id: "Get"
@@ -99,7 +99,7 @@ service MitigationsService {
   rpc Create(MitigationsServiceCreateRequest) returns (MitigationsServiceCreateResponse) {
     option (kentik.core.v202303.method_scope) = "admin.alerting:write";
     option (google.api.http) = {
-      post: "/mitigations"
+      post: "/v202505/mitigations"
       body: "*"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
@@ -112,7 +112,7 @@ service MitigationsService {
   rpc Act(MitigationsServiceActRequest) returns (MitigationsServiceActResponse) {
     option (kentik.core.v202303.method_scope) = "admin.alerting:write";
     option (google.api.http) = {
-      post: "/mitigations/{action}"
+      post: "/v202505/mitigations/{action}"
       body: "*"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
@@ -125,7 +125,7 @@ service MitigationsService {
   rpc AvailableActions(MitigationsServiceAvailableActionsRequest) returns (MitigationsServiceAvailableActionsResponse) {
     option (kentik.core.v202303.method_scope) = "admin.alerting:read";
     option (google.api.http) = {
-      get: "/mitigations/actions"
+      get: "/v202505/mitigations/actions"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       operation_id: "AvailableActions"
@@ -137,7 +137,7 @@ service MitigationsService {
   rpc AvailableActionsForMitigation(MitigationsServiceAvailableActionsForMitigationRequest) returns (MitigationsServiceAvailableActionsForMitigationResponse) {
     option (kentik.core.v202303.method_scope) = "admin.alerting:read";
     option (google.api.http) = {
-      get: "/mitigations/{id}/actions"
+      get: "/v202505/mitigations/{id}/actions"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       operation_id: "AvailableActionsForMitigation"

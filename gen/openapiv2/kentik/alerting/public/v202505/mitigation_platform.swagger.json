@@ -24,7 +24,7 @@
     "application/json"
   ],
   "paths": {
-    "/mitigations/platforms": {
+    "/v202505/mitigations/platforms": {
       "get": {
         "summary": "List Mitigation Platforms",
         "description": "Returns a list of mitigation platforms.",
@@ -132,7 +132,7 @@
         ]
       }
     },
-    "/mitigations/platforms/{id}": {
+    "/v202505/mitigations/platforms/{id}": {
       "get": {
         "summary": "Get Mitigation Platform",
         "description": "Returns a mitigation platform.",

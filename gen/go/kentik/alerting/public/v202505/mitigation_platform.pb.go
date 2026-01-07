@@ -416,10 +416,10 @@ const file_kentik_alerting_public_v202505_mitigation_platform_proto_rawDesc = ""
 	"\n" +
 	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampB:\x92A422The time when the mitigation platform was created.\xe0A\x03R\tcreatedAt\x12}\n" +
 	"\vmodified_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampB@\x92A:28The time when the mitigation platform was last modified.\xe0A\x03R\n" +
-	"modifiedAt2\xf9\x04\n" +
-	"\x1aMitigationPlatformsService\x12\x9a\x02\n" +
-	"\x04List\x12E.kentik.alerting.public.v202505.MitigationPlatformsServiceListRequest\x1aF.kentik.alerting.public.v202505.MitigationPlatformsServiceListResponse\"\x82\x01\x92AJ\x12\x19List Mitigation Platforms\x1a'Returns a list of mitigation platforms.*\x04List\xf2\xd7\x02\x13admin.alerting:read\x82\xd3\xe4\x93\x02\x18\x12\x16/mitigations/platforms\x12\x8f\x02\n" +
-	"\x03Get\x12D.kentik.alerting.public.v202505.MitigationPlatformsServiceGetRequest\x1aE.kentik.alerting.public.v202505.MitigationPlatformsServiceGetResponse\"{\x92A>\x12\x17Get Mitigation Platform\x1a\x1eReturns a mitigation platform.*\x03Get\xf2\xd7\x02\x13admin.alerting:read\x82\xd3\xe4\x93\x02\x1d\x12\x1b/mitigations/platforms/{id}\x1a,\xcaA\x13grpc.api.kentik.com\xea\xd7\x02\x0eadmin.alerting\x90\xd8\x02\x03B\xe7\x04\x92A\x98\x04\x12\xcc\x02\n" +
+	"modifiedAt2\x8a\x05\n" +
+	"\x1aMitigationPlatformsService\x12\xa2\x02\n" +
+	"\x04List\x12E.kentik.alerting.public.v202505.MitigationPlatformsServiceListRequest\x1aF.kentik.alerting.public.v202505.MitigationPlatformsServiceListResponse\"\x8a\x01\x92AJ\x12\x19List Mitigation Platforms\x1a'Returns a list of mitigation platforms.*\x04List\xf2\xd7\x02\x13admin.alerting:read\x82\xd3\xe4\x93\x02 \x12\x1e/v202505/mitigations/platforms\x12\x98\x02\n" +
+	"\x03Get\x12D.kentik.alerting.public.v202505.MitigationPlatformsServiceGetRequest\x1aE.kentik.alerting.public.v202505.MitigationPlatformsServiceGetResponse\"\x83\x01\x92A>\x12\x17Get Mitigation Platform\x1a\x1eReturns a mitigation platform.*\x03Get\xf2\xd7\x02\x13admin.alerting:read\x82\xd3\xe4\x93\x02%\x12#/v202505/mitigations/platforms/{id}\x1a,\xcaA\x13grpc.api.kentik.com\xea\xd7\x02\x0eadmin.alerting\x90\xd8\x02\x03B\xe7\x04\x92A\x98\x04\x12\xcc\x02\n" +
 	"\x18Mitigation Platforms API\x12\xdf\x01# Overview\n" +
 	"The Alert Mitigation Platforms API provides programmatic access to Kentik's capabilities of configuring and managing mitigation platforms that define where and how network infrastructure mitigations are deployed.\"E\n" +
 	"\x16Kentik API Engineering\x12+https://github.com/kentik/api-schema-public2\av202505*\x01\x022\x10application/json:\x10application/jsonZD\n" +

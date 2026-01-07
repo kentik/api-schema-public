@@ -15,7 +15,7 @@
         }
     ],
     "paths": {
-        "/mitigations/methods": {
+        "/v202505/mitigations/methods": {
             "get": {
                 "summary": "List Mitigation Methods",
                 "description": "Returns a list of mitigation methods.",
@@ -149,7 +149,7 @@
                 ]
             }
         },
-        "/mitigations/methods/{id}": {
+        "/v202505/mitigations/methods/{id}": {
             "get": {
                 "summary": "Get Mitigation Method",
                 "description": "Returns a mitigation method.",
