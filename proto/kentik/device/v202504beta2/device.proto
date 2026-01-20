@@ -281,6 +281,11 @@ message DeviceConcise {
       description: "Monitoring template - The ID of the monitoring template assigned to this device."
     }
   ];
+  string device_alert = 25 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Device alert - The device alert endpoint URL."
+    }
+  ];
 }
 
 // {{.Name}}

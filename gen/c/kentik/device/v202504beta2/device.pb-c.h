@@ -165,6 +165,7 @@ struct  Kentik__Device__V202504beta2__DeviceConcise
   char *device_bgp_credential_name;
   char *flow_snmp_credential_name;
   uint32_t monitoring_template_id;
+  char *device_alert;
   Kentik__Device__V202504beta2__DeviceConcise__MinimizeSnmpCase _minimize_snmp_case;
   union {
     protobuf_c_boolean minimize_snmp;
@@ -172,7 +173,7 @@ struct  Kentik__Device__V202504beta2__DeviceConcise
 };
 #define KENTIK__DEVICE__V202504BETA2__DEVICE_CONCISE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__device__v202504beta2__device_concise__descriptor) \
-    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL, 0, 0, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, KENTIK__DEVICE__V202504BETA2__DEVICE_CONCISE___MINIMIZE_SNMP__NOT_SET, {0} }
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL, 0, 0, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, (char *)protobuf_c_empty_string, KENTIK__DEVICE__V202504BETA2__DEVICE_CONCISE___MINIMIZE_SNMP__NOT_SET, {0} }
 
 
 /*

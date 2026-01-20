@@ -6277,6 +6277,7 @@ class DeviceConcise final : public ::google::protobuf::Message
     kUseBgpDeviceIdFieldNumber = 19,
     kDeviceBgpCredentialNameFieldNumber = 22,
     kFlowSnmpCredentialNameFieldNumber = 23,
+    kDeviceAlertFieldNumber = 25,
     kDeviceSnmpV3ConfFieldNumber = 13,
     kNmsFieldNumber = 21,
     kDeviceSampleRateFieldNumber = 7,
@@ -6548,6 +6549,22 @@ class DeviceConcise final : public ::google::protobuf::Message
   std::string* _internal_mutable_flow_snmp_credential_name();
 
   public:
+  // string device_alert = 25 [json_name = "deviceAlert", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_device_alert() ;
+  const std::string& device_alert() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_device_alert(Arg_&& arg, Args_... args);
+  std::string* mutable_device_alert();
+  PROTOBUF_NODISCARD std::string* release_device_alert();
+  void set_allocated_device_alert(std::string* value);
+
+  private:
+  const std::string& _internal_device_alert() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_device_alert(
+      const std::string& value);
+  std::string* _internal_mutable_device_alert();
+
+  public:
   // .kentik.device.v202504beta2.DeviceSnmpV3Conf device_snmp_v3_conf = 13 [json_name = "deviceSnmpV3Conf", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   bool has_device_snmp_v3_conf() const;
   void clear_device_snmp_v3_conf() ;
@@ -6644,8 +6661,8 @@ class DeviceConcise final : public ::google::protobuf::Message
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      5, 24, 2,
-      342, 2>
+      5, 25, 2,
+      354, 2>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -6680,6 +6697,7 @@ class DeviceConcise final : public ::google::protobuf::Message
     ::google::protobuf::internal::ArenaStringPtr use_bgp_device_id_;
     ::google::protobuf::internal::ArenaStringPtr device_bgp_credential_name_;
     ::google::protobuf::internal::ArenaStringPtr flow_snmp_credential_name_;
+    ::google::protobuf::internal::ArenaStringPtr device_alert_;
     ::kentik::device::v202504beta2::DeviceSnmpV3Conf* device_snmp_v3_conf_;
     ::kentik::device::v202504beta2::DeviceNmsConfig* nms_;
     double device_sample_rate_;
@@ -10931,6 +10949,54 @@ inline ::uint32_t DeviceConcise::_internal_monitoring_template_id() const {
 inline void DeviceConcise::_internal_set_monitoring_template_id(::uint32_t value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.monitoring_template_id_ = value;
+}
+
+// string device_alert = 25 [json_name = "deviceAlert", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void DeviceConcise::clear_device_alert() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.device_alert_.ClearToEmpty();
+}
+inline const std::string& DeviceConcise::device_alert() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.device.v202504beta2.DeviceConcise.device_alert)
+  return _internal_device_alert();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void DeviceConcise::set_device_alert(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.device_alert_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.device.v202504beta2.DeviceConcise.device_alert)
+}
+inline std::string* DeviceConcise::mutable_device_alert() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_device_alert();
+  // @@protoc_insertion_point(field_mutable:kentik.device.v202504beta2.DeviceConcise.device_alert)
+  return _s;
+}
+inline const std::string& DeviceConcise::_internal_device_alert() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.device_alert_.Get();
+}
+inline void DeviceConcise::_internal_set_device_alert(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.device_alert_.Set(value, GetArena());
+}
+inline std::string* DeviceConcise::_internal_mutable_device_alert() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.device_alert_.Mutable( GetArena());
+}
+inline std::string* DeviceConcise::release_device_alert() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.device.v202504beta2.DeviceConcise.device_alert)
+  return _impl_.device_alert_.Release();
+}
+inline void DeviceConcise::set_allocated_device_alert(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.device_alert_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.device_alert_.IsDefault()) {
+    _impl_.device_alert_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.device.v202504beta2.DeviceConcise.device_alert)
 }
 
 // -------------------------------------------------------------------

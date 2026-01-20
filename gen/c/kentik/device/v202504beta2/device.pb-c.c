@@ -1761,7 +1761,7 @@ const ProtobufCMessageDescriptor kentik__device__v202504beta2__device_nms_st_con
   (ProtobufCMessageInit) kentik__device__v202504beta2__device_nms_st_config__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__device__v202504beta2__device_concise__field_descriptors[24] =
+static const ProtobufCFieldDescriptor kentik__device__v202504beta2__device_concise__field_descriptors[25] =
 {
   {
     "id",
@@ -2051,9 +2051,22 @@ static const ProtobufCFieldDescriptor kentik__device__v202504beta2__device_conci
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "device_alert",
+    25,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Device__V202504beta2__DeviceConcise, device_alert),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__device__v202504beta2__device_concise__field_indices_by_name[] = {
   3,   /* field[3] = cdn_attr */
+  24,   /* field[24] = device_alert */
   21,   /* field[21] = device_bgp_credential_name */
   19,   /* field[19] = device_bgp_flowspec */
   16,   /* field[16] = device_bgp_neighbor_asn */
@@ -2081,7 +2094,7 @@ static const unsigned kentik__device__v202504beta2__device_concise__field_indice
 static const ProtobufCIntRange kentik__device__v202504beta2__device_concise__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 24 }
+  { 0, 25 }
 };
 const ProtobufCMessageDescriptor kentik__device__v202504beta2__device_concise__descriptor =
 {
@@ -2091,7 +2104,7 @@ const ProtobufCMessageDescriptor kentik__device__v202504beta2__device_concise__d
   "Kentik__Device__V202504beta2__DeviceConcise",
   "kentik.device.v202504beta2",
   sizeof(Kentik__Device__V202504beta2__DeviceConcise),
-  24,
+  25,
   kentik__device__v202504beta2__device_concise__field_descriptors,
   kentik__device__v202504beta2__device_concise__field_indices_by_name,
   1,  kentik__device__v202504beta2__device_concise__number_ranges,

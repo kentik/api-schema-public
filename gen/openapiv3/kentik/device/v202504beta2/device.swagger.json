@@ -546,6 +546,10 @@
                                 "type": "integer",
                                 "format": "int64",
                                 "description": "Monitoring template - The ID of the monitoring template assigned to this device."
+                            },
+                            "deviceAlert": {
+                                "type": "string",
+                                "description": "Device alert - The device alert endpoint URL."
                             }
                         },
                         "title": "DeviceConcise"
@@ -875,6 +879,10 @@
                         "type": "integer",
                         "format": "int64",
                         "description": "Monitoring template - The ID of the monitoring template assigned to this device."
+                    },
+                    "deviceAlert": {
+                        "type": "string",
+                        "description": "Device alert - The device alert endpoint URL."
                     }
                 },
                 "title": "DeviceConcise"

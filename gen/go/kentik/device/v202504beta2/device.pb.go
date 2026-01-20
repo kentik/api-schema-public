@@ -330,6 +330,7 @@ type DeviceConcise struct {
 	DeviceBgpCredentialName string            `protobuf:"bytes,22,opt,name=device_bgp_credential_name,json=deviceBgpCredentialName,proto3" json:"device_bgp_credential_name,omitempty"`
 	FlowSnmpCredentialName  string            `protobuf:"bytes,23,opt,name=flow_snmp_credential_name,json=flowSnmpCredentialName,proto3" json:"flow_snmp_credential_name,omitempty"`
 	MonitoringTemplateId    uint32            `protobuf:"varint,24,opt,name=monitoring_template_id,json=monitoringTemplateId,proto3" json:"monitoring_template_id,omitempty"`
+	DeviceAlert             string            `protobuf:"bytes,25,opt,name=device_alert,json=deviceAlert,proto3" json:"device_alert,omitempty"`
 	unknownFields           protoimpl.UnknownFields
 	sizeCache               protoimpl.SizeCache
 }
@@ -530,6 +531,13 @@ func (x *DeviceConcise) GetMonitoringTemplateId() uint32 {
 		return x.MonitoringTemplateId
 	}
 	return 0
+}
+
+func (x *DeviceConcise) GetDeviceAlert() string {
+	if x != nil {
+		return x.DeviceAlert
+	}
+	return ""
 }
 
 // {{.Name}}
@@ -2646,7 +2654,7 @@ const file_kentik_device_v202504beta2_device_proto_rawDesc = "" +
 	"\x0fcredential_name\x18\x01 \x01(\tB:\x92A725Name of the ST credentials from the credential vault.R\x0ecredentialName\x12>\n" +
 	"\x04port\x18\x02 \x01(\rB*\x92A'2%ST port, to override default of 6030.R\x04port\x12]\n" +
 	"\atimeout\x18\x03 \x01(\v2\x19.google.protobuf.DurationB(\x92A%2#Timeout, to override default of 2s.R\atimeout\x12?\n" +
-	"\x06secure\x18\x04 \x01(\bB'\x92A$2\"Use SSL to connect to this device.R\x06secure\"\xc5)\n" +
+	"\x06secure\x18\x04 \x01(\bB'\x92A$2\"Use SSL to connect to this device.R\x06secure\"\x9c*\n" +
 	"\rDeviceConcise\x127\n" +
 	"\x02id\x18\x01 \x01(\tB'\x92A$2\"System generated unique identifierR\x02id\x12\xa0\x01\n" +
 	"\vdevice_name\x18\x02 \x01(\tB\x7f\x92A|2zDevice name (device_name) - The name of the device. Valid characters: alphanumeric and underscores. Length: min=4, max=60.R\n" +
@@ -2674,7 +2682,8 @@ const file_kentik_device_v202504beta2_device_proto_rawDesc = "" +
 	"\x03nms\x18\x15 \x01(\v2+.kentik.device.v202504beta2.DeviceNmsConfigB;\x92A826Configuration if this device will be monitored by NMS.R\x03nms\x12\xa8\x01\n" +
 	"\x1adevice_bgp_credential_name\x18\x16 \x01(\tBk\x92Ah2fBGP Credential Name (device_bgp_credential_name) - Unsupported Field. Use device_bgp_password instead.R\x17deviceBgpCredentialName\x12\xde\x01\n" +
 	"\x19flow_snmp_credential_name\x18\x17 \x01(\tB\xa2\x01\x92A\x9e\x012\x9b\x01Snmp Credential Name (flow_snmp_credential_name) - Optional Credential Name (Credential for Flow Snmp peering). Valid characters: alphanumeric. Length: 32.R\x16flowSnmpCredentialName\x12\x8b\x01\n" +
-	"\x16monitoring_template_id\x18\x18 \x01(\rBU\x92AR2PMonitoring template - The ID of the monitoring template assigned to this device.R\x14monitoringTemplateIdB\x10\n" +
+	"\x16monitoring_template_id\x18\x18 \x01(\rBU\x92AR2PMonitoring template - The ID of the monitoring template assigned to this device.R\x14monitoringTemplateId\x12U\n" +
+	"\fdevice_alert\x18\x19 \x01(\tB2\x92A/2-Device alert - The device alert endpoint URL.R\vdeviceAlertB\x10\n" +
 	"\x0e_minimize_snmp\"\xce\x01\n" +
 	"\x04Site\x12\x1c\n" +
 	"\x02id\x18\x01 \x01(\tB\f\x92A\t2\aSite IDR\x02id\x12+\n" +
