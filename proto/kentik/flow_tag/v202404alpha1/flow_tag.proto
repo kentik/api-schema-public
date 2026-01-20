@@ -309,7 +309,7 @@ message CreateFlowTagResponse {
 
 // {{.Name}}
 message UpdateFlowTagRequest {
-  FlowTag flow_tag = 1;
+  FlowTag flow_tag = 1 [json_name = "flowTag"];
 }
 
 // {{.Name}}
