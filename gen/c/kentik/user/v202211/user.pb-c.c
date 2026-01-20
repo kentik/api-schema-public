@@ -778,7 +778,7 @@ const ProtobufCMessageDescriptor kentik__user__v202211__permission_entry__descri
   (ProtobufCMessageInit) kentik__user__v202211__permission_entry__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__user__v202211__user__field_descriptors[9] =
+static const ProtobufCFieldDescriptor kentik__user__v202211__user__field_descriptors[13] =
 {
   {
     "id",
@@ -837,7 +837,7 @@ static const ProtobufCFieldDescriptor kentik__user__v202211__user__field_descrip
     offsetof(Kentik__User__V202211__User, permissions),
     &kentik__user__v202211__permission_entry__descriptor,
     NULL,
-    0,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_DEPRECATED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -888,15 +888,67 @@ static const ProtobufCFieldDescriptor kentik__user__v202211__user__field_descrip
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "default_landing_page_type",
+    11,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_ENUM,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__User__V202211__User, default_landing_page_type),
+    &kentik__user__v202211__landing_type__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "default_landing_page_value",
+    12,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__User__V202211__User, default_landing_page_value),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "roles",
+    13,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_STRING,
+    offsetof(Kentik__User__V202211__User, n_roles),
+    offsetof(Kentik__User__V202211__User, roles),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "role_sets",
+    14,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_STRING,
+    offsetof(Kentik__User__V202211__User, n_role_sets),
+    offsetof(Kentik__User__V202211__User, role_sets),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__user__v202211__user__field_indices_by_name[] = {
   7,   /* field[7] = cdate */
+  9,   /* field[9] = default_landing_page_type */
+  10,   /* field[10] = default_landing_page_value */
   8,   /* field[8] = edate */
   5,   /* field[5] = filter */
   0,   /* field[0] = id */
   6,   /* field[6] = last_login */
   4,   /* field[4] = permissions */
   3,   /* field[3] = role */
+  12,   /* field[12] = role_sets */
+  11,   /* field[11] = roles */
   1,   /* field[1] = user_email */
   2,   /* field[2] = user_full_name */
 };
@@ -904,7 +956,7 @@ static const ProtobufCIntRange kentik__user__v202211__user__number_ranges[2 + 1]
 {
   { 1, 0 },
   { 4, 2 },
-  { 0, 9 }
+  { 0, 13 }
 };
 const ProtobufCMessageDescriptor kentik__user__v202211__user__descriptor =
 {
@@ -914,7 +966,7 @@ const ProtobufCMessageDescriptor kentik__user__v202211__user__descriptor =
   "Kentik__User__V202211__User",
   "kentik.user.v202211",
   sizeof(Kentik__User__V202211__User),
-  9,
+  13,
   kentik__user__v202211__user__field_descriptors,
   kentik__user__v202211__user__field_indices_by_name,
   2,  kentik__user__v202211__user__number_ranges,
@@ -1416,6 +1468,58 @@ const ProtobufCEnumDescriptor kentik__user__v202211__role__descriptor =
   kentik__user__v202211__role__enum_values_by_name,
   1,
   kentik__user__v202211__role__value_ranges,
+  NULL,NULL,NULL,NULL   /* reserved[1234] */
+};
+static const ProtobufCEnumValue kentik__user__v202211__landing_type__enum_values_by_number[14] =
+{
+  { "LANDING_TYPE_UNSPECIFIED", "KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_UNSPECIFIED", 0 },
+  { "LANDING_TYPE_LOCAL", "KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_LOCAL", 1 },
+  { "LANDING_TYPE_OBSERVATION_DECK", "KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_OBSERVATION_DECK", 2 },
+  { "LANDING_TYPE_NMS_DASHBOARD", "KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_NMS_DASHBOARD", 3 },
+  { "LANDING_TYPE_NETWORK_EXPLORER", "KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_NETWORK_EXPLORER", 4 },
+  { "LANDING_TYPE_LIBRARY", "KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_LIBRARY", 5 },
+  { "LANDING_TYPE_SYNTHETICS", "KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_SYNTHETICS", 6 },
+  { "LANDING_TYPE_EXPLORER", "KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_EXPLORER", 7 },
+  { "LANDING_TYPE_ALERTING", "KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_ALERTING", 8 },
+  { "LANDING_TYPE_INSIGHTS", "KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_INSIGHTS", 9 },
+  { "LANDING_TYPE_DASHBOARD", "KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_DASHBOARD", 10 },
+  { "LANDING_TYPE_SAVED_VIEW", "KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_SAVED_VIEW", 11 },
+  { "LANDING_TYPE_QUICK_VIEW", "KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_QUICK_VIEW", 12 },
+  { "LANDING_TYPE_MARKET_INTELLIGENCE", "KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_MARKET_INTELLIGENCE", 13 },
+};
+static const ProtobufCIntRange kentik__user__v202211__landing_type__value_ranges[] = {
+{0, 0},{0, 14}
+};
+static const ProtobufCEnumValueIndex kentik__user__v202211__landing_type__enum_values_by_name[14] =
+{
+  { "LANDING_TYPE_ALERTING", 8 },
+  { "LANDING_TYPE_DASHBOARD", 10 },
+  { "LANDING_TYPE_EXPLORER", 7 },
+  { "LANDING_TYPE_INSIGHTS", 9 },
+  { "LANDING_TYPE_LIBRARY", 5 },
+  { "LANDING_TYPE_LOCAL", 1 },
+  { "LANDING_TYPE_MARKET_INTELLIGENCE", 13 },
+  { "LANDING_TYPE_NETWORK_EXPLORER", 4 },
+  { "LANDING_TYPE_NMS_DASHBOARD", 3 },
+  { "LANDING_TYPE_OBSERVATION_DECK", 2 },
+  { "LANDING_TYPE_QUICK_VIEW", 12 },
+  { "LANDING_TYPE_SAVED_VIEW", 11 },
+  { "LANDING_TYPE_SYNTHETICS", 6 },
+  { "LANDING_TYPE_UNSPECIFIED", 0 },
+};
+const ProtobufCEnumDescriptor kentik__user__v202211__landing_type__descriptor =
+{
+  PROTOBUF_C__ENUM_DESCRIPTOR_MAGIC,
+  "kentik.user.v202211.LandingType",
+  "LandingType",
+  "Kentik__User__V202211__LandingType",
+  "kentik.user.v202211",
+  14,
+  kentik__user__v202211__landing_type__enum_values_by_number,
+  14,
+  kentik__user__v202211__landing_type__enum_values_by_name,
+  1,
+  kentik__user__v202211__landing_type__value_ranges,
   NULL,NULL,NULL,NULL   /* reserved[1234] */
 };
 static const ProtobufCMethodDescriptor kentik__user__v202211__user_service__method_descriptors[7] =

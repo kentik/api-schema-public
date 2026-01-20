@@ -116,6 +116,24 @@ enum Role {
 }
 
 // {{.Name}}
+enum LandingType {
+  LANDING_TYPE_UNSPECIFIED = 0;
+  LANDING_TYPE_LOCAL = 1;
+  LANDING_TYPE_OBSERVATION_DECK = 2;
+  LANDING_TYPE_NMS_DASHBOARD = 3;
+  LANDING_TYPE_NETWORK_EXPLORER = 4;
+  LANDING_TYPE_LIBRARY = 5;
+  LANDING_TYPE_SYNTHETICS = 6;
+  LANDING_TYPE_EXPLORER = 7;
+  LANDING_TYPE_ALERTING = 8;
+  LANDING_TYPE_INSIGHTS = 9;
+  LANDING_TYPE_DASHBOARD = 10;
+  LANDING_TYPE_SAVED_VIEW = 11;
+  LANDING_TYPE_QUICK_VIEW = 12;
+  LANDING_TYPE_MARKET_INTELLIGENCE = 13;
+}
+
+// {{.Name}}
 message PermissionEntry {
   string capability = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -153,13 +171,15 @@ message User {
   ];
   Role role = 5 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "User role (in Kentik application)"
+      description: "Legacy user level."
     },
     (google.api.field_behavior) = REQUIRED
   ];
   repeated PermissionEntry permissions = 6 [
+    deprecated = true,
+    (google.api.field_behavior) = OUTPUT_ONLY,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "Optional list of permissions granted to the user"
+      description: "Legacy permissions granted to the user (deprecated, use rbac roles and role-sets)"
     }
   ];
   string filter = 7 [
@@ -183,6 +203,26 @@ message User {
     (google.api.field_behavior) = OUTPUT_ONLY,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Last modification timestamp (UTC)"
+    }
+  ];
+  LandingType default_landing_page_type = 11 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Landing Page for user."
+    }
+  ];
+  string default_landing_page_value = 12 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Specific landing page applies to Dashboard, Quick View, and Saved View"
+    }
+  ];
+  repeated string roles = 13 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of RBAC roles."
+    }
+  ];
+  repeated string role_sets = 14 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of RBAC role sets."
     }
   ];
 }

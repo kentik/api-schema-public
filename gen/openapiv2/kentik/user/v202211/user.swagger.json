@@ -267,7 +267,7 @@
             },
             "role": {
               "$ref": "#/definitions/v202211Role",
-              "description": "User role (in Kentik application)"
+              "description": "Legacy user level."
             },
             "permissions": {
               "type": "array",
@@ -275,7 +275,8 @@
                 "type": "object",
                 "$ref": "#/definitions/v202211PermissionEntry"
               },
-              "description": "Optional list of permissions granted to the user"
+              "description": "Legacy permissions granted to the user (deprecated, use rbac roles and role-sets)",
+              "readOnly": true
             },
             "filter": {
               "type": "string",
@@ -298,6 +299,28 @@
               "format": "date-time",
               "description": "Last modification timestamp (UTC)",
               "readOnly": true
+            },
+            "defaultLandingPageType": {
+              "$ref": "#/definitions/v202211LandingType",
+              "description": "Landing Page for user."
+            },
+            "defaultLandingPageValue": {
+              "type": "string",
+              "description": "Specific landing page applies to Dashboard, Quick View, and Saved View"
+            },
+            "roles": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "List of RBAC roles."
+            },
+            "roleSets": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "List of RBAC role sets."
             }
           },
           "title": "User"
@@ -375,6 +398,27 @@
         }
       },
       "title": "GetUserResponse"
+    },
+    "v202211LandingType": {
+      "type": "string",
+      "enum": [
+        "LANDING_TYPE_UNSPECIFIED",
+        "LANDING_TYPE_LOCAL",
+        "LANDING_TYPE_OBSERVATION_DECK",
+        "LANDING_TYPE_NMS_DASHBOARD",
+        "LANDING_TYPE_NETWORK_EXPLORER",
+        "LANDING_TYPE_LIBRARY",
+        "LANDING_TYPE_SYNTHETICS",
+        "LANDING_TYPE_EXPLORER",
+        "LANDING_TYPE_ALERTING",
+        "LANDING_TYPE_INSIGHTS",
+        "LANDING_TYPE_DASHBOARD",
+        "LANDING_TYPE_SAVED_VIEW",
+        "LANDING_TYPE_QUICK_VIEW",
+        "LANDING_TYPE_MARKET_INTELLIGENCE"
+      ],
+      "default": "LANDING_TYPE_UNSPECIFIED",
+      "title": "LandingType"
     },
     "v202211ListUsersResponse": {
       "type": "object",
@@ -462,7 +506,7 @@
         },
         "role": {
           "$ref": "#/definitions/v202211Role",
-          "description": "User role (in Kentik application)"
+          "description": "Legacy user level."
         },
         "permissions": {
           "type": "array",
@@ -470,7 +514,8 @@
             "type": "object",
             "$ref": "#/definitions/v202211PermissionEntry"
           },
-          "description": "Optional list of permissions granted to the user"
+          "description": "Legacy permissions granted to the user (deprecated, use rbac roles and role-sets)",
+          "readOnly": true
         },
         "filter": {
           "type": "string",
@@ -493,6 +538,28 @@
           "format": "date-time",
           "description": "Last modification timestamp (UTC)",
           "readOnly": true
+        },
+        "defaultLandingPageType": {
+          "$ref": "#/definitions/v202211LandingType",
+          "description": "Landing Page for user."
+        },
+        "defaultLandingPageValue": {
+          "type": "string",
+          "description": "Specific landing page applies to Dashboard, Quick View, and Saved View"
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of RBAC roles."
+        },
+        "roleSets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of RBAC role sets."
         }
       },
       "title": "User",

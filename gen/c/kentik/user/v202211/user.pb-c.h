@@ -63,6 +63,26 @@ typedef enum _Kentik__User__V202211__Role {
   KENTIK__USER__V202211__ROLE__ROLE_SUPER_ADMINISTRATOR = 3
     PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__USER__V202211__ROLE)
 } Kentik__User__V202211__Role;
+/*
+ * {{.Name}}
+ */
+typedef enum _Kentik__User__V202211__LandingType {
+  KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_UNSPECIFIED = 0,
+  KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_LOCAL = 1,
+  KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_OBSERVATION_DECK = 2,
+  KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_NMS_DASHBOARD = 3,
+  KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_NETWORK_EXPLORER = 4,
+  KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_LIBRARY = 5,
+  KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_SYNTHETICS = 6,
+  KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_EXPLORER = 7,
+  KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_ALERTING = 8,
+  KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_INSIGHTS = 9,
+  KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_DASHBOARD = 10,
+  KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_SAVED_VIEW = 11,
+  KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_QUICK_VIEW = 12,
+  KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_MARKET_INTELLIGENCE = 13
+    PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__USER__V202211__LANDING_TYPE)
+} Kentik__User__V202211__LandingType;
 
 /* --- messages --- */
 
@@ -90,16 +110,22 @@ struct  Kentik__User__V202211__User
   char *user_email;
   char *user_full_name;
   Kentik__User__V202211__Role role;
-  size_t n_permissions;
-  Kentik__User__V202211__PermissionEntry **permissions;
+  size_t n_permissions PROTOBUF_C__DEPRECATED;
+  Kentik__User__V202211__PermissionEntry **permissions PROTOBUF_C__DEPRECATED;
   char *filter;
   Google__Protobuf__Timestamp *last_login;
   Google__Protobuf__Timestamp *cdate;
   Google__Protobuf__Timestamp *edate;
+  Kentik__User__V202211__LandingType default_landing_page_type;
+  char *default_landing_page_value;
+  size_t n_roles;
+  char **roles;
+  size_t n_role_sets;
+  char **role_sets;
 };
 #define KENTIK__USER__V202211__USER__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__user__v202211__user__descriptor) \
-    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, KENTIK__USER__V202211__ROLE__ROLE_UNSPECIFIED, 0,NULL, (char *)protobuf_c_empty_string, NULL, NULL, NULL }
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, KENTIK__USER__V202211__ROLE__ROLE_UNSPECIFIED, 0,NULL, (char *)protobuf_c_empty_string, NULL, NULL, NULL, KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_UNSPECIFIED, (char *)protobuf_c_empty_string, 0,NULL, 0,NULL }
 
 
 /*
@@ -718,6 +744,7 @@ void kentik__user__v202211__user_service__reset_active_sessions(ProtobufCService
 /* --- descriptors --- */
 
 extern const ProtobufCEnumDescriptor    kentik__user__v202211__role__descriptor;
+extern const ProtobufCEnumDescriptor    kentik__user__v202211__landing_type__descriptor;
 extern const ProtobufCMessageDescriptor kentik__user__v202211__permission_entry__descriptor;
 extern const ProtobufCMessageDescriptor kentik__user__v202211__user__descriptor;
 extern const ProtobufCMessageDescriptor kentik__user__v202211__list_users_request__descriptor;

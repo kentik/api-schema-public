@@ -240,6 +240,8 @@ inline constexpr User::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
         permissions_{},
+        roles_{},
+        role_sets_{},
         id_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
@@ -252,10 +254,14 @@ inline constexpr User::Impl_::Impl_(
         filter_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
+        default_landing_page_value_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
         last_login_{nullptr},
         cdate_{nullptr},
         edate_{nullptr},
-        role_{static_cast< ::kentik::user::v202211::Role >(0)} {}
+        role_{static_cast< ::kentik::user::v202211::Role >(0)},
+        default_landing_page_type_{static_cast< ::kentik::user::v202211::LandingType >(0)} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR User::User(::_pbi::ConstantInitialized)
@@ -430,7 +436,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 }  // namespace v202211
 }  // namespace user
 }  // namespace kentik
-static const ::_pb::EnumDescriptor* file_level_enum_descriptors_kentik_2fuser_2fv202211_2fuser_2eproto[1];
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_kentik_2fuser_2fv202211_2fuser_2eproto[2];
 static constexpr const ::_pb::ServiceDescriptor**
     file_level_service_descriptors_kentik_2fuser_2fv202211_2fuser_2eproto = nullptr;
 const ::uint32_t
@@ -463,6 +469,10 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::user::v202211::User, _impl_.last_login_),
         PROTOBUF_FIELD_OFFSET(::kentik::user::v202211::User, _impl_.cdate_),
         PROTOBUF_FIELD_OFFSET(::kentik::user::v202211::User, _impl_.edate_),
+        PROTOBUF_FIELD_OFFSET(::kentik::user::v202211::User, _impl_.default_landing_page_type_),
+        PROTOBUF_FIELD_OFFSET(::kentik::user::v202211::User, _impl_.default_landing_page_value_),
+        PROTOBUF_FIELD_OFFSET(::kentik::user::v202211::User, _impl_.roles_),
+        PROTOBUF_FIELD_OFFSET(::kentik::user::v202211::User, _impl_.role_sets_),
         ~0u,
         ~0u,
         ~0u,
@@ -472,6 +482,10 @@ const ::uint32_t
         0,
         1,
         2,
+        ~0u,
+        ~0u,
+        ~0u,
+        ~0u,
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::kentik::user::v202211::ListUsersRequest, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -605,21 +619,21 @@ const ::uint32_t
 static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
         {0, -1, -1, sizeof(::kentik::user::v202211::PermissionEntry)},
-        {10, 27, -1, sizeof(::kentik::user::v202211::User)},
-        {36, -1, -1, sizeof(::kentik::user::v202211::ListUsersRequest)},
-        {44, -1, -1, sizeof(::kentik::user::v202211::ListUsersResponse)},
-        {54, -1, -1, sizeof(::kentik::user::v202211::GetUserRequest)},
-        {63, 72, -1, sizeof(::kentik::user::v202211::GetUserResponse)},
-        {73, 82, -1, sizeof(::kentik::user::v202211::CreateUserRequest)},
-        {83, 92, -1, sizeof(::kentik::user::v202211::CreateUserResponse)},
-        {93, 102, -1, sizeof(::kentik::user::v202211::UpdateUserRequest)},
-        {103, 112, -1, sizeof(::kentik::user::v202211::UpdateUserResponse)},
-        {113, -1, -1, sizeof(::kentik::user::v202211::DeleteUserRequest)},
-        {122, -1, -1, sizeof(::kentik::user::v202211::DeleteUserResponse)},
-        {130, -1, -1, sizeof(::kentik::user::v202211::ResetApiTokenRequest)},
-        {139, -1, -1, sizeof(::kentik::user::v202211::ResetApiTokenResponse)},
-        {147, -1, -1, sizeof(::kentik::user::v202211::ResetActiveSessionsRequest)},
-        {156, -1, -1, sizeof(::kentik::user::v202211::ResetActiveSessionsResponse)},
+        {10, 31, -1, sizeof(::kentik::user::v202211::User)},
+        {44, -1, -1, sizeof(::kentik::user::v202211::ListUsersRequest)},
+        {52, -1, -1, sizeof(::kentik::user::v202211::ListUsersResponse)},
+        {62, -1, -1, sizeof(::kentik::user::v202211::GetUserRequest)},
+        {71, 80, -1, sizeof(::kentik::user::v202211::GetUserResponse)},
+        {81, 90, -1, sizeof(::kentik::user::v202211::CreateUserRequest)},
+        {91, 100, -1, sizeof(::kentik::user::v202211::CreateUserResponse)},
+        {101, 110, -1, sizeof(::kentik::user::v202211::UpdateUserRequest)},
+        {111, 120, -1, sizeof(::kentik::user::v202211::UpdateUserResponse)},
+        {121, -1, -1, sizeof(::kentik::user::v202211::DeleteUserRequest)},
+        {130, -1, -1, sizeof(::kentik::user::v202211::DeleteUserResponse)},
+        {138, -1, -1, sizeof(::kentik::user::v202211::ResetApiTokenRequest)},
+        {147, -1, -1, sizeof(::kentik::user::v202211::ResetApiTokenResponse)},
+        {155, -1, -1, sizeof(::kentik::user::v202211::ResetActiveSessionsRequest)},
+        {164, -1, -1, sizeof(::kentik::user::v202211::ResetActiveSessionsResponse)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::user::v202211::_PermissionEntry_default_instance_._instance,
@@ -652,193 +666,214 @@ const char descriptor_table_protodef_kentik_2fuser_2fv202211_2fuser_2eproto[] AB
     "ifying capability that is granted of den"
     "ied\340A\002R\ncapability\022N\n\007allowed\030\002 \001(\010B4\222A."
     "2,Flag indicating whether operation is a"
-    "llowed\340A\002R\007allowed\"\255\006\n\004User\022:\n\002id\030\001 \001(\tB"
+    "llowed\340A\002R\007allowed\"\265\t\n\004User\022:\n\002id\030\001 \001(\tB"
     "*\222A$2\"System generated unique identifier"
     "\340A\003R\002id\022T\n\nuser_email\030\002 \001(\tB5\222A/2-User e"
     "-mail address (serves also as username)\340"
     "A\002R\tuserEmail\0227\n\016user_full_name\030\004 \001(\tB\021\222"
-    "A\0132\tFull name\340A\002R\014userFullName\022X\n\004role\030\005"
-    " \001(\0162\031.kentik.user.v202211.RoleB)\222A#2!Us"
-    "er role (in Kentik application)\340A\002R\004role"
-    "\022}\n\013permissions\030\006 \003(\0132$.kentik.user.v202"
-    "211.PermissionEntryB5\222A220Optional list "
-    "of permissions granted to the userR\013perm"
-    "issions\022a\n\006filter\030\007 \001(\tBI\222AF2DOptional J"
-    "SON string defining filter for objects v"
-    "isible to the userR\006filter\022m\n\nlast_login"
-    "\030\010 \001(\0132\032.google.protobuf.TimestampB2\222A,2"
-    "*UTC Timestamp of user\'s last login sess"
-    "ion\340A\003R\tlastLogin\022R\n\005cdate\030\t \001(\0132\032.googl"
-    "e.protobuf.TimestampB \222A\0322\030Creation time"
-    "stamp (UTC)\340A\003R\005cdate\022[\n\005edate\030\n \001(\0132\032.g"
-    "oogle.protobuf.TimestampB)\222A#2!Last modi"
-    "fication timestamp (UTC)\340A\003R\005edate\"\022\n\020Li"
-    "stUsersRequest\"\321\001\n\021ListUsersResponse\022U\n\005"
-    "users\030\001 \003(\0132\031.kentik.user.v202211.UserB$"
-    "\222A\0362\034Last of users in the account\340A\003R\005us"
-    "ers\022e\n\rinvalid_count\030\002 \001(\rB@\222A=2;Number "
-    "of invalid entries encountered while col"
-    "lecting dataR\014invalidCount\"B\n\016GetUserReq"
-    "uest\0220\n\002id\030\001 \001(\tB \222A\0322\030ID of the request"
-    "ed user\340A\002R\002id\"k\n\017GetUserResponse\022X\n\004use"
-    "r\030\001 \001(\0132\031.kentik.user.v202211.UserB)\222A&2"
-    "$Information about the requested userR\004u"
-    "ser\"y\n\021CreateUserRequest\022d\n\004user\030\001 \001(\0132\031"
-    ".kentik.user.v202211.UserB5\222A/2-Attribut"
-    "es for the user account to be created\340A\002"
-    "R\004user\"w\n\022CreateUserResponse\022a\n\004user\030\001 \001"
-    "(\0132\031.kentik.user.v202211.UserB2\222A/2-Attr"
-    "ibutes for the newly created user accoun"
-    "tR\004user\"o\n\021UpdateUserRequest\022Z\n\004user\030\001 \001"
-    "(\0132\031.kentik.user.v202211.UserB+\222A%2#New "
-    "attributes for the user account\340A\002R\004user"
-    "\"i\n\022UpdateUserResponse\022S\n\004user\030\001 \001(\0132\031.k"
-    "entik.user.v202211.UserB$\222A!2\037Updated us"
-    "er account attributesR\004user\"U\n\021DeleteUse"
-    "rRequest\022@\n\002id\030\001 \001(\tB0\222A*2(ID of the the"
-    " user account to be deleted\340A\002R\002id\"\024\n\022De"
-    "leteUserResponse\"b\n\024ResetApiTokenRequest"
-    "\022J\n\002id\030\001 \001(\tB:\222A422ID of the the user wh"
-    "ose API token should be reset\340A\002R\002id\"\027\n\025"
-    "ResetApiTokenResponse\"g\n\032ResetActiveSess"
-    "ionsRequest\022I\n\002id\030\001 \001(\tB9\222A321ID of the "
-    "the user whose sessions should be reset\340"
-    "A\002R\002id\"\035\n\033ResetActiveSessionsResponse*c\n"
-    "\004Role\022\024\n\020ROLE_UNSPECIFIED\020\000\022\017\n\013ROLE_MEMB"
-    "ER\020\001\022\026\n\022ROLE_ADMINISTRATOR\020\002\022\034\n\030ROLE_SUP"
-    "ER_ADMINISTRATOR\020\0032\260\017\n\013UserService\022\337\001\n\tL"
-    "istUsers\022%.kentik.user.v202211.ListUsers"
-    "Request\032&.kentik.user.v202211.ListUsersR"
-    "esponse\"\202\001\222AQ\022\017List all users.\0323Returns "
-    "a list of all user accounts in the compa"
-    "ny.*\tListUsers\362\327\002\017admin.user:read\202\323\344\223\002\025\022"
-    "\023/user/v202211/users\022\360\001\n\007GetUser\022#.kenti"
-    "k.user.v202211.GetUserRequest\032$.kentik.u"
-    "ser.v202211.GetUserResponse\"\231\001\222Ac\022!Get a"
-    "ttributes of a user account.\0325Returns at"
-    "tributes of a user account specified by "
-    "ID.*\007GetUser\362\327\002\017admin.user:read\202\323\344\223\002\032\022\030/"
-    "user/v202211/users/{id}\022\253\002\n\nCreateUser\022&"
-    ".kentik.user.v202211.CreateUserRequest\032\'"
-    ".kentik.user.v202211.CreateUserResponse\""
-    "\313\001\222A\225\001\022\030Create new user account.\032mCreate"
-    "s new user account based on attributes i"
-    "n the request. Returns attributes of the"
-    " newly created account.*\nCreateUser\362\327\002\020a"
-    "dmin.user:write\202\323\344\223\002\030\"\023/user/v202211/use"
-    "rs:\001*\022\311\002\n\nUpdateUser\022&.kentik.user.v2022"
-    "11.UpdateUserRequest\032\'.kentik.user.v2022"
-    "11.UpdateUserResponse\"\351\001\222A\251\001\022$Update att"
-    "ributes of a user account.\032uReplaces all"
-    " attributes of a user account specified "
-    "by ID with attributes in the request. Re"
-    "turns updated attributes.*\nUpdateUser\362\327\002"
-    "\020admin.user:write\202\323\344\223\002\"\032\035/user/v202211/u"
-    "sers/{user.id}:\001*\022\342\001\n\nDeleteUser\022&.kenti"
-    "k.user.v202211.DeleteUserRequest\032\'.kenti"
-    "k.user.v202211.DeleteUserResponse\"\202\001\222AK\022"
-    "\026Delete a user account.\032%Deletes user ac"
-    "count specified by ID.*\nDeleteUser\362\327\002\020ad"
-    "min.user:write\202\323\344\223\002\032*\030/user/v202211/user"
-    "s/{id}\022\212\002\n\rResetApiToken\022).kentik.user.v"
-    "202211.ResetApiTokenRequest\032*.kentik.use"
-    "r.v202211.ResetApiTokenResponse\"\241\001\222AZ\022\033R"
-    "eset API token for a user.\032,Resets API t"
-    "oken for a user specified by ID.*\rResetA"
-    "piToken\362\327\002\020admin.user:write\202\323\344\223\002*\032(/user"
-    "/v202211/users/{id}/reset_api_token\022\265\002\n\023"
-    "ResetActiveSessions\022/.kentik.user.v20221"
-    "1.ResetActiveSessionsRequest\0320.kentik.us"
-    "er.v202211.ResetActiveSessionsResponse\"\272"
-    "\001\222Am\022\"Resets active sessions for a user."
-    "\0322Resets active sessions for a user spec"
-    "ified by ID.*\023ResetActiveSessions\362\327\002\020adm"
-    "in.user:write\202\323\344\223\0020\032./user/v202211/users"
-    "/{id}/reset_active_sessions\032(\312A\023grpc.api"
-    ".kentik.com\352\327\002\nadmin.user\220\330\002\003B\360\031ZCgithub"
-    ".com/kentik/api-schema-public/gen/go/ken"
-    "tik/user/v202211;user\222A\247\031\022\300\027\n\023User Manag"
-    "ement API\022\330\026# Overview\nThe User Manageme"
-    "nt API enables programmatic administrati"
-    "on of users within your organization. Th"
-    "e API may be used to grant permissions t"
-    "o users at two levels: \n* **User role**:"
-    " Permissions based on the level assigned"
-    " to the Kentik user, either Member, Admi"
-    "nistrator, or Super Administrator (see ["
-    "About Users](https://kb.kentik.com/v4/Cb"
-    "02.htm#Cb02-About_Users)).\n* **User perm"
-    "issions**: Permissions granting access t"
-    "o specific capabilities of the Kentik pl"
-    "atform (see [User Permissions](https://k"
-    "b.kentik.com/v4/Cb02.htm#Cb02-User_Permi"
-    "ssions)).\n\nBoth REST endpoint and gRPC R"
-    "PCs are provided.\n\n***Note:*** The legac"
-    "y REST-only [User API](https://kb.kentik"
-    ".com/v0/Ec06.htm#Ec06-User_API) provides"
-    " a subset of the functionality of this A"
-    "PI.\n\n# User Permission Identifiers\n\nIndi"
-    "vidual user permissions are represented "
-    "in this API by string-based identifiers."
-    " The table below shows the identifier us"
-    "ed in the API for each permission that c"
-    "an be enabled/disabled with the checkbox"
-    "es on the Permissions tab of the Edit Us"
-    "er dialog in the Kentik portal\'s Manage "
-    "Users module (Settings \302\273 Manage Users)."
-    "\n| Portal setting  | API identifier |\n|-"
-    "----------------|----------------|\n| Can"
-    "cel Queries in Forensic Viewer | forensi"
-    "c_viewer.cancel_queries |\n| Synthetics P"
-    "ermissions: Create tests | synthetics.te"
-    "sts.create |\n| Synthetics Permissions: E"
-    "dit tests | synthetics.tests.edit |\n| Sy"
-    "nthetics Permissions: Delete tests | syn"
-    "thetics.tests.delete |\n| Synthetics Perm"
-    "issions: Create agents | synthetics.agen"
-    "ts.create |\n| Synthetics Permissions: Ed"
-    "it agents | synthetics.agents.edit |\n| S"
-    "ynthetics Permissions: Delete agents | s"
-    "ynthetics.agents.delete |\n| Connectivity"
-    " Costs Permissions: View Costs | connect"
-    "ivity_costs.read |\n| Connectivity Costs "
-    "Permissions: Configure Costs | connectiv"
-    "ity_costs.edit |\n\n**_Note:_** The API re"
-    "turns an error if the same permission is"
-    " both granted and denied in the same req"
-    "uest.\n\n### Default Permissions\n\nThe perm"
-    "issions above that are enabled/disabled "
-    "by default depend on the role (level) of"
-    " the user:\n* **Member**: All permissions"
-    " in the table above are denied by defaul"
-    "t.\n* **Administrator** or **Super Admini"
-    "strator**: All permissions are granted. "
-    "\n\n# User Filter Attribute\n\nUser filters "
-    "enable Administrators to apply filters t"
-    "hat restrict the data that can be return"
-    "ed from queries by a given user (see [Us"
-    "er Filters](https://kb.kentik.com/v4/Cb0"
-    "2.htm#Cb02-User_Filters)). In the Kentik"
-    " portal these filters are set on the Fil"
-    "ters tab of the Edit User dialog in the "
-    "Manage Users module. In this API the fil"
-    "ters are set in the `user` object with t"
-    "he `filter` attribute, whose type is str"
-    "ing. The value of the attribute is given"
-    " in JSON notation. The recommended way t"
-    "o construct the JSON string is to config"
-    "ure the desired filter for one user in t"
-    "he Kentik portal and then copy the value"
-    " of the `user.filter` attribute returned"
-    " for that user by the `GetUser` RPC.\"E\n\026"
-    "Kentik API Engineering\022+https://github.c"
-    "om/kentik/api-schema-public2\007v202211*\001\0022"
-    "\020application/json:\020application/jsonZD\n\036\n"
-    "\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031"
-    "\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t"
-    "\n\005token\022\000r]\n%General information about K"
-    "entik APIs\0224https://kb.kentik.com/v0/Ab0"
-    "9.htm#Ab09-APIs_Overviewb\006proto3"
+    "A\0132\tFull name\340A\002R\014userFullName\022I\n\004role\030\005"
+    " \001(\0162\031.kentik.user.v202211.RoleB\032\222A\0242\022Le"
+    "gacy user level.\340A\002R\004role\022\243\001\n\013permission"
+    "s\030\006 \003(\0132$.kentik.user.v202211.Permission"
+    "EntryB[\030\001\222AS2QLegacy permissions granted"
+    " to the user (deprecated, use rbac roles"
+    " and role-sets)\340A\003R\013permissions\022a\n\006filte"
+    "r\030\007 \001(\tBI\222AF2DOptional JSON string defin"
+    "ing filter for objects visible to the us"
+    "erR\006filter\022m\n\nlast_login\030\010 \001(\0132\032.google."
+    "protobuf.TimestampB2\222A,2*UTC Timestamp o"
+    "f user\'s last login session\340A\003R\tlastLogi"
+    "n\022R\n\005cdate\030\t \001(\0132\032.google.protobuf.Times"
+    "tampB \222A\0322\030Creation timestamp (UTC)\340A\003R\005"
+    "cdate\022[\n\005edate\030\n \001(\0132\032.google.protobuf.T"
+    "imestampB)\222A#2!Last modification timesta"
+    "mp (UTC)\340A\003R\005edate\022x\n\031default_landing_pa"
+    "ge_type\030\013 \001(\0162 .kentik.user.v202211.Land"
+    "ingTypeB\033\222A\0302\026Landing Page for user.R\026de"
+    "faultLandingPageType\022\210\001\n\032default_landing"
+    "_page_value\030\014 \001(\tBK\222AH2FSpecific landing"
+    " page applies to Dashboard, Quick View, "
+    "and Saved ViewR\027defaultLandingPageValue\022"
+    ".\n\005roles\030\r \003(\tB\030\222A\0252\023List of RBAC roles."
+    "R\005roles\0229\n\trole_sets\030\016 \003(\tB\034\222A\0312\027List of"
+    " RBAC role sets.R\010roleSets\"\022\n\020ListUsersR"
+    "equest\"\321\001\n\021ListUsersResponse\022U\n\005users\030\001 "
+    "\003(\0132\031.kentik.user.v202211.UserB$\222A\0362\034Las"
+    "t of users in the account\340A\003R\005users\022e\n\ri"
+    "nvalid_count\030\002 \001(\rB@\222A=2;Number of inval"
+    "id entries encountered while collecting "
+    "dataR\014invalidCount\"B\n\016GetUserRequest\0220\n\002"
+    "id\030\001 \001(\tB \222A\0322\030ID of the requested user\340"
+    "A\002R\002id\"k\n\017GetUserResponse\022X\n\004user\030\001 \001(\0132"
+    "\031.kentik.user.v202211.UserB)\222A&2$Informa"
+    "tion about the requested userR\004user\"y\n\021C"
+    "reateUserRequest\022d\n\004user\030\001 \001(\0132\031.kentik."
+    "user.v202211.UserB5\222A/2-Attributes for t"
+    "he user account to be created\340A\002R\004user\"w"
+    "\n\022CreateUserResponse\022a\n\004user\030\001 \001(\0132\031.ken"
+    "tik.user.v202211.UserB2\222A/2-Attributes f"
+    "or the newly created user accountR\004user\""
+    "o\n\021UpdateUserRequest\022Z\n\004user\030\001 \001(\0132\031.ken"
+    "tik.user.v202211.UserB+\222A%2#New attribut"
+    "es for the user account\340A\002R\004user\"i\n\022Upda"
+    "teUserResponse\022S\n\004user\030\001 \001(\0132\031.kentik.us"
+    "er.v202211.UserB$\222A!2\037Updated user accou"
+    "nt attributesR\004user\"U\n\021DeleteUserRequest"
+    "\022@\n\002id\030\001 \001(\tB0\222A*2(ID of the the user ac"
+    "count to be deleted\340A\002R\002id\"\024\n\022DeleteUser"
+    "Response\"b\n\024ResetApiTokenRequest\022J\n\002id\030\001"
+    " \001(\tB:\222A422ID of the the user whose API "
+    "token should be reset\340A\002R\002id\"\027\n\025ResetApi"
+    "TokenResponse\"g\n\032ResetActiveSessionsRequ"
+    "est\022I\n\002id\030\001 \001(\tB9\222A321ID of the the user"
+    " whose sessions should be reset\340A\002R\002id\"\035"
+    "\n\033ResetActiveSessionsResponse*c\n\004Role\022\024\n"
+    "\020ROLE_UNSPECIFIED\020\000\022\017\n\013ROLE_MEMBER\020\001\022\026\n\022"
+    "ROLE_ADMINISTRATOR\020\002\022\034\n\030ROLE_SUPER_ADMIN"
+    "ISTRATOR\020\003*\255\003\n\013LandingType\022\034\n\030LANDING_TY"
+    "PE_UNSPECIFIED\020\000\022\026\n\022LANDING_TYPE_LOCAL\020\001"
+    "\022!\n\035LANDING_TYPE_OBSERVATION_DECK\020\002\022\036\n\032L"
+    "ANDING_TYPE_NMS_DASHBOARD\020\003\022!\n\035LANDING_T"
+    "YPE_NETWORK_EXPLORER\020\004\022\030\n\024LANDING_TYPE_L"
+    "IBRARY\020\005\022\033\n\027LANDING_TYPE_SYNTHETICS\020\006\022\031\n"
+    "\025LANDING_TYPE_EXPLORER\020\007\022\031\n\025LANDING_TYPE"
+    "_ALERTING\020\010\022\031\n\025LANDING_TYPE_INSIGHTS\020\t\022\032"
+    "\n\026LANDING_TYPE_DASHBOARD\020\n\022\033\n\027LANDING_TY"
+    "PE_SAVED_VIEW\020\013\022\033\n\027LANDING_TYPE_QUICK_VI"
+    "EW\020\014\022$\n LANDING_TYPE_MARKET_INTELLIGENCE"
+    "\020\r2\260\017\n\013UserService\022\337\001\n\tListUsers\022%.kenti"
+    "k.user.v202211.ListUsersRequest\032&.kentik"
+    ".user.v202211.ListUsersResponse\"\202\001\222AQ\022\017L"
+    "ist all users.\0323Returns a list of all us"
+    "er accounts in the company.*\tListUsers\362\327"
+    "\002\017admin.user:read\202\323\344\223\002\025\022\023/user/v202211/u"
+    "sers\022\360\001\n\007GetUser\022#.kentik.user.v202211.G"
+    "etUserRequest\032$.kentik.user.v202211.GetU"
+    "serResponse\"\231\001\222Ac\022!Get attributes of a u"
+    "ser account.\0325Returns attributes of a us"
+    "er account specified by ID.*\007GetUser\362\327\002\017"
+    "admin.user:read\202\323\344\223\002\032\022\030/user/v202211/use"
+    "rs/{id}\022\253\002\n\nCreateUser\022&.kentik.user.v20"
+    "2211.CreateUserRequest\032\'.kentik.user.v20"
+    "2211.CreateUserResponse\"\313\001\222A\225\001\022\030Create n"
+    "ew user account.\032mCreates new user accou"
+    "nt based on attributes in the request. R"
+    "eturns attributes of the newly created a"
+    "ccount.*\nCreateUser\362\327\002\020admin.user:write\202"
+    "\323\344\223\002\030\"\023/user/v202211/users:\001*\022\311\002\n\nUpdate"
+    "User\022&.kentik.user.v202211.UpdateUserReq"
+    "uest\032\'.kentik.user.v202211.UpdateUserRes"
+    "ponse\"\351\001\222A\251\001\022$Update attributes of a use"
+    "r account.\032uReplaces all attributes of a"
+    " user account specified by ID with attri"
+    "butes in the request. Returns updated at"
+    "tributes.*\nUpdateUser\362\327\002\020admin.user:writ"
+    "e\202\323\344\223\002\"\032\035/user/v202211/users/{user.id}:\001"
+    "*\022\342\001\n\nDeleteUser\022&.kentik.user.v202211.D"
+    "eleteUserRequest\032\'.kentik.user.v202211.D"
+    "eleteUserResponse\"\202\001\222AK\022\026Delete a user a"
+    "ccount.\032%Deletes user account specified "
+    "by ID.*\nDeleteUser\362\327\002\020admin.user:write\202\323"
+    "\344\223\002\032*\030/user/v202211/users/{id}\022\212\002\n\rReset"
+    "ApiToken\022).kentik.user.v202211.ResetApiT"
+    "okenRequest\032*.kentik.user.v202211.ResetA"
+    "piTokenResponse\"\241\001\222AZ\022\033Reset API token f"
+    "or a user.\032,Resets API token for a user "
+    "specified by ID.*\rResetApiToken\362\327\002\020admin"
+    ".user:write\202\323\344\223\002*\032(/user/v202211/users/{"
+    "id}/reset_api_token\022\265\002\n\023ResetActiveSessi"
+    "ons\022/.kentik.user.v202211.ResetActiveSes"
+    "sionsRequest\0320.kentik.user.v202211.Reset"
+    "ActiveSessionsResponse\"\272\001\222Am\022\"Resets act"
+    "ive sessions for a user.\0322Resets active "
+    "sessions for a user specified by ID.*\023Re"
+    "setActiveSessions\362\327\002\020admin.user:write\202\323\344"
+    "\223\0020\032./user/v202211/users/{id}/reset_acti"
+    "ve_sessions\032(\312A\023grpc.api.kentik.com\352\327\002\na"
+    "dmin.user\220\330\002\003B\360\031ZCgithub.com/kentik/api-"
+    "schema-public/gen/go/kentik/user/v202211"
+    ";user\222A\247\031\022\300\027\n\023User Management API\022\330\026# Ov"
+    "erview\nThe User Management API enables p"
+    "rogrammatic administration of users with"
+    "in your organization. The API may be use"
+    "d to grant permissions to users at two l"
+    "evels: \n* **User role**: Permissions bas"
+    "ed on the level assigned to the Kentik u"
+    "ser, either Member, Administrator, or Su"
+    "per Administrator (see [About Users](htt"
+    "ps://kb.kentik.com/v4/Cb02.htm#Cb02-Abou"
+    "t_Users)).\n* **User permissions**: Permi"
+    "ssions granting access to specific capab"
+    "ilities of the Kentik platform (see [Use"
+    "r Permissions](https://kb.kentik.com/v4/"
+    "Cb02.htm#Cb02-User_Permissions)).\n\nBoth "
+    "REST endpoint and gRPC RPCs are provided"
+    ".\n\n***Note:*** The legacy REST-only [Use"
+    "r API](https://kb.kentik.com/v0/Ec06.htm"
+    "#Ec06-User_API) provides a subset of the"
+    " functionality of this API.\n\n# User Perm"
+    "ission Identifiers\n\nIndividual user perm"
+    "issions are represented in this API by s"
+    "tring-based identifiers. The table below"
+    " shows the identifier used in the API fo"
+    "r each permission that can be enabled/di"
+    "sabled with the checkboxes on the Permis"
+    "sions tab of the Edit User dialog in the"
+    " Kentik portal\'s Manage Users module (Se"
+    "ttings \302\273 Manage Users).\n| Portal settin"
+    "g  | API identifier |\n|-----------------"
+    "|----------------|\n| Cancel Queries in F"
+    "orensic Viewer | forensic_viewer.cancel_"
+    "queries |\n| Synthetics Permissions: Crea"
+    "te tests | synthetics.tests.create |\n| S"
+    "ynthetics Permissions: Edit tests | synt"
+    "hetics.tests.edit |\n| Synthetics Permiss"
+    "ions: Delete tests | synthetics.tests.de"
+    "lete |\n| Synthetics Permissions: Create "
+    "agents | synthetics.agents.create |\n| Sy"
+    "nthetics Permissions: Edit agents | synt"
+    "hetics.agents.edit |\n| Synthetics Permis"
+    "sions: Delete agents | synthetics.agents"
+    ".delete |\n| Connectivity Costs Permissio"
+    "ns: View Costs | connectivity_costs.read"
+    " |\n| Connectivity Costs Permissions: Con"
+    "figure Costs | connectivity_costs.edit |"
+    "\n\n**_Note:_** The API returns an error i"
+    "f the same permission is both granted an"
+    "d denied in the same request.\n\n### Defau"
+    "lt Permissions\n\nThe permissions above th"
+    "at are enabled/disabled by default depen"
+    "d on the role (level) of the user:\n* **M"
+    "ember**: All permissions in the table ab"
+    "ove are denied by default.\n* **Administr"
+    "ator** or **Super Administrator**: All p"
+    "ermissions are granted. \n\n# User Filter "
+    "Attribute\n\nUser filters enable Administr"
+    "ators to apply filters that restrict the"
+    " data that can be returned from queries "
+    "by a given user (see [User Filters](http"
+    "s://kb.kentik.com/v4/Cb02.htm#Cb02-User_"
+    "Filters)). In the Kentik portal these fi"
+    "lters are set on the Filters tab of the "
+    "Edit User dialog in the Manage Users mod"
+    "ule. In this API the filters are set in "
+    "the `user` object with the `filter` attr"
+    "ibute, whose type is string. The value o"
+    "f the attribute is given in JSON notatio"
+    "n. The recommended way to construct the "
+    "JSON string is to configure the desired "
+    "filter for one user in the Kentik portal"
+    " and then copy the value of the `user.fi"
+    "lter` attribute returned for that user b"
+    "y the `GetUser` RPC.\"E\n\026Kentik API Engin"
+    "eering\022+https://github.com/kentik/api-sc"
+    "hema-public2\007v202211*\001\0022\020application/jso"
+    "n:\020application/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH"
+    "-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-AP"
+    "I-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]\n%Gen"
+    "eral information about Kentik APIs\0224http"
+    "s://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_"
+    "Overviewb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fuser_2fv202211_2fuser_2eproto_deps[6] =
     {
@@ -853,7 +888,7 @@ static ::absl::once_flag descriptor_table_kentik_2fuser_2fv202211_2fuser_2eproto
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fuser_2fv202211_2fuser_2eproto = {
     false,
     false,
-    7912,
+    8736,
     descriptor_table_protodef_kentik_2fuser_2fv202211_2fuser_2eproto,
     "kentik/user/v202211/user.proto",
     &descriptor_table_kentik_2fuser_2fv202211_2fuser_2eproto_once,
@@ -877,6 +912,15 @@ PROTOBUF_CONSTINIT const uint32_t Role_internal_data_[] = {
     262144u, 0u, };
 bool Role_IsValid(int value) {
   return 0 <= value && value <= 3;
+}
+const ::google::protobuf::EnumDescriptor* LandingType_descriptor() {
+  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_kentik_2fuser_2fv202211_2fuser_2eproto);
+  return file_level_enum_descriptors_kentik_2fuser_2fv202211_2fuser_2eproto[1];
+}
+PROTOBUF_CONSTINIT const uint32_t LandingType_internal_data_[] = {
+    917504u, 0u, };
+bool LandingType_IsValid(int value) {
+  return 0 <= value && value <= 13;
 }
 // ===================================================================
 
@@ -1174,10 +1218,13 @@ inline PROTOBUF_NDEBUG_INLINE User::Impl_::Impl_(
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
         permissions_{visibility, arena, from.permissions_},
+        roles_{visibility, arena, from.roles_},
+        role_sets_{visibility, arena, from.role_sets_},
         id_(arena, from.id_),
         user_email_(arena, from.user_email_),
         user_full_name_(arena, from.user_full_name_),
-        filter_(arena, from.filter_) {}
+        filter_(arena, from.filter_),
+        default_landing_page_value_(arena, from.default_landing_page_value_) {}
 
 User::User(
     ::google::protobuf::Arena* arena,
@@ -1202,7 +1249,13 @@ User::User(
   _impl_.edate_ = (cached_has_bits & 0x00000004u) ? ::google::protobuf::Message::CopyConstruct<::google::protobuf::Timestamp>(
                               arena, *from._impl_.edate_)
                         : nullptr;
-  _impl_.role_ = from._impl_.role_;
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, role_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, role_),
+           offsetof(Impl_, default_landing_page_type_) -
+               offsetof(Impl_, role_) +
+               sizeof(Impl_::default_landing_page_type_));
 
   // @@protoc_insertion_point(copy_constructor:kentik.user.v202211.User)
 }
@@ -1211,19 +1264,22 @@ inline PROTOBUF_NDEBUG_INLINE User::Impl_::Impl_(
     ::google::protobuf::Arena* arena)
       : _cached_size_{0},
         permissions_{visibility, arena},
+        roles_{visibility, arena},
+        role_sets_{visibility, arena},
         id_(arena),
         user_email_(arena),
         user_full_name_(arena),
-        filter_(arena) {}
+        filter_(arena),
+        default_landing_page_value_(arena) {}
 
 inline void User::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
   ::memset(reinterpret_cast<char *>(&_impl_) +
                offsetof(Impl_, last_login_),
            0,
-           offsetof(Impl_, role_) -
+           offsetof(Impl_, default_landing_page_type_) -
                offsetof(Impl_, last_login_) +
-               sizeof(Impl_::role_));
+               sizeof(Impl_::default_landing_page_type_));
 }
 User::~User() {
   // @@protoc_insertion_point(destructor:kentik.user.v202211.User)
@@ -1237,6 +1293,7 @@ inline void User::SharedDtor(MessageLite& self) {
   this_._impl_.user_email_.Destroy();
   this_._impl_.user_full_name_.Destroy();
   this_._impl_.filter_.Destroy();
+  this_._impl_.default_landing_page_value_.Destroy();
   delete this_._impl_.last_login_;
   delete this_._impl_.cdate_;
   delete this_._impl_.edate_;
@@ -1251,6 +1308,14 @@ constexpr auto User::InternalNewImpl_() {
   constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
       PROTOBUF_FIELD_OFFSET(User, _impl_.permissions_) +
           decltype(User::_impl_.permissions_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+      PROTOBUF_FIELD_OFFSET(User, _impl_.roles_) +
+          decltype(User::_impl_.roles_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+      PROTOBUF_FIELD_OFFSET(User, _impl_.role_sets_) +
+          decltype(User::_impl_.role_sets_)::
               InternalGetArenaOffset(
                   ::google::protobuf::Message::internal_visibility()),
   });
@@ -1291,15 +1356,15 @@ const ::google::protobuf::internal::ClassData* User::GetClassData() const {
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<4, 9, 4, 73, 2> User::_table_ = {
+const ::_pbi::TcParseTable<4, 13, 4, 113, 2> User::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(User, _impl_._has_bits_),
     0, // no _extensions_
-    10, 120,  // max_field_number, fast_idx_mask
+    14, 120,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294966276,  // skipmap
+    4294950916,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    9,  // num_field_entries
+    13,  // num_field_entries
     4,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
@@ -1323,7 +1388,7 @@ const ::_pbi::TcParseTable<4, 9, 4, 73, 2> User::_table_ = {
     // .kentik.user.v202211.Role role = 5 [json_name = "role", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(User, _impl_.role_), 63>(),
      {40, 63, 0, PROTOBUF_FIELD_OFFSET(User, _impl_.role_)}},
-    // repeated .kentik.user.v202211.PermissionEntry permissions = 6 [json_name = "permissions", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    // repeated .kentik.user.v202211.PermissionEntry permissions = 6 [json_name = "permissions", deprecated = true, (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::FastMtR1,
      {50, 63, 0, PROTOBUF_FIELD_OFFSET(User, _impl_.permissions_)}},
     // string filter = 7 [json_name = "filter", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1338,10 +1403,18 @@ const ::_pbi::TcParseTable<4, 9, 4, 73, 2> User::_table_ = {
     // .google.protobuf.Timestamp edate = 10 [json_name = "edate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::FastMtS1,
      {82, 2, 3, PROTOBUF_FIELD_OFFSET(User, _impl_.edate_)}},
-    {::_pbi::TcParser::MiniParse, {}},
-    {::_pbi::TcParser::MiniParse, {}},
-    {::_pbi::TcParser::MiniParse, {}},
-    {::_pbi::TcParser::MiniParse, {}},
+    // .kentik.user.v202211.LandingType default_landing_page_type = 11 [json_name = "defaultLandingPageType", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(User, _impl_.default_landing_page_type_), 63>(),
+     {88, 63, 0, PROTOBUF_FIELD_OFFSET(User, _impl_.default_landing_page_type_)}},
+    // string default_landing_page_value = 12 [json_name = "defaultLandingPageValue", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {98, 63, 0, PROTOBUF_FIELD_OFFSET(User, _impl_.default_landing_page_value_)}},
+    // repeated string roles = 13 [json_name = "roles", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUR1,
+     {106, 63, 0, PROTOBUF_FIELD_OFFSET(User, _impl_.roles_)}},
+    // repeated string role_sets = 14 [json_name = "roleSets", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUR1,
+     {114, 63, 0, PROTOBUF_FIELD_OFFSET(User, _impl_.role_sets_)}},
     {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
@@ -1358,7 +1431,7 @@ const ::_pbi::TcParseTable<4, 9, 4, 73, 2> User::_table_ = {
     // .kentik.user.v202211.Role role = 5 [json_name = "role", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {PROTOBUF_FIELD_OFFSET(User, _impl_.role_), -1, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
-    // repeated .kentik.user.v202211.PermissionEntry permissions = 6 [json_name = "permissions", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    // repeated .kentik.user.v202211.PermissionEntry permissions = 6 [json_name = "permissions", deprecated = true, (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {PROTOBUF_FIELD_OFFSET(User, _impl_.permissions_), -1, 0,
     (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
     // string filter = 7 [json_name = "filter", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1373,18 +1446,33 @@ const ::_pbi::TcParseTable<4, 9, 4, 73, 2> User::_table_ = {
     // .google.protobuf.Timestamp edate = 10 [json_name = "edate", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {PROTOBUF_FIELD_OFFSET(User, _impl_.edate_), _Internal::kHasBitsOffset + 2, 3,
     (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // .kentik.user.v202211.LandingType default_landing_page_type = 11 [json_name = "defaultLandingPageType", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(User, _impl_.default_landing_page_type_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
+    // string default_landing_page_value = 12 [json_name = "defaultLandingPageValue", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(User, _impl_.default_landing_page_value_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // repeated string roles = 13 [json_name = "roles", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(User, _impl_.roles_), -1, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
+    // repeated string role_sets = 14 [json_name = "roleSets", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(User, _impl_.role_sets_), -1, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
   }}, {{
     {::_pbi::TcParser::GetTable<::kentik::user::v202211::PermissionEntry>()},
     {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
     {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
     {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
   }}, {{
-    "\30\2\12\16\0\0\6\0\0\0\0\0\0\0\0\0"
+    "\30\2\12\16\0\0\6\0\0\0\0\32\5\11\0\0"
     "kentik.user.v202211.User"
     "id"
     "user_email"
     "user_full_name"
     "filter"
+    "default_landing_page_value"
+    "roles"
+    "role_sets"
   }},
 };
 
@@ -1396,10 +1484,13 @@ PROTOBUF_NOINLINE void User::Clear() {
   (void) cached_has_bits;
 
   _impl_.permissions_.Clear();
+  _impl_.roles_.Clear();
+  _impl_.role_sets_.Clear();
   _impl_.id_.ClearToEmpty();
   _impl_.user_email_.ClearToEmpty();
   _impl_.user_full_name_.ClearToEmpty();
   _impl_.filter_.ClearToEmpty();
+  _impl_.default_landing_page_value_.ClearToEmpty();
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
@@ -1415,7 +1506,9 @@ PROTOBUF_NOINLINE void User::Clear() {
       _impl_.edate_->Clear();
     }
   }
-  _impl_.role_ = 0;
+  ::memset(&_impl_.role_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.default_landing_page_type_) -
+      reinterpret_cast<char*>(&_impl_.role_)) + sizeof(_impl_.default_landing_page_type_));
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
@@ -1466,7 +1559,7 @@ PROTOBUF_NOINLINE void User::Clear() {
                 5, this_._internal_role(), target);
           }
 
-          // repeated .kentik.user.v202211.PermissionEntry permissions = 6 [json_name = "permissions", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          // repeated .kentik.user.v202211.PermissionEntry permissions = 6 [json_name = "permissions", deprecated = true, (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
           for (unsigned i = 0, n = static_cast<unsigned>(
                                    this_._internal_permissions_size());
                i < n; i++) {
@@ -1507,6 +1600,37 @@ PROTOBUF_NOINLINE void User::Clear() {
                 stream);
           }
 
+          // .kentik.user.v202211.LandingType default_landing_page_type = 11 [json_name = "defaultLandingPageType", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (this_._internal_default_landing_page_type() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteEnumToArray(
+                11, this_._internal_default_landing_page_type(), target);
+          }
+
+          // string default_landing_page_value = 12 [json_name = "defaultLandingPageValue", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_default_landing_page_value().empty()) {
+            const std::string& _s = this_._internal_default_landing_page_value();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.user.v202211.User.default_landing_page_value");
+            target = stream->WriteStringMaybeAliased(12, _s, target);
+          }
+
+          // repeated string roles = 13 [json_name = "roles", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          for (int i = 0, n = this_._internal_roles_size(); i < n; ++i) {
+            const auto& s = this_._internal_roles().Get(i);
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.user.v202211.User.roles");
+            target = stream->WriteString(13, s, target);
+          }
+
+          // repeated string role_sets = 14 [json_name = "roleSets", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          for (int i = 0, n = this_._internal_role_sets_size(); i < n; ++i) {
+            const auto& s = this_._internal_role_sets().Get(i);
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.user.v202211.User.role_sets");
+            target = stream->WriteString(14, s, target);
+          }
+
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -1532,11 +1656,29 @@ PROTOBUF_NOINLINE void User::Clear() {
 
           ::_pbi::Prefetch5LinesFrom7Lines(&this_);
            {
-            // repeated .kentik.user.v202211.PermissionEntry permissions = 6 [json_name = "permissions", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            // repeated .kentik.user.v202211.PermissionEntry permissions = 6 [json_name = "permissions", deprecated = true, (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
             {
               total_size += 1UL * this_._internal_permissions_size();
               for (const auto& msg : this_._internal_permissions()) {
                 total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+              }
+            }
+            // repeated string roles = 13 [json_name = "roles", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            {
+              total_size +=
+                  1 * ::google::protobuf::internal::FromIntSize(this_._internal_roles().size());
+              for (int i = 0, n = this_._internal_roles().size(); i < n; ++i) {
+                total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+                    this_._internal_roles().Get(i));
+              }
+            }
+            // repeated string role_sets = 14 [json_name = "roleSets", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            {
+              total_size +=
+                  1 * ::google::protobuf::internal::FromIntSize(this_._internal_role_sets().size());
+              for (int i = 0, n = this_._internal_role_sets().size(); i < n; ++i) {
+                total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+                    this_._internal_role_sets().Get(i));
               }
             }
           }
@@ -1560,6 +1702,11 @@ PROTOBUF_NOINLINE void User::Clear() {
             if (!this_._internal_filter().empty()) {
               total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                               this_._internal_filter());
+            }
+            // string default_landing_page_value = 12 [json_name = "defaultLandingPageValue", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_default_landing_page_value().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_default_landing_page_value());
             }
           }
           cached_has_bits = this_._impl_._has_bits_[0];
@@ -1586,6 +1733,11 @@ PROTOBUF_NOINLINE void User::Clear() {
               total_size += 1 +
                             ::_pbi::WireFormatLite::EnumSize(this_._internal_role());
             }
+            // .kentik.user.v202211.LandingType default_landing_page_type = 11 [json_name = "defaultLandingPageType", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (this_._internal_default_landing_page_type() != 0) {
+              total_size += 1 +
+                            ::_pbi::WireFormatLite::EnumSize(this_._internal_default_landing_page_type());
+            }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
                                                      &this_._impl_._cached_size_);
@@ -1602,6 +1754,8 @@ void User::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::pr
 
   _this->_internal_mutable_permissions()->MergeFrom(
       from._internal_permissions());
+  _this->_internal_mutable_roles()->MergeFrom(from._internal_roles());
+  _this->_internal_mutable_role_sets()->MergeFrom(from._internal_role_sets());
   if (!from._internal_id().empty()) {
     _this->_internal_set_id(from._internal_id());
   }
@@ -1613,6 +1767,9 @@ void User::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::pr
   }
   if (!from._internal_filter().empty()) {
     _this->_internal_set_filter(from._internal_filter());
+  }
+  if (!from._internal_default_landing_page_value().empty()) {
+    _this->_internal_set_default_landing_page_value(from._internal_default_landing_page_value());
   }
   cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x00000007u) {
@@ -1647,6 +1804,9 @@ void User::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::pr
   if (from._internal_role() != 0) {
     _this->_impl_.role_ = from._impl_.role_;
   }
+  if (from._internal_default_landing_page_type() != 0) {
+    _this->_impl_.default_landing_page_type_ = from._impl_.default_landing_page_type_;
+  }
   _this->_impl_._has_bits_[0] |= cached_has_bits;
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -1666,13 +1826,16 @@ void User::InternalSwap(User* PROTOBUF_RESTRICT other) {
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   _impl_.permissions_.InternalSwap(&other->_impl_.permissions_);
+  _impl_.roles_.InternalSwap(&other->_impl_.roles_);
+  _impl_.role_sets_.InternalSwap(&other->_impl_.role_sets_);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.id_, &other->_impl_.id_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.user_email_, &other->_impl_.user_email_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.user_full_name_, &other->_impl_.user_full_name_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.filter_, &other->_impl_.filter_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.default_landing_page_value_, &other->_impl_.default_landing_page_value_, arena);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(User, _impl_.role_)
-      + sizeof(User::_impl_.role_)
+      PROTOBUF_FIELD_OFFSET(User, _impl_.default_landing_page_type_)
+      + sizeof(User::_impl_.default_landing_page_type_)
       - PROTOBUF_FIELD_OFFSET(User, _impl_.last_login_)>(
           reinterpret_cast<char*>(&_impl_.last_login_),
           reinterpret_cast<char*>(&other->_impl_.last_login_));

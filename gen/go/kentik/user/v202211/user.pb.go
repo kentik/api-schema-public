@@ -83,6 +83,89 @@ func (Role) EnumDescriptor() ([]byte, []int) {
 }
 
 // {{.Name}}
+type LandingType int32
+
+const (
+	LandingType_LANDING_TYPE_UNSPECIFIED         LandingType = 0
+	LandingType_LANDING_TYPE_LOCAL               LandingType = 1
+	LandingType_LANDING_TYPE_OBSERVATION_DECK    LandingType = 2
+	LandingType_LANDING_TYPE_NMS_DASHBOARD       LandingType = 3
+	LandingType_LANDING_TYPE_NETWORK_EXPLORER    LandingType = 4
+	LandingType_LANDING_TYPE_LIBRARY             LandingType = 5
+	LandingType_LANDING_TYPE_SYNTHETICS          LandingType = 6
+	LandingType_LANDING_TYPE_EXPLORER            LandingType = 7
+	LandingType_LANDING_TYPE_ALERTING            LandingType = 8
+	LandingType_LANDING_TYPE_INSIGHTS            LandingType = 9
+	LandingType_LANDING_TYPE_DASHBOARD           LandingType = 10
+	LandingType_LANDING_TYPE_SAVED_VIEW          LandingType = 11
+	LandingType_LANDING_TYPE_QUICK_VIEW          LandingType = 12
+	LandingType_LANDING_TYPE_MARKET_INTELLIGENCE LandingType = 13
+)
+
+// Enum value maps for LandingType.
+var (
+	LandingType_name = map[int32]string{
+		0:  "LANDING_TYPE_UNSPECIFIED",
+		1:  "LANDING_TYPE_LOCAL",
+		2:  "LANDING_TYPE_OBSERVATION_DECK",
+		3:  "LANDING_TYPE_NMS_DASHBOARD",
+		4:  "LANDING_TYPE_NETWORK_EXPLORER",
+		5:  "LANDING_TYPE_LIBRARY",
+		6:  "LANDING_TYPE_SYNTHETICS",
+		7:  "LANDING_TYPE_EXPLORER",
+		8:  "LANDING_TYPE_ALERTING",
+		9:  "LANDING_TYPE_INSIGHTS",
+		10: "LANDING_TYPE_DASHBOARD",
+		11: "LANDING_TYPE_SAVED_VIEW",
+		12: "LANDING_TYPE_QUICK_VIEW",
+		13: "LANDING_TYPE_MARKET_INTELLIGENCE",
+	}
+	LandingType_value = map[string]int32{
+		"LANDING_TYPE_UNSPECIFIED":         0,
+		"LANDING_TYPE_LOCAL":               1,
+		"LANDING_TYPE_OBSERVATION_DECK":    2,
+		"LANDING_TYPE_NMS_DASHBOARD":       3,
+		"LANDING_TYPE_NETWORK_EXPLORER":    4,
+		"LANDING_TYPE_LIBRARY":             5,
+		"LANDING_TYPE_SYNTHETICS":          6,
+		"LANDING_TYPE_EXPLORER":            7,
+		"LANDING_TYPE_ALERTING":            8,
+		"LANDING_TYPE_INSIGHTS":            9,
+		"LANDING_TYPE_DASHBOARD":           10,
+		"LANDING_TYPE_SAVED_VIEW":          11,
+		"LANDING_TYPE_QUICK_VIEW":          12,
+		"LANDING_TYPE_MARKET_INTELLIGENCE": 13,
+	}
+)
+
+func (x LandingType) Enum() *LandingType {
+	p := new(LandingType)
+	*p = x
+	return p
+}
+
+func (x LandingType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (LandingType) Descriptor() protoreflect.EnumDescriptor {
+	return file_kentik_user_v202211_user_proto_enumTypes[1].Descriptor()
+}
+
+func (LandingType) Type() protoreflect.EnumType {
+	return &file_kentik_user_v202211_user_proto_enumTypes[1]
+}
+
+func (x LandingType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use LandingType.Descriptor instead.
+func (LandingType) EnumDescriptor() ([]byte, []int) {
+	return file_kentik_user_v202211_user_proto_rawDescGZIP(), []int{1}
+}
+
+// {{.Name}}
 type PermissionEntry struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Capability    string                 `protobuf:"bytes,1,opt,name=capability,proto3" json:"capability,omitempty"`
@@ -137,18 +220,23 @@ func (x *PermissionEntry) GetAllowed() bool {
 
 // {{.Name}}
 type User struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	UserEmail     string                 `protobuf:"bytes,2,opt,name=user_email,json=userEmail,proto3" json:"user_email,omitempty"`
-	UserFullName  string                 `protobuf:"bytes,4,opt,name=user_full_name,json=userFullName,proto3" json:"user_full_name,omitempty"`
-	Role          Role                   `protobuf:"varint,5,opt,name=role,proto3,enum=kentik.user.v202211.Role" json:"role,omitempty"`
-	Permissions   []*PermissionEntry     `protobuf:"bytes,6,rep,name=permissions,proto3" json:"permissions,omitempty"`
-	Filter        string                 `protobuf:"bytes,7,opt,name=filter,proto3" json:"filter,omitempty"`
-	LastLogin     *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=last_login,json=lastLogin,proto3" json:"last_login,omitempty"`
-	Cdate         *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=cdate,proto3" json:"cdate,omitempty"`
-	Edate         *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=edate,proto3" json:"edate,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state        protoimpl.MessageState `protogen:"open.v1"`
+	Id           string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	UserEmail    string                 `protobuf:"bytes,2,opt,name=user_email,json=userEmail,proto3" json:"user_email,omitempty"`
+	UserFullName string                 `protobuf:"bytes,4,opt,name=user_full_name,json=userFullName,proto3" json:"user_full_name,omitempty"`
+	Role         Role                   `protobuf:"varint,5,opt,name=role,proto3,enum=kentik.user.v202211.Role" json:"role,omitempty"`
+	// Deprecated: Marked as deprecated in kentik/user/v202211/user.proto.
+	Permissions             []*PermissionEntry     `protobuf:"bytes,6,rep,name=permissions,proto3" json:"permissions,omitempty"`
+	Filter                  string                 `protobuf:"bytes,7,opt,name=filter,proto3" json:"filter,omitempty"`
+	LastLogin               *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=last_login,json=lastLogin,proto3" json:"last_login,omitempty"`
+	Cdate                   *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=cdate,proto3" json:"cdate,omitempty"`
+	Edate                   *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=edate,proto3" json:"edate,omitempty"`
+	DefaultLandingPageType  LandingType            `protobuf:"varint,11,opt,name=default_landing_page_type,json=defaultLandingPageType,proto3,enum=kentik.user.v202211.LandingType" json:"default_landing_page_type,omitempty"`
+	DefaultLandingPageValue string                 `protobuf:"bytes,12,opt,name=default_landing_page_value,json=defaultLandingPageValue,proto3" json:"default_landing_page_value,omitempty"`
+	Roles                   []string               `protobuf:"bytes,13,rep,name=roles,proto3" json:"roles,omitempty"`
+	RoleSets                []string               `protobuf:"bytes,14,rep,name=role_sets,json=roleSets,proto3" json:"role_sets,omitempty"`
+	unknownFields           protoimpl.UnknownFields
+	sizeCache               protoimpl.SizeCache
 }
 
 func (x *User) Reset() {
@@ -209,6 +297,7 @@ func (x *User) GetRole() Role {
 	return Role_ROLE_UNSPECIFIED
 }
 
+// Deprecated: Marked as deprecated in kentik/user/v202211/user.proto.
 func (x *User) GetPermissions() []*PermissionEntry {
 	if x != nil {
 		return x.Permissions
@@ -240,6 +329,34 @@ func (x *User) GetCdate() *timestamppb.Timestamp {
 func (x *User) GetEdate() *timestamppb.Timestamp {
 	if x != nil {
 		return x.Edate
+	}
+	return nil
+}
+
+func (x *User) GetDefaultLandingPageType() LandingType {
+	if x != nil {
+		return x.DefaultLandingPageType
+	}
+	return LandingType_LANDING_TYPE_UNSPECIFIED
+}
+
+func (x *User) GetDefaultLandingPageValue() string {
+	if x != nil {
+		return x.DefaultLandingPageValue
+	}
+	return ""
+}
+
+func (x *User) GetRoles() []string {
+	if x != nil {
+		return x.Roles
+	}
+	return nil
+}
+
+func (x *User) GetRoleSets() []string {
+	if x != nil {
+		return x.RoleSets
 	}
 	return nil
 }
@@ -859,20 +976,24 @@ const file_kentik_user_v202211_user_proto_rawDesc = "" +
 	"\n" +
 	"capability\x18\x01 \x01(\tB?\x92A927String identifying capability that is granted of denied\xe0A\x02R\n" +
 	"capability\x12N\n" +
-	"\aallowed\x18\x02 \x01(\bB4\x92A.2,Flag indicating whether operation is allowed\xe0A\x02R\aallowed\"\xad\x06\n" +
+	"\aallowed\x18\x02 \x01(\bB4\x92A.2,Flag indicating whether operation is allowed\xe0A\x02R\aallowed\"\xb5\t\n" +
 	"\x04User\x12:\n" +
 	"\x02id\x18\x01 \x01(\tB*\x92A$2\"System generated unique identifier\xe0A\x03R\x02id\x12T\n" +
 	"\n" +
 	"user_email\x18\x02 \x01(\tB5\x92A/2-User e-mail address (serves also as username)\xe0A\x02R\tuserEmail\x127\n" +
-	"\x0euser_full_name\x18\x04 \x01(\tB\x11\x92A\v2\tFull name\xe0A\x02R\fuserFullName\x12X\n" +
-	"\x04role\x18\x05 \x01(\x0e2\x19.kentik.user.v202211.RoleB)\x92A#2!User role (in Kentik application)\xe0A\x02R\x04role\x12}\n" +
-	"\vpermissions\x18\x06 \x03(\v2$.kentik.user.v202211.PermissionEntryB5\x92A220Optional list of permissions granted to the userR\vpermissions\x12a\n" +
+	"\x0euser_full_name\x18\x04 \x01(\tB\x11\x92A\v2\tFull name\xe0A\x02R\fuserFullName\x12I\n" +
+	"\x04role\x18\x05 \x01(\x0e2\x19.kentik.user.v202211.RoleB\x1a\x92A\x142\x12Legacy user level.\xe0A\x02R\x04role\x12\xa3\x01\n" +
+	"\vpermissions\x18\x06 \x03(\v2$.kentik.user.v202211.PermissionEntryB[\x92AS2QLegacy permissions granted to the user (deprecated, use rbac roles and role-sets)\xe0A\x03\x18\x01R\vpermissions\x12a\n" +
 	"\x06filter\x18\a \x01(\tBI\x92AF2DOptional JSON string defining filter for objects visible to the userR\x06filter\x12m\n" +
 	"\n" +
 	"last_login\x18\b \x01(\v2\x1a.google.protobuf.TimestampB2\x92A,2*UTC Timestamp of user's last login session\xe0A\x03R\tlastLogin\x12R\n" +
 	"\x05cdate\x18\t \x01(\v2\x1a.google.protobuf.TimestampB \x92A\x1a2\x18Creation timestamp (UTC)\xe0A\x03R\x05cdate\x12[\n" +
 	"\x05edate\x18\n" +
-	" \x01(\v2\x1a.google.protobuf.TimestampB)\x92A#2!Last modification timestamp (UTC)\xe0A\x03R\x05edate\"\x12\n" +
+	" \x01(\v2\x1a.google.protobuf.TimestampB)\x92A#2!Last modification timestamp (UTC)\xe0A\x03R\x05edate\x12x\n" +
+	"\x19default_landing_page_type\x18\v \x01(\x0e2 .kentik.user.v202211.LandingTypeB\x1b\x92A\x182\x16Landing Page for user.R\x16defaultLandingPageType\x12\x88\x01\n" +
+	"\x1adefault_landing_page_value\x18\f \x01(\tBK\x92AH2FSpecific landing page applies to Dashboard, Quick View, and Saved ViewR\x17defaultLandingPageValue\x12.\n" +
+	"\x05roles\x18\r \x03(\tB\x18\x92A\x152\x13List of RBAC roles.R\x05roles\x129\n" +
+	"\trole_sets\x18\x0e \x03(\tB\x1c\x92A\x192\x17List of RBAC role sets.R\broleSets\"\x12\n" +
 	"\x10ListUsersRequest\"\xd1\x01\n" +
 	"\x11ListUsersResponse\x12U\n" +
 	"\x05users\x18\x01 \x03(\v2\x19.kentik.user.v202211.UserB$\x92A\x1e2\x1cLast of users in the account\xe0A\x03R\x05users\x12e\n" +
@@ -902,7 +1023,23 @@ const file_kentik_user_v202211_user_proto_rawDesc = "" +
 	"\x10ROLE_UNSPECIFIED\x10\x00\x12\x0f\n" +
 	"\vROLE_MEMBER\x10\x01\x12\x16\n" +
 	"\x12ROLE_ADMINISTRATOR\x10\x02\x12\x1c\n" +
-	"\x18ROLE_SUPER_ADMINISTRATOR\x10\x032\xb0\x0f\n" +
+	"\x18ROLE_SUPER_ADMINISTRATOR\x10\x03*\xad\x03\n" +
+	"\vLandingType\x12\x1c\n" +
+	"\x18LANDING_TYPE_UNSPECIFIED\x10\x00\x12\x16\n" +
+	"\x12LANDING_TYPE_LOCAL\x10\x01\x12!\n" +
+	"\x1dLANDING_TYPE_OBSERVATION_DECK\x10\x02\x12\x1e\n" +
+	"\x1aLANDING_TYPE_NMS_DASHBOARD\x10\x03\x12!\n" +
+	"\x1dLANDING_TYPE_NETWORK_EXPLORER\x10\x04\x12\x18\n" +
+	"\x14LANDING_TYPE_LIBRARY\x10\x05\x12\x1b\n" +
+	"\x17LANDING_TYPE_SYNTHETICS\x10\x06\x12\x19\n" +
+	"\x15LANDING_TYPE_EXPLORER\x10\a\x12\x19\n" +
+	"\x15LANDING_TYPE_ALERTING\x10\b\x12\x19\n" +
+	"\x15LANDING_TYPE_INSIGHTS\x10\t\x12\x1a\n" +
+	"\x16LANDING_TYPE_DASHBOARD\x10\n" +
+	"\x12\x1b\n" +
+	"\x17LANDING_TYPE_SAVED_VIEW\x10\v\x12\x1b\n" +
+	"\x17LANDING_TYPE_QUICK_VIEW\x10\f\x12$\n" +
+	" LANDING_TYPE_MARKET_INTELLIGENCE\x10\r2\xb0\x0f\n" +
 	"\vUserService\x12\xdf\x01\n" +
 	"\tListUsers\x12%.kentik.user.v202211.ListUsersRequest\x1a&.kentik.user.v202211.ListUsersResponse\"\x82\x01\x92AQ\x12\x0fList all users.\x1a3Returns a list of all user accounts in the company.*\tListUsers\xf2\xd7\x02\x0fadmin.user:read\x82\xd3\xe4\x93\x02\x15\x12\x13/user/v202211/users\x12\xf0\x01\n" +
 	"\aGetUser\x12#.kentik.user.v202211.GetUserRequest\x1a$.kentik.user.v202211.GetUserResponse\"\x99\x01\x92Ac\x12!Get attributes of a user account.\x1a5Returns attributes of a user account specified by ID.*\aGetUser\xf2\xd7\x02\x0fadmin.user:read\x82\xd3\xe4\x93\x02\x1a\x12\x18/user/v202211/users/{id}\x12\xab\x02\n" +
@@ -976,59 +1113,61 @@ func file_kentik_user_v202211_user_proto_rawDescGZIP() []byte {
 	return file_kentik_user_v202211_user_proto_rawDescData
 }
 
-var file_kentik_user_v202211_user_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_kentik_user_v202211_user_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
 var file_kentik_user_v202211_user_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
 var file_kentik_user_v202211_user_proto_goTypes = []any{
 	(Role)(0),                           // 0: kentik.user.v202211.Role
-	(*PermissionEntry)(nil),             // 1: kentik.user.v202211.PermissionEntry
-	(*User)(nil),                        // 2: kentik.user.v202211.User
-	(*ListUsersRequest)(nil),            // 3: kentik.user.v202211.ListUsersRequest
-	(*ListUsersResponse)(nil),           // 4: kentik.user.v202211.ListUsersResponse
-	(*GetUserRequest)(nil),              // 5: kentik.user.v202211.GetUserRequest
-	(*GetUserResponse)(nil),             // 6: kentik.user.v202211.GetUserResponse
-	(*CreateUserRequest)(nil),           // 7: kentik.user.v202211.CreateUserRequest
-	(*CreateUserResponse)(nil),          // 8: kentik.user.v202211.CreateUserResponse
-	(*UpdateUserRequest)(nil),           // 9: kentik.user.v202211.UpdateUserRequest
-	(*UpdateUserResponse)(nil),          // 10: kentik.user.v202211.UpdateUserResponse
-	(*DeleteUserRequest)(nil),           // 11: kentik.user.v202211.DeleteUserRequest
-	(*DeleteUserResponse)(nil),          // 12: kentik.user.v202211.DeleteUserResponse
-	(*ResetApiTokenRequest)(nil),        // 13: kentik.user.v202211.ResetApiTokenRequest
-	(*ResetApiTokenResponse)(nil),       // 14: kentik.user.v202211.ResetApiTokenResponse
-	(*ResetActiveSessionsRequest)(nil),  // 15: kentik.user.v202211.ResetActiveSessionsRequest
-	(*ResetActiveSessionsResponse)(nil), // 16: kentik.user.v202211.ResetActiveSessionsResponse
-	(*timestamppb.Timestamp)(nil),       // 17: google.protobuf.Timestamp
+	(LandingType)(0),                    // 1: kentik.user.v202211.LandingType
+	(*PermissionEntry)(nil),             // 2: kentik.user.v202211.PermissionEntry
+	(*User)(nil),                        // 3: kentik.user.v202211.User
+	(*ListUsersRequest)(nil),            // 4: kentik.user.v202211.ListUsersRequest
+	(*ListUsersResponse)(nil),           // 5: kentik.user.v202211.ListUsersResponse
+	(*GetUserRequest)(nil),              // 6: kentik.user.v202211.GetUserRequest
+	(*GetUserResponse)(nil),             // 7: kentik.user.v202211.GetUserResponse
+	(*CreateUserRequest)(nil),           // 8: kentik.user.v202211.CreateUserRequest
+	(*CreateUserResponse)(nil),          // 9: kentik.user.v202211.CreateUserResponse
+	(*UpdateUserRequest)(nil),           // 10: kentik.user.v202211.UpdateUserRequest
+	(*UpdateUserResponse)(nil),          // 11: kentik.user.v202211.UpdateUserResponse
+	(*DeleteUserRequest)(nil),           // 12: kentik.user.v202211.DeleteUserRequest
+	(*DeleteUserResponse)(nil),          // 13: kentik.user.v202211.DeleteUserResponse
+	(*ResetApiTokenRequest)(nil),        // 14: kentik.user.v202211.ResetApiTokenRequest
+	(*ResetApiTokenResponse)(nil),       // 15: kentik.user.v202211.ResetApiTokenResponse
+	(*ResetActiveSessionsRequest)(nil),  // 16: kentik.user.v202211.ResetActiveSessionsRequest
+	(*ResetActiveSessionsResponse)(nil), // 17: kentik.user.v202211.ResetActiveSessionsResponse
+	(*timestamppb.Timestamp)(nil),       // 18: google.protobuf.Timestamp
 }
 var file_kentik_user_v202211_user_proto_depIdxs = []int32{
 	0,  // 0: kentik.user.v202211.User.role:type_name -> kentik.user.v202211.Role
-	1,  // 1: kentik.user.v202211.User.permissions:type_name -> kentik.user.v202211.PermissionEntry
-	17, // 2: kentik.user.v202211.User.last_login:type_name -> google.protobuf.Timestamp
-	17, // 3: kentik.user.v202211.User.cdate:type_name -> google.protobuf.Timestamp
-	17, // 4: kentik.user.v202211.User.edate:type_name -> google.protobuf.Timestamp
-	2,  // 5: kentik.user.v202211.ListUsersResponse.users:type_name -> kentik.user.v202211.User
-	2,  // 6: kentik.user.v202211.GetUserResponse.user:type_name -> kentik.user.v202211.User
-	2,  // 7: kentik.user.v202211.CreateUserRequest.user:type_name -> kentik.user.v202211.User
-	2,  // 8: kentik.user.v202211.CreateUserResponse.user:type_name -> kentik.user.v202211.User
-	2,  // 9: kentik.user.v202211.UpdateUserRequest.user:type_name -> kentik.user.v202211.User
-	2,  // 10: kentik.user.v202211.UpdateUserResponse.user:type_name -> kentik.user.v202211.User
-	3,  // 11: kentik.user.v202211.UserService.ListUsers:input_type -> kentik.user.v202211.ListUsersRequest
-	5,  // 12: kentik.user.v202211.UserService.GetUser:input_type -> kentik.user.v202211.GetUserRequest
-	7,  // 13: kentik.user.v202211.UserService.CreateUser:input_type -> kentik.user.v202211.CreateUserRequest
-	9,  // 14: kentik.user.v202211.UserService.UpdateUser:input_type -> kentik.user.v202211.UpdateUserRequest
-	11, // 15: kentik.user.v202211.UserService.DeleteUser:input_type -> kentik.user.v202211.DeleteUserRequest
-	13, // 16: kentik.user.v202211.UserService.ResetApiToken:input_type -> kentik.user.v202211.ResetApiTokenRequest
-	15, // 17: kentik.user.v202211.UserService.ResetActiveSessions:input_type -> kentik.user.v202211.ResetActiveSessionsRequest
-	4,  // 18: kentik.user.v202211.UserService.ListUsers:output_type -> kentik.user.v202211.ListUsersResponse
-	6,  // 19: kentik.user.v202211.UserService.GetUser:output_type -> kentik.user.v202211.GetUserResponse
-	8,  // 20: kentik.user.v202211.UserService.CreateUser:output_type -> kentik.user.v202211.CreateUserResponse
-	10, // 21: kentik.user.v202211.UserService.UpdateUser:output_type -> kentik.user.v202211.UpdateUserResponse
-	12, // 22: kentik.user.v202211.UserService.DeleteUser:output_type -> kentik.user.v202211.DeleteUserResponse
-	14, // 23: kentik.user.v202211.UserService.ResetApiToken:output_type -> kentik.user.v202211.ResetApiTokenResponse
-	16, // 24: kentik.user.v202211.UserService.ResetActiveSessions:output_type -> kentik.user.v202211.ResetActiveSessionsResponse
-	18, // [18:25] is the sub-list for method output_type
-	11, // [11:18] is the sub-list for method input_type
-	11, // [11:11] is the sub-list for extension type_name
-	11, // [11:11] is the sub-list for extension extendee
-	0,  // [0:11] is the sub-list for field type_name
+	2,  // 1: kentik.user.v202211.User.permissions:type_name -> kentik.user.v202211.PermissionEntry
+	18, // 2: kentik.user.v202211.User.last_login:type_name -> google.protobuf.Timestamp
+	18, // 3: kentik.user.v202211.User.cdate:type_name -> google.protobuf.Timestamp
+	18, // 4: kentik.user.v202211.User.edate:type_name -> google.protobuf.Timestamp
+	1,  // 5: kentik.user.v202211.User.default_landing_page_type:type_name -> kentik.user.v202211.LandingType
+	3,  // 6: kentik.user.v202211.ListUsersResponse.users:type_name -> kentik.user.v202211.User
+	3,  // 7: kentik.user.v202211.GetUserResponse.user:type_name -> kentik.user.v202211.User
+	3,  // 8: kentik.user.v202211.CreateUserRequest.user:type_name -> kentik.user.v202211.User
+	3,  // 9: kentik.user.v202211.CreateUserResponse.user:type_name -> kentik.user.v202211.User
+	3,  // 10: kentik.user.v202211.UpdateUserRequest.user:type_name -> kentik.user.v202211.User
+	3,  // 11: kentik.user.v202211.UpdateUserResponse.user:type_name -> kentik.user.v202211.User
+	4,  // 12: kentik.user.v202211.UserService.ListUsers:input_type -> kentik.user.v202211.ListUsersRequest
+	6,  // 13: kentik.user.v202211.UserService.GetUser:input_type -> kentik.user.v202211.GetUserRequest
+	8,  // 14: kentik.user.v202211.UserService.CreateUser:input_type -> kentik.user.v202211.CreateUserRequest
+	10, // 15: kentik.user.v202211.UserService.UpdateUser:input_type -> kentik.user.v202211.UpdateUserRequest
+	12, // 16: kentik.user.v202211.UserService.DeleteUser:input_type -> kentik.user.v202211.DeleteUserRequest
+	14, // 17: kentik.user.v202211.UserService.ResetApiToken:input_type -> kentik.user.v202211.ResetApiTokenRequest
+	16, // 18: kentik.user.v202211.UserService.ResetActiveSessions:input_type -> kentik.user.v202211.ResetActiveSessionsRequest
+	5,  // 19: kentik.user.v202211.UserService.ListUsers:output_type -> kentik.user.v202211.ListUsersResponse
+	7,  // 20: kentik.user.v202211.UserService.GetUser:output_type -> kentik.user.v202211.GetUserResponse
+	9,  // 21: kentik.user.v202211.UserService.CreateUser:output_type -> kentik.user.v202211.CreateUserResponse
+	11, // 22: kentik.user.v202211.UserService.UpdateUser:output_type -> kentik.user.v202211.UpdateUserResponse
+	13, // 23: kentik.user.v202211.UserService.DeleteUser:output_type -> kentik.user.v202211.DeleteUserResponse
+	15, // 24: kentik.user.v202211.UserService.ResetApiToken:output_type -> kentik.user.v202211.ResetApiTokenResponse
+	17, // 25: kentik.user.v202211.UserService.ResetActiveSessions:output_type -> kentik.user.v202211.ResetActiveSessionsResponse
+	19, // [19:26] is the sub-list for method output_type
+	12, // [12:19] is the sub-list for method input_type
+	12, // [12:12] is the sub-list for extension type_name
+	12, // [12:12] is the sub-list for extension extendee
+	0,  // [0:12] is the sub-list for field type_name
 }
 
 func init() { file_kentik_user_v202211_user_proto_init() }
@@ -1041,7 +1180,7 @@ func file_kentik_user_v202211_user_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_kentik_user_v202211_user_proto_rawDesc), len(file_kentik_user_v202211_user_proto_rawDesc)),
-			NumEnums:      1,
+			NumEnums:      2,
 			NumMessages:   16,
 			NumExtensions: 0,
 			NumServices:   1,

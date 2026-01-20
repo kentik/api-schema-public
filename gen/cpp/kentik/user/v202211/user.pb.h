@@ -156,6 +156,51 @@ inline bool Role_Parse(absl::string_view name, Role* value) {
   return ::google::protobuf::internal::ParseNamedEnum<Role>(
       Role_descriptor(), name, value);
 }
+enum LandingType : int {
+  LANDING_TYPE_UNSPECIFIED = 0,
+  LANDING_TYPE_LOCAL = 1,
+  LANDING_TYPE_OBSERVATION_DECK = 2,
+  LANDING_TYPE_NMS_DASHBOARD = 3,
+  LANDING_TYPE_NETWORK_EXPLORER = 4,
+  LANDING_TYPE_LIBRARY = 5,
+  LANDING_TYPE_SYNTHETICS = 6,
+  LANDING_TYPE_EXPLORER = 7,
+  LANDING_TYPE_ALERTING = 8,
+  LANDING_TYPE_INSIGHTS = 9,
+  LANDING_TYPE_DASHBOARD = 10,
+  LANDING_TYPE_SAVED_VIEW = 11,
+  LANDING_TYPE_QUICK_VIEW = 12,
+  LANDING_TYPE_MARKET_INTELLIGENCE = 13,
+  LandingType_INT_MIN_SENTINEL_DO_NOT_USE_ =
+      std::numeric_limits<::int32_t>::min(),
+  LandingType_INT_MAX_SENTINEL_DO_NOT_USE_ =
+      std::numeric_limits<::int32_t>::max(),
+};
+
+bool LandingType_IsValid(int value);
+extern const uint32_t LandingType_internal_data_[];
+constexpr LandingType LandingType_MIN = static_cast<LandingType>(0);
+constexpr LandingType LandingType_MAX = static_cast<LandingType>(13);
+constexpr int LandingType_ARRAYSIZE = 13 + 1;
+const ::google::protobuf::EnumDescriptor*
+LandingType_descriptor();
+template <typename T>
+const std::string& LandingType_Name(T value) {
+  static_assert(std::is_same<T, LandingType>::value ||
+                    std::is_integral<T>::value,
+                "Incorrect type passed to LandingType_Name().");
+  return LandingType_Name(static_cast<LandingType>(value));
+}
+template <>
+inline const std::string& LandingType_Name(LandingType value) {
+  return ::google::protobuf::internal::NameOfDenseEnum<LandingType_descriptor,
+                                                 0, 13>(
+      static_cast<int>(value));
+}
+inline bool LandingType_Parse(absl::string_view name, LandingType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<LandingType>(
+      LandingType_descriptor(), name, value);
+}
 
 // ===================================================================
 
@@ -1881,32 +1926,80 @@ class User final : public ::google::protobuf::Message
   // accessors -------------------------------------------------------
   enum : int {
     kPermissionsFieldNumber = 6,
+    kRolesFieldNumber = 13,
+    kRoleSetsFieldNumber = 14,
     kIdFieldNumber = 1,
     kUserEmailFieldNumber = 2,
     kUserFullNameFieldNumber = 4,
     kFilterFieldNumber = 7,
+    kDefaultLandingPageValueFieldNumber = 12,
     kLastLoginFieldNumber = 8,
     kCdateFieldNumber = 9,
     kEdateFieldNumber = 10,
     kRoleFieldNumber = 5,
+    kDefaultLandingPageTypeFieldNumber = 11,
   };
-  // repeated .kentik.user.v202211.PermissionEntry permissions = 6 [json_name = "permissions", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  int permissions_size() const;
+  // repeated .kentik.user.v202211.PermissionEntry permissions = 6 [json_name = "permissions", deprecated = true, (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  [[deprecated]]  int permissions_size() const;
   private:
   int _internal_permissions_size() const;
 
   public:
-  void clear_permissions() ;
-  ::kentik::user::v202211::PermissionEntry* mutable_permissions(int index);
-  ::google::protobuf::RepeatedPtrField<::kentik::user::v202211::PermissionEntry>* mutable_permissions();
+  [[deprecated]]  void clear_permissions() ;
+  [[deprecated]] ::kentik::user::v202211::PermissionEntry* mutable_permissions(int index);
+  [[deprecated]] ::google::protobuf::RepeatedPtrField<::kentik::user::v202211::PermissionEntry>* mutable_permissions();
 
   private:
   const ::google::protobuf::RepeatedPtrField<::kentik::user::v202211::PermissionEntry>& _internal_permissions() const;
   ::google::protobuf::RepeatedPtrField<::kentik::user::v202211::PermissionEntry>* _internal_mutable_permissions();
   public:
-  const ::kentik::user::v202211::PermissionEntry& permissions(int index) const;
-  ::kentik::user::v202211::PermissionEntry* add_permissions();
-  const ::google::protobuf::RepeatedPtrField<::kentik::user::v202211::PermissionEntry>& permissions() const;
+  [[deprecated]] const ::kentik::user::v202211::PermissionEntry& permissions(int index) const;
+  [[deprecated]] ::kentik::user::v202211::PermissionEntry* add_permissions();
+  [[deprecated]] const ::google::protobuf::RepeatedPtrField<::kentik::user::v202211::PermissionEntry>& permissions() const;
+  // repeated string roles = 13 [json_name = "roles", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  int roles_size() const;
+  private:
+  int _internal_roles_size() const;
+
+  public:
+  void clear_roles() ;
+  const std::string& roles(int index) const;
+  std::string* mutable_roles(int index);
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_roles(int index, Arg_&& value, Args_... args);
+  std::string* add_roles();
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void add_roles(Arg_&& value, Args_... args);
+  const ::google::protobuf::RepeatedPtrField<std::string>& roles() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* mutable_roles();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<std::string>& _internal_roles() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* _internal_mutable_roles();
+
+  public:
+  // repeated string role_sets = 14 [json_name = "roleSets", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  int role_sets_size() const;
+  private:
+  int _internal_role_sets_size() const;
+
+  public:
+  void clear_role_sets() ;
+  const std::string& role_sets(int index) const;
+  std::string* mutable_role_sets(int index);
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_role_sets(int index, Arg_&& value, Args_... args);
+  std::string* add_role_sets();
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void add_role_sets(Arg_&& value, Args_... args);
+  const ::google::protobuf::RepeatedPtrField<std::string>& role_sets() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* mutable_role_sets();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<std::string>& _internal_role_sets() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* _internal_mutable_role_sets();
+
+  public:
   // string id = 1 [json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   void clear_id() ;
   const std::string& id() const;
@@ -1971,6 +2064,22 @@ class User final : public ::google::protobuf::Message
   std::string* _internal_mutable_filter();
 
   public:
+  // string default_landing_page_value = 12 [json_name = "defaultLandingPageValue", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_default_landing_page_value() ;
+  const std::string& default_landing_page_value() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_default_landing_page_value(Arg_&& arg, Args_... args);
+  std::string* mutable_default_landing_page_value();
+  PROTOBUF_NODISCARD std::string* release_default_landing_page_value();
+  void set_allocated_default_landing_page_value(std::string* value);
+
+  private:
+  const std::string& _internal_default_landing_page_value() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_default_landing_page_value(
+      const std::string& value);
+  std::string* _internal_mutable_default_landing_page_value();
+
+  public:
   // .google.protobuf.Timestamp last_login = 8 [json_name = "lastLogin", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   bool has_last_login() const;
   void clear_last_login() ;
@@ -2026,13 +2135,23 @@ class User final : public ::google::protobuf::Message
   void _internal_set_role(::kentik::user::v202211::Role value);
 
   public:
+  // .kentik.user.v202211.LandingType default_landing_page_type = 11 [json_name = "defaultLandingPageType", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_default_landing_page_type() ;
+  ::kentik::user::v202211::LandingType default_landing_page_type() const;
+  void set_default_landing_page_type(::kentik::user::v202211::LandingType value);
+
+  private:
+  ::kentik::user::v202211::LandingType _internal_default_landing_page_type() const;
+  void _internal_set_default_landing_page_type(::kentik::user::v202211::LandingType value);
+
+  public:
   // @@protoc_insertion_point(class_scope:kentik.user.v202211.User)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      4, 9, 4,
-      73, 2>
+      4, 13, 4,
+      113, 2>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -2052,14 +2171,18 @@ class User final : public ::google::protobuf::Message
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     ::google::protobuf::RepeatedPtrField< ::kentik::user::v202211::PermissionEntry > permissions_;
+    ::google::protobuf::RepeatedPtrField<std::string> roles_;
+    ::google::protobuf::RepeatedPtrField<std::string> role_sets_;
     ::google::protobuf::internal::ArenaStringPtr id_;
     ::google::protobuf::internal::ArenaStringPtr user_email_;
     ::google::protobuf::internal::ArenaStringPtr user_full_name_;
     ::google::protobuf::internal::ArenaStringPtr filter_;
+    ::google::protobuf::internal::ArenaStringPtr default_landing_page_value_;
     ::google::protobuf::Timestamp* last_login_;
     ::google::protobuf::Timestamp* cdate_;
     ::google::protobuf::Timestamp* edate_;
     int role_;
+    int default_landing_page_type_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -3511,7 +3634,7 @@ inline void User::_internal_set_role(::kentik::user::v202211::Role value) {
   _impl_.role_ = value;
 }
 
-// repeated .kentik.user.v202211.PermissionEntry permissions = 6 [json_name = "permissions", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+// repeated .kentik.user.v202211.PermissionEntry permissions = 6 [json_name = "permissions", deprecated = true, (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
 inline int User::_internal_permissions_size() const {
   return _internal_permissions().size();
 }
@@ -3879,6 +4002,204 @@ inline void User::set_allocated_edate(::google::protobuf::Timestamp* value) {
 
   _impl_.edate_ = reinterpret_cast<::google::protobuf::Timestamp*>(value);
   // @@protoc_insertion_point(field_set_allocated:kentik.user.v202211.User.edate)
+}
+
+// .kentik.user.v202211.LandingType default_landing_page_type = 11 [json_name = "defaultLandingPageType", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void User::clear_default_landing_page_type() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.default_landing_page_type_ = 0;
+}
+inline ::kentik::user::v202211::LandingType User::default_landing_page_type() const {
+  // @@protoc_insertion_point(field_get:kentik.user.v202211.User.default_landing_page_type)
+  return _internal_default_landing_page_type();
+}
+inline void User::set_default_landing_page_type(::kentik::user::v202211::LandingType value) {
+  _internal_set_default_landing_page_type(value);
+  // @@protoc_insertion_point(field_set:kentik.user.v202211.User.default_landing_page_type)
+}
+inline ::kentik::user::v202211::LandingType User::_internal_default_landing_page_type() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return static_cast<::kentik::user::v202211::LandingType>(_impl_.default_landing_page_type_);
+}
+inline void User::_internal_set_default_landing_page_type(::kentik::user::v202211::LandingType value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.default_landing_page_type_ = value;
+}
+
+// string default_landing_page_value = 12 [json_name = "defaultLandingPageValue", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void User::clear_default_landing_page_value() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.default_landing_page_value_.ClearToEmpty();
+}
+inline const std::string& User::default_landing_page_value() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.user.v202211.User.default_landing_page_value)
+  return _internal_default_landing_page_value();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void User::set_default_landing_page_value(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.default_landing_page_value_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.user.v202211.User.default_landing_page_value)
+}
+inline std::string* User::mutable_default_landing_page_value() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_default_landing_page_value();
+  // @@protoc_insertion_point(field_mutable:kentik.user.v202211.User.default_landing_page_value)
+  return _s;
+}
+inline const std::string& User::_internal_default_landing_page_value() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.default_landing_page_value_.Get();
+}
+inline void User::_internal_set_default_landing_page_value(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.default_landing_page_value_.Set(value, GetArena());
+}
+inline std::string* User::_internal_mutable_default_landing_page_value() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.default_landing_page_value_.Mutable( GetArena());
+}
+inline std::string* User::release_default_landing_page_value() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.user.v202211.User.default_landing_page_value)
+  return _impl_.default_landing_page_value_.Release();
+}
+inline void User::set_allocated_default_landing_page_value(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.default_landing_page_value_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.default_landing_page_value_.IsDefault()) {
+    _impl_.default_landing_page_value_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.user.v202211.User.default_landing_page_value)
+}
+
+// repeated string roles = 13 [json_name = "roles", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline int User::_internal_roles_size() const {
+  return _internal_roles().size();
+}
+inline int User::roles_size() const {
+  return _internal_roles_size();
+}
+inline void User::clear_roles() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.roles_.Clear();
+}
+inline std::string* User::add_roles() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  std::string* _s = _internal_mutable_roles()->Add();
+  // @@protoc_insertion_point(field_add_mutable:kentik.user.v202211.User.roles)
+  return _s;
+}
+inline const std::string& User::roles(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.user.v202211.User.roles)
+  return _internal_roles().Get(index);
+}
+inline std::string* User::mutable_roles(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:kentik.user.v202211.User.roles)
+  return _internal_mutable_roles()->Mutable(index);
+}
+template <typename Arg_, typename... Args_>
+inline void User::set_roles(int index, Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::AssignToString(
+      *_internal_mutable_roles()->Mutable(index),
+      std::forward<Arg_>(value), args... );
+  // @@protoc_insertion_point(field_set:kentik.user.v202211.User.roles)
+}
+template <typename Arg_, typename... Args_>
+inline void User::add_roles(Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::google::protobuf::internal::AddToRepeatedPtrField(*_internal_mutable_roles(),
+                               std::forward<Arg_>(value),
+                               args... );
+  // @@protoc_insertion_point(field_add:kentik.user.v202211.User.roles)
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+User::roles() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:kentik.user.v202211.User.roles)
+  return _internal_roles();
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+User::mutable_roles() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:kentik.user.v202211.User.roles)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_roles();
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+User::_internal_roles() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.roles_;
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+User::_internal_mutable_roles() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.roles_;
+}
+
+// repeated string role_sets = 14 [json_name = "roleSets", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline int User::_internal_role_sets_size() const {
+  return _internal_role_sets().size();
+}
+inline int User::role_sets_size() const {
+  return _internal_role_sets_size();
+}
+inline void User::clear_role_sets() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.role_sets_.Clear();
+}
+inline std::string* User::add_role_sets() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  std::string* _s = _internal_mutable_role_sets()->Add();
+  // @@protoc_insertion_point(field_add_mutable:kentik.user.v202211.User.role_sets)
+  return _s;
+}
+inline const std::string& User::role_sets(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.user.v202211.User.role_sets)
+  return _internal_role_sets().Get(index);
+}
+inline std::string* User::mutable_role_sets(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:kentik.user.v202211.User.role_sets)
+  return _internal_mutable_role_sets()->Mutable(index);
+}
+template <typename Arg_, typename... Args_>
+inline void User::set_role_sets(int index, Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::AssignToString(
+      *_internal_mutable_role_sets()->Mutable(index),
+      std::forward<Arg_>(value), args... );
+  // @@protoc_insertion_point(field_set:kentik.user.v202211.User.role_sets)
+}
+template <typename Arg_, typename... Args_>
+inline void User::add_role_sets(Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::google::protobuf::internal::AddToRepeatedPtrField(*_internal_mutable_role_sets(),
+                               std::forward<Arg_>(value),
+                               args... );
+  // @@protoc_insertion_point(field_add:kentik.user.v202211.User.role_sets)
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+User::role_sets() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:kentik.user.v202211.User.role_sets)
+  return _internal_role_sets();
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+User::mutable_role_sets() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:kentik.user.v202211.User.role_sets)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_role_sets();
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+User::_internal_role_sets() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.role_sets_;
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+User::_internal_mutable_role_sets() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.role_sets_;
 }
 
 // -------------------------------------------------------------------
@@ -4698,6 +5019,12 @@ struct is_proto_enum<::kentik::user::v202211::Role> : std::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor<::kentik::user::v202211::Role>() {
   return ::kentik::user::v202211::Role_descriptor();
+}
+template <>
+struct is_proto_enum<::kentik::user::v202211::LandingType> : std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor<::kentik::user::v202211::LandingType>() {
+  return ::kentik::user::v202211::LandingType_descriptor();
 }
 
 }  // namespace protobuf
