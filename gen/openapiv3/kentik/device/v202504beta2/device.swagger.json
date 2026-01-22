@@ -1162,6 +1162,18 @@
                         "type": "integer",
                         "format": "int64",
                         "description": "Monitoring template - The ID of the monitoring template assigned to this device."
+                    },
+                    "osName": {
+                        "type": "string",
+                        "description": "Operating system name"
+                    },
+                    "osVersion": {
+                        "type": "string",
+                        "description": "Operating system version"
+                    },
+                    "serialNumber": {
+                        "type": "string",
+                        "description": "Serial number"
                     }
                 },
                 "title": "DeviceDetailed"

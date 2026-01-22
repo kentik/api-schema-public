@@ -1216,6 +1216,9 @@ type DeviceDetailed struct {
 	DeviceBgpCredentialName string            `protobuf:"bytes,62,opt,name=device_bgp_credential_name,json=deviceBgpCredentialName,proto3" json:"device_bgp_credential_name,omitempty"`
 	FlowSnmpCredentialName  string            `protobuf:"bytes,63,opt,name=flow_snmp_credential_name,json=flowSnmpCredentialName,proto3" json:"flow_snmp_credential_name,omitempty"`
 	MonitoringTemplateId    uint32            `protobuf:"varint,64,opt,name=monitoring_template_id,json=monitoringTemplateId,proto3" json:"monitoring_template_id,omitempty"`
+	OsName                  string            `protobuf:"bytes,65,opt,name=os_name,json=osName,proto3" json:"os_name,omitempty"`
+	OsVersion               string            `protobuf:"bytes,66,opt,name=os_version,json=osVersion,proto3" json:"os_version,omitempty"`
+	SerialNumber            string            `protobuf:"bytes,67,opt,name=serial_number,json=serialNumber,proto3" json:"serial_number,omitempty"`
 	unknownFields           protoimpl.UnknownFields
 	sizeCache               protoimpl.SizeCache
 }
@@ -1696,6 +1699,27 @@ func (x *DeviceDetailed) GetMonitoringTemplateId() uint32 {
 		return x.MonitoringTemplateId
 	}
 	return 0
+}
+
+func (x *DeviceDetailed) GetOsName() string {
+	if x != nil {
+		return x.OsName
+	}
+	return ""
+}
+
+func (x *DeviceDetailed) GetOsVersion() string {
+	if x != nil {
+		return x.OsVersion
+	}
+	return ""
+}
+
+func (x *DeviceDetailed) GetSerialNumber() string {
+	if x != nil {
+		return x.SerialNumber
+	}
+	return ""
 }
 
 type DeviceQuery struct {
@@ -2761,7 +2785,7 @@ const file_kentik_device_v202504beta2_device_proto_rawDesc = "" +
 	"deviceType\"H\n" +
 	"\n" +
 	"GnmiV1Conf\x12:\n" +
-	"\x0edialout_server\x18\x01 \x01(\tB\x13\x92A\x102\x0eDialout serverR\rdialoutServer\"\x92'\n" +
+	"\x0edialout_server\x18\x01 \x01(\tB\x13\x92A\x102\x0eDialout serverR\rdialoutServer\"\xbe(\n" +
 	"\x0eDeviceDetailed\x12:\n" +
 	"\x02id\x18\x01 \x01(\tB*\x92A$2\"System generated unique identifier\xe0A\x03R\x02id\x12.\n" +
 	"\n" +
@@ -2834,7 +2858,11 @@ const file_kentik_device_v202504beta2_device_proto_rawDesc = "" +
 	"\x03nms\x18= \x01(\v2+.kentik.device.v202504beta2.DeviceNmsConfigB6\x92A321Configuration if this device is monitored by NMS.R\x03nms\x12\xa8\x01\n" +
 	"\x1adevice_bgp_credential_name\x18> \x01(\tBk\x92Ah2fBGP Credential Name (device_bgp_credential_name) - Unsupported Field. Use device_bgp_password instead.R\x17deviceBgpCredentialName\x12\xde\x01\n" +
 	"\x19flow_snmp_credential_name\x18? \x01(\tB\xa2\x01\x92A\x9e\x012\x9b\x01Snmp Credential Name (flow_snmp_credential_name) - Optional Credential Name (Credential for Flow Snmp peering). Valid characters: alphanumeric. Length: 32.R\x16flowSnmpCredentialName\x12\x8b\x01\n" +
-	"\x16monitoring_template_id\x18@ \x01(\rBU\x92AR2PMonitoring template - The ID of the monitoring template assigned to this device.R\x14monitoringTemplateIdB\x10\n" +
+	"\x16monitoring_template_id\x18@ \x01(\rBU\x92AR2PMonitoring template - The ID of the monitoring template assigned to this device.R\x14monitoringTemplateId\x123\n" +
+	"\aos_name\x18A \x01(\tB\x1a\x92A\x172\x15Operating system nameR\x06osName\x12<\n" +
+	"\n" +
+	"os_version\x18B \x01(\tB\x1d\x92A\x1a2\x18Operating system versionR\tosVersion\x127\n" +
+	"\rserial_number\x18C \x01(\tB\x12\x92A\x0f2\rSerial numberR\fserialNumberB\x10\n" +
 	"\x0e_minimize_snmp\"9\n" +
 	"\vDeviceQuery\x12*\n" +
 	"\x11no_custom_columns\x18\x01 \x01(\bR\x0fnoCustomColumns\"-\n" +

@@ -878,6 +878,21 @@ message DeviceDetailed {
       description: "Monitoring template - The ID of the monitoring template assigned to this device."
     }
   ];
+  string os_name = 65 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Operating system name"
+    }
+  ];
+  string os_version = 66 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Operating system version"
+    }
+  ];
+  string serial_number = 67 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Serial number"
+    }
+  ];
 }
 
 message DeviceQuery {

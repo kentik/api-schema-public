@@ -5034,6 +5034,9 @@ class DeviceDetailed final : public ::google::protobuf::Message
     kRoleFieldNumber = 56,
     kDeviceBgpCredentialNameFieldNumber = 62,
     kFlowSnmpCredentialNameFieldNumber = 63,
+    kOsNameFieldNumber = 65,
+    kOsVersionFieldNumber = 66,
+    kSerialNumberFieldNumber = 67,
     kSiteFieldNumber = 7,
     kPlanFieldNumber = 8,
     kCreatedDateFieldNumber = 37,
@@ -5813,6 +5816,54 @@ class DeviceDetailed final : public ::google::protobuf::Message
   std::string* _internal_mutable_flow_snmp_credential_name();
 
   public:
+  // string os_name = 65 [json_name = "osName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_os_name() ;
+  const std::string& os_name() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_os_name(Arg_&& arg, Args_... args);
+  std::string* mutable_os_name();
+  PROTOBUF_NODISCARD std::string* release_os_name();
+  void set_allocated_os_name(std::string* value);
+
+  private:
+  const std::string& _internal_os_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_os_name(
+      const std::string& value);
+  std::string* _internal_mutable_os_name();
+
+  public:
+  // string os_version = 66 [json_name = "osVersion", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_os_version() ;
+  const std::string& os_version() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_os_version(Arg_&& arg, Args_... args);
+  std::string* mutable_os_version();
+  PROTOBUF_NODISCARD std::string* release_os_version();
+  void set_allocated_os_version(std::string* value);
+
+  private:
+  const std::string& _internal_os_version() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_os_version(
+      const std::string& value);
+  std::string* _internal_mutable_os_version();
+
+  public:
+  // string serial_number = 67 [json_name = "serialNumber", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_serial_number() ;
+  const std::string& serial_number() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_serial_number(Arg_&& arg, Args_... args);
+  std::string* mutable_serial_number();
+  PROTOBUF_NODISCARD std::string* release_serial_number();
+  void set_allocated_serial_number(std::string* value);
+
+  private:
+  const std::string& _internal_serial_number() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_serial_number(
+      const std::string& value);
+  std::string* _internal_mutable_serial_number();
+
+  public:
   // .kentik.device.v202504beta2.Site site = 7 [json_name = "site", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   bool has_site() const;
   void clear_site() ;
@@ -6024,8 +6075,8 @@ class DeviceDetailed final : public ::google::protobuf::Message
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      5, 64, 10,
-      838, 9>
+      5, 67, 10,
+      868, 11>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -6091,6 +6142,9 @@ class DeviceDetailed final : public ::google::protobuf::Message
     ::google::protobuf::internal::ArenaStringPtr role_;
     ::google::protobuf::internal::ArenaStringPtr device_bgp_credential_name_;
     ::google::protobuf::internal::ArenaStringPtr flow_snmp_credential_name_;
+    ::google::protobuf::internal::ArenaStringPtr os_name_;
+    ::google::protobuf::internal::ArenaStringPtr os_version_;
+    ::google::protobuf::internal::ArenaStringPtr serial_number_;
     ::kentik::device::v202504beta2::Site* site_;
     ::kentik::device::v202504beta2::Plan* plan_;
     ::google::protobuf::Timestamp* created_date_;
@@ -16444,6 +16498,150 @@ inline ::uint32_t DeviceDetailed::_internal_monitoring_template_id() const {
 inline void DeviceDetailed::_internal_set_monitoring_template_id(::uint32_t value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.monitoring_template_id_ = value;
+}
+
+// string os_name = 65 [json_name = "osName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void DeviceDetailed::clear_os_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.os_name_.ClearToEmpty();
+}
+inline const std::string& DeviceDetailed::os_name() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.device.v202504beta2.DeviceDetailed.os_name)
+  return _internal_os_name();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void DeviceDetailed::set_os_name(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.os_name_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.device.v202504beta2.DeviceDetailed.os_name)
+}
+inline std::string* DeviceDetailed::mutable_os_name() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_os_name();
+  // @@protoc_insertion_point(field_mutable:kentik.device.v202504beta2.DeviceDetailed.os_name)
+  return _s;
+}
+inline const std::string& DeviceDetailed::_internal_os_name() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.os_name_.Get();
+}
+inline void DeviceDetailed::_internal_set_os_name(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.os_name_.Set(value, GetArena());
+}
+inline std::string* DeviceDetailed::_internal_mutable_os_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.os_name_.Mutable( GetArena());
+}
+inline std::string* DeviceDetailed::release_os_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.device.v202504beta2.DeviceDetailed.os_name)
+  return _impl_.os_name_.Release();
+}
+inline void DeviceDetailed::set_allocated_os_name(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.os_name_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.os_name_.IsDefault()) {
+    _impl_.os_name_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.device.v202504beta2.DeviceDetailed.os_name)
+}
+
+// string os_version = 66 [json_name = "osVersion", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void DeviceDetailed::clear_os_version() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.os_version_.ClearToEmpty();
+}
+inline const std::string& DeviceDetailed::os_version() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.device.v202504beta2.DeviceDetailed.os_version)
+  return _internal_os_version();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void DeviceDetailed::set_os_version(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.os_version_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.device.v202504beta2.DeviceDetailed.os_version)
+}
+inline std::string* DeviceDetailed::mutable_os_version() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_os_version();
+  // @@protoc_insertion_point(field_mutable:kentik.device.v202504beta2.DeviceDetailed.os_version)
+  return _s;
+}
+inline const std::string& DeviceDetailed::_internal_os_version() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.os_version_.Get();
+}
+inline void DeviceDetailed::_internal_set_os_version(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.os_version_.Set(value, GetArena());
+}
+inline std::string* DeviceDetailed::_internal_mutable_os_version() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.os_version_.Mutable( GetArena());
+}
+inline std::string* DeviceDetailed::release_os_version() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.device.v202504beta2.DeviceDetailed.os_version)
+  return _impl_.os_version_.Release();
+}
+inline void DeviceDetailed::set_allocated_os_version(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.os_version_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.os_version_.IsDefault()) {
+    _impl_.os_version_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.device.v202504beta2.DeviceDetailed.os_version)
+}
+
+// string serial_number = 67 [json_name = "serialNumber", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void DeviceDetailed::clear_serial_number() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.serial_number_.ClearToEmpty();
+}
+inline const std::string& DeviceDetailed::serial_number() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.device.v202504beta2.DeviceDetailed.serial_number)
+  return _internal_serial_number();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void DeviceDetailed::set_serial_number(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.serial_number_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.device.v202504beta2.DeviceDetailed.serial_number)
+}
+inline std::string* DeviceDetailed::mutable_serial_number() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_serial_number();
+  // @@protoc_insertion_point(field_mutable:kentik.device.v202504beta2.DeviceDetailed.serial_number)
+  return _s;
+}
+inline const std::string& DeviceDetailed::_internal_serial_number() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.serial_number_.Get();
+}
+inline void DeviceDetailed::_internal_set_serial_number(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.serial_number_.Set(value, GetArena());
+}
+inline std::string* DeviceDetailed::_internal_mutable_serial_number() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.serial_number_.Mutable( GetArena());
+}
+inline std::string* DeviceDetailed::release_serial_number() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.device.v202504beta2.DeviceDetailed.serial_number)
+  return _impl_.serial_number_.Release();
+}
+inline void DeviceDetailed::set_allocated_serial_number(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.serial_number_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.serial_number_.IsDefault()) {
+    _impl_.serial_number_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.device.v202504beta2.DeviceDetailed.serial_number)
 }
 
 // -------------------------------------------------------------------

@@ -2936,7 +2936,7 @@ const ProtobufCMessageDescriptor kentik__device__v202504beta2__gnmi_v1_conf__des
   (ProtobufCMessageInit) kentik__device__v202504beta2__gnmi_v1_conf__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__device__v202504beta2__device_detailed__field_descriptors[64] =
+static const ProtobufCFieldDescriptor kentik__device__v202504beta2__device_detailed__field_descriptors[67] =
 {
   {
     "id",
@@ -3706,6 +3706,42 @@ static const ProtobufCFieldDescriptor kentik__device__v202504beta2__device_detai
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "os_name",
+    65,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Device__V202504beta2__DeviceDetailed, os_name),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "os_version",
+    66,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Device__V202504beta2__DeviceDetailed, os_version),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "serial_number",
+    67,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Device__V202504beta2__DeviceDetailed, serial_number),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__device__v202504beta2__device_detailed__field_indices_by_name[] = {
   9,   /* field[9] = all_interfaces */
@@ -3762,9 +3798,12 @@ static const unsigned kentik__device__v202504beta2__device_detailed__field_indic
   15,   /* field[15] = minimize_snmp */
   63,   /* field[63] = monitoring_template_id */
   60,   /* field[60] = nms */
+  64,   /* field[64] = os_name */
+  65,   /* field[65] = os_version */
   7,   /* field[7] = plan */
   55,   /* field[55] = role */
   12,   /* field[12] = sending_ips */
+  66,   /* field[66] = serial_number */
   6,   /* field[6] = site */
   49,   /* field[49] = snmp_disabled_reason */
   50,   /* field[50] = snmp_disabled_reason_other */
@@ -3776,7 +3815,7 @@ static const unsigned kentik__device__v202504beta2__device_detailed__field_indic
 static const ProtobufCIntRange kentik__device__v202504beta2__device_detailed__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 64 }
+  { 0, 67 }
 };
 const ProtobufCMessageDescriptor kentik__device__v202504beta2__device_detailed__descriptor =
 {
@@ -3786,7 +3825,7 @@ const ProtobufCMessageDescriptor kentik__device__v202504beta2__device_detailed__
   "Kentik__Device__V202504beta2__DeviceDetailed",
   "kentik.device.v202504beta2",
   sizeof(Kentik__Device__V202504beta2__DeviceDetailed),
-  64,
+  67,
   kentik__device__v202504beta2__device_detailed__field_descriptors,
   kentik__device__v202504beta2__device_detailed__field_indices_by_name,
   1,  kentik__device__v202504beta2__device_detailed__number_ranges,

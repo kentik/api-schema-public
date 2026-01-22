@@ -794,6 +794,15 @@ inline constexpr DeviceDetailed::Impl_::Impl_(
         flow_snmp_credential_name_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
+        os_name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        os_version_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        serial_number_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
         site_{nullptr},
         plan_{nullptr},
         created_date_{nullptr},
@@ -1524,6 +1533,9 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::device::v202504beta2::DeviceDetailed, _impl_.device_bgp_credential_name_),
         PROTOBUF_FIELD_OFFSET(::kentik::device::v202504beta2::DeviceDetailed, _impl_.flow_snmp_credential_name_),
         PROTOBUF_FIELD_OFFSET(::kentik::device::v202504beta2::DeviceDetailed, _impl_.monitoring_template_id_),
+        PROTOBUF_FIELD_OFFSET(::kentik::device::v202504beta2::DeviceDetailed, _impl_.os_name_),
+        PROTOBUF_FIELD_OFFSET(::kentik::device::v202504beta2::DeviceDetailed, _impl_.os_version_),
+        PROTOBUF_FIELD_OFFSET(::kentik::device::v202504beta2::DeviceDetailed, _impl_.serial_number_),
         ~0u,
         ~0u,
         ~0u,
@@ -1585,6 +1597,9 @@ const ::uint32_t
         ~0u,
         ~0u,
         6,
+        ~0u,
+        ~0u,
+        ~0u,
         ~0u,
         ~0u,
         ~0u,
@@ -1797,27 +1812,27 @@ static const ::_pbi::MigrationSchema
         {212, -1, -1, sizeof(::kentik::device::v202504beta2::Interface)},
         {229, -1, -1, sizeof(::kentik::device::v202504beta2::CustomColumnData)},
         {243, -1, -1, sizeof(::kentik::device::v202504beta2::GnmiV1Conf)},
-        {252, 324, -1, sizeof(::kentik::device::v202504beta2::DeviceDetailed)},
-        {388, -1, -1, sizeof(::kentik::device::v202504beta2::DeviceQuery)},
-        {397, -1, -1, sizeof(::kentik::device::v202504beta2::LabelConcise)},
-        {406, 415, -1, sizeof(::kentik::device::v202504beta2::ListDevicesRequest)},
-        {416, -1, -1, sizeof(::kentik::device::v202504beta2::ListDevicesResponse)},
-        {426, 436, -1, sizeof(::kentik::device::v202504beta2::GetDeviceRequest)},
-        {438, 447, -1, sizeof(::kentik::device::v202504beta2::GetDeviceResponse)},
-        {448, 457, -1, sizeof(::kentik::device::v202504beta2::CreateDeviceRequest)},
-        {458, 467, -1, sizeof(::kentik::device::v202504beta2::CreateDeviceResponse)},
-        {468, -1, -1, sizeof(::kentik::device::v202504beta2::CreateDevicesRequest)},
-        {477, -1, -1, sizeof(::kentik::device::v202504beta2::CreateDevicesResponse)},
-        {487, 496, -1, sizeof(::kentik::device::v202504beta2::UpdateDeviceRequest)},
-        {497, 506, -1, sizeof(::kentik::device::v202504beta2::UpdateDeviceResponse)},
-        {507, -1, -1, sizeof(::kentik::device::v202504beta2::UpdateDevicesRequest)},
-        {516, -1, -1, sizeof(::kentik::device::v202504beta2::UpdateDevicesResponse)},
-        {526, -1, -1, sizeof(::kentik::device::v202504beta2::UpdateDeviceLabelsRequest)},
-        {536, 545, -1, sizeof(::kentik::device::v202504beta2::UpdateDeviceLabelsResponse)},
-        {546, -1, -1, sizeof(::kentik::device::v202504beta2::DeleteDeviceRequest)},
-        {555, -1, -1, sizeof(::kentik::device::v202504beta2::DeleteDeviceResponse)},
-        {563, -1, -1, sizeof(::kentik::device::v202504beta2::DeleteDevicesRequest)},
-        {572, -1, -1, sizeof(::kentik::device::v202504beta2::DeleteDevicesResponse)},
+        {252, 327, -1, sizeof(::kentik::device::v202504beta2::DeviceDetailed)},
+        {394, -1, -1, sizeof(::kentik::device::v202504beta2::DeviceQuery)},
+        {403, -1, -1, sizeof(::kentik::device::v202504beta2::LabelConcise)},
+        {412, 421, -1, sizeof(::kentik::device::v202504beta2::ListDevicesRequest)},
+        {422, -1, -1, sizeof(::kentik::device::v202504beta2::ListDevicesResponse)},
+        {432, 442, -1, sizeof(::kentik::device::v202504beta2::GetDeviceRequest)},
+        {444, 453, -1, sizeof(::kentik::device::v202504beta2::GetDeviceResponse)},
+        {454, 463, -1, sizeof(::kentik::device::v202504beta2::CreateDeviceRequest)},
+        {464, 473, -1, sizeof(::kentik::device::v202504beta2::CreateDeviceResponse)},
+        {474, -1, -1, sizeof(::kentik::device::v202504beta2::CreateDevicesRequest)},
+        {483, -1, -1, sizeof(::kentik::device::v202504beta2::CreateDevicesResponse)},
+        {493, 502, -1, sizeof(::kentik::device::v202504beta2::UpdateDeviceRequest)},
+        {503, 512, -1, sizeof(::kentik::device::v202504beta2::UpdateDeviceResponse)},
+        {513, -1, -1, sizeof(::kentik::device::v202504beta2::UpdateDevicesRequest)},
+        {522, -1, -1, sizeof(::kentik::device::v202504beta2::UpdateDevicesResponse)},
+        {532, -1, -1, sizeof(::kentik::device::v202504beta2::UpdateDeviceLabelsRequest)},
+        {542, 551, -1, sizeof(::kentik::device::v202504beta2::UpdateDeviceLabelsResponse)},
+        {552, -1, -1, sizeof(::kentik::device::v202504beta2::DeleteDeviceRequest)},
+        {561, -1, -1, sizeof(::kentik::device::v202504beta2::DeleteDeviceResponse)},
+        {569, -1, -1, sizeof(::kentik::device::v202504beta2::DeleteDevicesRequest)},
+        {578, -1, -1, sizeof(::kentik::device::v202504beta2::DeleteDevicesResponse)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::device::v202504beta2::_DeviceSnmpV3Conf_default_instance_._instance,
@@ -2115,7 +2130,7 @@ const char descriptor_table_protodef_kentik_2fdevice_2fv202504beta2_2fdevice_2ep
     "\001(\tB\020\222A\r2\013Column typeR\007colType\0221\n\013device"
     "_type\030\006 \001(\tB\020\222A\r2\013Device typeR\ndeviceTyp"
     "e\"H\n\nGnmiV1Conf\022:\n\016dialout_server\030\001 \001(\tB"
-    "\023\222A\0202\016Dialout serverR\rdialoutServer\"\222\'\n\016"
+    "\023\222A\0202\016Dialout serverR\rdialoutServer\"\276(\n\016"
     "DeviceDetailed\022:\n\002id\030\001 \001(\tB*\222A$2\"System "
     "generated unique identifier\340A\003R\002id\022.\n\nco"
     "mpany_id\030\002 \001(\tB\017\222A\0142\nCompany IDR\tcompany"
@@ -2240,175 +2255,179 @@ const char descriptor_table_protodef_kentik_2fdevice_2fv202504beta2_2fdevice_2ep
     "tialName\022\213\001\n\026monitoring_template_id\030@ \001("
     "\rBU\222AR2PMonitoring template - The ID of "
     "the monitoring template assigned to this"
-    " device.R\024monitoringTemplateIdB\020\n\016_minim"
-    "ize_snmp\"9\n\013DeviceQuery\022*\n\021no_custom_col"
-    "umns\030\001 \001(\010R\017noCustomColumns\"-\n\014LabelConc"
-    "ise\022\035\n\002id\030\001 \001(\rB\r\222A\n2\010Label IDR\002id\"S\n\022Li"
-    "stDevicesRequest\022=\n\005query\030\001 \001(\0132\'.kentik"
-    ".device.v202504beta2.DeviceQueryR\005query\""
-    "\352\001\n\023ListDevicesResponse\022l\n\007devices\030\001 \003(\013"
-    "2*.kentik.device.v202504beta2.DeviceDeta"
-    "iledB&\222A#2!List of configurations of dev"
-    "icesR\007devices\022e\n\rinvalid_count\030\002 \001(\rB@\222A"
-    "=2;Number of invalid entries encountered"
-    " while collecting dataR\014invalidCount\"\205\001\n"
-    "\020GetDeviceRequest\0222\n\002id\030\001 \001(\tB\"\222A\0342\032ID o"
-    "f the requested device\340A\002R\002id\022=\n\005query\030\002"
-    " \001(\0132\'.kentik.device.v202504beta2.Device"
-    "QueryR\005query\"\203\001\n\021GetDeviceResponse\022n\n\006de"
-    "vice\030\001 \001(\0132*.kentik.device.v202504beta2."
-    "DeviceDetailedB*\222A\'2%Configuration of th"
-    "e requested deviceR\006device\"\201\001\n\023CreateDev"
-    "iceRequest\022j\n\006device\030\001 \001(\0132).kentik.devi"
-    "ce.v202504beta2.DeviceConciseB\'\222A!2\037Conf"
-    "iguration of the new device\340A\002R\006device\"\212"
-    "\001\n\024CreateDeviceResponse\022r\n\006device\030\001 \001(\0132"
-    "*.kentik.device.v202504beta2.DeviceDetai"
-    "ledB.\222A+2)Configuration of the newly cre"
-    "ated deviceR\006device\"\224\001\n\024CreateDevicesReq"
-    "uest\022|\n\007devices\030\001 \003(\0132).kentik.device.v2"
-    "02504beta2.DeviceConciseB7\222A12/List of c"
-    "onfigurations of devices to be created\340A"
-    "\002R\007devices\"\363\001\n\025CreateDevicesResponse\022z\n\007"
-    "devices\030\001 \003(\0132*.kentik.device.v202504bet"
-    "a2.DeviceDetailedB4\222A12/List of configur"
-    "ations of newly created devicesR\007devices"
-    "\022^\n\016failed_devices\030\002 \003(\tB7\222A422List of n"
-    "ames of devices that failed to be create"
-    "dR\rfailedDevices\"\234\001\n\023UpdateDeviceRequest"
-    "\022\204\001\n\006device\030\001 \001(\0132).kentik.device.v20250"
-    "4beta2.DeviceConciseBA\222A;29New configura"
-    "tion attributes for the device to be upd"
-    "ated\340A\002R\006device\"\204\001\n\024UpdateDeviceResponse"
-    "\022l\n\006device\030\001 \001(\0132*.kentik.device.v202504"
-    "beta2.DeviceDetailedB(\222A%2#Updated confi"
-    "guration of the deviceR\006device\"\224\001\n\024Updat"
-    "eDevicesRequest\022|\n\007devices\030\001 \003(\0132).kenti"
-    "k.device.v202504beta2.DeviceConciseB7\222A1"
-    "2/List of configurations of devices to b"
-    "e updated\340A\002R\007devices\"\353\001\n\025UpdateDevicesR"
-    "esponse\022t\n\007devices\030\001 \003(\0132*.kentik.device"
-    ".v202504beta2.DeviceDetailedB.\222A+2)List "
-    "of configurations of updated devicesR\007de"
-    "vices\022\\\n\016failed_devices\030\002 \003(\tB5\222A220List"
-    " of IDs of devices that failed to be upd"
-    "atedR\rfailedDevices\"\307\001\n\031UpdateDeviceLabe"
-    "lsRequest\0226\n\002id\030\001 \001(\tB&\222A 2\036ID of the de"
-    "vice to be updated\340A\002R\002id\022r\n\006labels\030\002 \003("
-    "\0132(.kentik.device.v202504beta2.LabelConc"
-    "iseB0\222A*2(List of labels to be added to "
-    "the device\340A\002R\006labels\"\212\001\n\032UpdateDeviceLa"
-    "belsResponse\022l\n\006device\030\001 \001(\0132*.kentik.de"
+    " device.R\024monitoringTemplateId\0223\n\007os_nam"
+    "e\030A \001(\tB\032\222A\0272\025Operating system nameR\006osN"
+    "ame\022<\n\nos_version\030B \001(\tB\035\222A\0322\030Operating "
+    "system versionR\tosVersion\0227\n\rserial_numb"
+    "er\030C \001(\tB\022\222A\0172\rSerial numberR\014serialNumb"
+    "erB\020\n\016_minimize_snmp\"9\n\013DeviceQuery\022*\n\021n"
+    "o_custom_columns\030\001 \001(\010R\017noCustomColumns\""
+    "-\n\014LabelConcise\022\035\n\002id\030\001 \001(\rB\r\222A\n2\010Label "
+    "IDR\002id\"S\n\022ListDevicesRequest\022=\n\005query\030\001 "
+    "\001(\0132\'.kentik.device.v202504beta2.DeviceQ"
+    "ueryR\005query\"\352\001\n\023ListDevicesResponse\022l\n\007d"
+    "evices\030\001 \003(\0132*.kentik.device.v202504beta"
+    "2.DeviceDetailedB&\222A#2!List of configura"
+    "tions of devicesR\007devices\022e\n\rinvalid_cou"
+    "nt\030\002 \001(\rB@\222A=2;Number of invalid entries"
+    " encountered while collecting dataR\014inva"
+    "lidCount\"\205\001\n\020GetDeviceRequest\0222\n\002id\030\001 \001("
+    "\tB\"\222A\0342\032ID of the requested device\340A\002R\002i"
+    "d\022=\n\005query\030\002 \001(\0132\'.kentik.device.v202504"
+    "beta2.DeviceQueryR\005query\"\203\001\n\021GetDeviceRe"
+    "sponse\022n\n\006device\030\001 \001(\0132*.kentik.device.v"
+    "202504beta2.DeviceDetailedB*\222A\'2%Configu"
+    "ration of the requested deviceR\006device\"\201"
+    "\001\n\023CreateDeviceRequest\022j\n\006device\030\001 \001(\0132)"
+    ".kentik.device.v202504beta2.DeviceConcis"
+    "eB\'\222A!2\037Configuration of the new device\340"
+    "A\002R\006device\"\212\001\n\024CreateDeviceResponse\022r\n\006d"
+    "evice\030\001 \001(\0132*.kentik.device.v202504beta2"
+    ".DeviceDetailedB.\222A+2)Configuration of t"
+    "he newly created deviceR\006device\"\224\001\n\024Crea"
+    "teDevicesRequest\022|\n\007devices\030\001 \003(\0132).kent"
+    "ik.device.v202504beta2.DeviceConciseB7\222A"
+    "12/List of configurations of devices to "
+    "be created\340A\002R\007devices\"\363\001\n\025CreateDevices"
+    "Response\022z\n\007devices\030\001 \003(\0132*.kentik.devic"
+    "e.v202504beta2.DeviceDetailedB4\222A12/List"
+    " of configurations of newly created devi"
+    "cesR\007devices\022^\n\016failed_devices\030\002 \003(\tB7\222A"
+    "422List of names of devices that failed "
+    "to be createdR\rfailedDevices\"\234\001\n\023UpdateD"
+    "eviceRequest\022\204\001\n\006device\030\001 \001(\0132).kentik.d"
+    "evice.v202504beta2.DeviceConciseBA\222A;29N"
+    "ew configuration attributes for the devi"
+    "ce to be updated\340A\002R\006device\"\204\001\n\024UpdateDe"
+    "viceResponse\022l\n\006device\030\001 \001(\0132*.kentik.de"
     "vice.v202504beta2.DeviceDetailedB(\222A%2#U"
     "pdated configuration of the deviceR\006devi"
-    "ce\"M\n\023DeleteDeviceRequest\0226\n\002id\030\001 \001(\tB&\222"
-    "A 2\036ID of the device to be deleted\340A\002R\002i"
-    "d\"\026\n\024DeleteDeviceResponse\"V\n\024DeleteDevic"
-    "esRequest\022>\n\003ids\030\001 \003(\tB,\222A&2$List of IDs"
-    " of devices to be deleted\340A\002R\003ids\"u\n\025Del"
-    "eteDevicesResponse\022\\\n\016failed_devices\030\001 \003"
-    "(\tB5\222A220List of IDs of devices that fai"
-    "led to be deletedR\rfailedDevices2\213\033\n\rDev"
-    "iceService\022\252\002\n\013ListDevices\022..kentik.devi"
-    "ce.v202504beta2.ListDevicesRequest\032/.ken"
-    "tik.device.v202504beta2.ListDevicesRespo"
-    "nse\"\271\001\222A~\022\021List all devices.\032\\Returns li"
-    "st of configured devices (see [About Dev"
-    "ices](https://kb.kentik.com/v4/Cb01.htm)"
-    ").*\013ListDevices\362\327\002\021admin.device:read\202\323\344\223"
-    "\002\035\022\033/device/v202504beta2/device\022\311\002\n\tGetD"
-    "evice\022,.kentik.device.v202504beta2.GetDe"
-    "viceRequest\032-.kentik.device.v202504beta2"
-    ".GetDeviceResponse\"\336\001\222A\235\001\022#Retrieve conf"
-    "iguration of a device.\032kReturns configur"
-    "ation of a device specified by ID (see ["
-    "About Devices](https://kb.kentik.com/v4/"
-    "Cb01.htm)).*\tGetDevice\362\327\002\021admin.device:r"
-    "ead\202\323\344\223\002\"\022 /device/v202504beta2/device/{"
-    "id}\022\346\002\n\014CreateDevice\022/.kentik.device.v20"
-    "2504beta2.CreateDeviceRequest\0320.kentik.d"
-    "evice.v202504beta2.CreateDeviceResponse\""
-    "\362\001\222A\262\001\022\027Configure a new device.\032\210\001Create"
-    " configuration for a new device. Returns"
-    " the newly created configuration (see [A"
-    "bout Devices](https://kb.kentik.com/v4/C"
-    "b01.htm)).*\014CreateDevice\362\327\002\022admin.device"
-    ":write\202\323\344\223\002 \"\033/device/v202504beta2/devic"
-    "e:\001*\022\212\003\n\rCreateDevices\0220.kentik.device.v"
-    "202504beta2.CreateDevicesRequest\0321.kenti"
-    "k.device.v202504beta2.CreateDevicesRespo"
-    "nse\"\223\002\222A\306\001\022%Configure multiple devices ("
-    "max 100).\032\215\001Create configuration for mul"
-    "tiple devices. Returns the newly created"
-    " configurations (see [About Devices](htt"
-    "ps://kb.kentik.com/v4/Cb01.htm)).*\rCreat"
-    "eDevices\362\327\002\022admin.device:write\202\323\344\223\002-\"(/d"
-    "evice/v202504beta2/device/batch_create:\001"
-    "*\022\223\003\n\014UpdateDevice\022/.kentik.device.v2025"
-    "04beta2.UpdateDeviceRequest\0320.kentik.dev"
-    "ice.v202504beta2.UpdateDeviceResponse\"\237\002"
-    "\222A\323\001\022\"Updates configuration of a device."
-    "\032\236\001Replaces configuration of a device wi"
-    "th attributes in the request. Returns th"
-    "e updated configuration (see [About Devi"
-    "ces](https://kb.kentik.com/v4/Cb01.htm))"
-    ".*\014UpdateDevice\362\327\002\022admin.device:write\202\323\344"
-    "\223\002,\032\'/device/v202504beta2/device/{device"
-    ".id}:\001*\022\263\003\n\rUpdateDevices\0220.kentik.devic"
-    "e.v202504beta2.UpdateDevicesRequest\0321.ke"
-    "ntik.device.v202504beta2.UpdateDevicesRe"
-    "sponse\"\274\002\222A\357\001\0224Updates configuration of "
-    "multiple devices (max 100).\032\247\001Replaces c"
-    "onfiguration of multiple devices with at"
-    "tributes in the request. Returns the upd"
-    "ated configurations (see [About Devices]"
-    "(https://kb.kentik.com/v4/Cb01.htm)).*\rU"
-    "pdateDevices\362\327\002\022admin.device:write\202\323\344\223\002-"
-    "\032(/device/v202504beta2/device/batch_upda"
-    "te:\001*\022\302\003\n\022UpdateDeviceLabels\0225.kentik.de"
-    "vice.v202504beta2.UpdateDeviceLabelsRequ"
-    "est\0326.kentik.device.v202504beta2.UpdateD"
-    "eviceLabelsResponse\"\274\002\222A\360\001\022\033Updates labe"
-    "ls of a device.\032\274\001Removes all existing l"
-    "abels from the device and applies the de"
-    "vice labels (see [About Device Labels](h"
-    "ttps://kb.kentik.com/v4/Cb16.htm)) speci"
-    "fied by id. Returns the updated configur"
-    "ation.*\022UpdateDeviceLabels\362\327\002\022admin.devi"
-    "ce:write\202\323\344\223\002,\032\'/device/v202504beta2/dev"
-    "ice/{id}/labels:\001*\022\325\002\n\014DeleteDevice\022/.ke"
-    "ntik.device.v202504beta2.DeleteDeviceReq"
-    "uest\0320.kentik.device.v202504beta2.Delete"
-    "DeviceResponse\"\341\001\222A\237\001\022!Delete configurat"
-    "ion of a device.\032lDeletes configuration "
-    "of a device with specific ID (see [About"
-    " Devices](https://kb.kentik.com/v4/Cb01."
-    "htm)).*\014DeleteDevice\362\327\002\022admin.device:wri"
-    "te\202\323\344\223\002\"* /device/v202504beta2/device/{i"
-    "d}\022\365\002\n\rDeleteDevices\0220.kentik.device.v20"
-    "2504beta2.DeleteDevicesRequest\0321.kentik."
-    "device.v202504beta2.DeleteDevicesRespons"
-    "e\"\376\001\222A\261\001\022)Delete configuration of multip"
-    "le devices.\032uDeletes configuration of mu"
-    "ltiple devices with specific IDs (see [A"
-    "bout Devices](https://kb.kentik.com/v4/C"
-    "b01.htm)).*\rDeleteDevices\362\327\002\022admin.devic"
-    "e:write\202\323\344\223\002-\"(/device/v202504beta2/devi"
-    "ce/batch_delete:\001*\032*\312A\023grpc.api.kentik.c"
-    "om\352\327\002\014admin.device\220\330\002\003B\356\003ZLgithub.com/ke"
-    "ntik/api-schema-public/gen/go/kentik/dev"
-    "ice/v202504beta2;device\222A\234\003\022\265\001\n\nDevice A"
-    "PI\022R# Overview\nThe Device API provides p"
-    "rogrammatic access to configuration of d"
-    "evices\"E\n\026Kentik API Engineering\022+https:"
-    "//github.com/kentik/api-schema-public2\014v"
-    "202504beta2*\001\0022\020application/json:\020applic"
-    "ation/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Ema"
-    "il \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002"
-    "b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]\n%General info"
-    "rmation about Kentik APIs\0224https://kb.ke"
-    "ntik.com/v0/Ab09.htm#Ab09-APIs_Overviewb"
-    "\006proto3"
+    "ce\"\224\001\n\024UpdateDevicesRequest\022|\n\007devices\030\001"
+    " \003(\0132).kentik.device.v202504beta2.Device"
+    "ConciseB7\222A12/List of configurations of "
+    "devices to be updated\340A\002R\007devices\"\353\001\n\025Up"
+    "dateDevicesResponse\022t\n\007devices\030\001 \003(\0132*.k"
+    "entik.device.v202504beta2.DeviceDetailed"
+    "B.\222A+2)List of configurations of updated"
+    " devicesR\007devices\022\\\n\016failed_devices\030\002 \003("
+    "\tB5\222A220List of IDs of devices that fail"
+    "ed to be updatedR\rfailedDevices\"\307\001\n\031Upda"
+    "teDeviceLabelsRequest\0226\n\002id\030\001 \001(\tB&\222A 2\036"
+    "ID of the device to be updated\340A\002R\002id\022r\n"
+    "\006labels\030\002 \003(\0132(.kentik.device.v202504bet"
+    "a2.LabelConciseB0\222A*2(List of labels to "
+    "be added to the device\340A\002R\006labels\"\212\001\n\032Up"
+    "dateDeviceLabelsResponse\022l\n\006device\030\001 \001(\013"
+    "2*.kentik.device.v202504beta2.DeviceDeta"
+    "iledB(\222A%2#Updated configuration of the "
+    "deviceR\006device\"M\n\023DeleteDeviceRequest\0226\n"
+    "\002id\030\001 \001(\tB&\222A 2\036ID of the device to be d"
+    "eleted\340A\002R\002id\"\026\n\024DeleteDeviceResponse\"V\n"
+    "\024DeleteDevicesRequest\022>\n\003ids\030\001 \003(\tB,\222A&2"
+    "$List of IDs of devices to be deleted\340A\002"
+    "R\003ids\"u\n\025DeleteDevicesResponse\022\\\n\016failed"
+    "_devices\030\001 \003(\tB5\222A220List of IDs of devi"
+    "ces that failed to be deletedR\rfailedDev"
+    "ices2\213\033\n\rDeviceService\022\252\002\n\013ListDevices\022."
+    ".kentik.device.v202504beta2.ListDevicesR"
+    "equest\032/.kentik.device.v202504beta2.List"
+    "DevicesResponse\"\271\001\222A~\022\021List all devices."
+    "\032\\Returns list of configured devices (se"
+    "e [About Devices](https://kb.kentik.com/"
+    "v4/Cb01.htm)).*\013ListDevices\362\327\002\021admin.dev"
+    "ice:read\202\323\344\223\002\035\022\033/device/v202504beta2/dev"
+    "ice\022\311\002\n\tGetDevice\022,.kentik.device.v20250"
+    "4beta2.GetDeviceRequest\032-.kentik.device."
+    "v202504beta2.GetDeviceResponse\"\336\001\222A\235\001\022#R"
+    "etrieve configuration of a device.\032kRetu"
+    "rns configuration of a device specified "
+    "by ID (see [About Devices](https://kb.ke"
+    "ntik.com/v4/Cb01.htm)).*\tGetDevice\362\327\002\021ad"
+    "min.device:read\202\323\344\223\002\"\022 /device/v202504be"
+    "ta2/device/{id}\022\346\002\n\014CreateDevice\022/.kenti"
+    "k.device.v202504beta2.CreateDeviceReques"
+    "t\0320.kentik.device.v202504beta2.CreateDev"
+    "iceResponse\"\362\001\222A\262\001\022\027Configure a new devi"
+    "ce.\032\210\001Create configuration for a new dev"
+    "ice. Returns the newly created configura"
+    "tion (see [About Devices](https://kb.ken"
+    "tik.com/v4/Cb01.htm)).*\014CreateDevice\362\327\002\022"
+    "admin.device:write\202\323\344\223\002 \"\033/device/v20250"
+    "4beta2/device:\001*\022\212\003\n\rCreateDevices\0220.ken"
+    "tik.device.v202504beta2.CreateDevicesReq"
+    "uest\0321.kentik.device.v202504beta2.Create"
+    "DevicesResponse\"\223\002\222A\306\001\022%Configure multip"
+    "le devices (max 100).\032\215\001Create configura"
+    "tion for multiple devices. Returns the n"
+    "ewly created configurations (see [About "
+    "Devices](https://kb.kentik.com/v4/Cb01.h"
+    "tm)).*\rCreateDevices\362\327\002\022admin.device:wri"
+    "te\202\323\344\223\002-\"(/device/v202504beta2/device/ba"
+    "tch_create:\001*\022\223\003\n\014UpdateDevice\022/.kentik."
+    "device.v202504beta2.UpdateDeviceRequest\032"
+    "0.kentik.device.v202504beta2.UpdateDevic"
+    "eResponse\"\237\002\222A\323\001\022\"Updates configuration "
+    "of a device.\032\236\001Replaces configuration of"
+    " a device with attributes in the request"
+    ". Returns the updated configuration (see"
+    " [About Devices](https://kb.kentik.com/v"
+    "4/Cb01.htm)).*\014UpdateDevice\362\327\002\022admin.dev"
+    "ice:write\202\323\344\223\002,\032\'/device/v202504beta2/de"
+    "vice/{device.id}:\001*\022\263\003\n\rUpdateDevices\0220."
+    "kentik.device.v202504beta2.UpdateDevices"
+    "Request\0321.kentik.device.v202504beta2.Upd"
+    "ateDevicesResponse\"\274\002\222A\357\001\0224Updates confi"
+    "guration of multiple devices (max 100).\032"
+    "\247\001Replaces configuration of multiple dev"
+    "ices with attributes in the request. Ret"
+    "urns the updated configurations (see [Ab"
+    "out Devices](https://kb.kentik.com/v4/Cb"
+    "01.htm)).*\rUpdateDevices\362\327\002\022admin.device"
+    ":write\202\323\344\223\002-\032(/device/v202504beta2/devic"
+    "e/batch_update:\001*\022\302\003\n\022UpdateDeviceLabels"
+    "\0225.kentik.device.v202504beta2.UpdateDevi"
+    "ceLabelsRequest\0326.kentik.device.v202504b"
+    "eta2.UpdateDeviceLabelsResponse\"\274\002\222A\360\001\022\033"
+    "Updates labels of a device.\032\274\001Removes al"
+    "l existing labels from the device and ap"
+    "plies the device labels (see [About Devi"
+    "ce Labels](https://kb.kentik.com/v4/Cb16"
+    ".htm)) specified by id. Returns the upda"
+    "ted configuration.*\022UpdateDeviceLabels\362\327"
+    "\002\022admin.device:write\202\323\344\223\002,\032\'/device/v202"
+    "504beta2/device/{id}/labels:\001*\022\325\002\n\014Delet"
+    "eDevice\022/.kentik.device.v202504beta2.Del"
+    "eteDeviceRequest\0320.kentik.device.v202504"
+    "beta2.DeleteDeviceResponse\"\341\001\222A\237\001\022!Delet"
+    "e configuration of a device.\032lDeletes co"
+    "nfiguration of a device with specific ID"
+    " (see [About Devices](https://kb.kentik."
+    "com/v4/Cb01.htm)).*\014DeleteDevice\362\327\002\022admi"
+    "n.device:write\202\323\344\223\002\"* /device/v202504bet"
+    "a2/device/{id}\022\365\002\n\rDeleteDevices\0220.kenti"
+    "k.device.v202504beta2.DeleteDevicesReque"
+    "st\0321.kentik.device.v202504beta2.DeleteDe"
+    "vicesResponse\"\376\001\222A\261\001\022)Delete configurati"
+    "on of multiple devices.\032uDeletes configu"
+    "ration of multiple devices with specific"
+    " IDs (see [About Devices](https://kb.ken"
+    "tik.com/v4/Cb01.htm)).*\rDeleteDevices\362\327\002"
+    "\022admin.device:write\202\323\344\223\002-\"(/device/v2025"
+    "04beta2/device/batch_delete:\001*\032*\312A\023grpc."
+    "api.kentik.com\352\327\002\014admin.device\220\330\002\003B\356\003ZLg"
+    "ithub.com/kentik/api-schema-public/gen/g"
+    "o/kentik/device/v202504beta2;device\222A\234\003\022"
+    "\265\001\n\nDevice API\022R# Overview\nThe Device AP"
+    "I provides programmatic access to config"
+    "uration of devices\"E\n\026Kentik API Enginee"
+    "ring\022+https://github.com/kentik/api-sche"
+    "ma-public2\014v202504beta2*\001\0022\020application/"
+    "json:\020application/jsonZD\n\036\n\005email\022\025\010\002\032\017X"
+    "-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth"
+    "-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]\n%"
+    "General information about Kentik APIs\0224h"
+    "ttps://kb.kentik.com/v0/Ab09.htm#Ab09-AP"
+    "Is_Overviewb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fdevice_2fv202504beta2_2fdevice_2eproto_deps[7] =
     {
@@ -2424,7 +2443,7 @@ static ::absl::once_flag descriptor_table_kentik_2fdevice_2fv202504beta2_2fdevic
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fdevice_2fv202504beta2_2fdevice_2eproto = {
     false,
     false,
-    22087,
+    22259,
     descriptor_table_protodef_kentik_2fdevice_2fv202504beta2_2fdevice_2eproto,
     "kentik/device/v202504beta2/device.proto",
     &descriptor_table_kentik_2fdevice_2fv202504beta2_2fdevice_2eproto_once,
@@ -7670,7 +7689,10 @@ inline PROTOBUF_NDEBUG_INLINE DeviceDetailed::Impl_::Impl_(
         device_alert_(arena, from.device_alert_),
         role_(arena, from.role_),
         device_bgp_credential_name_(arena, from.device_bgp_credential_name_),
-        flow_snmp_credential_name_(arena, from.flow_snmp_credential_name_) {}
+        flow_snmp_credential_name_(arena, from.flow_snmp_credential_name_),
+        os_name_(arena, from.os_name_),
+        os_version_(arena, from.os_version_),
+        serial_number_(arena, from.serial_number_) {}
 
 DeviceDetailed::DeviceDetailed(
     ::google::protobuf::Arena* arena,
@@ -7767,7 +7789,10 @@ inline PROTOBUF_NDEBUG_INLINE DeviceDetailed::Impl_::Impl_(
         device_alert_(arena),
         role_(arena),
         device_bgp_credential_name_(arena),
-        flow_snmp_credential_name_(arena) {}
+        flow_snmp_credential_name_(arena),
+        os_name_(arena),
+        os_version_(arena),
+        serial_number_(arena) {}
 
 inline void DeviceDetailed::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
@@ -7829,6 +7854,9 @@ inline void DeviceDetailed::SharedDtor(MessageLite& self) {
   this_._impl_.role_.Destroy();
   this_._impl_.device_bgp_credential_name_.Destroy();
   this_._impl_.flow_snmp_credential_name_.Destroy();
+  this_._impl_.os_name_.Destroy();
+  this_._impl_.os_version_.Destroy();
+  this_._impl_.serial_number_.Destroy();
   delete this_._impl_.site_;
   delete this_._impl_.plan_;
   delete this_._impl_.created_date_;
@@ -7899,15 +7927,15 @@ const ::google::protobuf::internal::ClassData* DeviceDetailed::GetClassData() co
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<5, 64, 10, 838, 9> DeviceDetailed::_table_ = {
+const ::_pbi::TcParseTable<5, 67, 10, 868, 11> DeviceDetailed::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(DeviceDetailed, _impl_._has_bits_),
     0, // no _extensions_
-    64, 248,  // max_field_number, fast_idx_mask
+    67, 248,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
     0,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    64,  // num_field_entries
+    67,  // num_field_entries
     10,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
@@ -8012,8 +8040,8 @@ const ::_pbi::TcParseTable<5, 64, 10, 838, 9> DeviceDetailed::_table_ = {
     {::_pbi::TcParser::FastUS2,
      {506, 63, 0, PROTOBUF_FIELD_OFFSET(DeviceDetailed, _impl_.device_chf_interface_)}},
   }}, {{
-    33, 0, 2,
-    0, 32, 0, 48,
+    33, 0, 3,
+    0, 32, 0, 48, 65528, 64,
     65535, 65535
   }}, {{
     // string id = 1 [json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -8208,6 +8236,15 @@ const ::_pbi::TcParseTable<5, 64, 10, 838, 9> DeviceDetailed::_table_ = {
     // uint32 monitoring_template_id = 64 [json_name = "monitoringTemplateId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {PROTOBUF_FIELD_OFFSET(DeviceDetailed, _impl_.monitoring_template_id_), -1, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // string os_name = 65 [json_name = "osName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(DeviceDetailed, _impl_.os_name_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string os_version = 66 [json_name = "osVersion", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(DeviceDetailed, _impl_.os_version_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string serial_number = 67 [json_name = "serialNumber", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(DeviceDetailed, _impl_.serial_number_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
   }}, {{
     {::_pbi::TcParser::GetTable<::kentik::device::v202504beta2::Site>()},
     {::_pbi::TcParser::GetTable<::kentik::device::v202504beta2::Plan>()},
@@ -8220,7 +8257,7 @@ const ::_pbi::TcParseTable<5, 64, 10, 838, 9> DeviceDetailed::_table_ = {
     {::_pbi::TcParser::GetTable<::kentik::device::v202504beta2::GnmiV1Conf>()},
     {::_pbi::TcParser::GetTable<::kentik::device::v202504beta2::DeviceNmsConfig>()},
   }}, {{
-    "\51\2\12\13\14\13\22\0\0\0\0\20\22\13\16\25\0\17\26\27\27\0\23\0\23\15\21\16\0\26\32\24\21\0\0\20\21\0\0\0\0\10\14\14\16\22\21\17\15\14\24\32\23\31\23\14\4\0\0\0\0\0\32\31\0\0\0\0\0\0\0\0"
+    "\51\2\12\13\14\13\22\0\0\0\0\20\22\13\16\25\0\17\26\27\27\0\23\0\23\15\21\16\0\26\32\24\21\0\0\20\21\0\0\0\0\10\14\14\16\22\21\17\15\14\24\32\23\31\23\14\4\0\0\0\0\0\32\31\0\7\12\15\0\0\0\0"
     "kentik.device.v202504beta2.DeviceDetailed"
     "id"
     "company_id"
@@ -8266,6 +8303,9 @@ const ::_pbi::TcParseTable<5, 64, 10, 838, 9> DeviceDetailed::_table_ = {
     "role"
     "device_bgp_credential_name"
     "flow_snmp_credential_name"
+    "os_name"
+    "os_version"
+    "serial_number"
   }},
 };
 
@@ -8323,6 +8363,9 @@ PROTOBUF_NOINLINE void DeviceDetailed::Clear() {
   _impl_.role_.ClearToEmpty();
   _impl_.device_bgp_credential_name_.ClearToEmpty();
   _impl_.flow_snmp_credential_name_.ClearToEmpty();
+  _impl_.os_name_.ClearToEmpty();
+  _impl_.os_version_.ClearToEmpty();
+  _impl_.serial_number_.ClearToEmpty();
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x0000007fu) {
     if (cached_has_bits & 0x00000001u) {
@@ -8882,6 +8925,30 @@ PROTOBUF_NOINLINE void DeviceDetailed::Clear() {
                 64, this_._internal_monitoring_template_id(), target);
           }
 
+          // string os_name = 65 [json_name = "osName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_os_name().empty()) {
+            const std::string& _s = this_._internal_os_name();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.device.v202504beta2.DeviceDetailed.os_name");
+            target = stream->WriteStringMaybeAliased(65, _s, target);
+          }
+
+          // string os_version = 66 [json_name = "osVersion", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_os_version().empty()) {
+            const std::string& _s = this_._internal_os_version();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.device.v202504beta2.DeviceDetailed.os_version");
+            target = stream->WriteStringMaybeAliased(66, _s, target);
+          }
+
+          // string serial_number = 67 [json_name = "serialNumber", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_serial_number().empty()) {
+            const std::string& _s = this_._internal_serial_number();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.device.v202504beta2.DeviceDetailed.serial_number");
+            target = stream->WriteStringMaybeAliased(67, _s, target);
+          }
+
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -9154,6 +9221,21 @@ PROTOBUF_NOINLINE void DeviceDetailed::Clear() {
               total_size += 2 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                               this_._internal_flow_snmp_credential_name());
             }
+            // string os_name = 65 [json_name = "osName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_os_name().empty()) {
+              total_size += 2 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_os_name());
+            }
+            // string os_version = 66 [json_name = "osVersion", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_os_version().empty()) {
+              total_size += 2 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_os_version());
+            }
+            // string serial_number = 67 [json_name = "serialNumber", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_serial_number().empty()) {
+              total_size += 2 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_serial_number());
+            }
           }
           cached_has_bits = this_._impl_._has_bits_[0];
           if (cached_has_bits & 0x000000ffu) {
@@ -9389,6 +9471,15 @@ void DeviceDetailed::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::
   if (!from._internal_flow_snmp_credential_name().empty()) {
     _this->_internal_set_flow_snmp_credential_name(from._internal_flow_snmp_credential_name());
   }
+  if (!from._internal_os_name().empty()) {
+    _this->_internal_set_os_name(from._internal_os_name());
+  }
+  if (!from._internal_os_version().empty()) {
+    _this->_internal_set_os_version(from._internal_os_version());
+  }
+  if (!from._internal_serial_number().empty()) {
+    _this->_internal_set_serial_number(from._internal_serial_number());
+  }
   cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x000000ffu) {
     if (cached_has_bits & 0x00000001u) {
@@ -9550,6 +9641,9 @@ void DeviceDetailed::InternalSwap(DeviceDetailed* PROTOBUF_RESTRICT other) {
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.role_, &other->_impl_.role_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_bgp_credential_name_, &other->_impl_.device_bgp_credential_name_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.flow_snmp_credential_name_, &other->_impl_.flow_snmp_credential_name_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.os_name_, &other->_impl_.os_name_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.os_version_, &other->_impl_.os_version_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.serial_number_, &other->_impl_.serial_number_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(DeviceDetailed, _impl_.monitoring_template_id_)
       + sizeof(DeviceDetailed::_impl_.monitoring_template_id_)
