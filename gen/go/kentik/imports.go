@@ -8,6 +8,7 @@ import (
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/alerting/types/v202303"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/alerting/types/v202506"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/as_group/v202212"
+	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/audit/public/v202601"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/bgp_monitoring/v202205beta1"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/bgp_monitoring/v202210"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/capacity_plan/v202212"

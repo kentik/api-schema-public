@@ -1,0 +1,324 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Audit API",
+    "version": "202601",
+    "contact": {
+      "name": "Kentik API Engineering",
+      "url": "https://github.com/kentik/api"
+    }
+  },
+  "tags": [
+    {
+      "name": "AuditService"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/_audit/v202601/events": {
+      "get": {
+        "summary": "List Audit Events.",
+        "description": "Returns a list of audit events.",
+        "operationId": "ListAuditEvents",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202601ListAuditEventsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "startTime",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "uint64",
+            "default": "0"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "uint64",
+            "default": "100"
+          }
+        ],
+        "tags": [
+          "AuditService"
+        ]
+      }
+    },
+    "/_audit/v202601/events/{id}/{ctime}": {
+      "get": {
+        "summary": "Get an Audit Event",
+        "description": "Return a specific audit event.",
+        "operationId": "GetAuditEvent",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202601GetAuditEventResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "ctime",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+          }
+        ],
+        "tags": [
+          "AuditService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v202601AuditEvent": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "title": "ID of the user that produced the event"
+        },
+        "id": {
+          "type": "string",
+          "format": "uint64",
+          "title": "Unique identifier of the event"
+        },
+        "ctime": {
+          "type": "string",
+          "format": "date-time",
+          "title": "Timestamp when the event was produced"
+        },
+        "apiMethod": {
+          "type": "string",
+          "title": "HTTP method of the request (GET, POST, PUT, PATCH, DELETE)"
+        },
+        "apiPath": {
+          "type": "string",
+          "title": "URL path of the request"
+        },
+        "ipAddress": {
+          "type": "string",
+          "title": "Client IP Address"
+        },
+        "authority": {
+          "type": "string",
+          "title": "Authority header from the request"
+        },
+        "kentikUserId": {
+          "type": "string",
+          "title": "Kentik user ID extracted from request metadata"
+        },
+        "kentikUserEmail": {
+          "type": "string",
+          "title": "Kentik user email extracted from request metadata"
+        },
+        "objectType": {
+          "type": "string",
+          "title": "The type of object that was affected"
+        },
+        "objectName": {
+          "type": "string",
+          "title": "Human-readable name of the affected object"
+        },
+        "apiAction": {
+          "type": "string",
+          "title": "The action performed on the object"
+        },
+        "source": {
+          "type": "string",
+          "title": "The source of the request"
+        },
+        "objectId": {
+          "type": "string",
+          "title": "The ID of the affected object"
+        },
+        "parentId": {
+          "type": "string",
+          "title": "The ID of the parent object"
+        },
+        "portalPath": {
+          "type": "string",
+          "title": "Path to view the affected object"
+        },
+        "generic": {
+          "$ref": "#/definitions/v202601GenericEvent",
+          "title": "Generic event data for events not associated with HTTP requests"
+        }
+      },
+      "description": "AuditEvent represents an audit event with request and enriched contextual information."
+    },
+    "v202601AuditEventDetail": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "ctime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "apiMethod": {
+          "type": "string"
+        },
+        "apiPath": {
+          "type": "string"
+        },
+        "params": {
+          "type": "string"
+        }
+      }
+    },
+    "v202601GenericEvent": {
+      "type": "object",
+      "properties": {
+        "eventSource": {
+          "type": "string",
+          "title": "Attribute Source of Audit log"
+        },
+        "action": {
+          "type": "string",
+          "title": "Attribute Action of Audit log"
+        },
+        "eventType": {
+          "type": "string",
+          "title": "Attribute Type of Audit log"
+        },
+        "owner": {
+          "type": "string",
+          "title": "Attribute User of Audit log"
+        },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "generic bag of metadata about the event"
+        }
+      }
+    },
+    "v202601GetAuditEventResponse": {
+      "type": "object",
+      "properties": {
+        "event": {
+          "$ref": "#/definitions/v202601AuditEventDetail"
+        }
+      }
+    },
+    "v202601ListAuditEventsResponse": {
+      "type": "object",
+      "properties": {
+        "events": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v202601AuditEvent"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "email": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-Email",
+      "in": "header"
+    },
+    "token": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-API-Token",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "email": [],
+      "token": []
+    }
+  ],
+  "externalDocs": {
+    "description": "More about Kentik APIs",
+    "url": "https://docs.kentik.com/api"
+  }
+}

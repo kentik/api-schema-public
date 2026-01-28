@@ -1,0 +1,170 @@
+syntax = "proto3";
+
+package kentik.audit.public.v202601;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/public/audit/v202601";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+import "kentik/core/v202303/annotations.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Audit API"
+    version: "202601"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api"
+    }
+  }
+  external_docs: {
+    url: "https://docs.kentik.com/api"
+    description: "More about Kentik APIs"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+message GenericEvent {
+  string event_source = 1; // Attribute Source of Audit log
+  string action = 2; // Attribute Action of Audit log
+  string event_type = 3; // Attribute Type of Audit log
+  string owner = 4; // Attribute User of Audit log
+  map<string, string> metadata = 5; // generic bag of metadata about the event
+}
+
+// AuditEvent represents an audit event with request and enriched contextual information.
+message AuditEvent {
+  // ID of the user that produced the event
+  string user_id = 1;
+  // Unique identifier of the event
+  uint64 id = 2;
+  // Timestamp when the event was produced
+  google.protobuf.Timestamp ctime = 3;
+  
+  // HTTP method of the request (GET, POST, PUT, PATCH, DELETE)
+  string api_method = 4;
+  // URL path of the request
+  string api_path = 5;
+  // Client IP Address
+  string ip_address = 6;
+  // Authority header from the request
+  string authority = 7;
+
+  // Kentik user ID extracted from request metadata
+  string kentik_user_id = 8;
+  // Kentik user email extracted from request metadata
+  string kentik_user_email = 9;
+  
+  // The type of object that was affected
+  string object_type = 10;
+  // Human-readable name of the affected object
+  string object_name = 11;
+  // The action performed on the object
+  string api_action = 12;
+  // The source of the request
+  string source = 13;
+  
+  // The ID of the affected object
+  string object_id = 14;
+  // The ID of the parent object
+  string parent_id = 15;
+  // Path to view the affected object
+  string portal_path = 16;
+  
+  // Generic event data for events not associated with HTTP requests
+  GenericEvent generic = 17;
+}
+
+message ListAuditEventsRequest {
+  google.protobuf.Timestamp start_time = 1;
+  google.protobuf.Timestamp end_time = 2;
+  uint64 offset = 15 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {default: "0"}];
+  uint64 limit = 16 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {default: "100"}];
+}
+
+message ListAuditEventsResponse {
+  repeated AuditEvent events = 1;
+}
+
+message GetAuditEventRequest {
+  int64 id = 1;
+  google.protobuf.Timestamp ctime = 2;
+}
+
+message AuditEventDetail {
+  uint64 id = 1;
+  string user_id = 2;
+  google.protobuf.Timestamp ctime = 3;
+  string api_method = 4;
+  string api_path = 5;
+  string params = 6;
+}
+
+message GetAuditEventResponse {
+  AuditEventDetail event = 1;
+}
+
+service AuditService {
+    option (google.api.default_host) = "grpc.api.kentik.com";
+    option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+    option (kentik.core.v202303.service_scope) = "admin.audit";
+
+    rpc ListAuditEvents(ListAuditEventsRequest) returns (ListAuditEventsResponse) {
+      option (kentik.core.v202303.method_scope) = "audit:read";
+
+      option (google.api.http) = {
+        get: "/_audit/v202601/events"
+      };
+
+      option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+        operation_id: "ListAuditEvents"
+        summary: "List Audit Events."
+        description: "Returns a list of audit events."
+      };
+    }
+
+    rpc GetAuditEvent(GetAuditEventRequest) returns (GetAuditEventResponse) {
+      option (kentik.core.v202303.method_scope) = "audit:read";
+      option (google.api.http) = {
+        get: "/_audit/v202601/events/{id}/{ctime}"
+      };
+      option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+        operation_id: "GetAuditEvent"
+        summary: "Get an Audit Event"
+        description: "Return a specific audit event."
+      };
+    }
+}
