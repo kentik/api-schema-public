@@ -14,7 +14,7 @@
         }
     ],
     "paths": {
-        "/_audit/v202601/events": {
+        "/audit/v202601/events": {
             "get": {
                 "summary": "List Audit Events.",
                 "description": "Returns a list of audit events.",
@@ -86,7 +86,7 @@
                 ]
             }
         },
-        "/_audit/v202601/events/{id}/{ctime}": {
+        "/audit/v202601/events/{id}/{ctime}": {
             "get": {
                 "summary": "Get an Audit Event",
                 "description": "Return a specific audit event.",
@@ -261,34 +261,21 @@
                     },
                     "generic": {
                         "$ref": "#/components/schemas/v202601GenericEvent"
+                    },
+                    "titleField": {
+                        "type": "string",
+                        "title": "Non Generic route title field"
+                    },
+                    "eventPayload": {
+                        "type": "string",
+                        "title": "Request Payload"
+                    },
+                    "userAgent": {
+                        "type": "string",
+                        "title": "User agent"
                     }
                 },
                 "description": "AuditEvent represents an audit event with request and enriched contextual information."
-            },
-            "v202601AuditEventDetail": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "string",
-                        "format": "uint64"
-                    },
-                    "userId": {
-                        "type": "string"
-                    },
-                    "ctime": {
-                        "type": "string",
-                        "format": "date-time"
-                    },
-                    "apiMethod": {
-                        "type": "string"
-                    },
-                    "apiPath": {
-                        "type": "string"
-                    },
-                    "params": {
-                        "type": "string"
-                    }
-                }
             },
             "v202601GenericEvent": {
                 "type": "object",
@@ -322,7 +309,7 @@
                 "type": "object",
                 "properties": {
                     "event": {
-                        "$ref": "#/components/schemas/v202601AuditEventDetail"
+                        "$ref": "#/components/schemas/v202601AuditEvent"
                     }
                 }
             },

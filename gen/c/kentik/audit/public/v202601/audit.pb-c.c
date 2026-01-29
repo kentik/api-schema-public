@@ -238,51 +238,6 @@ void   kentik__audit__public__v202601__get_audit_event_request__free_unpacked
   assert(message->base.descriptor == &kentik__audit__public__v202601__get_audit_event_request__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-void   kentik__audit__public__v202601__audit_event_detail__init
-                     (Kentik__Audit__Public__V202601__AuditEventDetail         *message)
-{
-  static const Kentik__Audit__Public__V202601__AuditEventDetail init_value = KENTIK__AUDIT__PUBLIC__V202601__AUDIT_EVENT_DETAIL__INIT;
-  *message = init_value;
-}
-size_t kentik__audit__public__v202601__audit_event_detail__get_packed_size
-                     (const Kentik__Audit__Public__V202601__AuditEventDetail *message)
-{
-  assert(message->base.descriptor == &kentik__audit__public__v202601__audit_event_detail__descriptor);
-  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
-}
-size_t kentik__audit__public__v202601__audit_event_detail__pack
-                     (const Kentik__Audit__Public__V202601__AuditEventDetail *message,
-                      uint8_t       *out)
-{
-  assert(message->base.descriptor == &kentik__audit__public__v202601__audit_event_detail__descriptor);
-  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
-}
-size_t kentik__audit__public__v202601__audit_event_detail__pack_to_buffer
-                     (const Kentik__Audit__Public__V202601__AuditEventDetail *message,
-                      ProtobufCBuffer *buffer)
-{
-  assert(message->base.descriptor == &kentik__audit__public__v202601__audit_event_detail__descriptor);
-  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
-}
-Kentik__Audit__Public__V202601__AuditEventDetail *
-       kentik__audit__public__v202601__audit_event_detail__unpack
-                     (ProtobufCAllocator  *allocator,
-                      size_t               len,
-                      const uint8_t       *data)
-{
-  return (Kentik__Audit__Public__V202601__AuditEventDetail *)
-     protobuf_c_message_unpack (&kentik__audit__public__v202601__audit_event_detail__descriptor,
-                                allocator, len, data);
-}
-void   kentik__audit__public__v202601__audit_event_detail__free_unpacked
-                     (Kentik__Audit__Public__V202601__AuditEventDetail *message,
-                      ProtobufCAllocator *allocator)
-{
-  if(!message)
-    return;
-  assert(message->base.descriptor == &kentik__audit__public__v202601__audit_event_detail__descriptor);
-  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
-}
 void   kentik__audit__public__v202601__get_audit_event_response__init
                      (Kentik__Audit__Public__V202601__GetAuditEventResponse         *message)
 {
@@ -469,7 +424,7 @@ const ProtobufCMessageDescriptor kentik__audit__public__v202601__generic_event__
   (ProtobufCMessageInit) kentik__audit__public__v202601__generic_event__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__audit__public__v202601__audit_event__field_descriptors[17] =
+static const ProtobufCFieldDescriptor kentik__audit__public__v202601__audit_event__field_descriptors[20] =
 {
   {
     "user_id",
@@ -675,6 +630,42 @@ static const ProtobufCFieldDescriptor kentik__audit__public__v202601__audit_even
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "title_field",
+    18,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Audit__Public__V202601__AuditEvent, title_field),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "event_payload",
+    19,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Audit__Public__V202601__AuditEvent, event_payload),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "user_agent",
+    20,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Audit__Public__V202601__AuditEvent, user_agent),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__audit__public__v202601__audit_event__field_indices_by_name[] = {
   11,   /* field[11] = api_action */
@@ -682,6 +673,7 @@ static const unsigned kentik__audit__public__v202601__audit_event__field_indices
   4,   /* field[4] = api_path */
   6,   /* field[6] = authority */
   2,   /* field[2] = ctime */
+  18,   /* field[18] = event_payload */
   16,   /* field[16] = generic */
   1,   /* field[1] = id */
   5,   /* field[5] = ip_address */
@@ -693,12 +685,14 @@ static const unsigned kentik__audit__public__v202601__audit_event__field_indices
   14,   /* field[14] = parent_id */
   15,   /* field[15] = portal_path */
   12,   /* field[12] = source */
+  17,   /* field[17] = title_field */
+  19,   /* field[19] = user_agent */
   0,   /* field[0] = user_id */
 };
 static const ProtobufCIntRange kentik__audit__public__v202601__audit_event__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 17 }
+  { 0, 20 }
 };
 const ProtobufCMessageDescriptor kentik__audit__public__v202601__audit_event__descriptor =
 {
@@ -708,7 +702,7 @@ const ProtobufCMessageDescriptor kentik__audit__public__v202601__audit_event__de
   "Kentik__Audit__Public__V202601__AuditEvent",
   "kentik.audit.public.v202601",
   sizeof(Kentik__Audit__Public__V202601__AuditEvent),
-  17,
+  20,
   kentik__audit__public__v202601__audit_event__field_descriptors,
   kentik__audit__public__v202601__audit_event__field_indices_by_name,
   1,  kentik__audit__public__v202601__audit_event__number_ranges,
@@ -882,109 +876,6 @@ const ProtobufCMessageDescriptor kentik__audit__public__v202601__get_audit_event
   (ProtobufCMessageInit) kentik__audit__public__v202601__get_audit_event_request__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__audit__public__v202601__audit_event_detail__field_descriptors[6] =
-{
-  {
-    "id",
-    1,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_UINT64,
-    0,   /* quantifier_offset */
-    offsetof(Kentik__Audit__Public__V202601__AuditEventDetail, id),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "user_id",
-    2,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_STRING,
-    0,   /* quantifier_offset */
-    offsetof(Kentik__Audit__Public__V202601__AuditEventDetail, user_id),
-    NULL,
-    &protobuf_c_empty_string,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "ctime",
-    3,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_MESSAGE,
-    0,   /* quantifier_offset */
-    offsetof(Kentik__Audit__Public__V202601__AuditEventDetail, ctime),
-    &google__protobuf__timestamp__descriptor,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "api_method",
-    4,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_STRING,
-    0,   /* quantifier_offset */
-    offsetof(Kentik__Audit__Public__V202601__AuditEventDetail, api_method),
-    NULL,
-    &protobuf_c_empty_string,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "api_path",
-    5,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_STRING,
-    0,   /* quantifier_offset */
-    offsetof(Kentik__Audit__Public__V202601__AuditEventDetail, api_path),
-    NULL,
-    &protobuf_c_empty_string,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
-    "params",
-    6,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_STRING,
-    0,   /* quantifier_offset */
-    offsetof(Kentik__Audit__Public__V202601__AuditEventDetail, params),
-    NULL,
-    &protobuf_c_empty_string,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-};
-static const unsigned kentik__audit__public__v202601__audit_event_detail__field_indices_by_name[] = {
-  3,   /* field[3] = api_method */
-  4,   /* field[4] = api_path */
-  2,   /* field[2] = ctime */
-  0,   /* field[0] = id */
-  5,   /* field[5] = params */
-  1,   /* field[1] = user_id */
-};
-static const ProtobufCIntRange kentik__audit__public__v202601__audit_event_detail__number_ranges[1 + 1] =
-{
-  { 1, 0 },
-  { 0, 6 }
-};
-const ProtobufCMessageDescriptor kentik__audit__public__v202601__audit_event_detail__descriptor =
-{
-  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "kentik.audit.public.v202601.AuditEventDetail",
-  "AuditEventDetail",
-  "Kentik__Audit__Public__V202601__AuditEventDetail",
-  "kentik.audit.public.v202601",
-  sizeof(Kentik__Audit__Public__V202601__AuditEventDetail),
-  6,
-  kentik__audit__public__v202601__audit_event_detail__field_descriptors,
-  kentik__audit__public__v202601__audit_event_detail__field_indices_by_name,
-  1,  kentik__audit__public__v202601__audit_event_detail__number_ranges,
-  (ProtobufCMessageInit) kentik__audit__public__v202601__audit_event_detail__init,
-  NULL,NULL,NULL    /* reserved[123] */
-};
 static const ProtobufCFieldDescriptor kentik__audit__public__v202601__get_audit_event_response__field_descriptors[1] =
 {
   {
@@ -994,7 +885,7 @@ static const ProtobufCFieldDescriptor kentik__audit__public__v202601__get_audit_
     PROTOBUF_C_TYPE_MESSAGE,
     0,   /* quantifier_offset */
     offsetof(Kentik__Audit__Public__V202601__GetAuditEventResponse, event),
-    &kentik__audit__public__v202601__audit_event_detail__descriptor,
+    &kentik__audit__public__v202601__audit_event__descriptor,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */

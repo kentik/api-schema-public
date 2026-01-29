@@ -67,9 +67,6 @@ namespace v202601 {
 class AuditEvent;
 struct AuditEventDefaultTypeInternal;
 extern AuditEventDefaultTypeInternal _AuditEvent_default_instance_;
-class AuditEventDetail;
-struct AuditEventDetailDefaultTypeInternal;
-extern AuditEventDetailDefaultTypeInternal _AuditEventDetail_default_instance_;
 class GenericEvent;
 struct GenericEventDefaultTypeInternal;
 extern GenericEventDefaultTypeInternal _GenericEvent_default_instance_;
@@ -861,482 +858,6 @@ class GenericEvent final : public ::google::protobuf::Message
 };
 // -------------------------------------------------------------------
 
-class AuditEventDetail final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:kentik.audit.public.v202601.AuditEventDetail) */ {
- public:
-  inline AuditEventDetail() : AuditEventDetail(nullptr) {}
-  ~AuditEventDetail() PROTOBUF_FINAL;
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-  void operator delete(AuditEventDetail* msg, std::destroying_delete_t) {
-    SharedDtor(*msg);
-    ::google::protobuf::internal::SizedDelete(msg, sizeof(AuditEventDetail));
-  }
-#endif
-
-  template <typename = void>
-  explicit PROTOBUF_CONSTEXPR AuditEventDetail(
-      ::google::protobuf::internal::ConstantInitialized);
-
-  inline AuditEventDetail(const AuditEventDetail& from) : AuditEventDetail(nullptr, from) {}
-  inline AuditEventDetail(AuditEventDetail&& from) noexcept
-      : AuditEventDetail(nullptr, std::move(from)) {}
-  inline AuditEventDetail& operator=(const AuditEventDetail& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline AuditEventDetail& operator=(AuditEventDetail&& from) noexcept {
-    if (this == &from) return *this;
-    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::google::protobuf::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::google::protobuf::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const AuditEventDetail& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const AuditEventDetail* internal_default_instance() {
-    return reinterpret_cast<const AuditEventDetail*>(
-        &_AuditEventDetail_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages = 6;
-  friend void swap(AuditEventDetail& a, AuditEventDetail& b) { a.Swap(&b); }
-  inline void Swap(AuditEventDetail* other) {
-    if (other == this) return;
-    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
-      InternalSwap(other);
-    } else {
-      ::google::protobuf::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(AuditEventDetail* other) {
-    if (other == this) return;
-    ABSL_DCHECK(GetArena() == other->GetArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  AuditEventDetail* New(::google::protobuf::Arena* arena = nullptr) const {
-    return ::google::protobuf::Message::DefaultConstruct<AuditEventDetail>(arena);
-  }
-  using ::google::protobuf::Message::CopyFrom;
-  void CopyFrom(const AuditEventDetail& from);
-  using ::google::protobuf::Message::MergeFrom;
-  void MergeFrom(const AuditEventDetail& from) { AuditEventDetail::MergeImpl(*this, from); }
-
-  private:
-  static void MergeImpl(
-      ::google::protobuf::MessageLite& to_msg,
-      const ::google::protobuf::MessageLite& from_msg);
-
-  public:
-  bool IsInitialized() const {
-    return true;
-  }
-  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
-  #if defined(PROTOBUF_CUSTOM_VTABLE)
-  private:
-  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
-  static ::uint8_t* _InternalSerialize(
-      const MessageLite& msg, ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream);
-
-  public:
-  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-    return _InternalSerialize(*this, target, stream);
-  }
-  #else   // PROTOBUF_CUSTOM_VTABLE
-  ::size_t ByteSizeLong() const final;
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
-  #endif  // PROTOBUF_CUSTOM_VTABLE
-  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
-
-  private:
-  void SharedCtor(::google::protobuf::Arena* arena);
-  static void SharedDtor(MessageLite& self);
-  void InternalSwap(AuditEventDetail* other);
- private:
-  template <typename T>
-  friend ::absl::string_view(
-      ::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "kentik.audit.public.v202601.AuditEventDetail"; }
-
- protected:
-  explicit AuditEventDetail(::google::protobuf::Arena* arena);
-  AuditEventDetail(::google::protobuf::Arena* arena, const AuditEventDetail& from);
-  AuditEventDetail(::google::protobuf::Arena* arena, AuditEventDetail&& from) noexcept
-      : AuditEventDetail(arena) {
-    *this = ::std::move(from);
-  }
-  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
-  static void* PlacementNew_(const void*, void* mem,
-                             ::google::protobuf::Arena* arena);
-  static constexpr auto InternalNewImpl_();
-  static const ::google::protobuf::internal::ClassDataFull _class_data_;
-
- public:
-  ::google::protobuf::Metadata GetMetadata() const;
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-  enum : int {
-    kUserIdFieldNumber = 2,
-    kApiMethodFieldNumber = 4,
-    kApiPathFieldNumber = 5,
-    kParamsFieldNumber = 6,
-    kCtimeFieldNumber = 3,
-    kIdFieldNumber = 1,
-  };
-  // string user_id = 2 [json_name = "userId"];
-  void clear_user_id() ;
-  const std::string& user_id() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_user_id(Arg_&& arg, Args_... args);
-  std::string* mutable_user_id();
-  PROTOBUF_NODISCARD std::string* release_user_id();
-  void set_allocated_user_id(std::string* value);
-
-  private:
-  const std::string& _internal_user_id() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_user_id(
-      const std::string& value);
-  std::string* _internal_mutable_user_id();
-
-  public:
-  // string api_method = 4 [json_name = "apiMethod"];
-  void clear_api_method() ;
-  const std::string& api_method() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_api_method(Arg_&& arg, Args_... args);
-  std::string* mutable_api_method();
-  PROTOBUF_NODISCARD std::string* release_api_method();
-  void set_allocated_api_method(std::string* value);
-
-  private:
-  const std::string& _internal_api_method() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_api_method(
-      const std::string& value);
-  std::string* _internal_mutable_api_method();
-
-  public:
-  // string api_path = 5 [json_name = "apiPath"];
-  void clear_api_path() ;
-  const std::string& api_path() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_api_path(Arg_&& arg, Args_... args);
-  std::string* mutable_api_path();
-  PROTOBUF_NODISCARD std::string* release_api_path();
-  void set_allocated_api_path(std::string* value);
-
-  private:
-  const std::string& _internal_api_path() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_api_path(
-      const std::string& value);
-  std::string* _internal_mutable_api_path();
-
-  public:
-  // string params = 6 [json_name = "params"];
-  void clear_params() ;
-  const std::string& params() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_params(Arg_&& arg, Args_... args);
-  std::string* mutable_params();
-  PROTOBUF_NODISCARD std::string* release_params();
-  void set_allocated_params(std::string* value);
-
-  private:
-  const std::string& _internal_params() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_params(
-      const std::string& value);
-  std::string* _internal_mutable_params();
-
-  public:
-  // .google.protobuf.Timestamp ctime = 3 [json_name = "ctime"];
-  bool has_ctime() const;
-  void clear_ctime() ;
-  const ::google::protobuf::Timestamp& ctime() const;
-  PROTOBUF_NODISCARD ::google::protobuf::Timestamp* release_ctime();
-  ::google::protobuf::Timestamp* mutable_ctime();
-  void set_allocated_ctime(::google::protobuf::Timestamp* value);
-  void unsafe_arena_set_allocated_ctime(::google::protobuf::Timestamp* value);
-  ::google::protobuf::Timestamp* unsafe_arena_release_ctime();
-
-  private:
-  const ::google::protobuf::Timestamp& _internal_ctime() const;
-  ::google::protobuf::Timestamp* _internal_mutable_ctime();
-
-  public:
-  // uint64 id = 1 [json_name = "id"];
-  void clear_id() ;
-  ::uint64_t id() const;
-  void set_id(::uint64_t value);
-
-  private:
-  ::uint64_t _internal_id() const;
-  void _internal_set_id(::uint64_t value);
-
-  public:
-  // @@protoc_insertion_point(class_scope:kentik.audit.public.v202601.AuditEventDetail)
- private:
-  class _Internal;
-  friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<
-      3, 6, 1,
-      84, 2>
-      _table_;
-
-  friend class ::google::protobuf::MessageLite;
-  friend class ::google::protobuf::Arena;
-  template <typename T>
-  friend class ::google::protobuf::Arena::InternalHelper;
-  using InternalArenaConstructable_ = void;
-  using DestructorSkippable_ = void;
-  struct Impl_ {
-    inline explicit constexpr Impl_(
-        ::google::protobuf::internal::ConstantInitialized) noexcept;
-    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                          ::google::protobuf::Arena* arena);
-    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                          ::google::protobuf::Arena* arena, const Impl_& from,
-                          const AuditEventDetail& from_msg);
-    ::google::protobuf::internal::HasBits<1> _has_bits_;
-    ::google::protobuf::internal::CachedSize _cached_size_;
-    ::google::protobuf::internal::ArenaStringPtr user_id_;
-    ::google::protobuf::internal::ArenaStringPtr api_method_;
-    ::google::protobuf::internal::ArenaStringPtr api_path_;
-    ::google::protobuf::internal::ArenaStringPtr params_;
-    ::google::protobuf::Timestamp* ctime_;
-    ::uint64_t id_;
-    PROTOBUF_TSAN_DECLARE_MEMBER
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_kentik_2faudit_2fpublic_2fv202601_2faudit_2eproto;
-};
-// -------------------------------------------------------------------
-
-class GetAuditEventResponse final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:kentik.audit.public.v202601.GetAuditEventResponse) */ {
- public:
-  inline GetAuditEventResponse() : GetAuditEventResponse(nullptr) {}
-  ~GetAuditEventResponse() PROTOBUF_FINAL;
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-  void operator delete(GetAuditEventResponse* msg, std::destroying_delete_t) {
-    SharedDtor(*msg);
-    ::google::protobuf::internal::SizedDelete(msg, sizeof(GetAuditEventResponse));
-  }
-#endif
-
-  template <typename = void>
-  explicit PROTOBUF_CONSTEXPR GetAuditEventResponse(
-      ::google::protobuf::internal::ConstantInitialized);
-
-  inline GetAuditEventResponse(const GetAuditEventResponse& from) : GetAuditEventResponse(nullptr, from) {}
-  inline GetAuditEventResponse(GetAuditEventResponse&& from) noexcept
-      : GetAuditEventResponse(nullptr, std::move(from)) {}
-  inline GetAuditEventResponse& operator=(const GetAuditEventResponse& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline GetAuditEventResponse& operator=(GetAuditEventResponse&& from) noexcept {
-    if (this == &from) return *this;
-    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::google::protobuf::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::google::protobuf::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const GetAuditEventResponse& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const GetAuditEventResponse* internal_default_instance() {
-    return reinterpret_cast<const GetAuditEventResponse*>(
-        &_GetAuditEventResponse_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages = 7;
-  friend void swap(GetAuditEventResponse& a, GetAuditEventResponse& b) { a.Swap(&b); }
-  inline void Swap(GetAuditEventResponse* other) {
-    if (other == this) return;
-    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
-      InternalSwap(other);
-    } else {
-      ::google::protobuf::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(GetAuditEventResponse* other) {
-    if (other == this) return;
-    ABSL_DCHECK(GetArena() == other->GetArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  GetAuditEventResponse* New(::google::protobuf::Arena* arena = nullptr) const {
-    return ::google::protobuf::Message::DefaultConstruct<GetAuditEventResponse>(arena);
-  }
-  using ::google::protobuf::Message::CopyFrom;
-  void CopyFrom(const GetAuditEventResponse& from);
-  using ::google::protobuf::Message::MergeFrom;
-  void MergeFrom(const GetAuditEventResponse& from) { GetAuditEventResponse::MergeImpl(*this, from); }
-
-  private:
-  static void MergeImpl(
-      ::google::protobuf::MessageLite& to_msg,
-      const ::google::protobuf::MessageLite& from_msg);
-
-  public:
-  bool IsInitialized() const {
-    return true;
-  }
-  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
-  #if defined(PROTOBUF_CUSTOM_VTABLE)
-  private:
-  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
-  static ::uint8_t* _InternalSerialize(
-      const MessageLite& msg, ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream);
-
-  public:
-  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-    return _InternalSerialize(*this, target, stream);
-  }
-  #else   // PROTOBUF_CUSTOM_VTABLE
-  ::size_t ByteSizeLong() const final;
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
-  #endif  // PROTOBUF_CUSTOM_VTABLE
-  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
-
-  private:
-  void SharedCtor(::google::protobuf::Arena* arena);
-  static void SharedDtor(MessageLite& self);
-  void InternalSwap(GetAuditEventResponse* other);
- private:
-  template <typename T>
-  friend ::absl::string_view(
-      ::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "kentik.audit.public.v202601.GetAuditEventResponse"; }
-
- protected:
-  explicit GetAuditEventResponse(::google::protobuf::Arena* arena);
-  GetAuditEventResponse(::google::protobuf::Arena* arena, const GetAuditEventResponse& from);
-  GetAuditEventResponse(::google::protobuf::Arena* arena, GetAuditEventResponse&& from) noexcept
-      : GetAuditEventResponse(arena) {
-    *this = ::std::move(from);
-  }
-  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
-  static void* PlacementNew_(const void*, void* mem,
-                             ::google::protobuf::Arena* arena);
-  static constexpr auto InternalNewImpl_();
-  static const ::google::protobuf::internal::ClassDataFull _class_data_;
-
- public:
-  ::google::protobuf::Metadata GetMetadata() const;
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-  enum : int {
-    kEventFieldNumber = 1,
-  };
-  // .kentik.audit.public.v202601.AuditEventDetail event = 1 [json_name = "event"];
-  bool has_event() const;
-  void clear_event() ;
-  const ::kentik::audit::public_::v202601::AuditEventDetail& event() const;
-  PROTOBUF_NODISCARD ::kentik::audit::public_::v202601::AuditEventDetail* release_event();
-  ::kentik::audit::public_::v202601::AuditEventDetail* mutable_event();
-  void set_allocated_event(::kentik::audit::public_::v202601::AuditEventDetail* value);
-  void unsafe_arena_set_allocated_event(::kentik::audit::public_::v202601::AuditEventDetail* value);
-  ::kentik::audit::public_::v202601::AuditEventDetail* unsafe_arena_release_event();
-
-  private:
-  const ::kentik::audit::public_::v202601::AuditEventDetail& _internal_event() const;
-  ::kentik::audit::public_::v202601::AuditEventDetail* _internal_mutable_event();
-
-  public:
-  // @@protoc_insertion_point(class_scope:kentik.audit.public.v202601.GetAuditEventResponse)
- private:
-  class _Internal;
-  friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<
-      0, 1, 1,
-      0, 2>
-      _table_;
-
-  friend class ::google::protobuf::MessageLite;
-  friend class ::google::protobuf::Arena;
-  template <typename T>
-  friend class ::google::protobuf::Arena::InternalHelper;
-  using InternalArenaConstructable_ = void;
-  using DestructorSkippable_ = void;
-  struct Impl_ {
-    inline explicit constexpr Impl_(
-        ::google::protobuf::internal::ConstantInitialized) noexcept;
-    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                          ::google::protobuf::Arena* arena);
-    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                          ::google::protobuf::Arena* arena, const Impl_& from,
-                          const GetAuditEventResponse& from_msg);
-    ::google::protobuf::internal::HasBits<1> _has_bits_;
-    ::google::protobuf::internal::CachedSize _cached_size_;
-    ::kentik::audit::public_::v202601::AuditEventDetail* event_;
-    PROTOBUF_TSAN_DECLARE_MEMBER
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_kentik_2faudit_2fpublic_2fv202601_2faudit_2eproto;
-};
-// -------------------------------------------------------------------
-
 class AuditEvent final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:kentik.audit.public.v202601.AuditEvent) */ {
  public:
@@ -1497,6 +1018,9 @@ class AuditEvent final : public ::google::protobuf::Message
     kObjectIdFieldNumber = 14,
     kParentIdFieldNumber = 15,
     kPortalPathFieldNumber = 16,
+    kTitleFieldFieldNumber = 18,
+    kEventPayloadFieldNumber = 19,
+    kUserAgentFieldNumber = 20,
     kCtimeFieldNumber = 3,
     kGenericFieldNumber = 17,
     kIdFieldNumber = 2,
@@ -1725,6 +1249,54 @@ class AuditEvent final : public ::google::protobuf::Message
   std::string* _internal_mutable_portal_path();
 
   public:
+  // string title_field = 18 [json_name = "titleField"];
+  void clear_title_field() ;
+  const std::string& title_field() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_title_field(Arg_&& arg, Args_... args);
+  std::string* mutable_title_field();
+  PROTOBUF_NODISCARD std::string* release_title_field();
+  void set_allocated_title_field(std::string* value);
+
+  private:
+  const std::string& _internal_title_field() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_title_field(
+      const std::string& value);
+  std::string* _internal_mutable_title_field();
+
+  public:
+  // string event_payload = 19 [json_name = "eventPayload"];
+  void clear_event_payload() ;
+  const std::string& event_payload() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_event_payload(Arg_&& arg, Args_... args);
+  std::string* mutable_event_payload();
+  PROTOBUF_NODISCARD std::string* release_event_payload();
+  void set_allocated_event_payload(std::string* value);
+
+  private:
+  const std::string& _internal_event_payload() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_event_payload(
+      const std::string& value);
+  std::string* _internal_mutable_event_payload();
+
+  public:
+  // string user_agent = 20 [json_name = "userAgent"];
+  void clear_user_agent() ;
+  const std::string& user_agent() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_user_agent(Arg_&& arg, Args_... args);
+  std::string* mutable_user_agent();
+  PROTOBUF_NODISCARD std::string* release_user_agent();
+  void set_allocated_user_agent(std::string* value);
+
+  private:
+  const std::string& _internal_user_agent() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_user_agent(
+      const std::string& value);
+  std::string* _internal_mutable_user_agent();
+
+  public:
   // .google.protobuf.Timestamp ctime = 3 [json_name = "ctime"];
   bool has_ctime() const;
   void clear_ctime() ;
@@ -1770,8 +1342,8 @@ class AuditEvent final : public ::google::protobuf::Message
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      5, 17, 2,
-      205, 2>
+      5, 20, 2,
+      239, 2>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -1804,6 +1376,9 @@ class AuditEvent final : public ::google::protobuf::Message
     ::google::protobuf::internal::ArenaStringPtr object_id_;
     ::google::protobuf::internal::ArenaStringPtr parent_id_;
     ::google::protobuf::internal::ArenaStringPtr portal_path_;
+    ::google::protobuf::internal::ArenaStringPtr title_field_;
+    ::google::protobuf::internal::ArenaStringPtr event_payload_;
+    ::google::protobuf::internal::ArenaStringPtr user_agent_;
     ::google::protobuf::Timestamp* ctime_;
     ::kentik::audit::public_::v202601::GenericEvent* generic_;
     ::uint64_t id_;
@@ -2004,6 +1579,202 @@ class ListAuditEventsResponse final : public ::google::protobuf::Message
                           const ListAuditEventsResponse& from_msg);
     ::google::protobuf::RepeatedPtrField< ::kentik::audit::public_::v202601::AuditEvent > events_;
     ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_kentik_2faudit_2fpublic_2fv202601_2faudit_2eproto;
+};
+// -------------------------------------------------------------------
+
+class GetAuditEventResponse final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:kentik.audit.public.v202601.GetAuditEventResponse) */ {
+ public:
+  inline GetAuditEventResponse() : GetAuditEventResponse(nullptr) {}
+  ~GetAuditEventResponse() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(GetAuditEventResponse* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(GetAuditEventResponse));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR GetAuditEventResponse(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline GetAuditEventResponse(const GetAuditEventResponse& from) : GetAuditEventResponse(nullptr, from) {}
+  inline GetAuditEventResponse(GetAuditEventResponse&& from) noexcept
+      : GetAuditEventResponse(nullptr, std::move(from)) {}
+  inline GetAuditEventResponse& operator=(const GetAuditEventResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GetAuditEventResponse& operator=(GetAuditEventResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const GetAuditEventResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GetAuditEventResponse* internal_default_instance() {
+    return reinterpret_cast<const GetAuditEventResponse*>(
+        &_GetAuditEventResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 6;
+  friend void swap(GetAuditEventResponse& a, GetAuditEventResponse& b) { a.Swap(&b); }
+  inline void Swap(GetAuditEventResponse* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GetAuditEventResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  GetAuditEventResponse* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<GetAuditEventResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const GetAuditEventResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const GetAuditEventResponse& from) { GetAuditEventResponse::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(GetAuditEventResponse* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "kentik.audit.public.v202601.GetAuditEventResponse"; }
+
+ protected:
+  explicit GetAuditEventResponse(::google::protobuf::Arena* arena);
+  GetAuditEventResponse(::google::protobuf::Arena* arena, const GetAuditEventResponse& from);
+  GetAuditEventResponse(::google::protobuf::Arena* arena, GetAuditEventResponse&& from) noexcept
+      : GetAuditEventResponse(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kEventFieldNumber = 1,
+  };
+  // .kentik.audit.public.v202601.AuditEvent event = 1 [json_name = "event"];
+  bool has_event() const;
+  void clear_event() ;
+  const ::kentik::audit::public_::v202601::AuditEvent& event() const;
+  PROTOBUF_NODISCARD ::kentik::audit::public_::v202601::AuditEvent* release_event();
+  ::kentik::audit::public_::v202601::AuditEvent* mutable_event();
+  void set_allocated_event(::kentik::audit::public_::v202601::AuditEvent* value);
+  void unsafe_arena_set_allocated_event(::kentik::audit::public_::v202601::AuditEvent* value);
+  ::kentik::audit::public_::v202601::AuditEvent* unsafe_arena_release_event();
+
+  private:
+  const ::kentik::audit::public_::v202601::AuditEvent& _internal_event() const;
+  ::kentik::audit::public_::v202601::AuditEvent* _internal_mutable_event();
+
+  public:
+  // @@protoc_insertion_point(class_scope:kentik.audit.public.v202601.GetAuditEventResponse)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 1,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const GetAuditEventResponse& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::kentik::audit::public_::v202601::AuditEvent* event_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -3133,6 +2904,150 @@ inline void AuditEvent::set_allocated_generic(::kentik::audit::public_::v202601:
   // @@protoc_insertion_point(field_set_allocated:kentik.audit.public.v202601.AuditEvent.generic)
 }
 
+// string title_field = 18 [json_name = "titleField"];
+inline void AuditEvent::clear_title_field() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.title_field_.ClearToEmpty();
+}
+inline const std::string& AuditEvent::title_field() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.audit.public.v202601.AuditEvent.title_field)
+  return _internal_title_field();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void AuditEvent::set_title_field(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.title_field_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.audit.public.v202601.AuditEvent.title_field)
+}
+inline std::string* AuditEvent::mutable_title_field() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_title_field();
+  // @@protoc_insertion_point(field_mutable:kentik.audit.public.v202601.AuditEvent.title_field)
+  return _s;
+}
+inline const std::string& AuditEvent::_internal_title_field() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.title_field_.Get();
+}
+inline void AuditEvent::_internal_set_title_field(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.title_field_.Set(value, GetArena());
+}
+inline std::string* AuditEvent::_internal_mutable_title_field() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.title_field_.Mutable( GetArena());
+}
+inline std::string* AuditEvent::release_title_field() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.audit.public.v202601.AuditEvent.title_field)
+  return _impl_.title_field_.Release();
+}
+inline void AuditEvent::set_allocated_title_field(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.title_field_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.title_field_.IsDefault()) {
+    _impl_.title_field_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.audit.public.v202601.AuditEvent.title_field)
+}
+
+// string event_payload = 19 [json_name = "eventPayload"];
+inline void AuditEvent::clear_event_payload() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.event_payload_.ClearToEmpty();
+}
+inline const std::string& AuditEvent::event_payload() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.audit.public.v202601.AuditEvent.event_payload)
+  return _internal_event_payload();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void AuditEvent::set_event_payload(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.event_payload_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.audit.public.v202601.AuditEvent.event_payload)
+}
+inline std::string* AuditEvent::mutable_event_payload() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_event_payload();
+  // @@protoc_insertion_point(field_mutable:kentik.audit.public.v202601.AuditEvent.event_payload)
+  return _s;
+}
+inline const std::string& AuditEvent::_internal_event_payload() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.event_payload_.Get();
+}
+inline void AuditEvent::_internal_set_event_payload(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.event_payload_.Set(value, GetArena());
+}
+inline std::string* AuditEvent::_internal_mutable_event_payload() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.event_payload_.Mutable( GetArena());
+}
+inline std::string* AuditEvent::release_event_payload() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.audit.public.v202601.AuditEvent.event_payload)
+  return _impl_.event_payload_.Release();
+}
+inline void AuditEvent::set_allocated_event_payload(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.event_payload_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.event_payload_.IsDefault()) {
+    _impl_.event_payload_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.audit.public.v202601.AuditEvent.event_payload)
+}
+
+// string user_agent = 20 [json_name = "userAgent"];
+inline void AuditEvent::clear_user_agent() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.user_agent_.ClearToEmpty();
+}
+inline const std::string& AuditEvent::user_agent() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.audit.public.v202601.AuditEvent.user_agent)
+  return _internal_user_agent();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void AuditEvent::set_user_agent(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.user_agent_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.audit.public.v202601.AuditEvent.user_agent)
+}
+inline std::string* AuditEvent::mutable_user_agent() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_user_agent();
+  // @@protoc_insertion_point(field_mutable:kentik.audit.public.v202601.AuditEvent.user_agent)
+  return _s;
+}
+inline const std::string& AuditEvent::_internal_user_agent() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.user_agent_.Get();
+}
+inline void AuditEvent::_internal_set_user_agent(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.user_agent_.Set(value, GetArena());
+}
+inline std::string* AuditEvent::_internal_mutable_user_agent() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.user_agent_.Mutable( GetArena());
+}
+inline std::string* AuditEvent::release_user_agent() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.audit.public.v202601.AuditEvent.user_agent)
+  return _impl_.user_agent_.Release();
+}
+inline void AuditEvent::set_allocated_user_agent(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.user_agent_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.user_agent_.IsDefault()) {
+    _impl_.user_agent_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.audit.public.v202601.AuditEvent.user_agent)
+}
+
 // -------------------------------------------------------------------
 
 // ListAuditEventsRequest
@@ -3535,318 +3450,9 @@ inline void GetAuditEventRequest::set_allocated_ctime(::google::protobuf::Timest
 
 // -------------------------------------------------------------------
 
-// AuditEventDetail
-
-// uint64 id = 1 [json_name = "id"];
-inline void AuditEventDetail::clear_id() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.id_ = ::uint64_t{0u};
-}
-inline ::uint64_t AuditEventDetail::id() const {
-  // @@protoc_insertion_point(field_get:kentik.audit.public.v202601.AuditEventDetail.id)
-  return _internal_id();
-}
-inline void AuditEventDetail::set_id(::uint64_t value) {
-  _internal_set_id(value);
-  // @@protoc_insertion_point(field_set:kentik.audit.public.v202601.AuditEventDetail.id)
-}
-inline ::uint64_t AuditEventDetail::_internal_id() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.id_;
-}
-inline void AuditEventDetail::_internal_set_id(::uint64_t value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.id_ = value;
-}
-
-// string user_id = 2 [json_name = "userId"];
-inline void AuditEventDetail::clear_user_id() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.user_id_.ClearToEmpty();
-}
-inline const std::string& AuditEventDetail::user_id() const
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:kentik.audit.public.v202601.AuditEventDetail.user_id)
-  return _internal_user_id();
-}
-template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void AuditEventDetail::set_user_id(Arg_&& arg,
-                                                     Args_... args) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.user_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:kentik.audit.public.v202601.AuditEventDetail.user_id)
-}
-inline std::string* AuditEventDetail::mutable_user_id() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  std::string* _s = _internal_mutable_user_id();
-  // @@protoc_insertion_point(field_mutable:kentik.audit.public.v202601.AuditEventDetail.user_id)
-  return _s;
-}
-inline const std::string& AuditEventDetail::_internal_user_id() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.user_id_.Get();
-}
-inline void AuditEventDetail::_internal_set_user_id(const std::string& value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.user_id_.Set(value, GetArena());
-}
-inline std::string* AuditEventDetail::_internal_mutable_user_id() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  return _impl_.user_id_.Mutable( GetArena());
-}
-inline std::string* AuditEventDetail::release_user_id() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:kentik.audit.public.v202601.AuditEventDetail.user_id)
-  return _impl_.user_id_.Release();
-}
-inline void AuditEventDetail::set_allocated_user_id(std::string* value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.user_id_.SetAllocated(value, GetArena());
-  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.user_id_.IsDefault()) {
-    _impl_.user_id_.Set("", GetArena());
-  }
-  // @@protoc_insertion_point(field_set_allocated:kentik.audit.public.v202601.AuditEventDetail.user_id)
-}
-
-// .google.protobuf.Timestamp ctime = 3 [json_name = "ctime"];
-inline bool AuditEventDetail::has_ctime() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
-  PROTOBUF_ASSUME(!value || _impl_.ctime_ != nullptr);
-  return value;
-}
-inline const ::google::protobuf::Timestamp& AuditEventDetail::_internal_ctime() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  const ::google::protobuf::Timestamp* p = _impl_.ctime_;
-  return p != nullptr ? *p : reinterpret_cast<const ::google::protobuf::Timestamp&>(::google::protobuf::_Timestamp_default_instance_);
-}
-inline const ::google::protobuf::Timestamp& AuditEventDetail::ctime() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:kentik.audit.public.v202601.AuditEventDetail.ctime)
-  return _internal_ctime();
-}
-inline void AuditEventDetail::unsafe_arena_set_allocated_ctime(::google::protobuf::Timestamp* value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (GetArena() == nullptr) {
-    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.ctime_);
-  }
-  _impl_.ctime_ = reinterpret_cast<::google::protobuf::Timestamp*>(value);
-  if (value != nullptr) {
-    _impl_._has_bits_[0] |= 0x00000001u;
-  } else {
-    _impl_._has_bits_[0] &= ~0x00000001u;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.audit.public.v202601.AuditEventDetail.ctime)
-}
-inline ::google::protobuf::Timestamp* AuditEventDetail::release_ctime() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-
-  _impl_._has_bits_[0] &= ~0x00000001u;
-  ::google::protobuf::Timestamp* released = _impl_.ctime_;
-  _impl_.ctime_ = nullptr;
-  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
-    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
-    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
-    if (GetArena() == nullptr) {
-      delete old;
-    }
-  } else {
-    if (GetArena() != nullptr) {
-      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
-    }
-  }
-  return released;
-}
-inline ::google::protobuf::Timestamp* AuditEventDetail::unsafe_arena_release_ctime() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:kentik.audit.public.v202601.AuditEventDetail.ctime)
-
-  _impl_._has_bits_[0] &= ~0x00000001u;
-  ::google::protobuf::Timestamp* temp = _impl_.ctime_;
-  _impl_.ctime_ = nullptr;
-  return temp;
-}
-inline ::google::protobuf::Timestamp* AuditEventDetail::_internal_mutable_ctime() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (_impl_.ctime_ == nullptr) {
-    auto* p = ::google::protobuf::Message::DefaultConstruct<::google::protobuf::Timestamp>(GetArena());
-    _impl_.ctime_ = reinterpret_cast<::google::protobuf::Timestamp*>(p);
-  }
-  return _impl_.ctime_;
-}
-inline ::google::protobuf::Timestamp* AuditEventDetail::mutable_ctime() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  _impl_._has_bits_[0] |= 0x00000001u;
-  ::google::protobuf::Timestamp* _msg = _internal_mutable_ctime();
-  // @@protoc_insertion_point(field_mutable:kentik.audit.public.v202601.AuditEventDetail.ctime)
-  return _msg;
-}
-inline void AuditEventDetail::set_allocated_ctime(::google::protobuf::Timestamp* value) {
-  ::google::protobuf::Arena* message_arena = GetArena();
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (message_arena == nullptr) {
-    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.ctime_);
-  }
-
-  if (value != nullptr) {
-    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::google::protobuf::MessageLite*>(value)->GetArena();
-    if (message_arena != submessage_arena) {
-      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
-    }
-    _impl_._has_bits_[0] |= 0x00000001u;
-  } else {
-    _impl_._has_bits_[0] &= ~0x00000001u;
-  }
-
-  _impl_.ctime_ = reinterpret_cast<::google::protobuf::Timestamp*>(value);
-  // @@protoc_insertion_point(field_set_allocated:kentik.audit.public.v202601.AuditEventDetail.ctime)
-}
-
-// string api_method = 4 [json_name = "apiMethod"];
-inline void AuditEventDetail::clear_api_method() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.api_method_.ClearToEmpty();
-}
-inline const std::string& AuditEventDetail::api_method() const
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:kentik.audit.public.v202601.AuditEventDetail.api_method)
-  return _internal_api_method();
-}
-template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void AuditEventDetail::set_api_method(Arg_&& arg,
-                                                     Args_... args) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.api_method_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:kentik.audit.public.v202601.AuditEventDetail.api_method)
-}
-inline std::string* AuditEventDetail::mutable_api_method() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  std::string* _s = _internal_mutable_api_method();
-  // @@protoc_insertion_point(field_mutable:kentik.audit.public.v202601.AuditEventDetail.api_method)
-  return _s;
-}
-inline const std::string& AuditEventDetail::_internal_api_method() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.api_method_.Get();
-}
-inline void AuditEventDetail::_internal_set_api_method(const std::string& value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.api_method_.Set(value, GetArena());
-}
-inline std::string* AuditEventDetail::_internal_mutable_api_method() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  return _impl_.api_method_.Mutable( GetArena());
-}
-inline std::string* AuditEventDetail::release_api_method() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:kentik.audit.public.v202601.AuditEventDetail.api_method)
-  return _impl_.api_method_.Release();
-}
-inline void AuditEventDetail::set_allocated_api_method(std::string* value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.api_method_.SetAllocated(value, GetArena());
-  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.api_method_.IsDefault()) {
-    _impl_.api_method_.Set("", GetArena());
-  }
-  // @@protoc_insertion_point(field_set_allocated:kentik.audit.public.v202601.AuditEventDetail.api_method)
-}
-
-// string api_path = 5 [json_name = "apiPath"];
-inline void AuditEventDetail::clear_api_path() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.api_path_.ClearToEmpty();
-}
-inline const std::string& AuditEventDetail::api_path() const
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:kentik.audit.public.v202601.AuditEventDetail.api_path)
-  return _internal_api_path();
-}
-template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void AuditEventDetail::set_api_path(Arg_&& arg,
-                                                     Args_... args) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.api_path_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:kentik.audit.public.v202601.AuditEventDetail.api_path)
-}
-inline std::string* AuditEventDetail::mutable_api_path() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  std::string* _s = _internal_mutable_api_path();
-  // @@protoc_insertion_point(field_mutable:kentik.audit.public.v202601.AuditEventDetail.api_path)
-  return _s;
-}
-inline const std::string& AuditEventDetail::_internal_api_path() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.api_path_.Get();
-}
-inline void AuditEventDetail::_internal_set_api_path(const std::string& value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.api_path_.Set(value, GetArena());
-}
-inline std::string* AuditEventDetail::_internal_mutable_api_path() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  return _impl_.api_path_.Mutable( GetArena());
-}
-inline std::string* AuditEventDetail::release_api_path() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:kentik.audit.public.v202601.AuditEventDetail.api_path)
-  return _impl_.api_path_.Release();
-}
-inline void AuditEventDetail::set_allocated_api_path(std::string* value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.api_path_.SetAllocated(value, GetArena());
-  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.api_path_.IsDefault()) {
-    _impl_.api_path_.Set("", GetArena());
-  }
-  // @@protoc_insertion_point(field_set_allocated:kentik.audit.public.v202601.AuditEventDetail.api_path)
-}
-
-// string params = 6 [json_name = "params"];
-inline void AuditEventDetail::clear_params() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.params_.ClearToEmpty();
-}
-inline const std::string& AuditEventDetail::params() const
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:kentik.audit.public.v202601.AuditEventDetail.params)
-  return _internal_params();
-}
-template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void AuditEventDetail::set_params(Arg_&& arg,
-                                                     Args_... args) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.params_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:kentik.audit.public.v202601.AuditEventDetail.params)
-}
-inline std::string* AuditEventDetail::mutable_params() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  std::string* _s = _internal_mutable_params();
-  // @@protoc_insertion_point(field_mutable:kentik.audit.public.v202601.AuditEventDetail.params)
-  return _s;
-}
-inline const std::string& AuditEventDetail::_internal_params() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.params_.Get();
-}
-inline void AuditEventDetail::_internal_set_params(const std::string& value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.params_.Set(value, GetArena());
-}
-inline std::string* AuditEventDetail::_internal_mutable_params() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  return _impl_.params_.Mutable( GetArena());
-}
-inline std::string* AuditEventDetail::release_params() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:kentik.audit.public.v202601.AuditEventDetail.params)
-  return _impl_.params_.Release();
-}
-inline void AuditEventDetail::set_allocated_params(std::string* value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.params_.SetAllocated(value, GetArena());
-  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.params_.IsDefault()) {
-    _impl_.params_.Set("", GetArena());
-  }
-  // @@protoc_insertion_point(field_set_allocated:kentik.audit.public.v202601.AuditEventDetail.params)
-}
-
-// -------------------------------------------------------------------
-
 // GetAuditEventResponse
 
-// .kentik.audit.public.v202601.AuditEventDetail event = 1 [json_name = "event"];
+// .kentik.audit.public.v202601.AuditEvent event = 1 [json_name = "event"];
 inline bool GetAuditEventResponse::has_event() const {
   bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
   PROTOBUF_ASSUME(!value || _impl_.event_ != nullptr);
@@ -3857,21 +3463,21 @@ inline void GetAuditEventResponse::clear_event() {
   if (_impl_.event_ != nullptr) _impl_.event_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-inline const ::kentik::audit::public_::v202601::AuditEventDetail& GetAuditEventResponse::_internal_event() const {
+inline const ::kentik::audit::public_::v202601::AuditEvent& GetAuditEventResponse::_internal_event() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
-  const ::kentik::audit::public_::v202601::AuditEventDetail* p = _impl_.event_;
-  return p != nullptr ? *p : reinterpret_cast<const ::kentik::audit::public_::v202601::AuditEventDetail&>(::kentik::audit::public_::v202601::_AuditEventDetail_default_instance_);
+  const ::kentik::audit::public_::v202601::AuditEvent* p = _impl_.event_;
+  return p != nullptr ? *p : reinterpret_cast<const ::kentik::audit::public_::v202601::AuditEvent&>(::kentik::audit::public_::v202601::_AuditEvent_default_instance_);
 }
-inline const ::kentik::audit::public_::v202601::AuditEventDetail& GetAuditEventResponse::event() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+inline const ::kentik::audit::public_::v202601::AuditEvent& GetAuditEventResponse::event() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
   // @@protoc_insertion_point(field_get:kentik.audit.public.v202601.GetAuditEventResponse.event)
   return _internal_event();
 }
-inline void GetAuditEventResponse::unsafe_arena_set_allocated_event(::kentik::audit::public_::v202601::AuditEventDetail* value) {
+inline void GetAuditEventResponse::unsafe_arena_set_allocated_event(::kentik::audit::public_::v202601::AuditEvent* value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   if (GetArena() == nullptr) {
     delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.event_);
   }
-  _impl_.event_ = reinterpret_cast<::kentik::audit::public_::v202601::AuditEventDetail*>(value);
+  _impl_.event_ = reinterpret_cast<::kentik::audit::public_::v202601::AuditEvent*>(value);
   if (value != nullptr) {
     _impl_._has_bits_[0] |= 0x00000001u;
   } else {
@@ -3879,11 +3485,11 @@ inline void GetAuditEventResponse::unsafe_arena_set_allocated_event(::kentik::au
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.audit.public.v202601.GetAuditEventResponse.event)
 }
-inline ::kentik::audit::public_::v202601::AuditEventDetail* GetAuditEventResponse::release_event() {
+inline ::kentik::audit::public_::v202601::AuditEvent* GetAuditEventResponse::release_event() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
 
   _impl_._has_bits_[0] &= ~0x00000001u;
-  ::kentik::audit::public_::v202601::AuditEventDetail* released = _impl_.event_;
+  ::kentik::audit::public_::v202601::AuditEvent* released = _impl_.event_;
   _impl_.event_ = nullptr;
   if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
     auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
@@ -3898,30 +3504,30 @@ inline ::kentik::audit::public_::v202601::AuditEventDetail* GetAuditEventRespons
   }
   return released;
 }
-inline ::kentik::audit::public_::v202601::AuditEventDetail* GetAuditEventResponse::unsafe_arena_release_event() {
+inline ::kentik::audit::public_::v202601::AuditEvent* GetAuditEventResponse::unsafe_arena_release_event() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   // @@protoc_insertion_point(field_release:kentik.audit.public.v202601.GetAuditEventResponse.event)
 
   _impl_._has_bits_[0] &= ~0x00000001u;
-  ::kentik::audit::public_::v202601::AuditEventDetail* temp = _impl_.event_;
+  ::kentik::audit::public_::v202601::AuditEvent* temp = _impl_.event_;
   _impl_.event_ = nullptr;
   return temp;
 }
-inline ::kentik::audit::public_::v202601::AuditEventDetail* GetAuditEventResponse::_internal_mutable_event() {
+inline ::kentik::audit::public_::v202601::AuditEvent* GetAuditEventResponse::_internal_mutable_event() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   if (_impl_.event_ == nullptr) {
-    auto* p = ::google::protobuf::Message::DefaultConstruct<::kentik::audit::public_::v202601::AuditEventDetail>(GetArena());
-    _impl_.event_ = reinterpret_cast<::kentik::audit::public_::v202601::AuditEventDetail*>(p);
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::kentik::audit::public_::v202601::AuditEvent>(GetArena());
+    _impl_.event_ = reinterpret_cast<::kentik::audit::public_::v202601::AuditEvent*>(p);
   }
   return _impl_.event_;
 }
-inline ::kentik::audit::public_::v202601::AuditEventDetail* GetAuditEventResponse::mutable_event() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+inline ::kentik::audit::public_::v202601::AuditEvent* GetAuditEventResponse::mutable_event() ABSL_ATTRIBUTE_LIFETIME_BOUND {
   _impl_._has_bits_[0] |= 0x00000001u;
-  ::kentik::audit::public_::v202601::AuditEventDetail* _msg = _internal_mutable_event();
+  ::kentik::audit::public_::v202601::AuditEvent* _msg = _internal_mutable_event();
   // @@protoc_insertion_point(field_mutable:kentik.audit.public.v202601.GetAuditEventResponse.event)
   return _msg;
 }
-inline void GetAuditEventResponse::set_allocated_event(::kentik::audit::public_::v202601::AuditEventDetail* value) {
+inline void GetAuditEventResponse::set_allocated_event(::kentik::audit::public_::v202601::AuditEvent* value) {
   ::google::protobuf::Arena* message_arena = GetArena();
   ::google::protobuf::internal::TSanWrite(&_impl_);
   if (message_arena == nullptr) {
@@ -3938,7 +3544,7 @@ inline void GetAuditEventResponse::set_allocated_event(::kentik::audit::public_:
     _impl_._has_bits_[0] &= ~0x00000001u;
   }
 
-  _impl_.event_ = reinterpret_cast<::kentik::audit::public_::v202601::AuditEventDetail*>(value);
+  _impl_.event_ = reinterpret_cast<::kentik::audit::public_::v202601::AuditEvent*>(value);
   // @@protoc_insertion_point(field_set_allocated:kentik.audit.public.v202601.GetAuditEventResponse.event)
 }
 

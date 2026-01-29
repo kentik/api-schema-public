@@ -106,6 +106,13 @@ message AuditEvent {
   
   // Generic event data for events not associated with HTTP requests
   GenericEvent generic = 17;
+
+  //Non Generic route title field
+  string title_field = 18; 
+  // Request Payload
+  string event_payload = 19;
+  // User agent
+  string user_agent = 20;
 }
 
 message ListAuditEventsRequest {
@@ -124,17 +131,8 @@ message GetAuditEventRequest {
   google.protobuf.Timestamp ctime = 2;
 }
 
-message AuditEventDetail {
-  uint64 id = 1;
-  string user_id = 2;
-  google.protobuf.Timestamp ctime = 3;
-  string api_method = 4;
-  string api_path = 5;
-  string params = 6;
-}
-
 message GetAuditEventResponse {
-  AuditEventDetail event = 1;
+  AuditEvent event = 1;
 }
 
 service AuditService {
@@ -146,7 +144,7 @@ service AuditService {
       option (kentik.core.v202303.method_scope) = "audit:read";
 
       option (google.api.http) = {
-        get: "/_audit/v202601/events"
+        get: "/audit/v202601/events"
       };
 
       option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
@@ -159,7 +157,7 @@ service AuditService {
     rpc GetAuditEvent(GetAuditEventRequest) returns (GetAuditEventResponse) {
       option (kentik.core.v202303.method_scope) = "audit:read";
       option (google.api.http) = {
-        get: "/_audit/v202601/events/{id}/{ctime}"
+        get: "/audit/v202601/events/{id}/{ctime}"
       };
       option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
         operation_id: "GetAuditEvent"

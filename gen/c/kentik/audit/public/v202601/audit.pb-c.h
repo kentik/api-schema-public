@@ -27,7 +27,6 @@ typedef struct Kentik__Audit__Public__V202601__AuditEvent Kentik__Audit__Public_
 typedef struct Kentik__Audit__Public__V202601__ListAuditEventsRequest Kentik__Audit__Public__V202601__ListAuditEventsRequest;
 typedef struct Kentik__Audit__Public__V202601__ListAuditEventsResponse Kentik__Audit__Public__V202601__ListAuditEventsResponse;
 typedef struct Kentik__Audit__Public__V202601__GetAuditEventRequest Kentik__Audit__Public__V202601__GetAuditEventRequest;
-typedef struct Kentik__Audit__Public__V202601__AuditEventDetail Kentik__Audit__Public__V202601__AuditEventDetail;
 typedef struct Kentik__Audit__Public__V202601__GetAuditEventResponse Kentik__Audit__Public__V202601__GetAuditEventResponse;
 
 
@@ -151,10 +150,22 @@ struct  Kentik__Audit__Public__V202601__AuditEvent
    * Generic event data for events not associated with HTTP requests
    */
   Kentik__Audit__Public__V202601__GenericEvent *generic;
+  /*
+   *Non Generic route title field
+   */
+  char *title_field;
+  /*
+   * Request Payload
+   */
+  char *event_payload;
+  /*
+   * User agent
+   */
+  char *user_agent;
 };
 #define KENTIK__AUDIT__PUBLIC__V202601__AUDIT_EVENT__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__audit__public__v202601__audit_event__descriptor) \
-    , (char *)protobuf_c_empty_string, 0, NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL }
+    , (char *)protobuf_c_empty_string, 0, NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
 
 
 struct  Kentik__Audit__Public__V202601__ListAuditEventsRequest
@@ -192,25 +203,10 @@ struct  Kentik__Audit__Public__V202601__GetAuditEventRequest
     , 0, NULL }
 
 
-struct  Kentik__Audit__Public__V202601__AuditEventDetail
-{
-  ProtobufCMessage base;
-  uint64_t id;
-  char *user_id;
-  Google__Protobuf__Timestamp *ctime;
-  char *api_method;
-  char *api_path;
-  char *params;
-};
-#define KENTIK__AUDIT__PUBLIC__V202601__AUDIT_EVENT_DETAIL__INIT \
- { PROTOBUF_C_MESSAGE_INIT (&kentik__audit__public__v202601__audit_event_detail__descriptor) \
-    , 0, (char *)protobuf_c_empty_string, NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
-
-
 struct  Kentik__Audit__Public__V202601__GetAuditEventResponse
 {
   ProtobufCMessage base;
-  Kentik__Audit__Public__V202601__AuditEventDetail *event;
+  Kentik__Audit__Public__V202601__AuditEvent *event;
 };
 #define KENTIK__AUDIT__PUBLIC__V202601__GET_AUDIT_EVENT_RESPONSE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__audit__public__v202601__get_audit_event_response__descriptor) \
@@ -315,25 +311,6 @@ Kentik__Audit__Public__V202601__GetAuditEventRequest *
 void   kentik__audit__public__v202601__get_audit_event_request__free_unpacked
                      (Kentik__Audit__Public__V202601__GetAuditEventRequest *message,
                       ProtobufCAllocator *allocator);
-/* Kentik__Audit__Public__V202601__AuditEventDetail methods */
-void   kentik__audit__public__v202601__audit_event_detail__init
-                     (Kentik__Audit__Public__V202601__AuditEventDetail         *message);
-size_t kentik__audit__public__v202601__audit_event_detail__get_packed_size
-                     (const Kentik__Audit__Public__V202601__AuditEventDetail   *message);
-size_t kentik__audit__public__v202601__audit_event_detail__pack
-                     (const Kentik__Audit__Public__V202601__AuditEventDetail   *message,
-                      uint8_t             *out);
-size_t kentik__audit__public__v202601__audit_event_detail__pack_to_buffer
-                     (const Kentik__Audit__Public__V202601__AuditEventDetail   *message,
-                      ProtobufCBuffer     *buffer);
-Kentik__Audit__Public__V202601__AuditEventDetail *
-       kentik__audit__public__v202601__audit_event_detail__unpack
-                     (ProtobufCAllocator  *allocator,
-                      size_t               len,
-                      const uint8_t       *data);
-void   kentik__audit__public__v202601__audit_event_detail__free_unpacked
-                     (Kentik__Audit__Public__V202601__AuditEventDetail *message,
-                      ProtobufCAllocator *allocator);
 /* Kentik__Audit__Public__V202601__GetAuditEventResponse methods */
 void   kentik__audit__public__v202601__get_audit_event_response__init
                      (Kentik__Audit__Public__V202601__GetAuditEventResponse         *message);
@@ -372,9 +349,6 @@ typedef void (*Kentik__Audit__Public__V202601__ListAuditEventsResponse_Closure)
                   void *closure_data);
 typedef void (*Kentik__Audit__Public__V202601__GetAuditEventRequest_Closure)
                  (const Kentik__Audit__Public__V202601__GetAuditEventRequest *message,
-                  void *closure_data);
-typedef void (*Kentik__Audit__Public__V202601__AuditEventDetail_Closure)
-                 (const Kentik__Audit__Public__V202601__AuditEventDetail *message,
                   void *closure_data);
 typedef void (*Kentik__Audit__Public__V202601__GetAuditEventResponse_Closure)
                  (const Kentik__Audit__Public__V202601__GetAuditEventResponse *message,
@@ -421,7 +395,6 @@ extern const ProtobufCMessageDescriptor kentik__audit__public__v202601__audit_ev
 extern const ProtobufCMessageDescriptor kentik__audit__public__v202601__list_audit_events_request__descriptor;
 extern const ProtobufCMessageDescriptor kentik__audit__public__v202601__list_audit_events_response__descriptor;
 extern const ProtobufCMessageDescriptor kentik__audit__public__v202601__get_audit_event_request__descriptor;
-extern const ProtobufCMessageDescriptor kentik__audit__public__v202601__audit_event_detail__descriptor;
 extern const ProtobufCMessageDescriptor kentik__audit__public__v202601__get_audit_event_response__descriptor;
 extern const ProtobufCServiceDescriptor kentik__audit__public__v202601__audit_service__descriptor;
 
