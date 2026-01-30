@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package kentik.kptr.v202602;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/kptr/v202602;kptr";
+
+message PtrResult {
+  string address = 1;
+  string answer = 2;
+  string error = 3;
+  int32 ttl = 4;
+  string resolver_ip = 5;
+}

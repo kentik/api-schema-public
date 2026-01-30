@@ -30,6 +30,7 @@ import (
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/journeys/v202405alpha1"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/journeys/v202406"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/kmi/v202212"
+	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/kptr/v202602"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/ktbgp/v202501"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/label/v202203alpha1"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/label/v202210"

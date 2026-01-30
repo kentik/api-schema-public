@@ -1,0 +1,88 @@
+syntax = "proto3";
+
+package kentik.kptr.v202602;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/kptr/v202602;kptr";
+
+import "google/protobuf/timestamp.proto";
+
+import "kentik/core/v202303/annotations.proto";
+
+import "kentik/kptr/v202602/ptr_result.proto";
+
+service KptrService {
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "kptr:admin";
+
+  // Get network ranges assigned to this agent.
+  //
+  // External clients MUST set the following gRPC metadata:
+  // - x-ch-auth-email
+  // - x-ch-auth-api-token
+  // - x-kt-agentid
+  // - x-kt-sid (Site ID)
+  //
+  // Internal clients MUST set the following gRPC metadata:
+  // - x-kt-cid (Company ID)
+  // - x-kt-agentid
+  // - x-kt-sid (Site ID)
+  //
+  rpc GetNetworkRangeAssignments(GetNetworkRangeAssignmentsRequest) returns (GetNetworkRangeAssignmentsResponse) {
+    option (kentik.core.v202303.method_scope) = "kptr:read";
+  }
+
+  // Update IP address to name mappings.
+  // This is used by the kptr agent to proactively submit updated mapping
+  //
+  // External clients MUST set the following gRPC metadata:
+  // - x-ch-auth-email
+  // - x-ch-auth-api-token
+  // - x-kt-agentid
+  // - x-kt-sid (Site ID)
+  //
+  // Internal clients MUST set the following gRPC metadata:
+  // - x-kt-cid (Company ID)
+  // - x-kt-agentid
+  // - x-kt-sid (Site ID)
+  //
+  rpc UpdateAddressNames(UpdateAddressNamesRequest) returns (UpdateAddressNamesResponse) {
+    option (kentik.core.v202303.method_scope) = "kptr:write";
+  }
+
+  // Perform PTR lookups for the given IP addresses
+  //
+  // External clients MUST set the following gRPC metadata:
+  // - x-ch-auth-email
+  // - x-ch-auth-api-token
+  //
+  // Internal clients MUST set the following gRPC metadata:
+  // - x-kt-cid (Company ID)
+  //
+  rpc ResolveAddresses(ResolveAddressesRequest) returns (ResolveAddressesResponse) {
+    option (kentik.core.v202303.method_scope) = "kptr:read";
+  }
+}
+
+message UpdateAddressNamesRequest {
+  repeated kptr.v202602.PtrResult address_names = 1;
+}
+
+message UpdateAddressNamesResponse {
+
+}
+
+message GetNetworkRangeAssignmentsRequest {
+  // Company ID and Site ID from metadata are used
+}
+
+message GetNetworkRangeAssignmentsResponse {
+  // IP prefixes (e.g., 10.0.0.0/8) that this agent is responsible for performing lookups for
+  repeated string network_ranges = 1;
+}
+
+message ResolveAddressesRequest {
+  repeated string ip_addresses = 1;
+}
+
+message ResolveAddressesResponse {
+  repeated PtrResult results = 1;
+}

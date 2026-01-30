@@ -1,0 +1,97 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "kentik/kptr/v202602/kptr_service.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "KptrService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {},
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v202602GetNetworkRangeAssignmentsResponse": {
+      "type": "object",
+      "properties": {
+        "networkRanges": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "IP prefixes (e.g., 10.0.0.0/8) that this agent is responsible for performing lookups for"
+        }
+      }
+    },
+    "v202602PtrResult": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "answer": {
+          "type": "string"
+        },
+        "error": {
+          "type": "string"
+        },
+        "ttl": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "resolverIp": {
+          "type": "string"
+        }
+      }
+    },
+    "v202602ResolveAddressesResponse": {
+      "type": "object",
+      "properties": {
+        "results": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v202602PtrResult"
+          }
+        }
+      }
+    },
+    "v202602UpdateAddressNamesResponse": {
+      "type": "object"
+    }
+  }
+}
