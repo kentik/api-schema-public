@@ -112,6 +112,9 @@
                 ],
                 "default": "CONFIG_ENCODING_UNSPECIFIED"
             },
+            "v202511DeleteDeviceConfigurationResponse": {
+                "type": "object"
+            },
             "v202511Device": {
                 "type": "object",
                 "properties": {

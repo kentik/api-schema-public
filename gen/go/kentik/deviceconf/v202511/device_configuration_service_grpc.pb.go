@@ -28,6 +28,7 @@ const (
 	DeviceConfigurationService_ExecuteCommand_FullMethodName                   = "/kentik.deviceconf.v202511.DeviceConfigurationService/ExecuteCommand"
 	DeviceConfigurationService_GetCommandAcls_FullMethodName                   = "/kentik.deviceconf.v202511.DeviceConfigurationService/GetCommandAcls"
 	DeviceConfigurationService_UpdateCommandAcls_FullMethodName                = "/kentik.deviceconf.v202511.DeviceConfigurationService/UpdateCommandAcls"
+	DeviceConfigurationService_DeleteDeviceConfiguration_FullMethodName        = "/kentik.deviceconf.v202511.DeviceConfigurationService/DeleteDeviceConfiguration"
 )
 
 // DeviceConfigurationServiceClient is the client API for DeviceConfigurationService service.
@@ -40,6 +41,7 @@ type DeviceConfigurationServiceClient interface {
 	// - x-ch-auth-email
 	// - x-ch-auth-api-token
 	// - x-kt-agentid
+	// Note: x-kt-cid (Company ID) is automatically set by apigw based on auth headers.
 	//
 	// Internal clients MUST set the following gRPC metadata:
 	// - x-kt-cid (Company ID)
@@ -52,6 +54,7 @@ type DeviceConfigurationServiceClient interface {
 	// - x-ch-auth-api-token
 	// - x-kt-agentid
 	// - x-kt-did
+	// Note: x-kt-cid (Company ID) is automatically set by apigw based on auth headers.
 	//
 	// Internal clients MUST set the following gRPC metadata:
 	// - x-kt-cid (Company ID)
@@ -63,6 +66,7 @@ type DeviceConfigurationServiceClient interface {
 	// External clients MUST set the following gRPC metadata:
 	// - x-ch-auth-email
 	// - x-ch-auth-api-token
+	// Note: x-kt-cid (Company ID) is automatically set by apigw based on auth headers.
 	//
 	// Internal clients MUST set the following gRPC metadata:
 	// - x-kt-cid (Company ID)
@@ -72,6 +76,7 @@ type DeviceConfigurationServiceClient interface {
 	// External clients MUST set the following gRPC metadata:
 	// - x-ch-auth-email
 	// - x-ch-auth-api-token
+	// Note: x-kt-cid (Company ID) is automatically set by apigw based on auth headers.
 	//
 	// Internal clients MUST set the following gRPC metadata:
 	// - x-kt-cid (Company ID)
@@ -81,6 +86,7 @@ type DeviceConfigurationServiceClient interface {
 	// External clients MUST set the following gRPC metadata:
 	// - x-ch-auth-email
 	// - x-ch-auth-api-token
+	// Note: x-kt-cid (Company ID) is automatically set by apigw based on auth headers.
 	//
 	// Internal clients MUST set the following gRPC metadata:
 	// - x-kt-cid (Company ID)
@@ -91,6 +97,7 @@ type DeviceConfigurationServiceClient interface {
 	// External clients MUST set the following gRPC metadata:
 	// - x-ch-auth-email
 	// - x-ch-auth-api-token
+	// Note: x-kt-cid (Company ID) is automatically set by apigw based on auth headers.
 	//
 	// Internal clients MUST set the following gRPC metadata:
 	// - x-kt-cid (Company ID)
@@ -109,6 +116,7 @@ type DeviceConfigurationServiceClient interface {
 	// External clients MUST set the following gRPC metadata:
 	// - x-ch-auth-email
 	// - x-ch-auth-api-token
+	// Note: x-kt-cid (Company ID) is automatically set by apigw based on auth headers.
 	//
 	// Internal clients MUST set the following gRPC metadata:
 	// - x-kt-cid (Company ID; 0 will return global ACLs)
@@ -119,10 +127,21 @@ type DeviceConfigurationServiceClient interface {
 	// External clients MUST set the following gRPC metadata:
 	// - x-ch-auth-email
 	// - x-ch-auth-api-token
+	// Note: x-kt-cid (Company ID) is automatically set by apigw based on auth headers.
 	//
 	// Internal clients MUST set the following gRPC metadata:
 	// - x-kt-cid (Company ID)
 	UpdateCommandAcls(ctx context.Context, in *UpdateCommandAclsRequest, opts ...grpc.CallOption) (*UpdateCommandAclsResponse, error)
+	// Delete a specific device configuration revision.
+	//
+	// External clients MUST set the following gRPC metadata:
+	// - x-ch-auth-email
+	// - x-ch-auth-api-token
+	// Note: x-kt-cid (Company ID) is automatically set by apigw based on auth headers.
+	//
+	// Internal clients MUST set the following gRPC metadata:
+	// - x-kt-cid (Company ID)
+	DeleteDeviceConfiguration(ctx context.Context, in *DeleteDeviceConfigurationRequest, opts ...grpc.CallOption) (*DeleteDeviceConfigurationResponse, error)
 }
 
 type deviceConfigurationServiceClient struct {
@@ -223,6 +242,16 @@ func (c *deviceConfigurationServiceClient) UpdateCommandAcls(ctx context.Context
 	return out, nil
 }
 
+func (c *deviceConfigurationServiceClient) DeleteDeviceConfiguration(ctx context.Context, in *DeleteDeviceConfigurationRequest, opts ...grpc.CallOption) (*DeleteDeviceConfigurationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteDeviceConfigurationResponse)
+	err := c.cc.Invoke(ctx, DeviceConfigurationService_DeleteDeviceConfiguration_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // DeviceConfigurationServiceServer is the server API for DeviceConfigurationService service.
 // All implementations should embed UnimplementedDeviceConfigurationServiceServer
 // for forward compatibility.
@@ -233,6 +262,7 @@ type DeviceConfigurationServiceServer interface {
 	// - x-ch-auth-email
 	// - x-ch-auth-api-token
 	// - x-kt-agentid
+	// Note: x-kt-cid (Company ID) is automatically set by apigw based on auth headers.
 	//
 	// Internal clients MUST set the following gRPC metadata:
 	// - x-kt-cid (Company ID)
@@ -245,6 +275,7 @@ type DeviceConfigurationServiceServer interface {
 	// - x-ch-auth-api-token
 	// - x-kt-agentid
 	// - x-kt-did
+	// Note: x-kt-cid (Company ID) is automatically set by apigw based on auth headers.
 	//
 	// Internal clients MUST set the following gRPC metadata:
 	// - x-kt-cid (Company ID)
@@ -256,6 +287,7 @@ type DeviceConfigurationServiceServer interface {
 	// External clients MUST set the following gRPC metadata:
 	// - x-ch-auth-email
 	// - x-ch-auth-api-token
+	// Note: x-kt-cid (Company ID) is automatically set by apigw based on auth headers.
 	//
 	// Internal clients MUST set the following gRPC metadata:
 	// - x-kt-cid (Company ID)
@@ -265,6 +297,7 @@ type DeviceConfigurationServiceServer interface {
 	// External clients MUST set the following gRPC metadata:
 	// - x-ch-auth-email
 	// - x-ch-auth-api-token
+	// Note: x-kt-cid (Company ID) is automatically set by apigw based on auth headers.
 	//
 	// Internal clients MUST set the following gRPC metadata:
 	// - x-kt-cid (Company ID)
@@ -274,6 +307,7 @@ type DeviceConfigurationServiceServer interface {
 	// External clients MUST set the following gRPC metadata:
 	// - x-ch-auth-email
 	// - x-ch-auth-api-token
+	// Note: x-kt-cid (Company ID) is automatically set by apigw based on auth headers.
 	//
 	// Internal clients MUST set the following gRPC metadata:
 	// - x-kt-cid (Company ID)
@@ -284,6 +318,7 @@ type DeviceConfigurationServiceServer interface {
 	// External clients MUST set the following gRPC metadata:
 	// - x-ch-auth-email
 	// - x-ch-auth-api-token
+	// Note: x-kt-cid (Company ID) is automatically set by apigw based on auth headers.
 	//
 	// Internal clients MUST set the following gRPC metadata:
 	// - x-kt-cid (Company ID)
@@ -302,6 +337,7 @@ type DeviceConfigurationServiceServer interface {
 	// External clients MUST set the following gRPC metadata:
 	// - x-ch-auth-email
 	// - x-ch-auth-api-token
+	// Note: x-kt-cid (Company ID) is automatically set by apigw based on auth headers.
 	//
 	// Internal clients MUST set the following gRPC metadata:
 	// - x-kt-cid (Company ID; 0 will return global ACLs)
@@ -312,10 +348,21 @@ type DeviceConfigurationServiceServer interface {
 	// External clients MUST set the following gRPC metadata:
 	// - x-ch-auth-email
 	// - x-ch-auth-api-token
+	// Note: x-kt-cid (Company ID) is automatically set by apigw based on auth headers.
 	//
 	// Internal clients MUST set the following gRPC metadata:
 	// - x-kt-cid (Company ID)
 	UpdateCommandAcls(context.Context, *UpdateCommandAclsRequest) (*UpdateCommandAclsResponse, error)
+	// Delete a specific device configuration revision.
+	//
+	// External clients MUST set the following gRPC metadata:
+	// - x-ch-auth-email
+	// - x-ch-auth-api-token
+	// Note: x-kt-cid (Company ID) is automatically set by apigw based on auth headers.
+	//
+	// Internal clients MUST set the following gRPC metadata:
+	// - x-kt-cid (Company ID)
+	DeleteDeviceConfiguration(context.Context, *DeleteDeviceConfigurationRequest) (*DeleteDeviceConfigurationResponse, error)
 }
 
 // UnimplementedDeviceConfigurationServiceServer should be embedded to have
@@ -351,6 +398,9 @@ func (UnimplementedDeviceConfigurationServiceServer) GetCommandAcls(context.Cont
 }
 func (UnimplementedDeviceConfigurationServiceServer) UpdateCommandAcls(context.Context, *UpdateCommandAclsRequest) (*UpdateCommandAclsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateCommandAcls not implemented")
+}
+func (UnimplementedDeviceConfigurationServiceServer) DeleteDeviceConfiguration(context.Context, *DeleteDeviceConfigurationRequest) (*DeleteDeviceConfigurationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteDeviceConfiguration not implemented")
 }
 func (UnimplementedDeviceConfigurationServiceServer) testEmbeddedByValue() {}
 
@@ -534,6 +584,24 @@ func _DeviceConfigurationService_UpdateCommandAcls_Handler(srv interface{}, ctx 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _DeviceConfigurationService_DeleteDeviceConfiguration_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteDeviceConfigurationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DeviceConfigurationServiceServer).DeleteDeviceConfiguration(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DeviceConfigurationService_DeleteDeviceConfiguration_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DeviceConfigurationServiceServer).DeleteDeviceConfiguration(ctx, req.(*DeleteDeviceConfigurationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // DeviceConfigurationService_ServiceDesc is the grpc.ServiceDesc for DeviceConfigurationService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -576,6 +644,10 @@ var DeviceConfigurationService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateCommandAcls",
 			Handler:    _DeviceConfigurationService_UpdateCommandAcls_Handler,
+		},
+		{
+			MethodName: "DeleteDeviceConfiguration",
+			Handler:    _DeviceConfigurationService_DeleteDeviceConfiguration_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -171,6 +171,54 @@ struct GetCommandAclsRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetCommandAclsRequestDefaultTypeInternal _GetCommandAclsRequest_default_instance_;
+              template <typename>
+PROTOBUF_CONSTEXPR DeleteDeviceConfigurationResponse::DeleteDeviceConfigurationResponse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::internal::ZeroFieldsBase(_class_data_.base()){}
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::internal::ZeroFieldsBase() {
+}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+struct DeleteDeviceConfigurationResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DeleteDeviceConfigurationResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DeleteDeviceConfigurationResponseDefaultTypeInternal() {}
+  union {
+    DeleteDeviceConfigurationResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DeleteDeviceConfigurationResponseDefaultTypeInternal _DeleteDeviceConfigurationResponse_default_instance_;
+
+inline constexpr DeleteDeviceConfigurationRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : device_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        revision_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR DeleteDeviceConfigurationRequest::DeleteDeviceConfigurationRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct DeleteDeviceConfigurationRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DeleteDeviceConfigurationRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DeleteDeviceConfigurationRequestDefaultTypeInternal() {}
+  union {
+    DeleteDeviceConfigurationRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DeleteDeviceConfigurationRequestDefaultTypeInternal _DeleteDeviceConfigurationRequest_default_instance_;
 
 inline constexpr UpdateCommandAclsRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -686,6 +734,24 @@ const ::uint32_t
         ~0u,  // no _inlined_string_donated_
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::DeleteDeviceConfigurationRequest, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::DeleteDeviceConfigurationRequest, _impl_.device_id_),
+        PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::DeleteDeviceConfigurationRequest, _impl_.revision_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::DeleteDeviceConfigurationResponse, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
 };
 
 static const ::_pbi::MigrationSchema
@@ -709,6 +775,8 @@ static const ::_pbi::MigrationSchema
         {169, -1, -1, sizeof(::kentik::deviceconf::v202511::GetCommandAclsResponse)},
         {178, -1, -1, sizeof(::kentik::deviceconf::v202511::UpdateCommandAclsRequest)},
         {187, -1, -1, sizeof(::kentik::deviceconf::v202511::UpdateCommandAclsResponse)},
+        {195, -1, -1, sizeof(::kentik::deviceconf::v202511::DeleteDeviceConfigurationRequest)},
+        {205, -1, -1, sizeof(::kentik::deviceconf::v202511::DeleteDeviceConfigurationResponse)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::deviceconf::v202511::_GetDeviceAssignmentsRequest_default_instance_._instance,
@@ -730,6 +798,8 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::deviceconf::v202511::_GetCommandAclsResponse_default_instance_._instance,
     &::kentik::deviceconf::v202511::_UpdateCommandAclsRequest_default_instance_._instance,
     &::kentik::deviceconf::v202511::_UpdateCommandAclsResponse_default_instance_._instance,
+    &::kentik::deviceconf::v202511::_DeleteDeviceConfigurationRequest_default_instance_._instance,
+    &::kentik::deviceconf::v202511::_DeleteDeviceConfigurationResponse_default_instance_._instance,
 };
 const char descriptor_table_protodef_kentik_2fdeviceconf_2fv202511_2fdevice_5fconfiguration_5fservice_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
@@ -790,49 +860,56 @@ const char descriptor_table_protodef_kentik_2fdeviceconf_2fv202511_2fdevice_5fco
     "ik.deviceconf.v202511.CommandAclR\004acls\"U"
     "\n\030UpdateCommandAclsRequest\0229\n\004acls\030\001 \003(\013"
     "2%.kentik.deviceconf.v202511.CommandAclR"
-    "\004acls\"\033\n\031UpdateCommandAclsResponse2\235\014\n\032D"
-    "eviceConfigurationService\022\234\001\n\024GetDeviceA"
-    "ssignments\0226.kentik.deviceconf.v202511.G"
-    "etDeviceAssignmentsRequest\0327.kentik.devi"
-    "ceconf.v202511.GetDeviceAssignmentsRespo"
-    "nse\"\023\362\327\002\017deviceconf:read\022\254\001\n\031UpdateDevic"
-    "eConfiguration\022;.kentik.deviceconf.v2025"
-    "11.UpdateDeviceConfigurationRequest\032<.ke"
-    "ntik.deviceconf.v202511.UpdateDeviceConf"
-    "igurationResponse\"\024\362\327\002\020deviceconf:write\022"
-    "\242\001\n\026GetDeviceConfiguration\0228.kentik.devi"
-    "ceconf.v202511.GetDeviceConfigurationReq"
-    "uest\0329.kentik.deviceconf.v202511.GetDevi"
-    "ceConfigurationResponse\"\023\362\327\002\017deviceconf:"
-    "read\022\267\001\n\035GetLatestDeviceConfigurations\022\?"
-    ".kentik.deviceconf.v202511.GetLatestDevi"
-    "ceConfigurationsRequest\032@.kentik.devicec"
-    "onf.v202511.GetLatestDeviceConfiguration"
-    "sResponse\"\023\362\327\002\017deviceconf:read\022\300\001\n ListD"
-    "eviceConfigurationRevisions\022B.kentik.dev"
-    "iceconf.v202511.ListDeviceConfigurationR"
-    "evisionsRequest\032C.kentik.deviceconf.v202"
-    "511.ListDeviceConfigurationRevisionsResp"
-    "onse\"\023\362\327\002\017deviceconf:read\022\276\001\n\037RequestDev"
-    "iceConfigurationFetch\022A.kentik.devicecon"
-    "f.v202511.RequestDeviceConfigurationFetc"
-    "hRequest\032B.kentik.deviceconf.v202511.Req"
-    "uestDeviceConfigurationFetchResponse\"\024\362\327"
-    "\002\020deviceconf:write\022\217\001\n\016ExecuteCommand\0220."
-    "kentik.deviceconf.v202511.ExecuteCommand"
-    "Request\0321.kentik.deviceconf.v202511.Exec"
-    "uteCommandResponse\"\030\362\327\002\020deviceconf:write"
-    "\230\330\002\001\022\212\001\n\016GetCommandAcls\0220.kentik.devicec"
-    "onf.v202511.GetCommandAclsRequest\0321.kent"
-    "ik.deviceconf.v202511.GetCommandAclsResp"
-    "onse\"\023\362\327\002\017deviceconf:read\022\224\001\n\021UpdateComm"
-    "andAcls\0223.kentik.deviceconf.v202511.Upda"
-    "teCommandAclsRequest\0324.kentik.deviceconf"
-    ".v202511.UpdateCommandAclsResponse\"\024\362\327\002\020"
-    "deviceconf:write\032\030\352\327\002\020deviceconf:admin\220\330"
-    "\002\003BQZOgithub.com/kentik/api-schema-publi"
-    "c/gen/go/kentik/deviceconf/v202511;devic"
-    "econfb\006proto3"
+    "\004acls\"\033\n\031UpdateCommandAclsResponse\"[\n De"
+    "leteDeviceConfigurationRequest\022\033\n\tdevice"
+    "_id\030\001 \001(\tR\010deviceId\022\032\n\010revision\030\002 \001(\tR\010r"
+    "evision\"#\n!DeleteDeviceConfigurationResp"
+    "onse2\314\r\n\032DeviceConfigurationService\022\234\001\n\024"
+    "GetDeviceAssignments\0226.kentik.deviceconf"
+    ".v202511.GetDeviceAssignmentsRequest\0327.k"
+    "entik.deviceconf.v202511.GetDeviceAssign"
+    "mentsResponse\"\023\362\327\002\017deviceconf:read\022\254\001\n\031U"
+    "pdateDeviceConfiguration\022;.kentik.device"
+    "conf.v202511.UpdateDeviceConfigurationRe"
+    "quest\032<.kentik.deviceconf.v202511.Update"
+    "DeviceConfigurationResponse\"\024\362\327\002\020devicec"
+    "onf:write\022\242\001\n\026GetDeviceConfiguration\0228.k"
+    "entik.deviceconf.v202511.GetDeviceConfig"
+    "urationRequest\0329.kentik.deviceconf.v2025"
+    "11.GetDeviceConfigurationResponse\"\023\362\327\002\017d"
+    "eviceconf:read\022\267\001\n\035GetLatestDeviceConfig"
+    "urations\022\?.kentik.deviceconf.v202511.Get"
+    "LatestDeviceConfigurationsRequest\032@.kent"
+    "ik.deviceconf.v202511.GetLatestDeviceCon"
+    "figurationsResponse\"\023\362\327\002\017deviceconf:read"
+    "\022\300\001\n ListDeviceConfigurationRevisions\022B."
+    "kentik.deviceconf.v202511.ListDeviceConf"
+    "igurationRevisionsRequest\032C.kentik.devic"
+    "econf.v202511.ListDeviceConfigurationRev"
+    "isionsResponse\"\023\362\327\002\017deviceconf:read\022\276\001\n\037"
+    "RequestDeviceConfigurationFetch\022A.kentik"
+    ".deviceconf.v202511.RequestDeviceConfigu"
+    "rationFetchRequest\032B.kentik.deviceconf.v"
+    "202511.RequestDeviceConfigurationFetchRe"
+    "sponse\"\024\362\327\002\020deviceconf:write\022\217\001\n\016Execute"
+    "Command\0220.kentik.deviceconf.v202511.Exec"
+    "uteCommandRequest\0321.kentik.deviceconf.v2"
+    "02511.ExecuteCommandResponse\"\030\362\327\002\020device"
+    "conf:write\230\330\002\001\022\212\001\n\016GetCommandAcls\0220.kent"
+    "ik.deviceconf.v202511.GetCommandAclsRequ"
+    "est\0321.kentik.deviceconf.v202511.GetComma"
+    "ndAclsResponse\"\023\362\327\002\017deviceconf:read\022\224\001\n\021"
+    "UpdateCommandAcls\0223.kentik.deviceconf.v2"
+    "02511.UpdateCommandAclsRequest\0324.kentik."
+    "deviceconf.v202511.UpdateCommandAclsResp"
+    "onse\"\024\362\327\002\020deviceconf:write\022\254\001\n\031DeleteDev"
+    "iceConfiguration\022;.kentik.deviceconf.v20"
+    "2511.DeleteDeviceConfigurationRequest\032<."
+    "kentik.deviceconf.v202511.DeleteDeviceCo"
+    "nfigurationResponse\"\024\362\327\002\020deviceconf:writ"
+    "e\032\030\352\327\002\020deviceconf:admin\220\330\002\003BQZOgithub.co"
+    "m/kentik/api-schema-public/gen/go/kentik"
+    "/deviceconf/v202511;deviceconfb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice_5fconfiguration_5fservice_2eproto_deps[6] =
     {
@@ -847,13 +924,13 @@ static ::absl::once_flag descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice_5fconfiguration_5fservice_2eproto = {
     false,
     false,
-    3973,
+    4278,
     descriptor_table_protodef_kentik_2fdeviceconf_2fv202511_2fdevice_5fconfiguration_5fservice_2eproto,
     "kentik/deviceconf/v202511/device_configuration_service.proto",
     &descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice_5fconfiguration_5fservice_2eproto_once,
     descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice_5fconfiguration_5fservice_2eproto_deps,
     6,
-    19,
+    21,
     schemas,
     file_default_instances,
     TableStruct_kentik_2fdeviceconf_2fv202511_2fdevice_5fconfiguration_5fservice_2eproto::offsets,
@@ -5118,6 +5195,369 @@ const ::_pbi::TcParseTable<0, 0, 0, 0, 2> UpdateCommandAclsResponse::_table_ = {
 
 
 ::google::protobuf::Metadata UpdateCommandAclsResponse::GetMetadata() const {
+  return ::google::protobuf::internal::ZeroFieldsBase::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class DeleteDeviceConfigurationRequest::_Internal {
+ public:
+};
+
+DeleteDeviceConfigurationRequest::DeleteDeviceConfigurationRequest(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.deviceconf.v202511.DeleteDeviceConfigurationRequest)
+}
+inline PROTOBUF_NDEBUG_INLINE DeleteDeviceConfigurationRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::kentik::deviceconf::v202511::DeleteDeviceConfigurationRequest& from_msg)
+      : device_id_(arena, from.device_id_),
+        revision_(arena, from.revision_),
+        _cached_size_{0} {}
+
+DeleteDeviceConfigurationRequest::DeleteDeviceConfigurationRequest(
+    ::google::protobuf::Arena* arena,
+    const DeleteDeviceConfigurationRequest& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  DeleteDeviceConfigurationRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+
+  // @@protoc_insertion_point(copy_constructor:kentik.deviceconf.v202511.DeleteDeviceConfigurationRequest)
+}
+inline PROTOBUF_NDEBUG_INLINE DeleteDeviceConfigurationRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : device_id_(arena),
+        revision_(arena),
+        _cached_size_{0} {}
+
+inline void DeleteDeviceConfigurationRequest::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+}
+DeleteDeviceConfigurationRequest::~DeleteDeviceConfigurationRequest() {
+  // @@protoc_insertion_point(destructor:kentik.deviceconf.v202511.DeleteDeviceConfigurationRequest)
+  SharedDtor(*this);
+}
+inline void DeleteDeviceConfigurationRequest::SharedDtor(MessageLite& self) {
+  DeleteDeviceConfigurationRequest& this_ = static_cast<DeleteDeviceConfigurationRequest&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.device_id_.Destroy();
+  this_._impl_.revision_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* DeleteDeviceConfigurationRequest::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) DeleteDeviceConfigurationRequest(arena);
+}
+constexpr auto DeleteDeviceConfigurationRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(DeleteDeviceConfigurationRequest),
+                                            alignof(DeleteDeviceConfigurationRequest));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull DeleteDeviceConfigurationRequest::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_DeleteDeviceConfigurationRequest_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &DeleteDeviceConfigurationRequest::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<DeleteDeviceConfigurationRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &DeleteDeviceConfigurationRequest::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<DeleteDeviceConfigurationRequest>(), &DeleteDeviceConfigurationRequest::ByteSizeLong,
+            &DeleteDeviceConfigurationRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(DeleteDeviceConfigurationRequest, _impl_._cached_size_),
+        false,
+    },
+    &DeleteDeviceConfigurationRequest::kDescriptorMethods,
+    &descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice_5fconfiguration_5fservice_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* DeleteDeviceConfigurationRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 84, 2> DeleteDeviceConfigurationRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::deviceconf::v202511::DeleteDeviceConfigurationRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // string revision = 2 [json_name = "revision"];
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(DeleteDeviceConfigurationRequest, _impl_.revision_)}},
+    // string device_id = 1 [json_name = "deviceId"];
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(DeleteDeviceConfigurationRequest, _impl_.device_id_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string device_id = 1 [json_name = "deviceId"];
+    {PROTOBUF_FIELD_OFFSET(DeleteDeviceConfigurationRequest, _impl_.device_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string revision = 2 [json_name = "revision"];
+    {PROTOBUF_FIELD_OFFSET(DeleteDeviceConfigurationRequest, _impl_.revision_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\72\11\10\0\0\0\0\0"
+    "kentik.deviceconf.v202511.DeleteDeviceConfigurationRequest"
+    "device_id"
+    "revision"
+  }},
+};
+
+PROTOBUF_NOINLINE void DeleteDeviceConfigurationRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.deviceconf.v202511.DeleteDeviceConfigurationRequest)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.device_id_.ClearToEmpty();
+  _impl_.revision_.ClearToEmpty();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* DeleteDeviceConfigurationRequest::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const DeleteDeviceConfigurationRequest& this_ = static_cast<const DeleteDeviceConfigurationRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* DeleteDeviceConfigurationRequest::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const DeleteDeviceConfigurationRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:kentik.deviceconf.v202511.DeleteDeviceConfigurationRequest)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // string device_id = 1 [json_name = "deviceId"];
+          if (!this_._internal_device_id().empty()) {
+            const std::string& _s = this_._internal_device_id();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.deviceconf.v202511.DeleteDeviceConfigurationRequest.device_id");
+            target = stream->WriteStringMaybeAliased(1, _s, target);
+          }
+
+          // string revision = 2 [json_name = "revision"];
+          if (!this_._internal_revision().empty()) {
+            const std::string& _s = this_._internal_revision();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.deviceconf.v202511.DeleteDeviceConfigurationRequest.revision");
+            target = stream->WriteStringMaybeAliased(2, _s, target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:kentik.deviceconf.v202511.DeleteDeviceConfigurationRequest)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t DeleteDeviceConfigurationRequest::ByteSizeLong(const MessageLite& base) {
+          const DeleteDeviceConfigurationRequest& this_ = static_cast<const DeleteDeviceConfigurationRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t DeleteDeviceConfigurationRequest::ByteSizeLong() const {
+          const DeleteDeviceConfigurationRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:kentik.deviceconf.v202511.DeleteDeviceConfigurationRequest)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // string device_id = 1 [json_name = "deviceId"];
+            if (!this_._internal_device_id().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_device_id());
+            }
+            // string revision = 2 [json_name = "revision"];
+            if (!this_._internal_revision().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_revision());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void DeleteDeviceConfigurationRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<DeleteDeviceConfigurationRequest*>(&to_msg);
+  auto& from = static_cast<const DeleteDeviceConfigurationRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:kentik.deviceconf.v202511.DeleteDeviceConfigurationRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_device_id().empty()) {
+    _this->_internal_set_device_id(from._internal_device_id());
+  }
+  if (!from._internal_revision().empty()) {
+    _this->_internal_set_revision(from._internal_revision());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void DeleteDeviceConfigurationRequest::CopyFrom(const DeleteDeviceConfigurationRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.deviceconf.v202511.DeleteDeviceConfigurationRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void DeleteDeviceConfigurationRequest::InternalSwap(DeleteDeviceConfigurationRequest* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_id_, &other->_impl_.device_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.revision_, &other->_impl_.revision_, arena);
+}
+
+::google::protobuf::Metadata DeleteDeviceConfigurationRequest::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class DeleteDeviceConfigurationResponse::_Internal {
+ public:
+};
+
+DeleteDeviceConfigurationResponse::DeleteDeviceConfigurationResponse(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(arena_constructor:kentik.deviceconf.v202511.DeleteDeviceConfigurationResponse)
+}
+DeleteDeviceConfigurationResponse::DeleteDeviceConfigurationResponse(
+    ::google::protobuf::Arena* arena,
+    const DeleteDeviceConfigurationResponse& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  DeleteDeviceConfigurationResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+
+  // @@protoc_insertion_point(copy_constructor:kentik.deviceconf.v202511.DeleteDeviceConfigurationResponse)
+}
+
+inline void* DeleteDeviceConfigurationResponse::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) DeleteDeviceConfigurationResponse(arena);
+}
+constexpr auto DeleteDeviceConfigurationResponse::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(DeleteDeviceConfigurationResponse),
+                                            alignof(DeleteDeviceConfigurationResponse));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull DeleteDeviceConfigurationResponse::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_DeleteDeviceConfigurationResponse_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &DeleteDeviceConfigurationResponse::MergeImpl,
+        ::google::protobuf::internal::ZeroFieldsBase::GetNewImpl<DeleteDeviceConfigurationResponse>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &DeleteDeviceConfigurationResponse::SharedDtor,
+        ::google::protobuf::internal::ZeroFieldsBase::GetClearImpl<DeleteDeviceConfigurationResponse>(), &DeleteDeviceConfigurationResponse::ByteSizeLong,
+            &DeleteDeviceConfigurationResponse::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(DeleteDeviceConfigurationResponse, _impl_._cached_size_),
+        false,
+    },
+    &DeleteDeviceConfigurationResponse::kDescriptorMethods,
+    &descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice_5fconfiguration_5fservice_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* DeleteDeviceConfigurationResponse::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 0, 0, 0, 2> DeleteDeviceConfigurationResponse::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    0, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967295,  // skipmap
+    offsetof(decltype(_table_), field_names),  // no field_entries
+    0,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::deviceconf::v202511::DeleteDeviceConfigurationResponse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }},
+  // no field_entries, or aux_entries
+  {{
+  }},
+};
+
+
+
+
+
+
+
+
+::google::protobuf::Metadata DeleteDeviceConfigurationResponse::GetMetadata() const {
   return ::google::protobuf::internal::ZeroFieldsBase::GetMetadataImpl(GetClassData()->full());
 }
 // @@protoc_insertion_point(namespace_scope)

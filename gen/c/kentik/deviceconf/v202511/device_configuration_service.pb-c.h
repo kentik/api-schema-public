@@ -40,6 +40,8 @@ typedef struct Kentik__Deviceconf__V202511__GetCommandAclsRequest Kentik__Device
 typedef struct Kentik__Deviceconf__V202511__GetCommandAclsResponse Kentik__Deviceconf__V202511__GetCommandAclsResponse;
 typedef struct Kentik__Deviceconf__V202511__UpdateCommandAclsRequest Kentik__Deviceconf__V202511__UpdateCommandAclsRequest;
 typedef struct Kentik__Deviceconf__V202511__UpdateCommandAclsResponse Kentik__Deviceconf__V202511__UpdateCommandAclsResponse;
+typedef struct Kentik__Deviceconf__V202511__DeleteDeviceConfigurationRequest Kentik__Deviceconf__V202511__DeleteDeviceConfigurationRequest;
+typedef struct Kentik__Deviceconf__V202511__DeleteDeviceConfigurationResponse Kentik__Deviceconf__V202511__DeleteDeviceConfigurationResponse;
 
 
 /* --- enums --- */
@@ -291,6 +293,26 @@ struct  Kentik__Deviceconf__V202511__UpdateCommandAclsResponse
 };
 #define KENTIK__DEVICECONF__V202511__UPDATE_COMMAND_ACLS_RESPONSE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__deviceconf__v202511__update_command_acls_response__descriptor) \
+     }
+
+
+struct  Kentik__Deviceconf__V202511__DeleteDeviceConfigurationRequest
+{
+  ProtobufCMessage base;
+  char *device_id;
+  char *revision;
+};
+#define KENTIK__DEVICECONF__V202511__DELETE_DEVICE_CONFIGURATION_REQUEST__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__deviceconf__v202511__delete_device_configuration_request__descriptor) \
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
+
+
+struct  Kentik__Deviceconf__V202511__DeleteDeviceConfigurationResponse
+{
+  ProtobufCMessage base;
+};
+#define KENTIK__DEVICECONF__V202511__DELETE_DEVICE_CONFIGURATION_RESPONSE__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__deviceconf__v202511__delete_device_configuration_response__descriptor) \
      }
 
 
@@ -639,6 +661,44 @@ Kentik__Deviceconf__V202511__UpdateCommandAclsResponse *
 void   kentik__deviceconf__v202511__update_command_acls_response__free_unpacked
                      (Kentik__Deviceconf__V202511__UpdateCommandAclsResponse *message,
                       ProtobufCAllocator *allocator);
+/* Kentik__Deviceconf__V202511__DeleteDeviceConfigurationRequest methods */
+void   kentik__deviceconf__v202511__delete_device_configuration_request__init
+                     (Kentik__Deviceconf__V202511__DeleteDeviceConfigurationRequest         *message);
+size_t kentik__deviceconf__v202511__delete_device_configuration_request__get_packed_size
+                     (const Kentik__Deviceconf__V202511__DeleteDeviceConfigurationRequest   *message);
+size_t kentik__deviceconf__v202511__delete_device_configuration_request__pack
+                     (const Kentik__Deviceconf__V202511__DeleteDeviceConfigurationRequest   *message,
+                      uint8_t             *out);
+size_t kentik__deviceconf__v202511__delete_device_configuration_request__pack_to_buffer
+                     (const Kentik__Deviceconf__V202511__DeleteDeviceConfigurationRequest   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Deviceconf__V202511__DeleteDeviceConfigurationRequest *
+       kentik__deviceconf__v202511__delete_device_configuration_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__deviceconf__v202511__delete_device_configuration_request__free_unpacked
+                     (Kentik__Deviceconf__V202511__DeleteDeviceConfigurationRequest *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Deviceconf__V202511__DeleteDeviceConfigurationResponse methods */
+void   kentik__deviceconf__v202511__delete_device_configuration_response__init
+                     (Kentik__Deviceconf__V202511__DeleteDeviceConfigurationResponse         *message);
+size_t kentik__deviceconf__v202511__delete_device_configuration_response__get_packed_size
+                     (const Kentik__Deviceconf__V202511__DeleteDeviceConfigurationResponse   *message);
+size_t kentik__deviceconf__v202511__delete_device_configuration_response__pack
+                     (const Kentik__Deviceconf__V202511__DeleteDeviceConfigurationResponse   *message,
+                      uint8_t             *out);
+size_t kentik__deviceconf__v202511__delete_device_configuration_response__pack_to_buffer
+                     (const Kentik__Deviceconf__V202511__DeleteDeviceConfigurationResponse   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Deviceconf__V202511__DeleteDeviceConfigurationResponse *
+       kentik__deviceconf__v202511__delete_device_configuration_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__deviceconf__v202511__delete_device_configuration_response__free_unpacked
+                     (Kentik__Deviceconf__V202511__DeleteDeviceConfigurationResponse *message,
+                      ProtobufCAllocator *allocator);
 /* --- per-message closures --- */
 
 typedef void (*Kentik__Deviceconf__V202511__GetDeviceAssignmentsRequest_Closure)
@@ -698,6 +758,12 @@ typedef void (*Kentik__Deviceconf__V202511__UpdateCommandAclsRequest_Closure)
 typedef void (*Kentik__Deviceconf__V202511__UpdateCommandAclsResponse_Closure)
                  (const Kentik__Deviceconf__V202511__UpdateCommandAclsResponse *message,
                   void *closure_data);
+typedef void (*Kentik__Deviceconf__V202511__DeleteDeviceConfigurationRequest_Closure)
+                 (const Kentik__Deviceconf__V202511__DeleteDeviceConfigurationRequest *message,
+                  void *closure_data);
+typedef void (*Kentik__Deviceconf__V202511__DeleteDeviceConfigurationResponse_Closure)
+                 (const Kentik__Deviceconf__V202511__DeleteDeviceConfigurationResponse *message,
+                  void *closure_data);
 
 /* --- services --- */
 
@@ -741,6 +807,10 @@ struct Kentik__Deviceconf__V202511__DeviceConfigurationService_Service
                               const Kentik__Deviceconf__V202511__UpdateCommandAclsRequest *input,
                               Kentik__Deviceconf__V202511__UpdateCommandAclsResponse_Closure closure,
                               void *closure_data);
+  void (*delete_device_configuration)(Kentik__Deviceconf__V202511__DeviceConfigurationService_Service *service,
+                                      const Kentik__Deviceconf__V202511__DeleteDeviceConfigurationRequest *input,
+                                      Kentik__Deviceconf__V202511__DeleteDeviceConfigurationResponse_Closure closure,
+                                      void *closure_data);
 };
 typedef void (*Kentik__Deviceconf__V202511__DeviceConfigurationService_ServiceDestroy)(Kentik__Deviceconf__V202511__DeviceConfigurationService_Service *);
 void kentik__deviceconf__v202511__device_configuration_service__init (Kentik__Deviceconf__V202511__DeviceConfigurationService_Service *service,
@@ -757,7 +827,8 @@ void kentik__deviceconf__v202511__device_configuration_service__init (Kentik__De
       function_prefix__ ## request_device_configuration_fetch,\
       function_prefix__ ## execute_command,\
       function_prefix__ ## get_command_acls,\
-      function_prefix__ ## update_command_acls  }
+      function_prefix__ ## update_command_acls,\
+      function_prefix__ ## delete_device_configuration  }
 void kentik__deviceconf__v202511__device_configuration_service__get_device_assignments(ProtobufCService *service,
                                                                                        const Kentik__Deviceconf__V202511__GetDeviceAssignmentsRequest *input,
                                                                                        Kentik__Deviceconf__V202511__GetDeviceAssignmentsResponse_Closure closure,
@@ -794,6 +865,10 @@ void kentik__deviceconf__v202511__device_configuration_service__update_command_a
                                                                                     const Kentik__Deviceconf__V202511__UpdateCommandAclsRequest *input,
                                                                                     Kentik__Deviceconf__V202511__UpdateCommandAclsResponse_Closure closure,
                                                                                     void *closure_data);
+void kentik__deviceconf__v202511__device_configuration_service__delete_device_configuration(ProtobufCService *service,
+                                                                                            const Kentik__Deviceconf__V202511__DeleteDeviceConfigurationRequest *input,
+                                                                                            Kentik__Deviceconf__V202511__DeleteDeviceConfigurationResponse_Closure closure,
+                                                                                            void *closure_data);
 
 /* --- descriptors --- */
 
@@ -816,6 +891,8 @@ extern const ProtobufCMessageDescriptor kentik__deviceconf__v202511__get_command
 extern const ProtobufCMessageDescriptor kentik__deviceconf__v202511__get_command_acls_response__descriptor;
 extern const ProtobufCMessageDescriptor kentik__deviceconf__v202511__update_command_acls_request__descriptor;
 extern const ProtobufCMessageDescriptor kentik__deviceconf__v202511__update_command_acls_response__descriptor;
+extern const ProtobufCMessageDescriptor kentik__deviceconf__v202511__delete_device_configuration_request__descriptor;
+extern const ProtobufCMessageDescriptor kentik__deviceconf__v202511__delete_device_configuration_response__descriptor;
 extern const ProtobufCServiceDescriptor kentik__deviceconf__v202511__device_configuration_service__descriptor;
 
 PROTOBUF_C__END_DECLS

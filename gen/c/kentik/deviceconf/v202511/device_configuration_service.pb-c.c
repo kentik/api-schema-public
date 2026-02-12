@@ -823,6 +823,96 @@ void   kentik__deviceconf__v202511__update_command_acls_response__free_unpacked
   assert(message->base.descriptor == &kentik__deviceconf__v202511__update_command_acls_response__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   kentik__deviceconf__v202511__delete_device_configuration_request__init
+                     (Kentik__Deviceconf__V202511__DeleteDeviceConfigurationRequest         *message)
+{
+  static const Kentik__Deviceconf__V202511__DeleteDeviceConfigurationRequest init_value = KENTIK__DEVICECONF__V202511__DELETE_DEVICE_CONFIGURATION_REQUEST__INIT;
+  *message = init_value;
+}
+size_t kentik__deviceconf__v202511__delete_device_configuration_request__get_packed_size
+                     (const Kentik__Deviceconf__V202511__DeleteDeviceConfigurationRequest *message)
+{
+  assert(message->base.descriptor == &kentik__deviceconf__v202511__delete_device_configuration_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__deviceconf__v202511__delete_device_configuration_request__pack
+                     (const Kentik__Deviceconf__V202511__DeleteDeviceConfigurationRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__deviceconf__v202511__delete_device_configuration_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__deviceconf__v202511__delete_device_configuration_request__pack_to_buffer
+                     (const Kentik__Deviceconf__V202511__DeleteDeviceConfigurationRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__deviceconf__v202511__delete_device_configuration_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Deviceconf__V202511__DeleteDeviceConfigurationRequest *
+       kentik__deviceconf__v202511__delete_device_configuration_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Deviceconf__V202511__DeleteDeviceConfigurationRequest *)
+     protobuf_c_message_unpack (&kentik__deviceconf__v202511__delete_device_configuration_request__descriptor,
+                                allocator, len, data);
+}
+void   kentik__deviceconf__v202511__delete_device_configuration_request__free_unpacked
+                     (Kentik__Deviceconf__V202511__DeleteDeviceConfigurationRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__deviceconf__v202511__delete_device_configuration_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__deviceconf__v202511__delete_device_configuration_response__init
+                     (Kentik__Deviceconf__V202511__DeleteDeviceConfigurationResponse         *message)
+{
+  static const Kentik__Deviceconf__V202511__DeleteDeviceConfigurationResponse init_value = KENTIK__DEVICECONF__V202511__DELETE_DEVICE_CONFIGURATION_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t kentik__deviceconf__v202511__delete_device_configuration_response__get_packed_size
+                     (const Kentik__Deviceconf__V202511__DeleteDeviceConfigurationResponse *message)
+{
+  assert(message->base.descriptor == &kentik__deviceconf__v202511__delete_device_configuration_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__deviceconf__v202511__delete_device_configuration_response__pack
+                     (const Kentik__Deviceconf__V202511__DeleteDeviceConfigurationResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__deviceconf__v202511__delete_device_configuration_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__deviceconf__v202511__delete_device_configuration_response__pack_to_buffer
+                     (const Kentik__Deviceconf__V202511__DeleteDeviceConfigurationResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__deviceconf__v202511__delete_device_configuration_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Deviceconf__V202511__DeleteDeviceConfigurationResponse *
+       kentik__deviceconf__v202511__delete_device_configuration_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Deviceconf__V202511__DeleteDeviceConfigurationResponse *)
+     protobuf_c_message_unpack (&kentik__deviceconf__v202511__delete_device_configuration_response__descriptor,
+                                allocator, len, data);
+}
+void   kentik__deviceconf__v202511__delete_device_configuration_response__free_unpacked
+                     (Kentik__Deviceconf__V202511__DeleteDeviceConfigurationResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__deviceconf__v202511__delete_device_configuration_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 #define kentik__deviceconf__v202511__get_device_assignments_request__field_descriptors NULL
 #define kentik__deviceconf__v202511__get_device_assignments_request__field_indices_by_name NULL
 #define kentik__deviceconf__v202511__get_device_assignments_request__number_ranges NULL
@@ -1601,7 +1691,76 @@ const ProtobufCMessageDescriptor kentik__deviceconf__v202511__update_command_acl
   (ProtobufCMessageInit) kentik__deviceconf__v202511__update_command_acls_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCMethodDescriptor kentik__deviceconf__v202511__device_configuration_service__method_descriptors[9] =
+static const ProtobufCFieldDescriptor kentik__deviceconf__v202511__delete_device_configuration_request__field_descriptors[2] =
+{
+  {
+    "device_id",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Deviceconf__V202511__DeleteDeviceConfigurationRequest, device_id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "revision",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Deviceconf__V202511__DeleteDeviceConfigurationRequest, revision),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__deviceconf__v202511__delete_device_configuration_request__field_indices_by_name[] = {
+  0,   /* field[0] = device_id */
+  1,   /* field[1] = revision */
+};
+static const ProtobufCIntRange kentik__deviceconf__v202511__delete_device_configuration_request__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor kentik__deviceconf__v202511__delete_device_configuration_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.deviceconf.v202511.DeleteDeviceConfigurationRequest",
+  "DeleteDeviceConfigurationRequest",
+  "Kentik__Deviceconf__V202511__DeleteDeviceConfigurationRequest",
+  "kentik.deviceconf.v202511",
+  sizeof(Kentik__Deviceconf__V202511__DeleteDeviceConfigurationRequest),
+  2,
+  kentik__deviceconf__v202511__delete_device_configuration_request__field_descriptors,
+  kentik__deviceconf__v202511__delete_device_configuration_request__field_indices_by_name,
+  1,  kentik__deviceconf__v202511__delete_device_configuration_request__number_ranges,
+  (ProtobufCMessageInit) kentik__deviceconf__v202511__delete_device_configuration_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+#define kentik__deviceconf__v202511__delete_device_configuration_response__field_descriptors NULL
+#define kentik__deviceconf__v202511__delete_device_configuration_response__field_indices_by_name NULL
+#define kentik__deviceconf__v202511__delete_device_configuration_response__number_ranges NULL
+const ProtobufCMessageDescriptor kentik__deviceconf__v202511__delete_device_configuration_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.deviceconf.v202511.DeleteDeviceConfigurationResponse",
+  "DeleteDeviceConfigurationResponse",
+  "Kentik__Deviceconf__V202511__DeleteDeviceConfigurationResponse",
+  "kentik.deviceconf.v202511",
+  sizeof(Kentik__Deviceconf__V202511__DeleteDeviceConfigurationResponse),
+  0,
+  kentik__deviceconf__v202511__delete_device_configuration_response__field_descriptors,
+  kentik__deviceconf__v202511__delete_device_configuration_response__field_indices_by_name,
+  0,  kentik__deviceconf__v202511__delete_device_configuration_response__number_ranges,
+  (ProtobufCMessageInit) kentik__deviceconf__v202511__delete_device_configuration_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCMethodDescriptor kentik__deviceconf__v202511__device_configuration_service__method_descriptors[10] =
 {
   { "GetDeviceAssignments", &kentik__deviceconf__v202511__get_device_assignments_request__descriptor, &kentik__deviceconf__v202511__get_device_assignments_response__descriptor },
   { "UpdateDeviceConfiguration", &kentik__deviceconf__v202511__update_device_configuration_request__descriptor, &kentik__deviceconf__v202511__update_device_configuration_response__descriptor },
@@ -1612,8 +1771,10 @@ static const ProtobufCMethodDescriptor kentik__deviceconf__v202511__device_confi
   { "ExecuteCommand", &kentik__deviceconf__v202511__execute_command_request__descriptor, &kentik__deviceconf__v202511__execute_command_response__descriptor },
   { "GetCommandAcls", &kentik__deviceconf__v202511__get_command_acls_request__descriptor, &kentik__deviceconf__v202511__get_command_acls_response__descriptor },
   { "UpdateCommandAcls", &kentik__deviceconf__v202511__update_command_acls_request__descriptor, &kentik__deviceconf__v202511__update_command_acls_response__descriptor },
+  { "DeleteDeviceConfiguration", &kentik__deviceconf__v202511__delete_device_configuration_request__descriptor, &kentik__deviceconf__v202511__delete_device_configuration_response__descriptor },
 };
 const unsigned kentik__deviceconf__v202511__device_configuration_service__method_indices_by_name[] = {
+  9,        /* DeleteDeviceConfiguration */
   6,        /* ExecuteCommand */
   7,        /* GetCommandAcls */
   0,        /* GetDeviceAssignments */
@@ -1631,7 +1792,7 @@ const ProtobufCServiceDescriptor kentik__deviceconf__v202511__device_configurati
   "DeviceConfigurationService",
   "Kentik__Deviceconf__V202511__DeviceConfigurationService",
   "kentik.deviceconf.v202511",
-  9,
+  10,
   kentik__deviceconf__v202511__device_configuration_service__method_descriptors,
   kentik__deviceconf__v202511__device_configuration_service__method_indices_by_name
 };
@@ -1706,6 +1867,14 @@ void kentik__deviceconf__v202511__device_configuration_service__update_command_a
 {
   assert(service->descriptor == &kentik__deviceconf__v202511__device_configuration_service__descriptor);
   service->invoke(service, 8, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
+void kentik__deviceconf__v202511__device_configuration_service__delete_device_configuration(ProtobufCService *service,
+                                                                                            const Kentik__Deviceconf__V202511__DeleteDeviceConfigurationRequest *input,
+                                                                                            Kentik__Deviceconf__V202511__DeleteDeviceConfigurationResponse_Closure closure,
+                                                                                            void *closure_data)
+{
+  assert(service->descriptor == &kentik__deviceconf__v202511__device_configuration_service__descriptor);
+  service->invoke(service, 9, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void kentik__deviceconf__v202511__device_configuration_service__init (Kentik__Deviceconf__V202511__DeviceConfigurationService_Service *service,
                                                                       Kentik__Deviceconf__V202511__DeviceConfigurationService_ServiceDestroy destroy)

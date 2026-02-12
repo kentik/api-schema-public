@@ -22,6 +22,7 @@ service DeviceConfigurationService {
   // - x-ch-auth-email
   // - x-ch-auth-api-token
   // - x-kt-agentid
+  // Note: x-kt-cid (Company ID) is automatically set by apigw based on auth headers.
   //
   // Internal clients MUST set the following gRPC metadata:
   // - x-kt-cid (Company ID)
@@ -38,6 +39,7 @@ service DeviceConfigurationService {
   // - x-ch-auth-api-token
   // - x-kt-agentid
   // - x-kt-did
+  // Note: x-kt-cid (Company ID) is automatically set by apigw based on auth headers.
   //
   // Internal clients MUST set the following gRPC metadata:
   // - x-kt-cid (Company ID)
@@ -53,6 +55,7 @@ service DeviceConfigurationService {
   // External clients MUST set the following gRPC metadata:
   // - x-ch-auth-email
   // - x-ch-auth-api-token
+  // Note: x-kt-cid (Company ID) is automatically set by apigw based on auth headers.
   //
   // Internal clients MUST set the following gRPC metadata:
   // - x-kt-cid (Company ID)
@@ -66,6 +69,7 @@ service DeviceConfigurationService {
   // External clients MUST set the following gRPC metadata:
   // - x-ch-auth-email
   // - x-ch-auth-api-token
+  // Note: x-kt-cid (Company ID) is automatically set by apigw based on auth headers.
   //
   // Internal clients MUST set the following gRPC metadata:
   // - x-kt-cid (Company ID)
@@ -79,6 +83,7 @@ service DeviceConfigurationService {
   // External clients MUST set the following gRPC metadata:
   // - x-ch-auth-email
   // - x-ch-auth-api-token
+  // Note: x-kt-cid (Company ID) is automatically set by apigw based on auth headers.
   //
   // Internal clients MUST set the following gRPC metadata:
   // - x-kt-cid (Company ID)
@@ -93,6 +98,7 @@ service DeviceConfigurationService {
   // External clients MUST set the following gRPC metadata:
   // - x-ch-auth-email
   // - x-ch-auth-api-token
+  // Note: x-kt-cid (Company ID) is automatically set by apigw based on auth headers.
   //
   // Internal clients MUST set the following gRPC metadata:
   // - x-kt-cid (Company ID)
@@ -120,6 +126,7 @@ service DeviceConfigurationService {
   // External clients MUST set the following gRPC metadata:
   // - x-ch-auth-email
   // - x-ch-auth-api-token
+  // Note: x-kt-cid (Company ID) is automatically set by apigw based on auth headers.
   //
   // Internal clients MUST set the following gRPC metadata:
   // - x-kt-cid (Company ID; 0 will return global ACLs)
@@ -134,11 +141,26 @@ service DeviceConfigurationService {
   // External clients MUST set the following gRPC metadata:
   // - x-ch-auth-email
   // - x-ch-auth-api-token
+  // Note: x-kt-cid (Company ID) is automatically set by apigw based on auth headers.
   //
   // Internal clients MUST set the following gRPC metadata:
   // - x-kt-cid (Company ID)
   //
   rpc UpdateCommandAcls(UpdateCommandAclsRequest) returns (UpdateCommandAclsResponse) {
+    option (kentik.core.v202303.method_scope) = "deviceconf:write";
+  }
+
+  // Delete a specific device configuration revision.
+  //
+  // External clients MUST set the following gRPC metadata:
+  // - x-ch-auth-email
+  // - x-ch-auth-api-token
+  // Note: x-kt-cid (Company ID) is automatically set by apigw based on auth headers.
+  //
+  // Internal clients MUST set the following gRPC metadata:
+  // - x-kt-cid (Company ID)
+  //
+  rpc DeleteDeviceConfiguration(DeleteDeviceConfigurationRequest) returns (DeleteDeviceConfigurationResponse) {
     option (kentik.core.v202303.method_scope) = "deviceconf:write";
   }
 }
@@ -200,12 +222,12 @@ message GetLatestDeviceConfigurationsRequest {
 
 message GetLatestDeviceConfigurationsResponse {
   // Map from device ID to latest configuration.
-  map <string,Snapshot> configs = 1;
+  map<string, Snapshot> configs = 1;
 }
 
 // Fetch all device configuration revisions within the given time range.
 message ListDeviceConfigurationRevisionsRequest {
-  google.protobuf.Timestamp from_time = 1;
+  google.protobuf.Timestamp from_time  = 1;
   google.protobuf.Timestamp until_time = 2;
   // Maximum number of revisions to return. Default is to return all.
   // Revisions are returned in descending order (latest first).
@@ -227,8 +249,8 @@ message RequestDeviceConfigurationFetchResponse {
 }
 
 message ExecuteCommandRequest {
-  DeviceCommand device_command = 1;
-  MessageSignature signature = 2;
+  DeviceCommand    device_command = 1;
+  MessageSignature signature      = 2;
 }
 
 message ExecuteCommandResponse {
@@ -247,4 +269,12 @@ message UpdateCommandAclsRequest {
 }
 
 message UpdateCommandAclsResponse {
+}
+
+message DeleteDeviceConfigurationRequest {
+  string device_id = 1;
+  string revision  = 2;
+}
+
+message DeleteDeviceConfigurationResponse {
 }
