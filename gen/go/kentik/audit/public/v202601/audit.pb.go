@@ -319,10 +319,11 @@ func (x *AuditEvent) GetUserAgent() string {
 	return ""
 }
 
+// {{.Name}}
 type ListAuditEventsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	StartTime     *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	EndTime       *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	StartTime     string                 `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	EndTime       string                 `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	Offset        uint64                 `protobuf:"varint,15,opt,name=offset,proto3" json:"offset,omitempty"`
 	Limit         uint64                 `protobuf:"varint,16,opt,name=limit,proto3" json:"limit,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -359,18 +360,18 @@ func (*ListAuditEventsRequest) Descriptor() ([]byte, []int) {
 	return file_kentik_audit_public_v202601_audit_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *ListAuditEventsRequest) GetStartTime() *timestamppb.Timestamp {
+func (x *ListAuditEventsRequest) GetStartTime() string {
 	if x != nil {
 		return x.StartTime
 	}
-	return nil
+	return ""
 }
 
-func (x *ListAuditEventsRequest) GetEndTime() *timestamppb.Timestamp {
+func (x *ListAuditEventsRequest) GetEndTime() string {
 	if x != nil {
 		return x.EndTime
 	}
-	return nil
+	return ""
 }
 
 func (x *ListAuditEventsRequest) GetOffset() uint64 {
@@ -572,11 +573,11 @@ const file_kentik_audit_public_v202601_audit_proto_rawDesc = "" +
 	"titleField\x12#\n" +
 	"\revent_payload\x18\x13 \x01(\tR\feventPayload\x12\x1d\n" +
 	"\n" +
-	"user_agent\x18\x14 \x01(\tR\tuserAgent\"\xca\x01\n" +
-	"\x16ListAuditEventsRequest\x129\n" +
+	"user_agent\x18\x14 \x01(\tR\tuserAgent\"\xa6\x02\n" +
+	"\x16ListAuditEventsRequest\x12j\n" +
 	"\n" +
-	"start_time\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x125\n" +
-	"\bend_time\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\x12\x1e\n" +
+	"start_time\x18\x01 \x01(\tBK\x92AH2FDate time in UTC. Defaults to 30 days before end_time if not provided.R\tstartTime\x12`\n" +
+	"\bend_time\x18\x02 \x01(\tBE\x92AB2@Date time in UTC. Defaults to current date/time if not provided.R\aendTime\x12\x1e\n" +
 	"\x06offset\x18\x0f \x01(\x04B\x06\x92A\x03:\x010R\x06offset\x12\x1e\n" +
 	"\x05limit\x18\x10 \x01(\x04B\b\x92A\x05:\x03100R\x05limit\"Z\n" +
 	"\x17ListAuditEventsResponse\x12?\n" +
@@ -590,9 +591,9 @@ const file_kentik_audit_public_v202601_audit_proto_rawDesc = "" +
 	"\x0fListAuditEvents\x123.kentik.audit.public.v202601.ListAuditEventsRequest\x1a4.kentik.audit.public.v202601.ListAuditEventsResponse\"t\x92AF\x12\x12List Audit Events.\x1a\x1fReturns a list of audit events.*\x0fListAuditEvents\xf2\xd7\x02\n" +
 	"audit:read\x82\xd3\xe4\x93\x02\x17\x12\x15/audit/v202601/events\x12\xf6\x01\n" +
 	"\rGetAuditEvent\x121.kentik.audit.public.v202601.GetAuditEventRequest\x1a2.kentik.audit.public.v202601.GetAuditEventResponse\"~\x92AC\x12\x12Get an Audit Event\x1a\x1eReturn a specific audit event.*\rGetAuditEvent\xf2\xd7\x02\n" +
-	"audit:read\x82\xd3\xe4\x93\x02$\x12\"/audit/v202601/events/{id}/{ctime}\x1a)\xcaA\x13grpc.api.kentik.com\xea\xd7\x02\vadmin.audit\x90\xd8\x02\x03B\xd6\x02\x92A\x8a\x02\x12L\n" +
+	"audit:read\x82\xd3\xe4\x93\x02$\x12\"/audit/v202601/events/{id}/{ctime}\x1a)\xcaA\x13grpc.api.kentik.com\xea\xd7\x02\vadmin.audit\x90\xd8\x02\x03B\xd7\x02\x92A\x8b\x02\x12M\n" +
 	"\tAudit API\"7\n" +
-	"\x16Kentik API Engineering\x12\x1dhttps://github.com/kentik/api2\x06202601*\x01\x022\x10application/json:\x10application/jsonZD\n" +
+	"\x16Kentik API Engineering\x12\x1dhttps://github.com/kentik/api2\av202601*\x01\x022\x10application/json:\x10application/jsonZD\n" +
 	"\x1e\n" +
 	"\x05email\x12\x15\b\x02\x1a\x0fX-CH-Auth-Email \x02\n" +
 	"\"\n" +
@@ -627,23 +628,21 @@ var file_kentik_audit_public_v202601_audit_proto_goTypes = []any{
 	(*timestamppb.Timestamp)(nil),   // 7: google.protobuf.Timestamp
 }
 var file_kentik_audit_public_v202601_audit_proto_depIdxs = []int32{
-	6,  // 0: kentik.audit.public.v202601.GenericEvent.metadata:type_name -> kentik.audit.public.v202601.GenericEvent.MetadataEntry
-	7,  // 1: kentik.audit.public.v202601.AuditEvent.ctime:type_name -> google.protobuf.Timestamp
-	0,  // 2: kentik.audit.public.v202601.AuditEvent.generic:type_name -> kentik.audit.public.v202601.GenericEvent
-	7,  // 3: kentik.audit.public.v202601.ListAuditEventsRequest.start_time:type_name -> google.protobuf.Timestamp
-	7,  // 4: kentik.audit.public.v202601.ListAuditEventsRequest.end_time:type_name -> google.protobuf.Timestamp
-	1,  // 5: kentik.audit.public.v202601.ListAuditEventsResponse.events:type_name -> kentik.audit.public.v202601.AuditEvent
-	7,  // 6: kentik.audit.public.v202601.GetAuditEventRequest.ctime:type_name -> google.protobuf.Timestamp
-	1,  // 7: kentik.audit.public.v202601.GetAuditEventResponse.event:type_name -> kentik.audit.public.v202601.AuditEvent
-	2,  // 8: kentik.audit.public.v202601.AuditService.ListAuditEvents:input_type -> kentik.audit.public.v202601.ListAuditEventsRequest
-	4,  // 9: kentik.audit.public.v202601.AuditService.GetAuditEvent:input_type -> kentik.audit.public.v202601.GetAuditEventRequest
-	3,  // 10: kentik.audit.public.v202601.AuditService.ListAuditEvents:output_type -> kentik.audit.public.v202601.ListAuditEventsResponse
-	5,  // 11: kentik.audit.public.v202601.AuditService.GetAuditEvent:output_type -> kentik.audit.public.v202601.GetAuditEventResponse
-	10, // [10:12] is the sub-list for method output_type
-	8,  // [8:10] is the sub-list for method input_type
-	8,  // [8:8] is the sub-list for extension type_name
-	8,  // [8:8] is the sub-list for extension extendee
-	0,  // [0:8] is the sub-list for field type_name
+	6, // 0: kentik.audit.public.v202601.GenericEvent.metadata:type_name -> kentik.audit.public.v202601.GenericEvent.MetadataEntry
+	7, // 1: kentik.audit.public.v202601.AuditEvent.ctime:type_name -> google.protobuf.Timestamp
+	0, // 2: kentik.audit.public.v202601.AuditEvent.generic:type_name -> kentik.audit.public.v202601.GenericEvent
+	1, // 3: kentik.audit.public.v202601.ListAuditEventsResponse.events:type_name -> kentik.audit.public.v202601.AuditEvent
+	7, // 4: kentik.audit.public.v202601.GetAuditEventRequest.ctime:type_name -> google.protobuf.Timestamp
+	1, // 5: kentik.audit.public.v202601.GetAuditEventResponse.event:type_name -> kentik.audit.public.v202601.AuditEvent
+	2, // 6: kentik.audit.public.v202601.AuditService.ListAuditEvents:input_type -> kentik.audit.public.v202601.ListAuditEventsRequest
+	4, // 7: kentik.audit.public.v202601.AuditService.GetAuditEvent:input_type -> kentik.audit.public.v202601.GetAuditEventRequest
+	3, // 8: kentik.audit.public.v202601.AuditService.ListAuditEvents:output_type -> kentik.audit.public.v202601.ListAuditEventsResponse
+	5, // 9: kentik.audit.public.v202601.AuditService.GetAuditEvent:output_type -> kentik.audit.public.v202601.GetAuditEventResponse
+	8, // [8:10] is the sub-list for method output_type
+	6, // [6:8] is the sub-list for method input_type
+	6, // [6:6] is the sub-list for extension type_name
+	6, // [6:6] is the sub-list for extension extendee
+	0, // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_kentik_audit_public_v202601_audit_proto_init() }

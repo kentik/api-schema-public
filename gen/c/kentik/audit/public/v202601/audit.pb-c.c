@@ -715,11 +715,11 @@ static const ProtobufCFieldDescriptor kentik__audit__public__v202601__list_audit
     "start_time",
     1,
     PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_MESSAGE,
+    PROTOBUF_C_TYPE_STRING,
     0,   /* quantifier_offset */
     offsetof(Kentik__Audit__Public__V202601__ListAuditEventsRequest, start_time),
-    &google__protobuf__timestamp__descriptor,
     NULL,
+    &protobuf_c_empty_string,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
@@ -727,11 +727,11 @@ static const ProtobufCFieldDescriptor kentik__audit__public__v202601__list_audit
     "end_time",
     2,
     PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_MESSAGE,
+    PROTOBUF_C_TYPE_STRING,
     0,   /* quantifier_offset */
     offsetof(Kentik__Audit__Public__V202601__ListAuditEventsRequest, end_time),
-    &google__protobuf__timestamp__descriptor,
     NULL,
+    &protobuf_c_empty_string,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },

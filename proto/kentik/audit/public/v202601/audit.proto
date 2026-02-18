@@ -14,7 +14,7 @@ import "kentik/core/v202303/annotations.proto";
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   info: {
     title: "Audit API"
-    version: "202601"
+    version: "v202601"
     contact: {
       name: "Kentik API Engineering"
       url: "https://github.com/kentik/api"
@@ -115,9 +115,18 @@ message AuditEvent {
   string user_agent = 20;
 }
 
+// {{.Name}}
 message ListAuditEventsRequest {
-  google.protobuf.Timestamp start_time = 1;
-  google.protobuf.Timestamp end_time = 2;
+  string start_time = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Date time in UTC. Defaults to 30 days before end_time if not provided."
+    }
+  ];
+  string end_time = 2[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Date time in UTC. Defaults to current date/time if not provided."
+    }
+  ];
   uint64 offset = 15 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {default: "0"}];
   uint64 limit = 16 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {default: "100"}];
 }

@@ -28,32 +28,18 @@ namespace kentik {
 namespace audit {
 namespace public_ {
 namespace v202601 {
-              template <typename>
-PROTOBUF_CONSTEXPR GenericEvent_MetadataEntry_DoNotUse::GenericEvent_MetadataEntry_DoNotUse(::_pbi::ConstantInitialized)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : GenericEvent_MetadataEntry_DoNotUse::MapEntry(_class_data_.base()){}
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : GenericEvent_MetadataEntry_DoNotUse::MapEntry() {
-}
-#endif  // PROTOBUF_CUSTOM_VTABLE
-struct GenericEvent_MetadataEntry_DoNotUseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR GenericEvent_MetadataEntry_DoNotUseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~GenericEvent_MetadataEntry_DoNotUseDefaultTypeInternal() {}
-  union {
-    GenericEvent_MetadataEntry_DoNotUse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GenericEvent_MetadataEntry_DoNotUseDefaultTypeInternal _GenericEvent_MetadataEntry_DoNotUse_default_instance_;
 
 inline constexpr ListAuditEventsRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        start_time_{nullptr},
-        end_time_{nullptr},
+      : start_time_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        end_time_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
         offset_{::uint64_t{0u}},
-        limit_{::uint64_t{0u}} {}
+        limit_{::uint64_t{0u}},
+        _cached_size_{0} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR ListAuditEventsRequest::ListAuditEventsRequest(::_pbi::ConstantInitialized)
@@ -74,6 +60,24 @@ struct ListAuditEventsRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ListAuditEventsRequestDefaultTypeInternal _ListAuditEventsRequest_default_instance_;
+              template <typename>
+PROTOBUF_CONSTEXPR GenericEvent_MetadataEntry_DoNotUse::GenericEvent_MetadataEntry_DoNotUse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : GenericEvent_MetadataEntry_DoNotUse::MapEntry(_class_data_.base()){}
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : GenericEvent_MetadataEntry_DoNotUse::MapEntry() {
+}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+struct GenericEvent_MetadataEntry_DoNotUseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GenericEvent_MetadataEntry_DoNotUseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GenericEvent_MetadataEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    GenericEvent_MetadataEntry_DoNotUse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GenericEvent_MetadataEntry_DoNotUseDefaultTypeInternal _GenericEvent_MetadataEntry_DoNotUse_default_instance_;
 
 inline constexpr GetAuditEventRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -349,7 +353,7 @@ const ::uint32_t
         ~0u,
         ~0u,
         ~0u,
-        PROTOBUF_FIELD_OFFSET(::kentik::audit::public_::v202601::ListAuditEventsRequest, _impl_._has_bits_),
+        ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::kentik::audit::public_::v202601::ListAuditEventsRequest, _internal_metadata_),
         ~0u,  // no _extensions_
         ~0u,  // no _oneof_case_
@@ -361,10 +365,6 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::audit::public_::v202601::ListAuditEventsRequest, _impl_.end_time_),
         PROTOBUF_FIELD_OFFSET(::kentik::audit::public_::v202601::ListAuditEventsRequest, _impl_.offset_),
         PROTOBUF_FIELD_OFFSET(::kentik::audit::public_::v202601::ListAuditEventsRequest, _impl_.limit_),
-        0,
-        1,
-        ~0u,
-        ~0u,
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::kentik::audit::public_::v202601::ListAuditEventsResponse, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -403,10 +403,10 @@ static const ::_pbi::MigrationSchema
         {0, 10, -1, sizeof(::kentik::audit::public_::v202601::GenericEvent_MetadataEntry_DoNotUse)},
         {12, -1, -1, sizeof(::kentik::audit::public_::v202601::GenericEvent)},
         {25, 53, -1, sizeof(::kentik::audit::public_::v202601::AuditEvent)},
-        {73, 85, -1, sizeof(::kentik::audit::public_::v202601::ListAuditEventsRequest)},
-        {89, -1, -1, sizeof(::kentik::audit::public_::v202601::ListAuditEventsResponse)},
-        {98, 108, -1, sizeof(::kentik::audit::public_::v202601::GetAuditEventRequest)},
-        {110, 119, -1, sizeof(::kentik::audit::public_::v202601::GetAuditEventResponse)},
+        {73, -1, -1, sizeof(::kentik::audit::public_::v202601::ListAuditEventsRequest)},
+        {85, -1, -1, sizeof(::kentik::audit::public_::v202601::ListAuditEventsResponse)},
+        {94, 104, -1, sizeof(::kentik::audit::public_::v202601::GetAuditEventRequest)},
+        {106, 115, -1, sizeof(::kentik::audit::public_::v202601::GetAuditEventResponse)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::audit::public_::v202601::_GenericEvent_MetadataEntry_DoNotUse_default_instance_._instance,
@@ -450,41 +450,43 @@ const char descriptor_table_protodef_kentik_2faudit_2fpublic_2fv202601_2faudit_2
     "enericEventR\007generic\022\037\n\013title_field\030\022 \001("
     "\tR\ntitleField\022#\n\revent_payload\030\023 \001(\tR\014ev"
     "entPayload\022\035\n\nuser_agent\030\024 \001(\tR\tuserAgen"
-    "t\"\312\001\n\026ListAuditEventsRequest\0229\n\nstart_ti"
-    "me\030\001 \001(\0132\032.google.protobuf.TimestampR\tst"
-    "artTime\0225\n\010end_time\030\002 \001(\0132\032.google.proto"
-    "buf.TimestampR\007endTime\022\036\n\006offset\030\017 \001(\004B\006"
-    "\222A\003:\0010R\006offset\022\036\n\005limit\030\020 \001(\004B\010\222A\005:\003100R"
-    "\005limit\"Z\n\027ListAuditEventsResponse\022\?\n\006eve"
-    "nts\030\001 \003(\0132\'.kentik.audit.public.v202601."
-    "AuditEventR\006events\"X\n\024GetAuditEventReque"
-    "st\022\016\n\002id\030\001 \001(\003R\002id\0220\n\005ctime\030\002 \001(\0132\032.goog"
-    "le.protobuf.TimestampR\005ctime\"V\n\025GetAudit"
-    "EventResponse\022=\n\005event\030\001 \001(\0132\'.kentik.au"
-    "dit.public.v202601.AuditEventR\005event2\247\004\n"
-    "\014AuditService\022\362\001\n\017ListAuditEvents\0223.kent"
-    "ik.audit.public.v202601.ListAuditEventsR"
-    "equest\0324.kentik.audit.public.v202601.Lis"
-    "tAuditEventsResponse\"t\222AF\022\022List Audit Ev"
-    "ents.\032\037Returns a list of audit events.*\017"
-    "ListAuditEvents\362\327\002\naudit:read\202\323\344\223\002\027\022\025/au"
-    "dit/v202601/events\022\366\001\n\rGetAuditEvent\0221.k"
-    "entik.audit.public.v202601.GetAuditEvent"
-    "Request\0322.kentik.audit.public.v202601.Ge"
-    "tAuditEventResponse\"~\222AC\022\022Get an Audit E"
-    "vent\032\036Return a specific audit event.*\rGe"
-    "tAuditEvent\362\327\002\naudit:read\202\323\344\223\002$\022\"/audit/"
-    "v202601/events/{id}/{ctime}\032)\312A\023grpc.api"
-    ".kentik.com\352\327\002\013admin.audit\220\330\002\003B\326\002ZFgithu"
-    "b.com/kentik/api-schema-public/gen/go/ke"
-    "ntik/public/audit/v202601\222A\212\002\022L\n\tAudit A"
-    "PI\"7\n\026Kentik API Engineering\022\035https://gi"
-    "thub.com/kentik/api2\006202601*\001\0022\020applicat"
-    "ion/json:\020application/jsonZD\n\036\n\005email\022\025\010"
-    "\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-"
-    "Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000"
-    "r5\n\026More about Kentik APIs\022\033https://docs"
-    ".kentik.com/apib\006proto3"
+    "t\"\246\002\n\026ListAuditEventsRequest\022j\n\nstart_ti"
+    "me\030\001 \001(\tBK\222AH2FDate time in UTC. Default"
+    "s to 30 days before end_time if not prov"
+    "ided.R\tstartTime\022`\n\010end_time\030\002 \001(\tBE\222AB2"
+    "@Date time in UTC. Defaults to current d"
+    "ate/time if not provided.R\007endTime\022\036\n\006of"
+    "fset\030\017 \001(\004B\006\222A\003:\0010R\006offset\022\036\n\005limit\030\020 \001("
+    "\004B\010\222A\005:\003100R\005limit\"Z\n\027ListAuditEventsRes"
+    "ponse\022\?\n\006events\030\001 \003(\0132\'.kentik.audit.pub"
+    "lic.v202601.AuditEventR\006events\"X\n\024GetAud"
+    "itEventRequest\022\016\n\002id\030\001 \001(\003R\002id\0220\n\005ctime\030"
+    "\002 \001(\0132\032.google.protobuf.TimestampR\005ctime"
+    "\"V\n\025GetAuditEventResponse\022=\n\005event\030\001 \001(\013"
+    "2\'.kentik.audit.public.v202601.AuditEven"
+    "tR\005event2\247\004\n\014AuditService\022\362\001\n\017ListAuditE"
+    "vents\0223.kentik.audit.public.v202601.List"
+    "AuditEventsRequest\0324.kentik.audit.public"
+    ".v202601.ListAuditEventsResponse\"t\222AF\022\022L"
+    "ist Audit Events.\032\037Returns a list of aud"
+    "it events.*\017ListAuditEvents\362\327\002\naudit:rea"
+    "d\202\323\344\223\002\027\022\025/audit/v202601/events\022\366\001\n\rGetAu"
+    "ditEvent\0221.kentik.audit.public.v202601.G"
+    "etAuditEventRequest\0322.kentik.audit.publi"
+    "c.v202601.GetAuditEventResponse\"~\222AC\022\022Ge"
+    "t an Audit Event\032\036Return a specific audi"
+    "t event.*\rGetAuditEvent\362\327\002\naudit:read\202\323\344"
+    "\223\002$\022\"/audit/v202601/events/{id}/{ctime}\032"
+    ")\312A\023grpc.api.kentik.com\352\327\002\013admin.audit\220\330"
+    "\002\003B\327\002ZFgithub.com/kentik/api-schema-publ"
+    "ic/gen/go/kentik/public/audit/v202601\222A\213"
+    "\002\022M\n\tAudit API\"7\n\026Kentik API Engineering"
+    "\022\035https://github.com/kentik/api2\007v202601"
+    "*\001\0022\020application/json:\020application/jsonZ"
+    "D\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005tok"
+    "en\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email"
+    "\022\000\n\t\n\005token\022\000r5\n\026More about Kentik APIs\022"
+    "\033https://docs.kentik.com/apib\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2faudit_2fpublic_2fv202601_2faudit_2eproto_deps[6] =
     {
@@ -499,7 +501,7 @@ static ::absl::once_flag descriptor_table_kentik_2faudit_2fpublic_2fv202601_2fau
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2faudit_2fpublic_2fv202601_2faudit_2eproto = {
     false,
     false,
-    2623,
+    2716,
     descriptor_table_protodef_kentik_2faudit_2fpublic_2fv202601_2faudit_2eproto,
     "kentik/audit/public/v202601/audit.proto",
     &descriptor_table_kentik_2faudit_2fpublic_2fv202601_2faudit_2eproto_once,
@@ -1825,22 +1827,8 @@ void AuditEvent::InternalSwap(AuditEvent* PROTOBUF_RESTRICT other) {
 
 class ListAuditEventsRequest::_Internal {
  public:
-  using HasBits =
-      decltype(std::declval<ListAuditEventsRequest>()._impl_._has_bits_);
-  static constexpr ::int32_t kHasBitsOffset =
-      8 * PROTOBUF_FIELD_OFFSET(ListAuditEventsRequest, _impl_._has_bits_);
 };
 
-void ListAuditEventsRequest::clear_start_time() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (_impl_.start_time_ != nullptr) _impl_.start_time_->Clear();
-  _impl_._has_bits_[0] &= ~0x00000001u;
-}
-void ListAuditEventsRequest::clear_end_time() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (_impl_.end_time_ != nullptr) _impl_.end_time_->Clear();
-  _impl_._has_bits_[0] &= ~0x00000002u;
-}
 ListAuditEventsRequest::ListAuditEventsRequest(::google::protobuf::Arena* arena)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
     : ::google::protobuf::Message(arena, _class_data_.base()) {
@@ -1853,7 +1841,8 @@ ListAuditEventsRequest::ListAuditEventsRequest(::google::protobuf::Arena* arena)
 inline PROTOBUF_NDEBUG_INLINE ListAuditEventsRequest::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
     const Impl_& from, const ::kentik::audit::public_::v202601::ListAuditEventsRequest& from_msg)
-      : _has_bits_{from._has_bits_},
+      : start_time_(arena, from.start_time_),
+        end_time_(arena, from.end_time_),
         _cached_size_{0} {}
 
 ListAuditEventsRequest::ListAuditEventsRequest(
@@ -1869,13 +1858,6 @@ ListAuditEventsRequest::ListAuditEventsRequest(
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
-  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
-  _impl_.start_time_ = (cached_has_bits & 0x00000001u) ? ::google::protobuf::Message::CopyConstruct<::google::protobuf::Timestamp>(
-                              arena, *from._impl_.start_time_)
-                        : nullptr;
-  _impl_.end_time_ = (cached_has_bits & 0x00000002u) ? ::google::protobuf::Message::CopyConstruct<::google::protobuf::Timestamp>(
-                              arena, *from._impl_.end_time_)
-                        : nullptr;
   ::memcpy(reinterpret_cast<char *>(&_impl_) +
                offsetof(Impl_, offset_),
            reinterpret_cast<const char *>(&from._impl_) +
@@ -1889,15 +1871,17 @@ ListAuditEventsRequest::ListAuditEventsRequest(
 inline PROTOBUF_NDEBUG_INLINE ListAuditEventsRequest::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
-      : _cached_size_{0} {}
+      : start_time_(arena),
+        end_time_(arena),
+        _cached_size_{0} {}
 
 inline void ListAuditEventsRequest::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
   ::memset(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, start_time_),
+               offsetof(Impl_, offset_),
            0,
            offsetof(Impl_, limit_) -
-               offsetof(Impl_, start_time_) +
+               offsetof(Impl_, offset_) +
                sizeof(Impl_::limit_));
 }
 ListAuditEventsRequest::~ListAuditEventsRequest() {
@@ -1908,8 +1892,8 @@ inline void ListAuditEventsRequest::SharedDtor(MessageLite& self) {
   ListAuditEventsRequest& this_ = static_cast<ListAuditEventsRequest&>(self);
   this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   ABSL_DCHECK(this_.GetArena() == nullptr);
-  delete this_._impl_.start_time_;
-  delete this_._impl_.end_time_;
+  this_._impl_.start_time_.Destroy();
+  this_._impl_.end_time_.Destroy();
   this_._impl_.~Impl_();
 }
 
@@ -1918,7 +1902,7 @@ inline void* ListAuditEventsRequest::PlacementNew_(const void*, void* mem,
   return ::new (mem) ListAuditEventsRequest(arena);
 }
 constexpr auto ListAuditEventsRequest::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(ListAuditEventsRequest),
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(ListAuditEventsRequest),
                                             alignof(ListAuditEventsRequest));
 }
 PROTOBUF_CONSTINIT
@@ -1949,17 +1933,17 @@ const ::google::protobuf::internal::ClassData* ListAuditEventsRequest::GetClassD
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 4, 2, 0, 2> ListAuditEventsRequest::_table_ = {
+const ::_pbi::TcParseTable<2, 4, 0, 77, 2> ListAuditEventsRequest::_table_ = {
   {
-    PROTOBUF_FIELD_OFFSET(ListAuditEventsRequest, _impl_._has_bits_),
+    0,  // no _has_bits_
     0, // no _extensions_
     16, 24,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
     4294918140,  // skipmap
     offsetof(decltype(_table_), field_entries),
     4,  // num_field_entries
-    2,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
     _class_data_.base(),
     nullptr,  // post_loop_handler
     ::_pbi::TcParser::GenericFallback,  // fallback
@@ -1970,34 +1954,37 @@ const ::_pbi::TcParseTable<2, 4, 2, 0, 2> ListAuditEventsRequest::_table_ = {
     // uint64 limit = 16 [json_name = "limit", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::FastV64S2,
      {384, 63, 0, PROTOBUF_FIELD_OFFSET(ListAuditEventsRequest, _impl_.limit_)}},
-    // .google.protobuf.Timestamp start_time = 1 [json_name = "startTime"];
-    {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(ListAuditEventsRequest, _impl_.start_time_)}},
-    // .google.protobuf.Timestamp end_time = 2 [json_name = "endTime"];
-    {::_pbi::TcParser::FastMtS1,
-     {18, 1, 1, PROTOBUF_FIELD_OFFSET(ListAuditEventsRequest, _impl_.end_time_)}},
+    // string start_time = 1 [json_name = "startTime", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ListAuditEventsRequest, _impl_.start_time_)}},
+    // string end_time = 2 [json_name = "endTime", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(ListAuditEventsRequest, _impl_.end_time_)}},
     // uint64 offset = 15 [json_name = "offset", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(ListAuditEventsRequest, _impl_.offset_), 63>(),
      {120, 63, 0, PROTOBUF_FIELD_OFFSET(ListAuditEventsRequest, _impl_.offset_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // .google.protobuf.Timestamp start_time = 1 [json_name = "startTime"];
-    {PROTOBUF_FIELD_OFFSET(ListAuditEventsRequest, _impl_.start_time_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .google.protobuf.Timestamp end_time = 2 [json_name = "endTime"];
-    {PROTOBUF_FIELD_OFFSET(ListAuditEventsRequest, _impl_.end_time_), _Internal::kHasBitsOffset + 1, 1,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // string start_time = 1 [json_name = "startTime", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(ListAuditEventsRequest, _impl_.start_time_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string end_time = 2 [json_name = "endTime", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(ListAuditEventsRequest, _impl_.end_time_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // uint64 offset = 15 [json_name = "offset", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    {PROTOBUF_FIELD_OFFSET(ListAuditEventsRequest, _impl_.offset_), -1, 0,
+    {PROTOBUF_FIELD_OFFSET(ListAuditEventsRequest, _impl_.offset_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUInt64)},
     // uint64 limit = 16 [json_name = "limit", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    {PROTOBUF_FIELD_OFFSET(ListAuditEventsRequest, _impl_.limit_), -1, 0,
+    {PROTOBUF_FIELD_OFFSET(ListAuditEventsRequest, _impl_.limit_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUInt64)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
-    {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
-  }}, {{
+  }},
+  // no aux_entries
+  {{
+    "\62\12\10\0\0\0\0\0"
+    "kentik.audit.public.v202601.ListAuditEventsRequest"
+    "start_time"
+    "end_time"
   }},
 };
 
@@ -2008,21 +1995,11 @@ PROTOBUF_NOINLINE void ListAuditEventsRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    if (cached_has_bits & 0x00000001u) {
-      ABSL_DCHECK(_impl_.start_time_ != nullptr);
-      _impl_.start_time_->Clear();
-    }
-    if (cached_has_bits & 0x00000002u) {
-      ABSL_DCHECK(_impl_.end_time_ != nullptr);
-      _impl_.end_time_->Clear();
-    }
-  }
+  _impl_.start_time_.ClearToEmpty();
+  _impl_.end_time_.ClearToEmpty();
   ::memset(&_impl_.offset_, 0, static_cast<::size_t>(
       reinterpret_cast<char*>(&_impl_.limit_) -
       reinterpret_cast<char*>(&_impl_.offset_)) + sizeof(_impl_.limit_));
-  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -2041,19 +2018,20 @@ PROTOBUF_NOINLINE void ListAuditEventsRequest::Clear() {
           ::uint32_t cached_has_bits = 0;
           (void)cached_has_bits;
 
-          cached_has_bits = this_._impl_._has_bits_[0];
-          // .google.protobuf.Timestamp start_time = 1 [json_name = "startTime"];
-          if (cached_has_bits & 0x00000001u) {
-            target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                1, *this_._impl_.start_time_, this_._impl_.start_time_->GetCachedSize(), target,
-                stream);
+          // string start_time = 1 [json_name = "startTime", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_start_time().empty()) {
+            const std::string& _s = this_._internal_start_time();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.audit.public.v202601.ListAuditEventsRequest.start_time");
+            target = stream->WriteStringMaybeAliased(1, _s, target);
           }
 
-          // .google.protobuf.Timestamp end_time = 2 [json_name = "endTime"];
-          if (cached_has_bits & 0x00000002u) {
-            target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                2, *this_._impl_.end_time_, this_._impl_.end_time_->GetCachedSize(), target,
-                stream);
+          // string end_time = 2 [json_name = "endTime", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_end_time().empty()) {
+            const std::string& _s = this_._internal_end_time();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.audit.public.v202601.ListAuditEventsRequest.end_time");
+            target = stream->WriteStringMaybeAliased(2, _s, target);
           }
 
           // uint64 offset = 15 [json_name = "offset", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -2094,20 +2072,17 @@ PROTOBUF_NOINLINE void ListAuditEventsRequest::Clear() {
           (void)cached_has_bits;
 
           ::_pbi::Prefetch5LinesFrom7Lines(&this_);
-          cached_has_bits = this_._impl_._has_bits_[0];
-          if (cached_has_bits & 0x00000003u) {
-            // .google.protobuf.Timestamp start_time = 1 [json_name = "startTime"];
-            if (cached_has_bits & 0x00000001u) {
-              total_size += 1 +
-                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.start_time_);
-            }
-            // .google.protobuf.Timestamp end_time = 2 [json_name = "endTime"];
-            if (cached_has_bits & 0x00000002u) {
-              total_size += 1 +
-                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.end_time_);
-            }
-          }
            {
+            // string start_time = 1 [json_name = "startTime", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_start_time().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_start_time());
+            }
+            // string end_time = 2 [json_name = "endTime", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_end_time().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_end_time());
+            }
             // uint64 offset = 15 [json_name = "offset", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
             if (this_._internal_offset() != 0) {
               total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
@@ -2126,32 +2101,16 @@ PROTOBUF_NOINLINE void ListAuditEventsRequest::Clear() {
 void ListAuditEventsRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
   auto* const _this = static_cast<ListAuditEventsRequest*>(&to_msg);
   auto& from = static_cast<const ListAuditEventsRequest&>(from_msg);
-  ::google::protobuf::Arena* arena = _this->GetArena();
   // @@protoc_insertion_point(class_specific_merge_from_start:kentik.audit.public.v202601.ListAuditEventsRequest)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    if (cached_has_bits & 0x00000001u) {
-      ABSL_DCHECK(from._impl_.start_time_ != nullptr);
-      if (_this->_impl_.start_time_ == nullptr) {
-        _this->_impl_.start_time_ =
-            ::google::protobuf::Message::CopyConstruct<::google::protobuf::Timestamp>(arena, *from._impl_.start_time_);
-      } else {
-        _this->_impl_.start_time_->MergeFrom(*from._impl_.start_time_);
-      }
-    }
-    if (cached_has_bits & 0x00000002u) {
-      ABSL_DCHECK(from._impl_.end_time_ != nullptr);
-      if (_this->_impl_.end_time_ == nullptr) {
-        _this->_impl_.end_time_ =
-            ::google::protobuf::Message::CopyConstruct<::google::protobuf::Timestamp>(arena, *from._impl_.end_time_);
-      } else {
-        _this->_impl_.end_time_->MergeFrom(*from._impl_.end_time_);
-      }
-    }
+  if (!from._internal_start_time().empty()) {
+    _this->_internal_set_start_time(from._internal_start_time());
+  }
+  if (!from._internal_end_time().empty()) {
+    _this->_internal_set_end_time(from._internal_end_time());
   }
   if (from._internal_offset() != 0) {
     _this->_impl_.offset_ = from._impl_.offset_;
@@ -2159,7 +2118,6 @@ void ListAuditEventsRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, 
   if (from._internal_limit() != 0) {
     _this->_impl_.limit_ = from._impl_.limit_;
   }
-  _this->_impl_._has_bits_[0] |= cached_has_bits;
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -2173,14 +2131,17 @@ void ListAuditEventsRequest::CopyFrom(const ListAuditEventsRequest& from) {
 
 void ListAuditEventsRequest::InternalSwap(ListAuditEventsRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.start_time_, &other->_impl_.start_time_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.end_time_, &other->_impl_.end_time_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(ListAuditEventsRequest, _impl_.limit_)
       + sizeof(ListAuditEventsRequest::_impl_.limit_)
-      - PROTOBUF_FIELD_OFFSET(ListAuditEventsRequest, _impl_.start_time_)>(
-          reinterpret_cast<char*>(&_impl_.start_time_),
-          reinterpret_cast<char*>(&other->_impl_.start_time_));
+      - PROTOBUF_FIELD_OFFSET(ListAuditEventsRequest, _impl_.offset_)>(
+          reinterpret_cast<char*>(&_impl_.offset_),
+          reinterpret_cast<char*>(&other->_impl_.offset_));
 }
 
 ::google::protobuf::Metadata ListAuditEventsRequest::GetMetadata() const {

@@ -168,17 +168,20 @@ struct  Kentik__Audit__Public__V202601__AuditEvent
     , (char *)protobuf_c_empty_string, 0, NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
 
 
+/*
+ * {{.Name}}
+ */
 struct  Kentik__Audit__Public__V202601__ListAuditEventsRequest
 {
   ProtobufCMessage base;
-  Google__Protobuf__Timestamp *start_time;
-  Google__Protobuf__Timestamp *end_time;
+  char *start_time;
+  char *end_time;
   uint64_t offset;
   uint64_t limit;
 };
 #define KENTIK__AUDIT__PUBLIC__V202601__LIST_AUDIT_EVENTS_REQUEST__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__audit__public__v202601__list_audit_events_request__descriptor) \
-    , NULL, NULL, 0, 0 }
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, 0 }
 
 
 struct  Kentik__Audit__Public__V202601__ListAuditEventsResponse

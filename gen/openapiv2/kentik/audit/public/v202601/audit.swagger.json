@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Audit API",
-    "version": "202601",
+    "version": "v202601",
     "contact": {
       "name": "Kentik API Engineering",
       "url": "https://github.com/kentik/api"
@@ -45,17 +45,17 @@
         "parameters": [
           {
             "name": "startTime",
+            "description": "Date time in UTC. Defaults to 30 days before end_time if not provided.",
             "in": "query",
             "required": false,
-            "type": "string",
-            "format": "date-time"
+            "type": "string"
           },
           {
             "name": "endTime",
+            "description": "Date time in UTC. Defaults to current date/time if not provided.",
             "in": "query",
             "required": false,
-            "type": "string",
-            "format": "date-time"
+            "type": "string"
           },
           {
             "name": "offset",
