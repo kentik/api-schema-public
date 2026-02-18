@@ -1149,12 +1149,12 @@ const file_kentik_kmi_v202212_kmi_proto_rawDesc = "" +
 	"\x06_limit\"\xcc\x01\n" +
 	"\x13GetRankingsResponse\x12N\n" +
 	"\brankings\x18\x01 \x03(\v2\x1b.kentik.kmi.v202212.RankingB\x15\x92A\x122\x10List of rankingsR\brankings\x12e\n" +
-	"\rinvalid_count\x18\x02 \x01(\rB@\x92A=2;Number of invalid entries encountered while collecting dataR\finvalidCount\"\xe5\x05\n" +
+	"\rinvalid_count\x18\x02 \x01(\rB@\x92A=2;Number of invalid entries encountered while collecting dataR\finvalidCount\"\xe7\x05\n" +
 	"\x14GetASNDetailsRequest\x12c\n" +
 	"\tmarket_id\x18\x01 \x01(\tBF\x92AC2AUnique Geo Market identifier (as provided by the ListMarkets RPC)R\bmarketId\x125\n" +
 	"\x03asn\x18\x02 \x01(\tB#\x92A 2\x1eAutonomous System Number (ASN)R\x03asn\x12H\n" +
-	"\x02ip\x18\x03 \x01(\tB8\x92A523IP Address Family ('v4' or 'v6'). Defaults to 'v4'.R\x02ip\x12o\n" +
-	"\x04type\x18\x04 \x01(\tB[\x92AX2VType of the requested ASN ('all', 'customer', 'provider', 'peers'). Defaults to 'all'.R\x04type\x12v\n" +
+	"\x02ip\x18\x03 \x01(\tB8\x92A523IP Address Family ('v4' or 'v6'). Defaults to 'v4'.R\x02ip\x12q\n" +
+	"\x04type\x18\x04 \x01(\tB]\x92AZ2XType of the requested ASN ('all', 'customers', 'providers', 'peers'). Defaults to 'all'.R\x04type\x12v\n" +
 	"\x0fmutual_provider\x18\x05 \x01(\tBM\x92AJ2HFilter by mutual provider ('all', 'only', 'exclude'). Defaults to 'all'.R\x0emutualProvider\x12v\n" +
 	"\x0fmutual_customer\x18\x06 \x01(\tBM\x92AJ2HFilter by mutual customer ('all', 'only', 'exclude'). Defaults to 'all'.R\x0emutualCustomer\x12\x85\x01\n" +
 	"\x14singlehomed_customer\x18\a \x01(\tBR\x92AO2MFilter by singlehomed customer ('all', 'only', 'exclude'). Defaults to 'all'.R\x13singlehomedCustomer\"\xad\x01\n" +

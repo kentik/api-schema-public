@@ -336,7 +336,7 @@ message GetASNDetailsRequest {
   ];
   string type = 4 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "Type of the requested ASN ('all', 'customer', 'provider', 'peers'). Defaults to 'all'."
+      description: "Type of the requested ASN ('all', 'customers', 'providers', 'peers'). Defaults to 'all'."
     }
   ];
   string mutual_provider = 5 [
