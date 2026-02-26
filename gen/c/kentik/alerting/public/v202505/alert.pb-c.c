@@ -796,6 +796,186 @@ void   kentik__alerting__public__v202505__nms_context__free_unpacked
   assert(message->base.descriptor == &kentik__alerting__public__v202505__nms_context__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   kentik__alerting__public__v202505__alert_service_add_comment_request__init
+                     (Kentik__Alerting__Public__V202505__AlertServiceAddCommentRequest         *message)
+{
+  static const Kentik__Alerting__Public__V202505__AlertServiceAddCommentRequest init_value = KENTIK__ALERTING__PUBLIC__V202505__ALERT_SERVICE_ADD_COMMENT_REQUEST__INIT;
+  *message = init_value;
+}
+size_t kentik__alerting__public__v202505__alert_service_add_comment_request__get_packed_size
+                     (const Kentik__Alerting__Public__V202505__AlertServiceAddCommentRequest *message)
+{
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__alert_service_add_comment_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__alerting__public__v202505__alert_service_add_comment_request__pack
+                     (const Kentik__Alerting__Public__V202505__AlertServiceAddCommentRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__alert_service_add_comment_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__alerting__public__v202505__alert_service_add_comment_request__pack_to_buffer
+                     (const Kentik__Alerting__Public__V202505__AlertServiceAddCommentRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__alert_service_add_comment_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Alerting__Public__V202505__AlertServiceAddCommentRequest *
+       kentik__alerting__public__v202505__alert_service_add_comment_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Alerting__Public__V202505__AlertServiceAddCommentRequest *)
+     protobuf_c_message_unpack (&kentik__alerting__public__v202505__alert_service_add_comment_request__descriptor,
+                                allocator, len, data);
+}
+void   kentik__alerting__public__v202505__alert_service_add_comment_request__free_unpacked
+                     (Kentik__Alerting__Public__V202505__AlertServiceAddCommentRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__alert_service_add_comment_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__alerting__public__v202505__alert_service_add_comment_response__init
+                     (Kentik__Alerting__Public__V202505__AlertServiceAddCommentResponse         *message)
+{
+  static const Kentik__Alerting__Public__V202505__AlertServiceAddCommentResponse init_value = KENTIK__ALERTING__PUBLIC__V202505__ALERT_SERVICE_ADD_COMMENT_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t kentik__alerting__public__v202505__alert_service_add_comment_response__get_packed_size
+                     (const Kentik__Alerting__Public__V202505__AlertServiceAddCommentResponse *message)
+{
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__alert_service_add_comment_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__alerting__public__v202505__alert_service_add_comment_response__pack
+                     (const Kentik__Alerting__Public__V202505__AlertServiceAddCommentResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__alert_service_add_comment_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__alerting__public__v202505__alert_service_add_comment_response__pack_to_buffer
+                     (const Kentik__Alerting__Public__V202505__AlertServiceAddCommentResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__alert_service_add_comment_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Alerting__Public__V202505__AlertServiceAddCommentResponse *
+       kentik__alerting__public__v202505__alert_service_add_comment_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Alerting__Public__V202505__AlertServiceAddCommentResponse *)
+     protobuf_c_message_unpack (&kentik__alerting__public__v202505__alert_service_add_comment_response__descriptor,
+                                allocator, len, data);
+}
+void   kentik__alerting__public__v202505__alert_service_add_comment_response__free_unpacked
+                     (Kentik__Alerting__Public__V202505__AlertServiceAddCommentResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__alert_service_add_comment_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__alerting__public__v202505__alert_service_list_comments_request__init
+                     (Kentik__Alerting__Public__V202505__AlertServiceListCommentsRequest         *message)
+{
+  static const Kentik__Alerting__Public__V202505__AlertServiceListCommentsRequest init_value = KENTIK__ALERTING__PUBLIC__V202505__ALERT_SERVICE_LIST_COMMENTS_REQUEST__INIT;
+  *message = init_value;
+}
+size_t kentik__alerting__public__v202505__alert_service_list_comments_request__get_packed_size
+                     (const Kentik__Alerting__Public__V202505__AlertServiceListCommentsRequest *message)
+{
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__alert_service_list_comments_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__alerting__public__v202505__alert_service_list_comments_request__pack
+                     (const Kentik__Alerting__Public__V202505__AlertServiceListCommentsRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__alert_service_list_comments_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__alerting__public__v202505__alert_service_list_comments_request__pack_to_buffer
+                     (const Kentik__Alerting__Public__V202505__AlertServiceListCommentsRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__alert_service_list_comments_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Alerting__Public__V202505__AlertServiceListCommentsRequest *
+       kentik__alerting__public__v202505__alert_service_list_comments_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Alerting__Public__V202505__AlertServiceListCommentsRequest *)
+     protobuf_c_message_unpack (&kentik__alerting__public__v202505__alert_service_list_comments_request__descriptor,
+                                allocator, len, data);
+}
+void   kentik__alerting__public__v202505__alert_service_list_comments_request__free_unpacked
+                     (Kentik__Alerting__Public__V202505__AlertServiceListCommentsRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__alert_service_list_comments_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__alerting__public__v202505__alert_service_list_comments_response__init
+                     (Kentik__Alerting__Public__V202505__AlertServiceListCommentsResponse         *message)
+{
+  static const Kentik__Alerting__Public__V202505__AlertServiceListCommentsResponse init_value = KENTIK__ALERTING__PUBLIC__V202505__ALERT_SERVICE_LIST_COMMENTS_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t kentik__alerting__public__v202505__alert_service_list_comments_response__get_packed_size
+                     (const Kentik__Alerting__Public__V202505__AlertServiceListCommentsResponse *message)
+{
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__alert_service_list_comments_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__alerting__public__v202505__alert_service_list_comments_response__pack
+                     (const Kentik__Alerting__Public__V202505__AlertServiceListCommentsResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__alert_service_list_comments_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__alerting__public__v202505__alert_service_list_comments_response__pack_to_buffer
+                     (const Kentik__Alerting__Public__V202505__AlertServiceListCommentsResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__alert_service_list_comments_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Alerting__Public__V202505__AlertServiceListCommentsResponse *
+       kentik__alerting__public__v202505__alert_service_list_comments_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Alerting__Public__V202505__AlertServiceListCommentsResponse *)
+     protobuf_c_message_unpack (&kentik__alerting__public__v202505__alert_service_list_comments_response__descriptor,
+                                allocator, len, data);
+}
+void   kentik__alerting__public__v202505__alert_service_list_comments_response__free_unpacked
+                     (Kentik__Alerting__Public__V202505__AlertServiceListCommentsResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__alert_service_list_comments_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert_service_get_request__field_descriptors[1] =
 {
   {
@@ -834,7 +1014,7 @@ const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_servic
   (ProtobufCMessageInit) kentik__alerting__public__v202505__alert_service_get_request__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert_service_get_response__field_descriptors[2] =
+static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert_service_get_response__field_descriptors[3] =
 {
   {
     "alert",
@@ -860,15 +1040,28 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert_s
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "comments",
+    3,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Kentik__Alerting__Public__V202505__AlertServiceGetResponse, n_comments),
+    offsetof(Kentik__Alerting__Public__V202505__AlertServiceGetResponse, comments),
+    &kentik__alerting__public__v202505__comment__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__alerting__public__v202505__alert_service_get_response__field_indices_by_name[] = {
   0,   /* field[0] = alert */
+  2,   /* field[2] = comments */
   1,   /* field[1] = history */
 };
 static const ProtobufCIntRange kentik__alerting__public__v202505__alert_service_get_response__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 2 }
+  { 0, 3 }
 };
 const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_service_get_response__descriptor =
 {
@@ -878,7 +1071,7 @@ const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_servic
   "Kentik__Alerting__Public__V202505__AlertServiceGetResponse",
   "kentik.alerting.public.v202505",
   sizeof(Kentik__Alerting__Public__V202505__AlertServiceGetResponse),
-  2,
+  3,
   kentik__alerting__public__v202505__alert_service_get_response__field_descriptors,
   kentik__alerting__public__v202505__alert_service_get_response__field_indices_by_name,
   1,  kentik__alerting__public__v202505__alert_service_get_response__number_ranges,
@@ -3143,6 +3336,171 @@ const ProtobufCMessageDescriptor kentik__alerting__public__v202505__nms_context_
   (ProtobufCMessageInit) kentik__alerting__public__v202505__nms_context__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
+static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert_service_add_comment_request__field_descriptors[2] =
+{
+  {
+    "alert_id",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Alerting__Public__V202505__AlertServiceAddCommentRequest, alert_id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "text",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Alerting__Public__V202505__AlertServiceAddCommentRequest, text),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__alerting__public__v202505__alert_service_add_comment_request__field_indices_by_name[] = {
+  0,   /* field[0] = alert_id */
+  1,   /* field[1] = text */
+};
+static const ProtobufCIntRange kentik__alerting__public__v202505__alert_service_add_comment_request__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_service_add_comment_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.alerting.public.v202505.AlertServiceAddCommentRequest",
+  "AlertServiceAddCommentRequest",
+  "Kentik__Alerting__Public__V202505__AlertServiceAddCommentRequest",
+  "kentik.alerting.public.v202505",
+  sizeof(Kentik__Alerting__Public__V202505__AlertServiceAddCommentRequest),
+  2,
+  kentik__alerting__public__v202505__alert_service_add_comment_request__field_descriptors,
+  kentik__alerting__public__v202505__alert_service_add_comment_request__field_indices_by_name,
+  1,  kentik__alerting__public__v202505__alert_service_add_comment_request__number_ranges,
+  (ProtobufCMessageInit) kentik__alerting__public__v202505__alert_service_add_comment_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert_service_add_comment_response__field_descriptors[1] =
+{
+  {
+    "comment",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Alerting__Public__V202505__AlertServiceAddCommentResponse, comment),
+    &kentik__alerting__public__v202505__comment__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__alerting__public__v202505__alert_service_add_comment_response__field_indices_by_name[] = {
+  0,   /* field[0] = comment */
+};
+static const ProtobufCIntRange kentik__alerting__public__v202505__alert_service_add_comment_response__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_service_add_comment_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.alerting.public.v202505.AlertServiceAddCommentResponse",
+  "AlertServiceAddCommentResponse",
+  "Kentik__Alerting__Public__V202505__AlertServiceAddCommentResponse",
+  "kentik.alerting.public.v202505",
+  sizeof(Kentik__Alerting__Public__V202505__AlertServiceAddCommentResponse),
+  1,
+  kentik__alerting__public__v202505__alert_service_add_comment_response__field_descriptors,
+  kentik__alerting__public__v202505__alert_service_add_comment_response__field_indices_by_name,
+  1,  kentik__alerting__public__v202505__alert_service_add_comment_response__number_ranges,
+  (ProtobufCMessageInit) kentik__alerting__public__v202505__alert_service_add_comment_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert_service_list_comments_request__field_descriptors[1] =
+{
+  {
+    "alert_id",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Alerting__Public__V202505__AlertServiceListCommentsRequest, alert_id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__alerting__public__v202505__alert_service_list_comments_request__field_indices_by_name[] = {
+  0,   /* field[0] = alert_id */
+};
+static const ProtobufCIntRange kentik__alerting__public__v202505__alert_service_list_comments_request__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_service_list_comments_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.alerting.public.v202505.AlertServiceListCommentsRequest",
+  "AlertServiceListCommentsRequest",
+  "Kentik__Alerting__Public__V202505__AlertServiceListCommentsRequest",
+  "kentik.alerting.public.v202505",
+  sizeof(Kentik__Alerting__Public__V202505__AlertServiceListCommentsRequest),
+  1,
+  kentik__alerting__public__v202505__alert_service_list_comments_request__field_descriptors,
+  kentik__alerting__public__v202505__alert_service_list_comments_request__field_indices_by_name,
+  1,  kentik__alerting__public__v202505__alert_service_list_comments_request__number_ranges,
+  (ProtobufCMessageInit) kentik__alerting__public__v202505__alert_service_list_comments_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert_service_list_comments_response__field_descriptors[1] =
+{
+  {
+    "comments",
+    1,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Kentik__Alerting__Public__V202505__AlertServiceListCommentsResponse, n_comments),
+    offsetof(Kentik__Alerting__Public__V202505__AlertServiceListCommentsResponse, comments),
+    &kentik__alerting__public__v202505__comment__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__alerting__public__v202505__alert_service_list_comments_response__field_indices_by_name[] = {
+  0,   /* field[0] = comments */
+};
+static const ProtobufCIntRange kentik__alerting__public__v202505__alert_service_list_comments_response__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_service_list_comments_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.alerting.public.v202505.AlertServiceListCommentsResponse",
+  "AlertServiceListCommentsResponse",
+  "Kentik__Alerting__Public__V202505__AlertServiceListCommentsResponse",
+  "kentik.alerting.public.v202505",
+  sizeof(Kentik__Alerting__Public__V202505__AlertServiceListCommentsResponse),
+  1,
+  kentik__alerting__public__v202505__alert_service_list_comments_response__field_descriptors,
+  kentik__alerting__public__v202505__alert_service_list_comments_response__field_indices_by_name,
+  1,  kentik__alerting__public__v202505__alert_service_list_comments_response__number_ranges,
+  (ProtobufCMessageInit) kentik__alerting__public__v202505__alert_service_list_comments_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
 static const ProtobufCEnumValue kentik__alerting__public__v202505__alert_state__enum_values_by_number[3] =
 {
   { "ALERT_STATE_UNSPECIFIED", "KENTIK__ALERTING__PUBLIC__V202505__ALERT_STATE__ALERT_STATE_UNSPECIFIED", 0 },
@@ -3205,19 +3563,23 @@ const ProtobufCEnumDescriptor kentik__alerting__public__v202505__alert_acknowled
   kentik__alerting__public__v202505__alert_acknowledgement__value_ranges,
   NULL,NULL,NULL,NULL   /* reserved[1234] */
 };
-static const ProtobufCMethodDescriptor kentik__alerting__public__v202505__alert_service__method_descriptors[5] =
+static const ProtobufCMethodDescriptor kentik__alerting__public__v202505__alert_service__method_descriptors[7] =
 {
   { "Get", &kentik__alerting__public__v202505__alert_service_get_request__descriptor, &kentik__alerting__public__v202505__alert_service_get_response__descriptor },
   { "List", &kentik__alerting__public__v202505__alert_service_list_request__descriptor, &kentik__alerting__public__v202505__alert_service_list_response__descriptor },
   { "Ack", &kentik__alerting__public__v202505__alert_service_ack_request__descriptor, &kentik__alerting__public__v202505__alert_service_ack_response__descriptor },
   { "UnAck", &kentik__alerting__public__v202505__alert_service_un_ack_request__descriptor, &kentik__alerting__public__v202505__alert_service_un_ack_response__descriptor },
   { "Clear", &kentik__alerting__public__v202505__alert_service_clear_request__descriptor, &kentik__alerting__public__v202505__alert_service_clear_response__descriptor },
+  { "AddComment", &kentik__alerting__public__v202505__alert_service_add_comment_request__descriptor, &kentik__alerting__public__v202505__alert_service_add_comment_response__descriptor },
+  { "ListComments", &kentik__alerting__public__v202505__alert_service_list_comments_request__descriptor, &kentik__alerting__public__v202505__alert_service_list_comments_response__descriptor },
 };
 const unsigned kentik__alerting__public__v202505__alert_service__method_indices_by_name[] = {
   2,        /* Ack */
+  5,        /* AddComment */
   4,        /* Clear */
   0,        /* Get */
   1,        /* List */
+  6,        /* ListComments */
   3         /* UnAck */
 };
 const ProtobufCServiceDescriptor kentik__alerting__public__v202505__alert_service__descriptor =
@@ -3227,7 +3589,7 @@ const ProtobufCServiceDescriptor kentik__alerting__public__v202505__alert_servic
   "AlertService",
   "Kentik__Alerting__Public__V202505__AlertService",
   "kentik.alerting.public.v202505",
-  5,
+  7,
   kentik__alerting__public__v202505__alert_service__method_descriptors,
   kentik__alerting__public__v202505__alert_service__method_indices_by_name
 };
@@ -3270,6 +3632,22 @@ void kentik__alerting__public__v202505__alert_service__clear(ProtobufCService *s
 {
   assert(service->descriptor == &kentik__alerting__public__v202505__alert_service__descriptor);
   service->invoke(service, 4, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
+void kentik__alerting__public__v202505__alert_service__add_comment(ProtobufCService *service,
+                                                                   const Kentik__Alerting__Public__V202505__AlertServiceAddCommentRequest *input,
+                                                                   Kentik__Alerting__Public__V202505__AlertServiceAddCommentResponse_Closure closure,
+                                                                   void *closure_data)
+{
+  assert(service->descriptor == &kentik__alerting__public__v202505__alert_service__descriptor);
+  service->invoke(service, 5, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
+void kentik__alerting__public__v202505__alert_service__list_comments(ProtobufCService *service,
+                                                                     const Kentik__Alerting__Public__V202505__AlertServiceListCommentsRequest *input,
+                                                                     Kentik__Alerting__Public__V202505__AlertServiceListCommentsResponse_Closure closure,
+                                                                     void *closure_data)
+{
+  assert(service->descriptor == &kentik__alerting__public__v202505__alert_service__descriptor);
+  service->invoke(service, 6, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void kentik__alerting__public__v202505__alert_service__init (Kentik__Alerting__Public__V202505__AlertService_Service *service,
                                                              Kentik__Alerting__Public__V202505__AlertService_ServiceDestroy destroy)

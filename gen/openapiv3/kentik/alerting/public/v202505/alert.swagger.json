@@ -99,6 +99,100 @@
                 ]
             }
         },
+        "/v202505/alerts/{alertId}/comments": {
+            "get": {
+                "summary": "List Alert Comments",
+                "description": "Returns all comments for an alert.",
+                "operationId": "ListComments",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202505AlertServiceListCommentsResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "alertId",
+                        "description": "The ID of the alert to list comments for.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "AlertService"
+                ]
+            },
+            "post": {
+                "summary": "Add Alert Comment",
+                "description": "Adds a comment to an alert.",
+                "operationId": "AddComment",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202505AlertServiceAddCommentResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "alertId",
+                        "description": "The ID of the alert to add the comment to.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AlertServiceAddCommentBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "AlertService"
+                ]
+            }
+        },
         "/v202505/alerts/{id}": {
             "get": {
                 "summary": "Get Alert",
@@ -305,6 +399,19 @@
                         "description": "The comment to add to the acknowledgement."
                     }
                 }
+            },
+            "AlertServiceAddCommentBody": {
+                "type": "object",
+                "properties": {
+                    "text": {
+                        "type": "string",
+                        "description": "The text content of the comment. Maximum length is 5000 characters.",
+                        "maxLength": 5000
+                    }
+                },
+                "required": [
+                    "text"
+                ]
             },
             "AlertServiceUnAckBody": {
                 "type": "object"
@@ -959,6 +1066,14 @@
                     }
                 }
             },
+            "v202505AlertServiceAddCommentResponse": {
+                "type": "object",
+                "properties": {
+                    "comment": {
+                        "$ref": "#/components/schemas/v202505Comment"
+                    }
+                }
+            },
             "v202505AlertServiceClearRequest": {
                 "type": "object",
                 "properties": {
@@ -999,6 +1114,27 @@
                             "$ref": "#/components/schemas/v202505AlertPhase"
                         },
                         "description": "The history of the alert.",
+                        "readOnly": true
+                    },
+                    "comments": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202505Comment"
+                        },
+                        "description": "The comments on the alert.",
+                        "readOnly": true
+                    }
+                }
+            },
+            "v202505AlertServiceListCommentsResponse": {
+                "type": "object",
+                "properties": {
+                    "comments": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202505Comment"
+                        },
+                        "description": "The comments on the alert.",
                         "readOnly": true
                     }
                 }
@@ -1050,6 +1186,47 @@
                 ],
                 "default": "ALERT_STATE_UNSPECIFIED",
                 "title": "- ALERT_STATE_CLEAR: alert is cleared, no longer active\n - ALERT_STATE_ACTIVE: alert is active"
+            },
+            "v202505Comment": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier of the comment.",
+                        "readOnly": true
+                    },
+                    "text": {
+                        "type": "string",
+                        "description": "The text content of the comment.",
+                        "readOnly": true
+                    },
+                    "userId": {
+                        "type": "string",
+                        "description": "The ID of the user who created the comment.",
+                        "readOnly": true
+                    },
+                    "userName": {
+                        "type": "string",
+                        "description": "The username of the user who created the comment.",
+                        "readOnly": true
+                    },
+                    "userFullName": {
+                        "type": "string",
+                        "description": "The full name of the user who created the comment.",
+                        "readOnly": true
+                    },
+                    "userEmail": {
+                        "type": "string",
+                        "description": "The email of the user who created the comment.",
+                        "readOnly": true
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "The timestamp when the comment was created.",
+                        "readOnly": true
+                    }
+                }
             },
             "v202505FlowContext": {
                 "type": "object",

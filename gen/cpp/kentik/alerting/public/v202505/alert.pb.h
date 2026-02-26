@@ -45,6 +45,7 @@
 #include "kentik/alerting/types/v202506/sorting.pb.h"
 #include "kentik/alerting/public/v202505/common.pb.h"
 #include "kentik/alerting/public/v202505/nms_common.pb.h"
+#include "kentik/alerting/public/v202505/comment.pb.h"
 // @@protoc_insertion_point(includes)
 
 // Must be included last.
@@ -86,6 +87,12 @@ extern AlertServiceAckRequestDefaultTypeInternal _AlertServiceAckRequest_default
 class AlertServiceAckResponse;
 struct AlertServiceAckResponseDefaultTypeInternal;
 extern AlertServiceAckResponseDefaultTypeInternal _AlertServiceAckResponse_default_instance_;
+class AlertServiceAddCommentRequest;
+struct AlertServiceAddCommentRequestDefaultTypeInternal;
+extern AlertServiceAddCommentRequestDefaultTypeInternal _AlertServiceAddCommentRequest_default_instance_;
+class AlertServiceAddCommentResponse;
+struct AlertServiceAddCommentResponseDefaultTypeInternal;
+extern AlertServiceAddCommentResponseDefaultTypeInternal _AlertServiceAddCommentResponse_default_instance_;
 class AlertServiceClearRequest;
 struct AlertServiceClearRequestDefaultTypeInternal;
 extern AlertServiceClearRequestDefaultTypeInternal _AlertServiceClearRequest_default_instance_;
@@ -98,6 +105,12 @@ extern AlertServiceGetRequestDefaultTypeInternal _AlertServiceGetRequest_default
 class AlertServiceGetResponse;
 struct AlertServiceGetResponseDefaultTypeInternal;
 extern AlertServiceGetResponseDefaultTypeInternal _AlertServiceGetResponse_default_instance_;
+class AlertServiceListCommentsRequest;
+struct AlertServiceListCommentsRequestDefaultTypeInternal;
+extern AlertServiceListCommentsRequestDefaultTypeInternal _AlertServiceListCommentsRequest_default_instance_;
+class AlertServiceListCommentsResponse;
+struct AlertServiceListCommentsResponseDefaultTypeInternal;
+extern AlertServiceListCommentsResponseDefaultTypeInternal _AlertServiceListCommentsResponse_default_instance_;
 class AlertServiceListRequest;
 struct AlertServiceListRequestDefaultTypeInternal;
 extern AlertServiceListRequestDefaultTypeInternal _AlertServiceListRequest_default_instance_;
@@ -1953,6 +1966,202 @@ class AlertServiceUnAckRequest final : public ::google::protobuf::Message
 };
 // -------------------------------------------------------------------
 
+class AlertServiceListCommentsRequest final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:kentik.alerting.public.v202505.AlertServiceListCommentsRequest) */ {
+ public:
+  inline AlertServiceListCommentsRequest() : AlertServiceListCommentsRequest(nullptr) {}
+  ~AlertServiceListCommentsRequest() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(AlertServiceListCommentsRequest* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(AlertServiceListCommentsRequest));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR AlertServiceListCommentsRequest(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline AlertServiceListCommentsRequest(const AlertServiceListCommentsRequest& from) : AlertServiceListCommentsRequest(nullptr, from) {}
+  inline AlertServiceListCommentsRequest(AlertServiceListCommentsRequest&& from) noexcept
+      : AlertServiceListCommentsRequest(nullptr, std::move(from)) {}
+  inline AlertServiceListCommentsRequest& operator=(const AlertServiceListCommentsRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline AlertServiceListCommentsRequest& operator=(AlertServiceListCommentsRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const AlertServiceListCommentsRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const AlertServiceListCommentsRequest* internal_default_instance() {
+    return reinterpret_cast<const AlertServiceListCommentsRequest*>(
+        &_AlertServiceListCommentsRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 36;
+  friend void swap(AlertServiceListCommentsRequest& a, AlertServiceListCommentsRequest& b) { a.Swap(&b); }
+  inline void Swap(AlertServiceListCommentsRequest* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(AlertServiceListCommentsRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  AlertServiceListCommentsRequest* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<AlertServiceListCommentsRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const AlertServiceListCommentsRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const AlertServiceListCommentsRequest& from) { AlertServiceListCommentsRequest::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(AlertServiceListCommentsRequest* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "kentik.alerting.public.v202505.AlertServiceListCommentsRequest"; }
+
+ protected:
+  explicit AlertServiceListCommentsRequest(::google::protobuf::Arena* arena);
+  AlertServiceListCommentsRequest(::google::protobuf::Arena* arena, const AlertServiceListCommentsRequest& from);
+  AlertServiceListCommentsRequest(::google::protobuf::Arena* arena, AlertServiceListCommentsRequest&& from) noexcept
+      : AlertServiceListCommentsRequest(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kAlertIdFieldNumber = 1,
+  };
+  // string alert_id = 1 [json_name = "alertId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_alert_id() ;
+  const std::string& alert_id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_alert_id(Arg_&& arg, Args_... args);
+  std::string* mutable_alert_id();
+  PROTOBUF_NODISCARD std::string* release_alert_id();
+  void set_allocated_alert_id(std::string* value);
+
+  private:
+  const std::string& _internal_alert_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_alert_id(
+      const std::string& value);
+  std::string* _internal_mutable_alert_id();
+
+  public:
+  // @@protoc_insertion_point(class_scope:kentik.alerting.public.v202505.AlertServiceListCommentsRequest)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 0,
+      79, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const AlertServiceListCommentsRequest& from_msg);
+    ::google::protobuf::internal::ArenaStringPtr alert_id_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_kentik_2falerting_2fpublic_2fv202505_2falert_2eproto;
+};
+// -------------------------------------------------------------------
+
 class AlertServiceGetRequest final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:kentik.alerting.public.v202505.AlertServiceGetRequest) */ {
  public:
@@ -2545,6 +2754,220 @@ class AlertServiceClearRequest final : public ::google::protobuf::Message
                           ::google::protobuf::Arena* arena, const Impl_& from,
                           const AlertServiceClearRequest& from_msg);
     ::google::protobuf::RepeatedPtrField<std::string> alert_ids_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_kentik_2falerting_2fpublic_2fv202505_2falert_2eproto;
+};
+// -------------------------------------------------------------------
+
+class AlertServiceAddCommentRequest final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:kentik.alerting.public.v202505.AlertServiceAddCommentRequest) */ {
+ public:
+  inline AlertServiceAddCommentRequest() : AlertServiceAddCommentRequest(nullptr) {}
+  ~AlertServiceAddCommentRequest() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(AlertServiceAddCommentRequest* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(AlertServiceAddCommentRequest));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR AlertServiceAddCommentRequest(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline AlertServiceAddCommentRequest(const AlertServiceAddCommentRequest& from) : AlertServiceAddCommentRequest(nullptr, from) {}
+  inline AlertServiceAddCommentRequest(AlertServiceAddCommentRequest&& from) noexcept
+      : AlertServiceAddCommentRequest(nullptr, std::move(from)) {}
+  inline AlertServiceAddCommentRequest& operator=(const AlertServiceAddCommentRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline AlertServiceAddCommentRequest& operator=(AlertServiceAddCommentRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const AlertServiceAddCommentRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const AlertServiceAddCommentRequest* internal_default_instance() {
+    return reinterpret_cast<const AlertServiceAddCommentRequest*>(
+        &_AlertServiceAddCommentRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 34;
+  friend void swap(AlertServiceAddCommentRequest& a, AlertServiceAddCommentRequest& b) { a.Swap(&b); }
+  inline void Swap(AlertServiceAddCommentRequest* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(AlertServiceAddCommentRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  AlertServiceAddCommentRequest* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<AlertServiceAddCommentRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const AlertServiceAddCommentRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const AlertServiceAddCommentRequest& from) { AlertServiceAddCommentRequest::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(AlertServiceAddCommentRequest* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "kentik.alerting.public.v202505.AlertServiceAddCommentRequest"; }
+
+ protected:
+  explicit AlertServiceAddCommentRequest(::google::protobuf::Arena* arena);
+  AlertServiceAddCommentRequest(::google::protobuf::Arena* arena, const AlertServiceAddCommentRequest& from);
+  AlertServiceAddCommentRequest(::google::protobuf::Arena* arena, AlertServiceAddCommentRequest&& from) noexcept
+      : AlertServiceAddCommentRequest(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kAlertIdFieldNumber = 1,
+    kTextFieldNumber = 2,
+  };
+  // string alert_id = 1 [json_name = "alertId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_alert_id() ;
+  const std::string& alert_id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_alert_id(Arg_&& arg, Args_... args);
+  std::string* mutable_alert_id();
+  PROTOBUF_NODISCARD std::string* release_alert_id();
+  void set_allocated_alert_id(std::string* value);
+
+  private:
+  const std::string& _internal_alert_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_alert_id(
+      const std::string& value);
+  std::string* _internal_mutable_alert_id();
+
+  public:
+  // string text = 2 [json_name = "text", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_text() ;
+  const std::string& text() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_text(Arg_&& arg, Args_... args);
+  std::string* mutable_text();
+  PROTOBUF_NODISCARD std::string* release_text();
+  void set_allocated_text(std::string* value);
+
+  private:
+  const std::string& _internal_text() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_text(
+      const std::string& value);
+  std::string* _internal_mutable_text();
+
+  public:
+  // @@protoc_insertion_point(class_scope:kentik.alerting.public.v202505.AlertServiceAddCommentRequest)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 0,
+      81, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const AlertServiceAddCommentRequest& from_msg);
+    ::google::protobuf::internal::ArenaStringPtr alert_id_;
+    ::google::protobuf::internal::ArenaStringPtr text_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -3828,6 +4251,399 @@ class FlowContext_AlertKeyDetailsEntry_DoNotUse final
                              ::google::protobuf::Arena* arena);
   static constexpr auto InternalNewImpl_();
   static const ::google::protobuf::internal::ClassDataFull _class_data_;
+};
+// -------------------------------------------------------------------
+
+class AlertServiceListCommentsResponse final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:kentik.alerting.public.v202505.AlertServiceListCommentsResponse) */ {
+ public:
+  inline AlertServiceListCommentsResponse() : AlertServiceListCommentsResponse(nullptr) {}
+  ~AlertServiceListCommentsResponse() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(AlertServiceListCommentsResponse* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(AlertServiceListCommentsResponse));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR AlertServiceListCommentsResponse(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline AlertServiceListCommentsResponse(const AlertServiceListCommentsResponse& from) : AlertServiceListCommentsResponse(nullptr, from) {}
+  inline AlertServiceListCommentsResponse(AlertServiceListCommentsResponse&& from) noexcept
+      : AlertServiceListCommentsResponse(nullptr, std::move(from)) {}
+  inline AlertServiceListCommentsResponse& operator=(const AlertServiceListCommentsResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline AlertServiceListCommentsResponse& operator=(AlertServiceListCommentsResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const AlertServiceListCommentsResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const AlertServiceListCommentsResponse* internal_default_instance() {
+    return reinterpret_cast<const AlertServiceListCommentsResponse*>(
+        &_AlertServiceListCommentsResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 37;
+  friend void swap(AlertServiceListCommentsResponse& a, AlertServiceListCommentsResponse& b) { a.Swap(&b); }
+  inline void Swap(AlertServiceListCommentsResponse* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(AlertServiceListCommentsResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  AlertServiceListCommentsResponse* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<AlertServiceListCommentsResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const AlertServiceListCommentsResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const AlertServiceListCommentsResponse& from) { AlertServiceListCommentsResponse::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(AlertServiceListCommentsResponse* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "kentik.alerting.public.v202505.AlertServiceListCommentsResponse"; }
+
+ protected:
+  explicit AlertServiceListCommentsResponse(::google::protobuf::Arena* arena);
+  AlertServiceListCommentsResponse(::google::protobuf::Arena* arena, const AlertServiceListCommentsResponse& from);
+  AlertServiceListCommentsResponse(::google::protobuf::Arena* arena, AlertServiceListCommentsResponse&& from) noexcept
+      : AlertServiceListCommentsResponse(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kCommentsFieldNumber = 1,
+  };
+  // repeated .kentik.alerting.public.v202505.Comment comments = 1 [json_name = "comments", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  int comments_size() const;
+  private:
+  int _internal_comments_size() const;
+
+  public:
+  void clear_comments() ;
+  ::kentik::alerting::public_::v202505::Comment* mutable_comments(int index);
+  ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::Comment>* mutable_comments();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::Comment>& _internal_comments() const;
+  ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::Comment>* _internal_mutable_comments();
+  public:
+  const ::kentik::alerting::public_::v202505::Comment& comments(int index) const;
+  ::kentik::alerting::public_::v202505::Comment* add_comments();
+  const ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::Comment>& comments() const;
+  // @@protoc_insertion_point(class_scope:kentik.alerting.public.v202505.AlertServiceListCommentsResponse)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 1,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const AlertServiceListCommentsResponse& from_msg);
+    ::google::protobuf::RepeatedPtrField< ::kentik::alerting::public_::v202505::Comment > comments_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_kentik_2falerting_2fpublic_2fv202505_2falert_2eproto;
+};
+// -------------------------------------------------------------------
+
+class AlertServiceAddCommentResponse final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:kentik.alerting.public.v202505.AlertServiceAddCommentResponse) */ {
+ public:
+  inline AlertServiceAddCommentResponse() : AlertServiceAddCommentResponse(nullptr) {}
+  ~AlertServiceAddCommentResponse() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(AlertServiceAddCommentResponse* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(AlertServiceAddCommentResponse));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR AlertServiceAddCommentResponse(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline AlertServiceAddCommentResponse(const AlertServiceAddCommentResponse& from) : AlertServiceAddCommentResponse(nullptr, from) {}
+  inline AlertServiceAddCommentResponse(AlertServiceAddCommentResponse&& from) noexcept
+      : AlertServiceAddCommentResponse(nullptr, std::move(from)) {}
+  inline AlertServiceAddCommentResponse& operator=(const AlertServiceAddCommentResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline AlertServiceAddCommentResponse& operator=(AlertServiceAddCommentResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const AlertServiceAddCommentResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const AlertServiceAddCommentResponse* internal_default_instance() {
+    return reinterpret_cast<const AlertServiceAddCommentResponse*>(
+        &_AlertServiceAddCommentResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 35;
+  friend void swap(AlertServiceAddCommentResponse& a, AlertServiceAddCommentResponse& b) { a.Swap(&b); }
+  inline void Swap(AlertServiceAddCommentResponse* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(AlertServiceAddCommentResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  AlertServiceAddCommentResponse* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<AlertServiceAddCommentResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const AlertServiceAddCommentResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const AlertServiceAddCommentResponse& from) { AlertServiceAddCommentResponse::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(AlertServiceAddCommentResponse* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "kentik.alerting.public.v202505.AlertServiceAddCommentResponse"; }
+
+ protected:
+  explicit AlertServiceAddCommentResponse(::google::protobuf::Arena* arena);
+  AlertServiceAddCommentResponse(::google::protobuf::Arena* arena, const AlertServiceAddCommentResponse& from);
+  AlertServiceAddCommentResponse(::google::protobuf::Arena* arena, AlertServiceAddCommentResponse&& from) noexcept
+      : AlertServiceAddCommentResponse(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kCommentFieldNumber = 1,
+  };
+  // .kentik.alerting.public.v202505.Comment comment = 1 [json_name = "comment", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_comment() const;
+  void clear_comment() ;
+  const ::kentik::alerting::public_::v202505::Comment& comment() const;
+  PROTOBUF_NODISCARD ::kentik::alerting::public_::v202505::Comment* release_comment();
+  ::kentik::alerting::public_::v202505::Comment* mutable_comment();
+  void set_allocated_comment(::kentik::alerting::public_::v202505::Comment* value);
+  void unsafe_arena_set_allocated_comment(::kentik::alerting::public_::v202505::Comment* value);
+  ::kentik::alerting::public_::v202505::Comment* unsafe_arena_release_comment();
+
+  private:
+  const ::kentik::alerting::public_::v202505::Comment& _internal_comment() const;
+  ::kentik::alerting::public_::v202505::Comment* _internal_mutable_comment();
+
+  public:
+  // @@protoc_insertion_point(class_scope:kentik.alerting.public.v202505.AlertServiceAddCommentResponse)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 1,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const AlertServiceAddCommentResponse& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::kentik::alerting::public_::v202505::Comment* comment_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_kentik_2falerting_2fpublic_2fv202505_2falert_2eproto;
 };
 // -------------------------------------------------------------------
 
@@ -6601,6 +7417,7 @@ class AlertServiceGetResponse final : public ::google::protobuf::Message
   // accessors -------------------------------------------------------
   enum : int {
     kHistoryFieldNumber = 2,
+    kCommentsFieldNumber = 3,
     kAlertFieldNumber = 1,
   };
   // repeated .kentik.alerting.public.v202505.AlertPhase history = 2 [json_name = "history", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -6620,6 +7437,23 @@ class AlertServiceGetResponse final : public ::google::protobuf::Message
   const ::kentik::alerting::public_::v202505::AlertPhase& history(int index) const;
   ::kentik::alerting::public_::v202505::AlertPhase* add_history();
   const ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::AlertPhase>& history() const;
+  // repeated .kentik.alerting.public.v202505.Comment comments = 3 [json_name = "comments", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  int comments_size() const;
+  private:
+  int _internal_comments_size() const;
+
+  public:
+  void clear_comments() ;
+  ::kentik::alerting::public_::v202505::Comment* mutable_comments(int index);
+  ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::Comment>* mutable_comments();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::Comment>& _internal_comments() const;
+  ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::Comment>* _internal_mutable_comments();
+  public:
+  const ::kentik::alerting::public_::v202505::Comment& comments(int index) const;
+  ::kentik::alerting::public_::v202505::Comment* add_comments();
+  const ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::Comment>& comments() const;
   // .kentik.alerting.public.v202505.Alert alert = 1 [json_name = "alert", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   bool has_alert() const;
   void clear_alert() ;
@@ -6640,7 +7474,7 @@ class AlertServiceGetResponse final : public ::google::protobuf::Message
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      1, 2, 2,
+      2, 3, 3,
       0, 2>
       _table_;
 
@@ -6661,6 +7495,7 @@ class AlertServiceGetResponse final : public ::google::protobuf::Message
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     ::google::protobuf::RepeatedPtrField< ::kentik::alerting::public_::v202505::AlertPhase > history_;
+    ::google::protobuf::RepeatedPtrField< ::kentik::alerting::public_::v202505::Comment > comments_;
     ::kentik::alerting::public_::v202505::Alert* alert_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -7075,6 +7910,51 @@ inline ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505
 AlertServiceGetResponse::_internal_mutable_history() {
   ::google::protobuf::internal::TSanRead(&_impl_);
   return &_impl_.history_;
+}
+
+// repeated .kentik.alerting.public.v202505.Comment comments = 3 [json_name = "comments", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline int AlertServiceGetResponse::_internal_comments_size() const {
+  return _internal_comments().size();
+}
+inline int AlertServiceGetResponse::comments_size() const {
+  return _internal_comments_size();
+}
+inline ::kentik::alerting::public_::v202505::Comment* AlertServiceGetResponse::mutable_comments(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:kentik.alerting.public.v202505.AlertServiceGetResponse.comments)
+  return _internal_mutable_comments()->Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::Comment>* AlertServiceGetResponse::mutable_comments()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:kentik.alerting.public.v202505.AlertServiceGetResponse.comments)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_comments();
+}
+inline const ::kentik::alerting::public_::v202505::Comment& AlertServiceGetResponse::comments(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.alerting.public.v202505.AlertServiceGetResponse.comments)
+  return _internal_comments().Get(index);
+}
+inline ::kentik::alerting::public_::v202505::Comment* AlertServiceGetResponse::add_comments() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::kentik::alerting::public_::v202505::Comment* _add = _internal_mutable_comments()->Add();
+  // @@protoc_insertion_point(field_add:kentik.alerting.public.v202505.AlertServiceGetResponse.comments)
+  return _add;
+}
+inline const ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::Comment>& AlertServiceGetResponse::comments() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:kentik.alerting.public.v202505.AlertServiceGetResponse.comments)
+  return _internal_comments();
+}
+inline const ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::Comment>&
+AlertServiceGetResponse::_internal_comments() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.comments_;
+}
+inline ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::Comment>*
+AlertServiceGetResponse::_internal_mutable_comments() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.comments_;
 }
 
 // -------------------------------------------------------------------
@@ -12249,6 +13129,302 @@ inline ::google::protobuf::Map<std::string, std::string>* NmsContext::_internal_
 inline ::google::protobuf::Map<std::string, std::string>* NmsContext::mutable_group_key() ABSL_ATTRIBUTE_LIFETIME_BOUND {
   // @@protoc_insertion_point(field_mutable_map:kentik.alerting.public.v202505.NmsContext.group_key)
   return _internal_mutable_group_key();
+}
+
+// -------------------------------------------------------------------
+
+// AlertServiceAddCommentRequest
+
+// string alert_id = 1 [json_name = "alertId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void AlertServiceAddCommentRequest::clear_alert_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.alert_id_.ClearToEmpty();
+}
+inline const std::string& AlertServiceAddCommentRequest::alert_id() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.alerting.public.v202505.AlertServiceAddCommentRequest.alert_id)
+  return _internal_alert_id();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void AlertServiceAddCommentRequest::set_alert_id(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.alert_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.alerting.public.v202505.AlertServiceAddCommentRequest.alert_id)
+}
+inline std::string* AlertServiceAddCommentRequest::mutable_alert_id() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_alert_id();
+  // @@protoc_insertion_point(field_mutable:kentik.alerting.public.v202505.AlertServiceAddCommentRequest.alert_id)
+  return _s;
+}
+inline const std::string& AlertServiceAddCommentRequest::_internal_alert_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.alert_id_.Get();
+}
+inline void AlertServiceAddCommentRequest::_internal_set_alert_id(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.alert_id_.Set(value, GetArena());
+}
+inline std::string* AlertServiceAddCommentRequest::_internal_mutable_alert_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.alert_id_.Mutable( GetArena());
+}
+inline std::string* AlertServiceAddCommentRequest::release_alert_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.alerting.public.v202505.AlertServiceAddCommentRequest.alert_id)
+  return _impl_.alert_id_.Release();
+}
+inline void AlertServiceAddCommentRequest::set_allocated_alert_id(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.alert_id_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.alert_id_.IsDefault()) {
+    _impl_.alert_id_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.alerting.public.v202505.AlertServiceAddCommentRequest.alert_id)
+}
+
+// string text = 2 [json_name = "text", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void AlertServiceAddCommentRequest::clear_text() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.text_.ClearToEmpty();
+}
+inline const std::string& AlertServiceAddCommentRequest::text() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.alerting.public.v202505.AlertServiceAddCommentRequest.text)
+  return _internal_text();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void AlertServiceAddCommentRequest::set_text(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.text_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.alerting.public.v202505.AlertServiceAddCommentRequest.text)
+}
+inline std::string* AlertServiceAddCommentRequest::mutable_text() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_text();
+  // @@protoc_insertion_point(field_mutable:kentik.alerting.public.v202505.AlertServiceAddCommentRequest.text)
+  return _s;
+}
+inline const std::string& AlertServiceAddCommentRequest::_internal_text() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.text_.Get();
+}
+inline void AlertServiceAddCommentRequest::_internal_set_text(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.text_.Set(value, GetArena());
+}
+inline std::string* AlertServiceAddCommentRequest::_internal_mutable_text() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.text_.Mutable( GetArena());
+}
+inline std::string* AlertServiceAddCommentRequest::release_text() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.alerting.public.v202505.AlertServiceAddCommentRequest.text)
+  return _impl_.text_.Release();
+}
+inline void AlertServiceAddCommentRequest::set_allocated_text(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.text_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.text_.IsDefault()) {
+    _impl_.text_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.alerting.public.v202505.AlertServiceAddCommentRequest.text)
+}
+
+// -------------------------------------------------------------------
+
+// AlertServiceAddCommentResponse
+
+// .kentik.alerting.public.v202505.Comment comment = 1 [json_name = "comment", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool AlertServiceAddCommentResponse::has_comment() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.comment_ != nullptr);
+  return value;
+}
+inline const ::kentik::alerting::public_::v202505::Comment& AlertServiceAddCommentResponse::_internal_comment() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::kentik::alerting::public_::v202505::Comment* p = _impl_.comment_;
+  return p != nullptr ? *p : reinterpret_cast<const ::kentik::alerting::public_::v202505::Comment&>(::kentik::alerting::public_::v202505::_Comment_default_instance_);
+}
+inline const ::kentik::alerting::public_::v202505::Comment& AlertServiceAddCommentResponse::comment() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.alerting.public.v202505.AlertServiceAddCommentResponse.comment)
+  return _internal_comment();
+}
+inline void AlertServiceAddCommentResponse::unsafe_arena_set_allocated_comment(::kentik::alerting::public_::v202505::Comment* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.comment_);
+  }
+  _impl_.comment_ = reinterpret_cast<::kentik::alerting::public_::v202505::Comment*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.alerting.public.v202505.AlertServiceAddCommentResponse.comment)
+}
+inline ::kentik::alerting::public_::v202505::Comment* AlertServiceAddCommentResponse::release_comment() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::kentik::alerting::public_::v202505::Comment* released = _impl_.comment_;
+  _impl_.comment_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::kentik::alerting::public_::v202505::Comment* AlertServiceAddCommentResponse::unsafe_arena_release_comment() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.alerting.public.v202505.AlertServiceAddCommentResponse.comment)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::kentik::alerting::public_::v202505::Comment* temp = _impl_.comment_;
+  _impl_.comment_ = nullptr;
+  return temp;
+}
+inline ::kentik::alerting::public_::v202505::Comment* AlertServiceAddCommentResponse::_internal_mutable_comment() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.comment_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::kentik::alerting::public_::v202505::Comment>(GetArena());
+    _impl_.comment_ = reinterpret_cast<::kentik::alerting::public_::v202505::Comment*>(p);
+  }
+  return _impl_.comment_;
+}
+inline ::kentik::alerting::public_::v202505::Comment* AlertServiceAddCommentResponse::mutable_comment() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  ::kentik::alerting::public_::v202505::Comment* _msg = _internal_mutable_comment();
+  // @@protoc_insertion_point(field_mutable:kentik.alerting.public.v202505.AlertServiceAddCommentResponse.comment)
+  return _msg;
+}
+inline void AlertServiceAddCommentResponse::set_allocated_comment(::kentik::alerting::public_::v202505::Comment* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.comment_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::google::protobuf::MessageLite*>(value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.comment_ = reinterpret_cast<::kentik::alerting::public_::v202505::Comment*>(value);
+  // @@protoc_insertion_point(field_set_allocated:kentik.alerting.public.v202505.AlertServiceAddCommentResponse.comment)
+}
+
+// -------------------------------------------------------------------
+
+// AlertServiceListCommentsRequest
+
+// string alert_id = 1 [json_name = "alertId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void AlertServiceListCommentsRequest::clear_alert_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.alert_id_.ClearToEmpty();
+}
+inline const std::string& AlertServiceListCommentsRequest::alert_id() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.alerting.public.v202505.AlertServiceListCommentsRequest.alert_id)
+  return _internal_alert_id();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void AlertServiceListCommentsRequest::set_alert_id(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.alert_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.alerting.public.v202505.AlertServiceListCommentsRequest.alert_id)
+}
+inline std::string* AlertServiceListCommentsRequest::mutable_alert_id() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_alert_id();
+  // @@protoc_insertion_point(field_mutable:kentik.alerting.public.v202505.AlertServiceListCommentsRequest.alert_id)
+  return _s;
+}
+inline const std::string& AlertServiceListCommentsRequest::_internal_alert_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.alert_id_.Get();
+}
+inline void AlertServiceListCommentsRequest::_internal_set_alert_id(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.alert_id_.Set(value, GetArena());
+}
+inline std::string* AlertServiceListCommentsRequest::_internal_mutable_alert_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.alert_id_.Mutable( GetArena());
+}
+inline std::string* AlertServiceListCommentsRequest::release_alert_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.alerting.public.v202505.AlertServiceListCommentsRequest.alert_id)
+  return _impl_.alert_id_.Release();
+}
+inline void AlertServiceListCommentsRequest::set_allocated_alert_id(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.alert_id_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.alert_id_.IsDefault()) {
+    _impl_.alert_id_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.alerting.public.v202505.AlertServiceListCommentsRequest.alert_id)
+}
+
+// -------------------------------------------------------------------
+
+// AlertServiceListCommentsResponse
+
+// repeated .kentik.alerting.public.v202505.Comment comments = 1 [json_name = "comments", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline int AlertServiceListCommentsResponse::_internal_comments_size() const {
+  return _internal_comments().size();
+}
+inline int AlertServiceListCommentsResponse::comments_size() const {
+  return _internal_comments_size();
+}
+inline ::kentik::alerting::public_::v202505::Comment* AlertServiceListCommentsResponse::mutable_comments(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:kentik.alerting.public.v202505.AlertServiceListCommentsResponse.comments)
+  return _internal_mutable_comments()->Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::Comment>* AlertServiceListCommentsResponse::mutable_comments()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:kentik.alerting.public.v202505.AlertServiceListCommentsResponse.comments)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_comments();
+}
+inline const ::kentik::alerting::public_::v202505::Comment& AlertServiceListCommentsResponse::comments(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.alerting.public.v202505.AlertServiceListCommentsResponse.comments)
+  return _internal_comments().Get(index);
+}
+inline ::kentik::alerting::public_::v202505::Comment* AlertServiceListCommentsResponse::add_comments() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::kentik::alerting::public_::v202505::Comment* _add = _internal_mutable_comments()->Add();
+  // @@protoc_insertion_point(field_add:kentik.alerting.public.v202505.AlertServiceListCommentsResponse.comments)
+  return _add;
+}
+inline const ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::Comment>& AlertServiceListCommentsResponse::comments() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:kentik.alerting.public.v202505.AlertServiceListCommentsResponse.comments)
+  return _internal_comments();
+}
+inline const ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::Comment>&
+AlertServiceListCommentsResponse::_internal_comments() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.comments_;
+}
+inline ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::Comment>*
+AlertServiceListCommentsResponse::_internal_mutable_comments() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.comments_;
 }
 
 #ifdef __GNUC__

@@ -26,6 +26,7 @@ PROTOBUF_C__BEGIN_DECLS
 #include "kentik/alerting/types/v202506/sorting.pb-c.h"
 #include "kentik/alerting/public/v202505/common.pb-c.h"
 #include "kentik/alerting/public/v202505/nms_common.pb-c.h"
+#include "kentik/alerting/public/v202505/comment.pb-c.h"
 
 typedef struct Kentik__Alerting__Public__V202505__AlertServiceGetRequest Kentik__Alerting__Public__V202505__AlertServiceGetRequest;
 typedef struct Kentik__Alerting__Public__V202505__AlertServiceGetResponse Kentik__Alerting__Public__V202505__AlertServiceGetResponse;
@@ -61,6 +62,10 @@ typedef struct Kentik__Alerting__Public__V202505__NmsContext__AlarmTarget__Field
 typedef struct Kentik__Alerting__Public__V202505__NmsContext__AlarmTarget__TagsEntry Kentik__Alerting__Public__V202505__NmsContext__AlarmTarget__TagsEntry;
 typedef struct Kentik__Alerting__Public__V202505__NmsContext__AlarmMetricMap Kentik__Alerting__Public__V202505__NmsContext__AlarmMetricMap;
 typedef struct Kentik__Alerting__Public__V202505__NmsContext__AlarmMetricMap__MetricsEntry Kentik__Alerting__Public__V202505__NmsContext__AlarmMetricMap__MetricsEntry;
+typedef struct Kentik__Alerting__Public__V202505__AlertServiceAddCommentRequest Kentik__Alerting__Public__V202505__AlertServiceAddCommentRequest;
+typedef struct Kentik__Alerting__Public__V202505__AlertServiceAddCommentResponse Kentik__Alerting__Public__V202505__AlertServiceAddCommentResponse;
+typedef struct Kentik__Alerting__Public__V202505__AlertServiceListCommentsRequest Kentik__Alerting__Public__V202505__AlertServiceListCommentsRequest;
+typedef struct Kentik__Alerting__Public__V202505__AlertServiceListCommentsResponse Kentik__Alerting__Public__V202505__AlertServiceListCommentsResponse;
 
 
 /* --- enums --- */
@@ -192,10 +197,12 @@ struct  Kentik__Alerting__Public__V202505__AlertServiceGetResponse
   Kentik__Alerting__Public__V202505__Alert *alert;
   size_t n_history;
   Kentik__Alerting__Public__V202505__AlertPhase **history;
+  size_t n_comments;
+  Kentik__Alerting__Public__V202505__Comment **comments;
 };
 #define KENTIK__ALERTING__PUBLIC__V202505__ALERT_SERVICE_GET_RESPONSE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__alerting__public__v202505__alert_service_get_response__descriptor) \
-    , NULL, 0,NULL }
+    , NULL, 0,NULL, 0,NULL }
 
 
 typedef enum {
@@ -677,6 +684,48 @@ struct  Kentik__Alerting__Public__V202505__NmsContext
     , NULL, NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL }
 
 
+struct  Kentik__Alerting__Public__V202505__AlertServiceAddCommentRequest
+{
+  ProtobufCMessage base;
+  char *alert_id;
+  char *text;
+};
+#define KENTIK__ALERTING__PUBLIC__V202505__ALERT_SERVICE_ADD_COMMENT_REQUEST__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__alerting__public__v202505__alert_service_add_comment_request__descriptor) \
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
+
+
+struct  Kentik__Alerting__Public__V202505__AlertServiceAddCommentResponse
+{
+  ProtobufCMessage base;
+  Kentik__Alerting__Public__V202505__Comment *comment;
+};
+#define KENTIK__ALERTING__PUBLIC__V202505__ALERT_SERVICE_ADD_COMMENT_RESPONSE__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__alerting__public__v202505__alert_service_add_comment_response__descriptor) \
+    , NULL }
+
+
+struct  Kentik__Alerting__Public__V202505__AlertServiceListCommentsRequest
+{
+  ProtobufCMessage base;
+  char *alert_id;
+};
+#define KENTIK__ALERTING__PUBLIC__V202505__ALERT_SERVICE_LIST_COMMENTS_REQUEST__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__alerting__public__v202505__alert_service_list_comments_request__descriptor) \
+    , (char *)protobuf_c_empty_string }
+
+
+struct  Kentik__Alerting__Public__V202505__AlertServiceListCommentsResponse
+{
+  ProtobufCMessage base;
+  size_t n_comments;
+  Kentik__Alerting__Public__V202505__Comment **comments;
+};
+#define KENTIK__ALERTING__PUBLIC__V202505__ALERT_SERVICE_LIST_COMMENTS_RESPONSE__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__alerting__public__v202505__alert_service_list_comments_response__descriptor) \
+    , 0,NULL }
+
+
 /* Kentik__Alerting__Public__V202505__AlertServiceGetRequest methods */
 void   kentik__alerting__public__v202505__alert_service_get_request__init
                      (Kentik__Alerting__Public__V202505__AlertServiceGetRequest         *message);
@@ -1019,6 +1068,82 @@ Kentik__Alerting__Public__V202505__NmsContext *
 void   kentik__alerting__public__v202505__nms_context__free_unpacked
                      (Kentik__Alerting__Public__V202505__NmsContext *message,
                       ProtobufCAllocator *allocator);
+/* Kentik__Alerting__Public__V202505__AlertServiceAddCommentRequest methods */
+void   kentik__alerting__public__v202505__alert_service_add_comment_request__init
+                     (Kentik__Alerting__Public__V202505__AlertServiceAddCommentRequest         *message);
+size_t kentik__alerting__public__v202505__alert_service_add_comment_request__get_packed_size
+                     (const Kentik__Alerting__Public__V202505__AlertServiceAddCommentRequest   *message);
+size_t kentik__alerting__public__v202505__alert_service_add_comment_request__pack
+                     (const Kentik__Alerting__Public__V202505__AlertServiceAddCommentRequest   *message,
+                      uint8_t             *out);
+size_t kentik__alerting__public__v202505__alert_service_add_comment_request__pack_to_buffer
+                     (const Kentik__Alerting__Public__V202505__AlertServiceAddCommentRequest   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Alerting__Public__V202505__AlertServiceAddCommentRequest *
+       kentik__alerting__public__v202505__alert_service_add_comment_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__alerting__public__v202505__alert_service_add_comment_request__free_unpacked
+                     (Kentik__Alerting__Public__V202505__AlertServiceAddCommentRequest *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Alerting__Public__V202505__AlertServiceAddCommentResponse methods */
+void   kentik__alerting__public__v202505__alert_service_add_comment_response__init
+                     (Kentik__Alerting__Public__V202505__AlertServiceAddCommentResponse         *message);
+size_t kentik__alerting__public__v202505__alert_service_add_comment_response__get_packed_size
+                     (const Kentik__Alerting__Public__V202505__AlertServiceAddCommentResponse   *message);
+size_t kentik__alerting__public__v202505__alert_service_add_comment_response__pack
+                     (const Kentik__Alerting__Public__V202505__AlertServiceAddCommentResponse   *message,
+                      uint8_t             *out);
+size_t kentik__alerting__public__v202505__alert_service_add_comment_response__pack_to_buffer
+                     (const Kentik__Alerting__Public__V202505__AlertServiceAddCommentResponse   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Alerting__Public__V202505__AlertServiceAddCommentResponse *
+       kentik__alerting__public__v202505__alert_service_add_comment_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__alerting__public__v202505__alert_service_add_comment_response__free_unpacked
+                     (Kentik__Alerting__Public__V202505__AlertServiceAddCommentResponse *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Alerting__Public__V202505__AlertServiceListCommentsRequest methods */
+void   kentik__alerting__public__v202505__alert_service_list_comments_request__init
+                     (Kentik__Alerting__Public__V202505__AlertServiceListCommentsRequest         *message);
+size_t kentik__alerting__public__v202505__alert_service_list_comments_request__get_packed_size
+                     (const Kentik__Alerting__Public__V202505__AlertServiceListCommentsRequest   *message);
+size_t kentik__alerting__public__v202505__alert_service_list_comments_request__pack
+                     (const Kentik__Alerting__Public__V202505__AlertServiceListCommentsRequest   *message,
+                      uint8_t             *out);
+size_t kentik__alerting__public__v202505__alert_service_list_comments_request__pack_to_buffer
+                     (const Kentik__Alerting__Public__V202505__AlertServiceListCommentsRequest   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Alerting__Public__V202505__AlertServiceListCommentsRequest *
+       kentik__alerting__public__v202505__alert_service_list_comments_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__alerting__public__v202505__alert_service_list_comments_request__free_unpacked
+                     (Kentik__Alerting__Public__V202505__AlertServiceListCommentsRequest *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Alerting__Public__V202505__AlertServiceListCommentsResponse methods */
+void   kentik__alerting__public__v202505__alert_service_list_comments_response__init
+                     (Kentik__Alerting__Public__V202505__AlertServiceListCommentsResponse         *message);
+size_t kentik__alerting__public__v202505__alert_service_list_comments_response__get_packed_size
+                     (const Kentik__Alerting__Public__V202505__AlertServiceListCommentsResponse   *message);
+size_t kentik__alerting__public__v202505__alert_service_list_comments_response__pack
+                     (const Kentik__Alerting__Public__V202505__AlertServiceListCommentsResponse   *message,
+                      uint8_t             *out);
+size_t kentik__alerting__public__v202505__alert_service_list_comments_response__pack_to_buffer
+                     (const Kentik__Alerting__Public__V202505__AlertServiceListCommentsResponse   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Alerting__Public__V202505__AlertServiceListCommentsResponse *
+       kentik__alerting__public__v202505__alert_service_list_comments_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__alerting__public__v202505__alert_service_list_comments_response__free_unpacked
+                     (Kentik__Alerting__Public__V202505__AlertServiceListCommentsResponse *message,
+                      ProtobufCAllocator *allocator);
 /* --- per-message closures --- */
 
 typedef void (*Kentik__Alerting__Public__V202505__AlertServiceGetRequest_Closure)
@@ -1123,6 +1248,18 @@ typedef void (*Kentik__Alerting__Public__V202505__NmsContext__AlarmMetricMap_Clo
 typedef void (*Kentik__Alerting__Public__V202505__NmsContext_Closure)
                  (const Kentik__Alerting__Public__V202505__NmsContext *message,
                   void *closure_data);
+typedef void (*Kentik__Alerting__Public__V202505__AlertServiceAddCommentRequest_Closure)
+                 (const Kentik__Alerting__Public__V202505__AlertServiceAddCommentRequest *message,
+                  void *closure_data);
+typedef void (*Kentik__Alerting__Public__V202505__AlertServiceAddCommentResponse_Closure)
+                 (const Kentik__Alerting__Public__V202505__AlertServiceAddCommentResponse *message,
+                  void *closure_data);
+typedef void (*Kentik__Alerting__Public__V202505__AlertServiceListCommentsRequest_Closure)
+                 (const Kentik__Alerting__Public__V202505__AlertServiceListCommentsRequest *message,
+                  void *closure_data);
+typedef void (*Kentik__Alerting__Public__V202505__AlertServiceListCommentsResponse_Closure)
+                 (const Kentik__Alerting__Public__V202505__AlertServiceListCommentsResponse *message,
+                  void *closure_data);
 
 /* --- services --- */
 
@@ -1150,6 +1287,14 @@ struct Kentik__Alerting__Public__V202505__AlertService_Service
                 const Kentik__Alerting__Public__V202505__AlertServiceClearRequest *input,
                 Kentik__Alerting__Public__V202505__AlertServiceClearResponse_Closure closure,
                 void *closure_data);
+  void (*add_comment)(Kentik__Alerting__Public__V202505__AlertService_Service *service,
+                      const Kentik__Alerting__Public__V202505__AlertServiceAddCommentRequest *input,
+                      Kentik__Alerting__Public__V202505__AlertServiceAddCommentResponse_Closure closure,
+                      void *closure_data);
+  void (*list_comments)(Kentik__Alerting__Public__V202505__AlertService_Service *service,
+                        const Kentik__Alerting__Public__V202505__AlertServiceListCommentsRequest *input,
+                        Kentik__Alerting__Public__V202505__AlertServiceListCommentsResponse_Closure closure,
+                        void *closure_data);
 };
 typedef void (*Kentik__Alerting__Public__V202505__AlertService_ServiceDestroy)(Kentik__Alerting__Public__V202505__AlertService_Service *);
 void kentik__alerting__public__v202505__alert_service__init (Kentik__Alerting__Public__V202505__AlertService_Service *service,
@@ -1162,7 +1307,9 @@ void kentik__alerting__public__v202505__alert_service__init (Kentik__Alerting__P
       function_prefix__ ## list,\
       function_prefix__ ## ack,\
       function_prefix__ ## un_ack,\
-      function_prefix__ ## clear  }
+      function_prefix__ ## clear,\
+      function_prefix__ ## add_comment,\
+      function_prefix__ ## list_comments  }
 void kentik__alerting__public__v202505__alert_service__get(ProtobufCService *service,
                                                            const Kentik__Alerting__Public__V202505__AlertServiceGetRequest *input,
                                                            Kentik__Alerting__Public__V202505__AlertServiceGetResponse_Closure closure,
@@ -1183,6 +1330,14 @@ void kentik__alerting__public__v202505__alert_service__clear(ProtobufCService *s
                                                              const Kentik__Alerting__Public__V202505__AlertServiceClearRequest *input,
                                                              Kentik__Alerting__Public__V202505__AlertServiceClearResponse_Closure closure,
                                                              void *closure_data);
+void kentik__alerting__public__v202505__alert_service__add_comment(ProtobufCService *service,
+                                                                   const Kentik__Alerting__Public__V202505__AlertServiceAddCommentRequest *input,
+                                                                   Kentik__Alerting__Public__V202505__AlertServiceAddCommentResponse_Closure closure,
+                                                                   void *closure_data);
+void kentik__alerting__public__v202505__alert_service__list_comments(ProtobufCService *service,
+                                                                     const Kentik__Alerting__Public__V202505__AlertServiceListCommentsRequest *input,
+                                                                     Kentik__Alerting__Public__V202505__AlertServiceListCommentsResponse_Closure closure,
+                                                                     void *closure_data);
 
 /* --- descriptors --- */
 
@@ -1223,6 +1378,10 @@ extern const ProtobufCMessageDescriptor kentik__alerting__public__v202505__nms_c
 extern const ProtobufCMessageDescriptor kentik__alerting__public__v202505__nms_context__alarm_target__tags_entry__descriptor;
 extern const ProtobufCMessageDescriptor kentik__alerting__public__v202505__nms_context__alarm_metric_map__descriptor;
 extern const ProtobufCMessageDescriptor kentik__alerting__public__v202505__nms_context__alarm_metric_map__metrics_entry__descriptor;
+extern const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_service_add_comment_request__descriptor;
+extern const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_service_add_comment_response__descriptor;
+extern const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_service_list_comments_request__descriptor;
+extern const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_service_list_comments_response__descriptor;
 extern const ProtobufCServiceDescriptor kentik__alerting__public__v202505__alert_service__descriptor;
 
 PROTOBUF_C__END_DECLS

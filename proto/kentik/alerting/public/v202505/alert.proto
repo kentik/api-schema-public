@@ -17,6 +17,7 @@ import "kentik/alerting/types/v202506/sorting.proto";
 
 import "kentik/alerting/public/v202505/common.proto";
 import "kentik/alerting/public/v202505/nms_common.proto";
+import "kentik/alerting/public/v202505/comment.proto";
 
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   info: {
@@ -135,6 +136,31 @@ service AlertService {
       description: "Clears alerts."
     };
   }
+
+  rpc AddComment(AlertServiceAddCommentRequest) returns (AlertServiceAddCommentResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.alerting:write";
+    option (google.api.http) = {
+      post: "/v202505/alerts/{alert_id}/comments"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "AddComment"
+      summary: "Add Alert Comment"
+      description: "Adds a comment to an alert."
+    };
+  }
+
+  rpc ListComments(AlertServiceListCommentsRequest) returns (AlertServiceListCommentsResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.alerting:read";
+    option (google.api.http) = {
+      get: "/v202505/alerts/{alert_id}/comments"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ListComments"
+      summary: "List Alert Comments"
+      description: "Returns all comments for an alert."
+    };
+  }
 }
 
 message AlertServiceGetRequest {
@@ -159,7 +185,12 @@ message AlertServiceGetResponse {
       description: "The history of the alert."
     }
   ];
-
+  repeated Comment comments = 3[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The comments on the alert."
+    }
+  ];
 }
 
 message AlertPhase {
@@ -799,4 +830,47 @@ message NmsContext {
   message AlarmMetricMap {
     map<string, double> metrics = 1;
   }
+}
+
+message AlertServiceAddCommentRequest {
+  string alert_id = 1[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The ID of the alert to add the comment to."
+    }
+  ];
+  string text = 2[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The text content of the comment. Maximum length is 5000 characters."
+      max_length: 5000
+    }
+  ];
+}
+
+message AlertServiceAddCommentResponse {
+  Comment comment = 1[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The newly created comment."
+    }
+  ];
+}
+
+message AlertServiceListCommentsRequest {
+  string alert_id = 1[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The ID of the alert to list comments for."
+    }
+  ];
+}
+
+message AlertServiceListCommentsResponse {
+  repeated Comment comments = 1[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The comments on the alert."
+    }
+  ];
 }
