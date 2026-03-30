@@ -547,6 +547,186 @@ void   kentik__alerting__public__v202505__alert_service_clear_response__free_unp
   assert(message->base.descriptor == &kentik__alerting__public__v202505__alert_service_clear_response__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   kentik__alerting__public__v202505__service_now_context__init
+                     (Kentik__Alerting__Public__V202505__ServiceNowContext         *message)
+{
+  static const Kentik__Alerting__Public__V202505__ServiceNowContext init_value = KENTIK__ALERTING__PUBLIC__V202505__SERVICE_NOW_CONTEXT__INIT;
+  *message = init_value;
+}
+size_t kentik__alerting__public__v202505__service_now_context__get_packed_size
+                     (const Kentik__Alerting__Public__V202505__ServiceNowContext *message)
+{
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__service_now_context__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__alerting__public__v202505__service_now_context__pack
+                     (const Kentik__Alerting__Public__V202505__ServiceNowContext *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__service_now_context__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__alerting__public__v202505__service_now_context__pack_to_buffer
+                     (const Kentik__Alerting__Public__V202505__ServiceNowContext *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__service_now_context__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Alerting__Public__V202505__ServiceNowContext *
+       kentik__alerting__public__v202505__service_now_context__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Alerting__Public__V202505__ServiceNowContext *)
+     protobuf_c_message_unpack (&kentik__alerting__public__v202505__service_now_context__descriptor,
+                                allocator, len, data);
+}
+void   kentik__alerting__public__v202505__service_now_context__free_unpacked
+                     (Kentik__Alerting__Public__V202505__ServiceNowContext *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__service_now_context__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__alerting__public__v202505__external_context__init
+                     (Kentik__Alerting__Public__V202505__ExternalContext         *message)
+{
+  static const Kentik__Alerting__Public__V202505__ExternalContext init_value = KENTIK__ALERTING__PUBLIC__V202505__EXTERNAL_CONTEXT__INIT;
+  *message = init_value;
+}
+size_t kentik__alerting__public__v202505__external_context__get_packed_size
+                     (const Kentik__Alerting__Public__V202505__ExternalContext *message)
+{
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__external_context__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__alerting__public__v202505__external_context__pack
+                     (const Kentik__Alerting__Public__V202505__ExternalContext *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__external_context__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__alerting__public__v202505__external_context__pack_to_buffer
+                     (const Kentik__Alerting__Public__V202505__ExternalContext *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__external_context__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Alerting__Public__V202505__ExternalContext *
+       kentik__alerting__public__v202505__external_context__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Alerting__Public__V202505__ExternalContext *)
+     protobuf_c_message_unpack (&kentik__alerting__public__v202505__external_context__descriptor,
+                                allocator, len, data);
+}
+void   kentik__alerting__public__v202505__external_context__free_unpacked
+                     (Kentik__Alerting__Public__V202505__ExternalContext *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__external_context__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__alerting__public__v202505__alert_service_set_external_context_request__init
+                     (Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextRequest         *message)
+{
+  static const Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextRequest init_value = KENTIK__ALERTING__PUBLIC__V202505__ALERT_SERVICE_SET_EXTERNAL_CONTEXT_REQUEST__INIT;
+  *message = init_value;
+}
+size_t kentik__alerting__public__v202505__alert_service_set_external_context_request__get_packed_size
+                     (const Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextRequest *message)
+{
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__alert_service_set_external_context_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__alerting__public__v202505__alert_service_set_external_context_request__pack
+                     (const Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__alert_service_set_external_context_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__alerting__public__v202505__alert_service_set_external_context_request__pack_to_buffer
+                     (const Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__alert_service_set_external_context_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextRequest *
+       kentik__alerting__public__v202505__alert_service_set_external_context_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextRequest *)
+     protobuf_c_message_unpack (&kentik__alerting__public__v202505__alert_service_set_external_context_request__descriptor,
+                                allocator, len, data);
+}
+void   kentik__alerting__public__v202505__alert_service_set_external_context_request__free_unpacked
+                     (Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__alert_service_set_external_context_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__alerting__public__v202505__alert_service_set_external_context_response__init
+                     (Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextResponse         *message)
+{
+  static const Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextResponse init_value = KENTIK__ALERTING__PUBLIC__V202505__ALERT_SERVICE_SET_EXTERNAL_CONTEXT_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t kentik__alerting__public__v202505__alert_service_set_external_context_response__get_packed_size
+                     (const Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextResponse *message)
+{
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__alert_service_set_external_context_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__alerting__public__v202505__alert_service_set_external_context_response__pack
+                     (const Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__alert_service_set_external_context_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__alerting__public__v202505__alert_service_set_external_context_response__pack_to_buffer
+                     (const Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__alert_service_set_external_context_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextResponse *
+       kentik__alerting__public__v202505__alert_service_set_external_context_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextResponse *)
+     protobuf_c_message_unpack (&kentik__alerting__public__v202505__alert_service_set_external_context_response__descriptor,
+                                allocator, len, data);
+}
+void   kentik__alerting__public__v202505__alert_service_set_external_context_response__free_unpacked
+                     (Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__alert_service_set_external_context_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 void   kentik__alerting__public__v202505__alert__acknowledgement__init
                      (Kentik__Alerting__Public__V202505__Alert__Acknowledgement         *message)
 {
@@ -1730,6 +1910,184 @@ const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_servic
   kentik__alerting__public__v202505__alert_service_clear_response__field_indices_by_name,
   1,  kentik__alerting__public__v202505__alert_service_clear_response__number_ranges,
   (ProtobufCMessageInit) kentik__alerting__public__v202505__alert_service_clear_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__service_now_context__field_descriptors[2] =
+{
+  {
+    "incident_id",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Alerting__Public__V202505__ServiceNowContext, incident_id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "incident_url",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Alerting__Public__V202505__ServiceNowContext, incident_url),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__alerting__public__v202505__service_now_context__field_indices_by_name[] = {
+  0,   /* field[0] = incident_id */
+  1,   /* field[1] = incident_url */
+};
+static const ProtobufCIntRange kentik__alerting__public__v202505__service_now_context__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor kentik__alerting__public__v202505__service_now_context__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.alerting.public.v202505.ServiceNowContext",
+  "ServiceNowContext",
+  "Kentik__Alerting__Public__V202505__ServiceNowContext",
+  "kentik.alerting.public.v202505",
+  sizeof(Kentik__Alerting__Public__V202505__ServiceNowContext),
+  2,
+  kentik__alerting__public__v202505__service_now_context__field_descriptors,
+  kentik__alerting__public__v202505__service_now_context__field_indices_by_name,
+  1,  kentik__alerting__public__v202505__service_now_context__number_ranges,
+  (ProtobufCMessageInit) kentik__alerting__public__v202505__service_now_context__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__external_context__field_descriptors[1] =
+{
+  {
+    "servicenow",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Kentik__Alerting__Public__V202505__ExternalContext, context_case),
+    offsetof(Kentik__Alerting__Public__V202505__ExternalContext, servicenow),
+    &kentik__alerting__public__v202505__service_now_context__descriptor,
+    NULL,
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__alerting__public__v202505__external_context__field_indices_by_name[] = {
+  0,   /* field[0] = servicenow */
+};
+static const ProtobufCIntRange kentik__alerting__public__v202505__external_context__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor kentik__alerting__public__v202505__external_context__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.alerting.public.v202505.ExternalContext",
+  "ExternalContext",
+  "Kentik__Alerting__Public__V202505__ExternalContext",
+  "kentik.alerting.public.v202505",
+  sizeof(Kentik__Alerting__Public__V202505__ExternalContext),
+  1,
+  kentik__alerting__public__v202505__external_context__field_descriptors,
+  kentik__alerting__public__v202505__external_context__field_indices_by_name,
+  1,  kentik__alerting__public__v202505__external_context__number_ranges,
+  (ProtobufCMessageInit) kentik__alerting__public__v202505__external_context__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert_service_set_external_context_request__field_descriptors[2] =
+{
+  {
+    "alert_id",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextRequest, alert_id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "context",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextRequest, context),
+    &kentik__alerting__public__v202505__external_context__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__alerting__public__v202505__alert_service_set_external_context_request__field_indices_by_name[] = {
+  0,   /* field[0] = alert_id */
+  1,   /* field[1] = context */
+};
+static const ProtobufCIntRange kentik__alerting__public__v202505__alert_service_set_external_context_request__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_service_set_external_context_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.alerting.public.v202505.AlertServiceSetExternalContextRequest",
+  "AlertServiceSetExternalContextRequest",
+  "Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextRequest",
+  "kentik.alerting.public.v202505",
+  sizeof(Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextRequest),
+  2,
+  kentik__alerting__public__v202505__alert_service_set_external_context_request__field_descriptors,
+  kentik__alerting__public__v202505__alert_service_set_external_context_request__field_indices_by_name,
+  1,  kentik__alerting__public__v202505__alert_service_set_external_context_request__number_ranges,
+  (ProtobufCMessageInit) kentik__alerting__public__v202505__alert_service_set_external_context_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert_service_set_external_context_response__field_descriptors[1] =
+{
+  {
+    "updated_at",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextResponse, updated_at),
+    &google__protobuf__timestamp__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__alerting__public__v202505__alert_service_set_external_context_response__field_indices_by_name[] = {
+  0,   /* field[0] = updated_at */
+};
+static const ProtobufCIntRange kentik__alerting__public__v202505__alert_service_set_external_context_response__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_service_set_external_context_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.alerting.public.v202505.AlertServiceSetExternalContextResponse",
+  "AlertServiceSetExternalContextResponse",
+  "Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextResponse",
+  "kentik.alerting.public.v202505",
+  sizeof(Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextResponse),
+  1,
+  kentik__alerting__public__v202505__alert_service_set_external_context_response__field_descriptors,
+  kentik__alerting__public__v202505__alert_service_set_external_context_response__field_indices_by_name,
+  1,  kentik__alerting__public__v202505__alert_service_set_external_context_response__number_ranges,
+  (ProtobufCMessageInit) kentik__alerting__public__v202505__alert_service_set_external_context_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
 static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert__acknowledgement__field_descriptors[4] =
@@ -3563,7 +3921,7 @@ const ProtobufCEnumDescriptor kentik__alerting__public__v202505__alert_acknowled
   kentik__alerting__public__v202505__alert_acknowledgement__value_ranges,
   NULL,NULL,NULL,NULL   /* reserved[1234] */
 };
-static const ProtobufCMethodDescriptor kentik__alerting__public__v202505__alert_service__method_descriptors[7] =
+static const ProtobufCMethodDescriptor kentik__alerting__public__v202505__alert_service__method_descriptors[8] =
 {
   { "Get", &kentik__alerting__public__v202505__alert_service_get_request__descriptor, &kentik__alerting__public__v202505__alert_service_get_response__descriptor },
   { "List", &kentik__alerting__public__v202505__alert_service_list_request__descriptor, &kentik__alerting__public__v202505__alert_service_list_response__descriptor },
@@ -3572,6 +3930,7 @@ static const ProtobufCMethodDescriptor kentik__alerting__public__v202505__alert_
   { "Clear", &kentik__alerting__public__v202505__alert_service_clear_request__descriptor, &kentik__alerting__public__v202505__alert_service_clear_response__descriptor },
   { "AddComment", &kentik__alerting__public__v202505__alert_service_add_comment_request__descriptor, &kentik__alerting__public__v202505__alert_service_add_comment_response__descriptor },
   { "ListComments", &kentik__alerting__public__v202505__alert_service_list_comments_request__descriptor, &kentik__alerting__public__v202505__alert_service_list_comments_response__descriptor },
+  { "SetExternalContext", &kentik__alerting__public__v202505__alert_service_set_external_context_request__descriptor, &kentik__alerting__public__v202505__alert_service_set_external_context_response__descriptor },
 };
 const unsigned kentik__alerting__public__v202505__alert_service__method_indices_by_name[] = {
   2,        /* Ack */
@@ -3580,6 +3939,7 @@ const unsigned kentik__alerting__public__v202505__alert_service__method_indices_
   0,        /* Get */
   1,        /* List */
   6,        /* ListComments */
+  7,        /* SetExternalContext */
   3         /* UnAck */
 };
 const ProtobufCServiceDescriptor kentik__alerting__public__v202505__alert_service__descriptor =
@@ -3589,7 +3949,7 @@ const ProtobufCServiceDescriptor kentik__alerting__public__v202505__alert_servic
   "AlertService",
   "Kentik__Alerting__Public__V202505__AlertService",
   "kentik.alerting.public.v202505",
-  7,
+  8,
   kentik__alerting__public__v202505__alert_service__method_descriptors,
   kentik__alerting__public__v202505__alert_service__method_indices_by_name
 };
@@ -3648,6 +4008,14 @@ void kentik__alerting__public__v202505__alert_service__list_comments(ProtobufCSe
 {
   assert(service->descriptor == &kentik__alerting__public__v202505__alert_service__descriptor);
   service->invoke(service, 6, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
+void kentik__alerting__public__v202505__alert_service__set_external_context(ProtobufCService *service,
+                                                                            const Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextRequest *input,
+                                                                            Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextResponse_Closure closure,
+                                                                            void *closure_data)
+{
+  assert(service->descriptor == &kentik__alerting__public__v202505__alert_service__descriptor);
+  service->invoke(service, 7, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void kentik__alerting__public__v202505__alert_service__init (Kentik__Alerting__Public__V202505__AlertService_Service *service,
                                                              Kentik__Alerting__Public__V202505__AlertService_ServiceDestroy destroy)

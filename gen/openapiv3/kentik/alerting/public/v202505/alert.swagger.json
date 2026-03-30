@@ -193,6 +193,59 @@
                 ]
             }
         },
+        "/v202505/alerts/{alertId}/external-context": {
+            "put": {
+                "summary": "Set External Context for Alert",
+                "description": "Add or replace external context",
+                "operationId": "SetExternalContext",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202505AlertServiceSetExternalContextResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "alertId",
+                        "description": "The ID of the alert to add or replace external context.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AlertServiceSetExternalContextBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "AlertService"
+                ]
+            }
+        },
         "/v202505/alerts/{id}": {
             "get": {
                 "summary": "Get Alert",
@@ -411,6 +464,17 @@
                 },
                 "required": [
                     "text"
+                ]
+            },
+            "AlertServiceSetExternalContextBody": {
+                "type": "object",
+                "properties": {
+                    "context": {
+                        "$ref": "#/components/schemas/v202505ExternalContext"
+                    }
+                },
+                "required": [
+                    "context"
                 ]
             },
             "AlertServiceUnAckBody": {
@@ -1169,6 +1233,17 @@
                     }
                 }
             },
+            "v202505AlertServiceSetExternalContextResponse": {
+                "type": "object",
+                "properties": {
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Timestamp of external context update.",
+                        "readOnly": true
+                    }
+                }
+            },
             "v202505AlertServiceUnAckResponse": {
                 "type": "object",
                 "properties": {
@@ -1227,6 +1302,17 @@
                         "readOnly": true
                     }
                 }
+            },
+            "v202505ExternalContext": {
+                "type": "object",
+                "properties": {
+                    "servicenow": {
+                        "$ref": "#/components/schemas/v202505ServiceNowContext"
+                    }
+                },
+                "required": [
+                    "servicenow"
+                ]
             },
             "v202505FlowContext": {
                 "type": "object",
@@ -1439,6 +1525,23 @@
                 ],
                 "default": "POLICY_TYPE_UNSPECIFIED",
                 "title": "- POLICY_TYPE_AGENT: NMS Agent Policy\n - POLICY_TYPE_COMPONENT: NMS Component Policy\n - POLICY_TYPE_DEVICE: NMS Device Policy\n - POLICY_TYPE_EVENT: NMS Event Policy\n - POLICY_TYPE_INTERFACE: NMS Interface Policy\n - POLICY_TYPE_CUSTOM: NMS Custom Policy\n - POLICY_TYPE_CLOUD: Flow Alerting Cloud Policy\n - POLICY_TYPE_PROTECT: Flow Alerting Protect Policy\n - POLICY_TYPE_TRAFFIC: Flow Alerting Traffic Policy\n - POLICY_TYPE_KMETRICS: Flow Alerting KMetrics Policy"
+            },
+            "v202505ServiceNowContext": {
+                "type": "object",
+                "properties": {
+                    "incidentId": {
+                        "type": "string",
+                        "description": "Incident ID associated with incoming Kentik alert, e.g., INC0012345."
+                    },
+                    "incidentUrl": {
+                        "type": "string",
+                        "description": "Incident URL, e.g. https://instance.service-now.com/..."
+                    }
+                },
+                "required": [
+                    "incidentId",
+                    "incidentUrl"
+                ]
             },
             "v202505Source": {
                 "type": "object",

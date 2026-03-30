@@ -19,13 +19,14 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AlertService_Get_FullMethodName          = "/kentik.alerting.public.v202505.AlertService/Get"
-	AlertService_List_FullMethodName         = "/kentik.alerting.public.v202505.AlertService/List"
-	AlertService_Ack_FullMethodName          = "/kentik.alerting.public.v202505.AlertService/Ack"
-	AlertService_UnAck_FullMethodName        = "/kentik.alerting.public.v202505.AlertService/UnAck"
-	AlertService_Clear_FullMethodName        = "/kentik.alerting.public.v202505.AlertService/Clear"
-	AlertService_AddComment_FullMethodName   = "/kentik.alerting.public.v202505.AlertService/AddComment"
-	AlertService_ListComments_FullMethodName = "/kentik.alerting.public.v202505.AlertService/ListComments"
+	AlertService_Get_FullMethodName                = "/kentik.alerting.public.v202505.AlertService/Get"
+	AlertService_List_FullMethodName               = "/kentik.alerting.public.v202505.AlertService/List"
+	AlertService_Ack_FullMethodName                = "/kentik.alerting.public.v202505.AlertService/Ack"
+	AlertService_UnAck_FullMethodName              = "/kentik.alerting.public.v202505.AlertService/UnAck"
+	AlertService_Clear_FullMethodName              = "/kentik.alerting.public.v202505.AlertService/Clear"
+	AlertService_AddComment_FullMethodName         = "/kentik.alerting.public.v202505.AlertService/AddComment"
+	AlertService_ListComments_FullMethodName       = "/kentik.alerting.public.v202505.AlertService/ListComments"
+	AlertService_SetExternalContext_FullMethodName = "/kentik.alerting.public.v202505.AlertService/SetExternalContext"
 )
 
 // AlertServiceClient is the client API for AlertService service.
@@ -39,6 +40,7 @@ type AlertServiceClient interface {
 	Clear(ctx context.Context, in *AlertServiceClearRequest, opts ...grpc.CallOption) (*AlertServiceClearResponse, error)
 	AddComment(ctx context.Context, in *AlertServiceAddCommentRequest, opts ...grpc.CallOption) (*AlertServiceAddCommentResponse, error)
 	ListComments(ctx context.Context, in *AlertServiceListCommentsRequest, opts ...grpc.CallOption) (*AlertServiceListCommentsResponse, error)
+	SetExternalContext(ctx context.Context, in *AlertServiceSetExternalContextRequest, opts ...grpc.CallOption) (*AlertServiceSetExternalContextResponse, error)
 }
 
 type alertServiceClient struct {
@@ -119,6 +121,16 @@ func (c *alertServiceClient) ListComments(ctx context.Context, in *AlertServiceL
 	return out, nil
 }
 
+func (c *alertServiceClient) SetExternalContext(ctx context.Context, in *AlertServiceSetExternalContextRequest, opts ...grpc.CallOption) (*AlertServiceSetExternalContextResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AlertServiceSetExternalContextResponse)
+	err := c.cc.Invoke(ctx, AlertService_SetExternalContext_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AlertServiceServer is the server API for AlertService service.
 // All implementations should embed UnimplementedAlertServiceServer
 // for forward compatibility.
@@ -130,6 +142,7 @@ type AlertServiceServer interface {
 	Clear(context.Context, *AlertServiceClearRequest) (*AlertServiceClearResponse, error)
 	AddComment(context.Context, *AlertServiceAddCommentRequest) (*AlertServiceAddCommentResponse, error)
 	ListComments(context.Context, *AlertServiceListCommentsRequest) (*AlertServiceListCommentsResponse, error)
+	SetExternalContext(context.Context, *AlertServiceSetExternalContextRequest) (*AlertServiceSetExternalContextResponse, error)
 }
 
 // UnimplementedAlertServiceServer should be embedded to have
@@ -159,6 +172,9 @@ func (UnimplementedAlertServiceServer) AddComment(context.Context, *AlertService
 }
 func (UnimplementedAlertServiceServer) ListComments(context.Context, *AlertServiceListCommentsRequest) (*AlertServiceListCommentsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListComments not implemented")
+}
+func (UnimplementedAlertServiceServer) SetExternalContext(context.Context, *AlertServiceSetExternalContextRequest) (*AlertServiceSetExternalContextResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetExternalContext not implemented")
 }
 func (UnimplementedAlertServiceServer) testEmbeddedByValue() {}
 
@@ -306,6 +322,24 @@ func _AlertService_ListComments_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AlertService_SetExternalContext_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AlertServiceSetExternalContextRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AlertServiceServer).SetExternalContext(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AlertService_SetExternalContext_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AlertServiceServer).SetExternalContext(ctx, req.(*AlertServiceSetExternalContextRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // AlertService_ServiceDesc is the grpc.ServiceDesc for AlertService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -340,6 +374,10 @@ var AlertService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListComments",
 			Handler:    _AlertService_ListComments_Handler,
+		},
+		{
+			MethodName: "SetExternalContext",
+			Handler:    _AlertService_SetExternalContext_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

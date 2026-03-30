@@ -40,6 +40,10 @@ typedef struct Kentik__Alerting__Public__V202505__AlertServiceUnAckRequest Kenti
 typedef struct Kentik__Alerting__Public__V202505__AlertServiceUnAckResponse Kentik__Alerting__Public__V202505__AlertServiceUnAckResponse;
 typedef struct Kentik__Alerting__Public__V202505__AlertServiceClearRequest Kentik__Alerting__Public__V202505__AlertServiceClearRequest;
 typedef struct Kentik__Alerting__Public__V202505__AlertServiceClearResponse Kentik__Alerting__Public__V202505__AlertServiceClearResponse;
+typedef struct Kentik__Alerting__Public__V202505__ServiceNowContext Kentik__Alerting__Public__V202505__ServiceNowContext;
+typedef struct Kentik__Alerting__Public__V202505__ExternalContext Kentik__Alerting__Public__V202505__ExternalContext;
+typedef struct Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextRequest Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextRequest;
+typedef struct Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextResponse Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextResponse;
 typedef struct Kentik__Alerting__Public__V202505__Alert Kentik__Alerting__Public__V202505__Alert;
 typedef struct Kentik__Alerting__Public__V202505__Alert__Acknowledgement Kentik__Alerting__Public__V202505__Alert__Acknowledgement;
 typedef struct Kentik__Alerting__Public__V202505__FlowContext Kentik__Alerting__Public__V202505__FlowContext;
@@ -350,6 +354,57 @@ struct  Kentik__Alerting__Public__V202505__AlertServiceClearResponse
 #define KENTIK__ALERTING__PUBLIC__V202505__ALERT_SERVICE_CLEAR_RESPONSE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__alerting__public__v202505__alert_service_clear_response__descriptor) \
     , 0,NULL }
+
+
+struct  Kentik__Alerting__Public__V202505__ServiceNowContext
+{
+  ProtobufCMessage base;
+  char *incident_id;
+  char *incident_url;
+};
+#define KENTIK__ALERTING__PUBLIC__V202505__SERVICE_NOW_CONTEXT__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__alerting__public__v202505__service_now_context__descriptor) \
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
+
+
+typedef enum {
+  KENTIK__ALERTING__PUBLIC__V202505__EXTERNAL_CONTEXT__CONTEXT__NOT_SET = 0,
+  KENTIK__ALERTING__PUBLIC__V202505__EXTERNAL_CONTEXT__CONTEXT_SERVICENOW = 1
+    PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__ALERTING__PUBLIC__V202505__EXTERNAL_CONTEXT__CONTEXT__CASE)
+} Kentik__Alerting__Public__V202505__ExternalContext__ContextCase;
+
+struct  Kentik__Alerting__Public__V202505__ExternalContext
+{
+  ProtobufCMessage base;
+  Kentik__Alerting__Public__V202505__ExternalContext__ContextCase context_case;
+  union {
+    Kentik__Alerting__Public__V202505__ServiceNowContext *servicenow;
+  };
+};
+#define KENTIK__ALERTING__PUBLIC__V202505__EXTERNAL_CONTEXT__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__alerting__public__v202505__external_context__descriptor) \
+    , KENTIK__ALERTING__PUBLIC__V202505__EXTERNAL_CONTEXT__CONTEXT__NOT_SET, {0} }
+
+
+struct  Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextRequest
+{
+  ProtobufCMessage base;
+  char *alert_id;
+  Kentik__Alerting__Public__V202505__ExternalContext *context;
+};
+#define KENTIK__ALERTING__PUBLIC__V202505__ALERT_SERVICE_SET_EXTERNAL_CONTEXT_REQUEST__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__alerting__public__v202505__alert_service_set_external_context_request__descriptor) \
+    , (char *)protobuf_c_empty_string, NULL }
+
+
+struct  Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextResponse
+{
+  ProtobufCMessage base;
+  Google__Protobuf__Timestamp *updated_at;
+};
+#define KENTIK__ALERTING__PUBLIC__V202505__ALERT_SERVICE_SET_EXTERNAL_CONTEXT_RESPONSE__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__alerting__public__v202505__alert_service_set_external_context_response__descriptor) \
+    , NULL }
 
 
 struct  Kentik__Alerting__Public__V202505__Alert__Acknowledgement
@@ -954,6 +1009,82 @@ Kentik__Alerting__Public__V202505__AlertServiceClearResponse *
 void   kentik__alerting__public__v202505__alert_service_clear_response__free_unpacked
                      (Kentik__Alerting__Public__V202505__AlertServiceClearResponse *message,
                       ProtobufCAllocator *allocator);
+/* Kentik__Alerting__Public__V202505__ServiceNowContext methods */
+void   kentik__alerting__public__v202505__service_now_context__init
+                     (Kentik__Alerting__Public__V202505__ServiceNowContext         *message);
+size_t kentik__alerting__public__v202505__service_now_context__get_packed_size
+                     (const Kentik__Alerting__Public__V202505__ServiceNowContext   *message);
+size_t kentik__alerting__public__v202505__service_now_context__pack
+                     (const Kentik__Alerting__Public__V202505__ServiceNowContext   *message,
+                      uint8_t             *out);
+size_t kentik__alerting__public__v202505__service_now_context__pack_to_buffer
+                     (const Kentik__Alerting__Public__V202505__ServiceNowContext   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Alerting__Public__V202505__ServiceNowContext *
+       kentik__alerting__public__v202505__service_now_context__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__alerting__public__v202505__service_now_context__free_unpacked
+                     (Kentik__Alerting__Public__V202505__ServiceNowContext *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Alerting__Public__V202505__ExternalContext methods */
+void   kentik__alerting__public__v202505__external_context__init
+                     (Kentik__Alerting__Public__V202505__ExternalContext         *message);
+size_t kentik__alerting__public__v202505__external_context__get_packed_size
+                     (const Kentik__Alerting__Public__V202505__ExternalContext   *message);
+size_t kentik__alerting__public__v202505__external_context__pack
+                     (const Kentik__Alerting__Public__V202505__ExternalContext   *message,
+                      uint8_t             *out);
+size_t kentik__alerting__public__v202505__external_context__pack_to_buffer
+                     (const Kentik__Alerting__Public__V202505__ExternalContext   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Alerting__Public__V202505__ExternalContext *
+       kentik__alerting__public__v202505__external_context__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__alerting__public__v202505__external_context__free_unpacked
+                     (Kentik__Alerting__Public__V202505__ExternalContext *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextRequest methods */
+void   kentik__alerting__public__v202505__alert_service_set_external_context_request__init
+                     (Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextRequest         *message);
+size_t kentik__alerting__public__v202505__alert_service_set_external_context_request__get_packed_size
+                     (const Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextRequest   *message);
+size_t kentik__alerting__public__v202505__alert_service_set_external_context_request__pack
+                     (const Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextRequest   *message,
+                      uint8_t             *out);
+size_t kentik__alerting__public__v202505__alert_service_set_external_context_request__pack_to_buffer
+                     (const Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextRequest   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextRequest *
+       kentik__alerting__public__v202505__alert_service_set_external_context_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__alerting__public__v202505__alert_service_set_external_context_request__free_unpacked
+                     (Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextRequest *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextResponse methods */
+void   kentik__alerting__public__v202505__alert_service_set_external_context_response__init
+                     (Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextResponse         *message);
+size_t kentik__alerting__public__v202505__alert_service_set_external_context_response__get_packed_size
+                     (const Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextResponse   *message);
+size_t kentik__alerting__public__v202505__alert_service_set_external_context_response__pack
+                     (const Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextResponse   *message,
+                      uint8_t             *out);
+size_t kentik__alerting__public__v202505__alert_service_set_external_context_response__pack_to_buffer
+                     (const Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextResponse   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextResponse *
+       kentik__alerting__public__v202505__alert_service_set_external_context_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__alerting__public__v202505__alert_service_set_external_context_response__free_unpacked
+                     (Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextResponse *message,
+                      ProtobufCAllocator *allocator);
 /* Kentik__Alerting__Public__V202505__Alert__Acknowledgement methods */
 void   kentik__alerting__public__v202505__alert__acknowledgement__init
                      (Kentik__Alerting__Public__V202505__Alert__Acknowledgement         *message);
@@ -1182,6 +1313,18 @@ typedef void (*Kentik__Alerting__Public__V202505__AlertServiceClearRequest_Closu
 typedef void (*Kentik__Alerting__Public__V202505__AlertServiceClearResponse_Closure)
                  (const Kentik__Alerting__Public__V202505__AlertServiceClearResponse *message,
                   void *closure_data);
+typedef void (*Kentik__Alerting__Public__V202505__ServiceNowContext_Closure)
+                 (const Kentik__Alerting__Public__V202505__ServiceNowContext *message,
+                  void *closure_data);
+typedef void (*Kentik__Alerting__Public__V202505__ExternalContext_Closure)
+                 (const Kentik__Alerting__Public__V202505__ExternalContext *message,
+                  void *closure_data);
+typedef void (*Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextRequest_Closure)
+                 (const Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextRequest *message,
+                  void *closure_data);
+typedef void (*Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextResponse_Closure)
+                 (const Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextResponse *message,
+                  void *closure_data);
 typedef void (*Kentik__Alerting__Public__V202505__Alert__Acknowledgement_Closure)
                  (const Kentik__Alerting__Public__V202505__Alert__Acknowledgement *message,
                   void *closure_data);
@@ -1295,6 +1438,10 @@ struct Kentik__Alerting__Public__V202505__AlertService_Service
                         const Kentik__Alerting__Public__V202505__AlertServiceListCommentsRequest *input,
                         Kentik__Alerting__Public__V202505__AlertServiceListCommentsResponse_Closure closure,
                         void *closure_data);
+  void (*set_external_context)(Kentik__Alerting__Public__V202505__AlertService_Service *service,
+                               const Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextRequest *input,
+                               Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextResponse_Closure closure,
+                               void *closure_data);
 };
 typedef void (*Kentik__Alerting__Public__V202505__AlertService_ServiceDestroy)(Kentik__Alerting__Public__V202505__AlertService_Service *);
 void kentik__alerting__public__v202505__alert_service__init (Kentik__Alerting__Public__V202505__AlertService_Service *service,
@@ -1309,7 +1456,8 @@ void kentik__alerting__public__v202505__alert_service__init (Kentik__Alerting__P
       function_prefix__ ## un_ack,\
       function_prefix__ ## clear,\
       function_prefix__ ## add_comment,\
-      function_prefix__ ## list_comments  }
+      function_prefix__ ## list_comments,\
+      function_prefix__ ## set_external_context  }
 void kentik__alerting__public__v202505__alert_service__get(ProtobufCService *service,
                                                            const Kentik__Alerting__Public__V202505__AlertServiceGetRequest *input,
                                                            Kentik__Alerting__Public__V202505__AlertServiceGetResponse_Closure closure,
@@ -1338,6 +1486,10 @@ void kentik__alerting__public__v202505__alert_service__list_comments(ProtobufCSe
                                                                      const Kentik__Alerting__Public__V202505__AlertServiceListCommentsRequest *input,
                                                                      Kentik__Alerting__Public__V202505__AlertServiceListCommentsResponse_Closure closure,
                                                                      void *closure_data);
+void kentik__alerting__public__v202505__alert_service__set_external_context(ProtobufCService *service,
+                                                                            const Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextRequest *input,
+                                                                            Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextResponse_Closure closure,
+                                                                            void *closure_data);
 
 /* --- descriptors --- */
 
@@ -1355,6 +1507,10 @@ extern const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert
 extern const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_service_un_ack_response__descriptor;
 extern const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_service_clear_request__descriptor;
 extern const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_service_clear_response__descriptor;
+extern const ProtobufCMessageDescriptor kentik__alerting__public__v202505__service_now_context__descriptor;
+extern const ProtobufCMessageDescriptor kentik__alerting__public__v202505__external_context__descriptor;
+extern const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_service_set_external_context_request__descriptor;
+extern const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_service_set_external_context_response__descriptor;
 extern const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert__descriptor;
 extern const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert__acknowledgement__descriptor;
 extern const ProtobufCMessageDescriptor kentik__alerting__public__v202505__flow_context__descriptor;

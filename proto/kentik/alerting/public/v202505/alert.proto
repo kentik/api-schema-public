@@ -161,6 +161,19 @@ service AlertService {
       description: "Returns all comments for an alert."
     };
   }
+
+  rpc SetExternalContext(AlertServiceSetExternalContextRequest) returns (AlertServiceSetExternalContextResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.alerting:write";
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "SetExternalContext"
+      summary: "Set External Context for Alert"
+      description: "Add or replace external context"
+    };
+    option (google.api.http) = {
+      put: "/v202505/alerts/{alert_id}/external-context"
+      body: "*"
+    };
+  }
 }
 
 message AlertServiceGetRequest {
@@ -432,6 +445,58 @@ message AlertServiceClearResponse {
     (google.api.field_behavior) = OUTPUT_ONLY,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "The IDs of the alerts that have been cleared."
+    }
+  ];
+}
+
+message ServiceNowContext {
+  string incident_id = 1[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Incident ID associated with incoming Kentik alert, e.g., INC0012345."
+    }
+  ];
+
+  string incident_url = 2[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Incident URL, e.g. https://instance.service-now.com/..."
+    }
+  ];
+}
+
+message ExternalContext {
+  oneof context {
+    ServiceNowContext servicenow = 1[
+      (google.api.field_behavior) = REQUIRED,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The external context of the alert from servicenow external system."
+      }
+    ];
+  }
+}
+
+message AlertServiceSetExternalContextRequest {
+  string alert_id = 1[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The ID of the alert to add or replace external context."
+    }
+  ];
+
+  ExternalContext context = 2 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The external context of the alert from an external system."
+    }
+  ];
+}
+
+message AlertServiceSetExternalContextResponse {
+  google.protobuf.Timestamp updated_at = 1[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Timestamp of external context update."
     }
   ];
 }

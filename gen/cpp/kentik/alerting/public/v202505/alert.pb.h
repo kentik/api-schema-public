@@ -117,6 +117,12 @@ extern AlertServiceListRequestDefaultTypeInternal _AlertServiceListRequest_defau
 class AlertServiceListResponse;
 struct AlertServiceListResponseDefaultTypeInternal;
 extern AlertServiceListResponseDefaultTypeInternal _AlertServiceListResponse_default_instance_;
+class AlertServiceSetExternalContextRequest;
+struct AlertServiceSetExternalContextRequestDefaultTypeInternal;
+extern AlertServiceSetExternalContextRequestDefaultTypeInternal _AlertServiceSetExternalContextRequest_default_instance_;
+class AlertServiceSetExternalContextResponse;
+struct AlertServiceSetExternalContextResponseDefaultTypeInternal;
+extern AlertServiceSetExternalContextResponseDefaultTypeInternal _AlertServiceSetExternalContextResponse_default_instance_;
 class AlertServiceUnAckRequest;
 struct AlertServiceUnAckRequestDefaultTypeInternal;
 extern AlertServiceUnAckRequestDefaultTypeInternal _AlertServiceUnAckRequest_default_instance_;
@@ -126,6 +132,9 @@ extern AlertServiceUnAckResponseDefaultTypeInternal _AlertServiceUnAckResponse_d
 class Alert_Acknowledgement;
 struct Alert_AcknowledgementDefaultTypeInternal;
 extern Alert_AcknowledgementDefaultTypeInternal _Alert_Acknowledgement_default_instance_;
+class ExternalContext;
+struct ExternalContextDefaultTypeInternal;
+extern ExternalContextDefaultTypeInternal _ExternalContext_default_instance_;
 class FlowContext;
 struct FlowContextDefaultTypeInternal;
 extern FlowContextDefaultTypeInternal _FlowContext_default_instance_;
@@ -186,6 +195,9 @@ extern NmsContext_PreviousMetricValuesEntry_DoNotUseDefaultTypeInternal _NmsCont
 class NmsContext_TargetsEntry_DoNotUse;
 struct NmsContext_TargetsEntry_DoNotUseDefaultTypeInternal;
 extern NmsContext_TargetsEntry_DoNotUseDefaultTypeInternal _NmsContext_TargetsEntry_DoNotUse_default_instance_;
+class ServiceNowContext;
+struct ServiceNowContextDefaultTypeInternal;
+extern ServiceNowContextDefaultTypeInternal _ServiceNowContext_default_instance_;
 }  // namespace v202505
 }  // namespace public_
 }  // namespace alerting
@@ -325,6 +337,220 @@ inline bool AlertAcknowledgement_Parse(absl::string_view name, AlertAcknowledgem
 
 // -------------------------------------------------------------------
 
+class ServiceNowContext final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:kentik.alerting.public.v202505.ServiceNowContext) */ {
+ public:
+  inline ServiceNowContext() : ServiceNowContext(nullptr) {}
+  ~ServiceNowContext() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(ServiceNowContext* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(ServiceNowContext));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR ServiceNowContext(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline ServiceNowContext(const ServiceNowContext& from) : ServiceNowContext(nullptr, from) {}
+  inline ServiceNowContext(ServiceNowContext&& from) noexcept
+      : ServiceNowContext(nullptr, std::move(from)) {}
+  inline ServiceNowContext& operator=(const ServiceNowContext& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ServiceNowContext& operator=(ServiceNowContext&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ServiceNowContext& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ServiceNowContext* internal_default_instance() {
+    return reinterpret_cast<const ServiceNowContext*>(
+        &_ServiceNowContext_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 12;
+  friend void swap(ServiceNowContext& a, ServiceNowContext& b) { a.Swap(&b); }
+  inline void Swap(ServiceNowContext* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ServiceNowContext* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ServiceNowContext* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<ServiceNowContext>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const ServiceNowContext& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const ServiceNowContext& from) { ServiceNowContext::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(ServiceNowContext* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "kentik.alerting.public.v202505.ServiceNowContext"; }
+
+ protected:
+  explicit ServiceNowContext(::google::protobuf::Arena* arena);
+  ServiceNowContext(::google::protobuf::Arena* arena, const ServiceNowContext& from);
+  ServiceNowContext(::google::protobuf::Arena* arena, ServiceNowContext&& from) noexcept
+      : ServiceNowContext(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kIncidentIdFieldNumber = 1,
+    kIncidentUrlFieldNumber = 2,
+  };
+  // string incident_id = 1 [json_name = "incidentId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_incident_id() ;
+  const std::string& incident_id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_incident_id(Arg_&& arg, Args_... args);
+  std::string* mutable_incident_id();
+  PROTOBUF_NODISCARD std::string* release_incident_id();
+  void set_allocated_incident_id(std::string* value);
+
+  private:
+  const std::string& _internal_incident_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_incident_id(
+      const std::string& value);
+  std::string* _internal_mutable_incident_id();
+
+  public:
+  // string incident_url = 2 [json_name = "incidentUrl", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_incident_url() ;
+  const std::string& incident_url() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_incident_url(Arg_&& arg, Args_... args);
+  std::string* mutable_incident_url();
+  PROTOBUF_NODISCARD std::string* release_incident_url();
+  void set_allocated_incident_url(std::string* value);
+
+  private:
+  const std::string& _internal_incident_url() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_incident_url(
+      const std::string& value);
+  std::string* _internal_mutable_incident_url();
+
+  public:
+  // @@protoc_insertion_point(class_scope:kentik.alerting.public.v202505.ServiceNowContext)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 0,
+      80, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const ServiceNowContext& from_msg);
+    ::google::protobuf::internal::ArenaStringPtr incident_id_;
+    ::google::protobuf::internal::ArenaStringPtr incident_url_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_kentik_2falerting_2fpublic_2fv202505_2falert_2eproto;
+};
+// -------------------------------------------------------------------
+
 class NmsContext_GroupKeyEntry_DoNotUse final
     : public ::google::protobuf::internal::MapEntry<
           std::string, std::string,
@@ -462,7 +688,7 @@ class NmsContext_DatasetInfo final : public ::google::protobuf::Message
     return reinterpret_cast<const NmsContext_DatasetInfo*>(
         &_NmsContext_DatasetInfo_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 27;
+  static constexpr int kIndexInFileMessages = 31;
   friend void swap(NmsContext_DatasetInfo& a, NmsContext_DatasetInfo& b) { a.Swap(&b); }
   inline void Swap(NmsContext_DatasetInfo* other) {
     if (other == this) return;
@@ -835,7 +1061,7 @@ class FlowContext_SiteDetails final : public ::google::protobuf::Message
     return reinterpret_cast<const FlowContext_SiteDetails*>(
         &_FlowContext_SiteDetails_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 19;
+  static constexpr int kIndexInFileMessages = 23;
   friend void swap(FlowContext_SiteDetails& a, FlowContext_SiteDetails& b) { a.Swap(&b); }
   inline void Swap(FlowContext_SiteDetails* other) {
     if (other == this) return;
@@ -1121,7 +1347,7 @@ class FlowContext_MetricValue final : public ::google::protobuf::Message
     return reinterpret_cast<const FlowContext_MetricValue*>(
         &_FlowContext_MetricValue_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 15;
+  static constexpr int kIndexInFileMessages = 19;
   friend void swap(FlowContext_MetricValue& a, FlowContext_MetricValue& b) { a.Swap(&b); }
   inline void Swap(FlowContext_MetricValue* other) {
     if (other == this) return;
@@ -1329,7 +1555,7 @@ class FlowContext_InterfaceDetails final : public ::google::protobuf::Message
     return reinterpret_cast<const FlowContext_InterfaceDetails*>(
         &_FlowContext_InterfaceDetails_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 18;
+  static constexpr int kIndexInFileMessages = 22;
   friend void swap(FlowContext_InterfaceDetails& a, FlowContext_InterfaceDetails& b) { a.Swap(&b); }
   inline void Swap(FlowContext_InterfaceDetails* other) {
     if (other == this) return;
@@ -1573,7 +1799,7 @@ class FlowContext_DeviceDetails final : public ::google::protobuf::Message
     return reinterpret_cast<const FlowContext_DeviceDetails*>(
         &_FlowContext_DeviceDetails_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 17;
+  static constexpr int kIndexInFileMessages = 21;
   friend void swap(FlowContext_DeviceDetails& a, FlowContext_DeviceDetails& b) { a.Swap(&b); }
   inline void Swap(FlowContext_DeviceDetails* other) {
     if (other == this) return;
@@ -2025,7 +2251,7 @@ class AlertServiceListCommentsRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const AlertServiceListCommentsRequest*>(
         &_AlertServiceListCommentsRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 36;
+  static constexpr int kIndexInFileMessages = 40;
   friend void swap(AlertServiceListCommentsRequest& a, AlertServiceListCommentsRequest& b) { a.Swap(&b); }
   inline void Swap(AlertServiceListCommentsRequest* other) {
     if (other == this) return;
@@ -2821,7 +3047,7 @@ class AlertServiceAddCommentRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const AlertServiceAddCommentRequest*>(
         &_AlertServiceAddCommentRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 34;
+  static constexpr int kIndexInFileMessages = 38;
   friend void swap(AlertServiceAddCommentRequest& a, AlertServiceAddCommentRequest& b) { a.Swap(&b); }
   inline void Swap(AlertServiceAddCommentRequest* other) {
     if (other == this) return;
@@ -3249,7 +3475,7 @@ class NmsContext_AlarmTarget final : public ::google::protobuf::Message
     return reinterpret_cast<const NmsContext_AlarmTarget*>(
         &_NmsContext_AlarmTarget_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 30;
+  static constexpr int kIndexInFileMessages = 34;
   friend void swap(NmsContext_AlarmTarget& a, NmsContext_AlarmTarget& b) { a.Swap(&b); }
   inline void Swap(NmsContext_AlarmTarget* other) {
     if (other == this) return;
@@ -3467,7 +3693,7 @@ class NmsContext_AlarmMetricMap final : public ::google::protobuf::Message
     return reinterpret_cast<const NmsContext_AlarmMetricMap*>(
         &_NmsContext_AlarmMetricMap_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 32;
+  static constexpr int kIndexInFileMessages = 36;
   friend void swap(NmsContext_AlarmMetricMap& a, NmsContext_AlarmMetricMap& b) { a.Swap(&b); }
   inline void Swap(NmsContext_AlarmMetricMap* other) {
     if (other == this) return;
@@ -3665,7 +3891,7 @@ class FlowContext_AlertKeyDetails final : public ::google::protobuf::Message
     return reinterpret_cast<const FlowContext_AlertKeyDetails*>(
         &_FlowContext_AlertKeyDetails_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 16;
+  static constexpr int kIndexInFileMessages = 20;
   friend void swap(FlowContext_AlertKeyDetails& a, FlowContext_AlertKeyDetails& b) { a.Swap(&b); }
   inline void Swap(FlowContext_AlertKeyDetails* other) {
     if (other == this) return;
@@ -3854,6 +4080,415 @@ class FlowContext_AlertKeyDetails final : public ::google::protobuf::Message
 };
 // -------------------------------------------------------------------
 
+class ExternalContext final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:kentik.alerting.public.v202505.ExternalContext) */ {
+ public:
+  inline ExternalContext() : ExternalContext(nullptr) {}
+  ~ExternalContext() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(ExternalContext* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(ExternalContext));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR ExternalContext(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline ExternalContext(const ExternalContext& from) : ExternalContext(nullptr, from) {}
+  inline ExternalContext(ExternalContext&& from) noexcept
+      : ExternalContext(nullptr, std::move(from)) {}
+  inline ExternalContext& operator=(const ExternalContext& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ExternalContext& operator=(ExternalContext&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ExternalContext& default_instance() {
+    return *internal_default_instance();
+  }
+  enum ContextCase {
+    kServicenow = 1,
+    CONTEXT_NOT_SET = 0,
+  };
+  static inline const ExternalContext* internal_default_instance() {
+    return reinterpret_cast<const ExternalContext*>(
+        &_ExternalContext_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 13;
+  friend void swap(ExternalContext& a, ExternalContext& b) { a.Swap(&b); }
+  inline void Swap(ExternalContext* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ExternalContext* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ExternalContext* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<ExternalContext>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const ExternalContext& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const ExternalContext& from) { ExternalContext::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(ExternalContext* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "kentik.alerting.public.v202505.ExternalContext"; }
+
+ protected:
+  explicit ExternalContext(::google::protobuf::Arena* arena);
+  ExternalContext(::google::protobuf::Arena* arena, const ExternalContext& from);
+  ExternalContext(::google::protobuf::Arena* arena, ExternalContext&& from) noexcept
+      : ExternalContext(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kServicenowFieldNumber = 1,
+  };
+  // .kentik.alerting.public.v202505.ServiceNowContext servicenow = 1 [json_name = "servicenow", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_servicenow() const;
+  private:
+  bool _internal_has_servicenow() const;
+
+  public:
+  void clear_servicenow() ;
+  const ::kentik::alerting::public_::v202505::ServiceNowContext& servicenow() const;
+  PROTOBUF_NODISCARD ::kentik::alerting::public_::v202505::ServiceNowContext* release_servicenow();
+  ::kentik::alerting::public_::v202505::ServiceNowContext* mutable_servicenow();
+  void set_allocated_servicenow(::kentik::alerting::public_::v202505::ServiceNowContext* value);
+  void unsafe_arena_set_allocated_servicenow(::kentik::alerting::public_::v202505::ServiceNowContext* value);
+  ::kentik::alerting::public_::v202505::ServiceNowContext* unsafe_arena_release_servicenow();
+
+  private:
+  const ::kentik::alerting::public_::v202505::ServiceNowContext& _internal_servicenow() const;
+  ::kentik::alerting::public_::v202505::ServiceNowContext* _internal_mutable_servicenow();
+
+  public:
+  void clear_context();
+  ContextCase context_case() const;
+  // @@protoc_insertion_point(class_scope:kentik.alerting.public.v202505.ExternalContext)
+ private:
+  class _Internal;
+  void set_has_servicenow();
+  inline bool has_context() const;
+  inline void clear_has_context();
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 1,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const ExternalContext& from_msg);
+    union ContextUnion {
+      constexpr ContextUnion() : _constinit_{} {}
+      ::google::protobuf::internal::ConstantInitialized _constinit_;
+      ::kentik::alerting::public_::v202505::ServiceNowContext* servicenow_;
+    } context_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::uint32_t _oneof_case_[1];
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_kentik_2falerting_2fpublic_2fv202505_2falert_2eproto;
+};
+// -------------------------------------------------------------------
+
+class AlertServiceSetExternalContextResponse final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:kentik.alerting.public.v202505.AlertServiceSetExternalContextResponse) */ {
+ public:
+  inline AlertServiceSetExternalContextResponse() : AlertServiceSetExternalContextResponse(nullptr) {}
+  ~AlertServiceSetExternalContextResponse() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(AlertServiceSetExternalContextResponse* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(AlertServiceSetExternalContextResponse));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR AlertServiceSetExternalContextResponse(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline AlertServiceSetExternalContextResponse(const AlertServiceSetExternalContextResponse& from) : AlertServiceSetExternalContextResponse(nullptr, from) {}
+  inline AlertServiceSetExternalContextResponse(AlertServiceSetExternalContextResponse&& from) noexcept
+      : AlertServiceSetExternalContextResponse(nullptr, std::move(from)) {}
+  inline AlertServiceSetExternalContextResponse& operator=(const AlertServiceSetExternalContextResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline AlertServiceSetExternalContextResponse& operator=(AlertServiceSetExternalContextResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const AlertServiceSetExternalContextResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const AlertServiceSetExternalContextResponse* internal_default_instance() {
+    return reinterpret_cast<const AlertServiceSetExternalContextResponse*>(
+        &_AlertServiceSetExternalContextResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 15;
+  friend void swap(AlertServiceSetExternalContextResponse& a, AlertServiceSetExternalContextResponse& b) { a.Swap(&b); }
+  inline void Swap(AlertServiceSetExternalContextResponse* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(AlertServiceSetExternalContextResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  AlertServiceSetExternalContextResponse* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<AlertServiceSetExternalContextResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const AlertServiceSetExternalContextResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const AlertServiceSetExternalContextResponse& from) { AlertServiceSetExternalContextResponse::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(AlertServiceSetExternalContextResponse* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "kentik.alerting.public.v202505.AlertServiceSetExternalContextResponse"; }
+
+ protected:
+  explicit AlertServiceSetExternalContextResponse(::google::protobuf::Arena* arena);
+  AlertServiceSetExternalContextResponse(::google::protobuf::Arena* arena, const AlertServiceSetExternalContextResponse& from);
+  AlertServiceSetExternalContextResponse(::google::protobuf::Arena* arena, AlertServiceSetExternalContextResponse&& from) noexcept
+      : AlertServiceSetExternalContextResponse(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kUpdatedAtFieldNumber = 1,
+  };
+  // .google.protobuf.Timestamp updated_at = 1 [json_name = "updatedAt", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_updated_at() const;
+  void clear_updated_at() ;
+  const ::google::protobuf::Timestamp& updated_at() const;
+  PROTOBUF_NODISCARD ::google::protobuf::Timestamp* release_updated_at();
+  ::google::protobuf::Timestamp* mutable_updated_at();
+  void set_allocated_updated_at(::google::protobuf::Timestamp* value);
+  void unsafe_arena_set_allocated_updated_at(::google::protobuf::Timestamp* value);
+  ::google::protobuf::Timestamp* unsafe_arena_release_updated_at();
+
+  private:
+  const ::google::protobuf::Timestamp& _internal_updated_at() const;
+  ::google::protobuf::Timestamp* _internal_mutable_updated_at();
+
+  public:
+  // @@protoc_insertion_point(class_scope:kentik.alerting.public.v202505.AlertServiceSetExternalContextResponse)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 1,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const AlertServiceSetExternalContextResponse& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::Timestamp* updated_at_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_kentik_2falerting_2fpublic_2fv202505_2falert_2eproto;
+};
+// -------------------------------------------------------------------
+
 class Alert_Acknowledgement final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:kentik.alerting.public.v202505.Alert.Acknowledgement) */ {
  public:
@@ -3913,7 +4548,7 @@ class Alert_Acknowledgement final : public ::google::protobuf::Message
     return reinterpret_cast<const Alert_Acknowledgement*>(
         &_Alert_Acknowledgement_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 12;
+  static constexpr int kIndexInFileMessages = 16;
   friend void swap(Alert_Acknowledgement& a, Alert_Acknowledgement& b) { a.Swap(&b); }
   inline void Swap(Alert_Acknowledgement* other) {
     if (other == this) return;
@@ -4254,6 +4889,220 @@ class FlowContext_AlertKeyDetailsEntry_DoNotUse final
 };
 // -------------------------------------------------------------------
 
+class AlertServiceSetExternalContextRequest final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:kentik.alerting.public.v202505.AlertServiceSetExternalContextRequest) */ {
+ public:
+  inline AlertServiceSetExternalContextRequest() : AlertServiceSetExternalContextRequest(nullptr) {}
+  ~AlertServiceSetExternalContextRequest() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(AlertServiceSetExternalContextRequest* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(AlertServiceSetExternalContextRequest));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR AlertServiceSetExternalContextRequest(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline AlertServiceSetExternalContextRequest(const AlertServiceSetExternalContextRequest& from) : AlertServiceSetExternalContextRequest(nullptr, from) {}
+  inline AlertServiceSetExternalContextRequest(AlertServiceSetExternalContextRequest&& from) noexcept
+      : AlertServiceSetExternalContextRequest(nullptr, std::move(from)) {}
+  inline AlertServiceSetExternalContextRequest& operator=(const AlertServiceSetExternalContextRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline AlertServiceSetExternalContextRequest& operator=(AlertServiceSetExternalContextRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const AlertServiceSetExternalContextRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const AlertServiceSetExternalContextRequest* internal_default_instance() {
+    return reinterpret_cast<const AlertServiceSetExternalContextRequest*>(
+        &_AlertServiceSetExternalContextRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 14;
+  friend void swap(AlertServiceSetExternalContextRequest& a, AlertServiceSetExternalContextRequest& b) { a.Swap(&b); }
+  inline void Swap(AlertServiceSetExternalContextRequest* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(AlertServiceSetExternalContextRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  AlertServiceSetExternalContextRequest* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<AlertServiceSetExternalContextRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const AlertServiceSetExternalContextRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const AlertServiceSetExternalContextRequest& from) { AlertServiceSetExternalContextRequest::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(AlertServiceSetExternalContextRequest* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "kentik.alerting.public.v202505.AlertServiceSetExternalContextRequest"; }
+
+ protected:
+  explicit AlertServiceSetExternalContextRequest(::google::protobuf::Arena* arena);
+  AlertServiceSetExternalContextRequest(::google::protobuf::Arena* arena, const AlertServiceSetExternalContextRequest& from);
+  AlertServiceSetExternalContextRequest(::google::protobuf::Arena* arena, AlertServiceSetExternalContextRequest&& from) noexcept
+      : AlertServiceSetExternalContextRequest(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kAlertIdFieldNumber = 1,
+    kContextFieldNumber = 2,
+  };
+  // string alert_id = 1 [json_name = "alertId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_alert_id() ;
+  const std::string& alert_id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_alert_id(Arg_&& arg, Args_... args);
+  std::string* mutable_alert_id();
+  PROTOBUF_NODISCARD std::string* release_alert_id();
+  void set_allocated_alert_id(std::string* value);
+
+  private:
+  const std::string& _internal_alert_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_alert_id(
+      const std::string& value);
+  std::string* _internal_mutable_alert_id();
+
+  public:
+  // .kentik.alerting.public.v202505.ExternalContext context = 2 [json_name = "context", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_context() const;
+  void clear_context() ;
+  const ::kentik::alerting::public_::v202505::ExternalContext& context() const;
+  PROTOBUF_NODISCARD ::kentik::alerting::public_::v202505::ExternalContext* release_context();
+  ::kentik::alerting::public_::v202505::ExternalContext* mutable_context();
+  void set_allocated_context(::kentik::alerting::public_::v202505::ExternalContext* value);
+  void unsafe_arena_set_allocated_context(::kentik::alerting::public_::v202505::ExternalContext* value);
+  ::kentik::alerting::public_::v202505::ExternalContext* unsafe_arena_release_context();
+
+  private:
+  const ::kentik::alerting::public_::v202505::ExternalContext& _internal_context() const;
+  ::kentik::alerting::public_::v202505::ExternalContext* _internal_mutable_context();
+
+  public:
+  // @@protoc_insertion_point(class_scope:kentik.alerting.public.v202505.AlertServiceSetExternalContextRequest)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 1,
+      85, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const AlertServiceSetExternalContextRequest& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::internal::ArenaStringPtr alert_id_;
+    ::kentik::alerting::public_::v202505::ExternalContext* context_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_kentik_2falerting_2fpublic_2fv202505_2falert_2eproto;
+};
+// -------------------------------------------------------------------
+
 class AlertServiceListCommentsResponse final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:kentik.alerting.public.v202505.AlertServiceListCommentsResponse) */ {
  public:
@@ -4313,7 +5162,7 @@ class AlertServiceListCommentsResponse final : public ::google::protobuf::Messag
     return reinterpret_cast<const AlertServiceListCommentsResponse*>(
         &_AlertServiceListCommentsResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 37;
+  static constexpr int kIndexInFileMessages = 41;
   friend void swap(AlertServiceListCommentsResponse& a, AlertServiceListCommentsResponse& b) { a.Swap(&b); }
   inline void Swap(AlertServiceListCommentsResponse* other) {
     if (other == this) return;
@@ -4510,7 +5359,7 @@ class AlertServiceAddCommentResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const AlertServiceAddCommentResponse*>(
         &_AlertServiceAddCommentResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 35;
+  static constexpr int kIndexInFileMessages = 39;
   friend void swap(AlertServiceAddCommentResponse& a, AlertServiceAddCommentResponse& b) { a.Swap(&b); }
   inline void Swap(AlertServiceAddCommentResponse* other) {
     if (other == this) return;
@@ -4706,7 +5555,7 @@ class FlowContext final : public ::google::protobuf::Message
     return reinterpret_cast<const FlowContext*>(
         &_FlowContext_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 20;
+  static constexpr int kIndexInFileMessages = 24;
   friend void swap(FlowContext& a, FlowContext& b) { a.Swap(&b); }
   inline void Swap(FlowContext* other) {
     if (other == this) return;
@@ -5454,7 +6303,7 @@ class NmsContext_ActivationInfo final : public ::google::protobuf::Message
     return reinterpret_cast<const NmsContext_ActivationInfo*>(
         &_NmsContext_ActivationInfo_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 26;
+  static constexpr int kIndexInFileMessages = 30;
   friend void swap(NmsContext_ActivationInfo& a, NmsContext_ActivationInfo& b) { a.Swap(&b); }
   inline void Swap(NmsContext_ActivationInfo* other) {
     if (other == this) return;
@@ -5929,7 +6778,7 @@ class NmsContext final : public ::google::protobuf::Message
     return reinterpret_cast<const NmsContext*>(
         &_NmsContext_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 33;
+  static constexpr int kIndexInFileMessages = 37;
   friend void swap(NmsContext& a, NmsContext& b) { a.Swap(&b); }
   inline void Swap(NmsContext* other) {
     if (other == this) return;
@@ -6534,7 +7383,7 @@ class Alert final : public ::google::protobuf::Message
     return reinterpret_cast<const Alert*>(
         &_Alert_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 13;
+  static constexpr int kIndexInFileMessages = 17;
   friend void swap(Alert& a, Alert& b) { a.Swap(&b); }
   inline void Swap(Alert* other) {
     if (other == this) return;
@@ -10096,6 +10945,441 @@ inline ::google::protobuf::RepeatedPtrField<std::string>*
 AlertServiceClearResponse::_internal_mutable_cleared_alert_ids() {
   ::google::protobuf::internal::TSanRead(&_impl_);
   return &_impl_.cleared_alert_ids_;
+}
+
+// -------------------------------------------------------------------
+
+// ServiceNowContext
+
+// string incident_id = 1 [json_name = "incidentId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void ServiceNowContext::clear_incident_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.incident_id_.ClearToEmpty();
+}
+inline const std::string& ServiceNowContext::incident_id() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.alerting.public.v202505.ServiceNowContext.incident_id)
+  return _internal_incident_id();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void ServiceNowContext::set_incident_id(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.incident_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.alerting.public.v202505.ServiceNowContext.incident_id)
+}
+inline std::string* ServiceNowContext::mutable_incident_id() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_incident_id();
+  // @@protoc_insertion_point(field_mutable:kentik.alerting.public.v202505.ServiceNowContext.incident_id)
+  return _s;
+}
+inline const std::string& ServiceNowContext::_internal_incident_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.incident_id_.Get();
+}
+inline void ServiceNowContext::_internal_set_incident_id(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.incident_id_.Set(value, GetArena());
+}
+inline std::string* ServiceNowContext::_internal_mutable_incident_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.incident_id_.Mutable( GetArena());
+}
+inline std::string* ServiceNowContext::release_incident_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.alerting.public.v202505.ServiceNowContext.incident_id)
+  return _impl_.incident_id_.Release();
+}
+inline void ServiceNowContext::set_allocated_incident_id(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.incident_id_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.incident_id_.IsDefault()) {
+    _impl_.incident_id_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.alerting.public.v202505.ServiceNowContext.incident_id)
+}
+
+// string incident_url = 2 [json_name = "incidentUrl", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void ServiceNowContext::clear_incident_url() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.incident_url_.ClearToEmpty();
+}
+inline const std::string& ServiceNowContext::incident_url() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.alerting.public.v202505.ServiceNowContext.incident_url)
+  return _internal_incident_url();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void ServiceNowContext::set_incident_url(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.incident_url_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.alerting.public.v202505.ServiceNowContext.incident_url)
+}
+inline std::string* ServiceNowContext::mutable_incident_url() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_incident_url();
+  // @@protoc_insertion_point(field_mutable:kentik.alerting.public.v202505.ServiceNowContext.incident_url)
+  return _s;
+}
+inline const std::string& ServiceNowContext::_internal_incident_url() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.incident_url_.Get();
+}
+inline void ServiceNowContext::_internal_set_incident_url(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.incident_url_.Set(value, GetArena());
+}
+inline std::string* ServiceNowContext::_internal_mutable_incident_url() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.incident_url_.Mutable( GetArena());
+}
+inline std::string* ServiceNowContext::release_incident_url() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.alerting.public.v202505.ServiceNowContext.incident_url)
+  return _impl_.incident_url_.Release();
+}
+inline void ServiceNowContext::set_allocated_incident_url(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.incident_url_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.incident_url_.IsDefault()) {
+    _impl_.incident_url_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.alerting.public.v202505.ServiceNowContext.incident_url)
+}
+
+// -------------------------------------------------------------------
+
+// ExternalContext
+
+// .kentik.alerting.public.v202505.ServiceNowContext servicenow = 1 [json_name = "servicenow", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool ExternalContext::has_servicenow() const {
+  return context_case() == kServicenow;
+}
+inline bool ExternalContext::_internal_has_servicenow() const {
+  return context_case() == kServicenow;
+}
+inline void ExternalContext::set_has_servicenow() {
+  _impl_._oneof_case_[0] = kServicenow;
+}
+inline void ExternalContext::clear_servicenow() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (context_case() == kServicenow) {
+    if (GetArena() == nullptr) {
+      delete _impl_.context_.servicenow_;
+    } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
+      ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.context_.servicenow_);
+    }
+    clear_has_context();
+  }
+}
+inline ::kentik::alerting::public_::v202505::ServiceNowContext* ExternalContext::release_servicenow() {
+  // @@protoc_insertion_point(field_release:kentik.alerting.public.v202505.ExternalContext.servicenow)
+  if (context_case() == kServicenow) {
+    clear_has_context();
+    auto* temp = _impl_.context_.servicenow_;
+    if (GetArena() != nullptr) {
+      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.context_.servicenow_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::kentik::alerting::public_::v202505::ServiceNowContext& ExternalContext::_internal_servicenow() const {
+  return context_case() == kServicenow ? *_impl_.context_.servicenow_ : reinterpret_cast<::kentik::alerting::public_::v202505::ServiceNowContext&>(::kentik::alerting::public_::v202505::_ServiceNowContext_default_instance_);
+}
+inline const ::kentik::alerting::public_::v202505::ServiceNowContext& ExternalContext::servicenow() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.alerting.public.v202505.ExternalContext.servicenow)
+  return _internal_servicenow();
+}
+inline ::kentik::alerting::public_::v202505::ServiceNowContext* ExternalContext::unsafe_arena_release_servicenow() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:kentik.alerting.public.v202505.ExternalContext.servicenow)
+  if (context_case() == kServicenow) {
+    clear_has_context();
+    auto* temp = _impl_.context_.servicenow_;
+    _impl_.context_.servicenow_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void ExternalContext::unsafe_arena_set_allocated_servicenow(::kentik::alerting::public_::v202505::ServiceNowContext* value) {
+  // We rely on the oneof clear method to free the earlier contents
+  // of this oneof. We can directly use the pointer we're given to
+  // set the new value.
+  clear_context();
+  if (value) {
+    set_has_servicenow();
+    _impl_.context_.servicenow_ = value;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.alerting.public.v202505.ExternalContext.servicenow)
+}
+inline ::kentik::alerting::public_::v202505::ServiceNowContext* ExternalContext::_internal_mutable_servicenow() {
+  if (context_case() != kServicenow) {
+    clear_context();
+    set_has_servicenow();
+    _impl_.context_.servicenow_ =
+        ::google::protobuf::Message::DefaultConstruct<::kentik::alerting::public_::v202505::ServiceNowContext>(GetArena());
+  }
+  return _impl_.context_.servicenow_;
+}
+inline ::kentik::alerting::public_::v202505::ServiceNowContext* ExternalContext::mutable_servicenow() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::kentik::alerting::public_::v202505::ServiceNowContext* _msg = _internal_mutable_servicenow();
+  // @@protoc_insertion_point(field_mutable:kentik.alerting.public.v202505.ExternalContext.servicenow)
+  return _msg;
+}
+
+inline bool ExternalContext::has_context() const {
+  return context_case() != CONTEXT_NOT_SET;
+}
+inline void ExternalContext::clear_has_context() {
+  _impl_._oneof_case_[0] = CONTEXT_NOT_SET;
+}
+inline ExternalContext::ContextCase ExternalContext::context_case() const {
+  return ExternalContext::ContextCase(_impl_._oneof_case_[0]);
+}
+// -------------------------------------------------------------------
+
+// AlertServiceSetExternalContextRequest
+
+// string alert_id = 1 [json_name = "alertId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void AlertServiceSetExternalContextRequest::clear_alert_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.alert_id_.ClearToEmpty();
+}
+inline const std::string& AlertServiceSetExternalContextRequest::alert_id() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.alerting.public.v202505.AlertServiceSetExternalContextRequest.alert_id)
+  return _internal_alert_id();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void AlertServiceSetExternalContextRequest::set_alert_id(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.alert_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.alerting.public.v202505.AlertServiceSetExternalContextRequest.alert_id)
+}
+inline std::string* AlertServiceSetExternalContextRequest::mutable_alert_id() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_alert_id();
+  // @@protoc_insertion_point(field_mutable:kentik.alerting.public.v202505.AlertServiceSetExternalContextRequest.alert_id)
+  return _s;
+}
+inline const std::string& AlertServiceSetExternalContextRequest::_internal_alert_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.alert_id_.Get();
+}
+inline void AlertServiceSetExternalContextRequest::_internal_set_alert_id(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.alert_id_.Set(value, GetArena());
+}
+inline std::string* AlertServiceSetExternalContextRequest::_internal_mutable_alert_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.alert_id_.Mutable( GetArena());
+}
+inline std::string* AlertServiceSetExternalContextRequest::release_alert_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.alerting.public.v202505.AlertServiceSetExternalContextRequest.alert_id)
+  return _impl_.alert_id_.Release();
+}
+inline void AlertServiceSetExternalContextRequest::set_allocated_alert_id(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.alert_id_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.alert_id_.IsDefault()) {
+    _impl_.alert_id_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.alerting.public.v202505.AlertServiceSetExternalContextRequest.alert_id)
+}
+
+// .kentik.alerting.public.v202505.ExternalContext context = 2 [json_name = "context", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool AlertServiceSetExternalContextRequest::has_context() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.context_ != nullptr);
+  return value;
+}
+inline void AlertServiceSetExternalContextRequest::clear_context() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.context_ != nullptr) _impl_.context_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const ::kentik::alerting::public_::v202505::ExternalContext& AlertServiceSetExternalContextRequest::_internal_context() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::kentik::alerting::public_::v202505::ExternalContext* p = _impl_.context_;
+  return p != nullptr ? *p : reinterpret_cast<const ::kentik::alerting::public_::v202505::ExternalContext&>(::kentik::alerting::public_::v202505::_ExternalContext_default_instance_);
+}
+inline const ::kentik::alerting::public_::v202505::ExternalContext& AlertServiceSetExternalContextRequest::context() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.alerting.public.v202505.AlertServiceSetExternalContextRequest.context)
+  return _internal_context();
+}
+inline void AlertServiceSetExternalContextRequest::unsafe_arena_set_allocated_context(::kentik::alerting::public_::v202505::ExternalContext* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.context_);
+  }
+  _impl_.context_ = reinterpret_cast<::kentik::alerting::public_::v202505::ExternalContext*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.alerting.public.v202505.AlertServiceSetExternalContextRequest.context)
+}
+inline ::kentik::alerting::public_::v202505::ExternalContext* AlertServiceSetExternalContextRequest::release_context() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::kentik::alerting::public_::v202505::ExternalContext* released = _impl_.context_;
+  _impl_.context_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::kentik::alerting::public_::v202505::ExternalContext* AlertServiceSetExternalContextRequest::unsafe_arena_release_context() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.alerting.public.v202505.AlertServiceSetExternalContextRequest.context)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::kentik::alerting::public_::v202505::ExternalContext* temp = _impl_.context_;
+  _impl_.context_ = nullptr;
+  return temp;
+}
+inline ::kentik::alerting::public_::v202505::ExternalContext* AlertServiceSetExternalContextRequest::_internal_mutable_context() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.context_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::kentik::alerting::public_::v202505::ExternalContext>(GetArena());
+    _impl_.context_ = reinterpret_cast<::kentik::alerting::public_::v202505::ExternalContext*>(p);
+  }
+  return _impl_.context_;
+}
+inline ::kentik::alerting::public_::v202505::ExternalContext* AlertServiceSetExternalContextRequest::mutable_context() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  ::kentik::alerting::public_::v202505::ExternalContext* _msg = _internal_mutable_context();
+  // @@protoc_insertion_point(field_mutable:kentik.alerting.public.v202505.AlertServiceSetExternalContextRequest.context)
+  return _msg;
+}
+inline void AlertServiceSetExternalContextRequest::set_allocated_context(::kentik::alerting::public_::v202505::ExternalContext* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete (_impl_.context_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = (value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.context_ = reinterpret_cast<::kentik::alerting::public_::v202505::ExternalContext*>(value);
+  // @@protoc_insertion_point(field_set_allocated:kentik.alerting.public.v202505.AlertServiceSetExternalContextRequest.context)
+}
+
+// -------------------------------------------------------------------
+
+// AlertServiceSetExternalContextResponse
+
+// .google.protobuf.Timestamp updated_at = 1 [json_name = "updatedAt", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool AlertServiceSetExternalContextResponse::has_updated_at() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.updated_at_ != nullptr);
+  return value;
+}
+inline const ::google::protobuf::Timestamp& AlertServiceSetExternalContextResponse::_internal_updated_at() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::google::protobuf::Timestamp* p = _impl_.updated_at_;
+  return p != nullptr ? *p : reinterpret_cast<const ::google::protobuf::Timestamp&>(::google::protobuf::_Timestamp_default_instance_);
+}
+inline const ::google::protobuf::Timestamp& AlertServiceSetExternalContextResponse::updated_at() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.alerting.public.v202505.AlertServiceSetExternalContextResponse.updated_at)
+  return _internal_updated_at();
+}
+inline void AlertServiceSetExternalContextResponse::unsafe_arena_set_allocated_updated_at(::google::protobuf::Timestamp* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.updated_at_);
+  }
+  _impl_.updated_at_ = reinterpret_cast<::google::protobuf::Timestamp*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.alerting.public.v202505.AlertServiceSetExternalContextResponse.updated_at)
+}
+inline ::google::protobuf::Timestamp* AlertServiceSetExternalContextResponse::release_updated_at() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::google::protobuf::Timestamp* released = _impl_.updated_at_;
+  _impl_.updated_at_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::google::protobuf::Timestamp* AlertServiceSetExternalContextResponse::unsafe_arena_release_updated_at() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.alerting.public.v202505.AlertServiceSetExternalContextResponse.updated_at)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::google::protobuf::Timestamp* temp = _impl_.updated_at_;
+  _impl_.updated_at_ = nullptr;
+  return temp;
+}
+inline ::google::protobuf::Timestamp* AlertServiceSetExternalContextResponse::_internal_mutable_updated_at() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.updated_at_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::google::protobuf::Timestamp>(GetArena());
+    _impl_.updated_at_ = reinterpret_cast<::google::protobuf::Timestamp*>(p);
+  }
+  return _impl_.updated_at_;
+}
+inline ::google::protobuf::Timestamp* AlertServiceSetExternalContextResponse::mutable_updated_at() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  ::google::protobuf::Timestamp* _msg = _internal_mutable_updated_at();
+  // @@protoc_insertion_point(field_mutable:kentik.alerting.public.v202505.AlertServiceSetExternalContextResponse.updated_at)
+  return _msg;
+}
+inline void AlertServiceSetExternalContextResponse::set_allocated_updated_at(::google::protobuf::Timestamp* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.updated_at_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::google::protobuf::MessageLite*>(value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.updated_at_ = reinterpret_cast<::google::protobuf::Timestamp*>(value);
+  // @@protoc_insertion_point(field_set_allocated:kentik.alerting.public.v202505.AlertServiceSetExternalContextResponse.updated_at)
 }
 
 // -------------------------------------------------------------------
