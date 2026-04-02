@@ -17,6 +17,7 @@ enum Severity {
 }
 
 message MultiAttributeFilter {
+  // Deprecated: Use MultiAttributeFilter.filters instead.
   map<string, AttributeFilter> filter = 1 [deprecated=true];
   repeated KeyValueFilter filters = 2;
 }

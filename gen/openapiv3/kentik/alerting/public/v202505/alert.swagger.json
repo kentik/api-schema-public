@@ -871,7 +871,8 @@
                         "type": "object",
                         "additionalProperties": {
                             "$ref": "#/components/schemas/v202303AttributeFilter"
-                        }
+                        },
+                        "description": "Deprecated: Use MultiAttributeFilter.filters instead."
                     },
                     "filters": {
                         "type": "array",

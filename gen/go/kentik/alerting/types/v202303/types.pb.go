@@ -134,6 +134,8 @@ func (SortOrder) EnumDescriptor() ([]byte, []int) {
 
 type MultiAttributeFilter struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
+	// Deprecated: Use MultiAttributeFilter.filters instead.
+	//
 	// Deprecated: Marked as deprecated in kentik/alerting/types/v202303/types.proto.
 	Filter        map[string]*AttributeFilter `protobuf:"bytes,1,rep,name=filter,proto3" json:"filter,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	Filters       []*KeyValueFilter           `protobuf:"bytes,2,rep,name=filters,proto3" json:"filters,omitempty"`

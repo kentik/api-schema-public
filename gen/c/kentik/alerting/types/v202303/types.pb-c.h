@@ -67,6 +67,9 @@ struct  Kentik__Alerting__Types__V202303__MultiAttributeFilter__FilterEntry
 struct  Kentik__Alerting__Types__V202303__MultiAttributeFilter
 {
   ProtobufCMessage base;
+  /*
+   * Deprecated: Use MultiAttributeFilter.filters instead.
+   */
   size_t n_filter PROTOBUF_C__DEPRECATED;
   Kentik__Alerting__Types__V202303__MultiAttributeFilter__FilterEntry **filter PROTOBUF_C__DEPRECATED;
   size_t n_filters;
