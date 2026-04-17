@@ -2167,7 +2167,7 @@ const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert__ackno
   (ProtobufCMessageInit) kentik__alerting__public__v202505__alert__acknowledgement__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert__field_descriptors[12] =
+static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert__field_descriptors[13] =
 {
   {
     "id",
@@ -2313,11 +2313,24 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__alert__
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "external_contexts",
+    16,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Kentik__Alerting__Public__V202505__Alert, n_external_contexts),
+    offsetof(Kentik__Alerting__Public__V202505__Alert, external_contexts),
+    &kentik__alerting__public__v202505__external_context__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__alerting__public__v202505__alert__field_indices_by_name[] = {
   7,   /* field[7] = acknowledgement */
   3,   /* field[3] = end_time_at */
   8,   /* field[8] = event_start_time_at */
+  12,   /* field[12] = external_contexts */
   9,   /* field[9] = flow */
   6,   /* field[6] = highest_severity */
   0,   /* field[0] = id */
@@ -2333,7 +2346,7 @@ static const ProtobufCIntRange kentik__alerting__public__v202505__alert__number_
   { 1, 0 },
   { 4, 2 },
   { 15, 11 },
-  { 0, 12 }
+  { 0, 13 }
 };
 const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert__descriptor =
 {
@@ -2343,7 +2356,7 @@ const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert__descr
   "Kentik__Alerting__Public__V202505__Alert",
   "kentik.alerting.public.v202505",
   sizeof(Kentik__Alerting__Public__V202505__Alert),
-  12,
+  13,
   kentik__alerting__public__v202505__alert__field_descriptors,
   kentik__alerting__public__v202505__alert__field_indices_by_name,
   3,  kentik__alerting__public__v202505__alert__number_ranges,

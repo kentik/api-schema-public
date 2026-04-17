@@ -585,6 +585,13 @@ message Alert {
     }
   ];
 
+  repeated ExternalContext external_contexts = 16[
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "External contexts attached to the alert (e.g. ServiceNow)."
+    }
+  ];
+
   message Acknowledgement {
     AlertAcknowledgement state = 1[
       (google.api.field_behavior) = OUTPUT_ONLY,

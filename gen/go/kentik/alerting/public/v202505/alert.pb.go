@@ -1224,10 +1224,11 @@ type Alert struct {
 	//
 	//	*Alert_Flow
 	//	*Alert_Nms
-	Context       isAlert_Context `protobuf_oneof:"context"`
-	MitigationId  uint64          `protobuf:"varint,15,opt,name=mitigation_id,json=mitigationId,proto3" json:"mitigation_id,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	Context          isAlert_Context    `protobuf_oneof:"context"`
+	MitigationId     uint64             `protobuf:"varint,15,opt,name=mitigation_id,json=mitigationId,proto3" json:"mitigation_id,omitempty"`
+	ExternalContexts []*ExternalContext `protobuf:"bytes,16,rep,name=external_contexts,json=externalContexts,proto3" json:"external_contexts,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
 }
 
 func (x *Alert) Reset() {
@@ -1353,6 +1354,13 @@ func (x *Alert) GetMitigationId() uint64 {
 		return x.MitigationId
 	}
 	return 0
+}
+
+func (x *Alert) GetExternalContexts() []*ExternalContext {
+	if x != nil {
+		return x.ExternalContexts
+	}
+	return nil
 }
 
 type isAlert_Context interface {
@@ -2465,7 +2473,7 @@ const file_kentik_alerting_public_v202505_alert_proto_rawDesc = "" +
 	"\acontext\x18\x02 \x01(\v2/.kentik.alerting.public.v202505.ExternalContextBB\x92A<2:The external context of the alert from an external system.\xe0A\x02R\acontext\"\x92\x01\n" +
 	"&AlertServiceSetExternalContextResponse\x12h\n" +
 	"\n" +
-	"updated_at\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampB-\x92A'2%Timestamp of external context update.\xe0A\x03R\tupdatedAt\"\x8d\x0f\n" +
+	"updated_at\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampB-\x92A'2%Timestamp of external context update.\xe0A\x03R\tupdatedAt\"\xb0\x10\n" +
 	"\x05Alert\x12:\n" +
 	"\x02id\x18\x01 \x01(\tB*\x92A$2\"The ID (UUID format) of the alert.\xe0A\x03R\x02id\x12g\n" +
 	"\x06source\x18\x02 \x01(\v2&.kentik.alerting.public.v202505.SourceB'\x92A!2\x1fThe source policy of the alert.\xe0A\x03R\x06source\x12d\n" +
@@ -2479,7 +2487,8 @@ const file_kentik_alerting_public_v202505_alert_proto_rawDesc = "" +
 	" \x01(\v2\x1a.google.protobuf.TimestampB]\x92AW2UThe timestamp of the first trigger event that caused an alert to eventually activate.\xe0A\x03R\x10eventStartTimeAt\x12t\n" +
 	"\x04flow\x18\v \x01(\v2+.kentik.alerting.public.v202505.FlowContextB1\x92A+2)The context of the alert for flow alerts.\xe0A\x03H\x00R\x04flow\x12p\n" +
 	"\x03nms\x18\f \x01(\v2*.kentik.alerting.public.v202505.NmsContextB0\x92A*2(The context of the alert for NMS alerts.\xe0A\x03H\x00R\x03nms\x12\\\n" +
-	"\rmitigation_id\x18\x0f \x01(\x04B7\x92A12/ID of the associated mitigation, if applicable.\xe0A\x03R\fmitigationId\x1a\xa4\x04\n" +
+	"\rmitigation_id\x18\x0f \x01(\x04B7\x92A12/ID of the associated mitigation, if applicable.\xe0A\x03R\fmitigationId\x12\xa0\x01\n" +
+	"\x11external_contexts\x18\x10 \x03(\v2/.kentik.alerting.public.v202505.ExternalContextBB\x92A<2:External contexts attached to the alert (e.g. ServiceNow).\xe0A\x03R\x10externalContexts\x1a\xa4\x04\n" +
 	"\x0fAcknowledgement\x12{\n" +
 	"\x05state\x18\x01 \x01(\x0e24.kentik.alerting.public.v202505.AlertAcknowledgementB/\x92A)2'The acknowledgement state of the alert.\xe0A\x03R\x05state\x12\x99\x01\n" +
 	"\racked_by_user\x18\x02 \x01(\tBu\x92Ao2mThe user ID of the user who acknowledged the alert. Present only if the alert has been acknowledged manually.\xe0A\x03R\vackedByUser\x12\x91\x01\n" +
@@ -2749,53 +2758,54 @@ var file_kentik_alerting_public_v202505_alert_proto_depIdxs = []int32{
 	47, // 35: kentik.alerting.public.v202505.Alert.event_start_time_at:type_name -> google.protobuf.Timestamp
 	20, // 36: kentik.alerting.public.v202505.Alert.flow:type_name -> kentik.alerting.public.v202505.FlowContext
 	21, // 37: kentik.alerting.public.v202505.Alert.nms:type_name -> kentik.alerting.public.v202505.NmsContext
-	28, // 38: kentik.alerting.public.v202505.FlowContext.metric_values:type_name -> kentik.alerting.public.v202505.FlowContext.MetricValue
-	2,  // 39: kentik.alerting.public.v202505.FlowContext.activation_status:type_name -> kentik.alerting.public.v202505.FlowContext.ActivationStatus
-	27, // 40: kentik.alerting.public.v202505.FlowContext.alert_key_details:type_name -> kentik.alerting.public.v202505.FlowContext.AlertKeyDetailsEntry
-	38, // 41: kentik.alerting.public.v202505.NmsContext.activation_info:type_name -> kentik.alerting.public.v202505.NmsContext.ActivationInfo
-	39, // 42: kentik.alerting.public.v202505.NmsContext.dataset_info:type_name -> kentik.alerting.public.v202505.NmsContext.DatasetInfo
-	33, // 43: kentik.alerting.public.v202505.NmsContext.targets:type_name -> kentik.alerting.public.v202505.NmsContext.TargetsEntry
-	34, // 44: kentik.alerting.public.v202505.NmsContext.metric_values:type_name -> kentik.alerting.public.v202505.NmsContext.MetricValuesEntry
-	35, // 45: kentik.alerting.public.v202505.NmsContext.previous_metric_values:type_name -> kentik.alerting.public.v202505.NmsContext.PreviousMetricValuesEntry
-	36, // 46: kentik.alerting.public.v202505.NmsContext.device:type_name -> kentik.alerting.public.v202505.NmsContext.DeviceEntry
-	37, // 47: kentik.alerting.public.v202505.NmsContext.group_key:type_name -> kentik.alerting.public.v202505.NmsContext.GroupKeyEntry
-	45, // 48: kentik.alerting.public.v202505.AlertServiceAddCommentResponse.comment:type_name -> kentik.alerting.public.v202505.Comment
-	45, // 49: kentik.alerting.public.v202505.AlertServiceListCommentsResponse.comments:type_name -> kentik.alerting.public.v202505.Comment
-	1,  // 50: kentik.alerting.public.v202505.Alert.Acknowledgement.state:type_name -> kentik.alerting.public.v202505.AlertAcknowledgement
-	47, // 51: kentik.alerting.public.v202505.Alert.Acknowledgement.acked_at:type_name -> google.protobuf.Timestamp
-	29, // 52: kentik.alerting.public.v202505.FlowContext.AlertKeyDetailsEntry.value:type_name -> kentik.alerting.public.v202505.FlowContext.AlertKeyDetails
-	30, // 53: kentik.alerting.public.v202505.FlowContext.AlertKeyDetails.device:type_name -> kentik.alerting.public.v202505.FlowContext.DeviceDetails
-	31, // 54: kentik.alerting.public.v202505.FlowContext.AlertKeyDetails.interface:type_name -> kentik.alerting.public.v202505.FlowContext.InterfaceDetails
-	32, // 55: kentik.alerting.public.v202505.FlowContext.AlertKeyDetails.site:type_name -> kentik.alerting.public.v202505.FlowContext.SiteDetails
-	40, // 56: kentik.alerting.public.v202505.NmsContext.TargetsEntry.value:type_name -> kentik.alerting.public.v202505.NmsContext.AlarmTarget
-	41, // 57: kentik.alerting.public.v202505.NmsContext.MetricValuesEntry.value:type_name -> kentik.alerting.public.v202505.NmsContext.AlarmMetricMap
-	41, // 58: kentik.alerting.public.v202505.NmsContext.PreviousMetricValuesEntry.value:type_name -> kentik.alerting.public.v202505.NmsContext.AlarmMetricMap
-	54, // 59: kentik.alerting.public.v202505.NmsContext.ActivationInfo.activate:type_name -> kentik.alerting.public.v202505.NmsActivateOrClearConditions
-	46, // 60: kentik.alerting.public.v202505.NmsContext.ActivationInfo.severity:type_name -> kentik.alerting.types.v202303.Severity
-	42, // 61: kentik.alerting.public.v202505.NmsContext.AlarmTarget.fields:type_name -> kentik.alerting.public.v202505.NmsContext.AlarmTarget.FieldsEntry
-	43, // 62: kentik.alerting.public.v202505.NmsContext.AlarmTarget.tags:type_name -> kentik.alerting.public.v202505.NmsContext.AlarmTarget.TagsEntry
-	44, // 63: kentik.alerting.public.v202505.NmsContext.AlarmMetricMap.metrics:type_name -> kentik.alerting.public.v202505.NmsContext.AlarmMetricMap.MetricsEntry
-	3,  // 64: kentik.alerting.public.v202505.AlertService.Get:input_type -> kentik.alerting.public.v202505.AlertServiceGetRequest
-	6,  // 65: kentik.alerting.public.v202505.AlertService.List:input_type -> kentik.alerting.public.v202505.AlertServiceListRequest
-	9,  // 66: kentik.alerting.public.v202505.AlertService.Ack:input_type -> kentik.alerting.public.v202505.AlertServiceAckRequest
-	11, // 67: kentik.alerting.public.v202505.AlertService.UnAck:input_type -> kentik.alerting.public.v202505.AlertServiceUnAckRequest
-	13, // 68: kentik.alerting.public.v202505.AlertService.Clear:input_type -> kentik.alerting.public.v202505.AlertServiceClearRequest
-	22, // 69: kentik.alerting.public.v202505.AlertService.AddComment:input_type -> kentik.alerting.public.v202505.AlertServiceAddCommentRequest
-	24, // 70: kentik.alerting.public.v202505.AlertService.ListComments:input_type -> kentik.alerting.public.v202505.AlertServiceListCommentsRequest
-	17, // 71: kentik.alerting.public.v202505.AlertService.SetExternalContext:input_type -> kentik.alerting.public.v202505.AlertServiceSetExternalContextRequest
-	4,  // 72: kentik.alerting.public.v202505.AlertService.Get:output_type -> kentik.alerting.public.v202505.AlertServiceGetResponse
-	8,  // 73: kentik.alerting.public.v202505.AlertService.List:output_type -> kentik.alerting.public.v202505.AlertServiceListResponse
-	10, // 74: kentik.alerting.public.v202505.AlertService.Ack:output_type -> kentik.alerting.public.v202505.AlertServiceAckResponse
-	12, // 75: kentik.alerting.public.v202505.AlertService.UnAck:output_type -> kentik.alerting.public.v202505.AlertServiceUnAckResponse
-	14, // 76: kentik.alerting.public.v202505.AlertService.Clear:output_type -> kentik.alerting.public.v202505.AlertServiceClearResponse
-	23, // 77: kentik.alerting.public.v202505.AlertService.AddComment:output_type -> kentik.alerting.public.v202505.AlertServiceAddCommentResponse
-	25, // 78: kentik.alerting.public.v202505.AlertService.ListComments:output_type -> kentik.alerting.public.v202505.AlertServiceListCommentsResponse
-	18, // 79: kentik.alerting.public.v202505.AlertService.SetExternalContext:output_type -> kentik.alerting.public.v202505.AlertServiceSetExternalContextResponse
-	72, // [72:80] is the sub-list for method output_type
-	64, // [64:72] is the sub-list for method input_type
-	64, // [64:64] is the sub-list for extension type_name
-	64, // [64:64] is the sub-list for extension extendee
-	0,  // [0:64] is the sub-list for field type_name
+	16, // 38: kentik.alerting.public.v202505.Alert.external_contexts:type_name -> kentik.alerting.public.v202505.ExternalContext
+	28, // 39: kentik.alerting.public.v202505.FlowContext.metric_values:type_name -> kentik.alerting.public.v202505.FlowContext.MetricValue
+	2,  // 40: kentik.alerting.public.v202505.FlowContext.activation_status:type_name -> kentik.alerting.public.v202505.FlowContext.ActivationStatus
+	27, // 41: kentik.alerting.public.v202505.FlowContext.alert_key_details:type_name -> kentik.alerting.public.v202505.FlowContext.AlertKeyDetailsEntry
+	38, // 42: kentik.alerting.public.v202505.NmsContext.activation_info:type_name -> kentik.alerting.public.v202505.NmsContext.ActivationInfo
+	39, // 43: kentik.alerting.public.v202505.NmsContext.dataset_info:type_name -> kentik.alerting.public.v202505.NmsContext.DatasetInfo
+	33, // 44: kentik.alerting.public.v202505.NmsContext.targets:type_name -> kentik.alerting.public.v202505.NmsContext.TargetsEntry
+	34, // 45: kentik.alerting.public.v202505.NmsContext.metric_values:type_name -> kentik.alerting.public.v202505.NmsContext.MetricValuesEntry
+	35, // 46: kentik.alerting.public.v202505.NmsContext.previous_metric_values:type_name -> kentik.alerting.public.v202505.NmsContext.PreviousMetricValuesEntry
+	36, // 47: kentik.alerting.public.v202505.NmsContext.device:type_name -> kentik.alerting.public.v202505.NmsContext.DeviceEntry
+	37, // 48: kentik.alerting.public.v202505.NmsContext.group_key:type_name -> kentik.alerting.public.v202505.NmsContext.GroupKeyEntry
+	45, // 49: kentik.alerting.public.v202505.AlertServiceAddCommentResponse.comment:type_name -> kentik.alerting.public.v202505.Comment
+	45, // 50: kentik.alerting.public.v202505.AlertServiceListCommentsResponse.comments:type_name -> kentik.alerting.public.v202505.Comment
+	1,  // 51: kentik.alerting.public.v202505.Alert.Acknowledgement.state:type_name -> kentik.alerting.public.v202505.AlertAcknowledgement
+	47, // 52: kentik.alerting.public.v202505.Alert.Acknowledgement.acked_at:type_name -> google.protobuf.Timestamp
+	29, // 53: kentik.alerting.public.v202505.FlowContext.AlertKeyDetailsEntry.value:type_name -> kentik.alerting.public.v202505.FlowContext.AlertKeyDetails
+	30, // 54: kentik.alerting.public.v202505.FlowContext.AlertKeyDetails.device:type_name -> kentik.alerting.public.v202505.FlowContext.DeviceDetails
+	31, // 55: kentik.alerting.public.v202505.FlowContext.AlertKeyDetails.interface:type_name -> kentik.alerting.public.v202505.FlowContext.InterfaceDetails
+	32, // 56: kentik.alerting.public.v202505.FlowContext.AlertKeyDetails.site:type_name -> kentik.alerting.public.v202505.FlowContext.SiteDetails
+	40, // 57: kentik.alerting.public.v202505.NmsContext.TargetsEntry.value:type_name -> kentik.alerting.public.v202505.NmsContext.AlarmTarget
+	41, // 58: kentik.alerting.public.v202505.NmsContext.MetricValuesEntry.value:type_name -> kentik.alerting.public.v202505.NmsContext.AlarmMetricMap
+	41, // 59: kentik.alerting.public.v202505.NmsContext.PreviousMetricValuesEntry.value:type_name -> kentik.alerting.public.v202505.NmsContext.AlarmMetricMap
+	54, // 60: kentik.alerting.public.v202505.NmsContext.ActivationInfo.activate:type_name -> kentik.alerting.public.v202505.NmsActivateOrClearConditions
+	46, // 61: kentik.alerting.public.v202505.NmsContext.ActivationInfo.severity:type_name -> kentik.alerting.types.v202303.Severity
+	42, // 62: kentik.alerting.public.v202505.NmsContext.AlarmTarget.fields:type_name -> kentik.alerting.public.v202505.NmsContext.AlarmTarget.FieldsEntry
+	43, // 63: kentik.alerting.public.v202505.NmsContext.AlarmTarget.tags:type_name -> kentik.alerting.public.v202505.NmsContext.AlarmTarget.TagsEntry
+	44, // 64: kentik.alerting.public.v202505.NmsContext.AlarmMetricMap.metrics:type_name -> kentik.alerting.public.v202505.NmsContext.AlarmMetricMap.MetricsEntry
+	3,  // 65: kentik.alerting.public.v202505.AlertService.Get:input_type -> kentik.alerting.public.v202505.AlertServiceGetRequest
+	6,  // 66: kentik.alerting.public.v202505.AlertService.List:input_type -> kentik.alerting.public.v202505.AlertServiceListRequest
+	9,  // 67: kentik.alerting.public.v202505.AlertService.Ack:input_type -> kentik.alerting.public.v202505.AlertServiceAckRequest
+	11, // 68: kentik.alerting.public.v202505.AlertService.UnAck:input_type -> kentik.alerting.public.v202505.AlertServiceUnAckRequest
+	13, // 69: kentik.alerting.public.v202505.AlertService.Clear:input_type -> kentik.alerting.public.v202505.AlertServiceClearRequest
+	22, // 70: kentik.alerting.public.v202505.AlertService.AddComment:input_type -> kentik.alerting.public.v202505.AlertServiceAddCommentRequest
+	24, // 71: kentik.alerting.public.v202505.AlertService.ListComments:input_type -> kentik.alerting.public.v202505.AlertServiceListCommentsRequest
+	17, // 72: kentik.alerting.public.v202505.AlertService.SetExternalContext:input_type -> kentik.alerting.public.v202505.AlertServiceSetExternalContextRequest
+	4,  // 73: kentik.alerting.public.v202505.AlertService.Get:output_type -> kentik.alerting.public.v202505.AlertServiceGetResponse
+	8,  // 74: kentik.alerting.public.v202505.AlertService.List:output_type -> kentik.alerting.public.v202505.AlertServiceListResponse
+	10, // 75: kentik.alerting.public.v202505.AlertService.Ack:output_type -> kentik.alerting.public.v202505.AlertServiceAckResponse
+	12, // 76: kentik.alerting.public.v202505.AlertService.UnAck:output_type -> kentik.alerting.public.v202505.AlertServiceUnAckResponse
+	14, // 77: kentik.alerting.public.v202505.AlertService.Clear:output_type -> kentik.alerting.public.v202505.AlertServiceClearResponse
+	23, // 78: kentik.alerting.public.v202505.AlertService.AddComment:output_type -> kentik.alerting.public.v202505.AlertServiceAddCommentResponse
+	25, // 79: kentik.alerting.public.v202505.AlertService.ListComments:output_type -> kentik.alerting.public.v202505.AlertServiceListCommentsResponse
+	18, // 80: kentik.alerting.public.v202505.AlertService.SetExternalContext:output_type -> kentik.alerting.public.v202505.AlertServiceSetExternalContextResponse
+	73, // [73:81] is the sub-list for method output_type
+	65, // [65:73] is the sub-list for method input_type
+	65, // [65:65] is the sub-list for extension type_name
+	65, // [65:65] is the sub-list for extension extendee
+	0,  // [0:65] is the sub-list for field type_name
 }
 
 func init() { file_kentik_alerting_public_v202505_alert_proto_init() }

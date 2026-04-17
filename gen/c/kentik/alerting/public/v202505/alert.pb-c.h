@@ -440,6 +440,8 @@ struct  Kentik__Alerting__Public__V202505__Alert
   Kentik__Alerting__Public__V202505__Alert__Acknowledgement *acknowledgement;
   Google__Protobuf__Timestamp *event_start_time_at;
   uint64_t mitigation_id;
+  size_t n_external_contexts;
+  Kentik__Alerting__Public__V202505__ExternalContext **external_contexts;
   Kentik__Alerting__Public__V202505__Alert__ContextCase context_case;
   union {
     Kentik__Alerting__Public__V202505__FlowContext *flow;
@@ -448,7 +450,7 @@ struct  Kentik__Alerting__Public__V202505__Alert
 };
 #define KENTIK__ALERTING__PUBLIC__V202505__ALERT__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__alerting__public__v202505__alert__descriptor) \
-    , (char *)protobuf_c_empty_string, NULL, NULL, NULL, KENTIK__ALERTING__PUBLIC__V202505__ALERT_STATE__ALERT_STATE_UNSPECIFIED, KENTIK__ALERTING__TYPES__V202303__SEVERITY__SEVERITY_UNSPECIFIED, KENTIK__ALERTING__TYPES__V202303__SEVERITY__SEVERITY_UNSPECIFIED, NULL, NULL, 0, KENTIK__ALERTING__PUBLIC__V202505__ALERT__CONTEXT__NOT_SET, {0} }
+    , (char *)protobuf_c_empty_string, NULL, NULL, NULL, KENTIK__ALERTING__PUBLIC__V202505__ALERT_STATE__ALERT_STATE_UNSPECIFIED, KENTIK__ALERTING__TYPES__V202303__SEVERITY__SEVERITY_UNSPECIFIED, KENTIK__ALERTING__TYPES__V202303__SEVERITY__SEVERITY_UNSPECIFIED, NULL, NULL, 0, 0,NULL, KENTIK__ALERTING__PUBLIC__V202505__ALERT__CONTEXT__NOT_SET, {0} }
 
 
 struct  Kentik__Alerting__Public__V202505__FlowContext__AlertKeyDetailsEntry

@@ -995,6 +995,14 @@
                         "format": "uint64",
                         "description": "ID of the associated mitigation, if applicable.",
                         "readOnly": true
+                    },
+                    "externalContexts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202505ExternalContext"
+                        },
+                        "description": "External contexts attached to the alert (e.g. ServiceNow).",
+                        "readOnly": true
                     }
                 }
             },

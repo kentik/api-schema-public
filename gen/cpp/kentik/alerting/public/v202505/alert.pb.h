@@ -7471,6 +7471,7 @@ class Alert final : public ::google::protobuf::Message
 
   // accessors -------------------------------------------------------
   enum : int {
+    kExternalContextsFieldNumber = 16,
     kIdFieldNumber = 1,
     kSourceFieldNumber = 2,
     kStartTimeAtFieldNumber = 4,
@@ -7484,6 +7485,23 @@ class Alert final : public ::google::protobuf::Message
     kFlowFieldNumber = 11,
     kNmsFieldNumber = 12,
   };
+  // repeated .kentik.alerting.public.v202505.ExternalContext external_contexts = 16 [json_name = "externalContexts", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  int external_contexts_size() const;
+  private:
+  int _internal_external_contexts_size() const;
+
+  public:
+  void clear_external_contexts() ;
+  ::kentik::alerting::public_::v202505::ExternalContext* mutable_external_contexts(int index);
+  ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::ExternalContext>* mutable_external_contexts();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::ExternalContext>& _internal_external_contexts() const;
+  ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::ExternalContext>* _internal_mutable_external_contexts();
+  public:
+  const ::kentik::alerting::public_::v202505::ExternalContext& external_contexts(int index) const;
+  ::kentik::alerting::public_::v202505::ExternalContext* add_external_contexts();
+  const ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::ExternalContext>& external_contexts() const;
   // string id = 1 [json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   void clear_id() ;
   const std::string& id() const;
@@ -7664,7 +7682,7 @@ class Alert final : public ::google::protobuf::Message
   inline void clear_has_context();
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      4, 12, 7,
+      4, 13, 8,
       55, 2>
       _table_;
 
@@ -7684,6 +7702,7 @@ class Alert final : public ::google::protobuf::Message
                           const Alert& from_msg);
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::RepeatedPtrField< ::kentik::alerting::public_::v202505::ExternalContext > external_contexts_;
     ::google::protobuf::internal::ArenaStringPtr id_;
     ::kentik::alerting::public_::v202505::Source* source_;
     ::google::protobuf::Timestamp* start_time_at_;
@@ -12351,6 +12370,55 @@ inline ::uint64_t Alert::_internal_mitigation_id() const {
 inline void Alert::_internal_set_mitigation_id(::uint64_t value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.mitigation_id_ = value;
+}
+
+// repeated .kentik.alerting.public.v202505.ExternalContext external_contexts = 16 [json_name = "externalContexts", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline int Alert::_internal_external_contexts_size() const {
+  return _internal_external_contexts().size();
+}
+inline int Alert::external_contexts_size() const {
+  return _internal_external_contexts_size();
+}
+inline void Alert::clear_external_contexts() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.external_contexts_.Clear();
+}
+inline ::kentik::alerting::public_::v202505::ExternalContext* Alert::mutable_external_contexts(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:kentik.alerting.public.v202505.Alert.external_contexts)
+  return _internal_mutable_external_contexts()->Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::ExternalContext>* Alert::mutable_external_contexts()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:kentik.alerting.public.v202505.Alert.external_contexts)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_external_contexts();
+}
+inline const ::kentik::alerting::public_::v202505::ExternalContext& Alert::external_contexts(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.alerting.public.v202505.Alert.external_contexts)
+  return _internal_external_contexts().Get(index);
+}
+inline ::kentik::alerting::public_::v202505::ExternalContext* Alert::add_external_contexts() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::kentik::alerting::public_::v202505::ExternalContext* _add = _internal_mutable_external_contexts()->Add();
+  // @@protoc_insertion_point(field_add:kentik.alerting.public.v202505.Alert.external_contexts)
+  return _add;
+}
+inline const ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::ExternalContext>& Alert::external_contexts() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:kentik.alerting.public.v202505.Alert.external_contexts)
+  return _internal_external_contexts();
+}
+inline const ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::ExternalContext>&
+Alert::_internal_external_contexts() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.external_contexts_;
+}
+inline ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::ExternalContext>*
+Alert::_internal_mutable_external_contexts() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.external_contexts_;
 }
 
 inline bool Alert::has_context() const {
