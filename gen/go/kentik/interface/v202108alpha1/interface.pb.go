@@ -354,6 +354,105 @@ func (Operator) EnumDescriptor() ([]byte, []int) {
 	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{4}
 }
 
+type InterfaceVrf struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID of the VRF. Set to reference an existing VRF; omit when creating a new VRF.
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// VRF name.
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	// VRF description.
+	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
+	// Route distinguisher. Required when creating a new VRF.
+	RouteDistinguisher string `protobuf:"bytes,4,opt,name=route_distinguisher,json=routeDistinguisher,proto3" json:"route_distinguisher,omitempty"`
+	// Extended route distinguisher. Required when creating a new VRF.
+	ExtRouteDistinguisher int64 `protobuf:"varint,5,opt,name=ext_route_distinguisher,json=extRouteDistinguisher,proto3" json:"ext_route_distinguisher,omitempty"`
+	// Route target. Required when creating a new VRF.
+	RouteTarget string `protobuf:"bytes,6,opt,name=route_target,json=routeTarget,proto3" json:"route_target,omitempty"`
+	// Route targets.
+	RouteTargets  []string `protobuf:"bytes,7,rep,name=route_targets,json=routeTargets,proto3" json:"route_targets,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *InterfaceVrf) Reset() {
+	*x = InterfaceVrf{}
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *InterfaceVrf) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*InterfaceVrf) ProtoMessage() {}
+
+func (x *InterfaceVrf) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use InterfaceVrf.ProtoReflect.Descriptor instead.
+func (*InterfaceVrf) Descriptor() ([]byte, []int) {
+	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *InterfaceVrf) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *InterfaceVrf) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *InterfaceVrf) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
+func (x *InterfaceVrf) GetRouteDistinguisher() string {
+	if x != nil {
+		return x.RouteDistinguisher
+	}
+	return ""
+}
+
+func (x *InterfaceVrf) GetExtRouteDistinguisher() int64 {
+	if x != nil {
+		return x.ExtRouteDistinguisher
+	}
+	return 0
+}
+
+func (x *InterfaceVrf) GetRouteTarget() string {
+	if x != nil {
+		return x.RouteTarget
+	}
+	return ""
+}
+
+func (x *InterfaceVrf) GetRouteTargets() []string {
+	if x != nil {
+		return x.RouteTargets
+	}
+	return nil
+}
+
 type Interface struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ID of interface.
@@ -410,17 +509,21 @@ type Interface struct {
 	InitialNetworkBoundary NetworkBoundary `protobuf:"varint,26,opt,name=initial_network_boundary,json=initialNetworkBoundary,proto3,enum=kentik.interface.v202108alpha1.NetworkBoundary" json:"initial_network_boundary,omitempty"`
 	// Initial Network provider.
 	InitialProvider string `protobuf:"bytes,27,opt,name=initial_provider,json=initialProvider,proto3" json:"initial_provider,omitempty"`
-	// VRF ID
+	// VRF_ID is deprecated for the API, use VRF instead
+	//
+	// Deprecated: Marked as deprecated in kentik/interface/v202108alpha1/interface.proto.
 	VrfId string `protobuf:"bytes,28,opt,name=vrf_id,json=vrfId,proto3" json:"vrf_id,omitempty"`
 	// VRF
-	Vrf           map[string]string `protobuf:"bytes,29,rep,name=vrf,proto3" json:"vrf,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Vrf *InterfaceVrf `protobuf:"bytes,30,opt,name=vrf,proto3" json:"vrf,omitempty"`
+	// Initial VRF_ID
+	InitialVrfId  string `protobuf:"bytes,31,opt,name=initial_vrf_id,json=initialVrfId,proto3" json:"initial_vrf_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Interface) Reset() {
 	*x = Interface{}
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[0]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -432,7 +535,7 @@ func (x *Interface) String() string {
 func (*Interface) ProtoMessage() {}
 
 func (x *Interface) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[0]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -445,7 +548,7 @@ func (x *Interface) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Interface.ProtoReflect.Descriptor instead.
 func (*Interface) Descriptor() ([]byte, []int) {
-	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{0}
+	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *Interface) GetId() string {
@@ -637,6 +740,7 @@ func (x *Interface) GetInitialProvider() string {
 	return ""
 }
 
+// Deprecated: Marked as deprecated in kentik/interface/v202108alpha1/interface.proto.
 func (x *Interface) GetVrfId() string {
 	if x != nil {
 		return x.VrfId
@@ -644,11 +748,18 @@ func (x *Interface) GetVrfId() string {
 	return ""
 }
 
-func (x *Interface) GetVrf() map[string]string {
+func (x *Interface) GetVrf() *InterfaceVrf {
 	if x != nil {
 		return x.Vrf
 	}
 	return nil
+}
+
+func (x *Interface) GetInitialVrfId() string {
+	if x != nil {
+		return x.InitialVrfId
+	}
+	return ""
 }
 
 type InterfaceClassification struct {
@@ -662,7 +773,7 @@ type InterfaceClassification struct {
 
 func (x *InterfaceClassification) Reset() {
 	*x = InterfaceClassification{}
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[1]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -674,7 +785,7 @@ func (x *InterfaceClassification) String() string {
 func (*InterfaceClassification) ProtoMessage() {}
 
 func (x *InterfaceClassification) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[1]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -687,7 +798,7 @@ func (x *InterfaceClassification) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InterfaceClassification.ProtoReflect.Descriptor instead.
 func (*InterfaceClassification) Descriptor() ([]byte, []int) {
-	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{1}
+	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *InterfaceClassification) GetClassified() bool {
@@ -725,7 +836,7 @@ type ClassifyCounter struct {
 
 func (x *ClassifyCounter) Reset() {
 	*x = ClassifyCounter{}
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[2]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -737,7 +848,7 @@ func (x *ClassifyCounter) String() string {
 func (*ClassifyCounter) ProtoMessage() {}
 
 func (x *ClassifyCounter) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[2]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -750,7 +861,7 @@ func (x *ClassifyCounter) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClassifyCounter.ProtoReflect.Descriptor instead.
 func (*ClassifyCounter) Descriptor() ([]byte, []int) {
-	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{2}
+	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ClassifyCounter) GetCount() int32 {
@@ -829,7 +940,7 @@ type InterfaceClassifyInfo struct {
 
 func (x *InterfaceClassifyInfo) Reset() {
 	*x = InterfaceClassifyInfo{}
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[3]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -841,7 +952,7 @@ func (x *InterfaceClassifyInfo) String() string {
 func (*InterfaceClassifyInfo) ProtoMessage() {}
 
 func (x *InterfaceClassifyInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[3]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -854,7 +965,7 @@ func (x *InterfaceClassifyInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InterfaceClassifyInfo.ProtoReflect.Descriptor instead.
 func (*InterfaceClassifyInfo) Descriptor() ([]byte, []int) {
-	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{3}
+	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *InterfaceClassifyInfo) GetDeviceId() string {
@@ -1049,7 +1160,7 @@ type DeviceClassifyInfo struct {
 
 func (x *DeviceClassifyInfo) Reset() {
 	*x = DeviceClassifyInfo{}
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[4]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1061,7 +1172,7 @@ func (x *DeviceClassifyInfo) String() string {
 func (*DeviceClassifyInfo) ProtoMessage() {}
 
 func (x *DeviceClassifyInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[4]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1074,7 +1185,7 @@ func (x *DeviceClassifyInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeviceClassifyInfo.ProtoReflect.Descriptor instead.
 func (*DeviceClassifyInfo) Descriptor() ([]byte, []int) {
-	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{4}
+	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *DeviceClassifyInfo) GetDeviceId() string {
@@ -1177,7 +1288,7 @@ type InterfaceFilter struct {
 
 func (x *InterfaceFilter) Reset() {
 	*x = InterfaceFilter{}
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[5]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1189,7 +1300,7 @@ func (x *InterfaceFilter) String() string {
 func (*InterfaceFilter) ProtoMessage() {}
 
 func (x *InterfaceFilter) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[5]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1202,7 +1313,7 @@ func (x *InterfaceFilter) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InterfaceFilter.ProtoReflect.Descriptor instead.
 func (*InterfaceFilter) Descriptor() ([]byte, []int) {
-	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{5}
+	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *InterfaceFilter) GetText() string {
@@ -1262,7 +1373,7 @@ type AutoClassifyRequest struct {
 
 func (x *AutoClassifyRequest) Reset() {
 	*x = AutoClassifyRequest{}
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[6]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1274,7 +1385,7 @@ func (x *AutoClassifyRequest) String() string {
 func (*AutoClassifyRequest) ProtoMessage() {}
 
 func (x *AutoClassifyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[6]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1287,7 +1398,7 @@ func (x *AutoClassifyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AutoClassifyRequest.ProtoReflect.Descriptor instead.
 func (*AutoClassifyRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{6}
+	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{7}
 }
 
 type AutoClassifyResponse struct {
@@ -1313,7 +1424,7 @@ type AutoClassifyResponse struct {
 
 func (x *AutoClassifyResponse) Reset() {
 	*x = AutoClassifyResponse{}
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[7]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1325,7 +1436,7 @@ func (x *AutoClassifyResponse) String() string {
 func (*AutoClassifyResponse) ProtoMessage() {}
 
 func (x *AutoClassifyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[7]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1338,7 +1449,7 @@ func (x *AutoClassifyResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AutoClassifyResponse.ProtoReflect.Descriptor instead.
 func (*AutoClassifyResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{7}
+	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *AutoClassifyResponse) GetPercAutoClassified() float64 {
@@ -1428,7 +1539,7 @@ type ManualClassifyRequest struct {
 
 func (x *ManualClassifyRequest) Reset() {
 	*x = ManualClassifyRequest{}
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[8]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1440,7 +1551,7 @@ func (x *ManualClassifyRequest) String() string {
 func (*ManualClassifyRequest) ProtoMessage() {}
 
 func (x *ManualClassifyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[8]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1453,7 +1564,7 @@ func (x *ManualClassifyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ManualClassifyRequest.ProtoReflect.Descriptor instead.
 func (*ManualClassifyRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{8}
+	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *ManualClassifyRequest) GetInterfaceIds() []string {
@@ -1493,7 +1604,7 @@ type ManualClassifyResponse struct {
 
 func (x *ManualClassifyResponse) Reset() {
 	*x = ManualClassifyResponse{}
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[9]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1505,7 +1616,7 @@ func (x *ManualClassifyResponse) String() string {
 func (*ManualClassifyResponse) ProtoMessage() {}
 
 func (x *ManualClassifyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[9]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1518,7 +1629,7 @@ func (x *ManualClassifyResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ManualClassifyResponse.ProtoReflect.Descriptor instead.
 func (*ManualClassifyResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{9}
+	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *ManualClassifyResponse) GetDeviceIds() []string {
@@ -1537,7 +1648,7 @@ type ListInterfaceRequest struct {
 
 func (x *ListInterfaceRequest) Reset() {
 	*x = ListInterfaceRequest{}
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[10]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1549,7 +1660,7 @@ func (x *ListInterfaceRequest) String() string {
 func (*ListInterfaceRequest) ProtoMessage() {}
 
 func (x *ListInterfaceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[10]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1562,7 +1673,7 @@ func (x *ListInterfaceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListInterfaceRequest.ProtoReflect.Descriptor instead.
 func (*ListInterfaceRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{10}
+	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *ListInterfaceRequest) GetFilters() *InterfaceFilter {
@@ -1583,7 +1694,7 @@ type ListInterfaceResponse struct {
 
 func (x *ListInterfaceResponse) Reset() {
 	*x = ListInterfaceResponse{}
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[11]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1595,7 +1706,7 @@ func (x *ListInterfaceResponse) String() string {
 func (*ListInterfaceResponse) ProtoMessage() {}
 
 func (x *ListInterfaceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[11]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1608,7 +1719,7 @@ func (x *ListInterfaceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListInterfaceResponse.ProtoReflect.Descriptor instead.
 func (*ListInterfaceResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{11}
+	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *ListInterfaceResponse) GetInterfaces() []*Interface {
@@ -1642,7 +1753,7 @@ type GetInterfaceRequest struct {
 
 func (x *GetInterfaceRequest) Reset() {
 	*x = GetInterfaceRequest{}
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[12]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1654,7 +1765,7 @@ func (x *GetInterfaceRequest) String() string {
 func (*GetInterfaceRequest) ProtoMessage() {}
 
 func (x *GetInterfaceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[12]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1667,7 +1778,7 @@ func (x *GetInterfaceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetInterfaceRequest.ProtoReflect.Descriptor instead.
 func (*GetInterfaceRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{12}
+	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *GetInterfaceRequest) GetId() string {
@@ -1686,7 +1797,7 @@ type GetInterfaceResponse struct {
 
 func (x *GetInterfaceResponse) Reset() {
 	*x = GetInterfaceResponse{}
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[13]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1698,7 +1809,7 @@ func (x *GetInterfaceResponse) String() string {
 func (*GetInterfaceResponse) ProtoMessage() {}
 
 func (x *GetInterfaceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[13]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1711,7 +1822,7 @@ func (x *GetInterfaceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetInterfaceResponse.ProtoReflect.Descriptor instead.
 func (*GetInterfaceResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{13}
+	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *GetInterfaceResponse) GetInterface() *Interface {
@@ -1730,7 +1841,7 @@ type CreateInterfaceRequest struct {
 
 func (x *CreateInterfaceRequest) Reset() {
 	*x = CreateInterfaceRequest{}
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[14]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1742,7 +1853,7 @@ func (x *CreateInterfaceRequest) String() string {
 func (*CreateInterfaceRequest) ProtoMessage() {}
 
 func (x *CreateInterfaceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[14]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1755,7 +1866,7 @@ func (x *CreateInterfaceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateInterfaceRequest.ProtoReflect.Descriptor instead.
 func (*CreateInterfaceRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{14}
+	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *CreateInterfaceRequest) GetInterface() *Interface {
@@ -1774,7 +1885,7 @@ type CreateInterfaceResponse struct {
 
 func (x *CreateInterfaceResponse) Reset() {
 	*x = CreateInterfaceResponse{}
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[15]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1786,7 +1897,7 @@ func (x *CreateInterfaceResponse) String() string {
 func (*CreateInterfaceResponse) ProtoMessage() {}
 
 func (x *CreateInterfaceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[15]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1799,7 +1910,7 @@ func (x *CreateInterfaceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateInterfaceResponse.ProtoReflect.Descriptor instead.
 func (*CreateInterfaceResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{15}
+	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *CreateInterfaceResponse) GetInterface() *Interface {
@@ -1818,7 +1929,7 @@ type UpdateInterfaceRequest struct {
 
 func (x *UpdateInterfaceRequest) Reset() {
 	*x = UpdateInterfaceRequest{}
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[16]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1830,7 +1941,7 @@ func (x *UpdateInterfaceRequest) String() string {
 func (*UpdateInterfaceRequest) ProtoMessage() {}
 
 func (x *UpdateInterfaceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[16]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1843,7 +1954,7 @@ func (x *UpdateInterfaceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateInterfaceRequest.ProtoReflect.Descriptor instead.
 func (*UpdateInterfaceRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{16}
+	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *UpdateInterfaceRequest) GetInterface() *Interface {
@@ -1862,7 +1973,7 @@ type UpdateInterfaceResponse struct {
 
 func (x *UpdateInterfaceResponse) Reset() {
 	*x = UpdateInterfaceResponse{}
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[17]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1874,7 +1985,7 @@ func (x *UpdateInterfaceResponse) String() string {
 func (*UpdateInterfaceResponse) ProtoMessage() {}
 
 func (x *UpdateInterfaceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[17]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1887,7 +1998,7 @@ func (x *UpdateInterfaceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateInterfaceResponse.ProtoReflect.Descriptor instead.
 func (*UpdateInterfaceResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{17}
+	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *UpdateInterfaceResponse) GetInterface() *Interface {
@@ -1907,7 +2018,7 @@ type DeleteInterfaceRequest struct {
 
 func (x *DeleteInterfaceRequest) Reset() {
 	*x = DeleteInterfaceRequest{}
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[18]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1919,7 +2030,7 @@ func (x *DeleteInterfaceRequest) String() string {
 func (*DeleteInterfaceRequest) ProtoMessage() {}
 
 func (x *DeleteInterfaceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[18]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1932,7 +2043,7 @@ func (x *DeleteInterfaceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteInterfaceRequest.ProtoReflect.Descriptor instead.
 func (*DeleteInterfaceRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{18}
+	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *DeleteInterfaceRequest) GetId() string {
@@ -1950,7 +2061,7 @@ type DeleteInterfaceResponse struct {
 
 func (x *DeleteInterfaceResponse) Reset() {
 	*x = DeleteInterfaceResponse{}
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[19]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1962,7 +2073,7 @@ func (x *DeleteInterfaceResponse) String() string {
 func (*DeleteInterfaceResponse) ProtoMessage() {}
 
 func (x *DeleteInterfaceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[19]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1975,7 +2086,7 @@ func (x *DeleteInterfaceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteInterfaceResponse.ProtoReflect.Descriptor instead.
 func (*DeleteInterfaceResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{19}
+	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{20}
 }
 
 type Match struct {
@@ -1992,7 +2103,7 @@ type Match struct {
 
 func (x *Match) Reset() {
 	*x = Match{}
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[20]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2004,7 +2115,7 @@ func (x *Match) String() string {
 func (*Match) ProtoMessage() {}
 
 func (x *Match) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[20]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2017,7 +2128,7 @@ func (x *Match) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Match.ProtoReflect.Descriptor instead.
 func (*Match) Descriptor() ([]byte, []int) {
-	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{20}
+	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *Match) GetMatchAttribute() MatchAttribute {
@@ -2058,7 +2169,7 @@ type Action struct {
 
 func (x *Action) Reset() {
 	*x = Action{}
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[21]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2070,7 +2181,7 @@ func (x *Action) String() string {
 func (*Action) ProtoMessage() {}
 
 func (x *Action) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[21]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2083,7 +2194,7 @@ func (x *Action) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Action.ProtoReflect.Descriptor instead.
 func (*Action) Descriptor() ([]byte, []int) {
-	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{21}
+	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *Action) GetSetConnectivityType() ConnectivityType {
@@ -2127,7 +2238,7 @@ type DeviceFilter struct {
 
 func (x *DeviceFilter) Reset() {
 	*x = DeviceFilter{}
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[22]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2139,7 +2250,7 @@ func (x *DeviceFilter) String() string {
 func (*DeviceFilter) ProtoMessage() {}
 
 func (x *DeviceFilter) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[22]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2152,7 +2263,7 @@ func (x *DeviceFilter) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeviceFilter.ProtoReflect.Descriptor instead.
 func (*DeviceFilter) Descriptor() ([]byte, []int) {
-	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{22}
+	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *DeviceFilter) GetAllDevices() bool {
@@ -2216,7 +2327,7 @@ type Rule struct {
 
 func (x *Rule) Reset() {
 	*x = Rule{}
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[23]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2228,7 +2339,7 @@ func (x *Rule) String() string {
 func (*Rule) ProtoMessage() {}
 
 func (x *Rule) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[23]
+	mi := &file_kentik_interface_v202108alpha1_interface_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2241,7 +2352,7 @@ func (x *Rule) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Rule.ProtoReflect.Descriptor instead.
 func (*Rule) Descriptor() ([]byte, []int) {
-	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{23}
+	return file_kentik_interface_v202108alpha1_interface_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *Rule) GetId() string {
@@ -2311,7 +2422,15 @@ var File_kentik_interface_v202108alpha1_interface_proto protoreflect.FileDescrip
 
 const file_kentik_interface_v202108alpha1_interface_proto_rawDesc = "" +
 	"\n" +
-	".kentik/interface/v202108alpha1/interface.proto\x12\x1ekentik.interface.v202108alpha1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a%kentik/core/v202303/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xad\x0e\n" +
+	".kentik/interface/v202108alpha1/interface.proto\x12\x1ekentik.interface.v202108alpha1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a%kentik/core/v202303/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x85\x02\n" +
+	"\fInterfaceVrf\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
+	"\vdescription\x18\x03 \x01(\tR\vdescription\x12/\n" +
+	"\x13route_distinguisher\x18\x04 \x01(\tR\x12routeDistinguisher\x126\n" +
+	"\x17ext_route_distinguisher\x18\x05 \x01(\x03R\x15extRouteDistinguisher\x12!\n" +
+	"\froute_target\x18\x06 \x01(\tR\vrouteTarget\x12#\n" +
+	"\rroute_targets\x18\a \x03(\tR\frouteTargets\"\xf9\x0e\n" +
 	"\tInterface\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\tdevice_id\x18\x02 \x01(\tR\bdeviceId\x12\x17\n" +
@@ -2343,9 +2462,10 @@ const file_kentik_interface_v202108alpha1_interface_proto_rawDesc = "" +
 	"\rsecondary_ips\x18\x18 \x01(\tR\fsecondaryIps\x12l\n" +
 	"\x19initial_connectivity_type\x18\x19 \x01(\x0e20.kentik.interface.v202108alpha1.ConnectivityTypeR\x17initialConnectivityType\x12i\n" +
 	"\x18initial_network_boundary\x18\x1a \x01(\x0e2/.kentik.interface.v202108alpha1.NetworkBoundaryR\x16initialNetworkBoundary\x12)\n" +
-	"\x10initial_provider\x18\x1b \x01(\tR\x0finitialProvider\x12\x15\n" +
-	"\x06vrf_id\x18\x1c \x01(\tR\x05vrfId\x12D\n" +
-	"\x03vrf\x18\x1d \x03(\v22.kentik.interface.v202108alpha1.Interface.VrfEntryR\x03vrf\x1a?\n" +
+	"\x10initial_provider\x18\x1b \x01(\tR\x0finitialProvider\x12?\n" +
+	"\x06vrf_id\x18\x1c \x01(\tB(\x92A#2!Deprecated: use VRF field instead\x18\x01R\x05vrfId\x12>\n" +
+	"\x03vrf\x18\x1e \x01(\v2,.kentik.interface.v202108alpha1.InterfaceVrfR\x03vrf\x12X\n" +
+	"\x0einitial_vrf_id\x18\x1f \x01(\tB2\x92A,2*Initial VRF ID. Read-only, server-managed.\xe0A\x03R\finitialVrfId\x1a?\n" +
 	"\x11InterfaceKvsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1a@\n" +
@@ -2354,10 +2474,7 @@ const file_kentik_interface_v202108alpha1_interface_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1a<\n" +
 	"\x0eExtraInfoEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1a6\n" +
-	"\bVrfEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xf4\x01\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01J\x04\b\x1d\x10\x1e\"\xf4\x01\n" +
 	"\x17InterfaceClassification\x12\x1e\n" +
 	"\n" +
 	"classified\x18\x01 \x01(\bR\n" +
@@ -2583,34 +2700,34 @@ var file_kentik_interface_v202108alpha1_interface_proto_goTypes = []any{
 	(IpFilter)(0),                   // 2: kentik.interface.v202108alpha1.IpFilter
 	(MatchAttribute)(0),             // 3: kentik.interface.v202108alpha1.MatchAttribute
 	(Operator)(0),                   // 4: kentik.interface.v202108alpha1.Operator
-	(*Interface)(nil),               // 5: kentik.interface.v202108alpha1.Interface
-	(*InterfaceClassification)(nil), // 6: kentik.interface.v202108alpha1.InterfaceClassification
-	(*ClassifyCounter)(nil),         // 7: kentik.interface.v202108alpha1.ClassifyCounter
-	(*InterfaceClassifyInfo)(nil),   // 8: kentik.interface.v202108alpha1.InterfaceClassifyInfo
-	(*DeviceClassifyInfo)(nil),      // 9: kentik.interface.v202108alpha1.DeviceClassifyInfo
-	(*InterfaceFilter)(nil),         // 10: kentik.interface.v202108alpha1.InterfaceFilter
-	(*AutoClassifyRequest)(nil),     // 11: kentik.interface.v202108alpha1.AutoClassifyRequest
-	(*AutoClassifyResponse)(nil),    // 12: kentik.interface.v202108alpha1.AutoClassifyResponse
-	(*ManualClassifyRequest)(nil),   // 13: kentik.interface.v202108alpha1.ManualClassifyRequest
-	(*ManualClassifyResponse)(nil),  // 14: kentik.interface.v202108alpha1.ManualClassifyResponse
-	(*ListInterfaceRequest)(nil),    // 15: kentik.interface.v202108alpha1.ListInterfaceRequest
-	(*ListInterfaceResponse)(nil),   // 16: kentik.interface.v202108alpha1.ListInterfaceResponse
-	(*GetInterfaceRequest)(nil),     // 17: kentik.interface.v202108alpha1.GetInterfaceRequest
-	(*GetInterfaceResponse)(nil),    // 18: kentik.interface.v202108alpha1.GetInterfaceResponse
-	(*CreateInterfaceRequest)(nil),  // 19: kentik.interface.v202108alpha1.CreateInterfaceRequest
-	(*CreateInterfaceResponse)(nil), // 20: kentik.interface.v202108alpha1.CreateInterfaceResponse
-	(*UpdateInterfaceRequest)(nil),  // 21: kentik.interface.v202108alpha1.UpdateInterfaceRequest
-	(*UpdateInterfaceResponse)(nil), // 22: kentik.interface.v202108alpha1.UpdateInterfaceResponse
-	(*DeleteInterfaceRequest)(nil),  // 23: kentik.interface.v202108alpha1.DeleteInterfaceRequest
-	(*DeleteInterfaceResponse)(nil), // 24: kentik.interface.v202108alpha1.DeleteInterfaceResponse
-	(*Match)(nil),                   // 25: kentik.interface.v202108alpha1.Match
-	(*Action)(nil),                  // 26: kentik.interface.v202108alpha1.Action
-	(*DeviceFilter)(nil),            // 27: kentik.interface.v202108alpha1.DeviceFilter
-	(*Rule)(nil),                    // 28: kentik.interface.v202108alpha1.Rule
-	nil,                             // 29: kentik.interface.v202108alpha1.Interface.InterfaceKvsEntry
-	nil,                             // 30: kentik.interface.v202108alpha1.Interface.InterfaceTagsEntry
-	nil,                             // 31: kentik.interface.v202108alpha1.Interface.ExtraInfoEntry
-	nil,                             // 32: kentik.interface.v202108alpha1.Interface.VrfEntry
+	(*InterfaceVrf)(nil),            // 5: kentik.interface.v202108alpha1.InterfaceVrf
+	(*Interface)(nil),               // 6: kentik.interface.v202108alpha1.Interface
+	(*InterfaceClassification)(nil), // 7: kentik.interface.v202108alpha1.InterfaceClassification
+	(*ClassifyCounter)(nil),         // 8: kentik.interface.v202108alpha1.ClassifyCounter
+	(*InterfaceClassifyInfo)(nil),   // 9: kentik.interface.v202108alpha1.InterfaceClassifyInfo
+	(*DeviceClassifyInfo)(nil),      // 10: kentik.interface.v202108alpha1.DeviceClassifyInfo
+	(*InterfaceFilter)(nil),         // 11: kentik.interface.v202108alpha1.InterfaceFilter
+	(*AutoClassifyRequest)(nil),     // 12: kentik.interface.v202108alpha1.AutoClassifyRequest
+	(*AutoClassifyResponse)(nil),    // 13: kentik.interface.v202108alpha1.AutoClassifyResponse
+	(*ManualClassifyRequest)(nil),   // 14: kentik.interface.v202108alpha1.ManualClassifyRequest
+	(*ManualClassifyResponse)(nil),  // 15: kentik.interface.v202108alpha1.ManualClassifyResponse
+	(*ListInterfaceRequest)(nil),    // 16: kentik.interface.v202108alpha1.ListInterfaceRequest
+	(*ListInterfaceResponse)(nil),   // 17: kentik.interface.v202108alpha1.ListInterfaceResponse
+	(*GetInterfaceRequest)(nil),     // 18: kentik.interface.v202108alpha1.GetInterfaceRequest
+	(*GetInterfaceResponse)(nil),    // 19: kentik.interface.v202108alpha1.GetInterfaceResponse
+	(*CreateInterfaceRequest)(nil),  // 20: kentik.interface.v202108alpha1.CreateInterfaceRequest
+	(*CreateInterfaceResponse)(nil), // 21: kentik.interface.v202108alpha1.CreateInterfaceResponse
+	(*UpdateInterfaceRequest)(nil),  // 22: kentik.interface.v202108alpha1.UpdateInterfaceRequest
+	(*UpdateInterfaceResponse)(nil), // 23: kentik.interface.v202108alpha1.UpdateInterfaceResponse
+	(*DeleteInterfaceRequest)(nil),  // 24: kentik.interface.v202108alpha1.DeleteInterfaceRequest
+	(*DeleteInterfaceResponse)(nil), // 25: kentik.interface.v202108alpha1.DeleteInterfaceResponse
+	(*Match)(nil),                   // 26: kentik.interface.v202108alpha1.Match
+	(*Action)(nil),                  // 27: kentik.interface.v202108alpha1.Action
+	(*DeviceFilter)(nil),            // 28: kentik.interface.v202108alpha1.DeviceFilter
+	(*Rule)(nil),                    // 29: kentik.interface.v202108alpha1.Rule
+	nil,                             // 30: kentik.interface.v202108alpha1.Interface.InterfaceKvsEntry
+	nil,                             // 31: kentik.interface.v202108alpha1.Interface.InterfaceTagsEntry
+	nil,                             // 32: kentik.interface.v202108alpha1.Interface.ExtraInfoEntry
 	(*timestamppb.Timestamp)(nil),   // 33: google.protobuf.Timestamp
 }
 var file_kentik_interface_v202108alpha1_interface_proto_depIdxs = []int32{
@@ -2618,56 +2735,56 @@ var file_kentik_interface_v202108alpha1_interface_proto_depIdxs = []int32{
 	33, // 1: kentik.interface.v202108alpha1.Interface.edate:type_name -> google.protobuf.Timestamp
 	0,  // 2: kentik.interface.v202108alpha1.Interface.connectivity_type:type_name -> kentik.interface.v202108alpha1.ConnectivityType
 	1,  // 3: kentik.interface.v202108alpha1.Interface.network_boundary:type_name -> kentik.interface.v202108alpha1.NetworkBoundary
-	29, // 4: kentik.interface.v202108alpha1.Interface.interface_kvs:type_name -> kentik.interface.v202108alpha1.Interface.InterfaceKvsEntry
-	30, // 5: kentik.interface.v202108alpha1.Interface.interface_tags:type_name -> kentik.interface.v202108alpha1.Interface.InterfaceTagsEntry
-	31, // 6: kentik.interface.v202108alpha1.Interface.extra_info:type_name -> kentik.interface.v202108alpha1.Interface.ExtraInfoEntry
+	30, // 4: kentik.interface.v202108alpha1.Interface.interface_kvs:type_name -> kentik.interface.v202108alpha1.Interface.InterfaceKvsEntry
+	31, // 5: kentik.interface.v202108alpha1.Interface.interface_tags:type_name -> kentik.interface.v202108alpha1.Interface.InterfaceTagsEntry
+	32, // 6: kentik.interface.v202108alpha1.Interface.extra_info:type_name -> kentik.interface.v202108alpha1.Interface.ExtraInfoEntry
 	0,  // 7: kentik.interface.v202108alpha1.Interface.initial_connectivity_type:type_name -> kentik.interface.v202108alpha1.ConnectivityType
 	1,  // 8: kentik.interface.v202108alpha1.Interface.initial_network_boundary:type_name -> kentik.interface.v202108alpha1.NetworkBoundary
-	32, // 9: kentik.interface.v202108alpha1.Interface.vrf:type_name -> kentik.interface.v202108alpha1.Interface.VrfEntry
+	5,  // 9: kentik.interface.v202108alpha1.Interface.vrf:type_name -> kentik.interface.v202108alpha1.InterfaceVrf
 	0,  // 10: kentik.interface.v202108alpha1.InterfaceClassification.connectivity_type:type_name -> kentik.interface.v202108alpha1.ConnectivityType
 	1,  // 11: kentik.interface.v202108alpha1.InterfaceClassification.network_boundary:type_name -> kentik.interface.v202108alpha1.NetworkBoundary
-	6,  // 12: kentik.interface.v202108alpha1.InterfaceClassifyInfo.auto_classification:type_name -> kentik.interface.v202108alpha1.InterfaceClassification
-	6,  // 13: kentik.interface.v202108alpha1.InterfaceClassifyInfo.previous_classification:type_name -> kentik.interface.v202108alpha1.InterfaceClassification
-	7,  // 14: kentik.interface.v202108alpha1.DeviceClassifyInfo.previously_classified_counter:type_name -> kentik.interface.v202108alpha1.ClassifyCounter
-	7,  // 15: kentik.interface.v202108alpha1.DeviceClassifyInfo.auto_classified_counter:type_name -> kentik.interface.v202108alpha1.ClassifyCounter
-	8,  // 16: kentik.interface.v202108alpha1.DeviceClassifyInfo.interfaces:type_name -> kentik.interface.v202108alpha1.InterfaceClassifyInfo
+	7,  // 12: kentik.interface.v202108alpha1.InterfaceClassifyInfo.auto_classification:type_name -> kentik.interface.v202108alpha1.InterfaceClassification
+	7,  // 13: kentik.interface.v202108alpha1.InterfaceClassifyInfo.previous_classification:type_name -> kentik.interface.v202108alpha1.InterfaceClassification
+	8,  // 14: kentik.interface.v202108alpha1.DeviceClassifyInfo.previously_classified_counter:type_name -> kentik.interface.v202108alpha1.ClassifyCounter
+	8,  // 15: kentik.interface.v202108alpha1.DeviceClassifyInfo.auto_classified_counter:type_name -> kentik.interface.v202108alpha1.ClassifyCounter
+	9,  // 16: kentik.interface.v202108alpha1.DeviceClassifyInfo.interfaces:type_name -> kentik.interface.v202108alpha1.InterfaceClassifyInfo
 	0,  // 17: kentik.interface.v202108alpha1.InterfaceFilter.connectivity_types:type_name -> kentik.interface.v202108alpha1.ConnectivityType
 	1,  // 18: kentik.interface.v202108alpha1.InterfaceFilter.network_boundaries:type_name -> kentik.interface.v202108alpha1.NetworkBoundary
 	2,  // 19: kentik.interface.v202108alpha1.InterfaceFilter.ip_types:type_name -> kentik.interface.v202108alpha1.IpFilter
-	7,  // 20: kentik.interface.v202108alpha1.AutoClassifyResponse.total_auto_classify_counter:type_name -> kentik.interface.v202108alpha1.ClassifyCounter
-	7,  // 21: kentik.interface.v202108alpha1.AutoClassifyResponse.total_previous_counter:type_name -> kentik.interface.v202108alpha1.ClassifyCounter
-	9,  // 22: kentik.interface.v202108alpha1.AutoClassifyResponse.devices:type_name -> kentik.interface.v202108alpha1.DeviceClassifyInfo
+	8,  // 20: kentik.interface.v202108alpha1.AutoClassifyResponse.total_auto_classify_counter:type_name -> kentik.interface.v202108alpha1.ClassifyCounter
+	8,  // 21: kentik.interface.v202108alpha1.AutoClassifyResponse.total_previous_counter:type_name -> kentik.interface.v202108alpha1.ClassifyCounter
+	10, // 22: kentik.interface.v202108alpha1.AutoClassifyResponse.devices:type_name -> kentik.interface.v202108alpha1.DeviceClassifyInfo
 	0,  // 23: kentik.interface.v202108alpha1.ManualClassifyRequest.connectivity_type:type_name -> kentik.interface.v202108alpha1.ConnectivityType
 	1,  // 24: kentik.interface.v202108alpha1.ManualClassifyRequest.network_boundary:type_name -> kentik.interface.v202108alpha1.NetworkBoundary
-	10, // 25: kentik.interface.v202108alpha1.ListInterfaceRequest.filters:type_name -> kentik.interface.v202108alpha1.InterfaceFilter
-	5,  // 26: kentik.interface.v202108alpha1.ListInterfaceResponse.interfaces:type_name -> kentik.interface.v202108alpha1.Interface
-	5,  // 27: kentik.interface.v202108alpha1.GetInterfaceResponse.interface:type_name -> kentik.interface.v202108alpha1.Interface
-	5,  // 28: kentik.interface.v202108alpha1.CreateInterfaceRequest.interface:type_name -> kentik.interface.v202108alpha1.Interface
-	5,  // 29: kentik.interface.v202108alpha1.CreateInterfaceResponse.interface:type_name -> kentik.interface.v202108alpha1.Interface
-	5,  // 30: kentik.interface.v202108alpha1.UpdateInterfaceRequest.interface:type_name -> kentik.interface.v202108alpha1.Interface
-	5,  // 31: kentik.interface.v202108alpha1.UpdateInterfaceResponse.interface:type_name -> kentik.interface.v202108alpha1.Interface
+	11, // 25: kentik.interface.v202108alpha1.ListInterfaceRequest.filters:type_name -> kentik.interface.v202108alpha1.InterfaceFilter
+	6,  // 26: kentik.interface.v202108alpha1.ListInterfaceResponse.interfaces:type_name -> kentik.interface.v202108alpha1.Interface
+	6,  // 27: kentik.interface.v202108alpha1.GetInterfaceResponse.interface:type_name -> kentik.interface.v202108alpha1.Interface
+	6,  // 28: kentik.interface.v202108alpha1.CreateInterfaceRequest.interface:type_name -> kentik.interface.v202108alpha1.Interface
+	6,  // 29: kentik.interface.v202108alpha1.CreateInterfaceResponse.interface:type_name -> kentik.interface.v202108alpha1.Interface
+	6,  // 30: kentik.interface.v202108alpha1.UpdateInterfaceRequest.interface:type_name -> kentik.interface.v202108alpha1.Interface
+	6,  // 31: kentik.interface.v202108alpha1.UpdateInterfaceResponse.interface:type_name -> kentik.interface.v202108alpha1.Interface
 	3,  // 32: kentik.interface.v202108alpha1.Match.match_attribute:type_name -> kentik.interface.v202108alpha1.MatchAttribute
 	4,  // 33: kentik.interface.v202108alpha1.Match.match_operator:type_name -> kentik.interface.v202108alpha1.Operator
 	0,  // 34: kentik.interface.v202108alpha1.Action.set_connectivity_type:type_name -> kentik.interface.v202108alpha1.ConnectivityType
 	1,  // 35: kentik.interface.v202108alpha1.Action.set_network_boundary:type_name -> kentik.interface.v202108alpha1.NetworkBoundary
-	25, // 36: kentik.interface.v202108alpha1.Rule.match_clause:type_name -> kentik.interface.v202108alpha1.Match
-	26, // 37: kentik.interface.v202108alpha1.Rule.action_set:type_name -> kentik.interface.v202108alpha1.Action
+	26, // 36: kentik.interface.v202108alpha1.Rule.match_clause:type_name -> kentik.interface.v202108alpha1.Match
+	27, // 37: kentik.interface.v202108alpha1.Rule.action_set:type_name -> kentik.interface.v202108alpha1.Action
 	33, // 38: kentik.interface.v202108alpha1.Rule.cdate:type_name -> google.protobuf.Timestamp
 	33, // 39: kentik.interface.v202108alpha1.Rule.edate:type_name -> google.protobuf.Timestamp
-	27, // 40: kentik.interface.v202108alpha1.Rule.included_devices:type_name -> kentik.interface.v202108alpha1.DeviceFilter
-	27, // 41: kentik.interface.v202108alpha1.Rule.excluded_devices:type_name -> kentik.interface.v202108alpha1.DeviceFilter
-	13, // 42: kentik.interface.v202108alpha1.InterfaceService.ManualClassify:input_type -> kentik.interface.v202108alpha1.ManualClassifyRequest
-	15, // 43: kentik.interface.v202108alpha1.InterfaceService.ListInterface:input_type -> kentik.interface.v202108alpha1.ListInterfaceRequest
-	17, // 44: kentik.interface.v202108alpha1.InterfaceService.GetInterface:input_type -> kentik.interface.v202108alpha1.GetInterfaceRequest
-	19, // 45: kentik.interface.v202108alpha1.InterfaceService.CreateInterface:input_type -> kentik.interface.v202108alpha1.CreateInterfaceRequest
-	21, // 46: kentik.interface.v202108alpha1.InterfaceService.UpdateInterface:input_type -> kentik.interface.v202108alpha1.UpdateInterfaceRequest
-	23, // 47: kentik.interface.v202108alpha1.InterfaceService.DeleteInterface:input_type -> kentik.interface.v202108alpha1.DeleteInterfaceRequest
-	14, // 48: kentik.interface.v202108alpha1.InterfaceService.ManualClassify:output_type -> kentik.interface.v202108alpha1.ManualClassifyResponse
-	16, // 49: kentik.interface.v202108alpha1.InterfaceService.ListInterface:output_type -> kentik.interface.v202108alpha1.ListInterfaceResponse
-	18, // 50: kentik.interface.v202108alpha1.InterfaceService.GetInterface:output_type -> kentik.interface.v202108alpha1.GetInterfaceResponse
-	20, // 51: kentik.interface.v202108alpha1.InterfaceService.CreateInterface:output_type -> kentik.interface.v202108alpha1.CreateInterfaceResponse
-	22, // 52: kentik.interface.v202108alpha1.InterfaceService.UpdateInterface:output_type -> kentik.interface.v202108alpha1.UpdateInterfaceResponse
-	24, // 53: kentik.interface.v202108alpha1.InterfaceService.DeleteInterface:output_type -> kentik.interface.v202108alpha1.DeleteInterfaceResponse
+	28, // 40: kentik.interface.v202108alpha1.Rule.included_devices:type_name -> kentik.interface.v202108alpha1.DeviceFilter
+	28, // 41: kentik.interface.v202108alpha1.Rule.excluded_devices:type_name -> kentik.interface.v202108alpha1.DeviceFilter
+	14, // 42: kentik.interface.v202108alpha1.InterfaceService.ManualClassify:input_type -> kentik.interface.v202108alpha1.ManualClassifyRequest
+	16, // 43: kentik.interface.v202108alpha1.InterfaceService.ListInterface:input_type -> kentik.interface.v202108alpha1.ListInterfaceRequest
+	18, // 44: kentik.interface.v202108alpha1.InterfaceService.GetInterface:input_type -> kentik.interface.v202108alpha1.GetInterfaceRequest
+	20, // 45: kentik.interface.v202108alpha1.InterfaceService.CreateInterface:input_type -> kentik.interface.v202108alpha1.CreateInterfaceRequest
+	22, // 46: kentik.interface.v202108alpha1.InterfaceService.UpdateInterface:input_type -> kentik.interface.v202108alpha1.UpdateInterfaceRequest
+	24, // 47: kentik.interface.v202108alpha1.InterfaceService.DeleteInterface:input_type -> kentik.interface.v202108alpha1.DeleteInterfaceRequest
+	15, // 48: kentik.interface.v202108alpha1.InterfaceService.ManualClassify:output_type -> kentik.interface.v202108alpha1.ManualClassifyResponse
+	17, // 49: kentik.interface.v202108alpha1.InterfaceService.ListInterface:output_type -> kentik.interface.v202108alpha1.ListInterfaceResponse
+	19, // 50: kentik.interface.v202108alpha1.InterfaceService.GetInterface:output_type -> kentik.interface.v202108alpha1.GetInterfaceResponse
+	21, // 51: kentik.interface.v202108alpha1.InterfaceService.CreateInterface:output_type -> kentik.interface.v202108alpha1.CreateInterfaceResponse
+	23, // 52: kentik.interface.v202108alpha1.InterfaceService.UpdateInterface:output_type -> kentik.interface.v202108alpha1.UpdateInterfaceResponse
+	25, // 53: kentik.interface.v202108alpha1.InterfaceService.DeleteInterface:output_type -> kentik.interface.v202108alpha1.DeleteInterfaceResponse
 	48, // [48:54] is the sub-list for method output_type
 	42, // [42:48] is the sub-list for method input_type
 	42, // [42:42] is the sub-list for extension type_name

@@ -16,15 +16,16 @@ PROTOBUF_C__BEGIN_DECLS
 
 #include "google/api/annotations.pb-c.h"
 #include "google/api/client.pb-c.h"
+#include "google/api/field_behavior.pb-c.h"
 #include "protoc-gen-openapiv2/options/annotations.pb-c.h"
 #include "kentik/core/v202303/annotations.pb-c.h"
 #include "google/protobuf/timestamp.pb-c.h"
 
+typedef struct Kentik__Interface__V202108alpha1__InterfaceVrf Kentik__Interface__V202108alpha1__InterfaceVrf;
 typedef struct Kentik__Interface__V202108alpha1__Interface Kentik__Interface__V202108alpha1__Interface;
 typedef struct Kentik__Interface__V202108alpha1__Interface__InterfaceKvsEntry Kentik__Interface__V202108alpha1__Interface__InterfaceKvsEntry;
 typedef struct Kentik__Interface__V202108alpha1__Interface__InterfaceTagsEntry Kentik__Interface__V202108alpha1__Interface__InterfaceTagsEntry;
 typedef struct Kentik__Interface__V202108alpha1__Interface__ExtraInfoEntry Kentik__Interface__V202108alpha1__Interface__ExtraInfoEntry;
-typedef struct Kentik__Interface__V202108alpha1__Interface__VrfEntry Kentik__Interface__V202108alpha1__Interface__VrfEntry;
 typedef struct Kentik__Interface__V202108alpha1__InterfaceClassification Kentik__Interface__V202108alpha1__InterfaceClassification;
 typedef struct Kentik__Interface__V202108alpha1__ClassifyCounter Kentik__Interface__V202108alpha1__ClassifyCounter;
 typedef struct Kentik__Interface__V202108alpha1__InterfaceClassifyInfo Kentik__Interface__V202108alpha1__InterfaceClassifyInfo;
@@ -113,6 +114,44 @@ typedef enum _Kentik__Interface__V202108alpha1__Operator {
 
 /* --- messages --- */
 
+struct  Kentik__Interface__V202108alpha1__InterfaceVrf
+{
+  ProtobufCMessage base;
+  /*
+   * ID of the VRF. Set to reference an existing VRF; omit when creating a new VRF.
+   */
+  char *id;
+  /*
+   * VRF name.
+   */
+  char *name;
+  /*
+   * VRF description.
+   */
+  char *description;
+  /*
+   * Route distinguisher. Required when creating a new VRF.
+   */
+  char *route_distinguisher;
+  /*
+   * Extended route distinguisher. Required when creating a new VRF.
+   */
+  int64_t ext_route_distinguisher;
+  /*
+   * Route target. Required when creating a new VRF.
+   */
+  char *route_target;
+  /*
+   * Route targets.
+   */
+  size_t n_route_targets;
+  char **route_targets;
+};
+#define KENTIK__INTERFACE__V202108ALPHA1__INTERFACE_VRF__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__interface__v202108alpha1__interface_vrf__descriptor) \
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, (char *)protobuf_c_empty_string, 0,NULL }
+
+
 struct  Kentik__Interface__V202108alpha1__Interface__InterfaceKvsEntry
 {
   ProtobufCMessage base;
@@ -143,17 +182,6 @@ struct  Kentik__Interface__V202108alpha1__Interface__ExtraInfoEntry
 };
 #define KENTIK__INTERFACE__V202108ALPHA1__INTERFACE__EXTRA_INFO_ENTRY__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__interface__v202108alpha1__interface__extra_info_entry__descriptor) \
-    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
-
-
-struct  Kentik__Interface__V202108alpha1__Interface__VrfEntry
-{
-  ProtobufCMessage base;
-  char *key;
-  char *value;
-};
-#define KENTIK__INTERFACE__V202108ALPHA1__INTERFACE__VRF_ENTRY__INIT \
- { PROTOBUF_C_MESSAGE_INIT (&kentik__interface__v202108alpha1__interface__vrf_entry__descriptor) \
     , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
 
 
@@ -273,18 +301,21 @@ struct  Kentik__Interface__V202108alpha1__Interface
    */
   char *initial_provider;
   /*
-   * VRF ID
+   * VRF_ID is deprecated for the API, use VRF instead
    */
-  char *vrf_id;
+  char *vrf_id PROTOBUF_C__DEPRECATED;
   /*
    * VRF
    */
-  size_t n_vrf;
-  Kentik__Interface__V202108alpha1__Interface__VrfEntry **vrf;
+  Kentik__Interface__V202108alpha1__InterfaceVrf *vrf;
+  /*
+   * Initial VRF_ID
+   */
+  char *initial_vrf_id;
 };
 #define KENTIK__INTERFACE__V202108ALPHA1__INTERFACE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__interface__v202108alpha1__interface__descriptor) \
-    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, NULL, (char *)protobuf_c_empty_string, KENTIK__INTERFACE__V202108ALPHA1__CONNECTIVITY_TYPE__CONNECTIVITY_TYPE_UNSPECIFIED, KENTIK__INTERFACE__V202108ALPHA1__NETWORK_BOUNDARY__NETWORK_BOUNDARY_UNSPECIFIED, 0,NULL, (char *)protobuf_c_empty_string, 0,NULL, 0,NULL, (char *)protobuf_c_empty_string, 0,NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, (char *)protobuf_c_empty_string, KENTIK__INTERFACE__V202108ALPHA1__CONNECTIVITY_TYPE__CONNECTIVITY_TYPE_UNSPECIFIED, KENTIK__INTERFACE__V202108ALPHA1__NETWORK_BOUNDARY__NETWORK_BOUNDARY_UNSPECIFIED, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL }
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, NULL, (char *)protobuf_c_empty_string, KENTIK__INTERFACE__V202108ALPHA1__CONNECTIVITY_TYPE__CONNECTIVITY_TYPE_UNSPECIFIED, KENTIK__INTERFACE__V202108ALPHA1__NETWORK_BOUNDARY__NETWORK_BOUNDARY_UNSPECIFIED, 0,NULL, (char *)protobuf_c_empty_string, 0,NULL, 0,NULL, (char *)protobuf_c_empty_string, 0,NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, (char *)protobuf_c_empty_string, KENTIK__INTERFACE__V202108ALPHA1__CONNECTIVITY_TYPE__CONNECTIVITY_TYPE_UNSPECIFIED, KENTIK__INTERFACE__V202108ALPHA1__NETWORK_BOUNDARY__NETWORK_BOUNDARY_UNSPECIFIED, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, (char *)protobuf_c_empty_string }
 
 
 struct  Kentik__Interface__V202108alpha1__InterfaceClassification
@@ -740,6 +771,25 @@ struct  Kentik__Interface__V202108alpha1__Rule
     , (char *)protobuf_c_empty_string, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL }
 
 
+/* Kentik__Interface__V202108alpha1__InterfaceVrf methods */
+void   kentik__interface__v202108alpha1__interface_vrf__init
+                     (Kentik__Interface__V202108alpha1__InterfaceVrf         *message);
+size_t kentik__interface__v202108alpha1__interface_vrf__get_packed_size
+                     (const Kentik__Interface__V202108alpha1__InterfaceVrf   *message);
+size_t kentik__interface__v202108alpha1__interface_vrf__pack
+                     (const Kentik__Interface__V202108alpha1__InterfaceVrf   *message,
+                      uint8_t             *out);
+size_t kentik__interface__v202108alpha1__interface_vrf__pack_to_buffer
+                     (const Kentik__Interface__V202108alpha1__InterfaceVrf   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Interface__V202108alpha1__InterfaceVrf *
+       kentik__interface__v202108alpha1__interface_vrf__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__interface__v202108alpha1__interface_vrf__free_unpacked
+                     (Kentik__Interface__V202108alpha1__InterfaceVrf *message,
+                      ProtobufCAllocator *allocator);
 /* Kentik__Interface__V202108alpha1__Interface__InterfaceKvsEntry methods */
 void   kentik__interface__v202108alpha1__interface__interface_kvs_entry__init
                      (Kentik__Interface__V202108alpha1__Interface__InterfaceKvsEntry         *message);
@@ -749,9 +799,6 @@ void   kentik__interface__v202108alpha1__interface__interface_tags_entry__init
 /* Kentik__Interface__V202108alpha1__Interface__ExtraInfoEntry methods */
 void   kentik__interface__v202108alpha1__interface__extra_info_entry__init
                      (Kentik__Interface__V202108alpha1__Interface__ExtraInfoEntry         *message);
-/* Kentik__Interface__V202108alpha1__Interface__VrfEntry methods */
-void   kentik__interface__v202108alpha1__interface__vrf_entry__init
-                     (Kentik__Interface__V202108alpha1__Interface__VrfEntry         *message);
 /* Kentik__Interface__V202108alpha1__Interface methods */
 void   kentik__interface__v202108alpha1__interface__init
                      (Kentik__Interface__V202108alpha1__Interface         *message);
@@ -1210,6 +1257,9 @@ void   kentik__interface__v202108alpha1__rule__free_unpacked
                       ProtobufCAllocator *allocator);
 /* --- per-message closures --- */
 
+typedef void (*Kentik__Interface__V202108alpha1__InterfaceVrf_Closure)
+                 (const Kentik__Interface__V202108alpha1__InterfaceVrf *message,
+                  void *closure_data);
 typedef void (*Kentik__Interface__V202108alpha1__Interface__InterfaceKvsEntry_Closure)
                  (const Kentik__Interface__V202108alpha1__Interface__InterfaceKvsEntry *message,
                   void *closure_data);
@@ -1218,9 +1268,6 @@ typedef void (*Kentik__Interface__V202108alpha1__Interface__InterfaceTagsEntry_C
                   void *closure_data);
 typedef void (*Kentik__Interface__V202108alpha1__Interface__ExtraInfoEntry_Closure)
                  (const Kentik__Interface__V202108alpha1__Interface__ExtraInfoEntry *message,
-                  void *closure_data);
-typedef void (*Kentik__Interface__V202108alpha1__Interface__VrfEntry_Closure)
-                 (const Kentik__Interface__V202108alpha1__Interface__VrfEntry *message,
                   void *closure_data);
 typedef void (*Kentik__Interface__V202108alpha1__Interface_Closure)
                  (const Kentik__Interface__V202108alpha1__Interface *message,
@@ -1371,11 +1418,11 @@ extern const ProtobufCEnumDescriptor    kentik__interface__v202108alpha1__networ
 extern const ProtobufCEnumDescriptor    kentik__interface__v202108alpha1__ip_filter__descriptor;
 extern const ProtobufCEnumDescriptor    kentik__interface__v202108alpha1__match_attribute__descriptor;
 extern const ProtobufCEnumDescriptor    kentik__interface__v202108alpha1__operator__descriptor;
+extern const ProtobufCMessageDescriptor kentik__interface__v202108alpha1__interface_vrf__descriptor;
 extern const ProtobufCMessageDescriptor kentik__interface__v202108alpha1__interface__descriptor;
 extern const ProtobufCMessageDescriptor kentik__interface__v202108alpha1__interface__interface_kvs_entry__descriptor;
 extern const ProtobufCMessageDescriptor kentik__interface__v202108alpha1__interface__interface_tags_entry__descriptor;
 extern const ProtobufCMessageDescriptor kentik__interface__v202108alpha1__interface__extra_info_entry__descriptor;
-extern const ProtobufCMessageDescriptor kentik__interface__v202108alpha1__interface__vrf_entry__descriptor;
 extern const ProtobufCMessageDescriptor kentik__interface__v202108alpha1__interface_classification__descriptor;
 extern const ProtobufCMessageDescriptor kentik__interface__v202108alpha1__classify_counter__descriptor;
 extern const ProtobufCMessageDescriptor kentik__interface__v202108alpha1__interface_classify_info__descriptor;

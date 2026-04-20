@@ -36,6 +36,7 @@
 #include "google/protobuf/unknown_field_set.h"
 #include "google/api/annotations.pb.h"
 #include "google/api/client.pb.h"
+#include "google/api/field_behavior.pb.h"
 #include "protoc-gen-openapiv2/options/annotations.pb.h"
 #include "kentik/core/v202303/annotations.pb.h"
 #include "google/protobuf/timestamp.pb.h"
@@ -112,6 +113,9 @@ extern InterfaceClassifyInfoDefaultTypeInternal _InterfaceClassifyInfo_default_i
 class InterfaceFilter;
 struct InterfaceFilterDefaultTypeInternal;
 extern InterfaceFilterDefaultTypeInternal _InterfaceFilter_default_instance_;
+class InterfaceVrf;
+struct InterfaceVrfDefaultTypeInternal;
+extern InterfaceVrfDefaultTypeInternal _InterfaceVrf_default_instance_;
 class Interface_ExtraInfoEntry_DoNotUse;
 struct Interface_ExtraInfoEntry_DoNotUseDefaultTypeInternal;
 extern Interface_ExtraInfoEntry_DoNotUseDefaultTypeInternal _Interface_ExtraInfoEntry_DoNotUse_default_instance_;
@@ -121,9 +125,6 @@ extern Interface_InterfaceKvsEntry_DoNotUseDefaultTypeInternal _Interface_Interf
 class Interface_InterfaceTagsEntry_DoNotUse;
 struct Interface_InterfaceTagsEntry_DoNotUseDefaultTypeInternal;
 extern Interface_InterfaceTagsEntry_DoNotUseDefaultTypeInternal _Interface_InterfaceTagsEntry_DoNotUse_default_instance_;
-class Interface_VrfEntry_DoNotUse;
-struct Interface_VrfEntry_DoNotUseDefaultTypeInternal;
-extern Interface_VrfEntry_DoNotUseDefaultTypeInternal _Interface_VrfEntry_DoNotUse_default_instance_;
 class ListInterfaceRequest;
 struct ListInterfaceRequestDefaultTypeInternal;
 extern ListInterfaceRequestDefaultTypeInternal _ListInterfaceRequest_default_instance_;
@@ -1029,6 +1030,310 @@ class ManualClassifyRequest final : public ::google::protobuf::Message
 };
 // -------------------------------------------------------------------
 
+class InterfaceVrf final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:kentik.interface.v202108alpha1.InterfaceVrf) */ {
+ public:
+  inline InterfaceVrf() : InterfaceVrf(nullptr) {}
+  ~InterfaceVrf() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(InterfaceVrf* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(InterfaceVrf));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR InterfaceVrf(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline InterfaceVrf(const InterfaceVrf& from) : InterfaceVrf(nullptr, from) {}
+  inline InterfaceVrf(InterfaceVrf&& from) noexcept
+      : InterfaceVrf(nullptr, std::move(from)) {}
+  inline InterfaceVrf& operator=(const InterfaceVrf& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline InterfaceVrf& operator=(InterfaceVrf&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const InterfaceVrf& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const InterfaceVrf* internal_default_instance() {
+    return reinterpret_cast<const InterfaceVrf*>(
+        &_InterfaceVrf_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 0;
+  friend void swap(InterfaceVrf& a, InterfaceVrf& b) { a.Swap(&b); }
+  inline void Swap(InterfaceVrf* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(InterfaceVrf* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  InterfaceVrf* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<InterfaceVrf>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const InterfaceVrf& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const InterfaceVrf& from) { InterfaceVrf::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(InterfaceVrf* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "kentik.interface.v202108alpha1.InterfaceVrf"; }
+
+ protected:
+  explicit InterfaceVrf(::google::protobuf::Arena* arena);
+  InterfaceVrf(::google::protobuf::Arena* arena, const InterfaceVrf& from);
+  InterfaceVrf(::google::protobuf::Arena* arena, InterfaceVrf&& from) noexcept
+      : InterfaceVrf(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kRouteTargetsFieldNumber = 7,
+    kIdFieldNumber = 1,
+    kNameFieldNumber = 2,
+    kDescriptionFieldNumber = 3,
+    kRouteDistinguisherFieldNumber = 4,
+    kRouteTargetFieldNumber = 6,
+    kExtRouteDistinguisherFieldNumber = 5,
+  };
+  // repeated string route_targets = 7 [json_name = "routeTargets"];
+  int route_targets_size() const;
+  private:
+  int _internal_route_targets_size() const;
+
+  public:
+  void clear_route_targets() ;
+  const std::string& route_targets(int index) const;
+  std::string* mutable_route_targets(int index);
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_route_targets(int index, Arg_&& value, Args_... args);
+  std::string* add_route_targets();
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void add_route_targets(Arg_&& value, Args_... args);
+  const ::google::protobuf::RepeatedPtrField<std::string>& route_targets() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* mutable_route_targets();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<std::string>& _internal_route_targets() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* _internal_mutable_route_targets();
+
+  public:
+  // string id = 1 [json_name = "id"];
+  void clear_id() ;
+  const std::string& id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_id(Arg_&& arg, Args_... args);
+  std::string* mutable_id();
+  PROTOBUF_NODISCARD std::string* release_id();
+  void set_allocated_id(std::string* value);
+
+  private:
+  const std::string& _internal_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_id(
+      const std::string& value);
+  std::string* _internal_mutable_id();
+
+  public:
+  // string name = 2 [json_name = "name"];
+  void clear_name() ;
+  const std::string& name() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_name(Arg_&& arg, Args_... args);
+  std::string* mutable_name();
+  PROTOBUF_NODISCARD std::string* release_name();
+  void set_allocated_name(std::string* value);
+
+  private:
+  const std::string& _internal_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(
+      const std::string& value);
+  std::string* _internal_mutable_name();
+
+  public:
+  // string description = 3 [json_name = "description"];
+  void clear_description() ;
+  const std::string& description() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_description(Arg_&& arg, Args_... args);
+  std::string* mutable_description();
+  PROTOBUF_NODISCARD std::string* release_description();
+  void set_allocated_description(std::string* value);
+
+  private:
+  const std::string& _internal_description() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_description(
+      const std::string& value);
+  std::string* _internal_mutable_description();
+
+  public:
+  // string route_distinguisher = 4 [json_name = "routeDistinguisher"];
+  void clear_route_distinguisher() ;
+  const std::string& route_distinguisher() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_route_distinguisher(Arg_&& arg, Args_... args);
+  std::string* mutable_route_distinguisher();
+  PROTOBUF_NODISCARD std::string* release_route_distinguisher();
+  void set_allocated_route_distinguisher(std::string* value);
+
+  private:
+  const std::string& _internal_route_distinguisher() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_route_distinguisher(
+      const std::string& value);
+  std::string* _internal_mutable_route_distinguisher();
+
+  public:
+  // string route_target = 6 [json_name = "routeTarget"];
+  void clear_route_target() ;
+  const std::string& route_target() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_route_target(Arg_&& arg, Args_... args);
+  std::string* mutable_route_target();
+  PROTOBUF_NODISCARD std::string* release_route_target();
+  void set_allocated_route_target(std::string* value);
+
+  private:
+  const std::string& _internal_route_target() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_route_target(
+      const std::string& value);
+  std::string* _internal_mutable_route_target();
+
+  public:
+  // int64 ext_route_distinguisher = 5 [json_name = "extRouteDistinguisher"];
+  void clear_ext_route_distinguisher() ;
+  ::int64_t ext_route_distinguisher() const;
+  void set_ext_route_distinguisher(::int64_t value);
+
+  private:
+  ::int64_t _internal_ext_route_distinguisher() const;
+  void _internal_set_ext_route_distinguisher(::int64_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:kentik.interface.v202108alpha1.InterfaceVrf)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      3, 7, 0,
+      113, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const InterfaceVrf& from_msg);
+    ::google::protobuf::RepeatedPtrField<std::string> route_targets_;
+    ::google::protobuf::internal::ArenaStringPtr id_;
+    ::google::protobuf::internal::ArenaStringPtr name_;
+    ::google::protobuf::internal::ArenaStringPtr description_;
+    ::google::protobuf::internal::ArenaStringPtr route_distinguisher_;
+    ::google::protobuf::internal::ArenaStringPtr route_target_;
+    ::int64_t ext_route_distinguisher_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_kentik_2finterface_2fv202108alpha1_2finterface_2eproto;
+};
+// -------------------------------------------------------------------
+
 class InterfaceFilter final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:kentik.interface.v202108alpha1.InterfaceFilter) */ {
  public:
@@ -1571,45 +1876,6 @@ class InterfaceClassification final : public ::google::protobuf::Message
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_kentik_2finterface_2fv202108alpha1_2finterface_2eproto;
-};
-// -------------------------------------------------------------------
-
-class Interface_VrfEntry_DoNotUse final
-    : public ::google::protobuf::internal::MapEntry<
-          std::string, std::string,
-          ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
-          ::google::protobuf::internal::WireFormatLite::TYPE_STRING> {
- public:
-  using SuperType = ::google::protobuf::internal::MapEntry<
-      std::string, std::string,
-      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
-      ::google::protobuf::internal::WireFormatLite::TYPE_STRING>;
-  Interface_VrfEntry_DoNotUse();
-  template <typename = void>
-  explicit PROTOBUF_CONSTEXPR Interface_VrfEntry_DoNotUse(
-      ::google::protobuf::internal::ConstantInitialized);
-  explicit Interface_VrfEntry_DoNotUse(::google::protobuf::Arena* arena);
-  static const Interface_VrfEntry_DoNotUse* internal_default_instance() {
-    return reinterpret_cast<const Interface_VrfEntry_DoNotUse*>(
-        &_Interface_VrfEntry_DoNotUse_default_instance_);
-  }
-
-
- private:
-  friend class ::google::protobuf::MessageLite;
-  friend struct ::TableStruct_kentik_2finterface_2fv202108alpha1_2finterface_2eproto;
-
-  friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<
-      1, 2, 0,
-      66, 2>
-      _table_;
-
-  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
-  static void* PlacementNew_(const void*, void* mem,
-                             ::google::protobuf::Arena* arena);
-  static constexpr auto InternalNewImpl_();
-  static const ::google::protobuf::internal::ClassDataFull _class_data_;
 };
 // -------------------------------------------------------------------
 
@@ -4392,7 +4658,6 @@ class Interface final : public ::google::protobuf::Message
     kInterfaceKvsFieldNumber = 16,
     kInterfaceTagsFieldNumber = 17,
     kExtraInfoFieldNumber = 19,
-    kVrfFieldNumber = 29,
     kIdFieldNumber = 1,
     kDeviceIdFieldNumber = 2,
     kSnmpIdFieldNumber = 3,
@@ -4408,8 +4673,10 @@ class Interface final : public ::google::protobuf::Message
     kSecondaryIpsFieldNumber = 24,
     kInitialProviderFieldNumber = 27,
     kVrfIdFieldNumber = 28,
+    kInitialVrfIdFieldNumber = 31,
     kCdateFieldNumber = 9,
     kEdateFieldNumber = 10,
+    kVrfFieldNumber = 30,
     kSnmpSpeedFieldNumber = 4,
     kSnmpTypeFieldNumber = 5,
     kConnectivityTypeFieldNumber = 12,
@@ -4479,21 +4746,6 @@ class Interface final : public ::google::protobuf::Message
   private:
   const ::google::protobuf::Map<std::string, std::string>& _internal_extra_info() const;
   ::google::protobuf::Map<std::string, std::string>* _internal_mutable_extra_info();
-
-  public:
-  // map<string, string> vrf = 29 [json_name = "vrf"];
-  int vrf_size() const;
-  private:
-  int _internal_vrf_size() const;
-
-  public:
-  void clear_vrf() ;
-  const ::google::protobuf::Map<std::string, std::string>& vrf() const;
-  ::google::protobuf::Map<std::string, std::string>* mutable_vrf();
-
-  private:
-  const ::google::protobuf::Map<std::string, std::string>& _internal_vrf() const;
-  ::google::protobuf::Map<std::string, std::string>* _internal_mutable_vrf();
 
   public:
   // string id = 1 [json_name = "id"];
@@ -4720,20 +4972,36 @@ class Interface final : public ::google::protobuf::Message
   std::string* _internal_mutable_initial_provider();
 
   public:
-  // string vrf_id = 28 [json_name = "vrfId"];
-  void clear_vrf_id() ;
-  const std::string& vrf_id() const;
+  // string vrf_id = 28 [json_name = "vrfId", deprecated = true, (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  [[deprecated]]  void clear_vrf_id() ;
+  [[deprecated]] const std::string& vrf_id() const;
   template <typename Arg_ = const std::string&, typename... Args_>
-  void set_vrf_id(Arg_&& arg, Args_... args);
-  std::string* mutable_vrf_id();
-  PROTOBUF_NODISCARD std::string* release_vrf_id();
-  void set_allocated_vrf_id(std::string* value);
+  [[deprecated]] void set_vrf_id(Arg_&& arg, Args_... args);
+  [[deprecated]] std::string* mutable_vrf_id();
+  [[deprecated]] PROTOBUF_NODISCARD std::string* release_vrf_id();
+  [[deprecated]] void set_allocated_vrf_id(std::string* value);
 
   private:
   const std::string& _internal_vrf_id() const;
   inline PROTOBUF_ALWAYS_INLINE void _internal_set_vrf_id(
       const std::string& value);
   std::string* _internal_mutable_vrf_id();
+
+  public:
+  // string initial_vrf_id = 31 [json_name = "initialVrfId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_initial_vrf_id() ;
+  const std::string& initial_vrf_id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_initial_vrf_id(Arg_&& arg, Args_... args);
+  std::string* mutable_initial_vrf_id();
+  PROTOBUF_NODISCARD std::string* release_initial_vrf_id();
+  void set_allocated_initial_vrf_id(std::string* value);
+
+  private:
+  const std::string& _internal_initial_vrf_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_initial_vrf_id(
+      const std::string& value);
+  std::string* _internal_mutable_initial_vrf_id();
 
   public:
   // .google.protobuf.Timestamp cdate = 9 [json_name = "cdate"];
@@ -4764,6 +5032,21 @@ class Interface final : public ::google::protobuf::Message
   private:
   const ::google::protobuf::Timestamp& _internal_edate() const;
   ::google::protobuf::Timestamp* _internal_mutable_edate();
+
+  public:
+  // .kentik.interface.v202108alpha1.InterfaceVrf vrf = 30 [json_name = "vrf"];
+  bool has_vrf() const;
+  void clear_vrf() ;
+  const ::kentik::interface::v202108alpha1::InterfaceVrf& vrf() const;
+  PROTOBUF_NODISCARD ::kentik::interface::v202108alpha1::InterfaceVrf* release_vrf();
+  ::kentik::interface::v202108alpha1::InterfaceVrf* mutable_vrf();
+  void set_allocated_vrf(::kentik::interface::v202108alpha1::InterfaceVrf* value);
+  void unsafe_arena_set_allocated_vrf(::kentik::interface::v202108alpha1::InterfaceVrf* value);
+  ::kentik::interface::v202108alpha1::InterfaceVrf* unsafe_arena_release_vrf();
+
+  private:
+  const ::kentik::interface::v202108alpha1::InterfaceVrf& _internal_vrf() const;
+  ::kentik::interface::v202108alpha1::InterfaceVrf* _internal_mutable_vrf();
 
   public:
   // int32 snmp_speed = 4 [json_name = "snmpSpeed"];
@@ -4841,8 +5124,8 @@ class Interface final : public ::google::protobuf::Message
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      5, 29, 6,
-      315, 2>
+      5, 30, 6,
+      326, 2>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -4875,10 +5158,6 @@ class Interface final : public ::google::protobuf::Message
                       ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
                       ::google::protobuf::internal::WireFormatLite::TYPE_STRING>
         extra_info_;
-    ::google::protobuf::internal::MapField<Interface_VrfEntry_DoNotUse, std::string, std::string,
-                      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
-                      ::google::protobuf::internal::WireFormatLite::TYPE_STRING>
-        vrf_;
     ::google::protobuf::internal::ArenaStringPtr id_;
     ::google::protobuf::internal::ArenaStringPtr device_id_;
     ::google::protobuf::internal::ArenaStringPtr snmp_id_;
@@ -4894,8 +5173,10 @@ class Interface final : public ::google::protobuf::Message
     ::google::protobuf::internal::ArenaStringPtr secondary_ips_;
     ::google::protobuf::internal::ArenaStringPtr initial_provider_;
     ::google::protobuf::internal::ArenaStringPtr vrf_id_;
+    ::google::protobuf::internal::ArenaStringPtr initial_vrf_id_;
     ::google::protobuf::Timestamp* cdate_;
     ::google::protobuf::Timestamp* edate_;
+    ::kentik::interface::v202108alpha1::InterfaceVrf* vrf_;
     ::int32_t snmp_speed_;
     ::int32_t snmp_type_;
     int connectivity_type_;
@@ -6774,6 +7055,334 @@ class AutoClassifyResponse final : public ::google::protobuf::Message
 #endif  // __GNUC__
 // -------------------------------------------------------------------
 
+// InterfaceVrf
+
+// string id = 1 [json_name = "id"];
+inline void InterfaceVrf::clear_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.id_.ClearToEmpty();
+}
+inline const std::string& InterfaceVrf::id() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.interface.v202108alpha1.InterfaceVrf.id)
+  return _internal_id();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void InterfaceVrf::set_id(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.interface.v202108alpha1.InterfaceVrf.id)
+}
+inline std::string* InterfaceVrf::mutable_id() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_id();
+  // @@protoc_insertion_point(field_mutable:kentik.interface.v202108alpha1.InterfaceVrf.id)
+  return _s;
+}
+inline const std::string& InterfaceVrf::_internal_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.id_.Get();
+}
+inline void InterfaceVrf::_internal_set_id(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.id_.Set(value, GetArena());
+}
+inline std::string* InterfaceVrf::_internal_mutable_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.id_.Mutable( GetArena());
+}
+inline std::string* InterfaceVrf::release_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.interface.v202108alpha1.InterfaceVrf.id)
+  return _impl_.id_.Release();
+}
+inline void InterfaceVrf::set_allocated_id(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.id_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.id_.IsDefault()) {
+    _impl_.id_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.interface.v202108alpha1.InterfaceVrf.id)
+}
+
+// string name = 2 [json_name = "name"];
+inline void InterfaceVrf::clear_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.name_.ClearToEmpty();
+}
+inline const std::string& InterfaceVrf::name() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.interface.v202108alpha1.InterfaceVrf.name)
+  return _internal_name();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void InterfaceVrf::set_name(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.name_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.interface.v202108alpha1.InterfaceVrf.name)
+}
+inline std::string* InterfaceVrf::mutable_name() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_name();
+  // @@protoc_insertion_point(field_mutable:kentik.interface.v202108alpha1.InterfaceVrf.name)
+  return _s;
+}
+inline const std::string& InterfaceVrf::_internal_name() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.name_.Get();
+}
+inline void InterfaceVrf::_internal_set_name(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.name_.Set(value, GetArena());
+}
+inline std::string* InterfaceVrf::_internal_mutable_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.name_.Mutable( GetArena());
+}
+inline std::string* InterfaceVrf::release_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.interface.v202108alpha1.InterfaceVrf.name)
+  return _impl_.name_.Release();
+}
+inline void InterfaceVrf::set_allocated_name(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.name_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.name_.IsDefault()) {
+    _impl_.name_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.interface.v202108alpha1.InterfaceVrf.name)
+}
+
+// string description = 3 [json_name = "description"];
+inline void InterfaceVrf::clear_description() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.description_.ClearToEmpty();
+}
+inline const std::string& InterfaceVrf::description() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.interface.v202108alpha1.InterfaceVrf.description)
+  return _internal_description();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void InterfaceVrf::set_description(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.description_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.interface.v202108alpha1.InterfaceVrf.description)
+}
+inline std::string* InterfaceVrf::mutable_description() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_description();
+  // @@protoc_insertion_point(field_mutable:kentik.interface.v202108alpha1.InterfaceVrf.description)
+  return _s;
+}
+inline const std::string& InterfaceVrf::_internal_description() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.description_.Get();
+}
+inline void InterfaceVrf::_internal_set_description(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.description_.Set(value, GetArena());
+}
+inline std::string* InterfaceVrf::_internal_mutable_description() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.description_.Mutable( GetArena());
+}
+inline std::string* InterfaceVrf::release_description() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.interface.v202108alpha1.InterfaceVrf.description)
+  return _impl_.description_.Release();
+}
+inline void InterfaceVrf::set_allocated_description(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.description_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.description_.IsDefault()) {
+    _impl_.description_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.interface.v202108alpha1.InterfaceVrf.description)
+}
+
+// string route_distinguisher = 4 [json_name = "routeDistinguisher"];
+inline void InterfaceVrf::clear_route_distinguisher() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.route_distinguisher_.ClearToEmpty();
+}
+inline const std::string& InterfaceVrf::route_distinguisher() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.interface.v202108alpha1.InterfaceVrf.route_distinguisher)
+  return _internal_route_distinguisher();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void InterfaceVrf::set_route_distinguisher(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.route_distinguisher_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.interface.v202108alpha1.InterfaceVrf.route_distinguisher)
+}
+inline std::string* InterfaceVrf::mutable_route_distinguisher() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_route_distinguisher();
+  // @@protoc_insertion_point(field_mutable:kentik.interface.v202108alpha1.InterfaceVrf.route_distinguisher)
+  return _s;
+}
+inline const std::string& InterfaceVrf::_internal_route_distinguisher() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.route_distinguisher_.Get();
+}
+inline void InterfaceVrf::_internal_set_route_distinguisher(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.route_distinguisher_.Set(value, GetArena());
+}
+inline std::string* InterfaceVrf::_internal_mutable_route_distinguisher() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.route_distinguisher_.Mutable( GetArena());
+}
+inline std::string* InterfaceVrf::release_route_distinguisher() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.interface.v202108alpha1.InterfaceVrf.route_distinguisher)
+  return _impl_.route_distinguisher_.Release();
+}
+inline void InterfaceVrf::set_allocated_route_distinguisher(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.route_distinguisher_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.route_distinguisher_.IsDefault()) {
+    _impl_.route_distinguisher_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.interface.v202108alpha1.InterfaceVrf.route_distinguisher)
+}
+
+// int64 ext_route_distinguisher = 5 [json_name = "extRouteDistinguisher"];
+inline void InterfaceVrf::clear_ext_route_distinguisher() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.ext_route_distinguisher_ = ::int64_t{0};
+}
+inline ::int64_t InterfaceVrf::ext_route_distinguisher() const {
+  // @@protoc_insertion_point(field_get:kentik.interface.v202108alpha1.InterfaceVrf.ext_route_distinguisher)
+  return _internal_ext_route_distinguisher();
+}
+inline void InterfaceVrf::set_ext_route_distinguisher(::int64_t value) {
+  _internal_set_ext_route_distinguisher(value);
+  // @@protoc_insertion_point(field_set:kentik.interface.v202108alpha1.InterfaceVrf.ext_route_distinguisher)
+}
+inline ::int64_t InterfaceVrf::_internal_ext_route_distinguisher() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.ext_route_distinguisher_;
+}
+inline void InterfaceVrf::_internal_set_ext_route_distinguisher(::int64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.ext_route_distinguisher_ = value;
+}
+
+// string route_target = 6 [json_name = "routeTarget"];
+inline void InterfaceVrf::clear_route_target() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.route_target_.ClearToEmpty();
+}
+inline const std::string& InterfaceVrf::route_target() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.interface.v202108alpha1.InterfaceVrf.route_target)
+  return _internal_route_target();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void InterfaceVrf::set_route_target(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.route_target_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.interface.v202108alpha1.InterfaceVrf.route_target)
+}
+inline std::string* InterfaceVrf::mutable_route_target() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_route_target();
+  // @@protoc_insertion_point(field_mutable:kentik.interface.v202108alpha1.InterfaceVrf.route_target)
+  return _s;
+}
+inline const std::string& InterfaceVrf::_internal_route_target() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.route_target_.Get();
+}
+inline void InterfaceVrf::_internal_set_route_target(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.route_target_.Set(value, GetArena());
+}
+inline std::string* InterfaceVrf::_internal_mutable_route_target() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.route_target_.Mutable( GetArena());
+}
+inline std::string* InterfaceVrf::release_route_target() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.interface.v202108alpha1.InterfaceVrf.route_target)
+  return _impl_.route_target_.Release();
+}
+inline void InterfaceVrf::set_allocated_route_target(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.route_target_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.route_target_.IsDefault()) {
+    _impl_.route_target_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.interface.v202108alpha1.InterfaceVrf.route_target)
+}
+
+// repeated string route_targets = 7 [json_name = "routeTargets"];
+inline int InterfaceVrf::_internal_route_targets_size() const {
+  return _internal_route_targets().size();
+}
+inline int InterfaceVrf::route_targets_size() const {
+  return _internal_route_targets_size();
+}
+inline void InterfaceVrf::clear_route_targets() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.route_targets_.Clear();
+}
+inline std::string* InterfaceVrf::add_route_targets() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  std::string* _s = _internal_mutable_route_targets()->Add();
+  // @@protoc_insertion_point(field_add_mutable:kentik.interface.v202108alpha1.InterfaceVrf.route_targets)
+  return _s;
+}
+inline const std::string& InterfaceVrf::route_targets(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.interface.v202108alpha1.InterfaceVrf.route_targets)
+  return _internal_route_targets().Get(index);
+}
+inline std::string* InterfaceVrf::mutable_route_targets(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:kentik.interface.v202108alpha1.InterfaceVrf.route_targets)
+  return _internal_mutable_route_targets()->Mutable(index);
+}
+template <typename Arg_, typename... Args_>
+inline void InterfaceVrf::set_route_targets(int index, Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::AssignToString(
+      *_internal_mutable_route_targets()->Mutable(index),
+      std::forward<Arg_>(value), args... );
+  // @@protoc_insertion_point(field_set:kentik.interface.v202108alpha1.InterfaceVrf.route_targets)
+}
+template <typename Arg_, typename... Args_>
+inline void InterfaceVrf::add_route_targets(Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::google::protobuf::internal::AddToRepeatedPtrField(*_internal_mutable_route_targets(),
+                               std::forward<Arg_>(value),
+                               args... );
+  // @@protoc_insertion_point(field_add:kentik.interface.v202108alpha1.InterfaceVrf.route_targets)
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+InterfaceVrf::route_targets() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:kentik.interface.v202108alpha1.InterfaceVrf.route_targets)
+  return _internal_route_targets();
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+InterfaceVrf::mutable_route_targets() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:kentik.interface.v202108alpha1.InterfaceVrf.route_targets)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_route_targets();
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+InterfaceVrf::_internal_route_targets() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.route_targets_;
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+InterfaceVrf::_internal_mutable_route_targets() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.route_targets_;
+}
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
@@ -7921,7 +8530,7 @@ inline void Interface::set_allocated_initial_provider(std::string* value) {
   // @@protoc_insertion_point(field_set_allocated:kentik.interface.v202108alpha1.Interface.initial_provider)
 }
 
-// string vrf_id = 28 [json_name = "vrfId"];
+// string vrf_id = 28 [json_name = "vrfId", deprecated = true, (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
 inline void Interface::clear_vrf_id() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.vrf_id_.ClearToEmpty();
@@ -7969,32 +8578,148 @@ inline void Interface::set_allocated_vrf_id(std::string* value) {
   // @@protoc_insertion_point(field_set_allocated:kentik.interface.v202108alpha1.Interface.vrf_id)
 }
 
-// map<string, string> vrf = 29 [json_name = "vrf"];
-inline int Interface::_internal_vrf_size() const {
-  return _internal_vrf().size();
-}
-inline int Interface::vrf_size() const {
-  return _internal_vrf_size();
+// .kentik.interface.v202108alpha1.InterfaceVrf vrf = 30 [json_name = "vrf"];
+inline bool Interface::has_vrf() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.vrf_ != nullptr);
+  return value;
 }
 inline void Interface::clear_vrf() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.vrf_.Clear();
+  if (_impl_.vrf_ != nullptr) _impl_.vrf_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000004u;
 }
-inline const ::google::protobuf::Map<std::string, std::string>& Interface::_internal_vrf() const {
+inline const ::kentik::interface::v202108alpha1::InterfaceVrf& Interface::_internal_vrf() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.vrf_.GetMap();
+  const ::kentik::interface::v202108alpha1::InterfaceVrf* p = _impl_.vrf_;
+  return p != nullptr ? *p : reinterpret_cast<const ::kentik::interface::v202108alpha1::InterfaceVrf&>(::kentik::interface::v202108alpha1::_InterfaceVrf_default_instance_);
 }
-inline const ::google::protobuf::Map<std::string, std::string>& Interface::vrf() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_map:kentik.interface.v202108alpha1.Interface.vrf)
+inline const ::kentik::interface::v202108alpha1::InterfaceVrf& Interface::vrf() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.interface.v202108alpha1.Interface.vrf)
   return _internal_vrf();
 }
-inline ::google::protobuf::Map<std::string, std::string>* Interface::_internal_mutable_vrf() {
+inline void Interface::unsafe_arena_set_allocated_vrf(::kentik::interface::v202108alpha1::InterfaceVrf* value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  return _impl_.vrf_.MutableMap();
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.vrf_);
+  }
+  _impl_.vrf_ = reinterpret_cast<::kentik::interface::v202108alpha1::InterfaceVrf*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000004u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000004u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.interface.v202108alpha1.Interface.vrf)
 }
-inline ::google::protobuf::Map<std::string, std::string>* Interface::mutable_vrf() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_mutable_map:kentik.interface.v202108alpha1.Interface.vrf)
-  return _internal_mutable_vrf();
+inline ::kentik::interface::v202108alpha1::InterfaceVrf* Interface::release_vrf() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000004u;
+  ::kentik::interface::v202108alpha1::InterfaceVrf* released = _impl_.vrf_;
+  _impl_.vrf_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::kentik::interface::v202108alpha1::InterfaceVrf* Interface::unsafe_arena_release_vrf() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.interface.v202108alpha1.Interface.vrf)
+
+  _impl_._has_bits_[0] &= ~0x00000004u;
+  ::kentik::interface::v202108alpha1::InterfaceVrf* temp = _impl_.vrf_;
+  _impl_.vrf_ = nullptr;
+  return temp;
+}
+inline ::kentik::interface::v202108alpha1::InterfaceVrf* Interface::_internal_mutable_vrf() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.vrf_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::kentik::interface::v202108alpha1::InterfaceVrf>(GetArena());
+    _impl_.vrf_ = reinterpret_cast<::kentik::interface::v202108alpha1::InterfaceVrf*>(p);
+  }
+  return _impl_.vrf_;
+}
+inline ::kentik::interface::v202108alpha1::InterfaceVrf* Interface::mutable_vrf() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  ::kentik::interface::v202108alpha1::InterfaceVrf* _msg = _internal_mutable_vrf();
+  // @@protoc_insertion_point(field_mutable:kentik.interface.v202108alpha1.Interface.vrf)
+  return _msg;
+}
+inline void Interface::set_allocated_vrf(::kentik::interface::v202108alpha1::InterfaceVrf* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete (_impl_.vrf_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = (value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000004u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000004u;
+  }
+
+  _impl_.vrf_ = reinterpret_cast<::kentik::interface::v202108alpha1::InterfaceVrf*>(value);
+  // @@protoc_insertion_point(field_set_allocated:kentik.interface.v202108alpha1.Interface.vrf)
+}
+
+// string initial_vrf_id = 31 [json_name = "initialVrfId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void Interface::clear_initial_vrf_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.initial_vrf_id_.ClearToEmpty();
+}
+inline const std::string& Interface::initial_vrf_id() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.interface.v202108alpha1.Interface.initial_vrf_id)
+  return _internal_initial_vrf_id();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Interface::set_initial_vrf_id(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.initial_vrf_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.interface.v202108alpha1.Interface.initial_vrf_id)
+}
+inline std::string* Interface::mutable_initial_vrf_id() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_initial_vrf_id();
+  // @@protoc_insertion_point(field_mutable:kentik.interface.v202108alpha1.Interface.initial_vrf_id)
+  return _s;
+}
+inline const std::string& Interface::_internal_initial_vrf_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.initial_vrf_id_.Get();
+}
+inline void Interface::_internal_set_initial_vrf_id(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.initial_vrf_id_.Set(value, GetArena());
+}
+inline std::string* Interface::_internal_mutable_initial_vrf_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.initial_vrf_id_.Mutable( GetArena());
+}
+inline std::string* Interface::release_initial_vrf_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.interface.v202108alpha1.Interface.initial_vrf_id)
+  return _impl_.initial_vrf_id_.Release();
+}
+inline void Interface::set_allocated_initial_vrf_id(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.initial_vrf_id_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.initial_vrf_id_.IsDefault()) {
+    _impl_.initial_vrf_id_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.interface.v202108alpha1.Interface.initial_vrf_id)
 }
 
 // -------------------------------------------------------------------

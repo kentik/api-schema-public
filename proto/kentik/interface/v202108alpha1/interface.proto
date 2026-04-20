@@ -5,6 +5,7 @@ option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/interface
 
 import "google/api/annotations.proto";
 import "google/api/client.proto";
+import "google/api/field_behavior.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
 import "kentik/core/v202303/annotations.proto";
 import "google/protobuf/timestamp.proto";
@@ -87,6 +88,23 @@ enum NetworkBoundary {
   NETWORK_BOUNDARY_NONE = 4;
 }
 
+message InterfaceVrf {
+  // ID of the VRF. Set to reference an existing VRF; omit when creating a new VRF.
+  string id = 1;
+  // VRF name.
+  string name = 2;
+  // VRF description.
+  string description = 3;
+  // Route distinguisher. Required when creating a new VRF.
+  string route_distinguisher = 4;
+  // Extended route distinguisher. Required when creating a new VRF.
+  int64 ext_route_distinguisher = 5;
+  // Route target. Required when creating a new VRF.
+  string route_target = 6;
+  // Route targets.
+  repeated string route_targets = 7;
+}
+
 
 message Interface {
   // ID of interface.
@@ -143,12 +161,25 @@ message Interface {
   NetworkBoundary initial_network_boundary = 26;
   // Initial Network provider.
   string initial_provider = 27;
-  // VRF ID
-  string vrf_id = 28;
+  // VRF_ID is deprecated for the API, use VRF instead
+  string vrf_id = 28 [
+    deprecated = true,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Deprecated: use VRF field instead"
+    }
+  ];
+  // 29 was VRF as map<string, string>, reserved so we can re-define as an InterfaceVrf instead
+  reserved 29;
   // VRF
-  map<string, string> vrf = 29;
+  InterfaceVrf vrf = 30;
+  // Initial VRF_ID
+  string initial_vrf_id = 31 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Initial VRF ID. Read-only, server-managed."
+    }
+  ];
 }
-
 
 message InterfaceClassification {
   bool classified = 1;

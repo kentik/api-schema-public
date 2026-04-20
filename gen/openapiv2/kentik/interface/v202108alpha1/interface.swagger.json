@@ -461,14 +461,18 @@
             },
             "vrfId": {
               "type": "string",
-              "title": "VRF ID"
+              "description": "Deprecated: use VRF field instead",
+              "title": "VRF_ID is deprecated for the API, use VRF instead"
             },
             "vrf": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "string"
-              },
+              "$ref": "#/definitions/v202108alpha1InterfaceVrf",
               "title": "VRF"
+            },
+            "initialVrfId": {
+              "type": "string",
+              "description": "Initial VRF ID. Read-only, server-managed.",
+              "title": "Initial VRF_ID",
+              "readOnly": true
             }
           }
         }
@@ -688,14 +692,18 @@
         },
         "vrfId": {
           "type": "string",
-          "title": "VRF ID"
+          "description": "Deprecated: use VRF field instead",
+          "title": "VRF_ID is deprecated for the API, use VRF instead"
         },
         "vrf": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          },
+          "$ref": "#/definitions/v202108alpha1InterfaceVrf",
           "title": "VRF"
+        },
+        "initialVrfId": {
+          "type": "string",
+          "description": "Initial VRF ID. Read-only, server-managed.",
+          "title": "Initial VRF_ID",
+          "readOnly": true
         }
       }
     },
@@ -751,6 +759,43 @@
         }
       },
       "description": "Supports multiple search criteria. Fields are combined to AND statements to perform search."
+    },
+    "v202108alpha1InterfaceVrf": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "ID of the VRF. Set to reference an existing VRF; omit when creating a new VRF."
+        },
+        "name": {
+          "type": "string",
+          "description": "VRF name."
+        },
+        "description": {
+          "type": "string",
+          "description": "VRF description."
+        },
+        "routeDistinguisher": {
+          "type": "string",
+          "description": "Route distinguisher. Required when creating a new VRF."
+        },
+        "extRouteDistinguisher": {
+          "type": "string",
+          "format": "int64",
+          "description": "Extended route distinguisher. Required when creating a new VRF."
+        },
+        "routeTarget": {
+          "type": "string",
+          "description": "Route target. Required when creating a new VRF."
+        },
+        "routeTargets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Route targets."
+        }
+      }
     },
     "v202108alpha1IpFilter": {
       "type": "string",
