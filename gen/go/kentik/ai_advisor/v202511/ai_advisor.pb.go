@@ -34,11 +34,12 @@ const (
 type SessionStatus int32
 
 const (
-	SessionStatus_SESSION_STATUS_UNSPECIFIED SessionStatus = 0
-	SessionStatus_SESSION_STATUS_PENDING     SessionStatus = 1
-	SessionStatus_SESSION_STATUS_PROCESSING  SessionStatus = 2
-	SessionStatus_SESSION_STATUS_COMPLETED   SessionStatus = 3
-	SessionStatus_SESSION_STATUS_FAILED      SessionStatus = 4
+	SessionStatus_SESSION_STATUS_UNSPECIFIED       SessionStatus = 0
+	SessionStatus_SESSION_STATUS_PENDING           SessionStatus = 1
+	SessionStatus_SESSION_STATUS_PROCESSING        SessionStatus = 2
+	SessionStatus_SESSION_STATUS_COMPLETED         SessionStatus = 3
+	SessionStatus_SESSION_STATUS_FAILED            SessionStatus = 4
+	SessionStatus_SESSION_STATUS_AWAITING_APPROVAL SessionStatus = 5
 )
 
 // Enum value maps for SessionStatus.
@@ -49,13 +50,15 @@ var (
 		2: "SESSION_STATUS_PROCESSING",
 		3: "SESSION_STATUS_COMPLETED",
 		4: "SESSION_STATUS_FAILED",
+		5: "SESSION_STATUS_AWAITING_APPROVAL",
 	}
 	SessionStatus_value = map[string]int32{
-		"SESSION_STATUS_UNSPECIFIED": 0,
-		"SESSION_STATUS_PENDING":     1,
-		"SESSION_STATUS_PROCESSING":  2,
-		"SESSION_STATUS_COMPLETED":   3,
-		"SESSION_STATUS_FAILED":      4,
+		"SESSION_STATUS_UNSPECIFIED":       0,
+		"SESSION_STATUS_PENDING":           1,
+		"SESSION_STATUS_PROCESSING":        2,
+		"SESSION_STATUS_COMPLETED":         3,
+		"SESSION_STATUS_FAILED":            4,
+		"SESSION_STATUS_AWAITING_APPROVAL": 5,
 	}
 )
 
@@ -546,13 +549,14 @@ const file_kentik_ai_advisor_v202511_ai_advisor_proto_rawDesc = "" +
 	"\x16GetChatSessionResponse\x12F\n" +
 	"\x02id\x18\x01 \x01(\tB6\x92A321The unique identifier (UUID) for the chat sessionR\x02id\x12@\n" +
 	"\x06status\x18\x02 \x01(\x0e2(.kentik.ai_advisor.v202511.SessionStatusR\x06status\x12B\n" +
-	"\bmessages\x18\x03 \x03(\v2&.kentik.ai_advisor.v202511.ChatMessageR\bmessages*\xa3\x01\n" +
+	"\bmessages\x18\x03 \x03(\v2&.kentik.ai_advisor.v202511.ChatMessageR\bmessages*\xc9\x01\n" +
 	"\rSessionStatus\x12\x1e\n" +
 	"\x1aSESSION_STATUS_UNSPECIFIED\x10\x00\x12\x1a\n" +
 	"\x16SESSION_STATUS_PENDING\x10\x01\x12\x1d\n" +
 	"\x19SESSION_STATUS_PROCESSING\x10\x02\x12\x1c\n" +
 	"\x18SESSION_STATUS_COMPLETED\x10\x03\x12\x19\n" +
-	"\x15SESSION_STATUS_FAILED\x10\x042\xa6\a\n" +
+	"\x15SESSION_STATUS_FAILED\x10\x04\x12$\n" +
+	" SESSION_STATUS_AWAITING_APPROVAL\x10\x052\xa6\a\n" +
 	"\x14AiAdvisorDataService\x12\xa2\x02\n" +
 	"\x11CreateChatSession\x123.kentik.ai_advisor.v202511.CreateChatSessionRequest\x1a4.kentik.ai_advisor.v202511.CreateChatSessionResponse\"\xa1\x01\x92Ag\x12\x1eCreate AI Advisor Chat Session\x1a2Create a new AI Advisor Chat session with a prompt*\x11CreateChatSession\xf2\xd7\x02\x10ai_advisor:write\x82\xd3\xe4\x93\x02\x1d:\x01*\"\x18/ai_advisor/v202511/chat\x12\x9c\x02\n" +
 	"\x11UpdateChatSession\x123.kentik.ai_advisor.v202511.UpdateChatSessionRequest\x1a4.kentik.ai_advisor.v202511.UpdateChatSessionResponse\"\x9b\x01\x92Aa\x12\x1eUpdate AI Advisor Chat Session\x1a,Update AI Advisor Chat session with a prompt*\x11UpdateChatSession\xf2\xd7\x02\x10ai_advisor:write\x82\xd3\xe4\x93\x02\x1d:\x01*\x1a\x18/ai_advisor/v202511/chat\x12\x9f\x02\n" +

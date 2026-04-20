@@ -242,7 +242,8 @@
         "SESSION_STATUS_PENDING",
         "SESSION_STATUS_PROCESSING",
         "SESSION_STATUS_COMPLETED",
-        "SESSION_STATUS_FAILED"
+        "SESSION_STATUS_FAILED",
+        "SESSION_STATUS_AWAITING_APPROVAL"
       ],
       "default": "SESSION_STATUS_UNSPECIFIED",
       "title": "SessionStatus represents the state of a chat session or message"

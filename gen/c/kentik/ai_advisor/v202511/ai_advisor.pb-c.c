@@ -757,19 +757,21 @@ const ProtobufCMessageDescriptor kentik__ai_advisor__v202511__get_chat_session_r
   (ProtobufCMessageInit) kentik__ai_advisor__v202511__get_chat_session_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCEnumValue kentik__ai_advisor__v202511__session_status__enum_values_by_number[5] =
+static const ProtobufCEnumValue kentik__ai_advisor__v202511__session_status__enum_values_by_number[6] =
 {
   { "SESSION_STATUS_UNSPECIFIED", "KENTIK__AI_ADVISOR__V202511__SESSION_STATUS__SESSION_STATUS_UNSPECIFIED", 0 },
   { "SESSION_STATUS_PENDING", "KENTIK__AI_ADVISOR__V202511__SESSION_STATUS__SESSION_STATUS_PENDING", 1 },
   { "SESSION_STATUS_PROCESSING", "KENTIK__AI_ADVISOR__V202511__SESSION_STATUS__SESSION_STATUS_PROCESSING", 2 },
   { "SESSION_STATUS_COMPLETED", "KENTIK__AI_ADVISOR__V202511__SESSION_STATUS__SESSION_STATUS_COMPLETED", 3 },
   { "SESSION_STATUS_FAILED", "KENTIK__AI_ADVISOR__V202511__SESSION_STATUS__SESSION_STATUS_FAILED", 4 },
+  { "SESSION_STATUS_AWAITING_APPROVAL", "KENTIK__AI_ADVISOR__V202511__SESSION_STATUS__SESSION_STATUS_AWAITING_APPROVAL", 5 },
 };
 static const ProtobufCIntRange kentik__ai_advisor__v202511__session_status__value_ranges[] = {
-{0, 0},{0, 5}
+{0, 0},{0, 6}
 };
-static const ProtobufCEnumValueIndex kentik__ai_advisor__v202511__session_status__enum_values_by_name[5] =
+static const ProtobufCEnumValueIndex kentik__ai_advisor__v202511__session_status__enum_values_by_name[6] =
 {
+  { "SESSION_STATUS_AWAITING_APPROVAL", 5 },
   { "SESSION_STATUS_COMPLETED", 3 },
   { "SESSION_STATUS_FAILED", 4 },
   { "SESSION_STATUS_PENDING", 1 },
@@ -783,9 +785,9 @@ const ProtobufCEnumDescriptor kentik__ai_advisor__v202511__session_status__descr
   "SessionStatus",
   "Kentik__AiAdvisor__V202511__SessionStatus",
   "kentik.ai_advisor.v202511",
-  5,
+  6,
   kentik__ai_advisor__v202511__session_status__enum_values_by_number,
-  5,
+  6,
   kentik__ai_advisor__v202511__session_status__enum_values_by_name,
   1,
   kentik__ai_advisor__v202511__session_status__value_ranges,

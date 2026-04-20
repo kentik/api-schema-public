@@ -100,6 +100,7 @@ enum SessionStatus : int {
   SESSION_STATUS_PROCESSING = 2,
   SESSION_STATUS_COMPLETED = 3,
   SESSION_STATUS_FAILED = 4,
+  SESSION_STATUS_AWAITING_APPROVAL = 5,
   SessionStatus_INT_MIN_SENTINEL_DO_NOT_USE_ =
       std::numeric_limits<::int32_t>::min(),
   SessionStatus_INT_MAX_SENTINEL_DO_NOT_USE_ =
@@ -109,8 +110,8 @@ enum SessionStatus : int {
 bool SessionStatus_IsValid(int value);
 extern const uint32_t SessionStatus_internal_data_[];
 constexpr SessionStatus SessionStatus_MIN = static_cast<SessionStatus>(0);
-constexpr SessionStatus SessionStatus_MAX = static_cast<SessionStatus>(4);
-constexpr int SessionStatus_ARRAYSIZE = 4 + 1;
+constexpr SessionStatus SessionStatus_MAX = static_cast<SessionStatus>(5);
+constexpr int SessionStatus_ARRAYSIZE = 5 + 1;
 const ::google::protobuf::EnumDescriptor*
 SessionStatus_descriptor();
 template <typename T>
@@ -123,7 +124,7 @@ const std::string& SessionStatus_Name(T value) {
 template <>
 inline const std::string& SessionStatus_Name(SessionStatus value) {
   return ::google::protobuf::internal::NameOfDenseEnum<SessionStatus_descriptor,
-                                                 0, 4>(
+                                                 0, 5>(
       static_cast<int>(value));
 }
 inline bool SessionStatus_Parse(absl::string_view name, SessionStatus* value) {

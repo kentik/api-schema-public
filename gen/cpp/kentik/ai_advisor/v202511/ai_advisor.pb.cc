@@ -402,46 +402,47 @@ const char descriptor_table_protodef_kentik_2fai_5fadvisor_2fv202511_2fai_5fadvi
     "\001(\0162(.kentik.ai_advisor.v202511.SessionS"
     "tatusR\006status\022B\n\010messages\030\003 \003(\0132&.kentik"
     ".ai_advisor.v202511.ChatMessageR\010message"
-    "s*\243\001\n\rSessionStatus\022\036\n\032SESSION_STATUS_UN"
+    "s*\311\001\n\rSessionStatus\022\036\n\032SESSION_STATUS_UN"
     "SPECIFIED\020\000\022\032\n\026SESSION_STATUS_PENDING\020\001\022"
     "\035\n\031SESSION_STATUS_PROCESSING\020\002\022\034\n\030SESSIO"
     "N_STATUS_COMPLETED\020\003\022\031\n\025SESSION_STATUS_F"
-    "AILED\020\0042\246\007\n\024AiAdvisorDataService\022\242\002\n\021Cre"
-    "ateChatSession\0223.kentik.ai_advisor.v2025"
-    "11.CreateChatSessionRequest\0324.kentik.ai_"
-    "advisor.v202511.CreateChatSessionRespons"
-    "e\"\241\001\222Ag\022\036Create AI Advisor Chat Session\032"
-    "2Create a new AI Advisor Chat session wi"
-    "th a prompt*\021CreateChatSession\362\327\002\020ai_adv"
-    "isor:write\202\323\344\223\002\035\"\030/ai_advisor/v202511/ch"
-    "at:\001*\022\234\002\n\021UpdateChatSession\0223.kentik.ai_"
-    "advisor.v202511.UpdateChatSessionRequest"
-    "\0324.kentik.ai_advisor.v202511.UpdateChatS"
-    "essionResponse\"\233\001\222Aa\022\036Update AI Advisor "
-    "Chat Session\032,Update AI Advisor Chat ses"
-    "sion with a prompt*\021UpdateChatSession\362\327\002"
-    "\020ai_advisor:write\202\323\344\223\002\035\032\030/ai_advisor/v20"
-    "2511/chat:\001*\022\237\002\n\016GetChatSession\0220.kentik"
-    ".ai_advisor.v202511.GetChatSessionReques"
-    "t\0321.kentik.ai_advisor.v202511.GetChatSes"
-    "sionResponse\"\247\001\222Al\022\033Get AI Advisor Chat "
-    "Session\032=Retrieve the status and results"
-    " of an AI Advisor chat session*\016GetChatS"
-    "ession\362\327\002\017ai_advisor:read\202\323\344\223\002\037\022\035/ai_adv"
-    "isor/v202511/chat/{id}\032(\312A\023grpc.api.kent"
-    "ik.com\352\327\002\nai_advisor\220\330\002\003B\324\003ZOgithub.com/"
-    "kentik/api-schema-public/gen/go/kentik/a"
-    "i_advisor/v202511;ai_advisor\222A\377\002\022\230\001\n\016AI "
-    "Advisor API\0226# Overview\nProvides program"
-    "matic access to AI Advisor.\"E\n\026Kentik AP"
-    "I Engineering\022+https://github.com/kentik"
-    "/api-schema-public2\007v202511*\001\0022\020applicat"
-    "ion/json:\020application/jsonZD\n\036\n\005email\022\025\010"
-    "\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-"
-    "Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000"
-    "r]\n%General information about Kentik API"
-    "s\0224https://kb.kentik.com/v0/Ab09.htm#Ab0"
-    "9-APIs_Overviewb\006proto3"
+    "AILED\020\004\022$\n SESSION_STATUS_AWAITING_APPRO"
+    "VAL\020\0052\246\007\n\024AiAdvisorDataService\022\242\002\n\021Creat"
+    "eChatSession\0223.kentik.ai_advisor.v202511"
+    ".CreateChatSessionRequest\0324.kentik.ai_ad"
+    "visor.v202511.CreateChatSessionResponse\""
+    "\241\001\222Ag\022\036Create AI Advisor Chat Session\0322C"
+    "reate a new AI Advisor Chat session with"
+    " a prompt*\021CreateChatSession\362\327\002\020ai_advis"
+    "or:write\202\323\344\223\002\035\"\030/ai_advisor/v202511/chat"
+    ":\001*\022\234\002\n\021UpdateChatSession\0223.kentik.ai_ad"
+    "visor.v202511.UpdateChatSessionRequest\0324"
+    ".kentik.ai_advisor.v202511.UpdateChatSes"
+    "sionResponse\"\233\001\222Aa\022\036Update AI Advisor Ch"
+    "at Session\032,Update AI Advisor Chat sessi"
+    "on with a prompt*\021UpdateChatSession\362\327\002\020a"
+    "i_advisor:write\202\323\344\223\002\035\032\030/ai_advisor/v2025"
+    "11/chat:\001*\022\237\002\n\016GetChatSession\0220.kentik.a"
+    "i_advisor.v202511.GetChatSessionRequest\032"
+    "1.kentik.ai_advisor.v202511.GetChatSessi"
+    "onResponse\"\247\001\222Al\022\033Get AI Advisor Chat Se"
+    "ssion\032=Retrieve the status and results o"
+    "f an AI Advisor chat session*\016GetChatSes"
+    "sion\362\327\002\017ai_advisor:read\202\323\344\223\002\037\022\035/ai_advis"
+    "or/v202511/chat/{id}\032(\312A\023grpc.api.kentik"
+    ".com\352\327\002\nai_advisor\220\330\002\003B\324\003ZOgithub.com/ke"
+    "ntik/api-schema-public/gen/go/kentik/ai_"
+    "advisor/v202511;ai_advisor\222A\377\002\022\230\001\n\016AI Ad"
+    "visor API\0226# Overview\nProvides programma"
+    "tic access to AI Advisor.\"E\n\026Kentik API "
+    "Engineering\022+https://github.com/kentik/a"
+    "pi-schema-public2\007v202511*\001\0022\020applicatio"
+    "n/json:\020application/jsonZD\n\036\n\005email\022\025\010\002\032"
+    "\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Au"
+    "th-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r]"
+    "\n%General information about Kentik APIs\022"
+    "4https://kb.kentik.com/v0/Ab09.htm#Ab09-"
+    "APIs_Overviewb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fai_5fadvisor_2fv202511_2fai_5fadvisor_2eproto_deps[7] =
     {
@@ -457,7 +458,7 @@ static ::absl::once_flag descriptor_table_kentik_2fai_5fadvisor_2fv202511_2fai_5
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fai_5fadvisor_2fv202511_2fai_5fadvisor_2eproto = {
     false,
     false,
-    3343,
+    3381,
     descriptor_table_protodef_kentik_2fai_5fadvisor_2fv202511_2fai_5fadvisor_2eproto,
     "kentik/ai_advisor/v202511/ai_advisor.proto",
     &descriptor_table_kentik_2fai_5fadvisor_2fv202511_2fai_5fadvisor_2eproto_once,
@@ -478,9 +479,9 @@ const ::google::protobuf::EnumDescriptor* SessionStatus_descriptor() {
   return file_level_enum_descriptors_kentik_2fai_5fadvisor_2fv202511_2fai_5fadvisor_2eproto[0];
 }
 PROTOBUF_CONSTINIT const uint32_t SessionStatus_internal_data_[] = {
-    327680u, 0u, };
+    393216u, 0u, };
 bool SessionStatus_IsValid(int value) {
-  return 0 <= value && value <= 4;
+  return 0 <= value && value <= 5;
 }
 // ===================================================================
 
