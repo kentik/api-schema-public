@@ -28,6 +28,42 @@ namespace kentik {
 namespace mkp {
 namespace v202407 {
 
+inline constexpr TenantUser::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        tenant_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        user_full_name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        user_email_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR TenantUser::TenantUser(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct TenantUserDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR TenantUserDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~TenantUserDefaultTypeInternal() {}
+  union {
+    TenantUser _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TenantUserDefaultTypeInternal _TenantUser_default_instance_;
+
 inline constexpr TenantLink::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : id_(
@@ -136,6 +172,33 @@ struct MitigationDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MitigationDefaultTypeInternal _Mitigation_default_instance_;
+
+inline constexpr ListTenantUserRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : tenant_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR ListTenantUserRequest::ListTenantUserRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct ListTenantUserRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ListTenantUserRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ListTenantUserRequestDefaultTypeInternal() {}
+  union {
+    ListTenantUserRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ListTenantUserRequestDefaultTypeInternal _ListTenantUserRequest_default_instance_;
               template <typename>
 PROTOBUF_CONSTEXPR ListTenantRequest::ListTenantRequest(::_pbi::ConstantInitialized)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
@@ -290,6 +353,54 @@ struct DevicesDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DevicesDefaultTypeInternal _Devices_default_instance_;
+              template <typename>
+PROTOBUF_CONSTEXPR DeleteTenantUserResponse::DeleteTenantUserResponse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::internal::ZeroFieldsBase(_class_data_.base()){}
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::internal::ZeroFieldsBase() {
+}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+struct DeleteTenantUserResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DeleteTenantUserResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DeleteTenantUserResponseDefaultTypeInternal() {}
+  union {
+    DeleteTenantUserResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DeleteTenantUserResponseDefaultTypeInternal _DeleteTenantUserResponse_default_instance_;
+
+inline constexpr DeleteTenantUserRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : tenant_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR DeleteTenantUserRequest::DeleteTenantUserRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct DeleteTenantUserRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DeleteTenantUserRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DeleteTenantUserRequestDefaultTypeInternal() {}
+  union {
+    DeleteTenantUserRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DeleteTenantUserRequestDefaultTypeInternal _DeleteTenantUserRequest_default_instance_;
               template <typename>
 PROTOBUF_CONSTEXPR DeleteTenantResponse::DeleteTenantResponse(::_pbi::ConstantInitialized)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
@@ -513,6 +624,56 @@ struct ActivateDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ActivateDefaultTypeInternal _Activate_default_instance_;
 
+inline constexpr UpdateTenantUserResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        user_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR UpdateTenantUserResponse::UpdateTenantUserResponse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct UpdateTenantUserResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UpdateTenantUserResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UpdateTenantUserResponseDefaultTypeInternal() {}
+  union {
+    UpdateTenantUserResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UpdateTenantUserResponseDefaultTypeInternal _UpdateTenantUserResponse_default_instance_;
+
+inline constexpr UpdateTenantUserRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        user_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR UpdateTenantUserRequest::UpdateTenantUserRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct UpdateTenantUserRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UpdateTenantUserRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UpdateTenantUserRequestDefaultTypeInternal() {}
+  union {
+    UpdateTenantUserRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UpdateTenantUserRequestDefaultTypeInternal _UpdateTenantUserRequest_default_instance_;
+
 inline constexpr Threshold::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
@@ -549,6 +710,32 @@ struct ThresholdDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ThresholdDefaultTypeInternal _Threshold_default_instance_;
+
+inline constexpr ListTenantUserResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : users_{},
+        invalid_count_{0u},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR ListTenantUserResponse::ListTenantUserResponse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct ListTenantUserResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ListTenantUserResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ListTenantUserResponseDefaultTypeInternal() {}
+  union {
+    ListTenantUserResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ListTenantUserResponseDefaultTypeInternal _ListTenantUserResponse_default_instance_;
 
 inline constexpr Filter::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -588,6 +775,56 @@ struct FilterDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 FilterDefaultTypeInternal _Filter_default_instance_;
+
+inline constexpr CreateTenantUserResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        user_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR CreateTenantUserResponse::CreateTenantUserResponse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct CreateTenantUserResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR CreateTenantUserResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~CreateTenantUserResponseDefaultTypeInternal() {}
+  union {
+    CreateTenantUserResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CreateTenantUserResponseDefaultTypeInternal _CreateTenantUserResponse_default_instance_;
+
+inline constexpr CreateTenantUserRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        user_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR CreateTenantUserRequest::CreateTenantUserRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct CreateTenantUserRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR CreateTenantUserRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~CreateTenantUserRequestDefaultTypeInternal() {}
+  union {
+    CreateTenantUserRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CreateTenantUserRequestDefaultTypeInternal _CreateTenantUserRequest_default_instance_;
 
 inline constexpr Asset::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -1278,6 +1515,18 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::Filter, _impl_.filters_),
         PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::Filter, _impl_.filter_groups_),
         PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::Filter, _impl_.metric_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::TenantUser, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::TenantUser, _impl_.id_),
+        PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::TenantUser, _impl_.tenant_id_),
+        PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::TenantUser, _impl_.user_full_name_),
+        PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::TenantUser, _impl_.user_email_),
         PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::Tenant, _impl_._has_bits_),
         PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::Tenant, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -1510,6 +1759,83 @@ const ::uint32_t
         ~0u,  // no _inlined_string_donated_
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::ListTenantUserRequest, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::ListTenantUserRequest, _impl_.tenant_id_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::ListTenantUserResponse, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::ListTenantUserResponse, _impl_.users_),
+        PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::ListTenantUserResponse, _impl_.invalid_count_),
+        PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::CreateTenantUserRequest, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::CreateTenantUserRequest, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::CreateTenantUserRequest, _impl_.user_),
+        0,
+        PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::CreateTenantUserResponse, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::CreateTenantUserResponse, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::CreateTenantUserResponse, _impl_.user_),
+        0,
+        PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::UpdateTenantUserRequest, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::UpdateTenantUserRequest, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::UpdateTenantUserRequest, _impl_.user_),
+        0,
+        PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::UpdateTenantUserResponse, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::UpdateTenantUserResponse, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::UpdateTenantUserResponse, _impl_.user_),
+        0,
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::DeleteTenantUserRequest, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::DeleteTenantUserRequest, _impl_.tenant_id_),
+        PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::DeleteTenantUserRequest, _impl_.id_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::DeleteTenantUserResponse, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
 };
 
 static const ::_pbi::MigrationSchema
@@ -1528,27 +1854,36 @@ static const ::_pbi::MigrationSchema
         {166, -1, -1, sizeof(::kentik::mkp::v202407::Devices)},
         {179, -1, -1, sizeof(::kentik::mkp::v202407::FilterField)},
         {190, -1, -1, sizeof(::kentik::mkp::v202407::Filter)},
-        {207, 233, -1, sizeof(::kentik::mkp::v202407::Tenant)},
-        {251, -1, -1, sizeof(::kentik::mkp::v202407::ListPackageRequest)},
-        {259, -1, -1, sizeof(::kentik::mkp::v202407::ListPackageResponse)},
-        {269, -1, -1, sizeof(::kentik::mkp::v202407::GetPackageRequest)},
-        {278, 287, -1, sizeof(::kentik::mkp::v202407::GetPackageResponse)},
-        {288, 297, -1, sizeof(::kentik::mkp::v202407::CreatePackageRequest)},
-        {298, 307, -1, sizeof(::kentik::mkp::v202407::CreatePackageResponse)},
-        {308, 317, -1, sizeof(::kentik::mkp::v202407::UpdatePackageRequest)},
-        {318, 327, -1, sizeof(::kentik::mkp::v202407::UpdatePackageResponse)},
-        {328, -1, -1, sizeof(::kentik::mkp::v202407::DeletePackageRequest)},
-        {337, -1, -1, sizeof(::kentik::mkp::v202407::DeletePackageResponse)},
-        {345, -1, -1, sizeof(::kentik::mkp::v202407::ListTenantRequest)},
-        {353, -1, -1, sizeof(::kentik::mkp::v202407::ListTenantResponse)},
-        {363, -1, -1, sizeof(::kentik::mkp::v202407::GetTenantRequest)},
-        {372, 381, -1, sizeof(::kentik::mkp::v202407::GetTenantResponse)},
-        {382, 391, -1, sizeof(::kentik::mkp::v202407::CreateTenantRequest)},
-        {392, 401, -1, sizeof(::kentik::mkp::v202407::CreateTenantResponse)},
-        {402, 411, -1, sizeof(::kentik::mkp::v202407::UpdateTenantRequest)},
-        {412, 421, -1, sizeof(::kentik::mkp::v202407::UpdateTenantResponse)},
-        {422, -1, -1, sizeof(::kentik::mkp::v202407::DeleteTenantRequest)},
-        {431, -1, -1, sizeof(::kentik::mkp::v202407::DeleteTenantResponse)},
+        {207, -1, -1, sizeof(::kentik::mkp::v202407::TenantUser)},
+        {219, 245, -1, sizeof(::kentik::mkp::v202407::Tenant)},
+        {263, -1, -1, sizeof(::kentik::mkp::v202407::ListPackageRequest)},
+        {271, -1, -1, sizeof(::kentik::mkp::v202407::ListPackageResponse)},
+        {281, -1, -1, sizeof(::kentik::mkp::v202407::GetPackageRequest)},
+        {290, 299, -1, sizeof(::kentik::mkp::v202407::GetPackageResponse)},
+        {300, 309, -1, sizeof(::kentik::mkp::v202407::CreatePackageRequest)},
+        {310, 319, -1, sizeof(::kentik::mkp::v202407::CreatePackageResponse)},
+        {320, 329, -1, sizeof(::kentik::mkp::v202407::UpdatePackageRequest)},
+        {330, 339, -1, sizeof(::kentik::mkp::v202407::UpdatePackageResponse)},
+        {340, -1, -1, sizeof(::kentik::mkp::v202407::DeletePackageRequest)},
+        {349, -1, -1, sizeof(::kentik::mkp::v202407::DeletePackageResponse)},
+        {357, -1, -1, sizeof(::kentik::mkp::v202407::ListTenantRequest)},
+        {365, -1, -1, sizeof(::kentik::mkp::v202407::ListTenantResponse)},
+        {375, -1, -1, sizeof(::kentik::mkp::v202407::GetTenantRequest)},
+        {384, 393, -1, sizeof(::kentik::mkp::v202407::GetTenantResponse)},
+        {394, 403, -1, sizeof(::kentik::mkp::v202407::CreateTenantRequest)},
+        {404, 413, -1, sizeof(::kentik::mkp::v202407::CreateTenantResponse)},
+        {414, 423, -1, sizeof(::kentik::mkp::v202407::UpdateTenantRequest)},
+        {424, 433, -1, sizeof(::kentik::mkp::v202407::UpdateTenantResponse)},
+        {434, -1, -1, sizeof(::kentik::mkp::v202407::DeleteTenantRequest)},
+        {443, -1, -1, sizeof(::kentik::mkp::v202407::DeleteTenantResponse)},
+        {451, -1, -1, sizeof(::kentik::mkp::v202407::ListTenantUserRequest)},
+        {460, -1, -1, sizeof(::kentik::mkp::v202407::ListTenantUserResponse)},
+        {470, 479, -1, sizeof(::kentik::mkp::v202407::CreateTenantUserRequest)},
+        {480, 489, -1, sizeof(::kentik::mkp::v202407::CreateTenantUserResponse)},
+        {490, 499, -1, sizeof(::kentik::mkp::v202407::UpdateTenantUserRequest)},
+        {500, 509, -1, sizeof(::kentik::mkp::v202407::UpdateTenantUserResponse)},
+        {510, -1, -1, sizeof(::kentik::mkp::v202407::DeleteTenantUserRequest)},
+        {520, -1, -1, sizeof(::kentik::mkp::v202407::DeleteTenantUserResponse)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::mkp::v202407::_Alert_default_instance_._instance,
@@ -1565,6 +1900,7 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::mkp::v202407::_Devices_default_instance_._instance,
     &::kentik::mkp::v202407::_FilterField_default_instance_._instance,
     &::kentik::mkp::v202407::_Filter_default_instance_._instance,
+    &::kentik::mkp::v202407::_TenantUser_default_instance_._instance,
     &::kentik::mkp::v202407::_Tenant_default_instance_._instance,
     &::kentik::mkp::v202407::_ListPackageRequest_default_instance_._instance,
     &::kentik::mkp::v202407::_ListPackageResponse_default_instance_._instance,
@@ -1586,6 +1922,14 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::mkp::v202407::_UpdateTenantResponse_default_instance_._instance,
     &::kentik::mkp::v202407::_DeleteTenantRequest_default_instance_._instance,
     &::kentik::mkp::v202407::_DeleteTenantResponse_default_instance_._instance,
+    &::kentik::mkp::v202407::_ListTenantUserRequest_default_instance_._instance,
+    &::kentik::mkp::v202407::_ListTenantUserResponse_default_instance_._instance,
+    &::kentik::mkp::v202407::_CreateTenantUserRequest_default_instance_._instance,
+    &::kentik::mkp::v202407::_CreateTenantUserResponse_default_instance_._instance,
+    &::kentik::mkp::v202407::_UpdateTenantUserRequest_default_instance_._instance,
+    &::kentik::mkp::v202407::_UpdateTenantUserResponse_default_instance_._instance,
+    &::kentik::mkp::v202407::_DeleteTenantUserRequest_default_instance_._instance,
+    &::kentik::mkp::v202407::_DeleteTenantUserResponse_default_instance_._instance,
 };
 const char descriptor_table_protodef_kentik_2fmkp_2fv202407_2fmkp_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
@@ -1680,196 +2024,249 @@ const char descriptor_table_protodef_kentik_2fmkp_2fv202407_2fmkp_2eproto[] ABSL
     "k.mkp.v202407.FilterFieldR\007filters\022\?\n\rfi"
     "lter_groups\030\010 \003(\0132\032.kentik.mkp.v202407.F"
     "ilterR\014filterGroups\022\026\n\006metric\030\t \003(\tR\006met"
-    "ric\"\311\n\n\006Tenant\022G\n\002id\030\001 \001(\tB7\222A12/Unique "
-    "system assigned identifier of the tenant"
-    "\340A\003R\002id\022K\n\ncompany_id\030\002 \001(\tB,\222A&2$Compan"
-    "y id of the associated package\340A\003R\tcompa"
-    "nyId\022*\n\004name\030\003 \001(\tB\026\222A\0202\016Name of tenant\340"
-    "A\003R\004name\022\?\n\013description\030\004 \001(\tB\035\222A\0272\025Desc"
-    "ription of tenant\340A\003R\013description\022%\n\004typ"
-    "e\030\005 \001(\tB\021\222A\0132\tSubtenant\340A\003R\004type\022;\n\007enab"
-    "led\030\006 \001(\010B!\222A\0332\031Is tenant actively enabl"
-    "e\340A\003R\007enabled\022X\n\006alerts\030\007 \003(\0132\031.kentik.m"
-    "kp.v202407.AlertB%\222A\0372\035Alert thresholds "
-    "and policies\340A\003R\006alerts\022j\n\006assets\030\017 \001(\0132"
-    "\031.kentik.mkp.v202407.AssetB7\222A12/Views a"
-    "nd Dashboards associated with the tenant"
-    "\340A\003R\006assets\022*\n\003asn\030\010 \001(\tB\030\222A\0222\020ASN data "
-    "source.\340A\003R\003asn\022-\n\004cidr\030\t \001(\tB\031\222A\0232\021CIDR"
-    " data source.\340A\003R\004cidr\022v\n\021custom_dimensi"
-    "ons\030\n \003(\0132#.kentik.mkp.v202407.CustomDim"
-    "ensionB$\222A\0362\034Custom dimension data sourc"
-    "e\340A\003R\020customDimensions\022R\n\007devices\030\013 \001(\0132"
-    "\033.kentik.mkp.v202407.DevicesB\033\222A\0252\023Devic"
-    "e data source.\340A\003R\007devices\022R\n\007filters\030\014 "
-    "\001(\0132\032.kentik.mkp.v202407.FilterB\034\222A\0262\024Da"
-    "ta source filters.\340A\003R\007filters\022E\n\016interf"
-    "ace_name\030\r \001(\tB\036\222A\0302\026Interface data sour"
-    "ce.\340A\003R\rinterfaceName\0228\n\nsnmp_alias\030\016 \001("
-    "\tB\031\222A\0232\021SNMP data source.\340A\003R\tsnmpAlias\022"
-    "e\n\010packages\030\020 \003(\0132\033.kentik.mkp.v202407.P"
-    "ackageB,\222A&2$Packages associated with th"
-    "e tenant.\340A\003R\010packages\022Z\n\005users\030\021 \003(\0132\031."
-    "kentik.user.v202211.UserB)\222A#2!Users ass"
-    "ociated with the tenant.\340A\003R\005users\022S\n\013te"
-    "mplate_id\030\022 \001(\tB2\222A,2*Package template I"
-    "D to assign with tenant.\340A\003R\ntemplateId\""
-    "\024\n\022ListPackageRequest\"s\n\023ListPackageResp"
-    "onse\0227\n\010packages\030\001 \003(\0132\033.kentik.mkp.v202"
-    "407.PackageR\010packages\022#\n\rinvalid_count\030\002"
-    " \001(\rR\014invalidCount\"#\n\021GetPackageRequest\022"
-    "\016\n\002id\030\001 \001(\tR\002id\"K\n\022GetPackageResponse\0225\n"
-    "\007package\030\001 \001(\0132\033.kentik.mkp.v202407.Pack"
-    "ageR\007package\"M\n\024CreatePackageRequest\0225\n\007"
-    "package\030\001 \001(\0132\033.kentik.mkp.v202407.Packa"
-    "geR\007package\"N\n\025CreatePackageResponse\0225\n\007"
-    "package\030\001 \001(\0132\033.kentik.mkp.v202407.Packa"
-    "geR\007package\"M\n\024UpdatePackageRequest\0225\n\007p"
-    "ackage\030\001 \001(\0132\033.kentik.mkp.v202407.Packag"
-    "eR\007package\"N\n\025UpdatePackageResponse\0225\n\007p"
-    "ackage\030\001 \001(\0132\033.kentik.mkp.v202407.Packag"
-    "eR\007package\"&\n\024DeletePackageRequest\022\016\n\002id"
-    "\030\001 \001(\tR\002id\"\027\n\025DeletePackageResponse\"\023\n\021L"
-    "istTenantRequest\"o\n\022ListTenantResponse\0224"
-    "\n\007tenants\030\001 \003(\0132\032.kentik.mkp.v202407.Ten"
-    "antR\007tenants\022#\n\rinvalid_count\030\002 \001(\rR\014inv"
-    "alidCount\"\"\n\020GetTenantRequest\022\016\n\002id\030\001 \001("
-    "\tR\002id\"G\n\021GetTenantResponse\0222\n\006tenant\030\001 \001"
-    "(\0132\032.kentik.mkp.v202407.TenantR\006tenant\"I"
-    "\n\023CreateTenantRequest\0222\n\006tenant\030\001 \001(\0132\032."
-    "kentik.mkp.v202407.TenantR\006tenant\"J\n\024Cre"
-    "ateTenantResponse\0222\n\006tenant\030\001 \001(\0132\032.kent"
-    "ik.mkp.v202407.TenantR\006tenant\"I\n\023UpdateT"
-    "enantRequest\0222\n\006tenant\030\001 \001(\0132\032.kentik.mk"
-    "p.v202407.TenantR\006tenant\"J\n\024UpdateTenant"
-    "Response\0222\n\006tenant\030\001 \001(\0132\032.kentik.mkp.v2"
-    "02407.TenantR\006tenant\"%\n\023DeleteTenantRequ"
-    "est\022\016\n\002id\030\001 \001(\tR\002id\"\026\n\024DeleteTenantRespo"
-    "nse2\367\t\n\016PackageService\022\324\001\n\013ListPackage\022&"
-    ".kentik.mkp.v202407.ListPackageRequest\032\'"
-    ".kentik.mkp.v202407.ListPackageResponse\""
-    "t\222AB\022\022List MKP packages.\032\037Returns a list"
-    " of MKP packages.*\013PackageList\362\327\002\016admin."
-    "mkp:read\202\323\344\223\002\027\022\025/mkp/v202407/packages\022\372\001"
-    "\n\nGetPackage\022%.kentik.mkp.v202407.GetPac"
-    "kageRequest\032&.kentik.mkp.v202407.GetPack"
-    "ageResponse\"\234\001\222Ae\022!Get information aboou"
-    "t a package.\0324Returns information about "
-    "package specified with ID.*\nPackageGet\362\327"
-    "\002\016admin.mkp:read\202\323\344\223\002\034\022\032/mkp/v202407/pac"
-    "kages/{id}\022\377\001\n\rCreatePackage\022(.kentik.mk"
-    "p.v202407.CreatePackageRequest\032).kentik."
-    "mkp.v202407.CreatePackageResponse\"\230\001\222Ab\022"
-    "\032Create a package template.\0325Create pack"
-    "age from request. returns created packag"
-    "e.*\rPackageCreate\362\327\002\017admin.mkp:write\202\323\344\223"
-    "\002\032\"\025/mkp/v202407/packages:\001*\022\372\001\n\rUpdateP"
-    "ackage\022(.kentik.mkp.v202407.UpdatePackag"
-    "eRequest\032).kentik.mkp.v202407.UpdatePack"
-    "ageResponse\"\223\001\222AP\022\021Update a package.\032,Up"
-    "date package attributes specified with i"
-    "d.*\rPackageUpdate\362\327\002\017admin.mkp:write\202\323\344\223"
-    "\002\'\032\"/mkp/v202407/packages/{package.id}:\001"
-    "*\022\351\001\n\rDeletePackage\022(.kentik.mkp.v202407"
-    ".DeletePackageRequest\032).kentik.mkp.v2024"
-    "07.DeletePackageResponse\"\202\001\222AJ\022\021Delete a"
-    " package.\032&Deletes the package specified"
-    " with id.*\rPackageDelete\362\327\002\017admin.mkp:wr"
-    "ite\202\323\344\223\002\034*\032/mkp/v202407/packages/{id}\032&\312"
-    "A\022mkp.api.kentik.com\352\327\002\tadmin.mkp\220\330\002\0032\310\t"
-    "\n\rTenantService\022\315\001\n\nListTenant\022%.kentik."
-    "mkp.v202407.ListTenantRequest\032&.kentik.m"
-    "kp.v202407.ListTenantResponse\"p\222A\?\022\021List"
-    " MKP tenants.\032\036Returns a list of MKP ten"
-    "ants.*\nTenantList\362\327\002\016admin.mkp:read\202\323\344\223\002"
-    "\026\022\024/mkp/v202407/tenants\022\364\001\n\tGetTenant\022$."
-    "kentik.mkp.v202407.GetTenantRequest\032%.ke"
-    "ntik.mkp.v202407.GetTenantResponse\"\231\001\222Ac"
-    "\022 Get information aboout a tenant.\0324Retu"
-    "rns information about package specified "
-    "with ID.*\tTenantGet\362\327\002\016admin.mkp:read\202\323\344"
-    "\223\002\033\022\031/mkp/v202407/tenants/{id}\022\356\001\n\014Creat"
-    "eTenant\022\'.kentik.mkp.v202407.CreateTenan"
-    "tRequest\032(.kentik.mkp.v202407.CreateTena"
-    "ntResponse\"\212\001\222AU\022\020Create a tenant.\0323Crea"
-    "te tenant from request. returns created "
-    "tenant.*\014TenantCreate\362\327\002\017admin.mkp:write"
-    "\202\323\344\223\002\031\"\024/mkp/v202407/tenants:\001*\022\362\001\n\014Upda"
-    "teTenant\022\'.kentik.mkp.v202407.UpdateTena"
-    "ntRequest\032(.kentik.mkp.v202407.UpdateTen"
-    "antResponse\"\216\001\222AM\022\020Update a tenant.\032+Upd"
-    "ate tenant attributes specified with id."
-    "*\014TenantUpdate\362\327\002\017admin.mkp:write\202\323\344\223\002%\032"
-    " /mkp/v202407/tenants/{tenant.id}:\001*\022\341\001\n"
-    "\014DeleteTenant\022\'.kentik.mkp.v202407.Delet"
-    "eTenantRequest\032(.kentik.mkp.v202407.Dele"
-    "teTenantResponse\"~\222AG\022\020Delete a tenant.\032"
-    "%Deletes the tenant specified with id.*\014"
-    "TenantDelete\362\327\002\017admin.mkp:write\202\323\344\223\002\033*\031/"
-    "mkp/v202407/tenants/{id}\032&\312A\022mkp.api.ken"
-    "tik.com\352\327\002\tadmin.mkp\220\330\002\003B\241\023ZAgithub.com/"
-    "kentik/api-schema-public/gen/go/kentik/m"
-    "kp/v202407;mkp\222A\332\022\022\233\021\n\007MKP API\022\277\020# Overv"
-    "iew\nMy Kentik Portal API enables program"
-    "matic access to tenants and package temp"
-    "lates.\n| Endpoint | Purpose |\n|---------"
-    "--|---------|\n| TenantService  | CRUD op"
-    "erations for MKP tenants. |\n| PackageSer"
-    "vice | CRUD operations for MKP templates"
-    ". |\n\nBoth REST endpoint and gRPC RPCs ar"
-    "e provided.\n\n\n # Tenant Attributes and S"
-    "ettings\n| Attribute | Access | Purpose |"
-    "\n|-----------|--------|---------|\n| id |"
+    "ric\"\264\002\n\nTenantUser\022E\n\002id\030\001 \001(\tB5\222A/2-Uni"
+    "que system assigned identifier of the us"
+    "er\340A\003R\002id\022X\n\ttenant_id\030\002 \001(\tB;\222A523Uniqu"
+    "e identifier of the tenant the user belo"
+    "ngs to\340A\002R\010tenantId\022C\n\016user_full_name\030\003 "
+    "\001(\tB\035\222A\0272\025Full name of the user\340A\002R\014user"
+    "FullName\022@\n\nuser_email\030\004 \001(\tB!\222A\0332\031Email"
+    " address of the user\340A\002R\tuserEmail\"\316\n\n\006T"
+    "enant\022G\n\002id\030\001 \001(\tB7\222A12/Unique system as"
+    "signed identifier of the tenant\340A\003R\002id\022K"
+    "\n\ncompany_id\030\002 \001(\tB,\222A&2$Company id of t"
+    "he associated package\340A\003R\tcompanyId\022*\n\004n"
+    "ame\030\003 \001(\tB\026\222A\0202\016Name of tenant\340A\003R\004name\022"
+    "\?\n\013description\030\004 \001(\tB\035\222A\0272\025Description o"
+    "f tenant\340A\003R\013description\022%\n\004type\030\005 \001(\tB\021"
+    "\222A\0132\tSubtenant\340A\003R\004type\022;\n\007enabled\030\006 \001(\010"
+    "B!\222A\0332\031Is tenant actively enable\340A\003R\007ena"
+    "bled\022X\n\006alerts\030\007 \003(\0132\031.kentik.mkp.v20240"
+    "7.AlertB%\222A\0372\035Alert thresholds and polic"
+    "ies\340A\003R\006alerts\022j\n\006assets\030\017 \001(\0132\031.kentik."
+    "mkp.v202407.AssetB7\222A12/Views and Dashbo"
+    "ards associated with the tenant\340A\003R\006asse"
+    "ts\022*\n\003asn\030\010 \001(\tB\030\222A\0222\020ASN data source.\340A"
+    "\003R\003asn\022-\n\004cidr\030\t \001(\tB\031\222A\0232\021CIDR data sou"
+    "rce.\340A\003R\004cidr\022v\n\021custom_dimensions\030\n \003(\013"
+    "2#.kentik.mkp.v202407.CustomDimensionB$\222"
+    "A\0362\034Custom dimension data source\340A\003R\020cus"
+    "tomDimensions\022R\n\007devices\030\013 \001(\0132\033.kentik."
+    "mkp.v202407.DevicesB\033\222A\0252\023Device data so"
+    "urce.\340A\003R\007devices\022R\n\007filters\030\014 \001(\0132\032.ken"
+    "tik.mkp.v202407.FilterB\034\222A\0262\024Data source"
+    " filters.\340A\003R\007filters\022E\n\016interface_name\030"
+    "\r \001(\tB\036\222A\0302\026Interface data source.\340A\003R\ri"
+    "nterfaceName\0228\n\nsnmp_alias\030\016 \001(\tB\031\222A\0232\021S"
+    "NMP data source.\340A\003R\tsnmpAlias\022e\n\010packag"
+    "es\030\020 \003(\0132\033.kentik.mkp.v202407.PackageB,\222"
+    "A&2$Packages associated with the tenant."
+    "\340A\003R\010packages\022_\n\005users\030\021 \003(\0132\036.kentik.mk"
+    "p.v202407.TenantUserB)\222A#2!Users associa"
+    "ted with the tenant.\340A\003R\005users\022S\n\013templa"
+    "te_id\030\022 \001(\tB2\222A,2*Package template ID to"
+    " assign with tenant.\340A\003R\ntemplateId\"\024\n\022L"
+    "istPackageRequest\"s\n\023ListPackageResponse"
+    "\0227\n\010packages\030\001 \003(\0132\033.kentik.mkp.v202407."
+    "PackageR\010packages\022#\n\rinvalid_count\030\002 \001(\r"
+    "R\014invalidCount\"#\n\021GetPackageRequest\022\016\n\002i"
+    "d\030\001 \001(\tR\002id\"K\n\022GetPackageResponse\0225\n\007pac"
+    "kage\030\001 \001(\0132\033.kentik.mkp.v202407.PackageR"
+    "\007package\"M\n\024CreatePackageRequest\0225\n\007pack"
+    "age\030\001 \001(\0132\033.kentik.mkp.v202407.PackageR\007"
+    "package\"N\n\025CreatePackageResponse\0225\n\007pack"
+    "age\030\001 \001(\0132\033.kentik.mkp.v202407.PackageR\007"
+    "package\"M\n\024UpdatePackageRequest\0225\n\007packa"
+    "ge\030\001 \001(\0132\033.kentik.mkp.v202407.PackageR\007p"
+    "ackage\"N\n\025UpdatePackageResponse\0225\n\007packa"
+    "ge\030\001 \001(\0132\033.kentik.mkp.v202407.PackageR\007p"
+    "ackage\"&\n\024DeletePackageRequest\022\016\n\002id\030\001 \001"
+    "(\tR\002id\"\027\n\025DeletePackageResponse\"\023\n\021ListT"
+    "enantRequest\"o\n\022ListTenantResponse\0224\n\007te"
+    "nants\030\001 \003(\0132\032.kentik.mkp.v202407.TenantR"
+    "\007tenants\022#\n\rinvalid_count\030\002 \001(\rR\014invalid"
+    "Count\"\"\n\020GetTenantRequest\022\016\n\002id\030\001 \001(\tR\002i"
+    "d\"G\n\021GetTenantResponse\0222\n\006tenant\030\001 \001(\0132\032"
+    ".kentik.mkp.v202407.TenantR\006tenant\"I\n\023Cr"
+    "eateTenantRequest\0222\n\006tenant\030\001 \001(\0132\032.kent"
+    "ik.mkp.v202407.TenantR\006tenant\"J\n\024CreateT"
+    "enantResponse\0222\n\006tenant\030\001 \001(\0132\032.kentik.m"
+    "kp.v202407.TenantR\006tenant\"I\n\023UpdateTenan"
+    "tRequest\0222\n\006tenant\030\001 \001(\0132\032.kentik.mkp.v2"
+    "02407.TenantR\006tenant\"J\n\024UpdateTenantResp"
+    "onse\0222\n\006tenant\030\001 \001(\0132\032.kentik.mkp.v20240"
+    "7.TenantR\006tenant\"%\n\023DeleteTenantRequest\022"
+    "\016\n\002id\030\001 \001(\tR\002id\"\026\n\024DeleteTenantResponse\""
+    "4\n\025ListTenantUserRequest\022\033\n\ttenant_id\030\001 "
+    "\001(\tR\010tenantId\"s\n\026ListTenantUserResponse\022"
+    "4\n\005users\030\001 \003(\0132\036.kentik.mkp.v202407.Tena"
+    "ntUserR\005users\022#\n\rinvalid_count\030\002 \001(\rR\014in"
+    "validCount\"M\n\027CreateTenantUserRequest\0222\n"
+    "\004user\030\001 \001(\0132\036.kentik.mkp.v202407.TenantU"
+    "serR\004user\"N\n\030CreateTenantUserResponse\0222\n"
+    "\004user\030\001 \001(\0132\036.kentik.mkp.v202407.TenantU"
+    "serR\004user\"M\n\027UpdateTenantUserRequest\0222\n\004"
+    "user\030\001 \001(\0132\036.kentik.mkp.v202407.TenantUs"
+    "erR\004user\"N\n\030UpdateTenantUserResponse\0222\n\004"
+    "user\030\001 \001(\0132\036.kentik.mkp.v202407.TenantUs"
+    "erR\004user\"F\n\027DeleteTenantUserRequest\022\033\n\tt"
+    "enant_id\030\001 \001(\tR\010tenantId\022\016\n\002id\030\002 \001(\tR\002id"
+    "\"\032\n\030DeleteTenantUserResponse2\367\t\n\016Package"
+    "Service\022\324\001\n\013ListPackage\022&.kentik.mkp.v20"
+    "2407.ListPackageRequest\032\'.kentik.mkp.v20"
+    "2407.ListPackageResponse\"t\222AB\022\022List MKP "
+    "packages.\032\037Returns a list of MKP package"
+    "s.*\013PackageList\362\327\002\016admin.mkp:read\202\323\344\223\002\027\022"
+    "\025/mkp/v202407/packages\022\372\001\n\nGetPackage\022%."
+    "kentik.mkp.v202407.GetPackageRequest\032&.k"
+    "entik.mkp.v202407.GetPackageResponse\"\234\001\222"
+    "Ae\022!Get information aboout a package.\0324R"
+    "eturns information about package specifi"
+    "ed with ID.*\nPackageGet\362\327\002\016admin.mkp:rea"
+    "d\202\323\344\223\002\034\022\032/mkp/v202407/packages/{id}\022\377\001\n\r"
+    "CreatePackage\022(.kentik.mkp.v202407.Creat"
+    "ePackageRequest\032).kentik.mkp.v202407.Cre"
+    "atePackageResponse\"\230\001\222Ab\022\032Create a packa"
+    "ge template.\0325Create package from reques"
+    "t. returns created package.*\rPackageCrea"
+    "te\362\327\002\017admin.mkp:write\202\323\344\223\002\032\"\025/mkp/v20240"
+    "7/packages:\001*\022\372\001\n\rUpdatePackage\022(.kentik"
+    ".mkp.v202407.UpdatePackageRequest\032).kent"
+    "ik.mkp.v202407.UpdatePackageResponse\"\223\001\222"
+    "AP\022\021Update a package.\032,Update package at"
+    "tributes specified with id.*\rPackageUpda"
+    "te\362\327\002\017admin.mkp:write\202\323\344\223\002\'\032\"/mkp/v20240"
+    "7/packages/{package.id}:\001*\022\351\001\n\rDeletePac"
+    "kage\022(.kentik.mkp.v202407.DeletePackageR"
+    "equest\032).kentik.mkp.v202407.DeletePackag"
+    "eResponse\"\202\001\222AJ\022\021Delete a package.\032&Dele"
+    "tes the package specified with id.*\rPack"
+    "ageDelete\362\327\002\017admin.mkp:write\202\323\344\223\002\034*\032/mkp"
+    "/v202407/packages/{id}\032&\312A\022mkp.api.kenti"
+    "k.com\352\327\002\tadmin.mkp\220\330\002\0032\310\t\n\rTenantService"
+    "\022\315\001\n\nListTenant\022%.kentik.mkp.v202407.Lis"
+    "tTenantRequest\032&.kentik.mkp.v202407.List"
+    "TenantResponse\"p\222A\?\022\021List MKP tenants.\032\036"
+    "Returns a list of MKP tenants.*\nTenantLi"
+    "st\362\327\002\016admin.mkp:read\202\323\344\223\002\026\022\024/mkp/v202407"
+    "/tenants\022\364\001\n\tGetTenant\022$.kentik.mkp.v202"
+    "407.GetTenantRequest\032%.kentik.mkp.v20240"
+    "7.GetTenantResponse\"\231\001\222Ac\022 Get informati"
+    "on aboout a tenant.\0324Returns information"
+    " about package specified with ID.*\tTenan"
+    "tGet\362\327\002\016admin.mkp:read\202\323\344\223\002\033\022\031/mkp/v2024"
+    "07/tenants/{id}\022\356\001\n\014CreateTenant\022\'.kenti"
+    "k.mkp.v202407.CreateTenantRequest\032(.kent"
+    "ik.mkp.v202407.CreateTenantResponse\"\212\001\222A"
+    "U\022\020Create a tenant.\0323Create tenant from "
+    "request. returns created tenant.*\014Tenant"
+    "Create\362\327\002\017admin.mkp:write\202\323\344\223\002\031\"\024/mkp/v2"
+    "02407/tenants:\001*\022\362\001\n\014UpdateTenant\022\'.kent"
+    "ik.mkp.v202407.UpdateTenantRequest\032(.ken"
+    "tik.mkp.v202407.UpdateTenantResponse\"\216\001\222"
+    "AM\022\020Update a tenant.\032+Update tenant attr"
+    "ibutes specified with id.*\014TenantUpdate\362"
+    "\327\002\017admin.mkp:write\202\323\344\223\002%\032 /mkp/v202407/t"
+    "enants/{tenant.id}:\001*\022\341\001\n\014DeleteTenant\022\'"
+    ".kentik.mkp.v202407.DeleteTenantRequest\032"
+    "(.kentik.mkp.v202407.DeleteTenantRespons"
+    "e\"~\222AG\022\020Delete a tenant.\032%Deletes the te"
+    "nant specified with id.*\014TenantDelete\362\327\002"
+    "\017admin.mkp:write\202\323\344\223\002\033*\031/mkp/v202407/ten"
+    "ants/{id}\032&\312A\022mkp.api.kentik.com\352\327\002\tadmi"
+    "n.mkp\220\330\002\0032\320\t\n\021TenantUserService\022\226\002\n\016List"
+    "TenantUser\022).kentik.mkp.v202407.ListTena"
+    "ntUserRequest\032*.kentik.mkp.v202407.ListT"
+    "enantUserResponse\"\254\001\222Ai\022\030List users for "
+    "a tenant.\032=Returns a list of users assoc"
+    "iated with the specified tenant.*\016Tenant"
+    "UserList\362\327\002\016admin.mkp:read\202\323\344\223\002(\022&/mkp/v"
+    "202407/tenants/{tenant_id}/users\022\236\002\n\020Cre"
+    "ateTenantUser\022+.kentik.mkp.v202407.Creat"
+    "eTenantUserRequest\032,.kentik.mkp.v202407."
+    "CreateTenantUserResponse\"\256\001\222Ab\022\027Add a us"
+    "er to a tenant.\0325Creates a user associat"
+    "ion with the specified tenant.*\020TenantUs"
+    "erCreate\362\327\002\017admin.mkp:write\202\323\344\223\0020\"+/mkp/"
+    "v202407/tenants/{user.tenant_id}/users:\001"
+    "*\022\263\002\n\020UpdateTenantUser\022+.kentik.mkp.v202"
+    "407.UpdateTenantUserRequest\032,.kentik.mkp"
+    ".v202407.UpdateTenantUserResponse\"\303\001\222Am\022"
+    "\025Update a tenant user.\032BUpdates the user"
+    " associated with the specified tenant an"
+    "d user ID.*\020TenantUserUpdate\362\327\002\017admin.mk"
+    "p:write\202\323\344\223\002:\0325/mkp/v202407/tenants/{use"
+    "r.tenant_id}/users/{user.id}:\001*\022\242\002\n\020Dele"
+    "teTenantUser\022+.kentik.mkp.v202407.Delete"
+    "TenantUserRequest\032,.kentik.mkp.v202407.D"
+    "eleteTenantUserResponse\"\262\001\222Ai\022\034Remove a "
+    "user from a tenant.\0327Deletes the user as"
+    "sociation with the specified tenant.*\020Te"
+    "nantUserDelete\362\327\002\017admin.mkp:write\202\323\344\223\002-*"
+    "+/mkp/v202407/tenants/{tenant_id}/users/"
+    "{id}\032&\312A\022mkp.api.kentik.com\352\327\002\tadmin.mkp"
+    "\220\330\002\003B\241\023ZAgithub.com/kentik/api-schema-pu"
+    "blic/gen/go/kentik/mkp/v202407;mkp\222A\332\022\022\233"
+    "\021\n\007MKP API\022\277\020# Overview\nMy Kentik Portal"
+    " API enables programmatic access to tena"
+    "nts and package templates.\n| Endpoint | "
+    "Purpose |\n|-----------|---------|\n| Tena"
+    "ntService  | CRUD operations for MKP ten"
+    "ants. |\n| PackageService | CRUD operatio"
+    "ns for MKP templates. |\n\nBoth REST endpo"
+    "int and gRPC RPCs are provided.\n\n\n # Ten"
+    "ant Attributes and Settings\n| Attribute "
+    "| Access | Purpose |\n|-----------|------"
+    "--|---------|\n| id | RO | System-generat"
+    "ed unique identifier of the tenant |\n| c"
+    "ompany_id | RO | System-generated unique"
+    " identifier of the company |\n| name | RW"
+    " | User specified name for the tenant |\n"
+    "| description | RW | User specified desc"
+    "ription for the tenant |\n| type | RO | s"
+    "ubtenant |\n| enabled | RW | User specifi"
+    "ed tenant active status |\n| cdate | RO |"
+    " Creation timestamp |\n| edate | RO | Las"
+    "t-modification timestamp |\n| alerts | RO"
+    " | Alert policy configurations |\n| asset"
+    "s | RW | dashboard, views, and templates"
+    " associate with tenant |\n| asn | RW | AS"
+    "N data source |\n| cidr | RW | CIDR data "
+    "source |\n| custom_dimensions | RW | Cust"
+    "om dimension data source |\n| devices | R"
+    "W | Devices data source |\n| filters | RW"
+    " | Data source filters |\n| interface_nam"
+    "e | RW | Interface source filters |\n| sn"
+    "mp_alias | RW | SNMP source filters |\n| "
+    "packages | RO | Package templates use by"
+    " the tenant |\n| users | RO | Users assig"
+    "n to the tenant |\n| template_id | WO | U"
+    "pdate tenant\'s packages setting with pac"
+    "kage/template id |\n\n\n # Package Attribut"
+    "es and Settings\n| Attribute | Access | P"
+    "urpose |\n|-----------|--------|---------"
+    "|\n| id | RO | System-generated unique id"
+    "entifier of the package |\n| company_id |"
     " RO | System-generated unique identifier"
-    " of the tenant |\n| company_id | RO | Sys"
-    "tem-generated unique identifier of the c"
-    "ompany |\n| name | RW | User specified na"
-    "me for the tenant |\n| description | RW |"
-    " User specified description for the tena"
-    "nt |\n| type | RO | subtenant |\n| enabled"
-    " | RW | User specified tenant active sta"
-    "tus |\n| cdate | RO | Creation timestamp "
-    "|\n| edate | RO | Last-modification times"
-    "tamp |\n| alerts | RO | Alert policy conf"
-    "igurations |\n| assets | RW | dashboard, "
-    "views, and templates associate with tena"
-    "nt |\n| asn | RW | ASN data source |\n| ci"
-    "dr | RW | CIDR data source |\n| custom_di"
-    "mensions | RW | Custom dimension data so"
-    "urce |\n| devices | RW | Devices data sou"
-    "rce |\n| filters | RW | Data source filte"
-    "rs |\n| interface_name | RW | Interface s"
-    "ource filters |\n| snmp_alias | RW | SNMP"
-    " source filters |\n| packages | RO | Pack"
-    "age templates use by the tenant |\n| user"
-    "s | RO | Users assign to the tenant |\n| "
-    "template_id | WO | Update tenant\'s packa"
-    "ges setting with package/template id |\n\n"
-    "\n # Package Attributes and Settings\n| At"
-    "tribute | Access | Purpose |\n|----------"
-    "-|--------|---------|\n| id | RO | System"
-    "-generated unique identifier of the pack"
-    "age |\n| company_id | RO | System-generat"
-    "ed unique identifier of the company |\n| "
-    "name | RW | User specified name for the "
-    "package template |\n| description | RW | "
-    "User specified description for the packa"
-    "ge template |\n| icon | RO | User specifi"
-    "ed icon |\n| color | RW | User specified "
-    "color of icon |\n| alerts | RO | Alert po"
-    "licy configurations |\n| assets | RW | da"
-    "shboard, views, and templates associate "
-    "with tenant |\n| is_default | RW | Defaul"
-    "t package template to include for new te"
-    "nant |\n| tenants | RO | Tenants using th"
-    "is package template |\n\n\n\"E\n\026Kentik API E"
-    "ngineering\022+https://github.com/kentik/ap"
-    "i-schema-public2\007v202407*\001\0022\020application"
-    "/json:\020application/jsonZD\n\036\n\005email\022\025\010\002\032\017"
-    "X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Aut"
-    "h-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r5\n"
-    "\026More about Kentik APIs\022\033https://docs.ke"
-    "ntik.com/apib\006proto3"
+    " of the company |\n| name | RW | User spe"
+    "cified name for the package template |\n|"
+    " description | RW | User specified descr"
+    "iption for the package template |\n| icon"
+    " | RO | User specified icon |\n| color | "
+    "RW | User specified color of icon |\n| al"
+    "erts | RO | Alert policy configurations "
+    "|\n| assets | RW | dashboard, views, and "
+    "templates associate with tenant |\n| is_d"
+    "efault | RW | Default package template t"
+    "o include for new tenant |\n| tenants | R"
+    "O | Tenants using this package template "
+    "|\n\n\n\"E\n\026Kentik API Engineering\022+https://"
+    "github.com/kentik/api-schema-public2\007v20"
+    "2407*\001\0022\020application/json:\020application/j"
+    "sonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n"
+    "\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005e"
+    "mail\022\000\n\t\n\005token\022\000r5\n\026More about Kentik A"
+    "PIs\022\033https://docs.kentik.com/apib\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fmkp_2fv202407_2fmkp_2eproto_deps[6] =
     {
@@ -1884,13 +2281,13 @@ static ::absl::once_flag descriptor_table_kentik_2fmkp_2fv202407_2fmkp_2eproto_o
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fmkp_2fv202407_2fmkp_2eproto = {
     false,
     false,
-    11220,
+    13360,
     descriptor_table_protodef_kentik_2fmkp_2fv202407_2fmkp_2eproto,
     "kentik/mkp/v202407/mkp.proto",
     &descriptor_table_kentik_2fmkp_2fv202407_2fmkp_2eproto_once,
     descriptor_table_kentik_2fmkp_2fv202407_2fmkp_2eproto_deps,
     6,
-    35,
+    44,
     schemas,
     file_default_instances,
     TableStruct_kentik_2fmkp_2fv202407_2fmkp_2eproto::offsets,
@@ -7090,6 +7487,322 @@ void Filter::InternalSwap(Filter* PROTOBUF_RESTRICT other) {
 }
 // ===================================================================
 
+class TenantUser::_Internal {
+ public:
+};
+
+TenantUser::TenantUser(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.mkp.v202407.TenantUser)
+}
+inline PROTOBUF_NDEBUG_INLINE TenantUser::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::kentik::mkp::v202407::TenantUser& from_msg)
+      : id_(arena, from.id_),
+        tenant_id_(arena, from.tenant_id_),
+        user_full_name_(arena, from.user_full_name_),
+        user_email_(arena, from.user_email_),
+        _cached_size_{0} {}
+
+TenantUser::TenantUser(
+    ::google::protobuf::Arena* arena,
+    const TenantUser& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  TenantUser* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+
+  // @@protoc_insertion_point(copy_constructor:kentik.mkp.v202407.TenantUser)
+}
+inline PROTOBUF_NDEBUG_INLINE TenantUser::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : id_(arena),
+        tenant_id_(arena),
+        user_full_name_(arena),
+        user_email_(arena),
+        _cached_size_{0} {}
+
+inline void TenantUser::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+}
+TenantUser::~TenantUser() {
+  // @@protoc_insertion_point(destructor:kentik.mkp.v202407.TenantUser)
+  SharedDtor(*this);
+}
+inline void TenantUser::SharedDtor(MessageLite& self) {
+  TenantUser& this_ = static_cast<TenantUser&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.id_.Destroy();
+  this_._impl_.tenant_id_.Destroy();
+  this_._impl_.user_full_name_.Destroy();
+  this_._impl_.user_email_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* TenantUser::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) TenantUser(arena);
+}
+constexpr auto TenantUser::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(TenantUser),
+                                            alignof(TenantUser));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull TenantUser::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_TenantUser_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &TenantUser::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<TenantUser>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &TenantUser::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<TenantUser>(), &TenantUser::ByteSizeLong,
+            &TenantUser::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(TenantUser, _impl_._cached_size_),
+        false,
+    },
+    &TenantUser::kDescriptorMethods,
+    &descriptor_table_kentik_2fmkp_2fv202407_2fmkp_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* TenantUser::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 4, 0, 73, 2> TenantUser::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    4, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967280,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    4,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::mkp::v202407::TenantUser>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // string user_email = 4 [json_name = "userEmail", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {34, 63, 0, PROTOBUF_FIELD_OFFSET(TenantUser, _impl_.user_email_)}},
+    // string id = 1 [json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(TenantUser, _impl_.id_)}},
+    // string tenant_id = 2 [json_name = "tenantId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(TenantUser, _impl_.tenant_id_)}},
+    // string user_full_name = 3 [json_name = "userFullName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(TenantUser, _impl_.user_full_name_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string id = 1 [json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(TenantUser, _impl_.id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string tenant_id = 2 [json_name = "tenantId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(TenantUser, _impl_.tenant_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string user_full_name = 3 [json_name = "userFullName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(TenantUser, _impl_.user_full_name_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string user_email = 4 [json_name = "userEmail", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(TenantUser, _impl_.user_email_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\35\2\11\16\12\0\0\0"
+    "kentik.mkp.v202407.TenantUser"
+    "id"
+    "tenant_id"
+    "user_full_name"
+    "user_email"
+  }},
+};
+
+PROTOBUF_NOINLINE void TenantUser::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.mkp.v202407.TenantUser)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.id_.ClearToEmpty();
+  _impl_.tenant_id_.ClearToEmpty();
+  _impl_.user_full_name_.ClearToEmpty();
+  _impl_.user_email_.ClearToEmpty();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* TenantUser::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const TenantUser& this_ = static_cast<const TenantUser&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* TenantUser::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const TenantUser& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:kentik.mkp.v202407.TenantUser)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // string id = 1 [json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_id().empty()) {
+            const std::string& _s = this_._internal_id();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.mkp.v202407.TenantUser.id");
+            target = stream->WriteStringMaybeAliased(1, _s, target);
+          }
+
+          // string tenant_id = 2 [json_name = "tenantId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_tenant_id().empty()) {
+            const std::string& _s = this_._internal_tenant_id();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.mkp.v202407.TenantUser.tenant_id");
+            target = stream->WriteStringMaybeAliased(2, _s, target);
+          }
+
+          // string user_full_name = 3 [json_name = "userFullName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_user_full_name().empty()) {
+            const std::string& _s = this_._internal_user_full_name();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.mkp.v202407.TenantUser.user_full_name");
+            target = stream->WriteStringMaybeAliased(3, _s, target);
+          }
+
+          // string user_email = 4 [json_name = "userEmail", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_user_email().empty()) {
+            const std::string& _s = this_._internal_user_email();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.mkp.v202407.TenantUser.user_email");
+            target = stream->WriteStringMaybeAliased(4, _s, target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:kentik.mkp.v202407.TenantUser)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t TenantUser::ByteSizeLong(const MessageLite& base) {
+          const TenantUser& this_ = static_cast<const TenantUser&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t TenantUser::ByteSizeLong() const {
+          const TenantUser& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:kentik.mkp.v202407.TenantUser)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // string id = 1 [json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_id().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_id());
+            }
+            // string tenant_id = 2 [json_name = "tenantId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_tenant_id().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_tenant_id());
+            }
+            // string user_full_name = 3 [json_name = "userFullName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_user_full_name().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_user_full_name());
+            }
+            // string user_email = 4 [json_name = "userEmail", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_user_email().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_user_email());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void TenantUser::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<TenantUser*>(&to_msg);
+  auto& from = static_cast<const TenantUser&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:kentik.mkp.v202407.TenantUser)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_id().empty()) {
+    _this->_internal_set_id(from._internal_id());
+  }
+  if (!from._internal_tenant_id().empty()) {
+    _this->_internal_set_tenant_id(from._internal_tenant_id());
+  }
+  if (!from._internal_user_full_name().empty()) {
+    _this->_internal_set_user_full_name(from._internal_user_full_name());
+  }
+  if (!from._internal_user_email().empty()) {
+    _this->_internal_set_user_email(from._internal_user_email());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void TenantUser::CopyFrom(const TenantUser& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.mkp.v202407.TenantUser)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void TenantUser::InternalSwap(TenantUser* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.id_, &other->_impl_.id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.tenant_id_, &other->_impl_.tenant_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.user_full_name_, &other->_impl_.user_full_name_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.user_email_, &other->_impl_.user_email_, arena);
+}
+
+::google::protobuf::Metadata TenantUser::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
 class Tenant::_Internal {
  public:
   using HasBits =
@@ -7098,10 +7811,6 @@ class Tenant::_Internal {
       8 * PROTOBUF_FIELD_OFFSET(Tenant, _impl_._has_bits_);
 };
 
-void Tenant::clear_users() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.users_.Clear();
-}
 Tenant::Tenant(::google::protobuf::Arena* arena)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
     : ::google::protobuf::Message(arena, _class_data_.base()) {
@@ -7337,7 +8046,7 @@ const ::_pbi::TcParseTable<5, 18, 7, 123, 2> Tenant::_table_ = {
     // repeated .kentik.mkp.v202407.Package packages = 16 [json_name = "packages", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::FastMtR2,
      {386, 63, 5, PROTOBUF_FIELD_OFFSET(Tenant, _impl_.packages_)}},
-    // repeated .kentik.user.v202211.User users = 17 [json_name = "users", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    // repeated .kentik.mkp.v202407.TenantUser users = 17 [json_name = "users", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::FastMtR2,
      {394, 63, 6, PROTOBUF_FIELD_OFFSET(Tenant, _impl_.users_)}},
     // string template_id = 18 [json_name = "templateId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -7407,7 +8116,7 @@ const ::_pbi::TcParseTable<5, 18, 7, 123, 2> Tenant::_table_ = {
     // repeated .kentik.mkp.v202407.Package packages = 16 [json_name = "packages", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {PROTOBUF_FIELD_OFFSET(Tenant, _impl_.packages_), -1, 5,
     (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
-    // repeated .kentik.user.v202211.User users = 17 [json_name = "users", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    // repeated .kentik.mkp.v202407.TenantUser users = 17 [json_name = "users", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {PROTOBUF_FIELD_OFFSET(Tenant, _impl_.users_), -1, 6,
     (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
     // string template_id = 18 [json_name = "templateId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -7420,7 +8129,7 @@ const ::_pbi::TcParseTable<5, 18, 7, 123, 2> Tenant::_table_ = {
     {::_pbi::TcParser::GetTable<::kentik::mkp::v202407::Filter>()},
     {::_pbi::TcParser::GetTable<::kentik::mkp::v202407::Asset>()},
     {::_pbi::TcParser::GetTable<::kentik::mkp::v202407::Package>()},
-    {::_pbi::TcParser::GetTable<::kentik::user::v202211::User>()},
+    {::_pbi::TcParser::GetTable<::kentik::mkp::v202407::TenantUser>()},
   }}, {{
     "\31\2\12\4\13\4\0\0\3\4\0\0\0\16\12\0\0\0\13\0\0\0\0\0"
     "kentik.mkp.v202407.Tenant"
@@ -7627,7 +8336,7 @@ PROTOBUF_NOINLINE void Tenant::Clear() {
                     target, stream);
           }
 
-          // repeated .kentik.user.v202211.User users = 17 [json_name = "users", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          // repeated .kentik.mkp.v202407.TenantUser users = 17 [json_name = "users", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
           for (unsigned i = 0, n = static_cast<unsigned>(
                                    this_._internal_users_size());
                i < n; i++) {
@@ -7692,7 +8401,7 @@ PROTOBUF_NOINLINE void Tenant::Clear() {
                 total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
               }
             }
-            // repeated .kentik.user.v202211.User users = 17 [json_name = "users", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            // repeated .kentik.mkp.v202407.TenantUser users = 17 [json_name = "users", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
             {
               total_size += 2UL * this_._internal_users_size();
               for (const auto& msg : this_._internal_users()) {
@@ -12275,6 +12984,1869 @@ const ::_pbi::TcParseTable<0, 0, 0, 0, 2> DeleteTenantResponse::_table_ = {
 
 
 ::google::protobuf::Metadata DeleteTenantResponse::GetMetadata() const {
+  return ::google::protobuf::internal::ZeroFieldsBase::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class ListTenantUserRequest::_Internal {
+ public:
+};
+
+ListTenantUserRequest::ListTenantUserRequest(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.mkp.v202407.ListTenantUserRequest)
+}
+inline PROTOBUF_NDEBUG_INLINE ListTenantUserRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::kentik::mkp::v202407::ListTenantUserRequest& from_msg)
+      : tenant_id_(arena, from.tenant_id_),
+        _cached_size_{0} {}
+
+ListTenantUserRequest::ListTenantUserRequest(
+    ::google::protobuf::Arena* arena,
+    const ListTenantUserRequest& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  ListTenantUserRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+
+  // @@protoc_insertion_point(copy_constructor:kentik.mkp.v202407.ListTenantUserRequest)
+}
+inline PROTOBUF_NDEBUG_INLINE ListTenantUserRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : tenant_id_(arena),
+        _cached_size_{0} {}
+
+inline void ListTenantUserRequest::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+}
+ListTenantUserRequest::~ListTenantUserRequest() {
+  // @@protoc_insertion_point(destructor:kentik.mkp.v202407.ListTenantUserRequest)
+  SharedDtor(*this);
+}
+inline void ListTenantUserRequest::SharedDtor(MessageLite& self) {
+  ListTenantUserRequest& this_ = static_cast<ListTenantUserRequest&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.tenant_id_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* ListTenantUserRequest::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) ListTenantUserRequest(arena);
+}
+constexpr auto ListTenantUserRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(ListTenantUserRequest),
+                                            alignof(ListTenantUserRequest));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull ListTenantUserRequest::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_ListTenantUserRequest_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &ListTenantUserRequest::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<ListTenantUserRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &ListTenantUserRequest::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<ListTenantUserRequest>(), &ListTenantUserRequest::ByteSizeLong,
+            &ListTenantUserRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(ListTenantUserRequest, _impl_._cached_size_),
+        false,
+    },
+    &ListTenantUserRequest::kDescriptorMethods,
+    &descriptor_table_kentik_2fmkp_2fv202407_2fmkp_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* ListTenantUserRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 0, 58, 2> ListTenantUserRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::mkp::v202407::ListTenantUserRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // string tenant_id = 1 [json_name = "tenantId"];
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ListTenantUserRequest, _impl_.tenant_id_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string tenant_id = 1 [json_name = "tenantId"];
+    {PROTOBUF_FIELD_OFFSET(ListTenantUserRequest, _impl_.tenant_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\50\11\0\0\0\0\0\0"
+    "kentik.mkp.v202407.ListTenantUserRequest"
+    "tenant_id"
+  }},
+};
+
+PROTOBUF_NOINLINE void ListTenantUserRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.mkp.v202407.ListTenantUserRequest)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.tenant_id_.ClearToEmpty();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* ListTenantUserRequest::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const ListTenantUserRequest& this_ = static_cast<const ListTenantUserRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* ListTenantUserRequest::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const ListTenantUserRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:kentik.mkp.v202407.ListTenantUserRequest)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // string tenant_id = 1 [json_name = "tenantId"];
+          if (!this_._internal_tenant_id().empty()) {
+            const std::string& _s = this_._internal_tenant_id();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.mkp.v202407.ListTenantUserRequest.tenant_id");
+            target = stream->WriteStringMaybeAliased(1, _s, target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:kentik.mkp.v202407.ListTenantUserRequest)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t ListTenantUserRequest::ByteSizeLong(const MessageLite& base) {
+          const ListTenantUserRequest& this_ = static_cast<const ListTenantUserRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t ListTenantUserRequest::ByteSizeLong() const {
+          const ListTenantUserRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:kentik.mkp.v202407.ListTenantUserRequest)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+           {
+            // string tenant_id = 1 [json_name = "tenantId"];
+            if (!this_._internal_tenant_id().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_tenant_id());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void ListTenantUserRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<ListTenantUserRequest*>(&to_msg);
+  auto& from = static_cast<const ListTenantUserRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:kentik.mkp.v202407.ListTenantUserRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_tenant_id().empty()) {
+    _this->_internal_set_tenant_id(from._internal_tenant_id());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ListTenantUserRequest::CopyFrom(const ListTenantUserRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.mkp.v202407.ListTenantUserRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void ListTenantUserRequest::InternalSwap(ListTenantUserRequest* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.tenant_id_, &other->_impl_.tenant_id_, arena);
+}
+
+::google::protobuf::Metadata ListTenantUserRequest::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class ListTenantUserResponse::_Internal {
+ public:
+};
+
+ListTenantUserResponse::ListTenantUserResponse(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.mkp.v202407.ListTenantUserResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE ListTenantUserResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::kentik::mkp::v202407::ListTenantUserResponse& from_msg)
+      : users_{visibility, arena, from.users_},
+        _cached_size_{0} {}
+
+ListTenantUserResponse::ListTenantUserResponse(
+    ::google::protobuf::Arena* arena,
+    const ListTenantUserResponse& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  ListTenantUserResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  _impl_.invalid_count_ = from._impl_.invalid_count_;
+
+  // @@protoc_insertion_point(copy_constructor:kentik.mkp.v202407.ListTenantUserResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE ListTenantUserResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : users_{visibility, arena},
+        _cached_size_{0} {}
+
+inline void ListTenantUserResponse::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.invalid_count_ = {};
+}
+ListTenantUserResponse::~ListTenantUserResponse() {
+  // @@protoc_insertion_point(destructor:kentik.mkp.v202407.ListTenantUserResponse)
+  SharedDtor(*this);
+}
+inline void ListTenantUserResponse::SharedDtor(MessageLite& self) {
+  ListTenantUserResponse& this_ = static_cast<ListTenantUserResponse&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* ListTenantUserResponse::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) ListTenantUserResponse(arena);
+}
+constexpr auto ListTenantUserResponse::InternalNewImpl_() {
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(ListTenantUserResponse, _impl_.users_) +
+          decltype(ListTenantUserResponse::_impl_.users_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::ZeroInit(
+        sizeof(ListTenantUserResponse), alignof(ListTenantUserResponse), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&ListTenantUserResponse::PlacementNew_,
+                                 sizeof(ListTenantUserResponse),
+                                 alignof(ListTenantUserResponse));
+  }
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull ListTenantUserResponse::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_ListTenantUserResponse_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &ListTenantUserResponse::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<ListTenantUserResponse>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &ListTenantUserResponse::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<ListTenantUserResponse>(), &ListTenantUserResponse::ByteSizeLong,
+            &ListTenantUserResponse::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(ListTenantUserResponse, _impl_._cached_size_),
+        false,
+    },
+    &ListTenantUserResponse::kDescriptorMethods,
+    &descriptor_table_kentik_2fmkp_2fv202407_2fmkp_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* ListTenantUserResponse::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 1, 0, 2> ListTenantUserResponse::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::mkp::v202407::ListTenantUserResponse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // uint32 invalid_count = 2 [json_name = "invalidCount"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ListTenantUserResponse, _impl_.invalid_count_), 63>(),
+     {16, 63, 0, PROTOBUF_FIELD_OFFSET(ListTenantUserResponse, _impl_.invalid_count_)}},
+    // repeated .kentik.mkp.v202407.TenantUser users = 1 [json_name = "users"];
+    {::_pbi::TcParser::FastMtR1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ListTenantUserResponse, _impl_.users_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // repeated .kentik.mkp.v202407.TenantUser users = 1 [json_name = "users"];
+    {PROTOBUF_FIELD_OFFSET(ListTenantUserResponse, _impl_.users_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+    // uint32 invalid_count = 2 [json_name = "invalidCount"];
+    {PROTOBUF_FIELD_OFFSET(ListTenantUserResponse, _impl_.invalid_count_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::kentik::mkp::v202407::TenantUser>()},
+  }}, {{
+  }},
+};
+
+PROTOBUF_NOINLINE void ListTenantUserResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.mkp.v202407.ListTenantUserResponse)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.users_.Clear();
+  _impl_.invalid_count_ = 0u;
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* ListTenantUserResponse::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const ListTenantUserResponse& this_ = static_cast<const ListTenantUserResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* ListTenantUserResponse::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const ListTenantUserResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:kentik.mkp.v202407.ListTenantUserResponse)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // repeated .kentik.mkp.v202407.TenantUser users = 1 [json_name = "users"];
+          for (unsigned i = 0, n = static_cast<unsigned>(
+                                   this_._internal_users_size());
+               i < n; i++) {
+            const auto& repfield = this_._internal_users().Get(i);
+            target =
+                ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                    1, repfield, repfield.GetCachedSize(),
+                    target, stream);
+          }
+
+          // uint32 invalid_count = 2 [json_name = "invalidCount"];
+          if (this_._internal_invalid_count() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                2, this_._internal_invalid_count(), target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:kentik.mkp.v202407.ListTenantUserResponse)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t ListTenantUserResponse::ByteSizeLong(const MessageLite& base) {
+          const ListTenantUserResponse& this_ = static_cast<const ListTenantUserResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t ListTenantUserResponse::ByteSizeLong() const {
+          const ListTenantUserResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:kentik.mkp.v202407.ListTenantUserResponse)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // repeated .kentik.mkp.v202407.TenantUser users = 1 [json_name = "users"];
+            {
+              total_size += 1UL * this_._internal_users_size();
+              for (const auto& msg : this_._internal_users()) {
+                total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+              }
+            }
+          }
+           {
+            // uint32 invalid_count = 2 [json_name = "invalidCount"];
+            if (this_._internal_invalid_count() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_invalid_count());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void ListTenantUserResponse::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<ListTenantUserResponse*>(&to_msg);
+  auto& from = static_cast<const ListTenantUserResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:kentik.mkp.v202407.ListTenantUserResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_internal_mutable_users()->MergeFrom(
+      from._internal_users());
+  if (from._internal_invalid_count() != 0) {
+    _this->_impl_.invalid_count_ = from._impl_.invalid_count_;
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ListTenantUserResponse::CopyFrom(const ListTenantUserResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.mkp.v202407.ListTenantUserResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void ListTenantUserResponse::InternalSwap(ListTenantUserResponse* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.users_.InternalSwap(&other->_impl_.users_);
+        swap(_impl_.invalid_count_, other->_impl_.invalid_count_);
+}
+
+::google::protobuf::Metadata ListTenantUserResponse::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class CreateTenantUserRequest::_Internal {
+ public:
+  using HasBits =
+      decltype(std::declval<CreateTenantUserRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(CreateTenantUserRequest, _impl_._has_bits_);
+};
+
+CreateTenantUserRequest::CreateTenantUserRequest(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.mkp.v202407.CreateTenantUserRequest)
+}
+inline PROTOBUF_NDEBUG_INLINE CreateTenantUserRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::kentik::mkp::v202407::CreateTenantUserRequest& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
+
+CreateTenantUserRequest::CreateTenantUserRequest(
+    ::google::protobuf::Arena* arena,
+    const CreateTenantUserRequest& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  CreateTenantUserRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.user_ = (cached_has_bits & 0x00000001u) ? ::google::protobuf::Message::CopyConstruct<::kentik::mkp::v202407::TenantUser>(
+                              arena, *from._impl_.user_)
+                        : nullptr;
+
+  // @@protoc_insertion_point(copy_constructor:kentik.mkp.v202407.CreateTenantUserRequest)
+}
+inline PROTOBUF_NDEBUG_INLINE CreateTenantUserRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void CreateTenantUserRequest::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.user_ = {};
+}
+CreateTenantUserRequest::~CreateTenantUserRequest() {
+  // @@protoc_insertion_point(destructor:kentik.mkp.v202407.CreateTenantUserRequest)
+  SharedDtor(*this);
+}
+inline void CreateTenantUserRequest::SharedDtor(MessageLite& self) {
+  CreateTenantUserRequest& this_ = static_cast<CreateTenantUserRequest&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  delete this_._impl_.user_;
+  this_._impl_.~Impl_();
+}
+
+inline void* CreateTenantUserRequest::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) CreateTenantUserRequest(arena);
+}
+constexpr auto CreateTenantUserRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(CreateTenantUserRequest),
+                                            alignof(CreateTenantUserRequest));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull CreateTenantUserRequest::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_CreateTenantUserRequest_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &CreateTenantUserRequest::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<CreateTenantUserRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &CreateTenantUserRequest::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<CreateTenantUserRequest>(), &CreateTenantUserRequest::ByteSizeLong,
+            &CreateTenantUserRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(CreateTenantUserRequest, _impl_._cached_size_),
+        false,
+    },
+    &CreateTenantUserRequest::kDescriptorMethods,
+    &descriptor_table_kentik_2fmkp_2fv202407_2fmkp_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* CreateTenantUserRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2> CreateTenantUserRequest::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(CreateTenantUserRequest, _impl_._has_bits_),
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::mkp::v202407::CreateTenantUserRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // .kentik.mkp.v202407.TenantUser user = 1 [json_name = "user"];
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(CreateTenantUserRequest, _impl_.user_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .kentik.mkp.v202407.TenantUser user = 1 [json_name = "user"];
+    {PROTOBUF_FIELD_OFFSET(CreateTenantUserRequest, _impl_.user_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::kentik::mkp::v202407::TenantUser>()},
+  }}, {{
+  }},
+};
+
+PROTOBUF_NOINLINE void CreateTenantUserRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.mkp.v202407.CreateTenantUserRequest)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.user_ != nullptr);
+    _impl_.user_->Clear();
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* CreateTenantUserRequest::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const CreateTenantUserRequest& this_ = static_cast<const CreateTenantUserRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* CreateTenantUserRequest::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const CreateTenantUserRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:kentik.mkp.v202407.CreateTenantUserRequest)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          cached_has_bits = this_._impl_._has_bits_[0];
+          // .kentik.mkp.v202407.TenantUser user = 1 [json_name = "user"];
+          if (cached_has_bits & 0x00000001u) {
+            target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                1, *this_._impl_.user_, this_._impl_.user_->GetCachedSize(), target,
+                stream);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:kentik.mkp.v202407.CreateTenantUserRequest)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t CreateTenantUserRequest::ByteSizeLong(const MessageLite& base) {
+          const CreateTenantUserRequest& this_ = static_cast<const CreateTenantUserRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t CreateTenantUserRequest::ByteSizeLong() const {
+          const CreateTenantUserRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:kentik.mkp.v202407.CreateTenantUserRequest)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+           {
+            // .kentik.mkp.v202407.TenantUser user = 1 [json_name = "user"];
+            cached_has_bits = this_._impl_._has_bits_[0];
+            if (cached_has_bits & 0x00000001u) {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.user_);
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void CreateTenantUserRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<CreateTenantUserRequest*>(&to_msg);
+  auto& from = static_cast<const CreateTenantUserRequest&>(from_msg);
+  ::google::protobuf::Arena* arena = _this->GetArena();
+  // @@protoc_insertion_point(class_specific_merge_from_start:kentik.mkp.v202407.CreateTenantUserRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(from._impl_.user_ != nullptr);
+    if (_this->_impl_.user_ == nullptr) {
+      _this->_impl_.user_ =
+          ::google::protobuf::Message::CopyConstruct<::kentik::mkp::v202407::TenantUser>(arena, *from._impl_.user_);
+    } else {
+      _this->_impl_.user_->MergeFrom(*from._impl_.user_);
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void CreateTenantUserRequest::CopyFrom(const CreateTenantUserRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.mkp.v202407.CreateTenantUserRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void CreateTenantUserRequest::InternalSwap(CreateTenantUserRequest* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  swap(_impl_.user_, other->_impl_.user_);
+}
+
+::google::protobuf::Metadata CreateTenantUserRequest::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class CreateTenantUserResponse::_Internal {
+ public:
+  using HasBits =
+      decltype(std::declval<CreateTenantUserResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(CreateTenantUserResponse, _impl_._has_bits_);
+};
+
+CreateTenantUserResponse::CreateTenantUserResponse(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.mkp.v202407.CreateTenantUserResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE CreateTenantUserResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::kentik::mkp::v202407::CreateTenantUserResponse& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
+
+CreateTenantUserResponse::CreateTenantUserResponse(
+    ::google::protobuf::Arena* arena,
+    const CreateTenantUserResponse& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  CreateTenantUserResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.user_ = (cached_has_bits & 0x00000001u) ? ::google::protobuf::Message::CopyConstruct<::kentik::mkp::v202407::TenantUser>(
+                              arena, *from._impl_.user_)
+                        : nullptr;
+
+  // @@protoc_insertion_point(copy_constructor:kentik.mkp.v202407.CreateTenantUserResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE CreateTenantUserResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void CreateTenantUserResponse::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.user_ = {};
+}
+CreateTenantUserResponse::~CreateTenantUserResponse() {
+  // @@protoc_insertion_point(destructor:kentik.mkp.v202407.CreateTenantUserResponse)
+  SharedDtor(*this);
+}
+inline void CreateTenantUserResponse::SharedDtor(MessageLite& self) {
+  CreateTenantUserResponse& this_ = static_cast<CreateTenantUserResponse&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  delete this_._impl_.user_;
+  this_._impl_.~Impl_();
+}
+
+inline void* CreateTenantUserResponse::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) CreateTenantUserResponse(arena);
+}
+constexpr auto CreateTenantUserResponse::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(CreateTenantUserResponse),
+                                            alignof(CreateTenantUserResponse));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull CreateTenantUserResponse::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_CreateTenantUserResponse_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &CreateTenantUserResponse::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<CreateTenantUserResponse>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &CreateTenantUserResponse::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<CreateTenantUserResponse>(), &CreateTenantUserResponse::ByteSizeLong,
+            &CreateTenantUserResponse::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(CreateTenantUserResponse, _impl_._cached_size_),
+        false,
+    },
+    &CreateTenantUserResponse::kDescriptorMethods,
+    &descriptor_table_kentik_2fmkp_2fv202407_2fmkp_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* CreateTenantUserResponse::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2> CreateTenantUserResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(CreateTenantUserResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::mkp::v202407::CreateTenantUserResponse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // .kentik.mkp.v202407.TenantUser user = 1 [json_name = "user"];
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(CreateTenantUserResponse, _impl_.user_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .kentik.mkp.v202407.TenantUser user = 1 [json_name = "user"];
+    {PROTOBUF_FIELD_OFFSET(CreateTenantUserResponse, _impl_.user_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::kentik::mkp::v202407::TenantUser>()},
+  }}, {{
+  }},
+};
+
+PROTOBUF_NOINLINE void CreateTenantUserResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.mkp.v202407.CreateTenantUserResponse)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.user_ != nullptr);
+    _impl_.user_->Clear();
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* CreateTenantUserResponse::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const CreateTenantUserResponse& this_ = static_cast<const CreateTenantUserResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* CreateTenantUserResponse::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const CreateTenantUserResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:kentik.mkp.v202407.CreateTenantUserResponse)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          cached_has_bits = this_._impl_._has_bits_[0];
+          // .kentik.mkp.v202407.TenantUser user = 1 [json_name = "user"];
+          if (cached_has_bits & 0x00000001u) {
+            target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                1, *this_._impl_.user_, this_._impl_.user_->GetCachedSize(), target,
+                stream);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:kentik.mkp.v202407.CreateTenantUserResponse)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t CreateTenantUserResponse::ByteSizeLong(const MessageLite& base) {
+          const CreateTenantUserResponse& this_ = static_cast<const CreateTenantUserResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t CreateTenantUserResponse::ByteSizeLong() const {
+          const CreateTenantUserResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:kentik.mkp.v202407.CreateTenantUserResponse)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+           {
+            // .kentik.mkp.v202407.TenantUser user = 1 [json_name = "user"];
+            cached_has_bits = this_._impl_._has_bits_[0];
+            if (cached_has_bits & 0x00000001u) {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.user_);
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void CreateTenantUserResponse::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<CreateTenantUserResponse*>(&to_msg);
+  auto& from = static_cast<const CreateTenantUserResponse&>(from_msg);
+  ::google::protobuf::Arena* arena = _this->GetArena();
+  // @@protoc_insertion_point(class_specific_merge_from_start:kentik.mkp.v202407.CreateTenantUserResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(from._impl_.user_ != nullptr);
+    if (_this->_impl_.user_ == nullptr) {
+      _this->_impl_.user_ =
+          ::google::protobuf::Message::CopyConstruct<::kentik::mkp::v202407::TenantUser>(arena, *from._impl_.user_);
+    } else {
+      _this->_impl_.user_->MergeFrom(*from._impl_.user_);
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void CreateTenantUserResponse::CopyFrom(const CreateTenantUserResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.mkp.v202407.CreateTenantUserResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void CreateTenantUserResponse::InternalSwap(CreateTenantUserResponse* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  swap(_impl_.user_, other->_impl_.user_);
+}
+
+::google::protobuf::Metadata CreateTenantUserResponse::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class UpdateTenantUserRequest::_Internal {
+ public:
+  using HasBits =
+      decltype(std::declval<UpdateTenantUserRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(UpdateTenantUserRequest, _impl_._has_bits_);
+};
+
+UpdateTenantUserRequest::UpdateTenantUserRequest(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.mkp.v202407.UpdateTenantUserRequest)
+}
+inline PROTOBUF_NDEBUG_INLINE UpdateTenantUserRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::kentik::mkp::v202407::UpdateTenantUserRequest& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
+
+UpdateTenantUserRequest::UpdateTenantUserRequest(
+    ::google::protobuf::Arena* arena,
+    const UpdateTenantUserRequest& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  UpdateTenantUserRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.user_ = (cached_has_bits & 0x00000001u) ? ::google::protobuf::Message::CopyConstruct<::kentik::mkp::v202407::TenantUser>(
+                              arena, *from._impl_.user_)
+                        : nullptr;
+
+  // @@protoc_insertion_point(copy_constructor:kentik.mkp.v202407.UpdateTenantUserRequest)
+}
+inline PROTOBUF_NDEBUG_INLINE UpdateTenantUserRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void UpdateTenantUserRequest::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.user_ = {};
+}
+UpdateTenantUserRequest::~UpdateTenantUserRequest() {
+  // @@protoc_insertion_point(destructor:kentik.mkp.v202407.UpdateTenantUserRequest)
+  SharedDtor(*this);
+}
+inline void UpdateTenantUserRequest::SharedDtor(MessageLite& self) {
+  UpdateTenantUserRequest& this_ = static_cast<UpdateTenantUserRequest&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  delete this_._impl_.user_;
+  this_._impl_.~Impl_();
+}
+
+inline void* UpdateTenantUserRequest::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) UpdateTenantUserRequest(arena);
+}
+constexpr auto UpdateTenantUserRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(UpdateTenantUserRequest),
+                                            alignof(UpdateTenantUserRequest));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull UpdateTenantUserRequest::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_UpdateTenantUserRequest_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &UpdateTenantUserRequest::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<UpdateTenantUserRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &UpdateTenantUserRequest::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<UpdateTenantUserRequest>(), &UpdateTenantUserRequest::ByteSizeLong,
+            &UpdateTenantUserRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(UpdateTenantUserRequest, _impl_._cached_size_),
+        false,
+    },
+    &UpdateTenantUserRequest::kDescriptorMethods,
+    &descriptor_table_kentik_2fmkp_2fv202407_2fmkp_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* UpdateTenantUserRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2> UpdateTenantUserRequest::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(UpdateTenantUserRequest, _impl_._has_bits_),
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::mkp::v202407::UpdateTenantUserRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // .kentik.mkp.v202407.TenantUser user = 1 [json_name = "user"];
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(UpdateTenantUserRequest, _impl_.user_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .kentik.mkp.v202407.TenantUser user = 1 [json_name = "user"];
+    {PROTOBUF_FIELD_OFFSET(UpdateTenantUserRequest, _impl_.user_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::kentik::mkp::v202407::TenantUser>()},
+  }}, {{
+  }},
+};
+
+PROTOBUF_NOINLINE void UpdateTenantUserRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.mkp.v202407.UpdateTenantUserRequest)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.user_ != nullptr);
+    _impl_.user_->Clear();
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* UpdateTenantUserRequest::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const UpdateTenantUserRequest& this_ = static_cast<const UpdateTenantUserRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* UpdateTenantUserRequest::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const UpdateTenantUserRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:kentik.mkp.v202407.UpdateTenantUserRequest)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          cached_has_bits = this_._impl_._has_bits_[0];
+          // .kentik.mkp.v202407.TenantUser user = 1 [json_name = "user"];
+          if (cached_has_bits & 0x00000001u) {
+            target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                1, *this_._impl_.user_, this_._impl_.user_->GetCachedSize(), target,
+                stream);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:kentik.mkp.v202407.UpdateTenantUserRequest)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t UpdateTenantUserRequest::ByteSizeLong(const MessageLite& base) {
+          const UpdateTenantUserRequest& this_ = static_cast<const UpdateTenantUserRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t UpdateTenantUserRequest::ByteSizeLong() const {
+          const UpdateTenantUserRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:kentik.mkp.v202407.UpdateTenantUserRequest)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+           {
+            // .kentik.mkp.v202407.TenantUser user = 1 [json_name = "user"];
+            cached_has_bits = this_._impl_._has_bits_[0];
+            if (cached_has_bits & 0x00000001u) {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.user_);
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void UpdateTenantUserRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<UpdateTenantUserRequest*>(&to_msg);
+  auto& from = static_cast<const UpdateTenantUserRequest&>(from_msg);
+  ::google::protobuf::Arena* arena = _this->GetArena();
+  // @@protoc_insertion_point(class_specific_merge_from_start:kentik.mkp.v202407.UpdateTenantUserRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(from._impl_.user_ != nullptr);
+    if (_this->_impl_.user_ == nullptr) {
+      _this->_impl_.user_ =
+          ::google::protobuf::Message::CopyConstruct<::kentik::mkp::v202407::TenantUser>(arena, *from._impl_.user_);
+    } else {
+      _this->_impl_.user_->MergeFrom(*from._impl_.user_);
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void UpdateTenantUserRequest::CopyFrom(const UpdateTenantUserRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.mkp.v202407.UpdateTenantUserRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void UpdateTenantUserRequest::InternalSwap(UpdateTenantUserRequest* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  swap(_impl_.user_, other->_impl_.user_);
+}
+
+::google::protobuf::Metadata UpdateTenantUserRequest::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class UpdateTenantUserResponse::_Internal {
+ public:
+  using HasBits =
+      decltype(std::declval<UpdateTenantUserResponse>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(UpdateTenantUserResponse, _impl_._has_bits_);
+};
+
+UpdateTenantUserResponse::UpdateTenantUserResponse(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.mkp.v202407.UpdateTenantUserResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE UpdateTenantUserResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::kentik::mkp::v202407::UpdateTenantUserResponse& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
+
+UpdateTenantUserResponse::UpdateTenantUserResponse(
+    ::google::protobuf::Arena* arena,
+    const UpdateTenantUserResponse& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  UpdateTenantUserResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.user_ = (cached_has_bits & 0x00000001u) ? ::google::protobuf::Message::CopyConstruct<::kentik::mkp::v202407::TenantUser>(
+                              arena, *from._impl_.user_)
+                        : nullptr;
+
+  // @@protoc_insertion_point(copy_constructor:kentik.mkp.v202407.UpdateTenantUserResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE UpdateTenantUserResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void UpdateTenantUserResponse::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.user_ = {};
+}
+UpdateTenantUserResponse::~UpdateTenantUserResponse() {
+  // @@protoc_insertion_point(destructor:kentik.mkp.v202407.UpdateTenantUserResponse)
+  SharedDtor(*this);
+}
+inline void UpdateTenantUserResponse::SharedDtor(MessageLite& self) {
+  UpdateTenantUserResponse& this_ = static_cast<UpdateTenantUserResponse&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  delete this_._impl_.user_;
+  this_._impl_.~Impl_();
+}
+
+inline void* UpdateTenantUserResponse::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) UpdateTenantUserResponse(arena);
+}
+constexpr auto UpdateTenantUserResponse::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(UpdateTenantUserResponse),
+                                            alignof(UpdateTenantUserResponse));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull UpdateTenantUserResponse::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_UpdateTenantUserResponse_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &UpdateTenantUserResponse::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<UpdateTenantUserResponse>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &UpdateTenantUserResponse::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<UpdateTenantUserResponse>(), &UpdateTenantUserResponse::ByteSizeLong,
+            &UpdateTenantUserResponse::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(UpdateTenantUserResponse, _impl_._cached_size_),
+        false,
+    },
+    &UpdateTenantUserResponse::kDescriptorMethods,
+    &descriptor_table_kentik_2fmkp_2fv202407_2fmkp_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* UpdateTenantUserResponse::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2> UpdateTenantUserResponse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(UpdateTenantUserResponse, _impl_._has_bits_),
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::mkp::v202407::UpdateTenantUserResponse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // .kentik.mkp.v202407.TenantUser user = 1 [json_name = "user"];
+    {::_pbi::TcParser::FastMtS1,
+     {10, 0, 0, PROTOBUF_FIELD_OFFSET(UpdateTenantUserResponse, _impl_.user_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .kentik.mkp.v202407.TenantUser user = 1 [json_name = "user"];
+    {PROTOBUF_FIELD_OFFSET(UpdateTenantUserResponse, _impl_.user_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::kentik::mkp::v202407::TenantUser>()},
+  }}, {{
+  }},
+};
+
+PROTOBUF_NOINLINE void UpdateTenantUserResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.mkp.v202407.UpdateTenantUserResponse)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.user_ != nullptr);
+    _impl_.user_->Clear();
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* UpdateTenantUserResponse::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const UpdateTenantUserResponse& this_ = static_cast<const UpdateTenantUserResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* UpdateTenantUserResponse::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const UpdateTenantUserResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:kentik.mkp.v202407.UpdateTenantUserResponse)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          cached_has_bits = this_._impl_._has_bits_[0];
+          // .kentik.mkp.v202407.TenantUser user = 1 [json_name = "user"];
+          if (cached_has_bits & 0x00000001u) {
+            target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                1, *this_._impl_.user_, this_._impl_.user_->GetCachedSize(), target,
+                stream);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:kentik.mkp.v202407.UpdateTenantUserResponse)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t UpdateTenantUserResponse::ByteSizeLong(const MessageLite& base) {
+          const UpdateTenantUserResponse& this_ = static_cast<const UpdateTenantUserResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t UpdateTenantUserResponse::ByteSizeLong() const {
+          const UpdateTenantUserResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:kentik.mkp.v202407.UpdateTenantUserResponse)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+           {
+            // .kentik.mkp.v202407.TenantUser user = 1 [json_name = "user"];
+            cached_has_bits = this_._impl_._has_bits_[0];
+            if (cached_has_bits & 0x00000001u) {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.user_);
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void UpdateTenantUserResponse::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<UpdateTenantUserResponse*>(&to_msg);
+  auto& from = static_cast<const UpdateTenantUserResponse&>(from_msg);
+  ::google::protobuf::Arena* arena = _this->GetArena();
+  // @@protoc_insertion_point(class_specific_merge_from_start:kentik.mkp.v202407.UpdateTenantUserResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(from._impl_.user_ != nullptr);
+    if (_this->_impl_.user_ == nullptr) {
+      _this->_impl_.user_ =
+          ::google::protobuf::Message::CopyConstruct<::kentik::mkp::v202407::TenantUser>(arena, *from._impl_.user_);
+    } else {
+      _this->_impl_.user_->MergeFrom(*from._impl_.user_);
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void UpdateTenantUserResponse::CopyFrom(const UpdateTenantUserResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.mkp.v202407.UpdateTenantUserResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void UpdateTenantUserResponse::InternalSwap(UpdateTenantUserResponse* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  swap(_impl_.user_, other->_impl_.user_);
+}
+
+::google::protobuf::Metadata UpdateTenantUserResponse::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class DeleteTenantUserRequest::_Internal {
+ public:
+};
+
+DeleteTenantUserRequest::DeleteTenantUserRequest(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.mkp.v202407.DeleteTenantUserRequest)
+}
+inline PROTOBUF_NDEBUG_INLINE DeleteTenantUserRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::kentik::mkp::v202407::DeleteTenantUserRequest& from_msg)
+      : tenant_id_(arena, from.tenant_id_),
+        id_(arena, from.id_),
+        _cached_size_{0} {}
+
+DeleteTenantUserRequest::DeleteTenantUserRequest(
+    ::google::protobuf::Arena* arena,
+    const DeleteTenantUserRequest& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  DeleteTenantUserRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+
+  // @@protoc_insertion_point(copy_constructor:kentik.mkp.v202407.DeleteTenantUserRequest)
+}
+inline PROTOBUF_NDEBUG_INLINE DeleteTenantUserRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : tenant_id_(arena),
+        id_(arena),
+        _cached_size_{0} {}
+
+inline void DeleteTenantUserRequest::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+}
+DeleteTenantUserRequest::~DeleteTenantUserRequest() {
+  // @@protoc_insertion_point(destructor:kentik.mkp.v202407.DeleteTenantUserRequest)
+  SharedDtor(*this);
+}
+inline void DeleteTenantUserRequest::SharedDtor(MessageLite& self) {
+  DeleteTenantUserRequest& this_ = static_cast<DeleteTenantUserRequest&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.tenant_id_.Destroy();
+  this_._impl_.id_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* DeleteTenantUserRequest::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) DeleteTenantUserRequest(arena);
+}
+constexpr auto DeleteTenantUserRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(DeleteTenantUserRequest),
+                                            alignof(DeleteTenantUserRequest));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull DeleteTenantUserRequest::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_DeleteTenantUserRequest_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &DeleteTenantUserRequest::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<DeleteTenantUserRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &DeleteTenantUserRequest::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<DeleteTenantUserRequest>(), &DeleteTenantUserRequest::ByteSizeLong,
+            &DeleteTenantUserRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(DeleteTenantUserRequest, _impl_._cached_size_),
+        false,
+    },
+    &DeleteTenantUserRequest::kDescriptorMethods,
+    &descriptor_table_kentik_2fmkp_2fv202407_2fmkp_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* DeleteTenantUserRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 62, 2> DeleteTenantUserRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::mkp::v202407::DeleteTenantUserRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // string id = 2 [json_name = "id"];
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(DeleteTenantUserRequest, _impl_.id_)}},
+    // string tenant_id = 1 [json_name = "tenantId"];
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(DeleteTenantUserRequest, _impl_.tenant_id_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string tenant_id = 1 [json_name = "tenantId"];
+    {PROTOBUF_FIELD_OFFSET(DeleteTenantUserRequest, _impl_.tenant_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string id = 2 [json_name = "id"];
+    {PROTOBUF_FIELD_OFFSET(DeleteTenantUserRequest, _impl_.id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\52\11\2\0\0\0\0\0"
+    "kentik.mkp.v202407.DeleteTenantUserRequest"
+    "tenant_id"
+    "id"
+  }},
+};
+
+PROTOBUF_NOINLINE void DeleteTenantUserRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.mkp.v202407.DeleteTenantUserRequest)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.tenant_id_.ClearToEmpty();
+  _impl_.id_.ClearToEmpty();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* DeleteTenantUserRequest::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const DeleteTenantUserRequest& this_ = static_cast<const DeleteTenantUserRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* DeleteTenantUserRequest::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const DeleteTenantUserRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:kentik.mkp.v202407.DeleteTenantUserRequest)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // string tenant_id = 1 [json_name = "tenantId"];
+          if (!this_._internal_tenant_id().empty()) {
+            const std::string& _s = this_._internal_tenant_id();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.mkp.v202407.DeleteTenantUserRequest.tenant_id");
+            target = stream->WriteStringMaybeAliased(1, _s, target);
+          }
+
+          // string id = 2 [json_name = "id"];
+          if (!this_._internal_id().empty()) {
+            const std::string& _s = this_._internal_id();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.mkp.v202407.DeleteTenantUserRequest.id");
+            target = stream->WriteStringMaybeAliased(2, _s, target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:kentik.mkp.v202407.DeleteTenantUserRequest)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t DeleteTenantUserRequest::ByteSizeLong(const MessageLite& base) {
+          const DeleteTenantUserRequest& this_ = static_cast<const DeleteTenantUserRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t DeleteTenantUserRequest::ByteSizeLong() const {
+          const DeleteTenantUserRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:kentik.mkp.v202407.DeleteTenantUserRequest)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // string tenant_id = 1 [json_name = "tenantId"];
+            if (!this_._internal_tenant_id().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_tenant_id());
+            }
+            // string id = 2 [json_name = "id"];
+            if (!this_._internal_id().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_id());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void DeleteTenantUserRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<DeleteTenantUserRequest*>(&to_msg);
+  auto& from = static_cast<const DeleteTenantUserRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:kentik.mkp.v202407.DeleteTenantUserRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_tenant_id().empty()) {
+    _this->_internal_set_tenant_id(from._internal_tenant_id());
+  }
+  if (!from._internal_id().empty()) {
+    _this->_internal_set_id(from._internal_id());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void DeleteTenantUserRequest::CopyFrom(const DeleteTenantUserRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.mkp.v202407.DeleteTenantUserRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void DeleteTenantUserRequest::InternalSwap(DeleteTenantUserRequest* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.tenant_id_, &other->_impl_.tenant_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.id_, &other->_impl_.id_, arena);
+}
+
+::google::protobuf::Metadata DeleteTenantUserRequest::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class DeleteTenantUserResponse::_Internal {
+ public:
+};
+
+DeleteTenantUserResponse::DeleteTenantUserResponse(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(arena_constructor:kentik.mkp.v202407.DeleteTenantUserResponse)
+}
+DeleteTenantUserResponse::DeleteTenantUserResponse(
+    ::google::protobuf::Arena* arena,
+    const DeleteTenantUserResponse& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  DeleteTenantUserResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+
+  // @@protoc_insertion_point(copy_constructor:kentik.mkp.v202407.DeleteTenantUserResponse)
+}
+
+inline void* DeleteTenantUserResponse::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) DeleteTenantUserResponse(arena);
+}
+constexpr auto DeleteTenantUserResponse::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(DeleteTenantUserResponse),
+                                            alignof(DeleteTenantUserResponse));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull DeleteTenantUserResponse::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_DeleteTenantUserResponse_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &DeleteTenantUserResponse::MergeImpl,
+        ::google::protobuf::internal::ZeroFieldsBase::GetNewImpl<DeleteTenantUserResponse>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &DeleteTenantUserResponse::SharedDtor,
+        ::google::protobuf::internal::ZeroFieldsBase::GetClearImpl<DeleteTenantUserResponse>(), &DeleteTenantUserResponse::ByteSizeLong,
+            &DeleteTenantUserResponse::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(DeleteTenantUserResponse, _impl_._cached_size_),
+        false,
+    },
+    &DeleteTenantUserResponse::kDescriptorMethods,
+    &descriptor_table_kentik_2fmkp_2fv202407_2fmkp_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* DeleteTenantUserResponse::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 0, 0, 0, 2> DeleteTenantUserResponse::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    0, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967295,  // skipmap
+    offsetof(decltype(_table_), field_names),  // no field_entries
+    0,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::mkp::v202407::DeleteTenantUserResponse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }},
+  // no field_entries, or aux_entries
+  {{
+  }},
+};
+
+
+
+
+
+
+
+
+::google::protobuf::Metadata DeleteTenantUserResponse::GetMetadata() const {
   return ::google::protobuf::internal::ZeroFieldsBase::GetMetadataImpl(GetClassData()->full());
 }
 // @@protoc_insertion_point(namespace_scope)

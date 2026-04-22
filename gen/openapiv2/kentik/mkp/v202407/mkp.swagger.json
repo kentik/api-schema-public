@@ -15,6 +15,9 @@
     },
     {
       "name": "TenantService"
+    },
+    {
+      "name": "TenantUserService"
     }
   ],
   "schemes": [
@@ -340,6 +343,161 @@
           "TenantService"
         ]
       }
+    },
+    "/mkp/v202407/tenants/{tenantId}/users": {
+      "get": {
+        "summary": "List users for a tenant.",
+        "description": "Returns a list of users associated with the specified tenant.",
+        "operationId": "TenantUserList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202407ListTenantUserResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "TenantUserService"
+        ]
+      },
+      "post": {
+        "summary": "Add a user to a tenant.",
+        "description": "Creates a user association with the specified tenant.",
+        "operationId": "TenantUserCreate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202407CreateTenantUserResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "tenantId",
+            "description": "Unique identifier of the tenant the user belongs to",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TenantUserServiceCreateTenantUserBody"
+            }
+          }
+        ],
+        "tags": [
+          "TenantUserService"
+        ]
+      }
+    },
+    "/mkp/v202407/tenants/{tenantId}/users/{id}": {
+      "delete": {
+        "summary": "Remove a user from a tenant.",
+        "description": "Deletes the user association with the specified tenant.",
+        "operationId": "TenantUserDelete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202407DeleteTenantUserResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "TenantUserService"
+        ]
+      },
+      "put": {
+        "summary": "Update a tenant user.",
+        "description": "Updates the user associated with the specified tenant and user ID.",
+        "operationId": "TenantUserUpdate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202407UpdateTenantUserResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "tenantId",
+            "description": "Unique identifier of the tenant the user belongs to",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "description": "Unique system assigned identifier of the user",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TenantUserServiceUpdateTenantUserBody"
+            }
+          }
+        ],
+        "tags": [
+          "TenantUserService"
+        ]
+      }
     }
   },
   "definitions": {
@@ -517,7 +675,7 @@
               "type": "array",
               "items": {
                 "type": "object",
-                "$ref": "#/definitions/v202211User"
+                "$ref": "#/definitions/v202407TenantUser"
               },
               "description": "Users associated with the tenant.",
               "readOnly": true
@@ -532,6 +690,59 @@
         }
       },
       "title": "UpdateTenantRequest"
+    },
+    "TenantUserServiceCreateTenantUserBody": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Unique system assigned identifier of the user",
+              "readOnly": true
+            },
+            "userFullName": {
+              "type": "string",
+              "description": "Full name of the user"
+            },
+            "userEmail": {
+              "type": "string",
+              "description": "Email address of the user"
+            }
+          },
+          "title": "TenantUser"
+        }
+      },
+      "title": "CreateTenantUserRequest",
+      "required": [
+        "userFullName",
+        "userEmail"
+      ]
+    },
+    "TenantUserServiceUpdateTenantUserBody": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "type": "object",
+          "properties": {
+            "userFullName": {
+              "type": "string",
+              "description": "Full name of the user"
+            },
+            "userEmail": {
+              "type": "string",
+              "description": "Email address of the user"
+            }
+          },
+          "title": "TenantUser"
+        }
+      },
+      "title": "UpdateTenantUserRequest",
+      "required": [
+        "userFullName",
+        "userEmail"
+      ]
     },
     "protobufAny": {
       "type": "object",
@@ -560,138 +771,6 @@
           }
         }
       }
-    },
-    "v202211LandingType": {
-      "type": "string",
-      "enum": [
-        "LANDING_TYPE_UNSPECIFIED",
-        "LANDING_TYPE_LOCAL",
-        "LANDING_TYPE_OBSERVATION_DECK",
-        "LANDING_TYPE_NMS_DASHBOARD",
-        "LANDING_TYPE_NETWORK_EXPLORER",
-        "LANDING_TYPE_LIBRARY",
-        "LANDING_TYPE_SYNTHETICS",
-        "LANDING_TYPE_EXPLORER",
-        "LANDING_TYPE_ALERTING",
-        "LANDING_TYPE_INSIGHTS",
-        "LANDING_TYPE_DASHBOARD",
-        "LANDING_TYPE_SAVED_VIEW",
-        "LANDING_TYPE_QUICK_VIEW",
-        "LANDING_TYPE_MARKET_INTELLIGENCE"
-      ],
-      "default": "LANDING_TYPE_UNSPECIFIED",
-      "title": "LandingType"
-    },
-    "v202211PermissionEntry": {
-      "type": "object",
-      "properties": {
-        "capability": {
-          "type": "string",
-          "description": "String identifying capability that is granted of denied"
-        },
-        "allowed": {
-          "type": "boolean",
-          "description": "Flag indicating whether operation is allowed"
-        }
-      },
-      "title": "PermissionEntry",
-      "required": [
-        "capability",
-        "allowed"
-      ]
-    },
-    "v202211Role": {
-      "type": "string",
-      "enum": [
-        "ROLE_UNSPECIFIED",
-        "ROLE_MEMBER",
-        "ROLE_ADMINISTRATOR",
-        "ROLE_SUPER_ADMINISTRATOR"
-      ],
-      "default": "ROLE_UNSPECIFIED",
-      "description": "- ROLE_UNSPECIFIED: Invalid value.\n - ROLE_MEMBER: Member\n - ROLE_ADMINISTRATOR: Administrator\n - ROLE_SUPER_ADMINISTRATOR: Super-administrator",
-      "title": "Role"
-    },
-    "v202211User": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "System generated unique identifier",
-          "readOnly": true
-        },
-        "userEmail": {
-          "type": "string",
-          "description": "User e-mail address (serves also as username)"
-        },
-        "userFullName": {
-          "type": "string",
-          "description": "Full name"
-        },
-        "role": {
-          "$ref": "#/definitions/v202211Role",
-          "description": "Legacy user level."
-        },
-        "permissions": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/v202211PermissionEntry"
-          },
-          "description": "Legacy permissions granted to the user (deprecated, use rbac roles and role-sets)",
-          "readOnly": true
-        },
-        "filter": {
-          "type": "string",
-          "description": "Optional JSON string defining filter for objects visible to the user"
-        },
-        "lastLogin": {
-          "type": "string",
-          "format": "date-time",
-          "description": "UTC Timestamp of user's last login session",
-          "readOnly": true
-        },
-        "cdate": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Creation timestamp (UTC)",
-          "readOnly": true
-        },
-        "edate": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Last modification timestamp (UTC)",
-          "readOnly": true
-        },
-        "defaultLandingPageType": {
-          "$ref": "#/definitions/v202211LandingType",
-          "description": "Landing Page for user."
-        },
-        "defaultLandingPageValue": {
-          "type": "string",
-          "description": "Specific landing page applies to Dashboard, Quick View, and Saved View"
-        },
-        "roles": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "List of RBAC roles."
-        },
-        "roleSets": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "List of RBAC role sets."
-        }
-      },
-      "title": "User",
-      "required": [
-        "userEmail",
-        "userFullName",
-        "role"
-      ]
     },
     "v202407Activate": {
       "type": "object",
@@ -824,6 +903,15 @@
       },
       "title": "CreateTenantResponse"
     },
+    "v202407CreateTenantUserResponse": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/v202407TenantUser"
+        }
+      },
+      "title": "CreateTenantUserResponse"
+    },
     "v202407CustomDimension": {
       "type": "object",
       "properties": {
@@ -843,6 +931,10 @@
     "v202407DeleteTenantResponse": {
       "type": "object",
       "title": "DeleteTenantResponse"
+    },
+    "v202407DeleteTenantUserResponse": {
+      "type": "object",
+      "title": "DeleteTenantUserResponse"
     },
     "v202407Devices": {
       "type": "object",
@@ -993,6 +1085,23 @@
         }
       },
       "title": "ListTenantResponse"
+    },
+    "v202407ListTenantUserResponse": {
+      "type": "object",
+      "properties": {
+        "users": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v202407TenantUser"
+          }
+        },
+        "invalidCount": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "ListTenantUserResponse"
     },
     "v202407Mitigation": {
       "type": "object",
@@ -1208,7 +1317,7 @@
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/v202211User"
+            "$ref": "#/definitions/v202407TenantUser"
           },
           "description": "Users associated with the tenant.",
           "readOnly": true
@@ -1235,6 +1344,34 @@
         }
       },
       "title": "TenantLink"
+    },
+    "v202407TenantUser": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique system assigned identifier of the user",
+          "readOnly": true
+        },
+        "tenantId": {
+          "type": "string",
+          "description": "Unique identifier of the tenant the user belongs to"
+        },
+        "userFullName": {
+          "type": "string",
+          "description": "Full name of the user"
+        },
+        "userEmail": {
+          "type": "string",
+          "description": "Email address of the user"
+        }
+      },
+      "title": "TenantUser",
+      "required": [
+        "tenantId",
+        "userFullName",
+        "userEmail"
+      ]
     },
     "v202407Threshold": {
       "type": "object",
@@ -1298,6 +1435,15 @@
         }
       },
       "title": "UpdateTenantResponse"
+    },
+    "v202407UpdateTenantUserResponse": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/v202407TenantUser"
+        }
+      },
+      "title": "UpdateTenantUserResponse"
     }
   },
   "securityDefinitions": {

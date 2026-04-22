@@ -289,6 +289,35 @@ message Filter {
 }
 
 // {{.Name}}
+message TenantUser {
+  string id = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Unique system assigned identifier of the user"
+    }
+  ];
+  string tenant_id = 2 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Unique identifier of the tenant the user belongs to"
+    }
+  ];
+  string user_full_name = 3 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Full name of the user"
+    }
+  ];
+  string user_email = 4 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Email address of the user"
+    }
+  ];
+}
+
+
+// {{.Name}}
 message Tenant {
   string id = 1 [
     (google.api.field_behavior) = OUTPUT_ONLY,
@@ -387,7 +416,7 @@ message Tenant {
       description: "Packages associated with the tenant."
     }
   ];
-  repeated kentik.user.v202211.User users = 17 [
+  repeated TenantUser users = 17 [
     (google.api.field_behavior) = OUTPUT_ONLY,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Users associated with the tenant."
@@ -617,5 +646,96 @@ service TenantService {
       description: "Deletes the tenant specified with id."
     };
   }
+}
 
+// {{.Name}}
+message ListTenantUserRequest {
+  string tenant_id = 1;
+}
+// {{.Name}}
+message ListTenantUserResponse {
+  repeated TenantUser users = 1;
+  uint32 invalid_count = 2;
+}
+
+// {{.Name}}
+message CreateTenantUserRequest {
+  TenantUser user = 1;
+}
+// {{.Name}}
+message CreateTenantUserResponse {
+  TenantUser user = 1;
+}
+
+// {{.Name}}
+message UpdateTenantUserRequest {
+  TenantUser user = 1;
+}
+// {{.Name}}
+message UpdateTenantUserResponse {
+  TenantUser user = 1;
+}
+
+// {{.Name}}
+message DeleteTenantUserRequest {
+  string tenant_id = 1;
+  string id = 2;
+}
+// {{.Name}}
+message DeleteTenantUserResponse {}
+
+service TenantUserService {
+  option (google.api.default_host) = "mkp.api.kentik.com";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "admin.mkp";
+
+  rpc ListTenantUser(ListTenantUserRequest) returns (ListTenantUserResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.mkp:read";
+    option (google.api.http) = {
+      get: "/mkp/v202407/tenants/{tenant_id}/users"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "TenantUserList"
+      summary: "List users for a tenant."
+      description: "Returns a list of users associated with the specified tenant."
+    };
+  }
+
+  rpc CreateTenantUser(CreateTenantUserRequest) returns (CreateTenantUserResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.mkp:write";
+    option (google.api.http) = {
+      post: "/mkp/v202407/tenants/{user.tenant_id}/users"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "TenantUserCreate"
+      summary: "Add a user to a tenant."
+      description: "Creates a user association with the specified tenant."
+    };
+  }
+
+  rpc UpdateTenantUser(UpdateTenantUserRequest) returns (UpdateTenantUserResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.mkp:write";
+    option (google.api.http) = {
+      put: "/mkp/v202407/tenants/{user.tenant_id}/users/{user.id}"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "TenantUserUpdate"
+      summary: "Update a tenant user."
+      description: "Updates the user associated with the specified tenant and user ID."
+    };
+  }
+
+  rpc DeleteTenantUser(DeleteTenantUserRequest) returns (DeleteTenantUserResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.mkp:write";
+    option (google.api.http) = {
+      delete: "/mkp/v202407/tenants/{tenant_id}/users/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "TenantUserDelete"
+      summary: "Remove a user from a tenant."
+      description: "Deletes the user association with the specified tenant."
+    };
+  }
 }

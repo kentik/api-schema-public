@@ -11,7 +11,7 @@ package mkp
 import (
 	_ "github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2/options"
 	_ "github.com/kentik/api-schema-public/gen/go/kentik/core/v202303"
-	v202211 "github.com/kentik/api-schema-public/gen/go/kentik/user/v202211"
+	_ "github.com/kentik/api-schema-public/gen/go/kentik/user/v202211"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
@@ -1085,6 +1085,75 @@ func (x *Filter) GetMetric() []string {
 }
 
 // {{.Name}}
+type TenantUser struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	UserFullName  string                 `protobuf:"bytes,3,opt,name=user_full_name,json=userFullName,proto3" json:"user_full_name,omitempty"`
+	UserEmail     string                 `protobuf:"bytes,4,opt,name=user_email,json=userEmail,proto3" json:"user_email,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TenantUser) Reset() {
+	*x = TenantUser{}
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TenantUser) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TenantUser) ProtoMessage() {}
+
+func (x *TenantUser) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TenantUser.ProtoReflect.Descriptor instead.
+func (*TenantUser) Descriptor() ([]byte, []int) {
+	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *TenantUser) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *TenantUser) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *TenantUser) GetUserFullName() string {
+	if x != nil {
+		return x.UserFullName
+	}
+	return ""
+}
+
+func (x *TenantUser) GetUserEmail() string {
+	if x != nil {
+		return x.UserEmail
+	}
+	return ""
+}
+
+// {{.Name}}
 type Tenant struct {
 	state       protoimpl.MessageState `protogen:"open.v1"`
 	Id          string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -1104,7 +1173,7 @@ type Tenant struct {
 	InterfaceName    string             `protobuf:"bytes,13,opt,name=interface_name,json=interfaceName,proto3" json:"interface_name,omitempty"`
 	SnmpAlias        string             `protobuf:"bytes,14,opt,name=snmp_alias,json=snmpAlias,proto3" json:"snmp_alias,omitempty"`
 	Packages         []*Package         `protobuf:"bytes,16,rep,name=packages,proto3" json:"packages,omitempty"`
-	Users            []*v202211.User    `protobuf:"bytes,17,rep,name=users,proto3" json:"users,omitempty"`
+	Users            []*TenantUser      `protobuf:"bytes,17,rep,name=users,proto3" json:"users,omitempty"`
 	TemplateId       string             `protobuf:"bytes,18,opt,name=template_id,json=templateId,proto3" json:"template_id,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
@@ -1112,7 +1181,7 @@ type Tenant struct {
 
 func (x *Tenant) Reset() {
 	*x = Tenant{}
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[13]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1124,7 +1193,7 @@ func (x *Tenant) String() string {
 func (*Tenant) ProtoMessage() {}
 
 func (x *Tenant) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[13]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1137,7 +1206,7 @@ func (x *Tenant) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Tenant.ProtoReflect.Descriptor instead.
 func (*Tenant) Descriptor() ([]byte, []int) {
-	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{13}
+	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *Tenant) GetId() string {
@@ -1252,7 +1321,7 @@ func (x *Tenant) GetPackages() []*Package {
 	return nil
 }
 
-func (x *Tenant) GetUsers() []*v202211.User {
+func (x *Tenant) GetUsers() []*TenantUser {
 	if x != nil {
 		return x.Users
 	}
@@ -1275,7 +1344,7 @@ type ListPackageRequest struct {
 
 func (x *ListPackageRequest) Reset() {
 	*x = ListPackageRequest{}
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[14]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1287,7 +1356,7 @@ func (x *ListPackageRequest) String() string {
 func (*ListPackageRequest) ProtoMessage() {}
 
 func (x *ListPackageRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[14]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1300,7 +1369,7 @@ func (x *ListPackageRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListPackageRequest.ProtoReflect.Descriptor instead.
 func (*ListPackageRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{14}
+	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{15}
 }
 
 // {{.Name}}
@@ -1315,7 +1384,7 @@ type ListPackageResponse struct {
 
 func (x *ListPackageResponse) Reset() {
 	*x = ListPackageResponse{}
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[15]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1327,7 +1396,7 @@ func (x *ListPackageResponse) String() string {
 func (*ListPackageResponse) ProtoMessage() {}
 
 func (x *ListPackageResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[15]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1340,7 +1409,7 @@ func (x *ListPackageResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListPackageResponse.ProtoReflect.Descriptor instead.
 func (*ListPackageResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{15}
+	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *ListPackageResponse) GetPackages() []*Package {
@@ -1367,7 +1436,7 @@ type GetPackageRequest struct {
 
 func (x *GetPackageRequest) Reset() {
 	*x = GetPackageRequest{}
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[16]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1379,7 +1448,7 @@ func (x *GetPackageRequest) String() string {
 func (*GetPackageRequest) ProtoMessage() {}
 
 func (x *GetPackageRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[16]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1392,7 +1461,7 @@ func (x *GetPackageRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPackageRequest.ProtoReflect.Descriptor instead.
 func (*GetPackageRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{16}
+	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *GetPackageRequest) GetId() string {
@@ -1412,7 +1481,7 @@ type GetPackageResponse struct {
 
 func (x *GetPackageResponse) Reset() {
 	*x = GetPackageResponse{}
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[17]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1424,7 +1493,7 @@ func (x *GetPackageResponse) String() string {
 func (*GetPackageResponse) ProtoMessage() {}
 
 func (x *GetPackageResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[17]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1437,7 +1506,7 @@ func (x *GetPackageResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPackageResponse.ProtoReflect.Descriptor instead.
 func (*GetPackageResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{17}
+	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *GetPackageResponse) GetPackage() *Package {
@@ -1457,7 +1526,7 @@ type CreatePackageRequest struct {
 
 func (x *CreatePackageRequest) Reset() {
 	*x = CreatePackageRequest{}
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[18]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1469,7 +1538,7 @@ func (x *CreatePackageRequest) String() string {
 func (*CreatePackageRequest) ProtoMessage() {}
 
 func (x *CreatePackageRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[18]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1482,7 +1551,7 @@ func (x *CreatePackageRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreatePackageRequest.ProtoReflect.Descriptor instead.
 func (*CreatePackageRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{18}
+	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *CreatePackageRequest) GetPackage() *Package {
@@ -1502,7 +1571,7 @@ type CreatePackageResponse struct {
 
 func (x *CreatePackageResponse) Reset() {
 	*x = CreatePackageResponse{}
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[19]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1514,7 +1583,7 @@ func (x *CreatePackageResponse) String() string {
 func (*CreatePackageResponse) ProtoMessage() {}
 
 func (x *CreatePackageResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[19]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1527,7 +1596,7 @@ func (x *CreatePackageResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreatePackageResponse.ProtoReflect.Descriptor instead.
 func (*CreatePackageResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{19}
+	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *CreatePackageResponse) GetPackage() *Package {
@@ -1547,7 +1616,7 @@ type UpdatePackageRequest struct {
 
 func (x *UpdatePackageRequest) Reset() {
 	*x = UpdatePackageRequest{}
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[20]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1559,7 +1628,7 @@ func (x *UpdatePackageRequest) String() string {
 func (*UpdatePackageRequest) ProtoMessage() {}
 
 func (x *UpdatePackageRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[20]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1572,7 +1641,7 @@ func (x *UpdatePackageRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdatePackageRequest.ProtoReflect.Descriptor instead.
 func (*UpdatePackageRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{20}
+	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *UpdatePackageRequest) GetPackage() *Package {
@@ -1592,7 +1661,7 @@ type UpdatePackageResponse struct {
 
 func (x *UpdatePackageResponse) Reset() {
 	*x = UpdatePackageResponse{}
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[21]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1604,7 +1673,7 @@ func (x *UpdatePackageResponse) String() string {
 func (*UpdatePackageResponse) ProtoMessage() {}
 
 func (x *UpdatePackageResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[21]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1617,7 +1686,7 @@ func (x *UpdatePackageResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdatePackageResponse.ProtoReflect.Descriptor instead.
 func (*UpdatePackageResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{21}
+	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *UpdatePackageResponse) GetPackage() *Package {
@@ -1637,7 +1706,7 @@ type DeletePackageRequest struct {
 
 func (x *DeletePackageRequest) Reset() {
 	*x = DeletePackageRequest{}
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[22]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1649,7 +1718,7 @@ func (x *DeletePackageRequest) String() string {
 func (*DeletePackageRequest) ProtoMessage() {}
 
 func (x *DeletePackageRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[22]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1662,7 +1731,7 @@ func (x *DeletePackageRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeletePackageRequest.ProtoReflect.Descriptor instead.
 func (*DeletePackageRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{22}
+	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *DeletePackageRequest) GetId() string {
@@ -1681,7 +1750,7 @@ type DeletePackageResponse struct {
 
 func (x *DeletePackageResponse) Reset() {
 	*x = DeletePackageResponse{}
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[23]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1693,7 +1762,7 @@ func (x *DeletePackageResponse) String() string {
 func (*DeletePackageResponse) ProtoMessage() {}
 
 func (x *DeletePackageResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[23]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1706,7 +1775,7 @@ func (x *DeletePackageResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeletePackageResponse.ProtoReflect.Descriptor instead.
 func (*DeletePackageResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{23}
+	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{24}
 }
 
 // {{.Name}}
@@ -1718,7 +1787,7 @@ type ListTenantRequest struct {
 
 func (x *ListTenantRequest) Reset() {
 	*x = ListTenantRequest{}
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[24]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1730,7 +1799,7 @@ func (x *ListTenantRequest) String() string {
 func (*ListTenantRequest) ProtoMessage() {}
 
 func (x *ListTenantRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[24]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1743,7 +1812,7 @@ func (x *ListTenantRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListTenantRequest.ProtoReflect.Descriptor instead.
 func (*ListTenantRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{24}
+	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{25}
 }
 
 // {{.Name}}
@@ -1757,7 +1826,7 @@ type ListTenantResponse struct {
 
 func (x *ListTenantResponse) Reset() {
 	*x = ListTenantResponse{}
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[25]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1769,7 +1838,7 @@ func (x *ListTenantResponse) String() string {
 func (*ListTenantResponse) ProtoMessage() {}
 
 func (x *ListTenantResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[25]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1782,7 +1851,7 @@ func (x *ListTenantResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListTenantResponse.ProtoReflect.Descriptor instead.
 func (*ListTenantResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{25}
+	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *ListTenantResponse) GetTenants() []*Tenant {
@@ -1809,7 +1878,7 @@ type GetTenantRequest struct {
 
 func (x *GetTenantRequest) Reset() {
 	*x = GetTenantRequest{}
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[26]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1821,7 +1890,7 @@ func (x *GetTenantRequest) String() string {
 func (*GetTenantRequest) ProtoMessage() {}
 
 func (x *GetTenantRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[26]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1834,7 +1903,7 @@ func (x *GetTenantRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTenantRequest.ProtoReflect.Descriptor instead.
 func (*GetTenantRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{26}
+	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *GetTenantRequest) GetId() string {
@@ -1854,7 +1923,7 @@ type GetTenantResponse struct {
 
 func (x *GetTenantResponse) Reset() {
 	*x = GetTenantResponse{}
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[27]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1866,7 +1935,7 @@ func (x *GetTenantResponse) String() string {
 func (*GetTenantResponse) ProtoMessage() {}
 
 func (x *GetTenantResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[27]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1879,7 +1948,7 @@ func (x *GetTenantResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTenantResponse.ProtoReflect.Descriptor instead.
 func (*GetTenantResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{27}
+	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *GetTenantResponse) GetTenant() *Tenant {
@@ -1899,7 +1968,7 @@ type CreateTenantRequest struct {
 
 func (x *CreateTenantRequest) Reset() {
 	*x = CreateTenantRequest{}
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[28]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1911,7 +1980,7 @@ func (x *CreateTenantRequest) String() string {
 func (*CreateTenantRequest) ProtoMessage() {}
 
 func (x *CreateTenantRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[28]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1924,7 +1993,7 @@ func (x *CreateTenantRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateTenantRequest.ProtoReflect.Descriptor instead.
 func (*CreateTenantRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{28}
+	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *CreateTenantRequest) GetTenant() *Tenant {
@@ -1944,7 +2013,7 @@ type CreateTenantResponse struct {
 
 func (x *CreateTenantResponse) Reset() {
 	*x = CreateTenantResponse{}
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[29]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1956,7 +2025,7 @@ func (x *CreateTenantResponse) String() string {
 func (*CreateTenantResponse) ProtoMessage() {}
 
 func (x *CreateTenantResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[29]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1969,7 +2038,7 @@ func (x *CreateTenantResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateTenantResponse.ProtoReflect.Descriptor instead.
 func (*CreateTenantResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{29}
+	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *CreateTenantResponse) GetTenant() *Tenant {
@@ -1989,7 +2058,7 @@ type UpdateTenantRequest struct {
 
 func (x *UpdateTenantRequest) Reset() {
 	*x = UpdateTenantRequest{}
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[30]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2001,7 +2070,7 @@ func (x *UpdateTenantRequest) String() string {
 func (*UpdateTenantRequest) ProtoMessage() {}
 
 func (x *UpdateTenantRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[30]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2014,7 +2083,7 @@ func (x *UpdateTenantRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateTenantRequest.ProtoReflect.Descriptor instead.
 func (*UpdateTenantRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{30}
+	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *UpdateTenantRequest) GetTenant() *Tenant {
@@ -2034,7 +2103,7 @@ type UpdateTenantResponse struct {
 
 func (x *UpdateTenantResponse) Reset() {
 	*x = UpdateTenantResponse{}
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[31]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2046,7 +2115,7 @@ func (x *UpdateTenantResponse) String() string {
 func (*UpdateTenantResponse) ProtoMessage() {}
 
 func (x *UpdateTenantResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[31]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2059,7 +2128,7 @@ func (x *UpdateTenantResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateTenantResponse.ProtoReflect.Descriptor instead.
 func (*UpdateTenantResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{31}
+	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *UpdateTenantResponse) GetTenant() *Tenant {
@@ -2079,7 +2148,7 @@ type DeleteTenantRequest struct {
 
 func (x *DeleteTenantRequest) Reset() {
 	*x = DeleteTenantRequest{}
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[32]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2091,7 +2160,7 @@ func (x *DeleteTenantRequest) String() string {
 func (*DeleteTenantRequest) ProtoMessage() {}
 
 func (x *DeleteTenantRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[32]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2104,7 +2173,7 @@ func (x *DeleteTenantRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteTenantRequest.ProtoReflect.Descriptor instead.
 func (*DeleteTenantRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{32}
+	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *DeleteTenantRequest) GetId() string {
@@ -2123,7 +2192,7 @@ type DeleteTenantResponse struct {
 
 func (x *DeleteTenantResponse) Reset() {
 	*x = DeleteTenantResponse{}
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[33]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2135,7 +2204,7 @@ func (x *DeleteTenantResponse) String() string {
 func (*DeleteTenantResponse) ProtoMessage() {}
 
 func (x *DeleteTenantResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[33]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2148,7 +2217,375 @@ func (x *DeleteTenantResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteTenantResponse.ProtoReflect.Descriptor instead.
 func (*DeleteTenantResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{33}
+	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{34}
+}
+
+// {{.Name}}
+type ListTenantUserRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListTenantUserRequest) Reset() {
+	*x = ListTenantUserRequest{}
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[35]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListTenantUserRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListTenantUserRequest) ProtoMessage() {}
+
+func (x *ListTenantUserRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[35]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListTenantUserRequest.ProtoReflect.Descriptor instead.
+func (*ListTenantUserRequest) Descriptor() ([]byte, []int) {
+	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{35}
+}
+
+func (x *ListTenantUserRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+// {{.Name}}
+type ListTenantUserResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Users         []*TenantUser          `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`
+	InvalidCount  uint32                 `protobuf:"varint,2,opt,name=invalid_count,json=invalidCount,proto3" json:"invalid_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListTenantUserResponse) Reset() {
+	*x = ListTenantUserResponse{}
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[36]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListTenantUserResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListTenantUserResponse) ProtoMessage() {}
+
+func (x *ListTenantUserResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[36]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListTenantUserResponse.ProtoReflect.Descriptor instead.
+func (*ListTenantUserResponse) Descriptor() ([]byte, []int) {
+	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{36}
+}
+
+func (x *ListTenantUserResponse) GetUsers() []*TenantUser {
+	if x != nil {
+		return x.Users
+	}
+	return nil
+}
+
+func (x *ListTenantUserResponse) GetInvalidCount() uint32 {
+	if x != nil {
+		return x.InvalidCount
+	}
+	return 0
+}
+
+// {{.Name}}
+type CreateTenantUserRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	User          *TenantUser            `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateTenantUserRequest) Reset() {
+	*x = CreateTenantUserRequest{}
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[37]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateTenantUserRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateTenantUserRequest) ProtoMessage() {}
+
+func (x *CreateTenantUserRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[37]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateTenantUserRequest.ProtoReflect.Descriptor instead.
+func (*CreateTenantUserRequest) Descriptor() ([]byte, []int) {
+	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{37}
+}
+
+func (x *CreateTenantUserRequest) GetUser() *TenantUser {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
+// {{.Name}}
+type CreateTenantUserResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	User          *TenantUser            `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateTenantUserResponse) Reset() {
+	*x = CreateTenantUserResponse{}
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[38]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateTenantUserResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateTenantUserResponse) ProtoMessage() {}
+
+func (x *CreateTenantUserResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[38]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateTenantUserResponse.ProtoReflect.Descriptor instead.
+func (*CreateTenantUserResponse) Descriptor() ([]byte, []int) {
+	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{38}
+}
+
+func (x *CreateTenantUserResponse) GetUser() *TenantUser {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
+// {{.Name}}
+type UpdateTenantUserRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	User          *TenantUser            `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateTenantUserRequest) Reset() {
+	*x = UpdateTenantUserRequest{}
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[39]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateTenantUserRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateTenantUserRequest) ProtoMessage() {}
+
+func (x *UpdateTenantUserRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[39]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateTenantUserRequest.ProtoReflect.Descriptor instead.
+func (*UpdateTenantUserRequest) Descriptor() ([]byte, []int) {
+	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{39}
+}
+
+func (x *UpdateTenantUserRequest) GetUser() *TenantUser {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
+// {{.Name}}
+type UpdateTenantUserResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	User          *TenantUser            `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateTenantUserResponse) Reset() {
+	*x = UpdateTenantUserResponse{}
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[40]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateTenantUserResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateTenantUserResponse) ProtoMessage() {}
+
+func (x *UpdateTenantUserResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[40]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateTenantUserResponse.ProtoReflect.Descriptor instead.
+func (*UpdateTenantUserResponse) Descriptor() ([]byte, []int) {
+	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{40}
+}
+
+func (x *UpdateTenantUserResponse) GetUser() *TenantUser {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
+// {{.Name}}
+type DeleteTenantUserRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	Id            string                 `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteTenantUserRequest) Reset() {
+	*x = DeleteTenantUserRequest{}
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[41]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteTenantUserRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteTenantUserRequest) ProtoMessage() {}
+
+func (x *DeleteTenantUserRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[41]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteTenantUserRequest.ProtoReflect.Descriptor instead.
+func (*DeleteTenantUserRequest) Descriptor() ([]byte, []int) {
+	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{41}
+}
+
+func (x *DeleteTenantUserRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *DeleteTenantUserRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+// {{.Name}}
+type DeleteTenantUserResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteTenantUserResponse) Reset() {
+	*x = DeleteTenantUserResponse{}
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[42]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteTenantUserResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteTenantUserResponse) ProtoMessage() {}
+
+func (x *DeleteTenantUserResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[42]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteTenantUserResponse.ProtoReflect.Descriptor instead.
+func (*DeleteTenantUserResponse) Descriptor() ([]byte, []int) {
+	return file_kentik_mkp_v202407_mkp_proto_rawDescGZIP(), []int{42}
 }
 
 type Asset_Report struct {
@@ -2161,7 +2598,7 @@ type Asset_Report struct {
 
 func (x *Asset_Report) Reset() {
 	*x = Asset_Report{}
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[34]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2173,7 +2610,7 @@ func (x *Asset_Report) String() string {
 func (*Asset_Report) ProtoMessage() {}
 
 func (x *Asset_Report) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[34]
+	mi := &file_kentik_mkp_v202407_mkp_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2312,7 +2749,14 @@ const file_kentik_mkp_v202407_mkp_proto_rawDesc = "" +
 	"\rsaved_filters\x18\x06 \x03(\tR\fsavedFilters\x129\n" +
 	"\afilters\x18\a \x03(\v2\x1f.kentik.mkp.v202407.FilterFieldR\afilters\x12?\n" +
 	"\rfilter_groups\x18\b \x03(\v2\x1a.kentik.mkp.v202407.FilterR\ffilterGroups\x12\x16\n" +
-	"\x06metric\x18\t \x03(\tR\x06metric\"\xc9\n" +
+	"\x06metric\x18\t \x03(\tR\x06metric\"\xb4\x02\n" +
+	"\n" +
+	"TenantUser\x12E\n" +
+	"\x02id\x18\x01 \x01(\tB5\x92A/2-Unique system assigned identifier of the user\xe0A\x03R\x02id\x12X\n" +
+	"\ttenant_id\x18\x02 \x01(\tB;\x92A523Unique identifier of the tenant the user belongs to\xe0A\x02R\btenantId\x12C\n" +
+	"\x0euser_full_name\x18\x03 \x01(\tB\x1d\x92A\x172\x15Full name of the user\xe0A\x02R\fuserFullName\x12@\n" +
+	"\n" +
+	"user_email\x18\x04 \x01(\tB!\x92A\x1b2\x19Email address of the user\xe0A\x02R\tuserEmail\"\xce\n" +
 	"\n" +
 	"\x06Tenant\x12G\n" +
 	"\x02id\x18\x01 \x01(\tB7\x92A12/Unique system assigned identifier of the tenant\xe0A\x03R\x02id\x12K\n" +
@@ -2333,8 +2777,8 @@ const file_kentik_mkp_v202407_mkp_proto_rawDesc = "" +
 	"\x0einterface_name\x18\r \x01(\tB\x1e\x92A\x182\x16Interface data source.\xe0A\x03R\rinterfaceName\x128\n" +
 	"\n" +
 	"snmp_alias\x18\x0e \x01(\tB\x19\x92A\x132\x11SNMP data source.\xe0A\x03R\tsnmpAlias\x12e\n" +
-	"\bpackages\x18\x10 \x03(\v2\x1b.kentik.mkp.v202407.PackageB,\x92A&2$Packages associated with the tenant.\xe0A\x03R\bpackages\x12Z\n" +
-	"\x05users\x18\x11 \x03(\v2\x19.kentik.user.v202211.UserB)\x92A#2!Users associated with the tenant.\xe0A\x03R\x05users\x12S\n" +
+	"\bpackages\x18\x10 \x03(\v2\x1b.kentik.mkp.v202407.PackageB,\x92A&2$Packages associated with the tenant.\xe0A\x03R\bpackages\x12_\n" +
+	"\x05users\x18\x11 \x03(\v2\x1e.kentik.mkp.v202407.TenantUserB)\x92A#2!Users associated with the tenant.\xe0A\x03R\x05users\x12S\n" +
 	"\vtemplate_id\x18\x12 \x01(\tB2\x92A,2*Package template ID to assign with tenant.\xe0A\x03R\n" +
 	"templateId\"\x14\n" +
 	"\x12ListPackageRequest\"s\n" +
@@ -2374,7 +2818,24 @@ const file_kentik_mkp_v202407_mkp_proto_rawDesc = "" +
 	"\x06tenant\x18\x01 \x01(\v2\x1a.kentik.mkp.v202407.TenantR\x06tenant\"%\n" +
 	"\x13DeleteTenantRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"\x16\n" +
-	"\x14DeleteTenantResponse2\xf7\t\n" +
+	"\x14DeleteTenantResponse\"4\n" +
+	"\x15ListTenantUserRequest\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\"s\n" +
+	"\x16ListTenantUserResponse\x124\n" +
+	"\x05users\x18\x01 \x03(\v2\x1e.kentik.mkp.v202407.TenantUserR\x05users\x12#\n" +
+	"\rinvalid_count\x18\x02 \x01(\rR\finvalidCount\"M\n" +
+	"\x17CreateTenantUserRequest\x122\n" +
+	"\x04user\x18\x01 \x01(\v2\x1e.kentik.mkp.v202407.TenantUserR\x04user\"N\n" +
+	"\x18CreateTenantUserResponse\x122\n" +
+	"\x04user\x18\x01 \x01(\v2\x1e.kentik.mkp.v202407.TenantUserR\x04user\"M\n" +
+	"\x17UpdateTenantUserRequest\x122\n" +
+	"\x04user\x18\x01 \x01(\v2\x1e.kentik.mkp.v202407.TenantUserR\x04user\"N\n" +
+	"\x18UpdateTenantUserResponse\x122\n" +
+	"\x04user\x18\x01 \x01(\v2\x1e.kentik.mkp.v202407.TenantUserR\x04user\"F\n" +
+	"\x17DeleteTenantUserRequest\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x0e\n" +
+	"\x02id\x18\x02 \x01(\tR\x02id\"\x1a\n" +
+	"\x18DeleteTenantUserResponse2\xf7\t\n" +
 	"\x0ePackageService\x12\xd4\x01\n" +
 	"\vListPackage\x12&.kentik.mkp.v202407.ListPackageRequest\x1a'.kentik.mkp.v202407.ListPackageResponse\"t\x92AB\x12\x12List MKP packages.\x1a\x1fReturns a list of MKP packages.*\vPackageList\xf2\xd7\x02\x0eadmin.mkp:read\x82\xd3\xe4\x93\x02\x17\x12\x15/mkp/v202407/packages\x12\xfa\x01\n" +
 	"\n" +
@@ -2390,7 +2851,12 @@ const file_kentik_mkp_v202407_mkp_proto_rawDesc = "" +
 	"\tGetTenant\x12$.kentik.mkp.v202407.GetTenantRequest\x1a%.kentik.mkp.v202407.GetTenantResponse\"\x99\x01\x92Ac\x12 Get information aboout a tenant.\x1a4Returns information about package specified with ID.*\tTenantGet\xf2\xd7\x02\x0eadmin.mkp:read\x82\xd3\xe4\x93\x02\x1b\x12\x19/mkp/v202407/tenants/{id}\x12\xee\x01\n" +
 	"\fCreateTenant\x12'.kentik.mkp.v202407.CreateTenantRequest\x1a(.kentik.mkp.v202407.CreateTenantResponse\"\x8a\x01\x92AU\x12\x10Create a tenant.\x1a3Create tenant from request. returns created tenant.*\fTenantCreate\xf2\xd7\x02\x0fadmin.mkp:write\x82\xd3\xe4\x93\x02\x19:\x01*\"\x14/mkp/v202407/tenants\x12\xf2\x01\n" +
 	"\fUpdateTenant\x12'.kentik.mkp.v202407.UpdateTenantRequest\x1a(.kentik.mkp.v202407.UpdateTenantResponse\"\x8e\x01\x92AM\x12\x10Update a tenant.\x1a+Update tenant attributes specified with id.*\fTenantUpdate\xf2\xd7\x02\x0fadmin.mkp:write\x82\xd3\xe4\x93\x02%:\x01*\x1a /mkp/v202407/tenants/{tenant.id}\x12\xe1\x01\n" +
-	"\fDeleteTenant\x12'.kentik.mkp.v202407.DeleteTenantRequest\x1a(.kentik.mkp.v202407.DeleteTenantResponse\"~\x92AG\x12\x10Delete a tenant.\x1a%Deletes the tenant specified with id.*\fTenantDelete\xf2\xd7\x02\x0fadmin.mkp:write\x82\xd3\xe4\x93\x02\x1b*\x19/mkp/v202407/tenants/{id}\x1a&\xcaA\x12mkp.api.kentik.com\xea\xd7\x02\tadmin.mkp\x90\xd8\x02\x03B\xa1\x13\x92A\xda\x12\x12\x9b\x11\n" +
+	"\fDeleteTenant\x12'.kentik.mkp.v202407.DeleteTenantRequest\x1a(.kentik.mkp.v202407.DeleteTenantResponse\"~\x92AG\x12\x10Delete a tenant.\x1a%Deletes the tenant specified with id.*\fTenantDelete\xf2\xd7\x02\x0fadmin.mkp:write\x82\xd3\xe4\x93\x02\x1b*\x19/mkp/v202407/tenants/{id}\x1a&\xcaA\x12mkp.api.kentik.com\xea\xd7\x02\tadmin.mkp\x90\xd8\x02\x032\xd0\t\n" +
+	"\x11TenantUserService\x12\x96\x02\n" +
+	"\x0eListTenantUser\x12).kentik.mkp.v202407.ListTenantUserRequest\x1a*.kentik.mkp.v202407.ListTenantUserResponse\"\xac\x01\x92Ai\x12\x18List users for a tenant.\x1a=Returns a list of users associated with the specified tenant.*\x0eTenantUserList\xf2\xd7\x02\x0eadmin.mkp:read\x82\xd3\xe4\x93\x02(\x12&/mkp/v202407/tenants/{tenant_id}/users\x12\x9e\x02\n" +
+	"\x10CreateTenantUser\x12+.kentik.mkp.v202407.CreateTenantUserRequest\x1a,.kentik.mkp.v202407.CreateTenantUserResponse\"\xae\x01\x92Ab\x12\x17Add a user to a tenant.\x1a5Creates a user association with the specified tenant.*\x10TenantUserCreate\xf2\xd7\x02\x0fadmin.mkp:write\x82\xd3\xe4\x93\x020:\x01*\"+/mkp/v202407/tenants/{user.tenant_id}/users\x12\xb3\x02\n" +
+	"\x10UpdateTenantUser\x12+.kentik.mkp.v202407.UpdateTenantUserRequest\x1a,.kentik.mkp.v202407.UpdateTenantUserResponse\"\xc3\x01\x92Am\x12\x15Update a tenant user.\x1aBUpdates the user associated with the specified tenant and user ID.*\x10TenantUserUpdate\xf2\xd7\x02\x0fadmin.mkp:write\x82\xd3\xe4\x93\x02::\x01*\x1a5/mkp/v202407/tenants/{user.tenant_id}/users/{user.id}\x12\xa2\x02\n" +
+	"\x10DeleteTenantUser\x12+.kentik.mkp.v202407.DeleteTenantUserRequest\x1a,.kentik.mkp.v202407.DeleteTenantUserResponse\"\xb2\x01\x92Ai\x12\x1cRemove a user from a tenant.\x1a7Deletes the user association with the specified tenant.*\x10TenantUserDelete\xf2\xd7\x02\x0fadmin.mkp:write\x82\xd3\xe4\x93\x02-*+/mkp/v202407/tenants/{tenant_id}/users/{id}\x1a&\xcaA\x12mkp.api.kentik.com\xea\xd7\x02\tadmin.mkp\x90\xd8\x02\x03B\xa1\x13\x92A\xda\x12\x12\x9b\x11\n" +
 	"\aMKP API\x12\xbf\x10# Overview\n" +
 	"My Kentik Portal API enables programmatic access to tenants and package templates.\n" +
 	"| Endpoint | Purpose |\n" +
@@ -2465,49 +2931,57 @@ func file_kentik_mkp_v202407_mkp_proto_rawDescGZIP() []byte {
 	return file_kentik_mkp_v202407_mkp_proto_rawDescData
 }
 
-var file_kentik_mkp_v202407_mkp_proto_msgTypes = make([]protoimpl.MessageInfo, 35)
+var file_kentik_mkp_v202407_mkp_proto_msgTypes = make([]protoimpl.MessageInfo, 44)
 var file_kentik_mkp_v202407_mkp_proto_goTypes = []any{
-	(*Alert)(nil),                 // 0: kentik.mkp.v202407.Alert
-	(*Asset)(nil),                 // 1: kentik.mkp.v202407.Asset
-	(*Threshold)(nil),             // 2: kentik.mkp.v202407.Threshold
-	(*Activate)(nil),              // 3: kentik.mkp.v202407.Activate
-	(*Condition)(nil),             // 4: kentik.mkp.v202407.Condition
-	(*Mitigation)(nil),            // 5: kentik.mkp.v202407.Mitigation
-	(*NotificationChannel)(nil),   // 6: kentik.mkp.v202407.NotificationChannel
-	(*TenantLink)(nil),            // 7: kentik.mkp.v202407.TenantLink
-	(*Package)(nil),               // 8: kentik.mkp.v202407.Package
-	(*CustomDimension)(nil),       // 9: kentik.mkp.v202407.CustomDimension
-	(*Devices)(nil),               // 10: kentik.mkp.v202407.Devices
-	(*FilterField)(nil),           // 11: kentik.mkp.v202407.FilterField
-	(*Filter)(nil),                // 12: kentik.mkp.v202407.Filter
-	(*Tenant)(nil),                // 13: kentik.mkp.v202407.Tenant
-	(*ListPackageRequest)(nil),    // 14: kentik.mkp.v202407.ListPackageRequest
-	(*ListPackageResponse)(nil),   // 15: kentik.mkp.v202407.ListPackageResponse
-	(*GetPackageRequest)(nil),     // 16: kentik.mkp.v202407.GetPackageRequest
-	(*GetPackageResponse)(nil),    // 17: kentik.mkp.v202407.GetPackageResponse
-	(*CreatePackageRequest)(nil),  // 18: kentik.mkp.v202407.CreatePackageRequest
-	(*CreatePackageResponse)(nil), // 19: kentik.mkp.v202407.CreatePackageResponse
-	(*UpdatePackageRequest)(nil),  // 20: kentik.mkp.v202407.UpdatePackageRequest
-	(*UpdatePackageResponse)(nil), // 21: kentik.mkp.v202407.UpdatePackageResponse
-	(*DeletePackageRequest)(nil),  // 22: kentik.mkp.v202407.DeletePackageRequest
-	(*DeletePackageResponse)(nil), // 23: kentik.mkp.v202407.DeletePackageResponse
-	(*ListTenantRequest)(nil),     // 24: kentik.mkp.v202407.ListTenantRequest
-	(*ListTenantResponse)(nil),    // 25: kentik.mkp.v202407.ListTenantResponse
-	(*GetTenantRequest)(nil),      // 26: kentik.mkp.v202407.GetTenantRequest
-	(*GetTenantResponse)(nil),     // 27: kentik.mkp.v202407.GetTenantResponse
-	(*CreateTenantRequest)(nil),   // 28: kentik.mkp.v202407.CreateTenantRequest
-	(*CreateTenantResponse)(nil),  // 29: kentik.mkp.v202407.CreateTenantResponse
-	(*UpdateTenantRequest)(nil),   // 30: kentik.mkp.v202407.UpdateTenantRequest
-	(*UpdateTenantResponse)(nil),  // 31: kentik.mkp.v202407.UpdateTenantResponse
-	(*DeleteTenantRequest)(nil),   // 32: kentik.mkp.v202407.DeleteTenantRequest
-	(*DeleteTenantResponse)(nil),  // 33: kentik.mkp.v202407.DeleteTenantResponse
-	(*Asset_Report)(nil),          // 34: kentik.mkp.v202407.Asset.Report
-	(*v202211.User)(nil),          // 35: kentik.user.v202211.User
+	(*Alert)(nil),                    // 0: kentik.mkp.v202407.Alert
+	(*Asset)(nil),                    // 1: kentik.mkp.v202407.Asset
+	(*Threshold)(nil),                // 2: kentik.mkp.v202407.Threshold
+	(*Activate)(nil),                 // 3: kentik.mkp.v202407.Activate
+	(*Condition)(nil),                // 4: kentik.mkp.v202407.Condition
+	(*Mitigation)(nil),               // 5: kentik.mkp.v202407.Mitigation
+	(*NotificationChannel)(nil),      // 6: kentik.mkp.v202407.NotificationChannel
+	(*TenantLink)(nil),               // 7: kentik.mkp.v202407.TenantLink
+	(*Package)(nil),                  // 8: kentik.mkp.v202407.Package
+	(*CustomDimension)(nil),          // 9: kentik.mkp.v202407.CustomDimension
+	(*Devices)(nil),                  // 10: kentik.mkp.v202407.Devices
+	(*FilterField)(nil),              // 11: kentik.mkp.v202407.FilterField
+	(*Filter)(nil),                   // 12: kentik.mkp.v202407.Filter
+	(*TenantUser)(nil),               // 13: kentik.mkp.v202407.TenantUser
+	(*Tenant)(nil),                   // 14: kentik.mkp.v202407.Tenant
+	(*ListPackageRequest)(nil),       // 15: kentik.mkp.v202407.ListPackageRequest
+	(*ListPackageResponse)(nil),      // 16: kentik.mkp.v202407.ListPackageResponse
+	(*GetPackageRequest)(nil),        // 17: kentik.mkp.v202407.GetPackageRequest
+	(*GetPackageResponse)(nil),       // 18: kentik.mkp.v202407.GetPackageResponse
+	(*CreatePackageRequest)(nil),     // 19: kentik.mkp.v202407.CreatePackageRequest
+	(*CreatePackageResponse)(nil),    // 20: kentik.mkp.v202407.CreatePackageResponse
+	(*UpdatePackageRequest)(nil),     // 21: kentik.mkp.v202407.UpdatePackageRequest
+	(*UpdatePackageResponse)(nil),    // 22: kentik.mkp.v202407.UpdatePackageResponse
+	(*DeletePackageRequest)(nil),     // 23: kentik.mkp.v202407.DeletePackageRequest
+	(*DeletePackageResponse)(nil),    // 24: kentik.mkp.v202407.DeletePackageResponse
+	(*ListTenantRequest)(nil),        // 25: kentik.mkp.v202407.ListTenantRequest
+	(*ListTenantResponse)(nil),       // 26: kentik.mkp.v202407.ListTenantResponse
+	(*GetTenantRequest)(nil),         // 27: kentik.mkp.v202407.GetTenantRequest
+	(*GetTenantResponse)(nil),        // 28: kentik.mkp.v202407.GetTenantResponse
+	(*CreateTenantRequest)(nil),      // 29: kentik.mkp.v202407.CreateTenantRequest
+	(*CreateTenantResponse)(nil),     // 30: kentik.mkp.v202407.CreateTenantResponse
+	(*UpdateTenantRequest)(nil),      // 31: kentik.mkp.v202407.UpdateTenantRequest
+	(*UpdateTenantResponse)(nil),     // 32: kentik.mkp.v202407.UpdateTenantResponse
+	(*DeleteTenantRequest)(nil),      // 33: kentik.mkp.v202407.DeleteTenantRequest
+	(*DeleteTenantResponse)(nil),     // 34: kentik.mkp.v202407.DeleteTenantResponse
+	(*ListTenantUserRequest)(nil),    // 35: kentik.mkp.v202407.ListTenantUserRequest
+	(*ListTenantUserResponse)(nil),   // 36: kentik.mkp.v202407.ListTenantUserResponse
+	(*CreateTenantUserRequest)(nil),  // 37: kentik.mkp.v202407.CreateTenantUserRequest
+	(*CreateTenantUserResponse)(nil), // 38: kentik.mkp.v202407.CreateTenantUserResponse
+	(*UpdateTenantUserRequest)(nil),  // 39: kentik.mkp.v202407.UpdateTenantUserRequest
+	(*UpdateTenantUserResponse)(nil), // 40: kentik.mkp.v202407.UpdateTenantUserResponse
+	(*DeleteTenantUserRequest)(nil),  // 41: kentik.mkp.v202407.DeleteTenantUserRequest
+	(*DeleteTenantUserResponse)(nil), // 42: kentik.mkp.v202407.DeleteTenantUserResponse
+	(*Asset_Report)(nil),             // 43: kentik.mkp.v202407.Asset.Report
 }
 var file_kentik_mkp_v202407_mkp_proto_depIdxs = []int32{
 	2,  // 0: kentik.mkp.v202407.Alert.thresholds:type_name -> kentik.mkp.v202407.Threshold
-	34, // 1: kentik.mkp.v202407.Asset.reports:type_name -> kentik.mkp.v202407.Asset.Report
-	34, // 2: kentik.mkp.v202407.Asset.default_report:type_name -> kentik.mkp.v202407.Asset.Report
+	43, // 1: kentik.mkp.v202407.Asset.reports:type_name -> kentik.mkp.v202407.Asset.Report
+	43, // 2: kentik.mkp.v202407.Asset.default_report:type_name -> kentik.mkp.v202407.Asset.Report
 	3,  // 3: kentik.mkp.v202407.Threshold.activate:type_name -> kentik.mkp.v202407.Activate
 	4,  // 4: kentik.mkp.v202407.Threshold.conditions:type_name -> kentik.mkp.v202407.Condition
 	5,  // 5: kentik.mkp.v202407.Threshold.mitigations:type_name -> kentik.mkp.v202407.Mitigation
@@ -2523,44 +2997,57 @@ var file_kentik_mkp_v202407_mkp_proto_depIdxs = []int32{
 	10, // 15: kentik.mkp.v202407.Tenant.devices:type_name -> kentik.mkp.v202407.Devices
 	12, // 16: kentik.mkp.v202407.Tenant.filters:type_name -> kentik.mkp.v202407.Filter
 	8,  // 17: kentik.mkp.v202407.Tenant.packages:type_name -> kentik.mkp.v202407.Package
-	35, // 18: kentik.mkp.v202407.Tenant.users:type_name -> kentik.user.v202211.User
+	13, // 18: kentik.mkp.v202407.Tenant.users:type_name -> kentik.mkp.v202407.TenantUser
 	8,  // 19: kentik.mkp.v202407.ListPackageResponse.packages:type_name -> kentik.mkp.v202407.Package
 	8,  // 20: kentik.mkp.v202407.GetPackageResponse.package:type_name -> kentik.mkp.v202407.Package
 	8,  // 21: kentik.mkp.v202407.CreatePackageRequest.package:type_name -> kentik.mkp.v202407.Package
 	8,  // 22: kentik.mkp.v202407.CreatePackageResponse.package:type_name -> kentik.mkp.v202407.Package
 	8,  // 23: kentik.mkp.v202407.UpdatePackageRequest.package:type_name -> kentik.mkp.v202407.Package
 	8,  // 24: kentik.mkp.v202407.UpdatePackageResponse.package:type_name -> kentik.mkp.v202407.Package
-	13, // 25: kentik.mkp.v202407.ListTenantResponse.tenants:type_name -> kentik.mkp.v202407.Tenant
-	13, // 26: kentik.mkp.v202407.GetTenantResponse.tenant:type_name -> kentik.mkp.v202407.Tenant
-	13, // 27: kentik.mkp.v202407.CreateTenantRequest.tenant:type_name -> kentik.mkp.v202407.Tenant
-	13, // 28: kentik.mkp.v202407.CreateTenantResponse.tenant:type_name -> kentik.mkp.v202407.Tenant
-	13, // 29: kentik.mkp.v202407.UpdateTenantRequest.tenant:type_name -> kentik.mkp.v202407.Tenant
-	13, // 30: kentik.mkp.v202407.UpdateTenantResponse.tenant:type_name -> kentik.mkp.v202407.Tenant
-	14, // 31: kentik.mkp.v202407.PackageService.ListPackage:input_type -> kentik.mkp.v202407.ListPackageRequest
-	16, // 32: kentik.mkp.v202407.PackageService.GetPackage:input_type -> kentik.mkp.v202407.GetPackageRequest
-	18, // 33: kentik.mkp.v202407.PackageService.CreatePackage:input_type -> kentik.mkp.v202407.CreatePackageRequest
-	20, // 34: kentik.mkp.v202407.PackageService.UpdatePackage:input_type -> kentik.mkp.v202407.UpdatePackageRequest
-	22, // 35: kentik.mkp.v202407.PackageService.DeletePackage:input_type -> kentik.mkp.v202407.DeletePackageRequest
-	24, // 36: kentik.mkp.v202407.TenantService.ListTenant:input_type -> kentik.mkp.v202407.ListTenantRequest
-	26, // 37: kentik.mkp.v202407.TenantService.GetTenant:input_type -> kentik.mkp.v202407.GetTenantRequest
-	28, // 38: kentik.mkp.v202407.TenantService.CreateTenant:input_type -> kentik.mkp.v202407.CreateTenantRequest
-	30, // 39: kentik.mkp.v202407.TenantService.UpdateTenant:input_type -> kentik.mkp.v202407.UpdateTenantRequest
-	32, // 40: kentik.mkp.v202407.TenantService.DeleteTenant:input_type -> kentik.mkp.v202407.DeleteTenantRequest
-	15, // 41: kentik.mkp.v202407.PackageService.ListPackage:output_type -> kentik.mkp.v202407.ListPackageResponse
-	17, // 42: kentik.mkp.v202407.PackageService.GetPackage:output_type -> kentik.mkp.v202407.GetPackageResponse
-	19, // 43: kentik.mkp.v202407.PackageService.CreatePackage:output_type -> kentik.mkp.v202407.CreatePackageResponse
-	21, // 44: kentik.mkp.v202407.PackageService.UpdatePackage:output_type -> kentik.mkp.v202407.UpdatePackageResponse
-	23, // 45: kentik.mkp.v202407.PackageService.DeletePackage:output_type -> kentik.mkp.v202407.DeletePackageResponse
-	25, // 46: kentik.mkp.v202407.TenantService.ListTenant:output_type -> kentik.mkp.v202407.ListTenantResponse
-	27, // 47: kentik.mkp.v202407.TenantService.GetTenant:output_type -> kentik.mkp.v202407.GetTenantResponse
-	29, // 48: kentik.mkp.v202407.TenantService.CreateTenant:output_type -> kentik.mkp.v202407.CreateTenantResponse
-	31, // 49: kentik.mkp.v202407.TenantService.UpdateTenant:output_type -> kentik.mkp.v202407.UpdateTenantResponse
-	33, // 50: kentik.mkp.v202407.TenantService.DeleteTenant:output_type -> kentik.mkp.v202407.DeleteTenantResponse
-	41, // [41:51] is the sub-list for method output_type
-	31, // [31:41] is the sub-list for method input_type
-	31, // [31:31] is the sub-list for extension type_name
-	31, // [31:31] is the sub-list for extension extendee
-	0,  // [0:31] is the sub-list for field type_name
+	14, // 25: kentik.mkp.v202407.ListTenantResponse.tenants:type_name -> kentik.mkp.v202407.Tenant
+	14, // 26: kentik.mkp.v202407.GetTenantResponse.tenant:type_name -> kentik.mkp.v202407.Tenant
+	14, // 27: kentik.mkp.v202407.CreateTenantRequest.tenant:type_name -> kentik.mkp.v202407.Tenant
+	14, // 28: kentik.mkp.v202407.CreateTenantResponse.tenant:type_name -> kentik.mkp.v202407.Tenant
+	14, // 29: kentik.mkp.v202407.UpdateTenantRequest.tenant:type_name -> kentik.mkp.v202407.Tenant
+	14, // 30: kentik.mkp.v202407.UpdateTenantResponse.tenant:type_name -> kentik.mkp.v202407.Tenant
+	13, // 31: kentik.mkp.v202407.ListTenantUserResponse.users:type_name -> kentik.mkp.v202407.TenantUser
+	13, // 32: kentik.mkp.v202407.CreateTenantUserRequest.user:type_name -> kentik.mkp.v202407.TenantUser
+	13, // 33: kentik.mkp.v202407.CreateTenantUserResponse.user:type_name -> kentik.mkp.v202407.TenantUser
+	13, // 34: kentik.mkp.v202407.UpdateTenantUserRequest.user:type_name -> kentik.mkp.v202407.TenantUser
+	13, // 35: kentik.mkp.v202407.UpdateTenantUserResponse.user:type_name -> kentik.mkp.v202407.TenantUser
+	15, // 36: kentik.mkp.v202407.PackageService.ListPackage:input_type -> kentik.mkp.v202407.ListPackageRequest
+	17, // 37: kentik.mkp.v202407.PackageService.GetPackage:input_type -> kentik.mkp.v202407.GetPackageRequest
+	19, // 38: kentik.mkp.v202407.PackageService.CreatePackage:input_type -> kentik.mkp.v202407.CreatePackageRequest
+	21, // 39: kentik.mkp.v202407.PackageService.UpdatePackage:input_type -> kentik.mkp.v202407.UpdatePackageRequest
+	23, // 40: kentik.mkp.v202407.PackageService.DeletePackage:input_type -> kentik.mkp.v202407.DeletePackageRequest
+	25, // 41: kentik.mkp.v202407.TenantService.ListTenant:input_type -> kentik.mkp.v202407.ListTenantRequest
+	27, // 42: kentik.mkp.v202407.TenantService.GetTenant:input_type -> kentik.mkp.v202407.GetTenantRequest
+	29, // 43: kentik.mkp.v202407.TenantService.CreateTenant:input_type -> kentik.mkp.v202407.CreateTenantRequest
+	31, // 44: kentik.mkp.v202407.TenantService.UpdateTenant:input_type -> kentik.mkp.v202407.UpdateTenantRequest
+	33, // 45: kentik.mkp.v202407.TenantService.DeleteTenant:input_type -> kentik.mkp.v202407.DeleteTenantRequest
+	35, // 46: kentik.mkp.v202407.TenantUserService.ListTenantUser:input_type -> kentik.mkp.v202407.ListTenantUserRequest
+	37, // 47: kentik.mkp.v202407.TenantUserService.CreateTenantUser:input_type -> kentik.mkp.v202407.CreateTenantUserRequest
+	39, // 48: kentik.mkp.v202407.TenantUserService.UpdateTenantUser:input_type -> kentik.mkp.v202407.UpdateTenantUserRequest
+	41, // 49: kentik.mkp.v202407.TenantUserService.DeleteTenantUser:input_type -> kentik.mkp.v202407.DeleteTenantUserRequest
+	16, // 50: kentik.mkp.v202407.PackageService.ListPackage:output_type -> kentik.mkp.v202407.ListPackageResponse
+	18, // 51: kentik.mkp.v202407.PackageService.GetPackage:output_type -> kentik.mkp.v202407.GetPackageResponse
+	20, // 52: kentik.mkp.v202407.PackageService.CreatePackage:output_type -> kentik.mkp.v202407.CreatePackageResponse
+	22, // 53: kentik.mkp.v202407.PackageService.UpdatePackage:output_type -> kentik.mkp.v202407.UpdatePackageResponse
+	24, // 54: kentik.mkp.v202407.PackageService.DeletePackage:output_type -> kentik.mkp.v202407.DeletePackageResponse
+	26, // 55: kentik.mkp.v202407.TenantService.ListTenant:output_type -> kentik.mkp.v202407.ListTenantResponse
+	28, // 56: kentik.mkp.v202407.TenantService.GetTenant:output_type -> kentik.mkp.v202407.GetTenantResponse
+	30, // 57: kentik.mkp.v202407.TenantService.CreateTenant:output_type -> kentik.mkp.v202407.CreateTenantResponse
+	32, // 58: kentik.mkp.v202407.TenantService.UpdateTenant:output_type -> kentik.mkp.v202407.UpdateTenantResponse
+	34, // 59: kentik.mkp.v202407.TenantService.DeleteTenant:output_type -> kentik.mkp.v202407.DeleteTenantResponse
+	36, // 60: kentik.mkp.v202407.TenantUserService.ListTenantUser:output_type -> kentik.mkp.v202407.ListTenantUserResponse
+	38, // 61: kentik.mkp.v202407.TenantUserService.CreateTenantUser:output_type -> kentik.mkp.v202407.CreateTenantUserResponse
+	40, // 62: kentik.mkp.v202407.TenantUserService.UpdateTenantUser:output_type -> kentik.mkp.v202407.UpdateTenantUserResponse
+	42, // 63: kentik.mkp.v202407.TenantUserService.DeleteTenantUser:output_type -> kentik.mkp.v202407.DeleteTenantUserResponse
+	50, // [50:64] is the sub-list for method output_type
+	36, // [36:50] is the sub-list for method input_type
+	36, // [36:36] is the sub-list for extension type_name
+	36, // [36:36] is the sub-list for extension extendee
+	0,  // [0:36] is the sub-list for field type_name
 }
 
 func init() { file_kentik_mkp_v202407_mkp_proto_init() }
@@ -2574,9 +3061,9 @@ func file_kentik_mkp_v202407_mkp_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_kentik_mkp_v202407_mkp_proto_rawDesc), len(file_kentik_mkp_v202407_mkp_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   35,
+			NumMessages:   44,
 			NumExtensions: 0,
-			NumServices:   2,
+			NumServices:   3,
 		},
 		GoTypes:           file_kentik_mkp_v202407_mkp_proto_goTypes,
 		DependencyIndexes: file_kentik_mkp_v202407_mkp_proto_depIdxs,

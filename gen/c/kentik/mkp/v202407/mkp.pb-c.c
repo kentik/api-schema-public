@@ -598,6 +598,51 @@ void   kentik__mkp__v202407__filter__free_unpacked
   assert(message->base.descriptor == &kentik__mkp__v202407__filter__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   kentik__mkp__v202407__tenant_user__init
+                     (Kentik__Mkp__V202407__TenantUser         *message)
+{
+  static const Kentik__Mkp__V202407__TenantUser init_value = KENTIK__MKP__V202407__TENANT_USER__INIT;
+  *message = init_value;
+}
+size_t kentik__mkp__v202407__tenant_user__get_packed_size
+                     (const Kentik__Mkp__V202407__TenantUser *message)
+{
+  assert(message->base.descriptor == &kentik__mkp__v202407__tenant_user__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__mkp__v202407__tenant_user__pack
+                     (const Kentik__Mkp__V202407__TenantUser *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__mkp__v202407__tenant_user__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__mkp__v202407__tenant_user__pack_to_buffer
+                     (const Kentik__Mkp__V202407__TenantUser *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__mkp__v202407__tenant_user__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Mkp__V202407__TenantUser *
+       kentik__mkp__v202407__tenant_user__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Mkp__V202407__TenantUser *)
+     protobuf_c_message_unpack (&kentik__mkp__v202407__tenant_user__descriptor,
+                                allocator, len, data);
+}
+void   kentik__mkp__v202407__tenant_user__free_unpacked
+                     (Kentik__Mkp__V202407__TenantUser *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__mkp__v202407__tenant_user__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 void   kentik__mkp__v202407__tenant__init
                      (Kentik__Mkp__V202407__Tenant         *message)
 {
@@ -1541,6 +1586,366 @@ void   kentik__mkp__v202407__delete_tenant_response__free_unpacked
   if(!message)
     return;
   assert(message->base.descriptor == &kentik__mkp__v202407__delete_tenant_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__mkp__v202407__list_tenant_user_request__init
+                     (Kentik__Mkp__V202407__ListTenantUserRequest         *message)
+{
+  static const Kentik__Mkp__V202407__ListTenantUserRequest init_value = KENTIK__MKP__V202407__LIST_TENANT_USER_REQUEST__INIT;
+  *message = init_value;
+}
+size_t kentik__mkp__v202407__list_tenant_user_request__get_packed_size
+                     (const Kentik__Mkp__V202407__ListTenantUserRequest *message)
+{
+  assert(message->base.descriptor == &kentik__mkp__v202407__list_tenant_user_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__mkp__v202407__list_tenant_user_request__pack
+                     (const Kentik__Mkp__V202407__ListTenantUserRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__mkp__v202407__list_tenant_user_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__mkp__v202407__list_tenant_user_request__pack_to_buffer
+                     (const Kentik__Mkp__V202407__ListTenantUserRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__mkp__v202407__list_tenant_user_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Mkp__V202407__ListTenantUserRequest *
+       kentik__mkp__v202407__list_tenant_user_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Mkp__V202407__ListTenantUserRequest *)
+     protobuf_c_message_unpack (&kentik__mkp__v202407__list_tenant_user_request__descriptor,
+                                allocator, len, data);
+}
+void   kentik__mkp__v202407__list_tenant_user_request__free_unpacked
+                     (Kentik__Mkp__V202407__ListTenantUserRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__mkp__v202407__list_tenant_user_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__mkp__v202407__list_tenant_user_response__init
+                     (Kentik__Mkp__V202407__ListTenantUserResponse         *message)
+{
+  static const Kentik__Mkp__V202407__ListTenantUserResponse init_value = KENTIK__MKP__V202407__LIST_TENANT_USER_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t kentik__mkp__v202407__list_tenant_user_response__get_packed_size
+                     (const Kentik__Mkp__V202407__ListTenantUserResponse *message)
+{
+  assert(message->base.descriptor == &kentik__mkp__v202407__list_tenant_user_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__mkp__v202407__list_tenant_user_response__pack
+                     (const Kentik__Mkp__V202407__ListTenantUserResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__mkp__v202407__list_tenant_user_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__mkp__v202407__list_tenant_user_response__pack_to_buffer
+                     (const Kentik__Mkp__V202407__ListTenantUserResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__mkp__v202407__list_tenant_user_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Mkp__V202407__ListTenantUserResponse *
+       kentik__mkp__v202407__list_tenant_user_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Mkp__V202407__ListTenantUserResponse *)
+     protobuf_c_message_unpack (&kentik__mkp__v202407__list_tenant_user_response__descriptor,
+                                allocator, len, data);
+}
+void   kentik__mkp__v202407__list_tenant_user_response__free_unpacked
+                     (Kentik__Mkp__V202407__ListTenantUserResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__mkp__v202407__list_tenant_user_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__mkp__v202407__create_tenant_user_request__init
+                     (Kentik__Mkp__V202407__CreateTenantUserRequest         *message)
+{
+  static const Kentik__Mkp__V202407__CreateTenantUserRequest init_value = KENTIK__MKP__V202407__CREATE_TENANT_USER_REQUEST__INIT;
+  *message = init_value;
+}
+size_t kentik__mkp__v202407__create_tenant_user_request__get_packed_size
+                     (const Kentik__Mkp__V202407__CreateTenantUserRequest *message)
+{
+  assert(message->base.descriptor == &kentik__mkp__v202407__create_tenant_user_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__mkp__v202407__create_tenant_user_request__pack
+                     (const Kentik__Mkp__V202407__CreateTenantUserRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__mkp__v202407__create_tenant_user_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__mkp__v202407__create_tenant_user_request__pack_to_buffer
+                     (const Kentik__Mkp__V202407__CreateTenantUserRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__mkp__v202407__create_tenant_user_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Mkp__V202407__CreateTenantUserRequest *
+       kentik__mkp__v202407__create_tenant_user_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Mkp__V202407__CreateTenantUserRequest *)
+     protobuf_c_message_unpack (&kentik__mkp__v202407__create_tenant_user_request__descriptor,
+                                allocator, len, data);
+}
+void   kentik__mkp__v202407__create_tenant_user_request__free_unpacked
+                     (Kentik__Mkp__V202407__CreateTenantUserRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__mkp__v202407__create_tenant_user_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__mkp__v202407__create_tenant_user_response__init
+                     (Kentik__Mkp__V202407__CreateTenantUserResponse         *message)
+{
+  static const Kentik__Mkp__V202407__CreateTenantUserResponse init_value = KENTIK__MKP__V202407__CREATE_TENANT_USER_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t kentik__mkp__v202407__create_tenant_user_response__get_packed_size
+                     (const Kentik__Mkp__V202407__CreateTenantUserResponse *message)
+{
+  assert(message->base.descriptor == &kentik__mkp__v202407__create_tenant_user_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__mkp__v202407__create_tenant_user_response__pack
+                     (const Kentik__Mkp__V202407__CreateTenantUserResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__mkp__v202407__create_tenant_user_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__mkp__v202407__create_tenant_user_response__pack_to_buffer
+                     (const Kentik__Mkp__V202407__CreateTenantUserResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__mkp__v202407__create_tenant_user_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Mkp__V202407__CreateTenantUserResponse *
+       kentik__mkp__v202407__create_tenant_user_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Mkp__V202407__CreateTenantUserResponse *)
+     protobuf_c_message_unpack (&kentik__mkp__v202407__create_tenant_user_response__descriptor,
+                                allocator, len, data);
+}
+void   kentik__mkp__v202407__create_tenant_user_response__free_unpacked
+                     (Kentik__Mkp__V202407__CreateTenantUserResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__mkp__v202407__create_tenant_user_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__mkp__v202407__update_tenant_user_request__init
+                     (Kentik__Mkp__V202407__UpdateTenantUserRequest         *message)
+{
+  static const Kentik__Mkp__V202407__UpdateTenantUserRequest init_value = KENTIK__MKP__V202407__UPDATE_TENANT_USER_REQUEST__INIT;
+  *message = init_value;
+}
+size_t kentik__mkp__v202407__update_tenant_user_request__get_packed_size
+                     (const Kentik__Mkp__V202407__UpdateTenantUserRequest *message)
+{
+  assert(message->base.descriptor == &kentik__mkp__v202407__update_tenant_user_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__mkp__v202407__update_tenant_user_request__pack
+                     (const Kentik__Mkp__V202407__UpdateTenantUserRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__mkp__v202407__update_tenant_user_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__mkp__v202407__update_tenant_user_request__pack_to_buffer
+                     (const Kentik__Mkp__V202407__UpdateTenantUserRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__mkp__v202407__update_tenant_user_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Mkp__V202407__UpdateTenantUserRequest *
+       kentik__mkp__v202407__update_tenant_user_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Mkp__V202407__UpdateTenantUserRequest *)
+     protobuf_c_message_unpack (&kentik__mkp__v202407__update_tenant_user_request__descriptor,
+                                allocator, len, data);
+}
+void   kentik__mkp__v202407__update_tenant_user_request__free_unpacked
+                     (Kentik__Mkp__V202407__UpdateTenantUserRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__mkp__v202407__update_tenant_user_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__mkp__v202407__update_tenant_user_response__init
+                     (Kentik__Mkp__V202407__UpdateTenantUserResponse         *message)
+{
+  static const Kentik__Mkp__V202407__UpdateTenantUserResponse init_value = KENTIK__MKP__V202407__UPDATE_TENANT_USER_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t kentik__mkp__v202407__update_tenant_user_response__get_packed_size
+                     (const Kentik__Mkp__V202407__UpdateTenantUserResponse *message)
+{
+  assert(message->base.descriptor == &kentik__mkp__v202407__update_tenant_user_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__mkp__v202407__update_tenant_user_response__pack
+                     (const Kentik__Mkp__V202407__UpdateTenantUserResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__mkp__v202407__update_tenant_user_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__mkp__v202407__update_tenant_user_response__pack_to_buffer
+                     (const Kentik__Mkp__V202407__UpdateTenantUserResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__mkp__v202407__update_tenant_user_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Mkp__V202407__UpdateTenantUserResponse *
+       kentik__mkp__v202407__update_tenant_user_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Mkp__V202407__UpdateTenantUserResponse *)
+     protobuf_c_message_unpack (&kentik__mkp__v202407__update_tenant_user_response__descriptor,
+                                allocator, len, data);
+}
+void   kentik__mkp__v202407__update_tenant_user_response__free_unpacked
+                     (Kentik__Mkp__V202407__UpdateTenantUserResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__mkp__v202407__update_tenant_user_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__mkp__v202407__delete_tenant_user_request__init
+                     (Kentik__Mkp__V202407__DeleteTenantUserRequest         *message)
+{
+  static const Kentik__Mkp__V202407__DeleteTenantUserRequest init_value = KENTIK__MKP__V202407__DELETE_TENANT_USER_REQUEST__INIT;
+  *message = init_value;
+}
+size_t kentik__mkp__v202407__delete_tenant_user_request__get_packed_size
+                     (const Kentik__Mkp__V202407__DeleteTenantUserRequest *message)
+{
+  assert(message->base.descriptor == &kentik__mkp__v202407__delete_tenant_user_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__mkp__v202407__delete_tenant_user_request__pack
+                     (const Kentik__Mkp__V202407__DeleteTenantUserRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__mkp__v202407__delete_tenant_user_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__mkp__v202407__delete_tenant_user_request__pack_to_buffer
+                     (const Kentik__Mkp__V202407__DeleteTenantUserRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__mkp__v202407__delete_tenant_user_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Mkp__V202407__DeleteTenantUserRequest *
+       kentik__mkp__v202407__delete_tenant_user_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Mkp__V202407__DeleteTenantUserRequest *)
+     protobuf_c_message_unpack (&kentik__mkp__v202407__delete_tenant_user_request__descriptor,
+                                allocator, len, data);
+}
+void   kentik__mkp__v202407__delete_tenant_user_request__free_unpacked
+                     (Kentik__Mkp__V202407__DeleteTenantUserRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__mkp__v202407__delete_tenant_user_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__mkp__v202407__delete_tenant_user_response__init
+                     (Kentik__Mkp__V202407__DeleteTenantUserResponse         *message)
+{
+  static const Kentik__Mkp__V202407__DeleteTenantUserResponse init_value = KENTIK__MKP__V202407__DELETE_TENANT_USER_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t kentik__mkp__v202407__delete_tenant_user_response__get_packed_size
+                     (const Kentik__Mkp__V202407__DeleteTenantUserResponse *message)
+{
+  assert(message->base.descriptor == &kentik__mkp__v202407__delete_tenant_user_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__mkp__v202407__delete_tenant_user_response__pack
+                     (const Kentik__Mkp__V202407__DeleteTenantUserResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__mkp__v202407__delete_tenant_user_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__mkp__v202407__delete_tenant_user_response__pack_to_buffer
+                     (const Kentik__Mkp__V202407__DeleteTenantUserResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__mkp__v202407__delete_tenant_user_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Mkp__V202407__DeleteTenantUserResponse *
+       kentik__mkp__v202407__delete_tenant_user_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Mkp__V202407__DeleteTenantUserResponse *)
+     protobuf_c_message_unpack (&kentik__mkp__v202407__delete_tenant_user_response__descriptor,
+                                allocator, len, data);
+}
+void   kentik__mkp__v202407__delete_tenant_user_response__free_unpacked
+                     (Kentik__Mkp__V202407__DeleteTenantUserResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__mkp__v202407__delete_tenant_user_response__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
 static const ProtobufCFieldDescriptor kentik__mkp__v202407__alert__field_descriptors[7] =
@@ -2856,6 +3261,83 @@ const ProtobufCMessageDescriptor kentik__mkp__v202407__filter__descriptor =
   (ProtobufCMessageInit) kentik__mkp__v202407__filter__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
+static const ProtobufCFieldDescriptor kentik__mkp__v202407__tenant_user__field_descriptors[4] =
+{
+  {
+    "id",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Mkp__V202407__TenantUser, id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "tenant_id",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Mkp__V202407__TenantUser, tenant_id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "user_full_name",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Mkp__V202407__TenantUser, user_full_name),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "user_email",
+    4,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Mkp__V202407__TenantUser, user_email),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__mkp__v202407__tenant_user__field_indices_by_name[] = {
+  0,   /* field[0] = id */
+  1,   /* field[1] = tenant_id */
+  3,   /* field[3] = user_email */
+  2,   /* field[2] = user_full_name */
+};
+static const ProtobufCIntRange kentik__mkp__v202407__tenant_user__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 4 }
+};
+const ProtobufCMessageDescriptor kentik__mkp__v202407__tenant_user__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.mkp.v202407.TenantUser",
+  "TenantUser",
+  "Kentik__Mkp__V202407__TenantUser",
+  "kentik.mkp.v202407",
+  sizeof(Kentik__Mkp__V202407__TenantUser),
+  4,
+  kentik__mkp__v202407__tenant_user__field_descriptors,
+  kentik__mkp__v202407__tenant_user__field_indices_by_name,
+  1,  kentik__mkp__v202407__tenant_user__number_ranges,
+  (ProtobufCMessageInit) kentik__mkp__v202407__tenant_user__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
 static const ProtobufCFieldDescriptor kentik__mkp__v202407__tenant__field_descriptors[18] =
 {
   {
@@ -3057,7 +3539,7 @@ static const ProtobufCFieldDescriptor kentik__mkp__v202407__tenant__field_descri
     PROTOBUF_C_TYPE_MESSAGE,
     offsetof(Kentik__Mkp__V202407__Tenant, n_users),
     offsetof(Kentik__Mkp__V202407__Tenant, users),
-    &kentik__user__v202211__user__descriptor,
+    &kentik__mkp__v202407__tenant_user__descriptor,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
@@ -3821,6 +4303,316 @@ const ProtobufCMessageDescriptor kentik__mkp__v202407__delete_tenant_response__d
   (ProtobufCMessageInit) kentik__mkp__v202407__delete_tenant_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
+static const ProtobufCFieldDescriptor kentik__mkp__v202407__list_tenant_user_request__field_descriptors[1] =
+{
+  {
+    "tenant_id",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Mkp__V202407__ListTenantUserRequest, tenant_id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__mkp__v202407__list_tenant_user_request__field_indices_by_name[] = {
+  0,   /* field[0] = tenant_id */
+};
+static const ProtobufCIntRange kentik__mkp__v202407__list_tenant_user_request__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor kentik__mkp__v202407__list_tenant_user_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.mkp.v202407.ListTenantUserRequest",
+  "ListTenantUserRequest",
+  "Kentik__Mkp__V202407__ListTenantUserRequest",
+  "kentik.mkp.v202407",
+  sizeof(Kentik__Mkp__V202407__ListTenantUserRequest),
+  1,
+  kentik__mkp__v202407__list_tenant_user_request__field_descriptors,
+  kentik__mkp__v202407__list_tenant_user_request__field_indices_by_name,
+  1,  kentik__mkp__v202407__list_tenant_user_request__number_ranges,
+  (ProtobufCMessageInit) kentik__mkp__v202407__list_tenant_user_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__mkp__v202407__list_tenant_user_response__field_descriptors[2] =
+{
+  {
+    "users",
+    1,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Kentik__Mkp__V202407__ListTenantUserResponse, n_users),
+    offsetof(Kentik__Mkp__V202407__ListTenantUserResponse, users),
+    &kentik__mkp__v202407__tenant_user__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "invalid_count",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT32,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Mkp__V202407__ListTenantUserResponse, invalid_count),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__mkp__v202407__list_tenant_user_response__field_indices_by_name[] = {
+  1,   /* field[1] = invalid_count */
+  0,   /* field[0] = users */
+};
+static const ProtobufCIntRange kentik__mkp__v202407__list_tenant_user_response__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor kentik__mkp__v202407__list_tenant_user_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.mkp.v202407.ListTenantUserResponse",
+  "ListTenantUserResponse",
+  "Kentik__Mkp__V202407__ListTenantUserResponse",
+  "kentik.mkp.v202407",
+  sizeof(Kentik__Mkp__V202407__ListTenantUserResponse),
+  2,
+  kentik__mkp__v202407__list_tenant_user_response__field_descriptors,
+  kentik__mkp__v202407__list_tenant_user_response__field_indices_by_name,
+  1,  kentik__mkp__v202407__list_tenant_user_response__number_ranges,
+  (ProtobufCMessageInit) kentik__mkp__v202407__list_tenant_user_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__mkp__v202407__create_tenant_user_request__field_descriptors[1] =
+{
+  {
+    "user",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Mkp__V202407__CreateTenantUserRequest, user),
+    &kentik__mkp__v202407__tenant_user__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__mkp__v202407__create_tenant_user_request__field_indices_by_name[] = {
+  0,   /* field[0] = user */
+};
+static const ProtobufCIntRange kentik__mkp__v202407__create_tenant_user_request__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor kentik__mkp__v202407__create_tenant_user_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.mkp.v202407.CreateTenantUserRequest",
+  "CreateTenantUserRequest",
+  "Kentik__Mkp__V202407__CreateTenantUserRequest",
+  "kentik.mkp.v202407",
+  sizeof(Kentik__Mkp__V202407__CreateTenantUserRequest),
+  1,
+  kentik__mkp__v202407__create_tenant_user_request__field_descriptors,
+  kentik__mkp__v202407__create_tenant_user_request__field_indices_by_name,
+  1,  kentik__mkp__v202407__create_tenant_user_request__number_ranges,
+  (ProtobufCMessageInit) kentik__mkp__v202407__create_tenant_user_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__mkp__v202407__create_tenant_user_response__field_descriptors[1] =
+{
+  {
+    "user",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Mkp__V202407__CreateTenantUserResponse, user),
+    &kentik__mkp__v202407__tenant_user__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__mkp__v202407__create_tenant_user_response__field_indices_by_name[] = {
+  0,   /* field[0] = user */
+};
+static const ProtobufCIntRange kentik__mkp__v202407__create_tenant_user_response__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor kentik__mkp__v202407__create_tenant_user_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.mkp.v202407.CreateTenantUserResponse",
+  "CreateTenantUserResponse",
+  "Kentik__Mkp__V202407__CreateTenantUserResponse",
+  "kentik.mkp.v202407",
+  sizeof(Kentik__Mkp__V202407__CreateTenantUserResponse),
+  1,
+  kentik__mkp__v202407__create_tenant_user_response__field_descriptors,
+  kentik__mkp__v202407__create_tenant_user_response__field_indices_by_name,
+  1,  kentik__mkp__v202407__create_tenant_user_response__number_ranges,
+  (ProtobufCMessageInit) kentik__mkp__v202407__create_tenant_user_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__mkp__v202407__update_tenant_user_request__field_descriptors[1] =
+{
+  {
+    "user",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Mkp__V202407__UpdateTenantUserRequest, user),
+    &kentik__mkp__v202407__tenant_user__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__mkp__v202407__update_tenant_user_request__field_indices_by_name[] = {
+  0,   /* field[0] = user */
+};
+static const ProtobufCIntRange kentik__mkp__v202407__update_tenant_user_request__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor kentik__mkp__v202407__update_tenant_user_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.mkp.v202407.UpdateTenantUserRequest",
+  "UpdateTenantUserRequest",
+  "Kentik__Mkp__V202407__UpdateTenantUserRequest",
+  "kentik.mkp.v202407",
+  sizeof(Kentik__Mkp__V202407__UpdateTenantUserRequest),
+  1,
+  kentik__mkp__v202407__update_tenant_user_request__field_descriptors,
+  kentik__mkp__v202407__update_tenant_user_request__field_indices_by_name,
+  1,  kentik__mkp__v202407__update_tenant_user_request__number_ranges,
+  (ProtobufCMessageInit) kentik__mkp__v202407__update_tenant_user_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__mkp__v202407__update_tenant_user_response__field_descriptors[1] =
+{
+  {
+    "user",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Mkp__V202407__UpdateTenantUserResponse, user),
+    &kentik__mkp__v202407__tenant_user__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__mkp__v202407__update_tenant_user_response__field_indices_by_name[] = {
+  0,   /* field[0] = user */
+};
+static const ProtobufCIntRange kentik__mkp__v202407__update_tenant_user_response__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor kentik__mkp__v202407__update_tenant_user_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.mkp.v202407.UpdateTenantUserResponse",
+  "UpdateTenantUserResponse",
+  "Kentik__Mkp__V202407__UpdateTenantUserResponse",
+  "kentik.mkp.v202407",
+  sizeof(Kentik__Mkp__V202407__UpdateTenantUserResponse),
+  1,
+  kentik__mkp__v202407__update_tenant_user_response__field_descriptors,
+  kentik__mkp__v202407__update_tenant_user_response__field_indices_by_name,
+  1,  kentik__mkp__v202407__update_tenant_user_response__number_ranges,
+  (ProtobufCMessageInit) kentik__mkp__v202407__update_tenant_user_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__mkp__v202407__delete_tenant_user_request__field_descriptors[2] =
+{
+  {
+    "tenant_id",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Mkp__V202407__DeleteTenantUserRequest, tenant_id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "id",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Mkp__V202407__DeleteTenantUserRequest, id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__mkp__v202407__delete_tenant_user_request__field_indices_by_name[] = {
+  1,   /* field[1] = id */
+  0,   /* field[0] = tenant_id */
+};
+static const ProtobufCIntRange kentik__mkp__v202407__delete_tenant_user_request__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor kentik__mkp__v202407__delete_tenant_user_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.mkp.v202407.DeleteTenantUserRequest",
+  "DeleteTenantUserRequest",
+  "Kentik__Mkp__V202407__DeleteTenantUserRequest",
+  "kentik.mkp.v202407",
+  sizeof(Kentik__Mkp__V202407__DeleteTenantUserRequest),
+  2,
+  kentik__mkp__v202407__delete_tenant_user_request__field_descriptors,
+  kentik__mkp__v202407__delete_tenant_user_request__field_indices_by_name,
+  1,  kentik__mkp__v202407__delete_tenant_user_request__number_ranges,
+  (ProtobufCMessageInit) kentik__mkp__v202407__delete_tenant_user_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+#define kentik__mkp__v202407__delete_tenant_user_response__field_descriptors NULL
+#define kentik__mkp__v202407__delete_tenant_user_response__field_indices_by_name NULL
+#define kentik__mkp__v202407__delete_tenant_user_response__number_ranges NULL
+const ProtobufCMessageDescriptor kentik__mkp__v202407__delete_tenant_user_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.mkp.v202407.DeleteTenantUserResponse",
+  "DeleteTenantUserResponse",
+  "Kentik__Mkp__V202407__DeleteTenantUserResponse",
+  "kentik.mkp.v202407",
+  sizeof(Kentik__Mkp__V202407__DeleteTenantUserResponse),
+  0,
+  kentik__mkp__v202407__delete_tenant_user_response__field_descriptors,
+  kentik__mkp__v202407__delete_tenant_user_response__field_indices_by_name,
+  0,  kentik__mkp__v202407__delete_tenant_user_response__number_ranges,
+  (ProtobufCMessageInit) kentik__mkp__v202407__delete_tenant_user_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
 static const ProtobufCMethodDescriptor kentik__mkp__v202407__package_service__method_descriptors[5] =
 {
   { "ListPackage", &kentik__mkp__v202407__list_package_request__descriptor, &kentik__mkp__v202407__list_package_response__descriptor },
@@ -3965,5 +4757,68 @@ void kentik__mkp__v202407__tenant_service__init (Kentik__Mkp__V202407__TenantSer
 {
   protobuf_c_service_generated_init (&service->base,
                                      &kentik__mkp__v202407__tenant_service__descriptor,
+                                     (ProtobufCServiceDestroy) destroy);
+}
+static const ProtobufCMethodDescriptor kentik__mkp__v202407__tenant_user_service__method_descriptors[4] =
+{
+  { "ListTenantUser", &kentik__mkp__v202407__list_tenant_user_request__descriptor, &kentik__mkp__v202407__list_tenant_user_response__descriptor },
+  { "CreateTenantUser", &kentik__mkp__v202407__create_tenant_user_request__descriptor, &kentik__mkp__v202407__create_tenant_user_response__descriptor },
+  { "UpdateTenantUser", &kentik__mkp__v202407__update_tenant_user_request__descriptor, &kentik__mkp__v202407__update_tenant_user_response__descriptor },
+  { "DeleteTenantUser", &kentik__mkp__v202407__delete_tenant_user_request__descriptor, &kentik__mkp__v202407__delete_tenant_user_response__descriptor },
+};
+const unsigned kentik__mkp__v202407__tenant_user_service__method_indices_by_name[] = {
+  1,        /* CreateTenantUser */
+  3,        /* DeleteTenantUser */
+  0,        /* ListTenantUser */
+  2         /* UpdateTenantUser */
+};
+const ProtobufCServiceDescriptor kentik__mkp__v202407__tenant_user_service__descriptor =
+{
+  PROTOBUF_C__SERVICE_DESCRIPTOR_MAGIC,
+  "kentik.mkp.v202407.TenantUserService",
+  "TenantUserService",
+  "Kentik__Mkp__V202407__TenantUserService",
+  "kentik.mkp.v202407",
+  4,
+  kentik__mkp__v202407__tenant_user_service__method_descriptors,
+  kentik__mkp__v202407__tenant_user_service__method_indices_by_name
+};
+void kentik__mkp__v202407__tenant_user_service__list_tenant_user(ProtobufCService *service,
+                                                                 const Kentik__Mkp__V202407__ListTenantUserRequest *input,
+                                                                 Kentik__Mkp__V202407__ListTenantUserResponse_Closure closure,
+                                                                 void *closure_data)
+{
+  assert(service->descriptor == &kentik__mkp__v202407__tenant_user_service__descriptor);
+  service->invoke(service, 0, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
+void kentik__mkp__v202407__tenant_user_service__create_tenant_user(ProtobufCService *service,
+                                                                   const Kentik__Mkp__V202407__CreateTenantUserRequest *input,
+                                                                   Kentik__Mkp__V202407__CreateTenantUserResponse_Closure closure,
+                                                                   void *closure_data)
+{
+  assert(service->descriptor == &kentik__mkp__v202407__tenant_user_service__descriptor);
+  service->invoke(service, 1, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
+void kentik__mkp__v202407__tenant_user_service__update_tenant_user(ProtobufCService *service,
+                                                                   const Kentik__Mkp__V202407__UpdateTenantUserRequest *input,
+                                                                   Kentik__Mkp__V202407__UpdateTenantUserResponse_Closure closure,
+                                                                   void *closure_data)
+{
+  assert(service->descriptor == &kentik__mkp__v202407__tenant_user_service__descriptor);
+  service->invoke(service, 2, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
+void kentik__mkp__v202407__tenant_user_service__delete_tenant_user(ProtobufCService *service,
+                                                                   const Kentik__Mkp__V202407__DeleteTenantUserRequest *input,
+                                                                   Kentik__Mkp__V202407__DeleteTenantUserResponse_Closure closure,
+                                                                   void *closure_data)
+{
+  assert(service->descriptor == &kentik__mkp__v202407__tenant_user_service__descriptor);
+  service->invoke(service, 3, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
+void kentik__mkp__v202407__tenant_user_service__init (Kentik__Mkp__V202407__TenantUserService_Service *service,
+                                                      Kentik__Mkp__V202407__TenantUserService_ServiceDestroy destroy)
+{
+  protobuf_c_service_generated_init (&service->base,
+                                     &kentik__mkp__v202407__tenant_user_service__descriptor,
                                      (ProtobufCServiceDestroy) destroy);
 }

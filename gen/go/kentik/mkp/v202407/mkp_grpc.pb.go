@@ -523,3 +523,217 @@ var TenantService_ServiceDesc = grpc.ServiceDesc{
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "kentik/mkp/v202407/mkp.proto",
 }
+
+const (
+	TenantUserService_ListTenantUser_FullMethodName   = "/kentik.mkp.v202407.TenantUserService/ListTenantUser"
+	TenantUserService_CreateTenantUser_FullMethodName = "/kentik.mkp.v202407.TenantUserService/CreateTenantUser"
+	TenantUserService_UpdateTenantUser_FullMethodName = "/kentik.mkp.v202407.TenantUserService/UpdateTenantUser"
+	TenantUserService_DeleteTenantUser_FullMethodName = "/kentik.mkp.v202407.TenantUserService/DeleteTenantUser"
+)
+
+// TenantUserServiceClient is the client API for TenantUserService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type TenantUserServiceClient interface {
+	ListTenantUser(ctx context.Context, in *ListTenantUserRequest, opts ...grpc.CallOption) (*ListTenantUserResponse, error)
+	CreateTenantUser(ctx context.Context, in *CreateTenantUserRequest, opts ...grpc.CallOption) (*CreateTenantUserResponse, error)
+	UpdateTenantUser(ctx context.Context, in *UpdateTenantUserRequest, opts ...grpc.CallOption) (*UpdateTenantUserResponse, error)
+	DeleteTenantUser(ctx context.Context, in *DeleteTenantUserRequest, opts ...grpc.CallOption) (*DeleteTenantUserResponse, error)
+}
+
+type tenantUserServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewTenantUserServiceClient(cc grpc.ClientConnInterface) TenantUserServiceClient {
+	return &tenantUserServiceClient{cc}
+}
+
+func (c *tenantUserServiceClient) ListTenantUser(ctx context.Context, in *ListTenantUserRequest, opts ...grpc.CallOption) (*ListTenantUserResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListTenantUserResponse)
+	err := c.cc.Invoke(ctx, TenantUserService_ListTenantUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tenantUserServiceClient) CreateTenantUser(ctx context.Context, in *CreateTenantUserRequest, opts ...grpc.CallOption) (*CreateTenantUserResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateTenantUserResponse)
+	err := c.cc.Invoke(ctx, TenantUserService_CreateTenantUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tenantUserServiceClient) UpdateTenantUser(ctx context.Context, in *UpdateTenantUserRequest, opts ...grpc.CallOption) (*UpdateTenantUserResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateTenantUserResponse)
+	err := c.cc.Invoke(ctx, TenantUserService_UpdateTenantUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tenantUserServiceClient) DeleteTenantUser(ctx context.Context, in *DeleteTenantUserRequest, opts ...grpc.CallOption) (*DeleteTenantUserResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteTenantUserResponse)
+	err := c.cc.Invoke(ctx, TenantUserService_DeleteTenantUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// TenantUserServiceServer is the server API for TenantUserService service.
+// All implementations should embed UnimplementedTenantUserServiceServer
+// for forward compatibility.
+type TenantUserServiceServer interface {
+	ListTenantUser(context.Context, *ListTenantUserRequest) (*ListTenantUserResponse, error)
+	CreateTenantUser(context.Context, *CreateTenantUserRequest) (*CreateTenantUserResponse, error)
+	UpdateTenantUser(context.Context, *UpdateTenantUserRequest) (*UpdateTenantUserResponse, error)
+	DeleteTenantUser(context.Context, *DeleteTenantUserRequest) (*DeleteTenantUserResponse, error)
+}
+
+// UnimplementedTenantUserServiceServer should be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedTenantUserServiceServer struct{}
+
+func (UnimplementedTenantUserServiceServer) ListTenantUser(context.Context, *ListTenantUserRequest) (*ListTenantUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListTenantUser not implemented")
+}
+func (UnimplementedTenantUserServiceServer) CreateTenantUser(context.Context, *CreateTenantUserRequest) (*CreateTenantUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateTenantUser not implemented")
+}
+func (UnimplementedTenantUserServiceServer) UpdateTenantUser(context.Context, *UpdateTenantUserRequest) (*UpdateTenantUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateTenantUser not implemented")
+}
+func (UnimplementedTenantUserServiceServer) DeleteTenantUser(context.Context, *DeleteTenantUserRequest) (*DeleteTenantUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteTenantUser not implemented")
+}
+func (UnimplementedTenantUserServiceServer) testEmbeddedByValue() {}
+
+// UnsafeTenantUserServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to TenantUserServiceServer will
+// result in compilation errors.
+type UnsafeTenantUserServiceServer interface {
+	mustEmbedUnimplementedTenantUserServiceServer()
+}
+
+func RegisterTenantUserServiceServer(s grpc.ServiceRegistrar, srv TenantUserServiceServer) {
+	// If the following call pancis, it indicates UnimplementedTenantUserServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&TenantUserService_ServiceDesc, srv)
+}
+
+func _TenantUserService_ListTenantUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListTenantUserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TenantUserServiceServer).ListTenantUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TenantUserService_ListTenantUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TenantUserServiceServer).ListTenantUser(ctx, req.(*ListTenantUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TenantUserService_CreateTenantUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateTenantUserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TenantUserServiceServer).CreateTenantUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TenantUserService_CreateTenantUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TenantUserServiceServer).CreateTenantUser(ctx, req.(*CreateTenantUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TenantUserService_UpdateTenantUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateTenantUserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TenantUserServiceServer).UpdateTenantUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TenantUserService_UpdateTenantUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TenantUserServiceServer).UpdateTenantUser(ctx, req.(*UpdateTenantUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TenantUserService_DeleteTenantUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteTenantUserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TenantUserServiceServer).DeleteTenantUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TenantUserService_DeleteTenantUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TenantUserServiceServer).DeleteTenantUser(ctx, req.(*DeleteTenantUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// TenantUserService_ServiceDesc is the grpc.ServiceDesc for TenantUserService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var TenantUserService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "kentik.mkp.v202407.TenantUserService",
+	HandlerType: (*TenantUserServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "ListTenantUser",
+			Handler:    _TenantUserService_ListTenantUser_Handler,
+		},
+		{
+			MethodName: "CreateTenantUser",
+			Handler:    _TenantUserService_CreateTenantUser_Handler,
+		},
+		{
+			MethodName: "UpdateTenantUser",
+			Handler:    _TenantUserService_UpdateTenantUser_Handler,
+		},
+		{
+			MethodName: "DeleteTenantUser",
+			Handler:    _TenantUserService_DeleteTenantUser_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "kentik/mkp/v202407/mkp.proto",
+}

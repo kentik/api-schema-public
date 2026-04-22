@@ -35,6 +35,7 @@ typedef struct Kentik__Mkp__V202407__CustomDimension Kentik__Mkp__V202407__Custo
 typedef struct Kentik__Mkp__V202407__Devices Kentik__Mkp__V202407__Devices;
 typedef struct Kentik__Mkp__V202407__FilterField Kentik__Mkp__V202407__FilterField;
 typedef struct Kentik__Mkp__V202407__Filter Kentik__Mkp__V202407__Filter;
+typedef struct Kentik__Mkp__V202407__TenantUser Kentik__Mkp__V202407__TenantUser;
 typedef struct Kentik__Mkp__V202407__Tenant Kentik__Mkp__V202407__Tenant;
 typedef struct Kentik__Mkp__V202407__ListPackageRequest Kentik__Mkp__V202407__ListPackageRequest;
 typedef struct Kentik__Mkp__V202407__ListPackageResponse Kentik__Mkp__V202407__ListPackageResponse;
@@ -56,6 +57,14 @@ typedef struct Kentik__Mkp__V202407__UpdateTenantRequest Kentik__Mkp__V202407__U
 typedef struct Kentik__Mkp__V202407__UpdateTenantResponse Kentik__Mkp__V202407__UpdateTenantResponse;
 typedef struct Kentik__Mkp__V202407__DeleteTenantRequest Kentik__Mkp__V202407__DeleteTenantRequest;
 typedef struct Kentik__Mkp__V202407__DeleteTenantResponse Kentik__Mkp__V202407__DeleteTenantResponse;
+typedef struct Kentik__Mkp__V202407__ListTenantUserRequest Kentik__Mkp__V202407__ListTenantUserRequest;
+typedef struct Kentik__Mkp__V202407__ListTenantUserResponse Kentik__Mkp__V202407__ListTenantUserResponse;
+typedef struct Kentik__Mkp__V202407__CreateTenantUserRequest Kentik__Mkp__V202407__CreateTenantUserRequest;
+typedef struct Kentik__Mkp__V202407__CreateTenantUserResponse Kentik__Mkp__V202407__CreateTenantUserResponse;
+typedef struct Kentik__Mkp__V202407__UpdateTenantUserRequest Kentik__Mkp__V202407__UpdateTenantUserRequest;
+typedef struct Kentik__Mkp__V202407__UpdateTenantUserResponse Kentik__Mkp__V202407__UpdateTenantUserResponse;
+typedef struct Kentik__Mkp__V202407__DeleteTenantUserRequest Kentik__Mkp__V202407__DeleteTenantUserRequest;
+typedef struct Kentik__Mkp__V202407__DeleteTenantUserResponse Kentik__Mkp__V202407__DeleteTenantUserResponse;
 
 
 /* --- enums --- */
@@ -321,6 +330,22 @@ struct  Kentik__Mkp__V202407__Filter
 /*
  * {{.Name}}
  */
+struct  Kentik__Mkp__V202407__TenantUser
+{
+  ProtobufCMessage base;
+  char *id;
+  char *tenant_id;
+  char *user_full_name;
+  char *user_email;
+};
+#define KENTIK__MKP__V202407__TENANT_USER__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__mkp__v202407__tenant_user__descriptor) \
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
+
+
+/*
+ * {{.Name}}
+ */
 struct  Kentik__Mkp__V202407__Tenant
 {
   ProtobufCMessage base;
@@ -347,7 +372,7 @@ struct  Kentik__Mkp__V202407__Tenant
   size_t n_packages;
   Kentik__Mkp__V202407__Package **packages;
   size_t n_users;
-  Kentik__User__V202211__User **users;
+  Kentik__Mkp__V202407__TenantUser **users;
   char *template_id;
 };
 #define KENTIK__MKP__V202407__TENANT__INIT \
@@ -618,6 +643,112 @@ struct  Kentik__Mkp__V202407__DeleteTenantResponse
      }
 
 
+/*
+ * {{.Name}}
+ */
+struct  Kentik__Mkp__V202407__ListTenantUserRequest
+{
+  ProtobufCMessage base;
+  char *tenant_id;
+};
+#define KENTIK__MKP__V202407__LIST_TENANT_USER_REQUEST__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__mkp__v202407__list_tenant_user_request__descriptor) \
+    , (char *)protobuf_c_empty_string }
+
+
+/*
+ * {{.Name}}
+ */
+struct  Kentik__Mkp__V202407__ListTenantUserResponse
+{
+  ProtobufCMessage base;
+  size_t n_users;
+  Kentik__Mkp__V202407__TenantUser **users;
+  uint32_t invalid_count;
+};
+#define KENTIK__MKP__V202407__LIST_TENANT_USER_RESPONSE__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__mkp__v202407__list_tenant_user_response__descriptor) \
+    , 0,NULL, 0 }
+
+
+/*
+ * {{.Name}}
+ */
+struct  Kentik__Mkp__V202407__CreateTenantUserRequest
+{
+  ProtobufCMessage base;
+  Kentik__Mkp__V202407__TenantUser *user;
+};
+#define KENTIK__MKP__V202407__CREATE_TENANT_USER_REQUEST__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__mkp__v202407__create_tenant_user_request__descriptor) \
+    , NULL }
+
+
+/*
+ * {{.Name}}
+ */
+struct  Kentik__Mkp__V202407__CreateTenantUserResponse
+{
+  ProtobufCMessage base;
+  Kentik__Mkp__V202407__TenantUser *user;
+};
+#define KENTIK__MKP__V202407__CREATE_TENANT_USER_RESPONSE__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__mkp__v202407__create_tenant_user_response__descriptor) \
+    , NULL }
+
+
+/*
+ * {{.Name}}
+ */
+struct  Kentik__Mkp__V202407__UpdateTenantUserRequest
+{
+  ProtobufCMessage base;
+  Kentik__Mkp__V202407__TenantUser *user;
+};
+#define KENTIK__MKP__V202407__UPDATE_TENANT_USER_REQUEST__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__mkp__v202407__update_tenant_user_request__descriptor) \
+    , NULL }
+
+
+/*
+ * {{.Name}}
+ */
+struct  Kentik__Mkp__V202407__UpdateTenantUserResponse
+{
+  ProtobufCMessage base;
+  Kentik__Mkp__V202407__TenantUser *user;
+};
+#define KENTIK__MKP__V202407__UPDATE_TENANT_USER_RESPONSE__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__mkp__v202407__update_tenant_user_response__descriptor) \
+    , NULL }
+
+
+/*
+ * {{.Name}}
+ */
+struct  Kentik__Mkp__V202407__DeleteTenantUserRequest
+{
+  ProtobufCMessage base;
+  char *tenant_id;
+  char *id;
+};
+#define KENTIK__MKP__V202407__DELETE_TENANT_USER_REQUEST__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__mkp__v202407__delete_tenant_user_request__descriptor) \
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
+
+
+/*
+ * {{.Name}}
+ */
+struct  Kentik__Mkp__V202407__DeleteTenantUserResponse
+{
+  ProtobufCMessage base;
+};
+#define KENTIK__MKP__V202407__DELETE_TENANT_USER_RESPONSE__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__mkp__v202407__delete_tenant_user_response__descriptor) \
+     }
+
+
 /* Kentik__Mkp__V202407__Alert methods */
 void   kentik__mkp__v202407__alert__init
                      (Kentik__Mkp__V202407__Alert         *message);
@@ -867,6 +998,25 @@ Kentik__Mkp__V202407__Filter *
                       const uint8_t       *data);
 void   kentik__mkp__v202407__filter__free_unpacked
                      (Kentik__Mkp__V202407__Filter *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Mkp__V202407__TenantUser methods */
+void   kentik__mkp__v202407__tenant_user__init
+                     (Kentik__Mkp__V202407__TenantUser         *message);
+size_t kentik__mkp__v202407__tenant_user__get_packed_size
+                     (const Kentik__Mkp__V202407__TenantUser   *message);
+size_t kentik__mkp__v202407__tenant_user__pack
+                     (const Kentik__Mkp__V202407__TenantUser   *message,
+                      uint8_t             *out);
+size_t kentik__mkp__v202407__tenant_user__pack_to_buffer
+                     (const Kentik__Mkp__V202407__TenantUser   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Mkp__V202407__TenantUser *
+       kentik__mkp__v202407__tenant_user__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__mkp__v202407__tenant_user__free_unpacked
+                     (Kentik__Mkp__V202407__TenantUser *message,
                       ProtobufCAllocator *allocator);
 /* Kentik__Mkp__V202407__Tenant methods */
 void   kentik__mkp__v202407__tenant__init
@@ -1267,6 +1417,158 @@ Kentik__Mkp__V202407__DeleteTenantResponse *
 void   kentik__mkp__v202407__delete_tenant_response__free_unpacked
                      (Kentik__Mkp__V202407__DeleteTenantResponse *message,
                       ProtobufCAllocator *allocator);
+/* Kentik__Mkp__V202407__ListTenantUserRequest methods */
+void   kentik__mkp__v202407__list_tenant_user_request__init
+                     (Kentik__Mkp__V202407__ListTenantUserRequest         *message);
+size_t kentik__mkp__v202407__list_tenant_user_request__get_packed_size
+                     (const Kentik__Mkp__V202407__ListTenantUserRequest   *message);
+size_t kentik__mkp__v202407__list_tenant_user_request__pack
+                     (const Kentik__Mkp__V202407__ListTenantUserRequest   *message,
+                      uint8_t             *out);
+size_t kentik__mkp__v202407__list_tenant_user_request__pack_to_buffer
+                     (const Kentik__Mkp__V202407__ListTenantUserRequest   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Mkp__V202407__ListTenantUserRequest *
+       kentik__mkp__v202407__list_tenant_user_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__mkp__v202407__list_tenant_user_request__free_unpacked
+                     (Kentik__Mkp__V202407__ListTenantUserRequest *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Mkp__V202407__ListTenantUserResponse methods */
+void   kentik__mkp__v202407__list_tenant_user_response__init
+                     (Kentik__Mkp__V202407__ListTenantUserResponse         *message);
+size_t kentik__mkp__v202407__list_tenant_user_response__get_packed_size
+                     (const Kentik__Mkp__V202407__ListTenantUserResponse   *message);
+size_t kentik__mkp__v202407__list_tenant_user_response__pack
+                     (const Kentik__Mkp__V202407__ListTenantUserResponse   *message,
+                      uint8_t             *out);
+size_t kentik__mkp__v202407__list_tenant_user_response__pack_to_buffer
+                     (const Kentik__Mkp__V202407__ListTenantUserResponse   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Mkp__V202407__ListTenantUserResponse *
+       kentik__mkp__v202407__list_tenant_user_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__mkp__v202407__list_tenant_user_response__free_unpacked
+                     (Kentik__Mkp__V202407__ListTenantUserResponse *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Mkp__V202407__CreateTenantUserRequest methods */
+void   kentik__mkp__v202407__create_tenant_user_request__init
+                     (Kentik__Mkp__V202407__CreateTenantUserRequest         *message);
+size_t kentik__mkp__v202407__create_tenant_user_request__get_packed_size
+                     (const Kentik__Mkp__V202407__CreateTenantUserRequest   *message);
+size_t kentik__mkp__v202407__create_tenant_user_request__pack
+                     (const Kentik__Mkp__V202407__CreateTenantUserRequest   *message,
+                      uint8_t             *out);
+size_t kentik__mkp__v202407__create_tenant_user_request__pack_to_buffer
+                     (const Kentik__Mkp__V202407__CreateTenantUserRequest   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Mkp__V202407__CreateTenantUserRequest *
+       kentik__mkp__v202407__create_tenant_user_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__mkp__v202407__create_tenant_user_request__free_unpacked
+                     (Kentik__Mkp__V202407__CreateTenantUserRequest *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Mkp__V202407__CreateTenantUserResponse methods */
+void   kentik__mkp__v202407__create_tenant_user_response__init
+                     (Kentik__Mkp__V202407__CreateTenantUserResponse         *message);
+size_t kentik__mkp__v202407__create_tenant_user_response__get_packed_size
+                     (const Kentik__Mkp__V202407__CreateTenantUserResponse   *message);
+size_t kentik__mkp__v202407__create_tenant_user_response__pack
+                     (const Kentik__Mkp__V202407__CreateTenantUserResponse   *message,
+                      uint8_t             *out);
+size_t kentik__mkp__v202407__create_tenant_user_response__pack_to_buffer
+                     (const Kentik__Mkp__V202407__CreateTenantUserResponse   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Mkp__V202407__CreateTenantUserResponse *
+       kentik__mkp__v202407__create_tenant_user_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__mkp__v202407__create_tenant_user_response__free_unpacked
+                     (Kentik__Mkp__V202407__CreateTenantUserResponse *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Mkp__V202407__UpdateTenantUserRequest methods */
+void   kentik__mkp__v202407__update_tenant_user_request__init
+                     (Kentik__Mkp__V202407__UpdateTenantUserRequest         *message);
+size_t kentik__mkp__v202407__update_tenant_user_request__get_packed_size
+                     (const Kentik__Mkp__V202407__UpdateTenantUserRequest   *message);
+size_t kentik__mkp__v202407__update_tenant_user_request__pack
+                     (const Kentik__Mkp__V202407__UpdateTenantUserRequest   *message,
+                      uint8_t             *out);
+size_t kentik__mkp__v202407__update_tenant_user_request__pack_to_buffer
+                     (const Kentik__Mkp__V202407__UpdateTenantUserRequest   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Mkp__V202407__UpdateTenantUserRequest *
+       kentik__mkp__v202407__update_tenant_user_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__mkp__v202407__update_tenant_user_request__free_unpacked
+                     (Kentik__Mkp__V202407__UpdateTenantUserRequest *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Mkp__V202407__UpdateTenantUserResponse methods */
+void   kentik__mkp__v202407__update_tenant_user_response__init
+                     (Kentik__Mkp__V202407__UpdateTenantUserResponse         *message);
+size_t kentik__mkp__v202407__update_tenant_user_response__get_packed_size
+                     (const Kentik__Mkp__V202407__UpdateTenantUserResponse   *message);
+size_t kentik__mkp__v202407__update_tenant_user_response__pack
+                     (const Kentik__Mkp__V202407__UpdateTenantUserResponse   *message,
+                      uint8_t             *out);
+size_t kentik__mkp__v202407__update_tenant_user_response__pack_to_buffer
+                     (const Kentik__Mkp__V202407__UpdateTenantUserResponse   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Mkp__V202407__UpdateTenantUserResponse *
+       kentik__mkp__v202407__update_tenant_user_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__mkp__v202407__update_tenant_user_response__free_unpacked
+                     (Kentik__Mkp__V202407__UpdateTenantUserResponse *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Mkp__V202407__DeleteTenantUserRequest methods */
+void   kentik__mkp__v202407__delete_tenant_user_request__init
+                     (Kentik__Mkp__V202407__DeleteTenantUserRequest         *message);
+size_t kentik__mkp__v202407__delete_tenant_user_request__get_packed_size
+                     (const Kentik__Mkp__V202407__DeleteTenantUserRequest   *message);
+size_t kentik__mkp__v202407__delete_tenant_user_request__pack
+                     (const Kentik__Mkp__V202407__DeleteTenantUserRequest   *message,
+                      uint8_t             *out);
+size_t kentik__mkp__v202407__delete_tenant_user_request__pack_to_buffer
+                     (const Kentik__Mkp__V202407__DeleteTenantUserRequest   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Mkp__V202407__DeleteTenantUserRequest *
+       kentik__mkp__v202407__delete_tenant_user_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__mkp__v202407__delete_tenant_user_request__free_unpacked
+                     (Kentik__Mkp__V202407__DeleteTenantUserRequest *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Mkp__V202407__DeleteTenantUserResponse methods */
+void   kentik__mkp__v202407__delete_tenant_user_response__init
+                     (Kentik__Mkp__V202407__DeleteTenantUserResponse         *message);
+size_t kentik__mkp__v202407__delete_tenant_user_response__get_packed_size
+                     (const Kentik__Mkp__V202407__DeleteTenantUserResponse   *message);
+size_t kentik__mkp__v202407__delete_tenant_user_response__pack
+                     (const Kentik__Mkp__V202407__DeleteTenantUserResponse   *message,
+                      uint8_t             *out);
+size_t kentik__mkp__v202407__delete_tenant_user_response__pack_to_buffer
+                     (const Kentik__Mkp__V202407__DeleteTenantUserResponse   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Mkp__V202407__DeleteTenantUserResponse *
+       kentik__mkp__v202407__delete_tenant_user_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__mkp__v202407__delete_tenant_user_response__free_unpacked
+                     (Kentik__Mkp__V202407__DeleteTenantUserResponse *message,
+                      ProtobufCAllocator *allocator);
 /* --- per-message closures --- */
 
 typedef void (*Kentik__Mkp__V202407__Alert_Closure)
@@ -1310,6 +1612,9 @@ typedef void (*Kentik__Mkp__V202407__FilterField_Closure)
                   void *closure_data);
 typedef void (*Kentik__Mkp__V202407__Filter_Closure)
                  (const Kentik__Mkp__V202407__Filter *message,
+                  void *closure_data);
+typedef void (*Kentik__Mkp__V202407__TenantUser_Closure)
+                 (const Kentik__Mkp__V202407__TenantUser *message,
                   void *closure_data);
 typedef void (*Kentik__Mkp__V202407__Tenant_Closure)
                  (const Kentik__Mkp__V202407__Tenant *message,
@@ -1373,6 +1678,30 @@ typedef void (*Kentik__Mkp__V202407__DeleteTenantRequest_Closure)
                   void *closure_data);
 typedef void (*Kentik__Mkp__V202407__DeleteTenantResponse_Closure)
                  (const Kentik__Mkp__V202407__DeleteTenantResponse *message,
+                  void *closure_data);
+typedef void (*Kentik__Mkp__V202407__ListTenantUserRequest_Closure)
+                 (const Kentik__Mkp__V202407__ListTenantUserRequest *message,
+                  void *closure_data);
+typedef void (*Kentik__Mkp__V202407__ListTenantUserResponse_Closure)
+                 (const Kentik__Mkp__V202407__ListTenantUserResponse *message,
+                  void *closure_data);
+typedef void (*Kentik__Mkp__V202407__CreateTenantUserRequest_Closure)
+                 (const Kentik__Mkp__V202407__CreateTenantUserRequest *message,
+                  void *closure_data);
+typedef void (*Kentik__Mkp__V202407__CreateTenantUserResponse_Closure)
+                 (const Kentik__Mkp__V202407__CreateTenantUserResponse *message,
+                  void *closure_data);
+typedef void (*Kentik__Mkp__V202407__UpdateTenantUserRequest_Closure)
+                 (const Kentik__Mkp__V202407__UpdateTenantUserRequest *message,
+                  void *closure_data);
+typedef void (*Kentik__Mkp__V202407__UpdateTenantUserResponse_Closure)
+                 (const Kentik__Mkp__V202407__UpdateTenantUserResponse *message,
+                  void *closure_data);
+typedef void (*Kentik__Mkp__V202407__DeleteTenantUserRequest_Closure)
+                 (const Kentik__Mkp__V202407__DeleteTenantUserRequest *message,
+                  void *closure_data);
+typedef void (*Kentik__Mkp__V202407__DeleteTenantUserResponse_Closure)
+                 (const Kentik__Mkp__V202407__DeleteTenantUserResponse *message,
                   void *closure_data);
 
 /* --- services --- */
@@ -1491,6 +1820,54 @@ void kentik__mkp__v202407__tenant_service__delete_tenant(ProtobufCService *servi
                                                          const Kentik__Mkp__V202407__DeleteTenantRequest *input,
                                                          Kentik__Mkp__V202407__DeleteTenantResponse_Closure closure,
                                                          void *closure_data);
+typedef struct Kentik__Mkp__V202407__TenantUserService_Service Kentik__Mkp__V202407__TenantUserService_Service;
+struct Kentik__Mkp__V202407__TenantUserService_Service
+{
+  ProtobufCService base;
+  void (*list_tenant_user)(Kentik__Mkp__V202407__TenantUserService_Service *service,
+                           const Kentik__Mkp__V202407__ListTenantUserRequest *input,
+                           Kentik__Mkp__V202407__ListTenantUserResponse_Closure closure,
+                           void *closure_data);
+  void (*create_tenant_user)(Kentik__Mkp__V202407__TenantUserService_Service *service,
+                             const Kentik__Mkp__V202407__CreateTenantUserRequest *input,
+                             Kentik__Mkp__V202407__CreateTenantUserResponse_Closure closure,
+                             void *closure_data);
+  void (*update_tenant_user)(Kentik__Mkp__V202407__TenantUserService_Service *service,
+                             const Kentik__Mkp__V202407__UpdateTenantUserRequest *input,
+                             Kentik__Mkp__V202407__UpdateTenantUserResponse_Closure closure,
+                             void *closure_data);
+  void (*delete_tenant_user)(Kentik__Mkp__V202407__TenantUserService_Service *service,
+                             const Kentik__Mkp__V202407__DeleteTenantUserRequest *input,
+                             Kentik__Mkp__V202407__DeleteTenantUserResponse_Closure closure,
+                             void *closure_data);
+};
+typedef void (*Kentik__Mkp__V202407__TenantUserService_ServiceDestroy)(Kentik__Mkp__V202407__TenantUserService_Service *);
+void kentik__mkp__v202407__tenant_user_service__init (Kentik__Mkp__V202407__TenantUserService_Service *service,
+                                                      Kentik__Mkp__V202407__TenantUserService_ServiceDestroy destroy);
+#define KENTIK__MKP__V202407__TENANT_USER_SERVICE__BASE_INIT \
+    { &kentik__mkp__v202407__tenant_user_service__descriptor, protobuf_c_service_invoke_internal, NULL }
+#define KENTIK__MKP__V202407__TENANT_USER_SERVICE__INIT(function_prefix__) \
+    { KENTIK__MKP__V202407__TENANT_USER_SERVICE__BASE_INIT,\
+      function_prefix__ ## list_tenant_user,\
+      function_prefix__ ## create_tenant_user,\
+      function_prefix__ ## update_tenant_user,\
+      function_prefix__ ## delete_tenant_user  }
+void kentik__mkp__v202407__tenant_user_service__list_tenant_user(ProtobufCService *service,
+                                                                 const Kentik__Mkp__V202407__ListTenantUserRequest *input,
+                                                                 Kentik__Mkp__V202407__ListTenantUserResponse_Closure closure,
+                                                                 void *closure_data);
+void kentik__mkp__v202407__tenant_user_service__create_tenant_user(ProtobufCService *service,
+                                                                   const Kentik__Mkp__V202407__CreateTenantUserRequest *input,
+                                                                   Kentik__Mkp__V202407__CreateTenantUserResponse_Closure closure,
+                                                                   void *closure_data);
+void kentik__mkp__v202407__tenant_user_service__update_tenant_user(ProtobufCService *service,
+                                                                   const Kentik__Mkp__V202407__UpdateTenantUserRequest *input,
+                                                                   Kentik__Mkp__V202407__UpdateTenantUserResponse_Closure closure,
+                                                                   void *closure_data);
+void kentik__mkp__v202407__tenant_user_service__delete_tenant_user(ProtobufCService *service,
+                                                                   const Kentik__Mkp__V202407__DeleteTenantUserRequest *input,
+                                                                   Kentik__Mkp__V202407__DeleteTenantUserResponse_Closure closure,
+                                                                   void *closure_data);
 
 /* --- descriptors --- */
 
@@ -1508,6 +1885,7 @@ extern const ProtobufCMessageDescriptor kentik__mkp__v202407__custom_dimension__
 extern const ProtobufCMessageDescriptor kentik__mkp__v202407__devices__descriptor;
 extern const ProtobufCMessageDescriptor kentik__mkp__v202407__filter_field__descriptor;
 extern const ProtobufCMessageDescriptor kentik__mkp__v202407__filter__descriptor;
+extern const ProtobufCMessageDescriptor kentik__mkp__v202407__tenant_user__descriptor;
 extern const ProtobufCMessageDescriptor kentik__mkp__v202407__tenant__descriptor;
 extern const ProtobufCMessageDescriptor kentik__mkp__v202407__list_package_request__descriptor;
 extern const ProtobufCMessageDescriptor kentik__mkp__v202407__list_package_response__descriptor;
@@ -1529,8 +1907,17 @@ extern const ProtobufCMessageDescriptor kentik__mkp__v202407__update_tenant_requ
 extern const ProtobufCMessageDescriptor kentik__mkp__v202407__update_tenant_response__descriptor;
 extern const ProtobufCMessageDescriptor kentik__mkp__v202407__delete_tenant_request__descriptor;
 extern const ProtobufCMessageDescriptor kentik__mkp__v202407__delete_tenant_response__descriptor;
+extern const ProtobufCMessageDescriptor kentik__mkp__v202407__list_tenant_user_request__descriptor;
+extern const ProtobufCMessageDescriptor kentik__mkp__v202407__list_tenant_user_response__descriptor;
+extern const ProtobufCMessageDescriptor kentik__mkp__v202407__create_tenant_user_request__descriptor;
+extern const ProtobufCMessageDescriptor kentik__mkp__v202407__create_tenant_user_response__descriptor;
+extern const ProtobufCMessageDescriptor kentik__mkp__v202407__update_tenant_user_request__descriptor;
+extern const ProtobufCMessageDescriptor kentik__mkp__v202407__update_tenant_user_response__descriptor;
+extern const ProtobufCMessageDescriptor kentik__mkp__v202407__delete_tenant_user_request__descriptor;
+extern const ProtobufCMessageDescriptor kentik__mkp__v202407__delete_tenant_user_response__descriptor;
 extern const ProtobufCServiceDescriptor kentik__mkp__v202407__package_service__descriptor;
 extern const ProtobufCServiceDescriptor kentik__mkp__v202407__tenant_service__descriptor;
+extern const ProtobufCServiceDescriptor kentik__mkp__v202407__tenant_user_service__descriptor;
 
 PROTOBUF_C__END_DECLS
 
