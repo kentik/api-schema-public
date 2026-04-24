@@ -207,12 +207,12 @@ message User {
   ];
   LandingType default_landing_page_type = 11 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "Landing Page for user."
+      description: "Type of the default landing page for the user."
     }
   ];
   string default_landing_page_value = 12 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "Specific landing page applies to Dashboard, Quick View, and Saved View"
+      description: "Identifier of the specific landing page. Applies to Dashboard, Quick View, Saved View, and Observation Deck landing page types."
     }
   ];
   repeated string roles = 13 [

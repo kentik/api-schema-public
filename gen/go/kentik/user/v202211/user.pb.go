@@ -976,7 +976,8 @@ const file_kentik_user_v202211_user_proto_rawDesc = "" +
 	"\n" +
 	"capability\x18\x01 \x01(\tB?\x92A927String identifying capability that is granted of denied\xe0A\x02R\n" +
 	"capability\x12N\n" +
-	"\aallowed\x18\x02 \x01(\bB4\x92A.2,Flag indicating whether operation is allowed\xe0A\x02R\aallowed\"\xb5\t\n" +
+	"\aallowed\x18\x02 \x01(\bB4\x92A.2,Flag indicating whether operation is allowed\xe0A\x02R\aallowed\"\x89\n" +
+	"\n" +
 	"\x04User\x12:\n" +
 	"\x02id\x18\x01 \x01(\tB*\x92A$2\"System generated unique identifier\xe0A\x03R\x02id\x12T\n" +
 	"\n" +
@@ -989,9 +990,9 @@ const file_kentik_user_v202211_user_proto_rawDesc = "" +
 	"last_login\x18\b \x01(\v2\x1a.google.protobuf.TimestampB2\x92A,2*UTC Timestamp of user's last login session\xe0A\x03R\tlastLogin\x12R\n" +
 	"\x05cdate\x18\t \x01(\v2\x1a.google.protobuf.TimestampB \x92A\x1a2\x18Creation timestamp (UTC)\xe0A\x03R\x05cdate\x12[\n" +
 	"\x05edate\x18\n" +
-	" \x01(\v2\x1a.google.protobuf.TimestampB)\x92A#2!Last modification timestamp (UTC)\xe0A\x03R\x05edate\x12x\n" +
-	"\x19default_landing_page_type\x18\v \x01(\x0e2 .kentik.user.v202211.LandingTypeB\x1b\x92A\x182\x16Landing Page for user.R\x16defaultLandingPageType\x12\x88\x01\n" +
-	"\x1adefault_landing_page_value\x18\f \x01(\tBK\x92AH2FSpecific landing page applies to Dashboard, Quick View, and Saved ViewR\x17defaultLandingPageValue\x12.\n" +
+	" \x01(\v2\x1a.google.protobuf.TimestampB)\x92A#2!Last modification timestamp (UTC)\xe0A\x03R\x05edate\x12\x90\x01\n" +
+	"\x19default_landing_page_type\x18\v \x01(\x0e2 .kentik.user.v202211.LandingTypeB3\x92A02.Type of the default landing page for the user.R\x16defaultLandingPageType\x12\xc3\x01\n" +
+	"\x1adefault_landing_page_value\x18\f \x01(\tB\x85\x01\x92A\x81\x012\x7fIdentifier of the specific landing page. Applies to Dashboard, Quick View, Saved View, and Observation Deck landing page types.R\x17defaultLandingPageValue\x12.\n" +
 	"\x05roles\x18\r \x03(\tB\x18\x92A\x152\x13List of RBAC roles.R\x05roles\x129\n" +
 	"\trole_sets\x18\x0e \x03(\tB\x1c\x92A\x192\x17List of RBAC role sets.R\broleSets\"\x12\n" +
 	"\x10ListUsersRequest\"\xd1\x01\n" +

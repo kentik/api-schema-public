@@ -385,7 +385,7 @@
                             },
                             "defaultLandingPageValue": {
                                 "type": "string",
-                                "description": "Specific landing page applies to Dashboard, Quick View, and Saved View"
+                                "description": "Identifier of the specific landing page. Applies to Dashboard, Quick View, Saved View, and Observation Deck landing page types."
                             },
                             "roles": {
                                 "type": "array",
@@ -615,7 +615,7 @@
                     },
                     "defaultLandingPageValue": {
                         "type": "string",
-                        "description": "Specific landing page applies to Dashboard, Quick View, and Saved View"
+                        "description": "Identifier of the specific landing page. Applies to Dashboard, Quick View, Saved View, and Observation Deck landing page types."
                     },
                     "roles": {
                         "type": "array",
