@@ -514,9 +514,7 @@ type Interface struct {
 	// Deprecated: Marked as deprecated in kentik/interface/v202108alpha1/interface.proto.
 	VrfId string `protobuf:"bytes,28,opt,name=vrf_id,json=vrfId,proto3" json:"vrf_id,omitempty"`
 	// VRF
-	Vrf *InterfaceVrf `protobuf:"bytes,30,opt,name=vrf,proto3" json:"vrf,omitempty"`
-	// Initial VRF_ID
-	InitialVrfId  string `protobuf:"bytes,31,opt,name=initial_vrf_id,json=initialVrfId,proto3" json:"initial_vrf_id,omitempty"`
+	Vrf           *InterfaceVrf `protobuf:"bytes,30,opt,name=vrf,proto3" json:"vrf,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -753,13 +751,6 @@ func (x *Interface) GetVrf() *InterfaceVrf {
 		return x.Vrf
 	}
 	return nil
-}
-
-func (x *Interface) GetInitialVrfId() string {
-	if x != nil {
-		return x.InitialVrfId
-	}
-	return ""
 }
 
 type InterfaceClassification struct {
@@ -2422,7 +2413,7 @@ var File_kentik_interface_v202108alpha1_interface_proto protoreflect.FileDescrip
 
 const file_kentik_interface_v202108alpha1_interface_proto_rawDesc = "" +
 	"\n" +
-	".kentik/interface/v202108alpha1/interface.proto\x12\x1ekentik.interface.v202108alpha1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a%kentik/core/v202303/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x85\x02\n" +
+	".kentik/interface/v202108alpha1/interface.proto\x12\x1ekentik.interface.v202108alpha1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a%kentik/core/v202303/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x85\x02\n" +
 	"\fInterfaceVrf\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
@@ -2430,7 +2421,7 @@ const file_kentik_interface_v202108alpha1_interface_proto_rawDesc = "" +
 	"\x13route_distinguisher\x18\x04 \x01(\tR\x12routeDistinguisher\x126\n" +
 	"\x17ext_route_distinguisher\x18\x05 \x01(\x03R\x15extRouteDistinguisher\x12!\n" +
 	"\froute_target\x18\x06 \x01(\tR\vrouteTarget\x12#\n" +
-	"\rroute_targets\x18\a \x03(\tR\frouteTargets\"\xf9\x0e\n" +
+	"\rroute_targets\x18\a \x03(\tR\frouteTargets\"\x9f\x0e\n" +
 	"\tInterface\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\tdevice_id\x18\x02 \x01(\tR\bdeviceId\x12\x17\n" +
@@ -2464,8 +2455,7 @@ const file_kentik_interface_v202108alpha1_interface_proto_rawDesc = "" +
 	"\x18initial_network_boundary\x18\x1a \x01(\x0e2/.kentik.interface.v202108alpha1.NetworkBoundaryR\x16initialNetworkBoundary\x12)\n" +
 	"\x10initial_provider\x18\x1b \x01(\tR\x0finitialProvider\x12?\n" +
 	"\x06vrf_id\x18\x1c \x01(\tB(\x92A#2!Deprecated: use VRF field instead\x18\x01R\x05vrfId\x12>\n" +
-	"\x03vrf\x18\x1e \x01(\v2,.kentik.interface.v202108alpha1.InterfaceVrfR\x03vrf\x12X\n" +
-	"\x0einitial_vrf_id\x18\x1f \x01(\tB2\x92A,2*Initial VRF ID. Read-only, server-managed.\xe0A\x03R\finitialVrfId\x1a?\n" +
+	"\x03vrf\x18\x1e \x01(\v2,.kentik.interface.v202108alpha1.InterfaceVrfR\x03vrf\x1a?\n" +
 	"\x11InterfaceKvsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1a@\n" +

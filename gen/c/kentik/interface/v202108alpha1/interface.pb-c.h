@@ -16,7 +16,6 @@ PROTOBUF_C__BEGIN_DECLS
 
 #include "google/api/annotations.pb-c.h"
 #include "google/api/client.pb-c.h"
-#include "google/api/field_behavior.pb-c.h"
 #include "protoc-gen-openapiv2/options/annotations.pb-c.h"
 #include "kentik/core/v202303/annotations.pb-c.h"
 #include "google/protobuf/timestamp.pb-c.h"
@@ -308,14 +307,10 @@ struct  Kentik__Interface__V202108alpha1__Interface
    * VRF
    */
   Kentik__Interface__V202108alpha1__InterfaceVrf *vrf;
-  /*
-   * Initial VRF_ID
-   */
-  char *initial_vrf_id;
 };
 #define KENTIK__INTERFACE__V202108ALPHA1__INTERFACE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__interface__v202108alpha1__interface__descriptor) \
-    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, NULL, (char *)protobuf_c_empty_string, KENTIK__INTERFACE__V202108ALPHA1__CONNECTIVITY_TYPE__CONNECTIVITY_TYPE_UNSPECIFIED, KENTIK__INTERFACE__V202108ALPHA1__NETWORK_BOUNDARY__NETWORK_BOUNDARY_UNSPECIFIED, 0,NULL, (char *)protobuf_c_empty_string, 0,NULL, 0,NULL, (char *)protobuf_c_empty_string, 0,NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, (char *)protobuf_c_empty_string, KENTIK__INTERFACE__V202108ALPHA1__CONNECTIVITY_TYPE__CONNECTIVITY_TYPE_UNSPECIFIED, KENTIK__INTERFACE__V202108ALPHA1__NETWORK_BOUNDARY__NETWORK_BOUNDARY_UNSPECIFIED, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, (char *)protobuf_c_empty_string }
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, NULL, (char *)protobuf_c_empty_string, KENTIK__INTERFACE__V202108ALPHA1__CONNECTIVITY_TYPE__CONNECTIVITY_TYPE_UNSPECIFIED, KENTIK__INTERFACE__V202108ALPHA1__NETWORK_BOUNDARY__NETWORK_BOUNDARY_UNSPECIFIED, 0,NULL, (char *)protobuf_c_empty_string, 0,NULL, 0,NULL, (char *)protobuf_c_empty_string, 0,NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, (char *)protobuf_c_empty_string, KENTIK__INTERFACE__V202108ALPHA1__CONNECTIVITY_TYPE__CONNECTIVITY_TYPE_UNSPECIFIED, KENTIK__INTERFACE__V202108ALPHA1__NETWORK_BOUNDARY__NETWORK_BOUNDARY_UNSPECIFIED, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL }
 
 
 struct  Kentik__Interface__V202108alpha1__InterfaceClassification

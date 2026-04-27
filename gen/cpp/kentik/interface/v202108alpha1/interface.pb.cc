@@ -629,9 +629,6 @@ inline constexpr Interface::Impl_::Impl_(
         vrf_id_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
-        initial_vrf_id_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
         cdate_{nullptr},
         edate_{nullptr},
         vrf_{nullptr},
@@ -982,7 +979,6 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface, _impl_.initial_provider_),
         PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface, _impl_.vrf_id_),
         PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface, _impl_.vrf_),
-        PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::Interface, _impl_.initial_vrf_id_),
         ~0u,
         ~0u,
         ~0u,
@@ -1012,7 +1008,6 @@ const ::uint32_t
         ~0u,
         ~0u,
         2,
-        ~0u,
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::kentik::interface::v202108alpha1::InterfaceClassification, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -1363,30 +1358,30 @@ static const ::_pbi::MigrationSchema
         {15, 25, -1, sizeof(::kentik::interface::v202108alpha1::Interface_InterfaceKvsEntry_DoNotUse)},
         {27, 37, -1, sizeof(::kentik::interface::v202108alpha1::Interface_InterfaceTagsEntry_DoNotUse)},
         {39, 49, -1, sizeof(::kentik::interface::v202108alpha1::Interface_ExtraInfoEntry_DoNotUse)},
-        {51, 89, -1, sizeof(::kentik::interface::v202108alpha1::Interface)},
-        {119, -1, -1, sizeof(::kentik::interface::v202108alpha1::InterfaceClassification)},
-        {130, -1, -1, sizeof(::kentik::interface::v202108alpha1::ClassifyCounter)},
-        {144, 176, -1, sizeof(::kentik::interface::v202108alpha1::InterfaceClassifyInfo)},
-        {200, 219, -1, sizeof(::kentik::interface::v202108alpha1::DeviceClassifyInfo)},
-        {230, -1, -1, sizeof(::kentik::interface::v202108alpha1::InterfaceFilter)},
-        {245, -1, -1, sizeof(::kentik::interface::v202108alpha1::AutoClassifyRequest)},
-        {253, 271, -1, sizeof(::kentik::interface::v202108alpha1::AutoClassifyResponse)},
-        {281, -1, -1, sizeof(::kentik::interface::v202108alpha1::ManualClassifyRequest)},
-        {293, -1, -1, sizeof(::kentik::interface::v202108alpha1::ManualClassifyResponse)},
-        {302, 311, -1, sizeof(::kentik::interface::v202108alpha1::ListInterfaceRequest)},
-        {312, -1, -1, sizeof(::kentik::interface::v202108alpha1::ListInterfaceResponse)},
-        {323, -1, -1, sizeof(::kentik::interface::v202108alpha1::GetInterfaceRequest)},
-        {332, 341, -1, sizeof(::kentik::interface::v202108alpha1::GetInterfaceResponse)},
-        {342, 351, -1, sizeof(::kentik::interface::v202108alpha1::CreateInterfaceRequest)},
-        {352, 361, -1, sizeof(::kentik::interface::v202108alpha1::CreateInterfaceResponse)},
-        {362, 371, -1, sizeof(::kentik::interface::v202108alpha1::UpdateInterfaceRequest)},
-        {372, 381, -1, sizeof(::kentik::interface::v202108alpha1::UpdateInterfaceResponse)},
-        {382, -1, -1, sizeof(::kentik::interface::v202108alpha1::DeleteInterfaceRequest)},
-        {391, -1, -1, sizeof(::kentik::interface::v202108alpha1::DeleteInterfaceResponse)},
-        {399, -1, -1, sizeof(::kentik::interface::v202108alpha1::Match)},
-        {410, -1, -1, sizeof(::kentik::interface::v202108alpha1::Action)},
-        {422, -1, -1, sizeof(::kentik::interface::v202108alpha1::DeviceFilter)},
-        {435, 452, -1, sizeof(::kentik::interface::v202108alpha1::Rule)},
+        {51, 88, -1, sizeof(::kentik::interface::v202108alpha1::Interface)},
+        {117, -1, -1, sizeof(::kentik::interface::v202108alpha1::InterfaceClassification)},
+        {128, -1, -1, sizeof(::kentik::interface::v202108alpha1::ClassifyCounter)},
+        {142, 174, -1, sizeof(::kentik::interface::v202108alpha1::InterfaceClassifyInfo)},
+        {198, 217, -1, sizeof(::kentik::interface::v202108alpha1::DeviceClassifyInfo)},
+        {228, -1, -1, sizeof(::kentik::interface::v202108alpha1::InterfaceFilter)},
+        {243, -1, -1, sizeof(::kentik::interface::v202108alpha1::AutoClassifyRequest)},
+        {251, 269, -1, sizeof(::kentik::interface::v202108alpha1::AutoClassifyResponse)},
+        {279, -1, -1, sizeof(::kentik::interface::v202108alpha1::ManualClassifyRequest)},
+        {291, -1, -1, sizeof(::kentik::interface::v202108alpha1::ManualClassifyResponse)},
+        {300, 309, -1, sizeof(::kentik::interface::v202108alpha1::ListInterfaceRequest)},
+        {310, -1, -1, sizeof(::kentik::interface::v202108alpha1::ListInterfaceResponse)},
+        {321, -1, -1, sizeof(::kentik::interface::v202108alpha1::GetInterfaceRequest)},
+        {330, 339, -1, sizeof(::kentik::interface::v202108alpha1::GetInterfaceResponse)},
+        {340, 349, -1, sizeof(::kentik::interface::v202108alpha1::CreateInterfaceRequest)},
+        {350, 359, -1, sizeof(::kentik::interface::v202108alpha1::CreateInterfaceResponse)},
+        {360, 369, -1, sizeof(::kentik::interface::v202108alpha1::UpdateInterfaceRequest)},
+        {370, 379, -1, sizeof(::kentik::interface::v202108alpha1::UpdateInterfaceResponse)},
+        {380, -1, -1, sizeof(::kentik::interface::v202108alpha1::DeleteInterfaceRequest)},
+        {389, -1, -1, sizeof(::kentik::interface::v202108alpha1::DeleteInterfaceResponse)},
+        {397, -1, -1, sizeof(::kentik::interface::v202108alpha1::Match)},
+        {408, -1, -1, sizeof(::kentik::interface::v202108alpha1::Action)},
+        {420, -1, -1, sizeof(::kentik::interface::v202108alpha1::DeviceFilter)},
+        {433, 450, -1, sizeof(::kentik::interface::v202108alpha1::Rule)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::interface::v202108alpha1::_InterfaceVrf_default_instance_._instance,
@@ -1423,311 +1418,307 @@ const char descriptor_table_protodef_kentik_2finterface_2fv202108alpha1_2finterf
     "\n.kentik/interface/v202108alpha1/interfa"
     "ce.proto\022\036kentik.interface.v202108alpha1"
     "\032\034google/api/annotations.proto\032\027google/a"
-    "pi/client.proto\032\037google/api/field_behavi"
-    "or.proto\032.protoc-gen-openapiv2/options/a"
-    "nnotations.proto\032%kentik/core/v202303/an"
-    "notations.proto\032\037google/protobuf/timesta"
-    "mp.proto\"\205\002\n\014InterfaceVrf\022\016\n\002id\030\001 \001(\tR\002i"
-    "d\022\022\n\004name\030\002 \001(\tR\004name\022 \n\013description\030\003 \001"
-    "(\tR\013description\022/\n\023route_distinguisher\030\004"
-    " \001(\tR\022routeDistinguisher\0226\n\027ext_route_di"
-    "stinguisher\030\005 \001(\003R\025extRouteDistinguisher"
-    "\022!\n\014route_target\030\006 \001(\tR\013routeTarget\022#\n\rr"
-    "oute_targets\030\007 \003(\tR\014routeTargets\"\371\016\n\tInt"
-    "erface\022\016\n\002id\030\001 \001(\tR\002id\022\033\n\tdevice_id\030\002 \001("
-    "\tR\010deviceId\022\027\n\007snmp_id\030\003 \001(\tR\006snmpId\022\035\n\n"
-    "snmp_speed\030\004 \001(\005R\tsnmpSpeed\022\033\n\tsnmp_type"
-    "\030\005 \001(\005R\010snmpType\022\035\n\nsnmp_alias\030\006 \001(\tR\tsn"
-    "mpAlias\022!\n\014interface_ip\030\007 \001(\tR\013interface"
-    "Ip\0223\n\025interface_description\030\010 \001(\tR\024inter"
-    "faceDescription\0220\n\005cdate\030\t \001(\0132\032.google."
-    "protobuf.TimestampR\005cdate\0220\n\005edate\030\n \001(\013"
-    "2\032.google.protobuf.TimestampR\005edate\0220\n\024i"
-    "nterface_ip_netmask\030\013 \001(\tR\022interfaceIpNe"
-    "tmask\022]\n\021connectivity_type\030\014 \001(\01620.kenti"
+    "pi/client.proto\032.protoc-gen-openapiv2/op"
+    "tions/annotations.proto\032%kentik/core/v20"
+    "2303/annotations.proto\032\037google/protobuf/"
+    "timestamp.proto\"\205\002\n\014InterfaceVrf\022\016\n\002id\030\001"
+    " \001(\tR\002id\022\022\n\004name\030\002 \001(\tR\004name\022 \n\013descript"
+    "ion\030\003 \001(\tR\013description\022/\n\023route_distingu"
+    "isher\030\004 \001(\tR\022routeDistinguisher\0226\n\027ext_r"
+    "oute_distinguisher\030\005 \001(\003R\025extRouteDistin"
+    "guisher\022!\n\014route_target\030\006 \001(\tR\013routeTarg"
+    "et\022#\n\rroute_targets\030\007 \003(\tR\014routeTargets\""
+    "\237\016\n\tInterface\022\016\n\002id\030\001 \001(\tR\002id\022\033\n\tdevice_"
+    "id\030\002 \001(\tR\010deviceId\022\027\n\007snmp_id\030\003 \001(\tR\006snm"
+    "pId\022\035\n\nsnmp_speed\030\004 \001(\005R\tsnmpSpeed\022\033\n\tsn"
+    "mp_type\030\005 \001(\005R\010snmpType\022\035\n\nsnmp_alias\030\006 "
+    "\001(\tR\tsnmpAlias\022!\n\014interface_ip\030\007 \001(\tR\013in"
+    "terfaceIp\0223\n\025interface_description\030\010 \001(\t"
+    "R\024interfaceDescription\0220\n\005cdate\030\t \001(\0132\032."
+    "google.protobuf.TimestampR\005cdate\0220\n\005edat"
+    "e\030\n \001(\0132\032.google.protobuf.TimestampR\005eda"
+    "te\0220\n\024interface_ip_netmask\030\013 \001(\tR\022interf"
+    "aceIpNetmask\022]\n\021connectivity_type\030\014 \001(\0162"
+    "0.kentik.interface.v202108alpha1.Connect"
+    "ivityTypeR\020connectivityType\022Z\n\020network_b"
+    "oundary\030\r \001(\0162/.kentik.interface.v202108"
+    "alpha1.NetworkBoundaryR\017networkBoundary\022"
+    "(\n\020top_nexthop_asns\030\016 \003(\005R\016topNexthopAsn"
+    "s\022\032\n\010provider\030\017 \001(\tR\010provider\022`\n\rinterfa"
+    "ce_kvs\030\020 \003(\0132;.kentik.interface.v202108a"
+    "lpha1.Interface.InterfaceKvsEntryR\014inter"
+    "faceKvs\022c\n\016interface_tags\030\021 \003(\0132<.kentik"
+    ".interface.v202108alpha1.Interface.Inter"
+    "faceTagsEntryR\rinterfaceTags\022)\n\020interfac"
+    "e_status\030\022 \001(\tR\017interfaceStatus\022W\n\nextra"
+    "_info\030\023 \003(\01328.kentik.interface.v202108al"
+    "pha1.Interface.ExtraInfoEntryR\textraInfo"
+    "\022&\n\017initial_snmp_id\030\024 \001(\tR\rinitialSnmpId"
+    "\022,\n\022initial_snmp_alias\030\025 \001(\tR\020initialSnm"
+    "pAlias\022B\n\035initial_interface_description\030"
+    "\026 \001(\tR\033initialInterfaceDescription\022,\n\022in"
+    "itial_snmp_speed\030\027 \001(\005R\020initialSnmpSpeed"
+    "\022#\n\rsecondary_ips\030\030 \001(\tR\014secondaryIps\022l\n"
+    "\031initial_connectivity_type\030\031 \001(\01620.kenti"
+    "k.interface.v202108alpha1.ConnectivityTy"
+    "peR\027initialConnectivityType\022i\n\030initial_n"
+    "etwork_boundary\030\032 \001(\0162/.kentik.interface"
+    ".v202108alpha1.NetworkBoundaryR\026initialN"
+    "etworkBoundary\022)\n\020initial_provider\030\033 \001(\t"
+    "R\017initialProvider\022\?\n\006vrf_id\030\034 \001(\tB(\030\001\222A#"
+    "2!Deprecated: use VRF field insteadR\005vrf"
+    "Id\022>\n\003vrf\030\036 \001(\0132,.kentik.interface.v2021"
+    "08alpha1.InterfaceVrfR\003vrf\032\?\n\021InterfaceK"
+    "vsEntry\022\020\n\003key\030\001 \001(\tR\003key\022\024\n\005value\030\002 \001(\t"
+    "R\005value:\0028\001\032@\n\022InterfaceTagsEntry\022\020\n\003key"
+    "\030\001 \001(\tR\003key\022\024\n\005value\030\002 \001(\tR\005value:\0028\001\032<\n"
+    "\016ExtraInfoEntry\022\020\n\003key\030\001 \001(\tR\003key\022\024\n\005val"
+    "ue\030\002 \001(\tR\005value:\0028\001J\004\010\035\020\036\"\364\001\n\027InterfaceC"
+    "lassification\022\036\n\nclassified\030\001 \001(\010R\nclass"
+    "ified\022]\n\021connectivity_type\030\002 \001(\01620.kenti"
     "k.interface.v202108alpha1.ConnectivityTy"
     "peR\020connectivityType\022Z\n\020network_boundary"
-    "\030\r \001(\0162/.kentik.interface.v202108alpha1."
-    "NetworkBoundaryR\017networkBoundary\022(\n\020top_"
-    "nexthop_asns\030\016 \003(\005R\016topNexthopAsns\022\032\n\010pr"
-    "ovider\030\017 \001(\tR\010provider\022`\n\rinterface_kvs\030"
-    "\020 \003(\0132;.kentik.interface.v202108alpha1.I"
-    "nterface.InterfaceKvsEntryR\014interfaceKvs"
-    "\022c\n\016interface_tags\030\021 \003(\0132<.kentik.interf"
-    "ace.v202108alpha1.Interface.InterfaceTag"
-    "sEntryR\rinterfaceTags\022)\n\020interface_statu"
-    "s\030\022 \001(\tR\017interfaceStatus\022W\n\nextra_info\030\023"
-    " \003(\01328.kentik.interface.v202108alpha1.In"
-    "terface.ExtraInfoEntryR\textraInfo\022&\n\017ini"
-    "tial_snmp_id\030\024 \001(\tR\rinitialSnmpId\022,\n\022ini"
-    "tial_snmp_alias\030\025 \001(\tR\020initialSnmpAlias\022"
-    "B\n\035initial_interface_description\030\026 \001(\tR\033"
-    "initialInterfaceDescription\022,\n\022initial_s"
-    "nmp_speed\030\027 \001(\005R\020initialSnmpSpeed\022#\n\rsec"
-    "ondary_ips\030\030 \001(\tR\014secondaryIps\022l\n\031initia"
-    "l_connectivity_type\030\031 \001(\01620.kentik.inter"
-    "face.v202108alpha1.ConnectivityTypeR\027ini"
-    "tialConnectivityType\022i\n\030initial_network_"
-    "boundary\030\032 \001(\0162/.kentik.interface.v20210"
-    "8alpha1.NetworkBoundaryR\026initialNetworkB"
-    "oundary\022)\n\020initial_provider\030\033 \001(\tR\017initi"
-    "alProvider\022\?\n\006vrf_id\030\034 \001(\tB(\030\001\222A#2!Depre"
-    "cated: use VRF field insteadR\005vrfId\022>\n\003v"
-    "rf\030\036 \001(\0132,.kentik.interface.v202108alpha"
-    "1.InterfaceVrfR\003vrf\022X\n\016initial_vrf_id\030\037 "
-    "\001(\tB2\222A,2*Initial VRF ID. Read-only, ser"
-    "ver-managed.\340A\003R\014initialVrfId\032\?\n\021Interfa"
-    "ceKvsEntry\022\020\n\003key\030\001 \001(\tR\003key\022\024\n\005value\030\002 "
-    "\001(\tR\005value:\0028\001\032@\n\022InterfaceTagsEntry\022\020\n\003"
-    "key\030\001 \001(\tR\003key\022\024\n\005value\030\002 \001(\tR\005value:\0028\001"
-    "\032<\n\016ExtraInfoEntry\022\020\n\003key\030\001 \001(\tR\003key\022\024\n\005"
-    "value\030\002 \001(\tR\005value:\0028\001J\004\010\035\020\036\"\364\001\n\027Interfa"
-    "ceClassification\022\036\n\nclassified\030\001 \001(\010R\ncl"
-    "assified\022]\n\021connectivity_type\030\002 \001(\01620.ke"
-    "ntik.interface.v202108alpha1.Connectivit"
-    "yTypeR\020connectivityType\022Z\n\020network_bound"
-    "ary\030\003 \001(\0162/.kentik.interface.v202108alph"
-    "a1.NetworkBoundaryR\017networkBoundary\"\333\001\n\017"
-    "ClassifyCounter\022\024\n\005count\030\001 \001(\005R\005count\022%\n"
-    "\016external_count\030\002 \001(\005R\rexternalCount\022$\n\016"
-    "free_pni_count\030\003 \001(\005R\014freePniCount\022\031\n\010ix"
-    "_count\030\004 \001(\005R\007ixCount\022%\n\016provider_count\030"
-    "\005 \001(\005R\rproviderCount\022#\n\rtransit_count\030\006 "
-    "\001(\005R\014transitCount\"\326\t\n\025InterfaceClassifyI"
-    "nfo\022\033\n\tdevice_id\030\001 \001(\tR\010deviceId\022\027\n\007snmp"
-    "_id\030\002 \001(\tR\006snmpId\022\035\n\nsnmp_alias\030\003 \001(\tR\ts"
-    "nmpAlias\022!\n\014interface_ip\030\004 \001(\tR\013interfac"
-    "eIp\022(\n\020interface_ip_asn\030\005 \001(\tR\016interface"
-    "IpAsn\022$\n\016is_internal_ip\030\006 \001(\010R\014isInterna"
-    "lIp\022&\n\017is_internal_asn\030\007 \001(\010R\risInternal"
-    "Asn\022(\n\020top_nexthop_asns\030\010 \003(\tR\016topNextho"
-    "pAsns\022&\n\017pdb_global_name\030\t \001(\tR\rpdbGloba"
-    "lName\022h\n\023auto_classification\030\n \001(\01327.ken"
-    "tik.interface.v202108alpha1.InterfaceCla"
-    "ssificationR\022autoClassification\022p\n\027previ"
-    "ous_classification\030\013 \001(\01327.kentik.interf"
-    "ace.v202108alpha1.InterfaceClassificatio"
-    "nR\026previousClassification\022\032\n\010provider\030\014 "
-    "\001(\tR\010provider\022>\n\033network_boundary_confid"
-    "ence\030\r \001(\005R\031networkBoundaryConfidence\022@\n"
-    "\034connectivity_type_confidence\030\016 \001(\005R\032con"
-    "nectivityTypeConfidence\022/\n\023provider_conf"
-    "idence\030\017 \001(\005R\022providerConfidence\0228\n\030auto"
-    "_classified_provider\030\020 \001(\010R\026autoClassifi"
-    "edProvider\022D\n\036previously_classified_prov"
-    "ider\030\021 \001(\tR\034previouslyClassifiedProvider"
-    "\022D\n\036previously_classified_external\030\022 \001(\010"
-    "R\034previouslyClassifiedExternal\022$\n\016ip_asn"
-    "_matched\030\023 \001(\010R\014ipAsnMatched\022\035\n\nix_match"
-    "ed\030\024 \001(\010R\tixMatched\022\'\n\017nexthop_matched\030\025"
-    " \001(\010R\016nexthopMatched\022:\n\031connectivity_typ"
-    "e_matched\030\026 \001(\010R\027connectivityTypeMatched"
-    "\022)\n\020provider_matched\030\027 \001(\010R\017providerMatc"
-    "hed\0225\n\026changed_classification\030\030 \001(\010R\025cha"
-    "ngedClassification\"\337\005\n\022DeviceClassifyInf"
-    "o\022\033\n\tdevice_id\030\001 \001(\tR\010deviceId\022)\n\020total_"
-    "interfaces\030\002 \001(\005R\017totalInterfaces\022s\n\035pre"
-    "viously_classified_counter\030\003 \001(\0132/.kenti"
-    "k.interface.v202108alpha1.ClassifyCounte"
-    "rR\033previouslyClassifiedCounter\022g\n\027auto_c"
-    "lassified_counter\030\004 \001(\0132/.kentik.interfa"
-    "ce.v202108alpha1.ClassifyCounterR\025autoCl"
-    "assifiedCounter\022@\n\034changed_classificatio"
-    "n_count\030\017 \001(\005R\032changedClassificationCoun"
-    "t\022/\n\024ip_asn_matched_count\030\020 \001(\005R\021ipAsnMa"
-    "tchedCount\022(\n\020ix_matched_count\030\021 \001(\005R\016ix"
-    "MatchedCount\0222\n\025nexthop_matched_count\030\022 "
-    "\001(\005R\023nexthopMatchedCount\022E\n\037connectivity"
-    "_type_matched_count\030\023 \001(\005R\034connectivityT"
-    "ypeMatchedCount\0224\n\026provider_matched_coun"
-    "t\030\024 \001(\005R\024providerMatchedCount\022U\n\ninterfa"
-    "ces\030\025 \003(\01325.kentik.interface.v202108alph"
-    "a1.InterfaceClassifyInfoR\ninterfaces\"\211\003\n"
-    "\017InterfaceFilter\022\022\n\004text\030\001 \001(\tR\004text\022\035\n\n"
-    "device_ids\030\002 \003(\tR\tdeviceIds\022_\n\022connectiv"
-    "ity_types\030\003 \003(\01620.kentik.interface.v2021"
-    "08alpha1.ConnectivityTypeR\021connectivityT"
-    "ypes\022^\n\022network_boundaries\030\004 \003(\0162/.kenti"
-    "k.interface.v202108alpha1.NetworkBoundar"
-    "yR\021networkBoundaries\022\034\n\tproviders\030\005 \003(\tR"
-    "\tproviders\022\037\n\013snmp_speeds\030\006 \003(\005R\nsnmpSpe"
-    "eds\022C\n\010ip_types\030\007 \003(\0162(.kentik.interface"
-    ".v202108alpha1.IpFilterR\007ipTypes\"\025\n\023Auto"
-    "ClassifyRequest\"\250\005\n\024AutoClassifyResponse"
-    "\0220\n\024perc_auto_classified\030\001 \001(\001R\022percAuto"
-    "Classified\022.\n\023net_changed_transit\030\002 \001(\005R"
-    "\021netChangedTransit\022$\n\016net_changed_ix\030\003 \001"
-    "(\005R\014netChangedIx\0220\n\024net_changed_provider"
-    "\030\004 \001(\005R\022netChangedProvider\022K\n\"total_chan"
-    "ged_classification_count\030\005 \001(\005R\037totalCha"
-    "ngedClassificationCount\0229\n\031total_auto_cl"
-    "assify_count\030\006 \001(\005R\026totalAutoClassifyCou"
-    "nt\022n\n\033total_auto_classify_counter\030\007 \001(\0132"
-    "/.kentik.interface.v202108alpha1.Classif"
-    "yCounterR\030totalAutoClassifyCounter\022e\n\026to"
-    "tal_previous_counter\030\010 \001(\0132/.kentik.inte"
-    "rface.v202108alpha1.ClassifyCounterR\024tot"
-    "alPreviousCounter\022)\n\020total_interfaces\030\021 "
-    "\001(\005R\017totalInterfaces\022L\n\007devices\030\022 \003(\01322."
-    "kentik.interface.v202108alpha1.DeviceCla"
-    "ssifyInfoR\007devices\"\223\002\n\025ManualClassifyReq"
-    "uest\022#\n\rinterface_ids\030\001 \003(\tR\014interfaceId"
-    "s\022]\n\021connectivity_type\030\002 \001(\01620.kentik.in"
-    "terface.v202108alpha1.ConnectivityTypeR\020"
-    "connectivityType\022Z\n\020network_boundary\030\003 \001"
-    "(\0162/.kentik.interface.v202108alpha1.Netw"
-    "orkBoundaryR\017networkBoundary\022\032\n\010provider"
-    "\030\004 \001(\tR\010provider\"7\n\026ManualClassifyRespon"
-    "se\022\035\n\ndevice_ids\030\001 \003(\tR\tdeviceIds\"a\n\024Lis"
-    "tInterfaceRequest\022I\n\007filters\030\001 \001(\0132/.ken"
-    "tik.interface.v202108alpha1.InterfaceFil"
-    "terR\007filters\"\250\001\n\025ListInterfaceResponse\022I"
-    "\n\ninterfaces\030\001 \003(\0132).kentik.interface.v2"
-    "02108alpha1.InterfaceR\ninterfaces\022\037\n\013tot"
-    "al_count\030\002 \001(\005R\ntotalCount\022#\n\rinvalid_co"
-    "unt\030\003 \001(\005R\014invalidCount\"%\n\023GetInterfaceR"
-    "equest\022\016\n\002id\030\001 \001(\tR\002id\"_\n\024GetInterfaceRe"
-    "sponse\022G\n\tinterface\030\001 \001(\0132).kentik.inter"
-    "face.v202108alpha1.InterfaceR\tinterface\""
-    "a\n\026CreateInterfaceRequest\022G\n\tinterface\030\001"
-    " \001(\0132).kentik.interface.v202108alpha1.In"
-    "terfaceR\tinterface\"b\n\027CreateInterfaceRes"
-    "ponse\022G\n\tinterface\030\001 \001(\0132).kentik.interf"
-    "ace.v202108alpha1.InterfaceR\tinterface\"a"
-    "\n\026UpdateInterfaceRequest\022G\n\tinterface\030\001 "
-    "\001(\0132).kentik.interface.v202108alpha1.Int"
-    "erfaceR\tinterface\"b\n\027UpdateInterfaceResp"
-    "onse\022G\n\tinterface\030\001 \001(\0132).kentik.interfa"
-    "ce.v202108alpha1.InterfaceR\tinterface\"(\n"
-    "\026DeleteInterfaceRequest\022\016\n\002id\030\001 \001(\tR\002id\""
-    "\031\n\027DeleteInterfaceResponse\"\313\001\n\005Match\022W\n\017"
-    "match_attribute\030\001 \001(\0162..kentik.interface"
-    ".v202108alpha1.MatchAttributeR\016matchAttr"
-    "ibute\022O\n\016match_operator\030\002 \001(\0162(.kentik.i"
-    "nterface.v202108alpha1.OperatorR\rmatchOp"
-    "erator\022\030\n\007pattern\030\003 \001(\tR\007pattern\"\242\002\n\006Act"
-    "ion\022d\n\025set_connectivity_type\030\001 \001(\01620.ken"
-    "tik.interface.v202108alpha1.Connectivity"
-    "TypeR\023setConnectivityType\022a\n\024set_network"
-    "_boundary\030\002 \001(\0162/.kentik.interface.v2021"
-    "08alpha1.NetworkBoundaryR\022setNetworkBoun"
-    "dary\022,\n\022set_connected_asns\030\003 \001(\tR\020setCon"
-    "nectedAsns\022!\n\014set_provider\030\004 \001(\tR\013setPro"
-    "vider\"\273\001\n\014DeviceFilter\022\037\n\013all_devices\030\001 "
-    "\001(\010R\nallDevices\022\037\n\013device_name\030\002 \003(\tR\nde"
-    "viceName\022#\n\rdevice_labels\030\003 \003(\tR\014deviceL"
-    "abels\022!\n\014device_rules\030\004 \003(\tR\013deviceRules"
-    "\022!\n\014device_types\030\005 \003(\tR\013deviceTypes\"\353\003\n\004"
-    "Rule\022\016\n\002id\030\001 \001(\tR\002id\022\030\n\007enabled\030\002 \001(\010R\007e"
-    "nabled\022\022\n\004rank\030\003 \001(\005R\004rank\022H\n\014match_clau"
-    "se\030\004 \001(\0132%.kentik.interface.v202108alpha"
-    "1.MatchR\013matchClause\022E\n\naction_set\030\005 \001(\013"
-    "2&.kentik.interface.v202108alpha1.Action"
-    "R\tactionSet\0220\n\005cdate\030\006 \001(\0132\032.google.prot"
-    "obuf.TimestampR\005cdate\0220\n\005edate\030\007 \001(\0132\032.g"
-    "oogle.protobuf.TimestampR\005edate\022W\n\020inclu"
-    "ded_devices\030\010 \001(\0132,.kentik.interface.v20"
-    "2108alpha1.DeviceFilterR\017includedDevices"
-    "\022W\n\020excluded_devices\030\t \001(\0132,.kentik.inte"
-    "rface.v202108alpha1.DeviceFilterR\017exclud"
-    "edDevices*\230\006\n\020ConnectivityType\022!\n\035CONNEC"
-    "TIVITY_TYPE_UNSPECIFIED\020\000\022.\n*CONNECTIVIT"
-    "Y_TYPE_AGGREGATION_INTERCONNECT\020\001\022\037\n\033CON"
-    "NECTIVITY_TYPE_AVAILABLE\020\002\022\036\n\032CONNECTIVI"
-    "TY_TYPE_BACKBONE\020\003\022(\n$CONNECTIVITY_TYPE_"
-    "CLOUD_INTERCONNECT\020\004\022\036\n\032CONNECTIVITY_TYP"
-    "E_CUSTOMER\020\005\022\'\n#CONNECTIVITY_TYPE_DATACE"
-    "NTER_FABRIC\020\006\022-\n)CONNECTIVITY_TYPE_DATAC"
-    "ENTER_INTERCONNECT\020\007\022$\n CONNECTIVITY_TYP"
-    "E_EMBEDDED_CACHE\020\010\022\036\n\032CONNECTIVITY_TYPE_"
-    "FREE_PNI\020\t\022\032\n\026CONNECTIVITY_TYPE_HOST\020\n\022\030"
-    "\n\024CONNECTIVITY_TYPE_IX\020\013\022\033\n\027CONNECTIVITY"
-    "_TYPE_OTHER\020\014\022\036\n\032CONNECTIVITY_TYPE_PAID_"
-    "PNI\020\r\022\036\n\032CONNECTIVITY_TYPE_RESERVED\020\016\022\035\n"
-    "\031CONNECTIVITY_TYPE_TRANSIT\020\017\022+\n\'CONNECTI"
-    "VITY_TYPE_VIRTUAL_CROSS_CONNECT\020\020\022&\n\"CON"
-    "NECTIVITY_TYPE_IPX_INTERCONNECT\020\021\022&\n\"CON"
-    "NECTIVITY_TYPE_SIP_INTERCONNECT\020\022\022\036\n\032CON"
-    "NECTIVITY_TYPE_DDOS_EXT\020\023\022\036\n\032CONNECTIVIT"
-    "Y_TYPE_DDOS_INT\020\024\022\031\n\025CONNECTIVITY_TYPE_M"
-    "GT\020\025*\247\001\n\017NetworkBoundary\022 \n\034NETWORK_BOUN"
-    "DARY_UNSPECIFIED\020\000\022\031\n\025NETWORK_BOUNDARY_A"
-    "UTO\020\001\022\035\n\031NETWORK_BOUNDARY_INTERNAL\020\002\022\035\n\031"
-    "NETWORK_BOUNDARY_EXTERNAL\020\003\022\031\n\025NETWORK_B"
-    "OUNDARY_NONE\020\004*g\n\010IpFilter\022\031\n\025IP_FILTER_"
-    "UNSPECIFIED\020\000\022\025\n\021IP_FILTER_PRIVATE\020\001\022\024\n\020"
-    "IP_FILTER_PUBLIC\020\002\022\023\n\017IP_FILTER_UNSET\020\003*"
-    "\236\001\n\016MatchAttribute\022\037\n\033MATCH_ATTRIBUTE_UN"
-    "SPECIFIED\020\000\022)\n%MATCH_ATTRIBUTE_INTERFACE"
-    "_DESCRIPTION\020\001\022\036\n\032MATCH_ATTRIBUTE_SNMP_A"
-    "LIAS\020\002\022 \n\034MATCH_ATTRIBUTE_INTERFACE_IP\020\003"
-    "*\321\001\n\010Operator\022\030\n\024OPERATOR_UNSPECIFIED\020\000\022"
-    "\023\n\017OPERATOR_EQUALS\020\001\022\025\n\021OPERATOR_CONTAIN"
-    "S\020\002\022\022\n\016OPERATOR_REGEX\020\003\022 \n\034OPERATOR_CONT"
-    "AINED_IN_SUBNET\020\004\022\031\n\025OPERATOR_IS_PUBLIC_"
-    "IP\020\005\022\032\n\026OPERATOR_IS_PRIVATE_IP\020\006\022\022\n\016OPER"
-    "ATOR_NO_IP\020\0072\305\016\n\020InterfaceService\022\247\002\n\016Ma"
-    "nualClassify\0225.kentik.interface.v202108a"
-    "lpha1.ManualClassifyRequest\0326.kentik.int"
-    "erface.v202108alpha1.ManualClassifyRespo"
-    "nse\"\245\001\222AV\022\031Manual Classify Interface\032)Ma"
-    "nually set interface(s) classification.*"
-    "\016ManualClassify\362\327\002\025admin.interface:write"
-    "\202\323\344\223\002-\"(/interface/v202108alpha1/manual_"
-    "classify:\001*\022\240\002\n\rListInterface\0224.kentik.i"
-    "nterface.v202108alpha1.ListInterfaceRequ"
-    "est\0325.kentik.interface.v202108alpha1.Lis"
-    "tInterfaceResponse\"\241\001\222A[\022\027Fetch Search I"
-    "nterfaces\0321Return list of interfaces mat"
-    "ches search critera.*\rListInterface\362\327\002\024a"
-    "dmin.interface:read\202\323\344\223\002%\022#/interface/v2"
-    "02108alpha1/interfaces\022\241\002\n\014GetInterface\022"
-    "3.kentik.interface.v202108alpha1.GetInte"
-    "rfaceRequest\0324.kentik.interface.v202108a"
-    "lpha1.GetInterfaceResponse\"\245\001\222AZ\022\020Get a "
-    "interface.\0328Returns information about a "
-    "interface specified with ID.*\014InterfaceG"
-    "et\362\327\002\024admin.interface:read\202\323\344\223\002*\022(/inter"
-    "face/v202108alpha1/interfaces/{id}\022\250\002\n\017C"
-    "reateInterface\0226.kentik.interface.v20210"
-    "8alpha1.CreateInterfaceRequest\0327.kentik."
-    "interface.v202108alpha1.CreateInterfaceR"
-    "esponse\"\243\001\222AY\022\023Create a interface.\0321Crea"
-    "te a interface from request. returns cre"
-    "ated.*\017InterfaceCreate\362\327\002\025admin.interfac"
-    "e:write\202\323\344\223\002(\"#/interface/v202108alpha1/"
-    "interfaces:\001*\022\301\002\n\017UpdateInterface\0226.kent"
-    "ik.interface.v202108alpha1.UpdateInterfa"
-    "ceRequest\0327.kentik.interface.v202108alph"
-    "a1.UpdateInterfaceResponse\"\274\001\222Ac\022\023Update"
-    " a interface.\032;Replaces the entire inter"
-    "face attributes specified with id.*\017Inte"
-    "rfaceUpdate\362\327\002\025admin.interface:write\202\323\344\223"
-    "\0027\0322/interface/v202108alpha1/interfaces/"
-    "{interface.id}:\001*\022\241\002\n\017DeleteInterface\0226."
-    "kentik.interface.v202108alpha1.DeleteInt"
-    "erfaceRequest\0327.kentik.interface.v202108"
-    "alpha1.DeleteInterfaceResponse\"\234\001\222AP\022\023De"
-    "lete a interface.\032(Deletes the interface"
-    " specified with id.*\017InterfaceDelete\362\327\002\025"
-    "admin.interface:write\202\323\344\223\002**(/interface/"
-    "v202108alpha1/interfaces/{id}\032-\312A\023grpc.a"
-    "pi.kentik.com\352\327\002\017admin.interface\220\330\002\003B\312\002Z"
-    "Ogithub.com/kentik/api-schema-public/gen"
-    "/go/kentik/interface/v202108alpha1;iface"
-    "\222A\365\001\0227\n\rInterface API\"\030\n\026Kentik API Engi"
-    "neering2\014202108alpha1*\001\0022\020application/js"
-    "on:\020application/jsonZD\n\036\n\005email\022\025\010\002\032\017X-C"
-    "H-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-A"
-    "PI-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r5\n\026Mo"
-    "re about Kentik APIs\022\033https://docs.kenti"
-    "k.com/apib\006proto3"
+    "\030\003 \001(\0162/.kentik.interface.v202108alpha1."
+    "NetworkBoundaryR\017networkBoundary\"\333\001\n\017Cla"
+    "ssifyCounter\022\024\n\005count\030\001 \001(\005R\005count\022%\n\016ex"
+    "ternal_count\030\002 \001(\005R\rexternalCount\022$\n\016fre"
+    "e_pni_count\030\003 \001(\005R\014freePniCount\022\031\n\010ix_co"
+    "unt\030\004 \001(\005R\007ixCount\022%\n\016provider_count\030\005 \001"
+    "(\005R\rproviderCount\022#\n\rtransit_count\030\006 \001(\005"
+    "R\014transitCount\"\326\t\n\025InterfaceClassifyInfo"
+    "\022\033\n\tdevice_id\030\001 \001(\tR\010deviceId\022\027\n\007snmp_id"
+    "\030\002 \001(\tR\006snmpId\022\035\n\nsnmp_alias\030\003 \001(\tR\tsnmp"
+    "Alias\022!\n\014interface_ip\030\004 \001(\tR\013interfaceIp"
+    "\022(\n\020interface_ip_asn\030\005 \001(\tR\016interfaceIpA"
+    "sn\022$\n\016is_internal_ip\030\006 \001(\010R\014isInternalIp"
+    "\022&\n\017is_internal_asn\030\007 \001(\010R\risInternalAsn"
+    "\022(\n\020top_nexthop_asns\030\010 \003(\tR\016topNexthopAs"
+    "ns\022&\n\017pdb_global_name\030\t \001(\tR\rpdbGlobalNa"
+    "me\022h\n\023auto_classification\030\n \001(\01327.kentik"
+    ".interface.v202108alpha1.InterfaceClassi"
+    "ficationR\022autoClassification\022p\n\027previous"
+    "_classification\030\013 \001(\01327.kentik.interface"
+    ".v202108alpha1.InterfaceClassificationR\026"
+    "previousClassification\022\032\n\010provider\030\014 \001(\t"
+    "R\010provider\022>\n\033network_boundary_confidenc"
+    "e\030\r \001(\005R\031networkBoundaryConfidence\022@\n\034co"
+    "nnectivity_type_confidence\030\016 \001(\005R\032connec"
+    "tivityTypeConfidence\022/\n\023provider_confide"
+    "nce\030\017 \001(\005R\022providerConfidence\0228\n\030auto_cl"
+    "assified_provider\030\020 \001(\010R\026autoClassifiedP"
+    "rovider\022D\n\036previously_classified_provide"
+    "r\030\021 \001(\tR\034previouslyClassifiedProvider\022D\n"
+    "\036previously_classified_external\030\022 \001(\010R\034p"
+    "reviouslyClassifiedExternal\022$\n\016ip_asn_ma"
+    "tched\030\023 \001(\010R\014ipAsnMatched\022\035\n\nix_matched\030"
+    "\024 \001(\010R\tixMatched\022\'\n\017nexthop_matched\030\025 \001("
+    "\010R\016nexthopMatched\022:\n\031connectivity_type_m"
+    "atched\030\026 \001(\010R\027connectivityTypeMatched\022)\n"
+    "\020provider_matched\030\027 \001(\010R\017providerMatched"
+    "\0225\n\026changed_classification\030\030 \001(\010R\025change"
+    "dClassification\"\337\005\n\022DeviceClassifyInfo\022\033"
+    "\n\tdevice_id\030\001 \001(\tR\010deviceId\022)\n\020total_int"
+    "erfaces\030\002 \001(\005R\017totalInterfaces\022s\n\035previo"
+    "usly_classified_counter\030\003 \001(\0132/.kentik.i"
+    "nterface.v202108alpha1.ClassifyCounterR\033"
+    "previouslyClassifiedCounter\022g\n\027auto_clas"
+    "sified_counter\030\004 \001(\0132/.kentik.interface."
+    "v202108alpha1.ClassifyCounterR\025autoClass"
+    "ifiedCounter\022@\n\034changed_classification_c"
+    "ount\030\017 \001(\005R\032changedClassificationCount\022/"
+    "\n\024ip_asn_matched_count\030\020 \001(\005R\021ipAsnMatch"
+    "edCount\022(\n\020ix_matched_count\030\021 \001(\005R\016ixMat"
+    "chedCount\0222\n\025nexthop_matched_count\030\022 \001(\005"
+    "R\023nexthopMatchedCount\022E\n\037connectivity_ty"
+    "pe_matched_count\030\023 \001(\005R\034connectivityType"
+    "MatchedCount\0224\n\026provider_matched_count\030\024"
+    " \001(\005R\024providerMatchedCount\022U\n\ninterfaces"
+    "\030\025 \003(\01325.kentik.interface.v202108alpha1."
+    "InterfaceClassifyInfoR\ninterfaces\"\211\003\n\017In"
+    "terfaceFilter\022\022\n\004text\030\001 \001(\tR\004text\022\035\n\ndev"
+    "ice_ids\030\002 \003(\tR\tdeviceIds\022_\n\022connectivity"
+    "_types\030\003 \003(\01620.kentik.interface.v202108a"
+    "lpha1.ConnectivityTypeR\021connectivityType"
+    "s\022^\n\022network_boundaries\030\004 \003(\0162/.kentik.i"
+    "nterface.v202108alpha1.NetworkBoundaryR\021"
+    "networkBoundaries\022\034\n\tproviders\030\005 \003(\tR\tpr"
+    "oviders\022\037\n\013snmp_speeds\030\006 \003(\005R\nsnmpSpeeds"
+    "\022C\n\010ip_types\030\007 \003(\0162(.kentik.interface.v2"
+    "02108alpha1.IpFilterR\007ipTypes\"\025\n\023AutoCla"
+    "ssifyRequest\"\250\005\n\024AutoClassifyResponse\0220\n"
+    "\024perc_auto_classified\030\001 \001(\001R\022percAutoCla"
+    "ssified\022.\n\023net_changed_transit\030\002 \001(\005R\021ne"
+    "tChangedTransit\022$\n\016net_changed_ix\030\003 \001(\005R"
+    "\014netChangedIx\0220\n\024net_changed_provider\030\004 "
+    "\001(\005R\022netChangedProvider\022K\n\"total_changed"
+    "_classification_count\030\005 \001(\005R\037totalChange"
+    "dClassificationCount\0229\n\031total_auto_class"
+    "ify_count\030\006 \001(\005R\026totalAutoClassifyCount\022"
+    "n\n\033total_auto_classify_counter\030\007 \001(\0132/.k"
+    "entik.interface.v202108alpha1.ClassifyCo"
+    "unterR\030totalAutoClassifyCounter\022e\n\026total"
+    "_previous_counter\030\010 \001(\0132/.kentik.interfa"
+    "ce.v202108alpha1.ClassifyCounterR\024totalP"
+    "reviousCounter\022)\n\020total_interfaces\030\021 \001(\005"
+    "R\017totalInterfaces\022L\n\007devices\030\022 \003(\01322.ken"
+    "tik.interface.v202108alpha1.DeviceClassi"
+    "fyInfoR\007devices\"\223\002\n\025ManualClassifyReques"
+    "t\022#\n\rinterface_ids\030\001 \003(\tR\014interfaceIds\022]"
+    "\n\021connectivity_type\030\002 \001(\01620.kentik.inter"
+    "face.v202108alpha1.ConnectivityTypeR\020con"
+    "nectivityType\022Z\n\020network_boundary\030\003 \001(\0162"
+    "/.kentik.interface.v202108alpha1.Network"
+    "BoundaryR\017networkBoundary\022\032\n\010provider\030\004 "
+    "\001(\tR\010provider\"7\n\026ManualClassifyResponse\022"
+    "\035\n\ndevice_ids\030\001 \003(\tR\tdeviceIds\"a\n\024ListIn"
+    "terfaceRequest\022I\n\007filters\030\001 \001(\0132/.kentik"
+    ".interface.v202108alpha1.InterfaceFilter"
+    "R\007filters\"\250\001\n\025ListInterfaceResponse\022I\n\ni"
+    "nterfaces\030\001 \003(\0132).kentik.interface.v2021"
+    "08alpha1.InterfaceR\ninterfaces\022\037\n\013total_"
+    "count\030\002 \001(\005R\ntotalCount\022#\n\rinvalid_count"
+    "\030\003 \001(\005R\014invalidCount\"%\n\023GetInterfaceRequ"
+    "est\022\016\n\002id\030\001 \001(\tR\002id\"_\n\024GetInterfaceRespo"
+    "nse\022G\n\tinterface\030\001 \001(\0132).kentik.interfac"
+    "e.v202108alpha1.InterfaceR\tinterface\"a\n\026"
+    "CreateInterfaceRequest\022G\n\tinterface\030\001 \001("
+    "\0132).kentik.interface.v202108alpha1.Inter"
+    "faceR\tinterface\"b\n\027CreateInterfaceRespon"
+    "se\022G\n\tinterface\030\001 \001(\0132).kentik.interface"
+    ".v202108alpha1.InterfaceR\tinterface\"a\n\026U"
+    "pdateInterfaceRequest\022G\n\tinterface\030\001 \001(\013"
+    "2).kentik.interface.v202108alpha1.Interf"
+    "aceR\tinterface\"b\n\027UpdateInterfaceRespons"
+    "e\022G\n\tinterface\030\001 \001(\0132).kentik.interface."
+    "v202108alpha1.InterfaceR\tinterface\"(\n\026De"
+    "leteInterfaceRequest\022\016\n\002id\030\001 \001(\tR\002id\"\031\n\027"
+    "DeleteInterfaceResponse\"\313\001\n\005Match\022W\n\017mat"
+    "ch_attribute\030\001 \001(\0162..kentik.interface.v2"
+    "02108alpha1.MatchAttributeR\016matchAttribu"
+    "te\022O\n\016match_operator\030\002 \001(\0162(.kentik.inte"
+    "rface.v202108alpha1.OperatorR\rmatchOpera"
+    "tor\022\030\n\007pattern\030\003 \001(\tR\007pattern\"\242\002\n\006Action"
+    "\022d\n\025set_connectivity_type\030\001 \001(\01620.kentik"
+    ".interface.v202108alpha1.ConnectivityTyp"
+    "eR\023setConnectivityType\022a\n\024set_network_bo"
+    "undary\030\002 \001(\0162/.kentik.interface.v202108a"
+    "lpha1.NetworkBoundaryR\022setNetworkBoundar"
+    "y\022,\n\022set_connected_asns\030\003 \001(\tR\020setConnec"
+    "tedAsns\022!\n\014set_provider\030\004 \001(\tR\013setProvid"
+    "er\"\273\001\n\014DeviceFilter\022\037\n\013all_devices\030\001 \001(\010"
+    "R\nallDevices\022\037\n\013device_name\030\002 \003(\tR\ndevic"
+    "eName\022#\n\rdevice_labels\030\003 \003(\tR\014deviceLabe"
+    "ls\022!\n\014device_rules\030\004 \003(\tR\013deviceRules\022!\n"
+    "\014device_types\030\005 \003(\tR\013deviceTypes\"\353\003\n\004Rul"
+    "e\022\016\n\002id\030\001 \001(\tR\002id\022\030\n\007enabled\030\002 \001(\010R\007enab"
+    "led\022\022\n\004rank\030\003 \001(\005R\004rank\022H\n\014match_clause\030"
+    "\004 \001(\0132%.kentik.interface.v202108alpha1.M"
+    "atchR\013matchClause\022E\n\naction_set\030\005 \001(\0132&."
+    "kentik.interface.v202108alpha1.ActionR\ta"
+    "ctionSet\0220\n\005cdate\030\006 \001(\0132\032.google.protobu"
+    "f.TimestampR\005cdate\0220\n\005edate\030\007 \001(\0132\032.goog"
+    "le.protobuf.TimestampR\005edate\022W\n\020included"
+    "_devices\030\010 \001(\0132,.kentik.interface.v20210"
+    "8alpha1.DeviceFilterR\017includedDevices\022W\n"
+    "\020excluded_devices\030\t \001(\0132,.kentik.interfa"
+    "ce.v202108alpha1.DeviceFilterR\017excludedD"
+    "evices*\230\006\n\020ConnectivityType\022!\n\035CONNECTIV"
+    "ITY_TYPE_UNSPECIFIED\020\000\022.\n*CONNECTIVITY_T"
+    "YPE_AGGREGATION_INTERCONNECT\020\001\022\037\n\033CONNEC"
+    "TIVITY_TYPE_AVAILABLE\020\002\022\036\n\032CONNECTIVITY_"
+    "TYPE_BACKBONE\020\003\022(\n$CONNECTIVITY_TYPE_CLO"
+    "UD_INTERCONNECT\020\004\022\036\n\032CONNECTIVITY_TYPE_C"
+    "USTOMER\020\005\022\'\n#CONNECTIVITY_TYPE_DATACENTE"
+    "R_FABRIC\020\006\022-\n)CONNECTIVITY_TYPE_DATACENT"
+    "ER_INTERCONNECT\020\007\022$\n CONNECTIVITY_TYPE_E"
+    "MBEDDED_CACHE\020\010\022\036\n\032CONNECTIVITY_TYPE_FRE"
+    "E_PNI\020\t\022\032\n\026CONNECTIVITY_TYPE_HOST\020\n\022\030\n\024C"
+    "ONNECTIVITY_TYPE_IX\020\013\022\033\n\027CONNECTIVITY_TY"
+    "PE_OTHER\020\014\022\036\n\032CONNECTIVITY_TYPE_PAID_PNI"
+    "\020\r\022\036\n\032CONNECTIVITY_TYPE_RESERVED\020\016\022\035\n\031CO"
+    "NNECTIVITY_TYPE_TRANSIT\020\017\022+\n\'CONNECTIVIT"
+    "Y_TYPE_VIRTUAL_CROSS_CONNECT\020\020\022&\n\"CONNEC"
+    "TIVITY_TYPE_IPX_INTERCONNECT\020\021\022&\n\"CONNEC"
+    "TIVITY_TYPE_SIP_INTERCONNECT\020\022\022\036\n\032CONNEC"
+    "TIVITY_TYPE_DDOS_EXT\020\023\022\036\n\032CONNECTIVITY_T"
+    "YPE_DDOS_INT\020\024\022\031\n\025CONNECTIVITY_TYPE_MGT\020"
+    "\025*\247\001\n\017NetworkBoundary\022 \n\034NETWORK_BOUNDAR"
+    "Y_UNSPECIFIED\020\000\022\031\n\025NETWORK_BOUNDARY_AUTO"
+    "\020\001\022\035\n\031NETWORK_BOUNDARY_INTERNAL\020\002\022\035\n\031NET"
+    "WORK_BOUNDARY_EXTERNAL\020\003\022\031\n\025NETWORK_BOUN"
+    "DARY_NONE\020\004*g\n\010IpFilter\022\031\n\025IP_FILTER_UNS"
+    "PECIFIED\020\000\022\025\n\021IP_FILTER_PRIVATE\020\001\022\024\n\020IP_"
+    "FILTER_PUBLIC\020\002\022\023\n\017IP_FILTER_UNSET\020\003*\236\001\n"
+    "\016MatchAttribute\022\037\n\033MATCH_ATTRIBUTE_UNSPE"
+    "CIFIED\020\000\022)\n%MATCH_ATTRIBUTE_INTERFACE_DE"
+    "SCRIPTION\020\001\022\036\n\032MATCH_ATTRIBUTE_SNMP_ALIA"
+    "S\020\002\022 \n\034MATCH_ATTRIBUTE_INTERFACE_IP\020\003*\321\001"
+    "\n\010Operator\022\030\n\024OPERATOR_UNSPECIFIED\020\000\022\023\n\017"
+    "OPERATOR_EQUALS\020\001\022\025\n\021OPERATOR_CONTAINS\020\002"
+    "\022\022\n\016OPERATOR_REGEX\020\003\022 \n\034OPERATOR_CONTAIN"
+    "ED_IN_SUBNET\020\004\022\031\n\025OPERATOR_IS_PUBLIC_IP\020"
+    "\005\022\032\n\026OPERATOR_IS_PRIVATE_IP\020\006\022\022\n\016OPERATO"
+    "R_NO_IP\020\0072\305\016\n\020InterfaceService\022\247\002\n\016Manua"
+    "lClassify\0225.kentik.interface.v202108alph"
+    "a1.ManualClassifyRequest\0326.kentik.interf"
+    "ace.v202108alpha1.ManualClassifyResponse"
+    "\"\245\001\222AV\022\031Manual Classify Interface\032)Manua"
+    "lly set interface(s) classification.*\016Ma"
+    "nualClassify\362\327\002\025admin.interface:write\202\323\344"
+    "\223\002-\"(/interface/v202108alpha1/manual_cla"
+    "ssify:\001*\022\240\002\n\rListInterface\0224.kentik.inte"
+    "rface.v202108alpha1.ListInterfaceRequest"
+    "\0325.kentik.interface.v202108alpha1.ListIn"
+    "terfaceResponse\"\241\001\222A[\022\027Fetch Search Inte"
+    "rfaces\0321Return list of interfaces matche"
+    "s search critera.*\rListInterface\362\327\002\024admi"
+    "n.interface:read\202\323\344\223\002%\022#/interface/v2021"
+    "08alpha1/interfaces\022\241\002\n\014GetInterface\0223.k"
+    "entik.interface.v202108alpha1.GetInterfa"
+    "ceRequest\0324.kentik.interface.v202108alph"
+    "a1.GetInterfaceResponse\"\245\001\222AZ\022\020Get a int"
+    "erface.\0328Returns information about a int"
+    "erface specified with ID.*\014InterfaceGet\362"
+    "\327\002\024admin.interface:read\202\323\344\223\002*\022(/interfac"
+    "e/v202108alpha1/interfaces/{id}\022\250\002\n\017Crea"
+    "teInterface\0226.kentik.interface.v202108al"
+    "pha1.CreateInterfaceRequest\0327.kentik.int"
+    "erface.v202108alpha1.CreateInterfaceResp"
+    "onse\"\243\001\222AY\022\023Create a interface.\0321Create "
+    "a interface from request. returns create"
+    "d.*\017InterfaceCreate\362\327\002\025admin.interface:w"
+    "rite\202\323\344\223\002(\"#/interface/v202108alpha1/int"
+    "erfaces:\001*\022\301\002\n\017UpdateInterface\0226.kentik."
+    "interface.v202108alpha1.UpdateInterfaceR"
+    "equest\0327.kentik.interface.v202108alpha1."
+    "UpdateInterfaceResponse\"\274\001\222Ac\022\023Update a "
+    "interface.\032;Replaces the entire interfac"
+    "e attributes specified with id.*\017Interfa"
+    "ceUpdate\362\327\002\025admin.interface:write\202\323\344\223\0027\032"
+    "2/interface/v202108alpha1/interfaces/{in"
+    "terface.id}:\001*\022\241\002\n\017DeleteInterface\0226.ken"
+    "tik.interface.v202108alpha1.DeleteInterf"
+    "aceRequest\0327.kentik.interface.v202108alp"
+    "ha1.DeleteInterfaceResponse\"\234\001\222AP\022\023Delet"
+    "e a interface.\032(Deletes the interface sp"
+    "ecified with id.*\017InterfaceDelete\362\327\002\025adm"
+    "in.interface:write\202\323\344\223\002**(/interface/v20"
+    "2108alpha1/interfaces/{id}\032-\312A\023grpc.api."
+    "kentik.com\352\327\002\017admin.interface\220\330\002\003B\312\002ZOgi"
+    "thub.com/kentik/api-schema-public/gen/go"
+    "/kentik/interface/v202108alpha1;iface\222A\365"
+    "\001\0227\n\rInterface API\"\030\n\026Kentik API Enginee"
+    "ring2\014202108alpha1*\001\0022\020application/json:"
+    "\020application/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-A"
+    "uth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-"
+    "Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r5\n\026More "
+    "about Kentik APIs\022\033https://docs.kentik.c"
+    "om/apib\006proto3"
 };
-static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2finterface_2fv202108alpha1_2finterface_2eproto_deps[6] =
+static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2finterface_2fv202108alpha1_2finterface_2eproto_deps[5] =
     {
         &::descriptor_table_google_2fapi_2fannotations_2eproto,
         &::descriptor_table_google_2fapi_2fclient_2eproto,
-        &::descriptor_table_google_2fapi_2ffield_5fbehavior_2eproto,
         &::descriptor_table_google_2fprotobuf_2ftimestamp_2eproto,
         &::descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto,
         &::descriptor_table_protoc_2dgen_2dopenapiv2_2foptions_2fannotations_2eproto,
@@ -1736,12 +1727,12 @@ static ::absl::once_flag descriptor_table_kentik_2finterface_2fv202108alpha1_2fi
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2finterface_2fv202108alpha1_2finterface_2eproto = {
     false,
     false,
-    12057,
+    11934,
     descriptor_table_protodef_kentik_2finterface_2fv202108alpha1_2finterface_2eproto,
     "kentik/interface/v202108alpha1/interface.proto",
     &descriptor_table_kentik_2finterface_2fv202108alpha1_2finterface_2eproto_once,
     descriptor_table_kentik_2finterface_2fv202108alpha1_2finterface_2eproto_deps,
-    6,
+    5,
     28,
     schemas,
     file_default_instances,
@@ -2536,8 +2527,7 @@ inline PROTOBUF_NDEBUG_INLINE Interface::Impl_::Impl_(
         initial_interface_description_(arena, from.initial_interface_description_),
         secondary_ips_(arena, from.secondary_ips_),
         initial_provider_(arena, from.initial_provider_),
-        vrf_id_(arena, from.vrf_id_),
-        initial_vrf_id_(arena, from.initial_vrf_id_) {}
+        vrf_id_(arena, from.vrf_id_) {}
 
 Interface::Interface(
     ::google::protobuf::Arena* arena,
@@ -2595,8 +2585,7 @@ inline PROTOBUF_NDEBUG_INLINE Interface::Impl_::Impl_(
         initial_interface_description_(arena),
         secondary_ips_(arena),
         initial_provider_(arena),
-        vrf_id_(arena),
-        initial_vrf_id_(arena) {}
+        vrf_id_(arena) {}
 
 inline void Interface::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
@@ -2630,7 +2619,6 @@ inline void Interface::SharedDtor(MessageLite& self) {
   this_._impl_.secondary_ips_.Destroy();
   this_._impl_.initial_provider_.Destroy();
   this_._impl_.vrf_id_.Destroy();
-  this_._impl_.initial_vrf_id_.Destroy();
   delete this_._impl_.cdate_;
   delete this_._impl_.edate_;
   delete this_._impl_.vrf_;
@@ -2709,15 +2697,15 @@ const ::google::protobuf::internal::ClassData* Interface::GetClassData() const {
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<5, 30, 6, 326, 2> Interface::_table_ = {
+const ::_pbi::TcParseTable<5, 29, 6, 312, 2> Interface::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(Interface, _impl_._has_bits_),
     0, // no _extensions_
-    31, 248,  // max_field_number, fast_idx_mask
+    30, 248,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    2415919104,  // skipmap
+    3489660928,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    30,  // num_field_entries
+    29,  // num_field_entries
     6,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
@@ -2810,9 +2798,7 @@ const ::_pbi::TcParseTable<5, 30, 6, 326, 2> Interface::_table_ = {
     // .kentik.interface.v202108alpha1.InterfaceVrf vrf = 30 [json_name = "vrf"];
     {::_pbi::TcParser::FastMtS2,
      {498, 2, 2, PROTOBUF_FIELD_OFFSET(Interface, _impl_.vrf_)}},
-    // string initial_vrf_id = 31 [json_name = "initialVrfId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    {::_pbi::TcParser::FastUS2,
-     {506, 63, 0, PROTOBUF_FIELD_OFFSET(Interface, _impl_.initial_vrf_id_)}},
+    {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
   }}, {{
@@ -2903,9 +2889,6 @@ const ::_pbi::TcParseTable<5, 30, 6, 326, 2> Interface::_table_ = {
     // .kentik.interface.v202108alpha1.InterfaceVrf vrf = 30 [json_name = "vrf"];
     {PROTOBUF_FIELD_OFFSET(Interface, _impl_.vrf_), _Internal::kHasBitsOffset + 2, 2,
     (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // string initial_vrf_id = 31 [json_name = "initialVrfId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    {PROTOBUF_FIELD_OFFSET(Interface, _impl_.initial_vrf_id_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
   }}, {{
     {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
     {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
@@ -2923,7 +2906,7 @@ const ::_pbi::TcParseTable<5, 30, 6, 326, 2> Interface::_table_ = {
         1, 0, 0, 9,
         9)},
   }}, {{
-    "\50\2\11\7\0\0\12\14\25\0\0\24\0\0\0\10\15\16\20\12\17\22\35\0\15\0\0\20\6\0\16\0"
+    "\50\2\11\7\0\0\12\14\25\0\0\24\0\0\0\10\15\16\20\12\17\22\35\0\15\0\0\20\6\0\0\0"
     "kentik.interface.v202108alpha1.Interface"
     "id"
     "device_id"
@@ -2943,7 +2926,6 @@ const ::_pbi::TcParseTable<5, 30, 6, 326, 2> Interface::_table_ = {
     "secondary_ips"
     "initial_provider"
     "vrf_id"
-    "initial_vrf_id"
   }},
 };
 
@@ -2973,7 +2955,6 @@ PROTOBUF_NOINLINE void Interface::Clear() {
   _impl_.secondary_ips_.ClearToEmpty();
   _impl_.initial_provider_.ClearToEmpty();
   _impl_.vrf_id_.ClearToEmpty();
-  _impl_.initial_vrf_id_.ClearToEmpty();
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
@@ -3310,14 +3291,6 @@ PROTOBUF_NOINLINE void Interface::Clear() {
                 stream);
           }
 
-          // string initial_vrf_id = 31 [json_name = "initialVrfId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-          if (!this_._internal_initial_vrf_id().empty()) {
-            const std::string& _s = this_._internal_initial_vrf_id();
-            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.interface.v202108alpha1.Interface.initial_vrf_id");
-            target = stream->WriteStringMaybeAliased(31, _s, target);
-          }
-
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -3457,11 +3430,6 @@ PROTOBUF_NOINLINE void Interface::Clear() {
               total_size += 2 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                               this_._internal_vrf_id());
             }
-            // string initial_vrf_id = 31 [json_name = "initialVrfId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-            if (!this_._internal_initial_vrf_id().empty()) {
-              total_size += 2 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                              this_._internal_initial_vrf_id());
-            }
           }
           cached_has_bits = this_._impl_._has_bits_[0];
           if (cached_has_bits & 0x00000007u) {
@@ -3580,9 +3548,6 @@ void Interface::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::googl
   if (!from._internal_vrf_id().empty()) {
     _this->_internal_set_vrf_id(from._internal_vrf_id());
   }
-  if (!from._internal_initial_vrf_id().empty()) {
-    _this->_internal_set_initial_vrf_id(from._internal_initial_vrf_id());
-  }
   cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
@@ -3671,7 +3636,6 @@ void Interface::InternalSwap(Interface* PROTOBUF_RESTRICT other) {
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.secondary_ips_, &other->_impl_.secondary_ips_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.initial_provider_, &other->_impl_.initial_provider_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.vrf_id_, &other->_impl_.vrf_id_, arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.initial_vrf_id_, &other->_impl_.initial_vrf_id_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Interface, _impl_.initial_network_boundary_)
       + sizeof(Interface::_impl_.initial_network_boundary_)

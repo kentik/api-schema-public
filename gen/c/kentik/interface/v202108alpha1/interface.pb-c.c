@@ -1419,7 +1419,7 @@ const ProtobufCMessageDescriptor kentik__interface__v202108alpha1__interface__ex
   (ProtobufCMessageInit) kentik__interface__v202108alpha1__interface__extra_info_entry__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__interface__v202108alpha1__interface__field_descriptors[30] =
+static const ProtobufCFieldDescriptor kentik__interface__v202108alpha1__interface__field_descriptors[29] =
 {
   {
     "id",
@@ -1769,18 +1769,6 @@ static const ProtobufCFieldDescriptor kentik__interface__v202108alpha1__interfac
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
-  {
-    "initial_vrf_id",
-    31,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_STRING,
-    0,   /* quantifier_offset */
-    offsetof(Kentik__Interface__V202108alpha1__Interface, initial_vrf_id),
-    NULL,
-    &protobuf_c_empty_string,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
 };
 static const unsigned kentik__interface__v202108alpha1__interface__field_indices_by_name[] = {
   8,   /* field[8] = cdate */
@@ -1796,7 +1784,6 @@ static const unsigned kentik__interface__v202108alpha1__interface__field_indices
   20,   /* field[20] = initial_snmp_alias */
   19,   /* field[19] = initial_snmp_id */
   22,   /* field[22] = initial_snmp_speed */
-  29,   /* field[29] = initial_vrf_id */
   7,   /* field[7] = interface_description */
   6,   /* field[6] = interface_ip */
   10,   /* field[10] = interface_ip_netmask */
@@ -1818,7 +1805,7 @@ static const ProtobufCIntRange kentik__interface__v202108alpha1__interface__numb
 {
   { 1, 0 },
   { 30, 28 },
-  { 0, 30 }
+  { 0, 29 }
 };
 const ProtobufCMessageDescriptor kentik__interface__v202108alpha1__interface__descriptor =
 {
@@ -1828,7 +1815,7 @@ const ProtobufCMessageDescriptor kentik__interface__v202108alpha1__interface__de
   "Kentik__Interface__V202108alpha1__Interface",
   "kentik.interface.v202108alpha1",
   sizeof(Kentik__Interface__V202108alpha1__Interface),
-  30,
+  29,
   kentik__interface__v202108alpha1__interface__field_descriptors,
   kentik__interface__v202108alpha1__interface__field_indices_by_name,
   2,  kentik__interface__v202108alpha1__interface__number_ranges,

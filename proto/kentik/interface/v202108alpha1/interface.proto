@@ -5,7 +5,6 @@ option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/interface
 
 import "google/api/annotations.proto";
 import "google/api/client.proto";
-import "google/api/field_behavior.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
 import "kentik/core/v202303/annotations.proto";
 import "google/protobuf/timestamp.proto";
@@ -105,7 +104,6 @@ message InterfaceVrf {
   repeated string route_targets = 7;
 }
 
-
 message Interface {
   // ID of interface.
   string id = 1;
@@ -172,14 +170,8 @@ message Interface {
   reserved 29;
   // VRF
   InterfaceVrf vrf = 30;
-  // Initial VRF_ID
-  string initial_vrf_id = 31 [
-    (google.api.field_behavior) = OUTPUT_ONLY,
-    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "Initial VRF ID. Read-only, server-managed."
-    }
-  ];
 }
+
 
 message InterfaceClassification {
   bool classified = 1;

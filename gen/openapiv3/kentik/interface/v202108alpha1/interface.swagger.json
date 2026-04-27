@@ -546,12 +546,6 @@
                             },
                             "vrf": {
                                 "$ref": "#/components/schemas/v202108alpha1InterfaceVrf"
-                            },
-                            "initialVrfId": {
-                                "type": "string",
-                                "description": "Initial VRF ID. Read-only, server-managed.",
-                                "title": "Initial VRF_ID",
-                                "readOnly": true
                             }
                         }
                     }
@@ -771,12 +765,6 @@
                     },
                     "vrf": {
                         "$ref": "#/components/schemas/v202108alpha1InterfaceVrf"
-                    },
-                    "initialVrfId": {
-                        "type": "string",
-                        "description": "Initial VRF ID. Read-only, server-managed.",
-                        "title": "Initial VRF_ID",
-                        "readOnly": true
                     }
                 }
             },

@@ -467,12 +467,6 @@
             "vrf": {
               "$ref": "#/definitions/v202108alpha1InterfaceVrf",
               "title": "VRF"
-            },
-            "initialVrfId": {
-              "type": "string",
-              "description": "Initial VRF ID. Read-only, server-managed.",
-              "title": "Initial VRF_ID",
-              "readOnly": true
             }
           }
         }
@@ -698,12 +692,6 @@
         "vrf": {
           "$ref": "#/definitions/v202108alpha1InterfaceVrf",
           "title": "VRF"
-        },
-        "initialVrfId": {
-          "type": "string",
-          "description": "Initial VRF ID. Read-only, server-managed.",
-          "title": "Initial VRF_ID",
-          "readOnly": true
         }
       }
     },
