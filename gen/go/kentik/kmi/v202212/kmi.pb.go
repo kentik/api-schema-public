@@ -1140,24 +1140,24 @@ const file_kentik_kmi_v202212_kmi_proto_rawDesc = "" +
 	"\x05_type\"\x14\n" +
 	"\x12ListMarketsRequest\"\\\n" +
 	"\x13ListMarketsResponse\x12E\n" +
-	"\amarkets\x18\x01 \x03(\v2\x1a.kentik.kmi.v202212.MarketB\x0f\x92A\t2\aMarkets\xe0A\x03R\amarkets\"\x9c\x04\n" +
+	"\amarkets\x18\x01 \x03(\v2\x1a.kentik.kmi.v202212.MarketB\x0f\x92A\t2\aMarkets\xe0A\x03R\amarkets\"\xb4\x05\n" +
 	"\x12GetRankingsRequest\x12c\n" +
-	"\tmarket_id\x18\x01 \x01(\tBF\x92AC2AUnique Geo Market identifier (as provided by the ListMarkets RPC)R\bmarketId\x12\xe2\x01\n" +
-	"\trank_type\x18\x02 \x01(\tB\xc4\x01\x92A\xc0\x012\xbd\x01Type of the requested ranking ('customer_base', 'customer_base_retail', 'customer_base_wholesome', 'customer_base_backbone', 'customer_growth', 'peering_base'). Defaults to 'customer_base'.R\brankType\x12]\n" +
-	"\x02ip\x18\x03 \x01(\tBM\x92AJ2HIP Address Family ('v4' or 'v6') of requested ranking. Defaults to 'v4'.R\x02ip\x12S\n" +
+	"\tmarket_id\x18\x01 \x01(\tBF\x92AC2AUnique Geo Market identifier (as provided by the ListMarkets RPC)R\bmarketId\x12\xec\x02\n" +
+	"\trank_type\x18\x02 \x01(\tB\xce\x02\x92A\xca\x022\xbd\x01Type of the requested ranking ('customer_base', 'customer_base_retail', 'customer_base_wholesome', 'customer_base_backbone', 'customer_growth', 'peering_base'). Defaults to 'customer_base'.:\rcustomer_base\xf2\x02\rcustomer_base\xf2\x02\x14customer_base_retail\xf2\x02\x17customer_base_wholesome\xf2\x02\x16customer_base_backbone\xf2\x02\x0fcustomer_growth\xf2\x02\fpeering_baseR\brankType\x12k\n" +
+	"\x02ip\x18\x03 \x01(\tB[\x92AX2HIP Address Family ('v4' or 'v6') of requested ranking. Defaults to 'v4'.:\x02v4\xf2\x02\x02v4\xf2\x02\x02v6R\x02ip\x12S\n" +
 	"\x05limit\x18\x04 \x01(\rB8\x92A523Maximum number of entries returned. (Default: 600).H\x00R\x05limit\x88\x01\x01B\b\n" +
 	"\x06_limit\"\xcc\x01\n" +
 	"\x13GetRankingsResponse\x12N\n" +
 	"\brankings\x18\x01 \x03(\v2\x1b.kentik.kmi.v202212.RankingB\x15\x92A\x122\x10List of rankingsR\brankings\x12e\n" +
-	"\rinvalid_count\x18\x02 \x01(\rB@\x92A=2;Number of invalid entries encountered while collecting dataR\finvalidCount\"\xe7\x05\n" +
+	"\rinvalid_count\x18\x02 \x01(\rB@\x92A=2;Number of invalid entries encountered while collecting dataR\finvalidCount\"\xf9\x06\n" +
 	"\x14GetASNDetailsRequest\x12c\n" +
 	"\tmarket_id\x18\x01 \x01(\tBF\x92AC2AUnique Geo Market identifier (as provided by the ListMarkets RPC)R\bmarketId\x125\n" +
-	"\x03asn\x18\x02 \x01(\tB#\x92A 2\x1eAutonomous System Number (ASN)R\x03asn\x12H\n" +
-	"\x02ip\x18\x03 \x01(\tB8\x92A523IP Address Family ('v4' or 'v6'). Defaults to 'v4'.R\x02ip\x12q\n" +
-	"\x04type\x18\x04 \x01(\tB]\x92AZ2XType of the requested ASN ('all', 'customers', 'providers', 'peers'). Defaults to 'all'.R\x04type\x12v\n" +
-	"\x0fmutual_provider\x18\x05 \x01(\tBM\x92AJ2HFilter by mutual provider ('all', 'only', 'exclude'). Defaults to 'all'.R\x0emutualProvider\x12v\n" +
-	"\x0fmutual_customer\x18\x06 \x01(\tBM\x92AJ2HFilter by mutual customer ('all', 'only', 'exclude'). Defaults to 'all'.R\x0emutualCustomer\x12\x85\x01\n" +
-	"\x14singlehomed_customer\x18\a \x01(\tBR\x92AO2MFilter by singlehomed customer ('all', 'only', 'exclude'). Defaults to 'all'.R\x13singlehomedCustomer\"\xad\x01\n" +
+	"\x03asn\x18\x02 \x01(\tB#\x92A 2\x1eAutonomous System Number (ASN)R\x03asn\x12V\n" +
+	"\x02ip\x18\x03 \x01(\tBF\x92AC23IP Address Family ('v4' or 'v6'). Defaults to 'v4'.:\x02v4\xf2\x02\x02v4\xf2\x02\x02v6R\x02ip\x12\x9e\x01\n" +
+	"\x04type\x18\x04 \x01(\tB\x89\x01\x92A\x85\x012XType of the requested ASN ('all', 'customers', 'providers', 'peers'). Defaults to 'all'.:\x03all\xf2\x02\x03all\xf2\x02\tcustomers\xf2\x02\tproviders\xf2\x02\x05peersR\x04type\x12\x92\x01\n" +
+	"\x0fmutual_provider\x18\x05 \x01(\tBi\x92Af2HFilter by mutual provider ('all', 'only', 'exclude'). Defaults to 'all'.:\x03all\xf2\x02\x03all\xf2\x02\x04only\xf2\x02\aexcludeR\x0emutualProvider\x12\x92\x01\n" +
+	"\x0fmutual_customer\x18\x06 \x01(\tBi\x92Af2HFilter by mutual customer ('all', 'only', 'exclude'). Defaults to 'all'.:\x03all\xf2\x02\x03all\xf2\x02\x04only\xf2\x02\aexcludeR\x0emutualCustomer\x12\xa1\x01\n" +
+	"\x14singlehomed_customer\x18\a \x01(\tBn\x92Ak2MFilter by singlehomed customer ('all', 'only', 'exclude'). Defaults to 'all'.:\x03all\xf2\x02\x03all\xf2\x02\x04only\xf2\x02\aexcludeR\x13singlehomedCustomer\"\xad\x01\n" +
 	"\x15GetASNDetailsResponse\x12\x93\x01\n" +
 	"\vasn_details\x18\x01 \x01(\v2\x1e.kentik.kmi.v202212.ASNDetailsBR\x92AO2MMetadata and list of customers, providers, and peers for an Autonomous SystemR\n" +
 	"asnDetails\"\x9c\b\n" +

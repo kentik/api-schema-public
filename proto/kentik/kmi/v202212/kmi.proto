@@ -289,11 +289,15 @@ message GetRankingsRequest {
   string rank_type = 2 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Type of the requested ranking ('customer_base', 'customer_base_retail', 'customer_base_wholesome', 'customer_base_backbone', 'customer_growth', 'peering_base'). Defaults to 'customer_base'."
+      enum: ["customer_base", "customer_base_retail", "customer_base_wholesome", "customer_base_backbone", "customer_growth", "peering_base"]
+      default: "customer_base"
     }
   ];
   string ip = 3 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "IP Address Family ('v4' or 'v6') of requested ranking. Defaults to 'v4'."
+      enum: ["v4", "v6"]
+      default: "v4"
     }
   ];
   optional uint32 limit = 4 [
@@ -332,26 +336,36 @@ message GetASNDetailsRequest {
   string ip = 3 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "IP Address Family ('v4' or 'v6'). Defaults to 'v4'."
+      enum: ["v4", "v6"]
+      default: "v4"
     }
   ];
   string type = 4 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Type of the requested ASN ('all', 'customers', 'providers', 'peers'). Defaults to 'all'."
+      enum: ["all", "customers", "providers", "peers"]
+      default: "all"
     }
   ];
   string mutual_provider = 5 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Filter by mutual provider ('all', 'only', 'exclude'). Defaults to 'all'."
+      enum: ["all", "only", "exclude"]
+      default: "all"
     }
   ];
   string mutual_customer = 6 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Filter by mutual customer ('all', 'only', 'exclude'). Defaults to 'all'."
+      enum: ["all", "only", "exclude"]
+      default: "all"
     }
   ];
   string singlehomed_customer = 7 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Filter by singlehomed customer ('all', 'only', 'exclude'). Defaults to 'all'."
+      enum: ["all", "only", "exclude"]
+      default: "all"
     }
   ];
 }

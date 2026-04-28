@@ -266,7 +266,8 @@
                         "in": "path",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "type": "string",
+                            "default": "all"
                         }
                     }
                 ],
@@ -328,7 +329,8 @@
                         "in": "path",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "type": "string",
+                            "default": "customer_base"
                         }
                     },
                     {
@@ -337,7 +339,8 @@
                         "in": "path",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "type": "string",
+                            "default": "v4"
                         }
                     }
                 ],
@@ -418,18 +421,41 @@
                 "properties": {
                     "ip": {
                         "type": "string",
+                        "enum": [
+                            "v4",
+                            "v6"
+                        ],
+                        "default": "v4",
                         "description": "IP Address Family ('v4' or 'v6'). Defaults to 'v4'."
                     },
                     "mutualProvider": {
                         "type": "string",
+                        "enum": [
+                            "all",
+                            "only",
+                            "exclude"
+                        ],
+                        "default": "all",
                         "description": "Filter by mutual provider ('all', 'only', 'exclude'). Defaults to 'all'."
                     },
                     "mutualCustomer": {
                         "type": "string",
+                        "enum": [
+                            "all",
+                            "only",
+                            "exclude"
+                        ],
+                        "default": "all",
                         "description": "Filter by mutual customer ('all', 'only', 'exclude'). Defaults to 'all'."
                     },
                     "singlehomedCustomer": {
                         "type": "string",
+                        "enum": [
+                            "all",
+                            "only",
+                            "exclude"
+                        ],
+                        "default": "all",
                         "description": "Filter by singlehomed customer ('all', 'only', 'exclude'). Defaults to 'all'."
                     }
                 },
