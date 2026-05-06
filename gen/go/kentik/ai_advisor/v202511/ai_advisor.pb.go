@@ -556,10 +556,10 @@ const file_kentik_ai_advisor_v202511_ai_advisor_proto_rawDesc = "" +
 	"\x19SESSION_STATUS_PROCESSING\x10\x02\x12\x1c\n" +
 	"\x18SESSION_STATUS_COMPLETED\x10\x03\x12\x19\n" +
 	"\x15SESSION_STATUS_FAILED\x10\x04\x12$\n" +
-	" SESSION_STATUS_AWAITING_APPROVAL\x10\x052\xa6\a\n" +
-	"\x14AiAdvisorDataService\x12\xa2\x02\n" +
-	"\x11CreateChatSession\x123.kentik.ai_advisor.v202511.CreateChatSessionRequest\x1a4.kentik.ai_advisor.v202511.CreateChatSessionResponse\"\xa1\x01\x92Ag\x12\x1eCreate AI Advisor Chat Session\x1a2Create a new AI Advisor Chat session with a prompt*\x11CreateChatSession\xf2\xd7\x02\x10ai_advisor:write\x82\xd3\xe4\x93\x02\x1d:\x01*\"\x18/ai_advisor/v202511/chat\x12\x9c\x02\n" +
-	"\x11UpdateChatSession\x123.kentik.ai_advisor.v202511.UpdateChatSessionRequest\x1a4.kentik.ai_advisor.v202511.UpdateChatSessionResponse\"\x9b\x01\x92Aa\x12\x1eUpdate AI Advisor Chat Session\x1a,Update AI Advisor Chat session with a prompt*\x11UpdateChatSession\xf2\xd7\x02\x10ai_advisor:write\x82\xd3\xe4\x93\x02\x1d:\x01*\x1a\x18/ai_advisor/v202511/chat\x12\x9f\x02\n" +
+	" SESSION_STATUS_AWAITING_APPROVAL\x10\x052\xa4\a\n" +
+	"\x14AiAdvisorDataService\x12\xa1\x02\n" +
+	"\x11CreateChatSession\x123.kentik.ai_advisor.v202511.CreateChatSessionRequest\x1a4.kentik.ai_advisor.v202511.CreateChatSessionResponse\"\xa0\x01\x92Ag\x12\x1eCreate AI Advisor Chat Session\x1a2Create a new AI Advisor Chat session with a prompt*\x11CreateChatSession\xf2\xd7\x02\x0fai_advisor:read\x82\xd3\xe4\x93\x02\x1d:\x01*\"\x18/ai_advisor/v202511/chat\x12\x9b\x02\n" +
+	"\x11UpdateChatSession\x123.kentik.ai_advisor.v202511.UpdateChatSessionRequest\x1a4.kentik.ai_advisor.v202511.UpdateChatSessionResponse\"\x9a\x01\x92Aa\x12\x1eUpdate AI Advisor Chat Session\x1a,Update AI Advisor Chat session with a prompt*\x11UpdateChatSession\xf2\xd7\x02\x0fai_advisor:read\x82\xd3\xe4\x93\x02\x1d:\x01*\x1a\x18/ai_advisor/v202511/chat\x12\x9f\x02\n" +
 	"\x0eGetChatSession\x120.kentik.ai_advisor.v202511.GetChatSessionRequest\x1a1.kentik.ai_advisor.v202511.GetChatSessionResponse\"\xa7\x01\x92Al\x12\x1bGet AI Advisor Chat Session\x1a=Retrieve the status and results of an AI Advisor chat session*\x0eGetChatSession\xf2\xd7\x02\x0fai_advisor:read\x82\xd3\xe4\x93\x02\x1f\x12\x1d/ai_advisor/v202511/chat/{id}\x1a(\xcaA\x13grpc.api.kentik.com\xea\xd7\x02\n" +
 	"ai_advisor\x90\xd8\x02\x03B\xd4\x03\x92A\xff\x02\x12\x98\x01\n" +
 	"\x0eAI Advisor API\x126# Overview\n" +

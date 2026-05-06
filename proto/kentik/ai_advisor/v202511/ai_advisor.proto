@@ -164,7 +164,7 @@ service AiAdvisorDataService {
   option (kentik.core.v202303.service_scope) = "ai_advisor";
 
   rpc CreateChatSession(CreateChatSessionRequest) returns (CreateChatSessionResponse) {
-    option (kentik.core.v202303.method_scope) = "ai_advisor:write";
+    option (kentik.core.v202303.method_scope) = "ai_advisor:read"; // A regular `user` should be able to create AI Advisor sessions
     option (google.api.http) = {
       post: "/ai_advisor/v202511/chat"
       body: "*"
@@ -178,7 +178,7 @@ service AiAdvisorDataService {
 
 
   rpc UpdateChatSession(UpdateChatSessionRequest) returns (UpdateChatSessionResponse) {
-    option (kentik.core.v202303.method_scope) = "ai_advisor:write";
+    option (kentik.core.v202303.method_scope) = "ai_advisor:read"; // A regular `user` should be able to update a session
     option (google.api.http) = {
       put: "/ai_advisor/v202511/chat"
       body: "*"
