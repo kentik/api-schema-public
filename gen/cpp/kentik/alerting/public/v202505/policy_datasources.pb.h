@@ -61,6 +61,9 @@ namespace v202505 {
 class PolicyDataSources;
 struct PolicyDataSourcesDefaultTypeInternal;
 extern PolicyDataSourcesDefaultTypeInternal _PolicyDataSources_default_instance_;
+class PolicyDataSources_DeviceTag;
+struct PolicyDataSources_DeviceTagDefaultTypeInternal;
+extern PolicyDataSources_DeviceTagDefaultTypeInternal _PolicyDataSources_DeviceTag_default_instance_;
 }  // namespace v202505
 }  // namespace public_
 }  // namespace alerting
@@ -78,6 +81,226 @@ namespace v202505 {
 // ===================================================================
 
 
+// -------------------------------------------------------------------
+
+class PolicyDataSources_DeviceTag final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:kentik.alerting.public.v202505.PolicyDataSources.DeviceTag) */ {
+ public:
+  inline PolicyDataSources_DeviceTag() : PolicyDataSources_DeviceTag(nullptr) {}
+  ~PolicyDataSources_DeviceTag() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(PolicyDataSources_DeviceTag* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(PolicyDataSources_DeviceTag));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR PolicyDataSources_DeviceTag(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline PolicyDataSources_DeviceTag(const PolicyDataSources_DeviceTag& from) : PolicyDataSources_DeviceTag(nullptr, from) {}
+  inline PolicyDataSources_DeviceTag(PolicyDataSources_DeviceTag&& from) noexcept
+      : PolicyDataSources_DeviceTag(nullptr, std::move(from)) {}
+  inline PolicyDataSources_DeviceTag& operator=(const PolicyDataSources_DeviceTag& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline PolicyDataSources_DeviceTag& operator=(PolicyDataSources_DeviceTag&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const PolicyDataSources_DeviceTag& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const PolicyDataSources_DeviceTag* internal_default_instance() {
+    return reinterpret_cast<const PolicyDataSources_DeviceTag*>(
+        &_PolicyDataSources_DeviceTag_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 0;
+  friend void swap(PolicyDataSources_DeviceTag& a, PolicyDataSources_DeviceTag& b) { a.Swap(&b); }
+  inline void Swap(PolicyDataSources_DeviceTag* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(PolicyDataSources_DeviceTag* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  PolicyDataSources_DeviceTag* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<PolicyDataSources_DeviceTag>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const PolicyDataSources_DeviceTag& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const PolicyDataSources_DeviceTag& from) { PolicyDataSources_DeviceTag::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(PolicyDataSources_DeviceTag* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "kentik.alerting.public.v202505.PolicyDataSources.DeviceTag"; }
+
+ protected:
+  explicit PolicyDataSources_DeviceTag(::google::protobuf::Arena* arena);
+  PolicyDataSources_DeviceTag(::google::protobuf::Arena* arena, const PolicyDataSources_DeviceTag& from);
+  PolicyDataSources_DeviceTag(::google::protobuf::Arena* arena, PolicyDataSources_DeviceTag&& from) noexcept
+      : PolicyDataSources_DeviceTag(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kValuesFieldNumber = 2,
+    kIdFieldNumber = 1,
+  };
+  // repeated string values = 2 [json_name = "values", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  int values_size() const;
+  private:
+  int _internal_values_size() const;
+
+  public:
+  void clear_values() ;
+  const std::string& values(int index) const;
+  std::string* mutable_values(int index);
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_values(int index, Arg_&& value, Args_... args);
+  std::string* add_values();
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void add_values(Arg_&& value, Args_... args);
+  const ::google::protobuf::RepeatedPtrField<std::string>& values() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* mutable_values();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<std::string>& _internal_values() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* _internal_mutable_values();
+
+  public:
+  // string id = 1 [json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_id() ;
+  const std::string& id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_id(Arg_&& arg, Args_... args);
+  std::string* mutable_id();
+  PROTOBUF_NODISCARD std::string* release_id();
+  void set_allocated_id(std::string* value);
+
+  private:
+  const std::string& _internal_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_id(
+      const std::string& value);
+  std::string* _internal_mutable_id();
+
+  public:
+  // @@protoc_insertion_point(class_scope:kentik.alerting.public.v202505.PolicyDataSources.DeviceTag)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 0,
+      75, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const PolicyDataSources_DeviceTag& from_msg);
+    ::google::protobuf::RepeatedPtrField<std::string> values_;
+    ::google::protobuf::internal::ArenaStringPtr id_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_kentik_2falerting_2fpublic_2fv202505_2fpolicy_5fdatasources_2eproto;
+};
 // -------------------------------------------------------------------
 
 class PolicyDataSources final : public ::google::protobuf::Message
@@ -139,7 +362,7 @@ class PolicyDataSources final : public ::google::protobuf::Message
     return reinterpret_cast<const PolicyDataSources*>(
         &_PolicyDataSources_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 0;
+  static constexpr int kIndexInFileMessages = 1;
   friend void swap(PolicyDataSources& a, PolicyDataSources& b) { a.Swap(&b); }
   inline void Swap(PolicyDataSources* other) {
     if (other == this) return;
@@ -223,6 +446,7 @@ class PolicyDataSources final : public ::google::protobuf::Message
  public:
   ::google::protobuf::Metadata GetMetadata() const;
   // nested types ----------------------------------------------------
+  using DeviceTag = PolicyDataSources_DeviceTag;
 
   // accessors -------------------------------------------------------
   enum : int {
@@ -230,6 +454,7 @@ class PolicyDataSources final : public ::google::protobuf::Message
     kLabelIdsFieldNumber = 3,
     kSiteIdsFieldNumber = 4,
     kTypesFieldNumber = 5,
+    kDeviceTagsFieldNumber = 6,
     kAllDevicesFieldNumber = 1,
   };
   // repeated string device_ids = 2 [json_name = "deviceIds", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -320,6 +545,23 @@ class PolicyDataSources final : public ::google::protobuf::Message
   ::google::protobuf::RepeatedPtrField<std::string>* _internal_mutable_types();
 
   public:
+  // repeated .kentik.alerting.public.v202505.PolicyDataSources.DeviceTag device_tags = 6 [json_name = "deviceTags", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  int device_tags_size() const;
+  private:
+  int _internal_device_tags_size() const;
+
+  public:
+  void clear_device_tags() ;
+  ::kentik::alerting::public_::v202505::PolicyDataSources_DeviceTag* mutable_device_tags(int index);
+  ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::PolicyDataSources_DeviceTag>* mutable_device_tags();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::PolicyDataSources_DeviceTag>& _internal_device_tags() const;
+  ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::PolicyDataSources_DeviceTag>* _internal_mutable_device_tags();
+  public:
+  const ::kentik::alerting::public_::v202505::PolicyDataSources_DeviceTag& device_tags(int index) const;
+  ::kentik::alerting::public_::v202505::PolicyDataSources_DeviceTag* add_device_tags();
+  const ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::PolicyDataSources_DeviceTag>& device_tags() const;
   // bool all_devices = 1 [json_name = "allDevices", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   void clear_all_devices() ;
   bool all_devices() const;
@@ -335,7 +577,7 @@ class PolicyDataSources final : public ::google::protobuf::Message
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      3, 5, 0,
+      3, 6, 1,
       89, 2>
       _table_;
 
@@ -357,6 +599,7 @@ class PolicyDataSources final : public ::google::protobuf::Message
     ::google::protobuf::RepeatedPtrField<std::string> label_ids_;
     ::google::protobuf::RepeatedPtrField<std::string> site_ids_;
     ::google::protobuf::RepeatedPtrField<std::string> types_;
+    ::google::protobuf::RepeatedPtrField< ::kentik::alerting::public_::v202505::PolicyDataSources_DeviceTag > device_tags_;
     bool all_devices_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
@@ -377,6 +620,122 @@ class PolicyDataSources final : public ::google::protobuf::Message
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// PolicyDataSources_DeviceTag
+
+// string id = 1 [json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void PolicyDataSources_DeviceTag::clear_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.id_.ClearToEmpty();
+}
+inline const std::string& PolicyDataSources_DeviceTag::id() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.alerting.public.v202505.PolicyDataSources.DeviceTag.id)
+  return _internal_id();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void PolicyDataSources_DeviceTag::set_id(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.alerting.public.v202505.PolicyDataSources.DeviceTag.id)
+}
+inline std::string* PolicyDataSources_DeviceTag::mutable_id() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_id();
+  // @@protoc_insertion_point(field_mutable:kentik.alerting.public.v202505.PolicyDataSources.DeviceTag.id)
+  return _s;
+}
+inline const std::string& PolicyDataSources_DeviceTag::_internal_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.id_.Get();
+}
+inline void PolicyDataSources_DeviceTag::_internal_set_id(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.id_.Set(value, GetArena());
+}
+inline std::string* PolicyDataSources_DeviceTag::_internal_mutable_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.id_.Mutable( GetArena());
+}
+inline std::string* PolicyDataSources_DeviceTag::release_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.alerting.public.v202505.PolicyDataSources.DeviceTag.id)
+  return _impl_.id_.Release();
+}
+inline void PolicyDataSources_DeviceTag::set_allocated_id(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.id_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.id_.IsDefault()) {
+    _impl_.id_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.alerting.public.v202505.PolicyDataSources.DeviceTag.id)
+}
+
+// repeated string values = 2 [json_name = "values", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline int PolicyDataSources_DeviceTag::_internal_values_size() const {
+  return _internal_values().size();
+}
+inline int PolicyDataSources_DeviceTag::values_size() const {
+  return _internal_values_size();
+}
+inline void PolicyDataSources_DeviceTag::clear_values() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.values_.Clear();
+}
+inline std::string* PolicyDataSources_DeviceTag::add_values() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  std::string* _s = _internal_mutable_values()->Add();
+  // @@protoc_insertion_point(field_add_mutable:kentik.alerting.public.v202505.PolicyDataSources.DeviceTag.values)
+  return _s;
+}
+inline const std::string& PolicyDataSources_DeviceTag::values(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.alerting.public.v202505.PolicyDataSources.DeviceTag.values)
+  return _internal_values().Get(index);
+}
+inline std::string* PolicyDataSources_DeviceTag::mutable_values(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:kentik.alerting.public.v202505.PolicyDataSources.DeviceTag.values)
+  return _internal_mutable_values()->Mutable(index);
+}
+template <typename Arg_, typename... Args_>
+inline void PolicyDataSources_DeviceTag::set_values(int index, Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::AssignToString(
+      *_internal_mutable_values()->Mutable(index),
+      std::forward<Arg_>(value), args... );
+  // @@protoc_insertion_point(field_set:kentik.alerting.public.v202505.PolicyDataSources.DeviceTag.values)
+}
+template <typename Arg_, typename... Args_>
+inline void PolicyDataSources_DeviceTag::add_values(Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::google::protobuf::internal::AddToRepeatedPtrField(*_internal_mutable_values(),
+                               std::forward<Arg_>(value),
+                               args... );
+  // @@protoc_insertion_point(field_add:kentik.alerting.public.v202505.PolicyDataSources.DeviceTag.values)
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+PolicyDataSources_DeviceTag::values() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:kentik.alerting.public.v202505.PolicyDataSources.DeviceTag.values)
+  return _internal_values();
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+PolicyDataSources_DeviceTag::mutable_values() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:kentik.alerting.public.v202505.PolicyDataSources.DeviceTag.values)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_values();
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+PolicyDataSources_DeviceTag::_internal_values() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.values_;
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+PolicyDataSources_DeviceTag::_internal_mutable_values() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.values_;
+}
+
 // -------------------------------------------------------------------
 
 // PolicyDataSources
@@ -657,6 +1016,55 @@ inline ::google::protobuf::RepeatedPtrField<std::string>*
 PolicyDataSources::_internal_mutable_types() {
   ::google::protobuf::internal::TSanRead(&_impl_);
   return &_impl_.types_;
+}
+
+// repeated .kentik.alerting.public.v202505.PolicyDataSources.DeviceTag device_tags = 6 [json_name = "deviceTags", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline int PolicyDataSources::_internal_device_tags_size() const {
+  return _internal_device_tags().size();
+}
+inline int PolicyDataSources::device_tags_size() const {
+  return _internal_device_tags_size();
+}
+inline void PolicyDataSources::clear_device_tags() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.device_tags_.Clear();
+}
+inline ::kentik::alerting::public_::v202505::PolicyDataSources_DeviceTag* PolicyDataSources::mutable_device_tags(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:kentik.alerting.public.v202505.PolicyDataSources.device_tags)
+  return _internal_mutable_device_tags()->Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::PolicyDataSources_DeviceTag>* PolicyDataSources::mutable_device_tags()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:kentik.alerting.public.v202505.PolicyDataSources.device_tags)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_device_tags();
+}
+inline const ::kentik::alerting::public_::v202505::PolicyDataSources_DeviceTag& PolicyDataSources::device_tags(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.alerting.public.v202505.PolicyDataSources.device_tags)
+  return _internal_device_tags().Get(index);
+}
+inline ::kentik::alerting::public_::v202505::PolicyDataSources_DeviceTag* PolicyDataSources::add_device_tags() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::kentik::alerting::public_::v202505::PolicyDataSources_DeviceTag* _add = _internal_mutable_device_tags()->Add();
+  // @@protoc_insertion_point(field_add:kentik.alerting.public.v202505.PolicyDataSources.device_tags)
+  return _add;
+}
+inline const ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::PolicyDataSources_DeviceTag>& PolicyDataSources::device_tags() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:kentik.alerting.public.v202505.PolicyDataSources.device_tags)
+  return _internal_device_tags();
+}
+inline const ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::PolicyDataSources_DeviceTag>&
+PolicyDataSources::_internal_device_tags() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.device_tags_;
+}
+inline ::google::protobuf::RepeatedPtrField<::kentik::alerting::public_::v202505::PolicyDataSources_DeviceTag>*
+PolicyDataSources::_internal_mutable_device_tags() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.device_tags_;
 }
 
 #ifdef __GNUC__

@@ -7,6 +7,12 @@
 #endif
 
 #include "kentik/alerting/public/v202505/policy_datasources.pb-c.h"
+void   kentik__alerting__public__v202505__policy_data_sources__device_tag__init
+                     (Kentik__Alerting__Public__V202505__PolicyDataSources__DeviceTag         *message)
+{
+  static const Kentik__Alerting__Public__V202505__PolicyDataSources__DeviceTag init_value = KENTIK__ALERTING__PUBLIC__V202505__POLICY_DATA_SOURCES__DEVICE_TAG__INIT;
+  *message = init_value;
+}
 void   kentik__alerting__public__v202505__policy_data_sources__init
                      (Kentik__Alerting__Public__V202505__PolicyDataSources         *message)
 {
@@ -52,7 +58,58 @@ void   kentik__alerting__public__v202505__policy_data_sources__free_unpacked
   assert(message->base.descriptor == &kentik__alerting__public__v202505__policy_data_sources__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__policy_data_sources__field_descriptors[5] =
+static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__policy_data_sources__device_tag__field_descriptors[2] =
+{
+  {
+    "id",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Alerting__Public__V202505__PolicyDataSources__DeviceTag, id),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "values",
+    2,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_STRING,
+    offsetof(Kentik__Alerting__Public__V202505__PolicyDataSources__DeviceTag, n_values),
+    offsetof(Kentik__Alerting__Public__V202505__PolicyDataSources__DeviceTag, values),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__alerting__public__v202505__policy_data_sources__device_tag__field_indices_by_name[] = {
+  0,   /* field[0] = id */
+  1,   /* field[1] = values */
+};
+static const ProtobufCIntRange kentik__alerting__public__v202505__policy_data_sources__device_tag__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor kentik__alerting__public__v202505__policy_data_sources__device_tag__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.alerting.public.v202505.PolicyDataSources.DeviceTag",
+  "DeviceTag",
+  "Kentik__Alerting__Public__V202505__PolicyDataSources__DeviceTag",
+  "kentik.alerting.public.v202505",
+  sizeof(Kentik__Alerting__Public__V202505__PolicyDataSources__DeviceTag),
+  2,
+  kentik__alerting__public__v202505__policy_data_sources__device_tag__field_descriptors,
+  kentik__alerting__public__v202505__policy_data_sources__device_tag__field_indices_by_name,
+  1,  kentik__alerting__public__v202505__policy_data_sources__device_tag__number_ranges,
+  (ProtobufCMessageInit) kentik__alerting__public__v202505__policy_data_sources__device_tag__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__policy_data_sources__field_descriptors[6] =
 {
   {
     "all_devices",
@@ -114,10 +171,23 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__policy_
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "device_tags",
+    6,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Kentik__Alerting__Public__V202505__PolicyDataSources, n_device_tags),
+    offsetof(Kentik__Alerting__Public__V202505__PolicyDataSources, device_tags),
+    &kentik__alerting__public__v202505__policy_data_sources__device_tag__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__alerting__public__v202505__policy_data_sources__field_indices_by_name[] = {
   0,   /* field[0] = all_devices */
   1,   /* field[1] = device_ids */
+  5,   /* field[5] = device_tags */
   2,   /* field[2] = label_ids */
   3,   /* field[3] = site_ids */
   4,   /* field[4] = types */
@@ -125,7 +195,7 @@ static const unsigned kentik__alerting__public__v202505__policy_data_sources__fi
 static const ProtobufCIntRange kentik__alerting__public__v202505__policy_data_sources__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 5 }
+  { 0, 6 }
 };
 const ProtobufCMessageDescriptor kentik__alerting__public__v202505__policy_data_sources__descriptor =
 {
@@ -135,7 +205,7 @@ const ProtobufCMessageDescriptor kentik__alerting__public__v202505__policy_data_
   "Kentik__Alerting__Public__V202505__PolicyDataSources",
   "kentik.alerting.public.v202505",
   sizeof(Kentik__Alerting__Public__V202505__PolicyDataSources),
-  5,
+  6,
   kentik__alerting__public__v202505__policy_data_sources__field_descriptors,
   kentik__alerting__public__v202505__policy_data_sources__field_indices_by_name,
   1,  kentik__alerting__public__v202505__policy_data_sources__number_ranges,

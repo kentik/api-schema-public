@@ -19,12 +19,25 @@ PROTOBUF_C__BEGIN_DECLS
 #include "kentik/core/v202303/annotations.pb-c.h"
 
 typedef struct Kentik__Alerting__Public__V202505__PolicyDataSources Kentik__Alerting__Public__V202505__PolicyDataSources;
+typedef struct Kentik__Alerting__Public__V202505__PolicyDataSources__DeviceTag Kentik__Alerting__Public__V202505__PolicyDataSources__DeviceTag;
 
 
 /* --- enums --- */
 
 
 /* --- messages --- */
+
+struct  Kentik__Alerting__Public__V202505__PolicyDataSources__DeviceTag
+{
+  ProtobufCMessage base;
+  char *id;
+  size_t n_values;
+  char **values;
+};
+#define KENTIK__ALERTING__PUBLIC__V202505__POLICY_DATA_SOURCES__DEVICE_TAG__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__alerting__public__v202505__policy_data_sources__device_tag__descriptor) \
+    , (char *)protobuf_c_empty_string, 0,NULL }
+
 
 struct  Kentik__Alerting__Public__V202505__PolicyDataSources
 {
@@ -38,12 +51,17 @@ struct  Kentik__Alerting__Public__V202505__PolicyDataSources
   char **site_ids;
   size_t n_types;
   char **types;
+  size_t n_device_tags;
+  Kentik__Alerting__Public__V202505__PolicyDataSources__DeviceTag **device_tags;
 };
 #define KENTIK__ALERTING__PUBLIC__V202505__POLICY_DATA_SOURCES__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__alerting__public__v202505__policy_data_sources__descriptor) \
-    , 0, 0,NULL, 0,NULL, 0,NULL, 0,NULL }
+    , 0, 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL }
 
 
+/* Kentik__Alerting__Public__V202505__PolicyDataSources__DeviceTag methods */
+void   kentik__alerting__public__v202505__policy_data_sources__device_tag__init
+                     (Kentik__Alerting__Public__V202505__PolicyDataSources__DeviceTag         *message);
 /* Kentik__Alerting__Public__V202505__PolicyDataSources methods */
 void   kentik__alerting__public__v202505__policy_data_sources__init
                      (Kentik__Alerting__Public__V202505__PolicyDataSources         *message);
@@ -65,6 +83,9 @@ void   kentik__alerting__public__v202505__policy_data_sources__free_unpacked
                       ProtobufCAllocator *allocator);
 /* --- per-message closures --- */
 
+typedef void (*Kentik__Alerting__Public__V202505__PolicyDataSources__DeviceTag_Closure)
+                 (const Kentik__Alerting__Public__V202505__PolicyDataSources__DeviceTag *message,
+                  void *closure_data);
 typedef void (*Kentik__Alerting__Public__V202505__PolicyDataSources_Closure)
                  (const Kentik__Alerting__Public__V202505__PolicyDataSources *message,
                   void *closure_data);
@@ -75,6 +96,7 @@ typedef void (*Kentik__Alerting__Public__V202505__PolicyDataSources_Closure)
 /* --- descriptors --- */
 
 extern const ProtobufCMessageDescriptor kentik__alerting__public__v202505__policy_data_sources__descriptor;
+extern const ProtobufCMessageDescriptor kentik__alerting__public__v202505__policy_data_sources__device_tag__descriptor;
 
 PROTOBUF_C__END_DECLS
 

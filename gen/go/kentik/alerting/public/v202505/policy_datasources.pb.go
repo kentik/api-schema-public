@@ -25,12 +25,13 @@ const (
 )
 
 type PolicyDataSources struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	AllDevices    bool                   `protobuf:"varint,1,opt,name=all_devices,json=allDevices,proto3" json:"all_devices,omitempty"`
-	DeviceIds     []string               `protobuf:"bytes,2,rep,name=device_ids,json=deviceIds,proto3" json:"device_ids,omitempty"`
-	LabelIds      []string               `protobuf:"bytes,3,rep,name=label_ids,json=labelIds,proto3" json:"label_ids,omitempty"`
-	SiteIds       []string               `protobuf:"bytes,4,rep,name=site_ids,json=siteIds,proto3" json:"site_ids,omitempty"`
-	Types         []string               `protobuf:"bytes,5,rep,name=types,proto3" json:"types,omitempty"`
+	state         protoimpl.MessageState         `protogen:"open.v1"`
+	AllDevices    bool                           `protobuf:"varint,1,opt,name=all_devices,json=allDevices,proto3" json:"all_devices,omitempty"`
+	DeviceIds     []string                       `protobuf:"bytes,2,rep,name=device_ids,json=deviceIds,proto3" json:"device_ids,omitempty"`
+	LabelIds      []string                       `protobuf:"bytes,3,rep,name=label_ids,json=labelIds,proto3" json:"label_ids,omitempty"`
+	SiteIds       []string                       `protobuf:"bytes,4,rep,name=site_ids,json=siteIds,proto3" json:"site_ids,omitempty"`
+	Types         []string                       `protobuf:"bytes,5,rep,name=types,proto3" json:"types,omitempty"`
+	DeviceTags    []*PolicyDataSources_DeviceTag `protobuf:"bytes,6,rep,name=device_tags,json=deviceTags,proto3" json:"device_tags,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -100,19 +101,83 @@ func (x *PolicyDataSources) GetTypes() []string {
 	return nil
 }
 
+func (x *PolicyDataSources) GetDeviceTags() []*PolicyDataSources_DeviceTag {
+	if x != nil {
+		return x.DeviceTags
+	}
+	return nil
+}
+
+type PolicyDataSources_DeviceTag struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Values        []string               `protobuf:"bytes,2,rep,name=values,proto3" json:"values,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PolicyDataSources_DeviceTag) Reset() {
+	*x = PolicyDataSources_DeviceTag{}
+	mi := &file_kentik_alerting_public_v202505_policy_datasources_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PolicyDataSources_DeviceTag) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PolicyDataSources_DeviceTag) ProtoMessage() {}
+
+func (x *PolicyDataSources_DeviceTag) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_alerting_public_v202505_policy_datasources_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PolicyDataSources_DeviceTag.ProtoReflect.Descriptor instead.
+func (*PolicyDataSources_DeviceTag) Descriptor() ([]byte, []int) {
+	return file_kentik_alerting_public_v202505_policy_datasources_proto_rawDescGZIP(), []int{0, 0}
+}
+
+func (x *PolicyDataSources_DeviceTag) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *PolicyDataSources_DeviceTag) GetValues() []string {
+	if x != nil {
+		return x.Values
+	}
+	return nil
+}
+
 var File_kentik_alerting_public_v202505_policy_datasources_proto protoreflect.FileDescriptor
 
 const file_kentik_alerting_public_v202505_policy_datasources_proto_rawDesc = "" +
 	"\n" +
-	"7kentik/alerting/public/v202505/policy_datasources.proto\x12\x1ekentik.alerting.public.v202505\x1a\x1fgoogle/api/field_behavior.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a%kentik/core/v202303/annotations.proto\"\xec\x03\n" +
-	"\x11PolicyDataSources\x12b\n" +
-	"\vall_devices\x18\x01 \x01(\bBA\x92A>2<If true, all devices traffic will be included in the policy.R\n" +
-	"allDevices\x12\x84\x01\n" +
+	"7kentik/alerting/public/v202505/policy_datasources.proto\x12\x1ekentik.alerting.public.v202505\x1a\x1fgoogle/api/field_behavior.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a%kentik/core/v202303/annotations.proto\"\xbc\a\n" +
+	"\x11PolicyDataSources\x12\x87\x01\n" +
+	"\vall_devices\x18\x01 \x01(\bBf\x92Ac2aIf true, all devices traffic will be included in the policy and the other fields will be ignored.R\n" +
+	"allDevices\x12T\n" +
 	"\n" +
-	"device_ids\x18\x02 \x03(\tBe\x92Ab2`The IDs of the devices to include in the policy. If all_devices is true, this field is ignored. R\tdeviceIds\x12Q\n" +
+	"device_ids\x18\x02 \x03(\tB5\x92A220The IDs of the devices to include in the policy.R\tdeviceIds\x12Q\n" +
 	"\tlabel_ids\x18\x03 \x03(\tB4\x92A12/The IDs of the labels to include in the policy.R\blabelIds\x12N\n" +
 	"\bsite_ids\x18\x04 \x03(\tB3\x92A02.The IDs of the sites to include in the policy.R\asiteIds\x12I\n" +
-	"\x05types\x18\x05 \x03(\tB3\x92A02.The types of devices to include in the policy.R\x05typesBKZIgithub.com/kentik/api-schema-public/gen/go/kentik/alerting/public/v202505b\x06proto3"
+	"\x05types\x18\x05 \x03(\tB3\x92A02.The types of devices to include in the policy.R\x05types\x12\x86\x02\n" +
+	"\vdevice_tags\x18\x06 \x03(\v2;.kentik.alerting.public.v202505.PolicyDataSources.DeviceTagB\xa7\x01\x92A\xa3\x012\xa0\x01[Not implemented] The device tags to include in the policy. If multiple tags are specified, the policy will include devices that match at least one of the tags.R\n" +
+	"deviceTags\x1a\xcf\x01\n" +
+	"\tDeviceTag\x12G\n" +
+	"\x02id\x18\x01 \x01(\tB7\x92A422The ID of the device tag to include in the policy.R\x02id\x12y\n" +
+	"\x06values\x18\x02 \x03(\tBa\x92A^2YThe values of the device tag to include in the policy. Has to contain at least one value.\xa8\x01\x01R\x06valuesBKZIgithub.com/kentik/api-schema-public/gen/go/kentik/alerting/public/v202505b\x06proto3"
 
 var (
 	file_kentik_alerting_public_v202505_policy_datasources_proto_rawDescOnce sync.Once
@@ -126,16 +191,18 @@ func file_kentik_alerting_public_v202505_policy_datasources_proto_rawDescGZIP() 
 	return file_kentik_alerting_public_v202505_policy_datasources_proto_rawDescData
 }
 
-var file_kentik_alerting_public_v202505_policy_datasources_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_kentik_alerting_public_v202505_policy_datasources_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_kentik_alerting_public_v202505_policy_datasources_proto_goTypes = []any{
-	(*PolicyDataSources)(nil), // 0: kentik.alerting.public.v202505.PolicyDataSources
+	(*PolicyDataSources)(nil),           // 0: kentik.alerting.public.v202505.PolicyDataSources
+	(*PolicyDataSources_DeviceTag)(nil), // 1: kentik.alerting.public.v202505.PolicyDataSources.DeviceTag
 }
 var file_kentik_alerting_public_v202505_policy_datasources_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	1, // 0: kentik.alerting.public.v202505.PolicyDataSources.device_tags:type_name -> kentik.alerting.public.v202505.PolicyDataSources.DeviceTag
+	1, // [1:1] is the sub-list for method output_type
+	1, // [1:1] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_kentik_alerting_public_v202505_policy_datasources_proto_init() }
@@ -149,7 +216,7 @@ func file_kentik_alerting_public_v202505_policy_datasources_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_kentik_alerting_public_v202505_policy_datasources_proto_rawDesc), len(file_kentik_alerting_public_v202505_policy_datasources_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   1,
+			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

@@ -11,12 +11,12 @@ import "kentik/core/v202303/annotations.proto";
 message PolicyDataSources {
   bool all_devices = 1[
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "If true, all devices traffic will be included in the policy."
+      description: "If true, all devices traffic will be included in the policy and the other fields will be ignored."
     }
   ];
   repeated string device_ids = 2[
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "The IDs of the devices to include in the policy. If all_devices is true, this field is ignored. "
+      description: "The IDs of the devices to include in the policy."
     }
   ];
   repeated string label_ids = 3[
@@ -34,4 +34,24 @@ message PolicyDataSources {
       description: "The types of devices to include in the policy."
     }
   ];
+
+  repeated DeviceTag device_tags = 6[
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "[Not implemented] The device tags to include in the policy. If multiple tags are specified, the policy will include devices that match at least one of the tags."
+    }
+  ];
+
+  message DeviceTag {
+    string id = 1[
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The ID of the device tag to include in the policy."
+      }
+    ];
+    repeated string values = 2[
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The values of the device tag to include in the policy. Has to contain at least one value."
+        min_items: 1
+      }
+    ];
+  }
 }

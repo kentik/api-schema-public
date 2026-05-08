@@ -631,6 +631,23 @@
                 "default": "CLEAR_TYPE_UNSPECIFIED",
                 "title": "- CLEAR_TYPE_UNSPECIFIED: assumed CLEAR_TYPE_CLEAR_UNLESS_ACTIVATED if not specified\n - CLEAR_TYPE_CLEAR_MANUAL: CLEAR_TYPE_CONDITIONAL = 1; we don't want to expose this yet, not implemented"
             },
+            "PolicyDataSourcesDeviceTag": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the device tag to include in the policy."
+                    },
+                    "values": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The values of the device tag to include in the policy. Has to contain at least one value.",
+                        "minItems": 1
+                    }
+                }
+            },
             "PolicyDimensionFiltersConjunction": {
                 "type": "object",
                 "properties": {
@@ -1326,14 +1343,14 @@
                 "properties": {
                     "allDevices": {
                         "type": "boolean",
-                        "description": "If true, all devices traffic will be included in the policy."
+                        "description": "If true, all devices traffic will be included in the policy and the other fields will be ignored."
                     },
                     "deviceIds": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "The IDs of the devices to include in the policy. If all_devices is true, this field is ignored. "
+                        "description": "The IDs of the devices to include in the policy."
                     },
                     "labelIds": {
                         "type": "array",
@@ -1355,6 +1372,13 @@
                             "type": "string"
                         },
                         "description": "The types of devices to include in the policy."
+                    },
+                    "deviceTags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/PolicyDataSourcesDeviceTag"
+                        },
+                        "description": "[Not implemented] The device tags to include in the policy. If multiple tags are specified, the policy will include devices that match at least one of the tags."
                     }
                 }
             },
