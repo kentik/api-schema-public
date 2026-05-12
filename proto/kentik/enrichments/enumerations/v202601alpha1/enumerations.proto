@@ -1,0 +1,114 @@
+// Enumerations public lookup API.
+
+syntax = "proto3";
+
+package kentik.enrichments.enumerations.v202601alpha1;
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "kentik/core/v202303/annotations.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/enrichments/enumerations/v202601alpha1;enumerations";
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Enumerations Public Lookup API"
+    version: "v202601alpha1"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api-schema-public"
+    }
+    description:
+      "# Overview\n"
+      "Resolve enumeration lookup IDs to their string values for the authenticated company.\n"
+      "Enumerations map populator/tag string values to compact uint32 lookup IDs; this API\n"
+      "performs the reverse mapping so callers (ie: ktranslate) holding lookup IDs (for \n"
+      "example, from query results) can recover the original strings.\n"
+  }
+  external_docs: {
+    url: "https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview"
+    description: "General information about Kentik APIs"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+// =======================================================
+// models
+// =======================================================
+
+// {{.Name}}
+message FetchValuesByIdsRequest {
+  repeated string ids = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Enumeration lookup IDs to resolve, as decimal strings. Must be non-empty."}
+  ];
+}
+
+// {{.Name}}
+message FetchValuesByIdsResponse {
+  map<string, string> values = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description:
+      "Mapping from lookup ID (decimal string) to the corresponding string value. "
+      "IDs that did not resolve for the caller's company are absent from the map; "
+      "callers must handle missing keys."
+}];
+}
+
+// EnumerationsAdminService is the customer-facing surface for enumeration lookups.
+// Authentication and company scoping are enforced by the API gateway; the caller's
+// company is derived from the authenticated identity and never taken from the
+// request body.
+service EnumerationsAdminService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "admin.enumerations";
+
+  // FetchValuesByIds resolves enumeration lookup IDs to their string values for
+  // the authenticated company. IDs that do not belong to the caller's company,
+  // or that are otherwise unknown, are omitted from the response (no error is
+  // returned for missing IDs).
+  rpc FetchValuesByIds(FetchValuesByIdsRequest) returns (FetchValuesByIdsResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.enumerations:read";
+    option (google.api.http) = {
+      post: "/enrichments/enumerations/v202601alpha1/values:fetch_by_ids"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "FetchValuesByIds"
+      summary: "Resolve enumeration IDs to values."
+      description:
+        "Return the string values for the supplied enumeration lookup IDs within the "
+        "authenticated company. Unknown IDs are omitted from the response."
+    };
+  }
+}

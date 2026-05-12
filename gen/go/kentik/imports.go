@@ -25,6 +25,7 @@ import (
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/device/v202504beta2"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/deviceconf/v202511"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/diagnostic/v202501"
+	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/enrichments/enumerations/v202601alpha1"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/flow_tag/v202404alpha1"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/interface/v202108alpha1"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/journeys/v202405alpha1"

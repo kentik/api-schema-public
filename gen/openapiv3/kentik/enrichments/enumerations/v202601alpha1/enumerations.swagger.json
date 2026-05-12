@@ -1,0 +1,143 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Enumerations Public Lookup API",
+        "description": "# Overview\nResolve enumeration lookup IDs to their string values for the authenticated company.\nEnumerations map populator/tag string values to compact uint32 lookup IDs; this API\nperforms the reverse mapping so callers (ie: ktranslate) holding lookup IDs (for \nexample, from query results) can recover the original strings.\n",
+        "version": "v202601alpha1",
+        "contact": {
+            "name": "Kentik API Engineering",
+            "url": "https://github.com/kentik/api-schema-public"
+        }
+    },
+    "tags": [
+        {
+            "name": "EnumerationsAdminService"
+        }
+    ],
+    "paths": {
+        "/enrichments/enumerations/v202601alpha1/values:fetch_by_ids": {
+            "post": {
+                "summary": "Resolve enumeration IDs to values.",
+                "description": "Return the string values for the supplied enumeration lookup IDs within the authenticated company. Unknown IDs are omitted from the response.",
+                "operationId": "FetchValuesByIds",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202601alpha1FetchValuesByIdsResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202601alpha1FetchValuesByIdsRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "EnumerationsAdminService"
+                ]
+            }
+        }
+    },
+    "security": [
+        {
+            "email": [],
+            "token": []
+        }
+    ],
+    "externalDocs": {
+        "description": "General information about Kentik APIs",
+        "url": "https://kb.kentik.com/v0/Ab09.htm#Ab09-APIs_Overview"
+    },
+    "components": {
+        "securitySchemes": {
+            "email": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-Email",
+                "in": "header"
+            },
+            "token": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-API-Token",
+                "in": "header"
+            }
+        },
+        "schemas": {
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "@type": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": {}
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "v202601alpha1FetchValuesByIdsRequest": {
+                "type": "object",
+                "properties": {
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Enumeration lookup IDs to resolve, as decimal strings. Must be non-empty."
+                    }
+                },
+                "title": "FetchValuesByIdsRequest",
+                "required": [
+                    "ids"
+                ]
+            },
+            "v202601alpha1FetchValuesByIdsResponse": {
+                "type": "object",
+                "properties": {
+                    "values": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Mapping from lookup ID (decimal string) to the corresponding string value. IDs that did not resolve for the caller's company are absent from the map; callers must handle missing keys."
+                    }
+                },
+                "title": "FetchValuesByIdsResponse"
+            }
+        }
+    }
+}
