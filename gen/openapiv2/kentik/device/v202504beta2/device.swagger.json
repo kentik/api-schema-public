@@ -420,7 +420,7 @@
             },
             "deviceBgpPassword": {
               "type": "string",
-              "description": "BGP md5 password (device_bgp_password) - Optional BGP MD5 password (shared authentication password for BGP peering). Valid characters: alphanumeric. Length: 32. device_bgp_password is optional when device_bgp_type is set to \"device\""
+              "description": "BGP md5 password (device_bgp_password) - Optional BGP MD5 password (shared authentication password for BGP peering). Valid characters: printable ASCII excluding space and question mark. Length: 32. device_bgp_password is optional when device_bgp_type is set to \"device\""
             },
             "useBgpDeviceId": {
               "type": "string",
@@ -761,7 +761,7 @@
         },
         "deviceBgpPassword": {
           "type": "string",
-          "description": "BGP md5 password (device_bgp_password) - Optional BGP MD5 password (shared authentication password for BGP peering). Valid characters: alphanumeric. Length: 32. device_bgp_password is optional when device_bgp_type is set to \"device\""
+          "description": "BGP md5 password (device_bgp_password) - Optional BGP MD5 password (shared authentication password for BGP peering). Valid characters: printable ASCII excluding space and question mark. Length: 32. device_bgp_password is optional when device_bgp_type is set to \"device\""
         },
         "useBgpDeviceId": {
           "type": "string",

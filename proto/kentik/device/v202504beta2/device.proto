@@ -248,7 +248,7 @@ message DeviceConcise {
   ];
   string device_bgp_password = 18 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "BGP md5 password (device_bgp_password) - Optional BGP MD5 password (shared authentication password for BGP peering). Valid characters: alphanumeric. Length: 32. device_bgp_password is optional when device_bgp_type is set to \"device\""
+      description: "BGP md5 password (device_bgp_password) - Optional BGP MD5 password (shared authentication password for BGP peering). Valid characters: printable ASCII excluding space and question mark. Length: 32. device_bgp_password is optional when device_bgp_type is set to \"device\""
     }
   ];
   string use_bgp_device_id = 19 [
