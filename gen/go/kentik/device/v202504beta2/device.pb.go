@@ -26,6 +26,64 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// DeviceView specifies the amount of detail to return for each device
+// in a ListDevices response.
+type DeviceView int32
+
+const (
+	// When unspecified, defaults to FULL for backward compatibility.
+	DeviceView_DEVICE_VIEW_UNSPECIFIED DeviceView = 0
+	// Returns the full device configuration with all fields populated.
+	DeviceView_DEVICE_VIEW_FULL DeviceView = 1
+	// Returns only basic device information: id, device_name, device_status.
+	DeviceView_DEVICE_VIEW_BASIC DeviceView = 2
+	// Returns only device IDs.
+	DeviceView_DEVICE_VIEW_ID_ONLY DeviceView = 3
+)
+
+// Enum value maps for DeviceView.
+var (
+	DeviceView_name = map[int32]string{
+		0: "DEVICE_VIEW_UNSPECIFIED",
+		1: "DEVICE_VIEW_FULL",
+		2: "DEVICE_VIEW_BASIC",
+		3: "DEVICE_VIEW_ID_ONLY",
+	}
+	DeviceView_value = map[string]int32{
+		"DEVICE_VIEW_UNSPECIFIED": 0,
+		"DEVICE_VIEW_FULL":        1,
+		"DEVICE_VIEW_BASIC":       2,
+		"DEVICE_VIEW_ID_ONLY":     3,
+	}
+)
+
+func (x DeviceView) Enum() *DeviceView {
+	p := new(DeviceView)
+	*p = x
+	return p
+}
+
+func (x DeviceView) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (DeviceView) Descriptor() protoreflect.EnumDescriptor {
+	return file_kentik_device_v202504beta2_device_proto_enumTypes[0].Descriptor()
+}
+
+func (DeviceView) Type() protoreflect.EnumType {
+	return &file_kentik_device_v202504beta2_device_proto_enumTypes[0]
+}
+
+func (x DeviceView) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use DeviceView.Descriptor instead.
+func (DeviceView) EnumDescriptor() ([]byte, []int) {
+	return file_kentik_device_v202504beta2_device_proto_rawDescGZIP(), []int{0}
+}
+
 // {{.Name}}
 type DeviceSnmpV3Conf struct {
 	state                    protoimpl.MessageState `protogen:"open.v1"`
@@ -1815,6 +1873,7 @@ func (x *LabelConcise) GetId() uint32 {
 type ListDevicesRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Query         *DeviceQuery           `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
+	View          DeviceView             `protobuf:"varint,2,opt,name=view,proto3,enum=kentik.device.v202504beta2.DeviceView" json:"view,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1854,6 +1913,13 @@ func (x *ListDevicesRequest) GetQuery() *DeviceQuery {
 		return x.Query
 	}
 	return nil
+}
+
+func (x *ListDevicesRequest) GetView() DeviceView {
+	if x != nil {
+		return x.View
+	}
+	return DeviceView_DEVICE_VIEW_UNSPECIFIED
 }
 
 // {{.Name}}
@@ -2868,9 +2934,10 @@ const file_kentik_device_v202504beta2_device_proto_rawDesc = "" +
 	"\x11no_custom_columns\x18\x01 \x01(\bR\x0fnoCustomColumns\"-\n" +
 	"\fLabelConcise\x12\x1d\n" +
 	"\x02id\x18\x01 \x01(\rB\r\x92A\n" +
-	"2\bLabel IDR\x02id\"S\n" +
+	"2\bLabel IDR\x02id\"\xe0\x01\n" +
 	"\x12ListDevicesRequest\x12=\n" +
-	"\x05query\x18\x01 \x01(\v2'.kentik.device.v202504beta2.DeviceQueryR\x05query\"\xea\x01\n" +
+	"\x05query\x18\x01 \x01(\v2'.kentik.device.v202504beta2.DeviceQueryR\x05query\x12\x8a\x01\n" +
+	"\x04view\x18\x02 \x01(\x0e2&.kentik.device.v202504beta2.DeviceViewBN\x92AK2IControls the amount of detail returned for each device. Defaults to FULL.R\x04view\"\xea\x01\n" +
 	"\x13ListDevicesResponse\x12l\n" +
 	"\adevices\x18\x01 \x03(\v2*.kentik.device.v202504beta2.DeviceDetailedB&\x92A#2!List of configurations of devicesR\adevices\x12e\n" +
 	"\rinvalid_count\x18\x02 \x01(\rB@\x92A=2;Number of invalid entries encountered while collecting dataR\finvalidCount\"\x85\x01\n" +
@@ -2908,9 +2975,15 @@ const file_kentik_device_v202504beta2_device_proto_rawDesc = "" +
 	"\x14DeleteDevicesRequest\x12>\n" +
 	"\x03ids\x18\x01 \x03(\tB,\x92A&2$List of IDs of devices to be deleted\xe0A\x02R\x03ids\"u\n" +
 	"\x15DeleteDevicesResponse\x12\\\n" +
-	"\x0efailed_devices\x18\x01 \x03(\tB5\x92A220List of IDs of devices that failed to be deletedR\rfailedDevices2\x8b\x1b\n" +
-	"\rDeviceService\x12\xaa\x02\n" +
-	"\vListDevices\x12..kentik.device.v202504beta2.ListDevicesRequest\x1a/.kentik.device.v202504beta2.ListDevicesResponse\"\xb9\x01\x92A~\x12\x11List all devices.\x1a\\Returns list of configured devices (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).*\vListDevices\xf2\xd7\x02\x11admin.device:read\x82\xd3\xe4\x93\x02\x1d\x12\x1b/device/v202504beta2/device\x12\xc9\x02\n" +
+	"\x0efailed_devices\x18\x01 \x03(\tB5\x92A220List of IDs of devices that failed to be deletedR\rfailedDevices*o\n" +
+	"\n" +
+	"DeviceView\x12\x1b\n" +
+	"\x17DEVICE_VIEW_UNSPECIFIED\x10\x00\x12\x14\n" +
+	"\x10DEVICE_VIEW_FULL\x10\x01\x12\x15\n" +
+	"\x11DEVICE_VIEW_BASIC\x10\x02\x12\x17\n" +
+	"\x13DEVICE_VIEW_ID_ONLY\x10\x032\x81\x1c\n" +
+	"\rDeviceService\x12\xa0\x03\n" +
+	"\vListDevices\x12..kentik.device.v202504beta2.ListDevicesRequest\x1a/.kentik.device.v202504beta2.ListDevicesResponse\"\xaf\x02\x92A\xf3\x01\x12\x11List all devices.\x1a\xd0\x01Returns list of configured devices. Use the 'view' parameter to control response detail: FULL (default), BASIC (id, name, status), or ID_ONLY (id only). See [About Devices](https://kb.kentik.com/v4/Cb01.htm).*\vListDevices\xf2\xd7\x02\x11admin.device:read\x82\xd3\xe4\x93\x02\x1d\x12\x1b/device/v202504beta2/device\x12\xc9\x02\n" +
 	"\tGetDevice\x12,.kentik.device.v202504beta2.GetDeviceRequest\x1a-.kentik.device.v202504beta2.GetDeviceResponse\"\xde\x01\x92A\x9d\x01\x12#Retrieve configuration of a device.\x1akReturns configuration of a device specified by ID (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).*\tGetDevice\xf2\xd7\x02\x11admin.device:read\x82\xd3\xe4\x93\x02\"\x12 /device/v202504beta2/device/{id}\x12\xe6\x02\n" +
 	"\fCreateDevice\x12/.kentik.device.v202504beta2.CreateDeviceRequest\x1a0.kentik.device.v202504beta2.CreateDeviceResponse\"\xf2\x01\x92A\xb2\x01\x12\x17Configure a new device.\x1a\x88\x01Create configuration for a new device. Returns the newly created configuration (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).*\fCreateDevice\xf2\xd7\x02\x12admin.device:write\x82\xd3\xe4\x93\x02 :\x01*\"\x1b/device/v202504beta2/device\x12\x8a\x03\n" +
 	"\rCreateDevices\x120.kentik.device.v202504beta2.CreateDevicesRequest\x1a1.kentik.device.v202504beta2.CreateDevicesResponse\"\x93\x02\x92A\xc6\x01\x12%Configure multiple devices (max 100).\x1a\x8d\x01Create configuration for multiple devices. Returns the newly created configurations (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).*\rCreateDevices\xf2\xd7\x02\x12admin.device:write\x82\xd3\xe4\x93\x02-:\x01*\"(/device/v202504beta2/device/batch_create\x12\x93\x03\n" +
@@ -2945,103 +3018,106 @@ func file_kentik_device_v202504beta2_device_proto_rawDescGZIP() []byte {
 	return file_kentik_device_v202504beta2_device_proto_rawDescData
 }
 
+var file_kentik_device_v202504beta2_device_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_kentik_device_v202504beta2_device_proto_msgTypes = make([]protoimpl.MessageInfo, 33)
 var file_kentik_device_v202504beta2_device_proto_goTypes = []any{
-	(*DeviceSnmpV3Conf)(nil),           // 0: kentik.device.v202504beta2.DeviceSnmpV3Conf
-	(*DeviceNmsConfig)(nil),            // 1: kentik.device.v202504beta2.DeviceNmsConfig
-	(*DeviceNmsSnmpConfig)(nil),        // 2: kentik.device.v202504beta2.DeviceNmsSnmpConfig
-	(*DeviceNmsStConfig)(nil),          // 3: kentik.device.v202504beta2.DeviceNmsStConfig
-	(*DeviceConcise)(nil),              // 4: kentik.device.v202504beta2.DeviceConcise
-	(*Site)(nil),                       // 5: kentik.device.v202504beta2.Site
-	(*Plan)(nil),                       // 6: kentik.device.v202504beta2.Plan
-	(*Label)(nil),                      // 7: kentik.device.v202504beta2.Label
-	(*Interface)(nil),                  // 8: kentik.device.v202504beta2.Interface
-	(*CustomColumnData)(nil),           // 9: kentik.device.v202504beta2.CustomColumnData
-	(*GnmiV1Conf)(nil),                 // 10: kentik.device.v202504beta2.GnmiV1Conf
-	(*DeviceDetailed)(nil),             // 11: kentik.device.v202504beta2.DeviceDetailed
-	(*DeviceQuery)(nil),                // 12: kentik.device.v202504beta2.DeviceQuery
-	(*LabelConcise)(nil),               // 13: kentik.device.v202504beta2.LabelConcise
-	(*ListDevicesRequest)(nil),         // 14: kentik.device.v202504beta2.ListDevicesRequest
-	(*ListDevicesResponse)(nil),        // 15: kentik.device.v202504beta2.ListDevicesResponse
-	(*GetDeviceRequest)(nil),           // 16: kentik.device.v202504beta2.GetDeviceRequest
-	(*GetDeviceResponse)(nil),          // 17: kentik.device.v202504beta2.GetDeviceResponse
-	(*CreateDeviceRequest)(nil),        // 18: kentik.device.v202504beta2.CreateDeviceRequest
-	(*CreateDeviceResponse)(nil),       // 19: kentik.device.v202504beta2.CreateDeviceResponse
-	(*CreateDevicesRequest)(nil),       // 20: kentik.device.v202504beta2.CreateDevicesRequest
-	(*CreateDevicesResponse)(nil),      // 21: kentik.device.v202504beta2.CreateDevicesResponse
-	(*UpdateDeviceRequest)(nil),        // 22: kentik.device.v202504beta2.UpdateDeviceRequest
-	(*UpdateDeviceResponse)(nil),       // 23: kentik.device.v202504beta2.UpdateDeviceResponse
-	(*UpdateDevicesRequest)(nil),       // 24: kentik.device.v202504beta2.UpdateDevicesRequest
-	(*UpdateDevicesResponse)(nil),      // 25: kentik.device.v202504beta2.UpdateDevicesResponse
-	(*UpdateDeviceLabelsRequest)(nil),  // 26: kentik.device.v202504beta2.UpdateDeviceLabelsRequest
-	(*UpdateDeviceLabelsResponse)(nil), // 27: kentik.device.v202504beta2.UpdateDeviceLabelsResponse
-	(*DeleteDeviceRequest)(nil),        // 28: kentik.device.v202504beta2.DeleteDeviceRequest
-	(*DeleteDeviceResponse)(nil),       // 29: kentik.device.v202504beta2.DeleteDeviceResponse
-	(*DeleteDevicesRequest)(nil),       // 30: kentik.device.v202504beta2.DeleteDevicesRequest
-	(*DeleteDevicesResponse)(nil),      // 31: kentik.device.v202504beta2.DeleteDevicesResponse
-	nil,                                // 32: kentik.device.v202504beta2.Plan.MetadataEntry
-	(*durationpb.Duration)(nil),        // 33: google.protobuf.Duration
-	(*timestamppb.Timestamp)(nil),      // 34: google.protobuf.Timestamp
+	(DeviceView)(0),                    // 0: kentik.device.v202504beta2.DeviceView
+	(*DeviceSnmpV3Conf)(nil),           // 1: kentik.device.v202504beta2.DeviceSnmpV3Conf
+	(*DeviceNmsConfig)(nil),            // 2: kentik.device.v202504beta2.DeviceNmsConfig
+	(*DeviceNmsSnmpConfig)(nil),        // 3: kentik.device.v202504beta2.DeviceNmsSnmpConfig
+	(*DeviceNmsStConfig)(nil),          // 4: kentik.device.v202504beta2.DeviceNmsStConfig
+	(*DeviceConcise)(nil),              // 5: kentik.device.v202504beta2.DeviceConcise
+	(*Site)(nil),                       // 6: kentik.device.v202504beta2.Site
+	(*Plan)(nil),                       // 7: kentik.device.v202504beta2.Plan
+	(*Label)(nil),                      // 8: kentik.device.v202504beta2.Label
+	(*Interface)(nil),                  // 9: kentik.device.v202504beta2.Interface
+	(*CustomColumnData)(nil),           // 10: kentik.device.v202504beta2.CustomColumnData
+	(*GnmiV1Conf)(nil),                 // 11: kentik.device.v202504beta2.GnmiV1Conf
+	(*DeviceDetailed)(nil),             // 12: kentik.device.v202504beta2.DeviceDetailed
+	(*DeviceQuery)(nil),                // 13: kentik.device.v202504beta2.DeviceQuery
+	(*LabelConcise)(nil),               // 14: kentik.device.v202504beta2.LabelConcise
+	(*ListDevicesRequest)(nil),         // 15: kentik.device.v202504beta2.ListDevicesRequest
+	(*ListDevicesResponse)(nil),        // 16: kentik.device.v202504beta2.ListDevicesResponse
+	(*GetDeviceRequest)(nil),           // 17: kentik.device.v202504beta2.GetDeviceRequest
+	(*GetDeviceResponse)(nil),          // 18: kentik.device.v202504beta2.GetDeviceResponse
+	(*CreateDeviceRequest)(nil),        // 19: kentik.device.v202504beta2.CreateDeviceRequest
+	(*CreateDeviceResponse)(nil),       // 20: kentik.device.v202504beta2.CreateDeviceResponse
+	(*CreateDevicesRequest)(nil),       // 21: kentik.device.v202504beta2.CreateDevicesRequest
+	(*CreateDevicesResponse)(nil),      // 22: kentik.device.v202504beta2.CreateDevicesResponse
+	(*UpdateDeviceRequest)(nil),        // 23: kentik.device.v202504beta2.UpdateDeviceRequest
+	(*UpdateDeviceResponse)(nil),       // 24: kentik.device.v202504beta2.UpdateDeviceResponse
+	(*UpdateDevicesRequest)(nil),       // 25: kentik.device.v202504beta2.UpdateDevicesRequest
+	(*UpdateDevicesResponse)(nil),      // 26: kentik.device.v202504beta2.UpdateDevicesResponse
+	(*UpdateDeviceLabelsRequest)(nil),  // 27: kentik.device.v202504beta2.UpdateDeviceLabelsRequest
+	(*UpdateDeviceLabelsResponse)(nil), // 28: kentik.device.v202504beta2.UpdateDeviceLabelsResponse
+	(*DeleteDeviceRequest)(nil),        // 29: kentik.device.v202504beta2.DeleteDeviceRequest
+	(*DeleteDeviceResponse)(nil),       // 30: kentik.device.v202504beta2.DeleteDeviceResponse
+	(*DeleteDevicesRequest)(nil),       // 31: kentik.device.v202504beta2.DeleteDevicesRequest
+	(*DeleteDevicesResponse)(nil),      // 32: kentik.device.v202504beta2.DeleteDevicesResponse
+	nil,                                // 33: kentik.device.v202504beta2.Plan.MetadataEntry
+	(*durationpb.Duration)(nil),        // 34: google.protobuf.Duration
+	(*timestamppb.Timestamp)(nil),      // 35: google.protobuf.Timestamp
 }
 var file_kentik_device_v202504beta2_device_proto_depIdxs = []int32{
-	2,  // 0: kentik.device.v202504beta2.DeviceNmsConfig.snmp:type_name -> kentik.device.v202504beta2.DeviceNmsSnmpConfig
-	3,  // 1: kentik.device.v202504beta2.DeviceNmsConfig.st:type_name -> kentik.device.v202504beta2.DeviceNmsStConfig
-	33, // 2: kentik.device.v202504beta2.DeviceNmsSnmpConfig.timeout:type_name -> google.protobuf.Duration
-	33, // 3: kentik.device.v202504beta2.DeviceNmsStConfig.timeout:type_name -> google.protobuf.Duration
-	0,  // 4: kentik.device.v202504beta2.DeviceConcise.device_snmp_v3_conf:type_name -> kentik.device.v202504beta2.DeviceSnmpV3Conf
-	1,  // 5: kentik.device.v202504beta2.DeviceConcise.nms:type_name -> kentik.device.v202504beta2.DeviceNmsConfig
-	34, // 6: kentik.device.v202504beta2.Plan.cdate:type_name -> google.protobuf.Timestamp
-	34, // 7: kentik.device.v202504beta2.Plan.edate:type_name -> google.protobuf.Timestamp
-	32, // 8: kentik.device.v202504beta2.Plan.metadata:type_name -> kentik.device.v202504beta2.Plan.MetadataEntry
-	34, // 9: kentik.device.v202504beta2.Label.edate:type_name -> google.protobuf.Timestamp
-	34, // 10: kentik.device.v202504beta2.Label.cdate:type_name -> google.protobuf.Timestamp
-	5,  // 11: kentik.device.v202504beta2.DeviceDetailed.site:type_name -> kentik.device.v202504beta2.Site
-	6,  // 12: kentik.device.v202504beta2.DeviceDetailed.plan:type_name -> kentik.device.v202504beta2.Plan
-	7,  // 13: kentik.device.v202504beta2.DeviceDetailed.labels:type_name -> kentik.device.v202504beta2.Label
-	8,  // 14: kentik.device.v202504beta2.DeviceDetailed.all_interfaces:type_name -> kentik.device.v202504beta2.Interface
-	9,  // 15: kentik.device.v202504beta2.DeviceDetailed.custom_column_data:type_name -> kentik.device.v202504beta2.CustomColumnData
-	34, // 16: kentik.device.v202504beta2.DeviceDetailed.created_date:type_name -> google.protobuf.Timestamp
-	34, // 17: kentik.device.v202504beta2.DeviceDetailed.updated_date:type_name -> google.protobuf.Timestamp
-	0,  // 18: kentik.device.v202504beta2.DeviceDetailed.device_snmp_v3_conf:type_name -> kentik.device.v202504beta2.DeviceSnmpV3Conf
-	10, // 19: kentik.device.v202504beta2.DeviceDetailed.device_gnmi_v1_conf:type_name -> kentik.device.v202504beta2.GnmiV1Conf
-	1,  // 20: kentik.device.v202504beta2.DeviceDetailed.nms:type_name -> kentik.device.v202504beta2.DeviceNmsConfig
-	12, // 21: kentik.device.v202504beta2.ListDevicesRequest.query:type_name -> kentik.device.v202504beta2.DeviceQuery
-	11, // 22: kentik.device.v202504beta2.ListDevicesResponse.devices:type_name -> kentik.device.v202504beta2.DeviceDetailed
-	12, // 23: kentik.device.v202504beta2.GetDeviceRequest.query:type_name -> kentik.device.v202504beta2.DeviceQuery
-	11, // 24: kentik.device.v202504beta2.GetDeviceResponse.device:type_name -> kentik.device.v202504beta2.DeviceDetailed
-	4,  // 25: kentik.device.v202504beta2.CreateDeviceRequest.device:type_name -> kentik.device.v202504beta2.DeviceConcise
-	11, // 26: kentik.device.v202504beta2.CreateDeviceResponse.device:type_name -> kentik.device.v202504beta2.DeviceDetailed
-	4,  // 27: kentik.device.v202504beta2.CreateDevicesRequest.devices:type_name -> kentik.device.v202504beta2.DeviceConcise
-	11, // 28: kentik.device.v202504beta2.CreateDevicesResponse.devices:type_name -> kentik.device.v202504beta2.DeviceDetailed
-	4,  // 29: kentik.device.v202504beta2.UpdateDeviceRequest.device:type_name -> kentik.device.v202504beta2.DeviceConcise
-	11, // 30: kentik.device.v202504beta2.UpdateDeviceResponse.device:type_name -> kentik.device.v202504beta2.DeviceDetailed
-	4,  // 31: kentik.device.v202504beta2.UpdateDevicesRequest.devices:type_name -> kentik.device.v202504beta2.DeviceConcise
-	11, // 32: kentik.device.v202504beta2.UpdateDevicesResponse.devices:type_name -> kentik.device.v202504beta2.DeviceDetailed
-	13, // 33: kentik.device.v202504beta2.UpdateDeviceLabelsRequest.labels:type_name -> kentik.device.v202504beta2.LabelConcise
-	11, // 34: kentik.device.v202504beta2.UpdateDeviceLabelsResponse.device:type_name -> kentik.device.v202504beta2.DeviceDetailed
-	14, // 35: kentik.device.v202504beta2.DeviceService.ListDevices:input_type -> kentik.device.v202504beta2.ListDevicesRequest
-	16, // 36: kentik.device.v202504beta2.DeviceService.GetDevice:input_type -> kentik.device.v202504beta2.GetDeviceRequest
-	18, // 37: kentik.device.v202504beta2.DeviceService.CreateDevice:input_type -> kentik.device.v202504beta2.CreateDeviceRequest
-	20, // 38: kentik.device.v202504beta2.DeviceService.CreateDevices:input_type -> kentik.device.v202504beta2.CreateDevicesRequest
-	22, // 39: kentik.device.v202504beta2.DeviceService.UpdateDevice:input_type -> kentik.device.v202504beta2.UpdateDeviceRequest
-	24, // 40: kentik.device.v202504beta2.DeviceService.UpdateDevices:input_type -> kentik.device.v202504beta2.UpdateDevicesRequest
-	26, // 41: kentik.device.v202504beta2.DeviceService.UpdateDeviceLabels:input_type -> kentik.device.v202504beta2.UpdateDeviceLabelsRequest
-	28, // 42: kentik.device.v202504beta2.DeviceService.DeleteDevice:input_type -> kentik.device.v202504beta2.DeleteDeviceRequest
-	30, // 43: kentik.device.v202504beta2.DeviceService.DeleteDevices:input_type -> kentik.device.v202504beta2.DeleteDevicesRequest
-	15, // 44: kentik.device.v202504beta2.DeviceService.ListDevices:output_type -> kentik.device.v202504beta2.ListDevicesResponse
-	17, // 45: kentik.device.v202504beta2.DeviceService.GetDevice:output_type -> kentik.device.v202504beta2.GetDeviceResponse
-	19, // 46: kentik.device.v202504beta2.DeviceService.CreateDevice:output_type -> kentik.device.v202504beta2.CreateDeviceResponse
-	21, // 47: kentik.device.v202504beta2.DeviceService.CreateDevices:output_type -> kentik.device.v202504beta2.CreateDevicesResponse
-	23, // 48: kentik.device.v202504beta2.DeviceService.UpdateDevice:output_type -> kentik.device.v202504beta2.UpdateDeviceResponse
-	25, // 49: kentik.device.v202504beta2.DeviceService.UpdateDevices:output_type -> kentik.device.v202504beta2.UpdateDevicesResponse
-	27, // 50: kentik.device.v202504beta2.DeviceService.UpdateDeviceLabels:output_type -> kentik.device.v202504beta2.UpdateDeviceLabelsResponse
-	29, // 51: kentik.device.v202504beta2.DeviceService.DeleteDevice:output_type -> kentik.device.v202504beta2.DeleteDeviceResponse
-	31, // 52: kentik.device.v202504beta2.DeviceService.DeleteDevices:output_type -> kentik.device.v202504beta2.DeleteDevicesResponse
-	44, // [44:53] is the sub-list for method output_type
-	35, // [35:44] is the sub-list for method input_type
-	35, // [35:35] is the sub-list for extension type_name
-	35, // [35:35] is the sub-list for extension extendee
-	0,  // [0:35] is the sub-list for field type_name
+	3,  // 0: kentik.device.v202504beta2.DeviceNmsConfig.snmp:type_name -> kentik.device.v202504beta2.DeviceNmsSnmpConfig
+	4,  // 1: kentik.device.v202504beta2.DeviceNmsConfig.st:type_name -> kentik.device.v202504beta2.DeviceNmsStConfig
+	34, // 2: kentik.device.v202504beta2.DeviceNmsSnmpConfig.timeout:type_name -> google.protobuf.Duration
+	34, // 3: kentik.device.v202504beta2.DeviceNmsStConfig.timeout:type_name -> google.protobuf.Duration
+	1,  // 4: kentik.device.v202504beta2.DeviceConcise.device_snmp_v3_conf:type_name -> kentik.device.v202504beta2.DeviceSnmpV3Conf
+	2,  // 5: kentik.device.v202504beta2.DeviceConcise.nms:type_name -> kentik.device.v202504beta2.DeviceNmsConfig
+	35, // 6: kentik.device.v202504beta2.Plan.cdate:type_name -> google.protobuf.Timestamp
+	35, // 7: kentik.device.v202504beta2.Plan.edate:type_name -> google.protobuf.Timestamp
+	33, // 8: kentik.device.v202504beta2.Plan.metadata:type_name -> kentik.device.v202504beta2.Plan.MetadataEntry
+	35, // 9: kentik.device.v202504beta2.Label.edate:type_name -> google.protobuf.Timestamp
+	35, // 10: kentik.device.v202504beta2.Label.cdate:type_name -> google.protobuf.Timestamp
+	6,  // 11: kentik.device.v202504beta2.DeviceDetailed.site:type_name -> kentik.device.v202504beta2.Site
+	7,  // 12: kentik.device.v202504beta2.DeviceDetailed.plan:type_name -> kentik.device.v202504beta2.Plan
+	8,  // 13: kentik.device.v202504beta2.DeviceDetailed.labels:type_name -> kentik.device.v202504beta2.Label
+	9,  // 14: kentik.device.v202504beta2.DeviceDetailed.all_interfaces:type_name -> kentik.device.v202504beta2.Interface
+	10, // 15: kentik.device.v202504beta2.DeviceDetailed.custom_column_data:type_name -> kentik.device.v202504beta2.CustomColumnData
+	35, // 16: kentik.device.v202504beta2.DeviceDetailed.created_date:type_name -> google.protobuf.Timestamp
+	35, // 17: kentik.device.v202504beta2.DeviceDetailed.updated_date:type_name -> google.protobuf.Timestamp
+	1,  // 18: kentik.device.v202504beta2.DeviceDetailed.device_snmp_v3_conf:type_name -> kentik.device.v202504beta2.DeviceSnmpV3Conf
+	11, // 19: kentik.device.v202504beta2.DeviceDetailed.device_gnmi_v1_conf:type_name -> kentik.device.v202504beta2.GnmiV1Conf
+	2,  // 20: kentik.device.v202504beta2.DeviceDetailed.nms:type_name -> kentik.device.v202504beta2.DeviceNmsConfig
+	13, // 21: kentik.device.v202504beta2.ListDevicesRequest.query:type_name -> kentik.device.v202504beta2.DeviceQuery
+	0,  // 22: kentik.device.v202504beta2.ListDevicesRequest.view:type_name -> kentik.device.v202504beta2.DeviceView
+	12, // 23: kentik.device.v202504beta2.ListDevicesResponse.devices:type_name -> kentik.device.v202504beta2.DeviceDetailed
+	13, // 24: kentik.device.v202504beta2.GetDeviceRequest.query:type_name -> kentik.device.v202504beta2.DeviceQuery
+	12, // 25: kentik.device.v202504beta2.GetDeviceResponse.device:type_name -> kentik.device.v202504beta2.DeviceDetailed
+	5,  // 26: kentik.device.v202504beta2.CreateDeviceRequest.device:type_name -> kentik.device.v202504beta2.DeviceConcise
+	12, // 27: kentik.device.v202504beta2.CreateDeviceResponse.device:type_name -> kentik.device.v202504beta2.DeviceDetailed
+	5,  // 28: kentik.device.v202504beta2.CreateDevicesRequest.devices:type_name -> kentik.device.v202504beta2.DeviceConcise
+	12, // 29: kentik.device.v202504beta2.CreateDevicesResponse.devices:type_name -> kentik.device.v202504beta2.DeviceDetailed
+	5,  // 30: kentik.device.v202504beta2.UpdateDeviceRequest.device:type_name -> kentik.device.v202504beta2.DeviceConcise
+	12, // 31: kentik.device.v202504beta2.UpdateDeviceResponse.device:type_name -> kentik.device.v202504beta2.DeviceDetailed
+	5,  // 32: kentik.device.v202504beta2.UpdateDevicesRequest.devices:type_name -> kentik.device.v202504beta2.DeviceConcise
+	12, // 33: kentik.device.v202504beta2.UpdateDevicesResponse.devices:type_name -> kentik.device.v202504beta2.DeviceDetailed
+	14, // 34: kentik.device.v202504beta2.UpdateDeviceLabelsRequest.labels:type_name -> kentik.device.v202504beta2.LabelConcise
+	12, // 35: kentik.device.v202504beta2.UpdateDeviceLabelsResponse.device:type_name -> kentik.device.v202504beta2.DeviceDetailed
+	15, // 36: kentik.device.v202504beta2.DeviceService.ListDevices:input_type -> kentik.device.v202504beta2.ListDevicesRequest
+	17, // 37: kentik.device.v202504beta2.DeviceService.GetDevice:input_type -> kentik.device.v202504beta2.GetDeviceRequest
+	19, // 38: kentik.device.v202504beta2.DeviceService.CreateDevice:input_type -> kentik.device.v202504beta2.CreateDeviceRequest
+	21, // 39: kentik.device.v202504beta2.DeviceService.CreateDevices:input_type -> kentik.device.v202504beta2.CreateDevicesRequest
+	23, // 40: kentik.device.v202504beta2.DeviceService.UpdateDevice:input_type -> kentik.device.v202504beta2.UpdateDeviceRequest
+	25, // 41: kentik.device.v202504beta2.DeviceService.UpdateDevices:input_type -> kentik.device.v202504beta2.UpdateDevicesRequest
+	27, // 42: kentik.device.v202504beta2.DeviceService.UpdateDeviceLabels:input_type -> kentik.device.v202504beta2.UpdateDeviceLabelsRequest
+	29, // 43: kentik.device.v202504beta2.DeviceService.DeleteDevice:input_type -> kentik.device.v202504beta2.DeleteDeviceRequest
+	31, // 44: kentik.device.v202504beta2.DeviceService.DeleteDevices:input_type -> kentik.device.v202504beta2.DeleteDevicesRequest
+	16, // 45: kentik.device.v202504beta2.DeviceService.ListDevices:output_type -> kentik.device.v202504beta2.ListDevicesResponse
+	18, // 46: kentik.device.v202504beta2.DeviceService.GetDevice:output_type -> kentik.device.v202504beta2.GetDeviceResponse
+	20, // 47: kentik.device.v202504beta2.DeviceService.CreateDevice:output_type -> kentik.device.v202504beta2.CreateDeviceResponse
+	22, // 48: kentik.device.v202504beta2.DeviceService.CreateDevices:output_type -> kentik.device.v202504beta2.CreateDevicesResponse
+	24, // 49: kentik.device.v202504beta2.DeviceService.UpdateDevice:output_type -> kentik.device.v202504beta2.UpdateDeviceResponse
+	26, // 50: kentik.device.v202504beta2.DeviceService.UpdateDevices:output_type -> kentik.device.v202504beta2.UpdateDevicesResponse
+	28, // 51: kentik.device.v202504beta2.DeviceService.UpdateDeviceLabels:output_type -> kentik.device.v202504beta2.UpdateDeviceLabelsResponse
+	30, // 52: kentik.device.v202504beta2.DeviceService.DeleteDevice:output_type -> kentik.device.v202504beta2.DeleteDeviceResponse
+	32, // 53: kentik.device.v202504beta2.DeviceService.DeleteDevices:output_type -> kentik.device.v202504beta2.DeleteDevicesResponse
+	45, // [45:54] is the sub-list for method output_type
+	36, // [36:45] is the sub-list for method input_type
+	36, // [36:36] is the sub-list for extension type_name
+	36, // [36:36] is the sub-list for extension extendee
+	0,  // [0:36] is the sub-list for field type_name
 }
 
 func init() { file_kentik_device_v202504beta2_device_proto_init() }
@@ -3056,13 +3132,14 @@ func file_kentik_device_v202504beta2_device_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_kentik_device_v202504beta2_device_proto_rawDesc), len(file_kentik_device_v202504beta2_device_proto_rawDesc)),
-			NumEnums:      0,
+			NumEnums:      1,
 			NumMessages:   33,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_kentik_device_v202504beta2_device_proto_goTypes,
 		DependencyIndexes: file_kentik_device_v202504beta2_device_proto_depIdxs,
+		EnumInfos:         file_kentik_device_v202504beta2_device_proto_enumTypes,
 		MessageInfos:      file_kentik_device_v202504beta2_device_proto_msgTypes,
 	}.Build()
 	File_kentik_device_v202504beta2_device_proto = out.File

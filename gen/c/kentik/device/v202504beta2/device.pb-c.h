@@ -59,6 +59,29 @@ typedef struct Kentik__Device__V202504beta2__DeleteDevicesResponse Kentik__Devic
 
 /* --- enums --- */
 
+/*
+ * DeviceView specifies the amount of detail to return for each device
+ * in a ListDevices response.
+ */
+typedef enum _Kentik__Device__V202504beta2__DeviceView {
+  /*
+   * When unspecified, defaults to FULL for backward compatibility.
+   */
+  KENTIK__DEVICE__V202504BETA2__DEVICE_VIEW__DEVICE_VIEW_UNSPECIFIED = 0,
+  /*
+   * Returns the full device configuration with all fields populated.
+   */
+  KENTIK__DEVICE__V202504BETA2__DEVICE_VIEW__DEVICE_VIEW_FULL = 1,
+  /*
+   * Returns only basic device information: id, device_name, device_status.
+   */
+  KENTIK__DEVICE__V202504BETA2__DEVICE_VIEW__DEVICE_VIEW_BASIC = 2,
+  /*
+   * Returns only device IDs.
+   */
+  KENTIK__DEVICE__V202504BETA2__DEVICE_VIEW__DEVICE_VIEW_ID_ONLY = 3
+    PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__DEVICE__V202504BETA2__DEVICE_VIEW)
+} Kentik__Device__V202504beta2__DeviceView;
 
 /* --- messages --- */
 
@@ -441,10 +464,11 @@ struct  Kentik__Device__V202504beta2__ListDevicesRequest
 {
   ProtobufCMessage base;
   Kentik__Device__V202504beta2__DeviceQuery *query;
+  Kentik__Device__V202504beta2__DeviceView view;
 };
 #define KENTIK__DEVICE__V202504BETA2__LIST_DEVICES_REQUEST__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__device__v202504beta2__list_devices_request__descriptor) \
-    , NULL }
+    , NULL, KENTIK__DEVICE__V202504BETA2__DEVICE_VIEW__DEVICE_VIEW_UNSPECIFIED }
 
 
 /*
@@ -1493,6 +1517,7 @@ void kentik__device__v202504beta2__device_service__delete_devices(ProtobufCServi
 
 /* --- descriptors --- */
 
+extern const ProtobufCEnumDescriptor    kentik__device__v202504beta2__device_view__descriptor;
 extern const ProtobufCMessageDescriptor kentik__device__v202504beta2__device_snmp_v3_conf__descriptor;
 extern const ProtobufCMessageDescriptor kentik__device__v202504beta2__device_nms_config__descriptor;
 extern const ProtobufCMessageDescriptor kentik__device__v202504beta2__device_nms_snmp_config__descriptor;

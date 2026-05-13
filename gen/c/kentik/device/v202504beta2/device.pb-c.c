@@ -3908,7 +3908,7 @@ const ProtobufCMessageDescriptor kentik__device__v202504beta2__label_concise__de
   (ProtobufCMessageInit) kentik__device__v202504beta2__label_concise__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__device__v202504beta2__list_devices_request__field_descriptors[1] =
+static const ProtobufCFieldDescriptor kentik__device__v202504beta2__list_devices_request__field_descriptors[2] =
 {
   {
     "query",
@@ -3922,14 +3922,27 @@ static const ProtobufCFieldDescriptor kentik__device__v202504beta2__list_devices
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "view",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_ENUM,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Device__V202504beta2__ListDevicesRequest, view),
+    &kentik__device__v202504beta2__device_view__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__device__v202504beta2__list_devices_request__field_indices_by_name[] = {
   0,   /* field[0] = query */
+  1,   /* field[1] = view */
 };
 static const ProtobufCIntRange kentik__device__v202504beta2__list_devices_request__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 1 }
+  { 0, 2 }
 };
 const ProtobufCMessageDescriptor kentik__device__v202504beta2__list_devices_request__descriptor =
 {
@@ -3939,7 +3952,7 @@ const ProtobufCMessageDescriptor kentik__device__v202504beta2__list_devices_requ
   "Kentik__Device__V202504beta2__ListDevicesRequest",
   "kentik.device.v202504beta2",
   sizeof(Kentik__Device__V202504beta2__ListDevicesRequest),
-  1,
+  2,
   kentik__device__v202504beta2__list_devices_request__field_descriptors,
   kentik__device__v202504beta2__list_devices_request__field_indices_by_name,
   1,  kentik__device__v202504beta2__list_devices_request__number_ranges,
@@ -4636,6 +4649,38 @@ const ProtobufCMessageDescriptor kentik__device__v202504beta2__delete_devices_re
   1,  kentik__device__v202504beta2__delete_devices_response__number_ranges,
   (ProtobufCMessageInit) kentik__device__v202504beta2__delete_devices_response__init,
   NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCEnumValue kentik__device__v202504beta2__device_view__enum_values_by_number[4] =
+{
+  { "DEVICE_VIEW_UNSPECIFIED", "KENTIK__DEVICE__V202504BETA2__DEVICE_VIEW__DEVICE_VIEW_UNSPECIFIED", 0 },
+  { "DEVICE_VIEW_FULL", "KENTIK__DEVICE__V202504BETA2__DEVICE_VIEW__DEVICE_VIEW_FULL", 1 },
+  { "DEVICE_VIEW_BASIC", "KENTIK__DEVICE__V202504BETA2__DEVICE_VIEW__DEVICE_VIEW_BASIC", 2 },
+  { "DEVICE_VIEW_ID_ONLY", "KENTIK__DEVICE__V202504BETA2__DEVICE_VIEW__DEVICE_VIEW_ID_ONLY", 3 },
+};
+static const ProtobufCIntRange kentik__device__v202504beta2__device_view__value_ranges[] = {
+{0, 0},{0, 4}
+};
+static const ProtobufCEnumValueIndex kentik__device__v202504beta2__device_view__enum_values_by_name[4] =
+{
+  { "DEVICE_VIEW_BASIC", 2 },
+  { "DEVICE_VIEW_FULL", 1 },
+  { "DEVICE_VIEW_ID_ONLY", 3 },
+  { "DEVICE_VIEW_UNSPECIFIED", 0 },
+};
+const ProtobufCEnumDescriptor kentik__device__v202504beta2__device_view__descriptor =
+{
+  PROTOBUF_C__ENUM_DESCRIPTOR_MAGIC,
+  "kentik.device.v202504beta2.DeviceView",
+  "DeviceView",
+  "Kentik__Device__V202504beta2__DeviceView",
+  "kentik.device.v202504beta2",
+  4,
+  kentik__device__v202504beta2__device_view__enum_values_by_number,
+  4,
+  kentik__device__v202504beta2__device_view__enum_values_by_name,
+  1,
+  kentik__device__v202504beta2__device_view__value_ranges,
+  NULL,NULL,NULL,NULL   /* reserved[1234] */
 };
 static const ProtobufCMethodDescriptor kentik__device__v202504beta2__device_service__method_descriptors[9] =
 {

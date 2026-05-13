@@ -32,6 +32,7 @@
 #include "google/protobuf/map.h"  // IWYU pragma: export
 #include "google/protobuf/map_entry.h"
 #include "google/protobuf/map_field_inl.h"
+#include "google/protobuf/generated_enum_reflection.h"
 #include "google/protobuf/unknown_field_set.h"
 #include "google/api/annotations.pb.h"
 #include "google/api/client.pb.h"
@@ -175,6 +176,41 @@ namespace protobuf {
 namespace kentik {
 namespace device {
 namespace v202504beta2 {
+enum DeviceView : int {
+  DEVICE_VIEW_UNSPECIFIED = 0,
+  DEVICE_VIEW_FULL = 1,
+  DEVICE_VIEW_BASIC = 2,
+  DEVICE_VIEW_ID_ONLY = 3,
+  DeviceView_INT_MIN_SENTINEL_DO_NOT_USE_ =
+      std::numeric_limits<::int32_t>::min(),
+  DeviceView_INT_MAX_SENTINEL_DO_NOT_USE_ =
+      std::numeric_limits<::int32_t>::max(),
+};
+
+bool DeviceView_IsValid(int value);
+extern const uint32_t DeviceView_internal_data_[];
+constexpr DeviceView DeviceView_MIN = static_cast<DeviceView>(0);
+constexpr DeviceView DeviceView_MAX = static_cast<DeviceView>(3);
+constexpr int DeviceView_ARRAYSIZE = 3 + 1;
+const ::google::protobuf::EnumDescriptor*
+DeviceView_descriptor();
+template <typename T>
+const std::string& DeviceView_Name(T value) {
+  static_assert(std::is_same<T, DeviceView>::value ||
+                    std::is_integral<T>::value,
+                "Incorrect type passed to DeviceView_Name().");
+  return DeviceView_Name(static_cast<DeviceView>(value));
+}
+template <>
+inline const std::string& DeviceView_Name(DeviceView value) {
+  return ::google::protobuf::internal::NameOfDenseEnum<DeviceView_descriptor,
+                                                 0, 3>(
+      static_cast<int>(value));
+}
+inline bool DeviceView_Parse(absl::string_view name, DeviceView* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<DeviceView>(
+      DeviceView_descriptor(), name, value);
+}
 
 // ===================================================================
 
@@ -3490,6 +3526,7 @@ class ListDevicesRequest final : public ::google::protobuf::Message
   // accessors -------------------------------------------------------
   enum : int {
     kQueryFieldNumber = 1,
+    kViewFieldNumber = 2,
   };
   // .kentik.device.v202504beta2.DeviceQuery query = 1 [json_name = "query"];
   bool has_query() const;
@@ -3506,12 +3543,22 @@ class ListDevicesRequest final : public ::google::protobuf::Message
   ::kentik::device::v202504beta2::DeviceQuery* _internal_mutable_query();
 
   public:
+  // .kentik.device.v202504beta2.DeviceView view = 2 [json_name = "view", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_view() ;
+  ::kentik::device::v202504beta2::DeviceView view() const;
+  void set_view(::kentik::device::v202504beta2::DeviceView value);
+
+  private:
+  ::kentik::device::v202504beta2::DeviceView _internal_view() const;
+  void _internal_set_view(::kentik::device::v202504beta2::DeviceView value);
+
+  public:
   // @@protoc_insertion_point(class_scope:kentik.device.v202504beta2.ListDevicesRequest)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      0, 1, 1,
+      1, 2, 1,
       0, 2>
       _table_;
 
@@ -3532,6 +3579,7 @@ class ListDevicesRequest final : public ::google::protobuf::Message
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     ::kentik::device::v202504beta2::DeviceQuery* query_;
+    int view_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -16796,6 +16844,28 @@ inline void ListDevicesRequest::set_allocated_query(::kentik::device::v202504bet
   // @@protoc_insertion_point(field_set_allocated:kentik.device.v202504beta2.ListDevicesRequest.query)
 }
 
+// .kentik.device.v202504beta2.DeviceView view = 2 [json_name = "view", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void ListDevicesRequest::clear_view() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.view_ = 0;
+}
+inline ::kentik::device::v202504beta2::DeviceView ListDevicesRequest::view() const {
+  // @@protoc_insertion_point(field_get:kentik.device.v202504beta2.ListDevicesRequest.view)
+  return _internal_view();
+}
+inline void ListDevicesRequest::set_view(::kentik::device::v202504beta2::DeviceView value) {
+  _internal_set_view(value);
+  // @@protoc_insertion_point(field_set:kentik.device.v202504beta2.ListDevicesRequest.view)
+}
+inline ::kentik::device::v202504beta2::DeviceView ListDevicesRequest::_internal_view() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return static_cast<::kentik::device::v202504beta2::DeviceView>(_impl_.view_);
+}
+inline void ListDevicesRequest::_internal_set_view(::kentik::device::v202504beta2::DeviceView value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.view_ = value;
+}
+
 // -------------------------------------------------------------------
 
 // ListDevicesResponse
@@ -18261,6 +18331,19 @@ DeleteDevicesResponse::_internal_mutable_failed_devices() {
 }  // namespace device
 }  // namespace kentik
 
+
+namespace google {
+namespace protobuf {
+
+template <>
+struct is_proto_enum<::kentik::device::v202504beta2::DeviceView> : std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor<::kentik::device::v202504beta2::DeviceView>() {
+  return ::kentik::device::v202504beta2::DeviceView_descriptor();
+}
+
+}  // namespace protobuf
+}  // namespace google
 
 // @@protoc_insertion_point(global_scope)
 

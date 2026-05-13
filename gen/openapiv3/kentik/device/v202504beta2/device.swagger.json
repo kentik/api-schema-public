@@ -18,7 +18,7 @@
         "/device/v202504beta2/device": {
             "get": {
                 "summary": "List all devices.",
-                "description": "Returns list of configured devices (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).",
+                "description": "Returns list of configured devices. Use the 'view' parameter to control response detail: FULL (default), BASIC (id, name, status), or ID_ONLY (id only). See [About Devices](https://kb.kentik.com/v4/Cb01.htm).",
                 "operationId": "ListDevices",
                 "responses": {
                     "200": {
@@ -49,6 +49,22 @@
                         "required": false,
                         "schema": {
                             "type": "boolean"
+                        }
+                    },
+                    {
+                        "name": "view",
+                        "description": "Controls the amount of detail returned for each device. Defaults to FULL.\n\n - DEVICE_VIEW_UNSPECIFIED: When unspecified, defaults to FULL for backward compatibility.\n - DEVICE_VIEW_FULL: Returns the full device configuration with all fields populated.\n - DEVICE_VIEW_BASIC: Returns only basic device information: id, device_name, device_status.\n - DEVICE_VIEW_ID_ONLY: Returns only device IDs.",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "DEVICE_VIEW_UNSPECIFIED",
+                                "DEVICE_VIEW_FULL",
+                                "DEVICE_VIEW_BASIC",
+                                "DEVICE_VIEW_ID_ONLY"
+                            ],
+                            "default": "DEVICE_VIEW_UNSPECIFIED"
                         }
                     }
                 ],
@@ -1273,6 +1289,17 @@
                     }
                 },
                 "title": "DeviceSnmpV3Conf"
+            },
+            "v202504beta2DeviceView": {
+                "type": "string",
+                "enum": [
+                    "DEVICE_VIEW_UNSPECIFIED",
+                    "DEVICE_VIEW_FULL",
+                    "DEVICE_VIEW_BASIC",
+                    "DEVICE_VIEW_ID_ONLY"
+                ],
+                "default": "DEVICE_VIEW_UNSPECIFIED",
+                "description": "DeviceView specifies the amount of detail to return for each device\nin a ListDevices response.\n\n - DEVICE_VIEW_UNSPECIFIED: When unspecified, defaults to FULL for backward compatibility.\n - DEVICE_VIEW_FULL: Returns the full device configuration with all fields populated.\n - DEVICE_VIEW_BASIC: Returns only basic device information: id, device_name, device_status.\n - DEVICE_VIEW_ID_ONLY: Returns only device IDs."
             },
             "v202504beta2GetDeviceResponse": {
                 "type": "object",

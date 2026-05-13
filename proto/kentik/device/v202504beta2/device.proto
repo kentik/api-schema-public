@@ -908,9 +908,27 @@ message LabelConcise {
   ];
 }
 
+// DeviceView specifies the amount of detail to return for each device
+// in a ListDevices response.
+enum DeviceView {
+  // When unspecified, defaults to FULL for backward compatibility.
+  DEVICE_VIEW_UNSPECIFIED = 0;
+  // Returns the full device configuration with all fields populated.
+  DEVICE_VIEW_FULL = 1;
+  // Returns only basic device information: id, device_name, device_status.
+  DEVICE_VIEW_BASIC = 2;
+  // Returns only device IDs.
+  DEVICE_VIEW_ID_ONLY = 3;
+}
+
 // {{.Name}}
 message ListDevicesRequest {
   DeviceQuery query = 1;
+  DeviceView view = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Controls the amount of detail returned for each device. Defaults to FULL."
+    }
+  ];
 }
 
 // {{.Name}}
@@ -1109,7 +1127,7 @@ service DeviceService {
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       operation_id: "ListDevices"
       summary: "List all devices."
-      description: "Returns list of configured devices (see [About Devices](https://kb.kentik.com/v4/Cb01.htm))."
+      description: "Returns list of configured devices. Use the 'view' parameter to control response detail: FULL (default), BASIC (id, name, status), or ID_ONLY (id only). See [About Devices](https://kb.kentik.com/v4/Cb01.htm)."
     };
   }
 
@@ -1214,4 +1232,5 @@ service DeviceService {
       description: "Deletes configuration of multiple devices with specific IDs (see [About Devices](https://kb.kentik.com/v4/Cb01.htm))."
     };
   }
+
 }
