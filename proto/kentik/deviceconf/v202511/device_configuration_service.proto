@@ -4,6 +4,7 @@ package kentik.deviceconf.v202511;
 option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/deviceconf/v202511;deviceconf";
 
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
 
 import "kentik/core/v202303/annotations.proto";
 
@@ -251,6 +252,7 @@ message RequestDeviceConfigurationFetchResponse {
 message ExecuteCommandRequest {
   DeviceCommand    device_command = 1;
   MessageSignature signature      = 2;
+  google.protobuf.Duration timeout = 3;
 }
 
 message ExecuteCommandResponse {

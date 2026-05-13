@@ -365,7 +365,8 @@ inline constexpr ExecuteCommandRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
         device_command_{nullptr},
-        signature_{nullptr} {}
+        signature_{nullptr},
+        timeout_{nullptr} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR ExecuteCommandRequest::ExecuteCommandRequest(::_pbi::ConstantInitialized)
@@ -688,8 +689,10 @@ const ::uint32_t
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::ExecuteCommandRequest, _impl_.device_command_),
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::ExecuteCommandRequest, _impl_.signature_),
+        PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::ExecuteCommandRequest, _impl_.timeout_),
         0,
         1,
+        2,
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::ExecuteCommandResponse, _impl_._has_bits_),
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::ExecuteCommandResponse, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -769,14 +772,14 @@ static const ::_pbi::MigrationSchema
         {113, -1, -1, sizeof(::kentik::deviceconf::v202511::ListDeviceConfigurationRevisionsResponse)},
         {122, -1, -1, sizeof(::kentik::deviceconf::v202511::RequestDeviceConfigurationFetchRequest)},
         {131, -1, -1, sizeof(::kentik::deviceconf::v202511::RequestDeviceConfigurationFetchResponse)},
-        {139, 149, -1, sizeof(::kentik::deviceconf::v202511::ExecuteCommandRequest)},
-        {151, 160, -1, sizeof(::kentik::deviceconf::v202511::ExecuteCommandResponse)},
-        {161, -1, -1, sizeof(::kentik::deviceconf::v202511::GetCommandAclsRequest)},
-        {169, -1, -1, sizeof(::kentik::deviceconf::v202511::GetCommandAclsResponse)},
-        {178, -1, -1, sizeof(::kentik::deviceconf::v202511::UpdateCommandAclsRequest)},
-        {187, -1, -1, sizeof(::kentik::deviceconf::v202511::UpdateCommandAclsResponse)},
-        {195, -1, -1, sizeof(::kentik::deviceconf::v202511::DeleteDeviceConfigurationRequest)},
-        {205, -1, -1, sizeof(::kentik::deviceconf::v202511::DeleteDeviceConfigurationResponse)},
+        {139, 150, -1, sizeof(::kentik::deviceconf::v202511::ExecuteCommandRequest)},
+        {153, 162, -1, sizeof(::kentik::deviceconf::v202511::ExecuteCommandResponse)},
+        {163, -1, -1, sizeof(::kentik::deviceconf::v202511::GetCommandAclsRequest)},
+        {171, -1, -1, sizeof(::kentik::deviceconf::v202511::GetCommandAclsResponse)},
+        {180, -1, -1, sizeof(::kentik::deviceconf::v202511::UpdateCommandAclsRequest)},
+        {189, -1, -1, sizeof(::kentik::deviceconf::v202511::UpdateCommandAclsResponse)},
+        {197, -1, -1, sizeof(::kentik::deviceconf::v202511::DeleteDeviceConfigurationRequest)},
+        {207, -1, -1, sizeof(::kentik::deviceconf::v202511::DeleteDeviceConfigurationResponse)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::deviceconf::v202511::_GetDeviceAssignmentsRequest_default_instance_._instance,
@@ -806,113 +809,117 @@ const char descriptor_table_protodef_kentik_2fdeviceconf_2fv202511_2fdevice_5fco
     "\n<kentik/deviceconf/v202511/device_confi"
     "guration_service.proto\022\031kentik.devicecon"
     "f.v202511\032\037google/protobuf/timestamp.pro"
-    "to\032%kentik/core/v202303/annotations.prot"
-    "o\032\'kentik/deviceconf/v202511/command.pro"
-    "to\032&kentik/deviceconf/v202511/config.pro"
-    "to\032&kentik/deviceconf/v202511/device.pro"
-    "to\032)kentik/deviceconf/v202511/signature."
-    "proto\"\035\n\033GetDeviceAssignmentsRequest\"[\n\034"
-    "GetDeviceAssignmentsResponse\022;\n\007devices\030"
-    "\001 \003(\0132!.kentik.deviceconf.v202511.Device"
-    "R\007devices\"_\n UpdateDeviceConfigurationRe"
-    "quest\022;\n\006config\030\001 \001(\0132#.kentik.devicecon"
-    "f.v202511.SnapshotR\006config\"#\n!UpdateDevi"
-    "ceConfigurationResponse\"\222\002\n\035GetDeviceCon"
-    "figurationRequest\0229\n\nfetch_time\030\001 \001(\0132\032."
-    "google.protobuf.TimestampR\tfetchTime\022\032\n\010"
-    "revision\030\002 \001(\tR\010revision\022!\n\014ref_revision"
-    "\030\003 \001(\tR\013refRevision\022\033\n\tdevice_id\030\004 \001(\tR\010"
-    "deviceId\022.\n\023exclude_config_data\030\005 \001(\010R\021e"
-    "xcludeConfigData\022*\n\021exclude_diff_data\030\006 "
-    "\001(\010R\017excludeDiffData\"]\n\036GetDeviceConfigu"
-    "rationResponse\022;\n\006config\030\001 \001(\0132#.kentik."
-    "deviceconf.v202511.SnapshotR\006config\"\241\001\n$"
-    "GetLatestDeviceConfigurationsRequest\022\035\n\n"
-    "device_ids\030\001 \003(\tR\tdeviceIds\022.\n\023exclude_c"
-    "onfig_data\030\002 \001(\010R\021excludeConfigData\022*\n\021e"
-    "xclude_diff_data\030\003 \001(\010R\017excludeDiffData\""
-    "\361\001\n%GetLatestDeviceConfigurationsRespons"
-    "e\022g\n\007configs\030\001 \003(\0132M.kentik.deviceconf.v"
-    "202511.GetLatestDeviceConfigurationsResp"
-    "onse.ConfigsEntryR\007configs\032_\n\014ConfigsEnt"
-    "ry\022\020\n\003key\030\001 \001(\tR\003key\0229\n\005value\030\002 \001(\0132#.ke"
-    "ntik.deviceconf.v202511.SnapshotR\005value:"
-    "\0028\001\"\320\001\n\'ListDeviceConfigurationRevisions"
-    "Request\0227\n\tfrom_time\030\001 \001(\0132\032.google.prot"
-    "obuf.TimestampR\010fromTime\0229\n\nuntil_time\030\002"
-    " \001(\0132\032.google.protobuf.TimestampR\tuntilT"
-    "ime\022\024\n\005limit\030\003 \001(\005R\005limit\022\033\n\tdevice_id\030\004"
-    " \001(\tR\010deviceId\"m\n(ListDeviceConfiguratio"
-    "nRevisionsResponse\022A\n\trevisions\030\001 \003(\0132#."
-    "kentik.deviceconf.v202511.RevisionR\trevi"
-    "sions\"E\n&RequestDeviceConfigurationFetch"
-    "Request\022\033\n\tdevice_id\030\001 \001(\tR\010deviceId\")\n\'"
-    "RequestDeviceConfigurationFetchResponse\""
-    "\263\001\n\025ExecuteCommandRequest\022O\n\016device_comm"
-    "and\030\001 \001(\0132(.kentik.deviceconf.v202511.De"
-    "viceCommandR\rdeviceCommand\022I\n\tsignature\030"
-    "\002 \001(\0132+.kentik.deviceconf.v202511.Messag"
-    "eSignatureR\tsignature\"i\n\026ExecuteCommandR"
-    "esponse\022O\n\016command_result\030\001 \001(\0132(.kentik"
-    ".deviceconf.v202511.CommandResultR\rcomma"
-    "ndResult\"\027\n\025GetCommandAclsRequest\"S\n\026Get"
-    "CommandAclsResponse\0229\n\004acls\030\001 \003(\0132%.kent"
-    "ik.deviceconf.v202511.CommandAclR\004acls\"U"
-    "\n\030UpdateCommandAclsRequest\0229\n\004acls\030\001 \003(\013"
-    "2%.kentik.deviceconf.v202511.CommandAclR"
-    "\004acls\"\033\n\031UpdateCommandAclsResponse\"[\n De"
-    "leteDeviceConfigurationRequest\022\033\n\tdevice"
-    "_id\030\001 \001(\tR\010deviceId\022\032\n\010revision\030\002 \001(\tR\010r"
-    "evision\"#\n!DeleteDeviceConfigurationResp"
-    "onse2\314\r\n\032DeviceConfigurationService\022\234\001\n\024"
-    "GetDeviceAssignments\0226.kentik.deviceconf"
-    ".v202511.GetDeviceAssignmentsRequest\0327.k"
-    "entik.deviceconf.v202511.GetDeviceAssign"
-    "mentsResponse\"\023\362\327\002\017deviceconf:read\022\254\001\n\031U"
-    "pdateDeviceConfiguration\022;.kentik.device"
-    "conf.v202511.UpdateDeviceConfigurationRe"
-    "quest\032<.kentik.deviceconf.v202511.Update"
-    "DeviceConfigurationResponse\"\024\362\327\002\020devicec"
-    "onf:write\022\242\001\n\026GetDeviceConfiguration\0228.k"
-    "entik.deviceconf.v202511.GetDeviceConfig"
-    "urationRequest\0329.kentik.deviceconf.v2025"
-    "11.GetDeviceConfigurationResponse\"\023\362\327\002\017d"
-    "eviceconf:read\022\267\001\n\035GetLatestDeviceConfig"
-    "urations\022\?.kentik.deviceconf.v202511.Get"
-    "LatestDeviceConfigurationsRequest\032@.kent"
-    "ik.deviceconf.v202511.GetLatestDeviceCon"
-    "figurationsResponse\"\023\362\327\002\017deviceconf:read"
-    "\022\300\001\n ListDeviceConfigurationRevisions\022B."
-    "kentik.deviceconf.v202511.ListDeviceConf"
-    "igurationRevisionsRequest\032C.kentik.devic"
-    "econf.v202511.ListDeviceConfigurationRev"
-    "isionsResponse\"\023\362\327\002\017deviceconf:read\022\276\001\n\037"
-    "RequestDeviceConfigurationFetch\022A.kentik"
-    ".deviceconf.v202511.RequestDeviceConfigu"
-    "rationFetchRequest\032B.kentik.deviceconf.v"
-    "202511.RequestDeviceConfigurationFetchRe"
-    "sponse\"\024\362\327\002\020deviceconf:write\022\217\001\n\016Execute"
-    "Command\0220.kentik.deviceconf.v202511.Exec"
-    "uteCommandRequest\0321.kentik.deviceconf.v2"
-    "02511.ExecuteCommandResponse\"\030\362\327\002\020device"
-    "conf:write\230\330\002\001\022\212\001\n\016GetCommandAcls\0220.kent"
-    "ik.deviceconf.v202511.GetCommandAclsRequ"
-    "est\0321.kentik.deviceconf.v202511.GetComma"
-    "ndAclsResponse\"\023\362\327\002\017deviceconf:read\022\224\001\n\021"
-    "UpdateCommandAcls\0223.kentik.deviceconf.v2"
-    "02511.UpdateCommandAclsRequest\0324.kentik."
-    "deviceconf.v202511.UpdateCommandAclsResp"
-    "onse\"\024\362\327\002\020deviceconf:write\022\254\001\n\031DeleteDev"
-    "iceConfiguration\022;.kentik.deviceconf.v20"
-    "2511.DeleteDeviceConfigurationRequest\032<."
-    "kentik.deviceconf.v202511.DeleteDeviceCo"
-    "nfigurationResponse\"\024\362\327\002\020deviceconf:writ"
-    "e\032\030\352\327\002\020deviceconf:admin\220\330\002\003BQZOgithub.co"
-    "m/kentik/api-schema-public/gen/go/kentik"
-    "/deviceconf/v202511;deviceconfb\006proto3"
+    "to\032\036google/protobuf/duration.proto\032%kent"
+    "ik/core/v202303/annotations.proto\032\'kenti"
+    "k/deviceconf/v202511/command.proto\032&kent"
+    "ik/deviceconf/v202511/config.proto\032&kent"
+    "ik/deviceconf/v202511/device.proto\032)kent"
+    "ik/deviceconf/v202511/signature.proto\"\035\n"
+    "\033GetDeviceAssignmentsRequest\"[\n\034GetDevic"
+    "eAssignmentsResponse\022;\n\007devices\030\001 \003(\0132!."
+    "kentik.deviceconf.v202511.DeviceR\007device"
+    "s\"_\n UpdateDeviceConfigurationRequest\022;\n"
+    "\006config\030\001 \001(\0132#.kentik.deviceconf.v20251"
+    "1.SnapshotR\006config\"#\n!UpdateDeviceConfig"
+    "urationResponse\"\222\002\n\035GetDeviceConfigurati"
+    "onRequest\0229\n\nfetch_time\030\001 \001(\0132\032.google.p"
+    "rotobuf.TimestampR\tfetchTime\022\032\n\010revision"
+    "\030\002 \001(\tR\010revision\022!\n\014ref_revision\030\003 \001(\tR\013"
+    "refRevision\022\033\n\tdevice_id\030\004 \001(\tR\010deviceId"
+    "\022.\n\023exclude_config_data\030\005 \001(\010R\021excludeCo"
+    "nfigData\022*\n\021exclude_diff_data\030\006 \001(\010R\017exc"
+    "ludeDiffData\"]\n\036GetDeviceConfigurationRe"
+    "sponse\022;\n\006config\030\001 \001(\0132#.kentik.deviceco"
+    "nf.v202511.SnapshotR\006config\"\241\001\n$GetLates"
+    "tDeviceConfigurationsRequest\022\035\n\ndevice_i"
+    "ds\030\001 \003(\tR\tdeviceIds\022.\n\023exclude_config_da"
+    "ta\030\002 \001(\010R\021excludeConfigData\022*\n\021exclude_d"
+    "iff_data\030\003 \001(\010R\017excludeDiffData\"\361\001\n%GetL"
+    "atestDeviceConfigurationsResponse\022g\n\007con"
+    "figs\030\001 \003(\0132M.kentik.deviceconf.v202511.G"
+    "etLatestDeviceConfigurationsResponse.Con"
+    "figsEntryR\007configs\032_\n\014ConfigsEntry\022\020\n\003ke"
+    "y\030\001 \001(\tR\003key\0229\n\005value\030\002 \001(\0132#.kentik.dev"
+    "iceconf.v202511.SnapshotR\005value:\0028\001\"\320\001\n\'"
+    "ListDeviceConfigurationRevisionsRequest\022"
+    "7\n\tfrom_time\030\001 \001(\0132\032.google.protobuf.Tim"
+    "estampR\010fromTime\0229\n\nuntil_time\030\002 \001(\0132\032.g"
+    "oogle.protobuf.TimestampR\tuntilTime\022\024\n\005l"
+    "imit\030\003 \001(\005R\005limit\022\033\n\tdevice_id\030\004 \001(\tR\010de"
+    "viceId\"m\n(ListDeviceConfigurationRevisio"
+    "nsResponse\022A\n\trevisions\030\001 \003(\0132#.kentik.d"
+    "eviceconf.v202511.RevisionR\trevisions\"E\n"
+    "&RequestDeviceConfigurationFetchRequest\022"
+    "\033\n\tdevice_id\030\001 \001(\tR\010deviceId\")\n\'RequestD"
+    "eviceConfigurationFetchResponse\"\350\001\n\025Exec"
+    "uteCommandRequest\022O\n\016device_command\030\001 \001("
+    "\0132(.kentik.deviceconf.v202511.DeviceComm"
+    "andR\rdeviceCommand\022I\n\tsignature\030\002 \001(\0132+."
+    "kentik.deviceconf.v202511.MessageSignatu"
+    "reR\tsignature\0223\n\007timeout\030\003 \001(\0132\031.google."
+    "protobuf.DurationR\007timeout\"i\n\026ExecuteCom"
+    "mandResponse\022O\n\016command_result\030\001 \001(\0132(.k"
+    "entik.deviceconf.v202511.CommandResultR\r"
+    "commandResult\"\027\n\025GetCommandAclsRequest\"S"
+    "\n\026GetCommandAclsResponse\0229\n\004acls\030\001 \003(\0132%"
+    ".kentik.deviceconf.v202511.CommandAclR\004a"
+    "cls\"U\n\030UpdateCommandAclsRequest\0229\n\004acls\030"
+    "\001 \003(\0132%.kentik.deviceconf.v202511.Comman"
+    "dAclR\004acls\"\033\n\031UpdateCommandAclsResponse\""
+    "[\n DeleteDeviceConfigurationRequest\022\033\n\td"
+    "evice_id\030\001 \001(\tR\010deviceId\022\032\n\010revision\030\002 \001"
+    "(\tR\010revision\"#\n!DeleteDeviceConfiguratio"
+    "nResponse2\314\r\n\032DeviceConfigurationService"
+    "\022\234\001\n\024GetDeviceAssignments\0226.kentik.devic"
+    "econf.v202511.GetDeviceAssignmentsReques"
+    "t\0327.kentik.deviceconf.v202511.GetDeviceA"
+    "ssignmentsResponse\"\023\362\327\002\017deviceconf:read\022"
+    "\254\001\n\031UpdateDeviceConfiguration\022;.kentik.d"
+    "eviceconf.v202511.UpdateDeviceConfigurat"
+    "ionRequest\032<.kentik.deviceconf.v202511.U"
+    "pdateDeviceConfigurationResponse\"\024\362\327\002\020de"
+    "viceconf:write\022\242\001\n\026GetDeviceConfiguratio"
+    "n\0228.kentik.deviceconf.v202511.GetDeviceC"
+    "onfigurationRequest\0329.kentik.deviceconf."
+    "v202511.GetDeviceConfigurationResponse\"\023"
+    "\362\327\002\017deviceconf:read\022\267\001\n\035GetLatestDeviceC"
+    "onfigurations\022\?.kentik.deviceconf.v20251"
+    "1.GetLatestDeviceConfigurationsRequest\032@"
+    ".kentik.deviceconf.v202511.GetLatestDevi"
+    "ceConfigurationsResponse\"\023\362\327\002\017deviceconf"
+    ":read\022\300\001\n ListDeviceConfigurationRevisio"
+    "ns\022B.kentik.deviceconf.v202511.ListDevic"
+    "eConfigurationRevisionsRequest\032C.kentik."
+    "deviceconf.v202511.ListDeviceConfigurati"
+    "onRevisionsResponse\"\023\362\327\002\017deviceconf:read"
+    "\022\276\001\n\037RequestDeviceConfigurationFetch\022A.k"
+    "entik.deviceconf.v202511.RequestDeviceCo"
+    "nfigurationFetchRequest\032B.kentik.devicec"
+    "onf.v202511.RequestDeviceConfigurationFe"
+    "tchResponse\"\024\362\327\002\020deviceconf:write\022\217\001\n\016Ex"
+    "ecuteCommand\0220.kentik.deviceconf.v202511"
+    ".ExecuteCommandRequest\0321.kentik.deviceco"
+    "nf.v202511.ExecuteCommandResponse\"\030\362\327\002\020d"
+    "eviceconf:write\230\330\002\001\022\212\001\n\016GetCommandAcls\0220"
+    ".kentik.deviceconf.v202511.GetCommandAcl"
+    "sRequest\0321.kentik.deviceconf.v202511.Get"
+    "CommandAclsResponse\"\023\362\327\002\017deviceconf:read"
+    "\022\224\001\n\021UpdateCommandAcls\0223.kentik.deviceco"
+    "nf.v202511.UpdateCommandAclsRequest\0324.ke"
+    "ntik.deviceconf.v202511.UpdateCommandAcl"
+    "sResponse\"\024\362\327\002\020deviceconf:write\022\254\001\n\031Dele"
+    "teDeviceConfiguration\022;.kentik.devicecon"
+    "f.v202511.DeleteDeviceConfigurationReque"
+    "st\032<.kentik.deviceconf.v202511.DeleteDev"
+    "iceConfigurationResponse\"\024\362\327\002\020deviceconf"
+    ":write\032\030\352\327\002\020deviceconf:admin\220\330\002\003BQZOgith"
+    "ub.com/kentik/api-schema-public/gen/go/k"
+    "entik/deviceconf/v202511;deviceconfb\006pro"
+    "to3"
 };
-static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice_5fconfiguration_5fservice_2eproto_deps[6] =
+static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice_5fconfiguration_5fservice_2eproto_deps[7] =
     {
+        &::descriptor_table_google_2fprotobuf_2fduration_2eproto,
         &::descriptor_table_google_2fprotobuf_2ftimestamp_2eproto,
         &::descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto,
         &::descriptor_table_kentik_2fdeviceconf_2fv202511_2fcommand_2eproto,
@@ -924,12 +931,12 @@ static ::absl::once_flag descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice_5fconfiguration_5fservice_2eproto = {
     false,
     false,
-    4278,
+    4363,
     descriptor_table_protodef_kentik_2fdeviceconf_2fv202511_2fdevice_5fconfiguration_5fservice_2eproto,
     "kentik/deviceconf/v202511/device_configuration_service.proto",
     &descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice_5fconfiguration_5fservice_2eproto_once,
     descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice_5fconfiguration_5fservice_2eproto_deps,
-    6,
+    7,
     21,
     schemas,
     file_default_instances,
@@ -3953,6 +3960,11 @@ void ExecuteCommandRequest::clear_signature() {
   if (_impl_.signature_ != nullptr) _impl_.signature_->Clear();
   _impl_._has_bits_[0] &= ~0x00000002u;
 }
+void ExecuteCommandRequest::clear_timeout() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.timeout_ != nullptr) _impl_.timeout_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
 ExecuteCommandRequest::ExecuteCommandRequest(::google::protobuf::Arena* arena)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
     : ::google::protobuf::Message(arena, _class_data_.base()) {
@@ -3988,6 +4000,9 @@ ExecuteCommandRequest::ExecuteCommandRequest(
   _impl_.signature_ = (cached_has_bits & 0x00000002u) ? ::google::protobuf::Message::CopyConstruct<::kentik::deviceconf::v202511::MessageSignature>(
                               arena, *from._impl_.signature_)
                         : nullptr;
+  _impl_.timeout_ = (cached_has_bits & 0x00000004u) ? ::google::protobuf::Message::CopyConstruct<::google::protobuf::Duration>(
+                              arena, *from._impl_.timeout_)
+                        : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:kentik.deviceconf.v202511.ExecuteCommandRequest)
 }
@@ -4001,9 +4016,9 @@ inline void ExecuteCommandRequest::SharedCtor(::_pb::Arena* arena) {
   ::memset(reinterpret_cast<char *>(&_impl_) +
                offsetof(Impl_, device_command_),
            0,
-           offsetof(Impl_, signature_) -
+           offsetof(Impl_, timeout_) -
                offsetof(Impl_, device_command_) +
-               sizeof(Impl_::signature_));
+               sizeof(Impl_::timeout_));
 }
 ExecuteCommandRequest::~ExecuteCommandRequest() {
   // @@protoc_insertion_point(destructor:kentik.deviceconf.v202511.ExecuteCommandRequest)
@@ -4015,6 +4030,7 @@ inline void ExecuteCommandRequest::SharedDtor(MessageLite& self) {
   ABSL_DCHECK(this_.GetArena() == nullptr);
   delete this_._impl_.device_command_;
   delete this_._impl_.signature_;
+  delete this_._impl_.timeout_;
   this_._impl_.~Impl_();
 }
 
@@ -4054,16 +4070,16 @@ const ::google::protobuf::internal::ClassData* ExecuteCommandRequest::GetClassDa
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 2, 0, 2> ExecuteCommandRequest::_table_ = {
+const ::_pbi::TcParseTable<2, 3, 3, 0, 2> ExecuteCommandRequest::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(ExecuteCommandRequest, _impl_._has_bits_),
     0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
+    3, 24,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
+    4294967288,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
-    2,  // num_aux_entries
+    3,  // num_field_entries
+    3,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
     nullptr,  // post_loop_handler
@@ -4072,12 +4088,16 @@ const ::_pbi::TcParseTable<1, 2, 2, 0, 2> ExecuteCommandRequest::_table_ = {
     ::_pbi::TcParser::GetTable<::kentik::deviceconf::v202511::ExecuteCommandRequest>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // .kentik.deviceconf.v202511.MessageSignature signature = 2 [json_name = "signature"];
-    {::_pbi::TcParser::FastMtS1,
-     {18, 1, 1, PROTOBUF_FIELD_OFFSET(ExecuteCommandRequest, _impl_.signature_)}},
+    {::_pbi::TcParser::MiniParse, {}},
     // .kentik.deviceconf.v202511.DeviceCommand device_command = 1 [json_name = "deviceCommand"];
     {::_pbi::TcParser::FastMtS1,
      {10, 0, 0, PROTOBUF_FIELD_OFFSET(ExecuteCommandRequest, _impl_.device_command_)}},
+    // .kentik.deviceconf.v202511.MessageSignature signature = 2 [json_name = "signature"];
+    {::_pbi::TcParser::FastMtS1,
+     {18, 1, 1, PROTOBUF_FIELD_OFFSET(ExecuteCommandRequest, _impl_.signature_)}},
+    // .google.protobuf.Duration timeout = 3 [json_name = "timeout"];
+    {::_pbi::TcParser::FastMtS1,
+     {26, 2, 2, PROTOBUF_FIELD_OFFSET(ExecuteCommandRequest, _impl_.timeout_)}},
   }}, {{
     65535, 65535
   }}, {{
@@ -4087,9 +4107,13 @@ const ::_pbi::TcParseTable<1, 2, 2, 0, 2> ExecuteCommandRequest::_table_ = {
     // .kentik.deviceconf.v202511.MessageSignature signature = 2 [json_name = "signature"];
     {PROTOBUF_FIELD_OFFSET(ExecuteCommandRequest, _impl_.signature_), _Internal::kHasBitsOffset + 1, 1,
     (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // .google.protobuf.Duration timeout = 3 [json_name = "timeout"];
+    {PROTOBUF_FIELD_OFFSET(ExecuteCommandRequest, _impl_.timeout_), _Internal::kHasBitsOffset + 2, 2,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
   }}, {{
     {::_pbi::TcParser::GetTable<::kentik::deviceconf::v202511::DeviceCommand>()},
     {::_pbi::TcParser::GetTable<::kentik::deviceconf::v202511::MessageSignature>()},
+    {::_pbi::TcParser::GetTable<::google::protobuf::Duration>()},
   }}, {{
   }},
 };
@@ -4102,7 +4126,7 @@ PROTOBUF_NOINLINE void ExecuteCommandRequest::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
+  if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
       ABSL_DCHECK(_impl_.device_command_ != nullptr);
       _impl_.device_command_->Clear();
@@ -4110,6 +4134,10 @@ PROTOBUF_NOINLINE void ExecuteCommandRequest::Clear() {
     if (cached_has_bits & 0x00000002u) {
       ABSL_DCHECK(_impl_.signature_ != nullptr);
       _impl_.signature_->Clear();
+    }
+    if (cached_has_bits & 0x00000004u) {
+      ABSL_DCHECK(_impl_.timeout_ != nullptr);
+      _impl_.timeout_->Clear();
     }
   }
   _impl_._has_bits_.Clear();
@@ -4146,6 +4174,13 @@ PROTOBUF_NOINLINE void ExecuteCommandRequest::Clear() {
                 stream);
           }
 
+          // .google.protobuf.Duration timeout = 3 [json_name = "timeout"];
+          if (cached_has_bits & 0x00000004u) {
+            target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                3, *this_._impl_.timeout_, this_._impl_.timeout_->GetCachedSize(), target,
+                stream);
+          }
+
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -4171,7 +4206,7 @@ PROTOBUF_NOINLINE void ExecuteCommandRequest::Clear() {
 
           ::_pbi::Prefetch5LinesFrom7Lines(&this_);
           cached_has_bits = this_._impl_._has_bits_[0];
-          if (cached_has_bits & 0x00000003u) {
+          if (cached_has_bits & 0x00000007u) {
             // .kentik.deviceconf.v202511.DeviceCommand device_command = 1 [json_name = "deviceCommand"];
             if (cached_has_bits & 0x00000001u) {
               total_size += 1 +
@@ -4181,6 +4216,11 @@ PROTOBUF_NOINLINE void ExecuteCommandRequest::Clear() {
             if (cached_has_bits & 0x00000002u) {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.signature_);
+            }
+            // .google.protobuf.Duration timeout = 3 [json_name = "timeout"];
+            if (cached_has_bits & 0x00000004u) {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.timeout_);
             }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
@@ -4197,7 +4237,7 @@ void ExecuteCommandRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, c
   (void) cached_has_bits;
 
   cached_has_bits = from._impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
+  if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
       ABSL_DCHECK(from._impl_.device_command_ != nullptr);
       if (_this->_impl_.device_command_ == nullptr) {
@@ -4214,6 +4254,15 @@ void ExecuteCommandRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, c
             ::google::protobuf::Message::CopyConstruct<::kentik::deviceconf::v202511::MessageSignature>(arena, *from._impl_.signature_);
       } else {
         _this->_impl_.signature_->MergeFrom(*from._impl_.signature_);
+      }
+    }
+    if (cached_has_bits & 0x00000004u) {
+      ABSL_DCHECK(from._impl_.timeout_ != nullptr);
+      if (_this->_impl_.timeout_ == nullptr) {
+        _this->_impl_.timeout_ =
+            ::google::protobuf::Message::CopyConstruct<::google::protobuf::Duration>(arena, *from._impl_.timeout_);
+      } else {
+        _this->_impl_.timeout_->MergeFrom(*from._impl_.timeout_);
       }
     }
   }
@@ -4234,8 +4283,8 @@ void ExecuteCommandRequest::InternalSwap(ExecuteCommandRequest* PROTOBUF_RESTRIC
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ExecuteCommandRequest, _impl_.signature_)
-      + sizeof(ExecuteCommandRequest::_impl_.signature_)
+      PROTOBUF_FIELD_OFFSET(ExecuteCommandRequest, _impl_.timeout_)
+      + sizeof(ExecuteCommandRequest::_impl_.timeout_)
       - PROTOBUF_FIELD_OFFSET(ExecuteCommandRequest, _impl_.device_command_)>(
           reinterpret_cast<char*>(&_impl_.device_command_),
           reinterpret_cast<char*>(&other->_impl_.device_command_));

@@ -35,7 +35,12 @@ message DeviceSSHCreds {
 }
 
 message FetchParameters {
+  // How often the device should be fetched.
   google.protobuf.Duration fetch_interval = 1;
+  // Maximum time allowed for a single fetch attempt.
+  // If unset or set to 0s, the server default timeout is used.
+  // This value should be less than or equal to fetch_interval.
+  google.protobuf.Duration fetch_timeout = 2;
 }
 
 message Device {

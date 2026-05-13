@@ -209,7 +209,12 @@
       "type": "object",
       "properties": {
         "fetchInterval": {
-          "type": "string"
+          "type": "string",
+          "description": "How often the device should be fetched."
+        },
+        "fetchTimeout": {
+          "type": "string",
+          "description": "Maximum time allowed for a single fetch attempt.\nIf unset or set to 0s, the server default timeout is used.\nThis value should be less than or equal to fetch_interval."
         }
       }
     },

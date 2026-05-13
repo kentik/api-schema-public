@@ -64,7 +64,8 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 inline constexpr FetchParameters::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
-        fetch_interval_{nullptr} {}
+        fetch_interval_{nullptr},
+        fetch_timeout_{nullptr} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR FetchParameters::FetchParameters(::_pbi::ConstantInitialized)
@@ -150,7 +151,9 @@ const ::uint32_t
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::FetchParameters, _impl_.fetch_interval_),
+        PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::FetchParameters, _impl_.fetch_timeout_),
         0,
+        1,
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::Device, _impl_._has_bits_),
         PROTOBUF_FIELD_OFFSET(::kentik::deviceconf::v202511::Device, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -176,8 +179,8 @@ const ::uint32_t
 static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
         {0, -1, -1, sizeof(::kentik::deviceconf::v202511::DeviceSSHCreds)},
-        {11, 20, -1, sizeof(::kentik::deviceconf::v202511::FetchParameters)},
-        {21, 35, -1, sizeof(::kentik::deviceconf::v202511::Device)},
+        {11, 21, -1, sizeof(::kentik::deviceconf::v202511::FetchParameters)},
+        {23, 37, -1, sizeof(::kentik::deviceconf::v202511::Device)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::deviceconf::v202511::_DeviceSSHCreds_default_instance_._instance,
@@ -191,36 +194,38 @@ const char descriptor_table_protodef_kentik_2fdeviceconf_2fv202511_2fdevice_2epr
     "obuf/duration.proto\"m\n\016DeviceSSHCreds\022\032\n"
     "\010username\030\001 \001(\tR\010username\022\037\n\013private_key"
     "\030\002 \001(\tR\nprivateKey\022\036\n\npassphrase\030\003 \001(\tR\n"
-    "passphrase\"S\n\017FetchParameters\022@\n\016fetch_i"
-    "nterval\030\001 \001(\0132\031.google.protobuf.Duration"
-    "R\rfetchInterval\"\246\002\n\006Device\022\016\n\002id\030\001 \001(\tR\002"
-    "id\022\022\n\004name\030\002 \001(\tR\004name\022\032\n\010hostname\030\003 \001(\t"
-    "R\010hostname\022E\n\010platform\030\004 \001(\0162).kentik.de"
-    "viceconf.v202511.DevicePlatformR\010platfor"
-    "m\022F\n\tssh_creds\030\005 \001(\0132).kentik.deviceconf"
-    ".v202511.DeviceSSHCredsR\010sshCreds\022M\n\014fet"
-    "ch_params\030\006 \001(\0132*.kentik.deviceconf.v202"
-    "511.FetchParametersR\013fetchParams*\262\005\n\016Dev"
-    "icePlatform\022\037\n\033DEVICE_PLATFORM_UNSPECIFI"
-    "ED\020\000\022\036\n\032DEVICE_PLATFORM_ARISTA_EOS\020\001\022\035\n\031"
-    "DEVICE_PLATFORM_ARUBA_WLC\020\002\022\037\n\033DEVICE_PL"
-    "ATFORM_CISCO_IOSXE\020\003\022\037\n\033DEVICE_PLATFORM_"
-    "CISCO_IOSXR\020\004\022\036\n\032DEVICE_PLATFORM_CISCO_N"
-    "XOS\020\005\022\035\n\031DEVICE_PLATFORM_CISCO_IOS\020\006\022!\n\035"
-    "DEVICE_PLATFORM_CUMULUS_LINUX\020\007\022!\n\035DEVIC"
-    "E_PLATFORM_CUMULUS_VTYSH\020\010\022\036\n\032DEVICE_PLA"
-    "TFORM_HP_COMWARE\020\t\022\036\n\032DEVICE_PLATFORM_HU"
-    "AWEI_VRP\020\n\022$\n DEVICE_PLATFORM_IPINFUSION"
-    "_OCNOS\020\013\022!\n\035DEVICE_PLATFORM_JUNIPER_JUNO"
-    "S\020\014\022\035\n\031DEVICE_PLATFORM_NOKIA_SRL\020\r\022\036\n\032DE"
-    "VICE_PLATFORM_NOKIA_SROS\020\016\022&\n\"DEVICE_PLA"
-    "TFORM_NOKIA_SROS_CLASSIC\020\017\022\"\n\036DEVICE_PLA"
-    "TFORM_PALOALTO_PANOS\020\020\022\037\n\033DEVICE_PLATFOR"
-    "M_RUIJIE_RGOS\020\021\022\037\n\033DEVICE_PLATFORM_VYATT"
-    "A_VYOS\020\022\022#\n\037DEVICE_PLATFORM_UBIQUITI_EDG"
-    "EOS\020\023BQZOgithub.com/kentik/api-schema-pu"
-    "blic/gen/go/kentik/deviceconf/v202511;de"
-    "viceconfb\006proto3"
+    "passphrase\"\223\001\n\017FetchParameters\022@\n\016fetch_"
+    "interval\030\001 \001(\0132\031.google.protobuf.Duratio"
+    "nR\rfetchInterval\022>\n\rfetch_timeout\030\002 \001(\0132"
+    "\031.google.protobuf.DurationR\014fetchTimeout"
+    "\"\246\002\n\006Device\022\016\n\002id\030\001 \001(\tR\002id\022\022\n\004name\030\002 \001("
+    "\tR\004name\022\032\n\010hostname\030\003 \001(\tR\010hostname\022E\n\010p"
+    "latform\030\004 \001(\0162).kentik.deviceconf.v20251"
+    "1.DevicePlatformR\010platform\022F\n\tssh_creds\030"
+    "\005 \001(\0132).kentik.deviceconf.v202511.Device"
+    "SSHCredsR\010sshCreds\022M\n\014fetch_params\030\006 \001(\013"
+    "2*.kentik.deviceconf.v202511.FetchParame"
+    "tersR\013fetchParams*\262\005\n\016DevicePlatform\022\037\n\033"
+    "DEVICE_PLATFORM_UNSPECIFIED\020\000\022\036\n\032DEVICE_"
+    "PLATFORM_ARISTA_EOS\020\001\022\035\n\031DEVICE_PLATFORM"
+    "_ARUBA_WLC\020\002\022\037\n\033DEVICE_PLATFORM_CISCO_IO"
+    "SXE\020\003\022\037\n\033DEVICE_PLATFORM_CISCO_IOSXR\020\004\022\036"
+    "\n\032DEVICE_PLATFORM_CISCO_NXOS\020\005\022\035\n\031DEVICE"
+    "_PLATFORM_CISCO_IOS\020\006\022!\n\035DEVICE_PLATFORM"
+    "_CUMULUS_LINUX\020\007\022!\n\035DEVICE_PLATFORM_CUMU"
+    "LUS_VTYSH\020\010\022\036\n\032DEVICE_PLATFORM_HP_COMWAR"
+    "E\020\t\022\036\n\032DEVICE_PLATFORM_HUAWEI_VRP\020\n\022$\n D"
+    "EVICE_PLATFORM_IPINFUSION_OCNOS\020\013\022!\n\035DEV"
+    "ICE_PLATFORM_JUNIPER_JUNOS\020\014\022\035\n\031DEVICE_P"
+    "LATFORM_NOKIA_SRL\020\r\022\036\n\032DEVICE_PLATFORM_N"
+    "OKIA_SROS\020\016\022&\n\"DEVICE_PLATFORM_NOKIA_SRO"
+    "S_CLASSIC\020\017\022\"\n\036DEVICE_PLATFORM_PALOALTO_"
+    "PANOS\020\020\022\037\n\033DEVICE_PLATFORM_RUIJIE_RGOS\020\021"
+    "\022\037\n\033DEVICE_PLATFORM_VYATTA_VYOS\020\022\022#\n\037DEV"
+    "ICE_PLATFORM_UBIQUITI_EDGEOS\020\023BQZOgithub"
+    ".com/kentik/api-schema-public/gen/go/ken"
+    "tik/deviceconf/v202511;deviceconfb\006proto"
+    "3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice_2eproto_deps[1] =
     {
@@ -230,7 +235,7 @@ static ::absl::once_flag descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice_2eproto = {
     false,
     false,
-    1376,
+    1441,
     descriptor_table_protodef_kentik_2fdeviceconf_2fv202511_2fdevice_2eproto,
     "kentik/deviceconf/v202511/device.proto",
     &descriptor_table_kentik_2fdeviceconf_2fv202511_2fdevice_2eproto_once,
@@ -559,6 +564,11 @@ void FetchParameters::clear_fetch_interval() {
   if (_impl_.fetch_interval_ != nullptr) _impl_.fetch_interval_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
+void FetchParameters::clear_fetch_timeout() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.fetch_timeout_ != nullptr) _impl_.fetch_timeout_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
 FetchParameters::FetchParameters(::google::protobuf::Arena* arena)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
     : ::google::protobuf::Message(arena, _class_data_.base()) {
@@ -591,6 +601,9 @@ FetchParameters::FetchParameters(
   _impl_.fetch_interval_ = (cached_has_bits & 0x00000001u) ? ::google::protobuf::Message::CopyConstruct<::google::protobuf::Duration>(
                               arena, *from._impl_.fetch_interval_)
                         : nullptr;
+  _impl_.fetch_timeout_ = (cached_has_bits & 0x00000002u) ? ::google::protobuf::Message::CopyConstruct<::google::protobuf::Duration>(
+                              arena, *from._impl_.fetch_timeout_)
+                        : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:kentik.deviceconf.v202511.FetchParameters)
 }
@@ -601,7 +614,12 @@ inline PROTOBUF_NDEBUG_INLINE FetchParameters::Impl_::Impl_(
 
 inline void FetchParameters::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.fetch_interval_ = {};
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, fetch_interval_),
+           0,
+           offsetof(Impl_, fetch_timeout_) -
+               offsetof(Impl_, fetch_interval_) +
+               sizeof(Impl_::fetch_timeout_));
 }
 FetchParameters::~FetchParameters() {
   // @@protoc_insertion_point(destructor:kentik.deviceconf.v202511.FetchParameters)
@@ -612,6 +630,7 @@ inline void FetchParameters::SharedDtor(MessageLite& self) {
   this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   ABSL_DCHECK(this_.GetArena() == nullptr);
   delete this_._impl_.fetch_interval_;
+  delete this_._impl_.fetch_timeout_;
   this_._impl_.~Impl_();
 }
 
@@ -651,16 +670,16 @@ const ::google::protobuf::internal::ClassData* FetchParameters::GetClassData() c
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 1, 0, 2> FetchParameters::_table_ = {
+const ::_pbi::TcParseTable<1, 2, 2, 0, 2> FetchParameters::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(FetchParameters, _impl_._has_bits_),
     0, // no _extensions_
-    1, 0,  // max_field_number, fast_idx_mask
+    2, 8,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967294,  // skipmap
+    4294967292,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    1,  // num_field_entries
-    1,  // num_aux_entries
+    2,  // num_field_entries
+    2,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
     nullptr,  // post_loop_handler
@@ -669,6 +688,9 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> FetchParameters::_table_ = {
     ::_pbi::TcParser::GetTable<::kentik::deviceconf::v202511::FetchParameters>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
+    // .google.protobuf.Duration fetch_timeout = 2 [json_name = "fetchTimeout"];
+    {::_pbi::TcParser::FastMtS1,
+     {18, 1, 1, PROTOBUF_FIELD_OFFSET(FetchParameters, _impl_.fetch_timeout_)}},
     // .google.protobuf.Duration fetch_interval = 1 [json_name = "fetchInterval"];
     {::_pbi::TcParser::FastMtS1,
      {10, 0, 0, PROTOBUF_FIELD_OFFSET(FetchParameters, _impl_.fetch_interval_)}},
@@ -678,7 +700,11 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> FetchParameters::_table_ = {
     // .google.protobuf.Duration fetch_interval = 1 [json_name = "fetchInterval"];
     {PROTOBUF_FIELD_OFFSET(FetchParameters, _impl_.fetch_interval_), _Internal::kHasBitsOffset + 0, 0,
     (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // .google.protobuf.Duration fetch_timeout = 2 [json_name = "fetchTimeout"];
+    {PROTOBUF_FIELD_OFFSET(FetchParameters, _impl_.fetch_timeout_), _Internal::kHasBitsOffset + 1, 1,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
   }}, {{
+    {::_pbi::TcParser::GetTable<::google::protobuf::Duration>()},
     {::_pbi::TcParser::GetTable<::google::protobuf::Duration>()},
   }}, {{
   }},
@@ -692,9 +718,15 @@ PROTOBUF_NOINLINE void FetchParameters::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    ABSL_DCHECK(_impl_.fetch_interval_ != nullptr);
-    _impl_.fetch_interval_->Clear();
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      ABSL_DCHECK(_impl_.fetch_interval_ != nullptr);
+      _impl_.fetch_interval_->Clear();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      ABSL_DCHECK(_impl_.fetch_timeout_ != nullptr);
+      _impl_.fetch_timeout_->Clear();
+    }
   }
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
@@ -723,6 +755,13 @@ PROTOBUF_NOINLINE void FetchParameters::Clear() {
                 stream);
           }
 
+          // .google.protobuf.Duration fetch_timeout = 2 [json_name = "fetchTimeout"];
+          if (cached_has_bits & 0x00000002u) {
+            target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                2, *this_._impl_.fetch_timeout_, this_._impl_.fetch_timeout_->GetCachedSize(), target,
+                stream);
+          }
+
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -746,12 +785,18 @@ PROTOBUF_NOINLINE void FetchParameters::Clear() {
           // Prevent compiler warnings about cached_has_bits being unused
           (void)cached_has_bits;
 
-           {
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+          cached_has_bits = this_._impl_._has_bits_[0];
+          if (cached_has_bits & 0x00000003u) {
             // .google.protobuf.Duration fetch_interval = 1 [json_name = "fetchInterval"];
-            cached_has_bits = this_._impl_._has_bits_[0];
             if (cached_has_bits & 0x00000001u) {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.fetch_interval_);
+            }
+            // .google.protobuf.Duration fetch_timeout = 2 [json_name = "fetchTimeout"];
+            if (cached_has_bits & 0x00000002u) {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.fetch_timeout_);
             }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
@@ -768,13 +813,24 @@ void FetchParameters::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
   (void) cached_has_bits;
 
   cached_has_bits = from._impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    ABSL_DCHECK(from._impl_.fetch_interval_ != nullptr);
-    if (_this->_impl_.fetch_interval_ == nullptr) {
-      _this->_impl_.fetch_interval_ =
-          ::google::protobuf::Message::CopyConstruct<::google::protobuf::Duration>(arena, *from._impl_.fetch_interval_);
-    } else {
-      _this->_impl_.fetch_interval_->MergeFrom(*from._impl_.fetch_interval_);
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      ABSL_DCHECK(from._impl_.fetch_interval_ != nullptr);
+      if (_this->_impl_.fetch_interval_ == nullptr) {
+        _this->_impl_.fetch_interval_ =
+            ::google::protobuf::Message::CopyConstruct<::google::protobuf::Duration>(arena, *from._impl_.fetch_interval_);
+      } else {
+        _this->_impl_.fetch_interval_->MergeFrom(*from._impl_.fetch_interval_);
+      }
+    }
+    if (cached_has_bits & 0x00000002u) {
+      ABSL_DCHECK(from._impl_.fetch_timeout_ != nullptr);
+      if (_this->_impl_.fetch_timeout_ == nullptr) {
+        _this->_impl_.fetch_timeout_ =
+            ::google::protobuf::Message::CopyConstruct<::google::protobuf::Duration>(arena, *from._impl_.fetch_timeout_);
+      } else {
+        _this->_impl_.fetch_timeout_->MergeFrom(*from._impl_.fetch_timeout_);
+      }
     }
   }
   _this->_impl_._has_bits_[0] |= cached_has_bits;
@@ -793,7 +849,12 @@ void FetchParameters::InternalSwap(FetchParameters* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  swap(_impl_.fetch_interval_, other->_impl_.fetch_interval_);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(FetchParameters, _impl_.fetch_timeout_)
+      + sizeof(FetchParameters::_impl_.fetch_timeout_)
+      - PROTOBUF_FIELD_OFFSET(FetchParameters, _impl_.fetch_interval_)>(
+          reinterpret_cast<char*>(&_impl_.fetch_interval_),
+          reinterpret_cast<char*>(&other->_impl_.fetch_interval_));
 }
 
 ::google::protobuf::Metadata FetchParameters::GetMetadata() const {

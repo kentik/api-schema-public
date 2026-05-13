@@ -67,11 +67,20 @@ struct  Kentik__Deviceconf__V202511__DeviceSSHCreds
 struct  Kentik__Deviceconf__V202511__FetchParameters
 {
   ProtobufCMessage base;
+  /*
+   * How often the device should be fetched.
+   */
   Google__Protobuf__Duration *fetch_interval;
+  /*
+   * Maximum time allowed for a single fetch attempt.
+   * If unset or set to 0s, the server default timeout is used.
+   * This value should be less than or equal to fetch_interval.
+   */
+  Google__Protobuf__Duration *fetch_timeout;
 };
 #define KENTIK__DEVICECONF__V202511__FETCH_PARAMETERS__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__deviceconf__v202511__fetch_parameters__descriptor) \
-    , NULL }
+    , NULL, NULL }
 
 
 struct  Kentik__Deviceconf__V202511__Device

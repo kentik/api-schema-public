@@ -34,6 +34,7 @@
 #include "google/protobuf/map_field_inl.h"
 #include "google/protobuf/unknown_field_set.h"
 #include "google/protobuf/timestamp.pb.h"
+#include "google/protobuf/duration.pb.h"
 #include "kentik/core/v202303/annotations.pb.h"
 #include "kentik/deviceconf/v202511/command.pb.h"
 #include "kentik/deviceconf/v202511/config.pb.h"
@@ -2905,6 +2906,7 @@ class ExecuteCommandRequest final : public ::google::protobuf::Message
   enum : int {
     kDeviceCommandFieldNumber = 1,
     kSignatureFieldNumber = 2,
+    kTimeoutFieldNumber = 3,
   };
   // .kentik.deviceconf.v202511.DeviceCommand device_command = 1 [json_name = "deviceCommand"];
   bool has_device_command() const;
@@ -2936,12 +2938,27 @@ class ExecuteCommandRequest final : public ::google::protobuf::Message
   ::kentik::deviceconf::v202511::MessageSignature* _internal_mutable_signature();
 
   public:
+  // .google.protobuf.Duration timeout = 3 [json_name = "timeout"];
+  bool has_timeout() const;
+  void clear_timeout() ;
+  const ::google::protobuf::Duration& timeout() const;
+  PROTOBUF_NODISCARD ::google::protobuf::Duration* release_timeout();
+  ::google::protobuf::Duration* mutable_timeout();
+  void set_allocated_timeout(::google::protobuf::Duration* value);
+  void unsafe_arena_set_allocated_timeout(::google::protobuf::Duration* value);
+  ::google::protobuf::Duration* unsafe_arena_release_timeout();
+
+  private:
+  const ::google::protobuf::Duration& _internal_timeout() const;
+  ::google::protobuf::Duration* _internal_mutable_timeout();
+
+  public:
   // @@protoc_insertion_point(class_scope:kentik.deviceconf.v202511.ExecuteCommandRequest)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      1, 2, 2,
+      2, 3, 3,
       0, 2>
       _table_;
 
@@ -2963,6 +2980,7 @@ class ExecuteCommandRequest final : public ::google::protobuf::Message
     ::google::protobuf::internal::CachedSize _cached_size_;
     ::kentik::deviceconf::v202511::DeviceCommand* device_command_;
     ::kentik::deviceconf::v202511::MessageSignature* signature_;
+    ::google::protobuf::Duration* timeout_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -5221,6 +5239,97 @@ inline void ExecuteCommandRequest::set_allocated_signature(::kentik::deviceconf:
 
   _impl_.signature_ = reinterpret_cast<::kentik::deviceconf::v202511::MessageSignature*>(value);
   // @@protoc_insertion_point(field_set_allocated:kentik.deviceconf.v202511.ExecuteCommandRequest.signature)
+}
+
+// .google.protobuf.Duration timeout = 3 [json_name = "timeout"];
+inline bool ExecuteCommandRequest::has_timeout() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.timeout_ != nullptr);
+  return value;
+}
+inline const ::google::protobuf::Duration& ExecuteCommandRequest::_internal_timeout() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::google::protobuf::Duration* p = _impl_.timeout_;
+  return p != nullptr ? *p : reinterpret_cast<const ::google::protobuf::Duration&>(::google::protobuf::_Duration_default_instance_);
+}
+inline const ::google::protobuf::Duration& ExecuteCommandRequest::timeout() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.deviceconf.v202511.ExecuteCommandRequest.timeout)
+  return _internal_timeout();
+}
+inline void ExecuteCommandRequest::unsafe_arena_set_allocated_timeout(::google::protobuf::Duration* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.timeout_);
+  }
+  _impl_.timeout_ = reinterpret_cast<::google::protobuf::Duration*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000004u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000004u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.deviceconf.v202511.ExecuteCommandRequest.timeout)
+}
+inline ::google::protobuf::Duration* ExecuteCommandRequest::release_timeout() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000004u;
+  ::google::protobuf::Duration* released = _impl_.timeout_;
+  _impl_.timeout_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::google::protobuf::Duration* ExecuteCommandRequest::unsafe_arena_release_timeout() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.deviceconf.v202511.ExecuteCommandRequest.timeout)
+
+  _impl_._has_bits_[0] &= ~0x00000004u;
+  ::google::protobuf::Duration* temp = _impl_.timeout_;
+  _impl_.timeout_ = nullptr;
+  return temp;
+}
+inline ::google::protobuf::Duration* ExecuteCommandRequest::_internal_mutable_timeout() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.timeout_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::google::protobuf::Duration>(GetArena());
+    _impl_.timeout_ = reinterpret_cast<::google::protobuf::Duration*>(p);
+  }
+  return _impl_.timeout_;
+}
+inline ::google::protobuf::Duration* ExecuteCommandRequest::mutable_timeout() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  ::google::protobuf::Duration* _msg = _internal_mutable_timeout();
+  // @@protoc_insertion_point(field_mutable:kentik.deviceconf.v202511.ExecuteCommandRequest.timeout)
+  return _msg;
+}
+inline void ExecuteCommandRequest::set_allocated_timeout(::google::protobuf::Duration* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.timeout_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::google::protobuf::MessageLite*>(value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000004u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000004u;
+  }
+
+  _impl_.timeout_ = reinterpret_cast<::google::protobuf::Duration*>(value);
+  // @@protoc_insertion_point(field_set_allocated:kentik.deviceconf.v202511.ExecuteCommandRequest.timeout)
 }
 
 // -------------------------------------------------------------------

@@ -15,6 +15,7 @@ PROTOBUF_C__BEGIN_DECLS
 #endif
 
 #include "google/protobuf/timestamp.pb-c.h"
+#include "google/protobuf/duration.pb-c.h"
 #include "kentik/core/v202303/annotations.pb-c.h"
 #include "kentik/deviceconf/v202511/command.pb-c.h"
 #include "kentik/deviceconf/v202511/config.pb-c.h"
@@ -240,10 +241,11 @@ struct  Kentik__Deviceconf__V202511__ExecuteCommandRequest
   ProtobufCMessage base;
   Kentik__Deviceconf__V202511__DeviceCommand *device_command;
   Kentik__Deviceconf__V202511__MessageSignature *signature;
+  Google__Protobuf__Duration *timeout;
 };
 #define KENTIK__DEVICECONF__V202511__EXECUTE_COMMAND_REQUEST__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__deviceconf__v202511__execute_command_request__descriptor) \
-    , NULL, NULL }
+    , NULL, NULL, NULL }
 
 
 struct  Kentik__Deviceconf__V202511__ExecuteCommandResponse

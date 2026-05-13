@@ -183,8 +183,13 @@ func (x *DeviceSSHCreds) GetPassphrase() string {
 }
 
 type FetchParameters struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	FetchInterval *durationpb.Duration   `protobuf:"bytes,1,opt,name=fetch_interval,json=fetchInterval,proto3" json:"fetch_interval,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// How often the device should be fetched.
+	FetchInterval *durationpb.Duration `protobuf:"bytes,1,opt,name=fetch_interval,json=fetchInterval,proto3" json:"fetch_interval,omitempty"`
+	// Maximum time allowed for a single fetch attempt.
+	// If unset or set to 0s, the server default timeout is used.
+	// This value should be less than or equal to fetch_interval.
+	FetchTimeout  *durationpb.Duration `protobuf:"bytes,2,opt,name=fetch_timeout,json=fetchTimeout,proto3" json:"fetch_timeout,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -222,6 +227,13 @@ func (*FetchParameters) Descriptor() ([]byte, []int) {
 func (x *FetchParameters) GetFetchInterval() *durationpb.Duration {
 	if x != nil {
 		return x.FetchInterval
+	}
+	return nil
+}
+
+func (x *FetchParameters) GetFetchTimeout() *durationpb.Duration {
+	if x != nil {
+		return x.FetchTimeout
 	}
 	return nil
 }
@@ -321,9 +333,10 @@ const file_kentik_deviceconf_v202511_device_proto_rawDesc = "" +
 	"privateKey\x12\x1e\n" +
 	"\n" +
 	"passphrase\x18\x03 \x01(\tR\n" +
-	"passphrase\"S\n" +
+	"passphrase\"\x93\x01\n" +
 	"\x0fFetchParameters\x12@\n" +
-	"\x0efetch_interval\x18\x01 \x01(\v2\x19.google.protobuf.DurationR\rfetchInterval\"\xa6\x02\n" +
+	"\x0efetch_interval\x18\x01 \x01(\v2\x19.google.protobuf.DurationR\rfetchInterval\x12>\n" +
+	"\rfetch_timeout\x18\x02 \x01(\v2\x19.google.protobuf.DurationR\ffetchTimeout\"\xa6\x02\n" +
 	"\x06Device\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1a\n" +
@@ -377,14 +390,15 @@ var file_kentik_deviceconf_v202511_device_proto_goTypes = []any{
 }
 var file_kentik_deviceconf_v202511_device_proto_depIdxs = []int32{
 	4, // 0: kentik.deviceconf.v202511.FetchParameters.fetch_interval:type_name -> google.protobuf.Duration
-	0, // 1: kentik.deviceconf.v202511.Device.platform:type_name -> kentik.deviceconf.v202511.DevicePlatform
-	1, // 2: kentik.deviceconf.v202511.Device.ssh_creds:type_name -> kentik.deviceconf.v202511.DeviceSSHCreds
-	2, // 3: kentik.deviceconf.v202511.Device.fetch_params:type_name -> kentik.deviceconf.v202511.FetchParameters
-	4, // [4:4] is the sub-list for method output_type
-	4, // [4:4] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	4, // 1: kentik.deviceconf.v202511.FetchParameters.fetch_timeout:type_name -> google.protobuf.Duration
+	0, // 2: kentik.deviceconf.v202511.Device.platform:type_name -> kentik.deviceconf.v202511.DevicePlatform
+	1, // 3: kentik.deviceconf.v202511.Device.ssh_creds:type_name -> kentik.deviceconf.v202511.DeviceSSHCreds
+	2, // 4: kentik.deviceconf.v202511.Device.fetch_params:type_name -> kentik.deviceconf.v202511.FetchParameters
+	5, // [5:5] is the sub-list for method output_type
+	5, // [5:5] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_kentik_deviceconf_v202511_device_proto_init() }

@@ -206,7 +206,7 @@ const ProtobufCMessageDescriptor kentik__deviceconf__v202511__device_sshcreds__d
   (ProtobufCMessageInit) kentik__deviceconf__v202511__device_sshcreds__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__deviceconf__v202511__fetch_parameters__field_descriptors[1] =
+static const ProtobufCFieldDescriptor kentik__deviceconf__v202511__fetch_parameters__field_descriptors[2] =
 {
   {
     "fetch_interval",
@@ -220,14 +220,27 @@ static const ProtobufCFieldDescriptor kentik__deviceconf__v202511__fetch_paramet
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "fetch_timeout",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Deviceconf__V202511__FetchParameters, fetch_timeout),
+    &google__protobuf__duration__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__deviceconf__v202511__fetch_parameters__field_indices_by_name[] = {
   0,   /* field[0] = fetch_interval */
+  1,   /* field[1] = fetch_timeout */
 };
 static const ProtobufCIntRange kentik__deviceconf__v202511__fetch_parameters__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 1 }
+  { 0, 2 }
 };
 const ProtobufCMessageDescriptor kentik__deviceconf__v202511__fetch_parameters__descriptor =
 {
@@ -237,7 +250,7 @@ const ProtobufCMessageDescriptor kentik__deviceconf__v202511__fetch_parameters__
   "Kentik__Deviceconf__V202511__FetchParameters",
   "kentik.deviceconf.v202511",
   sizeof(Kentik__Deviceconf__V202511__FetchParameters),
-  1,
+  2,
   kentik__deviceconf__v202511__fetch_parameters__field_descriptors,
   kentik__deviceconf__v202511__fetch_parameters__field_indices_by_name,
   1,  kentik__deviceconf__v202511__fetch_parameters__number_ranges,
