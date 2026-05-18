@@ -823,6 +823,96 @@ void   kentik__device__v202504beta2__get_device_response__free_unpacked
   assert(message->base.descriptor == &kentik__device__v202504beta2__get_device_response__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   kentik__device__v202504beta2__get_device_by_name_request__init
+                     (Kentik__Device__V202504beta2__GetDeviceByNameRequest         *message)
+{
+  static const Kentik__Device__V202504beta2__GetDeviceByNameRequest init_value = KENTIK__DEVICE__V202504BETA2__GET_DEVICE_BY_NAME_REQUEST__INIT;
+  *message = init_value;
+}
+size_t kentik__device__v202504beta2__get_device_by_name_request__get_packed_size
+                     (const Kentik__Device__V202504beta2__GetDeviceByNameRequest *message)
+{
+  assert(message->base.descriptor == &kentik__device__v202504beta2__get_device_by_name_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__device__v202504beta2__get_device_by_name_request__pack
+                     (const Kentik__Device__V202504beta2__GetDeviceByNameRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__device__v202504beta2__get_device_by_name_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__device__v202504beta2__get_device_by_name_request__pack_to_buffer
+                     (const Kentik__Device__V202504beta2__GetDeviceByNameRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__device__v202504beta2__get_device_by_name_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Device__V202504beta2__GetDeviceByNameRequest *
+       kentik__device__v202504beta2__get_device_by_name_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Device__V202504beta2__GetDeviceByNameRequest *)
+     protobuf_c_message_unpack (&kentik__device__v202504beta2__get_device_by_name_request__descriptor,
+                                allocator, len, data);
+}
+void   kentik__device__v202504beta2__get_device_by_name_request__free_unpacked
+                     (Kentik__Device__V202504beta2__GetDeviceByNameRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__device__v202504beta2__get_device_by_name_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__device__v202504beta2__get_device_by_name_response__init
+                     (Kentik__Device__V202504beta2__GetDeviceByNameResponse         *message)
+{
+  static const Kentik__Device__V202504beta2__GetDeviceByNameResponse init_value = KENTIK__DEVICE__V202504BETA2__GET_DEVICE_BY_NAME_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t kentik__device__v202504beta2__get_device_by_name_response__get_packed_size
+                     (const Kentik__Device__V202504beta2__GetDeviceByNameResponse *message)
+{
+  assert(message->base.descriptor == &kentik__device__v202504beta2__get_device_by_name_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__device__v202504beta2__get_device_by_name_response__pack
+                     (const Kentik__Device__V202504beta2__GetDeviceByNameResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__device__v202504beta2__get_device_by_name_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__device__v202504beta2__get_device_by_name_response__pack_to_buffer
+                     (const Kentik__Device__V202504beta2__GetDeviceByNameResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__device__v202504beta2__get_device_by_name_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Device__V202504beta2__GetDeviceByNameResponse *
+       kentik__device__v202504beta2__get_device_by_name_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Device__V202504beta2__GetDeviceByNameResponse *)
+     protobuf_c_message_unpack (&kentik__device__v202504beta2__get_device_by_name_response__descriptor,
+                                allocator, len, data);
+}
+void   kentik__device__v202504beta2__get_device_by_name_response__free_unpacked
+                     (Kentik__Device__V202504beta2__GetDeviceByNameResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__device__v202504beta2__get_device_by_name_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 void   kentik__device__v202504beta2__create_device_request__init
                      (Kentik__Device__V202504beta2__CreateDeviceRequest         *message)
 {
@@ -4099,6 +4189,95 @@ const ProtobufCMessageDescriptor kentik__device__v202504beta2__get_device_respon
   (ProtobufCMessageInit) kentik__device__v202504beta2__get_device_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
+static const ProtobufCFieldDescriptor kentik__device__v202504beta2__get_device_by_name_request__field_descriptors[2] =
+{
+  {
+    "device_name",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Device__V202504beta2__GetDeviceByNameRequest, device_name),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "query",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Device__V202504beta2__GetDeviceByNameRequest, query),
+    &kentik__device__v202504beta2__device_query__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__device__v202504beta2__get_device_by_name_request__field_indices_by_name[] = {
+  0,   /* field[0] = device_name */
+  1,   /* field[1] = query */
+};
+static const ProtobufCIntRange kentik__device__v202504beta2__get_device_by_name_request__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor kentik__device__v202504beta2__get_device_by_name_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.device.v202504beta2.GetDeviceByNameRequest",
+  "GetDeviceByNameRequest",
+  "Kentik__Device__V202504beta2__GetDeviceByNameRequest",
+  "kentik.device.v202504beta2",
+  sizeof(Kentik__Device__V202504beta2__GetDeviceByNameRequest),
+  2,
+  kentik__device__v202504beta2__get_device_by_name_request__field_descriptors,
+  kentik__device__v202504beta2__get_device_by_name_request__field_indices_by_name,
+  1,  kentik__device__v202504beta2__get_device_by_name_request__number_ranges,
+  (ProtobufCMessageInit) kentik__device__v202504beta2__get_device_by_name_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__device__v202504beta2__get_device_by_name_response__field_descriptors[1] =
+{
+  {
+    "device",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Device__V202504beta2__GetDeviceByNameResponse, device),
+    &kentik__device__v202504beta2__device_detailed__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__device__v202504beta2__get_device_by_name_response__field_indices_by_name[] = {
+  0,   /* field[0] = device */
+};
+static const ProtobufCIntRange kentik__device__v202504beta2__get_device_by_name_response__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor kentik__device__v202504beta2__get_device_by_name_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.device.v202504beta2.GetDeviceByNameResponse",
+  "GetDeviceByNameResponse",
+  "Kentik__Device__V202504beta2__GetDeviceByNameResponse",
+  "kentik.device.v202504beta2",
+  sizeof(Kentik__Device__V202504beta2__GetDeviceByNameResponse),
+  1,
+  kentik__device__v202504beta2__get_device_by_name_response__field_descriptors,
+  kentik__device__v202504beta2__get_device_by_name_response__field_indices_by_name,
+  1,  kentik__device__v202504beta2__get_device_by_name_response__number_ranges,
+  (ProtobufCMessageInit) kentik__device__v202504beta2__get_device_by_name_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
 static const ProtobufCFieldDescriptor kentik__device__v202504beta2__create_device_request__field_descriptors[1] =
 {
   {
@@ -4682,11 +4861,12 @@ const ProtobufCEnumDescriptor kentik__device__v202504beta2__device_view__descrip
   kentik__device__v202504beta2__device_view__value_ranges,
   NULL,NULL,NULL,NULL   /* reserved[1234] */
 };
-static const ProtobufCMethodDescriptor kentik__device__v202504beta2__device_service__method_descriptors[9] =
+static const ProtobufCMethodDescriptor kentik__device__v202504beta2__device_service__method_descriptors[10] =
 {
   { "ListDevices", &kentik__device__v202504beta2__list_devices_request__descriptor, &kentik__device__v202504beta2__list_devices_response__descriptor },
   { "GetDevice", &kentik__device__v202504beta2__get_device_request__descriptor, &kentik__device__v202504beta2__get_device_response__descriptor },
   { "CreateDevice", &kentik__device__v202504beta2__create_device_request__descriptor, &kentik__device__v202504beta2__create_device_response__descriptor },
+  { "GetDeviceByName", &kentik__device__v202504beta2__get_device_by_name_request__descriptor, &kentik__device__v202504beta2__get_device_by_name_response__descriptor },
   { "CreateDevices", &kentik__device__v202504beta2__create_devices_request__descriptor, &kentik__device__v202504beta2__create_devices_response__descriptor },
   { "UpdateDevice", &kentik__device__v202504beta2__update_device_request__descriptor, &kentik__device__v202504beta2__update_device_response__descriptor },
   { "UpdateDevices", &kentik__device__v202504beta2__update_devices_request__descriptor, &kentik__device__v202504beta2__update_devices_response__descriptor },
@@ -4696,14 +4876,15 @@ static const ProtobufCMethodDescriptor kentik__device__v202504beta2__device_serv
 };
 const unsigned kentik__device__v202504beta2__device_service__method_indices_by_name[] = {
   2,        /* CreateDevice */
-  3,        /* CreateDevices */
-  7,        /* DeleteDevice */
-  8,        /* DeleteDevices */
+  4,        /* CreateDevices */
+  8,        /* DeleteDevice */
+  9,        /* DeleteDevices */
   1,        /* GetDevice */
+  3,        /* GetDeviceByName */
   0,        /* ListDevices */
-  4,        /* UpdateDevice */
-  6,        /* UpdateDeviceLabels */
-  5         /* UpdateDevices */
+  5,        /* UpdateDevice */
+  7,        /* UpdateDeviceLabels */
+  6         /* UpdateDevices */
 };
 const ProtobufCServiceDescriptor kentik__device__v202504beta2__device_service__descriptor =
 {
@@ -4712,7 +4893,7 @@ const ProtobufCServiceDescriptor kentik__device__v202504beta2__device_service__d
   "DeviceService",
   "Kentik__Device__V202504beta2__DeviceService",
   "kentik.device.v202504beta2",
-  9,
+  10,
   kentik__device__v202504beta2__device_service__method_descriptors,
   kentik__device__v202504beta2__device_service__method_indices_by_name
 };
@@ -4740,13 +4921,21 @@ void kentik__device__v202504beta2__device_service__create_device(ProtobufCServic
   assert(service->descriptor == &kentik__device__v202504beta2__device_service__descriptor);
   service->invoke(service, 2, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
+void kentik__device__v202504beta2__device_service__get_device_by_name(ProtobufCService *service,
+                                                                      const Kentik__Device__V202504beta2__GetDeviceByNameRequest *input,
+                                                                      Kentik__Device__V202504beta2__GetDeviceByNameResponse_Closure closure,
+                                                                      void *closure_data)
+{
+  assert(service->descriptor == &kentik__device__v202504beta2__device_service__descriptor);
+  service->invoke(service, 3, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
 void kentik__device__v202504beta2__device_service__create_devices(ProtobufCService *service,
                                                                   const Kentik__Device__V202504beta2__CreateDevicesRequest *input,
                                                                   Kentik__Device__V202504beta2__CreateDevicesResponse_Closure closure,
                                                                   void *closure_data)
 {
   assert(service->descriptor == &kentik__device__v202504beta2__device_service__descriptor);
-  service->invoke(service, 3, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+  service->invoke(service, 4, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void kentik__device__v202504beta2__device_service__update_device(ProtobufCService *service,
                                                                  const Kentik__Device__V202504beta2__UpdateDeviceRequest *input,
@@ -4754,7 +4943,7 @@ void kentik__device__v202504beta2__device_service__update_device(ProtobufCServic
                                                                  void *closure_data)
 {
   assert(service->descriptor == &kentik__device__v202504beta2__device_service__descriptor);
-  service->invoke(service, 4, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+  service->invoke(service, 5, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void kentik__device__v202504beta2__device_service__update_devices(ProtobufCService *service,
                                                                   const Kentik__Device__V202504beta2__UpdateDevicesRequest *input,
@@ -4762,7 +4951,7 @@ void kentik__device__v202504beta2__device_service__update_devices(ProtobufCServi
                                                                   void *closure_data)
 {
   assert(service->descriptor == &kentik__device__v202504beta2__device_service__descriptor);
-  service->invoke(service, 5, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+  service->invoke(service, 6, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void kentik__device__v202504beta2__device_service__update_device_labels(ProtobufCService *service,
                                                                         const Kentik__Device__V202504beta2__UpdateDeviceLabelsRequest *input,
@@ -4770,7 +4959,7 @@ void kentik__device__v202504beta2__device_service__update_device_labels(Protobuf
                                                                         void *closure_data)
 {
   assert(service->descriptor == &kentik__device__v202504beta2__device_service__descriptor);
-  service->invoke(service, 6, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+  service->invoke(service, 7, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void kentik__device__v202504beta2__device_service__delete_device(ProtobufCService *service,
                                                                  const Kentik__Device__V202504beta2__DeleteDeviceRequest *input,
@@ -4778,7 +4967,7 @@ void kentik__device__v202504beta2__device_service__delete_device(ProtobufCServic
                                                                  void *closure_data)
 {
   assert(service->descriptor == &kentik__device__v202504beta2__device_service__descriptor);
-  service->invoke(service, 7, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+  service->invoke(service, 8, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void kentik__device__v202504beta2__device_service__delete_devices(ProtobufCService *service,
                                                                   const Kentik__Device__V202504beta2__DeleteDevicesRequest *input,
@@ -4786,7 +4975,7 @@ void kentik__device__v202504beta2__device_service__delete_devices(ProtobufCServi
                                                                   void *closure_data)
 {
   assert(service->descriptor == &kentik__device__v202504beta2__device_service__descriptor);
-  service->invoke(service, 8, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+  service->invoke(service, 9, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void kentik__device__v202504beta2__device_service__init (Kentik__Device__V202504beta2__DeviceService_Service *service,
                                                          Kentik__Device__V202504beta2__DeviceService_ServiceDestroy destroy)

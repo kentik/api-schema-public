@@ -41,6 +41,8 @@ typedef struct Kentik__Device__V202504beta2__ListDevicesRequest Kentik__Device__
 typedef struct Kentik__Device__V202504beta2__ListDevicesResponse Kentik__Device__V202504beta2__ListDevicesResponse;
 typedef struct Kentik__Device__V202504beta2__GetDeviceRequest Kentik__Device__V202504beta2__GetDeviceRequest;
 typedef struct Kentik__Device__V202504beta2__GetDeviceResponse Kentik__Device__V202504beta2__GetDeviceResponse;
+typedef struct Kentik__Device__V202504beta2__GetDeviceByNameRequest Kentik__Device__V202504beta2__GetDeviceByNameRequest;
+typedef struct Kentik__Device__V202504beta2__GetDeviceByNameResponse Kentik__Device__V202504beta2__GetDeviceByNameResponse;
 typedef struct Kentik__Device__V202504beta2__CreateDeviceRequest Kentik__Device__V202504beta2__CreateDeviceRequest;
 typedef struct Kentik__Device__V202504beta2__CreateDeviceResponse Kentik__Device__V202504beta2__CreateDeviceResponse;
 typedef struct Kentik__Device__V202504beta2__CreateDevicesRequest Kentik__Device__V202504beta2__CreateDevicesRequest;
@@ -510,6 +512,33 @@ struct  Kentik__Device__V202504beta2__GetDeviceResponse
 };
 #define KENTIK__DEVICE__V202504BETA2__GET_DEVICE_RESPONSE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__device__v202504beta2__get_device_response__descriptor) \
+    , NULL }
+
+
+/*
+ * {{.Name}}
+ */
+struct  Kentik__Device__V202504beta2__GetDeviceByNameRequest
+{
+  ProtobufCMessage base;
+  char *device_name;
+  Kentik__Device__V202504beta2__DeviceQuery *query;
+};
+#define KENTIK__DEVICE__V202504BETA2__GET_DEVICE_BY_NAME_REQUEST__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__device__v202504beta2__get_device_by_name_request__descriptor) \
+    , (char *)protobuf_c_empty_string, NULL }
+
+
+/*
+ * {{.Name}}
+ */
+struct  Kentik__Device__V202504beta2__GetDeviceByNameResponse
+{
+  ProtobufCMessage base;
+  Kentik__Device__V202504beta2__DeviceDetailed *device;
+};
+#define KENTIK__DEVICE__V202504BETA2__GET_DEVICE_BY_NAME_RESPONSE__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__device__v202504beta2__get_device_by_name_response__descriptor) \
     , NULL }
 
 
@@ -1051,6 +1080,44 @@ Kentik__Device__V202504beta2__GetDeviceResponse *
 void   kentik__device__v202504beta2__get_device_response__free_unpacked
                      (Kentik__Device__V202504beta2__GetDeviceResponse *message,
                       ProtobufCAllocator *allocator);
+/* Kentik__Device__V202504beta2__GetDeviceByNameRequest methods */
+void   kentik__device__v202504beta2__get_device_by_name_request__init
+                     (Kentik__Device__V202504beta2__GetDeviceByNameRequest         *message);
+size_t kentik__device__v202504beta2__get_device_by_name_request__get_packed_size
+                     (const Kentik__Device__V202504beta2__GetDeviceByNameRequest   *message);
+size_t kentik__device__v202504beta2__get_device_by_name_request__pack
+                     (const Kentik__Device__V202504beta2__GetDeviceByNameRequest   *message,
+                      uint8_t             *out);
+size_t kentik__device__v202504beta2__get_device_by_name_request__pack_to_buffer
+                     (const Kentik__Device__V202504beta2__GetDeviceByNameRequest   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Device__V202504beta2__GetDeviceByNameRequest *
+       kentik__device__v202504beta2__get_device_by_name_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__device__v202504beta2__get_device_by_name_request__free_unpacked
+                     (Kentik__Device__V202504beta2__GetDeviceByNameRequest *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Device__V202504beta2__GetDeviceByNameResponse methods */
+void   kentik__device__v202504beta2__get_device_by_name_response__init
+                     (Kentik__Device__V202504beta2__GetDeviceByNameResponse         *message);
+size_t kentik__device__v202504beta2__get_device_by_name_response__get_packed_size
+                     (const Kentik__Device__V202504beta2__GetDeviceByNameResponse   *message);
+size_t kentik__device__v202504beta2__get_device_by_name_response__pack
+                     (const Kentik__Device__V202504beta2__GetDeviceByNameResponse   *message,
+                      uint8_t             *out);
+size_t kentik__device__v202504beta2__get_device_by_name_response__pack_to_buffer
+                     (const Kentik__Device__V202504beta2__GetDeviceByNameResponse   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Device__V202504beta2__GetDeviceByNameResponse *
+       kentik__device__v202504beta2__get_device_by_name_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__device__v202504beta2__get_device_by_name_response__free_unpacked
+                     (Kentik__Device__V202504beta2__GetDeviceByNameResponse *message,
+                      ProtobufCAllocator *allocator);
 /* Kentik__Device__V202504beta2__CreateDeviceRequest methods */
 void   kentik__device__v202504beta2__create_device_request__init
                      (Kentik__Device__V202504beta2__CreateDeviceRequest         *message);
@@ -1376,6 +1443,12 @@ typedef void (*Kentik__Device__V202504beta2__GetDeviceRequest_Closure)
 typedef void (*Kentik__Device__V202504beta2__GetDeviceResponse_Closure)
                  (const Kentik__Device__V202504beta2__GetDeviceResponse *message,
                   void *closure_data);
+typedef void (*Kentik__Device__V202504beta2__GetDeviceByNameRequest_Closure)
+                 (const Kentik__Device__V202504beta2__GetDeviceByNameRequest *message,
+                  void *closure_data);
+typedef void (*Kentik__Device__V202504beta2__GetDeviceByNameResponse_Closure)
+                 (const Kentik__Device__V202504beta2__GetDeviceByNameResponse *message,
+                  void *closure_data);
 typedef void (*Kentik__Device__V202504beta2__CreateDeviceRequest_Closure)
                  (const Kentik__Device__V202504beta2__CreateDeviceRequest *message,
                   void *closure_data);
@@ -1437,6 +1510,10 @@ struct Kentik__Device__V202504beta2__DeviceService_Service
                         const Kentik__Device__V202504beta2__CreateDeviceRequest *input,
                         Kentik__Device__V202504beta2__CreateDeviceResponse_Closure closure,
                         void *closure_data);
+  void (*get_device_by_name)(Kentik__Device__V202504beta2__DeviceService_Service *service,
+                             const Kentik__Device__V202504beta2__GetDeviceByNameRequest *input,
+                             Kentik__Device__V202504beta2__GetDeviceByNameResponse_Closure closure,
+                             void *closure_data);
   void (*create_devices)(Kentik__Device__V202504beta2__DeviceService_Service *service,
                          const Kentik__Device__V202504beta2__CreateDevicesRequest *input,
                          Kentik__Device__V202504beta2__CreateDevicesResponse_Closure closure,
@@ -1472,6 +1549,7 @@ void kentik__device__v202504beta2__device_service__init (Kentik__Device__V202504
       function_prefix__ ## list_devices,\
       function_prefix__ ## get_device,\
       function_prefix__ ## create_device,\
+      function_prefix__ ## get_device_by_name,\
       function_prefix__ ## create_devices,\
       function_prefix__ ## update_device,\
       function_prefix__ ## update_devices,\
@@ -1490,6 +1568,10 @@ void kentik__device__v202504beta2__device_service__create_device(ProtobufCServic
                                                                  const Kentik__Device__V202504beta2__CreateDeviceRequest *input,
                                                                  Kentik__Device__V202504beta2__CreateDeviceResponse_Closure closure,
                                                                  void *closure_data);
+void kentik__device__v202504beta2__device_service__get_device_by_name(ProtobufCService *service,
+                                                                      const Kentik__Device__V202504beta2__GetDeviceByNameRequest *input,
+                                                                      Kentik__Device__V202504beta2__GetDeviceByNameResponse_Closure closure,
+                                                                      void *closure_data);
 void kentik__device__v202504beta2__device_service__create_devices(ProtobufCService *service,
                                                                   const Kentik__Device__V202504beta2__CreateDevicesRequest *input,
                                                                   Kentik__Device__V202504beta2__CreateDevicesResponse_Closure closure,
@@ -1537,6 +1619,8 @@ extern const ProtobufCMessageDescriptor kentik__device__v202504beta2__list_devic
 extern const ProtobufCMessageDescriptor kentik__device__v202504beta2__list_devices_response__descriptor;
 extern const ProtobufCMessageDescriptor kentik__device__v202504beta2__get_device_request__descriptor;
 extern const ProtobufCMessageDescriptor kentik__device__v202504beta2__get_device_response__descriptor;
+extern const ProtobufCMessageDescriptor kentik__device__v202504beta2__get_device_by_name_request__descriptor;
+extern const ProtobufCMessageDescriptor kentik__device__v202504beta2__get_device_by_name_response__descriptor;
 extern const ProtobufCMessageDescriptor kentik__device__v202504beta2__create_device_request__descriptor;
 extern const ProtobufCMessageDescriptor kentik__device__v202504beta2__create_device_response__descriptor;
 extern const ProtobufCMessageDescriptor kentik__device__v202504beta2__create_devices_request__descriptor;

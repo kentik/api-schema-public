@@ -2074,6 +2074,104 @@ func (x *GetDeviceResponse) GetDevice() *DeviceDetailed {
 }
 
 // {{.Name}}
+type GetDeviceByNameRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	DeviceName    string                 `protobuf:"bytes,1,opt,name=device_name,json=deviceName,proto3" json:"device_name,omitempty"`
+	Query         *DeviceQuery           `protobuf:"bytes,2,opt,name=query,proto3" json:"query,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetDeviceByNameRequest) Reset() {
+	*x = GetDeviceByNameRequest{}
+	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetDeviceByNameRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetDeviceByNameRequest) ProtoMessage() {}
+
+func (x *GetDeviceByNameRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetDeviceByNameRequest.ProtoReflect.Descriptor instead.
+func (*GetDeviceByNameRequest) Descriptor() ([]byte, []int) {
+	return file_kentik_device_v202504beta2_device_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *GetDeviceByNameRequest) GetDeviceName() string {
+	if x != nil {
+		return x.DeviceName
+	}
+	return ""
+}
+
+func (x *GetDeviceByNameRequest) GetQuery() *DeviceQuery {
+	if x != nil {
+		return x.Query
+	}
+	return nil
+}
+
+// {{.Name}}
+type GetDeviceByNameResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Device        *DeviceDetailed        `protobuf:"bytes,1,opt,name=device,proto3" json:"device,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetDeviceByNameResponse) Reset() {
+	*x = GetDeviceByNameResponse{}
+	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetDeviceByNameResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetDeviceByNameResponse) ProtoMessage() {}
+
+func (x *GetDeviceByNameResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetDeviceByNameResponse.ProtoReflect.Descriptor instead.
+func (*GetDeviceByNameResponse) Descriptor() ([]byte, []int) {
+	return file_kentik_device_v202504beta2_device_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *GetDeviceByNameResponse) GetDevice() *DeviceDetailed {
+	if x != nil {
+		return x.Device
+	}
+	return nil
+}
+
+// {{.Name}}
 type CreateDeviceRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Device        *DeviceConcise         `protobuf:"bytes,1,opt,name=device,proto3" json:"device,omitempty"`
@@ -2083,7 +2181,7 @@ type CreateDeviceRequest struct {
 
 func (x *CreateDeviceRequest) Reset() {
 	*x = CreateDeviceRequest{}
-	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[18]
+	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2095,7 +2193,7 @@ func (x *CreateDeviceRequest) String() string {
 func (*CreateDeviceRequest) ProtoMessage() {}
 
 func (x *CreateDeviceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[18]
+	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2108,7 +2206,7 @@ func (x *CreateDeviceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateDeviceRequest.ProtoReflect.Descriptor instead.
 func (*CreateDeviceRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_device_v202504beta2_device_proto_rawDescGZIP(), []int{18}
+	return file_kentik_device_v202504beta2_device_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *CreateDeviceRequest) GetDevice() *DeviceConcise {
@@ -2128,7 +2226,7 @@ type CreateDeviceResponse struct {
 
 func (x *CreateDeviceResponse) Reset() {
 	*x = CreateDeviceResponse{}
-	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[19]
+	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2140,7 +2238,7 @@ func (x *CreateDeviceResponse) String() string {
 func (*CreateDeviceResponse) ProtoMessage() {}
 
 func (x *CreateDeviceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[19]
+	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2153,7 +2251,7 @@ func (x *CreateDeviceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateDeviceResponse.ProtoReflect.Descriptor instead.
 func (*CreateDeviceResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_device_v202504beta2_device_proto_rawDescGZIP(), []int{19}
+	return file_kentik_device_v202504beta2_device_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *CreateDeviceResponse) GetDevice() *DeviceDetailed {
@@ -2173,7 +2271,7 @@ type CreateDevicesRequest struct {
 
 func (x *CreateDevicesRequest) Reset() {
 	*x = CreateDevicesRequest{}
-	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[20]
+	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2185,7 +2283,7 @@ func (x *CreateDevicesRequest) String() string {
 func (*CreateDevicesRequest) ProtoMessage() {}
 
 func (x *CreateDevicesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[20]
+	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2198,7 +2296,7 @@ func (x *CreateDevicesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateDevicesRequest.ProtoReflect.Descriptor instead.
 func (*CreateDevicesRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_device_v202504beta2_device_proto_rawDescGZIP(), []int{20}
+	return file_kentik_device_v202504beta2_device_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *CreateDevicesRequest) GetDevices() []*DeviceConcise {
@@ -2219,7 +2317,7 @@ type CreateDevicesResponse struct {
 
 func (x *CreateDevicesResponse) Reset() {
 	*x = CreateDevicesResponse{}
-	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[21]
+	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2231,7 +2329,7 @@ func (x *CreateDevicesResponse) String() string {
 func (*CreateDevicesResponse) ProtoMessage() {}
 
 func (x *CreateDevicesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[21]
+	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2244,7 +2342,7 @@ func (x *CreateDevicesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateDevicesResponse.ProtoReflect.Descriptor instead.
 func (*CreateDevicesResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_device_v202504beta2_device_proto_rawDescGZIP(), []int{21}
+	return file_kentik_device_v202504beta2_device_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *CreateDevicesResponse) GetDevices() []*DeviceDetailed {
@@ -2271,7 +2369,7 @@ type UpdateDeviceRequest struct {
 
 func (x *UpdateDeviceRequest) Reset() {
 	*x = UpdateDeviceRequest{}
-	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[22]
+	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2283,7 +2381,7 @@ func (x *UpdateDeviceRequest) String() string {
 func (*UpdateDeviceRequest) ProtoMessage() {}
 
 func (x *UpdateDeviceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[22]
+	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2296,7 +2394,7 @@ func (x *UpdateDeviceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateDeviceRequest.ProtoReflect.Descriptor instead.
 func (*UpdateDeviceRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_device_v202504beta2_device_proto_rawDescGZIP(), []int{22}
+	return file_kentik_device_v202504beta2_device_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *UpdateDeviceRequest) GetDevice() *DeviceConcise {
@@ -2316,7 +2414,7 @@ type UpdateDeviceResponse struct {
 
 func (x *UpdateDeviceResponse) Reset() {
 	*x = UpdateDeviceResponse{}
-	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[23]
+	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2328,7 +2426,7 @@ func (x *UpdateDeviceResponse) String() string {
 func (*UpdateDeviceResponse) ProtoMessage() {}
 
 func (x *UpdateDeviceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[23]
+	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2341,7 +2439,7 @@ func (x *UpdateDeviceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateDeviceResponse.ProtoReflect.Descriptor instead.
 func (*UpdateDeviceResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_device_v202504beta2_device_proto_rawDescGZIP(), []int{23}
+	return file_kentik_device_v202504beta2_device_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *UpdateDeviceResponse) GetDevice() *DeviceDetailed {
@@ -2361,7 +2459,7 @@ type UpdateDevicesRequest struct {
 
 func (x *UpdateDevicesRequest) Reset() {
 	*x = UpdateDevicesRequest{}
-	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[24]
+	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2373,7 +2471,7 @@ func (x *UpdateDevicesRequest) String() string {
 func (*UpdateDevicesRequest) ProtoMessage() {}
 
 func (x *UpdateDevicesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[24]
+	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2386,7 +2484,7 @@ func (x *UpdateDevicesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateDevicesRequest.ProtoReflect.Descriptor instead.
 func (*UpdateDevicesRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_device_v202504beta2_device_proto_rawDescGZIP(), []int{24}
+	return file_kentik_device_v202504beta2_device_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *UpdateDevicesRequest) GetDevices() []*DeviceConcise {
@@ -2407,7 +2505,7 @@ type UpdateDevicesResponse struct {
 
 func (x *UpdateDevicesResponse) Reset() {
 	*x = UpdateDevicesResponse{}
-	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[25]
+	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2419,7 +2517,7 @@ func (x *UpdateDevicesResponse) String() string {
 func (*UpdateDevicesResponse) ProtoMessage() {}
 
 func (x *UpdateDevicesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[25]
+	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2432,7 +2530,7 @@ func (x *UpdateDevicesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateDevicesResponse.ProtoReflect.Descriptor instead.
 func (*UpdateDevicesResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_device_v202504beta2_device_proto_rawDescGZIP(), []int{25}
+	return file_kentik_device_v202504beta2_device_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *UpdateDevicesResponse) GetDevices() []*DeviceDetailed {
@@ -2460,7 +2558,7 @@ type UpdateDeviceLabelsRequest struct {
 
 func (x *UpdateDeviceLabelsRequest) Reset() {
 	*x = UpdateDeviceLabelsRequest{}
-	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[26]
+	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2472,7 +2570,7 @@ func (x *UpdateDeviceLabelsRequest) String() string {
 func (*UpdateDeviceLabelsRequest) ProtoMessage() {}
 
 func (x *UpdateDeviceLabelsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[26]
+	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2485,7 +2583,7 @@ func (x *UpdateDeviceLabelsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateDeviceLabelsRequest.ProtoReflect.Descriptor instead.
 func (*UpdateDeviceLabelsRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_device_v202504beta2_device_proto_rawDescGZIP(), []int{26}
+	return file_kentik_device_v202504beta2_device_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *UpdateDeviceLabelsRequest) GetId() string {
@@ -2512,7 +2610,7 @@ type UpdateDeviceLabelsResponse struct {
 
 func (x *UpdateDeviceLabelsResponse) Reset() {
 	*x = UpdateDeviceLabelsResponse{}
-	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[27]
+	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2524,7 +2622,7 @@ func (x *UpdateDeviceLabelsResponse) String() string {
 func (*UpdateDeviceLabelsResponse) ProtoMessage() {}
 
 func (x *UpdateDeviceLabelsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[27]
+	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2537,7 +2635,7 @@ func (x *UpdateDeviceLabelsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateDeviceLabelsResponse.ProtoReflect.Descriptor instead.
 func (*UpdateDeviceLabelsResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_device_v202504beta2_device_proto_rawDescGZIP(), []int{27}
+	return file_kentik_device_v202504beta2_device_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *UpdateDeviceLabelsResponse) GetDevice() *DeviceDetailed {
@@ -2557,7 +2655,7 @@ type DeleteDeviceRequest struct {
 
 func (x *DeleteDeviceRequest) Reset() {
 	*x = DeleteDeviceRequest{}
-	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[28]
+	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2569,7 +2667,7 @@ func (x *DeleteDeviceRequest) String() string {
 func (*DeleteDeviceRequest) ProtoMessage() {}
 
 func (x *DeleteDeviceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[28]
+	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2582,7 +2680,7 @@ func (x *DeleteDeviceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteDeviceRequest.ProtoReflect.Descriptor instead.
 func (*DeleteDeviceRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_device_v202504beta2_device_proto_rawDescGZIP(), []int{28}
+	return file_kentik_device_v202504beta2_device_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *DeleteDeviceRequest) GetId() string {
@@ -2601,7 +2699,7 @@ type DeleteDeviceResponse struct {
 
 func (x *DeleteDeviceResponse) Reset() {
 	*x = DeleteDeviceResponse{}
-	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[29]
+	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2613,7 +2711,7 @@ func (x *DeleteDeviceResponse) String() string {
 func (*DeleteDeviceResponse) ProtoMessage() {}
 
 func (x *DeleteDeviceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[29]
+	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2626,7 +2724,7 @@ func (x *DeleteDeviceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteDeviceResponse.ProtoReflect.Descriptor instead.
 func (*DeleteDeviceResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_device_v202504beta2_device_proto_rawDescGZIP(), []int{29}
+	return file_kentik_device_v202504beta2_device_proto_rawDescGZIP(), []int{31}
 }
 
 // {{.Name}}
@@ -2639,7 +2737,7 @@ type DeleteDevicesRequest struct {
 
 func (x *DeleteDevicesRequest) Reset() {
 	*x = DeleteDevicesRequest{}
-	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[30]
+	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2651,7 +2749,7 @@ func (x *DeleteDevicesRequest) String() string {
 func (*DeleteDevicesRequest) ProtoMessage() {}
 
 func (x *DeleteDevicesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[30]
+	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2664,7 +2762,7 @@ func (x *DeleteDevicesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteDevicesRequest.ProtoReflect.Descriptor instead.
 func (*DeleteDevicesRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_device_v202504beta2_device_proto_rawDescGZIP(), []int{30}
+	return file_kentik_device_v202504beta2_device_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *DeleteDevicesRequest) GetIds() []string {
@@ -2684,7 +2782,7 @@ type DeleteDevicesResponse struct {
 
 func (x *DeleteDevicesResponse) Reset() {
 	*x = DeleteDevicesResponse{}
-	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[31]
+	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2696,7 +2794,7 @@ func (x *DeleteDevicesResponse) String() string {
 func (*DeleteDevicesResponse) ProtoMessage() {}
 
 func (x *DeleteDevicesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[31]
+	mi := &file_kentik_device_v202504beta2_device_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2709,7 +2807,7 @@ func (x *DeleteDevicesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteDevicesResponse.ProtoReflect.Descriptor instead.
 func (*DeleteDevicesResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_device_v202504beta2_device_proto_rawDescGZIP(), []int{31}
+	return file_kentik_device_v202504beta2_device_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *DeleteDevicesResponse) GetFailedDevices() []string {
@@ -2945,6 +3043,12 @@ const file_kentik_device_v202504beta2_device_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tB\"\x92A\x1c2\x1aID of the requested device\xe0A\x02R\x02id\x12=\n" +
 	"\x05query\x18\x02 \x01(\v2'.kentik.device.v202504beta2.DeviceQueryR\x05query\"\x83\x01\n" +
 	"\x11GetDeviceResponse\x12n\n" +
+	"\x06device\x18\x01 \x01(\v2*.kentik.device.v202504beta2.DeviceDetailedB*\x92A'2%Configuration of the requested deviceR\x06device\"\x9e\x01\n" +
+	"\x16GetDeviceByNameRequest\x12E\n" +
+	"\vdevice_name\x18\x01 \x01(\tB$\x92A\x1e2\x1cName of the requested device\xe0A\x02R\n" +
+	"deviceName\x12=\n" +
+	"\x05query\x18\x02 \x01(\v2'.kentik.device.v202504beta2.DeviceQueryR\x05query\"\x89\x01\n" +
+	"\x17GetDeviceByNameResponse\x12n\n" +
 	"\x06device\x18\x01 \x01(\v2*.kentik.device.v202504beta2.DeviceDetailedB*\x92A'2%Configuration of the requested deviceR\x06device\"\x81\x01\n" +
 	"\x13CreateDeviceRequest\x12j\n" +
 	"\x06device\x18\x01 \x01(\v2).kentik.device.v202504beta2.DeviceConciseB'\x92A!2\x1fConfiguration of the new device\xe0A\x02R\x06device\"\x8a\x01\n" +
@@ -2981,11 +3085,12 @@ const file_kentik_device_v202504beta2_device_proto_rawDesc = "" +
 	"\x17DEVICE_VIEW_UNSPECIFIED\x10\x00\x12\x14\n" +
 	"\x10DEVICE_VIEW_FULL\x10\x01\x12\x15\n" +
 	"\x11DEVICE_VIEW_BASIC\x10\x02\x12\x17\n" +
-	"\x13DEVICE_VIEW_ID_ONLY\x10\x032\x81\x1c\n" +
+	"\x13DEVICE_VIEW_ID_ONLY\x10\x032\xfd\x1e\n" +
 	"\rDeviceService\x12\xa0\x03\n" +
 	"\vListDevices\x12..kentik.device.v202504beta2.ListDevicesRequest\x1a/.kentik.device.v202504beta2.ListDevicesResponse\"\xaf\x02\x92A\xf3\x01\x12\x11List all devices.\x1a\xd0\x01Returns list of configured devices. Use the 'view' parameter to control response detail: FULL (default), BASIC (id, name, status), or ID_ONLY (id only). See [About Devices](https://kb.kentik.com/v4/Cb01.htm).*\vListDevices\xf2\xd7\x02\x11admin.device:read\x82\xd3\xe4\x93\x02\x1d\x12\x1b/device/v202504beta2/device\x12\xc9\x02\n" +
 	"\tGetDevice\x12,.kentik.device.v202504beta2.GetDeviceRequest\x1a-.kentik.device.v202504beta2.GetDeviceResponse\"\xde\x01\x92A\x9d\x01\x12#Retrieve configuration of a device.\x1akReturns configuration of a device specified by ID (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).*\tGetDevice\xf2\xd7\x02\x11admin.device:read\x82\xd3\xe4\x93\x02\"\x12 /device/v202504beta2/device/{id}\x12\xe6\x02\n" +
-	"\fCreateDevice\x12/.kentik.device.v202504beta2.CreateDeviceRequest\x1a0.kentik.device.v202504beta2.CreateDeviceResponse\"\xf2\x01\x92A\xb2\x01\x12\x17Configure a new device.\x1a\x88\x01Create configuration for a new device. Returns the newly created configuration (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).*\fCreateDevice\xf2\xd7\x02\x12admin.device:write\x82\xd3\xe4\x93\x02 :\x01*\"\x1b/device/v202504beta2/device\x12\x8a\x03\n" +
+	"\fCreateDevice\x12/.kentik.device.v202504beta2.CreateDeviceRequest\x1a0.kentik.device.v202504beta2.CreateDeviceResponse\"\xf2\x01\x92A\xb2\x01\x12\x17Configure a new device.\x1a\x88\x01Create configuration for a new device. Returns the newly created configuration (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).*\fCreateDevice\xf2\xd7\x02\x12admin.device:write\x82\xd3\xe4\x93\x02 :\x01*\"\x1b/device/v202504beta2/device\x12\xf9\x02\n" +
+	"\x0fGetDeviceByName\x122.kentik.device.v202504beta2.GetDeviceByNameRequest\x1a3.kentik.device.v202504beta2.GetDeviceByNameResponse\"\xfc\x01\x92A\xad\x01\x12+Retrieve configuration of a device by name.\x1amReturns configuration of a device specified by name (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).*\x0fGetDeviceByName\xf2\xd7\x02\x11admin.device:read\x82\xd3\xe4\x93\x020\x12./device/v202504beta2/device/name/{device_name}\x12\x8a\x03\n" +
 	"\rCreateDevices\x120.kentik.device.v202504beta2.CreateDevicesRequest\x1a1.kentik.device.v202504beta2.CreateDevicesResponse\"\x93\x02\x92A\xc6\x01\x12%Configure multiple devices (max 100).\x1a\x8d\x01Create configuration for multiple devices. Returns the newly created configurations (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).*\rCreateDevices\xf2\xd7\x02\x12admin.device:write\x82\xd3\xe4\x93\x02-:\x01*\"(/device/v202504beta2/device/batch_create\x12\x93\x03\n" +
 	"\fUpdateDevice\x12/.kentik.device.v202504beta2.UpdateDeviceRequest\x1a0.kentik.device.v202504beta2.UpdateDeviceResponse\"\x9f\x02\x92A\xd3\x01\x12\"Updates configuration of a device.\x1a\x9e\x01Replaces configuration of a device with attributes in the request. Returns the updated configuration (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).*\fUpdateDevice\xf2\xd7\x02\x12admin.device:write\x82\xd3\xe4\x93\x02,:\x01*\x1a'/device/v202504beta2/device/{device.id}\x12\xb3\x03\n" +
 	"\rUpdateDevices\x120.kentik.device.v202504beta2.UpdateDevicesRequest\x1a1.kentik.device.v202504beta2.UpdateDevicesResponse\"\xbc\x02\x92A\xef\x01\x124Updates configuration of multiple devices (max 100).\x1a\xa7\x01Replaces configuration of multiple devices with attributes in the request. Returns the updated configurations (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).*\rUpdateDevices\xf2\xd7\x02\x12admin.device:write\x82\xd3\xe4\x93\x02-:\x01*\x1a(/device/v202504beta2/device/batch_update\x12\xc2\x03\n" +
@@ -3019,7 +3124,7 @@ func file_kentik_device_v202504beta2_device_proto_rawDescGZIP() []byte {
 }
 
 var file_kentik_device_v202504beta2_device_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_kentik_device_v202504beta2_device_proto_msgTypes = make([]protoimpl.MessageInfo, 33)
+var file_kentik_device_v202504beta2_device_proto_msgTypes = make([]protoimpl.MessageInfo, 35)
 var file_kentik_device_v202504beta2_device_proto_goTypes = []any{
 	(DeviceView)(0),                    // 0: kentik.device.v202504beta2.DeviceView
 	(*DeviceSnmpV3Conf)(nil),           // 1: kentik.device.v202504beta2.DeviceSnmpV3Conf
@@ -3040,43 +3145,45 @@ var file_kentik_device_v202504beta2_device_proto_goTypes = []any{
 	(*ListDevicesResponse)(nil),        // 16: kentik.device.v202504beta2.ListDevicesResponse
 	(*GetDeviceRequest)(nil),           // 17: kentik.device.v202504beta2.GetDeviceRequest
 	(*GetDeviceResponse)(nil),          // 18: kentik.device.v202504beta2.GetDeviceResponse
-	(*CreateDeviceRequest)(nil),        // 19: kentik.device.v202504beta2.CreateDeviceRequest
-	(*CreateDeviceResponse)(nil),       // 20: kentik.device.v202504beta2.CreateDeviceResponse
-	(*CreateDevicesRequest)(nil),       // 21: kentik.device.v202504beta2.CreateDevicesRequest
-	(*CreateDevicesResponse)(nil),      // 22: kentik.device.v202504beta2.CreateDevicesResponse
-	(*UpdateDeviceRequest)(nil),        // 23: kentik.device.v202504beta2.UpdateDeviceRequest
-	(*UpdateDeviceResponse)(nil),       // 24: kentik.device.v202504beta2.UpdateDeviceResponse
-	(*UpdateDevicesRequest)(nil),       // 25: kentik.device.v202504beta2.UpdateDevicesRequest
-	(*UpdateDevicesResponse)(nil),      // 26: kentik.device.v202504beta2.UpdateDevicesResponse
-	(*UpdateDeviceLabelsRequest)(nil),  // 27: kentik.device.v202504beta2.UpdateDeviceLabelsRequest
-	(*UpdateDeviceLabelsResponse)(nil), // 28: kentik.device.v202504beta2.UpdateDeviceLabelsResponse
-	(*DeleteDeviceRequest)(nil),        // 29: kentik.device.v202504beta2.DeleteDeviceRequest
-	(*DeleteDeviceResponse)(nil),       // 30: kentik.device.v202504beta2.DeleteDeviceResponse
-	(*DeleteDevicesRequest)(nil),       // 31: kentik.device.v202504beta2.DeleteDevicesRequest
-	(*DeleteDevicesResponse)(nil),      // 32: kentik.device.v202504beta2.DeleteDevicesResponse
-	nil,                                // 33: kentik.device.v202504beta2.Plan.MetadataEntry
-	(*durationpb.Duration)(nil),        // 34: google.protobuf.Duration
-	(*timestamppb.Timestamp)(nil),      // 35: google.protobuf.Timestamp
+	(*GetDeviceByNameRequest)(nil),     // 19: kentik.device.v202504beta2.GetDeviceByNameRequest
+	(*GetDeviceByNameResponse)(nil),    // 20: kentik.device.v202504beta2.GetDeviceByNameResponse
+	(*CreateDeviceRequest)(nil),        // 21: kentik.device.v202504beta2.CreateDeviceRequest
+	(*CreateDeviceResponse)(nil),       // 22: kentik.device.v202504beta2.CreateDeviceResponse
+	(*CreateDevicesRequest)(nil),       // 23: kentik.device.v202504beta2.CreateDevicesRequest
+	(*CreateDevicesResponse)(nil),      // 24: kentik.device.v202504beta2.CreateDevicesResponse
+	(*UpdateDeviceRequest)(nil),        // 25: kentik.device.v202504beta2.UpdateDeviceRequest
+	(*UpdateDeviceResponse)(nil),       // 26: kentik.device.v202504beta2.UpdateDeviceResponse
+	(*UpdateDevicesRequest)(nil),       // 27: kentik.device.v202504beta2.UpdateDevicesRequest
+	(*UpdateDevicesResponse)(nil),      // 28: kentik.device.v202504beta2.UpdateDevicesResponse
+	(*UpdateDeviceLabelsRequest)(nil),  // 29: kentik.device.v202504beta2.UpdateDeviceLabelsRequest
+	(*UpdateDeviceLabelsResponse)(nil), // 30: kentik.device.v202504beta2.UpdateDeviceLabelsResponse
+	(*DeleteDeviceRequest)(nil),        // 31: kentik.device.v202504beta2.DeleteDeviceRequest
+	(*DeleteDeviceResponse)(nil),       // 32: kentik.device.v202504beta2.DeleteDeviceResponse
+	(*DeleteDevicesRequest)(nil),       // 33: kentik.device.v202504beta2.DeleteDevicesRequest
+	(*DeleteDevicesResponse)(nil),      // 34: kentik.device.v202504beta2.DeleteDevicesResponse
+	nil,                                // 35: kentik.device.v202504beta2.Plan.MetadataEntry
+	(*durationpb.Duration)(nil),        // 36: google.protobuf.Duration
+	(*timestamppb.Timestamp)(nil),      // 37: google.protobuf.Timestamp
 }
 var file_kentik_device_v202504beta2_device_proto_depIdxs = []int32{
 	3,  // 0: kentik.device.v202504beta2.DeviceNmsConfig.snmp:type_name -> kentik.device.v202504beta2.DeviceNmsSnmpConfig
 	4,  // 1: kentik.device.v202504beta2.DeviceNmsConfig.st:type_name -> kentik.device.v202504beta2.DeviceNmsStConfig
-	34, // 2: kentik.device.v202504beta2.DeviceNmsSnmpConfig.timeout:type_name -> google.protobuf.Duration
-	34, // 3: kentik.device.v202504beta2.DeviceNmsStConfig.timeout:type_name -> google.protobuf.Duration
+	36, // 2: kentik.device.v202504beta2.DeviceNmsSnmpConfig.timeout:type_name -> google.protobuf.Duration
+	36, // 3: kentik.device.v202504beta2.DeviceNmsStConfig.timeout:type_name -> google.protobuf.Duration
 	1,  // 4: kentik.device.v202504beta2.DeviceConcise.device_snmp_v3_conf:type_name -> kentik.device.v202504beta2.DeviceSnmpV3Conf
 	2,  // 5: kentik.device.v202504beta2.DeviceConcise.nms:type_name -> kentik.device.v202504beta2.DeviceNmsConfig
-	35, // 6: kentik.device.v202504beta2.Plan.cdate:type_name -> google.protobuf.Timestamp
-	35, // 7: kentik.device.v202504beta2.Plan.edate:type_name -> google.protobuf.Timestamp
-	33, // 8: kentik.device.v202504beta2.Plan.metadata:type_name -> kentik.device.v202504beta2.Plan.MetadataEntry
-	35, // 9: kentik.device.v202504beta2.Label.edate:type_name -> google.protobuf.Timestamp
-	35, // 10: kentik.device.v202504beta2.Label.cdate:type_name -> google.protobuf.Timestamp
+	37, // 6: kentik.device.v202504beta2.Plan.cdate:type_name -> google.protobuf.Timestamp
+	37, // 7: kentik.device.v202504beta2.Plan.edate:type_name -> google.protobuf.Timestamp
+	35, // 8: kentik.device.v202504beta2.Plan.metadata:type_name -> kentik.device.v202504beta2.Plan.MetadataEntry
+	37, // 9: kentik.device.v202504beta2.Label.edate:type_name -> google.protobuf.Timestamp
+	37, // 10: kentik.device.v202504beta2.Label.cdate:type_name -> google.protobuf.Timestamp
 	6,  // 11: kentik.device.v202504beta2.DeviceDetailed.site:type_name -> kentik.device.v202504beta2.Site
 	7,  // 12: kentik.device.v202504beta2.DeviceDetailed.plan:type_name -> kentik.device.v202504beta2.Plan
 	8,  // 13: kentik.device.v202504beta2.DeviceDetailed.labels:type_name -> kentik.device.v202504beta2.Label
 	9,  // 14: kentik.device.v202504beta2.DeviceDetailed.all_interfaces:type_name -> kentik.device.v202504beta2.Interface
 	10, // 15: kentik.device.v202504beta2.DeviceDetailed.custom_column_data:type_name -> kentik.device.v202504beta2.CustomColumnData
-	35, // 16: kentik.device.v202504beta2.DeviceDetailed.created_date:type_name -> google.protobuf.Timestamp
-	35, // 17: kentik.device.v202504beta2.DeviceDetailed.updated_date:type_name -> google.protobuf.Timestamp
+	37, // 16: kentik.device.v202504beta2.DeviceDetailed.created_date:type_name -> google.protobuf.Timestamp
+	37, // 17: kentik.device.v202504beta2.DeviceDetailed.updated_date:type_name -> google.protobuf.Timestamp
 	1,  // 18: kentik.device.v202504beta2.DeviceDetailed.device_snmp_v3_conf:type_name -> kentik.device.v202504beta2.DeviceSnmpV3Conf
 	11, // 19: kentik.device.v202504beta2.DeviceDetailed.device_gnmi_v1_conf:type_name -> kentik.device.v202504beta2.GnmiV1Conf
 	2,  // 20: kentik.device.v202504beta2.DeviceDetailed.nms:type_name -> kentik.device.v202504beta2.DeviceNmsConfig
@@ -3085,39 +3192,43 @@ var file_kentik_device_v202504beta2_device_proto_depIdxs = []int32{
 	12, // 23: kentik.device.v202504beta2.ListDevicesResponse.devices:type_name -> kentik.device.v202504beta2.DeviceDetailed
 	13, // 24: kentik.device.v202504beta2.GetDeviceRequest.query:type_name -> kentik.device.v202504beta2.DeviceQuery
 	12, // 25: kentik.device.v202504beta2.GetDeviceResponse.device:type_name -> kentik.device.v202504beta2.DeviceDetailed
-	5,  // 26: kentik.device.v202504beta2.CreateDeviceRequest.device:type_name -> kentik.device.v202504beta2.DeviceConcise
-	12, // 27: kentik.device.v202504beta2.CreateDeviceResponse.device:type_name -> kentik.device.v202504beta2.DeviceDetailed
-	5,  // 28: kentik.device.v202504beta2.CreateDevicesRequest.devices:type_name -> kentik.device.v202504beta2.DeviceConcise
-	12, // 29: kentik.device.v202504beta2.CreateDevicesResponse.devices:type_name -> kentik.device.v202504beta2.DeviceDetailed
-	5,  // 30: kentik.device.v202504beta2.UpdateDeviceRequest.device:type_name -> kentik.device.v202504beta2.DeviceConcise
-	12, // 31: kentik.device.v202504beta2.UpdateDeviceResponse.device:type_name -> kentik.device.v202504beta2.DeviceDetailed
-	5,  // 32: kentik.device.v202504beta2.UpdateDevicesRequest.devices:type_name -> kentik.device.v202504beta2.DeviceConcise
-	12, // 33: kentik.device.v202504beta2.UpdateDevicesResponse.devices:type_name -> kentik.device.v202504beta2.DeviceDetailed
-	14, // 34: kentik.device.v202504beta2.UpdateDeviceLabelsRequest.labels:type_name -> kentik.device.v202504beta2.LabelConcise
-	12, // 35: kentik.device.v202504beta2.UpdateDeviceLabelsResponse.device:type_name -> kentik.device.v202504beta2.DeviceDetailed
-	15, // 36: kentik.device.v202504beta2.DeviceService.ListDevices:input_type -> kentik.device.v202504beta2.ListDevicesRequest
-	17, // 37: kentik.device.v202504beta2.DeviceService.GetDevice:input_type -> kentik.device.v202504beta2.GetDeviceRequest
-	19, // 38: kentik.device.v202504beta2.DeviceService.CreateDevice:input_type -> kentik.device.v202504beta2.CreateDeviceRequest
-	21, // 39: kentik.device.v202504beta2.DeviceService.CreateDevices:input_type -> kentik.device.v202504beta2.CreateDevicesRequest
-	23, // 40: kentik.device.v202504beta2.DeviceService.UpdateDevice:input_type -> kentik.device.v202504beta2.UpdateDeviceRequest
-	25, // 41: kentik.device.v202504beta2.DeviceService.UpdateDevices:input_type -> kentik.device.v202504beta2.UpdateDevicesRequest
-	27, // 42: kentik.device.v202504beta2.DeviceService.UpdateDeviceLabels:input_type -> kentik.device.v202504beta2.UpdateDeviceLabelsRequest
-	29, // 43: kentik.device.v202504beta2.DeviceService.DeleteDevice:input_type -> kentik.device.v202504beta2.DeleteDeviceRequest
-	31, // 44: kentik.device.v202504beta2.DeviceService.DeleteDevices:input_type -> kentik.device.v202504beta2.DeleteDevicesRequest
-	16, // 45: kentik.device.v202504beta2.DeviceService.ListDevices:output_type -> kentik.device.v202504beta2.ListDevicesResponse
-	18, // 46: kentik.device.v202504beta2.DeviceService.GetDevice:output_type -> kentik.device.v202504beta2.GetDeviceResponse
-	20, // 47: kentik.device.v202504beta2.DeviceService.CreateDevice:output_type -> kentik.device.v202504beta2.CreateDeviceResponse
-	22, // 48: kentik.device.v202504beta2.DeviceService.CreateDevices:output_type -> kentik.device.v202504beta2.CreateDevicesResponse
-	24, // 49: kentik.device.v202504beta2.DeviceService.UpdateDevice:output_type -> kentik.device.v202504beta2.UpdateDeviceResponse
-	26, // 50: kentik.device.v202504beta2.DeviceService.UpdateDevices:output_type -> kentik.device.v202504beta2.UpdateDevicesResponse
-	28, // 51: kentik.device.v202504beta2.DeviceService.UpdateDeviceLabels:output_type -> kentik.device.v202504beta2.UpdateDeviceLabelsResponse
-	30, // 52: kentik.device.v202504beta2.DeviceService.DeleteDevice:output_type -> kentik.device.v202504beta2.DeleteDeviceResponse
-	32, // 53: kentik.device.v202504beta2.DeviceService.DeleteDevices:output_type -> kentik.device.v202504beta2.DeleteDevicesResponse
-	45, // [45:54] is the sub-list for method output_type
-	36, // [36:45] is the sub-list for method input_type
-	36, // [36:36] is the sub-list for extension type_name
-	36, // [36:36] is the sub-list for extension extendee
-	0,  // [0:36] is the sub-list for field type_name
+	13, // 26: kentik.device.v202504beta2.GetDeviceByNameRequest.query:type_name -> kentik.device.v202504beta2.DeviceQuery
+	12, // 27: kentik.device.v202504beta2.GetDeviceByNameResponse.device:type_name -> kentik.device.v202504beta2.DeviceDetailed
+	5,  // 28: kentik.device.v202504beta2.CreateDeviceRequest.device:type_name -> kentik.device.v202504beta2.DeviceConcise
+	12, // 29: kentik.device.v202504beta2.CreateDeviceResponse.device:type_name -> kentik.device.v202504beta2.DeviceDetailed
+	5,  // 30: kentik.device.v202504beta2.CreateDevicesRequest.devices:type_name -> kentik.device.v202504beta2.DeviceConcise
+	12, // 31: kentik.device.v202504beta2.CreateDevicesResponse.devices:type_name -> kentik.device.v202504beta2.DeviceDetailed
+	5,  // 32: kentik.device.v202504beta2.UpdateDeviceRequest.device:type_name -> kentik.device.v202504beta2.DeviceConcise
+	12, // 33: kentik.device.v202504beta2.UpdateDeviceResponse.device:type_name -> kentik.device.v202504beta2.DeviceDetailed
+	5,  // 34: kentik.device.v202504beta2.UpdateDevicesRequest.devices:type_name -> kentik.device.v202504beta2.DeviceConcise
+	12, // 35: kentik.device.v202504beta2.UpdateDevicesResponse.devices:type_name -> kentik.device.v202504beta2.DeviceDetailed
+	14, // 36: kentik.device.v202504beta2.UpdateDeviceLabelsRequest.labels:type_name -> kentik.device.v202504beta2.LabelConcise
+	12, // 37: kentik.device.v202504beta2.UpdateDeviceLabelsResponse.device:type_name -> kentik.device.v202504beta2.DeviceDetailed
+	15, // 38: kentik.device.v202504beta2.DeviceService.ListDevices:input_type -> kentik.device.v202504beta2.ListDevicesRequest
+	17, // 39: kentik.device.v202504beta2.DeviceService.GetDevice:input_type -> kentik.device.v202504beta2.GetDeviceRequest
+	21, // 40: kentik.device.v202504beta2.DeviceService.CreateDevice:input_type -> kentik.device.v202504beta2.CreateDeviceRequest
+	19, // 41: kentik.device.v202504beta2.DeviceService.GetDeviceByName:input_type -> kentik.device.v202504beta2.GetDeviceByNameRequest
+	23, // 42: kentik.device.v202504beta2.DeviceService.CreateDevices:input_type -> kentik.device.v202504beta2.CreateDevicesRequest
+	25, // 43: kentik.device.v202504beta2.DeviceService.UpdateDevice:input_type -> kentik.device.v202504beta2.UpdateDeviceRequest
+	27, // 44: kentik.device.v202504beta2.DeviceService.UpdateDevices:input_type -> kentik.device.v202504beta2.UpdateDevicesRequest
+	29, // 45: kentik.device.v202504beta2.DeviceService.UpdateDeviceLabels:input_type -> kentik.device.v202504beta2.UpdateDeviceLabelsRequest
+	31, // 46: kentik.device.v202504beta2.DeviceService.DeleteDevice:input_type -> kentik.device.v202504beta2.DeleteDeviceRequest
+	33, // 47: kentik.device.v202504beta2.DeviceService.DeleteDevices:input_type -> kentik.device.v202504beta2.DeleteDevicesRequest
+	16, // 48: kentik.device.v202504beta2.DeviceService.ListDevices:output_type -> kentik.device.v202504beta2.ListDevicesResponse
+	18, // 49: kentik.device.v202504beta2.DeviceService.GetDevice:output_type -> kentik.device.v202504beta2.GetDeviceResponse
+	22, // 50: kentik.device.v202504beta2.DeviceService.CreateDevice:output_type -> kentik.device.v202504beta2.CreateDeviceResponse
+	20, // 51: kentik.device.v202504beta2.DeviceService.GetDeviceByName:output_type -> kentik.device.v202504beta2.GetDeviceByNameResponse
+	24, // 52: kentik.device.v202504beta2.DeviceService.CreateDevices:output_type -> kentik.device.v202504beta2.CreateDevicesResponse
+	26, // 53: kentik.device.v202504beta2.DeviceService.UpdateDevice:output_type -> kentik.device.v202504beta2.UpdateDeviceResponse
+	28, // 54: kentik.device.v202504beta2.DeviceService.UpdateDevices:output_type -> kentik.device.v202504beta2.UpdateDevicesResponse
+	30, // 55: kentik.device.v202504beta2.DeviceService.UpdateDeviceLabels:output_type -> kentik.device.v202504beta2.UpdateDeviceLabelsResponse
+	32, // 56: kentik.device.v202504beta2.DeviceService.DeleteDevice:output_type -> kentik.device.v202504beta2.DeleteDeviceResponse
+	34, // 57: kentik.device.v202504beta2.DeviceService.DeleteDevices:output_type -> kentik.device.v202504beta2.DeleteDevicesResponse
+	48, // [48:58] is the sub-list for method output_type
+	38, // [38:48] is the sub-list for method input_type
+	38, // [38:38] is the sub-list for extension type_name
+	38, // [38:38] is the sub-list for extension extendee
+	0,  // [0:38] is the sub-list for field type_name
 }
 
 func init() { file_kentik_device_v202504beta2_device_proto_init() }
@@ -3133,7 +3244,7 @@ func file_kentik_device_v202504beta2_device_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_kentik_device_v202504beta2_device_proto_rawDesc), len(file_kentik_device_v202504beta2_device_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   33,
+			NumMessages:   35,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

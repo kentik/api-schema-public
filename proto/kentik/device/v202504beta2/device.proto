@@ -966,6 +966,28 @@ message GetDeviceResponse {
   ];
 }
 
+
+// {{.Name}}
+message GetDeviceByNameRequest {
+  string device_name = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Name of the requested device"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+
+  DeviceQuery query = 2;
+}
+
+// {{.Name}}
+message GetDeviceByNameResponse {
+  DeviceDetailed device = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Configuration of the requested device"
+    }
+  ];
+}
+
 // {{.Name}}
 message CreateDeviceRequest {
   DeviceConcise device = 1 [
@@ -1153,6 +1175,18 @@ service DeviceService {
       operation_id: "CreateDevice"
       summary: "Configure a new device."
       description: "Create configuration for a new device. Returns the newly created configuration (see [About Devices](https://kb.kentik.com/v4/Cb01.htm))."
+    };
+  }
+
+  rpc GetDeviceByName(GetDeviceByNameRequest) returns (GetDeviceByNameResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.device:read";
+    option (google.api.http) = {
+      get: "/device/v202504beta2/device/name/{device_name}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetDeviceByName"
+      summary: "Retrieve configuration of a device by name."
+      description: "Returns configuration of a device specified by name (see [About Devices](https://kb.kentik.com/v4/Cb01.htm))."
     };
   }
 

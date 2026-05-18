@@ -22,6 +22,7 @@ const (
 	DeviceService_ListDevices_FullMethodName        = "/kentik.device.v202504beta2.DeviceService/ListDevices"
 	DeviceService_GetDevice_FullMethodName          = "/kentik.device.v202504beta2.DeviceService/GetDevice"
 	DeviceService_CreateDevice_FullMethodName       = "/kentik.device.v202504beta2.DeviceService/CreateDevice"
+	DeviceService_GetDeviceByName_FullMethodName    = "/kentik.device.v202504beta2.DeviceService/GetDeviceByName"
 	DeviceService_CreateDevices_FullMethodName      = "/kentik.device.v202504beta2.DeviceService/CreateDevices"
 	DeviceService_UpdateDevice_FullMethodName       = "/kentik.device.v202504beta2.DeviceService/UpdateDevice"
 	DeviceService_UpdateDevices_FullMethodName      = "/kentik.device.v202504beta2.DeviceService/UpdateDevices"
@@ -37,6 +38,7 @@ type DeviceServiceClient interface {
 	ListDevices(ctx context.Context, in *ListDevicesRequest, opts ...grpc.CallOption) (*ListDevicesResponse, error)
 	GetDevice(ctx context.Context, in *GetDeviceRequest, opts ...grpc.CallOption) (*GetDeviceResponse, error)
 	CreateDevice(ctx context.Context, in *CreateDeviceRequest, opts ...grpc.CallOption) (*CreateDeviceResponse, error)
+	GetDeviceByName(ctx context.Context, in *GetDeviceByNameRequest, opts ...grpc.CallOption) (*GetDeviceByNameResponse, error)
 	CreateDevices(ctx context.Context, in *CreateDevicesRequest, opts ...grpc.CallOption) (*CreateDevicesResponse, error)
 	UpdateDevice(ctx context.Context, in *UpdateDeviceRequest, opts ...grpc.CallOption) (*UpdateDeviceResponse, error)
 	UpdateDevices(ctx context.Context, in *UpdateDevicesRequest, opts ...grpc.CallOption) (*UpdateDevicesResponse, error)
@@ -77,6 +79,16 @@ func (c *deviceServiceClient) CreateDevice(ctx context.Context, in *CreateDevice
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CreateDeviceResponse)
 	err := c.cc.Invoke(ctx, DeviceService_CreateDevice_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *deviceServiceClient) GetDeviceByName(ctx context.Context, in *GetDeviceByNameRequest, opts ...grpc.CallOption) (*GetDeviceByNameResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetDeviceByNameResponse)
+	err := c.cc.Invoke(ctx, DeviceService_GetDeviceByName_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -150,6 +162,7 @@ type DeviceServiceServer interface {
 	ListDevices(context.Context, *ListDevicesRequest) (*ListDevicesResponse, error)
 	GetDevice(context.Context, *GetDeviceRequest) (*GetDeviceResponse, error)
 	CreateDevice(context.Context, *CreateDeviceRequest) (*CreateDeviceResponse, error)
+	GetDeviceByName(context.Context, *GetDeviceByNameRequest) (*GetDeviceByNameResponse, error)
 	CreateDevices(context.Context, *CreateDevicesRequest) (*CreateDevicesResponse, error)
 	UpdateDevice(context.Context, *UpdateDeviceRequest) (*UpdateDeviceResponse, error)
 	UpdateDevices(context.Context, *UpdateDevicesRequest) (*UpdateDevicesResponse, error)
@@ -173,6 +186,9 @@ func (UnimplementedDeviceServiceServer) GetDevice(context.Context, *GetDeviceReq
 }
 func (UnimplementedDeviceServiceServer) CreateDevice(context.Context, *CreateDeviceRequest) (*CreateDeviceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateDevice not implemented")
+}
+func (UnimplementedDeviceServiceServer) GetDeviceByName(context.Context, *GetDeviceByNameRequest) (*GetDeviceByNameResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetDeviceByName not implemented")
 }
 func (UnimplementedDeviceServiceServer) CreateDevices(context.Context, *CreateDevicesRequest) (*CreateDevicesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateDevices not implemented")
@@ -262,6 +278,24 @@ func _DeviceService_CreateDevice_Handler(srv interface{}, ctx context.Context, d
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(DeviceServiceServer).CreateDevice(ctx, req.(*CreateDeviceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DeviceService_GetDeviceByName_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetDeviceByNameRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DeviceServiceServer).GetDeviceByName(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DeviceService_GetDeviceByName_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DeviceServiceServer).GetDeviceByName(ctx, req.(*GetDeviceByNameRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -392,6 +426,10 @@ var DeviceService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateDevice",
 			Handler:    _DeviceService_CreateDevice_Handler,
+		},
+		{
+			MethodName: "GetDeviceByName",
+			Handler:    _DeviceService_GetDeviceByName_Handler,
 		},
 		{
 			MethodName: "CreateDevices",

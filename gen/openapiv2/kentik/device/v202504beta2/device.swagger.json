@@ -204,6 +204,45 @@
         ]
       }
     },
+    "/device/v202504beta2/device/name/{deviceName}": {
+      "get": {
+        "summary": "Retrieve configuration of a device by name.",
+        "description": "Returns configuration of a device specified by name (see [About Devices](https://kb.kentik.com/v4/Cb01.htm)).",
+        "operationId": "GetDeviceByName",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202504beta2GetDeviceByNameResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "deviceName",
+            "description": "Name of the requested device",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "query.noCustomColumns",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
     "/device/v202504beta2/device/{device.id}": {
       "put": {
         "summary": "Updates configuration of a device.",
@@ -1217,6 +1256,16 @@
       ],
       "default": "DEVICE_VIEW_UNSPECIFIED",
       "description": "DeviceView specifies the amount of detail to return for each device\nin a ListDevices response.\n\n - DEVICE_VIEW_UNSPECIFIED: When unspecified, defaults to FULL for backward compatibility.\n - DEVICE_VIEW_FULL: Returns the full device configuration with all fields populated.\n - DEVICE_VIEW_BASIC: Returns only basic device information: id, device_name, device_status.\n - DEVICE_VIEW_ID_ONLY: Returns only device IDs."
+    },
+    "v202504beta2GetDeviceByNameResponse": {
+      "type": "object",
+      "properties": {
+        "device": {
+          "$ref": "#/definitions/v202504beta2DeviceDetailed",
+          "description": "Configuration of the requested device"
+        }
+      },
+      "title": "GetDeviceByNameResponse"
     },
     "v202504beta2GetDeviceResponse": {
       "type": "object",
