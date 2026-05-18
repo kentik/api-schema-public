@@ -239,10 +239,10 @@ message CreatePathfinderReportResponse {
 service PathfinderAdminService {
   option (google.api.default_host) = "grpc.api.kentik.com";
   option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
-  option (kentik.core.v202303.service_scope) = "admin.pathfinder";
+  option (kentik.core.v202303.service_scope) = "pathfinder";
 
   rpc CreatePathfinderReport(CreatePathfinderReportRequest) returns (CreatePathfinderReportResponse) {
-    option (kentik.core.v202303.method_scope) = "admin.pathfinder:write";
+    option (kentik.core.v202303.method_scope) = "pathfinder:write";
     option (google.api.http) = {
       post: "/pathfinder/v202505beta1/create"
       body: "*"

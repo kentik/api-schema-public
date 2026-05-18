@@ -455,9 +455,10 @@ const file_kentik_pathfinder_v202505beta1_pathfinder_proto_rawDesc = "" +
 	"\x17ENTITY_TYPE_UNSPECIFIED\x10\x00\x12\x16\n" +
 	"\x12ENTITY_TYPE_SUBNET\x10\x01\x12\x18\n" +
 	"\x14ENTITY_TYPE_INSTANCE\x10\x02\x12!\n" +
-	"\x1dENTITY_TYPE_NETWORK_INTERFACE\x10\x032\xae\x03\n" +
-	"\x16PathfinderAdminService\x12\xe3\x02\n" +
-	"\x16CreatePathfinderReport\x12=.kentik.pathfinder.v202505beta1.CreatePathfinderReportRequest\x1a>.kentik.pathfinder.v202505beta1.CreatePathfinderReportResponse\"\xc9\x01\x92A\x81\x01\x12\x1bCreate a Pathfinder Report.\x1aJCreate a pathfinder report based on configuration provided in the request.*\x16CreatePathfinderReport\xf2\xd7\x02\x16admin.pathfinder:write\x82\xd3\xe4\x93\x02$:\x01*\"\x1f/pathfinder/v202505beta1/create\x1a.\xcaA\x13grpc.api.kentik.com\xea\xd7\x02\x10admin.pathfinder\x90\xd8\x02\x03B\x8d\x10\x92A\xb3\x0f\x12\xe5\r\n" +
+	"\x1dENTITY_TYPE_NETWORK_INTERFACE\x10\x032\xa2\x03\n" +
+	"\x16PathfinderAdminService\x12\xdd\x02\n" +
+	"\x16CreatePathfinderReport\x12=.kentik.pathfinder.v202505beta1.CreatePathfinderReportRequest\x1a>.kentik.pathfinder.v202505beta1.CreatePathfinderReportResponse\"\xc3\x01\x92A\x81\x01\x12\x1bCreate a Pathfinder Report.\x1aJCreate a pathfinder report based on configuration provided in the request.*\x16CreatePathfinderReport\xf2\xd7\x02\x10pathfinder:write\x82\xd3\xe4\x93\x02$:\x01*\"\x1f/pathfinder/v202505beta1/create\x1a(\xcaA\x13grpc.api.kentik.com\xea\xd7\x02\n" +
+	"pathfinder\x90\xd8\x02\x03B\x8d\x10\x92A\xb3\x0f\x12\xe5\r\n" +
 	"\x0ePathfinder API\x12\xfd\f# Overview\n" +
 	"The **Pathfinder API** provides programmatic access to Kentik's **Cloud Pathfinder**, enabling you to check and monitor **forward and return network paths** between two points in your cloud environment. It supports entities like instances, subnets, and network interfaces over a specified time range.\n" +
 	"### Supported Cloud Providers\n" +
