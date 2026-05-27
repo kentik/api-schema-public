@@ -420,19 +420,13 @@ message Tenant {
     deprecated = true,
     (google.api.field_behavior) = OUTPUT_ONLY,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "Users associated with the tenant (deprecated; use tenant_users)."
+      description: "Users associated with the tenant (deprecated; use ListTenantUser)."
     }
   ];
   string template_id = 18 [
     (google.api.field_behavior) = OUTPUT_ONLY,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Package template ID to assign with tenant."
-    }
-  ];
-  repeated TenantUser tenant_users = 19 [
-    (google.api.field_behavior) = OUTPUT_ONLY,
-    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "Users associated with the tenant."
     }
   ];
 }

@@ -677,21 +677,12 @@
                 "type": "object",
                 "$ref": "#/definitions/v202211User"
               },
-              "description": "Users associated with the tenant (deprecated; use tenant_users).",
+              "description": "Users associated with the tenant (deprecated; use ListTenantUser).",
               "readOnly": true
             },
             "templateId": {
               "type": "string",
               "description": "Package template ID to assign with tenant.",
-              "readOnly": true
-            },
-            "tenantUsers": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "$ref": "#/definitions/v202407TenantUser"
-              },
-              "description": "Users associated with the tenant.",
               "readOnly": true
             }
           },
@@ -1460,21 +1451,12 @@
             "type": "object",
             "$ref": "#/definitions/v202211User"
           },
-          "description": "Users associated with the tenant (deprecated; use tenant_users).",
+          "description": "Users associated with the tenant (deprecated; use ListTenantUser).",
           "readOnly": true
         },
         "templateId": {
           "type": "string",
           "description": "Package template ID to assign with tenant.",
-          "readOnly": true
-        },
-        "tenantUsers": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/v202407TenantUser"
-          },
-          "description": "Users associated with the tenant.",
           "readOnly": true
         }
       },

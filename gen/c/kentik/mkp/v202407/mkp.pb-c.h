@@ -374,12 +374,10 @@ struct  Kentik__Mkp__V202407__Tenant
   size_t n_users PROTOBUF_C__DEPRECATED;
   Kentik__User__V202211__User **users PROTOBUF_C__DEPRECATED;
   char *template_id;
-  size_t n_tenant_users;
-  Kentik__Mkp__V202407__TenantUser **tenant_users;
 };
 #define KENTIK__MKP__V202407__TENANT__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__mkp__v202407__tenant__descriptor) \
-    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, 0,NULL, NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL, NULL, NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL, 0,NULL, (char *)protobuf_c_empty_string, 0,NULL }
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, 0,NULL, NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL, NULL, NULL, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL, 0,NULL, (char *)protobuf_c_empty_string }
 
 
 /*

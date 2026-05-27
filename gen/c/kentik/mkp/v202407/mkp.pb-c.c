@@ -3338,7 +3338,7 @@ const ProtobufCMessageDescriptor kentik__mkp__v202407__tenant_user__descriptor =
   (ProtobufCMessageInit) kentik__mkp__v202407__tenant_user__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__mkp__v202407__tenant__field_descriptors[19] =
+static const ProtobufCFieldDescriptor kentik__mkp__v202407__tenant__field_descriptors[18] =
 {
   {
     "id",
@@ -3556,18 +3556,6 @@ static const ProtobufCFieldDescriptor kentik__mkp__v202407__tenant__field_descri
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
-  {
-    "tenant_users",
-    19,
-    PROTOBUF_C_LABEL_REPEATED,
-    PROTOBUF_C_TYPE_MESSAGE,
-    offsetof(Kentik__Mkp__V202407__Tenant, n_tenant_users),
-    offsetof(Kentik__Mkp__V202407__Tenant, tenant_users),
-    &kentik__mkp__v202407__tenant_user__descriptor,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
 };
 static const unsigned kentik__mkp__v202407__tenant__field_indices_by_name[] = {
   6,   /* field[6] = alerts */
@@ -3586,14 +3574,13 @@ static const unsigned kentik__mkp__v202407__tenant__field_indices_by_name[] = {
   15,   /* field[15] = packages */
   13,   /* field[13] = snmp_alias */
   17,   /* field[17] = template_id */
-  18,   /* field[18] = tenant_users */
   4,   /* field[4] = type */
   16,   /* field[16] = users */
 };
 static const ProtobufCIntRange kentik__mkp__v202407__tenant__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 19 }
+  { 0, 18 }
 };
 const ProtobufCMessageDescriptor kentik__mkp__v202407__tenant__descriptor =
 {
@@ -3603,7 +3590,7 @@ const ProtobufCMessageDescriptor kentik__mkp__v202407__tenant__descriptor =
   "Kentik__Mkp__V202407__Tenant",
   "kentik.mkp.v202407",
   sizeof(Kentik__Mkp__V202407__Tenant),
-  19,
+  18,
   kentik__mkp__v202407__tenant__field_descriptors,
   kentik__mkp__v202407__tenant__field_indices_by_name,
   1,  kentik__mkp__v202407__tenant__number_ranges,
