@@ -675,14 +675,23 @@
               "type": "array",
               "items": {
                 "type": "object",
-                "$ref": "#/definitions/v202407TenantUser"
+                "$ref": "#/definitions/v202211User"
               },
-              "description": "Users associated with the tenant.",
+              "description": "Users associated with the tenant (deprecated; use tenant_users).",
               "readOnly": true
             },
             "templateId": {
               "type": "string",
               "description": "Package template ID to assign with tenant.",
+              "readOnly": true
+            },
+            "tenantUsers": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "$ref": "#/definitions/v202407TenantUser"
+              },
+              "description": "Users associated with the tenant.",
               "readOnly": true
             }
           },
@@ -771,6 +780,138 @@
           }
         }
       }
+    },
+    "v202211LandingType": {
+      "type": "string",
+      "enum": [
+        "LANDING_TYPE_UNSPECIFIED",
+        "LANDING_TYPE_LOCAL",
+        "LANDING_TYPE_OBSERVATION_DECK",
+        "LANDING_TYPE_NMS_DASHBOARD",
+        "LANDING_TYPE_NETWORK_EXPLORER",
+        "LANDING_TYPE_LIBRARY",
+        "LANDING_TYPE_SYNTHETICS",
+        "LANDING_TYPE_EXPLORER",
+        "LANDING_TYPE_ALERTING",
+        "LANDING_TYPE_INSIGHTS",
+        "LANDING_TYPE_DASHBOARD",
+        "LANDING_TYPE_SAVED_VIEW",
+        "LANDING_TYPE_QUICK_VIEW",
+        "LANDING_TYPE_MARKET_INTELLIGENCE"
+      ],
+      "default": "LANDING_TYPE_UNSPECIFIED",
+      "title": "LandingType"
+    },
+    "v202211PermissionEntry": {
+      "type": "object",
+      "properties": {
+        "capability": {
+          "type": "string",
+          "description": "String identifying capability that is granted of denied"
+        },
+        "allowed": {
+          "type": "boolean",
+          "description": "Flag indicating whether operation is allowed"
+        }
+      },
+      "title": "PermissionEntry",
+      "required": [
+        "capability",
+        "allowed"
+      ]
+    },
+    "v202211Role": {
+      "type": "string",
+      "enum": [
+        "ROLE_UNSPECIFIED",
+        "ROLE_MEMBER",
+        "ROLE_ADMINISTRATOR",
+        "ROLE_SUPER_ADMINISTRATOR"
+      ],
+      "default": "ROLE_UNSPECIFIED",
+      "description": "- ROLE_UNSPECIFIED: Invalid value.\n - ROLE_MEMBER: Member\n - ROLE_ADMINISTRATOR: Administrator\n - ROLE_SUPER_ADMINISTRATOR: Super-administrator",
+      "title": "Role"
+    },
+    "v202211User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "System generated unique identifier",
+          "readOnly": true
+        },
+        "userEmail": {
+          "type": "string",
+          "description": "User e-mail address (serves also as username)"
+        },
+        "userFullName": {
+          "type": "string",
+          "description": "Full name"
+        },
+        "role": {
+          "$ref": "#/definitions/v202211Role",
+          "description": "Legacy user level."
+        },
+        "permissions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v202211PermissionEntry"
+          },
+          "description": "Legacy permissions granted to the user (deprecated, use rbac roles and role-sets)",
+          "readOnly": true
+        },
+        "filter": {
+          "type": "string",
+          "description": "Optional JSON string defining filter for objects visible to the user"
+        },
+        "lastLogin": {
+          "type": "string",
+          "format": "date-time",
+          "description": "UTC Timestamp of user's last login session",
+          "readOnly": true
+        },
+        "cdate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation timestamp (UTC)",
+          "readOnly": true
+        },
+        "edate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last modification timestamp (UTC)",
+          "readOnly": true
+        },
+        "defaultLandingPageType": {
+          "$ref": "#/definitions/v202211LandingType",
+          "description": "Type of the default landing page for the user."
+        },
+        "defaultLandingPageValue": {
+          "type": "string",
+          "description": "Identifier of the specific landing page. Applies to Dashboard, Quick View, Saved View, and Observation Deck landing page types."
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of RBAC roles."
+        },
+        "roleSets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of RBAC role sets."
+        }
+      },
+      "title": "User",
+      "required": [
+        "userEmail",
+        "userFullName",
+        "role"
+      ]
     },
     "v202407Activate": {
       "type": "object",
@@ -1317,14 +1458,23 @@
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/v202407TenantUser"
+            "$ref": "#/definitions/v202211User"
           },
-          "description": "Users associated with the tenant.",
+          "description": "Users associated with the tenant (deprecated; use tenant_users).",
           "readOnly": true
         },
         "templateId": {
           "type": "string",
           "description": "Package template ID to assign with tenant.",
+          "readOnly": true
+        },
+        "tenantUsers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v202407TenantUser"
+          },
+          "description": "Users associated with the tenant.",
           "readOnly": true
         }
       },

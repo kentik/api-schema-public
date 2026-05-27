@@ -7688,6 +7688,7 @@ class Tenant final : public ::google::protobuf::Message
     kCustomDimensionsFieldNumber = 10,
     kPackagesFieldNumber = 16,
     kUsersFieldNumber = 17,
+    kTenantUsersFieldNumber = 19,
     kIdFieldNumber = 1,
     kCompanyIdFieldNumber = 2,
     kNameFieldNumber = 3,
@@ -7754,23 +7755,40 @@ class Tenant final : public ::google::protobuf::Message
   const ::kentik::mkp::v202407::Package& packages(int index) const;
   ::kentik::mkp::v202407::Package* add_packages();
   const ::google::protobuf::RepeatedPtrField<::kentik::mkp::v202407::Package>& packages() const;
-  // repeated .kentik.mkp.v202407.TenantUser users = 17 [json_name = "users", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  int users_size() const;
+  // repeated .kentik.user.v202211.User users = 17 [json_name = "users", deprecated = true, (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  [[deprecated]]  int users_size() const;
   private:
   int _internal_users_size() const;
 
   public:
-  void clear_users() ;
-  ::kentik::mkp::v202407::TenantUser* mutable_users(int index);
-  ::google::protobuf::RepeatedPtrField<::kentik::mkp::v202407::TenantUser>* mutable_users();
+  [[deprecated]]  void clear_users() ;
+  [[deprecated]] ::kentik::user::v202211::User* mutable_users(int index);
+  [[deprecated]] ::google::protobuf::RepeatedPtrField<::kentik::user::v202211::User>* mutable_users();
 
   private:
-  const ::google::protobuf::RepeatedPtrField<::kentik::mkp::v202407::TenantUser>& _internal_users() const;
-  ::google::protobuf::RepeatedPtrField<::kentik::mkp::v202407::TenantUser>* _internal_mutable_users();
+  const ::google::protobuf::RepeatedPtrField<::kentik::user::v202211::User>& _internal_users() const;
+  ::google::protobuf::RepeatedPtrField<::kentik::user::v202211::User>* _internal_mutable_users();
   public:
-  const ::kentik::mkp::v202407::TenantUser& users(int index) const;
-  ::kentik::mkp::v202407::TenantUser* add_users();
-  const ::google::protobuf::RepeatedPtrField<::kentik::mkp::v202407::TenantUser>& users() const;
+  [[deprecated]] const ::kentik::user::v202211::User& users(int index) const;
+  [[deprecated]] ::kentik::user::v202211::User* add_users();
+  [[deprecated]] const ::google::protobuf::RepeatedPtrField<::kentik::user::v202211::User>& users() const;
+  // repeated .kentik.mkp.v202407.TenantUser tenant_users = 19 [json_name = "tenantUsers", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  int tenant_users_size() const;
+  private:
+  int _internal_tenant_users_size() const;
+
+  public:
+  void clear_tenant_users() ;
+  ::kentik::mkp::v202407::TenantUser* mutable_tenant_users(int index);
+  ::google::protobuf::RepeatedPtrField<::kentik::mkp::v202407::TenantUser>* mutable_tenant_users();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<::kentik::mkp::v202407::TenantUser>& _internal_tenant_users() const;
+  ::google::protobuf::RepeatedPtrField<::kentik::mkp::v202407::TenantUser>* _internal_mutable_tenant_users();
+  public:
+  const ::kentik::mkp::v202407::TenantUser& tenant_users(int index) const;
+  ::kentik::mkp::v202407::TenantUser* add_tenant_users();
+  const ::google::protobuf::RepeatedPtrField<::kentik::mkp::v202407::TenantUser>& tenant_users() const;
   // string id = 1 [json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   void clear_id() ;
   const std::string& id() const;
@@ -7991,7 +8009,7 @@ class Tenant final : public ::google::protobuf::Message
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      5, 18, 7,
+      5, 19, 8,
       123, 2>
       _table_;
 
@@ -8014,7 +8032,8 @@ class Tenant final : public ::google::protobuf::Message
     ::google::protobuf::RepeatedPtrField< ::kentik::mkp::v202407::Alert > alerts_;
     ::google::protobuf::RepeatedPtrField< ::kentik::mkp::v202407::CustomDimension > custom_dimensions_;
     ::google::protobuf::RepeatedPtrField< ::kentik::mkp::v202407::Package > packages_;
-    ::google::protobuf::RepeatedPtrField< ::kentik::mkp::v202407::TenantUser > users_;
+    ::google::protobuf::RepeatedPtrField< ::kentik::user::v202211::User > users_;
+    ::google::protobuf::RepeatedPtrField< ::kentik::mkp::v202407::TenantUser > tenant_users_;
     ::google::protobuf::internal::ArenaStringPtr id_;
     ::google::protobuf::internal::ArenaStringPtr company_id_;
     ::google::protobuf::internal::ArenaStringPtr name_;
@@ -14541,50 +14560,46 @@ Tenant::_internal_mutable_packages() {
   return &_impl_.packages_;
 }
 
-// repeated .kentik.mkp.v202407.TenantUser users = 17 [json_name = "users", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+// repeated .kentik.user.v202211.User users = 17 [json_name = "users", deprecated = true, (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
 inline int Tenant::_internal_users_size() const {
   return _internal_users().size();
 }
 inline int Tenant::users_size() const {
   return _internal_users_size();
 }
-inline void Tenant::clear_users() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.users_.Clear();
-}
-inline ::kentik::mkp::v202407::TenantUser* Tenant::mutable_users(int index)
+inline ::kentik::user::v202211::User* Tenant::mutable_users(int index)
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   // @@protoc_insertion_point(field_mutable:kentik.mkp.v202407.Tenant.users)
   return _internal_mutable_users()->Mutable(index);
 }
-inline ::google::protobuf::RepeatedPtrField<::kentik::mkp::v202407::TenantUser>* Tenant::mutable_users()
+inline ::google::protobuf::RepeatedPtrField<::kentik::user::v202211::User>* Tenant::mutable_users()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   // @@protoc_insertion_point(field_mutable_list:kentik.mkp.v202407.Tenant.users)
   ::google::protobuf::internal::TSanWrite(&_impl_);
   return _internal_mutable_users();
 }
-inline const ::kentik::mkp::v202407::TenantUser& Tenant::users(int index) const
+inline const ::kentik::user::v202211::User& Tenant::users(int index) const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   // @@protoc_insertion_point(field_get:kentik.mkp.v202407.Tenant.users)
   return _internal_users().Get(index);
 }
-inline ::kentik::mkp::v202407::TenantUser* Tenant::add_users() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+inline ::kentik::user::v202211::User* Tenant::add_users() ABSL_ATTRIBUTE_LIFETIME_BOUND {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  ::kentik::mkp::v202407::TenantUser* _add = _internal_mutable_users()->Add();
+  ::kentik::user::v202211::User* _add = _internal_mutable_users()->Add();
   // @@protoc_insertion_point(field_add:kentik.mkp.v202407.Tenant.users)
   return _add;
 }
-inline const ::google::protobuf::RepeatedPtrField<::kentik::mkp::v202407::TenantUser>& Tenant::users() const
+inline const ::google::protobuf::RepeatedPtrField<::kentik::user::v202211::User>& Tenant::users() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   // @@protoc_insertion_point(field_list:kentik.mkp.v202407.Tenant.users)
   return _internal_users();
 }
-inline const ::google::protobuf::RepeatedPtrField<::kentik::mkp::v202407::TenantUser>&
+inline const ::google::protobuf::RepeatedPtrField<::kentik::user::v202211::User>&
 Tenant::_internal_users() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
   return _impl_.users_;
 }
-inline ::google::protobuf::RepeatedPtrField<::kentik::mkp::v202407::TenantUser>*
+inline ::google::protobuf::RepeatedPtrField<::kentik::user::v202211::User>*
 Tenant::_internal_mutable_users() {
   ::google::protobuf::internal::TSanRead(&_impl_);
   return &_impl_.users_;
@@ -14636,6 +14651,55 @@ inline void Tenant::set_allocated_template_id(std::string* value) {
     _impl_.template_id_.Set("", GetArena());
   }
   // @@protoc_insertion_point(field_set_allocated:kentik.mkp.v202407.Tenant.template_id)
+}
+
+// repeated .kentik.mkp.v202407.TenantUser tenant_users = 19 [json_name = "tenantUsers", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline int Tenant::_internal_tenant_users_size() const {
+  return _internal_tenant_users().size();
+}
+inline int Tenant::tenant_users_size() const {
+  return _internal_tenant_users_size();
+}
+inline void Tenant::clear_tenant_users() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.tenant_users_.Clear();
+}
+inline ::kentik::mkp::v202407::TenantUser* Tenant::mutable_tenant_users(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:kentik.mkp.v202407.Tenant.tenant_users)
+  return _internal_mutable_tenant_users()->Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField<::kentik::mkp::v202407::TenantUser>* Tenant::mutable_tenant_users()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:kentik.mkp.v202407.Tenant.tenant_users)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_tenant_users();
+}
+inline const ::kentik::mkp::v202407::TenantUser& Tenant::tenant_users(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.mkp.v202407.Tenant.tenant_users)
+  return _internal_tenant_users().Get(index);
+}
+inline ::kentik::mkp::v202407::TenantUser* Tenant::add_tenant_users() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::kentik::mkp::v202407::TenantUser* _add = _internal_mutable_tenant_users()->Add();
+  // @@protoc_insertion_point(field_add:kentik.mkp.v202407.Tenant.tenant_users)
+  return _add;
+}
+inline const ::google::protobuf::RepeatedPtrField<::kentik::mkp::v202407::TenantUser>& Tenant::tenant_users() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:kentik.mkp.v202407.Tenant.tenant_users)
+  return _internal_tenant_users();
+}
+inline const ::google::protobuf::RepeatedPtrField<::kentik::mkp::v202407::TenantUser>&
+Tenant::_internal_tenant_users() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.tenant_users_;
+}
+inline ::google::protobuf::RepeatedPtrField<::kentik::mkp::v202407::TenantUser>*
+Tenant::_internal_mutable_tenant_users() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.tenant_users_;
 }
 
 // -------------------------------------------------------------------

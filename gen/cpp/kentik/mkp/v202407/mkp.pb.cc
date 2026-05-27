@@ -992,6 +992,7 @@ inline constexpr Tenant::Impl_::Impl_(
         custom_dimensions_{},
         packages_{},
         users_{},
+        tenant_users_{},
         id_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
@@ -1553,6 +1554,7 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::Tenant, _impl_.packages_),
         PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::Tenant, _impl_.users_),
         PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::Tenant, _impl_.template_id_),
+        PROTOBUF_FIELD_OFFSET(::kentik::mkp::v202407::Tenant, _impl_.tenant_users_),
         ~0u,
         ~0u,
         ~0u,
@@ -1566,6 +1568,7 @@ const ::uint32_t
         ~0u,
         0,
         1,
+        ~0u,
         ~0u,
         ~0u,
         ~0u,
@@ -1855,35 +1858,35 @@ static const ::_pbi::MigrationSchema
         {179, -1, -1, sizeof(::kentik::mkp::v202407::FilterField)},
         {190, -1, -1, sizeof(::kentik::mkp::v202407::Filter)},
         {207, -1, -1, sizeof(::kentik::mkp::v202407::TenantUser)},
-        {219, 245, -1, sizeof(::kentik::mkp::v202407::Tenant)},
-        {263, -1, -1, sizeof(::kentik::mkp::v202407::ListPackageRequest)},
-        {271, -1, -1, sizeof(::kentik::mkp::v202407::ListPackageResponse)},
-        {281, -1, -1, sizeof(::kentik::mkp::v202407::GetPackageRequest)},
-        {290, 299, -1, sizeof(::kentik::mkp::v202407::GetPackageResponse)},
-        {300, 309, -1, sizeof(::kentik::mkp::v202407::CreatePackageRequest)},
-        {310, 319, -1, sizeof(::kentik::mkp::v202407::CreatePackageResponse)},
-        {320, 329, -1, sizeof(::kentik::mkp::v202407::UpdatePackageRequest)},
-        {330, 339, -1, sizeof(::kentik::mkp::v202407::UpdatePackageResponse)},
-        {340, -1, -1, sizeof(::kentik::mkp::v202407::DeletePackageRequest)},
-        {349, -1, -1, sizeof(::kentik::mkp::v202407::DeletePackageResponse)},
-        {357, -1, -1, sizeof(::kentik::mkp::v202407::ListTenantRequest)},
-        {365, -1, -1, sizeof(::kentik::mkp::v202407::ListTenantResponse)},
-        {375, -1, -1, sizeof(::kentik::mkp::v202407::GetTenantRequest)},
-        {384, 393, -1, sizeof(::kentik::mkp::v202407::GetTenantResponse)},
-        {394, 403, -1, sizeof(::kentik::mkp::v202407::CreateTenantRequest)},
-        {404, 413, -1, sizeof(::kentik::mkp::v202407::CreateTenantResponse)},
-        {414, 423, -1, sizeof(::kentik::mkp::v202407::UpdateTenantRequest)},
-        {424, 433, -1, sizeof(::kentik::mkp::v202407::UpdateTenantResponse)},
-        {434, -1, -1, sizeof(::kentik::mkp::v202407::DeleteTenantRequest)},
-        {443, -1, -1, sizeof(::kentik::mkp::v202407::DeleteTenantResponse)},
-        {451, -1, -1, sizeof(::kentik::mkp::v202407::ListTenantUserRequest)},
-        {460, -1, -1, sizeof(::kentik::mkp::v202407::ListTenantUserResponse)},
-        {470, 479, -1, sizeof(::kentik::mkp::v202407::CreateTenantUserRequest)},
-        {480, 489, -1, sizeof(::kentik::mkp::v202407::CreateTenantUserResponse)},
-        {490, 499, -1, sizeof(::kentik::mkp::v202407::UpdateTenantUserRequest)},
-        {500, 509, -1, sizeof(::kentik::mkp::v202407::UpdateTenantUserResponse)},
-        {510, -1, -1, sizeof(::kentik::mkp::v202407::DeleteTenantUserRequest)},
-        {520, -1, -1, sizeof(::kentik::mkp::v202407::DeleteTenantUserResponse)},
+        {219, 246, -1, sizeof(::kentik::mkp::v202407::Tenant)},
+        {265, -1, -1, sizeof(::kentik::mkp::v202407::ListPackageRequest)},
+        {273, -1, -1, sizeof(::kentik::mkp::v202407::ListPackageResponse)},
+        {283, -1, -1, sizeof(::kentik::mkp::v202407::GetPackageRequest)},
+        {292, 301, -1, sizeof(::kentik::mkp::v202407::GetPackageResponse)},
+        {302, 311, -1, sizeof(::kentik::mkp::v202407::CreatePackageRequest)},
+        {312, 321, -1, sizeof(::kentik::mkp::v202407::CreatePackageResponse)},
+        {322, 331, -1, sizeof(::kentik::mkp::v202407::UpdatePackageRequest)},
+        {332, 341, -1, sizeof(::kentik::mkp::v202407::UpdatePackageResponse)},
+        {342, -1, -1, sizeof(::kentik::mkp::v202407::DeletePackageRequest)},
+        {351, -1, -1, sizeof(::kentik::mkp::v202407::DeletePackageResponse)},
+        {359, -1, -1, sizeof(::kentik::mkp::v202407::ListTenantRequest)},
+        {367, -1, -1, sizeof(::kentik::mkp::v202407::ListTenantResponse)},
+        {377, -1, -1, sizeof(::kentik::mkp::v202407::GetTenantRequest)},
+        {386, 395, -1, sizeof(::kentik::mkp::v202407::GetTenantResponse)},
+        {396, 405, -1, sizeof(::kentik::mkp::v202407::CreateTenantRequest)},
+        {406, 415, -1, sizeof(::kentik::mkp::v202407::CreateTenantResponse)},
+        {416, 425, -1, sizeof(::kentik::mkp::v202407::UpdateTenantRequest)},
+        {426, 435, -1, sizeof(::kentik::mkp::v202407::UpdateTenantResponse)},
+        {436, -1, -1, sizeof(::kentik::mkp::v202407::DeleteTenantRequest)},
+        {445, -1, -1, sizeof(::kentik::mkp::v202407::DeleteTenantResponse)},
+        {453, -1, -1, sizeof(::kentik::mkp::v202407::ListTenantUserRequest)},
+        {462, -1, -1, sizeof(::kentik::mkp::v202407::ListTenantUserResponse)},
+        {472, 481, -1, sizeof(::kentik::mkp::v202407::CreateTenantUserRequest)},
+        {482, 491, -1, sizeof(::kentik::mkp::v202407::CreateTenantUserResponse)},
+        {492, 501, -1, sizeof(::kentik::mkp::v202407::UpdateTenantUserRequest)},
+        {502, 511, -1, sizeof(::kentik::mkp::v202407::UpdateTenantUserResponse)},
+        {512, -1, -1, sizeof(::kentik::mkp::v202407::DeleteTenantUserRequest)},
+        {522, -1, -1, sizeof(::kentik::mkp::v202407::DeleteTenantUserResponse)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::mkp::v202407::_Alert_default_instance_._instance,
@@ -2031,7 +2034,7 @@ const char descriptor_table_protodef_kentik_2fmkp_2fv202407_2fmkp_2eproto[] ABSL
     "ngs to\340A\002R\010tenantId\022C\n\016user_full_name\030\003 "
     "\001(\tB\035\222A\0272\025Full name of the user\340A\002R\014user"
     "FullName\022@\n\nuser_email\030\004 \001(\tB!\222A\0332\031Email"
-    " address of the user\340A\002R\tuserEmail\"\316\n\n\006T"
+    " address of the user\340A\002R\tuserEmail\"\330\013\n\006T"
     "enant\022G\n\002id\030\001 \001(\tB7\222A12/Unique system as"
     "signed identifier of the tenant\340A\003R\002id\022K"
     "\n\ncompany_id\030\002 \001(\tB,\222A&2$Company id of t"
@@ -2061,212 +2064,216 @@ const char descriptor_table_protodef_kentik_2fmkp_2fv202407_2fmkp_2eproto[] ABSL
     "NMP data source.\340A\003R\tsnmpAlias\022e\n\010packag"
     "es\030\020 \003(\0132\033.kentik.mkp.v202407.PackageB,\222"
     "A&2$Packages associated with the tenant."
-    "\340A\003R\010packages\022_\n\005users\030\021 \003(\0132\036.kentik.mk"
-    "p.v202407.TenantUserB)\222A#2!Users associa"
-    "ted with the tenant.\340A\003R\005users\022S\n\013templa"
-    "te_id\030\022 \001(\tB2\222A,2*Package template ID to"
-    " assign with tenant.\340A\003R\ntemplateId\"\024\n\022L"
-    "istPackageRequest\"s\n\023ListPackageResponse"
-    "\0227\n\010packages\030\001 \003(\0132\033.kentik.mkp.v202407."
-    "PackageR\010packages\022#\n\rinvalid_count\030\002 \001(\r"
-    "R\014invalidCount\"#\n\021GetPackageRequest\022\016\n\002i"
-    "d\030\001 \001(\tR\002id\"K\n\022GetPackageResponse\0225\n\007pac"
-    "kage\030\001 \001(\0132\033.kentik.mkp.v202407.PackageR"
-    "\007package\"M\n\024CreatePackageRequest\0225\n\007pack"
-    "age\030\001 \001(\0132\033.kentik.mkp.v202407.PackageR\007"
-    "package\"N\n\025CreatePackageResponse\0225\n\007pack"
-    "age\030\001 \001(\0132\033.kentik.mkp.v202407.PackageR\007"
-    "package\"M\n\024UpdatePackageRequest\0225\n\007packa"
-    "ge\030\001 \001(\0132\033.kentik.mkp.v202407.PackageR\007p"
-    "ackage\"N\n\025UpdatePackageResponse\0225\n\007packa"
-    "ge\030\001 \001(\0132\033.kentik.mkp.v202407.PackageR\007p"
-    "ackage\"&\n\024DeletePackageRequest\022\016\n\002id\030\001 \001"
-    "(\tR\002id\"\027\n\025DeletePackageResponse\"\023\n\021ListT"
-    "enantRequest\"o\n\022ListTenantResponse\0224\n\007te"
-    "nants\030\001 \003(\0132\032.kentik.mkp.v202407.TenantR"
-    "\007tenants\022#\n\rinvalid_count\030\002 \001(\rR\014invalid"
-    "Count\"\"\n\020GetTenantRequest\022\016\n\002id\030\001 \001(\tR\002i"
-    "d\"G\n\021GetTenantResponse\0222\n\006tenant\030\001 \001(\0132\032"
-    ".kentik.mkp.v202407.TenantR\006tenant\"I\n\023Cr"
-    "eateTenantRequest\0222\n\006tenant\030\001 \001(\0132\032.kent"
-    "ik.mkp.v202407.TenantR\006tenant\"J\n\024CreateT"
-    "enantResponse\0222\n\006tenant\030\001 \001(\0132\032.kentik.m"
-    "kp.v202407.TenantR\006tenant\"I\n\023UpdateTenan"
-    "tRequest\0222\n\006tenant\030\001 \001(\0132\032.kentik.mkp.v2"
-    "02407.TenantR\006tenant\"J\n\024UpdateTenantResp"
-    "onse\0222\n\006tenant\030\001 \001(\0132\032.kentik.mkp.v20240"
-    "7.TenantR\006tenant\"%\n\023DeleteTenantRequest\022"
-    "\016\n\002id\030\001 \001(\tR\002id\"\026\n\024DeleteTenantResponse\""
-    "4\n\025ListTenantUserRequest\022\033\n\ttenant_id\030\001 "
-    "\001(\tR\010tenantId\"s\n\026ListTenantUserResponse\022"
-    "4\n\005users\030\001 \003(\0132\036.kentik.mkp.v202407.Tena"
-    "ntUserR\005users\022#\n\rinvalid_count\030\002 \001(\rR\014in"
-    "validCount\"M\n\027CreateTenantUserRequest\0222\n"
-    "\004user\030\001 \001(\0132\036.kentik.mkp.v202407.TenantU"
-    "serR\004user\"N\n\030CreateTenantUserResponse\0222\n"
-    "\004user\030\001 \001(\0132\036.kentik.mkp.v202407.TenantU"
-    "serR\004user\"M\n\027UpdateTenantUserRequest\0222\n\004"
-    "user\030\001 \001(\0132\036.kentik.mkp.v202407.TenantUs"
-    "erR\004user\"N\n\030UpdateTenantUserResponse\0222\n\004"
-    "user\030\001 \001(\0132\036.kentik.mkp.v202407.TenantUs"
-    "erR\004user\"F\n\027DeleteTenantUserRequest\022\033\n\tt"
-    "enant_id\030\001 \001(\tR\010tenantId\022\016\n\002id\030\002 \001(\tR\002id"
-    "\"\032\n\030DeleteTenantUserResponse2\367\t\n\016Package"
-    "Service\022\324\001\n\013ListPackage\022&.kentik.mkp.v20"
-    "2407.ListPackageRequest\032\'.kentik.mkp.v20"
-    "2407.ListPackageResponse\"t\222AB\022\022List MKP "
-    "packages.\032\037Returns a list of MKP package"
-    "s.*\013PackageList\362\327\002\016admin.mkp:read\202\323\344\223\002\027\022"
-    "\025/mkp/v202407/packages\022\372\001\n\nGetPackage\022%."
-    "kentik.mkp.v202407.GetPackageRequest\032&.k"
-    "entik.mkp.v202407.GetPackageResponse\"\234\001\222"
-    "Ae\022!Get information aboout a package.\0324R"
+    "\340A\003R\010packages\022{\n\005users\030\021 \003(\0132\031.kentik.us"
+    "er.v202211.UserBJ\030\001\222AB2@Users associated"
+    " with the tenant (deprecated; use tenant"
+    "_users).\340A\003R\005users\022S\n\013template_id\030\022 \001(\tB"
+    "2\222A,2*Package template ID to assign with"
+    " tenant.\340A\003R\ntemplateId\022l\n\014tenant_users\030"
+    "\023 \003(\0132\036.kentik.mkp.v202407.TenantUserB)\222"
+    "A#2!Users associated with the tenant.\340A\003"
+    "R\013tenantUsers\"\024\n\022ListPackageRequest\"s\n\023L"
+    "istPackageResponse\0227\n\010packages\030\001 \003(\0132\033.k"
+    "entik.mkp.v202407.PackageR\010packages\022#\n\ri"
+    "nvalid_count\030\002 \001(\rR\014invalidCount\"#\n\021GetP"
+    "ackageRequest\022\016\n\002id\030\001 \001(\tR\002id\"K\n\022GetPack"
+    "ageResponse\0225\n\007package\030\001 \001(\0132\033.kentik.mk"
+    "p.v202407.PackageR\007package\"M\n\024CreatePack"
+    "ageRequest\0225\n\007package\030\001 \001(\0132\033.kentik.mkp"
+    ".v202407.PackageR\007package\"N\n\025CreatePacka"
+    "geResponse\0225\n\007package\030\001 \001(\0132\033.kentik.mkp"
+    ".v202407.PackageR\007package\"M\n\024UpdatePacka"
+    "geRequest\0225\n\007package\030\001 \001(\0132\033.kentik.mkp."
+    "v202407.PackageR\007package\"N\n\025UpdatePackag"
+    "eResponse\0225\n\007package\030\001 \001(\0132\033.kentik.mkp."
+    "v202407.PackageR\007package\"&\n\024DeletePackag"
+    "eRequest\022\016\n\002id\030\001 \001(\tR\002id\"\027\n\025DeletePackag"
+    "eResponse\"\023\n\021ListTenantRequest\"o\n\022ListTe"
+    "nantResponse\0224\n\007tenants\030\001 \003(\0132\032.kentik.m"
+    "kp.v202407.TenantR\007tenants\022#\n\rinvalid_co"
+    "unt\030\002 \001(\rR\014invalidCount\"\"\n\020GetTenantRequ"
+    "est\022\016\n\002id\030\001 \001(\tR\002id\"G\n\021GetTenantResponse"
+    "\0222\n\006tenant\030\001 \001(\0132\032.kentik.mkp.v202407.Te"
+    "nantR\006tenant\"I\n\023CreateTenantRequest\0222\n\006t"
+    "enant\030\001 \001(\0132\032.kentik.mkp.v202407.TenantR"
+    "\006tenant\"J\n\024CreateTenantResponse\0222\n\006tenan"
+    "t\030\001 \001(\0132\032.kentik.mkp.v202407.TenantR\006ten"
+    "ant\"I\n\023UpdateTenantRequest\0222\n\006tenant\030\001 \001"
+    "(\0132\032.kentik.mkp.v202407.TenantR\006tenant\"J"
+    "\n\024UpdateTenantResponse\0222\n\006tenant\030\001 \001(\0132\032"
+    ".kentik.mkp.v202407.TenantR\006tenant\"%\n\023De"
+    "leteTenantRequest\022\016\n\002id\030\001 \001(\tR\002id\"\026\n\024Del"
+    "eteTenantResponse\"4\n\025ListTenantUserReque"
+    "st\022\033\n\ttenant_id\030\001 \001(\tR\010tenantId\"s\n\026ListT"
+    "enantUserResponse\0224\n\005users\030\001 \003(\0132\036.kenti"
+    "k.mkp.v202407.TenantUserR\005users\022#\n\rinval"
+    "id_count\030\002 \001(\rR\014invalidCount\"M\n\027CreateTe"
+    "nantUserRequest\0222\n\004user\030\001 \001(\0132\036.kentik.m"
+    "kp.v202407.TenantUserR\004user\"N\n\030CreateTen"
+    "antUserResponse\0222\n\004user\030\001 \001(\0132\036.kentik.m"
+    "kp.v202407.TenantUserR\004user\"M\n\027UpdateTen"
+    "antUserRequest\0222\n\004user\030\001 \001(\0132\036.kentik.mk"
+    "p.v202407.TenantUserR\004user\"N\n\030UpdateTena"
+    "ntUserResponse\0222\n\004user\030\001 \001(\0132\036.kentik.mk"
+    "p.v202407.TenantUserR\004user\"F\n\027DeleteTena"
+    "ntUserRequest\022\033\n\ttenant_id\030\001 \001(\tR\010tenant"
+    "Id\022\016\n\002id\030\002 \001(\tR\002id\"\032\n\030DeleteTenantUserRe"
+    "sponse2\367\t\n\016PackageService\022\324\001\n\013ListPackag"
+    "e\022&.kentik.mkp.v202407.ListPackageReques"
+    "t\032\'.kentik.mkp.v202407.ListPackageRespon"
+    "se\"t\222AB\022\022List MKP packages.\032\037Returns a l"
+    "ist of MKP packages.*\013PackageList\362\327\002\016adm"
+    "in.mkp:read\202\323\344\223\002\027\022\025/mkp/v202407/packages"
+    "\022\372\001\n\nGetPackage\022%.kentik.mkp.v202407.Get"
+    "PackageRequest\032&.kentik.mkp.v202407.GetP"
+    "ackageResponse\"\234\001\222Ae\022!Get information ab"
+    "oout a package.\0324Returns information abo"
+    "ut package specified with ID.*\nPackageGe"
+    "t\362\327\002\016admin.mkp:read\202\323\344\223\002\034\022\032/mkp/v202407/"
+    "packages/{id}\022\377\001\n\rCreatePackage\022(.kentik"
+    ".mkp.v202407.CreatePackageRequest\032).kent"
+    "ik.mkp.v202407.CreatePackageResponse\"\230\001\222"
+    "Ab\022\032Create a package template.\0325Create p"
+    "ackage from request. returns created pac"
+    "kage.*\rPackageCreate\362\327\002\017admin.mkp:write\202"
+    "\323\344\223\002\032\"\025/mkp/v202407/packages:\001*\022\372\001\n\rUpda"
+    "tePackage\022(.kentik.mkp.v202407.UpdatePac"
+    "kageRequest\032).kentik.mkp.v202407.UpdateP"
+    "ackageResponse\"\223\001\222AP\022\021Update a package.\032"
+    ",Update package attributes specified wit"
+    "h id.*\rPackageUpdate\362\327\002\017admin.mkp:write\202"
+    "\323\344\223\002\'\032\"/mkp/v202407/packages/{package.id"
+    "}:\001*\022\351\001\n\rDeletePackage\022(.kentik.mkp.v202"
+    "407.DeletePackageRequest\032).kentik.mkp.v2"
+    "02407.DeletePackageResponse\"\202\001\222AJ\022\021Delet"
+    "e a package.\032&Deletes the package specif"
+    "ied with id.*\rPackageDelete\362\327\002\017admin.mkp"
+    ":write\202\323\344\223\002\034*\032/mkp/v202407/packages/{id}"
+    "\032&\312A\022mkp.api.kentik.com\352\327\002\tadmin.mkp\220\330\002\003"
+    "2\310\t\n\rTenantService\022\315\001\n\nListTenant\022%.kent"
+    "ik.mkp.v202407.ListTenantRequest\032&.kenti"
+    "k.mkp.v202407.ListTenantResponse\"p\222A\?\022\021L"
+    "ist MKP tenants.\032\036Returns a list of MKP "
+    "tenants.*\nTenantList\362\327\002\016admin.mkp:read\202\323"
+    "\344\223\002\026\022\024/mkp/v202407/tenants\022\364\001\n\tGetTenant"
+    "\022$.kentik.mkp.v202407.GetTenantRequest\032%"
+    ".kentik.mkp.v202407.GetTenantResponse\"\231\001"
+    "\222Ac\022 Get information aboout a tenant.\0324R"
     "eturns information about package specifi"
-    "ed with ID.*\nPackageGet\362\327\002\016admin.mkp:rea"
-    "d\202\323\344\223\002\034\022\032/mkp/v202407/packages/{id}\022\377\001\n\r"
-    "CreatePackage\022(.kentik.mkp.v202407.Creat"
-    "ePackageRequest\032).kentik.mkp.v202407.Cre"
-    "atePackageResponse\"\230\001\222Ab\022\032Create a packa"
-    "ge template.\0325Create package from reques"
-    "t. returns created package.*\rPackageCrea"
-    "te\362\327\002\017admin.mkp:write\202\323\344\223\002\032\"\025/mkp/v20240"
-    "7/packages:\001*\022\372\001\n\rUpdatePackage\022(.kentik"
-    ".mkp.v202407.UpdatePackageRequest\032).kent"
-    "ik.mkp.v202407.UpdatePackageResponse\"\223\001\222"
-    "AP\022\021Update a package.\032,Update package at"
-    "tributes specified with id.*\rPackageUpda"
-    "te\362\327\002\017admin.mkp:write\202\323\344\223\002\'\032\"/mkp/v20240"
-    "7/packages/{package.id}:\001*\022\351\001\n\rDeletePac"
-    "kage\022(.kentik.mkp.v202407.DeletePackageR"
-    "equest\032).kentik.mkp.v202407.DeletePackag"
-    "eResponse\"\202\001\222AJ\022\021Delete a package.\032&Dele"
-    "tes the package specified with id.*\rPack"
-    "ageDelete\362\327\002\017admin.mkp:write\202\323\344\223\002\034*\032/mkp"
-    "/v202407/packages/{id}\032&\312A\022mkp.api.kenti"
-    "k.com\352\327\002\tadmin.mkp\220\330\002\0032\310\t\n\rTenantService"
-    "\022\315\001\n\nListTenant\022%.kentik.mkp.v202407.Lis"
-    "tTenantRequest\032&.kentik.mkp.v202407.List"
-    "TenantResponse\"p\222A\?\022\021List MKP tenants.\032\036"
-    "Returns a list of MKP tenants.*\nTenantLi"
-    "st\362\327\002\016admin.mkp:read\202\323\344\223\002\026\022\024/mkp/v202407"
-    "/tenants\022\364\001\n\tGetTenant\022$.kentik.mkp.v202"
-    "407.GetTenantRequest\032%.kentik.mkp.v20240"
-    "7.GetTenantResponse\"\231\001\222Ac\022 Get informati"
-    "on aboout a tenant.\0324Returns information"
-    " about package specified with ID.*\tTenan"
-    "tGet\362\327\002\016admin.mkp:read\202\323\344\223\002\033\022\031/mkp/v2024"
-    "07/tenants/{id}\022\356\001\n\014CreateTenant\022\'.kenti"
-    "k.mkp.v202407.CreateTenantRequest\032(.kent"
-    "ik.mkp.v202407.CreateTenantResponse\"\212\001\222A"
-    "U\022\020Create a tenant.\0323Create tenant from "
-    "request. returns created tenant.*\014Tenant"
-    "Create\362\327\002\017admin.mkp:write\202\323\344\223\002\031\"\024/mkp/v2"
-    "02407/tenants:\001*\022\362\001\n\014UpdateTenant\022\'.kent"
-    "ik.mkp.v202407.UpdateTenantRequest\032(.ken"
-    "tik.mkp.v202407.UpdateTenantResponse\"\216\001\222"
-    "AM\022\020Update a tenant.\032+Update tenant attr"
-    "ibutes specified with id.*\014TenantUpdate\362"
-    "\327\002\017admin.mkp:write\202\323\344\223\002%\032 /mkp/v202407/t"
-    "enants/{tenant.id}:\001*\022\341\001\n\014DeleteTenant\022\'"
-    ".kentik.mkp.v202407.DeleteTenantRequest\032"
-    "(.kentik.mkp.v202407.DeleteTenantRespons"
-    "e\"~\222AG\022\020Delete a tenant.\032%Deletes the te"
-    "nant specified with id.*\014TenantDelete\362\327\002"
-    "\017admin.mkp:write\202\323\344\223\002\033*\031/mkp/v202407/ten"
-    "ants/{id}\032&\312A\022mkp.api.kentik.com\352\327\002\tadmi"
-    "n.mkp\220\330\002\0032\320\t\n\021TenantUserService\022\226\002\n\016List"
-    "TenantUser\022).kentik.mkp.v202407.ListTena"
-    "ntUserRequest\032*.kentik.mkp.v202407.ListT"
-    "enantUserResponse\"\254\001\222Ai\022\030List users for "
-    "a tenant.\032=Returns a list of users assoc"
-    "iated with the specified tenant.*\016Tenant"
-    "UserList\362\327\002\016admin.mkp:read\202\323\344\223\002(\022&/mkp/v"
-    "202407/tenants/{tenant_id}/users\022\236\002\n\020Cre"
-    "ateTenantUser\022+.kentik.mkp.v202407.Creat"
-    "eTenantUserRequest\032,.kentik.mkp.v202407."
-    "CreateTenantUserResponse\"\256\001\222Ab\022\027Add a us"
-    "er to a tenant.\0325Creates a user associat"
-    "ion with the specified tenant.*\020TenantUs"
-    "erCreate\362\327\002\017admin.mkp:write\202\323\344\223\0020\"+/mkp/"
-    "v202407/tenants/{user.tenant_id}/users:\001"
-    "*\022\263\002\n\020UpdateTenantUser\022+.kentik.mkp.v202"
-    "407.UpdateTenantUserRequest\032,.kentik.mkp"
-    ".v202407.UpdateTenantUserResponse\"\303\001\222Am\022"
-    "\025Update a tenant user.\032BUpdates the user"
-    " associated with the specified tenant an"
-    "d user ID.*\020TenantUserUpdate\362\327\002\017admin.mk"
-    "p:write\202\323\344\223\002:\0325/mkp/v202407/tenants/{use"
-    "r.tenant_id}/users/{user.id}:\001*\022\242\002\n\020Dele"
-    "teTenantUser\022+.kentik.mkp.v202407.Delete"
-    "TenantUserRequest\032,.kentik.mkp.v202407.D"
-    "eleteTenantUserResponse\"\262\001\222Ai\022\034Remove a "
-    "user from a tenant.\0327Deletes the user as"
-    "sociation with the specified tenant.*\020Te"
-    "nantUserDelete\362\327\002\017admin.mkp:write\202\323\344\223\002-*"
-    "+/mkp/v202407/tenants/{tenant_id}/users/"
-    "{id}\032&\312A\022mkp.api.kentik.com\352\327\002\tadmin.mkp"
-    "\220\330\002\003B\241\023ZAgithub.com/kentik/api-schema-pu"
-    "blic/gen/go/kentik/mkp/v202407;mkp\222A\332\022\022\233"
-    "\021\n\007MKP API\022\277\020# Overview\nMy Kentik Portal"
-    " API enables programmatic access to tena"
-    "nts and package templates.\n| Endpoint | "
-    "Purpose |\n|-----------|---------|\n| Tena"
-    "ntService  | CRUD operations for MKP ten"
-    "ants. |\n| PackageService | CRUD operatio"
-    "ns for MKP templates. |\n\nBoth REST endpo"
-    "int and gRPC RPCs are provided.\n\n\n # Ten"
-    "ant Attributes and Settings\n| Attribute "
-    "| Access | Purpose |\n|-----------|------"
-    "--|---------|\n| id | RO | System-generat"
-    "ed unique identifier of the tenant |\n| c"
-    "ompany_id | RO | System-generated unique"
-    " identifier of the company |\n| name | RW"
-    " | User specified name for the tenant |\n"
-    "| description | RW | User specified desc"
-    "ription for the tenant |\n| type | RO | s"
-    "ubtenant |\n| enabled | RW | User specifi"
-    "ed tenant active status |\n| cdate | RO |"
-    " Creation timestamp |\n| edate | RO | Las"
-    "t-modification timestamp |\n| alerts | RO"
-    " | Alert policy configurations |\n| asset"
-    "s | RW | dashboard, views, and templates"
-    " associate with tenant |\n| asn | RW | AS"
-    "N data source |\n| cidr | RW | CIDR data "
-    "source |\n| custom_dimensions | RW | Cust"
-    "om dimension data source |\n| devices | R"
-    "W | Devices data source |\n| filters | RW"
-    " | Data source filters |\n| interface_nam"
-    "e | RW | Interface source filters |\n| sn"
-    "mp_alias | RW | SNMP source filters |\n| "
-    "packages | RO | Package templates use by"
-    " the tenant |\n| users | RO | Users assig"
-    "n to the tenant |\n| template_id | WO | U"
-    "pdate tenant\'s packages setting with pac"
-    "kage/template id |\n\n\n # Package Attribut"
-    "es and Settings\n| Attribute | Access | P"
-    "urpose |\n|-----------|--------|---------"
-    "|\n| id | RO | System-generated unique id"
-    "entifier of the package |\n| company_id |"
-    " RO | System-generated unique identifier"
-    " of the company |\n| name | RW | User spe"
-    "cified name for the package template |\n|"
-    " description | RW | User specified descr"
-    "iption for the package template |\n| icon"
-    " | RO | User specified icon |\n| color | "
-    "RW | User specified color of icon |\n| al"
-    "erts | RO | Alert policy configurations "
-    "|\n| assets | RW | dashboard, views, and "
-    "templates associate with tenant |\n| is_d"
-    "efault | RW | Default package template t"
-    "o include for new tenant |\n| tenants | R"
-    "O | Tenants using this package template "
-    "|\n\n\n\"E\n\026Kentik API Engineering\022+https://"
-    "github.com/kentik/api-schema-public2\007v20"
-    "2407*\001\0022\020application/json:\020application/j"
-    "sonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n"
-    "\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005e"
-    "mail\022\000\n\t\n\005token\022\000r5\n\026More about Kentik A"
-    "PIs\022\033https://docs.kentik.com/apib\006proto3"
+    "ed with ID.*\tTenantGet\362\327\002\016admin.mkp:read"
+    "\202\323\344\223\002\033\022\031/mkp/v202407/tenants/{id}\022\356\001\n\014Cr"
+    "eateTenant\022\'.kentik.mkp.v202407.CreateTe"
+    "nantRequest\032(.kentik.mkp.v202407.CreateT"
+    "enantResponse\"\212\001\222AU\022\020Create a tenant.\0323C"
+    "reate tenant from request. returns creat"
+    "ed tenant.*\014TenantCreate\362\327\002\017admin.mkp:wr"
+    "ite\202\323\344\223\002\031\"\024/mkp/v202407/tenants:\001*\022\362\001\n\014U"
+    "pdateTenant\022\'.kentik.mkp.v202407.UpdateT"
+    "enantRequest\032(.kentik.mkp.v202407.Update"
+    "TenantResponse\"\216\001\222AM\022\020Update a tenant.\032+"
+    "Update tenant attributes specified with "
+    "id.*\014TenantUpdate\362\327\002\017admin.mkp:write\202\323\344\223"
+    "\002%\032 /mkp/v202407/tenants/{tenant.id}:\001*\022"
+    "\341\001\n\014DeleteTenant\022\'.kentik.mkp.v202407.De"
+    "leteTenantRequest\032(.kentik.mkp.v202407.D"
+    "eleteTenantResponse\"~\222AG\022\020Delete a tenan"
+    "t.\032%Deletes the tenant specified with id"
+    ".*\014TenantDelete\362\327\002\017admin.mkp:write\202\323\344\223\002\033"
+    "*\031/mkp/v202407/tenants/{id}\032&\312A\022mkp.api."
+    "kentik.com\352\327\002\tadmin.mkp\220\330\002\0032\320\t\n\021TenantUs"
+    "erService\022\226\002\n\016ListTenantUser\022).kentik.mk"
+    "p.v202407.ListTenantUserRequest\032*.kentik"
+    ".mkp.v202407.ListTenantUserResponse\"\254\001\222A"
+    "i\022\030List users for a tenant.\032=Returns a l"
+    "ist of users associated with the specifi"
+    "ed tenant.*\016TenantUserList\362\327\002\016admin.mkp:"
+    "read\202\323\344\223\002(\022&/mkp/v202407/tenants/{tenant"
+    "_id}/users\022\236\002\n\020CreateTenantUser\022+.kentik"
+    ".mkp.v202407.CreateTenantUserRequest\032,.k"
+    "entik.mkp.v202407.CreateTenantUserRespon"
+    "se\"\256\001\222Ab\022\027Add a user to a tenant.\0325Creat"
+    "es a user association with the specified"
+    " tenant.*\020TenantUserCreate\362\327\002\017admin.mkp:"
+    "write\202\323\344\223\0020\"+/mkp/v202407/tenants/{user."
+    "tenant_id}/users:\001*\022\263\002\n\020UpdateTenantUser"
+    "\022+.kentik.mkp.v202407.UpdateTenantUserRe"
+    "quest\032,.kentik.mkp.v202407.UpdateTenantU"
+    "serResponse\"\303\001\222Am\022\025Update a tenant user."
+    "\032BUpdates the user associated with the s"
+    "pecified tenant and user ID.*\020TenantUser"
+    "Update\362\327\002\017admin.mkp:write\202\323\344\223\002:\0325/mkp/v2"
+    "02407/tenants/{user.tenant_id}/users/{us"
+    "er.id}:\001*\022\242\002\n\020DeleteTenantUser\022+.kentik."
+    "mkp.v202407.DeleteTenantUserRequest\032,.ke"
+    "ntik.mkp.v202407.DeleteTenantUserRespons"
+    "e\"\262\001\222Ai\022\034Remove a user from a tenant.\0327D"
+    "eletes the user association with the spe"
+    "cified tenant.*\020TenantUserDelete\362\327\002\017admi"
+    "n.mkp:write\202\323\344\223\002-*+/mkp/v202407/tenants/"
+    "{tenant_id}/users/{id}\032&\312A\022mkp.api.kenti"
+    "k.com\352\327\002\tadmin.mkp\220\330\002\003B\241\023ZAgithub.com/ke"
+    "ntik/api-schema-public/gen/go/kentik/mkp"
+    "/v202407;mkp\222A\332\022\022\233\021\n\007MKP API\022\277\020# Overvie"
+    "w\nMy Kentik Portal API enables programma"
+    "tic access to tenants and package templa"
+    "tes.\n| Endpoint | Purpose |\n|-----------"
+    "|---------|\n| TenantService  | CRUD oper"
+    "ations for MKP tenants. |\n| PackageServi"
+    "ce | CRUD operations for MKP templates. "
+    "|\n\nBoth REST endpoint and gRPC RPCs are "
+    "provided.\n\n\n # Tenant Attributes and Set"
+    "tings\n| Attribute | Access | Purpose |\n|"
+    "-----------|--------|---------|\n| id | R"
+    "O | System-generated unique identifier o"
+    "f the tenant |\n| company_id | RO | Syste"
+    "m-generated unique identifier of the com"
+    "pany |\n| name | RW | User specified name"
+    " for the tenant |\n| description | RW | U"
+    "ser specified description for the tenant"
+    " |\n| type | RO | subtenant |\n| enabled |"
+    " RW | User specified tenant active statu"
+    "s |\n| cdate | RO | Creation timestamp |\n"
+    "| edate | RO | Last-modification timesta"
+    "mp |\n| alerts | RO | Alert policy config"
+    "urations |\n| assets | RW | dashboard, vi"
+    "ews, and templates associate with tenant"
+    " |\n| asn | RW | ASN data source |\n| cidr"
+    " | RW | CIDR data source |\n| custom_dime"
+    "nsions | RW | Custom dimension data sour"
+    "ce |\n| devices | RW | Devices data sourc"
+    "e |\n| filters | RW | Data source filters"
+    " |\n| interface_name | RW | Interface sou"
+    "rce filters |\n| snmp_alias | RW | SNMP s"
+    "ource filters |\n| packages | RO | Packag"
+    "e templates use by the tenant |\n| users "
+    "| RO | Users assign to the tenant |\n| te"
+    "mplate_id | WO | Update tenant\'s package"
+    "s setting with package/template id |\n\n\n "
+    "# Package Attributes and Settings\n| Attr"
+    "ibute | Access | Purpose |\n|-----------|"
+    "--------|---------|\n| id | RO | System-g"
+    "enerated unique identifier of the packag"
+    "e |\n| company_id | RO | System-generated"
+    " unique identifier of the company |\n| na"
+    "me | RW | User specified name for the pa"
+    "ckage template |\n| description | RW | Us"
+    "er specified description for the package"
+    " template |\n| icon | RO | User specified"
+    " icon |\n| color | RW | User specified co"
+    "lor of icon |\n| alerts | RO | Alert poli"
+    "cy configurations |\n| assets | RW | dash"
+    "board, views, and templates associate wi"
+    "th tenant |\n| is_default | RW | Default "
+    "package template to include for new tena"
+    "nt |\n| tenants | RO | Tenants using this"
+    " package template |\n\n\n\"E\n\026Kentik API Eng"
+    "ineering\022+https://github.com/kentik/api-"
+    "schema-public2\007v202407*\001\0022\020application/j"
+    "son:\020application/jsonZD\n\036\n\005email\022\025\010\002\032\017X-"
+    "CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-"
+    "API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000r5\n\026M"
+    "ore about Kentik APIs\022\033https://docs.kent"
+    "ik.com/apib\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fmkp_2fv202407_2fmkp_2eproto_deps[6] =
     {
@@ -2281,7 +2288,7 @@ static ::absl::once_flag descriptor_table_kentik_2fmkp_2fv202407_2fmkp_2eproto_o
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fmkp_2fv202407_2fmkp_2eproto = {
     false,
     false,
-    13360,
+    13498,
     descriptor_table_protodef_kentik_2fmkp_2fv202407_2fmkp_2eproto,
     "kentik/mkp/v202407/mkp.proto",
     &descriptor_table_kentik_2fmkp_2fv202407_2fmkp_2eproto_once,
@@ -7811,6 +7818,10 @@ class Tenant::_Internal {
       8 * PROTOBUF_FIELD_OFFSET(Tenant, _impl_._has_bits_);
 };
 
+void Tenant::clear_users() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.users_.Clear();
+}
 Tenant::Tenant(::google::protobuf::Arena* arena)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
     : ::google::protobuf::Message(arena, _class_data_.base()) {
@@ -7829,6 +7840,7 @@ inline PROTOBUF_NDEBUG_INLINE Tenant::Impl_::Impl_(
         custom_dimensions_{visibility, arena, from.custom_dimensions_},
         packages_{visibility, arena, from.packages_},
         users_{visibility, arena, from.users_},
+        tenant_users_{visibility, arena, from.tenant_users_},
         id_(arena, from.id_),
         company_id_(arena, from.company_id_),
         name_(arena, from.name_),
@@ -7875,6 +7887,7 @@ inline PROTOBUF_NDEBUG_INLINE Tenant::Impl_::Impl_(
         custom_dimensions_{visibility, arena},
         packages_{visibility, arena},
         users_{visibility, arena},
+        tenant_users_{visibility, arena},
         id_(arena),
         company_id_(arena),
         name_(arena),
@@ -7941,6 +7954,10 @@ constexpr auto Tenant::InternalNewImpl_() {
           decltype(Tenant::_impl_.users_)::
               InternalGetArenaOffset(
                   ::google::protobuf::Message::internal_visibility()),
+      PROTOBUF_FIELD_OFFSET(Tenant, _impl_.tenant_users_) +
+          decltype(Tenant::_impl_.tenant_users_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
   });
   if (arena_bits.has_value()) {
     return ::google::protobuf::internal::MessageCreator::CopyInit(
@@ -7979,16 +7996,16 @@ const ::google::protobuf::internal::ClassData* Tenant::GetClassData() const {
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<5, 18, 7, 123, 2> Tenant::_table_ = {
+const ::_pbi::TcParseTable<5, 19, 8, 123, 2> Tenant::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(Tenant, _impl_._has_bits_),
     0, // no _extensions_
-    18, 248,  // max_field_number, fast_idx_mask
+    19, 248,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294705152,  // skipmap
+    4294443008,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    18,  // num_field_entries
-    7,  // num_aux_entries
+    19,  // num_field_entries
+    8,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
     nullptr,  // post_loop_handler
@@ -8046,13 +8063,15 @@ const ::_pbi::TcParseTable<5, 18, 7, 123, 2> Tenant::_table_ = {
     // repeated .kentik.mkp.v202407.Package packages = 16 [json_name = "packages", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::FastMtR2,
      {386, 63, 5, PROTOBUF_FIELD_OFFSET(Tenant, _impl_.packages_)}},
-    // repeated .kentik.mkp.v202407.TenantUser users = 17 [json_name = "users", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    // repeated .kentik.user.v202211.User users = 17 [json_name = "users", deprecated = true, (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::FastMtR2,
      {394, 63, 6, PROTOBUF_FIELD_OFFSET(Tenant, _impl_.users_)}},
     // string template_id = 18 [json_name = "templateId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::FastUS2,
      {402, 63, 0, PROTOBUF_FIELD_OFFSET(Tenant, _impl_.template_id_)}},
-    {::_pbi::TcParser::MiniParse, {}},
+    // repeated .kentik.mkp.v202407.TenantUser tenant_users = 19 [json_name = "tenantUsers", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastMtR2,
+     {410, 63, 7, PROTOBUF_FIELD_OFFSET(Tenant, _impl_.tenant_users_)}},
     {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
@@ -8116,12 +8135,15 @@ const ::_pbi::TcParseTable<5, 18, 7, 123, 2> Tenant::_table_ = {
     // repeated .kentik.mkp.v202407.Package packages = 16 [json_name = "packages", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {PROTOBUF_FIELD_OFFSET(Tenant, _impl_.packages_), -1, 5,
     (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
-    // repeated .kentik.mkp.v202407.TenantUser users = 17 [json_name = "users", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    // repeated .kentik.user.v202211.User users = 17 [json_name = "users", deprecated = true, (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {PROTOBUF_FIELD_OFFSET(Tenant, _impl_.users_), -1, 6,
     (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
     // string template_id = 18 [json_name = "templateId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {PROTOBUF_FIELD_OFFSET(Tenant, _impl_.template_id_), -1, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // repeated .kentik.mkp.v202407.TenantUser tenant_users = 19 [json_name = "tenantUsers", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(Tenant, _impl_.tenant_users_), -1, 7,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
   }}, {{
     {::_pbi::TcParser::GetTable<::kentik::mkp::v202407::Alert>()},
     {::_pbi::TcParser::GetTable<::kentik::mkp::v202407::CustomDimension>()},
@@ -8129,6 +8151,7 @@ const ::_pbi::TcParseTable<5, 18, 7, 123, 2> Tenant::_table_ = {
     {::_pbi::TcParser::GetTable<::kentik::mkp::v202407::Filter>()},
     {::_pbi::TcParser::GetTable<::kentik::mkp::v202407::Asset>()},
     {::_pbi::TcParser::GetTable<::kentik::mkp::v202407::Package>()},
+    {::_pbi::TcParser::GetTable<::kentik::user::v202211::User>()},
     {::_pbi::TcParser::GetTable<::kentik::mkp::v202407::TenantUser>()},
   }}, {{
     "\31\2\12\4\13\4\0\0\3\4\0\0\0\16\12\0\0\0\13\0\0\0\0\0"
@@ -8157,6 +8180,7 @@ PROTOBUF_NOINLINE void Tenant::Clear() {
   _impl_.custom_dimensions_.Clear();
   _impl_.packages_.Clear();
   _impl_.users_.Clear();
+  _impl_.tenant_users_.Clear();
   _impl_.id_.ClearToEmpty();
   _impl_.company_id_.ClearToEmpty();
   _impl_.name_.ClearToEmpty();
@@ -8336,7 +8360,7 @@ PROTOBUF_NOINLINE void Tenant::Clear() {
                     target, stream);
           }
 
-          // repeated .kentik.mkp.v202407.TenantUser users = 17 [json_name = "users", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          // repeated .kentik.user.v202211.User users = 17 [json_name = "users", deprecated = true, (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
           for (unsigned i = 0, n = static_cast<unsigned>(
                                    this_._internal_users_size());
                i < n; i++) {
@@ -8353,6 +8377,17 @@ PROTOBUF_NOINLINE void Tenant::Clear() {
             ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
                 _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.mkp.v202407.Tenant.template_id");
             target = stream->WriteStringMaybeAliased(18, _s, target);
+          }
+
+          // repeated .kentik.mkp.v202407.TenantUser tenant_users = 19 [json_name = "tenantUsers", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          for (unsigned i = 0, n = static_cast<unsigned>(
+                                   this_._internal_tenant_users_size());
+               i < n; i++) {
+            const auto& repfield = this_._internal_tenant_users().Get(i);
+            target =
+                ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                    19, repfield, repfield.GetCachedSize(),
+                    target, stream);
           }
 
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
@@ -8401,10 +8436,17 @@ PROTOBUF_NOINLINE void Tenant::Clear() {
                 total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
               }
             }
-            // repeated .kentik.mkp.v202407.TenantUser users = 17 [json_name = "users", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            // repeated .kentik.user.v202211.User users = 17 [json_name = "users", deprecated = true, (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
             {
               total_size += 2UL * this_._internal_users_size();
               for (const auto& msg : this_._internal_users()) {
+                total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+              }
+            }
+            // repeated .kentik.mkp.v202407.TenantUser tenant_users = 19 [json_name = "tenantUsers", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            {
+              total_size += 2UL * this_._internal_tenant_users_size();
+              for (const auto& msg : this_._internal_tenant_users()) {
                 total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
               }
             }
@@ -8506,6 +8548,8 @@ void Tenant::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::
       from._internal_packages());
   _this->_internal_mutable_users()->MergeFrom(
       from._internal_users());
+  _this->_internal_mutable_tenant_users()->MergeFrom(
+      from._internal_tenant_users());
   if (!from._internal_id().empty()) {
     _this->_internal_set_id(from._internal_id());
   }
@@ -8591,6 +8635,7 @@ void Tenant::InternalSwap(Tenant* PROTOBUF_RESTRICT other) {
   _impl_.custom_dimensions_.InternalSwap(&other->_impl_.custom_dimensions_);
   _impl_.packages_.InternalSwap(&other->_impl_.packages_);
   _impl_.users_.InternalSwap(&other->_impl_.users_);
+  _impl_.tenant_users_.InternalSwap(&other->_impl_.tenant_users_);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.id_, &other->_impl_.id_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.company_id_, &other->_impl_.company_id_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, &other->_impl_.name_, arena);

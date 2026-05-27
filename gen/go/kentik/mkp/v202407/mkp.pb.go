@@ -11,7 +11,7 @@ package mkp
 import (
 	_ "github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2/options"
 	_ "github.com/kentik/api-schema-public/gen/go/kentik/core/v202303"
-	_ "github.com/kentik/api-schema-public/gen/go/kentik/user/v202211"
+	v202211 "github.com/kentik/api-schema-public/gen/go/kentik/user/v202211"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
@@ -1173,10 +1173,12 @@ type Tenant struct {
 	InterfaceName    string             `protobuf:"bytes,13,opt,name=interface_name,json=interfaceName,proto3" json:"interface_name,omitempty"`
 	SnmpAlias        string             `protobuf:"bytes,14,opt,name=snmp_alias,json=snmpAlias,proto3" json:"snmp_alias,omitempty"`
 	Packages         []*Package         `protobuf:"bytes,16,rep,name=packages,proto3" json:"packages,omitempty"`
-	Users            []*TenantUser      `protobuf:"bytes,17,rep,name=users,proto3" json:"users,omitempty"`
-	TemplateId       string             `protobuf:"bytes,18,opt,name=template_id,json=templateId,proto3" json:"template_id,omitempty"`
-	unknownFields    protoimpl.UnknownFields
-	sizeCache        protoimpl.SizeCache
+	// Deprecated: Marked as deprecated in kentik/mkp/v202407/mkp.proto.
+	Users         []*v202211.User `protobuf:"bytes,17,rep,name=users,proto3" json:"users,omitempty"`
+	TemplateId    string          `protobuf:"bytes,18,opt,name=template_id,json=templateId,proto3" json:"template_id,omitempty"`
+	TenantUsers   []*TenantUser   `protobuf:"bytes,19,rep,name=tenant_users,json=tenantUsers,proto3" json:"tenant_users,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Tenant) Reset() {
@@ -1321,7 +1323,8 @@ func (x *Tenant) GetPackages() []*Package {
 	return nil
 }
 
-func (x *Tenant) GetUsers() []*TenantUser {
+// Deprecated: Marked as deprecated in kentik/mkp/v202407/mkp.proto.
+func (x *Tenant) GetUsers() []*v202211.User {
 	if x != nil {
 		return x.Users
 	}
@@ -1333,6 +1336,13 @@ func (x *Tenant) GetTemplateId() string {
 		return x.TemplateId
 	}
 	return ""
+}
+
+func (x *Tenant) GetTenantUsers() []*TenantUser {
+	if x != nil {
+		return x.TenantUsers
+	}
+	return nil
 }
 
 // {{.Name}}
@@ -2756,8 +2766,7 @@ const file_kentik_mkp_v202407_mkp_proto_rawDesc = "" +
 	"\ttenant_id\x18\x02 \x01(\tB;\x92A523Unique identifier of the tenant the user belongs to\xe0A\x02R\btenantId\x12C\n" +
 	"\x0euser_full_name\x18\x03 \x01(\tB\x1d\x92A\x172\x15Full name of the user\xe0A\x02R\fuserFullName\x12@\n" +
 	"\n" +
-	"user_email\x18\x04 \x01(\tB!\x92A\x1b2\x19Email address of the user\xe0A\x02R\tuserEmail\"\xce\n" +
-	"\n" +
+	"user_email\x18\x04 \x01(\tB!\x92A\x1b2\x19Email address of the user\xe0A\x02R\tuserEmail\"\xd8\v\n" +
 	"\x06Tenant\x12G\n" +
 	"\x02id\x18\x01 \x01(\tB7\x92A12/Unique system assigned identifier of the tenant\xe0A\x03R\x02id\x12K\n" +
 	"\n" +
@@ -2777,10 +2786,11 @@ const file_kentik_mkp_v202407_mkp_proto_rawDesc = "" +
 	"\x0einterface_name\x18\r \x01(\tB\x1e\x92A\x182\x16Interface data source.\xe0A\x03R\rinterfaceName\x128\n" +
 	"\n" +
 	"snmp_alias\x18\x0e \x01(\tB\x19\x92A\x132\x11SNMP data source.\xe0A\x03R\tsnmpAlias\x12e\n" +
-	"\bpackages\x18\x10 \x03(\v2\x1b.kentik.mkp.v202407.PackageB,\x92A&2$Packages associated with the tenant.\xe0A\x03R\bpackages\x12_\n" +
-	"\x05users\x18\x11 \x03(\v2\x1e.kentik.mkp.v202407.TenantUserB)\x92A#2!Users associated with the tenant.\xe0A\x03R\x05users\x12S\n" +
+	"\bpackages\x18\x10 \x03(\v2\x1b.kentik.mkp.v202407.PackageB,\x92A&2$Packages associated with the tenant.\xe0A\x03R\bpackages\x12{\n" +
+	"\x05users\x18\x11 \x03(\v2\x19.kentik.user.v202211.UserBJ\x92AB2@Users associated with the tenant (deprecated; use tenant_users).\xe0A\x03\x18\x01R\x05users\x12S\n" +
 	"\vtemplate_id\x18\x12 \x01(\tB2\x92A,2*Package template ID to assign with tenant.\xe0A\x03R\n" +
-	"templateId\"\x14\n" +
+	"templateId\x12l\n" +
+	"\ftenant_users\x18\x13 \x03(\v2\x1e.kentik.mkp.v202407.TenantUserB)\x92A#2!Users associated with the tenant.\xe0A\x03R\vtenantUsers\"\x14\n" +
 	"\x12ListPackageRequest\"s\n" +
 	"\x13ListPackageResponse\x127\n" +
 	"\bpackages\x18\x01 \x03(\v2\x1b.kentik.mkp.v202407.PackageR\bpackages\x12#\n" +
@@ -2977,6 +2987,7 @@ var file_kentik_mkp_v202407_mkp_proto_goTypes = []any{
 	(*DeleteTenantUserRequest)(nil),  // 41: kentik.mkp.v202407.DeleteTenantUserRequest
 	(*DeleteTenantUserResponse)(nil), // 42: kentik.mkp.v202407.DeleteTenantUserResponse
 	(*Asset_Report)(nil),             // 43: kentik.mkp.v202407.Asset.Report
+	(*v202211.User)(nil),             // 44: kentik.user.v202211.User
 }
 var file_kentik_mkp_v202407_mkp_proto_depIdxs = []int32{
 	2,  // 0: kentik.mkp.v202407.Alert.thresholds:type_name -> kentik.mkp.v202407.Threshold
@@ -2997,57 +3008,58 @@ var file_kentik_mkp_v202407_mkp_proto_depIdxs = []int32{
 	10, // 15: kentik.mkp.v202407.Tenant.devices:type_name -> kentik.mkp.v202407.Devices
 	12, // 16: kentik.mkp.v202407.Tenant.filters:type_name -> kentik.mkp.v202407.Filter
 	8,  // 17: kentik.mkp.v202407.Tenant.packages:type_name -> kentik.mkp.v202407.Package
-	13, // 18: kentik.mkp.v202407.Tenant.users:type_name -> kentik.mkp.v202407.TenantUser
-	8,  // 19: kentik.mkp.v202407.ListPackageResponse.packages:type_name -> kentik.mkp.v202407.Package
-	8,  // 20: kentik.mkp.v202407.GetPackageResponse.package:type_name -> kentik.mkp.v202407.Package
-	8,  // 21: kentik.mkp.v202407.CreatePackageRequest.package:type_name -> kentik.mkp.v202407.Package
-	8,  // 22: kentik.mkp.v202407.CreatePackageResponse.package:type_name -> kentik.mkp.v202407.Package
-	8,  // 23: kentik.mkp.v202407.UpdatePackageRequest.package:type_name -> kentik.mkp.v202407.Package
-	8,  // 24: kentik.mkp.v202407.UpdatePackageResponse.package:type_name -> kentik.mkp.v202407.Package
-	14, // 25: kentik.mkp.v202407.ListTenantResponse.tenants:type_name -> kentik.mkp.v202407.Tenant
-	14, // 26: kentik.mkp.v202407.GetTenantResponse.tenant:type_name -> kentik.mkp.v202407.Tenant
-	14, // 27: kentik.mkp.v202407.CreateTenantRequest.tenant:type_name -> kentik.mkp.v202407.Tenant
-	14, // 28: kentik.mkp.v202407.CreateTenantResponse.tenant:type_name -> kentik.mkp.v202407.Tenant
-	14, // 29: kentik.mkp.v202407.UpdateTenantRequest.tenant:type_name -> kentik.mkp.v202407.Tenant
-	14, // 30: kentik.mkp.v202407.UpdateTenantResponse.tenant:type_name -> kentik.mkp.v202407.Tenant
-	13, // 31: kentik.mkp.v202407.ListTenantUserResponse.users:type_name -> kentik.mkp.v202407.TenantUser
-	13, // 32: kentik.mkp.v202407.CreateTenantUserRequest.user:type_name -> kentik.mkp.v202407.TenantUser
-	13, // 33: kentik.mkp.v202407.CreateTenantUserResponse.user:type_name -> kentik.mkp.v202407.TenantUser
-	13, // 34: kentik.mkp.v202407.UpdateTenantUserRequest.user:type_name -> kentik.mkp.v202407.TenantUser
-	13, // 35: kentik.mkp.v202407.UpdateTenantUserResponse.user:type_name -> kentik.mkp.v202407.TenantUser
-	15, // 36: kentik.mkp.v202407.PackageService.ListPackage:input_type -> kentik.mkp.v202407.ListPackageRequest
-	17, // 37: kentik.mkp.v202407.PackageService.GetPackage:input_type -> kentik.mkp.v202407.GetPackageRequest
-	19, // 38: kentik.mkp.v202407.PackageService.CreatePackage:input_type -> kentik.mkp.v202407.CreatePackageRequest
-	21, // 39: kentik.mkp.v202407.PackageService.UpdatePackage:input_type -> kentik.mkp.v202407.UpdatePackageRequest
-	23, // 40: kentik.mkp.v202407.PackageService.DeletePackage:input_type -> kentik.mkp.v202407.DeletePackageRequest
-	25, // 41: kentik.mkp.v202407.TenantService.ListTenant:input_type -> kentik.mkp.v202407.ListTenantRequest
-	27, // 42: kentik.mkp.v202407.TenantService.GetTenant:input_type -> kentik.mkp.v202407.GetTenantRequest
-	29, // 43: kentik.mkp.v202407.TenantService.CreateTenant:input_type -> kentik.mkp.v202407.CreateTenantRequest
-	31, // 44: kentik.mkp.v202407.TenantService.UpdateTenant:input_type -> kentik.mkp.v202407.UpdateTenantRequest
-	33, // 45: kentik.mkp.v202407.TenantService.DeleteTenant:input_type -> kentik.mkp.v202407.DeleteTenantRequest
-	35, // 46: kentik.mkp.v202407.TenantUserService.ListTenantUser:input_type -> kentik.mkp.v202407.ListTenantUserRequest
-	37, // 47: kentik.mkp.v202407.TenantUserService.CreateTenantUser:input_type -> kentik.mkp.v202407.CreateTenantUserRequest
-	39, // 48: kentik.mkp.v202407.TenantUserService.UpdateTenantUser:input_type -> kentik.mkp.v202407.UpdateTenantUserRequest
-	41, // 49: kentik.mkp.v202407.TenantUserService.DeleteTenantUser:input_type -> kentik.mkp.v202407.DeleteTenantUserRequest
-	16, // 50: kentik.mkp.v202407.PackageService.ListPackage:output_type -> kentik.mkp.v202407.ListPackageResponse
-	18, // 51: kentik.mkp.v202407.PackageService.GetPackage:output_type -> kentik.mkp.v202407.GetPackageResponse
-	20, // 52: kentik.mkp.v202407.PackageService.CreatePackage:output_type -> kentik.mkp.v202407.CreatePackageResponse
-	22, // 53: kentik.mkp.v202407.PackageService.UpdatePackage:output_type -> kentik.mkp.v202407.UpdatePackageResponse
-	24, // 54: kentik.mkp.v202407.PackageService.DeletePackage:output_type -> kentik.mkp.v202407.DeletePackageResponse
-	26, // 55: kentik.mkp.v202407.TenantService.ListTenant:output_type -> kentik.mkp.v202407.ListTenantResponse
-	28, // 56: kentik.mkp.v202407.TenantService.GetTenant:output_type -> kentik.mkp.v202407.GetTenantResponse
-	30, // 57: kentik.mkp.v202407.TenantService.CreateTenant:output_type -> kentik.mkp.v202407.CreateTenantResponse
-	32, // 58: kentik.mkp.v202407.TenantService.UpdateTenant:output_type -> kentik.mkp.v202407.UpdateTenantResponse
-	34, // 59: kentik.mkp.v202407.TenantService.DeleteTenant:output_type -> kentik.mkp.v202407.DeleteTenantResponse
-	36, // 60: kentik.mkp.v202407.TenantUserService.ListTenantUser:output_type -> kentik.mkp.v202407.ListTenantUserResponse
-	38, // 61: kentik.mkp.v202407.TenantUserService.CreateTenantUser:output_type -> kentik.mkp.v202407.CreateTenantUserResponse
-	40, // 62: kentik.mkp.v202407.TenantUserService.UpdateTenantUser:output_type -> kentik.mkp.v202407.UpdateTenantUserResponse
-	42, // 63: kentik.mkp.v202407.TenantUserService.DeleteTenantUser:output_type -> kentik.mkp.v202407.DeleteTenantUserResponse
-	50, // [50:64] is the sub-list for method output_type
-	36, // [36:50] is the sub-list for method input_type
-	36, // [36:36] is the sub-list for extension type_name
-	36, // [36:36] is the sub-list for extension extendee
-	0,  // [0:36] is the sub-list for field type_name
+	44, // 18: kentik.mkp.v202407.Tenant.users:type_name -> kentik.user.v202211.User
+	13, // 19: kentik.mkp.v202407.Tenant.tenant_users:type_name -> kentik.mkp.v202407.TenantUser
+	8,  // 20: kentik.mkp.v202407.ListPackageResponse.packages:type_name -> kentik.mkp.v202407.Package
+	8,  // 21: kentik.mkp.v202407.GetPackageResponse.package:type_name -> kentik.mkp.v202407.Package
+	8,  // 22: kentik.mkp.v202407.CreatePackageRequest.package:type_name -> kentik.mkp.v202407.Package
+	8,  // 23: kentik.mkp.v202407.CreatePackageResponse.package:type_name -> kentik.mkp.v202407.Package
+	8,  // 24: kentik.mkp.v202407.UpdatePackageRequest.package:type_name -> kentik.mkp.v202407.Package
+	8,  // 25: kentik.mkp.v202407.UpdatePackageResponse.package:type_name -> kentik.mkp.v202407.Package
+	14, // 26: kentik.mkp.v202407.ListTenantResponse.tenants:type_name -> kentik.mkp.v202407.Tenant
+	14, // 27: kentik.mkp.v202407.GetTenantResponse.tenant:type_name -> kentik.mkp.v202407.Tenant
+	14, // 28: kentik.mkp.v202407.CreateTenantRequest.tenant:type_name -> kentik.mkp.v202407.Tenant
+	14, // 29: kentik.mkp.v202407.CreateTenantResponse.tenant:type_name -> kentik.mkp.v202407.Tenant
+	14, // 30: kentik.mkp.v202407.UpdateTenantRequest.tenant:type_name -> kentik.mkp.v202407.Tenant
+	14, // 31: kentik.mkp.v202407.UpdateTenantResponse.tenant:type_name -> kentik.mkp.v202407.Tenant
+	13, // 32: kentik.mkp.v202407.ListTenantUserResponse.users:type_name -> kentik.mkp.v202407.TenantUser
+	13, // 33: kentik.mkp.v202407.CreateTenantUserRequest.user:type_name -> kentik.mkp.v202407.TenantUser
+	13, // 34: kentik.mkp.v202407.CreateTenantUserResponse.user:type_name -> kentik.mkp.v202407.TenantUser
+	13, // 35: kentik.mkp.v202407.UpdateTenantUserRequest.user:type_name -> kentik.mkp.v202407.TenantUser
+	13, // 36: kentik.mkp.v202407.UpdateTenantUserResponse.user:type_name -> kentik.mkp.v202407.TenantUser
+	15, // 37: kentik.mkp.v202407.PackageService.ListPackage:input_type -> kentik.mkp.v202407.ListPackageRequest
+	17, // 38: kentik.mkp.v202407.PackageService.GetPackage:input_type -> kentik.mkp.v202407.GetPackageRequest
+	19, // 39: kentik.mkp.v202407.PackageService.CreatePackage:input_type -> kentik.mkp.v202407.CreatePackageRequest
+	21, // 40: kentik.mkp.v202407.PackageService.UpdatePackage:input_type -> kentik.mkp.v202407.UpdatePackageRequest
+	23, // 41: kentik.mkp.v202407.PackageService.DeletePackage:input_type -> kentik.mkp.v202407.DeletePackageRequest
+	25, // 42: kentik.mkp.v202407.TenantService.ListTenant:input_type -> kentik.mkp.v202407.ListTenantRequest
+	27, // 43: kentik.mkp.v202407.TenantService.GetTenant:input_type -> kentik.mkp.v202407.GetTenantRequest
+	29, // 44: kentik.mkp.v202407.TenantService.CreateTenant:input_type -> kentik.mkp.v202407.CreateTenantRequest
+	31, // 45: kentik.mkp.v202407.TenantService.UpdateTenant:input_type -> kentik.mkp.v202407.UpdateTenantRequest
+	33, // 46: kentik.mkp.v202407.TenantService.DeleteTenant:input_type -> kentik.mkp.v202407.DeleteTenantRequest
+	35, // 47: kentik.mkp.v202407.TenantUserService.ListTenantUser:input_type -> kentik.mkp.v202407.ListTenantUserRequest
+	37, // 48: kentik.mkp.v202407.TenantUserService.CreateTenantUser:input_type -> kentik.mkp.v202407.CreateTenantUserRequest
+	39, // 49: kentik.mkp.v202407.TenantUserService.UpdateTenantUser:input_type -> kentik.mkp.v202407.UpdateTenantUserRequest
+	41, // 50: kentik.mkp.v202407.TenantUserService.DeleteTenantUser:input_type -> kentik.mkp.v202407.DeleteTenantUserRequest
+	16, // 51: kentik.mkp.v202407.PackageService.ListPackage:output_type -> kentik.mkp.v202407.ListPackageResponse
+	18, // 52: kentik.mkp.v202407.PackageService.GetPackage:output_type -> kentik.mkp.v202407.GetPackageResponse
+	20, // 53: kentik.mkp.v202407.PackageService.CreatePackage:output_type -> kentik.mkp.v202407.CreatePackageResponse
+	22, // 54: kentik.mkp.v202407.PackageService.UpdatePackage:output_type -> kentik.mkp.v202407.UpdatePackageResponse
+	24, // 55: kentik.mkp.v202407.PackageService.DeletePackage:output_type -> kentik.mkp.v202407.DeletePackageResponse
+	26, // 56: kentik.mkp.v202407.TenantService.ListTenant:output_type -> kentik.mkp.v202407.ListTenantResponse
+	28, // 57: kentik.mkp.v202407.TenantService.GetTenant:output_type -> kentik.mkp.v202407.GetTenantResponse
+	30, // 58: kentik.mkp.v202407.TenantService.CreateTenant:output_type -> kentik.mkp.v202407.CreateTenantResponse
+	32, // 59: kentik.mkp.v202407.TenantService.UpdateTenant:output_type -> kentik.mkp.v202407.UpdateTenantResponse
+	34, // 60: kentik.mkp.v202407.TenantService.DeleteTenant:output_type -> kentik.mkp.v202407.DeleteTenantResponse
+	36, // 61: kentik.mkp.v202407.TenantUserService.ListTenantUser:output_type -> kentik.mkp.v202407.ListTenantUserResponse
+	38, // 62: kentik.mkp.v202407.TenantUserService.CreateTenantUser:output_type -> kentik.mkp.v202407.CreateTenantUserResponse
+	40, // 63: kentik.mkp.v202407.TenantUserService.UpdateTenantUser:output_type -> kentik.mkp.v202407.UpdateTenantUserResponse
+	42, // 64: kentik.mkp.v202407.TenantUserService.DeleteTenantUser:output_type -> kentik.mkp.v202407.DeleteTenantUserResponse
+	51, // [51:65] is the sub-list for method output_type
+	37, // [37:51] is the sub-list for method input_type
+	37, // [37:37] is the sub-list for extension type_name
+	37, // [37:37] is the sub-list for extension extendee
+	0,  // [0:37] is the sub-list for field type_name
 }
 
 func init() { file_kentik_mkp_v202407_mkp_proto_init() }

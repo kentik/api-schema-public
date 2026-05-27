@@ -3338,7 +3338,7 @@ const ProtobufCMessageDescriptor kentik__mkp__v202407__tenant_user__descriptor =
   (ProtobufCMessageInit) kentik__mkp__v202407__tenant_user__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__mkp__v202407__tenant__field_descriptors[18] =
+static const ProtobufCFieldDescriptor kentik__mkp__v202407__tenant__field_descriptors[19] =
 {
   {
     "id",
@@ -3539,9 +3539,9 @@ static const ProtobufCFieldDescriptor kentik__mkp__v202407__tenant__field_descri
     PROTOBUF_C_TYPE_MESSAGE,
     offsetof(Kentik__Mkp__V202407__Tenant, n_users),
     offsetof(Kentik__Mkp__V202407__Tenant, users),
-    &kentik__mkp__v202407__tenant_user__descriptor,
+    &kentik__user__v202211__user__descriptor,
     NULL,
-    0,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_DEPRECATED,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
@@ -3553,6 +3553,18 @@ static const ProtobufCFieldDescriptor kentik__mkp__v202407__tenant__field_descri
     offsetof(Kentik__Mkp__V202407__Tenant, template_id),
     NULL,
     &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "tenant_users",
+    19,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Kentik__Mkp__V202407__Tenant, n_tenant_users),
+    offsetof(Kentik__Mkp__V202407__Tenant, tenant_users),
+    &kentik__mkp__v202407__tenant_user__descriptor,
+    NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
@@ -3574,13 +3586,14 @@ static const unsigned kentik__mkp__v202407__tenant__field_indices_by_name[] = {
   15,   /* field[15] = packages */
   13,   /* field[13] = snmp_alias */
   17,   /* field[17] = template_id */
+  18,   /* field[18] = tenant_users */
   4,   /* field[4] = type */
   16,   /* field[16] = users */
 };
 static const ProtobufCIntRange kentik__mkp__v202407__tenant__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 18 }
+  { 0, 19 }
 };
 const ProtobufCMessageDescriptor kentik__mkp__v202407__tenant__descriptor =
 {
@@ -3590,7 +3603,7 @@ const ProtobufCMessageDescriptor kentik__mkp__v202407__tenant__descriptor =
   "Kentik__Mkp__V202407__Tenant",
   "kentik.mkp.v202407",
   sizeof(Kentik__Mkp__V202407__Tenant),
-  18,
+  19,
   kentik__mkp__v202407__tenant__field_descriptors,
   kentik__mkp__v202407__tenant__field_indices_by_name,
   1,  kentik__mkp__v202407__tenant__number_ranges,
