@@ -56,20 +56,21 @@ const char descriptor_table_protodef_kentik_2fcore_2fv202303_2fannotations_2epro
     "le.protobuf.ServiceOptions\030\377* \001(\010R\016priva"
     "teService:h\n\nvisibility\022\037.google.protobu"
     "f.ServiceOptions\030\202+ \001(\0162&.kentik.core.v2"
-    "02303.ServiceVisibilityR\nvisibility:B\n\014m"
-    "ethod_scope\022\036.google.protobuf.MethodOpti"
-    "ons\030\376* \001(\tR\013methodScope:F\n\016private_metho"
-    "d\022\036.google.protobuf.MethodOptions\030\200+ \001(\010"
-    "R\rprivateMethod:H\n\017method_category\022\036.goo"
-    "gle.protobuf.MethodOptions\030\201+ \001(\tR\016metho"
-    "dCategory:L\n\021method_permission\022\036.google."
-    "protobuf.MethodOptions\030\202+ \001(\tR\020methodPer"
-    "mission:s\n\021method_visibility\022\036.google.pr"
-    "otobuf.MethodOptions\030\203+ \001(\0162%.kentik.cor"
-    "e.v202303.MethodVisibilityR\020methodVisibi"
-    "lityBLZJgithub.com/kentik/api-schema-pub"
-    "lic/gen/go/kentik/core/v202303;kentik_co"
-    "reb\006proto3"
+    "02303.ServiceVisibilityR\nvisibility:C\n\014b"
+    "ackend_type\022\037.google.protobuf.ServiceOpt"
+    "ions\030\203+ \001(\tR\013backendType:B\n\014method_scope"
+    "\022\036.google.protobuf.MethodOptions\030\376* \001(\tR"
+    "\013methodScope:F\n\016private_method\022\036.google."
+    "protobuf.MethodOptions\030\200+ \001(\010R\rprivateMe"
+    "thod:H\n\017method_category\022\036.google.protobu"
+    "f.MethodOptions\030\201+ \001(\tR\016methodCategory:L"
+    "\n\021method_permission\022\036.google.protobuf.Me"
+    "thodOptions\030\202+ \001(\tR\020methodPermission:s\n\021"
+    "method_visibility\022\036.google.protobuf.Meth"
+    "odOptions\030\203+ \001(\0162%.kentik.core.v202303.M"
+    "ethodVisibilityR\020methodVisibilityBLZJgit"
+    "hub.com/kentik/api-schema-public/gen/go/"
+    "kentik/core/v202303;kentik_coreb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto_deps[1] =
     {
@@ -79,7 +80,7 @@ static ::absl::once_flag descriptor_table_kentik_2fcore_2fv202303_2fannotations_
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto = {
     false,
     false,
-    1250,
+    1319,
     descriptor_table_protodef_kentik_2fcore_2fv202303_2fannotations_2eproto,
     "kentik/core/v202303/annotations.proto",
     &descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto_once,
@@ -129,6 +130,12 @@ PROTOBUF_CONSTINIT
         ExtensionIdentifier<::google::protobuf::ServiceOptions, ::_pbi::EnumTypeTraits< ::kentik::core::v202303::ServiceVisibility, ::kentik::core::v202303::ServiceVisibility_IsValid>,
                             14, false>
             visibility(kVisibilityFieldNumber, static_cast< ::kentik::core::v202303::ServiceVisibility >(0));
+const std::string backend_type_default("");
+PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 ::_pbi::
+        ExtensionIdentifier<::google::protobuf::ServiceOptions, ::_pbi::StringTypeTraits,
+                            9, false>
+            backend_type(kBackendTypeFieldNumber, backend_type_default);
 const std::string method_scope_default("");
 PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 ::_pbi::
@@ -178,6 +185,9 @@ PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::std::false_type
         ::_pbi::ExtensionSet::RegisterEnumExtension(
             &::google::protobuf::ServiceOptions::default_instance(), 5506, 14,
             false, false, ::kentik::core::v202303::ServiceVisibility_IsValid),
+        ::_pbi::ExtensionSet::RegisterExtension(
+            &::google::protobuf::ServiceOptions::default_instance(), 5507, 9,
+            false, false),
         ::_pbi::ExtensionSet::RegisterExtension(
             &::google::protobuf::MethodOptions::default_instance(), 5502, 9,
             false, false),

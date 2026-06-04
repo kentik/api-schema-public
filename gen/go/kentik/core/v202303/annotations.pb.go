@@ -176,6 +176,14 @@ var file_kentik_core_v202303_annotations_proto_extTypes = []protoimpl.ExtensionI
 		Filename:      "kentik/core/v202303/annotations.proto",
 	},
 	{
+		ExtendedType:  (*descriptorpb.ServiceOptions)(nil),
+		ExtensionType: (*string)(nil),
+		Field:         5507,
+		Name:          "kentik.core.v202303.backend_type",
+		Tag:           "bytes,5507,opt,name=backend_type",
+		Filename:      "kentik/core/v202303/annotations.proto",
+	},
+	{
 		ExtendedType:  (*descriptorpb.MethodOptions)(nil),
 		ExtensionType: (*string)(nil),
 		Field:         5502,
@@ -231,6 +239,10 @@ var (
 	//
 	// optional kentik.core.v202303.ServiceVisibility visibility = 5506;
 	E_Visibility = &file_kentik_core_v202303_annotations_proto_extTypes[2]
+	// backend server route option
+	//
+	// optional string backend_type = 5507;
+	E_BackendType = &file_kentik_core_v202303_annotations_proto_extTypes[3]
 )
 
 // Extension fields to descriptorpb.MethodOptions.
@@ -238,24 +250,24 @@ var (
 	// auth scope for this service
 	//
 	// optional string method_scope = 5502;
-	E_MethodScope = &file_kentik_core_v202303_annotations_proto_extTypes[3]
+	E_MethodScope = &file_kentik_core_v202303_annotations_proto_extTypes[4]
 	// private_method indicates that this method is not publicly available
 	//
 	// optional bool private_method = 5504;
-	E_PrivateMethod = &file_kentik_core_v202303_annotations_proto_extTypes[4]
+	E_PrivateMethod = &file_kentik_core_v202303_annotations_proto_extTypes[5]
 	// method classification to identify areas of functionality (used for metrics etc.)
 	//
 	// optional string method_category = 5505;
-	E_MethodCategory = &file_kentik_core_v202303_annotations_proto_extTypes[5]
+	E_MethodCategory = &file_kentik_core_v202303_annotations_proto_extTypes[6]
 	// method permission string used by the RBAC system
 	// API user must posses permission covering the method permission in order to be authorized to invoke the method
 	//
 	// optional string method_permission = 5506;
-	E_MethodPermission = &file_kentik_core_v202303_annotations_proto_extTypes[6]
+	E_MethodPermission = &file_kentik_core_v202303_annotations_proto_extTypes[7]
 	// method_visibility provides label allowing api owners optionally define a different visibility for an rpc
 	//
 	// optional kentik.core.v202303.MethodVisibility method_visibility = 5507;
-	E_MethodVisibility = &file_kentik_core_v202303_annotations_proto_extTypes[7]
+	E_MethodVisibility = &file_kentik_core_v202303_annotations_proto_extTypes[8]
 )
 
 var File_kentik_core_v202303_annotations_proto protoreflect.FileDescriptor
@@ -280,7 +292,8 @@ const file_kentik_core_v202303_annotations_proto_rawDesc = "" +
 	"\x0fprivate_service\x12\x1f.google.protobuf.ServiceOptions\x18\xff* \x01(\bR\x0eprivateService:h\n" +
 	"\n" +
 	"visibility\x12\x1f.google.protobuf.ServiceOptions\x18\x82+ \x01(\x0e2&.kentik.core.v202303.ServiceVisibilityR\n" +
-	"visibility:B\n" +
+	"visibility:C\n" +
+	"\fbackend_type\x12\x1f.google.protobuf.ServiceOptions\x18\x83+ \x01(\tR\vbackendType:B\n" +
 	"\fmethod_scope\x12\x1e.google.protobuf.MethodOptions\x18\xfe* \x01(\tR\vmethodScope:F\n" +
 	"\x0eprivate_method\x12\x1e.google.protobuf.MethodOptions\x18\x80+ \x01(\bR\rprivateMethod:H\n" +
 	"\x0fmethod_category\x12\x1e.google.protobuf.MethodOptions\x18\x81+ \x01(\tR\x0emethodCategory:L\n" +
@@ -310,17 +323,18 @@ var file_kentik_core_v202303_annotations_proto_depIdxs = []int32{
 	2,  // 0: kentik.core.v202303.service_scope:extendee -> google.protobuf.ServiceOptions
 	2,  // 1: kentik.core.v202303.private_service:extendee -> google.protobuf.ServiceOptions
 	2,  // 2: kentik.core.v202303.visibility:extendee -> google.protobuf.ServiceOptions
-	3,  // 3: kentik.core.v202303.method_scope:extendee -> google.protobuf.MethodOptions
-	3,  // 4: kentik.core.v202303.private_method:extendee -> google.protobuf.MethodOptions
-	3,  // 5: kentik.core.v202303.method_category:extendee -> google.protobuf.MethodOptions
-	3,  // 6: kentik.core.v202303.method_permission:extendee -> google.protobuf.MethodOptions
-	3,  // 7: kentik.core.v202303.method_visibility:extendee -> google.protobuf.MethodOptions
-	0,  // 8: kentik.core.v202303.visibility:type_name -> kentik.core.v202303.ServiceVisibility
-	1,  // 9: kentik.core.v202303.method_visibility:type_name -> kentik.core.v202303.MethodVisibility
-	10, // [10:10] is the sub-list for method output_type
-	10, // [10:10] is the sub-list for method input_type
-	8,  // [8:10] is the sub-list for extension type_name
-	0,  // [0:8] is the sub-list for extension extendee
+	2,  // 3: kentik.core.v202303.backend_type:extendee -> google.protobuf.ServiceOptions
+	3,  // 4: kentik.core.v202303.method_scope:extendee -> google.protobuf.MethodOptions
+	3,  // 5: kentik.core.v202303.private_method:extendee -> google.protobuf.MethodOptions
+	3,  // 6: kentik.core.v202303.method_category:extendee -> google.protobuf.MethodOptions
+	3,  // 7: kentik.core.v202303.method_permission:extendee -> google.protobuf.MethodOptions
+	3,  // 8: kentik.core.v202303.method_visibility:extendee -> google.protobuf.MethodOptions
+	0,  // 9: kentik.core.v202303.visibility:type_name -> kentik.core.v202303.ServiceVisibility
+	1,  // 10: kentik.core.v202303.method_visibility:type_name -> kentik.core.v202303.MethodVisibility
+	11, // [11:11] is the sub-list for method output_type
+	11, // [11:11] is the sub-list for method input_type
+	9,  // [9:11] is the sub-list for extension type_name
+	0,  // [0:9] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name
 }
 
@@ -336,7 +350,7 @@ func file_kentik_core_v202303_annotations_proto_init() {
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_kentik_core_v202303_annotations_proto_rawDesc), len(file_kentik_core_v202303_annotations_proto_rawDesc)),
 			NumEnums:      2,
 			NumMessages:   0,
-			NumExtensions: 8,
+			NumExtensions: 9,
 			NumServices:   0,
 		},
 		GoTypes:           file_kentik_core_v202303_annotations_proto_goTypes,

@@ -155,6 +155,11 @@ extern ::google::protobuf::internal::ExtensionIdentifier<
     ::google::protobuf::ServiceOptions, ::google::protobuf::internal::EnumTypeTraits< ::kentik::core::v202303::ServiceVisibility, ::kentik::core::v202303::ServiceVisibility_IsValid>, 14,
     false>
     visibility;
+static const int kBackendTypeFieldNumber = 5507;
+extern ::google::protobuf::internal::ExtensionIdentifier<
+    ::google::protobuf::ServiceOptions, ::google::protobuf::internal::StringTypeTraits, 9,
+    false>
+    backend_type;
 static const int kMethodScopeFieldNumber = 5502;
 extern ::google::protobuf::internal::ExtensionIdentifier<
     ::google::protobuf::MethodOptions, ::google::protobuf::internal::StringTypeTraits, 9,

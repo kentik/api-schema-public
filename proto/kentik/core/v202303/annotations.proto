@@ -44,6 +44,8 @@ extend google.protobuf.ServiceOptions {
   bool private_service = 5503;
   // visibility provides label allowing to guid publishing of schemas and placement of service on API gateways
   ServiceVisibility visibility = 5506;
+  // backend server route option
+  string backend_type = 5507;
 }
 
 extend google.protobuf.MethodOptions {
