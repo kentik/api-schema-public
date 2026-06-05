@@ -1,0 +1,364 @@
+syntax = "proto3";
+
+package kentik.asset_tags.v20260515beta1;
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+import "kentik/core/v202303/annotations.proto";
+
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/asset_tags/v20260515beta1;asset_tags";
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Asset Tags API"
+    version: "v20260515beta1"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api-schema-public"
+    }
+    description:
+      "# Overview\n"
+      "The Asset Tags API enables programmatic lifecycle management of asset tag keys and values."
+      "\n"
+      "### Key Features\n"
+      "* Create, read, update, and delete of tag keys and values\n"
+      "* Bulk upsert and delete of tag values\n"
+      "* Get tag values by tag id and optional type\n"
+      "* Get tag values by asset type and id\n"
+      "\n"
+  }
+  external_docs: {
+    url: "https://kb.kentik.com/"
+    description: "Kentik Knowledge Base"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+// ========== models ==========
+
+// {{.Name}}
+enum AssetType {
+  ASSET_TYPE_UNSPECIFIED = 0;
+  ASSET_TYPE_DEVICE = 1;
+}
+
+// {{.Name}}
+message TagKey {
+  string id = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Tag key id"}];
+  string name = 2 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Tag key name"}];
+  string display_name = 3 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Tag key display name"}];
+  string color = 4 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Tag key hex color"}];
+  string description = 5 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Tag key description"}];
+}
+
+// {{.Name}}
+message TagValue {
+  string tag_id = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Tag key id"}];
+  AssetType asset_type = 2 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Tag asset type"}];
+  string asset_id = 3 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Tag asset id"}];
+  string value = 4 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Tag value"}];
+}
+
+// ========== services ==========
+
+// ---------- Tag Keys ----------
+
+// {{.Name}}
+message ListTagKeysRequest {}
+
+// {{.Name}}
+message ListTagKeysResponse {
+  repeated TagKey tag_keys = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Tag keys"}
+  ];
+}
+
+// {{.Name}}
+message GetTagKeyRequest {
+  string id = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Tag key id"}
+  ];
+}
+
+// {{.Name}}
+message GetTagKeyResponse {
+  TagKey tag_key = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Tag key"}
+  ];
+}
+
+// {{.Name}}
+message CreateTagKeyRequest {
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Tag key name"}
+  ];
+  string display_name = 2 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Tag key display name"}];
+  string color = 3 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Tag key hex color"}];
+  string description = 4 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Tag key description"}];
+}
+
+// {{.Name}}
+message CreateTagKeyResponse {
+  TagKey tag_key = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Tag key"}
+  ];
+}
+
+// {{.Name}}
+message UpdateTagKeyRequest {
+  string id = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Tag key id"}
+  ];
+  string display_name = 2 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Tag key display name"}];
+  string color = 3 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Tag key hex color"}];
+  string description = 4 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Tag key description"}];
+}
+
+// {{.Name}}
+message UpdateTagKeyResponse {
+  TagKey tag_key = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Tag key"}
+  ];
+}
+
+// {{.Name}}
+message DeleteTagKeyRequest {
+  string id = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Tag key id"}
+  ];
+}
+
+// {.Name}
+message DeleteTagKeyResponse {}
+
+// ---------- Tag Values ----------
+
+// {{.Name}}
+message ListTagValuesRequest {
+  string tag_id = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Tag key id"}
+  ];
+  AssetType asset_type = 2 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Asset type"}];
+}
+
+// {{.Name}}
+message ListTagValuesResponse {
+  repeated TagValue tag_values = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Tag values response"}];
+}
+
+// {{.Name}}
+message GetTagValuesRequest {
+  AssetType asset_type = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Asset type"}
+  ];
+  string asset_id = 2 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Asset id"}
+  ];
+}
+
+// {{.Name}}
+message GetTagValuesResponse {
+  repeated TagValue tag_values = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Tag values response"}];
+}
+
+// {{.Name}}
+message SetTagValuesRequest {
+  string tag_id = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Tag key id"}
+  ];
+  AssetType asset_type = 2 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Asset type"}
+  ];
+  repeated string asset_ids = 3 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Asset ids"}
+  ];
+  string value = 4 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Tag value"}
+  ];
+}
+
+// {{.Name}}
+message SetTagValuesResponse {
+  repeated TagValue tag_values = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Tag values response"}];
+}
+
+// {{.Name}}
+message DeleteTagValuesRequest {
+  string tag_id = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Tag key id"}
+  ];
+  AssetType asset_type = 2 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Asset type"}
+  ];
+  repeated string asset_ids = 3 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Asset ids"}
+  ];
+}
+
+// {.Name}
+message DeleteTagValuesResponse {}
+
+service AssetTagsService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "admin.device";
+  option (kentik.core.v202303.backend_type) = "grpc-connect";
+
+  rpc ListTagKeys(ListTagKeysRequest) returns (ListTagKeysResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.device:read";
+    option (google.api.http) = {
+      get: "/asset_tags/v20260515beta1/keys"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ListTagKeys"
+      summary: "Lists all tag keys."
+      description: "Returns a list of tag keys."
+    };
+  }
+
+  rpc GetTagKey(GetTagKeyRequest) returns (GetTagKeyResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.device:read";
+    option (google.api.http) = {
+      get: "/asset_tags/v20260515beta1/keys/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetTagKey"
+      summary: "Get a single tag key by id."
+      description: "Returns a single tag key."
+    };
+  }
+
+  rpc CreateTagKey(CreateTagKeyRequest) returns (CreateTagKeyResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.device:write";
+    option (google.api.http) = {
+      post: "/asset_tags/v20260515beta1/keys"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "CreateTagKey"
+      summary: "Creates a new tag key."
+      description: "Returns the created tag key."
+    };
+  }
+
+  rpc UpdateTagKey(UpdateTagKeyRequest) returns (UpdateTagKeyResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.device:write";
+    option (google.api.http) = {
+      put: "/asset_tags/v20260515beta1/keys/{id}"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "UpdateTagKey"
+      summary: "Updates the display name of a tag key."
+      description: "Returns the updated tag key."
+    };
+  }
+
+  rpc DeleteTagKey(DeleteTagKeyRequest) returns (DeleteTagKeyResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.device:write";
+    option (google.api.http) = {
+      delete: "/asset_tags/v20260515beta1/keys/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "DeleteTagKey"
+      summary: "Deletes a tag key by id."
+      description: "Returns an empty response"
+    };
+  }
+
+  rpc ListTagValues(ListTagValuesRequest) returns (ListTagValuesResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.device:read";
+    option (google.api.http) = {
+      get: "/asset_tags/v20260515beta1/keys/{tag_id}/{asset_type}/values"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ListTagValues"
+      summary: "Lists all tag values by id, optionally filtered by asset type."
+      description: "Returns a list of tag values."
+    };
+  }
+
+  rpc GetTagValues(GetTagValuesRequest) returns (GetTagValuesResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.device:read";
+    option (google.api.http) = {
+      get: "/asset_tags/v20260515beta1/assets/{asset_type}/{asset_id}/values"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetTagValues"
+      summary: "Gets tag values by asset id and type."
+      description: "Returns a list of tag values."
+    };
+  }
+
+  rpc SetTagValues(SetTagValuesRequest) returns (SetTagValuesResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.device:write";
+    option (google.api.http) = {
+      put: "/asset_tags/v20260515beta1/values"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "SetTagValues"
+      summary: "Bulk upserts a tag value for a list of asset ids of a given type."
+      description: "Returns a list of tag values."
+    };
+  }
+
+  rpc DeleteTagValues(DeleteTagValuesRequest) returns (DeleteTagValuesResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.device:write";
+    option (google.api.http) = {
+      post: "/asset_tags/v20260515beta1/values/delete"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "DeleteTagValues"
+      summary: "Bulk deletes a tag values for a list of asset ids of a given type."
+      description: "Returns an empty response."
+    };
+  }
+}

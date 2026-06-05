@@ -1,0 +1,646 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Asset Tags API",
+    "description": "# Overview\nThe Asset Tags API enables programmatic lifecycle management of asset tag keys and values.\n### Key Features\n* Create, read, update, and delete of tag keys and values\n* Bulk upsert and delete of tag values\n* Get tag values by tag id and optional type\n* Get tag values by asset type and id\n\n",
+    "version": "v20260515beta1",
+    "contact": {
+      "name": "Kentik API Engineering",
+      "url": "https://github.com/kentik/api-schema-public"
+    }
+  },
+  "tags": [
+    {
+      "name": "AssetTagsService"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/asset_tags/v20260515beta1/assets/{assetType}/{assetId}/values": {
+      "get": {
+        "summary": "Gets tag values by asset id and type.",
+        "description": "Returns a list of tag values.",
+        "operationId": "GetTagValues",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v20260515beta1GetTagValuesResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "assetType",
+            "description": "Asset type",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "ASSET_TYPE_UNSPECIFIED",
+              "ASSET_TYPE_DEVICE"
+            ]
+          },
+          {
+            "name": "assetId",
+            "description": "Asset id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AssetTagsService"
+        ]
+      }
+    },
+    "/asset_tags/v20260515beta1/keys": {
+      "get": {
+        "summary": "Lists all tag keys.",
+        "description": "Returns a list of tag keys.",
+        "operationId": "ListTagKeys",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v20260515beta1ListTagKeysResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "AssetTagsService"
+        ]
+      },
+      "post": {
+        "summary": "Creates a new tag key.",
+        "description": "Returns the created tag key.",
+        "operationId": "CreateTagKey",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v20260515beta1CreateTagKeyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v20260515beta1CreateTagKeyRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AssetTagsService"
+        ]
+      }
+    },
+    "/asset_tags/v20260515beta1/keys/{id}": {
+      "get": {
+        "summary": "Get a single tag key by id.",
+        "description": "Returns a single tag key.",
+        "operationId": "GetTagKey",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v20260515beta1GetTagKeyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Tag key id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AssetTagsService"
+        ]
+      },
+      "delete": {
+        "summary": "Deletes a tag key by id.",
+        "description": "Returns an empty response",
+        "operationId": "DeleteTagKey",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v20260515beta1DeleteTagKeyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Tag key id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AssetTagsService"
+        ]
+      },
+      "put": {
+        "summary": "Updates the display name of a tag key.",
+        "description": "Returns the updated tag key.",
+        "operationId": "UpdateTagKey",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v20260515beta1UpdateTagKeyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Tag key id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AssetTagsServiceUpdateTagKeyBody"
+            }
+          }
+        ],
+        "tags": [
+          "AssetTagsService"
+        ]
+      }
+    },
+    "/asset_tags/v20260515beta1/keys/{tagId}/{assetType}/values": {
+      "get": {
+        "summary": "Lists all tag values by id, optionally filtered by asset type.",
+        "description": "Returns a list of tag values.",
+        "operationId": "ListTagValues",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v20260515beta1ListTagValuesResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "tagId",
+            "description": "Tag key id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "assetType",
+            "description": "Asset type",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "ASSET_TYPE_UNSPECIFIED",
+              "ASSET_TYPE_DEVICE"
+            ]
+          }
+        ],
+        "tags": [
+          "AssetTagsService"
+        ]
+      }
+    },
+    "/asset_tags/v20260515beta1/values": {
+      "put": {
+        "summary": "Bulk upserts a tag value for a list of asset ids of a given type.",
+        "description": "Returns a list of tag values.",
+        "operationId": "SetTagValues",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v20260515beta1SetTagValuesResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v20260515beta1SetTagValuesRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AssetTagsService"
+        ]
+      }
+    },
+    "/asset_tags/v20260515beta1/values/delete": {
+      "post": {
+        "summary": "Bulk deletes a tag values for a list of asset ids of a given type.",
+        "description": "Returns an empty response.",
+        "operationId": "DeleteTagValues",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v20260515beta1DeleteTagValuesResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v20260515beta1DeleteTagValuesRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AssetTagsService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "AssetTagsServiceUpdateTagKeyBody": {
+      "type": "object",
+      "properties": {
+        "displayName": {
+          "type": "string",
+          "description": "Tag key display name"
+        },
+        "color": {
+          "type": "string",
+          "description": "Tag key hex color"
+        },
+        "description": {
+          "type": "string",
+          "description": "Tag key description"
+        }
+      },
+      "title": "UpdateTagKeyRequest"
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v20260515beta1AssetType": {
+      "type": "string",
+      "enum": [
+        "ASSET_TYPE_UNSPECIFIED",
+        "ASSET_TYPE_DEVICE"
+      ],
+      "default": "ASSET_TYPE_UNSPECIFIED",
+      "title": "AssetType"
+    },
+    "v20260515beta1CreateTagKeyRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Tag key name"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Tag key display name"
+        },
+        "color": {
+          "type": "string",
+          "description": "Tag key hex color"
+        },
+        "description": {
+          "type": "string",
+          "description": "Tag key description"
+        }
+      },
+      "title": "CreateTagKeyRequest",
+      "required": [
+        "name"
+      ]
+    },
+    "v20260515beta1CreateTagKeyResponse": {
+      "type": "object",
+      "properties": {
+        "tagKey": {
+          "$ref": "#/definitions/v20260515beta1TagKey",
+          "description": "Tag key"
+        }
+      },
+      "title": "CreateTagKeyResponse"
+    },
+    "v20260515beta1DeleteTagKeyResponse": {
+      "type": "object",
+      "title": "{.Name}"
+    },
+    "v20260515beta1DeleteTagValuesRequest": {
+      "type": "object",
+      "properties": {
+        "tagId": {
+          "type": "string",
+          "description": "Tag key id"
+        },
+        "assetType": {
+          "$ref": "#/definitions/v20260515beta1AssetType",
+          "description": "Asset type"
+        },
+        "assetIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Asset ids"
+        }
+      },
+      "title": "DeleteTagValuesRequest",
+      "required": [
+        "tagId",
+        "assetType",
+        "assetIds"
+      ]
+    },
+    "v20260515beta1DeleteTagValuesResponse": {
+      "type": "object",
+      "title": "{.Name}"
+    },
+    "v20260515beta1GetTagKeyResponse": {
+      "type": "object",
+      "properties": {
+        "tagKey": {
+          "$ref": "#/definitions/v20260515beta1TagKey",
+          "description": "Tag key"
+        }
+      },
+      "title": "GetTagKeyResponse"
+    },
+    "v20260515beta1GetTagValuesResponse": {
+      "type": "object",
+      "properties": {
+        "tagValues": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v20260515beta1TagValue"
+          },
+          "description": "Tag values response"
+        }
+      },
+      "title": "GetTagValuesResponse"
+    },
+    "v20260515beta1ListTagKeysResponse": {
+      "type": "object",
+      "properties": {
+        "tagKeys": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v20260515beta1TagKey"
+          },
+          "description": "Tag keys"
+        }
+      },
+      "title": "ListTagKeysResponse"
+    },
+    "v20260515beta1ListTagValuesResponse": {
+      "type": "object",
+      "properties": {
+        "tagValues": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v20260515beta1TagValue"
+          },
+          "description": "Tag values response"
+        }
+      },
+      "title": "ListTagValuesResponse"
+    },
+    "v20260515beta1SetTagValuesRequest": {
+      "type": "object",
+      "properties": {
+        "tagId": {
+          "type": "string",
+          "description": "Tag key id"
+        },
+        "assetType": {
+          "$ref": "#/definitions/v20260515beta1AssetType",
+          "description": "Asset type"
+        },
+        "assetIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Asset ids"
+        },
+        "value": {
+          "type": "string",
+          "description": "Tag value"
+        }
+      },
+      "title": "SetTagValuesRequest",
+      "required": [
+        "tagId",
+        "assetType",
+        "assetIds",
+        "value"
+      ]
+    },
+    "v20260515beta1SetTagValuesResponse": {
+      "type": "object",
+      "properties": {
+        "tagValues": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v20260515beta1TagValue"
+          },
+          "description": "Tag values response"
+        }
+      },
+      "title": "SetTagValuesResponse"
+    },
+    "v20260515beta1TagKey": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Tag key id"
+        },
+        "name": {
+          "type": "string",
+          "description": "Tag key name"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Tag key display name"
+        },
+        "color": {
+          "type": "string",
+          "description": "Tag key hex color"
+        },
+        "description": {
+          "type": "string",
+          "description": "Tag key description"
+        }
+      },
+      "title": "TagKey"
+    },
+    "v20260515beta1TagValue": {
+      "type": "object",
+      "properties": {
+        "tagId": {
+          "type": "string",
+          "description": "Tag key id"
+        },
+        "assetType": {
+          "$ref": "#/definitions/v20260515beta1AssetType",
+          "description": "Tag asset type"
+        },
+        "assetId": {
+          "type": "string",
+          "description": "Tag asset id"
+        },
+        "value": {
+          "type": "string",
+          "description": "Tag value"
+        }
+      },
+      "title": "TagValue"
+    },
+    "v20260515beta1UpdateTagKeyResponse": {
+      "type": "object",
+      "properties": {
+        "tagKey": {
+          "$ref": "#/definitions/v20260515beta1TagKey",
+          "description": "Tag key"
+        }
+      },
+      "title": "UpdateTagKeyResponse"
+    }
+  },
+  "securityDefinitions": {
+    "email": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-Email",
+      "in": "header"
+    },
+    "token": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-API-Token",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "email": [],
+      "token": []
+    }
+  ],
+  "externalDocs": {
+    "description": "Kentik Knowledge Base",
+    "url": "https://kb.kentik.com/"
+  }
+}
