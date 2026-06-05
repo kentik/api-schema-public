@@ -86,6 +86,58 @@
                 ]
             }
         },
+        "/audit/v202601/events/{id}": {
+            "get": {
+                "summary": "Get an Audit Event",
+                "description": "Return a specific audit event.",
+                "operationId": "GetAuditEvent",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202601GetAuditEventResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "ctime",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    }
+                ],
+                "tags": [
+                    "AuditService"
+                ]
+            }
+        },
         "/audit/v202601/events/{id}/{ctime}": {
             "get": {
                 "summary": "Get an Audit Event",

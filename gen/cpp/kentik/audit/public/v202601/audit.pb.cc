@@ -464,29 +464,30 @@ const char descriptor_table_protodef_kentik_2faudit_2fpublic_2fv202601_2faudit_2
     "\002 \001(\0132\032.google.protobuf.TimestampR\005ctime"
     "\"V\n\025GetAuditEventResponse\022=\n\005event\030\001 \001(\013"
     "2\'.kentik.audit.public.v202601.AuditEven"
-    "tR\005event2\247\004\n\014AuditService\022\362\001\n\017ListAuditE"
+    "tR\005event2\306\004\n\014AuditService\022\362\001\n\017ListAuditE"
     "vents\0223.kentik.audit.public.v202601.List"
     "AuditEventsRequest\0324.kentik.audit.public"
     ".v202601.ListAuditEventsResponse\"t\222AF\022\022L"
     "ist Audit Events.\032\037Returns a list of aud"
     "it events.*\017ListAuditEvents\362\327\002\naudit:rea"
-    "d\202\323\344\223\002\027\022\025/audit/v202601/events\022\366\001\n\rGetAu"
+    "d\202\323\344\223\002\027\022\025/audit/v202601/events\022\225\002\n\rGetAu"
     "ditEvent\0221.kentik.audit.public.v202601.G"
     "etAuditEventRequest\0322.kentik.audit.publi"
-    "c.v202601.GetAuditEventResponse\"~\222AC\022\022Ge"
-    "t an Audit Event\032\036Return a specific audi"
-    "t event.*\rGetAuditEvent\362\327\002\naudit:read\202\323\344"
-    "\223\002$\022\"/audit/v202601/events/{id}/{ctime}\032"
-    ")\312A\023grpc.api.kentik.com\352\327\002\013admin.audit\220\330"
-    "\002\003B\327\002ZFgithub.com/kentik/api-schema-publ"
-    "ic/gen/go/kentik/public/audit/v202601\222A\213"
-    "\002\022M\n\tAudit API\"7\n\026Kentik API Engineering"
-    "\022\035https://github.com/kentik/api2\007v202601"
-    "*\001\0022\020application/json:\020application/jsonZ"
-    "D\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005tok"
-    "en\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email"
-    "\022\000\n\t\n\005token\022\000r5\n\026More about Kentik APIs\022"
-    "\033https://docs.kentik.com/apib\006proto3"
+    "c.v202601.GetAuditEventResponse\"\234\001\222AC\022\022G"
+    "et an Audit Event\032\036Return a specific aud"
+    "it event.*\rGetAuditEvent\362\327\002\naudit:read\202\323"
+    "\344\223\002B\022\"/audit/v202601/events/{id}/{ctime}"
+    "Z\034\022\032/audit/v202601/events/{id}\032)\312A\023grpc."
+    "api.kentik.com\352\327\002\013admin.audit\220\330\002\003B\327\002ZFgi"
+    "thub.com/kentik/api-schema-public/gen/go"
+    "/kentik/public/audit/v202601\222A\213\002\022M\n\tAudi"
+    "t API\"7\n\026Kentik API Engineering\022\035https:/"
+    "/github.com/kentik/api2\007v202601*\001\0022\020appl"
+    "ication/json:\020application/jsonZD\n\036\n\005emai"
+    "l\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X"
+    "-CH-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005tok"
+    "en\022\000r5\n\026More about Kentik APIs\022\033https://"
+    "docs.kentik.com/apib\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2faudit_2fpublic_2fv202601_2faudit_2eproto_deps[6] =
     {
@@ -501,7 +502,7 @@ static ::absl::once_flag descriptor_table_kentik_2faudit_2fpublic_2fv202601_2fau
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2faudit_2fpublic_2fv202601_2faudit_2eproto = {
     false,
     false,
-    2716,
+    2747,
     descriptor_table_protodef_kentik_2faudit_2fpublic_2fv202601_2faudit_2eproto,
     "kentik/audit/public/v202601/audit.proto",
     &descriptor_table_kentik_2faudit_2fpublic_2fv202601_2faudit_2eproto_once,

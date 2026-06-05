@@ -586,12 +586,12 @@ const file_kentik_audit_public_v202601_audit_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x120\n" +
 	"\x05ctime\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\x05ctime\"V\n" +
 	"\x15GetAuditEventResponse\x12=\n" +
-	"\x05event\x18\x01 \x01(\v2'.kentik.audit.public.v202601.AuditEventR\x05event2\xa7\x04\n" +
+	"\x05event\x18\x01 \x01(\v2'.kentik.audit.public.v202601.AuditEventR\x05event2\xc6\x04\n" +
 	"\fAuditService\x12\xf2\x01\n" +
 	"\x0fListAuditEvents\x123.kentik.audit.public.v202601.ListAuditEventsRequest\x1a4.kentik.audit.public.v202601.ListAuditEventsResponse\"t\x92AF\x12\x12List Audit Events.\x1a\x1fReturns a list of audit events.*\x0fListAuditEvents\xf2\xd7\x02\n" +
-	"audit:read\x82\xd3\xe4\x93\x02\x17\x12\x15/audit/v202601/events\x12\xf6\x01\n" +
-	"\rGetAuditEvent\x121.kentik.audit.public.v202601.GetAuditEventRequest\x1a2.kentik.audit.public.v202601.GetAuditEventResponse\"~\x92AC\x12\x12Get an Audit Event\x1a\x1eReturn a specific audit event.*\rGetAuditEvent\xf2\xd7\x02\n" +
-	"audit:read\x82\xd3\xe4\x93\x02$\x12\"/audit/v202601/events/{id}/{ctime}\x1a)\xcaA\x13grpc.api.kentik.com\xea\xd7\x02\vadmin.audit\x90\xd8\x02\x03B\xd7\x02\x92A\x8b\x02\x12M\n" +
+	"audit:read\x82\xd3\xe4\x93\x02\x17\x12\x15/audit/v202601/events\x12\x95\x02\n" +
+	"\rGetAuditEvent\x121.kentik.audit.public.v202601.GetAuditEventRequest\x1a2.kentik.audit.public.v202601.GetAuditEventResponse\"\x9c\x01\x92AC\x12\x12Get an Audit Event\x1a\x1eReturn a specific audit event.*\rGetAuditEvent\xf2\xd7\x02\n" +
+	"audit:read\x82\xd3\xe4\x93\x02BZ\x1c\x12\x1a/audit/v202601/events/{id}\x12\"/audit/v202601/events/{id}/{ctime}\x1a)\xcaA\x13grpc.api.kentik.com\xea\xd7\x02\vadmin.audit\x90\xd8\x02\x03B\xd7\x02\x92A\x8b\x02\x12M\n" +
 	"\tAudit API\"7\n" +
 	"\x16Kentik API Engineering\x12\x1dhttps://github.com/kentik/api2\av202601*\x01\x022\x10application/json:\x10application/jsonZD\n" +
 	"\x1e\n" +
