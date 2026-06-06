@@ -167,11 +167,9 @@ service AuditService {
       option (kentik.core.v202303.method_scope) = "audit:read";
       option (google.api.http) = {
         get: "/audit/v202601/events/{id}/{ctime}"
-        additional_bindings: [
-          {
+        additional_bindings: {
             get: "/audit/v202601/events/{id}"
           }
-        ]
       };
       option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
         operation_id: "GetAuditEvent"
